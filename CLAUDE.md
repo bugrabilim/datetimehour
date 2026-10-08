@@ -13,7 +13,7 @@ Bu dosya master dosyadır. Her oturumda okunur.
 - Yeni şehir: `src/data/cities.json`'a ekle (TR ekli hâli `loc` zorunlu). Yeni metin: iki i18n dosyasına aynı anahtarla ekle (`npm test` eşliği denetler).
 - Asıl adres (önerilen, DNS ana oturumda): `https://saat.bumba.tr`. Değişirse yalnız `site.config.json` → `origin` (ya da derleme ortamında `SITE_ORIGIN`).
 - Umami kimliği ve liste anahtarı: `site.config.json` (`umamiId` boş: ana oturum kaydı açınca doldurulur ya da `UMAMI_ID` derleme değişkeni). Liste anahtarı önerisi: `saat-tarih`.
-- Durum: Coolify uygulaması **henüz yok** (uuid yok); ana altyapı oturumu açacak. Derleme türü Dockerfile, port 80.
+- Durum: Coolify uygulaması açık: ad `saat`, uuid `3avuig04eyqgxryirgxufasc`, https://saat.bumba.tr, dal `main`, derleme türü Dockerfile. İlk yayın 8 Ekim 2026 (commit `5dc148d`). Umami sayacı canlıda çalışıyor (kimlik derleme ortamından geliyor, `site.config.json`'da boş). http→https yönlendirmesi Traefik'te 308 dönüyor (standart 301 diyor; ana oturum). www adresi yok (bumba.tr alt alan adı ürünleri gibi).
 
 ## Kararlar
 - Tasarım ilk günden iki temalı: açık ("kâğıt") ve koyu ("gece") palet var. Tek merkez: `src/styles.css` token'ları, kontrast `npm test` ile denetlenir.
@@ -23,7 +23,7 @@ Bu dosya master dosyadır. Her oturumda okunur.
 - Saat tarayıcıdan okunur; sunucuya veri gitmez. Umami olaylarında arama sözcüğü gönderilmez, yalnız "sonuç var/yok".
 - Dil: ana sayfada yalnızca kullanıcı dil düğmesiyle seçim yaptıysa (ve siteye dışarıdan geldiyse) kayıtlı dile yönlendirilir.
 - Arama: istemci tarafı dizin (`/assets/search-<dil>.json`, derlemede üretilir), TR karakter ve büyük/küçük harf duyarsız.
-- HSTS `max-age=86400` ile başladı (8 Ekim 2026). **Bir hafta sorun çıkmazsa `31536000` yap** ve tarihi buraya yaz. includeSubDomains/preload yok.
+- HSTS `max-age=86400` ile başladı (8 Ekim 2026, canlıda doğrulandı). **Bir hafta sorun çıkmazsa `31536000` yap** ve tarihi buraya yaz. includeSubDomains/preload yok.
 
 ## SEO / GEO kaydı
 - Başlık ve açıklamalar `src/i18n/*.json` içinde (`home`, `world`, `city`, `privacy` anahtarları); sayfa başına benzersiz, `npm test` denetler.
