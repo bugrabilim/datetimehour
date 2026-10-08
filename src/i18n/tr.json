@@ -1,0 +1,214 @@
+{
+  "lang": "tr",
+  "locale": "tr-TR",
+  "ogLocale": "tr_TR",
+  "langName": "Türkçe",
+  "site": {
+    "name": "Saat Tarih",
+    "tagline": "Canlı saat, bugünün tarihi ve dünya saatleri",
+    "description": "Saat Tarih; bulunduğunuz yerdeki saati, bugünün tarihini, hafta numarasını ve dünya şehirlerinin saatini canlı gösteren ücretsiz bir sitedir."
+  },
+  "ui": {
+    "skip": "İçeriğe geç",
+    "home": "Ana sayfa",
+    "world": "Dünya saatleri",
+    "privacy": "Gizlilik ve çerezler",
+    "mainNav": "Ana gezinti",
+    "footerNav": "Alt bilgi gezintisi",
+    "langSwitch": "English",
+    "langSwitchLabel": "Switch to English",
+    "themeToggle": "Açık ve koyu temayı değiştir",
+    "searchOpen": "Sitede ara",
+    "searchTitle": "Sitede ara",
+    "searchLabel": "Aranacak sözcük",
+    "searchPlaceholder": "Şehir, sayfa ya da konu yazın…",
+    "searchClose": "Aramayı kapat",
+    "searchEmpty": "Sonuç bulunamadı. Başka bir sözcük deneyin; örneğin şehir adı ya da \"hafta\".",
+    "searchHint": "Gezinmek için ↑ ↓, açmak için Enter, kapatmak için Esc.",
+    "searchCount": "{n} sonuç",
+    "searchResults": "Arama sonuçları",
+    "searchError": "Arama dizini yüklenemedi. Sayfayı yenileyip tekrar deneyin.",
+    "breadcrumb": "Sayfa yolu",
+    "updated": "Son güncelleme",
+    "noscript": "Canlı saati görmek için tarayıcınızda JavaScript açık olmalıdır.",
+    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "logoAlt": "Saat Tarih ana sayfa"
+  },
+  "client": {
+    "format24": "24 saat",
+    "format12": "12 saat",
+    "seconds": "Saniye",
+    "diffSame": "Sizinle aynı saat",
+    "diffAhead": "Sizden {d} ileride",
+    "diffBehind": "Sizden {d} geride",
+    "hourShort": "sa",
+    "minuteShort": "dk",
+    "yourZone": "Saat diliminiz",
+    "yearDone": "Yılın %{p} kadarı geçti"
+  },
+  "home": {
+    "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
+    "description": "Şu an saat kaç, bugün ayın kaçı? Bulunduğunuz yerin canlı saatini, bugünün tarihini, hafta numarasını ve dünya şehirlerinin saatini tek sayfada görün.",
+    "h1": "Şu an saat kaç?",
+    "lead": "Saat Tarih; bulunduğunuz yerdeki saati, bugünün tarihini, hafta numarasını ve dünya şehirlerinin saatini canlı gösteren ücretsiz bir sitedir. Herkes için, kayıt gerektirmeden.",
+    "clockHeading": "Canlı saat",
+    "factsHeading": "Bugün hakkında",
+    "factWeek": "Hafta numarası (ISO)",
+    "factDoy": "Yılın günü",
+    "factLeft": "Yıl bitimine kalan gün",
+    "factUnix": "Unix zaman damgası",
+    "factUtc": "UTC saat",
+    "factProgress": "Yılın ilerleyişi",
+    "worldHeading": "Dünya şehirlerinde saat",
+    "worldLead": "Seçili şehirlerin güncel yerel saati. Ayrıntı için bir şehre tıklayın.",
+    "worldAll": "Tüm şehirleri gör",
+    "faqHeading": "Sık sorulan sorular",
+    "faq": [
+      {
+        "q": "Bu sitedeki saat nasıl hesaplanıyor?",
+        "a": "Saat, cihazınızın sistem saatinden ve tarayıcınızın saat diliminden okunur; hiçbir veri sunucuya gönderilmez. Cihaz saatiniz yanlışsa site de yanlış gösterir. Bu yüzden telefonunuzda ya da bilgisayarınızda \"saati otomatik ayarla\" seçeneğini açık tutmanız yeterlidir."
+      },
+      {
+        "q": "Türkiye'de yaz saati uygulaması var mı?",
+        "a": "Hayır. Türkiye 2016'dan beri yıl boyunca UTC+3 saatini kullanıyor; saatler yılda iki kez ileri ya da geri alınmıyor. Avrupa'daki birçok ülkede yaz saati uygulaması sürdüğü için Türkiye ile aralarındaki fark yıl içinde bir saat değişebilir."
+      },
+      {
+        "q": "Hafta numarası nasıl hesaplanır?",
+        "a": "ISO 8601 standardına göre haftalar pazartesi günü başlar ve yılın ilk perşembesini içeren hafta 1. hafta sayılır. Bu yüzden yılın ilk ve son günleri, komşu yılın haftasına denk gelebilir."
+      },
+      {
+        "q": "Şehirler arasındaki saat farkı nasıl bulunuyor?",
+        "a": "Her şehrin güncel UTC farkı tarayıcınızın saat dilimi veritabanından (IANA) alınır; yaz saati geçişleri otomatik hesaba katılır. \"Sizden ileride\" ya da \"Sizden geride\" ifadesi her zaman sizin saat diliminize göredir."
+      }
+    ]
+  },
+  "world": {
+    "title": "Dünya Saatleri: Şehirlerde Saat Kaç? | Saat Tarih",
+    "description": "İstanbul, Londra, New York, Tokyo ve daha fazla şehirde şu an saat kaç? Dünya şehirlerinin canlı saatini ve sizinle saat farkını görün.",
+    "h1": "Dünya saatleri",
+    "lead": "Bu sayfa İstanbul, Londra, New York, Tokyo gibi {n} şehrin güncel yerel saatini ve sizinle aradaki saat farkını canlı gösterir. Yaz saati geçişleri otomatik hesaplanır.",
+    "colCity": "Şehir",
+    "colCountry": "Ülke",
+    "colTime": "Saat",
+    "colOffset": "UTC farkı",
+    "colDiff": "Sizinle fark",
+    "tableCaption": "Şehirlerin güncel yerel saati"
+  },
+  "city": {
+    "title": "{loc} Saat Kaç? {name} Yerel Saati | Saat Tarih",
+    "description": "{loc} şu an saat kaç? {name} ({country}) yerel saatini, tarihi ve UTC farkını canlı görün. Saat dilimi: {tz}.",
+    "h1": "{loc} saat kaç?",
+    "lead": "{name} ({country}) için güncel yerel saat aşağıda. {name}, {tz} saat dilimindedir; standart saat farkı UTC{std}.",
+    "dstYes": "{name} yaz saati uygulaması kullanıyor; bu nedenle UTC farkı yıl içinde bir saat değişir.",
+    "dstNo": "{name} yaz saati uygulaması kullanmıyor; UTC farkı yıl boyunca aynı kalır.",
+    "liveOffset": "Şu anki UTC farkı",
+    "liveDiff": "Sizinle fark",
+    "otherHeading": "Diğer şehirlerde saat",
+    "faqHeading": "{name} saati hakkında sık sorulanlar",
+    "faqTime": "{loc} saat kaç?",
+    "faqTimeA": "{name} yerel saati yukarıdaki canlı saatte görünür. Saat {tz} diliminden hesaplanır ve her saniye güncellenir.",
+    "faqZone": "{name} hangi saat diliminde?",
+    "faqZoneA": "{name}, {tz} saat dilimindedir. Standart saat farkı UTC{std} olarak kabul edilir.",
+    "faqDst": "{loc} yaz saati uygulaması var mı?",
+    "faqDstYesA": "Evet. {name} yaz saati uygulaması kullanıyor; geçiş tarihlerinde UTC farkı bir saat değişir ve bu sayfa farkı otomatik hesaplar.",
+    "faqDstNoA": "Hayır. {name} yaz saati uygulaması kullanmıyor; UTC farkı yıl boyunca aynı kalır.",
+    "breadcrumbWorld": "Dünya saatleri"
+  },
+  "privacy": {
+    "title": "Gizlilik ve Çerez Politikası | Saat Tarih",
+    "description": "Saat Tarih'in hangi verileri işlediği, çerez ve yerel depolama kullanımı, Umami istatistikleri, e-posta listesi ve KVKK kapsamındaki haklarınız.",
+    "h1": "Gizlilik ve çerez politikası",
+    "lead": "Saat Tarih'i kullanırken hangi verilerin işlendiğini, nedenini ve haklarınızı burada özetliyoruz. Site yalnızca gerekli olanı toplar; hesap, reklam ya da izleme çerezi yoktur.",
+    "sections": [
+      {
+        "id": "veri-sorumlusu",
+        "h": "Veri sorumlusu",
+        "p": [
+          "Veri sorumlusu Bumba Teknoloji Limited Şirketi'dir (Ataşehir / İstanbul). Her türlü soru ve KVKK başvurusu için: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "islenen-veriler",
+        "h": "Hangi verileri işliyoruz?",
+        "ul": [
+          "**Saat ve tarih:** Cihazınızın saati ve saat diliminiz yalnızca tarayıcınızda okunur ve hesaplanır. Sunucuya gönderilmez, kaydedilmez.",
+          "**E-posta listesi formu:** Forma yazdığınız e-posta adresi, onay kutusuyla verdiğiniz rıza, seçili dil ve formun bulunduğu sayfa; Bumba Group'un ortak liste servisi (bumbagroup.com) tarafından işlenir. Kayıt çift onaylıdır: onay e-postasındaki bağlantıya tıklamadan listeye eklenmezsiniz. Her e-postada tek tıkla çıkış bağlantısı bulunur. Ayrıntılar için [ortak aydınlatma metnine](https://bumbagroup.com/liste/aydinlatma) bakın.",
+          "**Sunucu kayıtları:** Siteyi yayınlayan sunucu, her istek için IP adresi, tarayıcı bilgisi, istenen sayfa ve zaman bilgisini standart erişim kaydı olarak tutar. Bu kayıtlar yalnızca güvenlik ve hata ayıklama amacıyla kullanılır; kişi bazlı profil çıkarmak için kullanılmaz.",
+          "**Ziyaret istatistikleri:** Kendi sunucumuzda çalışan Umami ile sayfa görüntülemeleri ve birkaç eylem (dil değişimi, tema değişimi, arama sonucunun bulunup bulunmaması, listeye katılım) sayılır. Umami çerez kullanmaz. Aramaya yazdığınız sözcükler ve e-posta adresiniz istatistik sistemine gönderilmez."
+        ]
+      },
+      {
+        "id": "cerezler",
+        "h": "Çerezler ve yerel depolama",
+        "p": [
+          "Saat Tarih hiçbir çerez bırakmaz. Bu nedenle çerez onayı penceresi göstermiyoruz. Tercihlerinizi hatırlamak için tarayıcınızın yerel depolama alanını (localStorage) kullanırız; bu bilgiler yalnızca cihazınızda durur ve sunucuya gönderilmez. Tarayıcı ayarlarından istediğiniz zaman silebilirsiniz."
+        ],
+        "table": {
+          "head": ["Ad", "Amaç", "Süre"],
+          "rows": [
+            ["sth-theme", "Seçtiğiniz açık ya da koyu temayı hatırlar.", "Siz silene kadar"],
+            ["sth-lang", "Seçtiğiniz dili hatırlar.", "Siz silene kadar"],
+            ["sth-prefs", "24 ya da 12 saat gösterimi ve saniye tercihini hatırlar.", "Siz silene kadar"]
+          ]
+        }
+      },
+      {
+        "id": "hukuki-sebep",
+        "h": "Hukuki sebepler",
+        "ul": [
+          "E-posta listesi: açık rızanız (KVKK m. 5/1). Rızanızı dilediğiniz zaman e-postadaki çıkış bağlantısıyla geri alabilirsiniz.",
+          "Sunucu kayıtları ve ziyaret istatistikleri: sitenin güvenli ve çalışır tutulması için meşru menfaatimiz (KVKK m. 5/2-f)."
+        ]
+      },
+      {
+        "id": "haklariniz",
+        "h": "Haklarınız",
+        "p": [
+          "KVKK'nın 11. maddesi uyarınca verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi isteme, düzeltilmesini ya da silinmesini isteme ve işlemeye itiraz etme haklarına sahipsiniz. Başvurunuzu [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) adresine iletebilirsiniz."
+        ]
+      },
+      {
+        "id": "degisiklikler",
+        "h": "Değişiklikler",
+        "p": [
+          "Bu metin site değiştikçe güncellenir. Güncel sürümün tarihi sayfanın başında yazar."
+        ]
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Sayfa bulunamadı (404) | Saat Tarih",
+    "h1": "Aradığınız sayfa bulunamadı",
+    "p": "Adres yanlış yazılmış ya da sayfa taşınmış olabilir. Şu an saatin kaç olduğuna ana sayfadan bakabilirsiniz.",
+    "cta": "Ana sayfaya dön"
+  },
+  "serverError": {
+    "title": "Bir sorun oluştu (500) | Saat Tarih",
+    "h1": "Bir şeyler ters gitti",
+    "p": "Sunucuda geçici bir sorun var. Lütfen birkaç dakika sonra tekrar deneyin.",
+    "cta": "Ana sayfaya dön"
+  },
+  "list": {
+    "heading": "Yeniliklerden haberdar olun",
+    "lead": "Saat Tarih'teki yenilikleri e-postayla almak ister misiniz? İstediğiniz zaman tek tıkla ayrılabilirsiniz.",
+    "emailLabel": "E-posta adresiniz",
+    "consentPre": "",
+    "consentLink": "Aydınlatma metnini",
+    "consentPost": " okudum, e-posta almayı kabul ediyorum.",
+    "submit": "Katıl",
+    "ok": "Onay e-postası gönderdik; gelen kutunuzdaki bağlantıya tıklayınca listeye katılmış olursunuz.",
+    "err": "Kaydınız alınamadı. E-posta adresini ve onay kutusunu kontrol edip biraz sonra tekrar deneyin.",
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma"
+  },
+  "badge": {
+    "title": "Bumba Life, bir Bumba Group kolu",
+    "alt": "Bir Bumba Life ürünü"
+  },
+  "llms": {
+    "summary": "Saat Tarih; bulunduğunuz yerdeki saati, bugünün tarihini, hafta numarasını ve dünya şehirlerinin saatini canlı gösteren ücretsiz bir sitedir. Bir Bumba Life ürünüdür (Bumba Group).",
+    "pages": "Sayfalar",
+    "cities": "Şehir sayfaları",
+    "about": "Hakkında",
+    "aboutText": "Saat, kullanıcının cihaz saatinden ve tarayıcı saat diliminden okunur; sunucuya veri gönderilmez. Türkçe ve İngilizce sunulur. Veri sorumlusu: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. İletişim: bilgi@bumbagroup.com."
+  }
+}
