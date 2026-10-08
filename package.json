@@ -1,0 +1,13 @@
+{
+  "name": "datetimehour",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Saat Tarih: canlı saat, tarih ve dünya saatleri (statik site, TR/EN)",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node build.mjs && node scripts/test.mjs",
+    "serve": "node scripts/serve.mjs"
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "lang": "en",
+  "locale": "en-GB",
+  "ogLocale": "en_GB",
+  "langName": "English",
+  "site": {
+    "name": "Saat Tarih",
+    "tagline": "Live clock, today's date and world time",
+    "description": "Saat Tarih is a free website that shows your local time, today's date, the week number and the time in cities around the world, live."
+  },
+  "ui": {
+    "skip": "Skip to content",
+    "home": "Home",
+    "world": "World clock",
+    "privacy": "Privacy and cookies",
+    "mainNav": "Main navigation",
+    "footerNav": "Footer navigation",
+    "langSwitch": "Türkçe",
+    "langSwitchLabel": "Türkçe'ye geç",
+    "themeToggle": "Switch between light and dark theme",
+    "searchOpen": "Search the site",
+    "searchTitle": "Search the site",
+    "searchLabel": "Search term",
+    "searchPlaceholder": "Type a city, page or topic…",
+    "searchClose": "Close search",
+    "searchEmpty": "No results found. Try another word, such as a city name or \"week\".",
+    "searchHint": "Use ↑ ↓ to move, Enter to open, Esc to close.",
+    "searchCount": "{n} results",
+    "searchResults": "Search results",
+    "searchError": "The search index could not be loaded. Please refresh the page and try again.",
+    "breadcrumb": "Breadcrumb",
+    "updated": "Last updated",
+    "noscript": "JavaScript must be enabled in your browser to see the live clock.",
+    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "logoAlt": "Saat Tarih home"
+  },
+  "client": {
+    "format24": "24-hour",
+    "format12": "12-hour",
+    "seconds": "Seconds",
+    "diffSame": "Same time as you",
+    "diffAhead": "{d} ahead of you",
+    "diffBehind": "{d} behind you",
+    "hourShort": "h",
+    "minuteShort": "min",
+    "yourZone": "Your time zone",
+    "yearDone": "{p}% of the year has passed"
+  },
+  "home": {
+    "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
+    "description": "What time is it now and what's today's date? See your live local time, the date, the week number and the time in cities around the world on one page.",
+    "h1": "What time is it now?",
+    "lead": "Saat Tarih is a free website that shows your local time, today's date, the week number and the time in cities around the world, live. For everyone, no sign-up needed.",
+    "clockHeading": "Live clock",
+    "factsHeading": "About today",
+    "factWeek": "Week number (ISO)",
+    "factDoy": "Day of the year",
+    "factLeft": "Days left in the year",
+    "factUnix": "Unix timestamp",
+    "factUtc": "UTC time",
+    "factProgress": "Year progress",
+    "worldHeading": "Time in cities around the world",
+    "worldLead": "Current local time in selected cities. Select a city for details.",
+    "worldAll": "See all cities",
+    "faqHeading": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "How is the time on this site calculated?",
+        "a": "The time is read from your device's system clock and your browser's time zone; nothing is sent to a server. If your device clock is wrong, the site will be wrong too, so keep \"set time automatically\" switched on in your phone or computer settings."
+      },
+      {
+        "q": "Does Türkiye use daylight saving time?",
+        "a": "No. Since 2016 Türkiye has used UTC+3 all year round, and clocks are not moved forward or back. Many European countries still change their clocks, so their time difference from Türkiye can shift by one hour during the year."
+      },
+      {
+        "q": "How is the week number calculated?",
+        "a": "Under ISO 8601, weeks start on Monday and week 1 is the week that contains the first Thursday of the year. For this reason the first and last days of a year can belong to a week of the neighbouring year."
+      },
+      {
+        "q": "How is the time difference between cities worked out?",
+        "a": "Each city's current UTC offset comes from your browser's time zone database (IANA), and daylight saving changes are applied automatically. \"Ahead of you\" and \"behind you\" always refer to your own time zone."
+      }
+    ]
+  },
+  "world": {
+    "title": "World Clock: Current Time in Cities | Saat Tarih",
+    "description": "What time is it in Istanbul, London, New York, Tokyo and more? See live local times in cities around the world and the time difference from you.",
+    "h1": "World clock",
+    "lead": "This page shows the current local time in {n} cities, including Istanbul, London, New York and Tokyo, along with the time difference from you. Daylight saving changes are applied automatically.",
+    "colCity": "City",
+    "colCountry": "Country",
+    "colTime": "Time",
+    "colOffset": "UTC offset",
+    "colDiff": "Difference from you",
+    "tableCaption": "Current local time in cities"
+  },
+  "city": {
+    "title": "Current Time in {name} ({country}) | Saat Tarih",
+    "description": "What time is it in {name} right now? See the live local time, date and UTC offset for {name}, {country}. Time zone: {tz}.",
+    "h1": "Current time in {name}",
+    "lead": "The current local time in {name}, {country}, is shown below. {name} is in the {tz} time zone, with a standard offset of UTC{std}.",
+    "dstYes": "{name} observes daylight saving time, so its UTC offset changes by one hour during the year.",
+    "dstNo": "{name} does not observe daylight saving time, so its UTC offset stays the same all year.",
+    "liveOffset": "Current UTC offset",
+    "liveDiff": "Difference from you",
+    "otherHeading": "Time in other cities",
+    "faqHeading": "Frequently asked questions about time in {name}",
+    "faqTime": "What time is it in {name}?",
+    "faqTimeA": "The local time in {name} is shown on the live clock above. It is calculated from the {tz} time zone and updates every second.",
+    "faqZone": "Which time zone is {name} in?",
+    "faqZoneA": "{name} is in the {tz} time zone, with a standard offset of UTC{std}.",
+    "faqDst": "Does {name} use daylight saving time?",
+    "faqDstYesA": "Yes. {name} observes daylight saving time; its UTC offset changes by one hour on the switch dates, and this page applies the change automatically.",
+    "faqDstNoA": "No. {name} does not observe daylight saving time, so its UTC offset stays the same all year.",
+    "breadcrumbWorld": "World clock"
+  },
+  "privacy": {
+    "title": "Privacy and Cookie Policy | Saat Tarih",
+    "description": "What data Saat Tarih processes, how cookies and local storage are used, Umami statistics, the email list and your rights under Turkish data protection law (KVKK).",
+    "h1": "Privacy and cookie policy",
+    "lead": "This page explains which data is processed when you use Saat Tarih, why, and what your rights are. The site only collects what it needs; there are no accounts, ads or tracking cookies.",
+    "sections": [
+      {
+        "id": "controller",
+        "h": "Data controller",
+        "p": [
+          "The data controller is Bumba Teknoloji Limited Şirketi (Ataşehir / Istanbul, Türkiye). For any question or data protection request: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "data",
+        "h": "What data do we process?",
+        "ul": [
+          "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
+          "**Email list form:** The email address you enter, the consent you give with the checkbox, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
+          "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
+          "**Visit statistics:** Umami, which runs on our own server, counts page views and a few actions (language change, theme change, whether a search found a result, joining the list). Umami does not use cookies. The words you type in search and your email address are not sent to the statistics system."
+        ]
+      },
+      {
+        "id": "cookies",
+        "h": "Cookies and local storage",
+        "p": [
+          "Saat Tarih does not set any cookies, so we do not show a cookie banner. To remember your choices we use your browser's local storage (localStorage); this stays on your device and is not sent to a server. You can delete it at any time in your browser settings."
+        ],
+        "table": {
+          "head": ["Name", "Purpose", "Duration"],
+          "rows": [
+            ["sth-theme", "Remembers your light or dark theme choice.", "Until you delete it"],
+            ["sth-lang", "Remembers your language choice.", "Until you delete it"],
+            ["sth-prefs", "Remembers 24-hour or 12-hour display and the seconds setting.", "Until you delete it"]
+          ]
+        }
+      },
+      {
+        "id": "legal-basis",
+        "h": "Legal bases",
+        "ul": [
+          "Email list: your explicit consent (KVKK art. 5/1). You can withdraw it at any time with the unsubscribe link in each email.",
+          "Server logs and visit statistics: our legitimate interest in keeping the site secure and working (KVKK art. 5/2-f)."
+        ]
+      },
+      {
+        "id": "rights",
+        "h": "Your rights",
+        "p": [
+          "Under article 11 of the Turkish Personal Data Protection Law (KVKK) you can ask whether your data is processed, request information about it, ask for it to be corrected or deleted, and object to its processing. Send your request to [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "changes",
+        "h": "Changes",
+        "p": [
+          "This text is updated as the site changes. The date of the current version is shown at the top of the page."
+        ]
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Page not found (404) | Saat Tarih",
+    "h1": "We couldn't find that page",
+    "p": "The address may be mistyped or the page may have moved. You can check the current time on the home page.",
+    "cta": "Back to the home page"
+  },
+  "serverError": {
+    "title": "Something went wrong (500) | Saat Tarih",
+    "h1": "Something went wrong",
+    "p": "There is a temporary problem on the server. Please try again in a few minutes.",
+    "cta": "Back to the home page"
+  },
+  "list": {
+    "heading": "Stay up to date",
+    "lead": "Want updates about Saat Tarih by email? You can unsubscribe at any time with one click.",
+    "emailLabel": "Your email address",
+    "consentPre": "I have read the ",
+    "consentLink": "privacy notice",
+    "consentPost": " and agree to receive emails.",
+    "submit": "Join",
+    "ok": "We have sent you a confirmation email; click the link in your inbox to complete joining the list.",
+    "err": "We couldn't save your sign-up. Please check the email address and the checkbox, then try again in a moment.",
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en"
+  },
+  "badge": {
+    "title": "Bumba Life, part of Bumba Group",
+    "alt": "A Bumba Life product"
+  },
+  "llms": {
+    "summary": "Saat Tarih is a free website that shows your local time, today's date, the week number and the time in cities around the world, live. It is a Bumba Life product (Bumba Group).",
+    "pages": "Pages",
+    "cities": "City pages",
+    "about": "About",
+    "aboutText": "The time is read from the visitor's device clock and browser time zone; nothing is sent to a server. Available in Turkish and English. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+  }
+}
