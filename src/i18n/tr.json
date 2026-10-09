@@ -427,7 +427,7 @@
     "info": "Saat kaynağı hakkında bilgi",
     "infoTitle": "Bu saat nereden geliyor?",
     "infoClose": "Kapat",
-    "infoSeconds": "Saniyeleri görmek ya da gizlemek için saate dokunun."
+    "infoSeconds": "Saniyeleri görmek ya da gizlemek için saate dokunun. Dijital saatlerde saniye açık, analog saatlerde kapalı başlar."
   },
   "calendar": {
     "title": "{year} Takvimi: Resmi Tatiller, Bayram ve Ramazan | Saat Tarih",

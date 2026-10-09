@@ -427,7 +427,7 @@
     "info": "About this clock's time source",
     "infoTitle": "Where does this time come from?",
     "infoClose": "Close",
-    "infoSeconds": "Tap the clock to show or hide the seconds."
+    "infoSeconds": "Tap the clock to show or hide the seconds. Seconds start on for digital clocks and off for analog clocks."
   },
   "calendar": {
     "title": "{year} Calendar: Turkish Public Holidays and Ramadan | Saat Tarih",

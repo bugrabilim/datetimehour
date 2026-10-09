@@ -427,7 +427,7 @@
     "info": "Vaxt mənbəyi haqqında məlumat",
     "infoTitle": "Bu vaxt haradan gəlir?",
     "infoClose": "Bağla",
-    "infoSeconds": "Saniyələri göstərmək və ya gizlətmək üçün saata toxunun."
+    "infoSeconds": "Saniyələri göstərmək və ya gizlətmək üçün saata toxunun. Rəqəmsal saatlarda saniyə açıq, analoq saatlarda bağlı başlayır."
   },
   "calendar": {
     "title": "{year} təqvimi: Türkiyənin rəsmi bayramları və Ramazan | Saat Tarih",
