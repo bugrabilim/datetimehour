@@ -13,8 +13,6 @@
   var ctx = canvas && canvas.getContext && canvas.getContext("2d");
   if (!ctx || !view) return;
   var G = S.cfg.globe || {};
-  var gfs = fig.querySelector("[data-globe-fs]");
-  if (gfs && S.makeFullscreen) S.makeFullscreen(fig, gfs);
   var RAD = Math.PI / 180;
   var TILT0 = 23, SPEED = 3; // başlangıç enlemi, derece/sn (bir tur 2 dk)
   var ZMAX_TILE = 19.2;
@@ -41,7 +39,7 @@
   var VS = "attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}";
   var FS = [
     "#ifdef GL_FRAGMENT_PRECISION_HIGH", "precision highp float;", "#else", "precision mediump float;", "#endif",
-    "uniform vec2 uRes;uniform float uR;uniform float uSinT;uniform float uCosT;uniform float uLon0;uniform vec2 uSun;uniform sampler2D uTex;uniform float uHas;",
+    "uniform vec2 uRes;uniform float uR;uniform float uSinT;uniform float uCosT;uniform float uLon0;uniform vec2 uSun;uniform float uNight;uniform sampler2D uTex;uniform float uHas;",
     "const float PI=3.14159265358979;",
     "void main(){",
     "vec2 p=(gl_FragCoord.xy-0.5*uRes)/uR;float rr=dot(p,p);",
@@ -52,7 +50,7 @@
     "vec3 c=vec3(0.43,0.63,0.78);",
     "if(uHas>0.5){c=texture2D(uTex,vec2(lon/(2.*PI)+0.5,0.5-lat/PI)).rgb;}",
     "float cz=sin(lat)*sin(uSun.y)+cos(lat)*cos(uSun.y)*cos(lon-uSun.x);",
-    "float t=clamp((cz+0.1)/0.16,0.,1.);t=t*t*(3.-2.*t);",
+    "float t=clamp((cz+0.1)/0.16,0.,1.);t=t*t*(3.-2.*t);t=mix(1.,t,uNight);",
     "float sh=0.72+0.28*z;",
     "vec3 n=vec3(c.r*0.2+6./255.,c.g*0.2+12./255.,c.b*0.24+30./255.);",
     "vec3 o=mix(n,c,t)*sh;",
@@ -77,7 +75,7 @@
       gl.linkProgram(glProg);
       if (!gl.getProgramParameter(glProg, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(glProg));
       gl.useProgram(glProg);
-      ["uRes", "uR", "uSinT", "uCosT", "uLon0", "uSun", "uTex", "uHas"].forEach(function (n) { glU[n] = gl.getUniformLocation(glProg, n); });
+      ["uRes", "uR", "uSinT", "uCosT", "uLon0", "uSun", "uNight", "uTex", "uHas"].forEach(function (n) { glU[n] = gl.getUniformLocation(glProg, n); });
       var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
       var loc = gl.getAttribLocation(glProg, "a"); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
@@ -314,7 +312,7 @@
     gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform2f(glU.uRes, pw, ph); gl.uniform1f(glU.uR, R);
     gl.uniform1f(glU.uSinT, sinT); gl.uniform1f(glU.uCosT, cosT); gl.uniform1f(glU.uLon0, lon0 * RAD);
-    gl.uniform2f(glU.uSun, s.lon * RAD, s.dec);
+    gl.uniform2f(glU.uSun, s.lon * RAD, s.dec); gl.uniform1f(glU.uNight, zoom > 1.01 ? 0 : 1); // yakınlaşınca gündüz/gece gölgesi yok
     var t = (2 * R > 1000 * Math.max(1, dpr * 0.8)) ? texFull : texSmall;
     gl.activeTexture(gl.TEXTURE0);
     if (t) { gl.bindTexture(gl.TEXTURE_2D, t); gl.uniform1i(glU.uTex, 0); gl.uniform1f(glU.uHas, 1); } else gl.uniform1f(glU.uHas, 0);
@@ -338,7 +336,7 @@
         g = tex[i00 + 1] * w00 + tex[i01 + 1] * w01 + tex[i10 + 1] * w10 + tex[i11 + 1] * w11;
         b = tex[i00 + 2] * w00 + tex[i01 + 2] * w01 + tex[i10 + 2] * w10 + tex[i11 + 2] * w11;
       } else { r = 110; g = 160; b = 200; }
-      var cz = pSinLat[k] * sd + pCosLat[k] * cd * (pCosL[k] * cD - pSinL[k] * sD), t = smooth(cz), sh2 = pShade[k];
+      var cz = pSinLat[k] * sd + pCosLat[k] * cd * (pCosL[k] * cD - pSinL[k] * sD), t = zoom > 1.01 ? 1 : smooth(cz), sh2 = pShade[k];
       data[o] = (r * 0.2 + 6 + (r - r * 0.2 - 6) * t) * sh2;
       data[o + 1] = (g * 0.2 + 12 + (g - g * 0.2 - 12) * t) * sh2;
       data[o + 2] = (b * 0.24 + 30 + (b - b * 0.24 - 30) * t) * sh2;
@@ -347,20 +345,6 @@
     sctx.putImageData(img, 0, 0);
     ctx.save(); ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
     ctx.drawImage(sc, 0, 0, pw, ph); ctx.restore();
-  }
-  var nsc = doc.createElement("canvas"), nctx = nsc.getContext("2d"), NG = 36, nimg = nctx.createImageData(NG, NG);
-  nsc.width = nsc.height = NG;
-  function nightOverlay(s, alpha) { // harita üstünde gündüz/gece (düşük çözünürlükte hesaplanır, yumuşakça büyütülür)
-    var d = nimg.data;
-    for (var j = 0; j < NG; j++) {
-      var lat = mercLat((mv.cy + ((j + 0.5) / NG * ph - cy)) / mv.W) * RAD, sl = Math.sin(lat), cl = Math.cos(lat);
-      for (var i = 0; i < NG; i++) {
-        var lon = (lon0 + (((i + 0.5) / NG * pw - cx) / mv.W) * 360) * RAD, cz = sl * s.sd + cl * s.cd * Math.cos(lon - s.lon * RAD);
-        var o = (j * NG + i) * 4; d[o] = 6; d[o + 1] = 14; d[o + 2] = 40; d[o + 3] = 150 * (1 - smooth(cz));
-      }
-    }
-    nctx.putImageData(nimg, 0, 0);
-    ctx.save(); ctx.globalAlpha = alpha; ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high"; ctx.drawImage(nsc, 0, 0, pw, ph); ctx.restore();
   }
 
   function globeLines(alpha) { // 15° saat dilimi meridyenleri, ekvator, UTC etiketleri (küre)
@@ -463,12 +447,12 @@
     R = R0 * zoom; sinT = Math.sin(tilt * RAD); cosT = Math.cos(tilt * RAD);
     if (dirty && !glOk && mapA < 1) geometry();
     if (mapA < 1) { if (glOk) drawGL(s); else paintSurfaceCPU(s); } else if (glOk) clearGL();
-    if (mapA > 0) { setMv(); drawTiles(mapA); nightOverlay(s, mapA); }
+    if (mapA > 0) { setMv(); drawTiles(mapA); }
     if (mapA < 1) globeLines(1 - mapA);
     var occ = mapA > 0 ? mapLines(mapA) : null;
     if (mapA < 0.5) { // Güneş işareti ve küre kenarı
       var sp2 = projOrtho(s.dec / RAD, s.lon);
-      if (sp2.z > 0) {
+      if (sp2.z > 0 && zoom <= 1.01) {
         var gr = ctx.createRadialGradient(sp2.x, sp2.y, 0, sp2.x, sp2.y, 30 * dpr);
         gr.addColorStop(0, "rgba(255,214,90,0.95)"); gr.addColorStop(0.35, "rgba(255,200,60,0.55)"); gr.addColorStop(1, "rgba(255,200,60,0)");
         ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(sp2.x, sp2.y, 30 * dpr, 0, 2 * Math.PI); ctx.fill();
