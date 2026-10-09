@@ -39,7 +39,9 @@
     "menu": "Menü",
     "prayer": "Namaz vakitleri",
     "nature": "Doğa",
-    "weather": "Hava durumu"
+    "weather": "Hava durumu",
+    "today": "Bugün",
+    "faq": "SSS"
   },
   "client": {
     "format24": "24 saat",
@@ -154,7 +156,7 @@
     "faq": [
       {
         "q": "Bu sitedeki saat nasıl hesaplanıyor?",
-        "a": "Saat, sitenin sunucusundan alınan zamanla senkronize edilir; cihazınızın saati yanlış olsa bile doğru saati gösterir. Saat dilimi cihazınızın ayarından okunur. Senkron için sunucuya yalnızca birkaç küçük istek gider, kişisel veri gönderilmez. \"Sunucu saati\" düğmesini kapatırsanız cihaz saati kullanılır."
+        "a": "Saat, sitenin sunucusundan alınan zamanla senkronize edilir; cihazınızın saati yanlış olsa bile doğru saati gösterir. Saat dilimi cihazınızın ayarından okunur. Senkron için sunucuya yalnızca birkaç küçük istek gider, kişisel veri gönderilmez."
       },
       {
         "q": "Türkiye'de yaz saati uygulaması var mı?",
@@ -170,7 +172,7 @@
       },
       {
         "q": "Saat modelini nasıl değiştirebilirim?",
-        "a": "Saatin üzerinde sağa ya da sola kaydırın; bilgisayarda alttaki oklara, noktalara ya da klavyenin ok tuşlarına basın. Klasik ve sade analog, dijital, analog + dijital, tarihli ve tarihsiz seçenekler, aylık takvimli saatler, çevirmeli saat, yazıyla saat, halka saat ve büyük tarih modelleri var. Seçtiğiniz model bu cihazda hatırlanır."
+        "a": "Saatin üzerinde sağa ya da sola kaydırın; bilgisayarda alttaki noktalara ya da klavyenin ok tuşlarına basın. Klasik ve sade analog, dijital, analog + dijital, tarihli ve tarihsiz seçenekler, aylık takvimli saatler, çevirmeli saat, yazıyla saat, halka saat ve büyük tarih modelleri var. Seçtiğiniz model bu cihazda hatırlanır."
       },
       {
         "q": "Saati tam ekranda nasıl görürüm?",
@@ -178,17 +180,19 @@
       },
       {
         "q": "Saat cihazımın saatinden bağımsız mı çalışıyor?",
-        "a": "Evet. Saat, sitenin sunucusundan alınan zamanla senkronize edilir; cihazınızın saati yanlış olsa bile doğru saati gösterir ve cihaz saatinizin ne kadar saptığını yazar. İsterseniz \"Sunucu saati\" düğmesiyle cihaz saatine dönebilirsiniz. Saat dilimi yine cihazınızın ayarından okunur."
+        "a": "Evet. Saat, sitenin sunucusundan alınan zamanla senkronize edilir; cihazınızın saati yanlış olsa bile doğru saati gösterir ve cihaz saatinizin ne kadar saptığını yazar. Saat dilimi yine cihazınızın ayarından okunur."
       },
       {
         "q": "Türkiye'de resmi tatilleri ve Ramazan'ı nerede görebilirim?",
-        "a": "Yıllık takvim sayfasında resmi tatiller, bayram ve arife günleri, kandiller ve Ramazan ayı tek takvimde gösterilir. Ana sayfadaki \"Yaklaşan günler\" bölümü sıradaki tatile kaç gün kaldığını söyler."
+        "a": "Yıllık takvim sayfasında resmi tatiller, bayram ve arife günleri, kandiller ve Ramazan ayı tek takvimde gösterilir. Takvim sayfasının başındaki \"Yaklaşan günler\" bölümü sıradaki tatile kaç gün kaldığını söyler."
       }
     ],
     "upcomingHeading": "Yaklaşan resmi tatiller ve özel günler",
     "upcomingLead": "Türkiye takvimine göre sıradaki günler.",
     "upcomingAll": "Yıllık takvimi gör",
-    "upcomingNone": "Yaklaşan gün bulunamadı."
+    "upcomingNone": "Yaklaşan gün bulunamadı.",
+    "globeLabel": "Dönen dünya küresi: gündüz ve gece bölgeleri, saat dilimi meridyenleri ve büyük şehirlerin yerel saati",
+    "globeCaption": "Aydınlık taraf gündüz, karanlık taraf gece. Çizgiler 15°'lik saat dilimi meridyenleri (UTC farkıyla); şehirlerin yanında yerel saat yazar. Küreyi sürükleyerek çevirebilirsiniz."
   },
   "world": {
     "title": "Dünya Saatleri: Şehirlerde Saat Kaç? | Saat Tarih",
@@ -1479,5 +1483,17 @@
       }
     ],
     "search": "hava durumu tahmin sıcaklık yağmur rüzgar nem uv yarın bu hafta weather forecast temperature rain wind humidity"
+  },
+  "faqPage": {
+    "title": "Sıkça sorulan sorular: saat, takvim, namaz vakitleri | Saat Tarih",
+    "description": "Saat Tarih'teki bütün sıkça sorulan sorular tek sayfada: sunucu saati, dünya saatleri, takvim ve bayramlar, araçlar, namaz vakitleri, doğa ve hava durumu.",
+    "h1": "Sıkça sorulan sorular",
+    "lead": "Sitedeki bütün sayfaların soruları burada konu konu toplandı. Her başlığın altındaki bağlantı ilgili sayfayı açar.",
+    "toc": "Konular",
+    "open": "Sayfaya git",
+    "more": "Bu sayfayla ilgili sıkça sorulan sorular",
+    "general": "Genel",
+    "countdowns": "Hazır geri sayımlar",
+    "calendar": "Takvim, resmi tatiller ve bayramlar"
   }
 }

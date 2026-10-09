@@ -39,7 +39,9 @@
     "menu": "Menyu",
     "prayer": "Namaz vaxtları",
     "nature": "Təbiət",
-    "weather": "Hava"
+    "weather": "Hava",
+    "today": "Bu gün",
+    "faq": "TVS"
   },
   "client": {
     "format24": "24 saat",
@@ -154,7 +156,7 @@
     "faq": [
       {
         "q": "Bu saytdakı vaxt necə hesablanır?",
-        "a": "Vaxt saytın serveri ilə sinxronlaşdırılır, ona görə də cihazınızın saatı səhv olsa belə düzgün göstərilir. Saat qurşağı cihazınızın ayarlarından götürülür. Sinxronlaşma zamanı serverə yalnız bir neçə kiçik sorğu göndərilir, heç bir şəxsi məlumat ötürülmür. \"Server saatı\" düyməsini söndürsəniz, cihazınızın saatından istifadə olunur."
+        "a": "Vaxt saytın serveri ilə sinxronlaşdırılır, ona görə də cihazınızın saatı səhv olsa belə düzgün göstərilir. Saat qurşağı cihazınızın ayarlarından götürülür. Sinxronlaşma zamanı serverə yalnız bir neçə kiçik sorğu göndərilir, heç bir şəxsi məlumat ötürülmür."
       },
       {
         "q": "Türkiyədə yay vaxtı tətbiq olunurmu?",
@@ -170,7 +172,7 @@
       },
       {
         "q": "Saatın görünüşünü necə dəyişə bilərəm?",
-        "a": "Saatın üzərində sola və ya sağa sürüşdürün; kompüterdə onun altındakı oxlardan və ya nöqtələrdən, yaxud klaviaturadakı ox düymələrindən istifadə edin. Görünüşlər arasında klassik və sadə analoq, rəqəmsal, analoq və rəqəmsal birlikdə, tarixli və tarixsiz variantlar, aylıq təqvimli saatlar, vərəqli saat, sözlə yazılan saat, halqalı saat və böyük tarix var. Seçiminiz bu cihazda yadda saxlanılır."
+        "a": "Saatın üzərində sola və ya sağa sürüşdürün; kompüterdə onun altındakı nöqtələrdən və ya klaviaturadakı ox düymələrindən istifadə edin. Görünüşlər arasında klassik və sadə analoq, rəqəmsal, analoq və rəqəmsal birlikdə, tarixli və tarixsiz variantlar, aylıq təqvimli saatlar, vərəqli saat, sözlə yazılan saat, halqalı saat və böyük tarix var. Seçiminiz bu cihazda yadda saxlanılır."
       },
       {
         "q": "Saatı tam ekranda necə görə bilərəm?",
@@ -178,17 +180,19 @@
       },
       {
         "q": "Saat cihazımın saatından asılı olmadan işləyirmi?",
-        "a": "Bəli. Vaxt saytın serveri ilə sinxronlaşdırılır, ona görə də cihazınızın saatı səhv olsa belə düzgün vaxtı göstərir və cihazınızın saatının nə qədər fərqləndiyini bildirir. \"Server saatı\" düyməsi ilə cihazınızın saatına qayıda bilərsiniz. Saat qurşağı yenə də cihazınızın ayarlarından götürülür."
+        "a": "Bəli. Vaxt saytın serveri ilə sinxronlaşdırılır, ona görə də cihazınızın saatı səhv olsa belə düzgün vaxtı göstərir və cihazınızın saatının nə qədər fərqləndiyini bildirir. Saat qurşağı yenə də cihazınızın ayarlarından götürülür."
       },
       {
         "q": "Türkiyənin rəsmi bayramlarını və Ramazanı harada görə bilərəm?",
-        "a": "İllik təqvim səhifəsində rəsmi bayram günləri, dini bayramlar və ərəfə günləri, mübarək (kandil) gecələri və Ramazan ayı bir təqvimdə göstərilir. Ana səhifədəki \"Yaxınlaşan günlər\" bölməsi növbəti bayrama neçə gün qaldığını bildirir."
+        "a": "İllik təqvim səhifəsində rəsmi bayram günləri, dini bayramlar və ərəfə günləri, mübarək (kandil) gecələri və Ramazan ayı bir təqvimdə göstərilir. Təqvim səhifəsinin yuxarısındakı \"Yaxınlaşan günlər\" bölməsi növbəti bayrama neçə gün qaldığını bildirir."
       }
     ],
     "upcomingHeading": "Yaxınlaşan rəsmi bayramlar və xüsusi günlər",
     "upcomingLead": "Türkiyə təqvimində növbəti günlər.",
     "upcomingAll": "İllik təqvimə bax",
-    "upcomingNone": "Yaxınlaşan gün tapılmadı."
+    "upcomingNone": "Yaxınlaşan gün tapılmadı.",
+    "globeLabel": "Fırlanan yer kürəsi: gecə və gündüz, saat qurşağı meridianları və böyük şəhərlərin yerli saatı",
+    "globeCaption": "İşıqlı tərəf gündüz, qaranlıq tərəf gecədir. Xətlər 15°-lik saat qurşağı meridianlarıdır (UTC fərqi ilə); şəhərlərin yanında yerli saat yazılır. Kürəni sürüşdürərək fırlada bilərsiniz."
   },
   "world": {
     "title": "Dünya saatları: şəhərlərdə indiki vaxt | Saat Tarih",
@@ -1479,5 +1483,17 @@
       }
     ],
     "search": "hava proqnoz temperatur yağış külək rütubət UB sabah bu həftə hava vəziyyəti weather forecast temperature rain wind humidity uv tomorrow this week"
+  },
+  "faqPage": {
+    "title": "Tez-tez verilən suallar: saat, təqvim, namaz | Saat Tarih",
+    "description": "Saat Tarih-dəki bütün tez-tez verilən suallar bir səhifədə: server saatı, dünya saatları, təqvim və bayramlar, alətlər, namaz vaxtları, təbiət və hava.",
+    "h1": "Tez-tez verilən suallar",
+    "lead": "Saytın bütün səhifələrindəki suallar burada mövzulara görə toplanıb. Hər başlığın altındakı keçid uyğun səhifəni açır.",
+    "toc": "Mövzular",
+    "open": "Səhifəyə keç",
+    "more": "Bu səhifə ilə bağlı tez-tez verilən suallar",
+    "general": "Ümumi",
+    "countdowns": "Hazır geri sayımlar",
+    "calendar": "Təqvim, rəsmi bayramlar və bayram günləri"
   }
 }

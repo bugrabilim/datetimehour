@@ -39,7 +39,9 @@
     "menu": "Menu",
     "prayer": "Prayer times",
     "nature": "Nature",
-    "weather": "Weather"
+    "weather": "Weather",
+    "today": "Today",
+    "faq": "FAQ"
   },
   "client": {
     "format24": "24-hour",
@@ -154,7 +156,7 @@
     "faq": [
       {
         "q": "How is the time on this site calculated?",
-        "a": "The time is synchronised with the site's server, so it is right even if your device clock is wrong. The time zone is read from your device settings. Synchronisation sends only a few small requests to the server and no personal data. If you turn off the \"Server time\" button, your device clock is used."
+        "a": "The time is synchronised with the site's server, so it is right even if your device clock is wrong. The time zone is read from your device settings. Synchronisation sends only a few small requests to the server and no personal data."
       },
       {
         "q": "Does Türkiye use daylight saving time?",
@@ -170,7 +172,7 @@
       },
       {
         "q": "How do I change the clock style?",
-        "a": "Swipe left or right on the clock; on a computer use the arrows or dots below it, or the arrow keys on your keyboard. The styles include classic and minimal analogue, digital, analogue and digital together, versions with or without the date, clocks with a monthly calendar, a flip clock, a clock in words, a ring clock and a big date. Your choice is remembered on this device."
+        "a": "Swipe left or right on the clock; on a computer use the dots below it or the arrow keys on your keyboard. The styles include classic and minimal analogue, digital, analogue and digital together, versions with or without the date, clocks with a monthly calendar, a flip clock, a clock in words, a ring clock and a big date. Your choice is remembered on this device."
       },
       {
         "q": "How do I see the clock full screen?",
@@ -178,17 +180,19 @@
       },
       {
         "q": "Does the clock work independently of my device clock?",
-        "a": "Yes. The time is synchronised with the site's server, so it shows the correct time even if your device clock is wrong, and it tells you how far your device clock is off. You can switch back to your device clock with the \"Server time\" button. The time zone is still read from your device settings."
+        "a": "Yes. The time is synchronised with the site's server, so it shows the correct time even if your device clock is wrong, and it tells you how far your device clock is off. The time zone is still read from your device settings."
       },
       {
         "q": "Where can I see Turkish public holidays and Ramadan?",
-        "a": "The yearly calendar page shows public holidays, bayram and eve days, kandil nights and the month of Ramadan on one calendar. The \"Upcoming days\" section on the home page tells you how many days are left until the next holiday."
+        "a": "The yearly calendar page shows public holidays, bayram and eve days, kandil nights and the month of Ramadan on one calendar. The \"Upcoming days\" section at the top of the calendar page tells you how many days are left until the next holiday."
       }
     ],
     "upcomingHeading": "Upcoming public holidays and special days",
     "upcomingLead": "The next days on the Turkish calendar.",
     "upcomingAll": "See the yearly calendar",
-    "upcomingNone": "No upcoming days found."
+    "upcomingNone": "No upcoming days found.",
+    "globeLabel": "Rotating globe showing day and night, time zone meridians and the local time in major cities",
+    "globeCaption": "The lit side is day, the dark side is night. Lines are the 15° time zone meridians (with their UTC offset); each city shows its local time. Drag the globe to turn it."
   },
   "world": {
     "title": "World Clock: Current Time in Cities | Saat Tarih",
@@ -1479,5 +1483,17 @@
       }
     ],
     "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin"
+  },
+  "faqPage": {
+    "title": "Frequently asked questions: time, calendar, prayer | Saat Tarih",
+    "description": "Every frequently asked question on Saat Tarih on one page: server time, world clocks, the calendar and holidays, tools, prayer times, nature and weather.",
+    "h1": "Frequently asked questions",
+    "lead": "Questions from every page of the site, gathered here by topic. The link under each heading opens the related page.",
+    "toc": "Topics",
+    "open": "Go to page",
+    "more": "Frequently asked questions about this page",
+    "general": "General",
+    "countdowns": "Countdown pages",
+    "calendar": "Calendar, public holidays and Bayrams"
   }
 }
