@@ -230,7 +230,9 @@
     "globeInfo": "Info zum Globus",
     "zoomIn": "Vergrößern",
     "zoomOut": "Verkleinern",
-    "resetView": "Ganze Welt"
+    "resetView": "Ganze Welt",
+    "todayQ": "Welches Datum haben wir heute?",
+    "todayA": "Das heutige Datum und der Wochentag stehen live in der Leiste oben auf jeder Seite und folgen der serversynchronisierten Uhr statt der Geräteuhr."
   },
   "world": {
     "title": "Weltzeituhr: Aktuelle Uhrzeit in Städten weltweit | Saat Tarih",
@@ -467,7 +469,8 @@
     "source": "Diese Uhr ist unabhängig von Ihrem Gerät: Sie wird von der per NTP synchronisierten Uhr des Saat-Tarih-Servers abgelesen und alle 15 Minuten neu gemessen.",
     "info": "Info zur Zeitquelle",
     "infoTitle": "Woher kommt diese Uhrzeit?",
-    "infoClose": "Schließen"
+    "infoClose": "Schließen",
+    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden."
   },
   "calendar": {
     "title": "Kalender {year}: Feiertage in der Türkei und Ramadan | Saat Tarih",

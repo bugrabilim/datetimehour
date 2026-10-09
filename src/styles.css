@@ -133,8 +133,8 @@ a:hover { text-decoration-thickness: 2px; }
 /* Üst bar: marka, sabit tarih, menü; sağda konum ve ayarlar. Dar ekranda menü açılır, tarih ikinci satırda */
 .top-date { margin: 0; color: var(--muted); font-size: 0.9rem; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .top-tools { display: flex; align-items: center; gap: 0.4rem; }
-.place-btn .place-name { display: none; max-width: 7.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.85rem; }
-@media (min-width: 90rem) { .place-btn .place-name { display: inline; } .place-btn .place-name:empty { display: none; } }
+.set-sub { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 400; line-height: 1.2; }
+.set-sub:empty { display: none; }
 .settings-menu { position: relative; }
 .settings-menu summary { list-style: none; }
 .settings-menu summary::-webkit-details-marker { display: none; }
@@ -460,13 +460,13 @@ tbody th a { color: var(--text); }
 .prose h2 { margin-top: 2rem; }
 
 /* E-posta listesi formu */
-.list-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.9rem 1rem; max-width: 34rem; }
-.list-box h2 { font-size: 1.05rem; margin: 0 0 0.2rem; }
+.list-box { max-width: 26rem; padding: 0; }
+.list-box h2 { font-size: 0.95rem; margin: 0 0 0.3rem; color: var(--muted); }
 .list-box form { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; align-items: start; }
 .list-box .field { grid-column: 1; grid-row: 1; margin: 0; }
-.list-box .btn { grid-column: 2; grid-row: 1; min-height: 2.6rem; padding: 0 1.1rem; }
-.list-box input[type="email"] { min-height: 2.6rem; }
-.list-box .check { grid-column: 1 / -1; margin: 0; font-size: 0.85rem; color: var(--muted); }
+.list-box .btn { grid-column: 2; grid-row: 1; min-height: 2.25rem; padding: 0 0.9rem; font-size: 0.9rem; }
+.list-box input[type="email"] { min-height: 2.25rem; padding-block: 0.2rem; font-size: 0.9rem; }
+.list-box .check { grid-column: 1 / -1; margin: 0; font-size: 0.78rem; color: var(--muted); }
 .list-box .check input { width: 1.1rem; height: 1.1rem; margin-top: 0.1rem; }
 .list-box .form-msg { font-size: 0.9rem; padding: 0.6rem 0.8rem; margin-bottom: 0.6rem; }
 .field { display: grid; gap: 0.35rem; margin-bottom: 0.9rem; }
@@ -505,7 +505,7 @@ dialog.search::backdrop { background: rgb(10 12 16 / 0.55); }
 .search-status { color: var(--muted); font-size: 0.92rem; margin: 0.6rem 0.25rem; }
 
 /* Alt bilgi */
-.site-footer { border-top: 1px solid var(--border); background: var(--surface-2); padding-block: 1.25rem; margin-top: 1rem; }
+.site-footer { border-top: 1px solid var(--border); background: var(--surface-2); padding-block: 0.9rem; margin-top: 1rem; }
 .footer-grid { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; }
 .footer-nav { display: flex; gap: 0.5rem 1.25rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
 .footer-nav a { color: var(--text); }
