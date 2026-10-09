@@ -61,13 +61,101 @@
     });
   }
 
+
+  /* ---------- Ortak tam ekran: Fullscreen API, yoksa sabit kaplama ---------- */
+  function makeFullscreen(el, button, onChange) {
+    var isFull = function () { return doc.fullscreenElement === el || el.classList.contains("is-full"); };
+    var update = function () {
+      var on = isFull();
+      root.classList.toggle("has-full", on);
+      if (button) {
+        var label = on ? T.exitFullscreen : T.fullscreen;
+        button.setAttribute("aria-pressed", String(on));
+        button.setAttribute("aria-label", label);
+        button.setAttribute("title", label);
+      }
+      if (onChange) onChange(on);
+    };
+    var toggle = function () {
+      if (isFull()) {
+        if (doc.fullscreenElement) doc.exitFullscreen(); else { el.classList.remove("is-full"); update(); }
+        return;
+      }
+      track("tam-ekran");
+      if (el.requestFullscreen) el.requestFullscreen().catch(function () { el.classList.add("is-full"); update(); });
+      else { el.classList.add("is-full"); update(); }
+    };
+    if (button) button.addEventListener("click", toggle);
+    doc.addEventListener("fullscreenchange", function () { update(); setTimeout(update, 60); });
+    doc.addEventListener("keydown", function (ev) {
+      var dl = doc.getElementById("search-dialog");
+      if (ev.key === "Escape" && el.classList.contains("is-full") && !(dl && dl.open)) { el.classList.remove("is-full"); update(); }
+    });
+    return { toggle: toggle, isFull: isFull };
+  }
+
   /* ---------- Saat ---------- */
-  var prefs = { h12: false, sec: true, model: "" };
+  var prefs = { h12: false, sec: true, model: "", sync: true };
   try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
-  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec !== false;
+  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec !== false; prefs.sync = prefs.sync !== false;
 
   var localTz;
   try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
+
+  /* ---------- Zaman kaynağı: sunucu saatiyle senkron (cihaz saatinden bağımsız) ---------- */
+  var sync = { offset: 0, err: 0, ok: false, state: "pending", busy: false, at: 0 };
+  function mono() { return performance.timeOrigin + performance.now(); }
+  function nowMs() { return prefs.sync && sync.ok ? mono() + sync.offset : Date.now(); }
+  function nowDate() { return new Date(nowMs()); }
+
+  // Sunucunun Date başlığı saniye çözünürlüklüdür; farklı fazlardaki çok sayıda örneğin aralıklarını
+  // kesiştirerek ofseti ~yüz milisaniyeye kadar daraltırız. Cihaz saati değişse bile mono() etkilenmez.
+  function measure() {
+    if (sync.busy) return;
+    sync.busy = true;
+    var lo = -Infinity, hi = Infinity, mids = [], n = 0, N = 16, good = 0;
+    function finish() {
+      sync.busy = false;
+      if (!good) { sync.ok = false; sync.state = "fail"; return; }
+      if (lo >= hi) { mids.sort(function (a, b) { return a - b; }); lo = hi = mids[Math.floor(mids.length / 2)]; }
+      sync.offset = (lo + hi) / 2; sync.err = Math.max((hi - lo) / 2, 5);
+      sync.ok = true; sync.state = "ok"; sync.at = mono();
+    }
+    function one() {
+      var t0 = mono();
+      fetch("/?_=" + Math.random().toString(36).slice(2), { method: "HEAD", cache: "no-store", credentials: "omit" })
+        .then(function (r) {
+          var t1 = mono(), d = Date.parse(r.headers.get("Date"));
+          if (isNaN(d) || r.headers.get("Age") || t1 - t0 > 2000) return;
+          var a = d - t1, b = d + 1000 - t0;
+          lo = Math.max(lo, a); hi = Math.min(hi, b); mids.push((a + b) / 2); good++;
+        })
+        .catch(function () {})
+        .then(function () { if (++n < N) setTimeout(one, 80 + Math.random() * 220); else finish(); });
+    }
+    one();
+  }
+  function deviceError() { return sync.ok ? Date.now() - (mono() + sync.offset) : 0; }
+  var syncEls = Array.prototype.slice.call(doc.querySelectorAll("[data-sync-status]"));
+  var nf1 = new Intl.NumberFormat(locale, { maximumFractionDigits: 1, minimumFractionDigits: 1 });
+  function syncText() {
+    if (!prefs.sync) return T.syncOff;
+    if (sync.state === "pending") return T.syncPending;
+    if (sync.state === "fail") return T.syncFail;
+    var e = deviceError();
+    if (Math.abs(e) < 500) return tpl(T.syncOk, { ms: Math.round(sync.err / 10) * 10 || 10 });
+    return tpl(e > 0 ? T.syncAhead : T.syncBehind, { s: nf1.format(Math.abs(e) / 1000) });
+  }
+  function renderSync() {
+    var txt = syncText();
+    syncEls.forEach(function (el) { if (el.textContent !== txt) el.textContent = txt; });
+  }
+  setTimeout(measure, 400);
+  setInterval(function () { if (prefs.sync) measure(); }, 15 * 60 * 1000);
+  doc.addEventListener("visibilitychange", function () {
+    if (!doc.hidden && prefs.sync && sync.ok && mono() - sync.at > 5 * 60 * 1000) measure();
+  });
+
   var fmtCache = {};
   function fmt(key, tz, opts) {
     var k = key + "|" + (tz || "");
@@ -184,7 +272,8 @@
   var analogs = Array.prototype.slice.call(doc.querySelectorAll("[data-analog]"));
 
   function render() {
-    var now = new Date();
+    var now = nowDate();
+    renderSync();
     var localOff = offsetMin(now, localTz);
     liveEls.forEach(function (el) {
       var kind = el.getAttribute("data-live");
@@ -255,17 +344,23 @@
 
   var btn12 = doc.querySelector("[data-pref=h12]");
   var btnSec = doc.querySelector("[data-pref=sec]");
+  var btnSync = doc.querySelector("[data-pref=sync]");
   function syncButtons() {
     if (btn12) {
       btn12.setAttribute("aria-pressed", String(prefs.h12));
       btn12.textContent = prefs.h12 ? T.format12 : T.format24;
     }
     if (btnSec) btnSec.setAttribute("aria-pressed", String(prefs.sec));
+    if (btnSync) btnSync.setAttribute("aria-pressed", String(prefs.sync));
     root.classList.toggle("sec-off", !prefs.sec);
   }
   function savePrefs() { store("sth-prefs", JSON.stringify(prefs)); syncButtons(); render(); }
   if (btn12) btn12.addEventListener("click", function () { prefs.h12 = !prefs.h12; savePrefs(); });
   if (btnSec) btnSec.addEventListener("click", function () { prefs.sec = !prefs.sec; savePrefs(); });
+  if (btnSync) btnSync.addEventListener("click", function () {
+    prefs.sync = !prefs.sync; savePrefs();
+    if (prefs.sync && !sync.ok) { sync.state = "pending"; measure(); }
+  });
   syncButtons();
   if (liveEls.length) schedule();
 
@@ -325,37 +420,9 @@
     window.addEventListener("resize", function () { trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" }); });
     window.addEventListener("hashchange", function () { var i = indexFromHash(); if (i > -1) goTo(i, true); });
 
-    // Tam ekran: Fullscreen API varsa o, yoksa (ör. iPhone) sabit kaplama
     var fsBtn = stage.querySelector("[data-fullscreen]");
-    var isFull = function () { return doc.fullscreenElement === stage || stage.classList.contains("is-full"); };
-    var syncFull = function () {
-      var on = isFull();
-      root.classList.toggle("has-full", on);
-      if (fsBtn) {
-        fsBtn.setAttribute("aria-pressed", String(on));
-        var label = on ? T.exitFullscreen : T.fullscreen;
-        fsBtn.setAttribute("aria-label", label);
-        fsBtn.setAttribute("title", label);
-      }
-      trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" });
-    };
-    var toggleFull = function () {
-      if (isFull()) {
-        if (doc.fullscreenElement) doc.exitFullscreen(); else { stage.classList.remove("is-full"); syncFull(); }
-        return;
-      }
-      track("tam-ekran");
-      if (stage.requestFullscreen) {
-        stage.requestFullscreen().catch(function () { stage.classList.add("is-full"); syncFull(); });
-      } else {
-        stage.classList.add("is-full"); syncFull();
-      }
-    };
-    if (fsBtn) fsBtn.addEventListener("click", toggleFull);
-    doc.addEventListener("fullscreenchange", function () { syncFull(); setTimeout(function () { trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" }); }, 60); });
-    doc.addEventListener("keydown", function (ev) {
-      if (ev.key === "Escape" && stage.classList.contains("is-full") && !(dlg && dlg.open)) { stage.classList.remove("is-full"); syncFull(); }
-    });
+    var full = makeFullscreen(stage, fsBtn, function () { trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" }); });
+    var toggleFull = full.toggle;
 
     // Açılışta: bağlantıdaki model, yoksa son seçilen model
     var start = indexFromHash();
@@ -482,4 +549,10 @@
   } else {
     openers.forEach(function (b) { b.hidden = true; });
   }
+
+  window.sth = {
+    T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, tpl: tpl, norm: norm,
+    nowMs: nowMs, nowDate: nowDate, mono: mono, prefs: prefs, makeFullscreen: makeFullscreen,
+    syncState: function () { return sync; },
+  };
 })();

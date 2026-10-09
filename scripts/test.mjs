@@ -27,6 +27,7 @@ for (const f of htmlFiles) {
   const h = fs.readFileSync(f, "utf8");
   const name = rel(f);
   const err = name === "/404.html" || name === "/500.html";
+  const noidx = /<meta name="robots" content="noindex/.test(h);
   ids[f] = new Set([...h.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
   const title = (h.match(/<title>([^<]*)<\/title>/) || [])[1];
   const desc = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1];
@@ -45,12 +46,26 @@ for (const f of htmlFiles) {
     check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
     check((h.match(/data-dot="\d+"/g) || []).length === slides.length, `${name}: nokta sayısı model sayısıyla uyuşmuyor`);
     check(/data-fullscreen/.test(h) && /data-nav="-1"/.test(h) && /data-nav="1"/.test(h) && /data-pref="h12"/.test(h), `${name}: karusel düğmeleri eksik`);
+    check(/data-pref="sync"/.test(h) && /data-sync-status/.test(h), `${name}: senkron düğmesi/durumu eksik`);
     check(/data-live="calendar"/.test(h) && /data-live="flip"/.test(h) && /data-live="words"/.test(h) && /data-live="rings"/.test(h), `${name}: özel model türleri eksik`);
+  }
+  if (/\/(takvim|calendar)\/\d{4}\/index\.html$/.test(name)) {
+    check((h.match(/<table class="ymonth"/g) || []).length === 12, `${name}: 12 ay tablosu yok`);
+    check(/class="events-table"/.test(h) && /d-holiday/.test(h) && /d-half/.test(h) && /"FAQPage"/.test(h), `${name}: takvim içeriği eksik`);
+    check(/data-year="\d{4}"/.test(h) && /calendar\.js/.test(h), `${name}: takvim betiği/yılı eksik`);
+  }
+  const toolMatch = /\/(kronometre|geri-sayim|alarm|pomodoro|stopwatch|countdown)\/index\.html$/.exec(name);
+  if (toolMatch) {
+    check(/data-tool="(stopwatch|countdown|alarm|pomodoro)"/.test(h) && /tools\.js/.test(h) && /data-fs/.test(h) && /"WebApplication"/.test(h) && /"FAQPage"/.test(h), `${name}: araç yapısı eksik`);
   }
   if (!err) {
     check(/rel="canonical" href="https:\/\//.test(h), `${name}: canonical yok`);
-    for (const l of ["tr", "en", "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
-    check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
+    if (!noidx) {
+      for (const l of ["tr", "en", "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
+      check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
+    } else {
+      check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
+    }
     check(/action="https:\/\/bumbagroup\.com\/api\/liste\/katil"/.test(h) && /name="riza" value="on" required/.test(h) && !/name="riza"[^>]*checked/.test(h), `${name}: liste formu hatalı`);
     check(/name="site" value="[a-z-]+"/.test(h) && /name="web_sitesi"/.test(h), `${name}: liste formu alanları eksik`);
     check(/name="dil" value="(tr|en)"/.test(h), `${name}: liste dil alanı yok`);
@@ -64,7 +79,7 @@ for (const f of htmlFiles) {
         check(org && org.parentOrganization && org.parentOrganization.url === "https://bumbagroup.com", `${name}: parentOrganization yok`);
       } catch (e) { fails.push(`${name}: JSON-LD bozuk`); }
     }
-    pagesInfo.push({ name, title, desc });
+    if (!noidx) pagesInfo.push({ name, title, desc });
   } else {
     check(/noindex/.test(h), `${name}: noindex yok`);
   }
@@ -127,7 +142,7 @@ const lum = (hex) => {
 const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
 const themes = { açık: block(/:root \{([^}]*)\}/), koyu: block(/:root\[data-theme="dark"\] \{([^}]*)\}/) };
 for (const [n, t] of Object.entries(themes)) {
-  for (const [fg, bg, min] of [["text", "bg", 4.5], ["text", "surface", 4.5], ["muted", "bg", 4.5], ["muted", "surface", 4.5], ["muted", "surface-2", 4.5], ["accent", "bg", 4.5], ["accent", "surface", 4.5], ["accent-ink", "accent", 4.5], ["ok", "ok-bg", 4.5], ["err", "err-bg", 4.5], ["text", "accent-soft", 4.5], ["focus", "bg", 3], ["muted", "bg", 3]]) {
+  for (const [fg, bg, min] of [["text", "bg", 4.5], ["text", "surface", 4.5], ["muted", "bg", 4.5], ["muted", "surface", 4.5], ["muted", "surface-2", 4.5], ["accent", "bg", 4.5], ["accent", "surface", 4.5], ["accent-ink", "accent", 4.5], ["ok", "ok-bg", 4.5], ["err", "err-bg", 4.5], ["text", "accent-soft", 4.5], ["focus", "bg", 3], ["muted", "bg", 3], ["text", "ramadan", 4.5], ["muted", "ramadan", 4.5], ["accent", "ramadan", 3]]) {
     const r = ratio(t[fg], t[bg]);
     check(r >= min, `kontrast ${n}: ${fg}/${bg} = ${r.toFixed(2)} < ${min}`);
   }
