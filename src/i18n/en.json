@@ -37,7 +37,9 @@
     "tools": "Tools",
     "langMenu": "Language",
     "menu": "Menu",
-    "prayer": "Prayer times"
+    "prayer": "Prayer times",
+    "nature": "Nature",
+    "weather": "Weather"
   },
   "client": {
     "format24": "24-hour",
@@ -126,7 +128,11 @@
       "ocean": "Ocean",
       "rose": "Rose",
       "mono": "White"
-    }
+    },
+    "fsWeather": "Weather",
+    "fsWeatherNeed": "Choose a location for the weather on the",
+    "fsWeatherLink": "weather page",
+    "fsWeatherFail": "Could not get the weather."
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
@@ -251,6 +257,7 @@
         "ul": [
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
+          "**Weather:** On the weather page (or if you turn on the weather in full screen), the approximate coordinates of the province or location you chose (to about 1 km) are sent straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
           "**Email list form:** The email address you enter, the consent you give with the checkbox, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
           "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
           "**Visit statistics:** Umami, which runs on our own server, counts page views and a few actions (language change, theme change, whether a search found a result, joining the list). Umami does not use cookies. The words you type in search and your email address are not sent to the statistics system.",
@@ -306,13 +313,13 @@
               "Until you delete it"
             ],
             [
-              "sth-prayer",
-              "Remembers the province or location you chose last for prayer times.",
+              "sth-world",
+              "Remembers the cities you chose for the world clock, and their order.",
               "Until you delete it"
             ],
             [
-              "sth-world",
-              "Remembers the cities you chose for the world clock, and their order.",
+              "sth-place",
+              "Remembers the province or location you chose last for the prayer times, nature and weather pages.",
               "Until you delete it"
             ]
           ]
@@ -1293,5 +1300,181 @@
       }
     ],
     "search": "prayer times adhan azan fajr dhuhr asr maghrib isha iftar suhoor namaz vakitleri ezan"
+  },
+  "nature": {
+    "title": "Seasons and Nature: Sun, Moon and Day Length | Saat Tarih",
+    "description": "A seasons wheel, season start dates, today's sunrise and sunset, the Moon's phase and the length of the day through the year, plus nature facts for every season.",
+    "h1": "Seasons and nature",
+    "lead": "The year turns like a wheel: which season are we in, how many days to the next one, when does the sun rise and set, and what phase is the Moon? All on one page for your location or a province you choose.",
+    "wheelLabel": "Yearly seasons wheel",
+    "seasons": {
+      "spring": "Spring",
+      "summer": "Summer",
+      "autumn": "Autumn",
+      "winter": "Winter"
+    },
+    "current": "It is {season}",
+    "dayOf": "Day {n} (of {total})",
+    "nextIn": "{days} days until the start of {season}",
+    "startsOn": "{season} starts: {date}",
+    "chooseNote": "Your location sets both the sunrise and Moon times and the hemisphere.",
+    "sunHeading": "The sun today",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "dayLength": "Day length",
+    "solarNoon": "Solar noon",
+    "dayLonger": "The day is {m} min longer than yesterday",
+    "dayShorter": "The day is {m} min shorter than yesterday",
+    "dayLeft": "Until sunset: {t}",
+    "moonHeading": "The Moon",
+    "phases": {
+      "new": "New moon",
+      "waxingCrescent": "Waxing crescent",
+      "firstQuarter": "First quarter",
+      "waxingGibbous": "Waxing gibbous",
+      "full": "Full moon",
+      "waningGibbous": "Waning gibbous",
+      "lastQuarter": "Last quarter",
+      "waningCrescent": "Waning crescent"
+    },
+    "illumination": "{p}% illuminated",
+    "age": "Moon age: {d} days",
+    "nextNew": "Next new moon",
+    "nextFull": "Next full moon",
+    "chartHeading": "Day length through the year",
+    "chartCaption": "{place}: daylight per day (hours), {year}",
+    "longest": "Longest day",
+    "shortest": "Shortest day",
+    "hoursShort": "h",
+    "minutesShort": "min",
+    "tableHeading": "Season start dates",
+    "tableLead": "Astronomical seasons, that is the moments of the equinoxes and solstices. Times are in Turkey time (UTC+3).",
+    "colYear": "Year",
+    "meteoNote": "Meteorological seasons are three-month blocks: spring starts on 1 March, summer on 1 June, autumn on 1 September and winter on 1 December. They are used for calendars and statistics.",
+    "factsHeading": "Nature through the seasons",
+    "facts": {
+      "spring": [
+        "Day and night are equal at the equinox, and over the following months the days lengthen quickly.",
+        "Flowers bloom and trees turn green; migratory birds return north.",
+        "Snow melts and rivers rise; the soil is made ready for sowing."
+      ],
+      "summer": [
+        "The longest day of the year falls on the summer solstice.",
+        "The sea and the soil warm up, and the season for fruit and vegetables peaks.",
+        "Short nights and clear skies make this the best time to watch the Milky Way."
+      ],
+      "autumn": [
+        "Day and night become equal again, and the days begin to shorten.",
+        "Leaves change colour and fall; birds such as storks and cranes migrate south.",
+        "It is harvest time: grapes, walnuts, hazelnuts and chestnuts are gathered."
+      ],
+      "winter": [
+        "The shortest day of the year falls on the winter solstice, after which the days lengthen again.",
+        "Many animals hibernate and plants go dormant.",
+        "Snow in the mountains stores the water for spring and summer."
+      ]
+    },
+    "whyHeading": "Why do we have seasons?",
+    "why": [
+      "Seasons are caused by the Earth's rotation axis being tilted by about 23.4° relative to its orbit around the Sun, not by its distance from the Sun.",
+      "When the axis leans toward the Sun, that hemisphere gets more direct light and longer days, and it is summer. When it leans away, it is winter.",
+      "At the equinoxes (around 20 March and 22 September) day and night are almost equal; at the solstices (around 21 June and 21 December) the day is the longest or the shortest."
+    ],
+    "hemisphereNote": "Seasons are reversed in the southern hemisphere; if your location is in the south, the season names change accordingly.",
+    "methodNote": "The sun, Moon and season moments are calculated in your browser with astronomical formulas: season moments to within a few minutes, the Moon's phase and times approximately.",
+    "weatherLink": "Go to the separate weather page",
+    "faqHeading": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "When do the seasons start?",
+        "a": "Astronomically, spring starts around 20 March, summer on 21 June, autumn on 22-23 September and winter on 21 December. The exact moments shift by a few hours from year to year; see the table above."
+      },
+      {
+        "q": "What is the difference between astronomical and meteorological seasons?",
+        "a": "Astronomical seasons are based on the equinoxes and solstices, while meteorological seasons use whole calendar months (March to May is spring, for example). The latter makes climate records easier to keep."
+      },
+      {
+        "q": "How does day length change?",
+        "a": "Day length grows from the winter solstice to the summer solstice and then shortens again. The change is fastest around the equinoxes, by a few minutes a day, and almost still at the solstices."
+      },
+      {
+        "q": "How is the Moon's phase calculated?",
+        "a": "The phase comes from the time since the previous new moon as a fraction of the lunar cycle (about 29.5 days). New moon and full moon times are calculated with astronomical formulas to within a few minutes."
+      }
+    ],
+    "search": "seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length mevsimler ilkbahar yaz sonbahar kış"
+  },
+  "weather": {
+    "title": "Weather: Current, Hourly and 7-Day Forecast | Saat Tarih",
+    "description": "Current weather, an hourly and a 7-day forecast for your location or a province you choose: temperature, feels-like, wind, humidity, rain and UV.",
+    "h1": "Weather",
+    "lead": "The current temperature plus an hourly and 7-day forecast for your location or a province you choose. It can also be shown beside the full-screen clock.",
+    "now": "Now",
+    "feelsLike": "Feels like",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "precipitation": "Precipitation",
+    "pressure": "Pressure",
+    "uv": "UV index",
+    "hourlyHeading": "Hourly forecast (24 hours)",
+    "dailyHeading": "7-day forecast",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "loading": "Getting the weather…",
+    "error": "Could not get the weather. Check your connection and try again.",
+    "retry": "Try again",
+    "locationNote": "The coordinates of the location you choose (to about 1 km) are sent straight from your browser to Open-Meteo, which provides the weather data; the Saat Tarih server does not see them.",
+    "attribution": "Weather data: Open-Meteo.com (CC BY 4.0)",
+    "updated": "Updated: {time}",
+    "rainChance": "{p}% chance of rain",
+    "windFrom": "from the {dir}",
+    "codes": {
+      "clear": "Clear",
+      "mostlyClear": "Mostly clear",
+      "partly": "Partly cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "freezingDrizzle": "Freezing drizzle",
+      "rain": "Rain",
+      "freezingRain": "Freezing rain",
+      "snow": "Snow",
+      "snowGrains": "Snow grains",
+      "showers": "Showers",
+      "snowShowers": "Snow showers",
+      "thunder": "Thunderstorm",
+      "thunderHail": "Thunderstorm with hail"
+    },
+    "compass": [
+      "north",
+      "north-east",
+      "east",
+      "south-east",
+      "south",
+      "south-west",
+      "west",
+      "north-west"
+    ],
+    "natureLink": "Seasons and nature page",
+    "faqHeading": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "Where does the weather data come from?",
+        "a": "The data is downloaded straight to your browser from Open-Meteo, an open weather service. It is a model forecast and can differ from local measurements by a few degrees and hours."
+      },
+      {
+        "q": "Is my location shared?",
+        "a": "If you choose a location, approximate coordinates (to about 1 km) are sent to Open-Meteo only to fetch the weather. The Saat Tarih server does not see or store them."
+      },
+      {
+        "q": "What is the feels-like temperature?",
+        "a": "The feels-like temperature is how warm it seems to the body once wind and humidity are taken into account; it can differ from the real air temperature."
+      },
+      {
+        "q": "Can I see the weather on the full-screen clock?",
+        "a": "Yes. In full screen, the weather button in the bar that appears when you tap the screen shows the weather for your chosen location beside the clock."
+      }
+    ],
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin"
   }
 }

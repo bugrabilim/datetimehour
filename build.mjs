@@ -81,6 +81,11 @@ for (const [name, from] of [
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
   ["world.js", "js/world.js"],
+  ["place.js", "js/place.js"],
+  ["nature-calc.js", "js/nature-calc.js"],
+  ["nature.js", "js/nature.js"],
+  ["weather-core.js", "js/weather-core.js"],
+  ["weather.js", "js/weather.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -94,7 +99,7 @@ for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "
 const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
-  "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com",
+  "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com",
   "img-src 'self' data: https://bumbagroup.com",
   "style-src 'self'",
   "font-src 'self'",
@@ -178,6 +183,7 @@ const MODELS = [
 
 const PALETTES = ["auto", "night", "paper", "amber", "green", "blue", "purple", "red", "cyan", "sunset", "forest", "ocean", "rose", "mono"];
 const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+const ICON_CLOUD = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 8.5 4.5 4.5 0 0 1 17.5 18H7z"/></svg>`;
 const ICON_SOUND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>`;
 
 /* 24|12 saat ayırıcı ve saniye düğmesi (sahne, dünya saatleri) */
@@ -206,7 +212,9 @@ function clockStage(lang, { tz = "" } = {}) {
     <button type="button" class="icon-btn" data-fullscreen-exit aria-label="${esc(t.client.exitFullscreen)}" title="${esc(t.client.exitFullscreen)}">${ICON_CLOSE}</button>
     <div class="fs-colors" role="group" aria-label="${esc(t.client.colors)}">${swatches}</div>
     ${tickBtn}
+    <button type="button" class="icon-btn" data-fs-weather aria-pressed="false" aria-label="${esc(t.client.fsWeather)}" title="${esc(t.client.fsWeather)}">${ICON_CLOUD}</button>
   </div>
+  <aside class="fs-weather" data-fs-weather-box data-weather-url="${ROUTES[lang].weather}" hidden></aside>
   <div class="stage-bar">
     <div class="stage-tools">
       ${prefControls(t)}
@@ -310,6 +318,8 @@ function layout(p) {
     searchEmpty: u.searchEmpty,
     searchCount: u.searchCount,
     searchError: u.searchError,
+    wx: weatherClient(t),
+    pl: placeClient(t.prayer),
   };
   const pageCfg = {
     locale: t.locale,
@@ -379,7 +389,7 @@ ${ld}
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
-    <nav class="nav" id="site-nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
+    <nav class="nav" id="site-nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
     <div class="tools">
       <button type="button" class="icon-btn" data-search-open aria-haspopup="dialog" aria-label="${esc(u.searchOpen)}">${ICON_SEARCH}</button>
       ${langSwitch}
@@ -404,6 +414,8 @@ ${isError ? "" : listForm(lang, p.path)}
         <li><a href="${ROUTES[lang].home}">${esc(u.home)}</a></li>
         <li><a href="${ROUTES[lang].world}">${esc(u.world)}</a></li>
         <li><a href="${ROUTES[lang].prayer}">${esc(u.prayer)}</a></li>
+        <li><a href="${ROUTES[lang].nature}">${esc(u.nature)}</a></li>
+        <li><a href="${ROUTES[lang].weather}">${esc(u.weather)}</a></li>
         <li><a href="${yearPath(lang, BUILD_YEAR)}">${esc(u.calendar)}</a></li>
         <li><a href="${ROUTES[lang].tools}">${esc(u.tools)}</a></li>
         <li><a href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a></li>
@@ -549,7 +561,7 @@ function buildHome(lang) {
   e.push({ t: h.factsHeading, u: pagePath + "#facts", d: `${h.factWeek}, ${h.factDoy}, ${h.factLeft}, ${h.factUnix}, ${h.factUtc}`, k: "hafta week unix utc gün day yıl year" });
   h.faq.forEach((f) => e.push({ t: f.q, u: pagePath + "#faq", d: f.a, k: "sss faq" }));
   e.push({ t: t.list.heading, u: pagePath + "#liste", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
-  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "world.js"], clientExtra: { cities: clientCities(lang), t: { wc: t.world } } };
+  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "world.js", "place.js", "weather-core.js"], clientExtra: { cities: clientCities(lang), t: { wc: t.world } } };
 }
 
 function buildWorld(lang) {
@@ -639,7 +651,7 @@ function buildCity(lang, c) {
     d: description,
     k: [n.name, n.loc, n.country, c.tz, ...LANGS.map((l) => I[l].ui.world), "saat kaç time"].filter(Boolean).join(" "),
   });
-  return { lang, key: "city:" + c.key, path: pagePath, title, description, body, ld, nav: "world" };
+  return { lang, key: "city:" + c.key, path: pagePath, title, description, body, ld, nav: "world", scripts: ["place.js", "weather-core.js"] };
 }
 
 function buildPrivacy(lang) {
@@ -1104,7 +1116,7 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
-extendRoutes({ tr: { prayer: "/namaz-vakitleri/" }, en: { prayer: "/en/prayer-times/" } });
+extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/doga/", weather: "/hava-durumu/" }, en: { prayer: "/en/prayer-times/", nature: "/en/nature/", weather: "/en/weather/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1126,6 +1138,7 @@ function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner,
 </section>` : "";
   const body = `<section class="hero">
   <div class="wrap">
+    ${bodyInner.pre || ""}
     ${crumbs(lang, trail)}
     <h1>${esc(h1)}</h1>
     <p class="lead">${esc(lead)}</p>
@@ -1396,6 +1409,133 @@ function buildEmbedGen(lang) {
   return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])) } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
 }
 
+/* ---------- Doğa (mevsim çarkı, Güneş, Ay, gün uzunluğu) ve hava durumu ---------- */
+const NATURE = (() => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(SRC, "js/nature-calc.js"), "utf8"))(m, undefined); return m.exports; })();
+
+/* il seçici + "konumumu kullan" (namaz, doğa, hava durumu) */
+function placePicker(lang, id, note) {
+  const s = I[lang].prayer;
+  const opts = PROVINCES.map((pr) => `<option value="${pr.slug}" data-lat="${pr.lat}" data-lon="${pr.lon}"${pr.slug === "istanbul" ? " selected" : ""}>${esc(provName(lang, pr))}</option>`).join("");
+  return `<div class="inputs-row">
+        <div class="field"><label for="${id}">${esc(s.chooseLabel)}</label><select id="${id}" data-place-city>${opts}</select></div>
+        <button type="button" class="btn" data-place-geo>${esc(s.useLocation)}</button>
+      </div>
+      <p class="meta" data-place-status role="status">&nbsp;</p>
+      <p class="meta">${esc(note)}</p>`;
+}
+const subNav = (lang, current) => `<nav class="subnav" aria-label="${esc(I[lang].ui.mainNav)}"><a href="${ROUTES[lang].nature}"${current === "nature" ? ' aria-current="page"' : ""}>${esc(I[lang].ui.nature)}</a><a href="${ROUTES[lang].weather}"${current === "weather" ? ' aria-current="page"' : ""}>${esc(I[lang].ui.weather)}</a></nav>`;
+
+function trDateTime(lang, ms) { // Türkiye saatiyle (UTC+3) "20 Mart 14:46"
+  const d = new Date(ms + 3 * 3600000);
+  return `${d.getUTCDate()} ${I[lang].calendar.months[d.getUTCMonth()]} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
+}
+
+function buildNature(lang) {
+  const t = I[lang];
+  const n = t.nature;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: n.h1, path: ROUTES[lang].nature }];
+  const pre = `<section class="tool nature-top" data-nature aria-label="${esc(n.wheelLabel)}">
+      <div class="wheel-wrap">
+        <svg class="wheel" data-wheel viewBox="0 0 360 360" role="img" aria-label="${esc(n.wheelLabel)}"></svg>
+        <div class="wheel-center" aria-live="polite">
+          <p class="wheel-season" data-n-season>&nbsp;</p>
+          <p class="wheel-line" data-n-dayof>&nbsp;</p>
+          <p class="wheel-line" data-n-next>&nbsp;</p>
+        </div>
+      </div>
+      ${placePicker(lang, "n-city", n.chooseNote)}
+    </section>`;
+  const head = ["spring", "summer", "autumn", "winter"].map((k) => `<th scope="col">${esc(n.seasons[k])}</th>`).join("");
+  const rows = HOL_YEARS.map((y) => { const q = NATURE.seasons(y); return `<tr><th scope="row">${y}</th>${[q.march, q.june, q.sept, q.dec].map((ms) => `<td>${esc(trDateTime(lang, ms))}</td>`).join("")}</tr>`; }).join("");
+  const facts = ["spring", "summer", "autumn", "winter"].map((k) => `<article class="season-card sc-${k}"><h3>${esc(n.seasons[k])}</h3><ul>${n.facts[k].map((f) => `<li>${esc(f)}</li>`).join("")}</ul></article>`).join("");
+  const cell = (label, attr) => `<div class="fact"><dt>${esc(label)}</dt><dd ${attr}>–</dd></div>`;
+  const sections = `<section class="section" aria-labelledby="n-sun-h">
+  <div class="wrap">
+    <h2 id="n-sun-h">${esc(n.sunHeading)}</h2>
+    <dl class="facts">${cell(n.sunrise, "data-n-sun=\"rise\"")}${cell(n.sunset, "data-n-sun=\"set\"")}${cell(n.dayLength, "data-n-sun=\"len\"")}${cell(n.solarNoon, "data-n-sun=\"noon\"")}</dl>
+    <p class="meta" data-n-delta>&nbsp;</p>
+    <p class="meta" data-n-left>&nbsp;</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-moon-h">
+  <div class="wrap">
+    <h2 id="n-moon-h">${esc(n.moonHeading)}</h2>
+    <div class="moon-row">
+      <svg class="moon" data-moon viewBox="0 0 80 80" aria-hidden="true" focusable="false"></svg>
+      <div>
+        <p class="moon-phase" data-n-phase>&nbsp;</p>
+        <p class="meta" data-n-illum>&nbsp;</p>
+        <p class="meta" data-n-age>&nbsp;</p>
+        <p class="meta"><strong>${esc(n.nextNew)}:</strong> <span data-n-nextnew>–</span></p>
+        <p class="meta"><strong>${esc(n.nextFull)}:</strong> <span data-n-nextfull>–</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-chart-h">
+  <div class="wrap">
+    <h2 id="n-chart-h">${esc(n.chartHeading)}</h2>
+    <figure class="daychart"><svg data-n-chart viewBox="0 0 640 240" role="img" aria-label="${esc(n.chartHeading)}"></svg><figcaption class="meta" data-n-chartcap>&nbsp;</figcaption></figure>
+    <p class="meta" data-n-extremes>&nbsp;</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-table-h">
+  <div class="wrap">
+    <h2 id="n-table-h">${esc(n.tableHeading)}</h2>
+    <p class="meta">${esc(n.tableLead)}</p>
+    <div class="table-wrap"><table class="events-table"><caption class="sr-only">${esc(n.tableHeading)}</caption><thead><tr><th scope="col">${esc(n.colYear)}</th>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="meta">${esc(n.meteoNote)}</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-facts-h">
+  <div class="wrap">
+    <h2 id="n-facts-h">${esc(n.factsHeading)}</h2>
+    <div class="season-cards">${facts}</div>
+    <h2>${esc(n.whyHeading)}</h2>
+    ${n.why.map((p) => `<p>${esc(p)}</p>`).join("")}
+    <p class="meta">${esc(n.hemisphereNote)}</p>
+    <p class="meta">${esc(n.methodNote)}</p>
+    <p><a href="${ROUTES[lang].weather}">${esc(n.weatherLink)} ${ARROW(lang)}</a></p>
+  </div>
+</section>`;
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { pre, hero: `${subNav(lang, "nature")}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqHeading: n.faqHeading, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort } } }, nav: "nature", searchK: n.search });
+}
+
+function buildWeather(lang) {
+  const t = I[lang];
+  const w = t.weather;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: w.h1, path: ROUTES[lang].weather }];
+  const hero = `${subNav(lang, "weather")}<section class="tool weather" data-weather aria-labelledby="wx-h">
+      <div class="tool-head"><h2 id="wx-h" class="tool-title" data-wx-place>${esc(t.prayer.yourLocation)}</h2></div>
+      ${placePicker(lang, "wx-city", w.locationNote)}
+      <p class="meta" data-wx-state role="status">${esc(w.loading)}</p>
+      <div class="wx-now" data-wx-now hidden>
+        <p class="wx-icon" data-wx-icon aria-hidden="true"></p>
+        <p class="wx-temp" data-wx-temp>–</p>
+        <p class="wx-cond" data-wx-cond>&nbsp;</p>
+        <dl class="facts wx-facts" data-wx-facts></dl>
+      </div>
+      <button type="button" class="toggle" data-wx-retry hidden>${esc(w.retry)}</button>
+    </section>
+    <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`;
+  const sections = `<section class="section" aria-labelledby="wx-hourly-h" data-wx-hourly-box hidden>
+  <div class="wrap">
+    <h2 id="wx-hourly-h">${esc(w.hourlyHeading)}</h2>
+    <ul class="wx-hourly" data-wx-hourly></ul>
+  </div>
+</section>
+<section class="section" aria-labelledby="wx-daily-h" data-wx-daily-box hidden>
+  <div class="wrap">
+    <h2 id="wx-daily-h">${esc(w.dailyHeading)}</h2>
+    <ul class="wx-daily" data-wx-daily></ul>
+    <p class="meta"><span data-wx-updated></span> · ${esc(w.attribution)}</p>
+    <p><a href="${ROUTES[lang].nature}">${esc(w.natureLink)} ${ARROW(lang)}</a></p>
+  </div>
+</section>`;
+  const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry };
+  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqHeading: w.faqHeading, scripts: ["place.js", "weather-core.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "nature", searchK: w.search, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
+}
+
 /* ---------- Namaz vakitleri: konuma göre hub + 81 il sayfası (hesap tarayıcıda, prayer-calc.js) ---------- */
 const PROVINCES = readJson("src/data/provinces.json");
 const PRAYER_KEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
@@ -1410,10 +1550,10 @@ function prayerBody(lang, prov) {
   const controls = prov
     ? `<p class="meta"><a href="${ROUTES[lang].prayer}">${esc(s.otherPlace)} ${ARROW(lang)}</a></p>`
     : `<div class="inputs-row">
-        <div class="field"><label for="pr-city">${esc(s.chooseLabel)}</label><select id="pr-city" data-pr-city>${opts}</select></div>
-        <button type="button" class="btn" data-pr-geo>${esc(s.useLocation)}</button>
+        <div class="field"><label for="pr-city">${esc(s.chooseLabel)}</label><select id="pr-city" data-place-city>${opts}</select></div>
+        <button type="button" class="btn" data-place-geo>${esc(s.useLocation)}</button>
       </div>
-      <p class="meta" data-pr-status role="status">&nbsp;</p>
+      <p class="meta" data-place-status role="status">&nbsp;</p>
       <p class="meta">${esc(s.locationNote)}</p>`;
   const attrs = prov ? ` data-mode="city" data-city="${prov.slug}" data-name="${esc(provName(lang, prov))}" data-lat="${prov.lat}" data-lon="${prov.lon}"` : ` data-mode="hub"`;
   const hero = `<section class="tool prayer" data-prayer${attrs} aria-labelledby="pr-h">
@@ -1444,13 +1584,15 @@ function prayerBody(lang, prov) {
 `;
   return { hero, sections };
 }
-const prayerClient = (s) => ({ pr: { locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation, nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names } });
+const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation });
+const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names } });
+const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail }; };
 
 function buildPrayerHub(lang) {
   const t = I[lang];
   const s = t.prayer;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }];
-  return simplePage(lang, "prayer", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: prayerBody(lang, null), faq: s.faq, faqHeading: s.faqHeading, scripts: ["prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].prayer, s.description)] });
+  return simplePage(lang, "prayer", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: prayerBody(lang, null), faq: s.faq, faqHeading: s.faqHeading, scripts: ["place.js", "prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].prayer, s.description)] });
 }
 function buildPrayerCity(lang, prov) {
   const t = I[lang];
@@ -1458,7 +1600,7 @@ function buildPrayerCity(lang, prov) {
   const name = provName(lang, prov);
   const v = { city: name };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }, { name: tpl(s.cityH1, v), path: prayerPath(lang, prov) }];
-  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov), faq: s.faq, faqHeading: s.faqHeading, scripts: ["prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}`, noFaqSearch: true });
+  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov), faq: s.faq, faqHeading: s.faqHeading, scripts: ["place.js", "prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}`, noFaqSearch: true });
 }
 
 /* Gömülü widget sayfası: yalnız seçilen saat modeli, başlık ve alt bilgi (indekslenmez) */
@@ -1495,7 +1637,7 @@ ${umami}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
 }
 

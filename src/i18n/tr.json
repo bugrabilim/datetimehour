@@ -37,7 +37,9 @@
     "tools": "Araçlar",
     "langMenu": "Dil seçimi",
     "menu": "Menü",
-    "prayer": "Namaz vakitleri"
+    "prayer": "Namaz vakitleri",
+    "nature": "Doğa",
+    "weather": "Hava durumu"
   },
   "client": {
     "format24": "24 saat",
@@ -126,7 +128,11 @@
       "ocean": "Okyanus",
       "rose": "Gül",
       "mono": "Beyaz"
-    }
+    },
+    "fsWeather": "Hava durumu",
+    "fsWeatherNeed": "Hava durumu için bir konum seçin:",
+    "fsWeatherLink": "hava durumu sayfası",
+    "fsWeatherFail": "Hava durumu alınamadı."
   },
   "home": {
     "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
@@ -251,6 +257,7 @@
         "ul": [
           "**Saat ve tarih:** Cihazınızın saati ve saat diliminiz yalnızca tarayıcınızda okunur ve hesaplanır. Sunucuya gönderilmez, kaydedilmez.",
           "**Konum (namaz vakitleri):** Namaz vakitleri sayfasında \"Konumumu kullan\" derseniz tarayıcınız konumunuzu yalnızca cihazınızda vakit hesabı için kullanır. Koordinatlar sunucuya gönderilmez ve istatistiklere girmez; son seçiminiz tarayıcınızın yerel depolamasında kalır.",
+          "**Hava durumu:** Hava durumu sayfasında (ya da tam ekranda hava durumunu açarsanız) seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla), veriyi sağlayan Open-Meteo'ya (api.open-meteo.com) tarayıcınızdan doğrudan gönderilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir.",
           "**E-posta listesi formu:** Forma yazdığınız e-posta adresi, onay kutusuyla verdiğiniz rıza, seçili dil ve formun bulunduğu sayfa; Bumba Group'un ortak liste servisi (bumbagroup.com) tarafından işlenir. Kayıt çift onaylıdır: onay e-postasındaki bağlantıya tıklamadan listeye eklenmezsiniz. Her e-postada tek tıkla çıkış bağlantısı bulunur. Ayrıntılar için [ortak aydınlatma metnine](https://bumbagroup.com/liste/aydinlatma) bakın.",
           "**Sunucu kayıtları:** Siteyi yayınlayan sunucu, her istek için IP adresi, tarayıcı bilgisi, istenen sayfa ve zaman bilgisini standart erişim kaydı olarak tutar. Bu kayıtlar yalnızca güvenlik ve hata ayıklama amacıyla kullanılır; kişi bazlı profil çıkarmak için kullanılmaz.",
           "**Ziyaret istatistikleri:** Kendi sunucumuzda çalışan Umami ile sayfa görüntülemeleri ve birkaç eylem (dil değişimi, tema değişimi, arama sonucunun bulunup bulunmaması, listeye katılım) sayılır. Umami çerez kullanmaz. Aramaya yazdığınız sözcükler ve e-posta adresiniz istatistik sistemine gönderilmez.",
@@ -306,13 +313,13 @@
               "Siz silene kadar"
             ],
             [
-              "sth-prayer",
-              "Namaz vakitleri için son seçtiğiniz ili ya da konumu hatırlar.",
+              "sth-world",
+              "Dünya saatleri için seçtiğiniz şehirleri ve sırasını hatırlar.",
               "Siz silene kadar"
             ],
             [
-              "sth-world",
-              "Dünya saatleri için seçtiğiniz şehirleri ve sırasını hatırlar.",
+              "sth-place",
+              "Namaz vakitleri, doğa ve hava durumu sayfaları için son seçtiğiniz ili ya da konumu hatırlar.",
               "Siz silene kadar"
             ]
           ]
@@ -1293,5 +1300,181 @@
       }
     ],
     "search": "namaz vakti ezan imsak iftar sahur sahur vakti iftar saati prayer times adhan fajr"
+  },
+  "nature": {
+    "title": "Mevsimler ve Doğa: Güneş, Ay ve Gün Uzunluğu | Saat Tarih",
+    "description": "Mevsim çarkı, mevsim başlangıçları, bugünün gün doğumu ve batımı, Ay'ın evresi ve yıl boyunca gün uzunluğu; mevsimlere dair doğa bilgileri.",
+    "h1": "Mevsimler ve doğa",
+    "lead": "Yıl bir çark gibi döner: hangi mevsimdeyiz, sıradaki mevsime kaç gün var, güneş ne zaman doğup batıyor, Ay hangi evrede? Konumunuza ya da seçtiğiniz ile göre hepsi tek sayfada.",
+    "wheelLabel": "Yıllık mevsim çarkı",
+    "seasons": {
+      "spring": "İlkbahar",
+      "summer": "Yaz",
+      "autumn": "Sonbahar",
+      "winter": "Kış"
+    },
+    "current": "Şu an {season}",
+    "dayOf": "{n}. gün (toplam {total})",
+    "nextIn": "{season} başlangıcına {days} gün kaldı",
+    "startsOn": "{season} başlangıcı: {date}",
+    "chooseNote": "Konum seçimi hem gün doğumu ve Ay saatlerini hem de yarımküreyi belirler.",
+    "sunHeading": "Güneş bugün",
+    "sunrise": "Gün doğumu",
+    "sunset": "Gün batımı",
+    "dayLength": "Gün uzunluğu",
+    "solarNoon": "Güneşin tepe noktası",
+    "dayLonger": "Gün dünden {m} dk daha uzun",
+    "dayShorter": "Gün dünden {m} dk daha kısa",
+    "dayLeft": "Gün batımına kalan: {t}",
+    "moonHeading": "Ay",
+    "phases": {
+      "new": "Yeni ay",
+      "waxingCrescent": "Hilal (büyüyen)",
+      "firstQuarter": "İlk dördün",
+      "waxingGibbous": "Şişkin ay (büyüyen)",
+      "full": "Dolunay",
+      "waningGibbous": "Şişkin ay (küçülen)",
+      "lastQuarter": "Son dördün",
+      "waningCrescent": "Hilal (küçülen)"
+    },
+    "illumination": "Aydınlık yüzde {p}",
+    "age": "Ayın yaşı: {d} gün",
+    "nextNew": "Sonraki yeni ay",
+    "nextFull": "Sonraki dolunay",
+    "chartHeading": "Yıl boyunca gün uzunluğu",
+    "chartCaption": "{place}: günlük gündüz süresi (saat), {year}",
+    "longest": "En uzun gün",
+    "shortest": "En kısa gün",
+    "hoursShort": "sa",
+    "minutesShort": "dk",
+    "tableHeading": "Mevsim başlangıçları",
+    "tableLead": "Astronomik mevsimler, yani ekinoks ve gündönümü anları. Saatler Türkiye saatiyle (UTC+3) verilmiştir.",
+    "colYear": "Yıl",
+    "meteoNote": "Meteorolojik mevsimler üçer aylık bloklardır: ilkbahar 1 Mart'ta, yaz 1 Haziran'da, sonbahar 1 Eylül'de, kış 1 Aralık'ta başlar. Takvim ve istatistik çalışmalarında bunlar kullanılır.",
+    "factsHeading": "Mevsimlerde doğa",
+    "facts": {
+      "spring": [
+        "Gece ile gündüz ekinoksta eşitlenir, sonraki aylarda günler hızla uzar.",
+        "Çiçekler açar, ağaçlar yeşerir; göçmen kuşlar kuzeye geri döner.",
+        "Karlar erir ve akarsular yükselir; toprak ekime hazırlanır."
+      ],
+      "summer": [
+        "Yılın en uzun günü yaz gündönümünde yaşanır.",
+        "Deniz ve toprak ısınır; meyve ve sebze mevsimi doruğa çıkar.",
+        "Kısa geceler ve açık hava, Samanyolu'nu izlemek için en uygun dönemdir."
+      ],
+      "autumn": [
+        "Gece ile gündüz yeniden eşitlenir; günler kısalmaya başlar.",
+        "Yapraklar renk değiştirip dökülür; leylek ve turna gibi kuşlar güneye göç eder.",
+        "Hasat zamanıdır: üzüm, ceviz, fındık ve kestane toplanır."
+      ],
+      "winter": [
+        "Yılın en kısa günü kış gündönümündedir; sonrasında günler yeniden uzar.",
+        "Birçok hayvan kış uykusuna yatar, bitkiler dinlenmeye çekilir.",
+        "Dağlardaki kar, ilkbahar ve yaz için su kaynaklarını biriktirir."
+      ]
+    },
+    "whyHeading": "Mevsimler neden oluşur?",
+    "why": [
+      "Mevsimlerin nedeni Dünya'nın dönme ekseninin Güneş çevresindeki yörüngesine göre yaklaşık 23,4° eğik olmasıdır; Güneş'e uzaklığı değildir.",
+      "Eksen Güneş'e doğru eğikken o yarımküre daha dik ışık ve daha uzun gündüz alır, yaz yaşanır. Eksen uzağa eğikken kış yaşanır.",
+      "Ekinokslarda (yaklaşık 20 Mart ve 22 Eylül) gece ile gündüz neredeyse eşittir, gündönümlerinde (yaklaşık 21 Haziran ve 21 Aralık) gündüz en uzun ya da en kısadır."
+    ],
+    "hemisphereNote": "Güney yarımkürede mevsimler tersidir; konumunuz güneydeyse mevsim adları buna göre değişir.",
+    "methodNote": "Güneş, Ay ve mevsim anları tarayıcınızda astronomik formüllerle hesaplanır: mevsim anları birkaç dakika, Ay'ın evresi ve zamanları yaklaşık doğruluktadır.",
+    "weatherLink": "Hava durumu için ayrı sayfaya gidin",
+    "faqHeading": "Sık sorulan sorular",
+    "faq": [
+      {
+        "q": "Mevsimler ne zaman başlıyor?",
+        "a": "Astronomik olarak ilkbahar yaklaşık 20 Mart'ta, yaz 21 Haziran'da, sonbahar 22-23 Eylül'de, kış 21 Aralık'ta başlar. Tam anları yıldan yıla birkaç saat değişir; yukarıdaki tablodan bakabilirsiniz."
+      },
+      {
+        "q": "Astronomik ve meteorolojik mevsim arasındaki fark nedir?",
+        "a": "Astronomik mevsimler ekinoks ve gündönümüne, meteorolojik mevsimler ise takvimdeki tam aylara (Mart-Mayıs ilkbahar gibi) dayanır. İkincisi iklim kayıtlarını tutmayı kolaylaştırır."
+      },
+      {
+        "q": "Gün uzunluğu nasıl değişiyor?",
+        "a": "Gün uzunluğu kış gündönümünden yaz gündönümüne kadar uzar, sonra tekrar kısalır. Değişim ekinoks çevresinde günde birkaç dakika ile en hızlıdır, gündönümlerinde ise durağan gibidir."
+      },
+      {
+        "q": "Ay'ın evresi nasıl hesaplanıyor?",
+        "a": "Ay'ın evresi, bir önceki yeni aydan bugüne geçen sürenin ay döngüsüne (yaklaşık 29,5 gün) oranından bulunur. Yeni ay ve dolunay zamanları astronomik formüllerle birkaç dakika doğrulukla hesaplanır."
+      }
+    ],
+    "search": "mevsimler ilkbahar yaz sonbahar kış ekinoks gündönümü ay evresi dolunay yeni ay gün doğumu gün batımı gün uzunluğu seasons equinox solstice moon phase sunrise sunset"
+  },
+  "weather": {
+    "title": "Hava Durumu: Güncel, Saatlik ve 7 Günlük Tahmin | Saat Tarih",
+    "description": "Bulunduğunuz konum ya da seçtiğiniz il için güncel hava durumu, saatlik ve 7 günlük tahmin: sıcaklık, hissedilen, rüzgâr, nem, yağış ve UV.",
+    "h1": "Hava durumu",
+    "lead": "Bulunduğunuz konum ya da seçtiğiniz il için güncel sıcaklık, saatlik ve 7 günlük tahmin. Tam ekran saatin yanında da gösterilebilir.",
+    "now": "Şimdi",
+    "feelsLike": "Hissedilen",
+    "humidity": "Nem",
+    "wind": "Rüzgâr",
+    "precipitation": "Yağış",
+    "pressure": "Basınç",
+    "uv": "UV indeksi",
+    "hourlyHeading": "Saatlik tahmin (24 saat)",
+    "dailyHeading": "7 günlük tahmin",
+    "sunrise": "Gün doğumu",
+    "sunset": "Gün batımı",
+    "loading": "Hava durumu alınıyor…",
+    "error": "Hava durumu alınamadı. Bağlantınızı kontrol edip yeniden deneyin.",
+    "retry": "Yeniden dene",
+    "locationNote": "Seçtiğiniz konumun koordinatları (yaklaşık 1 km duyarlıkla) hava durumu verisini sağlayan Open-Meteo'ya doğrudan tarayıcınızdan gönderilir; Saat Tarih sunucusu bunları görmez.",
+    "attribution": "Hava durumu verisi: Open-Meteo.com (CC BY 4.0)",
+    "updated": "Güncelleme: {time}",
+    "rainChance": "Yağış ihtimali yüzde {p}",
+    "windFrom": "{dir} yönünden",
+    "codes": {
+      "clear": "Açık",
+      "mostlyClear": "Çoğunlukla açık",
+      "partly": "Parçalı bulutlu",
+      "overcast": "Kapalı",
+      "fog": "Sisli",
+      "drizzle": "Çisenti",
+      "freezingDrizzle": "Dondurucu çisenti",
+      "rain": "Yağmurlu",
+      "freezingRain": "Dondurucu yağmur",
+      "snow": "Karlı",
+      "snowGrains": "Kar taneleri",
+      "showers": "Sağanak",
+      "snowShowers": "Kar sağanağı",
+      "thunder": "Gök gürültülü fırtına",
+      "thunderHail": "Dolulu fırtına"
+    },
+    "compass": [
+      "Kuzey",
+      "Kuzeydoğu",
+      "Doğu",
+      "Güneydoğu",
+      "Güney",
+      "Güneybatı",
+      "Batı",
+      "Kuzeybatı"
+    ],
+    "natureLink": "Mevsimler ve doğa sayfası",
+    "faqHeading": "Sık sorulan sorular",
+    "faq": [
+      {
+        "q": "Hava durumu verisi nereden geliyor?",
+        "a": "Veri, açık hava durumu hizmeti Open-Meteo'dan tarayıcınıza doğrudan indirilir. Model tahminidir; yerel ölçümden birkaç derece ve saat sapabilir."
+      },
+      {
+        "q": "Konumum paylaşılıyor mu?",
+        "a": "Konumunuzu seçerseniz yaklaşık koordinatlar (yaklaşık 1 km duyarlıkla) yalnızca hava durumunu almak için Open-Meteo'ya gönderilir. Saat Tarih sunucusu koordinatları görmez ve saklamaz."
+      },
+      {
+        "q": "Hissedilen sıcaklık nedir?",
+        "a": "Hissedilen sıcaklık, rüzgâr ve nemin etkisiyle bedenin algıladığı sıcaklıktır; gerçek hava sıcaklığından farklı olabilir."
+      },
+      {
+        "q": "Hava durumunu tam ekran saatte görebilir miyim?",
+        "a": "Evet. Tam ekranda ekrana dokunduğunuzda beliren çubuktaki hava durumu düğmesiyle seçili konumun hava durumu saatin yanında gösterilir."
+      }
+    ],
+    "search": "hava durumu tahmin sıcaklık yağmur rüzgar nem uv yarın bu hafta weather forecast temperature rain wind humidity"
   }
 }

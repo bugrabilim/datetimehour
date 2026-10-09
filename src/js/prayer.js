@@ -13,9 +13,6 @@
   var order = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
   var TR_TZ = "Europe/Istanbul";
 
-  var citySel = root.querySelector("[data-pr-city]");
-  var geoBtn = root.querySelector("[data-pr-geo]");
-  var statusEl = root.querySelector("[data-pr-status]");
   var placeEl = root.querySelector("[data-pr-place]");
   var labelEl = root.querySelector("[data-pr-nextlabel]");
   var cdEl = root.querySelector("[data-pr-countdown]");
@@ -117,44 +114,13 @@
     if (placeEl) placeEl.textContent = state.name;
     renderToday(); renderMonth(); tick();
   }
-  function fromOption(opt) {
-    return { kind: "city", city: opt.value, name: opt.textContent, lat: parseFloat(opt.getAttribute("data-lat")), lon: parseFloat(opt.getAttribute("data-lon")), tz: TR_TZ };
-  }
-  function save() {
-    if (!state || root.getAttribute("data-mode") !== "hub") return;
-    S.store("sth-prayer", JSON.stringify(state.kind === "geo" ? { kind: "geo", lat: state.lat, lon: state.lon } : { kind: "city", city: state.city }));
-  }
-
   if (mPrev) mPrev.addEventListener("click", function () { if (!view) return; view.m--; if (view.m < 1) { view.m = 12; view.y--; } renderMonth(); });
   if (mNext) mNext.addEventListener("click", function () { if (!view) return; view.m++; if (view.m > 12) { view.m = 1; view.y++; } renderMonth(); });
 
   if (root.getAttribute("data-mode") === "city") {
     setState({ kind: "city", city: root.getAttribute("data-city"), name: root.getAttribute("data-name"), lat: parseFloat(root.getAttribute("data-lat")), lon: parseFloat(root.getAttribute("data-lon")), tz: TR_TZ });
   } else {
-    var saved = null;
-    try { saved = JSON.parse(S.store("sth-prayer") || "null"); } catch (e) {}
-    var geoState = function (lat, lon) {
-      return { kind: "geo", name: T.yourLocation + " (" + lat.toFixed(2) + ", " + lon.toFixed(2) + ")", lat: lat, lon: lon, tz: S.localTz };
-    };
-    if (saved && saved.kind === "geo" && isFinite(saved.lat) && isFinite(saved.lon)) setState(geoState(saved.lat, saved.lon));
-    else {
-      if (saved && saved.kind === "city") for (var i = 0; i < citySel.options.length; i++) if (citySel.options[i].value === saved.city) citySel.selectedIndex = i;
-      setState(fromOption(citySel.options[citySel.selectedIndex]));
-    }
-    citySel.addEventListener("change", function () {
-      setState(fromOption(citySel.options[citySel.selectedIndex])); save();
-      if (statusEl) statusEl.textContent = "";
-      S.track("namaz-konum", { tur: "il" });
-    });
-    geoBtn.addEventListener("click", function () {
-      if (!navigator.geolocation) { statusEl.textContent = T.locationUnsupported; return; }
-      statusEl.textContent = T.locating;
-      navigator.geolocation.getCurrentPosition(function (pos) {
-        statusEl.textContent = "";
-        setState(geoState(pos.coords.latitude, pos.coords.longitude)); save();
-        S.track("namaz-konum", { tur: "konum" });
-      }, function () { statusEl.textContent = T.locationDenied; }, { enableHighAccuracy: false, timeout: 12000, maximumAge: 600000 });
-    });
+    window.sthPlace.attach(root, function (p) { setState(p); });
   }
   setInterval(tick, 1000);
 })();

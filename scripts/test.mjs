@@ -71,8 +71,15 @@ for (const f of htmlFiles) {
   if (/\/(namaz-vakitleri|prayer-times)\/([a-z]+\/)?index\.html$/.test(name)) {
     const hub = /\/(namaz-vakitleri|prayer-times)\/index\.html$/.test(name);
     check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
-    if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-pr-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
+    if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-place-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
     else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
+  }
+  if (/\/(doga|nature)\/index\.html$/.test(name)) {
+    check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-place-geo/.test(h) && /"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
+    check(h.indexOf("data-nature") < h.indexOf("<h1"), `${name}: mevsim çarkı sayfanın en üstünde olmalı`);
+  }
+  if (/\/(hava-durumu|weather)\/index\.html$/.test(name)) {
+    check(/data-weather\b/.test(h) && /data-wx-hourly/.test(h) && /data-wx-daily/.test(h) && /weather-core\.js/.test(h) && /weather\.js/.test(h) && /Open-Meteo\.com/.test(h) && /data-place-geo/.test(h), `${name}: hava durumu sayfası yapısı eksik`);
   }
   const toolMatch = /\/(kronometre|geri-sayim|alarm|pomodoro|stopwatch|countdown)\/index\.html$/.exec(name);
   if (toolMatch) {
@@ -178,6 +185,24 @@ check(sm.split("<url>").slice(1).every((u) => LANGS.every((l) => u.includes(`hre
   check(Object.values(hl).every((x) => Number.isFinite(x)), "namaz hesabı: yüksek enlemde NaN");
 }
 
+// doğa hesapları: ekinoks/gündönümü (±2 dk) ve yeni ay/dolunay (±10 dk)
+{
+  const m = { exports: {} };
+  new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/nature-calc.js"), "utf8"))(m, undefined);
+  const N = m.exports;
+  const want = { 2025: ["2025-03-20T09:01", "2025-06-21T02:42", "2025-09-22T18:19", "2025-12-21T15:03"], 2026: ["2026-03-20T14:46", "2026-06-21T08:24", "2026-09-23T00:06", "2026-12-21T20:50"] };
+  for (const [y, list] of Object.entries(want)) {
+    const q = N.seasons(+y);
+    [q.march, q.june, q.sept, q.dec].forEach((ms, i) => check(Math.abs(ms - Date.parse(list[i] + ":00Z")) <= 2 * 60000, `mevsim anı ${y}/${i}: ${new Date(ms).toISOString()} ≠ ${list[i]}`));
+  }
+  const k = (ms) => Math.floor((ms / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861);
+  const anchors = [["new", 2026, 7, 12, "2026-08-12T17:37"], ["full", 2026, 2, 3, "2026-03-03T11:38"], ["new", 2026, 1, 17, "2026-02-17T12:01"]];
+  for (const [kind, y, mo, d, iso] of anchors) {
+    const base = k(Date.UTC(y, mo, d)), got = [0, 1].map((o) => N.phaseMs(base + o, kind === "full"));
+    check(got.some((ms) => Math.abs(ms - Date.parse(iso + ":00Z")) <= 10 * 60000), `ay anı ${kind} ${iso}: ${got.map((x) => new Date(x).toISOString()).join(" ")}`);
+  }
+}
+
 // kontrast (WCAG AA)
 const css = fs.readFileSync(path.join(ROOT, "src/styles.css"), "utf8");
 const block = (re) => Object.fromEntries([...css.match(re)[1].matchAll(/--([\w-]+):\s*(#[0-9a-f]{6})/g)].map((m) => [m[1], m[2]]));
@@ -205,6 +230,7 @@ check((css.match(/\.stage\.fs-on\[data-fs-color=/g) || []).length >= 12, "en az 
 const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
 for (const s of ["Strict-Transport-Security", "max-age=86400", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
+check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");
 
 if (fails.length) {
