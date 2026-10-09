@@ -26,22 +26,26 @@
   }
   function compass(deg) { var c = X().compass || []; return c[Math.round(((deg % 360) + 360) % 360 / 45) % 8] || ""; }
   var round2 = function (v) { return Math.round(v * 100) / 100; };
-  var cache = {};
+  var cache = {}, inflight = {}, failed = {};
   function load(lat, lon) {
     lat = round2(lat); lon = round2(lon);
     var key = lat + "," + lon, now = Date.now();
     if (cache[key] && now - cache[key].at < 600000) return Promise.resolve(cache[key].data);
+    if (inflight[key]) return inflight[key]; // aynı konum için eşzamanlı istekler tek istekte birleşir
+    if (failed[key] && now - failed[key] < 60000) return Promise.reject(new Error("backoff")); // hata sonrası 1 dk bekle (hız sınırına yüklenme)
     var url = API + "?latitude=" + lat + "&longitude=" + lon +
       "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,is_day,uv_index" +
       "&hourly=temperature_2m,precipitation_probability,weather_code,is_day" +
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,sunrise,sunset,uv_index_max" +
       "&timezone=auto&forecast_days=7";
-    return fetch(url, { credentials: "omit", referrerPolicy: "no-referrer" })
+    inflight[key] = fetch(url, { credentials: "omit", referrerPolicy: "no-referrer" })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .then(function (d) { cache[key] = { at: now, data: d }; return d; });
+      .then(function (d) { cache[key] = { at: now, data: d }; delete failed[key]; delete inflight[key]; return d; })
+      .catch(function (e) { failed[key] = Date.now(); delete inflight[key]; throw e; });
+    return inflight[key];
   }
   var temp = function (t) { return Math.round(t) + "°"; };
-  window.sthWeather = { load: load, info: info, compass: compass, temp: temp };
+  window.sthWeather = { load: load, info: info, compass: compass, temp: temp, clearFailures: function () { failed = {}; } };
 
   /* Hava durumlu saat modelleri: yalnız model seçiliyken (görünürken) Open-Meteo'ya gidilir */
   function mk(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }

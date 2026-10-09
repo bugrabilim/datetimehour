@@ -67,6 +67,6 @@
     W.load(place.lat, place.lon).then(function (d) { if (my === seq) render(place, d); })
       .catch(function () { if (my !== seq) return; stateEl.textContent = X.error; retry.hidden = false; nowBox.hidden = true; q("[data-wx-hourly-box]").hidden = true; q("[data-wx-daily-box]").hidden = true; });
   }
-  retry.addEventListener("click", function () { if (current) go(current); });
+  retry.addEventListener("click", function () { W.clearFailures(); if (current) go(current); });
   window.sthPlace.attach(root, go);
 })();
