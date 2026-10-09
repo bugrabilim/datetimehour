@@ -238,9 +238,18 @@ function sunTimes(y, m, d, lat, lon) {
   }
   function daysInYear(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0 ? 366 : 365; }
 
+  /* Tarayıcının Intl verisi bu dili bilmiyorsa (ör. kısaltılmış ICU) tarih adları i18n dizilerinden gelir */
+  var intlOk = true;
+  try { intlOk = !/^M\d/.test(new Intl.DateTimeFormat(locale, { month: "long" }).format(new Date(2026, 9, 9))); } catch (e) { intlOk = false; }
+  var CAL = cfg.cal || {};
+  var useOwn = !intlOk && CAL.months && CAL.weekdays && CAL.fullFmt;
+  function dowOfParts(p) { return (new Date(Date.UTC(p.year, p.month - 1, p.day)).getUTCDay() + 6) % 7; }
+  function ownDate(p) { return tpl(CAL.fullFmt, { weekday: CAL.weekdays[dowOfParts(p)], day: p.day, month: CAL.months[p.month - 1], year: p.year }); }
+
   function weekRangeText(p, tz) {
     var dow = (new Date(Date.UTC(p.year, p.month - 1, p.day)).getUTCDay() + 6) % 7;
     var a = new Date(Date.UTC(p.year, p.month - 1, p.day - dow, 12)), b = new Date(Date.UTC(p.year, p.month - 1, p.day - dow + 6, 12));
+    if (useOwn) return tpl(CAL.shortFmt, { day: a.getUTCDate(), month: CAL.months[a.getUTCMonth()] }) + " – " + tpl(CAL.dateFmt, { day: b.getUTCDate(), month: CAL.months[b.getUTCMonth()], year: b.getUTCFullYear() });
     var f = fmt("wr", "UTC", { day: "numeric", month: "long", year: "numeric" });
     return typeof f.formatRange === "function" ? f.formatRange(a, b) : f.format(a) + " – " + f.format(b);
   }
@@ -267,7 +276,7 @@ function sunTimes(y, m, d, lat, lon) {
     var title = el.querySelector("[data-cal-title]");
     var head = el.querySelector("[data-cal-head]");
     var body = el.querySelector("[data-cal-body]");
-    title.textContent = fmt("calTitle", "UTC", { month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, 1, 12)));
+    title.textContent = useOwn ? CAL.months[p.month - 1] + " " + p.year : fmt("calTitle", "UTC", { month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, 1, 12)));
     head.textContent = "";
     var wk = doc.createElement("th");
     wk.scope = "col"; wk.textContent = T.weekShort;
@@ -275,7 +284,7 @@ function sunTimes(y, m, d, lat, lon) {
     for (var i = 0; i < 7; i++) {
       var th = doc.createElement("th");
       th.scope = "col";
-      th.textContent = fmt("wd", "UTC", { weekday: "short" }).format(new Date(Date.UTC(2024, 0, 1 + i, 12))); // 1 Ocak 2024 pazartesi
+      th.textContent = useOwn && CAL.weekdaysShort ? CAL.weekdaysShort[i] : fmt("wd", "UTC", { weekday: "short" }).format(new Date(Date.UTC(2024, 0, 1 + i, 12))); // 1 Ocak 2024 pazartesi
       head.appendChild(th);
     }
     body.textContent = "";
@@ -315,7 +324,7 @@ function sunTimes(y, m, d, lat, lon) {
       var out = "", p;
       switch (kind) {
         case "time": out = timeText(now, tz, el.hasAttribute("data-sec") ? prefs.sec : false); break;
-        case "date": out = fmt("date", tz, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now); break;
+        case "date": out = useOwn ? ownDate(parts(now, tz)) : fmt("date", tz, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now); break;
         case "day": out = String(parts(now, tz).day); break;
         case "dateiso": p = parts(now, tz); out = p.year + "-" + String(p.month).padStart(2, "0") + "-" + String(p.day).padStart(2, "0"); break;
         case "datenum": out = fmt("dn", tz, { day: "2-digit", month: "2-digit", year: "numeric" }).format(now); break;
@@ -328,8 +337,8 @@ function sunTimes(y, m, d, lat, lon) {
           if (kind === "daylen") { var mins = Math.round((st.set - st.rise) / 60000); out = Math.floor(mins / 60) + " " + T.hourShort + " " + (mins % 60) + " " + T.minuteShort; }
           else out = fmt("sun", tz, { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" }).format(new Date(kind === "sunrise" ? st.rise : st.set));
           break;
-        case "monthyear": out = fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
-        case "weekday": out = fmt("wdl", tz, { weekday: "long" }).format(now); break;
+        case "monthyear": p = parts(now, tz); out = useOwn ? CAL.months[p.month - 1] + " " + p.year : fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
+        case "weekday": out = useOwn ? CAL.weekdays[dowOfParts(parts(now, tz))] : fmt("wdl", tz, { weekday: "long" }).format(now); break;
         case "ampm": out = prefs.h12 ? dayPeriod(now, tz) : ""; break;
         case "words": out = wordsText(parts(now, tz)); break;
         case "tzname": out = (tz || "") + " · " + offsetLabel(offsetMin(now, tz)); break;
