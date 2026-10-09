@@ -36,6 +36,7 @@
   }
   function shortDate(m, d) { return S.tpl(CAL.shortFmt || "{day} {month}", { day: d, month: (CAL.months || [])[m - 1] }); }
 
+  var ICONS = { summer: "🏖️", autumn: "🍂", winter: "⛄", spring: "🌸" };
   function drawWheel(nowMs) {
     var el = doc.querySelector("[data-wheel]"); el.textContent = "";
     var p = S.parts(new Date(nowMs), place.tz), Y = p.year, south = place.lat < 0;
@@ -49,36 +50,67 @@
     segs.forEach(function (s, i) { if (td >= s[0]) cur = i; });
     var startIdx = cur === 0 ? b[0] : segs[cur][0], endIdx = cur === 4 ? b[5] : segs[cur][1];
     var classes = ["winter", "spring", "summer", "autumn", "winter"], southClasses = ["summer", "autumn", "winter", "spring", "summer"];
+    var names = south ? southClasses : classes;
     var cx = 180, cy = 180, R = 140;
+    // yaz her zaman üstte, kış altta: yazın orta noktası saat 12 yönüne getirilir
+    var summerMid = south ? (b[4] + b[5]) / 2 : (b[2] + b[3]) / 2;
+    var deg0 = -summerMid / L * 360, TAU = 2 * Math.PI, rad0 = deg0 * Math.PI / 180;
+    var ang = function (i) { return i / L * TAU + rad0; };
     segs.forEach(function (s) {
       var len = (s[1] - s[0]) / L * 360;
-      svg("circle", { cx: cx, cy: cy, r: R, fill: "none", "stroke-width": 28, class: "ws ws-" + (south ? southClasses : classes)[s[2]], pathLength: 360, "stroke-dasharray": len.toFixed(3) + " " + (360 - len).toFixed(3), "stroke-dashoffset": (-(s[0] / L * 360)).toFixed(3), transform: "rotate(-90 180 180)" }, el);
+      svg("circle", { cx: cx, cy: cy, r: R, fill: "none", "stroke-width": 34, class: "ws ws-" + names[s[2]], pathLength: 360, "stroke-dasharray": len.toFixed(3) + " " + (360 - len).toFixed(3), "stroke-dashoffset": (-(s[0] / L * 360)).toFixed(3), transform: "rotate(" + (-90 + deg0).toFixed(3) + " 180 180)" }, el);
     });
     // ay işaretleri (1-12)
     for (var m = 1; m <= 12; m++) {
-      var di = (Date.UTC(Y, m - 1, 1) - jan1) / 86400000, a = di / L * 2 * Math.PI;
-      var x1 = cx + 124 * Math.sin(a), y1 = cy - 124 * Math.cos(a), x2 = cx + 156 * Math.sin(a), y2 = cy - 156 * Math.cos(a);
+      var di = (Date.UTC(Y, m - 1, 1) - jan1) / 86400000, a = ang(di);
+      var x1 = cx + 124 * Math.sin(a), y1 = cy - 124 * Math.cos(a), x2 = cx + 160 * Math.sin(a), y2 = cy - 160 * Math.cos(a);
       svg("line", { x1: x1.toFixed(1), y1: y1.toFixed(1), x2: x2.toFixed(1), y2: y2.toFixed(1), class: "wtick" }, el);
-      var am = ((di + (new Date(Date.UTC(Y, m, 0)).getUTCDate()) / 2) / L) * 2 * Math.PI;
-      var t = svg("text", { x: (cx + 172 * Math.sin(am)).toFixed(1), y: (cy - 172 * Math.cos(am)).toFixed(1), class: "wmonth", "text-anchor": "middle", "dominant-baseline": "central" }, el);
+      var am = ang(di + (new Date(Date.UTC(Y, m, 0)).getUTCDate()) / 2);
+      var t = svg("text", { x: (cx + 176 * Math.sin(am)).toFixed(1), y: (cy - 176 * Math.cos(am)).toFixed(1), class: "wmonth", "text-anchor": "middle", "dominant-baseline": "central" }, el);
       t.textContent = String(m);
     }
-    // mevsim adları
+    // mevsim simgeleri (plaj, kardan adam...) ve adları
     segs.forEach(function (s) {
-      var mid = ((s[0] + s[1]) / 2) / L * 2 * Math.PI;
+      var mid = ang((s[0] + s[1]) / 2);
       if (s[1] - s[0] < 20) return;
-      var t = svg("text", { x: (cx + R * Math.sin(mid)).toFixed(1), y: (cy - R * Math.cos(mid)).toFixed(1), class: "wname", "text-anchor": "middle", "dominant-baseline": "central" }, el);
-      t.textContent = seasonName(s[2], south);
+      var ic = svg("text", { x: (cx + R * Math.sin(mid)).toFixed(1), y: (cy - R * Math.cos(mid)).toFixed(1), class: "wicon", "text-anchor": "middle", "dominant-baseline": "central" }, el);
+      ic.textContent = ICONS[names[s[2]]];
+    });
+    // dönüm noktaları (ekinoks, gündönümü) ve tarihleri
+    [b[1], b[2], b[3], b[4]].forEach(function (i, k) {
+      var a = ang(i), ms = [sCur.march, sCur.june, sCur.sept, sCur.dec][k];
+      svg("circle", { cx: (cx + R * Math.sin(a)).toFixed(1), cy: (cy - R * Math.cos(a)).toFixed(1), r: 6, class: "wturn" }, el);
+      var pp = S.parts(new Date(ms), place.tz);
+      var t = svg("text", { x: (cx + 104 * Math.sin(a)).toFixed(1), y: (cy - 104 * Math.cos(a)).toFixed(1), class: "wturn-label", "text-anchor": "middle", "dominant-baseline": "central" }, el);
+      t.textContent = pp.day + "." + pp.month;
     });
     // bugün
-    var at = td / L * 2 * Math.PI;
-    svg("circle", { cx: (cx + R * Math.sin(at)).toFixed(1), cy: (cy - R * Math.cos(at)).toFixed(1), r: 12, class: "wtoday" }, el);
+    var at = ang(td);
+    svg("circle", { cx: (cx + R * Math.sin(at)).toFixed(1), cy: (cy - R * Math.cos(at)).toFixed(1), r: 13, class: "wtoday" }, el);
     // orta metin
     var nm = seasonName(cur, south);
     setText("[data-n-season]", S.tpl(T.current, { season: nm }));
     setText("[data-n-dayof]", S.tpl(T.dayOf, { n: Math.floor(td - startIdx) + 1, total: Math.round(endIdx - startIdx) }));
     var nextSeasonName = seasonName(cur === 4 ? 1 : cur + 1, south);
     setText("[data-n-next]", S.tpl(T.nextIn, { season: nextSeasonName, days: Math.max(0, Math.ceil(endIdx - td)) }));
+    drawTurns(Y, south, sCur, td, idx);
+  }
+
+  /* Ekinoks ve gündönümü kartları: yarımküreye göre ad, en uzun gün/gece açıklaması, tarih ve kalan gün */
+  function drawTurns(Y, south, sCur, td, idx) {
+    var box = doc.querySelector("[data-n-turns]"); if (!box) return;
+    box.textContent = "";
+    var order = [["march", south ? "autumnEq" : "springEq", "eq"], ["june", south ? "winterSol" : "summerSol", south ? "longNight" : "longDay"], ["sept", south ? "springEq" : "autumnEq", "eq"], ["dec", south ? "summerSol" : "winterSol", south ? "longDay" : "longNight"]];
+    var f = S.fmt("turn", place.tz, { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    order.forEach(function (o) {
+      var ms = sCur[o[0]], d = Math.round(idx(ms) - td), li = doc.createElement("li");
+      li.className = "turn turn-" + o[1];
+      var h = doc.createElement("h3"); h.textContent = T.turnNames[o[1]]; li.appendChild(h);
+      var dt = doc.createElement("p"); dt.className = "turn-date"; dt.textContent = f.format(new Date(ms)); li.appendChild(dt);
+      var rel = doc.createElement("p"); rel.className = "meta"; rel.textContent = d === 0 ? T.turnToday : S.tpl(d > 0 ? T.turnIn : T.turnAgo, { n: Math.abs(d) }); li.appendChild(rel);
+      var nt = doc.createElement("p"); nt.textContent = T.turnNotes[o[2]]; li.appendChild(nt);
+      box.appendChild(li);
+    });
   }
 
   function drawMoon(ms) {

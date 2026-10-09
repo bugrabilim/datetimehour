@@ -38,10 +38,16 @@
     "langMenu": "Language",
     "menu": "Menu",
     "prayer": "Prayer times",
-    "nature": "Nature",
+    "nature": "Seasons",
     "weather": "Weather",
     "today": "Today",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "settings": "Settings",
+    "theme": "Light / dark theme",
+    "placeChange": "Change location",
+    "placeTitle": "Your location",
+    "placeNote": "Your location stays on your device and is used on every page for prayer times, seasons and weather; it is not sent to the server.",
+    "placeClose": "Close"
   },
   "client": {
     "format24": "24-hour",
@@ -132,8 +138,8 @@
       "mono": "White"
     },
     "fsWeather": "Weather",
-    "fsWeatherNeed": "Choose a location for the weather on the",
-    "fsWeatherLink": "weather page",
+    "fsWeatherNeed": "Choose a location for the weather:",
+    "fsWeatherLink": "choose location",
     "fsWeatherFail": "Could not get the weather."
   },
   "home": {
@@ -210,14 +216,12 @@
     "colOffset": "UTC offset",
     "colDiff": "Difference from you",
     "tableCaption": "Current local time in cities",
-    "customize": "Edit cities",
-    "customizeLead": "Choose the cities you want to show; your choice is stored only in this browser.",
+    "customize": "Add / remove cities",
+    "customizeLead": "Add or remove the cities shown on the timeline; your choice is stored only in this browser.",
     "addCity": "Add a city",
     "addZone": "Add another time zone",
     "add": "Add",
     "remove": "Remove",
-    "moveUp": "Move up",
-    "moveDown": "Move down",
     "reset": "Reset to default",
     "empty": "No cities selected.",
     "select": "Select…",
@@ -417,11 +421,21 @@
       "words": "Clock in words",
       "rings": "Ring clock",
       "wx-analog": "Analogue with weather",
-      "wx-digital": "Digital with weather",
+      "wx-digital": "Digital, date and weather",
       "wx-stack": "Analogue, digital and weather",
-      "wx-forecast": "Digital with hourly forecast",
       "bigdate": "Big date",
-      "stack": "Analogue with digital below"
+      "stack": "Analogue with digital below",
+      "wx-analog-date": "Analog, date and weather",
+      "wx-full": "Analog, digital, date and weather",
+      "h-classic": "Side-by-side analog",
+      "h-analog-date": "Side-by-side analog and date",
+      "h-stack": "Side-by-side analog and digital",
+      "h-wx-analog": "Side-by-side analog and weather",
+      "h-wx-stack": "Side-by-side analog, digital and weather",
+      "h-wx-analog-date": "Side-by-side analog, date and weather",
+      "h-wx-full": "Side-by-side analog, digital, date and weather",
+      "wx-digital-cal": "Digital, date, weather and monthly calendar",
+      "wx-digital-cal-week": "Digital, date, weather, monthly calendar and weekly forecast"
     },
     "source": "This clock does not depend on your device: it is read from the Saat Tarih server's NTP-synchronised clock and measured again every 15 minutes.",
     "info": "About this clock's time source",
@@ -466,7 +480,6 @@
     "faqRamadanA": "Ramadan in {year} starts on {start} and ends on {end}. Laylat al-Qadr (Kadir Gecesi) is the evening of {kadir}.",
     "faqHolidays": "How many public holidays are there in {year}?",
     "faqHolidaysA": "There are {n} public holiday days in {year}, {w} of them on weekdays. The eves of Ramazan Bayramı and Kurban Bayramı and 28 October are half days.",
-    "note": "Religious day and night dates follow the Presidency of Religious Affairs (Diyanet) calendar; kandil nights begin on the evening of the listed date. Administrative leave and bridge holidays are not public holidays and are not shown here.",
     "noYear": "There is no data for this year.",
     "months": [
       "January",
@@ -576,11 +589,9 @@
     "hubName": "Yearly calendar",
     "hubDesc": "Public holidays, bayram and eve days, kandil nights and the month of Ramadan.",
     "projected": "This year's religious dates follow the Diyanet long-term calendar and may change as the year approaches.",
-    "schoolNote": "The school calendar follows the Ministry of National Education's 2026-2027 working calendar; provincial directorates may differ locally.",
     "fullFmt": "{weekday}, {day} {month} {year}",
     "shortFmt": "{day} {month}",
     "dateFmt": "{day} {month} {year}",
-    "examNote": "Exam dates follow announcements by ÖSYM, MEB and Anadolu University, which may change them. The 2027 YKS, KPSS and LGS dates have not been announced yet and will be added once they are.",
     "dayNone": "No special day on record.",
     "dayWeek": "Week {n}",
     "dayDoy": "Day {n} of the year",
@@ -588,7 +599,7 @@
     "dayIn": "In {n} days",
     "dayAgo": "{n} days ago",
     "dayClose": "Close",
-    "dayHint": "Select a day for details."
+    "dayToList": "Show in the list of days"
   },
   "tools": {
     "hub": {
@@ -617,10 +628,6 @@
         "week": {
           "name": "What week is it?",
           "desc": "ISO week number, this week's dates, every week of the year."
-        },
-        "today": {
-          "name": "Today's date",
-          "desc": "Today's date, weekday, day of the year and days left."
         },
         "tz": {
           "name": "Türkiye time zone",
@@ -872,41 +879,6 @@
         {
           "q": "What is the week number used for?",
           "a": "Week numbers are not much used in daily life, but ISO week numbers are common in business planning, logistics, education and software. The tool on this page shows the week number of any date you pick."
-        }
-      ]
-    },
-    "today": {
-      "title": "What's Today's Date? Day, Date and Week Number | Saat Tarih",
-      "description": "What is today's date and weekday? Today's date, day, week number, day of the year and days remaining, synced to the server clock and your time zone.",
-      "h1": "What's today's date?",
-      "lead": "Today's date is shown live below. It is calculated from the server's clock and your time zone, so the right day appears even if your device clock is wrong.",
-      "factsHeading": "Today in detail",
-      "fWeekday": "Weekday",
-      "fMonthYear": "Month and year",
-      "fNumeric": "Numeric format",
-      "fIso": "ISO 8601",
-      "fDoy": "Day of the year",
-      "fWeek": "Week number",
-      "fYearLeft": "Days left in the year",
-      "fMonthLeft": "Days left in the month",
-      "fUnix": "Unix timestamp",
-      "faqHeading": "Frequently asked questions about the date",
-      "faq": [
-        {
-          "q": "What day of the week is it today?",
-          "a": "Today's weekday is written in the large date above and in the Weekday box. The date is calculated from the server clock and your time zone."
-        },
-        {
-          "q": "How is the date written in Türkiye?",
-          "a": "In Türkiye the numeric date is written day.month.year, for example 09.10.2026. The international ISO 8601 format goes year-month-day: 2026-10-09."
-        },
-        {
-          "q": "Why can the date here differ from my phone?",
-          "a": "The site runs on the server clock, independently of your device clock. If your device's date or time is wrong you may see a difference; the status line on the page says how far off your device clock is."
-        },
-        {
-          "q": "Which day of the year is it?",
-          "a": "The day of the year is shown live in the box above. 1 January is day 1, and a leap year has 366 days."
         }
       ]
     },
@@ -1288,8 +1260,6 @@
       "isha": "Isha"
     },
     "otherPlace": "For another location, go to the prayer times page",
-    "methodHeading": "How are the times calculated?",
-    "method": "The times come from the position of the sun at your latitude and longitude: fajr starts when the sun is 18° below the horizon, isha when it is 17° below, and asr when an object's shadow equals its length. The results were tuned against the times the Turkish Presidency of Religious Affairs (Diyanet) publishes for province centres; for all 81 province centres the October 2026 times differ by at most 1 minute. For official times, rely on Diyanet; adhan times can differ by a few minutes between districts and mosques.",
     "provincesHeading": "Prayer times by province",
     "provincesLead": "Select a province.",
     "noscript": "JavaScript must be enabled in your browser to see the prayer times.",
@@ -1316,12 +1286,25 @@
         "a": "Yes. The Use my location button calculates the times anywhere in the world. At very high latitudes the fajr or isha angle may not occur; then an approximate time is given with the one-seventh-of-the-night rule."
       }
     ],
-    "search": "prayer times adhan azan fajr dhuhr asr maghrib isha iftar suhoor namaz vakitleri ezan"
+    "search": "prayer times adhan azan fajr dhuhr asr maghrib isha iftar suhoor namaz vakitleri ezan imsakiye ramadan timetable suhoor iftar",
+    "imHeading": "Ramadan timetable (imsakiye)",
+    "imText": "A colourful Ramadan timetable with suhoor (fajr) and iftar (maghrib) times for the coming Ramadan, calculated for your location. Open it, or download it as an image to share or print.",
+    "imOpen": "Open the timetable",
+    "imDownload": "Download as PNG",
+    "imTitle": "Ramadan Timetable {year}",
+    "imAlt": "Ramadan {year} timetable for {place}",
+    "imDay": "Ramadan",
+    "imDate": "Date",
+    "imSahur": "suhoor",
+    "imIftar": "iftar",
+    "imNote": "Times are calculated; for official times follow the Presidency of Religious Affairs (Diyanet).",
+    "imFile": "ramadan-timetable",
+    "imBrand": "Bumba Group · Bumba Life"
   },
   "nature": {
-    "title": "Seasons and Nature: Sun, Moon and Day Length | Saat Tarih",
-    "description": "A seasons wheel, season start dates, today's sunrise and sunset, the Moon's phase and the length of the day through the year, plus nature facts for every season.",
-    "h1": "Seasons and nature",
+    "title": "Seasons: Seasons Wheel, Equinoxes and Solstices | Saat Tarih",
+    "description": "Seasons wheel (summer on top), equinox and solstice dates, the longest day and night, sunrise and sunset, the Moon's phase and day length through the year.",
+    "h1": "Seasons",
     "lead": "The year turns like a wheel: which season are we in, how many days to the next one, when does the sun rise and set, and what phase is the Moon? All on one page for your location or a province you choose.",
     "wheelLabel": "Yearly seasons wheel",
     "seasons": {
@@ -1334,7 +1317,6 @@
     "dayOf": "Day {n} (of {total})",
     "nextIn": "{days} days until the start of {season}",
     "startsOn": "{season} starts: {date}",
-    "chooseNote": "Your location sets both the sunrise and Moon times and the hemisphere.",
     "sunHeading": "The sun today",
     "sunrise": "Sunrise",
     "sunset": "Sunset",
@@ -1419,7 +1401,22 @@
         "a": "The phase comes from the time since the previous new moon as a fraction of the lunar cycle (about 29.5 days). New moon and full moon times are calculated with astronomical formulas to within a few minutes."
       }
     ],
-    "search": "seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length mevsimler ilkbahar yaz sonbahar kış"
+    "search": "seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length mevsimler ilkbahar yaz sonbahar kış",
+    "turnHeading": "Equinoxes and solstices",
+    "turnNames": {
+      "springEq": "Spring equinox",
+      "summerSol": "Summer solstice",
+      "autumnEq": "Autumn equinox",
+      "winterSol": "Winter solstice"
+    },
+    "turnNotes": {
+      "eq": "Day and night are about equal (12 hours).",
+      "longDay": "The longest day and shortest night of the year.",
+      "longNight": "The shortest day and longest night of the year."
+    },
+    "turnIn": "in {n} days",
+    "turnAgo": "{n} days ago",
+    "turnToday": "today"
   },
   "weather": {
     "title": "Weather: Current, Hourly and 7-Day Forecast | Saat Tarih",
@@ -1472,7 +1469,7 @@
       "west",
       "north-west"
     ],
-    "natureLink": "Seasons and nature page",
+    "natureLink": "Seasons page",
     "faqHeading": "Frequently asked questions",
     "faq": [
       {

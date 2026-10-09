@@ -38,10 +38,16 @@
     "langMenu": "Dil seçimi",
     "menu": "Menü",
     "prayer": "Namaz vakitleri",
-    "nature": "Doğa",
+    "nature": "Mevsimler",
     "weather": "Hava durumu",
     "today": "Bugün",
-    "faq": "SSS"
+    "faq": "SSS",
+    "settings": "Ayarlar",
+    "theme": "Açık / koyu tema",
+    "placeChange": "Konumu değiştir",
+    "placeTitle": "Konumunuz",
+    "placeNote": "Konumunuz yalnızca cihazınızda kalır; namaz vakitleri, mevsimler ve hava durumu için tüm sayfalarda kullanılır, sunucuya gönderilmez.",
+    "placeClose": "Kapat"
   },
   "client": {
     "format24": "24 saat",
@@ -133,7 +139,7 @@
     },
     "fsWeather": "Hava durumu",
     "fsWeatherNeed": "Hava durumu için bir konum seçin:",
-    "fsWeatherLink": "hava durumu sayfası",
+    "fsWeatherLink": "konumu seçin",
     "fsWeatherFail": "Hava durumu alınamadı."
   },
   "home": {
@@ -210,14 +216,12 @@
     "colOffset": "UTC farkı",
     "colDiff": "Sizinle fark",
     "tableCaption": "Şehirlerin güncel yerel saati",
-    "customize": "Şehirleri düzenle",
-    "customizeLead": "Göstermek istediğiniz şehirleri seçin; seçiminiz yalnızca bu tarayıcıda saklanır.",
+    "customize": "Şehir ekle / çıkar",
+    "customizeLead": "Zaman çizgisinde göstermek istediğiniz şehirleri ekleyin ya da çıkarın; seçiminiz yalnızca bu tarayıcıda saklanır.",
     "addCity": "Şehir ekle",
     "addZone": "Başka bir saat dilimi ekle",
     "add": "Ekle",
     "remove": "Kaldır",
-    "moveUp": "Yukarı taşı",
-    "moveDown": "Aşağı taşı",
     "reset": "Varsayılana dön",
     "empty": "Hiç şehir seçilmedi.",
     "select": "Seçin…",
@@ -417,11 +421,21 @@
       "words": "Yazıyla saat",
       "rings": "Halka saat",
       "wx-analog": "Analog ve hava durumu",
-      "wx-digital": "Dijital ve hava durumu",
+      "wx-digital": "Dijital, tarih ve hava durumu",
       "wx-stack": "Analog, dijital ve hava durumu",
-      "wx-forecast": "Dijital ve saatlik tahmin",
       "bigdate": "Büyük tarih",
-      "stack": "Analog ve altında dijital"
+      "stack": "Analog ve altında dijital",
+      "wx-analog-date": "Analog, tarih ve hava durumu",
+      "wx-full": "Analog, dijital, tarih ve hava durumu",
+      "h-classic": "Yatay analog",
+      "h-analog-date": "Yatay analog ve tarih",
+      "h-stack": "Yatay analog ve dijital",
+      "h-wx-analog": "Yatay analog ve hava durumu",
+      "h-wx-stack": "Yatay analog, dijital ve hava durumu",
+      "h-wx-analog-date": "Yatay analog, tarih ve hava durumu",
+      "h-wx-full": "Yatay analog, dijital, tarih ve hava durumu",
+      "wx-digital-cal": "Dijital, tarih, hava durumu ve aylık takvim",
+      "wx-digital-cal-week": "Dijital, tarih, hava durumu, aylık takvim ve haftalık hava"
     },
     "source": "Bu saat cihazınızın saatinden bağımsızdır: Saat Tarih sunucusunun NTP ile senkronize edilen saatinden alınır ve 15 dakikada bir yeniden ölçülür.",
     "info": "Saat kaynağı hakkında bilgi",
@@ -466,7 +480,6 @@
     "faqRamadanA": "Ramazan {year} yılında {start} tarihinde başlıyor ve {end} tarihinde sona eriyor. Kadir Gecesi {kadir} akşamıdır.",
     "faqHolidays": "{year} yılında kaç gün resmi tatil var?",
     "faqHolidaysA": "{year} yılında {n} resmi tatil günü var; {w} tanesi hafta içine denk geliyor. Ramazan Bayramı arifesi, Kurban Bayramı arifesi ve 28 Ekim yarım gündür.",
-    "note": "Dini gün ve gece tarihleri Diyanet İşleri Başkanlığı takvimine göredir; kandil geceleri, listelenen tarihin akşamı başlar. İdari izin ve köprü tatilleri resmi tatil sayılmaz ve burada gösterilmez.",
     "noYear": "Bu yıl için veri yok.",
     "months": [
       "Ocak",
@@ -576,11 +589,9 @@
     "hubName": "Yıllık takvim",
     "hubDesc": "Resmi tatiller, bayram ve arife günleri, kandiller ve Ramazan ayı.",
     "projected": "Bu yılın dini gün tarihleri Diyanet'in uzun vadeli takvimine göredir; yıl yaklaşırken değişebilir.",
-    "schoolNote": "Okul takvimi MEB'in 2026-2027 çalışma takvimine göredir; il milli eğitim müdürlükleri yerel farklılık yapabilir.",
     "fullFmt": "{day} {month} {year}, {weekday}",
     "shortFmt": "{day} {month}",
     "dateFmt": "{day} {month} {year}",
-    "examNote": "Sınav tarihleri ÖSYM, MEB ve Anadolu Üniversitesi duyurularına göredir; kurumlar değiştirebilir. 2027 YKS, KPSS ve LGS tarihleri henüz açıklanmadı; açıklanınca eklenecek.",
     "dayNone": "Bu gün için kayıtlı özel gün yok.",
     "dayWeek": "Hafta {n}",
     "dayDoy": "Yılın {n}. günü",
@@ -588,7 +599,7 @@
     "dayIn": "{n} gün sonra",
     "dayAgo": "{n} gün önce",
     "dayClose": "Kapat",
-    "dayHint": "Ayrıntı için bir güne dokunun."
+    "dayToList": "Günler listesinde göster"
   },
   "tools": {
     "hub": {
@@ -617,10 +628,6 @@
         "week": {
           "name": "Kaçıncı haftadayız?",
           "desc": "ISO hafta numarası, bu haftanın tarihleri, tüm haftalar."
-        },
-        "today": {
-          "name": "Bugün ayın kaçı?",
-          "desc": "Bugünün tarihi, günü, yılın günü ve kalan gün."
         },
         "tz": {
           "name": "Türkiye saat dilimi",
@@ -872,41 +879,6 @@
         {
           "q": "Hafta numarası ne işe yarar?",
           "a": "Hafta numarası günlük hayatta çok kullanılmaz; ancak iş planlaması, lojistik, eğitim ve yazılım gibi alanlarda ISO hafta numarası yaygındır. Bu sayfadaki araç, seçtiğiniz tarihin hafta numarasını gösterir."
-        }
-      ]
-    },
-    "today": {
-      "title": "Bugün Ayın Kaçı? Bugünün Tarihi, Günü ve Haftası | Saat Tarih",
-      "description": "Bugün ayın kaçı, günlerden ne? Bugünün tarihi, günü, hafta numarası, yılın günü ve kalan gün sayısı; sunucu saatiyle senkron ve saat diliminize göre.",
-      "h1": "Bugün ayın kaçı?",
-      "lead": "Bugünün tarihi aşağıda canlı gösterilir. Tarih, siteyi sunan sunucunun saatine göre ve bulunduğunuz saat dilimiyle hesaplanır; cihazınızın saati yanlış olsa bile doğru gün görünür.",
-      "factsHeading": "Bugünün ayrıntıları",
-      "fWeekday": "Gün",
-      "fMonthYear": "Ay ve yıl",
-      "fNumeric": "Sayısal yazım",
-      "fIso": "ISO 8601",
-      "fDoy": "Yılın günü",
-      "fWeek": "Hafta numarası",
-      "fYearLeft": "Yıl bitimine kalan gün",
-      "fMonthLeft": "Ay bitimine kalan gün",
-      "fUnix": "Unix zaman damgası",
-      "faqHeading": "Tarih hakkında sık sorulanlar",
-      "faq": [
-        {
-          "q": "Bugün günlerden ne?",
-          "a": "Bugünün günü yukarıdaki büyük tarihte ve \"Gün\" kutusunda yazar. Tarih sunucu saatine göre ve saat diliminize göre hesaplanır."
-        },
-        {
-          "q": "Tarih Türkiye'de nasıl yazılır?",
-          "a": "Türkiye'de sayısal tarih gün.ay.yıl biçiminde yazılır; örneğin 09.10.2026. Uluslararası ISO 8601 biçimi yıl-ay-gün sırasındadır: 2026-10-09."
-        },
-        {
-          "q": "Bu sitedeki tarih neden telefonumdan farklı olabilir?",
-          "a": "Site, cihaz saatinizden bağımsız olarak sunucu saatiyle çalışır. Cihazınızın tarihi ya da saati yanlışsa fark görebilirsiniz; sayfadaki durum satırı cihaz saatinizin ne kadar saptığını söyler."
-        },
-        {
-          "q": "Yılın kaçıncı günündeyiz?",
-          "a": "Yılın günü numarası yukarıdaki kutuda canlı gösterilir. 1 Ocak yılın 1. günüdür; artık yıllarda yıl 366 gün sürer."
         }
       ]
     },
@@ -1288,8 +1260,6 @@
       "isha": "Yatsı"
     },
     "otherPlace": "Başka bir konum için namaz vakitleri sayfasına gidin",
-    "methodHeading": "Vakitler nasıl hesaplanıyor?",
-    "method": "Vakitler, konumun enlem ve boylamından güneşin konumu hesaplanarak bulunur: imsak güneş ufkun 18° altındayken, yatsı 17° altındayken, ikindi gölge boyu cismin boyuna eşit olduğunda başlar. Sonuçlar, Diyanet İşleri Başkanlığı'nın il merkezleri için yayımladığı vakitlerle karşılaştırılarak ayarlandı; 81 il merkezinde Ekim 2026 vakitlerinde fark en fazla 1 dakikadır. Resmî vakit için Diyanet esas alınmalıdır; ezan saatleri ilçeden ilçeye ve camiden camiye birkaç dakika değişebilir.",
     "provincesHeading": "İllere göre namaz vakitleri",
     "provincesLead": "Bir ile tıklayın.",
     "noscript": "Namaz vakitlerini görmek için tarayıcınızda JavaScript açık olmalıdır.",
@@ -1316,12 +1286,25 @@
         "a": "Evet. Konumumu kullan düğmesiyle dünyanın her yerinde vakit hesaplanır. Çok yüksek enlemlerde imsak ya da yatsı açısı oluşmayabilir; o durumda gecenin yedide biri kuralıyla yaklaşık değer verilir."
       }
     ],
-    "search": "namaz vakti ezan imsak iftar sahur sahur vakti iftar saati prayer times adhan fajr"
+    "search": "namaz vakti ezan imsak iftar sahur sahur vakti iftar saati prayer times adhan fajr imsakiye ramazan imsakiyesi",
+    "imHeading": "Ramazan imsakiyesi",
+    "imText": "Bir sonraki Ramazan ayı için sahur (imsak) ve iftar (akşam) saatlerini içeren renkli imsakiye; konumunuza göre hesaplanır. Açabilir, görsel olarak indirip paylaşabilir ya da yazdırabilirsiniz.",
+    "imOpen": "İmsakiyeyi aç",
+    "imDownload": "PNG olarak indir",
+    "imTitle": "Ramazan İmsakiyesi {year}",
+    "imAlt": "{place} için {year} Ramazan imsakiyesi",
+    "imDay": "Ramazan",
+    "imDate": "Tarih",
+    "imSahur": "sahur",
+    "imIftar": "iftar",
+    "imNote": "Vakitler hesaplanmıştır; resmî vakit için Diyanet İşleri Başkanlığı esas alınır.",
+    "imFile": "ramazan-imsakiyesi",
+    "imBrand": "Bumba Group · Bumba Life"
   },
   "nature": {
-    "title": "Mevsimler ve Doğa: Güneş, Ay ve Gün Uzunluğu | Saat Tarih",
-    "description": "Mevsim çarkı, mevsim başlangıçları, bugünün gün doğumu ve batımı, Ay'ın evresi ve yıl boyunca gün uzunluğu; mevsimlere dair doğa bilgileri.",
-    "h1": "Mevsimler ve doğa",
+    "title": "Mevsimler: Mevsim Çarkı, Ekinoks ve Gündönümü | Saat Tarih",
+    "description": "Mevsim çarkı (yaz üstte, kış altta), ekinoks ve gündönümü tarihleri, en uzun gün ve gece, gün doğumu ve batımı, Ay'ın evresi ve gün uzunluğu.",
+    "h1": "Mevsimler",
     "lead": "Yıl bir çark gibi döner: hangi mevsimdeyiz, sıradaki mevsime kaç gün var, güneş ne zaman doğup batıyor, Ay hangi evrede? Konumunuza ya da seçtiğiniz ile göre hepsi tek sayfada.",
     "wheelLabel": "Yıllık mevsim çarkı",
     "seasons": {
@@ -1334,7 +1317,6 @@
     "dayOf": "{n}. gün (toplam {total})",
     "nextIn": "{season} başlangıcına {days} gün kaldı",
     "startsOn": "{season} başlangıcı: {date}",
-    "chooseNote": "Konum seçimi hem gün doğumu ve Ay saatlerini hem de yarımküreyi belirler.",
     "sunHeading": "Güneş bugün",
     "sunrise": "Gün doğumu",
     "sunset": "Gün batımı",
@@ -1419,7 +1401,22 @@
         "a": "Ay'ın evresi, bir önceki yeni aydan bugüne geçen sürenin ay döngüsüne (yaklaşık 29,5 gün) oranından bulunur. Yeni ay ve dolunay zamanları astronomik formüllerle birkaç dakika doğrulukla hesaplanır."
       }
     ],
-    "search": "mevsimler ilkbahar yaz sonbahar kış ekinoks gündönümü ay evresi dolunay yeni ay gün doğumu gün batımı gün uzunluğu seasons equinox solstice moon phase sunrise sunset"
+    "search": "mevsimler ilkbahar yaz sonbahar kış ekinoks gündönümü ay evresi dolunay yeni ay gün doğumu gün batımı gün uzunluğu seasons equinox solstice moon phase sunrise sunset",
+    "turnHeading": "Ekinoks ve gündönümü",
+    "turnNames": {
+      "springEq": "İlkbahar ekinoksu",
+      "summerSol": "Yaz gündönümü",
+      "autumnEq": "Sonbahar ekinoksu",
+      "winterSol": "Kış gündönümü"
+    },
+    "turnNotes": {
+      "eq": "Gece ile gündüz yaklaşık eşit (12 saat).",
+      "longDay": "Yılın en uzun günü ve en kısa gecesi.",
+      "longNight": "Yılın en kısa günü ve en uzun gecesi."
+    },
+    "turnIn": "{n} gün sonra",
+    "turnAgo": "{n} gün önce",
+    "turnToday": "bugün"
   },
   "weather": {
     "title": "Hava Durumu: Güncel, Saatlik ve 7 Günlük Tahmin | Saat Tarih",
@@ -1472,7 +1469,7 @@
       "Batı",
       "Kuzeybatı"
     ],
-    "natureLink": "Mevsimler ve doğa sayfası",
+    "natureLink": "Mevsimler sayfası",
     "faqHeading": "Sık sorulan sorular",
     "faq": [
       {

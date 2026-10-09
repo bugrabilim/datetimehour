@@ -38,10 +38,16 @@
     "langMenu": "Sprache",
     "menu": "Menü",
     "prayer": "Gebetszeiten",
-    "nature": "Natur",
+    "nature": "Jahreszeiten",
     "weather": "Wetter",
     "today": "Heute",
-    "faq": "FAQ"
+    "faq": "FAQ",
+    "settings": "Einstellungen",
+    "theme": "Helles / dunkles Design",
+    "placeChange": "Standort ändern",
+    "placeTitle": "Ihr Standort",
+    "placeNote": "Ihr Standort bleibt auf Ihrem Gerät und wird auf allen Seiten für Gebetszeiten, Jahreszeiten und Wetter verwendet; er wird nicht an den Server gesendet.",
+    "placeClose": "Schließen"
   },
   "client": {
     "format24": "24 Stunden",
@@ -159,8 +165,8 @@
       "mono": "Weiß"
     },
     "fsWeather": "Wetter",
-    "fsWeatherNeed": "Wählen Sie für das Wetter einen Ort auf der",
-    "fsWeatherLink": "Wetterseite",
+    "fsWeatherNeed": "Wählen Sie einen Standort für das Wetter:",
+    "fsWeatherLink": "Standort wählen",
     "fsWeatherFail": "Das Wetter konnte nicht abgerufen werden."
   },
   "home": {
@@ -237,14 +243,12 @@
     "colOffset": "UTC-Versatz",
     "colDiff": "Unterschied zu Ihnen",
     "tableCaption": "Aktuelle Ortszeit in Städten",
-    "customize": "Städte bearbeiten",
-    "customizeLead": "Wählen Sie die anzuzeigenden Städte; Ihre Auswahl wird nur in diesem Browser gespeichert.",
+    "customize": "Städte hinzufügen / entfernen",
+    "customizeLead": "Fügen Sie Städte zur Zeitleiste hinzu oder entfernen Sie sie; Ihre Auswahl wird nur in diesem Browser gespeichert.",
     "addCity": "Stadt hinzufügen",
     "addZone": "Weitere Zeitzone hinzufügen",
     "add": "Hinzufügen",
     "remove": "Entfernen",
-    "moveUp": "Nach oben",
-    "moveDown": "Nach unten",
     "reset": "Zurücksetzen",
     "empty": "Keine Stadt ausgewählt.",
     "select": "Auswählen …",
@@ -444,11 +448,21 @@
       "words": "Uhr in Worten",
       "rings": "Ringuhr",
       "wx-analog": "Analog mit Wetter",
-      "wx-digital": "Digital mit Wetter",
+      "wx-digital": "Digital, Datum und Wetter",
       "wx-stack": "Analog, digital und Wetter",
-      "wx-forecast": "Digital mit Stundenprognose",
       "bigdate": "Großes Datum",
-      "stack": "Analog mit digitaler Anzeige darunter"
+      "stack": "Analog mit digitaler Anzeige darunter",
+      "wx-analog-date": "Analog, Datum und Wetter",
+      "wx-full": "Analog, digital, Datum und Wetter",
+      "h-classic": "Analog nebeneinander",
+      "h-analog-date": "Analog und Datum nebeneinander",
+      "h-stack": "Analog und digital nebeneinander",
+      "h-wx-analog": "Analog und Wetter nebeneinander",
+      "h-wx-stack": "Analog, digital und Wetter nebeneinander",
+      "h-wx-analog-date": "Analog, Datum und Wetter nebeneinander",
+      "h-wx-full": "Analog, digital, Datum und Wetter nebeneinander",
+      "wx-digital-cal": "Digital, Datum, Wetter und Monatskalender",
+      "wx-digital-cal-week": "Digital, Datum, Wetter, Monatskalender und Wochenwetter"
     },
     "source": "Diese Uhr ist unabhängig von Ihrem Gerät: Sie wird von der per NTP synchronisierten Uhr des Saat-Tarih-Servers abgelesen und alle 15 Minuten neu gemessen.",
     "info": "Info zur Zeitquelle",
@@ -493,7 +507,6 @@
     "faqRamadanA": "Der Ramadan {year} beginnt am {start} und endet am {end}. Die Kadir-Nacht (Laylat al-Qadr, Kadir Gecesi) ist am Abend des {kadir}.",
     "faqHolidays": "Wie viele gesetzliche Feiertage gibt es {year}?",
     "faqHolidaysA": "Im Jahr {year} gibt es {n} gesetzliche Feiertage, davon {w} an Werktagen. Die Vorabende von Ramadanfest und Opferfest sowie der 28. Oktober sind halbe Feiertage.",
-    "note": "Die Termine religiöser Tage und Nächte richten sich nach dem Kalender des türkischen Präsidiums für Religionsangelegenheiten (Diyanet); Kandil-Nächte beginnen am Abend des angegebenen Datums. Arbeitsfreie Tage für den öffentlichen Dienst (idari izin) und Brückentage sind keine gesetzlichen Feiertage und werden hier nicht aufgeführt.",
     "noYear": "Für dieses Jahr liegen keine Daten vor.",
     "months": [
       "Januar",
@@ -603,11 +616,9 @@
     "hubName": "Jahreskalender",
     "hubDesc": "Gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und der Fastenmonat Ramadan.",
     "projected": "Die religiösen Termine dieses Jahres folgen dem langfristigen Kalender der Diyanet und können sich bis dahin noch ändern.",
-    "schoolNote": "Der Schulkalender folgt dem Arbeitskalender 2026-2027 des türkischen Bildungsministeriums (MEB); die Bildungsdirektionen der Provinzen können örtlich abweichen.",
     "fullFmt": "{weekday}, {day}. {month} {year}",
     "shortFmt": "{day}. {month}",
     "dateFmt": "{day}. {month} {year}",
-    "examNote": "Die Prüfungstermine folgen den Bekanntgaben von ÖSYM, MEB und der Anadolu-Universität, die sie ändern können. Die Termine für YKS, KPSS und LGS 2027 sind noch nicht veröffentlicht und werden nachgetragen.",
     "dayNone": "Kein besonderer Tag eingetragen.",
     "dayWeek": "Woche {n}",
     "dayDoy": "{n}. Tag des Jahres",
@@ -615,7 +626,7 @@
     "dayIn": "In {n} Tagen",
     "dayAgo": "Vor {n} Tagen",
     "dayClose": "Schließen",
-    "dayHint": "Tippen Sie auf einen Tag für Details."
+    "dayToList": "In der Tagesliste zeigen"
   },
   "tools": {
     "hub": {
@@ -644,10 +655,6 @@
         "week": {
           "name": "Welche Kalenderwoche haben wir?",
           "desc": "ISO-Kalenderwoche, Daten dieser Woche, alle Wochen des Jahres."
-        },
-        "today": {
-          "name": "Heutiges Datum",
-          "desc": "Heutiges Datum, Wochentag, Tag des Jahres und verbleibende Tage."
         },
         "tz": {
           "name": "Zeitzone der Türkei",
@@ -899,41 +906,6 @@
         {
           "q": "Wofür wird die Kalenderwoche verwendet?",
           "a": "ISO-Kalenderwochen sind in der Geschäftsplanung, in Logistik, Bildung und Software verbreitet und im deutschsprachigen Raum auch im Alltag üblich. Das Tool auf dieser Seite zeigt die Kalenderwoche jedes gewählten Datums."
-        }
-      ]
-    },
-    "today": {
-      "title": "Welches Datum ist heute? Tag, Datum und KW | Saat Tarih",
-      "description": "Welches Datum und welcher Wochentag ist heute? Datum, Wochentag, Kalenderwoche, Tag des Jahres und verbleibende Tage – nach Serveruhr und Ihrer Zeitzone.",
-      "h1": "Welches Datum ist heute?",
-      "lead": "Das heutige Datum wird unten live angezeigt. Es wird aus der Serveruhr und Ihrer Zeitzone berechnet, daher erscheint der richtige Tag auch dann, wenn Ihre Geräteuhr falsch geht.",
-      "factsHeading": "Der heutige Tag im Detail",
-      "fWeekday": "Wochentag",
-      "fMonthYear": "Monat und Jahr",
-      "fNumeric": "Numerisches Format",
-      "fIso": "ISO 8601",
-      "fDoy": "Tag des Jahres",
-      "fWeek": "Kalenderwoche",
-      "fYearLeft": "Verbleibende Tage im Jahr",
-      "fMonthLeft": "Verbleibende Tage im Monat",
-      "fUnix": "Unix-Zeitstempel",
-      "faqHeading": "Häufige Fragen zum Datum",
-      "faq": [
-        {
-          "q": "Welcher Wochentag ist heute?",
-          "a": "Der heutige Wochentag steht im großen Datum oben und im Feld „Wochentag“. Das Datum wird aus der Serveruhr und Ihrer Zeitzone berechnet."
-        },
-        {
-          "q": "Wie wird das Datum in der Türkei geschrieben?",
-          "a": "In der Türkei wird das numerische Datum wie im Deutschen in der Reihenfolge Tag.Monat.Jahr geschrieben, zum Beispiel 09.10.2026. Das internationale Format nach ISO 8601 lautet Jahr-Monat-Tag: 2026-10-09."
-        },
-        {
-          "q": "Warum kann das Datum hier von meinem Handy abweichen?",
-          "a": "Die Website läuft nach der Serveruhr, unabhängig von Ihrer Geräteuhr. Sind Datum oder Uhrzeit Ihres Geräts falsch eingestellt, kann es zu Abweichungen kommen; die Statuszeile auf der Seite zeigt, wie weit Ihre Geräteuhr abweicht."
-        },
-        {
-          "q": "Der wievielte Tag des Jahres ist heute?",
-          "a": "Der Tag des Jahres wird oben im Feld live angezeigt. Der 1. Januar ist Tag 1, ein Schaltjahr hat 366 Tage."
         }
       ]
     },
@@ -1315,8 +1287,6 @@
       "isha": "Ischa"
     },
     "otherPlace": "Für einen anderen Standort öffnen Sie die Seite der Gebetszeiten",
-    "methodHeading": "Wie werden die Zeiten berechnet?",
-    "method": "Die Zeiten ergeben sich aus dem Sonnenstand an Ihrem Breiten- und Längengrad: Fadschr beginnt, wenn die Sonne 18° unter dem Horizont steht, Ischa bei 17° und Asr, wenn der Schatten eines Gegenstands so lang ist wie der Gegenstand. Die Ergebnisse wurden mit den Zeiten abgeglichen, die das türkische Präsidium für Religionsangelegenheiten (Diyanet) für die Provinzzentren veröffentlicht; für alle 81 Provinzzentren weichen die Zeiten vom Oktober 2026 höchstens um 1 Minute ab. Maßgeblich sind die offiziellen Zeiten der Diyanet; Gebetszeiten können je nach Bezirk und Moschee um einige Minuten abweichen.",
     "provincesHeading": "Gebetszeiten nach Provinz",
     "provincesLead": "Wählen Sie eine Provinz.",
     "noscript": "Zum Anzeigen der Gebetszeiten muss JavaScript im Browser aktiviert sein.",
@@ -1343,12 +1313,25 @@
         "a": "Ja. Mit „Meinen Standort verwenden“ werden die Zeiten überall auf der Welt berechnet. In sehr hohen Breiten kann der Winkel für Fadschr oder Ischa ausbleiben; dann wird ein Näherungswert nach der Siebtel-der-Nacht-Regel angegeben."
       }
     ],
-    "search": "gebetszeiten gebetszeit gebetsruf adhan fadschr dhuhr asr maghrib ischa iftar sahur namaz vakitleri"
+    "search": "gebetszeiten gebetszeit gebetsruf adhan fadschr dhuhr asr maghrib ischa iftar sahur namaz vakitleri imsakiye ramadan zeitplan suhur iftar",
+    "imHeading": "Ramadan-Imsakiye (Zeitplan)",
+    "imText": "Ein farbiger Ramadan-Zeitplan mit Suhur- (Fadschr) und Iftar-Zeiten (Maghrib) für den kommenden Ramadan, berechnet für Ihren Standort. Öffnen Sie ihn oder laden Sie ihn als Bild zum Teilen oder Drucken herunter.",
+    "imOpen": "Zeitplan öffnen",
+    "imDownload": "Als PNG herunterladen",
+    "imTitle": "Ramadan-Imsakiye {year}",
+    "imAlt": "Ramadan-Zeitplan {year} für {place}",
+    "imDay": "Ramadan",
+    "imDate": "Datum",
+    "imSahur": "Suhur",
+    "imIftar": "Iftar",
+    "imNote": "Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für religiöse Angelegenheiten (Diyanet).",
+    "imFile": "ramadan-imsakiye",
+    "imBrand": "Bumba Group · Bumba Life"
   },
   "nature": {
-    "title": "Jahreszeiten und Natur: Sonne, Mond, Tageslänge | Saat Tarih",
-    "description": "Jahreszeitenrad, Beginn der Jahreszeiten, Sonnenaufgang und -untergang heute, Mondphase und Tageslänge im Jahresverlauf sowie Naturwissen zu jeder Jahreszeit.",
-    "h1": "Jahreszeiten und Natur",
+    "title": "Jahreszeiten: Jahreskreis und Sonnenwenden | Saat Tarih",
+    "description": "Jahreskreis (Sommer oben), Daten der Sonnenwenden und Tagundnachtgleichen, längster Tag, Sonnenauf- und -untergang, Mondphase und Tageslänge.",
+    "h1": "Jahreszeiten",
     "lead": "Das Jahr dreht sich wie ein Rad: Welche Jahreszeit haben wir, wie viele Tage sind es bis zur nächsten, wann gehen Sonne auf und unter, und welche Phase hat der Mond? Alles auf einer Seite für Ihren Standort oder eine gewählte Provinz.",
     "wheelLabel": "Jahreszeitenrad des Jahres",
     "seasons": {
@@ -1361,7 +1344,6 @@
     "dayOf": "Tag {n} (von {total})",
     "nextIn": "Noch {days} Tage bis {season}",
     "startsOn": "Beginn von {season}: {date}",
-    "chooseNote": "Ihr Standort bestimmt sowohl die Zeiten für Sonne und Mond als auch die Erdhalbkugel.",
     "sunHeading": "Die Sonne heute",
     "sunrise": "Sonnenaufgang",
     "sunset": "Sonnenuntergang",
@@ -1446,7 +1428,22 @@
         "a": "Die Phase ergibt sich aus der Zeit seit dem letzten Neumond als Anteil des Mondzyklus (etwa 29,5 Tage). Die Zeitpunkte von Neumond und Vollmond werden mit astronomischen Formeln auf wenige Minuten genau berechnet."
       }
     ],
-    "search": "seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length mevsimler ilkbahar yaz sonbahar kış jahreszeiten frühling sommer herbst winter tagundnachtgleiche sonnenwende mond mondphase vollmond neumond sonnenaufgang sonnenuntergang tageslänge natur"
+    "search": "seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length mevsimler ilkbahar yaz sonbahar kış jahreszeiten frühling sommer herbst winter tagundnachtgleiche sonnenwende mond mondphase vollmond neumond sonnenaufgang sonnenuntergang tageslänge natur",
+    "turnHeading": "Tagundnachtgleichen und Sonnenwenden",
+    "turnNames": {
+      "springEq": "Frühlings-Tagundnachtgleiche",
+      "summerSol": "Sommersonnenwende",
+      "autumnEq": "Herbst-Tagundnachtgleiche",
+      "winterSol": "Wintersonnenwende"
+    },
+    "turnNotes": {
+      "eq": "Tag und Nacht sind etwa gleich lang (12 Stunden).",
+      "longDay": "Der längste Tag und die kürzeste Nacht des Jahres.",
+      "longNight": "Der kürzeste Tag und die längste Nacht des Jahres."
+    },
+    "turnIn": "in {n} Tagen",
+    "turnAgo": "vor {n} Tagen",
+    "turnToday": "heute"
   },
   "weather": {
     "title": "Wetter: aktuell, stündlich und 7-Tage-Vorhersage | Saat Tarih",
@@ -1499,7 +1496,7 @@
       "Westen",
       "Nordwesten"
     ],
-    "natureLink": "Seite Jahreszeiten und Natur",
+    "natureLink": "Seite Jahreszeiten",
     "faqHeading": "Häufig gestellte Fragen",
     "faq": [
       {

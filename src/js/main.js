@@ -51,8 +51,8 @@
     Array.prototype.forEach.call(langLinks, function (a) { if (a.getAttribute("hreflang") === saved) target = a; });
     if (target) location.replace(target.getAttribute("href") + location.hash);
   })();
-  Array.prototype.forEach.call(doc.querySelectorAll(".lang-menu"), function (m) {
-    doc.addEventListener("click", function (e) { if (!m.contains(e.target)) m.removeAttribute("open"); });
+  Array.prototype.forEach.call(doc.querySelectorAll(".settings-menu"), function (m) {
+    doc.addEventListener("click", function (e) { if (!m.contains(e.target) || (e.target.closest && e.target.closest("[data-search-open], a"))) m.removeAttribute("open"); });
     m.addEventListener("keydown", function (e) { if (e.key === "Escape") { m.removeAttribute("open"); var sm = m.querySelector("summary"); if (sm) sm.focus(); } });
   });
 
@@ -75,7 +75,6 @@
     btn.addEventListener("click", function (e) { e.stopPropagation(); set(!nav.classList.contains("is-open")); });
     doc.addEventListener("click", function (e) { if (!nav.contains(e.target) && e.target !== btn) set(false); });
     doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("is-open")) { set(false); btn.focus(); } });
-    Array.prototype.forEach.call(nav.querySelectorAll("[data-search-open]"), function (b) { b.addEventListener("click", function () { set(false); }); });
   })();
 
   /* ---------- Tema ---------- */
@@ -454,17 +453,20 @@ function sunTimes(y, m, d, lat, lon) {
     setTimeout(schedule, 1000 - (nowMs() % 1000) + 5);
   }
 
-  var fmtBtns = Array.prototype.slice.call(doc.querySelectorAll("[data-fmt]"));
+  var fmtBtns = Array.prototype.slice.call(doc.querySelectorAll("[data-fmt-toggle]"));
   var btnSec = doc.querySelector("[data-pref=sec]");
   var tickBtns = Array.prototype.slice.call(doc.querySelectorAll("[data-tick]"));
   function syncButtons() {
     tickBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(prefs.tick)); });
-    fmtBtns.forEach(function (b) { b.setAttribute("aria-pressed", String((b.getAttribute("data-fmt") === "12") === prefs.h12)); });
+    fmtBtns.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(prefs.h12));
+      Array.prototype.forEach.call(b.querySelectorAll("[data-fmt-part]"), function (sp) { sp.classList.toggle("is-on", (sp.getAttribute("data-fmt-part") === "12") === prefs.h12); });
+    });
     if (btnSec) btnSec.setAttribute("aria-pressed", String(prefs.sec));
     root.classList.toggle("sec-off", !prefs.sec);
   }
   function savePrefs() { store("sth-prefs", JSON.stringify(prefs)); syncButtons(); render(); }
-  fmtBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.h12 = b.getAttribute("data-fmt") === "12"; savePrefs(); }); });
+  fmtBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.h12 = !prefs.h12; savePrefs(); }); });
   if (btnSec) btnSec.addEventListener("click", function () { prefs.sec = !prefs.sec; savePrefs(); });
   tickBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.tick = !prefs.tick; if (prefs.tick) ensureAudio(); savePrefs(); }); });
   if (tickBtns.length) doc.addEventListener("pointerdown", function () { if (prefs.tick && (!audio || audio.state !== "running")) ensureAudio(); }, { passive: true });

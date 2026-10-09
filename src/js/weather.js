@@ -17,6 +17,8 @@
   function render(place, d) {
     var c = d.current, i = W.info(c.weather_code, c.is_day);
     q("[data-wx-place]").textContent = place.name;
+    var theme = /^(clear|mostlyClear)$/.test(i.key) ? "clear" : /^(partly|overcast)$/.test(i.key) ? "cloud" : i.key === "fog" ? "fog" : /snow/i.test(i.key) ? "snow" : /thunder/.test(i.key) ? "storm" : "rain";
+    root.className = "wx-hero wx-" + theme + (c.is_day === 0 ? " is-night" : "");
     q("[data-wx-icon]").textContent = i.icon;
     q("[data-wx-temp]").textContent = W.temp(c.temperature_2m);
     q("[data-wx-cond]").textContent = i.label;
@@ -44,6 +46,7 @@
     q("[data-wx-hourly-box]").hidden = false;
     // günlük
     var dd = d.daily, du = q("[data-wx-daily]"); du.textContent = "";
+    var lo = Math.min.apply(null, dd.temperature_2m_min), hi = Math.max.apply(null, dd.temperature_2m_max), span = Math.max(1, hi - lo);
     for (var j = 0; j < dd.time.length; j++) {
       var row = el("li", "wx-day"), di = W.info(dd.weather_code[j], 1), p = dd.time[j].split("-").map(Number);
       var wd = (new Date(Date.UTC(p[0], p[1] - 1, p[2])).getUTCDay() + 6) % 7;
@@ -52,7 +55,11 @@
       row.appendChild(el("span", "wx-d-cond", di.label));
       var pr = dd.precipitation_probability_max[j];
       row.appendChild(el("span", "wx-d-rain", pr != null && pr >= 10 ? pr + "% · " + (Math.round(dd.precipitation_sum[j] * 10) / 10) + " mm" : " "));
-      row.appendChild(el("span", "wx-d-temp", W.temp(dd.temperature_2m_max[j]) + " / " + W.temp(dd.temperature_2m_min[j])));
+      var bar = el("span", "wx-d-bar"), fill = el("i");
+      fill.style.setProperty("--lo", ((dd.temperature_2m_min[j] - lo) / span * 100).toFixed(1) + "%");
+      fill.style.setProperty("--hi", ((dd.temperature_2m_max[j] - lo) / span * 100).toFixed(1) + "%");
+      bar.appendChild(fill); bar.setAttribute("aria-hidden", "true"); row.appendChild(bar);
+      row.appendChild(el("span", "wx-d-temp", W.temp(dd.temperature_2m_min[j]) + " / " + W.temp(dd.temperature_2m_max[j])));
       du.appendChild(row);
     }
     q("[data-wx-daily-box]").hidden = false;
@@ -68,5 +75,5 @@
       .catch(function () { if (my !== seq) return; stateEl.textContent = X.error; retry.hidden = false; nowBox.hidden = true; q("[data-wx-hourly-box]").hidden = true; q("[data-wx-daily-box]").hidden = true; });
   }
   retry.addEventListener("click", function () { W.clearFailures(); if (current) go(current); });
-  window.sthPlace.attach(root, go);
+  window.sthPlace.use(go);
 })();
