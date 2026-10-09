@@ -1,4 +1,4 @@
-/* Takvim: bugünü işaretler, kalan günleri yazar, ana sayfada yaklaşan günleri listeler.
+/* Takvim: bugünü işaretler, kalan günleri yazar, güne dokununca pencere açar.
    Tarihler sunucu-senkron saatle (window.sth.nowDate) ve cihazın saat dilimiyle hesaplanır. */
 (function () {
   "use strict";
@@ -39,16 +39,18 @@
     });
     if (nextRow) nextRow.classList.add("is-next");
 
-    /* Güne dokununca ayrıntı paneli (özel günler, hafta numarası, kalan gün) */
-    var panel = doc.getElementById("day-detail"), C = S.T.cald;
-    if (panel && C) {
+    /* Güne dokununca açılan pencere (özel günler, hafta numarası, kalan gün); günler listesine bağlanır */
+    var dlg = doc.getElementById("day-dialog"), C = S.T.cald;
+    if (dlg && C) {
       var evMap = null, selected = null;
       var loadEvents = function (cb) {
         if (evMap) return cb();
         fetch(S.cfg.eventsUrl, { credentials: "omit" }).then(function (r) { return r.json(); }).then(function (list) {
-          evMap = {}; list.forEach(function (e) { (evMap[e.d] = evMap[e.d] || []).push(e); }); cb();
+          evMap = {}; list.forEach(function (e) { if (e.t === "exam") return; (evMap[e.d] = evMap[e.d] || []).push(e); }); cb();
         }).catch(function () { evMap = {}; cb(); });
       };
+      var closeDlg = function () { if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open"); };
+      var link = dlg.querySelector("[data-day-link]");
       var show = function (td) {
         var d = td.getAttribute("data-d"), m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(d);
         if (!m) return;
@@ -56,31 +58,34 @@
         loadEvents(function () {
           if (selected) selected.classList.remove("d-selected");
           selected = td; td.classList.add("d-selected");
-          panel.textContent = "";
-          var head = doc.createElement("div"); head.className = "day-detail-head";
-          var h = doc.createElement("h3"); h.textContent = S.longDate(pp); head.appendChild(h);
-          var x = doc.createElement("button"); x.type = "button"; x.className = "icon-btn"; x.textContent = "✕"; x.setAttribute("aria-label", C.close);
-          x.addEventListener("click", function () { panel.hidden = true; if (selected) selected.classList.remove("d-selected"); selected = null; });
-          head.appendChild(x); panel.appendChild(head);
-          var ul = doc.createElement("ul"), seen = {};
+          dlg.querySelector("[data-day-title]").textContent = S.longDate(pp);
+          var ul = dlg.querySelector("[data-day-list]"); ul.textContent = "";
+          var seen = {};
           (evMap[d] || []).forEach(function (e) {
             var li = doc.createElement("li"); li.textContent = e.n + " (" + (C.types[e.t] || e.t) + ")"; ul.appendChild(li); seen[e.t] = 1;
           });
-          [["d-ramadan", "ramadan"], ["d-school", "school"], ["d-exam", "exam"]].forEach(function (c) {
+          [["d-ramadan", "ramadan"], ["d-school", "school"]].forEach(function (c) {
             if (td.classList.contains(c[0]) && !seen[c[1]] && C.types[c[1]]) { var li = doc.createElement("li"); li.textContent = C.types[c[1]]; ul.appendChild(li); }
           });
           if (!ul.children.length) { var li0 = doc.createElement("li"); li0.textContent = C.none; ul.appendChild(li0); }
-          panel.appendChild(ul);
           var n = daysUntil(d);
           var doy = Math.round((Date.UTC(pp.year, pp.month - 1, pp.day) - Date.UTC(pp.year, 0, 0)) / 86400000);
-          var meta = doc.createElement("p"); meta.className = "meta";
-          meta.textContent = [S.tpl(C.week, { n: S.isoWeek(pp) }), S.tpl(C.doy, { n: doy }), n === 0 ? C.today : n > 0 ? S.tpl(C.inDays, { n: n }) : S.tpl(C.ago, { n: -n })].join(" · ");
-          panel.appendChild(meta);
-          panel.hidden = false;
-          panel.focus({ preventScroll: true });
-          if (panel.scrollIntoView) panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+          dlg.querySelector("[data-day-meta]").textContent = [S.tpl(C.week, { n: S.isoWeek(pp) }), S.tpl(C.doy, { n: doy }), n === 0 ? C.today : n > 0 ? S.tpl(C.inDays, { n: n }) : S.tpl(C.ago, { n: -n })].join(" · ");
+          var row = doc.getElementById("e-" + d);
+          link.hidden = !row; link.setAttribute("href", "#e-" + d);
+          if (typeof dlg.showModal === "function") { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute("open", "");
         });
       };
+      dlg.addEventListener("click", function (e) { if (e.target === dlg || (e.target.closest && e.target.closest("[data-day-close]"))) closeDlg(); });
+      dlg.addEventListener("close", function () { if (selected) { selected.classList.remove("d-selected"); selected = null; } });
+      link.addEventListener("click", function (e) {
+        var row = doc.getElementById(link.getAttribute("href").slice(1));
+        e.preventDefault(); closeDlg();
+        if (!row) return;
+        doc.querySelectorAll(".events-table tr.is-hit").forEach(function (r) { r.classList.remove("is-hit"); });
+        row.classList.add("is-hit");
+        row.scrollIntoView({ block: "center", behavior: "smooth" });
+      });
       grid.addEventListener("click", function (ev) {
         var td = ev.target.closest && ev.target.closest("td[data-d]");
         if (td && grid.contains(td)) show(td);
@@ -93,30 +98,6 @@
       var want = new URLSearchParams(location.search).get("d");
       if (want) { var wtd = grid.querySelector('td[data-d="' + want + '"]'); if (wtd) show(wtd); }
     }
-  }
-
-  /* Ana sayfa: yaklaşan günler */
-  var up = doc.querySelector("[data-upcoming]");
-  if (up && S.cfg.eventsUrl) {
-    fetch(S.cfg.eventsUrl, { credentials: "omit" }).then(function (r) { return r.json(); }).then(function (list) {
-      var skip = { rb2: 1, rb3: 1, kb2: 1, kb3: 1, kb4: 1 };
-      var today = dayStart(S.nowDate()), shown = 0;
-      var df = new Intl.DateTimeFormat(S.locale, { weekday: "long", day: "numeric", month: "long" });
-      list.forEach(function (e) {
-        if (shown >= 6 || skip[e.k] || e.t === "school" || e.t === "exam") return;
-        var d = parse(e.d);
-        if (d < today) return;
-        shown++;
-        var li = doc.createElement("li");
-        li.className = "up-item up-" + e.t;
-        var dt = doc.createElement("span"); dt.className = "up-date"; dt.textContent = df.format(d);
-        var nm = doc.createElement("strong"); nm.className = "up-name"; nm.textContent = e.n;
-        var lf = doc.createElement("span"); lf.className = "up-left"; lf.textContent = leftText(daysUntil(e.d));
-        li.appendChild(nm); li.appendChild(dt); li.appendChild(lf);
-        up.appendChild(li);
-      });
-      if (!shown) { var li = doc.createElement("li"); li.textContent = S.T.upcomingNone || ""; up.appendChild(li); }
-    }).catch(function () {});
   }
 
   /* Hazır geri sayım sayfaları */

@@ -60,8 +60,8 @@ const abs = (p) => ORIGIN + p;
 
 /* ---------- adresler ---------- */
 const ROUTES = {
-  tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", calendar: "/takvim/", tools: "/araclar/", week: "/hafta-numarasi/", today: "/bugun-ayin-kaci/", tz: "/turkiye-saat-dilimi/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
-  en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", calendar: "/en/calendar/", tools: "/en/tools/", week: "/en/week-number/", today: "/en/todays-date/", tz: "/en/turkey-time-zone/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
+  tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", calendar: "/takvim/", tools: "/araclar/", week: "/hafta-numarasi/", tz: "/turkiye-saat-dilimi/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
+  en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", calendar: "/en/calendar/", tools: "/en/tools/", week: "/en/week-number/", tz: "/en/turkey-time-zone/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
 };
 for (const l of LANGS) if (!ROUTES[l]) ROUTES[l] = deriveRoutes(ROUTES.en, l);
 const cityPath = (lang, c) => `${ROUTES[lang].world}${c[lang].slug}/`;
@@ -80,6 +80,7 @@ for (const [name, from] of [
   ["embed.js", "js/embed.js"],
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
+  ["imsakiye.js", "js/imsakiye.js"],
   ["world.js", "js/world.js"],
   ["place.js", "js/place.js"],
   ["nature-calc.js", "js/nature-calc.js"],
@@ -129,6 +130,8 @@ const ICON_MOON = `<svg class="only-light" viewBox="0 0 24 24" fill="none" strok
 const ICON_SUN = `<svg class="only-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`;
 const LOGO = `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="26"/><path d="M32 17v15l10 6"/></svg>`;
 
+const ICON_PIN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>`;
+const ICON_GEAR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`;
 const ICON_MENU = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
 const ICON_FULL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>`;
 const ICON_PREV = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5-7 7 7 7"/></svg>`;
@@ -183,27 +186,47 @@ const ringsHtml = (tz) =>
    Yalnız bu modeller görünür olunca Open-Meteo'ya gidilir; gömme widget'ında yoktur (kayıtlı konum orada yok). */
 const wxBlock = (kind) => `<div class="wxc wxc-${kind}" data-wxc="${kind}" aria-live="polite"><p class="wxc-msg">&nbsp;</p></div>`;
 
-// Her model: id, sınıf ve içerik. Sıra, kaydırma sırasıdır.
-const MODELS = [
-  { id: "stack", cls: "s-stack", html: (tz) => analogSvg({ tz, size: "st" }) + `<div class="stack-text">${pDigital(tz, " clock-md")}</div>` },
-  { id: "classic", cls: "s-analog", html: (tz) => analogSvg({ tz, size: "lg" }) + srTime(tz) },
-  { id: "minimal", cls: "s-analog", html: (tz) => analogSvg({ tz, size: "lg", numerals: false, minimal: true }) + srTime(tz) },
-  { id: "analog-date", cls: "s-analog-date", html: (tz) => analogSvg({ tz, size: "md" }) + pDate(tz) + srTime(tz) },
-  { id: "digital", cls: "s-digital", html: (tz) => pDigital(tz) },
-  { id: "digital-date", cls: "s-digital", html: (tz) => pTz(tz) + pDigital(tz) + pDate(tz) },
-  { id: "duo", cls: "s-duo", html: (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pDigital(tz)}</div>` },
-  { id: "duo-date", cls: "s-duo", html: (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pTz(tz)}${pDigital(tz)}${pDate(tz)}</div>` },
-  { id: "calendar", cls: "s-cal", html: (tz) => `<div class="cal-side">${pTz(tz)}${pDigital(tz, " clock-sm")}${pDate(tz)}</div>${calendarHtml(tz)}` },
-  { id: "calendar-analog", cls: "s-cal", html: (tz) => analogSvg({ tz, size: "xs", numerals: true }) + calendarHtml(tz) + srTime(tz) },
-  { id: "flip", cls: "s-flip", html: (tz) => flipHtml(tz) + pDate(tz) },
-  { id: "words", cls: "s-words", html: (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz) },
-  { id: "rings", cls: "s-rings", html: (tz) => ringsHtml(tz) + pDate(tz) },
-  { id: "wx-analog", cls: "s-analog-date s-wx", wx: true, html: (tz) => analogSvg({ tz, size: "md" }) + srTime(tz) + wxBlock("line") },
-  { id: "wx-digital", cls: "s-digital s-wx", wx: true, html: (tz) => pDigital(tz) + pDate(tz) + wxBlock("line") },
-  { id: "wx-stack", cls: "s-stack s-wx", wx: true, html: (tz) => analogSvg({ tz, size: "st" }) + `<div class="stack-text">${pDigital(tz, " clock-md")}</div>` + wxBlock("card") },
-  { id: "wx-forecast", cls: "s-digital s-wx", wx: true, html: (tz) => pDigital(tz, " clock-md") + pDate(tz) + wxBlock("hours") },
-  { id: "bigdate", cls: "s-bigdate", html: (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}` },
-];
+const hText = (...parts) => `<div class="h-text">${parts.join("")}</div>`;
+const hAnalog = (tz) => analogSvg({ tz, size: "hz" });
+
+// Model kayıt defteri: id, sınıf ve içerik. Sahnedeki sıra STAGE_ORDER'dadır; gömme widget'ı wx olmayanların hepsini kullanır.
+const M = {};
+const addModel = (id, cls, html, wx = false) => { M[id] = { id, cls, html, wx }; };
+// 1-7: analog dizi (sahibin sıralaması, 9 Ekim 2026)
+addModel("classic", "s-analog", (tz) => analogSvg({ tz, size: "lg" }) + srTime(tz));
+addModel("analog-date", "s-analog-date", (tz) => analogSvg({ tz, size: "md" }) + pDate(tz) + srTime(tz));
+addModel("stack", "s-stack", (tz) => analogSvg({ tz, size: "st" }) + `<div class="stack-text">${pDigital(tz, " clock-md")}</div>`);
+addModel("wx-analog", "s-analog-date s-wx", (tz) => analogSvg({ tz, size: "md" }) + srTime(tz) + wxBlock("line"), true);
+addModel("wx-stack", "s-stack s-wx", (tz) => analogSvg({ tz, size: "st" }) + `<div class="stack-text">${pDigital(tz, " clock-md")}</div>` + wxBlock("card"), true);
+addModel("wx-analog-date", "s-analog-date s-wx", (tz) => analogSvg({ tz, size: "md" }) + pDate(tz) + srTime(tz) + wxBlock("line"), true);
+addModel("wx-full", "s-stack s-wx", (tz) => analogSvg({ tz, size: "st" }) + `<div class="stack-text">${pDigital(tz, " clock-md")}${pDate(tz)}</div>` + wxBlock("line"), true);
+// 8-14: aynı yedi modelin yatay düzeni (analog solda, bilgi sağda)
+addModel("h-classic", "s-h", (tz) => hAnalog(tz) + hText(pTz(tz), srTime(tz)));
+addModel("h-analog-date", "s-h", (tz) => hAnalog(tz) + hText(pDate(tz), srTime(tz)));
+addModel("h-stack", "s-h", (tz) => hAnalog(tz) + hText(pDigital(tz, " clock-md")));
+addModel("h-wx-analog", "s-h s-wx", (tz) => hAnalog(tz) + hText(wxBlock("line"), srTime(tz)), true);
+addModel("h-wx-stack", "s-h s-wx", (tz) => hAnalog(tz) + hText(pDigital(tz, " clock-md"), wxBlock("line")), true);
+addModel("h-wx-analog-date", "s-h s-wx", (tz) => hAnalog(tz) + hText(pDate(tz), wxBlock("line"), srTime(tz)), true);
+addModel("h-wx-full", "s-h s-wx", (tz) => hAnalog(tz) + hText(pDigital(tz, " clock-md"), pDate(tz), wxBlock("line")), true);
+// 15-19: dijital dizi
+addModel("digital", "s-digital", (tz) => pDigital(tz));
+addModel("digital-date", "s-digital", (tz) => pDigital(tz) + pDate(tz));
+addModel("wx-digital", "s-digital s-wx", (tz) => pDigital(tz) + pDate(tz) + wxBlock("line"), true);
+addModel("wx-digital-cal", "s-cal s-wx", (tz) => `<div class="cal-side">${pDigital(tz, " clock-sm")}${pDate(tz)}${wxBlock("line")}</div>${calendarHtml(tz)}`, true);
+addModel("wx-digital-cal-week", "s-cal s-wx", (tz) => `<div class="cal-side">${pDigital(tz, " clock-sm")}${pDate(tz)}${wxBlock("week")}</div>${calendarHtml(tz)}`, true);
+// Yalnız gömme widget'ında (sahnede yok)
+addModel("minimal", "s-analog", (tz) => analogSvg({ tz, size: "lg", numerals: false, minimal: true }) + srTime(tz));
+addModel("duo", "s-duo", (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pDigital(tz)}</div>`);
+addModel("duo-date", "s-duo", (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pTz(tz)}${pDigital(tz)}${pDate(tz)}</div>`);
+addModel("calendar", "s-cal", (tz) => `<div class="cal-side">${pTz(tz)}${pDigital(tz, " clock-sm")}${pDate(tz)}</div>${calendarHtml(tz)}`);
+addModel("calendar-analog", "s-cal", (tz) => analogSvg({ tz, size: "xs", numerals: true }) + calendarHtml(tz) + srTime(tz));
+addModel("flip", "s-flip", (tz) => flipHtml(tz) + pDate(tz));
+addModel("words", "s-words", (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz));
+addModel("rings", "s-rings", (tz) => ringsHtml(tz) + pDate(tz));
+addModel("bigdate", "s-bigdate", (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}`);
+const STAGE_ORDER = ["classic", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal", "wx-digital-cal-week"];
+const MODELS = STAGE_ORDER.map((id) => M[id]);
+const EMBED_MODELS = Object.values(M).filter((m) => !m.wx);
 
 const PALETTES = ["auto", "night", "paper", "amber", "green", "blue", "purple", "red", "cyan", "sunset", "forest", "ocean", "rose", "mono"];
 const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
@@ -212,9 +235,9 @@ const ICON_GLOBE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 const ICON_CLOUD = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 8.5 4.5 4.5 0 0 1 17.5 18H7z"/></svg>`;
 const ICON_SOUND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>`;
 
-/* 24|12 saat ayırıcı ve saniye düğmesi (sahne, dünya saatleri) */
+/* 24/12 saat tek düğmesi ve saniye düğmesi (sahne) */
 function prefControls(t) {
-  return `<div class="seg" role="group" aria-label="${esc(t.client.formatLabel)}"><button type="button" class="toggle" data-fmt="24" aria-pressed="true">${esc(t.client.format24)}</button><button type="button" class="toggle" data-fmt="12" aria-pressed="false">${esc(t.client.format12)}</button></div><button type="button" class="toggle" data-pref="sec" aria-pressed="false">${esc(t.client.seconds)}</button>`;
+  return `<button type="button" class="toggle fmt-toggle" data-fmt-toggle aria-pressed="false" aria-label="${esc(t.client.formatLabel)}" title="${esc(t.client.formatLabel)}"><span data-fmt-part="24">24</span>/<span data-fmt-part="12">12</span></button><button type="button" class="toggle" data-pref="sec" aria-pressed="false">${esc(t.client.seconds)}</button>`;
 }
 
 function clockStage(lang, { tz = "", place = null } = {}) {
@@ -275,7 +298,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "today", "tz", "datecalc", "embed", "prayer", "nature", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "datecalc", "embed", "prayer", "nature", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -289,13 +312,9 @@ function addFaq(lang, id, title, href, items) {
   return "";
 }
 
-function crumbs(lang, trail) {
-  const t = I[lang];
-  return `<nav class="crumbs" aria-label="${esc(t.ui.breadcrumb)}"><ol>${trail
-    .map((c, i) =>
-      i === trail.length - 1 ? `<li aria-current="page">${esc(c.name)}</li>` : `<li><a href="${c.path}">${esc(c.name)}</a></li>`
-    )
-    .join("")}</ol></nav>`;
+/* Görünür ekmek kırıntısı bağlantıları kaldırıldı (9 Ekim 2026, sahibin isteği); BreadcrumbList şeması her sayfada durur */
+function crumbs() {
+  return "";
 }
 
 function listForm(lang, pagePath) {
@@ -345,6 +364,20 @@ function searchDialog(lang) {
     <p class="search-status" id="search-status" role="status" aria-live="polite"></p>
     <ul class="search-results" id="search-results" role="listbox" aria-label="${esc(u.searchResults)}"></ul>
   </div>
+</dialog>`;
+}
+
+/* Ortak konum penceresi (üst bardaki konum düğmesi açar; namaz, mevsimler, hava durumu ve hava durumlu saatler kullanır) */
+function placeDialog(lang) {
+  const u = I[lang].ui, s = I[lang].prayer;
+  const opts = PROVINCES.map((pr) => `<option value="${pr.slug}" data-lat="${pr.lat}" data-lon="${pr.lon}"${pr.slug === "istanbul" ? " selected" : ""}>${esc(provName(lang, pr))}</option>`).join("");
+  return `<dialog class="info-dialog place-dialog" id="place-dialog" aria-labelledby="place-title">
+  <h2 id="place-title">${esc(u.placeTitle)}</h2>
+  <div class="field"><label for="place-city">${esc(s.chooseLabel)}</label><select id="place-city" data-place-city>${opts}</select></div>
+  <button type="button" class="btn" data-place-geo>${esc(s.useLocation)}</button>
+  <p class="meta" data-place-status role="status">&nbsp;</p>
+  <p class="meta">${esc(u.placeNote)}</p>
+  <button type="button" class="btn btn-ghost" data-place-close>${esc(u.placeClose)}</button>
 </dialog>`;
 }
 
@@ -403,9 +436,16 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
     `<a href="${key === "calendar" ? yearPath(lang, BUILD_YEAR) : ROUTES[lang][key]}"${p.nav === key ? ' aria-current="page"' : ""}>${esc(label)}</a>`;
   const langItems = LANGS.map((l) => {
     const href = isError ? ROUTES[l].home : alt[l];
-    return `<li><a href="${href}" hreflang="${l}" lang="${l}" data-lang-switch${l === lang ? ' aria-current="true"' : ""}>${esc(LANG_NAMES[l])}</a></li>`;
+    return `<a href="${href}" hreflang="${l}" lang="${l}" data-lang-switch${l === lang ? ' aria-current="true"' : ""}>${esc(LANG_NAMES[l])}</a>`;
   }).join("");
-  const langSwitch = `<details class="lang-menu"><summary class="lang-link" aria-label="${esc(u.langMenu)}"><span aria-hidden="true">${lang.toUpperCase()}</span></summary><ul>${langItems}</ul></details>`;
+  /* Ayarlar: SSS, arama, tema ve dil tek açılır düğmede */
+  const settings = `<details class="settings-menu"><summary class="icon-btn" aria-label="${esc(u.settings)}" title="${esc(u.settings)}">${ICON_GEAR}</summary><div class="settings-pop">
+        <a class="set-item" href="${ROUTES[lang].faq}">${esc(u.faq)}</a>
+        <button type="button" class="set-item" data-search-open aria-haspopup="dialog">${ICON_SEARCH}<span>${esc(u.searchOpen)}</span></button>
+        <button type="button" class="set-item" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}<span>${esc(u.theme)}</span></button>
+        <div class="set-lang" role="group" aria-label="${esc(u.langMenu)}">${langItems}</div>
+      </div></details>`;
+  const placeBtn = `<button type="button" class="icon-btn place-btn" data-place-open aria-haspopup="dialog" aria-label="${esc(u.placeChange)}" title="${esc(u.placeChange)}">${ICON_PIN}<span class="place-name" data-place-label></span></button>`;
 
   return `<!doctype html>
 <html lang="${lang}" dir="${DIR(lang)}"${p.home ? ' data-home="1"' : ""}>
@@ -432,24 +472,21 @@ ${og}
 ${umami}
 ${ld}
 </head>
-<body>
+<body${p.needsPlace ? " data-needs-place" : ""}>
 <a class="skip-link" href="#main">${esc(u.skip)}</a>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
+    <p class="top-date" data-live="date">&nbsp;</p>
     <div class="menu" id="site-nav">
-      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("today", u.today)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${navLink("faq", u.faq)}</nav>
-      <div class="tools">
-        <button type="button" class="icon-btn" data-search-open aria-haspopup="dialog" aria-label="${esc(u.searchOpen)}" title="${esc(u.searchOpen)}">${ICON_SEARCH}</button>
-        ${langSwitch}
-        <button type="button" class="icon-btn" data-theme-toggle aria-label="${esc(u.themeToggle)}" title="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}</button>
-      </div>
+      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
     </div>
+    <div class="top-tools">${placeBtn}${settings}</div>
     <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>
   </div>
 </header>
 <main id="main">
-${p.body}
+${isError ? p.body : p.body.replace(/<p class="lead"/g, '<p class="lead sr-only"')}
 </main>
 <footer class="site-footer">
   <div class="wrap">
@@ -463,9 +500,10 @@ ${isError ? "" : listForm(lang, p.path)}
   </div>
 </footer>
 ${searchDialog(lang)}
+${placeDialog(lang)}
 <script type="application/json" id="page-config">${JSON.stringify(pageCfg).replace(/</g, "\\u003c")}</script>
 <script defer src="${ASSETS["main.js"]}"></script>
-${(p.scripts || []).map((n) => `<script defer src="${ASSETS[n]}"></script>`).join("\n")}
+${["place.js", ...(p.scripts || []).filter((n) => n !== "place.js")].map((n) => `<script defer src="${ASSETS[n]}"></script>`).join("\n")}
 </body>
 </html>
 `;
@@ -576,12 +614,15 @@ function buildHome(lang) {
   return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js", "globe.js"], clientExtra: { globe } };
 }
 
+/* Dünya saatleri: Türkiye'den yalnız İstanbul; Ankara ve İzmir kendi sayfalarında durur ama dünya çizgisinde yoktur */
+const WORLD_HIDE = ["ankara", "izmir"];
+const WORLD_DEFAULT = ["istanbul", "london", "berlin", "cairo", "moscow", "dubai", "mumbai", "beijing", "tokyo", "sydney", "new-york", "los-angeles"];
 function buildWorld(lang) {
   const t = I[lang];
   const w = t.world;
   const pagePath = ROUTES[lang].world;
-  const rows = CITIES.map(
-    (c) => `<tr data-world-item="${c.key}"><th scope="row"><a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></th><td>${esc(c[lang].country)}</td><td class="num" data-live="time" data-sec data-tz="${c.tz}">--:--:--</td><td class="num" data-live="offset" data-tz="${c.tz}">UTC</td><td data-live="diff" data-tz="${c.tz}">&nbsp;</td></tr>`
+  const rows = WORLD_DEFAULT.map((k) => CITIES.find((c) => c.key === k)).sort((a, b) => stdMin(a) - stdMin(b)).map(
+    (c) => `<li data-world-item="${c.key}"><a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a> <span class="meta">${esc(c[lang].country)} · UTC${c.std === "+00:00" ? "±00:00" : c.std}</span></li>`
   ).join("");
   const trail = [
     { name: t.ui.home, path: ROUTES[lang].home },
@@ -589,21 +630,15 @@ function buildWorld(lang) {
   ];
   const body = `<section class="hero">
   <div class="wrap">
-    ${crumbs(lang, trail)}
     <h1>${esc(w.h1)}</h1>
-    <p class="lead">${esc(tpl(w.lead, { n: CITIES.length }))}</p>
+    <p class="lead">${esc(tpl(w.lead, { n: WORLD_DEFAULT.length }))}</p>
     <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
-    <div class="controls">${prefControls(t)}</div>
-  </div>
-</section>
-<section class="section">
-  <div class="wrap">
-    <div data-world="table"><div class="table-wrap"><table><caption>${esc(w.tableCaption)}</caption><thead><tr><th scope="col">${esc(w.colCity)}</th><th scope="col">${esc(w.colCountry)}</th><th scope="col">${esc(w.colTime)}</th><th scope="col">${esc(w.colOffset)}</th><th scope="col">${esc(w.colDiff)}</th></tr></thead><tbody>${rows}</tbody></table></div></div>
+    <div data-world="line"><ul class="tl-static">${rows}</ul></div>
   </div>
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, w.title, w.description), breadcrumbLd(trail)];
   searchEntries[lang].push({ t: w.h1, u: pagePath, d: w.description, k: "dünya şehir saat farkı world city time zone timezone" });
-  return { lang, key: "world", path: pagePath, title: w.title, description: w.description, body, ld, nav: "world", scripts: ["world.js"], clientExtra: { cities: clientCities(lang), t: { wc: t.world } } };
+  return { lang, key: "world", path: pagePath, title: w.title, description: w.description, body, ld, nav: "world", scripts: ["world.js"], clientExtra: { cities: clientCities(lang).filter((c) => !WORLD_HIDE.includes(c.k)), t: { wc: t.world } } };
 }
 
 function buildCity(lang, c) {
@@ -737,11 +772,10 @@ function monthTable(lang, year, month, cy, ev) {
       const es = ev.byDate[date] || [];
       const rank = ["holiday", "half", "religious", "special"].find((t) => es.some((e) => e.type === t));
       const school = es.some((e) => e.type === "school") || inRange(date, cy.schoolRanges);
-      const exam = es.some((e) => e.type === "exam") || inRange(date, cy.examRanges);
-      const cls = [rank && `d-${rank}`, !rank && school && "d-school", !rank && exam && "d-exam", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
+      const cls = [rank && `d-${rank}`, !rank && school && "d-school", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
       const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
       const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
-      tr += `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? ' tabindex="0" role="button"' : ""}>${d}${label}</td>`;
+      tr += `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`;
     }
     rows += `<tr>${tr}</tr>`;
   }
@@ -755,7 +789,9 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   const cy = YEAR_DATA[year];
   const counts = holidayCounts(cy.events);
   const byDate = {};
-  cy.events.forEach((e) => (byDate[e.date] ||= []).push(e));
+  /* Sınav günleri takvimde gösterilmez (geri sayım sayfaları kendi verisini kullanır) */
+  const shown = cy.events.filter((e) => e.type !== "exam");
+  shown.forEach((e) => (byDate[e.date] ||= []).push(e));
   const date = (key, i = 0) => cy.events.filter((e) => e.key === key)[i];
   const rbDays = cy.events.filter((e) => e.key.startsWith("rb") && e.key !== "rbEve").map((e) => e.date);
   const kbDays = cy.events.filter((e) => e.key.startsWith("kb") && e.key !== "kbEve").map((e) => e.date);
@@ -786,10 +822,11 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   ];
   const ev = { byDate };
   const months = Array.from({ length: 12 }, (_, i) => `<div class="ymonth-wrap">${monthTable(lang, year, i + 1, cy, ev)}</div>`).join("");
-  const legend = ["holiday", "half", "religious", "ramadan", "special", ...(cy.events.some((e) => e.type === "school") ? ["school"] : []), ...(cy.events.some((e) => e.type === "exam") ? ["exam"] : []), "weekend", "today"]
+  const legend = ["holiday", "half", "religious", "ramadan", "special", ...(cy.events.some((e) => e.type === "school") ? ["school"] : []), "weekend", "today"]
     .map((k) => `<li><span class="lg lg-${k}" aria-hidden="true"></span>${esc(cal.types[k])}</li>`).join("");
-  const rows = cy.events
-    .map((e) => `<tr data-d="${e.date}"><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`)
+  const seenRow = new Set();
+  const rows = shown
+    .map((e) => { const first = !seenRow.has(e.date); seenRow.add(e.date); return `<tr data-d="${e.date}"${first ? ` id="e-${e.date}"` : ""}><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`; })
     .join("");
   const yearLinks = HOL_YEARS.map((y) => `<li><a href="${yearPath(lang, y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a></li>`).join("");
   const prev = HOL_YEARS.includes(year - 1) ? `<a href="${yearPath(lang, year - 1)}" rel="prev">${esc(tpl(cal.prevYear, { year: year - 1 }))}</a>` : "";
@@ -803,23 +840,17 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     ${cy.projected ? `<p class="meta">${esc(cal.projected)}</p>` : ""}
   </div>
 </section>
-<section class="section upcoming-sec" id="upcoming" aria-labelledby="upcoming-h">
-  <div class="wrap">
-    <h2 id="upcoming-h">${esc(t.home.upcomingHeading)}</h2>
-    <p class="meta">${esc(t.home.upcomingLead)}</p>
-    <ul class="upcoming" data-upcoming></ul>
-  </div>
-</section>
 <section class="section" aria-labelledby="legend-h">
   <div class="wrap">
     <h2 id="legend-h" class="sr-only">${esc(cal.legendLabel)}</h2>
     <ul class="legend" aria-label="${esc(cal.legendLabel)}">${legend}</ul>
     <div class="year-grid" data-year="${year}">${months}</div>
-    <div class="day-detail" id="day-detail" role="status" aria-live="polite" tabindex="-1" hidden></div>
-    <p class="meta">${esc(cal.dayHint)}</p>
-    <p class="meta">${esc(cal.note)}</p>
-    ${cy.events.some((e) => e.type === "school") ? `<p class="meta">${esc(cal.schoolNote)}</p>` : ""}
-    ${cy.events.some((e) => e.type === "exam") ? `<p class="meta">${esc(cal.examNote)}</p>` : ""}
+    <dialog class="info-dialog day-dialog" id="day-dialog" aria-labelledby="day-title">
+      <h2 id="day-title" data-day-title></h2>
+      <ul class="day-list" data-day-list></ul>
+      <p class="meta" data-day-meta></p>
+      <div class="im-actions"><a class="btn" href="#events" data-day-link hidden>${esc(cal.dayToList)}</a><button type="button" class="btn btn-ghost" data-day-close>${esc(cal.dayClose)}</button></div>
+    </dialog>
   </div>
 </section>
 <section class="section" id="events" aria-labelledby="events-h">
@@ -834,7 +865,6 @@ ${addFaq(lang, "calendar", t.faqPage.calendar, yearPath(lang, BUILD_YEAR), faq)}
   if (!index) {
     const e = searchEntries[lang];
     e.push({ t: tpl(cal.h1, v), u: canonicalPath, d: description, k: "takvim resmi tatil bayram arife ramazan kandil calendar holiday ramadan eid " + year });
-    if (year === BUILD_YEAR) e.push({ t: t.home.upcomingHeading, u: canonicalPath + "#upcoming", d: t.home.upcomingLead, k: "yaklaşan bayram tatil resmi tatil arife ramazan kaç gün kaldı upcoming holiday days left" });
     for (const k of ["rb1", "kb1", "ramadanStart"]) {
       const ee = date(k);
       if (ee) e.push({ t: `${cal.events[k]} ${year}`, u: `${canonicalPath}#events`, d: f.full(ee.date), k: "takvim bayram ramazan kurban calendar eid ramadan " + year });
@@ -961,6 +991,21 @@ ${addFaq(lang, key, tt.hub.cards[key].name, pagePath, s.faq)}
   return { lang, key: `tool:${key}`, path: pagePath, title: s.title, description: s.description, body, ld, nav: "tools", scripts: ["tools.js"], clientExtra: { tools: tt, cal: {} } };
 }
 
+const svgArt = (inner) => `<svg viewBox="0 0 96 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false">${inner}</svg>`;
+const TOOL_ART = {
+  stopwatch: svgArt('<circle cx="48" cy="37" r="20" class="af"/><path d="M42 10h12M48 10v7M48 37l9-9M70 20l4-4"/>'),
+  countdown: svgArt('<path d="M32 10h32M32 54h32M35 10c0 14 10 14 13 22-3 8-13 8-13 22M61 10c0 14-10 14-13 22 3 8 13 8 13 22" class="af"/><path d="M42 48h12" />'),
+  alarm: svgArt('<circle cx="48" cy="36" r="19" class="af"/><path d="M48 25v11l8 5M28 14l-8 8M68 14l8 8M36 56l-5 5M60 56l5 5"/>'),
+  pomodoro: svgArt('<path d="M48 18c-18 0-26 10-26 21s10 17 26 17 26-6 26-17-8-21-26-21z" class="af"/><path d="M48 18c-2-5-6-8-12-8 3 4 6 6 12 8zm0 0c2-5 6-8 12-8-3 4-6 6-12 8zM48 18V9"/>'),
+  converter: svgArt('<circle cx="26" cy="30" r="15" class="af"/><path d="M26 21v9l6 4"/><circle cx="70" cy="34" r="15" class="af"/><path d="M70 25v9l6 4M40 12h16m-5-5 5 5-5 5M56 56H40m5 5-5-5 5-5"/>'),
+  planner: svgArt('<rect x="16" y="14" width="64" height="42" rx="6" class="af"/><path d="M16 26h64M32 8v10M64 8v10"/><circle cx="34" cy="40" r="4"/><circle cx="48" cy="40" r="4"/><circle cx="62" cy="40" r="4"/>'),
+  datecalc: svgArt('<rect x="14" y="14" width="46" height="42" rx="6" class="af"/><path d="M14 26h46M28 8v10M46 8v10"/><path d="M74 28v20M64 38h20"/>'),
+  diff: svgArt('<circle cx="24" cy="32" r="14" class="af"/><path d="M24 24v8l5 3"/><circle cx="72" cy="32" r="14" class="af"/><path d="M72 24v8l5 3M42 32h12m-4-4 4 4-4 4"/>'),
+  embed: svgArt('<rect x="10" y="12" width="76" height="40" rx="6" class="af"/><path d="M38 24l-9 8 9 8M58 24l9 8-9 8M52 22l-8 20"/>'),
+  week: svgArt('<rect x="16" y="14" width="64" height="42" rx="6" class="af"/><path d="M16 26h64M32 8v10M64 8v10M30 36h8m6 0h8m6 0h8M30 46h8m6 0h8"/>'),
+  tz: svgArt('<circle cx="48" cy="32" r="22" class="af"/><path d="M26 32h44M48 10c9 7 9 37 0 44M48 10c-9 7-9 37 0 44"/>'),
+};
+
 function buildToolsHub(lang) {
   const t = I[lang];
   const h = t.tools.hub;
@@ -969,16 +1014,14 @@ function buildToolsHub(lang) {
     { name: t.ui.home, path: ROUTES[lang].home },
     { name: h.h1, path: pagePath },
   ];
-  const card = (href, name, desc) => `<li class="city-card"><a href="${href}"><span class="city-name">${esc(name)}</span><span class="city-diff">${esc(desc)}</span><span class="card-open">${esc(h.open)} ${ARROW(lang)}</span></a></li>`;
-  const cards = TOOL_KEYS.map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + ["converter", "planner", "datecalc", "embed", "diff"].map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + card(yearPath(lang, BUILD_YEAR), t.calendar.hubName, t.calendar.hubDesc) + card(ROUTES[lang].world, t.ui.world, t.world.description.split(". ")[0] + ".");
+  /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
+  const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(h.cards[k].name)}</span></a></li>`;
+  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "embed", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
-    ${crumbs(lang, trail)}
     <h1>${esc(h.h1)}</h1>
     <p class="lead">${esc(h.lead)}</p>
-    <ul class="city-grid tool-grid">${cards}</ul>
-    <h2>${esc(h.infoHeading)}</h2>
-    <ul class="city-grid tool-grid">${INFO_KEYS.map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("")}</ul>
+    <ul class="tool-cards">${cards}</ul>
   </div>
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, h.title, h.description), breadcrumbLd(trail)];
@@ -987,7 +1030,7 @@ function buildToolsHub(lang) {
 }
 
 /* ---------- Bilgi sayfaları: hafta numarası, bugünün tarihi, Türkiye saat dilimi ---------- */
-const INFO_KEYS = ["week", "today", "tz"];
+const INFO_KEYS = ["week", "tz"];
 const liveSpan = (kind, extra = "") => `<span data-live="${kind}"${extra}>–</span>`;
 
 function infoShell(lang, key, { v = {}, body, faq, searchK }) {
@@ -1023,7 +1066,7 @@ ${addFaq(lang, key, t.tools.hub.cards[key].name, pagePath, faqItems)}
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail)];
   searchEntries[lang].push({ t: tpl(s.h1, v), u: pagePath, d: description, k: searchK });
-  return { lang, key: `info:${key}`, path: pagePath, title, description, body: html, ld, nav: "today", scripts: ["dates.js"] };
+  return { lang, key: `info:${key}`, path: pagePath, title, description, body: html, ld, nav: "tools", scripts: ["dates.js"] };
 }
 
 function buildWeek(lang) {
@@ -1058,23 +1101,6 @@ function buildWeek(lang) {
 </section>`,
   };
   return infoShell(lang, "week", { v, body, faq: s.faq, searchK: "hafta numarası kaçıncı haftadayız iso hafta week number which week yılın haftası" });
-}
-
-function buildToday(lang) {
-  const t = I[lang];
-  const s = t.info.today;
-  const fact = (label, kind) => `<div class="fact"><dt>${esc(label)}</dt><dd data-live="${kind}">–</dd></div>`;
-  const body = {
-    hero: `<p class="big-time info-date" role="timer" data-live="date">&nbsp;</p>
-    <ul class="inline-links">${INFO_KEYS.filter((k) => k !== "today").map((k) => `<li><a href="${ROUTES[lang][k]}">${esc(t.tools.hub.cards[k].name)}</a></li>`).join("")}</ul>`,
-    sections: `<section class="section" id="details" aria-labelledby="details-h">
-  <div class="wrap">
-    <h2 id="details-h">${esc(s.factsHeading)}</h2>
-    <dl class="facts">${fact(s.fWeekday, "weekday")}${fact(s.fMonthYear, "monthyear")}${fact(s.fNumeric, "datenum")}${fact(s.fIso, "dateiso")}${fact(s.fDoy, "doy")}${fact(s.fWeek, "isoweek")}${fact(s.fYearLeft, "daysleft")}${fact(s.fMonthLeft, "monthleft")}${fact(s.fUnix, "unix")}${fact(t.home.factUtc, "utc")}<div class="fact"><dt>${esc(t.home.factProgress)}</dt><dd><progress data-live="progress" max="100" value="0">0%</progress><span class="note" data-progress-note>&nbsp;</span></dd></div></dl>
-  </div>
-</section>`,
-  };
-  return infoShell(lang, "today", { body, faq: s.faq, searchK: "bugün ayın kaçı günlerden ne tarih bugünün tarihi todays date today what day yılın günü" });
 }
 
 function buildTz(lang) {
@@ -1115,7 +1141,7 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
-extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/doga/", weather: "/hava-durumu/" }, en: { prayer: "/en/prayer-times/", nature: "/en/nature/", weather: "/en/weather/" } });
+extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1127,7 +1153,7 @@ const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, t
 const relatedCards = (lang, keys) => keys.map((k) => `<li class="city-card"><a href="${ROUTES[lang][k]}"><span class="city-name">${esc(I[lang].tools.hub.cards[k].name)}</span><span class="city-diff">${esc(I[lang].tools.hub.cards[k].desc)}</span></a></li>`).join("");
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
 
-function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqGroup, scripts, clientExtra, nav = "tools", searchK, extraLd = [] }) {
+function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqGroup, scripts, clientExtra, nav = "tools", searchK, extraLd = [], needsPlace = false }) {
   const pagePath = trail[trail.length - 1].path;
   const faqBlock = faq && faq.length && faqGroup ? addFaq(lang, faqGroup.id, faqGroup.title, faqGroup.href || pagePath, faq) : "";
   const body = `<section class="hero">
@@ -1143,7 +1169,7 @@ ${bodyInner.sections || ""}
 ${faqBlock}`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), ...extraLd];
   searchEntries[lang].push({ t: h1, u: pagePath, d: description, k: searchK });
-  return { lang, key, path: pagePath, title, description, body, ld, nav, scripts, clientExtra };
+  return { lang, key, path: pagePath, title, description, body, ld, nav, scripts, clientExtra, needsPlace };
 }
 
 /* Saat farkı: merkez ve İstanbul–şehir sayfaları */
@@ -1372,7 +1398,7 @@ function buildEmbedGen(lang) {
   const t = I[lang];
   const s = t.embedgen;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].embed }];
-  const modelOpts = MODELS.filter((m) => !m.wx).map((m) => `<option value="${m.id}">${esc(t.stage.models[m.id])}</option>`).join("");
+  const modelOpts = EMBED_MODELS.map((m) => `<option value="${m.id}">${esc(t.stage.models[m.id])}</option>`).join("");
   const cityOpts = `<option value="">${esc(s.cityLocal)}</option>${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
   const inner = {
     hero: `<section class="tool" data-embedgen aria-labelledby="tool-h">
@@ -1406,19 +1432,6 @@ function buildEmbedGen(lang) {
 /* ---------- Doğa (mevsim çarkı, Güneş, Ay, gün uzunluğu) ve hava durumu ---------- */
 const NATURE = (() => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(SRC, "js/nature-calc.js"), "utf8"))(m, undefined); return m.exports; })();
 
-/* il seçici + "konumumu kullan" (namaz, doğa, hava durumu) */
-function placePicker(lang, id, note) {
-  const s = I[lang].prayer;
-  const opts = PROVINCES.map((pr) => `<option value="${pr.slug}" data-lat="${pr.lat}" data-lon="${pr.lon}"${pr.slug === "istanbul" ? " selected" : ""}>${esc(provName(lang, pr))}</option>`).join("");
-  return `<div class="inputs-row">
-        <div class="field"><label for="${id}">${esc(s.chooseLabel)}</label><select id="${id}" data-place-city>${opts}</select></div>
-        <button type="button" class="btn" data-place-geo>${esc(s.useLocation)}</button>
-      </div>
-      <p class="meta" data-place-status role="status">&nbsp;</p>
-      <p class="meta">${esc(note)}</p>`;
-}
-const subNav = (lang, current) => `<nav class="subnav" aria-label="${esc(I[lang].ui.mainNav)}"><a href="${ROUTES[lang].nature}"${current === "nature" ? ' aria-current="page"' : ""}>${esc(I[lang].ui.nature)}</a><a href="${ROUTES[lang].weather}"${current === "weather" ? ' aria-current="page"' : ""}>${esc(I[lang].ui.weather)}</a></nav>`;
-
 function trDateTime(lang, ms) { // Türkiye saatiyle (UTC+3) "20 Mart 14:46"
   const d = new Date(ms + 3 * 3600000);
   return `${d.getUTCDate()} ${I[lang].calendar.months[d.getUTCMonth()]} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
@@ -1428,7 +1441,7 @@ function buildNature(lang) {
   const t = I[lang];
   const n = t.nature;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: n.h1, path: ROUTES[lang].nature }];
-  const pre = `<section class="tool nature-top" data-nature aria-label="${esc(n.wheelLabel)}">
+  const wheel = `<section class="nature-top" data-nature aria-label="${esc(n.wheelLabel)}">
       <div class="wheel-wrap">
         <svg class="wheel" data-wheel viewBox="0 0 360 360" role="img" aria-label="${esc(n.wheelLabel)}"></svg>
         <div class="wheel-center" aria-live="polite">
@@ -1437,13 +1450,18 @@ function buildNature(lang) {
           <p class="wheel-line" data-n-next>&nbsp;</p>
         </div>
       </div>
-      ${placePicker(lang, "n-city", n.chooseNote)}
     </section>`;
   const head = ["spring", "summer", "autumn", "winter"].map((k) => `<th scope="col">${esc(n.seasons[k])}</th>`).join("");
   const rows = HOL_YEARS.map((y) => { const q = NATURE.seasons(y); return `<tr><th scope="row">${y}</th>${[q.march, q.june, q.sept, q.dec].map((ms) => `<td>${esc(trDateTime(lang, ms))}</td>`).join("")}</tr>`; }).join("");
   const facts = ["spring", "summer", "autumn", "winter"].map((k) => `<article class="season-card sc-${k}"><h3>${esc(n.seasons[k])}</h3><ul>${n.facts[k].map((f) => `<li>${esc(f)}</li>`).join("")}</ul></article>`).join("");
   const cell = (label, attr) => `<div class="fact"><dt>${esc(label)}</dt><dd ${attr}>–</dd></div>`;
-  const sections = `<section class="section" aria-labelledby="n-sun-h">
+  const sections = `<section class="section" aria-labelledby="n-turn-h">
+  <div class="wrap">
+    <h2 id="n-turn-h">${esc(n.turnHeading)}</h2>
+    <ul class="turns" data-n-turns></ul>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-sun-h">
   <div class="wrap">
     <h2 id="n-sun-h">${esc(n.sunHeading)}</h2>
     <dl class="facts">${cell(n.sunrise, "data-n-sun=\"rise\"")}${cell(n.sunset, "data-n-sun=\"set\"")}${cell(n.dayLength, "data-n-sun=\"len\"")}${cell(n.solarNoon, "data-n-sun=\"noon\"")}</dl>
@@ -1492,22 +1510,21 @@ function buildNature(lang) {
     <p><a href="${ROUTES[lang].weather}">${esc(n.weatherLink)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
-  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { pre, hero: `${subNav(lang, "nature")}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort } } }, nav: "nature", searchK: n.search });
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday } } }, nav: "nature", searchK: n.search, needsPlace: true });
 }
 
 function buildWeather(lang) {
   const t = I[lang];
   const w = t.weather;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: w.h1, path: ROUTES[lang].weather }];
-  const hero = `${subNav(lang, "weather")}<section class="tool weather" data-weather aria-labelledby="wx-h">
-      <div class="tool-head"><h2 id="wx-h" class="tool-title" data-wx-place>${esc(t.prayer.yourLocation)}</h2></div>
-      ${placePicker(lang, "wx-city", w.locationNote)}
+  const hero = `<section class="wx-hero" data-weather aria-labelledby="wx-h">
+      <h2 id="wx-h" class="wx-place" data-wx-place>${esc(t.prayer.yourLocation)}</h2>
       <p class="meta" data-wx-state role="status">${esc(w.loading)}</p>
       <div class="wx-now" data-wx-now hidden>
         <p class="wx-icon" data-wx-icon aria-hidden="true"></p>
         <p class="wx-temp" data-wx-temp>–</p>
         <p class="wx-cond" data-wx-cond>&nbsp;</p>
-        <dl class="facts wx-facts" data-wx-facts></dl>
+        <dl class="wx-facts" data-wx-facts></dl>
       </div>
       <button type="button" class="toggle" data-wx-retry hidden>${esc(w.retry)}</button>
     </section>
@@ -1523,11 +1540,12 @@ function buildWeather(lang) {
     <h2 id="wx-daily-h">${esc(w.dailyHeading)}</h2>
     <ul class="wx-daily" data-wx-daily></ul>
     <p class="meta"><span data-wx-updated></span> · ${esc(w.attribution)}</p>
+    <p class="meta">${esc(w.locationNote)}</p>
     <p><a href="${ROUTES[lang].nature}">${esc(w.natureLink)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
   const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry };
-  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "nature", searchK: w.search, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
+  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "weather", searchK: w.search, needsPlace: true, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
 }
 
 /* ---------- Namaz vakitleri: konuma göre hub + 81 il sayfası (hesap tarayıcıda, prayer-calc.js) ---------- */
@@ -1539,27 +1557,35 @@ const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
 function prayerBody(lang, prov) {
   const t = I[lang];
   const s = t.prayer;
-  const opts = PROVINCES.map((pr) => `<option value="${pr.slug}" data-lat="${pr.lat}" data-lon="${pr.lon}"${pr.slug === "istanbul" ? " selected" : ""}>${esc(provName(lang, pr))}</option>`).join("");
   const rows = PRAYER_KEYS.map((k) => `<tr data-pr="${k}"><th scope="row">${esc(s.names[k])}</th><td data-pr-time>--:--</td></tr>`).join("");
-  const controls = prov
-    ? `<p class="meta"><a href="${ROUTES[lang].prayer}">${esc(s.otherPlace)} ${ARROW(lang)}</a></p>`
-    : `<div class="inputs-row">
-        <div class="field"><label for="pr-city">${esc(s.chooseLabel)}</label><select id="pr-city" data-place-city>${opts}</select></div>
-        <button type="button" class="btn" data-place-geo>${esc(s.useLocation)}</button>
-      </div>
-      <p class="meta" data-place-status role="status">&nbsp;</p>
-      <p class="meta">${esc(s.locationNote)}</p>`;
   const attrs = prov ? ` data-mode="city" data-city="${prov.slug}" data-name="${esc(provName(lang, prov))}" data-lat="${prov.lat}" data-lon="${prov.lon}"` : ` data-mode="hub"`;
-  const hero = `<section class="tool prayer" data-prayer${attrs} aria-labelledby="pr-h">
-      <div class="tool-head"><h2 id="pr-h" class="tool-title" data-pr-place>${esc(prov ? provName(lang, prov) : s.yourLocation)}</h2></div>
-      ${controls}
-      <div class="pr-next"><p class="meta" data-pr-nextlabel>&nbsp;</p><p class="big-time" role="timer" data-pr-countdown>–</p></div>
-      <h3>${esc(s.todayHeading)}</h3>
-      <div class="table-wrap"><table class="events-table pr-today"><thead><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+  /* Solda geri sayım saati, sağda bugünün vakitleri; çerçeve yok. Konum üst bardaki ortak düğmeyle seçilir. */
+  const hero = `<section class="pr-top" data-prayer${attrs} aria-labelledby="pr-h">
+      <div class="pr-left">
+        <h2 id="pr-h" class="pr-place" data-pr-place>${esc(prov ? provName(lang, prov) : s.yourLocation)}</h2>
+        <p class="meta" data-pr-nextlabel>&nbsp;</p>
+        <p class="big-time" role="timer" data-pr-countdown>–</p>
+        ${prov ? `<p class="meta"><a href="${ROUTES[lang].prayer}">${esc(s.otherPlace)} ${ARROW(lang)}</a></p>` : ""}
+      </div>
+      <div class="pr-right">
+        <h3>${esc(s.todayHeading)}</h3>
+        <table class="events-table pr-today"><thead class="sr-only"><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table>
+      </div>
       <noscript><p class="meta">${esc(s.noscript)}</p></noscript>
-    </section>
-    <p class="meta sync-line" data-sync-status>&nbsp;</p>`;
+    </section>`;
   const head = PRAYER_KEYS.map((k) => `<th scope="col">${esc(s.names[k])}</th>`).join("");
+  const im = `<section class="section" data-imsakiye aria-labelledby="im-h" hidden>
+  <div class="wrap">
+    <h2 id="im-h" data-im-heading>${esc(s.imHeading)}</h2>
+    <p>${esc(s.imText)}</p>
+    <div class="im-actions"><button type="button" class="btn" data-im-open aria-haspopup="dialog">${esc(s.imOpen)}</button><button type="button" class="btn btn-ghost" data-im-download>${esc(s.imDownload)}</button></div>
+    <dialog class="info-dialog im-dialog" id="im-dialog" aria-labelledby="im-dtitle">
+      <h2 id="im-dtitle" class="sr-only" data-im-dtitle>${esc(s.imHeading)}</h2>
+      <div class="im-view"><img data-im-img alt="" width="1080" height="1900"></div>
+      <div class="im-actions"><button type="button" class="btn" data-im-download>${esc(s.imDownload)}</button><button type="button" class="btn btn-ghost" data-im-close>${esc(t.ui.placeClose)}</button></div>
+    </dialog>
+  </div>
+</section>`;
   const sections = `<section class="section" aria-labelledby="pr-month-h">
   <div class="wrap">
     <div class="pr-month-head">
@@ -1569,24 +1595,20 @@ function prayerBody(lang, prov) {
     <div class="table-wrap"><table class="events-table pr-month" data-pr-month><caption class="sr-only" data-pr-caption></caption><thead><tr><th scope="col">${esc(s.colDay)}</th>${head}</tr></thead><tbody></tbody></table></div>
   </div>
 </section>
-<section class="section" aria-labelledby="pr-method-h">
-  <div class="wrap">
-    <h2 id="pr-method-h">${esc(s.methodHeading)}</h2>
-    <p>${esc(s.method)}</p>
-  </div>
-</section>
+${im}
 `;
   return { hero, sections };
 }
 const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation });
-const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names } });
+const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
+const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail }; };
 
 function buildPrayerHub(lang) {
   const t = I[lang];
   const s = t.prayer;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }];
-  return simplePage(lang, "prayer", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: prayerBody(lang, null), faq: s.faq, faqGroup: { id: "prayer", title: t.ui.prayer, href: ROUTES[lang].prayer }, scripts: ["place.js", "prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].prayer, s.description)] });
+  return simplePage(lang, "prayer", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: prayerBody(lang, null), faq: s.faq, faqGroup: { id: "prayer", title: t.ui.prayer, href: ROUTES[lang].prayer }, scripts: ["place.js", "prayer-calc.js", "prayer.js", "imsakiye.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].prayer, s.description)] });
 }
 function buildPrayerCity(lang, prov) {
   const t = I[lang];
@@ -1594,13 +1616,13 @@ function buildPrayerCity(lang, prov) {
   const name = provName(lang, prov);
   const v = { city: name };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }, { name: tpl(s.cityH1, v), path: prayerPath(lang, prov) }];
-  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov), faq: s.faq, faqGroup: { id: "prayer", title: t.ui.prayer, href: ROUTES[lang].prayer }, scripts: ["place.js", "prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}` });
+  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov), faq: s.faq, faqGroup: { id: "prayer", title: t.ui.prayer, href: ROUTES[lang].prayer }, scripts: ["place.js", "prayer-calc.js", "prayer.js", "imsakiye.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}` });
 }
 
 /* Gömülü widget sayfası: yalnız seçilen saat modeli, başlık ve alt bilgi (indekslenmez) */
 function embedFramePage(lang) {
   const t = I[lang];
-  const slides = MODELS.filter((m) => !m.wx).map((m) => `<section class="slide ${m.cls}" data-model="${m.id}" aria-hidden="true">${m.html("")}</section>`).join("");
+  const slides = EMBED_MODELS.map((m) => `<section class="slide ${m.cls}" data-model="${m.id}" aria-hidden="true">${m.html("")}</section>`).join("");
   const umami = UMAMI_ID ? `<script defer src="https://istatistik.bumba.tr/script.js" data-website-id="${esc(UMAMI_ID)}" data-domains="${esc(HOST)}"></script>` : "";
   const pageCfg = { locale: t.locale, t: { ...t.client }, cities: clientCities(lang), cal: { months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt } };
   return `<!doctype html>
@@ -1663,7 +1685,7 @@ ${sections}`;
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur
 }

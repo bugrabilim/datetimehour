@@ -70,25 +70,26 @@
       var hl = d.daily ? temp(d.daily.temperature_2m_max[0]) + " / " + temp(d.daily.temperature_2m_min[0]) : "";
       box.appendChild(mk("p", "wxc-more", x.feelsLike + " " + temp(c.apparent_temperature) + (hl ? " · " + hl : "")));
       box.appendChild(mk("p", "wxc-more", x.humidity + " " + Math.round(c.relative_humidity_2m) + "% · " + x.wind + " " + Math.round(c.wind_speed_10m) + " km/h"));
-    } else if (kind === "hours" && d.hourly) {
-      var strip = mk("ul", "wxc-hours"), start = d.hourly.time.indexOf(c.time.slice(0, 13) + ":00");
-      if (start < 0) start = 0;
-      for (var k = 1; k <= 6 && start + k < d.hourly.time.length; k++) {
-        var j = start + k, hi = info(d.hourly.weather_code[j], d.hourly.is_day[j]), li = mk("li");
-        li.appendChild(mk("span", "wxc-h", hourLabel(d.hourly.time[j])));
-        var hic = mk("span", "wxc-hi", hi.icon); hic.setAttribute("aria-hidden", "true"); li.appendChild(hic);
-        li.appendChild(mk("span", "wxc-ht", temp(d.hourly.temperature_2m[j])));
-        strip.appendChild(li);
+    } else if (kind === "week" && d.daily) {
+      var days = mk("ul", "wxc-days");
+      for (var k = 1; k < d.daily.time.length && k <= 6; k++) {
+        var di = info(d.daily.weather_code[k], 1), li = mk("li"), dt = new Date(d.daily.time[k] + "T12:00:00Z"), wd = "";
+        try { wd = new Intl.DateTimeFormat(S.locale, { weekday: "short", timeZone: "UTC" }).format(dt); } catch (e) { wd = d.daily.time[k].slice(5); }
+        li.appendChild(mk("span", "wxc-h", wd));
+        var dic = mk("span", "wxc-hi", di.icon); dic.setAttribute("aria-hidden", "true"); li.appendChild(dic);
+        li.appendChild(mk("span", "wxc-ht", temp(d.daily.temperature_2m_max[k])));
+        li.appendChild(mk("span", "wxc-lo", temp(d.daily.temperature_2m_min[k])));
+        days.appendChild(li);
       }
-      box.appendChild(strip);
+      box.appendChild(days);
     }
   }
   function wxMessage(box, key, withLink) {
     box.textContent = "";
     var p = mk("p", "wxc-msg", (X()[key] || "") + (withLink ? " " : ""));
     if (withLink) {
-      var src = doc.querySelector("[data-fs-weather-box]"), a = mk("a", null, X().fsLink);
-      a.href = src ? src.getAttribute("data-weather-url") : "#";
+      var a = mk("a", null, X().fsLink);
+      a.href = "#"; a.setAttribute("data-place-open", "");
       p.appendChild(a);
     }
     box.appendChild(p);
@@ -108,6 +109,7 @@
       refresh(slide);
       if (!slide._wxt) slide._wxt = setInterval(function () { refresh(slide); }, 10 * 60 * 1000);
     }
+    window.addEventListener("sth-place", function () { slides.forEach(function (slide) { if (slide.getAttribute("aria-hidden") === "false") refresh(slide); }); });
     slides.forEach(function (slide) {
       new MutationObserver(function () { sync(slide); }).observe(slide, { attributes: true, attributeFilter: ["aria-hidden"] });
       sync(slide);
@@ -135,7 +137,7 @@
     var x = X();
     box.textContent = "";
     var p = el("p", "fsw-more", x.fsNeed + " ");
-    var a = el("a", null, x.fsLink); a.href = box.getAttribute("data-weather-url");
+    var a = el("a", null, x.fsLink); a.href = "#"; a.setAttribute("data-place-open", "");
     p.appendChild(a); box.appendChild(p);
   }
   function refresh() {
@@ -150,6 +152,7 @@
     clearInterval(timer);
     if (on && full) { refresh(); timer = setInterval(refresh, 15 * 60 * 1000); }
   }
+  window.addEventListener("sth-place", function () { if (S.prefs.fsWeather === true && stage.classList.contains("fs-on")) refresh(); });
   btn.addEventListener("click", function () { S.prefs.fsWeather = !S.prefs.fsWeather; S.store("sth-prefs", JSON.stringify(S.prefs)); S.track("tam-ekran-hava", { acik: S.prefs.fsWeather }); update(); });
   new MutationObserver(function () { var full = stage.classList.contains("fs-on"); if (full !== (shownKey === "1")) { shownKey = full ? "1" : "0"; update(); } }).observe(stage, { attributes: true, attributeFilter: ["class"] });
   update();

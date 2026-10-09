@@ -38,10 +38,16 @@
     "langMenu": "Dil",
     "menu": "Menyu",
     "prayer": "Namaz vaxtları",
-    "nature": "Təbiət",
+    "nature": "Fəsillər",
     "weather": "Hava",
     "today": "Bu gün",
-    "faq": "TVS"
+    "faq": "TVS",
+    "settings": "Parametrlər",
+    "theme": "Açıq / tünd tema",
+    "placeChange": "Məkanı dəyişin",
+    "placeTitle": "Məkanınız",
+    "placeNote": "Məkanınız yalnız cihazınızda qalır, namaz vaxtları, fəsillər və hava üçün bütün səhifələrdə istifadə olunur və serverə göndərilmir.",
+    "placeClose": "Bağla"
   },
   "client": {
     "format24": "24 saat",
@@ -132,8 +138,8 @@
       "mono": "Ağ"
     },
     "fsWeather": "Hava",
-    "fsWeatherNeed": "Hava proqnozu üçün məkan seçin:",
-    "fsWeatherLink": "hava səhifəsi",
+    "fsWeatherNeed": "Hava üçün məkan seçin:",
+    "fsWeatherLink": "məkan seçin",
     "fsWeatherFail": "Hava məlumatı alına bilmədi."
   },
   "home": {
@@ -210,14 +216,12 @@
     "colOffset": "UTC fərqi",
     "colDiff": "Sizinlə fərq",
     "tableCaption": "Şəhərlərdə indiki yerli vaxt",
-    "customize": "Şəhərləri redaktə et",
-    "customizeLead": "Göstərmək istədiyiniz şəhərləri seçin; seçiminiz yalnız bu brauzerdə saxlanılır.",
+    "customize": "Şəhər əlavə et / çıxar",
+    "customizeLead": "Zaman xəttində göstərilən şəhərləri əlavə edin və ya çıxarın; seçiminiz yalnız bu brauzerdə saxlanılır.",
     "addCity": "Şəhər əlavə et",
     "addZone": "Başqa saat qurşağı əlavə et",
     "add": "Əlavə et",
     "remove": "Sil",
-    "moveUp": "Yuxarı apar",
-    "moveDown": "Aşağı apar",
     "reset": "Susmaya görə qaytar",
     "empty": "Heç bir şəhər seçilməyib.",
     "select": "Seçin…",
@@ -417,11 +421,21 @@
       "words": "Sözlə saat",
       "rings": "Halqalı saat",
       "wx-analog": "Analoq və hava",
-      "wx-digital": "Rəqəmsal və hava",
+      "wx-digital": "Rəqəmsal, tarix və hava",
       "wx-stack": "Analoq, rəqəmsal və hava",
-      "wx-forecast": "Rəqəmsal və saatlıq proqnoz",
       "bigdate": "Böyük tarix",
-      "stack": "Analoq və altında rəqəmsal"
+      "stack": "Analoq və altında rəqəmsal",
+      "wx-analog-date": "Analoq, tarix və hava",
+      "wx-full": "Analoq, rəqəmsal, tarix və hava",
+      "h-classic": "Üfüqi analoq",
+      "h-analog-date": "Üfüqi analoq və tarix",
+      "h-stack": "Üfüqi analoq və rəqəmsal",
+      "h-wx-analog": "Üfüqi analoq və hava",
+      "h-wx-stack": "Üfüqi analoq, rəqəmsal və hava",
+      "h-wx-analog-date": "Üfüqi analoq, tarix və hava",
+      "h-wx-full": "Üfüqi analoq, rəqəmsal, tarix və hava",
+      "wx-digital-cal": "Rəqəmsal, tarix, hava və aylıq təqvim",
+      "wx-digital-cal-week": "Rəqəmsal, tarix, hava, aylıq təqvim və həftəlik hava"
     },
     "source": "Bu saat cihazınızın saatından asılı deyil: Saat Tarih serverinin NTP ilə sinxronlaşdırılmış saatından götürülür və hər 15 dəqiqədən bir yenidən ölçülür.",
     "info": "Vaxt mənbəyi haqqında məlumat",
@@ -466,7 +480,6 @@
     "faqRamadanA": "{year} ilində Ramazan ayı {start} tarixində başlayır və {end} tarixində bitir. Qədr gecəsi {kadir} axşamına düşür.",
     "faqHolidays": "{year} ilində neçə rəsmi bayram günü var?",
     "faqHolidaysA": "{year} ilində {n} rəsmi bayram günü var, onlardan {w} günü iş günlərinə düşür. Ramazan və Qurban bayramlarının ərəfələri, həmçinin 28 oktyabr yarım iş günüdür.",
-    "note": "Dini gün və gecələrin tarixləri Türkiyə Diyanət İşləri Başqanlığının (Diyanet) təqviminə əsaslanır; mübarək (kandil) gecələri göstərilən tarixin axşamı başlayır. İnzibati məzuniyyət və körpü tətilləri rəsmi bayram deyil və burada göstərilmir.",
     "noYear": "Bu il üçün məlumat yoxdur.",
     "months": [
       "Yanvar",
@@ -576,11 +589,9 @@
     "hubName": "İllik təqvim",
     "hubDesc": "Rəsmi bayram günləri, dini bayramlar və ərəfələr, mübarək gecələr və Ramazan ayı.",
     "projected": "Bu ilin dini tarixləri Diyanetin uzunmüddətli təqviminə əsaslanır və il yaxınlaşdıqca dəyişə bilər.",
-    "schoolNote": "Məktəb təqvimi Türkiyə Milli Təhsil Nazirliyinin (MEB) 2026-2027 tədris ili üçün iş təqviminə əsaslanır; əyalət təhsil idarələrində yerli fərqlər ola bilər.",
     "fullFmt": "{day} {month} {year}, {weekday}",
     "shortFmt": "{day} {month}",
     "dateFmt": "{day} {month} {year}",
-    "examNote": "İmtahan tarixləri ÖSYM, MEB və Anadolu Universitetinin elanlarına əsaslanır; qurumlar onları dəyişə bilər. 2027-ci il YKS, KPSS və LGS tarixləri hələ açıqlanmayıb, açıqlandıqda əlavə ediləcək.",
     "dayNone": "Bu gün üçün qeydə alınmış xüsusi gün yoxdur.",
     "dayWeek": "Həftə {n}",
     "dayDoy": "İlin {n}-ci günü",
@@ -588,7 +599,7 @@
     "dayIn": "{n} gün sonra",
     "dayAgo": "{n} gün əvvəl",
     "dayClose": "Bağla",
-    "dayHint": "Ətraflı məlumat üçün günə toxunun."
+    "dayToList": "Günlər siyahısında göstər"
   },
   "tools": {
     "hub": {
@@ -617,10 +628,6 @@
         "week": {
           "name": "Hansı həftədir?",
           "desc": "ISO həftə nömrəsi, bu həftənin tarixləri, ilin bütün həftələri."
-        },
-        "today": {
-          "name": "Bugünkü tarix",
-          "desc": "Bugünkü tarix, həftənin günü, ilin günü və qalan günlər."
         },
         "tz": {
           "name": "Türkiyə saat qurşağı",
@@ -872,41 +879,6 @@
         {
           "q": "Həftə nömrəsi nə üçün istifadə olunur?",
           "a": "Həftə nömrələri gündəlik həyatda o qədər də işlədilmir, lakin ISO həftə nömrələri biznes planlaşdırmasında, logistikada, təhsildə və proqram təminatında geniş yayılıb. Bu səhifədəki alət seçdiyiniz istənilən tarixin həftə nömrəsini göstərir."
-        }
-      ]
-    },
-    "today": {
-      "title": "Bu gün ayın neçəsidir? Gün, tarix və həftə nömrəsi | Saat Tarih",
-      "description": "Bu gün ayın neçəsi və həftənin hansı günüdür? Bugünkü tarix, gün, həftə nömrəsi, ilin günü və qalan günlər – server saatı və saat qurşağınıza görə.",
-      "h1": "Bu gün ayın neçəsidir?",
-      "lead": "Bugünkü tarix aşağıda canlı göstərilir. O, server saatına və saat qurşağınıza əsasən hesablanır, ona görə cihazınızın saatı səhv olsa belə düzgün gün görünür.",
-      "factsHeading": "Bu gün ətraflı",
-      "fWeekday": "Həftənin günü",
-      "fMonthYear": "Ay və il",
-      "fNumeric": "Rəqəmli format",
-      "fIso": "ISO 8601",
-      "fDoy": "İlin günü",
-      "fWeek": "Həftə nömrəsi",
-      "fYearLeft": "İlin sonuna qalan günlər",
-      "fMonthLeft": "Ayın sonuna qalan günlər",
-      "fUnix": "Unix vaxt möhürü",
-      "faqHeading": "Tarix haqqında tez-tez verilən suallar",
-      "faq": [
-        {
-          "q": "Bu gün həftənin hansı günüdür?",
-          "a": "Bugünkü həftə günü yuxarıdakı böyük tarixdə və Həftənin günü xanasında yazılıb. Tarix server saatına və saat qurşağınıza görə hesablanır."
-        },
-        {
-          "q": "Türkiyədə tarix necə yazılır?",
-          "a": "Türkiyədə rəqəmli tarix gün.ay.il qaydasında yazılır, məsələn, 09.10.2026. Beynəlxalq ISO 8601 formatı isə il-ay-gün ardıcıllığındadır: 2026-10-09."
-        },
-        {
-          "q": "Buradakı tarix niyə telefonumdakından fərqli ola bilər?",
-          "a": "Sayt cihazınızın saatından asılı olmayaraq server saatı ilə işləyir. Cihazınızın tarixi və ya saatı səhvdirsə, fərq görə bilərsiniz; səhifədəki vəziyyət sətri cihazınızın saatının nə qədər fərqləndiyini bildirir."
-        },
-        {
-          "q": "Bu gün ilin neçənci günüdür?",
-          "a": "İlin günü yuxarıdakı xanada canlı göstərilir. 1 yanvar ilin 1-ci günüdür, uzun ildə isə 366 gün olur."
         }
       ]
     },
@@ -1288,8 +1260,6 @@
       "isha": "İşa"
     },
     "otherPlace": "Başqa məkan üçün namaz vaxtları səhifəsinə keçin",
-    "methodHeading": "Vaxtlar necə hesablanır?",
-    "method": "Vaxtlar məkanın enlik və uzunluğundan günəşin vəziyyəti hesablanaraq tapılır: sübh günəş üfüqdən 18° aşağıda olanda, işa 17° aşağıda olanda, əsr isə cismin kölgəsi onun boyuna bərabər olanda başlayır. Nəticələr Türkiyə Diyanət İşləri Başqanlığının (Diyanet) vilayət mərkəzləri üçün dərc etdiyi vaxtlarla müqayisə edilərək tənzimlənib; 81 vilayət mərkəzində 2026-cı ilin oktyabr vaxtlarında fərq ən çox 1 dəqiqədir. Rəsmi vaxt üçün Diyanet əsas götürülməlidir; azan vaxtları rayondan rayona və məsciddən məscidə bir neçə dəqiqə fərqlənə bilər.",
     "provincesHeading": "Vilayətlər üzrə namaz vaxtları",
     "provincesLead": "Vilayət seçin.",
     "noscript": "Namaz vaxtlarını görmək üçün brauzerdə JavaScript aktiv olmalıdır.",
@@ -1316,12 +1286,25 @@
         "a": "Bəli. “Məkanımı istifadə et” düyməsi ilə dünyanın istənilən yerində vaxtlar hesablanır. Çox yüksək enliklərdə sübh və ya işa bucağı yaranmaya bilər; bu halda gecənin yeddidə biri qaydası ilə təxmini dəyər verilir."
       }
     ],
-    "search": "namaz vaxtları azan sübh zöhr əsr məğrib işa iftar səhur namaz vakitleri prayer times"
+    "search": "namaz vaxtları azan sübh zöhr əsr məğrib işa iftar səhur namaz vakitleri prayer times imsakiyyə ramazan sahur iftar",
+    "imHeading": "Ramazan imsakiyyəsi",
+    "imText": "Növbəti Ramazan ayı üçün səhər (imsak) və iftar (axşam) vaxtlarını göstərən rəngli imsakiyyə; məkanınıza görə hesablanır. Açın və ya şəkil kimi yükləyib paylaşın, çap edin.",
+    "imOpen": "İmsakiyyəni aç",
+    "imDownload": "PNG kimi yüklə",
+    "imTitle": "Ramazan imsakiyyəsi {year}",
+    "imAlt": "{place} üçün {year} Ramazan imsakiyyəsi",
+    "imDay": "Ramazan",
+    "imDate": "Tarix",
+    "imSahur": "səhər",
+    "imIftar": "iftar",
+    "imNote": "Vaxtlar hesablanmışdır; rəsmi vaxt üçün Diyanət İşləri Başqanlığının məlumatı əsasdır.",
+    "imFile": "ramazan-imsakiyyesi",
+    "imBrand": "Bumba Group · Bumba Life"
   },
   "nature": {
-    "title": "Fəsillər və təbiət: Günəş, Ay, gün uzunluğu | Saat Tarih",
-    "description": "Fəsil çarxı, fəsillərin başlama tarixləri, bugünkü gün çıxma və batma, Ayın fazası və il boyu gün uzunluğu, hər fəsil üçün təbiət faktları.",
-    "h1": "Fəsillər və təbiət",
+    "title": "Fəsillər: Fəsil çarxı, bərabərlik və gündönümü | Saat Tarih",
+    "description": "Fəsil çarxı (yay yuxarıda), bərabərlik və gündönümü tarixləri, ilin ən uzun günü və gecəsi, gün çıxması və batması, Ayın fazası və gün uzunluğu.",
+    "h1": "Fəsillər",
     "lead": "İl çarx kimi dönür: hazırda hansı fəsildir, növbəti fəslə neçə gün qalıb, Günəş nə vaxt doğur və batır, Ay hansı fazadadır? Hamısı bir səhifədə, məkanınız və ya seçdiyiniz əyalət üçün.",
     "wheelLabel": "İllik fəsil çarxı",
     "seasons": {
@@ -1334,7 +1317,6 @@
     "dayOf": "Gün {n} / {total}",
     "nextIn": "{season} fəslinin başlamasına {days} gün qalıb",
     "startsOn": "{season} fəslinin başlanğıcı: {date}",
-    "chooseNote": "Məkanınız həm gün çıxma, gün batma və Ay vaxtlarını, həm də yarımkürəni müəyyən edir.",
     "sunHeading": "Bu gün Günəş",
     "sunrise": "Gün çıxması",
     "sunset": "Gün batması",
@@ -1419,7 +1401,22 @@
         "a": "Faza əvvəlki yeni aydan keçən vaxtın Ay dövrünə (təxminən 29,5 gün) nisbətindən çıxarılır. Yeni ay və tam ay anları astronomik düsturlarla bir neçə dəqiqə dəqiqliklə hesablanır."
       }
     ],
-    "search": "fəsillər yaz yay payız qış bərabərgünlük gündönümü Ay fazası tam ay yeni ay gün çıxması gün batması gün uzunluğu təbiət seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length"
+    "search": "fəsillər yaz yay payız qış bərabərgünlük gündönümü Ay fazası tam ay yeni ay gün çıxması gün batması gün uzunluğu təbiət seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length",
+    "turnHeading": "Bərabərlik və gündönümü",
+    "turnNames": {
+      "springEq": "Yaz bərabərliyi",
+      "summerSol": "Yay gündönümü",
+      "autumnEq": "Payız bərabərliyi",
+      "winterSol": "Qış gündönümü"
+    },
+    "turnNotes": {
+      "eq": "Gündüz və gecə təxminən bərabərdir (12 saat).",
+      "longDay": "İlin ən uzun günü və ən qısa gecəsi.",
+      "longNight": "İlin ən qısa günü və ən uzun gecəsi."
+    },
+    "turnIn": "{n} gün sonra",
+    "turnAgo": "{n} gün əvvəl",
+    "turnToday": "bu gün"
   },
   "weather": {
     "title": "Hava: Hazırkı, saatlıq və 7 günlük proqnoz | Saat Tarih",
@@ -1472,7 +1469,7 @@
       "qərb",
       "şimal-qərb"
     ],
-    "natureLink": "Fəsillər və təbiət səhifəsi",
+    "natureLink": "Fəsillər səhifəsi",
     "faqHeading": "Tez-tez verilən suallar",
     "faq": [
       {

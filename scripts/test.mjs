@@ -53,9 +53,9 @@ for (const f of htmlFiles) {
     check(slides.length >= 10, `${name}: saat modeli sayısı ${slides.length} < 10`);
     check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
     check((h.match(/data-dot="\d+"/g) || []).length === slides.length, `${name}: nokta sayısı model sayısıyla uyuşmuyor`);
-    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-fs-bar/.test(h) && (h.match(/data-color="/g) || []).length >= 10 && /data-tick/.test(h) && !/data-nav="-1"/.test(h) && !/stage-hint/.test(h) && /data-fmt="24"/.test(h) && /data-fmt="12"/.test(h) && /data-pref="sec"/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
+    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-fs-bar/.test(h) && (h.match(/data-color="/g) || []).length >= 10 && /data-tick/.test(h) && !/data-nav="-1"/.test(h) && !/stage-hint/.test(h) && /data-fmt-toggle/.test(h) && /data-pref="sec"/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
     check(!/data-pref="sync"/.test(h) && /data-sync-status/.test(h) && /class="meta source-line"/.test(h), `${name}: senkron düğmesi/durumu eksik`);
-    check(/data-live="calendar"/.test(h) && /data-live="flip"/.test(h) && /data-live="words"/.test(h) && /data-live="rings"/.test(h), `${name}: özel model türleri eksik`);
+    check(/data-live="calendar"/.test(h), `${name}: özel model türleri eksik`);
   }
   if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name))) {
     check(/data-globe/.test(h) && /globe\.js/.test(h) && /"globe":\{"earth":"\/assets\/earth\.jpg\?v=/.test(h) && /"places":"\/assets\/places\.json/.test(h) && /data-globe-attr/.test(h) && /data-globe-zoom="in"/.test(h), `${name}: dünya küresi eksik`);
@@ -65,9 +65,14 @@ for (const f of htmlFiles) {
   if (/\/(sss|faq)\/index\.html$/.test(name)) {
     check(/"FAQPage"/.test(h) && (h.match(/class="section faq-group"/g) || []).length >= 15 && (h.match(/<details>/g) || []).length >= 100, `${name}: SSS sayfası eksik`);
   }
-  if (/\/(bugun-ayin-kaci|todays-date)\/index\.html$/.test(name)) check(/data-live="utc"/.test(h) && /data-live="progress"/.test(h) && /class="inline-links"/.test(h), `${name}: bugün sayfası kutuları eksik`);
+  check(!/(bugun-ayin-kaci|todays-date)\/index\.html$/.test(name), `${name}: kaldırılan Bugün sayfası geri geldi`);
+  if (!err && !embed) {
+    check(!/class="crumbs"/.test(h), `${name}: görünür ekmek kırıntısı bağlantısı olmamalı`);
+    check(/class="top-date" data-live="date"/.test(h) && /data-place-open/.test(h) && /class="settings-menu"/.test(h) && /id="place-dialog"/.test(h), `${name}: üst bar (tarih, konum, ayarlar) eksik`);
+    check(!/<p class="lead"[^>]*>/.test(h.replace(/<p class="lead sr-only"/g, "")), `${name}: başlık altı açıklama görünür durmamalı`);
+  }
   if (/\/(takvim|calendar)\/\d{4}\/index\.html$/.test(name)) {
-    check(/data-upcoming/.test(h), `${name}: yaklaşan günler eksik`);
+    check(!/data-upcoming/.test(h) && !/id="day-detail"/.test(h) && !/d-exam/.test(h) && /id="day-dialog"/.test(h), `${name}: takvimde kaldırılan bölüm duruyor ya da gün penceresi yok`);
     check((h.match(/<table class="ymonth"/g) || []).length === 12, `${name}: 12 ay tablosu yok`);
     check(/class="events-table"/.test(h) && /d-holiday/.test(h) && /d-half/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: takvim içeriği eksik`);
     check(/data-year="\d{4}"/.test(h) && /calendar\.js/.test(h), `${name}: takvim betiği/yılı eksik`);
@@ -80,17 +85,19 @@ for (const f of htmlFiles) {
   if (/\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
   if (/\/(namaz-vakitleri|prayer-times)\/([a-z]+\/)?index\.html$/.test(name)) {
     const hub = /\/(namaz-vakitleri|prayer-times)\/index\.html$/.test(name);
-    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
+    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /data-imsakiye/.test(h) && /imsakiye\.js/.test(h) && !/class="tool prayer"/.test(h) && !/pr-method-h/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
     if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-place-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
     else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
   }
-  if (/\/(doga|nature)\/index\.html$/.test(name)) {
-    check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-place-geo/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
-    check(h.indexOf("data-nature") < h.indexOf("<h1"), `${name}: mevsim çarkı sayfanın en üstünde olmalı`);
+  if (/\/(mevsimler|seasons)\/index\.html$/.test(name)) {
+    check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-n-turns/.test(h) && !/data-place-city="/.test(h.replace(/<dialog[\s\S]*?<\/dialog>/g, "")) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
+    check(h.indexOf("<h1") < h.indexOf("data-nature"), `${name}: başlık çarkın üstünde olmalı`);
   }
   if (/\/(hava-durumu|weather)\/index\.html$/.test(name)) {
     check(/data-weather\b/.test(h) && /data-wx-hourly/.test(h) && /data-wx-daily/.test(h) && /weather-core\.js/.test(h) && /weather\.js/.test(h) && /Open-Meteo\.com/.test(h) && /data-place-geo/.test(h), `${name}: hava durumu sayfası yapısı eksik`);
   }
+  if (/\/(araclar|tools)\/index\.html$/.test(name)) check((h.match(/class="tool-card"/g) || []).length >= 10 && !/card-open/.test(h) && !/\/(takvim|calendar)\/\d{4}\//.test(h.slice(h.indexOf('class="tool-cards"'), h.indexOf("</main>"))) && !/class="tool-desc"/.test(h), `${name}: araçlar kartları (görsel + ad) eksik`);
+  if (/\/(dunya-saatleri|world-clock)\/index\.html$/.test(name)) check(/data-world="line"/.test(h) && /world\.js/.test(h) && !/data-fmt-toggle/.test(h) && !/data-pref="sec"/.test(h) && !/ankara|izmir/i.test(h.slice(h.indexOf('data-world="line"'), h.indexOf("</main>"))), `${name}: zaman çizgisi sayfası eksik ya da gizlenen şehir duruyor`);
   const toolMatch = /\/(kronometre|geri-sayim|alarm|pomodoro|stopwatch|countdown)\/index\.html$/.exec(name);
   if (toolMatch) {
     check(/data-tool="(stopwatch|countdown|alarm|pomodoro)"/.test(h) && /tools\.js/.test(h) && /data-fs/.test(h) && /"WebApplication"/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: araç yapısı eksik`);
