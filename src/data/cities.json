@@ -1,53 +1,325 @@
 [
-  { "key": "istanbul", "tz": "Europe/Istanbul", "std": "+03:00", "dst": false,
-    "tr": { "slug": "istanbul", "name": "İstanbul", "loc": "İstanbul'da", "country": "Türkiye" },
-    "en": { "slug": "istanbul", "name": "Istanbul", "country": "Türkiye" } },
-  { "key": "ankara", "tz": "Europe/Istanbul", "std": "+03:00", "dst": false,
-    "tr": { "slug": "ankara", "name": "Ankara", "loc": "Ankara'da", "country": "Türkiye" },
-    "en": { "slug": "ankara", "name": "Ankara", "country": "Türkiye" } },
-  { "key": "izmir", "tz": "Europe/Istanbul", "std": "+03:00", "dst": false,
-    "tr": { "slug": "izmir", "name": "İzmir", "loc": "İzmir'de", "country": "Türkiye" },
-    "en": { "slug": "izmir", "name": "Izmir", "country": "Türkiye" } },
-  { "key": "london", "tz": "Europe/London", "std": "+00:00", "dst": true,
-    "tr": { "slug": "londra", "name": "Londra", "loc": "Londra'da", "country": "Birleşik Krallık" },
-    "en": { "slug": "london", "name": "London", "country": "United Kingdom" } },
-  { "key": "paris", "tz": "Europe/Paris", "std": "+01:00", "dst": true,
-    "tr": { "slug": "paris", "name": "Paris", "loc": "Paris'te", "country": "Fransa" },
-    "en": { "slug": "paris", "name": "Paris", "country": "France" } },
-  { "key": "berlin", "tz": "Europe/Berlin", "std": "+01:00", "dst": true,
-    "tr": { "slug": "berlin", "name": "Berlin", "loc": "Berlin'de", "country": "Almanya" },
-    "en": { "slug": "berlin", "name": "Berlin", "country": "Germany" } },
-  { "key": "moscow", "tz": "Europe/Moscow", "std": "+03:00", "dst": false,
-    "tr": { "slug": "moskova", "name": "Moskova", "loc": "Moskova'da", "country": "Rusya" },
-    "en": { "slug": "moscow", "name": "Moscow", "country": "Russia" } },
-  { "key": "dubai", "tz": "Asia/Dubai", "std": "+04:00", "dst": false,
-    "tr": { "slug": "dubai", "name": "Dubai", "loc": "Dubai'de", "country": "Birleşik Arap Emirlikleri" },
-    "en": { "slug": "dubai", "name": "Dubai", "country": "United Arab Emirates" } },
-  { "key": "baku", "tz": "Asia/Baku", "std": "+04:00", "dst": false,
-    "tr": { "slug": "baku", "name": "Bakü", "loc": "Bakü'de", "country": "Azerbaycan" },
-    "en": { "slug": "baku", "name": "Baku", "country": "Azerbaijan" } },
-  { "key": "cairo", "tz": "Africa/Cairo", "std": "+02:00", "dst": true,
-    "tr": { "slug": "kahire", "name": "Kahire", "loc": "Kahire'de", "country": "Mısır" },
-    "en": { "slug": "cairo", "name": "Cairo", "country": "Egypt" } },
-  { "key": "new-york", "tz": "America/New_York", "std": "-05:00", "dst": true,
-    "tr": { "slug": "new-york", "name": "New York", "loc": "New York'ta", "country": "ABD" },
-    "en": { "slug": "new-york", "name": "New York", "country": "United States" } },
-  { "key": "los-angeles", "tz": "America/Los_Angeles", "std": "-08:00", "dst": true,
-    "tr": { "slug": "los-angeles", "name": "Los Angeles", "loc": "Los Angeles'ta", "country": "ABD" },
-    "en": { "slug": "los-angeles", "name": "Los Angeles", "country": "United States" } },
-  { "key": "tokyo", "tz": "Asia/Tokyo", "std": "+09:00", "dst": false,
-    "tr": { "slug": "tokyo", "name": "Tokyo", "loc": "Tokyo'da", "country": "Japonya" },
-    "en": { "slug": "tokyo", "name": "Tokyo", "country": "Japan" } },
-  { "key": "beijing", "tz": "Asia/Shanghai", "std": "+08:00", "dst": false,
-    "tr": { "slug": "pekin", "name": "Pekin", "loc": "Pekin'de", "country": "Çin" },
-    "en": { "slug": "beijing", "name": "Beijing", "country": "China" } },
-  { "key": "singapore", "tz": "Asia/Singapore", "std": "+08:00", "dst": false,
-    "tr": { "slug": "singapur", "name": "Singapur", "loc": "Singapur'da", "country": "Singapur" },
-    "en": { "slug": "singapore", "name": "Singapore", "country": "Singapore" } },
-  { "key": "mumbai", "tz": "Asia/Kolkata", "std": "+05:30", "dst": false,
-    "tr": { "slug": "mumbai", "name": "Mumbai", "loc": "Mumbai'de", "country": "Hindistan" },
-    "en": { "slug": "mumbai", "name": "Mumbai", "country": "India" } },
-  { "key": "sydney", "tz": "Australia/Sydney", "std": "+10:00", "dst": true,
-    "tr": { "slug": "sidney", "name": "Sidney", "loc": "Sidney'de", "country": "Avustralya" },
-    "en": { "slug": "sydney", "name": "Sydney", "country": "Australia" } }
+  {
+    "key": "istanbul",
+    "tz": "Europe/Istanbul",
+    "std": "+03:00",
+    "dst": false,
+    "tr": {
+      "slug": "istanbul",
+      "name": "İstanbul",
+      "loc": "İstanbul'da",
+      "country": "Türkiye"
+    },
+    "en": {
+      "slug": "istanbul",
+      "name": "Istanbul",
+      "country": "Türkiye"
+    },
+    "lat": 41.01,
+    "lon": 28.98
+  },
+  {
+    "key": "ankara",
+    "tz": "Europe/Istanbul",
+    "std": "+03:00",
+    "dst": false,
+    "tr": {
+      "slug": "ankara",
+      "name": "Ankara",
+      "loc": "Ankara'da",
+      "country": "Türkiye"
+    },
+    "en": {
+      "slug": "ankara",
+      "name": "Ankara",
+      "country": "Türkiye"
+    },
+    "lat": 39.93,
+    "lon": 32.86
+  },
+  {
+    "key": "izmir",
+    "tz": "Europe/Istanbul",
+    "std": "+03:00",
+    "dst": false,
+    "tr": {
+      "slug": "izmir",
+      "name": "İzmir",
+      "loc": "İzmir'de",
+      "country": "Türkiye"
+    },
+    "en": {
+      "slug": "izmir",
+      "name": "Izmir",
+      "country": "Türkiye"
+    },
+    "lat": 38.42,
+    "lon": 27.14
+  },
+  {
+    "key": "london",
+    "tz": "Europe/London",
+    "std": "+00:00",
+    "dst": true,
+    "tr": {
+      "slug": "londra",
+      "name": "Londra",
+      "loc": "Londra'da",
+      "country": "Birleşik Krallık"
+    },
+    "en": {
+      "slug": "london",
+      "name": "London",
+      "country": "United Kingdom"
+    },
+    "lat": 51.51,
+    "lon": -0.13
+  },
+  {
+    "key": "paris",
+    "tz": "Europe/Paris",
+    "std": "+01:00",
+    "dst": true,
+    "tr": {
+      "slug": "paris",
+      "name": "Paris",
+      "loc": "Paris'te",
+      "country": "Fransa"
+    },
+    "en": {
+      "slug": "paris",
+      "name": "Paris",
+      "country": "France"
+    },
+    "lat": 48.86,
+    "lon": 2.35
+  },
+  {
+    "key": "berlin",
+    "tz": "Europe/Berlin",
+    "std": "+01:00",
+    "dst": true,
+    "tr": {
+      "slug": "berlin",
+      "name": "Berlin",
+      "loc": "Berlin'de",
+      "country": "Almanya"
+    },
+    "en": {
+      "slug": "berlin",
+      "name": "Berlin",
+      "country": "Germany"
+    },
+    "lat": 52.52,
+    "lon": 13.4
+  },
+  {
+    "key": "moscow",
+    "tz": "Europe/Moscow",
+    "std": "+03:00",
+    "dst": false,
+    "tr": {
+      "slug": "moskova",
+      "name": "Moskova",
+      "loc": "Moskova'da",
+      "country": "Rusya"
+    },
+    "en": {
+      "slug": "moscow",
+      "name": "Moscow",
+      "country": "Russia"
+    },
+    "lat": 55.76,
+    "lon": 37.62
+  },
+  {
+    "key": "dubai",
+    "tz": "Asia/Dubai",
+    "std": "+04:00",
+    "dst": false,
+    "tr": {
+      "slug": "dubai",
+      "name": "Dubai",
+      "loc": "Dubai'de",
+      "country": "Birleşik Arap Emirlikleri"
+    },
+    "en": {
+      "slug": "dubai",
+      "name": "Dubai",
+      "country": "United Arab Emirates"
+    },
+    "lat": 25.2,
+    "lon": 55.27
+  },
+  {
+    "key": "baku",
+    "tz": "Asia/Baku",
+    "std": "+04:00",
+    "dst": false,
+    "tr": {
+      "slug": "baku",
+      "name": "Bakü",
+      "loc": "Bakü'de",
+      "country": "Azerbaycan"
+    },
+    "en": {
+      "slug": "baku",
+      "name": "Baku",
+      "country": "Azerbaijan"
+    },
+    "lat": 40.41,
+    "lon": 49.87
+  },
+  {
+    "key": "cairo",
+    "tz": "Africa/Cairo",
+    "std": "+02:00",
+    "dst": true,
+    "tr": {
+      "slug": "kahire",
+      "name": "Kahire",
+      "loc": "Kahire'de",
+      "country": "Mısır"
+    },
+    "en": {
+      "slug": "cairo",
+      "name": "Cairo",
+      "country": "Egypt"
+    },
+    "lat": 30.04,
+    "lon": 31.24
+  },
+  {
+    "key": "new-york",
+    "tz": "America/New_York",
+    "std": "-05:00",
+    "dst": true,
+    "tr": {
+      "slug": "new-york",
+      "name": "New York",
+      "loc": "New York'ta",
+      "country": "ABD"
+    },
+    "en": {
+      "slug": "new-york",
+      "name": "New York",
+      "country": "United States"
+    },
+    "lat": 40.71,
+    "lon": -74.01
+  },
+  {
+    "key": "los-angeles",
+    "tz": "America/Los_Angeles",
+    "std": "-08:00",
+    "dst": true,
+    "tr": {
+      "slug": "los-angeles",
+      "name": "Los Angeles",
+      "loc": "Los Angeles'ta",
+      "country": "ABD"
+    },
+    "en": {
+      "slug": "los-angeles",
+      "name": "Los Angeles",
+      "country": "United States"
+    },
+    "lat": 34.05,
+    "lon": -118.24
+  },
+  {
+    "key": "tokyo",
+    "tz": "Asia/Tokyo",
+    "std": "+09:00",
+    "dst": false,
+    "tr": {
+      "slug": "tokyo",
+      "name": "Tokyo",
+      "loc": "Tokyo'da",
+      "country": "Japonya"
+    },
+    "en": {
+      "slug": "tokyo",
+      "name": "Tokyo",
+      "country": "Japan"
+    },
+    "lat": 35.68,
+    "lon": 139.69
+  },
+  {
+    "key": "beijing",
+    "tz": "Asia/Shanghai",
+    "std": "+08:00",
+    "dst": false,
+    "tr": {
+      "slug": "pekin",
+      "name": "Pekin",
+      "loc": "Pekin'de",
+      "country": "Çin"
+    },
+    "en": {
+      "slug": "beijing",
+      "name": "Beijing",
+      "country": "China"
+    },
+    "lat": 39.9,
+    "lon": 116.41
+  },
+  {
+    "key": "singapore",
+    "tz": "Asia/Singapore",
+    "std": "+08:00",
+    "dst": false,
+    "tr": {
+      "slug": "singapur",
+      "name": "Singapur",
+      "loc": "Singapur'da",
+      "country": "Singapur"
+    },
+    "en": {
+      "slug": "singapore",
+      "name": "Singapore",
+      "country": "Singapore"
+    },
+    "lat": 1.35,
+    "lon": 103.82
+  },
+  {
+    "key": "mumbai",
+    "tz": "Asia/Kolkata",
+    "std": "+05:30",
+    "dst": false,
+    "tr": {
+      "slug": "mumbai",
+      "name": "Mumbai",
+      "loc": "Mumbai'de",
+      "country": "Hindistan"
+    },
+    "en": {
+      "slug": "mumbai",
+      "name": "Mumbai",
+      "country": "India"
+    },
+    "lat": 19.08,
+    "lon": 72.88
+  },
+  {
+    "key": "sydney",
+    "tz": "Australia/Sydney",
+    "std": "+10:00",
+    "dst": true,
+    "tr": {
+      "slug": "sidney",
+      "name": "Sidney",
+      "loc": "Sidney'de",
+      "country": "Avustralya"
+    },
+    "en": {
+      "slug": "sydney",
+      "name": "Sydney",
+      "country": "Australia"
+    },
+    "lat": -33.87,
+    "lon": 151.21
+  }
 ]

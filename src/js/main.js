@@ -201,6 +201,22 @@
     for (var i = 0; i < f.length; i++) if (f[i].type === "dayPeriod") return f[i].value;
     return "";
   }
+function sunTimes(y, m, d, lat, lon) {
+    var rad = Math.PI / 180;
+    var jd = Date.UTC(y, m - 1, d, 12) / 86400000 + 2440587.5;
+    var n = Math.round(jd - 2451545.0);
+    var js = n - lon / 360;
+    var M = (357.5291 + 0.98560028 * js) % 360;
+    var C = 1.9148 * Math.sin(M * rad) + 0.02 * Math.sin(2 * M * rad) + 0.0003 * Math.sin(3 * M * rad);
+    var lam = (M + C + 180 + 102.9372) % 360;
+    var jt = 2451545.0 + js + 0.0053 * Math.sin(M * rad) - 0.0069 * Math.sin(2 * lam * rad);
+    var dec = Math.asin(Math.sin(lam * rad) * Math.sin(23.4397 * rad));
+    var cw = (Math.sin(-0.833 * rad) - Math.sin(lat * rad) * Math.sin(dec)) / (Math.cos(lat * rad) * Math.cos(dec));
+    if (cw < -1 || cw > 1) return null;
+    var w = Math.acos(cw) / rad / 360;
+    var ms = function (j) { return (j - 2440587.5) * 86400000; };
+    return { rise: ms(jt - w), set: ms(jt + w) };
+  }
   function isoWeek(p) {
     var d = new Date(Date.UTC(p.year, p.month - 1, p.day));
     var day = d.getUTCDay() || 7;
@@ -213,6 +229,12 @@
   }
   function daysInYear(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0 ? 366 : 365; }
 
+  function weekRangeText(p, tz) {
+    var dow = (new Date(Date.UTC(p.year, p.month - 1, p.day)).getUTCDay() + 6) % 7;
+    var a = new Date(Date.UTC(p.year, p.month - 1, p.day - dow, 12)), b = new Date(Date.UTC(p.year, p.month - 1, p.day - dow + 6, 12));
+    var f = fmt("wr", "UTC", { day: "numeric", month: "long", year: "numeric" });
+    return typeof f.formatRange === "function" ? f.formatRange(a, b) : f.format(a) + " – " + f.format(b);
+  }
   var W = T.words || { units: [], tens: [], join: " ", oh: "", sentence: "{h} {m}", oclock: "{h}" };
   function numWords(n) {
     if (n < 20) return W.units[n];
@@ -283,6 +305,17 @@
         case "time": out = timeText(now, tz, el.hasAttribute("data-sec") ? prefs.sec : false); break;
         case "date": out = fmt("date", tz, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now); break;
         case "day": out = String(parts(now, tz).day); break;
+        case "dateiso": p = parts(now, tz); out = p.year + "-" + String(p.month).padStart(2, "0") + "-" + String(p.day).padStart(2, "0"); break;
+        case "datenum": out = fmt("dn", tz, { day: "2-digit", month: "2-digit", year: "numeric" }).format(now); break;
+        case "monthleft": p = parts(now, tz); out = String(new Date(Date.UTC(p.year, p.month, 0)).getUTCDate() - p.day); break;
+        case "weekrange": out = weekRangeText(parts(now, tz), tz); break;
+        case "sunrise": case "sunset": case "daylen":
+          p = parts(now, tz);
+          var st = sunTimes(p.year, p.month, p.day, parseFloat(el.getAttribute("data-lat")), parseFloat(el.getAttribute("data-lon")));
+          if (!st) { out = "–"; break; }
+          if (kind === "daylen") { var mins = Math.round((st.set - st.rise) / 60000); out = Math.floor(mins / 60) + " " + T.hourShort + " " + (mins % 60) + " " + T.minuteShort; }
+          else out = fmt("sun", tz, { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" }).format(new Date(kind === "sunrise" ? st.rise : st.set));
+          break;
         case "monthyear": out = fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
         case "weekday": out = fmt("wdl", tz, { weekday: "long" }).format(now); break;
         case "ampm": out = prefs.h12 ? dayPeriod(now, tz) : ""; break;
@@ -290,8 +323,10 @@
         case "tzname": out = (tz || "") + " · " + offsetLabel(offsetMin(now, tz)); break;
         case "offset": out = offsetLabel(offsetMin(now, tz)); break;
         case "diff":
-          var d = offsetMin(now, tz) - localOff;
-          out = d === 0 ? T.diffSame : tpl(d > 0 ? T.diffAhead : T.diffBehind, { d: durLabel(d) });
+          var refTz = el.getAttribute("data-ref");
+          var d = offsetMin(now, tz) - (refTz ? offsetMin(now, refTz) : localOff);
+          if (refTz) { var rn = el.getAttribute("data-ref-name"); out = d === 0 ? tpl(T.refSame, { ref: rn }) : tpl(d > 0 ? T.refAhead : T.refBehind, { d: durLabel(d), ref: rn }); }
+          else out = d === 0 ? T.diffSame : tpl(d > 0 ? T.diffAhead : T.diffBehind, { d: durLabel(d) });
           break;
         case "isoweek": out = String(isoWeek(parts(now, tz))); break;
         case "doy": out = String(dayOfYear(parts(now, tz))); break;
