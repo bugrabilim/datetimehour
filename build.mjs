@@ -492,12 +492,12 @@ ${ld}
 ${isError ? p.body : p.body.replace(/<p class="lead"/g, '<p class="lead sr-only"')}
 </main>
 <footer class="site-footer">
-  <div class="wrap">
+  <div class="wrap footer-row">
 ${isError ? "" : listForm(lang, p.path)}
     <div class="footer-sign">
       ${badge(lang)}
-      <p>${esc(u.copyright)}</p>
-      ${isError ? "" : `<p>${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
+      <p class="sr-only">${esc(u.copyright)}</p>
+      ${isError ? "" : `<p class="sr-only">${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
     </div>
   </div>
 </footer>
