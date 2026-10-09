@@ -203,7 +203,9 @@
     "globeInfo": "About the globe",
     "zoomIn": "Zoom in",
     "zoomOut": "Zoom out",
-    "resetView": "Whole world"
+    "resetView": "Whole world",
+    "todayQ": "What is today's date?",
+    "todayA": "Today's date and weekday are shown live in the bar at the top of every page and follow the server-synced clock rather than your device clock."
   },
   "world": {
     "title": "World Clock: Current Time in Cities | Saat Tarih",
@@ -440,7 +442,8 @@
     "source": "This clock does not depend on your device: it is read from the Saat Tarih server's NTP-synchronised clock and measured again every 15 minutes.",
     "info": "About this clock's time source",
     "infoTitle": "Where does this time come from?",
-    "infoClose": "Close"
+    "infoClose": "Close",
+    "infoSeconds": "Tap the clock to show or hide the seconds."
   },
   "calendar": {
     "title": "{year} Calendar: Turkish Public Holidays and Ramadan | Saat Tarih",

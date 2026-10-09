@@ -203,7 +203,9 @@
     "globeInfo": "Küre hakkında bilgi",
     "zoomIn": "Yakınlaştır",
     "zoomOut": "Uzaklaştır",
-    "resetView": "Tüm dünya"
+    "resetView": "Tüm dünya",
+    "todayQ": "Bugün ayın kaçı?",
+    "todayA": "Bugünün tarihi ve günü, her sayfanın üst çubuğunda canlı gösterilir ve cihazınızın saatine değil, sunucu saatiyle senkron çalışan saate göre güncellenir."
   },
   "world": {
     "title": "Dünya Saatleri: Şehirlerde Saat Kaç? | Saat Tarih",
@@ -440,7 +442,8 @@
     "source": "Bu saat cihazınızın saatinden bağımsızdır: Saat Tarih sunucusunun NTP ile senkronize edilen saatinden alınır ve 15 dakikada bir yeniden ölçülür.",
     "info": "Saat kaynağı hakkında bilgi",
     "infoTitle": "Bu saat nereden geliyor?",
-    "infoClose": "Kapat"
+    "infoClose": "Kapat",
+    "infoSeconds": "Saniyeleri görmek ya da gizlemek için saate dokunun."
   },
   "calendar": {
     "title": "{year} Takvimi: Resmi Tatiller, Bayram ve Ramazan | Saat Tarih",

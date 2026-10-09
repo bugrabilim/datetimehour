@@ -53,7 +53,7 @@ for (const f of htmlFiles) {
     check(slides.length >= 10, `${name}: saat modeli sayısı ${slides.length} < 10`);
     check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
     check((h.match(/data-dot="\d+"/g) || []).length === slides.length, `${name}: nokta sayısı model sayısıyla uyuşmuyor`);
-    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-fs-bar/.test(h) && (h.match(/data-color="/g) || []).length >= 10 && /data-tick/.test(h) && !/data-nav="-1"/.test(h) && !/stage-hint/.test(h) && /data-fmt-toggle/.test(h) && /data-pref="sec"/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
+    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-fs-bar/.test(h) && (h.match(/data-color="/g) || []).length >= 10 && /data-tick/.test(h) && !/data-nav="-1"/.test(h) && !/stage-hint/.test(h) && /data-fmt-toggle/.test(h) && !/data-pref="sec"/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
     check(!/data-pref="sync"/.test(h) && /data-sync-status/.test(h) && /class="meta source-line"/.test(h), `${name}: senkron düğmesi/durumu eksik`);
     check(/data-live="calendar"/.test(h), `${name}: özel model türleri eksik`);
   }
@@ -66,6 +66,7 @@ for (const f of htmlFiles) {
     check(/"FAQPage"/.test(h) && (h.match(/class="section faq-group"/g) || []).length >= 15 && (h.match(/<details>/g) || []).length >= 100, `${name}: SSS sayfası eksik`);
   }
   check(!/(bugun-ayin-kaci|todays-date)\/index\.html$/.test(name), `${name}: kaldırılan Bugün sayfası geri geldi`);
+  if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name))) check(/id="today-q"/.test(h) && /class="sr-only" aria-labelledby="today-q"/.test(h), `${name}: gizli "bugün ayın kaçı" bölümü eksik`);
   if (!err && !embed) {
     check(!/class="crumbs"/.test(h), `${name}: görünür ekmek kırıntısı bağlantısı olmamalı`);
     check(/class="top-date" data-live="date"/.test(h) && /data-place-open/.test(h) && /class="settings-menu"/.test(h) && /id="place-dialog"/.test(h), `${name}: üst bar (tarih, konum, ayarlar) eksik`);

@@ -203,7 +203,9 @@
     "globeInfo": "Kürə haqqında məlumat",
     "zoomIn": "Böyüt",
     "zoomOut": "Kiçilt",
-    "resetView": "Bütün dünya"
+    "resetView": "Bütün dünya",
+    "todayQ": "Bu gün ayın neçəsidir?",
+    "todayA": "Bugünkü tarix və həftənin günü hər səhifənin yuxarı panelində canlı göstərilir və cihaz saatına deyil, serverlə sinxron saata uyğundur."
   },
   "world": {
     "title": "Dünya saatları: şəhərlərdə indiki vaxt | Saat Tarih",
@@ -440,7 +442,8 @@
     "source": "Bu saat cihazınızın saatından asılı deyil: Saat Tarih serverinin NTP ilə sinxronlaşdırılmış saatından götürülür və hər 15 dəqiqədən bir yenidən ölçülür.",
     "info": "Vaxt mənbəyi haqqında məlumat",
     "infoTitle": "Bu vaxt haradan gəlir?",
-    "infoClose": "Bağla"
+    "infoClose": "Bağla",
+    "infoSeconds": "Saniyələri göstərmək və ya gizlətmək üçün saata toxunun."
   },
   "calendar": {
     "title": "{year} təqvimi: Türkiyənin rəsmi bayramları və Ramazan | Saat Tarih",

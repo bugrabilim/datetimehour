@@ -237,7 +237,7 @@ const ICON_SOUND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 
 /* 24/12 saat tek düğmesi ve saniye düğmesi (sahne) */
 function prefControls(t) {
-  return `<button type="button" class="toggle fmt-toggle" data-fmt-toggle aria-pressed="false" aria-label="${esc(t.client.formatLabel)}" title="${esc(t.client.formatLabel)}"><span data-fmt-part="24">24</span>/<span data-fmt-part="12">12</span></button><button type="button" class="toggle" data-pref="sec" aria-pressed="false">${esc(t.client.seconds)}</button>`;
+  return `<button type="button" class="toggle fmt-toggle" data-fmt-toggle aria-pressed="false" aria-label="${esc(t.client.formatLabel)}" title="${esc(t.client.formatLabel)}"><span data-fmt-part="24">24</span>/<span data-fmt-part="12">12</span></button>`;
 }
 
 function clockStage(lang, { tz = "", place = null } = {}) {
@@ -282,6 +282,7 @@ function clockStage(lang, { tz = "", place = null } = {}) {
     <h2 id="info-title">${esc(s.infoTitle)}</h2>
     <p class="meta source-line">${esc(s.source)}</p>
     <p class="sync-line" data-sync-status>&nbsp;</p>
+    <p class="meta">${esc(s.infoSeconds)}</p>
     <button type="button" class="btn" data-info-close>${esc(s.infoClose)}</button>
   </dialog>
 </div>`;
@@ -406,6 +407,7 @@ function layout(p) {
     t: { ...clientT, ...(p.clientExtra && p.clientExtra.tools ? { tools: p.clientExtra.tools } : {}), ...((p.clientExtra && p.clientExtra.t) || {}) },
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
     ...(p.clientExtra && p.clientExtra.globe ? { globe: p.clientExtra.globe } : {}),
+    placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
     cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt, calBase: ROUTES[lang].calendar, calMin: HOL_YEARS[0], calMax: HOL_YEARS[HOL_YEARS.length - 1] },
@@ -440,12 +442,13 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
   }).join("");
   /* Ayarlar: SSS, arama, tema ve dil tek açılır düğmede */
   const settings = `<details class="settings-menu"><summary class="icon-btn" aria-label="${esc(u.settings)}" title="${esc(u.settings)}">${ICON_GEAR}</summary><div class="settings-pop">
+        <button type="button" class="set-item" data-place-open aria-haspopup="dialog">${ICON_PIN}<span>${esc(u.placeChange)}<span class="set-sub" data-place-label></span></span></button>
         <a class="set-item" href="${ROUTES[lang].faq}">${esc(u.faq)}</a>
         <button type="button" class="set-item" data-search-open aria-haspopup="dialog">${ICON_SEARCH}<span>${esc(u.searchOpen)}</span></button>
         <button type="button" class="set-item" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}<span>${esc(u.theme)}</span></button>
+        <a class="set-item" href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a>
         <div class="set-lang" role="group" aria-label="${esc(u.langMenu)}">${langItems}</div>
       </div></details>`;
-  const placeBtn = `<button type="button" class="icon-btn place-btn" data-place-open aria-haspopup="dialog" aria-label="${esc(u.placeChange)}" title="${esc(u.placeChange)}">${ICON_PIN}<span class="place-name" data-place-label></span></button>`;
 
   return `<!doctype html>
 <html lang="${lang}" dir="${DIR(lang)}"${p.home ? ' data-home="1"' : ""}>
@@ -481,7 +484,7 @@ ${ld}
     <div class="menu" id="site-nav">
       <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
     </div>
-    <div class="top-tools">${placeBtn}${settings}</div>
+    <div class="top-tools">${settings}</div>
     <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>
   </div>
 </header>
@@ -495,7 +498,6 @@ ${isError ? "" : listForm(lang, p.path)}
       ${badge(lang)}
       <p>${esc(u.copyright)}</p>
       ${isError ? "" : `<p>${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
-      <p><a href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a></p>
     </div>
   </div>
 </footer>
@@ -566,6 +568,10 @@ function buildHome(lang) {
     ${clockStage(lang)}
   </div>
 </section>
+<section class="sr-only" aria-labelledby="today-q">
+  <h2 id="today-q">${esc(h.todayQ)}</h2>
+  <p>${esc(h.todayA)} <span data-live="date">&nbsp;</span></p>
+</section>
 <section class="globe-sec" aria-label="${esc(h.globeLabel)}">
   <figure class="globe" data-globe>
     <div class="globe-view">
@@ -603,7 +609,7 @@ function buildHome(lang) {
       publisher: { "@id": `${ORIGIN}/#org` },
     },
   ];
-  addFaq(lang, "general", t.faqPage.general, pagePath, h.faq);
+  addFaq(lang, "general", t.faqPage.general, pagePath, [{ q: h.todayQ, a: h.todayA }, ...h.faq]);
   const e = searchEntries[lang];
   e.push({ t: t.ui.home, u: pagePath, d: h.description, k: "saat tarih bugün clock date today time now saat kaç" });
   e.push({ t: t.stage.label, u: pagePath + "#model-classic", d: t.stage.hint, k: "saat model stil style clock tam ekran full screen fullscreen" });
@@ -659,7 +665,6 @@ function buildCity(lang, c) {
     { name: ct.breadcrumbWorld, path: ROUTES[lang].world },
     { name: n.name, path: pagePath },
   ];
-  const others = CITIES.filter((o) => o.key !== c.key && o.tz !== c.tz).slice(0, 8);
   const body = `<section class="hero">
   <div class="wrap">
     ${crumbs(lang, trail)}
@@ -678,14 +683,7 @@ function buildCity(lang, c) {
     <p class="meta">${esc(ct.sunNote)}</p>
   </div>
 </section>
-${addFaq(lang, "world", t.ui.world, ROUTES[lang].world, faq.slice(1))}
-<section class="section" aria-labelledby="other-h">
-  <div class="wrap">
-    <h2 id="other-h">${esc(ct.otherHeading)}</h2>
-    <ul class="city-grid">${others.map((o) => cityCard(lang, o)).join("")}</ul>
-    <p><a href="${ROUTES[lang].world}">${esc(t.home.worldAll)} ${ARROW(lang)}</a></p>
-  </div>
-</section>`;
+${addFaq(lang, "world", t.ui.world, ROUTES[lang].world, faq.slice(1))}`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail)];
   searchEntries[lang].push({
     t: n.name,
@@ -956,9 +954,6 @@ function buildTool(lang, key) {
     { name: t.ui.tools, path: ROUTES[lang].tools },
     { name: s.h1, path: pagePath },
   ];
-  const related = TOOL_KEYS.filter((k) => k !== key)
-    .map((k) => `<li class="city-card"><a href="${ROUTES[lang][k]}"><span class="city-name">${esc(tt.hub.cards[k].name)}</span><span class="city-diff">${esc(tt.hub.cards[k].desc)}</span></a></li>`)
-    .join("");
   const body = `<section class="hero">
   <div class="wrap">
     ${crumbs(lang, trail)}
@@ -973,14 +968,7 @@ function buildTool(lang, key) {
     ${key === "alarm" || key === "countdown" || key === "pomodoro" ? `<p class="meta">${esc(tt.common.pageOpenNote)}</p>` : ""}
   </div>
 </section>
-${addFaq(lang, key, tt.hub.cards[key].name, pagePath, s.faq)}
-<section class="section" aria-labelledby="related-h">
-  <div class="wrap">
-    <h2 id="related-h">${esc(tt.common.relatedHeading)}</h2>
-    <ul class="city-grid">${related}</ul>
-    <p><a href="${ROUTES[lang].tools}">${esc(tt.common.toolsHub)} ${ARROW(lang)}</a></p>
-  </div>
-</section>`;
+${addFaq(lang, key, tt.hub.cards[key].name, pagePath, s.faq)}`;
   const ld = [
     ...baseLd(lang),
     webPageLd(lang, pagePath, s.title, s.description),
@@ -1044,8 +1032,6 @@ function infoShell(lang, key, { v = {}, body, faq, searchK }) {
     { name: tpl(s.h1, v), path: pagePath },
   ];
   const faqItems = faq.map((f) => ({ q: tpl(f.q, v), a: tpl(f.a, v) }));
-  const related = [...TOOL_KEYS.slice(0, 2).map((k) => [ROUTES[lang][k], t.tools.hub.cards[k].name, t.tools.hub.cards[k].desc]), ...INFO_KEYS.filter((k) => k !== key).map((k) => [ROUTES[lang][k], t.tools.hub.cards[k].name, t.tools.hub.cards[k].desc])]
-    .map(([href, name, desc]) => `<li class="city-card"><a href="${href}"><span class="city-name">${esc(name)}</span><span class="city-diff">${esc(desc)}</span></a></li>`).join("");
   const html = `<section class="hero">
   <div class="wrap">
     ${crumbs(lang, trail)}
@@ -1056,14 +1042,7 @@ function infoShell(lang, key, { v = {}, body, faq, searchK }) {
   </div>
 </section>
 ${body.sections}
-${addFaq(lang, key, t.tools.hub.cards[key].name, pagePath, faqItems)}
-<section class="section" aria-labelledby="related-h">
-  <div class="wrap">
-    <h2 id="related-h">${esc(t.tools.common.relatedHeading)}</h2>
-    <ul class="city-grid">${related}</ul>
-    <p><a href="${ROUTES[lang].tools}">${esc(t.tools.common.toolsHub)} ${ARROW(lang)}</a></p>
-  </div>
-</section>`;
+${addFaq(lang, key, t.tools.hub.cards[key].name, pagePath, faqItems)}`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail)];
   searchEntries[lang].push({ t: tpl(s.h1, v), u: pagePath, d: description, k: searchK });
   return { lang, key: `info:${key}`, path: pagePath, title, description, body: html, ld, nav: "tools", scripts: ["dates.js"] };
@@ -1112,7 +1091,7 @@ function buildTz(lang) {
   const rows = CITIES.filter((c) => c.tz !== "Europe/Istanbul").map((c) => {
     const d = std(c) - 180;
     const stdTxt = d === 0 ? tpl(t.client.refSame, { ref: refName }) : tpl(d > 0 ? t.client.refAhead : t.client.refBehind, { d: durText(d), ref: refName });
-    return `<tr><th scope="row"><a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></th><td>${esc(stdTxt)}</td><td>${esc(c.dst ? s.yes : s.no)}</td><td data-live="diff" data-tz="${c.tz}" data-ref="Europe/Istanbul" data-ref-name="${refName}">&nbsp;</td></tr>`;
+    return `<tr><th scope="row">${esc(c[lang].name)}</th><td>${esc(stdTxt)}</td><td>${esc(c.dst ? s.yes : s.no)}</td><td data-live="diff" data-tz="${c.tz}" data-ref="Europe/Istanbul" data-ref-name="${refName}">&nbsp;</td></tr>`;
   }).join("");
   const body = {
     hero: `<p class="meta info-sub">${esc(s.nowLabel)}</p><p class="big-time" role="timer" data-live="time" data-sec data-tz="Europe/Istanbul">--:--:--</p>`,
@@ -1150,7 +1129,6 @@ const durTxt = (lang, min) => { const t = I[lang].client; const a = Math.abs(min
 const hh = (n) => String(((n % 24) + 24) % 24).padStart(2, "0");
 const cityOptions = (lang, withMine) => `${withMine ? `<option value="">${esc(I[lang].converter.mine)}</option>` : ""}${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
 const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country }));
-const relatedCards = (lang, keys) => keys.map((k) => `<li class="city-card"><a href="${ROUTES[lang][k]}"><span class="city-name">${esc(I[lang].tools.hub.cards[k].name)}</span><span class="city-diff">${esc(I[lang].tools.hub.cards[k].desc)}</span></a></li>`).join("");
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
 
 function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqGroup, scripts, clientExtra, nav = "tools", searchK, extraLd = [], needsPlace = false }) {
@@ -1210,7 +1188,6 @@ function buildPair(lang, c) {
     <h2 id="conv-h">${esc(tpl(p.convHeading, v))}</h2>
     <div class="table-wrap"><table class="events-table" data-pair-table data-a="${HOME_CITY.tz}" data-b="${c.tz}" data-next="${esc(p.nextDay)}" data-prev="${esc(p.prevDay)}"><caption>${esc(tpl(p.convCaption, v))}</caption><thead><tr><th scope="col">${esc(tpl(p.colA, v))}</th><th scope="col">${esc(tpl(p.colB, v))}</th></tr></thead><tbody>${rows}</tbody></table></div>
     <p class="meta">${esc(p.convNote)}</p>
-    <p><a href="${ROUTES[lang].converter}">${esc(p.converterLink)} ${ARROW(lang)}</a> · <a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></p>
   </div>
 </section>`,
   };
@@ -1222,7 +1199,7 @@ function buildPairHub(lang) {
   const h = t.pairHub;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: h.h1, path: ROUTES[lang].diff }];
   const list = PAIR_CITIES.map((c) => `<li class="city-card"><a href="${pairPath(lang, c)}"><span class="city-name">${esc(tpl(h.linkText, { a: HOME_CITY[lang].name, b: c[lang].name }))}</span><span class="city-diff">${esc(c[lang].country)}</span></a></li>`).join("");
-  return simplePage(lang, "diff", { title: h.title, description: h.description, h1: h.h1, lead: h.lead, trail, bodyInner: { sections: `<section class="section" aria-labelledby="list-h"><div class="wrap"><h2 id="list-h">${esc(h.listHeading)}</h2><ul class="city-grid">${list}</ul><ul class="city-grid">${relatedCards(lang, ["converter", "planner"])}</ul></div></section>` }, nav: "world", searchK: "saat farkı time difference istanbul dünya şehirleri" });
+  return simplePage(lang, "diff", { title: h.title, description: h.description, h1: h.h1, lead: h.lead, trail, bodyInner: { sections: `<section class="section" aria-labelledby="list-h"><div class="wrap"><h2 id="list-h">${esc(h.listHeading)}</h2><ul class="city-grid">${list}</ul></div></section>` }, nav: "world", searchK: "saat farkı time difference istanbul dünya şehirleri" });
 }
 
 /* Saat çevirici */
@@ -1324,7 +1301,6 @@ function buildCdp(lang, x) {
     { q: tpl(s.faqWhen, v), a: fixed ? tpl(s.faqWhenFixed, { ...v, date: f.short(dates[0].d) }) : tpl(s.faqWhenYears, { ...v, list: dates.slice(0, 4).map((r) => `${r.y}: ${f.short(r.d)}`).join(" · ") }) },
     { q: s.faqHow, a: s.faqHowA },
   ];
-  const others = CDP.filter((o) => o !== x).map((o) => `<li class="city-card"><a href="${cdpPath(lang, o)}"><span class="city-name">${esc(tpl(s.h1, { dat: s.targets[o.key].dat, name: s.targets[o.key].name }))}</span></a></li>`).join("");
   const inner = {
     hero: `<section class="tool cdp" data-cdp data-cdp-keys="${x.keys.join(",")}" aria-labelledby="tool-h">
       <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(tg.name)}</h2><button type="button" class="icon-btn" data-fs aria-pressed="false" aria-label="${esc(t.tools.common.fullscreen)}" title="${esc(t.tools.common.fullscreen)}">${ICON_FULL}</button></div>
@@ -1340,9 +1316,7 @@ function buildCdp(lang, x) {
     ${x.school ? `<p class="meta">${esc(s.school)}</p>` : ""}
     ${x.exam ? `<p class="meta">${esc(s.exam)}</p>` : ""}
     <h2>${esc(s.customHeading)}</h2>
-    <p>${esc(s.customText)} <a href="${ROUTES[lang].countdown}">${esc(s.customLink)} ${ARROW(lang)}</a></p>
-    <h2>${esc(s.listHeading)}</h2>
-    <ul class="city-grid">${others}</ul>
+    <p>${esc(s.customText)}</p>
   </div>
 </section>`,
   };
@@ -1507,7 +1481,6 @@ function buildNature(lang) {
     ${n.why.map((p) => `<p>${esc(p)}</p>`).join("")}
     <p class="meta">${esc(n.hemisphereNote)}</p>
     <p class="meta">${esc(n.methodNote)}</p>
-    <p><a href="${ROUTES[lang].weather}">${esc(n.weatherLink)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
   return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday } } }, nav: "nature", searchK: n.search, needsPlace: true });
@@ -1518,7 +1491,7 @@ function buildWeather(lang) {
   const w = t.weather;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: w.h1, path: ROUTES[lang].weather }];
   const hero = `<section class="wx-hero" data-weather aria-labelledby="wx-h">
-      <h2 id="wx-h" class="wx-place" data-wx-place>${esc(t.prayer.yourLocation)}</h2>
+      <h2 id="wx-h" class="wx-place" data-wx-place>&nbsp;</h2>
       <p class="meta" data-wx-state role="status">${esc(w.loading)}</p>
       <div class="wx-now" data-wx-now hidden>
         <p class="wx-icon" data-wx-icon aria-hidden="true"></p>
@@ -1541,7 +1514,6 @@ function buildWeather(lang) {
     <ul class="wx-daily" data-wx-daily></ul>
     <p class="meta"><span data-wx-updated></span> · ${esc(w.attribution)}</p>
     <p class="meta">${esc(w.locationNote)}</p>
-    <p><a href="${ROUTES[lang].nature}">${esc(w.natureLink)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
   const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry };
@@ -1562,10 +1534,9 @@ function prayerBody(lang, prov) {
   /* Solda geri sayım saati, sağda bugünün vakitleri; çerçeve yok. Konum üst bardaki ortak düğmeyle seçilir. */
   const hero = `<section class="pr-top" data-prayer${attrs} aria-labelledby="pr-h">
       <div class="pr-left">
-        <h2 id="pr-h" class="pr-place" data-pr-place>${esc(prov ? provName(lang, prov) : s.yourLocation)}</h2>
+        <h2 id="pr-h" class="pr-place" data-pr-place>${prov ? esc(provName(lang, prov)) : "&nbsp;"}</h2>
         <p class="meta" data-pr-nextlabel>&nbsp;</p>
         <p class="big-time" role="timer" data-pr-countdown>–</p>
-        ${prov ? `<p class="meta"><a href="${ROUTES[lang].prayer}">${esc(s.otherPlace)} ${ARROW(lang)}</a></p>` : ""}
       </div>
       <div class="pr-right">
         <h3>${esc(s.todayHeading)}</h3>
@@ -1665,7 +1636,6 @@ function buildFaq(lang) {
   <div class="wrap">
     <h2 id="${g.id}-h">${esc(g.title)}</h2>
     ${faqHtml(g.items, `${g.id}-h`)}
-    <p><a href="${g.href}">${esc(f.open)}: ${esc(g.title)} ${ARROW(lang)}</a></p>
   </div>
 </section>`).join("\n");
   const body = `<section class="hero">

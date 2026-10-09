@@ -435,18 +435,20 @@
       var it = cands[c], pl2 = it.pl, p2 = it.p;
       if (!pl2.m && shown >= budget) break;
       var fade = map ? 1 : Math.min(1, (p2.z - 0.12) / 0.2);
-      var txt = pl2.n + " " + localTime(pl2.tz, sec), w = ctx.measureText(txt).width, h = 14 * dpr;
+      var fs = pl2.m ? 17 : 14.5; // şehir saatleri okunaklı olsun
+      ctx.font = (pl2.m ? "700 " : "600 ") + Math.round(fs * dpr) + "px system-ui, sans-serif";
+      var txt = pl2.n + " " + localTime(pl2.tz, sec), w = ctx.measureText(txt).width, h = (fs + 5) * dpr;
       var left = map ? p2.x > pw - w - 14 * dpr : (rtl ? p2.x > cx - R * 0.45 : p2.x > cx + R * 0.45);
-      var x = left ? p2.x - 6 * dpr - w : p2.x + 6 * dpr;
+      var x = left ? p2.x - 8 * dpr - w : p2.x + 8 * dpr;
       if (x < 2 * dpr || x + w > pw - 2 * dpr) continue; // kenarda kesilecek etiketi çizme
       var box = { x: x - 2, y: p2.y - h / 2, w: w + 4, h: h };
       var hit = boxes.some(function (b) { return box.x < b.x + b.w && b.x < box.x + box.w && box.y < b.y + b.h && b.y < box.y + box.h; });
       ctx.globalAlpha = fade;
-      ctx.beginPath(); ctx.arc(p2.x, p2.y, (pl2.m ? 3.2 : 2.4) * dpr, 0, 2 * Math.PI);
+      ctx.beginPath(); ctx.arc(p2.x, p2.y, (pl2.m ? 4.4 : 3.2) * dpr, 0, 2 * Math.PI);
       ctx.fillStyle = pl2.m ? col.accent : "#33415c"; ctx.fill(); ctx.lineWidth = 1.2 * dpr; ctx.strokeStyle = col.halo; ctx.stroke();
       if (hit) continue;
       boxes.push(box); if (!pl2.m) shown++;
-      ctx.textAlign = "left"; halo(txt, x, p2.y, col.label);
+      ctx.textAlign = "left"; halo(txt, x, p2.y, col.label, 4);
     }
     ctx.restore();
   }

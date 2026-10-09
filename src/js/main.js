@@ -52,7 +52,7 @@
     if (target) location.replace(target.getAttribute("href") + location.hash);
   })();
   Array.prototype.forEach.call(doc.querySelectorAll(".settings-menu"), function (m) {
-    doc.addEventListener("click", function (e) { if (!m.contains(e.target) || (e.target.closest && e.target.closest("[data-search-open], a"))) m.removeAttribute("open"); });
+    doc.addEventListener("click", function (e) { if (!m.contains(e.target) || (e.target.closest && e.target.closest("[data-search-open], [data-place-open], a"))) m.removeAttribute("open"); });
     m.addEventListener("keydown", function (e) { if (e.key === "Escape") { m.removeAttribute("open"); var sm = m.querySelector("summary"); if (sm) sm.focus(); } });
   });
 
@@ -468,6 +468,16 @@ function sunTimes(y, m, d, lat, lon) {
   function savePrefs() { store("sth-prefs", JSON.stringify(prefs)); syncButtons(); render(); }
   fmtBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.h12 = !prefs.h12; savePrefs(); }); });
   if (btnSec) btnSec.addEventListener("click", function () { prefs.sec = !prefs.sec; savePrefs(); });
+  /* Saniyeler: saate dokununca açılır/kapanır (düğme yok; bilgi "i" penceresinde yazar) */
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-carousel] [data-track]"), function (tr) {
+    tr.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a, button, input, select, .cal")) return;
+      prefs.sec = !prefs.sec; savePrefs();
+    });
+    tr.addEventListener("keydown", function (e) {
+      if ((e.key === "s" || e.key === "S") && !e.ctrlKey && !e.metaKey && !e.altKey) { prefs.sec = !prefs.sec; savePrefs(); }
+    });
+  });
   tickBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.tick = !prefs.tick; if (prefs.tick) ensureAudio(); savePrefs(); }); });
   if (tickBtns.length) doc.addEventListener("pointerdown", function () { if (prefs.tick && (!audio || audio.state !== "running")) ensureAudio(); }, { passive: true });
   syncButtons();
