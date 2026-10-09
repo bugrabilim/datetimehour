@@ -528,27 +528,26 @@ function buildHome(lang) {
     ${clockStage(lang)}
   </div>
 </section>
-<section class="section globe-sec" aria-label="${esc(h.globeLabel)}">
-  <div class="wrap">
-    <figure class="globe" data-globe>
-      <div class="globe-view">
-        <canvas role="img" aria-label="${esc(h.globeLabel)}" width="560" height="560"></canvas>
-        <a class="globe-attr" data-globe-attr href="https://www.openstreetmap.org/copyright" rel="noopener" hidden>© OpenStreetMap contributors</a>
-      </div>
-      <figcaption class="globe-bar">
+<section class="globe-sec" aria-label="${esc(h.globeLabel)}">
+  <figure class="globe" data-globe>
+    <div class="globe-view">
+      <canvas class="globe-gl" aria-hidden="true"></canvas>
+      <canvas class="globe-fx" role="img" aria-label="${esc(h.globeLabel)}"></canvas>
+      <div class="globe-bar">
         <button type="button" class="icon-btn" data-globe-zoom="out" aria-label="${esc(h.zoomOut)}" title="${esc(h.zoomOut)}">−</button>
         <button type="button" class="icon-btn info-btn" data-info-open="globe-info" aria-haspopup="dialog" aria-label="${esc(h.globeInfo)}" title="${esc(h.globeInfo)}">${ICON_INFO}</button>
         <button type="button" class="icon-btn" data-globe-zoom="in" aria-label="${esc(h.zoomIn)}" title="${esc(h.zoomIn)}">+</button>
         <button type="button" class="icon-btn globe-reset" data-globe-reset aria-label="${esc(h.resetView)}" title="${esc(h.resetView)}" hidden>${ICON_GLOBE}</button>
-        <noscript><span class="meta">${esc(h.globeCaption)}</span></noscript>
-      </figcaption>
-      <dialog class="info-dialog" id="globe-info" aria-labelledby="globe-info-title">
-        <h2 id="globe-info-title">${esc(h.globeTitle)}</h2>
-        <p class="meta">${esc(h.globeCaption)}</p>
-        <button type="button" class="btn" data-info-close>${esc(t.stage.infoClose)}</button>
-      </dialog>
-    </figure>
-  </div>
+      </div>
+      <a class="globe-attr" data-globe-attr href="https://www.openstreetmap.org/copyright" rel="noopener" hidden>© OpenStreetMap contributors</a>
+      <noscript><p class="meta globe-noscript">${esc(h.globeCaption)}</p></noscript>
+    </div>
+    <dialog class="info-dialog" id="globe-info" aria-labelledby="globe-info-title">
+      <h2 id="globe-info-title">${esc(h.globeTitle)}</h2>
+      <p class="meta">${esc(h.globeCaption)}</p>
+      <button type="button" class="btn" data-info-close>${esc(t.stage.infoClose)}</button>
+    </dialog>
+  </figure>
 </section>`;
   const ld = [
     ...baseLd(lang),
