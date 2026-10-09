@@ -214,6 +214,16 @@ html.sec-off .hand-sec { display: none; }
 .source-note { text-align: center; max-width: 46rem; margin: 0.4rem auto 0; }
 .source-note p { margin: 0.35rem 0 0; }
 .source-line { font-size: 0.9rem; }
+.info-btn { display: none; min-width: 2.5rem; min-height: 2.5rem; padding: 0; color: var(--muted); }
+.js .info-btn { display: inline-flex; }
+.info-dialog {
+  width: min(26rem, calc(100vw - 2rem)); margin: auto; padding: 1.25rem 1.25rem 1rem; text-align: start;
+  background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+}
+.info-dialog::backdrop { background: rgb(10 12 16 / 0.55); }
+.info-dialog h2 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+.info-dialog .sync-line { color: var(--text); text-align: start; min-height: 3em; }
+.info-dialog .btn { margin-top: 0.75rem; }
 .sync-line { font-variant-numeric: tabular-nums; }
 .stage-note { padding: 0 1rem 1rem; }
 

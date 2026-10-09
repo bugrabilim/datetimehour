@@ -409,7 +409,10 @@
       "bigdate": "Böyük tarix",
       "stack": "Analoq və altında rəqəmsal"
     },
-    "source": "Bu saat cihazınızın saatından asılı deyil: Saat Tarih serverinin NTP ilə sinxronlaşdırılmış saatından götürülür və hər 15 dəqiqədən bir yenidən ölçülür."
+    "source": "Bu saat cihazınızın saatından asılı deyil: Saat Tarih serverinin NTP ilə sinxronlaşdırılmış saatından götürülür və hər 15 dəqiqədən bir yenidən ölçülür.",
+    "info": "Vaxt mənbəyi haqqında məlumat",
+    "infoTitle": "Bu vaxt haradan gəlir?",
+    "infoClose": "Bağla"
   },
   "calendar": {
     "title": "{year} təqvimi: Türkiyənin rəsmi bayramları və Ramazan | Saat Tarih",
