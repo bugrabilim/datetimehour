@@ -408,13 +408,16 @@
     "heading": "Auf dem Laufenden bleiben",
     "lead": "Möchten Sie Neuigkeiten zu Saat Tarih per E-Mail erhalten? Sie können sich jederzeit mit einem Klick wieder abmelden.",
     "emailLabel": "Ihre E-Mail-Adresse",
-    "consentPre": "Ich habe den ",
-    "consentLink": "Datenschutzhinweis",
-    "consentPost": " gelesen und bin mit dem Erhalt von E-Mails einverstanden.",
     "submit": "Anmelden",
     "ok": "Wir haben Ihnen eine Bestätigungs-E-Mail gesendet; klicken Sie auf den Link darin, um die Anmeldung abzuschließen.",
     "err": "Ihre Anmeldung konnte nicht gespeichert werden. Bitte prüfen Sie die E-Mail-Adresse und das Kontrollkästchen und versuchen Sie es gleich noch einmal.",
-    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en"
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
+    "popupTitle": "Beitritt zur Liste bestätigen",
+    "popupText": "Ihre E-Mail-Adresse wird von Bumba Teknoloji Limited Şirketi ausschließlich verarbeitet, um Sie in diese Liste einzutragen. Sie können sich jederzeit mit einem Klick abmelden.",
+    "readNote": "Datenschutzhinweis lesen",
+    "consentText": "Ich habe den Datenschutzhinweis gelesen und bin mit dem Erhalt von E-Mails einverstanden.",
+    "accept": "Ich stimme zu",
+    "cancel": "Abbrechen"
   },
   "badge": {
     "title": "Bumba Life, ein Geschäftsbereich der Bumba Group",

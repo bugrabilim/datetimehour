@@ -381,13 +381,16 @@
     "heading": "Yeniliklərdən xəbərdar olun",
     "lead": "Saat Tarih yenilikləri barədə e-poçtla məlumat almaq istəyirsiniz? İstənilən vaxt bir kliklə abunəlikdən çıxa bilərsiniz.",
     "emailLabel": "E-poçt ünvanınız",
-    "consentPre": "",
-    "consentLink": "Məlumatlandırma bildirişini",
-    "consentPost": " oxudum və e-məktublar almağa razıyam.",
     "submit": "Qoşul",
     "ok": "Sizə təsdiq e-məktubu göndərdik; siyahıya qoşulmağı tamamlamaq üçün poçt qutunuzdakı keçidə klikləyin.",
     "err": "Qeydiyyatınızı saxlaya bilmədik. E-poçt ünvanını və qeyd xanasını yoxlayın, sonra bir az sonra yenidən cəhd edin.",
-    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en"
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
+    "popupTitle": "Siyahıya qoşulmanı təsdiqləyin",
+    "popupText": "E-poçt ünvanınız yalnız bu siyahıya abunə olmağınız üçün Bumba Teknoloji Limited Şirketi tərəfindən emal olunur. İstədiyiniz vaxt bir kliklə ayrıla bilərsiniz.",
+    "readNote": "Məlumatlandırma mətnini oxu",
+    "consentText": "Məlumatlandırma mətnini oxudum, e-poçt almağa razıyam.",
+    "accept": "Razıyam",
+    "cancel": "Ləğv et"
   },
   "badge": {
     "title": "Bumba Life, Bumba Group-un bir qolu",

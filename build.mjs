@@ -237,7 +237,7 @@ const ICON_SOUND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" s
 
 /* 24/12 saat tek düğmesi ve saniye düğmesi (sahne) */
 function prefControls(t) {
-  return `<button type="button" class="toggle fmt-toggle" data-fmt-toggle aria-pressed="false" aria-label="${esc(t.client.formatLabel)}" title="${esc(t.client.formatLabel)}"><span data-fmt-part="24">24</span>/<span data-fmt-part="12">12</span></button>`;
+  return `<button type="button" class="fmt-btn" data-fmt-toggle aria-pressed="false" aria-label="${esc(t.client.formatLabel)}" title="${esc(t.client.formatLabel)}"><span data-fmt-part="24">24</span>/<span data-fmt-part="12">12</span></button>`;
 }
 
 function clockStage(lang, { tz = "", place = null } = {}) {
@@ -266,17 +266,16 @@ function clockStage(lang, { tz = "", place = null } = {}) {
   </div>
   <aside class="fs-weather" data-fs-weather-box data-weather-url="${ROUTES[lang].weather}" hidden></aside>
   <div class="stage-bar">
-    <div class="stage-tools">
-      ${prefControls(t)}
-      ${tickBtn}
-      <button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
-    </div>
     <div class="dots" role="group" aria-label="${esc(s.dots)}">${dots}</div>
+    <div class="stage-row">
+      <div class="sr-start">${prefControls(t)}</div>
+      <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
+      <div class="sr-end"><span class="stage-count" data-stage-count>1/${total}</span><button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button></div>
+    </div>
   </div>
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
 </section>
 <div class="source-note">
-  <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
   <noscript><p class="meta source-line">${esc(s.source)}</p></noscript>
   <dialog class="info-dialog" id="info-dialog" aria-labelledby="info-title">
     <h2 id="info-title">${esc(s.infoTitle)}</h2>
@@ -335,13 +334,17 @@ function listForm(lang, pagePath) {
       <label for="liste-eposta" class="sr-only">${esc(l.emailLabel)}</label>
       <input id="liste-eposta" type="email" name="eposta" required autocomplete="email" placeholder="${esc(l.emailLabel)}">
     </div>
-    <div class="check">
-      <input id="liste-riza" type="checkbox" name="riza" value="on" required>
-      <label for="liste-riza">${esc(l.consentPre)}<a href="${esc(l.noteLink)}" rel="noopener">${esc(l.consentLink)}</a>${esc(l.consentPost)}</label>
-    </div>
+    <noscript><div class="check"><input id="liste-riza" type="checkbox" name="riza" value="on" required><label for="liste-riza">${esc(l.consentText)} <a href="${esc(l.noteLink)}" rel="noopener">${esc(l.readNote)}</a></label></div></noscript>
     <input class="bot-tuzagi" type="text" name="web_sitesi" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button class="btn" type="submit">${esc(l.submit)}</button>
   </form>
+  <dialog class="info-dialog list-dialog" id="liste-dialog" aria-labelledby="liste-dtitle">
+    <h2 id="liste-dtitle">${esc(l.popupTitle)}</h2>
+    <p>${esc(l.popupText)}</p>
+    <p><a href="${esc(l.noteLink)}" target="_blank" rel="noopener">${esc(l.readNote)}</a></p>
+    <p class="consent-line">${esc(l.consentText)}</p>
+    <div class="im-actions"><button type="button" class="btn" data-list-accept>${esc(l.accept)}</button><button type="button" class="btn btn-ghost" data-list-cancel>${esc(l.cancel)}</button></div>
+  </dialog>
 </section>`;
 }
 
@@ -436,10 +439,11 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
 
   const navLink = (key, label) =>
     `<a href="${key === "calendar" ? yearPath(lang, BUILD_YEAR) : ROUTES[lang][key]}"${p.nav === key ? ' aria-current="page"' : ""}>${esc(label)}</a>`;
-  const langItems = LANGS.map((l) => {
+  const langOpts = LANGS.map((l) => {
     const href = isError ? ROUTES[l].home : alt[l];
-    return `<a href="${href}" hreflang="${l}" lang="${l}" data-lang-switch${l === lang ? ' aria-current="true"' : ""}>${esc(LANG_NAMES[l])}</a>`;
+    return `<option value="${href}" hreflang="${l}" lang="${l}" data-lang-switch${l === lang ? " selected" : ""}>${esc(LANG_NAMES[l])}</option>`;
   }).join("");
+  const langLinks = LANGS.map((l) => `<a href="${isError ? ROUTES[l].home : alt[l]}" hreflang="${l}" lang="${l}">${esc(LANG_NAMES[l])}</a>`).join(" ");
   /* Ayarlar: SSS, arama, tema ve dil tek açılır düğmede */
   const settings = `<details class="settings-menu"><summary class="icon-btn" aria-label="${esc(u.settings)}" title="${esc(u.settings)}">${ICON_GEAR}</summary><div class="settings-pop">
         <button type="button" class="set-item" data-place-open aria-haspopup="dialog">${ICON_PIN}<span>${esc(u.placeChange)}<span class="set-sub" data-place-label></span></span></button>
@@ -447,7 +451,8 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
         <button type="button" class="set-item" data-search-open aria-haspopup="dialog">${ICON_SEARCH}<span>${esc(u.searchOpen)}</span></button>
         <button type="button" class="set-item" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}<span>${esc(u.theme)}</span></button>
         <a class="set-item" href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a>
-        <div class="set-lang" role="group" aria-label="${esc(u.langMenu)}">${langItems}</div>
+        <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="lang-sel">${esc(u.langMenu)}</label><select id="lang-sel" class="set-select" data-lang-select>${langOpts}</select></div>
+        <noscript><div class="set-lang">${langLinks}</div></noscript>
       </div></details>`;
 
   return `<!doctype html>
@@ -574,15 +579,16 @@ function buildHome(lang) {
 </section>
 <section class="globe-sec" aria-label="${esc(h.globeLabel)}">
   <figure class="globe" data-globe>
+    <div class="globe-bar">
+      <button type="button" class="icon-btn" data-globe-zoom="in" aria-label="${esc(h.zoomIn)}" title="${esc(h.zoomIn)}">+</button>
+      <button type="button" class="icon-btn info-btn" data-info-open="globe-info" aria-haspopup="dialog" aria-label="${esc(h.globeInfo)}" title="${esc(h.globeInfo)}">${ICON_INFO}</button>
+      <button type="button" class="icon-btn" data-globe-zoom="out" aria-label="${esc(h.zoomOut)}" title="${esc(h.zoomOut)}">−</button>
+      <button type="button" class="icon-btn" data-globe-fs aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
+      <button type="button" class="icon-btn globe-reset" data-globe-reset aria-label="${esc(h.resetView)}" title="${esc(h.resetView)}" hidden>${ICON_GLOBE}</button>
+    </div>
     <div class="globe-view">
       <canvas class="globe-gl" aria-hidden="true"></canvas>
       <canvas class="globe-fx" role="img" aria-label="${esc(h.globeLabel)}"></canvas>
-      <div class="globe-bar">
-        <button type="button" class="icon-btn" data-globe-zoom="out" aria-label="${esc(h.zoomOut)}" title="${esc(h.zoomOut)}">−</button>
-        <button type="button" class="icon-btn info-btn" data-info-open="globe-info" aria-haspopup="dialog" aria-label="${esc(h.globeInfo)}" title="${esc(h.globeInfo)}">${ICON_INFO}</button>
-        <button type="button" class="icon-btn" data-globe-zoom="in" aria-label="${esc(h.zoomIn)}" title="${esc(h.zoomIn)}">+</button>
-        <button type="button" class="icon-btn globe-reset" data-globe-reset aria-label="${esc(h.resetView)}" title="${esc(h.resetView)}" hidden>${ICON_GLOBE}</button>
-      </div>
       <a class="globe-attr" data-globe-attr href="https://www.openstreetmap.org/copyright" rel="noopener" hidden>© OpenStreetMap contributors</a>
       <noscript><p class="meta globe-noscript">${esc(h.globeCaption)}</p></noscript>
     </div>
