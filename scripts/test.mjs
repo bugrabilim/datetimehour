@@ -53,8 +53,8 @@ for (const f of htmlFiles) {
     check(slides.length >= 10, `${name}: saat modeli sayısı ${slides.length} < 10`);
     check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
     check((h.match(/data-dot="\d+"/g) || []).length === slides.length, `${name}: nokta sayısı model sayısıyla uyuşmuyor`);
-    check(/data-fullscreen/.test(h) && /data-nav="-1"/.test(h) && /data-nav="1"/.test(h) && /data-pref="h12"/.test(h), `${name}: karusel düğmeleri eksik`);
-    check(/data-pref="sync"/.test(h) && /data-sync-status/.test(h), `${name}: senkron düğmesi/durumu eksik`);
+    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-nav="-1"/.test(h) && /data-nav="1"/.test(h) && /data-fmt="24"/.test(h) && /data-fmt="12"/.test(h) && /data-pref="sec"/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
+    check(!/data-pref="sync"/.test(h) && /data-sync-status/.test(h) && /class="meta source-line"/.test(h), `${name}: senkron düğmesi/durumu eksik`);
     check(/data-live="calendar"/.test(h) && /data-live="flip"/.test(h) && /data-live="words"/.test(h) && /data-live="rings"/.test(h), `${name}: özel model türleri eksik`);
   }
   if (/\/(takvim|calendar)\/\d{4}\/index\.html$/.test(name)) {
@@ -68,6 +68,12 @@ for (const f of htmlFiles) {
   if (/\/(saat-cevirici|time-converter)\/index\.html$/.test(name)) check(/data-converter/.test(h) && /data-cv-from/.test(h) && /"cities"/.test(h), `${name}: çevirici eksik`);
   if (/\/(toplanti-planlayici|meeting-planner)\/index\.html$/.test(name)) check(/data-planner/.test(h) && /data-pl-table/.test(h) && /"cities"/.test(h), `${name}: planlayıcı eksik`);
   if (/\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && /"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
+  if (/\/(namaz-vakitleri|prayer-times)\/([a-z]+\/)?index\.html$/.test(name)) {
+    const hub = /\/(namaz-vakitleri|prayer-times)\/index\.html$/.test(name);
+    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
+    if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-pr-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
+    else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
+  }
   const toolMatch = /\/(kronometre|geri-sayim|alarm|pomodoro|stopwatch|countdown)\/index\.html$/.exec(name);
   if (toolMatch) {
     check(/data-tool="(stopwatch|countdown|alarm|pomodoro)"/.test(h) && /tools\.js/.test(h) && /data-fs/.test(h) && /"WebApplication"/.test(h) && /"FAQPage"/.test(h), `${name}: araç yapısı eksik`);
@@ -157,6 +163,20 @@ for (const l of LANGS) {
 }
 for (const l of LANGS) check(fs.existsSync(path.join(DIST, "assets", `search-${l}.json`)), `search-${l}.json yok`);
 check(sm.split("<url>").slice(1).every((u) => LANGS.every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
+
+// namaz vakti hesabı: İstanbul 9 Ekim 2026, Diyanet'in yayımladığı vakitlerle (±1 dk)
+{
+  const m = { exports: {} };
+  new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/prayer-calc.js"), "utf8"))(m, undefined);
+  const r = m.exports.times(2026, 10, 9, 41.01, 28.98, 3);
+  const want = { fajr: "05:37", sunrise: "07:02", dhuhr: "12:57", asr: "16:07", maghrib: "18:41", isha: "20:00" };
+  for (const [k, v] of Object.entries(want)) {
+    const [hh, mm] = v.split(":").map(Number);
+    check(Math.abs(Math.round(r[k] * 60) - (hh * 60 + mm)) <= 1, `namaz hesabı: ${k} ${(r[k]).toFixed(3)} ≠ ${v}`);
+  }
+  const hl = m.exports.times(2027, 6, 21, 64.1, -21.9, 0); // Reykjavik: imsak/yatsı açısı oluşmaz, yedide bir kuralı
+  check(Object.values(hl).every((x) => Number.isFinite(x)), "namaz hesabı: yüksek enlemde NaN");
+}
 
 // kontrast (WCAG AA)
 const css = fs.readFileSync(path.join(ROOT, "src/styles.css"), "utf8");

@@ -35,7 +35,9 @@
     "logoAlt": "Saat Tarih ana sayfa",
     "calendar": "Takvim",
     "tools": "Araçlar",
-    "langMenu": "Dil seçimi"
+    "langMenu": "Dil seçimi",
+    "menu": "Menü",
+    "prayer": "Namaz vakitleri"
   },
   "client": {
     "format24": "24 saat",
@@ -90,11 +92,11 @@
     },
     "syncLabel": "Sunucu saati",
     "syncPending": "Sunucu saatiyle senkronize ediliyor…",
-    "syncOk": "Sunucu saatine göre çalışıyor (±{ms} ms). Cihaz saatiniz doğru.",
-    "syncAhead": "Sunucu saatine göre çalışıyor. Cihaz saatiniz {s} sn ileride.",
-    "syncBehind": "Sunucu saatine göre çalışıyor. Cihaz saatiniz {s} sn geride.",
+    "syncOk": "Cihazınızın saati {device}; sunucu saatiyle senkron (fark ±{ms} ms).",
+    "syncAhead": "Cihazınızın saati {device}; sunucu saatinden {s} sn ileride.",
+    "syncBehind": "Cihazınızın saati {device}; sunucu saatinden {s} sn geride.",
     "syncOff": "Cihaz saati kullanılıyor.",
-    "syncFail": "Sunucu saatine ulaşılamadı; cihaz saati kullanılıyor.",
+    "syncFail": "Sunucu saatine ulaşılamadı; şu an cihazınızın saati ({device}) gösteriliyor.",
     "daysLeft": "{n} gün kaldı",
     "today": "Bugün",
     "tomorrow": "Yarın",
@@ -105,7 +107,8 @@
     "refSame": "{ref} ile aynı saat",
     "weekFound": "{date} tarihi yılın {n}. haftasındadır (ISO {y}).",
     "pickDate": "Bir tarih seçin.",
-    "daysShort": "gün"
+    "daysShort": "gün",
+    "formatLabel": "Saat biçimi"
   },
   "home": {
     "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
@@ -217,6 +220,7 @@
         "h": "Hangi verileri işliyoruz?",
         "ul": [
           "**Saat ve tarih:** Cihazınızın saati ve saat diliminiz yalnızca tarayıcınızda okunur ve hesaplanır. Sunucuya gönderilmez, kaydedilmez.",
+          "**Konum (namaz vakitleri):** Namaz vakitleri sayfasında \"Konumumu kullan\" derseniz tarayıcınız konumunuzu yalnızca cihazınızda vakit hesabı için kullanır. Koordinatlar sunucuya gönderilmez ve istatistiklere girmez; son seçiminiz tarayıcınızın yerel depolamasında kalır.",
           "**E-posta listesi formu:** Forma yazdığınız e-posta adresi, onay kutusuyla verdiğiniz rıza, seçili dil ve formun bulunduğu sayfa; Bumba Group'un ortak liste servisi (bumbagroup.com) tarafından işlenir. Kayıt çift onaylıdır: onay e-postasındaki bağlantıya tıklamadan listeye eklenmezsiniz. Her e-postada tek tıkla çıkış bağlantısı bulunur. Ayrıntılar için [ortak aydınlatma metnine](https://bumbagroup.com/liste/aydinlatma) bakın.",
           "**Sunucu kayıtları:** Siteyi yayınlayan sunucu, her istek için IP adresi, tarayıcı bilgisi, istenen sayfa ve zaman bilgisini standart erişim kaydı olarak tutar. Bu kayıtlar yalnızca güvenlik ve hata ayıklama amacıyla kullanılır; kişi bazlı profil çıkarmak için kullanılmaz.",
           "**Ziyaret istatistikleri:** Kendi sunucumuzda çalışan Umami ile sayfa görüntülemeleri ve birkaç eylem (dil değişimi, tema değişimi, arama sonucunun bulunup bulunmaması, listeye katılım) sayılır. Umami çerez kullanmaz. Aramaya yazdığınız sözcükler ve e-posta adresiniz istatistik sistemine gönderilmez.",
@@ -269,6 +273,11 @@
             [
               "sth-pomo",
               "Pomodoro sürelerini ve durumunu hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-prayer",
+              "Namaz vakitleri için son seçtiğiniz ili ya da konumu hatırlar.",
               "Siz silene kadar"
             ]
           ]
@@ -355,8 +364,10 @@
       "flip": "Çevirmeli saat",
       "words": "Yazıyla saat",
       "rings": "Halka saat",
-      "bigdate": "Büyük tarih"
-    }
+      "bigdate": "Büyük tarih",
+      "stack": "Analog ve altında dijital"
+    },
+    "source": "Bu saat cihazınızın saatinden bağımsızdır: Saat Tarih sunucusunun NTP ile senkronize edilen saatinden alınır ve 15 dakikada bir yeniden ölçülür."
   },
   "calendar": {
     "title": "{year} Takvimi: Resmi Tatiller, Bayram ve Ramazan | Saat Tarih",
@@ -1175,5 +1186,69 @@
   },
   "embed": {
     "link": "Saat Tarih"
+  },
+  "prayer": {
+    "title": "Namaz Vakitleri: Konumuna Göre Ezan Saatleri | Saat Tarih",
+    "description": "Bulunduğunuz konuma ya da seçtiğiniz ile göre imsak, güneş, öğle, ikindi, akşam ve yatsı vakitleri; sıradaki vakte kalan süre ve aylık çizelge.",
+    "h1": "Namaz vakitleri",
+    "lead": "Bulunduğunuz konuma ya da seçtiğiniz ile göre imsak, güneş, öğle, ikindi, akşam ve yatsı vakitleri. Sıradaki vakte kalan süre sunucu saatiyle canlı akar.",
+    "cityTitle": "{city} Namaz Vakitleri: İmsak, Ezan Saatleri | Saat Tarih",
+    "cityDescription": "{city} için bugünün namaz vakitleri: imsak, güneş, öğle, ikindi, akşam ve yatsı saatleri, sıradaki vakte kalan süre ve aylık vakit çizelgesi.",
+    "cityH1": "{city} namaz vakitleri",
+    "cityLead": "{city} için bugünün imsak, güneş, öğle, ikindi, akşam ve yatsı vakitleri ile sıradaki vakte kalan süre. Aşağıda bu ayın tüm günleri de var.",
+    "chooseLabel": "İl",
+    "useLocation": "Konumumu kullan",
+    "locating": "Konum alınıyor…",
+    "locationDenied": "Konum alınamadı. Tarayıcı iznini kontrol edin ya da listeden bir il seçin.",
+    "locationUnsupported": "Tarayıcınız konumu desteklemiyor. Listeden bir il seçin.",
+    "yourLocation": "Konumunuz",
+    "locationNote": "Konumunuz yalnızca cihazınızda vakit hesabı için kullanılır; sunucuya gönderilmez.",
+    "nextIn": "{name} vaktine kalan süre",
+    "todayHeading": "Bugünün vakitleri",
+    "colPrayer": "Vakit",
+    "colTime": "Saat",
+    "monthHeading": "{month} {year} vakit çizelgesi",
+    "colDay": "Gün",
+    "prevMonth": "Önceki ay",
+    "nextMonth": "Sonraki ay",
+    "tableCaption": "{place}: {month} {year} namaz vakitleri",
+    "names": {
+      "fajr": "İmsak",
+      "sunrise": "Güneş",
+      "dhuhr": "Öğle",
+      "asr": "İkindi",
+      "maghrib": "Akşam",
+      "isha": "Yatsı"
+    },
+    "otherPlace": "Başka bir konum için namaz vakitleri sayfasına gidin",
+    "methodHeading": "Vakitler nasıl hesaplanıyor?",
+    "method": "Vakitler, konumun enlem ve boylamından güneşin konumu hesaplanarak bulunur: imsak güneş ufkun 18° altındayken, yatsı 17° altındayken, ikindi gölge boyu cismin boyuna eşit olduğunda başlar. Sonuçlar, Diyanet İşleri Başkanlığı'nın il merkezleri için yayımladığı vakitlerle karşılaştırılarak ayarlandı; 81 il merkezinde Ekim 2026 vakitlerinde fark en fazla 1 dakikadır. Resmî vakit için Diyanet esas alınmalıdır; ezan saatleri ilçeden ilçeye ve camiden camiye birkaç dakika değişebilir.",
+    "provincesHeading": "İllere göre namaz vakitleri",
+    "provincesLead": "Bir ile tıklayın.",
+    "noscript": "Namaz vakitlerini görmek için tarayıcınızda JavaScript açık olmalıdır.",
+    "faqHeading": "Sık sorulan sorular",
+    "faq": [
+      {
+        "q": "Namaz vakitleri nasıl hesaplanıyor?",
+        "a": "Konumunuzun enlem ve boylamından güneşin gün içindeki konumu hesaplanır. İmsak güneş ufkun 18°, yatsı 17° altındayken, ikindi gölge boyu cisim boyuna eşit olduğunda başlar. Hesap tarayıcınızda yapılır."
+      },
+      {
+        "q": "Konumum sunucuya gönderiliyor mu?",
+        "a": "Hayır. Konum izni verirseniz koordinatlar yalnızca cihazınızda vakit hesabı için kullanılır; sunucuya gönderilmez ve istatistik olaylarına girmez. Son seçiminiz yalnızca tarayıcınızın yerel depolamasında saklanır."
+      },
+      {
+        "q": "Vakitler Diyanet ile aynı mı?",
+        "a": "Hesap Diyanet vakitleriyle uyumlu olacak şekilde ayarlanmıştır ve il merkezlerinde en fazla 1 dakika fark çıkar. Yine de resmî vakitler Diyanet İşleri Başkanlığı'nın yayımladıklarıdır."
+      },
+      {
+        "q": "İftar ve sahur saati nedir?",
+        "a": "İftar akşam ezanı vaktinde, sahur ise imsak vaktine kadardır. Ramazan ayında bu iki vakte aylık çizelgeden bakabilirsiniz."
+      },
+      {
+        "q": "Yurt dışında kullanabilir miyim?",
+        "a": "Evet. Konumumu kullan düğmesiyle dünyanın her yerinde vakit hesaplanır. Çok yüksek enlemlerde imsak ya da yatsı açısı oluşmayabilir; o durumda gecenin yedide biri kuralıyla yaklaşık değer verilir."
+      }
+    ],
+    "search": "namaz vakti ezan imsak iftar sahur sahur vakti iftar saati prayer times adhan fajr"
   }
 }
