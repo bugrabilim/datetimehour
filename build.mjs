@@ -228,12 +228,9 @@ const STAGE_ORDER = ["classic", "analog-date", "stack", "wx-analog", "wx-stack",
 const MODELS = STAGE_ORDER.map((id) => M[id]);
 const EMBED_MODELS = Object.values(M).filter((m) => !m.wx);
 
-const PALETTES = ["auto", "night", "paper", "amber", "green", "blue", "purple", "red", "cyan", "sunset", "forest", "ocean", "rose", "mono"];
 const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
 const ICON_INFO = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="0.6" fill="currentColor"/></svg>`;
 const ICON_GLOBE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>`;
-const ICON_CLOUD = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 8.5 4.5 4.5 0 0 1 17.5 18H7z"/></svg>`;
-const ICON_SOUND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>`;
 
 /* 24/12 saat tek düğmesi ve saniye düğmesi (sahne) */
 function prefControls(t) {
@@ -251,8 +248,6 @@ function clockStage(lang, { tz = "", place = null } = {}) {
   const dots = MODELS.map(
     (m, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${esc(s.models[m.id])}" title="${esc(s.models[m.id])}"${i ? "" : ' aria-current="true"'}></button>`
   ).join("");
-  const swatches = PALETTES.map((id) => `<button type="button" class="swatch sw-${id}" data-color="${id}" aria-pressed="false" aria-label="${esc(t.client.colorNames[id])}" title="${esc(t.client.colorNames[id])}"></button>`).join("");
-  const tickBtn = `<button type="button" class="icon-btn" data-tick aria-pressed="false" aria-label="${esc(t.client.tick)}" title="${esc(t.client.tick)}">${ICON_SOUND}</button>`;
   const wxAttr = place ? ` data-wx-name="${esc(place.name)}" data-wx-lat="${place.lat}" data-wx-lon="${place.lon}"` : "";
   return `<section class="stage" data-carousel${wxAttr} aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
   <h2 id="clock-h" class="sr-only">${esc(s.label)}</h2>
@@ -260,13 +255,9 @@ function clockStage(lang, { tz = "", place = null } = {}) {
   <p class="sr-only" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
   <div class="fs-bar" data-fs-bar>
     <button type="button" class="icon-btn" data-fullscreen-exit aria-label="${esc(t.client.exitFullscreen)}" title="${esc(t.client.exitFullscreen)}">${ICON_CLOSE}</button>
-    <div class="fs-colors" role="group" aria-label="${esc(t.client.colors)}">${swatches}</div>
-    ${tickBtn}
-    <button type="button" class="icon-btn" data-fs-weather aria-pressed="false" aria-label="${esc(t.client.fsWeather)}" title="${esc(t.client.fsWeather)}">${ICON_CLOUD}</button>
   </div>
-  <aside class="fs-weather" data-fs-weather-box data-weather-url="${ROUTES[lang].weather}" hidden></aside>
   <div class="stage-bar">
-    <div class="dots" role="group" aria-label="${esc(s.dots)}">${dots}</div>
+    <div class="dots sr-only" role="group" aria-label="${esc(s.dots)}">${dots}</div>
     <div class="stage-row">
       <div class="sr-start">${prefControls(t)}</div>
       <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
@@ -487,7 +478,7 @@ ${ld}
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
     <p class="top-date" data-live="date">&nbsp;</p>
     <div class="menu" id="site-nav">
-      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
+      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
     </div>
     <div class="top-tools">${settings}</div>
     <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>
@@ -583,7 +574,6 @@ function buildHome(lang) {
       <button type="button" class="icon-btn" data-globe-zoom="in" aria-label="${esc(h.zoomIn)}" title="${esc(h.zoomIn)}">+</button>
       <button type="button" class="icon-btn info-btn" data-info-open="globe-info" aria-haspopup="dialog" aria-label="${esc(h.globeInfo)}" title="${esc(h.globeInfo)}">${ICON_INFO}</button>
       <button type="button" class="icon-btn" data-globe-zoom="out" aria-label="${esc(h.zoomOut)}" title="${esc(h.zoomOut)}">−</button>
-      <button type="button" class="icon-btn" data-globe-fs aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
       <button type="button" class="icon-btn globe-reset" data-globe-reset aria-label="${esc(h.resetView)}" title="${esc(h.resetView)}" hidden>${ICON_GLOBE}</button>
     </div>
     <div class="globe-view">

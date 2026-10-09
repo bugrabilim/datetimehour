@@ -149,7 +149,7 @@
   try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
   if (prefs.pv !== 2) { prefs.sec = false; prefs.pv = 2; } // varsayılan: saniye kapalı
   if (window.__sthPrefs) Object.assign(prefs, window.__sthPrefs);
-  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec === true; prefs.tick = prefs.tick === true;
+  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec === true; prefs.tick = false; // saat sesi düğmesi kaldırıldı (9 Ekim 2026): eski kayıtlar sessiz kalır
   if (!/^[a-z]{2,12}$/.test(String(prefs.fsColor))) prefs.fsColor = "auto";
   prefs.sync = true; // saat her zaman sunucu saatine göre çalışır
 
@@ -569,16 +569,6 @@ function sunTimes(y, m, d, lat, lon) {
     var exitBtn = stage.querySelector("[data-fullscreen-exit]");
     if (exitBtn) exitBtn.addEventListener("click", function () { toggleFull(); });
     ["pointerdown", "pointermove", "touchstart", "keydown"].forEach(function (n) { stage.addEventListener(n, wake, { passive: true }); });
-    var swatches = Array.prototype.slice.call(stage.querySelectorAll("[data-color]"));
-    var knownColors = swatches.map(function (b) { return b.getAttribute("data-color"); });
-    if (knownColors.indexOf(prefs.fsColor) < 0) prefs.fsColor = "auto";
-    var applyColor = function () {
-      stage.setAttribute("data-fs-color", prefs.fsColor);
-      swatches.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-color") === prefs.fsColor)); });
-    };
-    swatches.forEach(function (b) { b.addEventListener("click", function () { prefs.fsColor = b.getAttribute("data-color"); store("sth-prefs", JSON.stringify(prefs)); applyColor(); }); });
-    applyColor();
-
     // Açılışta: bağlantıdaki model, yoksa son seçilen model
     var start = indexFromHash();
     if (start < 0 && prefs.model) {

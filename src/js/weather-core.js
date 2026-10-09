@@ -115,45 +115,4 @@
       sync(slide);
     });
   });
-
-  /* Tam ekran: saatin yanında hava durumu (isteğe bağlı, varsayılan kapalı) */
-  var box = doc.querySelector("[data-fs-weather-box]"), btn = doc.querySelector("[data-fs-weather]");
-  if (!box || !btn) return;
-  var stage = box.closest(".stage"), timer = null, shownKey = "";
-  function el(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-  function fill(place, d) {
-    var c = d.current, i = info(c.weather_code, c.is_day);
-    box.textContent = "";
-    box.appendChild(el("p", "fsw-place", place.name));
-    var row = el("p", "fsw-main"); row.appendChild(el("span", "fsw-icon", i.icon)); row.appendChild(el("span", "fsw-temp", temp(c.temperature_2m)));
-    row.firstChild.setAttribute("aria-hidden", "true");
-    box.appendChild(row);
-    box.appendChild(el("p", "fsw-cond", i.label));
-    var x = X();
-    box.appendChild(el("p", "fsw-more", x.feelsLike + " " + temp(c.apparent_temperature) + " · " + (d.daily ? temp(d.daily.temperature_2m_max[0]) + " / " + temp(d.daily.temperature_2m_min[0]) : "")));
-    box.appendChild(el("p", "fsw-more", x.humidity + " " + Math.round(c.relative_humidity_2m) + "% · " + x.wind + " " + Math.round(c.wind_speed_10m) + " km/h"));
-  }
-  function need() {
-    var x = X();
-    box.textContent = "";
-    var p = el("p", "fsw-more", x.fsNeed + " ");
-    var a = el("a", null, x.fsLink); a.href = "#"; a.setAttribute("data-place-open", "");
-    p.appendChild(a); box.appendChild(p);
-  }
-  function refresh() {
-    var place = window.sthPlace && window.sthPlace.saved();
-    if (!place) { need(); return; }
-    window.sthWeather.load(place.lat, place.lon).then(function (d) { fill(place, d); }).catch(function () { box.textContent = ""; box.appendChild(el("p", "fsw-more", X().fsFail)); });
-  }
-  function update() {
-    var on = S.prefs.fsWeather === true, full = stage.classList.contains("fs-on");
-    btn.setAttribute("aria-pressed", String(on));
-    box.hidden = !(on && full);
-    clearInterval(timer);
-    if (on && full) { refresh(); timer = setInterval(refresh, 15 * 60 * 1000); }
-  }
-  window.addEventListener("sth-place", function () { if (S.prefs.fsWeather === true && stage.classList.contains("fs-on")) refresh(); });
-  btn.addEventListener("click", function () { S.prefs.fsWeather = !S.prefs.fsWeather; S.store("sth-prefs", JSON.stringify(S.prefs)); S.track("tam-ekran-hava", { acik: S.prefs.fsWeather }); update(); });
-  new MutationObserver(function () { var full = stage.classList.contains("fs-on"); if (full !== (shownKey === "1")) { shownKey = full ? "1" : "0"; update(); } }).observe(stage, { attributes: true, attributeFilter: ["class"] });
-  update();
 })();
