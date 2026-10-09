@@ -331,7 +331,7 @@
     "pages": "Sayfalar",
     "cities": "Şehir sayfaları",
     "about": "Hakkında",
-    "aboutText": "Saat, sitenin sunucu saatiyle senkronize edilir (cihaz saatinden bağımsız); saat dilimi tarayıcıdan okunur ve kişisel veri gönderilmez. Türkçe ve İngilizce sunulur. Veri sorumlusu: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. İletişim: bilgi@bumbagroup.com."
+    "aboutText": "Saat, sitenin sunucu saatiyle senkronize edilir (cihaz saatinden bağımsız); saat dilimi tarayıcıdan okunur ve kişisel veri gönderilmez. Türkçe, İngilizce, Almanca, Azerice ve Arapça sunulur. Veri sorumlusu: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. İletişim: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Saat modelleri",

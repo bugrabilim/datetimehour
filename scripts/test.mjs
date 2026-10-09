@@ -7,6 +7,8 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "site.config.json"), "utf8"));
 const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
+const LANGS = ["tr", "en", "de", "az", "ar"].filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
+const LG = LANGS.join("|");
 const fails = [];
 const check = (ok, msg) => { if (!ok) fails.push(msg); };
 
@@ -28,14 +30,16 @@ for (const f of htmlFiles) {
   const name = rel(f);
   const err = name === "/404.html" || name === "/500.html";
   const noidx = /<meta name="robots" content="noindex/.test(h);
-  const embed = /\/embed\/(tr|en)\/index\.html$/.test(name);
+  const embed = new RegExp(`^/embed/(${LG})/index\\.html$`).test(name);
   ids[f] = new Set([...h.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
   const title = (h.match(/<title>([^<]*)<\/title>/) || [])[1];
   const desc = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1];
   check(title, `${name}: title yok`);
   check(desc || embed, `${name}: description yok`);
-  check((h.match(/<h1[ >]/g) || []).length === (embed ? 0 : err ? 2 : 1), `${name}: H1 sayısı hatalı`);
-  check(/<html lang="(tr|en)"/.test(h), `${name}: html lang yok`);
+  check((h.match(/<h1[ >]/g) || []).length === (embed ? 0 : err ? LANGS.length : 1), `${name}: H1 sayısı hatalı`);
+  check(new RegExp(`<html lang="(${LG})" dir="(ltr|rtl)"`).test(h), `${name}: html lang/dir yok`);
+  const hl = (h.match(/<html lang="(\w+)" dir="(\w+)"/) || []);
+  check(hl[2] === (hl[1] === "ar" ? "rtl" : "ltr"), `${name}: dir değeri hatalı`);
   check(!/\sstyle="/.test(h), `${name}: satır içi style (CSP)`);
   check(!/http:\/\/(?!www\.w3\.org)/.test(h), `${name}: http:// bağlantı`);
   check(/class="rozet"/.test(h) && /width="164" height="28"/.test(h), `${name}: Bumba rozeti yok`);
@@ -44,7 +48,7 @@ for (const f of htmlFiles) {
   if (embed) {
     check(noidx && h.indexOf("embed.js") > 0 && h.indexOf("embed.js") < h.indexOf("main.js") && (h.match(/class="slide /g) || []).length >= 10, `${name}: gömülü sayfa yapısı hatalı`);
   }
-  if (!err && !embed && (name === "/index.html" || name === "/en/index.html" || /\/(dunya-saatleri|world-clock)\/[a-z-]+\/index\.html$/.test(name) && !/\/(dunya-saatleri|world-clock)\/index\.html$/.test(name))) {
+  if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name) || /\/(dunya-saatleri|world-clock)\/[a-z-]+\/index\.html$/.test(name) && !/\/(dunya-saatleri|world-clock)\/index\.html$/.test(name))) {
     const slides = [...h.matchAll(/data-model="([a-z-]+)" data-name="([^"]+)"/g)];
     check(slides.length >= 10, `${name}: saat modeli sayısı ${slides.length} < 10`);
     check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
@@ -71,7 +75,7 @@ for (const f of htmlFiles) {
   if (!err && !embed) {
     check(/rel="canonical" href="https:\/\//.test(h), `${name}: canonical yok`);
     if (!noidx) {
-      for (const l of ["tr", "en", "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
+      for (const l of [...LANGS, "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
     } else {
       check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
@@ -134,13 +138,20 @@ check(!/Disallow:\s*\//.test(robots), "robots.txt engelliyor");
 for (const b of ["GPTBot", "ClaudeBot", "PerplexityBot", "OAI-SearchBot"]) check(robots.includes(`User-agent: ${b}`), `robots.txt ${b} yok`);
 check(/Saat Tarih/.test(fs.readFileSync(path.join(DIST, "llms.txt"), "utf8")), "llms.txt boş");
 
-// TR / EN anahtar eşliği
+// Dil dosyaları: anahtar ve dizi uzunluğu eşliği (tr = kaynak)
 const keys = (o, p = "") => Object.entries(o).flatMap(([k, v]) => (v && typeof v === "object" && !Array.isArray(v) ? keys(v, p + k + ".") : [p + k]));
-const tr = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n/tr.json"), "utf8"));
-const en = JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n/en.json"), "utf8"));
-const kt = keys(tr), ke = keys(en);
-for (const k of kt) check(ke.includes(k), `en.json'da yok: ${k}`);
-for (const k of ke) check(kt.includes(k), `tr.json'da yok: ${k}`);
+const flat = (o, p = "") => Object.entries(o).flatMap(([k, v]) => (v && typeof v === "object" ? (Array.isArray(v) ? [[p + k, v]] : flat(v, p + k + ".")) : [[p + k, v]]));
+const dict = Object.fromEntries(LANGS.map((l) => [l, new Map(flat(JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"))))]));
+for (const l of LANGS.filter((x) => x !== "tr")) {
+  for (const k of dict.tr.keys()) {
+    check(dict[l].has(k), `${l}.json'da yok: ${k}`);
+    const a = dict.tr.get(k), b = dict[l].get(k);
+    if (Array.isArray(a) && Array.isArray(b)) check(a.length === b.length, `${l}.json: dizi uzunluğu farklı: ${k}`);
+  }
+  for (const k of dict[l].keys()) check(dict.tr.has(k) || /^client\.words\.(hours|one)$/.test(k), `tr.json'da yok: ${k} (${l})`);
+}
+for (const l of LANGS) check(fs.existsSync(path.join(DIST, "assets", `search-${l}.json`)), `search-${l}.json yok`);
+check(sm.split("<url>").slice(1).every((u) => LANGS.every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
 
 // kontrast (WCAG AA)
 const css = fs.readFileSync(path.join(ROOT, "src/styles.css"), "utf8");

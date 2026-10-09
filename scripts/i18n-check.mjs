@@ -19,16 +19,16 @@ export function compare(src, tgt, name = "") {
     } else if (a && typeof a === "object") {
       if (!b || typeof b !== "object") return issues.push(`${p}: nesne olmalı`);
       for (const k of Object.keys(a)) {
-        if (!(k in b)) { if (!/words\.(unitFirst|hours)$/.test(`${p}.${k}`)) issues.push(`${p}.${k}: eksik`); continue; }
+        if (!(k in b)) { if (!/words\.(unitFirst|hours|one)$/.test(`${p}.${k}`)) issues.push(`${p}.${k}: eksik`); continue; }
         walk(a[k], b[k], p ? `${p}.${k}` : k);
       }
-      for (const k of Object.keys(b)) if (!(k in a) && !/words\.(unitFirst|hours)$/.test(`${p}.${k}`)) issues.push(`${p}.${k}: fazladan`);
+      for (const k of Object.keys(b)) if (!(k in a) && !/words\.(unitFirst|hours|one)$/.test(`${p}.${k}`)) issues.push(`${p}.${k}: fazladan`);
     } else {
       if (typeof b !== typeof a) return issues.push(`${p}: tür farklı`);
       if (typeof a === "string") {
         if (ph(a) !== ph(b)) issues.push(`${p}: yer tutucular farklı (${ph(a)} ≠ ${ph(b)})`);
         if (md(a) !== md(b)) issues.push(`${p}: bağlantı adresleri farklı`);
-        if (b.trim() === "" && a.trim() !== "" && !/(words\.join|consentPre|consentPost)$/.test(p)) issues.push(`${p}: boş`);
+        if (b.trim() === "" && a.trim() !== "" && !/(words\.join|words\.oh|consentPre|consentPost)$/.test(p)) issues.push(`${p}: boş`);
       }
     }
   };

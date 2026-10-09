@@ -331,7 +331,7 @@
     "pages": "Pages",
     "cities": "City pages",
     "about": "About",
-    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in Turkish and English. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in Turkish, English, German, Azerbaijani and Arabic. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Clock styles",

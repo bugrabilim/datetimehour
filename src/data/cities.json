@@ -15,6 +15,21 @@
       "name": "Istanbul",
       "country": "Türkiye"
     },
+    "de": {
+      "slug": "istanbul",
+      "name": "Istanbul",
+      "country": "Türkei"
+    },
+    "az": {
+      "slug": "istanbul",
+      "name": "İstanbul",
+      "country": "Türkiyə"
+    },
+    "ar": {
+      "slug": "istanbul",
+      "name": "إسطنبول",
+      "country": "تركيا"
+    },
     "lat": 41.01,
     "lon": 28.98
   },
@@ -33,6 +48,21 @@
       "slug": "ankara",
       "name": "Ankara",
       "country": "Türkiye"
+    },
+    "de": {
+      "slug": "ankara",
+      "name": "Ankara",
+      "country": "Türkei"
+    },
+    "az": {
+      "slug": "ankara",
+      "name": "Ankara",
+      "country": "Türkiyə"
+    },
+    "ar": {
+      "slug": "ankara",
+      "name": "أنقرة",
+      "country": "تركيا"
     },
     "lat": 39.93,
     "lon": 32.86
@@ -53,6 +83,21 @@
       "name": "Izmir",
       "country": "Türkiye"
     },
+    "de": {
+      "slug": "izmir",
+      "name": "Izmir",
+      "country": "Türkei"
+    },
+    "az": {
+      "slug": "izmir",
+      "name": "İzmir",
+      "country": "Türkiyə"
+    },
+    "ar": {
+      "slug": "izmir",
+      "name": "إزمير",
+      "country": "تركيا"
+    },
     "lat": 38.42,
     "lon": 27.14
   },
@@ -71,6 +116,21 @@
       "slug": "london",
       "name": "London",
       "country": "United Kingdom"
+    },
+    "de": {
+      "slug": "london",
+      "name": "London",
+      "country": "Vereinigtes Königreich"
+    },
+    "az": {
+      "slug": "london",
+      "name": "London",
+      "country": "Böyük Britaniya"
+    },
+    "ar": {
+      "slug": "london",
+      "name": "لندن",
+      "country": "المملكة المتحدة"
     },
     "lat": 51.51,
     "lon": -0.13
@@ -91,6 +151,21 @@
       "name": "Paris",
       "country": "France"
     },
+    "de": {
+      "slug": "paris",
+      "name": "Paris",
+      "country": "Frankreich"
+    },
+    "az": {
+      "slug": "paris",
+      "name": "Paris",
+      "country": "Fransa"
+    },
+    "ar": {
+      "slug": "paris",
+      "name": "باريس",
+      "country": "فرنسا"
+    },
     "lat": 48.86,
     "lon": 2.35
   },
@@ -109,6 +184,21 @@
       "slug": "berlin",
       "name": "Berlin",
       "country": "Germany"
+    },
+    "de": {
+      "slug": "berlin",
+      "name": "Berlin",
+      "country": "Deutschland"
+    },
+    "az": {
+      "slug": "berlin",
+      "name": "Berlin",
+      "country": "Almaniya"
+    },
+    "ar": {
+      "slug": "berlin",
+      "name": "برلين",
+      "country": "ألمانيا"
     },
     "lat": 52.52,
     "lon": 13.4
@@ -129,6 +219,21 @@
       "name": "Moscow",
       "country": "Russia"
     },
+    "de": {
+      "slug": "moscow",
+      "name": "Moskau",
+      "country": "Russland"
+    },
+    "az": {
+      "slug": "moscow",
+      "name": "Moskva",
+      "country": "Rusiya"
+    },
+    "ar": {
+      "slug": "moscow",
+      "name": "موسكو",
+      "country": "روسيا"
+    },
     "lat": 55.76,
     "lon": 37.62
   },
@@ -147,6 +252,21 @@
       "slug": "dubai",
       "name": "Dubai",
       "country": "United Arab Emirates"
+    },
+    "de": {
+      "slug": "dubai",
+      "name": "Dubai",
+      "country": "Vereinigte Arabische Emirate"
+    },
+    "az": {
+      "slug": "dubai",
+      "name": "Dubay",
+      "country": "Birləşmiş Ərəb Əmirlikləri"
+    },
+    "ar": {
+      "slug": "dubai",
+      "name": "دبي",
+      "country": "الإمارات العربية المتحدة"
     },
     "lat": 25.2,
     "lon": 55.27
@@ -167,6 +287,21 @@
       "name": "Baku",
       "country": "Azerbaijan"
     },
+    "de": {
+      "slug": "baku",
+      "name": "Baku",
+      "country": "Aserbaidschan"
+    },
+    "az": {
+      "slug": "baku",
+      "name": "Bakı",
+      "country": "Azərbaycan"
+    },
+    "ar": {
+      "slug": "baku",
+      "name": "باكو",
+      "country": "أذربيجان"
+    },
     "lat": 40.41,
     "lon": 49.87
   },
@@ -185,6 +320,21 @@
       "slug": "cairo",
       "name": "Cairo",
       "country": "Egypt"
+    },
+    "de": {
+      "slug": "cairo",
+      "name": "Kairo",
+      "country": "Ägypten"
+    },
+    "az": {
+      "slug": "cairo",
+      "name": "Qahirə",
+      "country": "Misir"
+    },
+    "ar": {
+      "slug": "cairo",
+      "name": "القاهرة",
+      "country": "مصر"
     },
     "lat": 30.04,
     "lon": 31.24
@@ -205,6 +355,21 @@
       "name": "New York",
       "country": "United States"
     },
+    "de": {
+      "slug": "new-york",
+      "name": "New York",
+      "country": "USA"
+    },
+    "az": {
+      "slug": "new-york",
+      "name": "Nyu-York",
+      "country": "ABŞ"
+    },
+    "ar": {
+      "slug": "new-york",
+      "name": "نيويورك",
+      "country": "الولايات المتحدة"
+    },
     "lat": 40.71,
     "lon": -74.01
   },
@@ -223,6 +388,21 @@
       "slug": "los-angeles",
       "name": "Los Angeles",
       "country": "United States"
+    },
+    "de": {
+      "slug": "los-angeles",
+      "name": "Los Angeles",
+      "country": "USA"
+    },
+    "az": {
+      "slug": "los-angeles",
+      "name": "Los-Anceles",
+      "country": "ABŞ"
+    },
+    "ar": {
+      "slug": "los-angeles",
+      "name": "لوس أنجلوس",
+      "country": "الولايات المتحدة"
     },
     "lat": 34.05,
     "lon": -118.24
@@ -243,6 +423,21 @@
       "name": "Tokyo",
       "country": "Japan"
     },
+    "de": {
+      "slug": "tokyo",
+      "name": "Tokio",
+      "country": "Japan"
+    },
+    "az": {
+      "slug": "tokyo",
+      "name": "Tokio",
+      "country": "Yaponiya"
+    },
+    "ar": {
+      "slug": "tokyo",
+      "name": "طوكيو",
+      "country": "اليابان"
+    },
     "lat": 35.68,
     "lon": 139.69
   },
@@ -261,6 +456,21 @@
       "slug": "beijing",
       "name": "Beijing",
       "country": "China"
+    },
+    "de": {
+      "slug": "beijing",
+      "name": "Peking",
+      "country": "China"
+    },
+    "az": {
+      "slug": "beijing",
+      "name": "Pekin",
+      "country": "Çin"
+    },
+    "ar": {
+      "slug": "beijing",
+      "name": "بكين",
+      "country": "الصين"
     },
     "lat": 39.9,
     "lon": 116.41
@@ -281,6 +491,21 @@
       "name": "Singapore",
       "country": "Singapore"
     },
+    "de": {
+      "slug": "singapore",
+      "name": "Singapur",
+      "country": "Singapur"
+    },
+    "az": {
+      "slug": "singapore",
+      "name": "Sinqapur",
+      "country": "Sinqapur"
+    },
+    "ar": {
+      "slug": "singapore",
+      "name": "سنغافورة",
+      "country": "سنغافورة"
+    },
     "lat": 1.35,
     "lon": 103.82
   },
@@ -299,6 +524,21 @@
       "slug": "mumbai",
       "name": "Mumbai",
       "country": "India"
+    },
+    "de": {
+      "slug": "mumbai",
+      "name": "Mumbai",
+      "country": "Indien"
+    },
+    "az": {
+      "slug": "mumbai",
+      "name": "Mumbai",
+      "country": "Hindistan"
+    },
+    "ar": {
+      "slug": "mumbai",
+      "name": "مومباي",
+      "country": "الهند"
     },
     "lat": 19.08,
     "lon": 72.88
@@ -319,6 +559,21 @@
       "name": "Sydney",
       "country": "Australia"
     },
+    "de": {
+      "slug": "sydney",
+      "name": "Sydney",
+      "country": "Australien"
+    },
+    "az": {
+      "slug": "sydney",
+      "name": "Sidney",
+      "country": "Avstraliya"
+    },
+    "ar": {
+      "slug": "sydney",
+      "name": "سيدني",
+      "country": "أستراليا"
+    },
     "lat": -33.87,
     "lon": 151.21
   },
@@ -327,8 +582,6 @@
     "tz": "Asia/Riyadh",
     "std": "+03:00",
     "dst": false,
-    "lat": 24.71,
-    "lon": 46.68,
     "tr": {
       "slug": "riyad",
       "name": "Riyad",
@@ -339,15 +592,30 @@
       "slug": "riyadh",
       "name": "Riyadh",
       "country": "Saudi Arabia"
-    }
+    },
+    "de": {
+      "slug": "riyadh",
+      "name": "Riad",
+      "country": "Saudi-Arabien"
+    },
+    "az": {
+      "slug": "riyadh",
+      "name": "Ər-Riyad",
+      "country": "Səudiyyə Ərəbistanı"
+    },
+    "ar": {
+      "slug": "riyadh",
+      "name": "الرياض",
+      "country": "المملكة العربية السعودية"
+    },
+    "lat": 24.71,
+    "lon": 46.68
   },
   {
     "key": "doha",
     "tz": "Asia/Qatar",
     "std": "+03:00",
     "dst": false,
-    "lat": 25.29,
-    "lon": 51.53,
     "tr": {
       "slug": "doha",
       "name": "Doha",
@@ -358,15 +626,30 @@
       "slug": "doha",
       "name": "Doha",
       "country": "Qatar"
-    }
+    },
+    "de": {
+      "slug": "doha",
+      "name": "Doha",
+      "country": "Katar"
+    },
+    "az": {
+      "slug": "doha",
+      "name": "Doha",
+      "country": "Qətər"
+    },
+    "ar": {
+      "slug": "doha",
+      "name": "الدوحة",
+      "country": "قطر"
+    },
+    "lat": 25.29,
+    "lon": 51.53
   },
   {
     "key": "amsterdam",
     "tz": "Europe/Amsterdam",
     "std": "+01:00",
     "dst": true,
-    "lat": 52.37,
-    "lon": 4.9,
     "tr": {
       "slug": "amsterdam",
       "name": "Amsterdam",
@@ -377,15 +660,30 @@
       "slug": "amsterdam",
       "name": "Amsterdam",
       "country": "Netherlands"
-    }
+    },
+    "de": {
+      "slug": "amsterdam",
+      "name": "Amsterdam",
+      "country": "Niederlande"
+    },
+    "az": {
+      "slug": "amsterdam",
+      "name": "Amsterdam",
+      "country": "Niderland"
+    },
+    "ar": {
+      "slug": "amsterdam",
+      "name": "أمستردام",
+      "country": "هولندا"
+    },
+    "lat": 52.37,
+    "lon": 4.9
   },
   {
     "key": "rome",
     "tz": "Europe/Rome",
     "std": "+01:00",
     "dst": true,
-    "lat": 41.9,
-    "lon": 12.5,
     "tr": {
       "slug": "roma",
       "name": "Roma",
@@ -396,15 +694,30 @@
       "slug": "rome",
       "name": "Rome",
       "country": "Italy"
-    }
+    },
+    "de": {
+      "slug": "rome",
+      "name": "Rom",
+      "country": "Italien"
+    },
+    "az": {
+      "slug": "rome",
+      "name": "Roma",
+      "country": "İtaliya"
+    },
+    "ar": {
+      "slug": "rome",
+      "name": "روما",
+      "country": "إيطاليا"
+    },
+    "lat": 41.9,
+    "lon": 12.5
   },
   {
     "key": "madrid",
     "tz": "Europe/Madrid",
     "std": "+01:00",
     "dst": true,
-    "lat": 40.42,
-    "lon": -3.7,
     "tr": {
       "slug": "madrid",
       "name": "Madrid",
@@ -415,15 +728,30 @@
       "slug": "madrid",
       "name": "Madrid",
       "country": "Spain"
-    }
+    },
+    "de": {
+      "slug": "madrid",
+      "name": "Madrid",
+      "country": "Spanien"
+    },
+    "az": {
+      "slug": "madrid",
+      "name": "Madrid",
+      "country": "İspaniya"
+    },
+    "ar": {
+      "slug": "madrid",
+      "name": "مدريد",
+      "country": "إسبانيا"
+    },
+    "lat": 40.42,
+    "lon": -3.7
   },
   {
     "key": "athens",
     "tz": "Europe/Athens",
     "std": "+02:00",
     "dst": true,
-    "lat": 37.98,
-    "lon": 23.73,
     "tr": {
       "slug": "atina",
       "name": "Atina",
@@ -434,15 +762,30 @@
       "slug": "athens",
       "name": "Athens",
       "country": "Greece"
-    }
+    },
+    "de": {
+      "slug": "athens",
+      "name": "Athen",
+      "country": "Griechenland"
+    },
+    "az": {
+      "slug": "athens",
+      "name": "Afina",
+      "country": "Yunanıstan"
+    },
+    "ar": {
+      "slug": "athens",
+      "name": "أثينا",
+      "country": "اليونان"
+    },
+    "lat": 37.98,
+    "lon": 23.73
   },
   {
     "key": "vienna",
     "tz": "Europe/Vienna",
     "std": "+01:00",
     "dst": true,
-    "lat": 48.21,
-    "lon": 16.37,
     "tr": {
       "slug": "viyana",
       "name": "Viyana",
@@ -453,15 +796,30 @@
       "slug": "vienna",
       "name": "Vienna",
       "country": "Austria"
-    }
+    },
+    "de": {
+      "slug": "vienna",
+      "name": "Wien",
+      "country": "Österreich"
+    },
+    "az": {
+      "slug": "vienna",
+      "name": "Vyana",
+      "country": "Avstriya"
+    },
+    "ar": {
+      "slug": "vienna",
+      "name": "فيينا",
+      "country": "النمسا"
+    },
+    "lat": 48.21,
+    "lon": 16.37
   },
   {
     "key": "kyiv",
     "tz": "Europe/Kiev",
     "std": "+02:00",
     "dst": true,
-    "lat": 50.45,
-    "lon": 30.52,
     "tr": {
       "slug": "kiev",
       "name": "Kiev",
@@ -472,15 +830,30 @@
       "slug": "kyiv",
       "name": "Kyiv",
       "country": "Ukraine"
-    }
+    },
+    "de": {
+      "slug": "kyiv",
+      "name": "Kiew",
+      "country": "Ukraine"
+    },
+    "az": {
+      "slug": "kyiv",
+      "name": "Kiyev",
+      "country": "Ukrayna"
+    },
+    "ar": {
+      "slug": "kyiv",
+      "name": "كييف",
+      "country": "أوكرانيا"
+    },
+    "lat": 50.45,
+    "lon": 30.52
   },
   {
     "key": "tehran",
     "tz": "Asia/Tehran",
     "std": "+03:30",
     "dst": false,
-    "lat": 35.69,
-    "lon": 51.39,
     "tr": {
       "slug": "tahran",
       "name": "Tahran",
@@ -491,15 +864,30 @@
       "slug": "tehran",
       "name": "Tehran",
       "country": "Iran"
-    }
+    },
+    "de": {
+      "slug": "tehran",
+      "name": "Teheran",
+      "country": "Iran"
+    },
+    "az": {
+      "slug": "tehran",
+      "name": "Tehran",
+      "country": "İran"
+    },
+    "ar": {
+      "slug": "tehran",
+      "name": "طهران",
+      "country": "إيران"
+    },
+    "lat": 35.69,
+    "lon": 51.39
   },
   {
     "key": "hong-kong",
     "tz": "Asia/Hong_Kong",
     "std": "+08:00",
     "dst": false,
-    "lat": 22.32,
-    "lon": 114.17,
     "tr": {
       "slug": "hong-kong",
       "name": "Hong Kong",
@@ -510,15 +898,30 @@
       "slug": "hong-kong",
       "name": "Hong Kong",
       "country": "China (Hong Kong)"
-    }
+    },
+    "de": {
+      "slug": "hong-kong",
+      "name": "Hongkong",
+      "country": "China (Hongkong)"
+    },
+    "az": {
+      "slug": "hong-kong",
+      "name": "Honq-Konq",
+      "country": "Çin (Honq-Konq)"
+    },
+    "ar": {
+      "slug": "hong-kong",
+      "name": "هونغ كونغ",
+      "country": "الصين (هونغ كونغ)"
+    },
+    "lat": 22.32,
+    "lon": 114.17
   },
   {
     "key": "bangkok",
     "tz": "Asia/Bangkok",
     "std": "+07:00",
     "dst": false,
-    "lat": 13.76,
-    "lon": 100.5,
     "tr": {
       "slug": "bangkok",
       "name": "Bangkok",
@@ -529,15 +932,30 @@
       "slug": "bangkok",
       "name": "Bangkok",
       "country": "Thailand"
-    }
+    },
+    "de": {
+      "slug": "bangkok",
+      "name": "Bangkok",
+      "country": "Thailand"
+    },
+    "az": {
+      "slug": "bangkok",
+      "name": "Banqkok",
+      "country": "Tailand"
+    },
+    "ar": {
+      "slug": "bangkok",
+      "name": "بانكوك",
+      "country": "تايلاند"
+    },
+    "lat": 13.76,
+    "lon": 100.5
   },
   {
     "key": "toronto",
     "tz": "America/Toronto",
     "std": "-05:00",
     "dst": true,
-    "lat": 43.65,
-    "lon": -79.38,
     "tr": {
       "slug": "toronto",
       "name": "Toronto",
@@ -548,15 +966,30 @@
       "slug": "toronto",
       "name": "Toronto",
       "country": "Canada"
-    }
+    },
+    "de": {
+      "slug": "toronto",
+      "name": "Toronto",
+      "country": "Kanada"
+    },
+    "az": {
+      "slug": "toronto",
+      "name": "Toronto",
+      "country": "Kanada"
+    },
+    "ar": {
+      "slug": "toronto",
+      "name": "تورنتو",
+      "country": "كندا"
+    },
+    "lat": 43.65,
+    "lon": -79.38
   },
   {
     "key": "sao-paulo",
     "tz": "America/Sao_Paulo",
     "std": "-03:00",
     "dst": false,
-    "lat": -23.55,
-    "lon": -46.63,
     "tr": {
       "slug": "sao-paulo",
       "name": "Sao Paulo",
@@ -567,15 +1000,30 @@
       "slug": "sao-paulo",
       "name": "São Paulo",
       "country": "Brazil"
-    }
+    },
+    "de": {
+      "slug": "sao-paulo",
+      "name": "São Paulo",
+      "country": "Brasilien"
+    },
+    "az": {
+      "slug": "sao-paulo",
+      "name": "San-Paulu",
+      "country": "Braziliya"
+    },
+    "ar": {
+      "slug": "sao-paulo",
+      "name": "ساو باولو",
+      "country": "البرازيل"
+    },
+    "lat": -23.55,
+    "lon": -46.63
   },
   {
     "key": "johannesburg",
     "tz": "Africa/Johannesburg",
     "std": "+02:00",
     "dst": false,
-    "lat": -26.2,
-    "lon": 28.05,
     "tr": {
       "slug": "johannesburg",
       "name": "Johannesburg",
@@ -586,6 +1034,23 @@
       "slug": "johannesburg",
       "name": "Johannesburg",
       "country": "South Africa"
-    }
+    },
+    "de": {
+      "slug": "johannesburg",
+      "name": "Johannesburg",
+      "country": "Südafrika"
+    },
+    "az": {
+      "slug": "johannesburg",
+      "name": "Yohannesburq",
+      "country": "Cənubi Afrika"
+    },
+    "ar": {
+      "slug": "johannesburg",
+      "name": "جوهانسبرغ",
+      "country": "جنوب أفريقيا"
+    },
+    "lat": -26.2,
+    "lon": 28.05
   }
 ]
