@@ -219,11 +219,12 @@
     "upcomingAll": "Zum Jahreskalender",
     "upcomingNone": "Keine bevorstehenden Tage gefunden.",
     "globeLabel": "Rotierender Globus mit Tag und Nacht, Zeitzonen-Meridianen und der Ortszeit großer Städte",
-    "globeCaption": "Die helle Seite ist Tag, die dunkle Nacht. Die Linien sind die 15°-Zeitzonenmeridiane (mit UTC-Versatz); die rote Linie ist der Nullpunkt, der Meridian von Greenwich (UTC). Bei jeder Stadt steht die Ortszeit. Ziehen Sie den Globus, um ihn zu drehen; zoomen Sie mit zwei Fingern, dem Mausrad oder den Tasten + und −. Doppeltippen vergrößert oder kehrt zur Ausgangsansicht zurück.",
+    "globeCaption": "Die helle Seite ist Tag, die dunkle Nacht. Die Linien sind die 15°-Zeitzonenmeridiane (mit UTC-Versatz); die rote Linie ist der Nullpunkt, der Meridian von Greenwich (UTC). Bei jeder Stadt steht die Ortszeit. Ziehen Sie den Globus, um ihn zu drehen; zoomen Sie mit zwei Fingern, dem Mausrad oder den Tasten + und −. Beim Hineinzoomen erscheint auch die Ortszeit der Orte in diesem Gebiet. Noch weiter hinein wechselt die Ansicht zur OpenStreetMap-Karte (bis auf Straßenebene); Meridiane und Meridianabschnitte werden mit ihrer Länge beschriftet. Die Kartenkacheln werden dann von OpenStreetMap geladen (© OpenStreetMap-Mitwirkende); die Globustextur stammt von Natural Earth (gemeinfrei). Doppeltippen vergrößert.",
     "globeTitle": "Weltkugel",
     "globeInfo": "Info zum Globus",
     "zoomIn": "Vergrößern",
-    "zoomOut": "Verkleinern"
+    "zoomOut": "Verkleinern",
+    "resetView": "Ganze Welt"
   },
   "world": {
     "title": "Weltzeituhr: Aktuelle Uhrzeit in Städten weltweit | Saat Tarih",
@@ -292,7 +293,8 @@
         "ul": [
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
           "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
-          "**Wetter:** Auf der Wetterseite (oder wenn Sie im Vollbild das Wetter einschalten) werden die ungefähren Koordinaten der gewählten Provinz oder des gewählten Standorts (auf etwa 1 km genau) direkt von Ihrem Browser an Open-Meteo (api.open-meteo.com) gesendet, das die Daten liefert. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die eigenen Datenschutzbestimmungen von Open-Meteo.",
+          "**Wetter:** Auf der Wetterseite (oder wenn Sie im Vollbild das Wetter einschalten oder eine Uhr mit Wetter wählen) werden die ungefähren Koordinaten der gewählten Provinz oder des gewählten Standorts (auf etwa 1 km genau) direkt von Ihrem Browser an Open-Meteo (api.open-meteo.com) gesendet, das die Daten liefert. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die eigenen Datenschutzbestimmungen von Open-Meteo.",
+          "**Karte (Globus):** Wenn Sie den Globus auf der Startseite über eine bestimmte Stufe hinaus vergrößern, werden Kartenkacheln direkt von Ihrem Browser vom Server von OpenStreetMap (tile.openstreetmap.org) geladen; dabei gelangen Ihre IP-Adresse und die Kachel-Adressen des betrachteten Gebiets an die OpenStreetMap Foundation. Beim ersten Öffnen der Seite und bei weit entferntem Globus erfolgt diese Anfrage nicht. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die eigenen Datenschutzbestimmungen von OpenStreetMap.",
           "**Formular für die E-Mail-Liste:** Die von Ihnen eingegebene E-Mail-Adresse, die per Kontrollkästchen erteilte Einwilligung, die gewählte Sprache und die Seite, auf der sich das Formular befindet, werden vom gemeinsamen Listendienst der Bumba Group (bumbagroup.com) verarbeitet. Die Anmeldung erfolgt per Double-Opt-in: Sie werden erst aufgenommen, wenn Sie den Link in der Bestätigungs-E-Mail anklicken, und jede E-Mail enthält einen Link zur Abmeldung mit einem Klick. Einzelheiten finden Sie im [gemeinsamen Datenschutzhinweis](https://bumbagroup.com/liste/aydinlatma?dil=en) (auf Englisch).",
           "**Server-Protokolle:** Der Server, auf dem die Website betrieben wird, führt für jede Anfrage ein übliches Zugriffsprotokoll mit IP-Adresse, Browserinformationen, aufgerufener Seite und Zeitpunkt. Diese Protokolle dienen ausschließlich der Sicherheit und der Fehlerbehebung, nicht der Erstellung von Personenprofilen.",
           "**Besuchsstatistik:** Umami, das auf unserem eigenen Server läuft, zählt Seitenaufrufe und einige Aktionen (Sprachwechsel, Wechsel des Farbmodus, ob eine Suche ein Ergebnis lieferte, Anmeldung zur Liste). Umami verwendet keine Cookies. Ihre Suchbegriffe und Ihre E-Mail-Adresse werden nicht an das Statistiksystem übermittelt.",
@@ -441,6 +443,10 @@
       "flip": "Klappzahluhr",
       "words": "Uhr in Worten",
       "rings": "Ringuhr",
+      "wx-analog": "Analog mit Wetter",
+      "wx-digital": "Digital mit Wetter",
+      "wx-stack": "Analog, digital und Wetter",
+      "wx-forecast": "Digital mit Stundenprognose",
       "bigdate": "Großes Datum",
       "stack": "Analog mit digitaler Anzeige darunter"
     },
@@ -1522,7 +1528,6 @@
     "lead": "Die Fragen aller Seiten der Website, hier nach Themen gesammelt. Der Link unter jeder Überschrift öffnet die passende Seite.",
     "toc": "Themen",
     "open": "Zur Seite",
-    "more": "Häufige Fragen zu dieser Seite",
     "general": "Allgemein",
     "countdowns": "Countdown-Seiten",
     "calendar": "Kalender, Feiertage und Bayram-Feste"

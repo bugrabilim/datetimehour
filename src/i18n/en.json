@@ -192,11 +192,12 @@
     "upcomingAll": "See the yearly calendar",
     "upcomingNone": "No upcoming days found.",
     "globeLabel": "Rotating globe showing day and night, time zone meridians and the local time in major cities",
-    "globeCaption": "The lit side is day, the dark side is night. Lines are the 15° time zone meridians (with their UTC offset); the red line is the zero point, the Greenwich meridian (UTC). Each city shows its local time. Drag the globe to turn it; zoom with two fingers, the mouse wheel or the + and − buttons. A double tap zooms in or returns to the starting view.",
+    "globeCaption": "The lit side is day, the dark side is night. Lines are the 15° time zone meridians (with their UTC offset); the red line is the zero point, the Greenwich meridian (UTC). Each city shows its local time. Drag the globe to turn it; zoom with two fingers, the mouse wheel or the + and − buttons. As you zoom in, the local time of places in that area appears too. Zoom in further and it switches to the OpenStreetMap map (down to street level), labelling meridians and meridian segments with their longitude. Map tiles are downloaded from OpenStreetMap at that moment (© OpenStreetMap contributors); the globe texture is from Natural Earth (public domain). A double tap zooms in.",
     "globeTitle": "World globe",
     "globeInfo": "About the globe",
     "zoomIn": "Zoom in",
-    "zoomOut": "Zoom out"
+    "zoomOut": "Zoom out",
+    "resetView": "Whole world"
   },
   "world": {
     "title": "World Clock: Current Time in Cities | Saat Tarih",
@@ -265,7 +266,8 @@
         "ul": [
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
-          "**Weather:** On the weather page (or if you turn on the weather in full screen), the approximate coordinates of the province or location you chose (to about 1 km) are sent straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
+          "**Weather:** On the weather page (or if you turn on the weather in full screen or pick a clock style with weather), the approximate coordinates of the province or location you chose (to about 1 km) are sent straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
+          "**Map (globe):** If you zoom the globe on the home page beyond a certain level, map tiles are downloaded straight to your browser from OpenStreetMap's server (tile.openstreetmap.org); your IP address and the tile addresses of the area you are looking at then reach the OpenStreetMap Foundation. This request is not made when the page first opens or while the globe is zoomed out. The Saat Tarih server does not see them; OpenStreetMap's own privacy terms apply.",
           "**Email list form:** The email address you enter, the consent you give with the checkbox, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
           "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
           "**Visit statistics:** Umami, which runs on our own server, counts page views and a few actions (language change, theme change, whether a search found a result, joining the list). Umami does not use cookies. The words you type in search and your email address are not sent to the statistics system.",
@@ -414,6 +416,10 @@
       "flip": "Flip clock",
       "words": "Clock in words",
       "rings": "Ring clock",
+      "wx-analog": "Analogue with weather",
+      "wx-digital": "Digital with weather",
+      "wx-stack": "Analogue, digital and weather",
+      "wx-forecast": "Digital with hourly forecast",
       "bigdate": "Big date",
       "stack": "Analogue with digital below"
     },
@@ -1495,7 +1501,6 @@
     "lead": "Questions from every page of the site, gathered here by topic. The link under each heading opens the related page.",
     "toc": "Topics",
     "open": "Go to page",
-    "more": "Frequently asked questions about this page",
     "general": "General",
     "countdowns": "Countdown pages",
     "calendar": "Calendar, public holidays and Bayrams"

@@ -43,6 +43,73 @@
   var temp = function (t) { return Math.round(t) + "°"; };
   window.sthWeather = { load: load, info: info, compass: compass, temp: temp };
 
+  /* Hava durumlu saat modelleri: yalnız model seçiliyken (görünürken) Open-Meteo'ya gidilir */
+  function mk(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function wxPlace(stage) {
+    var lat = parseFloat(stage.getAttribute("data-wx-lat")), lon = parseFloat(stage.getAttribute("data-wx-lon"));
+    if (isFinite(lat) && isFinite(lon)) return { name: stage.getAttribute("data-wx-name") || "", lat: lat, lon: lon };
+    return window.sthPlace && window.sthPlace.saved();
+  }
+  function hourLabel(iso) {
+    var h = parseInt(iso.slice(11, 13), 10);
+    try { return new Intl.DateTimeFormat(S.locale, { hour: "numeric", hour12: !!(S.prefs && S.prefs.h12) }).format(new Date(2000, 0, 1, h)); } catch (e) { return iso.slice(11, 16); }
+  }
+  function fillBlock(box, place, d) {
+    var kind = box.getAttribute("data-wxc"), c = d.current, i = info(c.weather_code, c.is_day), x = X();
+    box.textContent = "";
+    var head = mk("p", "wxc-main");
+    var ic = mk("span", "wxc-icon", i.icon); ic.setAttribute("aria-hidden", "true");
+    head.appendChild(ic); head.appendChild(mk("span", "wxc-temp", temp(c.temperature_2m)));
+    box.appendChild(head);
+    box.appendChild(mk("p", "wxc-cond", i.label + (place.name ? " · " + place.name : "")));
+    if (kind === "card") {
+      var hl = d.daily ? temp(d.daily.temperature_2m_max[0]) + " / " + temp(d.daily.temperature_2m_min[0]) : "";
+      box.appendChild(mk("p", "wxc-more", x.feelsLike + " " + temp(c.apparent_temperature) + (hl ? " · " + hl : "")));
+      box.appendChild(mk("p", "wxc-more", x.humidity + " " + Math.round(c.relative_humidity_2m) + "% · " + x.wind + " " + Math.round(c.wind_speed_10m) + " km/h"));
+    } else if (kind === "hours" && d.hourly) {
+      var strip = mk("ul", "wxc-hours"), start = d.hourly.time.indexOf(c.time.slice(0, 13) + ":00");
+      if (start < 0) start = 0;
+      for (var k = 1; k <= 6 && start + k < d.hourly.time.length; k++) {
+        var j = start + k, hi = info(d.hourly.weather_code[j], d.hourly.is_day[j]), li = mk("li");
+        li.appendChild(mk("span", "wxc-h", hourLabel(d.hourly.time[j])));
+        var hic = mk("span", "wxc-hi", hi.icon); hic.setAttribute("aria-hidden", "true"); li.appendChild(hic);
+        li.appendChild(mk("span", "wxc-ht", temp(d.hourly.temperature_2m[j])));
+        strip.appendChild(li);
+      }
+      box.appendChild(strip);
+    }
+  }
+  function wxMessage(box, key, withLink) {
+    box.textContent = "";
+    var p = mk("p", "wxc-msg", (X()[key] || "") + (withLink ? " " : ""));
+    if (withLink) {
+      var src = doc.querySelector("[data-fs-weather-box]"), a = mk("a", null, X().fsLink);
+      a.href = src ? src.getAttribute("data-weather-url") : "#";
+      p.appendChild(a);
+    }
+    box.appendChild(p);
+  }
+  Array.prototype.forEach.call(doc.querySelectorAll(".stage"), function (stage) {
+    var slides = Array.prototype.slice.call(stage.querySelectorAll(".s-wx"));
+    if (!slides.length) return;
+    function refresh(slide) {
+      var box = slide.querySelector("[data-wxc]"), place = wxPlace(stage);
+      if (!box) return;
+      if (!place) { wxMessage(box, "fsNeed", true); return; }
+      load(place.lat, place.lon).then(function (d) { fillBlock(box, place, d); }).catch(function () { wxMessage(box, "fsFail", false); });
+    }
+    function sync(slide) {
+      var on = slide.getAttribute("aria-hidden") === "false";
+      if (!on) { clearInterval(slide._wxt); slide._wxt = 0; return; }
+      refresh(slide);
+      if (!slide._wxt) slide._wxt = setInterval(function () { refresh(slide); }, 10 * 60 * 1000);
+    }
+    slides.forEach(function (slide) {
+      new MutationObserver(function () { sync(slide); }).observe(slide, { attributes: true, attributeFilter: ["aria-hidden"] });
+      sync(slide);
+    });
+  });
+
   /* Tam ekran: saatin yanında hava durumu (isteğe bağlı, varsayılan kapalı) */
   var box = doc.querySelector("[data-fs-weather-box]"), btn = doc.querySelector("[data-fs-weather]");
   if (!box || !btn) return;
