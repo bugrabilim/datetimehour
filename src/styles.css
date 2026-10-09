@@ -460,7 +460,7 @@ tbody th a { color: var(--text); }
 .prose h2 { margin-top: 2rem; }
 
 /* E-posta listesi formu */
-.list-box { max-width: 26rem; padding: 0; }
+.list-box { flex: 1 1 18rem; max-width: 26rem; padding: 0; }
 .list-box h2 { font-size: 0.95rem; margin: 0 0 0.3rem; color: var(--muted); }
 .list-box form { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; align-items: start; }
 .list-box .field { grid-column: 1; grid-row: 1; margin: 0; }
@@ -509,7 +509,8 @@ dialog.search::backdrop { background: rgb(10 12 16 / 0.55); }
 .footer-grid { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; justify-content: space-between; }
 .footer-nav { display: flex; gap: 0.5rem 1.25rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
 .footer-nav a { color: var(--text); }
-.footer-sign { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; margin-top: 1rem; color: var(--muted); font-size: 0.88rem; }
+.footer-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
+.footer-sign { display: flex; align-items: center; margin-inline-start: auto; }
 .footer-sign p { margin: 0; }
 .rozet { display: inline-block; line-height: 0; }
 .rozet img { height: 28px; width: auto; }
