@@ -34,7 +34,8 @@
     "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
     "logoAlt": "Saat Tarih ana sayfa",
     "calendar": "Takvim",
-    "tools": "Araçlar"
+    "tools": "Araçlar",
+    "langMenu": "Dil seçimi"
   },
   "client": {
     "format24": "24 saat",
@@ -84,7 +85,8 @@
       "join": " ",
       "oh": "sıfır",
       "sentence": "Saat {h} {m}",
-      "oclock": "Saat tam {h}"
+      "oclock": "Saat tam {h}",
+      "unitFirst": false
     },
     "syncLabel": "Sunucu saati",
     "syncPending": "Sunucu saatiyle senkronize ediliyor…",
@@ -470,7 +472,10 @@
     "hubName": "Yıllık takvim",
     "hubDesc": "Resmi tatiller, bayram ve arife günleri, kandiller ve Ramazan ayı.",
     "projected": "Bu yılın dini gün tarihleri Diyanet'in uzun vadeli takvimine göredir; yıl yaklaşırken değişebilir.",
-    "schoolNote": "Okul takvimi MEB'in 2026-2027 çalışma takvimine göredir; il milli eğitim müdürlükleri yerel farklılık yapabilir."
+    "schoolNote": "Okul takvimi MEB'in 2026-2027 çalışma takvimine göredir; il milli eğitim müdürlükleri yerel farklılık yapabilir.",
+    "fullFmt": "{day} {month} {year}, {weekday}",
+    "shortFmt": "{day} {month}",
+    "dateFmt": "{day} {month} {year}"
   },
   "tools": {
     "hub": {
