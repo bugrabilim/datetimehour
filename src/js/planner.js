@@ -151,4 +151,34 @@
     render();
     S.track("arac", { arac: "planner" });
   }
+
+  /* ---------- Gömme kodu üreteci ---------- */
+  var eg = doc.querySelector("[data-embedgen]");
+  if (eg) {
+    var E = S.T.eg || {};
+    var g = function (n) { return eg.querySelector("[data-eg-" + n + "]"); };
+    var fr = g("frame"), codeEl = g("code"), st = g("status");
+    var build = function () {
+      var qs = new URLSearchParams();
+      qs.set("m", g("model").value);
+      if (g("city").value) qs.set("c", g("city").value);
+      if (g("theme").value !== "auto") qs.set("theme", g("theme").value);
+      if (!g("sec").checked) qs.set("sec", "0");
+      if (g("h12").checked) qs.set("h12", "1");
+      var w = Math.min(1200, Math.max(160, parseInt(g("w").value, 10) || 360)), h = Math.min(1200, Math.max(160, parseInt(g("h").value, 10) || 360));
+      var rel = E.path[g("lang").value] + "?" + qs.toString();
+      fr.setAttribute("width", w); fr.setAttribute("height", h); fr.setAttribute("src", rel);
+      codeEl.value = '<iframe src="' + location.origin + rel + '" width="' + w + '" height="' + h + '" style="border:0;max-width:100%" title="' + E.frameTitle + '" loading="lazy"></iframe>';
+    };
+    var touchedH = false;
+    g("h").addEventListener("input", function () { touchedH = true; });
+    g("model").addEventListener("change", function () { if (!touchedH) g("h").value = /^calendar/.test(g("model").value) ? 460 : 360; });
+    ["model", "city", "theme", "lang", "w", "h", "sec", "h12"].forEach(function (n) { g(n).addEventListener("input", build); g(n).addEventListener("change", build); });
+    g("copy").addEventListener("click", function () {
+      var done = function () { st.textContent = E.copied; setTimeout(function () { st.textContent = ""; }, 2500); };
+      try { navigator.clipboard.writeText(codeEl.value).then(done, function () { codeEl.select(); }); } catch (e) { codeEl.select(); }
+    });
+    build();
+    S.track("arac", { arac: "embed" });
+  }
 })();

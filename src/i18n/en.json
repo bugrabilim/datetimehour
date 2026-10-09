@@ -519,6 +519,14 @@
         "diff": {
           "name": "Time difference",
           "desc": "The time difference between Istanbul and cities worldwide."
+        },
+        "datecalc": {
+          "name": "Date calculator",
+          "desc": "Days and working days between dates, add to a date, age."
+        },
+        "embed": {
+          "name": "Clock widget",
+          "desc": "Embed a free clock on your site (iframe)."
         }
       },
       "infoHeading": "Information pages"
@@ -996,5 +1004,103 @@
         "dat": "report card day"
       }
     }
+  },
+  "datecalc": {
+    "title": "Date Calculator: Days, Working Days, Age | Saat Tarih",
+    "description": "How many days and working days between two dates? Add or subtract days, months or years from a date and calculate age. Turkish public holidays are taken into account.",
+    "h1": "Date calculator",
+    "lead": "Calculate the days, weeks and working days between two dates; add days, months, years or working days to a date; and find your age and next birthday. Working-day counts leave out weekends and Turkish public holidays.",
+    "diffHeading": "Between two dates",
+    "startLabel": "Start date",
+    "endLabel": "End date",
+    "diffDays": "Difference: {n} days",
+    "diffWeeks": "That is {w} weeks {d} days",
+    "diffYmd": "{y} years, {m} months, {d} days",
+    "diffWork": "Working days (start included, end excluded): {n}",
+    "diffNote": "Working days leave out weekends and public holidays; bayram eve half days count as 0.5.",
+    "addHeading": "Add to or subtract from a date",
+    "amountLabel": "Amount",
+    "unitLabel": "Unit",
+    "units": {
+      "days": "Days",
+      "weeks": "Weeks",
+      "months": "Months",
+      "years": "Years",
+      "workdays": "Working days"
+    },
+    "addResult": "Result: {date}",
+    "addHint": "Enter a negative number to subtract.",
+    "ageHeading": "Age calculator",
+    "birthLabel": "Date of birth",
+    "ageResult": "{y} years, {m} months, {d} days old",
+    "ageDays": "Total days lived: {n}",
+    "ageNext": "Next birthday: {date} (in {n} days)",
+    "ageToday": "Today is your birthday!",
+    "invalid": "Enter a valid date.",
+    "pick": "Pick the dates.",
+    "range": "Holiday data covers {from}–{to}; outside that range only weekends are left out.",
+    "faqHeading": "Frequently asked questions about date calculations",
+    "faq": [
+      {
+        "q": "How are the days between two dates calculated?",
+        "a": "You subtract the start date from the end date; the calculator does this automatically and also shows the result in weeks and in years, months and days."
+      },
+      {
+        "q": "Do working days exclude public holidays?",
+        "a": "The working-day count leaves out weekends and Turkish public holidays; bayram eve half days count as 0.5 working days. Holiday data is the 2026–2031 data from our calendar pages."
+      },
+      {
+        "q": "How is age calculated?",
+        "a": "The completed years, months and days from the date of birth to today are counted. The calculator also shows the total days lived and the days until the next birthday."
+      },
+      {
+        "q": "How is the end of the month handled when adding months?",
+        "a": "If the target month does not have that day, its last day is used; for example adding 1 month to 31 January gives the last day of February."
+      }
+    ]
+  },
+  "embedgen": {
+    "title": "Clock Widget: Embed a Free Clock on Your Site | Saat Tarih",
+    "description": "Embed a free clock on your site: 13 clock styles, city choice, light or dark theme. Copy the ready-made iframe code and paste it in.",
+    "h1": "Embed a clock on your site",
+    "lead": "Pick the style, city and theme, then copy the ready-made iframe code and paste it into your site. The widget has no ads, uses no cookies and runs on the server-synced clock.",
+    "modelLabel": "Clock style",
+    "cityLabel": "City",
+    "cityLocal": "The visitor's location",
+    "themeLabel": "Theme",
+    "themeAuto": "Automatic (visitor's preference)",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "langLabel": "Language",
+    "secLabel": "Show seconds",
+    "h12Label": "12-hour format",
+    "widthLabel": "Width (px)",
+    "heightLabel": "Height (px)",
+    "previewHeading": "Preview",
+    "codeHeading": "Embed code",
+    "copy": "Copy code",
+    "copied": "Code copied",
+    "note": "A link to Saat Tarih and the Bumba signature appear under the widget; please leave them in place.",
+    "previewTitle": "Saat Tarih widget preview",
+    "frameTitle": "Saat Tarih clock widget",
+    "faqHeading": "Frequently asked questions about the clock widget",
+    "faq": [
+      {
+        "q": "Is the widget free?",
+        "a": "Yes. The widget is free and has no ads. A link to Saat Tarih and the Bumba signature appear under it."
+      },
+      {
+        "q": "How do I add it to my site?",
+        "a": "Pick the style and city, copy the generated iframe code and paste it into your page's HTML. You can change the width and height to suit your layout."
+      },
+      {
+        "q": "Does the widget collect my visitors' data?",
+        "a": "The widget sets no cookies and collects no personal data. It sends a few small requests to the server to show the correct time; page views are counted in cookie-free, anonymous statistics."
+      }
+    ],
+    "sizeNote": "Calendar styles need a height of at least 460 px; the other styles fit comfortably in 360 px."
+  },
+  "embed": {
+    "link": "Saat Tarih"
   }
 }
