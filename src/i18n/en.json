@@ -34,7 +34,8 @@
     "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
     "logoAlt": "Saat Tarih home",
     "calendar": "Calendar",
-    "tools": "Tools"
+    "tools": "Tools",
+    "langMenu": "Language"
   },
   "client": {
     "format24": "24-hour",
@@ -84,7 +85,8 @@
       "join": "-",
       "oh": "oh",
       "sentence": "It's {h} {m}",
-      "oclock": "It's {h} o'clock"
+      "oclock": "It's {h} o'clock",
+      "unitFirst": false
     },
     "syncLabel": "Server time",
     "syncPending": "Syncing with the server clock…",
@@ -329,7 +331,7 @@
     "pages": "Pages",
     "cities": "City pages",
     "about": "About",
-    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in Turkish and English. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in Turkish, English, German, Azerbaijani and Arabic. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Clock styles",
@@ -470,7 +472,10 @@
     "hubName": "Yearly calendar",
     "hubDesc": "Public holidays, bayram and eve days, kandil nights and the month of Ramadan.",
     "projected": "This year's religious dates follow the Diyanet long-term calendar and may change as the year approaches.",
-    "schoolNote": "The school calendar follows the Ministry of National Education's 2026-2027 working calendar; provincial directorates may differ locally."
+    "schoolNote": "The school calendar follows the Ministry of National Education's 2026-2027 working calendar; provincial directorates may differ locally.",
+    "fullFmt": "{weekday}, {day} {month} {year}",
+    "shortFmt": "{day} {month}",
+    "dateFmt": "{day} {month} {year}"
   },
   "tools": {
     "hub": {

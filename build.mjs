@@ -14,21 +14,27 @@ const cfg = readJson("site.config.json");
 const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
 const HOST = new URL(ORIGIN).host;
 const UMAMI_ID = process.env.UMAMI_ID ?? cfg.umamiId ?? "";
-const LANGS = ["tr", "en"];
-const I = { tr: readJson("src/i18n/tr.json"), en: readJson("src/i18n/en.json") };
+/* Diller: tr (varsayılan) ve en zorunlu; diğerleri src/i18n/<dil>.json varsa derlenir. */
+const ALL_LANGS = ["tr", "en", "de", "az", "ar"];
+const LANGS = ALL_LANGS.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
+const I = Object.fromEntries(LANGS.map((l) => [l, readJson(`src/i18n/${l}.json`)]));
 const CITIES = readJson("src/data/cities.json");
-const OTHER = { tr: "en", en: "tr" };
+const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية" };
+const DIR = (l) => (l === "ar" ? "rtl" : "ltr");
+const ARROW = (l) => (l === "ar" ? "←" : "→");
+/* Türkçe dışındaki dillerin adresleri İngilizce tablodan türetilir: /en/ → /<dil>/ */
+const deriveRoutes = (o, l) =>
+  Object.fromEntries(Object.entries(o).map(([k, v]) => [k, v.replace(/^\/en\//, `/${l}/`).replace(/^\/embed\/en\//, `/embed/${l}/`)]));
+const extendRoutes = (table) => {
+  for (const l of LANGS) Object.assign(ROUTES[l], table[l] || deriveRoutes(table.en, l));
+};
 
 const arm = cfg.arm;
 const BADGE_W = { games: 185, suites: 177, life: 164, ventures: 205 }[arm];
 
-const MONTHS = {
-  tr: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
-  en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-};
 function updatedText(lang) {
   const [y, m, d] = cfg.updated.split("-").map(Number);
-  return `${d} ${MONTHS[lang][m - 1]} ${y}`;
+  return tpl(I[lang].calendar.dateFmt, { day: d, month: I[lang].calendar.months[m - 1], year: y });
 }
 
 /* ---------- yardımcılar ---------- */
@@ -55,6 +61,7 @@ const ROUTES = {
   tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", calendar: "/takvim/", tools: "/araclar/", week: "/hafta-numarasi/", today: "/bugun-ayin-kaci/", tz: "/turkiye-saat-dilimi/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
   en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", calendar: "/en/calendar/", tools: "/en/tools/", week: "/en/week-number/", today: "/en/todays-date/", tz: "/en/turkey-time-zone/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
 };
+for (const l of LANGS) if (!ROUTES[l]) ROUTES[l] = deriveRoutes(ROUTES.en, l);
 const cityPath = (lang, c) => `${ROUTES[lang].world}${c[lang].slug}/`;
 
 /* ---------- varlıklar (sürüm damgalı) ---------- */
@@ -224,7 +231,7 @@ function listForm(lang, pagePath) {
   <p class="form-msg err" id="liste-hata" role="alert">${esc(l.err)}</p>
   <form action="https://bumbagroup.com/api/liste/katil" method="post">
     <input type="hidden" name="site" value="${esc(cfg.listKey)}">
-    <input type="hidden" name="dil" value="${lang}">
+    <input type="hidden" name="dil" value="${lang === "tr" ? "tr" : "en"}">
     <input type="hidden" name="kaynak" value="${esc(url)}">
     <input type="hidden" name="donus" value="${esc(url)}">
     <div class="field">
@@ -271,9 +278,9 @@ function layout(p) {
   const u = t.ui;
   const isError = p.error;
   const canonical = p.canonicalPath ? abs(p.canonicalPath) : p.path ? abs(p.path) : "";
-  const alt = p.alt; // { tr: path, en: path }
+  const alt = p.alt; // { tr: path, en: path, ... }
   const alternates = alt && !p.noHreflang
-    ? `<link rel="alternate" hreflang="tr" href="${abs(alt.tr)}">\n<link rel="alternate" hreflang="en" href="${abs(alt.en)}">\n<link rel="alternate" hreflang="x-default" href="${abs(alt.tr)}">`
+    ? [...LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(alt[l])}">`), `<link rel="alternate" hreflang="x-default" href="${abs(alt.tr)}">`].join("\n")
     : "";
   const clientT = {
     ...t.client,
@@ -298,7 +305,7 @@ function layout(p) {
 <meta property="og:description" content="${esc(p.description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:locale" content="${t.ogLocale}">
-<meta property="og:locale:alternate" content="${I[OTHER[lang]].ogLocale}">
+${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternate" content="${I[l].ogLocale}">`).join("\n")}
 <meta property="og:image" content="${abs("/og.png")}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -314,12 +321,14 @@ function layout(p) {
 
   const navLink = (key, label) =>
     `<a href="${key === "calendar" ? yearPath(lang, BUILD_YEAR) : ROUTES[lang][key]}"${p.nav === key ? ' aria-current="page"' : ""}>${esc(label)}</a>`;
-  const langSwitch = isError
-    ? `<a class="lang-link" href="/" hreflang="tr" lang="tr">TR</a><a class="lang-link" href="/en/" hreflang="en" lang="en">EN</a>`
-    : `<a class="lang-link" href="${alt[OTHER[lang]]}" hreflang="${OTHER[lang]}" lang="${OTHER[lang]}" data-lang-switch aria-label="${esc(u.langSwitchLabel)}">${esc(u.langSwitch)}</a>`;
+  const langItems = LANGS.map((l) => {
+    const href = isError ? ROUTES[l].home : alt[l];
+    return `<li><a href="${href}" hreflang="${l}" lang="${l}" data-lang-switch${l === lang ? ' aria-current="true"' : ""}>${esc(LANG_NAMES[l])}</a></li>`;
+  }).join("");
+  const langSwitch = `<details class="lang-menu"><summary class="lang-link" aria-label="${esc(u.langMenu)}"><span aria-hidden="true">${lang.toUpperCase()}</span></summary><ul>${langItems}</ul></details>`;
 
   return `<!doctype html>
-<html lang="${lang}"${p.home ? ' data-home="1"' : ""}>
+<html lang="${lang}" dir="${DIR(lang)}"${p.home ? ' data-home="1"' : ""}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -405,7 +414,7 @@ function baseLd(lang) {
       url: ORIGIN + "/",
       name: cfg.name,
       description: I[lang].site.description,
-      inLanguage: ["tr", "en"],
+      inLanguage: LANGS,
       publisher: { "@id": `${ORIGIN}/#org` },
     },
   ];
@@ -431,7 +440,7 @@ const webPageLd = (lang, pagePath, title, description) => ({
 
 /* ---------- sayfalar ---------- */
 const pages = []; // { lang, path, html, indexable, alt }
-const searchEntries = { tr: [], en: [] };
+const searchEntries = Object.fromEntries(LANGS.map((l) => [l, []]));
 
 function buildHome(lang) {
   const t = I[lang];
@@ -452,7 +461,7 @@ function buildHome(lang) {
     <h2 id="upcoming-h">${esc(h.upcomingHeading)}</h2>
     <p class="meta">${esc(h.upcomingLead)}</p>
     <ul class="upcoming" data-upcoming></ul>
-    <p><a href="${yearPath(lang, BUILD_YEAR)}">${esc(h.upcomingAll)} →</a></p>
+    <p><a href="${yearPath(lang, BUILD_YEAR)}">${esc(h.upcomingAll)} ${ARROW(lang)}</a></p>
   </div>
 </section>
 <section class="section" id="facts" aria-labelledby="facts-h">
@@ -478,7 +487,7 @@ function buildHome(lang) {
     <h2 id="world-h">${esc(h.worldHeading)}</h2>
     <p class="meta">${esc(h.worldLead)}</p>
     <ul class="city-grid">${featured.map((c) => cityCard(lang, c)).join("")}</ul>
-    <p><a href="${ROUTES[lang].world}">${esc(h.worldAll)} →</a></p>
+    <p><a href="${ROUTES[lang].world}">${esc(h.worldAll)} ${ARROW(lang)}</a></p>
   </div>
 </section>
 <section class="section" id="faq" aria-labelledby="faq-h">
@@ -595,7 +604,7 @@ function buildCity(lang, c) {
   <div class="wrap">
     <h2 id="other-h">${esc(ct.otherHeading)}</h2>
     <ul class="city-grid">${others.map((o) => cityCard(lang, o)).join("")}</ul>
-    <p><a href="${ROUTES[lang].world}">${esc(t.home.worldAll)} →</a></p>
+    <p><a href="${ROUTES[lang].world}">${esc(t.home.worldAll)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), faqLd(faq)];
@@ -603,7 +612,7 @@ function buildCity(lang, c) {
     t: n.name,
     u: pagePath,
     d: description,
-    k: [n.name, n.loc, n.country, c.tz, I.tr.ui.world, I.en.ui.world, "saat kaç time"].filter(Boolean).join(" "),
+    k: [n.name, n.loc, n.country, c.tz, ...LANGS.map((l) => I[l].ui.world), "saat kaç time"].filter(Boolean).join(" "),
   });
   return { lang, key: "city:" + c.key, path: pagePath, title, description, body, ld, nav: "world" };
 }
@@ -892,7 +901,7 @@ function buildTool(lang, key) {
   <div class="wrap">
     <h2 id="related-h">${esc(tt.common.relatedHeading)}</h2>
     <ul class="city-grid">${related}</ul>
-    <p><a href="${ROUTES[lang].tools}">${esc(tt.common.toolsHub)} →</a></p>
+    <p><a href="${ROUTES[lang].tools}">${esc(tt.common.toolsHub)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
   const ld = [
@@ -914,7 +923,7 @@ function buildToolsHub(lang) {
     { name: t.ui.home, path: ROUTES[lang].home },
     { name: h.h1, path: pagePath },
   ];
-  const card = (href, name, desc) => `<li class="city-card"><a href="${href}"><span class="city-name">${esc(name)}</span><span class="city-diff">${esc(desc)}</span><span class="card-open">${esc(h.open)} →</span></a></li>`;
+  const card = (href, name, desc) => `<li class="city-card"><a href="${href}"><span class="city-name">${esc(name)}</span><span class="city-diff">${esc(desc)}</span><span class="card-open">${esc(h.open)} ${ARROW(lang)}</span></a></li>`;
   const cards = TOOL_KEYS.map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + ["converter", "planner", "datecalc", "embed", "diff"].map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + card(yearPath(lang, BUILD_YEAR), t.calendar.hubName, t.calendar.hubDesc) + card(ROUTES[lang].world, t.ui.world, t.world.description.split(". ")[0] + ".");
   const body = `<section class="hero">
   <div class="wrap">
@@ -968,7 +977,7 @@ ${body.sections}
   <div class="wrap">
     <h2 id="related-h">${esc(t.tools.common.relatedHeading)}</h2>
     <ul class="city-grid">${related}</ul>
-    <p><a href="${ROUTES[lang].tools}">${esc(t.tools.common.toolsHub)} →</a></p>
+    <p><a href="${ROUTES[lang].tools}">${esc(t.tools.common.toolsHub)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), faqLd(faqItems)];
@@ -1064,7 +1073,7 @@ const ROUTES_EXTRA = {
   tr: { diff: "/saat-farki/", converter: "/saat-cevirici/", planner: "/toplanti-planlayici/" },
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
-for (const l of LANGS) Object.assign(ROUTES[l], ROUTES_EXTRA[l]);
+extendRoutes(ROUTES_EXTRA);
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1138,7 +1147,7 @@ function buildPair(lang, c) {
     <h2 id="conv-h">${esc(tpl(p.convHeading, v))}</h2>
     <div class="table-wrap"><table class="events-table" data-pair-table data-a="${HOME_CITY.tz}" data-b="${c.tz}" data-next="${esc(p.nextDay)}" data-prev="${esc(p.prevDay)}"><caption>${esc(tpl(p.convCaption, v))}</caption><thead><tr><th scope="col">${esc(tpl(p.colA, v))}</th><th scope="col">${esc(tpl(p.colB, v))}</th></tr></thead><tbody>${rows}</tbody></table></div>
     <p class="meta">${esc(p.convNote)}</p>
-    <p><a href="${ROUTES[lang].converter}">${esc(p.converterLink)} →</a> · <a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></p>
+    <p><a href="${ROUTES[lang].converter}">${esc(p.converterLink)} ${ARROW(lang)}</a> · <a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></p>
   </div>
 </section>`,
   };
@@ -1214,7 +1223,7 @@ const CDP = [
   { key: "semester", keys: ["semester"], tr: "yariyil-tatili", en: "mid-year-break", school: true },
   { key: "karne", keys: ["term1End", "schoolEnd"], tr: "karne-gunu", en: "report-card-day", school: true },
 ];
-const cdpPath = (lang, x) => `${ROUTES[lang].countdown}${x[lang]}/`;
+const cdpPath = (lang, x) => `${ROUTES[lang].countdown}${x[lang] || x.en}/`;
 
 function buildCdp(lang, x) {
   const t = I[lang];
@@ -1259,7 +1268,7 @@ function buildCdp(lang, x) {
     <div class="table-wrap"><table class="events-table"><caption>${esc(tpl(s.yearsCaption, v))}</caption><thead><tr><th scope="col">${esc(s.colYear)}</th><th scope="col">${esc(s.colDate)}</th></tr></thead><tbody>${rowsHtml}</tbody></table></div>
     ${x.school ? `<p class="meta">${esc(s.school)}</p>` : ""}
     <h2>${esc(s.customHeading)}</h2>
-    <p>${esc(s.customText)} <a href="${ROUTES[lang].countdown}">${esc(s.customLink)} →</a></p>
+    <p>${esc(s.customText)} <a href="${ROUTES[lang].countdown}">${esc(s.customLink)} ${ARROW(lang)}</a></p>
     <h2>${esc(s.listHeading)}</h2>
     <ul class="city-grid">${others}</ul>
   </div>
@@ -1273,7 +1282,7 @@ const ROUTES_C = {
   tr: { datecalc: "/tarih-hesaplama/", embed: "/gomme/", embedFrame: "/embed/tr/" },
   en: { datecalc: "/en/date-calculator/", embed: "/en/embed/", embedFrame: "/embed/en/" },
 };
-for (const l of LANGS) Object.assign(ROUTES[l], ROUTES_C[l]);
+extendRoutes(ROUTES_C);
 
 function buildDateCalc(lang) {
   const t = I[lang];
@@ -1325,7 +1334,7 @@ function buildEmbedGen(lang) {
         <div class="field"><label for="eg-m">${esc(s.modelLabel)}</label><select id="eg-m" data-eg-model>${modelOpts}</select></div>
         <div class="field"><label for="eg-c">${esc(s.cityLabel)}</label><select id="eg-c" data-eg-city>${cityOpts}</select></div>
         <div class="field"><label for="eg-t">${esc(s.themeLabel)}</label><select id="eg-t" data-eg-theme><option value="auto">${esc(s.themeAuto)}</option><option value="light">${esc(s.themeLight)}</option><option value="dark">${esc(s.themeDark)}</option></select></div>
-        <div class="field"><label for="eg-l">${esc(s.langLabel)}</label><select id="eg-l" data-eg-lang><option value="tr"${lang === "tr" ? " selected" : ""}>Türkçe</option><option value="en"${lang === "en" ? " selected" : ""}>English</option></select></div>
+        <div class="field"><label for="eg-l">${esc(s.langLabel)}</label><select id="eg-l" data-eg-lang>${LANGS.map((l) => `<option value="${l}"${lang === l ? " selected" : ""}>${LANG_NAMES[l]}</option>`).join("")}</select></div>
       </div>
       <div class="inputs-row">
         <div class="field"><label for="eg-w">${esc(s.widthLabel)}</label><input id="eg-w" type="number" min="160" max="1200" value="360" data-eg-w></div>
@@ -1344,7 +1353,7 @@ function buildEmbedGen(lang) {
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`,
   };
-  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: { tr: ROUTES.tr.embedFrame, en: ROUTES.en.embedFrame } } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
+  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])) } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
 }
 
 /* Gömülü widget sayfası: yalnız seçilen saat modeli, başlık ve alt bilgi (indekslenmez) */
@@ -1354,7 +1363,7 @@ function embedFramePage(lang) {
   const umami = UMAMI_ID ? `<script defer src="https://istatistik.bumba.tr/script.js" data-website-id="${esc(UMAMI_ID)}" data-domains="${esc(HOST)}"></script>` : "";
   const pageCfg = { locale: t.locale, t: { ...t.client }, cities: clientCities(lang), cal: { months: t.calendar.months, weekdays: t.calendar.weekdays } };
   return `<!doctype html>
-<html lang="${lang}" data-embed="1">
+<html lang="${lang}" dir="${DIR(lang)}" data-embed="1">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1407,8 +1416,7 @@ for (const lang of LANGS) write(path.join(ROUTES[lang].embedFrame, "index.html")
 
 /* ---------- hata sayfaları (iki dil bir arada) ---------- */
 function errorPage(kind) {
-  const trs = I.tr[kind], ens = I.en[kind];
-  const block = (lang, s) => `<section class="center-page" lang="${lang}">
+  const block = (lang, s) => `<section class="center-page" lang="${lang}" dir="${DIR(lang)}">
   <div class="wrap">
     <h1>${esc(s.h1)}</h1>
     <p class="lead">${esc(s.p)}</p>
@@ -1417,9 +1425,9 @@ function errorPage(kind) {
 </section>`;
   return layout({
     lang: "tr",
-    title: `${trs.title.split(" | ")[0]} / ${ens.title}`,
-    description: trs.h1,
-    body: block("tr", trs) + block("en", ens),
+    title: `${I.tr[kind].title.split(" | ")[0]} / ${I.en[kind].title}`,
+    description: I.tr[kind].h1,
+    body: LANGS.map((l) => block(l, I[l][kind])).join(""),
     noindex: true,
     error: true,
     path: "",
@@ -1439,8 +1447,7 @@ ${indexable
     return `  <url>
     <loc>${abs(p.path)}</loc>
     <lastmod>${cfg.updated}</lastmod>
-    <xhtml:link rel="alternate" hreflang="tr" href="${abs(a.tr)}"/>
-    <xhtml:link rel="alternate" hreflang="en" href="${abs(a.en)}"/>
+${LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${abs(a[l])}"/>`).join("\n")}
     <xhtml:link rel="alternate" hreflang="x-default" href="${abs(a.tr)}"/>
   </url>`;
   })
@@ -1467,7 +1474,7 @@ const llmsBlock = (lang) => {
   const cities = mine.filter((p) => p.key.startsWith("city:"));
   return `> ${t.llms.summary}\n\n## ${t.llms.pages}\n${[...main, ...years].map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.llms.cities}\n${cities.map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.llms.about}\n${t.llms.aboutText}\n`;
 };
-write("llms.txt", `# ${cfg.name}\n\n${llmsBlock("tr")}\n---\n\n${llmsBlock("en")}`);
+write("llms.txt", `# ${cfg.name}\n\n${LANGS.map(llmsBlock).join("\n---\n\n")}`);
 
 write(
   "site.webmanifest",

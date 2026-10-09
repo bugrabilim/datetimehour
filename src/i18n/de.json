@@ -1,0 +1,1138 @@
+{
+  "lang": "de",
+  "locale": "de-DE",
+  "ogLocale": "de_DE",
+  "langName": "Deutsch",
+  "site": {
+    "name": "Saat Tarih",
+    "tagline": "Live-Uhr, heutiges Datum und Weltzeit",
+    "description": "Saat Tarih ist eine kostenlose Website, die Ihre Ortszeit, das heutige Datum, die Kalenderwoche und die Uhrzeit in Städten weltweit live anzeigt."
+  },
+  "ui": {
+    "skip": "Zum Inhalt springen",
+    "home": "Startseite",
+    "world": "Weltzeituhr",
+    "privacy": "Datenschutz und Cookies",
+    "mainNav": "Hauptnavigation",
+    "footerNav": "Fußzeilennavigation",
+    "langSwitch": "Deutsch",
+    "langSwitchLabel": "Auf Deutsch wechseln",
+    "themeToggle": "Zwischen hellem und dunklem Modus wechseln",
+    "searchOpen": "Website durchsuchen",
+    "searchTitle": "Website durchsuchen",
+    "searchLabel": "Suchbegriff",
+    "searchPlaceholder": "Stadt, Seite oder Thema eingeben …",
+    "searchClose": "Suche schließen",
+    "searchEmpty": "Keine Ergebnisse gefunden. Versuchen Sie es mit einem anderen Wort, etwa einem Städtenamen oder „Woche“.",
+    "searchHint": "Mit ↑ ↓ wechseln, mit Enter öffnen, mit Esc schließen.",
+    "searchCount": "{n} Ergebnisse",
+    "searchResults": "Suchergebnisse",
+    "searchError": "Der Suchindex konnte nicht geladen werden. Bitte laden Sie die Seite neu und versuchen Sie es noch einmal.",
+    "breadcrumb": "Brotkrümelnavigation",
+    "updated": "Zuletzt aktualisiert",
+    "noscript": "Für die Live-Uhr muss JavaScript in Ihrem Browser aktiviert sein.",
+    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "logoAlt": "Saat Tarih Startseite",
+    "calendar": "Kalender",
+    "tools": "Tools",
+    "langMenu": "Sprache"
+  },
+  "client": {
+    "format24": "24 Stunden",
+    "format12": "12 Stunden",
+    "seconds": "Sekunden",
+    "diffSame": "Gleiche Uhrzeit wie bei Ihnen",
+    "diffAhead": "{d} vor Ihrer Zeit",
+    "diffBehind": "{d} hinter Ihrer Zeit",
+    "hourShort": "Std.",
+    "minuteShort": "Min.",
+    "yourZone": "Ihre Zeitzone",
+    "yearDone": "{p} % des Jahres sind vergangen",
+    "fullscreen": "Vollbild",
+    "exitFullscreen": "Vollbild beenden",
+    "weekShort": "KW",
+    "words": {
+      "units": [
+        "null",
+        "eins",
+        "zwei",
+        "drei",
+        "vier",
+        "fünf",
+        "sechs",
+        "sieben",
+        "acht",
+        "neun",
+        "zehn",
+        "elf",
+        "zwölf",
+        "dreizehn",
+        "vierzehn",
+        "fünfzehn",
+        "sechzehn",
+        "siebzehn",
+        "achtzehn",
+        "neunzehn"
+      ],
+      "tens": [
+        "",
+        "",
+        "zwanzig",
+        "dreißig",
+        "vierzig",
+        "fünfzig"
+      ],
+      "join": "und",
+      "oh": "null",
+      "sentence": "Es ist {h} Uhr {m}",
+      "oclock": "Es ist {h} Uhr",
+      "unitFirst": true,
+      "hours": [
+        "null",
+        "ein",
+        "zwei",
+        "drei",
+        "vier",
+        "fünf",
+        "sechs",
+        "sieben",
+        "acht",
+        "neun",
+        "zehn",
+        "elf",
+        "zwölf",
+        "dreizehn",
+        "vierzehn",
+        "fünfzehn",
+        "sechzehn",
+        "siebzehn",
+        "achtzehn",
+        "neunzehn",
+        "zwanzig",
+        "einundzwanzig",
+        "zweiundzwanzig",
+        "dreiundzwanzig"
+      ],
+      "one": "ein"
+    },
+    "syncLabel": "Serverzeit",
+    "syncPending": "Abgleich mit der Serveruhr …",
+    "syncOk": "Läuft mit Serverzeit (±{ms} ms). Ihre Geräteuhr geht richtig.",
+    "syncAhead": "Läuft mit Serverzeit. Ihre Geräteuhr geht {s} s vor.",
+    "syncBehind": "Läuft mit Serverzeit. Ihre Geräteuhr geht {s} s nach.",
+    "syncOff": "Es wird Ihre Geräteuhr verwendet.",
+    "syncFail": "Die Serveruhr war nicht erreichbar; es wird Ihre Geräteuhr verwendet.",
+    "daysLeft": "noch {n} Tage",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "passed": "Vorbei",
+    "upcomingNone": "Keine bevorstehenden Tage gefunden.",
+    "refAhead": "{d} voraus (gegenüber {ref})",
+    "refBehind": "{d} zurück (gegenüber {ref})",
+    "refSame": "Gleiche Uhrzeit (wie {ref})",
+    "weekFound": "{date} liegt in Kalenderwoche {n} des ISO-Jahres {y}.",
+    "pickDate": "Wählen Sie ein Datum.",
+    "daysShort": "Tage"
+  },
+  "home": {
+    "title": "Wie spät ist es? Live-Uhr und heutiges Datum | Saat Tarih",
+    "description": "Wie spät ist es jetzt und welches Datum ist heute? Ortszeit live, Datum, Kalenderwoche und die Uhrzeit in Städten weltweit auf einer Seite.",
+    "h1": "Wie spät ist es jetzt?",
+    "lead": "Saat Tarih ist eine kostenlose Website, die Ihre Ortszeit, das heutige Datum, die Kalenderwoche und die Uhrzeit in Städten weltweit live anzeigt. Für alle und ohne Anmeldung. Wischen Sie durch {n} Uhrenstile und zeigen Sie jeden davon im Vollbild an.",
+    "clockHeading": "Live-Uhr",
+    "factsHeading": "Der heutige Tag",
+    "factWeek": "Kalenderwoche (ISO)",
+    "factDoy": "Tag des Jahres",
+    "factLeft": "Verbleibende Tage im Jahr",
+    "factUnix": "Unix-Zeitstempel",
+    "factUtc": "UTC-Zeit",
+    "factProgress": "Jahresfortschritt",
+    "worldHeading": "Uhrzeit in Städten weltweit",
+    "worldLead": "Aktuelle Ortszeit in ausgewählten Städten. Wählen Sie eine Stadt für Details.",
+    "worldAll": "Alle Städte ansehen",
+    "faqHeading": "Häufig gestellte Fragen",
+    "faq": [
+      {
+        "q": "Wie wird die Uhrzeit auf dieser Website berechnet?",
+        "a": "Die Uhrzeit wird mit dem Server der Website synchronisiert und stimmt daher auch dann, wenn Ihre Geräteuhr falsch geht. Die Zeitzone wird aus den Einstellungen Ihres Geräts gelesen. Für die Synchronisierung werden nur einige kleine Anfragen an den Server gesendet, keine personenbezogenen Daten. Wenn Sie die Schaltfläche „Serverzeit“ ausschalten, wird Ihre Geräteuhr verwendet."
+      },
+      {
+        "q": "Gibt es in der Türkei Sommerzeit?",
+        "a": "Nein. Seit 2016 gilt in der Türkei ganzjährig UTC+3; die Uhren werden weder vor- noch zurückgestellt. Viele europäische Länder stellen ihre Uhren weiterhin um, daher kann sich ihr Zeitunterschied zur Türkei im Laufe des Jahres um eine Stunde ändern."
+      },
+      {
+        "q": "Wie wird die Kalenderwoche berechnet?",
+        "a": "Nach ISO 8601 beginnen Wochen am Montag, und die erste Kalenderwoche ist die Woche, die den ersten Donnerstag des Jahres enthält. Deshalb können die ersten und letzten Tage eines Jahres zu einer Woche des Nachbarjahres gehören."
+      },
+      {
+        "q": "Wie wird der Zeitunterschied zwischen Städten ermittelt?",
+        "a": "Der aktuelle UTC-Versatz jeder Stadt stammt aus der Zeitzonendatenbank Ihres Browsers (IANA); Sommerzeitumstellungen werden automatisch berücksichtigt. „Vor Ihrer Zeit“ und „hinter Ihrer Zeit“ beziehen sich immer auf Ihre eigene Zeitzone."
+      },
+      {
+        "q": "Wie ändere ich den Uhrenstil?",
+        "a": "Wischen Sie auf der Uhr nach links oder rechts; am Computer nutzen Sie die Pfeile oder Punkte darunter oder die Pfeiltasten Ihrer Tastatur. Zur Auswahl stehen klassische und schlichte Analoguhren, Digitaluhren, analog und digital kombiniert, Varianten mit oder ohne Datum, Uhren mit Monatskalender, eine Klappzahluhr, eine Uhr in Worten, eine Ringuhr und ein großes Datum. Ihre Auswahl wird auf diesem Gerät gespeichert."
+      },
+      {
+        "q": "Wie zeige ich die Uhr im Vollbild an?",
+        "a": "Drücken Sie die Vollbild-Schaltfläche unter der Uhr. Zum Beenden drücken Sie dieselbe Schaltfläche oder die Esc-Taste. Auch im Vollbild können Sie zwischen den Stilen wischen."
+      },
+      {
+        "q": "Funktioniert die Uhr unabhängig von meiner Geräteuhr?",
+        "a": "Ja. Die Uhrzeit wird mit dem Server der Website synchronisiert und zeigt daher auch dann die richtige Zeit, wenn Ihre Geräteuhr falsch geht; zudem sehen Sie, wie weit Ihre Geräteuhr abweicht. Mit der Schaltfläche „Serverzeit“ können Sie zur Geräteuhr zurückkehren. Die Zeitzone wird weiterhin aus den Einstellungen Ihres Geräts gelesen."
+      },
+      {
+        "q": "Wo sehe ich die gesetzlichen Feiertage der Türkei und den Ramadan?",
+        "a": "Die Seite mit dem Jahreskalender zeigt gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und den Fastenmonat Ramadan in einem Kalender. Der Bereich „Bevorstehende Tage“ auf der Startseite zeigt, wie viele Tage es noch bis zum nächsten Feiertag sind."
+      }
+    ],
+    "upcomingHeading": "Bevorstehende Feiertage und besondere Tage",
+    "upcomingLead": "Die nächsten Tage im türkischen Kalender.",
+    "upcomingAll": "Zum Jahreskalender",
+    "upcomingNone": "Keine bevorstehenden Tage gefunden."
+  },
+  "world": {
+    "title": "Weltzeituhr: Aktuelle Uhrzeit in Städten weltweit | Saat Tarih",
+    "description": "Wie spät ist es in Istanbul, London, New York, Tokio und anderswo? Ortszeiten live in Städten weltweit und der Zeitunterschied zu Ihnen.",
+    "h1": "Weltzeituhr",
+    "lead": "Diese Seite zeigt die aktuelle Ortszeit in {n} Städten, darunter Istanbul, London, New York und Tokio, sowie den Zeitunterschied zu Ihnen. Sommerzeitumstellungen werden automatisch berücksichtigt.",
+    "colCity": "Stadt",
+    "colCountry": "Land",
+    "colTime": "Uhrzeit",
+    "colOffset": "UTC-Versatz",
+    "colDiff": "Unterschied zu Ihnen",
+    "tableCaption": "Aktuelle Ortszeit in Städten"
+  },
+  "city": {
+    "title": "Aktuelle Uhrzeit in {name} ({country}) | Saat Tarih",
+    "description": "Wie spät ist es gerade in {name}? Ortszeit live, Datum und UTC-Versatz für {name}, {country}. Zeitzone: {tz}.",
+    "h1": "Aktuelle Uhrzeit in {name}",
+    "lead": "Unten sehen Sie die aktuelle Ortszeit in {name}, {country}. {name} liegt in der Zeitzone {tz} mit einem Standardversatz von UTC{std}.",
+    "dstYes": "In {name} gilt Sommerzeit, daher ändert sich der UTC-Versatz im Laufe des Jahres um eine Stunde.",
+    "dstNo": "In {name} gibt es keine Sommerzeit, daher bleibt der UTC-Versatz das ganze Jahr über gleich.",
+    "liveOffset": "Aktueller UTC-Versatz",
+    "liveDiff": "Unterschied zu Ihnen",
+    "otherHeading": "Uhrzeit in anderen Städten",
+    "faqHeading": "Häufige Fragen zur Uhrzeit in {name}",
+    "faqTime": "Wie spät ist es in {name}?",
+    "faqTimeA": "Die Ortszeit in {name} sehen Sie oben auf der Live-Uhr. Sie wird aus der Zeitzone {tz} berechnet und jede Sekunde aktualisiert.",
+    "faqZone": "In welcher Zeitzone liegt {name}?",
+    "faqZoneA": "{name} liegt in der Zeitzone {tz} mit einem Standardversatz von UTC{std}.",
+    "faqDst": "Gibt es in {name} Sommerzeit?",
+    "faqDstYesA": "Ja. In {name} gilt Sommerzeit; der UTC-Versatz ändert sich an den Umstellungstagen um eine Stunde, und diese Seite berücksichtigt die Umstellung automatisch.",
+    "faqDstNoA": "Nein. In {name} gibt es keine Sommerzeit, daher bleibt der UTC-Versatz das ganze Jahr über gleich.",
+    "breadcrumbWorld": "Weltzeituhr",
+    "sunrise": "Sonnenaufgang",
+    "sunset": "Sonnenuntergang",
+    "daylen": "Tageslänge",
+    "sunNote": "Sonnenauf- und -untergang sind Näherungswerte, berechnet aus dem heutigen Datum und der Lage der Stadt (sie können um einige Minuten abweichen)."
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung und Cookie-Richtlinie | Saat Tarih",
+    "description": "Welche Daten Saat Tarih verarbeitet, Cookies und lokaler Speicher, Umami-Statistik, E-Mail-Liste und Ihre Rechte nach türkischem Datenschutzrecht (KVKK).",
+    "h1": "Datenschutzerklärung und Cookie-Richtlinie",
+    "lead": "Diese Seite erläutert, welche Daten bei der Nutzung von Saat Tarih verarbeitet werden, zu welchem Zweck und welche Rechte Sie haben. Die Website erhebt nur, was sie benötigt; es gibt keine Benutzerkonten, keine Werbung und keine Tracking-Cookies.",
+    "sections": [
+      {
+        "id": "controller",
+        "h": "Verantwortlicher",
+        "p": [
+          "Verantwortlicher ist die Bumba Teknoloji Limited Şirketi (Ataşehir / Istanbul, Türkei). Für Fragen und Anfragen zum Datenschutz: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "data",
+        "h": "Welche Daten verarbeiten wir?",
+        "ul": [
+          "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
+          "**Formular für die E-Mail-Liste:** Die von Ihnen eingegebene E-Mail-Adresse, die per Kontrollkästchen erteilte Einwilligung, die gewählte Sprache und die Seite, auf der sich das Formular befindet, werden vom gemeinsamen Listendienst der Bumba Group (bumbagroup.com) verarbeitet. Die Anmeldung erfolgt per Double-Opt-in: Sie werden erst aufgenommen, wenn Sie den Link in der Bestätigungs-E-Mail anklicken, und jede E-Mail enthält einen Link zur Abmeldung mit einem Klick. Einzelheiten finden Sie im [gemeinsamen Datenschutzhinweis](https://bumbagroup.com/liste/aydinlatma?dil=en) (auf Englisch).",
+          "**Server-Protokolle:** Der Server, auf dem die Website betrieben wird, führt für jede Anfrage ein übliches Zugriffsprotokoll mit IP-Adresse, Browserinformationen, aufgerufener Seite und Zeitpunkt. Diese Protokolle dienen ausschließlich der Sicherheit und der Fehlerbehebung, nicht der Erstellung von Personenprofilen.",
+          "**Besuchsstatistik:** Umami, das auf unserem eigenen Server läuft, zählt Seitenaufrufe und einige Aktionen (Sprachwechsel, Wechsel des Farbmodus, ob eine Suche ein Ergebnis lieferte, Anmeldung zur Liste). Umami verwendet keine Cookies. Ihre Suchbegriffe und Ihre E-Mail-Adresse werden nicht an das Statistiksystem übermittelt.",
+          "**Zeitsynchronisierung:** Um die Uhrzeit unabhängig von Ihrer Geräteuhr anzuzeigen, sendet Ihr Browser einige kleine Anfragen an den eigenen Server der Website und liest den Date-Header der Antwort. Diese Anfragen erscheinen nur im üblichen Zugriffsprotokoll des Servers; darüber hinaus wird nichts übermittelt."
+        ]
+      },
+      {
+        "id": "cookies",
+        "h": "Cookies und lokaler Speicher",
+        "p": [
+          "Saat Tarih setzt keine Cookies, daher zeigen wir auch kein Cookie-Banner. Um Ihre Einstellungen zu speichern, nutzen wir den lokalen Speicher Ihres Browsers (localStorage); er verbleibt auf Ihrem Gerät und wird nicht an einen Server gesendet. Sie können ihn jederzeit in den Einstellungen Ihres Browsers löschen."
+        ],
+        "table": {
+          "head": [
+            "Name",
+            "Zweck",
+            "Speicherdauer"
+          ],
+          "rows": [
+            [
+              "sth-theme",
+              "Speichert Ihre Wahl zwischen hellem und dunklem Modus.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-lang",
+              "Speichert Ihre Sprachwahl.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-prefs",
+              "Speichert die 24- oder 12-Stunden-Anzeige und die Einstellung für Sekunden.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-sw",
+              "Speichert den Stand der Stoppuhr und die Rundenzeiten.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-cd",
+              "Speichert den Countdown.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-alarms",
+              "Speichert die von Ihnen gestellten Wecker.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-pomo",
+              "Speichert die Pomodoro-Zeiten und den aktuellen Stand.",
+              "Bis zur Löschung durch Sie"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "legal-basis",
+        "h": "Rechtsgrundlagen",
+        "ul": [
+          "E-Mail-Liste: Ihre ausdrückliche Einwilligung (Art. 5 Abs. 1 KVKK, des türkischen Gesetzes zum Schutz personenbezogener Daten). Sie können sie jederzeit über den Abmeldelink in jeder E-Mail widerrufen.",
+          "Server-Protokolle und Besuchsstatistik: unser berechtigtes Interesse an einem sicheren und funktionsfähigen Betrieb der Website (Art. 5 Abs. 2 Buchst. f KVKK)."
+        ]
+      },
+      {
+        "id": "rights",
+        "h": "Ihre Rechte",
+        "p": [
+          "Nach Artikel 11 des türkischen Gesetzes zum Schutz personenbezogener Daten (KVKK) können Sie erfahren, ob Ihre Daten verarbeitet werden, Auskunft darüber verlangen, ihre Berichtigung oder Löschung verlangen und der Verarbeitung widersprechen. Richten Sie Ihre Anfrage an [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "changes",
+        "h": "Änderungen",
+        "p": [
+          "Dieser Text wird aktualisiert, wenn sich die Website ändert. Das Datum der aktuellen Fassung steht oben auf der Seite."
+        ]
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden (404) | Saat Tarih",
+    "h1": "Diese Seite haben wir nicht gefunden",
+    "p": "Möglicherweise ist die Adresse falsch geschrieben oder die Seite wurde verschoben. Die aktuelle Uhrzeit finden Sie auf der Startseite.",
+    "cta": "Zurück zur Startseite"
+  },
+  "serverError": {
+    "title": "Ein Fehler ist aufgetreten (500) | Saat Tarih",
+    "h1": "Etwas ist schiefgelaufen",
+    "p": "Auf dem Server besteht ein vorübergehendes Problem. Bitte versuchen Sie es in einigen Minuten erneut.",
+    "cta": "Zurück zur Startseite"
+  },
+  "list": {
+    "heading": "Auf dem Laufenden bleiben",
+    "lead": "Möchten Sie Neuigkeiten zu Saat Tarih per E-Mail erhalten? Sie können sich jederzeit mit einem Klick wieder abmelden.",
+    "emailLabel": "Ihre E-Mail-Adresse",
+    "consentPre": "Ich habe den ",
+    "consentLink": "Datenschutzhinweis",
+    "consentPost": " gelesen und bin mit dem Erhalt von E-Mails einverstanden.",
+    "submit": "Anmelden",
+    "ok": "Wir haben Ihnen eine Bestätigungs-E-Mail gesendet; klicken Sie auf den Link darin, um die Anmeldung abzuschließen.",
+    "err": "Ihre Anmeldung konnte nicht gespeichert werden. Bitte prüfen Sie die E-Mail-Adresse und das Kontrollkästchen und versuchen Sie es gleich noch einmal.",
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en"
+  },
+  "badge": {
+    "title": "Bumba Life, ein Geschäftsbereich der Bumba Group",
+    "alt": "Ein Produkt von Bumba Life"
+  },
+  "llms": {
+    "summary": "Saat Tarih ist eine kostenlose Website, die Ihre Ortszeit, das heutige Datum, die Kalenderwoche und die Uhrzeit in Städten weltweit live anzeigt. Ein Produkt von Bumba Life (Bumba Group).",
+    "pages": "Seiten",
+    "cities": "Städteseiten",
+    "about": "Über die Website",
+    "aboutText": "Die Uhrzeit wird mit der Serveruhr der Website synchronisiert (unabhängig von der Geräteuhr); die Zeitzone wird aus dem Browser gelesen, und es werden keine personenbezogenen Daten übermittelt. Verfügbar auf Türkisch, Englisch und Deutsch. Verantwortlicher: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Kontakt: bilgi@bumbagroup.com."
+  },
+  "stage": {
+    "label": "Uhrenstile",
+    "hint": "Wischen Sie zwischen den Stilen oder nutzen Sie die Pfeile.",
+    "prev": "Vorheriger Stil",
+    "next": "Nächster Stil",
+    "slide": "{n} / {total}: {name}",
+    "carousel": "Karussell",
+    "slideRole": "Folie",
+    "dots": "Stil auswählen",
+    "models": {
+      "classic": "Klassisch analog",
+      "minimal": "Schlicht analog",
+      "analog-date": "Analog mit Datum",
+      "digital": "Digital",
+      "digital-date": "Digital mit Datum",
+      "duo": "Analog und digital",
+      "duo-date": "Analog, digital und Datum",
+      "calendar": "Digital mit Monatskalender",
+      "calendar-analog": "Analog mit Monatskalender",
+      "flip": "Klappzahluhr",
+      "words": "Uhr in Worten",
+      "rings": "Ringuhr",
+      "bigdate": "Großes Datum"
+    }
+  },
+  "calendar": {
+    "title": "Kalender {year}: Feiertage in der Türkei und Ramadan | Saat Tarih",
+    "description": "{year}: gesetzliche Feiertage der Türkei, Termine von Ramadanfest und Opferfest, Vorabende, Kandil-Nächte und der Ramadan in einem Jahreskalender.",
+    "h1": "Kalender {year}",
+    "lead": "Im Jahr {year}: Ramadan {ramadan}, Ramadanfest (Ramazan Bayramı) {rb}, Opferfest (Kurban Bayramı) {kb}. Das Jahr hat {n} gesetzliche Feiertage, davon {w} an Werktagen. Die Vorabende der beiden Feste und des Tags der Republik sind halbe Feiertage.",
+    "legend": "Legende",
+    "legendLabel": "Kalenderlegende",
+    "types": {
+      "holiday": "Gesetzlicher Feiertag",
+      "half": "Halber Feiertag (Vorabend)",
+      "religious": "Religiöser Tag oder religiöse Nacht",
+      "ramadan": "Fastenmonat Ramadan",
+      "special": "Besonderer Tag",
+      "weekend": "Wochenende",
+      "today": "Heute",
+      "school": "Schulferien oder Schultermin (MEB)"
+    },
+    "eventsHeading": "Alle Tage {year} im Überblick",
+    "colDate": "Datum",
+    "colDay": "Tag",
+    "colEvent": "Bezeichnung",
+    "colType": "Art",
+    "colLeft": "Noch",
+    "tableCaption": "Gesetzliche Feiertage, religiöse und besondere Tage {year}",
+    "yearNav": "Jahr wählen",
+    "prevYear": "← {year}",
+    "nextYear": "{year} →",
+    "monthLabel": "{month} {year}",
+    "faqHeading": "Häufige Fragen zum Kalender {year}",
+    "faqRb": "Wann ist das Ramadanfest (Ramazan Bayramı) {year}?",
+    "faqRbA": "Ramadanfest {year}: {rb}. Der Vorabend ({eve}) ist ein halber Feiertag.",
+    "faqKb": "Wann ist das Opferfest (Kurban Bayramı) {year}?",
+    "faqKbA": "Opferfest {year}: {kb}. Der Vorabend ({eve}) ist ein halber Feiertag.",
+    "faqRamadan": "Wann beginnt der Ramadan {year}?",
+    "faqRamadanA": "Der Ramadan {year} beginnt am {start} und endet am {end}. Die Kadir-Nacht (Laylat al-Qadr, Kadir Gecesi) ist am Abend des {kadir}.",
+    "faqHolidays": "Wie viele gesetzliche Feiertage gibt es {year}?",
+    "faqHolidaysA": "Im Jahr {year} gibt es {n} gesetzliche Feiertage, davon {w} an Werktagen. Die Vorabende von Ramadanfest und Opferfest sowie der 28. Oktober sind halbe Feiertage.",
+    "note": "Die Termine religiöser Tage und Nächte richten sich nach dem Kalender des türkischen Präsidiums für Religionsangelegenheiten (Diyanet); Kandil-Nächte beginnen am Abend des angegebenen Datums. Arbeitsfreie Tage für den öffentlichen Dienst (idari izin) und Brückentage sind keine gesetzlichen Feiertage und werden hier nicht aufgeführt.",
+    "noYear": "Für dieses Jahr liegen keine Daten vor.",
+    "months": [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
+    ],
+    "weekdays": [
+      "Montag",
+      "Dienstag",
+      "Mittwoch",
+      "Donnerstag",
+      "Freitag",
+      "Samstag",
+      "Sonntag"
+    ],
+    "weekdaysShort": [
+      "Mo",
+      "Di",
+      "Mi",
+      "Do",
+      "Fr",
+      "Sa",
+      "So"
+    ],
+    "events": {
+      "newYear": "Neujahr",
+      "apr23": "Tag der nationalen Souveränität und des Kindes",
+      "may1": "Tag der Arbeit und der Solidarität",
+      "may19": "Gedenktag an Atatürk, Tag der Jugend und des Sports",
+      "jul15": "Tag der Demokratie und der nationalen Einheit",
+      "aug30": "Siegestag",
+      "oct28": "Vorabend des Tags der Republik",
+      "oct29": "Tag der Republik",
+      "ucAylar": "Beginn der drei heiligen Monate",
+      "regaib": "Regaib-Nacht (Regaib Kandili)",
+      "mirac": "Miradsch-Nacht (Miraç Kandili)",
+      "berat": "Berat-Nacht (Berat Kandili)",
+      "ramadanStart": "Erster Tag des Ramadan",
+      "kadir": "Kadir-Nacht (Laylat al-Qadr, Kadir Gecesi)",
+      "rbEve": "Vorabend des Ramadanfests",
+      "rb1": "Ramadanfest, 1. Tag",
+      "rb2": "Ramadanfest, 2. Tag",
+      "rb3": "Ramadanfest, 3. Tag",
+      "kbEve": "Vorabend des Opferfests",
+      "kb1": "Opferfest, 1. Tag",
+      "kb2": "Opferfest, 2. Tag",
+      "kb3": "Opferfest, 3. Tag",
+      "kb4": "Opferfest, 4. Tag",
+      "hijri": "Islamisches Neujahr",
+      "ashura": "Aschura-Tag",
+      "mawlid": "Mevlid-Nacht (Mevlid Kandili)",
+      "mar8": "Internationaler Frauentag",
+      "mothers": "Muttertag",
+      "fathers": "Vatertag",
+      "nov10": "Atatürk-Gedenktag",
+      "nov24": "Tag des Lehrers",
+      "schoolStart": "Schulbeginn (MEB)",
+      "midterm1": "Beginn der Zwischenferien im ersten Halbjahr (MEB)",
+      "term1End": "Ende des ersten Halbjahres, Zeugnistag (MEB)",
+      "semester": "Beginn der Halbjahresferien (MEB)",
+      "term2Start": "Beginn des zweiten Halbjahres (MEB)",
+      "midterm2": "Beginn der Zwischenferien im zweiten Halbjahr (MEB)",
+      "schoolEnd": "Ende des Schuljahres, Zeugnistag (MEB)"
+    },
+    "hubName": "Jahreskalender",
+    "hubDesc": "Gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und der Fastenmonat Ramadan.",
+    "projected": "Die religiösen Termine dieses Jahres folgen dem langfristigen Kalender der Diyanet und können sich bis dahin noch ändern.",
+    "schoolNote": "Der Schulkalender folgt dem Arbeitskalender 2026-2027 des türkischen Bildungsministeriums (MEB); die Bildungsdirektionen der Provinzen können örtlich abweichen.",
+    "fullFmt": "{weekday}, {day}. {month} {year}",
+    "shortFmt": "{day}. {month}",
+    "dateFmt": "{day}. {month} {year}"
+  },
+  "tools": {
+    "hub": {
+      "title": "Uhr-Tools: Stoppuhr, Countdown, Wecker, Pomodoro | Saat Tarih",
+      "description": "Kostenlose Online-Stoppuhr, Countdown-Timer, Wecker und Pomodoro-Timer. Ohne Anmeldung, ohne Werbung; mit Vollbild und Tonsignal.",
+      "h1": "Uhr-Tools",
+      "lead": "Die Tools von Saat Tarih laufen in Ihrem Browser, ohne Anmeldung oder Installation: Stoppuhr, Countdown, Wecker und Pomodoro-Timer, alle auch im Vollbild und im dunklen Modus.",
+      "open": "Öffnen",
+      "cards": {
+        "stopwatch": {
+          "name": "Stoppuhr",
+          "desc": "Rundenzeiten, schnellste und langsamste Runde, Vollbild."
+        },
+        "countdown": {
+          "name": "Countdown",
+          "desc": "Nach Dauer oder Datum; die Zeit bis Neujahr und zum Bayram."
+        },
+        "alarm": {
+          "name": "Wecker",
+          "desc": "Uhrzeit, Bezeichnung, Wiederholung an gewählten Tagen und Schlummern."
+        },
+        "pomodoro": {
+          "name": "Pomodoro",
+          "desc": "25 Minuten arbeiten, 5 Minuten Pause; mit langer Pause."
+        },
+        "week": {
+          "name": "Welche Kalenderwoche haben wir?",
+          "desc": "ISO-Kalenderwoche, Daten dieser Woche, alle Wochen des Jahres."
+        },
+        "today": {
+          "name": "Heutiges Datum",
+          "desc": "Heutiges Datum, Wochentag, Tag des Jahres und verbleibende Tage."
+        },
+        "tz": {
+          "name": "Zeitzone der Türkei",
+          "desc": "Sommerzeit? UTC+3 und der Zeitunterschied zu anderen Städten."
+        },
+        "converter": {
+          "name": "Zeitumrechner",
+          "desc": "Die Uhrzeit einer Stadt in die einer anderen umrechnen."
+        },
+        "planner": {
+          "name": "Meeting-Planer",
+          "desc": "Gemeinsame Arbeitszeiten über Zeitzonen hinweg finden."
+        },
+        "diff": {
+          "name": "Zeitverschiebung",
+          "desc": "Die Zeitverschiebung zwischen Istanbul und Städten weltweit."
+        },
+        "datecalc": {
+          "name": "Datumsrechner",
+          "desc": "Tage und Arbeitstage zwischen Daten, Datum addieren, Alter."
+        },
+        "embed": {
+          "name": "Uhr-Widget",
+          "desc": "Eine kostenlose Uhr in Ihre Website einbetten (iframe)."
+        }
+      },
+      "infoHeading": "Infoseiten"
+    },
+    "common": {
+      "fullscreen": "Vollbild",
+      "exitFullscreen": "Vollbild beenden",
+      "sound": "Tonsignal",
+      "notify": "Benachrichtigungen erlauben",
+      "notifyOn": "Benachrichtigungen aktiv",
+      "notifyDenied": "Benachrichtigungen wurden abgelehnt",
+      "testSound": "Ton testen",
+      "close": "Schließen",
+      "relatedHeading": "Weitere Tools",
+      "pageOpenNote": "Dieses Tool funktioniert nur, solange die Seite geöffnet ist; wenn Sie den Tab schließen, werden Sie nicht benachrichtigt.",
+      "faqHeading": "Häufig gestellte Fragen",
+      "syncNote": "Die Zeiten laufen nach der Serveruhr, daher stimmen die Ergebnisse auch dann, wenn Ihre Geräteuhr falsch geht.",
+      "toolsHub": "Alle Tools"
+    },
+    "stopwatch": {
+      "title": "Online-Stoppuhr mit Rundenzeiten und Vollbild | Saat Tarih",
+      "description": "Kostenlose Online-Stoppuhr: Rundenzeiten, schnellste und langsamste Runde, Vollbild und Tastenkürzel. Ihre Zeit bleibt auch beim Neuladen erhalten.",
+      "h1": "Online-Stoppuhr",
+      "lead": "Die Stoppuhr misst auf die Hundertstelsekunde genau, erfasst Rundenzeiten und behält Ihre Zeit, auch wenn Sie die Seite neu laden oder schließen und wieder öffnen. Mit der Leertaste starten und stoppen Sie, mit L erfassen Sie eine Runde.",
+      "start": "Start",
+      "stop": "Stopp",
+      "resume": "Fortsetzen",
+      "lap": "Runde",
+      "reset": "Zurücksetzen",
+      "lapNo": "Runde",
+      "lapTime": "Rundenzeit",
+      "total": "Gesamt",
+      "best": "Schnellste",
+      "worst": "Langsamste",
+      "empty": "Noch keine Runden.",
+      "hint": "Tastenkürzel: Leertaste Start/Stopp, L Runde, R Zurücksetzen.",
+      "lapsCaption": "Rundenzeiten",
+      "lapAdded": "Runde {n} erfasst: {t}",
+      "panel": "Stoppuhr",
+      "faq": [
+        {
+          "q": "Wie genau ist die Stoppuhr?",
+          "a": "Die Zeit wird mit der hochauflösenden Uhr des Browsers gemessen und auf die Hundertstelsekunde angezeigt. Eine Änderung Ihrer Geräteuhr hat keinen Einfluss darauf."
+        },
+        {
+          "q": "Geht meine Zeit verloren, wenn ich die Seite schließe?",
+          "a": "Nein. Die Startzeit einer laufenden Stoppuhr wird auf diesem Gerät gespeichert; beim Neuladen oder erneuten Öffnen der Seite läuft die Zeit dort weiter, wo sie war. Die Schaltfläche „Zurücksetzen“ löscht sie."
+        },
+        {
+          "q": "Was ist eine Runde und wie erfasse ich sie?",
+          "a": "Eine Runde ist eine Zwischenzeit, die genommen wird, ohne die Stoppuhr anzuhalten. Drücken Sie während der Messung die Schaltfläche „Runde“ oder die Taste L; jede Rundenzeit und die Gesamtzeit werden aufgelistet, die schnellste und die langsamste Runde sind markiert."
+        }
+      ]
+    },
+    "countdown": {
+      "title": "Countdown-Timer: nach Dauer oder bis zu einem Datum | Saat Tarih",
+      "description": "Kostenloser Countdown: Minuten-Timer oder die Zeit bis zu einem Wunschdatum. Countdown bis Neujahr und zum Bayram, mit Tonsignal und Vollbild.",
+      "h1": "Countdown",
+      "lead": "Der Countdown funktioniert auf zwei Arten: als Timer, der Sie nach Ablauf der gewählten Dauer benachrichtigt, oder als Live-Anzeige der Tage, Stunden und Sekunden bis zu einem Datum Ihrer Wahl. Zählen Sie bis Neujahr, zu einem Bayram oder zu Ihrem eigenen Termin herunter.",
+      "tabTimer": "Timer",
+      "tabDate": "Bis zu einem Datum",
+      "hours": "Stunden",
+      "minutes": "Minuten",
+      "seconds": "Sekunden",
+      "presetsLabel": "Schnellauswahl",
+      "presetMin": "{n} Min.",
+      "start": "Start",
+      "pause": "Pause",
+      "resume": "Fortsetzen",
+      "reset": "Zurücksetzen",
+      "targetLabel": "Zieldatum und -uhrzeit",
+      "targetSet": "Countdown starten",
+      "quickHeading": "Schnellziele",
+      "quickNewYear": "Neujahr",
+      "remaining": "Verbleibende Zeit",
+      "days": "Tage",
+      "hoursShort": "Std.",
+      "minutesShort": "Min.",
+      "secondsShort": "Sek.",
+      "finished": "Die Zeit ist um!",
+      "finishedDate": "Zielzeit erreicht!",
+      "invalid": "Geben Sie eine gültige Dauer oder ein Datum in der Zukunft ein.",
+      "panel": "Countdown",
+      "timerRegion": "Timer",
+      "dateRegion": "Countdown bis zu einem Datum",
+      "faq": [
+        {
+          "q": "Was passiert, wenn der Countdown abgelaufen ist?",
+          "a": "Ein Tonsignal ertönt, der Seitentitel blinkt und, sofern Sie es erlaubt haben, erscheint eine Benachrichtigung. Mit der Schaltfläche „Schließen“ beenden Sie den Alarm."
+        },
+        {
+          "q": "Wie zähle ich bis zu einem bestimmten Datum herunter?",
+          "a": "Wählen Sie im Tab „Bis zu einem Datum“ das Zieldatum und die Uhrzeit oder tippen Sie auf eines der Schnellziele wie Neujahr oder die Bayram-Feste. Tage, Stunden, Minuten und Sekunden werden live aktualisiert."
+        },
+        {
+          "q": "Läuft der Countdown weiter, wenn ich den Tab schließe?",
+          "a": "Der Countdown wird auf diesem Gerät gespeichert; wenn Sie die Seite wieder öffnen, wird die richtige Restzeit angezeigt. Das Tonsignal kann bei geschlossener Seite nicht abgespielt werden."
+        }
+      ],
+      "nameLabel": "Titel (optional)",
+      "namePlaceholder": "z. B. Urlaub",
+      "copyLink": "Link kopieren",
+      "copied": "Link kopiert",
+      "shareNote": "Sie können den Link zum gewählten Datum teilen; beim Öffnen des Links startet der Countdown automatisch."
+    },
+    "alarm": {
+      "title": "Online-Wecker mit Wiederholung und Schlummerfunktion | Saat Tarih",
+      "description": "Kostenloser Wecker im Browser: Uhrzeit, Bezeichnung, Wiederholung an gewählten Wochentagen, 5 Minuten Schlummern und Benachrichtigungen.",
+      "h1": "Online-Wecker",
+      "lead": "Wählen Sie eine Weckzeit und die gewünschten Tage; zur eingestellten Zeit ertönt ein Ton und eine Benachrichtigung erscheint. Wecker werden auf diesem Gerät gespeichert. Wegen Einschränkungen des Browsers klingelt der Wecker nur, solange diese Seite (der Tab) geöffnet bleibt.",
+      "timeLabel": "Weckzeit",
+      "labelLabel": "Bezeichnung (optional)",
+      "labelPlaceholder": "z. B. Besprechung",
+      "repeatLabel": "Wiederholen",
+      "once": "Einmalig",
+      "every": "Täglich",
+      "weekdays": "Werktags (Mo–Fr)",
+      "add": "Wecker hinzufügen",
+      "listHeading": "Ihre Wecker",
+      "none": "Noch keine Wecker.",
+      "delete": "Löschen",
+      "enable": "Ein/aus",
+      "ringing": "Wecker klingelt",
+      "snooze": "5 Min. schlummern",
+      "stop": "Schließen",
+      "next": "Nächster Wecker",
+      "nextNone": "Kein aktiver Wecker",
+      "wake": "Bildschirm eingeschaltet lassen",
+      "wakeNote": "Wenn sich der Bildschirm ausschaltet, kann der Browser den Tab in den Ruhezustand versetzen; diese Option verhindert, dass sich der Bildschirm ausschaltet, solange ein Wecker gestellt ist.",
+      "note": "Stellen Sie für wichtige Weckzeiten zusätzlich den Wecker Ihres Telefons; ein Browser-Wecker klingelt nicht, wenn die Seite geschlossen ist.",
+      "panel": "Wecker",
+      "dayNames": [
+        "Mo",
+        "Di",
+        "Mi",
+        "Do",
+        "Fr",
+        "Sa",
+        "So"
+      ],
+      "defaultLabel": "Wecker",
+      "faq": [
+        {
+          "q": "Klingelt der Wecker, wenn ich den Tab schließe?",
+          "a": "Nein. Websites können bei geschlossener Seite keinen Ton abspielen. Diese Seite muss in einem Tab geöffnet bleiben, und das Gerät darf nicht in den Ruhezustand wechseln; die Option „Bildschirm eingeschaltet lassen“ hilft dabei."
+        },
+        {
+          "q": "Hängt der Wecker von meiner Geräteuhr ab?",
+          "a": "Nein. Der Wecker wird mit einer serversynchronisierten Uhr abgeglichen und klingelt daher zum richtigen Zeitpunkt, auch wenn Ihre Geräteuhr einige Sekunden abweicht. Die Zeitzone stammt von Ihrem Gerät."
+        },
+        {
+          "q": "Wie nutze ich die Schlummerfunktion?",
+          "a": "Drücken Sie während des Klingelns „5 Min. schlummern“; der Wecker klingelt dann fünf Minuten später erneut. Die Schaltfläche „Schließen“ schaltet ihn stumm; wiederholte Wecker klingeln am nächsten gewählten Tag wieder."
+        }
+      ]
+    },
+    "pomodoro": {
+      "title": "Pomodoro-Timer: 25 Minuten Arbeit, 5 Minuten Pause | Saat Tarih",
+      "description": "Kostenloser Pomodoro-Timer: 25 Minuten Arbeit, 5 Minuten kurze Pause und alle 4 Runden eine lange Pause. Anpassbare Zeiten, Tonsignal und Vollbild.",
+      "h1": "Pomodoro-Timer",
+      "lead": "Bei der Pomodoro-Technik wechseln sich 25 Minuten konzentrierte Arbeit und 5-minütige kurze Pausen ab; nach 4 Runden folgt eine lange Pause. Die Zeiten lassen sich ändern, und bei jedem Wechsel ertönt ein Ton.",
+      "work": "Arbeit",
+      "short": "Kurze Pause",
+      "long": "Lange Pause",
+      "start": "Start",
+      "pause": "Pause",
+      "resume": "Fortsetzen",
+      "skip": "Weiter zur nächsten Phase",
+      "reset": "Zurücksetzen",
+      "settings": "Dauer (Minuten)",
+      "workMin": "Arbeit",
+      "shortMin": "Kurze Pause",
+      "longMin": "Lange Pause",
+      "roundsLabel": "Runden bis zur langen Pause",
+      "round": "Runde {n} von {total}",
+      "completed": "Abgeschlossene Pomodoros: {n}",
+      "phaseDone": "{phase} beendet",
+      "panel": "Pomodoro",
+      "phaseLabel": "Aktuelle Phase",
+      "faq": [
+        {
+          "q": "Was ist die Pomodoro-Technik?",
+          "a": "Bei der von Francesco Cirillo entwickelten Methode arbeiten Sie 25 Minuten ohne Unterbrechung und machen dann 5 Minuten Pause. Nach vier Arbeitsrunden folgt eine längere Pause von 15 bis 30 Minuten."
+        },
+        {
+          "q": "Kann ich die Zeiten ändern?",
+          "a": "Ja. Sie können die Dauer von Arbeit, kurzer und langer Pause sowie die Anzahl der Runden bis zur langen Pause festlegen; die Einstellungen werden auf diesem Gerät gespeichert."
+        },
+        {
+          "q": "Wechseln die Phasen automatisch?",
+          "a": "Ja. Wenn die Zeit abgelaufen ist, ertönt ein Ton, und die nächste Phase (Arbeit oder Pause) beginnt von selbst. Mit „Pause“ halten Sie an."
+        }
+      ]
+    }
+  },
+  "info": {
+    "week": {
+      "title": "Welche Kalenderwoche haben wir? KW und Daten | Saat Tarih",
+      "description": "Welche Kalenderwoche ist gerade? Die aktuelle ISO-KW, die Daten dieser Woche, alle Wochen {year} und ein Tool, das die KW jedes Datums ermittelt.",
+      "h1": "Welche Kalenderwoche haben wir?",
+      "lead": "Saat Tarih zeigt live, welche Kalenderwoche nach ISO 8601 gerade ist. Wochen beginnen am Montag, und die erste Kalenderwoche ist die Woche mit dem ersten Donnerstag des Jahres. {year} hat {weeks} Wochen.",
+      "big": "KW {n}",
+      "thisWeek": "Daten dieser Woche",
+      "findHeading": "Kalenderwoche eines Datums ermitteln",
+      "findLabel": "Datum wählen",
+      "tableHeading": "Wochenkalender {year}",
+      "colWeek": "KW",
+      "colStart": "Beginn (Montag)",
+      "colEnd": "Ende (Sonntag)",
+      "tableCaption": "ISO-Kalenderwochen und Datumsbereiche {year}",
+      "faqHeading": "Häufige Fragen zur Kalenderwoche",
+      "faq": [
+        {
+          "q": "Welche Kalenderwoche haben wir gerade?",
+          "a": "Der Live-Zähler oben zeigt die heutige Kalenderwoche. Sie folgt ISO 8601: Wochen beginnen am Montag, und die erste Kalenderwoche ist die Woche mit dem ersten Donnerstag des Jahres."
+        },
+        {
+          "q": "Wie viele Wochen hat ein Jahr?",
+          "a": "Ein ISO-Jahr hat 52 oder 53 Wochen. 53 Wochen hat es, wenn der 1. Januar auf einen Donnerstag fällt (in einem Schaltjahr auch auf einen Mittwoch). {year} hat {weeks} Wochen."
+        },
+        {
+          "q": "Warum liegt der 1. Januar manchmal in der letzten Woche des Vorjahres?",
+          "a": "Nach der ISO-Regel enthält die erste Kalenderwoche den ersten Donnerstag. Fällt der 1. Januar auf einen Freitag, Samstag oder Sonntag, gehört er zur KW 52 oder 53 des Vorjahres; umgekehrt können einige Tage Ende Dezember bereits zur KW 1 des Folgejahres gehören."
+        },
+        {
+          "q": "Wofür wird die Kalenderwoche verwendet?",
+          "a": "ISO-Kalenderwochen sind in der Geschäftsplanung, in Logistik, Bildung und Software verbreitet und im deutschsprachigen Raum auch im Alltag üblich. Das Tool auf dieser Seite zeigt die Kalenderwoche jedes gewählten Datums."
+        }
+      ]
+    },
+    "today": {
+      "title": "Welches Datum ist heute? Tag, Datum und KW | Saat Tarih",
+      "description": "Welches Datum und welcher Wochentag ist heute? Datum, Wochentag, Kalenderwoche, Tag des Jahres und verbleibende Tage – nach Serveruhr und Ihrer Zeitzone.",
+      "h1": "Welches Datum ist heute?",
+      "lead": "Das heutige Datum wird unten live angezeigt. Es wird aus der Serveruhr und Ihrer Zeitzone berechnet, daher erscheint der richtige Tag auch dann, wenn Ihre Geräteuhr falsch geht.",
+      "factsHeading": "Der heutige Tag im Detail",
+      "fWeekday": "Wochentag",
+      "fMonthYear": "Monat und Jahr",
+      "fNumeric": "Numerisches Format",
+      "fIso": "ISO 8601",
+      "fDoy": "Tag des Jahres",
+      "fWeek": "Kalenderwoche",
+      "fYearLeft": "Verbleibende Tage im Jahr",
+      "fMonthLeft": "Verbleibende Tage im Monat",
+      "fUnix": "Unix-Zeitstempel",
+      "faqHeading": "Häufige Fragen zum Datum",
+      "faq": [
+        {
+          "q": "Welcher Wochentag ist heute?",
+          "a": "Der heutige Wochentag steht im großen Datum oben und im Feld „Wochentag“. Das Datum wird aus der Serveruhr und Ihrer Zeitzone berechnet."
+        },
+        {
+          "q": "Wie wird das Datum in der Türkei geschrieben?",
+          "a": "In der Türkei wird das numerische Datum wie im Deutschen in der Reihenfolge Tag.Monat.Jahr geschrieben, zum Beispiel 09.10.2026. Das internationale Format nach ISO 8601 lautet Jahr-Monat-Tag: 2026-10-09."
+        },
+        {
+          "q": "Warum kann das Datum hier von meinem Handy abweichen?",
+          "a": "Die Website läuft nach der Serveruhr, unabhängig von Ihrer Geräteuhr. Sind Datum oder Uhrzeit Ihres Geräts falsch eingestellt, kann es zu Abweichungen kommen; die Statuszeile auf der Seite zeigt, wie weit Ihre Geräteuhr abweicht."
+        },
+        {
+          "q": "Der wievielte Tag des Jahres ist heute?",
+          "a": "Der Tag des Jahres wird oben im Feld live angezeigt. Der 1. Januar ist Tag 1, ein Schaltjahr hat 366 Tage."
+        }
+      ]
+    },
+    "tz": {
+      "title": "Gibt es in der Türkei Sommerzeit? UTC+3 erklärt | Saat Tarih",
+      "description": "Gibt es in der Türkei Sommerzeit? Seit 2016 gilt dort ganzjährig UTC+3. Zeitunterschiede und Sommerzeitregeln für Städte weltweit.",
+      "h1": "Gibt es in der Türkei Sommerzeit?",
+      "lead": "Nein. Seit 2016 gilt in der Türkei ganzjährig die Zeitzone UTC+3; die Uhren werden weder im Sommer noch im Winter umgestellt. Die Zone heißt Türkei-Zeit (TRT), ihre IANA-Kennung lautet Europe/Istanbul.",
+      "nowLabel": "Aktuelle Uhrzeit in der Türkei",
+      "factsHeading": "Auf einen Blick",
+      "facts": [
+        "Zeitzone: UTC+3 (Türkei-Zeit, TRT)",
+        "Sommerzeit: keine, seit 2016",
+        "IANA-Kennung: Europe/Istanbul",
+        "Keine Zeitumstellung zweimal im Jahr"
+      ],
+      "historyHeading": "Kurzer Rückblick",
+      "history": [
+        "Bis 2016 galt in der Türkei im Winter UTC+2 (Osteuropäische Zeit) und im Sommer UTC+3 (Osteuropäische Sommerzeit).",
+        "Mit einer Entscheidung von 2016 wurde die Sommerzeit dauerhaft beibehalten; seitdem gilt in der Türkei ganzjährig UTC+3."
+      ],
+      "tableHeading": "Zeitunterschied zwischen der Türkei und Städten weltweit",
+      "tableCaption": "Standardzeitunterschied zur türkischen Zeit und Sommerzeitstatus",
+      "colCity": "Stadt",
+      "colStd": "Standardunterschied",
+      "colDst": "Sommerzeit",
+      "colNow": "Aktuell",
+      "yes": "Ja",
+      "no": "Nein",
+      "note": "Der Standardunterschied ist der Unterschied ohne Sommerzeit. Bei Städten mit Sommerzeit ändert er sich für einen Teil des Jahres um eine Stunde; die Spalte „Aktuell“ zeigt den heutigen tatsächlichen Unterschied.",
+      "faqHeading": "Häufige Fragen zur Zeitzone der Türkei",
+      "faq": [
+        {
+          "q": "Gilt in der Türkei Sommerzeit?",
+          "a": "Nein. Die Türkei hat 2016 die Sommerzeit dauerhaft beibehalten; ganzjährig gilt UTC+3, und die Uhren werden weder vor- noch zurückgestellt."
+        },
+        {
+          "q": "In welcher Zeitzone liegt die Türkei?",
+          "a": "Die Türkei liegt in der Zeitzone UTC+3, bekannt als Türkei-Zeit (TRT); ihre IANA-Kennung lautet Europe/Istanbul."
+        },
+        {
+          "q": "Ist der Zeitunterschied zu Europa das ganze Jahr gleich?",
+          "a": "Nein. Viele europäische Länder haben Sommerzeit, daher ändert sich ihr Unterschied zur Türkei im Laufe des Jahres um eine Stunde. Die Tabelle oben zeigt den heutigen Unterschied."
+        },
+        {
+          "q": "Was bedeutet UTC+3?",
+          "a": "UTC+3 bedeutet drei Stunden vor der koordinierten Weltzeit (UTC). Wenn es 12:00 Uhr UTC ist, ist es in der Türkei 15:00 Uhr."
+        }
+      ]
+    }
+  },
+  "pair": {
+    "title": "Zeitverschiebung {a} – {b} in Stunden | Saat Tarih",
+    "description": "Wie viele Stunden Zeitverschiebung liegen zwischen {a} und {b}? Standardunterschied, Einfluss der Sommerzeit, aktueller Unterschied und Umrechnungstabelle.",
+    "h1": "Zeitverschiebung zwischen {a} und {b}",
+    "ahead": "Zur Standardzeit ist es in {a} {d} später als in {b}.",
+    "behind": "Zur Standardzeit ist es in {a} {d} früher als in {b}.",
+    "same": "{a} und {b} haben dieselbe Uhrzeit; es gibt keine Zeitverschiebung.",
+    "dstNote": "Da in {b} Sommerzeit gilt, beträgt der Unterschied für einen Teil des Jahres {d}.",
+    "dstSame": "Da in {b} Sommerzeit gilt, haben beide Städte für einen Teil des Jahres dieselbe Uhrzeit.",
+    "noDst": "In keiner der beiden Städte gilt Sommerzeit, daher bleibt der Unterschied das ganze Jahr über gleich.",
+    "nowHeading": "Aktuell",
+    "convHeading": "Uhrzeit von {a} nach {b} umrechnen",
+    "convCaption": "Uhrzeit in {a} und die entsprechende Uhrzeit in {b}",
+    "colA": "Uhrzeit {a}",
+    "colB": "Uhrzeit {b}",
+    "nextDay": "am nächsten Tag",
+    "prevDay": "am Vortag",
+    "convNote": "Die Tabelle wird aus dem aktuellen Zeitunterschied in Ihrem Browser berechnet; rund um Sommerzeitumstellungen kann sie um eine Stunde abweichen. Ohne JavaScript zeigt sie den Standardunterschied.",
+    "faqHeading": "Häufige Fragen zur Zeitverschiebung {a} – {b}",
+    "faqDiff": "Wie viele Stunden Zeitverschiebung gibt es zwischen {a} und {b}?",
+    "faqNow": "Wie groß ist der Unterschied zwischen {a} und {b} gerade?",
+    "faqNowA": "Der aktuelle Unterschied steht in der Live-Zeile oben. Rund um Sommerzeitumstellungen kann er um eine Stunde vom Standardunterschied abweichen.",
+    "faqDst": "Gilt in {b} Sommerzeit?",
+    "faqDstYes": "Ja. In {b} gilt Sommerzeit, daher ändert sich der Unterschied zu {a} im Laufe des Jahres um eine Stunde.",
+    "faqDstNo": "Nein. In {b} gilt keine Sommerzeit, daher bleibt der Unterschied das ganze Jahr über gleich.",
+    "converter": "Um eine andere Uhrzeit umzurechnen, nutzen Sie den Zeitumrechner.",
+    "converterLink": "Zeitumrechner"
+  },
+  "pairHub": {
+    "title": "Zeitverschiebung: Istanbul und Städte weltweit | Saat Tarih",
+    "description": "Die Zeitverschiebung zwischen Istanbul und London, New York, Dubai, Tokio und weiteren Städten: Standardunterschied, Sommerzeit und Umrechnungstabellen.",
+    "h1": "Zeitverschiebung",
+    "lead": "Wählen Sie die Zeitverschiebung zwischen Istanbul und einer Stadt weltweit. Jede Seite zeigt den Standardunterschied, den Einfluss der Sommerzeit, den aktuellen Unterschied und eine Umrechnungstabelle.",
+    "listHeading": "Zeitverschiebung zu Istanbul",
+    "linkText": "{a} – {b}"
+  },
+  "converter": {
+    "title": "Zeitumrechner: Uhrzeit zwischen Städten umrechnen | Saat Tarih",
+    "description": "Rechnen Sie die Uhrzeit einer Stadt in die Uhrzeit einer anderen um. Ein Zeitumrechner für Städte weltweit, der die Sommerzeit automatisch berücksichtigt.",
+    "h1": "Zeitumrechner",
+    "lead": "Wählen Sie Ausgangs- und Zielstadt sowie Datum und Uhrzeit; die entsprechende Uhrzeit erscheint sofort. Sommerzeitumstellungen werden automatisch berücksichtigt.",
+    "fromLabel": "Ausgangsstadt",
+    "toLabel": "Zielstadt",
+    "whenLabel": "Datum und Uhrzeit",
+    "mine": "Mein Standort",
+    "swap": "Tauschen",
+    "now": "Jetzt",
+    "resultLabel": "Ergebnis",
+    "result": "Wenn es in {from} {fromTime} ist, ist es in {to} {toTime}.",
+    "diff": "Unterschied: {d}",
+    "sameDay": "am selben Tag",
+    "faqHeading": "Häufige Fragen zum Zeitumrechner",
+    "faq": [
+      {
+        "q": "Wie funktioniert der Zeitumrechner?",
+        "a": "Er rechnet Datum und Uhrzeit der Ausgangsstadt anhand ihrer Zeitzone in Weltzeit um und wendet dann die Zeitzone der Zielstadt an. Sommerzeitumstellungen stammen aus der Zeitzonendatenbank Ihres Browsers."
+      },
+      {
+        "q": "Beeinflusst die Sommerzeit den Unterschied?",
+        "a": "Ja. Bei Städten mit Sommerzeit ändert sich der Unterschied für einen Teil des Jahres um eine Stunde. Der Umrechner verwendet den tatsächlichen Unterschied am gewählten Datum."
+      },
+      {
+        "q": "Was bedeutet „Mein Standort“?",
+        "a": "Es wird die Zeitzone Ihres Geräts verwendet, sodass Sie die Uhrzeit an Ihrem Ort in die einer anderen Stadt umrechnen können."
+      }
+    ]
+  },
+  "planner": {
+    "title": "Meeting-Planer: gemeinsame Arbeitszeiten finden | Saat Tarih",
+    "description": "Finden Sie die beste Besprechungszeit über Zeitzonen hinweg. Arbeitszeiten, Randzeiten und Nachtstunden sind für jede Stadt farblich markiert.",
+    "h1": "Meeting-Planer",
+    "lead": "Fügen Sie Städte hinzu und wählen Sie ein Datum; die stündlichen Zeitleisten der Städte erscheinen nebeneinander. Gemeinsame Arbeitszeiten (09:00–18:00 Uhr) werden automatisch ermittelt.",
+    "addLabel": "Stadt hinzufügen",
+    "addBtn": "Hinzufügen",
+    "dateLabel": "Datum",
+    "remove": "Entfernen",
+    "legendWork": "Arbeitszeit (09–18)",
+    "legendEdge": "Früh oder spät (07–09, 18–22)",
+    "legendNight": "Nacht",
+    "common": "Gemeinsame Arbeitszeiten (Ortszeit {city}): {hours}",
+    "noCommon": "Die gewählten Städte haben keine gemeinsamen Arbeitszeiten; wählen Sie anhand der Zeitleiste die am wenigsten ungünstigen Stunden.",
+    "tableLabel": "24-Stunden-Zeitleiste der gewählten Städte",
+    "minCities": "Wählen Sie mindestens zwei Städte.",
+    "faqHeading": "Häufige Fragen zum Meeting-Planer",
+    "faq": [
+      {
+        "q": "Wie werden gemeinsame Arbeitszeiten ermittelt?",
+        "a": "Als Arbeitszeit gilt in jeder Stadt 09:00–18:00 Uhr. Stunden, in denen in allen gewählten Städten gleichzeitig gearbeitet wird, werden grün markiert und aufgelistet."
+      },
+      {
+        "q": "Wird die Sommerzeit berücksichtigt?",
+        "a": "Ja. Es werden die tatsächlichen Zeitunterschiede am gewählten Datum verwendet, Sommerzeitumstellungen also automatisch berücksichtigt."
+      },
+      {
+        "q": "Wie viele Städte kann ich hinzufügen?",
+        "a": "Sie können bis zu sechs Städte hinzufügen. Ihre Auswahl wird auf diesem Gerät gespeichert."
+      }
+    ]
+  },
+  "cdp": {
+    "title": "Wie viele Tage bis {dat}? Countdown | Saat Tarih",
+    "description": "Wie viele Tage und Stunden noch bis {dat}? Live-Countdown, Zieldatum und die Termine der kommenden Jahre.",
+    "h1": "Wie viele Tage noch bis {dat}?",
+    "lead": "Live-Countdown: {name}. Der Zähler läuft mit der serversynchronisierten Uhr; die verbleibenden Tage, Stunden, Minuten und Sekunden werden jede Sekunde aktualisiert.",
+    "target": "Zieldatum",
+    "noTarget": "Für dieses Ereignis liegt kein bevorstehender Termin vor.",
+    "today": "Heute!",
+    "yearsHeading": "Termine: {name}",
+    "yearsCaption": "{name}: Termine nach Jahr",
+    "colYear": "Jahr",
+    "colDate": "Datum",
+    "customHeading": "Eigenen Countdown erstellen",
+    "customText": "Im Countdown-Tool können Sie ein beliebiges Datum wählen und den Link dazu teilen.",
+    "customLink": "Countdown-Tool öffnen",
+    "listHeading": "Weitere Countdowns",
+    "faqHeading": "Häufige Fragen: {name}",
+    "faqWhen": "{name} – wann ist das?",
+    "faqWhenFixed": "{name}: jedes Jahr am {date}.",
+    "faqWhenYears": "{name}: {list}.",
+    "faqHow": "Wie funktioniert der Countdown?",
+    "faqHowA": "Der Zähler vergleicht die serversynchronisierte Uhrzeit mit dem Beginn des Zieldatums (00:00 Uhr) und aktualisiert sich jede Sekunde. Das Zieldatum stammt aus den Daten unserer Kalenderseiten.",
+    "school": "Der Schulkalender folgt dem Arbeitskalender 2026-2027 des türkischen Bildungsministeriums (MEB); die Bildungsdirektionen der Provinzen können örtlich abweichen.",
+    "targets": {
+      "newYear": {
+        "name": "Neujahr",
+        "dat": "Neujahr"
+      },
+      "rb1": {
+        "name": "Ramadanfest (Ramazan Bayramı)",
+        "dat": "zum Ramadanfest"
+      },
+      "kb1": {
+        "name": "Opferfest (Kurban Bayramı)",
+        "dat": "zum Opferfest"
+      },
+      "oct29": {
+        "name": "Tag der Republik",
+        "dat": "zum Tag der Republik"
+      },
+      "ramadanStart": {
+        "name": "Ramadan",
+        "dat": "zum Ramadan"
+      },
+      "apr23": {
+        "name": "23. April",
+        "dat": "zum 23. April"
+      },
+      "may19": {
+        "name": "19. Mai",
+        "dat": "zum 19. Mai"
+      },
+      "aug30": {
+        "name": "Siegestag (30. August)",
+        "dat": "zum Siegestag"
+      },
+      "semester": {
+        "name": "Halbjahresferien",
+        "dat": "zu den Halbjahresferien"
+      },
+      "karne": {
+        "name": "Zeugnistag",
+        "dat": "zum Zeugnistag"
+      }
+    }
+  },
+  "datecalc": {
+    "title": "Datumsrechner: Tage, Arbeitstage, Alter | Saat Tarih",
+    "description": "Wie viele Tage und Arbeitstage liegen zwischen zwei Daten? Tage, Monate oder Jahre addieren und abziehen, Alter berechnen – mit türkischen Feiertagen.",
+    "h1": "Datumsrechner",
+    "lead": "Berechnen Sie Tage, Wochen und Arbeitstage zwischen zwei Daten, addieren Sie Tage, Monate, Jahre oder Arbeitstage zu einem Datum und ermitteln Sie Ihr Alter und Ihren nächsten Geburtstag. Bei Arbeitstagen werden Wochenenden und gesetzliche Feiertage der Türkei nicht mitgezählt.",
+    "diffHeading": "Zwischen zwei Daten",
+    "startLabel": "Startdatum",
+    "endLabel": "Enddatum",
+    "diffDays": "Unterschied: {n} Tage",
+    "diffWeeks": "Das sind {w} Wochen und {d} Tage",
+    "diffYmd": "{y} Jahre, {m} Monate, {d} Tage",
+    "diffWork": "Arbeitstage (Starttag mitgezählt, Endtag nicht): {n}",
+    "diffNote": "Wochenenden und gesetzliche Feiertage zählen nicht als Arbeitstage; halbe Vorabendtage vor den Bayram-Festen zählen als 0,5.",
+    "addHeading": "Zu einem Datum addieren oder davon abziehen",
+    "amountLabel": "Anzahl",
+    "unitLabel": "Einheit",
+    "units": {
+      "days": "Tage",
+      "weeks": "Wochen",
+      "months": "Monate",
+      "years": "Jahre",
+      "workdays": "Arbeitstage"
+    },
+    "addResult": "Ergebnis: {date}",
+    "addHint": "Geben Sie zum Abziehen eine negative Zahl ein.",
+    "ageHeading": "Altersrechner",
+    "birthLabel": "Geburtsdatum",
+    "ageResult": "{y} Jahre, {m} Monate, {d} Tage alt",
+    "ageDays": "Gelebte Tage insgesamt: {n}",
+    "ageNext": "Nächster Geburtstag: {date} (in {n} Tagen)",
+    "ageToday": "Heute ist Ihr Geburtstag!",
+    "invalid": "Geben Sie ein gültiges Datum ein.",
+    "pick": "Wählen Sie die Daten aus.",
+    "range": "Feiertagsdaten liegen für {from}–{to} vor; außerhalb dieses Zeitraums werden nur Wochenenden ausgelassen.",
+    "faqHeading": "Häufige Fragen zur Datumsberechnung",
+    "faq": [
+      {
+        "q": "Wie werden die Tage zwischen zwei Daten berechnet?",
+        "a": "Das Startdatum wird vom Enddatum abgezogen; der Rechner erledigt das automatisch und zeigt das Ergebnis zusätzlich in Wochen sowie in Jahren, Monaten und Tagen."
+      },
+      {
+        "q": "Werden Feiertage bei den Arbeitstagen ausgenommen?",
+        "a": "Bei der Zählung der Arbeitstage werden Wochenenden und gesetzliche Feiertage der Türkei ausgelassen; halbe Vorabendtage vor den Bayram-Festen zählen als 0,5 Arbeitstage. Grundlage sind die Feiertagsdaten 2026–2031 unserer Kalenderseiten."
+      },
+      {
+        "q": "Wie wird das Alter berechnet?",
+        "a": "Gezählt werden die vollendeten Jahre, Monate und Tage vom Geburtsdatum bis heute. Der Rechner zeigt außerdem die insgesamt gelebten Tage und die Tage bis zum nächsten Geburtstag."
+      },
+      {
+        "q": "Wie wird das Monatsende beim Addieren von Monaten behandelt?",
+        "a": "Hat der Zielmonat diesen Tag nicht, wird sein letzter Tag verwendet; zum Beispiel ergibt der 31. Januar plus 1 Monat den letzten Tag im Februar."
+      }
+    ]
+  },
+  "embedgen": {
+    "title": "Uhr-Widget: kostenlose Uhr für Ihre Website | Saat Tarih",
+    "description": "Binden Sie eine kostenlose Uhr in Ihre Website ein: 13 Uhrenstile, Stadtauswahl, heller oder dunkler Modus. Fertigen iframe-Code kopieren und einfügen.",
+    "h1": "Uhr in Ihre Website einbetten",
+    "lead": "Wählen Sie Stil, Stadt und Farbmodus, kopieren Sie den fertigen iframe-Code und fügen Sie ihn in Ihre Website ein. Das Widget ist werbefrei, verwendet keine Cookies und läuft mit der serversynchronisierten Uhr.",
+    "modelLabel": "Uhrenstil",
+    "cityLabel": "Stadt",
+    "cityLocal": "Standort des Besuchers",
+    "themeLabel": "Farbmodus",
+    "themeAuto": "Automatisch (Einstellung des Besuchers)",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel",
+    "langLabel": "Sprache",
+    "secLabel": "Sekunden anzeigen",
+    "h12Label": "12-Stunden-Format",
+    "widthLabel": "Breite (px)",
+    "heightLabel": "Höhe (px)",
+    "previewHeading": "Vorschau",
+    "codeHeading": "Einbettungscode",
+    "copy": "Code kopieren",
+    "copied": "Code kopiert",
+    "note": "Unter dem Widget erscheinen ein Link zu Saat Tarih und die Bumba-Signatur; bitte lassen Sie beides bestehen.",
+    "previewTitle": "Vorschau des Widgets von Saat Tarih",
+    "frameTitle": "Uhr-Widget von Saat Tarih",
+    "faqHeading": "Häufige Fragen zum Uhr-Widget",
+    "faq": [
+      {
+        "q": "Ist das Widget kostenlos?",
+        "a": "Ja. Das Widget ist kostenlos und werbefrei. Darunter erscheinen ein Link zu Saat Tarih und die Bumba-Signatur."
+      },
+      {
+        "q": "Wie füge ich es in meine Website ein?",
+        "a": "Wählen Sie Stil und Stadt, kopieren Sie den erzeugten iframe-Code und fügen Sie ihn in das HTML Ihrer Seite ein. Breite und Höhe können Sie an Ihr Layout anpassen."
+      },
+      {
+        "q": "Erfasst das Widget Daten meiner Besucher?",
+        "a": "Das Widget setzt keine Cookies und erhebt keine personenbezogenen Daten. Es sendet einige kleine Anfragen an den Server, um die richtige Uhrzeit anzuzeigen; Seitenaufrufe werden in einer cookiefreien, anonymen Statistik gezählt."
+      }
+    ],
+    "sizeNote": "Kalenderstile benötigen mindestens 460 px Höhe; die übrigen Stile passen bequem in 360 px."
+  },
+  "embed": {
+    "link": "Saat Tarih"
+  }
+}

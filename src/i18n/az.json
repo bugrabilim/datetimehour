@@ -1,0 +1,1111 @@
+{
+  "lang": "az",
+  "locale": "az-Latn-AZ",
+  "ogLocale": "az_AZ",
+  "langName": "Azərbaycanca",
+  "site": {
+    "name": "Saat Tarih",
+    "tagline": "Canlı saat, bugünkü tarix və dünya saatları",
+    "description": "Saat Tarih yerli vaxtınızı, bugünkü tarixi, həftə nömrəsini və dünyanın müxtəlif şəhərlərindəki vaxtı canlı göstərən pulsuz saytdır."
+  },
+  "ui": {
+    "skip": "Məzmuna keç",
+    "home": "Ana səhifə",
+    "world": "Dünya saatları",
+    "privacy": "Məxfilik və kukilər",
+    "mainNav": "Əsas naviqasiya",
+    "footerNav": "Alt naviqasiya",
+    "langSwitch": "Azərbaycanca",
+    "langSwitchLabel": "Azərbaycan dilinə keç",
+    "themeToggle": "Açıq və tünd mövzu arasında keçid et",
+    "searchOpen": "Saytda axtar",
+    "searchTitle": "Saytda axtarış",
+    "searchLabel": "Axtarış sözü",
+    "searchPlaceholder": "Şəhər, səhifə və ya mövzu yazın…",
+    "searchClose": "Axtarışı bağla",
+    "searchEmpty": "Heç nə tapılmadı. Başqa söz yoxlayın, məsələn, şəhər adı və ya \"həftə\".",
+    "searchHint": "Hərəkət üçün ↑ ↓, açmaq üçün Enter, bağlamaq üçün Esc.",
+    "searchCount": "{n} nəticə",
+    "searchResults": "Axtarış nəticələri",
+    "searchError": "Axtarış indeksi yüklənmədi. Səhifəni yeniləyib yenidən cəhd edin.",
+    "breadcrumb": "Naviqasiya zənciri",
+    "updated": "Son yenilənmə",
+    "noscript": "Canlı saatı görmək üçün brauzerinizdə JavaScript aktiv olmalıdır.",
+    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "logoAlt": "Saat Tarih ana səhifəsi",
+    "calendar": "Təqvim",
+    "tools": "Alətlər",
+    "langMenu": "Dil"
+  },
+  "client": {
+    "format24": "24 saat",
+    "format12": "12 saat",
+    "seconds": "Saniyələr",
+    "diffSame": "Sizinlə eyni vaxt",
+    "diffAhead": "Sizdən {d} irəlidə",
+    "diffBehind": "Sizdən {d} geridə",
+    "hourShort": "saat",
+    "minuteShort": "dəq",
+    "yourZone": "Sizin saat qurşağınız",
+    "yearDone": "İlin {p}%-i artıq keçib",
+    "fullscreen": "Tam ekran",
+    "exitFullscreen": "Tam ekrandan çıx",
+    "weekShort": "Həf",
+    "words": {
+      "units": [
+        "sıfır",
+        "bir",
+        "iki",
+        "üç",
+        "dörd",
+        "beş",
+        "altı",
+        "yeddi",
+        "səkkiz",
+        "doqquz",
+        "on",
+        "on bir",
+        "on iki",
+        "on üç",
+        "on dörd",
+        "on beş",
+        "on altı",
+        "on yeddi",
+        "on səkkiz",
+        "on doqquz"
+      ],
+      "tens": [
+        "",
+        "",
+        "iyirmi",
+        "otuz",
+        "qırx",
+        "əlli"
+      ],
+      "join": " ",
+      "oh": "sıfır",
+      "sentence": "Saat {h} {m}",
+      "oclock": "Saat düz {h}",
+      "unitFirst": false
+    },
+    "syncLabel": "Server saatı",
+    "syncPending": "Server saatı ilə sinxronlaşdırılır…",
+    "syncOk": "Server saatı ilə işləyir (±{ms} ms). Cihazınızın saatı düzgündür.",
+    "syncAhead": "Server saatı ilə işləyir. Cihazınızın saatı {s} san irəlidədir.",
+    "syncBehind": "Server saatı ilə işləyir. Cihazınızın saatı {s} san geridədir.",
+    "syncOff": "Cihazınızın saatından istifadə olunur.",
+    "syncFail": "Server saatına qoşulmaq mümkün olmadı; cihazınızın saatından istifadə olunur.",
+    "daysLeft": "{n} gün qalıb",
+    "today": "Bu gün",
+    "tomorrow": "Sabah",
+    "passed": "Keçib",
+    "upcomingNone": "Yaxınlaşan gün tapılmadı.",
+    "refAhead": "{ref} vaxtından {d} irəlidə",
+    "refBehind": "{ref} vaxtından {d} geridə",
+    "refSame": "{ref} ilə eyni vaxt",
+    "weekFound": "{date} tarixi ISO {y} ilinin {n} nömrəli həftəsinə düşür.",
+    "pickDate": "Tarix seçin.",
+    "daysShort": "gün"
+  },
+  "home": {
+    "title": "Saat neçədir? Canlı saat və bugünkü tarix | Saat Tarih",
+    "description": "İndi saat neçədir, bu gün ayın neçəsidir? Yerli vaxtınızı, tarixi, həftə nömrəsini və dünya şəhərlərindəki vaxtı bir səhifədə canlı görün.",
+    "h1": "İndi saat neçədir?",
+    "lead": "Saat Tarih yerli vaxtınızı, bugünkü tarixi, həftə nömrəsini və dünyanın müxtəlif şəhərlərindəki vaxtı canlı göstərən pulsuz saytdır. Hər kəs üçündür, qeydiyyat tələb olunmur. {n} saat görünüşü arasında sürüşdürün və istədiyinizi tam ekranda açın.",
+    "clockHeading": "Canlı saat",
+    "factsHeading": "Bu gün haqqında",
+    "factWeek": "Həftə nömrəsi (ISO)",
+    "factDoy": "İlin günü",
+    "factLeft": "İlin sonuna qalan günlər",
+    "factUnix": "Unix vaxt möhürü",
+    "factUtc": "UTC vaxtı",
+    "factProgress": "İlin gedişatı",
+    "worldHeading": "Dünya şəhərlərində saat",
+    "worldLead": "Seçilmiş şəhərlərdə indiki yerli vaxt. Ətraflı məlumat üçün şəhəri seçin.",
+    "worldAll": "Bütün şəhərlərə bax",
+    "faqHeading": "Tez-tez verilən suallar",
+    "faq": [
+      {
+        "q": "Bu saytdakı vaxt necə hesablanır?",
+        "a": "Vaxt saytın serveri ilə sinxronlaşdırılır, ona görə də cihazınızın saatı səhv olsa belə düzgün göstərilir. Saat qurşağı cihazınızın ayarlarından götürülür. Sinxronlaşma zamanı serverə yalnız bir neçə kiçik sorğu göndərilir, heç bir şəxsi məlumat ötürülmür. \"Server saatı\" düyməsini söndürsəniz, cihazınızın saatından istifadə olunur."
+      },
+      {
+        "q": "Türkiyədə yay vaxtı tətbiq olunurmu?",
+        "a": "Xeyr. Türkiyə 2016-cı ildən bəri bütün il boyu UTC+3 vaxtından istifadə edir, saatlar irəli və ya geri çəkilmir. Bir çox Avropa ölkəsi hələ də saatlarını dəyişdiyi üçün onların Türkiyə ilə vaxt fərqi il ərzində bir saat dəyişə bilər."
+      },
+      {
+        "q": "Həftə nömrəsi necə hesablanır?",
+        "a": "ISO 8601 standartına görə həftələr bazar ertəsi başlayır və ilin ilk cümə axşamını əhatə edən həftə 1-ci həftə sayılır. Buna görə ilin ilk və son günləri qonşu ilin həftəsinə aid ola bilər."
+      },
+      {
+        "q": "Şəhərlər arasındakı vaxt fərqi necə müəyyən edilir?",
+        "a": "Hər şəhərin cari UTC fərqi brauzerinizin saat qurşaqları bazasından (IANA) götürülür, yay vaxtına keçidlər avtomatik nəzərə alınır. \"Sizdən irəlidə\" və \"sizdən geridə\" ifadələri həmişə sizin öz saat qurşağınıza aiddir."
+      },
+      {
+        "q": "Saatın görünüşünü necə dəyişə bilərəm?",
+        "a": "Saatın üzərində sola və ya sağa sürüşdürün; kompüterdə onun altındakı oxlardan və ya nöqtələrdən, yaxud klaviaturadakı ox düymələrindən istifadə edin. Görünüşlər arasında klassik və sadə analoq, rəqəmsal, analoq və rəqəmsal birlikdə, tarixli və tarixsiz variantlar, aylıq təqvimli saatlar, vərəqli saat, sözlə yazılan saat, halqalı saat və böyük tarix var. Seçiminiz bu cihazda yadda saxlanılır."
+      },
+      {
+        "q": "Saatı tam ekranda necə görə bilərəm?",
+        "a": "Saatın altındakı tam ekran düyməsini basın. Çıxmaq üçün həmin düyməni və ya Esc düyməsini basın. Tam ekranda da görünüşlər arasında sürüşdürməyə davam edə bilərsiniz."
+      },
+      {
+        "q": "Saat cihazımın saatından asılı olmadan işləyirmi?",
+        "a": "Bəli. Vaxt saytın serveri ilə sinxronlaşdırılır, ona görə də cihazınızın saatı səhv olsa belə düzgün vaxtı göstərir və cihazınızın saatının nə qədər fərqləndiyini bildirir. \"Server saatı\" düyməsi ilə cihazınızın saatına qayıda bilərsiniz. Saat qurşağı yenə də cihazınızın ayarlarından götürülür."
+      },
+      {
+        "q": "Türkiyənin rəsmi bayramlarını və Ramazanı harada görə bilərəm?",
+        "a": "İllik təqvim səhifəsində rəsmi bayram günləri, dini bayramlar və ərəfə günləri, mübarək (kandil) gecələri və Ramazan ayı bir təqvimdə göstərilir. Ana səhifədəki \"Yaxınlaşan günlər\" bölməsi növbəti bayrama neçə gün qaldığını bildirir."
+      }
+    ],
+    "upcomingHeading": "Yaxınlaşan rəsmi bayramlar və xüsusi günlər",
+    "upcomingLead": "Türkiyə təqvimində növbəti günlər.",
+    "upcomingAll": "İllik təqvimə bax",
+    "upcomingNone": "Yaxınlaşan gün tapılmadı."
+  },
+  "world": {
+    "title": "Dünya saatları: şəhərlərdə indiki vaxt | Saat Tarih",
+    "description": "İstanbulda, Londonda, Nyu-Yorkda, Tokioda və başqa şəhərlərdə saat neçədir? Dünya şəhərlərində canlı yerli vaxt və sizinlə vaxt fərqi.",
+    "h1": "Dünya saatları",
+    "lead": "Bu səhifədə İstanbul, London, Nyu-York və Tokio da daxil olmaqla {n} şəhərdə indiki yerli vaxt və sizinlə vaxt fərqi göstərilir. Yay vaxtına keçidlər avtomatik nəzərə alınır.",
+    "colCity": "Şəhər",
+    "colCountry": "Ölkə",
+    "colTime": "Saat",
+    "colOffset": "UTC fərqi",
+    "colDiff": "Sizinlə fərq",
+    "tableCaption": "Şəhərlərdə indiki yerli vaxt"
+  },
+  "city": {
+    "title": "{name} ({country}): saat neçədir? | Saat Tarih",
+    "description": "{name} şəhərində indi saat neçədir? {name} ({country}) üçün canlı yerli vaxt, tarix və UTC fərqi. Saat qurşağı: {tz}.",
+    "h1": "{name} şəhərində indiki vaxt",
+    "lead": "{name} ({country}) şəhərində indiki yerli vaxt aşağıda göstərilir. {name} {tz} saat qurşağında yerləşir; standart fərq UTC{std}.",
+    "dstYes": "{name} yay vaxtından istifadə edir, ona görə UTC fərqi il ərzində bir saat dəyişir.",
+    "dstNo": "{name} yay vaxtından istifadə etmir, ona görə UTC fərqi bütün il boyu eyni qalır.",
+    "liveOffset": "Cari UTC fərqi",
+    "liveDiff": "Sizinlə fərq",
+    "otherHeading": "Digər şəhərlərdə saat",
+    "faqHeading": "{name} vaxtı haqqında tez-tez verilən suallar",
+    "faqTime": "{name} şəhərində saat neçədir?",
+    "faqTimeA": "{name} şəhərindəki yerli vaxt yuxarıdakı canlı saatda göstərilir. O, {tz} saat qurşağına əsasən hesablanır və hər saniyə yenilənir.",
+    "faqZone": "{name} hansı saat qurşağındadır?",
+    "faqZoneA": "{name} {tz} saat qurşağında yerləşir; standart fərq UTC{std}.",
+    "faqDst": "{name} şəhərində yay vaxtı tətbiq olunurmu?",
+    "faqDstYesA": "Bəli. {name} yay vaxtından istifadə edir; keçid tarixlərində UTC fərqi bir saat dəyişir və bu səhifə dəyişikliyi avtomatik nəzərə alır.",
+    "faqDstNoA": "Xeyr. {name} yay vaxtından istifadə etmir, ona görə UTC fərqi bütün il boyu eyni qalır.",
+    "breadcrumbWorld": "Dünya saatları",
+    "sunrise": "Günəşin doğuşu",
+    "sunset": "Günəşin batışı",
+    "daylen": "Gündüzün uzunluğu",
+    "sunNote": "Günəşin doğuş və batış vaxtları təxminidir: bugünkü tarixə və şəhərin coğrafi mövqeyinə əsasən hesablanır (bir neçə dəqiqə fərq ola bilər)."
+  },
+  "privacy": {
+    "title": "Məxfilik və kuki siyasəti | Saat Tarih",
+    "description": "Saat Tarih hansı məlumatları emal edir, kukilər və yerli yaddaş, Umami statistikası, e-poçt siyahısı və Türkiyə məlumat qanunu (KVKK) üzrə hüquqlarınız.",
+    "h1": "Məxfilik və kuki siyasəti",
+    "lead": "Bu səhifə Saat Tarih saytından istifadə edərkən hansı məlumatların, hansı məqsədlə emal edildiyini və hansı hüquqlara malik olduğunuzu izah edir. Sayt yalnız lazım olan məlumatları toplayır; hesab, reklam və izləmə kukiləri yoxdur.",
+    "sections": [
+      {
+        "id": "controller",
+        "h": "Məlumat nəzarətçisi",
+        "p": [
+          "Məlumat nəzarətçisi (şəxsi məlumatların emalına cavabdeh şəxs) Bumba Teknoloji Limited Şirketi-dir (Ataşehir / İstanbul, Türkiyə). İstənilən sual və ya şəxsi məlumatlarla bağlı müraciət üçün: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "data",
+        "h": "Hansı məlumatları emal edirik?",
+        "ul": [
+          "**Saat və tarix:** Cihazınızın saatı və saat qurşağı yalnız brauzerinizdə oxunur və hesablanır. Bu məlumatlar serverə göndərilmir və saxlanılmır.",
+          "**E-poçt siyahısı forması:** Daxil etdiyiniz e-poçt ünvanı, qeyd xanası ilə verdiyiniz razılıq, seçilmiş dil və formanın yerləşdiyi səhifə Bumba Group-un ortaq siyahı xidməti (bumbagroup.com) tərəfindən emal edilir. Qeydiyyat ikimərhələli təsdiqlə aparılır: təsdiq e-məktubundakı keçidə klikləməyənədək siyahıya əlavə edilmirsiniz, hər e-məktubda isə bir kliklə abunəlikdən çıxmaq üçün keçid var. Ətraflı məlumat üçün [ortaq məlumatlandırma bildirişinə](https://bumbagroup.com/liste/aydinlatma?dil=en) baxın.",
+          "**Server jurnalları:** Saytı yerləşdirən server hər sorğu üçün IP ünvanı, brauzer məlumatları, sorğulanan səhifə və vaxtdan ibarət standart giriş jurnalı aparır. Bu jurnallar insanların profilini yaratmaq üçün deyil, yalnız təhlükəsizlik və nasazlıqların aradan qaldırılması üçün istifadə olunur.",
+          "**Ziyarət statistikası:** Öz serverimizdə işləyən Umami səhifə baxışlarını və bir neçə əməliyyatı (dil dəyişikliyi, mövzu dəyişikliyi, axtarışın nəticə verib-vermədiyi, siyahıya qoşulma) sayır. Umami kukilərdən istifadə etmir. Axtarışa yazdığınız sözlər və e-poçt ünvanınız statistika sisteminə göndərilmir.",
+          "**Vaxt sinxronlaşması:** Vaxtı cihazınızın saatından asılı olmadan göstərmək üçün brauzeriniz saytın öz serverinə bir neçə kiçik sorğu göndərir və cavabın tarix başlığını oxuyur. Bu sorğular yalnız serverin standart giriş jurnalında görünür; əlavə heç bir məlumat göndərilmir."
+        ]
+      },
+      {
+        "id": "cookies",
+        "h": "Kukilər və yerli yaddaş",
+        "p": [
+          "Saat Tarih heç bir kuki yerləşdirmir, ona görə də kuki bildirişi göstərmirik. Seçimlərinizi yadda saxlamaq üçün brauzerinizin yerli yaddaşından (localStorage) istifadə edirik; bu məlumatlar cihazınızda qalır və serverə göndərilmir. Onları istənilən vaxt brauzer ayarlarından silə bilərsiniz."
+        ],
+        "table": {
+          "head": [
+            "Ad",
+            "Məqsəd",
+            "Müddət"
+          ],
+          "rows": [
+            [
+              "sth-theme",
+              "Açıq və ya tünd mövzu seçiminizi yadda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
+              "sth-lang",
+              "Dil seçiminizi yadda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
+              "sth-prefs",
+              "24 və ya 12 saatlıq görünüşü və saniyə ayarını yadda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
+              "sth-sw",
+              "Saniyəölçənin vəziyyətini və dövrə vaxtlarını yadda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
+              "sth-cd",
+              "Geriyə sayımı yadda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
+              "sth-alarms",
+              "Qurduğunuz zəngli saatları yadda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
+              "sth-pomo",
+              "Pomodoro müddətlərini və vəziyyətini yadda saxlayır.",
+              "Siz silənədək"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "legal-basis",
+        "h": "Hüquqi əsaslar",
+        "ul": [
+          "E-poçt siyahısı: açıq razılığınız (Türkiyənin Şəxsi Məlumatların Qorunması Qanunu – KVKK, maddə 5/1). Razılığınızı istənilən vaxt hər e-məktubdakı abunəlikdən çıxma keçidi ilə geri götürə bilərsiniz.",
+          "Server jurnalları və ziyarət statistikası: saytın təhlükəsiz və işlək saxlanmasında qanuni marağımız (KVKK, maddə 5/2-f)."
+        ]
+      },
+      {
+        "id": "rights",
+        "h": "Hüquqlarınız",
+        "p": [
+          "Türkiyənin Şəxsi Məlumatların Qorunması Qanununun (KVKK) 11-ci maddəsinə əsasən məlumatlarınızın emal edilib-edilmədiyini öyrənmək, onlar barədə məlumat tələb etmək, düzəldilməsini və ya silinməsini istəmək, həmçinin emalına etiraz etmək hüququnuz var. Müraciətinizi [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com) ünvanına göndərin."
+        ]
+      },
+      {
+        "id": "changes",
+        "h": "Dəyişikliklər",
+        "p": [
+          "Bu mətn sayt dəyişdikcə yenilənir. Cari versiyanın tarixi səhifənin yuxarısında göstərilir."
+        ]
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Səhifə tapılmadı (404) | Saat Tarih",
+    "h1": "Bu səhifəni tapa bilmədik",
+    "p": "Ünvan səhv yazılmış və ya səhifə başqa yerə köçürülmüş ola bilər. İndiki vaxtı ana səhifədə yoxlaya bilərsiniz.",
+    "cta": "Ana səhifəyə qayıt"
+  },
+  "serverError": {
+    "title": "Xəta baş verdi (500) | Saat Tarih",
+    "h1": "Xəta baş verdi",
+    "p": "Serverdə müvəqqəti problem yaranıb. Bir neçə dəqiqədən sonra yenidən cəhd edin.",
+    "cta": "Ana səhifəyə qayıt"
+  },
+  "list": {
+    "heading": "Yeniliklərdən xəbərdar olun",
+    "lead": "Saat Tarih yenilikləri barədə e-poçtla məlumat almaq istəyirsiniz? İstənilən vaxt bir kliklə abunəlikdən çıxa bilərsiniz.",
+    "emailLabel": "E-poçt ünvanınız",
+    "consentPre": "",
+    "consentLink": "Məlumatlandırma bildirişini",
+    "consentPost": " oxudum və e-məktublar almağa razıyam.",
+    "submit": "Qoşul",
+    "ok": "Sizə təsdiq e-məktubu göndərdik; siyahıya qoşulmağı tamamlamaq üçün poçt qutunuzdakı keçidə klikləyin.",
+    "err": "Qeydiyyatınızı saxlaya bilmədik. E-poçt ünvanını və qeyd xanasını yoxlayın, sonra bir az sonra yenidən cəhd edin.",
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en"
+  },
+  "badge": {
+    "title": "Bumba Life, Bumba Group-un bir qolu",
+    "alt": "Bumba Life məhsulu"
+  },
+  "llms": {
+    "summary": "Saat Tarih yerli vaxtınızı, bugünkü tarixi, həftə nömrəsini və dünyanın müxtəlif şəhərlərindəki vaxtı canlı göstərən pulsuz saytdır. Bumba Life məhsuludur (Bumba Group).",
+    "pages": "Səhifələr",
+    "cities": "Şəhər səhifələri",
+    "about": "Haqqında",
+    "aboutText": "Vaxt saytın server saatı ilə sinxronlaşdırılır (cihazın saatından asılı deyil); saat qurşağı brauzerdən oxunur və heç bir şəxsi məlumat göndərilmir. Türk, ingilis və Azərbaycan dillərində mövcuddur. Məlumat nəzarətçisi: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. Əlaqə: bilgi@bumbagroup.com."
+  },
+  "stage": {
+    "label": "Saat görünüşləri",
+    "hint": "Görünüşlər arasında sürüşdürün və ya oxlardan istifadə edin.",
+    "prev": "Əvvəlki görünüş",
+    "next": "Növbəti görünüş",
+    "slide": "{n} / {total}: {name}",
+    "carousel": "karusel",
+    "slideRole": "slayd",
+    "dots": "Görünüş seçin",
+    "models": {
+      "classic": "Klassik analoq",
+      "minimal": "Sadə analoq",
+      "analog-date": "Tarixli analoq",
+      "digital": "Rəqəmsal",
+      "digital-date": "Tarixli rəqəmsal",
+      "duo": "Analoq və rəqəmsal",
+      "duo-date": "Analoq, rəqəmsal və tarix",
+      "calendar": "Aylıq təqvimli rəqəmsal",
+      "calendar-analog": "Aylıq təqvimli analoq",
+      "flip": "Vərəqli saat",
+      "words": "Sözlə saat",
+      "rings": "Halqalı saat",
+      "bigdate": "Böyük tarix"
+    }
+  },
+  "calendar": {
+    "title": "{year} təqvimi: Türkiyənin rəsmi bayramları və Ramazan | Saat Tarih",
+    "description": "{year} ilində Türkiyənin rəsmi bayram günləri, Ramazan və Qurban bayramlarının tarixləri, ərəfələr, mübarək gecələr və Ramazan ayı bir təqvimdə.",
+    "h1": "{year} təqvimi",
+    "lead": "{year} ilində Ramazan ayı {ramadan} tarixlərinə düşür; Ramazan bayramı {rb}, Qurban bayramı isə {kb} tarixlərində qeyd olunur. İldə {n} rəsmi bayram günü var, onlardan {w} günü iş günlərinə düşür. Bayramların və Cümhuriyyət Bayramının ərəfələri yarım iş günüdür.",
+    "legend": "İşarələr",
+    "legendLabel": "Təqvim işarələri",
+    "types": {
+      "holiday": "Rəsmi bayram günü",
+      "half": "Yarım gün (ərəfə)",
+      "religious": "Dini gün və ya gecə",
+      "ramadan": "Ramazan ayı",
+      "special": "Xüsusi gün",
+      "weekend": "Həftəsonu",
+      "today": "Bu gün",
+      "school": "Məktəb tətili və ya tədris tarixi (MEB)"
+    },
+    "eventsHeading": "{year} ilinin günləri",
+    "colDate": "Tarix",
+    "colDay": "Gün",
+    "colEvent": "Ad",
+    "colType": "Növ",
+    "colLeft": "Qalıb",
+    "tableCaption": "{year} ilində rəsmi bayramlar, dini günlər və xüsusi günlər",
+    "yearNav": "İl seçin",
+    "prevYear": "← {year}",
+    "nextYear": "{year} →",
+    "monthLabel": "{month} {year}",
+    "faqHeading": "{year} təqvimi haqqında tez-tez verilən suallar",
+    "faqRb": "{year} ilində Ramazan bayramı nə vaxtdır?",
+    "faqRbA": "{year} ilində Ramazan bayramı {rb} tarixlərində qeyd olunur. Ərəfə günü {eve} tarixinə düşür və yarım iş günüdür.",
+    "faqKb": "{year} ilində Qurban bayramı nə vaxtdır?",
+    "faqKbA": "{year} ilində Qurban bayramı {kb} tarixlərində qeyd olunur. Ərəfə günü {eve} tarixinə düşür və yarım iş günüdür.",
+    "faqRamadan": "{year} ilində Ramazan ayı nə vaxt başlayır?",
+    "faqRamadanA": "{year} ilində Ramazan ayı {start} tarixində başlayır və {end} tarixində bitir. Qədr gecəsi {kadir} axşamına düşür.",
+    "faqHolidays": "{year} ilində neçə rəsmi bayram günü var?",
+    "faqHolidaysA": "{year} ilində {n} rəsmi bayram günü var, onlardan {w} günü iş günlərinə düşür. Ramazan və Qurban bayramlarının ərəfələri, həmçinin 28 oktyabr yarım iş günüdür.",
+    "note": "Dini gün və gecələrin tarixləri Türkiyə Diyanət İşləri Başqanlığının (Diyanet) təqviminə əsaslanır; mübarək (kandil) gecələri göstərilən tarixin axşamı başlayır. İnzibati məzuniyyət və körpü tətilləri rəsmi bayram deyil və burada göstərilmir.",
+    "noYear": "Bu il üçün məlumat yoxdur.",
+    "months": [
+      "Yanvar",
+      "Fevral",
+      "Mart",
+      "Aprel",
+      "May",
+      "İyun",
+      "İyul",
+      "Avqust",
+      "Sentyabr",
+      "Oktyabr",
+      "Noyabr",
+      "Dekabr"
+    ],
+    "weekdays": [
+      "Bazar ertəsi",
+      "Çərşənbə axşamı",
+      "Çərşənbə",
+      "Cümə axşamı",
+      "Cümə",
+      "Şənbə",
+      "Bazar"
+    ],
+    "weekdaysShort": [
+      "B.e.",
+      "Ç.a.",
+      "Ç.",
+      "C.a.",
+      "C.",
+      "Ş.",
+      "B."
+    ],
+    "events": {
+      "newYear": "Yeni il",
+      "apr23": "Milli Suverenlik və Uşaqlar Bayramı",
+      "may1": "Əmək və Həmrəylik Günü",
+      "may19": "Atatürkü Anma, Gənclik və İdman Bayramı",
+      "jul15": "Demokratiya və Milli Birlik Günü",
+      "aug30": "Zəfər Bayramı",
+      "oct28": "Cümhuriyyət Bayramı ərəfəsi",
+      "oct29": "Cümhuriyyət Bayramı",
+      "ucAylar": "Üç mübarək ayın başlanğıcı",
+      "regaib": "Rəğaib gecəsi",
+      "mirac": "Merac gecəsi",
+      "berat": "Bəraət gecəsi",
+      "ramadanStart": "Ramazan ayının ilk günü",
+      "kadir": "Qədr gecəsi",
+      "rbEve": "Ramazan bayramı ərəfəsi",
+      "rb1": "Ramazan bayramı, 1-ci gün",
+      "rb2": "Ramazan bayramı, 2-ci gün",
+      "rb3": "Ramazan bayramı, 3-cü gün",
+      "kbEve": "Qurban bayramı ərəfəsi",
+      "kb1": "Qurban bayramı, 1-ci gün",
+      "kb2": "Qurban bayramı, 2-ci gün",
+      "kb3": "Qurban bayramı, 3-cü gün",
+      "kb4": "Qurban bayramı, 4-cü gün",
+      "hijri": "Hicri yeni il",
+      "ashura": "Aşura günü",
+      "mawlid": "Mövlud gecəsi",
+      "mar8": "Beynəlxalq Qadınlar Günü",
+      "mothers": "Analar Günü",
+      "fathers": "Atalar Günü",
+      "nov10": "Atatürkü Anma Günü",
+      "nov24": "Müəllimlər Günü",
+      "schoolStart": "Məktəblərin açılışı (MEB)",
+      "midterm1": "Birinci yarımilin ara tətili başlayır (MEB)",
+      "term1End": "Birinci yarımilin sonu, tabel günü (MEB)",
+      "semester": "Yarımil tətili başlayır (MEB)",
+      "term2Start": "İkinci yarımil başlayır (MEB)",
+      "midterm2": "İkinci yarımilin ara tətili başlayır (MEB)",
+      "schoolEnd": "Tədris ilinin sonu, tabel günü (MEB)"
+    },
+    "hubName": "İllik təqvim",
+    "hubDesc": "Rəsmi bayram günləri, dini bayramlar və ərəfələr, mübarək gecələr və Ramazan ayı.",
+    "projected": "Bu ilin dini tarixləri Diyanetin uzunmüddətli təqviminə əsaslanır və il yaxınlaşdıqca dəyişə bilər.",
+    "schoolNote": "Məktəb təqvimi Türkiyə Milli Təhsil Nazirliyinin (MEB) 2026-2027 tədris ili üçün iş təqviminə əsaslanır; əyalət təhsil idarələrində yerli fərqlər ola bilər.",
+    "fullFmt": "{day} {month} {year}, {weekday}",
+    "shortFmt": "{day} {month}",
+    "dateFmt": "{day} {month} {year}"
+  },
+  "tools": {
+    "hub": {
+      "title": "Saat alətləri: saniyəölçən, taymer, zəngli saat | Saat Tarih",
+      "description": "Pulsuz onlayn saniyəölçən, geriyə sayım taymeri, zəngli saat və pomodoro taymeri. Qeydiyyat və reklam yoxdur; tam ekran və səsli xəbərdarlıq.",
+      "h1": "Saat alətləri",
+      "lead": "Saat Tarih alətləri qeydiyyat və quraşdırma olmadan brauzerinizdə işləyir. Saniyəölçən, geriyə sayım, zəngli saat və pomodoro taymeri – hamısını tam ekranda və tünd rejimdə istifadə edə bilərsiniz.",
+      "open": "Aç",
+      "cards": {
+        "stopwatch": {
+          "name": "Saniyəölçən",
+          "desc": "Dövrə vaxtları, ən yaxşı və ən yavaş dövrə, tam ekran."
+        },
+        "countdown": {
+          "name": "Geriyə sayım",
+          "desc": "Müddətə və ya tarixə görə; Yeni ilə və bayrama qalan vaxt."
+        },
+        "alarm": {
+          "name": "Zəngli saat",
+          "desc": "Vaxt, ad, seçilmiş günlərdə təkrar və təxirə salma."
+        },
+        "pomodoro": {
+          "name": "Pomodoro",
+          "desc": "25 dəqiqə iş, 5 dəqiqə istirahət; uzun fasilə də daxildir."
+        },
+        "week": {
+          "name": "Hansı həftədir?",
+          "desc": "ISO həftə nömrəsi, bu həftənin tarixləri, ilin bütün həftələri."
+        },
+        "today": {
+          "name": "Bugünkü tarix",
+          "desc": "Bugünkü tarix, həftənin günü, ilin günü və qalan günlər."
+        },
+        "tz": {
+          "name": "Türkiyə saat qurşağı",
+          "desc": "Yay vaxtı varmı? UTC+3 və digər şəhərlərlə vaxt fərqi."
+        },
+        "converter": {
+          "name": "Vaxt çevirici",
+          "desc": "Bir şəhərdəki vaxtı digər şəhərin vaxtına çevirin."
+        },
+        "planner": {
+          "name": "Görüş planlayıcısı",
+          "desc": "Müxtəlif saat qurşaqlarında ortaq iş saatlarını tapın."
+        },
+        "diff": {
+          "name": "Vaxt fərqi",
+          "desc": "İstanbul ilə dünya şəhərləri arasındakı vaxt fərqi."
+        },
+        "datecalc": {
+          "name": "Tarix kalkulyatoru",
+          "desc": "Tarixlər arasında gün və iş günü, tarixə əlavə, yaş."
+        },
+        "embed": {
+          "name": "Saat vidceti",
+          "desc": "Saytınıza pulsuz saat yerləşdirin (iframe)."
+        }
+      },
+      "infoHeading": "Məlumat səhifələri"
+    },
+    "common": {
+      "fullscreen": "Tam ekran",
+      "exitFullscreen": "Tam ekrandan çıx",
+      "sound": "Səsli xəbərdarlıq",
+      "notify": "Bildirişlərə icazə ver",
+      "notifyOn": "Bildirişlər aktivdir",
+      "notifyDenied": "Bildiriş icazəsi rədd edildi",
+      "testSound": "Səsi yoxla",
+      "close": "Bağla",
+      "relatedHeading": "Digər alətlər",
+      "pageOpenNote": "Bu alət yalnız səhifə açıq olduqda işləyir; tabı bağlasanız sizi xəbərdar etməyəcək.",
+      "faqHeading": "Tez-tez verilən suallar",
+      "syncNote": "Vaxtlar server saatı ilə işləyir, ona görə də cihazınızın saatı səhv olsa belə nəticələr düzgündür.",
+      "toolsHub": "Bütün alətlər"
+    },
+    "stopwatch": {
+      "title": "Onlayn saniyəölçən: dövrə vaxtları və tam ekran | Saat Tarih",
+      "description": "Pulsuz onlayn saniyəölçən: dövrə vaxtları, ən yaxşı və ən yavaş dövrə, tam ekran və klaviatura qısayolları. Səhifəni yeniləsəniz də vaxt itmir.",
+      "h1": "Onlayn saniyəölçən",
+      "lead": "Saniyəölçən saniyənin yüzdə biri dəqiqliyi ilə işləyir, dövrə vaxtlarını qeyd edir və səhifəni yeniləsəniz, yaxud bağlayıb yenidən açsanız belə vaxtınızı saxlayır. Boşluq düyməsi başladır və dayandırır, L dövrə əlavə edir.",
+      "start": "Başlat",
+      "stop": "Dayandır",
+      "resume": "Davam et",
+      "lap": "Dövrə",
+      "reset": "Sıfırla",
+      "lapNo": "Dövrə",
+      "lapTime": "Dövrə vaxtı",
+      "total": "Ümumi",
+      "best": "Ən yaxşı",
+      "worst": "Ən yavaş",
+      "empty": "Hələ dövrə yoxdur.",
+      "hint": "Qısayollar: Boşluq – başlat/dayandır, L – dövrə, R – sıfırla.",
+      "lapsCaption": "Dövrə vaxtları",
+      "lapAdded": "{n}. dövrə əlavə edildi: {t}",
+      "panel": "Saniyəölçən",
+      "faq": [
+        {
+          "q": "Saniyəölçən nə qədər dəqiqdir?",
+          "a": "Vaxt brauzerin yüksək dəqiqlikli saatı ilə ölçülür və saniyənin yüzdə birinədək göstərilir. Cihazınızın saatını dəyişmək ona təsir etmir."
+        },
+        {
+          "q": "Səhifəni bağlasam vaxtım itəcəkmi?",
+          "a": "Xeyr. İşləyən saniyəölçənin başlama vaxtı bu cihazda saxlanılır, ona görə səhifəni yeniləsəniz və ya yenidən açsanız vaxt qaldığı yerdən göstərilir. Sıfırla düyməsi onu silir."
+        },
+        {
+          "q": "Dövrə nədir və necə qeyd olunur?",
+          "a": "Dövrə saniyəölçəni dayandırmadan götürülən ara vaxtdır. Saniyəölçən işləyərkən Dövrə düyməsini və ya L düyməsini basın; hər dövrə vaxtı və ümumi vaxt siyahıda göstərilir, ən yaxşı və ən yavaş dövrələr işarələnir."
+        }
+      ]
+    },
+    "countdown": {
+      "title": "Geriyə sayım taymeri: müddətə və ya tarixə görə | Saat Tarih",
+      "description": "Pulsuz geriyə sayım: dəqiqə taymeri və ya seçdiyiniz tarixə qalan vaxt. Yeni ilə və bayrama geriyə sayım, səsli xəbərdarlıq və tam ekran.",
+      "h1": "Geriyə sayım",
+      "lead": "Geriyə sayım iki üsulla işləyir: seçdiyiniz müddət bitəndə xəbərdarlıq edən taymer, yaxud seçdiyiniz tarixə qalan günləri, saatları və saniyələri canlı göstərən sayğac. Yeni ilə, bayrama və ya öz tarixinizə qədər geriyə sayın.",
+      "tabTimer": "Taymer",
+      "tabDate": "Tarixə qədər",
+      "hours": "Saat",
+      "minutes": "Dəqiqə",
+      "seconds": "Saniyə",
+      "presetsLabel": "Hazır müddətlər",
+      "presetMin": "{n} dəq",
+      "start": "Başlat",
+      "pause": "Dayandır",
+      "resume": "Davam et",
+      "reset": "Sıfırla",
+      "targetLabel": "Hədəf tarix və vaxt",
+      "targetSet": "Saymağa başla",
+      "quickHeading": "Hazır hədəflər",
+      "quickNewYear": "Yeni il",
+      "remaining": "Qalan vaxt",
+      "days": "gün",
+      "hoursShort": "saat",
+      "minutesShort": "dəq",
+      "secondsShort": "san",
+      "finished": "Vaxt bitdi!",
+      "finishedDate": "Hədəf vaxta çatıldı!",
+      "invalid": "Düzgün müddət və ya gələcək tarix daxil edin.",
+      "panel": "Geriyə sayım",
+      "timerRegion": "Taymer",
+      "dateRegion": "Tarixə geriyə sayım",
+      "faq": [
+        {
+          "q": "Geriyə sayım bitəndə nə baş verir?",
+          "a": "Səsli xəbərdarlıq çalınır, səhifə başlığı yanıb-sönür və icazə vermisinizsə, bildiriş görünür. Xəbərdarlığı Bağla düyməsi ilə dayandırın."
+        },
+        {
+          "q": "Müəyyən tarixə qədər necə geriyə saymaq olar?",
+          "a": "Tarixə qədər tabında hədəf tarix və vaxtı seçin və ya Yeni il və bayramlar kimi hazır hədəflərdən birini basın. Günlər, saatlar, dəqiqələr və saniyələr canlı yenilənir."
+        },
+        {
+          "q": "Tabı bağlasam geriyə sayım davam edirmi?",
+          "a": "Geriyə sayım bu cihazda saxlanılır, ona görə səhifəni yenidən açanda qalan vaxt düzgün göstərilir. Səhifə bağlı olarkən səsli xəbərdarlıq çalına bilməz."
+        }
+      ],
+      "nameLabel": "Başlıq (istəyə bağlı)",
+      "namePlaceholder": "Məs. Məzuniyyət",
+      "copyLink": "Keçidi kopyala",
+      "copied": "Keçid kopyalandı",
+      "shareNote": "Seçdiyiniz tarixin keçidini paylaşa bilərsiniz; keçid açılanda geriyə sayım avtomatik başlayır."
+    },
+    "alarm": {
+      "title": "Onlayn zəngli saat: təkrar və təxirə salma | Saat Tarih",
+      "description": "Brauzerdə işləyən pulsuz zəngli saat: vaxt, ad, seçilmiş günlərdə təkrar, 5 dəqiqəlik təxirə salma və bildirişlər. Səhifə açıq olduqca çalır.",
+      "h1": "Onlayn zəngli saat",
+      "lead": "Zəng vaxtını və istədiyiniz günləri seçin; vaxt çatanda səs çalınır və bildiriş görünür. Zəngli saatlar bu cihazda saxlanılır. Brauzer məhdudiyyətlərinə görə zəngli saat yalnız bu səhifə (tab) açıq qaldıqda çalır.",
+      "timeLabel": "Zəng vaxtı",
+      "labelLabel": "Ad (istəyə bağlı)",
+      "labelPlaceholder": "Məs. Görüş",
+      "repeatLabel": "Təkrar",
+      "once": "Bir dəfə",
+      "every": "Hər gün",
+      "weekdays": "İş günləri",
+      "add": "Zəngli saat əlavə et",
+      "listHeading": "Zəngli saatlarınız",
+      "none": "Hələ zəngli saat yoxdur.",
+      "delete": "Sil",
+      "enable": "Aç/bağla",
+      "ringing": "Zəngli saat çalır",
+      "snooze": "5 dəq təxirə sal",
+      "stop": "Bağla",
+      "next": "Növbəti zəng",
+      "nextNone": "Aktiv zəngli saat yoxdur",
+      "wake": "Ekranı açıq saxla",
+      "wakeNote": "Ekran sönərsə, brauzer tabı yuxu rejiminə keçirə bilər; bu seçim zəngli saat qurulu olduğu müddətdə ekranın sönməsinin qarşısını alır.",
+      "note": "Vacib oyanışlar üçün telefonunuzun öz zəngli saatını da qurun; səhifə bağlı olarsa, brauzerdəki zəngli saat çalmayacaq.",
+      "panel": "Zəngli saat",
+      "dayNames": [
+        "B.e.",
+        "Ç.a.",
+        "Ç.",
+        "C.a.",
+        "C.",
+        "Ş.",
+        "B."
+      ],
+      "defaultLabel": "Zəngli saat",
+      "faq": [
+        {
+          "q": "Tabı bağlasam zəngli saat çalacaqmı?",
+          "a": "Xeyr. Saytlar səhifə bağlı olarkən səs çala bilmir. Bu səhifə tabda açıq qalmalı və cihaz yuxu rejiminə keçməməlidir; Ekranı açıq saxla seçimi buna kömək edir."
+        },
+        {
+          "q": "Zəngli saat cihazımın saatından asılıdırmı?",
+          "a": "Xeyr. Zəngli saat serverlə sinxronlaşdırılmış saata görə yoxlanılır, ona görə cihazınızın saatı bir neçə saniyə fərqli olsa belə, düz vaxtında çalır. Saat qurşağı cihazınızdan götürülür."
+        },
+        {
+          "q": "Zəngli saatı necə təxirə salım?",
+          "a": "Zəng çalarkən 5 dəq təxirə sal düyməsini basın, beş dəqiqə sonra yenidən çalacaq. Bağla düyməsi onu susdurur; təkrarlanan zəngli saatlar növbəti seçilmiş gündə yenidən çalır."
+        }
+      ]
+    },
+    "pomodoro": {
+      "title": "Pomodoro taymeri: 25 dəqiqə iş, 5 dəqiqə fasilə | Saat Tarih",
+      "description": "Pulsuz pomodoro taymeri: 25 dəqiqə iş, 5 dəqiqəlik qısa fasilə və hər 4 dövrdən sonra uzun fasilə. Dəyişən müddətlər, səsli xəbərdarlıq, tam ekran.",
+      "h1": "Pomodoro taymeri",
+      "lead": "Pomodoro texnikası 25 dəqiqəlik diqqətli işi 5 dəqiqəlik qısa fasilələrlə növbələşdirir, 4 dövrdən sonra isə uzun fasilə verilir. Müddətləri dəyişmək olar və hər keçiddə səs çalınır.",
+      "work": "İş",
+      "short": "Qısa fasilə",
+      "long": "Uzun fasilə",
+      "start": "Başlat",
+      "pause": "Dayandır",
+      "resume": "Davam et",
+      "skip": "Növbətiyə keç",
+      "reset": "Sıfırla",
+      "settings": "Müddətlər (dəqiqə)",
+      "workMin": "İş",
+      "shortMin": "Qısa fasilə",
+      "longMin": "Uzun fasilə",
+      "roundsLabel": "Uzun fasiləyə qədər dövr sayı",
+      "round": "Dövr {n} / {total}",
+      "completed": "Tamamlanmış pomodorolar: {n}",
+      "phaseDone": "{phase} bitdi",
+      "panel": "Pomodoro",
+      "phaseLabel": "Cari mərhələ",
+      "faq": [
+        {
+          "q": "Pomodoro texnikası nədir?",
+          "a": "Francesco Cirillo tərəfindən hazırlanmış bu texnikada 25 dəqiqə fasiləsiz işləyir, sonra 5 dəqiqə istirahət edirsiniz. Dörd iş dövründən sonra 15–30 dəqiqəlik daha uzun fasilə verilir."
+        },
+        {
+          "q": "Müddətləri dəyişə bilərəmmi?",
+          "a": "Bəli. İş, qısa fasilə və uzun fasilə müddətlərini, həmçinin uzun fasiləyə qədər dövr sayını təyin edə bilərsiniz; ayarlar bu cihazda saxlanılır."
+        },
+        {
+          "q": "Mərhələlər avtomatik dəyişirmi?",
+          "a": "Bəli. Vaxt bitəndə səs çalınır və növbəti mərhələ (iş və ya fasilə) özü başlayır. Saxlamaq üçün Dayandır düyməsini basın."
+        }
+      ]
+    }
+  },
+  "info": {
+    "week": {
+      "title": "Hansı həftədir? ISO həftə nömrəsi və tarixlər | Saat Tarih",
+      "description": "İndi ilin neçənci həftəsidir? ISO həftə nömrəsi, bu həftənin tarix aralığı, {year} ilinin bütün həftələri və istənilən tarixin həftəsini tapma aləti.",
+      "h1": "Hansı həftədir?",
+      "lead": "Saat Tarih ISO 8601 standartına görə ilin hansı həftəsi olduğunu canlı göstərir. Həftələr bazar ertəsi başlayır və ilin ilk cümə axşamını əhatə edən həftə 1-ci həftə sayılır. {year} ilində {weeks} həftə var.",
+      "big": "Həftə {n}",
+      "thisWeek": "Bu həftənin tarixləri",
+      "findHeading": "Tarixin həftə nömrəsini tapın",
+      "findLabel": "Tarix seçin",
+      "tableHeading": "{year} həftə təqvimi",
+      "colWeek": "Həftə",
+      "colStart": "Başlanğıc (bazar ertəsi)",
+      "colEnd": "Son (bazar)",
+      "tableCaption": "{year} ilinin ISO həftə nömrələri və tarix aralıqları",
+      "faqHeading": "Həftə nömrələri haqqında tez-tez verilən suallar",
+      "faq": [
+        {
+          "q": "İndi ilin neçənci həftəsidir?",
+          "a": "Yuxarıdakı canlı sayğac bugünkü həftə nömrəsini göstərir. O, ISO 8601 standartına əsaslanır: həftələr bazar ertəsi başlayır və ilin ilk cümə axşamını əhatə edən həftə 1-ci həftə sayılır."
+        },
+        {
+          "q": "Bir ildə neçə həftə var?",
+          "a": "ISO ilində 52 və ya 53 həftə olur. 1 yanvar cümə axşamına (uzun ildə isə çərşənbəyə) düşəndə ildə 53 həftə olur. {year} ilində {weeks} həftə var."
+        },
+        {
+          "q": "1 yanvar niyə bəzən əvvəlki ilin son həftəsinə düşür?",
+          "a": "ISO qaydalarına görə 1-ci həftə ilin ilk cümə axşamını əhatə edir. 1 yanvar cümə, şənbə və ya bazar gününə düşürsə, əvvəlki ilin 52-ci və ya 53-cü həftəsinə aid olur; dekabrın son günlərindən bəziləri isə növbəti ilin 1-ci həftəsinə düşə bilər."
+        },
+        {
+          "q": "Həftə nömrəsi nə üçün istifadə olunur?",
+          "a": "Həftə nömrələri gündəlik həyatda o qədər də işlədilmir, lakin ISO həftə nömrələri biznes planlaşdırmasında, logistikada, təhsildə və proqram təminatında geniş yayılıb. Bu səhifədəki alət seçdiyiniz istənilən tarixin həftə nömrəsini göstərir."
+        }
+      ]
+    },
+    "today": {
+      "title": "Bu gün ayın neçəsidir? Gün, tarix və həftə nömrəsi | Saat Tarih",
+      "description": "Bu gün ayın neçəsi və həftənin hansı günüdür? Bugünkü tarix, gün, həftə nömrəsi, ilin günü və qalan günlər – server saatı və saat qurşağınıza görə.",
+      "h1": "Bu gün ayın neçəsidir?",
+      "lead": "Bugünkü tarix aşağıda canlı göstərilir. O, server saatına və saat qurşağınıza əsasən hesablanır, ona görə cihazınızın saatı səhv olsa belə düzgün gün görünür.",
+      "factsHeading": "Bu gün ətraflı",
+      "fWeekday": "Həftənin günü",
+      "fMonthYear": "Ay və il",
+      "fNumeric": "Rəqəmli format",
+      "fIso": "ISO 8601",
+      "fDoy": "İlin günü",
+      "fWeek": "Həftə nömrəsi",
+      "fYearLeft": "İlin sonuna qalan günlər",
+      "fMonthLeft": "Ayın sonuna qalan günlər",
+      "fUnix": "Unix vaxt möhürü",
+      "faqHeading": "Tarix haqqında tez-tez verilən suallar",
+      "faq": [
+        {
+          "q": "Bu gün həftənin hansı günüdür?",
+          "a": "Bugünkü həftə günü yuxarıdakı böyük tarixdə və Həftənin günü xanasında yazılıb. Tarix server saatına və saat qurşağınıza görə hesablanır."
+        },
+        {
+          "q": "Türkiyədə tarix necə yazılır?",
+          "a": "Türkiyədə rəqəmli tarix gün.ay.il qaydasında yazılır, məsələn, 09.10.2026. Beynəlxalq ISO 8601 formatı isə il-ay-gün ardıcıllığındadır: 2026-10-09."
+        },
+        {
+          "q": "Buradakı tarix niyə telefonumdakından fərqli ola bilər?",
+          "a": "Sayt cihazınızın saatından asılı olmayaraq server saatı ilə işləyir. Cihazınızın tarixi və ya saatı səhvdirsə, fərq görə bilərsiniz; səhifədəki vəziyyət sətri cihazınızın saatının nə qədər fərqləndiyini bildirir."
+        },
+        {
+          "q": "Bu gün ilin neçənci günüdür?",
+          "a": "İlin günü yuxarıdakı xanada canlı göstərilir. 1 yanvar ilin 1-ci günüdür, uzun ildə isə 366 gün olur."
+        }
+      ]
+    },
+    "tz": {
+      "title": "Türkiyədə yay vaxtı varmı? UTC+3 izahı | Saat Tarih",
+      "description": "Türkiyədə yay vaxtı tətbiq olunurmu? Türkiyə 2016-cı ildən bütün il boyu UTC+3 istifadə edir. Dünya şəhərləri ilə vaxt fərqi və yay vaxtı vəziyyəti.",
+      "h1": "Türkiyədə yay vaxtı varmı?",
+      "lead": "Xeyr. Türkiyə 2016-cı ildən bəri bütün il boyu UTC+3 saat qurşağından istifadə edir; saatlar nə yayda, nə də qışda irəli və ya geri çəkilmir. Bu qurşaq Türkiyə vaxtı (TRT) adlanır, IANA identifikatoru isə Europe/Istanbul-dur.",
+      "nowLabel": "Türkiyədə indiki vaxt",
+      "factsHeading": "Qısaca",
+      "facts": [
+        "Saat qurşağı: UTC+3 (Türkiyə vaxtı, TRT)",
+        "Yay vaxtı: 2016-cı ildən yoxdur",
+        "IANA identifikatoru: Europe/Istanbul",
+        "Saatlar ildə iki dəfə dəyişdirilmir"
+      ],
+      "historyHeading": "Qısa tarixçə",
+      "history": [
+        "2016-cı ilə qədər Türkiyə qışda UTC+2 (Şərqi Avropa vaxtı), yayda isə UTC+3 (Şərqi Avropa yay vaxtı) istifadə edirdi.",
+        "2016-cı ildə qəbul edilən qərarla yay vaxtı daimi edildi; o vaxtdan bəri Türkiyə bütün il boyu UTC+3 vaxtında qalır."
+      ],
+      "tableHeading": "Türkiyə ilə dünya şəhərləri arasında vaxt fərqi",
+      "tableCaption": "Türkiyə vaxtı ilə standart fərq və yay vaxtı vəziyyəti",
+      "colCity": "Şəhər",
+      "colStd": "Standart fərq",
+      "colDst": "Yay vaxtı",
+      "colNow": "Hazırda",
+      "yes": "Bəli",
+      "no": "Xeyr",
+      "note": "Standart fərq yay vaxtı qüvvədə olmadığı dövrdəki fərqdir. Yay vaxtından istifadə edən şəhərlər üçün bu fərq ilin bir hissəsində bir saat dəyişir; \"Hazırda\" sütunu bugünkü faktiki fərqi göstərir.",
+      "faqHeading": "Türkiyə saat qurşağı haqqında tez-tez verilən suallar",
+      "faq": [
+        {
+          "q": "Türkiyədə yay vaxtı tətbiq olunurmu?",
+          "a": "Xeyr. Türkiyə 2016-cı ildə yay vaxtını daimi etdi; bütün il UTC+3 istifadə olunur və saatlar irəli-geri çəkilmir."
+        },
+        {
+          "q": "Türkiyə hansı saat qurşağındadır?",
+          "a": "Türkiyə UTC+3 saat qurşağındadır və bu qurşaq Türkiyə vaxtı (TRT) adlanır; IANA identifikatoru: Europe/Istanbul."
+        },
+        {
+          "q": "Avropa ilə vaxt fərqi bütün il eynidirmi?",
+          "a": "Xeyr. Bir çox Avropa ölkəsi yay vaxtından istifadə edir, ona görə onların Türkiyə ilə fərqi il ərzində bir saat dəyişir. Yuxarıdakı cədvəl bugünkü fərqi göstərir."
+        },
+        {
+          "q": "UTC+3 nə deməkdir?",
+          "a": "UTC+3 Koordinasiya edilmiş ümumdünya vaxtından (UTC) üç saat irəli deməkdir. UTC ilə saat 12:00 olanda Türkiyədə saat 15:00 olur."
+        }
+      ]
+    }
+  },
+  "pair": {
+    "title": "{a} – {b} vaxt fərqi: neçə saatdır? | Saat Tarih",
+    "description": "{a} ilə {b} arasında neçə saat fərq var? Standart fərq, yay vaxtının təsiri, indiki fərq və vaxt çevirmə cədvəli.",
+    "h1": "{a} ilə {b} arasında vaxt fərqi",
+    "ahead": "Standart vaxtda {a} vaxtı {b} vaxtından {d} irəlidədir.",
+    "behind": "Standart vaxtda {a} vaxtı {b} vaxtından {d} geridədir.",
+    "same": "{a} və {b} eyni vaxtdan istifadə edir; vaxt fərqi yoxdur.",
+    "dstNote": "{b} yay vaxtından istifadə etdiyi üçün ilin bir hissəsində fərq {d} olur.",
+    "dstSame": "{b} yay vaxtından istifadə etdiyi üçün ilin bir hissəsində hər iki şəhərdə vaxt eyni olur.",
+    "noDst": "Şəhərlərin heç biri yay vaxtından istifadə etmir, ona görə fərq bütün il boyu eyni qalır.",
+    "nowHeading": "Hazırda",
+    "convHeading": "{a} vaxtının {b} vaxtına çevrilməsi",
+    "convCaption": "{a} vaxtı və ona uyğun {b} vaxtı",
+    "colA": "{a} vaxtı",
+    "colB": "{b} vaxtı",
+    "nextDay": "növbəti gün",
+    "prevDay": "əvvəlki gün",
+    "convNote": "Cədvəl brauzerinizdəki cari vaxt fərqinə əsasən hesablanır; yay vaxtına keçidlər ətrafında bir saat sürüşə bilər. JavaScript olmadan standart fərq göstərilir.",
+    "faqHeading": "{a} – {b} vaxt fərqi haqqında tez-tez verilən suallar",
+    "faqDiff": "{a} ilə {b} arasında neçə saat fərq var?",
+    "faqNow": "Hazırda {a} ilə {b} arasında fərq nə qədərdir?",
+    "faqNowA": "Cari fərq yuxarıdakı canlı sətirdə göstərilir. Yay vaxtına keçidlər ətrafında bu fərq standart fərqdən bir saat fərqlənə bilər.",
+    "faqDst": "{b} yay vaxtından istifadə edirmi?",
+    "faqDstYes": "Bəli. {b} yay vaxtından istifadə edir, ona görə {a} ilə fərqi il ərzində bir saat dəyişir.",
+    "faqDstNo": "Xeyr. {b} yay vaxtından istifadə etmir, ona görə fərq bütün il boyu eyni qalır.",
+    "converter": "Başqa vaxtı çevirmək üçün vaxt çeviricisindən istifadə edin.",
+    "converterLink": "Vaxt çevirici"
+  },
+  "pairHub": {
+    "title": "Vaxt fərqi: İstanbul və dünya şəhərləri | Saat Tarih",
+    "description": "İstanbul ilə London, Nyu-York, Dubay, Tokio və digər şəhərlər arasında vaxt fərqi. Standart fərq, yay vaxtının təsiri və çevirmə cədvəlləri.",
+    "h1": "Vaxt fərqi",
+    "lead": "İstanbul ilə dünya şəhərlərindən biri arasındakı vaxt fərqini seçin. Hər səhifədə standart fərq, yay vaxtının təsiri, indiki fərq və vaxt çevirmə cədvəli var.",
+    "listHeading": "İstanbul ilə vaxt fərqi",
+    "linkText": "{a} – {b}"
+  },
+  "converter": {
+    "title": "Vaxt çevirici: şəhərlər arasında saatı çevirin | Saat Tarih",
+    "description": "Bir şəhərdəki vaxtı digər şəhərin vaxtına çevirin. Yay vaxtını avtomatik nəzərə alan, dünya şəhərləri üçün vaxt çevirici.",
+    "h1": "Vaxt çevirici",
+    "lead": "Mənbə və hədəf şəhəri, tarix və vaxtı seçin; uyğun vaxt dərhal görünür. Yay vaxtına keçidlər avtomatik nəzərə alınır.",
+    "fromLabel": "Mənbə şəhər",
+    "toLabel": "Hədəf şəhər",
+    "whenLabel": "Tarix və vaxt",
+    "mine": "Olduğum yer",
+    "swap": "Yerini dəyiş",
+    "now": "İndi",
+    "resultLabel": "Nəticə",
+    "result": "{from} üçün saat {fromTime} olanda, {to} üçün saat {toTime} olur.",
+    "diff": "Fərq: {d}",
+    "sameDay": "eyni gün",
+    "faqHeading": "Vaxt çevirici haqqında tez-tez verilən suallar",
+    "faq": [
+      {
+        "q": "Vaxt çevirici necə işləyir?",
+        "a": "O, mənbə şəhərdəki tarix və vaxtı həmin şəhərin saat qurşağına görə ümumdünya vaxtına çevirir, sonra hədəf şəhərin saat qurşağını tətbiq edir. Yay vaxtı dəyişiklikləri brauzerinizin saat qurşaqları bazasından götürülür."
+      },
+      {
+        "q": "Yay vaxtı fərqə təsir edirmi?",
+        "a": "Bəli. Yay vaxtından istifadə edən şəhərlər üçün fərq ilin bir hissəsində bir saat dəyişir. Çevirici seçdiyiniz tarixdəki faktiki fərqdən istifadə edir."
+      },
+      {
+        "q": "\"Olduğum yer\" nə deməkdir?",
+        "a": "Bu seçim cihazınızın saat qurşağından istifadə edir, beləliklə olduğunuz yerdəki vaxtı başqa şəhərin vaxtına çevirə bilərsiniz."
+      }
+    ]
+  },
+  "planner": {
+    "title": "Görüş planlayıcısı: ortaq iş saatlarını tapın | Saat Tarih",
+    "description": "Saat qurşaqları arasında ən uyğun görüş vaxtını tapın. Hər şəhər üçün iş saatları, erkən və ya gec saatlar və gecə saatları rənglərlə göstərilir.",
+    "h1": "Görüş planlayıcısı",
+    "lead": "Şəhərlər əlavə edin və tarix seçin; hər şəhərin saatlıq zaman xətti yan-yana görünür. Ortaq iş saatları (09:00–18:00) avtomatik tapılır.",
+    "addLabel": "Şəhər əlavə et",
+    "addBtn": "Əlavə et",
+    "dateLabel": "Tarix",
+    "remove": "Sil",
+    "legendWork": "İş saatları (09–18)",
+    "legendEdge": "Erkən və ya gec (07–09, 18–22)",
+    "legendNight": "Gecə",
+    "common": "Ortaq iş saatları ({city} vaxtı ilə): {hours}",
+    "noCommon": "Seçilmiş şəhərlərin ortaq iş saatları yoxdur; zaman xəttindən ən az narahatlıq yaradan saatları seçin.",
+    "tableLabel": "Seçilmiş şəhərlərin 24 saatlıq zaman xətti",
+    "minCities": "Ən azı iki şəhər seçin.",
+    "faqHeading": "Görüş planlayıcısı haqqında tez-tez verilən suallar",
+    "faq": [
+      {
+        "q": "Ortaq iş saatları necə tapılır?",
+        "a": "Hər şəhərdə iş saatları 09:00–18:00 kimi qəbul edilir. Seçilmiş bütün şəhərlərin eyni vaxtda işdə olduğu saatlar yaşıl rənglə işarələnir və siyahıda göstərilir."
+      },
+      {
+        "q": "Yay vaxtı nəzərə alınırmı?",
+        "a": "Bəli. Seçdiyiniz tarixdəki faktiki vaxt fərqlərindən istifadə olunur, ona görə yay vaxtına keçidlər avtomatik nəzərə alınır."
+      },
+      {
+        "q": "Neçə şəhər əlavə edə bilərəm?",
+        "a": "Altı şəhərə qədər əlavə edə bilərsiniz. Seçiminiz bu cihazda saxlanılır."
+      }
+    ]
+  },
+  "cdp": {
+    "title": "{dat} neçə gün qalıb? Geriyə sayım | Saat Tarih",
+    "description": "{dat} neçə gün və saat qalıb? Canlı geriyə sayım, hədəf tarix və gələn illərin tarixləri.",
+    "h1": "{dat} neçə gün qalıb?",
+    "lead": "{name} üçün canlı geriyə sayım. Sayğac serverlə sinxronlaşdırılmış saatla işləyir; qalan günlər, saatlar, dəqiqələr və saniyələr hər saniyə yenilənir.",
+    "target": "Hədəf tarix",
+    "noTarget": "Bu hadisə üçün yaxınlaşan tarix yoxdur.",
+    "today": "Bu gündür!",
+    "yearsHeading": "{name} tarixləri",
+    "yearsCaption": "İllər üzrə {name} tarixləri",
+    "colYear": "İl",
+    "colDate": "Tarix",
+    "customHeading": "Öz geriyə sayımınızı yaradın",
+    "customText": "Geriyə sayım alətində istənilən tarixi seçib onun keçidini paylaşa bilərsiniz.",
+    "customLink": "Geriyə sayım alətini aç",
+    "listHeading": "Digər geriyə sayımlar",
+    "faqHeading": "{name} haqqında tez-tez verilən suallar",
+    "faqWhen": "{name} nə vaxtdır?",
+    "faqWhenFixed": "{name} hər il {date} tarixinə düşür.",
+    "faqWhenYears": "{name}: {list}.",
+    "faqHow": "Geriyə sayım necə işləyir?",
+    "faqHowA": "Sayğac serverlə sinxronlaşdırılmış vaxtı hədəf tarixin başlanğıcı (00:00) ilə müqayisə edir və hər saniyə yenilənir. Hədəf tarix təqvim səhifələrimizdəki məlumatlardan götürülür.",
+    "school": "Məktəb təqvimi Türkiyə Milli Təhsil Nazirliyinin (MEB) 2026-2027 tədris ili üçün iş təqviminə əsaslanır; əyalət təhsil idarələrində yerli fərqlər ola bilər.",
+    "targets": {
+      "newYear": {
+        "name": "Yeni il",
+        "dat": "Yeni ilə"
+      },
+      "rb1": {
+        "name": "Ramazan bayramı",
+        "dat": "Ramazan bayramına"
+      },
+      "kb1": {
+        "name": "Qurban bayramı",
+        "dat": "Qurban bayramına"
+      },
+      "oct29": {
+        "name": "Cümhuriyyət Bayramı",
+        "dat": "Cümhuriyyət Bayramına"
+      },
+      "ramadanStart": {
+        "name": "Ramazan ayı",
+        "dat": "Ramazan ayına"
+      },
+      "apr23": {
+        "name": "23 Aprel",
+        "dat": "23 Aprelə"
+      },
+      "may19": {
+        "name": "19 May",
+        "dat": "19 Maya"
+      },
+      "aug30": {
+        "name": "Zəfər Bayramı (30 Avqust)",
+        "dat": "Zəfər Bayramına"
+      },
+      "semester": {
+        "name": "Yarımil tətili",
+        "dat": "Yarımil tətilinə"
+      },
+      "karne": {
+        "name": "Tabel günü",
+        "dat": "Tabel gününə"
+      }
+    }
+  },
+  "datecalc": {
+    "title": "Tarix kalkulyatoru: günlər, iş günləri, yaş | Saat Tarih",
+    "description": "İki tarix arasında neçə gün və iş günü var? Tarixə gün, ay və ya il əlavə edin, çıxın, yaşı hesablayın. Türkiyənin rəsmi bayramları nəzərə alınır.",
+    "h1": "Tarix kalkulyatoru",
+    "lead": "İki tarix arasındakı günləri, həftələri və iş günlərini hesablayın; tarixə gün, ay, il və ya iş günü əlavə edin; yaşınızı və növbəti ad gününüzü tapın. İş günləri hesablanarkən həftəsonları və Türkiyənin rəsmi bayram günləri çıxılır.",
+    "diffHeading": "İki tarix arasında",
+    "startLabel": "Başlanğıc tarixi",
+    "endLabel": "Son tarix",
+    "diffDays": "Fərq: {n} gün",
+    "diffWeeks": "Bu, {w} həftə {d} gün edir",
+    "diffYmd": "{y} il, {m} ay, {d} gün",
+    "diffWork": "İş günləri (başlanğıc daxil, son daxil deyil): {n}",
+    "diffNote": "İş günlərinə həftəsonları və rəsmi bayramlar daxil edilmir; bayram ərəfəsindəki yarım iş günləri 0,5 sayılır.",
+    "addHeading": "Tarixə əlavə et və ya çıx",
+    "amountLabel": "Miqdar",
+    "unitLabel": "Vahid",
+    "units": {
+      "days": "Gün",
+      "weeks": "Həftə",
+      "months": "Ay",
+      "years": "İl",
+      "workdays": "İş günü"
+    },
+    "addResult": "Nəticə: {date}",
+    "addHint": "Çıxmaq üçün mənfi ədəd daxil edin.",
+    "ageHeading": "Yaş kalkulyatoru",
+    "birthLabel": "Doğum tarixi",
+    "ageResult": "{y} yaş, {m} ay, {d} gün",
+    "ageDays": "Yaşanmış ümumi günlər: {n}",
+    "ageNext": "Növbəti ad günü: {date} ({n} gün sonra)",
+    "ageToday": "Bu gün ad gününüzdür!",
+    "invalid": "Düzgün tarix daxil edin.",
+    "pick": "Tarixləri seçin.",
+    "range": "Bayram məlumatları {from}–{to} dövrünü əhatə edir; bu aralıqdan kənarda yalnız həftəsonları çıxılır.",
+    "faqHeading": "Tarix hesablamaları haqqında tez-tez verilən suallar",
+    "faq": [
+      {
+        "q": "İki tarix arasındakı günlər necə hesablanır?",
+        "a": "Son tarixdən başlanğıc tarixi çıxılır; kalkulyator bunu avtomatik edir və nəticəni həm həftələrlə, həm də il, ay və günlərlə göstərir."
+      },
+      {
+        "q": "İş günləri hesablanarkən rəsmi bayramlar çıxılırmı?",
+        "a": "İş günü sayına həftəsonları və Türkiyənin rəsmi bayram günləri daxil edilmir; bayram ərəfəsindəki yarım iş günləri 0,5 iş günü sayılır. Bayram məlumatları təqvim səhifələrimizdəki 2026–2031 məlumatlarıdır."
+      },
+      {
+        "q": "Yaş necə hesablanır?",
+        "a": "Doğum tarixindən bu günə qədər tamamlanmış illər, aylar və günlər sayılır. Kalkulyator həmçinin yaşanmış ümumi günləri və növbəti ad gününə qalan günləri göstərir."
+      },
+      {
+        "q": "Ay əlavə edərkən ayın sonu necə nəzərə alınır?",
+        "a": "Hədəf ayda həmin gün yoxdursa, ayın son günü götürülür; məsələn, 31 yanvara 1 ay əlavə etdikdə fevralın son günü alınır."
+      }
+    ]
+  },
+  "embedgen": {
+    "title": "Saat vidceti: saytınıza pulsuz saat yerləşdirin | Saat Tarih",
+    "description": "Saytınıza pulsuz saat yerləşdirin: 13 saat görünüşü, şəhər seçimi, açıq və ya tünd mövzu. Hazır iframe kodunu kopyalayıb yapışdırın.",
+    "h1": "Saytınıza saat yerləşdirin",
+    "lead": "Görünüşü, şəhəri və mövzunu seçin, sonra hazır iframe kodunu kopyalayıb saytınıza yapışdırın. Vidcetdə reklam yoxdur, o, kukilərdən istifadə etmir və serverlə sinxronlaşdırılmış saatla işləyir.",
+    "modelLabel": "Saat görünüşü",
+    "cityLabel": "Şəhər",
+    "cityLocal": "Ziyarətçinin olduğu yer",
+    "themeLabel": "Mövzu",
+    "themeAuto": "Avtomatik (ziyarətçinin seçimi)",
+    "themeLight": "Açıq",
+    "themeDark": "Tünd",
+    "langLabel": "Dil",
+    "secLabel": "Saniyələri göstər",
+    "h12Label": "12 saatlıq format",
+    "widthLabel": "En (px)",
+    "heightLabel": "Hündürlük (px)",
+    "previewHeading": "Önbaxış",
+    "codeHeading": "Yerləşdirmə kodu",
+    "copy": "Kodu kopyala",
+    "copied": "Kod kopyalandı",
+    "note": "Vidcetin altında Saat Tarih keçidi və Bumba imzası görünür; lütfən, onları silməyin.",
+    "previewTitle": "Saat Tarih vidcetinin önbaxışı",
+    "frameTitle": "Saat Tarih saat vidceti",
+    "faqHeading": "Saat vidceti haqqında tez-tez verilən suallar",
+    "faq": [
+      {
+        "q": "Vidcet pulsuzdurmu?",
+        "a": "Bəli. Vidcet pulsuzdur və reklamsızdır. Onun altında Saat Tarih keçidi və Bumba imzası görünür."
+      },
+      {
+        "q": "Onu sayta necə əlavə edim?",
+        "a": "Görünüşü və şəhəri seçin, yaradılan iframe kodunu kopyalayın və səhifənizin HTML koduna yapışdırın. Eni və hündürlüyü dizaynınıza uyğun dəyişə bilərsiniz."
+      },
+      {
+        "q": "Vidcet ziyarətçilərimin məlumatlarını toplayırmı?",
+        "a": "Vidcet kuki yerləşdirmir və şəxsi məlumat toplamır. Düzgün vaxtı göstərmək üçün serverə bir neçə kiçik sorğu göndərir; səhifə baxışları kukisiz, anonim statistikada sayılır."
+      }
+    ],
+    "sizeNote": "Təqvimli görünüşlər üçün ən azı 460 px hündürlük lazımdır; digər görünüşlər 360 px-ə rahat sığır."
+  },
+  "embed": {
+    "link": "Saat Tarih"
+  }
+}

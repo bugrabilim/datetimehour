@@ -3,7 +3,7 @@
 
   var doc = document;
   var root = doc.documentElement;
-  var lang = root.lang === "en" ? "en" : "tr";
+  var lang = root.lang || "tr";
   var cfgEl = doc.getElementById("page-config");
   var cfg = cfgEl ? JSON.parse(cfgEl.textContent) : { t: {}, locale: "tr-TR" };
   var T = cfg.t || {};
@@ -28,25 +28,33 @@
     return String(s || "")
       .replace(/İ/g, "i").replace(/ı/g, "i")
       .normalize("NFD").replace(/[̀-ͯ]/g, "")
-      .toLowerCase();
+      .toLowerCase()
+      .replace(/ß/g, "ss").replace(/ə/g, "e").replace(/ø/g, "o")
+      .replace(/[ً-ٟـ]/g, "").replace(/[أإآٱ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه");
   }
 
   /* ---------- Dil: seçimi hatırla, ana sayfada kayıtlı dile yönlendir ---------- */
-  var langLink = doc.querySelector("[data-lang-switch]");
-  if (langLink) {
-    langLink.addEventListener("click", function () {
-      store("sth-lang", langLink.getAttribute("hreflang"));
-      track("dil-degisimi", { dil: langLink.getAttribute("hreflang") });
+  var langLinks = doc.querySelectorAll("[data-lang-switch]");
+  Array.prototype.forEach.call(langLinks, function (a) {
+    a.addEventListener("click", function () {
+      store("sth-lang", a.getAttribute("hreflang"));
+      track("dil-degisimi", { dil: a.getAttribute("hreflang") });
     });
-  }
+  });
   (function redirectToSavedLang() {
     var saved = store("sth-lang");
-    if (!saved || saved === lang || !langLink || root.getAttribute("data-home") !== "1") return;
+    if (!saved || saved === lang || !langLinks.length || root.getAttribute("data-home") !== "1") return;
     var sameOrigin = false;
     try { sameOrigin = doc.referrer && new URL(doc.referrer).origin === location.origin; } catch (e) {}
-    if (sameOrigin || saved !== langLink.getAttribute("hreflang")) return;
-    location.replace(langLink.getAttribute("href") + location.hash);
+    if (sameOrigin) return;
+    var target = null;
+    Array.prototype.forEach.call(langLinks, function (a) { if (a.getAttribute("hreflang") === saved) target = a; });
+    if (target) location.replace(target.getAttribute("href") + location.hash);
   })();
+  Array.prototype.forEach.call(doc.querySelectorAll(".lang-menu"), function (m) {
+    doc.addEventListener("click", function (e) { if (!m.contains(e.target)) m.removeAttribute("open"); });
+    m.addEventListener("keydown", function (e) { if (e.key === "Escape") { m.removeAttribute("open"); var sm = m.querySelector("summary"); if (sm) sm.focus(); } });
+  });
 
   /* ---------- Tema ---------- */
   var themeBtn = doc.querySelector("[data-theme-toggle]");
@@ -239,13 +247,16 @@ function sunTimes(y, m, d, lat, lon) {
   var W = T.words || { units: [], tens: [], join: " ", oh: "", sentence: "{h} {m}", oclock: "{h}" };
   function numWords(n) {
     if (n < 20) return W.units[n];
-    return W.tens[Math.floor(n / 10)] + (n % 10 ? W.join + W.units[n % 10] : "");
+    var u = n % 10, t = W.tens[Math.floor(n / 10)];
+    if (!u) return t;
+    return W.unitFirst ? (u === 1 && W.one ? W.one : W.units[u]) + W.join + t : t + W.join + W.units[u];
   }
+  function hourWords(h) { return W.hours && W.hours[h] ? W.hours[h] : numWords(h); }
   function wordsText(p) {
     var h = prefs.h12 ? (p.hour % 12 || 12) : p.hour;
-    if (p.minute === 0) return tpl(W.oclock, { h: numWords(h) });
-    var m = p.minute < 10 ? W.oh + " " + W.units[p.minute] : numWords(p.minute);
-    return tpl(W.sentence, { h: numWords(h), m: m });
+    if (p.minute === 0) return tpl(W.oclock, { h: hourWords(h) });
+    var m = p.minute < 10 ? (W.oh ? W.oh + " " : "") + W.units[p.minute] : numWords(p.minute);
+    return tpl(W.sentence, { h: hourWords(h), m: m });
   }
 
   var calCache = new WeakMap();
