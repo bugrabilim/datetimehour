@@ -311,7 +311,7 @@ tbody th a { color: var(--text); }
 .list-box h2 { font-size: 1.3rem; }
 .field { display: grid; gap: 0.35rem; margin-bottom: 0.9rem; }
 .field label { font-weight: 600; }
-input[type="email"], input[type="search"], input[type="number"], input[type="time"], input[type="text"], input[type="datetime-local"] {
+input[type="email"], input[type="search"], input[type="number"], input[type="time"], input[type="text"], input[type="datetime-local"], input[type="date"], select {
   width: 100%; min-height: 2.9rem; padding: 0 0.9rem; font: inherit; color: var(--text);
   background: var(--bg); border: 1px solid var(--muted); border-radius: 10px;
 }
@@ -458,3 +458,26 @@ fieldset.days legend { padding: 0 0.4rem; font-weight: 600; }
 .inline-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none; margin: 0; padding: 0; }
 .inline-links a { font-weight: 600; }
 .week-table tr[aria-current="date"] th { color: var(--accent); }
+
+/* Saat farkı, çevirici, planlayıcı, geri sayım sayfaları */
+.pair-live { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin-top: 1.25rem; }
+.pair-city { padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); text-align: center; }
+.pair-city .meta { margin: 0 0 0.25rem; font-weight: 600; }
+.pair-city .big-time { font-size: clamp(2rem, 8vw, 3.5rem); }
+.cv-result { font-size: clamp(1.3rem, 4vw, 2.2rem); line-height: 1.3; }
+.chips-list { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 0; padding: 0; justify-content: center; }
+.chip-item { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.25rem 0.25rem 0.25rem 0.9rem; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; font-weight: 600; }
+.chip-item .toggle { min-height: 2.5rem; min-width: 2.5rem; padding: 0; }
+.planner { min-width: 52rem; border-collapse: separate; border-spacing: 2px; }
+.planner th, .planner td { padding: 0.3rem 0.2rem; border: 0; text-align: center; font-variant-numeric: tabular-nums; font-size: 0.85rem; border-radius: 4px; }
+.planner thead th { background: none; color: var(--muted); font-size: 0.75rem; }
+.planner tbody th { text-align: left; padding-left: 0.6rem; white-space: nowrap; background: none; font-size: 0.95rem; }
+.pl-work, .lg-work { background: var(--ok-bg); color: var(--ok); font-weight: 700; }
+.pl-edge, .lg-edge { background: var(--accent-soft); color: var(--text); }
+.pl-night, .lg-night { background: var(--surface-2); color: var(--muted); }
+.planner sup { font-size: 0.6rem; margin-left: 1px; }
+.pl-common { margin: 0; font-weight: 700; font-size: 1.15rem; text-align: center; }
+.cd-name { margin: 0; text-align: center; font-weight: 700; font-size: 1.4rem; color: var(--accent); }
+.cdp { text-align: center; }
+.cdp .tool-head { text-align: left; }
+.d-school, .lg-school { background: var(--surface-2); text-decoration: underline dotted; text-underline-offset: 3px; color: var(--text); }

@@ -102,7 +102,8 @@
     "refBehind": "{d} behind {ref} time",
     "refSame": "Same time as {ref}",
     "weekFound": "{date} falls in week {n} of ISO year {y}.",
-    "pickDate": "Pick a date."
+    "pickDate": "Pick a date.",
+    "daysShort": "days"
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
@@ -369,7 +370,8 @@
       "ramadan": "Month of Ramadan",
       "special": "Special day",
       "weekend": "Weekend",
-      "today": "Today"
+      "today": "Today",
+      "school": "School break or term date (MEB)"
     },
     "eventsHeading": "List of days in {year}",
     "colDate": "Date",
@@ -456,11 +458,19 @@
       "mothers": "Mother's Day",
       "fathers": "Father's Day",
       "nov10": "Atatürk Memorial Day",
-      "nov24": "Teachers' Day"
+      "nov24": "Teachers' Day",
+      "schoolStart": "Schools open (MEB)",
+      "midterm1": "First-term break begins (MEB)",
+      "term1End": "End of first term, report card day (MEB)",
+      "semester": "Mid-year break begins (MEB)",
+      "term2Start": "Second term begins (MEB)",
+      "midterm2": "Second-term break begins (MEB)",
+      "schoolEnd": "End of school year, report card day (MEB)"
     },
     "hubName": "Yearly calendar",
     "hubDesc": "Public holidays, bayram and eve days, kandil nights and the month of Ramadan.",
-    "projected": "This year's religious dates follow the Diyanet long-term calendar and may change as the year approaches."
+    "projected": "This year's religious dates follow the Diyanet long-term calendar and may change as the year approaches.",
+    "schoolNote": "The school calendar follows the Ministry of National Education's 2026-2027 working calendar; provincial directorates may differ locally."
   },
   "tools": {
     "hub": {
@@ -497,6 +507,18 @@
         "tz": {
           "name": "Türkiye time zone",
           "desc": "Daylight saving? UTC+3 and the time difference to other cities."
+        },
+        "converter": {
+          "name": "Time converter",
+          "desc": "Convert the time in one city to another."
+        },
+        "planner": {
+          "name": "Meeting planner",
+          "desc": "Find overlapping working hours across time zones."
+        },
+        "diff": {
+          "name": "Time difference",
+          "desc": "The time difference between Istanbul and cities worldwide."
         }
       },
       "infoHeading": "Information pages"
@@ -595,7 +617,12 @@
           "q": "Does the countdown keep running if I close the tab?",
           "a": "The countdown is stored on this device, so reopening the page shows the correct time left. The sound alert cannot play while the page is closed."
         }
-      ]
+      ],
+      "nameLabel": "Title (optional)",
+      "namePlaceholder": "E.g. Holiday",
+      "copyLink": "Copy link",
+      "copied": "Link copied",
+      "shareNote": "You can share the link for the date you picked; the countdown starts by itself when the link is opened."
     },
     "alarm": {
       "title": "Online Alarm Clock: Repeating and Snooze | Saat Tarih",
@@ -803,6 +830,171 @@
           "a": "UTC+3 means three hours ahead of Coordinated Universal Time (UTC). When it is 12:00 UTC, it is 15:00 in Türkiye."
         }
       ]
+    }
+  },
+  "pair": {
+    "title": "{a} – {b} Time Difference: How Many Hours? | Saat Tarih",
+    "description": "How many hours apart are {a} and {b}? The standard difference, the effect of daylight saving time, the current difference and a time conversion table.",
+    "h1": "Time difference between {a} and {b}",
+    "ahead": "{a} time is {d} ahead of {b} time in standard time.",
+    "behind": "{a} time is {d} behind {b} time in standard time.",
+    "same": "{a} and {b} use the same time; there is no time difference.",
+    "dstNote": "Because {b} observes daylight saving time, the difference becomes {d} for part of the year.",
+    "dstSame": "Because {b} observes daylight saving time, the two cities have the same time for part of the year.",
+    "noDst": "Neither city observes daylight saving time, so the difference stays the same all year.",
+    "nowHeading": "Right now",
+    "convHeading": "Converting {a} time to {b} time",
+    "convCaption": "{a} time and the matching {b} time",
+    "colA": "{a} time",
+    "colB": "{b} time",
+    "nextDay": "next day",
+    "prevDay": "previous day",
+    "convNote": "The table is calculated from the current time difference in your browser; it may shift by one hour around daylight saving changes. Without JavaScript it shows the standard difference.",
+    "faqHeading": "Frequently asked questions about the {a} – {b} time difference",
+    "faqDiff": "How many hours apart are {a} and {b}?",
+    "faqNow": "What is the difference between {a} and {b} right now?",
+    "faqNowA": "The current difference is shown in the live line above. Around daylight saving changes it can differ from the standard difference by one hour.",
+    "faqDst": "Does {b} observe daylight saving time?",
+    "faqDstYes": "Yes. {b} observes daylight saving time, so its difference from {a} changes by one hour during the year.",
+    "faqDstNo": "No. {b} does not observe daylight saving time, so the difference stays the same all year.",
+    "converter": "To convert another time, use the time converter.",
+    "converterLink": "Time converter"
+  },
+  "pairHub": {
+    "title": "Time Difference: Istanbul and Cities Worldwide | Saat Tarih",
+    "description": "The time difference between Istanbul and London, New York, Dubai, Tokyo and other cities. Standard difference, daylight saving effect and conversion tables.",
+    "h1": "Time difference",
+    "lead": "Pick the time difference between Istanbul and a city around the world. Each page has the standard difference, the effect of daylight saving time, the current difference and a time conversion table.",
+    "listHeading": "Time difference with Istanbul",
+    "linkText": "{a} – {b}"
+  },
+  "converter": {
+    "title": "Time Converter: Convert Time Between Cities | Saat Tarih",
+    "description": "Convert the time in one city to the time in another. A time converter for cities worldwide that applies daylight saving time automatically.",
+    "h1": "Time converter",
+    "lead": "Pick the source and target city and a date and time; the matching time appears instantly. Daylight saving changes are applied automatically.",
+    "fromLabel": "From city",
+    "toLabel": "To city",
+    "whenLabel": "Date and time",
+    "mine": "My location",
+    "swap": "Swap",
+    "now": "Now",
+    "resultLabel": "Result",
+    "result": "When it is {fromTime} in {from}, it is {toTime} in {to}.",
+    "diff": "Difference: {d}",
+    "sameDay": "same day",
+    "faqHeading": "Frequently asked questions about the time converter",
+    "faq": [
+      {
+        "q": "How does the time converter work?",
+        "a": "It converts the date and time in the source city to universal time using that city's time zone, then applies the target city's time zone. Daylight saving changes come from your browser's time zone database."
+      },
+      {
+        "q": "Does daylight saving time affect the difference?",
+        "a": "Yes. For cities that observe daylight saving time the difference changes by one hour for part of the year. The converter uses the real difference on the date you pick."
+      },
+      {
+        "q": "What does My location mean?",
+        "a": "It uses your device's time zone, so you can convert the time where you are to another city."
+      }
+    ]
+  },
+  "planner": {
+    "title": "Meeting Planner: Find Overlapping Working Hours | Saat Tarih",
+    "description": "Find the best meeting time across time zones. Working hours, early or late hours and night hours are colour-coded for every city.",
+    "h1": "Meeting planner",
+    "lead": "Add cities and pick a date; each city's hourly timeline appears side by side. Overlapping working hours (09:00–18:00) are found automatically.",
+    "addLabel": "Add a city",
+    "addBtn": "Add",
+    "dateLabel": "Date",
+    "remove": "Remove",
+    "legendWork": "Working hours (09–18)",
+    "legendEdge": "Early or late (07–09, 18–22)",
+    "legendNight": "Night",
+    "common": "Overlapping working hours (in {city} time): {hours}",
+    "noCommon": "The selected cities have no overlapping working hours; pick the least inconvenient hours from the timeline.",
+    "tableLabel": "24-hour timeline of the selected cities",
+    "minCities": "Select at least two cities.",
+    "faqHeading": "Frequently asked questions about the meeting planner",
+    "faq": [
+      {
+        "q": "How are overlapping working hours found?",
+        "a": "Working hours are taken as 09:00–18:00 in each city. Hours when all selected cities are at work at the same time are marked green and listed."
+      },
+      {
+        "q": "Is daylight saving time taken into account?",
+        "a": "Yes. The real time differences on the date you pick are used, so daylight saving changes are applied automatically."
+      },
+      {
+        "q": "How many cities can I add?",
+        "a": "You can add up to six cities. Your selection is stored on this device."
+      }
+    ]
+  },
+  "cdp": {
+    "title": "How Many Days Until {dat}? Countdown | Saat Tarih",
+    "description": "How many days and hours until {dat}? A live countdown, the target date and the dates for coming years.",
+    "h1": "How many days until {dat}?",
+    "lead": "A live countdown to {name}. The counter runs on the server-synced clock; the days, hours, minutes and seconds left update every second.",
+    "target": "Target date",
+    "noTarget": "There is no upcoming date for this event.",
+    "today": "Today!",
+    "yearsHeading": "Dates of {name}",
+    "yearsCaption": "Dates of {name} by year",
+    "colYear": "Year",
+    "colDate": "Date",
+    "customHeading": "Make your own countdown",
+    "customText": "In the countdown tool you can pick any date and share its link.",
+    "customLink": "Open the countdown tool",
+    "listHeading": "More countdowns",
+    "faqHeading": "Frequently asked questions about {name}",
+    "faqWhen": "When is {name}?",
+    "faqWhenFixed": "{name} is on {date} every year.",
+    "faqWhenYears": "{name}: {list}.",
+    "faqHow": "How does the countdown work?",
+    "faqHowA": "The counter compares the server-synced time with the start of the target date (00:00) and updates every second. The target date comes from the data on our calendar pages.",
+    "school": "The school calendar follows the Ministry of National Education's 2026-2027 working calendar; provincial directorates may differ locally.",
+    "targets": {
+      "newYear": {
+        "name": "New Year",
+        "dat": "New Year"
+      },
+      "rb1": {
+        "name": "Ramazan Bayramı (Eid al-Fitr)",
+        "dat": "Ramazan Bayramı"
+      },
+      "kb1": {
+        "name": "Kurban Bayramı (Eid al-Adha)",
+        "dat": "Kurban Bayramı"
+      },
+      "oct29": {
+        "name": "Republic Day",
+        "dat": "Republic Day"
+      },
+      "ramadanStart": {
+        "name": "Ramadan",
+        "dat": "Ramadan"
+      },
+      "apr23": {
+        "name": "23 April",
+        "dat": "23 April"
+      },
+      "may19": {
+        "name": "19 May",
+        "dat": "19 May"
+      },
+      "aug30": {
+        "name": "Victory Day (30 August)",
+        "dat": "Victory Day"
+      },
+      "semester": {
+        "name": "the mid-year break",
+        "dat": "the mid-year break"
+      },
+      "karne": {
+        "name": "report card day",
+        "dat": "report card day"
+      }
     }
   }
 }

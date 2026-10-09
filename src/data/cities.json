@@ -321,5 +321,271 @@
     },
     "lat": -33.87,
     "lon": 151.21
+  },
+  {
+    "key": "riyadh",
+    "tz": "Asia/Riyadh",
+    "std": "+03:00",
+    "dst": false,
+    "lat": 24.71,
+    "lon": 46.68,
+    "tr": {
+      "slug": "riyad",
+      "name": "Riyad",
+      "loc": "Riyad'da",
+      "country": "Suudi Arabistan"
+    },
+    "en": {
+      "slug": "riyadh",
+      "name": "Riyadh",
+      "country": "Saudi Arabia"
+    }
+  },
+  {
+    "key": "doha",
+    "tz": "Asia/Qatar",
+    "std": "+03:00",
+    "dst": false,
+    "lat": 25.29,
+    "lon": 51.53,
+    "tr": {
+      "slug": "doha",
+      "name": "Doha",
+      "loc": "Doha'da",
+      "country": "Katar"
+    },
+    "en": {
+      "slug": "doha",
+      "name": "Doha",
+      "country": "Qatar"
+    }
+  },
+  {
+    "key": "amsterdam",
+    "tz": "Europe/Amsterdam",
+    "std": "+01:00",
+    "dst": true,
+    "lat": 52.37,
+    "lon": 4.9,
+    "tr": {
+      "slug": "amsterdam",
+      "name": "Amsterdam",
+      "loc": "Amsterdam'da",
+      "country": "Hollanda"
+    },
+    "en": {
+      "slug": "amsterdam",
+      "name": "Amsterdam",
+      "country": "Netherlands"
+    }
+  },
+  {
+    "key": "rome",
+    "tz": "Europe/Rome",
+    "std": "+01:00",
+    "dst": true,
+    "lat": 41.9,
+    "lon": 12.5,
+    "tr": {
+      "slug": "roma",
+      "name": "Roma",
+      "loc": "Roma'da",
+      "country": "İtalya"
+    },
+    "en": {
+      "slug": "rome",
+      "name": "Rome",
+      "country": "Italy"
+    }
+  },
+  {
+    "key": "madrid",
+    "tz": "Europe/Madrid",
+    "std": "+01:00",
+    "dst": true,
+    "lat": 40.42,
+    "lon": -3.7,
+    "tr": {
+      "slug": "madrid",
+      "name": "Madrid",
+      "loc": "Madrid'de",
+      "country": "İspanya"
+    },
+    "en": {
+      "slug": "madrid",
+      "name": "Madrid",
+      "country": "Spain"
+    }
+  },
+  {
+    "key": "athens",
+    "tz": "Europe/Athens",
+    "std": "+02:00",
+    "dst": true,
+    "lat": 37.98,
+    "lon": 23.73,
+    "tr": {
+      "slug": "atina",
+      "name": "Atina",
+      "loc": "Atina'da",
+      "country": "Yunanistan"
+    },
+    "en": {
+      "slug": "athens",
+      "name": "Athens",
+      "country": "Greece"
+    }
+  },
+  {
+    "key": "vienna",
+    "tz": "Europe/Vienna",
+    "std": "+01:00",
+    "dst": true,
+    "lat": 48.21,
+    "lon": 16.37,
+    "tr": {
+      "slug": "viyana",
+      "name": "Viyana",
+      "loc": "Viyana'da",
+      "country": "Avusturya"
+    },
+    "en": {
+      "slug": "vienna",
+      "name": "Vienna",
+      "country": "Austria"
+    }
+  },
+  {
+    "key": "kyiv",
+    "tz": "Europe/Kiev",
+    "std": "+02:00",
+    "dst": true,
+    "lat": 50.45,
+    "lon": 30.52,
+    "tr": {
+      "slug": "kiev",
+      "name": "Kiev",
+      "loc": "Kiev'de",
+      "country": "Ukrayna"
+    },
+    "en": {
+      "slug": "kyiv",
+      "name": "Kyiv",
+      "country": "Ukraine"
+    }
+  },
+  {
+    "key": "tehran",
+    "tz": "Asia/Tehran",
+    "std": "+03:30",
+    "dst": false,
+    "lat": 35.69,
+    "lon": 51.39,
+    "tr": {
+      "slug": "tahran",
+      "name": "Tahran",
+      "loc": "Tahran'da",
+      "country": "İran"
+    },
+    "en": {
+      "slug": "tehran",
+      "name": "Tehran",
+      "country": "Iran"
+    }
+  },
+  {
+    "key": "hong-kong",
+    "tz": "Asia/Hong_Kong",
+    "std": "+08:00",
+    "dst": false,
+    "lat": 22.32,
+    "lon": 114.17,
+    "tr": {
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "loc": "Hong Kong'da",
+      "country": "Çin (Hong Kong)"
+    },
+    "en": {
+      "slug": "hong-kong",
+      "name": "Hong Kong",
+      "country": "China (Hong Kong)"
+    }
+  },
+  {
+    "key": "bangkok",
+    "tz": "Asia/Bangkok",
+    "std": "+07:00",
+    "dst": false,
+    "lat": 13.76,
+    "lon": 100.5,
+    "tr": {
+      "slug": "bangkok",
+      "name": "Bangkok",
+      "loc": "Bangkok'ta",
+      "country": "Tayland"
+    },
+    "en": {
+      "slug": "bangkok",
+      "name": "Bangkok",
+      "country": "Thailand"
+    }
+  },
+  {
+    "key": "toronto",
+    "tz": "America/Toronto",
+    "std": "-05:00",
+    "dst": true,
+    "lat": 43.65,
+    "lon": -79.38,
+    "tr": {
+      "slug": "toronto",
+      "name": "Toronto",
+      "loc": "Toronto'da",
+      "country": "Kanada"
+    },
+    "en": {
+      "slug": "toronto",
+      "name": "Toronto",
+      "country": "Canada"
+    }
+  },
+  {
+    "key": "sao-paulo",
+    "tz": "America/Sao_Paulo",
+    "std": "-03:00",
+    "dst": false,
+    "lat": -23.55,
+    "lon": -46.63,
+    "tr": {
+      "slug": "sao-paulo",
+      "name": "Sao Paulo",
+      "loc": "Sao Paulo'da",
+      "country": "Brezilya"
+    },
+    "en": {
+      "slug": "sao-paulo",
+      "name": "São Paulo",
+      "country": "Brazil"
+    }
+  },
+  {
+    "key": "johannesburg",
+    "tz": "Africa/Johannesburg",
+    "std": "+02:00",
+    "dst": false,
+    "lat": -26.2,
+    "lon": 28.05,
+    "tr": {
+      "slug": "johannesburg",
+      "name": "Johannesburg",
+      "loc": "Johannesburg'da",
+      "country": "Güney Afrika"
+    },
+    "en": {
+      "slug": "johannesburg",
+      "name": "Johannesburg",
+      "country": "South Africa"
+    }
   }
 ]

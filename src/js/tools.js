@@ -166,7 +166,8 @@
     var iH = q("[data-cd-h]"), iM = q("[data-cd-m]"), iS = q("[data-cd-s]"), iT = q("[data-cd-target]");
     var disp = q("[data-cd-display]"), prog = q("[data-cd-progress]"), msg = q("[data-cd-message]");
     var bStart = q("[data-cd-start]"), bReset = q("[data-cd-reset]"), quick = q("[data-cd-quick]");
-    var st = load("sth-cd", { mode: "timer", run: false, dur: 300000, rem: 300000, wallEnd: 0, target: "" });
+    var st = load("sth-cd", { mode: "timer", run: false, dur: 300000, rem: 300000, wallEnd: 0, target: "", name: "" });
+    var nameEl = q("[data-cd-name]"), nameIn = q("[data-cd-nameinput]"), copyBtn = q("[data-cd-copy]");
     var endMono = 0, tick = 0;
     function mode() { return st.mode; }
     function setMode(m) {
@@ -179,6 +180,7 @@
     function setInputs(ms) { var t = Math.round(ms / 1000); iH.value = Math.floor(t / 3600); iM.value = Math.floor((t % 3600) / 60); iS.value = t % 60; }
     function targetMs() { var d = iT.value ? new Date(iT.value) : null; return d && !isNaN(d) ? d.getTime() : 0; }
     function persist() { save("sth-cd", st); }
+    function showName() { if (nameEl) { nameEl.textContent = st.name || ""; nameEl.hidden = !st.name || mode() !== "date"; } }
     function show(text) { if (disp.textContent !== text) disp.textContent = text; }
     function text(ms) {
       if (mode() === "timer") return hms(ms, true);
@@ -200,6 +202,7 @@
     }
     function loop() {
       var r = remaining();
+      showName();
       show(text(Math.max(r, 0)));
       if (mode() === "timer") prog.value = st.dur ? Math.max(0, (r / st.dur) * 100) : 0;
       setTitle(st.run ? text(r) : "");
@@ -269,10 +272,25 @@
       }).catch(function () {});
     }
     bStart.addEventListener("click", start); bReset.addEventListener("click", reset);
+    if (nameIn) nameIn.addEventListener("input", function () { st.name = nameIn.value.trim().slice(0, 40); persist(); showName(); });
+    if (copyBtn) copyBtn.addEventListener("click", function () {
+      if (!iT.value) { msgShow(P.invalid); return; }
+      var url = location.origin + location.pathname + "?t=" + encodeURIComponent(iT.value) + (st.name ? "&n=" + encodeURIComponent(st.name) : "");
+      var done = function () { msgShow(P.copied); setTimeout(function () { if (msg.textContent === P.copied) msgShow(""); }, 2500); };
+      try { navigator.clipboard.writeText(url).then(done, function () { window.prompt(P.copyLink, url); }); } catch (e) { window.prompt(P.copyLink, url); }
+    });
+
+    // Paylaşılan bağlantı: ?t=YYYY-MM-DDTHH:MM&n=Başlık
+    var qs = new URLSearchParams(location.search), shared = qs.get("t");
+    if (shared && /^\d{4}-\d\d-\d\dT\d\d:\d\d$/.test(shared)) {
+      st.mode = "date"; st.run = false; st.target = shared; st.name = (qs.get("n") || "").slice(0, 40);
+      setTimeout(function () { setMode("date"); iT.value = shared; if (nameIn) nameIn.value = st.name; var tg = targetMs(); if (tg > S.nowMs()) { st.run = true; st.wallEnd = tg; persist(); buttons(); run(); } else { msgShow(P.invalid); } }, 0);
+    }
 
     // Kayıtlı durumu geri yükle
     setMode(st.mode);
     if (st.target) iT.value = st.target;
+    if (nameIn) nameIn.value = st.name || "";
     setInputs(st.dur);
     if (st.run) {
       if (mode() === "timer") {

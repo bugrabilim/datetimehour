@@ -1,0 +1,37 @@
+{
+ "source": "MEB 2026-2027 eğitim-öğretim yılı çalışma takvimi (meb.gov.tr haber duyurusu, 13 Haziran 2026); ulusal takvim, il MEM'ler yerel farklılık yapabilir.",
+ "updated": "2026-10-09",
+ "events": [
+  {
+   "key": "schoolStart",
+   "date": "2026-09-14"
+  },
+  {
+   "key": "midterm1",
+   "date": "2026-11-16",
+   "to": "2026-11-20"
+  },
+  {
+   "key": "term1End",
+   "date": "2027-01-22"
+  },
+  {
+   "key": "semester",
+   "date": "2027-01-25",
+   "to": "2027-02-05"
+  },
+  {
+   "key": "term2Start",
+   "date": "2027-02-08"
+  },
+  {
+   "key": "midterm2",
+   "date": "2027-03-08",
+   "to": "2027-03-12"
+  },
+  {
+   "key": "schoolEnd",
+   "date": "2027-06-25"
+  }
+ ]
+}
