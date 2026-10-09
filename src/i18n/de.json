@@ -135,7 +135,25 @@
     "weekFound": "{date} liegt in Kalenderwoche {n} des ISO-Jahres {y}.",
     "pickDate": "Wählen Sie ein Datum.",
     "daysShort": "Tage",
-    "formatLabel": "Zeitformat"
+    "formatLabel": "Zeitformat",
+    "tick": "Tick-Ton",
+    "colors": "Farben",
+    "colorNames": {
+      "auto": "Modus",
+      "night": "Nacht",
+      "paper": "Papier",
+      "amber": "Bernstein",
+      "green": "Matrix-Grün",
+      "blue": "Blau",
+      "purple": "Violett",
+      "red": "Rotes LED",
+      "cyan": "Türkis",
+      "sunset": "Sonnenuntergang",
+      "forest": "Wald",
+      "ocean": "Ozean",
+      "rose": "Rosé",
+      "mono": "Weiß"
+    }
   },
   "home": {
     "title": "Wie spät ist es? Live-Uhr und heutiges Datum | Saat Tarih",
@@ -203,7 +221,19 @@
     "colTime": "Uhrzeit",
     "colOffset": "UTC-Versatz",
     "colDiff": "Unterschied zu Ihnen",
-    "tableCaption": "Aktuelle Ortszeit in Städten"
+    "tableCaption": "Aktuelle Ortszeit in Städten",
+    "customize": "Städte bearbeiten",
+    "customizeLead": "Wählen Sie die anzuzeigenden Städte; Ihre Auswahl wird nur in diesem Browser gespeichert.",
+    "addCity": "Stadt hinzufügen",
+    "addZone": "Weitere Zeitzone hinzufügen",
+    "add": "Hinzufügen",
+    "remove": "Entfernen",
+    "moveUp": "Nach oben",
+    "moveDown": "Nach unten",
+    "reset": "Zurücksetzen",
+    "empty": "Keine Stadt ausgewählt.",
+    "select": "Auswählen …",
+    "done": "Fertig"
   },
   "city": {
     "title": "Aktuelle Uhrzeit in {name} ({country}) | Saat Tarih",
@@ -305,6 +335,11 @@
             [
               "sth-prayer",
               "Merkt sich die zuletzt gewählte Provinz oder den Standort für die Gebetszeiten.",
+              "Bis Sie es löschen"
+            ],
+            [
+              "sth-world",
+              "Merkt sich die für die Weltzeituhr gewählten Städte und ihre Reihenfolge.",
               "Bis Sie es löschen"
             ]
           ]
@@ -548,7 +583,15 @@
     "fullFmt": "{weekday}, {day}. {month} {year}",
     "shortFmt": "{day}. {month}",
     "dateFmt": "{day}. {month} {year}",
-    "examNote": "Die Prüfungstermine folgen den Bekanntgaben von ÖSYM, MEB und der Anadolu-Universität, die sie ändern können. Die Termine für YKS, KPSS und LGS 2027 sind noch nicht veröffentlicht und werden nachgetragen."
+    "examNote": "Die Prüfungstermine folgen den Bekanntgaben von ÖSYM, MEB und der Anadolu-Universität, die sie ändern können. Die Termine für YKS, KPSS und LGS 2027 sind noch nicht veröffentlicht und werden nachgetragen.",
+    "dayNone": "Kein besonderer Tag eingetragen.",
+    "dayWeek": "Woche {n}",
+    "dayDoy": "{n}. Tag des Jahres",
+    "dayToday": "Heute",
+    "dayIn": "In {n} Tagen",
+    "dayAgo": "Vor {n} Tagen",
+    "dayClose": "Schließen",
+    "dayHint": "Tippen Sie auf einen Tag für Details."
   },
   "tools": {
     "hub": {

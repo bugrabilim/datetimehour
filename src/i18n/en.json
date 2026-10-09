@@ -108,7 +108,25 @@
     "weekFound": "{date} falls in week {n} of ISO year {y}.",
     "pickDate": "Pick a date.",
     "daysShort": "days",
-    "formatLabel": "Time format"
+    "formatLabel": "Time format",
+    "tick": "Tick sound",
+    "colors": "Colours",
+    "colorNames": {
+      "auto": "Theme",
+      "night": "Night",
+      "paper": "Paper",
+      "amber": "Amber",
+      "green": "Matrix green",
+      "blue": "Blue",
+      "purple": "Purple",
+      "red": "Red LED",
+      "cyan": "Cyan",
+      "sunset": "Sunset",
+      "forest": "Forest",
+      "ocean": "Ocean",
+      "rose": "Rose",
+      "mono": "White"
+    }
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
@@ -176,7 +194,19 @@
     "colTime": "Time",
     "colOffset": "UTC offset",
     "colDiff": "Difference from you",
-    "tableCaption": "Current local time in cities"
+    "tableCaption": "Current local time in cities",
+    "customize": "Edit cities",
+    "customizeLead": "Choose the cities you want to show; your choice is stored only in this browser.",
+    "addCity": "Add a city",
+    "addZone": "Add another time zone",
+    "add": "Add",
+    "remove": "Remove",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "reset": "Reset to default",
+    "empty": "No cities selected.",
+    "select": "Select…",
+    "done": "Done"
   },
   "city": {
     "title": "Current Time in {name} ({country}) | Saat Tarih",
@@ -278,6 +308,11 @@
             [
               "sth-prayer",
               "Remembers the province or location you chose last for prayer times.",
+              "Until you delete it"
+            ],
+            [
+              "sth-world",
+              "Remembers the cities you chose for the world clock, and their order.",
               "Until you delete it"
             ]
           ]
@@ -521,7 +556,15 @@
     "fullFmt": "{weekday}, {day} {month} {year}",
     "shortFmt": "{day} {month}",
     "dateFmt": "{day} {month} {year}",
-    "examNote": "Exam dates follow announcements by ÖSYM, MEB and Anadolu University, which may change them. The 2027 YKS, KPSS and LGS dates have not been announced yet and will be added once they are."
+    "examNote": "Exam dates follow announcements by ÖSYM, MEB and Anadolu University, which may change them. The 2027 YKS, KPSS and LGS dates have not been announced yet and will be added once they are.",
+    "dayNone": "No special day on record.",
+    "dayWeek": "Week {n}",
+    "dayDoy": "Day {n} of the year",
+    "dayToday": "Today",
+    "dayIn": "In {n} days",
+    "dayAgo": "{n} days ago",
+    "dayClose": "Close",
+    "dayHint": "Select a day for details."
   },
   "tools": {
     "hub": {

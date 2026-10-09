@@ -108,7 +108,25 @@
     "weekFound": "{date} tarixi ISO {y} ilinin {n} nömrəli həftəsinə düşür.",
     "pickDate": "Tarix seçin.",
     "daysShort": "gün",
-    "formatLabel": "Saat formatı"
+    "formatLabel": "Saat formatı",
+    "tick": "Tıq səsi",
+    "colors": "Rənglər",
+    "colorNames": {
+      "auto": "Mövzu",
+      "night": "Gecə",
+      "paper": "Kağız",
+      "amber": "Kəhrəba",
+      "green": "Matrix yaşılı",
+      "blue": "Mavi",
+      "purple": "Bənövşəyi",
+      "red": "Qırmızı LED",
+      "cyan": "Firuzəyi",
+      "sunset": "Gün batımı",
+      "forest": "Meşə",
+      "ocean": "Okean",
+      "rose": "Gül",
+      "mono": "Ağ"
+    }
   },
   "home": {
     "title": "Saat neçədir? Canlı saat və bugünkü tarix | Saat Tarih",
@@ -176,7 +194,19 @@
     "colTime": "Saat",
     "colOffset": "UTC fərqi",
     "colDiff": "Sizinlə fərq",
-    "tableCaption": "Şəhərlərdə indiki yerli vaxt"
+    "tableCaption": "Şəhərlərdə indiki yerli vaxt",
+    "customize": "Şəhərləri redaktə et",
+    "customizeLead": "Göstərmək istədiyiniz şəhərləri seçin; seçiminiz yalnız bu brauzerdə saxlanılır.",
+    "addCity": "Şəhər əlavə et",
+    "addZone": "Başqa saat qurşağı əlavə et",
+    "add": "Əlavə et",
+    "remove": "Sil",
+    "moveUp": "Yuxarı apar",
+    "moveDown": "Aşağı apar",
+    "reset": "Susmaya görə qaytar",
+    "empty": "Heç bir şəhər seçilməyib.",
+    "select": "Seçin…",
+    "done": "Hazır"
   },
   "city": {
     "title": "{name} ({country}): saat neçədir? | Saat Tarih",
@@ -278,6 +308,11 @@
             [
               "sth-prayer",
               "Namaz vaxtları üçün sonuncu seçdiyiniz vilayəti və ya məkanı xatırlayır.",
+              "Siz silənə qədər"
+            ],
+            [
+              "sth-world",
+              "Dünya saatları üçün seçdiyiniz şəhərləri və onların ardıcıllığını xatırlayır.",
               "Siz silənə qədər"
             ]
           ]
@@ -521,7 +556,15 @@
     "fullFmt": "{day} {month} {year}, {weekday}",
     "shortFmt": "{day} {month}",
     "dateFmt": "{day} {month} {year}",
-    "examNote": "İmtahan tarixləri ÖSYM, MEB və Anadolu Universitetinin elanlarına əsaslanır; qurumlar onları dəyişə bilər. 2027-ci il YKS, KPSS və LGS tarixləri hələ açıqlanmayıb, açıqlandıqda əlavə ediləcək."
+    "examNote": "İmtahan tarixləri ÖSYM, MEB və Anadolu Universitetinin elanlarına əsaslanır; qurumlar onları dəyişə bilər. 2027-ci il YKS, KPSS və LGS tarixləri hələ açıqlanmayıb, açıqlandıqda əlavə ediləcək.",
+    "dayNone": "Bu gün üçün qeydə alınmış xüsusi gün yoxdur.",
+    "dayWeek": "Həftə {n}",
+    "dayDoy": "İlin {n}-ci günü",
+    "dayToday": "Bu gün",
+    "dayIn": "{n} gün sonra",
+    "dayAgo": "{n} gün əvvəl",
+    "dayClose": "Bağla",
+    "dayHint": "Ətraflı məlumat üçün günə toxunun."
   },
   "tools": {
     "hub": {

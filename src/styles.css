@@ -211,11 +211,7 @@ html.sec-off .hand-sec { display: none; }
 .stage:fullscreen .stage-bar, .stage.is-full .stage-bar, .stage:fullscreen .stage-note, .stage.is-full .stage-note { display: none; }
 .stage.is-full { position: fixed; inset: 0; z-index: 200; margin: 0; }
 html.has-full { overflow: hidden; }
-.fs-exit { display: none; }
-.stage:fullscreen .fs-exit, .stage.is-full .fs-exit {
-  display: inline-flex; position: absolute; top: 0.9rem; inset-inline-end: 0.9rem; z-index: 5; opacity: 0; transition: opacity 0.25s; pointer-events: none;
-}
-.stage.fs-awake .fs-exit, .stage .fs-exit:focus-visible { opacity: 1; pointer-events: auto; }
+
 
 .controls { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
 .toggle {
@@ -575,3 +571,63 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .pr-month-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.75rem; }
 .pr-month-head h2 { margin: 0; text-transform: capitalize; }
 .pr-month-nav { display: flex; gap: 0.5rem; }
+
+/* Tam ekran renk paletleri (stage.fs-on içinde; auto = site teması) */
+.stage.fs-on[data-fs-color="night"] { --bg: #0a0c10; --surface: #0a0c10; --surface-2: #151a23; --text: #f4f6fa; --muted: #aab3c2; --accent: #ff9f43; --border: #2a3140; --focus: #ff9f43; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="paper"] { --bg: #f7f4ee; --surface: #fffdf8; --surface-2: #efe9dd; --text: #1a1f2b; --muted: #5a6170; --accent: #a03c00; --border: #d6cfbf; --focus: #a03c00; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="amber"] { --bg: #0d0905; --surface: #0d0905; --surface-2: #1c1409; --text: #ffb000; --muted: #c98a00; --accent: #ffd37a; --border: #3d2b0c; --focus: #ffd37a; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="green"] { --bg: #020d05; --surface: #020d05; --surface-2: #08200d; --text: #3dff7a; --muted: #26b857; --accent: #b8ffcf; --border: #0f3a1a; --focus: #b8ffcf; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="blue"] { --bg: #08142b; --surface: #08142b; --surface-2: #0f2347; --text: #d6e6ff; --muted: #8fb0e0; --accent: #5aa9ff; --border: #1c3a70; --focus: #5aa9ff; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="purple"] { --bg: #130b24; --surface: #130b24; --surface-2: #1f1238; --text: #eadcff; --muted: #b79ee0; --accent: #b98bff; --border: #36205c; --focus: #b98bff; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="red"] { --bg: #120505; --surface: #120505; --surface-2: #230a0a; --text: #ff3b3b; --muted: #c42b2b; --accent: #ff9a9a; --border: #471111; --focus: #ff9a9a; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="cyan"] { --bg: #031a1c; --surface: #031a1c; --surface-2: #072d30; --text: #c9fbff; --muted: #6fd0d8; --accent: #25d6e0; --border: #0d4a4f; --focus: #25d6e0; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="sunset"] { --bg: #2a0f1f; --surface: #2a0f1f; --surface-2: #3d1830; --text: #ffe3d1; --muted: #e0a994; --accent: #ff7a59; --border: #5c2745; --focus: #ff7a59; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="forest"] { --bg: #0b1a10; --surface: #0b1a10; --surface-2: #12301c; --text: #e3f5df; --muted: #94c79b; --accent: #7bd88f; --border: #1f4a2b; --focus: #7bd88f; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="ocean"] { --bg: #062a3a; --surface: #062a3a; --surface-2: #0b4057; --text: #e2f6ff; --muted: #8cc9e3; --accent: #4cc9f0; --border: #135a78; --focus: #4cc9f0; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="rose"] { --bg: #fff0f3; --surface: #fff7f9; --surface-2: #ffe0e7; --text: #4a1020; --muted: #8a4a5a; --accent: #d6336c; --border: #f0b8c6; --focus: #d6336c; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+.stage.fs-on[data-fs-color="mono"] { --bg: #ffffff; --surface: #ffffff; --surface-2: #f0f0f0; --text: #111111; --muted: #555555; --accent: #e03131; --border: #cccccc; --focus: #e03131; --accent-soft: color-mix(in srgb, var(--accent) 25%, var(--bg)); color: var(--text); }
+
+/* Tam ekran araç çubuğu */
+.fs-bar { display: none; }
+.stage.fs-on .fs-bar {
+  display: flex; position: absolute; top: 0.75rem; inset-inline: 0.75rem; z-index: 5; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+  opacity: 0; transition: opacity 0.25s; pointer-events: none;
+}
+.stage.fs-awake .fs-bar, .stage.fs-on .fs-bar:has(:focus-visible) { opacity: 1; pointer-events: auto; }
+.fs-colors { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; padding: 0.35rem 0.6rem; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; }
+.swatch { width: 1.9rem; height: 1.9rem; padding: 0; border-radius: 50%; border: 2px solid var(--border); cursor: pointer; }
+.swatch[aria-pressed="true"] { outline: 3px solid var(--focus); outline-offset: 2px; }
+.sw-auto { background: conic-gradient(#f7f4ee 0 50%, #11141a 0); }
+.sw-night { background: linear-gradient(135deg, #0a0c10 50%, #ff9f43 50%); }
+.sw-paper { background: linear-gradient(135deg, #f7f4ee 50%, #a03c00 50%); }
+.sw-amber { background: linear-gradient(135deg, #0d0905 50%, #ffd37a 50%); }
+.sw-green { background: linear-gradient(135deg, #020d05 50%, #b8ffcf 50%); }
+.sw-blue { background: linear-gradient(135deg, #08142b 50%, #5aa9ff 50%); }
+.sw-purple { background: linear-gradient(135deg, #130b24 50%, #b98bff 50%); }
+.sw-red { background: linear-gradient(135deg, #120505 50%, #ff9a9a 50%); }
+.sw-cyan { background: linear-gradient(135deg, #031a1c 50%, #25d6e0 50%); }
+.sw-sunset { background: linear-gradient(135deg, #2a0f1f 50%, #ff7a59 50%); }
+.sw-forest { background: linear-gradient(135deg, #0b1a10 50%, #7bd88f 50%); }
+.sw-ocean { background: linear-gradient(135deg, #062a3a 50%, #4cc9f0 50%); }
+.sw-rose { background: linear-gradient(135deg, #fff0f3 50%, #d6336c 50%); }
+.sw-mono { background: linear-gradient(135deg, #ffffff 50%, #e03131 50%); }
+
+/* Dünya saatlerini düzenleme */
+.world-edit { margin-top: 1rem; }
+.world-panel { margin-top: 0.75rem; padding: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: grid; gap: 0.75rem; }
+.world-panel .chip-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.world-panel .chip-item { display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.2rem 0.3rem 0.2rem 0.8rem; background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px; }
+.world-panel .chip-item .toggle { min-height: 2.25rem; padding: 0 0.6rem; }
+.city-card .card-static { display: block; padding: 1rem 1.1rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); }
+
+/* Takvim: gün ayrıntısı ve tıklanabilir hücreler */
+.ymonth td[data-d] { cursor: pointer; }
+.ymonth td.d-selected { outline: 3px solid var(--focus); outline-offset: -2px; }
+.ymonth td:focus-visible { outline: 3px solid var(--focus); outline-offset: -2px; }
+.day-detail { margin-top: 1rem; padding: 1rem 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.day-detail[hidden] { display: none; }
+.day-detail-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.day-detail h3 { margin: 0; }
+.day-detail ul { margin: 0.5rem 0; padding-inline-start: 1.25rem; }
+.cal td a { display: block; color: inherit; text-decoration: none; border-radius: 6px; }
+.cal td a:hover, .cal td a:focus-visible { background: var(--accent-soft); }

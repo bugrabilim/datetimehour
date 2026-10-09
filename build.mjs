@@ -80,6 +80,7 @@ for (const [name, from] of [
   ["embed.js", "js/embed.js"],
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
+  ["world.js", "js/world.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -175,6 +176,15 @@ const MODELS = [
   { id: "bigdate", cls: "s-bigdate", html: (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}` },
 ];
 
+const PALETTES = ["auto", "night", "paper", "amber", "green", "blue", "purple", "red", "cyan", "sunset", "forest", "ocean", "rose", "mono"];
+const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+const ICON_SOUND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>`;
+
+/* 24|12 saat ayırıcı ve saniye düğmesi (sahne, dünya saatleri) */
+function prefControls(t) {
+  return `<div class="seg" role="group" aria-label="${esc(t.client.formatLabel)}"><button type="button" class="toggle" data-fmt="24" aria-pressed="true">${esc(t.client.format24)}</button><button type="button" class="toggle" data-fmt="12" aria-pressed="false">${esc(t.client.format12)}</button></div><button type="button" class="toggle" data-pref="sec" aria-pressed="false">${esc(t.client.seconds)}</button>`;
+}
+
 function clockStage(lang, { tz = "" } = {}) {
   const t = I[lang];
   const s = t.stage;
@@ -183,26 +193,24 @@ function clockStage(lang, { tz = "" } = {}) {
     const name = s.models[m.id];
     return `<section class="slide ${m.cls}" id="model-${m.id}" data-model="${m.id}" data-name="${esc(name)}" role="group" aria-roledescription="${esc(s.slideRole)}" aria-label="${esc(tpl(s.slide, { n: i + 1, total, name }))}"${i ? ' aria-hidden="true"' : ""}>${m.html(tz)}</section>`;
   }).join("");
-  const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
   const dots = MODELS.map(
     (m, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${esc(s.models[m.id])}" title="${esc(s.models[m.id])}"${i ? "" : ' aria-current="true"'}></button>`
   ).join("");
+  const swatches = PALETTES.map((id) => `<button type="button" class="swatch sw-${id}" data-color="${id}" aria-pressed="false" aria-label="${esc(t.client.colorNames[id])}" title="${esc(t.client.colorNames[id])}"></button>`).join("");
+  const tickBtn = `<button type="button" class="icon-btn" data-tick aria-pressed="false" aria-label="${esc(t.client.tick)}" title="${esc(t.client.tick)}">${ICON_SOUND}</button>`;
   return `<section class="stage" data-carousel aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
   <h2 id="clock-h" class="sr-only">${esc(s.label)}</h2>
   <div class="stage-track" data-track tabindex="0" aria-label="${esc(s.hint)}">${slides}</div>
-  <button type="button" class="icon-btn fs-exit" data-fullscreen-exit aria-label="${esc(t.client.exitFullscreen)}" title="${esc(t.client.exitFullscreen)}">${ICON_CLOSE}</button>
+  <p class="sr-only" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
+  <div class="fs-bar" data-fs-bar>
+    <button type="button" class="icon-btn" data-fullscreen-exit aria-label="${esc(t.client.exitFullscreen)}" title="${esc(t.client.exitFullscreen)}">${ICON_CLOSE}</button>
+    <div class="fs-colors" role="group" aria-label="${esc(t.client.colors)}">${swatches}</div>
+    ${tickBtn}
+  </div>
   <div class="stage-bar">
-    <div class="stage-nav">
-      <button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}">${ICON_PREV}</button>
-      <p class="stage-name" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
-      <button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}">${ICON_NEXT}</button>
-    </div>
     <div class="stage-tools">
-      <div class="seg" role="group" aria-label="${esc(t.client.formatLabel)}">
-        <button type="button" class="toggle" data-fmt="24" aria-pressed="true">${esc(t.client.format24)}</button>
-        <button type="button" class="toggle" data-fmt="12" aria-pressed="false">${esc(t.client.format12)}</button>
-      </div>
-      <button type="button" class="toggle" data-pref="sec" aria-pressed="false">${esc(t.client.seconds)}</button>
+      ${prefControls(t)}
+      ${tickBtn}
       <button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
     </div>
     <div class="dots" role="group" aria-label="${esc(s.dots)}">${dots}</div>
@@ -210,14 +218,13 @@ function clockStage(lang, { tz = "" } = {}) {
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
 </section>
 <div class="source-note">
-  <p class="meta stage-hint">${esc(s.hint)}</p>
   <p class="meta source-line">${esc(s.source)}</p>
   <p class="meta sync-line" data-sync-status>&nbsp;</p>
 </div>`;
 }
 
 function cityCard(lang, c) {
-  return `<li class="city-card"><a href="${cityPath(lang, c)}"><span class="city-name">${esc(c[lang].name)}</span><span class="city-time" data-live="time" data-tz="${c.tz}">--:--</span><span class="city-diff" data-live="diff" data-tz="${c.tz}">&nbsp;</span></a></li>`;
+  return `<li class="city-card" data-world-item="${c.key}"><a href="${cityPath(lang, c)}"><span class="city-name">${esc(c[lang].name)}</span><span class="city-time" data-live="time" data-tz="${c.tz}">--:--</span><span class="city-diff" data-live="diff" data-tz="${c.tz}">&nbsp;</span></a></li>`;
 }
 
 function faqHtml(items, headingId) {
@@ -310,7 +317,7 @@ function layout(p) {
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
-    cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt },
+    cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt, calBase: ROUTES[lang].calendar, calMin: HOL_YEARS[0], calMax: HOL_YEARS[HOL_YEARS.length - 1] },
   };
   const og = p.noindex
     ? ""
@@ -507,7 +514,7 @@ function buildHome(lang) {
   <div class="wrap">
     <h2 id="world-h">${esc(h.worldHeading)}</h2>
     <p class="meta">${esc(h.worldLead)}</p>
-    <ul class="city-grid">${featured.map((c) => cityCard(lang, c)).join("")}</ul>
+    <div data-world="grid"><ul class="city-grid">${featured.map((c) => cityCard(lang, c)).join("")}</ul></div>
     <p><a href="${ROUTES[lang].world}">${esc(h.worldAll)} ${ARROW(lang)}</a></p>
   </div>
 </section>
@@ -542,7 +549,7 @@ function buildHome(lang) {
   e.push({ t: h.factsHeading, u: pagePath + "#facts", d: `${h.factWeek}, ${h.factDoy}, ${h.factLeft}, ${h.factUnix}, ${h.factUtc}`, k: "hafta week unix utc gün day yıl year" });
   h.faq.forEach((f) => e.push({ t: f.q, u: pagePath + "#faq", d: f.a, k: "sss faq" }));
   e.push({ t: t.list.heading, u: pagePath + "#liste", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
-  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js"] };
+  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "world.js"], clientExtra: { cities: clientCities(lang), t: { wc: t.world } } };
 }
 
 function buildWorld(lang) {
@@ -550,7 +557,7 @@ function buildWorld(lang) {
   const w = t.world;
   const pagePath = ROUTES[lang].world;
   const rows = CITIES.map(
-    (c) => `<tr><th scope="row"><a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></th><td>${esc(c[lang].country)}</td><td class="num" data-live="time" data-sec data-tz="${c.tz}">--:--:--</td><td class="num" data-live="offset" data-tz="${c.tz}">UTC</td><td data-live="diff" data-tz="${c.tz}">&nbsp;</td></tr>`
+    (c) => `<tr data-world-item="${c.key}"><th scope="row"><a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></th><td>${esc(c[lang].country)}</td><td class="num" data-live="time" data-sec data-tz="${c.tz}">--:--:--</td><td class="num" data-live="offset" data-tz="${c.tz}">UTC</td><td data-live="diff" data-tz="${c.tz}">&nbsp;</td></tr>`
   ).join("");
   const trail = [
     { name: t.ui.home, path: ROUTES[lang].home },
@@ -562,20 +569,17 @@ function buildWorld(lang) {
     <h1>${esc(w.h1)}</h1>
     <p class="lead">${esc(tpl(w.lead, { n: CITIES.length }))}</p>
     <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
-    <div class="controls">
-      <button type="button" class="toggle" data-pref="h12" aria-pressed="false">${esc(t.client.format24)}</button>
-      <button type="button" class="toggle" data-pref="sec" aria-pressed="true">${esc(t.client.seconds)}</button>
-    </div>
+    <div class="controls">${prefControls(t)}</div>
   </div>
 </section>
 <section class="section">
   <div class="wrap">
-    <div class="table-wrap"><table><caption>${esc(w.tableCaption)}</caption><thead><tr><th scope="col">${esc(w.colCity)}</th><th scope="col">${esc(w.colCountry)}</th><th scope="col">${esc(w.colTime)}</th><th scope="col">${esc(w.colOffset)}</th><th scope="col">${esc(w.colDiff)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div data-world="table"><div class="table-wrap"><table><caption>${esc(w.tableCaption)}</caption><thead><tr><th scope="col">${esc(w.colCity)}</th><th scope="col">${esc(w.colCountry)}</th><th scope="col">${esc(w.colTime)}</th><th scope="col">${esc(w.colOffset)}</th><th scope="col">${esc(w.colDiff)}</th></tr></thead><tbody>${rows}</tbody></table></div></div>
   </div>
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, w.title, w.description), breadcrumbLd(trail)];
   searchEntries[lang].push({ t: w.h1, u: pagePath, d: w.description, k: "dünya şehir saat farkı world city time zone timezone" });
-  return { lang, key: "world", path: pagePath, title: w.title, description: w.description, body, ld, nav: "world" };
+  return { lang, key: "world", path: pagePath, title: w.title, description: w.description, body, ld, nav: "world", scripts: ["world.js"], clientExtra: { cities: clientCities(lang), t: { wc: t.world } } };
 }
 
 function buildCity(lang, c) {
@@ -718,7 +722,7 @@ function monthTable(lang, year, month, cy, ev) {
       const cls = [rank && `d-${rank}`, !rank && school && "d-school", !rank && exam && "d-exam", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
       const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
       const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
-      tr += `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}>${d}${label}</td>`;
+      tr += `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? ' tabindex="0" role="button"' : ""}>${d}${label}</td>`;
     }
     rows += `<tr>${tr}</tr>`;
   }
@@ -785,6 +789,8 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     <h2 id="legend-h" class="sr-only">${esc(cal.legendLabel)}</h2>
     <ul class="legend" aria-label="${esc(cal.legendLabel)}">${legend}</ul>
     <div class="year-grid" data-year="${year}">${months}</div>
+    <div class="day-detail" id="day-detail" role="status" aria-live="polite" tabindex="-1" hidden></div>
+    <p class="meta">${esc(cal.dayHint)}</p>
     <p class="meta">${esc(cal.note)}</p>
     ${cy.events.some((e) => e.type === "school") ? `<p class="meta">${esc(cal.schoolNote)}</p>` : ""}
     ${cy.events.some((e) => e.type === "exam") ? `<p class="meta">${esc(cal.examNote)}</p>` : ""}
@@ -812,7 +818,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
       if (ee) e.push({ t: `${cal.events[k]} ${year}`, u: `${canonicalPath}#events`, d: f.full(ee.date), k: "takvim bayram ramazan kurban calendar eid ramadan " + year });
     }
   }
-  return { lang, key, path: pagePath, title, description, body, ld, nav: "calendar", scripts: ["calendar.js"], clientExtra: { cal: { year } }, noindex: index, canonicalPath: index ? canonicalPath : undefined, noHreflang: index, mapKey: index ? undefined : key };
+  return { lang, key, path: pagePath, title, description, body, ld, nav: "calendar", scripts: ["calendar.js"], clientExtra: { cal: { year }, t: { cald: { none: cal.dayNone, week: cal.dayWeek, doy: cal.dayDoy, today: cal.dayToday, inDays: cal.dayIn, ago: cal.dayAgo, close: cal.dayClose, types: cal.types } } }, noindex: index, canonicalPath: index ? canonicalPath : undefined, noHreflang: index, mapKey: index ? undefined : key };
 }
 
 /* ---------- Araç sayfaları ---------- */
@@ -1106,7 +1112,7 @@ const pairPath = (lang, c) => `${ROUTES[lang].diff}${HOME_CITY[lang].slug}-${c[l
 const durTxt = (lang, min) => { const t = I[lang].client; const a = Math.abs(min), h = Math.floor(a / 60), m = a % 60; return [h && `${h} ${t.hourShort}`, m && `${m} ${t.minuteShort}`].filter(Boolean).join(" "); };
 const hh = (n) => String(((n % 24) + 24) % 24).padStart(2, "0");
 const cityOptions = (lang, withMine) => `${withMine ? `<option value="">${esc(I[lang].converter.mine)}</option>` : ""}${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
-const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz }));
+const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country }));
 const relatedCards = (lang, keys) => keys.map((k) => `<li class="city-card"><a href="${ROUTES[lang][k]}"><span class="city-name">${esc(I[lang].tools.hub.cards[k].name)}</span><span class="city-diff">${esc(I[lang].tools.hub.cards[k].desc)}</span></a></li>`).join("");
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
 
@@ -1420,7 +1426,6 @@ function prayerBody(lang, prov) {
     </section>
     <p class="meta sync-line" data-sync-status>&nbsp;</p>`;
   const head = PRAYER_KEYS.map((k) => `<th scope="col">${esc(s.names[k])}</th>`).join("");
-  const links = PROVINCES.map((pr) => `<li class="city-card"><a href="${prayerPath(lang, pr)}"><span class="city-name">${esc(provName(lang, pr))}</span></a></li>`).join("");
   const sections = `<section class="section" aria-labelledby="pr-month-h">
   <div class="wrap">
     <div class="pr-month-head">
@@ -1436,13 +1441,7 @@ function prayerBody(lang, prov) {
     <p>${esc(s.method)}</p>
   </div>
 </section>
-<section class="section" aria-labelledby="pr-prov-h">
-  <div class="wrap">
-    <h2 id="pr-prov-h">${esc(s.provincesHeading)}</h2>
-    <p class="meta">${esc(s.provincesLead)}</p>
-    <ul class="city-grid">${links}</ul>
-  </div>
-</section>`;
+`;
   return { hero, sections };
 }
 const prayerClient = (s) => ({ pr: { locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation, nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names } });
