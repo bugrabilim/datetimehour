@@ -53,7 +53,7 @@ for (const f of htmlFiles) {
     check(slides.length >= 10, `${name}: saat modeli sayısı ${slides.length} < 10`);
     check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
     check((h.match(/data-dot="\d+"/g) || []).length === slides.length, `${name}: nokta sayısı model sayısıyla uyuşmuyor`);
-    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-nav="-1"/.test(h) && /data-nav="1"/.test(h) && /data-fmt="24"/.test(h) && /data-fmt="12"/.test(h) && /data-pref="sec"/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
+    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-fs-bar/.test(h) && (h.match(/data-color="/g) || []).length >= 10 && /data-tick/.test(h) && !/data-nav="-1"/.test(h) && !/stage-hint/.test(h) && /data-fmt="24"/.test(h) && /data-fmt="12"/.test(h) && /data-pref="sec"/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
     check(!/data-pref="sync"/.test(h) && /data-sync-status/.test(h) && /class="meta source-line"/.test(h), `${name}: senkron düğmesi/durumu eksik`);
     check(/data-live="calendar"/.test(h) && /data-live="flip"/.test(h) && /data-live="words"/.test(h) && /data-live="rings"/.test(h), `${name}: özel model türleri eksik`);
   }
@@ -193,6 +193,13 @@ for (const [n, t] of Object.entries(themes)) {
     check(r >= min, `kontrast ${n}: ${fg}/${bg} = ${r.toFixed(2)} < ${min}`);
   }
 }
+
+// tam ekran renk paletleri: okunurluk
+for (const m of css.matchAll(/\.stage\.fs-on\[data-fs-color="(\w+)"\] \{([^}]*)\}/g)) {
+  const v = Object.fromEntries([...m[2].matchAll(/--([\w-]+):\s*(#[0-9a-f]{6})/g)].map((x) => [x[1], x[2]]));
+  check(ratio(v.text, v.bg) >= 4.5 && ratio(v.muted, v.bg) >= 3 && ratio(v.accent, v.bg) >= 3, `palet ${m[1]}: kontrast yetersiz (${ratio(v.text, v.bg).toFixed(1)}/${ratio(v.muted, v.bg).toFixed(1)}/${ratio(v.accent, v.bg).toFixed(1)})`);
+}
+check((css.match(/\.stage\.fs-on\[data-fs-color=/g) || []).length >= 12, "en az 12 tam ekran paleti olmalı");
 
 // nginx başlıkları
 const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");

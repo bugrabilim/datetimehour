@@ -81,10 +81,20 @@
 
 
   /* ---------- Ortak tam ekran: Fullscreen API, yoksa sabit kaplama ---------- */
+  var wakeSentinel = null, fsActive = false;
+  function keepAwake(on) { // tam ekranda ekran koruyucu/uyku girmesin
+    try {
+      if (on && navigator.wakeLock && !wakeSentinel) {
+        navigator.wakeLock.request("screen").then(function (s) { wakeSentinel = s; s.addEventListener("release", function () { wakeSentinel = null; }); }).catch(function () {});
+      } else if (!on && wakeSentinel) { wakeSentinel.release(); wakeSentinel = null; }
+    } catch (e) {}
+  }
+  doc.addEventListener("visibilitychange", function () { if (!doc.hidden && fsActive) keepAwake(true); });
   function makeFullscreen(el, button, onChange) {
     var isFull = function () { return doc.fullscreenElement === el || el.classList.contains("is-full"); };
     var update = function () {
       var on = isFull();
+      if (on !== el._wasFull) { el._wasFull = on; fsActive = on; keepAwake(on); }
       root.classList.toggle("has-full", on);
       if (button) {
         var label = on ? T.exitFullscreen : T.fullscreen;
@@ -113,11 +123,12 @@
   }
 
   /* ---------- Saat ---------- */
-  var prefs = { h12: false, sec: false, model: "", pv: 2 };
+  var prefs = { h12: false, sec: false, model: "", pv: 2, fsColor: "auto", tick: false };
   try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
   if (prefs.pv !== 2) { prefs.sec = false; prefs.pv = 2; } // varsayılan: saniye kapalı
   if (window.__sthPrefs) Object.assign(prefs, window.__sthPrefs);
-  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec === true;
+  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec === true; prefs.tick = prefs.tick === true;
+  if (!/^[a-z]{2,12}$/.test(String(prefs.fsColor))) prefs.fsColor = "auto";
   prefs.sync = true; // saat her zaman sunucu saatine göre çalışır
 
   var localTz;
@@ -313,7 +324,12 @@ function sunTimes(y, m, d, lat, lon) {
       for (var c = 0; c < 7; c++, day++) {
         var td = doc.createElement("td");
         if (day >= 1 && day <= count) {
-          td.textContent = String(day);
+          if (CAL.calBase) {
+            var link = doc.createElement("a");
+            link.textContent = String(day);
+            link.href = CAL.calBase + Math.min(Math.max(p.year, CAL.calMin), CAL.calMax) + "/?d=" + p.year + "-" + String(p.month).padStart(2, "0") + "-" + String(day).padStart(2, "0");
+            td.appendChild(link);
+          } else td.textContent = String(day);
           if (day === p.day) { td.className = "today"; td.setAttribute("aria-current", "date"); }
         }
         tr.appendChild(td);
@@ -405,14 +421,32 @@ function sunTimes(y, m, d, lat, lon) {
       svg.querySelector("[data-hand=s]").setAttribute("transform", "rotate(" + s * 6 + " 100 100)");
     });
   }
+  /* Saniye tık sesi (Web Audio; kullanıcı düğmeye basınca açılır) */
+  var audio = null, tickFlip = false;
+  function ensureAudio() {
+    if (!audio) { var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null; try { audio = new AC(); } catch (e) { return null; } }
+    if (audio.state === "suspended") audio.resume();
+    return audio;
+  }
+  function playTick() {
+    if (!audio || audio.state !== "running" || doc.hidden) return;
+    tickFlip = !tickFlip;
+    var t = audio.currentTime, o = audio.createOscillator(), g = audio.createGain();
+    o.type = "square"; o.frequency.value = tickFlip ? 1500 : 1100;
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.16, t + 0.002); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.05);
+    o.connect(g); g.connect(audio.destination); o.start(t); o.stop(t + 0.06);
+  }
   function schedule() {
     render();
-    setTimeout(schedule, 1000 - (Date.now() % 1000) + 5);
+    if (prefs.tick) playTick();
+    setTimeout(schedule, 1000 - (nowMs() % 1000) + 5);
   }
 
   var fmtBtns = Array.prototype.slice.call(doc.querySelectorAll("[data-fmt]"));
   var btnSec = doc.querySelector("[data-pref=sec]");
+  var tickBtns = Array.prototype.slice.call(doc.querySelectorAll("[data-tick]"));
   function syncButtons() {
+    tickBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(prefs.tick)); });
     fmtBtns.forEach(function (b) { b.setAttribute("aria-pressed", String((b.getAttribute("data-fmt") === "12") === prefs.h12)); });
     if (btnSec) btnSec.setAttribute("aria-pressed", String(prefs.sec));
     root.classList.toggle("sec-off", !prefs.sec);
@@ -420,6 +454,8 @@ function sunTimes(y, m, d, lat, lon) {
   function savePrefs() { store("sth-prefs", JSON.stringify(prefs)); syncButtons(); render(); }
   fmtBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.h12 = b.getAttribute("data-fmt") === "12"; savePrefs(); }); });
   if (btnSec) btnSec.addEventListener("click", function () { prefs.sec = !prefs.sec; savePrefs(); });
+  tickBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.tick = !prefs.tick; if (prefs.tick) ensureAudio(); savePrefs(); }); });
+  if (tickBtns.length) doc.addEventListener("pointerdown", function () { if (prefs.tick && (!audio || audio.state !== "running")) ensureAudio(); }, { passive: true });
   syncButtons();
   if (liveEls.length) schedule();
 
@@ -479,19 +515,32 @@ function sunTimes(y, m, d, lat, lon) {
     window.addEventListener("resize", function () { trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" }); });
     window.addEventListener("hashchange", function () { var i = indexFromHash(); if (i > -1) goTo(i, true); });
 
-    var fsBtn = stage.querySelector("[data-fullscreen]");
-    var full = makeFullscreen(stage, fsBtn, function () { trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" }); });
-    var toggleFull = full.toggle;
-    // Tam ekranda yalnız seçili model görünür; çıkış düğmesi dokunuş/harekette 3 sn belirir
-    var exitBtn = stage.querySelector("[data-fullscreen-exit]");
-    if (exitBtn) exitBtn.addEventListener("click", function () { toggleFull(); });
+    // Tam ekranda yalnız seçili model görünür; çıkış, renk ve ses düğmeleri dokunuş/harekette 4 sn belirir
     var awakeTimer = null;
     var wake = function () {
       stage.classList.add("fs-awake");
       clearTimeout(awakeTimer);
-      awakeTimer = setTimeout(function () { stage.classList.remove("fs-awake"); }, 3000);
+      awakeTimer = setTimeout(function () { stage.classList.remove("fs-awake"); }, 4000);
     };
+    var fsBtn = stage.querySelector("[data-fullscreen]");
+    var full = makeFullscreen(stage, fsBtn, function (on) {
+      stage.classList.toggle("fs-on", !!on);
+      if (on) wake(); else { stage.classList.remove("fs-awake"); clearTimeout(awakeTimer); }
+      trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" });
+    });
+    var toggleFull = full.toggle;
+    var exitBtn = stage.querySelector("[data-fullscreen-exit]");
+    if (exitBtn) exitBtn.addEventListener("click", function () { toggleFull(); });
     ["pointerdown", "pointermove", "touchstart", "keydown"].forEach(function (n) { stage.addEventListener(n, wake, { passive: true }); });
+    var swatches = Array.prototype.slice.call(stage.querySelectorAll("[data-color]"));
+    var knownColors = swatches.map(function (b) { return b.getAttribute("data-color"); });
+    if (knownColors.indexOf(prefs.fsColor) < 0) prefs.fsColor = "auto";
+    var applyColor = function () {
+      stage.setAttribute("data-fs-color", prefs.fsColor);
+      swatches.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-color") === prefs.fsColor)); });
+    };
+    swatches.forEach(function (b) { b.addEventListener("click", function () { prefs.fsColor = b.getAttribute("data-color"); store("sth-prefs", JSON.stringify(prefs)); applyColor(); }); });
+    applyColor();
 
     // Açılışta: bağlantıdaki model, yoksa son seçilen model
     var start = indexFromHash();
@@ -619,7 +668,16 @@ function sunTimes(y, m, d, lat, lon) {
     openers.forEach(function (b) { b.hidden = true; });
   }
 
+  function longDate(p) {
+    return useOwn ? ownDate(p) : fmt("ld", "UTC", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, p.day, 12)));
+  }
+  function refreshLive() {
+    liveEls = Array.prototype.slice.call(doc.querySelectorAll("[data-live]"));
+    analogs = Array.prototype.slice.call(doc.querySelectorAll("[data-analog]"));
+    render();
+  }
   window.sth = {
+    longDate: longDate, refreshLive: refreshLive, isoWeek: isoWeek,
     T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, tpl: tpl, norm: norm,
     nowMs: nowMs, nowDate: nowDate, mono: mono, prefs: prefs, makeFullscreen: makeFullscreen,
     parts: parts, offsetMin: offsetMin, fmt: fmt, localTz: localTz, durLabel: durLabel,

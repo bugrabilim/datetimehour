@@ -38,6 +38,61 @@
       if (!nextRow && n >= 0) nextRow = tr;
     });
     if (nextRow) nextRow.classList.add("is-next");
+
+    /* Güne dokununca ayrıntı paneli (özel günler, hafta numarası, kalan gün) */
+    var panel = doc.getElementById("day-detail"), C = S.T.cald;
+    if (panel && C) {
+      var evMap = null, selected = null;
+      var loadEvents = function (cb) {
+        if (evMap) return cb();
+        fetch(S.cfg.eventsUrl, { credentials: "omit" }).then(function (r) { return r.json(); }).then(function (list) {
+          evMap = {}; list.forEach(function (e) { (evMap[e.d] = evMap[e.d] || []).push(e); }); cb();
+        }).catch(function () { evMap = {}; cb(); });
+      };
+      var show = function (td) {
+        var d = td.getAttribute("data-d"), m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(d);
+        if (!m) return;
+        var pp = { year: +m[1], month: +m[2], day: +m[3] };
+        loadEvents(function () {
+          if (selected) selected.classList.remove("d-selected");
+          selected = td; td.classList.add("d-selected");
+          panel.textContent = "";
+          var head = doc.createElement("div"); head.className = "day-detail-head";
+          var h = doc.createElement("h3"); h.textContent = S.longDate(pp); head.appendChild(h);
+          var x = doc.createElement("button"); x.type = "button"; x.className = "icon-btn"; x.textContent = "✕"; x.setAttribute("aria-label", C.close);
+          x.addEventListener("click", function () { panel.hidden = true; if (selected) selected.classList.remove("d-selected"); selected = null; });
+          head.appendChild(x); panel.appendChild(head);
+          var ul = doc.createElement("ul"), seen = {};
+          (evMap[d] || []).forEach(function (e) {
+            var li = doc.createElement("li"); li.textContent = e.n + " (" + (C.types[e.t] || e.t) + ")"; ul.appendChild(li); seen[e.t] = 1;
+          });
+          [["d-ramadan", "ramadan"], ["d-school", "school"], ["d-exam", "exam"]].forEach(function (c) {
+            if (td.classList.contains(c[0]) && !seen[c[1]] && C.types[c[1]]) { var li = doc.createElement("li"); li.textContent = C.types[c[1]]; ul.appendChild(li); }
+          });
+          if (!ul.children.length) { var li0 = doc.createElement("li"); li0.textContent = C.none; ul.appendChild(li0); }
+          panel.appendChild(ul);
+          var n = daysUntil(d);
+          var doy = Math.round((Date.UTC(pp.year, pp.month - 1, pp.day) - Date.UTC(pp.year, 0, 0)) / 86400000);
+          var meta = doc.createElement("p"); meta.className = "meta";
+          meta.textContent = [S.tpl(C.week, { n: S.isoWeek(pp) }), S.tpl(C.doy, { n: doy }), n === 0 ? C.today : n > 0 ? S.tpl(C.inDays, { n: n }) : S.tpl(C.ago, { n: -n })].join(" · ");
+          panel.appendChild(meta);
+          panel.hidden = false;
+          panel.focus({ preventScroll: true });
+          if (panel.scrollIntoView) panel.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        });
+      };
+      grid.addEventListener("click", function (ev) {
+        var td = ev.target.closest && ev.target.closest("td[data-d]");
+        if (td && grid.contains(td)) show(td);
+      });
+      grid.addEventListener("keydown", function (ev) {
+        if (ev.key !== "Enter" && ev.key !== " ") return;
+        var td = ev.target.closest && ev.target.closest("td[data-d]");
+        if (td) { ev.preventDefault(); show(td); }
+      });
+      var want = new URLSearchParams(location.search).get("d");
+      if (want) { var wtd = grid.querySelector('td[data-d="' + want + '"]'); if (wtd) show(wtd); }
+    }
   }
 
   /* Ana sayfa: yaklaşan günler */

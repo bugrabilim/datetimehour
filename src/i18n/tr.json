@@ -108,7 +108,25 @@
     "weekFound": "{date} tarihi yılın {n}. haftasındadır (ISO {y}).",
     "pickDate": "Bir tarih seçin.",
     "daysShort": "gün",
-    "formatLabel": "Saat biçimi"
+    "formatLabel": "Saat biçimi",
+    "tick": "Tık sesi",
+    "colors": "Renkler",
+    "colorNames": {
+      "auto": "Tema",
+      "night": "Gece",
+      "paper": "Kâğıt",
+      "amber": "Kehribar",
+      "green": "Matriks yeşili",
+      "blue": "Mavi",
+      "purple": "Mor",
+      "red": "Kırmızı LED",
+      "cyan": "Turkuaz",
+      "sunset": "Gün batımı",
+      "forest": "Orman",
+      "ocean": "Okyanus",
+      "rose": "Gül",
+      "mono": "Beyaz"
+    }
   },
   "home": {
     "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
@@ -176,7 +194,19 @@
     "colTime": "Saat",
     "colOffset": "UTC farkı",
     "colDiff": "Sizinle fark",
-    "tableCaption": "Şehirlerin güncel yerel saati"
+    "tableCaption": "Şehirlerin güncel yerel saati",
+    "customize": "Şehirleri düzenle",
+    "customizeLead": "Göstermek istediğiniz şehirleri seçin; seçiminiz yalnızca bu tarayıcıda saklanır.",
+    "addCity": "Şehir ekle",
+    "addZone": "Başka bir saat dilimi ekle",
+    "add": "Ekle",
+    "remove": "Kaldır",
+    "moveUp": "Yukarı taşı",
+    "moveDown": "Aşağı taşı",
+    "reset": "Varsayılana dön",
+    "empty": "Hiç şehir seçilmedi.",
+    "select": "Seçin…",
+    "done": "Bitti"
   },
   "city": {
     "title": "{loc} Saat Kaç? {name} Yerel Saati | Saat Tarih",
@@ -278,6 +308,11 @@
             [
               "sth-prayer",
               "Namaz vakitleri için son seçtiğiniz ili ya da konumu hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-world",
+              "Dünya saatleri için seçtiğiniz şehirleri ve sırasını hatırlar.",
               "Siz silene kadar"
             ]
           ]
@@ -521,7 +556,15 @@
     "fullFmt": "{day} {month} {year}, {weekday}",
     "shortFmt": "{day} {month}",
     "dateFmt": "{day} {month} {year}",
-    "examNote": "Sınav tarihleri ÖSYM, MEB ve Anadolu Üniversitesi duyurularına göredir; kurumlar değiştirebilir. 2027 YKS, KPSS ve LGS tarihleri henüz açıklanmadı; açıklanınca eklenecek."
+    "examNote": "Sınav tarihleri ÖSYM, MEB ve Anadolu Üniversitesi duyurularına göredir; kurumlar değiştirebilir. 2027 YKS, KPSS ve LGS tarihleri henüz açıklanmadı; açıklanınca eklenecek.",
+    "dayNone": "Bu gün için kayıtlı özel gün yok.",
+    "dayWeek": "Hafta {n}",
+    "dayDoy": "Yılın {n}. günü",
+    "dayToday": "Bugün",
+    "dayIn": "{n} gün sonra",
+    "dayAgo": "{n} gün önce",
+    "dayClose": "Kapat",
+    "dayHint": "Ayrıntı için bir güne dokunun."
   },
   "tools": {
     "hub": {
