@@ -1,7 +1,16 @@
 {
- "source": "MEB 2026-2027 eğitim-öğretim yılı çalışma takvimi (meb.gov.tr haber duyurusu, 13 Haziran 2026); ulusal takvim, il MEM'ler yerel farklılık yapabilir.",
+ "source": "MEB 2026-2027 eğitim-öğretim yılı çalışma takvimi (meb.gov.tr haber duyurusu, 13 Haziran 2026); ulusal takvim, il MEM'ler yerel farklılık yapabilir. Öğretmen yıl sonu çalışması (28-30 Haziran 2027) MEB duyurusunda yok, AA kaynaklı dört haberde aynı.",
  "updated": "2026-10-09",
  "events": [
+  {
+   "key": "teacherStart",
+   "date": "2026-09-01"
+  },
+  {
+   "key": "adaptation",
+   "date": "2026-09-07",
+   "to": "2026-09-11"
+  },
   {
    "key": "schoolStart",
    "date": "2026-09-14"
@@ -32,6 +41,11 @@
   {
    "key": "schoolEnd",
    "date": "2027-06-25"
+  },
+  {
+   "key": "teacherEnd",
+   "date": "2027-06-28",
+   "to": "2027-06-30"
   }
  ]
 }

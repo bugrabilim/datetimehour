@@ -1227,6 +1227,14 @@ const CDP = [
   { key: "aug30", keys: ["aug30"], tr: "30-agustos", en: "august-30" },
   { key: "semester", keys: ["semester"], tr: "yariyil-tatili", en: "mid-year-break", school: true },
   { key: "karne", keys: ["term1End", "schoolEnd"], tr: "karne-gunu", en: "report-card-day", school: true },
+  { key: "schoolStart", keys: ["schoolStart"], tr: "okul-acilisi", en: "school-start", school: true },
+  { key: "midterm", keys: ["midterm1", "midterm2"], tr: "ara-tatil", en: "mid-term-break", school: true },
+  { key: "yks", keys: ["yksTyt"], tr: "yks", en: "yks", exam: true },
+  { key: "kpss", keys: ["kpssOrta", "kpssDhbt"], tr: "kpss", en: "kpss", exam: true },
+  { key: "ales", keys: ["ales3"], tr: "ales", en: "ales", exam: true },
+  { key: "yds", keys: ["yds2"], tr: "yds", en: "yds", exam: true },
+  { key: "aof", keys: ["aofMid1", "aofFinal1", "aofMid2", "aofFinal2", "aofSummer"], tr: "aof-sinavi", en: "aof-exam", exam: true },
+  { key: "aol", keys: ["aolWritten"], tr: "aol-sinavi", en: "aol-exam", exam: true },
 ];
 const cdpPath = (lang, x) => `${ROUTES[lang].countdown}${x[lang] || x.en}/`;
 

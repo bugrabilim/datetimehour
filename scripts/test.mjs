@@ -150,6 +150,11 @@ for (const l of LANGS.filter((x) => x !== "tr")) {
   }
   for (const k of dict[l].keys()) check(dict.tr.has(k) || /^client\.words\.(hours|one)$/.test(k), `tr.json'da yok: ${k} (${l})`);
 }
+for (const l of LANGS) {
+  const evs = JSON.parse(fs.readFileSync(path.join(DIST, "assets", `events-${l}.json`), "utf8"));
+  check(evs.length > 100 && evs.every((e) => e.n && /^\d{4}-\d\d-\d\d$/.test(e.d)), `events-${l}.json: adsız ya da hatalı etkinlik`);
+  check(evs.some((e) => e.t === "exam"), `events-${l}.json: sınav etkinliği yok`);
+}
 for (const l of LANGS) check(fs.existsSync(path.join(DIST, "assets", `search-${l}.json`)), `search-${l}.json yok`);
 check(sm.split("<url>").slice(1).every((u) => LANGS.every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
 

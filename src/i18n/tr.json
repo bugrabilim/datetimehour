@@ -373,7 +373,8 @@
       "special": "Özel gün",
       "weekend": "Hafta sonu",
       "today": "Bugün",
-      "school": "Okul tatili ve takvimi (MEB)"
+      "school": "Okul tatili ve takvimi (MEB)",
+      "exam": "Sınav ve sınavla ilgili tarih (ÖSYM, MEB, AÖF)"
     },
     "eventsHeading": "{year} günleri listesi",
     "colDate": "Tarih",
@@ -467,7 +468,40 @@
       "semester": "Yarıyıl tatili başlangıcı (MEB)",
       "term2Start": "2. dönem başlangıcı (MEB)",
       "midterm2": "2. dönem ara tatili başlangıcı (MEB)",
-      "schoolEnd": "Ders yılı sonu, karne günü (MEB)"
+      "schoolEnd": "Ders yılı sonu, karne günü (MEB)",
+      "teacherStart": "Öğretmenlerin mesleki çalışması başlar (MEB)",
+      "adaptation": "Uyum eğitimi başlar: okul öncesi ve 1. sınıf (MEB)",
+      "teacherEnd": "Öğretmenlerin yıl sonu mesleki çalışması başlar (MEB)",
+      "yksTyt": "YKS: TYT oturumu (ÖSYM)",
+      "yksAytYdt": "YKS: AYT ve YDT oturumları (ÖSYM)",
+      "tryos": "TR-YÖS/2: yabancı uyruklu öğrenci sınavı (ÖSYM)",
+      "eyds1": "e-YDS 2026/11 (ÖSYM)",
+      "eyds2": "e-YDS 2026/12 (ÖSYM)",
+      "kpssOrta": "KPSS Ortaöğretim (ÖSYM)",
+      "kpssDhbt": "KPSS DHBT: Din Hizmetleri Alan Bilgisi Testi (ÖSYM)",
+      "dus2": "DUS 2. dönem: diş hekimliği uzmanlık sınavı (ÖSYM)",
+      "eus": "EUS: eczacılıkta uzmanlık sınavı (ÖSYM)",
+      "yds2": "YDS/2: yabancı dil bilgisi seviye tespit sınavı (ÖSYM)",
+      "ales3": "ALES/3: akademik personel ve lisansüstü giriş sınavı (ÖSYM)",
+      "alesApply": "ALES/3 başvuru dönemi (ÖSYM)",
+      "kpssOnResult": "KPSS Ön Lisans sonuçları (ÖSYM)",
+      "kpssOrtaResult": "KPSS Ortaöğretim sonuçları (ÖSYM)",
+      "ydsResult": "YDS/2 sonuçları (ÖSYM)",
+      "alesResult": "ALES/3 sonuçları (ÖSYM)",
+      "kpssTercih": "KPSS-2026/2 yerleştirme tercihleri (ÖSYM)",
+      "common1": "1. dönem 1. ortak yazılı sınavlar (MEB)",
+      "common2": "1. dönem 2. ortak yazılı sınavlar (MEB)",
+      "common3": "2. dönem 1. ortak yazılı sınavlar (MEB)",
+      "common4": "2. dönem 2. ortak yazılı sınavlar (MEB)",
+      "aolRegister": "AÖL kayıt ve kayıt yenileme dönemi (MEB)",
+      "aolEsinav": "AÖL e-Sınav dönemi (MEB)",
+      "aolWritten": "AÖL yazılı sınavı (MEB)",
+      "aolResult": "AÖL 1. dönem sonuçları (MEB)",
+      "aofMid1": "AÖF güz dönemi ara sınavı (Anadolu Üniversitesi)",
+      "aofFinal1": "AÖF güz dönemi final sınavı (Anadolu Üniversitesi)",
+      "aofMid2": "AÖF bahar dönemi ara sınavı (Anadolu Üniversitesi)",
+      "aofFinal2": "AÖF bahar dönemi final sınavı (Anadolu Üniversitesi)",
+      "aofSummer": "AÖF yaz okulu sınavı (Anadolu Üniversitesi)"
     },
     "hubName": "Yıllık takvim",
     "hubDesc": "Resmi tatiller, bayram ve arife günleri, kandiller ve Ramazan ayı.",
@@ -475,7 +509,8 @@
     "schoolNote": "Okul takvimi MEB'in 2026-2027 çalışma takvimine göredir; il milli eğitim müdürlükleri yerel farklılık yapabilir.",
     "fullFmt": "{day} {month} {year}, {weekday}",
     "shortFmt": "{day} {month}",
-    "dateFmt": "{day} {month} {year}"
+    "dateFmt": "{day} {month} {year}",
+    "examNote": "Sınav tarihleri ÖSYM, MEB ve Anadolu Üniversitesi duyurularına göredir; kurumlar değiştirebilir. 2027 YKS, KPSS ve LGS tarihleri henüz açıklanmadı; açıklanınca eklenecek."
   },
   "tools": {
     "hub": {
@@ -1007,8 +1042,41 @@
       "karne": {
         "name": "Karne günü",
         "dat": "Karne gününe"
+      },
+      "yks": {
+        "name": "YKS (Yükseköğretim Kurumları Sınavı)",
+        "dat": "YKS'ye"
+      },
+      "kpss": {
+        "name": "KPSS (Kamu Personeli Seçme Sınavı)",
+        "dat": "KPSS'ye"
+      },
+      "ales": {
+        "name": "ALES (Akademik Personel ve Lisansüstü Eğitimi Giriş Sınavı)",
+        "dat": "ALES'e"
+      },
+      "yds": {
+        "name": "YDS (Yabancı Dil Bilgisi Seviye Tespit Sınavı)",
+        "dat": "YDS'ye"
+      },
+      "schoolStart": {
+        "name": "Okulların açılması",
+        "dat": "Okulların açılmasına"
+      },
+      "midterm": {
+        "name": "Ara tatil",
+        "dat": "Ara tatile"
+      },
+      "aof": {
+        "name": "AÖF sınavları (Anadolu Üniversitesi Açıköğretim)",
+        "dat": "AÖF sınavlarına"
+      },
+      "aol": {
+        "name": "AÖL sınavı (Açık Öğretim Lisesi)",
+        "dat": "AÖL sınavına"
       }
-    }
+    },
+    "exam": "Sınav tarihleri ÖSYM, MEB ve Anadolu Üniversitesi duyurularından alınır; kurumlar değiştirebilir. Henüz açıklanmamış tarihler tahmin edilmez, açıklanınca eklenir."
   },
   "datecalc": {
     "title": "Tarih Hesaplama: İki Tarih Arası Gün, İş Günü, Yaş | Saat Tarih",
