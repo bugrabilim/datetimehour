@@ -97,7 +97,12 @@
     "today": "Today",
     "tomorrow": "Tomorrow",
     "passed": "Passed",
-    "upcomingNone": "No upcoming days found."
+    "upcomingNone": "No upcoming days found.",
+    "refAhead": "{d} ahead of {ref} time",
+    "refBehind": "{d} behind {ref} time",
+    "refSame": "Same time as {ref}",
+    "weekFound": "{date} falls in week {n} of ISO year {y}.",
+    "pickDate": "Pick a date."
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
@@ -185,7 +190,11 @@
     "faqDst": "Does {name} use daylight saving time?",
     "faqDstYesA": "Yes. {name} observes daylight saving time; its UTC offset changes by one hour on the switch dates, and this page applies the change automatically.",
     "faqDstNoA": "No. {name} does not observe daylight saving time, so its UTC offset stays the same all year.",
-    "breadcrumbWorld": "World clock"
+    "breadcrumbWorld": "World clock",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "daylen": "Day length",
+    "sunNote": "Sunrise and sunset are approximate, calculated from today's date and the city's location (they may be off by a few minutes)."
   },
   "privacy": {
     "title": "Privacy and Cookie Policy | Saat Tarih",
@@ -476,8 +485,21 @@
         "pomodoro": {
           "name": "Pomodoro",
           "desc": "Work 25 minutes, rest 5; long break included."
+        },
+        "week": {
+          "name": "What week is it?",
+          "desc": "ISO week number, this week's dates, every week of the year."
+        },
+        "today": {
+          "name": "Today's date",
+          "desc": "Today's date, weekday, day of the year and days left."
+        },
+        "tz": {
+          "name": "Türkiye time zone",
+          "desc": "Daylight saving? UTC+3 and the time difference to other cities."
         }
-      }
+      },
+      "infoHeading": "Information pages"
     },
     "common": {
       "fullscreen": "Full screen",
@@ -661,6 +683,124 @@
         {
           "q": "Do the phases switch automatically?",
           "a": "Yes. When time is up a sound plays and the next phase (work or break) starts by itself. Press Pause to stop."
+        }
+      ]
+    }
+  },
+  "info": {
+    "week": {
+      "title": "What Week Is It? ISO Week Number and Dates | Saat Tarih",
+      "description": "Which week of the year is it now? The ISO week number, this week's date range, every week of {year} and a tool to find the week number of any date.",
+      "h1": "What week is it?",
+      "lead": "Saat Tarih shows live which week of the year it is under ISO 8601. Weeks start on Monday and week 1 is the week that contains the first Thursday of the year. {year} has {weeks} weeks.",
+      "big": "Week {n}",
+      "thisWeek": "Dates of this week",
+      "findHeading": "Find the week number of a date",
+      "findLabel": "Pick a date",
+      "tableHeading": "{year} week calendar",
+      "colWeek": "Week",
+      "colStart": "Start (Monday)",
+      "colEnd": "End (Sunday)",
+      "tableCaption": "ISO week numbers and date ranges for {year}",
+      "faqHeading": "Frequently asked questions about week numbers",
+      "faq": [
+        {
+          "q": "Which week of the year is it now?",
+          "a": "The live counter above shows today's week number. It follows ISO 8601: weeks start on Monday and week 1 is the week that contains the first Thursday of the year."
+        },
+        {
+          "q": "How many weeks are in a year?",
+          "a": "An ISO year has 52 or 53 weeks. It has 53 weeks when 1 January is a Thursday (or a Wednesday in a leap year). {year} has {weeks} weeks."
+        },
+        {
+          "q": "Why is 1 January sometimes in the last week of the previous year?",
+          "a": "Under ISO rules, week 1 contains the first Thursday. If 1 January is a Friday, Saturday or Sunday it belongs to week 52 or 53 of the previous year, and some days at the end of December can belong to week 1 of the next year."
+        },
+        {
+          "q": "What is the week number used for?",
+          "a": "Week numbers are not much used in daily life, but ISO week numbers are common in business planning, logistics, education and software. The tool on this page shows the week number of any date you pick."
+        }
+      ]
+    },
+    "today": {
+      "title": "What's Today's Date? Day, Date and Week Number | Saat Tarih",
+      "description": "What is today's date and weekday? Today's date, day, week number, day of the year and days remaining, synced to the server clock and your time zone.",
+      "h1": "What's today's date?",
+      "lead": "Today's date is shown live below. It is calculated from the server's clock and your time zone, so the right day appears even if your device clock is wrong.",
+      "factsHeading": "Today in detail",
+      "fWeekday": "Weekday",
+      "fMonthYear": "Month and year",
+      "fNumeric": "Numeric format",
+      "fIso": "ISO 8601",
+      "fDoy": "Day of the year",
+      "fWeek": "Week number",
+      "fYearLeft": "Days left in the year",
+      "fMonthLeft": "Days left in the month",
+      "fUnix": "Unix timestamp",
+      "faqHeading": "Frequently asked questions about the date",
+      "faq": [
+        {
+          "q": "What day of the week is it today?",
+          "a": "Today's weekday is written in the large date above and in the Weekday box. The date is calculated from the server clock and your time zone."
+        },
+        {
+          "q": "How is the date written in Türkiye?",
+          "a": "In Türkiye the numeric date is written day.month.year, for example 09.10.2026. The international ISO 8601 format goes year-month-day: 2026-10-09."
+        },
+        {
+          "q": "Why can the date here differ from my phone?",
+          "a": "The site runs on the server clock, independently of your device clock. If your device's date or time is wrong you may see a difference; the status line on the page says how far off your device clock is."
+        },
+        {
+          "q": "Which day of the year is it?",
+          "a": "The day of the year is shown live in the box above. 1 January is day 1, and a leap year has 366 days."
+        }
+      ]
+    },
+    "tz": {
+      "title": "Does Türkiye Have Daylight Saving Time? UTC+3 Explained | Saat Tarih",
+      "description": "Does Türkiye observe daylight saving time? Türkiye has used UTC+3 all year round since 2016. Time differences and DST status for cities around the world.",
+      "h1": "Does Türkiye have daylight saving time?",
+      "lead": "No. Since 2016 Türkiye has used the UTC+3 time zone all year round; clocks are not moved forward or back in summer or winter. The zone is called Türkiye Time (TRT) and its IANA identifier is Europe/Istanbul.",
+      "nowLabel": "Current time in Türkiye",
+      "factsHeading": "At a glance",
+      "facts": [
+        "Time zone: UTC+3 (Türkiye Time, TRT)",
+        "Daylight saving time: none, since 2016",
+        "IANA identifier: Europe/Istanbul",
+        "Clocks are not changed twice a year"
+      ],
+      "historyHeading": "A short history",
+      "history": [
+        "Until 2016 Türkiye used UTC+2 in winter (Eastern European Time) and UTC+3 in summer (Eastern European Summer Time).",
+        "A 2016 decision made summer time permanent; Türkiye has stayed on UTC+3 all year round since then."
+      ],
+      "tableHeading": "Time difference between Türkiye and cities around the world",
+      "tableCaption": "Standard time difference from Türkiye time and daylight saving status",
+      "colCity": "City",
+      "colStd": "Standard difference",
+      "colDst": "Daylight saving",
+      "colNow": "Right now",
+      "yes": "Yes",
+      "no": "No",
+      "note": "The standard difference is the difference when daylight saving is not in effect. For cities that observe daylight saving it changes by one hour for part of the year; the \"Right now\" column shows today's actual difference.",
+      "faqHeading": "Frequently asked questions about the Türkiye time zone",
+      "faq": [
+        {
+          "q": "Does Türkiye observe daylight saving time?",
+          "a": "No. Türkiye made summer time permanent in 2016; UTC+3 is used all year and clocks are not moved forward or back."
+        },
+        {
+          "q": "Which time zone is Türkiye in?",
+          "a": "Türkiye is in the UTC+3 time zone, known as Türkiye Time (TRT); its IANA identifier is Europe/Istanbul."
+        },
+        {
+          "q": "Is the time difference with Europe the same all year?",
+          "a": "No. Many European countries observe daylight saving time, so their difference from Türkiye changes by one hour during the year. The table above shows today's difference."
+        },
+        {
+          "q": "What does UTC+3 mean?",
+          "a": "UTC+3 means three hours ahead of Coordinated Universal Time (UTC). When it is 12:00 UTC, it is 15:00 in Türkiye."
         }
       ]
     }

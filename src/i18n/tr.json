@@ -97,7 +97,12 @@
     "today": "Bugün",
     "tomorrow": "Yarın",
     "passed": "Geçti",
-    "upcomingNone": "Yaklaşan gün bulunamadı."
+    "upcomingNone": "Yaklaşan gün bulunamadı.",
+    "refAhead": "{ref} saatinden {d} ileride",
+    "refBehind": "{ref} saatinden {d} geride",
+    "refSame": "{ref} ile aynı saat",
+    "weekFound": "{date} tarihi yılın {n}. haftasındadır (ISO {y}).",
+    "pickDate": "Bir tarih seçin."
   },
   "home": {
     "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
@@ -185,7 +190,11 @@
     "faqDst": "{loc} yaz saati uygulaması var mı?",
     "faqDstYesA": "Evet. {name} yaz saati uygulaması kullanıyor; geçiş tarihlerinde UTC farkı bir saat değişir ve bu sayfa farkı otomatik hesaplar.",
     "faqDstNoA": "Hayır. {name} yaz saati uygulaması kullanmıyor; UTC farkı yıl boyunca aynı kalır.",
-    "breadcrumbWorld": "Dünya saatleri"
+    "breadcrumbWorld": "Dünya saatleri",
+    "sunrise": "Gün doğumu",
+    "sunset": "Gün batımı",
+    "daylen": "Gün uzunluğu",
+    "sunNote": "Gün doğumu ve batımı, bugünün tarihi ve şehrin konumuna göre yaklaşık hesaplanır (birkaç dakika sapabilir)."
   },
   "privacy": {
     "title": "Gizlilik ve Çerez Politikası | Saat Tarih",
@@ -476,8 +485,21 @@
         "pomodoro": {
           "name": "Pomodoro",
           "desc": "25 dakika çalış, 5 dakika dinlen; uzun mola dahil."
+        },
+        "week": {
+          "name": "Kaçıncı haftadayız?",
+          "desc": "ISO hafta numarası, bu haftanın tarihleri, tüm haftalar."
+        },
+        "today": {
+          "name": "Bugün ayın kaçı?",
+          "desc": "Bugünün tarihi, günü, yılın günü ve kalan gün."
+        },
+        "tz": {
+          "name": "Türkiye saat dilimi",
+          "desc": "Yaz saati var mı? UTC+3 ve diğer şehirlerle saat farkı."
         }
-      }
+      },
+      "infoHeading": "Bilgi sayfaları"
     },
     "common": {
       "fullscreen": "Tam ekran",
@@ -661,6 +683,124 @@
         {
           "q": "Aşamalar otomatik mi geçiyor?",
           "a": "Evet. Süre dolunca sesli uyarı çalar ve bir sonraki aşama (çalışma ya da mola) kendiliğinden başlar. Duraklatmak için Duraklat düğmesine basın."
+        }
+      ]
+    }
+  },
+  "info": {
+    "week": {
+      "title": "Kaçıncı Haftadayız? Hafta Numarası ve Tarihleri | Saat Tarih",
+      "description": "Şu an yılın kaçıncı haftasındayız? ISO hafta numarası, bu haftanın tarih aralığı, {year} yılının tüm haftaları ve tarihten hafta numarası bulma aracı.",
+      "h1": "Kaçıncı haftadayız?",
+      "lead": "Saat Tarih, bugünün ISO 8601'e göre yılın kaçıncı haftasında olduğunu canlı gösterir. Haftalar pazartesi başlar ve yılın ilk perşembesini içeren hafta 1. hafta sayılır. {year} yılında {weeks} hafta vardır.",
+      "big": "{n}. hafta",
+      "thisWeek": "Bu haftanın tarihleri",
+      "findHeading": "Tarihten hafta numarası bul",
+      "findLabel": "Tarih seçin",
+      "tableHeading": "{year} yılı hafta takvimi",
+      "colWeek": "Hafta",
+      "colStart": "Başlangıç (pazartesi)",
+      "colEnd": "Bitiş (pazar)",
+      "tableCaption": "{year} yılı ISO hafta numaraları ve tarih aralıkları",
+      "faqHeading": "Hafta numarası hakkında sık sorulanlar",
+      "faq": [
+        {
+          "q": "Şu an yılın kaçıncı haftasındayız?",
+          "a": "Yukarıdaki canlı sayaç bugünün hafta numarasını gösterir. Hafta numarası ISO 8601'e göre hesaplanır: haftalar pazartesi başlar ve yılın ilk perşembesini içeren hafta 1. hafta sayılır."
+        },
+        {
+          "q": "Bir yılda kaç hafta vardır?",
+          "a": "ISO takviminde bir yıl 52 ya da 53 haftadır. 1 Ocak perşembe ise (artık yıllarda çarşamba da olabilir) yıl 53 hafta sürer. {year} yılında {weeks} hafta vardır."
+        },
+        {
+          "q": "1 Ocak neden bazen önceki yılın son haftasında olur?",
+          "a": "ISO kuralında 1. hafta yılın ilk perşembesini içerir. 1 Ocak cuma, cumartesi ya da pazar ise o günler bir önceki yılın 52. ya da 53. haftasına; Aralık sonundaki bazı günler de ertesi yılın 1. haftasına sayılabilir."
+        },
+        {
+          "q": "Hafta numarası ne işe yarar?",
+          "a": "Hafta numarası günlük hayatta çok kullanılmaz; ancak iş planlaması, lojistik, eğitim ve yazılım gibi alanlarda ISO hafta numarası yaygındır. Bu sayfadaki araç, seçtiğiniz tarihin hafta numarasını gösterir."
+        }
+      ]
+    },
+    "today": {
+      "title": "Bugün Ayın Kaçı? Bugünün Tarihi, Günü ve Haftası | Saat Tarih",
+      "description": "Bugün ayın kaçı, günlerden ne? Bugünün tarihi, günü, hafta numarası, yılın günü ve kalan gün sayısı; sunucu saatiyle senkron ve saat diliminize göre.",
+      "h1": "Bugün ayın kaçı?",
+      "lead": "Bugünün tarihi aşağıda canlı gösterilir. Tarih, siteyi sunan sunucunun saatine göre ve bulunduğunuz saat dilimiyle hesaplanır; cihazınızın saati yanlış olsa bile doğru gün görünür.",
+      "factsHeading": "Bugünün ayrıntıları",
+      "fWeekday": "Gün",
+      "fMonthYear": "Ay ve yıl",
+      "fNumeric": "Sayısal yazım",
+      "fIso": "ISO 8601",
+      "fDoy": "Yılın günü",
+      "fWeek": "Hafta numarası",
+      "fYearLeft": "Yıl bitimine kalan gün",
+      "fMonthLeft": "Ay bitimine kalan gün",
+      "fUnix": "Unix zaman damgası",
+      "faqHeading": "Tarih hakkında sık sorulanlar",
+      "faq": [
+        {
+          "q": "Bugün günlerden ne?",
+          "a": "Bugünün günü yukarıdaki büyük tarihte ve \"Gün\" kutusunda yazar. Tarih sunucu saatine göre ve saat diliminize göre hesaplanır."
+        },
+        {
+          "q": "Tarih Türkiye'de nasıl yazılır?",
+          "a": "Türkiye'de sayısal tarih gün.ay.yıl biçiminde yazılır; örneğin 09.10.2026. Uluslararası ISO 8601 biçimi yıl-ay-gün sırasındadır: 2026-10-09."
+        },
+        {
+          "q": "Bu sitedeki tarih neden telefonumdan farklı olabilir?",
+          "a": "Site, cihaz saatinizden bağımsız olarak sunucu saatiyle çalışır. Cihazınızın tarihi ya da saati yanlışsa fark görebilirsiniz; sayfadaki durum satırı cihaz saatinizin ne kadar saptığını söyler."
+        },
+        {
+          "q": "Yılın kaçıncı günündeyiz?",
+          "a": "Yılın günü numarası yukarıdaki kutuda canlı gösterilir. 1 Ocak yılın 1. günüdür; artık yıllarda yıl 366 gün sürer."
+        }
+      ]
+    },
+    "tz": {
+      "title": "Türkiye'de Yaz Saati Var mı? Saat Dilimi UTC+3 | Saat Tarih",
+      "description": "Türkiye'de yaz saati uygulaması var mı? Türkiye 2016'dan beri yıl boyunca UTC+3 kullanır. Dünya şehirleriyle saat farkı ve yaz saati bilgisi.",
+      "h1": "Türkiye'de yaz saati var mı?",
+      "lead": "Hayır. Türkiye 2016'dan beri yıl boyunca UTC+3 saat dilimini kullanır; saatler yaz ya da kış ileri geri alınmaz. Saat dilimi Türkiye Saati (TRT) olarak anılır, IANA kimliği Europe/Istanbul'dur.",
+      "nowLabel": "Türkiye'de şu an saat",
+      "factsHeading": "Kısaca",
+      "facts": [
+        "Saat dilimi: UTC+3 (Türkiye Saati, TRT)",
+        "Yaz saati uygulaması: yok, 2016'dan beri",
+        "IANA kimliği: Europe/Istanbul",
+        "Saatler yılda iki kez değiştirilmez"
+      ],
+      "historyHeading": "Kısa tarihçe",
+      "history": [
+        "Türkiye 2016'ya kadar kışın UTC+2 (Doğu Avrupa Saati), yazın UTC+3 (Doğu Avrupa Yaz Saati) kullanıyordu.",
+        "2016'da alınan kararla yaz saati kalıcı hale getirildi; Türkiye o tarihten beri yıl boyunca UTC+3'te kalıyor."
+      ],
+      "tableHeading": "Türkiye saati ile dünya şehirleri arasındaki fark",
+      "tableCaption": "Türkiye saatine göre standart saat farkı ve yaz saati bilgisi",
+      "colCity": "Şehir",
+      "colStd": "Standart fark",
+      "colDst": "Yaz saati",
+      "colNow": "Şu an",
+      "yes": "Var",
+      "no": "Yok",
+      "note": "Standart fark, yaz saati uygulanmayan dönemdeki farktır. Yaz saati uygulayan şehirlerde fark yılın bir bölümünde bir saat değişir; \"Şu an\" sütunu bugünkü gerçek farkı gösterir.",
+      "faqHeading": "Türkiye saat dilimi hakkında sık sorulanlar",
+      "faq": [
+        {
+          "q": "Türkiye'de yaz saati uygulaması var mı?",
+          "a": "Hayır. Türkiye 2016'dan beri yaz saati uygulamasını kalıcı hale getirmiştir; yıl boyunca UTC+3 kullanılır ve saatler ileri geri alınmaz."
+        },
+        {
+          "q": "Türkiye hangi saat diliminde?",
+          "a": "Türkiye UTC+3 saat diliminde yer alır. Bu dilim Türkiye Saati (TRT) olarak bilinir; IANA kimliği Europe/Istanbul'dur."
+        },
+        {
+          "q": "Avrupa ile saat farkı yıl boyunca aynı mı?",
+          "a": "Hayır. Avrupa'daki birçok ülke yaz saati uyguladığı için Türkiye ile aralarındaki fark yıl içinde bir saat değişir. Yukarıdaki tabloda bugünkü farkı görebilirsiniz."
+        },
+        {
+          "q": "UTC+3 ne demek?",
+          "a": "UTC+3, evrensel eşgüdümlü zamandan (UTC) üç saat ileride olmak demektir. UTC 12:00 iken Türkiye'de saat 15:00'tir."
         }
       ]
     }

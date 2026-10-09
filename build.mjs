@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange } from "./lib/events.mjs";
+import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
@@ -52,8 +52,8 @@ const abs = (p) => ORIGIN + p;
 
 /* ---------- adresler ---------- */
 const ROUTES = {
-  tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", calendar: "/takvim/", tools: "/araclar/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
-  en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", calendar: "/en/calendar/", tools: "/en/tools/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
+  tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", calendar: "/takvim/", tools: "/araclar/", week: "/hafta-numarasi/", today: "/bugun-ayin-kaci/", tz: "/turkiye-saat-dilimi/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
+  en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", calendar: "/en/calendar/", tools: "/en/tools/", week: "/en/week-number/", today: "/en/todays-date/", tz: "/en/turkey-time-zone/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
 };
 const cityPath = (lang, c) => `${ROUTES[lang].world}${c[lang].slug}/`;
 
@@ -66,6 +66,7 @@ for (const [name, from] of [
   ["main.js", "js/main.js"],
   ["tools.js", "js/tools.js"],
   ["calendar.js", "js/calendar.js"],
+  ["dates.js", "js/dates.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -464,6 +465,11 @@ function buildHome(lang) {
     </dl>
   </div>
 </section>
+<section class="section" aria-label="${esc(t.tools.hub.infoHeading)}">
+  <div class="wrap">
+    <ul class="inline-links">${INFO_KEYS.map((k) => `<li><a href="${ROUTES[lang][k]}">${esc(t.tools.hub.cards[k].name)}</a></li>`).join("")}</ul>
+  </div>
+</section>
 <section class="section" id="world" aria-labelledby="world-h">
   <div class="wrap">
     <h2 id="world-h">${esc(h.worldHeading)}</h2>
@@ -571,7 +577,9 @@ function buildCity(lang, c) {
     <dl class="facts">
       <div class="fact"><dt>${esc(ct.liveOffset)}</dt><dd data-live="offset" data-tz="${c.tz}">UTC</dd></div>
       <div class="fact"><dt>${esc(ct.liveDiff)}</dt><dd data-live="diff" data-tz="${c.tz}">&nbsp;</dd></div>
+      ${["sunrise", "sunset", "daylen"].map((k) => `<div class="fact"><dt>${esc(ct[k])}</dt><dd data-live="${k}" data-tz="${c.tz}" data-lat="${c.lat}" data-lon="${c.lon}">–</dd></div>`).join("")}
     </dl>
+    <p class="meta">${esc(ct.sunNote)}</p>
   </div>
 </section>
 <section class="section" id="faq" aria-labelledby="faq-h">
@@ -905,6 +913,8 @@ function buildToolsHub(lang) {
     <h1>${esc(h.h1)}</h1>
     <p class="lead">${esc(h.lead)}</p>
     <ul class="city-grid tool-grid">${cards}</ul>
+    <h2>${esc(h.infoHeading)}</h2>
+    <ul class="city-grid tool-grid">${INFO_KEYS.map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("")}</ul>
   </div>
 </section>`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, h.title, h.description), breadcrumbLd(trail)];
@@ -912,9 +922,137 @@ function buildToolsHub(lang) {
   return { lang, key: "tools", path: pagePath, title: h.title, description: h.description, body, ld, nav: "tools" };
 }
 
+/* ---------- Bilgi sayfaları: hafta numarası, bugünün tarihi, Türkiye saat dilimi ---------- */
+const INFO_KEYS = ["week", "today", "tz"];
+const liveSpan = (kind, extra = "") => `<span data-live="${kind}"${extra}>–</span>`;
+
+function infoShell(lang, key, { v = {}, body, faq, searchK }) {
+  const t = I[lang];
+  const s = t.info[key];
+  const pagePath = ROUTES[lang][key];
+  const title = tpl(s.title, v), description = tpl(s.description, v);
+  const trail = [
+    { name: t.ui.home, path: ROUTES[lang].home },
+    { name: t.ui.tools, path: ROUTES[lang].tools },
+    { name: tpl(s.h1, v), path: pagePath },
+  ];
+  const faqItems = faq.map((f) => ({ q: tpl(f.q, v), a: tpl(f.a, v) }));
+  const related = [...TOOL_KEYS.slice(0, 2).map((k) => [ROUTES[lang][k], t.tools.hub.cards[k].name, t.tools.hub.cards[k].desc]), ...INFO_KEYS.filter((k) => k !== key).map((k) => [ROUTES[lang][k], t.tools.hub.cards[k].name, t.tools.hub.cards[k].desc])]
+    .map(([href, name, desc]) => `<li class="city-card"><a href="${href}"><span class="city-name">${esc(name)}</span><span class="city-diff">${esc(desc)}</span></a></li>`).join("");
+  const html = `<section class="hero">
+  <div class="wrap">
+    ${crumbs(lang, trail)}
+    <h1>${esc(tpl(s.h1, v))}</h1>
+    <p class="lead">${esc(tpl(s.lead, v))}</p>
+    ${body.hero}
+    <p class="meta sync-line" data-sync-status>&nbsp;</p>
+  </div>
+</section>
+${body.sections}
+<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 id="faq-h">${esc(s.faqHeading)}</h2>
+    ${faqHtml(faqItems, "faq-h")}
+  </div>
+</section>
+<section class="section" aria-labelledby="related-h">
+  <div class="wrap">
+    <h2 id="related-h">${esc(t.tools.common.relatedHeading)}</h2>
+    <ul class="city-grid">${related}</ul>
+    <p><a href="${ROUTES[lang].tools}">${esc(t.tools.common.toolsHub)} →</a></p>
+  </div>
+</section>`;
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), faqLd(faqItems)];
+  searchEntries[lang].push({ t: tpl(s.h1, v), u: pagePath, d: description, k: searchK });
+  faqItems.forEach((f) => searchEntries[lang].push({ t: f.q, u: pagePath + "#faq", d: f.a, k: searchK }));
+  return { lang, key: `info:${key}`, path: pagePath, title, description, body: html, ld, nav: "tools", scripts: ["dates.js"] };
+}
+
+function buildWeek(lang) {
+  const t = I[lang];
+  const s = t.info.week;
+  const f = makeFmt(t.calendar, lang);
+  const year = BUILD_YEAR;
+  const weeks = isoWeeksInYear(year);
+  const v = { year, weeks };
+  const mon1 = isoWeek1Monday(year);
+  const rows = Array.from({ length: weeks }, (_, i) => {
+    const a = addDays(mon1, i * 7), b = addDays(a, 6);
+    const lab = (d) => (d.startsWith(String(year)) ? f.short(d) : `${f.short(d)} ${d.slice(0, 4)}`);
+    return `<tr data-wk="${i + 1}"><th scope="row">${i + 1}</th><td>${esc(lab(a))}</td><td>${esc(lab(b))}</td></tr>`;
+  }).join("");
+  const bigHtml = esc(s.big).replace("{n}", liveSpan("isoweek"));
+  const body = {
+    hero: `<p class="big-time info-big" role="timer">${bigHtml}</p>
+    <p class="meta info-sub">${esc(s.thisWeek)}: <strong data-live="weekrange">–</strong></p>`,
+    sections: `<section class="section" id="find" aria-labelledby="find-h">
+  <div class="wrap">
+    <h2 id="find-h">${esc(s.findHeading)}</h2>
+    <div class="field"><label for="wk-date">${esc(s.findLabel)}</label><input id="wk-date" type="date" data-weekfind></div>
+    <p class="find-out" role="status" data-weekfind-out>${esc(t.client.pickDate)}</p>
+  </div>
+</section>
+<section class="section" id="table" aria-labelledby="table-h">
+  <div class="wrap">
+    <h2 id="table-h">${esc(tpl(s.tableHeading, v))}</h2>
+    <div class="table-wrap"><table class="events-table week-table"><caption>${esc(tpl(s.tableCaption, v))}</caption><thead><tr><th scope="col">${esc(s.colWeek)}</th><th scope="col">${esc(s.colStart)}</th><th scope="col">${esc(s.colEnd)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+  </div>
+</section>`,
+  };
+  return infoShell(lang, "week", { v, body, faq: s.faq, searchK: "hafta numarası kaçıncı haftadayız iso hafta week number which week yılın haftası" });
+}
+
+function buildToday(lang) {
+  const t = I[lang];
+  const s = t.info.today;
+  const fact = (label, kind) => `<div class="fact"><dt>${esc(label)}</dt><dd data-live="${kind}">–</dd></div>`;
+  const body = {
+    hero: `<p class="big-time info-date" role="timer" data-live="date">&nbsp;</p>`,
+    sections: `<section class="section" id="details" aria-labelledby="details-h">
+  <div class="wrap">
+    <h2 id="details-h">${esc(s.factsHeading)}</h2>
+    <dl class="facts">${fact(s.fWeekday, "weekday")}${fact(s.fMonthYear, "monthyear")}${fact(s.fNumeric, "datenum")}${fact(s.fIso, "dateiso")}${fact(s.fDoy, "doy")}${fact(s.fWeek, "isoweek")}${fact(s.fYearLeft, "daysleft")}${fact(s.fMonthLeft, "monthleft")}${fact(s.fUnix, "unix")}</dl>
+  </div>
+</section>`,
+  };
+  return infoShell(lang, "today", { body, faq: s.faq, searchK: "bugün ayın kaçı günlerden ne tarih bugünün tarihi todays date today what day yılın günü" });
+}
+
+function buildTz(lang) {
+  const t = I[lang];
+  const s = t.info.tz;
+  const std = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
+  const durText = (min) => { const a = Math.abs(min), h = Math.floor(a / 60), m = a % 60; return [h && `${h} ${t.client.hourShort}`, m && `${m} ${t.client.minuteShort}`].filter(Boolean).join(" "); };
+  const refName = "Türkiye";
+  const rows = CITIES.filter((c) => c.tz !== "Europe/Istanbul").map((c) => {
+    const d = std(c) - 180;
+    const stdTxt = d === 0 ? tpl(t.client.refSame, { ref: refName }) : tpl(d > 0 ? t.client.refAhead : t.client.refBehind, { d: durText(d), ref: refName });
+    return `<tr><th scope="row"><a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></th><td>${esc(stdTxt)}</td><td>${esc(c.dst ? s.yes : s.no)}</td><td data-live="diff" data-tz="${c.tz}" data-ref="Europe/Istanbul" data-ref-name="${refName}">&nbsp;</td></tr>`;
+  }).join("");
+  const body = {
+    hero: `<p class="meta info-sub">${esc(s.nowLabel)}</p><p class="big-time" role="timer" data-live="time" data-sec data-tz="Europe/Istanbul">--:--:--</p>`,
+    sections: `<section class="section" aria-labelledby="facts-h">
+  <div class="wrap prose">
+    <h2 id="facts-h">${esc(s.factsHeading)}</h2>
+    <ul>${s.facts.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+    <h2>${esc(s.historyHeading)}</h2>
+    ${s.history.map((x) => `<p>${esc(x)}</p>`).join("")}
+  </div>
+</section>
+<section class="section" id="table" aria-labelledby="table-h">
+  <div class="wrap">
+    <h2 id="table-h">${esc(s.tableHeading)}</h2>
+    <div class="table-wrap"><table><caption>${esc(s.tableCaption)}</caption><thead><tr><th scope="col">${esc(s.colCity)}</th><th scope="col">${esc(s.colStd)}</th><th scope="col">${esc(s.colDst)}</th><th scope="col">${esc(s.colNow)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="meta">${esc(s.note)}</p>
+  </div>
+</section>`,
+  };
+  return infoShell(lang, "tz", { body, faq: s.faq, searchK: "yaz saati türkiye saat dilimi utc+3 trt daylight saving time zone dst europe istanbul" });
+}
+
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
 }
 
