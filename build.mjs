@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
+import { landMask } from "./lib/landmask.mjs";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -86,11 +87,16 @@ for (const [name, from] of [
   ["nature.js", "js/nature.js"],
   ["weather-core.js", "js/weather-core.js"],
   ["weather.js", "js/weather.js"],
+  ["globe.js", "js/globe.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
   ASSETS[name] = `/assets/${name}?v=${hash(buf)}`;
 }
+/* Küre için kara maskesi (Natural Earth 1:110m, kamu malı; derlemede repodaki veriden üretilir) */
+const LAND_JSON = JSON.stringify(landMask(readJson("src/data/land-110m.json").rings));
+write("assets/globe-land.json", LAND_JSON);
+const LAND_URL = `/assets/globe-land.json?v=${hash(LAND_JSON)}`;
 for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "og.png"]) {
   fs.copyFileSync(path.join(SRC, "assets", f), path.join(OUT, f));
 }
@@ -248,6 +254,24 @@ function faqHtml(items, headingId) {
     .join("")}</div>`;
 }
 
+/* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "today", "tz", "datecalc", "embed", "prayer", "nature", "weather"];
+const FAQ_GROUPS = {};
+function addFaq(lang, id, title, href, items) {
+  const m = (FAQ_GROUPS[lang] ||= new Map());
+  if (!m.has(id)) m.set(id, { id, title, href, items: [] });
+  const g = m.get(id);
+  for (const it of items) {
+    if (g.items.some((x) => x.q === it.q)) continue;
+    g.items.push(it);
+    searchEntries[lang].push({ t: it.q, u: `${ROUTES[lang].faq}#${id}`, d: it.a, k: `sss faq ${title}` });
+  }
+  return faqMore(lang, id);
+}
+function faqMore(lang, id) {
+  return `<section class="section faq-more"><div class="wrap"><p><a href="${ROUTES[lang].faq}#${id}">${esc(I[lang].faqPage.more)} ${ARROW(lang)}</a></p></div></section>`;
+}
+
 function crumbs(lang, trail) {
   const t = I[lang];
   return `<nav class="crumbs" aria-label="${esc(t.ui.breadcrumb)}"><ol>${trail
@@ -332,6 +356,7 @@ function layout(p) {
     locale: t.locale,
     t: { ...clientT, ...(p.clientExtra && p.clientExtra.tools ? { tools: p.clientExtra.tools } : {}), ...((p.clientExtra && p.clientExtra.t) || {}) },
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
+    ...(p.clientExtra && p.clientExtra.globe ? { globe: p.clientExtra.globe } : {}),
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
     cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt, calBase: ROUTES[lang].calendar, calMin: HOL_YEARS[0], calMax: HOL_YEARS[HOL_YEARS.length - 1] },
@@ -396,7 +421,7 @@ ${ld}
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
-    <nav class="nav" id="site-nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
+    <nav class="nav" id="site-nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("today", u.today)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${navLink("faq", u.faq)}</nav>
     <div class="tools">
       <button type="button" class="icon-btn" data-search-open aria-haspopup="dialog" aria-label="${esc(u.searchOpen)}">${ICON_SEARCH}</button>
       ${langSwitch}
@@ -419,12 +444,14 @@ ${isError ? "" : listForm(lang, p.path)}
     <nav aria-label="${esc(u.footerNav)}" class="footer-sign">
       <ul class="footer-nav">
         <li><a href="${ROUTES[lang].home}">${esc(u.home)}</a></li>
+        <li><a href="${ROUTES[lang].today}">${esc(u.today)}</a></li>
         <li><a href="${ROUTES[lang].world}">${esc(u.world)}</a></li>
         <li><a href="${ROUTES[lang].prayer}">${esc(u.prayer)}</a></li>
         <li><a href="${ROUTES[lang].nature}">${esc(u.nature)}</a></li>
         <li><a href="${ROUTES[lang].weather}">${esc(u.weather)}</a></li>
         <li><a href="${yearPath(lang, BUILD_YEAR)}">${esc(u.calendar)}</a></li>
         <li><a href="${ROUTES[lang].tools}">${esc(u.tools)}</a></li>
+        <li><a href="${ROUTES[lang].faq}">${esc(u.faq)}</a></li>
         <li><a href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a></li>
       </ul>
     </nav>
@@ -485,62 +512,23 @@ const webPageLd = (lang, pagePath, title, description) => ({
 const pages = []; // { lang, path, html, indexable, alt }
 const searchEntries = Object.fromEntries(LANGS.map((l) => [l, []]));
 
+const GLOBE_CITIES = ["istanbul", "london", "moscow", "dubai", "mumbai", "singapore", "beijing", "tokyo", "sydney", "cairo", "johannesburg", "sao-paulo", "new-york", "los-angeles"];
 function buildHome(lang) {
   const t = I[lang];
   const h = t.home;
   const pagePath = ROUTES[lang].home;
-  const featured = ["istanbul", "london", "new-york", "los-angeles", "dubai", "moscow", "tokyo", "sydney"].map((k) =>
-    CITIES.find((c) => c.key === k)
-  );
   const body = `<section class="hero hero-clock">
   <div class="wrap">
+    <h1 class="sr-only">${esc(h.h1)}</h1>
     ${clockStage(lang)}
   </div>
 </section>
-<section class="section intro" aria-labelledby="intro-h">
+<section class="section globe-sec" aria-label="${esc(h.globeLabel)}">
   <div class="wrap">
-    <h1 id="intro-h">${esc(h.h1)}</h1>
-    <p class="lead">${esc(tpl(h.lead, { n: MODELS.length }))}</p>
-  </div>
-</section>
-<section class="section" id="upcoming" aria-labelledby="upcoming-h">
-  <div class="wrap">
-    <h2 id="upcoming-h">${esc(h.upcomingHeading)}</h2>
-    <p class="meta">${esc(h.upcomingLead)}</p>
-    <ul class="upcoming" data-upcoming></ul>
-    <p><a href="${yearPath(lang, BUILD_YEAR)}">${esc(h.upcomingAll)} ${ARROW(lang)}</a></p>
-  </div>
-</section>
-<section class="section" id="facts" aria-labelledby="facts-h">
-  <div class="wrap">
-    <h2 id="facts-h">${esc(h.factsHeading)}</h2>
-    <dl class="facts">
-      <div class="fact"><dt>${esc(h.factWeek)}</dt><dd data-live="isoweek">–</dd></div>
-      <div class="fact"><dt>${esc(h.factDoy)}</dt><dd data-live="doy">–</dd></div>
-      <div class="fact"><dt>${esc(h.factLeft)}</dt><dd data-live="daysleft">–</dd></div>
-      <div class="fact"><dt>${esc(h.factUnix)}</dt><dd data-live="unix">–</dd></div>
-      <div class="fact"><dt>${esc(h.factUtc)}</dt><dd data-live="utc">–</dd></div>
-      <div class="fact"><dt>${esc(h.factProgress)}</dt><dd><progress data-live="progress" max="100" value="0">0%</progress><span class="note" data-progress-note>&nbsp;</span></dd></div>
-    </dl>
-  </div>
-</section>
-<section class="section" aria-label="${esc(t.tools.hub.infoHeading)}">
-  <div class="wrap">
-    <ul class="inline-links">${INFO_KEYS.map((k) => `<li><a href="${ROUTES[lang][k]}">${esc(t.tools.hub.cards[k].name)}</a></li>`).join("")}</ul>
-  </div>
-</section>
-<section class="section" id="world" aria-labelledby="world-h">
-  <div class="wrap">
-    <h2 id="world-h">${esc(h.worldHeading)}</h2>
-    <p class="meta">${esc(h.worldLead)}</p>
-    <div data-world="grid"><ul class="city-grid">${featured.map((c) => cityCard(lang, c)).join("")}</ul></div>
-    <p><a href="${ROUTES[lang].world}">${esc(h.worldAll)} ${ARROW(lang)}</a></p>
-  </div>
-</section>
-<section class="section" id="faq" aria-labelledby="faq-h">
-  <div class="wrap">
-    <h2 id="faq-h">${esc(h.faqHeading)}</h2>
-    ${faqHtml(h.faq, "faq-h")}
+    <figure class="globe" data-globe>
+      <canvas role="img" aria-label="${esc(h.globeLabel)}" width="560" height="560"></canvas>
+      <figcaption class="meta">${esc(h.globeCaption)}</figcaption>
+    </figure>
   </div>
 </section>`;
   const ld = [
@@ -558,17 +546,16 @@ function buildHome(lang) {
       offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" },
       publisher: { "@id": `${ORIGIN}/#org` },
     },
-    faqLd(h.faq),
   ];
+  addFaq(lang, "general", t.faqPage.general, pagePath, h.faq);
   const e = searchEntries[lang];
-  e.push({ t: t.ui.home, u: pagePath, d: h.description, k: "saat tarih bugün takvim clock date today time now" });
-  e.push({ t: h.upcomingHeading, u: pagePath + "#upcoming", d: h.upcomingLead, k: "bayram tatil resmi tatil arife ramazan kaç gün kaldı holiday bayram days left" });
+  e.push({ t: t.ui.home, u: pagePath, d: h.description, k: "saat tarih bugün clock date today time now saat kaç" });
   e.push({ t: t.stage.label, u: pagePath + "#model-classic", d: t.stage.hint, k: "saat model stil style clock tam ekran full screen fullscreen" });
   MODELS.forEach((m) => e.push({ t: t.stage.models[m.id], u: `${pagePath}#model-${m.id}`, d: t.stage.label, k: "saat model clock style" }));
-  e.push({ t: h.factsHeading, u: pagePath + "#facts", d: `${h.factWeek}, ${h.factDoy}, ${h.factLeft}, ${h.factUnix}, ${h.factUtc}`, k: "hafta week unix utc gün day yıl year" });
-  h.faq.forEach((f) => e.push({ t: f.q, u: pagePath + "#faq", d: f.a, k: "sss faq" }));
+  e.push({ t: h.globeLabel, u: pagePath, d: h.globeCaption, k: "dünya küre gece gündüz meridyen saat dilimi globe earth day night time zone meridian" });
   e.push({ t: t.list.heading, u: pagePath + "#liste", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
-  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "world.js", "place.js", "weather-core.js"], clientExtra: { cities: clientCities(lang), t: { wc: t.world } } };
+  const globe = { land: LAND_URL, cities: GLOBE_CITIES.map((k) => CITIES.find((c) => c.key === k)).map((c) => ({ n: c[lang].name, lat: c.lat, lon: c.lon, tz: c.tz })) };
+  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js", "globe.js"], clientExtra: { globe } };
 }
 
 function buildWorld(lang) {
@@ -638,12 +625,7 @@ function buildCity(lang, c) {
     <p class="meta">${esc(ct.sunNote)}</p>
   </div>
 </section>
-<section class="section" id="faq" aria-labelledby="faq-h">
-  <div class="wrap">
-    <h2 id="faq-h">${esc(tpl(ct.faqHeading, v))}</h2>
-    ${faqHtml(faq, "faq-h")}
-  </div>
-</section>
+${addFaq(lang, "world", t.ui.world, ROUTES[lang].world, faq.slice(1))}
 <section class="section" aria-labelledby="other-h">
   <div class="wrap">
     <h2 id="other-h">${esc(ct.otherHeading)}</h2>
@@ -651,7 +633,7 @@ function buildCity(lang, c) {
     <p><a href="${ROUTES[lang].world}">${esc(t.home.worldAll)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
-  const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), faqLd(faq)];
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail)];
   searchEntries[lang].push({
     t: n.name,
     u: pagePath,
@@ -803,6 +785,13 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     ${cy.projected ? `<p class="meta">${esc(cal.projected)}</p>` : ""}
   </div>
 </section>
+<section class="section upcoming-sec" id="upcoming" aria-labelledby="upcoming-h">
+  <div class="wrap">
+    <h2 id="upcoming-h">${esc(t.home.upcomingHeading)}</h2>
+    <p class="meta">${esc(t.home.upcomingLead)}</p>
+    <ul class="upcoming" data-upcoming></ul>
+  </div>
+</section>
 <section class="section" aria-labelledby="legend-h">
   <div class="wrap">
     <h2 id="legend-h" class="sr-only">${esc(cal.legendLabel)}</h2>
@@ -821,17 +810,13 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     <div class="table-wrap"><table class="events-table"><caption>${esc(tpl(cal.tableCaption, v))}</caption><thead><tr><th scope="col">${esc(cal.colDate)}</th><th scope="col">${esc(cal.colDay)}</th><th scope="col">${esc(cal.colEvent)}</th><th scope="col">${esc(cal.colType)}</th><th scope="col">${esc(cal.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
   </div>
 </section>
-<section class="section" id="faq" aria-labelledby="faq-h">
-  <div class="wrap">
-    <h2 id="faq-h">${esc(tpl(cal.faqHeading, v))}</h2>
-    ${faqHtml(faq, "faq-h")}
-  </div>
-</section>`;
-  const ld = [...baseLd(lang), webPageLd(lang, canonicalPath, title, description), breadcrumbLd(trail), faqLd(faq)];
+${addFaq(lang, "calendar", t.faqPage.calendar, yearPath(lang, BUILD_YEAR), faq)}`;
+  const ld = [...baseLd(lang), webPageLd(lang, canonicalPath, title, description), breadcrumbLd(trail)];
   const key = index ? "calendar-index" : `calendar:${year}`;
   if (!index) {
     const e = searchEntries[lang];
     e.push({ t: tpl(cal.h1, v), u: canonicalPath, d: description, k: "takvim resmi tatil bayram arife ramazan kandil calendar holiday ramadan eid " + year });
+    if (year === BUILD_YEAR) e.push({ t: t.home.upcomingHeading, u: canonicalPath + "#upcoming", d: t.home.upcomingLead, k: "yaklaşan bayram tatil resmi tatil arife ramazan kaç gün kaldı upcoming holiday days left" });
     for (const k of ["rb1", "kb1", "ramadanStart"]) {
       const ee = date(k);
       if (ee) e.push({ t: `${cal.events[k]} ${year}`, u: `${canonicalPath}#events`, d: f.full(ee.date), k: "takvim bayram ramazan kurban calendar eid ramadan " + year });
@@ -940,12 +925,7 @@ function buildTool(lang, key) {
     ${key === "alarm" || key === "countdown" || key === "pomodoro" ? `<p class="meta">${esc(tt.common.pageOpenNote)}</p>` : ""}
   </div>
 </section>
-<section class="section" id="faq" aria-labelledby="faq-h">
-  <div class="wrap">
-    <h2 id="faq-h">${esc(tt.common.faqHeading)}</h2>
-    ${faqHtml(s.faq, "faq-h")}
-  </div>
-</section>
+${addFaq(lang, key, tt.hub.cards[key].name, pagePath, s.faq)}
 <section class="section" aria-labelledby="related-h">
   <div class="wrap">
     <h2 id="related-h">${esc(tt.common.relatedHeading)}</h2>
@@ -958,7 +938,6 @@ function buildTool(lang, key) {
     webPageLd(lang, pagePath, s.title, s.description),
     { "@type": "WebApplication", name: s.h1, url: abs(pagePath), description: s.description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" }, publisher: { "@id": `${ORIGIN}/#org` } },
     breadcrumbLd(trail),
-    faqLd(s.faq),
   ];
   searchEntries[lang].push({ t: s.h1, u: pagePath, d: s.description, k: tt.hub.cards[key].name + " " + { stopwatch: "kronometre stopwatch tur lap", countdown: "geri sayım countdown timer zamanlayıcı yılbaşı bayram", alarm: "alarm saati alarm clock uyandırma", pomodoro: "pomodoro odak focus mola break" }[key] });
   return { lang, key: `tool:${key}`, path: pagePath, title: s.title, description: s.description, body, ld, nav: "tools", scripts: ["tools.js"], clientExtra: { tools: tt, cal: {} } };
@@ -1016,12 +995,7 @@ function infoShell(lang, key, { v = {}, body, faq, searchK }) {
   </div>
 </section>
 ${body.sections}
-<section class="section" id="faq" aria-labelledby="faq-h">
-  <div class="wrap">
-    <h2 id="faq-h">${esc(s.faqHeading)}</h2>
-    ${faqHtml(faqItems, "faq-h")}
-  </div>
-</section>
+${addFaq(lang, key, t.tools.hub.cards[key].name, pagePath, faqItems)}
 <section class="section" aria-labelledby="related-h">
   <div class="wrap">
     <h2 id="related-h">${esc(t.tools.common.relatedHeading)}</h2>
@@ -1029,10 +1003,9 @@ ${body.sections}
     <p><a href="${ROUTES[lang].tools}">${esc(t.tools.common.toolsHub)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
-  const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), faqLd(faqItems)];
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail)];
   searchEntries[lang].push({ t: tpl(s.h1, v), u: pagePath, d: description, k: searchK });
-  faqItems.forEach((f) => searchEntries[lang].push({ t: f.q, u: pagePath + "#faq", d: f.a, k: searchK }));
-  return { lang, key: `info:${key}`, path: pagePath, title, description, body: html, ld, nav: "tools", scripts: ["dates.js"] };
+  return { lang, key: `info:${key}`, path: pagePath, title, description, body: html, ld, nav: "today", scripts: ["dates.js"] };
 }
 
 function buildWeek(lang) {
@@ -1074,11 +1047,12 @@ function buildToday(lang) {
   const s = t.info.today;
   const fact = (label, kind) => `<div class="fact"><dt>${esc(label)}</dt><dd data-live="${kind}">–</dd></div>`;
   const body = {
-    hero: `<p class="big-time info-date" role="timer" data-live="date">&nbsp;</p>`,
+    hero: `<p class="big-time info-date" role="timer" data-live="date">&nbsp;</p>
+    <ul class="inline-links">${INFO_KEYS.filter((k) => k !== "today").map((k) => `<li><a href="${ROUTES[lang][k]}">${esc(t.tools.hub.cards[k].name)}</a></li>`).join("")}</ul>`,
     sections: `<section class="section" id="details" aria-labelledby="details-h">
   <div class="wrap">
     <h2 id="details-h">${esc(s.factsHeading)}</h2>
-    <dl class="facts">${fact(s.fWeekday, "weekday")}${fact(s.fMonthYear, "monthyear")}${fact(s.fNumeric, "datenum")}${fact(s.fIso, "dateiso")}${fact(s.fDoy, "doy")}${fact(s.fWeek, "isoweek")}${fact(s.fYearLeft, "daysleft")}${fact(s.fMonthLeft, "monthleft")}${fact(s.fUnix, "unix")}</dl>
+    <dl class="facts">${fact(s.fWeekday, "weekday")}${fact(s.fMonthYear, "monthyear")}${fact(s.fNumeric, "datenum")}${fact(s.fIso, "dateiso")}${fact(s.fDoy, "doy")}${fact(s.fWeek, "isoweek")}${fact(s.fYearLeft, "daysleft")}${fact(s.fMonthLeft, "monthleft")}${fact(s.fUnix, "unix")}${fact(t.home.factUtc, "utc")}<div class="fact"><dt>${esc(t.home.factProgress)}</dt><dd><progress data-live="progress" max="100" value="0">0%</progress><span class="note" data-progress-note>&nbsp;</span></dd></div></dl>
   </div>
 </section>`,
   };
@@ -1135,14 +1109,9 @@ const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, t
 const relatedCards = (lang, keys) => keys.map((k) => `<li class="city-card"><a href="${ROUTES[lang][k]}"><span class="city-name">${esc(I[lang].tools.hub.cards[k].name)}</span><span class="city-diff">${esc(I[lang].tools.hub.cards[k].desc)}</span></a></li>`).join("");
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
 
-function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqHeading, scripts, clientExtra, nav = "tools", searchK, extraLd = [], noFaqSearch = false }) {
+function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqGroup, scripts, clientExtra, nav = "tools", searchK, extraLd = [] }) {
   const pagePath = trail[trail.length - 1].path;
-  const faqBlock = faq && faq.length ? `<section class="section" id="faq" aria-labelledby="faq-h">
-  <div class="wrap">
-    <h2 id="faq-h">${esc(faqHeading)}</h2>
-    ${faqHtml(faq, "faq-h")}
-  </div>
-</section>` : "";
+  const faqBlock = faq && faq.length && faqGroup ? addFaq(lang, faqGroup.id, faqGroup.title, faqGroup.href || pagePath, faq) : "";
   const body = `<section class="hero">
   <div class="wrap">
     ${bodyInner.pre || ""}
@@ -1154,9 +1123,8 @@ function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner,
 </section>
 ${bodyInner.sections || ""}
 ${faqBlock}`;
-  const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), ...(faq && faq.length ? [faqLd(faq)] : []), ...extraLd];
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), ...extraLd];
   searchEntries[lang].push({ t: h1, u: pagePath, d: description, k: searchK });
-  if (faq && !noFaqSearch) faq.forEach((f) => searchEntries[lang].push({ t: f.q, u: pagePath + "#faq", d: f.a, k: searchK }));
   return { lang, key, path: pagePath, title, description, body, ld, nav, scripts, clientExtra };
 }
 
@@ -1202,7 +1170,7 @@ function buildPair(lang, c) {
   </div>
 </section>`,
   };
-  return simplePage(lang, `pair:${c.key}`, { title: tpl(p.title, v), description: tpl(p.description, v), h1: tpl(p.h1, v), lead, trail, bodyInner: inner, faq, faqHeading: tpl(p.faqHeading, v), scripts: ["planner.js"], nav: "world", searchK: `saat farkı time difference ${a} ${b} ${c[lang].country} ${c.tz}` });
+  return simplePage(lang, `pair:${c.key}`, { title: tpl(p.title, v), description: tpl(p.description, v), h1: tpl(p.h1, v), lead, trail, bodyInner: inner, faq: faq.filter((_, i) => i !== 1), faqGroup: { id: "diff", title: t.tools.hub.cards.diff.name, href: ROUTES[lang].diff }, scripts: ["planner.js"], nav: "world", searchK: `saat farkı time difference ${a} ${b} ${c[lang].country} ${c.tz}` });
 }
 
 function buildPairHub(lang) {
@@ -1234,7 +1202,7 @@ function buildConverter(lang) {
     </section>
     <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
   };
-  return simplePage(lang, "converter", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { conv: s } }, searchK: "saat çevirici time converter dönüştürücü saat dilimi time zone", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].converter, s.description)] });
+  return simplePage(lang, "converter", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "converter", title: t.tools.hub.cards.converter.name }, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { conv: s } }, searchK: "saat çevirici time converter dönüştürücü saat dilimi time zone", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].converter, s.description)] });
 }
 
 /* Toplantı planlayıcı */
@@ -1258,7 +1226,7 @@ function buildPlanner(lang) {
     </section>
     <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
   };
-  return simplePage(lang, "planner", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { plan: s } }, searchK: "toplantı planlayıcı meeting planner ortak mesai saatleri world meeting", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].planner, s.description)] });
+  return simplePage(lang, "planner", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "planner", title: t.tools.hub.cards.planner.name }, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { plan: s } }, searchK: "toplantı planlayıcı meeting planner ortak mesai saatleri world meeting", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].planner, s.description)] });
 }
 
 /* Hazır geri sayım sayfaları */
@@ -1334,7 +1302,7 @@ function buildCdp(lang, x) {
   </div>
 </section>`,
   };
-  return simplePage(lang, `cdp:${x.key}`, { title: tpl(s.title, v), description: tpl(s.description, v), h1: tpl(s.h1, v), lead: tpl(s.lead, v), trail, bodyInner: inner, faq, faqHeading: tpl(s.faqHeading, v), scripts: ["calendar.js"], clientExtra: { t: { cdp: s } }, searchK: `geri sayım kaç gün kaldı countdown days until ${tg.name}` });
+  return simplePage(lang, `cdp:${x.key}`, { title: tpl(s.title, v), description: tpl(s.description, v), h1: tpl(s.h1, v), lead: tpl(s.lead, v), trail, bodyInner: inner, faq, faqGroup: { id: "countdowns", title: t.faqPage.countdowns, href: ROUTES[lang].countdown }, scripts: ["calendar.js"], clientExtra: { t: { cdp: s } }, searchK: `geri sayım kaç gün kaldı countdown days until ${tg.name}` });
 }
 
 /* ---------- Tarih hesaplayıcılar ve gömme kodu (widget) ---------- */
@@ -1343,6 +1311,7 @@ const ROUTES_C = {
   en: { datecalc: "/en/date-calculator/", embed: "/en/embed/", embedFrame: "/embed/en/" },
 };
 extendRoutes(ROUTES_C);
+extendRoutes({ tr: { faq: "/sss/" }, en: { faq: "/en/faq/" } });
 
 function buildDateCalc(lang) {
   const t = I[lang];
@@ -1378,7 +1347,7 @@ function buildDateCalc(lang) {
   </div>
 </section>`,
   };
-  return simplePage(lang, "datecalc", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["dates.js"], clientExtra: { t: { dc: s, dcRange: { from: HOL_YEARS[0], to: HOL_YEARS[HOL_YEARS.length - 1] } } }, searchK: "tarih hesaplama iki tarih arası gün iş günü yaş hesaplama date calculator days between working days age", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].datecalc, s.description)] });
+  return simplePage(lang, "datecalc", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "datecalc", title: t.tools.hub.cards.datecalc.name }, scripts: ["dates.js"], clientExtra: { t: { dc: s, dcRange: { from: HOL_YEARS[0], to: HOL_YEARS[HOL_YEARS.length - 1] } } }, searchK: "tarih hesaplama iki tarih arası gün iş günü yaş hesaplama date calculator days between working days age", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].datecalc, s.description)] });
 }
 
 function buildEmbedGen(lang) {
@@ -1413,7 +1382,7 @@ function buildEmbedGen(lang) {
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`,
   };
-  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])) } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
+  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "embed", title: t.tools.hub.cards.embed.name }, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])) } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
 }
 
 /* ---------- Doğa (mevsim çarkı, Güneş, Ay, gün uzunluğu) ve hava durumu ---------- */
@@ -1505,7 +1474,7 @@ function buildNature(lang) {
     <p><a href="${ROUTES[lang].weather}">${esc(n.weatherLink)} ${ARROW(lang)}</a></p>
   </div>
 </section>`;
-  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { pre, hero: `${subNav(lang, "nature")}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqHeading: n.faqHeading, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort } } }, nav: "nature", searchK: n.search });
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { pre, hero: `${subNav(lang, "nature")}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort } } }, nav: "nature", searchK: n.search });
 }
 
 function buildWeather(lang) {
@@ -1540,7 +1509,7 @@ function buildWeather(lang) {
   </div>
 </section>`;
   const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry };
-  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqHeading: w.faqHeading, scripts: ["place.js", "weather-core.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "nature", searchK: w.search, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
+  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "nature", searchK: w.search, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
 }
 
 /* ---------- Namaz vakitleri: konuma göre hub + 81 il sayfası (hesap tarayıcıda, prayer-calc.js) ---------- */
@@ -1599,7 +1568,7 @@ function buildPrayerHub(lang) {
   const t = I[lang];
   const s = t.prayer;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }];
-  return simplePage(lang, "prayer", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: prayerBody(lang, null), faq: s.faq, faqHeading: s.faqHeading, scripts: ["place.js", "prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].prayer, s.description)] });
+  return simplePage(lang, "prayer", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: prayerBody(lang, null), faq: s.faq, faqGroup: { id: "prayer", title: t.ui.prayer, href: ROUTES[lang].prayer }, scripts: ["place.js", "prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].prayer, s.description)] });
 }
 function buildPrayerCity(lang, prov) {
   const t = I[lang];
@@ -1607,7 +1576,7 @@ function buildPrayerCity(lang, prov) {
   const name = provName(lang, prov);
   const v = { city: name };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }, { name: tpl(s.cityH1, v), path: prayerPath(lang, prov) }];
-  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov), faq: s.faq, faqHeading: s.faqHeading, scripts: ["place.js", "prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}`, noFaqSearch: true });
+  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov), faq: s.faq, faqGroup: { id: "prayer", title: t.ui.prayer, href: ROUTES[lang].prayer }, scripts: ["place.js", "prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}` });
 }
 
 /* Gömülü widget sayfası: yalnız seçilen saat modeli, başlık ve alt bilgi (indekslenmez) */
@@ -1642,10 +1611,43 @@ ${umami}
 `;
 }
 
+function buildFaq(lang) {
+  const t = I[lang];
+  const f = t.faqPage;
+  const pagePath = ROUTES[lang].faq;
+  const trail = [
+    { name: t.ui.home, path: ROUTES[lang].home },
+    { name: f.h1, path: pagePath },
+  ];
+  const groups = [...(FAQ_GROUPS[lang] || new Map()).values()].sort((a, b) => FAQ_ORDER.indexOf(a.id) - FAQ_ORDER.indexOf(b.id));
+  const toc = groups.map((g) => `<li><a href="#${g.id}">${esc(g.title)}</a></li>`).join("");
+  const sections = groups.map((g) => `<section class="section faq-group" id="${g.id}" aria-labelledby="${g.id}-h">
+  <div class="wrap">
+    <h2 id="${g.id}-h">${esc(g.title)}</h2>
+    ${faqHtml(g.items, `${g.id}-h`)}
+    <p><a href="${g.href}">${esc(f.open)}: ${esc(g.title)} ${ARROW(lang)}</a></p>
+  </div>
+</section>`).join("\n");
+  const body = `<section class="hero">
+  <div class="wrap">
+    ${crumbs(lang, trail)}
+    <h1>${esc(f.h1)}</h1>
+    <p class="lead">${esc(f.lead)}</p>
+    <nav class="faq-toc" aria-label="${esc(f.toc)}"><ul class="inline-links">${toc}</ul></nav>
+  </div>
+</section>
+${sections}`;
+  const all = groups.flatMap((g) => g.items);
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, f.title, f.description), breadcrumbLd(trail), faqLd(all)];
+  searchEntries[lang].push({ t: f.h1, u: pagePath, d: f.description, k: "sss sıkça sorulan sorular faq frequently asked questions soru question" });
+  return { lang, key: "faq", path: pagePath, title: f.title, description: f.description, body, ld, nav: "faq" };
+}
+
 const built = [];
 for (const lang of LANGS) {
   built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
+  built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur
 }
 
 // Dil karşılıkları: aynı "key" ile eşleşir.

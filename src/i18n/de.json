@@ -39,7 +39,9 @@
     "menu": "Menü",
     "prayer": "Gebetszeiten",
     "nature": "Natur",
-    "weather": "Wetter"
+    "weather": "Wetter",
+    "today": "Heute",
+    "faq": "FAQ"
   },
   "client": {
     "format24": "24 Stunden",
@@ -181,7 +183,7 @@
     "faq": [
       {
         "q": "Wie wird die Uhrzeit auf dieser Website berechnet?",
-        "a": "Die Uhrzeit wird mit dem Server der Website synchronisiert und stimmt daher auch dann, wenn Ihre Geräteuhr falsch geht. Die Zeitzone wird aus den Einstellungen Ihres Geräts gelesen. Für die Synchronisierung werden nur einige kleine Anfragen an den Server gesendet, keine personenbezogenen Daten. Wenn Sie die Schaltfläche „Serverzeit“ ausschalten, wird Ihre Geräteuhr verwendet."
+        "a": "Die Uhrzeit wird mit dem Server der Website synchronisiert und stimmt daher auch dann, wenn Ihre Geräteuhr falsch geht. Die Zeitzone wird aus den Einstellungen Ihres Geräts gelesen. Für die Synchronisierung werden nur einige kleine Anfragen an den Server gesendet, keine personenbezogenen Daten."
       },
       {
         "q": "Gibt es in der Türkei Sommerzeit?",
@@ -197,7 +199,7 @@
       },
       {
         "q": "Wie ändere ich den Uhrenstil?",
-        "a": "Wischen Sie auf der Uhr nach links oder rechts; am Computer nutzen Sie die Pfeile oder Punkte darunter oder die Pfeiltasten Ihrer Tastatur. Zur Auswahl stehen klassische und schlichte Analoguhren, Digitaluhren, analog und digital kombiniert, Varianten mit oder ohne Datum, Uhren mit Monatskalender, eine Klappzahluhr, eine Uhr in Worten, eine Ringuhr und ein großes Datum. Ihre Auswahl wird auf diesem Gerät gespeichert."
+        "a": "Wischen Sie auf der Uhr nach links oder rechts; am Computer nutzen Sie die Punkte darunter oder die Pfeiltasten Ihrer Tastatur. Zur Auswahl stehen klassische und schlichte Analoguhren, Digitaluhren, analog und digital kombiniert, Varianten mit oder ohne Datum, Uhren mit Monatskalender, eine Klappzahluhr, eine Uhr in Worten, eine Ringuhr und ein großes Datum. Ihre Auswahl wird auf diesem Gerät gespeichert."
       },
       {
         "q": "Wie zeige ich die Uhr im Vollbild an?",
@@ -205,17 +207,19 @@
       },
       {
         "q": "Funktioniert die Uhr unabhängig von meiner Geräteuhr?",
-        "a": "Ja. Die Uhrzeit wird mit dem Server der Website synchronisiert und zeigt daher auch dann die richtige Zeit, wenn Ihre Geräteuhr falsch geht; zudem sehen Sie, wie weit Ihre Geräteuhr abweicht. Mit der Schaltfläche „Serverzeit“ können Sie zur Geräteuhr zurückkehren. Die Zeitzone wird weiterhin aus den Einstellungen Ihres Geräts gelesen."
+        "a": "Ja. Die Uhrzeit wird mit dem Server der Website synchronisiert und zeigt daher auch dann die richtige Zeit, wenn Ihre Geräteuhr falsch geht; zudem sehen Sie, wie weit Ihre Geräteuhr abweicht. Die Zeitzone wird weiterhin aus den Einstellungen Ihres Geräts gelesen."
       },
       {
         "q": "Wo sehe ich die gesetzlichen Feiertage der Türkei und den Ramadan?",
-        "a": "Die Seite mit dem Jahreskalender zeigt gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und den Fastenmonat Ramadan in einem Kalender. Der Bereich „Bevorstehende Tage“ auf der Startseite zeigt, wie viele Tage es noch bis zum nächsten Feiertag sind."
+        "a": "Die Seite mit dem Jahreskalender zeigt gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und den Fastenmonat Ramadan in einem Kalender. Der Bereich „Bevorstehende Tage“ oben auf der Kalenderseite zeigt, wie viele Tage es noch bis zum nächsten Feiertag sind."
       }
     ],
     "upcomingHeading": "Bevorstehende Feiertage und besondere Tage",
     "upcomingLead": "Die nächsten Tage im türkischen Kalender.",
     "upcomingAll": "Zum Jahreskalender",
-    "upcomingNone": "Keine bevorstehenden Tage gefunden."
+    "upcomingNone": "Keine bevorstehenden Tage gefunden.",
+    "globeLabel": "Rotierender Globus mit Tag und Nacht, Zeitzonen-Meridianen und der Ortszeit großer Städte",
+    "globeCaption": "Die helle Seite ist Tag, die dunkle Nacht. Die Linien sind die 15°-Zeitzonenmeridiane (mit UTC-Versatz); bei jeder Stadt steht die Ortszeit. Ziehen Sie den Globus, um ihn zu drehen."
   },
   "world": {
     "title": "Weltzeituhr: Aktuelle Uhrzeit in Städten weltweit | Saat Tarih",
@@ -1506,5 +1510,17 @@
       }
     ],
     "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin wetter vorhersage temperatur regen wind luftfeuchtigkeit uv-index morgen diese woche wettervorhersage"
+  },
+  "faqPage": {
+    "title": "Häufige Fragen: Uhrzeit, Kalender, Gebetszeiten | Saat Tarih",
+    "description": "Alle häufigen Fragen zu Saat Tarih auf einer Seite: Serverzeit, Weltuhren, Kalender und Feiertage, Werkzeuge, Gebetszeiten, Natur und Wetter.",
+    "h1": "Häufig gestellte Fragen",
+    "lead": "Die Fragen aller Seiten der Website, hier nach Themen gesammelt. Der Link unter jeder Überschrift öffnet die passende Seite.",
+    "toc": "Themen",
+    "open": "Zur Seite",
+    "more": "Häufige Fragen zu dieser Seite",
+    "general": "Allgemein",
+    "countdowns": "Countdown-Seiten",
+    "calendar": "Kalender, Feiertage und Bayram-Feste"
   }
 }
