@@ -53,7 +53,7 @@ for (const f of htmlFiles) {
     check(slides.length >= 10, `${name}: saat modeli sayısı ${slides.length} < 10`);
     check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
     check((h.match(/data-dot="\d+"/g) || []).length === slides.length, `${name}: nokta sayısı model sayısıyla uyuşmuyor`);
-    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-fs-bar/.test(h) && !/data-color="/.test(h) && !/data-tick/.test(h) && !/data-fs-weather/.test(h) && !/data-nav="-1"/.test(h) && !/stage-hint/.test(h) && /data-fmt-toggle/.test(h) && !/data-pref="sec"/.test(h) && /data-stage-count/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
+    check(/data-fullscreen/.test(h) && /data-fullscreen-exit/.test(h) && /data-fs-bar/.test(h) && !/data-color="/.test(h) && !/data-tick/.test(h) && !/data-fs-weather/.test(h) && /data-nav="-1"/.test(h) && /data-nav="1"/.test(h) && !/stage-hint/.test(h) && /data-fmt-toggle/.test(h) && !/data-pref="sec"/.test(h) && /data-stage-count/.test(h) && /data-nav-toggle/.test(h), `${name}: karusel düğmeleri eksik`);
     check(!/data-pref="sync"/.test(h) && /data-sync-status/.test(h) && /class="meta source-line"/.test(h), `${name}: senkron düğmesi/durumu eksik`);
     check(/data-live="calendar"/.test(h), `${name}: özel model türleri eksik`);
   }

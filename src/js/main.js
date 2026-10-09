@@ -145,11 +145,11 @@
   }
 
   /* ---------- Saat ---------- */
-  var prefs = { h12: false, sec: false, model: "", pv: 2, fsColor: "auto", tick: false };
+  var prefs = { h12: false, secD: true, secA: false, model: "", pv: 3, fsColor: "auto", tick: false };
   try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
-  if (prefs.pv !== 2) { prefs.sec = false; prefs.pv = 2; } // varsayılan: saniye kapalı
-  if (window.__sthPrefs) Object.assign(prefs, window.__sthPrefs);
-  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec === true; prefs.tick = false; // saat sesi düğmesi kaldırıldı (9 Ekim 2026): eski kayıtlar sessiz kalır
+  if (prefs.pv !== 3) { prefs.secD = true; prefs.secA = false; prefs.pv = 3; } // varsayılan: dijitalde saniye açık, analogda kapalı
+  if (window.__sthPrefs) { Object.assign(prefs, window.__sthPrefs); if ("sec" in window.__sthPrefs) prefs.secD = prefs.secA = window.__sthPrefs.sec !== false; }
+  prefs.h12 = !!prefs.h12; prefs.secD = prefs.secD !== false; prefs.secA = prefs.secA === true; prefs.tick = false; // saat sesi düğmesi kaldırıldı (9 Ekim 2026): eski kayıtlar sessiz kalır
   if (!/^[a-z]{2,12}$/.test(String(prefs.fsColor))) prefs.fsColor = "auto";
   prefs.sync = true; // saat her zaman sunucu saatine göre çalışır
 
@@ -373,7 +373,7 @@ function sunTimes(y, m, d, lat, lon) {
       var tz = el.getAttribute("data-tz") || localTz;
       var out = "", p;
       switch (kind) {
-        case "time": out = timeText(now, tz, el.hasAttribute("data-sec") ? prefs.sec : false); break;
+        case "time": out = timeText(now, tz, el.hasAttribute("data-sec") ? prefs.secD : false); break;
         case "date": out = useOwn ? ownDate(parts(now, tz)) : fmt("date", tz, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now); break;
         case "day": out = String(parts(now, tz).day); break;
         case "dateiso": p = parts(now, tz); out = p.year + "-" + String(p.month).padStart(2, "0") + "-" + String(p.day).padStart(2, "0"); break;
@@ -465,7 +465,6 @@ function sunTimes(y, m, d, lat, lon) {
   }
 
   var fmtBtns = Array.prototype.slice.call(doc.querySelectorAll("[data-fmt-toggle]"));
-  var btnSec = doc.querySelector("[data-pref=sec]");
   var tickBtns = Array.prototype.slice.call(doc.querySelectorAll("[data-tick]"));
   function syncButtons() {
     tickBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(prefs.tick)); });
@@ -473,20 +472,26 @@ function sunTimes(y, m, d, lat, lon) {
       b.setAttribute("aria-pressed", String(prefs.h12));
       Array.prototype.forEach.call(b.querySelectorAll("[data-fmt-part]"), function (sp) { sp.classList.toggle("is-on", (sp.getAttribute("data-fmt-part") === "12") === prefs.h12); });
     });
-    if (btnSec) btnSec.setAttribute("aria-pressed", String(prefs.sec));
-    root.classList.toggle("sec-off", !prefs.sec);
+    root.classList.toggle("sec-off", !prefs.secA);
   }
   function savePrefs() { store("sth-prefs", JSON.stringify(prefs)); syncButtons(); render(); }
   fmtBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.h12 = !prefs.h12; savePrefs(); }); });
-  if (btnSec) btnSec.addEventListener("click", function () { prefs.sec = !prefs.sec; savePrefs(); });
-  /* Saniyeler: saate dokununca açılır/kapanır (düğme yok; bilgi "i" penceresinde yazar) */
+  /* Saniyeler: saate dokununca açılır/kapanır (düğme yok; bilgi "i" penceresinde yazar).
+     Dijital saatte varsayılan açık, analogda kapalı; dokunulan saatin türü değişir. */
+  var toggleSec = function (slide, target) {
+    var analog = target && target.closest && target.closest(".analog");
+    var digital = target && target.closest && target.closest("[data-live=time]");
+    var hasDigital = slide && slide.querySelector(".clock");
+    if (analog || (!digital && !hasDigital)) prefs.secA = !prefs.secA; else prefs.secD = !prefs.secD;
+    savePrefs();
+  };
   Array.prototype.forEach.call(doc.querySelectorAll("[data-carousel] [data-track]"), function (tr) {
     tr.addEventListener("click", function (e) {
       if (e.target.closest && e.target.closest("a, button, input, select, .cal")) return;
-      prefs.sec = !prefs.sec; savePrefs();
+      toggleSec(e.target.closest && e.target.closest(".slide"), e.target);
     });
     tr.addEventListener("keydown", function (e) {
-      if ((e.key === "s" || e.key === "S") && !e.ctrlKey && !e.metaKey && !e.altKey) { prefs.sec = !prefs.sec; savePrefs(); }
+      if ((e.key === "s" || e.key === "S") && !e.ctrlKey && !e.metaKey && !e.altKey) toggleSec(tr.querySelector('.slide[aria-hidden="false"]'), null);
     });
   });
   tickBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.tick = !prefs.tick; if (prefs.tick) ensureAudio(); savePrefs(); }); });

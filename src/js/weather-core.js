@@ -104,12 +104,12 @@
       load(place.lat, place.lon).then(function (d) { fillBlock(box, place, d); }).catch(function () { wxMessage(box, "fsFail", false); });
     }
     function sync(slide) {
-      var on = slide.getAttribute("aria-hidden") === "false";
+      var on = slide.getAttribute("aria-hidden") !== "true";
       if (!on) { clearInterval(slide._wxt); slide._wxt = 0; return; }
       refresh(slide);
       if (!slide._wxt) slide._wxt = setInterval(function () { refresh(slide); }, 10 * 60 * 1000);
     }
-    window.addEventListener("sth-place", function () { slides.forEach(function (slide) { if (slide.getAttribute("aria-hidden") === "false") refresh(slide); }); });
+    window.addEventListener("sth-place", function () { slides.forEach(function (slide) { if (slide.getAttribute("aria-hidden") !== "true") refresh(slide); }); });
     slides.forEach(function (slide) {
       new MutationObserver(function () { sync(slide); }).observe(slide, { attributes: true, attributeFilter: ["aria-hidden"] });
       sync(slide);

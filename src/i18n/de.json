@@ -454,7 +454,7 @@
     "info": "Info zur Zeitquelle",
     "infoTitle": "Woher kommt diese Uhrzeit?",
     "infoClose": "Schließen",
-    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden."
+    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden. Bei digitalen Uhren sind die Sekunden zunächst an, bei analogen aus."
   },
   "calendar": {
     "title": "Kalender {year}: Feiertage in der Türkei und Ramadan | Saat Tarih",

@@ -213,7 +213,7 @@ addModel("digital", "s-digital", (tz) => pDigital(tz));
 addModel("digital-date", "s-digital", (tz) => pDigital(tz) + pDate(tz));
 addModel("wx-digital", "s-digital s-wx", (tz) => pDigital(tz) + pDate(tz) + wxBlock("line"), true);
 addModel("wx-digital-cal", "s-cal s-wx", (tz) => `<div class="cal-side">${pDigital(tz, " clock-sm")}${pDate(tz)}${wxBlock("line")}</div>${calendarHtml(tz)}`, true);
-addModel("wx-digital-cal-week", "s-cal s-wx", (tz) => `<div class="cal-side">${pDigital(tz, " clock-sm")}${pDate(tz)}${wxBlock("week")}</div>${calendarHtml(tz)}`, true);
+addModel("wx-digital-cal-week", "s-cal2 s-wx", (tz) => `<div class="cal2-top">${pDigital(tz, " clock-xl")}</div><div class="cal2-body"><div class="cal-side">${pDate(tz)}${wxBlock("week")}</div>${calendarHtml(tz)}</div>`, true);
 // Yalnız gömme widget'ında (sahnede yok)
 addModel("minimal", "s-analog", (tz) => analogSvg({ tz, size: "lg", numerals: false, minimal: true }) + srTime(tz));
 addModel("duo", "s-duo", (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pDigital(tz)}</div>`);
@@ -224,7 +224,7 @@ addModel("flip", "s-flip", (tz) => flipHtml(tz) + pDate(tz));
 addModel("words", "s-words", (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz));
 addModel("rings", "s-rings", (tz) => ringsHtml(tz) + pDate(tz));
 addModel("bigdate", "s-bigdate", (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}`);
-const STAGE_ORDER = ["classic", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal", "wx-digital-cal-week"];
+const STAGE_ORDER = ["wx-digital-cal-week", "classic", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal"];
 const MODELS = STAGE_ORDER.map((id) => M[id]);
 const EMBED_MODELS = Object.values(M).filter((m) => !m.wx);
 
@@ -243,7 +243,7 @@ function clockStage(lang, { tz = "", place = null } = {}) {
   const total = MODELS.length;
   const slides = MODELS.map((m, i) => {
     const name = s.models[m.id];
-    return `<section class="slide ${m.cls}" id="model-${m.id}" data-model="${m.id}" data-name="${esc(name)}" role="group" aria-roledescription="${esc(s.slideRole)}" aria-label="${esc(tpl(s.slide, { n: i + 1, total, name }))}"${i ? ' aria-hidden="true"' : ""}>${m.html(tz)}</section>`;
+    return `<section class="slide ${m.cls}" id="model-${m.id}" data-model="${m.id}" data-name="${esc(name)}" role="group" aria-roledescription="${esc(s.slideRole)}" aria-label="${esc(tpl(s.slide, { n: i + 1, total, name }))}"${i ? ' aria-hidden="true"' : ' aria-hidden="false"'}>${m.html(tz)}</section>`;
   }).join("");
   const dots = MODELS.map(
     (m, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${esc(s.models[m.id])}" title="${esc(s.models[m.id])}"${i ? "" : ' aria-current="true"'}></button>`
@@ -259,9 +259,10 @@ function clockStage(lang, { tz = "", place = null } = {}) {
   <div class="stage-bar">
     <div class="dots sr-only" role="group" aria-label="${esc(s.dots)}">${dots}</div>
     <div class="stage-row">
-      <div class="sr-start">${prefControls(t)}</div>
+      ${prefControls(t)}
       <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
-      <div class="sr-end"><span class="stage-count" data-stage-count>1/${total}</span><button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button></div>
+      <button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
+      <div class="sr-nav" dir="ltr"><button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}" title="${esc(s.prev)}">${ICON_PREV}</button><span class="stage-count" data-stage-count>1/${total}</span><button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}" title="${esc(s.next)}">${ICON_NEXT}</button></div>
     </div>
   </div>
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
