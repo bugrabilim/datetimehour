@@ -28,19 +28,23 @@ for (const f of htmlFiles) {
   const name = rel(f);
   const err = name === "/404.html" || name === "/500.html";
   const noidx = /<meta name="robots" content="noindex/.test(h);
+  const embed = /\/embed\/(tr|en)\/index\.html$/.test(name);
   ids[f] = new Set([...h.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
   const title = (h.match(/<title>([^<]*)<\/title>/) || [])[1];
   const desc = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1];
   check(title, `${name}: title yok`);
-  check(desc, `${name}: description yok`);
-  check((h.match(/<h1[ >]/g) || []).length === (err ? 2 : 1), `${name}: H1 sayısı hatalı`);
+  check(desc || embed, `${name}: description yok`);
+  check((h.match(/<h1[ >]/g) || []).length === (embed ? 0 : err ? 2 : 1), `${name}: H1 sayısı hatalı`);
   check(/<html lang="(tr|en)"/.test(h), `${name}: html lang yok`);
   check(!/\sstyle="/.test(h), `${name}: satır içi style (CSP)`);
   check(!/http:\/\/(?!www\.w3\.org)/.test(h), `${name}: http:// bağlantı`);
   check(/class="rozet"/.test(h) && /width="164" height="28"/.test(h), `${name}: Bumba rozeti yok`);
-  check(/data-theme-toggle/.test(h) && /data-search-open/.test(h), `${name}: tema ya da arama düğmesi yok`);
+  check(embed || (/data-theme-toggle/.test(h) && /data-search-open/.test(h)), `${name}: tema ya da arama düğmesi yok`);
   check(/Content-Security-Policy/.test(h), `${name}: CSP yok`);
-  if (!err && (name === "/index.html" || name === "/en/index.html" || /\/(dunya-saatleri|world-clock)\/[a-z-]+\/index\.html$/.test(name) && !/\/(dunya-saatleri|world-clock)\/index\.html$/.test(name))) {
+  if (embed) {
+    check(noidx && h.indexOf("embed.js") > 0 && h.indexOf("embed.js") < h.indexOf("main.js") && (h.match(/class="slide /g) || []).length >= 10, `${name}: gömülü sayfa yapısı hatalı`);
+  }
+  if (!err && !embed && (name === "/index.html" || name === "/en/index.html" || /\/(dunya-saatleri|world-clock)\/[a-z-]+\/index\.html$/.test(name) && !/\/(dunya-saatleri|world-clock)\/index\.html$/.test(name))) {
     const slides = [...h.matchAll(/data-model="([a-z-]+)" data-name="([^"]+)"/g)];
     check(slides.length >= 10, `${name}: saat modeli sayısı ${slides.length} < 10`);
     check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
@@ -64,7 +68,7 @@ for (const f of htmlFiles) {
   if (toolMatch) {
     check(/data-tool="(stopwatch|countdown|alarm|pomodoro)"/.test(h) && /tools\.js/.test(h) && /data-fs/.test(h) && /"WebApplication"/.test(h) && /"FAQPage"/.test(h), `${name}: araç yapısı eksik`);
   }
-  if (!err) {
+  if (!err && !embed) {
     check(/rel="canonical" href="https:\/\//.test(h), `${name}: canonical yok`);
     if (!noidx) {
       for (const l of ["tr", "en", "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
@@ -86,7 +90,7 @@ for (const f of htmlFiles) {
       } catch (e) { fails.push(`${name}: JSON-LD bozuk`); }
     }
     if (!noidx) pagesInfo.push({ name, title, desc });
-  } else {
+  } else if (err) {
     check(/noindex/.test(h), `${name}: noindex yok`);
   }
   if (UMAMI_ID_REQUIRED()) check(/data-website-id="[0-9a-f-]{36}"/.test(h), `${name}: Umami yok`);
@@ -157,6 +161,7 @@ for (const [n, t] of Object.entries(themes)) {
 // nginx başlıkları
 const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
 for (const s of ["Strict-Transport-Security", "max-age=86400", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
+check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");
 
 if (fails.length) {

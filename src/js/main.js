@@ -97,6 +97,7 @@
   /* ---------- Saat ---------- */
   var prefs = { h12: false, sec: true, model: "", sync: true };
   try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
+  if (window.__sthPrefs) Object.assign(prefs, window.__sthPrefs);
   prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec !== false; prefs.sync = prefs.sync !== false;
 
   var localTz;

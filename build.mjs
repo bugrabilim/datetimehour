@@ -68,6 +68,7 @@ for (const [name, from] of [
   ["calendar.js", "js/calendar.js"],
   ["dates.js", "js/dates.js"],
   ["planner.js", "js/planner.js"],
+  ["embed.js", "js/embed.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -914,7 +915,7 @@ function buildToolsHub(lang) {
     { name: h.h1, path: pagePath },
   ];
   const card = (href, name, desc) => `<li class="city-card"><a href="${href}"><span class="city-name">${esc(name)}</span><span class="city-diff">${esc(desc)}</span><span class="card-open">${esc(h.open)} →</span></a></li>`;
-  const cards = TOOL_KEYS.map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + ["converter", "planner", "diff"].map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + card(yearPath(lang, BUILD_YEAR), t.calendar.hubName, t.calendar.hubDesc) + card(ROUTES[lang].world, t.ui.world, t.world.description.split(". ")[0] + ".");
+  const cards = TOOL_KEYS.map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + ["converter", "planner", "datecalc", "embed", "diff"].map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + card(yearPath(lang, BUILD_YEAR), t.calendar.hubName, t.calendar.hubDesc) + card(ROUTES[lang].world, t.ui.world, t.world.description.split(". ")[0] + ".");
   const body = `<section class="hero">
   <div class="wrap">
     ${crumbs(lang, trail)}
@@ -1267,9 +1268,120 @@ function buildCdp(lang, x) {
   return simplePage(lang, `cdp:${x.key}`, { title: tpl(s.title, v), description: tpl(s.description, v), h1: tpl(s.h1, v), lead: tpl(s.lead, v), trail, bodyInner: inner, faq, faqHeading: tpl(s.faqHeading, v), scripts: ["calendar.js"], clientExtra: { t: { cdp: s } }, searchK: `geri sayım kaç gün kaldı countdown days until ${tg.name}` });
 }
 
+/* ---------- Tarih hesaplayıcılar ve gömme kodu (widget) ---------- */
+const ROUTES_C = {
+  tr: { datecalc: "/tarih-hesaplama/", embed: "/gomme/", embedFrame: "/embed/tr/" },
+  en: { datecalc: "/en/date-calculator/", embed: "/en/embed/", embedFrame: "/embed/en/" },
+};
+for (const l of LANGS) Object.assign(ROUTES[l], ROUTES_C[l]);
+
+function buildDateCalc(lang) {
+  const t = I[lang];
+  const s = t.datecalc;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].datecalc }];
+  const dateField = (id, label, attr) => `<div class="field"><label for="${id}">${esc(label)}</label><input id="${id}" type="date" ${attr}></div>`;
+  const unitOpts = Object.entries(s.units).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join("");
+  const inner = {
+    hero: `<p class="meta sync-line" data-sync-status>&nbsp;</p>`,
+    sections: `<section class="section" aria-labelledby="dc-diff-h">
+  <div class="wrap">
+    <div class="tool" data-dc="diff">
+      <h2 id="dc-diff-h" class="tool-h2">${esc(s.diffHeading)}</h2>
+      <div class="inputs-row">${dateField("dc-d1", s.startLabel, "data-dc-start")}${dateField("dc-d2", s.endLabel, "data-dc-end")}</div>
+      <div class="dc-out" role="status" aria-live="polite" data-dc-out>${esc(s.pick)}</div>
+      <p class="meta">${esc(s.diffNote)}</p>
+    </div>
+    <div class="tool" data-dc="add">
+      <h2 id="dc-add-h" class="tool-h2">${esc(s.addHeading)}</h2>
+      <div class="inputs-row">${dateField("dc-a1", s.startLabel, "data-dc-start")}
+        <div class="field"><label for="dc-a2">${esc(s.amountLabel)}</label><input id="dc-a2" type="number" inputmode="numeric" value="30" step="1" data-dc-amount></div>
+        <div class="field"><label for="dc-a3">${esc(s.unitLabel)}</label><select id="dc-a3" data-dc-unit>${unitOpts}</select></div>
+      </div>
+      <div class="dc-out" role="status" aria-live="polite" data-dc-out>${esc(s.pick)}</div>
+      <p class="meta">${esc(s.addHint)}</p>
+    </div>
+    <div class="tool" data-dc="age">
+      <h2 id="dc-age-h" class="tool-h2">${esc(s.ageHeading)}</h2>
+      <div class="inputs-row">${dateField("dc-b1", s.birthLabel, "data-dc-birth")}</div>
+      <div class="dc-out" role="status" aria-live="polite" data-dc-out>${esc(s.pick)}</div>
+    </div>
+    <p class="meta" data-dc-range></p>
+  </div>
+</section>`,
+  };
+  return simplePage(lang, "datecalc", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["dates.js"], clientExtra: { t: { dc: s, dcRange: { from: HOL_YEARS[0], to: HOL_YEARS[HOL_YEARS.length - 1] } } }, searchK: "tarih hesaplama iki tarih arası gün iş günü yaş hesaplama date calculator days between working days age", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].datecalc, s.description)] });
+}
+
+function buildEmbedGen(lang) {
+  const t = I[lang];
+  const s = t.embedgen;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].embed }];
+  const modelOpts = MODELS.map((m) => `<option value="${m.id}">${esc(t.stage.models[m.id])}</option>`).join("");
+  const cityOpts = `<option value="">${esc(s.cityLocal)}</option>${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
+  const inner = {
+    hero: `<section class="tool" data-embedgen aria-labelledby="tool-h">
+      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <div class="inputs-row">
+        <div class="field"><label for="eg-m">${esc(s.modelLabel)}</label><select id="eg-m" data-eg-model>${modelOpts}</select></div>
+        <div class="field"><label for="eg-c">${esc(s.cityLabel)}</label><select id="eg-c" data-eg-city>${cityOpts}</select></div>
+        <div class="field"><label for="eg-t">${esc(s.themeLabel)}</label><select id="eg-t" data-eg-theme><option value="auto">${esc(s.themeAuto)}</option><option value="light">${esc(s.themeLight)}</option><option value="dark">${esc(s.themeDark)}</option></select></div>
+        <div class="field"><label for="eg-l">${esc(s.langLabel)}</label><select id="eg-l" data-eg-lang><option value="tr"${lang === "tr" ? " selected" : ""}>Türkçe</option><option value="en"${lang === "en" ? " selected" : ""}>English</option></select></div>
+      </div>
+      <div class="inputs-row">
+        <div class="field"><label for="eg-w">${esc(s.widthLabel)}</label><input id="eg-w" type="number" min="160" max="1200" value="360" data-eg-w></div>
+        <div class="field"><label for="eg-h">${esc(s.heightLabel)}</label><input id="eg-h" type="number" min="160" max="1200" value="360" data-eg-h></div>
+        <label class="check-inline"><input type="checkbox" checked data-eg-sec> ${esc(s.secLabel)}</label>
+        <label class="check-inline"><input type="checkbox" data-eg-h12> ${esc(s.h12Label)}</label>
+      </div>
+      <h3>${esc(s.previewHeading)}</h3>
+      <div class="eg-preview"><iframe data-eg-frame title="${esc(s.previewTitle)}" width="360" height="360" loading="lazy"></iframe></div>
+      <h3>${esc(s.codeHeading)}</h3>
+      <textarea class="eg-code" readonly rows="4" aria-label="${esc(s.codeHeading)}" data-eg-code></textarea>
+      <div class="tool-actions">${btn("btn", "data-eg-copy", s.copy)}</div>
+      <p class="meta" data-eg-status role="status"></p>
+      <p class="meta">${esc(s.sizeNote)}</p>
+      <p class="meta">${esc(s.note)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`,
+  };
+  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: { tr: ROUTES.tr.embedFrame, en: ROUTES.en.embedFrame } } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
+}
+
+/* Gömülü widget sayfası: yalnız seçilen saat modeli, başlık ve alt bilgi (indekslenmez) */
+function embedFramePage(lang) {
+  const t = I[lang];
+  const slides = MODELS.map((m) => `<section class="slide ${m.cls}" data-model="${m.id}" aria-hidden="true">${m.html("")}</section>`).join("");
+  const umami = UMAMI_ID ? `<script defer src="https://istatistik.bumba.tr/script.js" data-website-id="${esc(UMAMI_ID)}" data-domains="${esc(HOST)}"></script>` : "";
+  const pageCfg = { locale: t.locale, t: { ...t.client }, cities: clientCities(lang), cal: { months: t.calendar.months, weekdays: t.calendar.weekdays } };
+  return `<!doctype html>
+<html lang="${lang}" data-embed="1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(t.embedgen.frameTitle)}</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="${esc(CSP)}">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="${ASSETS["styles.css"]}">
+<script src="${ASSETS["theme.js"]}"></script>
+${umami}
+</head>
+<body>
+<main class="embed-stage">${slides}</main>
+<footer class="embed-foot"><a href="${abs(ROUTES[lang].home)}" target="_blank" rel="noopener">${esc(t.embed.link)}</a>${badge(lang)}</footer>
+<script type="application/json" id="page-config">${JSON.stringify(pageCfg).replace(/</g, "\\u003c")}</script>
+<script defer src="${ASSETS["embed.js"]}"></script>
+<script defer src="${ASSETS["main.js"]}"></script>
+</body>
+</html>
+`;
+}
+
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
 }
 
@@ -1290,6 +1402,8 @@ for (const p of built) {
   const html = layout({ ...p, alt: byKey[p.key], searchVersion: searchVersion[p.lang] });
   write(path.join(p.path, "index.html"), html);
 }
+
+for (const lang of LANGS) write(path.join(ROUTES[lang].embedFrame, "index.html"), embedFramePage(lang));
 
 /* ---------- hata sayfaları (iki dil bir arada) ---------- */
 function errorPage(kind) {

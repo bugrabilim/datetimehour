@@ -519,6 +519,14 @@
         "diff": {
           "name": "Saat farkı",
           "desc": "İstanbul ile dünya şehirleri arasındaki saat farkı."
+        },
+        "datecalc": {
+          "name": "Tarih hesaplama",
+          "desc": "İki tarih arası gün ve iş günü, tarihe ekleme, yaş."
+        },
+        "embed": {
+          "name": "Saat widget'ı",
+          "desc": "Sitenize ücretsiz saat gömün (iframe)."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -996,5 +1004,103 @@
         "dat": "Karne gününe"
       }
     }
+  },
+  "datecalc": {
+    "title": "Tarih Hesaplama: İki Tarih Arası Gün, İş Günü, Yaş | Saat Tarih",
+    "description": "İki tarih arası kaç gün, kaç iş günü? Tarihe gün, ay, yıl ekleyin ya da çıkarın; yaşınızı hesaplayın. Türkiye resmi tatilleri dikkate alınır.",
+    "h1": "Tarih hesaplama",
+    "lead": "İki tarih arasındaki gün, hafta ve iş gününü hesaplayın; bir tarihe gün, ay, yıl ya da iş günü ekleyin; yaşınızı ve sonraki doğum gününüzü bulun. İş günü hesabı hafta sonlarını ve Türkiye resmi tatillerini dışarıda bırakır.",
+    "diffHeading": "İki tarih arası",
+    "startLabel": "Başlangıç tarihi",
+    "endLabel": "Bitiş tarihi",
+    "diffDays": "Gün farkı: {n} gün",
+    "diffWeeks": "Yani {w} hafta {d} gün",
+    "diffYmd": "{y} yıl, {m} ay, {d} gün",
+    "diffWork": "İş günü (başlangıç dahil, bitiş hariç): {n}",
+    "diffNote": "İş günü hesabında hafta sonları ve resmi tatiller çıkarılır; bayram arifesi yarım günleri 0,5 sayılır.",
+    "addHeading": "Tarihe ekle ya da çıkar",
+    "amountLabel": "Miktar",
+    "unitLabel": "Birim",
+    "units": {
+      "days": "Gün",
+      "weeks": "Hafta",
+      "months": "Ay",
+      "years": "Yıl",
+      "workdays": "İş günü"
+    },
+    "addResult": "Sonuç: {date}",
+    "addHint": "Çıkarmak için negatif sayı yazın.",
+    "ageHeading": "Yaş hesaplama",
+    "birthLabel": "Doğum tarihi",
+    "ageResult": "{y} yaşında, {m} ay, {d} gün",
+    "ageDays": "Toplam yaşanan gün: {n}",
+    "ageNext": "Sonraki doğum günü: {date} ({n} gün sonra)",
+    "ageToday": "Bugün doğum gününüz!",
+    "invalid": "Geçerli bir tarih girin.",
+    "pick": "Tarihleri seçin.",
+    "range": "Tatil verisi {from}–{to} yıllarını kapsar; bu aralığın dışındaki günlerde yalnızca hafta sonları çıkarılır.",
+    "faqHeading": "Tarih hesaplama hakkında sık sorulanlar",
+    "faq": [
+      {
+        "q": "İki tarih arası kaç gün nasıl hesaplanır?",
+        "a": "Bitiş tarihinden başlangıç tarihini çıkarırsınız; hesaplayıcı bunu otomatik yapar. Aynı hesap hafta ve yıl-ay-gün olarak da gösterilir."
+      },
+      {
+        "q": "İş günü hesabına resmi tatiller dahil mi?",
+        "a": "İş günü sayısında hafta sonları ve Türkiye resmi tatilleri çıkarılır; bayram arifesi yarım günleri 0,5 iş günü sayılır. Tatil verisi takvim sayfalarımızdaki 2026–2031 verisidir."
+      },
+      {
+        "q": "Yaş nasıl hesaplanır?",
+        "a": "Doğum tarihinden bugüne tamamlanan yıl, ay ve gün sayılır. Hesaplayıcı ayrıca toplam yaşanan günü ve sonraki doğum gününe kalan günü gösterir."
+      },
+      {
+        "q": "Bir tarihe ay eklerken ay sonu nasıl işlenir?",
+        "a": "Hedef ayda o gün yoksa ayın son günü alınır; örneğin 31 Ocak'a 1 ay eklenirse şubatın son günü bulunur."
+      }
+    ]
+  },
+  "embedgen": {
+    "title": "Saat Widget'ı: Sitenize Ücretsiz Saat Gömün | Saat Tarih",
+    "description": "Sitenize ücretsiz saat gömün: 13 saat modeli, şehir seçimi, açık/koyu tema. Hazır iframe kodunu kopyalayıp yapıştırın.",
+    "h1": "Sitenize saat gömün",
+    "lead": "Modeli, şehri ve temayı seçin; hazır iframe kodunu kopyalayıp sitenize yapıştırın. Widget reklamsızdır, çerez kullanmaz ve sunucu saatiyle senkron çalışır.",
+    "modelLabel": "Saat modeli",
+    "cityLabel": "Şehir",
+    "cityLocal": "Ziyaretçinin bulunduğu yer",
+    "themeLabel": "Tema",
+    "themeAuto": "Otomatik (ziyaretçinin tercihi)",
+    "themeLight": "Açık",
+    "themeDark": "Koyu",
+    "langLabel": "Dil",
+    "secLabel": "Saniye göster",
+    "h12Label": "12 saat biçimi",
+    "widthLabel": "Genişlik (px)",
+    "heightLabel": "Yükseklik (px)",
+    "previewHeading": "Önizleme",
+    "codeHeading": "Gömme kodu",
+    "copy": "Kodu kopyala",
+    "copied": "Kod kopyalandı",
+    "note": "Widget'ın altında Saat Tarih'e bir bağlantı ve Bumba imzası görünür; lütfen kaldırmayın.",
+    "previewTitle": "Saat Tarih widget önizlemesi",
+    "frameTitle": "Saat Tarih saat widget'ı",
+    "faqHeading": "Saat widget'ı hakkında sık sorulanlar",
+    "faq": [
+      {
+        "q": "Widget ücretsiz mi?",
+        "a": "Evet. Widget ücretsizdir ve reklam içermez. Altında Saat Tarih'e bir bağlantı ve Bumba imzası bulunur."
+      },
+      {
+        "q": "Siteme nasıl eklerim?",
+        "a": "Modeli ve şehri seçin, oluşan iframe kodunu kopyalayın ve sayfanızın HTML'ine yapıştırın. Genişlik ve yüksekliği ihtiyacınıza göre değiştirebilirsiniz."
+      },
+      {
+        "q": "Widget ziyaretçilerimin verisini toplar mı?",
+        "a": "Widget çerez bırakmaz ve kişisel veri toplamaz. Doğru saati göstermek için sunucuya küçük istekler gider; sayfa görüntülemeleri çerezsiz, anonim istatistiğe sayılır."
+      }
+    ],
+    "sizeNote": "Takvimli modeller için en az 460 px yükseklik önerilir; diğer modeller 360 px'te rahat sığar."
+  },
+  "embed": {
+    "link": "Saat Tarih"
   }
 }
