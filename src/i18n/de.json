@@ -37,7 +37,9 @@
     "tools": "Tools",
     "langMenu": "Sprache",
     "menu": "Menü",
-    "prayer": "Gebetszeiten"
+    "prayer": "Gebetszeiten",
+    "nature": "Natur",
+    "weather": "Wetter"
   },
   "client": {
     "format24": "24 Stunden",
@@ -153,7 +155,11 @@
       "ocean": "Ozean",
       "rose": "Rosé",
       "mono": "Weiß"
-    }
+    },
+    "fsWeather": "Wetter",
+    "fsWeatherNeed": "Wählen Sie für das Wetter einen Ort auf der",
+    "fsWeatherLink": "Wetterseite",
+    "fsWeatherFail": "Das Wetter konnte nicht abgerufen werden."
   },
   "home": {
     "title": "Wie spät ist es? Live-Uhr und heutiges Datum | Saat Tarih",
@@ -278,6 +284,7 @@
         "ul": [
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
           "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
+          "**Wetter:** Auf der Wetterseite (oder wenn Sie im Vollbild das Wetter einschalten) werden die ungefähren Koordinaten der gewählten Provinz oder des gewählten Standorts (auf etwa 1 km genau) direkt von Ihrem Browser an Open-Meteo (api.open-meteo.com) gesendet, das die Daten liefert. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die eigenen Datenschutzbestimmungen von Open-Meteo.",
           "**Formular für die E-Mail-Liste:** Die von Ihnen eingegebene E-Mail-Adresse, die per Kontrollkästchen erteilte Einwilligung, die gewählte Sprache und die Seite, auf der sich das Formular befindet, werden vom gemeinsamen Listendienst der Bumba Group (bumbagroup.com) verarbeitet. Die Anmeldung erfolgt per Double-Opt-in: Sie werden erst aufgenommen, wenn Sie den Link in der Bestätigungs-E-Mail anklicken, und jede E-Mail enthält einen Link zur Abmeldung mit einem Klick. Einzelheiten finden Sie im [gemeinsamen Datenschutzhinweis](https://bumbagroup.com/liste/aydinlatma?dil=en) (auf Englisch).",
           "**Server-Protokolle:** Der Server, auf dem die Website betrieben wird, führt für jede Anfrage ein übliches Zugriffsprotokoll mit IP-Adresse, Browserinformationen, aufgerufener Seite und Zeitpunkt. Diese Protokolle dienen ausschließlich der Sicherheit und der Fehlerbehebung, nicht der Erstellung von Personenprofilen.",
           "**Besuchsstatistik:** Umami, das auf unserem eigenen Server läuft, zählt Seitenaufrufe und einige Aktionen (Sprachwechsel, Wechsel des Farbmodus, ob eine Suche ein Ergebnis lieferte, Anmeldung zur Liste). Umami verwendet keine Cookies. Ihre Suchbegriffe und Ihre E-Mail-Adresse werden nicht an das Statistiksystem übermittelt.",
@@ -333,13 +340,13 @@
               "Bis zur Löschung durch Sie"
             ],
             [
-              "sth-prayer",
-              "Merkt sich die zuletzt gewählte Provinz oder den Standort für die Gebetszeiten.",
+              "sth-world",
+              "Merkt sich die für die Weltzeituhr gewählten Städte und ihre Reihenfolge.",
               "Bis Sie es löschen"
             ],
             [
-              "sth-world",
-              "Merkt sich die für die Weltzeituhr gewählten Städte und ihre Reihenfolge.",
+              "sth-place",
+              "Merkt sich die zuletzt gewählte Provinz oder den zuletzt gewählten Standort für die Seiten Gebetszeiten, Natur und Wetter.",
               "Bis Sie es löschen"
             ]
           ]
@@ -1320,5 +1327,181 @@
       }
     ],
     "search": "gebetszeiten gebetszeit gebetsruf adhan fadschr dhuhr asr maghrib ischa iftar sahur namaz vakitleri"
+  },
+  "nature": {
+    "title": "Jahreszeiten und Natur: Sonne, Mond, Tageslänge | Saat Tarih",
+    "description": "Jahreszeitenrad, Beginn der Jahreszeiten, Sonnenaufgang und -untergang heute, Mondphase und Tageslänge im Jahresverlauf sowie Naturwissen zu jeder Jahreszeit.",
+    "h1": "Jahreszeiten und Natur",
+    "lead": "Das Jahr dreht sich wie ein Rad: Welche Jahreszeit haben wir, wie viele Tage sind es bis zur nächsten, wann gehen Sonne auf und unter, und welche Phase hat der Mond? Alles auf einer Seite für Ihren Standort oder eine gewählte Provinz.",
+    "wheelLabel": "Jahreszeitenrad des Jahres",
+    "seasons": {
+      "spring": "Frühling",
+      "summer": "Sommer",
+      "autumn": "Herbst",
+      "winter": "Winter"
+    },
+    "current": "Es ist {season}",
+    "dayOf": "Tag {n} (von {total})",
+    "nextIn": "Noch {days} Tage bis {season}",
+    "startsOn": "Beginn von {season}: {date}",
+    "chooseNote": "Ihr Standort bestimmt sowohl die Zeiten für Sonne und Mond als auch die Erdhalbkugel.",
+    "sunHeading": "Die Sonne heute",
+    "sunrise": "Sonnenaufgang",
+    "sunset": "Sonnenuntergang",
+    "dayLength": "Tageslänge",
+    "solarNoon": "Sonnenhöchststand",
+    "dayLonger": "Der Tag ist {m} Min. länger als gestern",
+    "dayShorter": "Der Tag ist {m} Min. kürzer als gestern",
+    "dayLeft": "Bis Sonnenuntergang: {t}",
+    "moonHeading": "Der Mond",
+    "phases": {
+      "new": "Neumond",
+      "waxingCrescent": "Zunehmende Sichel",
+      "firstQuarter": "Erstes Viertel",
+      "waxingGibbous": "Zunehmender Mond",
+      "full": "Vollmond",
+      "waningGibbous": "Abnehmender Mond",
+      "lastQuarter": "Letztes Viertel",
+      "waningCrescent": "Abnehmende Sichel"
+    },
+    "illumination": "{p} % beleuchtet",
+    "age": "Mondalter: {d} Tage",
+    "nextNew": "Nächster Neumond",
+    "nextFull": "Nächster Vollmond",
+    "chartHeading": "Tageslänge im Jahresverlauf",
+    "chartCaption": "{place}: Tageslicht pro Tag (Stunden), {year}",
+    "longest": "Längster Tag",
+    "shortest": "Kürzester Tag",
+    "hoursShort": "Std.",
+    "minutesShort": "Min.",
+    "tableHeading": "Beginn der Jahreszeiten",
+    "tableLead": "Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten gelten in türkischer Zeit (UTC+3).",
+    "colYear": "Jahr",
+    "meteoNote": "Meteorologische Jahreszeiten sind Dreimonatsblöcke: Der Frühling beginnt am 1. März, der Sommer am 1. Juni, der Herbst am 1. September und der Winter am 1. Dezember. Sie werden für Kalender und Statistiken verwendet.",
+    "factsHeading": "Die Natur im Lauf der Jahreszeiten",
+    "facts": {
+      "spring": [
+        "Bei der Tagundnachtgleiche sind Tag und Nacht gleich lang, in den folgenden Monaten werden die Tage schnell länger.",
+        "Blumen blühen und die Bäume werden grün; Zugvögel kehren nach Norden zurück.",
+        "Der Schnee schmilzt und die Flüsse führen mehr Wasser; der Boden wird für die Aussaat vorbereitet."
+      ],
+      "summer": [
+        "Der längste Tag des Jahres fällt auf die Sommersonnenwende.",
+        "Meer und Boden erwärmen sich, und die Saison für Obst und Gemüse erreicht ihren Höhepunkt.",
+        "Kurze Nächte und klarer Himmel machen diese Zeit ideal, um die Milchstraße zu beobachten."
+      ],
+      "autumn": [
+        "Tag und Nacht sind wieder gleich lang, danach werden die Tage kürzer.",
+        "Die Blätter verfärben sich und fallen ab; Vögel wie Störche und Kraniche ziehen nach Süden.",
+        "Es ist Erntezeit: Trauben, Walnüsse, Haselnüsse und Kastanien werden gesammelt."
+      ],
+      "winter": [
+        "Der kürzeste Tag des Jahres fällt auf die Wintersonnenwende, danach werden die Tage wieder länger.",
+        "Viele Tiere halten Winterschlaf und Pflanzen ruhen.",
+        "Der Schnee in den Bergen speichert das Wasser für Frühling und Sommer."
+      ]
+    },
+    "whyHeading": "Warum gibt es Jahreszeiten?",
+    "why": [
+      "Die Jahreszeiten entstehen, weil die Erdachse gegenüber der Bahn um die Sonne um etwa 23,4° geneigt ist, und nicht wegen des Abstands zur Sonne.",
+      "Neigt sich die Achse zur Sonne hin, erhält diese Erdhalbkugel direkteres Licht und längere Tage, und es ist Sommer. Neigt sie sich von der Sonne weg, ist es Winter.",
+      "Bei den Tagundnachtgleichen (um den 20. März und den 22. September) sind Tag und Nacht fast gleich lang; bei den Sonnenwenden (um den 21. Juni und den 21. Dezember) ist der Tag am längsten oder am kürzesten."
+    ],
+    "hemisphereNote": "Auf der Südhalbkugel sind die Jahreszeiten umgekehrt; liegt Ihr Standort im Süden, ändern sich die Namen der Jahreszeiten entsprechend.",
+    "methodNote": "Sonne, Mond und Jahreszeitenwechsel werden in Ihrem Browser mit astronomischen Formeln berechnet: Die Zeitpunkte des Jahreszeitenwechsels auf wenige Minuten genau, Mondphase und Mondzeiten näherungsweise.",
+    "weatherLink": "Zur separaten Wetterseite",
+    "faqHeading": "Häufig gestellte Fragen",
+    "faq": [
+      {
+        "q": "Wann beginnen die Jahreszeiten?",
+        "a": "Astronomisch beginnt der Frühling um den 20. März, der Sommer am 21. Juni, der Herbst am 22./23. September und der Winter am 21. Dezember. Die genauen Zeitpunkte verschieben sich von Jahr zu Jahr um einige Stunden; siehe die Tabelle oben."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen astronomischen und meteorologischen Jahreszeiten?",
+        "a": "Astronomische Jahreszeiten beruhen auf den Tagundnachtgleichen und Sonnenwenden, meteorologische Jahreszeiten dagegen auf ganzen Kalendermonaten (März bis Mai ist zum Beispiel Frühling). Letztere erleichtern das Führen von Klimaaufzeichnungen."
+      },
+      {
+        "q": "Wie ändert sich die Tageslänge?",
+        "a": "Die Tageslänge nimmt von der Wintersonnenwende bis zur Sommersonnenwende zu und dann wieder ab. Die Änderung ist um die Tagundnachtgleichen am schnellsten, mit einigen Minuten pro Tag, und bei den Sonnenwenden fast null."
+      },
+      {
+        "q": "Wie wird die Mondphase berechnet?",
+        "a": "Die Phase ergibt sich aus der Zeit seit dem letzten Neumond als Anteil des Mondzyklus (etwa 29,5 Tage). Die Zeitpunkte von Neumond und Vollmond werden mit astronomischen Formeln auf wenige Minuten genau berechnet."
+      }
+    ],
+    "search": "seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length mevsimler ilkbahar yaz sonbahar kış jahreszeiten frühling sommer herbst winter tagundnachtgleiche sonnenwende mond mondphase vollmond neumond sonnenaufgang sonnenuntergang tageslänge natur"
+  },
+  "weather": {
+    "title": "Wetter: aktuell, stündlich und 7-Tage-Vorhersage | Saat Tarih",
+    "description": "Aktuelles Wetter sowie stündliche und 7-Tage-Vorhersage für Ihren Standort oder eine gewählte Provinz: Temperatur, gefühlt, Wind, Feuchte, Regen, UV.",
+    "h1": "Wetter",
+    "lead": "Die aktuelle Temperatur plus stündliche und 7-Tage-Vorhersage für Ihren Standort oder eine gewählte Provinz. Auch neben der Vollbild-Uhr einblendbar.",
+    "now": "Jetzt",
+    "feelsLike": "Gefühlt",
+    "humidity": "Luftfeuchtigkeit",
+    "wind": "Wind",
+    "precipitation": "Niederschlag",
+    "pressure": "Luftdruck",
+    "uv": "UV-Index",
+    "hourlyHeading": "Stündliche Vorhersage (24 Stunden)",
+    "dailyHeading": "7-Tage-Vorhersage",
+    "sunrise": "Sonnenaufgang",
+    "sunset": "Sonnenuntergang",
+    "loading": "Wetter wird abgerufen …",
+    "error": "Das Wetter konnte nicht abgerufen werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+    "retry": "Erneut versuchen",
+    "locationNote": "Die Koordinaten des gewählten Standorts (auf etwa 1 km genau) werden direkt von Ihrem Browser an Open-Meteo gesendet, das die Wetterdaten liefert; der Server von Saat Tarih sieht sie nicht.",
+    "attribution": "Wetterdaten: Open-Meteo.com (CC BY 4.0)",
+    "updated": "Aktualisiert: {time}",
+    "rainChance": "{p} % Regenwahrscheinlichkeit",
+    "windFrom": "aus {dir}",
+    "codes": {
+      "clear": "Klar",
+      "mostlyClear": "Überwiegend klar",
+      "partly": "Teilweise bewölkt",
+      "overcast": "Bedeckt",
+      "fog": "Nebel",
+      "drizzle": "Nieselregen",
+      "freezingDrizzle": "Gefrierender Nieselregen",
+      "rain": "Regen",
+      "freezingRain": "Gefrierender Regen",
+      "snow": "Schnee",
+      "snowGrains": "Schneegriesel",
+      "showers": "Schauer",
+      "snowShowers": "Schneeschauer",
+      "thunder": "Gewitter",
+      "thunderHail": "Gewitter mit Hagel"
+    },
+    "compass": [
+      "Norden",
+      "Nordosten",
+      "Osten",
+      "Südosten",
+      "Süden",
+      "Südwesten",
+      "Westen",
+      "Nordwesten"
+    ],
+    "natureLink": "Seite Jahreszeiten und Natur",
+    "faqHeading": "Häufig gestellte Fragen",
+    "faq": [
+      {
+        "q": "Woher stammen die Wetterdaten?",
+        "a": "Die Daten werden direkt in Ihren Browser von Open-Meteo geladen, einem offenen Wetterdienst. Es handelt sich um eine Modellvorhersage, die von lokalen Messungen um einige Grad und Stunden abweichen kann."
+      },
+      {
+        "q": "Wird mein Standort weitergegeben?",
+        "a": "Wenn Sie einen Standort wählen, werden ungefähre Koordinaten (auf etwa 1 km genau) nur zum Abrufen des Wetters an Open-Meteo gesendet. Der Server von Saat Tarih sieht und speichert sie nicht."
+      },
+      {
+        "q": "Was ist die gefühlte Temperatur?",
+        "a": "Die gefühlte Temperatur gibt an, wie warm es sich für den Körper anfühlt, wenn Wind und Luftfeuchtigkeit berücksichtigt werden; sie kann von der tatsächlichen Lufttemperatur abweichen."
+      },
+      {
+        "q": "Kann ich das Wetter auf der Vollbild-Uhr sehen?",
+        "a": "Ja. Im Vollbild zeigt die Wetter-Schaltfläche in der Leiste, die beim Antippen des Bildschirms erscheint, das Wetter Ihres gewählten Standorts neben der Uhr an."
+      }
+    ],
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin wetter vorhersage temperatur regen wind luftfeuchtigkeit uv-index morgen diese woche wettervorhersage"
   }
 }

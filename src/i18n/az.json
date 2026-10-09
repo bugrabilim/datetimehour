@@ -37,7 +37,9 @@
     "tools": "Alətlər",
     "langMenu": "Dil",
     "menu": "Menyu",
-    "prayer": "Namaz vaxtları"
+    "prayer": "Namaz vaxtları",
+    "nature": "Təbiət",
+    "weather": "Hava"
   },
   "client": {
     "format24": "24 saat",
@@ -126,7 +128,11 @@
       "ocean": "Okean",
       "rose": "Gül",
       "mono": "Ağ"
-    }
+    },
+    "fsWeather": "Hava",
+    "fsWeatherNeed": "Hava proqnozu üçün məkan seçin:",
+    "fsWeatherLink": "hava səhifəsi",
+    "fsWeatherFail": "Hava məlumatı alına bilmədi."
   },
   "home": {
     "title": "Saat neçədir? Canlı saat və bugünkü tarix | Saat Tarih",
@@ -251,6 +257,7 @@
         "ul": [
           "**Saat və tarix:** Cihazınızın saatı və saat qurşağı yalnız brauzerinizdə oxunur və hesablanır. Bu məlumatlar serverə göndərilmir və saxlanılmır.",
           "**Məkan (namaz vaxtları):** Namaz vaxtları səhifəsində “Məkanımı istifadə et” seçsəniz, brauzeriniz məkanınızı yalnız cihazınızda vaxtların hesablanması üçün istifadə edir. Koordinatlar serverə göndərilmir və statistikaya düşmür; son seçiminiz brauzerinizin yerli yaddaşında qalır.",
+          "**Hava:** Hava səhifəsində (və ya tam ekranda havanı açsanız) seçdiyiniz əyalət və ya məkanın yaxınlaşdırılmış koordinatları (təxminən 1 km dəqiqliklə) birbaşa brauzerinizdən məlumatı təmin edən Open-Meteo-ya (api.open-meteo.com) göndərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur.",
           "**E-poçt siyahısı forması:** Daxil etdiyiniz e-poçt ünvanı, qeyd xanası ilə verdiyiniz razılıq, seçilmiş dil və formanın yerləşdiyi səhifə Bumba Group-un ortaq siyahı xidməti (bumbagroup.com) tərəfindən emal edilir. Qeydiyyat ikimərhələli təsdiqlə aparılır: təsdiq e-məktubundakı keçidə klikləməyənədək siyahıya əlavə edilmirsiniz, hər e-məktubda isə bir kliklə abunəlikdən çıxmaq üçün keçid var. Ətraflı məlumat üçün [ortaq məlumatlandırma bildirişinə](https://bumbagroup.com/liste/aydinlatma?dil=en) baxın.",
           "**Server jurnalları:** Saytı yerləşdirən server hər sorğu üçün IP ünvanı, brauzer məlumatları, sorğulanan səhifə və vaxtdan ibarət standart giriş jurnalı aparır. Bu jurnallar insanların profilini yaratmaq üçün deyil, yalnız təhlükəsizlik və nasazlıqların aradan qaldırılması üçün istifadə olunur.",
           "**Ziyarət statistikası:** Öz serverimizdə işləyən Umami səhifə baxışlarını və bir neçə əməliyyatı (dil dəyişikliyi, mövzu dəyişikliyi, axtarışın nəticə verib-vermədiyi, siyahıya qoşulma) sayır. Umami kukilərdən istifadə etmir. Axtarışa yazdığınız sözlər və e-poçt ünvanınız statistika sisteminə göndərilmir.",
@@ -306,13 +313,13 @@
               "Siz silənədək"
             ],
             [
-              "sth-prayer",
-              "Namaz vaxtları üçün sonuncu seçdiyiniz vilayəti və ya məkanı xatırlayır.",
+              "sth-world",
+              "Dünya saatları üçün seçdiyiniz şəhərləri və onların ardıcıllığını xatırlayır.",
               "Siz silənə qədər"
             ],
             [
-              "sth-world",
-              "Dünya saatları üçün seçdiyiniz şəhərləri və onların ardıcıllığını xatırlayır.",
+              "sth-place",
+              "Namaz vaxtları, təbiət və hava səhifələri üçün sonuncu seçdiyiniz əyalət və ya məkanı xatırlayır.",
               "Siz silənə qədər"
             ]
           ]
@@ -1293,5 +1300,181 @@
       }
     ],
     "search": "namaz vaxtları azan sübh zöhr əsr məğrib işa iftar səhur namaz vakitleri prayer times"
+  },
+  "nature": {
+    "title": "Fəsillər və təbiət: Günəş, Ay, gün uzunluğu | Saat Tarih",
+    "description": "Fəsil çarxı, fəsillərin başlama tarixləri, bugünkü gün çıxma və batma, Ayın fazası və il boyu gün uzunluğu, hər fəsil üçün təbiət faktları.",
+    "h1": "Fəsillər və təbiət",
+    "lead": "İl çarx kimi dönür: hazırda hansı fəsildir, növbəti fəslə neçə gün qalıb, Günəş nə vaxt doğur və batır, Ay hansı fazadadır? Hamısı bir səhifədə, məkanınız və ya seçdiyiniz əyalət üçün.",
+    "wheelLabel": "İllik fəsil çarxı",
+    "seasons": {
+      "spring": "Yaz",
+      "summer": "Yay",
+      "autumn": "Payız",
+      "winter": "Qış"
+    },
+    "current": "İndi fəsil: {season}",
+    "dayOf": "Gün {n} / {total}",
+    "nextIn": "{season} fəslinin başlamasına {days} gün qalıb",
+    "startsOn": "{season} fəslinin başlanğıcı: {date}",
+    "chooseNote": "Məkanınız həm gün çıxma, gün batma və Ay vaxtlarını, həm də yarımkürəni müəyyən edir.",
+    "sunHeading": "Bu gün Günəş",
+    "sunrise": "Gün çıxması",
+    "sunset": "Gün batması",
+    "dayLength": "Gün uzunluğu",
+    "solarNoon": "Günorta (Günəşin zirvəsi)",
+    "dayLonger": "Gün dünənkindən {m} dəq uzundur",
+    "dayShorter": "Gün dünənkindən {m} dəq qısadır",
+    "dayLeft": "Gün batmasına qədər: {t}",
+    "moonHeading": "Ay",
+    "phases": {
+      "new": "Yeni ay",
+      "waxingCrescent": "Artan hilal",
+      "firstQuarter": "İlk dördlük",
+      "waxingGibbous": "Artan qabarıq ay",
+      "full": "Tam ay",
+      "waningGibbous": "Azalan qabarıq ay",
+      "lastQuarter": "Son dördlük",
+      "waningCrescent": "Azalan hilal"
+    },
+    "illumination": "{p}% işıqlanıb",
+    "age": "Ayın yaşı: {d} gün",
+    "nextNew": "Növbəti yeni ay",
+    "nextFull": "Növbəti tam ay",
+    "chartHeading": "İl boyu gün uzunluğu",
+    "chartCaption": "{place}: günlük işıqlı vaxt (saat), {year}",
+    "longest": "Ən uzun gün",
+    "shortest": "Ən qısa gün",
+    "hoursShort": "s",
+    "minutesShort": "dəq",
+    "tableHeading": "Fəsillərin başlama tarixləri",
+    "tableLead": "Astronomik fəsillər, yəni bərabərgünlük və gündönümü anları. Vaxtlar Türkiyə vaxtı ilədir (UTC+3).",
+    "colYear": "İl",
+    "meteoNote": "Meteoroloji fəsillər üç aylıq bloklardır: yaz 1 martda, yay 1 iyunda, payız 1 sentyabrda, qış isə 1 dekabrda başlayır. Təqvimlər və statistika üçün istifadə olunur.",
+    "factsHeading": "Fəsillər üzrə təbiət",
+    "facts": {
+      "spring": [
+        "Bərabərgünlükdə gecə ilə gündüz bərabər olur, sonrakı aylarda isə günlər sürətlə uzanır.",
+        "Çiçəklər açır, ağaclar yaşıllaşır; köçəri quşlar şimala qayıdır.",
+        "Qar əriyir, çaylar coşur; torpaq əkinə hazırlanır."
+      ],
+      "summer": [
+        "İlin ən uzun günü yay gündönümünə düşür.",
+        "Dəniz və torpaq istilənir, meyvə-tərəvəz mövsümü zirvəyə çatır.",
+        "Qısa gecələr və açıq səma Süd Yolunu izləmək üçün ən yaxşı vaxtdır."
+      ],
+      "autumn": [
+        "Gecə ilə gündüz yenidən bərabərləşir və günlər qısalmağa başlayır.",
+        "Yarpaqlar rəng dəyişib tökülür; leylək və durna kimi quşlar cənuba köçür.",
+        "Məhsul yığımı vaxtıdır: üzüm, qoz, fındıq və şabalıd yığılır."
+      ],
+      "winter": [
+        "İlin ən qısa günü qış gündönümünə düşür, ondan sonra günlər yenidən uzanır.",
+        "Bir çox heyvan qış yuxusuna gedir, bitkilər yuxu halına keçir.",
+        "Dağlardakı qar yaz və yay üçün suyu ehtiyatda saxlayır."
+      ]
+    },
+    "whyHeading": "Fəsillər niyə dəyişir?",
+    "why": [
+      "Fəsillərin səbəbi Yerin Günəşdən uzaqlığı deyil, fırlanma oxunun Günəş ətrafındakı orbitinə nisbətən təxminən 23,4° əyilməsidir.",
+      "Ox Günəşə doğru əyiləndə həmin yarımkürə daha çox düz işıq alır, günlər uzun olur və yay gəlir. Ox Günəşdən uzaq əyiləndə isə qışdır.",
+      "Bərabərgünlüklərdə (təxminən 20 mart və 22 sentyabr) gecə ilə gündüz demək olar ki, bərabər olur; gündönümlərində (təxminən 21 iyun və 21 dekabr) gün ən uzun və ya ən qısa olur."
+    ],
+    "hemisphereNote": "Cənub yarımkürəsində fəsillər tərsinə olur; məkanınız cənubdadırsa, fəsil adları buna uyğun dəyişir.",
+    "methodNote": "Günəş, Ay və fəsil anları brauzerinizdə astronomik düsturlarla hesablanır: fəsil anları bir neçə dəqiqə dəqiqliklə, Ayın fazası və vaxtları isə təxminən.",
+    "weatherLink": "Ayrıca hava səhifəsinə keç",
+    "faqHeading": "Tez-tez verilən suallar",
+    "faq": [
+      {
+        "q": "Fəsillər nə vaxt başlayır?",
+        "a": "Astronomik olaraq yaz təxminən 20 martda, yay 21 iyunda, payız 22-23 sentyabrda, qış isə 21 dekabrda başlayır. Dəqiq anlar ildən-ilə bir neçə saat dəyişir; yuxarıdakı cədvələ baxın."
+      },
+      {
+        "q": "Astronomik və meteoroloji fəsillər arasındakı fərq nədir?",
+        "a": "Astronomik fəsillər bərabərgünlük və gündönümlərinə əsaslanır, meteoroloji fəsillər isə tam təqvim aylarından ibarətdir (məsələn, mart-may yazdır). Sonuncu iqlim qeydlərini aparmağı asanlaşdırır."
+      },
+      {
+        "q": "Gün uzunluğu necə dəyişir?",
+        "a": "Gün uzunluğu qış gündönümündən yay gündönümünə qədər artır, sonra yenidən qısalır. Dəyişiklik bərabərgünlük ətrafında ən sürətlidir, gündə bir neçə dəqiqə; gündönümlərində isə demək olar ki, dayanır."
+      },
+      {
+        "q": "Ayın fazası necə hesablanır?",
+        "a": "Faza əvvəlki yeni aydan keçən vaxtın Ay dövrünə (təxminən 29,5 gün) nisbətindən çıxarılır. Yeni ay və tam ay anları astronomik düsturlarla bir neçə dəqiqə dəqiqliklə hesablanır."
+      }
+    ],
+    "search": "fəsillər yaz yay payız qış bərabərgünlük gündönümü Ay fazası tam ay yeni ay gün çıxması gün batması gün uzunluğu təbiət seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length"
+  },
+  "weather": {
+    "title": "Hava: Hazırkı, saatlıq və 7 günlük proqnoz | Saat Tarih",
+    "description": "Məkanınız və ya seçdiyiniz əyalət üçün hazırkı hava, saatlıq və 7 günlük proqnoz: temperatur, hiss olunan, külək, rütubət, yağış və UB.",
+    "h1": "Hava",
+    "lead": "Məkanınız və ya seçdiyiniz əyalət üçün hazırkı temperatur, saatlıq və 7 günlük proqnoz. Tam ekran saatın yanında da göstərilə bilər.",
+    "now": "İndi",
+    "feelsLike": "Hiss olunan",
+    "humidity": "Rütubət",
+    "wind": "Külək",
+    "precipitation": "Yağıntı",
+    "pressure": "Təzyiq",
+    "uv": "UB indeksi",
+    "hourlyHeading": "Saatlıq proqnoz (24 saat)",
+    "dailyHeading": "7 günlük proqnoz",
+    "sunrise": "Gün çıxması",
+    "sunset": "Gün batması",
+    "loading": "Hava məlumatı alınır…",
+    "error": "Hava məlumatı alına bilmədi. Bağlantınızı yoxlayıb yenidən cəhd edin.",
+    "retry": "Yenidən cəhd et",
+    "locationNote": "Seçdiyiniz məkanın koordinatları (təxminən 1 km dəqiqliklə) birbaşa brauzerinizdən hava məlumatını təmin edən Open-Meteo-ya göndərilir; Saat Tarih serveri onları görmür.",
+    "attribution": "Hava məlumatları: Open-Meteo.com (CC BY 4.0)",
+    "updated": "Yenilənib: {time}",
+    "rainChance": "Yağış ehtimalı {p}%",
+    "windFrom": "{dir} istiqamətindən",
+    "codes": {
+      "clear": "Aydın",
+      "mostlyClear": "Əsasən aydın",
+      "partly": "Qismən buludlu",
+      "overcast": "Tutqun",
+      "fog": "Duman",
+      "drizzle": "Çiskin",
+      "freezingDrizzle": "Dondurucu çiskin",
+      "rain": "Yağış",
+      "freezingRain": "Dondurucu yağış",
+      "snow": "Qar",
+      "snowGrains": "Qar dənəcikləri",
+      "showers": "Leysan",
+      "snowShowers": "Qarlı leysan",
+      "thunder": "Ildırımlı leysan",
+      "thunderHail": "Dolulu ildırımlı leysan"
+    },
+    "compass": [
+      "şimal",
+      "şimal-şərq",
+      "şərq",
+      "cənub-şərq",
+      "cənub",
+      "cənub-qərb",
+      "qərb",
+      "şimal-qərb"
+    ],
+    "natureLink": "Fəsillər və təbiət səhifəsi",
+    "faqHeading": "Tez-tez verilən suallar",
+    "faq": [
+      {
+        "q": "Hava məlumatları haradan gəlir?",
+        "a": "Məlumatlar açıq hava xidməti olan Open-Meteo-dan birbaşa brauzerinizə yüklənir. Bu, model proqnozudur və yerli ölçmələrdən bir neçə dərəcə və saat fərqlənə bilər."
+      },
+      {
+        "q": "Məkanım paylaşılırmı?",
+        "a": "Məkan seçsəniz, yaxınlaşdırılmış koordinatlar (təxminən 1 km dəqiqliklə) yalnız hava məlumatını almaq üçün Open-Meteo-ya göndərilir. Saat Tarih serveri onları görmür və saxlamır."
+      },
+      {
+        "q": "Hiss olunan temperatur nədir?",
+        "a": "Hiss olunan temperatur külək və rütubət nəzərə alındıqda bədənə necə isti gəldiyini göstərir; real hava temperaturundan fərqlənə bilər."
+      },
+      {
+        "q": "Tam ekran saatda havanı görə bilərəmmi?",
+        "a": "Bəli. Tam ekranda ekrana toxunduqda çıxan paneldəki hava düyməsi seçdiyiniz məkanın havasını saatın yanında göstərir."
+      }
+    ],
+    "search": "hava proqnoz temperatur yağış külək rütubət UB sabah bu həftə hava vəziyyəti weather forecast temperature rain wind humidity uv tomorrow this week"
   }
 }
