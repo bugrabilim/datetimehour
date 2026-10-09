@@ -62,7 +62,7 @@
   }
 
   /* ---------- Saat ---------- */
-  var prefs = { h12: false, sec: true };
+  var prefs = { h12: false, sec: true, model: "" };
   try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
   prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec !== false;
 
@@ -108,6 +108,11 @@
     if (withSec) o.second = "2-digit";
     return fmt("time" + (prefs.h12 ? 12 : 24) + (withSec ? "s" : ""), tz, o).format(date);
   }
+  function dayPeriod(date, tz) {
+    var f = fmt("dp", tz, { hour: "numeric", hour12: true }).formatToParts(date);
+    for (var i = 0; i < f.length; i++) if (f[i].type === "dayPeriod") return f[i].value;
+    return "";
+  }
   function isoWeek(p) {
     var d = new Date(Date.UTC(p.year, p.month - 1, p.day));
     var day = d.getUTCDay() || 7;
@@ -120,9 +125,63 @@
   }
   function daysInYear(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0 ? 366 : 365; }
 
+  var W = T.words || { units: [], tens: [], join: " ", oh: "", sentence: "{h} {m}", oclock: "{h}" };
+  function numWords(n) {
+    if (n < 20) return W.units[n];
+    return W.tens[Math.floor(n / 10)] + (n % 10 ? W.join + W.units[n % 10] : "");
+  }
+  function wordsText(p) {
+    var h = prefs.h12 ? (p.hour % 12 || 12) : p.hour;
+    if (p.minute === 0) return tpl(W.oclock, { h: numWords(h) });
+    var m = p.minute < 10 ? W.oh + " " + W.units[p.minute] : numWords(p.minute);
+    return tpl(W.sentence, { h: numWords(h), m: m });
+  }
+
+  var calCache = new WeakMap();
+  function renderCalendar(el, p, tz) {
+    var key = p.year + "-" + p.month + "-" + p.day;
+    if (calCache.get(el) === key) return;
+    calCache.set(el, key);
+    var title = el.querySelector("[data-cal-title]");
+    var head = el.querySelector("[data-cal-head]");
+    var body = el.querySelector("[data-cal-body]");
+    title.textContent = fmt("calTitle", "UTC", { month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, 1, 12)));
+    head.textContent = "";
+    var wk = doc.createElement("th");
+    wk.scope = "col"; wk.textContent = T.weekShort;
+    head.appendChild(wk);
+    for (var i = 0; i < 7; i++) {
+      var th = doc.createElement("th");
+      th.scope = "col";
+      th.textContent = fmt("wd", "UTC", { weekday: "short" }).format(new Date(Date.UTC(2024, 0, 1 + i, 12))); // 1 Ocak 2024 pazartesi
+      head.appendChild(th);
+    }
+    body.textContent = "";
+    var first = (new Date(Date.UTC(p.year, p.month - 1, 1)).getUTCDay() + 6) % 7;
+    var count = new Date(Date.UTC(p.year, p.month, 0)).getUTCDate();
+    var day = 1 - first;
+    while (day <= count) {
+      var tr = doc.createElement("tr");
+      var wh = doc.createElement("th");
+      wh.scope = "row";
+      var ref = Math.max(day, 1);
+      wh.textContent = String(isoWeek({ year: p.year, month: p.month, day: ref }));
+      tr.appendChild(wh);
+      for (var c = 0; c < 7; c++, day++) {
+        var td = doc.createElement("td");
+        if (day >= 1 && day <= count) {
+          td.textContent = String(day);
+          if (day === p.day) { td.className = "today"; td.setAttribute("aria-current", "date"); }
+        }
+        tr.appendChild(td);
+      }
+      body.appendChild(tr);
+    }
+  }
+
   var nf = new Intl.NumberFormat(locale);
   var liveEls = Array.prototype.slice.call(doc.querySelectorAll("[data-live]"));
-  var analog = doc.querySelector("[data-analog]");
+  var analogs = Array.prototype.slice.call(doc.querySelectorAll("[data-analog]"));
 
   function render() {
     var now = new Date();
@@ -130,10 +189,15 @@
     liveEls.forEach(function (el) {
       var kind = el.getAttribute("data-live");
       var tz = el.getAttribute("data-tz") || localTz;
-      var out = "";
+      var out = "", p;
       switch (kind) {
         case "time": out = timeText(now, tz, el.hasAttribute("data-sec") ? prefs.sec : false); break;
         case "date": out = fmt("date", tz, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now); break;
+        case "day": out = String(parts(now, tz).day); break;
+        case "monthyear": out = fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
+        case "weekday": out = fmt("wdl", tz, { weekday: "long" }).format(now); break;
+        case "ampm": out = prefs.h12 ? dayPeriod(now, tz) : ""; break;
+        case "words": out = wordsText(parts(now, tz)); break;
         case "tzname": out = (tz || "") + " · " + offsetLabel(offsetMin(now, tz)); break;
         case "offset": out = offsetLabel(offsetMin(now, tz)); break;
         case "diff":
@@ -143,7 +207,7 @@
         case "isoweek": out = String(isoWeek(parts(now, tz))); break;
         case "doy": out = String(dayOfYear(parts(now, tz))); break;
         case "daysleft":
-          var p = parts(now, tz);
+          p = parts(now, tz);
           out = String(daysInYear(p.year) - dayOfYear(p));
           break;
         case "unix": out = nf.format(Math.floor(now.getTime() / 1000)); break;
@@ -156,16 +220,33 @@
           var note = el.parentNode.querySelector("[data-progress-note]");
           if (note) note.textContent = tpl(T.yearDone, { p: Math.floor(pct) });
           return;
+        case "calendar": renderCalendar(el, parts(now, tz), tz); return;
+        case "flip":
+          p = parts(now, tz);
+          var hh = prefs.h12 ? (p.hour % 12 || 12) : p.hour;
+          var digits = [Math.floor(hh / 10), hh % 10, Math.floor(p.minute / 10), p.minute % 10, Math.floor(p.second / 10), p.second % 10];
+          el.querySelectorAll("[data-flip-d]").forEach(function (n) {
+            var v = String(digits[+n.getAttribute("data-flip-d")]);
+            if (n.textContent !== v) n.textContent = v;
+          });
+          return;
+        case "rings":
+          p = parts(now, tz);
+          var vals = { h: (((p.hour % 12) + p.minute / 60) / 12) * 100, m: ((p.minute + p.second / 60) / 60) * 100, s: (p.second / 60) * 100 };
+          el.querySelectorAll("[data-ring]").forEach(function (c) {
+            c.setAttribute("stroke-dasharray", vals[c.getAttribute("data-ring")].toFixed(2) + " 100");
+          });
+          return;
       }
       if (el.textContent !== out) el.textContent = out;
     });
-    if (analog) {
-      var ap = parts(now, localTz);
+    analogs.forEach(function (svg) {
+      var ap = parts(now, svg.getAttribute("data-tz") || localTz);
       var s = ap.second, m = ap.minute + s / 60, h = (ap.hour % 12) + m / 60;
-      analog.querySelector("[data-hand=h]").setAttribute("transform", "rotate(" + h * 30 + " 100 100)");
-      analog.querySelector("[data-hand=m]").setAttribute("transform", "rotate(" + m * 6 + " 100 100)");
-      analog.querySelector("[data-hand=s]").setAttribute("transform", "rotate(" + s * 6 + " 100 100)");
-    }
+      svg.querySelector("[data-hand=h]").setAttribute("transform", "rotate(" + h * 30 + " 100 100)");
+      svg.querySelector("[data-hand=m]").setAttribute("transform", "rotate(" + m * 6 + " 100 100)");
+      svg.querySelector("[data-hand=s]").setAttribute("transform", "rotate(" + s * 6 + " 100 100)");
+    });
   }
   function schedule() {
     render();
@@ -180,12 +261,111 @@
       btn12.textContent = prefs.h12 ? T.format12 : T.format24;
     }
     if (btnSec) btnSec.setAttribute("aria-pressed", String(prefs.sec));
+    root.classList.toggle("sec-off", !prefs.sec);
   }
   function savePrefs() { store("sth-prefs", JSON.stringify(prefs)); syncButtons(); render(); }
   if (btn12) btn12.addEventListener("click", function () { prefs.h12 = !prefs.h12; savePrefs(); });
   if (btnSec) btnSec.addEventListener("click", function () { prefs.sec = !prefs.sec; savePrefs(); });
   syncButtons();
   if (liveEls.length) schedule();
+
+  /* ---------- Saat modelleri: kaydırmalı karusel ve tam ekran ---------- */
+  var stage = doc.querySelector("[data-carousel]");
+  if (stage) {
+    var trackEl = stage.querySelector("[data-track]");
+    var slides = Array.prototype.slice.call(trackEl.children);
+    var dots = Array.prototype.slice.call(stage.querySelectorAll("[data-dot]"));
+    var nameEl = stage.querySelector("[data-stage-name]");
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var current = 0, ready = false, settleTimer = null, reported = -1;
+
+    var setActive = function (i) {
+      if (i === current && slides[i].getAttribute("aria-hidden") === "false") return;
+      current = i;
+      slides.forEach(function (s, n) { s.setAttribute("aria-hidden", n === i ? "false" : "true"); });
+      dots.forEach(function (d, n) { if (n === i) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
+      nameEl.textContent = slides[i].getAttribute("data-name");
+    };
+    var goTo = function (i, smooth) {
+      i = (i + slides.length) % slides.length;
+      trackEl.scrollTo({ left: i * trackEl.clientWidth, behavior: smooth && !reduceMotion ? "smooth" : "auto" });
+      setActive(i);
+    };
+    var indexFromHash = function () {
+      var m = /^#model-(.+)$/.exec(location.hash);
+      if (!m) return -1;
+      for (var n = 0; n < slides.length; n++) if (slides[n].getAttribute("data-model") === m[1]) return n;
+      return -1;
+    };
+
+    trackEl.addEventListener("scroll", function () {
+      var i = Math.round(trackEl.scrollLeft / Math.max(trackEl.clientWidth, 1));
+      if (i >= 0 && i < slides.length) setActive(i);
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(function () {
+        if (!ready || current === reported) return;
+        reported = current;
+        prefs.model = slides[current].getAttribute("data-model");
+        store("sth-prefs", JSON.stringify(prefs));
+        track("saat-modeli", { model: prefs.model });
+      }, 250);
+    }, { passive: true });
+    dots.forEach(function (d, n) { d.addEventListener("click", function () { goTo(n, true); }); });
+    stage.querySelectorAll("[data-nav]").forEach(function (b) {
+      b.addEventListener("click", function () { goTo(current + parseInt(b.getAttribute("data-nav"), 10), true); });
+    });
+    trackEl.addEventListener("keydown", function (ev) {
+      if (ev.altKey || ev.ctrlKey || ev.metaKey) return;
+      if (ev.key === "ArrowRight") { ev.preventDefault(); goTo(current + 1, true); }
+      else if (ev.key === "ArrowLeft") { ev.preventDefault(); goTo(current - 1, true); }
+      else if (ev.key === "Home") { ev.preventDefault(); goTo(0, true); }
+      else if (ev.key === "End") { ev.preventDefault(); goTo(slides.length - 1, true); }
+      else if (ev.key === "f" || ev.key === "F") { ev.preventDefault(); toggleFull(); }
+    });
+    window.addEventListener("resize", function () { trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" }); });
+    window.addEventListener("hashchange", function () { var i = indexFromHash(); if (i > -1) goTo(i, true); });
+
+    // Tam ekran: Fullscreen API varsa o, yoksa (ör. iPhone) sabit kaplama
+    var fsBtn = stage.querySelector("[data-fullscreen]");
+    var isFull = function () { return doc.fullscreenElement === stage || stage.classList.contains("is-full"); };
+    var syncFull = function () {
+      var on = isFull();
+      root.classList.toggle("has-full", on);
+      if (fsBtn) {
+        fsBtn.setAttribute("aria-pressed", String(on));
+        var label = on ? T.exitFullscreen : T.fullscreen;
+        fsBtn.setAttribute("aria-label", label);
+        fsBtn.setAttribute("title", label);
+      }
+      trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" });
+    };
+    var toggleFull = function () {
+      if (isFull()) {
+        if (doc.fullscreenElement) doc.exitFullscreen(); else { stage.classList.remove("is-full"); syncFull(); }
+        return;
+      }
+      track("tam-ekran");
+      if (stage.requestFullscreen) {
+        stage.requestFullscreen().catch(function () { stage.classList.add("is-full"); syncFull(); });
+      } else {
+        stage.classList.add("is-full"); syncFull();
+      }
+    };
+    if (fsBtn) fsBtn.addEventListener("click", toggleFull);
+    doc.addEventListener("fullscreenchange", function () { syncFull(); setTimeout(function () { trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" }); }, 60); });
+    doc.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && stage.classList.contains("is-full") && !(dlg && dlg.open)) { stage.classList.remove("is-full"); syncFull(); }
+    });
+
+    // Açılışta: bağlantıdaki model, yoksa son seçilen model
+    var start = indexFromHash();
+    if (start < 0 && prefs.model) {
+      for (var n = 0; n < slides.length; n++) if (slides[n].getAttribute("data-model") === prefs.model) start = n;
+    }
+    if (start > 0) goTo(start, false);
+    reported = current;
+    setTimeout(function () { ready = true; }, 400);
+  }
 
   /* ---------- E-posta listesi: sonuç iletisi ve Umami olayı ---------- */
   (function listResult() {

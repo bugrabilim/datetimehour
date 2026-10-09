@@ -10,6 +10,7 @@ Bu dosya master dosyadır. Her oturumda okunur.
 - Komutlar: `npm run build`, `npm test` (derle + denetle), `npm run serve` (dist'i :8080'de sunar).
 - Yapı: `site.config.json` (ad, asıl adres, Umami kimliği, liste anahtarı, güncelleme tarihi) · `src/i18n/{tr,en}.json` (bütün metinler) · `src/data/cities.json` (şehirler) · `src/styles.css` (tema token'ları) · `src/js/` (theme.js: flash önleme, main.js: saat, tema, dil, arama, liste sonucu) · `src/assets/` (ikonlar, paylaşım görseli; elle üretilmiş PNG'ler commit'lidir) · `scripts/test.mjs`.
 - Sayfalar (TR / EN): `/` · `/en/`, `/dunya-saatleri/` · `/en/world-clock/`, her şehir için `/dunya-saatleri/<şehir>/` · `/en/world-clock/<city>/` (17 şehir), `/gizlilik/` · `/en/privacy/`. `404.html` ve `500.html` iki dil bir arada, noindex.
+- Saat sahnesi (ana sayfa ve şehir sayfaları): yatay kaydırmalı 13 saat modeli (`MODELS`, `build.mjs`): klasik/sade analog, analog+tarih, dijital, dijital+tarih, analog+dijital (tarihli/tarihsiz), dijital+aylık takvim, analog+aylık takvim, çevirmeli, yazıyla, halka, büyük tarih. Her model kendi `id`'siyle `#model-<id>` bağlantısına sahip, adları `stage.models` altında iki dilde. Tam ekran düğmesi (Fullscreen API, desteklemeyen tarayıcıda sabit kaplama). Yeni model: `MODELS`'a ekle, `src/styles.css`'e stil, `stage.models`'a TR/EN ad, gerekiyorsa `main.js` render'ına tür ekle.
 - Yeni şehir: `src/data/cities.json`'a ekle (TR ekli hâli `loc` zorunlu). Yeni metin: iki i18n dosyasına aynı anahtarla ekle (`npm test` eşliği denetler).
 - Asıl adres (önerilen, DNS ana oturumda): `https://saat.bumba.tr`. Değişirse yalnız `site.config.json` → `origin` (ya da derleme ortamında `SITE_ORIGIN`).
 - Umami kimliği ve liste anahtarı: `site.config.json` (`umamiId` boş: ana oturum kaydı açınca doldurulur ya da `UMAMI_ID` derleme değişkeni). Liste anahtarı önerisi: `saat-tarih`.
@@ -19,9 +20,10 @@ Bu dosya master dosyadır. Her oturumda okunur.
 - Tasarım ilk günden iki temalı: açık ("kâğıt") ve koyu ("gece") palet var. Tek merkez: `src/styles.css` token'ları, kontrast `npm test` ile denetlenir.
 - Satır içi stil/betik yok; CSP `script-src 'self' https://istatistik.bumba.tr`. Tema flash'ı harici, bloklayan `theme.js` ile önlenir.
 - E-posta listesi formu: ortak servis CORS vermediği için JS'siz, doğrudan form gönderimi + `donus`. Sonuç `#liste-tamam` / `#liste-hata` ile döner; `liste-katil` Umami olayı döndüğünde tetiklenir.
-- Çerez yok; tercihler localStorage'da (`sth-theme`, `sth-lang`, `sth-prefs`), gizlilik sayfasında açıklı. Çerez onayı penceresi yok.
+- Çerez yok; tercihler localStorage'da (`sth-theme`, `sth-lang`, `sth-prefs`: 24/12 saat, saniye, son seçilen saat modeli), gizlilik sayfasında açıklı. Çerez onayı penceresi yok.
 - Saat tarayıcıdan okunur; sunucuya veri gitmez. Umami olaylarında arama sözcüğü gönderilmez, yalnız "sonuç var/yok".
 - Dil: ana sayfada yalnızca kullanıcı dil düğmesiyle seçim yaptıysa (ve siteye dışarıdan geldiyse) kayıtlı dile yönlendirilir.
+- Umami olayları: `dil-degisimi`, `tema-degisimi`, `arama` (yalnız sonuç var/yok), `liste-katil`, `saat-modeli` (model kimliği), `tam-ekran`.
 - Arama: istemci tarafı dizin (`/assets/search-<dil>.json`, derlemede üretilir), TR karakter ve büyük/küçük harf duyarsız.
 - HSTS `max-age=86400` ile başladı (8 Ekim 2026, canlıda doğrulandı). **Bir hafta sorun çıkmazsa `31536000` yap** ve tarihi buraya yaz. includeSubDomains/preload yok.
 

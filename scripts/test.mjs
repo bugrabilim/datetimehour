@@ -39,6 +39,14 @@ for (const f of htmlFiles) {
   check(/class="rozet"/.test(h) && /width="164" height="28"/.test(h), `${name}: Bumba rozeti yok`);
   check(/data-theme-toggle/.test(h) && /data-search-open/.test(h), `${name}: tema ya da arama düğmesi yok`);
   check(/Content-Security-Policy/.test(h), `${name}: CSP yok`);
+  if (!err && (name === "/index.html" || name === "/en/index.html" || /\/(dunya-saatleri|world-clock)\/[a-z-]+\/index\.html$/.test(name) && !/\/(dunya-saatleri|world-clock)\/index\.html$/.test(name))) {
+    const slides = [...h.matchAll(/data-model="([a-z-]+)" data-name="([^"]+)"/g)];
+    check(slides.length >= 10, `${name}: saat modeli sayısı ${slides.length} < 10`);
+    check(new Set(slides.map((m) => m[1])).size === slides.length, `${name}: tekrarlanan model kimliği`);
+    check((h.match(/data-dot="\d+"/g) || []).length === slides.length, `${name}: nokta sayısı model sayısıyla uyuşmuyor`);
+    check(/data-fullscreen/.test(h) && /data-nav="-1"/.test(h) && /data-nav="1"/.test(h) && /data-pref="h12"/.test(h), `${name}: karusel düğmeleri eksik`);
+    check(/data-live="calendar"/.test(h) && /data-live="flip"/.test(h) && /data-live="words"/.test(h) && /data-live="rings"/.test(h), `${name}: özel model türleri eksik`);
+  }
   if (!err) {
     check(/rel="canonical" href="https:\/\//.test(h), `${name}: canonical yok`);
     for (const l of ["tr", "en", "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
