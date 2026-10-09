@@ -58,7 +58,7 @@ for (const f of htmlFiles) {
     check(/data-live="calendar"/.test(h) && /data-live="flip"/.test(h) && /data-live="words"/.test(h) && /data-live="rings"/.test(h), `${name}: özel model türleri eksik`);
   }
   if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name))) {
-    check(/data-globe/.test(h) && /globe\.js/.test(h) && /"globe":\{"land":"\/assets\/globe-land\.json\?v=/.test(h), `${name}: dünya küresi eksik`);
+    check(/data-globe/.test(h) && /globe\.js/.test(h) && /"globe":\{"earth":"\/assets\/earth\.jpg\?v=/.test(h) && /"places":"\/assets\/places\.json/.test(h) && /data-globe-attr/.test(h) && /data-globe-zoom="in"/.test(h), `${name}: dünya küresi eksik`);
     check(!/data-upcoming/.test(h) && !/id="facts"/.test(h) && !/data-world="grid"/.test(h) && !/<details>/.test(h) && !/"FAQPage"/.test(h), `${name}: ana sayfada kaldırılan bölüm duruyor`);
     check(/<h1 class="sr-only">/.test(h), `${name}: ana sayfa H1 gizli olmalı`);
   }
@@ -69,23 +69,23 @@ for (const f of htmlFiles) {
   if (/\/(takvim|calendar)\/\d{4}\/index\.html$/.test(name)) {
     check(/data-upcoming/.test(h), `${name}: yaklaşan günler eksik`);
     check((h.match(/<table class="ymonth"/g) || []).length === 12, `${name}: 12 ay tablosu yok`);
-    check(/class="events-table"/.test(h) && /d-holiday/.test(h) && /d-half/.test(h) && /class="section faq-more"/.test(h) && !/"FAQPage"/.test(h), `${name}: takvim içeriği eksik`);
+    check(/class="events-table"/.test(h) && /d-holiday/.test(h) && /d-half/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: takvim içeriği eksik`);
     check(/data-year="\d{4}"/.test(h) && /calendar\.js/.test(h), `${name}: takvim betiği/yılı eksik`);
   }
   if (/\/(saat-farki|time-difference)\/istanbul-[a-z-]+\/index\.html$/.test(name)) {
-    check(/data-pair-table/.test(h) && (h.match(/data-live="time"/g) || []).length === 2 && /data-ref="Europe\/Istanbul"/.test(h) && /class="section faq-more"/.test(h) && !/"FAQPage"/.test(h), `${name}: saat farkı sayfası eksik`);
+    check(/data-pair-table/.test(h) && (h.match(/data-live="time"/g) || []).length === 2 && /data-ref="Europe\/Istanbul"/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: saat farkı sayfası eksik`);
   }
   if (/\/(saat-cevirici|time-converter)\/index\.html$/.test(name)) check(/data-converter/.test(h) && /data-cv-from/.test(h) && /"cities"/.test(h), `${name}: çevirici eksik`);
   if (/\/(toplanti-planlayici|meeting-planner)\/index\.html$/.test(name)) check(/data-planner/.test(h) && /data-pl-table/.test(h) && /"cities"/.test(h), `${name}: planlayıcı eksik`);
-  if (/\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && /class="section faq-more"/.test(h) && !/"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
+  if (/\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
   if (/\/(namaz-vakitleri|prayer-times)\/([a-z]+\/)?index\.html$/.test(name)) {
     const hub = /\/(namaz-vakitleri|prayer-times)\/index\.html$/.test(name);
-    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /class="section faq-more"/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
+    check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
     if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-place-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
     else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
   }
   if (/\/(doga|nature)\/index\.html$/.test(name)) {
-    check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-place-geo/.test(h) && /class="section faq-more"/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
+    check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-place-geo/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
     check(h.indexOf("data-nature") < h.indexOf("<h1"), `${name}: mevsim çarkı sayfanın en üstünde olmalı`);
   }
   if (/\/(hava-durumu|weather)\/index\.html$/.test(name)) {
@@ -93,7 +93,7 @@ for (const f of htmlFiles) {
   }
   const toolMatch = /\/(kronometre|geri-sayim|alarm|pomodoro|stopwatch|countdown)\/index\.html$/.exec(name);
   if (toolMatch) {
-    check(/data-tool="(stopwatch|countdown|alarm|pomodoro)"/.test(h) && /tools\.js/.test(h) && /data-fs/.test(h) && /"WebApplication"/.test(h) && /class="section faq-more"/.test(h) && !/"FAQPage"/.test(h), `${name}: araç yapısı eksik`);
+    check(/data-tool="(stopwatch|countdown|alarm|pomodoro)"/.test(h) && /tools\.js/.test(h) && /data-fs/.test(h) && /"WebApplication"/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: araç yapısı eksik`);
   }
   if (!err && !embed) {
     check(/rel="canonical" href="https:\/\//.test(h), `${name}: canonical yok`);
@@ -240,6 +240,7 @@ check((css.match(/\.stage\.fs-on\[data-fs-color=/g) || []).length >= 12, "en az 
 const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
 for (const s of ["Strict-Transport-Security", "max-age=86400", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
+check(ng.split("https://tile.openstreetmap.org").length === 3, "nginx.conf: img-src OpenStreetMap karoları iki konumda olmalı");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");
 

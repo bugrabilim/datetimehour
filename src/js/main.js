@@ -56,17 +56,16 @@
     m.addEventListener("keydown", function (e) { if (e.key === "Escape") { m.removeAttribute("open"); var sm = m.querySelector("summary"); if (sm) sm.focus(); } });
   });
 
-  /* ---------- Saat kaynağı bilgi penceresi ---------- */
-  (function infoDialog() {
-    var dlg = doc.getElementById("info-dialog"), open = doc.querySelector("[data-info-open]");
-    if (!dlg || !open) return;
-    function show() { if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", ""); }
+  /* ---------- Bilgi pencereleri ("i" düğmeleri: saat kaynağı, küre) ---------- */
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-info-open]"), function (open) {
+    var dlg = doc.getElementById(open.getAttribute("data-info-open"));
+    if (!dlg) return;
     function hide() { if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open"); open.focus(); }
-    open.addEventListener("click", show);
+    open.addEventListener("click", function () { if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", ""); });
     dlg.addEventListener("click", function (e) {
       if (e.target === dlg || (e.target.closest && e.target.closest("[data-info-close]"))) hide();
     });
-  })();
+  });
 
   /* ---------- Menü (dar ekranda açılır) ---------- */
   (function navMenu() {
@@ -76,6 +75,7 @@
     btn.addEventListener("click", function (e) { e.stopPropagation(); set(!nav.classList.contains("is-open")); });
     doc.addEventListener("click", function (e) { if (!nav.contains(e.target) && e.target !== btn) set(false); });
     doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("is-open")) { set(false); btn.focus(); } });
+    Array.prototype.forEach.call(nav.querySelectorAll("[data-search-open]"), function (b) { b.addEventListener("click", function () { set(false); }); });
   })();
 
   /* ---------- Tema ---------- */

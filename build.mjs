@@ -3,7 +3,6 @@ import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
-import { landMask } from "./lib/landmask.mjs";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
@@ -93,10 +92,21 @@ for (const [name, from] of [
   write(`assets/${name}`, buf);
   ASSETS[name] = `/assets/${name}?v=${hash(buf)}`;
 }
-/* Küre için kara maskesi (Natural Earth 1:110m, kamu malı; derlemede repodaki veriden üretilir) */
-const LAND_JSON = JSON.stringify(landMask(readJson("src/data/land-110m.json").rings));
-write("assets/globe-land.json", LAND_JSON);
-const LAND_URL = `/assets/globe-land.json?v=${hash(LAND_JSON)}`;
+/* Küre: Natural Earth kabartmalı dünya dokusu (kamu malı) ve yer adları (Natural Earth 1:10m Populated Places, kamu malı;
+   src/data/places.json, saat dilimiyle birlikte). Hepsi repodaki dosyalardan; derlemede dış veri indirilmez. */
+const EARTH_BUF = fs.readFileSync(path.join(SRC, "assets/earth.jpg"));
+write("assets/earth.jpg", EARTH_BUF);
+const EARTH_URL = `/assets/earth.jpg?v=${hash(EARTH_BUF)}`;
+const PLACES_SRC = readJson("src/data/places.json");
+const PLACES_JSON = JSON.stringify({ tz: PLACES_SRC.tz, p: PLACES_SRC.p.map((r) => r.slice(0, 3)) });
+write("assets/places.json", PLACES_JSON);
+const PLACES_URL = `/assets/places.json?v=${hash(PLACES_JSON)}`;
+const PLACE_NAMES_URL = {};
+for (const l of LANGS) {
+  const j = JSON.stringify(PLACES_SRC.names[l] || PLACES_SRC.names.en);
+  write(`assets/places-${l}.json`, j);
+  PLACE_NAMES_URL[l] = `/assets/places-${l}.json?v=${hash(j)}`;
+}
 for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "og.png"]) {
   fs.copyFileSync(path.join(SRC, "assets", f), path.join(OUT, f));
 }
@@ -106,7 +116,7 @@ const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
   "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com",
-  "img-src 'self' data: https://bumbagroup.com",
+  "img-src 'self' data: https://bumbagroup.com https://tile.openstreetmap.org",
   "style-src 'self'",
   "font-src 'self'",
   "form-action 'self' https://bumbagroup.com",
@@ -169,6 +179,10 @@ const ringsHtml = (tz) =>
     )
     .join("")}</svg><div class="rings-text">${pDigital(tz, " clock-sm")}</div></div>`;
 
+/* Hava durumlu saatler: içerik weather-core.js'te doldurulur (konum: şehir sayfasında şehir, ana sayfada kayıtlı konum).
+   Yalnız bu modeller görünür olunca Open-Meteo'ya gidilir; gömme widget'ında yoktur (kayıtlı konum orada yok). */
+const wxBlock = (kind) => `<div class="wxc wxc-${kind}" data-wxc="${kind}" aria-live="polite"><p class="wxc-msg">&nbsp;</p></div>`;
+
 // Her model: id, sınıf ve içerik. Sıra, kaydırma sırasıdır.
 const MODELS = [
   { id: "stack", cls: "s-stack", html: (tz) => analogSvg({ tz, size: "st" }) + `<div class="stack-text">${pDigital(tz, " clock-md")}</div>` },
@@ -184,12 +198,17 @@ const MODELS = [
   { id: "flip", cls: "s-flip", html: (tz) => flipHtml(tz) + pDate(tz) },
   { id: "words", cls: "s-words", html: (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz) },
   { id: "rings", cls: "s-rings", html: (tz) => ringsHtml(tz) + pDate(tz) },
+  { id: "wx-analog", cls: "s-analog-date s-wx", wx: true, html: (tz) => analogSvg({ tz, size: "md" }) + srTime(tz) + wxBlock("line") },
+  { id: "wx-digital", cls: "s-digital s-wx", wx: true, html: (tz) => pDigital(tz) + pDate(tz) + wxBlock("line") },
+  { id: "wx-stack", cls: "s-stack s-wx", wx: true, html: (tz) => analogSvg({ tz, size: "st" }) + `<div class="stack-text">${pDigital(tz, " clock-md")}</div>` + wxBlock("card") },
+  { id: "wx-forecast", cls: "s-digital s-wx", wx: true, html: (tz) => pDigital(tz, " clock-md") + pDate(tz) + wxBlock("hours") },
   { id: "bigdate", cls: "s-bigdate", html: (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}` },
 ];
 
 const PALETTES = ["auto", "night", "paper", "amber", "green", "blue", "purple", "red", "cyan", "sunset", "forest", "ocean", "rose", "mono"];
 const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
 const ICON_INFO = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="0.6" fill="currentColor"/></svg>`;
+const ICON_GLOBE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>`;
 const ICON_CLOUD = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 8.5 4.5 4.5 0 0 1 17.5 18H7z"/></svg>`;
 const ICON_SOUND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>`;
 
@@ -198,7 +217,7 @@ function prefControls(t) {
   return `<div class="seg" role="group" aria-label="${esc(t.client.formatLabel)}"><button type="button" class="toggle" data-fmt="24" aria-pressed="true">${esc(t.client.format24)}</button><button type="button" class="toggle" data-fmt="12" aria-pressed="false">${esc(t.client.format12)}</button></div><button type="button" class="toggle" data-pref="sec" aria-pressed="false">${esc(t.client.seconds)}</button>`;
 }
 
-function clockStage(lang, { tz = "" } = {}) {
+function clockStage(lang, { tz = "", place = null } = {}) {
   const t = I[lang];
   const s = t.stage;
   const total = MODELS.length;
@@ -211,7 +230,8 @@ function clockStage(lang, { tz = "" } = {}) {
   ).join("");
   const swatches = PALETTES.map((id) => `<button type="button" class="swatch sw-${id}" data-color="${id}" aria-pressed="false" aria-label="${esc(t.client.colorNames[id])}" title="${esc(t.client.colorNames[id])}"></button>`).join("");
   const tickBtn = `<button type="button" class="icon-btn" data-tick aria-pressed="false" aria-label="${esc(t.client.tick)}" title="${esc(t.client.tick)}">${ICON_SOUND}</button>`;
-  return `<section class="stage" data-carousel aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
+  const wxAttr = place ? ` data-wx-name="${esc(place.name)}" data-wx-lat="${place.lat}" data-wx-lon="${place.lon}"` : "";
+  return `<section class="stage" data-carousel${wxAttr} aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
   <h2 id="clock-h" class="sr-only">${esc(s.label)}</h2>
   <div class="stage-track" data-track tabindex="0" aria-label="${esc(s.hint)}">${slides}</div>
   <p class="sr-only" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
@@ -233,7 +253,7 @@ function clockStage(lang, { tz = "" } = {}) {
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
 </section>
 <div class="source-note">
-  <button type="button" class="icon-btn info-btn" data-info-open aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
+  <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
   <noscript><p class="meta source-line">${esc(s.source)}</p></noscript>
   <dialog class="info-dialog" id="info-dialog" aria-labelledby="info-title">
     <h2 id="info-title">${esc(s.infoTitle)}</h2>
@@ -266,10 +286,7 @@ function addFaq(lang, id, title, href, items) {
     g.items.push(it);
     searchEntries[lang].push({ t: it.q, u: `${ROUTES[lang].faq}#${id}`, d: it.a, k: `sss faq ${title}` });
   }
-  return faqMore(lang, id);
-}
-function faqMore(lang, id) {
-  return `<section class="section faq-more"><div class="wrap"><p><a href="${ROUTES[lang].faq}#${id}">${esc(I[lang].faqPage.more)} ${ARROW(lang)}</a></p></div></section>`;
+  return "";
 }
 
 function crumbs(lang, trail) {
@@ -287,7 +304,6 @@ function listForm(lang, pagePath) {
   const url = abs(pagePath);
   return `<section class="list-box" id="liste" aria-labelledby="liste-h">
   <h2 id="liste-h">${esc(l.heading)}</h2>
-  <p>${esc(l.lead)}</p>
   <p class="form-msg ok" id="liste-tamam" role="status">${esc(l.ok)}</p>
   <p class="form-msg err" id="liste-hata" role="alert">${esc(l.err)}</p>
   <form action="https://bumbagroup.com/api/liste/katil" method="post">
@@ -296,8 +312,8 @@ function listForm(lang, pagePath) {
     <input type="hidden" name="kaynak" value="${esc(url)}">
     <input type="hidden" name="donus" value="${esc(url)}">
     <div class="field">
-      <label for="liste-eposta">${esc(l.emailLabel)}</label>
-      <input id="liste-eposta" type="email" name="eposta" required autocomplete="email">
+      <label for="liste-eposta" class="sr-only">${esc(l.emailLabel)}</label>
+      <input id="liste-eposta" type="email" name="eposta" required autocomplete="email" placeholder="${esc(l.emailLabel)}">
     </div>
     <div class="check">
       <input id="liste-riza" type="checkbox" name="riza" value="on" required>
@@ -421,13 +437,15 @@ ${ld}
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
-    <nav class="nav" id="site-nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("today", u.today)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${navLink("faq", u.faq)}</nav>
-    <div class="tools">
-      <button type="button" class="icon-btn" data-search-open aria-haspopup="dialog" aria-label="${esc(u.searchOpen)}">${ICON_SEARCH}</button>
-      ${langSwitch}
-      <button type="button" class="icon-btn" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}</button>
-      <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>
+    <div class="menu" id="site-nav">
+      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("today", u.today)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${navLink("faq", u.faq)}</nav>
+      <div class="tools">
+        <button type="button" class="icon-btn" data-search-open aria-haspopup="dialog" aria-label="${esc(u.searchOpen)}" title="${esc(u.searchOpen)}">${ICON_SEARCH}</button>
+        ${langSwitch}
+        <button type="button" class="icon-btn" data-theme-toggle aria-label="${esc(u.themeToggle)}" title="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}</button>
+      </div>
     </div>
+    <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>
   </div>
 </header>
 <main id="main">
@@ -440,21 +458,8 @@ ${isError ? "" : listForm(lang, p.path)}
       ${badge(lang)}
       <p>${esc(u.copyright)}</p>
       ${isError ? "" : `<p>${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
+      <p><a href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a></p>
     </div>
-    <nav aria-label="${esc(u.footerNav)}" class="footer-sign">
-      <ul class="footer-nav">
-        <li><a href="${ROUTES[lang].home}">${esc(u.home)}</a></li>
-        <li><a href="${ROUTES[lang].today}">${esc(u.today)}</a></li>
-        <li><a href="${ROUTES[lang].world}">${esc(u.world)}</a></li>
-        <li><a href="${ROUTES[lang].prayer}">${esc(u.prayer)}</a></li>
-        <li><a href="${ROUTES[lang].nature}">${esc(u.nature)}</a></li>
-        <li><a href="${ROUTES[lang].weather}">${esc(u.weather)}</a></li>
-        <li><a href="${yearPath(lang, BUILD_YEAR)}">${esc(u.calendar)}</a></li>
-        <li><a href="${ROUTES[lang].tools}">${esc(u.tools)}</a></li>
-        <li><a href="${ROUTES[lang].faq}">${esc(u.faq)}</a></li>
-        <li><a href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a></li>
-      </ul>
-    </nav>
   </div>
 </footer>
 ${searchDialog(lang)}
@@ -526,8 +531,22 @@ function buildHome(lang) {
 <section class="section globe-sec" aria-label="${esc(h.globeLabel)}">
   <div class="wrap">
     <figure class="globe" data-globe>
-      <canvas role="img" aria-label="${esc(h.globeLabel)}" width="560" height="560"></canvas>
-      <figcaption class="meta">${esc(h.globeCaption)}</figcaption>
+      <div class="globe-view">
+        <canvas role="img" aria-label="${esc(h.globeLabel)}" width="560" height="560"></canvas>
+        <a class="globe-attr" data-globe-attr href="https://www.openstreetmap.org/copyright" rel="noopener" hidden>© OpenStreetMap contributors</a>
+      </div>
+      <figcaption class="globe-bar">
+        <button type="button" class="icon-btn" data-globe-zoom="out" aria-label="${esc(h.zoomOut)}" title="${esc(h.zoomOut)}">−</button>
+        <button type="button" class="icon-btn info-btn" data-info-open="globe-info" aria-haspopup="dialog" aria-label="${esc(h.globeInfo)}" title="${esc(h.globeInfo)}">${ICON_INFO}</button>
+        <button type="button" class="icon-btn" data-globe-zoom="in" aria-label="${esc(h.zoomIn)}" title="${esc(h.zoomIn)}">+</button>
+        <button type="button" class="icon-btn globe-reset" data-globe-reset aria-label="${esc(h.resetView)}" title="${esc(h.resetView)}" hidden>${ICON_GLOBE}</button>
+        <noscript><span class="meta">${esc(h.globeCaption)}</span></noscript>
+      </figcaption>
+      <dialog class="info-dialog" id="globe-info" aria-labelledby="globe-info-title">
+        <h2 id="globe-info-title">${esc(h.globeTitle)}</h2>
+        <p class="meta">${esc(h.globeCaption)}</p>
+        <button type="button" class="btn" data-info-close>${esc(t.stage.infoClose)}</button>
+      </dialog>
     </figure>
   </div>
 </section>`;
@@ -554,7 +573,7 @@ function buildHome(lang) {
   MODELS.forEach((m) => e.push({ t: t.stage.models[m.id], u: `${pagePath}#model-${m.id}`, d: t.stage.label, k: "saat model clock style" }));
   e.push({ t: h.globeLabel, u: pagePath, d: h.globeCaption, k: "dünya küre gece gündüz meridyen saat dilimi globe earth day night time zone meridian" });
   e.push({ t: t.list.heading, u: pagePath + "#liste", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
-  const globe = { land: LAND_URL, cities: GLOBE_CITIES.map((k) => CITIES.find((c) => c.key === k)).map((c) => ({ n: c[lang].name, lat: c.lat, lon: c.lon, tz: c.tz })) };
+  const globe = { earth: EARTH_URL, places: PLACES_URL, names: PLACE_NAMES_URL[lang], cities: CITIES.map((c) => ({ n: c[lang].name, lat: c.lat, lon: c.lon, tz: c.tz, ...(GLOBE_CITIES.includes(c.key) ? { m: 1 } : {}) })) };
   return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js", "globe.js"], clientExtra: { globe } };
 }
 
@@ -612,7 +631,7 @@ function buildCity(lang, c) {
     ${crumbs(lang, trail)}
     <h1>${esc(tpl(ct.h1, v))}</h1>
     <p class="lead">${esc(tpl(ct.lead, v))} ${esc(tpl(c.dst ? ct.dstYes : ct.dstNo, v))}</p>
-    ${clockStage(lang, { tz: c.tz })}
+    ${clockStage(lang, { tz: c.tz, place: { name: n.name, lat: c.lat, lon: c.lon } })}
   </div>
 </section>
 <section class="section" aria-label="${esc(ct.liveOffset)}">
@@ -1354,7 +1373,7 @@ function buildEmbedGen(lang) {
   const t = I[lang];
   const s = t.embedgen;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].embed }];
-  const modelOpts = MODELS.map((m) => `<option value="${m.id}">${esc(t.stage.models[m.id])}</option>`).join("");
+  const modelOpts = MODELS.filter((m) => !m.wx).map((m) => `<option value="${m.id}">${esc(t.stage.models[m.id])}</option>`).join("");
   const cityOpts = `<option value="">${esc(s.cityLocal)}</option>${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
   const inner = {
     hero: `<section class="tool" data-embedgen aria-labelledby="tool-h">
@@ -1582,7 +1601,7 @@ function buildPrayerCity(lang, prov) {
 /* Gömülü widget sayfası: yalnız seçilen saat modeli, başlık ve alt bilgi (indekslenmez) */
 function embedFramePage(lang) {
   const t = I[lang];
-  const slides = MODELS.map((m) => `<section class="slide ${m.cls}" data-model="${m.id}" aria-hidden="true">${m.html("")}</section>`).join("");
+  const slides = MODELS.filter((m) => !m.wx).map((m) => `<section class="slide ${m.cls}" data-model="${m.id}" aria-hidden="true">${m.html("")}</section>`).join("");
   const umami = UMAMI_ID ? `<script defer src="https://istatistik.bumba.tr/script.js" data-website-id="${esc(UMAMI_ID)}" data-domains="${esc(HOST)}"></script>` : "";
   const pageCfg = { locale: t.locale, t: { ...t.client }, cities: clientCities(lang), cal: { months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt } };
   return `<!doctype html>

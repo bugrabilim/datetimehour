@@ -192,7 +192,12 @@
     "upcomingAll": "İllik təqvimə bax",
     "upcomingNone": "Yaxınlaşan gün tapılmadı.",
     "globeLabel": "Fırlanan yer kürəsi: gecə və gündüz, saat qurşağı meridianları və böyük şəhərlərin yerli saatı",
-    "globeCaption": "İşıqlı tərəf gündüz, qaranlıq tərəf gecədir. Xətlər 15°-lik saat qurşağı meridianlarıdır (UTC fərqi ilə); şəhərlərin yanında yerli saat yazılır. Kürəni sürüşdürərək fırlada bilərsiniz."
+    "globeCaption": "İşıqlı tərəf gündüz, qaranlıq tərəf gecədir. Xətlər 15°-lik saat qurşağı meridianlarıdır (UTC fərqi ilə); qırmızı xətt sıfır nöqtəsi, yəni Qrinviç meridianıdır (UTC). Şəhərlərin yanında yerli saat yazılır. Kürəni sürüşdürərək fırlada, iki barmaqla, siçanın təkəri ilə və ya + və − düymələri ilə böyüdə bilərsiniz. Yaxınlaşdıqca o ərazidəki yerlərin yerli saatı da görünür. Daha da yaxınlaşanda OpenStreetMap xəritəsinə keçilir (küçə səviyyəsinə qədər), meridianın və meridian hissələrinin uzunluğu yazılır. Xəritə kafelləri həmin anda OpenStreetMap-dən yüklənir (© OpenStreetMap iştirakçıları); kürənin teksturu Natural Earth-dəndir (ictimai mülkiyyət). İki dəfə toxunmaq böyüdür.",
+    "globeTitle": "Yer kürəsi",
+    "globeInfo": "Kürə haqqında məlumat",
+    "zoomIn": "Böyüt",
+    "zoomOut": "Kiçilt",
+    "resetView": "Bütün dünya"
   },
   "world": {
     "title": "Dünya saatları: şəhərlərdə indiki vaxt | Saat Tarih",
@@ -261,7 +266,8 @@
         "ul": [
           "**Saat və tarix:** Cihazınızın saatı və saat qurşağı yalnız brauzerinizdə oxunur və hesablanır. Bu məlumatlar serverə göndərilmir və saxlanılmır.",
           "**Məkan (namaz vaxtları):** Namaz vaxtları səhifəsində “Məkanımı istifadə et” seçsəniz, brauzeriniz məkanınızı yalnız cihazınızda vaxtların hesablanması üçün istifadə edir. Koordinatlar serverə göndərilmir və statistikaya düşmür; son seçiminiz brauzerinizin yerli yaddaşında qalır.",
-          "**Hava:** Hava səhifəsində (və ya tam ekranda havanı açsanız) seçdiyiniz əyalət və ya məkanın yaxınlaşdırılmış koordinatları (təxminən 1 km dəqiqliklə) birbaşa brauzerinizdən məlumatı təmin edən Open-Meteo-ya (api.open-meteo.com) göndərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur.",
+          "**Hava:** Hava səhifəsində (və ya tam ekranda havanı açsanız, yaxud havalı saat görünüşünü seçsəniz) seçdiyiniz əyalət və ya məkanın yaxınlaşdırılmış koordinatları (təxminən 1 km dəqiqliklə) birbaşa brauzerinizdən məlumatı təmin edən Open-Meteo-ya (api.open-meteo.com) göndərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur.",
+          "**Xəritə (kürə):** Ana səhifədəki kürəni müəyyən səviyyədən çox yaxınlaşdırsanız, xəritə kafelləri birbaşa brauzerinizə OpenStreetMap serverindən (tile.openstreetmap.org) yüklənir; bu zaman IP ünvanınız və baxdığınız ərazinin kafel ünvanları OpenStreetMap Fonduna çatır. Səhifə ilk açılanda və kürə uzaq olanda bu sorğu göndərilmir. Saat Tarih serveri bunları görmür; OpenStreetMap-in öz məxfilik şərtləri tətbiq olunur.",
           "**E-poçt siyahısı forması:** Daxil etdiyiniz e-poçt ünvanı, qeyd xanası ilə verdiyiniz razılıq, seçilmiş dil və formanın yerləşdiyi səhifə Bumba Group-un ortaq siyahı xidməti (bumbagroup.com) tərəfindən emal edilir. Qeydiyyat ikimərhələli təsdiqlə aparılır: təsdiq e-məktubundakı keçidə klikləməyənədək siyahıya əlavə edilmirsiniz, hər e-məktubda isə bir kliklə abunəlikdən çıxmaq üçün keçid var. Ətraflı məlumat üçün [ortaq məlumatlandırma bildirişinə](https://bumbagroup.com/liste/aydinlatma?dil=en) baxın.",
           "**Server jurnalları:** Saytı yerləşdirən server hər sorğu üçün IP ünvanı, brauzer məlumatları, sorğulanan səhifə və vaxtdan ibarət standart giriş jurnalı aparır. Bu jurnallar insanların profilini yaratmaq üçün deyil, yalnız təhlükəsizlik və nasazlıqların aradan qaldırılması üçün istifadə olunur.",
           "**Ziyarət statistikası:** Öz serverimizdə işləyən Umami səhifə baxışlarını və bir neçə əməliyyatı (dil dəyişikliyi, mövzu dəyişikliyi, axtarışın nəticə verib-vermədiyi, siyahıya qoşulma) sayır. Umami kukilərdən istifadə etmir. Axtarışa yazdığınız sözlər və e-poçt ünvanınız statistika sisteminə göndərilmir.",
@@ -410,6 +416,10 @@
       "flip": "Vərəqli saat",
       "words": "Sözlə saat",
       "rings": "Halqalı saat",
+      "wx-analog": "Analoq və hava",
+      "wx-digital": "Rəqəmsal və hava",
+      "wx-stack": "Analoq, rəqəmsal və hava",
+      "wx-forecast": "Rəqəmsal və saatlıq proqnoz",
       "bigdate": "Böyük tarix",
       "stack": "Analoq və altında rəqəmsal"
     },
@@ -1491,7 +1501,6 @@
     "lead": "Saytın bütün səhifələrindəki suallar burada mövzulara görə toplanıb. Hər başlığın altındakı keçid uyğun səhifəni açır.",
     "toc": "Mövzular",
     "open": "Səhifəyə keç",
-    "more": "Bu səhifə ilə bağlı tez-tez verilən suallar",
     "general": "Ümumi",
     "countdowns": "Hazır geri sayımlar",
     "calendar": "Təqvim, rəsmi bayramlar və bayram günləri"

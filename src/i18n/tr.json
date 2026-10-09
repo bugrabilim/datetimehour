@@ -192,7 +192,12 @@
     "upcomingAll": "Yıllık takvimi gör",
     "upcomingNone": "Yaklaşan gün bulunamadı.",
     "globeLabel": "Dönen dünya küresi: gündüz ve gece bölgeleri, saat dilimi meridyenleri ve büyük şehirlerin yerel saati",
-    "globeCaption": "Aydınlık taraf gündüz, karanlık taraf gece. Çizgiler 15°'lik saat dilimi meridyenleri (UTC farkıyla); şehirlerin yanında yerel saat yazar. Küreyi sürükleyerek çevirebilirsiniz."
+    "globeCaption": "Aydınlık taraf gündüz, karanlık taraf gece. Çizgiler 15°'lik saat dilimi meridyenleridir (UTC farkıyla); kırmızı çizgi sıfır noktası, yani Greenwich meridyenidir (UTC). Şehirlerin yanında yerel saat yazar. Küreyi sürükleyerek çevirebilir; iki parmakla, fare tekerleğiyle ya da + ve − düğmeleriyle yakınlaştırabilirsiniz. Yakınlaştıkça o bölgedeki yerlerin yerel saati de görünür. Daha da yakınlaşınca OpenStreetMap haritasına geçilir (sokak düzeyine kadar), meridyenin ve meridyen parçalarının boylamı yazılır. Harita karoları o anda OpenStreetMap'ten indirilir (© OpenStreetMap katkıda bulunanlar); küre dokusu Natural Earth'tendir (kamu malı). Çift dokunuş yakınlaştırır.",
+    "globeTitle": "Dünya küresi",
+    "globeInfo": "Küre hakkında bilgi",
+    "zoomIn": "Yakınlaştır",
+    "zoomOut": "Uzaklaştır",
+    "resetView": "Tüm dünya"
   },
   "world": {
     "title": "Dünya Saatleri: Şehirlerde Saat Kaç? | Saat Tarih",
@@ -261,7 +266,8 @@
         "ul": [
           "**Saat ve tarih:** Cihazınızın saati ve saat diliminiz yalnızca tarayıcınızda okunur ve hesaplanır. Sunucuya gönderilmez, kaydedilmez.",
           "**Konum (namaz vakitleri):** Namaz vakitleri sayfasında \"Konumumu kullan\" derseniz tarayıcınız konumunuzu yalnızca cihazınızda vakit hesabı için kullanır. Koordinatlar sunucuya gönderilmez ve istatistiklere girmez; son seçiminiz tarayıcınızın yerel depolamasında kalır.",
-          "**Hava durumu:** Hava durumu sayfasında (ya da tam ekranda hava durumunu açarsanız) seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla), veriyi sağlayan Open-Meteo'ya (api.open-meteo.com) tarayıcınızdan doğrudan gönderilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir.",
+          "**Hava durumu:** Hava durumu sayfasında (ya da tam ekranda hava durumunu açarsanız ya da hava durumlu bir saat modelini seçerseniz) seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla), veriyi sağlayan Open-Meteo'ya (api.open-meteo.com) tarayıcınızdan doğrudan gönderilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir.",
+          "**Harita (küre):** Ana sayfadaki küreyi belli bir düzeyin ötesine yakınlaştırırsanız harita karoları OpenStreetMap'in sunucusundan (tile.openstreetmap.org) tarayıcınıza doğrudan indirilir; bu sırada IP adresiniz ve baktığınız bölgenin karo adresleri OpenStreetMap Vakfı'na ulaşır. Sayfa ilk açıldığında ve küre uzaktayken bu istek yapılmaz. Saat Tarih sunucusu bunları görmez; OpenStreetMap'in kendi gizlilik koşulları geçerlidir.",
           "**E-posta listesi formu:** Forma yazdığınız e-posta adresi, onay kutusuyla verdiğiniz rıza, seçili dil ve formun bulunduğu sayfa; Bumba Group'un ortak liste servisi (bumbagroup.com) tarafından işlenir. Kayıt çift onaylıdır: onay e-postasındaki bağlantıya tıklamadan listeye eklenmezsiniz. Her e-postada tek tıkla çıkış bağlantısı bulunur. Ayrıntılar için [ortak aydınlatma metnine](https://bumbagroup.com/liste/aydinlatma) bakın.",
           "**Sunucu kayıtları:** Siteyi yayınlayan sunucu, her istek için IP adresi, tarayıcı bilgisi, istenen sayfa ve zaman bilgisini standart erişim kaydı olarak tutar. Bu kayıtlar yalnızca güvenlik ve hata ayıklama amacıyla kullanılır; kişi bazlı profil çıkarmak için kullanılmaz.",
           "**Ziyaret istatistikleri:** Kendi sunucumuzda çalışan Umami ile sayfa görüntülemeleri ve birkaç eylem (dil değişimi, tema değişimi, arama sonucunun bulunup bulunmaması, listeye katılım) sayılır. Umami çerez kullanmaz. Aramaya yazdığınız sözcükler ve e-posta adresiniz istatistik sistemine gönderilmez.",
@@ -410,6 +416,10 @@
       "flip": "Çevirmeli saat",
       "words": "Yazıyla saat",
       "rings": "Halka saat",
+      "wx-analog": "Analog ve hava durumu",
+      "wx-digital": "Dijital ve hava durumu",
+      "wx-stack": "Analog, dijital ve hava durumu",
+      "wx-forecast": "Dijital ve saatlik tahmin",
       "bigdate": "Büyük tarih",
       "stack": "Analog ve altında dijital"
     },
@@ -1491,7 +1501,6 @@
     "lead": "Sitedeki bütün sayfaların soruları burada konu konu toplandı. Her başlığın altındaki bağlantı ilgili sayfayı açar.",
     "toc": "Konular",
     "open": "Sayfaya git",
-    "more": "Bu sayfayla ilgili sıkça sorulan sorular",
     "general": "Genel",
     "countdowns": "Hazır geri sayımlar",
     "calendar": "Takvim, resmi tatiller ve bayramlar"
