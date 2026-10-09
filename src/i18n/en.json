@@ -32,7 +32,9 @@
     "updated": "Last updated",
     "noscript": "JavaScript must be enabled in your browser to see the live clock.",
     "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
-    "logoAlt": "Saat Tarih home"
+    "logoAlt": "Saat Tarih home",
+    "calendar": "Calendar",
+    "tools": "Tools"
   },
   "client": {
     "format24": "24-hour",
@@ -83,7 +85,19 @@
       "oh": "oh",
       "sentence": "It's {h} {m}",
       "oclock": "It's {h} o'clock"
-    }
+    },
+    "syncLabel": "Server time",
+    "syncPending": "Syncing with the server clock…",
+    "syncOk": "Running on server time (±{ms} ms). Your device clock is correct.",
+    "syncAhead": "Running on server time. Your device clock is {s} s ahead.",
+    "syncBehind": "Running on server time. Your device clock is {s} s behind.",
+    "syncOff": "Using your device clock.",
+    "syncFail": "Could not reach the server clock; using your device clock.",
+    "daysLeft": "{n} days left",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "passed": "Passed",
+    "upcomingNone": "No upcoming days found."
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
@@ -105,7 +119,7 @@
     "faq": [
       {
         "q": "How is the time on this site calculated?",
-        "a": "The time is read from your device's system clock and your browser's time zone; nothing is sent to a server. If your device clock is wrong, the site will be wrong too, so keep \"set time automatically\" switched on in your phone or computer settings."
+        "a": "The time is synchronised with the site's server, so it is right even if your device clock is wrong. The time zone is read from your device settings. Synchronisation sends only a few small requests to the server and no personal data. If you turn off the \"Server time\" button, your device clock is used."
       },
       {
         "q": "Does Türkiye use daylight saving time?",
@@ -126,8 +140,20 @@
       {
         "q": "How do I see the clock full screen?",
         "a": "Press the full screen button under the clock. To leave, press the same button or the Esc key. You can keep swiping between styles in full screen too."
+      },
+      {
+        "q": "Does the clock work independently of my device clock?",
+        "a": "Yes. The time is synchronised with the site's server, so it shows the correct time even if your device clock is wrong, and it tells you how far your device clock is off. You can switch back to your device clock with the \"Server time\" button. The time zone is still read from your device settings."
+      },
+      {
+        "q": "Where can I see Turkish public holidays and Ramadan?",
+        "a": "The yearly calendar page shows public holidays, bayram and eve days, kandil nights and the month of Ramadan on one calendar. The \"Upcoming days\" section on the home page tells you how many days are left until the next holiday."
       }
-    ]
+    ],
+    "upcomingHeading": "Upcoming public holidays and special days",
+    "upcomingLead": "The next days on the Turkish calendar.",
+    "upcomingAll": "See the yearly calendar",
+    "upcomingNone": "No upcoming days found."
   },
   "world": {
     "title": "World Clock: Current Time in Cities | Saat Tarih",
@@ -181,7 +207,8 @@
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Email list form:** The email address you enter, the consent you give with the checkbox, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
           "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
-          "**Visit statistics:** Umami, which runs on our own server, counts page views and a few actions (language change, theme change, whether a search found a result, joining the list). Umami does not use cookies. The words you type in search and your email address are not sent to the statistics system."
+          "**Visit statistics:** Umami, which runs on our own server, counts page views and a few actions (language change, theme change, whether a search found a result, joining the list). Umami does not use cookies. The words you type in search and your email address are not sent to the statistics system.",
+          "**Time synchronisation:** To show the time independently of your device clock, your browser sends a few small requests to the site's own server and reads the date header of the reply. These requests only appear in the server's standard access log; nothing extra is sent."
         ]
       },
       {
@@ -210,6 +237,26 @@
             [
               "sth-prefs",
               "Remembers 24-hour or 12-hour display and the seconds setting.",
+              "Until you delete it"
+            ],
+            [
+              "sth-sw",
+              "Remembers the stopwatch state and lap times.",
+              "Until you delete it"
+            ],
+            [
+              "sth-cd",
+              "Remembers the countdown.",
+              "Until you delete it"
+            ],
+            [
+              "sth-alarms",
+              "Remembers the alarms you set.",
+              "Until you delete it"
+            ],
+            [
+              "sth-pomo",
+              "Remembers pomodoro durations and state.",
               "Until you delete it"
             ]
           ]
@@ -272,7 +319,7 @@
     "pages": "Pages",
     "cities": "City pages",
     "about": "About",
-    "aboutText": "The time is read from the visitor's device clock and browser time zone; nothing is sent to a server. Available in Turkish and English. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in Turkish and English. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Clock styles",
@@ -297,6 +344,325 @@
       "words": "Clock in words",
       "rings": "Ring clock",
       "bigdate": "Big date"
+    }
+  },
+  "calendar": {
+    "title": "{year} Calendar: Turkish Public Holidays and Ramadan | Saat Tarih",
+    "description": "{year} Turkish public holidays, Ramadan and Eid al-Adha dates, eve days, kandil nights and the month of Ramadan on one yearly calendar.",
+    "h1": "{year} calendar",
+    "lead": "In {year}, Ramadan runs {ramadan}, Ramazan Bayramı (Eid al-Fitr) is {rb} and Kurban Bayramı (Eid al-Adha) is {kb}. There are {n} public holiday days in the year, {w} of them on weekdays. The eves of the bayrams and of Republic Day are half days.",
+    "legend": "Legend",
+    "legendLabel": "Calendar legend",
+    "types": {
+      "holiday": "Public holiday",
+      "half": "Half day (eve)",
+      "religious": "Religious day or night",
+      "ramadan": "Month of Ramadan",
+      "special": "Special day",
+      "weekend": "Weekend",
+      "today": "Today"
+    },
+    "eventsHeading": "List of days in {year}",
+    "colDate": "Date",
+    "colDay": "Day",
+    "colEvent": "Name",
+    "colType": "Type",
+    "colLeft": "Left",
+    "tableCaption": "Public holidays, religious days and special days in {year}",
+    "yearNav": "Choose a year",
+    "prevYear": "← {year}",
+    "nextYear": "{year} →",
+    "monthLabel": "{month} {year}",
+    "faqHeading": "Frequently asked questions about the {year} calendar",
+    "faqRb": "When is Ramazan Bayramı (Eid al-Fitr) in {year}?",
+    "faqRbA": "Ramazan Bayramı in {year} is {rb}. The eve is {eve} and is a half day.",
+    "faqKb": "When is Kurban Bayramı (Eid al-Adha) in {year}?",
+    "faqKbA": "Kurban Bayramı in {year} is {kb}. The eve is {eve} and is a half day.",
+    "faqRamadan": "When does Ramadan start in {year}?",
+    "faqRamadanA": "Ramadan in {year} starts on {start} and ends on {end}. Laylat al-Qadr (Kadir Gecesi) is the evening of {kadir}.",
+    "faqHolidays": "How many public holidays are there in {year}?",
+    "faqHolidaysA": "There are {n} public holiday days in {year}, {w} of them on weekdays. The eves of Ramazan Bayramı and Kurban Bayramı and 28 October are half days.",
+    "note": "Religious day and night dates follow the Presidency of Religious Affairs (Diyanet) calendar; kandil nights begin on the evening of the listed date. Administrative leave and bridge holidays are not public holidays and are not shown here.",
+    "noYear": "There is no data for this year.",
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "weekdays": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "weekdaysShort": [
+      "Mon",
+      "Tue",
+      "Wed",
+      "Thu",
+      "Fri",
+      "Sat",
+      "Sun"
+    ],
+    "events": {
+      "newYear": "New Year's Day",
+      "apr23": "National Sovereignty and Children's Day",
+      "may1": "Labour and Solidarity Day",
+      "may19": "Commemoration of Atatürk, Youth and Sports Day",
+      "jul15": "Democracy and National Unity Day",
+      "aug30": "Victory Day",
+      "oct28": "Republic Day eve",
+      "oct29": "Republic Day",
+      "ucAylar": "Start of the Three Holy Months",
+      "regaib": "Regaib Kandil",
+      "mirac": "Miraj Kandil",
+      "berat": "Berat Kandil",
+      "ramadanStart": "First day of Ramadan",
+      "kadir": "Laylat al-Qadr (Kadir Gecesi)",
+      "rbEve": "Ramazan Bayramı eve",
+      "rb1": "Ramazan Bayramı, day 1",
+      "rb2": "Ramazan Bayramı, day 2",
+      "rb3": "Ramazan Bayramı, day 3",
+      "kbEve": "Kurban Bayramı eve",
+      "kb1": "Kurban Bayramı, day 1",
+      "kb2": "Kurban Bayramı, day 2",
+      "kb3": "Kurban Bayramı, day 3",
+      "kb4": "Kurban Bayramı, day 4",
+      "hijri": "Islamic New Year",
+      "ashura": "Day of Ashura",
+      "mawlid": "Mawlid Kandil",
+      "mar8": "International Women's Day",
+      "mothers": "Mother's Day",
+      "fathers": "Father's Day",
+      "nov10": "Atatürk Memorial Day",
+      "nov24": "Teachers' Day"
+    },
+    "hubName": "Yearly calendar",
+    "hubDesc": "Public holidays, bayram and eve days, kandil nights and the month of Ramadan.",
+    "projected": "This year's religious dates follow the Diyanet long-term calendar and may change as the year approaches."
+  },
+  "tools": {
+    "hub": {
+      "title": "Clock Tools: Stopwatch, Countdown, Alarm, Pomodoro | Saat Tarih",
+      "description": "Free online stopwatch, countdown timer, alarm and pomodoro timer. No sign-up, no ads; full screen and sound alerts.",
+      "h1": "Clock tools",
+      "lead": "Saat Tarih's tools run in your browser with no sign-up or install. A stopwatch, countdown, alarm and pomodoro timer, all available full screen and in dark mode.",
+      "open": "Open",
+      "cards": {
+        "stopwatch": {
+          "name": "Stopwatch",
+          "desc": "Lap times, best and slowest lap, full screen."
+        },
+        "countdown": {
+          "name": "Countdown",
+          "desc": "By duration or date; time left to New Year and bayram."
+        },
+        "alarm": {
+          "name": "Alarm",
+          "desc": "Time, label, repeat on chosen days and snooze."
+        },
+        "pomodoro": {
+          "name": "Pomodoro",
+          "desc": "Work 25 minutes, rest 5; long break included."
+        }
+      }
+    },
+    "common": {
+      "fullscreen": "Full screen",
+      "exitFullscreen": "Exit full screen",
+      "sound": "Sound alert",
+      "notify": "Allow notifications",
+      "notifyOn": "Notifications on",
+      "notifyDenied": "Notification permission denied",
+      "testSound": "Test sound",
+      "close": "Close",
+      "relatedHeading": "More tools",
+      "pageOpenNote": "This tool only works while the page is open; it will not alert you if you close the tab.",
+      "faqHeading": "Frequently asked questions",
+      "syncNote": "Times run on the server clock, so results are right even if your device clock is wrong.",
+      "toolsHub": "All tools"
+    },
+    "stopwatch": {
+      "title": "Online Stopwatch with Laps and Full Screen | Saat Tarih",
+      "description": "Free online stopwatch: lap times, best and slowest lap, full screen and keyboard shortcuts. Your time is kept even if you reload the page.",
+      "h1": "Online stopwatch",
+      "lead": "The stopwatch is accurate to a hundredth of a second, records lap times and keeps your time even if you reload or close and reopen the page. Space starts and stops it, L adds a lap.",
+      "start": "Start",
+      "stop": "Stop",
+      "resume": "Resume",
+      "lap": "Lap",
+      "reset": "Reset",
+      "lapNo": "Lap",
+      "lapTime": "Lap time",
+      "total": "Total",
+      "best": "Best",
+      "worst": "Slowest",
+      "empty": "No laps yet.",
+      "hint": "Shortcuts: Space start/stop, L lap, R reset.",
+      "lapsCaption": "Lap times",
+      "lapAdded": "Lap {n} added: {t}",
+      "panel": "Stopwatch",
+      "faq": [
+        {
+          "q": "How accurate is the stopwatch?",
+          "a": "Time is measured with the browser's high-resolution clock and shown to a hundredth of a second. Changing your device clock does not affect it."
+        },
+        {
+          "q": "Will I lose my time if I close the page?",
+          "a": "No. The start time of a running stopwatch is stored on this device, so reloading or reopening the page shows the time where it left off. The Reset button clears it."
+        },
+        {
+          "q": "What is a lap and how do I record one?",
+          "a": "A lap is a split time taken without stopping the stopwatch. Press the Lap button or the L key while it runs; each lap time and the total are listed, with the best and slowest laps marked."
+        }
+      ]
+    },
+    "countdown": {
+      "title": "Countdown Timer: By Duration or Date | Saat Tarih",
+      "description": "Free countdown: a minute timer or the time left until a date you choose. Countdown to New Year and bayram, sound alert and full screen.",
+      "h1": "Countdown",
+      "lead": "The countdown works in two ways: a timer that alerts you when your chosen duration ends, or a live display of the days, hours and seconds left until a date you pick. Count down to New Year, a bayram or your own date.",
+      "tabTimer": "Timer",
+      "tabDate": "Until a date",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "presetsLabel": "Quick durations",
+      "presetMin": "{n} min",
+      "start": "Start",
+      "pause": "Pause",
+      "resume": "Resume",
+      "reset": "Reset",
+      "targetLabel": "Target date and time",
+      "targetSet": "Start counting",
+      "quickHeading": "Quick targets",
+      "quickNewYear": "New Year",
+      "remaining": "Time left",
+      "days": "days",
+      "hoursShort": "h",
+      "minutesShort": "min",
+      "secondsShort": "s",
+      "finished": "Time's up!",
+      "finishedDate": "Target time reached!",
+      "invalid": "Enter a valid duration or a date in the future.",
+      "panel": "Countdown",
+      "timerRegion": "Timer",
+      "dateRegion": "Countdown to a date",
+      "faq": [
+        {
+          "q": "What happens when the countdown ends?",
+          "a": "A sound alert plays, the page title flashes and, if you allowed it, a notification appears. Stop the alert with the Close button."
+        },
+        {
+          "q": "How do I count down to a specific date?",
+          "a": "On the Until a date tab, pick the target date and time or press one of the quick targets such as New Year and the bayrams. Days, hours, minutes and seconds update live."
+        },
+        {
+          "q": "Does the countdown keep running if I close the tab?",
+          "a": "The countdown is stored on this device, so reopening the page shows the correct time left. The sound alert cannot play while the page is closed."
+        }
+      ]
+    },
+    "alarm": {
+      "title": "Online Alarm Clock: Repeating and Snooze | Saat Tarih",
+      "description": "Free alarm that runs in your browser: time, label, repeat on chosen weekdays, 5-minute snooze and notifications. The alarm rings while the page is open.",
+      "h1": "Online alarm",
+      "lead": "Choose an alarm time and the days you want; when the time comes a sound plays and a notification appears. Alarms are stored on this device. Because of browser limits, the alarm only rings while this page (tab) stays open.",
+      "timeLabel": "Alarm time",
+      "labelLabel": "Label (optional)",
+      "labelPlaceholder": "E.g. Meeting",
+      "repeatLabel": "Repeat",
+      "once": "Once",
+      "every": "Every day",
+      "weekdays": "Weekdays",
+      "add": "Add alarm",
+      "listHeading": "Your alarms",
+      "none": "No alarms yet.",
+      "delete": "Delete",
+      "enable": "Turn on/off",
+      "ringing": "Alarm ringing",
+      "snooze": "Snooze 5 min",
+      "stop": "Close",
+      "next": "Next alarm",
+      "nextNone": "No active alarm",
+      "wake": "Keep the screen on",
+      "wakeNote": "If the screen turns off the browser may put the tab to sleep; this option stops the screen from turning off while an alarm is set.",
+      "note": "For important wake-ups also set your phone's own alarm; a browser alarm will not ring if the page is closed.",
+      "panel": "Alarm",
+      "dayNames": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "defaultLabel": "Alarm",
+      "faq": [
+        {
+          "q": "Will the alarm ring if I close the tab?",
+          "a": "No. Websites cannot play sound while the page is closed. This page must stay open in a tab and the device must stay awake; the Keep the screen on option helps with that."
+        },
+        {
+          "q": "Does the alarm depend on my device clock?",
+          "a": "No. The alarm is checked against a clock synchronised with the server, so it rings at the right moment even if your device clock is a few seconds off. The time zone comes from your device."
+        },
+        {
+          "q": "How do I snooze the alarm?",
+          "a": "While it rings, press Snooze 5 min and it rings again five minutes later. The Close button silences it; repeating alarms ring again on the next chosen day."
+        }
+      ]
+    },
+    "pomodoro": {
+      "title": "Pomodoro Timer: Work 25 Minutes, Break 5 | Saat Tarih",
+      "description": "Free pomodoro timer: 25 minutes of work, a 5-minute short break and a long break every 4 rounds. Adjustable times, sound alerts and full screen.",
+      "h1": "Pomodoro timer",
+      "lead": "The Pomodoro technique alternates 25 minutes of focused work with 5-minute short breaks, followed by a long break after 4 rounds. The times can be changed and a sound plays at each switch.",
+      "work": "Work",
+      "short": "Short break",
+      "long": "Long break",
+      "start": "Start",
+      "pause": "Pause",
+      "resume": "Resume",
+      "skip": "Skip to next",
+      "reset": "Reset",
+      "settings": "Durations (minutes)",
+      "workMin": "Work",
+      "shortMin": "Short break",
+      "longMin": "Long break",
+      "roundsLabel": "Rounds until long break",
+      "round": "Round {n} of {total}",
+      "completed": "Pomodoros completed: {n}",
+      "phaseDone": "{phase} finished",
+      "panel": "Pomodoro",
+      "phaseLabel": "Current phase",
+      "faq": [
+        {
+          "q": "What is the Pomodoro technique?",
+          "a": "Developed by Francesco Cirillo, it has you work without interruption for 25 minutes and then take a 5-minute break. After four work rounds you take a longer break of 15 to 30 minutes."
+        },
+        {
+          "q": "Can I change the durations?",
+          "a": "Yes. You can set the work, short break and long break lengths and the number of rounds before a long break; the settings are stored on this device."
+        },
+        {
+          "q": "Do the phases switch automatically?",
+          "a": "Yes. When time is up a sound plays and the next phase (work or break) starts by itself. Press Pause to stop."
+        }
+      ]
     }
   }
 }
