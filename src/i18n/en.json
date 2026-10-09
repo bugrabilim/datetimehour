@@ -35,7 +35,9 @@
     "logoAlt": "Saat Tarih home",
     "calendar": "Calendar",
     "tools": "Tools",
-    "langMenu": "Language"
+    "langMenu": "Language",
+    "menu": "Menu",
+    "prayer": "Prayer times"
   },
   "client": {
     "format24": "24-hour",
@@ -90,11 +92,11 @@
     },
     "syncLabel": "Server time",
     "syncPending": "Syncing with the server clock…",
-    "syncOk": "Running on server time (±{ms} ms). Your device clock is correct.",
-    "syncAhead": "Running on server time. Your device clock is {s} s ahead.",
-    "syncBehind": "Running on server time. Your device clock is {s} s behind.",
+    "syncOk": "Your device clock reads {device}: in sync with the server (difference ±{ms} ms).",
+    "syncAhead": "Your device clock reads {device}: {s} s ahead of the server.",
+    "syncBehind": "Your device clock reads {device}: {s} s behind the server.",
     "syncOff": "Using your device clock.",
-    "syncFail": "Could not reach the server clock; using your device clock.",
+    "syncFail": "Could not reach the server clock; showing your device clock ({device}).",
     "daysLeft": "{n} days left",
     "today": "Today",
     "tomorrow": "Tomorrow",
@@ -105,7 +107,8 @@
     "refSame": "Same time as {ref}",
     "weekFound": "{date} falls in week {n} of ISO year {y}.",
     "pickDate": "Pick a date.",
-    "daysShort": "days"
+    "daysShort": "days",
+    "formatLabel": "Time format"
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
@@ -217,6 +220,7 @@
         "h": "What data do we process?",
         "ul": [
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
+          "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
           "**Email list form:** The email address you enter, the consent you give with the checkbox, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
           "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
           "**Visit statistics:** Umami, which runs on our own server, counts page views and a few actions (language change, theme change, whether a search found a result, joining the list). Umami does not use cookies. The words you type in search and your email address are not sent to the statistics system.",
@@ -269,6 +273,11 @@
             [
               "sth-pomo",
               "Remembers pomodoro durations and state.",
+              "Until you delete it"
+            ],
+            [
+              "sth-prayer",
+              "Remembers the province or location you chose last for prayer times.",
               "Until you delete it"
             ]
           ]
@@ -355,8 +364,10 @@
       "flip": "Flip clock",
       "words": "Clock in words",
       "rings": "Ring clock",
-      "bigdate": "Big date"
-    }
+      "bigdate": "Big date",
+      "stack": "Analogue with digital below"
+    },
+    "source": "This clock does not depend on your device: it is read from the Saat Tarih server's NTP-synchronised clock and measured again every 15 minutes."
   },
   "calendar": {
     "title": "{year} Calendar: Turkish Public Holidays and Ramadan | Saat Tarih",
@@ -1175,5 +1186,69 @@
   },
   "embed": {
     "link": "Saat Tarih"
+  },
+  "prayer": {
+    "title": "Prayer Times: Adhan Times for Your Location | Saat Tarih",
+    "description": "Prayer times for your location or any Turkish province: fajr, sunrise, dhuhr, asr, maghrib and isha, the time left to the next prayer and a monthly table.",
+    "h1": "Prayer times",
+    "lead": "Fajr, sunrise, dhuhr, asr, maghrib and isha for your location or a province you choose. The time left to the next prayer runs live on the server-synced clock.",
+    "cityTitle": "{city} Prayer Times: Fajr, Adhan Times | Saat Tarih",
+    "cityDescription": "Today's prayer times for {city}: fajr, sunrise, dhuhr, asr, maghrib and isha, the time left to the next prayer and a monthly prayer table.",
+    "cityH1": "{city} prayer times",
+    "cityLead": "Today's fajr, sunrise, dhuhr, asr, maghrib and isha times for {city}, with the time left to the next prayer. Every day of this month is in the table below.",
+    "chooseLabel": "Province",
+    "useLocation": "Use my location",
+    "locating": "Getting your location…",
+    "locationDenied": "Could not get your location. Check the browser permission or choose a province from the list.",
+    "locationUnsupported": "Your browser does not support location. Choose a province from the list.",
+    "yourLocation": "Your location",
+    "locationNote": "Your location is used only on your device to calculate the times; it is not sent to the server.",
+    "nextIn": "Time left to {name}",
+    "todayHeading": "Today's times",
+    "colPrayer": "Prayer",
+    "colTime": "Time",
+    "monthHeading": "Prayer times for {month} {year}",
+    "colDay": "Day",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "tableCaption": "{place}: prayer times for {month} {year}",
+    "names": {
+      "fajr": "Fajr",
+      "sunrise": "Sunrise",
+      "dhuhr": "Dhuhr",
+      "asr": "Asr",
+      "maghrib": "Maghrib",
+      "isha": "Isha"
+    },
+    "otherPlace": "For another location, go to the prayer times page",
+    "methodHeading": "How are the times calculated?",
+    "method": "The times come from the position of the sun at your latitude and longitude: fajr starts when the sun is 18° below the horizon, isha when it is 17° below, and asr when an object's shadow equals its length. The results were tuned against the times the Turkish Presidency of Religious Affairs (Diyanet) publishes for province centres; for all 81 province centres the October 2026 times differ by at most 1 minute. For official times, rely on Diyanet; adhan times can differ by a few minutes between districts and mosques.",
+    "provincesHeading": "Prayer times by province",
+    "provincesLead": "Select a province.",
+    "noscript": "JavaScript must be enabled in your browser to see the prayer times.",
+    "faqHeading": "Frequently asked questions",
+    "faq": [
+      {
+        "q": "How are prayer times calculated?",
+        "a": "The position of the sun during the day is calculated from your latitude and longitude. Fajr starts when the sun is 18° below the horizon, isha at 17° below, and asr when an object's shadow equals its length. The calculation runs in your browser."
+      },
+      {
+        "q": "Is my location sent to the server?",
+        "a": "No. If you allow location access, the coordinates are used only on your device to calculate the times; they are not sent to the server or included in statistics events. Your last choice is kept only in your browser's local storage."
+      },
+      {
+        "q": "Are the times the same as Diyanet's?",
+        "a": "The calculation is tuned to match Diyanet's times and differs by at most 1 minute at province centres. Official times are still the ones published by the Turkish Presidency of Religious Affairs."
+      },
+      {
+        "q": "What are the iftar and suhoor times?",
+        "a": "Iftar is at the maghrib (evening adhan) time, and suhoor runs until fajr (imsak). In Ramadan you can check both in the monthly table."
+      },
+      {
+        "q": "Can I use it abroad?",
+        "a": "Yes. The Use my location button calculates the times anywhere in the world. At very high latitudes the fajr or isha angle may not occur; then an approximate time is given with the one-seventh-of-the-night rule."
+      }
+    ],
+    "search": "prayer times adhan azan fajr dhuhr asr maghrib isha iftar suhoor namaz vakitleri ezan"
   }
 }

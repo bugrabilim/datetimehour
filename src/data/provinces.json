@@ -1,0 +1,569 @@
+[
+ {
+  "slug": "adana",
+  "name": "Adana",
+  "lat": 37,
+  "lon": 35.32,
+  "ar": "أضنة"
+ },
+ {
+  "slug": "adiyaman",
+  "name": "Adıyaman",
+  "lat": 37.76,
+  "lon": 38.28,
+  "ar": "أديامان"
+ },
+ {
+  "slug": "afyonkarahisar",
+  "name": "Afyonkarahisar",
+  "lat": 38.76,
+  "lon": 30.54,
+  "ar": "أفيون قره حصار"
+ },
+ {
+  "slug": "agri",
+  "name": "Ağrı",
+  "lat": 39.72,
+  "lon": 43.05,
+  "ar": "أغري"
+ },
+ {
+  "slug": "aksaray",
+  "name": "Aksaray",
+  "lat": 38.37,
+  "lon": 34.03,
+  "ar": "أق سراي"
+ },
+ {
+  "slug": "amasya",
+  "name": "Amasya",
+  "lat": 40.65,
+  "lon": 35.83,
+  "ar": "أماسيا"
+ },
+ {
+  "slug": "ankara",
+  "name": "Ankara",
+  "lat": 39.93,
+  "lon": 32.86,
+  "ar": "أنقرة"
+ },
+ {
+  "slug": "antalya",
+  "name": "Antalya",
+  "lat": 36.9,
+  "lon": 30.69,
+  "ar": "أنطاليا"
+ },
+ {
+  "slug": "ardahan",
+  "name": "Ardahan",
+  "lat": 41.11,
+  "lon": 42.7,
+  "ar": "أرداهان"
+ },
+ {
+  "slug": "artvin",
+  "name": "Artvin",
+  "lat": 41.18,
+  "lon": 41.82,
+  "ar": "أرتفين"
+ },
+ {
+  "slug": "aydin",
+  "name": "Aydın",
+  "lat": 37.85,
+  "lon": 27.84,
+  "ar": "أيدن"
+ },
+ {
+  "slug": "balikesir",
+  "name": "Balıkesir",
+  "lat": 39.65,
+  "lon": 27.89,
+  "ar": "باليكسير"
+ },
+ {
+  "slug": "bartin",
+  "name": "Bartın",
+  "lat": 41.64,
+  "lon": 32.34,
+  "ar": "بارتن"
+ },
+ {
+  "slug": "batman",
+  "name": "Batman",
+  "lat": 37.88,
+  "lon": 41.13,
+  "ar": "باتمان"
+ },
+ {
+  "slug": "bayburt",
+  "name": "Bayburt",
+  "lat": 40.26,
+  "lon": 40.23,
+  "ar": "بايبورت"
+ },
+ {
+  "slug": "bilecik",
+  "name": "Bilecik",
+  "lat": 40.14,
+  "lon": 29.98,
+  "ar": "بيلجيك"
+ },
+ {
+  "slug": "bingol",
+  "name": "Bingöl",
+  "lat": 38.88,
+  "lon": 40.5,
+  "ar": "بينغول"
+ },
+ {
+  "slug": "bitlis",
+  "name": "Bitlis",
+  "lat": 38.4,
+  "lon": 42.11,
+  "ar": "بتليس"
+ },
+ {
+  "slug": "bolu",
+  "name": "Bolu",
+  "lat": 40.73,
+  "lon": 31.61,
+  "ar": "بولو"
+ },
+ {
+  "slug": "burdur",
+  "name": "Burdur",
+  "lat": 37.72,
+  "lon": 30.29,
+  "ar": "بوردور"
+ },
+ {
+  "slug": "bursa",
+  "name": "Bursa",
+  "lat": 40.19,
+  "lon": 29.06,
+  "ar": "بورصة"
+ },
+ {
+  "slug": "canakkale",
+  "name": "Çanakkale",
+  "lat": 40.15,
+  "lon": 26.41,
+  "ar": "جناق قلعة"
+ },
+ {
+  "slug": "cankiri",
+  "name": "Çankırı",
+  "lat": 40.6,
+  "lon": 33.62,
+  "ar": "جانقري"
+ },
+ {
+  "slug": "corum",
+  "name": "Çorum",
+  "lat": 40.55,
+  "lon": 34.95,
+  "ar": "تشوروم"
+ },
+ {
+  "slug": "denizli",
+  "name": "Denizli",
+  "lat": 37.78,
+  "lon": 29.09,
+  "ar": "دنيزلي"
+ },
+ {
+  "slug": "diyarbakir",
+  "name": "Diyarbakır",
+  "lat": 37.91,
+  "lon": 40.24,
+  "ar": "ديار بكر"
+ },
+ {
+  "slug": "duzce",
+  "name": "Düzce",
+  "lat": 40.84,
+  "lon": 31.16,
+  "ar": "دوزجه"
+ },
+ {
+  "slug": "edirne",
+  "name": "Edirne",
+  "lat": 41.68,
+  "lon": 26.56,
+  "ar": "أدرنة"
+ },
+ {
+  "slug": "elazig",
+  "name": "Elazığ",
+  "lat": 38.67,
+  "lon": 39.22,
+  "ar": "إلازيغ"
+ },
+ {
+  "slug": "erzincan",
+  "name": "Erzincan",
+  "lat": 39.75,
+  "lon": 39.49,
+  "ar": "أرزنجان"
+ },
+ {
+  "slug": "erzurum",
+  "name": "Erzurum",
+  "lat": 39.9,
+  "lon": 41.27,
+  "ar": "أرضروم"
+ },
+ {
+  "slug": "eskisehir",
+  "name": "Eskişehir",
+  "lat": 39.78,
+  "lon": 30.52,
+  "ar": "إسكي شهير"
+ },
+ {
+  "slug": "gaziantep",
+  "name": "Gaziantep",
+  "lat": 37.07,
+  "lon": 37.38,
+  "ar": "غازي عنتاب"
+ },
+ {
+  "slug": "giresun",
+  "name": "Giresun",
+  "lat": 40.91,
+  "lon": 38.39,
+  "ar": "غيرسون"
+ },
+ {
+  "slug": "gumushane",
+  "name": "Gümüşhane",
+  "lat": 40.46,
+  "lon": 39.48,
+  "ar": "غوموشخانه"
+ },
+ {
+  "slug": "hakkari",
+  "name": "Hakkari",
+  "lat": 37.58,
+  "lon": 43.74,
+  "ar": "حكاري"
+ },
+ {
+  "slug": "hatay",
+  "name": "Hatay",
+  "lat": 36.2,
+  "lon": 36.16,
+  "ar": "هاتاي"
+ },
+ {
+  "slug": "igdir",
+  "name": "Iğdır",
+  "lat": 39.92,
+  "lon": 44.04,
+  "ar": "إغدير"
+ },
+ {
+  "slug": "isparta",
+  "name": "Isparta",
+  "lat": 37.76,
+  "lon": 30.55,
+  "ar": "إسبارطة"
+ },
+ {
+  "slug": "istanbul",
+  "name": "İstanbul",
+  "lat": 41.01,
+  "lon": 28.98,
+  "ar": "إسطنبول"
+ },
+ {
+  "slug": "izmir",
+  "name": "İzmir",
+  "lat": 38.42,
+  "lon": 27.14,
+  "ar": "إزمير"
+ },
+ {
+  "slug": "kahramanmaras",
+  "name": "Kahramanmaraş",
+  "lat": 37.58,
+  "lon": 36.94,
+  "ar": "قهرمان مرعش"
+ },
+ {
+  "slug": "karabuk",
+  "name": "Karabük",
+  "lat": 41.2,
+  "lon": 32.63,
+  "ar": "قره بوك"
+ },
+ {
+  "slug": "karaman",
+  "name": "Karaman",
+  "lat": 37.18,
+  "lon": 33.22,
+  "ar": "قرمان"
+ },
+ {
+  "slug": "kars",
+  "name": "Kars",
+  "lat": 40.6,
+  "lon": 43.1,
+  "ar": "قارص"
+ },
+ {
+  "slug": "kastamonu",
+  "name": "Kastamonu",
+  "lat": 41.38,
+  "lon": 33.78,
+  "ar": "قسطموني"
+ },
+ {
+  "slug": "kayseri",
+  "name": "Kayseri",
+  "lat": 38.73,
+  "lon": 35.49,
+  "ar": "قيصري"
+ },
+ {
+  "slug": "kirikkale",
+  "name": "Kırıkkale",
+  "lat": 39.85,
+  "lon": 33.52,
+  "ar": "قرق قلعة"
+ },
+ {
+  "slug": "kirklareli",
+  "name": "Kırklareli",
+  "lat": 41.74,
+  "lon": 27.23,
+  "ar": "قرقلر إيلي"
+ },
+ {
+  "slug": "kirsehir",
+  "name": "Kırşehir",
+  "lat": 39.15,
+  "lon": 34.17,
+  "ar": "قير شهير"
+ },
+ {
+  "slug": "kilis",
+  "name": "Kilis",
+  "lat": 36.72,
+  "lon": 37.12,
+  "ar": "كيليس"
+ },
+ {
+  "slug": "kocaeli",
+  "name": "Kocaeli",
+  "lat": 40.77,
+  "lon": 29.92,
+  "ar": "كوجالي"
+ },
+ {
+  "slug": "konya",
+  "name": "Konya",
+  "lat": 37.87,
+  "lon": 32.48,
+  "ar": "قونية"
+ },
+ {
+  "slug": "kutahya",
+  "name": "Kütahya",
+  "lat": 39.42,
+  "lon": 29.98,
+  "ar": "كوتاهية"
+ },
+ {
+  "slug": "malatya",
+  "name": "Malatya",
+  "lat": 38.35,
+  "lon": 38.31,
+  "ar": "ملطية"
+ },
+ {
+  "slug": "manisa",
+  "name": "Manisa",
+  "lat": 38.61,
+  "lon": 27.43,
+  "ar": "مانيسا"
+ },
+ {
+  "slug": "mardin",
+  "name": "Mardin",
+  "lat": 37.31,
+  "lon": 40.74,
+  "ar": "ماردين"
+ },
+ {
+  "slug": "mersin",
+  "name": "Mersin",
+  "lat": 36.8,
+  "lon": 34.64,
+  "ar": "مرسين"
+ },
+ {
+  "slug": "mugla",
+  "name": "Muğla",
+  "lat": 37.22,
+  "lon": 28.36,
+  "ar": "موغلا"
+ },
+ {
+  "slug": "mus",
+  "name": "Muş",
+  "lat": 38.74,
+  "lon": 41.5,
+  "ar": "موش"
+ },
+ {
+  "slug": "nevsehir",
+  "name": "Nevşehir",
+  "lat": 38.63,
+  "lon": 34.71,
+  "ar": "نوشهير"
+ },
+ {
+  "slug": "nigde",
+  "name": "Niğde",
+  "lat": 37.97,
+  "lon": 34.68,
+  "ar": "نيغدة"
+ },
+ {
+  "slug": "ordu",
+  "name": "Ordu",
+  "lat": 40.98,
+  "lon": 37.88,
+  "ar": "أوردو"
+ },
+ {
+  "slug": "osmaniye",
+  "name": "Osmaniye",
+  "lat": 37.07,
+  "lon": 36.25,
+  "ar": "عثمانية"
+ },
+ {
+  "slug": "rize",
+  "name": "Rize",
+  "lat": 41.02,
+  "lon": 40.52,
+  "ar": "ريزه"
+ },
+ {
+  "slug": "sakarya",
+  "name": "Sakarya",
+  "lat": 40.76,
+  "lon": 30.4,
+  "ar": "صقاريا"
+ },
+ {
+  "slug": "samsun",
+  "name": "Samsun",
+  "lat": 41.29,
+  "lon": 36.33,
+  "ar": "سامسون"
+ },
+ {
+  "slug": "siirt",
+  "name": "Siirt",
+  "lat": 37.93,
+  "lon": 41.94,
+  "ar": "سعرد"
+ },
+ {
+  "slug": "sinop",
+  "name": "Sinop",
+  "lat": 42.03,
+  "lon": 35.15,
+  "ar": "سينوب"
+ },
+ {
+  "slug": "sivas",
+  "name": "Sivas",
+  "lat": 39.75,
+  "lon": 37.02,
+  "ar": "سيواس"
+ },
+ {
+  "slug": "sanliurfa",
+  "name": "Şanlıurfa",
+  "lat": 37.16,
+  "lon": 38.79,
+  "ar": "شانلي أورفا"
+ },
+ {
+  "slug": "sirnak",
+  "name": "Şırnak",
+  "lat": 37.52,
+  "lon": 42.46,
+  "ar": "شرناق"
+ },
+ {
+  "slug": "tekirdag",
+  "name": "Tekirdağ",
+  "lat": 40.98,
+  "lon": 27.51,
+  "ar": "تكيرداغ"
+ },
+ {
+  "slug": "tokat",
+  "name": "Tokat",
+  "lat": 40.31,
+  "lon": 36.55,
+  "ar": "توقات"
+ },
+ {
+  "slug": "trabzon",
+  "name": "Trabzon",
+  "lat": 41,
+  "lon": 39.72,
+  "ar": "طرابزون"
+ },
+ {
+  "slug": "tunceli",
+  "name": "Tunceli",
+  "lat": 39.11,
+  "lon": 39.55,
+  "ar": "تونجلي"
+ },
+ {
+  "slug": "usak",
+  "name": "Uşak",
+  "lat": 38.68,
+  "lon": 29.41,
+  "ar": "أوشاك"
+ },
+ {
+  "slug": "van",
+  "name": "Van",
+  "lat": 38.49,
+  "lon": 43.38,
+  "ar": "وان"
+ },
+ {
+  "slug": "yalova",
+  "name": "Yalova",
+  "lat": 40.65,
+  "lon": 29.27,
+  "ar": "يالوفا"
+ },
+ {
+  "slug": "yozgat",
+  "name": "Yozgat",
+  "lat": 39.82,
+  "lon": 34.81,
+  "ar": "يوزغات"
+ },
+ {
+  "slug": "zonguldak",
+  "name": "Zonguldak",
+  "lat": 41.46,
+  "lon": 31.8,
+  "ar": "زونغولداق"
+ }
+]

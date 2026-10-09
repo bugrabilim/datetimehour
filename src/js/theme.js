@@ -1,4 +1,5 @@
 // Sayfa çizilmeden önce kayıtlı temayı uygular (yanlış temanın bir an görünmesini engeller).
+document.documentElement.classList.add("js");
 (function () {
   try {
     var t = localStorage.getItem("sth-theme");

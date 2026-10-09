@@ -35,7 +35,9 @@
     "logoAlt": "Saat Tarih Startseite",
     "calendar": "Kalender",
     "tools": "Tools",
-    "langMenu": "Sprache"
+    "langMenu": "Sprache",
+    "menu": "Menü",
+    "prayer": "Gebetszeiten"
   },
   "client": {
     "format24": "24 Stunden",
@@ -117,11 +119,11 @@
     },
     "syncLabel": "Serverzeit",
     "syncPending": "Abgleich mit der Serveruhr …",
-    "syncOk": "Läuft mit Serverzeit (±{ms} ms). Ihre Geräteuhr geht richtig.",
-    "syncAhead": "Läuft mit Serverzeit. Ihre Geräteuhr geht {s} s vor.",
-    "syncBehind": "Läuft mit Serverzeit. Ihre Geräteuhr geht {s} s nach.",
+    "syncOk": "Ihre Geräteuhr zeigt {device}: synchron mit dem Server (Abweichung ±{ms} ms).",
+    "syncAhead": "Ihre Geräteuhr zeigt {device}: {s} s vor dem Server.",
+    "syncBehind": "Ihre Geräteuhr zeigt {device}: {s} s hinter dem Server.",
     "syncOff": "Es wird Ihre Geräteuhr verwendet.",
-    "syncFail": "Die Serveruhr war nicht erreichbar; es wird Ihre Geräteuhr verwendet.",
+    "syncFail": "Serveruhr nicht erreichbar; es wird Ihre Geräteuhr ({device}) angezeigt.",
     "daysLeft": "noch {n} Tage",
     "today": "Heute",
     "tomorrow": "Morgen",
@@ -132,7 +134,8 @@
     "refSame": "Gleiche Uhrzeit (wie {ref})",
     "weekFound": "{date} liegt in Kalenderwoche {n} des ISO-Jahres {y}.",
     "pickDate": "Wählen Sie ein Datum.",
-    "daysShort": "Tage"
+    "daysShort": "Tage",
+    "formatLabel": "Zeitformat"
   },
   "home": {
     "title": "Wie spät ist es? Live-Uhr und heutiges Datum | Saat Tarih",
@@ -244,6 +247,7 @@
         "h": "Welche Daten verarbeiten wir?",
         "ul": [
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
+          "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
           "**Formular für die E-Mail-Liste:** Die von Ihnen eingegebene E-Mail-Adresse, die per Kontrollkästchen erteilte Einwilligung, die gewählte Sprache und die Seite, auf der sich das Formular befindet, werden vom gemeinsamen Listendienst der Bumba Group (bumbagroup.com) verarbeitet. Die Anmeldung erfolgt per Double-Opt-in: Sie werden erst aufgenommen, wenn Sie den Link in der Bestätigungs-E-Mail anklicken, und jede E-Mail enthält einen Link zur Abmeldung mit einem Klick. Einzelheiten finden Sie im [gemeinsamen Datenschutzhinweis](https://bumbagroup.com/liste/aydinlatma?dil=en) (auf Englisch).",
           "**Server-Protokolle:** Der Server, auf dem die Website betrieben wird, führt für jede Anfrage ein übliches Zugriffsprotokoll mit IP-Adresse, Browserinformationen, aufgerufener Seite und Zeitpunkt. Diese Protokolle dienen ausschließlich der Sicherheit und der Fehlerbehebung, nicht der Erstellung von Personenprofilen.",
           "**Besuchsstatistik:** Umami, das auf unserem eigenen Server läuft, zählt Seitenaufrufe und einige Aktionen (Sprachwechsel, Wechsel des Farbmodus, ob eine Suche ein Ergebnis lieferte, Anmeldung zur Liste). Umami verwendet keine Cookies. Ihre Suchbegriffe und Ihre E-Mail-Adresse werden nicht an das Statistiksystem übermittelt.",
@@ -297,6 +301,11 @@
               "sth-pomo",
               "Speichert die Pomodoro-Zeiten und den aktuellen Stand.",
               "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-prayer",
+              "Merkt sich die zuletzt gewählte Provinz oder den Standort für die Gebetszeiten.",
+              "Bis Sie es löschen"
             ]
           ]
         }
@@ -382,8 +391,10 @@
       "flip": "Klappzahluhr",
       "words": "Uhr in Worten",
       "rings": "Ringuhr",
-      "bigdate": "Großes Datum"
-    }
+      "bigdate": "Großes Datum",
+      "stack": "Analog mit digitaler Anzeige darunter"
+    },
+    "source": "Diese Uhr ist unabhängig von Ihrem Gerät: Sie wird von der per NTP synchronisierten Uhr des Saat-Tarih-Servers abgelesen und alle 15 Minuten neu gemessen."
   },
   "calendar": {
     "title": "Kalender {year}: Feiertage in der Türkei und Ramadan | Saat Tarih",
@@ -1202,5 +1213,69 @@
   },
   "embed": {
     "link": "Saat Tarih"
+  },
+  "prayer": {
+    "title": "Gebetszeiten nach Standort: Fadschr bis Ischa | Saat Tarih",
+    "description": "Gebetszeiten für Ihren Standort oder eine türkische Provinz: Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib und Ischa, Restzeit bis zum nächsten Gebet, Monatstabelle.",
+    "h1": "Gebetszeiten",
+    "lead": "Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib und Ischa für Ihren Standort oder eine gewählte Provinz. Die Restzeit bis zum nächsten Gebet läuft live mit der serversynchronisierten Uhr.",
+    "cityTitle": "Gebetszeiten {city}: Fadschr bis Ischa | Saat Tarih",
+    "cityDescription": "Die heutigen Gebetszeiten für {city}: Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib und Ischa, Restzeit bis zum nächsten Gebet und eine Monatstabelle.",
+    "cityH1": "Gebetszeiten {city}",
+    "cityLead": "Die heutigen Zeiten für Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib und Ischa in {city} mit der Restzeit bis zum nächsten Gebet. Unten finden Sie alle Tage dieses Monats.",
+    "chooseLabel": "Provinz",
+    "useLocation": "Meinen Standort verwenden",
+    "locating": "Standort wird ermittelt …",
+    "locationDenied": "Der Standort konnte nicht ermittelt werden. Prüfen Sie die Browserberechtigung oder wählen Sie eine Provinz aus der Liste.",
+    "locationUnsupported": "Ihr Browser unterstützt keine Standortabfrage. Wählen Sie eine Provinz aus der Liste.",
+    "yourLocation": "Ihr Standort",
+    "locationNote": "Ihr Standort wird nur auf Ihrem Gerät zur Berechnung verwendet und nicht an den Server gesendet.",
+    "nextIn": "Restzeit bis {name}",
+    "todayHeading": "Die Zeiten von heute",
+    "colPrayer": "Gebet",
+    "colTime": "Uhrzeit",
+    "monthHeading": "Gebetszeiten {month} {year}",
+    "colDay": "Tag",
+    "prevMonth": "Vorheriger Monat",
+    "nextMonth": "Nächster Monat",
+    "tableCaption": "{place}: Gebetszeiten {month} {year}",
+    "names": {
+      "fajr": "Fadschr",
+      "sunrise": "Sonnenaufgang",
+      "dhuhr": "Dhuhr",
+      "asr": "Asr",
+      "maghrib": "Maghrib",
+      "isha": "Ischa"
+    },
+    "otherPlace": "Für einen anderen Standort öffnen Sie die Seite der Gebetszeiten",
+    "methodHeading": "Wie werden die Zeiten berechnet?",
+    "method": "Die Zeiten ergeben sich aus dem Sonnenstand an Ihrem Breiten- und Längengrad: Fadschr beginnt, wenn die Sonne 18° unter dem Horizont steht, Ischa bei 17° und Asr, wenn der Schatten eines Gegenstands so lang ist wie der Gegenstand. Die Ergebnisse wurden mit den Zeiten abgeglichen, die das türkische Präsidium für Religionsangelegenheiten (Diyanet) für die Provinzzentren veröffentlicht; für alle 81 Provinzzentren weichen die Zeiten vom Oktober 2026 höchstens um 1 Minute ab. Maßgeblich sind die offiziellen Zeiten der Diyanet; Gebetszeiten können je nach Bezirk und Moschee um einige Minuten abweichen.",
+    "provincesHeading": "Gebetszeiten nach Provinz",
+    "provincesLead": "Wählen Sie eine Provinz.",
+    "noscript": "Zum Anzeigen der Gebetszeiten muss JavaScript im Browser aktiviert sein.",
+    "faqHeading": "Häufig gestellte Fragen",
+    "faq": [
+      {
+        "q": "Wie werden Gebetszeiten berechnet?",
+        "a": "Aus Ihrem Breiten- und Längengrad wird der Sonnenstand im Tagesverlauf berechnet. Fadschr beginnt bei 18° unter dem Horizont, Ischa bei 17°, Asr, wenn ein Schatten so lang ist wie der Gegenstand. Die Berechnung läuft in Ihrem Browser."
+      },
+      {
+        "q": "Wird mein Standort an den Server gesendet?",
+        "a": "Nein. Wenn Sie den Standortzugriff erlauben, werden die Koordinaten nur auf Ihrem Gerät zur Berechnung verwendet; sie werden weder an den Server gesendet noch in Statistikereignissen erfasst. Ihre letzte Auswahl bleibt nur im lokalen Speicher Ihres Browsers."
+      },
+      {
+        "q": "Sind die Zeiten identisch mit denen der Diyanet?",
+        "a": "Die Berechnung ist auf die Zeiten der Diyanet abgestimmt und weicht in den Provinzzentren höchstens um 1 Minute ab. Offiziell sind dennoch die Zeiten, die das türkische Präsidium für Religionsangelegenheiten veröffentlicht."
+      },
+      {
+        "q": "Wann sind Iftar und Sahur?",
+        "a": "Iftar ist zur Maghrib-Zeit (abendlicher Gebetsruf), Sahur dauert bis Fadschr (Imsak). Im Ramadan finden Sie beide Zeiten in der Monatstabelle."
+      },
+      {
+        "q": "Kann ich die Seite im Ausland nutzen?",
+        "a": "Ja. Mit „Meinen Standort verwenden“ werden die Zeiten überall auf der Welt berechnet. In sehr hohen Breiten kann der Winkel für Fadschr oder Ischa ausbleiben; dann wird ein Näherungswert nach der Siebtel-der-Nacht-Regel angegeben."
+      }
+    ],
+    "search": "gebetszeiten gebetszeit gebetsruf adhan fadschr dhuhr asr maghrib ischa iftar sahur namaz vakitleri"
   }
 }

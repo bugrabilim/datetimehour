@@ -78,6 +78,8 @@ for (const [name, from] of [
   ["dates.js", "js/dates.js"],
   ["planner.js", "js/planner.js"],
   ["embed.js", "js/embed.js"],
+  ["prayer-calc.js", "js/prayer-calc.js"],
+  ["prayer.js", "js/prayer.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -105,6 +107,7 @@ const ICON_MOON = `<svg class="only-light" viewBox="0 0 24 24" fill="none" strok
 const ICON_SUN = `<svg class="only-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`;
 const LOGO = `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="26"/><path d="M32 17v15l10 6"/></svg>`;
 
+const ICON_MENU = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
 const ICON_FULL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>`;
 const ICON_PREV = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5-7 7 7 7"/></svg>`;
 const ICON_NEXT = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7"/></svg>`;
@@ -156,6 +159,7 @@ const ringsHtml = (tz) =>
 
 // Her model: id, sınıf ve içerik. Sıra, kaydırma sırasıdır.
 const MODELS = [
+  { id: "stack", cls: "s-stack", html: (tz) => analogSvg({ tz, size: "st" }) + `<div class="stack-text">${pDigital(tz, " clock-md")}</div>` },
   { id: "classic", cls: "s-analog", html: (tz) => analogSvg({ tz, size: "lg" }) + srTime(tz) },
   { id: "minimal", cls: "s-analog", html: (tz) => analogSvg({ tz, size: "lg", numerals: false, minimal: true }) + srTime(tz) },
   { id: "analog-date", cls: "s-analog-date", html: (tz) => analogSvg({ tz, size: "md" }) + pDate(tz) + srTime(tz) },
@@ -179,28 +183,37 @@ function clockStage(lang, { tz = "" } = {}) {
     const name = s.models[m.id];
     return `<section class="slide ${m.cls}" id="model-${m.id}" data-model="${m.id}" data-name="${esc(name)}" role="group" aria-roledescription="${esc(s.slideRole)}" aria-label="${esc(tpl(s.slide, { n: i + 1, total, name }))}"${i ? ' aria-hidden="true"' : ""}>${m.html(tz)}</section>`;
   }).join("");
+  const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
   const dots = MODELS.map(
     (m, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${esc(s.models[m.id])}" title="${esc(s.models[m.id])}"${i ? "" : ' aria-current="true"'}></button>`
   ).join("");
   return `<section class="stage" data-carousel aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
   <h2 id="clock-h" class="sr-only">${esc(s.label)}</h2>
   <div class="stage-track" data-track tabindex="0" aria-label="${esc(s.hint)}">${slides}</div>
+  <button type="button" class="icon-btn fs-exit" data-fullscreen-exit aria-label="${esc(t.client.exitFullscreen)}" title="${esc(t.client.exitFullscreen)}">${ICON_CLOSE}</button>
   <div class="stage-bar">
-    <button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}">${ICON_PREV}</button>
-    <p class="stage-name" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
-    <button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}">${ICON_NEXT}</button>
-    <div class="dots" role="group" aria-label="${esc(s.dots)}">${dots}</div>
+    <div class="stage-nav">
+      <button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}">${ICON_PREV}</button>
+      <p class="stage-name" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
+      <button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}">${ICON_NEXT}</button>
+    </div>
     <div class="stage-tools">
-      <button type="button" class="toggle" data-pref="h12" aria-pressed="false">${esc(t.client.format24)}</button>
-      <button type="button" class="toggle" data-pref="sec" aria-pressed="true">${esc(t.client.seconds)}</button>
-      <button type="button" class="toggle" data-pref="sync" aria-pressed="true">${esc(t.client.syncLabel)}</button>
+      <div class="seg" role="group" aria-label="${esc(t.client.formatLabel)}">
+        <button type="button" class="toggle" data-fmt="24" aria-pressed="true">${esc(t.client.format24)}</button>
+        <button type="button" class="toggle" data-fmt="12" aria-pressed="false">${esc(t.client.format12)}</button>
+      </div>
+      <button type="button" class="toggle" data-pref="sec" aria-pressed="false">${esc(t.client.seconds)}</button>
       <button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
     </div>
+    <div class="dots" role="group" aria-label="${esc(s.dots)}">${dots}</div>
   </div>
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
 </section>
-<p class="meta stage-hint">${esc(s.hint)}</p>
-<p class="meta sync-line" data-sync-status>&nbsp;</p>`;
+<div class="source-note">
+  <p class="meta stage-hint">${esc(s.hint)}</p>
+  <p class="meta source-line">${esc(s.source)}</p>
+  <p class="meta sync-line" data-sync-status>&nbsp;</p>
+</div>`;
 }
 
 function cityCard(lang, c) {
@@ -359,11 +372,12 @@ ${ld}
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
-    <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("world", u.world)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
+    <nav class="nav" id="site-nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
     <div class="tools">
       <button type="button" class="icon-btn" data-search-open aria-haspopup="dialog" aria-label="${esc(u.searchOpen)}">${ICON_SEARCH}</button>
       ${langSwitch}
       <button type="button" class="icon-btn" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}</button>
+      <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>
     </div>
   </div>
 </header>
@@ -382,6 +396,7 @@ ${isError ? "" : listForm(lang, p.path)}
       <ul class="footer-nav">
         <li><a href="${ROUTES[lang].home}">${esc(u.home)}</a></li>
         <li><a href="${ROUTES[lang].world}">${esc(u.world)}</a></li>
+        <li><a href="${ROUTES[lang].prayer}">${esc(u.prayer)}</a></li>
         <li><a href="${yearPath(lang, BUILD_YEAR)}">${esc(u.calendar)}</a></li>
         <li><a href="${ROUTES[lang].tools}">${esc(u.tools)}</a></li>
         <li><a href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a></li>
@@ -451,11 +466,15 @@ function buildHome(lang) {
   const featured = ["istanbul", "london", "new-york", "los-angeles", "dubai", "moscow", "tokyo", "sydney"].map((k) =>
     CITIES.find((c) => c.key === k)
   );
-  const body = `<section class="hero">
+  const body = `<section class="hero hero-clock">
   <div class="wrap">
-    <h1>${esc(h.h1)}</h1>
-    <p class="lead">${esc(tpl(h.lead, { n: MODELS.length }))}</p>
     ${clockStage(lang)}
+  </div>
+</section>
+<section class="section intro" aria-labelledby="intro-h">
+  <div class="wrap">
+    <h1 id="intro-h">${esc(h.h1)}</h1>
+    <p class="lead">${esc(tpl(h.lead, { n: MODELS.length }))}</p>
   </div>
 </section>
 <section class="section" id="upcoming" aria-labelledby="upcoming-h">
@@ -1079,6 +1098,7 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
+extendRoutes({ tr: { prayer: "/namaz-vakitleri/" }, en: { prayer: "/en/prayer-times/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1090,7 +1110,7 @@ const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, t
 const relatedCards = (lang, keys) => keys.map((k) => `<li class="city-card"><a href="${ROUTES[lang][k]}"><span class="city-name">${esc(I[lang].tools.hub.cards[k].name)}</span><span class="city-diff">${esc(I[lang].tools.hub.cards[k].desc)}</span></a></li>`).join("");
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
 
-function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqHeading, scripts, clientExtra, nav = "tools", searchK, extraLd = [] }) {
+function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqHeading, scripts, clientExtra, nav = "tools", searchK, extraLd = [], noFaqSearch = false }) {
   const pagePath = trail[trail.length - 1].path;
   const faqBlock = faq && faq.length ? `<section class="section" id="faq" aria-labelledby="faq-h">
   <div class="wrap">
@@ -1110,7 +1130,7 @@ ${bodyInner.sections || ""}
 ${faqBlock}`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), ...(faq && faq.length ? [faqLd(faq)] : []), ...extraLd];
   searchEntries[lang].push({ t: h1, u: pagePath, d: description, k: searchK });
-  if (faq) faq.forEach((f) => searchEntries[lang].push({ t: f.q, u: pagePath + "#faq", d: f.a, k: searchK }));
+  if (faq && !noFaqSearch) faq.forEach((f) => searchEntries[lang].push({ t: f.q, u: pagePath + "#faq", d: f.a, k: searchK }));
   return { lang, key, path: pagePath, title, description, body, ld, nav, scripts, clientExtra };
 }
 
@@ -1370,6 +1390,78 @@ function buildEmbedGen(lang) {
   return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])) } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
 }
 
+/* ---------- Namaz vakitleri: konuma göre hub + 81 il sayfası (hesap tarayıcıda, prayer-calc.js) ---------- */
+const PROVINCES = readJson("src/data/provinces.json");
+const PRAYER_KEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
+const provName = (lang, p) => (lang === "ar" ? p.ar : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
+const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
+
+function prayerBody(lang, prov) {
+  const t = I[lang];
+  const s = t.prayer;
+  const opts = PROVINCES.map((pr) => `<option value="${pr.slug}" data-lat="${pr.lat}" data-lon="${pr.lon}"${pr.slug === "istanbul" ? " selected" : ""}>${esc(provName(lang, pr))}</option>`).join("");
+  const rows = PRAYER_KEYS.map((k) => `<tr data-pr="${k}"><th scope="row">${esc(s.names[k])}</th><td data-pr-time>--:--</td></tr>`).join("");
+  const controls = prov
+    ? `<p class="meta"><a href="${ROUTES[lang].prayer}">${esc(s.otherPlace)} ${ARROW(lang)}</a></p>`
+    : `<div class="inputs-row">
+        <div class="field"><label for="pr-city">${esc(s.chooseLabel)}</label><select id="pr-city" data-pr-city>${opts}</select></div>
+        <button type="button" class="btn" data-pr-geo>${esc(s.useLocation)}</button>
+      </div>
+      <p class="meta" data-pr-status role="status">&nbsp;</p>
+      <p class="meta">${esc(s.locationNote)}</p>`;
+  const attrs = prov ? ` data-mode="city" data-city="${prov.slug}" data-name="${esc(provName(lang, prov))}" data-lat="${prov.lat}" data-lon="${prov.lon}"` : ` data-mode="hub"`;
+  const hero = `<section class="tool prayer" data-prayer${attrs} aria-labelledby="pr-h">
+      <div class="tool-head"><h2 id="pr-h" class="tool-title" data-pr-place>${esc(prov ? provName(lang, prov) : s.yourLocation)}</h2></div>
+      ${controls}
+      <div class="pr-next"><p class="meta" data-pr-nextlabel>&nbsp;</p><p class="big-time" role="timer" data-pr-countdown>–</p></div>
+      <h3>${esc(s.todayHeading)}</h3>
+      <div class="table-wrap"><table class="events-table pr-today"><thead><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <noscript><p class="meta">${esc(s.noscript)}</p></noscript>
+    </section>
+    <p class="meta sync-line" data-sync-status>&nbsp;</p>`;
+  const head = PRAYER_KEYS.map((k) => `<th scope="col">${esc(s.names[k])}</th>`).join("");
+  const links = PROVINCES.map((pr) => `<li class="city-card"><a href="${prayerPath(lang, pr)}"><span class="city-name">${esc(provName(lang, pr))}</span></a></li>`).join("");
+  const sections = `<section class="section" aria-labelledby="pr-month-h">
+  <div class="wrap">
+    <div class="pr-month-head">
+      <h2 id="pr-month-h" data-pr-month-title>${esc(s.colDay)}</h2>
+      <div class="pr-month-nav"><button type="button" class="toggle" data-pr-prev>${esc(s.prevMonth)}</button><button type="button" class="toggle" data-pr-next>${esc(s.nextMonth)}</button></div>
+    </div>
+    <div class="table-wrap"><table class="events-table pr-month" data-pr-month><caption class="sr-only" data-pr-caption></caption><thead><tr><th scope="col">${esc(s.colDay)}</th>${head}</tr></thead><tbody></tbody></table></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="pr-method-h">
+  <div class="wrap">
+    <h2 id="pr-method-h">${esc(s.methodHeading)}</h2>
+    <p>${esc(s.method)}</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="pr-prov-h">
+  <div class="wrap">
+    <h2 id="pr-prov-h">${esc(s.provincesHeading)}</h2>
+    <p class="meta">${esc(s.provincesLead)}</p>
+    <ul class="city-grid">${links}</ul>
+  </div>
+</section>`;
+  return { hero, sections };
+}
+const prayerClient = (s) => ({ pr: { locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation, nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names } });
+
+function buildPrayerHub(lang) {
+  const t = I[lang];
+  const s = t.prayer;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }];
+  return simplePage(lang, "prayer", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: prayerBody(lang, null), faq: s.faq, faqHeading: s.faqHeading, scripts: ["prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].prayer, s.description)] });
+}
+function buildPrayerCity(lang, prov) {
+  const t = I[lang];
+  const s = t.prayer;
+  const name = provName(lang, prov);
+  const v = { city: name };
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }, { name: tpl(s.cityH1, v), path: prayerPath(lang, prov) }];
+  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov), faq: s.faq, faqHeading: s.faqHeading, scripts: ["prayer-calc.js", "prayer.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}`, noFaqSearch: true });
+}
+
 /* Gömülü widget sayfası: yalnız seçilen saat modeli, başlık ve alt bilgi (indekslenmez) */
 function embedFramePage(lang) {
   const t = I[lang];
@@ -1404,7 +1496,7 @@ ${umami}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
 }
 
@@ -1483,10 +1575,11 @@ const llmsLine = (lang, p) => `- [${p.title.split(" | ")[0]}](${abs(p.path)}): $
 const llmsBlock = (lang) => {
   const t = I[lang];
   const mine = built.filter((p) => p.lang === lang && !p.noindex);
-  const main = mine.filter((p) => !p.key.startsWith("city:") && !p.key.startsWith("calendar:"));
+  const prayers = mine.filter((p) => p.key.startsWith("prayer:"));
+  const main = mine.filter((p) => !p.key.startsWith("city:") && !p.key.startsWith("calendar:") && !p.key.startsWith("prayer:"));
   const years = mine.filter((p) => p.key.startsWith("calendar:"));
   const cities = mine.filter((p) => p.key.startsWith("city:"));
-  return `> ${t.llms.summary}\n\n## ${t.llms.pages}\n${[...main, ...years].map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.llms.cities}\n${cities.map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.llms.about}\n${t.llms.aboutText}\n`;
+  return `> ${t.llms.summary}\n\n## ${t.llms.pages}\n${[...main, ...years].map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.llms.cities}\n${cities.map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.prayer.provincesHeading}\n${prayers.map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.llms.about}\n${t.llms.aboutText}\n`;
 };
 write("llms.txt", `# ${cfg.name}\n\n${LANGS.map(llmsBlock).join("\n---\n\n")}`);
 

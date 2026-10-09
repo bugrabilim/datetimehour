@@ -56,6 +56,16 @@
     m.addEventListener("keydown", function (e) { if (e.key === "Escape") { m.removeAttribute("open"); var sm = m.querySelector("summary"); if (sm) sm.focus(); } });
   });
 
+  /* ---------- Menü (dar ekranda açılır) ---------- */
+  (function navMenu() {
+    var btn = doc.querySelector("[data-nav-toggle]"), nav = doc.getElementById("site-nav");
+    if (!btn || !nav) return;
+    var set = function (open) { nav.classList.toggle("is-open", open); btn.setAttribute("aria-expanded", String(open)); };
+    btn.addEventListener("click", function (e) { e.stopPropagation(); set(!nav.classList.contains("is-open")); });
+    doc.addEventListener("click", function (e) { if (!nav.contains(e.target) && e.target !== btn) set(false); });
+    doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("is-open")) { set(false); btn.focus(); } });
+  })();
+
   /* ---------- Tema ---------- */
   var themeBtn = doc.querySelector("[data-theme-toggle]");
   if (themeBtn) {
@@ -103,10 +113,12 @@
   }
 
   /* ---------- Saat ---------- */
-  var prefs = { h12: false, sec: true, model: "", sync: true };
+  var prefs = { h12: false, sec: false, model: "", pv: 2 };
   try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
+  if (prefs.pv !== 2) { prefs.sec = false; prefs.pv = 2; } // varsayılan: saniye kapalı
   if (window.__sthPrefs) Object.assign(prefs, window.__sthPrefs);
-  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec !== false; prefs.sync = prefs.sync !== false;
+  prefs.h12 = !!prefs.h12; prefs.sec = prefs.sec === true;
+  prefs.sync = true; // saat her zaman sunucu saatine göre çalışır
 
   var localTz;
   try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
@@ -148,12 +160,12 @@
   var syncEls = Array.prototype.slice.call(doc.querySelectorAll("[data-sync-status]"));
   var nf1 = new Intl.NumberFormat(locale, { maximumFractionDigits: 1, minimumFractionDigits: 1 });
   function syncText() {
-    if (!prefs.sync) return T.syncOff;
     if (sync.state === "pending") return T.syncPending;
-    if (sync.state === "fail") return T.syncFail;
+    var device = timeText(new Date(), localTz, true);
+    if (sync.state === "fail") return tpl(T.syncFail, { device: device });
     var e = deviceError();
-    if (Math.abs(e) < 500) return tpl(T.syncOk, { ms: Math.round(sync.err / 10) * 10 || 10 });
-    return tpl(e > 0 ? T.syncAhead : T.syncBehind, { s: nf1.format(Math.abs(e) / 1000) });
+    if (Math.abs(e) < 500) return tpl(T.syncOk, { ms: Math.round(sync.err / 10) * 10 || 10, device: device });
+    return tpl(e > 0 ? T.syncAhead : T.syncBehind, { s: nf1.format(Math.abs(e) / 1000), device: device });
   }
   function renderSync() {
     var txt = syncText();
@@ -398,25 +410,16 @@ function sunTimes(y, m, d, lat, lon) {
     setTimeout(schedule, 1000 - (Date.now() % 1000) + 5);
   }
 
-  var btn12 = doc.querySelector("[data-pref=h12]");
+  var fmtBtns = Array.prototype.slice.call(doc.querySelectorAll("[data-fmt]"));
   var btnSec = doc.querySelector("[data-pref=sec]");
-  var btnSync = doc.querySelector("[data-pref=sync]");
   function syncButtons() {
-    if (btn12) {
-      btn12.setAttribute("aria-pressed", String(prefs.h12));
-      btn12.textContent = prefs.h12 ? T.format12 : T.format24;
-    }
+    fmtBtns.forEach(function (b) { b.setAttribute("aria-pressed", String((b.getAttribute("data-fmt") === "12") === prefs.h12)); });
     if (btnSec) btnSec.setAttribute("aria-pressed", String(prefs.sec));
-    if (btnSync) btnSync.setAttribute("aria-pressed", String(prefs.sync));
     root.classList.toggle("sec-off", !prefs.sec);
   }
   function savePrefs() { store("sth-prefs", JSON.stringify(prefs)); syncButtons(); render(); }
-  if (btn12) btn12.addEventListener("click", function () { prefs.h12 = !prefs.h12; savePrefs(); });
+  fmtBtns.forEach(function (b) { b.addEventListener("click", function () { prefs.h12 = b.getAttribute("data-fmt") === "12"; savePrefs(); }); });
   if (btnSec) btnSec.addEventListener("click", function () { prefs.sec = !prefs.sec; savePrefs(); });
-  if (btnSync) btnSync.addEventListener("click", function () {
-    prefs.sync = !prefs.sync; savePrefs();
-    if (prefs.sync && !sync.ok) { sync.state = "pending"; measure(); }
-  });
   syncButtons();
   if (liveEls.length) schedule();
 
@@ -479,6 +482,16 @@ function sunTimes(y, m, d, lat, lon) {
     var fsBtn = stage.querySelector("[data-fullscreen]");
     var full = makeFullscreen(stage, fsBtn, function () { trackEl.scrollTo({ left: current * trackEl.clientWidth, behavior: "auto" }); });
     var toggleFull = full.toggle;
+    // Tam ekranda yalnız seçili model görünür; çıkış düğmesi dokunuş/harekette 3 sn belirir
+    var exitBtn = stage.querySelector("[data-fullscreen-exit]");
+    if (exitBtn) exitBtn.addEventListener("click", function () { toggleFull(); });
+    var awakeTimer = null;
+    var wake = function () {
+      stage.classList.add("fs-awake");
+      clearTimeout(awakeTimer);
+      awakeTimer = setTimeout(function () { stage.classList.remove("fs-awake"); }, 3000);
+    };
+    ["pointerdown", "pointermove", "touchstart", "keydown"].forEach(function (n) { stage.addEventListener(n, wake, { passive: true }); });
 
     // Açılışta: bağlantıdaki model, yoksa son seçilen model
     var start = indexFromHash();

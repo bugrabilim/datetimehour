@@ -35,7 +35,9 @@
     "logoAlt": "Saat Tarih ana səhifəsi",
     "calendar": "Təqvim",
     "tools": "Alətlər",
-    "langMenu": "Dil"
+    "langMenu": "Dil",
+    "menu": "Menyu",
+    "prayer": "Namaz vaxtları"
   },
   "client": {
     "format24": "24 saat",
@@ -90,11 +92,11 @@
     },
     "syncLabel": "Server saatı",
     "syncPending": "Server saatı ilə sinxronlaşdırılır…",
-    "syncOk": "Server saatı ilə işləyir (±{ms} ms). Cihazınızın saatı düzgündür.",
-    "syncAhead": "Server saatı ilə işləyir. Cihazınızın saatı {s} san irəlidədir.",
-    "syncBehind": "Server saatı ilə işləyir. Cihazınızın saatı {s} san geridədir.",
+    "syncOk": "Cihazınızın saatı {device}: serverlə sinxrondur (fərq ±{ms} ms).",
+    "syncAhead": "Cihazınızın saatı {device}: serverdən {s} san irəlidədir.",
+    "syncBehind": "Cihazınızın saatı {device}: serverdən {s} san geridədir.",
     "syncOff": "Cihazınızın saatından istifadə olunur.",
-    "syncFail": "Server saatına qoşulmaq mümkün olmadı; cihazınızın saatından istifadə olunur.",
+    "syncFail": "Server saatına çatmaq mümkün olmadı; cihazınızın saatı ({device}) göstərilir.",
     "daysLeft": "{n} gün qalıb",
     "today": "Bu gün",
     "tomorrow": "Sabah",
@@ -105,7 +107,8 @@
     "refSame": "{ref} ilə eyni vaxt",
     "weekFound": "{date} tarixi ISO {y} ilinin {n} nömrəli həftəsinə düşür.",
     "pickDate": "Tarix seçin.",
-    "daysShort": "gün"
+    "daysShort": "gün",
+    "formatLabel": "Saat formatı"
   },
   "home": {
     "title": "Saat neçədir? Canlı saat və bugünkü tarix | Saat Tarih",
@@ -217,6 +220,7 @@
         "h": "Hansı məlumatları emal edirik?",
         "ul": [
           "**Saat və tarix:** Cihazınızın saatı və saat qurşağı yalnız brauzerinizdə oxunur və hesablanır. Bu məlumatlar serverə göndərilmir və saxlanılmır.",
+          "**Məkan (namaz vaxtları):** Namaz vaxtları səhifəsində “Məkanımı istifadə et” seçsəniz, brauzeriniz məkanınızı yalnız cihazınızda vaxtların hesablanması üçün istifadə edir. Koordinatlar serverə göndərilmir və statistikaya düşmür; son seçiminiz brauzerinizin yerli yaddaşında qalır.",
           "**E-poçt siyahısı forması:** Daxil etdiyiniz e-poçt ünvanı, qeyd xanası ilə verdiyiniz razılıq, seçilmiş dil və formanın yerləşdiyi səhifə Bumba Group-un ortaq siyahı xidməti (bumbagroup.com) tərəfindən emal edilir. Qeydiyyat ikimərhələli təsdiqlə aparılır: təsdiq e-məktubundakı keçidə klikləməyənədək siyahıya əlavə edilmirsiniz, hər e-məktubda isə bir kliklə abunəlikdən çıxmaq üçün keçid var. Ətraflı məlumat üçün [ortaq məlumatlandırma bildirişinə](https://bumbagroup.com/liste/aydinlatma?dil=en) baxın.",
           "**Server jurnalları:** Saytı yerləşdirən server hər sorğu üçün IP ünvanı, brauzer məlumatları, sorğulanan səhifə və vaxtdan ibarət standart giriş jurnalı aparır. Bu jurnallar insanların profilini yaratmaq üçün deyil, yalnız təhlükəsizlik və nasazlıqların aradan qaldırılması üçün istifadə olunur.",
           "**Ziyarət statistikası:** Öz serverimizdə işləyən Umami səhifə baxışlarını və bir neçə əməliyyatı (dil dəyişikliyi, mövzu dəyişikliyi, axtarışın nəticə verib-vermədiyi, siyahıya qoşulma) sayır. Umami kukilərdən istifadə etmir. Axtarışa yazdığınız sözlər və e-poçt ünvanınız statistika sisteminə göndərilmir.",
@@ -270,6 +274,11 @@
               "sth-pomo",
               "Pomodoro müddətlərini və vəziyyətini yadda saxlayır.",
               "Siz silənədək"
+            ],
+            [
+              "sth-prayer",
+              "Namaz vaxtları üçün sonuncu seçdiyiniz vilayəti və ya məkanı xatırlayır.",
+              "Siz silənə qədər"
             ]
           ]
         }
@@ -355,8 +364,10 @@
       "flip": "Vərəqli saat",
       "words": "Sözlə saat",
       "rings": "Halqalı saat",
-      "bigdate": "Böyük tarix"
-    }
+      "bigdate": "Böyük tarix",
+      "stack": "Analoq və altında rəqəmsal"
+    },
+    "source": "Bu saat cihazınızın saatından asılı deyil: Saat Tarih serverinin NTP ilə sinxronlaşdırılmış saatından götürülür və hər 15 dəqiqədən bir yenidən ölçülür."
   },
   "calendar": {
     "title": "{year} təqvimi: Türkiyənin rəsmi bayramları və Ramazan | Saat Tarih",
@@ -1175,5 +1186,69 @@
   },
   "embed": {
     "link": "Saat Tarih"
+  },
+  "prayer": {
+    "title": "Namaz vaxtları: yerləşdiyiniz məkana görə | Saat Tarih",
+    "description": "Yerləşdiyiniz məkana və ya Türkiyə vilayətinə görə sübh, gün çıxır, zöhr, əsr, məğrib və işa namazı vaxtları, növbəti vaxta qalan müddət və aylıq cədvəl.",
+    "h1": "Namaz vaxtları",
+    "lead": "Yerləşdiyiniz məkana və ya seçdiyiniz vilayətə görə sübh, gün çıxır, zöhr, əsr, məğrib və işa vaxtları. Növbəti vaxta qalan müddət server saatı ilə canlı axır.",
+    "cityTitle": "{city} namaz vaxtları: Sübh, Zöhr, Əsr | Saat Tarih",
+    "cityDescription": "{city} üçün bugünkü namaz vaxtları: sübh, gün çıxır, zöhr, əsr, məğrib və işa, növbəti vaxta qalan müddət və aylıq vaxt cədvəli.",
+    "cityH1": "{city} namaz vaxtları",
+    "cityLead": "{city} üçün bugünkü sübh, gün çıxır, zöhr, əsr, məğrib və işa vaxtları və növbəti vaxta qalan müddət. Aşağıda bu ayın bütün günləri də var.",
+    "chooseLabel": "Vilayət",
+    "useLocation": "Məkanımı istifadə et",
+    "locating": "Məkan müəyyən edilir…",
+    "locationDenied": "Məkan müəyyən edilə bilmədi. Brauzer icazəsini yoxlayın və ya siyahıdan vilayət seçin.",
+    "locationUnsupported": "Brauzeriniz məkanı dəstəkləmir. Siyahıdan vilayət seçin.",
+    "yourLocation": "Məkanınız",
+    "locationNote": "Məkanınız yalnız cihazınızda vaxtların hesablanması üçün istifadə olunur; serverə göndərilmir.",
+    "nextIn": "{name} vaxtına qalan müddət",
+    "todayHeading": "Bugünkü vaxtlar",
+    "colPrayer": "Vaxt",
+    "colTime": "Saat",
+    "monthHeading": "{month} {year} vaxt cədvəli",
+    "colDay": "Gün",
+    "prevMonth": "Əvvəlki ay",
+    "nextMonth": "Növbəti ay",
+    "tableCaption": "{place}: {month} {year} namaz vaxtları",
+    "names": {
+      "fajr": "Sübh",
+      "sunrise": "Gün çıxır",
+      "dhuhr": "Zöhr",
+      "asr": "Əsr",
+      "maghrib": "Məğrib",
+      "isha": "İşa"
+    },
+    "otherPlace": "Başqa məkan üçün namaz vaxtları səhifəsinə keçin",
+    "methodHeading": "Vaxtlar necə hesablanır?",
+    "method": "Vaxtlar məkanın enlik və uzunluğundan günəşin vəziyyəti hesablanaraq tapılır: sübh günəş üfüqdən 18° aşağıda olanda, işa 17° aşağıda olanda, əsr isə cismin kölgəsi onun boyuna bərabər olanda başlayır. Nəticələr Türkiyə Diyanət İşləri Başqanlığının (Diyanet) vilayət mərkəzləri üçün dərc etdiyi vaxtlarla müqayisə edilərək tənzimlənib; 81 vilayət mərkəzində 2026-cı ilin oktyabr vaxtlarında fərq ən çox 1 dəqiqədir. Rəsmi vaxt üçün Diyanet əsas götürülməlidir; azan vaxtları rayondan rayona və məsciddən məscidə bir neçə dəqiqə fərqlənə bilər.",
+    "provincesHeading": "Vilayətlər üzrə namaz vaxtları",
+    "provincesLead": "Vilayət seçin.",
+    "noscript": "Namaz vaxtlarını görmək üçün brauzerdə JavaScript aktiv olmalıdır.",
+    "faqHeading": "Tez-tez verilən suallar",
+    "faq": [
+      {
+        "q": "Namaz vaxtları necə hesablanır?",
+        "a": "Məkanınızın enlik və uzunluğundan günəşin gün ərzindəki vəziyyəti hesablanır. Sübh günəş üfüqdən 18°, işa 17° aşağıda olanda, əsr isə cismin kölgəsi onun boyuna bərabər olanda başlayır. Hesablama brauzerinizdə aparılır."
+      },
+      {
+        "q": "Məkanım serverə göndərilirmi?",
+        "a": "Xeyr. Məkan icazəsi versəniz, koordinatlar yalnız cihazınızda vaxtların hesablanması üçün istifadə olunur; serverə göndərilmir və statistika hadisələrinə düşmür. Son seçiminiz yalnız brauzerinizin yerli yaddaşında saxlanılır."
+      },
+      {
+        "q": "Vaxtlar Diyanetlə eynidirmi?",
+        "a": "Hesablama Diyanet vaxtlarına uyğun tənzimlənib və vilayət mərkəzlərində ən çox 1 dəqiqə fərq çıxır. Yenə də rəsmi vaxtlar Türkiyə Diyanət İşləri Başqanlığının dərc etdikləridir."
+      },
+      {
+        "q": "İftar və səhər yeməyi (səhur) saatı nədir?",
+        "a": "İftar məğrib azanı vaxtındadır, səhur isə sübh (imsak) vaxtına qədərdir. Ramazan ayında hər iki vaxta aylıq cədvəldən baxa bilərsiniz."
+      },
+      {
+        "q": "Xaricdə istifadə edə bilərəmmi?",
+        "a": "Bəli. “Məkanımı istifadə et” düyməsi ilə dünyanın istənilən yerində vaxtlar hesablanır. Çox yüksək enliklərdə sübh və ya işa bucağı yaranmaya bilər; bu halda gecənin yeddidə biri qaydası ilə təxmini dəyər verilir."
+      }
+    ],
+    "search": "namaz vaxtları azan sübh zöhr əsr məğrib işa iftar səhur namaz vakitleri prayer times"
   }
 }
