@@ -48,7 +48,7 @@
       var today = dayStart(S.nowDate()), shown = 0;
       var df = new Intl.DateTimeFormat(S.locale, { weekday: "long", day: "numeric", month: "long" });
       list.forEach(function (e) {
-        if (shown >= 6 || skip[e.k] || e.t === "school") return;
+        if (shown >= 6 || skip[e.k] || e.t === "school" || e.t === "exam") return;
         var d = parse(e.d);
         if (d < today) return;
         shown++;

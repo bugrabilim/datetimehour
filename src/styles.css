@@ -480,6 +480,7 @@ fieldset.days legend { padding: 0 0.4rem; font-weight: 600; }
 .cd-name { margin: 0; text-align: center; font-weight: 700; font-size: 1.4rem; color: var(--accent); }
 .cdp { text-align: center; }
 .cdp .tool-head { text-align: start; }
+.d-exam, .lg-exam { background: var(--accent-soft); box-shadow: inset 0 0 0 2px var(--accent); color: var(--text); }
 .d-school, .lg-school { background: var(--surface-2); text-decoration: underline dotted; text-underline-offset: 3px; color: var(--text); }
 
 /* Tarih hesaplayıcı, gömme kodu, gömülü widget */

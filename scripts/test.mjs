@@ -82,7 +82,7 @@ for (const f of htmlFiles) {
     }
     check(/action="https:\/\/bumbagroup\.com\/api\/liste\/katil"/.test(h) && /name="riza" value="on" required/.test(h) && !/name="riza"[^>]*checked/.test(h), `${name}: liste formu hatalı`);
     check(/name="site" value="[a-z-]+"/.test(h) && /name="web_sitesi"/.test(h), `${name}: liste formu alanları eksik`);
-    check(/name="dil" value="(tr|en)"/.test(h), `${name}: liste dil alanı yok`);
+    check(/name="dil" value="(tr|en|de|az|ar)"/.test(h), `${name}: liste dil alanı yok`);
     check(/datetime="\d{4}-\d{2}-\d{2}"/.test(h), `${name}: güncelleme tarihi yok`);
     const ld = [...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)];
     check(ld.length === 1, `${name}: JSON-LD yok`);
