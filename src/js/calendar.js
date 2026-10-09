@@ -48,7 +48,7 @@
       var today = dayStart(S.nowDate()), shown = 0;
       var df = new Intl.DateTimeFormat(S.locale, { weekday: "long", day: "numeric", month: "long" });
       list.forEach(function (e) {
-        if (shown >= 6 || skip[e.k] || e.t === "school") return;
+        if (shown >= 6 || skip[e.k] || e.t === "school" || e.t === "exam") return;
         var d = parse(e.d);
         if (d < today) return;
         shown++;
@@ -80,7 +80,7 @@
         if (d >= today && (!best || d < best)) best = d;
       });
       if (!best && keys[0] === "newYear") best = new Date(today.getFullYear() + 1, 0, 1);
-      if (!best) { disp.textContent = C.noTarget; dateEl.textContent = "–"; return; }
+      if (!best) { disp.textContent = C.noTarget; disp.classList.add("is-empty"); dateEl.textContent = "–"; return; }
       dateEl.textContent = long.format(best);
       function tick() {
         var rem = best.getTime() - S.nowMs();
@@ -90,6 +90,6 @@
         disp.textContent = (d ? d + " " + S.T.daysShort + " " : "") + p2(h) + ":" + p2(m) + ":" + p2(s);
       }
       tick(); setInterval(tick, 250);
-    }).catch(function () { disp.textContent = C.noTarget; });
+    }).catch(function () { disp.textContent = C.noTarget; disp.classList.add("is-empty"); });
   }
 })();

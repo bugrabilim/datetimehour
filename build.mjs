@@ -20,6 +20,8 @@ const LANGS = ALL_LANGS.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", 
 const I = Object.fromEntries(LANGS.map((l) => [l, readJson(`src/i18n/${l}.json`)]));
 const CITIES = readJson("src/data/cities.json");
 const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية" };
+/* Ortak liste servisinin bildiği diller (bumbagroup.com/api/liste/katil); servis yeni dil eklediğinde buraya yaz */
+const LIST_LANGS = ["tr", "en"];
 const DIR = (l) => (l === "ar" ? "rtl" : "ltr");
 const ARROW = (l) => (l === "ar" ? "←" : "→");
 /* Türkçe dışındaki dillerin adresleri İngilizce tablodan türetilir: /en/ → /<dil>/ */
@@ -231,7 +233,7 @@ function listForm(lang, pagePath) {
   <p class="form-msg err" id="liste-hata" role="alert">${esc(l.err)}</p>
   <form action="https://bumbagroup.com/api/liste/katil" method="post">
     <input type="hidden" name="site" value="${esc(cfg.listKey)}">
-    <input type="hidden" name="dil" value="${lang === "tr" ? "tr" : "en"}">
+    <input type="hidden" name="dil" value="${LIST_LANGS.includes(lang) ? lang : "en"}">
     <input type="hidden" name="kaynak" value="${esc(url)}">
     <input type="hidden" name="donus" value="${esc(url)}">
     <div class="field">
@@ -660,9 +662,10 @@ function buildPrivacy(lang) {
 /* ---------- Takvim: etkinlikler ve yıl sayfaları ---------- */
 const HOL = readJson("src/data/holidays.json");
 HOL.school = readJson("src/data/school.json");
+HOL.exams = readJson("src/data/exams.json");
 const HOL_YEARS = Object.keys(HOL.years).map(Number).sort((a, b) => a - b);
 const BUILD_YEAR = Math.min(Math.max(new Date().getFullYear(), HOL_YEARS[0]), HOL_YEARS[HOL_YEARS.length - 1]);
-const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school" };
+const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school", exam: "exam" };
 const yearPath = (lang, y) => `${ROUTES[lang].calendar}${y}/`;
 const YEAR_DATA = Object.fromEntries(HOL_YEARS.map((y) => [y, computeYear(y, HOL)]));
 
@@ -692,7 +695,8 @@ function monthTable(lang, year, month, cy, ev) {
       const es = ev.byDate[date] || [];
       const rank = ["holiday", "half", "religious", "special"].find((t) => es.some((e) => e.type === t));
       const school = es.some((e) => e.type === "school") || inRange(date, cy.schoolRanges);
-      const cls = [rank && `d-${rank}`, !rank && school && "d-school", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
+      const exam = es.some((e) => e.type === "exam") || inRange(date, cy.examRanges);
+      const cls = [rank && `d-${rank}`, !rank && school && "d-school", !rank && exam && "d-exam", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
       const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
       const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
       tr += `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}>${d}${label}</td>`;
@@ -740,7 +744,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   ];
   const ev = { byDate };
   const months = Array.from({ length: 12 }, (_, i) => `<div class="ymonth-wrap">${monthTable(lang, year, i + 1, cy, ev)}</div>`).join("");
-  const legend = ["holiday", "half", "religious", "ramadan", "special", ...(cy.events.some((e) => e.type === "school") ? ["school"] : []), "weekend", "today"]
+  const legend = ["holiday", "half", "religious", "ramadan", "special", ...(cy.events.some((e) => e.type === "school") ? ["school"] : []), ...(cy.events.some((e) => e.type === "exam") ? ["exam"] : []), "weekend", "today"]
     .map((k) => `<li><span class="lg lg-${k}" aria-hidden="true"></span>${esc(cal.types[k])}</li>`).join("");
   const rows = cy.events
     .map((e) => `<tr data-d="${e.date}"><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`)
@@ -764,6 +768,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     <div class="year-grid" data-year="${year}">${months}</div>
     <p class="meta">${esc(cal.note)}</p>
     ${cy.events.some((e) => e.type === "school") ? `<p class="meta">${esc(cal.schoolNote)}</p>` : ""}
+    ${cy.events.some((e) => e.type === "exam") ? `<p class="meta">${esc(cal.examNote)}</p>` : ""}
   </div>
 </section>
 <section class="section" id="events" aria-labelledby="events-h">
@@ -1222,6 +1227,14 @@ const CDP = [
   { key: "aug30", keys: ["aug30"], tr: "30-agustos", en: "august-30" },
   { key: "semester", keys: ["semester"], tr: "yariyil-tatili", en: "mid-year-break", school: true },
   { key: "karne", keys: ["term1End", "schoolEnd"], tr: "karne-gunu", en: "report-card-day", school: true },
+  { key: "schoolStart", keys: ["schoolStart"], tr: "okul-acilisi", en: "school-start", school: true },
+  { key: "midterm", keys: ["midterm1", "midterm2"], tr: "ara-tatil", en: "mid-term-break", school: true },
+  { key: "yks", keys: ["yksTyt"], tr: "yks", en: "yks", exam: true },
+  { key: "kpss", keys: ["kpssOrta", "kpssDhbt"], tr: "kpss", en: "kpss", exam: true },
+  { key: "ales", keys: ["ales3"], tr: "ales", en: "ales", exam: true },
+  { key: "yds", keys: ["yds2"], tr: "yds", en: "yds", exam: true },
+  { key: "aof", keys: ["aofMid1", "aofFinal1", "aofMid2", "aofFinal2", "aofSummer"], tr: "aof-sinavi", en: "aof-exam", exam: true },
+  { key: "aol", keys: ["aolWritten"], tr: "aol-sinavi", en: "aol-exam", exam: true },
 ];
 const cdpPath = (lang, x) => `${ROUTES[lang].countdown}${x[lang] || x.en}/`;
 
@@ -1267,6 +1280,7 @@ function buildCdp(lang, x) {
     <h2 id="years-h">${esc(tpl(s.yearsHeading, v))}</h2>
     <div class="table-wrap"><table class="events-table"><caption>${esc(tpl(s.yearsCaption, v))}</caption><thead><tr><th scope="col">${esc(s.colYear)}</th><th scope="col">${esc(s.colDate)}</th></tr></thead><tbody>${rowsHtml}</tbody></table></div>
     ${x.school ? `<p class="meta">${esc(s.school)}</p>` : ""}
+    ${x.exam ? `<p class="meta">${esc(s.exam)}</p>` : ""}
     <h2>${esc(s.customHeading)}</h2>
     <p>${esc(s.customText)} <a href="${ROUTES[lang].countdown}">${esc(s.customLink)} ${ARROW(lang)}</a></p>
     <h2>${esc(s.listHeading)}</h2>

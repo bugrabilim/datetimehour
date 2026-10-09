@@ -82,7 +82,7 @@ for (const f of htmlFiles) {
     }
     check(/action="https:\/\/bumbagroup\.com\/api\/liste\/katil"/.test(h) && /name="riza" value="on" required/.test(h) && !/name="riza"[^>]*checked/.test(h), `${name}: liste formu hatalı`);
     check(/name="site" value="[a-z-]+"/.test(h) && /name="web_sitesi"/.test(h), `${name}: liste formu alanları eksik`);
-    check(/name="dil" value="(tr|en)"/.test(h), `${name}: liste dil alanı yok`);
+    check(/name="dil" value="(tr|en|de|az|ar)"/.test(h), `${name}: liste dil alanı yok`);
     check(/datetime="\d{4}-\d{2}-\d{2}"/.test(h), `${name}: güncelleme tarihi yok`);
     const ld = [...h.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)];
     check(ld.length === 1, `${name}: JSON-LD yok`);
@@ -149,6 +149,11 @@ for (const l of LANGS.filter((x) => x !== "tr")) {
     if (Array.isArray(a) && Array.isArray(b)) check(a.length === b.length, `${l}.json: dizi uzunluğu farklı: ${k}`);
   }
   for (const k of dict[l].keys()) check(dict.tr.has(k) || /^client\.words\.(hours|one)$/.test(k), `tr.json'da yok: ${k} (${l})`);
+}
+for (const l of LANGS) {
+  const evs = JSON.parse(fs.readFileSync(path.join(DIST, "assets", `events-${l}.json`), "utf8"));
+  check(evs.length > 100 && evs.every((e) => e.n && /^\d{4}-\d\d-\d\d$/.test(e.d)), `events-${l}.json: adsız ya da hatalı etkinlik`);
+  check(evs.some((e) => e.t === "exam"), `events-${l}.json: sınav etkinliği yok`);
 }
 for (const l of LANGS) check(fs.existsSync(path.join(DIST, "assets", `search-${l}.json`)), `search-${l}.json yok`);
 check(sm.split("<url>").slice(1).every((u) => LANGS.every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");

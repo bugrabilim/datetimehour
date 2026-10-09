@@ -1,0 +1,138 @@
+{
+ "source": "ÖSYM sınav takvimi (osym.gov.tr, 9 Ekim 2026'da okundu); MEB ortak yazılı sınav takvimi (ODSGM) ve AÖL duyuruları (meb.gov.tr, aol.meb.gov.tr); AÖF akademik takvimi (Anadolu Üniversitesi, 6 Ekim 2026 güncellemesi). YKS/KPSS/LGS 2027 tarihleri henüz açıklanmadı, eklenmedi.",
+ "updated": "2026-10-09",
+ "events": [
+  {
+   "key": "yksTyt",
+   "date": "2026-06-20"
+  },
+  {
+   "key": "yksAytYdt",
+   "date": "2026-06-21"
+  },
+  {
+   "key": "alesApply",
+   "date": "2026-10-07",
+   "to": "2026-10-15"
+  },
+  {
+   "key": "tryos",
+   "date": "2026-10-11"
+  },
+  {
+   "key": "eyds1",
+   "date": "2026-10-17"
+  },
+  {
+   "key": "kpssOrta",
+   "date": "2026-10-25"
+  },
+  {
+   "key": "kpssOnResult",
+   "date": "2026-10-30"
+  },
+  {
+   "key": "kpssDhbt",
+   "date": "2026-11-01"
+  },
+  {
+   "key": "dus2",
+   "date": "2026-11-01"
+  },
+  {
+   "key": "eus",
+   "date": "2026-11-07"
+  },
+  {
+   "key": "kpssOrtaResult",
+   "date": "2026-11-19"
+  },
+  {
+   "key": "yds2",
+   "date": "2026-11-22"
+  },
+  {
+   "key": "ales3",
+   "date": "2026-11-29"
+  },
+  {
+   "key": "ydsResult",
+   "date": "2026-12-10"
+  },
+  {
+   "key": "kpssTercih",
+   "date": "2026-12-17",
+   "to": "2026-12-24"
+  },
+  {
+   "key": "alesResult",
+   "date": "2026-12-17"
+  },
+  {
+   "key": "eyds2",
+   "date": "2026-12-19"
+  },
+  {
+   "key": "common1",
+   "date": "2026-11-11",
+   "to": "2026-11-12"
+  },
+  {
+   "key": "common2",
+   "date": "2027-01-05",
+   "to": "2027-01-06"
+  },
+  {
+   "key": "common3",
+   "date": "2027-04-06",
+   "to": "2027-04-07"
+  },
+  {
+   "key": "common4",
+   "date": "2027-06-08",
+   "to": "2027-06-09"
+  },
+  {
+   "key": "aolRegister",
+   "date": "2026-09-11",
+   "to": "2026-10-12"
+  },
+  {
+   "key": "aolEsinav",
+   "date": "2026-11-28",
+   "to": "2027-01-18"
+  },
+  {
+   "key": "aolWritten",
+   "date": "2026-12-20"
+  },
+  {
+   "key": "aolResult",
+   "date": "2027-01-21"
+  },
+  {
+   "key": "aofMid1",
+   "date": "2026-12-05",
+   "to": "2026-12-06"
+  },
+  {
+   "key": "aofFinal1",
+   "date": "2027-01-16",
+   "to": "2027-01-17"
+  },
+  {
+   "key": "aofMid2",
+   "date": "2027-04-10",
+   "to": "2027-04-11"
+  },
+  {
+   "key": "aofFinal2",
+   "date": "2027-05-29",
+   "to": "2027-05-30"
+  },
+  {
+   "key": "aofSummer",
+   "date": "2027-08-21"
+  }
+ ]
+}
