@@ -183,6 +183,7 @@ const MODELS = [
 
 const PALETTES = ["auto", "night", "paper", "amber", "green", "blue", "purple", "red", "cyan", "sunset", "forest", "ocean", "rose", "mono"];
 const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+const ICON_INFO = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="0.6" fill="currentColor"/></svg>`;
 const ICON_CLOUD = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 8.5 4.5 4.5 0 0 1 17.5 18H7z"/></svg>`;
 const ICON_SOUND = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>`;
 
@@ -226,8 +227,14 @@ function clockStage(lang, { tz = "" } = {}) {
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
 </section>
 <div class="source-note">
-  <p class="meta source-line">${esc(s.source)}</p>
-  <p class="meta sync-line" data-sync-status>&nbsp;</p>
+  <button type="button" class="icon-btn info-btn" data-info-open aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
+  <noscript><p class="meta source-line">${esc(s.source)}</p></noscript>
+  <dialog class="info-dialog" id="info-dialog" aria-labelledby="info-title">
+    <h2 id="info-title">${esc(s.infoTitle)}</h2>
+    <p class="meta source-line">${esc(s.source)}</p>
+    <p class="sync-line" data-sync-status>&nbsp;</p>
+    <button type="button" class="btn" data-info-close>${esc(s.infoClose)}</button>
+  </dialog>
 </div>`;
 }
 

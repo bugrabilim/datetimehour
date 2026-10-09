@@ -436,7 +436,10 @@
       "bigdate": "Großes Datum",
       "stack": "Analog mit digitaler Anzeige darunter"
     },
-    "source": "Diese Uhr ist unabhängig von Ihrem Gerät: Sie wird von der per NTP synchronisierten Uhr des Saat-Tarih-Servers abgelesen und alle 15 Minuten neu gemessen."
+    "source": "Diese Uhr ist unabhängig von Ihrem Gerät: Sie wird von der per NTP synchronisierten Uhr des Saat-Tarih-Servers abgelesen und alle 15 Minuten neu gemessen.",
+    "info": "Info zur Zeitquelle",
+    "infoTitle": "Woher kommt diese Uhrzeit?",
+    "infoClose": "Schließen"
   },
   "calendar": {
     "title": "Kalender {year}: Feiertage in der Türkei und Ramadan | Saat Tarih",

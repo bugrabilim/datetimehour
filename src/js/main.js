@@ -56,6 +56,18 @@
     m.addEventListener("keydown", function (e) { if (e.key === "Escape") { m.removeAttribute("open"); var sm = m.querySelector("summary"); if (sm) sm.focus(); } });
   });
 
+  /* ---------- Saat kaynağı bilgi penceresi ---------- */
+  (function infoDialog() {
+    var dlg = doc.getElementById("info-dialog"), open = doc.querySelector("[data-info-open]");
+    if (!dlg || !open) return;
+    function show() { if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", ""); }
+    function hide() { if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open"); open.focus(); }
+    open.addEventListener("click", show);
+    dlg.addEventListener("click", function (e) {
+      if (e.target === dlg || (e.target.closest && e.target.closest("[data-info-close]"))) hide();
+    });
+  })();
+
   /* ---------- Menü (dar ekranda açılır) ---------- */
   (function navMenu() {
     var btn = doc.querySelector("[data-nav-toggle]"), nav = doc.getElementById("site-nav");
