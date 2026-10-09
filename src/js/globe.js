@@ -11,7 +11,8 @@
   var G = S.cfg.globe || {};
   var cities = G.cities || [];
   var RAD = Math.PI / 180;
-  var TILT = 23 * RAD, sinT = Math.sin(TILT), cosT = Math.cos(TILT);
+  var TILT0 = 23, tilt = TILT0, sinT = 0, cosT = 1; // görüş merkezinin enlemi (derece)
+  var zoom = 1, ZMIN = 1, ZMAX = 6, dirty = true;
   var SPEED = 3; // derece/saniye: bir tur 2 dakika
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var rtl = doc.documentElement.dir === "rtl";
@@ -19,8 +20,8 @@
   // Başlangıç: cihazın saat dilimine denk gelen boylam biraz batıda, kendi bölgesi görünür
   var lon0 = -new Date().getTimezoneOffset() / 4 - 10;
   var mask = null, MW = 720, MH = 360;
-  var px = 0, dpr = 1, R = 0, C = 0, N = 0;
-  var pIdx, pRow, pLon, pSinLat, pCosLat, pCosL, pSinL, pShade, pAlpha, img;
+  var px = 0, dpr = 1, R = 0, R0 = 0, C = 0, N = 0;
+  var pIdx, pLat, pLon, pSinLat, pCosLat, pCosL, pSinL, pShade, pAlpha, img;
   var col = {};
 
   function hex(v, fb) {
@@ -48,22 +49,27 @@
     var css = canvas.clientWidth || 320;
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     var size = Math.round(css * dpr);
-    if (size === px && pIdx) return;
-    px = size;
-    canvas.width = canvas.height = px;
+    if (size !== px) { px = size; canvas.width = canvas.height = px; img = ctx.createImageData(px, px); dirty = true; }
     C = px / 2;
-    R = C - 2 * dpr;
-    var list = [];
+    R0 = C - 2 * dpr;
+  }
+
+  // Piksel başına ters izdüşüm (enlem/boylam); yalnız boyut, yakınlaştırma ya da eğim değişince hesaplanır
+  function geometry() {
+    dirty = false;
+    R = R0 * zoom;
+    sinT = Math.sin(tilt * RAD); cosT = Math.cos(tilt * RAD);
+    var list = [], lim = 1 + 2 / R;
     for (var j = 0; j < px; j++) {
       var y = (C - (j + 0.5)) / R;
       for (var i = 0; i < px; i++) {
-        var x = (i + 0.5 - C) / R, r2 = x * x + y * y;
-        if (r2 <= 1 + 2 / R) list.push(j * px + i);
+        var x = (i + 0.5 - C) / R;
+        if (x * x + y * y <= lim) list.push(j * px + i);
       }
     }
     N = list.length;
     pIdx = new Int32Array(list);
-    pRow = new Int32Array(N); pLon = new Float32Array(N);
+    pLat = new Float32Array(N); pLon = new Float32Array(N);
     pSinLat = new Float32Array(N); pCosLat = new Float32Array(N);
     pCosL = new Float32Array(N); pSinL = new Float32Array(N);
     pShade = new Float32Array(N); pAlpha = new Uint8ClampedArray(N);
@@ -76,14 +82,15 @@
       var sl = z * sinT + yy * cosT;
       var lat = Math.asin(Math.max(-1, Math.min(1, sl)));
       var lr = Math.atan2(xx, z * cosT - yy * sinT);
-      pRow[k] = Math.min(MH - 1, Math.max(0, Math.floor((90 - lat / RAD) * MH / 180)));
+      pLat[k] = lat / RAD;
       pLon[k] = lr / RAD;
       pSinLat[k] = Math.sin(lat); pCosLat[k] = Math.cos(lat);
       pCosL[k] = Math.cos(lr); pSinL[k] = Math.sin(lr);
       pShade[k] = 0.7 + 0.3 * z;
       pAlpha[k] = Math.max(0, Math.min(1, (1 - d) * R + 0.5)) * 255;
     }
-    img = ctx.createImageData(px, px);
+    var data = img.data;
+    for (var q = 3; q < data.length; q += 4) data[q] = 0; // önceki karenin disk dışı kalıntısı
   }
 
   // Güneş'in tepe noktası (yaklaşık; USNO formülü, birkaç yay dakikası)
@@ -111,31 +118,46 @@
     };
   }
 
+  // Yüzey: kara oranı maskeden çift doğrusal örnekle (yumuşak kıyı), gündüz/gece alacakaranlık geçişli
   function paintSurface(s) {
     var data = img.data, sd = Math.sin(s.dec), cd = Math.cos(s.dec);
     var D = (lon0 - s.lon) * RAD, cD = Math.cos(D), sD = Math.sin(D);
     var O = col.ocean, L = col.land, On = col.oceanN, Ln = col.landN;
-    var scale = MW / 360, base = lon0 + 540;
+    var sx = MW / 360, sy = MH / 180, base = lon0 + 540;
     for (var k = 0; k < N; k++) {
-      var c = ((((pLon[k] + base) % 360) * scale) | 0) % MW;
-      var land = mask ? mask[pRow[k] * MW + c] : 0;
+      var lf = 0;
+      if (mask) {
+        var cf = ((pLon[k] + base) % 360) * sx - 0.5;
+        var c0 = Math.floor(cf), fx = cf - c0;
+        c0 = (c0 + MW) % MW;
+        var c1 = (c0 + 1) % MW;
+        var rf = (90 - pLat[k]) * sy - 0.5;
+        var r0 = Math.floor(rf), fy = rf - r0;
+        if (r0 < 0) { r0 = 0; fy = 0; } else if (r0 >= MH - 1) { r0 = MH - 2; fy = 1; }
+        var a0 = r0 * MW, a1 = a0 + MW;
+        var v = (mask[a0 + c0] * (1 - fx) + mask[a0 + c1] * fx) * (1 - fy) + (mask[a1 + c0] * (1 - fx) + mask[a1 + c1] * fx) * fy;
+        lf = (v - 0.5) * 2.5 + 0.5;
+        lf = lf <= 0 ? 0 : lf >= 1 ? 1 : lf;
+      }
       var cz = pSinLat[k] * sd + pCosLat[k] * cd * (pCosL[k] * cD - pSinL[k] * sD);
       var t = (cz + 0.1) / 0.16;
       t = t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t);
-      var a = land ? L : O, b = land ? Ln : On, sh = pShade[k], o = pIdx[k] * 4;
-      data[o] = (b[0] + (a[0] - b[0]) * t) * sh;
-      data[o + 1] = (b[1] + (a[1] - b[1]) * t) * sh;
-      data[o + 2] = (b[2] + (a[2] - b[2]) * t) * sh;
+      var sh = pShade[k], o = pIdx[k] * 4;
+      var dr = O[0] + (L[0] - O[0]) * lf, dg = O[1] + (L[1] - O[1]) * lf, db = O[2] + (L[2] - O[2]) * lf;
+      var nr = On[0] + (Ln[0] - On[0]) * lf, ng = On[1] + (Ln[1] - On[1]) * lf, nb = On[2] + (Ln[2] - On[2]) * lf;
+      data[o] = (nr + (dr - nr) * t) * sh;
+      data[o + 1] = (ng + (dg - ng) * t) * sh;
+      data[o + 2] = (nb + (db - nb) * t) * sh;
       data[o + 3] = pAlpha[k];
     }
     ctx.putImageData(img, 0, 0);
   }
 
-  var myOffset = Math.round(-new Date().getTimezoneOffset() / 60);
+  // Kırmızı çizgi: sıfır noktası, Greenwich meridyeni (UTC)
   function meridians() {
     ctx.lineWidth = 1 * dpr;
     for (var m = -12; m < 12; m++) {
-      var lon = m * 15, mine = m === myOffset;
+      var lon = m * 15, mine = m === 0;
       ctx.beginPath();
       var pen = false;
       for (var lat = -78; lat <= 78; lat += 3) {
@@ -163,7 +185,7 @@
       if (e.z < 0.45) continue;
       var txt = n === 0 ? "UTC" : "UTC" + (n > 0 ? "+" : "−") + Math.abs(n);
       ctx.globalAlpha = Math.min(1, (e.z - 0.45) / 0.25);
-      halo(txt, e.x, e.y, n === myOffset ? col.accent : col.label);
+      halo(txt, e.x, e.y, n === 0 ? col.accent : col.label);
       ctx.globalAlpha = 1;
     }
   }
@@ -192,9 +214,10 @@
   }
 
   function citiesLayer() {
-    var pts = cities.map(function (c) { var p = proj(c.lat, c.lon); p.c = c; return p; })
-      .filter(function (p) { return p.z > 0.12; })
-      .sort(function (a, b) { return b.z - a.z; });
+    var pts = cities.filter(function (c) { return c.m || zoom >= 1.8; })
+      .map(function (c) { var p = proj(c.lat, c.lon); p.c = c; return p; })
+      .filter(function (p) { return p.z > 0.12 && p.x > -40 && p.x < px + 40 && p.y > -20 && p.y < px + 20; })
+      .sort(function (a, b) { return ((b.c.m ? 1 : 0) - (a.c.m ? 1 : 0)) || b.z - a.z; });
     var boxes = [];
     ctx.font = "600 " + Math.round(11.5 * dpr) + "px system-ui, sans-serif";
     ctx.textBaseline = "middle";
@@ -232,6 +255,7 @@
 
   function draw() {
     if (!px) return;
+    if (dirty) geometry();
     var ms = S.nowMs(), s = sun(ms);
     paintSurface(s);
     meridians();
@@ -243,16 +267,18 @@
   }
 
   // Döngü: görünürken ve sekme açıkken ~30 kare/sn; hareketi azalt tercihinde dönmez, 30 sn'de bir yenilenir
-  var visible = true, last = 0, raf = 0, dragging = false, resumeAt = 0;
+  var visible = true, last = 0, raf = 0, dragging = false, resumeAt = 0, pending = true, lastDraw = 0;
   function frame(ts) {
     raf = 0;
     if (!visible || doc.hidden) return;
     if (ts - last >= 33) {
       var dt = last ? Math.min(0.1, (ts - last) / 1000) : 0;
       last = ts;
-      if (!reduce && !dragging && Date.now() >= resumeAt) lon0 -= SPEED * dt;
+      var spin = !reduce && !dragging && zoom < 1.2 && Date.now() >= resumeAt;
+      if (spin) lon0 -= SPEED * dt;
       lon0 = ((lon0 + 540) % 360) - 180;
-      draw();
+      // Dönmüyorken (yakınlaştırılmış) yalnız etkileşimde ve saniyede bir çiz
+      if (spin || pending || ts - lastDraw >= 1000) { pending = false; lastDraw = ts; draw(); }
     }
     if (!reduce) raf = requestAnimationFrame(frame);
   }
@@ -264,21 +290,59 @@
   doc.addEventListener("visibilitychange", function () { if (!doc.hidden) kick(); });
   if (reduce) setInterval(function () { if (visible && !doc.hidden) draw(); }, 30000);
 
-  // Sürükleyerek çevirme (yatay); dikey kaydırma sayfaya kalır (touch-action: pan-y)
-  var lastX = 0;
+  // Etkileşim: sürükle (yatay = boylam, dikey = enlem), iki parmakla ya da Ctrl/trackpad tekerleğiyle yakınlaştır, + ve − düğmeleri
+  function setZoom(z) {
+    z = Math.max(ZMIN, Math.min(ZMAX, z));
+    if (Math.abs(z - zoom) < 0.001) return;
+    zoom = z; dirty = true;
+    fig.classList.toggle("is-zoomed", zoom > 1.01);
+    if (zoomOut) zoomOut.disabled = zoom <= ZMIN + 0.001;
+    if (zoomIn) zoomIn.disabled = zoom >= ZMAX - 0.001;
+    redraw();
+  }
+  function setTilt(t) {
+    t = Math.max(-80, Math.min(80, t));
+    if (t !== tilt) { tilt = t; dirty = true; }
+  }
+  function redraw() { pending = true; if (reduce) draw(); else kick(); }
+  var pts = {}, lastX = 0, lastY = 0, pinch0 = 0, zoom0 = 1;
+  function pcount() { return Object.keys(pts).length; }
+  function pdist() { var k = Object.keys(pts); var a = pts[k[0]], b = pts[k[1]]; return Math.hypot(a.x - b.x, a.y - b.y); }
   canvas.addEventListener("pointerdown", function (e) {
-    dragging = true; lastX = e.clientX;
+    pts[e.pointerId] = { x: e.clientX, y: e.clientY };
     try { canvas.setPointerCapture(e.pointerId); } catch (x) {}
+    dragging = true; lastX = e.clientX; lastY = e.clientY;
+    if (pcount() === 2) { pinch0 = pdist(); zoom0 = zoom; }
   });
   canvas.addEventListener("pointermove", function (e) {
-    if (!dragging) return;
-    var dx = e.clientX - lastX; lastX = e.clientX;
-    lon0 -= (dx * dpr / R) / RAD;
-    if (reduce) draw(); else kick();
+    if (!pts[e.pointerId]) return;
+    pts[e.pointerId] = { x: e.clientX, y: e.clientY };
+    if (pcount() >= 2) { if (pinch0) setZoom(zoom0 * pdist() / pinch0); return; }
+    var dx = e.clientX - lastX, dy = e.clientY - lastY;
+    lastX = e.clientX; lastY = e.clientY;
+    var k = (dpr / R) / RAD;
+    lon0 -= dx * k;
+    if (zoom > 1.01 || e.pointerType === "mouse") setTilt(tilt + dy * k);
+    redraw();
   });
-  function endDrag() { if (dragging) { dragging = false; resumeAt = Date.now() + 2500; } }
-  canvas.addEventListener("pointerup", endDrag);
-  canvas.addEventListener("pointercancel", endDrag);
+  function endPointer(e) {
+    delete pts[e.pointerId];
+    if (pcount() < 2) pinch0 = 0;
+    if (pcount() === 1) { var k = Object.keys(pts)[0]; lastX = pts[k].x; lastY = pts[k].y; }
+    if (!pcount() && dragging) { dragging = false; resumeAt = Date.now() + 2500; }
+  }
+  canvas.addEventListener("pointerup", endPointer);
+  canvas.addEventListener("pointercancel", endPointer);
+  canvas.addEventListener("wheel", function (e) {
+    if (!e.ctrlKey && zoom <= 1.01) return; // sayfa kaydırması küreye takılmasın
+    e.preventDefault();
+    setZoom(zoom * Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)));
+  }, { passive: false });
+  canvas.addEventListener("dblclick", function () { tilt = TILT0; dirty = true; setZoom(zoom > 1.01 ? 1 : 2.5); redraw(); });
+  var zoomIn = fig.querySelector('[data-globe-zoom="in"]'), zoomOut = fig.querySelector('[data-globe-zoom="out"]');
+  if (zoomIn) zoomIn.addEventListener("click", function () { setZoom(zoom * 1.6); });
+  if (zoomOut) zoomOut.addEventListener("click", function () { setZoom(zoom / 1.6); if (zoom <= 1.01) { tilt = TILT0; dirty = true; redraw(); } });
+  if (zoomOut) zoomOut.disabled = true;
 
   // Tema değişince renkleri yeniden oku
   new MutationObserver(function () { readColors(); draw(); }).observe(doc.documentElement, { attributes: true, attributeFilter: ["data-theme"] });

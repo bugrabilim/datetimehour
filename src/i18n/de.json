@@ -219,7 +219,11 @@
     "upcomingAll": "Zum Jahreskalender",
     "upcomingNone": "Keine bevorstehenden Tage gefunden.",
     "globeLabel": "Rotierender Globus mit Tag und Nacht, Zeitzonen-Meridianen und der Ortszeit großer Städte",
-    "globeCaption": "Die helle Seite ist Tag, die dunkle Nacht. Die Linien sind die 15°-Zeitzonenmeridiane (mit UTC-Versatz); bei jeder Stadt steht die Ortszeit. Ziehen Sie den Globus, um ihn zu drehen."
+    "globeCaption": "Die helle Seite ist Tag, die dunkle Nacht. Die Linien sind die 15°-Zeitzonenmeridiane (mit UTC-Versatz); die rote Linie ist der Nullpunkt, der Meridian von Greenwich (UTC). Bei jeder Stadt steht die Ortszeit. Ziehen Sie den Globus, um ihn zu drehen; zoomen Sie mit zwei Fingern, dem Mausrad oder den Tasten + und −. Doppeltippen vergrößert oder kehrt zur Ausgangsansicht zurück.",
+    "globeTitle": "Weltkugel",
+    "globeInfo": "Info zum Globus",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern"
   },
   "world": {
     "title": "Weltzeituhr: Aktuelle Uhrzeit in Städten weltweit | Saat Tarih",

@@ -192,7 +192,11 @@
     "upcomingAll": "See the yearly calendar",
     "upcomingNone": "No upcoming days found.",
     "globeLabel": "Rotating globe showing day and night, time zone meridians and the local time in major cities",
-    "globeCaption": "The lit side is day, the dark side is night. Lines are the 15° time zone meridians (with their UTC offset); each city shows its local time. Drag the globe to turn it."
+    "globeCaption": "The lit side is day, the dark side is night. Lines are the 15° time zone meridians (with their UTC offset); the red line is the zero point, the Greenwich meridian (UTC). Each city shows its local time. Drag the globe to turn it; zoom with two fingers, the mouse wheel or the + and − buttons. A double tap zooms in or returns to the starting view.",
+    "globeTitle": "World globe",
+    "globeInfo": "About the globe",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out"
   },
   "world": {
     "title": "World Clock: Current Time in Cities | Saat Tarih",

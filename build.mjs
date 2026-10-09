@@ -94,7 +94,7 @@ for (const [name, from] of [
   ASSETS[name] = `/assets/${name}?v=${hash(buf)}`;
 }
 /* Küre için kara maskesi (Natural Earth 1:110m, kamu malı; derlemede repodaki veriden üretilir) */
-const LAND_JSON = JSON.stringify(landMask(readJson("src/data/land-110m.json").rings));
+const LAND_JSON = JSON.stringify(landMask(readJson("src/data/land-110m.json").rings, 1440, 720)); // 0,25° ızgara
 write("assets/globe-land.json", LAND_JSON);
 const LAND_URL = `/assets/globe-land.json?v=${hash(LAND_JSON)}`;
 for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "apple-touch-icon.png", "og.png"]) {
@@ -233,7 +233,7 @@ function clockStage(lang, { tz = "" } = {}) {
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
 </section>
 <div class="source-note">
-  <button type="button" class="icon-btn info-btn" data-info-open aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
+  <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
   <noscript><p class="meta source-line">${esc(s.source)}</p></noscript>
   <dialog class="info-dialog" id="info-dialog" aria-labelledby="info-title">
     <h2 id="info-title">${esc(s.infoTitle)}</h2>
@@ -296,8 +296,8 @@ function listForm(lang, pagePath) {
     <input type="hidden" name="kaynak" value="${esc(url)}">
     <input type="hidden" name="donus" value="${esc(url)}">
     <div class="field">
-      <label for="liste-eposta">${esc(l.emailLabel)}</label>
-      <input id="liste-eposta" type="email" name="eposta" required autocomplete="email">
+      <label for="liste-eposta" class="sr-only">${esc(l.emailLabel)}</label>
+      <input id="liste-eposta" type="email" name="eposta" required autocomplete="email" placeholder="${esc(l.emailLabel)}">
     </div>
     <div class="check">
       <input id="liste-riza" type="checkbox" name="riza" value="on" required>
@@ -421,13 +421,15 @@ ${ld}
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
-    <nav class="nav" id="site-nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("today", u.today)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${navLink("faq", u.faq)}</nav>
-    <div class="tools">
-      <button type="button" class="icon-btn" data-search-open aria-haspopup="dialog" aria-label="${esc(u.searchOpen)}">${ICON_SEARCH}</button>
-      ${langSwitch}
-      <button type="button" class="icon-btn" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}</button>
-      <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>
+    <div class="menu" id="site-nav">
+      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("home", u.home)}${navLink("today", u.today)}${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}${navLink("faq", u.faq)}</nav>
+      <div class="tools">
+        <button type="button" class="icon-btn" data-search-open aria-haspopup="dialog" aria-label="${esc(u.searchOpen)}" title="${esc(u.searchOpen)}">${ICON_SEARCH}</button>
+        ${langSwitch}
+        <button type="button" class="icon-btn" data-theme-toggle aria-label="${esc(u.themeToggle)}" title="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}</button>
+      </div>
     </div>
+    <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>
   </div>
 </header>
 <main id="main">
@@ -440,21 +442,8 @@ ${isError ? "" : listForm(lang, p.path)}
       ${badge(lang)}
       <p>${esc(u.copyright)}</p>
       ${isError ? "" : `<p>${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
+      <p><a href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a></p>
     </div>
-    <nav aria-label="${esc(u.footerNav)}" class="footer-sign">
-      <ul class="footer-nav">
-        <li><a href="${ROUTES[lang].home}">${esc(u.home)}</a></li>
-        <li><a href="${ROUTES[lang].today}">${esc(u.today)}</a></li>
-        <li><a href="${ROUTES[lang].world}">${esc(u.world)}</a></li>
-        <li><a href="${ROUTES[lang].prayer}">${esc(u.prayer)}</a></li>
-        <li><a href="${ROUTES[lang].nature}">${esc(u.nature)}</a></li>
-        <li><a href="${ROUTES[lang].weather}">${esc(u.weather)}</a></li>
-        <li><a href="${yearPath(lang, BUILD_YEAR)}">${esc(u.calendar)}</a></li>
-        <li><a href="${ROUTES[lang].tools}">${esc(u.tools)}</a></li>
-        <li><a href="${ROUTES[lang].faq}">${esc(u.faq)}</a></li>
-        <li><a href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a></li>
-      </ul>
-    </nav>
   </div>
 </footer>
 ${searchDialog(lang)}
@@ -527,7 +516,17 @@ function buildHome(lang) {
   <div class="wrap">
     <figure class="globe" data-globe>
       <canvas role="img" aria-label="${esc(h.globeLabel)}" width="560" height="560"></canvas>
-      <figcaption class="meta">${esc(h.globeCaption)}</figcaption>
+      <figcaption class="globe-bar">
+        <button type="button" class="icon-btn" data-globe-zoom="out" aria-label="${esc(h.zoomOut)}" title="${esc(h.zoomOut)}">−</button>
+        <button type="button" class="icon-btn info-btn" data-info-open="globe-info" aria-haspopup="dialog" aria-label="${esc(h.globeInfo)}" title="${esc(h.globeInfo)}">${ICON_INFO}</button>
+        <button type="button" class="icon-btn" data-globe-zoom="in" aria-label="${esc(h.zoomIn)}" title="${esc(h.zoomIn)}">+</button>
+        <noscript><span class="meta">${esc(h.globeCaption)}</span></noscript>
+      </figcaption>
+      <dialog class="info-dialog" id="globe-info" aria-labelledby="globe-info-title">
+        <h2 id="globe-info-title">${esc(h.globeTitle)}</h2>
+        <p class="meta">${esc(h.globeCaption)}</p>
+        <button type="button" class="btn" data-info-close>${esc(t.stage.infoClose)}</button>
+      </dialog>
     </figure>
   </div>
 </section>`;
@@ -554,7 +553,7 @@ function buildHome(lang) {
   MODELS.forEach((m) => e.push({ t: t.stage.models[m.id], u: `${pagePath}#model-${m.id}`, d: t.stage.label, k: "saat model clock style" }));
   e.push({ t: h.globeLabel, u: pagePath, d: h.globeCaption, k: "dünya küre gece gündüz meridyen saat dilimi globe earth day night time zone meridian" });
   e.push({ t: t.list.heading, u: pagePath + "#liste", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
-  const globe = { land: LAND_URL, cities: GLOBE_CITIES.map((k) => CITIES.find((c) => c.key === k)).map((c) => ({ n: c[lang].name, lat: c.lat, lon: c.lon, tz: c.tz })) };
+  const globe = { land: LAND_URL, cities: CITIES.map((c) => ({ n: c[lang].name, lat: c.lat, lon: c.lon, tz: c.tz, ...(GLOBE_CITIES.includes(c.key) ? { m: 1 } : {}) })) };
   return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js", "globe.js"], clientExtra: { globe } };
 }
 

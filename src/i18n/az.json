@@ -192,7 +192,11 @@
     "upcomingAll": "İllik təqvimə bax",
     "upcomingNone": "Yaxınlaşan gün tapılmadı.",
     "globeLabel": "Fırlanan yer kürəsi: gecə və gündüz, saat qurşağı meridianları və böyük şəhərlərin yerli saatı",
-    "globeCaption": "İşıqlı tərəf gündüz, qaranlıq tərəf gecədir. Xətlər 15°-lik saat qurşağı meridianlarıdır (UTC fərqi ilə); şəhərlərin yanında yerli saat yazılır. Kürəni sürüşdürərək fırlada bilərsiniz."
+    "globeCaption": "İşıqlı tərəf gündüz, qaranlıq tərəf gecədir. Xətlər 15°-lik saat qurşağı meridianlarıdır (UTC fərqi ilə); qırmızı xətt sıfır nöqtəsi, yəni Qrinviç meridianıdır (UTC). Şəhərlərin yanında yerli saat yazılır. Kürəni sürüşdürərək fırlada, iki barmaqla, siçanın təkəri ilə və ya + və − düymələri ilə böyüdə bilərsiniz. İki dəfə toxunmaq böyüdür və ya ilkin görünüşə qaytarır.",
+    "globeTitle": "Yer kürəsi",
+    "globeInfo": "Kürə haqqında məlumat",
+    "zoomIn": "Böyüt",
+    "zoomOut": "Kiçilt"
   },
   "world": {
     "title": "Dünya saatları: şəhərlərdə indiki vaxt | Saat Tarih",

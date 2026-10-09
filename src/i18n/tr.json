@@ -192,7 +192,11 @@
     "upcomingAll": "Yıllık takvimi gör",
     "upcomingNone": "Yaklaşan gün bulunamadı.",
     "globeLabel": "Dönen dünya küresi: gündüz ve gece bölgeleri, saat dilimi meridyenleri ve büyük şehirlerin yerel saati",
-    "globeCaption": "Aydınlık taraf gündüz, karanlık taraf gece. Çizgiler 15°'lik saat dilimi meridyenleri (UTC farkıyla); şehirlerin yanında yerel saat yazar. Küreyi sürükleyerek çevirebilirsiniz."
+    "globeCaption": "Aydınlık taraf gündüz, karanlık taraf gece. Çizgiler 15°'lik saat dilimi meridyenleridir (UTC farkıyla); kırmızı çizgi sıfır noktası, yani Greenwich meridyenidir (UTC). Şehirlerin yanında yerel saat yazar. Küreyi sürükleyerek çevirebilir; iki parmakla, fare tekerleğiyle ya da + ve − düğmeleriyle yakınlaştırabilirsiniz. Çift dokunuş yakınlaştırır ya da baştaki görünüme döner.",
+    "globeTitle": "Dünya küresi",
+    "globeInfo": "Küre hakkında bilgi",
+    "zoomIn": "Yakınlaştır",
+    "zoomOut": "Uzaklaştır"
   },
   "world": {
     "title": "Dünya Saatleri: Şehirlerde Saat Kaç? | Saat Tarih",
