@@ -48,7 +48,7 @@
       var today = dayStart(S.nowDate()), shown = 0;
       var df = new Intl.DateTimeFormat(S.locale, { weekday: "long", day: "numeric", month: "long" });
       list.forEach(function (e) {
-        if (shown >= 6 || skip[e.k]) return;
+        if (shown >= 6 || skip[e.k] || e.t === "school") return;
         var d = parse(e.d);
         if (d < today) return;
         shown++;
@@ -62,5 +62,34 @@
       });
       if (!shown) { var li = doc.createElement("li"); li.textContent = S.T.upcomingNone || ""; up.appendChild(li); }
     }).catch(function () {});
+  }
+
+  /* Hazır geri sayım sayfaları */
+  var cdp = doc.querySelector("[data-cdp]");
+  if (cdp && S.cfg.eventsUrl) {
+    var C = S.T.cdp || {};
+    var keys = cdp.getAttribute("data-cdp-keys").split(",");
+    var disp = cdp.querySelector("[data-cdp-display]"), dateEl = cdp.querySelector("[data-cdp-date]");
+    S.makeFullscreen(cdp, cdp.querySelector("[data-fs]"));
+    var long = new Intl.DateTimeFormat(S.locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    fetch(S.cfg.eventsUrl, { credentials: "omit" }).then(function (r) { return r.json(); }).then(function (list) {
+      var today = dayStart(S.nowDate()), best = null;
+      list.forEach(function (e) {
+        if (keys.indexOf(e.k) < 0) return;
+        var d = parse(e.d);
+        if (d >= today && (!best || d < best)) best = d;
+      });
+      if (!best && keys[0] === "newYear") best = new Date(today.getFullYear() + 1, 0, 1);
+      if (!best) { disp.textContent = C.noTarget; dateEl.textContent = "–"; return; }
+      dateEl.textContent = long.format(best);
+      function tick() {
+        var rem = best.getTime() - S.nowMs();
+        if (rem <= 0) { disp.textContent = C.today; return; }
+        var t = Math.floor(rem / 1000), d = Math.floor(t / 86400), h = Math.floor((t % 86400) / 3600), m = Math.floor((t % 3600) / 60), s = t % 60;
+        var p2 = function (n) { return String(n).padStart(2, "0"); };
+        disp.textContent = (d ? d + " " + S.T.daysShort + " " : "") + p2(h) + ":" + p2(m) + ":" + p2(s);
+      }
+      tick(); setInterval(tick, 250);
+    }).catch(function () { disp.textContent = C.noTarget; });
   }
 })();

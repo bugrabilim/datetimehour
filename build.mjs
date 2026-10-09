@@ -67,6 +67,7 @@ for (const [name, from] of [
   ["tools.js", "js/tools.js"],
   ["calendar.js", "js/calendar.js"],
   ["dates.js", "js/dates.js"],
+  ["planner.js", "js/planner.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
@@ -282,7 +283,8 @@ function layout(p) {
   };
   const pageCfg = {
     locale: t.locale,
-    t: { ...clientT, ...(p.clientExtra && p.clientExtra.tools ? { tools: p.clientExtra.tools } : {}) },
+    t: { ...clientT, ...(p.clientExtra && p.clientExtra.tools ? { tools: p.clientExtra.tools } : {}), ...((p.clientExtra && p.clientExtra.t) || {}) },
+    ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
     cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, weekdays: t.calendar.weekdays },
@@ -647,9 +649,10 @@ function buildPrivacy(lang) {
 
 /* ---------- Takvim: etkinlikler ve yıl sayfaları ---------- */
 const HOL = readJson("src/data/holidays.json");
+HOL.school = readJson("src/data/school.json");
 const HOL_YEARS = Object.keys(HOL.years).map(Number).sort((a, b) => a - b);
 const BUILD_YEAR = Math.min(Math.max(new Date().getFullYear(), HOL_YEARS[0]), HOL_YEARS[HOL_YEARS.length - 1]);
-const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special" };
+const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school" };
 const yearPath = (lang, y) => `${ROUTES[lang].calendar}${y}/`;
 const YEAR_DATA = Object.fromEntries(HOL_YEARS.map((y) => [y, computeYear(y, HOL)]));
 
@@ -678,7 +681,8 @@ function monthTable(lang, year, month, cy, ev) {
       const date = iso(year, month, d);
       const es = ev.byDate[date] || [];
       const rank = ["holiday", "half", "religious", "special"].find((t) => es.some((e) => e.type === t));
-      const cls = [rank && `d-${rank}`, inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
+      const school = es.some((e) => e.type === "school") || inRange(date, cy.schoolRanges);
+      const cls = [rank && `d-${rank}`, !rank && school && "d-school", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
       const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
       const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
       tr += `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}>${d}${label}</td>`;
@@ -726,7 +730,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   ];
   const ev = { byDate };
   const months = Array.from({ length: 12 }, (_, i) => `<div class="ymonth-wrap">${monthTable(lang, year, i + 1, cy, ev)}</div>`).join("");
-  const legend = ["holiday", "half", "religious", "ramadan", "special", "weekend", "today"]
+  const legend = ["holiday", "half", "religious", "ramadan", "special", ...(cy.events.some((e) => e.type === "school") ? ["school"] : []), "weekend", "today"]
     .map((k) => `<li><span class="lg lg-${k}" aria-hidden="true"></span>${esc(cal.types[k])}</li>`).join("");
   const rows = cy.events
     .map((e) => `<tr data-d="${e.date}"><th scope="row">${esc(f.short(e.date))}</th><td>${esc(cal.weekdays[dowOf(e.date)])}</td><td>${esc(cal.events[e.key])}</td><td>${esc(cal.types[TYPE_LABEL_KEY[e.type]])}</td><td data-left></td></tr>`)
@@ -749,6 +753,7 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     <ul class="legend" aria-label="${esc(cal.legendLabel)}">${legend}</ul>
     <div class="year-grid" data-year="${year}">${months}</div>
     <p class="meta">${esc(cal.note)}</p>
+    ${cy.events.some((e) => e.type === "school") ? `<p class="meta">${esc(cal.schoolNote)}</p>` : ""}
   </div>
 </section>
 <section class="section" id="events" aria-labelledby="events-h">
@@ -804,13 +809,16 @@ function toolBody(lang, key) {
 </div>
 <div role="tabpanel" id="cd-date" aria-labelledby="tab-date" data-cd-panel="date" hidden>
   <div class="field"><label for="cd-target">${esc(s.targetLabel)}</label><input id="cd-target" type="datetime-local" data-cd-target></div>
+  <div class="field"><label for="cd-name">${esc(s.nameLabel)}</label><input id="cd-name" type="text" maxlength="40" placeholder="${esc(s.namePlaceholder)}" data-cd-nameinput></div>
   <p class="meta">${esc(s.quickHeading)}</p>
   <div class="presets" data-cd-quick>${btn("chip", 'data-cd-quick-newyear', s.quickNewYear)}</div>
 </div>
+<p class="cd-name" data-cd-name hidden></p>
 <p class="big-time" role="timer" aria-label="${esc(s.remaining)}" data-cd-display>00:00:00</p>
 <progress class="tool-progress" max="100" value="0" data-cd-progress aria-hidden="true"></progress>
 <p class="cd-message" role="status" data-cd-message hidden></p>
-<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-reset", s.reset)}</div>
+<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}</div>
+<p class="meta">${esc(s.shareNote)}</p>
 ${soundRow(tt)}
 ${ringBanner(tt, "countdown")}`;
   if (key === "alarm")
@@ -906,7 +914,7 @@ function buildToolsHub(lang) {
     { name: h.h1, path: pagePath },
   ];
   const card = (href, name, desc) => `<li class="city-card"><a href="${href}"><span class="city-name">${esc(name)}</span><span class="city-diff">${esc(desc)}</span><span class="card-open">${esc(h.open)} →</span></a></li>`;
-  const cards = TOOL_KEYS.map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + card(yearPath(lang, BUILD_YEAR), t.calendar.hubName, t.calendar.hubDesc) + card(ROUTES[lang].world, t.ui.world, t.world.description.split(". ")[0] + ".");
+  const cards = TOOL_KEYS.map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + ["converter", "planner", "diff"].map((k) => card(ROUTES[lang][k], h.cards[k].name, h.cards[k].desc)).join("") + card(yearPath(lang, BUILD_YEAR), t.calendar.hubName, t.calendar.hubDesc) + card(ROUTES[lang].world, t.ui.world, t.world.description.split(". ")[0] + ".");
   const body = `<section class="hero">
   <div class="wrap">
     ${crumbs(lang, trail)}
@@ -1050,9 +1058,218 @@ function buildTz(lang) {
   return infoShell(lang, "tz", { body, faq: s.faq, searchK: "yaz saati türkiye saat dilimi utc+3 trt daylight saving time zone dst europe istanbul" });
 }
 
+/* ---------- Saat farkı, çevirici, planlayıcı ve geri sayım sayfaları ---------- */
+const ROUTES_EXTRA = {
+  tr: { diff: "/saat-farki/", converter: "/saat-cevirici/", planner: "/toplanti-planlayici/" },
+  en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
+};
+for (const l of LANGS) Object.assign(ROUTES[l], ROUTES_EXTRA[l]);
+const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
+const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
+const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
+const pairPath = (lang, c) => `${ROUTES[lang].diff}${HOME_CITY[lang].slug}-${c[lang].slug}/`;
+const durTxt = (lang, min) => { const t = I[lang].client; const a = Math.abs(min), h = Math.floor(a / 60), m = a % 60; return [h && `${h} ${t.hourShort}`, m && `${m} ${t.minuteShort}`].filter(Boolean).join(" "); };
+const hh = (n) => String(((n % 24) + 24) % 24).padStart(2, "0");
+const cityOptions = (lang, withMine) => `${withMine ? `<option value="">${esc(I[lang].converter.mine)}</option>` : ""}${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
+const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz }));
+const relatedCards = (lang, keys) => keys.map((k) => `<li class="city-card"><a href="${ROUTES[lang][k]}"><span class="city-name">${esc(I[lang].tools.hub.cards[k].name)}</span><span class="city-diff">${esc(I[lang].tools.hub.cards[k].desc)}</span></a></li>`).join("");
+const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
+
+function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqHeading, scripts, clientExtra, nav = "tools", searchK, extraLd = [] }) {
+  const pagePath = trail[trail.length - 1].path;
+  const faqBlock = faq && faq.length ? `<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <h2 id="faq-h">${esc(faqHeading)}</h2>
+    ${faqHtml(faq, "faq-h")}
+  </div>
+</section>` : "";
+  const body = `<section class="hero">
+  <div class="wrap">
+    ${crumbs(lang, trail)}
+    <h1>${esc(h1)}</h1>
+    <p class="lead">${esc(lead)}</p>
+    ${bodyInner.hero || ""}
+  </div>
+</section>
+${bodyInner.sections || ""}
+${faqBlock}`;
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), ...(faq && faq.length ? [faqLd(faq)] : []), ...extraLd];
+  searchEntries[lang].push({ t: h1, u: pagePath, d: description, k: searchK });
+  if (faq) faq.forEach((f) => searchEntries[lang].push({ t: f.q, u: pagePath + "#faq", d: f.a, k: searchK }));
+  return { lang, key, path: pagePath, title, description, body, ld, nav, scripts, clientExtra };
+}
+
+/* Saat farkı: merkez ve İstanbul–şehir sayfaları */
+function buildPair(lang, c) {
+  const t = I[lang];
+  const p = t.pair;
+  const a = HOME_CITY[lang].name, b = c[lang].name;
+  const v = { a, b };
+  const d = 180 - stdMin(c); // a − b, dakika (standart zaman)
+  const lead = d === 0 ? tpl(p.same, v) : tpl(d > 0 ? p.ahead : p.behind, { ...v, d: durTxt(lang, d) });
+  let dstLine = "";
+  if (c.dst) { const d2 = d - 60; dstLine = d2 === 0 ? tpl(p.dstSame, v) : tpl(p.dstNote, { ...v, d: durTxt(lang, d2) }); } else dstLine = p.noDst;
+  const trail = [
+    { name: t.ui.home, path: ROUTES[lang].home },
+    { name: t.pairHub.h1, path: ROUTES[lang].diff },
+    { name: tpl(p.h1, v), path: pairPath(lang, c) },
+  ];
+  const rows = Array.from({ length: 24 }, (_, h) => {
+    const m = h * 60 - d; // b şehrindeki dakika
+    const day = m < 0 ? p.prevDay : m >= 1440 ? p.nextDay : "";
+    return `<tr><th scope="row">${hh(h)}:00</th><td>${hh(Math.floor(m / 60))}:${String(((m % 60) + 60) % 60).padStart(2, "0")}${day ? ` <span class="meta">(${esc(day)})</span>` : ""}</td></tr>`;
+  }).join("");
+  const faq = [
+    { q: tpl(p.faqDiff, v), a: `${lead} ${dstLine}` },
+    { q: tpl(p.faqNow, v), a: p.faqNowA },
+    { q: tpl(p.faqDst, v), a: tpl(c.dst ? p.faqDstYes : p.faqDstNo, v) },
+  ];
+  const inner = {
+    hero: `<div class="pair-live">
+      <div class="pair-city"><p class="meta">${esc(a)}</p><p class="big-time" role="timer" data-live="time" data-sec data-tz="${HOME_CITY.tz}">--:--:--</p></div>
+      <div class="pair-city"><p class="meta">${esc(b)}</p><p class="big-time" role="timer" data-live="time" data-sec data-tz="${c.tz}">--:--:--</p></div>
+    </div>
+    <p class="info-sub"><strong data-live="diff" data-tz="${c.tz}" data-ref="${HOME_CITY.tz}" data-ref-name="${esc(a)}">&nbsp;</strong></p>
+    <p class="meta sync-line" data-sync-status>&nbsp;</p>
+    <p class="meta">${esc(dstLine)}</p>`,
+    sections: `<section class="section" aria-labelledby="conv-h">
+  <div class="wrap">
+    <h2 id="conv-h">${esc(tpl(p.convHeading, v))}</h2>
+    <div class="table-wrap"><table class="events-table" data-pair-table data-a="${HOME_CITY.tz}" data-b="${c.tz}" data-next="${esc(p.nextDay)}" data-prev="${esc(p.prevDay)}"><caption>${esc(tpl(p.convCaption, v))}</caption><thead><tr><th scope="col">${esc(tpl(p.colA, v))}</th><th scope="col">${esc(tpl(p.colB, v))}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="meta">${esc(p.convNote)}</p>
+    <p><a href="${ROUTES[lang].converter}">${esc(p.converterLink)} →</a> · <a href="${cityPath(lang, c)}">${esc(c[lang].name)}</a></p>
+  </div>
+</section>`,
+  };
+  return simplePage(lang, `pair:${c.key}`, { title: tpl(p.title, v), description: tpl(p.description, v), h1: tpl(p.h1, v), lead, trail, bodyInner: inner, faq, faqHeading: tpl(p.faqHeading, v), scripts: ["planner.js"], nav: "world", searchK: `saat farkı time difference ${a} ${b} ${c[lang].country} ${c.tz}` });
+}
+
+function buildPairHub(lang) {
+  const t = I[lang];
+  const h = t.pairHub;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: h.h1, path: ROUTES[lang].diff }];
+  const list = PAIR_CITIES.map((c) => `<li class="city-card"><a href="${pairPath(lang, c)}"><span class="city-name">${esc(tpl(h.linkText, { a: HOME_CITY[lang].name, b: c[lang].name }))}</span><span class="city-diff">${esc(c[lang].country)}</span></a></li>`).join("");
+  return simplePage(lang, "diff", { title: h.title, description: h.description, h1: h.h1, lead: h.lead, trail, bodyInner: { sections: `<section class="section" aria-labelledby="list-h"><div class="wrap"><h2 id="list-h">${esc(h.listHeading)}</h2><ul class="city-grid">${list}</ul><ul class="city-grid">${relatedCards(lang, ["converter", "planner"])}</ul></div></section>` }, nav: "world", searchK: "saat farkı time difference istanbul dünya şehirleri" });
+}
+
+/* Saat çevirici */
+function buildConverter(lang) {
+  const t = I[lang];
+  const s = t.converter;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].converter }];
+  const inner = {
+    hero: `<section class="tool" data-converter aria-labelledby="tool-h">
+      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <div class="inputs-row">
+        <div class="field"><label for="cv-from">${esc(s.fromLabel)}</label><select id="cv-from" data-cv-from>${cityOptions(lang, true)}</select></div>
+        <button type="button" class="icon-btn" data-cv-swap aria-label="${esc(s.swap)}" title="${esc(s.swap)}">⇄</button>
+        <div class="field"><label for="cv-to">${esc(s.toLabel)}</label><select id="cv-to" data-cv-to>${cityOptions(lang, true)}</select></div>
+        <div class="field"><label for="cv-when">${esc(s.whenLabel)}</label><input id="cv-when" type="datetime-local" data-cv-when></div>
+        <button type="button" class="toggle" data-cv-now>${esc(s.now)}</button>
+      </div>
+      <p class="big-time cv-result" role="status" aria-live="polite" data-cv-result>&nbsp;</p>
+      <p class="meta info-sub" data-cv-diff>&nbsp;</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>
+    <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
+  };
+  return simplePage(lang, "converter", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { conv: s } }, searchK: "saat çevirici time converter dönüştürücü saat dilimi time zone", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].converter, s.description)] });
+}
+
+/* Toplantı planlayıcı */
+function buildPlanner(lang) {
+  const t = I[lang];
+  const s = t.planner;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].planner }];
+  const inner = {
+    hero: `<section class="tool" data-planner aria-labelledby="tool-h">
+      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <div class="inputs-row">
+        <div class="field"><label for="pl-city">${esc(s.addLabel)}</label><select id="pl-city" data-pl-city>${cityOptions(lang, false)}</select></div>
+        <button type="button" class="toggle" data-pl-add>${esc(s.addBtn)}</button>
+        <div class="field"><label for="pl-date">${esc(s.dateLabel)}</label><input id="pl-date" type="date" data-pl-date></div>
+      </div>
+      <ul class="chips-list" data-pl-chips></ul>
+      <ul class="legend" aria-label="${esc(s.tableLabel)}"><li><span class="lg lg-work" aria-hidden="true"></span>${esc(s.legendWork)}</li><li><span class="lg lg-edge" aria-hidden="true"></span>${esc(s.legendEdge)}</li><li><span class="lg lg-night" aria-hidden="true"></span>${esc(s.legendNight)}</li></ul>
+      <div class="table-wrap"><table class="planner" data-pl-table><caption class="sr-only">${esc(s.tableLabel)}</caption></table></div>
+      <p class="pl-common" role="status" aria-live="polite" data-pl-common>&nbsp;</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>
+    <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
+  };
+  return simplePage(lang, "planner", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqHeading: s.faqHeading, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { plan: s } }, searchK: "toplantı planlayıcı meeting planner ortak mesai saatleri world meeting", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].planner, s.description)] });
+}
+
+/* Hazır geri sayım sayfaları */
+const CDP = [
+  { key: "newYear", keys: ["newYear"], tr: "yilbasi", en: "new-year" },
+  { key: "rb1", keys: ["rb1"], tr: "ramazan-bayrami", en: "eid-al-fitr" },
+  { key: "kb1", keys: ["kb1"], tr: "kurban-bayrami", en: "eid-al-adha" },
+  { key: "oct29", keys: ["oct29"], tr: "cumhuriyet-bayrami", en: "republic-day" },
+  { key: "ramadanStart", keys: ["ramadanStart"], tr: "ramazan", en: "ramadan" },
+  { key: "apr23", keys: ["apr23"], tr: "23-nisan", en: "april-23" },
+  { key: "may19", keys: ["may19"], tr: "19-mayis", en: "may-19" },
+  { key: "aug30", keys: ["aug30"], tr: "30-agustos", en: "august-30" },
+  { key: "semester", keys: ["semester"], tr: "yariyil-tatili", en: "mid-year-break", school: true },
+  { key: "karne", keys: ["term1End", "schoolEnd"], tr: "karne-gunu", en: "report-card-day", school: true },
+];
+const cdpPath = (lang, x) => `${ROUTES[lang].countdown}${x[lang]}/`;
+
+function buildCdp(lang, x) {
+  const t = I[lang];
+  const s = t.cdp;
+  const f = makeFmt(t.calendar, lang);
+  const tg = s.targets[x.key];
+  const v = { name: tg.name, dat: tg.dat };
+  const pagePath = cdpPath(lang, x);
+  const trail = [
+    { name: t.ui.home, path: ROUTES[lang].home },
+    { name: t.ui.tools, path: ROUTES[lang].tools },
+    { name: t.tools.countdown.h1, path: ROUTES[lang].countdown },
+    { name: tpl(s.h1, v), path: pagePath },
+  ];
+  // Yıllara göre tarihler (veri dosyalarından)
+  const dates = [];
+  const years = x.key === "newYear" ? [...HOL_YEARS, HOL_YEARS[HOL_YEARS.length - 1] + 1] : HOL_YEARS;
+  for (const y of years) {
+    const ev = YEAR_DATA[y] ? YEAR_DATA[y].events.filter((e) => x.keys.includes(e.key)) : [];
+    if (ev.length) ev.forEach((e) => dates.push({ y, d: e.date, k: e.key }));
+    else if (x.key === "newYear") dates.push({ y, d: `${y}-01-01`, k: "newYear" });
+  }
+  const fixed = ["newYear", "apr23", "may19", "aug30", "oct29"].includes(x.key);
+  const names = t.calendar.events;
+  const rowsHtml = dates.map((r) => `<tr><th scope="row">${r.y}</th><td>${esc(f.full(r.d))}${x.keys.length > 1 ? ` · ${esc(names[r.k])}` : ""}</td></tr>`).join("");
+  const faq = [
+    { q: tpl(s.faqWhen, v), a: fixed ? tpl(s.faqWhenFixed, { ...v, date: f.short(dates[0].d) }) : tpl(s.faqWhenYears, { ...v, list: dates.slice(0, 4).map((r) => `${r.y}: ${f.short(r.d)}`).join(" · ") }) },
+    { q: s.faqHow, a: s.faqHowA },
+  ];
+  const others = CDP.filter((o) => o !== x).map((o) => `<li class="city-card"><a href="${cdpPath(lang, o)}"><span class="city-name">${esc(tpl(s.h1, { dat: s.targets[o.key].dat, name: s.targets[o.key].name }))}</span></a></li>`).join("");
+  const inner = {
+    hero: `<section class="tool cdp" data-cdp data-cdp-keys="${x.keys.join(",")}" aria-labelledby="tool-h">
+      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(tg.name)}</h2><button type="button" class="icon-btn" data-fs aria-pressed="false" aria-label="${esc(t.tools.common.fullscreen)}" title="${esc(t.tools.common.fullscreen)}">${ICON_FULL}</button></div>
+      <p class="big-time" role="timer" data-cdp-display>–</p>
+      <p class="meta info-sub">${esc(s.target)}: <strong data-cdp-date>–</strong></p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>
+    <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
+    sections: `<section class="section" aria-labelledby="years-h">
+  <div class="wrap">
+    <h2 id="years-h">${esc(tpl(s.yearsHeading, v))}</h2>
+    <div class="table-wrap"><table class="events-table"><caption>${esc(tpl(s.yearsCaption, v))}</caption><thead><tr><th scope="col">${esc(s.colYear)}</th><th scope="col">${esc(s.colDate)}</th></tr></thead><tbody>${rowsHtml}</tbody></table></div>
+    ${x.school ? `<p class="meta">${esc(s.school)}</p>` : ""}
+    <h2>${esc(s.customHeading)}</h2>
+    <p>${esc(s.customText)} <a href="${ROUTES[lang].countdown}">${esc(s.customLink)} →</a></p>
+    <h2>${esc(s.listHeading)}</h2>
+    <ul class="city-grid">${others}</ul>
+  </div>
+</section>`,
+  };
+  return simplePage(lang, `cdp:${x.key}`, { title: tpl(s.title, v), description: tpl(s.description, v), h1: tpl(s.h1, v), lead: tpl(s.lead, v), trail, bodyInner: inner, faq, faqHeading: tpl(s.faqHeading, v), scripts: ["calendar.js"], clientExtra: { t: { cdp: s } }, searchK: `geri sayım kaç gün kaldı countdown days until ${tg.name}` });
+}
+
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildToday(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
 }
 

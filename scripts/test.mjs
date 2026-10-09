@@ -54,6 +54,12 @@ for (const f of htmlFiles) {
     check(/class="events-table"/.test(h) && /d-holiday/.test(h) && /d-half/.test(h) && /"FAQPage"/.test(h), `${name}: takvim içeriği eksik`);
     check(/data-year="\d{4}"/.test(h) && /calendar\.js/.test(h), `${name}: takvim betiği/yılı eksik`);
   }
+  if (/\/(saat-farki|time-difference)\/istanbul-[a-z-]+\/index\.html$/.test(name)) {
+    check(/data-pair-table/.test(h) && (h.match(/data-live="time"/g) || []).length === 2 && /data-ref="Europe\/Istanbul"/.test(h) && /"FAQPage"/.test(h), `${name}: saat farkı sayfası eksik`);
+  }
+  if (/\/(saat-cevirici|time-converter)\/index\.html$/.test(name)) check(/data-converter/.test(h) && /data-cv-from/.test(h) && /"cities"/.test(h), `${name}: çevirici eksik`);
+  if (/\/(toplanti-planlayici|meeting-planner)\/index\.html$/.test(name)) check(/data-planner/.test(h) && /data-pl-table/.test(h) && /"cities"/.test(h), `${name}: planlayıcı eksik`);
+  if (/\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && /"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
   const toolMatch = /\/(kronometre|geri-sayim|alarm|pomodoro|stopwatch|countdown)\/index\.html$/.exec(name);
   if (toolMatch) {
     check(/data-tool="(stopwatch|countdown|alarm|pomodoro)"/.test(h) && /tools\.js/.test(h) && /data-fs/.test(h) && /"WebApplication"/.test(h) && /"FAQPage"/.test(h), `${name}: araç yapısı eksik`);

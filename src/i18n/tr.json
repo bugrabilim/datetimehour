@@ -102,7 +102,8 @@
     "refBehind": "{ref} saatinden {d} geride",
     "refSame": "{ref} ile aynı saat",
     "weekFound": "{date} tarihi yılın {n}. haftasındadır (ISO {y}).",
-    "pickDate": "Bir tarih seçin."
+    "pickDate": "Bir tarih seçin.",
+    "daysShort": "gün"
   },
   "home": {
     "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
@@ -369,7 +370,8 @@
       "ramadan": "Ramazan ayı",
       "special": "Özel gün",
       "weekend": "Hafta sonu",
-      "today": "Bugün"
+      "today": "Bugün",
+      "school": "Okul tatili ve takvimi (MEB)"
     },
     "eventsHeading": "{year} günleri listesi",
     "colDate": "Tarih",
@@ -456,11 +458,19 @@
       "mothers": "Anneler Günü",
       "fathers": "Babalar Günü",
       "nov10": "Atatürk'ü Anma Günü",
-      "nov24": "Öğretmenler Günü"
+      "nov24": "Öğretmenler Günü",
+      "schoolStart": "Okulların açılışı (MEB)",
+      "midterm1": "1. dönem ara tatili başlangıcı (MEB)",
+      "term1End": "1. dönem sonu, karne günü (MEB)",
+      "semester": "Yarıyıl tatili başlangıcı (MEB)",
+      "term2Start": "2. dönem başlangıcı (MEB)",
+      "midterm2": "2. dönem ara tatili başlangıcı (MEB)",
+      "schoolEnd": "Ders yılı sonu, karne günü (MEB)"
     },
     "hubName": "Yıllık takvim",
     "hubDesc": "Resmi tatiller, bayram ve arife günleri, kandiller ve Ramazan ayı.",
-    "projected": "Bu yılın dini gün tarihleri Diyanet'in uzun vadeli takvimine göredir; yıl yaklaşırken değişebilir."
+    "projected": "Bu yılın dini gün tarihleri Diyanet'in uzun vadeli takvimine göredir; yıl yaklaşırken değişebilir.",
+    "schoolNote": "Okul takvimi MEB'in 2026-2027 çalışma takvimine göredir; il milli eğitim müdürlükleri yerel farklılık yapabilir."
   },
   "tools": {
     "hub": {
@@ -497,6 +507,18 @@
         "tz": {
           "name": "Türkiye saat dilimi",
           "desc": "Yaz saati var mı? UTC+3 ve diğer şehirlerle saat farkı."
+        },
+        "converter": {
+          "name": "Saat çevirici",
+          "desc": "Bir şehrin saatini başka şehre çevirin."
+        },
+        "planner": {
+          "name": "Toplantı planlayıcı",
+          "desc": "Farklı saat dilimlerinde ortak mesai saatlerini bulun."
+        },
+        "diff": {
+          "name": "Saat farkı",
+          "desc": "İstanbul ile dünya şehirleri arasındaki saat farkı."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -595,7 +617,12 @@
           "q": "Sekmeyi kapatırsam sayım devam eder mi?",
           "a": "Sayım bu cihazda saklanır; sayfayı yeniden açtığınızda doğru kalan süreyi gösterir. Ancak sayfa kapalıyken sesli uyarı çalmaz."
         }
-      ]
+      ],
+      "nameLabel": "Başlık (isteğe bağlı)",
+      "namePlaceholder": "Örn. Tatil",
+      "copyLink": "Bağlantıyı kopyala",
+      "copied": "Bağlantı kopyalandı",
+      "shareNote": "Seçtiğiniz tarihe ait bağlantıyı paylaşabilirsiniz; bağlantı açılınca sayım kendiliğinden başlar."
     },
     "alarm": {
       "title": "Online Alarm Saati: Tekrarlı ve Ertelemeli | Saat Tarih",
@@ -803,6 +830,171 @@
           "a": "UTC+3, evrensel eşgüdümlü zamandan (UTC) üç saat ileride olmak demektir. UTC 12:00 iken Türkiye'de saat 15:00'tir."
         }
       ]
+    }
+  },
+  "pair": {
+    "title": "{a} – {b} Saat Farkı: Kaç Saat? | Saat Tarih",
+    "description": "{a} ile {b} arasındaki saat farkı kaç saat? Standart fark, yaz saati etkisi, şu anki fark ve saat çevirme tablosu.",
+    "h1": "{a} ile {b} arasındaki saat farkı",
+    "ahead": "{a} saati, {b} saatinden standart zamanda {d} ileridedir.",
+    "behind": "{a} saati, {b} saatinden standart zamanda {d} geridedir.",
+    "same": "{a} ve {b} aynı saati kullanır; aralarında saat farkı yoktur.",
+    "dstNote": "{b} yaz saati uyguladığı için fark yılın bir bölümünde {d} olur.",
+    "dstSame": "{b} yaz saati uyguladığı için yılın bir bölümünde iki şehirde saat aynı olur.",
+    "noDst": "İki şehir de yaz saati uygulamadığı için fark yıl boyunca aynı kalır.",
+    "nowHeading": "Şu an",
+    "convHeading": "{a} saatinden {b} saatine çevirme",
+    "convCaption": "{a} saatinin {b} saatindeki karşılığı",
+    "colA": "{a} saati",
+    "colB": "{b} saati",
+    "nextDay": "ertesi gün",
+    "prevDay": "önceki gün",
+    "convNote": "Tablo, tarayıcıdaki güncel saat farkına göre hesaplanır; yaz saati geçiş tarihlerinde bir saat kayabilir. Bu sürümde (JavaScript kapalıyken) standart farka göre gösterilir.",
+    "faqHeading": "{a} – {b} saat farkı hakkında sık sorulanlar",
+    "faqDiff": "{a} ile {b} arasında kaç saat fark var?",
+    "faqNow": "Şu an {a} ile {b} arasındaki fark kaç saat?",
+    "faqNowA": "Şu anki fark yukarıdaki canlı satırda görünür. Yaz saati geçişlerinde bu fark standart farktan bir saat sapabilir.",
+    "faqDst": "{b} yaz saati uyguluyor mu?",
+    "faqDstYes": "Evet. {b} yaz saati uyguluyor; bu yüzden {a} ile arasındaki fark yıl içinde bir saat değişir.",
+    "faqDstNo": "Hayır. {b} yaz saati uygulamıyor; fark yıl boyunca aynı kalır.",
+    "converter": "Başka bir saati çevirmek için saat çeviriciyi kullanın.",
+    "converterLink": "Saat çevirici"
+  },
+  "pairHub": {
+    "title": "Saat Farkı: İstanbul ile Dünya Şehirleri | Saat Tarih",
+    "description": "İstanbul ile Londra, New York, Dubai, Tokyo ve diğer şehirler arasındaki saat farkı. Standart fark, yaz saati etkisi ve çevirme tabloları.",
+    "h1": "Saat farkı",
+    "lead": "İstanbul ile dünya şehirleri arasındaki saat farkını seçin. Her sayfada standart fark, yaz saatinin etkisi, şu anki fark ve saat çevirme tablosu bulunur.",
+    "listHeading": "İstanbul ile saat farkı",
+    "linkText": "{a} – {b}"
+  },
+  "converter": {
+    "title": "Saat Çevirici: Şehirler Arası Saat Dönüştürme | Saat Tarih",
+    "description": "Bir şehirdeki saati başka bir şehrin saatine çevirin. Yaz saatini otomatik hesaplayan saat dönüştürücü; dünya şehirleri için.",
+    "h1": "Saat çevirici",
+    "lead": "Kaynak ve hedef şehri, tarih ile saati seçin; karşılık gelen saat anında görünür. Yaz saati geçişleri otomatik hesaplanır.",
+    "fromLabel": "Kaynak şehir",
+    "toLabel": "Hedef şehir",
+    "whenLabel": "Tarih ve saat",
+    "mine": "Bulunduğum yer",
+    "swap": "Yer değiştir",
+    "now": "Şimdi",
+    "resultLabel": "Sonuç",
+    "result": "{from} saati {fromTime} iken {to} saati {toTime}.",
+    "diff": "Fark: {d}",
+    "sameDay": "aynı gün",
+    "faqHeading": "Saat çevirici hakkında sık sorulanlar",
+    "faq": [
+      {
+        "q": "Saat çevirici nasıl çalışır?",
+        "a": "Kaynak şehirdeki tarih ve saati, o şehrin saat dilimine göre evrensel zamana çevirir, sonra hedef şehrin saat dilimine uygular. Yaz saati geçişleri tarayıcının saat dilimi veritabanından otomatik hesaplanır."
+      },
+      {
+        "q": "Yaz saati farkı etkiler mi?",
+        "a": "Evet. Yaz saati uygulayan şehirlerde fark yılın bir bölümünde bir saat değişir. Çevirici seçtiğiniz tarihteki gerçek farkı kullanır."
+      },
+      {
+        "q": "Bulunduğum yer seçeneği ne demek?",
+        "a": "Cihazınızın saat dilimini kullanır. Böylece bulunduğunuz yerdeki saati başka bir şehre çevirebilirsiniz."
+      }
+    ]
+  },
+  "planner": {
+    "title": "Toplantı Planlayıcı: Ortak Mesai Saatlerini Bulun | Saat Tarih",
+    "description": "Farklı saat dilimlerindeki şehirler için en uygun toplantı saatini bulun. Mesai, erken/geç ve gece saatleri renkle gösterilir.",
+    "h1": "Toplantı planlayıcı",
+    "lead": "Şehirleri ekleyin ve tarihi seçin; her şehrin saat çizelgesi yan yana görünür. Ortak mesai saatleri (09:00–18:00) otomatik bulunur.",
+    "addLabel": "Şehir ekle",
+    "addBtn": "Ekle",
+    "dateLabel": "Tarih",
+    "remove": "Kaldır",
+    "legendWork": "Mesai (09–18)",
+    "legendEdge": "Erken ya da geç (07–09, 18–22)",
+    "legendNight": "Gece",
+    "common": "Ortak mesai saatleri ({city} saatiyle): {hours}",
+    "noCommon": "Seçili şehirlerde ortak mesai saati yok; en az uygun saatleri çizelgeden seçebilirsiniz.",
+    "tableLabel": "Seçili şehirlerin 24 saatlik çizelgesi",
+    "minCities": "En az iki şehir seçin.",
+    "faqHeading": "Toplantı planlayıcı hakkında sık sorulanlar",
+    "faq": [
+      {
+        "q": "Ortak mesai saatleri nasıl bulunuyor?",
+        "a": "Her şehirde 09:00–18:00 arası mesai kabul edilir. Seçili tüm şehirlerde aynı anda mesai olan saatler yeşil renkle işaretlenir ve listelenir."
+      },
+      {
+        "q": "Yaz saati hesaba katılıyor mu?",
+        "a": "Evet. Seçtiğiniz tarihteki gerçek saat farkları kullanılır; yaz saati geçişleri otomatik uygulanır."
+      },
+      {
+        "q": "En fazla kaç şehir ekleyebilirim?",
+        "a": "En fazla altı şehir ekleyebilirsiniz. Seçiminiz bu cihazda saklanır."
+      }
+    ]
+  },
+  "cdp": {
+    "title": "{dat} Kaç Gün Kaldı? Geri Sayım | Saat Tarih",
+    "description": "{dat} kaç gün, kaç saat kaldı? Canlı geri sayım, hedef tarih ve önümüzdeki yılların tarihleri.",
+    "h1": "{dat} kaç gün kaldı?",
+    "lead": "{name} için canlı geri sayım. Sayaç sunucu saatiyle senkron çalışır; kalan gün, saat, dakika ve saniye her saniye güncellenir.",
+    "target": "Hedef tarih",
+    "noTarget": "Bu etkinlik için yaklaşan tarih verisi yok.",
+    "today": "Bugün!",
+    "yearsHeading": "{name} tarihleri",
+    "yearsCaption": "{name} yıllara göre tarihleri",
+    "colYear": "Yıl",
+    "colDate": "Tarih",
+    "customHeading": "Kendi geri sayımınızı oluşturun",
+    "customText": "Geri sayım aracında istediğiniz tarihi seçip bağlantısını paylaşabilirsiniz.",
+    "customLink": "Geri sayım aracını aç",
+    "listHeading": "Diğer geri sayımlar",
+    "faqHeading": "{name} hakkında sık sorulanlar",
+    "faqWhen": "{name} ne zaman?",
+    "faqWhenFixed": "{name} her yıl {date} tarihindedir.",
+    "faqWhenYears": "{name}: {list}.",
+    "faqHow": "Geri sayım nasıl çalışıyor?",
+    "faqHowA": "Sayaç, sunucu saatiyle senkronize edilen zamanı hedef tarihin başlangıcıyla (saat 00:00) karşılaştırır ve her saniye günceller. Hedef tarih, takvim sayfamızdaki verilere dayanır.",
+    "school": "Okul takvimi MEB 2026-2027 çalışma takvimine göredir; il milli eğitim müdürlükleri yerel farklılık yapabilir.",
+    "targets": {
+      "newYear": {
+        "name": "Yılbaşı",
+        "dat": "Yılbaşına"
+      },
+      "rb1": {
+        "name": "Ramazan Bayramı",
+        "dat": "Ramazan Bayramı'na"
+      },
+      "kb1": {
+        "name": "Kurban Bayramı",
+        "dat": "Kurban Bayramı'na"
+      },
+      "oct29": {
+        "name": "Cumhuriyet Bayramı",
+        "dat": "Cumhuriyet Bayramı'na"
+      },
+      "ramadanStart": {
+        "name": "Ramazan",
+        "dat": "Ramazan'a"
+      },
+      "apr23": {
+        "name": "23 Nisan",
+        "dat": "23 Nisan'a"
+      },
+      "may19": {
+        "name": "19 Mayıs",
+        "dat": "19 Mayıs'a"
+      },
+      "aug30": {
+        "name": "30 Ağustos Zafer Bayramı",
+        "dat": "30 Ağustos Zafer Bayramı'na"
+      },
+      "semester": {
+        "name": "Yarıyıl tatili",
+        "dat": "Yarıyıl tatiline"
+      },
+      "karne": {
+        "name": "Karne günü",
+        "dat": "Karne gününe"
+      }
     }
   }
 }
