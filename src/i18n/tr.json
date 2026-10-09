@@ -44,13 +44,52 @@
     "hourShort": "sa",
     "minuteShort": "dk",
     "yourZone": "Saat diliminiz",
-    "yearDone": "Yılın %{p} kadarı geçti"
+    "yearDone": "Yılın %{p} kadarı geçti",
+    "fullscreen": "Tam ekran",
+    "exitFullscreen": "Tam ekrandan çık",
+    "weekShort": "Hf",
+    "words": {
+      "units": [
+        "sıfır",
+        "bir",
+        "iki",
+        "üç",
+        "dört",
+        "beş",
+        "altı",
+        "yedi",
+        "sekiz",
+        "dokuz",
+        "on",
+        "on bir",
+        "on iki",
+        "on üç",
+        "on dört",
+        "on beş",
+        "on altı",
+        "on yedi",
+        "on sekiz",
+        "on dokuz"
+      ],
+      "tens": [
+        "",
+        "",
+        "yirmi",
+        "otuz",
+        "kırk",
+        "elli"
+      ],
+      "join": " ",
+      "oh": "sıfır",
+      "sentence": "Saat {h} {m}",
+      "oclock": "Saat tam {h}"
+    }
   },
   "home": {
     "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
     "description": "Şu an saat kaç, bugün ayın kaçı? Bulunduğunuz yerin canlı saatini, bugünün tarihini, hafta numarasını ve dünya şehirlerinin saatini tek sayfada görün.",
     "h1": "Şu an saat kaç?",
-    "lead": "Saat Tarih; bulunduğunuz yerdeki saati, bugünün tarihini, hafta numarasını ve dünya şehirlerinin saatini canlı gösteren ücretsiz bir sitedir. Herkes için, kayıt gerektirmeden.",
+    "lead": "Saat Tarih; bulunduğunuz yerdeki saati, bugünün tarihini, hafta numarasını ve dünya şehirlerinin saatini canlı gösteren ücretsiz bir sitedir. Herkes için, kayıt gerektirmeden. {n} farklı saat modeli arasında kaydırarak geçiş yapın, istediğinizi tam ekran gösterin.",
     "clockHeading": "Canlı saat",
     "factsHeading": "Bugün hakkında",
     "factWeek": "Hafta numarası (ISO)",
@@ -79,6 +118,14 @@
       {
         "q": "Şehirler arasındaki saat farkı nasıl bulunuyor?",
         "a": "Her şehrin güncel UTC farkı tarayıcınızın saat dilimi veritabanından (IANA) alınır; yaz saati geçişleri otomatik hesaba katılır. \"Sizden ileride\" ya da \"Sizden geride\" ifadesi her zaman sizin saat diliminize göredir."
+      },
+      {
+        "q": "Saat modelini nasıl değiştirebilirim?",
+        "a": "Saatin üzerinde sağa ya da sola kaydırın; bilgisayarda alttaki oklara, noktalara ya da klavyenin ok tuşlarına basın. Klasik ve sade analog, dijital, analog + dijital, tarihli ve tarihsiz seçenekler, aylık takvimli saatler, çevirmeli saat, yazıyla saat, halka saat ve büyük tarih modelleri var. Seçtiğiniz model bu cihazda hatırlanır."
+      },
+      {
+        "q": "Saati tam ekranda nasıl görürüm?",
+        "a": "Saatin altındaki tam ekran düğmesine basın. Çıkmak için aynı düğmeye ya da klavyede Esc tuşuna basın. Tam ekranda da modeller arasında kaydırabilirsiniz."
       }
     ]
   },
@@ -144,11 +191,27 @@
           "Saat Tarih hiçbir çerez bırakmaz. Bu nedenle çerez onayı penceresi göstermiyoruz. Tercihlerinizi hatırlamak için tarayıcınızın yerel depolama alanını (localStorage) kullanırız; bu bilgiler yalnızca cihazınızda durur ve sunucuya gönderilmez. Tarayıcı ayarlarından istediğiniz zaman silebilirsiniz."
         ],
         "table": {
-          "head": ["Ad", "Amaç", "Süre"],
+          "head": [
+            "Ad",
+            "Amaç",
+            "Süre"
+          ],
           "rows": [
-            ["sth-theme", "Seçtiğiniz açık ya da koyu temayı hatırlar.", "Siz silene kadar"],
-            ["sth-lang", "Seçtiğiniz dili hatırlar.", "Siz silene kadar"],
-            ["sth-prefs", "24 ya da 12 saat gösterimi ve saniye tercihini hatırlar.", "Siz silene kadar"]
+            [
+              "sth-theme",
+              "Seçtiğiniz açık ya da koyu temayı hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-lang",
+              "Seçtiğiniz dili hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-prefs",
+              "24 ya da 12 saat gösterimi ve saniye tercihini hatırlar.",
+              "Siz silene kadar"
+            ]
           ]
         }
       },
@@ -210,5 +273,30 @@
     "cities": "Şehir sayfaları",
     "about": "Hakkında",
     "aboutText": "Saat, kullanıcının cihaz saatinden ve tarayıcı saat diliminden okunur; sunucuya veri gönderilmez. Türkçe ve İngilizce sunulur. Veri sorumlusu: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. İletişim: bilgi@bumbagroup.com."
+  },
+  "stage": {
+    "label": "Saat modelleri",
+    "hint": "Modeller arasında parmağınızla kaydırın ya da oklara basın.",
+    "prev": "Önceki model",
+    "next": "Sonraki model",
+    "slide": "{n} / {total}: {name}",
+    "carousel": "karusel",
+    "slideRole": "slayt",
+    "dots": "Model seç",
+    "models": {
+      "classic": "Klasik analog",
+      "minimal": "Sade analog",
+      "analog-date": "Analog ve tarih",
+      "digital": "Dijital",
+      "digital-date": "Dijital ve tarih",
+      "duo": "Analog + dijital",
+      "duo-date": "Analog + dijital + tarih",
+      "calendar": "Dijital ve aylık takvim",
+      "calendar-analog": "Analog ve aylık takvim",
+      "flip": "Çevirmeli saat",
+      "words": "Yazıyla saat",
+      "rings": "Halka saat",
+      "bigdate": "Büyük tarih"
+    }
   }
 }

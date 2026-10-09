@@ -44,13 +44,52 @@
     "hourShort": "h",
     "minuteShort": "min",
     "yourZone": "Your time zone",
-    "yearDone": "{p}% of the year has passed"
+    "yearDone": "{p}% of the year has passed",
+    "fullscreen": "Full screen",
+    "exitFullscreen": "Exit full screen",
+    "weekShort": "Wk",
+    "words": {
+      "units": [
+        "zero",
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six",
+        "seven",
+        "eight",
+        "nine",
+        "ten",
+        "eleven",
+        "twelve",
+        "thirteen",
+        "fourteen",
+        "fifteen",
+        "sixteen",
+        "seventeen",
+        "eighteen",
+        "nineteen"
+      ],
+      "tens": [
+        "",
+        "",
+        "twenty",
+        "thirty",
+        "forty",
+        "fifty"
+      ],
+      "join": "-",
+      "oh": "oh",
+      "sentence": "It's {h} {m}",
+      "oclock": "It's {h} o'clock"
+    }
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
     "description": "What time is it now and what's today's date? See your live local time, the date, the week number and the time in cities around the world on one page.",
     "h1": "What time is it now?",
-    "lead": "Saat Tarih is a free website that shows your local time, today's date, the week number and the time in cities around the world, live. For everyone, no sign-up needed.",
+    "lead": "Saat Tarih is a free website that shows your local time, today's date, the week number and the time in cities around the world, live. For everyone, no sign-up needed. Swipe between {n} clock styles and show any of them full screen.",
     "clockHeading": "Live clock",
     "factsHeading": "About today",
     "factWeek": "Week number (ISO)",
@@ -79,6 +118,14 @@
       {
         "q": "How is the time difference between cities worked out?",
         "a": "Each city's current UTC offset comes from your browser's time zone database (IANA), and daylight saving changes are applied automatically. \"Ahead of you\" and \"behind you\" always refer to your own time zone."
+      },
+      {
+        "q": "How do I change the clock style?",
+        "a": "Swipe left or right on the clock; on a computer use the arrows or dots below it, or the arrow keys on your keyboard. The styles include classic and minimal analogue, digital, analogue and digital together, versions with or without the date, clocks with a monthly calendar, a flip clock, a clock in words, a ring clock and a big date. Your choice is remembered on this device."
+      },
+      {
+        "q": "How do I see the clock full screen?",
+        "a": "Press the full screen button under the clock. To leave, press the same button or the Esc key. You can keep swiping between styles in full screen too."
       }
     ]
   },
@@ -144,11 +191,27 @@
           "Saat Tarih does not set any cookies, so we do not show a cookie banner. To remember your choices we use your browser's local storage (localStorage); this stays on your device and is not sent to a server. You can delete it at any time in your browser settings."
         ],
         "table": {
-          "head": ["Name", "Purpose", "Duration"],
+          "head": [
+            "Name",
+            "Purpose",
+            "Duration"
+          ],
           "rows": [
-            ["sth-theme", "Remembers your light or dark theme choice.", "Until you delete it"],
-            ["sth-lang", "Remembers your language choice.", "Until you delete it"],
-            ["sth-prefs", "Remembers 24-hour or 12-hour display and the seconds setting.", "Until you delete it"]
+            [
+              "sth-theme",
+              "Remembers your light or dark theme choice.",
+              "Until you delete it"
+            ],
+            [
+              "sth-lang",
+              "Remembers your language choice.",
+              "Until you delete it"
+            ],
+            [
+              "sth-prefs",
+              "Remembers 24-hour or 12-hour display and the seconds setting.",
+              "Until you delete it"
+            ]
           ]
         }
       },
@@ -210,5 +273,30 @@
     "cities": "City pages",
     "about": "About",
     "aboutText": "The time is read from the visitor's device clock and browser time zone; nothing is sent to a server. Available in Turkish and English. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+  },
+  "stage": {
+    "label": "Clock styles",
+    "hint": "Swipe between styles or use the arrows.",
+    "prev": "Previous style",
+    "next": "Next style",
+    "slide": "{n} / {total}: {name}",
+    "carousel": "carousel",
+    "slideRole": "slide",
+    "dots": "Choose a style",
+    "models": {
+      "classic": "Classic analogue",
+      "minimal": "Minimal analogue",
+      "analog-date": "Analogue with date",
+      "digital": "Digital",
+      "digital-date": "Digital with date",
+      "duo": "Analogue and digital",
+      "duo-date": "Analogue, digital and date",
+      "calendar": "Digital with monthly calendar",
+      "calendar-analog": "Analogue with monthly calendar",
+      "flip": "Flip clock",
+      "words": "Clock in words",
+      "rings": "Ring clock",
+      "bigdate": "Big date"
+    }
   }
 }

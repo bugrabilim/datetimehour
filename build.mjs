@@ -90,32 +90,100 @@ const ICON_MOON = `<svg class="only-light" viewBox="0 0 24 24" fill="none" strok
 const ICON_SUN = `<svg class="only-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`;
 const LOGO = `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="26"/><path d="M32 17v15l10 6"/></svg>`;
 
-function analogSvg() {
-  let ticks = "";
-  for (let i = 0; i < 12; i++) {
-    const major = i % 3 === 0;
-    ticks += `<line class="tick${major ? " tick-major" : ""}" x1="100" y1="${major ? 14 : 16}" x2="100" y2="${major ? 30 : 26}" transform="rotate(${i * 30} 100 100)"/>`;
+const ICON_FULL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>`;
+const ICON_PREV = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5-7 7 7 7"/></svg>`;
+const ICON_NEXT = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7"/></svg>`;
+
+const tzA = (tz) => (tz ? ` data-tz="${esc(tz)}"` : "");
+
+function analogSvg({ tz = "", numerals = true, minimal = false, size = "lg" } = {}) {
+  let marks = "";
+  if (minimal) {
+    for (let i = 0; i < 4; i++) marks += `<line class="tick tick-major" x1="100" y1="12" x2="100" y2="28" transform="rotate(${i * 90} 100 100)"/>`;
+  } else {
+    for (let i = 0; i < 60; i++) {
+      const major = i % 5 === 0;
+      marks += `<line class="tick${major ? " tick-major" : ""}" x1="100" y1="${major ? 12 : 14}" x2="100" y2="${major ? 24 : 19}" transform="rotate(${i * 6} 100 100)"/>`;
+    }
   }
-  return `<svg class="analog" viewBox="0 0 200 200" data-analog aria-hidden="true" focusable="false"><circle class="face" cx="100" cy="100" r="92"/>${ticks}<line class="hand" data-hand="h" stroke-width="7" x1="100" y1="100" x2="100" y2="58"/><line class="hand" data-hand="m" stroke-width="5" x1="100" y1="100" x2="100" y2="36"/><line class="hand hand-sec" data-hand="s" x1="100" y1="112" x2="100" y2="26"/><circle class="pin" cx="100" cy="100" r="6"/></svg>`;
+  let nums = "";
+  if (numerals) {
+    for (let n = 1; n <= 12; n++) {
+      const a = (n * 30 * Math.PI) / 180;
+      nums += `<text class="num" x="${(100 + 66 * Math.sin(a)).toFixed(2)}" y="${(100 - 66 * Math.cos(a)).toFixed(2)}" text-anchor="middle" dominant-baseline="central">${n}</text>`;
+    }
+  }
+  const hh = minimal ? 3.5 : 6;
+  const mh = minimal ? 2.5 : 4.5;
+  return `<svg class="analog analog-${size}${minimal ? " analog-minimal" : ""}" viewBox="0 0 200 200" data-analog${tzA(tz)} aria-hidden="true" focusable="false"><circle class="face" cx="100" cy="100" r="94"/>${marks}${nums}<line class="hand" data-hand="h" stroke-width="${hh}" x1="100" y1="104" x2="100" y2="${numerals ? 56 : 52}"/><line class="hand" data-hand="m" stroke-width="${mh}" x1="100" y1="106" x2="100" y2="${numerals ? 34 : 30}"/><line class="hand hand-sec" data-hand="s" x1="100" y1="116" x2="100" y2="24"/><circle class="pin" cx="100" cy="100" r="5"/></svg>`;
 }
 
-function clockCard(lang, { tz = "", analog = false } = {}) {
+const pTz = (tz) => `<p class="tz-label" data-live="tzname"${tzA(tz)}>&nbsp;</p>`;
+const pDigital = (tz, cls = "") => `<p class="clock${cls}" role="timer" data-live="time" data-sec${tzA(tz)}>--:--:--</p>`;
+const pDate = (tz) => `<p class="date" data-live="date"${tzA(tz)}>&nbsp;</p>`;
+const srTime = (tz) => `<p class="sr-only" role="timer" data-live="time"${tzA(tz)}></p>`;
+const calendarHtml = (tz) => `<div class="cal" data-live="calendar"${tzA(tz)}><p class="cal-title" data-cal-title>&nbsp;</p><table><thead><tr data-cal-head></tr></thead><tbody data-cal-body></tbody></table></div>`;
+const flipHtml = (tz) => {
+  const d = (i) => `<span class="flip-d" data-flip-d="${i}">0</span>`;
+  return `<div class="flip" data-live="flip"${tzA(tz)}><div class="flip-g">${d(0)}${d(1)}</div><div class="flip-g">${d(2)}${d(3)}</div><div class="flip-g flip-sec">${d(4)}${d(5)}</div><span class="flip-ampm" data-live="ampm"${tzA(tz)}></span></div>`;
+};
+const ringsHtml = (tz) =>
+  `<div class="rings"><svg viewBox="0 0 200 200" data-live="rings"${tzA(tz)} aria-hidden="true" focusable="false">${[
+    ["h", 88],
+    ["m", 72],
+    ["s", 56],
+  ]
+    .map(
+      ([k, r]) =>
+        `<circle class="ring-track" cx="100" cy="100" r="${r}"/><circle class="ring r-${k}" data-ring="${k}" cx="100" cy="100" r="${r}" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 100 100)"/>`
+    )
+    .join("")}</svg><div class="rings-text">${pDigital(tz, " clock-sm")}</div></div>`;
+
+// Her model: id, sınıf ve içerik. Sıra, kaydırma sırasıdır.
+const MODELS = [
+  { id: "classic", cls: "s-analog", html: (tz) => analogSvg({ tz, size: "lg" }) + srTime(tz) },
+  { id: "minimal", cls: "s-analog", html: (tz) => analogSvg({ tz, size: "lg", numerals: false, minimal: true }) + srTime(tz) },
+  { id: "analog-date", cls: "s-analog-date", html: (tz) => analogSvg({ tz, size: "md" }) + pDate(tz) + srTime(tz) },
+  { id: "digital", cls: "s-digital", html: (tz) => pDigital(tz) },
+  { id: "digital-date", cls: "s-digital", html: (tz) => pTz(tz) + pDigital(tz) + pDate(tz) },
+  { id: "duo", cls: "s-duo", html: (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pDigital(tz)}</div>` },
+  { id: "duo-date", cls: "s-duo", html: (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pTz(tz)}${pDigital(tz)}${pDate(tz)}</div>` },
+  { id: "calendar", cls: "s-cal", html: (tz) => `<div class="cal-side">${pTz(tz)}${pDigital(tz, " clock-sm")}${pDate(tz)}</div>${calendarHtml(tz)}` },
+  { id: "calendar-analog", cls: "s-cal", html: (tz) => analogSvg({ tz, size: "xs", numerals: true }) + calendarHtml(tz) + srTime(tz) },
+  { id: "flip", cls: "s-flip", html: (tz) => flipHtml(tz) + pDate(tz) },
+  { id: "words", cls: "s-words", html: (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz) },
+  { id: "rings", cls: "s-rings", html: (tz) => ringsHtml(tz) + pDate(tz) },
+  { id: "bigdate", cls: "s-bigdate", html: (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}` },
+];
+
+function clockStage(lang, { tz = "" } = {}) {
   const t = I[lang];
-  const tzAttr = tz ? ` data-tz="${esc(tz)}"` : "";
-  return `<section class="clock-card" aria-labelledby="clock-h">
-  <div>
-    <h2 id="clock-h" class="sr-only">${esc(t.home.clockHeading)}</h2>
-    <p class="tz-label" data-live="tzname"${tzAttr}>&nbsp;</p>
-    <p class="clock" role="timer" data-live="time" data-sec${tzAttr}>--:--:--</p>
-    <p class="date" data-live="date"${tzAttr}>&nbsp;</p>
-    <div class="controls">
+  const s = t.stage;
+  const total = MODELS.length;
+  const slides = MODELS.map((m, i) => {
+    const name = s.models[m.id];
+    return `<section class="slide ${m.cls}" id="model-${m.id}" data-model="${m.id}" data-name="${esc(name)}" role="group" aria-roledescription="${esc(s.slideRole)}" aria-label="${esc(tpl(s.slide, { n: i + 1, total, name }))}"${i ? ' aria-hidden="true"' : ""}>${m.html(tz)}</section>`;
+  }).join("");
+  const dots = MODELS.map(
+    (m, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${esc(s.models[m.id])}" title="${esc(s.models[m.id])}"${i ? "" : ' aria-current="true"'}></button>`
+  ).join("");
+  return `<section class="stage" data-carousel aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
+  <h2 id="clock-h" class="sr-only">${esc(s.label)}</h2>
+  <div class="stage-track" data-track tabindex="0" aria-label="${esc(s.hint)}">${slides}</div>
+  <div class="stage-bar">
+    <button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}">${ICON_PREV}</button>
+    <p class="stage-name" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
+    <button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}">${ICON_NEXT}</button>
+    <div class="dots" role="group" aria-label="${esc(s.dots)}">${dots}</div>
+    <div class="stage-tools">
       <button type="button" class="toggle" data-pref="h12" aria-pressed="false">${esc(t.client.format24)}</button>
       <button type="button" class="toggle" data-pref="sec" aria-pressed="true">${esc(t.client.seconds)}</button>
+      <button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
     </div>
-    <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
   </div>
-  ${analog ? analogSvg() : ""}
-</section>`;
+  <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
+</section>
+<p class="meta stage-hint">${esc(s.hint)}</p>`;
 }
 
 function cityCard(lang, c) {
@@ -357,8 +425,8 @@ function buildHome(lang) {
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
-    <p class="lead">${esc(h.lead)}</p>
-    ${clockCard(lang, { analog: true })}
+    <p class="lead">${esc(tpl(h.lead, { n: MODELS.length }))}</p>
+    ${clockStage(lang)}
   </div>
 </section>
 <section class="section" id="facts" aria-labelledby="facts-h">
@@ -407,6 +475,8 @@ function buildHome(lang) {
   ];
   const e = searchEntries[lang];
   e.push({ t: t.ui.home, u: pagePath, d: h.description, k: "saat tarih bugün takvim clock date today time now" });
+  e.push({ t: t.stage.label, u: pagePath + "#model-classic", d: t.stage.hint, k: "saat model stil style clock tam ekran full screen fullscreen" });
+  MODELS.forEach((m) => e.push({ t: t.stage.models[m.id], u: `${pagePath}#model-${m.id}`, d: t.stage.label, k: "saat model clock style" }));
   e.push({ t: h.factsHeading, u: pagePath + "#facts", d: `${h.factWeek}, ${h.factDoy}, ${h.factLeft}, ${h.factUnix}, ${h.factUtc}`, k: "hafta week unix utc gün day yıl year" });
   h.faq.forEach((f) => e.push({ t: f.q, u: pagePath + "#faq", d: f.a, k: "sss faq" }));
   e.push({ t: t.list.heading, u: pagePath + "#liste", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
@@ -470,7 +540,7 @@ function buildCity(lang, c) {
     ${crumbs(lang, trail)}
     <h1>${esc(tpl(ct.h1, v))}</h1>
     <p class="lead">${esc(tpl(ct.lead, v))} ${esc(tpl(c.dst ? ct.dstYes : ct.dstNo, v))}</p>
-    ${clockCard(lang, { tz: c.tz })}
+    ${clockStage(lang, { tz: c.tz })}
   </div>
 </section>
 <section class="section" aria-label="${esc(ct.liveOffset)}">
