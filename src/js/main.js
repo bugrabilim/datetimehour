@@ -35,10 +35,21 @@
 
   /* ---------- Dil: seçimi hatırla, ana sayfada kayıtlı dile yönlendir ---------- */
   var langLinks = doc.querySelectorAll("[data-lang-switch]");
+  var langHref = function (el) { return el.getAttribute("href") || el.value || ""; };
   Array.prototype.forEach.call(langLinks, function (a) {
+    if (a.tagName === "OPTION") return;
     a.addEventListener("click", function () {
       store("sth-lang", a.getAttribute("hreflang"));
       track("dil-degisimi", { dil: a.getAttribute("hreflang") });
+    });
+  });
+  /* Ayarlar kutusundaki dil açılır listesi */
+  Array.prototype.forEach.call(doc.querySelectorAll("select[data-lang-select]"), function (sel) {
+    sel.addEventListener("change", function () {
+      var o = sel.options[sel.selectedIndex];
+      store("sth-lang", o.getAttribute("hreflang"));
+      track("dil-degisimi", { dil: o.getAttribute("hreflang") });
+      location.href = o.value;
     });
   });
   (function redirectToSavedLang() {
@@ -49,7 +60,7 @@
     if (sameOrigin) return;
     var target = null;
     Array.prototype.forEach.call(langLinks, function (a) { if (a.getAttribute("hreflang") === saved) target = a; });
-    if (target) location.replace(target.getAttribute("href") + location.hash);
+    if (target) location.replace(langHref(target) + location.hash);
   })();
   Array.prototype.forEach.call(doc.querySelectorAll(".settings-menu"), function (m) {
     doc.addEventListener("click", function (e) { if (!m.contains(e.target) || (e.target.closest && e.target.closest("[data-search-open], [data-place-open], a"))) m.removeAttribute("open"); });
@@ -490,6 +501,7 @@ function sunTimes(y, m, d, lat, lon) {
     var slides = Array.prototype.slice.call(trackEl.children);
     var dots = Array.prototype.slice.call(stage.querySelectorAll("[data-dot]"));
     var nameEl = stage.querySelector("[data-stage-name]");
+    var countEl = stage.querySelector("[data-stage-count]");
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var current = 0, ready = false, settleTimer = null, reported = -1;
 
@@ -499,6 +511,7 @@ function sunTimes(y, m, d, lat, lon) {
       slides.forEach(function (s, n) { s.setAttribute("aria-hidden", n === i ? "false" : "true"); });
       dots.forEach(function (d, n) { if (n === i) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
       nameEl.textContent = slides[i].getAttribute("data-name");
+      if (countEl) countEl.textContent = (i + 1) + "/" + slides.length;
     };
     var goTo = function (i, smooth) {
       i = (i + slides.length) % slides.length;
@@ -584,6 +597,25 @@ function sunTimes(y, m, d, lat, lon) {
     if (el) { el.classList.add("is-shown"); el.setAttribute("tabindex", "-1"); el.focus(); }
     if (id === "liste-tamam") track("liste-katil");
     try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  })();
+
+  /* ---------- E-posta listesi: Katıl'a basınca aydınlatma ve onay penceresi ---------- */
+  (function listConsent() {
+    var form = doc.querySelector(".list-box form"), dlgL = doc.getElementById("liste-dialog");
+    if (!form || !dlgL) return;
+    var hide = function () { if (typeof dlgL.close === "function") dlgL.close(); else dlgL.removeAttribute("open"); };
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      if (typeof dlgL.showModal === "function") dlgL.showModal(); else dlgL.setAttribute("open", "");
+    });
+    dlgL.addEventListener("click", function (e) {
+      if (e.target === dlgL || (e.target.closest && e.target.closest("[data-list-cancel]"))) { hide(); return; }
+      if (e.target.closest && e.target.closest("[data-list-accept]")) {
+        var h = doc.createElement("input"); h.type = "hidden"; h.name = "riza"; h.value = "on"; form.appendChild(h);
+        hide(); form.submit();
+      }
+    });
   })();
 
   /* ---------- Site içi arama ---------- */

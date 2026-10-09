@@ -13,6 +13,8 @@
   var ctx = canvas && canvas.getContext && canvas.getContext("2d");
   if (!ctx || !view) return;
   var G = S.cfg.globe || {};
+  var gfs = fig.querySelector("[data-globe-fs]");
+  if (gfs && S.makeFullscreen) S.makeFullscreen(fig, gfs);
   var RAD = Math.PI / 180;
   var TILT0 = 23, SPEED = 3; // başlangıç enlemi, derece/sn (bir tur 2 dk)
   var ZMAX_TILE = 19.2;
@@ -157,7 +159,7 @@
       dirty = true;
     }
     cx = pw / 2; cy = ph / 2;
-    R0 = Math.max(60 * dpr, Math.min(pw * 0.49, ph * 0.5 - 64 * dpr)); // altta düğmelere yer kalsın
+    R0 = Math.max(60 * dpr, Math.min(pw * 0.49, ph * 0.5 - 8 * dpr) * 0.95); // %5 küçük
     ZM0 = Math.max(2.2, Math.hypot(cx, cy) / R0 * 1.06); ZM1 = ZM0 + 0.8; // küre tüm alanı kaplayınca harita karışmaya başlar
   }
 
@@ -375,12 +377,12 @@
     ctx.beginPath(); var on = false;
     for (var lo = -180; lo <= 180; lo += 4) { var q = projOrtho(0, lo); if (q.z > 0) { if (on) ctx.lineTo(q.x, q.y); else ctx.moveTo(q.x, q.y); on = true; } else on = false; }
     ctx.strokeStyle = col.grid; ctx.lineWidth = 1 * dpr; ctx.stroke();
-    ctx.font = "600 " + Math.round(10.5 * dpr) + "px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
+    ctx.font = "700 " + Math.round(Math.max(11, Math.min(15, R0 / dpr / 24)) * dpr) + "px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
     for (var n = -12; n < 12; n++) {
       var e = projOrtho(-3, n * 15);
       if (e.z < 0.45) continue;
       ctx.globalAlpha = alpha * Math.min(1, (e.z - 0.45) / 0.25);
-      halo(n === 0 ? "UTC" : "UTC" + (n > 0 ? "+" : "−") + Math.abs(n), e.x, e.y, n === 0 ? "#c62828" : col.label);
+      halo(n === 0 ? "UTC" : "UTC" + (n > 0 ? "+" : "−") + Math.abs(n), e.x, e.y, n === 0 ? "#c62828" : col.label, 4);
     }
     ctx.restore();
   }
@@ -398,7 +400,7 @@
     for (var i = 0; i < STEPS.length; i++) if (STEPS[i] * perDeg >= 80 * dpr) { step = STEPS[i]; break; }
     var lonL = lon0 - cx / perDeg, lonR = lon0 + cx / perDeg, k0 = Math.ceil(lonL / step), k1 = Math.floor(lonR / step);
     var occupied = [];
-    ctx.save(); ctx.globalAlpha = alpha; ctx.font = "600 " + Math.round(11 * dpr) + "px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
+    ctx.save(); ctx.globalAlpha = alpha; ctx.font = "700 " + Math.round(15 * dpr) + "px system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "top";
     for (var k = k0; k <= k1 && k - k0 < 80; k++) {
       var lon = k * step, x = cx + (lon - lon0) * perDeg, h15 = lon / 15, major = Math.abs(h15 - Math.round(h15)) < 1e-7;
       var nl = ((lon + 540) % 360) - 180, zero = Math.abs(nl) < 1e-9;
@@ -409,8 +411,8 @@
       ctx.stroke(); ctx.setLineDash([]);
       var txt = fmtLon(nl, step);
       if (major) { var off = Math.round(nl / 15); txt = (off === 0 ? "UTC" : "UTC" + (off > 0 ? "+" : "−") + Math.abs(off)) + " · " + txt; }
-      halo(txt, x, 6 * dpr, zero ? "#c62828" : major ? "#14468c" : col.label);
-      var tw = ctx.measureText(txt).width; occupied.push({ x: x - tw / 2 - 2, y: 4 * dpr, w: tw + 4, h: 16 * dpr });
+      halo(txt, x, 6 * dpr, zero ? "#c62828" : major ? "#14468c" : col.label, 4);
+      var tw = ctx.measureText(txt).width; occupied.push({ x: x - tw / 2 - 2, y: 4 * dpr, w: tw + 4, h: 22 * dpr });
     }
     ctx.restore();
     return occupied;
@@ -467,9 +469,10 @@
     if (mapA < 0.5) { // Güneş işareti ve küre kenarı
       var sp2 = projOrtho(s.dec / RAD, s.lon);
       if (sp2.z > 0) {
-        var gr = ctx.createRadialGradient(sp2.x, sp2.y, 0, sp2.x, sp2.y, 14 * dpr);
+        var gr = ctx.createRadialGradient(sp2.x, sp2.y, 0, sp2.x, sp2.y, 30 * dpr);
         gr.addColorStop(0, "rgba(255,214,90,0.95)"); gr.addColorStop(0.35, "rgba(255,200,60,0.55)"); gr.addColorStop(1, "rgba(255,200,60,0)");
-        ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(sp2.x, sp2.y, 14 * dpr, 0, 2 * Math.PI); ctx.fill();
+        ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(sp2.x, sp2.y, 30 * dpr, 0, 2 * Math.PI); ctx.fill();
+        ctx.beginPath(); ctx.arc(sp2.x, sp2.y, 8 * dpr, 0, 2 * Math.PI); ctx.fillStyle = "#ffd23f"; ctx.fill(); ctx.lineWidth = 2 * dpr; ctx.strokeStyle = "#e08a00"; ctx.stroke();
       }
       if (R < Math.hypot(cx, cy)) { ctx.beginPath(); ctx.arc(cx, cy, R, 0, 2 * Math.PI); ctx.strokeStyle = col.rim; ctx.lineWidth = 1.5 * dpr; ctx.stroke(); }
     }

@@ -381,13 +381,16 @@
     "heading": "Yeniliklerden haberdar olun",
     "lead": "Saat Tarih'teki yenilikleri e-postayla almak ister misiniz? İstediğiniz zaman tek tıkla ayrılabilirsiniz.",
     "emailLabel": "E-posta adresiniz",
-    "consentPre": "",
-    "consentLink": "Aydınlatma metnini",
-    "consentPost": " okudum, e-posta almayı kabul ediyorum.",
     "submit": "Katıl",
     "ok": "Onay e-postası gönderdik; gelen kutunuzdaki bağlantıya tıklayınca listeye katılmış olursunuz.",
     "err": "Kaydınız alınamadı. E-posta adresini ve onay kutusunu kontrol edip biraz sonra tekrar deneyin.",
-    "noteLink": "https://bumbagroup.com/liste/aydinlatma"
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma",
+    "popupTitle": "Listeye katılım onayı",
+    "popupText": "E-posta adresiniz, yalnızca bu listeye abone edilmeniz için Bumba Teknoloji Limited Şirketi tarafından işlenir. İstediğiniz zaman tek tıkla ayrılabilirsiniz.",
+    "readNote": "Aydınlatma metnini oku",
+    "consentText": "Aydınlatma metnini okudum, e-posta almayı kabul ediyorum.",
+    "accept": "Kabul ediyorum",
+    "cancel": "Vazgeç"
   },
   "badge": {
     "title": "Bumba Life, bir Bumba Group kolu",
