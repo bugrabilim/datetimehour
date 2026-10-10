@@ -438,17 +438,16 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
   }).join("");
   const langLinks = LANGS.map((l) => `<a href="${isError ? ROUTES[l].home : alt[l]}" hreflang="${l}" lang="${l}">${esc(LANG_NAMES[l])}</a>`).join(" ");
   /* Ayarlar: konum, SSS, arama, tema, gizlilik ve dil. Masaüstünde dişli açılır kutusu, mobilde üç çizgi menüsünün içi (aynı öğeler). */
-  const settingItems = (sid) => `<button type="button" class="set-item" data-place-open aria-haspopup="dialog">${ICON_PIN}<span>${esc(u.placeChange)}<span class="set-sub" data-place-label></span></span></button>
-        <a class="set-item" href="${ROUTES[lang].faq}">${esc(u.faq)}</a>
+  const settingItems = (sid, withFaq) => `<button type="button" class="set-item" data-place-open aria-haspopup="dialog">${ICON_PIN}<span>${esc(u.placeChange)}<span class="set-sub" data-place-label></span></span></button>
+        ${withFaq ? `<a class="set-item" href="${ROUTES[lang].faq}">${esc(u.faq)}</a>` : ""}
         <button type="button" class="set-item" data-search-open aria-haspopup="dialog">${ICON_SEARCH}<span>${esc(u.searchOpen)}</span></button>
         <button type="button" class="set-item" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}<span>${esc(u.theme)}</span></button>
-        <a class="set-item" href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a>
         <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="${sid}">${esc(u.langMenu)}</label><select id="${sid}" class="set-select" data-lang-select>${langOpts}</select></div>
         <noscript><div class="set-lang">${langLinks}</div></noscript>`;
   const settings = `<details class="settings-menu"><summary class="icon-btn" aria-label="${esc(u.settings)}" title="${esc(u.settings)}">${ICON_GEAR}</summary><div class="settings-pop">
-        ${settingItems("lang-sel")}
+        ${settingItems("lang-sel", true)}
       </div></details>`;
-  const mobileSettings = `<div class="menu-extra">${settingItems("lang-sel-m")}</div>`;
+  const mobileSettings = `<div class="menu-extra">${settingItems("lang-sel-m", false)}</div>`;
 
   return `<!doctype html>
 <html lang="${lang}" dir="${DIR(lang)}"${p.home ? ' data-home="1"' : ""}>
@@ -482,7 +481,7 @@ ${ld}
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
     <p class="top-date" data-live="date">&nbsp;</p>
     <div class="menu" id="site-nav">
-      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
+      <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
       ${mobileSettings}
     </div>
     <div class="top-tools">${settings}</div>
@@ -1647,7 +1646,10 @@ function buildFaq(lang) {
     <nav class="faq-toc" aria-label="${esc(f.toc)}"><ul class="inline-links">${toc}</ul></nav>
   </div>
 </section>
-${sections}`;
+${sections}
+<section class="section faq-privacy">
+  <div class="wrap"><p><a href="${ROUTES[lang].privacy}">${esc(t.ui.privacy)}</a></p></div>
+</section>`;
   const all = groups.flatMap((g) => g.items);
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, f.title, f.description), breadcrumbLd(trail), faqLd(all)];
   searchEntries[lang].push({ t: f.h1, u: pagePath, d: f.description, k: "sss sıkça sorulan sorular faq frequently asked questions soru question" });
