@@ -245,6 +245,7 @@ function clockStage(lang, { tz = "", place = null } = {}) {
     const name = s.models[m.id];
     return `<section class="slide ${m.cls}" id="model-${m.id}" data-model="${m.id}" data-name="${esc(name)}" role="group" aria-roledescription="${esc(s.slideRole)}" aria-label="${esc(tpl(s.slide, { n: i + 1, total, name }))}"${i ? ' aria-hidden="true"' : ' aria-hidden="false"'}>${m.html(tz)}</section>`;
   }).join("");
+  const jumpOpts = MODELS.map((m, i) => `<option value="${i}"${i ? "" : " selected"}>${i + 1}. ${esc(s.models[m.id])}</option>`).join("");
   const dots = MODELS.map(
     (m, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${esc(s.models[m.id])}" title="${esc(s.models[m.id])}"${i ? "" : ' aria-current="true"'}></button>`
   ).join("");
@@ -262,7 +263,7 @@ function clockStage(lang, { tz = "", place = null } = {}) {
       ${prefControls(t)}
       <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
       <button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
-      <div class="sr-nav" dir="ltr"><button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}" title="${esc(s.prev)}">${ICON_PREV}</button><span class="stage-count" data-stage-count>1/${total}</span><button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}" title="${esc(s.next)}">${ICON_NEXT}</button></div>
+      <div class="sr-nav" dir="ltr"><button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}" title="${esc(s.prev)}">${ICON_PREV}</button><label class="stage-count-wrap"><span class="stage-count" data-stage-count>1/${total}</span><select class="stage-jump" data-stage-select aria-label="${esc(s.dots)}">${jumpOpts}</select></label><button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}" title="${esc(s.next)}">${ICON_NEXT}</button></div>
     </div>
   </div>
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
@@ -436,16 +437,18 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
     return `<option value="${href}" hreflang="${l}" lang="${l}" data-lang-switch${l === lang ? " selected" : ""}>${esc(LANG_NAMES[l])}</option>`;
   }).join("");
   const langLinks = LANGS.map((l) => `<a href="${isError ? ROUTES[l].home : alt[l]}" hreflang="${l}" lang="${l}">${esc(LANG_NAMES[l])}</a>`).join(" ");
-  /* Ayarlar: SSS, arama, tema ve dil tek açılır düğmede */
-  const settings = `<details class="settings-menu"><summary class="icon-btn" aria-label="${esc(u.settings)}" title="${esc(u.settings)}">${ICON_GEAR}</summary><div class="settings-pop">
-        <button type="button" class="set-item" data-place-open aria-haspopup="dialog">${ICON_PIN}<span>${esc(u.placeChange)}<span class="set-sub" data-place-label></span></span></button>
+  /* Ayarlar: konum, SSS, arama, tema, gizlilik ve dil. Masaüstünde dişli açılır kutusu, mobilde üç çizgi menüsünün içi (aynı öğeler). */
+  const settingItems = (sid) => `<button type="button" class="set-item" data-place-open aria-haspopup="dialog">${ICON_PIN}<span>${esc(u.placeChange)}<span class="set-sub" data-place-label></span></span></button>
         <a class="set-item" href="${ROUTES[lang].faq}">${esc(u.faq)}</a>
         <button type="button" class="set-item" data-search-open aria-haspopup="dialog">${ICON_SEARCH}<span>${esc(u.searchOpen)}</span></button>
         <button type="button" class="set-item" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}<span>${esc(u.theme)}</span></button>
         <a class="set-item" href="${ROUTES[lang].privacy}">${esc(u.privacy)}</a>
-        <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="lang-sel">${esc(u.langMenu)}</label><select id="lang-sel" class="set-select" data-lang-select>${langOpts}</select></div>
-        <noscript><div class="set-lang">${langLinks}</div></noscript>
+        <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="${sid}">${esc(u.langMenu)}</label><select id="${sid}" class="set-select" data-lang-select>${langOpts}</select></div>
+        <noscript><div class="set-lang">${langLinks}</div></noscript>`;
+  const settings = `<details class="settings-menu"><summary class="icon-btn" aria-label="${esc(u.settings)}" title="${esc(u.settings)}">${ICON_GEAR}</summary><div class="settings-pop">
+        ${settingItems("lang-sel")}
       </div></details>`;
+  const mobileSettings = `<div class="menu-extra">${settingItems("lang-sel-m")}</div>`;
 
   return `<!doctype html>
 <html lang="${lang}" dir="${DIR(lang)}"${p.home ? ' data-home="1"' : ""}>
@@ -480,6 +483,7 @@ ${ld}
     <p class="top-date" data-live="date">&nbsp;</p>
     <div class="menu" id="site-nav">
       <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}</nav>
+      ${mobileSettings}
     </div>
     <div class="top-tools">${settings}</div>
     <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="${esc(u.menu)}">${ICON_MENU}</button>

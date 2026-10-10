@@ -55,10 +55,11 @@
     // yaz her zaman üstte, kış altta: yazın orta noktası saat 12 yönüne getirilir
     var summerMid = south ? (b[4] + b[5]) / 2 : (b[2] + b[3]) / 2;
     var deg0 = -summerMid / L * 360, TAU = 2 * Math.PI, rad0 = deg0 * Math.PI / 180;
-    var ang = function (i) { return i / L * TAU + rad0; };
+    var ang = function (i) { return -(i / L * TAU + rad0); }; // yaz üstte; ilkbahar sağda, sonbahar solda (zaman saat yönünün tersine akar)
+    var arcs = svg("g", { transform: "matrix(-1 0 0 1 360 0)" }, el); // yaylar aynalanır (yazılar aynalanmaz)
     segs.forEach(function (s) {
       var len = (s[1] - s[0]) / L * 360;
-      svg("circle", { cx: cx, cy: cy, r: R, fill: "none", "stroke-width": 34, class: "ws ws-" + names[s[2]], pathLength: 360, "stroke-dasharray": len.toFixed(3) + " " + (360 - len).toFixed(3), "stroke-dashoffset": (-(s[0] / L * 360)).toFixed(3), transform: "rotate(" + (-90 + deg0).toFixed(3) + " 180 180)" }, el);
+      svg("circle", { cx: cx, cy: cy, r: R, fill: "none", "stroke-width": 34, class: "ws ws-" + names[s[2]], pathLength: 360, "stroke-dasharray": len.toFixed(3) + " " + (360 - len).toFixed(3), "stroke-dashoffset": (-(s[0] / L * 360)).toFixed(3), transform: "rotate(" + (-90 + deg0).toFixed(3) + " 180 180)" }, arcs);
     });
     // ay işaretleri (1-12)
     for (var m = 1; m <= 12; m++) {

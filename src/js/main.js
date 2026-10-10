@@ -84,13 +84,14 @@
     if (!btn || !nav) return;
     var set = function (open) { nav.classList.toggle("is-open", open); btn.setAttribute("aria-expanded", String(open)); };
     btn.addEventListener("click", function (e) { e.stopPropagation(); set(!nav.classList.contains("is-open")); });
-    doc.addEventListener("click", function (e) { if (!nav.contains(e.target) && e.target !== btn) set(false); });
+    doc.addEventListener("click", function (e) {
+      if ((!nav.contains(e.target) && e.target !== btn) || (e.target.closest && nav.contains(e.target) && e.target.closest("[data-search-open], [data-place-open], .nav a, .menu-extra a"))) set(false);
+    });
     doc.addEventListener("keydown", function (e) { if (e.key === "Escape" && nav.classList.contains("is-open")) { set(false); btn.focus(); } });
   })();
 
   /* ---------- Tema ---------- */
-  var themeBtn = doc.querySelector("[data-theme-toggle]");
-  if (themeBtn) {
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-theme-toggle]"), function (themeBtn) {
     themeBtn.addEventListener("click", function () {
       var cur = root.getAttribute("data-theme");
       if (!cur) cur = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -99,7 +100,7 @@
       store("sth-theme", next);
       track("tema-degisimi", { tema: next });
     });
-  }
+  });
 
 
   /* ---------- Ortak tam ekran: Fullscreen API, yoksa sabit kaplama ---------- */
@@ -507,6 +508,7 @@ function sunTimes(y, m, d, lat, lon) {
     var dots = Array.prototype.slice.call(stage.querySelectorAll("[data-dot]"));
     var nameEl = stage.querySelector("[data-stage-name]");
     var countEl = stage.querySelector("[data-stage-count]");
+    var jumpEl = stage.querySelector("[data-stage-select]");
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var current = 0, ready = false, settleTimer = null, reported = -1;
 
@@ -517,6 +519,7 @@ function sunTimes(y, m, d, lat, lon) {
       dots.forEach(function (d, n) { if (n === i) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
       nameEl.textContent = slides[i].getAttribute("data-name");
       if (countEl) countEl.textContent = (i + 1) + "/" + slides.length;
+      if (jumpEl) jumpEl.value = String(i);
     };
     var goTo = function (i, smooth) {
       i = (i + slides.length) % slides.length;
@@ -543,6 +546,7 @@ function sunTimes(y, m, d, lat, lon) {
       }, 250);
     }, { passive: true });
     dots.forEach(function (d, n) { d.addEventListener("click", function () { goTo(n, true); }); });
+    if (jumpEl) jumpEl.addEventListener("change", function () { goTo(parseInt(jumpEl.value, 10) || 0, true); });
     stage.querySelectorAll("[data-nav]").forEach(function (b) {
       b.addEventListener("click", function () { goTo(current + parseInt(b.getAttribute("data-nav"), 10), true); });
     });
