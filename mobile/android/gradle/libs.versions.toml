@@ -1,0 +1,9 @@
+[versions]
+kotlin = "2.4.21"
+json = "20260814"
+
+[libraries]
+json = { module = "org.json:json", version.ref = "json" }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }

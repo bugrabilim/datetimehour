@@ -1,0 +1,62 @@
+name: Mobil
+# Mobil uygulamaların ortak hesap çekirdeği: Swift (iOS, iPadOS, watchOS) ve Kotlin (Android, Wear OS).
+# İki dildeki hesaplar, sitedeki JS hesaplarından üretilen ortak test verisiyle birebir karşılaştırılır.
+on:
+  pull_request:
+    paths:
+      - "mobile/**"
+      - "src/js/prayer-calc.js"
+      - "src/js/nature-calc.js"
+      - "src/data/provinces.json"
+      - "src/data/cities.json"
+      - ".github/workflows/mobile.yml"
+  push:
+    branches: [main]
+    paths:
+      - "mobile/**"
+      - "src/js/prayer-calc.js"
+      - "src/js/nature-calc.js"
+      - "src/data/provinces.json"
+      - "src/data/cities.json"
+      - ".github/workflows/mobile.yml"
+
+jobs:
+  test-data:
+    name: Ortak test verisi güncel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node mobile/shared/gen-vectors.mjs --check
+
+  swift-linux:
+    name: Swift çekirdek (Linux)
+    runs-on: ubuntu-latest
+    container: swift:6.3-noble
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift test --package-path mobile/ios/SaatCore
+
+  swift-apple:
+    name: Swift çekirdek (macOS, Xcode)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: xcodebuild -version && swift --version
+      - run: swift test --package-path mobile/ios/SaatCore
+
+  kotlin:
+    name: Kotlin çekirdek
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Testler
+        working-directory: mobile/android
+        run: ./gradlew :core:test
