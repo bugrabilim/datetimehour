@@ -8,6 +8,7 @@
   "scripts": {
     "build": "node build.mjs",
     "test": "node build.mjs && node scripts/test.mjs",
-    "serve": "node scripts/serve.mjs"
+    "serve": "node scripts/serve.mjs",
+    "mobile:vectors": "node mobile/shared/gen-vectors.mjs"
   }
 }
