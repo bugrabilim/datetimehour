@@ -34,6 +34,7 @@ private struct ClockHeader: View {
 
     private static let timeFormatter: DateFormatter = {
         let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX") // saat rakamları her dilde aynı (sitedeki gibi)
         f.dateFormat = "HH:mm:ss"
         return f
     }()
@@ -62,6 +63,7 @@ private struct PrayerPanel: View {
 
     private static let hm: DateFormatter = {
         let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
         f.dateFormat = "HH:mm"
         f.timeZone = PrayerSchedule.zone
         return f
@@ -104,7 +106,9 @@ private struct PrayerPanel: View {
                     HStack {
                         Text(entry.prayer.localizedName)
                         Spacer()
-                        Text(Self.hm.string(from: entry.at)).monospacedDigit()
+                        Text(Self.hm.string(from: entry.at))
+                            .monospacedDigit()
+                            .environment(\.layoutDirection, .leftToRight)
                     }
                     .font(.body.weight(isNext ? .bold : .regular))
                     .foregroundStyle(Theme.text)
