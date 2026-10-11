@@ -9,6 +9,7 @@ on:
       - "src/js/nature-calc.js"
       - "src/data/provinces.json"
       - "src/data/cities.json"
+      - "src/i18n/**"
       - ".github/workflows/mobile.yml"
   push:
     branches: [main]
@@ -18,6 +19,7 @@ on:
       - "src/js/nature-calc.js"
       - "src/data/provinces.json"
       - "src/data/cities.json"
+      - "src/i18n/**"
       - ".github/workflows/mobile.yml"
 
 jobs:
@@ -30,6 +32,7 @@ jobs:
         with:
           node-version: 22
       - run: node mobile/shared/gen-vectors.mjs --check
+      - run: node mobile/shared/gen-strings.mjs --check
 
   swift-linux:
     name: Swift çekirdek (Linux)
@@ -60,3 +63,25 @@ jobs:
       - name: Testler
         working-directory: mobile/android
         run: ./gradlew :core:test
+
+  ios-app:
+    name: iOS uygulaması (simülatör)
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: XcodeGen
+        run: brew install xcodegen
+      - name: Xcode projesi
+        run: xcodegen generate --spec mobile/ios/project.yml
+      - name: Derle
+        run: |
+          xcodebuild -version
+          xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarih -configuration Debug \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO -quiet build
+      - name: Ekran görüntüleri
+        run: mobile/ios/scripts/screenshots.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app shots
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ios-ekran-goruntuleri
+          path: shots
