@@ -1,0 +1,66 @@
+name: iOS TestFlight
+# main'e iOS değişikliği girince (ya da elle "Run workflow") uygulamayı imzalayıp TestFlight'a yükler.
+# Gerekli gizli değişkenler (App Store Connect API anahtarı): ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8.
+# Anahtar yoksa iş hata vermeden atlanır. İmzalama Xcode'un bulut imzalamasıyla yapılır (sertifika depoda yok).
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "mobile/ios/**"
+      - ".github/workflows/ios-testflight.yml"
+
+concurrency:
+  group: ios-testflight
+  cancel-in-progress: false
+
+jobs:
+  testflight:
+    name: TestFlight'a yükle
+    runs-on: macos-latest
+    env:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+    steps:
+      - name: Anahtar denetimi
+        id: keys
+        run: |
+          if [ -n "$ASC_KEY_ID" ] && [ -n "$ASC_ISSUER_ID" ] && [ -n "$ASC_KEY_P8" ]; then
+            echo "ok=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::App Store Connect anahtarları tanımlı değil; TestFlight yüklemesi atlandı."
+          fi
+      - uses: actions/checkout@v4
+        if: steps.keys.outputs.ok == '1'
+      - name: Xcode projesi
+        if: steps.keys.outputs.ok == '1'
+        run: |
+          brew install xcodegen
+          xcodegen generate --spec mobile/ios/project.yml
+          xcodebuild -version
+      - name: API anahtarı
+        if: steps.keys.outputs.ok == '1'
+        run: |
+          mkdir -p "$RUNNER_TEMP/asc"
+          printf '%s\n' "$ASC_KEY_P8" > "$RUNNER_TEMP/asc/AuthKey_$ASC_KEY_ID.p8"
+          echo "ASC_KEY_PATH=$RUNNER_TEMP/asc/AuthKey_$ASC_KEY_ID.p8" >> "$GITHUB_ENV"
+      - name: Arşivle
+        if: steps.keys.outputs.ok == '1'
+        run: |
+          xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarih -configuration Release \
+            -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/SaatTarih.xcarchive" \
+            -allowProvisioningUpdates -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} -quiet archive
+      - name: Yükle
+        if: steps.keys.outputs.ok == '1'
+        run: |
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/SaatTarih.xcarchive" \
+            -exportOptionsPlist mobile/ios/ExportOptions.plist -exportPath "$RUNNER_TEMP/export" \
+            -allowProvisioningUpdates -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+          echo "Yüklenen yapı numarası: ${{ github.run_number }}"
+      - name: Anahtarı sil
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/asc"
