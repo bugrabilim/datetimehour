@@ -58,7 +58,7 @@ Bu dosya master dosyadır. Her oturumda okunur.
 - Dil seçimi: ana sayfada yalnızca kullanıcı dil düğmesiyle seçim yaptıysa (ve siteye dışarıdan geldiyse) kayıtlı dile yönlendirilir.
 - Umami olayları: `dil-degisimi`, `tema-degisimi`, `arama` (yalnız sonuç var/yok), `liste-katil`, `saat-modeli` (model kimliği), `tam-ekran`, `arac` (kronometre/geri sayım/alarm/pomodoro ilk kullanım), `konum-secimi`, `imsakiye`.
 - Arama: istemci tarafı dizin (`/assets/search-<dil>.json`, derlemede üretilir), TR karakter ve büyük/küçük harf duyarsız.
-- HSTS `max-age=86400` ile başladı (8 Ekim 2026, canlıda doğrulandı). **Bir hafta sorun çıkmazsa `31536000` yap** ve tarihi buraya yaz. includeSubDomains/preload yok.
+- HSTS `max-age=86400` ile başladı (8 Ekim 2026, canlıda doğrulandı); bir hafta sorunsuz çalıştıktan sonra **15 Ekim 2026'da `max-age=31536000`** yapıldı (nginx.conf iki konum, `npm test` denetler). includeSubDomains/preload yok.
 
 ## Yol haritası (rakip analizi, 9 Ekim 2026)
 Rakipler: time.is (atomik saat, saat doğruluğu), timeanddate.com, worldtimebuddy.com (çevirici, toplantı planlayıcı), vclock, online-stopwatch.com, saat-kac.tr, canlisaat.com, saatkac.info.tr, onlinesaat.web.tr, onlinealarmkur.com. Türkçe aramada ortak: büyük canlı saat, soru kalıbında başlık, araç ailesi (alarm, kronometre, zamanlayıcı, hafta numarası, çevirici), "doğru saat" iddiası, uzun SEO metni ve SSS.

@@ -239,7 +239,7 @@ for (const [n, t] of Object.entries(themes)) {
 
 // nginx başlıkları
 const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
-for (const s of ["Strict-Transport-Security", "max-age=86400", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
+for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(ng.split("https://tile.openstreetmap.org").length === 3, "nginx.conf: img-src OpenStreetMap karoları iki konumda olmalı");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
