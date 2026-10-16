@@ -73,9 +73,11 @@ struct ClockDateWidget: Widget {
                     .lineLimit(1)
                     .multilineTextAlignment(.center)
                     .environment(\.layoutDirection, .leftToRight)
-                Text(entry.date.formatted(.dateTime.day().month(.wide)))
+                Text(entry.date.formatted(.dateTime.day().month(.wide).year()))
                     .font(.headline)
-                Text(entry.date.formatted(.dateTime.weekday(.wide).year()))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                Text(entry.date.formatted(.dateTime.weekday(.wide)))
                     .font(.subheadline)
                     .foregroundStyle(Theme.muted)
             }
