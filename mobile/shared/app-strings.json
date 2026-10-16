@@ -1,16 +1,262 @@
 {
   "_": "Yalnız uygulamalarda kullanılan metinler (sitede karşılığı olmayanlar). Her anahtar beş dilde olmalı; {ad} yer tutucuları gen-strings.mjs ile platform biçimine çevrilir.",
-  "common.done": { "tr": "Bitti", "en": "Done", "de": "Fertig", "az": "Hazır", "ar": "تم" },
-  "notify.heading": { "tr": "Vakit bildirimleri", "en": "Prayer time notifications", "de": "Benachrichtigungen zu Gebetszeiten", "az": "Vaxt bildirişləri", "ar": "إشعارات أوقات الصلاة" },
-  "notify.enable": { "tr": "Vakitlerde bildirim al", "en": "Notify me at prayer times", "de": "Bei Gebetszeiten benachrichtigen", "az": "Namaz vaxtlarında bildiriş al", "ar": "أعلمني عند أوقات الصلاة" },
-  "notify.prayers": { "tr": "Hangi vakitler", "en": "Which prayers", "de": "Welche Gebete", "az": "Hansı vaxtlar", "ar": "أي الصلوات" },
-  "notify.lead": { "tr": "Bildirim zamanı", "en": "When", "de": "Zeitpunkt", "az": "Bildiriş vaxtı", "ar": "وقت الإشعار" },
-  "notify.lead.zero": { "tr": "Vaktinde", "en": "At prayer time", "de": "Zur Gebetszeit", "az": "Vaxtında", "ar": "عند دخول الوقت" },
-  "notify.lead.minutes": { "tr": "{min} dk önce", "en": "{min} min before", "de": "{min} Min. vorher", "az": "{min} dəq əvvəl", "ar": "قبل {min} دقيقة" },
-  "notify.title.now": { "tr": "{name} vakti", "en": "Time for {name}", "de": "Zeit für {name}", "az": "{name} vaxtı", "ar": "حان وقت {name}" },
-  "notify.title.before": { "tr": "{name} vaktine {min} dakika", "en": "{name} in {min} minutes", "de": "{name} in {min} Minuten", "az": "{name} vaxtına {min} dəqiqə", "ar": "{name} بعد {min} دقيقة" },
-  "notify.reopen": { "tr": "Vakit bildirimlerinin sürmesi için uygulamayı açın.", "en": "Open the app to keep prayer time notifications coming.", "de": "Öffnen Sie die App, damit die Benachrichtigungen weiterlaufen.", "az": "Vaxt bildirişlərinin davam etməsi üçün tətbiqi açın.", "ar": "افتح التطبيق لتستمر إشعارات أوقات الصلاة." },
-  "notify.denied": { "tr": "Bildirim izni kapalı. Ayarlar'dan bu uygulama için bildirimlere izin verin.", "en": "Notifications are turned off. Allow notifications for this app in Settings.", "de": "Benachrichtigungen sind deaktiviert. Erlauben Sie sie für diese App in den Einstellungen.", "az": "Bildirişlər bağlıdır. Parametrlərdə bu tətbiq üçün bildirişlərə icazə verin.", "ar": "الإشعارات متوقفة. اسمح بها لهذا التطبيق من الإعدادات." },
-  "notify.openSettings": { "tr": "Ayarları aç", "en": "Open Settings", "de": "Einstellungen öffnen", "az": "Parametrləri aç", "ar": "افتح الإعدادات" },
-  "notify.note": { "tr": "Bildirimler seçili ilin vakitlerine göre telefonda hazırlanır, internet gerekmez. Liste uygulamayı her açışınızda yenilenir.", "en": "Notifications are prepared on your phone from the selected province's times; no internet needed. The list is renewed each time you open the app.", "de": "Die Benachrichtigungen werden auf Ihrem Telefon aus den Zeiten der gewählten Provinz erstellt, ohne Internet. Die Liste wird bei jedem Öffnen der App erneuert.", "az": "Bildirişlər seçilmiş vilayətin vaxtlarına görə telefonda hazırlanır, internet lazım deyil. Siyahı tətbiqi hər açanda yenilənir.", "ar": "تُجهَّز الإشعارات على هاتفك وفق أوقات الولاية المختارة دون الحاجة إلى الإنترنت، وتتجدد القائمة كلما فتحت التطبيق." }
+  "common.done": {
+    "tr": "Bitti",
+    "en": "Done",
+    "de": "Fertig",
+    "az": "Hazır",
+    "ar": "تم"
+  },
+  "notify.heading": {
+    "tr": "Vakit bildirimleri",
+    "en": "Prayer time notifications",
+    "de": "Benachrichtigungen zu Gebetszeiten",
+    "az": "Vaxt bildirişləri",
+    "ar": "إشعارات أوقات الصلاة"
+  },
+  "notify.enable": {
+    "tr": "Vakitlerde bildirim al",
+    "en": "Notify me at prayer times",
+    "de": "Bei Gebetszeiten benachrichtigen",
+    "az": "Namaz vaxtlarında bildiriş al",
+    "ar": "أعلمني عند أوقات الصلاة"
+  },
+  "notify.prayers": {
+    "tr": "Hangi vakitler",
+    "en": "Which prayers",
+    "de": "Welche Gebete",
+    "az": "Hansı vaxtlar",
+    "ar": "أي الصلوات"
+  },
+  "notify.lead": {
+    "tr": "Bildirim zamanı",
+    "en": "When",
+    "de": "Zeitpunkt",
+    "az": "Bildiriş vaxtı",
+    "ar": "وقت الإشعار"
+  },
+  "notify.lead.zero": {
+    "tr": "Vaktinde",
+    "en": "At prayer time",
+    "de": "Zur Gebetszeit",
+    "az": "Vaxtında",
+    "ar": "عند دخول الوقت"
+  },
+  "notify.lead.minutes": {
+    "tr": "{min} dk önce",
+    "en": "{min} min before",
+    "de": "{min} Min. vorher",
+    "az": "{min} dəq əvvəl",
+    "ar": "قبل {min} دقيقة"
+  },
+  "notify.title.now": {
+    "tr": "{name} vakti",
+    "en": "Time for {name}",
+    "de": "Zeit für {name}",
+    "az": "{name} vaxtı",
+    "ar": "حان وقت {name}"
+  },
+  "notify.title.before": {
+    "tr": "{name} vaktine {min} dakika",
+    "en": "{name} in {min} minutes",
+    "de": "{name} in {min} Minuten",
+    "az": "{name} vaxtına {min} dəqiqə",
+    "ar": "{name} بعد {min} دقيقة"
+  },
+  "notify.reopen": {
+    "tr": "Vakit bildirimlerinin sürmesi için uygulamayı açın.",
+    "en": "Open the app to keep prayer time notifications coming.",
+    "de": "Öffnen Sie die App, damit die Benachrichtigungen weiterlaufen.",
+    "az": "Vaxt bildirişlərinin davam etməsi üçün tətbiqi açın.",
+    "ar": "افتح التطبيق لتستمر إشعارات أوقات الصلاة."
+  },
+  "notify.denied": {
+    "tr": "Bildirim izni kapalı. Ayarlar'dan bu uygulama için bildirimlere izin verin.",
+    "en": "Notifications are turned off. Allow notifications for this app in Settings.",
+    "de": "Benachrichtigungen sind deaktiviert. Erlauben Sie sie für diese App in den Einstellungen.",
+    "az": "Bildirişlər bağlıdır. Parametrlərdə bu tətbiq üçün bildirişlərə icazə verin.",
+    "ar": "الإشعارات متوقفة. اسمح بها لهذا التطبيق من الإعدادات."
+  },
+  "notify.openSettings": {
+    "tr": "Ayarları aç",
+    "en": "Open Settings",
+    "de": "Einstellungen öffnen",
+    "az": "Parametrləri aç",
+    "ar": "افتح الإعدادات"
+  },
+  "notify.note": {
+    "tr": "Bildirimler seçili ilin vakitlerine göre telefonda hazırlanır, internet gerekmez. Liste uygulamayı her açışınızda yenilenir.",
+    "en": "Notifications are prepared on your phone from the selected province's times; no internet needed. The list is renewed each time you open the app.",
+    "de": "Die Benachrichtigungen werden auf Ihrem Telefon aus den Zeiten der gewählten Provinz erstellt, ohne Internet. Die Liste wird bei jedem Öffnen der App erneuert.",
+    "az": "Bildirişlər seçilmiş vilayətin vaxtlarına görə telefonda hazırlanır, internet lazım deyil. Siyahı tətbiqi hər açanda yenilənir.",
+    "ar": "تُجهَّز الإشعارات على هاتفك وفق أوقات الولاية المختارة دون الحاجة إلى الإنترنت، وتتجدد القائمة كلما فتحت التطبيق."
+  },
+  "place.useLocation": {
+    "tr": "Konumumu kullan",
+    "en": "Use my location",
+    "de": "Meinen Standort verwenden",
+    "az": "Məkanımı istifadə et",
+    "ar": "استخدم موقعي"
+  },
+  "place.myLocation": {
+    "tr": "Konumum",
+    "en": "My location",
+    "de": "Mein Standort",
+    "az": "Məkanım",
+    "ar": "موقعي"
+  },
+  "widget.province.auto": {
+    "tr": "Otomatik (konumum)",
+    "en": "Automatic (my location)",
+    "de": "Automatisch (mein Standort)",
+    "az": "Avtomatik (məkanım)",
+    "ar": "تلقائي (موقعي)"
+  },
+  "widget.config.desc": {
+    "tr": "Vakitlerin gösterileceği il. Otomatik seçimde konumunuza en yakın il kullanılır.",
+    "en": "The province whose times are shown. Automatic uses the province nearest to you.",
+    "de": "Die Provinz, deren Zeiten angezeigt werden. Automatisch verwendet die nächstgelegene Provinz.",
+    "az": "Vaxtları göstəriləcək vilayət. Avtomatik seçimdə sizə ən yaxın vilayət istifadə olunur.",
+    "ar": "الولاية التي تُعرض أوقاتها. يستخدم الخيار التلقائي أقرب ولاية إليك."
+  },
+  "widget.next.name": {
+    "tr": "Sıradaki vakit",
+    "en": "Next prayer",
+    "de": "Nächstes Gebet",
+    "az": "Növbəti vaxt",
+    "ar": "الصلاة التالية"
+  },
+  "widget.next.desc": {
+    "tr": "Sıradaki vakit, saati ve kalan süre.",
+    "en": "The next prayer, its time and the time left.",
+    "de": "Das nächste Gebet, seine Uhrzeit und die verbleibende Zeit.",
+    "az": "Növbəti vaxt, saatı və qalan müddət.",
+    "ar": "الصلاة التالية ووقتها والوقت المتبقي."
+  },
+  "widget.today.desc": {
+    "tr": "Günün altı vakti, sıradaki vurgulu.",
+    "en": "All six times of the day, the next one highlighted.",
+    "de": "Alle sechs Zeiten des Tages, die nächste hervorgehoben.",
+    "az": "Günün altı vaxtı, növbəti vurğulanır.",
+    "ar": "أوقات اليوم الستة مع إبراز الوقت التالي."
+  },
+  "widget.analog.name": {
+    "tr": "Analog saat",
+    "en": "Analog clock",
+    "de": "Analoge Uhr",
+    "az": "Analoq saat",
+    "ar": "ساعة عقارب"
+  },
+  "widget.analog.desc": {
+    "tr": "Rakamlı analog saat.",
+    "en": "An analog clock with numerals.",
+    "de": "Eine analoge Uhr mit Ziffern.",
+    "az": "Rəqəmli analoq saat.",
+    "ar": "ساعة بعقارب وأرقام."
+  },
+  "widget.digital.name": {
+    "tr": "Dijital saat",
+    "en": "Digital clock",
+    "de": "Digitaluhr",
+    "az": "Rəqəmsal saat",
+    "ar": "ساعة رقمية"
+  },
+  "widget.digital.desc": {
+    "tr": "Büyük dijital saat.",
+    "en": "A large digital clock.",
+    "de": "Eine große Digitaluhr.",
+    "az": "Böyük rəqəmsal saat.",
+    "ar": "ساعة رقمية كبيرة."
+  },
+  "widget.clockDate.name": {
+    "tr": "Saat ve tarih",
+    "en": "Time and date",
+    "de": "Uhrzeit und Datum",
+    "az": "Saat və tarix",
+    "ar": "الوقت والتاريخ"
+  },
+  "widget.clockDate.desc": {
+    "tr": "Saat ve bugünün tarihi.",
+    "en": "The time and today's date.",
+    "de": "Die Uhrzeit und das heutige Datum.",
+    "az": "Saat və bugünkü tarix.",
+    "ar": "الوقت وتاريخ اليوم."
+  },
+  "NSLocationWhenInUseUsageDescription": {
+    "tr": "Bulunduğunuz yerin namaz vakitlerini göstermek için. Konumunuz yalnız telefonda kullanılır, hiçbir yere gönderilmez.",
+    "en": "To show prayer times for where you are. Your location is used only on your phone and is never sent anywhere.",
+    "de": "Um die Gebetszeiten an Ihrem Ort anzuzeigen. Ihr Standort wird nur auf Ihrem Telefon verwendet und nirgendwohin gesendet.",
+    "az": "Olduğunuz yerin namaz vaxtlarını göstərmək üçün. Məkanınız yalnız telefonda istifadə olunur, heç yerə göndərilmir.",
+    "ar": "لعرض أوقات الصلاة في مكانك. يُستخدم موقعك على هاتفك فقط ولا يُرسل إلى أي جهة."
+  },
+  "notify.sound": {
+    "tr": "Bildirim sesi",
+    "en": "Notification sound",
+    "de": "Benachrichtigungston",
+    "az": "Bildiriş səsi",
+    "ar": "صوت الإشعار"
+  },
+  "notify.sound.voice": {
+    "tr": "Sesli duyuru",
+    "en": "Spoken announcement",
+    "de": "Gesprochene Ansage",
+    "az": "Səsli elan",
+    "ar": "إعلان صوتي"
+  },
+  "notify.sound.chime": {
+    "tr": "Kısa zil",
+    "en": "Short chime",
+    "de": "Kurzer Gong",
+    "az": "Qısa zəng",
+    "ar": "رنين قصير"
+  },
+  "notify.sound.system": {
+    "tr": "Telefonun sesi",
+    "en": "Phone's default sound",
+    "de": "Standardton des Telefons",
+    "az": "Telefonun səsi",
+    "ar": "صوت الهاتف الافتراضي"
+  },
+  "notify.sound.preview": {
+    "tr": "Dinle",
+    "en": "Listen",
+    "de": "Anhören",
+    "az": "Dinlə",
+    "ar": "استمع"
+  },
+  "notify.sound.note": {
+    "tr": "Sesli duyuru kısa bir zilden sonra vakti söyler, örneğin \"Öğle vakti geldi.\" Telefon sessizdeyken bildirim yalnız titreşir.",
+    "en": "The spoken announcement says the prayer after a short chime, for example \"It is time for Dhuhr.\" When the phone is silenced, notifications only vibrate.",
+    "de": "Die Ansage nennt nach einem kurzen Gong das Gebet, zum Beispiel „Es ist Zeit für Dhuhr.“ Ist das Telefon stumm geschaltet, vibrieren Benachrichtigungen nur.",
+    "az": "Səsli elan qısa zəngdən sonra vaxtı deyir, məsələn \"Zöhr vaxtı gəldi.\" Telefon səssiz rejimdə olanda bildiriş yalnız titrəyir.",
+    "ar": "يذكر الإعلان الصوتي الصلاة بعد رنين قصير، مثل «حان وقت الظهر». عندما يكون الهاتف صامتًا يكتفي الإشعار بالاهتزاز."
+  },
+  "notify.spoken.now": {
+    "tr": "{name} vakti geldi.",
+    "en": "It is time for {name}.",
+    "de": "Es ist Zeit für {name}.",
+    "az": "{name} vaxtı gəldi.",
+    "ar": "حان وقت {name}."
+  },
+  "notify.spoken.before": {
+    "tr": "{name} vaktine {min} dakika kaldı.",
+    "en": "{min} minutes until {name}.",
+    "de": "Noch {min} Minuten bis {name}.",
+    "az": "{name} vaxtına {min} dəqiqə qaldı.",
+    "ar": "بقي {min} دقيقة على {name}."
+  },
+  "notify.sound.better": {
+    "tr": "Daha doğal bir ses için: Ayarlar → Erişilebilirlik → Seslendirilen İçerik → Sesler → Türkçe bölümünden \"Gelişmiş\" bir ses indirin (ör. Yelda). Uygulamayı yeniden açınca sesler yenilenir.",
+    "en": "For a more natural voice: Settings → Accessibility → Spoken Content → Voices → English, then download an \"Enhanced\" voice. The sounds are renewed the next time you open the app.",
+    "de": "Für eine natürlichere Stimme: Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch und eine „Erweitert“-Stimme laden. Beim nächsten Öffnen der App werden die Töne erneuert.",
+    "az": "Daha təbii səs üçün: Parametrlər → Əlçatımlılıq → Səsləndirilən məzmun → Səslər → Türkcə bölməsindən \"Təkmil\" səs yükləyin. Tətbiqi yenidən açanda səslər yenilənir.",
+    "ar": "لصوت أكثر طبيعية: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية، ثم نزّل صوتًا «محسّنًا». تتجدد الأصوات عند فتح التطبيق مرة أخرى."
+  },
+  "CFBundleDisplayName": {
+    "tr": "Saat Tarih",
+    "en": "Time & Date",
+    "de": "Uhr & Datum",
+    "az": "Saat Tarix",
+    "ar": "الوقت والتاريخ"
+  }
 }

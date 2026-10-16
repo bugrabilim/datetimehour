@@ -1,6 +1,7 @@
 /* Uygulama metinleri ve verileri sitedeki tek kaynaktan üretilir (src/i18n/*.json, src/data/*.json);
    sitede karşılığı olmayan uygulama metinleri mobile/shared/app-strings.json'dadır.
-   Çıktılar: iOS String Catalog (Localizable.xcstrings) ve il listesi (provinces.json).
+   Çıktılar: iOS String Catalog (Localizable.xcstrings; NS/CF ile başlayan Info.plist anahtarları InfoPlist.xcstrings'e)
+   ve il listesi (provinces.json).
    Kullanım: node mobile/shared/gen-strings.mjs          → dosyaları yazar
              node mobile/shared/gen-strings.mjs --check  → güncel değilse hata verir (CI) */
 import fs from "node:fs";
@@ -36,7 +37,7 @@ for (const [key, byLang] of Object.entries(APP)) {
 const names = (s) => [...new Set([...s.matchAll(/\{([a-z]+)\}/gi)].map((m) => m[1]))];
 const toIOS = (s, order) => s.replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
 
-const strings = {};
+const strings = {}, plistStrings = {};
 for (const [key, get] of Object.entries(KEYS)) {
   const localizations = {};
   const order = names(get(I.tr, "tr") ?? "");
@@ -46,9 +47,10 @@ for (const [key, get] of Object.entries(KEYS)) {
     if (names(v).sort().join() !== [...order].sort().join()) throw new Error(`${l}: ${key} yer tutucuları Türkçeyle aynı değil`);
     localizations[l] = { stringUnit: { state: "translated", value: toIOS(v, order) } };
   }
-  strings[key] = { extractionState: "manual", localizations };
+  (/^(NS|CF)/.test(key) ? plistStrings : strings)[key] = { extractionState: "manual", localizations };
 }
-const xcstrings = JSON.stringify({ sourceLanguage: "tr", strings, version: "1.0" }, null, 2) + "\n";
+const catalog = (s) => JSON.stringify({ sourceLanguage: "tr", strings: s, version: "1.0" }, null, 2) + "\n";
+const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
   .map(({ slug, name, lat, lon, ar }) => ({ slug, name, lat, lon, ar }));
@@ -56,6 +58,7 @@ const provincesJson = JSON.stringify(provinces) + "\n";
 
 const files = {
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
+  "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
   "mobile/ios/App/Resources/provinces.json": provincesJson,
 };
 const check = process.argv.includes("--check");

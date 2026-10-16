@@ -9,6 +9,7 @@ struct NotificationSettingsView: View {
     @AppStorage(NotificationPrefs.enabledKey) private var enabled = false
     @AppStorage(NotificationPrefs.prayersKey) private var prayersRaw = NotificationPrefs.defaultPrayers
     @AppStorage(NotificationPrefs.leadKey) private var lead = 0
+    @AppStorage(SoundMode.key) private var sound = SoundMode.voice.rawValue
     @State private var denied = false
 
     var body: some View {
@@ -40,6 +41,23 @@ struct NotificationSettingsView: View {
                             }
                         }
                     }
+                    Section {
+                        Picker(L("notify.sound"), selection: $sound) {
+                            ForEach(SoundMode.allCases, id: \.rawValue) { Text($0.label).tag($0.rawValue) }
+                        }
+                        Button {
+                            Task { await NotificationSounds.preview(mode: SoundMode(rawValue: sound) ?? .voice, lead: lead) }
+                        } label: {
+                            Label(L("notify.sound.preview"), systemImage: "play.circle")
+                        }
+                    } footer: {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(L("notify.sound.note"))
+                            if sound == SoundMode.voice.rawValue && NotificationSounds.hasOnlyBasicVoice {
+                                Text(L("notify.sound.better"))
+                            }
+                        }
+                    }
                 }
             }
             .tint(Theme.accent)
@@ -57,6 +75,7 @@ struct NotificationSettingsView: View {
         }
         .onChange(of: prayersRaw) { Task { await PrayerNotifier.reschedule() } }
         .onChange(of: lead) { Task { await PrayerNotifier.reschedule() } }
+        .onChange(of: sound) { Task { await PrayerNotifier.reschedule() } }
     }
 
     private func selected(_ prayer: Prayer) -> Binding<Bool> {

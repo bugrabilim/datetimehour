@@ -57,6 +57,13 @@ enum PrayerNotifier {
 
         let province = Province.find(UserDefaults.standard.string(forKey: "province") ?? "istanbul")
         let alerts = PrayerAlerts.plan(schedule: PrayerSchedule(province: province), settings: settings, now: Date())
+        // Her vakit için ses bir kez üretilir (sesli duyuru vakit adını söyler)
+        var sounds: [Prayer: UNNotificationSound] = [:]
+        NotificationSounds.removeStale(keeping: Set(Prayer.allCases.map { NotificationSounds.fileName($0, lead: settings.leadMinutes) }))
+        for prayer in Set(alerts.map(\.prayer)) {
+            sounds[prayer] = await NotificationSounds.sound(for: prayer, lead: settings.leadMinutes)
+            guard mine == generation else { return }
+        }
         var requests = alerts.map { a -> UNNotificationRequest in
             let content = UNMutableNotificationContent()
             let name = a.prayer.localizedName
@@ -64,7 +71,7 @@ enum PrayerNotifier {
                 ? String(format: L("notify.title.before"), name, String(settings.leadMinutes))
                 : String(format: L("notify.title.now"), name)
             content.body = "\(province.displayName) · \(PrayerSchedule.hm.string(from: a.prayerAt))"
-            content.sound = .default
+            content.sound = sounds[a.prayer] ?? .default
             content.threadIdentifier = "prayer"
             return UNNotificationRequest(identifier: "prayer-\(Int(a.prayerAt.timeIntervalSince1970))-\(a.prayer.rawValue)",
                                          content: content, trigger: trigger(at: a.fireAt))

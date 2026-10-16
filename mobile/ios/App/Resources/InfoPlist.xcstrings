@@ -1,0 +1,76 @@
+{
+  "sourceLanguage": "tr",
+  "strings": {
+    "NSLocationWhenInUseUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bulunduğunuz yerin namaz vakitlerini göstermek için. Konumunuz yalnız telefonda kullanılır, hiçbir yere gönderilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To show prayer times for where you are. Your location is used only on your phone and is never sent anywhere."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um die Gebetszeiten an Ihrem Ort anzuzeigen. Ihr Standort wird nur auf Ihrem Telefon verwendet und nirgendwohin gesendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Olduğunuz yerin namaz vaxtlarını göstərmək üçün. Məkanınız yalnız telefonda istifadə olunur, heç yerə göndərilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لعرض أوقات الصلاة في مكانك. يُستخدم موقعك على هاتفك فقط ولا يُرسل إلى أي جهة."
+          }
+        }
+      }
+    },
+    "CFBundleDisplayName": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time & Date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhr & Datum"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarix"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوقت والتاريخ"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

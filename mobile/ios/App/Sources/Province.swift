@@ -22,6 +22,18 @@ struct Province: Decodable, Identifiable, Hashable {
         return list.sorted { $0.name.compare($1.name, locale: Locale(identifier: "tr")) == .orderedAscending }
     }()
 
+    /// En yakın il merkezi ve uzaklığı (km)
+    static func nearest(latitude: Double, longitude: Double) -> (Province, Double) {
+        func km(_ p: Province) -> Double {
+            let r = Double.pi / 180
+            let dLat = (p.lat - latitude) * r, dLon = (p.lon - longitude) * r
+            let a = sin(dLat / 2) * sin(dLat / 2) + cos(latitude * r) * cos(p.lat * r) * sin(dLon / 2) * sin(dLon / 2)
+            return 6371 * 2 * atan2(sqrt(a), sqrt(1 - a))
+        }
+        let best = all.min { km($0) < km($1) } ?? find("istanbul")
+        return (best, km(best))
+    }
+
     static func find(_ slug: String) -> Province {
         all.first { $0.slug == slug } ?? all.first { $0.slug == "istanbul" } ?? all[0]
     }

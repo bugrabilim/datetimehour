@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 import SaatCore
 
 /// İlk ekran: büyük saat, bugünün tarihi, il seçimi, bugünün namaz vakitleri ve sıradaki vakte kalan süre.
@@ -41,6 +42,14 @@ struct HomeView: View {
             .background(Theme.bg.ignoresSafeArea())
         }
         .sheet(isPresented: $showNotify) { NotificationSettingsView() }
+        .task {
+            // CI: bildirim seslerinin örneği üretilir, ekran görüntüleriyle birlikte dışarı alınır
+            guard ProcessInfo.processInfo.arguments.contains("-makeSoundSample") else { return }
+            _ = await NotificationSounds.make(name: NotificationSounds.fileName(.dhuhr, lead: 0),
+                                              text: NotificationSounds.spokenText(.dhuhr, lead: 0))
+            _ = await NotificationSounds.make(name: NotificationSounds.fileName(.asr, lead: 10),
+                                              text: NotificationSounds.spokenText(.asr, lead: 10))
+        }
         .onChange(of: provinceSlug) { Task { await PrayerNotifier.reschedule() } }
     }
 }
@@ -108,6 +117,15 @@ private struct PrayerPanel: View {
         let next = schedule.next(after: now)
         VStack(spacing: 16) {
             Menu {
+                Button {
+                    Task {
+                        guard let loc = await OneShotLocation().fetch(requestPermission: true) else { return }
+                        provinceSlug = Province.nearest(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude).0.slug
+                        WidgetCenter.shared.reloadAllTimelines() // "Otomatik" widget'lar yeni izinle yenilensin
+                    }
+                } label: {
+                    Label(L("place.useLocation"), systemImage: "location")
+                }
                 Picker(String(localized: "prayer.province"), selection: $provinceSlug) {
                     ForEach(Province.all) { Text($0.displayName).tag($0.slug) }
                 }
