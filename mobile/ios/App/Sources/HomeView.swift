@@ -89,7 +89,8 @@ private struct ClockHeader: View {
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
             .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .frame(height: 320)
+            .frame(height: style == 1 ? 320 : 170) // dijitalde boşluk kalmasın
+            .animation(.easeInOut(duration: 0.25), value: style)
             Text(now.formatted(.dateTime.day().month(.wide).year().weekday(.wide)))
                 .font(.title3.weight(.semibold))
                 .foregroundStyle(Theme.text)
