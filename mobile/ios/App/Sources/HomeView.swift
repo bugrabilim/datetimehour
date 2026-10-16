@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 import SaatCore
 
 /// İlk ekran: büyük saat, bugünün tarihi, il seçimi, bugünün namaz vakitleri ve sıradaki vakte kalan süre.
@@ -108,6 +109,15 @@ private struct PrayerPanel: View {
         let next = schedule.next(after: now)
         VStack(spacing: 16) {
             Menu {
+                Button {
+                    Task {
+                        guard let loc = await OneShotLocation().fetch(requestPermission: true) else { return }
+                        provinceSlug = Province.nearest(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude).0.slug
+                        WidgetCenter.shared.reloadAllTimelines() // "Otomatik" widget'lar yeni izinle yenilensin
+                    }
+                } label: {
+                    Label(L("place.useLocation"), systemImage: "location")
+                }
                 Picker(String(localized: "prayer.province"), selection: $provinceSlug) {
                     ForEach(Province.all) { Text($0.displayName).tag($0.slug) }
                 }

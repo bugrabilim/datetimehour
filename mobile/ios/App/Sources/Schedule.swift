@@ -22,6 +22,16 @@ extension PrayerSchedule {
         f.timeZone = zone
         return f
     }()
+
+    /// Bu yerin saat diliminde "HH:mm" (yurt dışı konumda Türkiye saati değil)
+    func clock(_ date: Date) -> String {
+        if timeZone == Self.zone { return Self.hm.string(from: date) }
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.dateFormat = "HH:mm"
+        f.timeZone = timeZone
+        return f.string(from: date)
+    }
 }
 
 extension Prayer {
