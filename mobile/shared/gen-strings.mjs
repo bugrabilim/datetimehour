@@ -1,4 +1,5 @@
-/* Uygulama metinleri ve verileri sitedeki tek kaynaktan üretilir (src/i18n/*.json, src/data/*.json).
+/* Uygulama metinleri ve verileri sitedeki tek kaynaktan üretilir (src/i18n/*.json, src/data/*.json);
+   sitede karşılığı olmayan uygulama metinleri mobile/shared/app-strings.json'dadır.
    Çıktılar: iOS String Catalog (Localizable.xcstrings) ve il listesi (provinces.json).
    Kullanım: node mobile/shared/gen-strings.mjs          → dosyaları yazar
              node mobile/shared/gen-strings.mjs --check  → güncel değilse hata verir (CI) */
@@ -24,15 +25,26 @@ const KEYS = {
   "prayer.province": (t) => t.prayer.chooseLabel,
   "brand.product": (t) => t.badge.alt,
 };
-const toIOS = (s) => s.replace(/\{[a-z]+\}/gi, "%@");
+const APP = JSON.parse(fs.readFileSync(path.join(HERE, "app-strings.json"), "utf8"));
+for (const [key, byLang] of Object.entries(APP)) {
+  if (key === "_") continue;
+  if (KEYS[key]) throw new Error(`${key} hem sitede hem app-strings.json'da`);
+  KEYS[key] = (t, l) => byLang[l];
+}
+
+/* {ad} → %1$@, %2$@…: sıra Türkçe metindeki ilk görünüş sırasıdır; her dil aynı adları kullanmalı. */
+const names = (s) => [...new Set([...s.matchAll(/\{([a-z]+)\}/gi)].map((m) => m[1]))];
+const toIOS = (s, order) => s.replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
 
 const strings = {};
 for (const [key, get] of Object.entries(KEYS)) {
   const localizations = {};
+  const order = names(get(I.tr, "tr") ?? "");
   for (const l of LANGS) {
-    const v = get(I[l]);
+    const v = get(I[l], l);
     if (typeof v !== "string" || !v) throw new Error(`${l}: ${key} metni yok`);
-    localizations[l] = { stringUnit: { state: "translated", value: toIOS(v) } };
+    if (names(v).sort().join() !== [...order].sort().join()) throw new Error(`${l}: ${key} yer tutucuları Türkçeyle aynı değil`);
+    localizations[l] = { stringUnit: { state: "translated", value: toIOS(v, order) } };
   }
   strings[key] = { extractionState: "manual", localizations };
 }

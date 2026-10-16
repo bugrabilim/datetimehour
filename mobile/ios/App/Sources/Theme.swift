@@ -5,6 +5,7 @@ import UIKit
 enum Theme {
     static let bg = dynamic(light: 0xF7F4EE, dark: 0x11141A)
     static let surface = dynamic(light: 0xFFFFFF, dark: 0x1A1E26)
+    static let surface2 = dynamic(light: 0xEFEBE2, dark: 0x232834)
     static let text = dynamic(light: 0x1B1F27, dark: 0xEEF0F4)
     static let muted = dynamic(light: 0x565C68, dark: 0xA5ACB9)
     static let border = dynamic(light: 0xD6CFBF, dark: 0x343B49)

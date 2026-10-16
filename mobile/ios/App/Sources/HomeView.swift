@@ -4,6 +4,9 @@ import SaatCore
 /// İlk ekran: büyük saat, bugünün tarihi, il seçimi, bugünün namaz vakitleri ve sıradaki vakte kalan süre.
 struct HomeView: View {
     @AppStorage("province") private var provinceSlug = "istanbul"
+    @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = false
+    /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
+    @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
 
     private var province: Province { Province.find(provinceSlug) }
 
@@ -12,8 +15,19 @@ struct HomeView: View {
             let now = context.date
             ScrollView {
                 VStack(spacing: 28) {
+                    HStack {
+                        Spacer()
+                        Button { showNotify = true } label: {
+                            Image(systemName: notifyOn ? "bell.fill" : "bell")
+                                .font(.title3)
+                                .foregroundStyle(Theme.accent)
+                                .frame(width: 44, height: 44)
+                        }
+                        .accessibilityLabel(L("notify.heading"))
+                    }
+                    .padding(.bottom, -28)
                     ClockHeader(now: now)
-                    PrayerPanel(now: now, schedule: PrayerSchedule(province: province), provinceSlug: $provinceSlug)
+                    PrayerPanel(now: now, province: province, schedule: PrayerSchedule(province: province), provinceSlug: $provinceSlug)
                     Text(String(localized: "brand.product"))
                         .font(.footnote)
                         .foregroundStyle(Theme.muted)
@@ -26,48 +40,69 @@ struct HomeView: View {
             }
             .background(Theme.bg.ignoresSafeArea())
         }
+        .sheet(isPresented: $showNotify) { NotificationSettingsView() }
+        .onChange(of: provinceSlug) { Task { await PrayerNotifier.reschedule() } }
     }
 }
 
+/// Saat: sola/sağa kaydırınca dijital ↔ analog (seçim hatırlanır). Saate dokununca saniye açılır/kapanır;
+/// sitedeki gibi varsayılan dijitalde açık, analogda kapalı.
 private struct ClockHeader: View {
     let now: Date
+    @AppStorage("clockStyle") private var style = 0
+    @AppStorage("secD") private var digitalSeconds = true
+    @AppStorage("secA") private var analogSeconds = false
 
-    private static let timeFormatter: DateFormatter = {
+    private static let hms: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "en_US_POSIX") // saat rakamları her dilde aynı (sitedeki gibi)
         f.dateFormat = "HH:mm:ss"
         return f
     }()
+    private static let hm: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.dateFormat = "HH:mm"
+        return f
+    }()
 
     var body: some View {
         VStack(spacing: 8) {
-            Text(Self.timeFormatter.string(from: now))
-                .font(.system(size: 76, weight: .bold, design: .rounded))
-                .monospacedDigit()
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
-                .foregroundStyle(Theme.text)
-                .environment(\.layoutDirection, .leftToRight)
+            TabView(selection: $style) {
+                Text((digitalSeconds ? Self.hms : Self.hm).string(from: now))
+                    .font(.system(size: 76, weight: .bold, design: .rounded))
+                    .monospacedDigit()
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .foregroundStyle(Theme.text)
+                    .environment(\.layoutDirection, .leftToRight)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(Rectangle())
+                    .onTapGesture { digitalSeconds.toggle() }
+                    .tag(0)
+                AnalogClock(date: now, showSeconds: analogSeconds)
+                    .padding(.vertical, 12)
+                    .padding(.bottom, 24)
+                    .contentShape(Rectangle())
+                    .onTapGesture { analogSeconds.toggle() }
+                    .tag(1)
+            }
+            .tabViewStyle(.page(indexDisplayMode: .always))
+            .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .frame(height: style == 1 ? 320 : 170) // dijitalde boşluk kalmasın
+            .animation(.easeInOut(duration: 0.25), value: style)
             Text(now.formatted(.dateTime.day().month(.wide).year().weekday(.wide)))
                 .font(.title3.weight(.semibold))
                 .foregroundStyle(Theme.text)
         }
-        .accessibilityElement(children: .combine)
     }
 }
 
 private struct PrayerPanel: View {
     let now: Date
+    let province: Province
     let schedule: PrayerSchedule
     @Binding var provinceSlug: String
-
-    private static let hm: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.dateFormat = "HH:mm"
-        f.timeZone = PrayerSchedule.zone
-        return f
-    }()
 
     var body: some View {
         let next = schedule.next(after: now)
@@ -77,7 +112,7 @@ private struct PrayerPanel: View {
                     ForEach(Province.all) { Text($0.displayName).tag($0.slug) }
                 }
             } label: {
-                Label(schedule.province.displayName, systemImage: "mappin.and.ellipse")
+                Label(province.displayName, systemImage: "mappin.and.ellipse")
                     .font(.headline)
                     .foregroundStyle(Theme.accent)
             }
@@ -106,7 +141,7 @@ private struct PrayerPanel: View {
                     HStack {
                         Text(entry.prayer.localizedName)
                         Spacer()
-                        Text(Self.hm.string(from: entry.at))
+                        Text(PrayerSchedule.hm.string(from: entry.at))
                             .monospacedDigit()
                             .environment(\.layoutDirection, .leftToRight)
                     }

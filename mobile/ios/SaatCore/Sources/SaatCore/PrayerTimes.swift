@@ -1,7 +1,7 @@
 import Foundation
 
 /// Namaz vakitleri ve güneş vakitleri.
-public enum Prayer: String, CaseIterable, Sendable {
+public enum Prayer: String, CaseIterable, Sendable, Codable {
     case fajr, sunrise, dhuhr, asr, maghrib, isha
 }
 
