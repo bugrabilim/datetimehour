@@ -30,6 +30,8 @@ shoot tr tr_TR light tr-acik
 shoot tr tr_TR dark tr-koyu
 shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
+shoot tr tr_TR light tr-analog -clockStyle "<integer>1</integer>"
+shoot tr tr_TR dark tr-analog-koyu -clockStyle "<integer>1</integer>" -secA "<true/>"
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 shoot en en_US dark en-bildirim -openNotifications -notify.enabled "<true/>"

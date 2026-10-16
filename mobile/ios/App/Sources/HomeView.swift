@@ -45,30 +45,55 @@ struct HomeView: View {
     }
 }
 
+/// Saat: sola/sağa kaydırınca dijital ↔ analog (seçim hatırlanır). Saate dokununca saniye açılır/kapanır;
+/// sitedeki gibi varsayılan dijitalde açık, analogda kapalı.
 private struct ClockHeader: View {
     let now: Date
+    @AppStorage("clockStyle") private var style = 0
+    @AppStorage("secD") private var digitalSeconds = true
+    @AppStorage("secA") private var analogSeconds = false
 
-    private static let timeFormatter: DateFormatter = {
+    private static let hms: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "en_US_POSIX") // saat rakamları her dilde aynı (sitedeki gibi)
         f.dateFormat = "HH:mm:ss"
         return f
     }()
+    private static let hm: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "en_US_POSIX")
+        f.dateFormat = "HH:mm"
+        return f
+    }()
 
     var body: some View {
         VStack(spacing: 8) {
-            Text(Self.timeFormatter.string(from: now))
-                .font(.system(size: 76, weight: .bold, design: .rounded))
-                .monospacedDigit()
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
-                .foregroundStyle(Theme.text)
-                .environment(\.layoutDirection, .leftToRight)
+            TabView(selection: $style) {
+                Text((digitalSeconds ? Self.hms : Self.hm).string(from: now))
+                    .font(.system(size: 76, weight: .bold, design: .rounded))
+                    .monospacedDigit()
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                    .foregroundStyle(Theme.text)
+                    .environment(\.layoutDirection, .leftToRight)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .contentShape(Rectangle())
+                    .onTapGesture { digitalSeconds.toggle() }
+                    .tag(0)
+                AnalogClock(date: now, showSeconds: analogSeconds)
+                    .padding(.vertical, 12)
+                    .padding(.bottom, 24)
+                    .contentShape(Rectangle())
+                    .onTapGesture { analogSeconds.toggle() }
+                    .tag(1)
+            }
+            .tabViewStyle(.page(indexDisplayMode: .always))
+            .indexViewStyle(.page(backgroundDisplayMode: .always))
+            .frame(height: 320)
             Text(now.formatted(.dateTime.day().month(.wide).year().weekday(.wide)))
                 .font(.title3.weight(.semibold))
                 .foregroundStyle(Theme.text)
         }
-        .accessibilityElement(children: .combine)
     }
 }
 
