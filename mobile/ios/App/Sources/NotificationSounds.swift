@@ -19,7 +19,7 @@ enum SoundMode: String, CaseIterable {
 @MainActor
 enum NotificationSounds {
     /// Dosya adı sürümü: ses üretimi değişirse artırılır, eski dosyalar silinir
-    private static let version = "s1"
+    private static let version = "s2"
     private static var player: AVAudioPlayer?
 
     static var directory: URL {
@@ -32,8 +32,21 @@ enum NotificationSounds {
         ["tr": "tr-TR", "en": "en-US", "de": "de-DE", "az": "tr-TR", "ar": "ar-SA"][language] ?? "tr-TR"
     }
 
+    /// Kurulu en iyi ses: önce "Premium", sonra "Gelişmiş", yoksa standart ses.
+    /// Kullanıcı daha iyi bir ses indirirse dosya adı değişir, sesler yeniden üretilir.
+    static var bestVoice: AVSpeechSynthesisVoice? {
+        let voices = AVSpeechSynthesisVoice.speechVoices().filter {
+            $0.language == voiceCode && !$0.voiceTraits.contains(.isNoveltyVoice) && !$0.voiceTraits.contains(.isPersonalVoice)
+        }
+        return voices.max { $0.quality.rawValue < $1.quality.rawValue } ?? AVSpeechSynthesisVoice(language: voiceCode)
+    }
+
+    /// Standart (robotik) ses mi kullanılıyor; ayar penceresinde daha iyi ses indirme ipucu gösterilir
+    static var hasOnlyBasicVoice: Bool { (bestVoice?.quality ?? .default) == .default }
+
     static func fileName(_ prayer: Prayer, lead: Int) -> String {
-        "\(version)-\(language)-\(prayer.rawValue)-\(lead).caf"
+        let voiceKey = String((bestVoice?.identifier ?? "none").filter { $0.isLetter || $0.isNumber }.suffix(40))
+        return "\(version)-\(language)-\(voiceKey)-\(prayer.rawValue)-\(lead).caf"
     }
 
     static func spokenText(_ prayer: Prayer, lead: Int) -> String {
@@ -96,7 +109,8 @@ enum NotificationSounds {
 
         var speech: [AVAudioPCMBuffer] = []
         if let text {
-            speech = await SpeechCollector().buffers(for: text, voice: voiceCode)
+            guard let voice = bestVoice else { return false }
+            speech = await SpeechCollector().buffers(for: text, voice: voice)
             if speech.isEmpty { return false }
         }
         let format = speech.first?.format
@@ -154,11 +168,10 @@ private final class SpeechCollector {
     private var out: [AVAudioPCMBuffer] = []
     private var done = false
 
-    func buffers(for text: String, voice: String) async -> [AVAudioPCMBuffer] {
-        guard let v = AVSpeechSynthesisVoice(language: voice) else { return [] }
+    func buffers(for text: String, voice: AVSpeechSynthesisVoice) async -> [AVAudioPCMBuffer] {
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = v
-        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.95
+        utterance.voice = voice
+        utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.9
         return await withCheckedContinuation { (cont: CheckedContinuation<[AVAudioPCMBuffer], Never>) in
             func finish() {
                 lock.lock()

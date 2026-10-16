@@ -51,7 +51,12 @@ struct NotificationSettingsView: View {
                             Label(L("notify.sound.preview"), systemImage: "play.circle")
                         }
                     } footer: {
-                        Text(L("notify.sound.note"))
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(L("notify.sound.note"))
+                            if sound == SoundMode.voice.rawValue && NotificationSounds.hasOnlyBasicVoice {
+                                Text(L("notify.sound.better"))
+                            }
+                        }
                     }
                 }
             }

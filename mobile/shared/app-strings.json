@@ -244,5 +244,12 @@
     "de": "Noch {min} Minuten bis {name}.",
     "az": "{name} vaxtına {min} dəqiqə qaldı.",
     "ar": "بقي {min} دقيقة على {name}."
+  },
+  "notify.sound.better": {
+    "tr": "Daha doğal bir ses için: Ayarlar → Erişilebilirlik → Seslendirilen İçerik → Sesler → Türkçe bölümünden \"Gelişmiş\" bir ses indirin (ör. Yelda). Uygulamayı yeniden açınca sesler yenilenir.",
+    "en": "For a more natural voice: Settings → Accessibility → Spoken Content → Voices → English, then download an \"Enhanced\" voice. The sounds are renewed the next time you open the app.",
+    "de": "Für eine natürlichere Stimme: Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch und eine „Erweitert“-Stimme laden. Beim nächsten Öffnen der App werden die Töne erneuert.",
+    "az": "Daha təbii səs üçün: Parametrlər → Əlçatımlılıq → Səsləndirilən məzmun → Səslər → Türkcə bölməsindən \"Təkmil\" səs yükləyin. Tətbiqi yenidən açanda səslər yenilənir.",
+    "ar": "لصوت أكثر طبيعية: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية، ثم نزّل صوتًا «محسّنًا». تتجدد الأصوات عند فتح التطبيق مرة أخرى."
   }
 }
