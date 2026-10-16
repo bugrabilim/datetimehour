@@ -2,6 +2,7 @@ name: iOS TestFlight
 # main'e iOS değişikliği girince (ya da elle "Run workflow") uygulamayı imzalayıp TestFlight'a yükler.
 # Gerekli gizli değişkenler (App Store Connect API anahtarı): ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8.
 # Anahtar yoksa iş hata vermeden atlanır. İmzalama Xcode'un bulut imzalamasıyla yapılır (sertifika depoda yok).
+# Arşiv imzasız alınır: geliştirme imzası kayıtlı cihaz ister, hesapta cihaz yok. Dağıtım imzası yüklemede atılır.
 on:
   workflow_dispatch:
   push:
@@ -50,9 +51,7 @@ jobs:
         run: |
           xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarih -configuration Release \
             -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/SaatTarih.xcarchive" \
-            -allowProvisioningUpdates -authenticationKeyPath "$ASC_KEY_PATH" \
-            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
-            CURRENT_PROJECT_VERSION=${{ github.run_number }} -quiet archive
+            CODE_SIGNING_ALLOWED=NO CURRENT_PROJECT_VERSION=${{ github.run_number }} -quiet archive
       - name: Yükle
         if: steps.keys.outputs.ok == '1'
         run: |
