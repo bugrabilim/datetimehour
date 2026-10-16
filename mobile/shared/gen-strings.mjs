@@ -1,6 +1,6 @@
 /* Uygulama metinleri ve verileri sitedeki tek kaynaktan üretilir (src/i18n/*.json, src/data/*.json);
    sitede karşılığı olmayan uygulama metinleri mobile/shared/app-strings.json'dadır.
-   Çıktılar: iOS String Catalog (Localizable.xcstrings; NS ile başlayan Info.plist anahtarları InfoPlist.xcstrings'e)
+   Çıktılar: iOS String Catalog (Localizable.xcstrings; NS/CF ile başlayan Info.plist anahtarları InfoPlist.xcstrings'e)
    ve il listesi (provinces.json).
    Kullanım: node mobile/shared/gen-strings.mjs          → dosyaları yazar
              node mobile/shared/gen-strings.mjs --check  → güncel değilse hata verir (CI) */
@@ -47,7 +47,7 @@ for (const [key, get] of Object.entries(KEYS)) {
     if (names(v).sort().join() !== [...order].sort().join()) throw new Error(`${l}: ${key} yer tutucuları Türkçeyle aynı değil`);
     localizations[l] = { stringUnit: { state: "translated", value: toIOS(v, order) } };
   }
-  (key.startsWith("NS") ? plistStrings : strings)[key] = { extractionState: "manual", localizations };
+  (/^(NS|CF)/.test(key) ? plistStrings : strings)[key] = { extractionState: "manual", localizations };
 }
 const catalog = (s) => JSON.stringify({ sourceLanguage: "tr", strings: s, version: "1.0" }, null, 2) + "\n";
 const xcstrings = catalog(strings);

@@ -251,5 +251,12 @@
     "de": "Für eine natürlichere Stimme: Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch und eine „Erweitert“-Stimme laden. Beim nächsten Öffnen der App werden die Töne erneuert.",
     "az": "Daha təbii səs üçün: Parametrlər → Əlçatımlılıq → Səsləndirilən məzmun → Səslər → Türkcə bölməsindən \"Təkmil\" səs yükləyin. Tətbiqi yenidən açanda səslər yenilənir.",
     "ar": "لصوت أكثر طبيعية: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية، ثم نزّل صوتًا «محسّنًا». تتجدد الأصوات عند فتح التطبيق مرة أخرى."
+  },
+  "CFBundleDisplayName": {
+    "tr": "Saat Tarih",
+    "en": "Time & Date",
+    "de": "Uhr & Datum",
+    "az": "Saat Tarix",
+    "ar": "الوقت والتاريخ"
   }
 }
