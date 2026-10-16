@@ -62,9 +62,13 @@ struct Place {
     let name: String
     let schedule: PrayerSchedule
 
+    init(name: String, schedule: PrayerSchedule) {
+        self.name = name
+        self.schedule = schedule
+    }
+
     init(province: Province) {
-        name = province.displayName
-        schedule = PrayerSchedule(province: province)
+        self.init(name: province.displayName, schedule: PrayerSchedule(province: province))
     }
 
     /// En yakın il; en yakın il merkezi 150 km'den uzaksa (yurt dışı) tam konum ve cihazın saat dilimi.
@@ -73,9 +77,9 @@ struct Place {
         if km <= 150 {
             self.init(province: province)
         } else {
-            name = L("place.myLocation")
-            schedule = PrayerSchedule(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude,
-                                      timeZone: .current)
+            self.init(name: L("place.myLocation"),
+                      schedule: PrayerSchedule(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude,
+                                               timeZone: .current))
         }
     }
 }
