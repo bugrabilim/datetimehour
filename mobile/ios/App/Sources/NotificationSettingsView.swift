@@ -1,0 +1,93 @@
+import SwiftUI
+import UIKit
+import SaatCore
+
+/// Vakit bildirimleri ayarı: aç/kapat, hangi vakitler, kaç dakika önce.
+struct NotificationSettingsView: View {
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
+    @AppStorage(NotificationPrefs.enabledKey) private var enabled = false
+    @AppStorage(NotificationPrefs.prayersKey) private var prayersRaw = NotificationPrefs.defaultPrayers
+    @AppStorage(NotificationPrefs.leadKey) private var lead = 0
+    @State private var denied = false
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                Section {
+                    Toggle(L("notify.enable"), isOn: Binding(get: { enabled }, set: setEnabled))
+                } footer: {
+                    Text(L("notify.note"))
+                }
+                if denied {
+                    Section {
+                        Text(L("notify.denied"))
+                        Button(L("notify.openSettings")) {
+                            if let url = URL(string: UIApplication.openSettingsURLString) { openURL(url) }
+                        }
+                    }
+                }
+                if enabled {
+                    Section(L("notify.prayers")) {
+                        ForEach(Prayer.allCases, id: \.self) { prayer in
+                            Toggle(prayer.localizedName, isOn: selected(prayer))
+                        }
+                    }
+                    Section {
+                        Picker(L("notify.lead"), selection: $lead) {
+                            ForEach(PrayerAlerts.Settings.leadChoices, id: \.self) { m in
+                                Text(m == 0 ? L("notify.lead.zero") : String(format: L("notify.lead.minutes"), String(m))).tag(m)
+                            }
+                        }
+                    }
+                }
+            }
+            .tint(Theme.accent)
+            .navigationTitle(L("notify.heading"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(L("common.done")) { dismiss() }
+                }
+            }
+        }
+        .task { await refreshDenied() }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            Task { await refreshDenied() }
+        }
+        .onChange(of: prayersRaw) { Task { await PrayerNotifier.reschedule() } }
+        .onChange(of: lead) { Task { await PrayerNotifier.reschedule() } }
+    }
+
+    private func selected(_ prayer: Prayer) -> Binding<Bool> {
+        Binding {
+            NotificationPrefs.decode(prayersRaw).contains(prayer)
+        } set: { on in
+            var set = NotificationPrefs.decode(prayersRaw)
+            if on { set.insert(prayer) } else { set.remove(prayer) }
+            prayersRaw = NotificationPrefs.encode(set)
+        }
+    }
+
+    /// Açarken izin istenir (ilk seferde iOS sorar); izin yoksa ayar kapalı kalır ve Ayarlar'a yönlendirilir.
+    private func setEnabled(_ on: Bool) {
+        guard on else {
+            enabled = false
+            Task { await PrayerNotifier.reschedule() }
+            return
+        }
+        Task {
+            let status = await PrayerNotifier.authorizationStatus()
+            var ok = PrayerNotifier.isAllowed(status)
+            if status == .notDetermined { ok = await PrayerNotifier.requestAuthorization() }
+            enabled = ok
+            denied = !ok
+            await PrayerNotifier.reschedule()
+        }
+    }
+
+    private func refreshDenied() async {
+        let status = await PrayerNotifier.authorizationStatus()
+        denied = status == .denied && enabled
+    }
+}

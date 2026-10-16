@@ -4,6 +4,9 @@ import SaatCore
 /// İlk ekran: büyük saat, bugünün tarihi, il seçimi, bugünün namaz vakitleri ve sıradaki vakte kalan süre.
 struct HomeView: View {
     @AppStorage("province") private var provinceSlug = "istanbul"
+    @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = false
+    /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
+    @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
 
     private var province: Province { Province.find(provinceSlug) }
 
@@ -12,8 +15,19 @@ struct HomeView: View {
             let now = context.date
             ScrollView {
                 VStack(spacing: 28) {
+                    HStack {
+                        Spacer()
+                        Button { showNotify = true } label: {
+                            Image(systemName: notifyOn ? "bell.fill" : "bell")
+                                .font(.title3)
+                                .foregroundStyle(Theme.accent)
+                                .frame(width: 44, height: 44)
+                        }
+                        .accessibilityLabel(L("notify.heading"))
+                    }
+                    .padding(.bottom, -28)
                     ClockHeader(now: now)
-                    PrayerPanel(now: now, schedule: PrayerSchedule(province: province), provinceSlug: $provinceSlug)
+                    PrayerPanel(now: now, province: province, schedule: PrayerSchedule(province: province), provinceSlug: $provinceSlug)
                     Text(String(localized: "brand.product"))
                         .font(.footnote)
                         .foregroundStyle(Theme.muted)
@@ -26,6 +40,8 @@ struct HomeView: View {
             }
             .background(Theme.bg.ignoresSafeArea())
         }
+        .sheet(isPresented: $showNotify) { NotificationSettingsView() }
+        .onChange(of: provinceSlug) { Task { await PrayerNotifier.reschedule() } }
     }
 }
 
@@ -58,16 +74,9 @@ private struct ClockHeader: View {
 
 private struct PrayerPanel: View {
     let now: Date
+    let province: Province
     let schedule: PrayerSchedule
     @Binding var provinceSlug: String
-
-    private static let hm: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.dateFormat = "HH:mm"
-        f.timeZone = PrayerSchedule.zone
-        return f
-    }()
 
     var body: some View {
         let next = schedule.next(after: now)
@@ -77,7 +86,7 @@ private struct PrayerPanel: View {
                     ForEach(Province.all) { Text($0.displayName).tag($0.slug) }
                 }
             } label: {
-                Label(schedule.province.displayName, systemImage: "mappin.and.ellipse")
+                Label(province.displayName, systemImage: "mappin.and.ellipse")
                     .font(.headline)
                     .foregroundStyle(Theme.accent)
             }
@@ -106,7 +115,7 @@ private struct PrayerPanel: View {
                     HStack {
                         Text(entry.prayer.localizedName)
                         Spacer()
-                        Text(Self.hm.string(from: entry.at))
+                        Text(PrayerSchedule.hm.string(from: entry.at))
                             .monospacedDigit()
                             .environment(\.layoutDirection, .leftToRight)
                     }

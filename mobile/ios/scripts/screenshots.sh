@@ -19,10 +19,10 @@ xcrun simctl bootstatus "$UDID" -b
 xcrun simctl status_bar "$UDID" override --time "09:41" --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 || true
 xcrun simctl install "$UDID" "$APP"
 
-shoot() { # dil bölge görünüm dosya
+shoot() { # dil bölge görünüm dosya [ek uygulama argümanları]
   xcrun simctl ui "$UDID" appearance "$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2"
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" "${@:5}"
   sleep 6
   xcrun simctl io "$UDID" screenshot "$OUT/$4.png"
 }
@@ -30,4 +30,7 @@ shoot tr tr_TR light tr-acik
 shoot tr tr_TR dark tr-koyu
 shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
+# Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
+shoot tr tr_TR light tr-bildirim -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
+shoot en en_US dark en-bildirim -openNotifications -notify.enabled "<true/>"
 ls -la "$OUT"

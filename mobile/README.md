@@ -6,7 +6,7 @@ Tamamen yerel (native) uygulamalar: iPhone, iPad ve Apple Watch için **Swift / 
 
 | Klasör | İçerik |
 |---|---|
-| `shared/` | Ortak test verisi. `gen-vectors.mjs` sitedeki hesaplardan (`src/js/prayer-calc.js`, `src/js/nature-calc.js`) `testdata/*.json` üretir |
+| `shared/` | Ortak test verisi ve metinler. `gen-vectors.mjs` sitedeki hesaplardan (`src/js/prayer-calc.js`, `src/js/nature-calc.js`) `testdata/*.json` üretir; `gen-strings.mjs` site metinlerinden ve `app-strings.json`'dan (yalnız uygulamada geçen metinler) iOS metin kataloğunu üretir |
 | `ios/SaatCore/` | Swift paketi: namaz vakitleri, mevsimler, Ay. Arayüz yok; uygulama, widget ve saat aynı paketi kullanır. Linux'ta da derlenir |
 | `android/` | Gradle projesi. `:core` modülü saf Kotlin/JVM (Android'e bağlı değil): aynı hesaplar |
 

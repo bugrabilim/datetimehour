@@ -1,0 +1,16 @@
+{
+  "_": "Yalnız uygulamalarda kullanılan metinler (sitede karşılığı olmayanlar). Her anahtar beş dilde olmalı; {ad} yer tutucuları gen-strings.mjs ile platform biçimine çevrilir.",
+  "common.done": { "tr": "Bitti", "en": "Done", "de": "Fertig", "az": "Hazır", "ar": "تم" },
+  "notify.heading": { "tr": "Vakit bildirimleri", "en": "Prayer time notifications", "de": "Benachrichtigungen zu Gebetszeiten", "az": "Vaxt bildirişləri", "ar": "إشعارات أوقات الصلاة" },
+  "notify.enable": { "tr": "Vakitlerde bildirim al", "en": "Notify me at prayer times", "de": "Bei Gebetszeiten benachrichtigen", "az": "Namaz vaxtlarında bildiriş al", "ar": "أعلمني عند أوقات الصلاة" },
+  "notify.prayers": { "tr": "Hangi vakitler", "en": "Which prayers", "de": "Welche Gebete", "az": "Hansı vaxtlar", "ar": "أي الصلوات" },
+  "notify.lead": { "tr": "Bildirim zamanı", "en": "When", "de": "Zeitpunkt", "az": "Bildiriş vaxtı", "ar": "وقت الإشعار" },
+  "notify.lead.zero": { "tr": "Vaktinde", "en": "At prayer time", "de": "Zur Gebetszeit", "az": "Vaxtında", "ar": "عند دخول الوقت" },
+  "notify.lead.minutes": { "tr": "{min} dk önce", "en": "{min} min before", "de": "{min} Min. vorher", "az": "{min} dəq əvvəl", "ar": "قبل {min} دقيقة" },
+  "notify.title.now": { "tr": "{name} vakti", "en": "Time for {name}", "de": "Zeit für {name}", "az": "{name} vaxtı", "ar": "حان وقت {name}" },
+  "notify.title.before": { "tr": "{name} vaktine {min} dakika", "en": "{name} in {min} minutes", "de": "{name} in {min} Minuten", "az": "{name} vaxtına {min} dəqiqə", "ar": "{name} بعد {min} دقيقة" },
+  "notify.reopen": { "tr": "Vakit bildirimlerinin sürmesi için uygulamayı açın.", "en": "Open the app to keep prayer time notifications coming.", "de": "Öffnen Sie die App, damit die Benachrichtigungen weiterlaufen.", "az": "Vaxt bildirişlərinin davam etməsi üçün tətbiqi açın.", "ar": "افتح التطبيق لتستمر إشعارات أوقات الصلاة." },
+  "notify.denied": { "tr": "Bildirim izni kapalı. Ayarlar'dan bu uygulama için bildirimlere izin verin.", "en": "Notifications are turned off. Allow notifications for this app in Settings.", "de": "Benachrichtigungen sind deaktiviert. Erlauben Sie sie für diese App in den Einstellungen.", "az": "Bildirişlər bağlıdır. Parametrlərdə bu tətbiq üçün bildirişlərə icazə verin.", "ar": "الإشعارات متوقفة. اسمح بها لهذا التطبيق من الإعدادات." },
+  "notify.openSettings": { "tr": "Ayarları aç", "en": "Open Settings", "de": "Einstellungen öffnen", "az": "Parametrləri aç", "ar": "افتح الإعدادات" },
+  "notify.note": { "tr": "Bildirimler seçili ilin vakitlerine göre telefonda hazırlanır, internet gerekmez. Liste uygulamayı her açışınızda yenilenir.", "en": "Notifications are prepared on your phone from the selected province's times; no internet needed. The list is renewed each time you open the app.", "de": "Die Benachrichtigungen werden auf Ihrem Telefon aus den Zeiten der gewählten Provinz erstellt, ohne Internet. Die Liste wird bei jedem Öffnen der App erneuert.", "az": "Bildirişlər seçilmiş vilayətin vaxtlarına görə telefonda hazırlanır, internet lazım deyil. Siyahı tətbiqi hər açanda yenilənir.", "ar": "تُجهَّز الإشعارات على هاتفك وفق أوقات الولاية المختارة دون الحاجة إلى الإنترنت، وتتجدد القائمة كلما فتحت التطبيق." }
+}
