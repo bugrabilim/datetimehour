@@ -42,6 +42,14 @@ struct HomeView: View {
             .background(Theme.bg.ignoresSafeArea())
         }
         .sheet(isPresented: $showNotify) { NotificationSettingsView() }
+        .task {
+            // CI: bildirim seslerinin örneği üretilir, ekran görüntüleriyle birlikte dışarı alınır
+            guard ProcessInfo.processInfo.arguments.contains("-makeSoundSample") else { return }
+            _ = await NotificationSounds.make(name: NotificationSounds.fileName(.dhuhr, lead: 0),
+                                              text: NotificationSounds.spokenText(.dhuhr, lead: 0))
+            _ = await NotificationSounds.make(name: NotificationSounds.fileName(.asr, lead: 10),
+                                              text: NotificationSounds.spokenText(.asr, lead: 10))
+        }
         .onChange(of: provinceSlug) { Task { await PrayerNotifier.reschedule() } }
     }
 }

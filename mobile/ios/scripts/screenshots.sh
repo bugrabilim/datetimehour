@@ -35,4 +35,10 @@ shoot tr tr_TR dark tr-analog-koyu -clockStyle "<integer>1</integer>" -secA "<tr
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 shoot en en_US dark en-bildirim -openNotifications -notify.enabled "<true/>"
-ls -la "$OUT"
+# Bildirim sesi örnekleri (telefonda üretilen dosyalar): Library/Sounds → çıktı klasörü
+shoot tr tr_TR light tr-ses -makeSoundSample
+sleep 10
+DATA=$(xcrun simctl get_app_container "$UDID" "$BUNDLE" data)
+mkdir -p "$OUT/sesler"
+cp "$DATA"/Library/Sounds/*.caf "$OUT/sesler/" 2>/dev/null || echo "Ses dosyası üretilmedi"
+ls -la "$OUT" "$OUT/sesler"

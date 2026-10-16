@@ -188,5 +188,61 @@
     "de": "Um die Gebetszeiten an Ihrem Ort anzuzeigen. Ihr Standort wird nur auf Ihrem Telefon verwendet und nirgendwohin gesendet.",
     "az": "Olduğunuz yerin namaz vaxtlarını göstərmək üçün. Məkanınız yalnız telefonda istifadə olunur, heç yerə göndərilmir.",
     "ar": "لعرض أوقات الصلاة في مكانك. يُستخدم موقعك على هاتفك فقط ولا يُرسل إلى أي جهة."
+  },
+  "notify.sound": {
+    "tr": "Bildirim sesi",
+    "en": "Notification sound",
+    "de": "Benachrichtigungston",
+    "az": "Bildiriş səsi",
+    "ar": "صوت الإشعار"
+  },
+  "notify.sound.voice": {
+    "tr": "Sesli duyuru",
+    "en": "Spoken announcement",
+    "de": "Gesprochene Ansage",
+    "az": "Səsli elan",
+    "ar": "إعلان صوتي"
+  },
+  "notify.sound.chime": {
+    "tr": "Kısa zil",
+    "en": "Short chime",
+    "de": "Kurzer Gong",
+    "az": "Qısa zəng",
+    "ar": "رنين قصير"
+  },
+  "notify.sound.system": {
+    "tr": "Telefonun sesi",
+    "en": "Phone's default sound",
+    "de": "Standardton des Telefons",
+    "az": "Telefonun səsi",
+    "ar": "صوت الهاتف الافتراضي"
+  },
+  "notify.sound.preview": {
+    "tr": "Dinle",
+    "en": "Listen",
+    "de": "Anhören",
+    "az": "Dinlə",
+    "ar": "استمع"
+  },
+  "notify.sound.note": {
+    "tr": "Sesli duyuru kısa bir zilden sonra vakti söyler, örneğin \"Öğle vakti geldi.\" Telefon sessizdeyken bildirim yalnız titreşir.",
+    "en": "The spoken announcement says the prayer after a short chime, for example \"It is time for Dhuhr.\" When the phone is silenced, notifications only vibrate.",
+    "de": "Die Ansage nennt nach einem kurzen Gong das Gebet, zum Beispiel „Es ist Zeit für Dhuhr.“ Ist das Telefon stumm geschaltet, vibrieren Benachrichtigungen nur.",
+    "az": "Səsli elan qısa zəngdən sonra vaxtı deyir, məsələn \"Zöhr vaxtı gəldi.\" Telefon səssiz rejimdə olanda bildiriş yalnız titrəyir.",
+    "ar": "يذكر الإعلان الصوتي الصلاة بعد رنين قصير، مثل «حان وقت الظهر». عندما يكون الهاتف صامتًا يكتفي الإشعار بالاهتزاز."
+  },
+  "notify.spoken.now": {
+    "tr": "{name} vakti geldi.",
+    "en": "It is time for {name}.",
+    "de": "Es ist Zeit für {name}.",
+    "az": "{name} vaxtı gəldi.",
+    "ar": "حان وقت {name}."
+  },
+  "notify.spoken.before": {
+    "tr": "{name} vaktine {min} dakika kaldı.",
+    "en": "{min} minutes until {name}.",
+    "de": "Noch {min} Minuten bis {name}.",
+    "az": "{name} vaxtına {min} dəqiqə qaldı.",
+    "ar": "بقي {min} دقيقة على {name}."
   }
 }
