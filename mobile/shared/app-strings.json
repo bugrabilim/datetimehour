@@ -762,5 +762,12 @@
     "de": "Um die Termine Ihrer Kalender im Kalender der App anzuzeigen und Löschen zu ermöglichen. Termine werden nur auf dem Telefon verwendet.",
     "az": "Təqvimlərinizdəki tədbirləri tətbiqin təqvimində göstərmək və silməyinizə icazə vermək üçün. Tədbirlər yalnız telefonda istifadə olunur.",
     "ar": "لعرض أحداث تقويماتك في تقويم التطبيق والسماح لك بحذفها. تُستخدم الأحداث على هاتفك فقط."
+  },
+  "calendar.noDayEvents": {
+    "tr": "Bu gün için etkinlik yok.",
+    "en": "No events on this day.",
+    "de": "Keine Termine an diesem Tag.",
+    "az": "Bu gün üçün tədbir yoxdur.",
+    "ar": "لا أحداث في هذا اليوم."
   }
 }

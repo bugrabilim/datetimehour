@@ -175,7 +175,7 @@ struct CalendarTab: View {
                     }
             }
             if special.isEmpty && deviceEvents.isEmpty && !data.isRamadan(selected) {
-                Text(L("calendar.noEvents")).foregroundStyle(Theme.muted)
+                Text(L("calendar.noDayEvents")).foregroundStyle(Theme.muted)
             }
             if !device.authorized && device.canAsk {
                 Button {

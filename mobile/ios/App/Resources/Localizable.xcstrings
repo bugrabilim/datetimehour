@@ -17255,6 +17255,41 @@
           }
         }
       }
+    },
+    "calendar.noDayEvents": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu gün için etkinlik yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No events on this day."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Termine an diesem Tag."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu gün üçün tədbir yoxdur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا أحداث في هذا اليوم."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

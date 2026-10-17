@@ -23,7 +23,7 @@ enum HomeItem: String, CaseIterable, Identifiable {
         }
     }
 
-    static let defaultRaw = "date,week,next,-prayers,-upcoming,-world,-weather,-sun"
+    static let defaultRaw = "-date,week,next,-prayers,-upcoming,-world,-weather,-sun"
 }
 
 struct HomeLayout {
