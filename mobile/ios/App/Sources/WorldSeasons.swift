@@ -1,25 +1,7 @@
 import SwiftUI
 import SaatCore
 
-/// Diğer sekmesi: dünya saatleri, hava durumu, mevsimler ve Ay, ayarlar
-struct MoreTab: View {
-    var body: some View {
-        NavigationStack {
-            List {
-                Section {
-                    NavigationLink { WorldClockView() } label: { Label(L("world.h1"), systemImage: "globe") }
-                    NavigationLink { WeatherView() } label: { Label(L("weather.h1"), systemImage: "cloud.sun") }
-                    NavigationLink { SeasonsView() } label: { Label(L("nature.h1"), systemImage: "leaf.circle") }
-                }
-                Section {
-                    NavigationLink { SettingsView() } label: { Label(L("settings.title"), systemImage: "gearshape") }
-                }
-            }
-            .navigationTitle(L("tab.more"))
-            .navigationBarTitleDisplayMode(.inline)
-        }
-    }
-}
+/// Dünya saatleri (dönen dünya ile) ve Mevsimler ve Ay: Araçlar sekmesinden açılır
 
 // MARK: Dünya saatleri
 
@@ -60,6 +42,12 @@ struct WorldClockView: View {
             let at = shift ? when : context.date
             List {
                 Section {
+                    GlobeView()
+                        .frame(height: 340)
+                        .listRowInsets(EdgeInsets())
+                }
+                Section {
+                    LabeledContent(L("settings.location")) { PlacePicker(font: .body) }
                     Toggle(L("world.changeTime"), isOn: $shift)
                     if shift {
                         DatePicker(L("converter.whenLabel"), selection: $when)
@@ -144,7 +132,6 @@ struct WorldClockView: View {
 // MARK: Mevsimler ve Ay
 
 struct SeasonsView: View {
-    @AppStorage("province") private var provinceSlug = "istanbul"
 
     private static let seasonKeys = ["spring", "summer", "autumn", "winter"]
     private static let phaseKeys = ["new", "waxingCrescent", "firstQuarter", "waxingGibbous", "full", "waningGibbous", "lastQuarter", "waningCrescent"]
@@ -152,15 +139,15 @@ struct SeasonsView: View {
 
     var body: some View {
         let now = Date()
-        let province = Province.find(provinceSlug)
-        let tr = PrayerSchedule.zone
+        let place = PlaceModel.shared.place
+        let tr = place.zone
         let year = CalendarDay(now, timeZone: tr).year
         // Mevsim anları: bu yıl ve sonraki yılın ilkbaharı
         let marks = (Self.instants(year) + Self.instants(year + 1)).sorted { $0.1 < $1.1 }
         let current = marks.last { $0.1 <= now } ?? (3, Self.instants(year - 1)[3].1)
         let next = marks.first { $0.1 > now }
         let moon = Nature.moon(at: now)
-        let sun = Self.sun(province: province, now: now)
+        let sun = Self.sun(place: place, now: now)
         List {
             Section {
                 Text(T("nature.current", L("nature.seasons.\(Self.seasonKeys[current.0])"))).font(.title3.weight(.semibold))
@@ -171,11 +158,11 @@ struct SeasonsView: View {
                         .foregroundStyle(Theme.muted)
                 }
             }
-            Section(L("nature.sunHeading") + " · " + province.displayName) {
+            Section(L("nature.sunHeading") + " · " + place.name) {
                 if let sun {
-                    LabeledContent(L("nature.sunrise"), value: PrayerSchedule.hm.string(from: sun.rise))
-                    LabeledContent(L("nature.sunset"), value: PrayerSchedule.hm.string(from: sun.set))
-                    LabeledContent(L("nature.solarNoon"), value: PrayerSchedule.hm.string(from: sun.noon))
+                    LabeledContent(L("nature.sunrise"), value: place.hm(sun.rise))
+                    LabeledContent(L("nature.sunset"), value: place.hm(sun.set))
+                    LabeledContent(L("nature.solarNoon"), value: place.hm(sun.noon))
                     let len = Int(sun.set.timeIntervalSince(sun.rise)) / 60
                     LabeledContent(L("nature.dayLength"), value: T("seasons.dayLengthValue", len / 60, len % 60))
                 }
@@ -221,64 +208,16 @@ struct SeasonsView: View {
     }
 
     /// Güneşin doğuşu, batışı ve tepe noktası (vakit düzeltmeleri olmadan, ufuk 0,833°)
-    static func sun(province: Province, now: Date) -> (rise: Date, set: Date, noon: Date)? {
+    static func sun(place: AppPlace, now: Date) -> (rise: Date, set: Date, noon: Date)? {
         var p = PrayerTimes.Parameters()
         p.adjustments.sunrise = 0
         p.adjustments.dhuhr = 0
         p.adjustments.maghrib = 0
-        let d = CalendarDay(now, timeZone: PrayerSchedule.zone)
-        let t = PrayerTimes.times(year: d.year, month: d.month, day: d.day, latitude: province.lat, longitude: province.lon,
-                                  timeZone: PrayerSchedule.zone, parameters: p)
+        let d = CalendarDay(now, timeZone: place.zone)
+        let t = PrayerTimes.times(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon,
+                                  timeZone: place.zone, parameters: p)
         guard let r = t.sunrise, let s = t.maghrib, let n = t.dhuhr else { return nil }
-        let midnight = d.noon(in: PrayerSchedule.zone).addingTimeInterval(-12 * 3600)
+        let midnight = d.noon(in: place.zone).addingTimeInterval(-12 * 3600)
         return (midnight.addingTimeInterval(r * 3600), midnight.addingTimeInterval(s * 3600), midnight.addingTimeInterval(n * 3600))
-    }
-}
-
-// MARK: Ayarlar
-
-struct SettingsView: View {
-    @AppStorage("h12") private var h12 = false
-    @AppStorage("keepAwake") private var keepAwake = true
-    @AppStorage("appearance") private var appearance = "system"
-
-    var body: some View {
-        Form {
-            Section {
-                Picker(L("client.formatLabel"), selection: $h12) {
-                    Text(L("client.format24")).tag(false)
-                    Text(L("client.format12")).tag(true)
-                }
-                Toggle(L("settings.keepAwake"), isOn: $keepAwake)
-                Picker(L("settings.appearance"), selection: $appearance) {
-                    Text(L("settings.system")).tag("system")
-                    Text(L("settings.light")).tag("light")
-                    Text(L("settings.dark")).tag("dark")
-                }
-            }
-            Section {
-                NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
-            }
-            Section(L("settings.privacy")) {
-                Text(L("settings.privacyNote")).font(.footnote)
-            }
-            Section(L("settings.about")) {
-                LabeledContent(L("site.name")) {
-                    Link(L("brand.product"), destination: URL(string: "https://bumbagroup.com/life")!)
-                        .tint(Theme.accent)
-                }
-                LabeledContent(L("settings.version"), value: Self.version)
-                Link(L("settings.website"), destination: URL(string: "https://time.bumba.tr")!)
-                    .tint(Theme.accent)
-            }
-        }
-        .navigationTitle(L("settings.title"))
-        .navigationBarTitleDisplayMode(.inline)
-    }
-
-    private static var version: String {
-        let v = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-        let b = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
-        return "\(v) (\(b))"
     }
 }

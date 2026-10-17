@@ -1,31 +1,28 @@
 import SwiftUI
-import WidgetKit
 import SaatCore
 
 /// Vakitler sekmesi: il, sıradaki vakte kalan süre, bugünün vakitleri, aylık çizelge, imsakiye, bildirimler.
 struct PrayerTab: View {
-    @AppStorage("province") private var provinceSlug = "istanbul"
     @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = false
     /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
     @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
 
-    private var province: Province { Province.find(provinceSlug) }
-
     var body: some View {
         NavigationStack {
             TimelineView(.periodic(from: .now, by: 1)) { context in
+                let place = PlaceModel.shared.place
                 ScrollView {
                     VStack(spacing: 24) {
-                        PrayerPanel(now: context.date, province: province, provinceSlug: $provinceSlug)
+                        PrayerPanel(now: context.date, place: place)
                         VStack(spacing: 10) {
                             NavigationLink {
-                                MonthlyPrayerView(province: province)
+                                MonthlyPrayerView(place: place)
                             } label: {
                                 linkRow(L("prayer.monthly"), "tablecells")
                             }
                             if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(context.date)) {
                                 NavigationLink {
-                                    ImsakiyeView(province: province, ramadan: ramadan)
+                                    ImsakiyeView(place: place, ramadan: ramadan)
                                 } label: {
                                     linkRow(T("imsakiye.title", ramadan.from.year), "moon.haze")
                                 }
@@ -50,7 +47,6 @@ struct PrayerTab: View {
                 }
             }
             .sheet(isPresented: $showNotify) { NotificationSettingsView() }
-            .onChange(of: provinceSlug) { Task { await PrayerNotifier.reschedule() } }
         }
     }
 
@@ -67,34 +63,16 @@ struct PrayerTab: View {
     }
 }
 
-/// İl seçimi, sıradaki vakte kalan süre ve bugünün vakitleri
+/// Konum seçimi, sıradaki vakte kalan süre ve bugünün vakitleri
 struct PrayerPanel: View {
     let now: Date
-    let province: Province
-    @Binding var provinceSlug: String
+    let place: AppPlace
 
     var body: some View {
-        let schedule = PrayerSchedule(province: province)
+        let schedule = place.schedule
         let next = schedule.next(after: now)
         VStack(spacing: 16) {
-            Menu {
-                Button {
-                    Task {
-                        guard let loc = await OneShotLocation().fetch(requestPermission: true) else { return }
-                        provinceSlug = Province.nearest(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude).0.slug
-                        WidgetCenter.shared.reloadAllTimelines() // "Otomatik" widget'lar yeni izinle yenilensin
-                    }
-                } label: {
-                    Label(L("place.useLocation"), systemImage: "location")
-                }
-                Picker(String(localized: "prayer.province"), selection: $provinceSlug) {
-                    ForEach(Province.all) { Text($0.displayName).tag($0.slug) }
-                }
-            } label: {
-                Label(province.displayName, systemImage: "mappin.and.ellipse")
-                    .font(.headline)
-                    .foregroundStyle(Theme.accent)
-            }
+            PlacePicker()
 
             if let next {
                 VStack(spacing: 4) {
@@ -117,7 +95,7 @@ struct PrayerPanel: View {
                     HStack {
                         Text(entry.prayer.localizedName)
                         Spacer()
-                        Text(PrayerSchedule.hm.string(from: entry.at))
+                        Text(place.hm(entry.at))
                             .monospacedDigit()
                             .environment(\.layoutDirection, .leftToRight)
                     }
@@ -134,12 +112,12 @@ struct PrayerPanel: View {
 
 /// Aylık vakit çizelgesi (sitedeki gibi): her gün altı vakit, bugün vurgulu
 struct MonthlyPrayerView: View {
-    let province: Province
+    let place: AppPlace
     @State private var month = CalendarDay(Date()).firstOfMonth
 
     var body: some View {
-        let schedule = PrayerSchedule(province: province)
-        let today = CalendarDay(Date(), timeZone: PrayerSchedule.zone)
+        let schedule = place.schedule
+        let today = place.today
         let days = (0..<CalendarDay.daysIn(month.year, month.month)).map { month.adding(days: $0) }
         ScrollView {
             VStack(spacing: 12) {
@@ -153,7 +131,7 @@ struct MonthlyPrayerView: View {
                         .accessibilityLabel(L("prayer.nextMonth"))
                 }
                 .foregroundStyle(Theme.accent)
-                Text(province.displayName)
+                Text(place.name)
                     .font(.subheadline)
                     .foregroundStyle(Theme.muted)
                 Grid(horizontalSpacing: 6, verticalSpacing: 0) {
@@ -167,13 +145,13 @@ struct MonthlyPrayerView: View {
                     .foregroundStyle(Theme.muted)
                     .padding(.vertical, 6)
                     ForEach(days, id: \.self) { d in
-                        let entries = schedule.entries(on: d.noon(in: PrayerSchedule.zone))
+                        let entries = schedule.entries(on: d.noon(in: place.zone))
                         let isToday = d == today
                         GridRow {
                             Text("\(d.day) " + L("calendar.weekdaysShort.\(d.weekday)"))
                                 .gridColumnAlignment(.leading)
                             ForEach(Prayer.allCases, id: \.self) { p in
-                                Text(entries.first { $0.prayer == p }.map { PrayerSchedule.hm.string(from: $0.at) } ?? "–")
+                                Text(entries.first { $0.prayer == p }.map { place.hm($0.at) } ?? "–")
                             }
                         }
                         .font(.caption.weight(isToday ? .bold : .regular).monospacedDigit())
@@ -194,7 +172,7 @@ struct MonthlyPrayerView: View {
 
 /// İmsakiye: Ramazan boyunca imsak ve iftar; görsel olarak paylaşılabilir
 struct ImsakiyeView: View {
-    let province: Province
+    let place: AppPlace
     let ramadan: CalendarData.Ramadan
     @Environment(\.displayScale) private var displayScale
     @State private var image: UIImage?
@@ -202,7 +180,7 @@ struct ImsakiyeView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                ImsakiyeCard(province: province, ramadan: ramadan)
+                ImsakiyeCard(place: place, ramadan: ramadan)
                 if let image {
                     ShareLink(item: Image(uiImage: image),
                               preview: SharePreview(T("imsakiye.title", ramadan.from.year), image: Image(uiImage: image))) {
@@ -218,7 +196,7 @@ struct ImsakiyeView: View {
         .navigationTitle(T("imsakiye.title", ramadan.from.year))
         .navigationBarTitleDisplayMode(.inline)
         .task {
-            let renderer = ImageRenderer(content: ImsakiyeCard(province: province, ramadan: ramadan).frame(width: 390))
+            let renderer = ImageRenderer(content: ImsakiyeCard(place: place, ramadan: ramadan).frame(width: 390))
             renderer.scale = max(displayScale, 2)
             image = renderer.uiImage
         }
@@ -227,19 +205,19 @@ struct ImsakiyeView: View {
 
 /// İmsakiye görseli: başlık, il, gün gün imsak ve iftar, imza
 struct ImsakiyeCard: View {
-    let province: Province
+    let place: AppPlace
     let ramadan: CalendarData.Ramadan
 
     var body: some View {
-        let schedule = PrayerSchedule(province: province)
-        let today = CalendarDay(Date(), timeZone: PrayerSchedule.zone)
+        let schedule = place.schedule
+        let today = place.today
         VStack(spacing: 10) {
             Image(systemName: "moon.stars.fill")
                 .font(.largeTitle)
                 .foregroundStyle(Theme.accent)
             Text(T("imsakiye.title", ramadan.from.year))
                 .font(.title2.weight(.bold))
-            Text(province.displayName)
+            Text(place.name)
                 .font(.headline)
                 .foregroundStyle(Theme.accent)
             Grid(horizontalSpacing: 10, verticalSpacing: 0) {
@@ -253,12 +231,12 @@ struct ImsakiyeCard: View {
                 .foregroundStyle(Theme.muted)
                 .padding(.vertical, 6)
                 ForEach(Array(ramadan.days.enumerated()), id: \.offset) { i, d in
-                    let entries = schedule.entries(on: d.noon(in: PrayerSchedule.zone))
+                    let entries = schedule.entries(on: d.noon(in: place.zone))
                     GridRow {
                         Text(T("imsakiye.day", i + 1))
-                        Text(Fmt.dayMonth(d.noon(in: PrayerSchedule.zone), tz: PrayerSchedule.zone) + " " + L("calendar.weekdaysShort.\(d.weekday)"))
-                        Text(entries.first { $0.prayer == .fajr }.map { PrayerSchedule.hm.string(from: $0.at) } ?? "–")
-                        Text(entries.first { $0.prayer == .maghrib }.map { PrayerSchedule.hm.string(from: $0.at) } ?? "–")
+                        Text(Fmt.dayMonth(d.noon(in: place.zone), tz: place.zone) + " " + L("calendar.weekdaysShort.\(d.weekday)"))
+                        Text(entries.first { $0.prayer == .fajr }.map { place.hm($0.at) } ?? "–")
+                        Text(entries.first { $0.prayer == .maghrib }.map { place.hm($0.at) } ?? "–")
                     }
                     .font(.footnote.weight(d == today ? .bold : .regular).monospacedDigit())
                     .padding(.vertical, 4)

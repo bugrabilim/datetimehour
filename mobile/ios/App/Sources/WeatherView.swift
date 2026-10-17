@@ -3,21 +3,20 @@ import CoreLocation
 import WeatherKit
 import SaatCore
 
-/// Hava durumu: seçili il için güncel, saatlik (24 saat) ve 7 günlük tahmin.
+/// Hava durumu: seçili konum için güncel, saatlik (24 saat) ve 7 günlük tahmin.
 /// Sağlayıcı Apple WeatherKit (Apple Developer üyeliğinde ayda 500.000 çağrı dahil). Apple'ın şartı gereği
 /// "Apple Hava Durumu" işareti ve yasal bilgiler bağlantısı ekranda gösterilir.
 struct WeatherView: View {
-    @AppStorage("province") private var provinceSlug = "istanbul"
     @State private var data: Weather?
     @State private var failed = false
 
-    private let zone = PrayerSchedule.zone
+    private var zone: TimeZone { PlaceModel.shared.place.zone }
 
     var body: some View {
-        let province = Province.find(provinceSlug)
+        let place = PlaceModel.shared.place
         ScrollView {
             VStack(spacing: 18) {
-                Label(province.displayName, systemImage: "mappin.and.ellipse")
+                Label(place.name, systemImage: place.isAuto ? "location.fill" : "mappin.and.ellipse")
                     .font(.headline)
                     .foregroundStyle(Theme.accent)
                 if let d = data {
@@ -26,7 +25,7 @@ struct WeatherView: View {
                     daily(d)
                 } else if failed {
                     Text(L("weather.error")).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
-                    Button(L("weather.retry")) { Task { await load(province) } }.tint(Theme.accent)
+                    Button(L("weather.retry")) { Task { await load(place) } }.tint(Theme.accent)
                 } else {
                     ProgressView(L("weather.loading")).padding(.top, 40)
                 }
@@ -39,11 +38,11 @@ struct WeatherView: View {
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle(L("weather.h1"))
         .navigationBarTitleDisplayMode(.inline)
-        .task(id: provinceSlug) { await load(province) }
-        .refreshable { await load(province) }
+        .task(id: place.key) { await load(place) }
+        .refreshable { await load(place) }
     }
 
-    private func load(_ p: Province) async {
+    private func load(_ p: AppPlace) async {
         failed = false
         do {
             data = try await WeatherCache.weather(lat: p.lat, lon: p.lon)
@@ -166,15 +165,21 @@ struct WeatherView: View {
     }
 }
 
-/// Aynı il için 15 dakika içinde yeniden sorulmaz (aylık çağrı hakkı idareli kullanılır)
+/// Aynı yer için 15 dakika içinde yeniden sorulmaz; aynı anda gelen istekler tek çağrıda birleşir
+/// (saat modelleri ve ana sayfa kartı birlikte sorabilir; aylık çağrı hakkı idareli kullanılır)
 @MainActor
 enum WeatherCache {
     private static var cache: (key: String, at: Date, value: Weather)?
+    private static var inflight: (key: String, task: Task<Weather, Error>)?
 
     static func weather(lat: Double, lon: Double) async throws -> Weather {
         let key = String(format: "%.2f,%.2f", lat, lon)
         if let c = cache, c.key == key, Date().timeIntervalSince(c.at) < 900 { return c.value }
-        let value = try await WeatherService.shared.weather(for: CLLocation(latitude: lat, longitude: lon))
+        if let f = inflight, f.key == key { return try await f.task.value }
+        let task = Task { try await WeatherService.shared.weather(for: CLLocation(latitude: lat, longitude: lon)) }
+        inflight = (key, task)
+        defer { if inflight?.key == key { inflight = nil } }
+        let value = try await task.value
         cache = (key, Date(), value)
         return value
     }

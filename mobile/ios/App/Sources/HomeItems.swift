@@ -23,7 +23,7 @@ enum HomeItem: String, CaseIterable, Identifiable {
         }
     }
 
-    static let defaultRaw = "date,week,next,-prayers,-upcoming,-world,-weather,-sun"
+    static let defaultRaw = "-date,week,next,-prayers,-upcoming,-world,-weather,-sun"
 }
 
 struct HomeLayout {
@@ -89,13 +89,22 @@ struct HomeItemsView: View {
     }
 }
 
-/// Saat ekranındaki bir alan
+/// Saat ekranındaki bir alan; dokununca ilgili sayfa açılır
 struct HomeItemView: View {
     let item: HomeItem
     let now: Date
-    let province: Province
+    let place: AppPlace
 
     var body: some View {
+        // Button değil: hava kartındaki Apple yasal bağlantısı kendi dokunuşunu alabilsin
+        content
+            .contentShape(Rectangle())
+            .onTapGesture { Router.shared.open(item) }
+            .accessibilityAddTraits(.isButton)
+    }
+
+    @ViewBuilder
+    private var content: some View {
         switch item {
         case .date:
             Text(Fmt.longDate(now))
@@ -107,17 +116,17 @@ struct HomeItemView: View {
                 .font(.subheadline)
                 .foregroundStyle(Theme.muted)
         case .next:
-            NextPrayerCard(now: now, province: province)
+            NextPrayerCard(now: now, place: place)
         case .prayers:
-            TodayPrayersCard(now: now, province: province)
+            TodayPrayersCard(now: now, place: place)
         case .upcoming:
             UpcomingDayCard(now: now)
         case .world:
             WorldMiniCard(now: now)
         case .weather:
-            WeatherMiniCard(province: province)
+            WeatherMiniCard(place: place)
         case .sun:
-            SunCard(now: now, province: province)
+            SunCard(now: now, place: place)
         }
     }
 }
@@ -125,17 +134,16 @@ struct HomeItemView: View {
 /// Seçili ilin sıradaki vakti ve kalan süre
 struct NextPrayerCard: View {
     let now: Date
-    let province: Province
+    let place: AppPlace
 
     var body: some View {
-        let schedule = PrayerSchedule(province: province)
-        if let next = schedule.next(after: now) {
+        if let next = place.schedule.next(after: now) {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
-                    Label(province.displayName, systemImage: "mappin.and.ellipse")
+                    Text(L("home.item.next"))
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Theme.accent)
-                    Text("\(next.prayer.localizedName) \(PrayerSchedule.hm.string(from: next.at))")
+                    Text("\(next.prayer.localizedName) \(place.hm(next.at))")
                         .font(.headline)
                         .foregroundStyle(Theme.text)
                 }
@@ -153,16 +161,13 @@ struct NextPrayerCard: View {
 /// Bugünün altı vakti tek satırda; sıradaki vurgulu
 private struct TodayPrayersCard: View {
     let now: Date
-    let province: Province
+    let place: AppPlace
 
     var body: some View {
-        let schedule = PrayerSchedule(province: province)
+        let schedule = place.schedule
         let entries = schedule.entries(on: now)
         let next = schedule.next(after: now)
         VStack(alignment: .leading, spacing: 8) {
-            Label(province.displayName, systemImage: "mappin.and.ellipse")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(Theme.accent)
             HStack(spacing: 4) {
                 ForEach(entries) { e in
                     let isNext = e.prayer == next?.prayer && Calendar.current.isDate(e.at, inSameDayAs: next?.at ?? .distantPast)
@@ -171,7 +176,7 @@ private struct TodayPrayersCard: View {
                             .font(.caption2)
                             .lineLimit(1)
                             .minimumScaleFactor(0.6)
-                        Text(PrayerSchedule.hm.string(from: e.at))
+                        Text(place.hm(e.at))
                             .font(.subheadline.weight(.semibold).monospacedDigit())
                             .environment(\.layoutDirection, .leftToRight)
                     }
@@ -234,7 +239,7 @@ private struct WorldMiniCard: View {
 
 /// Seçili ilde şu anki hava (WeatherKit, 15 dk önbellek) ve Apple Hava Durumu işareti
 private struct WeatherMiniCard: View {
-    let province: Province
+    let place: AppPlace
     @State private var data: Weather?
 
     var body: some View {
@@ -245,12 +250,7 @@ private struct WeatherMiniCard: View {
                     Image(systemName: c.symbolName)
                         .symbolRenderingMode(.multicolor)
                         .font(.system(size: 32))
-                    VStack(alignment: .leading, spacing: 2) {
-                        Label(province.displayName, systemImage: "mappin.and.ellipse")
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(Theme.accent)
-                        Text(c.condition.description).font(.subheadline).foregroundStyle(Theme.text)
-                    }
+                    Text(c.condition.description).font(.subheadline).foregroundStyle(Theme.text)
                     Spacer()
                     VStack(alignment: .trailing, spacing: 2) {
                         Text(Self.temp(c.temperature))
@@ -270,7 +270,7 @@ private struct WeatherMiniCard: View {
             }
         }
         .card()
-        .task(id: province.slug) { data = try? await WeatherCache.weather(lat: province.lat, lon: province.lon) }
+        .task(id: place.key) { data = try? await WeatherCache.weather(lat: place.lat, lon: place.lon) }
     }
 
     private static func temp(_ t: Measurement<UnitTemperature>) -> String {
@@ -281,14 +281,14 @@ private struct WeatherMiniCard: View {
 /// Güneşin doğuşu, batışı ve gün uzunluğu
 private struct SunCard: View {
     let now: Date
-    let province: Province
+    let place: AppPlace
 
     var body: some View {
-        if let sun = SeasonsView.sun(province: province, now: now) {
+        if let sun = SeasonsView.sun(place: place, now: now) {
             let len = Int(sun.set.timeIntervalSince(sun.rise) / 60)
             HStack {
-                column(L("nature.sunrise"), PrayerSchedule.hm.string(from: sun.rise), "sunrise")
-                column(L("nature.sunset"), PrayerSchedule.hm.string(from: sun.set), "sunset")
+                column(L("nature.sunrise"), place.hm(sun.rise), "sunrise")
+                column(L("nature.sunset"), place.hm(sun.set), "sunset")
                 column(L("nature.dayLength"), T("seasons.dayLengthValue", len / 60, len % 60), "sun.max")
             }
             .card()

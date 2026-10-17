@@ -12,34 +12,79 @@ struct SaatTarihApp: App {
         }
         .onChange(of: scenePhase) { _, phase in
             // Her açılışta bildirim listesi yeniden kurulur (iOS'ta en çok 64 bekleyen bildirim)
-            if phase == .active { Task { await PrayerNotifier.reschedule() } }
+            // Otomatik konumdaysa konum sessizce yenilenir (değişirse bildirimler de yeniden kurulur)
+            if phase == .active {
+                Task {
+                    await PlaceModel.shared.refresh()
+                    await PrayerNotifier.reschedule()
+                }
+            }
         }
     }
 }
 
-/// Beş sekme: Saat, Vakitler, Takvim, Araçlar, Diğer (dünya saatleri, hava, mevsimler, ayarlar)
+/// Sekmeler (sahibin sırası, 18 Ekim 2026): Saat, Hava durumu, Takvim, Vakitler, Araçlar
+enum AppTab: Int {
+    case clock, weather, calendar, prayer, tools
+}
+
+/// Araçlar sekmesindeki sayfalar
+enum ToolRoute: Hashable {
+    case alarm, timer, stopwatch, pomodoro, datecalc, world, seasons, settings, privacy, about
+}
+
+/// Sekme ve Araçlar gezintisi; saat ekranındaki alanlar dokununca ilgili sayfayı açar.
+@MainActor @Observable
+final class Router {
+    static let shared = Router()
+
+    /// Ekran görüntüsü için: -startTab 2 ile o sekmede açılır
+    var tab = AppTab(rawValue: UserDefaults.standard.integer(forKey: "startTab")) ?? .clock
+    var toolsPath: [ToolRoute] = []
+    /// Takvim sekmesi bu günü açar (saat ekranından)
+    var calendarDay: CalendarDay?
+
+    func open(_ item: HomeItem) {
+        switch item {
+        case .date, .week:
+            calendarDay = CalendarDay(Date())
+            tab = .calendar
+        case .upcoming:
+            let today = CalendarDay(Date(), timeZone: PrayerSchedule.zone)
+            calendarDay = CalendarData.shared.upcoming(from: today, limit: 1).first?.day ?? today
+            tab = .calendar
+        case .next, .prayers:
+            tab = .prayer
+        case .weather:
+            tab = .weather
+        case .world, .sun:
+            toolsPath = [item == .world ? .world : .seasons]
+            tab = .tools
+        }
+    }
+}
+
 struct RootView: View {
     @AppStorage("appearance") private var appearance = "system"
-    /// Ekran görüntüsü için: -startTab 2 ile o sekmede açılır
-    @State private var tab = UserDefaults.standard.integer(forKey: "startTab")
+    @State private var router = Router.shared
 
     var body: some View {
-        TabView(selection: $tab) {
+        TabView(selection: $router.tab) {
             ClockTab()
                 .tabItem { Label(L("tab.clock"), systemImage: "clock") }
-                .tag(0)
-            PrayerTab()
-                .tabItem { Label(L("tab.prayer"), systemImage: "moon.stars") }
-                .tag(1)
+                .tag(AppTab.clock)
+            NavigationStack { WeatherView() }
+                .tabItem { Label(L("weather.h1"), systemImage: "cloud.sun") }
+                .tag(AppTab.weather)
             CalendarTab()
                 .tabItem { Label(L("tab.calendar"), systemImage: "calendar") }
-                .tag(2)
+                .tag(AppTab.calendar)
+            PrayerTab()
+                .tabItem { Label(L("tab.prayer"), systemImage: "moon.stars") }
+                .tag(AppTab.prayer)
             ToolsTab()
                 .tabItem { Label(L("tab.tools"), systemImage: "timer") }
-                .tag(3)
-            MoreTab()
-                .tabItem { Label(L("tab.more"), systemImage: "ellipsis.circle") }
-                .tag(4)
+                .tag(AppTab.tools)
         }
         .tint(Theme.accent)
         .preferredColorScheme(appearance == "light" ? .light : appearance == "dark" ? .dark : nil)
@@ -54,15 +99,16 @@ struct RootView: View {
 }
 
 enum DebugScreen: String, Identifiable {
-    case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems
+    case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
+         privacy, about, list
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
-        let province = Province.find(UserDefaults.standard.string(forKey: "province") ?? "istanbul")
+        let place = AppPlace.stored()
         switch self {
-        case .monthly: MonthlyPrayerView(province: province)
+        case .monthly: MonthlyPrayerView(place: place)
         case .imsakiye:
-            if let r = CalendarData.shared.nextRamadan(from: CalendarDay(Date())) { ImsakiyeView(province: province, ramadan: r) }
+            if let r = CalendarData.shared.nextRamadan(from: CalendarDay(Date())) { ImsakiyeView(place: place, ramadan: r) }
         case .alarm: AlarmsView()
         case .timer: TimerView()
         case .stopwatch: StopwatchView()
@@ -72,7 +118,10 @@ enum DebugScreen: String, Identifiable {
         case .weather: WeatherView()
         case .seasons: SeasonsView()
         case .settings: SettingsView()
-        case .homeItems: NavigationStack { HomeItemsView() }
+        case .homeItems: HomeItemsView()
+        case .privacy: PrivacyView()
+        case .about: AboutView()
+        case .list: ListSignupView()
         }
     }
 }

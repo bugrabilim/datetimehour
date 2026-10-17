@@ -1,62 +1,213 @@
 import SwiftUI
+import EventKit
 import SaatCore
 
-/// Takvim sekmesi: ay görünümü (tatiller, arifeler, dini ve özel günler, Ramazan, okul tatilleri), ayın günleri, gün ayrıntısı
+/// Takvim sekmesi (Apple Takvim'e benzer): ay ızgarası, seçili günün özel günleri (resmî tatil, arife, dini ve
+/// özel günler, Ramazan, okul tatili) ve telefondaki takvimlerin etkinlikleri. "+" ile etkinlik eklenir (sistem
+/// düzenleyicisi, istenen takvime), etkinliğe dokununca ayrıntı/düzenleme, sola kaydırınca silme.
 struct CalendarTab: View {
     @State private var month = CalendarDay(Date()).firstOfMonth
-    @State private var selected: CalendarDay?
+    @State private var selected = CalendarDay(Date())
+    @State private var adding: AddRequest?
+    @State private var showing: EKEvent?
+    @State private var deleting: EKEvent?
+    @State private var router = Router.shared
+    @State private var device = DeviceCalendar.shared
     private let data = CalendarData.shared
+
+    /// Yeni etkinlik: boş (seçili gün 09:00) ya da bir özel günden (tüm gün)
+    struct AddRequest: Identifiable {
+        let id = UUID()
+        let day: CalendarDay
+        var title: String?
+    }
 
     var body: some View {
         let today = CalendarDay(Date())
+        let deviceEvents = device.events(month: month)
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
+            List {
+                Section {
+                    MonthGrid(month: month, today: today, selected: selected, deviceEvents: deviceEvents) { selected = $0 }
+                        .gesture(DragGesture(minimumDistance: 30).onEnded { v in
+                            if abs(v.translation.width) > abs(v.translation.height) {
+                                let forward = (v.translation.width < 0) != AppLocale.isRTL
+                                move(forward ? 1 : -1)
+                            }
+                        })
+                        .listRowInsets(EdgeInsets(top: 4, leading: 8, bottom: 8, trailing: 8))
+                        .listRowSeparator(.hidden)
+                } header: {
                     header
-                    MonthGrid(month: month, today: today) { selected = $0 }
-                    legend
-                    if let y = data.years[month.year], y.projected {
-                        Text(L("calendar.projected"))
-                            .font(.footnote)
-                            .foregroundStyle(Theme.muted)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    monthEvents(today: today)
                 }
-                .padding(16)
-                .frame(maxWidth: 640)
-                .frame(maxWidth: .infinity)
+                dayList(today: today, deviceEvents: deviceEvents[selected.dayNumber] ?? [])
             }
-            .background(Theme.bg.ignoresSafeArea())
-            .gesture(DragGesture(minimumDistance: 30).onEnded { v in
-                if abs(v.translation.width) > abs(v.translation.height) {
-                    let forward = (v.translation.width < 0) != AppLocale.isRTL
-                    withAnimation { month = month.adding(months: forward ? 1 : -1) }
-                }
-            })
-            .navigationTitle(L("tab.calendar"))
+            .listStyle(.plain)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(L("client.today")) { go(to: today) }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(L("client.today")) { withAnimation { month = today.firstOfMonth } }
+                    Button { adding = AddRequest(day: selected) } label: { Image(systemName: "plus") }
+                        .accessibilityLabel(L("calendar.add"))
                 }
             }
-            .sheet(item: $selected) { day in
-                DayDetail(day: day, today: today)
-                    .presentationDetents([.medium, .large])
+            .sheet(item: $adding) { req in
+                EventEditor(configure: { e in
+                    if let title = req.title {
+                        e.title = title
+                        e.isAllDay = true
+                        e.startDate = req.day.noon(in: .current)
+                        e.endDate = req.day.noon(in: .current)
+                    } else {
+                        let start = req.day.noon(in: .current).addingTimeInterval(-3 * 3600)
+                        e.startDate = start
+                        e.endDate = start.addingTimeInterval(3600)
+                    }
+                }, onDone: {
+                    adding = nil
+                    device.reload()
+                })
+                .ignoresSafeArea()
+            }
+            .sheet(item: $showing) { e in
+                EventDetail(event: e) {
+                    showing = nil
+                    device.reload()
+                }
+                .ignoresSafeArea()
+            }
+            .confirmationDialog(L("calendar.deleteConfirm"), isPresented: Binding(get: { deleting != nil }, set: { if !$0 { deleting = nil } }),
+                                titleVisibility: .visible) {
+                Button(L("calendar.delete"), role: .destructive) {
+                    if let e = deleting { device.remove(e) }
+                    deleting = nil
+                }
+            }
+            .onChange(of: router.calendarDay, initial: true) { _, day in
+                guard let day else { return }
+                go(to: day)
+                router.calendarDay = nil
             }
         }
     }
 
     private var header: some View {
-        HStack {
-            Button { withAnimation { month = month.adding(months: -1) } } label: { Image(systemName: "chevron.backward") }
+        HStack(alignment: .firstTextBaseline) {
+            Text(L("calendar.months.\(month.month - 1)"))
+                .font(.largeTitle.weight(.bold))
+                .foregroundStyle(Theme.text)
+            Text(String(month.year))
+                .font(.title2.weight(.semibold))
+                .foregroundStyle(Theme.accent)
             Spacer()
-            Text(Fmt.monthTitle(month.year, month.month)).font(.title3.weight(.semibold))
-            Spacer()
-            Button { withAnimation { month = month.adding(months: 1) } } label: { Image(systemName: "chevron.forward") }
+            Button { move(-1) } label: { Image(systemName: "chevron.backward") }
+                .accessibilityLabel(L("prayer.prevMonth"))
+                .padding(.trailing, 14)
+            Button { move(1) } label: { Image(systemName: "chevron.forward") }
+                .accessibilityLabel(L("prayer.nextMonth"))
         }
+        .font(.title3.weight(.semibold))
         .foregroundStyle(Theme.accent)
+        .buttonStyle(.borderless)
+        .textCase(nil)
+        .padding(.vertical, 4)
+    }
+
+    private func move(_ d: Int) {
+        withAnimation {
+            month = month.adding(months: d)
+            let today = CalendarDay(Date())
+            selected = today.firstOfMonth == month ? today : month
+        }
+    }
+
+    private func go(to day: CalendarDay) {
+        withAnimation {
+            month = day.firstOfMonth
+            selected = day
+        }
+    }
+
+    @ViewBuilder
+    private func dayList(today: CalendarDay, deviceEvents: [EKEvent]) -> some View {
+        let special = data.events(on: selected)
+        Section {
+            ForEach(special, id: \.self) { e in
+                HStack(spacing: 10) {
+                    RoundedRectangle(cornerRadius: 2).fill(e.color).frame(width: 4, height: 34)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(e.name).foregroundStyle(Theme.text)
+                        Text(L("calendar.types.\(e.type)")).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                    Spacer()
+                    Text(L("calendar.allDay")).font(.caption).foregroundStyle(Theme.muted)
+                }
+                .swipeActions(edge: .trailing) {
+                    Button { adding = AddRequest(day: selected, title: e.name) } label: {
+                        Label(L("calendar.addToCalendar"), systemImage: "calendar.badge.plus")
+                    }
+                    .tint(Theme.accent)
+                }
+                .contextMenu {
+                    Button { adding = AddRequest(day: selected, title: e.name) } label: {
+                        Label(L("calendar.addToCalendar"), systemImage: "calendar.badge.plus")
+                    }
+                }
+            }
+            if data.isRamadan(selected) {
+                Label(L("calendar.types.ramadan"), systemImage: "moon.stars")
+                    .foregroundStyle(CalendarData.color("religious"))
+            }
+            if data.isSchoolBreak(selected) && !special.contains(where: { $0.type == "school" }) {
+                Label(L("calendar.types.school"), systemImage: "graduationcap")
+                    .foregroundStyle(CalendarData.color("school"))
+            }
+            ForEach(deviceEvents) { e in
+                Button { showing = e } label: { DeviceEventRow(event: e) }
+                    .swipeActions(edge: .trailing) {
+                        if e.calendar?.allowsContentModifications == true {
+                            Button(role: .destructive) { deleting = e } label: {
+                                Label(L("calendar.delete"), systemImage: "trash")
+                            }
+                        }
+                    }
+            }
+            if special.isEmpty && deviceEvents.isEmpty && !data.isRamadan(selected) {
+                Text(L("calendar.noDayEvents")).foregroundStyle(Theme.muted)
+            }
+            if !device.authorized && device.canAsk {
+                Button {
+                    Task { await device.requestAccess() }
+                } label: {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Label(L("calendar.showDevice"), systemImage: "calendar.badge.checkmark")
+                            .font(.headline)
+                        Text(L("calendar.showDeviceNote")).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                }
+                .tint(Theme.accent)
+            }
+        } header: {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(Fmt.day(selected)).font(.headline).foregroundStyle(Theme.text)
+                Text([relative(selected, today), T("info.week.big", selected.isoWeek.week), T("calendar.dayOfYear", selected.dayOfYear)]
+                        .joined(separator: " · "))
+                    .font(.caption)
+                    .foregroundStyle(Theme.muted)
+            }
+            .textCase(nil)
+            .padding(.vertical, 4)
+        } footer: {
+            VStack(alignment: .leading, spacing: 8) {
+                legend
+                if let y = data.years[month.year], y.projected {
+                    Text(L("calendar.projected")).font(.footnote).foregroundStyle(Theme.muted)
+                }
+            }
+            .padding(.top, 8)
+        }
     }
 
     private var legend: some View {
@@ -68,36 +219,38 @@ struct CalendarTab: View {
             }
         }
     }
+}
 
-    @ViewBuilder
-    private func monthEvents(today: CalendarDay) -> some View {
-        let events = data.events(year: month.year, month: month.month)
-        VStack(alignment: .leading, spacing: 8) {
-            if data.years[month.year] == nil {
-                Text(L("calendar.noYear")).foregroundStyle(Theme.muted)
-            } else if events.isEmpty {
-                Text(L("calendar.noEvents")).foregroundStyle(Theme.muted)
-            }
-            ForEach(events, id: \.self) { e in
-                if let d = e.day {
-                    Button { selected = d } label: {
-                        HStack(alignment: .top, spacing: 10) {
-                            Circle().fill(e.color).frame(width: 10, height: 10).padding(.top, 5)
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(e.name).foregroundStyle(Theme.text)
-                                Text(Fmt.day(d)).font(.caption).foregroundStyle(Theme.muted)
-                            }
-                            Spacer()
-                            Text(relative(d, today))
-                                .font(.caption)
-                                .foregroundStyle(Theme.muted)
-                        }
-                    }
-                    .buttonStyle(.plain)
+/// Telefondaki bir etkinlik: saat sütunu, takvim rengi, başlık
+private struct DeviceEventRow: View {
+    let event: EKEvent
+
+    var body: some View {
+        HStack(spacing: 10) {
+            VStack(alignment: .trailing, spacing: 2) {
+                if event.isAllDay {
+                    Text(L("calendar.allDay")).font(.caption)
+                } else {
+                    Text(Fmt.time(event.startDate)).font(.caption.weight(.semibold))
+                    Text(Fmt.time(event.endDate)).font(.caption).foregroundStyle(Theme.muted)
                 }
             }
+            .monospacedDigit()
+            .frame(width: 54, alignment: .trailing)
+            .environment(\.layoutDirection, .leftToRight)
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color(cgColor: event.calendar?.cgColor ?? CGColor(gray: 0.5, alpha: 1)))
+                .frame(width: 4, height: 34)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(event.title ?? "").foregroundStyle(Theme.text).lineLimit(2)
+                if let loc = event.location, !loc.isEmpty {
+                    Text(loc).font(.caption).foregroundStyle(Theme.muted).lineLimit(1)
+                } else if let cal = event.calendar?.title {
+                    Text(cal).font(.caption).foregroundStyle(Theme.muted).lineLimit(1)
+                }
+            }
+            Spacer(minLength: 0)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
@@ -113,10 +266,13 @@ extension CalendarDay: Identifiable {
     public var id: Int { dayNumber }
 }
 
-/// Ay ızgarası: pazartesi başlar; renkler sitedeki göstergeyle aynı
+/// Ay ızgarası (Apple Takvim gibi): pazartesi başlar, haftalar ince çizgiyle ayrılır; bugün renkli daire,
+/// seçili gün koyu daire; altında noktalar (özel gün rengi, telefondaki etkinlikler gri). Ramazan günleri hafif yeşil.
 struct MonthGrid: View {
     let month: CalendarDay
     let today: CalendarDay
+    let selected: CalendarDay
+    var deviceEvents: [Int: [EKEvent]] = [:]
     let onSelect: (CalendarDay) -> Void
     private let data = CalendarData.shared
 
@@ -124,18 +280,27 @@ struct MonthGrid: View {
         let first = month.firstOfMonth
         let count = CalendarDay.daysIn(month.year, month.month)
         let cells: [CalendarDay?] = Array(repeating: nil, count: first.weekday) + (0..<count).map { first.adding(days: $0) }
-        let columns = Array(repeating: GridItem(.flexible(), spacing: 4), count: 7)
-        LazyVGrid(columns: columns, spacing: 6) {
-            ForEach(0..<7, id: \.self) { i in
-                Text(L("calendar.weekdaysShort.\(i)"))
-                    .font(.caption2.weight(.semibold))
-                    .foregroundStyle(i >= 5 ? Theme.accent : Theme.muted)
+        let weeks = stride(from: 0, to: cells.count, by: 7).map { Array(cells[$0..<min($0 + 7, cells.count)]) }
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                ForEach(0..<7, id: \.self) { i in
+                    Text(L("calendar.weekdaysShort.\(i)"))
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(i >= 5 ? Theme.muted.opacity(0.7) : Theme.muted)
+                        .frame(maxWidth: .infinity)
+                }
             }
-            ForEach(Array(cells.enumerated()), id: \.offset) { _, day in
-                if let day {
-                    cell(day).onTapGesture { onSelect(day) }
-                } else {
-                    Color.clear.frame(height: 44)
+            .padding(.bottom, 6)
+            ForEach(Array(weeks.enumerated()), id: \.offset) { _, week in
+                Divider()
+                HStack(spacing: 0) {
+                    ForEach(0..<7, id: \.self) { i in
+                        if i < week.count, let d = week[i] {
+                            cell(d).onTapGesture { onSelect(d) }
+                        } else {
+                            Color.clear.frame(maxWidth: .infinity, minHeight: 52)
+                        }
+                    }
                 }
             }
         }
@@ -143,67 +308,35 @@ struct MonthGrid: View {
 
     private func cell(_ d: CalendarDay) -> some View {
         let events = data.events(on: d)
-        let main = events.first { $0.type == "holiday" } ?? events.first { $0.type == "half" } ?? events.first
         let isHoliday = events.contains { $0.type == "holiday" }
-        return VStack(spacing: 3) {
+        let isToday = d == today
+        let isSelected = d == selected
+        var types: [String] = Array(Set(events.map(\.type))).sorted()
+        if data.isSchoolBreak(d) && !types.contains("school") { types.append("school") }
+        let colors: [Color] = types.map { CalendarData.color($0) }
+        let mine = deviceEvents[d.dayNumber]?.count ?? 0
+        return VStack(spacing: 4) {
             Text("\(d.day)")
-                .font(.body.weight(d == today || isHoliday ? .bold : .regular))
-                .foregroundStyle(isHoliday ? CalendarData.color("holiday") : (d.isWeekend ? Theme.muted : Theme.text))
-            HStack(spacing: 2) {
-                if let main { Circle().fill(main.color).frame(width: 5, height: 5) }
-                if data.isSchoolBreak(d) && main?.type != "school" {
-                    Circle().fill(CalendarData.color("school")).frame(width: 5, height: 5)
+                .font(.system(size: 18, weight: isToday || isSelected ? .semibold : .regular))
+                .foregroundStyle(isToday ? Theme.surface : isSelected ? Theme.bg
+                                 : isHoliday ? CalendarData.color("holiday") : d.isWeekend ? Theme.muted : Theme.text)
+                .frame(width: 34, height: 34)
+                .background {
+                    if isToday { Circle().fill(Theme.accent) } else if isSelected { Circle().fill(Theme.text) }
                 }
+            HStack(spacing: 3) {
+                ForEach(Array(colors.prefix(3).enumerated()), id: \.offset) { _, c in Circle().fill(c).frame(width: 5, height: 5) }
+                if mine > 0 { Circle().fill(Theme.muted).frame(width: 5, height: 5) }
             }
             .frame(height: 5)
         }
-        .frame(maxWidth: .infinity, minHeight: 44)
-        .background(data.isRamadan(d) ? CalendarData.color("religious").opacity(0.12) : .clear, in: RoundedRectangle(cornerRadius: 8))
-        .overlay {
-            if d == today { RoundedRectangle(cornerRadius: 8).stroke(Theme.accent, lineWidth: 2) }
-        }
+        .padding(.vertical, 5)
+        .frame(maxWidth: .infinity)
+        .background(data.isRamadan(d) ? CalendarData.color("religious").opacity(0.08) : .clear)
         .contentShape(Rectangle())
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(([Fmt.day(d)] + events.map(\.name)).joined(separator: ", "))
-    }
-}
-
-/// Güne dokununca: tarih, özel günler, hafta, yılın günü, kalan gün
-struct DayDetail: View {
-    let day: CalendarDay
-    let today: CalendarDay
-
-    var body: some View {
-        let events = CalendarData.shared.events(on: day)
-        NavigationStack {
-            List {
-                Section {
-                    Text(Fmt.day(day)).font(.headline)
-                    Text(relative(day, today)).foregroundStyle(Theme.muted)
-                }
-                if !events.isEmpty {
-                    Section {
-                        ForEach(events, id: \.self) { e in
-                            HStack(spacing: 10) {
-                                Circle().fill(e.color).frame(width: 10, height: 10)
-                                VStack(alignment: .leading) {
-                                    Text(e.name)
-                                    Text(L("calendar.types.\(e.type)")).font(.caption).foregroundStyle(Theme.muted)
-                                }
-                            }
-                        }
-                    }
-                }
-                if CalendarData.shared.isRamadan(day) {
-                    Section { Text(L("calendar.types.ramadan")) }
-                }
-                Section {
-                    Text(T("info.week.big", day.isoWeek.week))
-                    Text(T("calendar.dayOfYear", day.dayOfYear))
-                }
-            }
-            .navigationBarTitleDisplayMode(.inline)
-        }
+        .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
     }
 }
 
