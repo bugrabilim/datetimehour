@@ -1,13 +1,19 @@
 import SwiftUI
+import CoreLocation
+import WeatherKit
 import SaatCore
 
 /// Hava durumu: seçili il için güncel, saatlik (24 saat) ve 7 günlük tahmin.
-/// Sağlayıcı Open-Meteo (sitedeki gibi; anahtarsız). Koordinat 2 ondalığa yuvarlanır (yaklaşık 1 km).
-/// Lisans notu: Open-Meteo ücretsiz katmanı ticari olmayan kullanım içindir; mağaza yayınından önce karar verilecek.
+/// Sağlayıcı Apple WeatherKit (Apple Developer üyeliğinde ayda 500.000 çağrı dahil). Apple'ın şartı gereği
+/// "Apple Hava Durumu" işareti ve yasal bilgiler bağlantısı ekranda gösterilir.
 struct WeatherView: View {
     @AppStorage("province") private var provinceSlug = "istanbul"
-    @State private var data: Forecast?
+    @Environment(\.colorScheme) private var scheme
+    @State private var data: Weather?
+    @State private var attribution: WeatherAttribution?
     @State private var failed = false
+
+    private let zone = PrayerSchedule.zone
 
     var body: some View {
         let province = Province.find(provinceSlug)
@@ -26,9 +32,7 @@ struct WeatherView: View {
                 } else {
                     ProgressView(L("weather.loading")).padding(.top, 40)
                 }
-                Link(L("weather.attribution"), destination: URL(string: "https://open-meteo.com/")!)
-                    .font(.caption)
-                    .tint(Theme.muted)
+                attributionView
             }
             .padding(16)
             .frame(maxWidth: 560)
@@ -43,35 +47,59 @@ struct WeatherView: View {
 
     private func load(_ p: Province) async {
         failed = false
-        do { data = try await Forecast.fetch(lat: p.lat, lon: p.lon) } catch { failed = data == nil }
+        do {
+            data = try await WeatherCache.weather(lat: p.lat, lon: p.lon)
+        } catch {
+            failed = data == nil
+        }
+        if attribution == nil { attribution = try? await WeatherService.shared.attribution }
     }
 
-    private func current(_ d: Forecast) -> some View {
-        let c = d.current
-        let info = Forecast.info(c.weather_code, day: c.is_day == 1)
+    /// Apple Hava Durumu işareti ve yasal bilgiler (WeatherKit şartı)
+    @ViewBuilder
+    private var attributionView: some View {
+        if let a = attribution {
+            VStack(spacing: 6) {
+                AsyncImage(url: scheme == .dark ? a.combinedMarkDarkURL : a.combinedMarkLightURL) { image in
+                    image.resizable().scaledToFit()
+                } placeholder: {
+                    Text(a.serviceName).font(.caption)
+                }
+                .frame(height: 14)
+                Link(L("weather.legal"), destination: a.legalPageURL)
+                    .font(.caption)
+                    .tint(Theme.muted)
+            }
+            .padding(.top, 4)
+        }
+    }
+
+    private func current(_ d: Weather) -> some View {
+        let c = d.currentWeather
+        let rain = d.hourlyForecast.first(where: { $0.date >= Date().addingTimeInterval(-3600) })?.precipitationChance ?? 0
         return VStack(spacing: 6) {
-            Text(info.icon).font(.system(size: 64))
-            Text(Forecast.temp(c.temperature_2m))
+            icon(c.symbolName, size: 64)
+            Text(temp(c.temperature))
                 .font(.system(size: 56, weight: .semibold, design: .rounded))
                 .environment(\.layoutDirection, .leftToRight)
-            Text(L("weather.codes.\(info.key)")).font(.title3)
-            if let hi = d.daily.temperature_2m_max.first, let lo = d.daily.temperature_2m_min.first {
-                Text("↑ \(Forecast.temp(hi))   ↓ \(Forecast.temp(lo))")
+            Text(c.condition.description).font(.title3)
+            if let today = d.dailyForecast.first {
+                Text("↑ \(temp(today.highTemperature))   ↓ \(temp(today.lowTemperature))")
                     .foregroundStyle(Theme.muted)
                     .environment(\.layoutDirection, .leftToRight)
             }
             Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 8) {
                 GridRow {
-                    pill(L("weather.feelsLike"), Forecast.temp(c.apparent_temperature))
-                    pill(L("weather.humidity"), "%\(Int(c.relative_humidity_2m.rounded()))")
+                    pill(L("weather.feelsLike"), temp(c.apparentTemperature))
+                    pill(L("weather.humidity"), "%\(Int((c.humidity * 100).rounded()))")
                 }
                 GridRow {
-                    pill(L("weather.wind"), T("weather.km", Int(c.wind_speed_10m.rounded())))
-                    pill(L("weather.uv"), String(format: "%.0f", c.uv_index ?? 0))
+                    pill(L("weather.wind"), T("weather.km", Int(c.wind.speed.converted(to: .kilometersPerHour).value.rounded())))
+                    pill(L("weather.uv"), "\(c.uvIndex.value)")
                 }
                 GridRow {
-                    pill(L("weather.precipitation"), String(format: "%.1f mm", c.precipitation))
-                    pill(L("weather.pressure"), "\(Int(c.pressure_msl.rounded())) hPa")
+                    pill(L("weather.rainChanceShort"), "%\(Int((rain * 100).rounded()))")
+                    pill(L("weather.pressure"), "\(Int(c.pressure.converted(to: .hectopascals).value.rounded())) hPa")
                 }
             }
             .padding(.top, 8)
@@ -88,19 +116,21 @@ struct WeatherView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private func hourly(_ d: Forecast) -> some View {
+    private func hourly(_ d: Weather) -> some View {
         let now = Date()
-        let items = d.hourlyItems.filter { $0.date > now.addingTimeInterval(-3600) }.prefix(24)
+        let items = Array(d.hourlyForecast.filter { $0.date > now.addingTimeInterval(-3600) }.prefix(24))
         return VStack(alignment: .leading, spacing: 8) {
             SectionTitle(text: L("weather.hourlyHeading"))
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 14) {
-                    ForEach(Array(items), id: \.date) { h in
+                    ForEach(items, id: \.date) { h in
                         VStack(spacing: 4) {
-                            Text(Fmt.time(h.date, tz: d.zone)).font(.caption).foregroundStyle(Theme.muted)
-                            Text(Forecast.info(h.code, day: h.isDay).icon).font(.title2)
-                            Text(Forecast.temp(h.temp)).font(.subheadline.weight(.semibold))
-                            if h.rain > 0 { Text("%\(h.rain)").font(.caption2).foregroundStyle(.blue) }
+                            Text(Fmt.time(h.date, tz: zone)).font(.caption).foregroundStyle(Theme.muted)
+                            icon(h.symbolName, size: 22)
+                            Text(temp(h.temperature)).font(.subheadline.weight(.semibold))
+                            if h.precipitationChance >= 0.1 {
+                                Text("%\(Int((h.precipitationChance * 100).rounded()))").font(.caption2).foregroundStyle(.blue)
+                            }
                         }
                         .environment(\.layoutDirection, .leftToRight)
                     }
@@ -110,23 +140,25 @@ struct WeatherView: View {
         .card()
     }
 
-    private func daily(_ d: Forecast) -> some View {
-        let lo = d.daily.temperature_2m_min.min() ?? 0
-        let hi = d.daily.temperature_2m_max.max() ?? 1
+    private func daily(_ d: Weather) -> some View {
+        let days = Array(d.dailyForecast.prefix(7))
+        let lo = days.map { $0.lowTemperature.converted(to: .celsius).value }.min() ?? 0
+        let hi = days.map { $0.highTemperature.converted(to: .celsius).value }.max() ?? 1
         return VStack(alignment: .leading, spacing: 10) {
             SectionTitle(text: L("weather.dailyHeading"))
-            ForEach(0..<d.daily.time.count, id: \.self) { i in
-                let day = CalendarDay(iso: d.daily.time[i])
+            ForEach(Array(days.enumerated()), id: \.offset) { i, day in
+                let low = day.lowTemperature.converted(to: .celsius).value
+                let high = day.highTemperature.converted(to: .celsius).value
                 HStack(spacing: 10) {
-                    Text(day.map { i == 0 ? L("client.today") : L("calendar.weekdaysShort.\($0.weekday)") } ?? "")
+                    Text(i == 0 ? L("client.today") : L("calendar.weekdaysShort.\(CalendarDay(day.date, timeZone: zone).weekday)"))
                         .frame(width: 52, alignment: .leading)
-                    Text(Forecast.info(d.daily.weather_code[i], day: true).icon)
-                    Text(Forecast.temp(d.daily.temperature_2m_min[i])).foregroundStyle(Theme.muted).frame(width: 40)
+                    icon(day.symbolName, size: 20).frame(width: 28)
+                    Text(temp(day.lowTemperature)).foregroundStyle(Theme.muted).frame(width: 40)
                     GeometryReader { g in
                         let w = g.size.width
                         let span = max(1, hi - lo)
-                        let x0 = (d.daily.temperature_2m_min[i] - lo) / span * w
-                        let x1 = (d.daily.temperature_2m_max[i] - lo) / span * w
+                        let x0 = (low - lo) / span * w
+                        let x1 = (high - lo) / span * w
                         ZStack(alignment: .leading) {
                             Capsule().fill(Theme.surface2).frame(height: 6)
                             Capsule().fill(LinearGradient(colors: [.blue, .orange], startPoint: .leading, endPoint: .trailing))
@@ -136,108 +168,36 @@ struct WeatherView: View {
                         .frame(maxHeight: .infinity)
                     }
                     .frame(height: 20)
-                    Text(Forecast.temp(d.daily.temperature_2m_max[i])).frame(width: 40)
+                    Text(temp(day.highTemperature)).frame(width: 40)
                 }
                 .environment(\.layoutDirection, .leftToRight)
             }
         }
         .card()
     }
+
+    private func icon(_ name: String, size: CGFloat) -> some View {
+        Image(systemName: name)
+            .symbolRenderingMode(.multicolor)
+            .font(.system(size: size))
+            .frame(height: size * 1.1)
+    }
+
+    private func temp(_ t: Measurement<UnitTemperature>) -> String {
+        "\(Int(t.converted(to: .celsius).value.rounded()))°"
+    }
 }
 
-/// Open-Meteo yanıtı (sitedeki weather-core.js ile aynı alanlar)
-struct Forecast: Decodable {
-    struct Current: Decodable {
-        let temperature_2m: Double
-        let apparent_temperature: Double
-        let relative_humidity_2m: Double
-        let precipitation: Double
-        let weather_code: Int
-        let wind_speed_10m: Double
-        let wind_direction_10m: Double
-        let pressure_msl: Double
-        let is_day: Int
-        let uv_index: Double?
-    }
-    struct Hourly: Decodable {
-        let time: [String]
-        let temperature_2m: [Double]
-        let precipitation_probability: [Int?]
-        let weather_code: [Int]
-        let is_day: [Int]
-    }
-    struct Daily: Decodable {
-        let time: [String]
-        let weather_code: [Int]
-        let temperature_2m_max: [Double]
-        let temperature_2m_min: [Double]
-    }
-    let timezone: String
-    let current: Current
-    let hourly: Hourly
-    let daily: Daily
+/// Aynı il için 15 dakika içinde yeniden sorulmaz (aylık çağrı hakkı idareli kullanılır)
+@MainActor
+enum WeatherCache {
+    private static var cache: (key: String, at: Date, value: Weather)?
 
-    var zone: TimeZone { TimeZone(identifier: timezone) ?? .current }
-
-    struct Hour { let date: Date; let temp: Double; let code: Int; let isDay: Bool; let rain: Int }
-    var hourlyItems: [Hour] {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.dateFormat = "yyyy-MM-dd'T'HH:mm"
-        f.timeZone = zone
-        return hourly.time.indices.compactMap { i in
-            f.date(from: hourly.time[i]).map {
-                Hour(date: $0, temp: hourly.temperature_2m[i], code: hourly.weather_code[i], isDay: hourly.is_day[i] == 1,
-                     rain: hourly.precipitation_probability[i] ?? 0)
-            }
-        }
-    }
-
-    private static var cache: (key: String, at: Date, value: Forecast)?
-
-    static func fetch(lat: Double, lon: Double) async throws -> Forecast {
-        let la = String(format: "%.2f", lat), lo = String(format: "%.2f", lon), key = "\(la),\(lo)"
-        if let c = cache, c.key == key, Date().timeIntervalSince(c.at) < 600 { return c.value }
-        let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=\(la)&longitude=\(lo)"
-            + "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,is_day,uv_index"
-            + "&hourly=temperature_2m,precipitation_probability,weather_code,is_day"
-            + "&daily=weather_code,temperature_2m_max,temperature_2m_min"
-            + "&timezone=auto&forecast_days=7")!
-        let (data, _) = try await URLSession.shared.data(from: url)
-        let value = try JSONDecoder().decode(Forecast.self, from: data)
+    static func weather(lat: Double, lon: Double) async throws -> Weather {
+        let key = String(format: "%.2f,%.2f", lat, lon)
+        if let c = cache, c.key == key, Date().timeIntervalSince(c.at) < 900 { return c.value }
+        let value = try await WeatherService.shared.weather(for: CLLocation(latitude: lat, longitude: lon))
         cache = (key, Date(), value)
         return value
-    }
-
-    static func temp(_ t: Double) -> String { "\(Int(t.rounded()))°" }
-
-    /// WMO hava kodu → metin anahtarı ve simge (sitedeki eşleme)
-    static func info(_ c: Int, day: Bool) -> (key: String, icon: String) {
-        let key: String
-        switch c {
-        case 0: key = "clear"
-        case 1: key = "mostlyClear"
-        case 2: key = "partly"
-        case 3: key = "overcast"
-        case 45, 48: key = "fog"
-        case 51...55: key = "drizzle"
-        case 56, 57: key = "freezingDrizzle"
-        case 61...65: key = "rain"
-        case 66, 67: key = "freezingRain"
-        case 71...75: key = "snow"
-        case 77: key = "snowGrains"
-        case 80...82: key = "showers"
-        case 85, 86: key = "snowShowers"
-        case 95: key = "thunder"
-        default: key = c >= 96 ? "thunderHail" : "overcast"
-        }
-        let icons: [String: (String, String)] = [
-            "clear": ("☀️", "🌙"), "mostlyClear": ("🌤️", "🌙"), "partly": ("⛅", "☁️"), "overcast": ("☁️", "☁️"), "fog": ("🌫️", "🌫️"),
-            "drizzle": ("🌦️", "🌧️"), "freezingDrizzle": ("🌧️", "🌧️"), "rain": ("🌧️", "🌧️"), "freezingRain": ("🌧️", "🌧️"),
-            "snow": ("🌨️", "🌨️"), "snowGrains": ("❄️", "❄️"), "showers": ("🌦️", "🌧️"), "snowShowers": ("🌨️", "🌨️"),
-            "thunder": ("⛈️", "⛈️"), "thunderHail": ("⛈️", "⛈️"),
-        ]
-        let pair = icons[key] ?? ("☁️", "☁️")
-        return (key, day ? pair.0 : pair.1)
     }
 }

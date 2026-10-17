@@ -45,8 +45,7 @@ const SITE_PATHS = [
   "nature.dayLength", "nature.solarNoon", "nature.moonHeading", "nature.phases.*", "nature.illumination", "nature.age", "nature.nextNew",
   "nature.nextFull", "nature.tableHeading", "nature.tableLead", "nature.colYear", "nature.hoursShort", "nature.minutesShort",
   "weather.h1", "weather.now", "weather.feelsLike", "weather.humidity", "weather.wind", "weather.precipitation", "weather.uv",
-  "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.attribution",
-  "weather.rainChance", "weather.codes.*", "weather.compass.*", "weather.sunrise", "weather.sunset", "weather.pressure",
+  "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.pressure",
 ];
 const at = (obj, parts) => parts.reduce((o, k) => (o == null ? undefined : o[k]), obj);
 for (const spec of SITE_PATHS) {
