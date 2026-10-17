@@ -49,7 +49,10 @@ enum PrayerNotifier {
         generation += 1
         let mine = generation
         let center = UNUserNotificationCenter.current()
-        center.removeAllPendingNotificationRequests()
+        // Yalnız vakit bildirimleri silinir (alarm ve zamanlayıcı bildirimleri kalır)
+        let old = await center.pendingNotificationRequests().map(\.identifier).filter { $0.hasPrefix("prayer-") || $0 == "reopen" }
+        center.removePendingNotificationRequests(withIdentifiers: old)
+        guard mine == generation else { return }
         let settings = NotificationPrefs.current
         guard settings.enabled else { return }
         let status = await authorizationStatus()

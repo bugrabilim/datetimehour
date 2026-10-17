@@ -22,6 +22,13 @@ struct ClockProvider: TimelineProvider {
     }
 }
 
+/// Tarih her bölgede Gregoryen takvimle (Arapça bölge ayarı Hicrî seçebilir)
+private func gregorian(_ style: Date.FormatStyle) -> Date.FormatStyle {
+    var s = style
+    s.calendar = Calendar(identifier: .gregorian)
+    return s
+}
+
 /// 24 saat, her dilde Latin rakamı (uygulama ve sitedeki gibi)
 private let hourMinute: DateFormatter = {
     let f = DateFormatter()
@@ -73,11 +80,11 @@ struct ClockDateWidget: Widget {
                     .lineLimit(1)
                     .multilineTextAlignment(.center)
                     .environment(\.layoutDirection, .leftToRight)
-                Text(entry.date.formatted(.dateTime.day().month(.wide).year()))
+                Text(entry.date.formatted(gregorian(.dateTime.day().month(.wide).year())))
                     .font(.headline)
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
-                Text(entry.date.formatted(.dateTime.weekday(.wide)))
+                Text(entry.date.formatted(gregorian(.dateTime.weekday(.wide))))
                     .font(.subheadline)
                     .foregroundStyle(Theme.muted)
             }

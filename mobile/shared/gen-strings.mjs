@@ -7,6 +7,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { computeYear } from "../../lib/events.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
@@ -26,6 +27,42 @@ const KEYS = {
   "prayer.province": (t) => t.prayer.chooseLabel,
   "brand.product": (t) => t.badge.alt,
 };
+/* Sitedeki metinlerden aynı anahtarla alınanlar: "a.b.*" bir nesnenin ya da dizinin bütün öğeleri ("a.b.0" …). */
+const SITE_PATHS = [
+  "site.name", "client.format24", "client.format12", "client.seconds", "client.today", "client.tomorrow", "client.passed",
+  "client.daysLeft", "client.weekShort", "client.diffSame", "client.diffAhead", "client.diffBehind", "client.hourShort", "client.minuteShort",
+  "client.yourZone", "client.fullscreen", "client.exitFullscreen", "client.formatLabel",
+  "prayer.monthHeading", "prayer.colDay", "prayer.prevMonth", "prayer.nextMonth", "prayer.useLocation",
+  "calendar.months.*", "calendar.weekdays.*", "calendar.weekdaysShort.*", "calendar.types.*", "calendar.events.*", "calendar.noYear",
+  "tools.hub.cards.stopwatch.name", "tools.hub.cards.countdown.name", "tools.hub.cards.alarm.name", "tools.hub.cards.pomodoro.name",
+  "tools.hub.cards.datecalc.name", "tools.hub.cards.week.name", "tools.hub.cards.converter.name", "tools.hub.h1",
+  "tools.stopwatch.*", "tools.countdown.*", "tools.alarm.*", "tools.alarm.dayNames.*", "tools.pomodoro.*",
+  "datecalc.*", "datecalc.units.*",
+  "info.week.big", "info.week.thisWeek",
+  "world.h1", "world.addCity", "world.remove", "world.reset", "world.done", "world.customize",
+  "converter.h1", "converter.whenLabel", "converter.now",
+  "nature.h1", "nature.seasons.*", "nature.current", "nature.nextIn", "nature.startsOn", "nature.sunHeading", "nature.sunrise", "nature.sunset",
+  "nature.dayLength", "nature.solarNoon", "nature.moonHeading", "nature.phases.*", "nature.illumination", "nature.age", "nature.nextNew",
+  "nature.nextFull", "nature.tableHeading", "nature.tableLead", "nature.colYear", "nature.hoursShort", "nature.minutesShort",
+  "weather.h1", "weather.now", "weather.feelsLike", "weather.humidity", "weather.wind", "weather.precipitation", "weather.uv",
+  "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.attribution",
+  "weather.rainChance", "weather.codes.*", "weather.compass.*", "weather.sunrise", "weather.sunset", "weather.pressure",
+];
+const at = (obj, parts) => parts.reduce((o, k) => (o == null ? undefined : o[k]), obj);
+for (const spec of SITE_PATHS) {
+  const parts = spec.split(".");
+  const wild = parts[parts.length - 1] === "*";
+  const base = wild ? parts.slice(0, -1) : parts;
+  const leafKeys = wild ? Object.keys(at(I.tr, base) || {}) : [null];
+  if (wild && !leafKeys.length) throw new Error(`${spec}: sitede yok`);
+  for (const leaf of leafKeys) {
+    const p = leaf === null ? base : [...base, leaf];
+    if (typeof at(I.tr, p) !== "string") continue; // iç içe nesneler ve SSS dizileri alınmaz
+    const key = p.join(".");
+    if (!KEYS[key]) KEYS[key] = (t) => at(t, p);
+  }
+}
+
 const APP = JSON.parse(fs.readFileSync(path.join(HERE, "app-strings.json"), "utf8"));
 for (const [key, byLang] of Object.entries(APP)) {
   if (key === "_") continue;
@@ -35,7 +72,7 @@ for (const [key, byLang] of Object.entries(APP)) {
 
 /* {ad} → %1$@, %2$@…: sıra Türkçe metindeki ilk görünüş sırasıdır; her dil aynı adları kullanmalı. */
 const names = (s) => [...new Set([...s.matchAll(/\{([a-z]+)\}/gi)].map((m) => m[1]))];
-const toIOS = (s, order) => s.replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
+const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
 
 const strings = {}, plistStrings = {};
 for (const [key, get] of Object.entries(KEYS)) {
@@ -56,10 +93,30 @@ const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces
   .map(({ slug, name, lat, lon, ar }) => ({ slug, name, lat, lon, ar }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
+/* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak; sınavlar takvimde yok). */
+const HOL = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holidays.json"), "utf8"));
+HOL.school = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/school.json"), "utf8"));
+const years = {};
+for (const y of Object.keys(HOL.years).map(Number).sort((a, b) => a - b)) {
+  const r = computeYear(y, HOL);
+  years[y] = { events: r.events.filter((e) => e.type !== "exam"), schoolRanges: r.schoolRanges, projected: r.projected };
+  for (const e of years[y].events) if (!KEYS[`calendar.events.${e.key}`]) throw new Error(`calendar.events.${e.key} metni yok`);
+}
+const calendarJson = JSON.stringify({ years, ramadans: HOL.ramadans }) + "\n";
+
+/* Dünya saatleri için şehirler: ad ve ülke beş dilde, IANA saat dilimi, koordinat */
+const cities = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/cities.json"), "utf8")).map((c) => ({
+  key: c.key, tz: c.tz, lat: c.lat, lon: c.lon,
+  name: Object.fromEntries(LANGS.map((l) => [l, c[l].name])), country: Object.fromEntries(LANGS.map((l) => [l, c[l].country])),
+}));
+const citiesJson = JSON.stringify(cities) + "\n";
+
 const files = {
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
   "mobile/ios/App/Resources/provinces.json": provincesJson,
+  "mobile/ios/App/Resources/calendar.json": calendarJson,
+  "mobile/ios/App/Resources/cities.json": citiesJson,
 };
 const check = process.argv.includes("--check");
 const stale = [];

@@ -1,47 +1,46 @@
 import SwiftUI
-import WidgetKit
 import SaatCore
 
-/// İlk ekran: büyük saat, bugünün tarihi, il seçimi, bugünün namaz vakitleri ve sıradaki vakte kalan süre.
-struct HomeView: View {
+/// Saat sekmesi: büyük saat (dijital ↔ analog), tarih, hafta, sıradaki vakit ve tam ekran.
+struct ClockTab: View {
+    @AppStorage("keepAwake") private var keepAwake = true
     @AppStorage("province") private var provinceSlug = "istanbul"
-    @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = false
-    /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
-    @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
-
-    private var province: Province { Province.find(provinceSlug) }
+    @State private var fullscreen = false
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
             let now = context.date
+            let today = CalendarDay(now)
             ScrollView {
-                VStack(spacing: 28) {
-                    HStack {
-                        Spacer()
-                        Button { showNotify = true } label: {
-                            Image(systemName: notifyOn ? "bell.fill" : "bell")
-                                .font(.title3)
-                                .foregroundStyle(Theme.accent)
-                                .frame(width: 44, height: 44)
-                        }
-                        .accessibilityLabel(L("notify.heading"))
-                    }
-                    .padding(.bottom, -28)
+                VStack(spacing: 22) {
                     ClockHeader(now: now)
-                    PrayerPanel(now: now, province: province, schedule: PrayerSchedule(province: province), provinceSlug: $provinceSlug)
-                    Text(String(localized: "brand.product"))
+                    Text(T("clock.weekDay", today.isoWeek.week, today.dayOfYear))
+                        .font(.subheadline)
+                        .foregroundStyle(Theme.muted)
+                    NextPrayerCard(now: now, province: Province.find(provinceSlug))
+                    Button {
+                        fullscreen = true
+                    } label: {
+                        Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
+                            .font(.headline)
+                            .foregroundStyle(Theme.accent)
+                    }
+                    Text(L("brand.product"))
                         .font(.footnote)
                         .foregroundStyle(Theme.muted)
                         .padding(.top, 8)
                 }
                 .padding(.horizontal, 20)
-                .padding(.vertical, 32)
+                .padding(.vertical, 24)
                 .frame(maxWidth: 560)
                 .frame(maxWidth: .infinity)
             }
             .background(Theme.bg.ignoresSafeArea())
         }
-        .sheet(isPresented: $showNotify) { NotificationSettingsView() }
+        .onAppear { UIApplication.shared.isIdleTimerDisabled = keepAwake }
+        .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
+        .onChange(of: keepAwake) { UIApplication.shared.isIdleTimerDisabled = keepAwake }
+        .fullScreenCover(isPresented: $fullscreen) { FullscreenClock() }
         .task {
             // CI: bildirim seslerinin örneği üretilir, ekran görüntüleriyle birlikte dışarı alınır
             guard ProcessInfo.processInfo.arguments.contains("-makeSoundSample") else { return }
@@ -50,45 +49,38 @@ struct HomeView: View {
             _ = await NotificationSounds.make(name: NotificationSounds.fileName(.asr, lead: 10),
                                               text: NotificationSounds.spokenText(.asr, lead: 10))
         }
-        .onChange(of: provinceSlug) { Task { await PrayerNotifier.reschedule() } }
     }
 }
 
 /// Saat: sola/sağa kaydırınca dijital ↔ analog (seçim hatırlanır). Saate dokununca saniye açılır/kapanır;
 /// sitedeki gibi varsayılan dijitalde açık, analogda kapalı.
-private struct ClockHeader: View {
+struct ClockHeader: View {
     let now: Date
+    var showDate = true
     @AppStorage("clockStyle") private var style = 0
     @AppStorage("secD") private var digitalSeconds = true
     @AppStorage("secA") private var analogSeconds = false
-
-    private static let hms: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX") // saat rakamları her dilde aynı (sitedeki gibi)
-        f.dateFormat = "HH:mm:ss"
-        return f
-    }()
-    private static let hm: DateFormatter = {
-        let f = DateFormatter()
-        f.locale = Locale(identifier: "en_US_POSIX")
-        f.dateFormat = "HH:mm"
-        return f
-    }()
+    @AppStorage("h12") private var h12 = false
 
     var body: some View {
         VStack(spacing: 8) {
             TabView(selection: $style) {
-                Text((digitalSeconds ? Self.hms : Self.hm).string(from: now))
-                    .font(.system(size: 76, weight: .bold, design: .rounded))
-                    .monospacedDigit()
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-                    .foregroundStyle(Theme.text)
-                    .environment(\.layoutDirection, .leftToRight)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .contentShape(Rectangle())
-                    .onTapGesture { digitalSeconds.toggle() }
-                    .tag(0)
+                HStack(alignment: .firstTextBaseline, spacing: 6) {
+                    Text(Fmt.time(now, seconds: digitalSeconds))
+                        .font(.system(size: 76, weight: .bold, design: .rounded))
+                        .monospacedDigit()
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
+                    if h12 {
+                        Text(Fmt.ampm(now)).font(.title2.weight(.semibold))
+                    }
+                }
+                .foregroundStyle(Theme.text)
+                .environment(\.layoutDirection, .leftToRight)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .contentShape(Rectangle())
+                .onTapGesture { digitalSeconds.toggle() }
+                .tag(0)
                 AnalogClock(date: now, showSeconds: analogSeconds)
                     .padding(.vertical, 12)
                     .padding(.bottom, 24)
@@ -100,85 +92,87 @@ private struct ClockHeader: View {
             .indexViewStyle(.page(backgroundDisplayMode: .always))
             .frame(height: style == 1 ? 320 : 170) // dijitalde boşluk kalmasın
             .animation(.easeInOut(duration: 0.25), value: style)
-            Text(now.formatted(.dateTime.day().month(.wide).year().weekday(.wide)))
-                .font(.title3.weight(.semibold))
-                .foregroundStyle(Theme.text)
+            if showDate {
+                Text(Fmt.longDate(now))
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(Theme.text)
+            }
         }
     }
 }
 
-private struct PrayerPanel: View {
+/// Saat sekmesinde seçili ilin sıradaki vakti ve kalan süre
+private struct NextPrayerCard: View {
     let now: Date
     let province: Province
-    let schedule: PrayerSchedule
-    @Binding var provinceSlug: String
 
     var body: some View {
-        let next = schedule.next(after: now)
-        VStack(spacing: 16) {
-            Menu {
-                Button {
-                    Task {
-                        guard let loc = await OneShotLocation().fetch(requestPermission: true) else { return }
-                        provinceSlug = Province.nearest(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude).0.slug
-                        WidgetCenter.shared.reloadAllTimelines() // "Otomatik" widget'lar yeni izinle yenilensin
-                    }
-                } label: {
-                    Label(L("place.useLocation"), systemImage: "location")
-                }
-                Picker(String(localized: "prayer.province"), selection: $provinceSlug) {
-                    ForEach(Province.all) { Text($0.displayName).tag($0.slug) }
-                }
-            } label: {
-                Label(province.displayName, systemImage: "mappin.and.ellipse")
-                    .font(.headline)
-                    .foregroundStyle(Theme.accent)
-            }
-
-            if let next {
-                VStack(spacing: 4) {
-                    Text(String(format: String(localized: "prayer.nextIn"), next.prayer.localizedName))
-                        .font(.subheadline)
-                        .foregroundStyle(Theme.muted)
-                    Text(countdown(to: next.at))
-                        .font(.system(size: 40, weight: .semibold, design: .rounded))
-                        .monospacedDigit()
+        let schedule = PrayerSchedule(province: province)
+        if let next = schedule.next(after: now) {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Label(province.displayName, systemImage: "mappin.and.ellipse")
+                        .font(.caption.weight(.semibold))
                         .foregroundStyle(Theme.accent)
-                        .environment(\.layoutDirection, .leftToRight)
+                    Text("\(next.prayer.localizedName) \(PrayerSchedule.hm.string(from: next.at))")
+                        .font(.headline)
+                        .foregroundStyle(Theme.text)
                 }
+                Spacer()
+                Text(Fmt.countdown(Int(next.at.timeIntervalSince(now).rounded(.up))))
+                    .font(.title3.weight(.semibold).monospacedDigit())
+                    .foregroundStyle(Theme.accent)
+                    .environment(\.layoutDirection, .leftToRight)
             }
-
-            VStack(spacing: 0) {
-                Text(String(localized: "prayer.today"))
-                    .font(.headline)
-                    .foregroundStyle(Theme.text)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.bottom, 8)
-                ForEach(schedule.entries(on: now)) { entry in
-                    let isNext = entry.at == next?.at
-                    HStack {
-                        Text(entry.prayer.localizedName)
-                        Spacer()
-                        Text(PrayerSchedule.hm.string(from: entry.at))
-                            .monospacedDigit()
-                            .environment(\.layoutDirection, .leftToRight)
-                    }
-                    .font(.body.weight(isNext ? .bold : .regular))
-                    .foregroundStyle(Theme.text)
-                    .padding(.vertical, 12)
-                    .padding(.horizontal, 14)
-                    .background(isNext ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 10))
-                }
-            }
+            .card()
         }
-    }
-
-    private func countdown(to date: Date) -> String {
-        let s = max(0, Int(date.timeIntervalSince(now).rounded(.up)))
-        return String(format: "%02d:%02d:%02d", s / 3600, (s % 3600) / 60, s % 60)
     }
 }
 
-#Preview {
-    HomeView()
+/// Tam ekran saat: yalnız saat ve tarih; ekran kapanmaz, dokununca çıkılır.
+struct FullscreenClock: View {
+    @Environment(\.dismiss) private var dismiss
+    @AppStorage("clockStyle") private var style = 0
+    @AppStorage("secD") private var digitalSeconds = true
+    @AppStorage("secA") private var analogSeconds = false
+
+    var body: some View {
+        TimelineView(.periodic(from: .now, by: 1)) { context in
+            let now = context.date
+            GeometryReader { g in
+                VStack(spacing: 12) {
+                    Spacer(minLength: 0)
+                    if style == 1 {
+                        AnalogClock(date: now, showSeconds: analogSeconds)
+                            .frame(maxWidth: min(g.size.width, g.size.height) * 0.85)
+                    } else {
+                        Text(Fmt.time(now, seconds: digitalSeconds))
+                            .font(.system(size: 400, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                            .minimumScaleFactor(0.05)
+                            .lineLimit(1)
+                            .environment(\.layoutDirection, .leftToRight)
+                            .padding(.horizontal, 16)
+                    }
+                    Text(Fmt.longDate(now))
+                        .font(.title2.weight(.semibold))
+                    Spacer(minLength: 0)
+                    Text(L("clock.tapToExit"))
+                        .font(.footnote)
+                        .foregroundStyle(Theme.muted)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .foregroundStyle(Theme.text)
+            .background(Theme.bg.ignoresSafeArea())
+        }
+        .contentShape(Rectangle())
+        .onTapGesture { dismiss() }
+        .statusBarHidden()
+        .persistentSystemOverlays(.hidden)
+        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+        .onDisappear {
+            UIApplication.shared.isIdleTimerDisabled = UserDefaults.standard.object(forKey: "keepAwake") as? Bool ?? true
+        }
+    }
 }

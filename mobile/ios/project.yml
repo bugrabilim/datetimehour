@@ -33,6 +33,8 @@ targets:
         SWIFT_VERSION: "5.0"
         TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: YES
+        # INFOPLIST_KEY_* ile verilemeyen anahtarlar (AlarmKit izni) bu dosyada; Xcode ikisini birleştirir
+        INFOPLIST_FILE: App/Info.plist
         INFOPLIST_KEY_CFBundleDisplayName: Saat Tarih
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
         INFOPLIST_KEY_UILaunchScreen_Generation: YES

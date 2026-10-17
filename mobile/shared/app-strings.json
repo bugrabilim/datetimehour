@@ -258,5 +258,306 @@
     "de": "Uhr & Datum",
     "az": "Saat Tarix",
     "ar": "الوقت والتاريخ"
+  },
+  "tab.clock": {
+    "tr": "Saat",
+    "en": "Clock",
+    "de": "Uhr",
+    "az": "Saat",
+    "ar": "الساعة"
+  },
+  "tab.prayer": {
+    "tr": "Vakitler",
+    "en": "Prayer",
+    "de": "Gebet",
+    "az": "Vaxtlar",
+    "ar": "الصلاة"
+  },
+  "tab.calendar": {
+    "tr": "Takvim",
+    "en": "Calendar",
+    "de": "Kalender",
+    "az": "Təqvim",
+    "ar": "التقويم"
+  },
+  "tab.tools": {
+    "tr": "Araçlar",
+    "en": "Tools",
+    "de": "Werkzeuge",
+    "az": "Alətlər",
+    "ar": "الأدوات"
+  },
+  "tab.more": {
+    "tr": "Diğer",
+    "en": "More",
+    "de": "Mehr",
+    "az": "Digər",
+    "ar": "المزيد"
+  },
+  "settings.title": {
+    "tr": "Ayarlar",
+    "en": "Settings",
+    "de": "Einstellungen",
+    "az": "Parametrlər",
+    "ar": "الإعدادات"
+  },
+  "settings.appearance": {
+    "tr": "Görünüm",
+    "en": "Appearance",
+    "de": "Erscheinungsbild",
+    "az": "Görünüş",
+    "ar": "المظهر"
+  },
+  "settings.system": {
+    "tr": "Sistem",
+    "en": "System",
+    "de": "System",
+    "az": "Sistem",
+    "ar": "النظام"
+  },
+  "settings.light": {
+    "tr": "Açık",
+    "en": "Light",
+    "de": "Hell",
+    "az": "Açıq",
+    "ar": "فاتح"
+  },
+  "settings.dark": {
+    "tr": "Koyu",
+    "en": "Dark",
+    "de": "Dunkel",
+    "az": "Tünd",
+    "ar": "داكن"
+  },
+  "settings.keepAwake": {
+    "tr": "Saat ekranında ekranı açık tut",
+    "en": "Keep the screen on in the clock",
+    "de": "Bildschirm in der Uhr eingeschaltet lassen",
+    "az": "Saat ekranında ekranı açıq saxla",
+    "ar": "إبقاء الشاشة مضاءة في الساعة"
+  },
+  "settings.about": {
+    "tr": "Hakkında",
+    "en": "About",
+    "de": "Über",
+    "az": "Haqqında",
+    "ar": "حول"
+  },
+  "settings.website": {
+    "tr": "Web sitesi",
+    "en": "Website",
+    "de": "Website",
+    "az": "Veb sayt",
+    "ar": "الموقع الإلكتروني"
+  },
+  "settings.version": {
+    "tr": "Sürüm",
+    "en": "Version",
+    "de": "Version",
+    "az": "Versiya",
+    "ar": "الإصدار"
+  },
+  "settings.privacy": {
+    "tr": "Gizlilik",
+    "en": "Privacy",
+    "de": "Datenschutz",
+    "az": "Məxfilik",
+    "ar": "الخصوصية"
+  },
+  "settings.privacyNote": {
+    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz yalnız telefonda vakit hesabı için kullanılır; yalnız hava durumu için yaklaşık koordinat Open-Meteo'ya gönderilir.",
+    "en": "No account, no ads, no tracking. Your location is used only on your phone to calculate prayer times; only for the weather are approximate coordinates sent to Open-Meteo.",
+    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird nur auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter werden ungefähre Koordinaten an Open-Meteo gesendet.",
+    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız yalnız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün təxmini koordinatlar Open-Meteo-ya göndərilir.",
+    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك فقط لحساب أوقات الصلاة؛ ولأجل الطقس فقط تُرسل إحداثيات تقريبية إلى Open-Meteo."
+  },
+  "clock.fullscreen": {
+    "tr": "Tam ekran",
+    "en": "Full screen",
+    "de": "Vollbild",
+    "az": "Tam ekran",
+    "ar": "ملء الشاشة"
+  },
+  "clock.weekDay": {
+    "tr": "{week}. hafta · yılın {day}. günü",
+    "en": "Week {week} · day {day} of the year",
+    "de": "KW {week} · {day}. Tag des Jahres",
+    "az": "{week}. həftə · ilin {day}. günü",
+    "ar": "الأسبوع {week} · اليوم {day} من السنة"
+  },
+  "clock.tapToExit": {
+    "tr": "Çıkmak için dokunun",
+    "en": "Tap to exit",
+    "de": "Zum Beenden tippen",
+    "az": "Çıxmaq üçün toxunun",
+    "ar": "انقر للخروج"
+  },
+  "prayer.monthly": {
+    "tr": "Aylık vakit çizelgesi",
+    "en": "Monthly prayer timetable",
+    "de": "Monatliche Gebetszeiten",
+    "az": "Aylıq vaxt cədvəli",
+    "ar": "جدول أوقات الصلاة الشهري"
+  },
+  "imsakiye.title": {
+    "tr": "Ramazan {year} imsakiyesi",
+    "en": "Ramadan {year} timetable",
+    "de": "Ramadan {year} – Zeitplan",
+    "az": "Ramazan {year} imsakiyyəsi",
+    "ar": "إمساكية رمضان {year}"
+  },
+  "imsakiye.iftar": {
+    "tr": "İftar",
+    "en": "Iftar",
+    "de": "Iftar",
+    "az": "İftar",
+    "ar": "الإفطار"
+  },
+  "imsakiye.share": {
+    "tr": "Görsel olarak paylaş",
+    "en": "Share as image",
+    "de": "Als Bild teilen",
+    "az": "Şəkil kimi paylaş",
+    "ar": "مشاركة كصورة"
+  },
+  "imsakiye.day": {
+    "tr": "{n}. gün",
+    "en": "Day {n}",
+    "de": "Tag {n}",
+    "az": "{n}. gün",
+    "ar": "اليوم {n}"
+  },
+  "calendar.dayOfYear": {
+    "tr": "Yılın {n}. günü",
+    "en": "Day {n} of the year",
+    "de": "{n}. Tag des Jahres",
+    "az": "İlin {n}. günü",
+    "ar": "اليوم {n} من السنة"
+  },
+  "calendar.daysAgo": {
+    "tr": "{n} gün önce",
+    "en": "{n} days ago",
+    "de": "vor {n} Tagen",
+    "az": "{n} gün əvvəl",
+    "ar": "قبل {n} يومًا"
+  },
+  "calendar.noEvents": {
+    "tr": "Bu ay için özel gün yok.",
+    "en": "No special days this month.",
+    "de": "Keine besonderen Tage in diesem Monat.",
+    "az": "Bu ay üçün xüsusi gün yoxdur.",
+    "ar": "لا توجد أيام خاصة هذا الشهر."
+  },
+  "calendar.projected": {
+    "tr": "Bu yılın dini günleri Diyanet'in uzun vadeli takvimine dayanır; kesinleşince güncellenir.",
+    "en": "Religious days for this year are based on Diyanet's long-range calendar and will be updated once confirmed.",
+    "de": "Die religiösen Tage dieses Jahres beruhen auf dem Langzeitkalender der Diyanet und werden nach Bestätigung aktualisiert.",
+    "az": "Bu ilin dini günləri Diyanətin uzunmüddətli təqviminə əsaslanır; dəqiqləşəndə yenilənir.",
+    "ar": "تستند المناسبات الدينية لهذا العام إلى التقويم طويل المدى لرئاسة الشؤون الدينية، وستُحدَّث عند تأكيدها."
+  },
+  "calendar.upcoming": {
+    "tr": "Yaklaşan günler",
+    "en": "Upcoming days",
+    "de": "Kommende Tage",
+    "az": "Yaxınlaşan günlər",
+    "ar": "الأيام القادمة"
+  },
+  "tools.timer": {
+    "tr": "Zamanlayıcı",
+    "en": "Timer",
+    "de": "Timer",
+    "az": "Taymer",
+    "ar": "المؤقت"
+  },
+  "alarm.denied": {
+    "tr": "Alarm izni kapalı. Ayarlar'dan bu uygulama için alarmlara izin verin.",
+    "en": "Alarms are not allowed. Allow alarms for this app in Settings.",
+    "de": "Wecker sind nicht erlaubt. Erlauben Sie sie für diese App in den Einstellungen.",
+    "az": "Alarmlara icazə yoxdur. Parametrlərdə bu tətbiq üçün icazə verin.",
+    "ar": "المنبهات غير مسموح بها. اسمح بها لهذا التطبيق من الإعدادات."
+  },
+  "alarm.fallbackNote": {
+    "tr": "Bu iPhone'da alarm bildirim olarak gelir ve telefon sessizdeyken çalmaz. iOS 26 ve sonrasında gerçek alarm olarak çalar.",
+    "en": "On this iPhone the alarm arrives as a notification and does not ring when the phone is silenced. On iOS 26 and later it rings as a real alarm.",
+    "de": "Auf diesem iPhone kommt der Wecker als Mitteilung und klingelt nicht im Stummmodus. Ab iOS 26 klingelt er als echter Wecker.",
+    "az": "Bu iPhone-da alarm bildiriş kimi gəlir və telefon səssizdə olanda çalmır. iOS 26 və sonrasında əsl alarm kimi çalır.",
+    "ar": "على هذا الآيفون يصل المنبه كإشعار ولا يرن عندما يكون الهاتف صامتًا. في iOS 26 وما بعده يرن كمنبه حقيقي."
+  },
+  "alarm.realNote": {
+    "tr": "Alarm, telefon sessizdeyken ve uygulama kapalıyken de çalar.",
+    "en": "The alarm rings even when the phone is silenced and the app is closed.",
+    "de": "Der Wecker klingelt auch im Stummmodus und bei geschlossener App.",
+    "az": "Alarm telefon səssizdə və tətbiq bağlı olanda da çalır.",
+    "ar": "يرن المنبه حتى عندما يكون الهاتف صامتًا والتطبيق مغلقًا."
+  },
+  "alarm.new": {
+    "tr": "Yeni alarm",
+    "en": "New alarm",
+    "de": "Neuer Wecker",
+    "az": "Yeni alarm",
+    "ar": "منبه جديد"
+  },
+  "alarm.save": {
+    "tr": "Kaydet",
+    "en": "Save",
+    "de": "Sichern",
+    "az": "Yadda saxla",
+    "ar": "حفظ"
+  },
+  "alarm.cancel": {
+    "tr": "Vazgeç",
+    "en": "Cancel",
+    "de": "Abbrechen",
+    "az": "Ləğv et",
+    "ar": "إلغاء"
+  },
+  "NSAlarmKitUsageDescription": {
+    "tr": "Kurduğunuz alarm ve zamanlayıcıların telefon sessizdeyken de çalması için.",
+    "en": "So that the alarms and timers you set ring even when the phone is silenced.",
+    "de": "Damit Ihre Wecker und Timer auch im Stummmodus klingeln.",
+    "az": "Qurduğunuz alarm və taymerlərin telefon səssizdə olanda da çalması üçün.",
+    "ar": "حتى ترن المنبهات والمؤقتات التي تضبطها حتى عندما يكون الهاتف صامتًا."
+  },
+  "world.changeTime": {
+    "tr": "Başka bir zamana bak",
+    "en": "Look at another time",
+    "de": "Andere Zeit ansehen",
+    "az": "Başqa vaxta bax",
+    "ar": "عرض وقت آخر"
+  },
+  "world.local": {
+    "tr": "Bulunduğum yer",
+    "en": "Where I am",
+    "de": "Mein Ort",
+    "az": "Olduğum yer",
+    "ar": "موقعي الحالي"
+  },
+  "seasons.dayLengthValue": {
+    "tr": "{h} sa {m} dk",
+    "en": "{h} h {m} min",
+    "de": "{h} Std. {m} Min.",
+    "az": "{h} saat {m} dəq",
+    "ar": "{h} س {m} د"
+  },
+  "weather.place": {
+    "tr": "Konum: {place}",
+    "en": "Location: {place}",
+    "de": "Ort: {place}",
+    "az": "Məkan: {place}",
+    "ar": "الموقع: {place}"
+  },
+  "weather.km": {
+    "tr": "{n} km/sa",
+    "en": "{n} km/h",
+    "de": "{n} km/h",
+    "az": "{n} km/saat",
+    "ar": "{n} كم/س"
+  },
+  "more.sections": {
+    "tr": "Bölümler",
+    "en": "Sections",
+    "de": "Bereiche",
+    "az": "Bölmələr",
+    "ar": "الأقسام"
   }
 }

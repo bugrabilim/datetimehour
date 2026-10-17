@@ -70,6 +70,41 @@
           }
         }
       }
+    },
+    "NSAlarmKitUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurduğunuz alarm ve zamanlayıcıların telefon sessizdeyken de çalması için."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So that the alarms and timers you set ring even when the phone is silenced."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Damit Ihre Wecker und Timer auch im Stummmodus klingeln."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qurduğunuz alarm və taymerlərin telefon səssizdə olanda da çalması üçün."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حتى ترن المنبهات والمؤقتات التي تضبطها حتى عندما يكون الهاتف صامتًا."
+          }
+        }
+      }
     }
   },
   "version": "1.0"
