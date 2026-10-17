@@ -32,6 +32,11 @@ shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
 shoot tr tr_TR light tr-analog -clockStyle "<integer>1</integer>"
 shoot tr tr_TR dark tr-analog-koyu -clockStyle "<integer>1</integer>" -secA "<true/>"
+# Saat ekranında bütün alanlar açık (Ayarlar › Saat ekranı)
+ALL="date,week,next,prayers,upcoming,world,weather,sun"
+shoot tr tr_TR light tr-alanlar -homeItems "$ALL"
+shoot tr tr_TR dark tr-alanlar-analog-koyu -homeItems "$ALL" -clockStyle "<integer>1</integer>"
+shoot ar ar_SA light ar-alanlar -homeItems "$ALL"
 # Sekmeler: 1 vakitler, 2 takvim, 3 araçlar, 4 diğer
 shoot tr tr_TR light tr-vakitler -startTab 1
 shoot tr tr_TR light tr-takvim -startTab 2
@@ -43,7 +48,7 @@ shoot en en_US light en-takvim -startTab 2
 shoot tr tr_TR light tr-bildirim -startTab 1 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 shoot en en_US dark en-bildirim -startTab 1 -openNotifications -notify.enabled "<true/>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world weather seasons settings; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world weather seasons settings homeItems; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR dark ekran-weather-koyu -openScreen weather

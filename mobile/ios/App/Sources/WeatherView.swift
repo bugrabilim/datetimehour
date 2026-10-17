@@ -8,9 +8,7 @@ import SaatCore
 /// "Apple Hava Durumu" işareti ve yasal bilgiler bağlantısı ekranda gösterilir.
 struct WeatherView: View {
     @AppStorage("province") private var provinceSlug = "istanbul"
-    @Environment(\.colorScheme) private var scheme
     @State private var data: Weather?
-    @State private var attribution: WeatherAttribution?
     @State private var failed = false
 
     private let zone = PrayerSchedule.zone
@@ -32,7 +30,7 @@ struct WeatherView: View {
                 } else {
                     ProgressView(L("weather.loading")).padding(.top, 40)
                 }
-                attributionView
+                AppleWeatherMark()
             }
             .padding(16)
             .frame(maxWidth: 560)
@@ -51,26 +49,6 @@ struct WeatherView: View {
             data = try await WeatherCache.weather(lat: p.lat, lon: p.lon)
         } catch {
             failed = data == nil
-        }
-        if attribution == nil { attribution = try? await WeatherService.shared.attribution }
-    }
-
-    /// Apple Hava Durumu işareti ve yasal bilgiler (WeatherKit şartı)
-    @ViewBuilder
-    private var attributionView: some View {
-        if let a = attribution {
-            VStack(spacing: 6) {
-                AsyncImage(url: scheme == .dark ? a.combinedMarkDarkURL : a.combinedMarkLightURL) { image in
-                    image.resizable().scaledToFit()
-                } placeholder: {
-                    Text(a.serviceName).font(.caption)
-                }
-                .frame(height: 14)
-                Link(L("weather.legal"), destination: a.legalPageURL)
-                    .font(.caption)
-                    .tint(Theme.muted)
-            }
-            .padding(.top, 4)
         }
     }
 
@@ -199,5 +177,34 @@ enum WeatherCache {
         let value = try await WeatherService.shared.weather(for: CLLocation(latitude: lat, longitude: lon))
         cache = (key, Date(), value)
         return value
+    }
+}
+
+/// Apple Hava Durumu işareti ve yasal bilgiler bağlantısı (WeatherKit verisi gösterilen her yerde şart)
+struct AppleWeatherMark: View {
+    var compact = false
+    @Environment(\.colorScheme) private var scheme
+    @State private var attribution: WeatherAttribution?
+
+    var body: some View {
+        Group {
+            if let a = attribution {
+                let mark = AsyncImage(url: scheme == .dark ? a.combinedMarkDarkURL : a.combinedMarkLightURL) { image in
+                    image.resizable().scaledToFit()
+                } placeholder: {
+                    Text(a.serviceName).font(.caption)
+                }
+                .frame(height: compact ? 11 : 14)
+                let legal = Link(L("weather.legal"), destination: a.legalPageURL)
+                    .font(compact ? .caption2 : .caption)
+                    .tint(Theme.muted)
+                if compact {
+                    HStack(spacing: 8) { mark.frame(width: 70, alignment: .leading); legal; Spacer(minLength: 0) }
+                } else {
+                    VStack(spacing: 6) { mark; legal }.padding(.top, 4)
+                }
+            }
+        }
+        .task { if attribution == nil { attribution = try? await WeatherService.shared.attribution } }
     }
 }

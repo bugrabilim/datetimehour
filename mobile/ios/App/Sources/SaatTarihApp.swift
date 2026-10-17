@@ -54,7 +54,7 @@ struct RootView: View {
 }
 
 enum DebugScreen: String, Identifiable {
-    case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings
+    case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -72,6 +72,7 @@ enum DebugScreen: String, Identifiable {
         case .weather: WeatherView()
         case .seasons: SeasonsView()
         case .settings: SettingsView()
+        case .homeItems: NavigationStack { HomeItemsView() }
         }
     }
 }
