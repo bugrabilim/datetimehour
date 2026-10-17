@@ -365,11 +365,11 @@
     "ar": "الخصوصية"
   },
   "settings.privacyNote": {
-    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz yalnız telefonda vakit hesabı için kullanılır; yalnız hava durumu için yaklaşık koordinat Open-Meteo'ya gönderilir.",
-    "en": "No account, no ads, no tracking. Your location is used only on your phone to calculate prayer times; only for the weather are approximate coordinates sent to Open-Meteo.",
-    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird nur auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter werden ungefähre Koordinaten an Open-Meteo gesendet.",
-    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız yalnız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün təxmini koordinatlar Open-Meteo-ya göndərilir.",
-    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك فقط لحساب أوقات الصلاة؛ ولأجل الطقس فقط تُرسل إحداثيات تقريبية إلى Open-Meteo."
+    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz yalnız telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili ilin yaklaşık konumu Apple'ın hava servisine gönderilir.",
+    "en": "No account, no ads, no tracking. Your location is used only on your phone to calculate prayer times; only for the weather is the approximate location of the selected province sent to Apple's weather service.",
+    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird nur auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort der gewählten Provinz an den Wetterdienst von Apple gesendet.",
+    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız yalnız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş vilayətin təxmini məkanı Apple-ın hava xidmətinə göndərilir.",
+    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك فقط لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للولاية المختارة إلى خدمة الطقس من Apple."
   },
   "clock.fullscreen": {
     "tr": "Tam ekran",
@@ -559,5 +559,19 @@
     "de": "Bereiche",
     "az": "Bölmələr",
     "ar": "الأقسام"
+  },
+  "weather.legal": {
+    "tr": "Yasal bilgiler ve veri kaynakları",
+    "en": "Legal information and data sources",
+    "de": "Rechtliche Hinweise und Datenquellen",
+    "az": "Hüquqi məlumat və mənbələr",
+    "ar": "المعلومات القانونية ومصادر البيانات"
+  },
+  "weather.rainChanceShort": {
+    "tr": "Yağış ihtimali",
+    "en": "Chance of rain",
+    "de": "Regenwahrscheinlichkeit",
+    "az": "Yağış ehtimalı",
+    "ar": "احتمال المطر"
   }
 }

@@ -52,6 +52,28 @@ jobs:
           xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarih -configuration Release \
             -destination 'generic/platform=iOS' -archivePath "$RUNNER_TEMP/SaatTarih.xcarchive" \
             CODE_SIGNING_ALLOWED=NO CURRENT_PROJECT_VERSION=${{ github.run_number }} -quiet archive
+      - name: Yetkiler (geçici imza)
+        if: steps.keys.outputs.ok == '1'
+        # İmzasız arşivde yetkiler (WeatherKit) yoktur; dağıtım imzası yetkileri mevcut imzadan alır.
+        # Bu yüzden önce widget, sonra uygulama yetki dosyasıyla geçici (ad hoc) imzalanır.
+        run: |
+          APP="$RUNNER_TEMP/SaatTarih.xcarchive/Products/Applications/SaatTarih.app"
+          for X in "$APP"/PlugIns/*.appex; do codesign --force --sign - "$X"; done
+          codesign --force --sign - --entitlements mobile/ios/App/SaatTarih.entitlements "$APP"
+          codesign -d --entitlements - "$APP"
+      - name: Denetle (yerel dışa aktarım)
+        if: steps.keys.outputs.ok == '1'
+        run: |
+          cp mobile/ios/ExportOptions.plist "$RUNNER_TEMP/export-local.plist"
+          plutil -replace destination -string export "$RUNNER_TEMP/export-local.plist"
+          xcodebuild -exportArchive -archivePath "$RUNNER_TEMP/SaatTarih.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/export-local.plist" -exportPath "$RUNNER_TEMP/local" \
+            -allowProvisioningUpdates -authenticationKeyPath "$ASC_KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+          cd "$RUNNER_TEMP/local" && unzip -q -o *.ipa
+          echo "Dağıtım imzasındaki yetkiler:"
+          codesign -d --entitlements - Payload/SaatTarih.app
+          codesign -d --entitlements - Payload/SaatTarih.app 2>&1 | grep -q weatherkit || { echo "::error::WeatherKit yetkisi dağıtım imzasında yok"; exit 1; }
       - name: Yükle
         if: steps.keys.outputs.ok == '1'
         run: |

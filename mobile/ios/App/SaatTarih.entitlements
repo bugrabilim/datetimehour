@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!-- Uygulamanın yetkileri. Arşiv imzasız alındığı için TestFlight iş akışı bu dosyayla geçici (ad hoc) imza atar;
+     dağıtım imzası bu yetkileri korur. App ID'de aynı yetkiler açık olmalı (developer.apple.com → Identifiers). -->
+<dict>
+	<key>com.apple.developer.weatherkit</key>
+	<true/>
+</dict>
+</plist>

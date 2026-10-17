@@ -35,6 +35,8 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         # INFOPLIST_KEY_* ile verilemeyen anahtarlar (AlarmKit izni) bu dosyada; Xcode ikisini birleştirir
         INFOPLIST_FILE: App/Info.plist
+        # Hava durumu: Apple WeatherKit (App ID'de WeatherKit hem Capabilities hem App Services sekmesinde açık olmalı)
+        CODE_SIGN_ENTITLEMENTS: App/SaatTarih.entitlements
         INFOPLIST_KEY_CFBundleDisplayName: Saat Tarih
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
