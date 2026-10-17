@@ -548,7 +548,8 @@ struct DateCalcView: View {
             Section(L("datecalc.diffHeading")) {
                 DatePicker(L("datecalc.startLabel"), selection: $start, displayedComponents: .date)
                 DatePicker(L("datecalc.endLabel"), selection: $finish, displayedComponents: .date)
-                let a = min(CalendarDay(start), CalendarDay(finish)), b = max(CalendarDay(start), CalendarDay(finish))
+                let a = min(CalendarDay(start), CalendarDay(finish))
+                let b = max(CalendarDay(start), CalendarDay(finish))
                 let n = DateCalc.days(from: a, to: b)
                 let r = DateCalc.ymd(from: a, to: b)
                 Text(T("datecalc.diffDays", num(n))).font(.headline)

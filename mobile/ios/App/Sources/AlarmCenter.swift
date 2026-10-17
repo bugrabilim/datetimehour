@@ -77,7 +77,9 @@ enum AlarmCenter {
 
     /// Zamanlayıcı ya da pomodoro bitişi: verilen anda çalar
     static func schedule(id: UUID, at date: Date, title: String) async {
-        if #available(iOS 26.0, *), await KitAlarms.schedule(id: id, at: date, title: title) { return }
+        if #available(iOS 26.0, *) {
+            if await KitAlarms.schedule(id: id, at: date, title: title) { return }
+        }
         let content = UNMutableNotificationContent()
         content.title = title
         content.sound = .default

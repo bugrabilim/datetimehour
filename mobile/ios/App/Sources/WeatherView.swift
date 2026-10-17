@@ -111,7 +111,8 @@ struct WeatherView: View {
     }
 
     private func daily(_ d: Forecast) -> some View {
-        let lo = d.daily.temperature_2m_min.min() ?? 0, hi = d.daily.temperature_2m_max.max() ?? 1
+        let lo = d.daily.temperature_2m_min.min() ?? 0
+        let hi = d.daily.temperature_2m_max.max() ?? 1
         return VStack(alignment: .leading, spacing: 10) {
             SectionTitle(text: L("weather.dailyHeading"))
             ForEach(0..<d.daily.time.count, id: \.self) { i in
@@ -122,8 +123,10 @@ struct WeatherView: View {
                     Text(Forecast.info(d.daily.weather_code[i], day: true).icon)
                     Text(Forecast.temp(d.daily.temperature_2m_min[i])).foregroundStyle(Theme.muted).frame(width: 40)
                     GeometryReader { g in
-                        let w = g.size.width, span = max(1, hi - lo)
-                        let x0 = (d.daily.temperature_2m_min[i] - lo) / span * w, x1 = (d.daily.temperature_2m_max[i] - lo) / span * w
+                        let w = g.size.width
+                        let span = max(1, hi - lo)
+                        let x0 = (d.daily.temperature_2m_min[i] - lo) / span * w
+                        let x1 = (d.daily.temperature_2m_max[i] - lo) / span * w
                         ZStack(alignment: .leading) {
                             Capsule().fill(Theme.surface2).frame(height: 6)
                             Capsule().fill(LinearGradient(colors: [.blue, .orange], startPoint: .leading, endPoint: .trailing))

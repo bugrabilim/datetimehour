@@ -116,7 +116,8 @@ struct WorldClockView: View {
 
     private func row(_ city: City, at date: Date) -> some View {
         let diff = city.zone.secondsFromGMT(for: date) - TimeZone.current.secondsFromGMT(for: date)
-        let cityDay = CalendarDay(date, timeZone: city.zone), myDay = CalendarDay(date)
+        let cityDay = CalendarDay(date, timeZone: city.zone)
+        let myDay = CalendarDay(date)
         // Şehirde gün farklıysa haftanın günü gösterilir
         let dayNote = cityDay == myDay ? "" : L("calendar.weekdaysShort.\(cityDay.weekday)")
         return HStack {
