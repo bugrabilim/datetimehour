@@ -1,0 +1,34 @@
+Time & Date brings the clock, date, prayer times, calendar and weather together in one clean app. No account, no ads, no tracking.
+
+CLOCK
+• 19 clock faces from our website: analog, digital, side by side, with calendar and weather
+• Full-screen clock that keeps the screen on
+• Choose what appears under the clock: next prayer, today's prayer times, next special day, world clocks, weather, sunrise
+
+PRAYER TIMES
+• Daily and monthly times for 81 provinces of Türkiye or your current location
+• Notifications on time or in advance, with a spoken announcement
+• Ramadan timetable as a shareable image
+
+CALENDAR
+• Public holidays, half days, religious and special days, school breaks in Türkiye
+• The calendars on your phone (iCloud, Google, Outlook) on the same screen
+• Add and delete events; add special days to your calendar
+
+WEATHER
+• Current, hourly and 7-day forecast from Apple Weather
+
+TOOLS
+• Alarm (rings even in silent mode), timer, countdown to a date
+• Stopwatch, pomodoro, date calculator (including working days)
+• World clocks with a spinning globe
+• Seasons, equinoxes and solstices, moon phases
+
+WIDGETS
+• Next prayer, today's times, analog and digital clock, clock and date; also on the Lock Screen
+
+Available in English, Turkish, German, Azerbaijani and Arabic.
+
+Your location is used on your phone to calculate prayer times; only for the weather is an approximate location sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone.
+
+Time & Date is a Bumba Life product. Web: time.bumba.tr

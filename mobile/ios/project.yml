@@ -9,7 +9,7 @@ options:
 settings:
   base:
     # Uygulama ve widget aynı sürümde olmalı (App Store şartı)
-    MARKETING_VERSION: "0.1.0"
+    MARKETING_VERSION: "1.0"
     CURRENT_PROJECT_VERSION: "1"
 packages:
   SaatCore:
@@ -31,7 +31,7 @@ targets:
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
-        TARGETED_DEVICE_FAMILY: "1,2"
+        TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: YES
         # INFOPLIST_KEY_* ile verilemeyen anahtarlar (AlarmKit izni) bu dosyada; Xcode ikisini birleştirir
         INFOPLIST_FILE: App/Info.plist
@@ -84,7 +84,7 @@ targets:
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
-        TARGETED_DEVICE_FAMILY: "1,2"
+        TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: YES
         SKIP_INSTALL: YES
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES

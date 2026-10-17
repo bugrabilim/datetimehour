@@ -262,6 +262,22 @@
         ]
       },
       {
+        "id": "ios-uygulamasi",
+        "h": "iPhone uygulaması",
+        "p": [
+          "Saat Tarih'in iPhone uygulaması da aynı ilkelerle çalışır: hesap istemez, reklam ve takip içermez, istatistik toplamaz. Uygulamada işlenen veriler:"
+        ],
+        "ul": [
+          "**Konum:** \"Konumumu kullan\" derseniz konumunuz telefonda vakit hesabı ve en yakın ili bulmak için kullanılır; yaklaşık konum (yaklaşık 1 km) yalnız telefonda saklanır. Widget'lardaki \"Otomatik\" seçeneği de konumu yalnız telefonda kullanır.",
+          "**Hava durumu:** Uygulamadaki hava durumu Apple Hava Durumu'ndan (WeatherKit) gelir; bunun için seçili il ya da konumunuzun yaklaşık koordinatları Apple'a gönderilir. Bu veriyi biz görmeyiz; Apple'ın gizlilik koşulları geçerlidir.",
+          "**Harita:** Dünya saatlerindeki küre Apple Haritalar ile gösterilir; harita görüntüleri Apple'dan indirilir.",
+          "**Takvim:** Yalnız izin verirseniz telefonunuzdaki takvim etkinlikleri uygulamada gösterilir; etkinlikler telefonda okunur, hiçbir yere gönderilmez. Etkinlik ekleme ve silme iPhone'un kendi takvim ekranıyla ve sizin onayınızla yapılır.",
+          "**Bildirimler ve alarmlar:** Vakit bildirimleri, alarmlar ve zamanlayıcılar telefonda kurulur, sunucu kullanılmaz; sesli duyuru telefonda üretilir.",
+          "**E-posta listesi:** Ayarlar'dan listeye katılırsanız e-posta adresiniz sitedeki formla aynı biçimde ortak Bumba listesine gönderilir; e-posta listesiyle ilgili açıklamalar uygulama için de geçerlidir.",
+          "**Tercihler:** Saat modeli, il, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir."
+        ]
+      },
+      {
         "id": "cerezler",
         "h": "Çerezler ve yerel depolama",
         "p": [

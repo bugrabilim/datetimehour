@@ -262,6 +262,22 @@
         ]
       },
       {
+        "id": "ios-app",
+        "h": "iPhone tətbiqi",
+        "p": [
+          "Saat Tarihin iPhone tətbiqi də eyni prinsiplərlə işləyir: hesab, reklam, izləmə və statistika yoxdur. Tətbiqdə işlənən məlumatlar:"
+        ],
+        "ul": [
+          "**Məkan:** \"Məkanımı istifadə et\" seçsəniz, məkanınız telefonda namaz vaxtlarını hesablamaq və ən yaxın vilayəti tapmaq üçün istifadə olunur; təxmini məkan (təxminən 1 km) yalnız telefonda saxlanılır. Vidjetlərdəki \"Avtomatik\" seçimi də məkanı yalnız telefonda istifadə edir.",
+          "**Hava:** Tətbiqdəki hava Apple Hava (WeatherKit) xidmətindən gəlir; bunun üçün seçilmiş vilayətin və ya məkanınızın təxmini koordinatları Apple-a göndərilir. Bu məlumatları biz görmürük; Apple-ın məxfilik şərtləri tətbiq olunur.",
+          "**Xəritə:** Dünya saatlarındakı kürə Apple Xəritələr ilə göstərilir; xəritə şəkilləri Apple-dan yüklənir.",
+          "**Təqvim:** Yalnız icazə versəniz, telefonunuzdakı təqvim tədbirləri tətbiqdə göstərilir; tədbirlər telefonda oxunur, heç yerə göndərilmir. Tədbir əlavə etmək və silmək iPhone-un öz təqvim ekranı ilə və sizin təsdiqinizlə edilir.",
+          "**Bildirişlər və zəngli saatlar:** Vaxt bildirişləri, zəngli saatlar və taymerlər serversiz, telefonda qurulur; səsli elan telefonda yaradılır.",
+          "**E-poçt siyahısı:** Ayarlardan siyahıya qoşulsanız, e-poçt ünvanınız saytdakı forma ilə eyni şəkildə ortaq Bumba siyahısına göndərilir; e-poçt siyahısı ilə bağlı izahlar tətbiq üçün də keçərlidir.",
+          "**Seçimlər:** Saat modeli, vilayət, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir."
+        ]
+      },
+      {
         "id": "cookies",
         "h": "Kukilər və yerli yaddaş",
         "p": [
