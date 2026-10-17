@@ -1,0 +1,78 @@
+# App Store: mağaza metinlerini (mobile/ios/fastlane/metadata) ve 6,9" ekran görüntülerini yükler;
+# istenirse seçili yapıyı incelemeye gönderir (onaylanınca kendiliğinden yayınlanır). Yalnız elle çalıştırılır.
+# Gizli değişkenler TestFlight iş akışıyla aynı: ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8.
+# Uygulama gizliliği (App Privacy), fiyat, yaş derecelendirmesi ve inceleme iletişim bilgisi
+# App Store Connect'te elle girilir (API ile verilemez ya da kişisel bilgidir).
+name: iOS App Store
+
+on:
+  workflow_dispatch:
+    inputs:
+      submit:
+        description: "İncelemeye gönder (onaylanınca kendiliğinden yayınlanır)"
+        type: boolean
+        default: false
+      build:
+        description: "Yapı numarası (boşsa 1.0 sürümünün en son yapısı)"
+        type: string
+        default: ""
+
+concurrency:
+  group: ios-appstore
+  cancel-in-progress: false
+
+jobs:
+  appstore:
+    name: Mağaza sayfası
+    runs-on: macos-latest
+    env:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+    steps:
+      - name: Anahtar denetimi
+        run: |
+          if [ -z "$ASC_KEY_ID" ] || [ -z "$ASC_ISSUER_ID" ] || [ -z "$ASC_KEY_P8" ]; then
+            echo "::error::ASC_KEY_ID, ASC_ISSUER_ID ve ASC_KEY_P8 gizli değişkenleri gerekli"; exit 1
+          fi
+      - uses: actions/checkout@v4
+      - name: Araçlar
+        run: brew install xcodegen fastlane
+      - name: Xcode projesi
+        run: xcodegen generate --spec mobile/ios/project.yml
+      - name: Simülatör için derle
+        run: |
+          xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarih -configuration Debug \
+            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO -quiet build
+      - name: Ekran görüntüleri
+        run: mobile/ios/scripts/store-screenshots.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app mobile/ios/fastlane/screenshots
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-store-ekran-goruntuleri
+          path: mobile/ios/fastlane/screenshots
+      - name: API anahtarı
+        run: |
+          jq -n --arg id "$ASC_KEY_ID" --arg iss "$ASC_ISSUER_ID" --arg key "$ASC_KEY_P8" \
+            '{key_id: $id, issuer_id: $iss, key: $key, in_house: false}' > "$RUNNER_TEMP/asc.json"
+      - name: Yükle
+        env:
+          SUBMIT: ${{ inputs.submit }}
+          BUILD: ${{ inputs.build }}
+        run: |
+          ARGS=()
+          [ -n "$BUILD" ] && ARGS+=(--build_number "$BUILD")
+          fastlane deliver \
+            --api_key_path "$RUNNER_TEMP/asc.json" \
+            --app_identifier tr.bumba.time --platform ios --app_version "1.0" \
+            --metadata_path mobile/ios/fastlane/metadata \
+            --screenshots_path mobile/ios/fastlane/screenshots --overwrite_screenshots true \
+            --skip_binary_upload true --force true \
+            --run_precheck_before_submit false \
+            --automatic_release true \
+            --submit_for_review "$SUBMIT" \
+            --submission_information '{"add_id_info_uses_idfa": false}' \
+            "${ARGS[@]}"
+      - name: Anahtarı sil
+        if: always()
+        run: rm -f "$RUNNER_TEMP/asc.json"

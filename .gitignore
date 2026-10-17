@@ -2,3 +2,7 @@ node_modules/
 dist/
 *.log
 .DS_Store
+
+# fastlane çıktıları (ekran görüntüleri CI'da üretilir)
+mobile/ios/fastlane/screenshots/
+mobile/ios/fastlane/report.xml

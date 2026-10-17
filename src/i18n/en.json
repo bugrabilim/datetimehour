@@ -262,6 +262,22 @@
         ]
       },
       {
+        "id": "ios-app",
+        "h": "iPhone app",
+        "p": [
+          "The Saat Tarih iPhone app follows the same principles: no account, no ads, no tracking and no analytics. Data handled in the app:"
+        ],
+        "ul": [
+          "**Location:** If you tap \"Use my location\", your location is used on your phone to calculate prayer times and find the nearest province; an approximate location (about 1 km) is stored only on your phone. The \"Automatic\" option in widgets also uses your location only on your phone.",
+          "**Weather:** Weather in the app comes from Apple Weather (WeatherKit); for this, the approximate coordinates of the selected province or your location are sent to Apple. We never see this data; Apple's privacy terms apply.",
+          "**Map:** The globe in the world clock is shown with Apple Maps; map imagery is downloaded from Apple.",
+          "**Calendar:** Only if you allow it, events from the calendars on your phone are shown in the app; they are read on your phone and never sent anywhere. Adding and deleting events happens through the iPhone's own calendar screen and only with your confirmation.",
+          "**Notifications and alarms:** Prayer time notifications, alarms and timers are scheduled on your phone without any server; spoken announcements are generated on your phone.",
+          "**Email list:** If you join the list from Settings, your email address is sent to the shared Bumba list exactly like the website form; the email list notes apply to the app as well.",
+          "**Preferences:** Preferences such as the clock model, province and world clocks are stored only on your phone and are deleted when you delete the app."
+        ]
+      },
+      {
         "id": "cookies",
         "h": "Cookies and local storage",
         "p": [

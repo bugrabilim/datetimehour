@@ -289,6 +289,22 @@
         ]
       },
       {
+        "id": "ios-app",
+        "h": "iPhone-App",
+        "p": [
+          "Die iPhone-App von Saat Tarih folgt denselben Grundsätzen: kein Konto, keine Werbung, kein Tracking, keine Statistik. In der App verarbeitete Daten:"
+        ],
+        "ul": [
+          "**Standort:** Wenn Sie „Meinen Standort verwenden“ wählen, wird Ihr Standort auf dem Telefon zur Berechnung der Gebetszeiten und zum Finden der nächsten Provinz verwendet; ein ungefährer Standort (etwa 1 km) wird nur auf dem Telefon gespeichert. Auch die Option „Automatisch“ in Widgets nutzt den Standort nur auf dem Telefon.",
+          "**Wetter:** Das Wetter in der App stammt von Apple Wetter (WeatherKit); dafür werden die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts an Apple gesendet. Wir sehen diese Daten nicht; es gelten die Datenschutzbedingungen von Apple.",
+          "**Karte:** Der Globus in der Weltuhr wird mit Apple Karten angezeigt; Kartenbilder werden von Apple geladen.",
+          "**Kalender:** Nur mit Ihrer Erlaubnis werden Termine aus den Kalendern auf Ihrem Telefon in der App angezeigt; sie werden auf dem Telefon gelesen und nirgendwohin gesendet. Hinzufügen und Löschen erfolgt über den Kalenderbildschirm des iPhones und nur mit Ihrer Bestätigung.",
+          "**Mitteilungen und Wecker:** Gebetszeit-Mitteilungen, Wecker und Timer werden auf dem Telefon ohne Server eingerichtet; Sprachansagen werden auf dem Telefon erzeugt.",
+          "**E-Mail-Liste:** Wenn Sie in den Einstellungen der Liste beitreten, wird Ihre E-Mail-Adresse genau wie beim Formular der Website an die gemeinsame Bumba-Liste gesendet; die Hinweise zur E-Mail-Liste gelten auch für die App.",
+          "**Einstellungen:** Einstellungen wie Uhrmodell, Provinz und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt."
+        ]
+      },
+      {
         "id": "cookies",
         "h": "Cookies und lokaler Speicher",
         "p": [

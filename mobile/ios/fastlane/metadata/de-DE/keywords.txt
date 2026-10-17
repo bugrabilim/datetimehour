@@ -1,0 +1,1 @@
+gebetszeiten,namaz,ramadan,wecker,stoppuhr,weltuhr,kalender,feiertage,wetter,widget,timer
