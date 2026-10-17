@@ -1,4 +1,5 @@
 import SwiftUI
+import SaatCore
 
 @main
 struct SaatTarihApp: App {
@@ -42,5 +43,35 @@ struct RootView: View {
         }
         .tint(Theme.accent)
         .preferredColorScheme(appearance == "light" ? .light : appearance == "dark" ? .dark : nil)
+        .fullScreenCover(item: $screen) { s in
+            NavigationStack { s.view }
+                .preferredColorScheme(appearance == "light" ? .light : appearance == "dark" ? .dark : nil)
+        }
+    }
+
+    /// Ekran görüntüsü için: -openScreen weather gibi bir argümanla alt ekran doğrudan açılır (CI)
+    @State private var screen = UserDefaults.standard.string(forKey: "openScreen").flatMap(DebugScreen.init(rawValue:))
+}
+
+enum DebugScreen: String, Identifiable {
+    case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings
+    var id: String { rawValue }
+
+    @MainActor @ViewBuilder var view: some View {
+        let province = Province.find(UserDefaults.standard.string(forKey: "province") ?? "istanbul")
+        switch self {
+        case .monthly: MonthlyPrayerView(province: province)
+        case .imsakiye:
+            if let r = CalendarData.shared.nextRamadan(from: CalendarDay(Date())) { ImsakiyeView(province: province, ramadan: r) }
+        case .alarm: AlarmsView()
+        case .timer: TimerView()
+        case .stopwatch: StopwatchView()
+        case .pomodoro: PomodoroView()
+        case .datecalc: DateCalcView()
+        case .world: WorldClockView()
+        case .weather: WeatherView()
+        case .seasons: SeasonsView()
+        case .settings: SettingsView()
+        }
     }
 }

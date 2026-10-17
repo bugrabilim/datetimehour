@@ -42,6 +42,12 @@ shoot en en_US light en-takvim -startTab 2
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 1 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 shoot en en_US dark en-bildirim -startTab 1 -openNotifications -notify.enabled "<true/>"
+# Alt ekranlar (doğrudan açılır)
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world weather seasons settings; do
+  shoot tr tr_TR light "ekran-$S" -openScreen "$S"
+done
+shoot tr tr_TR dark ekran-weather-koyu -openScreen weather
+shoot en en_US light ekran-seasons-en -openScreen seasons
 # Uygulamanın Info.plist anahtarları (izin metinleri) derlenmiş pakette var mı
 plutil -p "$APP/Info.plist" | grep -E "NSAlarmKit|NSLocation|CFBundleDisplayName" || true
 # Bildirim sesi örnekleri (telefonda üretilen dosyalar): Library/Sounds → çıktı klasörü
