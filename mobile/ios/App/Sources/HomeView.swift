@@ -1,31 +1,39 @@
 import SwiftUI
 import SaatCore
 
-/// Saat sekmesi: büyük saat (dijital ↔ analog), tarih, hafta, sıradaki vakit ve tam ekran.
+/// Saat sekmesi: büyük saat (dijital ↔ analog), altında kullanıcının seçtiği alanlar (Ayarlar › Saat ekranı) ve tam ekran.
 struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
     @AppStorage("province") private var provinceSlug = "istanbul"
+    @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @State private var fullscreen = false
+    @State private var customizing = false
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
             let now = context.date
-            let today = CalendarDay(now)
+            let province = Province.find(provinceSlug)
             ScrollView {
                 VStack(spacing: 22) {
                     ClockHeader(now: now)
-                    Text(T("clock.weekDay", today.isoWeek.week, today.dayOfYear))
-                        .font(.subheadline)
-                        .foregroundStyle(Theme.muted)
-                    NextPrayerCard(now: now, province: Province.find(provinceSlug))
-                    Button {
-                        fullscreen = true
-                    } label: {
-                        Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
-                            .font(.headline)
-                            .foregroundStyle(Theme.accent)
+                    ForEach(HomeLayout(raw: homeItems).visible) { item in
+                        HomeItemView(item: item, now: now, province: province)
                     }
-                    Text(L("brand.product"))
+                    HStack(spacing: 28) {
+                        Button {
+                            fullscreen = true
+                        } label: {
+                            Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
+                        }
+                        Button {
+                            customizing = true
+                        } label: {
+                            Label(L("home.edit"), systemImage: "slider.horizontal.3")
+                        }
+                    }
+                    .font(.headline)
+                    .foregroundStyle(Theme.accent)
+                    Link(L("brand.product"), destination: URL(string: "https://bumbagroup.com/life")!)
                         .font(.footnote)
                         .foregroundStyle(Theme.muted)
                         .padding(.top, 8)
@@ -41,6 +49,12 @@ struct ClockTab: View {
         .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
         .onChange(of: keepAwake) { UIApplication.shared.isIdleTimerDisabled = keepAwake }
         .fullScreenCover(isPresented: $fullscreen) { FullscreenClock() }
+        .sheet(isPresented: $customizing) {
+            NavigationStack {
+                HomeItemsView()
+                    .toolbar { Button(L("common.done")) { customizing = false } }
+            }
+        }
         .task {
             // CI: bildirim seslerinin örneği üretilir, ekran görüntüleriyle birlikte dışarı alınır
             guard ProcessInfo.processInfo.arguments.contains("-makeSoundSample") else { return }
@@ -56,76 +70,39 @@ struct ClockTab: View {
 /// sitedeki gibi varsayılan dijitalde açık, analogda kapalı.
 struct ClockHeader: View {
     let now: Date
-    var showDate = true
     @AppStorage("clockStyle") private var style = 0
     @AppStorage("secD") private var digitalSeconds = true
     @AppStorage("secA") private var analogSeconds = false
     @AppStorage("h12") private var h12 = false
 
     var body: some View {
-        VStack(spacing: 8) {
-            TabView(selection: $style) {
-                HStack(alignment: .firstTextBaseline, spacing: 6) {
-                    Text(Fmt.time(now, seconds: digitalSeconds))
-                        .font(.system(size: 76, weight: .bold, design: .rounded))
-                        .monospacedDigit()
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(1)
-                    if h12 {
-                        Text(Fmt.ampm(now)).font(.title2.weight(.semibold))
-                    }
+        TabView(selection: $style) {
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Text(Fmt.time(now, seconds: digitalSeconds))
+                    .font(.system(size: 96, weight: .bold, design: .rounded))
+                    .monospacedDigit()
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+                if h12 {
+                    Text(Fmt.ampm(now)).font(.title2.weight(.semibold))
                 }
-                .foregroundStyle(Theme.text)
-                .environment(\.layoutDirection, .leftToRight)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .foregroundStyle(Theme.text)
+            .environment(\.layoutDirection, .leftToRight)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .contentShape(Rectangle())
+            .onTapGesture { digitalSeconds.toggle() }
+            .tag(0)
+            AnalogClock(date: now, showSeconds: analogSeconds)
+                .padding(.vertical, 12)
+                .padding(.bottom, 24)
                 .contentShape(Rectangle())
-                .onTapGesture { digitalSeconds.toggle() }
-                .tag(0)
-                AnalogClock(date: now, showSeconds: analogSeconds)
-                    .padding(.vertical, 12)
-                    .padding(.bottom, 24)
-                    .contentShape(Rectangle())
-                    .onTapGesture { analogSeconds.toggle() }
-                    .tag(1)
-            }
-            .tabViewStyle(.page(indexDisplayMode: .always))
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-            .frame(height: style == 1 ? 320 : 170) // dijitalde boşluk kalmasın
-            .animation(.easeInOut(duration: 0.25), value: style)
-            if showDate {
-                Text(Fmt.longDate(now))
-                    .font(.title3.weight(.semibold))
-                    .foregroundStyle(Theme.text)
-            }
+                .onTapGesture { analogSeconds.toggle() }
+                .tag(1)
         }
-    }
-}
-
-/// Saat sekmesinde seçili ilin sıradaki vakti ve kalan süre
-private struct NextPrayerCard: View {
-    let now: Date
-    let province: Province
-
-    var body: some View {
-        let schedule = PrayerSchedule(province: province)
-        if let next = schedule.next(after: now) {
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Label(province.displayName, systemImage: "mappin.and.ellipse")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(Theme.accent)
-                    Text("\(next.prayer.localizedName) \(PrayerSchedule.hm.string(from: next.at))")
-                        .font(.headline)
-                        .foregroundStyle(Theme.text)
-                }
-                Spacer()
-                Text(Fmt.countdown(Int(next.at.timeIntervalSince(now).rounded(.up))))
-                    .font(.title3.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(Theme.accent)
-                    .environment(\.layoutDirection, .leftToRight)
-            }
-            .card()
-        }
+        .tabViewStyle(.page(indexDisplayMode: .always))
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .frame(height: 290) // iki görünümde aynı: kaydırırken alttaki alanlar yerinde kalır
     }
 }
 

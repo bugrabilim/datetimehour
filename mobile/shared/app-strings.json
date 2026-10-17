@@ -573,5 +573,82 @@
     "de": "Regenwahrscheinlichkeit",
     "az": "Yağış ehtimalı",
     "ar": "احتمال المطر"
+  },
+  "home.customize": {
+    "tr": "Saat ekranı",
+    "en": "Clock screen",
+    "de": "Uhr-Bildschirm",
+    "az": "Saat ekranı",
+    "ar": "شاشة الساعة"
+  },
+  "home.customizeNote": {
+    "tr": "Saatin altında görünecek alanları seçin; sağdaki tutamaçla sürükleyerek sıralayın.",
+    "en": "Choose what appears under the clock; drag the handle on the right to reorder.",
+    "de": "Wählen Sie, was unter der Uhr erscheint; ziehen Sie den Griff rechts, um die Reihenfolge zu ändern.",
+    "az": "Saatın altında görünəcək sahələri seçin; sağdakı tutacaqla sürükləyərək sıralayın.",
+    "ar": "اختر ما يظهر أسفل الساعة، واسحب المقبض على اليمين لتغيير الترتيب."
+  },
+  "home.edit": {
+    "tr": "Düzenle",
+    "en": "Edit",
+    "de": "Bearbeiten",
+    "az": "Redaktə et",
+    "ar": "تعديل"
+  },
+  "home.item.date": {
+    "tr": "Tarih",
+    "en": "Date",
+    "de": "Datum",
+    "az": "Tarix",
+    "ar": "التاريخ"
+  },
+  "home.item.week": {
+    "tr": "Hafta ve yılın günü",
+    "en": "Week and day of year",
+    "de": "Woche und Tag des Jahres",
+    "az": "Həftə və ilin günü",
+    "ar": "الأسبوع ويوم السنة"
+  },
+  "home.item.next": {
+    "tr": "Sıradaki vakit",
+    "en": "Next prayer time",
+    "de": "Nächste Gebetszeit",
+    "az": "Növbəti vaxt",
+    "ar": "الصلاة القادمة"
+  },
+  "home.item.prayers": {
+    "tr": "Bugünün vakitleri",
+    "en": "Today's prayer times",
+    "de": "Heutige Gebetszeiten",
+    "az": "Bugünkü vaxtlar",
+    "ar": "مواقيت اليوم"
+  },
+  "home.item.upcoming": {
+    "tr": "Yaklaşan özel gün",
+    "en": "Next special day",
+    "de": "Nächster besonderer Tag",
+    "az": "Yaxınlaşan xüsusi gün",
+    "ar": "المناسبة القادمة"
+  },
+  "home.item.world": {
+    "tr": "Dünya saatleri",
+    "en": "World clock",
+    "de": "Weltuhr",
+    "az": "Dünya saatları",
+    "ar": "الساعة العالمية"
+  },
+  "home.item.weather": {
+    "tr": "Hava durumu",
+    "en": "Weather",
+    "de": "Wetter",
+    "az": "Hava",
+    "ar": "الطقس"
+  },
+  "home.item.sun": {
+    "tr": "Gün doğumu ve batımı",
+    "en": "Sunrise and sunset",
+    "de": "Sonnenauf- und -untergang",
+    "az": "Gün çıxışı və batışı",
+    "ar": "الشروق والغروب"
   }
 }

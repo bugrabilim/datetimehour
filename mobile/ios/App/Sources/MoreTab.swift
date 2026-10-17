@@ -221,7 +221,7 @@ struct SeasonsView: View {
     }
 
     /// Güneşin doğuşu, batışı ve tepe noktası (vakit düzeltmeleri olmadan, ufuk 0,833°)
-    private static func sun(province: Province, now: Date) -> (rise: Date, set: Date, noon: Date)? {
+    static func sun(province: Province, now: Date) -> (rise: Date, set: Date, noon: Date)? {
         var p = PrayerTimes.Parameters()
         p.adjustments.sunrise = 0
         p.adjustments.dhuhr = 0
@@ -256,11 +256,17 @@ struct SettingsView: View {
                     Text(L("settings.dark")).tag("dark")
                 }
             }
+            Section {
+                NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
+            }
             Section(L("settings.privacy")) {
                 Text(L("settings.privacyNote")).font(.footnote)
             }
             Section(L("settings.about")) {
-                LabeledContent(L("site.name"), value: L("brand.product"))
+                LabeledContent(L("site.name")) {
+                    Link(L("brand.product"), destination: URL(string: "https://bumbagroup.com/life")!)
+                        .tint(Theme.accent)
+                }
                 LabeledContent(L("settings.version"), value: Self.version)
                 Link(L("settings.website"), destination: URL(string: "https://time.bumba.tr")!)
                     .tint(Theme.accent)
