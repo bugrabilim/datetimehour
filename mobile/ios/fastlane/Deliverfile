@@ -1,0 +1,13 @@
+# fastlane deliver ayarları (App Store iş akışı mobile/ios dizininde çalıştırır).
+# Bu dosya yoksa deliver kurulum sorusu sorar ve CI'da durur.
+app_identifier("tr.bumba.time")
+platform("ios")
+app_version("1.0")
+metadata_path("./fastlane/metadata")
+screenshots_path("./fastlane/screenshots")
+overwrite_screenshots(true)
+skip_binary_upload(true)
+force(true)
+run_precheck_before_submit(false)
+automatic_release(true)
+submission_information({ add_id_info_uses_idfa: false })
