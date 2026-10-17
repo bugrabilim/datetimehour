@@ -56,23 +56,15 @@ jobs:
           jq -n --arg id "$ASC_KEY_ID" --arg iss "$ASC_ISSUER_ID" --arg key "$ASC_KEY_P8" \
             '{key_id: $id, issuer_id: $iss, key: $key, in_house: false}' > "$RUNNER_TEMP/asc.json"
       - name: Yükle
+        working-directory: mobile/ios
         env:
           SUBMIT: ${{ inputs.submit }}
           BUILD: ${{ inputs.build }}
         run: |
           ARGS=()
           [ -n "$BUILD" ] && ARGS+=(--build_number "$BUILD")
-          fastlane deliver \
-            --api_key_path "$RUNNER_TEMP/asc.json" \
-            --app_identifier tr.bumba.time --platform ios --app_version "1.0" \
-            --metadata_path mobile/ios/fastlane/metadata \
-            --screenshots_path mobile/ios/fastlane/screenshots --overwrite_screenshots true \
-            --skip_binary_upload true --force true \
-            --run_precheck_before_submit false \
-            --automatic_release true \
-            --submit_for_review "$SUBMIT" \
-            --submission_information '{"add_id_info_uses_idfa": false}' \
-            "${ARGS[@]}"
+          # Diğer ayarlar fastlane/Deliverfile'da
+          fastlane deliver --api_key_path "$RUNNER_TEMP/asc.json" --submit_for_review "$SUBMIT" "${ARGS[@]}"
       - name: Anahtarı sil
         if: always()
         run: rm -f "$RUNNER_TEMP/asc.json"
