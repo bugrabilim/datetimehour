@@ -122,7 +122,7 @@ struct WeatherView: View {
         return VStack(alignment: .leading, spacing: 8) {
             SectionTitle(text: L("weather.hourlyHeading"))
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 14) {
+                HStack(alignment: .top, spacing: 14) {
                     ForEach(items, id: \.date) { h in
                         VStack(spacing: 4) {
                             Text(Fmt.time(h.date, tz: zone)).font(.caption).foregroundStyle(Theme.muted)
