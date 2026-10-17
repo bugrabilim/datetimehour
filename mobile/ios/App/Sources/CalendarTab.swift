@@ -232,7 +232,8 @@ struct FlowLayout: Layout {
             maxX = max(maxX, x - spacing)
             rowH = max(rowH, size.height)
         }
-        return CGSize(width: min(maxX, width), height: y + rowH)
+        // Önerilen genişliğin tamamı alınır: daha dar dönülürse yerleşimde satırlar farklı kırılır ve alttakiyle çakışır
+        return CGSize(width: proposal.width ?? maxX, height: y + rowH)
     }
 
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {

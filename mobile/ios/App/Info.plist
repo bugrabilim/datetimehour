@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!-- Yalnız INFOPLIST_KEY_* ayarıyla verilemeyen anahtarlar; geri kalanı Xcode üretir (GENERATE_INFOPLIST_FILE).
+     Diğer dillerdeki metinler App/Resources/InfoPlist.xcstrings içinde (gen-strings.mjs). -->
+<dict>
+	<key>NSAlarmKitUsageDescription</key>
+	<string>Kurduğunuz alarm ve zamanlayıcıların telefon sessizdeyken de çalması için.</string>
+</dict>
+</plist>

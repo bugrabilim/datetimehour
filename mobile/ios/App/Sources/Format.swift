@@ -7,6 +7,8 @@ enum AppLocale {
     static let code = Bundle.main.preferredLocalizations.first ?? "tr"
     static let locale = Locale(identifier: code)
     static var isRTL: Bool { code == "ar" }
+    /// Tarihler her dilde Gregoryen takvimle (Arapça bölge ayarı Hicrî takvim seçebilir; site de Gregoryen kullanır)
+    static let gregorian = Calendar(identifier: .gregorian)
 }
 
 /// Metin kalıbı: "{n} gün kaldı" gibi yer tutuculu metinler sırayla doldurulur
@@ -48,6 +50,7 @@ enum Fmt {
     static func longDate(_ date: Date, tz: TimeZone = .current) -> String {
         var s = Date.FormatStyle.dateTime.day().month(.wide).year().weekday(.wide).locale(AppLocale.locale)
         s.timeZone = tz
+        s.calendar = AppLocale.gregorian
         return date.formatted(s)
     }
 
@@ -55,6 +58,7 @@ enum Fmt {
     static func dayMonth(_ date: Date, tz: TimeZone = .current) -> String {
         var s = Date.FormatStyle.dateTime.day().month(.wide).locale(AppLocale.locale)
         s.timeZone = tz
+        s.calendar = AppLocale.gregorian
         return date.formatted(s)
     }
 
@@ -62,6 +66,7 @@ enum Fmt {
     static func shortDateTime(_ date: Date, tz: TimeZone) -> String {
         var s = Date.FormatStyle.dateTime.day().month(.abbreviated).year().locale(AppLocale.locale)
         s.timeZone = tz
+        s.calendar = AppLocale.gregorian
         return date.formatted(s) + ", " + make("HH:mm", tz).string(from: date)
     }
 
