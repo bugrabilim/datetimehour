@@ -183,11 +183,11 @@
     "ar": "الوقت وتاريخ اليوم."
   },
   "NSLocationWhenInUseUsageDescription": {
-    "tr": "Bulunduğunuz yerin namaz vakitlerini göstermek için. Konumunuz yalnız telefonda kullanılır, hiçbir yere gönderilmez.",
-    "en": "To show prayer times for where you are. Your location is used only on your phone and is never sent anywhere.",
-    "de": "Um die Gebetszeiten an Ihrem Ort anzuzeigen. Ihr Standort wird nur auf Ihrem Telefon verwendet und nirgendwohin gesendet.",
-    "az": "Olduğunuz yerin namaz vaxtlarını göstərmək üçün. Məkanınız yalnız telefonda istifadə olunur, heç yerə göndərilmir.",
-    "ar": "لعرض أوقات الصلاة في مكانك. يُستخدم موقعك على هاتفك فقط ولا يُرسل إلى أي جهة."
+    "tr": "Bulunduğunuz yerin namaz vakitlerini ve hava durumunu göstermek için. Vakitler telefonda hesaplanır; hava durumu için yalnız yaklaşık konum Apple'ın hava servisine gönderilir.",
+    "en": "To show prayer times and the weather for where you are. Prayer times are calculated on your phone; for the weather only an approximate location is sent to Apple's weather service.",
+    "de": "Um Gebetszeiten und Wetter für Ihren Ort anzuzeigen. Die Gebetszeiten werden auf dem Telefon berechnet; für das Wetter wird nur ein ungefährer Ort an den Wetterdienst von Apple gesendet.",
+    "az": "Olduğunuz yerin namaz vaxtlarını və havasını göstərmək üçün. Vaxtlar telefonda hesablanır; hava üçün yalnız təxmini məkan Apple-ın hava xidmətinə göndərilir.",
+    "ar": "لعرض أوقات الصلاة والطقس في مكانك. تُحسب الأوقات على هاتفك؛ ولأجل الطقس يُرسل موقع تقريبي فقط إلى خدمة الطقس من Apple."
   },
   "notify.sound": {
     "tr": "Bildirim sesi",
@@ -365,11 +365,11 @@
     "ar": "الخصوصية"
   },
   "settings.privacyNote": {
-    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz yalnız telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili ilin yaklaşık konumu Apple'ın hava servisine gönderilir.",
-    "en": "No account, no ads, no tracking. Your location is used only on your phone to calculate prayer times; only for the weather is the approximate location of the selected province sent to Apple's weather service.",
-    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird nur auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort der gewählten Provinz an den Wetterdienst von Apple gesendet.",
-    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız yalnız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş vilayətin təxmini məkanı Apple-ın hava xidmətinə göndərilir.",
-    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك فقط لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للولاية المختارة إلى خدمة الطقس من Apple."
+    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir.",
+    "en": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose.",
+    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet.",
+    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir.",
+    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض."
   },
   "clock.fullscreen": {
     "tr": "Tam ekran",
@@ -650,5 +650,117 @@
     "de": "Sonnenauf- und -untergang",
     "az": "Gün çıxışı və batışı",
     "ar": "الشروق والغروب"
+  },
+  "globe.reset": {
+    "tr": "Tüm dünya",
+    "en": "Whole world",
+    "de": "Ganze Welt",
+    "az": "Bütün dünya",
+    "ar": "العالم كله"
+  },
+  "globe.label": {
+    "tr": "Dönen dünya: şehirlerin yerel saatleri",
+    "en": "Spinning globe: local times of cities",
+    "de": "Drehender Globus: Ortszeiten der Städte",
+    "az": "Fırlanan dünya: şəhərlərin yerli saatları",
+    "ar": "كرة أرضية دوّارة: التوقيت المحلي للمدن"
+  },
+  "place.locationFailed": {
+    "tr": "Konum alınamadı. Konum iznini telefonun Ayarlar'ından açabilirsiniz.",
+    "en": "Couldn't get your location. You can allow location access in your phone's Settings.",
+    "de": "Standort nicht verfügbar. Sie können den Standortzugriff in den Einstellungen des Telefons erlauben.",
+    "az": "Məkan alınmadı. Məkan icazəsini telefonun Ayarlarından aça bilərsiniz.",
+    "ar": "تعذّر تحديد موقعك. يمكنك السماح بالوصول إلى الموقع من إعدادات الهاتف."
+  },
+  "settings.openSettings": {
+    "tr": "Ayarları aç",
+    "en": "Open Settings",
+    "de": "Einstellungen öffnen",
+    "az": "Ayarları aç",
+    "ar": "افتح الإعدادات"
+  },
+  "settings.location": {
+    "tr": "Konum",
+    "en": "Location",
+    "de": "Standort",
+    "az": "Məkan",
+    "ar": "الموقع"
+  },
+  "privacy.full": {
+    "tr": "Gizlilik politikasının tamamı",
+    "en": "Full privacy policy",
+    "de": "Vollständige Datenschutzerklärung",
+    "az": "Tam məxfilik siyasəti",
+    "ar": "سياسة الخصوصية كاملة"
+  },
+  "about.contact": {
+    "tr": "İletişim",
+    "en": "Contact",
+    "de": "Kontakt",
+    "az": "Əlaqə",
+    "ar": "التواصل"
+  },
+  "app.displayName": {
+    "tr": "Saat Tarih",
+    "en": "Time & Date",
+    "de": "Uhr & Datum",
+    "az": "Saat Tarix",
+    "ar": "الوقت والتاريخ"
+  },
+  "calendar.add": {
+    "tr": "Etkinlik ekle",
+    "en": "Add event",
+    "de": "Termin hinzufügen",
+    "az": "Tədbir əlavə et",
+    "ar": "إضافة حدث"
+  },
+  "calendar.addToCalendar": {
+    "tr": "Takvime ekle",
+    "en": "Add to calendar",
+    "de": "Zum Kalender hinzufügen",
+    "az": "Təqvimə əlavə et",
+    "ar": "أضف إلى التقويم"
+  },
+  "calendar.showDevice": {
+    "tr": "Telefonumdaki takvimleri göster",
+    "en": "Show calendars on my phone",
+    "de": "Kalender auf meinem Telefon anzeigen",
+    "az": "Telefonumdakı təqvimləri göstər",
+    "ar": "اعرض التقويمات على هاتفي"
+  },
+  "calendar.showDeviceNote": {
+    "tr": "iCloud, Google, Outlook… telefonunuza ekli bütün takvimler. Etkinlikler yalnız telefonda okunur, hiçbir yere gönderilmez.",
+    "en": "iCloud, Google, Outlook… every calendar on your phone. Events are read only on your phone and never sent anywhere.",
+    "de": "iCloud, Google, Outlook … alle Kalender auf Ihrem Telefon. Termine werden nur auf dem Telefon gelesen und nirgendwohin gesendet.",
+    "az": "iCloud, Google, Outlook… telefonunuzdakı bütün təqvimlər. Tədbirlər yalnız telefonda oxunur, heç yerə göndərilmir.",
+    "ar": "iCloud وGoogle وOutlook… كل التقويمات على هاتفك. تُقرأ الأحداث على هاتفك فقط ولا تُرسل إلى أي جهة."
+  },
+  "calendar.allDay": {
+    "tr": "Tüm gün",
+    "en": "All day",
+    "de": "Ganztägig",
+    "az": "Bütün gün",
+    "ar": "طوال اليوم"
+  },
+  "calendar.delete": {
+    "tr": "Sil",
+    "en": "Delete",
+    "de": "Löschen",
+    "az": "Sil",
+    "ar": "حذف"
+  },
+  "calendar.deleteConfirm": {
+    "tr": "Bu etkinlik takviminizden silinsin mi?",
+    "en": "Delete this event from your calendar?",
+    "de": "Diesen Termin aus Ihrem Kalender löschen?",
+    "az": "Bu tədbir təqviminizdən silinsin?",
+    "ar": "هل تريد حذف هذا الحدث من تقويمك؟"
+  },
+  "NSCalendarsFullAccessUsageDescription": {
+    "tr": "Takvimlerinizdeki etkinlikleri uygulamadaki takvimde göstermek ve silmenize izin vermek için. Etkinlikler yalnız telefonda kullanılır.",
+    "en": "To show the events in your calendars in the app's calendar and let you delete them. Events are used only on your phone.",
+    "de": "Um die Termine Ihrer Kalender im Kalender der App anzuzeigen und Löschen zu ermöglichen. Termine werden nur auf dem Telefon verwendet.",
+    "az": "Təqvimlərinizdəki tədbirləri tətbiqin təqvimində göstərmək və silməyinizə icazə vermək üçün. Tədbirlər yalnız telefonda istifadə olunur.",
+    "ar": "لعرض أحداث تقويماتك في تقويم التطبيق والسماح لك بحذفها. تُستخدم الأحداث على هاتفك فقط."
   }
 }

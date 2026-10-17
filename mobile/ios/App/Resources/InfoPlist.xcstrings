@@ -7,31 +7,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bulunduğunuz yerin namaz vakitlerini göstermek için. Konumunuz yalnız telefonda kullanılır, hiçbir yere gönderilmez."
+            "value": "Bulunduğunuz yerin namaz vakitlerini ve hava durumunu göstermek için. Vakitler telefonda hesaplanır; hava durumu için yalnız yaklaşık konum Apple'ın hava servisine gönderilir."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "To show prayer times for where you are. Your location is used only on your phone and is never sent anywhere."
+            "value": "To show prayer times and the weather for where you are. Prayer times are calculated on your phone; for the weather only an approximate location is sent to Apple's weather service."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Um die Gebetszeiten an Ihrem Ort anzuzeigen. Ihr Standort wird nur auf Ihrem Telefon verwendet und nirgendwohin gesendet."
+            "value": "Um Gebetszeiten und Wetter für Ihren Ort anzuzeigen. Die Gebetszeiten werden auf dem Telefon berechnet; für das Wetter wird nur ein ungefährer Ort an den Wetterdienst von Apple gesendet."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Olduğunuz yerin namaz vaxtlarını göstərmək üçün. Məkanınız yalnız telefonda istifadə olunur, heç yerə göndərilmir."
+            "value": "Olduğunuz yerin namaz vaxtlarını və havasını göstərmək üçün. Vaxtlar telefonda hesablanır; hava üçün yalnız təxmini məkan Apple-ın hava xidmətinə göndərilir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لعرض أوقات الصلاة في مكانك. يُستخدم موقعك على هاتفك فقط ولا يُرسل إلى أي جهة."
+            "value": "لعرض أوقات الصلاة والطقس في مكانك. تُحسب الأوقات على هاتفك؛ ولأجل الطقس يُرسل موقع تقريبي فقط إلى خدمة الطقس من Apple."
           }
         }
       }
@@ -102,6 +102,41 @@
           "stringUnit": {
             "state": "translated",
             "value": "حتى ترن المنبهات والمؤقتات التي تضبطها حتى عندما يكون الهاتف صامتًا."
+          }
+        }
+      }
+    },
+    "NSCalendarsFullAccessUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvimlerinizdeki etkinlikleri uygulamadaki takvimde göstermek ve silmenize izin vermek için. Etkinlikler yalnız telefonda kullanılır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To show the events in your calendars in the app's calendar and let you delete them. Events are used only on your phone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um die Termine Ihrer Kalender im Kalender der App anzuzeigen und Löschen zu ermöglichen. Termine werden nur auf dem Telefon verwendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvimlərinizdəki tədbirləri tətbiqin təqvimində göstərmək və silməyinizə icazə vermək üçün. Tədbirlər yalnız telefonda istifadə olunur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لعرض أحداث تقويماتك في تقويم التطبيق والسماح لك بحذفها. تُستخدم الأحداث على هاتفك فقط."
           }
         }
       }

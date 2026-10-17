@@ -30,29 +30,31 @@ shoot tr tr_TR light tr-acik
 shoot tr tr_TR dark tr-koyu
 shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
-shoot tr tr_TR light tr-analog -clockStyle "<integer>1</integer>"
-shoot tr tr_TR dark tr-analog-koyu -clockStyle "<integer>1</integer>" -secA "<true/>"
+# Saat modelleri (sitedeki 19 model; -clockModel kimlik)
+for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal; do
+  shoot tr tr_TR light "model-$M" -clockModel "$M"
+done
+shoot tr tr_TR dark model-analog-date-koyu -clockModel analog-date -secA "<true/>"
+shoot ar ar_SA light model-wx-digital-cal-ar -clockModel wx-digital-cal
 # Saat ekranında bütün alanlar açık (Ayarlar › Saat ekranı)
 ALL="date,week,next,prayers,upcoming,world,weather,sun"
-shoot tr tr_TR light tr-alanlar -homeItems "$ALL"
-shoot tr tr_TR dark tr-alanlar-analog-koyu -homeItems "$ALL" -clockStyle "<integer>1</integer>"
-shoot ar ar_SA light ar-alanlar -homeItems "$ALL"
-# Sekmeler: 1 vakitler, 2 takvim, 3 araçlar, 4 diğer
-shoot tr tr_TR light tr-vakitler -startTab 1
+shoot tr tr_TR light tr-alanlar -homeItems "$ALL" -clockModel digital
+shoot ar ar_SA light ar-alanlar -homeItems "$ALL" -clockModel digital
+# Sekmeler: 1 hava durumu, 2 takvim, 3 vakitler, 4 araçlar
+shoot tr tr_TR light tr-hava -startTab 1
 shoot tr tr_TR light tr-takvim -startTab 2
 shoot tr tr_TR dark tr-takvim-koyu -startTab 2
-shoot tr tr_TR light tr-araclar -startTab 3
-shoot tr tr_TR light tr-diger -startTab 4
 shoot en en_US light en-takvim -startTab 2
+shoot tr tr_TR light tr-vakitler -startTab 3
+shoot tr tr_TR light tr-araclar -startTab 4
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
-shoot tr tr_TR light tr-bildirim -startTab 1 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
-shoot en en_US dark en-bildirim -startTab 1 -openNotifications -notify.enabled "<true/>"
+shoot tr tr_TR light tr-bildirim -startTab 3 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world weather seasons settings homeItems; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
-shoot tr tr_TR dark ekran-weather-koyu -openScreen weather
-shoot en en_US light ekran-seasons-en -openScreen seasons
+shoot tr tr_TR dark ekran-about-koyu -openScreen about
+shoot en en_US light ekran-world-en -openScreen world
 # Uygulamanın Info.plist anahtarları (izin metinleri) derlenmiş pakette var mı
 plutil -p "$APP/Info.plist" | grep -E "NSAlarmKit|NSLocation|CFBundleDisplayName" || true
 # Bildirim sesi örnekleri (telefonda üretilen dosyalar): Library/Sounds → çıktı klasörü

@@ -2,20 +2,50 @@ import SwiftUI
 import Combine
 import SaatCore
 
-/// Araçlar sekmesi: alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama
+/// Araçlar sekmesi: alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama, dünya saatleri, mevsimler;
+/// altta ayarlar, gizlilik ve hakkında (sahibin sırası, 18 Ekim 2026)
 struct ToolsTab: View {
+    @State private var router = Router.shared
+
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.toolsPath) {
             List {
-                NavigationLink { AlarmsView() } label: { Label(L("tools.hub.cards.alarm.name"), systemImage: "alarm") }
-                NavigationLink { TimerView() } label: { Label(L("tools.timer"), systemImage: "timer") }
-                NavigationLink { StopwatchView() } label: { Label(L("tools.hub.cards.stopwatch.name"), systemImage: "stopwatch") }
-                NavigationLink { PomodoroView() } label: { Label(L("tools.hub.cards.pomodoro.name"), systemImage: "leaf") }
-                NavigationLink { DateCalcView() } label: { Label(L("tools.hub.cards.datecalc.name"), systemImage: "calendar.badge.clock") }
+                Section {
+                    row(.alarm, L("tools.hub.cards.alarm.name"), "alarm")
+                    row(.timer, L("tools.timer"), "timer")
+                    row(.stopwatch, L("tools.hub.cards.stopwatch.name"), "stopwatch")
+                    row(.pomodoro, L("tools.hub.cards.pomodoro.name"), "leaf")
+                    row(.datecalc, L("tools.hub.cards.datecalc.name"), "calendar.badge.clock")
+                    row(.world, L("world.h1"), "globe")
+                    row(.seasons, L("nature.h1"), "leaf.circle")
+                }
+                Section {
+                    row(.settings, L("settings.title"), "gearshape")
+                    row(.privacy, L("settings.privacy"), "hand.raised")
+                    row(.about, L("settings.about"), "info.circle")
+                }
             }
             .navigationTitle(L("tab.tools"))
             .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(for: ToolRoute.self) { route in
+                switch route {
+                case .alarm: AlarmsView()
+                case .timer: TimerView()
+                case .stopwatch: StopwatchView()
+                case .pomodoro: PomodoroView()
+                case .datecalc: DateCalcView()
+                case .world: WorldClockView()
+                case .seasons: SeasonsView()
+                case .settings: SettingsView()
+                case .privacy: PrivacyView()
+                case .about: AboutView()
+                }
+            }
         }
+    }
+
+    private func row(_ route: ToolRoute, _ title: String, _ icon: String) -> some View {
+        NavigationLink(value: route) { Label(title, systemImage: icon) }
     }
 }
 

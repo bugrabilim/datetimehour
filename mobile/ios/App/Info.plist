@@ -6,5 +6,7 @@
 <dict>
 	<key>NSAlarmKitUsageDescription</key>
 	<string>Kurduğunuz alarm ve zamanlayıcıların telefon sessizdeyken de çalması için.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Takvimlerinizdeki etkinlikleri uygulamadaki takvimde göstermek ve silmenize izin vermek için. Etkinlikler yalnız telefonda kullanılır.</string>
 </dict>
 </plist>

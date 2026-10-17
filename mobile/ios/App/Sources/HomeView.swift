@@ -1,10 +1,10 @@
 import SwiftUI
 import SaatCore
 
-/// Saat sekmesi: büyük saat (dijital ↔ analog), altında kullanıcının seçtiği alanlar (Ayarlar › Saat ekranı) ve tam ekran.
+/// Saat sekmesi: sitedeki 19 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının seçtiği
+/// alanlar (Ayarlar › Saat ekranı; dokununca ilgili sayfa açılır) ve tam ekran.
 struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
-    @AppStorage("province") private var provinceSlug = "istanbul"
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @State private var fullscreen = false
     @State private var customizing = false
@@ -12,12 +12,12 @@ struct ClockTab: View {
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
             let now = context.date
-            let province = Province.find(provinceSlug)
+            let place = PlaceModel.shared.place
             ScrollView {
                 VStack(spacing: 22) {
-                    ClockHeader(now: now)
+                    ClockStage(now: now, place: place)
                     ForEach(HomeLayout(raw: homeItems).visible) { item in
-                        HomeItemView(item: item, now: now, province: province)
+                        HomeItemView(item: item, now: now, place: place)
                     }
                     HStack(spacing: 28) {
                         Button {
@@ -33,14 +33,10 @@ struct ClockTab: View {
                     }
                     .font(.headline)
                     .foregroundStyle(Theme.accent)
-                    Link(L("brand.product"), destination: URL(string: "https://bumbagroup.com/life")!)
-                        .font(.footnote)
-                        .foregroundStyle(Theme.muted)
-                        .padding(.top, 8)
                 }
-                .padding(.horizontal, 20)
-                .padding(.vertical, 24)
-                .frame(maxWidth: 560)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 20)
+                .frame(maxWidth: 640)
                 .frame(maxWidth: .infinity)
             }
             .background(Theme.bg.ignoresSafeArea())
@@ -66,85 +62,82 @@ struct ClockTab: View {
     }
 }
 
-/// Saat: sola/sağa kaydırınca dijital ↔ analog (seçim hatırlanır). Saate dokununca saniye açılır/kapanır;
-/// sitedeki gibi varsayılan dijitalde açık, analogda kapalı.
-struct ClockHeader: View {
+/// Saat sahnesi: modeller yatay kaydırılır; altta (sitedeki gibi) ‹ 1/19 › — sayaca dokununca model listesi.
+/// Yükseklik sabit: model değişince alttaki alanlar oynamaz. Saate dokununca saniye açılır/kapanır
+/// (dijitalde varsayılan açık, analogda kapalı).
+struct ClockStage: View {
     let now: Date
-    @AppStorage("clockStyle") private var style = 0
-    @AppStorage("secD") private var digitalSeconds = true
-    @AppStorage("secA") private var analogSeconds = false
-    @AppStorage("h12") private var h12 = false
+    let place: AppPlace
+    @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
+
+    private var model: ClockModel { ClockModel(rawValue: modelID) ?? .wxDigitalCalWeek }
 
     var body: some View {
-        TabView(selection: $style) {
-            HStack(alignment: .firstTextBaseline, spacing: 6) {
-                Text(Fmt.time(now, seconds: digitalSeconds))
-                    .font(.system(size: 96, weight: .bold, design: .rounded))
-                    .monospacedDigit()
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-                if h12 {
-                    Text(Fmt.ampm(now)).font(.title2.weight(.semibold))
+        VStack(spacing: 8) {
+            TabView(selection: $modelID) {
+                ForEach(ClockModel.allCases) { m in
+                    ClockModelView(model: m, now: now, place: place)
+                        .padding(.horizontal, 2)
+                        .tag(m.rawValue)
                 }
             }
-            .foregroundStyle(Theme.text)
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .frame(height: 380)
+            HStack(spacing: 22) {
+                Button { step(-1) } label: { Image(systemName: "chevron.backward") }
+                    .accessibilityLabel(L("stage.prev"))
+                Menu {
+                    Picker(L("stage.dots"), selection: $modelID) {
+                        ForEach(ClockModel.allCases) { m in
+                            Text("\(m.number). \(m.name)").tag(m.rawValue)
+                        }
+                    }
+                } label: {
+                    Text("\(model.number)/\(ClockModel.allCases.count)")
+                        .font(.headline.monospacedDigit())
+                        .frame(minWidth: 60)
+                }
+                .accessibilityLabel(model.name)
+                Button { step(1) } label: { Image(systemName: "chevron.forward") }
+                    .accessibilityLabel(L("stage.next"))
+            }
+            .font(.headline)
+            .foregroundStyle(Theme.accent)
             .environment(\.layoutDirection, .leftToRight)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .contentShape(Rectangle())
-            .onTapGesture { digitalSeconds.toggle() }
-            .tag(0)
-            AnalogClock(date: now, showSeconds: analogSeconds)
-                .padding(.vertical, 12)
-                .padding(.bottom, 24)
-                .contentShape(Rectangle())
-                .onTapGesture { analogSeconds.toggle() }
-                .tag(1)
         }
-        .tabViewStyle(.page(indexDisplayMode: .always))
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
-        .frame(height: 290) // iki görünümde aynı: kaydırırken alttaki alanlar yerinde kalır
+    }
+
+    private func step(_ d: Int) {
+        let all = ClockModel.allCases
+        let i = ((all.firstIndex(of: model) ?? 0) + d + all.count) % all.count
+        withAnimation { modelID = all[i].rawValue }
     }
 }
 
-/// Tam ekran saat: yalnız saat ve tarih; ekran kapanmaz, dokununca çıkılır.
+/// Tam ekran saat: seçili model ekranı kaplar; ekran kapanmaz, dokununca (saat dışına) çıkılır.
 struct FullscreenClock: View {
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("clockStyle") private var style = 0
-    @AppStorage("secD") private var digitalSeconds = true
-    @AppStorage("secA") private var analogSeconds = false
+    @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
-            let now = context.date
-            GeometryReader { g in
-                VStack(spacing: 12) {
-                    Spacer(minLength: 0)
-                    if style == 1 {
-                        AnalogClock(date: now, showSeconds: analogSeconds)
-                            .frame(maxWidth: min(g.size.width, g.size.height) * 0.85)
-                    } else {
-                        Text(Fmt.time(now, seconds: digitalSeconds))
-                            .font(.system(size: 400, weight: .bold, design: .rounded))
-                            .monospacedDigit()
-                            .minimumScaleFactor(0.05)
-                            .lineLimit(1)
-                            .environment(\.layoutDirection, .leftToRight)
-                            .padding(.horizontal, 16)
-                    }
-                    Text(Fmt.longDate(now))
-                        .font(.title2.weight(.semibold))
-                    Spacer(minLength: 0)
-                    Text(L("clock.tapToExit"))
+            VStack(spacing: 8) {
+                ClockModelView(model: ClockModel(rawValue: modelID) ?? .wxDigitalCalWeek, now: context.date,
+                               place: PlaceModel.shared.place)
+                    .padding(16)
+                Button { dismiss() } label: {
+                    Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
                         .font(.footnote)
-                        .foregroundStyle(Theme.muted)
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundStyle(Theme.muted)
+                .padding(.bottom, 8)
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .foregroundStyle(Theme.text)
             .background(Theme.bg.ignoresSafeArea())
         }
         .contentShape(Rectangle())
-        .onTapGesture { dismiss() }
+        .onTapGesture(count: 2) { dismiss() }
         .statusBarHidden()
         .persistentSystemOverlays(.hidden)
         .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
