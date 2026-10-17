@@ -63,11 +63,12 @@
       box.textContent = "";
       texts.forEach(function (t, i) { var p = doc.createElement("p"); p.textContent = t; if (i === 0) p.className = "dc-main"; box.appendChild(p); });
     };
+    // Tamamlanan yıl/ay/gün: a'ya sığan en çok ay eklenir (ay sonu kısaltılır), kalan gündür (31 Ocak → 1 Mart = 1 ay 1 gün)
     var ymd = function (a, b) {
-      var y = b.y - a.y, m = b.m - a.m, d = b.d - a.d;
-      if (d < 0) { m--; d += dim(b.m === 1 ? b.y - 1 : b.y, b.m === 1 ? 12 : b.m - 1); }
-      if (m < 0) { y--; m += 12; }
-      return { y: y, m: m, d: d };
+      var t = (b.y - a.y) * 12 + (b.m - a.m);
+      if (ms(addMonths(a, t)) > ms(b)) t--;
+      var d = Math.round((ms(b) - ms(addMonths(a, t))) / 86400000);
+      return { y: Math.floor(t / 12), m: t % 12, d: d };
     };
     var addMonths = function (o, n) {
       var t = o.y * 12 + (o.m - 1) + n, y = Math.floor(t / 12), m = (t % 12 + 12) % 12 + 1;

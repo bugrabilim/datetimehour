@@ -41,6 +41,7 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         # Metnin diğer dilleri App/Resources/InfoPlist.xcstrings'te (gen-strings.mjs üretir)
+        INFOPLIST_KEY_NSAlarmKitUsageDescription: "Kurduğunuz alarm ve zamanlayıcıların telefon sessizdeyken de çalması için."
         INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini göstermek için. Konumunuz yalnız telefonda kullanılır, hiçbir yere gönderilmez."
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor

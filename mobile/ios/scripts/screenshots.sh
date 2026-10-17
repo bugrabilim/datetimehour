@@ -32,9 +32,18 @@ shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
 shoot tr tr_TR light tr-analog -clockStyle "<integer>1</integer>"
 shoot tr tr_TR dark tr-analog-koyu -clockStyle "<integer>1</integer>" -secA "<true/>"
+# Sekmeler: 1 vakitler, 2 takvim, 3 araçlar, 4 diğer
+shoot tr tr_TR light tr-vakitler -startTab 1
+shoot tr tr_TR light tr-takvim -startTab 2
+shoot tr tr_TR dark tr-takvim-koyu -startTab 2
+shoot tr tr_TR light tr-araclar -startTab 3
+shoot tr tr_TR light tr-diger -startTab 4
+shoot en en_US light en-takvim -startTab 2
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
-shoot tr tr_TR light tr-bildirim -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
-shoot en en_US dark en-bildirim -openNotifications -notify.enabled "<true/>"
+shoot tr tr_TR light tr-bildirim -startTab 1 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
+shoot en en_US dark en-bildirim -startTab 1 -openNotifications -notify.enabled "<true/>"
+# Uygulamanın Info.plist anahtarları (izin metinleri) derlenmiş pakette var mı
+plutil -p "$APP/Info.plist" | grep -E "NSAlarmKit|NSLocation|CFBundleDisplayName" || true
 # Bildirim sesi örnekleri (telefonda üretilen dosyalar): Library/Sounds → çıktı klasörü
 shoot tr tr_TR light tr-ses -makeSoundSample
 sleep 10
