@@ -1,6 +1,7 @@
 import SwiftUI
 import EventKit
 import EventKitUI
+import SaatCore
 
 /// Telefondaki takvimler (iCloud, Google, Outlook… telefona ekli hepsi). Okuma için tam erişim izni gerekir;
 /// etkinlik eklemek (sistem düzenleyicisi) iOS 17'de izinsiz de çalışır. Veriler telefonda kalır.
