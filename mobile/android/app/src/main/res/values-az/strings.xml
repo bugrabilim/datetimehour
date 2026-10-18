@@ -541,6 +541,12 @@
     <string name="google_ready">Təqvim icazəsi açıqdır: Google tədbirləriniz təqvimdə görünür.</string>
     <string name="google_denied">Təqvim icazəsi bağlıdır. Parametrlərdə bu tətbiqin Təqvimlər icazəsini “Tam giriş” edin.</string>
     <string name="google_note">Yeni tədbir əlavə edərkən redaktorda Google təqviminizi seçsəniz, tədbir Google Təqviminə də yazılır. Outlook və digər hesablar da eyni yolla əlavə edilə bilər.</string>
+    <string name="google_android_lead">Android telefonlarda Google hesabı adətən artıq əlavə olunub və Google Təqvimindəki tədbirlər telefonun təqviminə gəlir. Tətbiq Google-a birbaşa qoşulmur və şifrənizi görmür; tədbirləri icazənizlə telefonun təqvimindən oxuyur.</string>
+    <string name="google_android_step1">Telefonun Parametrlər tətbiqini açın.</string>
+    <string name="google_android_step2">Hesablar (və ya Şifrələr və hesablar) bölməsinə keçin; Google hesabınız yoxdursa, Hesab əlavə et › Google ilə daxil olun.</string>
+    <string name="google_android_step3">Google hesabınıza toxunun › Hesab sinxronizasiyasında Təqvimin açıq olduğuna əmin olun.</string>
+    <string name="google_android_step4">Bura qayıdıb “Telefonumdakı təqvimləri göstər” düyməsinə toxunun və icazə verin.</string>
+    <string name="google_android_denied">Təqvim icazəsi bağlıdır. Parametrlər › Tətbiqlər › Saat Tarix › İcazələr bölməsində Təqvimə icazə verin.</string>
     <string name="kids_progress">Fəsil nə qədər irəliləyib?</string>
     <string name="kids_why_title">Fəsillər niyə olur?</string>
     <string name="kids_why_text">Yer bir ildə Günəşin ətrafında bir dövrə vurur. Amma düz durmur: oxu həmişə eyni tərəfə 23,4 dərəcə maildir. İlin bir yarısında şimal yarımkürəsi Günəşə tərəf əyilir və yay olur; o biri yarısında Günəşdən uzağa əyilir və qış olur.</string>
@@ -565,6 +571,6 @@
     <string name="kids_fact4">Ekvatora yaxın ölkələrdə yay ilə qış arasında fərq azdır; orada yağışlı və quraq fəsillər olur.</string>
     <string name="kids_fact5">Şimal yarımkürəsində yay qışdan bir neçə gün uzundur: Yer Günəşdən uzaqda olanda bir az yavaş gedir.</string>
     <string name="kids_more">Növbəti illər</string>
-    <string name="settings_privacyNoteAndroid">Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız yalnız telefonda namaz vaxtlarının hesablanması üçün istifadə olunur və heç yerə göndərilmir. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür.</string>
+    <string name="settings_privacyNoteAndroid">Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

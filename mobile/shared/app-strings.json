@@ -966,6 +966,48 @@
     "az": "Yeni tədbir əlavə edərkən redaktorda Google təqviminizi seçsəniz, tədbir Google Təqviminə də yazılır. Outlook və digər hesablar da eyni yolla əlavə edilə bilər.",
     "ar": "عند إضافة حدث، اختر تقويم Google في المحرر فيُحفظ في تقويم Google أيضًا. يمكن إضافة Outlook والحسابات الأخرى بالطريقة نفسها."
   },
+  "google.android.lead": {
+    "tr": "Android telefonlarda Google hesabı genellikle zaten eklidir ve Google Takvimi'ndeki etkinlikler telefonun takvimine gelir. Uygulama Google'a doğrudan bağlanmaz ve şifrenizi görmez; etkinlikleri izninizle telefonun takviminden okur.",
+    "en": "On Android phones your Google account is usually already added, and Google Calendar events sync to the phone's calendar. The app never connects to Google directly or sees your password; it reads events from the phone's calendar with your permission.",
+    "de": "Auf Android-Telefonen ist Ihr Google-Konto meist schon eingerichtet, und Termine aus Google Kalender werden mit dem Telefonkalender synchronisiert. Die App verbindet sich nie direkt mit Google und sieht Ihr Passwort nicht; sie liest Termine mit Ihrer Erlaubnis aus dem Telefonkalender.",
+    "az": "Android telefonlarda Google hesabı adətən artıq əlavə olunub və Google Təqvimindəki tədbirlər telefonun təqviminə gəlir. Tətbiq Google-a birbaşa qoşulmur və şifrənizi görmür; tədbirləri icazənizlə telefonun təqvimindən oxuyur.",
+    "ar": "على هواتف أندرويد يكون حساب Google مضافًا عادةً، وتُزامَن أحداث تقويم Google مع تقويم الهاتف. لا يتصل التطبيق بـGoogle مباشرةً ولا يرى كلمة مرورك؛ بل يقرأ الأحداث من تقويم الهاتف بإذنك."
+  },
+  "google.android.step1": {
+    "tr": "Telefonun Ayarlar uygulamasını açın.",
+    "en": "Open the phone's Settings app.",
+    "de": "Öffnen Sie die Einstellungen-App des Telefons.",
+    "az": "Telefonun Parametrlər tətbiqini açın.",
+    "ar": "افتح تطبيق الإعدادات في الهاتف."
+  },
+  "google.android.step2": {
+    "tr": "Hesaplar (ya da Şifreler ve hesaplar) bölümüne girin; Google hesabınız yoksa Hesap ekle › Google ile giriş yapın.",
+    "en": "Go to Accounts (or Passwords & accounts); if your Google account is not there, tap Add account › Google and sign in.",
+    "de": "Gehen Sie zu Konten (oder Passwörter & Konten); fehlt Ihr Google-Konto, tippen Sie auf Konto hinzufügen › Google und melden Sie sich an.",
+    "az": "Hesablar (və ya Şifrələr və hesablar) bölməsinə keçin; Google hesabınız yoxdursa, Hesab əlavə et › Google ilə daxil olun.",
+    "ar": "ادخل إلى الحسابات (أو كلمات المرور والحسابات)؛ وإن لم يكن حساب Google موجودًا فاضغط إضافة حساب › Google وسجّل الدخول."
+  },
+  "google.android.step3": {
+    "tr": "Google hesabınıza dokunun › Hesap senkronizasyonu'nda Takvim'in açık olduğundan emin olun.",
+    "en": "Tap your Google account › Account sync and make sure Calendar is on.",
+    "de": "Tippen Sie auf Ihr Google-Konto › Kontosynchronisierung und prüfen Sie, dass Kalender aktiviert ist.",
+    "az": "Google hesabınıza toxunun › Hesab sinxronizasiyasında Təqvimin açıq olduğuna əmin olun.",
+    "ar": "اضغط على حساب Google › مزامنة الحساب وتأكد من تفعيل التقويم."
+  },
+  "google.android.step4": {
+    "tr": "Buraya dönüp “Telefonumdaki takvimleri göster” düğmesine dokunun ve izin verin.",
+    "en": "Come back here, tap “Show my phone's calendars” and allow access.",
+    "de": "Kehren Sie hierher zurück, tippen Sie auf „Kalender meines Telefons anzeigen“ und erlauben Sie den Zugriff.",
+    "az": "Bura qayıdıb “Telefonumdakı təqvimləri göstər” düyməsinə toxunun və icazə verin.",
+    "ar": "ارجع إلى هنا واضغط «عرض تقاويم هاتفي» واسمح بالوصول."
+  },
+  "google.android.denied": {
+    "tr": "Takvim izni kapalı. Ayarlar › Uygulamalar › Saat Tarih › İzinler'den Takvim'e izin verin.",
+    "en": "Calendar access is off. Allow Calendar in Settings › Apps › Time & Date › Permissions.",
+    "de": "Der Kalenderzugriff ist aus. Erlauben Sie Kalender unter Einstellungen › Apps › Uhr & Datum › Berechtigungen.",
+    "az": "Təqvim icazəsi bağlıdır. Parametrlər › Tətbiqlər › Saat Tarix › İcazələr bölməsində Təqvimə icazə verin.",
+    "ar": "إذن التقويم متوقف. اسمح بالتقويم من الإعدادات › التطبيقات › الوقت والتاريخ › الأذونات."
+  },
   "kids.progress": {
     "tr": "Mevsim ne kadar ilerledi?",
     "en": "How far along is the season?",
@@ -1135,10 +1177,10 @@
     "ar": "السنوات التالية"
   },
   "settings.privacyNoteAndroid": {
-    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz yalnız telefonda vakit hesabı için kullanılır, hiçbir yere gönderilmez. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir.",
-    "en": "The app needs no account and has no ads or tracking. Your location is used only on your phone to calculate prayer times and is never sent anywhere. If you join the mailing list, your address is passed to the shared Bumba list for that purpose only.",
-    "de": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten verwendet und nirgendwohin gesendet. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt.",
-    "az": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız yalnız telefonda namaz vaxtlarının hesablanması üçün istifadə olunur və heç yerə göndərilmir. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür.",
-    "ar": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة ولا يُرسل إلى أي مكان. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط."
+    "tr": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir.",
+    "en": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose.",
+    "de": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt.",
+    "az": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür.",
+    "ar": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط."
   }
 }

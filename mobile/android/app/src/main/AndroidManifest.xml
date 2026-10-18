@@ -5,6 +5,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <!-- Hava durumu (Open-Meteo) ve e-posta listesi -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Telefondaki takvimler (Google dahil): yalnız "Telefonumdaki takvimleri göster" ile istenir; silmek için yazma -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:name=".SaatTarihApp"

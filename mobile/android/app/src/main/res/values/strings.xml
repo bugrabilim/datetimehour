@@ -541,6 +541,12 @@
     <string name="google_ready">Takvim izni açık: Google etkinlikleriniz takvimde görünür.</string>
     <string name="google_denied">Takvim izni kapalı. Ayarlar\'da bu uygulamanın Takvimler iznini “Tam Erişim” yapın.</string>
     <string name="google_note">Yeni etkinlik eklerken düzenleyicide Google takviminizi seçerseniz etkinlik Google Takvimi\'ne de kaydedilir. Outlook ve diğer hesaplar da aynı yolla eklenebilir.</string>
+    <string name="google_android_lead">Android telefonlarda Google hesabı genellikle zaten eklidir ve Google Takvimi\'ndeki etkinlikler telefonun takvimine gelir. Uygulama Google\'a doğrudan bağlanmaz ve şifrenizi görmez; etkinlikleri izninizle telefonun takviminden okur.</string>
+    <string name="google_android_step1">Telefonun Ayarlar uygulamasını açın.</string>
+    <string name="google_android_step2">Hesaplar (ya da Şifreler ve hesaplar) bölümüne girin; Google hesabınız yoksa Hesap ekle › Google ile giriş yapın.</string>
+    <string name="google_android_step3">Google hesabınıza dokunun › Hesap senkronizasyonu\'nda Takvim\'in açık olduğundan emin olun.</string>
+    <string name="google_android_step4">Buraya dönüp “Telefonumdaki takvimleri göster” düğmesine dokunun ve izin verin.</string>
+    <string name="google_android_denied">Takvim izni kapalı. Ayarlar › Uygulamalar › Saat Tarih › İzinler\'den Takvim\'e izin verin.</string>
     <string name="kids_progress">Mevsim ne kadar ilerledi?</string>
     <string name="kids_why_title">Mevsimler neden olur?</string>
     <string name="kids_why_text">Dünya bir yılda Güneş\'in çevresinde bir tur atar. Ama dik durmaz: ekseni 23,4 derece eğiktir, hep aynı yöne. Yılın bir yarısında kuzey yarımküre Güneş\'e doğru eğilir ve yaz olur; öbür yarısında Güneş\'ten uzağa eğilir ve kış olur.</string>
@@ -565,6 +571,6 @@
     <string name="kids_fact4">Ekvatora yakın ülkelerde yaz ile kış arasında fark azdır; orada yağmurlu ve kurak mevsimler vardır.</string>
     <string name="kids_fact5">Kuzey yarımkürede yaz, kıştan birkaç gün uzundur: Dünya Güneş\'ten uzaktayken biraz daha yavaş gider.</string>
     <string name="kids_more">Sonraki yıllar</string>
-    <string name="settings_privacyNoteAndroid">Uygulama hesap istemez, reklam ve takip içermez. Konumunuz yalnız telefonda vakit hesabı için kullanılır, hiçbir yere gönderilmez. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir.</string>
+    <string name="settings_privacyNoteAndroid">Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo\'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

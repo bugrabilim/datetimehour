@@ -541,6 +541,12 @@
     <string name="google_ready">Calendar access is on: your Google events appear in the calendar.</string>
     <string name="google_denied">Calendar access is off. In Settings, set this app\'s Calendars permission to “Full Access”.</string>
     <string name="google_note">When you add an event, pick your Google calendar in the editor and it is saved to Google Calendar too. Outlook and other accounts can be added the same way.</string>
+    <string name="google_android_lead">On Android phones your Google account is usually already added, and Google Calendar events sync to the phone\'s calendar. The app never connects to Google directly or sees your password; it reads events from the phone\'s calendar with your permission.</string>
+    <string name="google_android_step1">Open the phone\'s Settings app.</string>
+    <string name="google_android_step2">Go to Accounts (or Passwords &amp; accounts); if your Google account is not there, tap Add account › Google and sign in.</string>
+    <string name="google_android_step3">Tap your Google account › Account sync and make sure Calendar is on.</string>
+    <string name="google_android_step4">Come back here, tap “Show my phone\'s calendars” and allow access.</string>
+    <string name="google_android_denied">Calendar access is off. Allow Calendar in Settings › Apps › Time &amp; Date › Permissions.</string>
     <string name="kids_progress">How far along is the season?</string>
     <string name="kids_why_title">Why do we have seasons?</string>
     <string name="kids_why_text">Earth travels once around the Sun every year. But it doesn\'t stand up straight: its axis is tilted 23.4 degrees, always the same way. For half the year the northern half leans toward the Sun and it\'s summer; for the other half it leans away and it\'s winter.</string>
@@ -565,6 +571,6 @@
     <string name="kids_fact4">Near the equator summer and winter feel almost the same; instead there are rainy and dry seasons.</string>
     <string name="kids_fact5">In the northern half, summer is a few days longer than winter: Earth moves a little slower when it\'s farther from the Sun.</string>
     <string name="kids_more">Next years</string>
-    <string name="settings_privacyNoteAndroid">The app needs no account and has no ads or tracking. Your location is used only on your phone to calculate prayer times and is never sent anywhere. If you join the mailing list, your address is passed to the shared Bumba list for that purpose only.</string>
+    <string name="settings_privacyNoteAndroid">The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone\'s calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

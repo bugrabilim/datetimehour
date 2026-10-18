@@ -541,6 +541,12 @@
     <string name="google_ready">Kalenderzugriff ist aktiv: Ihre Google-Termine erscheinen im Kalender.</string>
     <string name="google_denied">Kalenderzugriff ist aus. Stellen Sie in den Einstellungen die Kalender-Berechtigung dieser App auf „Vollzugriff“.</string>
     <string name="google_note">Wenn Sie beim Hinzufügen eines Termins Ihren Google-Kalender wählen, wird er auch im Google Kalender gespeichert. Outlook und andere Konten lassen sich genauso hinzufügen.</string>
+    <string name="google_android_lead">Auf Android-Telefonen ist Ihr Google-Konto meist schon eingerichtet, und Termine aus Google Kalender werden mit dem Telefonkalender synchronisiert. Die App verbindet sich nie direkt mit Google und sieht Ihr Passwort nicht; sie liest Termine mit Ihrer Erlaubnis aus dem Telefonkalender.</string>
+    <string name="google_android_step1">Öffnen Sie die Einstellungen-App des Telefons.</string>
+    <string name="google_android_step2">Gehen Sie zu Konten (oder Passwörter &amp; Konten); fehlt Ihr Google-Konto, tippen Sie auf Konto hinzufügen › Google und melden Sie sich an.</string>
+    <string name="google_android_step3">Tippen Sie auf Ihr Google-Konto › Kontosynchronisierung und prüfen Sie, dass Kalender aktiviert ist.</string>
+    <string name="google_android_step4">Kehren Sie hierher zurück, tippen Sie auf „Kalender meines Telefons anzeigen“ und erlauben Sie den Zugriff.</string>
+    <string name="google_android_denied">Der Kalenderzugriff ist aus. Erlauben Sie Kalender unter Einstellungen › Apps › Uhr &amp; Datum › Berechtigungen.</string>
     <string name="kids_progress">Wie weit ist die Jahreszeit?</string>
     <string name="kids_why_title">Warum gibt es Jahreszeiten?</string>
     <string name="kids_why_text">Die Erde wandert einmal im Jahr um die Sonne. Aber sie steht nicht gerade: Ihre Achse ist um 23,4 Grad geneigt, immer in dieselbe Richtung. Ein halbes Jahr neigt sich die Nordhalbkugel zur Sonne hin – dann ist Sommer; das andere halbe Jahr neigt sie sich weg – dann ist Winter.</string>
@@ -565,6 +571,6 @@
     <string name="kids_fact4">In der Nähe des Äquators sind Sommer und Winter fast gleich; dort gibt es Regen- und Trockenzeiten.</string>
     <string name="kids_fact5">Auf der Nordhalbkugel ist der Sommer ein paar Tage länger als der Winter: Weiter weg von der Sonne bewegt sich die Erde etwas langsamer.</string>
     <string name="kids_more">Folgende Jahre</string>
-    <string name="settings_privacyNoteAndroid">Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten verwendet und nirgendwohin gesendet. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt.</string>
+    <string name="settings_privacyNoteAndroid">Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>
