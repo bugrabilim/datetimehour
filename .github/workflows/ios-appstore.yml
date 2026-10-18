@@ -16,6 +16,10 @@ on:
         description: "Yapı numarası (boşsa 1.0 sürümünün en son yapısı)"
         type: string
         default: ""
+      preview:
+        description: "Önizleme videosu da üret (elle yüklenir; 1.0'da kullanılmadı)"
+        type: boolean
+        default: false
 
 concurrency:
   group: ios-appstore
@@ -53,8 +57,10 @@ jobs:
           path: mobile/ios/fastlane/screenshots
       # Önizleme videosu (dönen dünya) App Store Connect'e elle sürüklenir: sürüm sayfası › iPhone 6,9" önizleme
       - name: Önizleme videosu
+        if: inputs.preview
         run: mobile/ios/scripts/store-preview.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app preview
       - uses: actions/upload-artifact@v4
+        if: inputs.preview
         with:
           name: app-store-onizleme-videosu
           path: preview
