@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.background
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,12 +19,43 @@ import org.robolectric.annotation.GraphicsMode
 class ScreenshotTest {
     private val dir = System.getProperty("screens.dir") ?: "build/screens"
 
-    private fun shot(name: String, tab: Tab, qualifiers: String = "tr", dark: Boolean = false, accent: String = "amber") {
+    private fun shot(
+        name: String, tab: Tab, qualifiers: String = "tr", dark: Boolean = false, accent: String = "amber",
+        model: Int = 0, items: String = HomeItem.DEFAULT_RAW, weather: Boolean = false,
+    ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
         Prefs.saveAppearance(if (dark) "dark" else "light")
         Prefs.saveAccent(accent)
+        Prefs.saveClockModel(model)
+        Prefs.saveUnits("metric")
+        HomeItems.raw = items
+        weatherOverride = if (weather) sampleWeather() else null
         captureRoboImage("$dir/$name.png") {
             AppTheme { Root(tab.ordinal) }
+        }
+        weatherOverride = null
+        HomeItems.raw = HomeItem.DEFAULT_RAW
+    }
+
+    /** Ağ olmadığı için örnek hava verisi (İstanbul, parçalı bulutlu) */
+    private fun sampleWeather(): WeatherData {
+        val zone = java.time.ZoneId.of("Europe/Istanbul")
+        val now = java.time.Instant.now()
+        val today = java.time.LocalDate.now(zone)
+        return WeatherData(
+            zone,
+            WeatherData.Current(19.4, 18.0, 64.0, 14.0, 40.0, 1016.0, 3.0, 2, true, 0.0),
+            (0 until 48).map { WeatherData.Hour(now.plusSeconds(it * 3600L), 18.0 + it % 5, listOf(1, 2, 3, 61)[it % 4], it % 4 * 10, true) },
+            (0 until 7).map { WeatherData.Day(today.plusDays(it.toLong()), listOf(2, 0, 61, 3, 1, 80, 0)[it], 22.0 + it % 3, 13.0 + it % 2, 20, null, null, 4.0) },
+        )
+    }
+
+    private fun capture(name: String, qualifiers: String = "tr", content: @androidx.compose.runtime.Composable () -> Unit) {
+        RuntimeEnvironment.setQualifiers("+$qualifiers")
+        Prefs.saveAppearance("light")
+        Prefs.saveAccent("amber")
+        captureRoboImage("$dir/$name.png") {
+            AppTheme { androidx.compose.foundation.layout.Box(androidx.compose.ui.Modifier.background(Theme.c.bg)) { content() } }
         }
     }
 
@@ -37,4 +69,13 @@ class ScreenshotTest {
     @Test fun english() = shot("en-saat", Tab.CLOCK, "en")
     @Test fun arabic() = shot("ar-vakitler", Tab.PRAYER, "ar")
     @Test fun kidsColor() = shot("tr-saat-renk", Tab.CLOCK, accent = "kid-purple")
+    @Test fun clockWeather() = shot("tr-saat-hava", Tab.CLOCK, weather = true)
+    @Test fun clockClassic() = shot("tr-saat-analog", Tab.CLOCK, model = 1)
+    @Test fun clockHorizontal() = shot("tr-saat-yatay", Tab.CLOCK, model = 14, weather = true, dark = true)
+    @Test fun clockWxCard() = shot("tr-saat-hava-kart", Tab.CLOCK, model = 5, weather = true)
+    @Test fun clockAllItems() = shot("tr-saat-alanlar", Tab.CLOCK, model = 18, weather = true,
+        items = "date,week,next,prayers,upcoming,world,weather,sun,-globe")
+    @Test fun clockArabic() = shot("ar-saat", Tab.CLOCK, "ar", weather = true)
+    @Test fun homeItemsEditor() = capture("tr-saat-duzenle") { HomeItemsEditor() }
+    @Test fun fullscreen() = capture("tr-saat-tam-ekran") { FullscreenClock {} }
 }
