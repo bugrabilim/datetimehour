@@ -167,6 +167,7 @@ struct GoogleCalendarGuide: View {
                 Text(L("google.note"))
             }
         }
+        .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("google.title"))
         .navigationBarTitleDisplayMode(.inline)

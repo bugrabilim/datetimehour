@@ -3,7 +3,7 @@ import Combine
 import SaatCore
 
 /// Araçlar sekmesi: alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama;
-/// altta ayarlar, gizlilik ve hakkında (dünya saatleri ve mevsimler alt barda, 18 Ekim 2026)
+/// altta ayarlar ve hakkında (gizlilik ve e-posta listesi Hakkında sayfasında) (dünya saatleri ve mevsimler alt barda, 18 Ekim 2026)
 struct ToolsTab: View {
     @State private var router = Router.shared
 
@@ -19,10 +19,10 @@ struct ToolsTab: View {
                 }
                 Section {
                     row(.settings, L("settings.title"), "gearshape")
-                    row(.privacy, L("settings.privacy"), "hand.raised")
                     row(.about, L("settings.about"), "info.circle")
                 }
             }
+            .themedBackground()
             .navigationTitle(L("tab.tools"))
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: ToolRoute.self) { route in
@@ -33,7 +33,6 @@ struct ToolsTab: View {
                 case .pomodoro: PomodoroView()
                 case .datecalc: DateCalcView()
                 case .settings: SettingsView()
-                case .privacy: PrivacyView()
                 case .about: AboutView()
                 }
             }
@@ -156,6 +155,7 @@ struct StopwatchView: View {
                 .environment(\.layoutDirection, .leftToRight)
             }
         }
+        .themedBackground()
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
     }
@@ -375,6 +375,7 @@ struct AlarmsView: View {
                 AlarmNote()
             }
         }
+        .themedBackground()
         .navigationTitle(L("tools.hub.cards.alarm.name"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -421,6 +422,7 @@ private struct AlarmEditor: View {
                     ForEach(AlarmItem.Repeat.allCases, id: \.self) { Text(L("tools.alarm.\($0.rawValue)")).tag($0) }
                 }
             }
+            .themedBackground()
             .navigationTitle(L("alarm.new"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -512,6 +514,7 @@ struct PomodoroView: View {
                             Stepper("\(L("tools.pomodoro.roundsLabel")): \(rounds)", value: $rounds, in: 2...8)
                         }
                     }
+                    .themedBackground()
                     .frame(height: 280)
                     .scrollDisabled(true)
                 }
@@ -612,6 +615,7 @@ struct DateCalcView: View {
                     .foregroundStyle(Theme.muted)
             }
         }
+        .themedBackground()
         .navigationTitle(L("tools.hub.cards.datecalc.name"))
         .navigationBarTitleDisplayMode(.inline)
     }

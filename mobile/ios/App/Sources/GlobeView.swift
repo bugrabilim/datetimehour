@@ -384,7 +384,7 @@ private struct GlobeMap: UIViewRepresentable {
         // MARK: Etiketler
 
         /// Uzakta: öne çıkan şehirler + UTC farkları + Güneş ve Ay. Yakında: 31 şehir ve dünya yerleri
-        /// (MapKit çakışanları nüfusa göre gizler; şehirler her zaman görünür).
+        /// (MapKit çakışanları önceliğe göre gizler: önce şehirler, sonra nüfusu büyük yerler).
         func refreshAnnotations(zoomed: Bool) {
             guard let map, shownZoomed != zoomed else { return }
             shownZoomed = zoomed
@@ -476,12 +476,15 @@ private final class PlaceAnnotation: NSObject, MKAnnotation {
     let priority: MKFeatureDisplayPriority
     let coordinate: CLLocationCoordinate2D
 
+    /// Şehirler yerlerden önce gelir; çakışan şehirlerden önce öne çıkanlar (sırayla, İstanbul en başta), sonra
+    /// diğerleri görünür. `.required` değil: MapKit üst üste binen etiketlerden düşük öncelikliyi gizler.
     init(city: City) {
         key = city.key
         name = city.displayName
         zone = city.zone
         isCity = true
-        priority = .required
+        let rank = GlobeView.featured.firstIndex(of: city.key)
+        priority = MKFeatureDisplayPriority(rawValue: rank.map { 990 - Float($0) * 5 } ?? 900)
         coordinate = CLLocationCoordinate2D(latitude: city.lat, longitude: city.lon)
     }
 
@@ -597,16 +600,18 @@ private final class PlaceLabelView: MKAnnotationView {
         text.append(NSAttributedString(string: Fmt.time(date, tz: item.zone),
                                        attributes: [.font: UIFont.monospacedDigitSystemFont(ofSize: big ? 13 : 11, weight: .bold),
                                                     .foregroundColor: UIColor.white, .paragraphStyle: p]))
+        // Saatin hemen yanında hava simgesi (bulut, güneş…) ve derece. Simge renkli ve sabit çizilir: şablon
+        // simge etikette görünmüyordu (TestFlight geri bildirimi: "dakika ile derece arasında boşluk var").
         if big, let w = GlobeWeather.shared.cached(item.key), Date().timeIntervalSince(w.at) < 6 * 3600 {
             let config = UIImage.SymbolConfiguration(pointSize: 11, weight: .semibold)
-                .applying(UIImage.SymbolConfiguration.preferringMulticolor())
-            if let img = UIImage(systemName: w.symbol, withConfiguration: config) {
+                .applying(UIImage.SymbolConfiguration(paletteColors: [.white, .systemYellow, .systemCyan]))
+            if let img = UIImage(systemName: w.symbol, withConfiguration: config)?.withRenderingMode(.alwaysOriginal) {
                 let att = NSTextAttachment(image: img)
                 att.bounds = CGRect(x: 0, y: -2, width: img.size.width, height: img.size.height)
-                text.append(NSAttributedString(string: "  "))
+                text.append(NSAttributedString(string: " "))
                 text.append(NSAttributedString(attachment: att))
             }
-            text.append(NSAttributedString(string: " " + Units.temp(Measurement(value: w.celsius, unit: .celsius)),
+            text.append(NSAttributedString(string: Units.temp(Measurement(value: w.celsius, unit: .celsius)),
                                            attributes: [.font: UIFont.monospacedDigitSystemFont(ofSize: 12, weight: .semibold),
                                                         .foregroundColor: UIColor.white]))
         }

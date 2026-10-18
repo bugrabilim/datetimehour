@@ -43,6 +43,7 @@ struct CalendarTab: View {
                 }
                 dayList(today: today, deviceEvents: deviceEvents[selected.dayNumber] ?? [])
             }
+            .themedBackground()
             .listStyle(.plain)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

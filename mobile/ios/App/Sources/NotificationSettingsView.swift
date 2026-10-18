@@ -60,6 +60,7 @@ struct NotificationSettingsView: View {
                     }
                 }
             }
+            .themedBackground()
             .tint(Theme.accent)
             .navigationTitle(L("notify.heading"))
             .navigationBarTitleDisplayMode(.inline)
