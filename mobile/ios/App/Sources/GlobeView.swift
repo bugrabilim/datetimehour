@@ -3,8 +3,10 @@ import MapKit
 
 /// Dönen dünya (sitedeki küre gibi): Apple Haritalar uydu görüntüsüyle küre, gündüz/gece gölgesi, 15°'lik
 /// saat dilimi meridyenleri (0° kırmızı) ve şehirlerin yerel saatleri. Kendiliğinden döner (bir tur 2 dk);
-/// dokununca durur, yakınlaşınca bütün şehirler görünür. Hareketi azalt tercihinde dönmez.
+/// dokununca durur, yakınlaşınca bütün şehirler görünür. Hareketi azalt tercihinde dönmez. Tam ekrana alınabilir.
 struct GlobeView: View {
+    /// Tam ekran kopyası: kapatma düğmesi gösterilir
+    var fullscreen = false
     /// Sitedeki GLOBE_CITIES (build.mjs)
     static let featured = ["istanbul", "london", "moscow", "dubai", "mumbai", "singapore", "beijing", "tokyo", "sydney",
                            "cairo", "johannesburg", "sao-paulo", "new-york", "los-angeles"]
@@ -17,6 +19,8 @@ struct GlobeView: View {
         centerCoordinate: CLLocationCoordinate2D(latitude: GlobeView.centerLat, longitude: 30), distance: GlobeView.farDistance))
     @State private var spinning = true
     @State private var zoomed = false
+    @State private var showFullscreen = false
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         TimelineView(.everyMinute) { context in
@@ -65,6 +69,24 @@ struct GlobeView: View {
             }
             .simultaneousGesture(DragGesture(minimumDistance: 4).onChanged { _ in spinning = false })
         }
+        .overlay(alignment: .topTrailing) {
+            Button {
+                if fullscreen { dismiss() } else { showFullscreen = true }
+            } label: {
+                Image(systemName: fullscreen ? "xmark" : "arrow.up.left.and.arrow.down.right")
+                    .font(.footnote.weight(.bold))
+                    .frame(width: 32, height: 32)
+                    .background(.black.opacity(0.55), in: Circle())
+                    .foregroundStyle(.white)
+            }
+            .accessibilityLabel(L(fullscreen ? "client.exitFullscreen" : "client.fullscreen"))
+            .padding(fullscreen ? 16 : 10)
+        }
+        .fullScreenCover(isPresented: $showFullscreen) {
+            GlobeView(fullscreen: true)
+                .ignoresSafeArea()
+                .statusBarHidden()
+        }
         .overlay(alignment: .bottomTrailing) {
             HStack(spacing: 10) {
                 if zoomed || !spinning {
@@ -82,14 +104,25 @@ struct GlobeView: View {
             .tint(.black.opacity(0.55))
             .padding(10)
         }
-        .task {
-            if reduceMotion { spinning = false }
-            while !Task.isCancelled {
-                try? await Task.sleep(for: .milliseconds(100))
-                guard spinning else { continue }
-                lon += 0.3 // 360° / 2 dk
-                if lon > 180 { lon -= 360 }
-                setCamera()
+        // Dönüş: her 10 saniyede 30° (bir tur 2 dk), MapKit'in kendi doğrusal kamera geçişiyle; kareleri
+        // tek tek kaydırmak her adımda bütün haritayı yeniden çizdirip takılmaya yol açıyordu.
+        .task(id: spinning) {
+            guard spinning, !reduceMotion else {
+                if reduceMotion { spinning = false }
+                return
+            }
+            while !Task.isCancelled && spinning {
+                // 180° doğrultusunu geçerken kamera ters yönden dolanmasın: 180'e kadar git, aynı meridyen
+                // olan -180'e geçişsiz atla, sonra devam et
+                if lon >= 180 {
+                    lon = -180
+                    setCamera()
+                }
+                let step = min(30, 180 - lon)
+                lon += step
+                let seconds = 10 * step / 30
+                withAnimation(.linear(duration: seconds)) { setCamera() }
+                try? await Task.sleep(for: .seconds(seconds))
             }
         }
         .accessibilityElement(children: .contain)
