@@ -88,8 +88,10 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "stopwatch" -> Page(L("tools.hub.cards.stopwatch.name"), onRoute) { Stopwatch() }
         "timer" -> Page(L("tools.timer"), onRoute) { TimerTool() }
         "datecalc" -> Page(L("tools.hub.cards.datecalc.name"), onRoute) { DateCalc() }
-        "settings" -> Page(L("settings.title"), onRoute) { Settings() }
-        "about" -> Page(L("settings.about"), onRoute) { About() }
+        "settings" -> Page(L("settings.title"), onRoute) { SettingsScreen(onRoute) }
+        "color" -> Page(L("settings.color"), { onRoute("settings") }) { ColorScreen() }
+        "homeItems" -> Page(L("home.customize"), { onRoute("settings") }) { HomeItemsEditor() }
+        "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
         else -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             Text(L("tab.tools"), color = Theme.c.text, fontSize = 26.sp, fontWeight = FontWeight.Bold)
             AppCard(padding = 4) {
@@ -131,7 +133,7 @@ private fun BigTime(text: String) {
 }
 
 @Composable
-private fun RoundButton(title: String, prominent: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
+fun RoundButton(title: String, prominent: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Button(
         onClick = onClick, modifier = modifier.height(52.dp),
         colors = ButtonDefaults.buttonColors(
@@ -251,164 +253,3 @@ private fun DateCalc() {
         ) { DatePicker(state) }
     }
 }
-
-/** Ayarlar: konum, uygulama rengi, görünüm, saat biçimi, ekranı açık tutma */
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun Settings() {
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        AppCard {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(L("settings.location"), Modifier.weight(1f), color = Theme.c.text)
-                PlacePicker(size = 16.sp)
-            }
-        }
-        AppCard {
-            SectionTitle(L("settings.appearance"))
-            val opts = listOf("system", "light", "dark")
-            SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                opts.forEachIndexed { i, o ->
-                    SegmentedButton(Prefs.appearance == o, { Prefs.saveAppearance(o) }, SegmentedButtonDefaults.itemShape(i, opts.size)) {
-                        Text(L("settings.$o"))
-                    }
-                }
-            }
-            SectionTitle(L("client.formatLabel"))
-            SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                SegmentedButton(!Prefs.h12, { Prefs.saveH12(false) }, SegmentedButtonDefaults.itemShape(0, 2)) { Text(L("client.format24")) }
-                SegmentedButton(Prefs.h12, { Prefs.saveH12(true) }, SegmentedButtonDefaults.itemShape(1, 2)) { Text(L("client.format12")) }
-            }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(L("settings.keepAwake"), Modifier.weight(1f), color = Theme.c.text)
-                Switch(Prefs.keepAwake, Prefs::saveKeepAwake, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-            }
-        }
-        AppCard {
-            SectionTitle(L("settings.color"))
-            for (g in AccentPalette.GROUPS) {
-                Text(L("settings.color.$g"), color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    for (p in AccentPalette.ALL.filter { it.group == g }) Swatch(p)
-                }
-            }
-            TextButton(onClick = { Prefs.saveAccent(AccentPalette.DEFAULT_ID) }) { Text(L("world.reset"), color = Theme.c.accent) }
-        }
-    }
-}
-
-/** Üç renkli daire: ana renk, ikinci renk ve kadran tonu */
-@Composable
-private fun Swatch(p: AccentPalette) {
-    val dark = Theme.c.dark
-    val on = Prefs.accent == p.id
-    Box(
-        Modifier.size(44.dp).border(2.dp, if (on) Theme.c.text else Color.Transparent, CircleShape).padding(4.dp)
-            .clickable { Prefs.saveAccent(p.id) },
-        contentAlignment = Alignment.Center,
-    ) {
-        Row(Modifier.fillMaxSize().background(Color.Transparent, CircleShape).clip(CircleShape)) {
-            Box(Modifier.weight(1f).fillMaxSize().background(rgb(if (dark) p.dark else p.light)))
-            Column(Modifier.weight(1f).fillMaxSize()) {
-                Box(Modifier.weight(1f).fillMaxWidth().background(rgb(if (dark) p.secondDark else p.secondLight)))
-                Box(Modifier.weight(1f).fillMaxWidth().background(p.face(dark)))
-            }
-        }
-        if (on) Icon(Icons.Filled.Check, null, tint = Color.White, modifier = Modifier.size(18.dp))
-    }
-}
-
-/** Hakkında: ad, sürüm, web sitesi, iletişim, Bumba Life rozeti, e-posta listesi ve gizlilik */
-@Composable
-private fun About() {
-    val context = LocalContext.current
-    fun open(url: String) = context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
-    val version = runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull() ?: ""
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        AppCard {
-            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                AnalogClock(java.time.ZonedDateTime.now(), Modifier.size(64.dp))
-                Text(L("app.displayName"), color = Theme.c.text, fontSize = 22.sp, fontWeight = FontWeight.Bold)
-                Text(version, color = Theme.c.muted, fontSize = 13.sp)
-            }
-        }
-        AppCard {
-            Row2(L("settings.website"), "time.bumba.tr", Modifier.clickable { open("https://time.bumba.tr") })
-            Row2(L("about.contact"), "bilgi@bumbagroup.com", Modifier.clickable { open("mailto:bilgi@bumbagroup.com") })
-        }
-        // Sitedeki Bumba Life rozeti, iletişimin altında sağda
-        Row(Modifier.fillMaxWidth()) {
-            Spacer(Modifier.weight(1f))
-            Text(
-                L("brand.product"),
-                Modifier.border(1.dp, Theme.c.border, RoundedCornerShape(8.dp)).clickable { open("https://bumbagroup.com/life") }
-                    .padding(horizontal = 10.dp, vertical = 5.dp),
-                color = Theme.c.text, fontSize = 12.sp, fontWeight = FontWeight.SemiBold,
-            )
-        }
-        ListSignup()
-        AppCard {
-            SectionTitle(L("settings.privacy"))
-            Text(L("settings.privacyNoteAndroid"), color = Theme.c.text, fontSize = 14.sp)
-            Text(L("privacy.full"), Modifier.clickable { open(privacyUrl()) }, color = Theme.c.accent)
-        }
-    }
-}
-
-private fun privacyUrl(): String {
-    val l = Strings.lang
-    return "https://time.bumba.tr" + if (l == "tr") "/gizlilik/" else "/$l/privacy/"
-}
-
-/** Ortak Bumba listesine katılım (sitedeki formla aynı alanlar; onay anahtarı kapalı gelir) */
-@Composable
-private fun ListSignup() {
-    val context = LocalContext.current
-    var email by rememberSaveable { mutableStateOf("") }
-    var consent by rememberSaveable { mutableStateOf(false) }
-    var sending by remember { mutableStateOf(false) }
-    var result by remember { mutableStateOf<Boolean?>(null) }
-    val scope = rememberCoroutineScope()
-    val lang = if (Strings.lang in listOf("tr", "en")) Strings.lang else "en"
-    AppCard {
-        SectionTitle(L("list.heading"))
-        Text(L("list.lead"), color = Theme.c.text, fontSize = 14.sp)
-        OutlinedTextField(email, { email = it.trim() }, Modifier.fillMaxWidth(), label = { Text(L("list.emailLabel")) },
-            singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email))
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(L("list.consentText"), Modifier.weight(1f), color = Theme.c.text, fontSize = 13.sp)
-            Switch(consent, { consent = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-        }
-        Text(L("list.readNote"), Modifier.clickable {
-            context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://bumbagroup.com/liste/aydinlatma" + if (lang == "tr") "" else "?dil=en")))
-        }, color = Theme.c.accent, fontSize = 13.sp)
-        RoundButton(L("list.submit"), true, Modifier.fillMaxWidth().heightIn(min = 48.dp)) {
-            if (!consent || !email.contains("@") || sending) return@RoundButton
-            sending = true
-            scope.launch {
-                result = withContext(Dispatchers.IO) { joinList(email, lang) }
-                sending = false
-                if (result == true) { email = ""; consent = false }
-            }
-        }
-        result?.let { Text(L(if (it) "list.ok" else "list.err"), color = if (it) Theme.c.accent else Color(0xFFD32F2F), fontSize = 13.sp) }
-        Text(L("list.popupText"), color = Theme.c.muted, fontSize = 11.sp)
-    }
-}
-
-/** Servis sonuçta dönüş adresine yönlendirir: "#liste-tamam" ya da "#liste-hata" */
-private fun joinList(email: String, lang: String): Boolean = runCatching {
-    val source = "https://time.bumba.tr/android"
-    val body = mapOf("site" to "saat-tarih", "eposta" to email, "dil" to lang, "riza" to "on",
-        "kaynak" to source, "donus" to source, "web_sitesi" to "")
-        .entries.joinToString("&") { "${it.key}=${URLEncoder.encode(it.value, "UTF-8")}" }
-    val c = URL("https://bumbagroup.com/api/liste/katil").openConnection() as HttpURLConnection
-    c.instanceFollowRedirects = false
-    c.requestMethod = "POST"
-    c.doOutput = true
-    c.setRequestProperty("Content-Type", "application/x-www-form-urlencoded")
-    c.outputStream.use { it.write(body.toByteArray()) }
-    c.responseCode
-    val ok = (c.getHeaderField("Location") ?: "").endsWith("#liste-tamam")
-    c.disconnect()
-    ok
-}.getOrDefault(false)

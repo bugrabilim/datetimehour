@@ -3,6 +3,8 @@
 
     <!-- "Konumumu kullan" (yaklaşık konum yeterli; konum telefonda kalır) -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Hava durumu (Open-Meteo) ve e-posta listesi -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".SaatTarihApp"

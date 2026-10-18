@@ -24,16 +24,19 @@ import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material.icons.outlined.CalendarMonth
 import androidx.compose.material.icons.outlined.Eco
 import androidx.compose.material.icons.outlined.NightsStay
 import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.outlined.Timer
+import androidx.compose.material.icons.outlined.WbSunny
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -46,6 +49,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import java.time.LocalDate
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,11 +64,12 @@ class MainActivity : ComponentActivity() {
 }
 
 /**
- * Sekmeler (iOS'taki sırayla; hava durumu Android'de henüz yok): Saat, Takvim, Dünya, Mevsimler, Vakitler, Araçlar.
+ * Sekmeler (iOS'taki sırayla): Saat, Hava, Takvim, Dünya, Mevsimler, Vakitler, Araçlar.
  * Seçili sekmeye yeniden dokununca Araçlar'da açık sayfadan listeye dönülür.
  */
 enum class Tab(val key: String, val on: ImageVector, val off: ImageVector) {
     CLOCK("tab.clock", Icons.Filled.Schedule, Icons.Outlined.Schedule),
+    WEATHER("tab.weather", Icons.Filled.WbSunny, Icons.Outlined.WbSunny),
     CALENDAR("tab.calendar", Icons.Filled.CalendarMonth, Icons.Outlined.CalendarMonth),
     WORLD("tab.world", Icons.Filled.Public, Icons.Outlined.Public),
     SEASONS("tab.seasons", Icons.Filled.Eco, Icons.Outlined.Eco),
@@ -72,10 +77,28 @@ enum class Tab(val key: String, val on: ImageVector, val off: ImageVector) {
     TOOLS("tab.tools", Icons.Filled.Timer, Icons.Outlined.Timer),
 }
 
+/**
+ * Sekme ve Araçlar gezintisi (iOS'taki Router): saat ekranındaki alanlar dokununca ilgili sayfayı açar.
+ * Araçlar yolları: alarm, timer, stopwatch, pomodoro, datecalc, settings, color, homeItems, about.
+ */
+object Nav {
+    var tab by mutableStateOf(Tab.CLOCK)
+    var toolsRoute by mutableStateOf<String?>(null)
+    /** Takvim sekmesi bu günü açar (saat ekranından) */
+    var calendarDay by mutableStateOf<LocalDate?>(null)
+
+    fun tool(route: String) {
+        toolsRoute = route
+        tab = Tab.TOOLS
+    }
+}
+
 @Composable
 fun Root(start: Int) {
-    var tab by rememberSaveable { mutableStateOf(Tab.entries.getOrElse(start) { Tab.CLOCK }) }
-    var toolsRoute by rememberSaveable { mutableStateOf<String?>(null) }
+    // Ekran görüntüsü ya da bildirimden: istenen sekmede açılır
+    remember(start) { Tab.entries.getOrNull(start)?.let { Nav.tab = it; Nav.toolsRoute = null } }
+    val tab = Nav.tab
+    val toolsRoute = Nav.toolsRoute
     var fullscreen by rememberSaveable { mutableStateOf(false) }
     RefreshAutoPlace()
 
@@ -87,23 +110,24 @@ fun Root(start: Int) {
         FullscreenClock { fullscreen = false }
         return
     }
-    BackHandler(enabled = tab == Tab.TOOLS && toolsRoute != null) { toolsRoute = null }
-    BackHandler(enabled = tab != Tab.CLOCK && !(tab == Tab.TOOLS && toolsRoute != null)) { tab = Tab.CLOCK }
+    BackHandler(enabled = tab == Tab.TOOLS && toolsRoute != null) { Nav.toolsRoute = null }
+    BackHandler(enabled = tab != Tab.CLOCK && !(tab == Tab.TOOLS && toolsRoute != null)) { Nav.tab = Tab.CLOCK }
 
     Column(Modifier.fillMaxSize().background(Theme.c.bg)) {
         Box(Modifier.weight(1f).fillMaxWidth().statusBarsPadding()) {
             when (tab) {
-                Tab.CLOCK -> ClockScreen(onFullscreen = { fullscreen = true }, onOpen = { tab = it })
+                Tab.CLOCK -> ClockScreen(onFullscreen = { fullscreen = true }, onOpen = { Nav.tab = it })
+                Tab.WEATHER -> WeatherScreen()
                 Tab.CALENDAR -> CalendarScreen()
                 Tab.WORLD -> WorldScreen()
                 Tab.SEASONS -> SeasonsScreen()
                 Tab.PRAYER -> PrayerScreen()
-                Tab.TOOLS -> ToolsScreen(toolsRoute) { toolsRoute = it }
+                Tab.TOOLS -> ToolsScreen(toolsRoute) { Nav.toolsRoute = it }
             }
         }
         TabBar(tab) { t ->
-            if (t == tab && t == Tab.TOOLS) toolsRoute = null
-            tab = t
+            if (t == tab && t == Tab.TOOLS) Nav.toolsRoute = null
+            Nav.tab = t
         }
     }
 }
