@@ -28,7 +28,7 @@ shoot() { # dil bölge klasör dosya bekleme [ek uygulama argümanları]
   sleep "$5"
   xcrun simctl io "$UDID" screenshot "$OUT/$3/$4.png"
 }
-ITEMS="-date,week,next,prayers,-upcoming,-world,-weather,-sun"
+ITEMS="-date,week,next,prayers,-upcoming,-world,-weather,-sun,-globe"
 for L in "tr tr_TR tr" "en en_US en-US" "de de_DE de-DE" "ar ar_SA ar-SA"; do
   set -- $L
   shoot $1 $2 $3 01-saat 6 -clockModel stack -homeItems "$ITEMS"

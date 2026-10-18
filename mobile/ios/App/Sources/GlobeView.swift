@@ -600,12 +600,12 @@ private final class PlaceLabelView: MKAnnotationView {
         text.append(NSAttributedString(string: Fmt.time(date, tz: item.zone),
                                        attributes: [.font: UIFont.monospacedDigitSystemFont(ofSize: big ? 13 : 11, weight: .bold),
                                                     .foregroundColor: UIColor.white, .paragraphStyle: p]))
-        // Saatin hemen yanında hava simgesi (bulut, güneş…) ve derece. Simge renkli ve sabit çizilir: şablon
-        // simge etikette görünmüyordu (TestFlight geri bildirimi: "dakika ile derece arasında boşluk var").
+        // Saatin hemen yanında hava simgesi (bulut, güneş…) ve derece. Simge beyaza boyanmış sabit görüntüdür:
+        // şablon ve palet simgeler etikette siyah çiziliyor, koyu zeminde görünmüyordu (TestFlight geri bildirimi).
         if big, let w = GlobeWeather.shared.cached(item.key), Date().timeIntervalSince(w.at) < 6 * 3600 {
             let config = UIImage.SymbolConfiguration(pointSize: 11, weight: .semibold)
-                .applying(UIImage.SymbolConfiguration(paletteColors: [.white, .systemYellow, .systemCyan]))
-            if let img = UIImage(systemName: w.symbol, withConfiguration: config)?.withRenderingMode(.alwaysOriginal) {
+            if let img = UIImage(systemName: w.symbol, withConfiguration: config)?
+                .withTintColor(.white, renderingMode: .alwaysOriginal) {
                 let att = NSTextAttachment(image: img)
                 att.bounds = CGRect(x: 0, y: -2, width: img.size.width, height: img.size.height)
                 text.append(NSAttributedString(string: " "))
