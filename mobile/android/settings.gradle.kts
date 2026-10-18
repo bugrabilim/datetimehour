@@ -1,10 +1,10 @@
-// Saat Tarih Android projesi. Şimdilik yalnız :core (ortak hesap çekirdeği, saf Kotlin/JVM);
-// telefon/tablet uygulaması, widget'lar ve Wear OS modülleri sonraki adımlarda eklenir.
+// Saat Tarih Android projesi: :core (ortak hesap çekirdeği, saf Kotlin/JVM) ve :app (telefon/tablet uygulaması,
+// Jetpack Compose). Widget'lar ve Wear OS modülleri sonraki adımlarda eklenir.
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 dependencyResolutionManagement {
@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SaatTarih"
 include(":core")
+include(":app")
