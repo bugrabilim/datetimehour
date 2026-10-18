@@ -21,21 +21,33 @@ xcrun simctl status_bar "$UDID" override --time "9:41" --batteryState charged --
 xcrun simctl install "$UDID" "$APP"
 xcrun simctl ui "$UDID" appearance dark
 
-for L in "tr tr_TR tr" "en en_US en-US" "de de_DE de-DE" "ar ar_SA ar-SA"; do
-  set -- $L
+# Isınma: ilk açılışta harita ve gölgelendiriciler hazırlanırken kayıt kesik çıkıyordu (ilk video 12 sn)
+xcrun simctl launch "$UDID" "$BUNDLE" -openScreen globe
+sleep 25
+
+record() { # dil bölge klasör → onizleme-<klasör>.mp4; en az 16 sn değilse false
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
   SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -openScreen globe
   sleep 12 # harita görüntüleri yüklensin
   RAW="$OUT/ham-$3.mov"
   xcrun simctl io "$UDID" recordVideo --codec=h264 --force "$RAW" &
   REC=$!
-  sleep 27
+  sleep 30
   kill -INT $REC
   wait $REC || true
-  # 1320×2868 → 886 genişlik (1925 yükseklik), ortadan 1920'ye kırp; ilk 1 sn (kayıt başlangıcı) atılır, 25 sn
+  # 1320×2868 → 886 genişlik (1925 yükseklik), ortadan 1920'ye kırp; ilk 1 sn (kayıt başlangıcı) atılır, en çok 25 sn
   ffmpeg -loglevel error -y -ss 1 -i "$RAW" -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 \
     -vf "scale=886:-2,crop=886:1920,fps=30" -t 25 -c:v libx264 -profile:v high -pix_fmt yuv420p -b:v 8M \
     -c:a aac -b:a 256k -shortest -movflags +faststart "$OUT/onizleme-$3.mp4"
   rm -f "$RAW"
+  DUR=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUT/onizleme-$3.mp4")
+  echo "onizleme-$3.mp4: $DUR sn"
+  python3 -c "import sys; sys.exit(0 if float('$DUR') >= 16 else 1)"
+}
+
+for L in "tr tr_TR tr" "en en_US en-US" "de de_DE de-DE" "ar ar_SA ar-SA"; do
+  set -- $L
+  # Apple en az 15 sn ister: kısa çıkarsa bir kez daha çekilir
+  record $1 $2 $3 || record $1 $2 $3 || echo "::warning::onizleme-$3.mp4 15 sn'den kısa"
 done
 ls -la "$OUT"
