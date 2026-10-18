@@ -122,3 +122,55 @@ struct EventDetail: UIViewControllerRepresentable {
 extension EKEvent: @retroactive Identifiable {
     public var id: String { (eventIdentifier ?? "") + "|" + String(startDate.timeIntervalSince1970) }
 }
+
+/// Google Takvimi bağlama rehberi. Google hesabı iPhone'a bir kez eklenince takvimleri telefonun takvim
+/// veritabanına gelir; uygulama onları (izinle) okur ve yeni etkinliği Google takvimine de kaydedebilir.
+/// Uygulama Google'a doğrudan bağlanmaz, hesap bilgisi görmez.
+struct GoogleCalendarGuide: View {
+    @Environment(\.dismiss) private var dismiss
+    @State private var device = DeviceCalendar.shared
+
+    var body: some View {
+        List {
+            Section {
+                Text(L("google.lead"))
+            }
+            Section(L("google.stepsTitle")) {
+                ForEach(1...5, id: \.self) { i in
+                    HStack(alignment: .firstTextBaseline, spacing: 12) {
+                        Text("\(i)")
+                            .font(.headline.monospacedDigit())
+                            .frame(width: 26, height: 26)
+                            .background(Theme.accentSoft, in: Circle())
+                            .foregroundStyle(Theme.accent)
+                        Text(L("google.step\(i)"))
+                    }
+                }
+                Button(L("google.openSettings")) {
+                    if let url = URL(string: UIApplication.openSettingsURLString) { UIApplication.shared.open(url) }
+                }
+            }
+            Section {
+                if device.authorized {
+                    Label(L("google.ready"), systemImage: "checkmark.circle.fill")
+                        .foregroundStyle(.green)
+                } else if device.canAsk {
+                    Button {
+                        Task { await device.requestAccess() }
+                    } label: {
+                        Label(L("calendar.showDevice"), systemImage: "calendar.badge.checkmark")
+                    }
+                } else {
+                    Text(L("google.denied")).foregroundStyle(Theme.muted)
+                }
+            } footer: {
+                Text(L("google.note"))
+            }
+        }
+        .tint(Theme.accent)
+        .navigationTitle(L("google.title"))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { dismiss() } } }
+        .onAppear { device.reload() }
+    }
+}

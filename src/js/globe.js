@@ -200,6 +200,37 @@
     var lon = ((-15 * (utcH - 12) - eqt + 540) % 360) - 180;
     return { dec: dec, lon: lon, sd: Math.sin(dec), cd: Math.cos(dec) };
   }
+  /* Ay'ın tepe noktası ve evresi (düşük duyarlıklı yaklaşık, ~1°; yalnız küredeki işaret için) */
+  function moon(ms) {
+    var d = ms / 86400000 + 2440587.5 - 2451545.0;
+    var L = 218.316 + 13.176396 * d, M = (134.963 + 13.064993 * d) * RAD, F = (93.272 + 13.22935 * d) * RAD;
+    var lam = (L + 6.289 * Math.sin(M)) * RAD, bet = 5.128 * Math.sin(F) * RAD, e = 23.439 * RAD;
+    var ra = Math.atan2(Math.sin(lam) * Math.cos(e) - Math.tan(bet) * Math.sin(e), Math.cos(lam)) / RAD;
+    var dec = Math.asin(Math.sin(bet) * Math.cos(e) + Math.cos(bet) * Math.sin(e) * Math.sin(lam));
+    var gmst = 280.46061837 + 360.98564736629 * d;
+    var lon = ((((ra - gmst) % 360) + 540) % 360) - 180;
+    var sunL = 280.459 + 0.98564736 * d + 1.915 * Math.sin((357.529 + 0.98560028 * d) * RAD);
+    var elong = ((((lam / RAD) - sunL) % 360) + 360) % 360; // 0 yeni ay, 180 dolunay
+    return { dec: dec, lon: lon, elong: elong };
+  }
+  /* Ay işareti: evresine göre aydınlık bölümüyle (kuzey yarımküreden görünüş: büyürken sağı aydınlık) */
+  function drawMoon(x, y, r, elong) {
+    var k = Math.cos(elong * RAD), waxing = elong < 180;
+    ctx.save();
+    var gr = ctx.createRadialGradient(x, y, 0, x, y, r * 2.6);
+    gr.addColorStop(0, "rgba(220,226,240,0.45)"); gr.addColorStop(1, "rgba(220,226,240,0)");
+    ctx.fillStyle = gr; ctx.beginPath(); ctx.arc(x, y, r * 2.6, 0, 2 * Math.PI); ctx.fill();
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.fillStyle = "#3a3f4b"; ctx.fill();
+    ctx.fillStyle = "#eef1f7";
+    ctx.beginPath(); // aydınlık yarım daire
+    ctx.arc(x, y, r, -Math.PI / 2, Math.PI / 2, !waxing);
+    // sonlandırıcı elips: hilalde karanlık tarafa, şişkin evrede aydınlık tarafa doğru
+    ctx.ellipse(x, y, Math.abs(k) * r, r, 0, Math.PI / 2, -Math.PI / 2, (k > 0) === waxing);
+    ctx.fill();
+    ctx.lineWidth = 1.2 * dpr; ctx.strokeStyle = "rgba(255,255,255,0.7)";
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 2 * Math.PI); ctx.stroke();
+    ctx.restore();
+  }
   var smooth = function (c) { var t = (c + 0.1) / 0.16; return t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t); };
 
   /* ---------- harita (Web Mercator) ---------- */
@@ -450,7 +481,9 @@
     if (mapA > 0) { setMv(); drawTiles(mapA); }
     if (mapA < 1) globeLines(1 - mapA);
     var occ = mapA > 0 ? mapLines(mapA) : null;
-    if (mapA < 0.5) { // Güneş işareti ve küre kenarı
+    if (mapA < 0.5) { // Ay ve Güneş işaretleri ve küre kenarı
+      var mo = moon(ms), mp = projOrtho(mo.dec / RAD, mo.lon);
+      if (mp.z > 0 && zoom <= 1.01) drawMoon(mp.x, mp.y, 9 * dpr, mo.elong);
       var sp2 = projOrtho(s.dec / RAD, s.lon);
       if (sp2.z > 0 && zoom <= 1.01) {
         var gr = ctx.createRadialGradient(sp2.x, sp2.y, 0, sp2.x, sp2.y, 30 * dpr);

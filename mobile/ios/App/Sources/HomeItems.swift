@@ -5,7 +5,7 @@ import WeatherKit
 /// Saat ekranında saatin altında görünebilecek alanlar. Seçim ve sıra "homeItems" anahtarında:
 /// bütün alanlar sırayla, kapalı olanın başında "-" ("date,week,next,-prayers,…").
 enum HomeItem: String, CaseIterable, Identifiable {
-    case date, week, next, prayers, upcoming, world, weather, sun
+    case date, week, next, prayers, upcoming, world, weather, sun, globe
 
     var id: String { rawValue }
     var title: String { L("home.item.\(rawValue)") }
@@ -20,10 +20,12 @@ enum HomeItem: String, CaseIterable, Identifiable {
         case .world: return "globe"
         case .weather: return "cloud.sun"
         case .sun: return "sunrise"
+        case .globe: return "globe.europe.africa"
         }
     }
 
-    static let defaultRaw = "-date,week,next,-prayers,-upcoming,-world,-weather,-sun"
+    /// Dönen dünya varsayılan olarak açık (18 Ekim 2026, sahibin isteği); "Düzenle" ile kapatılabilir
+    static let defaultRaw = "-date,week,next,-prayers,-upcoming,-world,-weather,-sun,globe"
 }
 
 struct HomeLayout {
@@ -39,8 +41,13 @@ struct HomeLayout {
             order.append(item)
             if !off { enabled.insert(item) }
         }
-        // sonradan eklenen alanlar sona, kapalı olarak
-        order += HomeItem.allCases.filter { !order.contains($0) }
+        // sonradan eklenen alanlar sona; varsayılanda açıksa açık gelir
+        let added = HomeItem.allCases.filter { !order.contains($0) }
+        if !added.isEmpty {
+            let defaults = HomeLayout(raw: HomeItem.defaultRaw).enabled
+            enabled.formUnion(added.filter(defaults.contains))
+            order += added
+        }
         self.order = order
         self.enabled = enabled
     }
@@ -94,12 +101,17 @@ struct HomeItemView: View {
     let item: HomeItem
     let now: Date
     let place: AppPlace
+    /// Sayfa açıldıktan sonra (tam ekran saat kendini kapatır)
+    var opened: () -> Void = {}
 
     var body: some View {
         // Button değil: hava kartındaki Apple yasal bağlantısı kendi dokunuşunu alabilsin
         content
             .contentShape(Rectangle())
-            .onTapGesture { Router.shared.open(item) }
+            .onTapGesture {
+                Router.shared.open(item)
+                opened()
+            }
             .accessibilityAddTraits(.isButton)
     }
 
@@ -127,6 +139,11 @@ struct HomeItemView: View {
             WeatherMiniCard(place: place)
         case .sun:
             SunCard(now: now, place: place)
+        case .globe:
+            GlobeView(interactive: false)
+                .allowsHitTesting(false)
+                .frame(height: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
         }
     }
 }
@@ -274,7 +291,7 @@ private struct WeatherMiniCard: View {
     }
 
     private static func temp(_ t: Measurement<UnitTemperature>) -> String {
-        "\(Int(t.converted(to: .celsius).value.rounded()))°"
+        Units.temp(t)
     }
 }
 

@@ -7,6 +7,8 @@ import SaatCore
 /// Sağlayıcı Apple WeatherKit (Apple Developer üyeliğinde ayda 500.000 çağrı dahil). Apple'ın şartı gereği
 /// "Apple Hava Durumu" işareti ve yasal bilgiler bağlantısı ekranda gösterilir.
 struct WeatherView: View {
+    /// Birim değişince yeniden çizilir
+    @AppStorage("units") private var units = Units.systemDefault
     @State private var data: Weather?
     @State private var failed = false
 
@@ -16,9 +18,8 @@ struct WeatherView: View {
         let place = PlaceModel.shared.place
         ScrollView {
             VStack(spacing: 18) {
-                Label(place.name, systemImage: place.isAuto ? "location.fill" : "mappin.and.ellipse")
-                    .font(.headline)
-                    .foregroundStyle(Theme.accent)
+                // Dokununca konum değişir (il ya da konumum; 18 Ekim 2026, sahibin isteği)
+                PlacePicker(font: .headline)
                 if let d = data {
                     current(d)
                     hourly(d)
@@ -71,12 +72,12 @@ struct WeatherView: View {
                     pill(L("weather.humidity"), "%\(Int((c.humidity * 100).rounded()))")
                 }
                 GridRow {
-                    pill(L("weather.wind"), T("weather.km", Int(c.wind.speed.converted(to: .kilometersPerHour).value.rounded())))
+                    pill(L("weather.wind"), Units.wind(c.wind.speed))
                     pill(L("weather.uv"), "\(c.uvIndex.value)")
                 }
                 GridRow {
                     pill(L("weather.rainChanceShort"), "%\(Int((rain * 100).rounded()))")
-                    pill(L("weather.pressure"), "\(Int(c.pressure.converted(to: .hectopascals).value.rounded())) hPa")
+                    pill(L("weather.pressure"), Units.pressure(c.pressure))
                 }
             }
             .padding(.top, 8)
@@ -161,7 +162,7 @@ struct WeatherView: View {
     }
 
     private func temp(_ t: Measurement<UnitTemperature>) -> String {
-        "\(Int(t.converted(to: .celsius).value.rounded()))°"
+        Units.temp(t)
     }
 }
 

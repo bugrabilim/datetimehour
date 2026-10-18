@@ -111,12 +111,17 @@ const cities = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/cities.json"
 }));
 const citiesJson = JSON.stringify(cities) + "\n";
 
+/* Küre yakınlaşınca gösterilen dünya yerleri (sitedeki assets/places*.json ile aynı kaynak; az adları İngilizce) */
+const placesSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/places.json"), "utf8"));
+const placesJson = JSON.stringify({ tz: placesSrc.tz, p: placesSrc.p, names: placesSrc.names }) + "\n";
+
 const files = {
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
   "mobile/ios/App/Resources/provinces.json": provincesJson,
   "mobile/ios/App/Resources/calendar.json": calendarJson,
   "mobile/ios/App/Resources/cities.json": citiesJson,
+  "mobile/ios/App/Resources/places.json": placesJson,
 };
 const check = process.argv.includes("--check");
 const stale = [];
