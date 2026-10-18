@@ -19110,6 +19110,41 @@
           }
         }
       }
+    },
+    "settings.privacyNoteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz yalnız telefonda vakit hesabı için kullanılır, hiçbir yere gönderilmez. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app needs no account and has no ads or tracking. Your location is used only on your phone to calculate prayer times and is never sent anywhere. If you join the mailing list, your address is passed to the shared Bumba list for that purpose only."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten verwendet und nirgendwohin gesendet. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız yalnız telefonda namaz vaxtlarının hesablanması üçün istifadə olunur və heç yerə göndərilmir. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة ولا يُرسل إلى أي مكان. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

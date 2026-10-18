@@ -66,6 +66,32 @@ jobs:
         working-directory: mobile/android
         run: ./gradlew :core:test
 
+  android-app:
+    name: Android uygulaması
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+      # Ekran görüntüleri emülatörsüz (Robolectric + Roborazzi, ScreenshotTest)
+      - name: Derle ve ekran görüntüleri
+        working-directory: mobile/android
+        env:
+          VERSION_CODE: ${{ github.run_number }}
+        run: ./gradlew :app:assembleDebug :app:testDebugUnitTest
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-ekran-goruntuleri
+          path: mobile/android/app/build/screens
+
   ios-app:
     name: iOS uygulaması (simülatör)
     runs-on: macos-latest

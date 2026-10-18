@@ -1,7 +1,8 @@
 /* Uygulama metinleri ve verileri sitedeki tek kaynaktan üretilir (src/i18n/*.json, src/data/*.json);
    sitede karşılığı olmayan uygulama metinleri mobile/shared/app-strings.json'dadır.
-   Çıktılar: iOS String Catalog (Localizable.xcstrings; NS/CF ile başlayan Info.plist anahtarları InfoPlist.xcstrings'e)
-   ve il listesi (provinces.json).
+   Çıktılar: iOS String Catalog (Localizable.xcstrings; NS/CF ile başlayan Info.plist anahtarları InfoPlist.xcstrings'e),
+   Android metinleri (res/values-…/strings.xml; anahtardaki nokta ve tire "_" olur) ve veri dosyaları
+   (il listesi, şehirler, takvim, dünya yerleri; iOS'ta App/Resources, Android'de assets).
    Kullanım: node mobile/shared/gen-strings.mjs          → dosyaları yazar
              node mobile/shared/gen-strings.mjs --check  → güncel değilse hata verir (CI) */
 import fs from "node:fs";
@@ -74,6 +75,15 @@ for (const [key, byLang] of Object.entries(APP)) {
 const names = (s) => [...new Set([...s.matchAll(/\{([a-z]+)\}/gi)].map((m) => m[1]))];
 const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
 
+/* Android: {ad} → %1$s; yer tutucusu olmayan metinde % olduğu gibi kalır (formatted="false") */
+const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar" };
+const androidName = (key) => key.replace(/[^A-Za-z0-9_]/g, "_");
+const androidEscape = (s) => s
+  .replace(/\\/g, "\\\\").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+  .replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, "\\n").replace(/^([@?])/, "\\$1");
+const androidRes = Object.fromEntries(LANGS.map((l) => [l, []]));
+const androidNames = new Map();
+
 const strings = {}, plistStrings = {};
 for (const [key, get] of Object.entries(KEYS)) {
   const localizations = {};
@@ -85,7 +95,27 @@ for (const [key, get] of Object.entries(KEYS)) {
     localizations[l] = { stringUnit: { state: "translated", value: toIOS(v, order) } };
   }
   (/^(NS|CF)/.test(key) ? plistStrings : strings)[key] = { extractionState: "manual", localizations };
+  if (/^(NS|CF)/.test(key)) continue;
+  const name = androidName(key);
+  if (androidNames.has(name)) throw new Error(`Android adı çakışıyor: ${key} / ${androidNames.get(name)}`);
+  androidNames.set(name, key);
+  for (const l of LANGS) {
+    const v = get(I[l], l);
+    if (order.length) {
+      const body = androidEscape(v.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$s`));
+      androidRes[l].push(`    <string name="${name}">${body}</string>`);
+    } else {
+      const attr = v.includes("%") ? ' formatted="false"' : "";
+      androidRes[l].push(`    <string name="${name}"${attr}>${androidEscape(v)}</string>`);
+    }
+  }
 }
+// Uygulama adı (ana ekran simgesinin altında, dile göre)
+for (const l of LANGS) androidRes[l].push(`    <string name="app_name">${androidEscape(APP["app.displayName"][l])}</string>`);
+const androidXml = (l) => '<?xml version="1.0" encoding="utf-8"?>\n<!-- gen-strings.mjs üretir; elle düzenlemeyin -->\n<resources>\n' +
+  androidRes[l].join("\n") + "\n</resources>\n";
+const localesConfig = '<?xml version="1.0" encoding="utf-8"?>\n<locale-config xmlns:android="http://schemas.android.com/apk/res/android">\n' +
+  LANGS.map((l) => `    <locale android:name="${l}" />`).join("\n") + "\n</locale-config>\n";
 const catalog = (s) => JSON.stringify({ sourceLanguage: "tr", strings: s, version: "1.0" }, null, 2) + "\n";
 const xcstrings = catalog(strings);
 
@@ -122,6 +152,12 @@ const files = {
   "mobile/ios/App/Resources/calendar.json": calendarJson,
   "mobile/ios/App/Resources/cities.json": citiesJson,
   "mobile/ios/App/Resources/places.json": placesJson,
+  "mobile/android/app/src/main/assets/provinces.json": provincesJson,
+  "mobile/android/app/src/main/assets/calendar.json": calendarJson,
+  "mobile/android/app/src/main/assets/cities.json": citiesJson,
+  "mobile/android/app/src/main/assets/places.json": placesJson,
+  "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
+  ...Object.fromEntries(LANGS.map((l) => [`mobile/android/app/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l)])),
 };
 const check = process.argv.includes("--check");
 const stale = [];
