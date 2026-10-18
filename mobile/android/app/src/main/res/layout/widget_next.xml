@@ -18,7 +18,8 @@
         android:textSize="12sp"
         android:textStyle="bold" />
 
-    <View
+    <!-- Boşluk (widget'ta düz View kullanılamaz) -->
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

@@ -93,7 +93,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                 val opts = listOf("metric", "imperial")
                 SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
                     opts.forEachIndexed { i, o ->
-                        SegmentedButton(Prefs.units == o, { Prefs.saveUnits(o) }, SegmentedButtonDefaults.itemShape(i, opts.size)) {
+                        SegmentedButton(Prefs.units == o, { Prefs.saveUnits(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
                             Text(L("settings.units.$o"), fontSize = 13.sp, maxLines = 1)
                         }
                     }
@@ -103,8 +103,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
         AppCard {
             SectionTitle(L("client.formatLabel"))
             SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                SegmentedButton(!Prefs.h12, { Prefs.saveH12(false) }, SegmentedButtonDefaults.itemShape(0, 2)) { Text(L("client.format24")) }
-                SegmentedButton(Prefs.h12, { Prefs.saveH12(true) }, SegmentedButtonDefaults.itemShape(1, 2)) { Text(L("client.format12")) }
+                SegmentedButton(!Prefs.h12, { Prefs.saveH12(false) }, SegmentedButtonDefaults.itemShape(0, 2), colors = segColors()) { Text(L("client.format24")) }
+                SegmentedButton(Prefs.h12, { Prefs.saveH12(true) }, SegmentedButtonDefaults.itemShape(1, 2), colors = segColors()) { Text(L("client.format12")) }
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("settings.keepAwake"), Modifier.weight(1f), color = Theme.c.text)
@@ -114,7 +114,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             val opts = listOf("system", "light", "dark")
             SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
                 opts.forEachIndexed { i, o ->
-                    SegmentedButton(Prefs.appearance == o, { Prefs.saveAppearance(o) }, SegmentedButtonDefaults.itemShape(i, opts.size)) {
+                    SegmentedButton(Prefs.appearance == o, { Prefs.saveAppearance(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
                         Text(L("settings.$o"))
                     }
                 }

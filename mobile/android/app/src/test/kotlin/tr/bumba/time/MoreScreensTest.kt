@@ -30,10 +30,12 @@ import java.time.temporal.ChronoUnit
 class MoreScreensTest {
     private val dir = System.getProperty("screens.dir") ?: "build/screens"
 
-    private fun shot(name: String, qualifiers: String = "tr", dark: Boolean = false, content: @Composable () -> Unit) {
+    private fun shot(name: String, qualifiers: String = "tr", dark: Boolean = false, imperial: Boolean = false, content: @Composable () -> Unit) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
         Prefs.saveAppearance(if (dark) "dark" else "light")
         Prefs.saveAccent("amber")
+        // Robolectric'te bölge ABD: birimler açıkça metrik
+        if (!imperial) Prefs.saveUnits("metric")
         captureRoboImage("$dir/$name.png") {
             AppTheme { Column(Modifier.fillMaxSize().background(Theme.c.bg)) { content() } }
         }
@@ -79,7 +81,7 @@ class MoreScreensTest {
         Prefs.saveProvince("istanbul")
         seedWeather()
         Prefs.saveUnits("imperial")
-        shot("en-hava-koyu", "en", dark = true) { WeatherScreen() }
+        shot("en-hava-koyu", "en", dark = true, imperial = true) { WeatherScreen() }
         Prefs.saveUnits("metric")
     }
 
@@ -97,7 +99,14 @@ class MoreScreensTest {
         host.addView(v, ViewGroup.LayoutParams(w * 3, h * 3))
         host.measure(View.MeasureSpec.makeMeasureSpec(w * 3, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(h * 3, View.MeasureSpec.EXACTLY))
         host.layout(0, 0, w * 3, h * 3)
-        host.captureRoboImage("$dir/$name.png")
+        // Activity'siz görünüm: doğrudan bitmap'e çizilir (gri zemin ana ekran gibi)
+        val b = android.graphics.Bitmap.createBitmap(w * 3 + 60, h * 3 + 60, android.graphics.Bitmap.Config.ARGB_8888)
+        val cv = android.graphics.Canvas(b)
+        cv.drawColor(0xFF6E7781.toInt())
+        cv.translate(30f, 30f)
+        host.draw(cv)
+        java.io.File(dir).mkdirs()
+        java.io.FileOutputStream("$dir/$name.png").use { b.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it) }
     }
 
     @Test fun widgets() {
