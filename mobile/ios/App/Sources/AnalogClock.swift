@@ -29,13 +29,14 @@ struct AnalogClock: View {
                     let a = Double(n) * 30 * .pi / 180
                     Text(verbatim: String(n))
                         .font(.system(size: 15 * u, weight: .semibold))
-                        .foregroundStyle(Theme.text)
+                        .foregroundStyle(Theme.ink)
                         .offset(x: 66 * u * sin(a), y: -66 * u * cos(a))
                 }
-                hand(angle: hour * 30, from: 4, to: 44, width: 6, color: Theme.text, u: u)
-                hand(angle: min * 6, from: 6, to: 66, width: 4.5, color: Theme.text, u: u)
-                if showSeconds { hand(angle: sec * 6, from: 16, to: 76, width: 2, color: Theme.accent, u: u) }
-                Circle().fill(Theme.accent).frame(width: 10 * u, height: 10 * u)
+                // Akrep yazı renginde, yelkovan temanın ana renginde, saniye ve orta temanın ikinci renginde
+                hand(angle: hour * 30, from: 4, to: 44, width: 6, color: Theme.ink, u: u)
+                hand(angle: min * 6, from: 6, to: 66, width: 4.5, color: Theme.accent, u: u)
+                if showSeconds { hand(angle: sec * 6, from: 16, to: 76, width: 2, color: Theme.accent2, u: u) }
+                Circle().fill(Theme.accent2).frame(width: 10 * u, height: 10 * u)
             }
             .frame(width: 200 * u, height: 200 * u)
             .position(x: g.size.width / 2, y: g.size.height / 2)

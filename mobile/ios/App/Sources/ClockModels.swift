@@ -181,6 +181,7 @@ private struct DigitalPart: View {
             Text(Fmt.time(now, seconds: seconds))
                 .font(.system(size: size, weight: .bold, design: .rounded))
                 .monospacedDigit()
+                .foregroundStyle(Theme.ink)
             if h12 {
                 Text(Fmt.ampm(now)).font(.system(size: size * 0.3, weight: .semibold))
             }

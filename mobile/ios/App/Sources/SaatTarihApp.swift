@@ -56,7 +56,7 @@ enum AppTab: Int, CaseIterable {
 
 /// Araçlar sekmesindeki sayfalar
 enum ToolRoute: Hashable {
-    case alarm, timer, stopwatch, pomodoro, datecalc, settings, privacy, about
+    case alarm, timer, stopwatch, pomodoro, datecalc, settings, about
 }
 
 /// Sekme ve Araçlar gezintisi; saat ekranındaki alanlar dokununca ilgili sayfayı açar.
@@ -100,19 +100,22 @@ struct RootView: View {
     @State private var keyboard = false
 
     var body: some View {
-        content
-            .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)")
-            .safeAreaInset(edge: .bottom, spacing: 0) {
-                if !keyboard { TabBar(selection: $router.tab) }
-            }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboard = true }
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboard = false }
-            .tint(Theme.accent)
-            .preferredColorScheme(scheme)
-            .fullScreenCover(item: $screen) { s in
-                NavigationStack { s.view }
-                    .preferredColorScheme(scheme)
-            }
+        // Bar sayfanın altında ayrı bir satır: sayfanın son satırları barın altında kalmaz
+        // (safeAreaInset NavigationStack içindeki listelere geçmiyordu; yazılar barın altına giriyordu)
+        VStack(spacing: 0) {
+            content
+                .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)")
+                .frame(maxHeight: .infinity)
+            if !keyboard { TabBar(selection: $router.tab) }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboard = true }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboard = false }
+        .tint(Theme.accent)
+        .preferredColorScheme(scheme)
+        .fullScreenCover(item: $screen) { s in
+            NavigationStack { s.view }
+                .preferredColorScheme(scheme)
+        }
     }
 
     @ViewBuilder private var content: some View {
@@ -142,6 +145,8 @@ private struct TabBar: View {
             ForEach(AppTab.allCases, id: \.self) { tab in
                 let on = tab == selection
                 Button {
+                    // Seçili sekmeye yeniden dokununca Araçlar'da açık sayfadan listeye dönülür
+                    if tab == selection, tab == .tools { Router.shared.toolsPath = [] }
                     selection = tab
                 } label: {
                     VStack(spacing: 3) {

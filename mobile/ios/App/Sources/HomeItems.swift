@@ -90,6 +90,7 @@ struct HomeItemsView: View {
                     .tint(Theme.accent)
             }
         }
+        .themedBackground()
         .environment(\.editMode, .constant(.active))
         .navigationTitle(L("home.customize"))
         .navigationBarTitleDisplayMode(.inline)
@@ -101,6 +102,8 @@ struct HomeItemView: View {
     let item: HomeItem
     let now: Date
     let place: AppPlace
+    /// Dönen dünyanın yüksekliği (saat ekranı kalan boşluğa göre verir)
+    var globeHeight: CGFloat = 300
     /// Sayfa açıldıktan sonra (tam ekran saat kendini kapatır)
     var opened: () -> Void = {}
 
@@ -142,7 +145,7 @@ struct HomeItemView: View {
         case .globe:
             GlobeView(interactive: false)
                 .allowsHitTesting(false)
-                .frame(height: 300)
+                .frame(height: globeHeight)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
         }
     }

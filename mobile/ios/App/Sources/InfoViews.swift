@@ -41,10 +41,8 @@ struct SettingsView: View {
                 }
                 NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
             }
-            Section {
-                NavigationLink { ListSignupView() } label: { Label(L("list.heading"), systemImage: "envelope") }
-            }
         }
+        .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("settings.title"))
         .navigationBarTitleDisplayMode(.inline)
@@ -70,7 +68,7 @@ struct AccentPickerView: View {
             }
             Section {
                 HStack(spacing: 12) {
-                    Image(systemName: "clock").font(.title2)
+                    AnalogClock(date: Date(), showSeconds: true).frame(width: 64, height: 64)
                     Text(L("app.displayName")).font(.headline)
                     Spacer()
                     Text(L("settings.color.sample")).font(.subheadline.weight(.semibold))
@@ -84,6 +82,7 @@ struct AccentPickerView: View {
                 Button(L("world.reset")) { accent = AccentPalette.defaultID }
             }
         }
+        .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("settings.color"))
         .navigationBarTitleDisplayMode(.inline)
@@ -94,17 +93,25 @@ struct AccentPickerView: View {
         return Button {
             accent = p.id
         } label: {
-            Circle()
-                .fill(p.color)
-                .frame(width: 40, height: 40)
-                .overlay {
-                    if on {
-                        Image(systemName: "checkmark")
-                            .font(.headline.weight(.bold))
-                            .foregroundStyle(Theme.bg)
-                    }
+            // Üç renk: ana renk, ikinci renk ve kadran/zemin tonu
+            HStack(spacing: 0) {
+                Rectangle().fill(p.color)
+                VStack(spacing: 0) {
+                    Rectangle().fill(p.secondColor)
+                    Rectangle().fill(p.faceColor)
                 }
-                .overlay(Circle().stroke(Theme.text.opacity(on ? 0.6 : 0), lineWidth: 2).padding(-4))
+            }
+            .frame(width: 40, height: 40)
+            .clipShape(Circle())
+            .overlay {
+                if on {
+                    Image(systemName: "checkmark")
+                        .font(.headline.weight(.bold))
+                        .foregroundStyle(.white)
+                        .shadow(radius: 2)
+                }
+            }
+            .overlay(Circle().stroke(Theme.text.opacity(on ? 0.6 : 0), lineWidth: 2).padding(-4))
         }
         .buttonStyle(.plain)
         .accessibilityLabel(label)
@@ -125,6 +132,7 @@ struct PrivacyView: View {
                     .tint(Theme.accent)
             }
         }
+        .themedBackground()
         .navigationTitle(L("settings.privacy"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -132,7 +140,8 @@ struct PrivacyView: View {
 
 // MARK: Hakkında
 
-/// Uygulama adı, sürüm, web sitesi ve iletişim; iletişimin altında sağda sitedeki Bumba Life rozeti (açık/koyu)
+/// Uygulama adı, sürüm, web sitesi ve iletişim; iletişimin altında sağda sitedeki Bumba Life rozeti (açık/koyu);
+/// altında e-posta listesi formu ve gizlilik notu
 struct AboutView: View {
     var body: some View {
         Form {
@@ -169,7 +178,16 @@ struct AboutView: View {
                 .padding(.top, 12)
             }
             .tint(Theme.text)
+            // E-posta listesi doğrudan burada (düğme değil, yazma alanı; 18 Ekim 2026, sahibin isteği)
+            ListSignupSection()
+            // Gizlilik açık hâlde Hakkında'nın altında
+            Section(L("settings.privacy")) {
+                Text(L("settings.privacyNote")).font(.subheadline)
+                Link(L("privacy.full"), destination: SiteLinks.privacy)
+                    .tint(Theme.accent)
+            }
         }
+        .themedBackground()
         .navigationTitle(L("settings.about"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -195,54 +213,60 @@ enum SiteLinks {
 /// Ortak Bumba listesine katılım (sitedeki formla aynı alanlar). Onay kutusu işaretli gelmez; ortak servis
 /// onay e-postası gönderir. Adres yalnız bu gönderimde kullanılır, uygulamada saklanmaz.
 struct ListSignupView: View {
+    var body: some View {
+        Form { ListSignupSection() }
+            .themedBackground()
+            .navigationTitle(L("list.heading"))
+            .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+/// Liste formu (Hakkında sayfasında): adres alanı, onay anahtarı, aydınlatma bağlantısı ve gönder
+struct ListSignupSection: View {
     @State private var email = ""
     @State private var consent = false
     @State private var sending = false
     @State private var result: Bool?
 
     var body: some View {
-        Form {
-            Section {
-                Text(L("list.lead")).font(.subheadline)
+        Section {
+            Text(L("list.lead")).font(.subheadline)
+            TextField(L("list.emailLabel"), text: $email)
+                .keyboardType(.emailAddress)
+                .textContentType(.emailAddress)
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+                .submitLabel(.send)
+                .onSubmit { if canSend { Task { await send() } } }
+            Toggle(isOn: $consent) {
+                Text(L("list.consentText")).font(.subheadline)
             }
-            Section {
-                TextField(L("list.emailLabel"), text: $email)
-                    .keyboardType(.emailAddress)
-                    .textContentType(.emailAddress)
-                    .textInputAutocapitalization(.never)
-                    .autocorrectionDisabled()
-                Toggle(isOn: $consent) {
-                    Text(L("list.consentText")).font(.subheadline)
-                }
+            .tint(Theme.accent)
+            Link(L("list.readNote"), destination: ListService.noteURL)
+                .font(.subheadline)
                 .tint(Theme.accent)
-                Link(L("list.readNote"), destination: ListService.noteURL)
-                    .font(.subheadline)
-                    .tint(Theme.accent)
-            } footer: {
-                Text(L("list.popupText"))
-            }
-            Section {
-                Button {
-                    Task { await send() }
-                } label: {
-                    HStack {
-                        Text(L("list.submit")).font(.headline)
-                        if sending { Spacer(); ProgressView() }
-                    }
+            Button {
+                Task { await send() }
+            } label: {
+                HStack {
+                    Text(L("list.submit")).font(.headline)
+                    if sending { Spacer(); ProgressView() }
                 }
-                .disabled(!consent || !email.contains("@") || sending)
-                .tint(Theme.accent)
             }
+            .disabled(!canSend)
+            .tint(Theme.accent)
             if let result {
-                Section {
-                    Label(L(result ? "list.ok" : "list.err"), systemImage: result ? "checkmark.circle" : "exclamationmark.triangle")
-                        .foregroundStyle(result ? Theme.accent : .red)
-                }
+                Label(L(result ? "list.ok" : "list.err"), systemImage: result ? "checkmark.circle" : "exclamationmark.triangle")
+                    .foregroundStyle(result ? Theme.accent : .red)
             }
+        } header: {
+            Text(L("list.heading"))
+        } footer: {
+            Text(L("list.popupText"))
         }
-        .navigationTitle(L("list.heading"))
-        .navigationBarTitleDisplayMode(.inline)
     }
+
+    private var canSend: Bool { consent && email.contains("@") && !sending }
 
     private func send() async {
         sending = true

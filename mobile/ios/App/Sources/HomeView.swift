@@ -9,37 +9,47 @@ struct ClockTab: View {
     @State private var fullscreen = false
     @State private var customizing = false
 
+    /// Dönen dünyanın yüksekliği: varsayılan düzende sayfa ekrana tam otursun diye kalan boşluğu doldurur
+    @State private var globeHeight: CGFloat = 260
+
     var body: some View {
-        TimelineView(.periodic(from: .now, by: 1)) { context in
-            let now = context.date
-            let place = PlaceModel.shared.place
-            ScrollView {
-                VStack(spacing: 22) {
-                    ClockStage(now: now, place: place)
-                    ForEach(HomeLayout(raw: homeItems).visible) { item in
-                        HomeItemView(item: item, now: now, place: place)
-                    }
-                    HStack(spacing: 28) {
-                        Button {
-                            fullscreen = true
-                        } label: {
-                            Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
+        GeometryReader { geo in
+            TimelineView(.periodic(from: .now, by: 1)) { context in
+                let now = context.date
+                let place = PlaceModel.shared.place
+                let items = HomeLayout(raw: homeItems).visible
+                ScrollView {
+                    VStack(spacing: 16) {
+                        ClockStage(now: now, place: place, height: Self.stageHeight(geo.size.height))
+                        ForEach(items) { item in
+                            HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight)
                         }
-                        Button {
-                            customizing = true
-                        } label: {
-                            Label(L("home.edit"), systemImage: "slider.horizontal.3")
+                        HStack(spacing: 28) {
+                            Button {
+                                fullscreen = true
+                            } label: {
+                                Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
+                            }
+                            Button {
+                                customizing = true
+                            } label: {
+                                Label(L("home.edit"), systemImage: "slider.horizontal.3")
+                            }
                         }
+                        .font(.headline)
+                        .foregroundStyle(Theme.accent)
                     }
-                    .font(.headline)
-                    .foregroundStyle(Theme.accent)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { h in
+                        globeHeight = Self.fitGlobe(contentHeight: h, viewport: geo.size.height, globe: globeHeight,
+                                                    hasGlobe: items.contains(.globe))
+                    }
+                    .frame(maxWidth: 640)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 20)
-                .frame(maxWidth: 640)
-                .frame(maxWidth: .infinity)
+                .background(Theme.bg.ignoresSafeArea())
             }
-            .background(Theme.bg.ignoresSafeArea())
         }
         .onAppear { UIApplication.shared.isIdleTimerDisabled = keepAwake }
         .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
@@ -62,12 +72,28 @@ struct ClockTab: View {
     }
 }
 
+extension ClockTab {
+    /// Saat sahnesinin yüksekliği ekrana göre (küçük telefonda da saat, alanlar ve dünya bir ekrana sığsın)
+    static func stageHeight(_ viewport: CGFloat) -> CGFloat {
+        min(380, max(280, viewport * 0.46))
+    }
+
+    /// Dünya, sayfayı ekranın altına kadar dolduracak yüksekliği alır (en az 170 pt; daha fazla alan
+    /// eklenmişse sayfa kayar). İçerik yüksekliği ölçülür, dünya dışındaki kısım çıkarılır.
+    static func fitGlobe(contentHeight: CGFloat, viewport: CGFloat, globe: CGFloat, hasGlobe: Bool) -> CGFloat {
+        guard hasGlobe else { return globe }
+        let target = max(170, (viewport - (contentHeight - globe)).rounded(.down))
+        return abs(target - globe) > 1 ? target : globe
+    }
+}
+
 /// Saat sahnesi: modeller yatay kaydırılır; altta (sitedeki gibi) ‹ 1/19 › — sayaca dokununca model listesi.
 /// Yükseklik sabit: model değişince alttaki alanlar oynamaz. Saate dokununca saniye açılır/kapanır
 /// (dijitalde varsayılan açık, analogda kapalı).
 struct ClockStage: View {
     let now: Date
     let place: AppPlace
+    var height: CGFloat = 380
     @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
 
     private var model: ClockModel { ClockModel(rawValue: modelID) ?? .wxDigitalCalWeek }
@@ -82,7 +108,7 @@ struct ClockStage: View {
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .frame(height: 380)
+            .frame(height: height)
             HStack(spacing: 22) {
                 Button { step(-1) } label: { Image(systemName: "chevron.backward") }
                     .accessibilityLabel(L("stage.prev"))
@@ -120,6 +146,7 @@ struct FullscreenClock: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
+    @State private var globeHeight: CGFloat = 260
 
     var body: some View {
         GeometryReader { geo in
@@ -128,7 +155,7 @@ struct FullscreenClock: View {
                 let place = PlaceModel.shared.place
                 let items = HomeLayout(raw: homeItems).visible
                 ScrollView {
-                    VStack(spacing: 22) {
+                    VStack(spacing: 16) {
                         TabView(selection: $modelID) {
                             ForEach(ClockModel.allCases) { m in
                                 ClockModelView(model: m, now: now, place: place)
@@ -137,9 +164,9 @@ struct FullscreenClock: View {
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
-                        .frame(height: items.isEmpty ? max(380, geo.size.height - 70) : max(380, geo.size.height * 0.6))
+                        .frame(height: items.isEmpty ? max(300, geo.size.height - 60) : ClockTab.stageHeight(geo.size.height * 1.08))
                         ForEach(items) { item in
-                            HomeItemView(item: item, now: now, place: place) { dismiss() }
+                            HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight) { dismiss() }
                         }
                         Button { dismiss() } label: {
                             Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
@@ -148,7 +175,11 @@ struct FullscreenClock: View {
                         .foregroundStyle(Theme.muted)
                     }
                     .padding(.horizontal, 16)
-                    .padding(.vertical, 12)
+                    .padding(.vertical, 8)
+                    .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { h in
+                        globeHeight = ClockTab.fitGlobe(contentHeight: h, viewport: geo.size.height, globe: globeHeight,
+                                                        hasGlobe: items.contains(.globe))
+                    }
                     .frame(maxWidth: 720)
                     .frame(maxWidth: .infinity)
                 }

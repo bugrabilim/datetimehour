@@ -88,6 +88,7 @@ struct WorldClockView: View {
                         .font(.footnote)
                 }
             }
+            .themedBackground()
             .environment(\.editMode, $editMode)
         }
         .navigationTitle(L("world.h1"))
@@ -105,6 +106,7 @@ struct WorldClockView: View {
                         }
                     }
                 }
+                .themedBackground()
                 .navigationTitle(L("world.addCity"))
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("world.done")) { adding = false } } }
