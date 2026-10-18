@@ -9,6 +9,7 @@ on:
       - "src/js/nature-calc.js"
       - "src/data/provinces.json"
       - "src/data/cities.json"
+      - "src/data/places.json"
       - "src/i18n/**"
       - ".github/workflows/mobile.yml"
   push:
@@ -19,6 +20,7 @@ on:
       - "src/js/nature-calc.js"
       - "src/data/provinces.json"
       - "src/data/cities.json"
+      - "src/data/places.json"
       - "src/i18n/**"
       - ".github/workflows/mobile.yml"
 

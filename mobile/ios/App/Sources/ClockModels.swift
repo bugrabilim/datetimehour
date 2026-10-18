@@ -239,7 +239,7 @@ private struct WeatherPart: View {
                         .font(.system(size: f * 0.9))
                         .foregroundStyle(Theme.muted)
                     Text(L("weather.humidity") + " %\(Int((c.humidity * 100).rounded())) · " + L("weather.wind") + " "
-                         + "\(Int(c.wind.speed.converted(to: .kilometersPerHour).value.rounded())) km/h")
+                         + Units.wind(c.wind.speed))
                         .font(.system(size: f * 0.9))
                         .foregroundStyle(Theme.muted)
                 }
@@ -268,7 +268,7 @@ private struct WeatherPart: View {
     }
 
     private func temp(_ t: Measurement<UnitTemperature>) -> String {
-        "\(Int(t.converted(to: .celsius).value.rounded()))°"
+        Units.temp(t)
     }
 }
 

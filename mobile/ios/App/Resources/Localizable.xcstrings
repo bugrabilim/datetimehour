@@ -17290,6 +17290,1826 @@
           }
         }
       }
+    },
+    "tab.weather": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weather"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wetter"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الطقس"
+          }
+        }
+      }
+    },
+    "tab.world": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "World"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Welt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العالم"
+          }
+        }
+      }
+    },
+    "tab.seasons": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevsimler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seasons"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jahreszeiten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fəsillər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الفصول"
+          }
+        }
+      }
+    },
+    "home.item.globe": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dönen dünya"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spinning globe"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotierender Globus"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fırlanan dünya"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الكرة الأرضية الدوارة"
+          }
+        }
+      }
+    },
+    "globe.sun": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sun"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonne"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشمس"
+          }
+        }
+      }
+    },
+    "globe.moon": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moon"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mond"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "القمر"
+          }
+        }
+      }
+    },
+    "settings.color": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama rengi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App color"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App-Farbe"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiq rəngi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لون التطبيق"
+          }
+        }
+      }
+    },
+    "settings.color.general": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Genel"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "General"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allgemein"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ümumi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عامة"
+          }
+        }
+      }
+    },
+    "settings.color.kids": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çocuklar için"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For kids"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für Kinder"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uşaqlar üçün"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "للأطفال"
+          }
+        }
+      }
+    },
+    "settings.color.elegant": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zarif"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elegant"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elegant"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zərif"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أنيقة"
+          }
+        }
+      }
+    },
+    "settings.color.business": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Business"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Business"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İş"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أعمال"
+          }
+        }
+      }
+    },
+    "settings.color.sample": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Örnek"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sample"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beispiel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nümunə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مثال"
+          }
+        }
+      }
+    },
+    "settings.units": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Birimler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Units"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einheiten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vahidlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوحدات"
+          }
+        }
+      }
+    },
+    "settings.units.metric": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metrik (°C, km/sa)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metric (°C, km/h)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metrisch (°C, km/h)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metrik (°C, km/saat)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متري (°م، كم/س)"
+          }
+        }
+      }
+    },
+    "settings.units.imperial": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amerikan (°F, mph)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imperial (°F, mph)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imperial (°F, mph)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amerika (°F, mph)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إمبراطوري (°ف، ميل/س)"
+          }
+        }
+      }
+    },
+    "google.button": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Takvimi bağla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect Google Calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Kalender verbinden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Təqvimini qoş"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ربط تقويم Google"
+          }
+        }
+      }
+    },
+    "google.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Takvimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Təqvimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقويم Google"
+          }
+        }
+      }
+    },
+    "google.lead": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Takvimi'ndeki etkinlikleri burada görmek için Google hesabınızı iPhone'a bir kez eklemeniz yeterli. Uygulama Google'a doğrudan bağlanmaz ve şifrenizi görmez; takvimler iPhone üzerinden gelir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To see your Google Calendar events here, add your Google account to your iPhone once. The app never connects to Google directly and never sees your password; calendars come through your iPhone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um Ihre Google-Kalender-Termine hier zu sehen, fügen Sie Ihr Google-Konto einmal zum iPhone hinzu. Die App verbindet sich nicht direkt mit Google und sieht Ihr Passwort nicht; die Kalender kommen über das iPhone."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google Təqvimindəki tədbirləri burada görmək üçün Google hesabınızı iPhone-a bir dəfə əlavə etməyiniz kifayətdir. Tətbiq Google-a birbaşa qoşulmur və şifrənizi görmür; təqvimlər iPhone vasitəsilə gəlir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لرؤية أحداث تقويم Google هنا، يكفي أن تضيف حساب Google إلى iPhone مرة واحدة. لا يتصل التطبيق بـ Google مباشرة ولا يرى كلمة المرور؛ تصل التقويمات عبر iPhone."
+          }
+        }
+      }
+    },
+    "google.stepsTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adımlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Steps"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schritte"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Addımlar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الخطوات"
+          }
+        }
+      }
+    },
+    "google.step1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone'da Ayarlar uygulamasını açın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the Settings app on your iPhone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffnen Sie die Einstellungen-App auf dem iPhone."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone-da Parametrlər tətbiqini açın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح تطبيق الإعدادات على iPhone."
+          }
+        }
+      }
+    },
+    "google.step2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamalar › Takvim › Takvim Hesapları'na girin (eski iOS'ta Takvim › Hesaplar)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go to Apps › Calendar › Calendar Accounts (on older iOS: Calendar › Accounts)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gehen Sie zu Apps › Kalender › Kalenderaccounts (bei älterem iOS: Kalender › Accounts)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqlər › Təqvim › Təqvim hesabları bölməsinə keçin (köhnə iOS-da Təqvim › Hesablar)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انتقل إلى التطبيقات › التقويم › حسابات التقويم (في إصدارات iOS الأقدم: التقويم › الحسابات)."
+          }
+        }
+      }
+    },
+    "google.step3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap Ekle › Google'ı seçin ve Google hesabınızla giriş yapın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose Add Account › Google and sign in with your Google account."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wählen Sie Account hinzufügen › Google und melden Sie sich mit Ihrem Google-Konto an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesab əlavə et › Google seçin və Google hesabınızla daxil olun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر إضافة حساب › Google وسجّل الدخول بحساب Google."
+          }
+        }
+      }
+    },
+    "google.step4": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvimler anahtarının açık olduğundan emin olun ve kaydedin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Make sure the Calendars switch is on, then save."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Achten Sie darauf, dass der Schalter Kalender aktiviert ist, und sichern Sie."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvimlər açarının açıq olduğuna əmin olun və yadda saxlayın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تأكد من تفعيل مفتاح التقويمات ثم احفظ."
+          }
+        }
+      }
+    },
+    "google.step5": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buraya dönüp “Telefonumdaki takvimleri göster” düğmesine dokunun ve izin verin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Come back here, tap “Show calendars on my phone” and allow access."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kehren Sie hierher zurück, tippen Sie auf „Kalender auf meinem Telefon anzeigen“ und erlauben Sie den Zugriff."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bura qayıdın, “Telefonumdakı təqvimləri göstər” düyməsinə toxunun və icazə verin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عد إلى هنا واضغط «اعرض التقويمات على هاتفي» ثم اسمح بالوصول."
+          }
+        }
+      }
+    },
+    "google.openSettings": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayarlar'ı aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Settings"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen öffnen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parametrləri aç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فتح الإعدادات"
+          }
+        }
+      }
+    },
+    "google.ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvim izni açık: Google etkinlikleriniz takvimde görünür."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendar access is on: your Google events appear in the calendar."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalenderzugriff ist aktiv: Ihre Google-Termine erscheinen im Kalender."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvim icazəsi açıqdır: Google tədbirləriniz təqvimdə görünür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوصول إلى التقويم مفعّل: تظهر أحداث Google في التقويم."
+          }
+        }
+      }
+    },
+    "google.denied": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvim izni kapalı. Ayarlar'da bu uygulamanın Takvimler iznini “Tam Erişim” yapın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendar access is off. In Settings, set this app's Calendars permission to “Full Access”."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalenderzugriff ist aus. Stellen Sie in den Einstellungen die Kalender-Berechtigung dieser App auf „Vollzugriff“."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvim icazəsi bağlıdır. Parametrlərdə bu tətbiqin Təqvimlər icazəsini “Tam giriş” edin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوصول إلى التقويم متوقف. في الإعدادات اجعل إذن التقويمات لهذا التطبيق «وصول كامل»."
+          }
+        }
+      }
+    },
+    "google.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni etkinlik eklerken düzenleyicide Google takviminizi seçerseniz etkinlik Google Takvimi'ne de kaydedilir. Outlook ve diğer hesaplar da aynı yolla eklenebilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you add an event, pick your Google calendar in the editor and it is saved to Google Calendar too. Outlook and other accounts can be added the same way."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie beim Hinzufügen eines Termins Ihren Google-Kalender wählen, wird er auch im Google Kalender gespeichert. Outlook und andere Konten lassen sich genauso hinzufügen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni tədbir əlavə edərkən redaktorda Google təqviminizi seçsəniz, tədbir Google Təqviminə də yazılır. Outlook və digər hesablar da eyni yolla əlavə edilə bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند إضافة حدث، اختر تقويم Google في المحرر فيُحفظ في تقويم Google أيضًا. يمكن إضافة Outlook والحسابات الأخرى بالطريقة نفسها."
+          }
+        }
+      }
+    },
+    "kids.progress": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevsim ne kadar ilerledi?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How far along is the season?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wie weit ist die Jahreszeit?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fəsil nə qədər irəliləyib?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كم مضى من الفصل؟"
+          }
+        }
+      }
+    },
+    "kids.why.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevsimler neden olur?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Why do we have seasons?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warum gibt es Jahreszeiten?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fəsillər niyə olur?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لماذا تحدث الفصول؟"
+          }
+        }
+      }
+    },
+    "kids.why.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya bir yılda Güneş'in çevresinde bir tur atar. Ama dik durmaz: ekseni 23,4 derece eğiktir, hep aynı yöne. Yılın bir yarısında kuzey yarımküre Güneş'e doğru eğilir ve yaz olur; öbür yarısında Güneş'ten uzağa eğilir ve kış olur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Earth travels once around the Sun every year. But it doesn't stand up straight: its axis is tilted 23.4 degrees, always the same way. For half the year the northern half leans toward the Sun and it's summer; for the other half it leans away and it's winter."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Erde wandert einmal im Jahr um die Sonne. Aber sie steht nicht gerade: Ihre Achse ist um 23,4 Grad geneigt, immer in dieselbe Richtung. Ein halbes Jahr neigt sich die Nordhalbkugel zur Sonne hin – dann ist Sommer; das andere halbe Jahr neigt sie sich weg – dann ist Winter."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yer bir ildə Günəşin ətrafında bir dövrə vurur. Amma düz durmur: oxu həmişə eyni tərəfə 23,4 dərəcə maildir. İlin bir yarısında şimal yarımkürəsi Günəşə tərəf əyilir və yay olur; o biri yarısında Günəşdən uzağa əyilir və qış olur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تدور الأرض حول الشمس دورة واحدة كل عام. لكنها ليست مستقيمة: محورها مائل 23.4 درجة ودائمًا في الاتجاه نفسه. في نصف العام يميل النصف الشمالي نحو الشمس فيكون الصيف، وفي النصف الآخر يميل بعيدًا عنها فيكون الشتاء."
+          }
+        }
+      }
+    },
+    "kids.why.myth": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanlış bilinen: Mevsimler Güneş'e yaklaşıp uzaklaştığımız için olmaz. Dünya Güneş'e en çok Ocak başında yaklaşır; o sırada bizde kış vardır!"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A common mix-up: seasons don't happen because we get closer to or farther from the Sun. Earth is closest to the Sun in early January – right in our winter!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein häufiger Irrtum: Jahreszeiten entstehen nicht, weil wir der Sonne näher oder ferner sind. Am nächsten ist die Erde der Sonne Anfang Januar – mitten in unserem Winter!"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhv bilinən: fəsillər Günəşə yaxınlaşıb-uzaqlaşdığımız üçün olmur. Yer Günəşə ən çox yanvarın əvvəlində yaxınlaşır – o vaxt bizdə qışdır!"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خطأ شائع: لا تحدث الفصول لأننا نقترب من الشمس أو نبتعد عنها. تكون الأرض أقرب إلى الشمس في أوائل يناير، أي في عز شتائنا!"
+          }
+        }
+      }
+    },
+    "kids.tilt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eksen 23,4° eğik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axis tilted 23.4°"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Achse 23,4° geneigt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ox 23,4° maildir"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المحور مائل 23.4°"
+          }
+        }
+      }
+    },
+    "kids.light.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Işığın açısı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The angle of sunlight"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Winkel des Sonnenlichts"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşığın bucağı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زاوية ضوء الشمس"
+          }
+        }
+      }
+    },
+    "kids.light.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazın Güneş gökyüzünde yüksektedir; ışınlar yere dik gelir ve küçük bir alanı iyice ısıtır. Kışın Güneş alçaktadır; aynı ışık geniş bir alana yayılır ve daha az ısıtır. Kışın gündüzler de kısadır, yer ısınmaya vakit bulamaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In summer the Sun is high in the sky; its rays hit the ground straight on and warm a small patch well. In winter the Sun is low; the same light spreads over a bigger area and warms it less. Winter days are also short, so the ground has less time to warm up."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Sommer steht die Sonne hoch; ihre Strahlen treffen steil auf den Boden und wärmen eine kleine Fläche kräftig. Im Winter steht sie tief; dasselbe Licht verteilt sich auf eine größere Fläche und wärmt weniger. Außerdem sind Wintertage kurz, der Boden hat weniger Zeit, warm zu werden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yayda Günəş göydə yüksəkdə olur; şüalar yerə düz düşür və kiçik sahəni yaxşı qızdırır. Qışda Günəş alçaqda olur; eyni işıq geniş sahəyə yayılır və az qızdırır. Qışda gündüzlər də qısadır, yer qızmağa vaxt tapmır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في الصيف تكون الشمس عالية في السماء، فتسقط أشعتها عمودية على الأرض وتدفئ مساحة صغيرة جيدًا. وفي الشتاء تكون منخفضة، فينتشر الضوء نفسه على مساحة أكبر ويدفئها أقل. كما أن نهار الشتاء قصير فلا تجد الأرض وقتًا كافيًا لتسخن."
+          }
+        }
+      }
+    },
+    "kids.light.summer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaz: dik ışık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Summer: steep light"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sommer: steiles Licht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yay: düz işıq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصيف: ضوء عمودي"
+          }
+        }
+      }
+    },
+    "kids.light.winter": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kış: eğik ışık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Winter: slanted light"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Winter: flaches Licht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qış: maili işıq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشتاء: ضوء مائل"
+          }
+        }
+      }
+    },
+    "kids.dates.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kış 1 Aralık'ta mı başlar, 21 Aralık'ta mı?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Does winter start on December 1 or December 21?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beginnt der Winter am 1. oder am 21. Dezember?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qış 1 dekabrda başlayır, yoxsa 21 dekabrda?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هل يبدأ الشتاء في 1 ديسمبر أم في 21 ديسمبر؟"
+          }
+        }
+      }
+    },
+    "kids.dates.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İkisi de doğru, çünkü iki ayrı hesap var. Gökbilimciler mevsimi Güneş'in konumuna göre başlatır: kış, gecenin en uzun olduğu gün (21 Aralık, kış gündönümü) başlar. Meteorologlar (hava bilimciler) ise hesap kolay olsun diye tam ayları kullanır: Aralık, Ocak ve Şubat kıştır. Bu yüzden bazı takvimlerde “kış 1 Aralık'ta başlar” yazar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Both are right, because there are two ways to count. Astronomers start a season by the Sun's position: winter begins on the longest night (December 21, the winter solstice). Meteorologists (weather scientists) use whole months to keep their numbers simple: December, January and February are winter. That's why some calendars say “winter starts on December 1”."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beides stimmt, denn es gibt zwei Zählweisen. Astronomen beginnen eine Jahreszeit nach dem Stand der Sonne: Der Winter beginnt in der längsten Nacht (21. Dezember, Wintersonnenwende). Meteorologen (Wetterforscher) nehmen der Einfachheit halber ganze Monate: Dezember, Januar und Februar sind Winter. Darum steht in manchen Kalendern „Winteranfang 1. Dezember“."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İkisi də doğrudur, çünki iki ayrı hesab var. Astronomlar fəsli Günəşin vəziyyətinə görə başladır: qış ən uzun gecədə (21 dekabr, qış gündönümü) başlayır. Meteoroloqlar (hava alimləri) isə hesab asan olsun deyə tam aylardan istifadə edir: dekabr, yanvar və fevral qışdır. Ona görə bəzi təqvimlərdə “qış 1 dekabrda başlayır” yazılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كلاهما صحيح، لأن هناك طريقتين للحساب. يبدأ علماء الفلك الفصل حسب موقع الشمس: يبدأ الشتاء في أطول ليلة (21 ديسمبر، الانقلاب الشتوي). أما علماء الأرصاد الجوية فيستخدمون أشهرًا كاملة لتسهيل الحساب: ديسمبر ويناير وفبراير هي الشتاء. لذلك تكتب بعض التقاويم «يبدأ الشتاء في 1 ديسمبر»."
+          }
+        }
+      }
+    },
+    "kids.dates.astro": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gökbilim (Güneş'e göre)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Astronomy (by the Sun)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Astronomie (nach der Sonne)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Astronomiya (Günəşə görə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الفلك (حسب الشمس)"
+          }
+        }
+      }
+    },
+    "kids.dates.meteo": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meteoroloji (tam aylar)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meteorology (whole months)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meteorologie (ganze Monate)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meteorologiya (tam aylar)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأرصاد (أشهر كاملة)"
+          }
+        }
+      }
+    },
+    "kids.south.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünyanın öbür yarısında tersi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Flipped on the other half of the world"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf der anderen Erdhälfte umgekehrt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünyanın o biri yarısında tərsinə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في النصف الآخر من العالم العكس"
+          }
+        }
+      }
+    },
+    "kids.south.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biz kıştayken Avustralya, Güney Afrika ve Arjantin'de yaz yaşanır. Oradaki çocuklar yılbaşını çoğu zaman plajda kutlar!"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "While we have winter, it's summer in Australia, South Africa and Argentina. Kids there often celebrate New Year on the beach!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn bei uns Winter ist, ist in Australien, Südafrika und Argentinien Sommer. Kinder dort feiern Neujahr oft am Strand!"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biz qışda olanda Avstraliya, Cənubi Afrika və Argentinada yaydır. Oradakı uşaqlar Yeni ili çox vaxt çimərlikdə qeyd edir!"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عندما يكون عندنا شتاء، يكون الصيف في أستراليا وجنوب أفريقيا والأرجنتين. وكثيرًا ما يحتفل الأطفال هناك برأس السنة على الشاطئ!"
+          }
+        }
+      }
+    },
+    "kids.south.north": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kuzey"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "North"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Norden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimal"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشمال"
+          }
+        }
+      }
+    },
+    "kids.south.southLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güney"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "South"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Süden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cənub"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الجنوب"
+          }
+        }
+      }
+    },
+    "kids.facts.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biliyor muydunuz?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Did you know?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wusstest du schon?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilirdinizmi?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هل تعلم؟"
+          }
+        }
+      }
+    },
+    "kids.fact1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "21 Haziran yılın en uzun günü, 21 Aralık en uzun gecesidir (kuzey yarımkürede)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "June 21 is the longest day of the year and December 21 the longest night (in the northern half)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der 21. Juni ist der längste Tag des Jahres, der 21. Dezember die längste Nacht (auf der Nordhalbkugel)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "21 iyun ilin ən uzun günü, 21 dekabr isə ən uzun gecəsidir (şimal yarımkürəsində)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "21 يونيو أطول يوم في السنة و21 ديسمبر أطول ليلة (في النصف الشمالي)."
+          }
+        }
+      }
+    },
+    "kids.fact2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mart ve Eylül'deki ekinoks günlerinde gece ile gündüz hemen hemen eşittir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On the equinoxes in March and September, day and night are almost equal."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An den Tagundnachtgleichen im März und September sind Tag und Nacht fast gleich lang."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mart və sentyabrdakı gecə-gündüz bərabərliyində gecə ilə gündüz demək olar ki, bərabərdir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في يومي الاعتدال في مارس وسبتمبر يتساوى الليل والنهار تقريبًا."
+          }
+        }
+      }
+    },
+    "kids.fact3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kuzey Kutbu'nda yazın aylarca Güneş batmaz, kışın da aylarca hiç doğmaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At the North Pole the Sun doesn't set for months in summer, and doesn't rise for months in winter."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Am Nordpol geht die Sonne im Sommer monatelang nicht unter und im Winter monatelang nicht auf."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimal qütbündə yayda aylarla Günəş batmır, qışda isə aylarla heç doğmur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في القطب الشمالي لا تغرب الشمس لأشهر في الصيف، ولا تشرق لأشهر في الشتاء."
+          }
+        }
+      }
+    },
+    "kids.fact4": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekvatora yakın ülkelerde yaz ile kış arasında fark azdır; orada yağmurlu ve kurak mevsimler vardır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Near the equator summer and winter feel almost the same; instead there are rainy and dry seasons."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In der Nähe des Äquators sind Sommer und Winter fast gleich; dort gibt es Regen- und Trockenzeiten."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekvatora yaxın ölkələrdə yay ilə qış arasında fərq azdır; orada yağışlı və quraq fəsillər olur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قرب خط الاستواء يكاد الصيف والشتاء يتشابهان؛ وبدلًا منهما هناك موسم مطير وموسم جاف."
+          }
+        }
+      }
+    },
+    "kids.fact5": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kuzey yarımkürede yaz, kıştan birkaç gün uzundur: Dünya Güneş'ten uzaktayken biraz daha yavaş gider."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In the northern half, summer is a few days longer than winter: Earth moves a little slower when it's farther from the Sun."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf der Nordhalbkugel ist der Sommer ein paar Tage länger als der Winter: Weiter weg von der Sonne bewegt sich die Erde etwas langsamer."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimal yarımkürəsində yay qışdan bir neçə gün uzundur: Yer Günəşdən uzaqda olanda bir az yavaş gedir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في النصف الشمالي يكون الصيف أطول من الشتاء ببضعة أيام: فالأرض تتحرك أبطأ قليلًا حين تكون أبعد عن الشمس."
+          }
+        }
+      }
+    },
+    "kids.more": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonraki yıllar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next years"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folgende Jahre"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Növbəti illər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السنوات التالية"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

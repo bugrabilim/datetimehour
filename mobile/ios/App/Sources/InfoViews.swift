@@ -6,11 +6,27 @@ struct SettingsView: View {
     @AppStorage("h12") private var h12 = false
     @AppStorage("keepAwake") private var keepAwake = true
     @AppStorage("appearance") private var appearance = "system"
+    @AppStorage("units") private var units = Units.systemDefault
+    /// Renk değişince bu sayfa da yeni renkle çizilir
+    @AppStorage("accent") private var accent = AccentPalette.defaultID
 
     var body: some View {
         Form {
             Section {
                 LabeledContent(L("settings.location")) { PlacePicker(font: .body) }
+            }
+            Section {
+                NavigationLink { AccentPickerView() } label: {
+                    HStack {
+                        Label(L("settings.color"), systemImage: "paintpalette")
+                        Spacer()
+                        Circle().fill(Theme.accent).frame(width: 18, height: 18)
+                    }
+                }
+                Picker(L("settings.units"), selection: $units) {
+                    Text(L("settings.units.metric")).tag("metric")
+                    Text(L("settings.units.imperial")).tag("imperial")
+                }
             }
             Section {
                 Picker(L("client.formatLabel"), selection: $h12) {
@@ -35,6 +51,67 @@ struct SettingsView: View {
     }
 }
 
+/// Uygulama rengi: dört grupta 24 renk (genel, çocuklar, zarif, iş); seçim `accent` anahtarında
+struct AccentPickerView: View {
+    @AppStorage("accent") private var accent = AccentPalette.defaultID
+
+    var body: some View {
+        List {
+            ForEach(AccentPalette.Group.allCases, id: \.self) { group in
+                Section(L("settings.color.\(group.rawValue)")) {
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 6), spacing: 12) {
+                        let colors = AccentPalette.all.filter { $0.group == group }
+                        ForEach(Array(colors.enumerated()), id: \.element.id) { i, p in
+                            swatch(p, label: L("settings.color.\(group.rawValue)") + " \(i + 1)")
+                        }
+                    }
+                    .padding(.vertical, 6)
+                }
+            }
+            Section {
+                HStack(spacing: 12) {
+                    Image(systemName: "clock").font(.title2)
+                    Text(L("app.displayName")).font(.headline)
+                    Spacer()
+                    Text(L("settings.color.sample")).font(.subheadline.weight(.semibold))
+                        .padding(.horizontal, 12).padding(.vertical, 6)
+                        .background(Theme.accent, in: Capsule())
+                        .foregroundStyle(Theme.bg)
+                }
+                .foregroundStyle(Theme.accent)
+            }
+            Section {
+                Button(L("world.reset")) { accent = AccentPalette.defaultID }
+            }
+        }
+        .tint(Theme.accent)
+        .navigationTitle(L("settings.color"))
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func swatch(_ p: AccentPalette, label: String) -> some View {
+        let on = p.id == accent
+        return Button {
+            accent = p.id
+        } label: {
+            Circle()
+                .fill(p.color)
+                .frame(width: 40, height: 40)
+                .overlay {
+                    if on {
+                        Image(systemName: "checkmark")
+                            .font(.headline.weight(.bold))
+                            .foregroundStyle(Theme.bg)
+                    }
+                }
+                .overlay(Circle().stroke(Theme.text.opacity(on ? 0.6 : 0), lineWidth: 2).padding(-4))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(label)
+        .accessibilityAddTraits(on ? .isSelected : [])
+    }
+}
+
 // MARK: Gizlilik
 
 struct PrivacyView: View {
@@ -55,7 +132,7 @@ struct PrivacyView: View {
 
 // MARK: Hakkında
 
-/// Uygulama adı, sürüm, web sitesi ve iletişim; sağ altta sitedeki Bumba Life rozeti (açık/koyu)
+/// Uygulama adı, sürüm, web sitesi ve iletişim; iletişimin altında sağda sitedeki Bumba Life rozeti (açık/koyu)
 struct AboutView: View {
     var body: some View {
         Form {
@@ -77,22 +154,21 @@ struct AboutView: View {
                 Link(destination: URL(string: "mailto:bilgi@bumbagroup.com")!) {
                     LabeledContent(L("about.contact"), value: "bilgi@bumbagroup.com")
                 }
+            } footer: {
+                // Sitedeki Bumba Life rozeti, iletişimin hemen altında sağda (18 Ekim 2026, sahibin isteği)
+                HStack {
+                    Spacer()
+                    Link(destination: URL(string: "https://bumbagroup.com/life")!) {
+                        Image("BumbaLife")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 164, height: 28)
+                    }
+                    .accessibilityLabel(L("brand.product"))
+                }
+                .padding(.top, 12)
             }
             .tint(Theme.text)
-        }
-        .safeAreaInset(edge: .bottom) {
-            HStack {
-                Spacer()
-                Link(destination: URL(string: "https://bumbagroup.com/life")!) {
-                    Image("BumbaLife")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 164, height: 28)
-                }
-                .accessibilityLabel(L("brand.product"))
-            }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 12)
         }
         .navigationTitle(L("settings.about"))
         .navigationBarTitleDisplayMode(.inline)

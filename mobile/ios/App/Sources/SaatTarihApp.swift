@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 import SaatCore
 
 @main
@@ -23,14 +24,39 @@ struct SaatTarihApp: App {
     }
 }
 
-/// Sekmeler (sahibin sırası, 18 Ekim 2026): Saat, Hava durumu, Takvim, Vakitler, Araçlar
-enum AppTab: Int {
-    case clock, weather, calendar, prayer, tools
+/// Sekmeler (sahibin sırası, 18 Ekim 2026): Saat, Hava, Takvim, Dünya saatleri, Mevsimler, Vakitler, Araçlar.
+/// iOS'un TabView'i beşten fazlasını "Diğer" altına koyduğu için alt bar uygulamanın kendisidir.
+enum AppTab: Int, CaseIterable {
+    case clock, weather, calendar, world, seasons, prayer, tools
+
+    var title: String {
+        switch self {
+        case .clock: L("tab.clock")
+        case .weather: L("tab.weather")
+        case .calendar: L("tab.calendar")
+        case .world: L("tab.world")
+        case .seasons: L("tab.seasons")
+        case .prayer: L("tab.prayer")
+        case .tools: L("tab.tools")
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .clock: "clock"
+        case .weather: "cloud.sun"
+        case .calendar: "calendar"
+        case .world: "globe.europe.africa"
+        case .seasons: "leaf"
+        case .prayer: "moon.stars"
+        case .tools: "timer"
+        }
+    }
 }
 
 /// Araçlar sekmesindeki sayfalar
 enum ToolRoute: Hashable {
-    case alarm, timer, stopwatch, pomodoro, datecalc, world, seasons, settings, privacy, about
+    case alarm, timer, stopwatch, pomodoro, datecalc, settings, privacy, about
 }
 
 /// Sekme ve Araçlar gezintisi; saat ekranındaki alanlar dokununca ilgili sayfayı açar.
@@ -57,50 +83,97 @@ final class Router {
             tab = .prayer
         case .weather:
             tab = .weather
-        case .world, .sun:
-            toolsPath = [item == .world ? .world : .seasons]
-            tab = .tools
+        case .world, .globe:
+            tab = .world
+        case .sun:
+            tab = .seasons
         }
     }
 }
 
 struct RootView: View {
     @AppStorage("appearance") private var appearance = "system"
+    /// Uygulama rengi (Ayarlar); değişince sekmeler yeni renkle yeniden çizilir
+    @AppStorage("accent") private var accent = AccentPalette.defaultID
     @State private var router = Router.shared
+    /// Klavye açıkken alt bar gizlenir (sistemin sekme çubuğu gibi; klavyenin üstüne binmez)
+    @State private var keyboard = false
 
     var body: some View {
-        TabView(selection: $router.tab) {
-            ClockTab()
-                .tabItem { Label(L("tab.clock"), systemImage: "clock") }
-                .tag(AppTab.clock)
-            NavigationStack { WeatherView() }
-                .tabItem { Label(L("weather.h1"), systemImage: "cloud.sun") }
-                .tag(AppTab.weather)
-            CalendarTab()
-                .tabItem { Label(L("tab.calendar"), systemImage: "calendar") }
-                .tag(AppTab.calendar)
-            PrayerTab()
-                .tabItem { Label(L("tab.prayer"), systemImage: "moon.stars") }
-                .tag(AppTab.prayer)
-            ToolsTab()
-                .tabItem { Label(L("tab.tools"), systemImage: "timer") }
-                .tag(AppTab.tools)
-        }
-        .tint(Theme.accent)
-        .preferredColorScheme(appearance == "light" ? .light : appearance == "dark" ? .dark : nil)
-        .fullScreenCover(item: $screen) { s in
-            NavigationStack { s.view }
-                .preferredColorScheme(appearance == "light" ? .light : appearance == "dark" ? .dark : nil)
+        content
+            .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)")
+            .safeAreaInset(edge: .bottom, spacing: 0) {
+                if !keyboard { TabBar(selection: $router.tab) }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboard = true }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboard = false }
+            .tint(Theme.accent)
+            .preferredColorScheme(scheme)
+            .fullScreenCover(item: $screen) { s in
+                NavigationStack { s.view }
+                    .preferredColorScheme(scheme)
+            }
+    }
+
+    @ViewBuilder private var content: some View {
+        switch router.tab {
+        case .clock: ClockTab()
+        case .weather: NavigationStack { WeatherView() }
+        case .calendar: CalendarTab()
+        case .world: NavigationStack { WorldClockView() }
+        case .seasons: NavigationStack { SeasonsView() }
+        case .prayer: PrayerTab()
+        case .tools: ToolsTab()
         }
     }
+
+    private var scheme: ColorScheme? { appearance == "light" ? .light : appearance == "dark" ? .dark : nil }
 
     /// Ekran görüntüsü için: -openScreen weather gibi bir argümanla alt ekran doğrudan açılır (CI)
     @State private var screen = UserDefaults.standard.string(forKey: "openScreen").flatMap(DebugScreen.init(rawValue:))
 }
 
+/// Yedi düğmeli alt bar (simge + kısa ad; seçili olan uygulama renginde)
+private struct TabBar: View {
+    @Binding var selection: AppTab
+
+    var body: some View {
+        HStack(spacing: 0) {
+            ForEach(AppTab.allCases, id: \.self) { tab in
+                let on = tab == selection
+                Button {
+                    selection = tab
+                } label: {
+                    VStack(spacing: 3) {
+                        Image(systemName: tab.icon)
+                            .symbolVariant(on ? .fill : .none)
+                            .font(.system(size: 19))
+                            .frame(height: 24)
+                        Text(tab.title)
+                            .font(.system(size: 10, weight: on ? .semibold : .regular))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 7)
+                    .padding(.bottom, 3)
+                    .contentShape(Rectangle())
+                    .foregroundStyle(on ? Theme.accent : Theme.muted)
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(tab.title)
+                .accessibilityAddTraits(on ? [.isSelected, .isButton] : .isButton)
+            }
+        }
+        .padding(.horizontal, 2)
+        .background(.bar)
+        .overlay(alignment: .top) { Divider() }
+    }
+}
+
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list, globe
+         privacy, about, list, globe, google
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -122,6 +195,7 @@ enum DebugScreen: String, Identifiable {
         case .privacy: PrivacyView()
         case .about: AboutView()
         case .list: ListSignupView()
+        case .google: GoogleCalendarGuide()
         case .globe:
             // App Store önizleme videosu için: tam ekran dönen dünya
             GlobeView(fullscreen: true)

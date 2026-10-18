@@ -11,6 +11,7 @@ struct CalendarTab: View {
     @State private var adding: AddRequest?
     @State private var showing: EKEvent?
     @State private var deleting: EKEvent?
+    @State private var googleGuide = false
     @State private var router = Router.shared
     @State private var device = DeviceCalendar.shared
     private let data = CalendarData.shared
@@ -84,6 +85,10 @@ struct CalendarTab: View {
                     if let e = deleting { device.remove(e) }
                     deleting = nil
                 }
+            }
+            .sheet(isPresented: $googleGuide) {
+                NavigationStack { GoogleCalendarGuide() }
+                    .onDisappear { device.reload() }
             }
             .onChange(of: router.calendarDay, initial: true) { _, day in
                 guard let day else { return }
@@ -202,6 +207,14 @@ struct CalendarTab: View {
         } footer: {
             VStack(alignment: .leading, spacing: 8) {
                 legend
+                Button {
+                    googleGuide = true
+                } label: {
+                    Label(L("google.button"), systemImage: "link.badge.plus")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .tint(Theme.accent)
+                .padding(.top, 4)
                 if let y = data.years[month.year], y.projected {
                     Text(L("calendar.projected")).font(.footnote).foregroundStyle(Theme.muted)
                 }

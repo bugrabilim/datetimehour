@@ -32,10 +32,10 @@ ITEMS="-date,week,next,prayers,-upcoming,-world,-weather,-sun"
 for L in "tr tr_TR tr" "en en_US en-US" "de de_DE de-DE" "ar ar_SA ar-SA"; do
   set -- $L
   shoot $1 $2 $3 01-saat 6 -clockModel stack -homeItems "$ITEMS"
-  shoot $1 $2 $3 02-vakitler 6 -startTab 3
+  shoot $1 $2 $3 02-vakitler 6 -startTab 5
   shoot $1 $2 $3 03-takvim 6 -startTab 2
   shoot $1 $2 $3 04-dunya 15 -openScreen world
-  shoot $1 $2 $3 05-araclar 6 -startTab 4
+  shoot $1 $2 $3 05-araclar 6 -startTab 6
   shoot $1 $2 $3 06-imsakiye 6 -openScreen imsakiye
 done
 ls -R "$OUT"

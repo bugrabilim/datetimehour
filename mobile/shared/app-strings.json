@@ -769,5 +769,369 @@
     "de": "Keine Termine an diesem Tag.",
     "az": "Bu gün üçün tədbir yoxdur.",
     "ar": "لا أحداث في هذا اليوم."
+  },
+  "tab.weather": {
+    "tr": "Hava",
+    "en": "Weather",
+    "de": "Wetter",
+    "az": "Hava",
+    "ar": "الطقس"
+  },
+  "tab.world": {
+    "tr": "Dünya",
+    "en": "World",
+    "de": "Welt",
+    "az": "Dünya",
+    "ar": "العالم"
+  },
+  "tab.seasons": {
+    "tr": "Mevsimler",
+    "en": "Seasons",
+    "de": "Jahreszeiten",
+    "az": "Fəsillər",
+    "ar": "الفصول"
+  },
+  "home.item.globe": {
+    "tr": "Dönen dünya",
+    "en": "Spinning globe",
+    "de": "Rotierender Globus",
+    "az": "Fırlanan dünya",
+    "ar": "الكرة الأرضية الدوارة"
+  },
+  "globe.sun": {
+    "tr": "Güneş",
+    "en": "Sun",
+    "de": "Sonne",
+    "az": "Günəş",
+    "ar": "الشمس"
+  },
+  "globe.moon": {
+    "tr": "Ay",
+    "en": "Moon",
+    "de": "Mond",
+    "az": "Ay",
+    "ar": "القمر"
+  },
+  "settings.color": {
+    "tr": "Uygulama rengi",
+    "en": "App color",
+    "de": "App-Farbe",
+    "az": "Tətbiq rəngi",
+    "ar": "لون التطبيق"
+  },
+  "settings.color.general": {
+    "tr": "Genel",
+    "en": "General",
+    "de": "Allgemein",
+    "az": "Ümumi",
+    "ar": "عامة"
+  },
+  "settings.color.kids": {
+    "tr": "Çocuklar için",
+    "en": "For kids",
+    "de": "Für Kinder",
+    "az": "Uşaqlar üçün",
+    "ar": "للأطفال"
+  },
+  "settings.color.elegant": {
+    "tr": "Zarif",
+    "en": "Elegant",
+    "de": "Elegant",
+    "az": "Zərif",
+    "ar": "أنيقة"
+  },
+  "settings.color.business": {
+    "tr": "İş",
+    "en": "Business",
+    "de": "Business",
+    "az": "İş",
+    "ar": "أعمال"
+  },
+  "settings.color.sample": {
+    "tr": "Örnek",
+    "en": "Sample",
+    "de": "Beispiel",
+    "az": "Nümunə",
+    "ar": "مثال"
+  },
+  "settings.units": {
+    "tr": "Birimler",
+    "en": "Units",
+    "de": "Einheiten",
+    "az": "Vahidlər",
+    "ar": "الوحدات"
+  },
+  "settings.units.metric": {
+    "tr": "Metrik (°C, km/sa)",
+    "en": "Metric (°C, km/h)",
+    "de": "Metrisch (°C, km/h)",
+    "az": "Metrik (°C, km/saat)",
+    "ar": "متري (°م، كم/س)"
+  },
+  "settings.units.imperial": {
+    "tr": "Amerikan (°F, mph)",
+    "en": "Imperial (°F, mph)",
+    "de": "Imperial (°F, mph)",
+    "az": "Amerika (°F, mph)",
+    "ar": "إمبراطوري (°ف، ميل/س)"
+  },
+  "google.button": {
+    "tr": "Google Takvimi bağla",
+    "en": "Connect Google Calendar",
+    "de": "Google Kalender verbinden",
+    "az": "Google Təqvimini qoş",
+    "ar": "ربط تقويم Google"
+  },
+  "google.title": {
+    "tr": "Google Takvimi",
+    "en": "Google Calendar",
+    "de": "Google Kalender",
+    "az": "Google Təqvimi",
+    "ar": "تقويم Google"
+  },
+  "google.lead": {
+    "tr": "Google Takvimi'ndeki etkinlikleri burada görmek için Google hesabınızı iPhone'a bir kez eklemeniz yeterli. Uygulama Google'a doğrudan bağlanmaz ve şifrenizi görmez; takvimler iPhone üzerinden gelir.",
+    "en": "To see your Google Calendar events here, add your Google account to your iPhone once. The app never connects to Google directly and never sees your password; calendars come through your iPhone.",
+    "de": "Um Ihre Google-Kalender-Termine hier zu sehen, fügen Sie Ihr Google-Konto einmal zum iPhone hinzu. Die App verbindet sich nicht direkt mit Google und sieht Ihr Passwort nicht; die Kalender kommen über das iPhone.",
+    "az": "Google Təqvimindəki tədbirləri burada görmək üçün Google hesabınızı iPhone-a bir dəfə əlavə etməyiniz kifayətdir. Tətbiq Google-a birbaşa qoşulmur və şifrənizi görmür; təqvimlər iPhone vasitəsilə gəlir.",
+    "ar": "لرؤية أحداث تقويم Google هنا، يكفي أن تضيف حساب Google إلى iPhone مرة واحدة. لا يتصل التطبيق بـ Google مباشرة ولا يرى كلمة المرور؛ تصل التقويمات عبر iPhone."
+  },
+  "google.stepsTitle": {
+    "tr": "Adımlar",
+    "en": "Steps",
+    "de": "Schritte",
+    "az": "Addımlar",
+    "ar": "الخطوات"
+  },
+  "google.step1": {
+    "tr": "iPhone'da Ayarlar uygulamasını açın.",
+    "en": "Open the Settings app on your iPhone.",
+    "de": "Öffnen Sie die Einstellungen-App auf dem iPhone.",
+    "az": "iPhone-da Parametrlər tətbiqini açın.",
+    "ar": "افتح تطبيق الإعدادات على iPhone."
+  },
+  "google.step2": {
+    "tr": "Uygulamalar › Takvim › Takvim Hesapları'na girin (eski iOS'ta Takvim › Hesaplar).",
+    "en": "Go to Apps › Calendar › Calendar Accounts (on older iOS: Calendar › Accounts).",
+    "de": "Gehen Sie zu Apps › Kalender › Kalenderaccounts (bei älterem iOS: Kalender › Accounts).",
+    "az": "Tətbiqlər › Təqvim › Təqvim hesabları bölməsinə keçin (köhnə iOS-da Təqvim › Hesablar).",
+    "ar": "انتقل إلى التطبيقات › التقويم › حسابات التقويم (في إصدارات iOS الأقدم: التقويم › الحسابات)."
+  },
+  "google.step3": {
+    "tr": "Hesap Ekle › Google'ı seçin ve Google hesabınızla giriş yapın.",
+    "en": "Choose Add Account › Google and sign in with your Google account.",
+    "de": "Wählen Sie Account hinzufügen › Google und melden Sie sich mit Ihrem Google-Konto an.",
+    "az": "Hesab əlavə et › Google seçin və Google hesabınızla daxil olun.",
+    "ar": "اختر إضافة حساب › Google وسجّل الدخول بحساب Google."
+  },
+  "google.step4": {
+    "tr": "Takvimler anahtarının açık olduğundan emin olun ve kaydedin.",
+    "en": "Make sure the Calendars switch is on, then save.",
+    "de": "Achten Sie darauf, dass der Schalter Kalender aktiviert ist, und sichern Sie.",
+    "az": "Təqvimlər açarının açıq olduğuna əmin olun və yadda saxlayın.",
+    "ar": "تأكد من تفعيل مفتاح التقويمات ثم احفظ."
+  },
+  "google.step5": {
+    "tr": "Buraya dönüp “Telefonumdaki takvimleri göster” düğmesine dokunun ve izin verin.",
+    "en": "Come back here, tap “Show calendars on my phone” and allow access.",
+    "de": "Kehren Sie hierher zurück, tippen Sie auf „Kalender auf meinem Telefon anzeigen“ und erlauben Sie den Zugriff.",
+    "az": "Bura qayıdın, “Telefonumdakı təqvimləri göstər” düyməsinə toxunun və icazə verin.",
+    "ar": "عد إلى هنا واضغط «اعرض التقويمات على هاتفي» ثم اسمح بالوصول."
+  },
+  "google.openSettings": {
+    "tr": "Ayarlar'ı aç",
+    "en": "Open Settings",
+    "de": "Einstellungen öffnen",
+    "az": "Parametrləri aç",
+    "ar": "فتح الإعدادات"
+  },
+  "google.ready": {
+    "tr": "Takvim izni açık: Google etkinlikleriniz takvimde görünür.",
+    "en": "Calendar access is on: your Google events appear in the calendar.",
+    "de": "Kalenderzugriff ist aktiv: Ihre Google-Termine erscheinen im Kalender.",
+    "az": "Təqvim icazəsi açıqdır: Google tədbirləriniz təqvimdə görünür.",
+    "ar": "الوصول إلى التقويم مفعّل: تظهر أحداث Google في التقويم."
+  },
+  "google.denied": {
+    "tr": "Takvim izni kapalı. Ayarlar'da bu uygulamanın Takvimler iznini “Tam Erişim” yapın.",
+    "en": "Calendar access is off. In Settings, set this app's Calendars permission to “Full Access”.",
+    "de": "Kalenderzugriff ist aus. Stellen Sie in den Einstellungen die Kalender-Berechtigung dieser App auf „Vollzugriff“.",
+    "az": "Təqvim icazəsi bağlıdır. Parametrlərdə bu tətbiqin Təqvimlər icazəsini “Tam giriş” edin.",
+    "ar": "الوصول إلى التقويم متوقف. في الإعدادات اجعل إذن التقويمات لهذا التطبيق «وصول كامل»."
+  },
+  "google.note": {
+    "tr": "Yeni etkinlik eklerken düzenleyicide Google takviminizi seçerseniz etkinlik Google Takvimi'ne de kaydedilir. Outlook ve diğer hesaplar da aynı yolla eklenebilir.",
+    "en": "When you add an event, pick your Google calendar in the editor and it is saved to Google Calendar too. Outlook and other accounts can be added the same way.",
+    "de": "Wenn Sie beim Hinzufügen eines Termins Ihren Google-Kalender wählen, wird er auch im Google Kalender gespeichert. Outlook und andere Konten lassen sich genauso hinzufügen.",
+    "az": "Yeni tədbir əlavə edərkən redaktorda Google təqviminizi seçsəniz, tədbir Google Təqviminə də yazılır. Outlook və digər hesablar da eyni yolla əlavə edilə bilər.",
+    "ar": "عند إضافة حدث، اختر تقويم Google في المحرر فيُحفظ في تقويم Google أيضًا. يمكن إضافة Outlook والحسابات الأخرى بالطريقة نفسها."
+  },
+  "kids.progress": {
+    "tr": "Mevsim ne kadar ilerledi?",
+    "en": "How far along is the season?",
+    "de": "Wie weit ist die Jahreszeit?",
+    "az": "Fəsil nə qədər irəliləyib?",
+    "ar": "كم مضى من الفصل؟"
+  },
+  "kids.why.title": {
+    "tr": "Mevsimler neden olur?",
+    "en": "Why do we have seasons?",
+    "de": "Warum gibt es Jahreszeiten?",
+    "az": "Fəsillər niyə olur?",
+    "ar": "لماذا تحدث الفصول؟"
+  },
+  "kids.why.text": {
+    "tr": "Dünya bir yılda Güneş'in çevresinde bir tur atar. Ama dik durmaz: ekseni 23,4 derece eğiktir, hep aynı yöne. Yılın bir yarısında kuzey yarımküre Güneş'e doğru eğilir ve yaz olur; öbür yarısında Güneş'ten uzağa eğilir ve kış olur.",
+    "en": "Earth travels once around the Sun every year. But it doesn't stand up straight: its axis is tilted 23.4 degrees, always the same way. For half the year the northern half leans toward the Sun and it's summer; for the other half it leans away and it's winter.",
+    "de": "Die Erde wandert einmal im Jahr um die Sonne. Aber sie steht nicht gerade: Ihre Achse ist um 23,4 Grad geneigt, immer in dieselbe Richtung. Ein halbes Jahr neigt sich die Nordhalbkugel zur Sonne hin – dann ist Sommer; das andere halbe Jahr neigt sie sich weg – dann ist Winter.",
+    "az": "Yer bir ildə Günəşin ətrafında bir dövrə vurur. Amma düz durmur: oxu həmişə eyni tərəfə 23,4 dərəcə maildir. İlin bir yarısında şimal yarımkürəsi Günəşə tərəf əyilir və yay olur; o biri yarısında Günəşdən uzağa əyilir və qış olur.",
+    "ar": "تدور الأرض حول الشمس دورة واحدة كل عام. لكنها ليست مستقيمة: محورها مائل 23.4 درجة ودائمًا في الاتجاه نفسه. في نصف العام يميل النصف الشمالي نحو الشمس فيكون الصيف، وفي النصف الآخر يميل بعيدًا عنها فيكون الشتاء."
+  },
+  "kids.why.myth": {
+    "tr": "Yanlış bilinen: Mevsimler Güneş'e yaklaşıp uzaklaştığımız için olmaz. Dünya Güneş'e en çok Ocak başında yaklaşır; o sırada bizde kış vardır!",
+    "en": "A common mix-up: seasons don't happen because we get closer to or farther from the Sun. Earth is closest to the Sun in early January – right in our winter!",
+    "de": "Ein häufiger Irrtum: Jahreszeiten entstehen nicht, weil wir der Sonne näher oder ferner sind. Am nächsten ist die Erde der Sonne Anfang Januar – mitten in unserem Winter!",
+    "az": "Səhv bilinən: fəsillər Günəşə yaxınlaşıb-uzaqlaşdığımız üçün olmur. Yer Günəşə ən çox yanvarın əvvəlində yaxınlaşır – o vaxt bizdə qışdır!",
+    "ar": "خطأ شائع: لا تحدث الفصول لأننا نقترب من الشمس أو نبتعد عنها. تكون الأرض أقرب إلى الشمس في أوائل يناير، أي في عز شتائنا!"
+  },
+  "kids.tilt": {
+    "tr": "Eksen 23,4° eğik",
+    "en": "Axis tilted 23.4°",
+    "de": "Achse 23,4° geneigt",
+    "az": "Ox 23,4° maildir",
+    "ar": "المحور مائل 23.4°"
+  },
+  "kids.light.title": {
+    "tr": "Işığın açısı",
+    "en": "The angle of sunlight",
+    "de": "Der Winkel des Sonnenlichts",
+    "az": "İşığın bucağı",
+    "ar": "زاوية ضوء الشمس"
+  },
+  "kids.light.text": {
+    "tr": "Yazın Güneş gökyüzünde yüksektedir; ışınlar yere dik gelir ve küçük bir alanı iyice ısıtır. Kışın Güneş alçaktadır; aynı ışık geniş bir alana yayılır ve daha az ısıtır. Kışın gündüzler de kısadır, yer ısınmaya vakit bulamaz.",
+    "en": "In summer the Sun is high in the sky; its rays hit the ground straight on and warm a small patch well. In winter the Sun is low; the same light spreads over a bigger area and warms it less. Winter days are also short, so the ground has less time to warm up.",
+    "de": "Im Sommer steht die Sonne hoch; ihre Strahlen treffen steil auf den Boden und wärmen eine kleine Fläche kräftig. Im Winter steht sie tief; dasselbe Licht verteilt sich auf eine größere Fläche und wärmt weniger. Außerdem sind Wintertage kurz, der Boden hat weniger Zeit, warm zu werden.",
+    "az": "Yayda Günəş göydə yüksəkdə olur; şüalar yerə düz düşür və kiçik sahəni yaxşı qızdırır. Qışda Günəş alçaqda olur; eyni işıq geniş sahəyə yayılır və az qızdırır. Qışda gündüzlər də qısadır, yer qızmağa vaxt tapmır.",
+    "ar": "في الصيف تكون الشمس عالية في السماء، فتسقط أشعتها عمودية على الأرض وتدفئ مساحة صغيرة جيدًا. وفي الشتاء تكون منخفضة، فينتشر الضوء نفسه على مساحة أكبر ويدفئها أقل. كما أن نهار الشتاء قصير فلا تجد الأرض وقتًا كافيًا لتسخن."
+  },
+  "kids.light.summer": {
+    "tr": "Yaz: dik ışık",
+    "en": "Summer: steep light",
+    "de": "Sommer: steiles Licht",
+    "az": "Yay: düz işıq",
+    "ar": "الصيف: ضوء عمودي"
+  },
+  "kids.light.winter": {
+    "tr": "Kış: eğik ışık",
+    "en": "Winter: slanted light",
+    "de": "Winter: flaches Licht",
+    "az": "Qış: maili işıq",
+    "ar": "الشتاء: ضوء مائل"
+  },
+  "kids.dates.title": {
+    "tr": "Kış 1 Aralık'ta mı başlar, 21 Aralık'ta mı?",
+    "en": "Does winter start on December 1 or December 21?",
+    "de": "Beginnt der Winter am 1. oder am 21. Dezember?",
+    "az": "Qış 1 dekabrda başlayır, yoxsa 21 dekabrda?",
+    "ar": "هل يبدأ الشتاء في 1 ديسمبر أم في 21 ديسمبر؟"
+  },
+  "kids.dates.text": {
+    "tr": "İkisi de doğru, çünkü iki ayrı hesap var. Gökbilimciler mevsimi Güneş'in konumuna göre başlatır: kış, gecenin en uzun olduğu gün (21 Aralık, kış gündönümü) başlar. Meteorologlar (hava bilimciler) ise hesap kolay olsun diye tam ayları kullanır: Aralık, Ocak ve Şubat kıştır. Bu yüzden bazı takvimlerde “kış 1 Aralık'ta başlar” yazar.",
+    "en": "Both are right, because there are two ways to count. Astronomers start a season by the Sun's position: winter begins on the longest night (December 21, the winter solstice). Meteorologists (weather scientists) use whole months to keep their numbers simple: December, January and February are winter. That's why some calendars say “winter starts on December 1”.",
+    "de": "Beides stimmt, denn es gibt zwei Zählweisen. Astronomen beginnen eine Jahreszeit nach dem Stand der Sonne: Der Winter beginnt in der längsten Nacht (21. Dezember, Wintersonnenwende). Meteorologen (Wetterforscher) nehmen der Einfachheit halber ganze Monate: Dezember, Januar und Februar sind Winter. Darum steht in manchen Kalendern „Winteranfang 1. Dezember“.",
+    "az": "İkisi də doğrudur, çünki iki ayrı hesab var. Astronomlar fəsli Günəşin vəziyyətinə görə başladır: qış ən uzun gecədə (21 dekabr, qış gündönümü) başlayır. Meteoroloqlar (hava alimləri) isə hesab asan olsun deyə tam aylardan istifadə edir: dekabr, yanvar və fevral qışdır. Ona görə bəzi təqvimlərdə “qış 1 dekabrda başlayır” yazılır.",
+    "ar": "كلاهما صحيح، لأن هناك طريقتين للحساب. يبدأ علماء الفلك الفصل حسب موقع الشمس: يبدأ الشتاء في أطول ليلة (21 ديسمبر، الانقلاب الشتوي). أما علماء الأرصاد الجوية فيستخدمون أشهرًا كاملة لتسهيل الحساب: ديسمبر ويناير وفبراير هي الشتاء. لذلك تكتب بعض التقاويم «يبدأ الشتاء في 1 ديسمبر»."
+  },
+  "kids.dates.astro": {
+    "tr": "Gökbilim (Güneş'e göre)",
+    "en": "Astronomy (by the Sun)",
+    "de": "Astronomie (nach der Sonne)",
+    "az": "Astronomiya (Günəşə görə)",
+    "ar": "الفلك (حسب الشمس)"
+  },
+  "kids.dates.meteo": {
+    "tr": "Meteoroloji (tam aylar)",
+    "en": "Meteorology (whole months)",
+    "de": "Meteorologie (ganze Monate)",
+    "az": "Meteorologiya (tam aylar)",
+    "ar": "الأرصاد (أشهر كاملة)"
+  },
+  "kids.south.title": {
+    "tr": "Dünyanın öbür yarısında tersi",
+    "en": "Flipped on the other half of the world",
+    "de": "Auf der anderen Erdhälfte umgekehrt",
+    "az": "Dünyanın o biri yarısında tərsinə",
+    "ar": "في النصف الآخر من العالم العكس"
+  },
+  "kids.south.text": {
+    "tr": "Biz kıştayken Avustralya, Güney Afrika ve Arjantin'de yaz yaşanır. Oradaki çocuklar yılbaşını çoğu zaman plajda kutlar!",
+    "en": "While we have winter, it's summer in Australia, South Africa and Argentina. Kids there often celebrate New Year on the beach!",
+    "de": "Wenn bei uns Winter ist, ist in Australien, Südafrika und Argentinien Sommer. Kinder dort feiern Neujahr oft am Strand!",
+    "az": "Biz qışda olanda Avstraliya, Cənubi Afrika və Argentinada yaydır. Oradakı uşaqlar Yeni ili çox vaxt çimərlikdə qeyd edir!",
+    "ar": "عندما يكون عندنا شتاء، يكون الصيف في أستراليا وجنوب أفريقيا والأرجنتين. وكثيرًا ما يحتفل الأطفال هناك برأس السنة على الشاطئ!"
+  },
+  "kids.south.north": {
+    "tr": "Kuzey",
+    "en": "North",
+    "de": "Norden",
+    "az": "Şimal",
+    "ar": "الشمال"
+  },
+  "kids.south.southLabel": {
+    "tr": "Güney",
+    "en": "South",
+    "de": "Süden",
+    "az": "Cənub",
+    "ar": "الجنوب"
+  },
+  "kids.facts.title": {
+    "tr": "Biliyor muydunuz?",
+    "en": "Did you know?",
+    "de": "Wusstest du schon?",
+    "az": "Bilirdinizmi?",
+    "ar": "هل تعلم؟"
+  },
+  "kids.fact1": {
+    "tr": "21 Haziran yılın en uzun günü, 21 Aralık en uzun gecesidir (kuzey yarımkürede).",
+    "en": "June 21 is the longest day of the year and December 21 the longest night (in the northern half).",
+    "de": "Der 21. Juni ist der längste Tag des Jahres, der 21. Dezember die längste Nacht (auf der Nordhalbkugel).",
+    "az": "21 iyun ilin ən uzun günü, 21 dekabr isə ən uzun gecəsidir (şimal yarımkürəsində).",
+    "ar": "21 يونيو أطول يوم في السنة و21 ديسمبر أطول ليلة (في النصف الشمالي)."
+  },
+  "kids.fact2": {
+    "tr": "Mart ve Eylül'deki ekinoks günlerinde gece ile gündüz hemen hemen eşittir.",
+    "en": "On the equinoxes in March and September, day and night are almost equal.",
+    "de": "An den Tagundnachtgleichen im März und September sind Tag und Nacht fast gleich lang.",
+    "az": "Mart və sentyabrdakı gecə-gündüz bərabərliyində gecə ilə gündüz demək olar ki, bərabərdir.",
+    "ar": "في يومي الاعتدال في مارس وسبتمبر يتساوى الليل والنهار تقريبًا."
+  },
+  "kids.fact3": {
+    "tr": "Kuzey Kutbu'nda yazın aylarca Güneş batmaz, kışın da aylarca hiç doğmaz.",
+    "en": "At the North Pole the Sun doesn't set for months in summer, and doesn't rise for months in winter.",
+    "de": "Am Nordpol geht die Sonne im Sommer monatelang nicht unter und im Winter monatelang nicht auf.",
+    "az": "Şimal qütbündə yayda aylarla Günəş batmır, qışda isə aylarla heç doğmur.",
+    "ar": "في القطب الشمالي لا تغرب الشمس لأشهر في الصيف، ولا تشرق لأشهر في الشتاء."
+  },
+  "kids.fact4": {
+    "tr": "Ekvatora yakın ülkelerde yaz ile kış arasında fark azdır; orada yağmurlu ve kurak mevsimler vardır.",
+    "en": "Near the equator summer and winter feel almost the same; instead there are rainy and dry seasons.",
+    "de": "In der Nähe des Äquators sind Sommer und Winter fast gleich; dort gibt es Regen- und Trockenzeiten.",
+    "az": "Ekvatora yaxın ölkələrdə yay ilə qış arasında fərq azdır; orada yağışlı və quraq fəsillər olur.",
+    "ar": "قرب خط الاستواء يكاد الصيف والشتاء يتشابهان؛ وبدلًا منهما هناك موسم مطير وموسم جاف."
+  },
+  "kids.fact5": {
+    "tr": "Kuzey yarımkürede yaz, kıştan birkaç gün uzundur: Dünya Güneş'ten uzaktayken biraz daha yavaş gider.",
+    "en": "In the northern half, summer is a few days longer than winter: Earth moves a little slower when it's farther from the Sun.",
+    "de": "Auf der Nordhalbkugel ist der Sommer ein paar Tage länger als der Winter: Weiter weg von der Sonne bewegt sich die Erde etwas langsamer.",
+    "az": "Şimal yarımkürəsində yay qışdan bir neçə gün uzundur: Yer Günəşdən uzaqda olanda bir az yavaş gedir.",
+    "ar": "في النصف الشمالي يكون الصيف أطول من الشتاء ببضعة أيام: فالأرض تتحرك أبطأ قليلًا حين تكون أبعد عن الشمس."
+  },
+  "kids.more": {
+    "tr": "Sonraki yıllar",
+    "en": "Next years",
+    "de": "Folgende Jahre",
+    "az": "Növbəti illər",
+    "ar": "السنوات التالية"
   }
 }

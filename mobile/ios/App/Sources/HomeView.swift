@@ -114,29 +114,49 @@ struct ClockStage: View {
     }
 }
 
-/// Tam ekran saat: seçili model ekranı kaplar; ekran kapanmaz, dokununca (saat dışına) çıkılır.
+/// Tam ekran saat: 19 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler);
+/// ekran kapanmaz, çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
 struct FullscreenClock: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
+    @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
 
     var body: some View {
-        TimelineView(.periodic(from: .now, by: 1)) { context in
-            VStack(spacing: 8) {
-                ClockModelView(model: ClockModel(rawValue: modelID) ?? .wxDigitalCalWeek, now: context.date,
-                               place: PlaceModel.shared.place)
-                    .padding(16)
-                Button { dismiss() } label: {
-                    Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
-                        .font(.footnote)
+        GeometryReader { geo in
+            TimelineView(.periodic(from: .now, by: 1)) { context in
+                let now = context.date
+                let place = PlaceModel.shared.place
+                let items = HomeLayout(raw: homeItems).visible
+                ScrollView {
+                    VStack(spacing: 22) {
+                        TabView(selection: $modelID) {
+                            ForEach(ClockModel.allCases) { m in
+                                ClockModelView(model: m, now: now, place: place)
+                                    .padding(.horizontal, 8)
+                                    .tag(m.rawValue)
+                            }
+                        }
+                        .tabViewStyle(.page(indexDisplayMode: .never))
+                        .frame(height: items.isEmpty ? max(380, geo.size.height - 70) : max(380, geo.size.height * 0.6))
+                        ForEach(items) { item in
+                            HomeItemView(item: item, now: now, place: place) { dismiss() }
+                        }
+                        Button { dismiss() } label: {
+                            Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
+                                .font(.footnote)
+                        }
+                        .foregroundStyle(Theme.muted)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: 720)
+                    .frame(maxWidth: .infinity)
                 }
-                .foregroundStyle(Theme.muted)
-                .padding(.bottom, 8)
+                .scrollIndicators(.hidden)
+                .foregroundStyle(Theme.text)
+                .background(Theme.bg.ignoresSafeArea())
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .foregroundStyle(Theme.text)
-            .background(Theme.bg.ignoresSafeArea())
         }
-        .contentShape(Rectangle())
         .onTapGesture(count: 2) { dismiss() }
         .statusBarHidden()
         .persistentSystemOverlays(.hidden)

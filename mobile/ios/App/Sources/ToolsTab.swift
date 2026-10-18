@@ -2,8 +2,8 @@ import SwiftUI
 import Combine
 import SaatCore
 
-/// Araçlar sekmesi: alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama, dünya saatleri, mevsimler;
-/// altta ayarlar, gizlilik ve hakkında (sahibin sırası, 18 Ekim 2026)
+/// Araçlar sekmesi: alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama;
+/// altta ayarlar, gizlilik ve hakkında (dünya saatleri ve mevsimler alt barda, 18 Ekim 2026)
 struct ToolsTab: View {
     @State private var router = Router.shared
 
@@ -16,8 +16,6 @@ struct ToolsTab: View {
                     row(.stopwatch, L("tools.hub.cards.stopwatch.name"), "stopwatch")
                     row(.pomodoro, L("tools.hub.cards.pomodoro.name"), "leaf")
                     row(.datecalc, L("tools.hub.cards.datecalc.name"), "calendar.badge.clock")
-                    row(.world, L("world.h1"), "globe")
-                    row(.seasons, L("nature.h1"), "leaf.circle")
                 }
                 Section {
                     row(.settings, L("settings.title"), "gearshape")
@@ -34,8 +32,6 @@ struct ToolsTab: View {
                 case .stopwatch: StopwatchView()
                 case .pomodoro: PomodoroView()
                 case .datecalc: DateCalcView()
-                case .world: WorldClockView()
-                case .seasons: SeasonsView()
                 case .settings: SettingsView()
                 case .privacy: PrivacyView()
                 case .about: AboutView()
