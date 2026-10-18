@@ -1,1 +1,1 @@
-Namaz vakti, takvim ve hava
+Saat,Takvim,Hava,Mevsim,Namaz

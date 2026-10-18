@@ -100,7 +100,7 @@ struct RootView: View {
 
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list
+         privacy, about, list, globe
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -122,6 +122,12 @@ enum DebugScreen: String, Identifiable {
         case .privacy: PrivacyView()
         case .about: AboutView()
         case .list: ListSignupView()
+        case .globe:
+            // App Store önizleme videosu için: tam ekran dönen dünya
+            GlobeView(fullscreen: true)
+                .ignoresSafeArea()
+                .toolbar(.hidden, for: .navigationBar)
+                .statusBarHidden()
         }
     }
 }

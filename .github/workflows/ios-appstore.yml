@@ -37,7 +37,7 @@ jobs:
           fi
       - uses: actions/checkout@v4
       - name: Araçlar
-        run: brew install xcodegen fastlane
+        run: brew install xcodegen fastlane ffmpeg
       - name: Xcode projesi
         run: xcodegen generate --spec mobile/ios/project.yml
       - name: Simülatör için derle
@@ -51,6 +51,13 @@ jobs:
         with:
           name: app-store-ekran-goruntuleri
           path: mobile/ios/fastlane/screenshots
+      # Önizleme videosu (dönen dünya) App Store Connect'e elle sürüklenir: sürüm sayfası › iPhone 6,9" önizleme
+      - name: Önizleme videosu
+        run: mobile/ios/scripts/store-preview.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app preview
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-store-onizleme-videosu
+          path: preview
       - name: API anahtarı
         run: |
           jq -n --arg id "$ASC_KEY_ID" --arg iss "$ASC_ISSUER_ID" --arg key "$ASC_KEY_P8" \
