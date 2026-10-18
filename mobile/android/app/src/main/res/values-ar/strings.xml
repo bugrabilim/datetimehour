@@ -423,6 +423,7 @@
     <string name="place_useLocation">استخدم موقعي</string>
     <string name="place_myLocation">موقعي</string>
     <string name="widget_province_auto">تلقائي (موقعي)</string>
+    <string name="widget_province_app">الموقع في التطبيق</string>
     <string name="widget_config_desc">الولاية التي تُعرض أوقاتها. يستخدم الخيار التلقائي أقرب ولاية إليك.</string>
     <string name="widget_next_name">الصلاة التالية</string>
     <string name="widget_next_desc">الصلاة التالية ووقتها والوقت المتبقي.</string>

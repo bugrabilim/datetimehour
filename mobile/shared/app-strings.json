@@ -112,6 +112,13 @@
     "az": "Avtomatik (məkanım)",
     "ar": "تلقائي (موقعي)"
   },
+  "widget.province.app": {
+    "tr": "Uygulamadaki konum",
+    "en": "Location in the app",
+    "de": "Standort in der App",
+    "az": "Tətbiqdəki məkan",
+    "ar": "الموقع في التطبيق"
+  },
   "widget.config.desc": {
     "tr": "Vakitlerin gösterileceği il. Otomatik seçimde konumunuza en yakın il kullanılır.",
     "en": "The province whose times are shown. Automatic uses the province nearest to you.",

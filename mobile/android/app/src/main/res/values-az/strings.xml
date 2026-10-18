@@ -423,6 +423,7 @@
     <string name="place_useLocation">Məkanımı istifadə et</string>
     <string name="place_myLocation">Məkanım</string>
     <string name="widget_province_auto">Avtomatik (məkanım)</string>
+    <string name="widget_province_app">Tətbiqdəki məkan</string>
     <string name="widget_config_desc">Vaxtları göstəriləcək vilayət. Avtomatik seçimdə sizə ən yaxın vilayət istifadə olunur.</string>
     <string name="widget_next_name">Növbəti vaxt</string>
     <string name="widget_next_desc">Növbəti vaxt, saatı və qalan müddət.</string>

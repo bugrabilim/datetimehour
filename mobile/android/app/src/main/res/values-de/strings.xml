@@ -423,6 +423,7 @@
     <string name="place_useLocation">Meinen Standort verwenden</string>
     <string name="place_myLocation">Mein Standort</string>
     <string name="widget_province_auto">Automatisch (mein Standort)</string>
+    <string name="widget_province_app">Standort in der App</string>
     <string name="widget_config_desc">Die Provinz, deren Zeiten angezeigt werden. Automatisch verwendet die nächstgelegene Provinz.</string>
     <string name="widget_next_name">Nächstes Gebet</string>
     <string name="widget_next_desc">Das nächste Gebet, seine Uhrzeit und die verbleibende Zeit.</string>

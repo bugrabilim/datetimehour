@@ -423,6 +423,7 @@
     <string name="place_useLocation">Konumumu kullan</string>
     <string name="place_myLocation">Konumum</string>
     <string name="widget_province_auto">Otomatik (konumum)</string>
+    <string name="widget_province_app">Uygulamadaki konum</string>
     <string name="widget_config_desc">Vakitlerin gösterileceği il. Otomatik seçimde konumunuza en yakın il kullanılır.</string>
     <string name="widget_next_name">Sıradaki vakit</string>
     <string name="widget_next_desc">Sıradaki vakit, saati ve kalan süre.</string>

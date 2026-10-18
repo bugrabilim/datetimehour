@@ -61,6 +61,18 @@ class MainActivity : ComponentActivity() {
             AppTheme { Root(start) }
         }
     }
+
+    /** Widget'tan ya da bildirimden açılınca istenen sekme */
+    override fun onNewIntent(intent: android.content.Intent) {
+        super.onNewIntent(intent)
+        Tab.entries.getOrNull(intent.getIntExtra("startTab", -1))?.let { Nav.tab = it; Nav.toolsRoute = null }
+    }
+
+    /** Uygulamadan çıkarken widget'lar güncel konum ve dille yeniden çizilir */
+    override fun onStop() {
+        super.onStop()
+        WidgetUpdater.updateAll(this)
+    }
 }
 
 /**

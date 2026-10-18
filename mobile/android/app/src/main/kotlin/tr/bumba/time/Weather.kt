@@ -94,6 +94,11 @@ object WeatherCache {
 
     private fun key(lat: Double, lon: Double) = String.format(Locale.ROOT, "%.2f,%.2f", lat, lon)
 
+    /** Ekran görüntüsü testleri için: ağ olmadan örnek veri */
+    fun seed(lat: Double, lon: Double, data: WeatherData) {
+        cache = Triple(key(lat, lon), System.currentTimeMillis(), data)
+    }
+
     /** Önbellekteki son veri (ekran açılırken hemen göstermek için) */
     fun cached(lat: Double, lon: Double): WeatherData? = cache?.takeIf { it.first == key(lat, lon) }?.third
 
