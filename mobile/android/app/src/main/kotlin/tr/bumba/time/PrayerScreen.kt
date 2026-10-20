@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
@@ -18,7 +19,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.NightsStay
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.TableChart
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -29,6 +33,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -38,52 +43,78 @@ import tr.bumba.time.core.Prayer
 import java.time.LocalDate
 import java.time.YearMonth
 
-/** Vakitler: konum, sıradaki vakte kalan süre, bugünün vakitleri, aylık çizelge (sitedeki namaz sayfası gibi) */
+/**
+ * Vakitler (iOS'taki PrayerTab): üstte zil (vakit bildirimleri), konum, sıradaki vakte kalan süre, bugünün
+ * vakitleri, aylık çizelge ve sıradaki Ramazan'ın imsakiyesi.
+ */
 @Composable
 fun PrayerScreen() {
-    var monthly by rememberSaveable { mutableStateOf(false) }
-    if (monthly) {
-        MonthlyPrayers { monthly = false }
-        return
+    var page by rememberSaveable { mutableStateOf<String?>(null) }
+    val place = AppPlace.current()
+    val ramadan = Imsakiye.nextRamadan(place.today())
+    when (page) {
+        "monthly" -> { BackHandler { page = null }; MonthlyPrayers { page = null }; return }
+        "notify" -> { BackHandler { page = null }; NotificationSettingsScreen { page = null }; return }
+        "imsakiye" -> if (ramadan != null) {
+            BackHandler { page = null }
+            ImsakiyeScreen(place, ramadan) { page = null }
+            return
+        }
     }
     val now = rememberNow()
-    val place = AppPlace.current()
     val today = place.today(now)
     val entries = place.entries(today)
     val next = place.next(now)
-    Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(14.dp),
-    ) {
-        PlacePicker()
-        if (next != null) {
-            Text(T("prayer.nextIn", next.prayer.title), color = Theme.c.muted, fontSize = 15.sp)
-            Text(
-                Fmt.countdown(next.at.epochSecond - now.epochSecond),
-                color = Theme.c.accent, fontSize = 52.sp, fontWeight = FontWeight.Bold, style = Tnum,
-            )
-        }
-        AppCard {
-            SectionTitle(L("prayer.today"))
-            for (e in entries) {
-                val on = next?.prayer == e.prayer && next.at == e.at
-                Row(
-                    Modifier.fillMaxWidth()
-                        .background(if (on) Theme.c.accentSoft else androidx.compose.ui.graphics.Color.Transparent, RoundedCornerShape(10.dp))
-                        .padding(horizontal = 10.dp, vertical = 9.dp),
-                ) {
-                    Text(e.prayer.title, Modifier.weight(1f), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp)
-                    Text(Fmt.hm(e.at, place.zone), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp, style = Tnum)
+    NotifyPrefs.load()
+    Column(Modifier.fillMaxSize()) {
+        SubBar(L("tab.prayer"), actions = {
+            IconButton(onClick = { page = "notify" }) {
+                Icon(
+                    if (NotifyPrefs.enabled) Icons.Filled.Notifications else Icons.Outlined.Notifications,
+                    L("notify.heading"), tint = Theme.c.accent,
+                )
+            }
+        })
+        Column(
+            Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(14.dp),
+        ) {
+            PlacePicker()
+            if (next != null) {
+                Text(T("prayer.nextIn", next.prayer.title), color = Theme.c.muted, fontSize = 15.sp)
+                Text(
+                    Fmt.countdown(next.at.epochSecond - now.epochSecond),
+                    color = Theme.c.accent, fontSize = 52.sp, fontWeight = FontWeight.Bold, style = Tnum,
+                )
+            }
+            AppCard {
+                SectionTitle(L("prayer.today"))
+                for (e in entries) {
+                    val on = next?.prayer == e.prayer && next.at == e.at
+                    Row(
+                        Modifier.fillMaxWidth()
+                            .background(if (on) Theme.c.accentSoft else androidx.compose.ui.graphics.Color.Transparent, RoundedCornerShape(10.dp))
+                            .padding(horizontal = 10.dp, vertical = 9.dp),
+                    ) {
+                        Text(e.prayer.title, Modifier.weight(1f), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp)
+                        Text(Fmt.hm(e.at, place.zone), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp, style = Tnum)
+                    }
                 }
             }
+            LinkCard(Icons.Filled.TableChart, L("prayer.monthly")) { page = "monthly" }
+            if (ramadan != null) LinkCard(Icons.Filled.NightsStay, T("imsakiye.title", ramadan.start.year)) { page = "imsakiye" }
         }
-        AppCard(Modifier.clickable { monthly = true }) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Filled.TableChart, null, tint = Theme.c.accent)
-                Text("  " + L("prayer.monthly"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
-            }
+    }
+}
+
+@Composable
+private fun LinkCard(icon: ImageVector, title: String, onClick: () -> Unit) {
+    AppCard(Modifier.clickable(onClick = onClick)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(icon, null, tint = Theme.c.accent)
+            Text("  $title", Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
         }
     }
 }

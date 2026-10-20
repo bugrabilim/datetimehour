@@ -34,6 +34,14 @@
     <string name="prayer_prevMonth">Önceki ay</string>
     <string name="prayer_nextMonth">Sonraki ay</string>
     <string name="prayer_useLocation">Konumumu kullan</string>
+    <string name="prayer_imTitle">Ramazan İmsakiyesi %1$s</string>
+    <string name="prayer_imDay">Ramazan</string>
+    <string name="prayer_imDate">Tarih</string>
+    <string name="prayer_imSahur">sahur</string>
+    <string name="prayer_imIftar">iftar</string>
+    <string name="prayer_imNote">Vakitler hesaplanmıştır; resmî vakit için Diyanet İşleri Başkanlığı esas alınır.</string>
+    <string name="prayer_imFile">ramazan-imsakiyesi</string>
+    <string name="prayer_imAlt">%1$s için %2$s Ramazan imsakiyesi</string>
     <string name="calendar_months_0">Ocak</string>
     <string name="calendar_months_1">Şubat</string>
     <string name="calendar_months_2">Mart</string>
@@ -442,6 +450,9 @@
     <string name="notify_spoken_now">%1$s vakti geldi.</string>
     <string name="notify_spoken_before">%1$s vaktine %2$s dakika kaldı.</string>
     <string name="notify_sound_better">Daha doğal bir ses için: Ayarlar → Erişilebilirlik → Seslendirilen İçerik → Sesler → Türkçe bölümünden \"Gelişmiş\" bir ses indirin (ör. Yelda). Uygulamayı yeniden açınca sesler yenilenir.</string>
+    <string name="notify_sound_betterAndroid">Daha doğal bir ses için: telefonun Ayarlar › Sistem › Diller › Metin okuma çıkışı (ya da Erişilebilirlik › Metin okuma) bölümünden Türkçe ses verisini indirin. Uygulamayı yeniden açınca sesler yenilenir.</string>
+    <string name="notify_exact">Bildirimlerin tam vaktinde gelmesi için \"Alarmlar ve hatırlatıcılar\" iznini açın. İzin olmadan bildirim birkaç dakika gecikebilir.</string>
+    <string name="notify_exactAllow">İzni aç</string>
     <string name="tab_clock">Saat</string>
     <string name="tab_prayer">Vakitler</string>
     <string name="tab_calendar">Takvim</string>

@@ -252,6 +252,27 @@
     "az": "Daha təbii səs üçün: Parametrlər → Əlçatımlılıq → Səsləndirilən məzmun → Səslər → Türkcə bölməsindən \"Təkmil\" səs yükləyin. Tətbiqi yenidən açanda səslər yenilənir.",
     "ar": "لصوت أكثر طبيعية: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية، ثم نزّل صوتًا «محسّنًا». تتجدد الأصوات عند فتح التطبيق مرة أخرى."
   },
+  "notify.sound.betterAndroid": {
+    "tr": "Daha doğal bir ses için: telefonun Ayarlar › Sistem › Diller › Metin okuma çıkışı (ya da Erişilebilirlik › Metin okuma) bölümünden Türkçe ses verisini indirin. Uygulamayı yeniden açınca sesler yenilenir.",
+    "en": "For a more natural voice: in your phone's Settings › System › Languages › Text-to-speech output (or Accessibility › Text-to-speech), download the English voice data. The sounds are renewed the next time you open the app.",
+    "de": "Für eine natürlichere Stimme: in den Einstellungen des Telefons unter System › Sprachen › Sprachausgabe (oder Bedienungshilfen › Sprachausgabe) die deutschen Sprachdaten laden. Beim nächsten Öffnen der App werden die Töne erneuert.",
+    "az": "Daha təbii səs üçün: telefonun Parametrlər › Sistem › Dillər › Mətnin səsləndirilməsi (və ya Əlçatımlılıq › Mətnin səsləndirilməsi) bölməsindən Türkcə səs məlumatını yükləyin. Tətbiqi yenidən açanda səslər yenilənir.",
+    "ar": "لصوت أكثر طبيعية: من إعدادات الهاتف › النظام › اللغات › تحويل النص إلى كلام (أو تسهيلات الاستخدام › تحويل النص إلى كلام)، نزّل بيانات الصوت العربية. تتجدد الأصوات عند فتح التطبيق مرة أخرى."
+  },
+  "notify.exact": {
+    "tr": "Bildirimlerin tam vaktinde gelmesi için \"Alarmlar ve hatırlatıcılar\" iznini açın. İzin olmadan bildirim birkaç dakika gecikebilir.",
+    "en": "Turn on \"Alarms & reminders\" so notifications arrive right on time. Without it they may be a few minutes late.",
+    "de": "Aktivieren Sie „Wecker und Erinnerungen“, damit Mitteilungen pünktlich kommen. Ohne diese Erlaubnis können sie einige Minuten später eintreffen.",
+    "az": "Bildirişlərin tam vaxtında gəlməsi üçün \"Zəngli saatlar və xatırlatmalar\" icazəsini açın. İcazə olmadan bildiriş bir neçə dəqiqə gecikə bilər.",
+    "ar": "فعّل إذن «المنبّهات والتذكيرات» لتصل الإشعارات في وقتها تمامًا. بدونه قد تتأخر بضع دقائق."
+  },
+  "notify.exactAllow": {
+    "tr": "İzni aç",
+    "en": "Allow",
+    "de": "Erlauben",
+    "az": "İcazə ver",
+    "ar": "السماح"
+  },
   "CFBundleDisplayName": {
     "tr": "Saat Tarih",
     "en": "Time & Date",

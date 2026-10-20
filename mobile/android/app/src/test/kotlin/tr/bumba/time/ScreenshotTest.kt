@@ -36,5 +36,28 @@ class ScreenshotTest {
     @Test fun tools() = shot("tr-araclar", Tab.TOOLS)
     @Test fun english() = shot("en-saat", Tab.CLOCK, "en")
     @Test fun arabic() = shot("ar-vakitler", Tab.PRAYER, "ar")
+    /** Vakit bildirimleri ayarı (açık hâlde: vakitler, zaman, ses) */
+    @Test fun notifySettings() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveAppearance("light")
+        Prefs.saveAccent("amber")
+        NotifyPrefs.saveEnabled(true)
+        captureRoboImage("$dir/tr-bildirim-ayarlari.png") { AppTheme { NotificationSettingsScreen {} } }
+        NotifyPrefs.saveEnabled(false)
+    }
+
+    /** Sıradaki Ramazan'ın imsakiyesi (İstanbul): sayfa ve paylaşılan görselin kendisi */
+    @Test fun imsakiye() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveAppearance("light")
+        Prefs.saveProvince("istanbul")
+        val place = AppPlace.current()
+        val ramadan = Imsakiye.nextRamadan(java.time.LocalDate.of(2026, 10, 18)) ?: return
+        captureRoboImage("$dir/tr-imsakiye.png") { AppTheme { ImsakiyeScreen(place, ramadan) {} } }
+        java.io.File("$dir/tr-imsakiye-gorsel.png").outputStream().use {
+            Imsakiye.draw(place, ramadan).compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it)
+        }
+    }
+
     @Test fun kidsColor() = shot("tr-saat-renk", Tab.CLOCK, accent = "kid-purple")
 }
