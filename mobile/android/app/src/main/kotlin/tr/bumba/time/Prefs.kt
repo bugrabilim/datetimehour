@@ -13,6 +13,9 @@ import androidx.compose.runtime.setValue
 object Prefs {
     private lateinit var sp: SharedPreferences
 
+    /** Ekranlara özgü küçük kayıtlar için (araçlar, bildirim tercihleri…): aynı "prefs" dosyası */
+    val store: SharedPreferences get() = sp
+
     fun init(c: Context) {
         sp = c.getSharedPreferences("prefs", Context.MODE_PRIVATE)
         accent = sp.getString("accent", AccentPalette.DEFAULT_ID)!!
@@ -24,6 +27,7 @@ object Prefs {
         clockModel = sp.getInt("clockModel", 0)
         province = sp.getString("province", "istanbul")!!
         world = sp.getString("world", City.DEFAULT_KEYS)!!
+        units = sp.getString("units", null) ?: Units.systemDefault
     }
 
     var accent by mutableStateOf(AccentPalette.DEFAULT_ID)
@@ -48,6 +52,11 @@ object Prefs {
     var world by mutableStateOf(City.DEFAULT_KEYS)
         private set
 
+    /** Ölçü birimleri: "metric" ya da "imperial" (seçim yoksa bölgeye göre) */
+    var units by mutableStateOf("metric")
+        private set
+
+    fun saveUnits(v: String) { units = v; sp.edit().putString("units", v).apply() }
     fun saveAccent(v: String) { accent = v; sp.edit().putString("accent", v).apply() }
     fun saveAppearance(v: String) { appearance = v; sp.edit().putString("appearance", v).apply() }
     fun saveH12(v: Boolean) { h12 = v; sp.edit().putBoolean("h12", v).apply() }

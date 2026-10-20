@@ -1156,6 +1156,286 @@
         }
       }
     },
+    "prayer.imTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramazan İmsakiyesi %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan Timetable %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan-Imsakiye %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramazan imsakiyyəsi %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إمساكية رمضان %1$@"
+          }
+        }
+      }
+    },
+    "prayer.imDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramazan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramazan"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رمضان"
+          }
+        }
+      }
+    },
+    "prayer.imDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarih"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarix"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التاريخ"
+          }
+        }
+      }
+    },
+    "prayer.imSahur": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sahur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "suhoor"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suhur"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "səhər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سحور"
+          }
+        }
+      }
+    },
+    "prayer.imIftar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iftar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iftar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iftar"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iftar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إفطار"
+          }
+        }
+      }
+    },
+    "prayer.imNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vakitler hesaplanmıştır; resmî vakit için Diyanet İşleri Başkanlığı esas alınır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Times are calculated; for official times follow the Presidency of Religious Affairs (Diyanet)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für religiöse Angelegenheiten (Diyanet)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaxtlar hesablanmışdır; rəsmi vaxt üçün Diyanət İşləri Başqanlığının məlumatı əsasdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأوقات محسوبة؛ والمعتمد هو ما تنشره رئاسة الشؤون الدينية (ديانت)."
+          }
+        }
+      }
+    },
+    "prayer.imFile": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ramazan-imsakiyesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ramadan-timetable"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ramadan-imsakiye"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ramazan-imsakiyyesi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "imsakiyah"
+          }
+        }
+      }
+    },
+    "prayer.imAlt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ için %2$@ Ramazan imsakiyesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan %2$@ timetable for %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan-Zeitplan %2$@ für %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ üçün %2$@ Ramazan imsakiyyəsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إمساكية رمضان %2$@ لمدينة %1$@"
+          }
+        }
+      }
+    },
     "calendar.months.0": {
       "extractionState": "manual",
       "localizations": {
@@ -12041,6 +12321,636 @@
         }
       }
     },
+    "weather.codes.clear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klar"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aydın"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صافٍ"
+          }
+        }
+      }
+    },
+    "weather.codes.mostlyClear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çoğunlukla açık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostly clear"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Überwiegend klar"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əsasən aydın"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صافٍ في الغالب"
+          }
+        }
+      }
+    },
+    "weather.codes.partly": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parçalı bulutlu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partly cloudy"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teilweise bewölkt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qismən buludlu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غائم جزئيًا"
+          }
+        }
+      }
+    },
+    "weather.codes.overcast": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapalı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overcast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bedeckt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutqun"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غائم كليًا"
+          }
+        }
+      }
+    },
+    "weather.codes.fog": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sisli"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fog"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nebel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duman"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضباب"
+          }
+        }
+      }
+    },
+    "weather.codes.drizzle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çisenti"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drizzle"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nieselregen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çiskin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رذاذ"
+          }
+        }
+      }
+    },
+    "weather.codes.freezingDrizzle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dondurucu çisenti"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freezing drizzle"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gefrierender Nieselregen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dondurucu çiskin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رذاذ متجمد"
+          }
+        }
+      }
+    },
+    "weather.codes.rain": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yağmurlu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rain"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yağış"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مطر"
+          }
+        }
+      }
+    },
+    "weather.codes.freezingRain": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dondurucu yağmur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freezing rain"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gefrierender Regen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dondurucu yağış"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مطر متجمد"
+          }
+        }
+      }
+    },
+    "weather.codes.snow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karlı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schnee"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ثلج"
+          }
+        }
+      }
+    },
+    "weather.codes.snowGrains": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kar taneleri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snow grains"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schneegriesel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qar dənəcikləri"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حبيبات ثلجية"
+          }
+        }
+      }
+    },
+    "weather.codes.showers": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sağanak"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Showers"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schauer"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leysan"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زخات مطر"
+          }
+        }
+      }
+    },
+    "weather.codes.snowShowers": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kar sağanağı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snow showers"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schneeschauer"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qarlı leysan"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زخات ثلج"
+          }
+        }
+      }
+    },
+    "weather.codes.thunder": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gök gürültülü fırtına"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thunderstorm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gewitter"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ildırımlı leysan"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عاصفة رعدية"
+          }
+        }
+      }
+    },
+    "weather.codes.thunderHail": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dolulu fırtına"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thunderstorm with hail"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gewitter mit Hagel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dolulu ildırımlı leysan"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عاصفة رعدية مع برَد"
+          }
+        }
+      }
+    },
+    "weather.attribution": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava durumu verisi: Open-Meteo.com (CC BY 4.0)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weather data: Open-Meteo.com (CC BY 4.0)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wetterdaten: Open-Meteo.com (CC BY 4.0)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava məlumatları: Open-Meteo.com (CC BY 4.0)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بيانات الطقس: Open-Meteo.com (CC BY 4.0)"
+          }
+        }
+      }
+    },
+    "weather.sunrise": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün doğumu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunrise"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenaufgang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün çıxması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشروق"
+          }
+        }
+      }
+    },
+    "weather.sunset": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün batımı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunset"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenuntergang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün batması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الغروب"
+          }
+        }
+      }
+    },
     "stage.models.classic": {
       "extractionState": "manual",
       "localizations": {
@@ -14141,6 +15051,41 @@
         }
       }
     },
+    "widget.province.app": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamadaki konum"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location in the app"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standort in der App"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqdəki məkan"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الموقع في التطبيق"
+          }
+        }
+      }
+    },
     "widget.config.desc": {
       "extractionState": "manual",
       "localizations": {
@@ -14802,6 +15747,111 @@
           "stringUnit": {
             "state": "translated",
             "value": "لصوت أكثر طبيعية: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية، ثم نزّل صوتًا «محسّنًا». تتجدد الأصوات عند فتح التطبيق مرة أخرى."
+          }
+        }
+      }
+    },
+    "notify.sound.betterAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daha doğal bir ses için: telefonun Ayarlar › Sistem › Diller › Metin okuma çıkışı (ya da Erişilebilirlik › Metin okuma) bölümünden Türkçe ses verisini indirin. Uygulamayı yeniden açınca sesler yenilenir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For a more natural voice: in your phone's Settings › System › Languages › Text-to-speech output (or Accessibility › Text-to-speech), download the English voice data. The sounds are renewed the next time you open the app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für eine natürlichere Stimme: in den Einstellungen des Telefons unter System › Sprachen › Sprachausgabe (oder Bedienungshilfen › Sprachausgabe) die deutschen Sprachdaten laden. Beim nächsten Öffnen der App werden die Töne erneuert."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daha təbii səs üçün: telefonun Parametrlər › Sistem › Dillər › Mətnin səsləndirilməsi (və ya Əlçatımlılıq › Mətnin səsləndirilməsi) bölməsindən Türkcə səs məlumatını yükləyin. Tətbiqi yenidən açanda səslər yenilənir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لصوت أكثر طبيعية: من إعدادات الهاتف › النظام › اللغات › تحويل النص إلى كلام (أو تسهيلات الاستخدام › تحويل النص إلى كلام)، نزّل بيانات الصوت العربية. تتجدد الأصوات عند فتح التطبيق مرة أخرى."
+          }
+        }
+      }
+    },
+    "notify.exact": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimlerin tam vaktinde gelmesi için \"Alarmlar ve hatırlatıcılar\" iznini açın. İzin olmadan bildirim birkaç dakika gecikebilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on \"Alarms & reminders\" so notifications arrive right on time. Without it they may be a few minutes late."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktivieren Sie „Wecker und Erinnerungen“, damit Mitteilungen pünktlich kommen. Ohne diese Erlaubnis können sie einige Minuten später eintreffen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirişlərin tam vaxtında gəlməsi üçün \"Zəngli saatlar və xatırlatmalar\" icazəsini açın. İcazə olmadan bildiriş bir neçə dəqiqə gecikə bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فعّل إذن «المنبّهات والتذكيرات» لتصل الإشعارات في وقتها تمامًا. بدونه قد تتأخر بضع دقائق."
+          }
+        }
+      }
+    },
+    "notify.exactAllow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzni aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlauben"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İcazə ver"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السماح"
           }
         }
       }
@@ -18271,6 +19321,216 @@
         }
       }
     },
+    "google.android.lead": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android telefonlarda Google hesabı genellikle zaten eklidir ve Google Takvimi'ndeki etkinlikler telefonun takvimine gelir. Uygulama Google'a doğrudan bağlanmaz ve şifrenizi görmez; etkinlikleri izninizle telefonun takviminden okur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On Android phones your Google account is usually already added, and Google Calendar events sync to the phone's calendar. The app never connects to Google directly or sees your password; it reads events from the phone's calendar with your permission."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf Android-Telefonen ist Ihr Google-Konto meist schon eingerichtet, und Termine aus Google Kalender werden mit dem Telefonkalender synchronisiert. Die App verbindet sich nie direkt mit Google und sieht Ihr Passwort nicht; sie liest Termine mit Ihrer Erlaubnis aus dem Telefonkalender."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android telefonlarda Google hesabı adətən artıq əlavə olunub və Google Təqvimindəki tədbirlər telefonun təqviminə gəlir. Tətbiq Google-a birbaşa qoşulmur və şifrənizi görmür; tədbirləri icazənizlə telefonun təqvimindən oxuyur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "على هواتف أندرويد يكون حساب Google مضافًا عادةً، وتُزامَن أحداث تقويم Google مع تقويم الهاتف. لا يتصل التطبيق بـGoogle مباشرةً ولا يرى كلمة مرورك؛ بل يقرأ الأحداث من تقويم الهاتف بإذنك."
+          }
+        }
+      }
+    },
+    "google.android.step1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonun Ayarlar uygulamasını açın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the phone's Settings app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffnen Sie die Einstellungen-App des Telefons."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonun Parametrlər tətbiqini açın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح تطبيق الإعدادات في الهاتف."
+          }
+        }
+      }
+    },
+    "google.android.step2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesaplar (ya da Şifreler ve hesaplar) bölümüne girin; Google hesabınız yoksa Hesap ekle › Google ile giriş yapın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go to Accounts (or Passwords & accounts); if your Google account is not there, tap Add account › Google and sign in."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gehen Sie zu Konten (oder Passwörter & Konten); fehlt Ihr Google-Konto, tippen Sie auf Konto hinzufügen › Google und melden Sie sich an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesablar (və ya Şifrələr və hesablar) bölməsinə keçin; Google hesabınız yoxdursa, Hesab əlavə et › Google ilə daxil olun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ادخل إلى الحسابات (أو كلمات المرور والحسابات)؛ وإن لم يكن حساب Google موجودًا فاضغط إضافة حساب › Google وسجّل الدخول."
+          }
+        }
+      }
+    },
+    "google.android.step3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google hesabınıza dokunun › Hesap senkronizasyonu'nda Takvim'in açık olduğundan emin olun."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap your Google account › Account sync and make sure Calendar is on."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippen Sie auf Ihr Google-Konto › Kontosynchronisierung und prüfen Sie, dass Kalender aktiviert ist."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Google hesabınıza toxunun › Hesab sinxronizasiyasında Təqvimin açıq olduğuna əmin olun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اضغط على حساب Google › مزامنة الحساب وتأكد من تفعيل التقويم."
+          }
+        }
+      }
+    },
+    "google.android.step4": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buraya dönüp “Telefonumdaki takvimleri göster” düğmesine dokunun ve izin verin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Come back here, tap “Show my phone's calendars” and allow access."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kehren Sie hierher zurück, tippen Sie auf „Kalender meines Telefons anzeigen“ und erlauben Sie den Zugriff."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bura qayıdıb “Telefonumdakı təqvimləri göstər” düyməsinə toxunun və icazə verin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ارجع إلى هنا واضغط «عرض تقاويم هاتفي» واسمح بالوصول."
+          }
+        }
+      }
+    },
+    "google.android.denied": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvim izni kapalı. Ayarlar › Uygulamalar › Saat Tarih › İzinler'den Takvim'e izin verin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calendar access is off. Allow Calendar in Settings › Apps › Time & Date › Permissions."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kalenderzugriff ist aus. Erlauben Sie Kalender unter Einstellungen › Apps › Uhr & Datum › Berechtigungen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvim icazəsi bağlıdır. Parametrlər › Tətbiqlər › Saat Tarix › İcazələr bölməsində Təqvimə icazə verin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إذن التقويم متوقف. اسمح بالتقويم من الإعدادات › التطبيقات › الوقت والتاريخ › الأذونات."
+          }
+        }
+      }
+    },
     "kids.progress": {
       "extractionState": "manual",
       "localizations": {
@@ -19117,31 +20377,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz yalnız telefonda vakit hesabı için kullanılır, hiçbir yere gönderilmez. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir."
+            "value": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The app needs no account and has no ads or tracking. Your location is used only on your phone to calculate prayer times and is never sent anywhere. If you join the mailing list, your address is passed to the shared Bumba list for that purpose only."
+            "value": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten verwendet und nirgendwohin gesendet. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt."
+            "value": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız yalnız telefonda namaz vaxtlarının hesablanması üçün istifadə olunur və heç yerə göndərilmir. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür."
+            "value": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة ولا يُرسل إلى أي مكان. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط."
+            "value": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط."
           }
         }
       }

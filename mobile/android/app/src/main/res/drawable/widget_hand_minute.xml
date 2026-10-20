@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Yelkovan ana renkte, orta nokta ikinci renkte -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="200dp" android:height="200dp" android:viewportWidth="200" android:viewportHeight="200">
+  <path android:strokeColor="@color/widget_accent" android:strokeWidth="4.5" android:strokeLineCap="round" android:pathData="M100,106L100,34"/>
+  <path android:fillColor="@color/widget_accent" android:pathData="M100,95a5,5 0 1,0 0.01,0Z"/>
+</vector>

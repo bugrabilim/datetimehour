@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="splash">#F7F4EE</color>
-    
+    <!-- Widget'lar varsayılan temada (sitedeki "kâğıt" ve "gece" renkleri; uygulama rengi seçimi widget'a geçmez) -->
+    <color name="widget_bg">#F7F4EE</color>
+    <color name="widget_face">#EFEBE2</color>
+    <color name="widget_border">#D6CFBF</color>
+    <color name="widget_text">#1B1F27</color>
+    <color name="widget_muted">#565C68</color>
+    <color name="widget_accent">#9A3F00</color>
+    <color name="widget_soft">#299A3F00</color>
 </resources>
