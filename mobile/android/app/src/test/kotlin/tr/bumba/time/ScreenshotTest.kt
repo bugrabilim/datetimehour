@@ -65,6 +65,7 @@ class ScreenshotTest {
     @Test fun clockDark() = shot("tr-saat-koyu", Tab.CLOCK, dark = true)
     @Test fun calendar() = shot("tr-takvim", Tab.CALENDAR)
     @Test fun world() = shot("tr-dunya", Tab.WORLD)
+    @Test fun worldDark() = shot("tr-dunya-koyu", Tab.WORLD, dark = true)
     @Test fun seasons() = shot("tr-mevsimler", Tab.SEASONS)
     @Test fun prayer() = shot("tr-vakitler", Tab.PRAYER)
     @Test fun tools() = shot("tr-araclar", Tab.TOOLS)
