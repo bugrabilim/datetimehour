@@ -34,6 +34,14 @@
     <string name="prayer_prevMonth">الشهر السابق</string>
     <string name="prayer_nextMonth">الشهر التالي</string>
     <string name="prayer_useLocation">استخدام موقعي</string>
+    <string name="prayer_imTitle">إمساكية رمضان %1$s</string>
+    <string name="prayer_imDay">رمضان</string>
+    <string name="prayer_imDate">التاريخ</string>
+    <string name="prayer_imSahur">سحور</string>
+    <string name="prayer_imIftar">إفطار</string>
+    <string name="prayer_imNote">الأوقات محسوبة؛ والمعتمد هو ما تنشره رئاسة الشؤون الدينية (ديانت).</string>
+    <string name="prayer_imFile">imsakiyah</string>
+    <string name="prayer_imAlt">إمساكية رمضان %2$s لمدينة %1$s</string>
     <string name="calendar_months_0">يناير</string>
     <string name="calendar_months_1">فبراير</string>
     <string name="calendar_months_2">مارس</string>
@@ -443,6 +451,9 @@
     <string name="notify_spoken_now">حان وقت %1$s.</string>
     <string name="notify_spoken_before">بقي %2$s دقيقة على %1$s.</string>
     <string name="notify_sound_better">لصوت أكثر طبيعية: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية، ثم نزّل صوتًا «محسّنًا». تتجدد الأصوات عند فتح التطبيق مرة أخرى.</string>
+    <string name="notify_sound_betterAndroid">لصوت أكثر طبيعية: من إعدادات الهاتف › النظام › اللغات › تحويل النص إلى كلام (أو تسهيلات الاستخدام › تحويل النص إلى كلام)، نزّل بيانات الصوت العربية. تتجدد الأصوات عند فتح التطبيق مرة أخرى.</string>
+    <string name="notify_exact">فعّل إذن «المنبّهات والتذكيرات» لتصل الإشعارات في وقتها تمامًا. بدونه قد تتأخر بضع دقائق.</string>
+    <string name="notify_exactAllow">السماح</string>
     <string name="tab_clock">الساعة</string>
     <string name="tab_prayer">الصلاة</string>
     <string name="tab_calendar">التقويم</string>

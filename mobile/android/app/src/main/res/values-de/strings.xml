@@ -34,6 +34,14 @@
     <string name="prayer_prevMonth">Vorheriger Monat</string>
     <string name="prayer_nextMonth">Nächster Monat</string>
     <string name="prayer_useLocation">Meinen Standort verwenden</string>
+    <string name="prayer_imTitle">Ramadan-Imsakiye %1$s</string>
+    <string name="prayer_imDay">Ramadan</string>
+    <string name="prayer_imDate">Datum</string>
+    <string name="prayer_imSahur">Suhur</string>
+    <string name="prayer_imIftar">Iftar</string>
+    <string name="prayer_imNote">Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für religiöse Angelegenheiten (Diyanet).</string>
+    <string name="prayer_imFile">ramadan-imsakiye</string>
+    <string name="prayer_imAlt">Ramadan-Zeitplan %2$s für %1$s</string>
     <string name="calendar_months_0">Januar</string>
     <string name="calendar_months_1">Februar</string>
     <string name="calendar_months_2">März</string>
@@ -443,6 +451,9 @@
     <string name="notify_spoken_now">Es ist Zeit für %1$s.</string>
     <string name="notify_spoken_before">Noch %2$s Minuten bis %1$s.</string>
     <string name="notify_sound_better">Für eine natürlichere Stimme: Einstellungen → Bedienungshilfen → Gesprochene Inhalte → Stimmen → Deutsch und eine „Erweitert“-Stimme laden. Beim nächsten Öffnen der App werden die Töne erneuert.</string>
+    <string name="notify_sound_betterAndroid">Für eine natürlichere Stimme: in den Einstellungen des Telefons unter System › Sprachen › Sprachausgabe (oder Bedienungshilfen › Sprachausgabe) die deutschen Sprachdaten laden. Beim nächsten Öffnen der App werden die Töne erneuert.</string>
+    <string name="notify_exact">Aktivieren Sie „Wecker und Erinnerungen“, damit Mitteilungen pünktlich kommen. Ohne diese Erlaubnis können sie einige Minuten später eintreffen.</string>
+    <string name="notify_exactAllow">Erlauben</string>
     <string name="tab_clock">Uhr</string>
     <string name="tab_prayer">Gebet</string>
     <string name="tab_calendar">Kalender</string>

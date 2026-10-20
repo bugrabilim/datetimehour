@@ -90,6 +90,29 @@ class ScreenshotTest {
     @Test fun timer() = tool("tr-zamanlayici", "timer")
     @Test fun pomodoro() = tool("tr-pomodoro", "pomodoro")
     @Test fun dateCalc() = tool("tr-tarih-hesaplama", "datecalc")
+    /** Vakit bildirimleri ayarı (açık hâlde: vakitler, zaman, ses) */
+    @Test fun notifySettings() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveAppearance("light")
+        Prefs.saveAccent("amber")
+        NotifyPrefs.saveEnabled(true)
+        captureRoboImage("$dir/tr-bildirim-ayarlari.png") { AppTheme { NotificationSettingsScreen {} } }
+        NotifyPrefs.saveEnabled(false)
+    }
+
+    /** Sıradaki Ramazan'ın imsakiyesi (İstanbul): sayfa ve paylaşılan görselin kendisi */
+    @Test fun imsakiye() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveAppearance("light")
+        Prefs.saveProvince("istanbul")
+        val place = AppPlace.current()
+        val ramadan = Imsakiye.nextRamadan(java.time.LocalDate.of(2026, 10, 18)) ?: return
+        captureRoboImage("$dir/tr-imsakiye.png") { AppTheme { ImsakiyeScreen(place, ramadan) {} } }
+        java.io.File("$dir/tr-imsakiye-gorsel.png").outputStream().use {
+            Imsakiye.draw(place, ramadan).compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it)
+        }
+    }
+
     @Test fun kidsColor() = shot("tr-saat-renk", Tab.CLOCK, accent = "kid-purple")
     @Test fun clockWeather() = shot("tr-saat-hava", Tab.CLOCK, weather = true)
     @Test fun clockClassic() = shot("tr-saat-analog", Tab.CLOCK, model = 1)

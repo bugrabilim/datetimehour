@@ -1156,6 +1156,286 @@
         }
       }
     },
+    "prayer.imTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramazan İmsakiyesi %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan Timetable %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan-Imsakiye %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramazan imsakiyyəsi %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إمساكية رمضان %1$@"
+          }
+        }
+      }
+    },
+    "prayer.imDay": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramazan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramazan"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رمضان"
+          }
+        }
+      }
+    },
+    "prayer.imDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarih"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarix"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التاريخ"
+          }
+        }
+      }
+    },
+    "prayer.imSahur": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sahur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "suhoor"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suhur"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "səhər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سحور"
+          }
+        }
+      }
+    },
+    "prayer.imIftar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iftar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iftar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iftar"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iftar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إفطار"
+          }
+        }
+      }
+    },
+    "prayer.imNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vakitler hesaplanmıştır; resmî vakit için Diyanet İşleri Başkanlığı esas alınır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Times are calculated; for official times follow the Presidency of Religious Affairs (Diyanet)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für religiöse Angelegenheiten (Diyanet)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaxtlar hesablanmışdır; rəsmi vaxt üçün Diyanət İşləri Başqanlığının məlumatı əsasdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأوقات محسوبة؛ والمعتمد هو ما تنشره رئاسة الشؤون الدينية (ديانت)."
+          }
+        }
+      }
+    },
+    "prayer.imFile": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ramazan-imsakiyesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ramadan-timetable"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ramadan-imsakiye"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ramazan-imsakiyyesi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "imsakiyah"
+          }
+        }
+      }
+    },
+    "prayer.imAlt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ için %2$@ Ramazan imsakiyesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan %2$@ timetable for %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ramadan-Zeitplan %2$@ für %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ üçün %2$@ Ramazan imsakiyyəsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إمساكية رمضان %2$@ لمدينة %1$@"
+          }
+        }
+      }
+    },
     "calendar.months.0": {
       "extractionState": "manual",
       "localizations": {
@@ -15467,6 +15747,111 @@
           "stringUnit": {
             "state": "translated",
             "value": "لصوت أكثر طبيعية: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية، ثم نزّل صوتًا «محسّنًا». تتجدد الأصوات عند فتح التطبيق مرة أخرى."
+          }
+        }
+      }
+    },
+    "notify.sound.betterAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daha doğal bir ses için: telefonun Ayarlar › Sistem › Diller › Metin okuma çıkışı (ya da Erişilebilirlik › Metin okuma) bölümünden Türkçe ses verisini indirin. Uygulamayı yeniden açınca sesler yenilenir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For a more natural voice: in your phone's Settings › System › Languages › Text-to-speech output (or Accessibility › Text-to-speech), download the English voice data. The sounds are renewed the next time you open the app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für eine natürlichere Stimme: in den Einstellungen des Telefons unter System › Sprachen › Sprachausgabe (oder Bedienungshilfen › Sprachausgabe) die deutschen Sprachdaten laden. Beim nächsten Öffnen der App werden die Töne erneuert."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daha təbii səs üçün: telefonun Parametrlər › Sistem › Dillər › Mətnin səsləndirilməsi (və ya Əlçatımlılıq › Mətnin səsləndirilməsi) bölməsindən Türkcə səs məlumatını yükləyin. Tətbiqi yenidən açanda səslər yenilənir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لصوت أكثر طبيعية: من إعدادات الهاتف › النظام › اللغات › تحويل النص إلى كلام (أو تسهيلات الاستخدام › تحويل النص إلى كلام)، نزّل بيانات الصوت العربية. تتجدد الأصوات عند فتح التطبيق مرة أخرى."
+          }
+        }
+      }
+    },
+    "notify.exact": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimlerin tam vaktinde gelmesi için \"Alarmlar ve hatırlatıcılar\" iznini açın. İzin olmadan bildirim birkaç dakika gecikebilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on \"Alarms & reminders\" so notifications arrive right on time. Without it they may be a few minutes late."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktivieren Sie „Wecker und Erinnerungen“, damit Mitteilungen pünktlich kommen. Ohne diese Erlaubnis können sie einige Minuten später eintreffen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirişlərin tam vaxtında gəlməsi üçün \"Zəngli saatlar və xatırlatmalar\" icazəsini açın. İcazə olmadan bildiriş bir neçə dəqiqə gecikə bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فعّل إذن «المنبّهات والتذكيرات» لتصل الإشعارات في وقتها تمامًا. بدونه قد تتأخر بضع دقائق."
+          }
+        }
+      }
+    },
+    "notify.exactAllow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzni aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlauben"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İcazə ver"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السماح"
           }
         }
       }

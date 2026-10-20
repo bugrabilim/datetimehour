@@ -34,6 +34,14 @@
     <string name="prayer_prevMonth">Previous month</string>
     <string name="prayer_nextMonth">Next month</string>
     <string name="prayer_useLocation">Use my location</string>
+    <string name="prayer_imTitle">Ramadan Timetable %1$s</string>
+    <string name="prayer_imDay">Ramadan</string>
+    <string name="prayer_imDate">Date</string>
+    <string name="prayer_imSahur">suhoor</string>
+    <string name="prayer_imIftar">iftar</string>
+    <string name="prayer_imNote">Times are calculated; for official times follow the Presidency of Religious Affairs (Diyanet).</string>
+    <string name="prayer_imFile">ramadan-timetable</string>
+    <string name="prayer_imAlt">Ramadan %2$s timetable for %1$s</string>
     <string name="calendar_months_0">January</string>
     <string name="calendar_months_1">February</string>
     <string name="calendar_months_2">March</string>
@@ -443,6 +451,9 @@
     <string name="notify_spoken_now">It is time for %1$s.</string>
     <string name="notify_spoken_before">%2$s minutes until %1$s.</string>
     <string name="notify_sound_better">For a more natural voice: Settings → Accessibility → Spoken Content → Voices → English, then download an \"Enhanced\" voice. The sounds are renewed the next time you open the app.</string>
+    <string name="notify_sound_betterAndroid">For a more natural voice: in your phone\'s Settings › System › Languages › Text-to-speech output (or Accessibility › Text-to-speech), download the English voice data. The sounds are renewed the next time you open the app.</string>
+    <string name="notify_exact">Turn on \"Alarms &amp; reminders\" so notifications arrive right on time. Without it they may be a few minutes late.</string>
+    <string name="notify_exactAllow">Allow</string>
     <string name="tab_clock">Clock</string>
     <string name="tab_prayer">Prayer</string>
     <string name="tab_calendar">Calendar</string>

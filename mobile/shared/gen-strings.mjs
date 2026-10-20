@@ -34,6 +34,7 @@ const SITE_PATHS = [
   "client.daysLeft", "client.weekShort", "client.diffSame", "client.diffAhead", "client.diffBehind", "client.hourShort", "client.minuteShort",
   "client.yourZone", "client.fullscreen", "client.exitFullscreen", "client.formatLabel",
   "prayer.monthHeading", "prayer.colDay", "prayer.prevMonth", "prayer.nextMonth", "prayer.useLocation",
+  "prayer.imTitle", "prayer.imDay", "prayer.imDate", "prayer.imSahur", "prayer.imIftar", "prayer.imNote", "prayer.imFile", "prayer.imAlt",
   "calendar.months.*", "calendar.weekdays.*", "calendar.weekdaysShort.*", "calendar.types.*", "calendar.events.*", "calendar.noYear",
   "tools.hub.cards.stopwatch.name", "tools.hub.cards.countdown.name", "tools.hub.cards.alarm.name", "tools.hub.cards.pomodoro.name",
   "tools.hub.cards.datecalc.name", "tools.hub.cards.week.name", "tools.hub.cards.converter.name", "tools.hub.h1",

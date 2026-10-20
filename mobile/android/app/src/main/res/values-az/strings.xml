@@ -34,6 +34,14 @@
     <string name="prayer_prevMonth">Əvvəlki ay</string>
     <string name="prayer_nextMonth">Növbəti ay</string>
     <string name="prayer_useLocation">Məkanımı istifadə et</string>
+    <string name="prayer_imTitle">Ramazan imsakiyyəsi %1$s</string>
+    <string name="prayer_imDay">Ramazan</string>
+    <string name="prayer_imDate">Tarix</string>
+    <string name="prayer_imSahur">səhər</string>
+    <string name="prayer_imIftar">iftar</string>
+    <string name="prayer_imNote">Vaxtlar hesablanmışdır; rəsmi vaxt üçün Diyanət İşləri Başqanlığının məlumatı əsasdır.</string>
+    <string name="prayer_imFile">ramazan-imsakiyyesi</string>
+    <string name="prayer_imAlt">%1$s üçün %2$s Ramazan imsakiyyəsi</string>
     <string name="calendar_months_0">Yanvar</string>
     <string name="calendar_months_1">Fevral</string>
     <string name="calendar_months_2">Mart</string>
@@ -443,6 +451,9 @@
     <string name="notify_spoken_now">%1$s vaxtı gəldi.</string>
     <string name="notify_spoken_before">%1$s vaxtına %2$s dəqiqə qaldı.</string>
     <string name="notify_sound_better">Daha təbii səs üçün: Parametrlər → Əlçatımlılıq → Səsləndirilən məzmun → Səslər → Türkcə bölməsindən \"Təkmil\" səs yükləyin. Tətbiqi yenidən açanda səslər yenilənir.</string>
+    <string name="notify_sound_betterAndroid">Daha təbii səs üçün: telefonun Parametrlər › Sistem › Dillər › Mətnin səsləndirilməsi (və ya Əlçatımlılıq › Mətnin səsləndirilməsi) bölməsindən Türkcə səs məlumatını yükləyin. Tətbiqi yenidən açanda səslər yenilənir.</string>
+    <string name="notify_exact">Bildirişlərin tam vaxtında gəlməsi üçün \"Zəngli saatlar və xatırlatmalar\" icazəsini açın. İcazə olmadan bildiriş bir neçə dəqiqə gecikə bilər.</string>
+    <string name="notify_exactAllow">İcazə ver</string>
     <string name="tab_clock">Saat</string>
     <string name="tab_prayer">Vaxtlar</string>
     <string name="tab_calendar">Təqvim</string>
