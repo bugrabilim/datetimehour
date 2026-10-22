@@ -1,0 +1,30 @@
+name: iOS inceleme
+# App Store Connect'te inceleme durumunu okur ya da reddedilen gönderimi yeniden incelemeye yollar (yalnız elle).
+# Apple'ın bilgi isteğine App Store Connect'te yanıt verildikten sonra "Resubmit to App Review" düğmesi kapalı
+# kalırsa "yeniden-gonder" seçilir. Gizli değişkenler TestFlight iş akışıyla aynı: ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8.
+on:
+  workflow_dispatch:
+    inputs:
+      islem:
+        description: "durum: yalnız oku · yeniden-gonder: reddedilen öğeyi çözüldü işaretle ve yeniden incelemeye yolla"
+        type: choice
+        options: [durum, yeniden-gonder]
+        default: durum
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    name: App Store inceleme
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bağımlılıklar
+        run: pip install --quiet "pyjwt[crypto]==2.10.1"
+      - name: App Store Connect
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: python3 mobile/ios/scripts/asc_review.py "${{ inputs.islem }}"
