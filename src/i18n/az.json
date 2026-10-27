@@ -413,22 +413,24 @@
     "cta": "Ana səhifəyə qayıt"
   },
   "list": {
-    "heading": "E-poçt siyahısı",
+    "heading": "Yeniliklərdən xəbərdar olun",
     "lead": "Saat Tarih yenilikləri barədə e-poçtla məlumat almaq istəyirsiniz? İstənilən vaxt bir kliklə abunəlikdən çıxa bilərsiniz.",
     "emailLabel": "E-poçt ünvanınız",
     "submit": "Qoşul",
     "ok": "Sizə təsdiq e-məktubu göndərdik; siyahıya qoşulmağı tamamlamaq üçün poçt qutunuzdakı keçidə klikləyin.",
-    "err": "Qeydiyyat alınmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin.",
+    "err": "Qeydiyyatınızı saxlaya bilmədik. E-poçt ünvanını və qeyd xanasını yoxlayın, sonra bir az sonra yenidən cəhd edin.",
     "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
     "popupTitle": "E-poçt siyahısı üzrə məlumatlandırma mətni",
     "popupText": "E-poçt ünvanınız yalnız bu siyahıya abunə olmağınız üçün Bumba Teknoloji Limited Şirketi tərəfindən emal olunur. İstədiyiniz vaxt bir kliklə ayrıla bilərsiniz.",
-    "readNote": "Məlumatlandırma mətnini oxudum",
-    "consentText": "və razıyam.",
+    "readNote": "Məlumatlandırma mətnini oxu",
+    "consentText": "Məlumatlandırma mətnini oxudum, e-poçt almağa razıyam.",
     "accept": "Razıyam",
     "cancel": "Ləğv et",
     "loading": "Mətn yüklənir…",
     "loadFail": "Mətn yüklənmədi. Tam mətni aşağıdakı keçiddən oxuya və bir az sonra yenidən cəhd edə bilərsiniz.",
-    "fullText": "Tam mətn"
+    "fullText": "Tam mətn",
+    "label": "E-poçt siyahısı",
+    "formErr": "Qeydiyyat alınmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin."
   },
   "badge": {
     "title": "Bumba Life, Bumba Group-un bir qolu",

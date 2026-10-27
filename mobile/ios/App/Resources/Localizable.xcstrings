@@ -14287,31 +14287,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Listeye katılım onayı"
+            "value": "E-posta listesi aydınlatma metni"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Confirm joining the list"
+            "value": "Email list privacy notice"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Beitritt zur Liste bestätigen"
+            "value": "Datenschutzhinweis zur E-Mail-Liste"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Siyahıya qoşulmanı təsdiqləyin"
+            "value": "E-poçt siyahısı üzrə məlumatlandırma mətni"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تأكيد الانضمام إلى القائمة"
+            "value": "إشعار الخصوصية للقائمة البريدية"
           }
         }
       }
@@ -14487,6 +14487,181 @@
           "stringUnit": {
             "state": "translated",
             "value": "إلغاء"
+          }
+        }
+      }
+    },
+    "list.loading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metin yükleniyor…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading the text…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text wird geladen…"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mətn yüklənir…"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جارٍ تحميل النص…"
+          }
+        }
+      }
+    },
+    "list.loadFail": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Metin yüklenemedi. Tam metni aşağıdaki bağlantıdan okuyabilir, biraz sonra tekrar deneyebilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The text could not be loaded. You can read the full text from the link below and try again a little later."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Text konnte nicht geladen werden. Sie können den vollständigen Text über den Link unten lesen und es etwas später erneut versuchen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mətn yüklənmədi. Tam mətni aşağıdakı keçiddən oxuya və bir az sonra yenidən cəhd edə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذّر تحميل النص. يمكنك قراءة النص الكامل من الرابط أدناه والمحاولة مرة أخرى بعد قليل."
+          }
+        }
+      }
+    },
+    "list.fullText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam metin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full text"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vollständiger Text"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam mətn"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "النص الكامل"
+          }
+        }
+      }
+    },
+    "list.label": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-posta listesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email list"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-Mail-Liste"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-poçt siyahısı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "القائمة البريدية"
+          }
+        }
+      }
+    },
+    "list.formErr": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydınız alınamadı. E-posta adresinizi kontrol edip biraz sonra tekrar deneyin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We could not sign you up. Check your email address and try again a little later."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qeydiyyat alınmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذّر تسجيلك. تحقّق من عنوان بريدك الإلكتروني وحاول مرة أخرى بعد قليل."
           }
         }
       }

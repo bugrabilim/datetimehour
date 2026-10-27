@@ -440,22 +440,24 @@
     "cta": "Zurück zur Startseite"
   },
   "list": {
-    "heading": "E-Mail-Liste",
+    "heading": "Auf dem Laufenden bleiben",
     "lead": "Möchten Sie Neuigkeiten zu Saat Tarih per E-Mail erhalten? Sie können sich jederzeit mit einem Klick wieder abmelden.",
     "emailLabel": "Ihre E-Mail-Adresse",
     "submit": "Anmelden",
     "ok": "Wir haben Ihnen eine Bestätigungs-E-Mail gesendet; klicken Sie auf den Link darin, um die Anmeldung abzuschließen.",
-    "err": "Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut.",
+    "err": "Ihre Anmeldung konnte nicht gespeichert werden. Bitte prüfen Sie die E-Mail-Adresse und das Kontrollkästchen und versuchen Sie es gleich noch einmal.",
     "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
     "popupTitle": "Datenschutzhinweis zur E-Mail-Liste",
     "popupText": "Ihre E-Mail-Adresse wird von Bumba Teknoloji Limited Şirketi ausschließlich verarbeitet, um Sie in diese Liste einzutragen. Sie können sich jederzeit mit einem Klick abmelden.",
-    "readNote": "Ich habe den Datenschutzhinweis gelesen",
-    "consentText": "und stimme zu.",
+    "readNote": "Datenschutzhinweis lesen",
+    "consentText": "Ich habe den Datenschutzhinweis gelesen und bin mit dem Erhalt von E-Mails einverstanden.",
     "accept": "Ich stimme zu",
     "cancel": "Abbrechen",
     "loading": "Text wird geladen…",
     "loadFail": "Der Text konnte nicht geladen werden. Sie können den vollständigen Text über den Link unten lesen und es etwas später erneut versuchen.",
-    "fullText": "Vollständiger Text"
+    "fullText": "Vollständiger Text",
+    "label": "E-Mail-Liste",
+    "formErr": "Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut."
   },
   "badge": {
     "title": "Bumba Life, ein Geschäftsbereich der Bumba Group",

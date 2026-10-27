@@ -413,22 +413,24 @@
     "cta": "Ana sayfaya dön"
   },
   "list": {
-    "heading": "E-posta listesi",
+    "heading": "Yeniliklerden haberdar olun",
     "lead": "Saat Tarih'teki yenilikleri e-postayla almak ister misiniz? İstediğiniz zaman tek tıkla ayrılabilirsiniz.",
     "emailLabel": "E-posta adresiniz",
     "submit": "Katıl",
     "ok": "Onay e-postası gönderdik; gelen kutunuzdaki bağlantıya tıklayınca listeye katılmış olursunuz.",
-    "err": "Kaydınız alınamadı. E-posta adresinizi kontrol edip biraz sonra tekrar deneyin.",
+    "err": "Kaydınız alınamadı. E-posta adresini ve onay kutusunu kontrol edip biraz sonra tekrar deneyin.",
     "noteLink": "https://bumbagroup.com/liste/aydinlatma",
     "popupTitle": "E-posta listesi aydınlatma metni",
     "popupText": "E-posta adresiniz, yalnızca bu listeye abone edilmeniz için Bumba Teknoloji Limited Şirketi tarafından işlenir. İstediğiniz zaman tek tıkla ayrılabilirsiniz.",
-    "readNote": "Aydınlatma metnini",
-    "consentText": "okudum, kabul ediyorum.",
+    "readNote": "Aydınlatma metnini oku",
+    "consentText": "Aydınlatma metnini okudum, e-posta almayı kabul ediyorum.",
     "accept": "Kabul ediyorum",
     "cancel": "Vazgeç",
     "loading": "Metin yükleniyor…",
     "loadFail": "Metin yüklenemedi. Tam metni aşağıdaki bağlantıdan okuyabilir, biraz sonra tekrar deneyebilirsiniz.",
-    "fullText": "Tam metin"
+    "fullText": "Tam metin",
+    "label": "E-posta listesi",
+    "formErr": "Kaydınız alınamadı. E-posta adresinizi kontrol edip biraz sonra tekrar deneyin."
   },
   "badge": {
     "title": "Bumba Life, bir Bumba Group kolu",

@@ -409,12 +409,17 @@
     <string name="list_ok">Wir haben Ihnen eine Bestätigungs-E-Mail gesendet; klicken Sie auf den Link darin, um die Anmeldung abzuschließen.</string>
     <string name="list_err">Ihre Anmeldung konnte nicht gespeichert werden. Bitte prüfen Sie die E-Mail-Adresse und das Kontrollkästchen und versuchen Sie es gleich noch einmal.</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
-    <string name="list_popupTitle">Beitritt zur Liste bestätigen</string>
+    <string name="list_popupTitle">Datenschutzhinweis zur E-Mail-Liste</string>
     <string name="list_popupText">Ihre E-Mail-Adresse wird von Bumba Teknoloji Limited Şirketi ausschließlich verarbeitet, um Sie in diese Liste einzutragen. Sie können sich jederzeit mit einem Klick abmelden.</string>
     <string name="list_readNote">Datenschutzhinweis lesen</string>
     <string name="list_consentText">Ich habe den Datenschutzhinweis gelesen und bin mit dem Erhalt von E-Mails einverstanden.</string>
     <string name="list_accept">Ich stimme zu</string>
     <string name="list_cancel">Abbrechen</string>
+    <string name="list_loading">Text wird geladen…</string>
+    <string name="list_loadFail">Der Text konnte nicht geladen werden. Sie können den vollständigen Text über den Link unten lesen und es etwas später erneut versuchen.</string>
+    <string name="list_fullText">Vollständiger Text</string>
+    <string name="list_label">E-Mail-Liste</string>
+    <string name="list_formErr">Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut.</string>
     <string name="common_done">Fertig</string>
     <string name="notify_heading">Benachrichtigungen zu Gebetszeiten</string>
     <string name="notify_enable">Bei Gebetszeiten benachrichtigen</string>

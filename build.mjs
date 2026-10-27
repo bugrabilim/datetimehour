@@ -325,19 +325,19 @@ function listForm(lang, pagePath) {
     <input type="hidden" name="kaynak" value="${esc(url)}">
     <input type="hidden" name="donus" value="${esc(url)}">
     <input class="bot-tuzagi" type="text" name="web_sitesi" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <label for="liste-eposta">${esc(l.heading)}</label>
+    <label for="liste-eposta">${esc(l.label)}</label>
     <div class="liste-row">
       <input id="liste-eposta" type="email" name="eposta" required autocomplete="email" placeholder="${esc(l.emailLabel)}">
       <button class="btn" type="submit" id="liste-katil">${esc(l.submit)}</button>
     </div>
-    <noscript><label class="check"><input type="checkbox" name="riza" value="on" required> <a href="${esc(l.noteLink + q)}" rel="noopener">${esc(l.readNote)}</a> ${esc(l.consentText)}</label></noscript>
+    <noscript><label class="check"><input type="checkbox" name="riza" value="on" required> ${esc(l.consentText)} <a href="${esc(l.noteLink + q)}" rel="noopener">${esc(l.readNote)}</a></label></noscript>
     <dialog class="info-dialog list-dialog" id="liste-pencere" aria-labelledby="liste-baslik">
       <h2 id="liste-baslik">${esc(l.popupTitle)}</h2>
       <div class="liste-metin" id="liste-metin" tabindex="0" data-loading="${esc(l.loading)}" data-fail="${esc(l.loadFail)}"></div>
       <p><a href="${esc(l.noteLink + q)}" target="_blank" rel="noopener">${esc(l.fullText)}</a></p>
       <div class="im-actions"><button type="submit" class="btn" id="liste-kabul" name="riza" value="on" disabled>${esc(l.accept)}</button><button type="button" class="btn btn-ghost" id="liste-vazgec">${esc(l.cancel)}</button></div>
     </dialog>
-    <p class="liste-sonuc" id="liste-sonuc" role="status" data-ok="${esc(l.ok)}" data-err="${esc(l.err)}"></p>
+    <p class="liste-sonuc" id="liste-sonuc" role="status" data-ok="${esc(l.ok)}" data-err="${esc(l.formErr)}"></p>
   </form>`;
 }
 
