@@ -27,7 +27,10 @@
   function compass(deg) { var c = X().compass || []; return c[Math.round(((deg % 360) + 360) % 360 / 45) % 8] || ""; }
   var round2 = function (v) { return Math.round(v * 100) / 100; };
   var cache = {}, inflight = {}, failed = {};
+  /* Open-Meteo yalnız çerez bandında "dış hizmetler" izni verildiyse çağrılır (consent.js) */
+  function allowed() { return !!(window.sthConsent && window.sthConsent.ext()); }
   function load(lat, lon) {
+    if (!allowed()) { var ce = new Error("consent"); ce.consent = true; return Promise.reject(ce); }
     lat = round2(lat); lon = round2(lon);
     var key = lat + "," + lon, now = Date.now();
     if (cache[key] && now - cache[key].at < 600000) return Promise.resolve(cache[key].data);
@@ -45,7 +48,16 @@
     return inflight[key];
   }
   var temp = function (t) { return Math.round(t) + "°"; };
-  window.sthWeather = { load: load, info: info, compass: compass, temp: temp, clearFailures: function () { failed = {}; } };
+  /* İzin yokken gösterilen yer tutucu: kısa açıklama ve "İzin ver" düğmesi */
+  function consentNote(box) {
+    box.textContent = "";
+    var p = mk("p", "wxc-msg consent-ph", (X().consent || "") + " ");
+    var b = mk("button", "btn btn-ghost btn-sm", X().allow || "");
+    b.type = "button"; b.setAttribute("data-consent-allow-ext", "");
+    p.appendChild(b);
+    box.appendChild(p);
+  }
+  window.sthWeather = { load: load, info: info, compass: compass, temp: temp, allowed: allowed, consentNote: consentNote, clearFailures: function () { failed = {}; } };
 
   /* Hava durumlu saat modelleri: yalnız model seçiliyken (görünürken) Open-Meteo'ya gidilir */
   function mk(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -101,7 +113,7 @@
       var box = slide.querySelector("[data-wxc]"), place = wxPlace(stage);
       if (!box) return;
       if (!place) { wxMessage(box, "fsNeed", true); return; }
-      load(place.lat, place.lon).then(function (d) { fillBlock(box, place, d); }).catch(function () { wxMessage(box, "fsFail", false); });
+      load(place.lat, place.lon).then(function (d) { fillBlock(box, place, d); }).catch(function (e) { if (e && e.consent) consentNote(box); else wxMessage(box, "fsFail", false); });
     }
     function sync(slide) {
       var on = slide.getAttribute("aria-hidden") !== "true";
@@ -109,6 +121,7 @@
       refresh(slide);
       if (!slide._wxt) slide._wxt = setInterval(function () { refresh(slide); }, 10 * 60 * 1000);
     }
+    window.addEventListener("sth-consent", function () { slides.forEach(function (slide) { if (slide.getAttribute("aria-hidden") !== "true") refresh(slide); }); });
     window.addEventListener("sth-place", function () { slides.forEach(function (slide) { if (slide.getAttribute("aria-hidden") !== "true") refresh(slide); }); });
     slides.forEach(function (slide) {
       new MutationObserver(function () { sync(slide); }).observe(slide, { attributes: true, attributeFilter: ["aria-hidden"] });

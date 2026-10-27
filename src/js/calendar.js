@@ -51,6 +51,7 @@
       };
       var closeDlg = function () { if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open"); };
       var link = dlg.querySelector("[data-day-link]");
+      var fromUrl = false; // ?d= ile açılışta gösterilen gün rozet olayı saymaz
       var show = function (td) {
         var d = td.getAttribute("data-d"), m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(d);
         if (!m) return;
@@ -74,6 +75,7 @@
           var row = doc.getElementById("e-" + d);
           link.hidden = !row; link.setAttribute("href", "#e-" + d);
           if (typeof dlg.showModal === "function") { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute("open", "");
+          if (S.badge) S.badge("takvim", fromUrl);
         });
       };
       dlg.addEventListener("click", function (e) { if (e.target === dlg || (e.target.closest && e.target.closest("[data-day-close]"))) closeDlg(); });
@@ -96,7 +98,7 @@
         if (td) { ev.preventDefault(); show(td); }
       });
       var want = new URLSearchParams(location.search).get("d");
-      if (want) { var wtd = grid.querySelector('td[data-d="' + want + '"]'); if (wtd) show(wtd); }
+      if (want) { var wtd = grid.querySelector('td[data-d="' + want + '"]'); if (wtd) { fromUrl = true; show(wtd); fromUrl = false; } }
     }
   }
 

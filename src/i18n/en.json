@@ -238,7 +238,7 @@
     "title": "Privacy and Cookie Policy | Saat Tarih",
     "description": "What data Saat Tarih processes, how cookies and local storage are used, Umami statistics, the email list and your rights under Turkish data protection law (KVKK).",
     "h1": "Privacy and cookie policy",
-    "lead": "This page explains which data is processed when you use Saat Tarih, why, and what your rights are. The site only collects what it needs; there are no accounts, ads or tracking cookies.",
+    "lead": "This page explains which data is processed when you use Saat Tarih, why, and what your rights are. The site only collects what it needs; there are no accounts or ads and no cookies are set; statistics and external services only run with your permission.",
     "sections": [
       {
         "id": "controller",
@@ -253,11 +253,11 @@
         "ul": [
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
-          "**Weather:** On the weather page (or if you turn on the weather in full screen or pick a clock style with weather), the approximate coordinates of the province or location you chose (to about 1 km) are sent straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
-          "**Map (globe):** If you zoom the globe on the home page beyond a certain level, map tiles are downloaded straight to your browser from OpenStreetMap's server (tile.openstreetmap.org); your IP address and the tile addresses of the area you are looking at then reach the OpenStreetMap Foundation. This request is not made when the page first opens or while the globe is zoomed out. The Saat Tarih server does not see them; OpenStreetMap's own privacy terms apply.",
-          "**Email list form:** The email address you enter, the consent you give with the checkbox, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
+          "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
+          "**Map (globe, external service, with permission):** If you have allowed external services in the cookie preferences and you zoom the globe on the home page beyond a certain level, map tiles are downloaded straight to your browser from OpenStreetMap's server (tile.openstreetmap.org); your IP address and the tile addresses of the area you are looking at then reach the OpenStreetMap Foundation. Without permission, or while the globe is zoomed out, this request is not made. The Saat Tarih server does not see them; OpenStreetMap's own privacy terms apply.",
+          "**Email list form:** The email address you enter, the consent you give with the \"I agree\" button in the window that opens, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
           "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
-          "**Visit statistics:** Umami, which runs on our own server, counts page views and a few actions (language change, theme change, whether a search found a result, joining the list). Umami does not use cookies. The words you type in search and your email address are not sent to the statistics system.",
+          "**Visit statistics (Umami, with permission):** Only if you allow statistics in the cookie banner or the cookie preferences, Umami, which runs on our own server, counts page views and these actions: language and theme change, whether a search found a result, joining the list, choosing a clock style, full screen, the first use of a tool, the type of location choice (province or location), opening or downloading the Ramadan timetable, and the ID of a badge earned for the first time. While doing so Umami processes your browser, operating system and device type, language, screen size, the address of the page you came from, and the country and city derived from your IP address; the IP address itself is not stored. Umami does not use cookies, but it links visits to a pseudonymous session, so it is not anonymous. The words you type in search, your email address and your location are not sent. You can withdraw permission at any time with the \"Cookie preferences\" link in the footer; Umami stops from the next page on.",
           "**Time synchronisation:** To show the time independently of your device clock, your browser sends a few small requests to the site's own server and reads the date header of the reply. These requests only appear in the server's standard access log; nothing extra is sent."
         ]
       },
@@ -279,9 +279,9 @@
       },
       {
         "id": "cookies",
-        "h": "Cookies and local storage",
+        "h": "Cookies and browser storage",
         "p": [
-          "Saat Tarih does not set any cookies, so we do not show a cookie banner. To remember your choices we use your browser's local storage (localStorage); this stays on your device and is not sent to a server. You can delete it at any time in your browser settings."
+          "Saat Tarih does not set any cookies. On your first visit a banner at the bottom of the page asks for your permission for visit statistics (Umami) and external services (Open-Meteo, OpenStreetMap); both stay off until you allow them. You can change your choice at any time with the \"Cookie preferences\" link in the footer. To remember your choices we use your browser's local storage (localStorage); these items are in the necessary group, stay on your device and are not sent to a server. You can delete them at any time in your browser settings. Bumba Group's shared cookie policy: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -290,6 +290,11 @@
             "Duration"
           ],
           "rows": [
+            [
+              "bumba-cerez",
+              "Remembers your choice in the cookie banner (statistics and external services) and the policy version.",
+              "Until you delete it"
+            ],
             [
               "sth-theme",
               "Remembers your light or dark theme choice.",
@@ -302,7 +307,7 @@
             ],
             [
               "sth-prefs",
-              "Remembers 24-hour or 12-hour display and the seconds setting.",
+              "Remembers 24-hour or 12-hour display, the seconds setting and the clock style you chose last.",
               "Until you delete it"
             ],
             [
@@ -334,16 +339,49 @@
               "sth-place",
               "Remembers the province or location you chose last for the prayer times, nature and weather pages.",
               "Until you delete it"
+            ],
+            [
+              "sth-rozet",
+              "Keeps your achievement badges and progress (see below).",
+              "Until you delete it"
+            ],
+            [
+              "sth-conv",
+              "Remembers the cities you chose in the time converter.",
+              "Until you delete it"
+            ],
+            [
+              "sth-planner",
+              "Remembers the cities you chose in the meeting planner.",
+              "Until you delete it"
+            ],
+            [
+              "sth-wake",
+              "Remembers whether the tools keep the screen on.",
+              "Until you delete it"
             ]
           ]
         }
+      },
+      {
+        "id": "badges",
+        "h": "Achievement badges",
+        "ul": [
+          "**What is kept:** The ID of each badge you earn and the day you earned it (no time), plus the counters needed to check the conditions: the clock styles you have seen, the day of your last visit and how many days in a row you came. No activity log, name or email is kept.",
+          "**Where:** Only in this browser's local storage, under the sth-rozet key (first party). It is never sent to any server.",
+          "**How long and how to delete:** Until you delete them, with the \"Delete badges\" button on the [Badges](/en/badges/) page or by clearing your browser data.",
+          "**Legal basis:** Legitimate interest (KVKK art. 5/2-f); the data never leaves your device and you can see and delete it, so no separate permission is asked.",
+          "**Statistics:** If you have allowed statistics, the ID of a badge is counted in Umami when it is first earned; like page visits, it is recorded with browser, device, country and city information. No name, email or progress is sent."
+        ]
       },
       {
         "id": "legal-basis",
         "h": "Legal bases",
         "ul": [
           "Email list: your explicit consent (KVKK art. 5/1). You can withdraw it at any time with the unsubscribe link in each email.",
-          "Server logs and visit statistics: our legitimate interest in keeping the site secure and working (KVKK art. 5/2-f)."
+          "Visit statistics (Umami) and external services (Open-Meteo, OpenStreetMap): the explicit consent you give in the cookie banner (KVKK art. 5/1). When you allow external services your IP address reaches these providers, which may be abroad; your consent covers this too. You can withdraw it with the \"Cookie preferences\" link.",
+          "Server logs: our legitimate interest in keeping the site secure and working (KVKK art. 5/2-f).",
+          "Your preferences and achievement badges: legitimate interest (KVKK art. 5/2-f); the data stays only on your device."
         ]
       },
       {
@@ -375,19 +413,22 @@
     "cta": "Back to the home page"
   },
   "list": {
-    "heading": "Stay up to date",
+    "heading": "Email list",
     "lead": "Want updates about Saat Tarih by email? You can unsubscribe at any time with one click.",
     "emailLabel": "Your email address",
     "submit": "Join",
     "ok": "We have sent you a confirmation email; click the link in your inbox to complete joining the list.",
-    "err": "We couldn't save your sign-up. Please check the email address and the checkbox, then try again in a moment.",
+    "err": "We could not sign you up. Check your email address and try again a little later.",
     "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
-    "popupTitle": "Confirm joining the list",
+    "popupTitle": "Email list privacy notice",
     "popupText": "Your email address is processed by Bumba Teknoloji Limited Şirketi only to subscribe you to this list. You can unsubscribe at any time with one click.",
-    "readNote": "Read the privacy notice",
-    "consentText": "I have read the privacy notice and agree to receive emails.",
+    "readNote": "I have read the privacy notice",
+    "consentText": "and I agree.",
     "accept": "I agree",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "loading": "Loading the text…",
+    "loadFail": "The text could not be loaded. You can read the full text from the link below and try again a little later.",
+    "fullText": "Full text"
   },
   "badge": {
     "title": "Bumba Life, part of Bumba Group",
@@ -1504,5 +1545,123 @@
     "general": "General",
     "countdowns": "Countdown pages",
     "calendar": "Calendar, public holidays and Bayrams"
+  },
+  "consent": {
+    "barLabel": "Cookie choice",
+    "barText": "We keep your preferences (language, theme, clock and tool settings, badges) only in this browser. If you allow it, visits are counted with Umami and the weather and close-up map load from external services.",
+    "accept": "Accept",
+    "reject": "Reject",
+    "prefs": "Preferences",
+    "policy": "Cookie policy",
+    "title": "Cookie preferences",
+    "intro": "Choose which groups are on; you can change your choice at any time with the \"Cookie preferences\" link in the footer.",
+    "necessary": "Necessary",
+    "necessaryText": "Your cookie choice, language, theme, clock and tool settings, chosen location, world clock list and achievement badges are kept in this browser's local storage. They never reach a server; the site does not work without them.",
+    "alwaysOn": "Always on",
+    "stats": "Statistics",
+    "statsText": "Umami counts page visits and a few actions (browser, device, language, and the country and city derived from the IP address; the IP is not stored). No cookies are used. Off by default.",
+    "ext": "External services",
+    "extText": "The weather loads from Open-Meteo (api.open-meteo.com) and the map on the zoomed-in globe from OpenStreetMap (tile.openstreetmap.org); your IP address reaches these services. Off by default.",
+    "save": "Save choice",
+    "footerLink": "Cookie preferences",
+    "privacy": "Privacy",
+    "wxBlocked": "The weather loads from Open-Meteo; allow external services to show it.",
+    "mapBlocked": "The close-up map loads from OpenStreetMap; allow external services to show it.",
+    "allow": "Allow"
+  },
+  "badges": {
+    "title": "Badges | Saat Tarih",
+    "description": "The badges you have earned on Saat Tarih and how to earn them.",
+    "h1": "Badges",
+    "lead": "You earn badges as you use Saat Tarih. They are all below; the ones you have earned show the day.",
+    "nav": "Badges",
+    "note": "Your badges and progress are stored only in this browser until you delete them.",
+    "privacyLink": "Privacy",
+    "earnedOn": "Earned: {date}",
+    "locked": "Not earned yet",
+    "progress": "{n}/{total}",
+    "count": "{n}/{total} badges earned",
+    "delete": "Delete badges",
+    "deleteTitle": "Delete your badges?",
+    "deleteText": "All your badges and progress in this browser (the clock styles you have seen, your visit streak) will be deleted. This cannot be undone.",
+    "deleteYes": "Delete",
+    "deleteNo": "Cancel",
+    "deleted": "Your badges were deleted.",
+    "toast": "New badge: {name}",
+    "toastLink": "My badges",
+    "items": {
+      "tema": {
+        "name": "Night and day",
+        "how": "Switch the theme from light to dark or back."
+      },
+      "saniye": {
+        "name": "Second hunter",
+        "how": "Tap the clock to turn the seconds on or off."
+      },
+      "ilk-model": {
+        "name": "New face",
+        "how": "Switch to another clock style on the clock stage."
+      },
+      "tam-ekran": {
+        "name": "Big screen",
+        "how": "Open the clock in full screen."
+      },
+      "arama": {
+        "name": "Finder",
+        "how": "Open a result in the site search."
+      },
+      "takvim": {
+        "name": "Day explorer",
+        "how": "Tap a day in the calendar to open its details."
+      },
+      "kronometre": {
+        "name": "Go!",
+        "how": "Start the stopwatch."
+      },
+      "geri-sayim": {
+        "name": "Countdown",
+        "how": "Start a countdown."
+      },
+      "alarm": {
+        "name": "Early bird",
+        "how": "Set an alarm."
+      },
+      "cevirici": {
+        "name": "Time translator",
+        "how": "Change a city or time in the time converter."
+      },
+      "tarih-hesap": {
+        "name": "Date wizard",
+        "how": "Do a calculation in the date calculator."
+      },
+      "dunya": {
+        "name": "World citizen",
+        "how": "Add a city or time zone to the world clock."
+      },
+      "kure": {
+        "name": "Explorer",
+        "how": "Zoom in on the spinning globe."
+      },
+      "pomodoro": {
+        "name": "Focus",
+        "how": "Finish a full pomodoro work session."
+      },
+      "seri-3": {
+        "name": "Three days in a row",
+        "how": "Visit Saat Tarih three days in a row."
+      },
+      "model-10": {
+        "name": "Collector",
+        "how": "See 10 different clock styles."
+      },
+      "seri-7": {
+        "name": "One week",
+        "how": "Visit Saat Tarih seven days in a row."
+      },
+      "model-hepsi": {
+        "name": "Clock master",
+        "how": "See every style on the clock stage."
+      }
+    }
   }
 }

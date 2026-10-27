@@ -72,8 +72,19 @@
     stateEl.textContent = X.loading; retry.hidden = true;
     q("[data-wx-place]").textContent = place.name;
     W.load(place.lat, place.lon).then(function (d) { if (my === seq) render(place, d); })
-      .catch(function () { if (my !== seq) return; stateEl.textContent = X.error; retry.hidden = false; nowBox.hidden = true; q("[data-wx-hourly-box]").hidden = true; q("[data-wx-daily-box]").hidden = true; });
+      .catch(function (e) {
+        if (my !== seq) return;
+        nowBox.hidden = true; q("[data-wx-hourly-box]").hidden = true; q("[data-wx-daily-box]").hidden = true;
+        if (e && e.consent) { // dış hizmetlere izin yok: yer tutucu
+          stateEl.textContent = X.consent + " ";
+          var b = el("button", "btn btn-sm", X.allow); b.type = "button"; b.setAttribute("data-consent-allow-ext", "");
+          stateEl.appendChild(b);
+          return;
+        }
+        stateEl.textContent = X.error; retry.hidden = false;
+      });
   }
+  window.addEventListener("sth-consent", function () { if (current) go(current); });
   retry.addEventListener("click", function () { W.clearFailures(); if (current) go(current); });
   window.sthPlace.use(go);
 })();

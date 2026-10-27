@@ -60,8 +60,8 @@ const abs = (p) => ORIGIN + p;
 
 /* ---------- adresler ---------- */
 const ROUTES = {
-  tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", calendar: "/takvim/", tools: "/araclar/", week: "/hafta-numarasi/", tz: "/turkiye-saat-dilimi/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
-  en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", calendar: "/en/calendar/", tools: "/en/tools/", week: "/en/week-number/", tz: "/en/turkey-time-zone/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
+  tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", badges: "/rozetler/", calendar: "/takvim/", tools: "/araclar/", week: "/hafta-numarasi/", tz: "/turkiye-saat-dilimi/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
+  en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", badges: "/en/badges/", calendar: "/en/calendar/", tools: "/en/tools/", week: "/en/week-number/", tz: "/en/turkey-time-zone/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
 };
 for (const l of LANGS) if (!ROUTES[l]) ROUTES[l] = deriveRoutes(ROUTES.en, l);
 const cityPath = (lang, c) => `${ROUTES[lang].world}${c[lang].slug}/`;
@@ -72,7 +72,9 @@ const ASSETS = {};
 for (const [name, from] of [
   ["styles.css", "styles.css"],
   ["theme.js", "js/theme.js"],
+  ["consent.js", "js/consent.js"],
   ["main.js", "js/main.js"],
+  ["badges.js", "js/badges.js"],
   ["tools.js", "js/tools.js"],
   ["calendar.js", "js/calendar.js"],
   ["dates.js", "js/dates.js"],
@@ -310,35 +312,96 @@ function crumbs() {
   return "";
 }
 
+/* E-posta listesi (standart madde 1 ve 6): altbilgide çerçevesiz form; "Katıl" aydınlatma penceresini açar, metin ortak
+   servisten gelir (data-aydinlatma), "Kabul ediyorum" düğmesi riza=on ile formu gönderir. Betiksizde noscript onay kutusu. */
 function listForm(lang, pagePath) {
-  const t = I[lang];
-  const l = t.list;
+  const l = I[lang].list;
   const url = abs(pagePath);
-  return `<section class="list-box" id="liste" aria-labelledby="liste-h">
-  <h2 id="liste-h">${esc(l.heading)}</h2>
-  <p class="form-msg ok" id="liste-tamam" role="status">${esc(l.ok)}</p>
-  <p class="form-msg err" id="liste-hata" role="alert">${esc(l.err)}</p>
-  <form action="https://bumbagroup.com/api/liste/katil" method="post">
+  const dil = LIST_LANGS.includes(lang) ? lang : "en";
+  const q = dil === "tr" ? "" : "?dil=en";
+  return `<form class="liste-form" id="liste-form" action="https://bumbagroup.com/api/liste/katil" method="post" data-aydinlatma="https://bumbagroup.com/api/liste/aydinlatma?dil=${dil}">
     <input type="hidden" name="site" value="${esc(cfg.listKey)}">
-    <input type="hidden" name="dil" value="${LIST_LANGS.includes(lang) ? lang : "en"}">
+    <input type="hidden" name="dil" value="${dil}">
     <input type="hidden" name="kaynak" value="${esc(url)}">
     <input type="hidden" name="donus" value="${esc(url)}">
-    <div class="field">
-      <label for="liste-eposta" class="sr-only">${esc(l.emailLabel)}</label>
-      <input id="liste-eposta" type="email" name="eposta" required autocomplete="email" placeholder="${esc(l.emailLabel)}">
-    </div>
-    <noscript><div class="check"><input id="liste-riza" type="checkbox" name="riza" value="on" required><label for="liste-riza">${esc(l.consentText)} <a href="${esc(l.noteLink)}" rel="noopener">${esc(l.readNote)}</a></label></div></noscript>
     <input class="bot-tuzagi" type="text" name="web_sitesi" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button class="btn" type="submit">${esc(l.submit)}</button>
-  </form>
-  <dialog class="info-dialog list-dialog" id="liste-dialog" aria-labelledby="liste-dtitle">
-    <h2 id="liste-dtitle">${esc(l.popupTitle)}</h2>
-    <p>${esc(l.popupText)}</p>
-    <p><a href="${esc(l.noteLink)}" target="_blank" rel="noopener">${esc(l.readNote)}</a></p>
-    <p class="consent-line">${esc(l.consentText)}</p>
-    <div class="im-actions"><button type="button" class="btn" data-list-accept>${esc(l.accept)}</button><button type="button" class="btn btn-ghost" data-list-cancel>${esc(l.cancel)}</button></div>
-  </dialog>
-</section>`;
+    <label for="liste-eposta">${esc(l.heading)}</label>
+    <div class="liste-row">
+      <input id="liste-eposta" type="email" name="eposta" required autocomplete="email" placeholder="${esc(l.emailLabel)}">
+      <button class="btn" type="submit" id="liste-katil">${esc(l.submit)}</button>
+    </div>
+    <noscript><label class="check"><input type="checkbox" name="riza" value="on" required> <a href="${esc(l.noteLink + q)}" rel="noopener">${esc(l.readNote)}</a> ${esc(l.consentText)}</label></noscript>
+    <dialog class="info-dialog list-dialog" id="liste-pencere" aria-labelledby="liste-baslik">
+      <h2 id="liste-baslik">${esc(l.popupTitle)}</h2>
+      <div class="liste-metin" id="liste-metin" tabindex="0" data-loading="${esc(l.loading)}" data-fail="${esc(l.loadFail)}"></div>
+      <p><a href="${esc(l.noteLink + q)}" target="_blank" rel="noopener">${esc(l.fullText)}</a></p>
+      <div class="im-actions"><button type="submit" class="btn" id="liste-kabul" name="riza" value="on" disabled>${esc(l.accept)}</button><button type="button" class="btn btn-ghost" id="liste-vazgec">${esc(l.cancel)}</button></div>
+    </dialog>
+    <p class="liste-sonuc" id="liste-sonuc" role="status" data-ok="${esc(l.ok)}" data-err="${esc(l.err)}"></p>
+  </form>`;
+}
+
+/* Çerez onayı (standart madde 14): ilk ziyarette bant, tercihler penceresi; seçim consent.js'te */
+function cookieUi(lang) {
+  const c = I[lang].consent;
+  const pol = `https://bumbagroup.com/cerez-politikasi${lang === "tr" ? "" : "?dil=en"}`;
+  const group = (name, text, input, tag = "") => `<div class="cg"><label class="cg-head">${input}<strong>${esc(name)}</strong>${tag ? ` <span class="cg-tag">${esc(tag)}</span>` : ""}</label><p class="meta">${esc(text)}</p></div>`;
+  return `<section class="cookie-bar" id="cookie-bar" aria-label="${esc(c.barLabel)}" hidden>
+  <div class="wrap cookie-row">
+    <p>${esc(c.barText)} <a href="${pol}" rel="noopener">${esc(c.policy)}</a></p>
+    <div class="cookie-btns"><button type="button" class="btn" data-consent-accept>${esc(c.accept)}</button><button type="button" class="btn" data-consent-reject>${esc(c.reject)}</button><button type="button" class="btn" data-consent-open aria-haspopup="dialog">${esc(c.prefs)}</button></div>
+  </div>
+</section>
+<dialog class="info-dialog cookie-dialog" id="cookie-dialog" aria-labelledby="cookie-title">
+  <h2 id="cookie-title">${esc(c.title)}</h2>
+  <p class="meta">${esc(c.intro)} <a href="${pol}" rel="noopener">${esc(c.policy)}</a> · <a href="${ROUTES[lang].privacy}#${lang === "tr" ? "cerezler" : "cookies"}">${esc(c.privacy)}</a></p>
+  ${group(c.necessary, c.necessaryText, `<input type="checkbox" checked disabled> `, c.alwaysOn)}
+  ${group(c.stats, c.statsText, `<input type="checkbox" data-consent-stats> `)}
+  ${group(c.ext, c.extText, `<input type="checkbox" data-consent-ext> `)}
+  <div class="im-actions"><button type="button" class="btn" data-consent-save>${esc(c.save)}</button><button type="button" class="btn btn-ghost" data-consent-accept>${esc(c.accept)}</button><button type="button" class="btn btn-ghost" data-consent-reject>${esc(c.reject)}</button></div>
+</dialog>`;
+}
+
+/* Kazanım rozetleri (standart madde 13): kimlik, simge; kolaydan zora. Adlar ve koşullar i18n badges.items altında. */
+const BADGES = [
+  ["tema", "🌓"], ["saniye", "👆"], ["ilk-model", "🕰️"], ["tam-ekran", "🖥️"], ["arama", "🔍"], ["takvim", "📅"],
+  ["kronometre", "⏱️"], ["geri-sayim", "⏳"], ["alarm", "⏰"], ["cevirici", "🔁"], ["tarih-hesap", "🧮"], ["dunya", "🌍"],
+  ["kure", "🔭"], ["pomodoro", "🍅"], ["seri-3", "🔥"], ["model-10", "🎨"], ["seri-7", "🏆"], ["model-hepsi", "👑"],
+];
+const badgeClient = (lang) => {
+  const b = I[lang].badges;
+  return { ids: BADGES.map((x) => x[0]), icons: Object.fromEntries(BADGES), names: Object.fromEntries(BADGES.map(([id]) => [id, b.items[id].name])), toast: b.toast, toastLink: b.toastLink, note: b.note, earnedOn: b.earnedOn, locked: b.locked, progress: b.progress, count: b.count, deleted: b.deleted, url: ROUTES[lang].badges };
+};
+
+function buildBadges(lang) {
+  const t = I[lang];
+  const b = t.badges;
+  const pagePath = ROUTES[lang].badges;
+  const items = BADGES.map(([id, icon]) => `<li class="badge-item" data-badge="${id}"><span class="b-icon" aria-hidden="true">${icon}</span><div><h2 class="b-name">${esc(b.items[id].name)}</h2><p class="b-how">${esc(b.items[id].how)}</p><p class="b-status" data-badge-status>${esc(b.locked)}</p></div></li>`).join("");
+  const body = `<section class="hero">
+  <div class="wrap">
+    <h1>${esc(b.h1)}</h1>
+    <p class="lead">${esc(b.lead)}</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap" data-badges-page data-models="${STAGE_ORDER.length}">
+    <p class="badges-note">${esc(b.note)} <a href="${ROUTES[lang].privacy}#${lang === "tr" ? "rozetler" : "badges"}">${esc(b.privacyLink)}</a></p>
+    <p class="meta" data-badges-count>&nbsp;</p>
+    <ul class="badge-grid">${items}</ul>
+    <p class="badges-actions"><button type="button" class="btn btn-ghost" data-badges-delete aria-haspopup="dialog">${esc(b.delete)}</button></p>
+    <p class="meta" data-badges-msg role="status"></p>
+  </div>
+</section>
+<dialog class="info-dialog" id="badges-delete" aria-labelledby="badges-delete-title">
+  <h2 id="badges-delete-title">${esc(b.deleteTitle)}</h2>
+  <p>${esc(b.deleteText)}</p>
+  <div class="im-actions"><button type="button" class="btn" data-badges-yes>${esc(b.deleteYes)}</button><button type="button" class="btn btn-ghost" data-badges-no>${esc(b.deleteNo)}</button></div>
+</dialog>`;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: b.h1, path: pagePath }];
+  // Kişiye özel ekran: noindex; sitemap, llms.txt ve site içi aramaya girmez
+  const ld = [...baseLd(lang), webPageLd(lang, pagePath, b.title, b.description), breadcrumbLd(trail)];
+  return { lang, key: "badges", path: pagePath, title: b.title, description: b.description, body, ld, nav: "badges", noindex: true, noHreflang: true };
 }
 
 function badge(lang) {
@@ -397,6 +460,7 @@ function layout(p) {
     searchError: u.searchError,
     wx: weatherClient(t),
     pl: placeClient(t.prayer),
+    bd: badgeClient(lang),
   };
   const pageCfg = {
     locale: t.locale,
@@ -404,6 +468,7 @@ function layout(p) {
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
     ...(p.clientExtra && p.clientExtra.globe ? { globe: p.clientExtra.globe } : {}),
     placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
+    ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
     cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt, calBase: ROUTES[lang].calendar, calMin: HOL_YEARS[0], calMax: HOL_YEARS[HOL_YEARS.length - 1] },
@@ -425,9 +490,6 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
 <meta name="twitter:title" content="${esc(p.title)}">
 <meta name="twitter:description" content="${esc(p.description)}">
 <meta name="twitter:image" content="${abs("/og.png")}">`;
-  const umami = UMAMI_ID
-    ? `<script defer src="https://istatistik.bumba.tr/script.js" data-website-id="${esc(UMAMI_ID)}" data-domains="${esc(HOST)}"></script>`
-    : "";
   const ld = p.ld ? `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@graph": p.ld }).replace(/</g, "\\u003c")}</script>` : "";
 
   const navLink = (key, label) =>
@@ -471,7 +533,6 @@ ${og}
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="${ASSETS["styles.css"]}">
 <script src="${ASSETS["theme.js"]}"></script>
-${umami}
 ${ld}
 </head>
 <body${p.needsPlace ? " data-needs-place" : ""}>
@@ -493,18 +554,22 @@ ${isError ? p.body : p.body.replace(/<p class="lead"/g, '<p class="lead sr-only"
 </main>
 <footer class="site-footer">
   <div class="wrap footer-row">
-${isError ? "" : listForm(lang, p.path)}
+${listForm(lang, p.path || ROUTES[lang].home)}
     <div class="footer-sign">
       ${badge(lang)}
       <p class="sr-only">${esc(u.copyright)}</p>
       ${isError ? "" : `<p class="sr-only">${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
     </div>
   </div>
+  <div class="wrap footer-links"><a href="${ROUTES[lang].privacy}">${esc(t.consent.privacy)}</a><button type="button" class="link-btn" data-consent-open aria-haspopup="dialog">${esc(t.consent.footerLink)}</button><a href="${ROUTES[lang].badges}">${esc(t.badges.nav)}</a></div>
 </footer>
+${cookieUi(lang)}
 ${searchDialog(lang)}
 ${placeDialog(lang)}
 <script type="application/json" id="page-config">${JSON.stringify(pageCfg).replace(/</g, "\\u003c")}</script>
+<script defer src="${ASSETS["consent.js"]}"></script>
 <script defer src="${ASSETS["main.js"]}"></script>
+<script defer src="${ASSETS["badges.js"]}"></script>
 ${["place.js", ...(p.scripts || []).filter((n) => n !== "place.js")].map((n) => `<script defer src="${ASSETS[n]}"></script>`).join("\n")}
 </body>
 </html>
@@ -584,6 +649,7 @@ function buildHome(lang) {
       <canvas class="globe-gl" aria-hidden="true"></canvas>
       <canvas class="globe-fx" role="img" aria-label="${esc(h.globeLabel)}"></canvas>
       <a class="globe-attr" data-globe-attr href="https://www.openstreetmap.org/copyright" rel="noopener" hidden>© OpenStreetMap contributors</a>
+      <p class="globe-consent consent-ph" data-globe-consent hidden>${esc(t.consent.mapBlocked)} <button type="button" class="btn btn-sm" data-consent-allow-ext>${esc(t.consent.allow)}</button></p>
       <noscript><p class="meta globe-noscript">${esc(h.globeCaption)}</p></noscript>
     </div>
     <dialog class="info-dialog" id="globe-info" aria-labelledby="globe-info-title">
@@ -615,7 +681,7 @@ function buildHome(lang) {
   e.push({ t: t.stage.label, u: pagePath + "#model-classic", d: t.stage.hint, k: "saat model stil style clock tam ekran full screen fullscreen" });
   MODELS.forEach((m) => e.push({ t: t.stage.models[m.id], u: `${pagePath}#model-${m.id}`, d: t.stage.label, k: "saat model clock style" }));
   e.push({ t: h.globeLabel, u: pagePath, d: h.globeCaption, k: "dünya küre gece gündüz meridyen saat dilimi globe earth day night time zone meridian" });
-  e.push({ t: t.list.heading, u: pagePath + "#liste", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
+  e.push({ t: t.list.heading, u: pagePath + "#liste-form", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
   const globe = { earth: EARTH_URL, places: PLACES_URL, names: PLACE_NAMES_URL[lang], cities: CITIES.map((c) => ({ n: c[lang].name, lat: c.lat, lon: c.lon, tz: c.tz, ...(GLOBE_CITIES.includes(c.key) ? { m: 1 } : {}) })) };
   return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js", "globe.js"], clientExtra: { globe } };
 }
@@ -1573,7 +1639,7 @@ ${im}
 const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation });
 const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
 const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
-const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail }; };
+const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
 function buildPrayerHub(lang) {
   const t = I[lang];
@@ -1594,7 +1660,6 @@ function buildPrayerCity(lang, prov) {
 function embedFramePage(lang) {
   const t = I[lang];
   const slides = EMBED_MODELS.map((m) => `<section class="slide ${m.cls}" data-model="${m.id}" aria-hidden="true">${m.html("")}</section>`).join("");
-  const umami = UMAMI_ID ? `<script defer src="https://istatistik.bumba.tr/script.js" data-website-id="${esc(UMAMI_ID)}" data-domains="${esc(HOST)}"></script>` : "";
   const pageCfg = { locale: t.locale, t: { ...t.client }, cities: clientCities(lang), cal: { months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt } };
   return `<!doctype html>
 <html lang="${lang}" dir="${DIR(lang)}" data-embed="1">
@@ -1609,7 +1674,6 @@ function embedFramePage(lang) {
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="${ASSETS["styles.css"]}">
 <script src="${ASSETS["theme.js"]}"></script>
-${umami}
 </head>
 <body>
 <main class="embed-stage">${slides}</main>
@@ -1658,7 +1722,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), buildBadges(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur
 }
@@ -1769,5 +1833,5 @@ write(
   )
 );
 
-if (!UMAMI_ID) console.warn("UYARI: Umami kimliği boş; sayaç betiği eklenmedi (site.config.json → umamiId ya da UMAMI_ID).");
+if (!UMAMI_ID) console.warn("UYARI: Umami kimliği boş; sayaç eklenmeyecek (site.config.json → umamiId ya da UMAMI_ID).");
 console.log(`Derlendi: ${built.length} sayfa + 404/500 → dist/ (${ORIGIN})`);

@@ -16,10 +16,14 @@
     } catch (e) {}
     return null;
   }
+  /* Umami olayı yalnız çerez bandında istatistiğe izin verildiyse gider (consent.js) */
   function track(name, data) {
-    try {
-      if (window.umami && typeof window.umami.track === "function") window.umami.track(name, data);
-    } catch (e) {}
+    try { if (window.sthConsent) window.sthConsent.track(name, data); } catch (e) {}
+  }
+  /* Kazanım rozeti (badges.js); fromLoad: sayfa açılışında sağlanan koşul, Umami olayı gitmez */
+  function badge(id, fromLoad, extra) {
+    if (window.sthBadges) { try { window.sthBadges.hit(id, fromLoad, extra); } catch (e) {} }
+    else (window.__sthBq = window.__sthBq || []).push([id, fromLoad, extra]); // badges.js henüz yüklenmediyse sırada bekler
   }
   function tpl(s, vars) {
     return String(s).replace(/\{(\w+)\}/g, function (_, k) { return vars[k] != null ? vars[k] : ""; });
@@ -99,6 +103,7 @@
       root.setAttribute("data-theme", next);
       store("sth-theme", next);
       track("tema-degisimi", { tema: next });
+      badge("tema");
     });
   });
 
@@ -133,6 +138,7 @@
         return;
       }
       track("tam-ekran");
+      badge("tam-ekran");
       if (el.requestFullscreen) el.requestFullscreen().catch(function () { el.classList.add("is-full"); update(); });
       else { el.classList.add("is-full"); update(); }
     };
@@ -485,6 +491,7 @@ function sunTimes(y, m, d, lat, lon) {
     var hasDigital = slide && slide.querySelector(".clock");
     if (analog || (!digital && !hasDigital)) prefs.secA = !prefs.secA; else prefs.secD = !prefs.secD;
     savePrefs();
+    badge("saniye");
   };
   Array.prototype.forEach.call(doc.querySelectorAll("[data-carousel] [data-track]"), function (tr) {
     tr.addEventListener("click", function (e) {
@@ -543,6 +550,8 @@ function sunTimes(y, m, d, lat, lon) {
         prefs.model = slides[current].getAttribute("data-model");
         store("sth-prefs", JSON.stringify(prefs));
         track("saat-modeli", { model: prefs.model });
+        badge("ilk-model");
+        badge("@model", false, { i: current, n: slides.length });
       }, 250);
     }, { passive: true });
     dots.forEach(function (d, n) { d.addEventListener("click", function () { goTo(n, true); }); });
@@ -585,35 +594,63 @@ function sunTimes(y, m, d, lat, lon) {
     }
     if (start > 0) goTo(start, false);
     reported = current;
+    badge("@model", true, { i: current, n: slides.length });
     setTimeout(function () { ready = true; }, 400);
   }
 
-  /* ---------- E-posta listesi: sonuç iletisi ve Umami olayı ---------- */
+  /* ---------- E-posta listesi (standart madde 6): sonuç iletisi ve Umami olayı ---------- */
   (function listResult() {
     var id = location.hash.replace("#", "");
-    if (id !== "liste-tamam" && id !== "liste-hata") return;
-    var el = doc.getElementById(id);
-    if (el) { el.classList.add("is-shown"); el.setAttribute("tabindex", "-1"); el.focus(); }
+    var out = doc.getElementById("liste-sonuc");
+    if ((id !== "liste-tamam" && id !== "liste-hata") || !out) return;
+    out.textContent = out.getAttribute(id === "liste-tamam" ? "data-ok" : "data-err") || "";
+    out.className = "liste-sonuc " + (id === "liste-tamam" ? "is-ok" : "is-err");
+    out.setAttribute("tabindex", "-1");
+    try { out.focus({ preventScroll: false }); } catch (e) {}
     if (id === "liste-tamam") track("liste-katil");
     try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
   })();
 
-  /* ---------- E-posta listesi: Katıl'a basınca aydınlatma ve onay penceresi ---------- */
+  /* ---------- E-posta listesi: Katıl → aydınlatma penceresi → "Kabul ediyorum" formu gönderir ---------- */
   (function listConsent() {
-    var form = doc.querySelector(".list-box form"), dlgL = doc.getElementById("liste-dialog");
-    if (!form || !dlgL) return;
-    var hide = function () { if (typeof dlgL.close === "function") dlgL.close(); else dlgL.removeAttribute("open"); };
+    var form = doc.getElementById("liste-form"), win = doc.getElementById("liste-pencere");
+    if (!form || !win || typeof win.showModal !== "function") return; // betiksiz/eskide noscript onay kutusu çalışır
+    var accept = doc.getElementById("liste-kabul"), body = doc.getElementById("liste-metin"), title = doc.getElementById("liste-baslik");
+    var loaded = false, loading = false, lastBtn = null;
+    form.addEventListener("click", function (e) { var b = e.target.closest && e.target.closest("button"); if (b) lastBtn = b; });
+    function fill(j) {
+      title.textContent = j.baslik || title.textContent;
+      body.textContent = "";
+      if (j.giris) { var p0 = doc.createElement("p"); p0.textContent = j.giris; body.appendChild(p0); }
+      (j.bolumler || []).forEach(function (b) {
+        var h = doc.createElement("h3"); h.textContent = b.baslik || "";
+        var p = doc.createElement("p"); p.textContent = b.metin || "";
+        body.appendChild(h); body.appendChild(p);
+      });
+      loaded = true; accept.disabled = false;
+    }
+    function load() {
+      if (loaded || loading) return;
+      loading = true;
+      body.textContent = body.getAttribute("data-loading") || "";
+      fetch(form.getAttribute("data-aydinlatma"), { credentials: "omit" })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+        .then(function (j) { loading = false; fill(j); })
+        .catch(function () { loading = false; body.textContent = body.getAttribute("data-fail") || ""; accept.disabled = true; });
+    }
     form.addEventListener("submit", function (e) {
+      var sub = e.submitter || lastBtn;
+      if (sub && sub.id === "liste-kabul" && loaded) return; // rıza yalnız bu düğmeyle: riza=on gönderilir
       e.preventDefault();
       if (!form.reportValidity()) return;
-      if (typeof dlgL.showModal === "function") dlgL.showModal(); else dlgL.setAttribute("open", "");
+      win.showModal();
+      load();
     });
-    dlgL.addEventListener("click", function (e) {
-      if (e.target === dlgL || (e.target.closest && e.target.closest("[data-list-cancel]"))) { hide(); return; }
-      if (e.target.closest && e.target.closest("[data-list-accept]")) {
-        var h = doc.createElement("input"); h.type = "hidden"; h.name = "riza"; h.value = "on"; form.appendChild(h);
-        hide(); form.submit();
-      }
+    doc.getElementById("liste-vazgec").addEventListener("click", function () { win.close(); });
+    win.addEventListener("click", function (e) { // karartılmış alana basmak kapatır
+      if (e.target !== win) return;
+      var r = win.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) win.close();
     });
   })();
 
@@ -685,6 +722,7 @@ function sunTimes(y, m, d, lat, lon) {
         var t = doc.createElement("span"); t.className = "r-title"; t.textContent = e.t;
         var d = doc.createElement("span"); d.className = "r-desc"; d.textContent = e.d || "";
         a.appendChild(t); a.appendChild(d); li.appendChild(a); list.appendChild(li);
+        a.addEventListener("click", function () { badge("arama"); });
       });
       setActive(0);
       clearTimeout(timer);
@@ -707,7 +745,7 @@ function sunTimes(y, m, d, lat, lon) {
       else if (ev.key === "ArrowUp") { ev.preventDefault(); setActive(active - 1); }
       else if (ev.key === "Enter") {
         var links = list.querySelectorAll("a");
-        if (links[active]) { ev.preventDefault(); location.href = links[active].getAttribute("href"); }
+        if (links[active]) { ev.preventDefault(); badge("arama"); location.href = links[active].getAttribute("href"); }
       }
     });
     doc.getElementById("search-close").addEventListener("click", function () { dlg.close(); });
@@ -733,7 +771,7 @@ function sunTimes(y, m, d, lat, lon) {
   }
   window.sth = {
     longDate: longDate, refreshLive: refreshLive, isoWeek: isoWeek,
-    T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, tpl: tpl, norm: norm,
+    T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, badge: badge, tpl: tpl, norm: norm,
     nowMs: nowMs, nowDate: nowDate, mono: mono, prefs: prefs, makeFullscreen: makeFullscreen,
     parts: parts, offsetMin: offsetMin, fmt: fmt, localTz: localTz, durLabel: durLabel,
     syncState: function () { return sync; },

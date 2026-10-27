@@ -17,6 +17,9 @@
   var TILT0 = 23, SPEED = 3; // başlangıç enlemi, derece/sn (bir tur 2 dk)
   var ZMAX_TILE = 19.2;
   var TILE_URL = "https://tile.openstreetmap.org/";
+  /* OSM karoları "dış hizmetler" izniyle yüklenir (çerez bandı, consent.js); izin yoksa yer tutucu görünür */
+  var extOk = function () { return !!(window.sthConsent && window.sthConsent.ext()); };
+  var consentEl = fig.querySelector("[data-globe-consent]"), zoomBadge = false;
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var rtl = doc.documentElement.dir === "rtl";
 
@@ -250,7 +253,8 @@
     if (a > 0 && zadj === null) freezeScale();
     if (a === 0) zadj = null;
     mapA = a;
-    if (attr) attr.hidden = a < 0.02;
+    if (attr) attr.hidden = a < 0.02 || !extOk();
+    if (consentEl) consentEl.hidden = a < 0.02 || extOk();
     fig.classList.toggle("is-zoomed", zoom > 1.01);
     if (resetBtn) resetBtn.hidden = zoom <= 1.01;
     if (zoomOut) zoomOut.disabled = zoom <= 1.001;
@@ -260,6 +264,7 @@
   var tiles = {}, tileCount = 0, active = 0, queue = [], stamp = 0, MAXACT = 6;
   function tileKey(z, x, y) { return z + "/" + x + "/" + y; }
   function pump() {
+    if (!extOk()) return;
     while (active < MAXACT && queue.length) {
       var t = queue.shift();
       if (t.s !== 0) continue;
@@ -532,6 +537,7 @@
     if (Math.abs(z - zoom) < 1e-6) return;
     zoom = z; dirty = true;
     if (zoom > 1.12) ensurePlaces();
+    if (zoom > 1.12 && !zoomBadge && S.badge) { zoomBadge = true; S.badge("kure"); }
     if (anchor && zoom > ZM0) { // işaret edilen nokta yerinde kalsın (Mercator'da)
       var W = 256 * Math.pow(2, Math.min(ZMAX_TILE, mapZ())), wx = (anchor.lon + 180) / 360 * W, wy = mercY(anchor.lat) * W;
       lon0 = (wx - (ax - cx)) / W * 360 - 180; tilt = Math.max(-80, Math.min(80, mercLat((wy - (ay - cy)) / W)));
@@ -582,6 +588,7 @@
   canvas.addEventListener("dblclick", function (e) { var p = toCanvas(e); setZoom(zoom * 2, p.x, p.y); });
   if (zoomIn) zoomIn.addEventListener("click", function () { ensurePlaces(); setZoom(zoom * 2, cx, cy); });
   if (zoomOut) zoomOut.addEventListener("click", function () { setZoom(zoom / 2, cx, cy); });
+  window.addEventListener("sth-consent", function () { dirty = true; updateMode(); redraw(); });
   if (resetBtn) resetBtn.addEventListener("click", function () { zoom = 1; zadj = null; tilt = TILT0; dirty = true; resumeAt = 0; redraw(); });
 
   new MutationObserver(function () { readColors(); redraw(); }).observe(doc.documentElement, { attributes: true, attributeFilter: ["data-theme"] });

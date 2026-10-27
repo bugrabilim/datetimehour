@@ -265,7 +265,7 @@
     "title": "Datenschutzerklärung und Cookie-Richtlinie | Saat Tarih",
     "description": "Welche Daten Saat Tarih verarbeitet, Cookies und lokaler Speicher, Umami-Statistik, E-Mail-Liste und Ihre Rechte nach türkischem Datenschutzrecht (KVKK).",
     "h1": "Datenschutzerklärung und Cookie-Richtlinie",
-    "lead": "Diese Seite erläutert, welche Daten bei der Nutzung von Saat Tarih verarbeitet werden, zu welchem Zweck und welche Rechte Sie haben. Die Website erhebt nur, was sie benötigt; es gibt keine Benutzerkonten, keine Werbung und keine Tracking-Cookies.",
+    "lead": "Hier erklären wir, welche Daten bei der Nutzung von Saat Tarih verarbeitet werden, warum und welche Rechte Sie haben. Die Website erhebt nur das Nötige; es gibt keine Konten und keine Werbung, es werden keine Cookies gesetzt; Statistik und externe Dienste laufen nur mit Ihrer Zustimmung.",
     "sections": [
       {
         "id": "controller",
@@ -280,11 +280,11 @@
         "ul": [
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
           "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
-          "**Wetter:** Auf der Wetterseite (oder wenn Sie im Vollbild das Wetter einschalten oder eine Uhr mit Wetter wählen) werden die ungefähren Koordinaten der gewählten Provinz oder des gewählten Standorts (auf etwa 1 km genau) direkt von Ihrem Browser an Open-Meteo (api.open-meteo.com) gesendet, das die Daten liefert. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die eigenen Datenschutzbestimmungen von Open-Meteo.",
-          "**Karte (Globus):** Wenn Sie den Globus auf der Startseite über eine bestimmte Stufe hinaus vergrößern, werden Kartenkacheln direkt von Ihrem Browser vom Server von OpenStreetMap (tile.openstreetmap.org) geladen; dabei gelangen Ihre IP-Adresse und die Kachel-Adressen des betrachteten Gebiets an die OpenStreetMap Foundation. Beim ersten Öffnen der Seite und bei weit entferntem Globus erfolgt diese Anfrage nicht. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die eigenen Datenschutzbestimmungen von OpenStreetMap.",
-          "**Formular für die E-Mail-Liste:** Die von Ihnen eingegebene E-Mail-Adresse, die per Kontrollkästchen erteilte Einwilligung, die gewählte Sprache und die Seite, auf der sich das Formular befindet, werden vom gemeinsamen Listendienst der Bumba Group (bumbagroup.com) verarbeitet. Die Anmeldung erfolgt per Double-Opt-in: Sie werden erst aufgenommen, wenn Sie den Link in der Bestätigungs-E-Mail anklicken, und jede E-Mail enthält einen Link zur Abmeldung mit einem Klick. Einzelheiten finden Sie im [gemeinsamen Datenschutzhinweis](https://bumbagroup.com/liste/aydinlatma?dil=en) (auf Englisch).",
+          "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo.",
+          "**Karte (Globus, externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben und den Globus auf der Startseite über eine bestimmte Stufe hinaus vergrößern, werden Kartenkacheln direkt vom Server von OpenStreetMap (tile.openstreetmap.org) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kacheladressen des betrachteten Gebiets die OpenStreetMap Foundation. Ohne Zustimmung oder bei verkleinertem Globus wird diese Anfrage nicht gestellt. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbedingungen von OpenStreetMap.",
+          "**Formular der E-Mail-Liste:** Die eingegebene E-Mail-Adresse, die mit der Schaltfläche „Ich stimme zu“ im sich öffnenden Fenster erteilte Einwilligung, die gewählte Sprache und die Seite des Formulars werden vom gemeinsamen Listendienst der Bumba Group (bumbagroup.com) verarbeitet. Die Anmeldung erfolgt per Double-Opt-in: Sie werden erst aufgenommen, wenn Sie auf den Link in der Bestätigungs-E-Mail klicken; jede E-Mail enthält einen Abmeldelink. Einzelheiten im [gemeinsamen Datenschutzhinweis](https://bumbagroup.com/liste/aydinlatma?dil=en).",
           "**Server-Protokolle:** Der Server, auf dem die Website betrieben wird, führt für jede Anfrage ein übliches Zugriffsprotokoll mit IP-Adresse, Browserinformationen, aufgerufener Seite und Zeitpunkt. Diese Protokolle dienen ausschließlich der Sicherheit und der Fehlerbehebung, nicht der Erstellung von Personenprofilen.",
-          "**Besuchsstatistik:** Umami, das auf unserem eigenen Server läuft, zählt Seitenaufrufe und einige Aktionen (Sprachwechsel, Wechsel des Farbmodus, ob eine Suche ein Ergebnis lieferte, Anmeldung zur Liste). Umami verwendet keine Cookies. Ihre Suchbegriffe und Ihre E-Mail-Adresse werden nicht an das Statistiksystem übermittelt.",
+          "**Besuchsstatistik (Umami, mit Zustimmung):** Nur wenn Sie im Cookie-Banner oder in den Cookie-Einstellungen der Statistik zustimmen, zählt Umami, das auf unserem eigenen Server läuft, Seitenaufrufe und folgende Aktionen: Sprach- und Designwechsel, ob eine Suche ein Ergebnis fand, Anmeldung zur Liste, Wahl eines Uhrstils, Vollbild, die erste Nutzung eines Werkzeugs, die Art der Ortswahl (Provinz oder Standort), Öffnen oder Herunterladen des Ramadan-Kalenders und die Kennung eines erstmals verdienten Abzeichens. Dabei verarbeitet Umami Browser, Betriebssystem und Gerätetyp, Sprache, Bildschirmgröße, die Adresse der vorherigen Seite sowie aus Ihrer IP-Adresse abgeleitetes Land und Stadt; die IP-Adresse selbst wird nicht gespeichert. Umami verwendet keine Cookies, verknüpft Besuche aber mit einer pseudonymen Sitzung und ist daher nicht anonym. Suchbegriffe, Ihre E-Mail-Adresse und Ihr Standort werden nicht gesendet. Sie können die Zustimmung jederzeit über den Link „Cookie-Einstellungen“ in der Fußzeile widerrufen; Umami läuft ab der nächsten Seite nicht mehr.",
           "**Zeitsynchronisierung:** Um die Uhrzeit unabhängig von Ihrer Geräteuhr anzuzeigen, sendet Ihr Browser einige kleine Anfragen an den eigenen Server der Website und liest den Date-Header der Antwort. Diese Anfragen erscheinen nur im üblichen Zugriffsprotokoll des Servers; darüber hinaus wird nichts übermittelt."
         ]
       },
@@ -306,9 +306,9 @@
       },
       {
         "id": "cookies",
-        "h": "Cookies und lokaler Speicher",
+        "h": "Cookies und Browser-Speicher",
         "p": [
-          "Saat Tarih setzt keine Cookies, daher zeigen wir auch kein Cookie-Banner. Um Ihre Einstellungen zu speichern, nutzen wir den lokalen Speicher Ihres Browsers (localStorage); er verbleibt auf Ihrem Gerät und wird nicht an einen Server gesendet. Sie können ihn jederzeit in den Einstellungen Ihres Browsers löschen."
+          "Saat Tarih setzt keine Cookies. Beim ersten Besuch fragt ein Banner unten auf der Seite nach Ihrer Zustimmung zur Besuchsstatistik (Umami) und zu externen Diensten (Open-Meteo, OpenStreetMap); beides bleibt aus, bis Sie zustimmen. Sie können Ihre Wahl jederzeit über den Link „Cookie-Einstellungen“ in der Fußzeile ändern. Um Ihre Einstellungen zu speichern, nutzen wir den lokalen Speicher Ihres Browsers (localStorage); diese Einträge gehören zur notwendigen Gruppe, bleiben auf Ihrem Gerät und werden nicht an einen Server gesendet. Sie können sie jederzeit in den Browsereinstellungen löschen. Gemeinsame Cookie-Richtlinie der Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -317,6 +317,11 @@
             "Speicherdauer"
           ],
           "rows": [
+            [
+              "bumba-cerez",
+              "Speichert Ihre Wahl im Cookie-Banner (Statistik und externe Dienste) und die Version der Richtlinie.",
+              "Bis zur Löschung durch Sie"
+            ],
             [
               "sth-theme",
               "Speichert Ihre Wahl zwischen hellem und dunklem Modus.",
@@ -329,7 +334,7 @@
             ],
             [
               "sth-prefs",
-              "Speichert die 24- oder 12-Stunden-Anzeige und die Einstellung für Sekunden.",
+              "Speichert 24- oder 12-Stunden-Anzeige, die Sekundeneinstellung und den zuletzt gewählten Uhrstil.",
               "Bis zur Löschung durch Sie"
             ],
             [
@@ -361,16 +366,49 @@
               "sth-place",
               "Merkt sich die zuletzt gewählte Provinz oder den zuletzt gewählten Standort für die Seiten Gebetszeiten, Natur und Wetter.",
               "Bis Sie es löschen"
+            ],
+            [
+              "sth-rozet",
+              "Speichert Ihre Abzeichen und Ihren Fortschritt (siehe unten).",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-conv",
+              "Speichert die im Zeitumrechner gewählten Städte.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-planner",
+              "Speichert die im Meeting-Planer gewählten Städte.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-wake",
+              "Speichert, ob die Werkzeuge den Bildschirm eingeschaltet lassen.",
+              "Bis zur Löschung durch Sie"
             ]
           ]
         }
       },
       {
+        "id": "badges",
+        "h": "Abzeichen",
+        "ul": [
+          "**Was gespeichert wird:** Die Kennung jedes verdienten Abzeichens und der Tag (ohne Uhrzeit) sowie die Zähler, die zur Prüfung der Bedingungen nötig sind: gesehene Uhrstile, der Tag Ihres letzten Besuchs und wie viele Tage in Folge Sie gekommen sind. Kein Aktivitätsprotokoll, kein Name, keine E-Mail.",
+          "**Wo:** Nur im lokalen Speicher dieses Browsers unter dem Schlüssel sth-rozet (Erstanbieter). Nichts davon wird an einen Server gesendet.",
+          "**Wie lange und wie löschen:** Bis Sie sie löschen, mit der Schaltfläche „Abzeichen löschen“ auf der Seite [Abzeichen](/de/badges/) oder durch Löschen der Browserdaten.",
+          "**Rechtsgrundlage:** Berechtigtes Interesse (KVKK Art. 5/2-f); die Daten verlassen Ihr Gerät nicht und Sie können sie sehen und löschen, daher wird keine gesonderte Zustimmung eingeholt.",
+          "**Statistik:** Wenn Sie der Statistik zugestimmt haben, wird beim ersten Verdienen eines Abzeichens dessen Kennung in Umami gezählt; wie Seitenaufrufe mit Browser-, Geräte-, Landes- und Stadtangaben. Name, E-Mail und Fortschritt werden nicht gesendet."
+        ]
+      },
+      {
         "id": "legal-basis",
         "h": "Rechtsgrundlagen",
         "ul": [
-          "E-Mail-Liste: Ihre ausdrückliche Einwilligung (Art. 5 Abs. 1 KVKK, des türkischen Gesetzes zum Schutz personenbezogener Daten). Sie können sie jederzeit über den Abmeldelink in jeder E-Mail widerrufen.",
-          "Server-Protokolle und Besuchsstatistik: unser berechtigtes Interesse an einem sicheren und funktionsfähigen Betrieb der Website (Art. 5 Abs. 2 Buchst. f KVKK)."
+          "E-Mail-Liste: Ihre ausdrückliche Einwilligung (KVKK Art. 5/1). Sie können sie jederzeit über den Abmeldelink in jeder E-Mail widerrufen.",
+          "Besuchsstatistik (Umami) und externe Dienste (Open-Meteo, OpenStreetMap): Ihre im Cookie-Banner erteilte ausdrückliche Einwilligung (KVKK Art. 5/1). Wenn Sie externe Dienste erlauben, erreicht Ihre IP-Adresse diese möglicherweise im Ausland ansässigen Anbieter; Ihre Einwilligung umfasst auch dies. Widerruf über den Link „Cookie-Einstellungen“.",
+          "Serverprotokolle: unser berechtigtes Interesse, die Website sicher und funktionsfähig zu halten (KVKK Art. 5/2-f).",
+          "Ihre Einstellungen und Abzeichen: berechtigtes Interesse (KVKK Art. 5/2-f); die Daten bleiben nur auf Ihrem Gerät."
         ]
       },
       {
@@ -402,19 +440,22 @@
     "cta": "Zurück zur Startseite"
   },
   "list": {
-    "heading": "Auf dem Laufenden bleiben",
+    "heading": "E-Mail-Liste",
     "lead": "Möchten Sie Neuigkeiten zu Saat Tarih per E-Mail erhalten? Sie können sich jederzeit mit einem Klick wieder abmelden.",
     "emailLabel": "Ihre E-Mail-Adresse",
     "submit": "Anmelden",
     "ok": "Wir haben Ihnen eine Bestätigungs-E-Mail gesendet; klicken Sie auf den Link darin, um die Anmeldung abzuschließen.",
-    "err": "Ihre Anmeldung konnte nicht gespeichert werden. Bitte prüfen Sie die E-Mail-Adresse und das Kontrollkästchen und versuchen Sie es gleich noch einmal.",
+    "err": "Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut.",
     "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
-    "popupTitle": "Beitritt zur Liste bestätigen",
+    "popupTitle": "Datenschutzhinweis zur E-Mail-Liste",
     "popupText": "Ihre E-Mail-Adresse wird von Bumba Teknoloji Limited Şirketi ausschließlich verarbeitet, um Sie in diese Liste einzutragen. Sie können sich jederzeit mit einem Klick abmelden.",
-    "readNote": "Datenschutzhinweis lesen",
-    "consentText": "Ich habe den Datenschutzhinweis gelesen und bin mit dem Erhalt von E-Mails einverstanden.",
+    "readNote": "Ich habe den Datenschutzhinweis gelesen",
+    "consentText": "und stimme zu.",
     "accept": "Ich stimme zu",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "loading": "Text wird geladen…",
+    "loadFail": "Der Text konnte nicht geladen werden. Sie können den vollständigen Text über den Link unten lesen und es etwas später erneut versuchen.",
+    "fullText": "Vollständiger Text"
   },
   "badge": {
     "title": "Bumba Life, ein Geschäftsbereich der Bumba Group",
@@ -1531,5 +1572,123 @@
     "general": "Allgemein",
     "countdowns": "Countdown-Seiten",
     "calendar": "Kalender, Feiertage und Bayram-Feste"
+  },
+  "consent": {
+    "barLabel": "Cookie-Auswahl",
+    "barText": "Wir speichern Ihre Einstellungen (Sprache, Design, Uhr- und Werkzeugeinstellungen, Abzeichen) nur in diesem Browser. Wenn Sie zustimmen, werden Besuche mit Umami gezählt und Wetter sowie Detailkarte von externen Diensten geladen.",
+    "accept": "Akzeptieren",
+    "reject": "Ablehnen",
+    "prefs": "Einstellungen",
+    "policy": "Cookie-Richtlinie",
+    "title": "Cookie-Einstellungen",
+    "intro": "Wählen Sie, welche Gruppen aktiv sind; Sie können Ihre Wahl jederzeit über den Link „Cookie-Einstellungen“ in der Fußzeile ändern.",
+    "necessary": "Notwendig",
+    "necessaryText": "Ihre Cookie-Auswahl, Sprache, Design, Uhr- und Werkzeugeinstellungen, der gewählte Ort, die Weltuhr-Liste und die Abzeichen werden im lokalen Speicher dieses Browsers gehalten. Sie gelangen nie an einen Server; ohne sie funktioniert die Website nicht.",
+    "alwaysOn": "Immer aktiv",
+    "stats": "Statistik",
+    "statsText": "Umami zählt Seitenaufrufe und einige Aktionen (Browser, Gerät, Sprache sowie aus der IP-Adresse abgeleitetes Land und Stadt; die IP wird nicht gespeichert). Es werden keine Cookies verwendet. Standardmäßig aus.",
+    "ext": "Externe Dienste",
+    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com), die Karte auf dem vergrößerten Globus von OpenStreetMap (tile.openstreetmap.org) geladen; dabei erreicht Ihre IP-Adresse diese Dienste. Standardmäßig aus.",
+    "save": "Auswahl speichern",
+    "footerLink": "Cookie-Einstellungen",
+    "privacy": "Datenschutz",
+    "wxBlocked": "Das Wetter wird von Open-Meteo geladen; erlauben Sie externe Dienste, um es anzuzeigen.",
+    "mapBlocked": "Die Detailkarte wird von OpenStreetMap geladen; erlauben Sie externe Dienste, um sie anzuzeigen.",
+    "allow": "Erlauben"
+  },
+  "badges": {
+    "title": "Abzeichen | Saat Tarih",
+    "description": "Die Abzeichen, die du bei Saat Tarih verdient hast, und wie man sie bekommt.",
+    "h1": "Abzeichen",
+    "lead": "Wenn du Saat Tarih nutzt, verdienst du Abzeichen. Alle stehen unten; verdiente zeigen den Tag.",
+    "nav": "Abzeichen",
+    "note": "Deine Abzeichen und dein Fortschritt werden nur in diesem Browser gespeichert, bis du sie löschst.",
+    "privacyLink": "Datenschutz",
+    "earnedOn": "Verdient: {date}",
+    "locked": "Noch nicht verdient",
+    "progress": "{n}/{total}",
+    "count": "{n}/{total} Abzeichen verdient",
+    "delete": "Abzeichen löschen",
+    "deleteTitle": "Abzeichen löschen?",
+    "deleteText": "Alle deine Abzeichen und dein Fortschritt in diesem Browser (gesehene Uhrstile, deine Besuchsserie) werden gelöscht. Das lässt sich nicht rückgängig machen.",
+    "deleteYes": "Löschen",
+    "deleteNo": "Abbrechen",
+    "deleted": "Deine Abzeichen wurden gelöscht.",
+    "toast": "Neues Abzeichen: {name}",
+    "toastLink": "Meine Abzeichen",
+    "items": {
+      "tema": {
+        "name": "Tag und Nacht",
+        "how": "Wechsle das Design von hell zu dunkel oder zurück."
+      },
+      "saniye": {
+        "name": "Sekundenjäger",
+        "how": "Tippe auf die Uhr, um die Sekunden ein- oder auszuschalten."
+      },
+      "ilk-model": {
+        "name": "Neues Gesicht",
+        "how": "Wechsle auf der Uhrenbühne zu einem anderen Uhrstil."
+      },
+      "tam-ekran": {
+        "name": "Großbild",
+        "how": "Öffne die Uhr im Vollbild."
+      },
+      "arama": {
+        "name": "Finder",
+        "how": "Öffne ein Ergebnis der Website-Suche."
+      },
+      "takvim": {
+        "name": "Tagesforscher",
+        "how": "Tippe im Kalender auf einen Tag, um die Details zu öffnen."
+      },
+      "kronometre": {
+        "name": "Los!",
+        "how": "Starte die Stoppuhr."
+      },
+      "geri-sayim": {
+        "name": "Countdown",
+        "how": "Starte einen Countdown."
+      },
+      "alarm": {
+        "name": "Frühaufsteher",
+        "how": "Stelle einen Wecker."
+      },
+      "cevirici": {
+        "name": "Zeitübersetzer",
+        "how": "Ändere im Zeitumrechner eine Stadt oder Uhrzeit."
+      },
+      "tarih-hesap": {
+        "name": "Datumsprofi",
+        "how": "Mache eine Berechnung im Datumsrechner."
+      },
+      "dunya": {
+        "name": "Weltbürger",
+        "how": "Füge der Weltuhr eine Stadt oder Zeitzone hinzu."
+      },
+      "kure": {
+        "name": "Entdecker",
+        "how": "Zoome in den drehenden Globus hinein."
+      },
+      "pomodoro": {
+        "name": "Fokus",
+        "how": "Beende eine ganze Pomodoro-Arbeitsphase."
+      },
+      "seri-3": {
+        "name": "Drei Tage in Folge",
+        "how": "Besuche Saat Tarih drei Tage hintereinander."
+      },
+      "model-10": {
+        "name": "Sammler",
+        "how": "Sieh dir 10 verschiedene Uhrstile an."
+      },
+      "seri-7": {
+        "name": "Eine Woche",
+        "how": "Besuche Saat Tarih sieben Tage hintereinander."
+      },
+      "model-hepsi": {
+        "name": "Uhrenmeister",
+        "how": "Sieh dir alle Stile auf der Uhrenbühne an."
+      }
+    }
   }
 }
