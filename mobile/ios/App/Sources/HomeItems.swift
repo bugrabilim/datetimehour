@@ -147,6 +147,9 @@ struct HomeItemView: View {
                 .allowsHitTesting(false)
                 .frame(height: globeHeight)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(alignment: .topLeading) {
+                    AppleWeatherMark(compact: true, onDark: true).padding(10) // WeatherKit işareti, tıklanabilir
+                }
         }
     }
 }

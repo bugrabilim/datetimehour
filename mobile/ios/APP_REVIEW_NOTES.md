@@ -29,7 +29,7 @@ No login or sample files needed; everything works right after launch.
 The language follows the device (Turkish, English, German, Azerbaijani, Arabic).
 
 4. EXTERNAL SERVICES
-- Apple WeatherKit: weather (Apple Weather attribution shown).
+- Apple WeatherKit: weather. Every screen that shows WeatherKit data displays the Apple Weather mark and a "Legal" link to Apple's legal attribution page: Weather tab (right below current conditions), weather clock faces and the weather item on the Clock tab, and the globe (World tab and Clock tab, top-left corner; city temperatures).
 - Apple MapKit: the globe.
 - On-device Apple frameworks: Core Location (optional), EventKit (optional), UserNotifications and AlarmKit, AVSpeechSynthesizer (spoken reminder sounds made on the device).
 - Bumba mailing list (bumbagroup.com): only if the user enters an email in About, with explicit consent.
