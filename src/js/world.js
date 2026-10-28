@@ -116,7 +116,7 @@
     option(s1, "", W.select);
     cities.slice().sort(function (a, b) { return a.n.localeCompare(b.n, S.locale); }).forEach(function (c) { if (list.indexOf(c.k) < 0) option(s1, c.k, c.n + " (" + c.c + ")"); });
     var add1 = el("button", "btn", W.add); add1.type = "button";
-    add1.addEventListener("click", function () { if (s1.value && list.length < MAX) { setSaved(list.concat([s1.value])); draw(); } });
+    add1.addEventListener("click", function () { if (s1.value && list.length < MAX) { setSaved(list.concat([s1.value])); draw(); if (S.badge) S.badge("dunya"); } });
     f1.appendChild(l1); f1.appendChild(s1); row.appendChild(f1); row.appendChild(add1); panel.appendChild(row);
     var zones = [];
     try { zones = Intl.supportedValuesOf("timeZone"); } catch (e) {}
@@ -125,7 +125,7 @@
       option(s2, "", W.select);
       zones.forEach(function (z) { if (list.indexOf("tz:" + z) < 0) option(s2, z, z.replace(/_/g, " ")); });
       var add2 = el("button", "btn", W.add); add2.type = "button";
-      add2.addEventListener("click", function () { if (s2.value && list.length < MAX) { setSaved(list.concat(["tz:" + s2.value])); draw(); } });
+      add2.addEventListener("click", function () { if (s2.value && list.length < MAX) { setSaved(list.concat(["tz:" + s2.value])); draw(); if (S.badge) S.badge("dunya"); } });
       f2.appendChild(l2); f2.appendChild(s2); row2.appendChild(f2); row2.appendChild(add2); panel.appendChild(row2);
     }
     var acts = el("div", "tool-actions");

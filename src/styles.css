@@ -462,18 +462,23 @@ tbody th a { color: var(--text); }
 .prose li { margin-bottom: 0.6rem; }
 .prose h2 { margin-top: 2rem; }
 
-/* E-posta listesi formu */
-.list-box { flex: 1 1 18rem; max-width: 26rem; padding: 0; }
-.list-box h2 { font-size: 0.95rem; margin: 0 0 0.3rem; color: var(--muted); }
-.list-box form { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; align-items: start; }
-.list-box .field { grid-column: 1; grid-row: 1; margin: 0; }
-.list-box .btn { grid-column: 2; grid-row: 1; min-height: 2.25rem; padding: 0 0.9rem; font-size: 0.9rem; }
-.list-box input[type="email"] { min-height: 2.25rem; padding-block: 0.2rem; font-size: 0.9rem; }
+/* E-posta listesi formu (altbilgide, çerçevesiz; standart madde 1 ve 6) */
+.liste-form { flex: 1 1 18rem; max-width: 26rem; margin: 0; }
+.liste-form > label { display: block; font-size: 0.95rem; font-weight: 600; margin: 0 0 0.3rem; color: var(--muted); }
+.liste-row { display: flex; gap: 0.5rem; align-items: center; }
+.liste-row input[type="email"] { flex: 1; min-width: 0; min-height: 2.25rem; padding-block: 0.2rem; font-size: 0.9rem; }
+.liste-row .btn { min-height: 2.25rem; padding: 0 0.9rem; font-size: 0.9rem; flex: none; }
+.liste-form .check { margin: 0.4rem 0 0; font-size: 0.78rem; color: var(--muted); }
+.liste-form .check input { width: 1.1rem; height: 1.1rem; margin-top: 0.1rem; }
+.liste-sonuc { margin: 0.5rem 0 0; font-size: 0.9rem; font-weight: 600; }
+.liste-sonuc:empty { display: none; }
+.liste-sonuc.is-ok { color: var(--ok); }
+.liste-sonuc.is-err { color: var(--err); }
+.list-dialog { width: min(36rem, calc(100vw - 2rem)); }
+.liste-metin { max-height: min(50vh, 26rem); overflow-y: auto; margin: 0 0 0.6rem; padding-inline-end: 0.3rem; font-size: 0.92rem; }
+.liste-metin h3 { font-size: 0.95rem; margin: 0.8rem 0 0.2rem; }
+.liste-metin p { margin: 0 0 0.5rem; }
 .list-dialog p { margin: 0 0 0.6rem; }
-.list-dialog .consent-line { font-weight: 600; }
-.list-box .check { grid-column: 1 / -1; margin: 0; font-size: 0.78rem; color: var(--muted); }
-.list-box .check input { width: 1.1rem; height: 1.1rem; margin-top: 0.1rem; }
-.list-box .form-msg { font-size: 0.9rem; padding: 0.6rem 0.8rem; margin-bottom: 0.6rem; }
 .field { display: grid; gap: 0.35rem; margin-bottom: 0.9rem; }
 .field label { font-weight: 600; }
 input[type="email"], input[type="search"], input[type="number"], input[type="time"], input[type="text"], input[type="datetime-local"], input[type="date"], select {
@@ -519,13 +524,54 @@ dialog.search::backdrop { background: rgb(10 12 16 / 0.55); }
 .footer-sign p { margin: 0; }
 .rozet { display: inline-block; line-height: 0; }
 .rozet img { height: 28px; width: auto; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.3rem 1.25rem; margin-top: 0.6rem; font-size: 0.85rem; }
+.footer-links a, .link-btn { color: var(--muted); }
+.link-btn { background: none; border: 0; padding: 0; font: inherit; text-decoration: underline; cursor: pointer; }
+.footer-links a:hover, .link-btn:hover { color: var(--text); }
+
+/* Çerez bandı ve tercihler (standart madde 14): içeriği kapatmaz, odağı tutmaz */
+.cookie-bar { position: fixed; inset-inline: 0; bottom: 0; z-index: 60; background: var(--surface); color: var(--text); border-top: 1px solid var(--border); box-shadow: var(--shadow); padding-block: 0.7rem; }
+.cookie-row { display: flex; flex-wrap: wrap; gap: 0.6rem 1.25rem; align-items: center; justify-content: space-between; }
+.cookie-row p { margin: 0; flex: 1 1 22rem; font-size: 0.9rem; }
+.cookie-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; flex: 0 1 26rem; }
+.cookie-btns .btn { min-height: 2.5rem; padding: 0 0.8rem; font-size: 0.9rem; }
+html.has-cookie-bar body { padding-bottom: 7rem; }
+.cookie-dialog { width: min(34rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; }
+.cg { border-top: 1px solid var(--border); padding-top: 0.7rem; margin-top: 0.7rem; }
+.cg-head { display: flex; align-items: center; gap: 0.6rem; }
+.cg-head input { width: 1.25rem; height: 1.25rem; accent-color: var(--accent); flex: none; }
+.cg-tag { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+.cg .meta { margin: 0.3rem 0 0; }
+.btn.btn-sm { min-height: 2.1rem; padding: 0 0.8rem; font-size: 0.85rem; }
+.consent-ph { font-size: 0.92rem; }
+.globe-consent { position: absolute; inset-inline: 1rem; bottom: 2.5rem; margin: 0 auto; max-width: 28rem; padding: 0.7rem 0.9rem; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); text-align: center; z-index: 3; }
+
+/* Kazanım rozetleri (standart madde 13) */
+.badge-toast { position: fixed; inset-inline-end: 1rem; bottom: 1rem; z-index: 70; max-width: min(24rem, calc(100vw - 2rem)); padding: 0.7rem 0.9rem; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-inline-start: 4px solid var(--accent); border-radius: 12px; box-shadow: var(--shadow); }
+html.has-cookie-bar .badge-toast { bottom: 8rem; }
+.badge-toast p { margin: 0; font-weight: 600; }
+.badge-toast .bt-icon { margin-inline-end: 0.4rem; }
+.badge-toast .bt-note { margin-top: 0.3rem; font-weight: 400; font-size: 0.85rem; color: var(--muted); }
+.badge-toast a { color: var(--accent); }
+.badges-note { font-size: 0.95rem; }
+.badge-grid { list-style: none; margin: 1rem 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 0.75rem; }
+.badge-item { display: flex; gap: 0.8rem; align-items: flex-start; padding: 0.8rem; border: 1px dashed var(--border); border-radius: var(--radius); background: var(--bg); }
+.badge-item.is-earned { border-style: solid; border-color: var(--accent); background: var(--accent-soft); }
+.b-icon { font-size: 1.8rem; line-height: 1; filter: grayscale(1); opacity: 0.55; }
+.badge-item.is-earned .b-icon { filter: none; opacity: 1; }
+.b-name { font-size: 1rem; margin: 0 0 0.2rem; }
+.b-how { margin: 0 0 0.3rem; font-size: 0.9rem; }
+.b-status { margin: 0; font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+.badge-item.is-earned .b-status { color: var(--text); }
+.badge-item.is-earned .b-status::before { content: "✓ "; }
+.badges-actions { margin-top: 1rem; }
 
 /* Hata sayfaları */
 .center-page { text-align: center; padding-block: 4rem; }
 .center-page .lead { margin-inline: auto; }
 .center-page + .center-page { border-top: 1px solid var(--border); }
 
-@media print { .site-header, .site-footer, dialog, .controls { display: none !important; } }
+@media print { .site-header, .site-footer, dialog, .controls, .cookie-bar, .badge-toast { display: none !important; } }
 
 /* Senkron durum satırı */
 .sync-line { text-align: center; margin: 0.25rem 0 0; color: var(--muted); font-size: 0.95rem; min-height: 1.5em; }

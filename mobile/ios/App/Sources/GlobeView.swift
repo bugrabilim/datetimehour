@@ -59,6 +59,15 @@ struct GlobeView: View {
                     .padding(10)
                 }
             }
+            .overlay(alignment: .topLeading) {
+                // Şehirlerin yanındaki hava WeatherKit'ten: Apple Hava Durumu işareti ve yasal bağlantı (App Review 5.2.5).
+                // Sol altta Apple Haritalar'ın kendi işareti durduğu için sol üstte. Dokunuşu kapalı küçük kopyada
+                // (saat ekranı) işaret dışarıdan eklenir ki bağlantı tıklanabilsin.
+                if interactive {
+                    AppleWeatherMark(compact: true, onDark: true)
+                        .padding(fullscreen ? 16 : 10)
+                }
+            }
             .fullScreenCover(isPresented: $showFullscreen) {
                 GlobeView(fullscreen: true)
                     .ignoresSafeArea()

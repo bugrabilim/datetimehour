@@ -409,12 +409,17 @@
     <string name="list_ok">We have sent you a confirmation email; click the link in your inbox to complete joining the list.</string>
     <string name="list_err">We couldn\'t save your sign-up. Please check the email address and the checkbox, then try again in a moment.</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
-    <string name="list_popupTitle">Confirm joining the list</string>
+    <string name="list_popupTitle">Email list privacy notice</string>
     <string name="list_popupText">Your email address is processed by Bumba Teknoloji Limited Şirketi only to subscribe you to this list. You can unsubscribe at any time with one click.</string>
     <string name="list_readNote">Read the privacy notice</string>
     <string name="list_consentText">I have read the privacy notice and agree to receive emails.</string>
     <string name="list_accept">I agree</string>
     <string name="list_cancel">Cancel</string>
+    <string name="list_loading">Loading the text…</string>
+    <string name="list_loadFail">The text could not be loaded. You can read the full text from the link below and try again a little later.</string>
+    <string name="list_fullText">Full text</string>
+    <string name="list_label">Email list</string>
+    <string name="list_formErr">We could not sign you up. Check your email address and try again a little later.</string>
     <string name="common_done">Done</string>
     <string name="notify_heading">Prayer time notifications</string>
     <string name="notify_enable">Notify me at prayer times</string>

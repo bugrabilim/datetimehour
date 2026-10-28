@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """App Store Connect inceleme durumu ve yeniden gönderme (iOS inceleme iş akışı çalıştırır).
 
-  durum         : uygulamanın App Store sürümlerini ve inceleme gönderimlerini (öğeleriyle) yazar; hiçbir şey değiştirmez.
+  durum         : uygulamanın App Store sürümlerini, inceleme gönderimlerini (öğeleriyle) ve TestFlight test gruplarını
+                  (kullanıcıları ve yapılarıyla) yazar; hiçbir şey değiştirmez. Depo herkese açık olduğu için iş akışı
+                  çıktısı da herkese açıktır: e-posta adresleri kısaltılarak yazılır (ör. e***@gmail.com), ad yazılmaz.
   yeniden-gonder: "Unresolved Issues" durumundaki gönderimde reddedilen öğeleri çözüldü olarak işaretler ve gönderimi
                   yeniden incelemeye yollar. Apple'ın bilgi isteğine App Store Connect'te yanıt verildikten sonra
                   "Resubmit to App Review" düğmesi kapalı kalırsa kullanılır.
@@ -71,6 +73,33 @@ def status(aid):
             print(f"  öğe {it['id']}: state={it['attributes'].get('state')}")
 
 
+def mask(email):
+    if not email or "@" not in email:
+        return "(e-posta yok)"
+    user, domain = email.split("@", 1)
+    return user[:1] + "***@" + domain
+
+
+def beta_groups(aid):
+    """TestFlight grupları: iç/dış, otomatik dağıtım, kullanıcılar (kısaltılmış e-posta, durum) ve gruptaki yapılar."""
+    groups = call("GET", f"/apps/{aid}/betaGroups?limit=50")["data"]
+    print(f"--- TestFlight grupları ({len(groups)}) ---")
+    for g in groups:
+        a = g["attributes"]
+        kind = "iç" if a.get("isInternalGroup") else "dış"
+        auto = " · otomatik dağıtım açık" if a.get("hasAccessToAllBuilds") else ""
+        link = " · herkese açık bağlantı açık" if a.get("publicLinkEnabled") else ""
+        print(f"Grup \"{a.get('name')}\" ({kind}{auto}{link})")
+        testers = call("GET", f"/betaGroups/{g['id']}/betaTesters?limit=200")["data"]
+        print(f"  kullanıcılar ({len(testers)}):")
+        for t in testers:
+            ta = t["attributes"]
+            print(f"    {mask(ta.get('email'))} · {ta.get('inviteType') or '-'} · {ta.get('state') or '-'}")
+        builds = call("GET", f"/betaGroups/{g['id']}/builds?limit=200")["data"]
+        nums = sorted((b["attributes"].get("version") for b in builds), key=lambda v: int(v) if str(v).isdigit() else 0)
+        print(f"  yapılar ({len(builds)}): {', '.join(map(str, nums)) or '-'}")
+
+
 def resubmit(aid):
     open_subs = [s for s in submissions(aid) if s["attributes"].get("state") == "UNRESOLVED_ISSUES"]
     if not open_subs:
@@ -94,3 +123,4 @@ if __name__ == "__main__":
         resubmit(aid)
         print("--- güncel durum ---")
     status(aid)
+    beta_groups(aid)

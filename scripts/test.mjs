@@ -31,6 +31,7 @@ for (const f of htmlFiles) {
   const err = name === "/404.html" || name === "/500.html";
   const noidx = /<meta name="robots" content="noindex/.test(h);
   const embed = new RegExp(`^/embed/(${LG})/index\\.html$`).test(name);
+  const badgesPage = new RegExp(`^/(rozetler|(${LG})/badges)/index\\.html$`).test(name);
   ids[f] = new Set([...h.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
   const title = (h.match(/<title>([^<]*)<\/title>/) || [])[1];
   const desc = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1];
@@ -44,6 +45,14 @@ for (const f of htmlFiles) {
   check(!/http:\/\/(?!www\.w3\.org)/.test(h), `${name}: http:// bağlantı`);
   check(/class="rozet"/.test(h) && /width="164" height="28"/.test(h), `${name}: Bumba rozeti yok`);
   check(embed || (/data-theme-toggle/.test(h) && /data-search-open/.test(h)), `${name}: tema ya da arama düğmesi yok`);
+  // madde 14 ve 9: çerez bandı; Umami betiği HTML'de yok (consent.js istatistik izniyle ekler)
+  check(!/istatistik\.bumba\.tr\/script\.js/.test(h), `${name}: Umami betiği izinsiz yükleniyor`);
+  if (!embed) {
+    check(/id="cookie-bar"[^>]* hidden/.test(h) && /data-consent-accept/.test(h) && /data-consent-reject/.test(h) && /data-consent-open/.test(h) && /bumbagroup\.com\/cerez-politikasi/.test(h) && /id="cookie-dialog"/.test(h) && /data-consent-stats/.test(h) && /data-consent-ext/.test(h), `${name}: çerez bandı ya da tercihler eksik`);
+    const ci = h.indexOf("consent.js"), mi = h.indexOf("/assets/main.js"), bi = h.indexOf("badges.js");
+    check(ci > 0 && ci < mi && bi > mi, `${name}: consent.js/main.js/badges.js sırası hatalı`);
+    check(/class="wrap footer-links"><a href="[^"]+">[^<]+<\/a><button type="button" class="link-btn" data-consent-open/.test(h), `${name}: altbilgide gizlilik/çerez tercihleri bağlantısı yok`);
+  }
   check(/Content-Security-Policy/.test(h), `${name}: CSP yok`);
   if (embed) {
     check(noidx && h.indexOf("embed.js") > 0 && h.indexOf("embed.js") < h.indexOf("main.js") && (h.match(/class="slide /g) || []).length >= 10, `${name}: gömülü sayfa yapısı hatalı`);
@@ -108,10 +117,14 @@ for (const f of htmlFiles) {
     if (!noidx) {
       for (const l of [...LANGS, "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
+    } else if (badgesPage) {
+      check(/rel="alternate" hreflang/.test(h) === false && /data-badges-page/.test(h) && (h.match(/data-badge="/g) || []).length >= 15 && (h.match(/data-badge="/g) || []).length <= 20 && /data-badges-delete/.test(h) && /id="badges-delete"/.test(h) && /class="badges-note"[^>]*>[^<]+<a href="[^"]+#(rozetler|badges)"/.test(h), `${name}: rozetler sayfası eksik (15–20 rozet, not, silme penceresi)`);
     } else {
       check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
     }
     check(/action="https:\/\/bumbagroup\.com\/api\/liste\/katil"/.test(h) && /name="riza" value="on" required/.test(h) && !/name="riza"[^>]*checked/.test(h), `${name}: liste formu hatalı`);
+    // madde 6: Katıl penceresi ortak aydınlatma metnini yükler; rıza yalnız "Kabul ediyorum" (submit, riza=on, başta pasif)
+    check(/data-aydinlatma="https:\/\/bumbagroup\.com\/api\/liste\/aydinlatma\?dil=(tr|en)"/.test(h) && /<dialog[^>]+id="liste-pencere"/.test(h) && /<button type="submit" class="btn" id="liste-kabul" name="riza" value="on" disabled>/.test(h) && /id="liste-vazgec"/.test(h) && /id="liste-sonuc"/.test(h), `${name}: liste penceresi standart iskelete uymuyor`);
     check(/name="site" value="[a-z-]+"/.test(h) && /name="web_sitesi"/.test(h), `${name}: liste formu alanları eksik`);
     check(/name="dil" value="(tr|en|de|az|ar)"/.test(h), `${name}: liste dil alanı yok`);
     check(/datetime="\d{4}-\d{2}-\d{2}"/.test(h), `${name}: güncelleme tarihi yok`);
@@ -167,7 +180,11 @@ const robots = fs.readFileSync(path.join(DIST, "robots.txt"), "utf8");
 check(robots.includes(`Sitemap: ${ORIGIN}/sitemap.xml`), "robots.txt Sitemap satırı yok");
 check(!/Disallow:\s*\//.test(robots), "robots.txt engelliyor");
 for (const b of ["GPTBot", "ClaudeBot", "PerplexityBot", "OAI-SearchBot"]) check(robots.includes(`User-agent: ${b}`), `robots.txt ${b} yok`);
-check(/Saat Tarih/.test(fs.readFileSync(path.join(DIST, "llms.txt"), "utf8")), "llms.txt boş");
+const llms = fs.readFileSync(path.join(DIST, "llms.txt"), "utf8");
+check(/Saat Tarih/.test(llms), "llms.txt boş");
+// madde 13: Rozetler ekranı kişiye özel; sitemap, llms.txt ve arama dizinine girmez
+check(!/\/(rozetler|badges)\//.test(sm) && !/\/(rozetler|badges)\//.test(llms), "rozetler sayfası sitemap ya da llms.txt'de");
+for (const l of LANGS) check(!/\/(rozetler|badges)\//.test(fs.readFileSync(path.join(DIST, `assets/search-${l}.json`), "utf8")), `arama dizininde rozetler sayfası (${l})`);
 
 // Dil dosyaları: anahtar ve dizi uzunluğu eşliği (tr = kaynak)
 const keys = (o, p = "") => Object.entries(o).flatMap(([k, v]) => (v && typeof v === "object" && !Array.isArray(v) ? keys(v, p + k + ".") : [p + k]));

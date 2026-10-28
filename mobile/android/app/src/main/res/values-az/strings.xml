@@ -409,12 +409,17 @@
     <string name="list_ok">Sizə təsdiq e-məktubu göndərdik; siyahıya qoşulmağı tamamlamaq üçün poçt qutunuzdakı keçidə klikləyin.</string>
     <string name="list_err">Qeydiyyatınızı saxlaya bilmədik. E-poçt ünvanını və qeyd xanasını yoxlayın, sonra bir az sonra yenidən cəhd edin.</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
-    <string name="list_popupTitle">Siyahıya qoşulmanı təsdiqləyin</string>
+    <string name="list_popupTitle">E-poçt siyahısı üzrə məlumatlandırma mətni</string>
     <string name="list_popupText">E-poçt ünvanınız yalnız bu siyahıya abunə olmağınız üçün Bumba Teknoloji Limited Şirketi tərəfindən emal olunur. İstədiyiniz vaxt bir kliklə ayrıla bilərsiniz.</string>
     <string name="list_readNote">Məlumatlandırma mətnini oxu</string>
     <string name="list_consentText">Məlumatlandırma mətnini oxudum, e-poçt almağa razıyam.</string>
     <string name="list_accept">Razıyam</string>
     <string name="list_cancel">Ləğv et</string>
+    <string name="list_loading">Mətn yüklənir…</string>
+    <string name="list_loadFail">Mətn yüklənmədi. Tam mətni aşağıdakı keçiddən oxuya və bir az sonra yenidən cəhd edə bilərsiniz.</string>
+    <string name="list_fullText">Tam mətn</string>
+    <string name="list_label">E-poçt siyahısı</string>
+    <string name="list_formErr">Qeydiyyat alınmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin.</string>
     <string name="common_done">Hazır</string>
     <string name="notify_heading">Vaxt bildirişləri</string>
     <string name="notify_enable">Namaz vaxtlarında bildiriş al</string>

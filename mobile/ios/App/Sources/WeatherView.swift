@@ -22,6 +22,8 @@ struct WeatherView: View {
                 PlacePicker(font: .headline)
                 if let d = data {
                     current(d)
+                    // İşaret verinin hemen altında, kaydırmadan görünür (App Review 5.2.5)
+                    AppleWeatherMark()
                     hourly(d)
                     daily(d)
                 } else if failed {
@@ -30,7 +32,6 @@ struct WeatherView: View {
                 } else {
                     ProgressView(L("weather.loading")).padding(.top, 40)
                 }
-                AppleWeatherMark()
             }
             .padding(16)
             .frame(maxWidth: 560)
@@ -186,31 +187,57 @@ enum WeatherCache {
     }
 }
 
-/// Apple Hava Durumu işareti ve yasal bilgiler bağlantısı (WeatherKit verisi gösterilen her yerde şart)
+/// Apple Hava Durumu işareti ve yasal bilgiler bağlantısı. WeatherKit verisi gösterilen her yerde şart
+/// (App Review 5.2.5, 28 Ekim 2026). İşaret görseli WeatherService'ten gelir; gelmezse " Weather" yazısı ve Apple'ın
+/// sabit yasal sayfası gösterilir, böylece işaret hiçbir durumda kaybolmaz. `onDark`: uydu görüntüsü üstünde (küre).
 struct AppleWeatherMark: View {
     var compact = false
+    var onDark = false
     @Environment(\.colorScheme) private var scheme
     @State private var attribution: WeatherAttribution?
 
+    static let fallbackLegalURL = URL(string: "https://weatherkit.apple.com/legal-attribution.html")!
+
+    private var dark: Bool { onDark || scheme == .dark }
+
     var body: some View {
-        Group {
+        let height: CGFloat = compact ? 12 : 15
+        let mark = Group {
             if let a = attribution {
-                let mark = AsyncImage(url: scheme == .dark ? a.combinedMarkDarkURL : a.combinedMarkLightURL) { image in
+                AsyncImage(url: dark ? a.combinedMarkDarkURL : a.combinedMarkLightURL) { image in
                     image.resizable().scaledToFit()
                 } placeholder: {
-                    Text(a.serviceName).font(.caption)
+                    fallbackMark(height)
                 }
-                .frame(height: compact ? 11 : 14)
-                let legal = Link(L("weather.legal"), destination: a.legalPageURL)
-                    .font(compact ? .caption2 : .caption)
-                    .tint(Theme.muted)
-                if compact {
-                    HStack(spacing: 8) { mark.frame(width: 70, alignment: .leading); legal; Spacer(minLength: 0) }
-                } else {
-                    VStack(spacing: 6) { mark; legal }.padding(.top, 4)
-                }
+            } else {
+                fallbackMark(height)
+            }
+        }
+        .frame(height: height)
+        .accessibilityLabel("Apple Weather")
+        let legal = Link(L("weather.legal"), destination: attribution?.legalPageURL ?? Self.fallbackLegalURL)
+            .font(compact ? .caption2 : .caption)
+            .tint(onDark ? .white : Theme.muted)
+        Group {
+            if onDark {
+                HStack(spacing: 8) { mark; legal }
+                    .padding(.horizontal, 10).padding(.vertical, 6)
+                    .background(.black.opacity(0.55), in: Capsule())
+            } else if compact {
+                HStack(spacing: 8) { mark.frame(width: 70, alignment: .leading); legal; Spacer(minLength: 0) }
+            } else {
+                VStack(spacing: 6) { mark; legal }.padding(.top, 4)
             }
         }
         .task { if attribution == nil { attribution = try? await WeatherService.shared.attribution } }
+    }
+
+    /// Görsel yokken Apple'ın işaret biçimi: Apple simgesi + "Weather"
+    private func fallbackMark(_ height: CGFloat) -> some View {
+        Text("\u{F8FF} Weather")
+            .font(.system(size: height, weight: .semibold))
+            .foregroundStyle(dark ? Color.white : Color.black)
+            .lineLimit(1)
+            .fixedSize()
     }
 }
