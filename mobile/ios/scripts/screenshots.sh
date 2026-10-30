@@ -30,8 +30,8 @@ shoot tr tr_TR light tr-acik
 shoot tr tr_TR dark tr-koyu
 shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
-# Saat modelleri (sitedeki 19 model; -clockModel kimlik)
-for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal; do
+# Saat modelleri (sitedeki 20 model; -clockModel kimlik)
+for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"
 done
 shoot tr tr_TR dark model-analog-date-koyu -clockModel analog-date -secA "<true/>"

@@ -422,9 +422,15 @@ function sunTimes(y, m, d, lat, lon) {
           p = parts(now, tz);
           var hh = prefs.h12 ? (p.hour % 12 || 12) : p.hour;
           var digits = [Math.floor(hh / 10), hh % 10, Math.floor(p.minute / 10), p.minute % 10, Math.floor(p.second / 10), p.second % 10];
+          el.classList.toggle("no-sec", !prefs.secD);
           el.querySelectorAll("[data-flip-d]").forEach(function (n) {
             var v = String(digits[+n.getAttribute("data-flip-d")]);
-            if (n.textContent !== v) n.textContent = v;
+            var c = n.firstElementChild || n;
+            if (c.textContent === v) return;
+            c.textContent = v;
+            // Kart çevrilme hareketi (rakam değişince; ilk çizimde yok, hareket azaltma tercihinde CSS kapatır)
+            if (n.hasAttribute("data-flip-seen")) { n.classList.remove("is-flip"); void n.offsetWidth; n.classList.add("is-flip"); }
+            n.setAttribute("data-flip-seen", "");
           });
           return;
         case "rings":
@@ -482,8 +488,8 @@ function sunTimes(y, m, d, lat, lon) {
      Dijital saatte varsayılan açık, analogda kapalı; dokunulan saatin türü değişir. */
   var toggleSec = function (slide, target) {
     var analog = target && target.closest && target.closest(".analog");
-    var digital = target && target.closest && target.closest("[data-live=time]");
-    var hasDigital = slide && slide.querySelector(".clock");
+    var digital = target && target.closest && target.closest("[data-live=time], .flip");
+    var hasDigital = slide && slide.querySelector(".clock, .flip");
     if (analog || (!digital && !hasDigital)) prefs.secA = !prefs.secA; else prefs.secD = !prefs.secD;
     savePrefs();
   };

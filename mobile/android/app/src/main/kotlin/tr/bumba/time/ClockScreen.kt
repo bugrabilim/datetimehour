@@ -166,7 +166,7 @@ private fun Modifier.fitGlobe(viewport: Dp, globe: androidx.compose.runtime.Muta
     }
 }
 
-/** Sahnenin altında ‹ 1/19 ›: sayaca dokununca model listesi açılır */
+/** Sahnenin altında ‹ 1/20 ›: sayaca dokununca model listesi açılır */
 @Composable
 private fun StageControls(pager: PagerState, tint: androidx.compose.ui.graphics.Color = Theme.c.accent) {
     val scope = rememberCoroutineScope()
@@ -258,7 +258,7 @@ fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier) {
 }
 
 /**
- * Tam ekran saat: 19 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler); ekran kapanmaz,
+ * Tam ekran saat: 20 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler); ekran kapanmaz,
  * çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
  */
 @Composable

@@ -29,6 +29,20 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.graphicsLayer
 import java.time.Instant
 import java.time.LocalDate
 import java.time.YearMonth
@@ -37,7 +51,7 @@ import java.time.ZonedDateTime
 import java.time.format.TextStyle as JTextStyle
 
 /**
- * Sitedeki saat sahnesinin 19 modeli (build.mjs STAGE_ORDER; iOS'taki ClockModel ile aynı sıra ve kimlikler).
+ * Sitedeki saat sahnesinin 20 modeli (build.mjs STAGE_ORDER; iOS'taki ClockModel ile aynı sıra ve kimlikler).
  * Adlar sitedeki `stage.models.<kimlik>` metinleri. Hava durumlu (wx) modeller seçili konumun havasını alır.
  */
 enum class ClockModel(val id: String) {
@@ -47,7 +61,8 @@ enum class ClockModel(val id: String) {
     WX_ANALOG("wx-analog"), WX_STACK("wx-stack"), WX_ANALOG_DATE("wx-analog-date"), WX_FULL("wx-full"),
     H_CLASSIC("h-classic"), H_ANALOG_DATE("h-analog-date"), H_STACK("h-stack"),
     H_WX_ANALOG("h-wx-analog"), H_WX_STACK("h-wx-stack"), H_WX_ANALOG_DATE("h-wx-analog-date"), H_WX_FULL("h-wx-full"),
-    DIGITAL("digital"), DIGITAL_DATE("digital-date"), WX_DIGITAL("wx-digital"), WX_DIGITAL_CAL("wx-digital-cal");
+    DIGITAL("digital"), DIGITAL_DATE("digital-date"), WX_DIGITAL("wx-digital"), WX_DIGITAL_CAL("wx-digital-cal"),
+    FLIP("flip"); // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5)
 
     val title: String get() = L("stage.models.$id")
     val number: Int get() = ordinal + 1
@@ -124,6 +139,10 @@ fun ClockModelView(model: ClockModel, now: Instant, place: AppPlace, modifier: M
                     WeatherPart(WxKind.LINE, place, s * 0.85f, start = true)
                 }
                 MonthPart(t.toLocalDate(), w * 0.54f)
+            }
+            ClockModel.FLIP -> Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(s * 0.05f)) {
+                FlipPart(t, w * 0.92f, h * 0.55f)
+                DatePart(t, s * 0.065f)
             }
             ClockModel.WX_DIGITAL_CAL_WEEK -> Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = center) {
                 DigitalPart(t, minOf(w * 0.19f, h * 0.2f), w)
@@ -202,6 +221,57 @@ private fun DigitalPart(t: ZonedDateTime, size: Dp, maxWidth: Dp) {
                     maxLines = 1)
             }
         }
+    }
+}
+
+/** Çevirmeli saat: her rakam bir kart, rakam değişince kart döner. Dokununca dijital saniye açılır/kapanır. */
+@Composable
+private fun FlipPart(t: ZonedDateTime, width: Dp, height: Dp) {
+    val secs = Prefs.secD
+    val hour = if (Prefs.h12) (t.hour % 12).let { if (it == 0) 12 else it } else t.hour
+    val groups = listOf(hour, t.minute) + if (secs) listOf(t.second) else emptyList()
+    val n = groups.size * 2f
+    val card = minOf(width / (n + (groups.size - 1) * 0.35f + n * 0.08f), height / 1.4f)
+    Ltr {
+        Row(
+            Modifier.clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!secs); BadgeStore.hit(Badge.SANIYE) }
+                .semantics(mergeDescendants = true) { contentDescription = Fmt.time(t, secs) },
+            horizontalArrangement = Arrangement.spacedBy(card * 0.35f),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            for ((i, v) in groups.withIndex()) {
+                Row(horizontalArrangement = Arrangement.spacedBy(card * 0.08f)) {
+                    FlipCard(v / 10, card, "g$i-0")
+                    FlipCard(v % 10, card, "g$i-1")
+                }
+            }
+            if (Prefs.h12) Text(Fmt.ampm(t), color = Theme.c.muted, fontSize = (card * 0.32f).asSp(), fontWeight = FontWeight.Bold)
+        }
+    }
+}
+
+@Composable
+private fun FlipCard(digit: Int, width: Dp, key: String) {
+    val angle = remember(key) { Animatable(0f) }
+    var last by remember(key) { mutableIntStateOf(digit) }
+    LaunchedEffect(digit) {
+        if (digit != last) {
+            last = digit
+            angle.snapTo(-80f)
+            angle.animateTo(0f, tween(300, easing = FastOutSlowInEasing))
+        }
+    }
+    val r = RoundedCornerShape(width * 0.12f)
+    Box(
+        Modifier.size(width, width * 1.4f).shadow(width * 0.05f, r).clip(r).background(Theme.c.surface2).border(1.dp, Theme.c.border, r),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            "$digit",
+            Modifier.graphicsLayer { rotationX = angle.value; cameraDistance = 12f * density; alpha = if (angle.value == 0f) 1f else 0.4f },
+            color = Theme.c.ink, fontSize = width.asSp(), fontWeight = FontWeight.Bold, style = Tnum, maxLines = 1,
+        )
+        Box(Modifier.fillMaxWidth().height(maxOf(1.dp, width * 0.03f)).background(Theme.c.bg))
     }
 }
 

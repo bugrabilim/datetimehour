@@ -166,7 +166,7 @@ const pDate = (tz) => `<p class="date" data-live="date"${tzA(tz)}>&nbsp;</p>`;
 const srTime = (tz) => `<p class="sr-only" role="timer" data-live="time"${tzA(tz)}></p>`;
 const calendarHtml = (tz) => `<div class="cal" data-live="calendar"${tzA(tz)}><p class="cal-title" data-cal-title>&nbsp;</p><table><thead><tr data-cal-head></tr></thead><tbody data-cal-body></tbody></table></div>`;
 const flipHtml = (tz) => {
-  const d = (i) => `<span class="flip-d" data-flip-d="${i}">0</span>`;
+  const d = (i) => `<span class="flip-d" data-flip-d="${i}"><span class="flip-v">0</span></span>`;
   return `<div class="flip" data-live="flip"${tzA(tz)}><div class="flip-g">${d(0)}${d(1)}</div><div class="flip-g">${d(2)}${d(3)}</div><div class="flip-g flip-sec">${d(4)}${d(5)}</div><span class="flip-ampm" data-live="ampm"${tzA(tz)}></span></div>`;
 };
 const ringsHtml = (tz) =>
@@ -213,17 +213,18 @@ addModel("digital-date", "s-digital", (tz) => pDigital(tz) + pDate(tz));
 addModel("wx-digital", "s-digital s-wx", (tz) => pDigital(tz) + pDate(tz) + wxBlock("line"), true);
 addModel("wx-digital-cal", "s-cal s-wx", (tz) => `<div class="cal-side">${pDigital(tz, " clock-sm")}${pDate(tz)}${wxBlock("line")}</div>${calendarHtml(tz)}`, true);
 addModel("wx-digital-cal-week", "s-cal2 s-wx", (tz) => `<div class="cal2-top">${pDigital(tz, " clock-xl")}</div><div class="cal2-body"><div class="cal-side">${pDate(tz)}${wxBlock("week")}</div>${calendarHtml(tz)}</div>`, true);
+// 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5; önceden yalnız gömme widget'ındaydı)
+addModel("flip", "s-flip", (tz) => flipHtml(tz) + pDate(tz));
 // Yalnız gömme widget'ında (sahnede yok)
 addModel("minimal", "s-analog", (tz) => analogSvg({ tz, size: "lg", numerals: false, minimal: true }) + srTime(tz));
 addModel("duo", "s-duo", (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pDigital(tz)}</div>`);
 addModel("duo-date", "s-duo", (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pTz(tz)}${pDigital(tz)}${pDate(tz)}</div>`);
 addModel("calendar", "s-cal", (tz) => `<div class="cal-side">${pTz(tz)}${pDigital(tz, " clock-sm")}${pDate(tz)}</div>${calendarHtml(tz)}`);
 addModel("calendar-analog", "s-cal", (tz) => analogSvg({ tz, size: "xs", numerals: true }) + calendarHtml(tz) + srTime(tz));
-addModel("flip", "s-flip", (tz) => flipHtml(tz) + pDate(tz));
 addModel("words", "s-words", (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz));
 addModel("rings", "s-rings", (tz) => ringsHtml(tz) + pDate(tz));
 addModel("bigdate", "s-bigdate", (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}`);
-const STAGE_ORDER = ["classic", "wx-digital-cal-week", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal"];
+const STAGE_ORDER = ["classic", "wx-digital-cal-week", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal", "flip"];
 const MODELS = STAGE_ORDER.map((id) => M[id]);
 const EMBED_MODELS = Object.values(M).filter((m) => !m.wx);
 

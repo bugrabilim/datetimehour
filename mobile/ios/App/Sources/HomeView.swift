@@ -1,7 +1,7 @@
 import SwiftUI
 import SaatCore
 
-/// Saat sekmesi: sitedeki 19 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının seçtiği
+/// Saat sekmesi: sitedeki 20 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının seçtiği
 /// alanlar (Ayarlar › Saat ekranı; dokununca ilgili sayfa açılır) ve tam ekran.
 struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
@@ -99,7 +99,7 @@ extension ClockTab {
     }
 }
 
-/// Saat sahnesi: modeller yatay kaydırılır; altta (sitedeki gibi) ‹ 1/19 › — sayaca dokununca model listesi.
+/// Saat sahnesi: modeller yatay kaydırılır; altta (sitedeki gibi) ‹ 1/20 › — sayaca dokununca model listesi.
 /// Yükseklik sabit: model değişince alttaki alanlar oynamaz. Saate dokununca saniye açılır/kapanır
 /// (dijitalde varsayılan açık, analogda kapalı).
 struct ClockStage: View {
@@ -159,7 +159,7 @@ struct ClockStage: View {
     }
 }
 
-/// Tam ekran saat: 19 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler);
+/// Tam ekran saat: 20 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler);
 /// ekran kapanmaz, çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
 struct FullscreenClock: View {
     /// Yan çevirince açıldıysa telefon dik tutulunca kapanır

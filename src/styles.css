@@ -368,13 +368,18 @@ html.has-full { overflow: hidden; }
 .flip-g { display: flex; gap: clamp(0.2rem, 0.8vw, 0.5rem); }
 .flip-d {
   position: relative; display: flex; align-items: center; justify-content: center;
-  width: clamp(2.5rem, 11vw, 6.5rem); height: clamp(3.6rem, 16vw, 9rem);
+  width: clamp(2.6rem, 12.5vw, 6.5rem); height: clamp(3.8rem, 18vw, 9rem);
   background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--shadow);
-  font-size: clamp(2.2rem, 10vw, 6rem); font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text);
+  font-size: clamp(2.3rem, 11.5vw, 6rem); font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text);
 }
 .flip-d::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: var(--bg); }
+.flip-d { perspective: 30rem; }
+.flip-v { display: block; backface-visibility: hidden; }
+.flip-d.is-flip .flip-v { animation: flip-in 0.32s cubic-bezier(0.3, 0.7, 0.4, 1); }
+@keyframes flip-in { from { transform: rotateX(-80deg); opacity: 0.3; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .flip-d.is-flip .flip-v { animation: none; } }
 .flip-ampm { align-self: center; font-weight: 700; color: var(--muted); font-size: 1rem; }
-html.sec-off .flip-sec { display: none; }
+.flip.no-sec .flip-sec { display: none; }
 
 /* Yazıyla saat */
 .words { margin: 0; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; font-size: clamp(1.9rem, 7vw, 4.25rem); max-width: 18ch; text-wrap: balance; }

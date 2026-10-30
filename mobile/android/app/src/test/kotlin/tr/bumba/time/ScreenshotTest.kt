@@ -121,6 +121,7 @@ class ScreenshotTest {
     @Test fun clockClassic() = shot("tr-saat-analog", Tab.CLOCK, model = 1)
     @Test fun clockHorizontal() = shot("tr-saat-yatay", Tab.CLOCK, model = 14, weather = true, dark = true)
     @Test fun clockWxCard() = shot("tr-saat-hava-kart", Tab.CLOCK, model = 5, weather = true)
+    @Test fun clockFlip() = shot("tr-saat-cevirmeli", Tab.CLOCK, model = ClockModel.FLIP.ordinal, dark = true)
     @Test fun clockAllItems() = shot("tr-saat-alanlar", Tab.CLOCK, model = 18, weather = true,
         items = "date,week,next,prayers,upcoming,world,weather,sun,-globe")
     @Test fun clockArabic() = shot("ar-saat", Tab.CLOCK, "ar", weather = true)
