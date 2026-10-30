@@ -118,10 +118,30 @@ data class TimerItem(
             val t = TimerItem(name = name.trim(), total = ms, end = e)
             AlarmScheduler.schedule(c, t.alarmId, e, t.doneTitle, AlarmScheduler.TIMER)
             save(load() + t)
+            TimerHistory.record(t.name, ms)
             LiveNotifications.sync(c)
             return t
         }
     }
+}
+
+/**
+ * Zamanlayıcı geçmişi (rakip analizi listesi #82): son başlatılan süreler, aynı ad + süre bir kez (en yenisi üstte,
+ * en çok 12); kayıt `timers.history` (JSON [{n, t}], t ms; iOS'la aynı)
+ */
+object TimerHistory {
+    data class Entry(val n: String, val t: Long)
+    private const val KEY = "timers.history"
+    fun load(): List<Entry> = runCatching {
+        val a = org.json.JSONArray(Prefs.store.getString(KEY, "[]"))
+        (0 until a.length()).map { a.getJSONObject(it).let { o -> Entry(o.optString("n"), o.getLong("t")) } }
+    }.getOrDefault(emptyList())
+    fun record(name: String, ms: Long) {
+        val e = Entry(name, ms)
+        val list = (listOf(e) + load().filter { it != e }).take(12)
+        Prefs.store.edit().putString(KEY, org.json.JSONArray(list.map { org.json.JSONObject().put("n", it.n).put("t", it.t) }).toString()).apply()
+    }
+    fun clear() = Prefs.store.edit().remove(KEY).apply()
 }
 
 /** Aralık antrenmanı: ısınma, çalışma ve dinlenme süreleri (sn), tur sayısı */
@@ -307,6 +327,7 @@ fun TimersScreen() {
     var m by rememberSaveable { mutableIntStateOf(5) }
     var s by rememberSaveable { mutableIntStateOf(0) }
     var name by rememberSaveable { mutableStateOf("") }
+    var history by remember { mutableStateOf(TimerHistory.load()) }
     // Ekran açıkken biten zamanlayıcı sesli duyurulur (bir kez)
     val announced = remember { HashSet<String>() }
     LaunchedEffect(Unit) {
@@ -323,12 +344,15 @@ fun TimersScreen() {
         AlarmScheduler.schedule(context, t.alarmId, e, t.doneTitle, AlarmScheduler.TIMER)
         return t.copy(end = e, left = 0)
     }
-    fun add(ms: Long) {
+    fun add(ms: Long, preset: String? = null) {
         if (ms <= 0) return
         BadgeStore.hit(Badge.ZAMANLAYICI)
         ask()
-        update(items + start(TimerItem(name = name.trim(), total = ms), ms))
-        name = ""
+        val n = (preset ?: name).trim()
+        update(items + start(TimerItem(name = n, total = ms), ms))
+        TimerHistory.record(n, ms)
+        history = TimerHistory.load()
+        if (preset == null) name = ""
     }
 
     Column(
@@ -375,6 +399,26 @@ fun TimersScreen() {
                         }
                     }
                     if (i < items.lastIndex) RowLine()
+                }
+            }
+        }
+        if (history.isNotEmpty()) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(Modifier.weight(1f)) { SectionTitle(L("timers.history.heading")) }
+                androidx.compose.material3.TextButton(onClick = { TimerHistory.clear(); history = emptyList() }) {
+                    Text(L("timers.history.clear"), color = Theme.c.accent, fontSize = 13.sp)
+                }
+            }
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (e in history) {
+                    val dur = clock(e.t / 1000)
+                    Text(
+                        if (e.n.isBlank()) dur else "${e.n} · $dur",
+                        Modifier.border(1.dp, Theme.c.accent.copy(alpha = 0.5f), RoundedCornerShape(50))
+                            .clickable { add(e.t, e.n) }
+                            .padding(horizontal = 14.dp, vertical = 8.dp),
+                        color = Theme.c.accent, fontSize = 14.sp,
+                    )
                 }
             }
         }

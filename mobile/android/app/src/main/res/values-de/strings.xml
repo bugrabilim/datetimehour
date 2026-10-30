@@ -1294,5 +1294,11 @@
     <string name="routine_ex_hamstring">Dehnung der Oberschenkelrückseite</string>
     <string name="routine_ex_quads">Dehnung der Oberschenkelvorderseite</string>
     <string name="routine_ex_back">Rückendehnung</string>
+    <string name="sw_multi_heading">Weitere Stoppuhren</string>
+    <string name="sw_multi_add">Stoppuhr hinzufügen</string>
+    <string name="sw_multi_default">Stoppuhr %1$s</string>
+    <string name="sw_multi_note">Jede Stoppuhr zählt für sich und behält ihre Zeit, auch wenn die App geschlossen wird. Auf dem Sperrbildschirm erscheint nur die obere Stoppuhr.</string>
+    <string name="timers_history_heading">Zuletzt verwendet</string>
+    <string name="timers_history_clear">Verlauf löschen</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

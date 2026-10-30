@@ -1294,5 +1294,11 @@
     <string name="routine_ex_hamstring">Arxa ayaq dartınması</string>
     <string name="routine_ex_quads">Ön ayaq dartınması</string>
     <string name="routine_ex_back">Kürək dartınması</string>
+    <string name="sw_multi_heading">Digər saniyəölçənlər</string>
+    <string name="sw_multi_add">Saniyəölçən əlavə et</string>
+    <string name="sw_multi_default">Saniyəölçən %1$s</string>
+    <string name="sw_multi_note">Hər saniyəölçən ayrıca sayır; tətbiq bağlansa da vaxt itmir. Kilid ekranında yalnız yuxarıdakı saniyəölçən görünür.</string>
+    <string name="timers_history_heading">Son istifadə olunanlar</string>
+    <string name="timers_history_clear">Tarixçəni təmizlə</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

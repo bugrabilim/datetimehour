@@ -94,7 +94,19 @@ class ScreenshotTest {
             AlarmItem(id = "b", hour = 9, minute = 30, label = "Spor", enabled = false)))
         tool("tr-alarm", "alarm")
     }
+    @Test fun stopwatches() {
+        // Ana kronometre durmuş, iki ek kronometre: biri sayıyor (Fırın), biri durmuş
+        val now = System.currentTimeMillis()
+        Prefs.store.edit().putLong("sw.start", 0).putLong("sw.acc", 95_400).putString("sw.laps", "41000,95400").commit()
+        StopwatchItem.save(listOf(StopwatchItem(id = "a", name = "Fırın", start = now - 754_000), StopwatchItem(id = "b", acc = 62_250)))
+        tool("tr-kronometreler", "stopwatch")
+        StopwatchItem.save(emptyList())
+        Prefs.store.edit().remove("sw.acc").remove("sw.laps").commit()
+    }
     @Test fun timer() {
+        TimerHistory.clear()
+        TimerHistory.record("", 600_000)
+        TimerHistory.record("Çay", 300_000)
         // İki zamanlayıcı: biri çalışıyor (Çay), biri duraklatılmış
         val now = System.currentTimeMillis()
         TimerItem.save(listOf(TimerItem(id = "a", name = "Çay", total = 300_000, end = now + 185_000),

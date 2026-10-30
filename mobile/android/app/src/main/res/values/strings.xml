@@ -1294,5 +1294,11 @@
     <string name="routine_ex_hamstring">Arka bacak esnetme</string>
     <string name="routine_ex_quads">Ön bacak esnetme</string>
     <string name="routine_ex_back">Sırt esnetme</string>
+    <string name="sw_multi_heading">Diğer kronometreler</string>
+    <string name="sw_multi_add">Kronometre ekle</string>
+    <string name="sw_multi_default">Kronometre %1$s</string>
+    <string name="sw_multi_note">Her kronometre ayrı sayar; uygulama kapansa da süre kaybolmaz. Kilit ekranında yalnız üstteki kronometre görünür.</string>
+    <string name="timers_history_heading">Son kullanılanlar</string>
+    <string name="timers_history_clear">Geçmişi temizle</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -44,6 +44,22 @@ struct TimerItem: Codable, Identifiable, Equatable {
     }
 }
 
+/// Zamanlayıcı geçmişi (rakip analizi listesi #82): son başlatılan süreler, aynı ad + süre bir kez (en yenisi üstte, en çok 12);
+/// kayıt `timers.history` (JSON [{n, t}], t ms; Android'le aynı)
+enum TimerHistory {
+    struct Entry: Codable, Equatable, Hashable { var n: String; var t: Int64 }
+    static let key = "timers.history"
+    static func load() -> [Entry] {
+        UserDefaults.standard.data(forKey: key).flatMap { try? JSONDecoder().decode([Entry].self, from: $0) } ?? []
+    }
+    static func record(_ name: String, _ ms: Int64) {
+        let e = Entry(n: name, t: ms)
+        let list = [e] + load().filter { $0 != e }
+        UserDefaults.standard.set(try? JSONEncoder().encode(Array(list.prefix(12))), forKey: key)
+    }
+    static func clear() { UserDefaults.standard.removeObject(forKey: key) }
+}
+
 /// Aralık antrenmanı: ısınma, çalışma, dinlenme (sn) ve tur sayısı
 struct HiitConfig: Equatable {
     var warmup = 10, work = 30, rest = 15, rounds = 8
@@ -354,6 +370,7 @@ struct TimersView: View {
     @State private var m = 5
     @State private var s = 0
     @State private var name = ""
+    @State private var history = TimerHistory.load()
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 0.5)) { context in
@@ -370,6 +387,27 @@ struct TimersView: View {
                         }
                         .padding(.horizontal, 12)
                         .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+                    }
+                    if !history.isEmpty {
+                        HStack {
+                            Text(L("timers.history.heading")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
+                            Spacer()
+                            Button(L("timers.history.clear")) {
+                                TimerHistory.clear()
+                                history = []
+                            }
+                            .font(.footnote)
+                            .foregroundStyle(Theme.accent)
+                        }
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(history, id: \.self) { e in
+                                    Button(e.n.isEmpty ? clock(Int(e.t / 1000)) : e.n + " · " + clock(Int(e.t / 1000))) { add(e.t, name: e.n) }
+                                        .buttonStyle(.bordered)
+                                        .tint(Theme.accent)
+                                }
+                            }
+                        }
                     }
                     Text(L("timers.new")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
                     TextField(L("timers.namePlaceholder"), text: $name)
@@ -499,12 +537,15 @@ struct TimersView: View {
         if let id = UUID(uuidString: t.id) { AlarmCenter.cancel(id: id) }
     }
 
-    private func add(_ ms: Int64) {
+    private func add(_ ms: Int64, name preset: String? = nil) {
         guard ms > 0 else { return }
         BadgeStore.shared.hit(.zamanlayici)
-        items.append(start(TimerItem(name: name.trimmingCharacters(in: .whitespaces), total: ms), ms))
+        let n = (preset ?? name).trimmingCharacters(in: .whitespaces)
+        items.append(start(TimerItem(name: n, total: ms), ms))
         TimerItem.save(items)
-        name = ""
+        TimerHistory.record(n, ms)
+        history = TimerHistory.load()
+        if preset == nil { name = "" }
     }
 }
 

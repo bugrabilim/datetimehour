@@ -1294,5 +1294,11 @@
     <string name="routine_ex_hamstring">Hamstring stretch</string>
     <string name="routine_ex_quads">Quad stretch</string>
     <string name="routine_ex_back">Back stretch</string>
+    <string name="sw_multi_heading">More stopwatches</string>
+    <string name="sw_multi_add">Add stopwatch</string>
+    <string name="sw_multi_default">Stopwatch %1$s</string>
+    <string name="sw_multi_note">Each stopwatch counts on its own and keeps its time even if the app closes. Only the top stopwatch appears on the lock screen.</string>
+    <string name="timers_history_heading">Recent</string>
+    <string name="timers_history_clear">Clear history</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

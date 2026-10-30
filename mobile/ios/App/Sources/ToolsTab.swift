@@ -97,11 +97,31 @@ func clock(_ seconds: Int) -> String {
 
 // MARK: Kronometre
 
+/// Ek kronometreler (rakip analizi listesi #81): her biri ayrı sayar; kayıt `stopwatches` (JSON, Unix ms; Android'le aynı)
+struct StopwatchItem: Codable, Identifiable, Equatable {
+    var id = UUID().uuidString
+    var name = ""
+    /// Çalışırken başlangıç anı (Unix ms; 0 = durdu) ve önceki toplam (ms)
+    var start: Int64 = 0
+    var acc: Int64 = 0
+
+    func elapsed(_ now: Int64) -> Int64 { acc + (start > 0 ? max(0, now - start) : 0) }
+
+    static let key = "stopwatches"
+    static func load() -> [StopwatchItem] {
+        UserDefaults.standard.data(forKey: key).flatMap { try? JSONDecoder().decode([StopwatchItem].self, from: $0) } ?? []
+    }
+    static func save(_ items: [StopwatchItem]) {
+        UserDefaults.standard.set(try? JSONEncoder().encode(items), forKey: key)
+    }
+}
+
 struct StopwatchView: View {
     /// Çalışırken başlangıç anı (0 = durdu); toplam ve turlar kalıcı (uygulama kapansa da süre kaybolmaz)
     @AppStorage("sw.start") private var start = 0.0
     @AppStorage("sw.acc") private var acc = 0.0
     @AppStorage("sw.laps") private var lapsRaw = ""
+    @State private var extra = StopwatchItem.load()
 
     private var laps: [Double] { lapsRaw.split(separator: ",").compactMap { Double($0) } }
     private func elapsed(_ now: Date) -> Double { acc + (start > 0 ? now.timeIntervalSinceReferenceDate - start : 0) }
@@ -178,10 +198,67 @@ struct StopwatchView: View {
                 }
                 .environment(\.layoutDirection, .leftToRight)
             }
+            extraSection
         }
         .themedBackground()
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
+    }
+
+    /// Ek kronometreler: ad, süre, başlat/durdur, sıfırla, kaldır
+    @ViewBuilder private var extraSection: some View {
+        Section {
+            ForEach(Array(extra.enumerated()), id: \.element.id) { i, w in
+                let now = Int64(Date().timeIntervalSince1970 * 1000)
+                HStack(spacing: 12) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        TextField(T("sw.multi.default", i + 2), text: Binding(get: { w.name }, set: { v in updateExtra(w.id) { $0.name = String(v.prefix(30)) } }))
+                            .font(.footnote)
+                            .foregroundStyle(Theme.muted)
+                        Text(format(Double(w.elapsed(now)) / 1000))
+                            .font(.system(size: 28, weight: .light, design: .rounded))
+                            .monospacedDigit()
+                            .environment(\.layoutDirection, .leftToRight)
+                    }
+                    Spacer()
+                    if w.start == 0 && w.acc > 0 {
+                        Button { updateExtra(w.id) { $0.acc = 0 } } label: { Image(systemName: "arrow.counterclockwise") }
+                            .accessibilityLabel(L("tools.stopwatch.reset"))
+                    }
+                    Button {
+                        updateExtra(w.id) { x in
+                            let t = Int64(Date().timeIntervalSince1970 * 1000)
+                            if x.start > 0 { x.acc = x.elapsed(t); x.start = 0 } else { x.start = t }
+                        }
+                    } label: { Image(systemName: w.start > 0 ? "pause.fill" : "play.fill") }
+                        .accessibilityLabel(L(w.start > 0 ? "tools.stopwatch.stop" : "tools.stopwatch.start"))
+                    Button {
+                        extra.removeAll { $0.id == w.id }
+                        StopwatchItem.save(extra)
+                    } label: { Image(systemName: "xmark").foregroundStyle(Theme.muted) }
+                        .accessibilityLabel(L("timers.remove"))
+                }
+                .font(.title3)
+                .foregroundStyle(Theme.accent)
+                .buttonStyle(.borderless)
+            }
+            if extra.count < 10 {
+                Button {
+                    extra.append(StopwatchItem(start: Int64(Date().timeIntervalSince1970 * 1000)))
+                    StopwatchItem.save(extra)
+                } label: { Label(L("sw.multi.add"), systemImage: "plus") }
+                    .foregroundStyle(Theme.accent)
+            }
+            Text(L("sw.multi.note")).font(.footnote).foregroundStyle(Theme.muted)
+        } header: {
+            Text(L("sw.multi.heading"))
+        }
+    }
+
+    private func updateExtra(_ id: String, _ change: (inout StopwatchItem) -> Void) {
+        guard let i = extra.firstIndex(where: { $0.id == id }) else { return }
+        change(&extra[i])
+        StopwatchItem.save(extra)
     }
 }
 

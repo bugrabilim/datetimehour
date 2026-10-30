@@ -1294,5 +1294,11 @@
     <string name="routine_ex_hamstring">تمدد أوتار الركبة</string>
     <string name="routine_ex_quads">تمدد الفخذ الأمامي</string>
     <string name="routine_ex_back">تمدد الظهر</string>
+    <string name="sw_multi_heading">ساعات إيقاف أخرى</string>
+    <string name="sw_multi_add">إضافة ساعة إيقاف</string>
+    <string name="sw_multi_default">ساعة إيقاف %1$s</string>
+    <string name="sw_multi_note">تعدّ كل ساعة إيقاف وحدها وتحتفظ بوقتها حتى لو أُغلق التطبيق. لا تظهر على شاشة القفل إلا الساعة العلوية.</string>
+    <string name="timers_history_heading">المستخدمة مؤخرًا</string>
+    <string name="timers_history_clear">مسح السجل</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

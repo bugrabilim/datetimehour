@@ -5410,5 +5410,47 @@
     "de": "Rückendehnung",
     "az": "Kürək dartınması",
     "ar": "تمدد الظهر"
+  },
+  "sw.multi.heading": {
+    "tr": "Diğer kronometreler",
+    "en": "More stopwatches",
+    "de": "Weitere Stoppuhren",
+    "az": "Digər saniyəölçənlər",
+    "ar": "ساعات إيقاف أخرى"
+  },
+  "sw.multi.add": {
+    "tr": "Kronometre ekle",
+    "en": "Add stopwatch",
+    "de": "Stoppuhr hinzufügen",
+    "az": "Saniyəölçən əlavə et",
+    "ar": "إضافة ساعة إيقاف"
+  },
+  "sw.multi.default": {
+    "tr": "Kronometre {n}",
+    "en": "Stopwatch {n}",
+    "de": "Stoppuhr {n}",
+    "az": "Saniyəölçən {n}",
+    "ar": "ساعة إيقاف {n}"
+  },
+  "sw.multi.note": {
+    "tr": "Her kronometre ayrı sayar; uygulama kapansa da süre kaybolmaz. Kilit ekranında yalnız üstteki kronometre görünür.",
+    "en": "Each stopwatch counts on its own and keeps its time even if the app closes. Only the top stopwatch appears on the lock screen.",
+    "de": "Jede Stoppuhr zählt für sich und behält ihre Zeit, auch wenn die App geschlossen wird. Auf dem Sperrbildschirm erscheint nur die obere Stoppuhr.",
+    "az": "Hər saniyəölçən ayrıca sayır; tətbiq bağlansa da vaxt itmir. Kilid ekranında yalnız yuxarıdakı saniyəölçən görünür.",
+    "ar": "تعدّ كل ساعة إيقاف وحدها وتحتفظ بوقتها حتى لو أُغلق التطبيق. لا تظهر على شاشة القفل إلا الساعة العلوية."
+  },
+  "timers.history.heading": {
+    "tr": "Son kullanılanlar",
+    "en": "Recent",
+    "de": "Zuletzt verwendet",
+    "az": "Son istifadə olunanlar",
+    "ar": "المستخدمة مؤخرًا"
+  },
+  "timers.history.clear": {
+    "tr": "Geçmişi temizle",
+    "en": "Clear history",
+    "de": "Verlauf löschen",
+    "az": "Tarixçəni təmizlə",
+    "ar": "مسح السجل"
   }
 }
