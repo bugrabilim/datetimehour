@@ -103,6 +103,11 @@ class MoreScreensTest {
         page("tr-geri-sayimlar", "Zamanlayıcı") { CountdownsScreen() }
         CountdownItem.save(emptyList())
     }
+    @Test fun appearance() {
+        Prefs.saveClockFont("serif")
+        page("tr-saat-gorunumu", "Saat görünümü") { AppearanceScreen() }
+        Prefs.saveClockFont("rounded")
+    }
     @Test fun moon() {
         Prefs.saveProvince("istanbul")
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }

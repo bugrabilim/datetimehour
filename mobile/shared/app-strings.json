@@ -2302,5 +2302,82 @@
     "de": "Kreisstädte: GeoNames (CC BY 4.0). Maßgeblich für Gebetszeiten ist Diyanet.",
     "az": "Rayon mərkəzləri: GeoNames (CC BY 4.0). Rəsmi vaxt üçün Diyanət əsasdır.",
     "ar": "مراكز المناطق: GeoNames (CC BY 4.0). المرجع الرسمي لمواقيت الصلاة هو رئاسة الشؤون الدينية التركية."
+  },
+  "look.title": {
+    "tr": "Saat görünümü",
+    "en": "Clock appearance",
+    "de": "Uhr-Darstellung",
+    "az": "Saatın görünüşü",
+    "ar": "مظهر الساعة"
+  },
+  "look.font": {
+    "tr": "Saat yazı tipi",
+    "en": "Clock typeface",
+    "de": "Schriftart der Uhr",
+    "az": "Saat şrifti",
+    "ar": "خط الساعة"
+  },
+  "look.font.rounded": {
+    "tr": "Yuvarlak",
+    "en": "Rounded",
+    "de": "Abgerundet",
+    "az": "Dairəvi",
+    "ar": "مستدير"
+  },
+  "look.font.standard": {
+    "tr": "Sade",
+    "en": "Plain",
+    "de": "Schlicht",
+    "az": "Sadə",
+    "ar": "بسيط"
+  },
+  "look.font.serif": {
+    "tr": "Tırnaklı",
+    "en": "Serif",
+    "de": "Serifen",
+    "az": "Dırnaqlı",
+    "ar": "مذيّل"
+  },
+  "look.font.mono": {
+    "tr": "Eşit aralıklı",
+    "en": "Monospaced",
+    "de": "Festbreite",
+    "az": "Bərabər aralı",
+    "ar": "ثابت العرض"
+  },
+  "look.font.light": {
+    "tr": "İnce",
+    "en": "Thin",
+    "de": "Dünn",
+    "az": "İncə",
+    "ar": "رفيع"
+  },
+  "look.photo": {
+    "tr": "Tam ekran arka planı",
+    "en": "Full-screen background",
+    "de": "Vollbild-Hintergrund",
+    "az": "Tam ekran arxa fonu",
+    "ar": "خلفية ملء الشاشة"
+  },
+  "look.photo.pick": {
+    "tr": "Fotoğraf seç",
+    "en": "Choose photo",
+    "de": "Foto wählen",
+    "az": "Foto seç",
+    "ar": "اختيار صورة"
+  },
+  "look.photo.remove": {
+    "tr": "Fotoğrafı kaldır",
+    "en": "Remove photo",
+    "de": "Foto entfernen",
+    "az": "Fotonu sil",
+    "ar": "إزالة الصورة"
+  },
+  "look.photo.note": {
+    "tr": "Fotoğraf yalnız bu telefonda saklanır; tam ekran saatin arkasında koyulaştırılarak gösterilir.",
+    "en": "The photo is kept only on this phone and shown darkened behind the full-screen clock.",
+    "de": "Das Foto bleibt nur auf diesem Telefon und wird abgedunkelt hinter der Vollbilduhr gezeigt.",
+    "az": "Foto yalnız bu telefonda saxlanır; tam ekran saatın arxasında tündləşdirilərək göstərilir.",
+    "ar": "تُحفظ الصورة على هذا الهاتف فقط وتظهر معتمة خلف الساعة بملء الشاشة."
   }
 }

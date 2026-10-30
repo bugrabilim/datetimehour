@@ -27,6 +27,7 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
+import androidx.compose.material.icons.filled.TextFields
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -97,6 +98,16 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                 Spacer(Modifier.width(14.dp))
                 Text(L("settings.color"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                 Box(Modifier.size(18.dp).background(Theme.c.accent, CircleShape))
+                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
+            }
+            HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
+            Row(
+                Modifier.fillMaxWidth().clickable { onRoute("appearance") }.padding(horizontal = 12.dp, vertical = 14.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(Icons.Filled.TextFields, null, tint = Theme.c.accent)
+                Spacer(Modifier.width(14.dp))
+                Text(L("look.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                 Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
             }
             HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))

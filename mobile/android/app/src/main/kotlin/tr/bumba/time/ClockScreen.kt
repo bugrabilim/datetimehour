@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.CompositionLocalProvider
 import android.app.Activity
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -268,9 +270,14 @@ fun FullscreenClock(onExit: () -> Unit) {
     val items = HomeItems.layout.visible
     val pager = rememberClockPager()
     HideSystemBars()
+    // Arka plan fotoğrafı varsa koyulaştırılarak gösterilir ve yazılar koyu temanın açık renklerine geçer
+    val photo = FullscreenPhoto.image(LocalContext.current)
+    val colors = if (photo != null) AccentPalette.find(Prefs.accent).colors(true) else Theme.c
+    CompositionLocalProvider(LocalColors provides colors) {
     BoxWithConstraints(
         Modifier.fillMaxSize().background(Theme.c.bg).pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) },
     ) {
+        if (photo != null) PhotoBackground(photo, Modifier.fillMaxSize())
         val viewport = maxHeight
         // Yatayda saat ekranı doldurur, alanlar kaydırınca görünür
         val landscape = maxWidth > maxHeight
@@ -305,6 +312,7 @@ fun FullscreenClock(onExit: () -> Unit) {
                 }
             }
         }
+    }
     }
 }
 

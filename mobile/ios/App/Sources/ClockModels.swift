@@ -185,11 +185,12 @@ private struct DigitalPart: View {
     let size: CGFloat
     @AppStorage("secD") private var seconds = true
     @AppStorage("h12") private var h12 = false
+    @AppStorage("clockFont") private var clockFont = ClockFont.rounded.rawValue
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: size * 0.08) {
             Text(Fmt.time(now, seconds: seconds))
-                .font(.system(size: size, weight: .bold, design: .rounded))
+                .font((ClockFont(rawValue: clockFont) ?? .rounded).font(size))
                 .monospacedDigit()
                 .foregroundStyle(Theme.ink)
             if h12 {
@@ -259,7 +260,7 @@ private struct FlipCard: View {
                 .overlay(RoundedRectangle(cornerRadius: width * 0.12).stroke(Theme.border, lineWidth: 1))
                 .shadow(color: .black.opacity(0.12), radius: width * 0.06, y: width * 0.03)
             Text("\(digit)")
-                .font(.system(size: width * 1.0, weight: .bold, design: .rounded))
+                .font(ClockFont.current.font(width * 1.0))
                 .monospacedDigit()
                 .foregroundStyle(Theme.ink)
                 .rotation3DEffect(.degrees(angle), axis: (x: 1, y: 0, z: 0), perspective: 0.5)

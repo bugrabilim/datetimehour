@@ -33,6 +33,8 @@ object Prefs {
         }
         province = sp.getString("province", "istanbul")!!
         savedPlaces = sp.getString("places.saved", "")!!.split("|").filter { it.isNotEmpty() }
+        clockFont = sp.getString("clockFont", "rounded")!!
+        fsPhoto = sp.getLong("fsPhoto", 0L)
         world = sp.getString("world", City.DEFAULT_KEYS)!!
         units = sp.getString("units", null) ?: Units.systemDefault
         BadgeStore.load()
@@ -69,6 +71,14 @@ object Prefs {
     fun saveAppearance(v: String) { appearance = v; sp.edit().putString("appearance", v).apply() }
     fun saveH12(v: Boolean) { h12 = v; sp.edit().putBoolean("h12", v).apply() }
     fun saveKeepAwake(v: Boolean) { keepAwake = v; sp.edit().putBoolean("keepAwake", v).apply() }
+
+    /** Saat yazı tipi ve tam ekran fotoğrafının sürümü (0 = yok) */
+    var clockFont by mutableStateOf("rounded")
+        private set
+    fun saveClockFont(v: String) { clockFont = v; sp.edit().putString("clockFont", v).apply() }
+    var fsPhoto by mutableStateOf(0L)
+        private set
+    fun saveFsPhoto(v: Long) { fsPhoto = v; sp.edit().putLong("fsPhoto", v).apply() }
     fun saveSecD(v: Boolean) { secD = v; sp.edit().putBoolean("secD", v).apply() }
     fun saveSecA(v: Boolean) { secA = v; sp.edit().putBoolean("secA", v).apply() }
     fun saveClockModel(v: Int) { clockModel = v; sp.edit().putInt("clockModel", v).apply() }

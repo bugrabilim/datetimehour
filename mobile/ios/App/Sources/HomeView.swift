@@ -166,11 +166,15 @@ struct FullscreenClock: View {
     var closeOnPortrait = false
     @Environment(\.dismiss) private var dismiss
     @Environment(\.verticalSizeClass) private var vsc
+    @Environment(\.colorScheme) private var colorScheme
     @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
+    @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @State private var globeHeight: CGFloat = 260
 
     var body: some View {
+        // Arka plan fotoğrafı varsa koyulaştırılarak gösterilir ve yazılar koyu temanın açık renklerine geçer
+        let photo = photoVersion > 0 ? FullscreenPhoto.image : nil
         GeometryReader { geo in
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 let now = context.date
@@ -207,9 +211,18 @@ struct FullscreenClock: View {
                 }
                 .scrollIndicators(.hidden)
                 .foregroundStyle(Theme.text)
-                .background(Theme.bg.ignoresSafeArea())
+                .background {
+                    if let photo {
+                        Image(uiImage: photo).resizable().scaledToFill()
+                            .overlay(Color.black.opacity(0.45))
+                            .ignoresSafeArea()
+                    } else {
+                        Theme.bg.ignoresSafeArea()
+                    }
+                }
             }
         }
+        .environment(\.colorScheme, photo != nil ? .dark : colorScheme)
         .onTapGesture(count: 2) { dismiss() }
         .onChange(of: vsc) { _, v in
             if v == .regular, closeOnPortrait { dismiss() }

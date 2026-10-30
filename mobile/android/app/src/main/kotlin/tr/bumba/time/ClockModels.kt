@@ -212,7 +212,8 @@ private fun DigitalPart(t: ZonedDateTime, size: Dp, maxWidth: Dp) {
             verticalAlignment = Alignment.Bottom,
         ) {
             Text(
-                Fmt.time(t, Prefs.secD), Modifier.weight(1f, fill = false), color = Theme.c.ink, fontWeight = FontWeight.Bold,
+                Fmt.time(t, Prefs.secD), Modifier.weight(1f, fill = false), color = Theme.c.ink,
+                fontFamily = ClockFont.current.family, fontWeight = ClockFont.current.weight,
                 style = Tnum, maxLines = 1, softWrap = false,
                 autoSize = TextAutoSize.StepBased(minFontSize = (max.value * 0.3f).sp, maxFontSize = max, stepSize = 1.sp),
             )
@@ -269,7 +270,8 @@ private fun FlipCard(digit: Int, width: Dp, key: String) {
         Text(
             "$digit",
             Modifier.graphicsLayer { rotationX = angle.value; cameraDistance = 12f * density; alpha = if (angle.value == 0f) 1f else 0.4f },
-            color = Theme.c.ink, fontSize = width.asSp(), fontWeight = FontWeight.Bold, style = Tnum, maxLines = 1,
+            color = Theme.c.ink, fontSize = width.asSp(), fontFamily = ClockFont.current.family, fontWeight = ClockFont.current.weight,
+            style = Tnum, maxLines = 1,
         )
         Box(Modifier.fillMaxWidth().height(maxOf(1.dp, width * 0.03f)).background(Theme.c.bg))
     }

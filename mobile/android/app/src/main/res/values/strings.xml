@@ -766,5 +766,16 @@
     <string name="place_remove">Kayıtlılardan çıkar</string>
     <string name="place_search">İl ya da ilçe ara</string>
     <string name="place_districtSource">İlçe merkezleri: GeoNames (CC BY 4.0). Resmî vakit için Diyanet esastır.</string>
+    <string name="look_title">Saat görünümü</string>
+    <string name="look_font">Saat yazı tipi</string>
+    <string name="look_font_rounded">Yuvarlak</string>
+    <string name="look_font_standard">Sade</string>
+    <string name="look_font_serif">Tırnaklı</string>
+    <string name="look_font_mono">Eşit aralıklı</string>
+    <string name="look_font_light">İnce</string>
+    <string name="look_photo">Tam ekran arka planı</string>
+    <string name="look_photo_pick">Fotoğraf seç</string>
+    <string name="look_photo_remove">Fotoğrafı kaldır</string>
+    <string name="look_photo_note">Fotoğraf yalnız bu telefonda saklanır; tam ekran saatin arkasında koyulaştırılarak gösterilir.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

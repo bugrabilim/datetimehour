@@ -766,5 +766,16 @@
     <string name="place_remove">Remove from saved</string>
     <string name="place_search">Search province or district</string>
     <string name="place_districtSource">District centres: GeoNames (CC BY 4.0). Diyanet is the official reference for prayer times.</string>
+    <string name="look_title">Clock appearance</string>
+    <string name="look_font">Clock typeface</string>
+    <string name="look_font_rounded">Rounded</string>
+    <string name="look_font_standard">Plain</string>
+    <string name="look_font_serif">Serif</string>
+    <string name="look_font_mono">Monospaced</string>
+    <string name="look_font_light">Thin</string>
+    <string name="look_photo">Full-screen background</string>
+    <string name="look_photo_pick">Choose photo</string>
+    <string name="look_photo_remove">Remove photo</string>
+    <string name="look_photo_note">The photo is kept only on this phone and shown darkened behind the full-screen clock.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

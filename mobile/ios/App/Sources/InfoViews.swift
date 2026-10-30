@@ -24,6 +24,7 @@ struct SettingsView: View {
                         Circle().fill(Theme.accent).frame(width: 18, height: 18)
                     }
                 }
+                NavigationLink { AppearanceView() } label: { Label(L("look.title"), systemImage: "textformat.size") }
                 Picker(L("settings.units"), selection: $units) {
                     Text(L("settings.units.metric")).tag("metric")
                     Text(L("settings.units.imperial")).tag("imperial")

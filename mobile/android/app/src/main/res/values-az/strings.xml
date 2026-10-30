@@ -766,5 +766,16 @@
     <string name="place_remove">Saxlanmışlardan çıxar</string>
     <string name="place_search">İl və ya rayon axtar</string>
     <string name="place_districtSource">Rayon mərkəzləri: GeoNames (CC BY 4.0). Rəsmi vaxt üçün Diyanət əsasdır.</string>
+    <string name="look_title">Saatın görünüşü</string>
+    <string name="look_font">Saat şrifti</string>
+    <string name="look_font_rounded">Dairəvi</string>
+    <string name="look_font_standard">Sadə</string>
+    <string name="look_font_serif">Dırnaqlı</string>
+    <string name="look_font_mono">Bərabər aralı</string>
+    <string name="look_font_light">İncə</string>
+    <string name="look_photo">Tam ekran arxa fonu</string>
+    <string name="look_photo_pick">Foto seç</string>
+    <string name="look_photo_remove">Fotonu sil</string>
+    <string name="look_photo_note">Foto yalnız bu telefonda saxlanır; tam ekran saatın arxasında tündləşdirilərək göstərilir.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>
