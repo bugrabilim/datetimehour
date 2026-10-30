@@ -17,46 +17,88 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import org.json.JSONArray
 import org.json.JSONObject
-import java.time.DayOfWeek
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.UUID
 
-/** Alarm: saat, etiket, tekrar (bir kez / her gün / hafta içi); iOS'taki AlarmItem ile aynı alanlar */
+/**
+ * Alarm: saat, etiket, günler (ISO 1 pazartesi … 7 pazar; boş = bir kez), erteleme süresi (dk; 0 = yok), "sonraki
+ * alarmı atla" (`skipUntil`, ms), ses (zil sesi adresi; boş = varsayılan alarm sesi) ve titreşim. iOS'taki AlarmItem ile
+ * aynı alanlar (ses ve titreşim yalnız Android'de). Eski kayıtlardaki `repeats` okunurken günlere çevrilir.
+ */
 data class AlarmItem(
     val id: String = UUID.randomUUID().toString(),
     val hour: Int,
     val minute: Int,
     val label: String = "",
-    /** "once", "every", "weekdays" */
-    val repeats: String = "once",
+    val days: List<Int> = emptyList(),
     val enabled: Boolean = true,
+    val snooze: Int = 5,
+    val skipUntil: Long = 0,
+    val sound: String = "",
+    val vibrate: Boolean = true,
 ) {
     val title: String get() = label.ifEmpty { L("tools.alarm.defaultLabel") }
     val timeText: String get() = Fmt.time(LocalDateTime.now().withHour(hour).withMinute(minute).atZone(ZoneId.systemDefault()))
 
-    /** Şu andan sonraki ilk çalma anı (ms) */
-    fun nextAt(nowMs: Long = System.currentTimeMillis()): Long {
-        val zone = ZoneId.systemDefault()
-        var t = LocalDateTime.now(zone).withHour(hour).withMinute(minute).withSecond(0).withNano(0)
-        while (true) {
-            val ms = t.atZone(zone).toInstant().toEpochMilli()
-            val weekdayOk = repeats != "weekdays" || t.dayOfWeek !in setOf(DayOfWeek.SATURDAY, DayOfWeek.SUNDAY)
-            if (ms > nowMs && weekdayOk) return ms
-            t = t.plusDays(1)
-        }
+    /** "Bir kez", "Her gün", "Hafta içi" ya da gün kısaltmaları */
+    val repeatText: String get() = when {
+        days.isEmpty() -> L("tools.alarm.once")
+        days.toSet().size == 7 -> L("alarm.everyDay")
+        days.toSet() == WEEKDAYS.toSet() -> L("tools.alarm.weekdays")
+        else -> days.sorted().joinToString(" ") { L("tools.alarm.dayNames.${it - 1}") }
     }
 
+    /** `afterMs` sonrasındaki ilk çalma (atlama hesaba katılmaz) */
+    fun occurrenceAfter(afterMs: Long): Long {
+        val zone = ZoneId.systemDefault()
+        var t = java.time.Instant.ofEpochMilli(afterMs).atZone(zone).toLocalDateTime().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
+        repeat(9) {
+            val ms = t.atZone(zone).toInstant().toEpochMilli()
+            if (ms > afterMs && (days.isEmpty() || t.dayOfWeek.value in days)) return ms
+            t = t.plusDays(1)
+        }
+        return afterMs + 86_400_000L
+    }
+
+    /** `beforeMs` öncesindeki son çalma (günaydın kartı için) */
+    fun occurrenceBefore(beforeMs: Long): Long? {
+        val zone = ZoneId.systemDefault()
+        var t = java.time.Instant.ofEpochMilli(beforeMs).atZone(zone).toLocalDateTime().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
+        repeat(9) {
+            val ms = t.atZone(zone).toInstant().toEpochMilli()
+            if (ms <= beforeMs && (days.isEmpty() || t.dayOfWeek.value in days)) return ms
+            t = t.minusDays(1)
+        }
+        return null
+    }
+
+    /** Sıradaki çalma (atlanan çalma varsa ondan sonraki) */
+    fun nextAt(nowMs: Long = System.currentTimeMillis()): Long = occurrenceAfter(maxOf(nowMs, skipUntil))
+
+    val skipping: Boolean get() = skipUntil > System.currentTimeMillis()
+
     fun toJson(): JSONObject = JSONObject().put("id", id).put("hour", hour).put("minute", minute).put("label", label)
-        .put("repeats", repeats).put("enabled", enabled)
+        .put("days", JSONArray(days)).put("enabled", enabled).put("snooze", snooze).put("skipUntil", skipUntil)
+        .put("sound", sound).put("vibrate", vibrate)
 
     companion object {
         private const val KEY = "alarms"
+        val WEEKDAYS = listOf(1, 2, 3, 4, 5)
+        val SNOOZE_CHOICES = listOf(0, 5, 10, 15, 20, 30)
 
-        fun fromJson(o: JSONObject) = AlarmItem(
-            o.getString("id"), o.getInt("hour"), o.getInt("minute"), o.optString("label"),
-            o.optString("repeats", "once"), o.optBoolean("enabled", true),
-        )
+        fun fromJson(o: JSONObject): AlarmItem {
+            val days = o.optJSONArray("days")?.let { a -> (0 until a.length()).map { a.getInt(it) } } ?: when (o.optString("repeats", "once")) {
+                "every" -> (1..7).toList()
+                "weekdays" -> WEEKDAYS
+                else -> emptyList()
+            }
+            return AlarmItem(
+                o.getString("id"), o.getInt("hour"), o.getInt("minute"), o.optString("label"), days,
+                o.optBoolean("enabled", true), o.optInt("snooze", 5), o.optLong("skipUntil", 0),
+                o.optString("sound", ""), o.optBoolean("vibrate", true),
+            )
+        }
 
         fun load(): List<AlarmItem> = runCatching {
             val a = JSONArray(Prefs.store.getString(KEY, "[]"))
@@ -66,6 +108,9 @@ data class AlarmItem(
         fun save(items: List<AlarmItem>) {
             Prefs.store.edit().putString(KEY, JSONArray(items.map { it.toJson() }).toString()).apply()
         }
+
+        /** Ertelenmiş alarmın kimliğinden asıl alarm */
+        fun find(id: String): AlarmItem? = load().firstOrNull { it.id == id.removePrefix(AlarmScheduler.SNOOZE) }
     }
 }
 
@@ -117,6 +162,28 @@ object AlarmScheduler {
             nm.createNotificationChannel(ch)
         }
     }
+
+    /** Alarmın kanalı: varsayılan ses ve titreşimde "alarm"; başka ses ya da titreşimsiz için ayrı kanal */
+    fun channelFor(c: Context, item: AlarmItem?): String {
+        if (item == null || (item.sound.isEmpty() && item.vibrate) || Build.VERSION.SDK_INT < 26) return CHANNEL_ALARM
+        val id = "alarm-" + Integer.toHexString((item.sound + "|" + item.vibrate).hashCode())
+        val nm = c.getSystemService(NotificationManager::class.java)
+        if (nm.getNotificationChannel(id) == null) {
+            val uri = item.sound.takeIf { it.isNotEmpty() }?.let(android.net.Uri::parse) ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+            val ch = NotificationChannel(id, L("tools.hub.cards.alarm.name") + " · " + soundTitle(c, item.sound), NotificationManager.IMPORTANCE_HIGH)
+            ch.setSound(uri, AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build())
+            ch.enableVibration(item.vibrate)
+            if (item.vibrate) ch.vibrationPattern = longArrayOf(0, 600, 400, 600, 400, 600)
+            ch.lockscreenVisibility = NotificationCompat.VISIBILITY_PUBLIC
+            nm.createNotificationChannel(ch)
+        }
+        return id
+    }
+
+    /** Zil sesinin adı (boşsa "Varsayılan alarm sesi") */
+    fun soundTitle(c: Context, sound: String): String =
+        if (sound.isEmpty()) L("alarm.soundDefault")
+        else runCatching { RingtoneManager.getRingtone(c, android.net.Uri.parse(sound))?.getTitle(c) }.getOrNull() ?: L("alarm.soundDefault")
 
     private fun pending(c: Context, id: String, title: String, kind: String, flags: Int): PendingIntent? =
         PendingIntent.getBroadcast(
@@ -191,6 +258,8 @@ object AlarmScheduler {
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
         )
         val time = Fmt.time(java.time.ZonedDateTime.now())
+        val item = if (kind == "alarm") AlarmItem.find(id) else null
+        val snoozeMin = item?.snooze ?: SNOOZE_MIN
         val n = if (kind == POMODORO) {
             NotificationCompat.Builder(c, CHANNEL_TOOLS)
                 .setSmallIcon(R.drawable.ic_stat_alarm)
@@ -204,18 +273,19 @@ object AlarmScheduler {
                     PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT))
                 .build()
         } else {
-            val b = NotificationCompat.Builder(c, CHANNEL_ALARM)
+            val b = NotificationCompat.Builder(c, channelFor(c, item))
                 .setSmallIcon(R.drawable.ic_stat_alarm)
                 .setContentTitle(title)
                 .setContentText(time)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM), android.media.AudioManager.STREAM_ALARM)
+                .setSound(item?.sound?.takeIf { it.isNotEmpty() }?.let(android.net.Uri::parse) ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM),
+                    android.media.AudioManager.STREAM_ALARM)
                 .setFullScreenIntent(full, true)
                 .setContentIntent(full)
                 .setOngoing(true)
                 .addAction(0, L("tools.alarm.stop"), action(ACTION_STOP))
-            if (kind == "alarm") b.addAction(0, L("tools.alarm.snooze"), action(ACTION_SNOOZE))
+            if (kind == "alarm" && snoozeMin > 0) b.addAction(0, T("alarm.snoozeFor", snoozeMin), action(ACTION_SNOOZE))
             b.build().also { it.flags = it.flags or android.app.Notification.FLAG_INSISTENT }
         }
         runCatching { NotificationManagerCompat.from(c).notify(nid, n) }
@@ -230,8 +300,9 @@ object AlarmScheduler {
 
     fun snooze(c: Context, id: String, title: String) {
         stop(c, id)
+        val minutes = (AlarmItem.find(id)?.snooze ?: SNOOZE_MIN).takeIf { it > 0 } ?: return
         val sid = if (id.startsWith(SNOOZE)) id else SNOOZE + id
-        schedule(c, sid, System.currentTimeMillis() + SNOOZE_MIN * 60_000L, title, "alarm")
+        schedule(c, sid, System.currentTimeMillis() + minutes * 60_000L, title, "alarm")
     }
 }
 
@@ -247,7 +318,7 @@ class AlarmReceiver : BroadcastReceiver() {
             else -> {
                 if (kind == "alarm" && !id.startsWith(AlarmScheduler.SNOOZE)) {
                     // Bir kezlik alarm kapanır; tekrarlı olanın sonraki çalması kurulur
-                    val items = AlarmItem.load().map { if (it.id == id && it.repeats == "once") it.copy(enabled = false) else it }
+                    val items = AlarmItem.load().map { if (it.id == id && it.days.isEmpty()) it.copy(enabled = false, skipUntil = 0) else it }
                     AlarmItem.save(items)
                     AlarmScheduler.sync(c, items)
                 }

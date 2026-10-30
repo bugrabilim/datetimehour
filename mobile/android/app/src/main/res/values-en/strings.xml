@@ -103,6 +103,7 @@
     <string name="calendar_events_hijri">Islamic New Year</string>
     <string name="calendar_events_ashura">Day of Ashura</string>
     <string name="calendar_events_mawlid">Mawlid Kandil</string>
+    <string name="calendar_events_feb14">Valentine\'s Day</string>
     <string name="calendar_events_mar8">International Women\'s Day</string>
     <string name="calendar_events_mothers">Mother\'s Day</string>
     <string name="calendar_events_fathers">Father\'s Day</string>
@@ -670,5 +671,22 @@
     <string name="notify_n_dstBack">Clocks go back %1$s tonight</string>
     <string name="notify_n_oneHour">one hour</string>
     <string name="notify_n_minutes">%1$s minutes</string>
+    <string name="alarm_days">Days</string>
+    <string name="alarm_snooze">Snooze</string>
+    <string name="alarm_snoozeOff">Off</string>
+    <string name="alarm_snoozeMin">%1$s min</string>
+    <string name="alarm_snoozeFor">Snooze %1$s min</string>
+    <string name="alarm_skip">Skip next alarm</string>
+    <string name="alarm_skipped">%1$s will be skipped</string>
+    <string name="alarm_unskip">Undo skip</string>
+    <string name="alarm_sound">Sound</string>
+    <string name="alarm_soundDefault">Default alarm sound</string>
+    <string name="alarm_vibrate">Vibration</string>
+    <string name="alarm_everyDay">Every day</string>
+    <string name="morning_good">Good morning</string>
+    <string name="morning_day">Good afternoon</string>
+    <string name="morning_evening">Good evening</string>
+    <string name="morning_night">Good night</string>
+    <string name="morning_today">Today</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

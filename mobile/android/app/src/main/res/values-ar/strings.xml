@@ -103,6 +103,7 @@
     <string name="calendar_events_hijri">رأس السنة الهجرية</string>
     <string name="calendar_events_ashura">يوم عاشوراء</string>
     <string name="calendar_events_mawlid">المولد النبوي</string>
+    <string name="calendar_events_feb14">عيد الحب</string>
     <string name="calendar_events_mar8">اليوم العالمي للمرأة</string>
     <string name="calendar_events_mothers">عيد الأم</string>
     <string name="calendar_events_fathers">عيد الأب</string>
@@ -670,5 +671,22 @@
     <string name="notify_n_dstBack">تُؤخَّر الساعة %1$s الليلة</string>
     <string name="notify_n_oneHour">ساعة واحدة</string>
     <string name="notify_n_minutes">%1$s دقيقة</string>
+    <string name="alarm_days">الأيام</string>
+    <string name="alarm_snooze">الغفوة</string>
+    <string name="alarm_snoozeOff">إيقاف</string>
+    <string name="alarm_snoozeMin">%1$s د</string>
+    <string name="alarm_snoozeFor">غفوة %1$s د</string>
+    <string name="alarm_skip">تخطي المنبه التالي</string>
+    <string name="alarm_skipped">سيتم تخطي %1$s</string>
+    <string name="alarm_unskip">تراجع عن التخطي</string>
+    <string name="alarm_sound">الصوت</string>
+    <string name="alarm_soundDefault">صوت المنبه الافتراضي</string>
+    <string name="alarm_vibrate">الاهتزاز</string>
+    <string name="alarm_everyDay">كل يوم</string>
+    <string name="morning_good">صباح الخير</string>
+    <string name="morning_day">طاب يومك</string>
+    <string name="morning_evening">مساء الخير</string>
+    <string name="morning_night">تصبح على خير</string>
+    <string name="morning_today">اليوم</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

@@ -195,5 +195,6 @@ enum BackgroundRefresh {
     static func run() async {
         schedule()
         await PrayerNotifier.reschedule()
+        await AlarmCenter.refreshSkips()
     }
 }

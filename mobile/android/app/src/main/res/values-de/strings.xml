@@ -103,6 +103,7 @@
     <string name="calendar_events_hijri">Islamisches Neujahr</string>
     <string name="calendar_events_ashura">Aschura-Tag</string>
     <string name="calendar_events_mawlid">Mevlid-Nacht (Mevlid Kandili)</string>
+    <string name="calendar_events_feb14">Valentinstag</string>
     <string name="calendar_events_mar8">Internationaler Frauentag</string>
     <string name="calendar_events_mothers">Muttertag</string>
     <string name="calendar_events_fathers">Vatertag</string>
@@ -670,5 +671,22 @@
     <string name="notify_n_dstBack">Heute Nacht werden die Uhren %1$s zurückgestellt</string>
     <string name="notify_n_oneHour">eine Stunde</string>
     <string name="notify_n_minutes">%1$s Minuten</string>
+    <string name="alarm_days">Tage</string>
+    <string name="alarm_snooze">Schlummern</string>
+    <string name="alarm_snoozeOff">Aus</string>
+    <string name="alarm_snoozeMin">%1$s Min.</string>
+    <string name="alarm_snoozeFor">%1$s Min. schlummern</string>
+    <string name="alarm_skip">Nächsten Wecker überspringen</string>
+    <string name="alarm_skipped">%1$s wird übersprungen</string>
+    <string name="alarm_unskip">Überspringen aufheben</string>
+    <string name="alarm_sound">Ton</string>
+    <string name="alarm_soundDefault">Standard-Weckton</string>
+    <string name="alarm_vibrate">Vibration</string>
+    <string name="alarm_everyDay">Täglich</string>
+    <string name="morning_good">Guten Morgen</string>
+    <string name="morning_day">Guten Tag</string>
+    <string name="morning_evening">Guten Abend</string>
+    <string name="morning_night">Gute Nacht</string>
+    <string name="morning_today">Heute</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

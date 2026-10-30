@@ -103,6 +103,7 @@
     <string name="calendar_events_hijri">Hicri yılbaşı</string>
     <string name="calendar_events_ashura">Aşure günü</string>
     <string name="calendar_events_mawlid">Mevlid Kandili</string>
+    <string name="calendar_events_feb14">Sevgililer Günü</string>
     <string name="calendar_events_mar8">Dünya Kadınlar Günü</string>
     <string name="calendar_events_mothers">Anneler Günü</string>
     <string name="calendar_events_fathers">Babalar Günü</string>
@@ -670,5 +671,22 @@
     <string name="notify_n_dstBack">Bu gece saatler %1$s geri alınıyor</string>
     <string name="notify_n_oneHour">1 saat</string>
     <string name="notify_n_minutes">%1$s dakika</string>
+    <string name="alarm_days">Günler</string>
+    <string name="alarm_snooze">Erteleme</string>
+    <string name="alarm_snoozeOff">Kapalı</string>
+    <string name="alarm_snoozeMin">%1$s dk</string>
+    <string name="alarm_snoozeFor">%1$s dk ertele</string>
+    <string name="alarm_skip">Sonraki alarmı atla</string>
+    <string name="alarm_skipped">%1$s atlanacak</string>
+    <string name="alarm_unskip">Atlamayı geri al</string>
+    <string name="alarm_sound">Ses</string>
+    <string name="alarm_soundDefault">Varsayılan alarm sesi</string>
+    <string name="alarm_vibrate">Titreşim</string>
+    <string name="alarm_everyDay">Her gün</string>
+    <string name="morning_good">Günaydın</string>
+    <string name="morning_day">İyi günler</string>
+    <string name="morning_evening">İyi akşamlar</string>
+    <string name="morning_night">İyi geceler</string>
+    <string name="morning_today">Bugün</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

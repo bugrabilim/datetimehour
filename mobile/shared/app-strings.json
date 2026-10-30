@@ -1777,5 +1777,124 @@
     "de": "{m} Minuten",
     "az": "{m} dəqiqə",
     "ar": "{m} دقيقة"
+  },
+  "alarm.days": {
+    "tr": "Günler",
+    "en": "Days",
+    "de": "Tage",
+    "az": "Günlər",
+    "ar": "الأيام"
+  },
+  "alarm.snooze": {
+    "tr": "Erteleme",
+    "en": "Snooze",
+    "de": "Schlummern",
+    "az": "Təxirə salma",
+    "ar": "الغفوة"
+  },
+  "alarm.snoozeOff": {
+    "tr": "Kapalı",
+    "en": "Off",
+    "de": "Aus",
+    "az": "Bağlı",
+    "ar": "إيقاف"
+  },
+  "alarm.snoozeMin": {
+    "tr": "{min} dk",
+    "en": "{min} min",
+    "de": "{min} Min.",
+    "az": "{min} dəq",
+    "ar": "{min} د"
+  },
+  "alarm.snoozeFor": {
+    "tr": "{min} dk ertele",
+    "en": "Snooze {min} min",
+    "de": "{min} Min. schlummern",
+    "az": "{min} dəq təxirə sal",
+    "ar": "غفوة {min} د"
+  },
+  "alarm.skip": {
+    "tr": "Sonraki alarmı atla",
+    "en": "Skip next alarm",
+    "de": "Nächsten Wecker überspringen",
+    "az": "Növbəti zəngi ötür",
+    "ar": "تخطي المنبه التالي"
+  },
+  "alarm.skipped": {
+    "tr": "{date} atlanacak",
+    "en": "{date} will be skipped",
+    "de": "{date} wird übersprungen",
+    "az": "{date} ötürüləcək",
+    "ar": "سيتم تخطي {date}"
+  },
+  "alarm.unskip": {
+    "tr": "Atlamayı geri al",
+    "en": "Undo skip",
+    "de": "Überspringen aufheben",
+    "az": "Ötürməni ləğv et",
+    "ar": "تراجع عن التخطي"
+  },
+  "alarm.sound": {
+    "tr": "Ses",
+    "en": "Sound",
+    "de": "Ton",
+    "az": "Səs",
+    "ar": "الصوت"
+  },
+  "alarm.soundDefault": {
+    "tr": "Varsayılan alarm sesi",
+    "en": "Default alarm sound",
+    "de": "Standard-Weckton",
+    "az": "Standart zəng səsi",
+    "ar": "صوت المنبه الافتراضي"
+  },
+  "alarm.vibrate": {
+    "tr": "Titreşim",
+    "en": "Vibration",
+    "de": "Vibration",
+    "az": "Vibrasiya",
+    "ar": "الاهتزاز"
+  },
+  "alarm.everyDay": {
+    "tr": "Her gün",
+    "en": "Every day",
+    "de": "Täglich",
+    "az": "Hər gün",
+    "ar": "كل يوم"
+  },
+  "morning.good": {
+    "tr": "Günaydın",
+    "en": "Good morning",
+    "de": "Guten Morgen",
+    "az": "Sabahınız xeyir",
+    "ar": "صباح الخير"
+  },
+  "morning.day": {
+    "tr": "İyi günler",
+    "en": "Good afternoon",
+    "de": "Guten Tag",
+    "az": "Gününüz xeyir",
+    "ar": "طاب يومك"
+  },
+  "morning.evening": {
+    "tr": "İyi akşamlar",
+    "en": "Good evening",
+    "de": "Guten Abend",
+    "az": "Axşamınız xeyir",
+    "ar": "مساء الخير"
+  },
+  "morning.night": {
+    "tr": "İyi geceler",
+    "en": "Good night",
+    "de": "Gute Nacht",
+    "az": "Gecəniz xeyir",
+    "ar": "تصبح على خير"
+  },
+  "morning.today": {
+    "tr": "Bugün",
+    "en": "Today",
+    "de": "Heute",
+    "az": "Bu gün",
+    "ar": "اليوم"
   }
 }

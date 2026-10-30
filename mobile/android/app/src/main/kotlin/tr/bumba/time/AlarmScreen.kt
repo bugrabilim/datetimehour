@@ -25,8 +25,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
@@ -47,6 +45,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.LifecycleResumeEffect
+import android.media.RingtoneManager
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import java.time.LocalTime
 
 /** Alarmlar (iOS'taki AlarmsView): liste, aç/kapat, dokununca düzenle, + ile yeni; uygulama kapalıyken de çalar */
@@ -94,7 +102,22 @@ fun AlarmScreen() {
                             Text(item.timeText, color = if (item.enabled) Theme.c.text else Theme.c.muted, fontSize = 40.sp,
                                 fontWeight = FontWeight.Light, style = Tnum)
                         }
-                        Text(item.title + " · " + L("tools.alarm.${item.repeats}"), color = Theme.c.muted, fontSize = 14.sp)
+                        Text(item.title + " · " + item.repeatText, color = Theme.c.muted, fontSize = 14.sp)
+                        // Sonraki alarm atlanacaksa hangi gün; dokununca geri alınır, değilse "atla"
+                        if (item.enabled) {
+                            val skipped = item.skipping
+                            Text(
+                                if (skipped) T("alarm.skipped", Fmt.longDate(java.time.Instant.ofEpochMilli(item.occurrenceAfter(System.currentTimeMillis()))
+                                    .atZone(java.time.ZoneId.systemDefault()).toLocalDate())) + " · " + L("alarm.unskip")
+                                else L("alarm.skip"),
+                                Modifier.clickable {
+                                    val now = System.currentTimeMillis()
+                                    val skip = if (skipped) 0L else item.occurrenceAfter(now) + 60_000L
+                                    update(items.map { if (it.id == item.id) it.copy(skipUntil = skip) else it })
+                                }.padding(vertical = 4.dp),
+                                color = if (skipped) Theme.c.muted else Theme.c.accent, fontSize = 13.sp,
+                            )
+                        }
                     }
                     Switch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
                         colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
@@ -137,7 +160,19 @@ fun AlarmScreen() {
 private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, onDelete: () -> Unit, onSave: (AlarmItem) -> Unit) {
     val time = rememberTimePickerState(item.hour, item.minute, is24Hour = !Prefs.h12)
     var label by remember { mutableStateOf(item.label) }
-    var repeats by remember { mutableStateOf(item.repeats) }
+    val context = LocalContext.current
+    var days by remember { mutableStateOf(item.days.sorted()) }
+    var snooze by remember { mutableStateOf(item.snooze) }
+    var sound by remember { mutableStateOf(item.sound) }
+    var vibrate by remember { mutableStateOf(item.vibrate) }
+    // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
+    val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
+        if (r.resultCode == android.app.Activity.RESULT_OK) {
+            @Suppress("DEPRECATION")
+            val uri = r.data?.getParcelableExtra<Uri>(RingtoneManager.EXTRA_RINGTONE_PICKED_URI)
+            sound = uri?.takeIf { it != RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM) }?.toString() ?: ""
+        }
+    }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(L(if (isNew) "alarm.new" else "tools.alarm.timeLabel")) },
@@ -152,23 +187,72 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                 }
                 OutlinedTextField(label, { label = it.take(40) }, Modifier.fillMaxWidth(), singleLine = true,
                     label = { Text(L("tools.alarm.labelLabel")) }, placeholder = { Text(L("tools.alarm.labelPlaceholder")) })
-                Text(L("tools.alarm.repeatLabel"), color = Theme.c.muted, fontSize = 13.sp)
-                val opts = listOf("once", "every", "weekdays")
-                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                    opts.forEachIndexed { i, o ->
-                        SegmentedButton(repeats == o, { repeats = o }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
-                            Text(L("tools.alarm.$o"), fontSize = 13.sp, maxLines = 1)
+                Text(L("alarm.days"), color = Theme.c.muted, fontSize = 13.sp)
+                // Pazartesiden pazara yedi düğme; hiçbiri seçili değilse bir kez çalar
+                Ltr {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                        for (d in 1..7) {
+                            val on = d in days
+                            Box(
+                                Modifier.weight(1f).height(36.dp).clip(CircleShape)
+                                    .background(if (on) Theme.c.accent else Theme.c.surface2)
+                                    .clickable { days = if (on) days - d else (days + d).sorted() }
+                                    .semantics { selected = on },
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Text(L("tools.alarm.dayNames.${d - 1}"), color = if (on) Color.White else Theme.c.text,
+                                    fontSize = 11.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+                            }
                         }
                     }
+                }
+                Text(item.copy(days = days).repeatText, color = Theme.c.muted, fontSize = 13.sp)
+                ChoiceRow(L("alarm.snooze"), if (snooze == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", snooze),
+                    AlarmItem.SNOOZE_CHOICES.map { it to (if (it == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", it)) }) { snooze = it }
+                Row(
+                    Modifier.fillMaxWidth().clickable {
+                        val current = sound.takeIf { it.isNotEmpty() }?.let(Uri::parse) ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+                        runCatching {
+                            pickSound.launch(Intent(RingtoneManager.ACTION_RINGTONE_PICKER)
+                                .putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALARM)
+                                .putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true)
+                                .putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, false)
+                                .putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, current))
+                        }
+                    }.padding(vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(L("alarm.sound"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Text(AlarmScheduler.soundTitle(context, sound), color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                }
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("alarm.vibrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Switch(vibrate, { vibrate = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Color(0xFFD32F2F)) }
             }
         },
         confirmButton = {
             TextButton(onClick = {
-                onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), repeats = repeats, enabled = true))
+                onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
+                    snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },
     )
+}
+
+/** Başlık + seçili değer; dokununca açılır liste */
+@Composable
+private fun ChoiceRow(title: String, value: String, options: List<Pair<Int, String>>, onPick: (Int) -> Unit) {
+    var open by remember { mutableStateOf(false) }
+    Row(Modifier.fillMaxWidth().clickable { open = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+        Box {
+            Text(value, color = Theme.c.accent, fontSize = 15.sp)
+            DropdownMenu(open, { open = false }) {
+                for ((v, label) in options) DropdownMenuItem(text = { Text(label) }, onClick = { open = false; onPick(v) })
+            }
+        }
+    }
 }

@@ -20,6 +20,7 @@ struct SaatTarihApp: App {
                     await PlaceModel.shared.refresh()
                     await PrayerNotifier.askOnce()
                     await PrayerNotifier.reschedule()
+                    await AlarmCenter.refreshSkips()
                 }
             } else if phase == .background {
                 BackgroundRefresh.schedule()
@@ -109,6 +110,8 @@ struct RootView: View {
     /// içerik sıkışmasın (30 Ekim 2026, sahibin isteği). Sekme değiştirmek için telefon dik tutulur.
     @Environment(\.verticalSizeClass) private var vsc
     private var landscape: Bool { vsc == .compact }
+    /// Alarm son iki saatte çaldıysa açılışta günaydın kartı (MorningCheck)
+    @State private var morning = false
 
     var body: some View {
         // Bar sayfanın altında ayrı bir satır: sayfanın son satırları barın altında kalmaz
@@ -124,6 +127,10 @@ struct RootView: View {
         .overlay(alignment: .top) { BadgeToast() }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboard = true }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboard = false }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            if MorningCheck.due() { morning = true }
+        }
+        .sheet(isPresented: $morning) { MorningCard().preferredColorScheme(scheme) }
         .tint(Theme.accent)
         .preferredColorScheme(scheme)
         .task {
@@ -199,7 +206,7 @@ private struct TabBar: View {
 
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list, globe, google, badges, notifications
+         privacy, about, list, globe, google, badges, notifications, morning
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -224,6 +231,7 @@ enum DebugScreen: String, Identifiable {
         case .google: GoogleCalendarGuide()
         case .badges: BadgesView()
         case .notifications: NotificationsView()
+        case .morning: MorningCard()
         case .globe:
             // App Store önizleme videosu için: tam ekran dönen dünya
             GlobeView(fullscreen: true)

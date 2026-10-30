@@ -86,7 +86,7 @@ class ScreenshotTest {
     }
 
     @Test fun alarm() {
-        AlarmItem.save(listOf(AlarmItem(id = "a", hour = 7, minute = 0, repeats = "weekdays"),
+        AlarmItem.save(listOf(AlarmItem(id = "a", hour = 7, minute = 0, days = AlarmItem.WEEKDAYS, snooze = 10),
             AlarmItem(id = "b", hour = 9, minute = 30, label = "Spor", enabled = false)))
         tool("tr-alarm", "alarm")
     }

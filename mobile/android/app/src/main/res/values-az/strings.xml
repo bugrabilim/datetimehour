@@ -103,6 +103,7 @@
     <string name="calendar_events_hijri">Hicri yeni il</string>
     <string name="calendar_events_ashura">Aşura günü</string>
     <string name="calendar_events_mawlid">Mövlud gecəsi</string>
+    <string name="calendar_events_feb14">Sevgililər Günü</string>
     <string name="calendar_events_mar8">Beynəlxalq Qadınlar Günü</string>
     <string name="calendar_events_mothers">Analar Günü</string>
     <string name="calendar_events_fathers">Atalar Günü</string>
@@ -670,5 +671,22 @@
     <string name="notify_n_dstBack">Bu gecə saatlar %1$s geri çəkilir</string>
     <string name="notify_n_oneHour">1 saat</string>
     <string name="notify_n_minutes">%1$s dəqiqə</string>
+    <string name="alarm_days">Günlər</string>
+    <string name="alarm_snooze">Təxirə salma</string>
+    <string name="alarm_snoozeOff">Bağlı</string>
+    <string name="alarm_snoozeMin">%1$s dəq</string>
+    <string name="alarm_snoozeFor">%1$s dəq təxirə sal</string>
+    <string name="alarm_skip">Növbəti zəngi ötür</string>
+    <string name="alarm_skipped">%1$s ötürüləcək</string>
+    <string name="alarm_unskip">Ötürməni ləğv et</string>
+    <string name="alarm_sound">Səs</string>
+    <string name="alarm_soundDefault">Standart zəng səsi</string>
+    <string name="alarm_vibrate">Vibrasiya</string>
+    <string name="alarm_everyDay">Hər gün</string>
+    <string name="morning_good">Sabahınız xeyir</string>
+    <string name="morning_day">Gününüz xeyir</string>
+    <string name="morning_evening">Axşamınız xeyir</string>
+    <string name="morning_night">Gecəniz xeyir</string>
+    <string name="morning_today">Bu gün</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

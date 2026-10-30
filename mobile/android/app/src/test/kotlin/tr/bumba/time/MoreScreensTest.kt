@@ -92,6 +92,10 @@ class MoreScreensTest {
     @Test fun aboutDark() = page("tr-hakkinda-koyu", "Hakkında", dark = true) { AboutScreen() }
     @Test fun google() = page("tr-google-takvim", "Google Takvimi") { GoogleCalendarGuide() }
     @Test fun notifications() = shot("tr-bildirimler") { NotificationsScreen {} }
+    @Test fun morning() {
+        seedWeather()
+        shot("tr-gunaydin") { MorningCard {} }
+    }
     @Test fun badges() {
         // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri
         BadgeStore.deleteAll()

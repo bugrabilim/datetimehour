@@ -371,15 +371,26 @@ struct AlarmsView: View {
                             .font(.system(size: 40, weight: .light, design: .rounded))
                             .monospacedDigit()
                             .environment(\.layoutDirection, .leftToRight)
-                        Text(item.title + " · " + L("tools.alarm.\(item.repeats.rawValue)"))
+                        Text(item.title + " · " + item.repeatText)
                             .font(.subheadline)
                             .foregroundStyle(Theme.muted)
+                        if let skip = item.skipUntil, skip > Date(), let at = item.occurrence(after: Date()) {
+                            Text(T("alarm.skipped", Fmt.longDate(at)))
+                                .font(.caption)
+                                .foregroundStyle(Theme.accent)
+                        }
                     }
                     Spacer()
                     Toggle(L("tools.alarm.enable"), isOn: $item.enabled).labelsHidden()
                 }
                 .contentShape(Rectangle())
                 .onTapGesture { editing = item }
+                .swipeActions(edge: .leading) {
+                    if item.enabled { skipButton($item) }
+                }
+                .contextMenu {
+                    if item.enabled { skipButton($item) }
+                }
             }
             .onDelete { items.remove(atOffsets: $0) }
             Section {
@@ -417,6 +428,19 @@ struct AlarmsView: View {
     }
 }
 
+extension AlarmsView {
+    /// "Sonraki alarmı atla" ya da geri al
+    @ViewBuilder fileprivate func skipButton(_ item: Binding<AlarmItem>) -> some View {
+        let now = Date()
+        if let skip = item.wrappedValue.skipUntil, skip > now {
+            Button { item.wrappedValue.skipUntil = nil } label: { Label(L("alarm.unskip"), systemImage: "arrow.uturn.backward") }
+        } else if let next = item.wrappedValue.occurrence(after: now) {
+            Button { item.wrappedValue.skipUntil = next.addingTimeInterval(60) } label: { Label(L("alarm.skip"), systemImage: "forward.end") }
+                .tint(Theme.accent)
+        }
+    }
+}
+
 private struct AlarmEditor: View {
     @Environment(\.dismiss) private var dismiss
     @State var item: AlarmItem
@@ -431,8 +455,31 @@ private struct AlarmEditor: View {
                     .labelsHidden()
                     .frame(maxWidth: .infinity)
                 TextField(L("tools.alarm.labelPlaceholder"), text: $item.label)
-                Picker(L("tools.alarm.repeatLabel"), selection: $item.repeats) {
-                    ForEach(AlarmItem.Repeat.allCases, id: \.self) { Text(L("tools.alarm.\($0.rawValue)")).tag($0) }
+                Section(L("alarm.days")) {
+                    // Pazartesiden pazara yedi düğme; hiçbiri seçili değilse bir kez çalar
+                    HStack(spacing: 6) {
+                        ForEach(1...7, id: \.self) { d in
+                            let on = item.days.contains(d)
+                            Button {
+                                if on { item.days.removeAll { $0 == d } } else { item.days.append(d); item.days.sort() }
+                            } label: {
+                                Text(L("tools.alarm.dayNames.\(d - 1)"))
+                                    .font(.footnote.weight(.semibold))
+                                    .frame(maxWidth: .infinity, minHeight: 36)
+                                    .background(on ? Theme.accent : Theme.surface2, in: Capsule())
+                                    .foregroundStyle(on ? Color.white : Theme.text)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityAddTraits(on ? .isSelected : [])
+                        }
+                    }
+                    .environment(\.layoutDirection, .leftToRight)
+                    Text(item.repeatText).font(.footnote).foregroundStyle(Theme.muted)
+                }
+                Picker(L("alarm.snooze"), selection: $item.snooze) {
+                    ForEach(AlarmItem.snoozeChoices, id: \.self) { m in
+                        Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)).tag(m)
+                    }
                 }
             }
             .themedBackground()
@@ -446,6 +493,7 @@ private struct AlarmEditor: View {
                         item.hour = c.hour ?? 0
                         item.minute = c.minute ?? 0
                         item.enabled = true
+                        item.skipUntil = nil
                         onSave(item)
                         dismiss()
                     }
