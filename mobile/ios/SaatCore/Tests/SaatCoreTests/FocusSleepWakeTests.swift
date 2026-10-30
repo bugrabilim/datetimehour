@@ -22,6 +22,25 @@ final class FocusSleepWakeTests: XCTestCase {
         XCTAssertEqual(s.top.map(\.minutes), [75, 25, 25])
     }
 
+    /// Odak serisi ve etiketler (rakip analizi #27): bugün ya da dün biten seri; etiketsizler "none"
+    func testFocusStreakAndTags() {
+        let log = [
+            FocusLog.Entry(d: "2026-10-27", m: 25, t: "", g: "work"), FocusLog.Entry(d: "2026-10-28", m: 25, t: "", g: "work"),
+            FocusLog.Entry(d: "2026-10-29", m: 25, t: "", g: "study"), FocusLog.Entry(d: "2026-10-29", m: 50, t: ""),
+        ]
+        let today = CalendarDay(2026, 10, 30)
+        XCTAssertEqual(FocusLog.streak(log, today: today), 3)
+        XCTAssertEqual(FocusLog.streak(log + [FocusLog.Entry(d: "2026-10-30", m: 25, t: "")], today: today), 4)
+        XCTAssertEqual(FocusLog.streak(log, today: today.adding(days: 2)), 0)
+        let tags = FocusLog.tags(log, since: "2026-10-24")
+        XCTAssertEqual(tags.map(\.tag), ["work", "none", "study"]) // eşit dakikada ilk görülen önce
+        XCTAssertEqual(tags.map(\.minutes), [50, 50, 25])
+        // Etiketli kayıt JSON'da "g" ile; etiketsiz kayıtta alan yok (sitedeki sth-pomo-log ile aynı)
+        let json = String(decoding: try! JSONEncoder().encode(log[3]), as: UTF8.self)
+        XCTAssertFalse(json.contains("\"g\""))
+        XCTAssertEqual(try! JSONDecoder().decode(FocusLog.Entry.self, from: Data(#"{"d":"2026-10-29","m":25,"t":"","g":"work"}"#.utf8)).g, "work")
+    }
+
     func testFocusLogIsCapped() {
         var log: [FocusLog.Entry] = []
         for i in 0..<1005 { log = FocusLog.add(log, .init(d: "2026-10-30", m: i, t: String(repeating: "x", count: 80))) }

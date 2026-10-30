@@ -158,6 +158,15 @@ struct StopwatchView: View {
             if lapTimes.isEmpty {
                 Text(L("tools.stopwatch.empty")).foregroundStyle(Theme.muted)
             }
+            if !lapTimes.isEmpty {
+                ShareLink(item: CSVFile(name: "laps-\(BadgeStore.day(Date())).csv",
+                                        rows: [[L("tools.stopwatch.lapNo"), L("tools.stopwatch.lapTime"), L("tools.stopwatch.total")]]
+                                            + lapTimes.enumerated().map { [String($0.offset + 1), format($0.element), format(totals[$0.offset])] }),
+                          preview: SharePreview("laps.csv")) {
+                    Label(L("csv.laps"), systemImage: "square.and.arrow.up")
+                }
+                .foregroundStyle(Theme.accent)
+            }
             ForEach(Array(lapTimes.enumerated()).reversed(), id: \.offset) { i, lap in
                 HStack {
                     Text(verbatim: "\(L("tools.stopwatch.lapNo")) \(i + 1)")
@@ -209,9 +218,23 @@ struct AlarmsView: View {
     @State private var items = AlarmItem.load()
     @State private var editing: AlarmItem?
     @State private var denied = false
+    @State private var quickMsg = ""
 
     var body: some View {
         List {
+            // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
+            Section(L("alarm.quick")) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach([5, 10, 15, 20, 30, 45, 60], id: \.self) { m in
+                            Button(T("alarm.quickIn", m)) { quick(m) }
+                                .buttonStyle(.bordered)
+                                .tint(Theme.accent)
+                        }
+                    }
+                }
+                if !quickMsg.isEmpty { Text(quickMsg).font(.footnote).foregroundStyle(Theme.accent) }
+            }
             if items.isEmpty {
                 Text(L("tools.alarm.none")).foregroundStyle(Theme.muted)
             }
@@ -279,8 +302,21 @@ struct AlarmsView: View {
                 await AlarmCenter.sync(items)
                 let allowed = await AlarmCenter.requestAccess()
                 denied = !allowed && items.contains { $0.enabled }
+                await PrayerNotifier.reschedule() // yaklaşan alarm bildirimleri
             }
         }
+    }
+
+    private func quick(_ minutes: Int) {
+        let at = Date().addingTimeInterval(Double(minutes * 60))
+        let c = Calendar.current.dateComponents([.hour, .minute], from: at)
+        var item = AlarmItem(hour: c.hour ?? 0, minute: c.minute ?? 0)
+        item.label = T("alarm.quickIn", minutes)
+        item.preNotify = 0
+        items.append(item)
+        items.sort { ($0.hour, $0.minute) < ($1.hour, $1.minute) }
+        quickMsg = T("alarm.quickSet", Fmt.time(at))
+        BadgeStore.shared.hit(.alarm)
     }
 }
 
@@ -352,6 +388,22 @@ private struct AlarmEditor: View {
                         .tint(Theme.accent)
                 } footer: {
                     Text(L("alarm.riseNoteIOS"))
+                }
+                // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
+                Section {
+                    Toggle(L("alarm.speak"), isOn: $item.speak)
+                        .tint(Theme.accent)
+                } footer: {
+                    Text(L("alarm.speakNoteIOS"))
+                }
+                Section {
+                    Picker(L("alarm.pre"), selection: $item.preNotify) {
+                        ForEach(AlarmItem.preNotifyChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                        }
+                    }
+                } footer: {
+                    Text(L("alarm.preNote"))
                 }
                 // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
                 Section {
@@ -460,6 +512,9 @@ struct PomodoroView: View {
     @AppStorage("pomo.task") private var task = ""
     @AppStorage("pomo.noise") private var noise = "off"
     @AppStorage("pomo.vol") private var volume = 40
+    // Günlük hedef ve etiket (rakip analizi #27)
+    @AppStorage("pomo.goal") private var goal = 4
+    @AppStorage("pomo.tag") private var tag = "none"
     @State private var log = PomoLog.load()
 
     private var phaseSeconds: Double { Double((phase == "work" ? workMin : phase == "short" ? shortMin : longMin) * 60) }
@@ -491,6 +546,11 @@ struct PomodoroView: View {
                         }
                     }
                     Text(T("tools.pomodoro.completed", done)).font(.footnote).foregroundStyle(Theme.muted)
+                    let todayCount = log.filter { $0.d == BadgeStore.day(context.date) }.count
+                    Text(todayCount >= goal ? L("tools.pomodoro.goalDone") + " · " + T("tools.pomodoro.goalProgress", todayCount, goal)
+                         : T("tools.pomodoro.goalProgress", todayCount, goal))
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(todayCount >= goal ? Theme.accent : Theme.muted)
                     Button(L("tools.pomodoro.reset")) {
                         cancelAlarm()
                         end = 0; left = 0; phase = "work"; round = 1; done = 0
@@ -501,6 +561,10 @@ struct PomodoroView: View {
                         TextField(L("tools.pomodoro.taskPlaceholder"), text: Binding(get: { task }, set: { task = String($0.prefix(60)) }))
                             .textFieldStyle(.roundedBorder)
                             .submitLabel(.done)
+                        Picker(L("tools.pomodoro.tagLabel"), selection: $tag) {
+                            ForEach(PomoLog.tags, id: \.self) { Text(L("tools.pomodoro.tags.\($0)")).tag($0) }
+                        }
+                        .pickerStyle(.segmented)
                     }
                     PomoTodoCard(current: $task).id(log.count) // tur bitince sayaçlar yeniden okunur
                     VStack(alignment: .leading, spacing: 8) {
@@ -519,10 +583,11 @@ struct PomodoroView: View {
                             Stepper("\(L("tools.pomodoro.shortMin")): \(shortMin)", value: $shortMin, in: 1...30)
                             Stepper("\(L("tools.pomodoro.longMin")): \(longMin)", value: $longMin, in: 5...60, step: 5)
                             Stepper("\(L("tools.pomodoro.roundsLabel")): \(rounds)", value: $rounds, in: 2...8)
+                            Stepper("\(L("tools.pomodoro.goalLabel")): \(goal)", value: $goal, in: 1...24)
                         }
                     }
                     .themedBackground()
-                    .frame(height: 280)
+                    .frame(height: 330)
                     .scrollDisabled(true)
                 }
                 .padding(.horizontal, 20)
@@ -565,7 +630,7 @@ struct PomodoroView: View {
                 done += 1
                 BadgeStore.shared.hit(.pomodoro) // çalışma süresi sonuna kadar tamamlandı
                 // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
-                PomoLog.record(minutes: workMin, task: task, at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
+                PomoLog.record(minutes: workMin, task: task, tag: tag, at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
                 PomoTodo.save(PomoTodo.credit(PomoTodo.load(), task: task))
                 log = PomoLog.load()
             }

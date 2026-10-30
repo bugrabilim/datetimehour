@@ -15,12 +15,32 @@ import kotlin.math.sqrt
 object FocusLog {
     const val MAX = 1000
 
-    data class Entry(val d: String, val m: Int, val t: String)
+    /** g: etiket (rakip analizi #27): work, study, personal, other; boşsa etiketsiz */
+    data class Entry(val d: String, val m: Int, val t: String, val g: String = "")
     data class Sum(val n: Int, val m: Int)
     data class Stats(val today: Sum, val week: Sum, val total: Sum, val perDay: List<Int>, val top: List<Pair<String, Int>>)
 
     /** Yeni kaydı ekler, en eski kayıtları atar (en çok 1000); görev adı en çok 60 karakter */
     fun add(log: List<Entry>, e: Entry): List<Entry> = (log + e.copy(t = e.t.trim().take(60))).takeLast(MAX)
+
+    /** Üst üste çalışılan gün sayısı: seri bugün ya da dün biten günlerden geriye sayılır (sitedeki tools.js ile aynı) */
+    fun streak(log: List<Entry>, today: java.time.LocalDate): Int {
+        val have = log.map { it.d }.toHashSet()
+        var d = if (today.toString() in have) today else today.minusDays(1)
+        var n = 0
+        while (d.toString() in have) { n++; d = d.minusDays(1) }
+        return n
+    }
+
+    /** [since] gününden bu yana etiketlere göre dakika (etiketsizler "none"), çoktan aza; eşitlikte ilk görülen önce */
+    fun tags(log: List<Entry>, since: String): List<Pair<String, Int>> {
+        val m = LinkedHashMap<String, Int>()
+        for (e in log) if (e.d >= since) {
+            val k = e.g.ifBlank { "none" }
+            m[k] = (m[k] ?: 0) + e.m
+        }
+        return m.entries.sortedByDescending { it.value }.map { it.key to it.value }
+    }
 
     /** days: son 7 günün anahtarları, eskiden yeniye (sonuncusu bugün). Adsız görevler [noTask] adıyla toplanır. */
     fun stats(log: List<Entry>, days: List<String>, noTask: String): Stats {

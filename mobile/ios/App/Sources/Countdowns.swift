@@ -101,6 +101,7 @@ func quickTargets(_ today: CalendarDay) -> [(String, CalendarDay)] {
 struct CountdownsView: View {
     @State private var items = CountdownItem.load()
     @State private var editing: CountdownItem?
+    @State private var sharing: CountdownItem?
     @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
@@ -154,6 +155,10 @@ struct CountdownsView: View {
                         .environment(\.colorScheme, photo != nil ? .dark : colorScheme)
                         .contentShape(Rectangle())
                         .onTapGesture { editing = c }
+                        // Görsel kart olarak paylaş (rakip analizi #29)
+                        .contextMenu {
+                            Button { sharing = c } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
+                        }
                     }
                     SectionTitle(text: L("tools.countdown.quickHeading"))
                     ForEach(Array(quickTargets(today).enumerated()), id: \.offset) { _, pair in
@@ -177,6 +182,9 @@ struct CountdownsView: View {
                 }
                 .padding(.horizontal, 16)
             }
+        }
+        .sheet(item: $sharing) { item in
+            ShareCardSheet(title: item.label) { CountdownShareCard(item: item, now: Date()) }
         }
         .sheet(item: $editing) { item in
             CountdownEditor(item: item, isNew: !items.contains { $0.id == item.id }) { saved in

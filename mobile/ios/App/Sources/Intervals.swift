@@ -347,6 +347,21 @@ struct TimersView: View {
             .font(.title3)
             .foregroundStyle(Theme.accent)
             .buttonStyle(.borderless)
+            // +1 dk (rakip analizi #26): sayarken bitişi, duraklatılmışken kalanı uzatır; bittiyse 1 dakikalık yeniden başlar
+            Button(L("tools.countdown.addMinute")) {
+                if done {
+                    update(t.id) { var x = $0; x.total = 60_000; return start(x, 60_000) }
+                } else if t.running {
+                    cancel(t)
+                    update(t.id) { var x = $0; x.total += 60_000; return start(x, rem + 60_000) }
+                } else {
+                    update(t.id) { var x = $0; x.left += 60_000; x.total += 60_000; return x }
+                }
+            }
+            .font(.footnote.weight(.semibold))
+            .foregroundStyle(Theme.accent)
+            .buttonStyle(.borderless)
+            .padding(.leading, 10)
             Button {
                 cancel(t)
                 items.removeAll { $0.id == t.id }

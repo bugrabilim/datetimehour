@@ -8,6 +8,7 @@ struct PrayerTab: View {
     @AppStorage(LiveActivities.prayerKey) private var liveOn = false
     /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
     @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
+    @State private var sharing = false
 
     var body: some View {
         NavigationStack {
@@ -59,6 +60,11 @@ struct PrayerTab: View {
             .navigationTitle(L("tab.prayer"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                // Bugünün vakitlerini görsel kart olarak paylaş (rakip analizi #16)
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { sharing = true } label: { Image(systemName: "square.and.arrow.up") }
+                        .accessibilityLabel(L("share.prayer"))
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { showNotify = true } label: {
                         Image(systemName: notifyOn ? "bell.fill" : "bell")
@@ -67,6 +73,10 @@ struct PrayerTab: View {
                 }
             }
             .sheet(isPresented: $showNotify) { NotificationSettingsView() }
+            .sheet(isPresented: $sharing) {
+                let place = PlaceModel.shared.place, now = Date()
+                ShareCardSheet(title: L("share.prayer")) { PrayerShareCard(place: place, now: now) }
+            }
         }
     }
 
@@ -153,7 +163,7 @@ struct KerahatBox: View {
             let rows: [(String, Date, Date)] = [("israk", sr, sr + k), ("istiva", dh - k, dh), ("isfirar", mg - k, mg)]
             DisclosureGroup(isExpanded: $open) {
                 VStack(alignment: .leading, spacing: 8) {
-                    ForEach(rows, id: \.0) { row in
+                    ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
                         HStack {
                             Text(L("prayer.kerahatNames." + row.0))
                             Spacer()

@@ -10,6 +10,21 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class FocusSleepWakeTest {
+    /** Odak serisi ve etiketler (rakip analizi #27): bugün ya da dün biten seri; etiketsizler "none" */
+    @Test
+    fun focusStreakAndTags() {
+        val log = listOf(
+            FocusLog.Entry("2026-10-27", 25, "", "work"), FocusLog.Entry("2026-10-28", 25, "", "work"),
+            FocusLog.Entry("2026-10-29", 25, "", "study"), FocusLog.Entry("2026-10-29", 50, ""),
+        )
+        val today = java.time.LocalDate.of(2026, 10, 30)
+        assertEquals(3, FocusLog.streak(log, today)) // bugün yok, dünden geriye 3 gün
+        assertEquals(4, FocusLog.streak(log + FocusLog.Entry("2026-10-30", 25, ""), today))
+        assertEquals(0, FocusLog.streak(log, today.plusDays(2)))
+        assertEquals(listOf("work" to 50, "none" to 50, "study" to 25), FocusLog.tags(log, "2026-10-24")) // eşit dakikada ilk görülen önce
+        assertEquals(listOf("study" to 25, "none" to 50).sortedByDescending { it.second }, FocusLog.tags(log, "2026-10-29"))
+    }
+
     private val days = (24..30).map { "2026-10-$it" }
 
     @Test

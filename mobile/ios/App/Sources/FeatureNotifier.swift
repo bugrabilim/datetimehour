@@ -51,6 +51,10 @@ struct PlannedNotification {
     let body: String
     var thread = "feature"
     var sound: UNNotificationSound? = .default
+    /// Bildirim düğmeleri (ör. "Bu alarmı atla"), sessiz düzey ve ek bilgi
+    var category: String? = nil
+    var passive = false
+    var info: [String: String] = [:]
 }
 
 @MainActor
@@ -65,10 +69,11 @@ enum FeatureNotifier {
         if NotifyFeature.seasons.isOn { out += seasons(place: place, now: now) }
         if NotifyFeature.moon.isOn { out += moon(place: place, now: now) }
         if NotifyFeature.sun.isOn { out += sun(place: place, now: now, days: days) }
-        if NotifyFeature.dst.isOn { out += dst(now: now) }
+        if NotifyFeature.dst.isOn { out += dst(now: now) + worldDST(now: now) }
         if NotifyFeature.weather.isOn { out += await weather(place: place, now: now) }
         out += CountdownItem.reminders(now: now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
         if NotifyFeature.bedtime.isOn { out += SleepPlan.reminders(now: now, days: days) } // uyku planı kuruluysa
+        out += AlarmItem.preNotifications(now: now) // yaklaşan alarm (her alarm kendi ayarıyla)
         return out.filter { $0.fireAt > now }
     }
 
@@ -142,6 +147,21 @@ enum FeatureNotifier {
         return [PlannedNotification(id: "\(featurePrefix)dst-\(Int(t.timeIntervalSince1970))", fireAt: fire,
                                     title: T(delta > 0 ? "notify.n.dstForward" : "notify.n.dstBack", amount),
                                     body: Fmt.longDate(t))]
+    }
+
+    /// Dünya saatlerindeki şehirlerde saat değişmeden önceki akşam 20.00'de (telefonun saatiyle; rakip analizi #30).
+    /// Telefonun kendi değişimiyle aynı an ve aynı farkta olan şehir atlanır (o bildirim zaten var).
+    private static func worldDST(now: Date) -> [PlannedNotification] {
+        let keys = (UserDefaults.standard.string(forKey: "world") ?? City.defaultKeys).split(separator: ",").map(String.init)
+        let mine = TimeZone.current.nextDaylightSavingTimeTransition(after: now)
+        let cal = Calendar.current
+        return keys.compactMap { k in City.all.first { $0.key == k } }.compactMap { city in
+            guard let d = city.nextDST(after: now, days: 30), d.at != mine,
+                  let dayBefore = cal.date(byAdding: .day, value: -1, to: d.at),
+                  let fire = cal.date(bySettingHour: 20, minute: 0, second: 0, of: dayBefore) else { return nil }
+            return PlannedNotification(id: "\(featurePrefix)wdst-\(city.key)-\(Int(d.at.timeIntervalSince1970))", fireAt: fire,
+                                       title: T("world.dstTitle", city.displayName), body: city.dstNote(now: now, days: 30) ?? "")
+        }
     }
 
     /// Her sabah günün tahmini (önümüzdeki üç gün; liste her açılışta ve arka planda tazelenir).

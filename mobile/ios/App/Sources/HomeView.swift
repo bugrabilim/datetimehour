@@ -339,7 +339,7 @@ struct FullscreenClock: View {
                 .simultaneousGesture(MagnifyGesture().onChanged { v in
                     let start = scaleStart ?? scale
                     scaleStart = start
-                    scale = min(1, max(0.5, start * v.magnification))
+                    scale = min(1, max(0.5, start * Double(v.magnification)))
                 }.onEnded { _ in scaleStart = nil })
                 .overlay {
                     // Dokununca saat geri gelir

@@ -106,6 +106,9 @@ enum PrayerNotifier {
             content.body = p.body
             content.sound = p.sound
             content.threadIdentifier = p.thread
+            if let c = p.category { content.categoryIdentifier = c }
+            if p.passive { content.interruptionLevel = .passive }
+            if !p.info.isEmpty { content.userInfo = p.info }
             return UNNotificationRequest(identifier: p.id, content: content, trigger: trigger(at: p.fireAt))
         }
         if settings.enabled, let last = kept.last {
@@ -137,7 +140,23 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
+        MainActor.assumeIsolated { UNUserNotificationCenter.current().setNotificationCategories(AlarmPreNotify.categories) }
         return true
+    }
+
+    /// Yaklaşan alarm bildirimindeki "Bu alarmı atla"
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let info = response.notification.request.content.userInfo
+        if response.actionIdentifier == AlarmPreNotify.skipAction, let id = info["alarm"] as? String,
+           let at = (info["at"] as? String).flatMap(TimeInterval.init) {
+            Task { @MainActor in
+                await AlarmPreNotify.skip(alarmID: id, at: at)
+                completionHandler()
+            }
+            return
+        }
+        completionHandler()
     }
 
     /// Tam ekranda yön kilidi (OrientationLock)

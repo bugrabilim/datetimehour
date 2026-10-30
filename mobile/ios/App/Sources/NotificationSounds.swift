@@ -111,7 +111,7 @@ enum NotificationSounds {
     static func removeStale(keeping names: Set<String>) {
         let fm = FileManager.default
         guard let files = try? fm.contentsOfDirectory(atPath: directory.path) else { return }
-        for f in files where !names.contains(f) && !f.hasPrefix("\(version)-chime") {
+        for f in files where !names.contains(f) && !f.hasPrefix("\(version)-chime") && !f.hasPrefix(AlarmSpeech.prefix) {
             try? fm.removeItem(at: directory.appendingPathComponent(f))
         }
     }

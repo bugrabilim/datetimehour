@@ -19,6 +19,19 @@ struct City: Decodable, Identifiable, Hashable {
     var displayCountry: String { country[AppLocale.code] ?? country["en"] ?? "" }
     var zone: TimeZone { TimeZone(identifier: tz) ?? .current }
 
+    /// Sıradaki saat değişimi (`days` gün içindeyse): an ve fark (sn; ileri pozitif)
+    func nextDST(after now: Date, days: Double = 7) -> (at: Date, delta: Int)? {
+        guard let t = zone.nextDaylightSavingTimeTransition(after: now), t.timeIntervalSince(now) <= days * 86400 else { return nil }
+        let delta = zone.secondsFromGMT(for: t.addingTimeInterval(3600)) - zone.secondsFromGMT(for: t.addingTimeInterval(-3600))
+        return delta == 0 ? nil : (t, delta)
+    }
+
+    /// "2 Kasım: saatler 1 sa geri alınıyor" (şehrin yerel tarihiyle)
+    func dstNote(now: Date, days: Double = 7) -> String? {
+        guard let d = nextDST(after: now, days: days) else { return nil }
+        return T(d.delta > 0 ? "world.dstForward" : "world.dstBack", Fmt.dayMonth(d.at, tz: zone), Fmt.hm(seconds: abs(d.delta)))
+    }
+
     static let all: [City] = Bundle.main.url(forResource: "cities", withExtension: "json")
         .flatMap { try? Data(contentsOf: $0) }
         .flatMap { try? JSONDecoder().decode([City].self, from: $0) } ?? []
@@ -128,6 +141,10 @@ struct WorldClockView: View {
                 Text(diff == 0 ? L("client.diffSame") : T(diff > 0 ? "client.diffAhead" : "client.diffBehind", Fmt.hm(seconds: diff)))
                     .font(.caption)
                     .foregroundStyle(Theme.muted)
+                // Yaz saati uyarısı (rakip analizi #30): şehirde 7 gün içinde saat değişiyorsa
+                if let note = city.dstNote(now: date) {
+                    Label(note, systemImage: "clock.arrow.2.circlepath").font(.caption2).foregroundStyle(Theme.accent)
+                }
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 2) {
@@ -364,7 +381,7 @@ struct SeasonsView: View {
         let rows: [(String, String, String)] = [("nature.blueAm", "🔵", span(l.blueAm)), ("nature.goldenAm", "🟠", span(l.goldenAm)),
                                                 ("nature.goldenPm", "🟠", span(l.goldenPm)), ("nature.bluePm", "🔵", span(l.bluePm))]
         return VStack(alignment: .leading, spacing: 8) {
-            ForEach(rows, id: \.0) { row in
+            ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
                 HStack {
                     Text(row.1 + " " + L(row.0))
                     Spacer()

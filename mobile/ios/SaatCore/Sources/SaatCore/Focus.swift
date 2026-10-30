@@ -9,7 +9,32 @@ public enum FocusLog {
         public var d: String
         public var m: Int
         public var t: String
-        public init(d: String, m: Int, t: String) { self.d = d; self.m = m; self.t = t }
+        /// Etiket (rakip analizi #27): work, study, personal, other; yoksa nil
+        public var g: String?
+        public init(d: String, m: Int, t: String, g: String? = nil) { self.d = d; self.m = m; self.t = t; self.g = g }
+    }
+
+    /// Üst üste çalışılan gün sayısı: seri bugün ya da dün biten günlerden geriye sayılır (sitedeki tools.js ile aynı)
+    public static func streak(_ log: [Entry], today: CalendarDay) -> Int {
+        let have = Set(log.map(\.d))
+        var d = have.contains(today.iso) ? today : today.adding(days: -1)
+        var n = 0
+        while have.contains(d.iso) { n += 1; d = d.adding(days: -1) }
+        return n
+    }
+
+    /// `since` gününden bu yana etiketlere göre dakika (etiketsizler "none"), çoktan aza; eşitlikte ilk görülen önce
+    public static func tags(_ log: [Entry], since: String) -> [(tag: String, minutes: Int)] {
+        var order: [String] = []
+        var m: [String: Int] = [:]
+        for e in log where e.d >= since {
+            let k = e.g ?? "none"
+            if m[k] == nil { order.append(k) }
+            m[k, default: 0] += e.m
+        }
+        return order.enumerated().sorted { a, b in
+            m[a.element]! != m[b.element]! ? m[a.element]! > m[b.element]! : a.offset < b.offset
+        }.map { (tag: $0.element, minutes: m[$0.element]!) }
     }
 
     public struct Sum: Equatable, Sendable {

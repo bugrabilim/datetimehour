@@ -36,10 +36,16 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var code = ""
     /// Uyanma denetimi: kapattıktan 5 dk sonra "Uyanık mısınız?"; cevap gelmezse yeniden çalar
     var wakeCheck = false
+    /// Çalmadan bu kadar dakika önce sessiz "yaklaşan alarm" bildirimi, içinden atlanabilir (0 = kapalı; rakip analizi #19).
+    /// Yeni alarmda 30, önceki sürümden gelen alarmda kapalı.
+    var preNotify = 30
+    /// Çalarken saati sesli söyler (rakip analizi #20; iOS'ta saati söyleyen ses dosyası alarm sesi olur)
+    var speak = false
 
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
     static let snoozeMaxChoices = [0, 1, 2, 3, 5]
     static let sunriseChoices = [0, 10, 20, 30]
+    static let preNotifyChoices = [0, 15, 30, 60]
     static let riseSound = "alarm-rise.caf"
     static let weekdays = [1, 2, 3, 4, 5]
 
@@ -48,7 +54,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -68,6 +74,8 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         taskLevel = try c.decodeIfPresent(Int.self, forKey: .taskLevel) ?? 2
         code = try c.decodeIfPresent(String.self, forKey: .code) ?? ""
         wakeCheck = try c.decodeIfPresent(Bool.self, forKey: .wakeCheck) ?? false
+        preNotify = try c.decodeIfPresent(Int.self, forKey: .preNotify) ?? 0
+        speak = try c.decodeIfPresent(Bool.self, forKey: .speak) ?? false
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -195,6 +203,27 @@ struct AlarmItem: Codable, Identifiable, Hashable {
             .min { $0.0 < $1.0 }
     }
 
+    /// Yaklaşan alarm bildirimleri (sessiz, "Bu alarmı atla" düğmeli): her alarmın sıradaki üç çalması için; özellik
+    /// bildirimleriyle aynı listede kurulur (PrayerNotifier.reschedule)
+    @MainActor static func preNotifications(now: Date) -> [PlannedNotification] {
+        load().filter { $0.enabled && $0.preNotify > 0 }.flatMap { item -> [PlannedNotification] in
+            var out: [PlannedNotification] = []
+            var t = item.next(after: now)
+            while let at = t, out.count < 3 {
+                let fire = at.addingTimeInterval(-Double(item.preNotify * 60))
+                if fire > now {
+                    out.append(PlannedNotification(
+                        id: "\(FeatureNotifier.featurePrefix)alarmpre-\(item.id.uuidString)-\(Int(at.timeIntervalSince1970) / 60)",
+                        fireAt: fire, title: T("alarm.preTitle", Fmt.time(at)), body: item.title + " · " + L("alarm.preBody"),
+                        thread: "alarm", sound: nil, category: AlarmPreNotify.category,
+                        passive: true, info: ["alarm": item.id.uuidString, "at": String(at.timeIntervalSince1970)]))
+                }
+                t = item.next(after: at.addingTimeInterval(60))
+            }
+            return out
+        }
+    }
+
     static let storeKey = "alarms"
     static func load() -> [AlarmItem] {
         guard let data = UserDefaults.standard.data(forKey: storeKey) else { return [] }
@@ -202,6 +231,44 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     }
     static func save(_ items: [AlarmItem]) {
         UserDefaults.standard.set(try? JSONEncoder().encode(items), forKey: storeKey)
+    }
+}
+
+/// Yaklaşan alarm bildiriminin "Bu alarmı atla" düğmesi (AppDelegate didReceive)
+@MainActor
+enum AlarmPreNotify {
+    static let category = "alarmpre"
+    static let skipAction = "skip"
+
+    static var categories: Set<UNNotificationCategory> {
+        [UNNotificationCategory(identifier: category,
+                                actions: [UNNotificationAction(identifier: skipAction, title: L("alarm.preSkip"), options: [])],
+                                intentIdentifiers: [])]
+    }
+
+    /// Bildirimdeki alarmın o çalmasını atlar
+    static func skip(alarmID: String, at: TimeInterval) async {
+        var items = AlarmItem.load()
+        guard let i = items.firstIndex(where: { $0.id.uuidString == alarmID }) else { return }
+        items[i].skipUntil = Date(timeIntervalSince1970: at + 60)
+        AlarmItem.save(items)
+        await AlarmCenter.sync(items)
+        await PrayerNotifier.reschedule()
+    }
+}
+
+/// Alarmda saatin sesli söylenmesi (rakip analizi #20): AlarmKit çalarken uygulama kod çalıştıramadığı için zil ve
+/// "Saat 07:00" konuşması telefonda bir kez ses dosyasına yazılır (Library/Sounds) ve alarm sesi olarak verilir.
+@MainActor
+enum AlarmSpeech {
+    static let prefix = "alarm-say-"
+    static func fileName(_ item: AlarmItem) -> String {
+        "\(prefix)\(AppLocale.code)-\(String(format: "%02d%02d", item.hour, item.minute)).caf"
+    }
+    static func sound(for item: AlarmItem) async -> String? {
+        guard item.speak else { return nil }
+        let name = fileName(item)
+        return await NotificationSounds.make(name: name, text: T("alarm.speakText", item.timeText)) ? name : nil
     }
 }
 
@@ -234,7 +301,11 @@ enum AlarmCenter {
             let content = UNMutableNotificationContent()
             content.title = item.title
             content.body = item.timeText
-            content.sound = item.rise ? UNNotificationSound(named: UNNotificationSoundName(AlarmItem.riseSound)) : .default
+            if let say = await AlarmSpeech.sound(for: item) {
+                content.sound = UNNotificationSound(named: UNNotificationSoundName(say))
+            } else {
+                content.sound = item.rise ? UNNotificationSound(named: UNNotificationSoundName(AlarmItem.riseSound)) : .default
+            }
             if item.days.isEmpty || (item.days.count == 7 && item.plan().days.count == 7) {
                 var c = DateComponents()
                 c.hour = item.hour
@@ -319,6 +390,8 @@ enum KitAlarms {
         var rise = false
         /// Kapatma görevi ve uyanma denetimi: Durdur uygulamayı açar (AlarmStopIntent)
         var wake: PendingWakeTask?
+        /// Saati söyleyen ses dosyası (Library/Sounds; AlarmSpeech)
+        var soundName: String?
 
         init(snooze: Int = 0, remaining: Int = -1, rise: Bool = false) {
             self.snooze = snooze
@@ -357,7 +430,7 @@ enum KitAlarms {
             stopIntent: options.wake.map { AlarmStopIntent(alarmID: id.uuidString, wake: $0) },
             secondaryIntent: options.canSnooze
                 ? SnoozeAlarmIntent(minutes: options.snooze, label: title, remaining: options.remaining, rise: options.rise, wake: options.wake) : nil,
-            sound: options.rise ? .named(AlarmItem.riseSound) : .default)
+            sound: options.soundName.map { .named($0) } ?? (options.rise ? .named(AlarmItem.riseSound) : .default))
     }
 
     private static func weekday(_ iso: Int) -> Locale.Weekday {
@@ -372,6 +445,8 @@ enum KitAlarms {
         var scheduled: [String] = []
         let now = Date()
         for item in items where item.enabled {
+            var options = Options(item)
+            options.soundName = await AlarmSpeech.sound(for: item)
             let time = Alarm.Schedule.Relative.Time(hour: item.hour, minute: item.minute)
             let skipping = (item.skipUntil ?? .distantPast) > now
             if item.days.isEmpty {
@@ -379,7 +454,7 @@ enum KitAlarms {
                 let schedule: Alarm.Schedule = skipping
                     ? .fixed(item.next(after: now) ?? now)
                     : .relative(.init(time: time, repeats: .never))
-                if (try? await manager.schedule(id: item.id, configuration: config(schedule, id: item.id, title: item.title, options: Options(item)))) != nil {
+                if (try? await manager.schedule(id: item.id, configuration: config(schedule, id: item.id, title: item.title, options: options))) != nil {
                     scheduled.append(item.id.uuidString)
                 }
                 continue
@@ -389,14 +464,14 @@ enum KitAlarms {
             let plan = item.plan(now: now)
             for later in plan.fixed {
                 let extra = UUID()
-                if (try? await manager.schedule(id: extra, configuration: config(.fixed(later), id: extra, title: item.title, options: Options(item)))) != nil {
+                if (try? await manager.schedule(id: extra, configuration: config(.fixed(later), id: extra, title: item.title, options: options))) != nil {
                     scheduled.append(extra.uuidString)
                 }
             }
             let days = plan.days
             guard !days.isEmpty else { continue }
             let schedule = Alarm.Schedule.relative(.init(time: time, repeats: .weekly(days.map(weekday))))
-            if (try? await manager.schedule(id: item.id, configuration: config(schedule, id: item.id, title: item.title, options: Options(item)))) != nil {
+            if (try? await manager.schedule(id: item.id, configuration: config(schedule, id: item.id, title: item.title, options: options))) != nil {
                 scheduled.append(item.id.uuidString)
             }
         }

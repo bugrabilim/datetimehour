@@ -1,6 +1,30 @@
 import AVFoundation
 import SwiftUI
+import UniformTypeIdentifiers
 import SaatCore
+
+/// CSV dosyası paylaşımı (rakip analizi #28: kronometre turları, pomodoro geçmişi). Excel Türkçe karakterleri doğru açsın
+/// diye UTF-8 BOM ile; dosya paylaşılırken geçici klasörde üretilir.
+struct CSVFile: Transferable {
+    let name: String
+    let rows: [[String]]
+
+    var text: String {
+        rows.map { $0.map(Self.escape).joined(separator: ",") }.joined(separator: "\r\n") + "\r\n"
+    }
+
+    static func escape(_ v: String) -> String {
+        v.contains(where: { ",\"\n\r;".contains($0) }) ? "\"" + v.replacingOccurrences(of: "\"", with: "\"\"") + "\"" : v
+    }
+
+    static var transferRepresentation: some TransferRepresentation {
+        FileRepresentation(exportedContentType: .commaSeparatedText) { f in
+            let url = FileManager.default.temporaryDirectory.appendingPathComponent(f.name)
+            try Data(("\u{FEFF}" + f.text).utf8).write(to: url, options: .atomic)
+            return SentTransferredFile(url)
+        }
+    }
+}
 
 /* Pomodoro istatistikleri ve arka plan sesi (30 Ekim 2026, rakip analizi #16; sitedeki pomodoroyla aynı tasarım) ve
    uyku sesleri (#17) için ortak ses çalar. Kayıt "pomo.log" (JSON, sitedeki sth-pomo-log biçimi), yalnız telefonda. */
@@ -17,9 +41,17 @@ enum PomoLog {
         if let d = try? JSONEncoder().encode(log) { UserDefaults.standard.set(String(decoding: d, as: UTF8.self), forKey: key) }
     }
 
-    /// Tamamlanan çalışma turu (çalışmanın bittiği yerel güne yazılır)
-    static func record(minutes: Int, task: String, at: Date) {
-        save(FocusLog.add(load(), .init(d: BadgeStore.day(at), m: minutes, t: task)))
+    /// Tamamlanan çalışma turu (çalışmanın bittiği yerel güne yazılır); etiket "none" ise yazılmaz
+    static func record(minutes: Int, task: String, tag: String = "none", at: Date) {
+        save(FocusLog.add(load(), .init(d: BadgeStore.day(at), m: minutes, t: task, g: tag == "none" ? nil : tag)))
+    }
+
+    /// Etiketler (sitedeki pomodoroyla aynı)
+    static let tags = ["none", "work", "study", "personal", "other"]
+
+    static func csv(_ log: [FocusLog.Entry]) -> CSVFile {
+        CSVFile(name: "pomodoro-\(BadgeStore.day(Date())).csv",
+                rows: [["date", "minutes", "task", "tag"]] + log.map { [$0.d, String($0.m), $0.t, $0.g ?? ""] })
     }
 
     /// Son 7 günün anahtarları, eskiden yeniye
@@ -225,8 +257,14 @@ struct FocusStatsCard: View {
     var body: some View {
         let days = PomoLog.lastDays()
         let s = FocusLog.stats(log, days: days, noTask: L("tools.pomodoro.noTask"))
+        let streak = FocusLog.streak(log, today: CalendarDay(Date()))
+        let tags = FocusLog.tags(log, since: days[0])
         VStack(alignment: .leading, spacing: 12) {
             SectionTitle(text: L("tools.pomodoro.statsHeading"))
+            // Odak serisi (rakip analizi #27): bugün ya da dün biten üst üste gün
+            if streak >= 2 {
+                Label(T("tools.pomodoro.streak", streak), systemImage: "flame").font(.subheadline.weight(.semibold)).foregroundStyle(Theme.accent)
+            }
             if log.isEmpty {
                 Text(L("tools.pomodoro.empty")).font(.subheadline).foregroundStyle(Theme.muted)
             } else {
@@ -246,8 +284,26 @@ struct FocusStatsCard: View {
                         .font(.subheadline)
                     }
                 }
-                Button(L("tools.pomodoro.clear"), role: .destructive) { confirm = true }
-                    .font(.subheadline)
+                // Etiketlere göre son 7 gün (yalnız etiket kullanıldıysa)
+                if tags.count > 1 || tags.first?.tag != "none", !tags.isEmpty {
+                    Text(L("tools.pomodoro.byTag")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.text)
+                    ForEach(Array(tags.enumerated()), id: \.offset) { _, t in
+                        HStack {
+                            Text(L("tools.pomodoro.tags.\(t.tag)"))
+                            Spacer()
+                            Text(verbatim: "\(t.minutes) \(L("tools.pomodoro.minUnit"))").monospacedDigit().foregroundStyle(Theme.muted)
+                        }
+                        .font(.subheadline)
+                    }
+                }
+                HStack {
+                    ShareLink(item: PomoLog.csv(log), preview: SharePreview("pomodoro.csv")) {
+                        Label(L("csv.pomo"), systemImage: "square.and.arrow.up")
+                    }
+                    Spacer()
+                    Button(L("tools.pomodoro.clear"), role: .destructive) { confirm = true }
+                }
+                .font(.subheadline)
             }
         }
         .card()
