@@ -464,8 +464,12 @@ struct AlarmStopIntent: LiveActivityIntent {
     }
 
     func perform() async throws -> some IntentResult {
-        if let id = UUID(uuidString: alarmID) { try? AlarmManager.shared.stop(id: id) }
-        if let p = try? JSONDecoder().decode(PendingWakeTask.self, from: Data(wake.utf8)) { await WakeTasks.stopped(p) }
+        let id = UUID(uuidString: alarmID)
+        let p = try? JSONDecoder().decode(PendingWakeTask.self, from: Data(wake.utf8))
+        await MainActor.run {
+            if let id { try? AlarmManager.shared.stop(id: id) }
+        }
+        if let p { await WakeTasks.stopped(p) }
         return .result()
     }
 }
