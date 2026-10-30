@@ -302,7 +302,7 @@ struct FullscreenClock: View {
                     if a { NoisePlayer.shared.stop(source: "sleep") }
                 }
                 .environment(\.colorScheme, sunrise > 0.6 ? .light : (night || darkText || sunrise > 0 ? .dark : colorScheme))
-                .modifier(NightBrightness(target: asleep ? 0.01 : (sunrise > 0 ? SunriseLight.brightness(sunrise) : (night ? 0.05 : nil))))
+                .modifier(NightBrightness(target: asleep ? CGFloat(0.01) : (sunrise > 0 ? CGFloat(SunriseLight.brightness(sunrise)) : (night ? CGFloat(0.05) : nil))))
             }
         }
         .onTapGesture(count: 2) { dismiss() }
