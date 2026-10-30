@@ -26,7 +26,9 @@ final class OneShotLocation: NSObject, CLLocationManagerDelegate {
         }
         let status = manager.authorizationStatus
         guard status == .authorizedWhenInUse || status == .authorizedAlways else { return nil }
+        #if !os(watchOS)
         if forWidget && !manager.isAuthorizedForWidgetUpdates { return nil }
+        #endif
         if let last = manager.location, -last.timestamp.timeIntervalSinceNow < 30 * 60 { return last }
         return await withCheckedContinuation { c in
             locWait = c

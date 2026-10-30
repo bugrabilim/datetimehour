@@ -45,7 +45,7 @@ struct WatchPrayerProvider: AppIntentTimelineProvider {
 
     func recommendations() -> [AppIntentRecommendation<ProvinceIntent>] {
         ProvinceEntity.all.map { e in
-            let i = ProvinceIntent()
+            var i = ProvinceIntent()
             i.province = e
             return AppIntentRecommendation(intent: i, description: e.name)
         }
