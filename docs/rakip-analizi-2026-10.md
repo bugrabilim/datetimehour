@@ -59,6 +59,22 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 **Konumlanma notu (sahibin düzeltmesiyle, 30 Ekim 2026):** En güçlü doğrudan namaz rakibi **Vakit** (Hakan Çelik). Ücretsiz ve reklamsız; Apple Watch, Mac, Live Activity, 12 hesap yöntemi ve 25 dil var. Ona karşı farkımız fiyat değil, **yalnız namaz uygulaması olmayışımız**: saat (19 model, tam ekran), dünya saatleri ve küre, takvim, hava, mevsimler ve araçlar tek uygulamada. Masa, flip ve alarm kategorilerinde rakiplerin çoğu reklamlı ya da abonelikli; orada "ücretsiz, reklamsız" da belirgin bir farktır.
 
+## Kalanlar (sekizinci turdan sonra, 30 Ekim 2026)
+
+Birleşik tablonun 28 maddesi ve "bilerek yok" başlıkları yapıldı. Aşağıdakiler grup ayrıntılarındaki (ajan raporları) satırlardan henüz yapılmamış olanlardır; ajan raporlarının "Bizde" sütunu tur öncesini gösterir, güncel durum buradadır. Çaba: K küçük, O orta, B büyük.
+
+**Namaz ve dini:** birden çok hesap yöntemi ve Hanefi ikindisi (yurt dışı için, O); kerahat vakti (K); Hicri–Miladi çevirici, site ve uygulama (K); vakti gerçek alarm olarak kurma, sessizde çalar (O); vakitte telefonu sessize alma, Android (O); başka ezan sesleri (B, açık lisanslı kayıt bulmak zor); Esmaü'l-Hüsna, hadis, namaz rehberi (O, metin kaynağı ve lisans); fitre (K, Diyanet her yıl açıklar, elle güncellenir); takvim yaprağı ve günün sözü (O, içerik lisansı); vakit/dini gün paylaşım kartı (K); vakit ekranında Güneş/Ay yayı (K–O); altın ve mavi saat (K); hilal görünürlüğü (O); Mac menü çubuğu (B).
+
+**Alarm ve uyku:** çalarken uygulamayı kapatma/silme engeli, Android (K); kaydırarak durdur (K); esnek tekrar: belirli tarih, iki haftada bir, bitiş tarihi (O); çalmadan önce bildirim ve erken uyanınca kapat (K); hızlı alarm "X dk sonra" (K); alarmda saatin sesli okunması (K); başka görev türleri: hafıza, yazma, fotoğraf (O); konuma ya da takvime bağlı alarm (B); iOS'ta müzikle alarm (B, AlarmKit kısıtı); sabah günlüğü (O).
+
+**Saat, görünüm, widget:** kaydırarak karartma, saat boyutu, yön kilidi (K); etkileşimli widget ve iOS Denetim Merkezi düğmeleri (O); Wear OS kadranı, Watch Face Format (O); Apple TV, Android TV, yerel Mac, Vision Pro (B); yüzen saat, PiP (O); saat ekranında pil ve sıradaki alarm alanı (K); havaya göre hareketli arka plan (O); fotoğraf slaytı ve kişisel metin (K).
+
+**Zamanlayıcı ve odak:** çalışırken süre ekleme (K); birden çok kronometre (O); tur ve odak geçmişini CSV'ye aktarma (K); zamanlayıcı geçmişi ve çok adımlı rutin şablonları (O); Apple Sağlık / Health Connect kaydı (O); odak serisi, günlük hedef, etiket (K); uygulama/site engelleme (B, Ekran Süresi API'si); geri sayımı görsel kart olarak paylaşma (K); uygulamada toplantı planlayıcı (O); dünya saatleri listesindeki şehirler için yaz saati uyarısı (K).
+
+**Site:** Hicri çevirici (K); saat hesaplama, saat:dakika topla/çıkar (K); ayrı "kaç gün kaldı / kaç gün oldu" sayfaları (K); sitede alarm sesi seçimi, aralık zamanlayıcı, satranç saati, metronom, konuşan saat (her biri K); kronometre turlarını CSV'ye aktarma (K); 14 günlük hava tahmini (K, Open-Meteo 16 güne kadar veriyor); Ay evresi ve tutulmaları .ics olarak (K); sitede yazı tipi/renk ayarı (K); gece gökyüzü, gezegenler, Ay uzaklığı (O); tutulma haritası (O); "tarihte bugün" (O, içerik lisansı); burç ve emeklilik hesaplama (K–O); daha çok dil (O–B, çeviri); saat dilimi haberleri/bülten (B, sürekli iş).
+
+**Bilerek yok ya da kararla kapsam dışı:** uyku takibi, horlama kaydı, uyku evresine göre akıllı alarm (mikrofon/hareket, gizlilik); sitede hesap ve üyelik (standart madde 7 uygulanmaz); 81 il saat sayfaları (kopya içerik riski); saat dilimi haritası/küre (sahibin kararıyla 30 Ekim 2026'da kaldırıldı); namaz serileri ve ibadet rozeti (inanç ele vermemek için); ekip planlama ve toplantı oylaması (hesap gerektirir); Spotify/YouTube alarm sesleri (dış hesap).
+
 ## 2. Grup ayrıntıları (ajan raporları)
 
 ## Alarm ve uyanma uygulamaları (ajan raporu, 30 Ekim 2026)
@@ -211,7 +227,7 @@ Not: timeanddate.com 403 döndü (yardım sayfaları ve arama sonuçlarıyla). T
 | Köprü tatil / izin planı ("kaç gün izinle kaç gün tatil") | tatilsepeti (tablo), haber siteleri (makale); etkileşimli araç yok | yok | ücretsiz | tatilsepeti.com/resmi-tatil-gunleri |
 | İndirilebilir tatil takvimi görseli | jibble, turna (doğrulanamadı) | kısmen (imsakiye görseli) | ücretsiz | jibble.io/tr |
 | Hesapla ayar/favori eşitleme | worldtimebuddy, time.is, worldtimeserver | uygulamalarda hesapsız eşitleme (iCloud, Android yedeği); sitede yok | ücretsiz üyelik | worldtimebuddy.com |
-| Tarayıcı uzantısı | worldtimebuddy, onlinealarmkur, timer-tab | yok | ücretsiz | addons.opera.com (onlinealarmkur) |
+| Tarayıcı uzantısı | worldtimebuddy, onlinealarmkur, timer-tab | **yapıldı** (`extension/`, Chrome/Edge/Firefox; mağaza yayını sahibin kararıyla) | ücretsiz | addons.opera.com (onlinealarmkur) |
 | Çok dil | time.is 58, onlinealarmkur 32, 24timezones 12 | kısmen (5 dil) | ücretsiz | time.is |
 | API/veri hizmeti | timeanddate API, worldtimeserver | **yapıldı** (statik açık veri `/api/v1/`, ücretsiz) | ücretli | timeanddate.com/services/api |
 
