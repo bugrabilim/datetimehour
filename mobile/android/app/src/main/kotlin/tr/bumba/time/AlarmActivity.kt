@@ -197,6 +197,7 @@ fun MorningCard(onDone: () -> Unit) {
                 for (e in events) Text(e, color = Theme.c.text, fontSize = 16.sp)
             }
         }
+        JournalMorningCard()
         Spacer(Modifier.height(8.dp))
         RoundButton(L("common.done"), true, Modifier.fillMaxWidth(), onDone)
     }

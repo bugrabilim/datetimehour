@@ -16,6 +16,8 @@ struct ToolsTab: View {
                     row(.stopwatch, L("tools.hub.cards.stopwatch.name"), "stopwatch")
                     row(.pomodoro, L("tools.hub.cards.pomodoro.name"), "leaf")
                     row(.sleep, L("sleep.title"), "bed.double")
+                    row(.journal, L("journal.title"), "sun.horizon")
+                    row(.planner, L("planner.h1"), "person.2.wave.2")
                     row(.datecalc, L("tools.hub.cards.datecalc.name"), "calendar.badge.clock")
                 }
                 Section {
@@ -42,6 +44,8 @@ struct ToolsTab: View {
                 case .stopwatch: StopwatchView()
                 case .pomodoro: PomodoroView()
                 case .sleep: SleepView()
+                case .journal: JournalView()
+                case .planner: MeetingPlannerView()
                 case .datecalc: DateCalcView()
                 case .settings: SettingsView()
                 case .about: AboutView()

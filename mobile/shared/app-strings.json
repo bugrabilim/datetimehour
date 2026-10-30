@@ -5452,5 +5452,152 @@
     "de": "Verlauf löschen",
     "az": "Tarixçəni təmizlə",
     "ar": "مسح السجل"
+  },
+  "journal.title": {
+    "tr": "Sabah günlüğü",
+    "en": "Morning journal",
+    "de": "Morgentagebuch",
+    "az": "Səhər gündəliyi",
+    "ar": "يوميات الصباح"
+  },
+  "journal.mood": {
+    "tr": "Bugün nasıl hissediyorsunuz?",
+    "en": "How do you feel today?",
+    "de": "Wie fühlen Sie sich heute?",
+    "az": "Bu gün özünüzü necə hiss edirsiniz?",
+    "ar": "كيف تشعر اليوم؟"
+  },
+  "journal.sleep": {
+    "tr": "Nasıl uyudunuz?",
+    "en": "How did you sleep?",
+    "de": "Wie haben Sie geschlafen?",
+    "az": "Necə yatdınız?",
+    "ar": "كيف كان نومك؟"
+  },
+  "journal.level.1": {
+    "tr": "Çok kötü",
+    "en": "Very bad",
+    "de": "Sehr schlecht",
+    "az": "Çox pis",
+    "ar": "سيئ جدًا"
+  },
+  "journal.level.2": {
+    "tr": "Kötü",
+    "en": "Bad",
+    "de": "Schlecht",
+    "az": "Pis",
+    "ar": "سيئ"
+  },
+  "journal.level.3": {
+    "tr": "Orta",
+    "en": "Okay",
+    "de": "Geht so",
+    "az": "Orta",
+    "ar": "مقبول"
+  },
+  "journal.level.4": {
+    "tr": "İyi",
+    "en": "Good",
+    "de": "Gut",
+    "az": "Yaxşı",
+    "ar": "جيد"
+  },
+  "journal.level.5": {
+    "tr": "Çok iyi",
+    "en": "Great",
+    "de": "Sehr gut",
+    "az": "Çox yaxşı",
+    "ar": "ممتاز"
+  },
+  "journal.intention": {
+    "tr": "Bugünün niyeti",
+    "en": "Today's intention",
+    "de": "Vorsatz für heute",
+    "az": "Bu günün niyyəti",
+    "ar": "نية اليوم"
+  },
+  "journal.intentionHint": {
+    "tr": "Örn. Yürüyüşe çıkmak",
+    "en": "e.g. Go for a walk",
+    "de": "z. B. Spazieren gehen",
+    "az": "Məs. Gəzintiyə çıxmaq",
+    "ar": "مثلًا: الخروج للمشي"
+  },
+  "journal.note": {
+    "tr": "Not",
+    "en": "Note",
+    "de": "Notiz",
+    "az": "Qeyd",
+    "ar": "ملاحظة"
+  },
+  "journal.recent": {
+    "tr": "Son 14 gün",
+    "en": "Last 14 days",
+    "de": "Letzte 14 Tage",
+    "az": "Son 14 gün",
+    "ar": "آخر 14 يومًا"
+  },
+  "journal.history": {
+    "tr": "Önceki günler",
+    "en": "Earlier days",
+    "de": "Frühere Tage",
+    "az": "Əvvəlki günlər",
+    "ar": "الأيام السابقة"
+  },
+  "journal.empty": {
+    "tr": "Henüz kayıt yok.",
+    "en": "No entries yet.",
+    "de": "Noch keine Einträge.",
+    "az": "Hələ qeyd yoxdur.",
+    "ar": "لا توجد إدخالات بعد."
+  },
+  "journal.clear": {
+    "tr": "Günlüğü sil",
+    "en": "Delete journal",
+    "de": "Tagebuch löschen",
+    "az": "Gündəliyi sil",
+    "ar": "حذف اليوميات"
+  },
+  "journal.clearConfirm": {
+    "tr": "Bütün günlük kayıtları silinsin mi?",
+    "en": "Delete all journal entries?",
+    "de": "Alle Tagebucheinträge löschen?",
+    "az": "Bütün gündəlik qeydləri silinsin?",
+    "ar": "هل تريد حذف جميع إدخالات اليوميات؟"
+  },
+  "journal.privacy": {
+    "tr": "Günlük yalnız cihazlarınızda saklanır: bu telefonda ve iCloud ile eşitleme açıksa Apple hesabınızdaki cihazlarda. Hiçbir sunucuya gönderilmez.",
+    "en": "The journal stays on your devices: this phone and, if iCloud sync is on, the devices on your Apple Account. It is never sent to a server.",
+    "de": "Das Tagebuch bleibt auf Ihren Geräten: auf diesem Telefon und, wenn die iCloud-Synchronisierung an ist, auf den Geräten Ihres Apple Accounts. Es wird nie an einen Server gesendet.",
+    "az": "Gündəlik yalnız cihazlarınızda saxlanılır: bu telefonda və iCloud ilə eyniləşdirmə açıqdırsa, Apple hesabınızdakı cihazlarda. Heç bir serverə göndərilmir.",
+    "ar": "تبقى اليوميات على أجهزتك فقط: هذا الهاتف، والأجهزة المرتبطة بحساب Apple إذا كانت مزامنة iCloud مفعّلة. لا تُرسل إلى أي خادم."
+  },
+  "journal.privacyAndroid": {
+    "tr": "Günlük yalnız bu telefonda (ve telefonun Google yedeğinde) saklanır; hiçbir sunucumuza gönderilmez.",
+    "en": "The journal stays on this phone (and in the phone's Google backup); it is never sent to our servers.",
+    "de": "Das Tagebuch bleibt auf diesem Telefon (und in seiner Google-Sicherung); es wird nie an unsere Server gesendet.",
+    "az": "Gündəlik yalnız bu telefonda (və telefonun Google ehtiyat nüsxəsində) saxlanılır; heç vaxt serverlərimizə göndərilmir.",
+    "ar": "تبقى اليوميات على هذا الهاتف فقط (وفي النسخة الاحتياطية من Google للهاتف)؛ ولا تُرسل أبدًا إلى خوادمنا."
+  },
+  "meet.pickHint": {
+    "tr": "Toplantı saatini seçmek için bir satıra dokunun.",
+    "en": "Tap a row to pick the meeting time.",
+    "de": "Tippen Sie auf eine Zeile, um die Besprechungszeit zu wählen.",
+    "az": "Görüş vaxtını seçmək üçün bir sətrə toxunun.",
+    "ar": "اضغط على صف لاختيار وقت الاجتماع."
+  },
+  "meet.here": {
+    "tr": "Burası",
+    "en": "Here",
+    "de": "Hier",
+    "az": "Bura",
+    "ar": "هنا"
+  },
+  "journal.sleepShort": {
+    "tr": "Uyku: {level}",
+    "en": "Sleep: {level}",
+    "de": "Schlaf: {level}",
+    "az": "Yuxu: {level}",
+    "ar": "النوم: {level}"
   }
 }

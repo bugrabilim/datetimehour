@@ -67,6 +67,7 @@ struct MorningCard: View {
                         ForEach(today, id: \.self) { Text($0) }
                     }
                 }
+                JournalMorningSection()
             }
             .themedBackground()
             .toolbar { Button(L("common.done")) { dismiss() } }

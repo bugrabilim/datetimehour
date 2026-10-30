@@ -244,7 +244,23 @@ class MoreScreensTest {
     }
     @Test fun morning() {
         seedWeather()
+        Prefs.store.edit().remove(Journal.KEY).commit()
         shot("tr-gunaydin") { MorningCard {} }
+    }
+    @Test fun journalAndPlanner() {
+        // Bugün ve önceki günler (ruh hâli, uyku, niyet, not)
+        val d = java.time.LocalDate.now()
+        Journal.save(listOf(
+            JournalEntry(d.toString(), 4, 3, "Yürüyüşe çıkmak"),
+            JournalEntry(d.minusDays(1).toString(), 5, 5, "Kitap okumak", "Güzel bir gündü."),
+            JournalEntry(d.minusDays(3).toString(), 2, 2, "", "Az uyudum."),
+        ))
+        shot("tr-sabah-gunlugu") { JournalScreen() }
+        Prefs.store.edit().remove(Journal.KEY).commit()
+        // Toplantı planlayıcı: Londra, New York, Tokyo
+        Prefs.store.edit().putString("meet.cities", "london,new-york,tokyo").commit()
+        shot("tr-toplanti-planlayici") { MeetingPlannerScreen() }
+        Prefs.store.edit().remove("meet.cities").commit()
     }
     @Test fun badges() {
         // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri
