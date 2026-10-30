@@ -64,6 +64,7 @@ class MainActivity : ComponentActivity() {
         // Ekran görüntüsü için: adb shell am start … --ei startTab 4
         val start = intent.getIntExtra("startTab", -1)
         intent.getStringExtra("tool")?.let { Nav.toolsRoute = it }
+        Nav.handleShortcut(intent)
         setContent {
             AppTheme { Root(start) }
         }
@@ -73,6 +74,7 @@ class MainActivity : ComponentActivity() {
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
         Tab.entries.getOrNull(intent.getIntExtra("startTab", -1))?.let { Nav.tab = it; Nav.toolsRoute = intent.getStringExtra("tool") }
+        Nav.handleShortcut(intent)
     }
 
     /** Uygulama öne gelince rozetlerin gün serisi (yalnız son gün ve gün sayısı) */
@@ -115,6 +117,22 @@ object Nav {
     var calendarDay by mutableStateOf<LocalDate?>(null)
     /** Saat ekranındaki dişliden açılan ayarlar (alt bar ve Araçlar'dan bağımsız; "settings", "features"…) */
     var overlay by mutableStateOf<String?>(null)
+    /** Simge kısayolu "Tam ekran saat": saat sekmesi tam ekran açılır */
+    var openFullscreen by mutableStateOf(false)
+
+    /**
+     * Simge kısayolları (res/xml/shortcuts.xml, "shortcut" ekstrası): fullscreen, timer, alarm, prayer.
+     * "night" doğruysa gece modu açılır (şarj otomasyonu gibi).
+     */
+    fun handleShortcut(intent: android.content.Intent?) {
+        if (intent?.getBooleanExtra("night", false) == true) Prefs.saveNightMode("on")
+        when (intent?.getStringExtra("shortcut")) {
+            "fullscreen" -> { overlay = null; tab = Tab.CLOCK; openFullscreen = true }
+            "timer" -> { overlay = null; tool("timer") }
+            "alarm" -> { overlay = null; tool("alarm") }
+            "prayer" -> { overlay = null; tab = Tab.PRAYER }
+        }
+    }
 
     fun tool(route: String) {
         toolsRoute = route
@@ -145,6 +163,13 @@ fun Root(start: Int) {
     }
     RefreshAutoPlace()
     AskNotificationsOnce()
+    // Simge kısayolundan "Tam ekran saat"
+    LaunchedEffect(Nav.openFullscreen) {
+        if (Nav.openFullscreen) {
+            Nav.openFullscreen = false
+            fullscreen = true
+        }
+    }
 
     // Saat ekranında ekran kapanmaz (Ayarlar'dan kapatılabilir); tam ekranda her zaman açık
     LocalView.current.keepScreenOn = fullscreen || (tab == Tab.CLOCK && Prefs.keepAwake)

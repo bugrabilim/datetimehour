@@ -99,6 +99,14 @@ final class Router {
     var calendarDay: CalendarDay?
     /// Saat ekranındaki dişliden açılan ayarlar (Araçlar kapalıyken de ulaşılsın)
     var sheet: SettingsSheet?
+    /// Siri / Kısayollar "Tam ekran saati aç": saat sekmesi tam ekran açılır
+    var wantsFullscreen = false
+
+    func openFullscreen() {
+        sheet = nil
+        tab = .clock
+        wantsFullscreen = true
+    }
 
     func open(_ item: HomeItem) {
         switch item {

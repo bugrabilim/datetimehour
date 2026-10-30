@@ -110,6 +110,15 @@ data class TimerItem(
         fun save(items: List<TimerItem>) {
             Prefs.store.edit().putString(KEY, JSONArray(items.map { it.toJson() }).toString()).apply()
         }
+
+        /** Arayüzsüz yeni zamanlayıcı (asistan ve başka uygulamalar, ClockIntentActivity): kayıt + bitiş alarmı */
+        fun startNew(c: android.content.Context, ms: Long, name: String = ""): TimerItem {
+            val e = System.currentTimeMillis() + ms
+            val t = TimerItem(name = name.trim(), total = ms, end = e)
+            AlarmScheduler.schedule(c, t.alarmId, e, t.doneTitle, AlarmScheduler.TIMER)
+            save(load() + t)
+            return t
+        }
     }
 }
 

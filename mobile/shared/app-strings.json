@@ -2946,5 +2946,278 @@
     "de": "In der Vollbilduhr: schwarzer Hintergrund, gedimmte rote Schrift und niedrige Bildschirmhelligkeit (schont Nachtsicht und Schlaf). Die Uhr verschiebt sich jede Minute um einige Punkte, damit sich nichts einbrennt. Im Vollbild auch über die Mond-Taste schaltbar.",
     "az": "Tam ekran saatda: qara fon, qırmızı və zəif yazı, aşağı ekran parlaqlığı (gecə görmənizə və yuxunuza az təsir edir). Ekran yanmasın deyə saat hər dəqiqə bir neçə nöqtə sürüşür. Tam ekranda ay düyməsi ilə də açılıb bağlanır.",
     "ar": "في الساعة بملء الشاشة: خلفية سوداء ونص أحمر خافت وسطوع منخفض للشاشة (أخف على الرؤية الليلية والنوم). تتحرك الساعة بضع نقاط كل دقيقة لتجنب احتراق الشاشة. ويمكن تشغيله أيضًا بزر القمر في وضع ملء الشاشة."
+  },
+  "siri.title": {
+    "tr": "Siri ve Kısayollar",
+    "en": "Siri & Shortcuts",
+    "de": "Siri & Kurzbefehle",
+    "az": "Siri və Qısayollar",
+    "ar": "Siri والاختصارات"
+  },
+  "siri.note": {
+    "tr": "Siri'ye \"Saat Tarih ile zamanlayıcı kur\", \"Saat Tarih sıradaki namaz vakti\" ya da \"Saat Tarih hicri tarih\" diyebilir, bu eylemleri Kısayollar uygulamasında kullanabilirsiniz. Şarja takınca saatin açılması için: Kısayollar › Otomasyon › Şarj Cihazı › Bağlandığında › \"Tam ekran saati aç\" (isterseniz gece modu açık).",
+    "en": "Ask Siri \"Start a timer in Time & Date\", \"Next prayer time in Time & Date\" or \"What is the Hijri date in Time & Date\", or use these actions in the Shortcuts app. To show the clock when charging: Shortcuts › Automation › Charger › Is Connected › \"Open Full-Screen Clock\" (optionally with night mode).",
+    "de": "Sage zu Siri „Starte einen Timer in Uhr & Datum“, „Nächste Gebetszeit in Uhr & Datum“ oder „Welches Hidschri-Datum ist in Uhr & Datum“, oder nutze die Aktionen in der Kurzbefehle-App. Uhr beim Laden anzeigen: Kurzbefehle › Automation › Ladegerät › Ist verbunden › „Vollbilduhr öffnen“ (auf Wunsch mit Nachtmodus).",
+    "az": "Siri-yə \"Saat Tarix ilə taymer qur\" kimi əmrlər verə və ya bu əməliyyatları Qısayollar tətbiqində istifadə edə bilərsiniz. Şarja qoşulanda saatın açılması üçün: Qısayollar › Avtomatlaşdırma › Şarj cihazı › Qoşulduqda › \"Tam ekran saatı aç\" (istəsəniz gecə rejimi ilə).",
+    "ar": "قل لـ Siri ‏\"ابدأ مؤقتًا في الوقت والتاريخ\" أو \"وقت الصلاة التالية في الوقت والتاريخ\"، أو استخدم هذه الإجراءات في تطبيق الاختصارات. لعرض الساعة عند الشحن: الاختصارات › الأتمتة › الشاحن › عند التوصيل › \"افتح الساعة بملء الشاشة\" (مع الوضع الليلي إن شئت)."
+  },
+  "android.shortcuts.title": {
+    "tr": "Kısayollar ve ekran koruyucu",
+    "en": "Shortcuts and screen saver",
+    "de": "Verknüpfungen und Bildschirmschoner",
+    "az": "Qısayollar və ekran qoruyucu",
+    "ar": "الاختصارات وشاشة التوقف"
+  },
+  "android.shortcuts.note": {
+    "tr": "Uygulama simgesine uzun basınca: tam ekran saat, zamanlayıcı, alarm ve vakitler. Şarjdayken saatin görünmesi için: telefon Ayarları › Ekran › Ekran koruyucu › Saat Tarih. Asistan ve başka uygulamalar Saat Tarih'e zamanlayıcı ve alarm kurdurabilir (varsayılan saat uygulaması seçimi telefonun ayarındadır).",
+    "en": "Long-press the app icon for the full-screen clock, timer, alarm and prayer times. To show the clock while charging: phone Settings › Display › Screen saver › Time & Date. The Assistant and other apps can set timers and alarms in Time & Date (the default clock app is chosen in the phone's settings).",
+    "de": "Lange auf das App-Symbol drücken: Vollbilduhr, Timer, Wecker und Gebetszeiten. Uhr beim Laden anzeigen: Telefon-Einstellungen › Display › Bildschirmschoner › Uhr & Datum. Assistant und andere Apps können in Uhr & Datum Timer und Wecker stellen (die Standard-Uhr-App wird in den Telefoneinstellungen gewählt).",
+    "az": "Tətbiq ikonuna uzun basanda: tam ekran saat, taymer, zəngli saat və vaxtlar. Şarjda saatın görünməsi üçün: telefon Ayarları › Ekran › Ekran qoruyucu › Saat Tarix. Assistent və başqa tətbiqlər Saat Tarix-də taymer və zəngli saat qura bilər.",
+    "ar": "اضغط مطولًا على أيقونة التطبيق: الساعة بملء الشاشة والمؤقت والمنبه ومواقيت الصلاة. لعرض الساعة أثناء الشحن: إعدادات الهاتف › الشاشة › شاشة التوقف › الوقت والتاريخ. يمكن للمساعد والتطبيقات الأخرى ضبط مؤقتات ومنبهات في الوقت والتاريخ."
+  },
+  "dream.name": {
+    "tr": "Saat Tarih saati",
+    "en": "Time & Date clock",
+    "de": "Uhr & Datum",
+    "az": "Saat Tarix saatı",
+    "ar": "ساعة الوقت والتاريخ"
+  },
+  "siri.short.timer": {
+    "tr": "Zamanlayıcı",
+    "en": "Timer",
+    "de": "Timer",
+    "az": "Taymer",
+    "ar": "مؤقت"
+  },
+  "siri.short.alarm": {
+    "tr": "Alarm",
+    "en": "Alarm",
+    "de": "Wecker",
+    "az": "Zəngli saat",
+    "ar": "منبه"
+  },
+  "siri.short.full": {
+    "tr": "Tam ekran saat",
+    "en": "Full-screen clock",
+    "de": "Vollbilduhr",
+    "az": "Tam ekran saat",
+    "ar": "ساعة بملء الشاشة"
+  },
+  "siri.short.prayer": {
+    "tr": "Sıradaki vakit",
+    "en": "Next prayer",
+    "de": "Nächstes Gebet",
+    "az": "Növbəti vaxt",
+    "ar": "الصلاة التالية"
+  },
+  "siri.short.date": {
+    "tr": "Bugünün tarihi",
+    "en": "Today's date",
+    "de": "Heutiges Datum",
+    "az": "Bugünün tarixi",
+    "ar": "تاريخ اليوم"
+  },
+  "intent.timer.title": {
+    "tr": "Zamanlayıcı başlat",
+    "en": "Start Timer",
+    "de": "Timer starten",
+    "az": "Taymeri başlat",
+    "ar": "بدء مؤقت"
+  },
+  "intent.timer.desc": {
+    "tr": "Verilen dakika için adlı bir zamanlayıcı başlatır; bitince alarm çalar.",
+    "en": "Starts a named timer for the given minutes; an alarm rings when it ends.",
+    "de": "Startet einen benannten Timer für die angegebenen Minuten; am Ende klingelt ein Alarm.",
+    "az": "Verilən dəqiqə üçün adlı taymer başladır; bitəndə zəng çalır.",
+    "ar": "يبدأ مؤقتًا مسمى للدقائق المحددة؛ ويرن المنبه عند انتهائه."
+  },
+  "intent.timer.minutes": {
+    "tr": "Dakika",
+    "en": "Minutes",
+    "de": "Minuten",
+    "az": "Dəqiqə",
+    "ar": "الدقائق"
+  },
+  "intent.timer.name": {
+    "tr": "Ad",
+    "en": "Name",
+    "de": "Name",
+    "az": "Ad",
+    "ar": "الاسم"
+  },
+  "intent.timer.ask": {
+    "tr": "Kaç dakika?",
+    "en": "How many minutes?",
+    "de": "Wie viele Minuten?",
+    "az": "Neçə dəqiqə?",
+    "ar": "كم دقيقة؟"
+  },
+  "intent.timer.done": {
+    "tr": "{min} dakikalık zamanlayıcı başladı.",
+    "en": "{min}-minute timer started.",
+    "de": "Timer für {min} Minuten gestartet.",
+    "az": "{min} dəqiqəlik taymer başladı.",
+    "ar": "بدأ مؤقت لمدة {min} دقيقة."
+  },
+  "intent.alarm.title": {
+    "tr": "Alarm kur",
+    "en": "Set Alarm",
+    "de": "Wecker stellen",
+    "az": "Zəngli saat qur",
+    "ar": "ضبط منبه"
+  },
+  "intent.alarm.desc": {
+    "tr": "Verilen saate bir kezlik alarm kurar.",
+    "en": "Sets a one-time alarm for the given time.",
+    "de": "Stellt einen einmaligen Wecker für die angegebene Uhrzeit.",
+    "az": "Verilən saata birdəfəlik zəngli saat qurur.",
+    "ar": "يضبط منبهًا لمرة واحدة في الوقت المحدد."
+  },
+  "intent.alarm.time": {
+    "tr": "Saat",
+    "en": "Time",
+    "de": "Uhrzeit",
+    "az": "Saat",
+    "ar": "الوقت"
+  },
+  "intent.alarm.label": {
+    "tr": "Etiket",
+    "en": "Label",
+    "de": "Bezeichnung",
+    "az": "Etiket",
+    "ar": "التسمية"
+  },
+  "intent.alarm.ask": {
+    "tr": "Hangi saate?",
+    "en": "For what time?",
+    "de": "Für welche Uhrzeit?",
+    "az": "Hansı saata?",
+    "ar": "لأي وقت؟"
+  },
+  "intent.alarm.done": {
+    "tr": "Alarm {time} için kuruldu.",
+    "en": "Alarm set for {time}.",
+    "de": "Wecker für {time} gestellt.",
+    "az": "Zəngli saat {time} üçün quruldu.",
+    "ar": "تم ضبط المنبه على {time}."
+  },
+  "intent.full.title": {
+    "tr": "Tam ekran saati aç",
+    "en": "Open Full-Screen Clock",
+    "de": "Vollbilduhr öffnen",
+    "az": "Tam ekran saatı aç",
+    "ar": "افتح الساعة بملء الشاشة"
+  },
+  "intent.full.desc": {
+    "tr": "Saat Tarih'i tam ekran saatle açar; isterseniz gece modunda.",
+    "en": "Opens Time & Date with the full-screen clock, optionally in night mode.",
+    "de": "Öffnet Uhr & Datum mit der Vollbilduhr, auf Wunsch im Nachtmodus.",
+    "az": "Saat Tarix-i tam ekran saatla açır; istəsəniz gecə rejimində.",
+    "ar": "يفتح الوقت والتاريخ بالساعة بملء الشاشة، ويمكن بالوضع الليلي."
+  },
+  "intent.full.night": {
+    "tr": "Gece modu",
+    "en": "Night mode",
+    "de": "Nachtmodus",
+    "az": "Gecə rejimi",
+    "ar": "الوضع الليلي"
+  },
+  "intent.prayer.title": {
+    "tr": "Sıradaki namaz vakti",
+    "en": "Next Prayer Time",
+    "de": "Nächste Gebetszeit",
+    "az": "Növbəti namaz vaxtı",
+    "ar": "وقت الصلاة التالية"
+  },
+  "intent.prayer.desc": {
+    "tr": "Seçili yer için sıradaki vakti ve kalan süreyi söyler.",
+    "en": "Tells the next prayer time and the time left for the selected place.",
+    "de": "Nennt die nächste Gebetszeit und die verbleibende Zeit für den gewählten Ort.",
+    "az": "Seçilmiş yer üçün növbəti vaxtı və qalan müddəti deyir.",
+    "ar": "يخبرك بوقت الصلاة التالية والوقت المتبقي للمكان المحدد."
+  },
+  "intent.prayer.answer": {
+    "tr": "{place}: {prayer} {time}, {left} kaldı.",
+    "en": "{place}: {prayer} at {time}, {left} left.",
+    "de": "{place}: {prayer} um {time}, noch {left}.",
+    "az": "{place}: {prayer} {time}, {left} qaldı.",
+    "ar": "{place}: {prayer} الساعة {time}، متبقٍ {left}."
+  },
+  "intent.date.title": {
+    "tr": "Bugünün tarihi",
+    "en": "Today's Date",
+    "de": "Heutiges Datum",
+    "az": "Bugünün tarixi",
+    "ar": "تاريخ اليوم"
+  },
+  "intent.date.desc": {
+    "tr": "Bugünün miladi ve hicri tarihini (Diyanet takvimi) söyler.",
+    "en": "Tells today's Gregorian and Hijri date (Diyanet calendar).",
+    "de": "Nennt das heutige gregorianische und Hidschri-Datum (Diyanet-Kalender).",
+    "az": "Bugünün miladi və hicri tarixini (Diyanət təqvimi) deyir.",
+    "ar": "يخبرك بتاريخ اليوم الميلادي والهجري (تقويم الشؤون الدينية التركية)."
+  },
+  "siri.phrase.timer1": {
+    "tr": "{app} ile zamanlayıcı kur",
+    "en": "Start a timer in {app}",
+    "de": "Starte einen Timer in {app}",
+    "az": "{app} ilə taymer qur",
+    "ar": "ابدأ مؤقتًا في {app}"
+  },
+  "siri.phrase.timer2": {
+    "tr": "{app} zamanlayıcı başlat",
+    "en": "Set a {app} timer",
+    "de": "Stelle einen {app} Timer",
+    "az": "{app} taymerini başlat",
+    "ar": "اضبط مؤقت {app}"
+  },
+  "siri.phrase.alarm1": {
+    "tr": "{app} ile alarm kur",
+    "en": "Set an alarm in {app}",
+    "de": "Stelle einen Wecker in {app}",
+    "az": "{app} ilə zəngli saat qur",
+    "ar": "اضبط منبهًا في {app}"
+  },
+  "siri.phrase.full1": {
+    "tr": "{app} saati göster",
+    "en": "Show the clock in {app}",
+    "de": "Zeige die Uhr in {app}",
+    "az": "{app} saatı göstər",
+    "ar": "اعرض الساعة في {app}"
+  },
+  "siri.phrase.full2": {
+    "tr": "{app} tam ekran saati aç",
+    "en": "Open the full screen clock in {app}",
+    "de": "Öffne die Vollbilduhr in {app}",
+    "az": "{app} tam ekran saatı aç",
+    "ar": "افتح الساعة بملء الشاشة في {app}"
+  },
+  "siri.phrase.prayer1": {
+    "tr": "{app} sıradaki vakit ne zaman",
+    "en": "When is the next prayer in {app}",
+    "de": "Wann ist das nächste Gebet in {app}",
+    "az": "{app} növbəti vaxt nə vaxtdır",
+    "ar": "متى الصلاة التالية في {app}"
+  },
+  "siri.phrase.prayer2": {
+    "tr": "{app} sıradaki namaz vakti",
+    "en": "Next prayer time in {app}",
+    "de": "Nächste Gebetszeit in {app}",
+    "az": "{app} növbəti namaz vaxtı",
+    "ar": "وقت الصلاة التالية في {app}"
+  },
+  "siri.phrase.date1": {
+    "tr": "{app} bugünün tarihi",
+    "en": "What is the date in {app}",
+    "de": "Welches Datum ist heute in {app}",
+    "az": "{app} bugünün tarixi",
+    "ar": "ما تاريخ اليوم في {app}"
+  },
+  "siri.phrase.date2": {
+    "tr": "{app} hicri tarih",
+    "en": "What is the Hijri date in {app}",
+    "de": "Welches Hidschri-Datum ist in {app}",
+    "az": "{app} hicri tarix",
+    "ar": "ما التاريخ الهجري في {app}"
   }
 }

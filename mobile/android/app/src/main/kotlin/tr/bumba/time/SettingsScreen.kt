@@ -161,6 +161,11 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                 Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
             }
         }
+        // Simge kısayolları, asistan/uygulamalardan zamanlayıcı-alarm, şarjda ekran koruyucu (rakip analizi #7)
+        AppCard {
+            SectionTitle(L("android.shortcuts.title"))
+            Text(L("android.shortcuts.note"), color = Theme.c.muted, fontSize = 13.sp)
+        }
         if (!Features.isOn(Tab.TOOLS)) {
             AppCard(padding = 4) {
                 SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }

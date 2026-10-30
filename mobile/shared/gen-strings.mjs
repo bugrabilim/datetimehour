@@ -90,6 +90,27 @@ const androidEscape = (s) => s
 const androidRes = Object.fromEntries(LANGS.map((l) => [l, []]));
 const androidNames = new Map();
 
+/* Siri ifadeleri (iOS App Shortcuts): "siri.phrase.*" yalnız AppShortcuts.xcstrings'e gider; anahtar İngilizce ifadedir,
+   {app} → ${applicationName}. Kısa adlar (siri.short.*) iki katalogda da bulunur. Her İngilizce ifade
+   App/Sources/AppIntents.swift'te birebir (\(.applicationName) ile) yazılı olmalı. */
+const shortcutStrings = {};
+const intentsSwift = fs.readFileSync(path.join(ROOT, "mobile/ios/App/Sources/AppIntents.swift"), "utf8");
+for (const [key, get] of Object.entries(KEYS)) {
+  if (!/^siri\.(phrase|short)\./.test(key)) continue;
+  const phrase = key.startsWith("siri.phrase.");
+  const conv = (v) => (phrase ? v.replace("{app}", "${applicationName}") : v);
+  const en = conv(get(I.en, "en"));
+  if (phrase && !intentsSwift.includes(`"${get(I.en, "en").replace("{app}", "\\(.applicationName)")}"`)) throw new Error(`AppIntents.swift'te ifade yok: ${en}`);
+  const localizations = {};
+  for (const l of LANGS) {
+    const v = get(I[l], l);
+    if (phrase && !v.includes("{app}")) throw new Error(`${l}: ${key} {app} içermeli`);
+    localizations[l] = { stringUnit: { state: "translated", value: conv(v) } };
+  }
+  shortcutStrings[phrase ? en : key] = { extractionState: "manual", localizations };
+}
+for (const key of Object.keys(KEYS)) if (key.startsWith("siri.phrase.")) delete KEYS[key];
+
 const strings = {}, plistStrings = {};
 for (const [key, get] of Object.entries(KEYS)) {
   const localizations = {};
@@ -122,7 +143,7 @@ const androidXml = (l) => '<?xml version="1.0" encoding="utf-8"?>\n<!-- gen-stri
   androidRes[l].join("\n") + "\n</resources>\n";
 const localesConfig = '<?xml version="1.0" encoding="utf-8"?>\n<locale-config xmlns:android="http://schemas.android.com/apk/res/android">\n' +
   LANGS.map((l) => `    <locale android:name="${l}" />`).join("\n") + "\n</locale-config>\n";
-const catalog = (s) => JSON.stringify({ sourceLanguage: "tr", strings: s, version: "1.0" }, null, 2) + "\n";
+const catalog = (s, source = "tr") => JSON.stringify({ sourceLanguage: source, strings: s, version: "1.0" }, null, 2) + "\n";
 const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
@@ -164,6 +185,7 @@ const eclipsesJson = JSON.stringify(["solar", "lunar"].flatMap((kind) => eclSrc[
 const files = {
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
+  "mobile/ios/App/Resources/AppShortcuts.xcstrings": catalog(shortcutStrings, "en"),
   "mobile/ios/App/Resources/provinces.json": provincesJson,
   "mobile/ios/App/Resources/calendar.json": calendarJson,
   "mobile/ios/App/Resources/cities.json": citiesJson,

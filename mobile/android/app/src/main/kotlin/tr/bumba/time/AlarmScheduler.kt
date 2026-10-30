@@ -126,6 +126,14 @@ data class AlarmItem(
             )
         }
 
+        /** Arayüzsüz yeni alarm (asistan ve başka uygulamalar, ClockIntentActivity): kayıt + kurulum */
+        fun addNew(c: android.content.Context, item: AlarmItem): List<AlarmItem> {
+            val list = (load() + item).sortedWith(compareBy({ it.hour }, { it.minute }))
+            save(list)
+            AlarmScheduler.sync(c, list)
+            return list
+        }
+
         fun load(): List<AlarmItem> = runCatching {
             val a = JSONArray(Prefs.store.getString(KEY, "[]"))
             (0 until a.length()).map { fromJson(a.getJSONObject(it)) }

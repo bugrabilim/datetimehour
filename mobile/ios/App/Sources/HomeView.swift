@@ -83,6 +83,11 @@ struct ClockTab: View {
                 fullscreen = true
             }
         }
+        .onChange(of: Router.shared.wantsFullscreen, initial: true) { _, want in
+            guard want else { return }
+            Router.shared.wantsFullscreen = false
+            fullscreen = true
+        }
         .fullScreenCover(isPresented: $fullscreen, onDismiss: { autoFull = false }) {
             FullscreenClock(closeOnPortrait: autoFull)
         }

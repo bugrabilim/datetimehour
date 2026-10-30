@@ -30765,6 +30765,1056 @@
           }
         }
       }
+    },
+    "siri.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri ve Kısayollar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri & Shortcuts"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri & Kurzbefehle"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri və Qısayollar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri والاختصارات"
+          }
+        }
+      }
+    },
+    "siri.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri'ye \"Saat Tarih ile zamanlayıcı kur\", \"Saat Tarih sıradaki namaz vakti\" ya da \"Saat Tarih hicri tarih\" diyebilir, bu eylemleri Kısayollar uygulamasında kullanabilirsiniz. Şarja takınca saatin açılması için: Kısayollar › Otomasyon › Şarj Cihazı › Bağlandığında › \"Tam ekran saati aç\" (isterseniz gece modu açık)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask Siri \"Start a timer in Time & Date\", \"Next prayer time in Time & Date\" or \"What is the Hijri date in Time & Date\", or use these actions in the Shortcuts app. To show the clock when charging: Shortcuts › Automation › Charger › Is Connected › \"Open Full-Screen Clock\" (optionally with night mode)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sage zu Siri „Starte einen Timer in Uhr & Datum“, „Nächste Gebetszeit in Uhr & Datum“ oder „Welches Hidschri-Datum ist in Uhr & Datum“, oder nutze die Aktionen in der Kurzbefehle-App. Uhr beim Laden anzeigen: Kurzbefehle › Automation › Ladegerät › Ist verbunden › „Vollbilduhr öffnen“ (auf Wunsch mit Nachtmodus)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siri-yə \"Saat Tarix ilə taymer qur\" kimi əmrlər verə və ya bu əməliyyatları Qısayollar tətbiqində istifadə edə bilərsiniz. Şarja qoşulanda saatın açılması üçün: Qısayollar › Avtomatlaşdırma › Şarj cihazı › Qoşulduqda › \"Tam ekran saatı aç\" (istəsəniz gecə rejimi ilə)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قل لـ Siri ‏\"ابدأ مؤقتًا في الوقت والتاريخ\" أو \"وقت الصلاة التالية في الوقت والتاريخ\"، أو استخدم هذه الإجراءات في تطبيق الاختصارات. لعرض الساعة عند الشحن: الاختصارات › الأتمتة › الشاحن › عند التوصيل › \"افتح الساعة بملء الشاشة\" (مع الوضع الليلي إن شئت)."
+          }
+        }
+      }
+    },
+    "android.shortcuts.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kısayollar ve ekran koruyucu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shortcuts and screen saver"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verknüpfungen und Bildschirmschoner"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qısayollar və ekran qoruyucu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الاختصارات وشاشة التوقف"
+          }
+        }
+      }
+    },
+    "android.shortcuts.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulama simgesine uzun basınca: tam ekran saat, zamanlayıcı, alarm ve vakitler. Şarjdayken saatin görünmesi için: telefon Ayarları › Ekran › Ekran koruyucu › Saat Tarih. Asistan ve başka uygulamalar Saat Tarih'e zamanlayıcı ve alarm kurdurabilir (varsayılan saat uygulaması seçimi telefonun ayarındadır)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Long-press the app icon for the full-screen clock, timer, alarm and prayer times. To show the clock while charging: phone Settings › Display › Screen saver › Time & Date. The Assistant and other apps can set timers and alarms in Time & Date (the default clock app is chosen in the phone's settings)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lange auf das App-Symbol drücken: Vollbilduhr, Timer, Wecker und Gebetszeiten. Uhr beim Laden anzeigen: Telefon-Einstellungen › Display › Bildschirmschoner › Uhr & Datum. Assistant und andere Apps können in Uhr & Datum Timer und Wecker stellen (die Standard-Uhr-App wird in den Telefoneinstellungen gewählt)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiq ikonuna uzun basanda: tam ekran saat, taymer, zəngli saat və vaxtlar. Şarjda saatın görünməsi üçün: telefon Ayarları › Ekran › Ekran qoruyucu › Saat Tarix. Assistent və başqa tətbiqlər Saat Tarix-də taymer və zəngli saat qura bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اضغط مطولًا على أيقونة التطبيق: الساعة بملء الشاشة والمؤقت والمنبه ومواقيت الصلاة. لعرض الساعة أثناء الشحن: إعدادات الهاتف › الشاشة › شاشة التوقف › الوقت والتاريخ. يمكن للمساعد والتطبيقات الأخرى ضبط مؤقتات ومنبهات في الوقت والتاريخ."
+          }
+        }
+      }
+    },
+    "dream.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih saati"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time & Date clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhr & Datum"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarix saatı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعة الوقت والتاريخ"
+          }
+        }
+      }
+    },
+    "siri.short.timer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zamanlayıcı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taymer"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مؤقت"
+          }
+        }
+      }
+    },
+    "siri.short.alarm": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "منبه"
+          }
+        }
+      }
+    },
+    "siri.short.full": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekran saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full-screen clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vollbilduhr"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekran saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعة بملء الشاشة"
+          }
+        }
+      }
+    },
+    "siri.short.prayer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıradaki vakit"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next prayer"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächstes Gebet"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Növbəti vaxt"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصلاة التالية"
+          }
+        }
+      }
+    },
+    "siri.short.date": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünün tarihi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today's date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heutiges Datum"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünün tarixi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاريخ اليوم"
+          }
+        }
+      }
+    },
+    "intent.timer.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zamanlayıcı başlat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start Timer"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer starten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taymeri başlat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدء مؤقت"
+          }
+        }
+      }
+    },
+    "intent.timer.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verilen dakika için adlı bir zamanlayıcı başlatır; bitince alarm çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starts a named timer for the given minutes; an alarm rings when it ends."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Startet einen benannten Timer für die angegebenen Minuten; am Ende klingelt ein Alarm."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verilən dəqiqə üçün adlı taymer başladır; bitəndə zəng çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يبدأ مؤقتًا مسمى للدقائق المحددة؛ ويرن المنبه عند انتهائه."
+          }
+        }
+      }
+    },
+    "intent.timer.minutes": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dakika"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minutes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minuten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dəqiqə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الدقائق"
+          }
+        }
+      }
+    },
+    "intent.timer.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الاسم"
+          }
+        }
+      }
+    },
+    "intent.timer.ask": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaç dakika?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How many minutes?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wie viele Minuten?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neçə dəqiqə?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كم دقيقة؟"
+          }
+        }
+      }
+    },
+    "intent.timer.done": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dakikalık zamanlayıcı başladı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@-minute timer started."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timer für %1$@ Minuten gestartet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dəqiqəlik taymer başladı."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بدأ مؤقت لمدة %1$@ دقيقة."
+          }
+        }
+      }
+    },
+    "intent.alarm.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm kur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set Alarm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker stellen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat qur"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضبط منبه"
+          }
+        }
+      }
+    },
+    "intent.alarm.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verilen saate bir kezlik alarm kurar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sets a one-time alarm for the given time."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stellt einen einmaligen Wecker für die angegebene Uhrzeit."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verilən saata birdəfəlik zəngli saat qurur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يضبط منبهًا لمرة واحدة في الوقت المحدد."
+          }
+        }
+      }
+    },
+    "intent.alarm.time": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhrzeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوقت"
+          }
+        }
+      }
+    },
+    "intent.alarm.label": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etiket"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Label"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bezeichnung"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etiket"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التسمية"
+          }
+        }
+      }
+    },
+    "intent.alarm.ask": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hangi saate?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For what time?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für welche Uhrzeit?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hansı saata?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لأي وقت؟"
+          }
+        }
+      }
+    },
+    "intent.alarm.done": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm %1$@ için kuruldu."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm set for %1$@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker für %1$@ gestellt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat %1$@ üçün quruldu."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم ضبط المنبه على %1$@."
+          }
+        }
+      }
+    },
+    "intent.full.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekran saati aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Full-Screen Clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vollbilduhr öffnen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekran saatı aç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح الساعة بملء الشاشة"
+          }
+        }
+      }
+    },
+    "intent.full.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarih'i tam ekran saatle açar; isterseniz gece modunda."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens Time & Date with the full-screen clock, optionally in night mode."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffnet Uhr & Datum mit der Vollbilduhr, auf Wunsch im Nachtmodus."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat Tarix-i tam ekran saatla açır; istəsəniz gecə rejimində."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يفتح الوقت والتاريخ بالساعة بملء الشاشة، ويمكن بالوضع الليلي."
+          }
+        }
+      }
+    },
+    "intent.full.night": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gece modu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Night mode"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nachtmodus"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gecə rejimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوضع الليلي"
+          }
+        }
+      }
+    },
+    "intent.prayer.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıradaki namaz vakti"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next Prayer Time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächste Gebetszeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Növbəti namaz vaxtı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت الصلاة التالية"
+          }
+        }
+      }
+    },
+    "intent.prayer.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçili yer için sıradaki vakti ve kalan süreyi söyler."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tells the next prayer time and the time left for the selected place."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nennt die nächste Gebetszeit und die verbleibende Zeit für den gewählten Ort."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçilmiş yer üçün növbəti vaxtı və qalan müddəti deyir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يخبرك بوقت الصلاة التالية والوقت المتبقي للمكان المحدد."
+          }
+        }
+      }
+    },
+    "intent.prayer.answer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ %3$@, %4$@ kaldı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ at %3$@, %4$@ left."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ um %3$@, noch %4$@."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ %3$@, %4$@ qaldı."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: %2$@ الساعة %3$@، متبقٍ %4$@."
+          }
+        }
+      }
+    },
+    "intent.date.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünün tarihi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today's Date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heutiges Datum"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünün tarixi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاريخ اليوم"
+          }
+        }
+      }
+    },
+    "intent.date.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünün miladi ve hicri tarihini (Diyanet takvimi) söyler."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tells today's Gregorian and Hijri date (Diyanet calendar)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nennt das heutige gregorianische und Hidschri-Datum (Diyanet-Kalender)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugünün miladi və hicri tarixini (Diyanət təqvimi) deyir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يخبرك بتاريخ اليوم الميلادي والهجري (تقويم الشؤون الدينية التركية)."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

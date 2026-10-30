@@ -1,4 +1,5 @@
 import SwiftUI
+import AppIntents
 
 // MARK: Ayarlar
 
@@ -46,6 +47,15 @@ struct SettingsView: View {
                     Text(L("settings.dark")).tag("dark")
                 }
                 NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
+            }
+            // Siri ve Kısayollar (AppIntents.swift): Kısayollar uygulamasındaki eylemlere bağlantı ve şarj otomasyonu notu
+            Section {
+                ShortcutsLink()
+                    .shortcutsLinkStyle(.automaticOutline)
+            } header: {
+                Text(L("siri.title"))
+            } footer: {
+                Text(L("siri.note"))
             }
             // Araçlar kapalıyken rozetler ve hakkında buradadır (başka yoldan açılmazlar)
             if !Features.parse(features).contains(.tools) {

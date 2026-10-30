@@ -281,7 +281,7 @@ fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier) {
  * çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
  */
 @Composable
-fun FullscreenClock(onExit: () -> Unit) {
+fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     val now = rememberNow()
     val place = AppPlace.current()
     val items = HomeItems.layout.visible
@@ -331,7 +331,8 @@ fun FullscreenClock(onExit: () -> Unit) {
                         Nav.tab = it.open()
                     }
                 }
-                Row {
+                // Ekran koruyucuda (ClockDreamService) düğme yok: dokunuş ekran koruyucuyu kapatır
+                if (controls) Row {
                     // Gece modu: açıkken kapatır, kapalıyken açar (otomatik seçim Ayarlar › Saat görünümü'nde)
                     TextButton(onClick = { Prefs.saveNightMode(NightMode.toggled(night)) }) {
                         Icon(Icons.Filled.DarkMode, null, tint = if (night) Theme.c.accent else Theme.c.muted, modifier = Modifier.size(18.dp))
