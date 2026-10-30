@@ -28,25 +28,29 @@ enum NightMode {
 /// Gece modunda ekran parlaklığı düşer; kapanınca ya da tam ekrandan çıkınca önceki değere döner
 @MainActor
 struct NightBrightness: ViewModifier {
-    let on: Bool
+    /// İstenen ekran parlaklığı; nil ise telefonun kendi ayarı (gece modu 0,05; gün doğumu ışığında yükselir)
+    let target: CGFloat?
     @State private var saved: CGFloat?
+
+    init(on: Bool) { target = on ? 0.05 : nil }
+    init(target: CGFloat?) { self.target = target }
 
     func body(content: Content) -> some View {
         content
-            .onAppear { apply(on) }
-            .onChange(of: on) { _, v in apply(v) }
-            .onDisappear { apply(false) }
+            .onAppear { apply(target) }
+            .onChange(of: target) { _, v in apply(v) }
+            .onDisappear { apply(nil) }
     }
 
     private var screen: UIScreen? {
         UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.screen }.first
     }
 
-    private func apply(_ v: Bool) {
+    private func apply(_ v: CGFloat?) {
         guard let screen else { return }
-        if v {
+        if let v {
             if saved == nil { saved = screen.brightness }
-            screen.brightness = 0.05
+            screen.brightness = v
         } else if let s = saved {
             screen.brightness = s
             saved = nil

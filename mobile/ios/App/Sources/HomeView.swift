@@ -209,7 +209,9 @@ struct FullscreenClock: View {
                 let place = PlaceModel.shared.place
                 let items = HomeLayout(raw: homeItems).visible
                 // Gece modunda siyah zemin, kırmızı ve kısık yazı, düşük parlaklık; arka plan fotoğrafı ve hareket yok
-                let night = NightMode.active(nightRaw, place: place, at: now)
+                // Gün doğumu ışığı (rakip analizi #17): alarmdan önce zemin siyahtan sıcak beyaza döner, parlaklık artar
+                let sunrise = AlarmItem.nextSunrise(now: now).map { SunriseLight.level(now: now, alarmAt: $0.at, window: $0.window) } ?? 0
+                let night = sunrise == 0 && NightMode.active(nightRaw, place: place, at: now)
                 ScrollView {
                     VStack(spacing: 16) {
                         TabView(selection: $modelID) {
@@ -251,7 +253,10 @@ struct FullscreenClock: View {
                 .scrollIndicators(.hidden)
                 .foregroundStyle(Theme.text)
                 .background {
-                    if night {
+                    if sunrise > 0 {
+                        let c = SunriseLight.rgb(sunrise)
+                        Color(red: Double(c.r) / 255, green: Double(c.g) / 255, blue: Double(c.b) / 255).ignoresSafeArea()
+                    } else if night {
                         Color.black.ignoresSafeArea()
                     } else if let photo {
                         Image(uiImage: photo).resizable().scaledToFill()
@@ -269,8 +274,8 @@ struct FullscreenClock: View {
                         NightMode.tint.blendMode(.multiply).ignoresSafeArea().allowsHitTesting(false)
                     }
                 }
-                .environment(\.colorScheme, night || darkText ? .dark : colorScheme)
-                .modifier(NightBrightness(on: night))
+                .environment(\.colorScheme, sunrise > 0.6 ? .light : (night || darkText || sunrise > 0 ? .dark : colorScheme))
+                .modifier(NightBrightness(target: sunrise > 0 ? SunriseLight.brightness(sunrise) : (night ? 0.05 : nil)))
             }
         }
         .onTapGesture(count: 2) { dismiss() }

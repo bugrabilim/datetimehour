@@ -72,6 +72,8 @@ shoot tr tr_TR dark ekran-look-yildizlar -openScreen look -fsBg stars
 shoot tr tr_TR light ekran-look-renk-akisi -openScreen look -fsBg flow
 shoot en en_US light ekran-world-en -openScreen world
 shoot ar ar_SA dark ekran-qibla-ar -openScreen qibla
+# Uyku: plan açık (kalkış 07.00, 8 saat; yatma 23.00)
+shoot tr tr_TR light ekran-uyku -openScreen sleep -sleep.on "<true/>"
 # Gece modu: siyah zemin, kısık kırmızı saat (yıldızlı arka plan seçili olsa da düz siyah)
 shoot tr tr_TR dark ekran-gece-modu -openScreen night -nightMode on -fsBg stars
 # Yatay (yan çevrilmiş): saat sekmesi tam ekran açılır, diğerlerinde alt bar gizli. Sona konur ki sonraki

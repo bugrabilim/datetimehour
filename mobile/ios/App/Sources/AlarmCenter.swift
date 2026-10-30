@@ -28,9 +28,12 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var rise = false
     /// Resmî tatillerde çalmaz (rakip analizi #4; yalnız tekrarlayan alarmda; yarım gün arifelerde çalar)
     var skipHolidays = false
+    /// Gün doğumu ışığı: alarmdan bu kadar dakika önce tam ekran saat yavaşça aydınlanır (0 = kapalı; rakip analizi #17)
+    var sunrise = 0
 
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
     static let snoozeMaxChoices = [0, 1, 2, 3, 5]
+    static let sunriseChoices = [0, 10, 20, 30]
     static let riseSound = "alarm-rise.caf"
     static let weekdays = [1, 2, 3, 4, 5]
 
@@ -39,7 +42,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -54,6 +57,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         snoozeMax = try c.decodeIfPresent(Int.self, forKey: .snoozeMax) ?? 0
         rise = try c.decodeIfPresent(Bool.self, forKey: .rise) ?? false
         skipHolidays = try c.decodeIfPresent(Bool.self, forKey: .skipHolidays) ?? false
+        sunrise = try c.decodeIfPresent(Int.self, forKey: .sunrise) ?? 0
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -163,6 +167,15 @@ struct AlarmItem: Codable, Identifiable, Hashable {
             t = occurrence(after: c)
         }
         return (weekly, fixed)
+    }
+
+    /// Gün doğumu ışığı seçili sıradaki alarm (tam ekran saat için): an ve pencere (dakika)
+    static func nextSunrise(now: Date = Date()) -> (at: Date, window: Int)? {
+        // Alarm anından 15 dk sonrasına kadar ışık yanık kalır: biraz geriden bakılır
+        let from = now.addingTimeInterval(-SunriseLight.after)
+        return load().filter { $0.enabled && $0.sunrise > 0 }
+            .compactMap { a in a.next(after: from).map { ($0, a.sunrise) } }
+            .min { $0.0 < $1.0 }
     }
 
     static let storeKey = "alarms"

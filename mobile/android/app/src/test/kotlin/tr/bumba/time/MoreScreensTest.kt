@@ -121,6 +121,22 @@ class MoreScreensTest {
         Prefs.saveFsBg("plain")
     }
 
+    /** Uyku (rakip analizi #17): plan açık (kalkış 07.00, 8 saat), döngüler, uyku sesleri */
+    @Test fun sleep() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        SleepPlan.on = true
+        page("tr-uyku", L("sleep.title")) { SleepScreen() }
+        SleepPlan.on = false
+    }
+
+    /** Gün doğumu ışığı: alarmdan 8 dk önce (30 dk pencere), tam ekran saat sıcak renkle aydınlanmış */
+    @Test fun sunriseLight() {
+        val at = java.time.LocalDateTime.now().plusMinutes(8)
+        AlarmItem.save(listOf(AlarmItem(id = "s", hour = at.hour, minute = at.minute, sunrise = 30)))
+        shot("tr-gun-dogumu-isigi") { FullscreenClock {} }
+        AlarmItem.save(emptyList())
+    }
+
     /** Hareketli arka planlar (testte tek kare): gece gökyüzü ve renk akışıyla tam ekran saat */
     @Test fun animatedBackgrounds() {
         // "Animasyonları kapat" açık: arka plan durağan tek kare çizer (sonsuz kare döngüsü ekran görüntüsünü bekletmesin)

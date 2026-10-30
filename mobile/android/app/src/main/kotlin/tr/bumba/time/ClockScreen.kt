@@ -289,14 +289,22 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     HideSystemBars()
     // Arka plan: fotoğraf (koyulaştırılmış) ya da hareketli; ikisinde de yazılar koyu temanın açık renklerine geçer
     // Gece modunda siyah zemin, kırmızı ve kısık yazı, düşük parlaklık; arka plan fotoğrafı ve hareket yok
-    val night = NightMode.active(Prefs.nightMode, place.lat, place.lon, now.toEpochMilli())
-    NightBrightness(night)
-    val bg = if (night) FullscreenBackground.PLAIN else FullscreenBackground.current
+    // Gün doğumu ışığı (rakip analizi #17): alarmdan önce zemin siyahtan sıcak beyaza döner, parlaklık artar
+    val sunrise = AlarmItem.nextSunrise(now.toEpochMilli())
+        ?.let { (at, window) -> tr.bumba.time.core.SunriseLight.level(now.toEpochMilli(), at, window) } ?: 0.0
+    val night = sunrise == 0.0 && NightMode.active(Prefs.nightMode, place.lat, place.lon, now.toEpochMilli())
+    ScreenBrightness(if (sunrise > 0) tr.bumba.time.core.SunriseLight.brightness(sunrise).toFloat() else if (night) 0.05f else null)
+    val bg = if (night || sunrise > 0) FullscreenBackground.PLAIN else FullscreenBackground.current
     val photo = if (bg == FullscreenBackground.PHOTO) FullscreenPhoto.image(LocalContext.current) else null
-    val colors = if (night || photo != null || bg.animated) AccentPalette.find(Prefs.accent).colors(true) else Theme.c
+    val colors = when {
+        sunrise > 0.6 -> AccentPalette.find(Prefs.accent).colors(false)
+        night || sunrise > 0 || photo != null || bg.animated -> AccentPalette.find(Prefs.accent).colors(true)
+        else -> Theme.c
+    }
+    val sunriseColor = Color(0xFF000000 or tr.bumba.time.core.SunriseLight.color(sunrise).toLong())
     CompositionLocalProvider(LocalColors provides colors) {
     BoxWithConstraints(
-        Modifier.fillMaxSize().nightTint(night).background(if (night) Color.Black else Theme.c.bg)
+        Modifier.fillMaxSize().nightTint(night).background(if (sunrise > 0) sunriseColor else if (night) Color.Black else Theme.c.bg)
             .pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) },
     ) {
         if (photo != null) PhotoBackground(photo, Modifier.fillMaxSize())

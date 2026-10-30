@@ -171,6 +171,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var snoozeMax by remember { mutableStateOf(item.snoozeMax) }
     var rise by remember { mutableStateOf(item.rise) }
     var skipHolidays by remember { mutableStateOf(item.skipHolidays) }
+    var sunrise by remember { mutableStateOf(item.sunrise) }
     // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
     val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
         if (r.resultCode == android.app.Activity.RESULT_OK) {
@@ -246,6 +247,10 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     }
                     Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
+                // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
+                fun sunriseText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.sunriseMin", m)
+                ChoiceRow(L("alarm.sunrise"), sunriseText(sunrise), AlarmItem.SUNRISE_CHOICES.map { it to sunriseText(it) }) { sunrise = it }
+                Text(L("alarm.sunriseNote"), color = Theme.c.muted, fontSize = 12.sp)
                 // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
                 if (days.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
@@ -261,7 +266,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
             TextButton(onClick = {
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
                     snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
-                    skipHolidays = skipHolidays && days.isNotEmpty()))
+                    skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },
@@ -270,7 +275,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
 
 /** Başlık + seçili değer; dokununca açılır liste */
 @Composable
-private fun ChoiceRow(title: String, value: String, options: List<Pair<Int, String>>, onPick: (Int) -> Unit) {
+internal fun ChoiceRow(title: String, value: String, options: List<Pair<Int, String>>, onPick: (Int) -> Unit) {
     var open by remember { mutableStateOf(false) }
     Row(Modifier.fillMaxWidth().clickable { open = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)

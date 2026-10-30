@@ -90,7 +90,7 @@ enum AppTab: Int, CaseIterable {
 
 /// Araçlar sekmesindeki sayfalar
 enum ToolRoute: Hashable {
-    case alarm, timer, stopwatch, pomodoro, datecalc, settings, about, badges
+    case alarm, timer, stopwatch, pomodoro, sleep, datecalc, settings, about, badges
 }
 
 /// Sekme ve Araçlar gezintisi; saat ekranındaki alanlar dokununca ilgili sayfayı açar.
@@ -256,7 +256,7 @@ private struct TabBar: View {
 
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night
+         privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -269,6 +269,7 @@ enum DebugScreen: String, Identifiable {
         case .timer: TimerView()
         case .stopwatch: StopwatchView()
         case .pomodoro: PomodoroView()
+        case .sleep: SleepView()
         case .datecalc: DateCalcView()
         case .world: WorldClockView()
         case .weather: WeatherView()

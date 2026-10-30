@@ -32305,6 +32305,1231 @@
           }
         }
       }
+    },
+    "alarm.sunrise": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün doğumu ışığı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunrise light"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenaufgangslicht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün çıxışı işığı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضوء الشروق"
+          }
+        }
+      }
+    },
+    "alarm.sunriseMin": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dk önce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ min before"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ Min. vorher"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dəq əvvəl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قبل %1$@ د"
+          }
+        }
+      }
+    },
+    "alarm.sunriseNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefon şarjda ve tam ekran saat açıkken, alarmdan önce ekran siyahtan sıcak bir gün doğumu rengine yavaşça aydınlanır. Uygulama kapalıyken telefonlar ekranı kendiliğinden açamaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "While the phone is charging with the full-screen clock open, the screen slowly brightens from black to a warm sunrise colour before the alarm. Phones can't turn the screen on by themselves while the app is closed."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn das Telefon lädt und die Vollbilduhr geöffnet ist, wird der Bildschirm vor dem Wecker langsam von Schwarz zu einem warmen Sonnenaufgangston heller. Bei geschlossener App kann das Telefon den Bildschirm nicht selbst einschalten."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefon şarjda və tam ekran saat açıq olanda, zəngdən əvvəl ekran qaradan isti gün çıxışı rənginə yavaş-yavaş işıqlanır. Tətbiq bağlı olanda telefon ekranı özü aça bilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عندما يكون الهاتف على الشاحن والساعة بملء الشاشة مفتوحة، تضيء الشاشة ببطء من الأسود إلى لون شروق دافئ قبل المنبّه. لا يستطيع الهاتف تشغيل الشاشة بنفسه والتطبيق مغلق."
+          }
+        }
+      }
+    },
+    "notify.cat.bedtime": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma saati"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bedtime"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafenszeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma vaxtı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت النوم"
+          }
+        }
+      }
+    },
+    "notify.cat.bedtime.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku planı kuruluysa yatma saatinden önce hatırlatır (Araçlar › Uyku)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reminds you before bedtime if a sleep schedule is set (Tools › Sleep)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnert vor der Schlafenszeit, wenn ein Schlafplan eingerichtet ist (Werkzeuge › Schlaf)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu planı qurulubsa, yatma vaxtından əvvəl xatırladır (Alətlər › Yuxu)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يذكّرك قبل وقت النوم إذا كان جدول النوم مضبوطًا (الأدوات › النوم)."
+          }
+        }
+      }
+    },
+    "sleep.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleep"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlaf"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "النوم"
+          }
+        }
+      }
+    },
+    "sleep.plan": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku planı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleep schedule"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafplan"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu planı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جدول النوم"
+          }
+        }
+      }
+    },
+    "sleep.plan.use": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku planını kullan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use a sleep schedule"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafplan verwenden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu planından istifadə et"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استخدام جدول النوم"
+          }
+        }
+      }
+    },
+    "sleep.plan.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalkış saatinizden ve istediğiniz uyku süresinden yatma saati hesaplanır; isterseniz yatmadan önce hatırlatılır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your bedtime is worked out from your wake-up time and how long you want to sleep; you can get a reminder before bed."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Schlafenszeit wird aus Ihrer Weckzeit und der gewünschten Schlafdauer berechnet; auf Wunsch werden Sie vorher erinnert."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma vaxtı oyanma saatınızdan və istədiyiniz yuxu müddətindən hesablanır; istəsəniz yatmazdan əvvəl xatırladılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُحسب وقت النوم من وقت الاستيقاظ ومدة النوم التي تريدها، ويمكن أن تتلقى تذكيرًا قبل النوم."
+          }
+        }
+      }
+    },
+    "sleep.wake": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalkış saati"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wake-up time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weckzeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oyanma saatı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت الاستيقاظ"
+          }
+        }
+      }
+    },
+    "sleep.duration": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku süresi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleep duration"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafdauer"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu müddəti"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مدة النوم"
+          }
+        }
+      }
+    },
+    "sleep.durationFmt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ sa %2$@ dk"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ h %2$@ min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ Std. %2$@ Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ saat %2$@ dəq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ س %2$@ د"
+          }
+        }
+      }
+    },
+    "sleep.bedtime": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma saati"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bedtime"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafenszeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma vaxtı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت النوم"
+          }
+        }
+      }
+    },
+    "sleep.remind": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma hatırlatması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bedtime reminder"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnerung zur Schlafenszeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma xatırlatması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تذكير بوقت النوم"
+          }
+        }
+      }
+    },
+    "sleep.remindWhen": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne zaman"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wann"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nə vaxt"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متى"
+          }
+        }
+      }
+    },
+    "sleep.remindAt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma saatinde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At bedtime"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zur Schlafenszeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma vaxtında"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في وقت النوم"
+          }
+        }
+      }
+    },
+    "sleep.remindBefore": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dk önce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ min before"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ Min. vorher"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dəq əvvəl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قبل %1$@ د"
+          }
+        }
+      }
+    },
+    "sleep.addAlarm": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu kalkış saatine alarm kur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set an alarm for this wake-up time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker für diese Weckzeit stellen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu oyanma saatına zəng qur"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اضبط منبّهًا لوقت الاستيقاظ هذا"
+          }
+        }
+      }
+    },
+    "sleep.alarmAdded": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm kuruldu (Araçlar › Alarm)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm set (Tools › Alarm)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker gestellt (Werkzeuge › Wecker)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəng quruldu (Alətlər › Zəngli saat)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم ضبط المنبّه (الأدوات › المنبّه)"
+          }
+        }
+      }
+    },
+    "sleep.alarmLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalkış"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wake up"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufstehen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oyanma"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الاستيقاظ"
+          }
+        }
+      }
+    },
+    "sleep.cycles": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku döngüleri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleep cycles"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafzyklen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu dövrləri"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دورات النوم"
+          }
+        }
+      }
+    },
+    "sleep.ifNow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimdi yatarsanız kalkış saatleri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you go to bed now, wake up at"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie jetzt schlafen gehen, aufstehen um"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İndi yatsanız oyanma saatları"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إذا نمت الآن فاستيقظ في"
+          }
+        }
+      }
+    },
+    "sleep.forWake": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ kalkış için yatma saatleri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bedtimes for waking at %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafenszeiten für %1$@ Uhr Aufstehen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ oyanma üçün yatma saatları"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوقات النوم للاستيقاظ في %1$@"
+          }
+        }
+      }
+    },
+    "sleep.cycleRow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ döngü · %2$@ sa"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ cycles · %2$@ h"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ Zyklen · %2$@ Std."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dövr · %2$@ saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ دورات · %2$@ س"
+          }
+        }
+      }
+    },
+    "sleep.cycles.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku yaklaşık 90 dakikalık döngülerle ilerler; uykuya dalmak için 15 dakika eklenir. Bir döngünün sonunda uyanmak daha kolay olabilir. Bu bir öneridir, tıbbi bilgi değildir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleep moves in cycles of about 90 minutes; 15 minutes are added to fall asleep. Waking at the end of a cycle may feel easier. This is a suggestion, not medical advice."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlaf verläuft in Zyklen von etwa 90 Minuten; zum Einschlafen werden 15 Minuten addiert. Am Ende eines Zyklus aufzuwachen kann leichter fallen. Das ist ein Vorschlag, kein medizinischer Rat."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu təxminən 90 dəqiqəlik dövrlərlə gedir; yuxuya getmək üçün 15 dəqiqə əlavə olunur. Dövrün sonunda oyanmaq daha asan ola bilər. Bu tövsiyədir, tibbi məlumat deyil."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يسير النوم في دورات مدتها نحو 90 دقيقة، وتُضاف 15 دقيقة للخلود إلى النوم. قد يكون الاستيقاظ في نهاية دورة أسهل. هذا اقتراح وليس نصيحة طبية."
+          }
+        }
+      }
+    },
+    "sleep.sounds.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sesler telefonda üretilir, dosya indirilmez. Ekran kilitliyken de sürer; seçilen sürenin sonunda son 30 saniyede kısılarak kapanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sounds are generated on your phone, nothing is downloaded. They keep playing with the screen locked and fade out over the last 30 seconds of the chosen time."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Geräusche werden auf dem Telefon erzeugt, nichts wird heruntergeladen. Sie laufen auch bei gesperrtem Bildschirm weiter und werden in den letzten 30 Sekunden ausgeblendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səslər telefonda yaradılır, fayl endirilmir. Ekran kilidli olanda da davam edir və seçilən müddətin son 30 saniyəsində səsi azalaraq bağlanır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُولَّد الأصوات على هاتفك ولا يُنزَّل أي ملف. تستمر والشاشة مقفلة وتخفت تدريجيًا في آخر 30 ثانية من المدة المختارة."
+          }
+        }
+      }
+    },
+    "sleep.timer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapanma"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn off after"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausschalten nach"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlanma"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإيقاف بعد"
+          }
+        }
+      }
+    },
+    "sleep.timerOff": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapanmasın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlanmasın"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أبدًا"
+          }
+        }
+      }
+    },
+    "sleep.play": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çal"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abspielen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çal"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تشغيل"
+          }
+        }
+      }
+    },
+    "sleep.stop": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durdur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stoppen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayandır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إيقاف"
+          }
+        }
+      }
+    },
+    "sleep.sunriseInfo": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir alarmda \"Gün doğumu ışığı\"nı seçin (Araçlar › Alarm). Yatarken telefonu şarja takıp tam ekran saati açık bırakın (gece modu da olur): alarmdan 10–30 dakika önce ekran yavaşça aydınlanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose \"Sunrise light\" on an alarm (Tools › Alarm). At bedtime, put the phone on its charger and leave the full-screen clock open (night mode works too): the screen slowly brightens 10–30 minutes before the alarm."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wählen Sie bei einem Wecker \"Sonnenaufgangslicht\" (Werkzeuge › Wecker). Legen Sie das Telefon zum Schlafen ans Ladegerät und lassen Sie die Vollbilduhr geöffnet (auch im Nachtmodus): 10–30 Minuten vor dem Wecker wird der Bildschirm langsam heller."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngdə \"Gün çıxışı işığı\"nı seçin (Alətlər › Zəngli saat). Yatanda telefonu şarja qoşub tam ekran saatı açıq saxlayın (gecə rejimi də olar): zəngdən 10–30 dəqiqə əvvəl ekran yavaş-yavaş işıqlanır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر \"ضوء الشروق\" في أحد المنبّهات (الأدوات › المنبّه). عند النوم ضع الهاتف على الشاحن واترك الساعة بملء الشاشة مفتوحة (يعمل الوضع الليلي أيضًا): تضيء الشاشة ببطء قبل المنبّه بـ 10–30 دقيقة."
+          }
+        }
+      }
+    },
+    "sleep.privacy": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku takibi yapılmaz: mikrofon ve hareket algılayıcısı kullanılmaz. Plan ve ayarlar yalnız bu telefonda durur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "There is no sleep tracking: the microphone and motion sensors are not used. Your schedule and settings stay on this phone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es gibt keine Schlafaufzeichnung: Mikrofon und Bewegungssensoren werden nicht verwendet. Plan und Einstellungen bleiben auf diesem Telefon."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu izlənmir: mikrofon və hərəkət sensoru istifadə olunmur. Plan və ayarlar yalnız bu telefonda qalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يوجد تتبّع للنوم: لا يُستخدم الميكروفون ولا مستشعرات الحركة. يبقى الجدول والإعدادات على هذا الهاتف فقط."
+          }
+        }
+      }
+    },
+    "sleep.n.soon": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma saati yaklaşıyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bedtime is coming up"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bald ist Schlafenszeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma vaxtı yaxınlaşır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اقترب وقت النوم"
+          }
+        }
+      }
+    },
+    "sleep.n.now": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma saati"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "It's bedtime"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafenszeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma vaxtıdır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حان وقت النوم"
+          }
+        }
+      }
+    },
+    "sleep.n.body": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma %1$@ · kalkış %2$@ (%3$@ uyku)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bed %1$@ · wake %2$@ (%3$@ of sleep)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlafen %1$@ · aufstehen %2$@ (%3$@ Schlaf)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yatma %1$@ · oyanma %2$@ (%3$@ yuxu)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "النوم %1$@ · الاستيقاظ %2$@ (%3$@ من النوم)"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

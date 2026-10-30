@@ -17,6 +17,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Alarm
+import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.material.icons.filled.HourglassBottom
 import androidx.compose.material.icons.filled.Info
@@ -56,6 +57,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "timer" -> Page(L("tools.timer"), onRoute) { TimerScreen() }
         "stopwatch" -> Page(L("tools.hub.cards.stopwatch.name"), onRoute) { Stopwatch() }
         "pomodoro" -> Page(L("tools.hub.cards.pomodoro.name"), onRoute) { PomodoroScreen() }
+        "sleep" -> Page(L("sleep.title"), onRoute) { SleepScreen() }
         "datecalc" -> Page(L("tools.hub.cards.datecalc.name"), onRoute) { DateCalcScreen() }
         "settings" -> Page(L("settings.title"), onRoute) { SettingsScreen(onRoute) }
         "color" -> Page(L("settings.color"), { onRoute("settings") }) { ColorScreen() }
@@ -76,6 +78,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
                 ToolRow(Icons.Filled.HourglassBottom, L("tools.timer")) { onRoute("timer") }
                 ToolRow(Icons.Filled.Timer, L("tools.hub.cards.stopwatch.name")) { onRoute("stopwatch") }
                 ToolRow(Icons.Filled.Spa, L("tools.hub.cards.pomodoro.name")) { onRoute("pomodoro") }
+                ToolRow(Icons.Filled.Bedtime, L("sleep.title")) { onRoute("sleep") }
                 ToolRow(Icons.Filled.EditCalendar, L("tools.hub.cards.datecalc.name"), last = true) { onRoute("datecalc") }
             }
             // Rozetler: girişin yanında bir satırlık not (Bumba standardı madde 13)

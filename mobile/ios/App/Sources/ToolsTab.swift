@@ -15,6 +15,7 @@ struct ToolsTab: View {
                     row(.timer, L("tools.timer"), "timer")
                     row(.stopwatch, L("tools.hub.cards.stopwatch.name"), "stopwatch")
                     row(.pomodoro, L("tools.hub.cards.pomodoro.name"), "leaf")
+                    row(.sleep, L("sleep.title"), "bed.double")
                     row(.datecalc, L("tools.hub.cards.datecalc.name"), "calendar.badge.clock")
                 }
                 Section {
@@ -40,6 +41,7 @@ struct ToolsTab: View {
                 case .timer: TimerView()
                 case .stopwatch: StopwatchView()
                 case .pomodoro: PomodoroView()
+                case .sleep: SleepView()
                 case .datecalc: DateCalcView()
                 case .settings: SettingsView()
                 case .about: AboutView()
@@ -349,6 +351,16 @@ private struct AlarmEditor: View {
                         .tint(Theme.accent)
                 } footer: {
                     Text(L("alarm.riseNoteIOS"))
+                }
+                // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
+                Section {
+                    Picker(L("alarm.sunrise"), selection: $item.sunrise) {
+                        ForEach(AlarmItem.sunriseChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.sunriseMin", m)).tag(m)
+                        }
+                    }
+                } footer: {
+                    Text(L("alarm.sunriseNote"))
                 }
                 // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
                 if !item.days.isEmpty {

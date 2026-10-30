@@ -48,15 +48,17 @@ fun Modifier.nightTint(on: Boolean): Modifier = if (!on) this else this
 
 /** Gece modunda pencere parlaklığı düşer; çıkınca sistem ayarına döner */
 @Composable
-fun NightBrightness(on: Boolean) {
+fun NightBrightness(on: Boolean) = ScreenBrightness(if (on) 0.05f else null)
+
+/** Pencerenin ekran parlaklığı; null ise telefonun kendi ayarı (gece modu 0,05; gün doğumu ışığında yükselir) */
+@Composable
+fun ScreenBrightness(level: Float?) {
     val view = LocalView.current
-    DisposableEffect(on) {
-        val window = (view.context as? Activity)?.window
-        fun set(v: Float) {
-            window ?: return
-            window.attributes = window.attributes.apply { screenBrightness = v }
+    val window = (view.context as? Activity)?.window
+    DisposableEffect(window, level) {
+        window?.attributes = window?.attributes?.apply { screenBrightness = level ?: WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE }
+        onDispose {
+            window?.attributes = window?.attributes?.apply { screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE }
         }
-        if (on) set(0.05f)
-        onDispose { set(WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE) }
     }
 }

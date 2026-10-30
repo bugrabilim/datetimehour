@@ -42,6 +42,8 @@ data class AlarmItem(
     val snoozeMax: Int = 0,
     val rise: Boolean = false,
     val skipHolidays: Boolean = false,
+    /** Gün doğumu ışığı: alarmdan bu kadar dakika önce tam ekran saat yavaşça aydınlanır (0 = kapalı; rakip analizi #17) */
+    val sunrise: Int = 0,
 ) {
     val title: String get() = label.ifEmpty { L("tools.alarm.defaultLabel") }
     val timeText: String get() = Fmt.time(LocalDateTime.now().withHour(hour).withMinute(minute).atZone(ZoneId.systemDefault()))
@@ -100,12 +102,21 @@ data class AlarmItem(
     fun toJson(): JSONObject = JSONObject().put("id", id).put("hour", hour).put("minute", minute).put("label", label)
         .put("days", JSONArray(days)).put("enabled", enabled).put("snooze", snooze).put("skipUntil", skipUntil)
         .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise).put("skipHolidays", skipHolidays)
+        .put("sunrise", sunrise)
 
     companion object {
         private const val KEY = "alarms"
         val WEEKDAYS = listOf(1, 2, 3, 4, 5)
         val SNOOZE_CHOICES = listOf(0, 5, 10, 15, 20, 30)
         val SNOOZE_MAX_CHOICES = listOf(0, 1, 2, 3, 5)
+        val SUNRISE_CHOICES = listOf(0, 10, 20, 30)
+
+        /** Gün doğumu ışığı seçili sıradaki alarm (tam ekran saat için): an ve pencere (dakika). Alarmdan 15 dk sonrasına
+         *  kadar ışık yanık kaldığı için biraz geriden bakılır. */
+        fun nextSunrise(nowMs: Long = System.currentTimeMillis()): Pair<Long, Int>? =
+            load().filter { it.enabled && it.sunrise > 0 }
+                .map { it.nextAt(nowMs - tr.bumba.time.core.SunriseLight.AFTER_MS) to it.sunrise }
+                .minByOrNull { it.first }
 
         /** Tam gün resmî tatil mi (takvim verisi; testte değiştirilebilir) */
         var isHoliday: (java.time.LocalDate) -> Boolean = { d ->
@@ -122,7 +133,7 @@ data class AlarmItem(
                 o.getString("id"), o.getInt("hour"), o.getInt("minute"), o.optString("label"), days,
                 o.optBoolean("enabled", true), o.optInt("snooze", 5), o.optLong("skipUntil", 0),
                 o.optString("sound", ""), o.optBoolean("vibrate", true), o.optInt("snoozeMax", 0), o.optBoolean("rise", false),
-                o.optBoolean("skipHolidays", false),
+                o.optBoolean("skipHolidays", false), o.optInt("sunrise", 0),
             )
         }
 

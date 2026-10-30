@@ -21,6 +21,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Bed
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Eco
@@ -100,6 +101,8 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
         }
         AppCard(padding = 4) {
             FeatureToggle(NotifyFeature.CALENDAR, Icons.Filled.CalendarMonth, ::changed)
+            RowDivider()
+            FeatureToggle(NotifyFeature.BEDTIME, Icons.Filled.Bed, ::changed)
         }
         AppCard(padding = 4) {
             FeatureToggle(NotifyFeature.SEASONS, Icons.Filled.Eco, ::changed)

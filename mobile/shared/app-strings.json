@@ -3317,5 +3317,250 @@
     "de": "Schlafgeräusche",
     "az": "Yuxu səsləri",
     "ar": "أصوات النوم"
+  },
+  "alarm.sunrise": {
+    "tr": "Gün doğumu ışığı",
+    "en": "Sunrise light",
+    "de": "Sonnenaufgangslicht",
+    "az": "Gün çıxışı işığı",
+    "ar": "ضوء الشروق"
+  },
+  "alarm.sunriseMin": {
+    "tr": "{n} dk önce",
+    "en": "{n} min before",
+    "de": "{n} Min. vorher",
+    "az": "{n} dəq əvvəl",
+    "ar": "قبل {n} د"
+  },
+  "alarm.sunriseNote": {
+    "tr": "Telefon şarjda ve tam ekran saat açıkken, alarmdan önce ekran siyahtan sıcak bir gün doğumu rengine yavaşça aydınlanır. Uygulama kapalıyken telefonlar ekranı kendiliğinden açamaz.",
+    "en": "While the phone is charging with the full-screen clock open, the screen slowly brightens from black to a warm sunrise colour before the alarm. Phones can't turn the screen on by themselves while the app is closed.",
+    "de": "Wenn das Telefon lädt und die Vollbilduhr geöffnet ist, wird der Bildschirm vor dem Wecker langsam von Schwarz zu einem warmen Sonnenaufgangston heller. Bei geschlossener App kann das Telefon den Bildschirm nicht selbst einschalten.",
+    "az": "Telefon şarjda və tam ekran saat açıq olanda, zəngdən əvvəl ekran qaradan isti gün çıxışı rənginə yavaş-yavaş işıqlanır. Tətbiq bağlı olanda telefon ekranı özü aça bilmir.",
+    "ar": "عندما يكون الهاتف على الشاحن والساعة بملء الشاشة مفتوحة، تضيء الشاشة ببطء من الأسود إلى لون شروق دافئ قبل المنبّه. لا يستطيع الهاتف تشغيل الشاشة بنفسه والتطبيق مغلق."
+  },
+  "notify.cat.bedtime": {
+    "tr": "Yatma saati",
+    "en": "Bedtime",
+    "de": "Schlafenszeit",
+    "az": "Yatma vaxtı",
+    "ar": "وقت النوم"
+  },
+  "notify.cat.bedtime.note": {
+    "tr": "Uyku planı kuruluysa yatma saatinden önce hatırlatır (Araçlar › Uyku).",
+    "en": "Reminds you before bedtime if a sleep schedule is set (Tools › Sleep).",
+    "de": "Erinnert vor der Schlafenszeit, wenn ein Schlafplan eingerichtet ist (Werkzeuge › Schlaf).",
+    "az": "Yuxu planı qurulubsa, yatma vaxtından əvvəl xatırladır (Alətlər › Yuxu).",
+    "ar": "يذكّرك قبل وقت النوم إذا كان جدول النوم مضبوطًا (الأدوات › النوم)."
+  },
+  "sleep.title": {
+    "tr": "Uyku",
+    "en": "Sleep",
+    "de": "Schlaf",
+    "az": "Yuxu",
+    "ar": "النوم"
+  },
+  "sleep.plan": {
+    "tr": "Uyku planı",
+    "en": "Sleep schedule",
+    "de": "Schlafplan",
+    "az": "Yuxu planı",
+    "ar": "جدول النوم"
+  },
+  "sleep.plan.use": {
+    "tr": "Uyku planını kullan",
+    "en": "Use a sleep schedule",
+    "de": "Schlafplan verwenden",
+    "az": "Yuxu planından istifadə et",
+    "ar": "استخدام جدول النوم"
+  },
+  "sleep.plan.note": {
+    "tr": "Kalkış saatinizden ve istediğiniz uyku süresinden yatma saati hesaplanır; isterseniz yatmadan önce hatırlatılır.",
+    "en": "Your bedtime is worked out from your wake-up time and how long you want to sleep; you can get a reminder before bed.",
+    "de": "Die Schlafenszeit wird aus Ihrer Weckzeit und der gewünschten Schlafdauer berechnet; auf Wunsch werden Sie vorher erinnert.",
+    "az": "Yatma vaxtı oyanma saatınızdan və istədiyiniz yuxu müddətindən hesablanır; istəsəniz yatmazdan əvvəl xatırladılır.",
+    "ar": "يُحسب وقت النوم من وقت الاستيقاظ ومدة النوم التي تريدها، ويمكن أن تتلقى تذكيرًا قبل النوم."
+  },
+  "sleep.wake": {
+    "tr": "Kalkış saati",
+    "en": "Wake-up time",
+    "de": "Weckzeit",
+    "az": "Oyanma saatı",
+    "ar": "وقت الاستيقاظ"
+  },
+  "sleep.duration": {
+    "tr": "Uyku süresi",
+    "en": "Sleep duration",
+    "de": "Schlafdauer",
+    "az": "Yuxu müddəti",
+    "ar": "مدة النوم"
+  },
+  "sleep.durationFmt": {
+    "tr": "{h} sa {m} dk",
+    "en": "{h} h {m} min",
+    "de": "{h} Std. {m} Min.",
+    "az": "{h} saat {m} dəq",
+    "ar": "{h} س {m} د"
+  },
+  "sleep.bedtime": {
+    "tr": "Yatma saati",
+    "en": "Bedtime",
+    "de": "Schlafenszeit",
+    "az": "Yatma vaxtı",
+    "ar": "وقت النوم"
+  },
+  "sleep.remind": {
+    "tr": "Yatma hatırlatması",
+    "en": "Bedtime reminder",
+    "de": "Erinnerung zur Schlafenszeit",
+    "az": "Yatma xatırlatması",
+    "ar": "تذكير بوقت النوم"
+  },
+  "sleep.remindWhen": {
+    "tr": "Ne zaman",
+    "en": "When",
+    "de": "Wann",
+    "az": "Nə vaxt",
+    "ar": "متى"
+  },
+  "sleep.remindAt": {
+    "tr": "Yatma saatinde",
+    "en": "At bedtime",
+    "de": "Zur Schlafenszeit",
+    "az": "Yatma vaxtında",
+    "ar": "في وقت النوم"
+  },
+  "sleep.remindBefore": {
+    "tr": "{n} dk önce",
+    "en": "{n} min before",
+    "de": "{n} Min. vorher",
+    "az": "{n} dəq əvvəl",
+    "ar": "قبل {n} د"
+  },
+  "sleep.addAlarm": {
+    "tr": "Bu kalkış saatine alarm kur",
+    "en": "Set an alarm for this wake-up time",
+    "de": "Wecker für diese Weckzeit stellen",
+    "az": "Bu oyanma saatına zəng qur",
+    "ar": "اضبط منبّهًا لوقت الاستيقاظ هذا"
+  },
+  "sleep.alarmAdded": {
+    "tr": "Alarm kuruldu (Araçlar › Alarm)",
+    "en": "Alarm set (Tools › Alarm)",
+    "de": "Wecker gestellt (Werkzeuge › Wecker)",
+    "az": "Zəng quruldu (Alətlər › Zəngli saat)",
+    "ar": "تم ضبط المنبّه (الأدوات › المنبّه)"
+  },
+  "sleep.alarmLabel": {
+    "tr": "Kalkış",
+    "en": "Wake up",
+    "de": "Aufstehen",
+    "az": "Oyanma",
+    "ar": "الاستيقاظ"
+  },
+  "sleep.cycles": {
+    "tr": "Uyku döngüleri",
+    "en": "Sleep cycles",
+    "de": "Schlafzyklen",
+    "az": "Yuxu dövrləri",
+    "ar": "دورات النوم"
+  },
+  "sleep.ifNow": {
+    "tr": "Şimdi yatarsanız kalkış saatleri",
+    "en": "If you go to bed now, wake up at",
+    "de": "Wenn Sie jetzt schlafen gehen, aufstehen um",
+    "az": "İndi yatsanız oyanma saatları",
+    "ar": "إذا نمت الآن فاستيقظ في"
+  },
+  "sleep.forWake": {
+    "tr": "{time} kalkış için yatma saatleri",
+    "en": "Bedtimes for waking at {time}",
+    "de": "Schlafenszeiten für {time} Uhr Aufstehen",
+    "az": "{time} oyanma üçün yatma saatları",
+    "ar": "أوقات النوم للاستيقاظ في {time}"
+  },
+  "sleep.cycleRow": {
+    "tr": "{n} döngü · {h} sa",
+    "en": "{n} cycles · {h} h",
+    "de": "{n} Zyklen · {h} Std.",
+    "az": "{n} dövr · {h} saat",
+    "ar": "{n} دورات · {h} س"
+  },
+  "sleep.cycles.note": {
+    "tr": "Uyku yaklaşık 90 dakikalık döngülerle ilerler; uykuya dalmak için 15 dakika eklenir. Bir döngünün sonunda uyanmak daha kolay olabilir. Bu bir öneridir, tıbbi bilgi değildir.",
+    "en": "Sleep moves in cycles of about 90 minutes; 15 minutes are added to fall asleep. Waking at the end of a cycle may feel easier. This is a suggestion, not medical advice.",
+    "de": "Schlaf verläuft in Zyklen von etwa 90 Minuten; zum Einschlafen werden 15 Minuten addiert. Am Ende eines Zyklus aufzuwachen kann leichter fallen. Das ist ein Vorschlag, kein medizinischer Rat.",
+    "az": "Yuxu təxminən 90 dəqiqəlik dövrlərlə gedir; yuxuya getmək üçün 15 dəqiqə əlavə olunur. Dövrün sonunda oyanmaq daha asan ola bilər. Bu tövsiyədir, tibbi məlumat deyil.",
+    "ar": "يسير النوم في دورات مدتها نحو 90 دقيقة، وتُضاف 15 دقيقة للخلود إلى النوم. قد يكون الاستيقاظ في نهاية دورة أسهل. هذا اقتراح وليس نصيحة طبية."
+  },
+  "sleep.sounds.note": {
+    "tr": "Sesler telefonda üretilir, dosya indirilmez. Ekran kilitliyken de sürer; seçilen sürenin sonunda son 30 saniyede kısılarak kapanır.",
+    "en": "Sounds are generated on your phone, nothing is downloaded. They keep playing with the screen locked and fade out over the last 30 seconds of the chosen time.",
+    "de": "Die Geräusche werden auf dem Telefon erzeugt, nichts wird heruntergeladen. Sie laufen auch bei gesperrtem Bildschirm weiter und werden in den letzten 30 Sekunden ausgeblendet.",
+    "az": "Səslər telefonda yaradılır, fayl endirilmir. Ekran kilidli olanda da davam edir və seçilən müddətin son 30 saniyəsində səsi azalaraq bağlanır.",
+    "ar": "تُولَّد الأصوات على هاتفك ولا يُنزَّل أي ملف. تستمر والشاشة مقفلة وتخفت تدريجيًا في آخر 30 ثانية من المدة المختارة."
+  },
+  "sleep.timer": {
+    "tr": "Kapanma",
+    "en": "Turn off after",
+    "de": "Ausschalten nach",
+    "az": "Bağlanma",
+    "ar": "الإيقاف بعد"
+  },
+  "sleep.timerOff": {
+    "tr": "Kapanmasın",
+    "en": "Never",
+    "de": "Nie",
+    "az": "Bağlanmasın",
+    "ar": "أبدًا"
+  },
+  "sleep.play": {
+    "tr": "Çal",
+    "en": "Play",
+    "de": "Abspielen",
+    "az": "Çal",
+    "ar": "تشغيل"
+  },
+  "sleep.stop": {
+    "tr": "Durdur",
+    "en": "Stop",
+    "de": "Stoppen",
+    "az": "Dayandır",
+    "ar": "إيقاف"
+  },
+  "sleep.sunriseInfo": {
+    "tr": "Bir alarmda \"Gün doğumu ışığı\"nı seçin (Araçlar › Alarm). Yatarken telefonu şarja takıp tam ekran saati açık bırakın (gece modu da olur): alarmdan 10–30 dakika önce ekran yavaşça aydınlanır.",
+    "en": "Choose \"Sunrise light\" on an alarm (Tools › Alarm). At bedtime, put the phone on its charger and leave the full-screen clock open (night mode works too): the screen slowly brightens 10–30 minutes before the alarm.",
+    "de": "Wählen Sie bei einem Wecker \"Sonnenaufgangslicht\" (Werkzeuge › Wecker). Legen Sie das Telefon zum Schlafen ans Ladegerät und lassen Sie die Vollbilduhr geöffnet (auch im Nachtmodus): 10–30 Minuten vor dem Wecker wird der Bildschirm langsam heller.",
+    "az": "Zəngdə \"Gün çıxışı işığı\"nı seçin (Alətlər › Zəngli saat). Yatanda telefonu şarja qoşub tam ekran saatı açıq saxlayın (gecə rejimi də olar): zəngdən 10–30 dəqiqə əvvəl ekran yavaş-yavaş işıqlanır.",
+    "ar": "اختر \"ضوء الشروق\" في أحد المنبّهات (الأدوات › المنبّه). عند النوم ضع الهاتف على الشاحن واترك الساعة بملء الشاشة مفتوحة (يعمل الوضع الليلي أيضًا): تضيء الشاشة ببطء قبل المنبّه بـ 10–30 دقيقة."
+  },
+  "sleep.privacy": {
+    "tr": "Uyku takibi yapılmaz: mikrofon ve hareket algılayıcısı kullanılmaz. Plan ve ayarlar yalnız bu telefonda durur.",
+    "en": "There is no sleep tracking: the microphone and motion sensors are not used. Your schedule and settings stay on this phone.",
+    "de": "Es gibt keine Schlafaufzeichnung: Mikrofon und Bewegungssensoren werden nicht verwendet. Plan und Einstellungen bleiben auf diesem Telefon.",
+    "az": "Yuxu izlənmir: mikrofon və hərəkət sensoru istifadə olunmur. Plan və ayarlar yalnız bu telefonda qalır.",
+    "ar": "لا يوجد تتبّع للنوم: لا يُستخدم الميكروفون ولا مستشعرات الحركة. يبقى الجدول والإعدادات على هذا الهاتف فقط."
+  },
+  "sleep.n.soon": {
+    "tr": "Yatma saati yaklaşıyor",
+    "en": "Bedtime is coming up",
+    "de": "Bald ist Schlafenszeit",
+    "az": "Yatma vaxtı yaxınlaşır",
+    "ar": "اقترب وقت النوم"
+  },
+  "sleep.n.now": {
+    "tr": "Yatma saati",
+    "en": "It's bedtime",
+    "de": "Schlafenszeit",
+    "az": "Yatma vaxtıdır",
+    "ar": "حان وقت النوم"
+  },
+  "sleep.n.body": {
+    "tr": "Yatma {bed} · kalkış {wake} ({dur} uyku)",
+    "en": "Bed {bed} · wake {wake} ({dur} of sleep)",
+    "de": "Schlafen {bed} · aufstehen {wake} ({dur} Schlaf)",
+    "az": "Yatma {bed} · oyanma {wake} ({dur} yuxu)",
+    "ar": "النوم {bed} · الاستيقاظ {wake} ({dur} من النوم)"
   }
 }

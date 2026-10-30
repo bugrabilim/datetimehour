@@ -36,7 +36,8 @@ enum class NotifyFeature(val id: String, val tab: Tab) {
     SUN("sun", Tab.SEASONS),
     WEATHER("weather", Tab.WEATHER),
     HOURLY("hourly", Tab.CLOCK),
-    DST("dst", Tab.WORLD);
+    DST("dst", Tab.WORLD),
+    BEDTIME("bedtime", Tab.TOOLS);
 
     val key: String get() = "notify.$id"
     /** Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı) */
@@ -132,6 +133,7 @@ object FeatureNotifier {
         if (FeaturePrefs.isOn(NotifyFeature.HOURLY)) out += hourly(now)
         if (FeaturePrefs.isOn(NotifyFeature.WEATHER)) out += weather(context, place, now)
         out += CountdownItem.reminders(now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
+        if (FeaturePrefs.isOn(NotifyFeature.BEDTIME)) out += SleepPlan.reminders(now, days) // uyku planı kuruluysa
         return out.filter { it.at.isAfter(now) }
     }
 
