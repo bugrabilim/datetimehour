@@ -520,7 +520,7 @@
     <string name="settings_website">Veb sayt</string>
     <string name="settings_version">Versiya</string>
     <string name="settings_privacy">Məxfilik</string>
-    <string name="settings_privacyNote">Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır.</string>
+    <string name="settings_privacyNote">Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır. İbadət qeydləri (Quranda qaldığınız yer, zikr, namaz və oruc izləmə, zəkat məbləğləri) yalnız telefonda qalır. \"iCloud ilə sinxronlaşdır\" açıqdırsa, ayarlar və şəxsi qeydlər iCloud hesabınız vasitəsilə yalnız öz cihazlarınızla sinxronlaşdırılır.</string>
     <string name="clock_fullscreen">Tam ekran</string>
     <string name="clock_weekDay">%1$s. həftə · ilin %2$s. günü</string>
     <string name="clock_tapToExit">Çıxmaq üçün toxunun</string>
@@ -635,7 +635,7 @@
     <string name="kids_fact4">Ekvatora yaxın ölkələrdə yay ilə qış arasında fərq azdır; orada yağışlı və quraq fəsillər olur.</string>
     <string name="kids_fact5">Şimal yarımkürəsində yay qışdan bir neçə gün uzundur: Yer Günəşdən uzaqda olanda bir az yavaş gedir.</string>
     <string name="kids_more">Növbəti illər</string>
-    <string name="settings_privacyNoteAndroid">Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır.</string>
+    <string name="settings_privacyNoteAndroid">Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır. İbadət qeydləri (Quranda qaldığınız yer, zikr, namaz və oruc izləmə, zəkat məbləğləri) yalnız telefonda qalır; telefonun Google ehtiyat nüsxəsi açıqdırsa, ona daxil olur.</string>
     <string name="badges_h1">Nişanlar</string>
     <string name="badges_privacyLink">Məxfilik</string>
     <string name="badges_earnedOn">Qazanıldı: %1$s</string>
@@ -1080,5 +1080,9 @@
     <string name="zakat_notDue">Varlığınız nisabdan aşağıdır; zəkat düşmür.</string>
     <string name="zakat_amount">Zəkat (1/40)</string>
     <string name="zakat_note">Hesab Diyanətin əsaslarına görədir: nisab 80,18 qram qızıl, nisbət qırxda bir; malın üzərindən bir qəməri il keçməlidir. İstifadə olunan ev, avtomobil və əşyalar daxil edilmir. Dəqiq məlumat üçün alimə müraciət edin. Məbləğlər yalnız bu cihazda qalır.</string>
+    <string name="sync_title">iCloud ilə sinxronlaşdır</string>
+    <string name="sync_note">Ayarlarınız, dünya saatları, geri sayımlar, saxlanmış yerlər, pomodoro və yuxu qeydləri, eləcə də ibadət qeydləri eyni Apple hesabındakı iPhone, iPad və Mac-da sinxronlaşdırılır. Məlumat iCloud hesabınızda qalır, bizə gəlmir. Məkan, zəngli saatlar, işləyən sayğaclar, bildiriş ayarları, nişanlar və fotolar hər cihazda ayrıdır.</string>
+    <string name="sync_androidTitle">Ehtiyat nüsxə və yeni telefon</string>
+    <string name="sync_androidNote">Telefonun Google ehtiyat nüsxəsi açıqdırsa, ayarlarınız və qeydləriniz (dünya saatları, geri sayımlar, zəngli saatlar, pomodoro, yuxu və ibadət qeydləri, fotolar) Google hesabınızdakı ehtiyat nüsxəyə düşür və yeni telefona keçəndə ya tətbiqi yenidən quranda bərpa olunur. Bu ehtiyat nüsxəni Google idarə edir; bizə heç nə gəlmir. Telefon Ayarları › Google › Ehtiyat nüsxə.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

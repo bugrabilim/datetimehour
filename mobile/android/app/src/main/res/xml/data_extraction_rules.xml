@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+ yedek kuralları (sunucusuz eşitleme, 30 Ekim 2026): ayarlar ve kayıtlar ("prefs") ile fotoğraflar telefonun
+     Google yedeğine ve telefondan telefona aktarıma girer. Telefonda yeniden üretilen bildirim sesleri ("sounds") girmez.
+     Cihaza özgü birkaç kayıt geri yüklemeden sonra Prefs.clearRestoredDeviceKeys ile silinir. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="file" path="sounds" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="file" path="sounds" />
+    </device-transfer>
+</data-extraction-rules>

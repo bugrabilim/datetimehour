@@ -12,6 +12,8 @@ struct SaatTarihApp: App {
         Features.migrate()
         // Apple Watch'a seçili yer (WatchConnectivity)
         WatchSync.shared.start()
+        // iPhone, iPad ve Mac arasında ayarlar (iCloud anahtar-değer deposu; sunucu yok)
+        CloudSync.start()
     }
 
     var body: some Scene {
@@ -23,6 +25,7 @@ struct SaatTarihApp: App {
             // Otomatik konumdaysa konum sessizce yenilenir (değişirse bildirimler de yeniden kurulur)
             if phase == .active {
                 BadgeStore.shared.appOpened()
+                CloudSync.start()
                 Task {
                     await PlaceModel.shared.refresh()
                     await PrayerNotifier.askOnce()

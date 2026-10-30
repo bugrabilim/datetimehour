@@ -99,6 +99,10 @@ Sitedeki gizlilik sayfasının "Android uygulaması" bölümüyle aynı olmalı:
 - Kıble yönü ve pusula telefonda hesaplanır; yakındaki camiler aramasındaki koordinat yukarıdaki "yaklaşık konum"
   beyanına girer (aynı amaç).
 - Takvim etkinlikleri, fotoğraflar, rozetler, pomodoro geçmişi, uyku planı ve tercihler telefondan çıkmaz: "toplanmaz".
+- İbadet kayıtları (Kur'an'da kaldığım yer, zikir sayıları, namaz/oruç takibi, zekât tutarları) telefondan çıkmaz:
+  "toplanmaz". Dini inanç Play'in "hassas veri" türüdür ama uygulama bu veriyi toplamaz ve göndermez; beyan değişmez.
+- Android yedeği (`data_extraction_rules.xml`): tercihler ve fotoğraflar telefonun Google yedeğine girer; bu Google'ın
+  kullanıcı adına yaptığı yedektir, geliştiriciye gelmez (Play'in tanımında "toplama" sayılmaz).
 - Alarm kapatma görevindeki QR/barkod okuma Google kod tarayıcısıyla (Play hizmetleri) yapılır: uygulama kamera izni
   istemez, görüntü uygulamaya gelmez, yalnız okunan değer gelir ve telefonda saklanır ("toplanmaz").
 - Veri aktarımı şifreli (HTTPS). Silme: uygulama silinince yerel veriler silinir; e-posta listesinden çıkış

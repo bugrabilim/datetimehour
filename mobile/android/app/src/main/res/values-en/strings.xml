@@ -520,7 +520,7 @@
     <string name="settings_website">Website</string>
     <string name="settings_version">Version</string>
     <string name="settings_privacy">Privacy</string>
-    <string name="settings_privacyNote">No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple\'s weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone.</string>
+    <string name="settings_privacyNote">No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple\'s weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone. Worship records (Quran bookmark, dhikr, prayer and fasting tracker, zakat amounts) stay on the phone. If \"Sync with iCloud\" is on, settings and personal records are synced only with your own devices through your iCloud account.</string>
     <string name="clock_fullscreen">Full screen</string>
     <string name="clock_weekDay">Week %1$s · day %2$s of the year</string>
     <string name="clock_tapToExit">Tap to exit</string>
@@ -635,7 +635,7 @@
     <string name="kids_fact4">Near the equator summer and winter feel almost the same; instead there are rainy and dry seasons.</string>
     <string name="kids_fact5">In the northern half, summer is a few days longer than winter: Earth moves a little slower when it\'s farther from the Sun.</string>
     <string name="kids_more">Next years</string>
-    <string name="settings_privacyNoteAndroid">The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone\'s calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone.</string>
+    <string name="settings_privacyNoteAndroid">The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone\'s calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone. Worship records (Quran bookmark, dhikr, prayer and fasting tracker, zakat amounts) stay on the phone; if the phone\'s Google backup is on, they are included in it.</string>
     <string name="badges_h1">Badges</string>
     <string name="badges_privacyLink">Privacy</string>
     <string name="badges_earnedOn">Earned: %1$s</string>
@@ -1080,5 +1080,9 @@
     <string name="zakat_notDue">Your wealth is below the nisab; no zakat is due.</string>
     <string name="zakat_amount">Zakat (1/40)</string>
     <string name="zakat_note">Based on the Diyanet\'s rules: nisab is 80.18 g of gold, the rate is one fortieth, and a lunar year must have passed over the wealth. Your home, car and personal items are not counted. Ask a scholar for certainty. Amounts stay on this device.</string>
+    <string name="sync_title">Sync with iCloud</string>
+    <string name="sync_note">Your settings, world clocks, countdowns, saved places, pomodoro and sleep records and worship records are synced across the iPhone, iPad and Mac signed in to the same Apple Account. The data stays in your iCloud account and never reaches us. Location, alarms, running timers, notification settings, badges and photos stay separate on each device.</string>
+    <string name="sync_androidTitle">Backup and new phone</string>
+    <string name="sync_androidNote">If your phone\'s Google backup is on, your settings and records (world clocks, countdowns, alarms, pomodoro, sleep and worship records, photos) go into the backup in your Google Account and are restored when you move to a new phone or reinstall the app. Google manages this backup; nothing reaches us. Phone Settings › Google › Backup.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

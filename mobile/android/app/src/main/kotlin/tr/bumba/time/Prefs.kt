@@ -16,8 +16,27 @@ object Prefs {
     /** Ekranlara özgü küçük kayıtlar için (araçlar, bildirim tercihleri…): aynı "prefs" dosyası */
     val store: SharedPreferences get() = sp
 
+    /**
+     * Google yedeğinden yeni telefona geri yüklenen kayıtlarda cihaza özgü olanlar silinir: bildirim izni sorusu
+     * (izin yeni telefonda yok) ve widget yer seçimleri (widget kimlikleri cihaza özgü). Yalnız ilk kurulumda bir kez
+     * (geri yükleme kurulumla olur); uygulama güncellemesinde dokunulmaz. İşaret yedeğe girmeyen klasörde durur.
+     */
+    private fun clearRestoredDeviceKeys(c: Context) {
+        val marker = java.io.File(c.noBackupFilesDir, "installed")
+        if (marker.exists()) return
+        val info = runCatching { c.packageManager.getPackageInfo(c.packageName, 0) }.getOrNull()
+        val fresh = info == null || info.firstInstallTime == info.lastUpdateTime
+        if (fresh && sp.all.isNotEmpty()) {
+            val e = sp.edit().remove("notify.asked")
+            sp.all.keys.filter { it.startsWith("widget.place.") || it.startsWith("alarm.snoozed.") }.forEach { e.remove(it) }
+            e.apply()
+        }
+        runCatching { marker.createNewFile() }
+    }
+
     fun init(c: Context) {
         sp = c.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        clearRestoredDeviceKeys(c)
         Features.load(sp) // ilk iş: önceki kullanıcı mı diye dosyanın boş olup olmadığına bakar
         accent = sp.getString("accent", AccentPalette.DEFAULT_ID)!!
         appearance = sp.getString("appearance", "system")!!

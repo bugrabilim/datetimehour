@@ -161,6 +161,11 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                 Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
             }
         }
+        // Sunucusuz yedek: telefonun Google yedeği (res/xml/data_extraction_rules.xml); hesap ve sunucu yok
+        AppCard {
+            SectionTitle(L("sync.androidTitle"))
+            Text(L("sync.androidNote"), color = Theme.c.muted, fontSize = 13.sp)
+        }
         // Simge kısayolları, asistan/uygulamalardan zamanlayıcı-alarm, şarjda ekran koruyucu (rakip analizi #7)
         AppCard {
             SectionTitle(L("android.shortcuts.title"))

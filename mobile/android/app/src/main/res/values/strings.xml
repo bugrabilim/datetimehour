@@ -520,7 +520,7 @@
     <string name="settings_website">Web sitesi</string>
     <string name="settings_version">Sürüm</string>
     <string name="settings_privacy">Gizlilik</string>
-    <string name="settings_privacyNote">Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple\'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler\'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır.</string>
+    <string name="settings_privacyNote">Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple\'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler\'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır. İbadet kayıtları (Kur\'an\'da kaldığınız yer, zikir, namaz ve oruç takibi, zekât tutarları) yalnız telefonda durur. \"iCloud ile eşitle\" açıksa ayarlar ve kişisel kayıtlar iCloud hesabınız üzerinden yalnız kendi cihazlarınızla eşitlenir.</string>
     <string name="clock_fullscreen">Tam ekran</string>
     <string name="clock_weekDay">%1$s. hafta · yılın %2$s. günü</string>
     <string name="clock_tapToExit">Çıkmak için dokunun</string>
@@ -635,7 +635,7 @@
     <string name="kids_fact4">Ekvatora yakın ülkelerde yaz ile kış arasında fark azdır; orada yağmurlu ve kurak mevsimler vardır.</string>
     <string name="kids_fact5">Kuzey yarımkürede yaz, kıştan birkaç gün uzundur: Dünya Güneş\'ten uzaktayken biraz daha yavaş gider.</string>
     <string name="kids_more">Sonraki yıllar</string>
-    <string name="settings_privacyNoteAndroid">Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo\'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler\'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır.</string>
+    <string name="settings_privacyNoteAndroid">Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo\'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler\'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır. İbadet kayıtları (Kur\'an\'da kaldığınız yer, zikir, namaz ve oruç takibi, zekât tutarları) yalnız telefonda durur; telefonun Google yedeği açıksa yedeğe girer.</string>
     <string name="badges_h1">Rozetler</string>
     <string name="badges_privacyLink">Gizlilik</string>
     <string name="badges_earnedOn">Kazanıldı: %1$s</string>
@@ -1080,5 +1080,9 @@
     <string name="zakat_notDue">Varlığınız nisabın altında; zekât düşmez.</string>
     <string name="zakat_amount">Zekât (1/40)</string>
     <string name="zakat_note">Hesap Diyanet\'in esaslarına göredir: nisab 80,18 gram altın, oran kırkta bir; malın üzerinden bir kamerî yıl geçmiş olmalıdır. Kullanılan ev, araç ve eşya katılmaz. Kesin bilgi için Diyanet\'e danışın. Girdiğiniz tutarlar yalnız bu cihazda kalır.</string>
+    <string name="sync_title">iCloud ile eşitle</string>
+    <string name="sync_note">Ayarlarınız, dünya saatleri, geri sayımlar, kayıtlı yerler, pomodoro ve uyku kayıtları ile ibadet kayıtları aynı Apple hesabındaki iPhone, iPad ve Mac\'inizde eşitlenir. Veri iCloud hesabınızda durur, bize gelmez. Konum, alarmlar, süren sayaçlar, bildirim ayarları, rozetler ve fotoğraflar her cihazda ayrıdır.</string>
+    <string name="sync_androidTitle">Yedek ve yeni telefon</string>
+    <string name="sync_androidNote">Ayarlarınız ve kayıtlarınız (dünya saatleri, geri sayımlar, alarmlar, pomodoro, uyku ve ibadet kayıtları, fotoğraflar) telefonun Google yedeği açıksa Google hesabınızdaki yedeğe girer ve yeni telefona geçerken ya da uygulamayı yeniden kurunca geri yüklenir. Bu yedeği Google yönetir; bize bir şey gelmez. Telefon Ayarları › Google › Yedekleme.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

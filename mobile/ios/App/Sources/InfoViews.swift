@@ -11,6 +11,7 @@ struct SettingsView: View {
     /// Renk değişince bu sayfa da yeni renkle çizilir
     @AppStorage("accent") private var accent = AccentPalette.defaultID
     @AppStorage(Features.key) private var features = ""
+    @State private var syncOn = CloudSync.enabled
 
     var body: some View {
         Form {
@@ -47,6 +48,14 @@ struct SettingsView: View {
                     Text(L("settings.dark")).tag("dark")
                 }
                 NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
+            }
+            // Sunucusuz eşitleme (CloudSync.swift): aynı Apple hesabındaki cihazlar arasında, iCloud anahtar-değer deposu
+            Section {
+                Toggle(isOn: Binding(get: { syncOn }, set: { syncOn = $0; CloudSync.setEnabled($0) })) {
+                    Label(L("sync.title"), systemImage: "icloud")
+                }
+            } footer: {
+                Text(L("sync.note"))
             }
             // Siri ve Kısayollar (AppIntents.swift): Kısayollar uygulamasındaki eylemlere bağlantı ve şarj otomasyonu notu
             Section {
