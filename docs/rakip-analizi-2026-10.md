@@ -18,34 +18,36 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 ## 1. Birleşik tablo (öncelik sırasıyla)
 
+**Durum (30 Ekim 2026, ikinci tur):** "kısmen" olup çabası K ya da O olan maddeler yapıldı (3, 5, 10, 11, 12, 14, 15, 19, 23, 24, 26); "Bizde" sütununda **yapıldı** yazar. Canlıya basma ve yeni iOS yapısı sahibin talimatıyla.
+
 | # | Özellik | Örnek rakipler | Nerede | Bizde | Çaba | Not |
 |---|---|---|---|---|---|---|
 | 1 | Gece / yatak başı modu: kırmızı-loş görünüm, gün batımında kendiliğinden kararma, dokunarak karartma, OLED piksel kaydırma, uyku zamanlayıcısı | iOS StandBy, Google Saat, Night Clock, Fliqlo, Big Clock HD | iOS, Android | yok | K | Tam ekran ve ekranı açık tutma hazır; kategorideki en büyük boşluk |
 | 2 | Live Activity / Dynamic Island / kilit ekranı: zamanlayıcı, pomodoro, kronometre, sıradaki vakte kalan, iftar | Apple Saat, Timer+, Vakit, Pillars, Flip Clock - Pomodoro | iOS | yok | O | "Sıradaki vakit" Live Activity'si farklılaştırıcı |
-| 3 | Alarmın temel ayarları: gün seçimi, erteleme süresi ve sayısı, ses seçimi (müzik, uygulama sesleri), kademeli ses, titreşim, sonraki alarmı atla | Apple Saat (iOS 26), Alarm Clock Xtreme, Simple Alarm Clock, Samsung Saat | iOS, Android | kısmen (bir kez / her gün / hafta içi, sabit 5 dk) | O | Kategorideki en zayıf yanımız |
+| 3 | Alarmın temel ayarları: gün seçimi, erteleme süresi ve sayısı, ses seçimi (müzik, uygulama sesleri), kademeli ses, titreşim, sonraki alarmı atla | Apple Saat (iOS 26), Alarm Clock Xtreme, Simple Alarm Clock, Samsung Saat | iOS, Android | **yapıldı** (gün seçimi, erteleme süresi, atla; Android'de ses ve titreşim; kademeli ses ve erteleme sayısı yok) | O | Kategorideki en zayıf yanımız |
 | 4 | Tatil ve arife bilen alarm ("bayramda çalma") | AMdroid | Android | yok | K | Türkiye tatil verimiz hazır; rakiplerde neredeyse yok |
-| 5 | Flip (çevirmeli kart) saat modeli | Fliqlo, Flip Clock: Digital Desk Widget, Zen Flip Clock | iOS, Android, masaüstü | kısmen (yalnız gömme widget'ında) | K–O | Kategorinin adı; sahneye ve uygulamalara taşınabilir |
+| 5 | Flip (çevirmeli kart) saat modeli | Fliqlo, Flip Clock: Digital Desk Widget, Zen Flip Clock | iOS, Android, masaüstü | **yapıldı** (sahnede 20. model, uygulamalarda) | K–O | Kategorinin adı; sahneye ve uygulamalara taşınabilir |
 | 6 | Apple Watch ve Wear OS (komplikasyon, bilekten erteleme) | Vakit, Vakitler, NV-Codeida, Fazilet, Timer+, Google Saat | watchOS, Wear OS | yok | B | Yol haritası 6. adım; Türk namaz rakiplerinin çoğunda var |
 | 7 | Siri / Kısayollar (App Intents): alarm/zamanlayıcı kur, "saati tam ekran aç"; şarja takınca açılma otomasyonu | Apple Saat, Timer+, Vakitler, Flip Clock | iOS (Android: Asistan, Daydream) | yok | O | Saat uygulaması (6. adım) öncesi ucuz ilk adım |
 | 8 | Kıble pusulası ve yakındaki camiler | İncelenen 13 namaz uygulamasının hepsi (e-Diyanet, Muslim Pro, Vakit…) | iOS, Android | yok | O | Dini metin değil, yön hesabı; camiler MapKit aramasıyla. **Sahip kararı gerekir** |
 | 9 | Hicri tarih (widget ve kilit ekranında) | Muslim Pro, Athan, e-Diyanet, Fazilet | iOS, Android | yok | K | Diyanet tarihinden bir gün kayabilir, sayfada uyarı gerekir |
-| 10 | Ay doğuş/batış, Ay takvimi (aylık ızgara), Ay evresi widget'ı, tutulmalar | Lunar, LunarPhase, Lumos, timeanddate | iOS, web | kısmen (bugünün Ay'ı; dolunay/yeni ay bildirimi bu turda) | O | Meeus çekirdeği genişletilir; "ay tutulması ne zaman" SEO |
-| 11 | Saniyeli ve StandBy'a uygun widget'lar; dünya saati widget'ı; geri sayım widget'ı | Flip Clock widgets, World Clock Widget, Countdown Widget | iOS | kısmen (widget'lar saniyesiz; dünya ve geri sayım widget'ı yok) | O | |
-| 12 | Aynı anda birden çok, adlı zamanlayıcı; aralık (HIIT/Tabata) rutinleri; sesli duyurular | Apple Saat, Timer+, Seconds, MultiTimer | iOS, Android | kısmen (tek zamanlayıcı, pomodoro) | O | Sesli duyuru motoru vakit bildirimlerinde var |
+| 10 | Ay doğuş/batış, Ay takvimi (aylık ızgara), Ay evresi widget'ı, tutulmalar | Lunar, LunarPhase, Lumos, timeanddate | iOS, web | **yapıldı** (doğuş/batış USNO ±1 dk, Ay takvimi, Ay widget'ı, NASA tutulma listesi) | O | Meeus çekirdeği genişletilir; "ay tutulması ne zaman" SEO |
+| 11 | Saniyeli ve StandBy'a uygun widget'lar; dünya saati widget'ı; geri sayım widget'ı | Flip Clock widgets, World Clock Widget, Countdown Widget | iOS | **yapıldı** (saniyeli, dünya saatleri, geri sayım widget'ları; Android analogda saniye ibresi) | O | |
+| 12 | Aynı anda birden çok, adlı zamanlayıcı; aralık (HIIT/Tabata) rutinleri; sesli duyurular | Apple Saat, Timer+, Seconds, MultiTimer | iOS, Android | **yapıldı** (adlı zamanlayıcılar, aralık antrenmanı, sesli duyuru) | O | Sesli duyuru motoru vakit bildirimlerinde var |
 | 13 | Kapatma görevi (matematik, sallama, adım, QR) ve uyanma kontrolü | Alarmy (50M+), Challenges, Alarm Clock Xtreme | iOS, Android | yok | O | iOS'ta AlarmKit sistem ekranıyla nasıl birleşeceği doğrulanmalı; rozetlere bağlanabilir |
-| 14 | Alarmdan sonra "günaydın" kartı (hava, sıradaki vakit, bugünün özel günü, takvim) | Alarmy, Alarm Clock Xtreme, Google Saat, Samsung Saat | iOS, Android | kısmen (veriler var, alarma bağlı değil) | K | |
-| 15 | Kişisel geri sayım listesi (yinelenen yıllık olay, hatırlatma, emoji/fotoğraf); takvim etkinliğinden geri sayım | Countdown (Sevenlogics), Time Until (Türk), Dreamdays | iOS | kısmen (hazır hedefler + tek tarih) | O | Rakipler yıllık 14,99 $'a satıyor |
+| 14 | Alarmdan sonra "günaydın" kartı (hava, sıradaki vakit, bugünün özel günü, takvim) | Alarmy, Alarm Clock Xtreme, Google Saat, Samsung Saat | iOS, Android | **yapıldı** (günaydın kartı) | K | |
+| 15 | Kişisel geri sayım listesi (yinelenen yıllık olay, hatırlatma, emoji/fotoğraf); takvim etkinliğinden geri sayım | Countdown (Sevenlogics), Time Until (Türk), Dreamdays | iOS | **yapıldı** (liste, emoji, yıllık, hatırlatma, takvimden seçme; fotoğraf yok) | O | Rakipler yıllık 14,99 $'a satıyor |
 | 16 | Odak istatistikleri ve geçmiş (cihazda), görev listesi, beyaz gürültü | Forest, Focus To-Do, Be Focused, Pomofocus | iOS, Android, web | yok | O | |
 | 17 | Uyku programı / yatma vakti hatırlatması, uyku sesleri, gün doğumu alarmı | Apple Saat + Sağlık, Google Saat, Alarmy | iOS, Android | yok | O | Uyku takibi (mikrofon) büyük iş, kapsam dışı önerilir |
 | 18 | iPad (ve Mac) desteği | Fliqlo, Vakit, Fazilet, Zen Flip Clock | iPadOS, macOS | yok (yalnız iPhone) | O | Masa ve yatak başı kullanımının doğal cihazı |
-| 19 | İlçe bazında namaz vakti; birden çok kayıtlı konum; dünya şehirleri | NV-Codeida, Vakitler, KuKa, Fazilet, Athan | iOS, web | kısmen (81 il merkezi ya da GPS) | O | |
+| 19 | İlçe bazında namaz vakti; birden çok kayıtlı konum; dünya şehirleri | NV-Codeida, Vakitler, KuKa, Fazilet, Athan | iOS, web | **yapıldı** (uygulamalarda 973 ilçe, GeoNames; kayıtlı yerler; sitede yok) | O | |
 | 20 | Site: hazır süreli zamanlayıcı ve alarm sayfaları ("5 dakika zamanlayıcı", "07:00 alarm kur") | vclock, e.ggtimer, onlinealarmkur, onlinesaat.web.tr | web | yok | K | Uzun kuyruk SEO, derlemede statik üretim |
 | 21 | Site: ICS takvim aktarma (Türkiye tatilleri, arife, okul) ve PDF takvim | worldtimebuddy, everytimezone, timeanddate | web | yok | K–O | Türkiye tatil ICS'i veren rakip görülmedi; 2027 takvim aramaları Kasım–Ocak |
 | 22 | Site: köprü tatil / izin planlayıcı ("kaç gün izinle kaç gün tatil") | tatilsepeti (tablo), haber siteleri (makale) | web | yok | K | Etkileşimli araç yapan rakip yok |
-| 23 | Site: eksik özel gün geri sayımları (Anneler, Babalar, Sevgililer Günü, okul kapanışı) | saat-kac.tr, canlisaat.com, vclock | web | kısmen | K | |
-| 24 | Site: toplantı planlayıcı ve çeviricide paylaşılabilir bağlantı + takvime ekle | worldtimebuddy, time.is/compare, everytimezone | web | kısmen (yalnız geri sayımda `?t=`) | K | |
+| 23 | Site: eksik özel gün geri sayımları (Anneler, Babalar, Sevgililer Günü, okul kapanışı) | saat-kac.tr, canlisaat.com, vclock | web | **yapıldı** (Sevgililer, Kadınlar, Anneler, Babalar, Öğretmenler Günü) | K | |
+| 24 | Site: toplantı planlayıcı ve çeviricide paylaşılabilir bağlantı + takvime ekle | worldtimebuddy, time.is/compare, everytimezone | web | **yapıldı** (bağlantı, .ics, Google Takvim) | K | |
 | 25 | Site: dünya yaz saati değişim listesi; kısaltma/dönüşüm sayfaları (UTC, CET, "EST to CET"); Unix saati | time.is, worldtimeserver, 24timezones | web | yok | K–O | EN/DE trafiği; uygulamada yaz saati bildirimi bu turda eklendi |
-| 26 | Görünüm: yazı tipi, fotoğraf/hareketli arka plan, hareketli hava sahneleri | Flip Clock - Digital Clock, Nightstand, Pixel ekran koruyucu | iOS, Android, web | kısmen (24 renk teması) | O | |
+| 26 | Görünüm: yazı tipi, fotoğraf/hareketli arka plan, hareketli hava sahneleri | Flip Clock - Digital Clock, Nightstand, Pixel ekran koruyucu | iOS, Android, web | **yapıldı** (uygulamalarda yazı tipi ve tam ekran fotoğrafı; hareketli arka plan yok) | O | |
 | 27 | Çok ülkeli resmî tatil takvimleri | timeanddate, time.is, vclock | web | kısmen (yalnız Türkiye) | B | |
 | 28 | Saat başı bildirimi; dini/özel gün, mevsim, Ay, gün doğumu-batımı, hava, yaz saati bildirimleri | Flip Clock widgets, Desk Clock, e-Diyanet, Lunar, World Clock | iOS, Android | **bu turda yapıldı** (Ayarlar › Bildirimler, varsayılan açık) | — | Canlıya talimatla |
 
