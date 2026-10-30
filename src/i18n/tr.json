@@ -741,6 +741,10 @@
         "zones": {
           "name": "Saat dilimleri",
           "desc": "UTC, CET, EST gibi kısaltmalar, farklar ve şu anki saat."
+        },
+        "worldHol": {
+          "name": "Dünya resmî tatilleri",
+          "desc": "30 ülkenin resmî tatilleri, tarihleri ve kalan gün."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -2003,6 +2007,42 @@
       {
         "q": "Zaman damgası saniye mi milisaniye mi?",
         "a": "10 basamaklı sayılar genellikle saniye, 13 basamaklı sayılar milisaniyedir. Bu sayfadaki çevirici basamak sayısına göre ikisini ayırır."
+      }
+    ]
+  },
+  "worldHol": {
+    "hubTitle": "Ülkelere göre resmî tatiller 2026–2028 | Saat Tarih",
+    "hubDescription": "Almanya, İngiltere, ABD, Hollanda, Fransa ve 25 ülkenin daha ülke genelindeki resmî tatilleri: tarihler, haftanın günleri, sıradaki tatil ve kalan gün.",
+    "hubH1": "Ülkelere göre resmî tatiller",
+    "hubLead": "30 ülkenin ülke genelindeki resmî tatilleri ve sıradaki tatile kalan gün.",
+    "hubSearch": "resmi tatiller ülkeler almanya ingiltere abd hollanda fransa tatil takvimi public holidays",
+    "colCountry": "Ülke",
+    "colNext": "Sıradaki tatil",
+    "colCount": "{year} tatil sayısı",
+    "turkey": "Türkiye",
+    "pageTitle": "{country} resmî tatilleri {from}–{to} | Saat Tarih",
+    "pageDescription": "{country} ülke genelindeki resmî tatiller {from}–{to}: tarihler, haftanın günleri ve kalan gün. {year} yılında {n} resmî tatil var, {w} tanesi hafta içine denk geliyor.",
+    "pageH1": "{country} resmî tatilleri",
+    "pageLead": "{country} ülke genelindeki resmî tatil günleri, tarihleri ve kalan gün sayısı.",
+    "search": "resmi tatil bayram tatil günleri public holidays",
+    "caption": "{country} {year} resmî tatilleri",
+    "colDate": "Tarih",
+    "colDay": "Gün",
+    "colName": "Tatil",
+    "colLeft": "Kalan",
+    "summary": "{year}: {n} resmî tatil, {w} tanesi hafta içinde.",
+    "regional": "Bunlara ek olarak {year} yılında yalnız bazı eyalet ya da bölgelerde geçerli {n} tatil vardır; bu sayfada gösterilmez.",
+    "nextLabel": "Sıradaki tatil",
+    "source": "Kaynak: Nager.Date (date.nager.at, MIT lisansı), {date} tarihinde alındı. Yalnız ülke genelindeki resmî tatiller; tarihler değişebilir, resmî duyuruyu esas alın.",
+    "localName": "Yerel adı: {name}",
+    "inDays": "{n} gün sonra",
+    "today": "Bugün",
+    "tomorrow": "Yarın",
+    "passed": "Geçti",
+    "faq": [
+      {
+        "q": "Hangi ülkelerin resmî tatilleri var?",
+        "a": "Bu bölümde Avrupa'dan Almanya, İngiltere, Fransa, Hollanda, Belçika, Avusturya, İsviçre ve diğerleri; ayrıca ABD, Kanada, Brezilya, Avustralya, Japonya, Çin, Rusya, Gürcistan, Singapur ve Güney Afrika olmak üzere 30 ülkenin ülke genelindeki resmî tatilleri vardır. Türkiye'nin tatilleri yıllık takvim sayfalarındadır."
       }
     ]
   }

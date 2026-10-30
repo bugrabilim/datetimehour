@@ -768,6 +768,10 @@
         "zones": {
           "name": "Zeitzonen",
           "desc": "Abkürzungen wie UTC, MEZ und EST, Unterschiede und aktuelle Uhrzeit."
+        },
+        "worldHol": {
+          "name": "Feiertage weltweit",
+          "desc": "Feiertage in 30 Ländern mit Datum und verbleibenden Tagen."
         }
       },
       "infoHeading": "Infoseiten"
@@ -2030,6 +2034,42 @@
       {
         "q": "Ist ein Zeitstempel in Sekunden oder Millisekunden?",
         "a": "Zahlen mit 10 Stellen sind meist Sekunden, mit 13 Stellen Millisekunden. Der Umrechner auf dieser Seite unterscheidet sie an der Stellenzahl."
+      }
+    ]
+  },
+  "worldHol": {
+    "hubTitle": "Feiertage nach Ländern 2026–2028 | Saat Tarih",
+    "hubDescription": "Landesweite Feiertage in Deutschland, Großbritannien, den USA, den Niederlanden, Frankreich und 25 weiteren Ländern: Daten, Wochentage, nächster Feiertag.",
+    "hubH1": "Feiertage nach Ländern",
+    "hubLead": "Landesweite Feiertage in 30 Ländern und die Tage bis zum nächsten Feiertag.",
+    "hubSearch": "feiertage länder deutschland österreich schweiz großbritannien usa niederlande frankreich public holidays",
+    "colCountry": "Land",
+    "colNext": "Nächster Feiertag",
+    "colCount": "Feiertage {year}",
+    "turkey": "Türkei",
+    "pageTitle": "Feiertage {country} {from}–{to} | Saat Tarih",
+    "pageDescription": "{country}: landesweite Feiertage {from}–{to} mit Daten, Wochentagen und verbleibenden Tagen. {year} gibt es {n} Feiertage, davon {w} an Werktagen.",
+    "pageH1": "Feiertage {country}",
+    "pageLead": "{country}: landesweite Feiertage, ihre Daten und die verbleibenden Tage.",
+    "search": "feiertage gesetzliche feiertage freie tage public holidays",
+    "caption": "Feiertage {country} {year}",
+    "colDate": "Datum",
+    "colDay": "Tag",
+    "colName": "Feiertag",
+    "colLeft": "Noch",
+    "summary": "{year}: {n} Feiertage, {w} an Werktagen.",
+    "regional": "Zusätzlich gibt es {year} {n} Feiertage, die nur in einzelnen Bundesländern oder Regionen gelten; sie werden hier nicht gezeigt.",
+    "nextLabel": "Nächster Feiertag",
+    "source": "Quelle: Nager.Date (date.nager.at, MIT-Lizenz), abgerufen am {date}. Nur landesweite Feiertage; Daten können sich ändern, maßgeblich ist die amtliche Mitteilung.",
+    "localName": "Landessprache: {name}",
+    "inDays": "in {n} Tagen",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "passed": "Vorbei",
+    "faq": [
+      {
+        "q": "Für welche Länder sind Feiertage aufgeführt?",
+        "a": "Hier stehen die landesweiten Feiertage von 30 Ländern: Deutschland, Österreich, die Schweiz, Großbritannien, Frankreich, die Niederlande, Belgien und weitere in Europa sowie die USA, Kanada, Brasilien, Australien, Japan, China, Russland, Georgien, Singapur und Südafrika. Die Feiertage der Türkei stehen auf den Jahreskalender-Seiten."
       }
     ]
   }

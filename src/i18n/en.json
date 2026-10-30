@@ -741,6 +741,10 @@
         "zones": {
           "name": "Time zones",
           "desc": "Abbreviations like UTC, CET and EST, differences and the current time."
+        },
+        "worldHol": {
+          "name": "Public holidays worldwide",
+          "desc": "Public holidays in 30 countries, with dates and days left."
         }
       },
       "infoHeading": "Information pages"
@@ -2003,6 +2007,42 @@
       {
         "q": "Is a timestamp in seconds or milliseconds?",
         "a": "Numbers with 10 digits are usually seconds and 13 digits milliseconds. The converter on this page tells them apart by the number of digits."
+      }
+    ]
+  },
+  "worldHol": {
+    "hubTitle": "Public holidays by country 2026–2028 | Saat Tarih",
+    "hubDescription": "Nationwide public holidays in Germany, the UK, the US, the Netherlands, France and 25 more countries: dates, weekdays, the next holiday and days left.",
+    "hubH1": "Public holidays by country",
+    "hubLead": "Nationwide public holidays in 30 countries and the days left until the next one.",
+    "hubSearch": "public holidays country germany uk us netherlands france bank holidays calendar resmi tatil",
+    "colCountry": "Country",
+    "colNext": "Next holiday",
+    "colCount": "Holidays in {year}",
+    "turkey": "Turkey",
+    "pageTitle": "Public holidays in {country} {from}–{to} | Saat Tarih",
+    "pageDescription": "Nationwide public holidays in {country} {from}–{to}: dates, weekdays and days left. {year} has {n} public holidays, {w} of them on weekdays.",
+    "pageH1": "Public holidays in {country}",
+    "pageLead": "Nationwide public holidays in {country}, their dates and the days left.",
+    "search": "public holidays bank holidays days off resmi tatil",
+    "caption": "Public holidays in {country} in {year}",
+    "colDate": "Date",
+    "colDay": "Day",
+    "colName": "Holiday",
+    "colLeft": "Days left",
+    "summary": "{year}: {n} public holidays, {w} on weekdays.",
+    "regional": "In addition, {year} has {n} holidays that apply only in some states or regions; they are not shown here.",
+    "nextLabel": "Next holiday",
+    "source": "Source: Nager.Date (date.nager.at, MIT licence), retrieved on {date}. Nationwide public holidays only; dates can change, the official announcement prevails.",
+    "localName": "Local name: {name}",
+    "inDays": "in {n} days",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "passed": "Passed",
+    "faq": [
+      {
+        "q": "Which countries' public holidays are listed?",
+        "a": "This section lists nationwide public holidays in 30 countries: Germany, the UK, France, the Netherlands, Belgium, Austria, Switzerland and more in Europe, plus the US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore and South Africa. Turkey's holidays are on the yearly calendar pages."
       }
     ]
   }

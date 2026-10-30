@@ -1004,3 +1004,6 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
 .tool-h3 { font-size: 1rem; margin: 0.75rem 0 0.25rem; }
 .pomo-stats [hidden] { display: none; }
 .pomo-stats .fact dd { font-size: 1.15rem; }
+
+/* Dünya resmî tatilleri (30 Ekim 2026, rakip analizi #27) */
+tr.is-past th, tr.is-past td { color: var(--muted); }

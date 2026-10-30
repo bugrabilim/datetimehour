@@ -741,6 +741,10 @@
         "zones": {
           "name": "Saat qurşaqları",
           "desc": "UTC, CET, EST kimi qısaltmalar, fərqlər və indiki vaxt."
+        },
+        "worldHol": {
+          "name": "Dünyanın rəsmi bayramları",
+          "desc": "30 ölkənin rəsmi bayramları, tarixləri və qalan gün."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -2003,6 +2007,42 @@
       {
         "q": "Vaxt möhürü saniyədir, yoxsa millisaniyə?",
         "a": "10 rəqəmli ədədlər adətən saniyə, 13 rəqəmli ədədlər millisaniyədir. Bu səhifədəki çevirici onları rəqəm sayına görə ayırır."
+      }
+    ]
+  },
+  "worldHol": {
+    "hubTitle": "Ölkələrə görə rəsmi bayramlar 2026–2028 | Saat Tarih",
+    "hubDescription": "Almaniya, Britaniya, ABŞ, Niderland, Fransa və daha 25 ölkənin ölkə üzrə rəsmi bayramları: tarixlər, həftənin günləri, növbəti bayram və qalan gün.",
+    "hubH1": "Ölkələrə görə rəsmi bayramlar",
+    "hubLead": "30 ölkənin ölkə üzrə rəsmi bayramları və növbəti bayrama qalan gün.",
+    "hubSearch": "rəsmi bayramlar ölkələr almaniya britaniya abş bayram təqvimi public holidays",
+    "colCountry": "Ölkə",
+    "colNext": "Növbəti bayram",
+    "colCount": "{year} bayram sayı",
+    "turkey": "Türkiyə",
+    "pageTitle": "{country}: rəsmi bayramlar {from}–{to} | Saat Tarih",
+    "pageDescription": "{country} üzrə rəsmi bayramlar {from}–{to}: tarixlər, həftənin günləri və qalan gün. {year} ilində {n} rəsmi bayram var, {w} günü iş gününə düşür.",
+    "pageH1": "{country}: rəsmi bayramlar",
+    "pageLead": "{country} üzrə rəsmi bayram günləri, tarixləri və qalan günlərin sayı.",
+    "search": "rəsmi bayram istirahət günləri public holidays",
+    "caption": "{country}: {year} rəsmi bayramları",
+    "colDate": "Tarix",
+    "colDay": "Gün",
+    "colName": "Bayram",
+    "colLeft": "Qalan",
+    "summary": "{year}: {n} rəsmi bayram, {w} günü iş günü.",
+    "regional": "Bundan əlavə {year} ilində yalnız bəzi ştat və ya bölgələrdə keçərli {n} bayram var; burada göstərilmir.",
+    "nextLabel": "Növbəti bayram",
+    "source": "Mənbə: Nager.Date (date.nager.at, MIT lisenziyası), {date} tarixində alınıb. Yalnız ölkə üzrə rəsmi bayramlar; tarixlər dəyişə bilər, rəsmi elan əsasdır.",
+    "localName": "Yerli adı: {name}",
+    "inDays": "{n} gün sonra",
+    "today": "Bu gün",
+    "tomorrow": "Sabah",
+    "passed": "Keçib",
+    "faq": [
+      {
+        "q": "Hansı ölkələrin rəsmi bayramları var?",
+        "a": "Bu bölmədə 30 ölkənin ölkə üzrə rəsmi bayramları var: Avropadan Almaniya, Britaniya, Fransa, Niderland, Belçika, Avstriya, İsveçrə və digərləri, həmçinin ABŞ, Kanada, Braziliya, Avstraliya, Yaponiya, Çin, Rusiya, Gürcüstan, Sinqapur və Cənubi Afrika. Türkiyənin bayramları illik təqvim səhifələrindədir."
       }
     ]
   }

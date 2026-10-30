@@ -18,7 +18,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 ## 1. Birleşik tablo (öncelik sırasıyla)
 
-**Durum (30 Ekim 2026, ikinci tur):** "kısmen" olup çabası K ya da O olan maddeler yapıldı (3, 5, 10, 11, 12, 14, 15, 19, 23, 24, 26); "Bizde" sütununda **yapıldı** yazar. Canlıya basma ve yeni iOS yapısı sahibin talimatıyla. Üçüncü tur (30 Ekim 2026, sahibin isteği): #8 kıble ve yakındaki camiler (uygulamalar + site).
+**Durum (30 Ekim 2026, ikinci tur):** "kısmen" olup çabası K ya da O olan maddeler yapıldı (3, 5, 10, 11, 12, 14, 15, 19, 23, 24, 26); "Bizde" sütununda **yapıldı** yazar. Canlıya basma ve yeni iOS yapısı sahibin talimatıyla. Üçüncü tur (30 Ekim 2026, sahibin isteği): #8 kıble ve yakındaki camiler (uygulamalar + site). Dördüncü tur ("web olanların tamamı"): #16 (site kısmı), #20, #21, #22, #25, #27.
 
 | # | Özellik | Örnek rakipler | Nerede | Bizde | Çaba | Not |
 |---|---|---|---|---|---|---|
@@ -48,7 +48,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 | 24 | Site: toplantı planlayıcı ve çeviricide paylaşılabilir bağlantı + takvime ekle | worldtimebuddy, time.is/compare, everytimezone | web | **yapıldı** (bağlantı, .ics, Google Takvim) | K | |
 | 25 | Site: dünya yaz saati değişim listesi; kısaltma/dönüşüm sayfaları (UTC, CET, "EST to CET"); Unix saati | time.is, worldtimeserver, 24timezones | web | **yapıldı** (25 kısaltma sayfası + fark tabloları, 13 bölgede yaz saati değişimleri, Unix çevirici; beş dilde) | K–O | EN/DE trafiği; uygulamada yaz saati bildirimi bu turda eklendi |
 | 26 | Görünüm: yazı tipi, fotoğraf/hareketli arka plan, hareketli hava sahneleri | Flip Clock - Digital Clock, Nightstand, Pixel ekran koruyucu | iOS, Android, web | **yapıldı** (uygulamalarda yazı tipi, tam ekran fotoğrafı ve hareketli arka plan: gökyüzü, renk akışı, yıldızlar) | O | |
-| 27 | Çok ülkeli resmî tatil takvimleri | timeanddate, time.is, vclock | web | kısmen (yalnız Türkiye) | B | |
+| 27 | Çok ülkeli resmî tatil takvimleri | timeanddate, time.is, vclock | web | **yapıldı** (Türkiye + 30 ülke, 2026–2028, beş dilde; Nager.Date verisi) | B | |
 | 28 | Saat başı bildirimi; dini/özel gün, mevsim, Ay, gün doğumu-batımı, hava, yaz saati bildirimleri | Flip Clock widgets, Desk Clock, e-Diyanet, Lunar, World Clock | iOS, Android | **bu turda yapıldı** (Ayarlar › Bildirimler, varsayılan açık) | — | Canlıya talimatla |
 
 **Bilerek yok:** Kur'an, dua, zikirmatik, namaz ve oruç takibi, zekât; hesap ve eşitleme; API; tarayıcı uzantısı. Sahip isterse yeniden değerlendirilir.

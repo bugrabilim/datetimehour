@@ -326,6 +326,17 @@ for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Typ
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
+// Dünya resmî tatilleri (30 Ekim 2026, #27)
+{
+  const rd = (f) => (fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "");
+  const W = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/world-holidays.json"), "utf8"));
+  check(Object.keys(W.countries).length === 30 && !W.countries.EG && !W.countries.UA, "dünya tatilleri: 30 ülke olmalı (EG, KZ, UA yok)");
+  const hub = rd("resmi-tatiller");
+  check((hub.match(/<tr data-d=/g) || []).length === 31 && /href="\/takvim\/\d{4}\/"/.test(hub), "dünya tatilleri merkezi: 30 ülke + Türkiye satırı yok");
+  const de = rd("de/public-holidays/germany"), tr = rd("resmi-tatiller/almanya");
+  check(/data-d="2027-10-03"/.test(de) && /Tag der Deutschen Einheit/.test(de) && /Alman Birliği Günü/.test(tr) && /Yerel adı: Tag der Deutschen Einheit/.test(tr), "Almanya tatil sayfası eksik");
+  check(/Public holidays in the United Kingdom/.test(rd("en/public-holidays/united-kingdom")), "EN: the United Kingdom");
+}
 // Pomodoro istatistikleri (30 Ekim 2026, #16 web)
 {
   const h = fs.readFileSync(path.join(DIST, "pomodoro", "index.html"), "utf8");

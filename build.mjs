@@ -295,7 +295,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "datecalc", "embed", "prayer", "qibla", "nature", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "worldHol", "datecalc", "embed", "prayer", "qibla", "nature", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1099,6 +1099,7 @@ const TOOL_ART = {
   embed: svgArt('<rect x="10" y="12" width="76" height="40" rx="6" class="af"/><path d="M38 24l-9 8 9 8M58 24l9 8-9 8M52 22l-8 20"/>'),
   week: svgArt('<rect x="16" y="14" width="64" height="42" rx="6" class="af"/><path d="M16 26h64M32 8v10M64 8v10M30 36h8m6 0h8m6 0h8M30 46h8m6 0h8"/>'),
   tz: svgArt('<circle cx="48" cy="32" r="22" class="af"/><path d="M26 32h44M48 10c9 7 9 37 0 44M48 10c-9 7-9 37 0 44"/>'),
+  worldHol: svgArt('<rect x="12" y="14" width="46" height="40" rx="6" class="af"/><path d="M12 26h46M26 8v10M44 8v10M24 38h6M38 38h6"/><circle cx="72" cy="40" r="14" class="af"/><path d="M58 40h28M72 26c5 4 5 24 0 28M72 26c-5 4-5 24 0 28"/>'),
   zones: svgArt('<circle cx="34" cy="32" r="20" class="af"/><path d="M14 32h40M34 12c7 6 7 34 0 40M34 12c-7 6-7 34 0 40"/><circle cx="70" cy="40" r="14" class="af"/><path d="M70 32v8l5 3"/>'),
   dst: svgArt('<circle cx="30" cy="30" r="10" class="af"/><path d="M30 12v4M30 44v4M12 30h4M44 30h4M17 17l3 3M40 40l3 3M17 43l3-3M40 20l3-3"/><path d="M72 18a14 14 0 1 0 10 24 12 12 0 0 1-10-24z" class="af"/><path d="M50 52h20m-5-5 5 5-5 5"/>'),
   unix: svgArt('<rect x="12" y="14" width="72" height="36" rx="6" class="af"/><path d="M24 26v12M30 26h6v12h-6zM44 26v12M50 26h6v12h-6zM64 26v12M70 26h6v12h-6z"/>'),
@@ -1116,7 +1117,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "zones", "dst", "unix", "bridge", "qibla", "embed", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "zones", "dst", "unix", "bridge", "worldHol", "qibla", "embed", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1232,7 +1233,7 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
-extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/" } });
+extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/", worldHol: "/resmi-tatiller/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/", worldHol: "/en/public-holidays/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1779,7 +1780,8 @@ const TZ_ABBRS = [
 const TZ_COMPARE = ["UTC", "GMT", "CET", "CEST", "EET", "TRT", "MSK", "GST", "IST", "JST", "AEST", "EST", "EDT", "CST", "PST"];
 const tzName = (lang, z) => z.trt ? I[lang].zones.trtName : new Intl.DateTimeFormat(lang, { timeZone: z.tz, timeZoneName: "long" }).formatToParts(new Date(Date.UTC(2026, z.m - 1, 15))).find((p) => p.type === "timeZoneName").value;
 const offTxt = (min) => `UTC${min === 0 ? "+0" : (min < 0 ? "−" : "+") + Math.floor(Math.abs(min) / 60) + (Math.abs(min) % 60 ? ":" + String(Math.abs(min) % 60).padStart(2, "0") : "")}`;
-const regionName = (lang, code) => { try { return new Intl.DisplayNames([lang], { type: "region" }).of(code); } catch { return code; } };
+// Hong Kong'un uzun adı ("… ÖİB") başlıklara sığmıyor: kısa biçim
+const regionName = (lang, code) => { try { return new Intl.DisplayNames([lang], { type: "region", style: code === "HK" ? "short" : "long" }).of(code); } catch { return code; } };
 const zonePath = (lang, z) => `${ROUTES[lang].zones}${z.a.toLowerCase()}/`;
 const diffTxt = (lang, min) => { const s = I[lang].zones; const a = Math.abs(min), h = Math.floor(a / 60), m = a % 60; return [h && `${h} ${s.hoursShort}`, m && `${m} ${s.minutesShort}`].filter(Boolean).join(" "); };
 const hm24 = (min) => `${String(Math.floor((((min % 1440) + 1440) % 1440) / 60)).padStart(2, "0")}:${String((((min % 1440) + 1440) % 1440) % 60).padStart(2, "0")}`;
@@ -1916,6 +1918,72 @@ function buildUnix(lang) {
   </div></section>`;
   const ux = { invalid: s.invalid, detectedMs: s.detectedMs, detectedSec: s.detectedSec, ago: s.ago, in: s.in, y2038Left: s.y2038Left, days: s.days, hours: s.hours, minutes: s.minutes };
   return simplePage(lang, "unix", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "unix", title: s.h1 }, scripts: ["zones.js"], clientExtra: { t: { ux } }, nav: "tools", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].unix, s.description)] });
+}
+
+/* ---------- Dünya resmî tatilleri (30 Ekim 2026, rakip analizi #27) ----------
+   Veri src/data/world-holidays.json (Nager.Date, MIT; scripts/fetch-world-holidays.mjs ile elle güncellenir), yalnız
+   ülke genelindeki resmî tatiller. Ad: İngilizce sayfada İngilizce; ülkenin dilindeki sayfada (de: DE/AT/CH, ar: EG)
+   yerel ad; diğerlerinde src/data/holiday-names.json çevirisi, yoksa İngilizce. Yerel ad ayrıca gösterilir. */
+const WHOL = readJson("src/data/world-holidays.json");
+const HOLNAMES = readJson("src/data/holiday-names.json").names;
+const WCC = Object.keys(WHOL.countries);
+const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"] };
+const holName = (lang, cc, h) => {
+  const main = lang === "en" ? h.n : (NATIVE_CC[lang] || []).includes(cc) && h.l !== h.n ? h.l : (HOLNAMES[h.n] && HOLNAMES[h.n][lang]) || h.n;
+  return { main, local: h.l && h.l !== main && h.l !== h.n ? h.l : "" };
+};
+const countrySlug = (lang, cc) => trSlug(regionName(lang === "tr" ? "tr" : "en", cc));
+const worldHolPath = (lang, cc) => `${ROUTES[lang].worldHol}${countrySlug(lang, cc)}/`;
+const holLeftAttrs = (s) => `data-hol data-today="${esc(s.today)}" data-tomorrow="${esc(s.tomorrow)}" data-in="${esc(s.inDays)}" data-passed="${esc(s.passed)}"`;
+
+function buildWorldHolHub(lang) {
+  const t = I[lang], s = t.worldHol, F = makeFmt(t.calendar);
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].worldHol }];
+  const from = cfg.updated, y = BUILD_YEAR;
+  const rows = [...WCC.map((cc) => ({ cc, name: regionName(lang, cc) })), { cc: "TR", name: s.turkey }]
+    .sort((a, b) => a.name.localeCompare(b.name, lang))
+    .map(({ cc, name }) => {
+      if (cc === "TR") {
+        const next = HOL_YEARS.flatMap((yy) => YEAR_DATA[yy].events).find((e) => e.type === "holiday" && e.date >= from);
+        return `<tr data-d="${next ? next.date : ""}"><th scope="row"><a href="${yearPath(lang, y)}">${esc(name)}</a></th><td>${next ? `${esc(t.calendar.events[next.key])} <span class="meta">${esc(F.short(next.date))}</span>` : "–"}</td><td data-left></td><td>${holidayCounts(YEAR_DATA[y].events).n}</td></tr>`;
+      }
+      const all = WHOL.years.flatMap((yy) => (WHOL.countries[cc][yy] || { days: [] }).days);
+      const next = all.find((h) => h.d >= from);
+      return `<tr data-d="${next ? next.d : ""}"><th scope="row"><a href="${worldHolPath(lang, cc)}">${esc(name)}</a></th><td>${next ? `${esc(holName(lang, cc, next).main)} <span class="meta">${esc(F.short(next.d))}</span>` : "–"}</td><td data-left></td><td>${(WHOL.countries[cc][y] || { days: [] }).days.length}</td></tr>`;
+    }).join("");
+  const hero = `<div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><thead><tr><th scope="col">${esc(s.colCountry)}</th><th scope="col">${esc(s.colNext)}</th><th scope="col">${esc(s.colLeft)}</th><th scope="col">${esc(tpl(s.colCount, { year: y }))}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))}</p>`;
+  return simplePage(lang, "worldHol", { title: s.hubTitle, description: s.hubDescription, h1: s.hubH1, lead: s.hubLead, trail, bodyInner: { hero }, faq: s.faq, faqGroup: { id: "worldHol", title: s.hubH1 }, scripts: ["zones.js"], nav: "calendar", searchK: s.hubSearch });
+}
+
+const EN_THE = ["GB", "US", "NL"]; // "Public holidays in the United Kingdom"
+function buildWorldHol(lang, cc) {
+  const t = I[lang], s = t.worldHol, cal = t.calendar, F = makeFmt(cal);
+  const country = (lang === "en" && EN_THE.includes(cc) ? "the " : "") + regionName(lang, cc);
+  const years = WHOL.years;
+  const y = BUILD_YEAR + 1 <= years[years.length - 1] ? BUILD_YEAR + 1 : years[0];
+  const dy = WHOL.countries[cc][y].days;
+  const v = { country, from: years[0], to: years[years.length - 1], year: y, n: dy.length, w: dy.filter((h) => dowOf(h.d) < 5).length };
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].worldHol }, { name: tpl(s.pageH1, v), path: worldHolPath(lang, cc) }];
+  const sections = years.map((yy) => {
+    const d = WHOL.countries[cc][yy] || { days: [], regional: 0 };
+    const rows = d.days.map((h) => {
+      const nm = holName(lang, cc, h);
+      return `<tr data-d="${h.d}"><th scope="row">${esc(F.short(h.d))}</th><td>${esc(cal.weekdays[dowOf(h.d)])}</td><td>${esc(nm.main)}${nm.local ? `<br><span class="meta" lang="">${esc(tpl(s.localName, { name: nm.local }))}</span>` : ""}</td><td data-left></td></tr>`;
+    }).join("");
+    const sum = tpl(s.summary, { year: yy, n: d.days.length, w: d.days.filter((h) => dowOf(h.d) < 5).length });
+    return `<section class="section" aria-labelledby="wh-${yy}"><div class="wrap">
+    <h2 id="wh-${yy}">${yy}</h2>
+    <p class="meta">${esc(sum)}${d.regional ? " " + esc(tpl(s.regional, { year: yy, n: d.regional })) : ""}</p>
+    <div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><caption class="sr-only">${esc(tpl(s.caption, { country, year: yy }))}</caption><thead><tr><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colName)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+  </div></section>`;
+  }).join("\n");
+  const hero = `<p class="info-sub" data-hol-next data-label="${esc(s.nextLabel)}">&nbsp;</p>`;
+  const tail = `<section class="section"><div class="wrap"><p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))}</p></div></section>`;
+  // Uzun ülke adında açıklamanın ikinci cümlesi atlanır (170 karakter sınırı)
+  let description = tpl(s.pageDescription, v);
+  if (description.length > 170) description = description.slice(0, description.indexOf(". ") + 1);
+  return simplePage(lang, `worldHol:${cc}`, { title: tpl(s.pageTitle, v), description, h1: tpl(s.pageH1, v), lead: tpl(s.pageLead, v), trail, bodyInner: { hero, sections: sections + tail }, scripts: ["zones.js"], nav: "calendar", searchK: `${country} ${regionName("en", cc)} ${s.search}` });
 }
 
 /* ---------- Köprü tatil planlayıcı (30 Ekim 2026, rakip analizi #22): lib/bridges.mjs ---------- */
@@ -2111,7 +2179,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

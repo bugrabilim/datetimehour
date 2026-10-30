@@ -1,0 +1,509 @@
+{
+ "_": "Dünya resmî tatil adlarının çevirileri (İngilizce ad → tr, de, az, ar); listede olmayan adlar İngilizce ve yerel adıyla gösterilir.",
+ "names": {
+  "New Year's Day": {
+   "tr": "Yılbaşı",
+   "de": "Neujahr",
+   "az": "Yeni il",
+   "ar": "رأس السنة الميلادية"
+  },
+  "New Year holiday": {
+   "tr": "Yılbaşı tatili",
+   "de": "Neujahrsfeiertag",
+   "az": "Yeni il tətili",
+   "ar": "عطلة رأس السنة"
+  },
+  "Christmas Day": {
+   "tr": "Noel",
+   "de": "Erster Weihnachtstag",
+   "az": "Milad bayramı",
+   "ar": "عيد الميلاد"
+  },
+  "Christmas Eve": {
+   "tr": "Noel arifesi",
+   "de": "Heiligabend",
+   "az": "Milad ərəfəsi",
+   "ar": "ليلة عيد الميلاد"
+  },
+  "Christmas Day (Orthodox)": {
+   "tr": "Ortodoks Noeli",
+   "de": "Orthodoxes Weihnachten",
+   "az": "Pravoslav Milad bayramı",
+   "ar": "عيد الميلاد (الأرثوذكسي)"
+  },
+  "St. Stephen's Day": {
+   "tr": "Noel'in ikinci günü (Aziz Stefanos Günü)",
+   "de": "Zweiter Weihnachtstag",
+   "az": "Miladın ikinci günü",
+   "ar": "اليوم الثاني لعيد الميلاد"
+  },
+  "Easter Monday": {
+   "tr": "Paskalya Pazartesisi",
+   "de": "Ostermontag",
+   "az": "Pasxa bazar ertəsi",
+   "ar": "اثنين الفصح"
+  },
+  "Easter Sunday": {
+   "tr": "Paskalya",
+   "de": "Ostersonntag",
+   "az": "Pasxa",
+   "ar": "أحد الفصح"
+  },
+  "Good Friday": {
+   "tr": "Kutsal Cuma",
+   "de": "Karfreitag",
+   "az": "Müqəddəs cümə",
+   "ar": "الجمعة العظيمة"
+  },
+  "Holy Saturday": {
+   "tr": "Kutsal Cumartesi",
+   "de": "Karsamstag",
+   "az": "Müqəddəs şənbə",
+   "ar": "سبت النور"
+  },
+  "Maundy Thursday": {
+   "tr": "Kutsal Perşembe",
+   "de": "Gründonnerstag",
+   "az": "Müqəddəs cümə axşamı",
+   "ar": "خميس العهد"
+  },
+  "Labour Day": {
+   "tr": "Emek ve Dayanışma Günü",
+   "de": "Tag der Arbeit",
+   "az": "Əmək günü",
+   "ar": "عيد العمال"
+  },
+  "International Workers' Day": {
+   "tr": "Emek ve Dayanışma Günü",
+   "de": "Tag der Arbeit",
+   "az": "Beynəlxalq Əmək günü",
+   "ar": "عيد العمال العالمي"
+  },
+  "International Workers Day": {
+   "tr": "Emek ve Dayanışma Günü",
+   "de": "Tag der Arbeit",
+   "az": "Beynəlxalq Əmək günü",
+   "ar": "عيد العمال العالمي"
+  },
+  "May Day": {
+   "tr": "1 Mayıs",
+   "de": "Maifeiertag",
+   "az": "1 May",
+   "ar": "عيد أول مايو"
+  },
+  "Whit Monday": {
+   "tr": "Pentekost Pazartesisi",
+   "de": "Pfingstmontag",
+   "az": "Pentikost bazar ertəsi",
+   "ar": "اثنين العنصرة"
+  },
+  "Pentecost": {
+   "tr": "Pentekost",
+   "de": "Pfingstsonntag",
+   "az": "Pentikost",
+   "ar": "عيد العنصرة"
+  },
+  "Ascension Day": {
+   "tr": "Göğe Yükseliş Günü",
+   "de": "Christi Himmelfahrt",
+   "az": "Göyə qalxma günü",
+   "ar": "عيد الصعود"
+  },
+  "Epiphany": {
+   "tr": "Epifani",
+   "de": "Heilige Drei Könige",
+   "az": "Epifaniya",
+   "ar": "عيد الغطاس"
+  },
+  "Independence Day": {
+   "tr": "Bağımsızlık Günü",
+   "de": "Unabhängigkeitstag",
+   "az": "Müstəqillik günü",
+   "ar": "عيد الاستقلال"
+  },
+  "Assumption Day": {
+   "tr": "Meryem'in Göğe Kabulü",
+   "de": "Mariä Himmelfahrt",
+   "az": "Məryəmin göyə qalxması",
+   "ar": "عيد انتقال العذراء"
+  },
+  "Assumption": {
+   "tr": "Meryem'in Göğe Kabulü",
+   "de": "Mariä Himmelfahrt",
+   "az": "Məryəmin göyə qalxması",
+   "ar": "عيد انتقال العذراء"
+  },
+  "Assumption of the Virgin Mary": {
+   "tr": "Meryem'in Göğe Kabulü",
+   "de": "Mariä Himmelfahrt",
+   "az": "Məryəmin göyə qalxması",
+   "ar": "عيد انتقال العذراء"
+  },
+  "All Saints' Day": {
+   "tr": "Azizler Günü",
+   "de": "Allerheiligen",
+   "az": "Bütün müqəddəslər günü",
+   "ar": "عيد جميع القديسين"
+  },
+  "All Saints Day": {
+   "tr": "Azizler Günü",
+   "de": "Allerheiligen",
+   "az": "Bütün müqəddəslər günü",
+   "ar": "عيد جميع القديسين"
+  },
+  "Constitution Day": {
+   "tr": "Anayasa Günü",
+   "de": "Verfassungstag",
+   "az": "Konstitusiya günü",
+   "ar": "يوم الدستور"
+  },
+  "Corpus Christi": {
+   "tr": "Corpus Christi",
+   "de": "Fronleichnam",
+   "az": "Korpus Kristi",
+   "ar": "عيد القربان"
+  },
+  "Immaculate Conception": {
+   "tr": "Lekesiz Gebelik Bayramı",
+   "de": "Mariä Empfängnis",
+   "az": "Qüsursuz hamiləlik bayramı",
+   "ar": "عيد الحبل بلا دنس"
+  },
+  "National Day": {
+   "tr": "Ulusal Gün",
+   "de": "Nationalfeiertag",
+   "az": "Milli gün",
+   "ar": "اليوم الوطني"
+  },
+  "National Holiday": {
+   "tr": "Ulusal Bayram",
+   "de": "Nationalfeiertag",
+   "az": "Milli bayram",
+   "ar": "العيد الوطني"
+  },
+  "International Women's Day": {
+   "tr": "Dünya Kadınlar Günü",
+   "de": "Internationaler Frauentag",
+   "az": "Beynəlxalq Qadınlar günü",
+   "ar": "اليوم العالمي للمرأة"
+  },
+  "Republic Day": {
+   "tr": "Cumhuriyet Günü",
+   "de": "Tag der Republik",
+   "az": "Respublika günü",
+   "ar": "يوم الجمهورية"
+  },
+  "Armistice Day": {
+   "tr": "Ateşkes Günü",
+   "de": "Waffenstillstandstag",
+   "az": "Atəşkəs günü",
+   "ar": "يوم الهدنة"
+  },
+  "Liberation Day": {
+   "tr": "Kurtuluş Günü",
+   "de": "Tag der Befreiung",
+   "az": "Azadlıq günü",
+   "ar": "يوم التحرير"
+  },
+  "Freedom Day": {
+   "tr": "Özgürlük Günü",
+   "de": "Tag der Freiheit",
+   "az": "Azadlıq günü",
+   "ar": "يوم الحرية"
+  },
+  "Victory Day": {
+   "tr": "Zafer Günü",
+   "de": "Tag des Sieges",
+   "az": "Qələbə günü",
+   "ar": "يوم النصر"
+  },
+  "Victory in Europe Day": {
+   "tr": "Avrupa'da Zafer Günü",
+   "de": "Tag der Befreiung (Kriegsende)",
+   "az": "Avropada Qələbə günü",
+   "ar": "يوم النصر في أوروبا"
+  },
+  "Children's Day": {
+   "tr": "Çocuk Bayramı",
+   "de": "Kindertag",
+   "az": "Uşaqlar günü",
+   "ar": "يوم الطفل"
+  },
+  "Saint George's Day": {
+   "tr": "Aziz Yorgi Günü",
+   "de": "Georgstag",
+   "az": "Müqəddəs Georgi günü",
+   "ar": "عيد القديس جاورجيوس"
+  },
+  "Defender of the Fatherland Day": {
+   "tr": "Vatan Savunucuları Günü",
+   "de": "Tag des Verteidigers des Vaterlandes",
+   "az": "Vətən müdafiəçiləri günü",
+   "ar": "يوم المدافع عن الوطن"
+  },
+  "Chinese New Year": {
+   "tr": "Çin Yeni Yılı",
+   "de": "Chinesisches Neujahr",
+   "az": "Çin Yeni ili",
+   "ar": "رأس السنة الصينية"
+  },
+  "Dragon Boat Festival": {
+   "tr": "Ejderha Teknesi Festivali",
+   "de": "Drachenbootfest",
+   "az": "Əjdaha qayığı festivalı",
+   "ar": "مهرجان قوارب التنين"
+  },
+  "Eid Al-Adha": {
+   "tr": "Kurban Bayramı",
+   "de": "Opferfest",
+   "az": "Qurban bayramı",
+   "ar": "عيد الأضحى"
+  },
+  "Eid al-Adha": {
+   "tr": "Kurban Bayramı",
+   "de": "Opferfest",
+   "az": "Qurban bayramı",
+   "ar": "عيد الأضحى"
+  },
+  "Eid al-Fitr": {
+   "tr": "Ramazan Bayramı",
+   "de": "Zuckerfest",
+   "az": "Ramazan bayramı",
+   "ar": "عيد الفطر"
+  },
+  "Eid Al-Fitr": {
+   "tr": "Ramazan Bayramı",
+   "de": "Zuckerfest",
+   "az": "Ramazan bayramı",
+   "ar": "عيد الفطر"
+  },
+  "Islamic New Year": {
+   "tr": "Hicri Yılbaşı",
+   "de": "Islamisches Neujahr",
+   "az": "Hicri Yeni il",
+   "ar": "رأس السنة الهجرية"
+  },
+  "Prophet Muhammad's Birthday (Tentative Date)": {
+   "tr": "Mevlid Kandili (yaklaşık tarih)",
+   "de": "Geburtstag des Propheten (vorläufig)",
+   "az": "Mövlud (təxmini tarix)",
+   "ar": "المولد النبوي (تاريخ تقريبي)"
+  },
+  "Thanksgiving Day": {
+   "tr": "Şükran Günü",
+   "de": "Thanksgiving",
+   "az": "Şükran günü",
+   "ar": "عيد الشكر"
+  },
+  "Thanksgiving": {
+   "tr": "Şükran Günü",
+   "de": "Thanksgiving",
+   "az": "Şükran günü",
+   "ar": "عيد الشكر"
+  },
+  "Memorial Day": {
+   "tr": "Anma Günü",
+   "de": "Memorial Day",
+   "az": "Anım günü",
+   "ar": "يوم الذكرى"
+  },
+  "Labor Day": {
+   "tr": "İşçi Bayramı (ABD)",
+   "de": "Labor Day",
+   "az": "Əmək günü (ABŞ)",
+   "ar": "عيد العمال (الولايات المتحدة)"
+  },
+  "Early May Bank Holiday": {
+   "tr": "Mayıs başı resmî tatili",
+   "de": "Bankfeiertag Anfang Mai",
+   "az": "May əvvəli bank tətili",
+   "ar": "عطلة بداية مايو"
+  },
+  "Spring Bank Holiday": {
+   "tr": "Bahar resmî tatili",
+   "de": "Bankfeiertag im Frühling",
+   "az": "Yaz bank tətili",
+   "ar": "عطلة الربيع"
+  },
+  "German Unity Day": {
+   "tr": "Alman Birliği Günü",
+   "de": "Tag der Deutschen Einheit",
+   "az": "Almaniya Birliyi günü",
+   "ar": "يوم الوحدة الألمانية"
+  },
+  "Bastille Day": {
+   "tr": "Bastille Günü (Fransa Ulusal Bayramı)",
+   "de": "Französischer Nationalfeiertag",
+   "az": "Bastiliya günü",
+   "ar": "يوم الباستيل"
+  },
+  "King's Day": {
+   "tr": "Kral Günü",
+   "de": "Königstag",
+   "az": "Kral günü",
+   "ar": "يوم الملك"
+  },
+  "Nauryz Meyramy": {
+   "tr": "Nevruz",
+   "de": "Nouruz",
+   "az": "Novruz bayramı",
+   "ar": "عيد النوروز"
+  },
+  "Clean Monday": {
+   "tr": "Temiz Pazartesi",
+   "de": "Rosenmontag (orthodox)",
+   "az": "Təmiz bazar ertəsi",
+   "ar": "الاثنين النظيف"
+  },
+  "Annunciation": {
+   "tr": "Meryem'e Müjde",
+   "de": "Mariä Verkündigung",
+   "az": "Müjdə bayramı",
+   "ar": "عيد البشارة"
+  },
+  "Greek Independence Day": {
+   "tr": "Yunanistan Bağımsızlık Günü",
+   "de": "Griechischer Unabhängigkeitstag",
+   "az": "Yunanıstan Müstəqillik günü",
+   "ar": "يوم استقلال اليونان"
+  },
+  "Ochi Day": {
+   "tr": "Ohi Günü",
+   "de": "Ochi-Tag",
+   "az": "Oxi günü",
+   "ar": "يوم أوخي"
+  },
+  "Labour Day (Orthodox)": {
+   "tr": "Emek ve Dayanışma Günü",
+   "de": "Tag der Arbeit",
+   "az": "Əmək günü",
+   "ar": "عيد العمال"
+  },
+  "Veterans Day": {
+   "tr": "Gaziler Günü",
+   "de": "Veterans Day",
+   "az": "Veteranlar günü",
+   "ar": "يوم المحاربين القدامى"
+  },
+  "Martin Luther King, Jr. Day": {
+   "tr": "Martin Luther King Günü",
+   "de": "Martin-Luther-King-Tag",
+   "az": "Martin Lüter King günü",
+   "ar": "يوم مارتن لوثر كينغ"
+  },
+  "Presidents Day": {
+   "tr": "Başkanlar Günü",
+   "de": "Presidents' Day",
+   "az": "Prezidentlər günü",
+   "ar": "يوم الرؤساء"
+  },
+  "Juneteenth National Independence Day": {
+   "tr": "Juneteenth (Köleliğin Sonu Günü)",
+   "de": "Juneteenth",
+   "az": "Juneteenth",
+   "ar": "يوم جونتينث"
+  },
+  "Canada Day": {
+   "tr": "Kanada Günü",
+   "de": "Canada Day",
+   "az": "Kanada günü",
+   "ar": "يوم كندا"
+  },
+  "Victoria Day": {
+   "tr": "Victoria Günü",
+   "de": "Victoria Day",
+   "az": "Viktoriya günü",
+   "ar": "يوم فيكتوريا"
+  },
+  "Australia Day": {
+   "tr": "Avustralya Günü",
+   "de": "Australia Day",
+   "az": "Avstraliya günü",
+   "ar": "يوم أستراليا"
+  },
+  "Anzac Day": {
+   "tr": "Anzak Günü",
+   "de": "Anzac Day",
+   "az": "Anzak günü",
+   "ar": "يوم أنزاك"
+  },
+  "Saint Patrick's Day": {
+   "tr": "Aziz Patrick Günü",
+   "de": "St. Patrick's Day",
+   "az": "Müqəddəs Patrik günü",
+   "ar": "عيد القديس باتريك"
+  },
+  "Mother's Day": {
+   "tr": "Anneler Günü",
+   "de": "Muttertag",
+   "az": "Analar günü",
+   "ar": "عيد الأم"
+  },
+  "Mid-Autumn Festival": {
+   "tr": "Sonbahar Ortası Festivali",
+   "de": "Mondfest",
+   "az": "Payız ortası festivalı",
+   "ar": "مهرجان منتصف الخريف"
+  },
+  "Lunar New Year": {
+   "tr": "Ay Yeni Yılı",
+   "de": "Mondneujahr",
+   "az": "Ay Yeni ili",
+   "ar": "رأس السنة القمرية"
+  },
+  "Chinese New Year (Spring Festival)": {
+   "tr": "Çin Yeni Yılı (Bahar Bayramı)",
+   "de": "Chinesisches Neujahr (Frühlingsfest)",
+   "az": "Çin Yeni ili (Bahar bayramı)",
+   "ar": "رأس السنة الصينية (عيد الربيع)"
+  },
+  "Good Friday (Orthodox)": {
+   "tr": "Ortodoks Kutsal Cuma",
+   "de": "Orthodoxer Karfreitag",
+   "az": "Pravoslav Müqəddəs cümə",
+   "ar": "الجمعة العظيمة (الأرثوذكسية)"
+  },
+  "Easter Monday (Orthodox)": {
+   "tr": "Ortodoks Paskalya Pazartesisi",
+   "de": "Orthodoxer Ostermontag",
+   "az": "Pravoslav Pasxa bazar ertəsi",
+   "ar": "اثنين الفصح (الأرثوذكسي)"
+  },
+  "Unity Day": {
+   "tr": "Birlik Günü",
+   "de": "Tag der Einheit",
+   "az": "Birlik günü",
+   "ar": "يوم الوحدة"
+  },
+  "Russia Day": {
+   "tr": "Rusya Günü",
+   "de": "Tag Russlands",
+   "az": "Rusiya günü",
+   "ar": "يوم روسيا"
+  },
+  "Workers' Day": {
+   "tr": "İşçi Bayramı",
+   "de": "Tag der Arbeit",
+   "az": "Fəhlələr günü",
+   "ar": "عيد العمال"
+  },
+  "Youth Day": {
+   "tr": "Gençlik Günü",
+   "de": "Tag der Jugend",
+   "az": "Gənclər günü",
+   "ar": "يوم الشباب"
+  },
+  "Heritage Day": {
+   "tr": "Miras Günü",
+   "de": "Heritage Day",
+   "az": "İrs günü",
+   "ar": "يوم التراث"
+  },
+  "Human Rights Day": {
+   "tr": "İnsan Hakları Günü",
+   "de": "Tag der Menschenrechte",
+   "az": "İnsan hüquqları günü",
+   "ar": "يوم حقوق الإنسان"
+  }
+ }
+}

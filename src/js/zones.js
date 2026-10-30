@@ -26,6 +26,28 @@
     setInterval(paint, 60000);
   }
 
+  /* ---------- Resmî tatil tabloları (dünya tatilleri): kalan gün, geçenler soluk, sıradaki tatil ---------- */
+  var hols = Array.prototype.slice.call(doc.querySelectorAll("[data-hol]"));
+  if (hols.length) {
+    var midnight = function (d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime(); };
+    var parseD = function (s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]).getTime(); };
+    var nextEl = q("[data-hol-next]"), shown = false;
+    var today = midnight(new Date(S.nowMs()));
+    hols.forEach(function (tb) {
+      Array.prototype.forEach.call(tb.querySelectorAll("tr[data-d]"), function (r) {
+        var ds = r.getAttribute("data-d"); if (!ds) return;
+        var n = Math.round((parseD(ds) - today) / 86400000), cell = r.querySelector("[data-left]");
+        r.classList.toggle("is-past", n < 0);
+        if (cell) cell.textContent = n < 0 ? tb.getAttribute("data-passed") : n === 0 ? tb.getAttribute("data-today") : n === 1 ? tb.getAttribute("data-tomorrow") : S.tpl(tb.getAttribute("data-in"), { n: n });
+        if (nextEl && !shown && n >= 0) {
+          shown = true;
+          var name = r.children[2] ? r.children[2].firstChild.textContent : "";
+          nextEl.textContent = nextEl.getAttribute("data-label") + ": " + name + " · " + r.children[0].textContent + " (" + cell.textContent + ")";
+        }
+      });
+    });
+  }
+
   /* ---------- Unix ---------- */
   var ux = q("[data-unix]");
   if (!ux) return;
