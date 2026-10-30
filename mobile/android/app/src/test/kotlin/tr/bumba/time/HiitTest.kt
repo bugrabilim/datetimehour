@@ -18,6 +18,7 @@ class HiitTest {
         // Isınmasız
         assertEquals("work", HiitConfig(warmup = 0, work = 20, rest = 10, rounds = 2).phase(0).kind)
     }
+
 }
 
 /** Sesli duyurular: evre değişince adı, son 3 saniyede sayı (her saniye bir kez); sürdürünce o anki evre */
@@ -45,5 +46,17 @@ class HiitCueTest {
         assertEquals(expected, said)
         // Duraklatıp sürdürünce (last = null) o anki evre yeniden söylenir
         assertEquals(work, c.cue(null, c.phase(6)))
+    }
+
+    /** Çok adımlı rutin: adımlar her turda sırayla, ad evreye geçer, JSON gidiş-dönüş */
+    @Test fun routine() {
+        val c = HiitConfig(rounds = 2, name = "R", steps = listOf(HiitConfig.Step("A", 20), HiitConfig.Step("B", 10, true), HiitConfig.Step("C", 30)))
+        assertEquals(2 * 60, c.totalSeconds)
+        assertEquals(HiitConfig.Phase("work", 1, 20, 0, "A"), c.phase(0))
+        assertEquals(HiitConfig.Phase("rest", 1, 10, 1, "B"), c.phase(20))
+        assertEquals(HiitConfig.Phase("work", 1, 1, 2, "C"), c.phase(59))
+        assertEquals(HiitConfig.Phase("work", 2, 20, 3, "A"), c.phase(60))
+        assertEquals("done", c.phase(120).kind)
+        assertEquals(c, HiitConfig.fromRoutine(c.routineJson()))
     }
 }

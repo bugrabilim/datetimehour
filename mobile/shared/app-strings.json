@@ -5165,5 +5165,250 @@
     "de": "Das sieht nicht nach derselben Stelle aus; versuchen Sie es aus demselben Winkel erneut.",
     "az": "Eyni yerə bənzəmir, eyni bucaqdan yenidən cəhd edin.",
     "ar": "لا يبدو المكان نفسه، حاول مجددًا من الزاوية نفسها."
+  },
+  "routine.heading": {
+    "tr": "Rutinler",
+    "en": "Routines",
+    "de": "Routinen",
+    "az": "Rutinlər",
+    "ar": "الروتينات"
+  },
+  "routine.new": {
+    "tr": "Yeni rutin",
+    "en": "New routine",
+    "de": "Neue Routine",
+    "az": "Yeni rutin",
+    "ar": "روتين جديد"
+  },
+  "routine.name": {
+    "tr": "Rutinin adı",
+    "en": "Routine name",
+    "de": "Name der Routine",
+    "az": "Rutinin adı",
+    "ar": "اسم الروتين"
+  },
+  "routine.untitled": {
+    "tr": "Rutinim",
+    "en": "My routine",
+    "de": "Meine Routine",
+    "az": "Rutinim",
+    "ar": "روتيني"
+  },
+  "routine.seconds": {
+    "tr": "Süre",
+    "en": "Duration",
+    "de": "Dauer",
+    "az": "Müddət",
+    "ar": "المدة"
+  },
+  "routine.addStep": {
+    "tr": "Adım ekle",
+    "en": "Add step",
+    "de": "Schritt hinzufügen",
+    "az": "Addım əlavə et",
+    "ar": "أضف خطوة"
+  },
+  "routine.classic": {
+    "tr": "Basit aralığa dön",
+    "en": "Back to simple intervals",
+    "de": "Zurück zu einfachen Intervallen",
+    "az": "Sadə aralığa qayıt",
+    "ar": "العودة إلى الفواصل البسيطة"
+  },
+  "routine.next": {
+    "tr": "Sıradaki: {name}",
+    "en": "Next: {name}",
+    "de": "Als Nächstes: {name}",
+    "az": "Növbəti: {name}",
+    "ar": "التالي: {name}"
+  },
+  "routine.tabata": {
+    "tr": "Tabata (8 × 20 sn)",
+    "en": "Tabata (8 × 20 s)",
+    "de": "Tabata (8 × 20 s)",
+    "az": "Tabata (8 × 20 san)",
+    "ar": "تاباتا (8 × 20 ث)"
+  },
+  "routine.seven": {
+    "tr": "7 dakika antrenman",
+    "en": "7-minute workout",
+    "de": "7-Minuten-Training",
+    "az": "7 dəqiqəlik məşq",
+    "ar": "تمرين 7 دقائق"
+  },
+  "routine.emom": {
+    "tr": "Her dakika başı (EMOM, 10 dk)",
+    "en": "Every minute on the minute (EMOM, 10 min)",
+    "de": "Jede Minute (EMOM, 10 Min.)",
+    "az": "Hər dəqiqə başı (EMOM, 10 dəq)",
+    "ar": "كل دقيقة (EMOM، 10 دقائق)"
+  },
+  "routine.warmup": {
+    "tr": "Isınma",
+    "en": "Warm-up",
+    "de": "Aufwärmen",
+    "az": "İsinmə",
+    "ar": "إحماء"
+  },
+  "routine.stretch": {
+    "tr": "Esneme",
+    "en": "Stretching",
+    "de": "Dehnen",
+    "az": "Dartınma",
+    "ar": "تمدد"
+  },
+  "routine.minute": {
+    "tr": "Dakika",
+    "en": "Minute",
+    "de": "Minute",
+    "az": "Dəqiqə",
+    "ar": "دقيقة"
+  },
+  "routine.ex.jacks": {
+    "tr": "Zıplama (jumping jack)",
+    "en": "Jumping jacks",
+    "de": "Hampelmann",
+    "az": "Tullanma (jumping jack)",
+    "ar": "القفز الجانبي"
+  },
+  "routine.ex.wallsit": {
+    "tr": "Duvarda oturma",
+    "en": "Wall sit",
+    "de": "Wandsitzen",
+    "az": "Divarda oturma",
+    "ar": "الجلوس على الحائط"
+  },
+  "routine.ex.pushup": {
+    "tr": "Şınav",
+    "en": "Push-ups",
+    "de": "Liegestütze",
+    "az": "Şinav",
+    "ar": "تمرين الضغط"
+  },
+  "routine.ex.crunch": {
+    "tr": "Mekik",
+    "en": "Crunches",
+    "de": "Crunches",
+    "az": "Mekik",
+    "ar": "تمرين البطن"
+  },
+  "routine.ex.stepup": {
+    "tr": "Sandalyeye çıkma",
+    "en": "Step-ups onto a chair",
+    "de": "Aufsteigen auf einen Stuhl",
+    "az": "Stula çıxma",
+    "ar": "الصعود على كرسي"
+  },
+  "routine.ex.squat": {
+    "tr": "Çömelme (squat)",
+    "en": "Squats",
+    "de": "Kniebeugen",
+    "az": "Çömelmə (squat)",
+    "ar": "القرفصاء"
+  },
+  "routine.ex.dips": {
+    "tr": "Sandalyede arka kol",
+    "en": "Triceps dips on a chair",
+    "de": "Trizeps-Dips am Stuhl",
+    "az": "Stulda arxa qol",
+    "ar": "تمرين الترايسبس على كرسي"
+  },
+  "routine.ex.plank": {
+    "tr": "Plank",
+    "en": "Plank",
+    "de": "Unterarmstütz",
+    "az": "Plank",
+    "ar": "البلانك"
+  },
+  "routine.ex.highknees": {
+    "tr": "Yerinde diz çekerek koşu",
+    "en": "High knees running in place",
+    "de": "Laufen auf der Stelle mit hohen Knien",
+    "az": "Yerində dizləri qaldıraraq qaçış",
+    "ar": "الجري في المكان برفع الركبتين"
+  },
+  "routine.ex.lunge": {
+    "tr": "Hamle (lunge)",
+    "en": "Lunges",
+    "de": "Ausfallschritte",
+    "az": "Həmlə (lunge)",
+    "ar": "الطعنات"
+  },
+  "routine.ex.pushrot": {
+    "tr": "Dönüşlü şınav",
+    "en": "Push-up and rotation",
+    "de": "Liegestütz mit Drehung",
+    "az": "Dönüşlü şinav",
+    "ar": "ضغط مع دوران"
+  },
+  "routine.ex.sideplank": {
+    "tr": "Yan plank",
+    "en": "Side plank",
+    "de": "Seitstütz",
+    "az": "Yan plank",
+    "ar": "البلانك الجانبي"
+  },
+  "routine.ex.march": {
+    "tr": "Yerinde yürüyüş",
+    "en": "Marching in place",
+    "de": "Auf der Stelle gehen",
+    "az": "Yerində yeriş",
+    "ar": "المشي في المكان"
+  },
+  "routine.ex.arms": {
+    "tr": "Kol çevirme",
+    "en": "Arm circles",
+    "de": "Armkreisen",
+    "az": "Qol fırlatma",
+    "ar": "تدوير الذراعين"
+  },
+  "routine.ex.hips": {
+    "tr": "Bel çevirme",
+    "en": "Hip circles",
+    "de": "Hüftkreisen",
+    "az": "Bel fırlatma",
+    "ar": "تدوير الورك"
+  },
+  "routine.ex.knees": {
+    "tr": "Diz kaldırma",
+    "en": "Knee raises",
+    "de": "Knieheben",
+    "az": "Diz qaldırma",
+    "ar": "رفع الركبتين"
+  },
+  "routine.ex.neck": {
+    "tr": "Boyun esnetme",
+    "en": "Neck stretch",
+    "de": "Nackendehnung",
+    "az": "Boyun dartınması",
+    "ar": "تمدد الرقبة"
+  },
+  "routine.ex.shoulders": {
+    "tr": "Omuz esnetme",
+    "en": "Shoulder stretch",
+    "de": "Schulterdehnung",
+    "az": "Çiyin dartınması",
+    "ar": "تمدد الكتفين"
+  },
+  "routine.ex.hamstring": {
+    "tr": "Arka bacak esnetme",
+    "en": "Hamstring stretch",
+    "de": "Dehnung der Oberschenkelrückseite",
+    "az": "Arxa ayaq dartınması",
+    "ar": "تمدد أوتار الركبة"
+  },
+  "routine.ex.quads": {
+    "tr": "Ön bacak esnetme",
+    "en": "Quad stretch",
+    "de": "Dehnung der Oberschenkelvorderseite",
+    "az": "Ön ayaq dartınması",
+    "ar": "تمدد الفخذ الأمامي"
+  },
+  "routine.ex.back": {
+    "tr": "Sırt esnetme",
+    "en": "Back stretch",
+    "de": "Rückendehnung",
+    "az": "Kürək dartınması",
+    "ar": "تمدد الظهر"
   }
 }

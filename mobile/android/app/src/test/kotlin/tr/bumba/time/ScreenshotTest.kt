@@ -112,6 +112,16 @@ class ScreenshotTest {
         Prefs.store.edit().remove("hiit.start").remove("hiit.paused").commit()
         Prefs.saveAppearance("light")
     }
+    @Test fun routine() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        // 7 dakika antrenmanı, 75. saniye: üçüncü hareket (şınav)
+        Routines.select(Routines.templates().first { it.first == "seven" }.second)
+        Prefs.store.edit().putLong("hiit.start", System.currentTimeMillis() - 85_000).putLong("hiit.paused", System.currentTimeMillis()).commit()
+        captureRoboImage("$dir/tr-rutin.png") { AppTheme { Box(Modifier.background(Theme.c.bg)) { HiitScreen() } } }
+        Prefs.store.edit().remove("hiit.start").remove("hiit.paused").commit()
+        Routines.select(null)
+        captureRoboImage("$dir/tr-rutinler.png") { AppTheme { Box(Modifier.background(Theme.c.bg)) { RoutinePicker(onPick = {}) } } }
+    }
     @Test fun pomodoro() = tool("tr-pomodoro", "pomodoro")
     /** Pomodoro istatistikleri (son 7 gün, görevler) ve arka plan sesi seçimi */
     @Test fun pomodoroStats() {

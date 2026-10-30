@@ -38,6 +38,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -124,15 +125,30 @@ data class TimerItem(
 }
 
 /** Aralık antrenmanı: ısınma, çalışma ve dinlenme süreleri (sn), tur sayısı */
-data class HiitConfig(val warmup: Int = 10, val work: Int = 30, val rest: Int = 15, val rounds: Int = 8) {
-    val totalSeconds: Int get() = warmup + rounds * work + (rounds - 1) * rest
+data class HiitConfig(
+    val warmup: Int = 10, val work: Int = 30, val rest: Int = 15, val rounds: Int = 8,
+    /** Çok adımlı rutin (rakip analizi listesi #83): adlı adımlar her turda sırayla; boşsa klasik aralık */
+    val name: String = "", val steps: List<Step> = emptyList(),
+) {
+    /** Rutin adımı: ad, süre (sn), dinlenme mi (renk ve sesli duyuru için) */
+    data class Step(val n: String, val s: Int, val r: Boolean = false)
+
+    val isRoutine: Boolean get() = steps.isNotEmpty()
+    val totalSeconds: Int get() = if (isRoutine) rounds * steps.sumOf { it.s } else warmup + rounds * work + (rounds - 1) * rest
     override fun toString() = "$warmup,$work,$rest,$rounds"
 
-    /** Geçen süreye (sn) göre evre: kind (warmup, work, rest, done), tur (1'den), evrenin bitişine kalan (sn) */
-    data class Phase(val kind: String, val round: Int, val left: Int, val index: Int)
+    /** Geçen süreye (sn) göre evre: kind (warmup, work, rest, done), tur (1'den), evrenin bitişine kalan (sn); rutinde adım adı */
+    data class Phase(val kind: String, val round: Int, val left: Int, val index: Int, val name: String = "")
 
     fun phase(elapsed: Int): Phase {
         var t = elapsed
+        if (isRoutine) {
+            for (r in 1..rounds) for ((i, st) in steps.withIndex()) {
+                if (t < st.s) return Phase(if (st.r) "rest" else "work", r, st.s - t, (r - 1) * steps.size + i, st.n)
+                t -= st.s
+            }
+            return Phase("done", rounds, 0, rounds * steps.size)
+        }
         if (t < warmup) return Phase("warmup", 0, warmup - t, 0)
         t -= warmup
         for (r in 1..rounds) {
@@ -152,24 +168,73 @@ data class HiitConfig(val warmup: Int = 10, val work: Int = 30, val rest: Int = 
         else -> null
     }
 
-    /** Evrenin sesli adı: "Isın", "Çalış" (son turda "Son tur. Çalış"), "Dinlen", "Bitti" */
-    fun word(p: Phase): String = when (p.kind) {
-        "warmup" -> L("hiit.say.warmup")
-        "work" -> if (p.round == rounds && rounds > 1) L("hiit.say.last") + ". " + L("hiit.say.work") else L("hiit.say.work")
-        "rest" -> L("hiit.say.rest")
-        else -> L("hiit.say.done")
+    /** Evrenin sesli adı: "Isın", "Çalış" (son turda "Son tur. Çalış"), "Dinlen", "Bitti"; rutinde adımın adı */
+    fun word(p: Phase): String = when {
+        p.kind == "done" -> L("hiit.say.done")
+        isRoutine -> (if (p.round == rounds && rounds > 1 && p.index == (rounds - 1) * steps.size) L("hiit.say.last") + ". " else "") + p.name
+        p.kind == "warmup" -> L("hiit.say.warmup")
+        p.kind == "work" -> if (p.round == rounds && rounds > 1) L("hiit.say.last") + ". " + L("hiit.say.work") else L("hiit.say.work")
+        else -> L("hiit.say.rest")
     }
 
     /** Ekrandaki ad */
-    fun title(p: Phase): String = when (p.kind) {
-        "warmup" -> L("hiit.warmup"); "work" -> L("hiit.work"); "rest" -> L("hiit.rest"); else -> L("hiit.done")
+    fun title(p: Phase): String = when {
+        p.name.isNotEmpty() -> p.name
+        p.kind == "warmup" -> L("hiit.warmup"); p.kind == "work" -> L("hiit.work"); p.kind == "rest" -> L("hiit.rest"); else -> L("hiit.done")
     }
 
+    fun routineJson(): org.json.JSONObject = org.json.JSONObject().put("n", name).put("rounds", rounds)
+        .put("steps", org.json.JSONArray(steps.map { org.json.JSONObject().put("n", it.n).put("s", it.s).put("r", it.r) }))
+
     companion object {
-        fun load(): HiitConfig = runCatching {
-            val p = Prefs.store.getString("hiit.cfg", "")!!.split(",").map { it.toInt() }
-            HiitConfig(p[0], p[1], p[2], p[3])
-        }.getOrDefault(HiitConfig())
+        fun fromRoutine(o: org.json.JSONObject): HiitConfig {
+            val a = o.optJSONArray("steps") ?: org.json.JSONArray()
+            val steps = (0 until a.length()).map { a.getJSONObject(it).let { s -> Step(s.getString("n"), s.getInt("s"), s.optBoolean("r")) } }
+            return HiitConfig(rounds = o.optInt("rounds", 1).coerceAtLeast(1), name = o.optString("n"), steps = steps)
+        }
+
+        /** Etkin ayar: seçili rutin (hiit.routine) ya da klasik aralık (hiit.cfg) */
+        fun load(): HiitConfig {
+            Prefs.store.getString("hiit.routine", "")?.takeIf { it.isNotEmpty() }?.let { raw ->
+                runCatching { return fromRoutine(org.json.JSONObject(raw)) }
+            }
+            return runCatching {
+                val p = Prefs.store.getString("hiit.cfg", "")!!.split(",").map { it.toInt() }
+                HiitConfig(p[0], p[1], p[2], p[3])
+            }.getOrDefault(HiitConfig())
+        }
+    }
+}
+
+/** Rutin şablonları ve kullanıcının rutinleri (`routines`: [{id, n, rounds, steps}]; iOS'taki Routines ile aynı) */
+object Routines {
+    private const val KEY = "routines"
+    private fun ex(k: String) = L("routine.ex.$k")
+    private fun work(k: String, s: Int) = HiitConfig.Step(ex(k), s)
+    private fun rest(s: Int) = HiitConfig.Step(L("hiit.rest"), s, true)
+
+    /** Hazır şablonlar (kimlik, yapı) */
+    fun templates(): List<Pair<String, HiitConfig>> = listOf(
+        "tabata" to HiitConfig(rounds = 8, name = L("routine.tabata"), steps = listOf(HiitConfig.Step(L("hiit.work"), 20), rest(10))),
+        "seven" to HiitConfig(rounds = 1, name = L("routine.seven"), steps = listOf("jacks", "wallsit", "pushup", "crunch", "stepup", "squat", "dips", "plank", "highknees", "lunge", "pushrot", "sideplank")
+            .flatMapIndexed { i, k -> if (i < 11) listOf(work(k, 30), rest(10)) else listOf(work(k, 30)) }),
+        "emom" to HiitConfig(rounds = 10, name = L("routine.emom"), steps = listOf(HiitConfig.Step(L("routine.minute"), 60))),
+        "warmup" to HiitConfig(rounds = 1, name = L("routine.warmup"), steps = listOf("march", "arms", "hips", "knees", "jacks").map { work(it, 45) }),
+        "stretch" to HiitConfig(rounds = 1, name = L("routine.stretch"), steps = listOf("neck", "shoulders", "hamstring", "quads", "back").map { work(it, 40) }),
+    )
+
+    fun mine(): List<Pair<String, HiitConfig>> = runCatching {
+        val a = org.json.JSONArray(Prefs.store.getString(KEY, "[]"))
+        (0 until a.length()).map { a.getJSONObject(it).let { o -> o.getString("id") to HiitConfig.fromRoutine(o) } }
+    }.getOrDefault(emptyList())
+
+    fun save(list: List<Pair<String, HiitConfig>>) {
+        Prefs.store.edit().putString(KEY, org.json.JSONArray(list.map { (id, c) -> c.routineJson().put("id", id) }).toString()).apply()
+    }
+
+    /** Etkin rutini seç (null: klasik aralığa dön) */
+    fun select(c: HiitConfig?) {
+        Prefs.store.edit().putString("hiit.routine", c?.routineJson()?.toString() ?: "").apply()
     }
 }
 
@@ -389,16 +454,26 @@ fun HiitScreen() {
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         if (!active) {
-            AppCard {
+            if (cfg.isRoutine) AppCard {
+                Text(cfg.name, color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
+                for (st in cfg.steps) Row(Modifier.fillMaxWidth()) {
+                    Text(st.n, Modifier.weight(1f), color = if (st.r) Theme.c.muted else Theme.c.text, fontSize = 15.sp)
+                    Text(clock(st.s.toLong()), color = Theme.c.muted, fontSize = 15.sp, style = Tnum)
+                }
+                Stepper(L("hiit.rounds"), cfg.rounds, 1..50, 1, false) { cfg = cfg.copy(rounds = it) }
+                Text(T("hiit.total", clock(cfg.totalSeconds.toLong())), color = Theme.c.muted, fontSize = 13.sp)
+                TextButton(onClick = { Routines.select(null); cfg = HiitConfig.load() }) { Text(L("routine.classic"), color = Theme.c.accent) }
+            } else AppCard {
                 Stepper(L("hiit.warmup"), cfg.warmup, 0..600, 5, true) { cfg = cfg.copy(warmup = it) }
                 Stepper(L("hiit.work"), cfg.work, 5..1800, 5, true) { cfg = cfg.copy(work = it) }
                 Stepper(L("hiit.rest"), cfg.rest, 0..900, 5, true) { cfg = cfg.copy(rest = it) }
                 Stepper(L("hiit.rounds"), cfg.rounds, 1..50, 1, false) { cfg = cfg.copy(rounds = it) }
                 Text(T("hiit.total", clock(cfg.totalSeconds.toLong())), color = Theme.c.muted, fontSize = 13.sp)
             }
+            RoutinePicker { cfg = it; Routines.select(it) }
             RoundButton(L("tools.countdown.start"), true, Modifier.fillMaxWidth()) {
                 ask()
-                Prefs.store.edit().putString("hiit.cfg", cfg.toString()).apply()
+                if (cfg.isRoutine) Routines.select(cfg) else Prefs.store.edit().putString("hiit.cfg", cfg.toString()).apply()
                 val s = System.currentTimeMillis()
                 saveState(s, 0)
                 scheduleEnd(s)
@@ -408,7 +483,10 @@ fun HiitScreen() {
             Spacer(Modifier.height(10.dp))
             Text(cfg.title(phase), color = color, fontSize = 28.sp, fontWeight = FontWeight.Bold)
             if (phase.kind != "done") BigTime(clock(phase.left.toLong()))
-            if (phase.kind == "work" || phase.kind == "rest") Text(T("hiit.round", phase.round, cfg.rounds), color = Theme.c.text, fontSize = 17.sp)
+            if ((phase.kind == "work" || phase.kind == "rest") && cfg.rounds > 1) Text(T("hiit.round", phase.round, cfg.rounds), color = Theme.c.text, fontSize = 17.sp)
+            if (cfg.isRoutine && phase.kind != "done") cfg.steps.getOrNull((phase.index + 1) % cfg.steps.size)?.takeIf { phase.index + 1 < cfg.rounds * cfg.steps.size }?.let {
+                Text(T("routine.next", it.n), color = Theme.c.muted, fontSize = 15.sp)
+            }
             // Antrenmanın ilerlemesi
             val frac = (elapsed.toFloat() / cfg.totalSeconds).coerceIn(0f, 1f)
             Box(Modifier.fillMaxWidth().height(10.dp).background(Theme.c.surface2, RoundedCornerShape(5.dp))) {
@@ -435,6 +513,69 @@ fun HiitScreen() {
         Text(L("hiit.note"), color = Theme.c.muted, fontSize = 13.sp)
         Spacer(Modifier.height(8.dp))
     }
+}
+
+/** Rutin seçimi: hazır şablonlar ve kullanıcının rutinleri; yeni rutin oluşturma */
+@Composable
+internal fun RoutinePicker(onPick: (HiitConfig) -> Unit) {
+    var mine by remember { mutableStateOf(Routines.mine()) }
+    var editing by remember { mutableStateOf(false) }
+    AppCard {
+        SectionTitle(L("routine.heading"))
+        for ((id, c) in Routines.templates() + mine) Row(Modifier.fillMaxWidth().clickable { onPick(c) }.padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(c.name, color = Theme.c.text, fontSize = 15.sp)
+                Text(T("hiit.total", clock(c.totalSeconds.toLong())), color = Theme.c.muted, fontSize = 12.sp)
+            }
+            if (mine.any { it.first == id }) TextButton(onClick = { mine = mine.filter { it.first != id }; Routines.save(mine) }) {
+                Text("×", color = Theme.c.muted, fontSize = 18.sp)
+            }
+        }
+        TextButton(onClick = { editing = true }) { Text(L("routine.new"), color = Theme.c.accent) }
+    }
+    if (editing) RoutineEditor(onDismiss = { editing = false }) { c ->
+        mine = mine + (java.util.UUID.randomUUID().toString() to c)
+        Routines.save(mine)
+        editing = false
+        onPick(c)
+    }
+}
+
+/** Yeni rutin: ad, adımlar (ad, süre, dinlenme), tur */
+@Composable
+private fun RoutineEditor(onDismiss: () -> Unit, onSave: (HiitConfig) -> Unit) {
+    var name by remember { mutableStateOf("") }
+    var rounds by remember { mutableIntStateOf(1) }
+    var steps by remember { mutableStateOf(listOf(HiitConfig.Step(L("hiit.work"), 30), HiitConfig.Step(L("hiit.rest"), 10, true))) }
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(L("routine.new")) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                androidx.compose.material3.OutlinedTextField(name, { name = it.take(40) }, Modifier.fillMaxWidth(), singleLine = true, label = { Text(L("routine.name")) })
+                for ((i, st) in steps.withIndex()) AppCard {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        androidx.compose.material3.OutlinedTextField(st.n, { v -> steps = steps.toMutableList().also { it[i] = st.copy(n = v.take(30)) } },
+                            Modifier.weight(1f), singleLine = true)
+                        TextButton(onClick = { steps = steps.filterIndexed { j, _ -> j != i } }, enabled = steps.size > 1) { Text("×", color = Theme.c.muted) }
+                    }
+                    Stepper(L("routine.seconds"), st.s, 5..1800, 5, true) { v -> steps = steps.toMutableList().also { it[i] = st.copy(s = v) } }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(L("hiit.rest"), Modifier.weight(1f), color = Theme.c.text, fontSize = 14.sp)
+                        androidx.compose.material3.Switch(st.r, { v -> steps = steps.toMutableList().also { it[i] = st.copy(r = v) } },
+                            colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    }
+                }
+                TextButton(onClick = { if (steps.size < 30) steps = steps + HiitConfig.Step(L("hiit.work"), 30) }) { Text(L("routine.addStep"), color = Theme.c.accent) }
+                Stepper(L("hiit.rounds"), rounds, 1..50, 1, false) { rounds = it }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = { onSave(HiitConfig(rounds = rounds, name = name.trim().ifEmpty { L("routine.untitled") }, steps = steps.filter { it.s > 0 })) },
+                enabled = steps.isNotEmpty()) { Text(L("alarm.save"), color = Theme.c.accent) }
+        },
+        dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },
+    )
 }
 
 /** Değer adımlayıcı: − değer + (saniyede "1:30" gibi) */

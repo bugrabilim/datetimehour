@@ -47,14 +47,40 @@ struct TimerItem: Codable, Identifiable, Equatable {
 /// Aralık antrenmanı: ısınma, çalışma, dinlenme (sn) ve tur sayısı
 struct HiitConfig: Equatable {
     var warmup = 10, work = 30, rest = 15, rounds = 8
-    var totalSeconds: Int { warmup + rounds * work + (rounds - 1) * rest }
+    /// Çok adımlı rutin (rakip analizi listesi #83): adlı adımlar her turda sırayla; boşsa klasik aralık
+    var name = ""
+    var steps: [Step] = []
+
+    /// Rutin adımı: ad, süre (sn), dinlenme mi (renk ve sesli duyuru için)
+    struct Step: Equatable, Identifiable {
+        var id = UUID()
+        var n: String
+        var s: Int
+        var r = false
+        static func == (a: Step, b: Step) -> Bool { a.n == b.n && a.s == b.s && a.r == b.r }
+    }
+
+    var isRoutine: Bool { !steps.isEmpty }
+    var totalSeconds: Int { isRoutine ? rounds * steps.reduce(0) { $0 + $1.s } : warmup + rounds * work + (rounds - 1) * rest }
     var raw: String { "\(warmup),\(work),\(rest),\(rounds)" }
 
-    struct Phase: Equatable { let kind: String; let round: Int; let left: Int; let index: Int }
+    struct Phase: Equatable {
+        let kind: String; let round: Int; let left: Int; let index: Int
+        var name = ""
+    }
 
     /// Geçen süreye (sn) göre evre (Android'deki HiitConfig.phase ile aynı)
     func phase(_ elapsed: Int) -> Phase {
         var t = elapsed
+        if isRoutine {
+            for r in 1...max(1, rounds) {
+                for (i, st) in steps.enumerated() {
+                    if t < st.s { return Phase(kind: st.r ? "rest" : "work", round: r, left: st.s - t, index: (r - 1) * steps.count + i, name: st.n) }
+                    t -= st.s
+                }
+            }
+            return Phase(kind: "done", round: rounds, left: 0, index: rounds * steps.count)
+        }
         if t < warmup { return Phase(kind: "warmup", round: 0, left: warmup - t, index: 0) }
         t -= warmup
         for r in 1...max(1, rounds) {
@@ -74,30 +100,100 @@ struct HiitConfig: Equatable {
         return nil
     }
 
-    /// Evrenin sesli adı: "Isın", "Çalış" (son turda "Son tur. Çalış"), "Dinlen", "Bitti"
+    /// Evrenin sesli adı: "Isın", "Çalış" (son turda "Son tur. Çalış"), "Dinlen", "Bitti"; rutinde adımın adı
     func word(_ p: Phase) -> String {
+        if p.kind == "done" { return L("hiit.say.done") }
+        if isRoutine {
+            let last = p.round == rounds && rounds > 1 && p.index == (rounds - 1) * steps.count
+            return (last ? L("hiit.say.last") + ". " : "") + p.name
+        }
         switch p.kind {
-        case "warmup": L("hiit.say.warmup")
-        case "work": p.round == rounds && rounds > 1 ? L("hiit.say.last") + ". " + L("hiit.say.work") : L("hiit.say.work")
-        case "rest": L("hiit.say.rest")
-        default: L("hiit.say.done")
+        case "warmup": return L("hiit.say.warmup")
+        case "work": return p.round == rounds && rounds > 1 ? L("hiit.say.last") + ". " + L("hiit.say.work") : L("hiit.say.work")
+        default: return L("hiit.say.rest")
         }
     }
 
     /// Ekrandaki ad
     func title(_ p: Phase) -> String {
+        if !p.name.isEmpty { return p.name }
         switch p.kind {
-        case "warmup": L("hiit.warmup")
-        case "work": L("hiit.work")
-        case "rest": L("hiit.rest")
-        default: L("hiit.done")
+        case "warmup": return L("hiit.warmup")
+        case "work": return L("hiit.work")
+        case "rest": return L("hiit.rest")
+        default: return L("hiit.done")
         }
     }
 
+    /// Sıradaki adımın adı (rutinde; son adımda nil)
+    func next(_ p: Phase) -> String? {
+        guard isRoutine, p.kind != "done", p.index + 1 < rounds * steps.count else { return nil }
+        return steps[(p.index + 1) % steps.count].n
+    }
+
+    /// Rutin JSON'u (Android'deki routineJson ile aynı alanlar: n, rounds, steps[{n, s, r}])
+    var routineJSON: [String: Any] { ["n": name, "rounds": rounds, "steps": steps.map { ["n": $0.n, "s": $0.s, "r": $0.r] }] }
+
+    static func fromRoutine(_ o: [String: Any]) -> HiitConfig {
+        let steps = (o["steps"] as? [[String: Any]] ?? []).compactMap { d -> Step? in
+            guard let n = d["n"] as? String, let s = (d["s"] as? NSNumber)?.intValue else { return nil }
+            return Step(n: n, s: s, r: (d["r"] as? Bool) ?? false)
+        }
+        return HiitConfig(rounds: max(1, (o["rounds"] as? NSNumber)?.intValue ?? 1), name: o["n"] as? String ?? "", steps: steps)
+    }
+
+    /// Etkin ayar: seçili rutin (hiit.routine) ya da klasik aralık (hiit.cfg)
     static func load() -> HiitConfig {
+        if let raw = UserDefaults.standard.string(forKey: "hiit.routine"), let d = raw.data(using: .utf8),
+           let o = try? JSONSerialization.jsonObject(with: d) as? [String: Any] {
+            let c = fromRoutine(o)
+            if c.isRoutine { return c }
+        }
         let p = (UserDefaults.standard.string(forKey: "hiit.cfg") ?? "").split(separator: ",").compactMap { Int($0) }
         guard p.count == 4 else { return HiitConfig() }
         return HiitConfig(warmup: p[0], work: p[1], rest: p[2], rounds: p[3])
+    }
+}
+
+/// Rutin şablonları ve kullanıcının rutinleri (Android'deki Routines ile aynı kayıt: routines, hiit.routine)
+enum Routines {
+    private static let key = "routines"
+    private static func ex(_ k: String) -> String { L("routine.ex.\(k)") }
+    private static func work(_ k: String, _ s: Int) -> HiitConfig.Step { .init(n: ex(k), s: s) }
+    private static func rest(_ s: Int) -> HiitConfig.Step { .init(n: L("hiit.rest"), s: s, r: true) }
+
+    /// Hazır şablonlar (kimlik, yapı)
+    static func templates() -> [(String, HiitConfig)] {
+        let seven = ["jacks", "wallsit", "pushup", "crunch", "stepup", "squat", "dips", "plank", "highknees", "lunge", "pushrot", "sideplank"]
+        return [
+            ("tabata", HiitConfig(rounds: 8, name: L("routine.tabata"), steps: [.init(n: L("hiit.work"), s: 20), rest(10)])),
+            ("seven", HiitConfig(rounds: 1, name: L("routine.seven"), steps: seven.enumerated().flatMap { i, k in i < 11 ? [work(k, 30), rest(10)] : [work(k, 30)] })),
+            ("emom", HiitConfig(rounds: 10, name: L("routine.emom"), steps: [.init(n: L("routine.minute"), s: 60)])),
+            ("warmup", HiitConfig(rounds: 1, name: L("routine.warmup"), steps: ["march", "arms", "hips", "knees", "jacks"].map { work($0, 45) })),
+            ("stretch", HiitConfig(rounds: 1, name: L("routine.stretch"), steps: ["neck", "shoulders", "hamstring", "quads", "back"].map { work($0, 40) })),
+        ]
+    }
+
+    static func mine() -> [(String, HiitConfig)] {
+        guard let d = UserDefaults.standard.string(forKey: key)?.data(using: .utf8),
+              let a = try? JSONSerialization.jsonObject(with: d) as? [[String: Any]] else { return [] }
+        return a.compactMap { o in (o["id"] as? String).map { ($0, HiitConfig.fromRoutine(o)) } }
+    }
+
+    static func save(_ list: [(String, HiitConfig)]) {
+        let a = list.map { id, c in c.routineJSON.merging(["id": id]) { $1 } }
+        if let d = try? JSONSerialization.data(withJSONObject: a), let s = String(data: d, encoding: .utf8) {
+            UserDefaults.standard.set(s, forKey: key)
+        }
+    }
+
+    /// Etkin rutini seç (nil: klasik aralığa dön)
+    static func select(_ c: HiitConfig?) {
+        guard let c, let d = try? JSONSerialization.data(withJSONObject: c.routineJSON) else {
+            UserDefaults.standard.removeObject(forKey: "hiit.routine")
+            return
+        }
+        UserDefaults.standard.set(String(data: d, encoding: .utf8), forKey: "hiit.routine")
     }
 }
 
@@ -449,17 +545,43 @@ struct HiitView: View {
     private var settings: some View {
         VStack(spacing: 12) {
             VStack(spacing: 4) {
-                stepper(L("hiit.warmup"), $cfg.warmup, 0...600, 5, seconds: true)
-                stepper(L("hiit.work"), $cfg.work, 5...1800, 5, seconds: true)
-                stepper(L("hiit.rest"), $cfg.rest, 0...900, 5, seconds: true)
-                stepper(L("hiit.rounds"), $cfg.rounds, 1...50, 1, seconds: false)
+                if cfg.isRoutine {
+                    Text(cfg.name).font(.headline).frame(maxWidth: .infinity, alignment: .leading)
+                    ForEach(cfg.steps) { st in
+                        HStack {
+                            Text(st.n).foregroundStyle(st.r ? Theme.muted : Theme.ink)
+                            Spacer()
+                            Text(clock(st.s)).monospacedDigit().foregroundStyle(Theme.muted)
+                                .environment(\.layoutDirection, .leftToRight)
+                        }
+                        .font(.subheadline)
+                    }
+                    stepper(L("hiit.rounds"), $cfg.rounds, 1...50, 1, seconds: false)
+                } else {
+                    stepper(L("hiit.warmup"), $cfg.warmup, 0...600, 5, seconds: true)
+                    stepper(L("hiit.work"), $cfg.work, 5...1800, 5, seconds: true)
+                    stepper(L("hiit.rest"), $cfg.rest, 0...900, 5, seconds: true)
+                    stepper(L("hiit.rounds"), $cfg.rounds, 1...50, 1, seconds: false)
+                }
                 Text(T("hiit.total", clock(cfg.totalSeconds))).font(.footnote).foregroundStyle(Theme.muted)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                if cfg.isRoutine {
+                    Button(L("routine.classic")) {
+                        Routines.select(nil)
+                        cfg = HiitConfig.load()
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 4)
+                }
             }
             .padding(16)
             .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+            RoutinePicker { c in
+                cfg = c
+                Routines.select(c)
+            }
             RoundButton(title: L("tools.countdown.start"), prominent: true) {
-                UserDefaults.standard.set(cfg.raw, forKey: "hiit.cfg")
+                if cfg.isRoutine { Routines.select(cfg) } else { UserDefaults.standard.set(cfg.raw, forKey: "hiit.cfg") }
                 start = Date().timeIntervalSince1970 * 1000
                 paused = 0
                 scheduleEnd()
@@ -474,7 +596,8 @@ struct HiitView: View {
             .foregroundStyle(color)
             .padding(.top, 10)
         if phase.kind != "done" { BigTime(text: clock(phase.left)) }
-        if phase.kind == "work" || phase.kind == "rest" { Text(T("hiit.round", phase.round, cfg.rounds)).font(.headline) }
+        if (phase.kind == "work" || phase.kind == "rest") && cfg.rounds > 1 { Text(T("hiit.round", phase.round, cfg.rounds)).font(.headline) }
+        if let next = cfg.next(phase) { Text(T("routine.next", next)).font(.subheadline).foregroundStyle(Theme.muted) }
         ProgressView(value: min(1, Double(elapsed) / Double(max(1, cfg.totalSeconds)))).tint(color)
         HStack(spacing: 12) {
             RoundButton(title: L("tools.countdown.reset")) {
@@ -522,5 +645,99 @@ struct HiitView: View {
     private func cancelEnd() {
         if let id = UUID(uuidString: alarmID) { AlarmCenter.cancel(id: id) }
         alarmID = ""
+    }
+}
+
+/// Rutin seçimi: hazır şablonlar ve kullanıcının rutinleri; yeni rutin oluşturma
+struct RoutinePicker: View {
+    let onPick: (HiitConfig) -> Void
+    @State private var mine = Routines.mine()
+    @State private var editing = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(L("routine.heading")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
+            ForEach(Array((Routines.templates() + mine).enumerated()), id: \.offset) { _, item in
+                HStack {
+                    Button { onPick(item.1) } label: {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(item.1.name).foregroundStyle(Theme.ink)
+                            Text(T("hiit.total", clock(item.1.totalSeconds))).font(.caption).foregroundStyle(Theme.muted)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
+                    }
+                    .buttonStyle(.plain)
+                    if mine.contains(where: { $0.0 == item.0 }) {
+                        Button {
+                            mine.removeAll { $0.0 == item.0 }
+                            Routines.save(mine)
+                        } label: { Image(systemName: "xmark").foregroundStyle(Theme.muted) }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(L("timers.remove"))
+                    }
+                }
+                .padding(.vertical, 4)
+            }
+            Button(L("routine.new")) { editing = true }
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+        .sheet(isPresented: $editing) {
+            RoutineEditor { c in
+                mine.append((UUID().uuidString, c))
+                Routines.save(mine)
+                editing = false
+                onPick(c)
+            }
+        }
+    }
+}
+
+/// Yeni rutin: ad, adımlar (ad, süre, dinlenme), tur
+struct RoutineEditor: View {
+    let onSave: (HiitConfig) -> Void
+    @Environment(\.dismiss) private var dismiss
+    @State private var name = ""
+    @State private var rounds = 1
+    @State private var steps: [HiitConfig.Step] = [.init(n: L("hiit.work"), s: 30), .init(n: L("hiit.rest"), s: 10, r: true)]
+
+    var body: some View {
+        NavigationStack {
+            Form {
+                TextField(L("routine.name"), text: $name)
+                ForEach($steps) { $st in
+                    Section {
+                        TextField(L("routine.name"), text: $st.n)
+                        Stepper(value: $st.s, in: 5...1800, step: 5) {
+                            HStack {
+                                Text(L("routine.seconds"))
+                                Spacer()
+                                Text(clock(st.s)).monospacedDigit().environment(\.layoutDirection, .leftToRight)
+                            }
+                        }
+                        Toggle(L("hiit.rest"), isOn: $st.r)
+                    }
+                }
+                .onDelete { idx in if steps.count > 1 { steps.remove(atOffsets: idx) } }
+                Section {
+                    Button(L("routine.addStep")) { if steps.count < 30 { steps.append(.init(n: L("hiit.work"), s: 30)) } }
+                    Stepper(value: $rounds, in: 1...50) { HStack { Text(L("hiit.rounds")); Spacer(); Text("\(rounds)").monospacedDigit() } }
+                }
+            }
+            .themedBackground()
+            .navigationTitle(L("routine.new"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button(L("alarm.save")) {
+                        let n = name.trimmingCharacters(in: .whitespaces)
+                        onSave(HiitConfig(rounds: rounds, name: n.isEmpty ? L("routine.untitled") : n, steps: steps.filter { $0.s > 0 }))
+                    }
+                }
+            }
+        }
     }
 }
