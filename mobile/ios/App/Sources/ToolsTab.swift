@@ -134,6 +134,8 @@ struct StopwatchView: View {
             .padding(.horizontal, 20)
         }
         .background(Theme.bg.ignoresSafeArea())
+        // Kilit ekranı / Dynamic Island: çalışan kronometre
+        .onChange(of: start) { LiveActivities.sync() }
         .navigationTitle(L("tools.hub.cards.stopwatch.name"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -463,6 +465,8 @@ struct PomodoroView: View {
             }
         }
         .background(Theme.bg.ignoresSafeArea())
+        // Kilit ekranı / Dynamic Island: çalışan pomodoro aşaması
+        .onChange(of: end) { LiveActivities.sync() }
         .navigationTitle(L("tools.hub.cards.pomodoro.name"))
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -4,6 +4,8 @@ import SaatCore
 /// Vakitler sekmesi: il, sıradaki vakte kalan süre, bugünün vakitleri, aylık çizelge, imsakiye, bildirimler.
 struct PrayerTab: View {
     @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = true
+    /// Kilit ekranında / Dynamic Island'da sıradaki vakit (Live Activity)
+    @AppStorage(LiveActivities.prayerKey) private var liveOn = false
     /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
     @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
 
@@ -14,6 +16,18 @@ struct PrayerTab: View {
                 ScrollView {
                     VStack(spacing: 24) {
                         PrayerPanel(now: context.date, place: place)
+                        VStack(alignment: .leading, spacing: 6) {
+                            Toggle(isOn: $liveOn) {
+                                Label(L("live.prayer.toggle"), systemImage: "lock.iphone")
+                            }
+                            .tint(Theme.accent)
+                            Text(L("live.prayer.note")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        .card()
+                        .onChange(of: liveOn) { LiveActivities.sync() }
+                        // Yer değişince ya da vakit girince kilit ekranındaki sayaç ileri taşınır
+                        .onChange(of: place.name) { LiveActivities.sync() }
+                        .onChange(of: place.schedule.next(after: context.date)?.at) { LiveActivities.sync() }
                         VStack(spacing: 10) {
                             NavigationLink {
                                 MonthlyPrayerView(place: place)

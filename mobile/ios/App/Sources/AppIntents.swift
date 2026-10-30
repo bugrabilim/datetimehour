@@ -30,6 +30,7 @@ struct StartTimerIntent: AppIntent {
             await AlarmCenter.schedule(id: id, at: Date(timeIntervalSince1970: Double(t.end) / 1000), title: t.doneTitle)
         }
         BadgeStore.shared.hit(.zamanlayici)
+        LiveActivities.sync()
         return .result(dialog: IntentDialog(LocalizedStringResource(stringLiteral: T("intent.timer.done", minutes))))
     }
 }

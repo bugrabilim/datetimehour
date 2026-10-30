@@ -136,9 +136,11 @@ private fun Stopwatch() {
     LaunchedEffect(start) { while (start > 0) { now = System.currentTimeMillis(); delay(30) } }
     val total = acc + if (start > 0) maxOf(0, now - start) else 0
     val laps = lapsRaw.split(",").mapNotNull { it.toLongOrNull() }
+    val context = androidx.compose.ui.platform.LocalContext.current
     fun save(s: Long, a: Long, l: String) {
         start = s; acc = a; lapsRaw = l
         ToolState.putLong("sw.start", s); ToolState.putLong("sw.acc", a); ToolState.putStr("sw.laps", l)
+        LiveNotifications.sync(context)
     }
     fun fmt(ms: Long) = clock(ms / 1000) + ".%02d".format((ms / 10) % 100)
 

@@ -63,6 +63,7 @@ targets:
       - path: App/Sources/AnalogClock.swift
       - path: App/Sources/Location.swift
       - path: App/Sources/Hijri.swift
+      - path: App/Sources/LiveActivityModel.swift
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/cities.json

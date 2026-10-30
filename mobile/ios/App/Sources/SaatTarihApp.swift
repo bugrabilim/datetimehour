@@ -29,6 +29,8 @@ struct SaatTarihApp: App {
                 }
                 // Aralık antrenmanı sürüyorsa sesli duyurular (uygulama yeniden açılmış olabilir)
                 HiitRunner.shared.sync()
+                // Kilit ekranı / Dynamic Island etkinlikleri (sıradaki vakit ileri taşınır, bitenler kapanır)
+                LiveActivities.sync()
             } else if phase == .background {
                 BackgroundRefresh.schedule()
             }

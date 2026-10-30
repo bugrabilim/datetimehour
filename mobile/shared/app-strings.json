@@ -3219,5 +3219,47 @@
     "de": "Welches Hidschri-Datum ist in {app}",
     "az": "{app} hicri tarix",
     "ar": "ما التاريخ الهجري في {app}"
+  },
+  "live.prayer.toggle": {
+    "tr": "Kilit ekranında sıradaki vakit",
+    "en": "Next prayer on the Lock Screen",
+    "de": "Nächstes Gebet auf dem Sperrbildschirm",
+    "az": "Kilid ekranında növbəti vaxt",
+    "ar": "الصلاة التالية على شاشة القفل"
+  },
+  "live.prayer.note": {
+    "tr": "Kilit ekranında ve Dynamic Island'da sıradaki vakte kalan süre görünür (Ramazan'da iftar ve sahur). Vakit girdikten sonra uygulama açıldığında ya da arka planda yenilenir. Çalışan zamanlayıcı, pomodoro ve kronometre de kilit ekranında görünür.",
+    "en": "Shows the time left until the next prayer on the Lock Screen and in the Dynamic Island (iftar and suhoor in Ramadan). After a prayer time it updates when you open the app or in the background. Running timers, pomodoro and the stopwatch also appear on the Lock Screen.",
+    "de": "Zeigt die verbleibende Zeit bis zum nächsten Gebet auf dem Sperrbildschirm und in der Dynamic Island (im Ramadan Iftar und Sahur). Nach einer Gebetszeit wird es beim Öffnen der App oder im Hintergrund aktualisiert. Laufende Timer, Pomodoro und Stoppuhr erscheinen ebenfalls auf dem Sperrbildschirm.",
+    "az": "Kilid ekranında və Dynamic Island-da növbəti vaxta qalan müddət görünür (Ramazanda iftar və səhər). Vaxt girəndən sonra tətbiq açılanda və ya arxa fonda yenilənir. İşləyən taymer, pomodoro və saniyəölçən də kilid ekranında görünür.",
+    "ar": "يعرض الوقت المتبقي حتى الصلاة التالية على شاشة القفل وفي Dynamic Island (والإفطار والسحور في رمضان). بعد دخول الوقت يتحدث عند فتح التطبيق أو في الخلفية. وتظهر المؤقتات والبومودورو وساعة الإيقاف الجارية على شاشة القفل أيضًا."
+  },
+  "live.prayer.noteAndroid": {
+    "tr": "Bildirim alanında ve kilit ekranında sıradaki vakte kalan süre (Ramazan'da iftar ve sahur); her vakitte kendiliğinden yenilenir. Çalışan zamanlayıcı, pomodoro ve kronometre de bildirim alanında görünür.",
+    "en": "Shows the time left until the next prayer in the notification shade and on the lock screen (iftar and suhoor in Ramadan); it updates by itself at each prayer time. Running timers, pomodoro and the stopwatch also appear in the notification shade.",
+    "de": "Zeigt die verbleibende Zeit bis zum nächsten Gebet in der Benachrichtigungsleiste und auf dem Sperrbildschirm (im Ramadan Iftar und Sahur); aktualisiert sich zu jeder Gebetszeit selbst. Laufende Timer, Pomodoro und Stoppuhr erscheinen ebenfalls dort.",
+    "az": "Bildiriş sahəsində və kilid ekranında növbəti vaxta qalan müddət (Ramazanda iftar və səhər); hər vaxtda özü yenilənir. İşləyən taymer, pomodoro və saniyəölçən də bildiriş sahəsində görünür.",
+    "ar": "يعرض الوقت المتبقي حتى الصلاة التالية في لوحة الإشعارات وعلى شاشة القفل (والإفطار والسحور في رمضان)؛ ويتحدث تلقائيًا عند كل وقت. وتظهر المؤقتات والبومودورو وساعة الإيقاف الجارية هناك أيضًا."
+  },
+  "live.iftar": {
+    "tr": "İftar",
+    "en": "Iftar",
+    "de": "Iftar",
+    "az": "İftar",
+    "ar": "الإفطار"
+  },
+  "live.sahur": {
+    "tr": "Sahur (imsak)",
+    "en": "Suhoor (imsak)",
+    "de": "Sahur (Imsak)",
+    "az": "Səhər (imsak)",
+    "ar": "السحور (الإمساك)"
+  },
+  "live.channel": {
+    "tr": "Süren sayaçlar",
+    "en": "Running counters",
+    "de": "Laufende Zähler",
+    "az": "İşləyən sayğaclar",
+    "ar": "العدادات الجارية"
   }
 }

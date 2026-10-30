@@ -283,6 +283,7 @@ object AlarmScheduler {
     /** Uygulama ya da telefon yeniden başlayınca: alarmlar ve süren zamanlayıcı/pomodoro yeniden kurulur */
     fun restoreAll(c: Context) {
         sync(c)
+        LiveNotifications.sync(c)
         val now = System.currentTimeMillis()
         for (t in TimerItem.load()) if (t.end > now) schedule(c, t.alarmId, t.end, t.doneTitle, TIMER)
         Prefs.store.getLong("hiit.start", 0).takeIf { it > 0 && Prefs.store.getLong("hiit.paused", 0) == 0L }?.let {

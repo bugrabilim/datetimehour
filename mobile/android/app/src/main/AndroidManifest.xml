@@ -75,6 +75,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!-- Süren sayaçlar bildirimi: bitişte ve vakitte yeniden çizilir (LiveNotifications.kt) -->
+        <receiver
+            android:name=".LiveRefreshReceiver"
+            android:exported="false" />
         <!-- Ekran koruyucu (şarjda tam ekran saat) -->
         <service
             android:name=".ClockDreamService"

@@ -31815,6 +31815,216 @@
           }
         }
       }
+    },
+    "live.prayer.toggle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilit ekranında sıradaki vakit"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next prayer on the Lock Screen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächstes Gebet auf dem Sperrbildschirm"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilid ekranında növbəti vaxt"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصلاة التالية على شاشة القفل"
+          }
+        }
+      }
+    },
+    "live.prayer.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilit ekranında ve Dynamic Island'da sıradaki vakte kalan süre görünür (Ramazan'da iftar ve sahur). Vakit girdikten sonra uygulama açıldığında ya da arka planda yenilenir. Çalışan zamanlayıcı, pomodoro ve kronometre de kilit ekranında görünür."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shows the time left until the next prayer on the Lock Screen and in the Dynamic Island (iftar and suhoor in Ramadan). After a prayer time it updates when you open the app or in the background. Running timers, pomodoro and the stopwatch also appear on the Lock Screen."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeigt die verbleibende Zeit bis zum nächsten Gebet auf dem Sperrbildschirm und in der Dynamic Island (im Ramadan Iftar und Sahur). Nach einer Gebetszeit wird es beim Öffnen der App oder im Hintergrund aktualisiert. Laufende Timer, Pomodoro und Stoppuhr erscheinen ebenfalls auf dem Sperrbildschirm."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilid ekranında və Dynamic Island-da növbəti vaxta qalan müddət görünür (Ramazanda iftar və səhər). Vaxt girəndən sonra tətbiq açılanda və ya arxa fonda yenilənir. İşləyən taymer, pomodoro və saniyəölçən də kilid ekranında görünür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يعرض الوقت المتبقي حتى الصلاة التالية على شاشة القفل وفي Dynamic Island (والإفطار والسحور في رمضان). بعد دخول الوقت يتحدث عند فتح التطبيق أو في الخلفية. وتظهر المؤقتات والبومودورو وساعة الإيقاف الجارية على شاشة القفل أيضًا."
+          }
+        }
+      }
+    },
+    "live.prayer.noteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirim alanında ve kilit ekranında sıradaki vakte kalan süre (Ramazan'da iftar ve sahur); her vakitte kendiliğinden yenilenir. Çalışan zamanlayıcı, pomodoro ve kronometre de bildirim alanında görünür."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shows the time left until the next prayer in the notification shade and on the lock screen (iftar and suhoor in Ramadan); it updates by itself at each prayer time. Running timers, pomodoro and the stopwatch also appear in the notification shade."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeigt die verbleibende Zeit bis zum nächsten Gebet in der Benachrichtigungsleiste und auf dem Sperrbildschirm (im Ramadan Iftar und Sahur); aktualisiert sich zu jeder Gebetszeit selbst. Laufende Timer, Pomodoro und Stoppuhr erscheinen ebenfalls dort."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildiriş sahəsində və kilid ekranında növbəti vaxta qalan müddət (Ramazanda iftar və səhər); hər vaxtda özü yenilənir. İşləyən taymer, pomodoro və saniyəölçən də bildiriş sahəsində görünür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يعرض الوقت المتبقي حتى الصلاة التالية في لوحة الإشعارات وعلى شاشة القفل (والإفطار والسحور في رمضان)؛ ويتحدث تلقائيًا عند كل وقت. وتظهر المؤقتات والبومودورو وساعة الإيقاف الجارية هناك أيضًا."
+          }
+        }
+      }
+    },
+    "live.iftar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İftar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iftar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iftar"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İftar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإفطار"
+          }
+        }
+      }
+    },
+    "live.sahur": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahur (imsak)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suhoor (imsak)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahur (Imsak)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhər (imsak)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السحور (الإمساك)"
+          }
+        }
+      }
+    },
+    "live.channel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Süren sayaçlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Running counters"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laufende Zähler"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşləyən sayğaclar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العدادات الجارية"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

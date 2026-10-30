@@ -56,6 +56,7 @@ fun PomodoroScreen() {
     fun persist() {
         ToolState.putStr("pomo.phase", phase); ToolState.putInt("pomo.round", round); ToolState.putLong("pomo.end", end)
         ToolState.putLong("pomo.left", left); ToolState.putInt("pomo.done", done)
+        LiveNotifications.sync(context)
     }
     fun start(ms: Long) {
         ask()

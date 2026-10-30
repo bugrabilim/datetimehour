@@ -910,5 +910,11 @@
     <string name="intent_prayer_answer">%1$s: %2$s %3$s, %4$s kaldı.</string>
     <string name="intent_date_title">Bugünün tarihi</string>
     <string name="intent_date_desc">Bugünün miladi ve hicri tarihini (Diyanet takvimi) söyler.</string>
+    <string name="live_prayer_toggle">Kilit ekranında sıradaki vakit</string>
+    <string name="live_prayer_note">Kilit ekranında ve Dynamic Island\'da sıradaki vakte kalan süre görünür (Ramazan\'da iftar ve sahur). Vakit girdikten sonra uygulama açıldığında ya da arka planda yenilenir. Çalışan zamanlayıcı, pomodoro ve kronometre de kilit ekranında görünür.</string>
+    <string name="live_prayer_noteAndroid">Bildirim alanında ve kilit ekranında sıradaki vakte kalan süre (Ramazan\'da iftar ve sahur); her vakitte kendiliğinden yenilenir. Çalışan zamanlayıcı, pomodoro ve kronometre de bildirim alanında görünür.</string>
+    <string name="live_iftar">İftar</string>
+    <string name="live_sahur">Sahur (imsak)</string>
+    <string name="live_channel">Süren sayaçlar</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

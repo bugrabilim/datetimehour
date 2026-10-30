@@ -910,5 +910,11 @@
     <string name="intent_prayer_answer">%1$s: %2$s um %3$s, noch %4$s.</string>
     <string name="intent_date_title">Heutiges Datum</string>
     <string name="intent_date_desc">Nennt das heutige gregorianische und Hidschri-Datum (Diyanet-Kalender).</string>
+    <string name="live_prayer_toggle">Nächstes Gebet auf dem Sperrbildschirm</string>
+    <string name="live_prayer_note">Zeigt die verbleibende Zeit bis zum nächsten Gebet auf dem Sperrbildschirm und in der Dynamic Island (im Ramadan Iftar und Sahur). Nach einer Gebetszeit wird es beim Öffnen der App oder im Hintergrund aktualisiert. Laufende Timer, Pomodoro und Stoppuhr erscheinen ebenfalls auf dem Sperrbildschirm.</string>
+    <string name="live_prayer_noteAndroid">Zeigt die verbleibende Zeit bis zum nächsten Gebet in der Benachrichtigungsleiste und auf dem Sperrbildschirm (im Ramadan Iftar und Sahur); aktualisiert sich zu jeder Gebetszeit selbst. Laufende Timer, Pomodoro und Stoppuhr erscheinen ebenfalls dort.</string>
+    <string name="live_iftar">Iftar</string>
+    <string name="live_sahur">Sahur (Imsak)</string>
+    <string name="live_channel">Laufende Zähler</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

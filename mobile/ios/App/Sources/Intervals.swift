@@ -312,6 +312,8 @@ struct TimersView: View {
             }
         }
         .onAppear { items = TimerItem.load() }
+        // Kilit ekranı / Dynamic Island: süren zamanlayıcılar
+        .onChange(of: items) { LiveActivities.sync() }
     }
 
     private func row(_ t: TimerItem, now: Int64) -> some View {

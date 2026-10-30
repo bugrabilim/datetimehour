@@ -117,6 +117,7 @@ data class TimerItem(
             val t = TimerItem(name = name.trim(), total = ms, end = e)
             AlarmScheduler.schedule(c, t.alarmId, e, t.doneTitle, AlarmScheduler.TIMER)
             save(load() + t)
+            LiveNotifications.sync(c)
             return t
         }
     }
@@ -251,7 +252,7 @@ fun TimersScreen() {
         }
     }
 
-    fun update(list: List<TimerItem>) { items = list; TimerItem.save(list) }
+    fun update(list: List<TimerItem>) { items = list; TimerItem.save(list); LiveNotifications.sync(context) }
     fun start(t: TimerItem, ms: Long): TimerItem {
         val e = System.currentTimeMillis() + ms
         AlarmScheduler.schedule(context, t.alarmId, e, t.doneTitle, AlarmScheduler.TIMER)

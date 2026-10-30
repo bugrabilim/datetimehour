@@ -910,5 +910,11 @@
     <string name="intent_prayer_answer">%1$s: %2$s at %3$s, %4$s left.</string>
     <string name="intent_date_title">Today\'s Date</string>
     <string name="intent_date_desc">Tells today\'s Gregorian and Hijri date (Diyanet calendar).</string>
+    <string name="live_prayer_toggle">Next prayer on the Lock Screen</string>
+    <string name="live_prayer_note">Shows the time left until the next prayer on the Lock Screen and in the Dynamic Island (iftar and suhoor in Ramadan). After a prayer time it updates when you open the app or in the background. Running timers, pomodoro and the stopwatch also appear on the Lock Screen.</string>
+    <string name="live_prayer_noteAndroid">Shows the time left until the next prayer in the notification shade and on the lock screen (iftar and suhoor in Ramadan); it updates by itself at each prayer time. Running timers, pomodoro and the stopwatch also appear in the notification shade.</string>
+    <string name="live_iftar">Iftar</string>
+    <string name="live_sahur">Suhoor (imsak)</string>
+    <string name="live_channel">Running counters</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

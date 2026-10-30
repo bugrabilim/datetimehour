@@ -910,5 +910,11 @@
     <string name="intent_prayer_answer">%1$s: %2$s الساعة %3$s، متبقٍ %4$s.</string>
     <string name="intent_date_title">تاريخ اليوم</string>
     <string name="intent_date_desc">يخبرك بتاريخ اليوم الميلادي والهجري (تقويم الشؤون الدينية التركية).</string>
+    <string name="live_prayer_toggle">الصلاة التالية على شاشة القفل</string>
+    <string name="live_prayer_note">يعرض الوقت المتبقي حتى الصلاة التالية على شاشة القفل وفي Dynamic Island (والإفطار والسحور في رمضان). بعد دخول الوقت يتحدث عند فتح التطبيق أو في الخلفية. وتظهر المؤقتات والبومودورو وساعة الإيقاف الجارية على شاشة القفل أيضًا.</string>
+    <string name="live_prayer_noteAndroid">يعرض الوقت المتبقي حتى الصلاة التالية في لوحة الإشعارات وعلى شاشة القفل (والإفطار والسحور في رمضان)؛ ويتحدث تلقائيًا عند كل وقت. وتظهر المؤقتات والبومودورو وساعة الإيقاف الجارية هناك أيضًا.</string>
+    <string name="live_iftar">الإفطار</string>
+    <string name="live_sahur">السحور (الإمساك)</string>
+    <string name="live_channel">العدادات الجارية</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

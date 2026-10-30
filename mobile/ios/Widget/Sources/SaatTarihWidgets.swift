@@ -15,5 +15,6 @@ struct SaatTarihWidgets: WidgetBundle {
         WorldClockWidget()
         CountdownWidget()
         HijriWidget()
+        SaatLiveActivity()
     }
 }

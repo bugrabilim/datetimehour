@@ -197,5 +197,6 @@ enum BackgroundRefresh {
         schedule()
         await PrayerNotifier.reschedule()
         await AlarmCenter.refreshSkips()
+        await MainActor.run { LiveActivities.sync() }
     }
 }

@@ -30,6 +30,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -106,6 +107,20 @@ fun PrayerScreen() {
                         Text(Fmt.hm(e.at, place.zone), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp, style = Tnum)
                     }
                 }
+            }
+            // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
+            val context = androidx.compose.ui.platform.LocalContext.current
+            var liveOn by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.PRAYER_KEY, false)) }
+            AppCard {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("live.prayer.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    androidx.compose.material3.Switch(liveOn, { on ->
+                        liveOn = on
+                        Prefs.store.edit().putBoolean(LiveNotifications.PRAYER_KEY, on).apply()
+                        LiveNotifications.sync(context)
+                    }, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
+                Text(L("live.prayer.noteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
             }
             LinkCard(Icons.Filled.TableChart, L("prayer.monthly")) { page = "monthly" }
             LinkCard(Icons.Filled.Explore, L("qibla.link")) { page = "qibla" }
