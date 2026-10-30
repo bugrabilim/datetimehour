@@ -38,15 +38,17 @@ Uygulama `FOREGROUND_SERVICE_SPECIAL_USE` kullanır: `HiitService` (aralık antr
 ### 1b. Kademeli alarm sesi (mediaPlayback)
 
 Uygulama `FOREGROUND_SERVICE_MEDIA_PLAYBACK` da kullanır: `AlarmRingService`, kullanıcının "Kademeli ses" seçtiği
-alarm çalarken sesi kısıktan tam sese yükselterek çalar.
+alarm çalarken sesi kısıktan tam sese yükselterek çalar; "Saati sesli söylesin" seçilen alarmda da (30 Ekim 2026, 9. tur)
+aynı hizmet zili çalar ve saati telefonun konuşma motoruyla 20 sn'de bir söyler.
 
 - **Tür:** Media playback
 - **Açıklama, yapıştır:**
 
 > Gradual alarm volume. When an alarm the user set with the "Gradual volume" option goes off, a foreground service
 > plays the alarm sound (the user's chosen ringtone, alarm audio stream) and raises its volume from quiet to full over
-> 30 seconds, because a notification channel's sound cannot change volume. It runs only while that alarm is ringing
-> and stops when the user taps Stop or Snooze, or after 10 minutes. No data is collected.
+> 30 seconds, because a notification channel's sound cannot change volume. For alarms with the "Speak the time" option
+> the same service also reads the current time aloud with the on-device text-to-speech engine. It runs only while that
+> alarm is ringing and stops when the user taps Stop or Snooze, or after 10 minutes. No data is collected.
 
 - **Kullanıcıya etkisi, yapıştır:**
 
