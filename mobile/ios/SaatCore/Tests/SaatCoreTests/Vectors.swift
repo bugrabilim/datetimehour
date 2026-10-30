@@ -54,3 +54,14 @@ struct QiblaVectors: Decodable {
     let dates: [[Int]]
     let cases: [Case]
 }
+
+struct SunAltitudeVectors: Decodable {
+    struct Case: Decodable {
+        let id: String
+        let y: Int, m: Int, d: Int
+        let lat: Double, lon: Double, tz: Double
+        let t: [Double?]
+    }
+    let altitudes: [Double]
+    let cases: [Case]
+}

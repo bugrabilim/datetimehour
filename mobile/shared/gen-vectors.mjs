@@ -58,6 +58,17 @@ for (const pl of places) {
   qiblaCases.push({ id: pl.id, lat: pl.lat, lon: pl.lon, bearing: q.bearing, km: q.km, tz: [[2026, 3, 20], [2026, 6, 21], [2026, 10, 30], [2026, 12, 21]].map(([y, m, d]) => tzOffset(pl.tz, y, m, d)), time: qt });
 }
 
+/* Güneş yükseklik anları (altın ve mavi saat, 30 Ekim 2026): +6°, −4°, −6° için sabah ve akşam, dört tarihte */
+const LIGHT_DATES = [[2026, 3, 20], [2026, 6, 21], [2026, 10, 30], [2026, 12, 21]];
+const lightCases = [];
+for (const pl of places) {
+  for (const [y, m, d] of LIGHT_DATES) {
+    const tz = tzOffset(pl.tz, y, m, d);
+    const t = [6, -4, -6].flatMap((alt) => { const r = P.sunAltTimes(y, m, d, pl.lat, pl.lon, tz, alt); return [num(r.rise), num(r.set)]; });
+    lightCases.push({ id: pl.id, y, m, d, lat: pl.lat, lon: pl.lon, tz, t });
+  }
+}
+
 /* Doğa: 2000–2050 mevsim anları, 2020–2035 yeni ay/dolunay anları, 2026–2028 Ay durumu örnekleri */
 const DAY = 86400000;
 const kFor = (ms) => Math.floor((ms / DAY + 2440587.5 - 2451550.09766) / 29.530588861);
@@ -103,6 +114,13 @@ const files = {
   "cases": ${lines(qiblaCases)}
 }
 `,
+  "sun-altitude.json": `{
+  "source": "src/js/prayer-calc.js (sunAltTimes)",
+  "note": "t: Güneş'in +6°, −4°, −6° yüksekliğe sabah çıktığı ve akşam indiği an sırasıyla [+6 sabah, +6 akşam, −4 sabah, −4 akşam, −6 sabah, −6 akşam]; yerel ondalık saat, null = o gün oluşmuyor. tz: o gün UTC farkı.",
+  "altitudes": [6, -4, -6],
+  "cases": ${lines(lightCases)}
+}
+`,
   "nature.json": `{
   "source": "src/js/nature-calc.js",
   "note": "Zamanlar UTC milisaniye. seasons: yılın 4 mevsim anı; phases: k için yeni ay ve dolunay; moon: o andaki Ay durumu; moonPos: Ay'ın sağ açıklığı, dik açıklığı, paralaksı (derece); moonRise: start'tan 24 saat içinde ilk doğuş ve batış (null = yok).",
@@ -128,4 +146,4 @@ if (stale.length) {
   console.error(`Güncel değil: ${stale.join(", ")}. Çalıştırın: node mobile/shared/gen-vectors.mjs`);
   process.exit(1);
 }
-console.log(check ? "Test verisi güncel." : `Yazıldı: ${Object.keys(files).join(", ")} (${prayerCases.length} namaz, ${qiblaCases.length} kıble, ${seasons.length} yıl, ${phases.length} ay evresi, ${moon.length} Ay örneği, ${moonRise.length} Ay doğuş/batış)`);
+console.log(check ? "Test verisi güncel." : `Yazıldı: ${Object.keys(files).join(", ")} (${prayerCases.length} namaz, ${qiblaCases.length} kıble, ${lightCases.length} Güneş yüksekliği, ${seasons.length} yıl, ${phases.length} ay evresi, ${moon.length} Ay örneği, ${moonRise.length} Ay doğuş/batış)`);

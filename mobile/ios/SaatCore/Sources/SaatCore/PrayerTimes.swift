@@ -110,6 +110,66 @@ public enum PrayerTimes {
                      utcOffset: offset, parameters: parameters)
     }
 
+    /// Güneş'in bir yüksekliğe sabah çıktığı ve akşam indiği an (yerel ondalık saat; oluşmuyorsa nil).
+    public struct AltitudeTimes: Sendable, Equatable {
+        public var rise: Double?
+        public var set: Double?
+    }
+
+    /// Güneş'in `altitude` dereceye (ufkun üstü pozitif) sabah çıktığı ve akşam indiği an; düzeltmesiz, ikinci
+    /// yaklaşımla. Sitedeki `sunAltTimes` ile birebir (test verisi `sun-altitude.json`).
+    public static func sunAltitudeTimes(year: Int, month: Int, day: Int, latitude lat: Double, longitude lon: Double,
+                                        utcOffset tz: Double, altitude alt: Double) -> AltitudeTimes {
+        let jd = julian(year, month, day) - lon / 360
+        func at(_ t: Double, ccw: Bool) -> Double {
+            let p = sunPosition(jd + t)
+            let a = (dsin(alt) - dsin(p.decl) * dsin(lat)) / (dcos(p.decl) * dcos(lat))
+            if a < -1 || a > 1 { return .nan }
+            return fixHour(12 - p.eqt) + (ccw ? -1 : 1) * dacos(a) / 15
+        }
+        var rise = at(6.0 / 24, ccw: true)
+        var set = at(18.0 / 24, ccw: false)
+        if !rise.isNaN { rise = at(rise / 24, ccw: true) }
+        if !set.isNaN { set = at(set / 24, ccw: false) }
+        let off = tz - lon / 15
+        return AltitudeTimes(rise: rise.isNaN ? nil : rise + off, set: set.isNaN ? nil : set + off)
+    }
+
+    /// Altın saat (Güneş +6° ile −4° arası) ve mavi saat (−4° ile −6° arası), sabah ve akşam (başlangıç, bitiş).
+    public struct LightHours: Sendable, Equatable {
+        public var blueAm: (Double?, Double?)
+        public var goldenAm: (Double?, Double?)
+        public var goldenPm: (Double?, Double?)
+        public var bluePm: (Double?, Double?)
+        public static func == (l: Self, r: Self) -> Bool {
+            l.blueAm == r.blueAm && l.goldenAm == r.goldenAm && l.goldenPm == r.goldenPm && l.bluePm == r.bluePm
+        }
+    }
+
+    public static func lightHours(year: Int, month: Int, day: Int, latitude: Double, longitude: Double,
+                                  utcOffset: Double) -> LightHours {
+        func t(_ a: Double) -> AltitudeTimes {
+            sunAltitudeTimes(year: year, month: month, day: day, latitude: latitude, longitude: longitude, utcOffset: utcOffset, altitude: a)
+        }
+        let g = t(6), e = t(-4), b = t(-6)
+        return LightHours(blueAm: (b.rise, e.rise), goldenAm: (e.rise, g.rise), goldenPm: (g.set, e.set), bluePm: (e.set, b.set))
+    }
+
+    /// Kerahat vakitleri (yaklaşık; Diyanet'in yayımladığı dakika ölçüsü yok, takvimlerde yaygın 45 dk): işrak güneş
+    /// vaktinden 45 dk sonrasına, istiva öğleden 45 dk önceden öğleye, isfirar akşamdan 45 dk önceden akşama.
+    public static let kerahatMinutes = 45
+    public struct Kerahat: Sendable, Equatable {
+        public var israk: ClosedRange<Double>?
+        public var istiva: ClosedRange<Double>?
+        public var isfirar: ClosedRange<Double>?
+    }
+
+    public static func kerahat(_ day: PrayerDay) -> Kerahat {
+        let k = Double(kerahatMinutes) / 60
+        return Kerahat(israk: day.sunrise.map { $0...($0 + k) }, istiva: day.dhuhr.map { ($0 - k)...$0 },
+                       isfirar: day.maghrib.map { ($0 - k)...$0 })
+    }
+
     // MARK: Güneş konumu (PrayTimes tarzı düşük duyarlıklı formüller)
 
     static func julian(_ year: Int, _ month: Int, _ day: Int) -> Double {

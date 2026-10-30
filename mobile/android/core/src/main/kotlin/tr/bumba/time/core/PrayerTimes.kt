@@ -140,6 +140,58 @@ object PrayerTimes {
         return times(date.year, date.monthValue, date.dayOfMonth, latitude, longitude, offset, parameters)
     }
 
+    /** Güneş'in bir yüksekliğe sabah çıktığı ve akşam indiği an (yerel ondalık saat; oluşmuyorsa null). */
+    data class AltitudeTimes(val rise: Double?, val set: Double?)
+
+    /**
+     * Güneş'in [altitude] dereceye (ufkun üstü pozitif) sabah çıktığı ve akşam indiği an; düzeltmesiz, ikinci
+     * yaklaşımla. Sitedeki `sunAltTimes` ile birebir (test verisi `sun-altitude.json`).
+     */
+    fun sunAltitudeTimes(year: Int, month: Int, day: Int, latitude: Double, longitude: Double, utcOffset: Double, altitude: Double): AltitudeTimes {
+        val jd = julian(year, month, day) - longitude / 360
+        fun at(t: Double, ccw: Boolean): Double {
+            val p = sunPosition(jd + t)
+            val a = (dsin(altitude) - dsin(p.decl) * dsin(latitude)) / (dcos(p.decl) * dcos(latitude))
+            if (a < -1 || a > 1) return Double.NaN
+            return fixHour(12 - p.eqt) + (if (ccw) -1 else 1) * dacos(a) / 15
+        }
+        var rise = at(6.0 / 24, true)
+        var set = at(18.0 / 24, false)
+        if (!rise.isNaN()) rise = at(rise / 24, true)
+        if (!set.isNaN()) set = at(set / 24, false)
+        val off = utcOffset - longitude / 15
+        return AltitudeTimes(if (rise.isNaN()) null else rise + off, if (set.isNaN()) null else set + off)
+    }
+
+    /** Altın saat (Güneş +6° ile −4° arası) ve mavi saat (−4° ile −6° arası), sabah ve akşam [başlangıç, bitiş]. */
+    data class LightHours(
+        val blueAm: Pair<Double?, Double?>, val goldenAm: Pair<Double?, Double?>,
+        val goldenPm: Pair<Double?, Double?>, val bluePm: Pair<Double?, Double?>,
+    )
+
+    fun lightHours(year: Int, month: Int, day: Int, latitude: Double, longitude: Double, utcOffset: Double): LightHours {
+        val g = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, 6.0)
+        val e = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, -4.0)
+        val b = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, -6.0)
+        return LightHours(b.rise to e.rise, e.rise to g.rise, g.set to e.set, e.set to b.set)
+    }
+
+    /**
+     * Kerahat vakitleri (yaklaşık; Diyanet'in yayımladığı dakika ölçüsü yok, takvimlerde yaygın 45 dk): işrak güneş
+     * vaktinden 45 dk sonrasına, istiva öğleden 45 dk önceden öğleye, isfirar akşamdan 45 dk önceden akşama.
+     */
+    const val KERAHAT_MIN = 45
+    data class Kerahat(val israk: Pair<Double, Double>?, val istiva: Pair<Double, Double>?, val isfirar: Pair<Double, Double>?)
+
+    fun kerahat(day: PrayerDay): Kerahat {
+        val k = KERAHAT_MIN / 60.0
+        return Kerahat(
+            day.sunrise?.let { it to it + k },
+            day.dhuhr?.let { it - k to it },
+            day.maghrib?.let { it - k to it },
+        )
+    }
+
     // Güneş konumu (PrayTimes tarzı düşük duyarlıklı formüller)
 
     internal fun julian(year: Int, month: Int, day: Int): Double {
