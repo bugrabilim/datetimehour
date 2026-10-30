@@ -47,6 +47,7 @@ struct PrayerTab: View {
                                 }
                             }
                         }
+                        WorshipLinks()
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 20)

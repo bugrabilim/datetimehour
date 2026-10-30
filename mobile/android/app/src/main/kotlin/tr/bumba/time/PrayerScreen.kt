@@ -17,6 +17,11 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Calculate
+import androidx.compose.material.icons.filled.TaskAlt
+import androidx.compose.material.icons.filled.TouchApp
+import androidx.compose.material.icons.filled.VolunteerActivism
+import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Explore
@@ -58,6 +63,12 @@ fun PrayerScreen() {
         "monthly" -> { BackHandler { page = null }; MonthlyPrayers { page = null }; return }
         "notify" -> { BackHandler { page = null }; NotificationSettingsScreen { page = null }; return }
         "qibla" -> { BackHandler { page = null }; QiblaScreen { page = null }; return }
+        // İbadet bölümü (Religion.kt)
+        "quran" -> { BackHandler { page = null }; QuranScreen { page = null }; return }
+        "duas" -> { BackHandler { page = null }; DuasScreen { page = null }; return }
+        "zikir" -> { BackHandler { page = null }; ZikirScreen { page = null }; return }
+        "track" -> { BackHandler { page = null }; TrackerScreen { page = null }; return }
+        "zakat" -> { BackHandler { page = null }; ZakatScreen { page = null }; return }
         "imsakiye" -> if (ramadan != null) {
             BackHandler { page = null }
             ImsakiyeScreen(place, ramadan) { page = null }
@@ -125,6 +136,12 @@ fun PrayerScreen() {
             LinkCard(Icons.Filled.TableChart, L("prayer.monthly")) { page = "monthly" }
             LinkCard(Icons.Filled.Explore, L("qibla.link")) { page = "qibla" }
             if (ramadan != null) LinkCard(Icons.Filled.NightsStay, T("imsakiye.title", ramadan.start.year)) { page = "imsakiye" }
+            Text(L("worship.title"), Modifier.fillMaxWidth().padding(top = 6.dp), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            LinkCard(Icons.AutoMirrored.Filled.MenuBook, L("quran.title")) { page = "quran" }
+            LinkCard(Icons.Filled.VolunteerActivism, L("dua.title")) { page = "duas" }
+            LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { page = "zikir" }
+            LinkCard(Icons.Filled.TaskAlt, L("track.title")) { page = "track" }
+            LinkCard(Icons.Filled.Calculate, L("zakat.title")) { page = "zakat" }
         }
     }
 }

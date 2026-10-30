@@ -190,6 +190,29 @@ class MoreScreensTest {
         ))
         shot("tr-yakindaki-camiler") { NearbyMosquesScreen {} }
     }
+    /** İbadet: Kur'an (liste, Fatiha, Arapça koyu), dualar, zikirmatik, namaz/oruç takibi, zekât */
+    @Test fun worship() {
+        Quran.bookmark = 18 to 10
+        shot("tr-kuran") { QuranScreen {} }
+        shot("tr-kuran-fatiha") { SuraScreen(1, 1) {} }
+        shot("en-kuran-yasin", "en") { SuraScreen(36, 1) {} }
+        shot("ar-kuran-koyu", "ar", dark = true) { SuraScreen(112, 1) {} }
+        Quran.bookmark = null
+        shot("tr-dualar") { DuasScreen {} }
+        Prefs.store.edit().putString("zikir.kind", "subhanallah").putInt("zikir.target", 33).putBoolean("zikir.tesbihat", true)
+            .putInt("zikir.count", 41).putInt("zikir.total", 1250).commit()
+        shot("tr-zikirmatik") { ZikirScreen {} }
+        Tracker.clear()
+        val today = LocalDate.now()
+        Tracker.setDayMask(today, 0b00111)
+        for (i in 1..6) Tracker.setDayMask(today.minusDays(i.toLong()), 0b11111)
+        Tracker.setKaza("fajr", 12); Tracker.setKaza("isha", 4); Tracker.setKaza("fast", 3)
+        shot("tr-namaz-takibi") { TrackerScreen {} }
+        Tracker.clear()
+        Zakat.save(mapOf("cash" to 400_000.0, "goldGrams" to 20.0, "goldPrice" to 4_000.0, "debt" to 30_000.0))
+        shot("tr-zekat") { ZakatScreen {} }
+        Zakat.save(emptyMap())
+    }
     @Test fun morning() {
         seedWeather()
         shot("tr-gunaydin") { MorningCard {} }

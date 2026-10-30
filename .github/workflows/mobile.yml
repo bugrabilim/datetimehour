@@ -33,6 +33,7 @@ jobs:
           node-version: 22
       - run: node mobile/shared/gen-vectors.mjs --check
       - run: node mobile/shared/gen-strings.mjs --check
+      - run: node mobile/shared/gen-religion.mjs --check
 
   swift-linux:
     name: Swift çekirdek (Linux)

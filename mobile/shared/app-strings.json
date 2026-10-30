@@ -3905,5 +3905,516 @@
     "de": "{n} Pomodoros",
     "az": "{n} pomodoro",
     "ar": "{n} بومودورو"
+  },
+  "worship.title": {
+    "tr": "İbadet",
+    "en": "Worship",
+    "de": "Gottesdienst",
+    "az": "İbadət",
+    "ar": "العبادة"
+  },
+  "quran.title": {
+    "tr": "Kur'an-ı Kerim",
+    "en": "The Quran",
+    "de": "Der Koran",
+    "az": "Qurani-Kərim",
+    "ar": "القرآن الكريم"
+  },
+  "quran.continue": {
+    "tr": "Kaldığım yer: {name}, {aya}. ayet",
+    "en": "Continue: {name}, verse {aya}",
+    "de": "Weiterlesen: {name}, Vers {aya}",
+    "az": "Qaldığım yer: {name}, {aya}. ayə",
+    "ar": "متابعة: {name}، الآية {aya}"
+  },
+  "quran.search": {
+    "tr": "Sure ara",
+    "en": "Search surahs",
+    "de": "Suren suchen",
+    "az": "Surə axtar",
+    "ar": "ابحث عن سورة"
+  },
+  "quran.juz": {
+    "tr": "{n}. cüz",
+    "en": "Juz {n}",
+    "de": "Dschuz {n}",
+    "az": "{n}. cüz",
+    "ar": "الجزء {n}"
+  },
+  "quran.suraInfo": {
+    "tr": "{n} ayet · {place}",
+    "en": "{n} verses · {place}",
+    "de": "{n} Verse · {place}",
+    "az": "{n} ayə · {place}",
+    "ar": "{n} آية · {place}"
+  },
+  "quran.mecca": {
+    "tr": "Mekkî",
+    "en": "Meccan",
+    "de": "mekkanisch",
+    "az": "Məkki",
+    "ar": "مكية"
+  },
+  "quran.medina": {
+    "tr": "Medenî",
+    "en": "Medinan",
+    "de": "medinensisch",
+    "az": "Mədəni",
+    "ar": "مدنية"
+  },
+  "quran.credit": {
+    "tr": "Arapça metin: Tanzil Projesi (CC BY 3.0, değiştirilmeden). İngilizce meal: M. M. Pickthall (1930, kamu malı). Türkçe meal için Diyanet İşleri Başkanlığı'nın Kur'an sitesine bağlantı verilir.",
+    "en": "Arabic text: Tanzil Project (CC BY 3.0, unmodified). English translation: M. M. Pickthall (1930, public domain). For a Turkish translation the app links to the Presidency of Religious Affairs (Diyanet) Quran site.",
+    "de": "Arabischer Text: Tanzil-Projekt (CC BY 3.0, unverändert). Englische Übersetzung: M. M. Pickthall (1930, gemeinfrei). Für eine türkische Übersetzung verweist die App auf die Koran-Website des Diyanet.",
+    "az": "Ərəbcə mətn: Tanzil Layihəsi (CC BY 3.0, dəyişdirilmədən). İngiliscə məal: M. M. Pikthol (1930, ictimai mülkiyyət). Türkcə məal üçün Türkiyə Diyanət İşləri Başqanlığının Quran saytına keçid verilir.",
+    "ar": "النص العربي: مشروع تنزيل (CC BY 3.0، دون تعديل). الترجمة الإنجليزية: م. م. بكثال (1930، ملك عام). وللترجمة التركية يحيل التطبيق إلى موقع رئاسة الشؤون الدينية التركية."
+  },
+  "quran.smaller": {
+    "tr": "Yazıyı küçült",
+    "en": "Smaller text",
+    "de": "Kleinere Schrift",
+    "az": "Yazını kiçilt",
+    "ar": "تصغير الخط"
+  },
+  "quran.larger": {
+    "tr": "Yazıyı büyüt",
+    "en": "Larger text",
+    "de": "Größere Schrift",
+    "az": "Yazını böyüt",
+    "ar": "تكبير الخط"
+  },
+  "quran.showEn": {
+    "tr": "İngilizce meali göster (Pickthall)",
+    "en": "Show English translation (Pickthall)",
+    "de": "Englische Übersetzung zeigen (Pickthall)",
+    "az": "İngiliscə məalı göstər (Pikthol)",
+    "ar": "عرض الترجمة الإنجليزية (بكثال)"
+  },
+  "quran.diyanet": {
+    "tr": "Bu surenin Türkçe meali (Diyanet)",
+    "en": "Turkish translation (Diyanet)",
+    "de": "Türkische Übersetzung (Diyanet)",
+    "az": "Bu surənin türkcə məalı (Diyanət)",
+    "ar": "الترجمة التركية (ديانت)"
+  },
+  "quran.bookmark": {
+    "tr": "Kaldığım yer",
+    "en": "Bookmark",
+    "de": "Lesezeichen",
+    "az": "Qaldığım yer",
+    "ar": "موضع القراءة"
+  },
+  "quran.meal": {
+    "tr": "Meal",
+    "en": "Translation",
+    "de": "Übersetzung",
+    "az": "Məal",
+    "ar": "الترجمة"
+  },
+  "quran.tapNote": {
+    "tr": "Ayete dokununca kaldığınız yer olarak işaretlenir.",
+    "en": "Tap a verse to bookmark it.",
+    "de": "Tippen Sie auf einen Vers, um ihn als Lesezeichen zu setzen.",
+    "az": "Ayəyə toxunanda qaldığınız yer kimi işarələnir.",
+    "ar": "المس آية لحفظ موضع القراءة."
+  },
+  "dua.title": {
+    "tr": "Dualar",
+    "en": "Prayers (duas)",
+    "de": "Bittgebete",
+    "az": "Dualar",
+    "ar": "الأدعية"
+  },
+  "dua.diyanetRef": {
+    "tr": "Meali: {ref} (Diyanet)",
+    "en": "Translation: {ref} (Diyanet)",
+    "de": "Übersetzung: {ref} (Diyanet)",
+    "az": "Məalı: {ref} (Diyanət)",
+    "ar": "الترجمة: {ref} (ديانت)"
+  },
+  "dua.note": {
+    "tr": "Kur'an'dan olan duaların Arapçası Tanzil metninden alınmıştır; diğerleri yaygın metinlerle karşılaştırılmıştır. Anlamlar açıklama amaçlıdır; doğru okunuş için bir hocaya danışın.",
+    "en": "The Arabic of Quranic prayers is taken from the Tanzil text; the others were checked against common sources. Meanings are explanatory; for correct recitation ask a teacher.",
+    "de": "Der arabische Text der Koran-Bittgebete stammt aus dem Tanzil-Text; die übrigen wurden mit verbreiteten Quellen verglichen. Die Bedeutungen dienen der Erklärung; für die richtige Rezitation fragen Sie einen Lehrer.",
+    "az": "Qurandan olan duaların ərəbcəsi Tanzil mətnindən götürülüb; digərləri geniş yayılmış mənbələrlə müqayisə edilib. Mənalar izah məqsədlidir; düzgün oxunuş üçün müəllimə müraciət edin.",
+    "ar": "النص العربي للأدعية القرآنية مأخوذ من نص تنزيل، وقوبلت الأدعية الأخرى بمصادر شائعة. للقراءة الصحيحة استشر معلمًا."
+  },
+  "zikir.title": {
+    "tr": "Zikirmatik",
+    "en": "Dhikr counter",
+    "de": "Dhikr-Zähler",
+    "az": "Zikrmatik",
+    "ar": "عدّاد الذكر"
+  },
+  "zikir.kind.subhanallah": {
+    "tr": "Sübhânallah",
+    "en": "Subhan Allah",
+    "de": "Subhan Allah",
+    "az": "Sübhanəllah",
+    "ar": "سبحان الله"
+  },
+  "zikir.kind.elhamdulillah": {
+    "tr": "Elhamdülillah",
+    "en": "Alhamdulillah",
+    "de": "Alhamdulillah",
+    "az": "Əlhəmdulillah",
+    "ar": "الحمد لله"
+  },
+  "zikir.kind.allahuekber": {
+    "tr": "Allâhu ekber",
+    "en": "Allahu akbar",
+    "de": "Allahu akbar",
+    "az": "Allahu əkbər",
+    "ar": "الله أكبر"
+  },
+  "zikir.kind.tevhid": {
+    "tr": "Lâ ilâhe illallah",
+    "en": "La ilaha illallah",
+    "de": "La ilaha illallah",
+    "az": "La ilahə illəllah",
+    "ar": "لا إله إلا الله"
+  },
+  "zikir.kind.istigfar": {
+    "tr": "Estağfirullah",
+    "en": "Astaghfirullah",
+    "de": "Astaghfirullah",
+    "az": "Əstəğfirullah",
+    "ar": "أستغفر الله"
+  },
+  "zikir.kind.salavat": {
+    "tr": "Salavat",
+    "en": "Salawat",
+    "de": "Salawat",
+    "az": "Salavat",
+    "ar": "الصلاة على النبي"
+  },
+  "zikir.kind.free": {
+    "tr": "Serbest",
+    "en": "Free count",
+    "de": "Frei zählen",
+    "az": "Sərbəst",
+    "ar": "عدّ حر"
+  },
+  "zikir.tesbihat": {
+    "tr": "Namaz sonrası tesbihat (33 + 33 + 33)",
+    "en": "Post-prayer tasbih (33 + 33 + 33)",
+    "de": "Tasbih nach dem Gebet (33 + 33 + 33)",
+    "az": "Namazdan sonra təsbihat (33 + 33 + 33)",
+    "ar": "تسبيح بعد الصلاة (٣٣ + ٣٣ + ٣٣)"
+  },
+  "zikir.target": {
+    "tr": "Hedef",
+    "en": "Target",
+    "de": "Ziel",
+    "az": "Hədəf",
+    "ar": "الهدف"
+  },
+  "zikir.noTarget": {
+    "tr": "Sınırsız",
+    "en": "No limit",
+    "de": "Unbegrenzt",
+    "az": "Limitsiz",
+    "ar": "بلا حد"
+  },
+  "zikir.tap": {
+    "tr": "Saymak için dokunun",
+    "en": "Tap to count",
+    "de": "Zum Zählen tippen",
+    "az": "Saymaq üçün toxunun",
+    "ar": "المس للعدّ"
+  },
+  "zikir.done": {
+    "tr": "Hedefe ulaşıldı",
+    "en": "Target reached",
+    "de": "Ziel erreicht",
+    "az": "Hədəfə çatıldı",
+    "ar": "تم بلوغ الهدف"
+  },
+  "zikir.reset": {
+    "tr": "Sıfırla",
+    "en": "Reset",
+    "de": "Zurücksetzen",
+    "az": "Sıfırla",
+    "ar": "تصفير"
+  },
+  "zikir.resetConfirm": {
+    "tr": "Sayaç sıfırlansın mı?",
+    "en": "Reset the counter?",
+    "de": "Zähler zurücksetzen?",
+    "az": "Sayğac sıfırlansın?",
+    "ar": "هل تريد تصفير العدّاد؟"
+  },
+  "zikir.today": {
+    "tr": "Bugün",
+    "en": "Today",
+    "de": "Heute",
+    "az": "Bu gün",
+    "ar": "اليوم"
+  },
+  "zikir.total": {
+    "tr": "Toplam",
+    "en": "Total",
+    "de": "Gesamt",
+    "az": "Cəmi",
+    "ar": "المجموع"
+  },
+  "zikir.note": {
+    "tr": "Her dokunuşta hafif titreşir, hedefte ve tesbihatın her 33'ünde güçlü titreşir. Sayılar yalnız bu cihazda.",
+    "en": "A light buzz on every tap, a strong one at the target and at every 33 in the tasbih. Counts stay on this device.",
+    "de": "Leichte Vibration bei jedem Tippen, eine stärke am Ziel und bei jeder 33 im Tasbih. Die Zahlen bleiben auf diesem Gerät.",
+    "az": "Hər toxunuşda yüngül titrəyir, hədəfdə və təsbihatın hər 33-də güclü titrəyir. Saylar yalnız bu cihazda.",
+    "ar": "اهتزاز خفيف عند كل لمسة وقوي عند الهدف وعند كل ٣٣ في التسبيح. تبقى الأعداد على هذا الجهاز."
+  },
+  "track.title": {
+    "tr": "Namaz ve oruç takibi",
+    "en": "Prayer and fasting tracker",
+    "de": "Gebets- und Fastenprotokoll",
+    "az": "Namaz və oruc izləmə",
+    "ar": "متابعة الصلاة والصيام"
+  },
+  "track.prayer.fajr": {
+    "tr": "Sabah",
+    "en": "Fajr",
+    "de": "Fadschr",
+    "az": "Sübh",
+    "ar": "الفجر"
+  },
+  "track.prayer.dhuhr": {
+    "tr": "Öğle",
+    "en": "Dhuhr",
+    "de": "Dhuhr",
+    "az": "Zöhr",
+    "ar": "الظهر"
+  },
+  "track.prayer.asr": {
+    "tr": "İkindi",
+    "en": "Asr",
+    "de": "Asr",
+    "az": "Əsr",
+    "ar": "العصر"
+  },
+  "track.prayer.maghrib": {
+    "tr": "Akşam",
+    "en": "Maghrib",
+    "de": "Maghrib",
+    "az": "Məğrib",
+    "ar": "المغرب"
+  },
+  "track.prayer.isha": {
+    "tr": "Yatsı",
+    "en": "Isha",
+    "de": "Ischa",
+    "az": "İşa",
+    "ar": "العشاء"
+  },
+  "track.prayer.witr": {
+    "tr": "Vitir",
+    "en": "Witr",
+    "de": "Witr",
+    "az": "Vitr",
+    "ar": "الوتر"
+  },
+  "track.week": {
+    "tr": "Son 7 günde {n}/35 vakit",
+    "en": "{n}/35 prayers in the last 7 days",
+    "de": "{n}/35 Gebete in den letzten 7 Tagen",
+    "az": "Son 7 gündə {n}/35 vaxt",
+    "ar": "{n}/35 صلاة في آخر ٧ أيام"
+  },
+  "track.kaza": {
+    "tr": "Kaza namazları",
+    "en": "Missed prayers to make up",
+    "de": "Nachzuholende Gebete",
+    "az": "Qəza namazları",
+    "ar": "صلوات القضاء"
+  },
+  "track.kazaPrayed": {
+    "tr": "Bir kaza kılındı",
+    "en": "One made up",
+    "de": "Eines nachgeholt",
+    "az": "Bir qəza qılındı",
+    "ar": "قُضيت واحدة"
+  },
+  "track.kazaAdd": {
+    "tr": "Borç ekle",
+    "en": "Add one owed",
+    "de": "Eines hinzufügen",
+    "az": "Borc əlavə et",
+    "ar": "إضافة واحدة"
+  },
+  "track.kazaNote": {
+    "tr": "Borcunuzu + ile ekleyin, kıldıkça − ile düşün.",
+    "en": "Add what you owe with +, and lower it with − as you make them up.",
+    "de": "Fügen Sie Nachzuholendes mit + hinzu und verringern Sie es mit −, wenn Sie es nachholen.",
+    "az": "Borcunuzu + ilə əlavə edin, qıldıqca − ilə azaldın.",
+    "ar": "أضف ما عليك بـ + وأنقصه بـ − كلما قضيت."
+  },
+  "track.fast": {
+    "tr": "Ramazan orucu",
+    "en": "Ramadan fasting",
+    "de": "Ramadan-Fasten",
+    "az": "Ramazan orucu",
+    "ar": "صيام رمضان"
+  },
+  "track.fastUpcoming": {
+    "tr": "Ramazan {date} tarihinde başlıyor.",
+    "en": "Ramadan begins on {date}.",
+    "de": "Der Ramadan beginnt am {date}.",
+    "az": "Ramazan {date} tarixində başlayır.",
+    "ar": "يبدأ رمضان في {date}."
+  },
+  "track.fastCount": {
+    "tr": "{n}/{total} gün oruç tutuldu",
+    "en": "Fasted {n} of {total} days",
+    "de": "{n} von {total} Tagen gefastet",
+    "az": "{n}/{total} gün oruc tutuldu",
+    "ar": "صيام {n} من {total} يومًا"
+  },
+  "track.kazaFast": {
+    "tr": "Kaza orucu",
+    "en": "Fasts to make up",
+    "de": "Nachzuholende Fastentage",
+    "az": "Qəza orucu",
+    "ar": "صيام القضاء"
+  },
+  "track.privacy": {
+    "tr": "Bu bilgiler yalnız bu cihazda tutulur; hiçbir yere gönderilmez, rozet de verilmez.",
+    "en": "This is kept only on this device; it is not sent anywhere and earns no badges.",
+    "de": "Diese Angaben bleiben nur auf diesem Gerät; sie werden nirgendwohin gesendet und bringen keine Abzeichen.",
+    "az": "Bu məlumatlar yalnız bu cihazda saxlanılır; heç yerə göndərilmir, nişan da verilmir.",
+    "ar": "تُحفظ هذه المعلومات على هذا الجهاز فقط ولا تُرسل إلى أي مكان ولا تمنح شارات."
+  },
+  "track.clear": {
+    "tr": "Takip kayıtlarını sil",
+    "en": "Delete tracking records",
+    "de": "Protokoll löschen",
+    "az": "İzləmə qeydlərini sil",
+    "ar": "حذف سجلات المتابعة"
+  },
+  "track.clearConfirm": {
+    "tr": "Namaz, kaza ve oruç kayıtları bu cihazdan silinsin mi?",
+    "en": "Delete prayer, make-up and fasting records from this device?",
+    "de": "Gebets-, Nachhol- und Fastendaten von diesem Gerät löschen?",
+    "az": "Namaz, qəza və oruc qeydləri bu cihazdan silinsin?",
+    "ar": "هل تريد حذف سجلات الصلاة والقضاء والصيام من هذا الجهاز؟"
+  },
+  "zakat.title": {
+    "tr": "Zekât hesaplama",
+    "en": "Zakat calculator",
+    "de": "Zakat-Rechner",
+    "az": "Zəkat hesablama",
+    "ar": "حاسبة الزكاة"
+  },
+  "zakat.intro": {
+    "tr": "Tutarları kendi para biriminizde girin. Nisab için gram altın fiyatını yazın; uygulama fiyatı internetten almaz.",
+    "en": "Enter amounts in your own currency. Type the price of one gram of gold for the nisab; the app does not fetch prices online.",
+    "de": "Geben Sie Beträge in Ihrer Währung ein. Tragen Sie für den Nisab den Preis eines Gramms Gold ein; die App lädt keine Preise aus dem Internet.",
+    "az": "Məbləğləri öz valyutanızda yazın. Nisab üçün qram qızılın qiymətini yazın; tətbiq qiyməti internetdən almır.",
+    "ar": "أدخل المبالغ بعملتك. اكتب سعر غرام الذهب لحساب النصاب؛ لا يجلب التطبيق الأسعار من الإنترنت."
+  },
+  "zakat.f.cash": {
+    "tr": "Nakit ve banka",
+    "en": "Cash and bank",
+    "de": "Bargeld und Bank",
+    "az": "Nağd və bank",
+    "ar": "النقد والحسابات"
+  },
+  "zakat.f.goldGrams": {
+    "tr": "Altın (gram, 24 ayar karşılığı)",
+    "en": "Gold (grams, 24-carat equivalent)",
+    "de": "Gold (Gramm, 24 Karat)",
+    "az": "Qızıl (qram, 24 əyar)",
+    "ar": "الذهب (غرام، عيار ٢٤)"
+  },
+  "zakat.f.goldPrice": {
+    "tr": "Gram altın fiyatı",
+    "en": "Price of 1 g gold",
+    "de": "Preis für 1 g Gold",
+    "az": "Qram qızılın qiyməti",
+    "ar": "سعر غرام الذهب"
+  },
+  "zakat.f.silverValue": {
+    "tr": "Gümüş (değeri)",
+    "en": "Silver (value)",
+    "de": "Silber (Wert)",
+    "az": "Gümüş (dəyəri)",
+    "ar": "الفضة (القيمة)"
+  },
+  "zakat.f.foreign": {
+    "tr": "Döviz ve hisse (değeri)",
+    "en": "Foreign currency and shares (value)",
+    "de": "Devisen und Aktien (Wert)",
+    "az": "Valyuta və səhm (dəyəri)",
+    "ar": "العملات والأسهم (القيمة)"
+  },
+  "zakat.f.trade": {
+    "tr": "Ticari mallar",
+    "en": "Trade goods",
+    "de": "Handelswaren",
+    "az": "Ticari mallar",
+    "ar": "عروض التجارة"
+  },
+  "zakat.f.receivable": {
+    "tr": "Tahsili umulan alacaklar",
+    "en": "Receivables you expect to collect",
+    "de": "Einbringliche Forderungen",
+    "az": "Alınması umulan alacaqlar",
+    "ar": "الديون المرجو تحصيلها"
+  },
+  "zakat.f.debt": {
+    "tr": "Borçlar",
+    "en": "Debts",
+    "de": "Schulden",
+    "az": "Borclar",
+    "ar": "الديون عليك"
+  },
+  "zakat.net": {
+    "tr": "Net varlık",
+    "en": "Net assets",
+    "de": "Nettovermögen",
+    "az": "Xalis varlıq",
+    "ar": "صافي المال"
+  },
+  "zakat.nisab": {
+    "tr": "Nisab ({g} g altın)",
+    "en": "Nisab ({g} g gold)",
+    "de": "Nisab ({g} g Gold)",
+    "az": "Nisab ({g} q qızıl)",
+    "ar": "النصاب ({g} غ ذهب)"
+  },
+  "zakat.needGold": {
+    "tr": "Nisabı hesaplamak için gram altın fiyatını yazın.",
+    "en": "Enter the price of 1 g gold to work out the nisab.",
+    "de": "Geben Sie den Goldpreis pro Gramm ein, um den Nisab zu berechnen.",
+    "az": "Nisabı hesablamaq üçün qram qızılın qiymətini yazın.",
+    "ar": "أدخل سعر غرام الذهب لحساب النصاب."
+  },
+  "zakat.due": {
+    "tr": "Varlığınız nisaba ulaşıyor; zekât düşer.",
+    "en": "Your wealth reaches the nisab; zakat is due.",
+    "de": "Ihr Vermögen erreicht den Nisab; Zakat ist fällig.",
+    "az": "Varlığınız nisaba çatır; zəkat düşür.",
+    "ar": "مالك يبلغ النصاب؛ تجب الزكاة."
+  },
+  "zakat.notDue": {
+    "tr": "Varlığınız nisabın altında; zekât düşmez.",
+    "en": "Your wealth is below the nisab; no zakat is due.",
+    "de": "Ihr Vermögen liegt unter dem Nisab; keine Zakat fällig.",
+    "az": "Varlığınız nisabdan aşağıdır; zəkat düşmür.",
+    "ar": "مالك دون النصاب؛ لا تجب الزكاة."
+  },
+  "zakat.amount": {
+    "tr": "Zekât (1/40)",
+    "en": "Zakat (1/40)",
+    "de": "Zakat (1/40)",
+    "az": "Zəkat (1/40)",
+    "ar": "الزكاة (١/٤٠)"
+  },
+  "zakat.note": {
+    "tr": "Hesap Diyanet'in esaslarına göredir: nisab 80,18 gram altın, oran kırkta bir; malın üzerinden bir kamerî yıl geçmiş olmalıdır. Kullanılan ev, araç ve eşya katılmaz. Kesin bilgi için Diyanet'e danışın. Girdiğiniz tutarlar yalnız bu cihazda kalır.",
+    "en": "Based on the Diyanet's rules: nisab is 80.18 g of gold, the rate is one fortieth, and a lunar year must have passed over the wealth. Your home, car and personal items are not counted. Ask a scholar for certainty. Amounts stay on this device.",
+    "de": "Nach den Regeln des Diyanet: Der Nisab beträgt 80,18 g Gold, der Satz ein Vierzigstel, und über dem Vermögen muss ein Mondjahr vergangen sein. Selbst genutzte Wohnung, Auto und Hausrat zählen nicht. Für Gewissheit fragen Sie einen Gelehrten. Die Beträge bleiben auf diesem Gerät.",
+    "az": "Hesab Diyanətin əsaslarına görədir: nisab 80,18 qram qızıl, nisbət qırxda bir; malın üzərindən bir qəməri il keçməlidir. İstifadə olunan ev, avtomobil və əşyalar daxil edilmir. Dəqiq məlumat üçün alimə müraciət edin. Məbləğlər yalnız bu cihazda qalır.",
+    "ar": "الحساب وفق قواعد رئاسة الشؤون الدينية التركية: النصاب ٨٠٫١٨ غرامًا من الذهب، والمقدار ربع العشر، ويشترط مرور حول قمري. لا يدخل المسكن والسيارة والأمتعة المستعملة. للتيقن استشر عالمًا. تبقى المبالغ على هذا الجهاز."
   }
 }
