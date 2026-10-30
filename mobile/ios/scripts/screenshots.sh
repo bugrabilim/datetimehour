@@ -73,7 +73,7 @@ shoot tr tr_TR light ekran-look-renk-akisi -openScreen look -fsBg flow
 shoot en en_US light ekran-world-en -openScreen world
 shoot ar ar_SA dark ekran-qibla-ar -openScreen qibla
 # İbadet: Kur'an (liste, Yâsîn; İngilizce meal açık, Arapça koyu), dualar, zikirmatik, takip, zekât
-for S in sura duas track zakat esma hadith guide leaf; do
+for S in sura duas track zakat esma hadith guide leaf method; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR light ekran-quran -openScreen quran -quran.bookmark "<string>18:10</string>"

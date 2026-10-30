@@ -11,11 +11,14 @@ public struct PrayerSchedule: Sendable {
     public let latitude: Double
     public let longitude: Double
     public let timeZone: TimeZone
+    /// Hesap yöntemi ve ikindi (varsayılan Diyanet)
+    public let parameters: PrayerTimes.Parameters
 
-    public init(latitude: Double, longitude: Double, timeZone: TimeZone) {
+    public init(latitude: Double, longitude: Double, timeZone: TimeZone, parameters: PrayerTimes.Parameters = .diyanet) {
         self.latitude = latitude
         self.longitude = longitude
         self.timeZone = timeZone
+        self.parameters = parameters
     }
 
     var calendar: Calendar {
@@ -29,7 +32,7 @@ public struct PrayerSchedule: Sendable {
         let cal = calendar
         let c = cal.dateComponents([.year, .month, .day], from: date)
         let day = PrayerTimes.times(year: c.year!, month: c.month!, day: c.day!,
-                                    latitude: latitude, longitude: longitude, timeZone: timeZone)
+                                    latitude: latitude, longitude: longitude, timeZone: timeZone, parameters: parameters)
         let start = cal.startOfDay(for: date)
         return Prayer.allCases.compactMap { p in
             day.minutes(p).map { Entry(prayer: p, at: start.addingTimeInterval(TimeInterval($0 * 60))) }

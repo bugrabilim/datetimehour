@@ -28,6 +28,7 @@ struct NotificationSettingsView: View {
                         }
                     }
                 }
+                PrayerAlarmSection()
                 if enabled {
                     Section(L("notify.prayers")) {
                         ForEach(Prayer.allCases, id: \.self) { prayer in

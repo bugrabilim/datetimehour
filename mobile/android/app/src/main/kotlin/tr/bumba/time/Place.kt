@@ -25,7 +25,7 @@ data class AppPlace(val id: String, val name: String, val lat: Double, val lon: 
 
     /** Günün vakitleri, sırayla (oluşmayan vakit yok); sitedeki gibi dakikaya yuvarlanır */
     fun entries(day: LocalDate): List<Entry> {
-        val t = PrayerTimes.times(day, lat, lon, zone)
+        val t = PrayerTimes.times(day, lat, lon, zone, PrayerMethod.params())
         val start = day.atStartOfDay(zone).toInstant()
         return Prayer.entries.mapNotNull { p -> t.minutes(p)?.let { Entry(p, start.plusSeconds(it * 60L)) } }
     }

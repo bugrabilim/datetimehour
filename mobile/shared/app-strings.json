@@ -4871,5 +4871,145 @@
     "de": "Nächster Tag",
     "az": "Növbəti gün",
     "ar": "اليوم التالي"
+  },
+  "prayer.method.app": {
+    "tr": "Hesap yöntemi",
+    "en": "Calculation method",
+    "de": "Berechnungsmethode",
+    "az": "Hesablama üsulu",
+    "ar": "طريقة الحساب"
+  },
+  "prayer.method.appNote": {
+    "tr": "Türkiye'de resmî vakitler Diyanet'indir. Seçim vakitleri, bildirimleri, alarmları ve aylık çizelgeyi değiştirir; ana ekran widget'ları ve saat Diyanet yöntemiyle kalır.",
+    "en": "In Türkiye the official times are Diyanet's. Your choice changes the times, notifications, alarms and monthly table; home screen widgets and the watch keep the Diyanet method.",
+    "de": "In der Türkei gelten die Zeiten der Diyanet. Die Auswahl ändert Zeiten, Benachrichtigungen, Alarme und Monatstabelle; Widgets und die Uhr bleiben bei der Diyanet-Methode.",
+    "az": "Türkiyədə rəsmi vaxtlar Diyanətindir. Seçim vaxtları, bildirişləri, siqnalları və aylıq cədvəli dəyişir; vidcetlər və saat Diyanət üsulu ilə qalır.",
+    "ar": "المواقيت الرسمية في تركيا هي مواقيت ديانت. يغيّر اختيارك المواقيت والإشعارات والمنبهات والجدول الشهري؛ وتبقى الأدوات والساعة على طريقة ديانت."
+  },
+  "prayer.arc.title": {
+    "tr": "Güneş ve Ay",
+    "en": "Sun and Moon",
+    "de": "Sonne und Mond",
+    "az": "Günəş və Ay",
+    "ar": "الشمس والقمر"
+  },
+  "prayer.arc.day": {
+    "tr": "Gün batımına {time}",
+    "en": "{time} until sunset",
+    "de": "Noch {time} bis Sonnenuntergang",
+    "az": "Gün batımına {time}",
+    "ar": "{time} حتى الغروب"
+  },
+  "prayer.arc.night": {
+    "tr": "Gün doğumuna {time}",
+    "en": "{time} until sunrise",
+    "de": "Noch {time} bis Sonnenaufgang",
+    "az": "Gün doğumuna {time}",
+    "ar": "{time} حتى الشروق"
+  },
+  "prayer.alarm.heading": {
+    "tr": "Vakitte alarm",
+    "en": "Alarm at prayer time",
+    "de": "Wecker zur Gebetszeit",
+    "az": "Vaxtda siqnal",
+    "ar": "منبه عند الوقت"
+  },
+  "prayer.alarm.note": {
+    "tr": "Seçili vakitlerde gerçek alarm çalar: telefon sessizde ya da Odak açıkken de duyulur. Önümüzdeki günler için kurulur, uygulama açıldıkça yenilenir.",
+    "en": "A real alarm rings at the selected prayer times, even when the phone is silent or in Focus. Alarms are set for the coming days and renewed whenever you open the app.",
+    "de": "Zu den gewählten Gebetszeiten klingelt ein echter Wecker, auch wenn das Telefon lautlos oder im Fokus ist. Die Wecker werden für die nächsten Tage gestellt und beim Öffnen der App erneuert.",
+    "az": "Seçilmiş vaxtlarda əsl siqnal çalır: telefon səssizdə və ya Fokusda olsa da eşidilir. Növbəti günlər üçün qurulur, tətbiq açıldıqca yenilənir.",
+    "ar": "يرنّ منبه حقيقي عند المواقيت المختارة حتى لو كان الهاتف صامتًا. تُضبط المنبهات للأيام القادمة وتُجدَّد كلما فتحت التطبيق."
+  },
+  "prayer.alarm.unsupported": {
+    "tr": "Vakit alarmı iOS 26 ve sonrasında kullanılabilir; bu sürümde bildirimler kullanılır.",
+    "en": "Prayer alarms need iOS 26 or later; this version uses notifications.",
+    "de": "Gebetswecker benötigen iOS 26 oder neuer; diese Version nutzt Benachrichtigungen.",
+    "az": "Vaxt siqnalı iOS 26 və sonrasında işləyir; bu versiyada bildirişlər istifadə olunur.",
+    "ar": "يتطلب منبه المواقيت iOS 26 أو أحدث؛ يُستخدم الإشعار في هذا الإصدار."
+  },
+  "prayer.alarm.title": {
+    "tr": "{name} vakti",
+    "en": "{name} time",
+    "de": "Zeit für {name}",
+    "az": "{name} vaxtı",
+    "ar": "وقت {name}"
+  },
+  "prayer.silent.heading": {
+    "tr": "Vakitte telefonu sessize al",
+    "en": "Silence the phone at prayer time",
+    "de": "Telefon zur Gebetszeit stummschalten",
+    "az": "Vaxtda telefonu səssizə al",
+    "ar": "كتم الهاتف عند الوقت"
+  },
+  "prayer.silent.minutes": {
+    "tr": "Süre",
+    "en": "Duration",
+    "de": "Dauer",
+    "az": "Müddət",
+    "ar": "المدة"
+  },
+  "prayer.silent.off": {
+    "tr": "Kapalı",
+    "en": "Off",
+    "de": "Aus",
+    "az": "Söndürülüb",
+    "ar": "إيقاف"
+  },
+  "prayer.silent.min": {
+    "tr": "{n} dk",
+    "en": "{n} min",
+    "de": "{n} Min.",
+    "az": "{n} dəq",
+    "ar": "{n} دقيقة"
+  },
+  "prayer.silent.mode": {
+    "tr": "Biçim",
+    "en": "Mode",
+    "de": "Modus",
+    "az": "Rejim",
+    "ar": "الوضع"
+  },
+  "prayer.silent.vibrate": {
+    "tr": "Titreşim",
+    "en": "Vibrate",
+    "de": "Vibration",
+    "az": "Titrəmə",
+    "ar": "اهتزاز"
+  },
+  "prayer.silent.silent": {
+    "tr": "Rahatsız Etmeyin",
+    "en": "Do Not Disturb",
+    "de": "Bitte nicht stören",
+    "az": "Narahat etməyin",
+    "ar": "عدم الإزعاج"
+  },
+  "prayer.silent.note": {
+    "tr": "Seçili vakitlerden sonra telefon belirtilen süre boyunca titreşime ya da Rahatsız Etmeyin'e geçer, sonra önceki hâline döner. Rahatsız Etmeyin için Android bir kez izin ister.",
+    "en": "After the selected prayer times the phone switches to vibrate or Do Not Disturb for the chosen duration, then returns to its previous state. Do Not Disturb needs a one-time permission.",
+    "de": "Nach den gewählten Gebetszeiten wechselt das Telefon für die gewählte Dauer auf Vibration oder Bitte nicht stören und kehrt danach zurück. Bitte nicht stören erfordert einmalig eine Berechtigung.",
+    "az": "Seçilmiş vaxtlardan sonra telefon göstərilən müddət ərzində titrəməyə və ya Narahat etməyin rejiminə keçir, sonra əvvəlki vəziyyətinə qayıdır. Narahat etməyin üçün bir dəfə icazə lazımdır.",
+    "ar": "بعد المواقيت المختارة ينتقل الهاتف إلى الاهتزاز أو عدم الإزعاج للمدة المختارة ثم يعود. يتطلب عدم الإزعاج إذنًا لمرة واحدة."
+  },
+  "prayer.silent.grant": {
+    "tr": "İzin ver",
+    "en": "Allow",
+    "de": "Erlauben",
+    "az": "İcazə ver",
+    "ar": "سماح"
+  },
+  "prayer.silent.channel": {
+    "tr": "Vakitte sessiz",
+    "en": "Silent at prayer time",
+    "de": "Stumm zur Gebetszeit",
+    "az": "Vaxtda səssiz",
+    "ar": "صامت عند الوقت"
+  },
+  "prayer.silent.active": {
+    "tr": "Telefon {time} saatine kadar sessizde",
+    "en": "Phone silenced until {time}",
+    "de": "Telefon bis {time} stumm",
+    "az": "Telefon {time}-dək səssizdə",
+    "ar": "الهاتف صامت حتى {time}"
   }
 }

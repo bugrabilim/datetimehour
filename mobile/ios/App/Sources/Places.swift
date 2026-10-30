@@ -17,7 +17,7 @@ struct AppPlace: Equatable {
     var isAuto: Bool { id == Self.autoID }
     /// Konum değişince yeniden yükleme için (hava durumu)
     var key: String { String(format: "%.2f,%.2f", lat, lon) }
-    var schedule: PrayerSchedule { PrayerSchedule(latitude: lat, longitude: lon, timeZone: zone) }
+    var schedule: PrayerSchedule { PrayerSchedule(latitude: lat, longitude: lon, timeZone: zone, parameters: PrayerMethod.parameters) }
     var today: CalendarDay { CalendarDay(Date(), timeZone: zone) }
 
     init(id: String, name: String, lat: Double, lon: Double, zone: TimeZone) {
@@ -131,7 +131,7 @@ final class PlaceModel {
         let new = AppPlace.stored()
         guard new != place else { return }
         place = new
-        Task { await PrayerNotifier.reschedule() }
+        Task { await PrayerNotifier.reschedule(); await PrayerAlarms.sync() }
         WidgetCenter.shared.reloadAllTimelines()
         // Apple Watch "iPhone'daki yer" ve kilit ekranındaki sıradaki vakit
         WatchSync.shared.send(new)

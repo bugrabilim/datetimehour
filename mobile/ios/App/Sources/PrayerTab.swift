@@ -17,6 +17,7 @@ struct PrayerTab: View {
                 ScrollView {
                     VStack(spacing: 24) {
                         PrayerPanel(now: context.date, place: place)
+                        SunMoonArc(now: context.date, place: place)
                         VStack(alignment: .leading, spacing: 6) {
                             Toggle(isOn: $liveOn) {
                                 Label(L("live.prayer.toggle"), systemImage: "lock.iphone")
@@ -34,6 +35,11 @@ struct PrayerTab: View {
                                 MonthlyPrayerView(place: place)
                             } label: {
                                 linkRow(L("prayer.monthly"), "tablecells")
+                            }
+                            NavigationLink {
+                                PrayerMethodView()
+                            } label: {
+                                linkRow(L("prayer.method.app") + (PrayerMethod.isCustom ? " · " + PrayerMethod.name(PrayerMethod.id) : ""), "slider.horizontal.3")
                             }
                             NavigationLink {
                                 QiblaView()

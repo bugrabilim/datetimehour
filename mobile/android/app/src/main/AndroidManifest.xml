@@ -20,6 +20,8 @@
     <!-- Kademeli alarm sesi (AlarmRingService) ve arka plan sesi (SoundService: pomodoro, uyku sesleri) -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Vakitte telefonu Rahatsız Etmeyin'e alma (isteğe bağlı; kullanıcı ayardan izin verir) -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 
     <!-- Vakit bildirimleri (PrayerNotifier): bildirim izni yalnız açarken istenir; tam zamanlı alarm; yeniden
          başlatmada plan yeniden kurulur -->
@@ -274,6 +276,7 @@
             android:foregroundServiceType="mediaPlayback" />
         <receiver android:name=".AlarmReceiver" android:exported="false" />
         <receiver android:name=".AlarmPreReceiver" android:exported="false" />
+        <receiver android:name=".PrayerSilentReceiver" android:exported="false" />
         <receiver android:name=".RescheduleReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

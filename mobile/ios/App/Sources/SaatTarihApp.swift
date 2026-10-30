@@ -31,6 +31,7 @@ struct SaatTarihApp: App {
                     await PrayerNotifier.askOnce()
                     await PrayerNotifier.reschedule()
                     await AlarmCenter.refreshSkips()
+                    await PrayerAlarms.sync()
                 }
                 // Aralık antrenmanı sürüyorsa sesli duyurular (uygulama yeniden açılmış olabilir)
                 HiitRunner.shared.sync()
@@ -286,7 +287,7 @@ private struct TabBar: View {
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
-         wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf
+         wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -328,6 +329,7 @@ enum DebugScreen: String, Identifiable {
         case .hadith: HadithView()
         case .guide: PrayerGuideView()
         case .leaf: CalendarLeafView()
+        case .method: PrayerMethodView()
         case .zikir: ZikirView()
         case .track: TrackerView()
         case .zakat: ZakatView()

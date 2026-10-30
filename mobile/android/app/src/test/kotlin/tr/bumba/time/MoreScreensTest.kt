@@ -225,6 +225,14 @@ class MoreScreensTest {
         shot("tr-zekat") { ZakatScreen {} }
         Zakat.save(emptyMap())
     }
+    @Test fun prayerExtras() {
+        Prefs.store.edit().putString(PrayerMethod.METHOD, "mwl").putBoolean(PrayerMethod.HANAFI, true)
+            .putInt(PrayerSilent.MINUTES, 30).putString(PrayerAlarms.KEY, "fajr,maghrib").commit()
+        shot("tr-hesap-yontemi") { PrayerMethodScreen {} }
+        shot("tr-vakit-alarmi") { NotificationSettingsScreen {} }
+        Prefs.store.edit().remove(PrayerMethod.METHOD).remove(PrayerMethod.HANAFI).remove(PrayerSilent.MINUTES).remove(PrayerAlarms.KEY).commit()
+        shot("tr-vakitler-yay") { PrayerScreen() }
+    }
     @Test fun content() {
         shot("tr-esma") { EsmaScreen {} }
         shot("ar-esma", "ar") { EsmaScreen {} }

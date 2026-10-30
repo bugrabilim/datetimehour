@@ -80,6 +80,7 @@ struct MoonView: View {
             } footer: {
                 Text(place.name)
             }
+            CrescentSection(place: place, now: now)
             Section {
                 Text(T("nature.eclipseLead", place.name)).font(.footnote).foregroundStyle(Theme.muted)
                 ForEach(Eclipse.all.filter { $0.date > now.addingTimeInterval(-6 * 3600) }.prefix(6)) { e in

@@ -20,7 +20,7 @@ enum CloudSync {
         "appearance", "accent", "h12", "units", "keepAwake", "clockModel", "clockFont", "secA", "secD", "homeItems",
         Features.key, FullscreenBackground.key, NightMode.key, "fs.text", "fs.scale", FullscreenPhoto.slideEveryKey,
         // Kişisel listeler
-        "world", SavedPlaces.key, "countdowns", "tools.voice", "hiit.cfg",
+        "world", SavedPlaces.key, "countdowns", "tools.voice", "hiit.cfg", PrayerMethod.methodKey, PrayerMethod.hanafiKey,
         // Pomodoro ve uyku
         PomoLog.key, PomoTodo.key, "pomo.task", "pomo.goal", "pomo.tag", "pomo.noise", "pomo.vol", "pomo.work", "pomo.short", "pomo.long", "pomo.rounds",
         SleepPlan.onKey, SleepPlan.wakeKey, SleepPlan.durationKey, SleepPlan.daysKey, SleepPlan.remindKey,

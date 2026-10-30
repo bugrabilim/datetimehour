@@ -61,6 +61,9 @@ const SITE_PATHS = [
   "hijriConv.h1", "hijriConv.toHijri", "hijriConv.toGreg", "hijriConv.gregLabel", "hijriConv.yearLabel", "hijriConv.monthLabel",
   "hijriConv.dayLabel", "hijriConv.dayMax",
   "tools.pomodoro.tags.*",
+  // O maddeleri (30 Ekim 2026): hesap yöntemleri, hilal görünürlüğü
+  "prayer.method.*", "prayer.method.names.*",
+  "nature.crescentHeading", "nature.crescentLead", "nature.crescentAge", "nature.crescentLag", "nature.crescentBefore", "nature.crescentCats.*", "nature.crescentNote",
 ];
 const at = (obj, parts) => parts.reduce((o, k) => (o == null ? undefined : o[k]), obj);
 for (const spec of SITE_PATHS) {

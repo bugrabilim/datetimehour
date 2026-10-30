@@ -447,6 +447,7 @@ class AlarmReceiver : BroadcastReceiver() {
                     AlarmScheduler.sync(c, items)
                 }
                 AlarmScheduler.ring(c, id, title, kind)
+                if (kind == PrayerAlarms.KIND) PrayerAlarms.sync(c, java.time.Instant.now().plusSeconds(60))
             }
         }
     }

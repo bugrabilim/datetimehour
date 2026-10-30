@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.FormatQuote
 import androidx.compose.material.icons.filled.SelfImprovement
 import androidx.compose.material.icons.filled.TaskAlt
+import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material.icons.filled.TouchApp
 import androidx.compose.material.icons.filled.VolunteerActivism
 import androidx.compose.material.icons.automirrored.filled.MenuBook
@@ -69,6 +70,7 @@ fun PrayerScreen() {
         "monthly" -> { BackHandler { page = null }; MonthlyPrayers { page = null }; return }
         "notify" -> { BackHandler { page = null }; NotificationSettingsScreen { page = null }; return }
         "qibla" -> { BackHandler { page = null }; QiblaScreen { page = null }; return }
+        "method" -> { BackHandler { page = null }; PrayerMethodScreen { page = null }; return }
         // İbadet bölümü (Religion.kt)
         "quran" -> { BackHandler { page = null }; QuranScreen { page = null }; return }
         "duas" -> { BackHandler { page = null }; DuasScreen { page = null }; return }
@@ -133,6 +135,7 @@ fun PrayerScreen() {
                     }
                 }
             }
+            SunMoonArc(now, place)
             KerahatCard(entries, place)
             // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
             val context = androidx.compose.ui.platform.LocalContext.current
@@ -149,6 +152,7 @@ fun PrayerScreen() {
                 Text(L("live.prayer.noteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
             }
             LinkCard(Icons.Filled.TableChart, L("prayer.monthly")) { page = "monthly" }
+            LinkCard(Icons.Filled.Tune, L("prayer.method.app") + if (PrayerMethod.isCustom) " · " + PrayerMethod.name(PrayerMethod.id) else "") { page = "method" }
             LinkCard(Icons.Filled.Explore, L("qibla.link")) { page = "qibla" }
             if (ramadan != null) LinkCard(Icons.Filled.NightsStay, T("imsakiye.title", ramadan.start.year)) { page = "imsakiye" }
             Text(L("worship.title"), Modifier.fillMaxWidth().padding(top = 6.dp), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)

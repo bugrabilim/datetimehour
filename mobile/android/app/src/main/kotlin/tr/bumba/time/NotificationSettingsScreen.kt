@@ -109,6 +109,8 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                 }
                 Text(L("notify.note"), color = Theme.c.muted, fontSize = 13.sp)
             }
+            PrayerAlarmCard()
+            PrayerSilentCard()
             if (denied) {
                 AppCard {
                     Text(L("notify.denied"), color = Theme.c.text, fontSize = 14.sp)

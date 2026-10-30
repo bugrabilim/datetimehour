@@ -107,6 +107,7 @@ fun MoonScreen() {
             Row2(L("nature.moonset"), moonTime(rs.set, place, "nature.moonNoSet"))
             Text(place.name, color = Theme.c.muted, fontSize = 12.sp)
         }
+        CrescentCard(place, now)
         SectionTitle(L("nature.eclipseHeading"))
         Text(T("nature.eclipseLead", place.name), color = Theme.c.muted, fontSize = 13.sp)
         val f = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(Strings.locale)

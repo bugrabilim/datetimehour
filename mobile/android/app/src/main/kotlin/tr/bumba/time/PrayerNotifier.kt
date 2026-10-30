@@ -87,6 +87,8 @@ object PrayerNotifier {
     fun reschedule(context: Context) {
         val app = context.applicationContext
         FeatureNotifier.reschedule(app)
+        PrayerAlarms.sync(app)
+        PrayerSilent.sync(app)
         // Süren sayaçlar ve "sıradaki vakit" bildirimi (yer değişmiş olabilir)
         LiveNotifications.sync(app)
         val am = app.getSystemService(AlarmManager::class.java) ?: return
