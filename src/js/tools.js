@@ -167,6 +167,9 @@
     var disp = q("[data-cd-display]"), prog = q("[data-cd-progress]"), msg = q("[data-cd-message]");
     var bStart = q("[data-cd-start]"), bReset = q("[data-cd-reset]"), quick = q("[data-cd-quick]");
     var st = load("sth-cd", { mode: "timer", run: false, dur: 300000, rem: 300000, wallEnd: 0, target: "", name: "" });
+    // Hazır süre sayfası (/geri-sayim/5-dakika/): aynı süre çalışmıyorsa sayfanın süresi gösterilir (kayda dokunmadan)
+    var fixed = +((doc.querySelector("[data-tool]") || doc.body).getAttribute("data-cd-fixed") || 0), endsEl = q("[data-cd-endsat]");
+    if (fixed && !(st.run && st.mode === "timer" && st.dur === fixed)) st = { mode: "timer", run: false, dur: fixed, rem: fixed, wallEnd: 0, target: "", name: "" };
     var nameEl = q("[data-cd-name]"), nameIn = q("[data-cd-nameinput]"), copyBtn = q("[data-cd-copy]");
     var endMono = 0, tick = 0;
     function mode() { return st.mode; }
@@ -203,6 +206,12 @@
     function loop() {
       var r = remaining();
       showName();
+      if (endsEl && mode() === "timer") {
+        var end = new Date(S.nowMs() + Math.max(r, 0)), tp = S.parts(end, S.localTz);
+        var hm = String(tp.hour).padStart(2, "0") + ":" + String(tp.minute).padStart(2, "0");
+        var line = S.tpl(endsEl.getAttribute(st.run ? "data-tpl-run" : "data-tpl"), { time: hm });
+        if (endsEl.textContent !== line) endsEl.textContent = line;
+      }
       show(text(Math.max(r, 0)));
       if (mode() === "timer") prog.value = st.dur ? Math.max(0, (r / st.dur) * 100) : 0;
       setTitle(st.run ? text(r) : "");
@@ -299,6 +308,7 @@
       } else if (targetMs() <= S.nowMs()) { st.run = false; persist(); }
     }
     buttons(); loop(); if (st.run) run();
+    if (endsEl) setInterval(function () { if (!st.run) loop(); }, 10000); // bitiş saati boşta da ilerlesin
   }
 
   /* ---------- Alarm ---------- */

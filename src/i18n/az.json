@@ -895,6 +895,80 @@
           "a": "Bəli. Vaxt bitəndə səs çalınır və növbəti mərhələ (iş və ya fasilə) özü başlayır. Saxlamaq üçün Dayandır düyməsini basın."
         }
       ]
+    },
+    "presets": {
+      "timerTitle": "{Name}: onlayn geri sayım | Saat Tarih",
+      "timerDescription": "{Label} geri sayım hazırdır: Başlat düyməsinə basın, vaxt bitəndə səsli xəbərdarlıq çalır. Fasilə, tam ekran və paylaşıla bilən keçid; quraşdırma tələb olunmur.",
+      "timerLead": "{label} üçün geri sayım hazırdır. Başlat düyməsinə basın; vaxt bitəndə səsli xəbərdarlıq çalır.",
+      "timerFacts": "{label} = {s} saniyə = {ms} millisaniyə.",
+      "endsAt": "İndi başlatsanız, bitmə vaxtı: {time}",
+      "endsAtRun": "Bitmə vaxtı: {time}",
+      "alarmTitle": "{time} zəngli saat qur: onlayn zəngli saat | Saat Tarih",
+      "alarmDescription": "Saat {time} üçün zəngli saat hazırdır: Əlavə et düyməsinə basın, səhifə açıq qaldıqca çalır. Yuxu dövrlərinə görə yatma saatı təklifləri də bu səhifədədir.",
+      "alarmH1": "Zəngli saat qur: {time}",
+      "alarmLead": "Saat {time} üçün zəngli saat hazırdır. Əlavə et düyməsinə basın; saat {time} olanda səsli xəbərdarlıq çalır.",
+      "sleepHeading": "Saat neçədə yatmalı?",
+      "sleepText": "Saat {time} oyanmaq üçün 90 dəqiqəlik yuxu dövrlərinə görə yatma saatları (yuxuya getmək üçün 15 dəqiqə əlavə edilib):",
+      "sleepRow": "{bed}: {cycles} dövr, {hours} saat yuxu",
+      "sleepNote": "Yuxu dövrü insandan insana dəyişir; bu saatlar təxmini bələdçidir.",
+      "durations": {
+        "1": {
+          "label": "1 dəqiqə",
+          "name": "1 dəqiqəlik taymer"
+        },
+        "2": {
+          "label": "2 dəqiqə",
+          "name": "2 dəqiqəlik taymer"
+        },
+        "3": {
+          "label": "3 dəqiqə",
+          "name": "3 dəqiqəlik taymer"
+        },
+        "5": {
+          "label": "5 dəqiqə",
+          "name": "5 dəqiqəlik taymer"
+        },
+        "10": {
+          "label": "10 dəqiqə",
+          "name": "10 dəqiqəlik taymer"
+        },
+        "15": {
+          "label": "15 dəqiqə",
+          "name": "15 dəqiqəlik taymer"
+        },
+        "20": {
+          "label": "20 dəqiqə",
+          "name": "20 dəqiqəlik taymer"
+        },
+        "25": {
+          "label": "25 dəqiqə",
+          "name": "25 dəqiqəlik taymer"
+        },
+        "30": {
+          "label": "30 dəqiqə",
+          "name": "30 dəqiqəlik taymer"
+        },
+        "40": {
+          "label": "40 dəqiqə",
+          "name": "40 dəqiqəlik taymer"
+        },
+        "45": {
+          "label": "45 dəqiqə",
+          "name": "45 dəqiqəlik taymer"
+        },
+        "60": {
+          "label": "1 saat",
+          "name": "1 saatlıq taymer"
+        },
+        "90": {
+          "label": "90 dəqiqə",
+          "name": "90 dəqiqəlik taymer"
+        },
+        "120": {
+          "label": "2 saat",
+          "name": "2 saatlıq taymer"
+        }
+      }
     }
   },
   "info": {

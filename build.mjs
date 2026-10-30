@@ -880,7 +880,7 @@ const numField = (id, label, attrs) => `<div class="field"><label for="${id}">${
 const ringBanner = (tt, name) => `<div class="ring-banner" role="alertdialog" aria-label="${esc(tt.alarm.ringing)}" data-ring-banner hidden><p class="ring-title" data-ring-title>${esc(tt.alarm.ringing)}</p><div class="tool-actions">${btn("btn", "data-ring-stop", tt.common.close)}${name === "alarm" ? btn("toggle", "data-ring-snooze", tt.alarm.snooze) : ""}</div></div>`;
 const soundRow = (tt) => `<div class="tool-extra"><label class="check-inline"><input type="checkbox" data-sound checked> ${esc(tt.common.sound)}</label>${btn("toggle", "data-test-sound", tt.common.testSound)}${btn("toggle", "data-notify", tt.common.notify)}</div>`;
 
-function toolBody(lang, key) {
+function toolBody(lang, key, preset = {}) {
   const tt = I[lang].tools;
   const s = tt[key];
   if (key === "stopwatch")
@@ -896,7 +896,7 @@ function toolBody(lang, key) {
   <button type="button" role="tab" id="tab-date" aria-selected="false" aria-controls="cd-date" tabindex="-1" data-cd-tab="date">${esc(s.tabDate)}</button>
 </div>
 <div role="tabpanel" id="cd-timer" aria-labelledby="tab-timer" data-cd-panel="timer">
-  <div class="inputs-row">${numField("cd-h", s.hours, 'min="0" max="99" value="0" data-cd-h')}${numField("cd-m", s.minutes, 'min="0" max="59" value="5" data-cd-m')}${numField("cd-s", s.seconds, 'min="0" max="59" value="0" data-cd-s')}</div>
+  <div class="inputs-row">${numField("cd-h", s.hours, `min="0" max="99" value="${preset.sec ? Math.floor(preset.sec / 3600) : 0}" data-cd-h`)}${numField("cd-m", s.minutes, `min="0" max="59" value="${preset.sec ? Math.floor((preset.sec % 3600) / 60) : 5}" data-cd-m`)}${numField("cd-s", s.seconds, 'min="0" max="59" value="0" data-cd-s')}</div>
   <div class="presets" role="group" aria-label="${esc(s.presetsLabel)}">${[1, 5, 10, 15, 30, 60].map((n) => btn("chip", `data-cd-preset="${n}"`, tpl(s.presetMin, { n }))).join("")}</div>
 </div>
 <div role="tabpanel" id="cd-date" aria-labelledby="tab-date" data-cd-panel="date" hidden>
@@ -906,9 +906,10 @@ function toolBody(lang, key) {
   <div class="presets" data-cd-quick>${btn("chip", 'data-cd-quick-newyear', s.quickNewYear)}</div>
 </div>
 <p class="cd-name" data-cd-name hidden></p>
-<p class="big-time" role="timer" aria-label="${esc(s.remaining)}" data-cd-display>00:00:00</p>
+<p class="big-time" role="timer" aria-label="${esc(s.remaining)}" data-cd-display>${preset.sec ? `${hh(Math.floor(preset.sec / 3600))}:${String(Math.floor((preset.sec % 3600) / 60)).padStart(2, "0")}:00` : "00:00:00"}</p>
 <progress class="tool-progress" max="100" value="0" data-cd-progress aria-hidden="true"></progress>
 <p class="cd-message" role="status" data-cd-message hidden></p>
+${preset.sec ? `<p class="meta" data-cd-endsat data-tpl="${esc(tt.presets.endsAt)}" data-tpl-run="${esc(tt.presets.endsAtRun)}">&nbsp;</p>` : ""}
 <div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}</div>
 <p class="meta">${esc(s.shareNote)}</p>
 ${soundRow(tt)}
@@ -916,7 +917,7 @@ ${ringBanner(tt, "countdown")}`;
   if (key === "alarm")
     return `<form class="alarm-form" data-alarm-form>
   <div class="inputs-row">
-    <div class="field"><label for="al-time">${esc(s.timeLabel)}</label><input id="al-time" type="time" value="07:00" required data-al-time></div>
+    <div class="field"><label for="al-time">${esc(s.timeLabel)}</label><input id="al-time" type="time" value="${preset.time || "07:00"}" required data-al-time></div>
     <div class="field grow"><label for="al-label">${esc(s.labelLabel)}</label><input id="al-label" type="text" maxlength="40" placeholder="${esc(s.labelPlaceholder)}" data-al-label></div>
   </div>
   <fieldset class="days"><legend>${esc(s.repeatLabel)}</legend>
@@ -946,39 +947,85 @@ ${ringBanner(tt, "alarm")}`;
 ${soundRow(tt)}`;
 }
 
-function buildTool(lang, key) {
+function buildTool(lang, key, preset = null) {
   const t = I[lang];
   const tt = t.tools;
   const s = tt[key];
-  const pagePath = ROUTES[lang][key];
+  const pagePath = preset ? preset.path : ROUTES[lang][key];
+  const page = preset || s;
   const trail = [
     { name: t.ui.home, path: ROUTES[lang].home },
     { name: t.ui.tools, path: ROUTES[lang].tools },
-    { name: s.h1, path: pagePath },
+    ...(preset ? [{ name: s.h1, path: ROUTES[lang][key] }] : []),
+    { name: page.h1, path: pagePath },
   ];
   const body = `<section class="hero">
   <div class="wrap">
     ${crumbs(lang, trail)}
-    <h1>${esc(s.h1)}</h1>
-    <p class="lead">${esc(s.lead)}</p>
-    <section class="tool" data-tool="${key}" aria-labelledby="tool-h">
+    <h1>${esc(page.h1)}</h1>
+    <p class="lead">${esc(page.lead)}</p>
+    <section class="tool" data-tool="${key}"${preset && preset.sec ? ` data-cd-fixed="${preset.sec * 1000}"` : ""} aria-labelledby="tool-h">
       <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.panel)}</h2><button type="button" class="icon-btn" data-fs aria-pressed="false" aria-label="${esc(tt.common.fullscreen)}" title="${esc(tt.common.fullscreen)}">${ICON_FULL}</button></div>
-      ${toolBody(lang, key)}
+      ${toolBody(lang, key, preset || {})}
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>
     <p class="meta sync-line" data-sync-status>&nbsp;</p>
     ${key === "alarm" || key === "countdown" || key === "pomodoro" ? `<p class="meta">${esc(tt.common.pageOpenNote)}</p>` : ""}
   </div>
 </section>
-${addFaq(lang, key, tt.hub.cards[key].name, pagePath, s.faq)}`;
+${preset ? preset.extra || "" : addFaq(lang, key, tt.hub.cards[key].name, pagePath, s.faq)}`;
   const ld = [
     ...baseLd(lang),
-    webPageLd(lang, pagePath, s.title, s.description),
-    { "@type": "WebApplication", name: s.h1, url: abs(pagePath), description: s.description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" }, publisher: { "@id": `${ORIGIN}/#org` } },
+    webPageLd(lang, pagePath, page.title, page.description),
+    { "@type": "WebApplication", name: page.h1, url: abs(pagePath), description: page.description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" }, publisher: { "@id": `${ORIGIN}/#org` } },
     breadcrumbLd(trail),
   ];
-  searchEntries[lang].push({ t: s.h1, u: pagePath, d: s.description, k: tt.hub.cards[key].name + " " + { stopwatch: "kronometre stopwatch tur lap", countdown: "geri sayım countdown timer zamanlayıcı yılbaşı bayram", alarm: "alarm saati alarm clock uyandırma", pomodoro: "pomodoro odak focus mola break" }[key] });
-  return { lang, key: `tool:${key}`, path: pagePath, title: s.title, description: s.description, body, ld, nav: "tools", scripts: ["tools.js"], clientExtra: { tools: tt, cal: {} } };
+  searchEntries[lang].push({ t: page.h1, u: pagePath, d: page.description, k: preset ? preset.searchK : tt.hub.cards[key].name + " " + { stopwatch: "kronometre stopwatch tur lap", countdown: "geri sayım countdown timer zamanlayıcı yılbaşı bayram", alarm: "alarm saati alarm clock uyandırma", pomodoro: "pomodoro odak focus mola break" }[key] });
+  return { lang, key: preset ? preset.key : `tool:${key}`, path: pagePath, title: page.title, description: page.description, body, ld, nav: "tools", scripts: ["tools.js"], clientExtra: { tools: tt, cal: {} } };
+}
+
+/* Hazır süre ve alarm sayfaları (30 Ekim 2026, rakip analizi #20): "5 dakika zamanlayıcı", "07:00 alarm kur".
+   Araç aynıdır (tools.js); sayfa süreyi/saati önceden ayarlar. Adresler: /geri-sayim/5-dakika/, /alarm/07-00/
+   (diğer dillerde İngilizce kısa ad: /en/countdown/5-minutes/). Sayfalar arası bağlantı yok; sitemap ve aramada. */
+const TIMER_PRESETS = [1, 2, 3, 5, 10, 15, 20, 25, 30, 40, 45, 60, 90, 120];
+const ALARM_PRESETS = [...Array.from({ length: 17 }, (_, i) => 240 + i * 30), 315, 345, 375, 405, 435, 465, 495, 525].sort((a, b) => a - b).map((m) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`);
+const capFirst = (lang, x) => x.charAt(0).toLocaleUpperCase(lang) + x.slice(1);
+const timerSlug = (lang, m) => {
+  const l = lang === "tr" ? "tr" : "en";
+  const lab = I[l].tools.presets.durations[m].label;
+  return trSlug(lab);
+};
+const time12 = (t) => { const [h, m] = t.split(":").map(Number); return `${((h + 11) % 12) + 1}:${String(m).padStart(2, "0")} ${h < 12 ? "AM" : "PM"}`; };
+
+function buildTimerPreset(lang, m) {
+  const pr = I[lang].tools.presets;
+  const d = pr.durations[m];
+  const v = { label: d.label, Label: capFirst(lang, d.label), name: d.name, Name: capFirst(lang, d.name), s: (m * 60).toLocaleString(I[lang].locale), ms: (m * 60000).toLocaleString(I[lang].locale) };
+  return buildTool(lang, "countdown", {
+    key: `timer:${m}`, path: `${ROUTES[lang].countdown}${timerSlug(lang, m)}/`, sec: m * 60,
+    title: tpl(pr.timerTitle, v), description: tpl(pr.timerDescription, v), h1: v.Name, lead: tpl(pr.timerLead, v),
+    extra: `<section class="section"><div class="wrap"><p class="meta">${esc(tpl(pr.timerFacts, v))}</p></div></section>`,
+    searchK: `${d.label} ${d.name} zamanlayıcı geri sayım sayaç timer countdown`,
+  });
+}
+
+function buildAlarmPreset(lang, time) {
+  const pr = I[lang].tools.presets;
+  const [h, mi] = time.split(":").map(Number);
+  const v = { time, time12: time12(time) };
+  const fmt = (min) => { const x = ((min % 1440) + 1440) % 1440; const t = `${hh(Math.floor(x / 60))}:${String(x % 60).padStart(2, "0")}`; return lang === "en" ? `${time12(t)} (${t})` : t; };
+  const rows = [6, 5, 4].map((c) => `<li>${esc(tpl(pr.sleepRow, { bed: fmt(h * 60 + mi - c * 90 - 15), cycles: c, hours: (c * 1.5).toLocaleString(I[lang].locale) }))}</li>`).join("");
+  const extra = `<section class="section" aria-labelledby="sleep-h"><div class="wrap">
+    <h2 id="sleep-h">${esc(pr.sleepHeading)}</h2>
+    <p>${esc(tpl(pr.sleepText, v))}</p>
+    <ul>${rows}</ul>
+    <p class="meta">${esc(pr.sleepNote)}</p>
+  </div></section>`;
+  return buildTool(lang, "alarm", {
+    key: `alarmAt:${time}`, path: `${ROUTES[lang].alarm}${time.replace(":", "-")}/`, time,
+    title: tpl(pr.alarmTitle, v), description: tpl(pr.alarmDescription, v), h1: tpl(pr.alarmH1, v), lead: tpl(pr.alarmLead, v), extra,
+    searchK: `alarm ${time} ${v.time12} alarm kur uyandır wake up`,
+  });
 }
 
 const svgArt = (inner) => `<svg viewBox="0 0 96 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false">${inner}</svg>`;
@@ -1784,7 +1831,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

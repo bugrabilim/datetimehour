@@ -895,6 +895,80 @@
           "a": "Evet. Süre dolunca sesli uyarı çalar ve bir sonraki aşama (çalışma ya da mola) kendiliğinden başlar. Duraklatmak için Duraklat düğmesine basın."
         }
       ]
+    },
+    "presets": {
+      "timerTitle": "{Name}: online geri sayım | Saat Tarih",
+      "timerDescription": "{Label} geri sayım hazır: Başlat'a basın, süre bitince sesli uyarı çalar. Duraklatma, tam ekran ve paylaşılabilir bağlantı; kurulum gerekmez.",
+      "timerLead": "{label} ayarlı geri sayım hazır. Başlat'a basın; süre bitince sesli uyarı çalar.",
+      "timerFacts": "{label} = {s} saniye = {ms} milisaniye.",
+      "endsAt": "Şimdi başlatırsanız bitiş saati: {time}",
+      "endsAtRun": "Bitiş saati: {time}",
+      "alarmTitle": "{time} alarm kur: online alarm saati | Saat Tarih",
+      "alarmDescription": "Saat {time} için alarm hazır: Ekle'ye basın, sayfa açık kaldığı sürece çalar. Uyku döngülerine göre yatma saati önerileri de bu sayfada.",
+      "alarmH1": "Alarm kur: {time}",
+      "alarmLead": "Saat {time} için alarm hazır. Ekle'ye basın; saat {time} olduğunda sesli uyarı çalar.",
+      "sleepHeading": "Kaçta yatmalı?",
+      "sleepText": "Saat {time} kalkış için 90 dakikalık uyku döngülerine göre yatma saatleri (uykuya dalmak için 15 dakika eklendi):",
+      "sleepRow": "{bed}: {cycles} döngü, {hours} saat uyku",
+      "sleepNote": "Uyku döngüsü kişiden kişiye değişir; bu saatler yaklaşık bir rehberdir.",
+      "durations": {
+        "1": {
+          "label": "1 dakika",
+          "name": "1 dakika zamanlayıcı"
+        },
+        "2": {
+          "label": "2 dakika",
+          "name": "2 dakika zamanlayıcı"
+        },
+        "3": {
+          "label": "3 dakika",
+          "name": "3 dakika zamanlayıcı"
+        },
+        "5": {
+          "label": "5 dakika",
+          "name": "5 dakika zamanlayıcı"
+        },
+        "10": {
+          "label": "10 dakika",
+          "name": "10 dakika zamanlayıcı"
+        },
+        "15": {
+          "label": "15 dakika",
+          "name": "15 dakika zamanlayıcı"
+        },
+        "20": {
+          "label": "20 dakika",
+          "name": "20 dakika zamanlayıcı"
+        },
+        "25": {
+          "label": "25 dakika",
+          "name": "25 dakika zamanlayıcı"
+        },
+        "30": {
+          "label": "30 dakika",
+          "name": "30 dakika zamanlayıcı"
+        },
+        "40": {
+          "label": "40 dakika",
+          "name": "40 dakika zamanlayıcı"
+        },
+        "45": {
+          "label": "45 dakika",
+          "name": "45 dakika zamanlayıcı"
+        },
+        "60": {
+          "label": "1 saat",
+          "name": "1 saat zamanlayıcı"
+        },
+        "90": {
+          "label": "90 dakika",
+          "name": "90 dakika zamanlayıcı"
+        },
+        "120": {
+          "label": "2 saat",
+          "name": "2 saat zamanlayıcı"
+        }
+      }
     }
   },
   "info": {

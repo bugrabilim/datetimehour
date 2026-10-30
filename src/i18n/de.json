@@ -922,6 +922,80 @@
           "a": "Ja. Wenn die Zeit abgelaufen ist, ertönt ein Ton, und die nächste Phase (Arbeit oder Pause) beginnt von selbst. Mit „Pause“ halten Sie an."
         }
       ]
+    },
+    "presets": {
+      "timerTitle": "{Name}: Online-Countdown | Saat Tarih",
+      "timerDescription": "Ein Countdown über {label}, sofort bereit: Start drücken, und wenn die Zeit um ist, ertönt ein Alarm. Pause, Vollbild und teilbarer Link; ohne Installation.",
+      "timerLead": "Ein Countdown über {label} ist bereit. Drücken Sie Start; wenn die Zeit um ist, ertönt ein Alarm.",
+      "timerFacts": "{label} = {s} Sekunden = {ms} Millisekunden.",
+      "endsAt": "Wenn Sie jetzt starten, endet er um {time}",
+      "endsAtRun": "Endet um {time}",
+      "alarmTitle": "Wecker auf {time} stellen: Online-Wecker | Saat Tarih",
+      "alarmDescription": "Ein Wecker für {time} ist bereit: Hinzufügen drücken, er klingelt, solange die Seite geöffnet ist. Schlafenszeit-Vorschläge nach Schlafzyklen stehen ebenfalls hier.",
+      "alarmH1": "Wecker stellen: {time}",
+      "alarmLead": "Ein Wecker für {time} Uhr ist bereit. Drücken Sie Hinzufügen; er klingelt um {time} Uhr.",
+      "sleepHeading": "Wann sollte ich ins Bett gehen?",
+      "sleepText": "Schlafenszeiten für das Aufstehen um {time} Uhr nach 90-minütigen Schlafzyklen (15 Minuten zum Einschlafen eingerechnet):",
+      "sleepRow": "{bed}: {cycles} Zyklen, {hours} Stunden Schlaf",
+      "sleepNote": "Schlafzyklen sind von Mensch zu Mensch verschieden; diese Zeiten sind ein grober Richtwert.",
+      "durations": {
+        "1": {
+          "label": "1 Minute",
+          "name": "1-Minuten-Timer"
+        },
+        "2": {
+          "label": "2 Minuten",
+          "name": "2-Minuten-Timer"
+        },
+        "3": {
+          "label": "3 Minuten",
+          "name": "3-Minuten-Timer"
+        },
+        "5": {
+          "label": "5 Minuten",
+          "name": "5-Minuten-Timer"
+        },
+        "10": {
+          "label": "10 Minuten",
+          "name": "10-Minuten-Timer"
+        },
+        "15": {
+          "label": "15 Minuten",
+          "name": "15-Minuten-Timer"
+        },
+        "20": {
+          "label": "20 Minuten",
+          "name": "20-Minuten-Timer"
+        },
+        "25": {
+          "label": "25 Minuten",
+          "name": "25-Minuten-Timer"
+        },
+        "30": {
+          "label": "30 Minuten",
+          "name": "30-Minuten-Timer"
+        },
+        "40": {
+          "label": "40 Minuten",
+          "name": "40-Minuten-Timer"
+        },
+        "45": {
+          "label": "45 Minuten",
+          "name": "45-Minuten-Timer"
+        },
+        "60": {
+          "label": "1 Stunde",
+          "name": "1-Stunden-Timer"
+        },
+        "90": {
+          "label": "90 Minuten",
+          "name": "90-Minuten-Timer"
+        },
+        "120": {
+          "label": "2 Stunden",
+          "name": "2-Stunden-Timer"
+        }
+      }
     }
   },
   "info": {

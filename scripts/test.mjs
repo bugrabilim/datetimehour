@@ -93,7 +93,13 @@ for (const f of htmlFiles) {
   }
   if (/\/(saat-cevirici|time-converter)\/index\.html$/.test(name)) check(/data-converter/.test(h) && /data-cv-from/.test(h) && /"cities"/.test(h), `${name}: çevirici eksik`);
   if (/\/(toplanti-planlayici|meeting-planner)\/index\.html$/.test(name)) check(/data-planner/.test(h) && /data-pl-table/.test(h) && /"cities"/.test(h), `${name}: planlayıcı eksik`);
-  if (/\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
+  const timerPreset = /\/(geri-sayim|countdown)\/\d+-(dakika|saat|minutes?|hours?)\/index\.html$/.test(name);
+  if (timerPreset) check(/data-cd-fixed="\d+"/.test(h) && /data-cd-endsat/.test(h) && /tools\.js/.test(h) && !/"FAQPage"/.test(h), `${name}: hazır süre sayfası eksik`);
+  if (/\/alarm\/\d\d-\d\d\/index\.html$/.test(name)) {
+    const t = name.match(/(\d\d)-(\d\d)\/index/);
+    check(h.includes(`value="${t[1]}:${t[2]}"`) && /id="sleep-h"/.test(h) && /data-alarm-form/.test(h), `${name}: hazır alarm sayfası eksik`);
+  }
+  if (!timerPreset && /\/(geri-sayim|countdown)\/[a-z0-9-]+\/index\.html$/.test(name)) check(/data-cdp-keys/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h) && /events-table/.test(h), `${name}: geri sayım sayfası eksik`);
   if (/\/(namaz-vakitleri|prayer-times)\/([a-z]+\/)?index\.html$/.test(name)) {
     const hub = /\/(namaz-vakitleri|prayer-times)\/index\.html$/.test(name);
     check(/data-prayer\b/.test(h) && (h.match(/data-pr="/g) || []).length === 6 && /prayer-calc\.js/.test(h) && /prayer\.js/.test(h) && /data-pr-month/.test(h) && /data-imsakiye/.test(h) && /imsakiye\.js/.test(h) && !/class="tool prayer"/.test(h) && !/pr-method-h/.test(h) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: namaz vakitleri yapısı eksik`);
@@ -319,6 +325,7 @@ for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Typ
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
+for (const f of ["geri-sayim/5-dakika", "geri-sayim/1-saat", "en/countdown/5-minutes", "ar/countdown/2-hours", "alarm/07-00", "en/alarm/06-30", "de/alarm/05-15"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `hazır araç sayfası yok: /${f}/`);
 for (const f of ["kible", "en/qibla", "de/qibla", "az/qibla", "ar/qibla"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `kıble sayfası yok: /${f}/`);
 check(ng.split("https://overpass-api.de").length === 3, "nginx.conf: connect-src overpass (yakındaki camiler) iki konumda olmalı");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");
