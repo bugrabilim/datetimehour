@@ -36,11 +36,25 @@ struct NatureVectors: Decodable {
     }
     struct MoonPos: Decodable { let ms: Double; let ra: Double; let dec: Double; let par: Double }
     struct MoonRise: Decodable { let lat: Double; let lon: Double; let start: Int64; let rise: Int64?; let set: Int64? }
+    struct Crescent: Decodable { let conj: Int64; let lat: Double; let lon: Double; let sunset: Int64; let moonset: Int64?; let q: Double?; let cat: String }
     let seasons: [Season]
     let phases: [Phase]
     let moon: [MoonSample]
     let moonPos: [MoonPos]
     let moonRise: [MoonRise]
+    let crescent: [Crescent]
+}
+
+struct MethodVectors: Decodable {
+    struct Case: Decodable {
+        let id: String
+        let method: String
+        let hanafi: Bool
+        let y: Int, m: Int, d: Int
+        let lat: Double, lon: Double, tz: Double
+        let t: [Double?]
+    }
+    let cases: [Case]
 }
 
 struct QiblaVectors: Decodable {

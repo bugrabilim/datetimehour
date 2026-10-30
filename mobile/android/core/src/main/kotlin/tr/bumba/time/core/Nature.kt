@@ -247,4 +247,117 @@ object Nature {
         }
         return MoonRiseSet(rise, set)
     }
+
+    /** Güneş'in yer merkezli konumu (Meeus bölüm 25, düşük duyarlık): sağ açıklık, dik açıklık (derece), uzaklık (AB). */
+    data class SunPosition(val rightAscension: Double, val declination: Double, val distance: Double)
+
+    fun sunPosition(ms: Double): SunPosition {
+        val T = (ms / DAY_MS + UNIX_JD + DELTA_T / 86400 - 2451545) / 36525
+        val L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T
+        val M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T
+        val e = 0.016708634 - 0.000042037 * T
+        val C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * dsin(M) + (0.019993 - 0.000101 * T) * dsin(2 * M) + 0.000289 * dsin(3 * M)
+        val nu = M + C
+        val R = 1.000001018 * (1 - e * e) / (1 + e * dcos(nu))
+        val Om = 125.04 - 1934.136 * T
+        val lam = L0 + C - 0.00569 - 0.00478 * dsin(Om)
+        val eps = 23.4392911 - 0.0130042 * T + 0.00256 * dcos(Om)
+        val ra = StrictMath.atan2(dcos(eps) * dsin(lam), dcos(lam)) / DEG2RAD
+        val dec = StrictMath.asin(dsin(eps) * dsin(lam)) / DEG2RAD
+        return SunPosition(ra, dec, R)
+    }
+
+    data class AltAz(val alt: Double, val az: Double)
+
+    /** Yerel yükseklik ve azimut (derece; azimut kuzeyden saat yönünde), havasız, yer merkezli. */
+    fun altAz(ms: Double, ra: Double, dec: Double, lat: Double, lon: Double): AltAz {
+        val d = ms / DAY_MS + UNIX_JD - 2451545
+        val T = d / 36525
+        val H = 280.46061837 + 360.98564736629 * d + 0.000387933 * T * T + lon - ra
+        val alt = StrictMath.asin(dsin(lat) * dsin(dec) + dcos(lat) * dcos(dec) * dcos(H)) / DEG2RAD
+        val az = StrictMath.atan2(dsin(H), dcos(H) * dsin(lat) - StrictMath.tan(dec * DEG2RAD) * dcos(lat)) / DEG2RAD + 180
+        return AltAz(alt, ((az % 360) + 360) % 360)
+    }
+
+    internal fun sunAltitude(ms: Double, lat: Double, lon: Double): Double {
+        val p = sunPosition(ms)
+        return altAz(ms, p.rightAscension, p.declination, lat, lon).alt + 0.8333
+    }
+
+    /** [start]tan sonraki [span] içinde f'nin ilk + → − geçişi (batış); 10 dk adım, 12 kez ikiye bölme. */
+    internal fun firstSet(f: (Double, Double, Double) -> Double, start: Double, span: Double, lat: Double, lon: Double): Long? {
+        val step = 600000.0
+        var t0 = start
+        var f0 = f(t0, lat, lon)
+        var t1 = start + step
+        while (t1 <= start + span) {
+            val f1 = f(t1, lat, lon)
+            if (f0 >= 0 && f1 < 0) {
+                var a = t0
+                var b = t1
+                repeat(12) {
+                    val m = (a + b) / 2
+                    if (f(m, lat, lon) >= 0) a = m else b = m
+                }
+                return jsRound((a + b) / 2).toLong()
+            }
+            t0 = t1
+            f0 = f1
+            t1 += step
+        }
+        return null
+    }
+
+    /** Hilal görünürlüğünde bir akşam (Yallop q ölçütü; sitedeki `crescent` ile aynı). age saat, lag dakika. */
+    data class CrescentEvening(
+        val sunset: Long, val moonset: Long?, val age: Double, val lag: Double?, val altitude: Double,
+        val elongation: Double, val width: Double?, val q: Double?, val category: String,
+    )
+
+    private val YALLOP = listOf(0.216 to "A", -0.014 to "B", -0.160 to "C", -0.232 to "D", -0.293 to "E")
+
+    private fun separation(a1: Double, d1: Double, a2: Double, d2: Double): Double {
+        val c = dsin(d1) * dsin(d2) + dcos(d1) * dcos(d2) * dcos(a1 - a2)
+        return StrictMath.acos(maxOf(-1.0, minOf(1.0, c))) / DEG2RAD
+    }
+
+    internal fun crescentEvening(conj: Long, ss: Long, lat: Double, lon: Double): CrescentEvening {
+        val sunsetMs = ss.toDouble()
+        val age = (ss - conj).toDouble() / 3600000
+        val moonset = firstSet(::moonAltitude, sunsetMs - 6 * 3600000, 12.0 * 3600000, lat, lon)
+        val ms0 = moonPosition(sunsetMs)
+        val s0 = sunPosition(sunsetMs)
+        val mh = altAz(sunsetMs, ms0.rightAscension, ms0.declination, lat, lon)
+        val alt = mh.alt - ms0.parallax * dcos(mh.alt)
+        val arcl0 = separation(ms0.rightAscension, ms0.declination, s0.rightAscension, s0.declination)
+        val lag = moonset?.let { (it - ss).toDouble() / 60000 }
+        if (age <= 0 || lag == null || lag <= 0) return CrescentEvening(ss, moonset, age, lag, alt, arcl0, null, null, "F")
+        val tb = sunsetMs + (4.0 / 9.0) * lag * 60000
+        val m = moonPosition(tb)
+        val s = sunPosition(tb)
+        val mp = altAz(tb, m.rightAscension, m.declination, lat, lon)
+        val sp = altAz(tb, s.rightAscension, s.declination, lat, lon)
+        val arcv = mp.alt - sp.alt
+        val daz = sp.az - mp.az
+        val altT = mp.alt - m.parallax * dcos(mp.alt)
+        val arclT = StrictMath.acos(maxOf(-1.0, minOf(1.0, dcos(altT - sp.alt) * dcos(daz)))) / DEG2RAD
+        val sd = 0.27245 * m.parallax * 60 * (1 + dsin(altT) * dsin(m.parallax))
+        val w = sd * (1 - dcos(arclT))
+        val q = (arcv - (11.8371 - 6.3226 * w + 0.7319 * w * w - 0.1018 * w * w * w)) / 10
+        val arcl = separation(m.rightAscension, m.declination, s.rightAscension, s.declination)
+        val cat = YALLOP.firstOrNull { q > it.first }?.second ?: "F"
+        return CrescentEvening(ss, moonset, age, lag, alt, arcl, w, q, cat)
+    }
+
+    /** Kavuşum (yeni ay) sonrasındaki ilk [evenings] akşam için hilal görünürlüğü; gün batımı yoksa (kutup) kısalır. */
+    fun crescent(conj: Long, lat: Double, lon: Double, evenings: Int = 3): List<CrescentEvening> {
+        val list = mutableListOf<CrescentEvening>()
+        var t = conj.toDouble()
+        repeat(evenings) {
+            val ss = firstSet(::sunAltitude, t, 30.0 * 3600000, lat, lon) ?: return list
+            list += crescentEvening(conj, ss, lat, lon)
+            t = ss.toDouble() + 3600000
+        }
+        return list
+    }
 }

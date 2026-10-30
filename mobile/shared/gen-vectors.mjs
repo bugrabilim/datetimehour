@@ -50,6 +50,18 @@ for (const pl of places) {
   }
 }
 
+/* Hesap yöntemleri ve Hanefî ikindisi (30 Ekim 2026): birkaç yer, dört tarih, her yöntem iki ikindi seçeneğiyle */
+const methodCases = [];
+for (const pl of places.filter((p) => ["istanbul", "erzurum", "london", "new-york", "tokyo", "reykjavik", "tromso"].includes(p.id))) {
+  for (const [y, m, d] of [[2026, 3, 20], [2026, 6, 21], [2026, 10, 30], [2026, 12, 21]]) {
+    const tz = tzOffset(pl.tz, y, m, d);
+    for (const id of P.METHOD_IDS) for (const hanafi of [false, true]) {
+      const r = P.times(y, m, d, pl.lat, pl.lon, tz, P.methodParams(id, hanafi));
+      methodCases.push({ id: pl.id, method: id, hanafi, y, m, d, lat: pl.lat, lon: pl.lon, tz, t: KEYS.map((k) => num(r[k])) });
+    }
+  }
+}
+
 /* Kıble: yön (derece) ve uzaklık (km) her yer için; kıble saati (yerel ondalık saat) dört tarihte */
 const qiblaCases = [];
 for (const pl of places) {
@@ -96,6 +108,15 @@ for (const [lat, lon, tz] of [[41.01, 28.98, 3], [39.93, 32.86, 3], [51.51, -0.1
   }
 }
 
+// Hilal görünürlüğü (Yallop): 2026–2027 kavuşumları, üç akşam, beş yer
+const crescent = [];
+for (let k = kFor(Date.UTC(2026, 0, 1)) + 1; k <= kFor(Date.UTC(2027, 11, 1)); k += 3) {
+  const conj = N.phaseMs(k, false);
+  for (const [lat, lon] of [[41.01, 28.98], [21.42, 39.83], [-33.87, 151.21], [34.05, -118.24], [64.15, -21.94]]) {
+    for (const e of N.crescent(conj, lat, lon, 3)) crescent.push({ conj, lat, lon, sunset: e.sunset, moonset: e.moonset, q: num(e.q), cat: e.cat });
+  }
+}
+
 /* Her durum tek satır: farklar okunur kalır */
 const lines = (arr) => "[\n" + arr.map((o) => "    " + JSON.stringify(o)).join(",\n") + "\n  ]";
 const files = {
@@ -104,6 +125,13 @@ const files = {
   "note": "t: yerel saat, ondalık saat (fajr, sunrise, dhuhr, asr, maghrib, isha); null = vakit oluşmuyor. tz: o gün UTC farkı (saat).",
   "keys": ${JSON.stringify(KEYS)},
   "cases": ${lines(prayerCases)}
+}
+`,
+  "prayer-methods.json": `{
+  "source": "src/js/prayer-calc.js (methodParams)",
+  "note": "Hesap yöntemleri: method kimliği, hanafi = ikindi gölge katsayısı 2. t: yerel ondalık saat (fajr, sunrise, dhuhr, asr, maghrib, isha), null = oluşmuyor.",
+  "methods": ${JSON.stringify(P.METHODS)},
+  "cases": ${lines(methodCases)}
 }
 `,
   "qibla.json": `{
@@ -123,12 +151,13 @@ const files = {
 `,
   "nature.json": `{
   "source": "src/js/nature-calc.js",
-  "note": "Zamanlar UTC milisaniye. seasons: yılın 4 mevsim anı; phases: k için yeni ay ve dolunay; moon: o andaki Ay durumu; moonPos: Ay'ın sağ açıklığı, dik açıklığı, paralaksı (derece); moonRise: start'tan 24 saat içinde ilk doğuş ve batış (null = yok).",
+  "note": "Zamanlar UTC milisaniye. seasons: yılın 4 mevsim anı; phases: k için yeni ay ve dolunay; moon: o andaki Ay durumu; moonPos: Ay'ın sağ açıklığı, dik açıklığı, paralaksı (derece); moonRise: start'tan 24 saat içinde ilk doğuş ve batış (null = yok); crescent: conj (yeni ay) sonrası akşamlarda gün batımı, Ay batımı (null = yok), Yallop q (null = hesaplanmadı) ve sınıf.",
   "seasons": ${lines(seasons)},
   "phases": ${lines(phases)},
   "moon": ${lines(moon)},
   "moonPos": ${lines(moonPos)},
-  "moonRise": ${lines(moonRise)}
+  "moonRise": ${lines(moonRise)},
+  "crescent": ${lines(crescent)}
 }
 `,
 };
@@ -146,4 +175,4 @@ if (stale.length) {
   console.error(`Güncel değil: ${stale.join(", ")}. Çalıştırın: node mobile/shared/gen-vectors.mjs`);
   process.exit(1);
 }
-console.log(check ? "Test verisi güncel." : `Yazıldı: ${Object.keys(files).join(", ")} (${prayerCases.length} namaz, ${qiblaCases.length} kıble, ${lightCases.length} Güneş yüksekliği, ${seasons.length} yıl, ${phases.length} ay evresi, ${moon.length} Ay örneği, ${moonRise.length} Ay doğuş/batış)`);
+console.log(check ? "Test verisi güncel." : `Yazıldı: ${Object.keys(files).join(", ")} (${prayerCases.length} namaz, ${methodCases.length} yöntem, ${crescent.length} hilal, ${qiblaCases.length} kıble, ${lightCases.length} Güneş yüksekliği, ${seasons.length} yıl, ${phases.length} ay evresi, ${moon.length} Ay örneği, ${moonRise.length} Ay doğuş/batış)`);

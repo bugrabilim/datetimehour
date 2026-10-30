@@ -41,6 +41,11 @@ public enum PrayerTimes {
     public struct Adjustments: Sendable, Equatable {
         public var fajr = 0.0, sunrise = -7.1, dhuhr = 5.1, asr = 4.5, maghrib = 7.9, isha = 0.9
         public init() {}
+        public static let zero: Adjustments = {
+            var a = Adjustments()
+            a.sunrise = 0; a.dhuhr = 0; a.asr = 0; a.maghrib = 0; a.isha = 0
+            return a
+        }()
     }
 
     public struct Parameters: Sendable, Equatable {
@@ -49,11 +54,53 @@ public enum PrayerTimes {
         public var sunriseAngle = 0.833
         public var sunsetAngle = 0.833
         public var asrFactor = 1.0
+        /// Yatsı akşamdan bu kadar dakika sonra (0 = açıyla; Ümmü'l-Kura, Körfez, Katar)
+        public var ishaMinutes = 0.0
         public var adjustments = Adjustments()
         public init() {}
         /// Diyanet ile uyumlu varsayılanlar.
         public static let diyanet = Parameters()
+
+        /// Hesap yöntemi ve ikindi seçimi (sitedeki `methodParams` ile aynı); bilinmeyen yöntem Diyanet sayılır.
+        public static func method(_ id: String, hanafi: Bool) -> Parameters {
+            guard let m = PrayerTimes.methods[id], id != "diyanet" else {
+                var p = Parameters()
+                if hanafi { p.asrFactor = 2 }
+                return p
+            }
+            var p = Parameters()
+            p.fajrAngle = m.fajr
+            p.ishaAngle = m.isha
+            p.ishaMinutes = m.ishaMinutes
+            p.sunsetAngle = m.maghrib
+            p.asrFactor = hanafi ? 2 : 1
+            p.adjustments = .zero
+            return p
+        }
     }
+
+    /// Hesap yöntemleri (sitedeki METHODS ile aynı sıra ve değerler). Diyanet varsayılandır; Türkiye'de resmî vakit odur.
+    public struct Method: Sendable, Equatable {
+        public let fajr: Double, isha: Double, ishaMinutes: Double, maghrib: Double
+    }
+    public static let methodIDs = ["diyanet", "mwl", "isna", "egypt", "makkah", "karachi", "tehran", "jafari",
+                                   "gulf", "kuwait", "qatar", "singapore", "france", "russia"]
+    public static let methods: [String: Method] = [
+        "diyanet": Method(fajr: 18, isha: 17, ishaMinutes: 0, maghrib: 0.833),
+        "mwl": Method(fajr: 18, isha: 17, ishaMinutes: 0, maghrib: 0.833),
+        "isna": Method(fajr: 15, isha: 15, ishaMinutes: 0, maghrib: 0.833),
+        "egypt": Method(fajr: 19.5, isha: 17.5, ishaMinutes: 0, maghrib: 0.833),
+        "makkah": Method(fajr: 18.5, isha: 0, ishaMinutes: 90, maghrib: 0.833),
+        "karachi": Method(fajr: 18, isha: 18, ishaMinutes: 0, maghrib: 0.833),
+        "tehran": Method(fajr: 17.7, isha: 14, ishaMinutes: 0, maghrib: 4.5),
+        "jafari": Method(fajr: 16, isha: 14, ishaMinutes: 0, maghrib: 4),
+        "gulf": Method(fajr: 19.5, isha: 0, ishaMinutes: 90, maghrib: 0.833),
+        "kuwait": Method(fajr: 18, isha: 17.5, ishaMinutes: 0, maghrib: 0.833),
+        "qatar": Method(fajr: 18, isha: 0, ishaMinutes: 90, maghrib: 0.833),
+        "singapore": Method(fajr: 20, isha: 18, ishaMinutes: 0, maghrib: 0.833),
+        "france": Method(fajr: 12, isha: 12, ishaMinutes: 0, maghrib: 0.833),
+        "russia": Method(fajr: 16, isha: 15, ishaMinutes: 0, maghrib: 0.833),
+    ]
 
     /// Bir gün için vakitler.
     /// - Parameter utcOffset: o gün UTC'ye göre saat farkı (Türkiye için 3).
@@ -90,6 +137,8 @@ public enum PrayerTimes {
             if fajr.isNaN { fajr = sunrise - night / 7 }
             if isha.isNaN { isha = maghrib + night / 7 }
         }
+        // Yatsı akşamdan sabit dakika sonra (Ümmü'l-Kura, Körfez, Katar)
+        if P.ishaMinutes != 0 { isha = maghrib + P.ishaMinutes / 60 }
         let a = P.adjustments
         fajr += a.fajr / 60; sunrise += a.sunrise / 60; dhuhr += a.dhuhr / 60
         asr += a.asr / 60; maghrib += a.maghrib / 60; isha += a.isha / 60

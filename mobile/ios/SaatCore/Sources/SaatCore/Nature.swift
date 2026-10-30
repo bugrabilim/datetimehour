@@ -228,6 +228,129 @@ public enum Nature {
     }
 }
 
+public extension Nature {
+    /// Güneş'in yer merkezli konumu (Meeus bölüm 25, düşük duyarlık): sağ açıklık, dik açıklık (derece), uzaklık (AB).
+    struct SunPosition: Sendable, Equatable {
+        public let rightAscension: Double
+        public let declination: Double
+        public let distance: Double
+    }
+
+    static func sunPosition(atMilliseconds ms: Double) -> SunPosition {
+        let T = (ms / dayMs + unixJD + deltaT / 86400 - 2451545) / 36525
+        let L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T
+        let M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T
+        let e = 0.016708634 - 0.000042037 * T
+        let C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * dsin(M) + (0.019993 - 0.000101 * T) * dsin(2 * M) + 0.000289 * dsin(3 * M)
+        let nu = M + C, R = 1.000001018 * (1 - e * e) / (1 + e * dcos(nu))
+        let Om = 125.04 - 1934.136 * T, lam = L0 + C - 0.00569 - 0.00478 * dsin(Om)
+        let eps = 23.4392911 - 0.0130042 * T + 0.00256 * dcos(Om)
+        let ra = atan2(dcos(eps) * dsin(lam), dcos(lam)) / deg2rad
+        let dec = asin(dsin(eps) * dsin(lam)) / deg2rad
+        return SunPosition(rightAscension: ra, declination: dec, distance: R)
+    }
+
+    /// Yerel yükseklik ve azimut (derece; azimut kuzeyden saat yönünde), havasız, yer merkezli.
+    static func altAz(_ ms: Double, ra: Double, dec: Double, lat: Double, lon: Double) -> (alt: Double, az: Double) {
+        let d = ms / dayMs + unixJD - 2451545, T = d / 36525
+        let H = 280.46061837 + 360.98564736629 * d + 0.000387933 * T * T + lon - ra
+        let alt = asin(dsin(lat) * dsin(dec) + dcos(lat) * dcos(dec) * dcos(H)) / deg2rad
+        let az = atan2(dsin(H), dcos(H) * dsin(lat) - tan(dec * deg2rad) * dcos(lat)) / deg2rad + 180
+        return (alt, (az.truncatingRemainder(dividingBy: 360) + 360).truncatingRemainder(dividingBy: 360))
+    }
+
+    internal static func sunAltitude(_ ms: Double, lat: Double, lon: Double) -> Double {
+        let p = sunPosition(atMilliseconds: ms)
+        return altAz(ms, ra: p.rightAscension, dec: p.declination, lat: lat, lon: lon).alt + 0.8333
+    }
+
+    /// `start`tan sonraki `span` içinde f'nin ilk + → − geçişi (batış); 10 dk adım, 12 kez ikiye bölme.
+    internal static func firstSet(_ f: (Double, Double, Double) -> Double, start: Double, span: Double, lat: Double, lon: Double) -> Int64? {
+        let step = 600000.0
+        var t0 = start, f0 = f(t0, lat, lon)
+        var t1 = start + step
+        while t1 <= start + span {
+            let f1 = f(t1, lat, lon)
+            if f0 >= 0 && f1 < 0 {
+                var a = t0, b = t1
+                for _ in 0..<12 {
+                    let m = (a + b) / 2
+                    if f(m, lat, lon) >= 0 { a = m } else { b = m }
+                }
+                return Int64(jsRound((a + b) / 2))
+            }
+            t0 = t1
+            f0 = f1
+            t1 += step
+        }
+        return nil
+    }
+
+    /// Hilal görünürlüğünde bir akşam (Yallop q ölçütü; sitedeki `crescent` ile aynı).
+    struct CrescentEvening: Sendable, Equatable {
+        public let sunset: Int64
+        public let moonset: Int64?
+        /// Gün batımında Ay'ın yaşı (saat; kavuşumdan beri)
+        public let age: Double
+        /// Ay batımı − gün batımı (dakika)
+        public let lag: Double?
+        /// Gün batımında Ay'ın yerel yüksekliği (derece)
+        public let altitude: Double
+        /// Güneş–Ay uzanımı (derece)
+        public let elongation: Double
+        public let width: Double?
+        public let q: Double?
+        /// A–F
+        public let category: String
+    }
+
+    static let yallop: [(Double, String)] = [(0.216, "A"), (-0.014, "B"), (-0.160, "C"), (-0.232, "D"), (-0.293, "E")]
+
+    internal static func separation(_ a1: Double, _ d1: Double, _ a2: Double, _ d2: Double) -> Double {
+        let c = dsin(d1) * dsin(d2) + dcos(d1) * dcos(d2) * dcos(a1 - a2)
+        return acos(max(-1, min(1, c))) / deg2rad
+    }
+
+    internal static func crescentEvening(conjunction conj: Int64, sunset ss: Int64, lat: Double, lon: Double) -> CrescentEvening {
+        let sunsetMs = Double(ss)
+        let age = Double(ss - conj) / 3600000
+        let moonset = firstSet({ moonAltitude($0, lat: $1, lon: $2) }, start: sunsetMs - 6 * 3600000, span: 12 * 3600000, lat: lat, lon: lon)
+        let ms0 = moonPosition(atMilliseconds: sunsetMs), s0 = sunPosition(atMilliseconds: sunsetMs)
+        let mh = altAz(sunsetMs, ra: ms0.rightAscension, dec: ms0.declination, lat: lat, lon: lon)
+        let alt = mh.alt - ms0.parallax * dcos(mh.alt)
+        var arcl = separation(ms0.rightAscension, ms0.declination, s0.rightAscension, s0.declination)
+        let lag = moonset.map { Double($0 - ss) / 60000 }
+        guard age > 0, let lag, lag > 0 else {
+            return CrescentEvening(sunset: ss, moonset: moonset, age: age, lag: lag, altitude: alt, elongation: arcl, width: nil, q: nil, category: "F")
+        }
+        let tb = sunsetMs + (4.0 / 9.0) * lag * 60000
+        let m = moonPosition(atMilliseconds: tb), s = sunPosition(atMilliseconds: tb)
+        let mp = altAz(tb, ra: m.rightAscension, dec: m.declination, lat: lat, lon: lon)
+        let sp = altAz(tb, ra: s.rightAscension, dec: s.declination, lat: lat, lon: lon)
+        let arcv = mp.alt - sp.alt, daz = sp.az - mp.az
+        let altT = mp.alt - m.parallax * dcos(mp.alt)
+        let arclT = acos(max(-1, min(1, dcos(altT - sp.alt) * dcos(daz)))) / deg2rad
+        let sd = 0.27245 * m.parallax * 60 * (1 + dsin(altT) * dsin(m.parallax))
+        let w = sd * (1 - dcos(arclT))
+        let q = (arcv - (11.8371 - 6.3226 * w + 0.7319 * w * w - 0.1018 * w * w * w)) / 10
+        arcl = separation(m.rightAscension, m.declination, s.rightAscension, s.declination)
+        let cat = yallop.first { q > $0.0 }?.1 ?? "F"
+        return CrescentEvening(sunset: ss, moonset: moonset, age: age, lag: lag, altitude: alt, elongation: arcl, width: w, q: q, category: cat)
+    }
+
+    /// Kavuşum (yeni ay) sonrasındaki ilk `evenings` akşam için hilal görünürlüğü; gün batımı yoksa (kutup) kısalır.
+    static func crescent(conjunction conj: Int64, latitude lat: Double, longitude lon: Double, evenings n: Int = 3) -> [CrescentEvening] {
+        var list: [CrescentEvening] = []
+        var t = Double(conj)
+        for _ in 0..<n {
+            guard let ss = firstSet({ sunAltitude($0, lat: $1, lon: $2) }, start: t, span: 30 * 3600000, lat: lat, lon: lon) else { break }
+            list.append(crescentEvening(conjunction: conj, sunset: ss, lat: lat, lon: lon))
+            t = Double(ss) + 3600000
+        }
+        return list
+    }
+}
+
 public extension Date {
     /// UTC milisaniyeden tarih.
     init(unixMilliseconds ms: Int64) { self.init(timeIntervalSince1970: Double(ms) / 1000) }

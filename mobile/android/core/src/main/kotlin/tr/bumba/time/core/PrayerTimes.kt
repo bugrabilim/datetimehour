@@ -52,7 +52,11 @@ object PrayerTimes {
         val asr: Double = 4.5,
         val maghrib: Double = 7.9,
         val isha: Double = 0.9,
-    )
+    ) {
+        companion object {
+            val ZERO = Adjustments(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+        }
+    }
 
     data class Parameters(
         val fajrAngle: Double = 18.0,
@@ -60,13 +64,46 @@ object PrayerTimes {
         val sunriseAngle: Double = 0.833,
         val sunsetAngle: Double = 0.833,
         val asrFactor: Double = 1.0,
+        /** Yatsı akşamdan bu kadar dakika sonra (0 = açıyla; Ümmü'l-Kura, Körfez, Katar) */
+        val ishaMinutes: Double = 0.0,
         val adjustments: Adjustments = Adjustments(),
     ) {
         companion object {
             /** Diyanet ile uyumlu varsayılanlar. */
             val DIYANET = Parameters()
+
+            /** Hesap yöntemi ve ikindi seçimi (sitedeki `methodParams` ile aynı); bilinmeyen yöntem Diyanet sayılır. */
+            fun method(id: String, hanafi: Boolean): Parameters {
+                val m = METHODS[id]
+                if (m == null || id == "diyanet") return if (hanafi) Parameters(asrFactor = 2.0) else DIYANET
+                return Parameters(
+                    fajrAngle = m.fajr, ishaAngle = m.isha, sunsetAngle = m.maghrib, ishaMinutes = m.ishaMinutes,
+                    asrFactor = if (hanafi) 2.0 else 1.0, adjustments = Adjustments.ZERO,
+                )
+            }
         }
     }
+
+    /** Hesap yöntemleri (sitedeki METHODS ile aynı sıra ve değerler). Diyanet varsayılandır; Türkiye'de resmî vakit odur. */
+    data class Method(val fajr: Double, val isha: Double, val ishaMinutes: Double = 0.0, val maghrib: Double = 0.833)
+
+    val METHOD_IDS = listOf("diyanet", "mwl", "isna", "egypt", "makkah", "karachi", "tehran", "jafari", "gulf", "kuwait", "qatar", "singapore", "france", "russia")
+    val METHODS: Map<String, Method> = mapOf(
+        "diyanet" to Method(18.0, 17.0),
+        "mwl" to Method(18.0, 17.0),
+        "isna" to Method(15.0, 15.0),
+        "egypt" to Method(19.5, 17.5),
+        "makkah" to Method(18.5, 0.0, ishaMinutes = 90.0),
+        "karachi" to Method(18.0, 18.0),
+        "tehran" to Method(17.7, 14.0, maghrib = 4.5),
+        "jafari" to Method(16.0, 14.0, maghrib = 4.0),
+        "gulf" to Method(19.5, 0.0, ishaMinutes = 90.0),
+        "kuwait" to Method(18.0, 17.5),
+        "qatar" to Method(18.0, 0.0, ishaMinutes = 90.0),
+        "singapore" to Method(20.0, 18.0),
+        "france" to Method(12.0, 12.0),
+        "russia" to Method(16.0, 15.0),
+    )
 
     internal data class SunPosition(val decl: Double, val eqt: Double)
 
@@ -119,6 +156,8 @@ object PrayerTimes {
             if (fajr.isNaN()) fajr = sunrise - night / 7
             if (isha.isNaN()) isha = maghrib + night / 7
         }
+        // Yatsı akşamdan sabit dakika sonra (Ümmü'l-Kura, Körfez, Katar)
+        if (p.ishaMinutes != 0.0) isha = maghrib + p.ishaMinutes / 60
         val a = p.adjustments
         fajr += a.fajr / 60; sunrise += a.sunrise / 60; dhuhr += a.dhuhr / 60
         asr += a.asr / 60; maghrib += a.maghrib / 60; isha += a.isha / 60

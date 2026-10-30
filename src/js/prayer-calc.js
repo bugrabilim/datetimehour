@@ -70,6 +70,8 @@
       if (isNaN(r.fajr)) r.fajr = r.sunrise - night / 7;
       if (isNaN(r.isha)) r.isha = r.maghrib + night / 7;
     }
+    // Yatsı akşamdan sabit dakika sonra (Ümmü'l-Kura, Körfez, Katar)
+    if (P.ishaMin) r.isha = r.maghrib + P.ishaMin / 60;
     var a = P.adj;
     r.fajr += a.fajr / 60; r.sunrise += a.sunrise / 60; r.dhuhr += a.dhuhr / 60;
     r.asr += a.asr / 60; r.maghrib += a.maghrib / 60; r.isha += a.isha / 60;
@@ -146,7 +148,39 @@
     return { israk: [r.sunrise, r.sunrise + k], istiva: [r.dhuhr - k, r.dhuhr], isfirar: [r.maghrib - k, r.maghrib] };
   }
 
-  var api = { times: times, PARAMS: PARAMS, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN };
+  /* Hesap yöntemleri (30 Ekim 2026): Diyanet varsayılandır ve Türkiye'de resmî vakit odur. Diğerleri yaygın
+     kurumların açılarıdır (PrayTimes.org ve kurumların yayımladığı değerler): imsak ve yatsı açısı, yatsı için akşamdan
+     sonra sabit dakika (ishaMin), akşam için açı (maghrib; Caferî yöntemleri). Diyanet dışındakilerde dakika düzeltmesi
+     yoktur. İkindi: gölge katsayısı 1 (asr-ı evvel; Şafiî, Mâlikî, Hanbelî ve Diyanet) ya da 2 (asr-ı sânî; Hanefî). */
+  var METHODS = {
+    diyanet: { fajr: 18, isha: 17, adj: PARAMS.adj },
+    mwl: { fajr: 18, isha: 17 },
+    isna: { fajr: 15, isha: 15 },
+    egypt: { fajr: 19.5, isha: 17.5 },
+    makkah: { fajr: 18.5, ishaMin: 90 },
+    karachi: { fajr: 18, isha: 18 },
+    tehran: { fajr: 17.7, isha: 14, maghrib: 4.5 },
+    jafari: { fajr: 16, isha: 14, maghrib: 4 },
+    gulf: { fajr: 19.5, ishaMin: 90 },
+    kuwait: { fajr: 18, isha: 17.5 },
+    qatar: { fajr: 18, ishaMin: 90 },
+    singapore: { fajr: 20, isha: 18 },
+    france: { fajr: 12, isha: 12 },
+    russia: { fajr: 16, isha: 15 }
+  };
+  var METHOD_IDS = Object.keys(METHODS);
+  var ZERO_ADJ = { fajr: 0, sunrise: 0, dhuhr: 0, asr: 0, maghrib: 0, isha: 0 };
+  /** Yöntem ve ikindi seçiminden times() parametresi; bilinmeyen yöntem Diyanet sayılır. */
+  function methodParams(id, hanafi) {
+    if (id === "diyanet" || !METHODS[id]) { if (!hanafi) return PARAMS; id = "diyanet"; }
+    var m = METHODS[id];
+    return {
+      fajr: m.fajr, isha: m.isha || 0, ishaMin: m.ishaMin || 0, sunrise: 0.833, sunset: m.maghrib || 0.833,
+      asrFactor: hanafi ? 2 : 1, adj: m.adj || ZERO_ADJ
+    };
+  }
+
+  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthPrayer = api;
 })(typeof window !== "undefined" ? window : globalThis);
