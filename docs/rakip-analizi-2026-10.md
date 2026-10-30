@@ -16,66 +16,125 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 Çaba: K küçük (bir tur), O orta, B büyük.
 
-## 1. Birleşik tablo (öncelik sırasıyla)
+## Tek liste (30 Ekim 2026'dan beri; sahibin isteği: "tek liste olarak tut, her işe bir numara ver, K-O-B sırala, bitenler de dursun")
 
-**Durum (30 Ekim 2026, ikinci tur):** "kısmen" olup çabası K ya da O olan maddeler yapıldı (3, 5, 10, 11, 12, 14, 15, 19, 23, 24, 26); "Bizde" sütununda **yapıldı** yazar. Canlıya basma ve yeni iOS yapısı sahibin talimatıyla. Üçüncü tur (30 Ekim 2026, sahibin isteği): #8 kıble ve yakındaki camiler (uygulamalar + site). Dördüncü tur ("web olanların tamamı"): #16 (site kısmı), #20, #21, #22, #25, #27. Beşinci tur ("K olan mobil maddeleri yap: 1, 4, 9"): #1, #4, #9. Altıncı tur ("O olan mobil maddeleri de yap: 2, 6, 7"): #2, #6, #7. Yedinci tur ("kalan mobil maddeleri de yap: 13, 16, 17, 18"): #13, #16 (uygulamalar), #17, #18. Sekizinci tur ("kalan eksikleri de yap: 1, 13, 16; 'yeniden değerlendiririz' dediğin başlıkları da yapalım"): #1 uyku zamanlayıcısı, #13 rozeti, #16 yapılacaklar listesi ve aşağıdaki "bilerek yok" başlıklarının hepsi.
+Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 36 bitti, 64 açık, 7 kararla yapılmayacak. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
 
-| # | Özellik | Örnek rakipler | Nerede | Bizde | Çaba | Not |
-|---|---|---|---|---|---|---|
-| 1 | Gece / yatak başı modu: kırmızı-loş görünüm, gün batımında kendiliğinden kararma, dokunarak karartma, OLED piksel kaydırma, uyku zamanlayıcısı | iOS StandBy, Google Saat, Night Clock, Fliqlo, Big Clock HD | iOS, Android | **yapıldı** (tam ekran saatte siyah zemin, kısık kırmızı, düşük parlaklık, piksel kaydırma; açık/kapalı/Güneş batınca; uyku zamanlayıcısı 15–90 dk) | K | Tam ekran ve ekranı açık tutma hazır; kategorideki en büyük boşluk |
-| 2 | Live Activity / Dynamic Island / kilit ekranı: zamanlayıcı, pomodoro, kronometre, sıradaki vakte kalan, iftar | Apple Saat, Timer+, Vakit, Pillars, Flip Clock - Pomodoro | iOS | **yapıldı** (iOS: zamanlayıcılar, pomodoro, kronometre, isteğe bağlı sıradaki vakit [Ramazan'da iftar/sahur] kilit ekranında ve Dynamic Island'da; Android: aynısı kalıcı bildirimle) | O | "Sıradaki vakit" Live Activity'si farklılaştırıcı |
-| 3 | Alarmın temel ayarları: gün seçimi, erteleme süresi ve sayısı, ses seçimi (müzik, uygulama sesleri), kademeli ses, titreşim, sonraki alarmı atla | Apple Saat (iOS 26), Alarm Clock Xtreme, Simple Alarm Clock, Samsung Saat | iOS, Android | **yapıldı** (gün seçimi, erteleme süresi ve sınırı, atla, kademeli ses; Android'de ses ve titreşim) | O | Kategorideki en zayıf yanımız |
-| 4 | Tatil ve arife bilen alarm ("bayramda çalma") | AMdroid | Android | **yapıldı** (tekrarlayan alarmda "Resmî tatillerde çalmasın"; yarım gün arifelerde çalar) | K | Türkiye tatil verimiz hazır; rakiplerde neredeyse yok |
-| 5 | Flip (çevirmeli kart) saat modeli | Fliqlo, Flip Clock: Digital Desk Widget, Zen Flip Clock | iOS, Android, masaüstü | **yapıldı** (sahnede 20. model, uygulamalarda) | K–O | Kategorinin adı; sahneye ve uygulamalara taşınabilir |
-| 6 | Apple Watch ve Wear OS (komplikasyon, bilekten erteleme) | Vakit, Vakitler, NV-Codeida, Fazilet, Timer+, Google Saat | watchOS, Wear OS | **yapıldı** (Apple Watch uygulaması + komplikasyonlar [sıradaki vakit, hicri tarih], yer iPhone'dan; Wear OS uygulaması + kutucuk + iki komplikasyon; erteleme bildirimden) | B | Yol haritası 6. adım; Türk namaz rakiplerinin çoğunda var |
-| 7 | Siri / Kısayollar (App Intents): alarm/zamanlayıcı kur, "saati tam ekran aç"; şarja takınca açılma otomasyonu | Apple Saat, Timer+, Vakitler, Flip Clock | iOS (Android: Asistan, Daydream) | **yapıldı** (Siri/Kısayollar: zamanlayıcı, alarm, tam ekran saat [gece modu ile şarj otomasyonu], sıradaki vakit, tarih; Android: simge kısayolları, SET_TIMER/SET_ALARM, ekran koruyucu) | O | Saat uygulaması (6. adım) öncesi ucuz ilk adım |
-| 8 | Kıble pusulası ve yakındaki camiler | İncelenen 13 namaz uygulamasının hepsi (e-Diyanet, Muslim Pro, Vakit…) | iOS, Android | **yapıldı** (uygulamalarda pusula, açı, uzaklık, kıble saati [Diyanet ±1 dk], yakındaki camiler [iOS MapKit, Android OSM Overpass]; sitede `/kible/` beş dilde, camiler izinle) | O | Dini metin değil, yön hesabı |
-| 9 | Hicri tarih (widget ve kilit ekranında) | Muslim Pro, Athan, e-Diyanet, Fazilet | iOS, Android | **yapıldı** (Diyanet'e hizalı tablo; saat ekranı alanı, takvim, Vakitler, widget, iOS kilit ekranı) | K | Diyanet tarihinden bir gün kayabilir, sayfada uyarı gerekir |
-| 10 | Ay doğuş/batış, Ay takvimi (aylık ızgara), Ay evresi widget'ı, tutulmalar | Lunar, LunarPhase, Lumos, timeanddate | iOS, web | **yapıldı** (doğuş/batış USNO ±1 dk, Ay takvimi, Ay widget'ı, NASA tutulma listesi) | O | Meeus çekirdeği genişletilir; "ay tutulması ne zaman" SEO |
-| 11 | Saniyeli ve StandBy'a uygun widget'lar; dünya saati widget'ı; geri sayım widget'ı | Flip Clock widgets, World Clock Widget, Countdown Widget | iOS | **yapıldı** (saniyeli, dünya saatleri, geri sayım widget'ları; Android analogda saniye ibresi) | O | |
-| 12 | Aynı anda birden çok, adlı zamanlayıcı; aralık (HIIT/Tabata) rutinleri; sesli duyurular | Apple Saat, Timer+, Seconds, MultiTimer | iOS, Android | **yapıldı** (adlı zamanlayıcılar, aralık antrenmanı, sesli duyuru; aralık duyuruları ekran kilitliyken de) | O | Sesli duyuru motoru vakit bildirimlerinde var |
-| 13 | Kapatma görevi (matematik, sallama, adım, QR) ve uyanma kontrolü | Alarmy (50M+), Challenges, Alarm Clock Xtreme | iOS, Android | **yapıldı** (matematik 3 zorluk, sallama, adım, kayıtlı QR/barkod; uyanma denetimi 5 dk + 2 dk; Android'de alarm görev yapılana kadar susmaz, iOS'ta AlarmKit Durdur uygulamayı açar ve görev yapılmazsa 1 dk sonra yeniden çalar) | O | iOS'ta AlarmKit'in Durdur düğmesi her zaman susturur: yeniden çalma ile çözüldü; görevle kapatınca "Uyanık" rozeti |
-| 14 | Alarmdan sonra "günaydın" kartı (hava, sıradaki vakit, bugünün özel günü, takvim) | Alarmy, Alarm Clock Xtreme, Google Saat, Samsung Saat | iOS, Android | **yapıldı** (günaydın kartı) | K | |
-| 15 | Kişisel geri sayım listesi (yinelenen yıllık olay, hatırlatma, emoji/fotoğraf); takvim etkinliğinden geri sayım | Countdown (Sevenlogics), Time Until (Türk), Dreamdays | iOS | **yapıldı** (liste, emoji, fotoğraf, yıllık, hatırlatma, takvimden seçme) | O | Rakipler yıllık 14,99 $'a satıyor |
-| 16 | Odak istatistikleri ve geçmiş (cihazda), görev listesi, beyaz gürültü | Forest, Focus To-Do, Be Focused, Pomofocus | iOS, Android, web | **yapıldı** (site ve uygulamalar: görev adı, bugün/7 gün/toplam, grafik, en çok çalışılan görevler, arka plan gürültüsü; uygulamada ekran kilitliyken de) | O | Uygulamalarda yapılacaklar listesi de var (biten tur şu anki göreve yazılır); sitede görev adı |
-| 17 | Uyku programı / yatma vakti hatırlatması, uyku sesleri, gün doğumu alarmı | Apple Saat + Sağlık, Google Saat, Alarmy | iOS, Android | **yapıldı** (uyku planı, yatma hatırlatması, 90 dk döngü önerileri, uyku sesleri ve kapanma süresi, alarmda gün doğumu ışığı tam ekran saatte) | O | Uyku takibi (mikrofon) kapsam dışı bırakıldı |
-| 18 | iPad (ve Mac) desteği | Fliqlo, Vakit, Fazilet, Zen Flip Clock | iPadOS, macOS | **yapıldı** (iPhone + iPad; iPad'de okunur genişlik, büyük saat; Mac'te "iPad için tasarlandı"; sıradaki sürümle) | O | iPad desteği bir kez yayımlanınca geri alınamaz; sahibin kararı: kalsın (30 Ekim 2026) |
-| 19 | İlçe bazında namaz vakti; birden çok kayıtlı konum; dünya şehirleri | NV-Codeida, Vakitler, KuKa, Fazilet, Athan | iOS, web | **yapıldı** (uygulamalarda 973 ilçe, GeoNames; kayıtlı yerler; sitede 915 ilçe sayfası, yalnız Türkçe) | O | |
-| 20 | Site: hazır süreli zamanlayıcı ve alarm sayfaları ("5 dakika zamanlayıcı", "07:00 alarm kur") | vclock, e.ggtimer, onlinealarmkur, onlinesaat.web.tr | web | **yapıldı** (14 süre, 25 alarm saati, beş dilde; uyku döngüsü önerileri) | K | Uzun kuyruk SEO, derlemede statik üretim |
-| 21 | Site: ICS takvim aktarma (Türkiye tatilleri, arife, okul) ve PDF takvim | worldtimebuddy, everytimezone, timeanddate | web | **yapıldı** (beş dilde iki .ics akışı: indirme, abonelik, Google Takvim; A4 tek sayfa yazdır/PDF) | K–O | Türkiye tatil ICS'i veren rakip görülmedi; 2027 takvim aramaları Kasım–Ocak |
-| 22 | Site: köprü tatil / izin planlayıcı ("kaç gün izinle kaç gün tatil") | tatilsepeti (tablo), haber siteleri (makale) | web | **yapıldı** (`/kopru-tatil/`, 2026–2031, yıl ve izin seçimi, beş dilde) | K | Etkileşimli araç yapan rakip yok |
-| 23 | Site: eksik özel gün geri sayımları (Anneler, Babalar, Sevgililer Günü, okul kapanışı) | saat-kac.tr, canlisaat.com, vclock | web | **yapıldı** (Sevgililer, Kadınlar, Anneler, Babalar, Öğretmenler Günü) | K | |
-| 24 | Site: toplantı planlayıcı ve çeviricide paylaşılabilir bağlantı + takvime ekle | worldtimebuddy, time.is/compare, everytimezone | web | **yapıldı** (bağlantı, .ics, Google Takvim) | K | |
-| 25 | Site: dünya yaz saati değişim listesi; kısaltma/dönüşüm sayfaları (UTC, CET, "EST to CET"); Unix saati | time.is, worldtimeserver, 24timezones | web | **yapıldı** (25 kısaltma sayfası + fark tabloları, 13 bölgede yaz saati değişimleri, Unix çevirici; beş dilde) | K–O | EN/DE trafiği; uygulamada yaz saati bildirimi bu turda eklendi |
-| 26 | Görünüm: yazı tipi, fotoğraf/hareketli arka plan, hareketli hava sahneleri | Flip Clock - Digital Clock, Nightstand, Pixel ekran koruyucu | iOS, Android, web | **yapıldı** (uygulamalarda yazı tipi, tam ekran fotoğrafı ve hareketli arka plan: gökyüzü, renk akışı, yıldızlar) | O | |
-| 27 | Çok ülkeli resmî tatil takvimleri | timeanddate, time.is, vclock | web | **yapıldı** (Türkiye + 30 ülke, 2026–2028, beş dilde; Nager.Date verisi) | B | |
-| 28 | Saat başı bildirimi; dini/özel gün, mevsim, Ay, gün doğumu-batımı, hava, yaz saati bildirimleri | Flip Clock widgets, Desk Clock, e-Diyanet, Lunar, World Clock | iOS, Android | **bu turda yapıldı** (Ayarlar › Bildirimler, varsayılan açık) | — | Canlıya talimatla |
-
-**Önceden bilerek yok olanlar (sekizinci turda yapıldı, 30 Ekim 2026):**
-- Kur'an, dua, zikirmatik, namaz ve oruç takibi, zekât: uygulamalarda Vakitler › İbadet. Kur'an Arapçası Tanzil (CC BY 3.0), İngilizce meal Pickthall (kamu malı); Türkçe meal yerine Diyanet meal sitesine bağlantı (kamu malı Türkçe meal doğrulanamadı; sahibin kararı). Zekât sitede de (`/zekat-hesaplama/`). Kayıtlar yalnız cihazda, rozet yok.
-- Hesap ve eşitleme: hesapsız ve sunucusuz (sahibin kararı). iPhone, iPad ve Mac arasında iCloud anahtar-değer deposu; Android'de telefonun Google yedeği ve telefondan telefona aktarım.
-- API: statik açık veri `/api/v1/` (tatiller, 81 il namaz vakitleri, hicri tablo, astronomi; CC BY 4.0, CORS açık), belge `/gelistiriciler/`.
-- Tarayıcı uzantısı: `extension/` (Chrome, Edge, Firefox; saat, tarih, hicri tarih, il vakitleri; internete bağlanmaz). Mağaza yayını sahibin kararıyla.
+| No | İş | Nerede | Çaba | Durum | Eski no |
+|---|---|---|---|---|---|
+| 1 | Gece / yatak başı modu (kırmızı-loş, otomatik, piksel kaydırma, uyku zamanlayıcısı) | Uygulama | K | bitti | #1 |
+| 2 | Resmî tatilde çalmayan alarm | Uygulama | K | bitti | #4 |
+| 3 | Hicri tarih (widget, kilit ekranı, takvim) | Uygulama | K | bitti | #9 |
+| 4 | Alarmdan sonra günaydın kartı | Uygulama | K | bitti | #14 |
+| 5 | Hazır süre ve alarm sayfaları ("5 dakika", "07:00 alarm") | Site | K | bitti | #20 |
+| 6 | Köprü tatil planlayıcı | Site | K | bitti | #22 |
+| 7 | Eksik özel gün geri sayımları (Anneler, Babalar, Sevgililer Günü…) | Site | K | bitti | #23 |
+| 8 | Planlayıcı ve çeviricide paylaşım bağlantısı, takvime ekle | Site | K | bitti | #24 |
+| 9 | Dualar | Uygulama | K | bitti |  |
+| 10 | Zikirmatik | Uygulama | K | bitti |  |
+| 11 | Zekât hesaplama | Uygulama + site | K | bitti |  |
+| 12 | Kerahat vakti | Uygulama + site | K | açık |  |
+| 13 | Hicri–Miladi tarih çevirici | Uygulama + site | K | açık |  |
+| 14 | Fitre hesabı | Uygulama + site | K | açık |  |
+| 15 | Altın ve mavi saat | Uygulama + site | K | açık |  |
+| 16 | Vakit ve dini gün paylaşım kartı | Uygulama | K | açık |  |
+| 17 | Hızlı alarm ("X dakika sonra") | Uygulama | K | açık |  |
+| 18 | Kaydırarak durdurma (yanlışlıkla kapatmayı önler) | Uygulama | K | açık |  |
+| 19 | Alarm çalmadan önce bildirim, erken uyanınca kapatma | Uygulama | K | açık |  |
+| 20 | Alarmda saatin sesli okunması | Uygulama | K | açık |  |
+| 21 | Alarm çalarken uygulamayı kapatma/silme engeli | Android | K | açık |  |
+| 22 | Ekranı kaydırarak karartma, saat boyutu, yön kilidi | Uygulama | K | açık |  |
+| 23 | Saat ekranında pil ve sıradaki alarm alanı | Uygulama | K | açık |  |
+| 24 | Tam ekranda fotoğraf slaytı | Uygulama | K | açık |  |
+| 25 | Saatin altında kişisel metin | Uygulama | K | açık |  |
+| 26 | Çalışan zamanlayıcıya süre ekleme (+1 dk) | Uygulama + site | K | açık |  |
+| 27 | Odak serisi, günlük hedef, etiket | Uygulama + site | K | açık |  |
+| 28 | Tur ve odak geçmişini CSV olarak indirme | Uygulama + site | K | açık |  |
+| 29 | Geri sayımı görsel kart olarak paylaşma | Uygulama | K | açık |  |
+| 30 | Dünya saatlerindeki şehirler için yaz saati uyarısı | Uygulama | K | açık |  |
+| 31 | Saat hesaplama (saat:dakika toplama/çıkarma) | Site | K | açık |  |
+| 32 | "Kaç gün kaldı / kaç gün oldu" sayfaları | Site | K | açık |  |
+| 33 | 14 günlük hava tahmini | Site | K | açık |  |
+| 34 | Ay evreleri ve tutulmalar için takvim aboneliği (.ics) | Site | K | açık |  |
+| 35 | Sitede alarm sesi seçimi | Site | K | açık |  |
+| 36 | Sitede aralık (HIIT) zamanlayıcı | Site | K | açık |  |
+| 37 | Satranç saati | Site | K | açık |  |
+| 38 | Metronom | Site | K | açık |  |
+| 39 | Konuşan saat | Site | K | açık |  |
+| 40 | Sitede saat yazı tipi ve renk seçimi | Site | K | açık |  |
+| 41 | Burç hesaplama | Site | K | açık |  |
+| 42 | Live Activity / Dynamic Island: sayaçlar ve sıradaki vakit kilit ekranında | Uygulama | O | bitti | #2 |
+| 43 | Alarm ayarları (gün seçimi, erteleme süresi ve sınırı, atla, kademeli ses) | Uygulama | O | bitti | #3 |
+| 44 | Çevirmeli (flip) saat | Uygulama + site | O | bitti | #5 |
+| 45 | Siri / Kısayollar ve Android karşılıkları | Uygulama | O | bitti | #7 |
+| 46 | Kıble pusulası ve yakındaki camiler | Uygulama + site | O | bitti | #8 |
+| 47 | Ay doğuş/batış, Ay takvimi, Ay widget'ı, tutulmalar | Uygulama + site | O | bitti | #10 |
+| 48 | Saniyeli, dünya saati ve geri sayım widget'ları | Uygulama | O | bitti | #11 |
+| 49 | Birden çok adlı zamanlayıcı, aralık antrenmanı, sesli duyuru | Uygulama | O | bitti | #12 |
+| 50 | Alarm kapatma görevi ve uyanma denetimi ("Uyanık" rozeti) | Uygulama | O | bitti | #13 |
+| 51 | Kişisel geri sayım listesi (yıllık, hatırlatma, fotoğraf, takvimden) | Uygulama | O | bitti | #15 |
+| 52 | Odak istatistikleri, yapılacaklar listesi, arka plan sesi | Uygulama + site | O | bitti | #16 |
+| 53 | Uyku planı, yatma hatırlatması, uyku sesleri, gün doğumu ışığı | Uygulama | O | bitti | #17 |
+| 54 | iPad (ve Mac'te iPad uygulaması olarak) | Uygulama | O | bitti | #18 |
+| 55 | İlçe bazında vakit, kayıtlı yerler | Uygulama + site | O | bitti | #19 |
+| 56 | Takvim aboneliği (.ics) ve yazdırma | Site | O | bitti | #21 |
+| 57 | Yaz saati listesi, saat dilimi kısaltmaları, Unix saati | Site | O | bitti | #25 |
+| 58 | Görünüm: yazı tipi, fotoğraf ve hareketli arka plan | Uygulama | O | bitti | #26 |
+| 59 | Her özellik için bildirimler | Uygulama | O | bitti | #28 |
+| 60 | Kur'an (Arapça, İngilizce meal, Diyanet meal bağlantısı) | Uygulama | O | bitti |  |
+| 61 | Namaz ve oruç takibi (kaza dahil) | Uygulama | O | bitti |  |
+| 62 | Hesapsız eşitleme (iCloud, Android yedeği) | Uygulama | O | bitti |  |
+| 63 | Açık veri (API) | Site | O | bitti |  |
+| 64 | Tarayıcı eklentisi | Chrome, Edge, Firefox | O | bitti |  |
+| 65 | Vakit ekranında Güneş/Ay yayı | Uygulama | O | açık |  |
+| 66 | Başka hesap yöntemleri ve Hanefi ikindisi | Uygulama + site | O | açık |  |
+| 67 | Vakti gerçek alarm olarak kurma (telefon sessizdeyken de çalar) | Uygulama | O | açık |  |
+| 68 | Vakitte telefonu sessize alma | Android | O | açık |  |
+| 69 | Esmaü'l-Hüsna | Uygulama | O | açık |  |
+| 70 | Hadis | Uygulama | O | açık |  |
+| 71 | Namaz rehberi | Uygulama | O | açık |  |
+| 72 | Takvim yaprağı, günün sözü | Uygulama | O | açık |  |
+| 73 | Hilal görünürlüğü | Uygulama + site | O | açık |  |
+| 74 | Esnek alarm tekrarı (belirli tarih, iki haftada bir, bitiş tarihi) | Uygulama | O | açık |  |
+| 75 | Başka alarm görevleri (hafıza, yazma, fotoğraf) | Uygulama | O | açık |  |
+| 76 | Sabah günlüğü | Uygulama | O | açık |  |
+| 77 | Dokunulabilen widget'lar, iPhone Denetim Merkezi düğmeleri | Uygulama | O | açık |  |
+| 78 | Wear OS saat kadranı | Android saat | O | açık |  |
+| 79 | Havaya göre hareketli arka plan | Uygulama | O | açık |  |
+| 80 | Diğer uygulamaların üstünde yüzen saat | Uygulama | O | açık |  |
+| 81 | Aynı anda birden çok kronometre | Uygulama | O | açık |  |
+| 82 | Zamanlayıcı geçmişi | Uygulama | O | açık |  |
+| 83 | Çok adımlı antrenman rutini şablonları | Uygulama | O | açık |  |
+| 84 | Apple Sağlık / Health Connect kaydı | Uygulama | O | açık |  |
+| 85 | Uygulamada toplantı planlayıcı | Uygulama | O | açık |  |
+| 86 | Emeklilik hesaplama | Site | O | açık |  |
+| 87 | Gece gökyüzü, gezegenler, Ay uzaklığı | Site | O | açık |  |
+| 88 | Tutulma haritası | Site | O | açık |  |
+| 89 | "Tarihte bugün" | Site | O | açık |  |
+| 90 | Apple Watch ve Wear OS uygulamaları | Uygulama | B | bitti | #6 |
+| 91 | Çok ülkeli resmî tatil takvimleri | Site | B | bitti | #27 |
+| 92 | Başka ezan sesleri | Uygulama | B | açık |  |
+| 93 | Konuma ya da takvime bağlı alarm | Uygulama | B | açık |  |
+| 94 | iPhone'da müzikle alarm | Uygulama | B | açık |  |
+| 95 | Apple TV ve Android TV uygulamaları | TV | B | açık |  |
+| 96 | Yerel Mac uygulaması (menü çubuğunda vakit) | Mac | B | açık |  |
+| 97 | Vision Pro uygulaması | Vision Pro | B | açık |  |
+| 98 | Odakta uygulama/site engelleme | Uygulama | B | açık |  |
+| 99 | Daha çok dil | Uygulama + site | B | açık |  |
+| 100 | Saat dilimi haberleri ve bülten | Site | B | açık |  |
+| 101 | Uyku takibi, horlama kaydı, uyku evresine göre akıllı alarm | Uygulama | — | yapılmayacak (gizlilik: mikrofon, hareket) |  |
+| 102 | Sitede hesap ve üyelik | Site | — | yapılmayacak (standartta bu proje için yok) |  |
+| 103 | 81 il saat sayfaları | Site | — | yapılmayacak (kopya içerik riski) |  |
+| 104 | Saat dilimi haritası (dönen dünya) | Site | — | yapılmayacak (sitede kaldırıldı, 30 Ekim kararı; uygulamada var) |  |
+| 105 | Namaz serileri, ibadet rozeti | Uygulama | — | yapılmayacak (inanç ele vermemek için) |  |
+| 106 | Ekip planlama, toplantı oylaması | Site | — | yapılmayacak (hesap gerektirir) |  |
+| 107 | Spotify/YouTube alarm sesleri | Uygulama | — | yapılmayacak (dış hesap gerektirir) |  |
 
 **Konumlanma notu (sahibin düzeltmesiyle, 30 Ekim 2026):** En güçlü doğrudan namaz rakibi **Vakit** (Hakan Çelik). Ücretsiz ve reklamsız; Apple Watch, Mac, Live Activity, 12 hesap yöntemi ve 25 dil var. Ona karşı farkımız fiyat değil, **yalnız namaz uygulaması olmayışımız**: saat (19 model, tam ekran), dünya saatleri ve küre, takvim, hava, mevsimler ve araçlar tek uygulamada. Masa, flip ve alarm kategorilerinde rakiplerin çoğu reklamlı ya da abonelikli; orada "ücretsiz, reklamsız" da belirgin bir farktır.
 
-## Kalanlar (sekizinci turdan sonra, 30 Ekim 2026)
+## Ek: ajan raporları (kaynak)
 
-Birleşik tablonun 28 maddesi ve "bilerek yok" başlıkları yapıldı. Aşağıdakiler grup ayrıntılarındaki (ajan raporları) satırlardan henüz yapılmamış olanlardır; ajan raporlarının "Bizde" sütunu tur öncesini gösterir, güncel durum buradadır. Çaba: K küçük, O orta, B büyük.
-
-**Namaz ve dini:** birden çok hesap yöntemi ve Hanefi ikindisi (yurt dışı için, O); kerahat vakti (K); Hicri–Miladi çevirici, site ve uygulama (K); vakti gerçek alarm olarak kurma, sessizde çalar (O); vakitte telefonu sessize alma, Android (O); başka ezan sesleri (B, açık lisanslı kayıt bulmak zor); Esmaü'l-Hüsna, hadis, namaz rehberi (O, metin kaynağı ve lisans); fitre (K, Diyanet her yıl açıklar, elle güncellenir); takvim yaprağı ve günün sözü (O, içerik lisansı); vakit/dini gün paylaşım kartı (K); vakit ekranında Güneş/Ay yayı (K–O); altın ve mavi saat (K); hilal görünürlüğü (O); Mac menü çubuğu (B).
-
-**Alarm ve uyku:** çalarken uygulamayı kapatma/silme engeli, Android (K); kaydırarak durdur (K); esnek tekrar: belirli tarih, iki haftada bir, bitiş tarihi (O); çalmadan önce bildirim ve erken uyanınca kapat (K); hızlı alarm "X dk sonra" (K); alarmda saatin sesli okunması (K); başka görev türleri: hafıza, yazma, fotoğraf (O); konuma ya da takvime bağlı alarm (B); iOS'ta müzikle alarm (B, AlarmKit kısıtı); sabah günlüğü (O).
-
-**Saat, görünüm, widget:** kaydırarak karartma, saat boyutu, yön kilidi (K); etkileşimli widget ve iOS Denetim Merkezi düğmeleri (O); Wear OS kadranı, Watch Face Format (O); Apple TV, Android TV, yerel Mac, Vision Pro (B); yüzen saat, PiP (O); saat ekranında pil ve sıradaki alarm alanı (K); havaya göre hareketli arka plan (O); fotoğraf slaytı ve kişisel metin (K).
-
-**Zamanlayıcı ve odak:** çalışırken süre ekleme (K); birden çok kronometre (O); tur ve odak geçmişini CSV'ye aktarma (K); zamanlayıcı geçmişi ve çok adımlı rutin şablonları (O); Apple Sağlık / Health Connect kaydı (O); odak serisi, günlük hedef, etiket (K); uygulama/site engelleme (B, Ekran Süresi API'si); geri sayımı görsel kart olarak paylaşma (K); uygulamada toplantı planlayıcı (O); dünya saatleri listesindeki şehirler için yaz saati uyarısı (K).
-
-**Site:** Hicri çevirici (K); saat hesaplama, saat:dakika topla/çıkar (K); ayrı "kaç gün kaldı / kaç gün oldu" sayfaları (K); sitede alarm sesi seçimi, aralık zamanlayıcı, satranç saati, metronom, konuşan saat (her biri K); kronometre turlarını CSV'ye aktarma (K); 14 günlük hava tahmini (K, Open-Meteo 16 güne kadar veriyor); Ay evresi ve tutulmaları .ics olarak (K); sitede yazı tipi/renk ayarı (K); gece gökyüzü, gezegenler, Ay uzaklığı (O); tutulma haritası (O); "tarihte bugün" (O, içerik lisansı); burç ve emeklilik hesaplama (K–O); daha çok dil (O–B, çeviri); saat dilimi haberleri/bülten (B, sürekli iş).
-
-**Bilerek yok ya da kararla kapsam dışı:** uyku takibi, horlama kaydı, uyku evresine göre akıllı alarm (mikrofon/hareket, gizlilik); sitede hesap ve üyelik (standart madde 7 uygulanmaz); 81 il saat sayfaları (kopya içerik riski); saat dilimi haritası/küre (sahibin kararıyla 30 Ekim 2026'da kaldırıldı); namaz serileri ve ibadet rozeti (inanç ele vermemek için); ekip planlama ve toplantı oylaması (hesap gerektirir); Spotify/YouTube alarm sesleri (dış hesap).
-
-## 2. Grup ayrıntıları (ajan raporları)
+Aşağıdaki beş rapor listenin kaynağıdır (151 satır). "Bizde" sütunları 30 Ekim 2026 sabahki durumu gösterir; güncel durum yukarıdaki tek listededir.
 
 ## Alarm ve uyanma uygulamaları (ajan raporu, 30 Ekim 2026)
 Bizde (koddan): alarmda etiket, tekrar (bir kez / her gün / hafta içi), sistemin varsayılan sesi, sabit 5 dk erteleme; tek zamanlayıcı; kronometrede tur var (iOS, Android, web).
