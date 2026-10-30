@@ -15,6 +15,9 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -51,11 +54,17 @@ fun PomodoroScreen() {
     var left by remember { mutableLongStateOf(ToolState.long("pomo.left")) }
     var done by remember { mutableIntStateOf(ToolState.int("pomo.done", 0)) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    // Görev adı, istatistik ve arka plan sesi (rakip analizi #16; sitedeki pomodoroyla aynı)
+    var task by remember { mutableStateOf(ToolState.str("pomo.task")) }
+    var noise by remember { mutableStateOf(ToolState.str("pomo.noise", "off")) }
+    var volume by remember { mutableIntStateOf(ToolState.int("pomo.vol", 40)) }
+    var log by remember { mutableStateOf(PomoLog.load()) }
 
     fun phaseMs() = (when (phase) { "work" -> workMin; "short" -> shortMin; else -> longMin }) * 60_000L
     fun persist() {
         ToolState.putStr("pomo.phase", phase); ToolState.putInt("pomo.round", round); ToolState.putLong("pomo.end", end)
         ToolState.putLong("pomo.left", left); ToolState.putInt("pomo.done", done)
+        PomoNoise.sync(context)
         LiveNotifications.sync(context)
     }
     fun start(ms: Long) {
@@ -74,6 +83,9 @@ fun PomodoroScreen() {
             if (completed) {
                 done += 1
                 BadgeStore.hit(Badge.POMODORO) // çalışma süresi sonuna kadar tamamlandı
+                // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
+                PomoLog.record(workMin, task, if (end > 0) end else System.currentTimeMillis())
+                log = PomoLog.load()
             }
             phase = if (round >= rounds) "long" else "short"
         } else {
@@ -127,6 +139,17 @@ fun PomodoroScreen() {
             end = 0; left = 0; phase = "work"; round = 1; done = 0
             persist()
         }) { Text(L("tools.pomodoro.reset"), color = Theme.c.accent) }
+        OutlinedTextField(task, { task = it.take(60); ToolState.putStr("pomo.task", task) }, Modifier.fillMaxWidth(),
+            label = { Text(L("tools.pomodoro.taskLabel")) }, placeholder = { Text(L("tools.pomodoro.taskPlaceholder")) },
+            singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done))
+        AppCard {
+            SectionTitle(L("tools.pomodoro.noise"))
+            NoiseControls(noise, volume,
+                onKind = { noise = it; ToolState.putStr("pomo.noise", it); PomoNoise.sync(context) },
+                onVolume = { volume = it; ToolState.putInt("pomo.vol", it); if (SoundService.source == "pomo") PomoNoise.sync(context) })
+            Text(L("pomo.noiseNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        FocusStatsCard(log) { PomoLog.save(emptyList()); log = emptyList() }
         AppCard {
             SectionTitle(L("tools.pomodoro.settings"))
             Stepper(L("tools.pomodoro.workMin"), workMin, 5..90, 5) { workMin = it; ToolState.putInt("pomo.work", it) }

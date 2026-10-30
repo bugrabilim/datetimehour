@@ -411,6 +411,11 @@ struct PomodoroView: View {
     @AppStorage("pomo.left") private var left = 0.0
     @AppStorage("pomo.done") private var done = 0
     @AppStorage("pomo.id") private var alarmID = ""
+    // Görev adı, istatistik ve arka plan sesi (rakip analizi #16; sitedeki pomodoroyla aynı)
+    @AppStorage("pomo.task") private var task = ""
+    @AppStorage("pomo.noise") private var noise = "off"
+    @AppStorage("pomo.vol") private var volume = 40
+    @State private var log = PomoLog.load()
 
     private var phaseSeconds: Double { Double((phase == "work" ? workMin : phase == "short" ? shortMin : longMin) * 60) }
     private var running: Bool { end > 0 }
@@ -446,6 +451,22 @@ struct PomodoroView: View {
                         end = 0; left = 0; phase = "work"; round = 1; done = 0
                     }
                     .tint(Theme.accent)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(L("tools.pomodoro.taskLabel")).font(.subheadline).foregroundStyle(Theme.muted)
+                        TextField(L("tools.pomodoro.taskPlaceholder"), text: Binding(get: { task }, set: { task = String($0.prefix(60)) }))
+                            .textFieldStyle(.roundedBorder)
+                            .submitLabel(.done)
+                    }
+                    VStack(alignment: .leading, spacing: 8) {
+                        SectionTitle(text: L("tools.pomodoro.noise"))
+                        NoiseControls(kind: $noise, volume: $volume)
+                        Text(L("pomo.noiseNote")).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                    .card()
+                    FocusStatsCard(log: log) {
+                        PomoLog.save([])
+                        log = []
+                    }
                     Form {
                         Section(L("tools.pomodoro.settings")) {
                             Stepper("\(L("tools.pomodoro.workMin")): \(workMin)", value: $workMin, in: 5...90, step: 5)
@@ -465,8 +486,12 @@ struct PomodoroView: View {
             }
         }
         .background(Theme.bg.ignoresSafeArea())
-        // Kilit ekranı / Dynamic Island: çalışan pomodoro aşaması
-        .onChange(of: end) { LiveActivities.sync() }
+        // Kilit ekranı / Dynamic Island: çalışan pomodoro aşaması; arka plan sesi çalışma süresince
+        .onChange(of: end) { LiveActivities.sync(); PomoNoise.sync() }
+        .onChange(of: phase) { PomoNoise.sync() }
+        .onChange(of: noise) { PomoNoise.sync() }
+        .onChange(of: volume) { if NoisePlayer.shared.source == "pomo" { NoisePlayer.shared.setVolume(volume) } }
+        .onAppear { log = PomoLog.load(); PomoNoise.sync() }
         .navigationTitle(L("tools.hub.cards.pomodoro.name"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -493,6 +518,9 @@ struct PomodoroView: View {
             if completed {
                 done += 1
                 BadgeStore.shared.hit(.pomodoro) // çalışma süresi sonuna kadar tamamlandı
+                // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
+                PomoLog.record(minutes: workMin, task: task, at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
+                log = PomoLog.load()
             }
             phase = round >= rounds ? "long" : "short"
         } else {

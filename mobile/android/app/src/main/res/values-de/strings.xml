@@ -920,5 +920,9 @@
     <string name="wear_noLocation">Standort nicht verfügbar; Istanbul wird angezeigt.</string>
     <string name="wear_phonePlace">Ort vom iPhone</string>
     <string name="wear_today">Heute</string>
+    <string name="noise_waves">Meeresrauschen</string>
+    <string name="pomo_noiseNote">Läuft nur während einer Arbeitsphase, auch bei gesperrtem Bildschirm; wird auf dem Telefon erzeugt, nichts wird heruntergeladen.</string>
+    <string name="noise_stop">Ton stoppen</string>
+    <string name="sleep_sounds">Schlafgeräusche</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

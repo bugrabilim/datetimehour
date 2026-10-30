@@ -44,7 +44,8 @@ object LiveNotifications {
                 Tab.TOOLS, "stopwatch", R.drawable.ic_stat_alarm)
         }
         val pomoEnd = sp.getLong("pomo.end", 0L)
-        if (pomoEnd > now) {
+        // Arka plan sesi çalarken pomodoro bildirimini ses hizmeti çizer (tek bildirim)
+        if (pomoEnd > now && SoundService.source != "pomo") {
             val phase = sp.getString("pomo.phase", "work")!!
             items += Item("pomodoro", L("tools.pomodoro.$phase"), T("tools.pomodoro.round", sp.getInt("pomo.round", 1), sp.getInt("pomo.rounds", 4)),
                 pomoEnd, true, Tab.TOOLS, "pomodoro", R.drawable.ic_stat_alarm)

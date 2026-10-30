@@ -920,5 +920,9 @@
     <string name="wear_noLocation">Məkan alınmadı; İstanbul göstərilir.</string>
     <string name="wear_phonePlace">iPhone-dakı yer</string>
     <string name="wear_today">Bu gün</string>
+    <string name="noise_waves">Dalğa səsi</string>
+    <string name="pomo_noiseNote">Səs yalnız iş müddəti gedərkən çalınır, ekran kilidli olanda da davam edir; telefonda yaradılır, fayl endirilmir.</string>
+    <string name="noise_stop">Səsi dayandır</string>
+    <string name="sleep_sounds">Yuxu səsləri</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

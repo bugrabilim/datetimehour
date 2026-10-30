@@ -920,5 +920,9 @@
     <string name="wear_noLocation">تعذّر تحديد الموقع؛ يتم عرض إسطنبول.</string>
     <string name="wear_phonePlace">المكان من iPhone</string>
     <string name="wear_today">اليوم</string>
+    <string name="noise_waves">صوت الأمواج</string>
+    <string name="pomo_noiseNote">يعمل الصوت فقط أثناء فترة العمل، حتى عندما تكون الشاشة مقفلة؛ يُولَّد على هاتفك ولا يُنزَّل أي ملف.</string>
+    <string name="noise_stop">إيقاف الصوت</string>
+    <string name="sleep_sounds">أصوات النوم</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

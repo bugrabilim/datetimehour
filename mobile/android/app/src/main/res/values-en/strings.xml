@@ -920,5 +920,9 @@
     <string name="wear_noLocation">Location unavailable; showing Istanbul.</string>
     <string name="wear_phonePlace">Place from iPhone</string>
     <string name="wear_today">Today</string>
+    <string name="noise_waves">Ocean waves</string>
+    <string name="pomo_noiseNote">Plays only while a work session is running, also with the screen locked; generated on your phone, nothing is downloaded.</string>
+    <string name="noise_stop">Stop sound</string>
+    <string name="sleep_sounds">Sleep sounds</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

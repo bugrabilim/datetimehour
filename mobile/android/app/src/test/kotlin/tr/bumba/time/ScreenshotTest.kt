@@ -2,7 +2,9 @@ package tr.bumba.time
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -111,6 +113,22 @@ class ScreenshotTest {
         Prefs.saveAppearance("light")
     }
     @Test fun pomodoro() = tool("tr-pomodoro", "pomodoro")
+    /** Pomodoro istatistikleri (son 7 gün, görevler) ve arka plan sesi seçimi */
+    @Test fun pomodoroStats() {
+        val today = java.time.LocalDate.now()
+        val log = listOf(6 to 2, 5 to 4, 3 to 1, 2 to 6, 1 to 3, 0 to 2).flatMap { (ago, n) ->
+            (0 until n).map { i -> tr.bumba.time.core.FocusLog.Entry(today.minusDays(ago.toLong()).toString(), 25, listOf("Rapor", "Kod", "")[i % 3]) }
+        }
+        capture("tr-pomodoro-istatistik") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(16.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)) {
+                AppCard {
+                    SectionTitle(L("tools.pomodoro.noise"))
+                    NoiseControls("rain", 40, onKind = {}, onVolume = {})
+                }
+                FocusStatsCard(log) {}
+            }
+        }
+    }
     @Test fun dateCalc() = tool("tr-tarih-hesaplama", "datecalc")
     /** Vakit bildirimleri ayarı (açık hâlde: vakitler, zaman, ses) */
     @Test fun notifySettings() {

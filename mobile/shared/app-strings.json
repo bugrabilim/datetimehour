@@ -3289,5 +3289,33 @@
     "de": "Heute",
     "az": "Bu gün",
     "ar": "اليوم"
+  },
+  "noise.waves": {
+    "tr": "Dalga sesi",
+    "en": "Ocean waves",
+    "de": "Meeresrauschen",
+    "az": "Dalğa səsi",
+    "ar": "صوت الأمواج"
+  },
+  "pomo.noiseNote": {
+    "tr": "Ses yalnız çalışma süresi işlerken çalar, ekran kilitliyken de sürer; telefonda üretilir, dosya indirilmez.",
+    "en": "Plays only while a work session is running, also with the screen locked; generated on your phone, nothing is downloaded.",
+    "de": "Läuft nur während einer Arbeitsphase, auch bei gesperrtem Bildschirm; wird auf dem Telefon erzeugt, nichts wird heruntergeladen.",
+    "az": "Səs yalnız iş müddəti gedərkən çalınır, ekran kilidli olanda da davam edir; telefonda yaradılır, fayl endirilmir.",
+    "ar": "يعمل الصوت فقط أثناء فترة العمل، حتى عندما تكون الشاشة مقفلة؛ يُولَّد على هاتفك ولا يُنزَّل أي ملف."
+  },
+  "noise.stop": {
+    "tr": "Sesi durdur",
+    "en": "Stop sound",
+    "de": "Ton stoppen",
+    "az": "Səsi dayandır",
+    "ar": "إيقاف الصوت"
+  },
+  "sleep.sounds": {
+    "tr": "Uyku sesleri",
+    "en": "Sleep sounds",
+    "de": "Schlafgeräusche",
+    "az": "Yuxu səsləri",
+    "ar": "أصوات النوم"
   }
 }
