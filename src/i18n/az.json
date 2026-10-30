@@ -752,6 +752,14 @@
         "worldHol": {
           "name": "Dünyanın rəsmi bayramları",
           "desc": "30 ölkənin rəsmi bayramları, tarixləri və qalan gün."
+        },
+        "zakat": {
+          "name": "Zəkat hesablama",
+          "desc": "Nisab və zəkat məbləği, Diyanət əsaslarına görə."
+        },
+        "api": {
+          "name": "Açıq məlumat (API)",
+          "desc": "Bayramlar, namaz vaxtları və hicri təqvim JSON kimi."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -2051,6 +2059,87 @@
         "q": "Hansı ölkələrin rəsmi bayramları var?",
         "a": "Bu bölmədə 30 ölkənin ölkə üzrə rəsmi bayramları var: Avropadan Almaniya, Britaniya, Fransa, Niderland, Belçika, Avstriya, İsveçrə və digərləri, həmçinin ABŞ, Kanada, Braziliya, Avstraliya, Yaponiya, Çin, Rusiya, Gürcüstan, Sinqapur və Cənubi Afrika. Türkiyənin bayramları illik təqvim səhifələrindədir."
       }
+    ]
+  },
+  "zakat": {
+    "title": "Zəkat hesablama: nisab və veriləcək zəkat məbləği | Saat Tarih",
+    "description": "Nağd pul, qızıl, gümüş, valyuta, ticari mal və alacaqlardan borcları çıxaraq zəkatı hesablayın: nisab 80,18 qram qızıl, nisbət qırxda bir (Diyanət əsasları).",
+    "h1": "Zəkat hesablama",
+    "lead": "Varlıqlarınızı və borclarınızı yazın; nisaba çatıb-çatmadığınızı və verməli olduğunuz zəkatı görün.",
+    "search": "zəkat hesablama nisab qızıl gümüş qırxda bir zakat calculator zekat",
+    "intro": "Məbləğləri öz valyutanızda yazın. Nisab üçün qram qızılın qiymətini yazın; səhifə qiyməti internetdən almır.",
+    "fields": {
+      "cash": "Nağd və bank",
+      "goldGrams": "Qızıl (qram, 24 əyar)",
+      "goldPrice": "Qram qızılın qiyməti",
+      "silverValue": "Gümüş (dəyəri)",
+      "foreign": "Valyuta və səhm (dəyəri)",
+      "trade": "Ticari mallar",
+      "receivable": "Alınması umulan alacaqlar",
+      "debt": "Borclar"
+    },
+    "resultHeading": "Nəticə",
+    "net": "Xalis varlıq",
+    "nisab": "Nisab ({g} q qızıl)",
+    "needGold": "Nisabı hesablamaq üçün qram qızılın qiymətini yazın.",
+    "due": "Varlığınız nisaba çatır; zəkat düşür.",
+    "notDue": "Varlığınız nisabdan aşağıdır; zəkat düşmür.",
+    "amount": "Zəkat (1/40)",
+    "privacy": "Yazdığınız məbləğlər yalnız bu səhifədə hesablanır; saxlanılmır və heç yerə göndərilmir.",
+    "note": "Hesab Türkiyə Diyanət İşləri Başqanlığının əsaslarına görədir: nisab 80,18 qram qızıl, nisbət qırxda bir; malın üzərindən bir qəməri il keçməlidir. Yaşanılan ev, istifadə olunan avtomobil və əşyalar daxil edilmir. Dəqiq məlumat üçün alimə müraciət edin.",
+    "faq": [
+      {
+        "q": "Zəkatın nisabı nə qədərdir?",
+        "a": "Türkiyə Diyanət İşləri Başqanlığına görə nisab 80,18 qram qızıl və ya bu dəyərdə pul və maldır. Əsas ehtiyaclar və borclar çıxıldıqdan sonra bu miqdara çatan və üzərindən bir qəməri il keçən varlıq zəkata tabedir."
+      },
+      {
+        "q": "Zəkatın nisbəti nədir?",
+        "a": "Pul, qızıl, gümüş, valyuta və ticari mallarda zəkat varlığın qırxda biridir (yüzdə 2,5)."
+      },
+      {
+        "q": "Hansı mallar zəkat hesabına daxil edilmir?",
+        "a": "Yaşanılan ev, istifadə olunan avtomobil, ev əşyaları və iş alətləri kimi əsas ehtiyaclar daxil edilmir. Kirayə verilən ev kimi gəlir gətirən mallarda yalnız yığılmış gəlir hesaba alınır."
+      },
+      {
+        "q": "Qızılın qiymətini niyə özüm yazıram?",
+        "a": "Səhifə xarici xidmətlərə qoşulmur və yazdıqlarınızı saxlamır. Nisabı bugünkü qiymətlə hesablamaq üçün qram qızılın qiymətini özünüz yazırsınız."
+      }
+    ]
+  },
+  "api": {
+    "title": "Açıq məlumat (API): bayramlar və namaz vaxtları | Saat Tarih",
+    "description": "Türkiyənin rəsmi bayramları və dini günləri, 81 vilayət üçün namaz vaxtları, Diyanətə uyğun hicri təqvim və astronomiya məlumatı: açarsız, pulsuz JSON faylları.",
+    "h1": "Açıq məlumat (API)",
+    "lead": "Saat Tarih-in hesabladığı məlumatlar hamıya açıq JSON faylları kimi; qeydiyyat və açar lazım deyil.",
+    "search": "api açıq məlumat json bayramlar api namaz vaxtları api hicri təqvim api developer",
+    "endpointsHeading": "Son nöqtələr",
+    "colPath": "Ünvan",
+    "colDesc": "Məzmun",
+    "ep": {
+      "index": "Son nöqtələrin siyahısı və versiya məlumatı",
+      "holidays": "Bir ilin rəsmi bayramları, yarım gün ərəfələri, dini və xüsusi günləri (beş dildə adları ilə) və Ramazan aralığı",
+      "prayer": "Bir vilayətin bir illik namaz vaxtları (imsak, günəş, zöhr, əsr, məğrib, işa; Türkiyə vaxtı)",
+      "provinces": "81 vilayət: qısa ad, ad, en, uzunluq",
+      "hijri": "Hicri ay başlanğıcları cədvəli (Diyanət təqviminə uyğun)",
+      "astronomy": "Bir ilin gecə-gündüz bərabərliyi və gündönümü anları, yeni ay və bədirlər, tutulmalar (UTC)"
+    },
+    "yearsNote": "Bayram və astronomiya faylları {from}–{to}, namaz vaxtları {p1} və {p2} illəri üçündür. Vilayətlərin qısa adları provinces.json-dadır (məs. istanbul, ankara, izmir).",
+    "fieldsHeading": "Sahələr",
+    "fields": [
+      "Tarixlər İİİİ-AA-GG, saatlar SS:DD (Türkiyə vaxtı, UTC+3) formatındadır; anlar ISO 8601 UTC-dir.",
+      "Bayram növləri: holiday (rəsmi bayram), half (yarım gün ərəfə), religious (dini gün), special (xüsusi gün).",
+      "Namaz vaxtı faylında days massivinin hər sətri [tarix, imsak, günəş, zöhr, əsr, məğrib, işa] ardıcıllığındadır.",
+      "Hicri cədvəldə hər sətir [ay başlanğıcının miladi tarixi, hicri il, hicri ay]; son sətir cədvəlin bitdiyi gündür."
+    ],
+    "exampleHeading": "Nümunə",
+    "exampleNote": "JavaScript ilə bugünkü İstanbul vaxtları:",
+    "termsHeading": "İstifadə şərtləri",
+    "terms": [
+      "Məlumatlar Creative Commons Atribusiya 4.0 (CC BY 4.0) lisenziyası ilə istifadə oluna bilər; istifadə etdiyiniz yerdə \"Saat Tarih (time.bumba.tr)\" mənbəyini göstərin.",
+      "Namaz vaxtları Diyanətin üsulu ilə hesablanır və rəsmi vaxtlardan 1–2 dəqiqə fərqlənə bilər; rəsmi vaxt üçün Diyanət əsasdır.",
+      "2028 və sonrakı dini günlər Diyanətin uzunmüddətli təqviminə əsaslanan proqnozdur.",
+      "Açar və qeydiyyat yoxdur; fayllar statikdir və keşlənə bilər. Zəhmət olmasa, ağlabatan tezlikdə sorğu göndərin (gündə bir dəfə kifayətdir).",
+      "Məlumatlar sayt hər dəfə yayımlananda yenilənir; format dəyişsə, yeni versiya (v2) açılır, v1 saxlanılır."
     ]
   }
 }

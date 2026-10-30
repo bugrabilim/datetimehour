@@ -779,6 +779,14 @@
         "worldHol": {
           "name": "Feiertage weltweit",
           "desc": "Feiertage in 30 Ländern mit Datum und verbleibenden Tagen."
+        },
+        "zakat": {
+          "name": "Zakat-Rechner",
+          "desc": "Nisab und Höhe der Zakat nach den Regeln des Diyanet."
+        },
+        "api": {
+          "name": "Offene Daten (API)",
+          "desc": "Feiertage, Gebetszeiten und Hidschri-Kalender als JSON."
         }
       },
       "infoHeading": "Infoseiten"
@@ -2078,6 +2086,87 @@
         "q": "Für welche Länder sind Feiertage aufgeführt?",
         "a": "Hier stehen die landesweiten Feiertage von 30 Ländern: Deutschland, Österreich, die Schweiz, Großbritannien, Frankreich, die Niederlande, Belgien und weitere in Europa sowie die USA, Kanada, Brasilien, Australien, Japan, China, Russland, Georgien, Singapur und Südafrika. Die Feiertage der Türkei stehen auf den Jahreskalender-Seiten."
       }
+    ]
+  },
+  "zakat": {
+    "title": "Zakat-Rechner: Nisab und Höhe der Zakat | Saat Tarih",
+    "description": "Berechnen Sie Ihre Zakat aus Bargeld, Gold, Silber, Devisen, Handelswaren und Forderungen abzüglich Schulden: Nisab 80,18 g Gold, Satz ein Vierzigstel (Diyanet).",
+    "h1": "Zakat-Rechner",
+    "lead": "Geben Sie Vermögen und Schulden ein und sehen Sie, ob Sie den Nisab erreichen und wie viel Zakat fällig ist.",
+    "search": "zakat rechner nisab gold silber 2,5 prozent zakat berechnen zekat",
+    "intro": "Geben Sie Beträge in Ihrer Währung ein. Tragen Sie für den Nisab den Preis eines Gramms Gold ein; die Seite lädt keine Preise aus dem Internet.",
+    "fields": {
+      "cash": "Bargeld und Bank",
+      "goldGrams": "Gold (Gramm, 24 Karat)",
+      "goldPrice": "Preis für 1 g Gold",
+      "silverValue": "Silber (Wert)",
+      "foreign": "Devisen und Aktien (Wert)",
+      "trade": "Handelswaren",
+      "receivable": "Einbringliche Forderungen",
+      "debt": "Schulden"
+    },
+    "resultHeading": "Ergebnis",
+    "net": "Nettovermögen",
+    "nisab": "Nisab ({g} g Gold)",
+    "needGold": "Geben Sie den Goldpreis pro Gramm ein, um den Nisab zu berechnen.",
+    "due": "Ihr Vermögen erreicht den Nisab; Zakat ist fällig.",
+    "notDue": "Ihr Vermögen liegt unter dem Nisab; keine Zakat fällig.",
+    "amount": "Zakat (1/40)",
+    "privacy": "Die eingegebenen Beträge werden nur auf dieser Seite berechnet; sie werden weder gespeichert noch gesendet.",
+    "note": "Nach den Regeln des türkischen Präsidiums für Religionsangelegenheiten (Diyanet): Nisab 80,18 g Gold, Satz ein Vierzigstel; über dem Vermögen muss ein Mondjahr vergangen sein. Selbst genutzte Wohnung, Auto und Hausrat zählen nicht. Für Gewissheit fragen Sie einen Gelehrten.",
+    "faq": [
+      {
+        "q": "Wie hoch ist der Nisab für die Zakat?",
+        "a": "Nach dem türkischen Präsidium für Religionsangelegenheiten beträgt der Nisab 80,18 g Gold oder Geld und Güter gleichen Werts. Vermögen, das ihn nach Grundbedarf und Schulden erreicht und ein Mondjahr gehalten wurde, ist zakatpflichtig."
+      },
+      {
+        "q": "Wie hoch ist der Zakat-Satz?",
+        "a": "Bei Geld, Gold, Silber, Devisen und Handelswaren beträgt die Zakat ein Vierzigstel des Vermögens (2,5 Prozent)."
+      },
+      {
+        "q": "Was zählt nicht zur Zakat?",
+        "a": "Grundbedarf wie die eigene Wohnung, das genutzte Auto, Hausrat und Arbeitsgeräte zählen nicht. Bei ertragbringendem Besitz wie einer vermieteten Wohnung zählt nur der angesparte Ertrag."
+      },
+      {
+        "q": "Warum gebe ich den Goldpreis selbst ein?",
+        "a": "Die Seite verbindet sich mit keinem fremden Dienst und speichert Ihre Eingaben nicht. Um den Nisab zum aktuellen Preis zu berechnen, tragen Sie den Grammpreis von Gold selbst ein."
+      }
+    ]
+  },
+  "api": {
+    "title": "Offene Daten (API): Feiertage und Gebetszeiten | Saat Tarih",
+    "description": "Feiertage und religiöse Tage der Türkei, Gebetszeiten für 81 Provinzen, ein am Diyanet ausgerichteter Hidschri-Kalender und Astronomiedaten als freie JSON-Dateien.",
+    "h1": "Offene Daten (API)",
+    "lead": "Die von Saat Tarih berechneten Daten als öffentliche JSON-Dateien; ohne Anmeldung und API-Schlüssel.",
+    "search": "api offene daten json feiertage api türkei gebetszeiten api hidschri kalender api entwickler",
+    "endpointsHeading": "Endpunkte",
+    "colPath": "Pfad",
+    "colDesc": "Inhalt",
+    "ep": {
+      "index": "Liste der Endpunkte und Versionsangaben",
+      "holidays": "Feiertage, halbe Vortage, religiöse und besondere Tage eines Jahres (Namen in fünf Sprachen) und der Ramadan-Zeitraum",
+      "prayer": "Gebetszeiten einer Provinz für ein Jahr (Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib, Ischa; türkische Zeit)",
+      "provinces": "81 Provinzen: Kurzname, Name, Breite, Länge",
+      "hijri": "Tabelle der Hidschri-Monatsanfänge (am Diyanet-Kalender ausgerichtet)",
+      "astronomy": "Tagundnachtgleichen und Sonnenwenden, Neu- und Vollmonde, Finsternisse eines Jahres (UTC)"
+    },
+    "yearsNote": "Feiertags- und Astronomiedateien gibt es für {from}–{to}, Gebetszeiten für {p1} und {p2}. Die Kurznamen der Provinzen stehen in provinces.json (z. B. istanbul, ankara, izmir).",
+    "fieldsHeading": "Felder",
+    "fields": [
+      "Datumsangaben im Format JJJJ-MM-TT, Uhrzeiten SS:MM (türkische Zeit, UTC+3); Zeitpunkte als ISO 8601 UTC.",
+      "Feiertagsarten: holiday (gesetzlicher Feiertag), half (halber Vortag), religious (religiöser Tag), special (besonderer Tag).",
+      "In einer Gebetszeiten-Datei ist jede Zeile des days-Arrays [Datum, Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib, Ischa].",
+      "In der Hidschri-Tabelle ist jede Zeile [gregorianisches Datum des Monatsanfangs, Hidschri-Jahr, Hidschri-Monat]; die letzte Zeile ist das Ende der Tabelle."
+    ],
+    "exampleHeading": "Beispiel",
+    "exampleNote": "Die heutigen Zeiten für Istanbul mit JavaScript:",
+    "termsHeading": "Nutzungsbedingungen",
+    "terms": [
+      "Die Daten dürfen unter der Lizenz Creative Commons Namensnennung 4.0 (CC BY 4.0) genutzt werden; nennen Sie dabei „Saat Tarih (time.bumba.tr)“ als Quelle.",
+      "Gebetszeiten werden nach der Methode des Diyanet berechnet und können um 1–2 Minuten von den offiziellen Zeiten abweichen; maßgeblich sind die Zeiten des Diyanet.",
+      "Religiöse Tage ab 2028 sind eine Vorausberechnung nach dem Langzeitkalender des Diyanet.",
+      "Es gibt keinen Schlüssel und keine Anmeldung; die Dateien sind statisch und dürfen zwischengespeichert werden. Bitte rufen Sie sie in vernünftigen Abständen ab (einmal am Tag genügt).",
+      "Die Daten werden bei jeder Veröffentlichung der Seite aktualisiert; ändert sich das Format, kommt eine neue Version (v2) hinzu und v1 bleibt erhalten."
     ]
   }
 }

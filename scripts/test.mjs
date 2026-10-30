@@ -367,6 +367,36 @@ for (const l of ["tr", "en", "de", "az", "ar"]) for (const k of ["holidays", "da
 check(fs.readFileSync(path.join(DIST, "ics", "tr-holidays.ics"), "utf8").includes("DTSTART;VALUE=DATE:20270309"), "ics: 2027 Ramazan Bayramı 1. gün yok");
 check(/location \^~ \/ics\/[\s\S]*?default_type "text\/calendar/.test(ng), "nginx.conf: /ics/ text/calendar yok");
 check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index.html"), "utf8")) && /webcal:\/\//.test(fs.readFileSync(path.join(DIST, "en", "calendar", "2027", "index.html"), "utf8")), "takvim: dışa aktarma bölümü yok");
+// Açık veri (statik API, 30 Ekim 2026): dosyalar, İstanbul 9 Ekim 2026 vakitleri (yukarıdaki Diyanet değerleri), nginx CORS
+{
+  const api = (rel) => { const f = path.join(DIST, "api", "v1", rel); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null; };
+  const idx = api("index.json");
+  check(idx && idx.version === "v1" && idx.license === "CC BY 4.0" && idx.endpoints.holidays.years.length >= 6, "API: index.json eksik");
+  for (const y of idx?.endpoints.holidays.years || []) {
+    const h = api(`holidays/${y}.json`), a = api(`astronomy/${y}.json`);
+    check(h && h.events.length > 25 && h.events.every((e) => e.date.startsWith(String(y)) && ["tr", "en", "de", "az", "ar"].every((l) => e.name[l])), `API: holidays/${y}.json bozuk`);
+    check(a && a.seasons.marchEquinox.startsWith(`${y}-03-`) && a.moonPhases.length >= 24, `API: astronomy/${y}.json bozuk`);
+  }
+  check(api("holidays/2027.json")?.events.some((e) => e.date === "2027-03-09" && e.type === "holiday"), "API: 2027 Ramazan Bayramı yok");
+  const prov = api("provinces.json");
+  check(prov && prov.provinces.length === 81, "API: provinces.json 81 il değil");
+  for (const p of prov?.provinces || []) for (const y of idx.endpoints.prayerTimes.years) {
+    const f = api(`prayer-times/${p.slug}/${y}.json`);
+    check(f && f.days.length === (y % 4 ? 365 : 366) && f.days.every((d) => d.length === 7), `API: prayer-times/${p.slug}/${y}.json bozuk`);
+  }
+  const ist = api("prayer-times/istanbul/2026.json")?.days.find((d) => d[0] === "2026-10-09") || [];
+  ["05:37", "07:02", "12:57", "16:07", "18:41", "20:00"].forEach((v, i) => {
+    const m = (x) => { const [h, mm] = String(x).split(":").map(Number); return h * 60 + mm; };
+    check(Math.abs(m(ist[i + 1]) - m(v)) <= 1, `API: İstanbul 9.10.2026 ${i}. vakit ${ist[i + 1]} ≠ ${v}`);
+  });
+  const hj = api("hijri.json");
+  check(hj && hj.months.some((r) => r[0] === "2026-11-10" && r[1] === 1448 && r[2] === 6), "API: hicri tabloda Cemaziyelahir 1448 (10 Kasım 2026) yok");
+  check(/location \^~ \/api\/[\s\S]*?application\/json[\s\S]*?Access-Control-Allow-Origin "\*"/.test(ng), "nginx.conf: /api/ konumu (JSON, CORS) yok");
+  const apiPage = fs.readFileSync(path.join(DIST, "gelistiriciler", "index.html"), "utf8");
+  check((apiPage.match(/<tr><td dir="ltr"><a href="\/api\/v1\//g) || []).length === 6 && /"Dataset"/.test(apiPage), "API belge sayfası eksik");
+  const zk = fs.readFileSync(path.join(DIST, "zekat-hesaplama", "index.html"), "utf8");
+  check(/data-zakat\b/.test(zk) && (zk.match(/data-zk="/g) || []).length === 8 && /zakat\.js/.test(zk) && /data-zk-verdict/.test(zk), "zekât sayfası eksik");
+}
 // Köprü tatil (lib/bridges.mjs): 2027 Kurban + 19 Mayıs 2 gün izinle 9 gün; 2026 Ramazan 0,5 gün izinle 4 gün
 {
   const { computeYear } = await import("../lib/events.mjs");

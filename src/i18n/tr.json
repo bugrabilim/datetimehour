@@ -752,6 +752,14 @@
         "worldHol": {
           "name": "Dünya resmî tatilleri",
           "desc": "30 ülkenin resmî tatilleri, tarihleri ve kalan gün."
+        },
+        "zakat": {
+          "name": "Zekât hesaplama",
+          "desc": "Nisab ve zekât miktarı, Diyanet esaslarına göre."
+        },
+        "api": {
+          "name": "Açık veri (API)",
+          "desc": "Tatiller, namaz vakitleri ve hicri takvim JSON olarak."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -2051,6 +2059,87 @@
         "q": "Hangi ülkelerin resmî tatilleri var?",
         "a": "Bu bölümde Avrupa'dan Almanya, İngiltere, Fransa, Hollanda, Belçika, Avusturya, İsviçre ve diğerleri; ayrıca ABD, Kanada, Brezilya, Avustralya, Japonya, Çin, Rusya, Gürcistan, Singapur ve Güney Afrika olmak üzere 30 ülkenin ülke genelindeki resmî tatilleri vardır. Türkiye'nin tatilleri yıllık takvim sayfalarındadır."
       }
+    ]
+  },
+  "zakat": {
+    "title": "Zekât hesaplama: nisab ve verilecek zekât miktarı | Saat Tarih",
+    "description": "Nakit, altın, gümüş, döviz, ticari mal ve alacaklardan borçları düşerek zekâtı hesaplayın: nisab 80,18 gram altın, oran kırkta bir (Diyanet esasları).",
+    "h1": "Zekât hesaplama",
+    "lead": "Varlıklarınızı ve borçlarınızı girin; nisaba ulaşıp ulaşmadığınızı ve vermeniz gereken zekâtı görün.",
+    "search": "zekat zekât hesaplama nisab altın gümüş kırkta bir hesapla fitre zakat calculator",
+    "intro": "Tutarları kendi para biriminizde girin. Nisab için gram altın fiyatını yazın; sayfa fiyatı internetten almaz.",
+    "fields": {
+      "cash": "Nakit ve banka",
+      "goldGrams": "Altın (gram, 24 ayar karşılığı)",
+      "goldPrice": "Gram altın fiyatı",
+      "silverValue": "Gümüş (değeri)",
+      "foreign": "Döviz ve hisse (değeri)",
+      "trade": "Ticari mallar",
+      "receivable": "Tahsili umulan alacaklar",
+      "debt": "Borçlar"
+    },
+    "resultHeading": "Sonuç",
+    "net": "Net varlık",
+    "nisab": "Nisab ({g} g altın)",
+    "needGold": "Nisabı hesaplamak için gram altın fiyatını yazın.",
+    "due": "Varlığınız nisaba ulaşıyor; zekât düşer.",
+    "notDue": "Varlığınız nisabın altında; zekât düşmez.",
+    "amount": "Zekât (1/40)",
+    "privacy": "Girdiğiniz tutarlar yalnız bu sayfada hesaplanır; kaydedilmez ve hiçbir yere gönderilmez.",
+    "note": "Hesap Diyanet'in esaslarına göredir: nisab 80,18 gram altın, oran kırkta bir; malın üzerinden bir kamerî yıl geçmiş olmalıdır. Oturulan ev, kullanılan araç ve eşya katılmaz. Kesin bilgi için Diyanet'e ya da bir din görevlisine danışın.",
+    "faq": [
+      {
+        "q": "Zekât nisabı ne kadar?",
+        "a": "Diyanet İşleri Başkanlığı'na göre nisab 80,18 gram altın ya da bu değerde para ve maldır. Temel ihtiyaçlar ve borçlar düşüldükten sonra bu miktara ulaşan ve üzerinden bir kamerî yıl geçen varlık zekâta tabidir."
+      },
+      {
+        "q": "Zekât oranı nedir?",
+        "a": "Para, altın, gümüş, döviz ve ticari mallarda zekât, varlığın kırkta biridir (yüzde 2,5)."
+      },
+      {
+        "q": "Hangi mallar zekât hesabına katılmaz?",
+        "a": "Oturulan ev, kullanılan araç, ev eşyası ve iş için kullanılan aletler gibi temel ihtiyaçlar katılmaz. Kira getiren ev gibi gelir getiren mallarda yalnız birikmiş gelir hesaba katılır."
+      },
+      {
+        "q": "Altın fiyatını neden kendim yazıyorum?",
+        "a": "Sayfa dış servislere bağlanmaz ve girdiğiniz tutarları kaydetmez. Nisabı güncel fiyatla hesaplamak için o günün gram altın fiyatını siz yazarsınız."
+      }
+    ]
+  },
+  "api": {
+    "title": "Açık veri (API): tatil, namaz vakti, hicri takvim | Saat Tarih",
+    "description": "Türkiye resmî tatilleri ve dini günler, 81 il için namaz vakitleri, Diyanet'e hizalı hicri takvim ve astronomi verisi: anahtarsız, ücretsiz JSON dosyaları, CORS açık.",
+    "h1": "Açık veri (API)",
+    "lead": "Saat Tarih'in hesapladığı veriler herkese açık JSON dosyaları olarak; kayıt ve anahtar gerekmez.",
+    "search": "api açık veri json resmi tatil api namaz vakitleri api hicri takvim api geliştirici developer open data",
+    "endpointsHeading": "Uç noktalar",
+    "colPath": "Adres",
+    "colDesc": "İçerik",
+    "ep": {
+      "index": "Uç noktaların listesi ve sürüm bilgisi",
+      "holidays": "Bir yılın resmî tatilleri, yarım gün arifeleri, dini ve özel günleri (beş dilde adlarıyla) ve Ramazan aralığı",
+      "prayer": "Bir ilin bir yıllık namaz vakitleri (imsak, güneş, öğle, ikindi, akşam, yatsı; Türkiye saati)",
+      "provinces": "81 il: kısa ad, ad, enlem, boylam",
+      "hijri": "Hicri ay başları tablosu (Diyanet takvimine hizalı)",
+      "astronomy": "Bir yılın ekinoks ve gündönümü anları, yeni ay ve dolunaylar, tutulmalar (UTC)"
+    },
+    "yearsNote": "Tatil ve astronomi dosyaları {from}–{to}, namaz vakitleri {p1} ve {p2} yılları için vardır. İl kısa adları provinces.json'dadır (ör. istanbul, ankara, izmir).",
+    "fieldsHeading": "Alanlar",
+    "fields": [
+      "Tarihler YYYY-AA-GG, saatler SS:DD (Türkiye saati, UTC+3) biçimindedir; anlar ISO 8601 UTC'dir.",
+      "Tatil türleri: holiday (resmî tatil), half (yarım gün arife), religious (dini gün), special (özel gün).",
+      "Namaz vakti dosyasında days dizisinin her satırı [tarih, imsak, güneş, öğle, ikindi, akşam, yatsı] sırasındadır.",
+      "Hicri tabloda her satır [ay başının miladi tarihi, hicri yıl, hicri ay]; son satır tablonun bittiği gündür."
+    ],
+    "exampleHeading": "Örnek",
+    "exampleNote": "JavaScript ile bugünün İstanbul vakitleri:",
+    "termsHeading": "Kullanım koşulları",
+    "terms": [
+      "Veriler Creative Commons Atıf 4.0 (CC BY 4.0) lisansıyla kullanılabilir; kullandığınız yerde \"Saat Tarih (time.bumba.tr)\" kaynağını belirtin.",
+      "Namaz vakitleri Diyanet'in yöntemiyle hesaplanır ve resmî vakitlerden 1–2 dakika ayrılabilir; resmî vakit için Diyanet esastır.",
+      "2028 ve sonrasındaki dini günler Diyanet'in uzun vadeli takvimine dayanan projeksiyondur.",
+      "Anahtar ve kayıt yoktur; dosyalar statiktir ve önbelleğe alınabilir. Lütfen makul sıklıkta isteyin (günde bir kez yeterlidir).",
+      "Veriler site her yayımlandığında güncellenir; biçim değişirse yeni sürüm (v2) açılır, v1 korunur."
     ]
   }
 }

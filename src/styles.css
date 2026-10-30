@@ -1007,3 +1007,18 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
 
 /* Dünya resmî tatilleri (30 Ekim 2026, rakip analizi #27) */
 tr.is-past th, tr.is-past td { color: var(--muted); }
+
+/* Zekât hesaplama ve açık veri (API) sayfası (30 Ekim 2026) */
+.zk { margin-top: 1rem; }
+.zk-grid { display: grid; gap: 0 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin-top: 0.75rem; }
+.zk-grid input { width: 100%; font-variant-numeric: tabular-nums; }
+.zk-res-h { margin: 1.25rem 0 0.75rem; font-size: 1.15rem; }
+.zk-res .fact[hidden] { display: none; }
+.zk-verdict { font-weight: 600; margin: 0.9rem 0 0.4rem; }
+.zk-verdict.is-due { color: var(--accent); }
+.api-table { width: 100%; border-collapse: collapse; }
+.api-table th, .api-table td { padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--border); text-align: start; vertical-align: top; }
+.api-table code, .api-code { font: 0.9rem ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.api-table td:first-child { white-space: nowrap; }
+.api-code { display: block; overflow-x: auto; padding: 0.9rem 1rem; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); text-align: left; }
+.table-wrap + .meta { margin-top: 0.6rem; }

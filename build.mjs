@@ -5,6 +5,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
+import { hijriTable } from "./lib/hijri.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
@@ -83,6 +84,7 @@ for (const [name, from] of [
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
   ["qibla.js", "js/qibla.js"],
+  ["zakat.js", "js/zakat.js"],
   ["bridge.js", "js/bridge.js"],
   ["zones.js", "js/zones.js"],
   ["imsakiye.js", "js/imsakiye.js"],
@@ -295,7 +297,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "worldHol", "datecalc", "embed", "prayer", "qibla", "nature", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "worldHol", "datecalc", "embed", "prayer", "qibla", "zakat", "nature", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1105,6 +1107,8 @@ const TOOL_ART = {
   unix: svgArt('<rect x="12" y="14" width="72" height="36" rx="6" class="af"/><path d="M24 26v12M30 26h6v12h-6zM44 26v12M50 26h6v12h-6zM64 26v12M70 26h6v12h-6z"/>'),
   bridge: svgArt('<path d="M8 46h80M14 46V30M82 46V30M14 30c10 0 18-10 34-10s24 10 34 10M30 46V26M48 46V20M66 46V26" class="af"/><path d="M8 54h80"/>'),
   qibla: svgArt('<circle cx="48" cy="34" r="24" class="af"/><path d="M48 6v6M48 56v6M20 34h-6M82 34h-6M48 34l12-14-4 18z"/><rect x="62" y="12" width="10" height="10" rx="1"/>'),
+  zakat: svgArt('<ellipse cx="34" cy="46" rx="18" ry="6" class="af"/><path d="M16 46v-8c0 3 8 6 18 6s18-3 18-6v8M16 38v-8c0 3 8 6 18 6s18-3 18-6v8M16 30c0-3 8-6 18-6s18 3 18 6"/><path d="M62 18h20M62 30h20M72 12v24M64 44l16 12M80 44 64 56"/>'),
+  api: svgArt('<rect x="14" y="12" width="68" height="44" rx="6" class="af"/><path d="M34 26l-8 8 8 8M62 26l8 8-8 8M52 22l-8 24"/>'),
 };
 
 function buildToolsHub(lang) {
@@ -1117,7 +1121,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "zones", "dst", "unix", "bridge", "worldHol", "qibla", "embed", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "zones", "dst", "unix", "bridge", "worldHol", "qibla", "zakat", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1233,7 +1237,7 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
-extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/", worldHol: "/resmi-tatiller/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/", worldHol: "/en/public-holidays/" } });
+extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", zakat: "/zekat-hesaplama/", api: "/gelistiriciler/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/", worldHol: "/resmi-tatiller/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", zakat: "/en/zakat-calculator/", api: "/en/developers/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/", worldHol: "/en/public-holidays/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -2049,6 +2053,69 @@ function qiblaDial(lang) {
 </svg>`;
 }
 
+/* Zekât hesaplama (30 Ekim 2026, sahibin isteği; uygulamalardaki İbadet › Zekât ile aynı hesap): nisab 80,18 g altın
+   (Diyanet), oran 1/40, altın fiyatını kullanıcı yazar; tutarlar kaydedilmez, gönderilmez. Betik zakat.js. */
+const ZAKAT_FIELDS = ["cash", "goldGrams", "goldPrice", "silverValue", "foreign", "trade", "receivable", "debt"];
+function buildZakat(lang) {
+  const t = I[lang], s = t.zakat;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].zakat }];
+  const field = (k) => `<div class="field"><label for="zk-${k}">${esc(s.fields[k])}</label><input id="zk-${k}" type="text" inputmode="decimal" autocomplete="off" dir="ltr" data-zk="${k}"></div>`;
+  const res = (k, label) => `<div class="fact"><dt${k === "nisab" ? " data-zk-nisab-label" : ""}>${esc(label)}</dt><dd data-zk-${k} dir="ltr">–</dd></div>`;
+  const nisabLabel = tpl(s.nisab, { g: new Intl.NumberFormat(lang === "ar" ? "en" : I[lang].locale, { maximumFractionDigits: 2 }).format(80.18) });
+  const hero = `<section class="zk" data-zakat aria-labelledby="zk-h">
+      <h2 id="zk-h" class="sr-only">${esc(s.h1)}</h2>
+      <p class="meta">${esc(s.intro)}</p>
+      <div class="zk-grid">${ZAKAT_FIELDS.map(field).join("")}</div>
+      <h2 class="zk-res-h">${esc(s.resultHeading)}</h2>
+      <dl class="facts zk-res">${res("net", s.net)}${res("nisab", nisabLabel)}<div class="fact" data-zk-amount-box hidden><dt>${esc(s.amount)}</dt><dd data-zk-amount dir="ltr">–</dd></div></dl>
+      <p class="zk-verdict" data-zk-verdict role="status" aria-live="polite">${esc(s.needGold)}</p>
+      <p class="meta">${esc(s.privacy)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const sections = `<section class="section"><div class="wrap"><p class="meta">${esc(s.note)}</p></div></section>`;
+  const zk = { needGold: s.needGold, due: s.due, notDue: s.notDue };
+  return simplePage(lang, "zakat", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "zakat", title: s.h1 }, scripts: ["zakat.js"], clientExtra: { t: { zk } }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].zakat, s.description)] });
+}
+
+/* Açık veri (statik API, 30 Ekim 2026, sahibin isteği): /api/v1/ altında derlemede üretilen JSON dosyaları (aşağıda,
+   sitemap'ten önce) ve bu belge sayfası. Sunucu yok; nginx /api/ konumu CORS * verir. */
+const API_BASE = "/api/v1";
+const API_PRAYER_YEARS = [Number(cfg.updated.slice(0, 4)), Number(cfg.updated.slice(0, 4)) + 1];
+function buildApi(lang) {
+  const t = I[lang], s = t.api;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].api }];
+  const y0 = HOL_YEARS[0], y1 = HOL_YEARS[HOL_YEARS.length - 1], yNext = API_PRAYER_YEARS[1];
+  const rows = [
+    ["index", `${API_BASE}/index.json`, `${API_BASE}/index.json`],
+    ["holidays", `${API_BASE}/holidays/{year}.json`, `${API_BASE}/holidays/${yNext}.json`],
+    ["prayer", `${API_BASE}/prayer-times/{province}/{year}.json`, `${API_BASE}/prayer-times/istanbul/${API_PRAYER_YEARS[0]}.json`],
+    ["provinces", `${API_BASE}/provinces.json`, `${API_BASE}/provinces.json`],
+    ["hijri", `${API_BASE}/hijri.json`, `${API_BASE}/hijri.json`],
+    ["astronomy", `${API_BASE}/astronomy/{year}.json`, `${API_BASE}/astronomy/${yNext}.json`],
+  ].map(([k, pattern, example]) => `<tr><td dir="ltr"><a href="${example}"><code>${esc(pattern)}</code></a></td><td>${esc(s.ep[k])}</td></tr>`).join("");
+  const code = `const r = await fetch("${abs(`${API_BASE}/prayer-times/istanbul/${API_PRAYER_YEARS[0]}.json`)}");
+const { fields, days } = await r.json();
+const today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Istanbul" });
+console.log(fields, days.find((d) => d[0] === today));`;
+  const sections = `<section class="section" aria-labelledby="api-ep-h"><div class="wrap">
+    <h2 id="api-ep-h">${esc(s.endpointsHeading)}</h2>
+    <div class="table-wrap"><table class="api-table"><thead><tr><th scope="col">${esc(s.colPath)}</th><th scope="col">${esc(s.colDesc)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="meta">${esc(tpl(s.yearsNote, { from: y0, to: y1, p1: API_PRAYER_YEARS[0], p2: API_PRAYER_YEARS[1] }))}</p>
+  </div></section>
+  <section class="section" aria-labelledby="api-f-h"><div class="wrap">
+    <h2 id="api-f-h">${esc(s.fieldsHeading)}</h2>
+    <ul>${s.fields.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+    <h2>${esc(s.exampleHeading)}</h2>
+    <p>${esc(s.exampleNote)}</p>
+    <pre class="api-code" dir="ltr"><code>${esc(code)}</code></pre>
+  </div></section>
+  <section class="section" aria-labelledby="api-t-h"><div class="wrap">
+    <h2 id="api-t-h">${esc(s.termsHeading)}</h2>
+    <ul>${s.terms.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+  </div></section>`;
+  return simplePage(lang, "api", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { sections }, nav: "tools", searchK: s.search, extraLd: [{ "@type": "Dataset", name: s.h1, description: s.description, url: abs(ROUTES[lang].api), license: "https://creativecommons.org/licenses/by/4.0/", isAccessibleForFree: true, creator: { "@type": "Organization", name: cfg.name, url: ORIGIN }, distribution: [{ "@type": "DataDownload", encodingFormat: "application/json", contentUrl: abs(`${API_BASE}/index.json`) }] }] });
+}
+
 function buildQibla(lang) {
   const t = I[lang];
   const s = t.qibla;
@@ -2179,7 +2246,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur
@@ -2227,6 +2294,53 @@ function errorPage(kind) {
 }
 write("404.html", errorPage("notFound"));
 write("500.html", errorPage("serverError"));
+
+/* ---------- Açık veri (statik API, /api/v1/): JSON dosyaları ---------- */
+{
+  const PRAYER = (() => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(SRC, "js/prayer-calc.js"), "utf8"))(m, undefined); return m.exports; })();
+  const PKEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
+  const hm = (h) => { const min = ((Math.round(h * 60) % 1440) + 1440) % 1440; return `${String(Math.floor(min / 60)).padStart(2, "0")}:${String(min % 60).padStart(2, "0")}`; };
+  const json = (rel, obj) => write(`${API_BASE.slice(1)}/${rel}`, JSON.stringify(obj) + "\n");
+  const meta = { source: cfg.name, url: abs(ROUTES.en.api), license: "CC BY 4.0", attribution: `${cfg.name} (time.bumba.tr)`, updated: cfg.updated };
+  const isoUtc = (ms) => new Date(ms).toISOString().replace(/\.\d{3}Z$/, "Z");
+  // Tatiller: resmî tatil, yarım gün arife, dini ve özel günler (sınav ve okul hariç); adlar beş dilde
+  for (const y of HOL_YEARS) {
+    const events = YEAR_DATA[y].events.filter((e) => e.date.startsWith(String(y)) && ["holiday", "half", "religious", "special"].includes(e.type))
+      .map((e) => ({ date: e.date, key: e.key, type: e.type, name: Object.fromEntries(LANGS.map((l) => [l, I[l].calendar.events[e.key]])) }));
+    const ramadan = HOL.ramadans?.find((r) => r.from.startsWith(String(y)));
+    json(`holidays/${y}.json`, { ...meta, year: y, country: "TR", projected: !!YEAR_DATA[y].projected, ramadan: ramadan ? { from: ramadan.from, to: ramadan.to || null } : null, events });
+  }
+  // İller ve namaz vakitleri (Türkiye saati, UTC+3; sitedeki prayer.js ile aynı yuvarlama)
+  json("provinces.json", { ...meta, provinces: PROVINCES.map((p) => ({ slug: p.slug, name: p.name, lat: p.lat, lon: p.lon })) });
+  for (const p of PROVINCES) for (const y of API_PRAYER_YEARS) {
+    const days = [];
+    for (let d = new Date(Date.UTC(y, 0, 1)); d.getUTCFullYear() === y; d.setUTCDate(d.getUTCDate() + 1)) {
+      const r = PRAYER.times(y, d.getUTCMonth() + 1, d.getUTCDate(), p.lat, p.lon, 3);
+      days.push([d.toISOString().slice(0, 10), ...PKEYS.map((k) => (isFinite(r[k]) ? hm(r[k]) : null))]);
+    }
+    json(`prayer-times/${p.slug}/${y}.json`, { ...meta, province: p.slug, name: p.name, lat: p.lat, lon: p.lon, timezone: "Europe/Istanbul", year: y, method: "Diyanet (fajr 18°, isha 17°, asr shadow 1)", fields: ["date", ...PKEYS], days });
+  }
+  // Hicri ay başları (uygulamalardakiyle aynı tablo: Diyanet + Umm al-Qura)
+  const hij = hijriTable(HOL, readJson("src/data/hijri.json"));
+  json("hijri.json", { ...meta, calendar: "Diyanet-aligned Hijri months (gaps filled with Umm al-Qura)", fields: ["gregorianStart", "hijriYear", "hijriMonth"], months: hij.slice(0, -1), end: hij[hij.length - 1][0] });
+  // Astronomi: ekinoks/gündönümü, yeni ay ve dolunaylar, tutulmalar (UTC)
+  for (const y of HOL_YEARS) {
+    const q = NATURE.seasons(y), from = Date.UTC(y, 0, 1), to = Date.UTC(y + 1, 0, 1);
+    const k0 = Math.floor(((from / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861)) - 1;
+    const phases = [];
+    for (let k = k0; k < k0 + 15; k++) for (const full of [false, true]) { const ms = NATURE.phaseMs(k, full); if (ms >= from && ms < to) phases.push({ phase: full ? "full" : "new", at: isoUtc(ms) }); }
+    phases.sort((a, b) => a.at.localeCompare(b.at));
+    const eclipses = ECLIPSES.filter((e) => e.ut >= from && e.ut < to).map((e) => ({ kind: e.kind, type: e.type, at: isoUtc(e.ut), regions: e.regions }));
+    json(`astronomy/${y}.json`, { ...meta, year: y, seasons: { marchEquinox: isoUtc(q.march), juneSolstice: isoUtc(q.june), septemberEquinox: isoUtc(q.sept), decemberSolstice: isoUtc(q.dec) }, moonPhases: phases, eclipses });
+  }
+  json("index.json", { ...meta, version: "v1", docs: Object.fromEntries(LANGS.map((l) => [l, abs(ROUTES[l].api)])), endpoints: {
+    holidays: { path: `${API_BASE}/holidays/{year}.json`, years: HOL_YEARS },
+    prayerTimes: { path: `${API_BASE}/prayer-times/{province}/{year}.json`, years: API_PRAYER_YEARS, provinces: `${API_BASE}/provinces.json` },
+    provinces: { path: `${API_BASE}/provinces.json` },
+    hijri: { path: `${API_BASE}/hijri.json` },
+    astronomy: { path: `${API_BASE}/astronomy/{year}.json`, years: HOL_YEARS },
+  } });
+}
 
 /* ---------- sitemap, robots, llms.txt, manifest ---------- */
 const indexable = built.filter((p) => !p.noindex);

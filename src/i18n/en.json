@@ -752,6 +752,14 @@
         "worldHol": {
           "name": "Public holidays worldwide",
           "desc": "Public holidays in 30 countries, with dates and days left."
+        },
+        "zakat": {
+          "name": "Zakat calculator",
+          "desc": "Nisab and zakat amount, by Diyanet rules."
+        },
+        "api": {
+          "name": "Open data (API)",
+          "desc": "Holidays, prayer times and the Hijri calendar as JSON."
         }
       },
       "infoHeading": "Information pages"
@@ -2051,6 +2059,87 @@
         "q": "Which countries' public holidays are listed?",
         "a": "This section lists nationwide public holidays in 30 countries: Germany, the UK, France, the Netherlands, Belgium, Austria, Switzerland and more in Europe, plus the US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore and South Africa. Turkey's holidays are on the yearly calendar pages."
       }
+    ]
+  },
+  "zakat": {
+    "title": "Zakat calculator: nisab and how much zakat to pay | Saat Tarih",
+    "description": "Work out your zakat from cash, gold, silver, currency, trade goods and receivables minus debts: nisab is 80.18 g of gold, the rate one fortieth (Diyanet rules).",
+    "h1": "Zakat calculator",
+    "lead": "Enter your assets and debts to see whether you reach the nisab and how much zakat you owe.",
+    "search": "zakat calculator nisab gold silver 2.5 percent how much zakat zekat hesaplama",
+    "intro": "Enter amounts in your own currency. Type the price of one gram of gold for the nisab; the page does not fetch prices online.",
+    "fields": {
+      "cash": "Cash and bank",
+      "goldGrams": "Gold (grams, 24-carat equivalent)",
+      "goldPrice": "Price of 1 g gold",
+      "silverValue": "Silver (value)",
+      "foreign": "Foreign currency and shares (value)",
+      "trade": "Trade goods",
+      "receivable": "Receivables you expect to collect",
+      "debt": "Debts"
+    },
+    "resultHeading": "Result",
+    "net": "Net assets",
+    "nisab": "Nisab ({g} g gold)",
+    "needGold": "Enter the price of 1 g gold to work out the nisab.",
+    "due": "Your wealth reaches the nisab; zakat is due.",
+    "notDue": "Your wealth is below the nisab; no zakat is due.",
+    "amount": "Zakat (1/40)",
+    "privacy": "The amounts you enter are calculated on this page only; they are not saved or sent anywhere.",
+    "note": "Based on the rules of Turkey's Presidency of Religious Affairs (Diyanet): nisab is 80.18 g of gold, the rate one fortieth, and a lunar year must have passed over the wealth. Your home, car and personal items are not counted. Ask a scholar for certainty.",
+    "faq": [
+      {
+        "q": "What is the nisab for zakat?",
+        "a": "According to Turkey's Presidency of Religious Affairs, the nisab is 80.18 g of gold or money and goods of the same value. Wealth that reaches it after basic needs and debts, and has been held for one lunar year, is subject to zakat."
+      },
+      {
+        "q": "What is the zakat rate?",
+        "a": "For money, gold, silver, currency and trade goods, zakat is one fortieth of the wealth (2.5 percent)."
+      },
+      {
+        "q": "What is not counted for zakat?",
+        "a": "Basic needs such as the home you live in, the car you use, household items and tools for work are not counted. For income-producing property such as a rented flat, only the saved income is counted."
+      },
+      {
+        "q": "Why do I type the gold price myself?",
+        "a": "The page does not connect to outside services and does not save what you enter. To work out the nisab at today's price, you type the price of one gram of gold."
+      }
+    ]
+  },
+  "api": {
+    "title": "Open data (API): holidays, prayer times, Hijri calendar | Saat Tarih",
+    "description": "Turkey's public holidays and religious days, prayer times for 81 provinces, a Diyanet-aligned Hijri calendar and astronomy data: free JSON files, no key, CORS open.",
+    "h1": "Open data (API)",
+    "lead": "The data Saat Tarih calculates, as public JSON files; no sign-up or API key needed.",
+    "search": "api open data json public holidays api turkey prayer times api hijri calendar api developer açık veri",
+    "endpointsHeading": "Endpoints",
+    "colPath": "Path",
+    "colDesc": "Contents",
+    "ep": {
+      "index": "List of endpoints and version information",
+      "holidays": "A year's public holidays, half-day eves, religious and special days (names in five languages) and the Ramadan range",
+      "prayer": "A province's prayer times for one year (fajr, sunrise, dhuhr, asr, maghrib, isha; Turkey time)",
+      "provinces": "81 provinces: slug, name, latitude, longitude",
+      "hijri": "Table of Hijri month starts (aligned with the Diyanet calendar)",
+      "astronomy": "A year's equinox and solstice instants, new and full moons, eclipses (UTC)"
+    },
+    "yearsNote": "Holiday and astronomy files cover {from}–{to}; prayer times cover {p1} and {p2}. Province slugs are in provinces.json (e.g. istanbul, ankara, izmir).",
+    "fieldsHeading": "Fields",
+    "fields": [
+      "Dates are YYYY-MM-DD and times HH:MM (Turkey time, UTC+3); instants are ISO 8601 UTC.",
+      "Holiday types: holiday (public holiday), half (half-day eve), religious (religious day), special (special day).",
+      "In a prayer-times file each row of the days array is [date, fajr, sunrise, dhuhr, asr, maghrib, isha].",
+      "In the Hijri table each row is [Gregorian date of the month start, Hijri year, Hijri month]; the last row is the day the table ends."
+    ],
+    "exampleHeading": "Example",
+    "exampleNote": "Today's times for Istanbul with JavaScript:",
+    "termsHeading": "Terms of use",
+    "terms": [
+      "The data may be used under the Creative Commons Attribution 4.0 (CC BY 4.0) licence; credit \"Saat Tarih (time.bumba.tr)\" where you use it.",
+      "Prayer times are calculated with the Diyanet method and may differ from the official times by 1–2 minutes; the Diyanet's times are authoritative.",
+      "Religious days from 2028 on are a projection based on the Diyanet's long-term calendar.",
+      "There is no key or sign-up; the files are static and cacheable. Please request them at a reasonable rate (once a day is enough).",
+      "The data is updated whenever the site is published; if the format changes a new version (v2) is added and v1 is kept."
     ]
   }
 }
