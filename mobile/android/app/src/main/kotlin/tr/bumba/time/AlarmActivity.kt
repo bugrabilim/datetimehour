@@ -68,7 +68,7 @@ class AlarmActivity : ComponentActivity() {
                 }
                 val now = rememberNow()
                 Column(
-                    Modifier.fillMaxSize().background(Theme.c.bg).padding(24.dp),
+                    Modifier.fillMaxSize().background(Theme.c.bg).verticalScroll(rememberScrollState()).padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center,
                 ) {
@@ -81,9 +81,18 @@ class AlarmActivity : ComponentActivity() {
                     Text(title, color = Theme.c.text, fontSize = 24.sp, textAlign = TextAlign.Center)
                     Text(L("tools.alarm.ringing"), color = Theme.c.muted, fontSize = 15.sp)
                     Spacer(Modifier.height(40.dp))
-                    RoundButton(L("tools.alarm.stop"), true, Modifier.fillMaxWidth()) {
-                        AlarmScheduler.stop(this@AlarmActivity, id)
-                        if (kind == "alarm") morning = true else finish()
+                    // Kapatma görevi (rakip analizi #13): görev yapılınca alarm susar
+                    val item = remember { if (kind == "alarm") AlarmItem.find(id) else null }
+                    if (item != null && item.effectiveTask != "none") {
+                        WakeTaskPanel(item) {
+                            AlarmScheduler.stop(this@AlarmActivity, id)
+                            morning = true
+                        }
+                    } else {
+                        RoundButton(L("tools.alarm.stop"), true, Modifier.fillMaxWidth()) {
+                            AlarmScheduler.stop(this@AlarmActivity, id)
+                            if (kind == "alarm") morning = true else finish()
+                        }
                     }
                     // Erteleme kapalıysa ya da sınır dolduysa düğme yok
                     val snooze = AlarmScheduler.snoozeMinutes(id, kind)

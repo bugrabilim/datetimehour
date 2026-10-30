@@ -3562,5 +3562,285 @@
     "de": "Schlafen {bed} · aufstehen {wake} ({dur} Schlaf)",
     "az": "Yatma {bed} · oyanma {wake} ({dur} yuxu)",
     "ar": "النوم {bed} · الاستيقاظ {wake} ({dur} من النوم)"
+  },
+  "alarm.task.heading": {
+    "tr": "Kapatma görevi",
+    "en": "Dismiss task",
+    "de": "Aufgabe zum Ausschalten",
+    "az": "Söndürmə tapşırığı",
+    "ar": "مهمة الإيقاف"
+  },
+  "alarm.task": {
+    "tr": "Görev",
+    "en": "Task",
+    "de": "Aufgabe",
+    "az": "Tapşırıq",
+    "ar": "المهمة"
+  },
+  "alarm.task.none": {
+    "tr": "Yok",
+    "en": "None",
+    "de": "Keine",
+    "az": "Yoxdur",
+    "ar": "بلا مهمة"
+  },
+  "alarm.task.math": {
+    "tr": "Matematik",
+    "en": "Maths",
+    "de": "Rechnen",
+    "az": "Riyaziyyat",
+    "ar": "مسائل حسابية"
+  },
+  "alarm.task.shake": {
+    "tr": "Telefonu salla",
+    "en": "Shake the phone",
+    "de": "Telefon schütteln",
+    "az": "Telefonu silkələ",
+    "ar": "هزّ الهاتف"
+  },
+  "alarm.task.steps": {
+    "tr": "Adım at",
+    "en": "Walk",
+    "de": "Gehen",
+    "az": "Addım at",
+    "ar": "المشي"
+  },
+  "alarm.task.code": {
+    "tr": "Kod okut (QR / barkod)",
+    "en": "Scan a code (QR / barcode)",
+    "de": "Code scannen (QR / Barcode)",
+    "az": "Kod oxut (QR / barkod)",
+    "ar": "مسح رمز (QR / باركود)"
+  },
+  "alarm.task.level": {
+    "tr": "Zorluk",
+    "en": "Difficulty",
+    "de": "Schwierigkeit",
+    "az": "Çətinlik",
+    "ar": "الصعوبة"
+  },
+  "alarm.task.level.1": {
+    "tr": "Kolay",
+    "en": "Easy",
+    "de": "Leicht",
+    "az": "Asan",
+    "ar": "سهل"
+  },
+  "alarm.task.level.2": {
+    "tr": "Orta",
+    "en": "Medium",
+    "de": "Mittel",
+    "az": "Orta",
+    "ar": "متوسط"
+  },
+  "alarm.task.level.3": {
+    "tr": "Zor",
+    "en": "Hard",
+    "de": "Schwer",
+    "az": "Çətin",
+    "ar": "صعب"
+  },
+  "alarm.task.note": {
+    "tr": "Alarm, görev yapılmadan kapatılamaz (ertelemek serbest). Sensör ya da kamera çalışmazsa \"Başka görev\" ile zor matematiğe geçilir.",
+    "en": "The alarm can't be turned off until the task is done (snoozing is still allowed). If the sensor or camera doesn't work, \"Another task\" switches to hard maths.",
+    "de": "Der Wecker lässt sich erst nach der Aufgabe ausschalten (Schlummern bleibt möglich). Funktionieren Sensor oder Kamera nicht, wechselt \"Andere Aufgabe\" zu schwerem Rechnen.",
+    "az": "Tapşırıq yerinə yetirilmədən zəng söndürülmür (təxirə salmaq olar). Sensor ya da kamera işləməsə, \"Başqa tapşırıq\" ilə çətin riyaziyyata keçilir.",
+    "ar": "لا يمكن إيقاف المنبّه قبل إنجاز المهمة (يبقى التأجيل متاحًا). إذا لم يعمل المستشعر أو الكاميرا فإن \"مهمة أخرى\" تنتقل إلى مسائل حسابية صعبة."
+  },
+  "alarm.task.noteIOS": {
+    "tr": "Alarmdaki Durdur'a basınca uygulama açılır ve görev istenir; görev yapılmazsa alarm 1 dakika sonra yeniden çalar (en çok 10 kez). Sensör ya da kamera çalışmazsa \"Başka görev\" zor matematiğe geçer.",
+    "en": "Tapping Stop on the alarm opens the app and asks for the task; if it isn't done, the alarm rings again a minute later (up to 10 times). If the sensor or camera doesn't work, \"Another task\" switches to hard maths.",
+    "de": "Tippen auf Stopp öffnet die App und fordert die Aufgabe an; wird sie nicht erledigt, klingelt der Wecker eine Minute später erneut (höchstens 10-mal). Funktionieren Sensor oder Kamera nicht, wechselt \"Andere Aufgabe\" zu schwerem Rechnen.",
+    "az": "Zəngdə Dayandır'a basanda tətbiq açılır və tapşırıq istənir; yerinə yetirilməsə, zəng 1 dəqiqə sonra yenidən çalır (ən çox 10 dəfə). Sensor ya da kamera işləməsə, \"Başqa tapşırıq\" çətin riyaziyyata keçir.",
+    "ar": "يفتح الضغط على إيقاف في المنبّه التطبيقَ ويطلب المهمة؛ وإن لم تُنجز يرنّ المنبّه مجددًا بعد دقيقة (حتى 10 مرات). إذا لم يعمل المستشعر أو الكاميرا فإن \"مهمة أخرى\" تنتقل إلى مسائل حسابية صعبة."
+  },
+  "alarm.task.oldIOS": {
+    "tr": "Kapatma görevi iOS 26 ve sonrasında çalışır.",
+    "en": "Dismiss tasks work on iOS 26 and later.",
+    "de": "Aufgaben zum Ausschalten funktionieren ab iOS 26.",
+    "az": "Söndürmə tapşırığı iOS 26 və sonrakı versiyalarda işləyir.",
+    "ar": "تعمل مهام الإيقاف على iOS 26 وما بعده."
+  },
+  "alarm.code.save": {
+    "tr": "Kodu kaydet",
+    "en": "Save the code",
+    "de": "Code speichern",
+    "az": "Kodu yadda saxla",
+    "ar": "حفظ الرمز"
+  },
+  "alarm.code.change": {
+    "tr": "Kodu değiştir",
+    "en": "Change the code",
+    "de": "Code ändern",
+    "az": "Kodu dəyiş",
+    "ar": "تغيير الرمز"
+  },
+  "alarm.code.saved": {
+    "tr": "Kod kayıtlı.",
+    "en": "Code saved.",
+    "de": "Code gespeichert.",
+    "az": "Kod yadda saxlanılıb.",
+    "ar": "تم حفظ الرمز."
+  },
+  "alarm.code.missing": {
+    "tr": "Henüz kod kaydedilmedi; kaydetmezseniz matematik görevi kullanılır.",
+    "en": "No code saved yet; without one, the maths task is used.",
+    "de": "Noch kein Code gespeichert; ohne Code wird die Rechenaufgabe verwendet.",
+    "az": "Hələ kod yadda saxlanılmayıb; saxlanılmasa riyaziyyat tapşırığı istifadə olunur.",
+    "ar": "لم يُحفظ رمز بعد؛ دونه تُستخدم المسائل الحسابية."
+  },
+  "alarm.code.hint": {
+    "tr": "Yataktan kalkınca ulaşabileceğiniz bir kod seçin: banyodaki bir ürünün barkodu ya da kapıya astığınız bir QR kod gibi.",
+    "en": "Pick a code you can only reach once you're up: a barcode on something in the bathroom, or a QR code stuck on a door.",
+    "de": "Wählen Sie einen Code, den Sie erst nach dem Aufstehen erreichen: etwa einen Barcode im Bad oder einen QR-Code an einer Tür.",
+    "az": "Yataqdan qalxanda çata biləcəyiniz kod seçin: hamamdakı bir məhsulun barkodu ya da qapıya yapışdırdığınız QR kod kimi.",
+    "ar": "اختر رمزًا لا تصل إليه إلا بعد النهوض: كباركود منتج في الحمّام أو رمز QR ملصق على باب."
+  },
+  "alarm.wakeCheck": {
+    "tr": "Uyanma denetimi",
+    "en": "Wake-up check",
+    "de": "Wach-Kontrolle",
+    "az": "Oyanma yoxlaması",
+    "ar": "التحقق من الاستيقاظ"
+  },
+  "alarm.wakeCheck.note": {
+    "tr": "Kapattıktan 5 dakika sonra \"Uyanık mısınız?\" bildirimi gelir; 2 dakika içinde dokunmazsanız alarm yeniden çalar.",
+    "en": "Five minutes after you turn it off, an \"Are you awake?\" notification arrives; if you don't tap it within 2 minutes, the alarm rings again.",
+    "de": "Fünf Minuten nach dem Ausschalten kommt eine Mitteilung \"Sind Sie wach?\"; tippen Sie nicht innerhalb von 2 Minuten darauf, klingelt der Wecker erneut.",
+    "az": "Söndürdükdən 5 dəqiqə sonra \"Oyaqsınız?\" bildirişi gəlir; 2 dəqiqə ərzində toxunmasanız zəng yenidən çalır.",
+    "ar": "بعد 5 دقائق من الإيقاف يصل إشعار \"هل أنت مستيقظ؟\"؛ وإن لم تلمسه خلال دقيقتين يرنّ المنبّه مجددًا."
+  },
+  "wake.title": {
+    "tr": "Alarmı kapatmak için",
+    "en": "To turn off the alarm",
+    "de": "Zum Ausschalten des Weckers",
+    "az": "Zəngi söndürmək üçün",
+    "ar": "لإيقاف المنبّه"
+  },
+  "wake.math": {
+    "tr": "Soruyu çözün ({n}/{total})",
+    "en": "Solve the problem ({n}/{total})",
+    "de": "Lösen Sie die Aufgabe ({n}/{total})",
+    "az": "Sualı həll edin ({n}/{total})",
+    "ar": "حُلّ المسألة ({n}/{total})"
+  },
+  "wake.answer": {
+    "tr": "Cevap",
+    "en": "Answer",
+    "de": "Antwort",
+    "az": "Cavab",
+    "ar": "الإجابة"
+  },
+  "wake.check": {
+    "tr": "Kontrol et",
+    "en": "Check",
+    "de": "Prüfen",
+    "az": "Yoxla",
+    "ar": "تحقّق"
+  },
+  "wake.wrong": {
+    "tr": "Yanlış, yeniden deneyin",
+    "en": "Not quite, try again",
+    "de": "Falsch, bitte erneut versuchen",
+    "az": "Səhvdir, yenidən cəhd edin",
+    "ar": "خطأ، حاول مجددًا"
+  },
+  "wake.shake": {
+    "tr": "Telefonu {n} kez sallayın",
+    "en": "Shake the phone {n} times",
+    "de": "Schütteln Sie das Telefon {n}-mal",
+    "az": "Telefonu {n} dəfə silkələyin",
+    "ar": "هزّ الهاتف {n} مرة"
+  },
+  "wake.steps": {
+    "tr": "{n} adım yürüyün",
+    "en": "Walk {n} steps",
+    "de": "Gehen Sie {n} Schritte",
+    "az": "{n} addım yeriyin",
+    "ar": "امشِ {n} خطوة"
+  },
+  "wake.progress": {
+    "tr": "{n} / {total}",
+    "en": "{n} / {total}",
+    "de": "{n} / {total}",
+    "az": "{n} / {total}",
+    "ar": "{n} / {total}"
+  },
+  "wake.code": {
+    "tr": "Kayıtlı kodu okutun",
+    "en": "Scan your saved code",
+    "de": "Scannen Sie den gespeicherten Code",
+    "az": "Yadda saxlanılmış kodu oxudun",
+    "ar": "امسح الرمز المحفوظ"
+  },
+  "wake.code.scan": {
+    "tr": "Kodu okut",
+    "en": "Scan code",
+    "de": "Code scannen",
+    "az": "Kodu oxut",
+    "ar": "مسح الرمز"
+  },
+  "wake.code.wrong": {
+    "tr": "Bu kayıtlı kod değil",
+    "en": "That's not the saved code",
+    "de": "Das ist nicht der gespeicherte Code",
+    "az": "Bu yadda saxlanılmış kod deyil",
+    "ar": "هذا ليس الرمز المحفوظ"
+  },
+  "wake.other": {
+    "tr": "Başka görev",
+    "en": "Another task",
+    "de": "Andere Aufgabe",
+    "az": "Başqa tapşırıq",
+    "ar": "مهمة أخرى"
+  },
+  "wake.noCamera": {
+    "tr": "Bu telefonda kod okunamıyor; başka görev seçin.",
+    "en": "Codes can't be scanned on this phone; choose another task.",
+    "de": "Auf diesem Telefon können keine Codes gescannt werden; wählen Sie eine andere Aufgabe.",
+    "az": "Bu telefonda kod oxunmur; başqa tapşırıq seçin.",
+    "ar": "لا يمكن مسح الرموز على هذا الهاتف؛ اختر مهمة أخرى."
+  },
+  "wake.noSensor": {
+    "tr": "Hareket algılayıcısı bulunamadı; başka görev seçin.",
+    "en": "No motion sensor found; choose another task.",
+    "de": "Kein Bewegungssensor gefunden; wählen Sie eine andere Aufgabe.",
+    "az": "Hərəkət sensoru tapılmadı; başqa tapşırıq seçin.",
+    "ar": "لم يُعثر على مستشعر حركة؛ اختر مهمة أخرى."
+  },
+  "wake.checkTitle": {
+    "tr": "Uyanık mısınız?",
+    "en": "Are you awake?",
+    "de": "Sind Sie wach?",
+    "az": "Oyaqsınız?",
+    "ar": "هل أنت مستيقظ؟"
+  },
+  "wake.checkBody": {
+    "tr": "Dokunun; dokunmazsanız alarm 2 dakika sonra yeniden çalar.",
+    "en": "Tap here; otherwise the alarm rings again in 2 minutes.",
+    "de": "Tippen Sie hier; sonst klingelt der Wecker in 2 Minuten erneut.",
+    "az": "Toxunun; toxunmasanız zəng 2 dəqiqə sonra yenidən çalır.",
+    "ar": "المس هنا؛ وإلا يرنّ المنبّه مجددًا بعد دقيقتين."
+  },
+  "wake.awake": {
+    "tr": "Uyanığım",
+    "en": "I'm awake",
+    "de": "Ich bin wach",
+    "az": "Oyağam",
+    "ar": "أنا مستيقظ"
+  },
+  "wake.checkAlarm": {
+    "tr": "Uyanma denetimi",
+    "en": "Wake-up check",
+    "de": "Wach-Kontrolle",
+    "az": "Oyanma yoxlaması",
+    "ar": "التحقق من الاستيقاظ"
+  },
+  "NSCameraUsageDescription": {
+    "tr": "Alarm kapatma görevi için kaydettiğiniz QR kodu ya da barkodu okumak için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez.",
+    "en": "To scan the QR code or barcode you saved for an alarm's dismiss task. The image is processed on your phone, not stored and not sent anywhere.",
+    "de": "Zum Scannen des QR-Codes oder Barcodes, den Sie für die Aufgabe eines Weckers gespeichert haben. Das Bild wird auf dem Telefon verarbeitet, nicht gespeichert und nirgendwohin gesendet.",
+    "az": "Zəngin söndürmə tapşırığı üçün yadda saxladığınız QR kodu ya da barkodu oxumaq üçün. Görüntü telefonda işlənir, saxlanılmır və heç yerə göndərilmir.",
+    "ar": "لمسح رمز QR أو الباركود الذي حفظته لمهمة إيقاف المنبّه. تُعالج الصورة على هاتفك ولا تُحفظ ولا تُرسل إلى أي مكان."
   }
 }

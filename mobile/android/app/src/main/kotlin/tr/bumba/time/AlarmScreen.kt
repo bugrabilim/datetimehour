@@ -172,6 +172,10 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var rise by remember { mutableStateOf(item.rise) }
     var skipHolidays by remember { mutableStateOf(item.skipHolidays) }
     var sunrise by remember { mutableStateOf(item.sunrise) }
+    var task by remember { mutableStateOf(item.task) }
+    var taskLevel by remember { mutableStateOf(item.taskLevel) }
+    var code by remember { mutableStateOf(item.code) }
+    var wakeCheck by remember { mutableStateOf(item.wakeCheck) }
     // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
     val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
         if (r.resultCode == android.app.Activity.RESULT_OK) {
@@ -251,6 +255,27 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                 fun sunriseText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.sunriseMin", m)
                 ChoiceRow(L("alarm.sunrise"), sunriseText(sunrise), AlarmItem.SUNRISE_CHOICES.map { it to sunriseText(it) }) { sunrise = it }
                 Text(L("alarm.sunriseNote"), color = Theme.c.muted, fontSize = 12.sp)
+                // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
+                val kinds = tr.bumba.time.core.WakeTask.KINDS
+                ChoiceRow(L("alarm.task"), L("alarm.task.$task"), kinds.indices.map { it to L("alarm.task.${kinds[it]}") }) { task = kinds[it] }
+                if (task == "math") {
+                    ChoiceRow(L("alarm.task.level"), L("alarm.task.level.$taskLevel"), (1..3).map { it to L("alarm.task.level.$it") }) { taskLevel = it }
+                }
+                if (task == "code") {
+                    TextButton(onClick = { CodeScan.scan(context, onCode = { code = it }, onFail = {}) }) {
+                        Text(L(if (code.isEmpty()) "alarm.code.save" else "alarm.code.change"), color = Theme.c.accent)
+                    }
+                    Text(L(if (code.isEmpty()) "alarm.code.missing" else "alarm.code.saved"), color = Theme.c.muted, fontSize = 12.sp)
+                    Text(L("alarm.code.hint"), color = Theme.c.muted, fontSize = 12.sp)
+                }
+                if (task != "none") Text(L("alarm.task.note"), color = Theme.c.muted, fontSize = 12.sp)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(L("alarm.wakeCheck"), color = Theme.c.text, fontSize = 15.sp)
+                        Text(L("alarm.wakeCheck.note"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    Switch(wakeCheck, { wakeCheck = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
                 // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
                 if (days.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
@@ -266,7 +291,8 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
             TextButton(onClick = {
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
                     snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
-                    skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise))
+                    skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise, task = task, taskLevel = taskLevel,
+                    code = code, wakeCheck = wakeCheck))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },

@@ -302,6 +302,7 @@ private struct AlarmEditor: View {
     @State var item: AlarmItem
     let onSave: (AlarmItem) -> Void
     @State private var time = Date()
+    @State private var scanning = false
 
     var body: some View {
         NavigationStack {
@@ -362,6 +363,31 @@ private struct AlarmEditor: View {
                 } footer: {
                     Text(L("alarm.sunriseNote"))
                 }
+                // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
+                Section {
+                    Picker(L("alarm.task"), selection: $item.task) {
+                        ForEach(WakeTask.kinds, id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                    }
+                    if item.task == "math" {
+                        Picker(L("alarm.task.level"), selection: $item.taskLevel) {
+                            ForEach(1...3, id: \.self) { n in Text(L("alarm.task.level.\(n)")).tag(n) }
+                        }
+                    }
+                    if item.task == "code" {
+                        if CodeScannerView.available {
+                            Button(L(item.code.isEmpty ? "alarm.code.save" : "alarm.code.change")) { scanning = true }
+                        } else {
+                            Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        Text(L(item.code.isEmpty ? "alarm.code.missing" : "alarm.code.saved")).font(.footnote).foregroundStyle(Theme.muted)
+                        Text(L("alarm.code.hint")).font(.footnote).foregroundStyle(Theme.muted)
+                    }
+                    Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
+                } header: {
+                    Text(L("alarm.task.heading"))
+                } footer: {
+                    Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note"))
+                }
                 // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
                 if !item.days.isEmpty {
                     Section {
@@ -373,6 +399,13 @@ private struct AlarmEditor: View {
                 }
             }
             .themedBackground()
+            .sheet(isPresented: $scanning) {
+                CodeScannerView { value in
+                    item.code = value
+                    scanning = false
+                }
+                .ignoresSafeArea()
+            }
             .navigationTitle(L("alarm.new"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

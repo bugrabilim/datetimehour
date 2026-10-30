@@ -150,6 +150,8 @@ struct RootView: View {
     private var landscape: Bool { vsc == .compact }
     /// Alarm son iki saatte çaldıysa açılışta günaydın kartı (MorningCheck)
     @State private var morning = false
+    /// Görevli alarm durduruldu: görev ekranı (çözülmeden kapanmaz; WakeTasks)
+    @State private var wakeTask: PendingWakeTask?
 
     var body: some View {
         // Bar sayfanın altında ayrı bir satır: sayfanın son satırları barın altında kalmaz
@@ -167,9 +169,23 @@ struct RootView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboard = true }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboard = false }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            if MorningCheck.due() { morning = true }
+            if WakeTasks.onActive() {
+                wakeTask = WakeTasks.pending
+            } else if MorningCheck.due() {
+                morning = true
+            }
         }
         .sheet(isPresented: $morning) { MorningCard().preferredColorScheme(scheme) }
+        .fullScreenCover(item: $wakeTask) { t in
+            WakeTaskView(task: t) {
+                Task {
+                    await WakeTasks.solved()
+                    wakeTask = nil
+                    if MorningCheck.due() { morning = true }
+                }
+            }
+            .preferredColorScheme(scheme)
+        }
         .tint(Theme.accent)
         .preferredColorScheme(scheme)
         .task {
@@ -256,7 +272,8 @@ private struct TabBar: View {
 
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep
+         privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
+         wake
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -270,6 +287,10 @@ enum DebugScreen: String, Identifiable {
         case .stopwatch: StopwatchView()
         case .pomodoro: PomodoroView()
         case .sleep: SleepView()
+        case .wake:
+            // Görev ekranı örneği (CI ekran görüntüsü): orta zorlukta matematik
+            WakeTaskView(task: PendingWakeTask(task: "math", level: 2, code: "", wakeCheck: true, title: L("sleep.alarmLabel"),
+                                               rise: false, rings: 0, repeatID: nil)) {}
         case .datecalc: DateCalcView()
         case .world: WorldClockView()
         case .weather: WeatherView()

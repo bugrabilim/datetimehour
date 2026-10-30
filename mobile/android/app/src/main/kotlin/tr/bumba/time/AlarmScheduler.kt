@@ -44,7 +44,16 @@ data class AlarmItem(
     val skipHolidays: Boolean = false,
     /** Gün doğumu ışığı: alarmdan bu kadar dakika önce tam ekran saat yavaşça aydınlanır (0 = kapalı; rakip analizi #17) */
     val sunrise: Int = 0,
+    /** Kapatma görevi (rakip analizi #13): none, math, shake, steps, code; zorluk (matematik 1–3); kayıtlı kod (QR/barkod) */
+    val task: String = "none",
+    val taskLevel: Int = 2,
+    val code: String = "",
+    /** Uyanma denetimi: kapattıktan 5 dk sonra "Uyanık mısınız?"; cevap gelmezse yeniden çalar */
+    val wakeCheck: Boolean = false,
 ) {
+    /** Kapatırken istenecek görev (kod kaydedilmediyse matematik); yoksa "none" */
+    val effectiveTask: String get() = if (task == "code" && code.isEmpty()) "math" else task
+
     val title: String get() = label.ifEmpty { L("tools.alarm.defaultLabel") }
     val timeText: String get() = Fmt.time(LocalDateTime.now().withHour(hour).withMinute(minute).atZone(ZoneId.systemDefault()))
 
@@ -102,7 +111,7 @@ data class AlarmItem(
     fun toJson(): JSONObject = JSONObject().put("id", id).put("hour", hour).put("minute", minute).put("label", label)
         .put("days", JSONArray(days)).put("enabled", enabled).put("snooze", snooze).put("skipUntil", skipUntil)
         .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise).put("skipHolidays", skipHolidays)
-        .put("sunrise", sunrise)
+        .put("sunrise", sunrise).put("task", task).put("taskLevel", taskLevel).put("code", code).put("wakeCheck", wakeCheck)
 
     companion object {
         private const val KEY = "alarms"
@@ -134,6 +143,7 @@ data class AlarmItem(
                 o.optBoolean("enabled", true), o.optInt("snooze", 5), o.optLong("skipUntil", 0),
                 o.optString("sound", ""), o.optBoolean("vibrate", true), o.optInt("snoozeMax", 0), o.optBoolean("rise", false),
                 o.optBoolean("skipHolidays", false), o.optInt("sunrise", 0),
+                o.optString("task", "none"), o.optInt("taskLevel", 2), o.optString("code", ""), o.optBoolean("wakeCheck", false),
             )
         }
 
@@ -323,6 +333,7 @@ object AlarmScheduler {
     fun ring(c: Context, id: String, title: String, kind: String) {
         ensureChannels(c)
         if (!canNotify(c)) return
+        if (kind == WakeCheck.KIND) { WakeCheck.ask(c, id); return }
         val item = if (kind == "alarm") AlarmItem.find(id) else null
         if (item?.rise == true && AlarmRingService.start(c, id, title, kind)) return
         runCatching { NotificationManagerCompat.from(c).notify(id.hashCode(), notification(c, id, title, kind, silent = false)) }
@@ -367,7 +378,9 @@ object AlarmScheduler {
                 .setFullScreenIntent(full, true)
                 .setContentIntent(full)
                 .setOngoing(true)
-                .addAction(0, L("tools.alarm.stop"), action(ACTION_STOP))
+            // Görevli alarm bildirimden kapatılamaz: dokununca alarm ekranı (görev) açılır
+            if (item != null && item.effectiveTask != "none") b.addAction(0, L("wake.title"), full)
+            else b.addAction(0, L("tools.alarm.stop"), action(ACTION_STOP))
             if (silent) b.setSilent(true)
             else b.setSound(item?.sound?.takeIf { it.isNotEmpty() }?.let(android.net.Uri::parse) ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM),
                 android.media.AudioManager.STREAM_ALARM)
@@ -383,6 +396,8 @@ object AlarmScheduler {
     fun stop(c: Context, id: String) {
         silence(c, id)
         Prefs.store.edit().remove(snoozeKey(id)).apply()
+        // Uyanma denetimi: 5 dk sonra soru, 2 dk içinde cevap yoksa yedek alarm
+        if (AlarmItem.find(id)?.wakeCheck == true) WakeCheck.schedule(c, id.removePrefix(SNOOZE))
     }
 
     private fun silence(c: Context, id: String) {
@@ -411,6 +426,7 @@ class AlarmReceiver : BroadcastReceiver() {
         when (intent.action) {
             AlarmScheduler.ACTION_STOP -> AlarmScheduler.stop(c, id)
             AlarmScheduler.ACTION_SNOOZE -> AlarmScheduler.snooze(c, id, title)
+            WakeCheck.ACTION_AWAKE -> WakeCheck.awake(c, id)
             else -> {
                 if (kind == "alarm" && !id.startsWith(AlarmScheduler.SNOOZE)) {
                     // Yeni çalma: erteleme sayacı sıfırlanır

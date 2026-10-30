@@ -7,7 +7,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.json.JSONObject
 import org.junit.Test
@@ -127,6 +129,21 @@ class MoreScreensTest {
         SleepPlan.on = true
         page("tr-uyku", L("sleep.title")) { SleepScreen() }
         SleepPlan.on = false
+    }
+
+    /** Alarm kapatma görevi (#13): matematik ve sallama */
+    @Test fun wakeTasks() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        shot("tr-alarm-gorevi", dark = true) {
+            androidx.compose.foundation.layout.Column(Modifier.padding(24.dp)) {
+                WakeTaskPanel(AlarmItem(id = "m", hour = 7, minute = 0, task = "math", taskLevel = 2)) {}
+            }
+        }
+        shot("tr-alarm-gorevi-sallama") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(24.dp)) {
+                WakeTaskPanel(AlarmItem(id = "s", hour = 7, minute = 0, task = "shake")) {}
+            }
+        }
     }
 
     /** Gün doğumu ışığı: alarmdan 8 dk önce (30 dk pencere), tam ekran saat sıcak renkle aydınlanmış */

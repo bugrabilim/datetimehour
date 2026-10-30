@@ -140,6 +140,41 @@
           }
         }
       }
+    },
+    "NSCameraUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm kapatma görevi için kaydettiğiniz QR kodu ya da barkodu okumak için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To scan the QR code or barcode you saved for an alarm's dismiss task. The image is processed on your phone, not stored and not sent anywhere."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum Scannen des QR-Codes oder Barcodes, den Sie für die Aufgabe eines Weckers gespeichert haben. Das Bild wird auf dem Telefon verarbeitet, nicht gespeichert und nirgendwohin gesendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngin söndürmə tapşırığı üçün yadda saxladığınız QR kodu ya da barkodu oxumaq üçün. Görüntü telefonda işlənir, saxlanılmır və heç yerə göndərilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لمسح رمز QR أو الباركود الذي حفظته لمهمة إيقاف المنبّه. تُعالج الصورة على هاتفك ولا تُحفظ ولا تُرسل إلى أي مكان."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

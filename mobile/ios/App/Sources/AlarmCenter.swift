@@ -30,6 +30,12 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var skipHolidays = false
     /// Gün doğumu ışığı: alarmdan bu kadar dakika önce tam ekran saat yavaşça aydınlanır (0 = kapalı; rakip analizi #17)
     var sunrise = 0
+    /// Kapatma görevi (rakip analizi #13): none, math, shake, steps, code; zorluk (matematik 1–3); kayıtlı kod (QR/barkod)
+    var task = "none"
+    var taskLevel = 2
+    var code = ""
+    /// Uyanma denetimi: kapattıktan 5 dk sonra "Uyanık mısınız?"; cevap gelmezse yeniden çalar
+    var wakeCheck = false
 
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
     static let snoozeMaxChoices = [0, 1, 2, 3, 5]
@@ -42,7 +48,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -58,6 +64,10 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         rise = try c.decodeIfPresent(Bool.self, forKey: .rise) ?? false
         skipHolidays = try c.decodeIfPresent(Bool.self, forKey: .skipHolidays) ?? false
         sunrise = try c.decodeIfPresent(Int.self, forKey: .sunrise) ?? 0
+        task = try c.decodeIfPresent(String.self, forKey: .task) ?? "none"
+        taskLevel = try c.decodeIfPresent(Int.self, forKey: .taskLevel) ?? 2
+        code = try c.decodeIfPresent(String.self, forKey: .code) ?? ""
+        wakeCheck = try c.decodeIfPresent(Bool.self, forKey: .wakeCheck) ?? false
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -71,6 +81,13 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     }
 
     var title: String { label.isEmpty ? L("tools.alarm.defaultLabel") : label }
+
+    /// Durdurulunca istenecek görev ve denetim (görev ya da denetim yoksa nil)
+    var wakeTask: PendingWakeTask? {
+        guard task != "none" || wakeCheck else { return nil }
+        let t = task == "code" && code.isEmpty ? "math" : task
+        return PendingWakeTask(task: t, level: taskLevel, code: code, wakeCheck: wakeCheck, title: title, rise: rise, rings: 0, repeatID: nil)
+    }
     var timeText: String {
         var c = DateComponents()
         c.hour = hour
@@ -300,6 +317,8 @@ enum KitAlarms {
         var snooze = 0
         var remaining = -1
         var rise = false
+        /// Kapatma görevi ve uyanma denetimi: Durdur uygulamayı açar (AlarmStopIntent)
+        var wake: PendingWakeTask?
 
         init(snooze: Int = 0, remaining: Int = -1, rise: Bool = false) {
             self.snooze = snooze
@@ -309,6 +328,7 @@ enum KitAlarms {
 
         init(_ item: AlarmItem) {
             self.init(snooze: item.snooze, remaining: item.snoozeMax == 0 ? -1 : item.snoozeMax, rise: item.rise)
+            wake = item.wakeTask
         }
 
         /// Erteleme düğmesi gösterilir mi
@@ -331,11 +351,12 @@ enum KitAlarms {
         return AlarmAttributes(presentation: AlarmPresentation(alert: alert), metadata: SaatAlarmData(), tintColor: Theme.accent)
     }
 
-    private static func config(_ schedule: Alarm.Schedule, title: String, options: Options) -> AlarmManager.AlarmConfiguration<SaatAlarmData> {
+    private static func config(_ schedule: Alarm.Schedule, id: UUID, title: String, options: Options) -> AlarmManager.AlarmConfiguration<SaatAlarmData> {
         AlarmManager.AlarmConfiguration<SaatAlarmData>(
             schedule: schedule, attributes: attributes(title: title, options: options),
+            stopIntent: options.wake.map { AlarmStopIntent(alarmID: id.uuidString, wake: $0) },
             secondaryIntent: options.canSnooze
-                ? SnoozeAlarmIntent(minutes: options.snooze, label: title, remaining: options.remaining, rise: options.rise) : nil,
+                ? SnoozeAlarmIntent(minutes: options.snooze, label: title, remaining: options.remaining, rise: options.rise, wake: options.wake) : nil,
             sound: options.rise ? .named(AlarmItem.riseSound) : .default)
     }
 
@@ -358,7 +379,7 @@ enum KitAlarms {
                 let schedule: Alarm.Schedule = skipping
                     ? .fixed(item.next(after: now) ?? now)
                     : .relative(.init(time: time, repeats: .never))
-                if (try? await manager.schedule(id: item.id, configuration: config(schedule, title: item.title, options: Options(item)))) != nil {
+                if (try? await manager.schedule(id: item.id, configuration: config(schedule, id: item.id, title: item.title, options: Options(item)))) != nil {
                     scheduled.append(item.id.uuidString)
                 }
                 continue
@@ -368,14 +389,14 @@ enum KitAlarms {
             let plan = item.plan(now: now)
             for later in plan.fixed {
                 let extra = UUID()
-                if (try? await manager.schedule(id: extra, configuration: config(.fixed(later), title: item.title, options: Options(item)))) != nil {
+                if (try? await manager.schedule(id: extra, configuration: config(.fixed(later), id: extra, title: item.title, options: Options(item)))) != nil {
                     scheduled.append(extra.uuidString)
                 }
             }
             let days = plan.days
             guard !days.isEmpty else { continue }
             let schedule = Alarm.Schedule.relative(.init(time: time, repeats: .weekly(days.map(weekday))))
-            if (try? await manager.schedule(id: item.id, configuration: config(schedule, title: item.title, options: Options(item)))) != nil {
+            if (try? await manager.schedule(id: item.id, configuration: config(schedule, id: item.id, title: item.title, options: Options(item)))) != nil {
                 scheduled.append(item.id.uuidString)
             }
         }
@@ -384,7 +405,7 @@ enum KitAlarms {
 
     static func schedule(id: UUID, at date: Date, title: String, options: Options = Options()) async -> Bool {
         guard await requestAccess() else { return false }
-        return (try? await AlarmManager.shared.schedule(id: id, configuration: config(.fixed(date), title: title, options: options))) != nil
+        return (try? await AlarmManager.shared.schedule(id: id, configuration: config(.fixed(date), id: id, title: title, options: options))) != nil
     }
 
     static func cancel(id: UUID) {
@@ -402,20 +423,49 @@ struct SnoozeAlarmIntent: LiveActivityIntent {
     @Parameter(title: "Label") var label: String
     @Parameter(title: "Remaining") var remaining: Int
     @Parameter(title: "Rise") var rise: Bool
+    /// Kapatma görevi ve uyanma denetimi ertelenen alarmda da sürer (JSON, PendingWakeTask; boşsa yok)
+    @Parameter(title: "Wake") var wake: String
 
     init() {}
 
-    init(minutes: Int, label: String, remaining: Int, rise: Bool) {
+    init(minutes: Int, label: String, remaining: Int, rise: Bool, wake: PendingWakeTask?) {
         self.minutes = minutes
         self.label = label
         self.remaining = remaining
         self.rise = rise
+        self.wake = wake.flatMap { try? JSONEncoder().encode($0) }.map { String(decoding: $0, as: UTF8.self) } ?? ""
     }
 
     func perform() async throws -> some IntentResult {
         let left = remaining < 0 ? -1 : max(0, remaining - 1)
-        _ = await KitAlarms.schedule(id: UUID(), at: Date().addingTimeInterval(Double(max(1, minutes) * 60)), title: label,
-                                     options: .init(snooze: minutes, remaining: left, rise: rise))
+        var options = KitAlarms.Options(snooze: minutes, remaining: left, rise: rise)
+        options.wake = try? JSONDecoder().decode(PendingWakeTask.self, from: Data(wake.utf8))
+        _ = await KitAlarms.schedule(id: UUID(), at: Date().addingTimeInterval(Double(max(1, minutes) * 60)), title: label, options: options)
+        return .result()
+    }
+}
+
+/// Görevli ya da denetimli alarmda "Durdur": alarm susar, uygulama açılır ve görev istenir (WakeTasks). Görev yapılmazsa
+/// alarm 1 dakika sonra yeniden çalar (en çok 10 kez); yalnız denetim varsa 5 dk sonra "Uyanık mısınız?" sorulur.
+@available(iOS 26.0, *)
+struct AlarmStopIntent: LiveActivityIntent {
+    static let title: LocalizedStringResource = "Stop"
+    static let isDiscoverable = false
+    static var openAppWhenRun: Bool = true
+
+    @Parameter(title: "Alarm") var alarmID: String
+    @Parameter(title: "Wake") var wake: String
+
+    init() {}
+
+    init(alarmID: String, wake: PendingWakeTask) {
+        self.alarmID = alarmID
+        self.wake = (try? JSONEncoder().encode(wake)).map { String(decoding: $0, as: UTF8.self) } ?? ""
+    }
+
+    func perform() async throws -> some IntentResult {
+        if let id = UUID(uuidString: alarmID) { try? AlarmManager.shared.stop(id: id) }
+        if let p = try? JSONDecoder().decode(PendingWakeTask.self, from: Data(wake.utf8)) { await WakeTasks.stopped(p) }
         return .result()
     }
 }
