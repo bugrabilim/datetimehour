@@ -234,7 +234,11 @@ object AlarmScheduler {
     fun restoreAll(c: Context) {
         sync(c)
         val now = System.currentTimeMillis()
-        Prefs.store.getLong("tm.end", 0).takeIf { it > now }?.let { schedule(c, TIMER, it, L("tools.countdown.finished"), TIMER) }
+        for (t in TimerItem.load()) if (t.end > now) schedule(c, t.alarmId, t.end, t.doneTitle, TIMER)
+        Prefs.store.getLong("hiit.start", 0).takeIf { it > 0 && Prefs.store.getLong("hiit.paused", 0) == 0L }?.let {
+            val end = it + HiitConfig.load().totalSeconds * 1000L
+            if (end > now) schedule(c, "hiit", end, L("hiit.done"), TIMER)
+        }
         Prefs.store.getLong("pomo.end", 0).takeIf { it > now }?.let {
             val phase = Prefs.store.getString("pomo.phase", "work")!!
             schedule(c, POMODORO, it, T("tools.pomodoro.phaseDone", L("tools.pomodoro.$phase")), POMODORO)

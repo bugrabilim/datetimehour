@@ -57,7 +57,7 @@ struct ToolsTab: View {
 // MARK: Ortak
 
 /// Büyük süre göstergesi
-private struct BigTime: View {
+struct BigTime: View {
     let text: String
     var body: some View {
         Text(text)
@@ -71,7 +71,7 @@ private struct BigTime: View {
     }
 }
 
-private struct RoundButton: View {
+struct RoundButton: View {
     let title: String
     var prominent = false
     let action: () -> Void
@@ -88,7 +88,7 @@ private struct RoundButton: View {
 }
 
 /// Saniyelik süre: "1:02:03" ya da "02:03"
-private func clock(_ seconds: Int) -> String {
+func clock(_ seconds: Int) -> String {
     let s = max(0, seconds)
     return s >= 3600 ? String(format: "%d:%02d:%02d", s / 3600, (s % 3600) / 60, s % 60) : String(format: "%02d:%02d", s / 60, s % 60)
 }
@@ -180,109 +180,21 @@ struct TimerView: View {
         VStack(spacing: 0) {
             Picker("", selection: $mode) {
                 Text(L("tools.countdown.tabTimer")).tag(0)
-                Text(L("tools.countdown.tabDate")).tag(1)
+                Text(L("hiit.tab")).tag(1)
+                Text(L("tools.countdown.tabDate")).tag(2)
             }
             .pickerStyle(.segmented)
             .padding(16)
-            if mode == 0 { DurationTimer() } else { DateCountdown() }
+            switch mode {
+            case 0: TimersView()
+            case 1: HiitView()
+            default: DateCountdown()
+            }
             Spacer(minLength: 0)
         }
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle(L("tools.timer"))
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-private struct DurationTimer: View {
-    @AppStorage("tm.end") private var end = 0.0      // çalışırken bitiş anı
-    @AppStorage("tm.left") private var left = 0.0    // duraklatılmışken kalan
-    @AppStorage("tm.id") private var alarmID = ""
-    @State private var h = 0
-    @State private var m = 5
-    @State private var s = 0
-
-    private var running: Bool { end > 0 }
-    private var paused: Bool { end == 0 && left > 0 }
-
-    var body: some View {
-        TimelineView(.periodic(from: .now, by: 0.5)) { context in
-            let remaining = running ? max(0, end - context.date.timeIntervalSinceReferenceDate) : left
-            VStack(spacing: 20) {
-                if running || paused {
-                    BigTime(text: remaining <= 0 ? L("tools.countdown.finished") : clock(Int(remaining.rounded(.up))))
-                        .padding(.top, 30)
-                } else {
-                    HStack(spacing: 0) {
-                        wheel($h, 0..<24, L("tools.countdown.hoursShort"))
-                        wheel($m, 0..<60, L("tools.countdown.minutesShort"))
-                        wheel($s, 0..<60, L("tools.countdown.secondsShort"))
-                    }
-                    .frame(height: 180)
-                    .environment(\.layoutDirection, .leftToRight)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach([1, 3, 5, 10, 15, 25, 30, 45, 60], id: \.self) { n in
-                                Button(T("tools.countdown.presetMin", n)) { h = n / 60; m = n % 60; s = 0; start(seconds: Double(n * 60)) }
-                                    .buttonStyle(.bordered)
-                                    .tint(Theme.accent)
-                            }
-                        }
-                        .padding(.horizontal, 16)
-                    }
-                }
-                HStack(spacing: 12) {
-                    if running {
-                        RoundButton(title: L("tools.countdown.reset")) { reset() }
-                        RoundButton(title: L("tools.countdown.pause"), prominent: true) {
-                            left = remaining
-                            end = 0
-                            cancelAlarm()
-                        }
-                    } else if paused {
-                        RoundButton(title: L("tools.countdown.reset")) { reset() }
-                        RoundButton(title: L("tools.countdown.resume"), prominent: true) { start(seconds: left) }
-                    } else {
-                        RoundButton(title: L("tools.countdown.start"), prominent: true) { start(seconds: Double(h * 3600 + m * 60 + s)) }
-                            .disabled(h + m + s == 0)
-                    }
-                }
-                .padding(.horizontal, 20)
-                if running && remaining <= 0 {
-                    Text(L("tools.countdown.finished")).font(.headline).foregroundStyle(Theme.accent)
-                }
-                AlarmNote()
-            }
-        }
-    }
-
-    private func wheel(_ value: Binding<Int>, _ range: Range<Int>, _ unit: String) -> some View {
-        Picker(unit, selection: value) {
-            ForEach(range, id: \.self) { Text("\($0) \(unit)").tag($0) }
-        }
-        .pickerStyle(.wheel)
-        .frame(maxWidth: .infinity)
-    }
-
-    private func start(seconds: Double) {
-        guard seconds > 0 else { return }
-        BadgeStore.shared.hit(.zamanlayici)
-        let id = UUID()
-        alarmID = id.uuidString
-        end = Date().timeIntervalSinceReferenceDate + seconds
-        left = 0
-        let at = Date(timeIntervalSinceReferenceDate: end)
-        Task { await AlarmCenter.schedule(id: id, at: at, title: L("tools.countdown.finished")) }
-    }
-
-    private func cancelAlarm() {
-        if let id = UUID(uuidString: alarmID) { AlarmCenter.cancel(id: id) }
-        alarmID = ""
-    }
-
-    private func reset() {
-        cancelAlarm()
-        end = 0
-        left = 0
     }
 }
 

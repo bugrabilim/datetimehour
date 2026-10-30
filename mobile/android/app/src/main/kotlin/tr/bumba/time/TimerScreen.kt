@@ -59,16 +59,22 @@ import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.temporal.ChronoUnit
 
-/** Zamanlayıcı (süre) ve tarihe geri sayım (iOS'taki TimerView) */
+/** Zamanlayıcılar (birden çok, adlı), aralık (HIIT) antrenmanı ve tarihe geri sayım (iOS'taki TimerView) */
 @Composable
 fun TimerScreen() {
     var mode by rememberSaveable { mutableIntStateOf(0) }
     Column(Modifier.fillMaxSize()) {
+        val tabs = listOf(L("tools.countdown.tabTimer"), L("hiit.tab"), L("tools.countdown.tabDate"))
         SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth().padding(16.dp)) {
-            SegmentedButton(mode == 0, { mode = 0 }, SegmentedButtonDefaults.itemShape(0, 2), colors = segColors()) { Text(L("tools.countdown.tabTimer")) }
-            SegmentedButton(mode == 1, { mode = 1 }, SegmentedButtonDefaults.itemShape(1, 2), colors = segColors()) { Text(L("tools.countdown.tabDate")) }
+            tabs.forEachIndexed { i, t ->
+                SegmentedButton(mode == i, { mode = i }, SegmentedButtonDefaults.itemShape(i, tabs.size), colors = segColors()) { Text(t, maxLines = 1) }
+            }
         }
-        if (mode == 0) DurationTimer() else DateCountdown()
+        when (mode) {
+            0 -> TimersScreen()
+            1 -> HiitScreen()
+            else -> DateCountdown()
+        }
     }
 }
 
@@ -95,86 +101,9 @@ internal fun rememberNotifyAsk(): () -> Unit {
     }
 }
 
-@Composable
-private fun DurationTimer() {
-    val context = LocalContext.current
-    val ask = rememberNotifyAsk()
-    // Çalışırken bitiş anı (ms), duraklatılmışken kalan (ms)
-    var end by remember { mutableLongStateOf(ToolState.long("tm.end")) }
-    var left by remember { mutableLongStateOf(ToolState.long("tm.left")) }
-    var h by rememberSaveable { mutableIntStateOf(0) }
-    var m by rememberSaveable { mutableIntStateOf(5) }
-    var s by rememberSaveable { mutableIntStateOf(0) }
-    var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
-    LaunchedEffect(end) { while (end > 0) { now = System.currentTimeMillis(); delay(250) } }
-    val running = end > 0
-    val paused = end == 0L && left > 0
-    val remaining = if (running) maxOf(0, end - now) else left
-
-    fun save(e: Long, l: Long) { end = e; left = l; ToolState.putLong("tm.end", e); ToolState.putLong("tm.left", l) }
-    fun start(ms: Long) {
-        if (ms <= 0) return
-        BadgeStore.hit(Badge.ZAMANLAYICI)
-        ask()
-        val e = System.currentTimeMillis() + ms
-        now = System.currentTimeMillis()
-        save(e, 0)
-        AlarmScheduler.schedule(context, AlarmScheduler.TIMER, e, L("tools.countdown.finished"), AlarmScheduler.TIMER)
-    }
-    fun reset() { AlarmScheduler.cancel(context, AlarmScheduler.TIMER); save(0, 0) }
-
-    Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(18.dp),
-    ) {
-        if (running || paused) {
-            Spacer(Modifier.height(20.dp))
-            BigTime(if (remaining <= 0) L("tools.countdown.finished") else clock((remaining + 999) / 1000))
-        } else {
-            Ltr {
-                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                    Wheel(h, 0..23, L("tools.countdown.hoursShort")) { h = it }
-                    Wheel(m, 0..59, L("tools.countdown.minutesShort")) { m = it }
-                    Wheel(s, 0..59, L("tools.countdown.secondsShort")) { s = it }
-                }
-            }
-            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                for (n in listOf(1, 3, 5, 10, 15, 25, 30, 45, 60)) {
-                    Text(
-                        T("tools.countdown.presetMin", n),
-                        Modifier.border(1.dp, Theme.c.accent.copy(alpha = 0.5f), RoundedCornerShape(50))
-                            .clickable { h = n / 60; m = n % 60; s = 0; start(n * 60_000L) }
-                            .padding(horizontal = 14.dp, vertical = 8.dp),
-                        color = Theme.c.accent, fontSize = 14.sp,
-                    )
-                }
-            }
-        }
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            when {
-                running -> {
-                    RoundButton(L("tools.countdown.reset"), false, Modifier.weight(1f)) { reset() }
-                    RoundButton(L("tools.countdown.pause"), true, Modifier.weight(1f)) {
-                        AlarmScheduler.cancel(context, AlarmScheduler.TIMER)
-                        save(0, remaining)
-                    }
-                }
-                paused -> {
-                    RoundButton(L("tools.countdown.reset"), false, Modifier.weight(1f)) { reset() }
-                    RoundButton(L("tools.countdown.resume"), true, Modifier.weight(1f)) { start(left) }
-                }
-                else -> RoundButton(L("tools.countdown.start"), true, Modifier.fillMaxWidth()) { start((h * 3600L + m * 60L + s) * 1000) }
-            }
-        }
-        if (running && remaining <= 0) Text(L("tools.countdown.finished"), color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
-        Text(L("alarm.realNote"), color = Theme.c.muted, fontSize = 13.sp)
-    }
-}
-
 /** Basit sayı çarkı: yukarı/aşağı oklarla (basılı tutmadan) */
 @Composable
-private fun Wheel(value: Int, range: IntRange, unit: String, onChange: (Int) -> Unit) {
+internal fun NumberWheel(value: Int, range: IntRange, unit: String, onChange: (Int) -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         IconButton(onClick = { onChange(if (value >= range.last) range.first else value + 1) }) {
             Icon(Icons.Filled.KeyboardArrowUp, null, tint = Theme.c.accent)

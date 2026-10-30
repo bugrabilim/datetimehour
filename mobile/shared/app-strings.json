@@ -1980,5 +1980,173 @@
     "de": "Datum",
     "az": "Tarix",
     "ar": "التاريخ"
+  },
+  "timers.name": {
+    "tr": "Ad (isteğe bağlı)",
+    "en": "Name (optional)",
+    "de": "Name (optional)",
+    "az": "Ad (istəyə bağlı)",
+    "ar": "الاسم (اختياري)"
+  },
+  "timers.namePlaceholder": {
+    "tr": "Örn. Çay",
+    "en": "e.g. Tea",
+    "de": "z. B. Tee",
+    "az": "Məs. Çay",
+    "ar": "مثلًا: الشاي"
+  },
+  "timers.heading": {
+    "tr": "Zamanlayıcılar",
+    "en": "Timers",
+    "de": "Timer",
+    "az": "Taymerlər",
+    "ar": "المؤقتات"
+  },
+  "timers.new": {
+    "tr": "Yeni zamanlayıcı",
+    "en": "New timer",
+    "de": "Neuer Timer",
+    "az": "Yeni taymer",
+    "ar": "مؤقت جديد"
+  },
+  "timers.remove": {
+    "tr": "Kaldır",
+    "en": "Remove",
+    "de": "Entfernen",
+    "az": "Sil",
+    "ar": "إزالة"
+  },
+  "timers.restart": {
+    "tr": "Yeniden başlat",
+    "en": "Restart",
+    "de": "Neu starten",
+    "az": "Yenidən başlat",
+    "ar": "إعادة التشغيل"
+  },
+  "timers.doneNamed": {
+    "tr": "{name}: süre doldu",
+    "en": "{name}: time's up",
+    "de": "{name}: Zeit abgelaufen",
+    "az": "{name}: vaxt bitdi",
+    "ar": "{name}: انتهى الوقت"
+  },
+  "timers.multiNote": {
+    "tr": "Birden çok zamanlayıcı aynı anda çalışabilir; her biri süresi dolunca ayrı alarm çalar.",
+    "en": "Several timers can run at once; each rings its own alarm when it ends.",
+    "de": "Mehrere Timer können gleichzeitig laufen; jeder klingelt am Ende einzeln.",
+    "az": "Bir neçə taymer eyni anda işləyə bilər; hər biri bitəndə ayrıca zəng çalır.",
+    "ar": "يمكن تشغيل عدة مؤقتات معًا؛ ويرن كل منها عند انتهائه."
+  },
+  "hiit.tab": {
+    "tr": "Aralık",
+    "en": "Interval",
+    "de": "Intervall",
+    "az": "İnterval",
+    "ar": "فترات"
+  },
+  "hiit.warmup": {
+    "tr": "Isınma",
+    "en": "Warm-up",
+    "de": "Aufwärmen",
+    "az": "İsinmə",
+    "ar": "الإحماء"
+  },
+  "hiit.work": {
+    "tr": "Çalışma",
+    "en": "Work",
+    "de": "Belastung",
+    "az": "İş",
+    "ar": "التمرين"
+  },
+  "hiit.rest": {
+    "tr": "Dinlenme",
+    "en": "Rest",
+    "de": "Pause",
+    "az": "İstirahət",
+    "ar": "الراحة"
+  },
+  "hiit.rounds": {
+    "tr": "Tur sayısı",
+    "en": "Rounds",
+    "de": "Runden",
+    "az": "Dövrə sayı",
+    "ar": "عدد الجولات"
+  },
+  "hiit.round": {
+    "tr": "Tur {n}/{total}",
+    "en": "Round {n}/{total}",
+    "de": "Runde {n}/{total}",
+    "az": "Dövrə {n}/{total}",
+    "ar": "الجولة {n}/{total}"
+  },
+  "hiit.total": {
+    "tr": "Toplam süre: {t}",
+    "en": "Total time: {t}",
+    "de": "Gesamtdauer: {t}",
+    "az": "Ümumi vaxt: {t}",
+    "ar": "المدة الإجمالية: {t}"
+  },
+  "hiit.done": {
+    "tr": "Antrenman bitti",
+    "en": "Workout complete",
+    "de": "Training beendet",
+    "az": "Məşq bitdi",
+    "ar": "انتهى التمرين"
+  },
+  "hiit.note": {
+    "tr": "Antrenman sürerken ekran açık kalır. Uygulamadan çıkarsanız geçişler duyurulmaz, yalnız bitişte alarm çalar.",
+    "en": "The screen stays on during the workout. If you leave the app, phase changes are not announced; only the end rings an alarm.",
+    "de": "Während des Trainings bleibt der Bildschirm an. Verlassen Sie die App, werden Wechsel nicht angesagt; nur am Ende klingelt ein Alarm.",
+    "az": "Məşq zamanı ekran açıq qalır. Tətbiqdən çıxsanız keçidlər elan edilmir, yalnız sonda zəng çalır.",
+    "ar": "تبقى الشاشة مضاءة أثناء التمرين. إذا غادرت التطبيق فلن يُعلن عن الانتقالات، ويرن المنبه عند النهاية فقط."
+  },
+  "hiit.say.warmup": {
+    "tr": "Isınma",
+    "en": "Warm up",
+    "de": "Aufwärmen",
+    "az": "İsinmə",
+    "ar": "إحماء"
+  },
+  "hiit.say.work": {
+    "tr": "Çalış",
+    "en": "Work",
+    "de": "Los",
+    "az": "İşlə",
+    "ar": "ابدأ"
+  },
+  "hiit.say.rest": {
+    "tr": "Dinlen",
+    "en": "Rest",
+    "de": "Pause",
+    "az": "Dincəl",
+    "ar": "استرح"
+  },
+  "hiit.say.last": {
+    "tr": "Son tur",
+    "en": "Last round",
+    "de": "Letzte Runde",
+    "az": "Son dövrə",
+    "ar": "الجولة الأخيرة"
+  },
+  "hiit.say.done": {
+    "tr": "Bitti, tebrikler!",
+    "en": "Done, well done!",
+    "de": "Fertig, gut gemacht!",
+    "az": "Bitdi, təbriklər!",
+    "ar": "انتهى، أحسنت!"
+  },
+  "tools.voice": {
+    "tr": "Sesli duyuru",
+    "en": "Voice announcements",
+    "de": "Sprachansagen",
+    "az": "Səsli elan",
+    "ar": "إعلانات صوتية"
+  },
+  "tools.voiceNote": {
+    "tr": "Telefonun kendi konuşma sesiyle; ekran açıkken.",
+    "en": "In your phone's own speech voice, while the screen is open.",
+    "de": "Mit der Sprachausgabe des Telefons, solange der Bildschirm offen ist.",
+    "az": "Telefonun öz danışıq səsi ilə; ekran açıq olarkən.",
+    "ar": "بصوت النطق في هاتفك، ما دامت الشاشة مفتوحة."
   }
 }

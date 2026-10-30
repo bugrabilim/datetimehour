@@ -90,7 +90,24 @@ class ScreenshotTest {
             AlarmItem(id = "b", hour = 9, minute = 30, label = "Spor", enabled = false)))
         tool("tr-alarm", "alarm")
     }
-    @Test fun timer() = tool("tr-zamanlayici", "timer")
+    @Test fun timer() {
+        // İki zamanlayıcı: biri çalışıyor (Çay), biri duraklatılmış
+        val now = System.currentTimeMillis()
+        TimerItem.save(listOf(TimerItem(id = "a", name = "Çay", total = 300_000, end = now + 185_000),
+            TimerItem(id = "b", name = "", total = 900_000, left = 420_000)))
+        tool("tr-zamanlayici", "timer")
+    }
+    @Test fun hiit() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveAppearance("dark")
+        Prefs.saveAccent("amber")
+        // 50. saniyede: ısınma 10 sn + çalışma 30 sn bitti, ilk dinlenmenin 10. saniyesi
+        Prefs.store.edit().putString("hiit.cfg", "10,30,15,8").putLong("hiit.start", System.currentTimeMillis() - 50_000)
+            .putLong("hiit.paused", System.currentTimeMillis()).commit()
+        captureRoboImage("$dir/tr-hiit.png") { AppTheme { Box(Modifier.background(Theme.c.bg)) { HiitScreen() } } }
+        Prefs.store.edit().remove("hiit.start").remove("hiit.paused").commit()
+        Prefs.saveAppearance("light")
+    }
     @Test fun pomodoro() = tool("tr-pomodoro", "pomodoro")
     @Test fun dateCalc() = tool("tr-tarih-hesaplama", "datecalc")
     /** Vakit bildirimleri ayarı (açık hâlde: vakitler, zaman, ses) */
