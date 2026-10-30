@@ -25516,6 +25516,111 @@
         }
       }
     },
+    "alarm.skipHolidays": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resmî tatillerde çalmasın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not on public holidays"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht an Feiertagen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rəsmi bayramlarda çalmasın"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يرن في العطلات الرسمية"
+          }
+        }
+      }
+    },
+    "alarm.skipHolidaysNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Türkiye'deki resmî tatillerde (bayramlar dahil) çalmaz; yarım gün arifelerde çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stays silent on Turkish public holidays (including the Eids); still rings on half-day eves."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bleibt an türkischen gesetzlichen Feiertagen (auch an den Bayram-Festen) still; an halben Vorabend-Tagen klingelt er."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Türkiyədəki rəsmi bayramlarda (bayramlar daxil) çalmır; yarımgünlük bayram ərəfələrində çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يرن في العطلات الرسمية في تركيا (ومنها العيدان)؛ ويرن في أيام الوقفة ذات نصف الدوام."
+          }
+        }
+      }
+    },
+    "alarm.holidayNext": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tatil nedeniyle sonraki: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next, after the holiday: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wegen Feiertag nächster: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bayram səbəbindən növbəti: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التالي بسبب العطلة: %1$@"
+          }
+        }
+      }
+    },
     "alarm.snoozeMax": {
       "extractionState": "manual",
       "localizations": {

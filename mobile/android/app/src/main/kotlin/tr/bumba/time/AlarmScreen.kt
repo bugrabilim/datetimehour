@@ -106,13 +106,16 @@ fun AlarmScreen() {
                         // Sonraki alarm atlanacaksa hangi gün; dokununca geri alınır, değilse "atla"
                         if (item.enabled) {
                             val skipped = item.skipping
+                            val now = System.currentTimeMillis()
+                            fun day(ms: Long) = Fmt.longDate(java.time.Instant.ofEpochMilli(ms).atZone(java.time.ZoneId.systemDefault()).toLocalDate())
+                            // Atlanacak çalma: tatiller hesaba katılmış, elle atlama hariç sıradaki
+                            val base = item.copy(skipUntil = 0).nextAt(now)
+                            if (item.holidaySkipped(now)) Text(T("alarm.holidayNext", day(item.nextAt(now))), color = Theme.c.muted, fontSize = 13.sp)
                             Text(
-                                if (skipped) T("alarm.skipped", Fmt.longDate(java.time.Instant.ofEpochMilli(item.occurrenceAfter(System.currentTimeMillis()))
-                                    .atZone(java.time.ZoneId.systemDefault()).toLocalDate())) + " · " + L("alarm.unskip")
+                                if (skipped) T("alarm.skipped", day(base)) + " · " + L("alarm.unskip")
                                 else L("alarm.skip"),
                                 Modifier.clickable {
-                                    val now = System.currentTimeMillis()
-                                    val skip = if (skipped) 0L else item.occurrenceAfter(now) + 60_000L
+                                    val skip = if (skipped) 0L else base + 60_000L
                                     update(items.map { if (it.id == item.id) it.copy(skipUntil = skip) else it })
                                 }.padding(vertical = 4.dp),
                                 color = if (skipped) Theme.c.muted else Theme.c.accent, fontSize = 13.sp,
@@ -167,6 +170,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var vibrate by remember { mutableStateOf(item.vibrate) }
     var snoozeMax by remember { mutableStateOf(item.snoozeMax) }
     var rise by remember { mutableStateOf(item.rise) }
+    var skipHolidays by remember { mutableStateOf(item.skipHolidays) }
     // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
     val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
         if (r.resultCode == android.app.Activity.RESULT_OK) {
@@ -242,13 +246,22 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     }
                     Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
+                // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
+                if (days.isNotEmpty()) Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(L("alarm.skipHolidays"), color = Theme.c.text, fontSize = 15.sp)
+                        Text(L("alarm.skipHolidaysNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    Switch(skipHolidays, { skipHolidays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
                 if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Color(0xFFD32F2F)) }
             }
         },
         confirmButton = {
             TextButton(onClick = {
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
-                    snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise))
+                    snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
+                    skipHolidays = skipHolidays && days.isNotEmpty()))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },

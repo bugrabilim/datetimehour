@@ -221,10 +221,15 @@ struct AlarmsView: View {
                         Text(item.title + " · " + item.repeatText)
                             .font(.subheadline)
                             .foregroundStyle(Theme.muted)
-                        if let skip = item.skipUntil, skip > Date(), let at = item.occurrence(after: Date()) {
+                        if let skip = item.skipUntil, skip > Date(), let at = item.unskipped.next() {
                             Text(T("alarm.skipped", Fmt.longDate(at)))
                                 .font(.caption)
                                 .foregroundStyle(Theme.accent)
+                        }
+                        if item.enabled, item.holidayShifted(), let at = item.next() {
+                            Text(T("alarm.holidayNext", Fmt.longDate(at)))
+                                .font(.caption)
+                                .foregroundStyle(Theme.muted)
                         }
                     }
                     Spacer()
@@ -281,7 +286,7 @@ extension AlarmsView {
         let now = Date()
         if let skip = item.wrappedValue.skipUntil, skip > now {
             Button { item.wrappedValue.skipUntil = nil } label: { Label(L("alarm.unskip"), systemImage: "arrow.uturn.backward") }
-        } else if let next = item.wrappedValue.occurrence(after: now) {
+        } else if let next = item.wrappedValue.unskipped.next(after: now) {
             Button { item.wrappedValue.skipUntil = next.addingTimeInterval(60) } label: { Label(L("alarm.skip"), systemImage: "forward.end") }
                 .tint(Theme.accent)
         }
@@ -343,6 +348,15 @@ private struct AlarmEditor: View {
                 } footer: {
                     Text(L("alarm.riseNoteIOS"))
                 }
+                // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
+                if !item.days.isEmpty {
+                    Section {
+                        Toggle(L("alarm.skipHolidays"), isOn: $item.skipHolidays)
+                            .tint(Theme.accent)
+                    } footer: {
+                        Text(L("alarm.skipHolidaysNote"))
+                    }
+                }
             }
             .themedBackground()
             .navigationTitle(L("alarm.new"))
@@ -356,6 +370,7 @@ private struct AlarmEditor: View {
                         item.minute = c.minute ?? 0
                         item.enabled = true
                         item.skipUntil = nil
+                        if item.days.isEmpty { item.skipHolidays = false }
                         onSave(item)
                         dismiss()
                     }

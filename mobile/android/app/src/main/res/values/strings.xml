@@ -730,6 +730,9 @@
     <string name="alarm_rise">Kademeli ses</string>
     <string name="alarm_riseNote">Alarm sesi ilk 30 saniyede kısıktan tam sese çıkar.</string>
     <string name="alarm_riseNoteIOS">Yumuşak bir melodi 20 saniyede kısıktan tam sese çıkar; açıkken iPhone\'un alarm sesi yerine çalar.</string>
+    <string name="alarm_skipHolidays">Resmî tatillerde çalmasın</string>
+    <string name="alarm_skipHolidaysNote">Türkiye\'deki resmî tatillerde (bayramlar dahil) çalmaz; yarım gün arifelerde çalar.</string>
+    <string name="alarm_holidayNext">Tatil nedeniyle sonraki: %1$s</string>
     <string name="alarm_snoozeMax">Erteleme sınırı</string>
     <string name="alarm_snoozeMax_none">Sınırsız</string>
     <string name="alarm_snoozeMax_n">%1$s kez</string>

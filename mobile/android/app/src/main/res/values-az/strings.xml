@@ -730,6 +730,9 @@
     <string name="alarm_rise">Tədricən yüksələn səs</string>
     <string name="alarm_riseNote">Zəng səsi ilk 30 saniyədə zəifdən tam səsə qalxır.</string>
     <string name="alarm_riseNoteIOS">Yumşaq bir melodiya 20 saniyədə zəifdən tam səsə qalxır; açıq olanda iPhone-un zəng səsinin yerinə çalır.</string>
+    <string name="alarm_skipHolidays">Rəsmi bayramlarda çalmasın</string>
+    <string name="alarm_skipHolidaysNote">Türkiyədəki rəsmi bayramlarda (bayramlar daxil) çalmır; yarımgünlük bayram ərəfələrində çalır.</string>
+    <string name="alarm_holidayNext">Bayram səbəbindən növbəti: %1$s</string>
     <string name="alarm_snoozeMax">Təxirə salma həddi</string>
     <string name="alarm_snoozeMax_none">Limitsiz</string>
     <string name="alarm_snoozeMax_n">%1$s dəfə</string>

@@ -1897,6 +1897,27 @@
     "az": "Yumşaq bir melodiya 20 saniyədə zəifdən tam səsə qalxır; açıq olanda iPhone-un zəng səsinin yerinə çalır.",
     "ar": "لحن هادئ يرتفع من الخافت إلى أعلى مستوى خلال 20 ثانية؛ وعند تفعيله يُشغَّل بدل صوت منبه iPhone."
   },
+  "alarm.skipHolidays": {
+    "tr": "Resmî tatillerde çalmasın",
+    "en": "Not on public holidays",
+    "de": "Nicht an Feiertagen",
+    "az": "Rəsmi bayramlarda çalmasın",
+    "ar": "لا يرن في العطلات الرسمية"
+  },
+  "alarm.skipHolidaysNote": {
+    "tr": "Türkiye'deki resmî tatillerde (bayramlar dahil) çalmaz; yarım gün arifelerde çalar.",
+    "en": "Stays silent on Turkish public holidays (including the Eids); still rings on half-day eves.",
+    "de": "Bleibt an türkischen gesetzlichen Feiertagen (auch an den Bayram-Festen) still; an halben Vorabend-Tagen klingelt er.",
+    "az": "Türkiyədəki rəsmi bayramlarda (bayramlar daxil) çalmır; yarımgünlük bayram ərəfələrində çalır.",
+    "ar": "لا يرن في العطلات الرسمية في تركيا (ومنها العيدان)؛ ويرن في أيام الوقفة ذات نصف الدوام."
+  },
+  "alarm.holidayNext": {
+    "tr": "Tatil nedeniyle sonraki: {date}",
+    "en": "Next, after the holiday: {date}",
+    "de": "Wegen Feiertag nächster: {date}",
+    "az": "Bayram səbəbindən növbəti: {date}",
+    "ar": "التالي بسبب العطلة: {date}"
+  },
   "alarm.snoozeMax": {
     "tr": "Erteleme sınırı",
     "en": "Snooze limit",

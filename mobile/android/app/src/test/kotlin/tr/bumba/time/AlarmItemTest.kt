@@ -28,6 +28,42 @@ class AlarmItemTest {
         assertEquals(false, round.vibrate)
     }
 
+    @Test fun skipHolidays() {
+        val old = AlarmItem.isHoliday
+        try {
+            // 28 Ekim 2026 çarşamba 08.00; hafta içi 07.00 alarmı. 29 Ekim perşembe tatil (Cumhuriyet Bayramı)
+            AlarmItem.isHoliday = { it == java.time.LocalDate.of(2026, 10, 29) }
+            val now = ms("2026-10-28T08:00")
+            val a = AlarmItem(hour = 7, minute = 0, days = AlarmItem.WEEKDAYS)
+            assertEquals(ms("2026-10-29T07:00"), a.nextAt(now))
+            val h = a.copy(skipHolidays = true)
+            assertEquals(ms("2026-10-30T07:00"), h.nextAt(now))
+            assertEquals(true, h.holidaySkipped(now))
+            assertEquals(false, a.holidaySkipped(now))
+            // Elle atlama tatilden sonraki çalmayı atlar → 2 Kasım pazartesi
+            assertEquals(ms("2026-11-02T07:00"), h.copy(skipUntil = h.nextAt(now) + 60_000).nextAt(now))
+            // Bir kezlik alarmda etkisiz
+            assertEquals(ms("2026-10-29T07:00"), AlarmItem(hour = 7, minute = 0, skipHolidays = true).nextAt(now))
+            // Bütün günler tatilse ilk çalma kalır (sonsuz döngü yok)
+            AlarmItem.isHoliday = { true }
+            assertEquals(ms("2026-10-29T07:00"), h.nextAt(now))
+            // JSON gidiş-dönüş
+            assertEquals(true, AlarmItem.fromJson(h.toJson()).skipHolidays)
+            assertEquals(false, AlarmItem.fromJson(JSONObject().put("id", "x").put("hour", 7).put("minute", 0)).skipHolidays)
+        } finally { AlarmItem.isHoliday = old }
+    }
+
+    @Test fun realHolidayData() {
+        // Takvim verisiyle: 2027 Ramazan Bayramı (9–11 Mart 2027, arife 8 Mart yarım gün) hafta içi alarmı
+        AppData.init(org.robolectric.RuntimeEnvironment.getApplication())
+        val h = AlarmItem(hour = 7, minute = 0, days = AlarmItem.WEEKDAYS, skipHolidays = true)
+        val now = ms("2027-03-07T12:00")
+        // Arife (8 Mart pazartesi, yarım gün) çalar
+        assertEquals(ms("2027-03-08T07:00"), h.nextAt(now))
+        // 9–11 Mart tatil → 12 Mart cuma
+        assertEquals(ms("2027-03-12T07:00"), h.nextAt(ms("2027-03-08T08:00")))
+    }
+
     @Test fun daysAndSkip() {
         // 30 Ekim 2026 cuma 08.00; hafta içi 07.00 alarmı → 2 Kasım pazartesi
         val now = ms("2026-10-30T08:00")

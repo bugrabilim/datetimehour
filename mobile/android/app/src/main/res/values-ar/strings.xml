@@ -730,6 +730,9 @@
     <string name="alarm_rise">صوت متصاعد</string>
     <string name="alarm_riseNote">يرتفع صوت المنبه من الهادئ إلى أعلى مستوى خلال أول 30 ثانية.</string>
     <string name="alarm_riseNoteIOS">لحن هادئ يرتفع من الخافت إلى أعلى مستوى خلال 20 ثانية؛ وعند تفعيله يُشغَّل بدل صوت منبه iPhone.</string>
+    <string name="alarm_skipHolidays">لا يرن في العطلات الرسمية</string>
+    <string name="alarm_skipHolidaysNote">لا يرن في العطلات الرسمية في تركيا (ومنها العيدان)؛ ويرن في أيام الوقفة ذات نصف الدوام.</string>
+    <string name="alarm_holidayNext">التالي بسبب العطلة: %1$s</string>
     <string name="alarm_snoozeMax">حدّ الغفوة</string>
     <string name="alarm_snoozeMax_none">بلا حد</string>
     <string name="alarm_snoozeMax_n">%1$s مرات</string>

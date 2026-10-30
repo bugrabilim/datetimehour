@@ -730,6 +730,9 @@
     <string name="alarm_rise">Gradual volume</string>
     <string name="alarm_riseNote">The alarm sound rises from quiet to full volume over the first 30 seconds.</string>
     <string name="alarm_riseNoteIOS">A soft melody rises from quiet to full volume over 20 seconds; when on, it plays instead of the iPhone alarm sound.</string>
+    <string name="alarm_skipHolidays">Not on public holidays</string>
+    <string name="alarm_skipHolidaysNote">Stays silent on Turkish public holidays (including the Eids); still rings on half-day eves.</string>
+    <string name="alarm_holidayNext">Next, after the holiday: %1$s</string>
     <string name="alarm_snoozeMax">Snooze limit</string>
     <string name="alarm_snoozeMax_none">Unlimited</string>
     <string name="alarm_snoozeMax_n">%1$s times</string>

@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import UserNotifications
+import SaatCore
 import AppIntents
 #if canImport(AlarmKit)
 import ActivityKit
@@ -25,6 +26,8 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var snoozeMax: Int = 0
     /// Kademeli ses: AlarmKit sesi yükseltemediği için uygulamayla gelen yükselen melodi (alarm-rise.caf) çalar
     var rise = false
+    /// Resmî tatillerde çalmaz (rakip analizi #4; yalnız tekrarlayan alarmda; yarım gün arifelerde çalar)
+    var skipHolidays = false
 
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
     static let snoozeMaxChoices = [0, 1, 2, 3, 5]
@@ -36,7 +39,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -50,6 +53,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         skipUntil = try c.decodeIfPresent(Date.self, forKey: .skipUntil)
         snoozeMax = try c.decodeIfPresent(Int.self, forKey: .snoozeMax) ?? 0
         rise = try c.decodeIfPresent(Bool.self, forKey: .rise) ?? false
+        skipHolidays = try c.decodeIfPresent(Bool.self, forKey: .skipHolidays) ?? false
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -109,9 +113,56 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         return nil
     }
 
-    /// Sıradaki çalma (atlanan çalma varsa ondan sonraki)
+    /// Türkiye resmî tatili mi (calendar.json, tam gün tatil; arife yarım gün sayılmaz)
+    static var isHoliday: (Date) -> Bool = { date in
+        CalendarData.shared.events(on: CalendarDay(date)).contains { $0.type == "holiday" }
+    }
+
+    /// Bu çalma atlanır mı: "sonraki alarmı atla" ya da (tekrarlayan alarmda) resmî tatil
+    func blocked(_ t: Date, now: Date) -> Bool {
+        if let s = skipUntil, s > now, t < s { return true }
+        return skipHolidays && !days.isEmpty && Self.isHoliday(t)
+    }
+
+    /// Sıradaki çalma (atlanan çalma ve tatiller geçilir)
     func next(after now: Date = Date()) -> Date? {
-        occurrence(after: max(now, skipUntil ?? .distantPast))
+        var t = occurrence(after: now)
+        for _ in 0..<60 {
+            guard let c = t else { return nil }
+            if !blocked(c, now: now) { return c }
+            t = occurrence(after: c)
+        }
+        return t
+    }
+
+    /// Elle atlama olmadan (atlanacak çalmayı bulmak için)
+    var unskipped: AlarmItem { var c = self; c.skipUntil = nil; return c }
+
+    /// Sıradaki çalma bir resmî tatil yüzünden kaydırıldı mı (listede not için)
+    func holidayShifted(now: Date = Date()) -> Bool {
+        guard skipHolidays, !days.isEmpty else { return false }
+        var plain = self; plain.skipHolidays = false
+        return next(after: now) != plain.next(after: now)
+    }
+
+    /// Tekrarlayan alarmın kurulum planı: haftalık günler + tek seferlik çalmalar. Önümüzdeki 7 günde atlanan ya da
+    /// tatile denk gelen çalmanın günü haftalık tekrardan çıkarılır, o günün sonraki 4 haftası tek seferlik kurulur
+    /// (tatil olanlar hariç). Uygulama açılınca ya da arka plan yenilemesinde plan baştan kurulur.
+    func plan(now: Date = Date()) -> (days: [Int], fixed: [Date]) {
+        var weekly = days, fixed: [Date] = []
+        var t = occurrence(after: now)
+        let end = now.addingTimeInterval(7 * 86_400)
+        while let c = t, c <= end {
+            if blocked(c, now: now) {
+                let wd = Self.isoWeekday(c)
+                weekly.removeAll { $0 == wd }
+                for k in 1...4 {
+                    if let later = Calendar.current.date(byAdding: .day, value: 7 * k, to: c), !blocked(later, now: now) { fixed.append(later) }
+                }
+            }
+            t = occurrence(after: c)
+        }
+        return (weekly, fixed)
     }
 
     static let storeKey = "alarms"
@@ -154,7 +205,7 @@ enum AlarmCenter {
             content.title = item.title
             content.body = item.timeText
             content.sound = item.rise ? UNNotificationSound(named: UNNotificationSoundName(AlarmItem.riseSound)) : .default
-            if item.days.isEmpty || item.days.count == 7 {
+            if item.days.isEmpty || (item.days.count == 7 && item.plan().days.count == 7) {
                 var c = DateComponents()
                 c.hour = item.hour
                 c.minute = item.minute
@@ -162,7 +213,8 @@ enum AlarmCenter {
                 try? await center.add(UNNotificationRequest(identifier: "alarm-\(item.id)-0", content: content, trigger: trigger))
                 continue
             }
-            for d in item.days {
+            let plan = item.plan()
+            for d in plan.days {
                 var c = DateComponents()
                 c.hour = item.hour
                 c.minute = item.minute
@@ -170,15 +222,25 @@ enum AlarmCenter {
                 let trigger = UNCalendarNotificationTrigger(dateMatching: c, repeats: true)
                 try? await center.add(UNNotificationRequest(identifier: "alarm-\(item.id)-\(d)", content: content, trigger: trigger))
             }
+            for (i, date) in plan.fixed.enumerated() {
+                let c = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: c, repeats: false)
+                try? await center.add(UNNotificationRequest(identifier: "alarm-\(item.id)-f\(i)", content: content, trigger: trigger))
+            }
         }
     }
 
-    /// Süresi geçmiş "sonraki alarmı atla" işaretlerini temizler, alarmları normal düzenine döndürür
+    /// Süresi geçmiş "sonraki alarmı atla" işaretlerini temizler, alarmları normal düzenine döndürür; tatilde
+    /// çalmayan alarm varsa planı günde bir yeniler (önümüzdeki tatiller haftalık tekrardan çıkarılır)
     static func refreshSkips(now: Date = Date()) async {
         var items = AlarmItem.load()
-        guard items.contains(where: { ($0.skipUntil ?? .distantFuture) <= now }) else { return }
+        let today = CalendarDay(now).iso
+        let holidayPlan = items.contains { $0.enabled && $0.skipHolidays && !$0.days.isEmpty }
+            && UserDefaults.standard.string(forKey: "alarm.planDay") != today
+        guard holidayPlan || items.contains(where: { ($0.skipUntil ?? .distantFuture) <= now }) else { return }
         for i in items.indices where (items[i].skipUntil ?? .distantFuture) <= now { items[i].skipUntil = nil }
         AlarmItem.save(items)
+        UserDefaults.standard.set(today, forKey: "alarm.planDay")
         await sync(items)
     }
 
@@ -288,19 +350,16 @@ enum KitAlarms {
                 }
                 continue
             }
-            // Haftalık; atlanan çalmanın günü bu hafta dışarıda kalır, bir hafta sonrası tek seferlik eklenir
-            // (atlama geçince uygulama açılışında ya da arka plan yenilemesinde normal hâline döner)
-            var days = item.days
-            if skipping, let skipped = item.occurrence(after: now), skipped < item.skipUntil! {
-                let wd = AlarmItem.isoWeekday(skipped)
-                days.removeAll { $0 == wd }
-                if let later = Calendar.current.date(byAdding: .day, value: 7, to: skipped) {
-                    let extra = UUID()
-                    if (try? await manager.schedule(id: extra, configuration: config(.fixed(later), title: item.title, options: Options(item)))) != nil {
-                        scheduled.append(extra.uuidString)
-                    }
+            // Haftalık; atlanan ya da tatile denk gelen çalmanın günü haftalık tekrardan çıkar, sonraki haftaları tek
+            // seferlik kurulur (uygulama açılışında ya da arka plan yenilemesinde plan yeniden kurulur)
+            let plan = item.plan(now: now)
+            for later in plan.fixed {
+                let extra = UUID()
+                if (try? await manager.schedule(id: extra, configuration: config(.fixed(later), title: item.title, options: Options(item)))) != nil {
+                    scheduled.append(extra.uuidString)
                 }
             }
+            let days = plan.days
             guard !days.isEmpty else { continue }
             let schedule = Alarm.Schedule.relative(.init(time: time, repeats: .weekly(days.map(weekday))))
             if (try? await manager.schedule(id: item.id, configuration: config(schedule, title: item.title, options: Options(item)))) != nil {

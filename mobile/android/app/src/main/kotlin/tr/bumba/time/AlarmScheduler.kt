@@ -24,8 +24,9 @@ import java.util.UUID
 /**
  * Alarm: saat, etiket, günler (ISO 1 pazartesi … 7 pazar; boş = bir kez), erteleme süresi (dk; 0 = yok) ve sınırı
  * (`snoozeMax`; 0 = sınırsız), "sonraki alarmı atla" (`skipUntil`, ms), ses (zil sesi adresi; boş = varsayılan alarm
- * sesi), titreşim ve kademeli ses (`rise`). iOS'taki AlarmItem ile aynı alanlar (ses ve titreşim yalnız Android'de).
- * Eski kayıtlardaki `repeats` okunurken günlere çevrilir.
+ * sesi), titreşim, kademeli ses (`rise`) ve "resmî tatillerde çalmasın" (`skipHolidays`; yalnız tekrarlayan alarmda,
+ * tam gün resmî tatiller calendar.json'dan; yarım gün arifelerde çalar). iOS'taki AlarmItem ile aynı alanlar (ses ve
+ * titreşim yalnız Android'de). Eski kayıtlardaki `repeats` okunurken günlere çevrilir.
  */
 data class AlarmItem(
     val id: String = UUID.randomUUID().toString(),
@@ -40,6 +41,7 @@ data class AlarmItem(
     val vibrate: Boolean = true,
     val snoozeMax: Int = 0,
     val rise: Boolean = false,
+    val skipHolidays: Boolean = false,
 ) {
     val title: String get() = label.ifEmpty { L("tools.alarm.defaultLabel") }
     val timeText: String get() = Fmt.time(LocalDateTime.now().withHour(hour).withMinute(minute).atZone(ZoneId.systemDefault()))
@@ -76,20 +78,39 @@ data class AlarmItem(
         return null
     }
 
-    /** Sıradaki çalma (atlanan çalma varsa ondan sonraki) */
-    fun nextAt(nowMs: Long = System.currentTimeMillis()): Long = occurrenceAfter(maxOf(nowMs, skipUntil))
+    /** Sıradaki çalma (atlanan çalma ve istenirse resmî tatiller hariç) */
+    fun nextAt(nowMs: Long = System.currentTimeMillis()): Long {
+        var t = occurrenceAfter(maxOf(nowMs, skipUntil))
+        if (!skipHolidays || days.isEmpty()) return t
+        val zone = ZoneId.systemDefault()
+        // Bayram en çok 4,5 gün sürer; 60 deneme her durumda yeter (bütün günler tatilse ilk çalma kalır)
+        repeat(60) {
+            if (!isHoliday(java.time.Instant.ofEpochMilli(t).atZone(zone).toLocalDate())) return t
+            t = occurrenceAfter(t)
+        }
+        return occurrenceAfter(maxOf(nowMs, skipUntil))
+    }
+
+    /** Sıradaki çalma bir resmî tatile denk geldiği için kaydırıldı mı (listede not için) */
+    fun holidaySkipped(nowMs: Long = System.currentTimeMillis()): Boolean =
+        skipHolidays && days.isNotEmpty() && nextAt(nowMs) != occurrenceAfter(maxOf(nowMs, skipUntil))
 
     val skipping: Boolean get() = skipUntil > System.currentTimeMillis()
 
     fun toJson(): JSONObject = JSONObject().put("id", id).put("hour", hour).put("minute", minute).put("label", label)
         .put("days", JSONArray(days)).put("enabled", enabled).put("snooze", snooze).put("skipUntil", skipUntil)
-        .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise)
+        .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise).put("skipHolidays", skipHolidays)
 
     companion object {
         private const val KEY = "alarms"
         val WEEKDAYS = listOf(1, 2, 3, 4, 5)
         val SNOOZE_CHOICES = listOf(0, 5, 10, 15, 20, 30)
         val SNOOZE_MAX_CHOICES = listOf(0, 1, 2, 3, 5)
+
+        /** Tam gün resmî tatil mi (takvim verisi; testte değiştirilebilir) */
+        var isHoliday: (java.time.LocalDate) -> Boolean = { d ->
+            runCatching { AppData.events[d]?.any { it.type == "holiday" } == true }.getOrDefault(false)
+        }
 
         fun fromJson(o: JSONObject): AlarmItem {
             val days = o.optJSONArray("days")?.let { a -> (0 until a.length()).map { a.getInt(it) } } ?: when (o.optString("repeats", "once")) {
@@ -101,6 +122,7 @@ data class AlarmItem(
                 o.getString("id"), o.getInt("hour"), o.getInt("minute"), o.optString("label"), days,
                 o.optBoolean("enabled", true), o.optInt("snooze", 5), o.optLong("skipUntil", 0),
                 o.optString("sound", ""), o.optBoolean("vibrate", true), o.optInt("snoozeMax", 0), o.optBoolean("rise", false),
+                o.optBoolean("skipHolidays", false),
             )
         }
 
