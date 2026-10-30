@@ -20,11 +20,8 @@
   function track(name, data) {
     try { if (window.sthConsent) window.sthConsent.track(name, data); } catch (e) {}
   }
-  /* Kazanım rozeti (badges.js); fromLoad: sayfa açılışında sağlanan koşul, Umami olayı gitmez */
-  function badge(id, fromLoad, extra) {
-    if (window.sthBadges) { try { window.sthBadges.hit(id, fromLoad, extra); } catch (e) {} }
-    else (window.__sthBq = window.__sthBq || []).push([id, fromLoad, extra]); // badges.js henüz yüklenmediyse sırada bekler
-  }
+  /* Kazanım rozetleri web'den kaldırıldı (30 Ekim 2026, sahibin kararı: yalnız mobil uygulamalarda); eski kayıt silinir */
+  try { localStorage.removeItem("sth-rozet"); } catch (e) {}
   function tpl(s, vars) {
     return String(s).replace(/\{(\w+)\}/g, function (_, k) { return vars[k] != null ? vars[k] : ""; });
   }
@@ -103,7 +100,6 @@
       root.setAttribute("data-theme", next);
       store("sth-theme", next);
       track("tema-degisimi", { tema: next });
-      badge("tema");
     });
   });
 
@@ -138,7 +134,6 @@
         return;
       }
       track("tam-ekran");
-      badge("tam-ekran");
       if (el.requestFullscreen) el.requestFullscreen().catch(function () { el.classList.add("is-full"); update(); });
       else { el.classList.add("is-full"); update(); }
     };
@@ -152,11 +147,11 @@
   }
 
   /* ---------- Saat ---------- */
-  var prefs = { h12: false, secD: true, secA: false, model: "", pv: 3, fsColor: "auto", tick: false };
+  var prefs = { h12: false, secD: true, secA: true, model: "", pv: 4, fsColor: "auto", tick: false };
   try { Object.assign(prefs, JSON.parse(store("sth-prefs") || "{}")); } catch (e) {}
-  if (prefs.pv !== 3) { prefs.secD = true; prefs.secA = false; prefs.pv = 3; } // varsayılan: dijitalde saniye açık, analogda kapalı
+  if (prefs.pv !== 4) { prefs.secD = true; prefs.secA = true; prefs.pv = 4; } // varsayılan: dijitalde ve analogda saniye açık (30 Ekim 2026; eski kayıtlar bir kez)
   if (window.__sthPrefs) { Object.assign(prefs, window.__sthPrefs); if ("sec" in window.__sthPrefs) prefs.secD = prefs.secA = window.__sthPrefs.sec !== false; }
-  prefs.h12 = !!prefs.h12; prefs.secD = prefs.secD !== false; prefs.secA = prefs.secA === true; prefs.tick = false; // saat sesi düğmesi kaldırıldı (9 Ekim 2026): eski kayıtlar sessiz kalır
+  prefs.h12 = !!prefs.h12; prefs.secD = prefs.secD !== false; prefs.secA = prefs.secA !== false; prefs.tick = false; // saat sesi düğmesi kaldırıldı (9 Ekim 2026): eski kayıtlar sessiz kalır
   if (!/^[a-z]{2,12}$/.test(String(prefs.fsColor))) prefs.fsColor = "auto";
   prefs.sync = true; // saat her zaman sunucu saatine göre çalışır
 
@@ -491,7 +486,6 @@ function sunTimes(y, m, d, lat, lon) {
     var hasDigital = slide && slide.querySelector(".clock");
     if (analog || (!digital && !hasDigital)) prefs.secA = !prefs.secA; else prefs.secD = !prefs.secD;
     savePrefs();
-    badge("saniye");
   };
   Array.prototype.forEach.call(doc.querySelectorAll("[data-carousel] [data-track]"), function (tr) {
     tr.addEventListener("click", function (e) {
@@ -550,8 +544,6 @@ function sunTimes(y, m, d, lat, lon) {
         prefs.model = slides[current].getAttribute("data-model");
         store("sth-prefs", JSON.stringify(prefs));
         track("saat-modeli", { model: prefs.model });
-        badge("ilk-model");
-        badge("@model", false, { i: current, n: slides.length });
       }, 250);
     }, { passive: true });
     dots.forEach(function (d, n) { d.addEventListener("click", function () { goTo(n, true); }); });
@@ -587,14 +579,14 @@ function sunTimes(y, m, d, lat, lon) {
     var exitBtn = stage.querySelector("[data-fullscreen-exit]");
     if (exitBtn) exitBtn.addEventListener("click", function () { toggleFull(); });
     ["pointerdown", "pointermove", "touchstart", "keydown"].forEach(function (n) { stage.addEventListener(n, wake, { passive: true }); });
-    // Açılışta: bağlantıdaki model, yoksa son seçilen model
+    // Açılışta: bağlantıdaki model, yoksa son seçilen model, o da yoksa rakamlı analog (varsayılan, 30 Ekim 2026)
     var start = indexFromHash();
-    if (start < 0 && prefs.model) {
-      for (var n = 0; n < slides.length; n++) if (slides[n].getAttribute("data-model") === prefs.model) start = n;
+    if (start < 0) {
+      var want = prefs.model || "classic";
+      for (var n = 0; n < slides.length; n++) if (slides[n].getAttribute("data-model") === want) start = n;
     }
     if (start > 0) goTo(start, false);
     reported = current;
-    badge("@model", true, { i: current, n: slides.length });
     setTimeout(function () { ready = true; }, 400);
   }
 
@@ -722,7 +714,6 @@ function sunTimes(y, m, d, lat, lon) {
         var t = doc.createElement("span"); t.className = "r-title"; t.textContent = e.t;
         var d = doc.createElement("span"); d.className = "r-desc"; d.textContent = e.d || "";
         a.appendChild(t); a.appendChild(d); li.appendChild(a); list.appendChild(li);
-        a.addEventListener("click", function () { badge("arama"); });
       });
       setActive(0);
       clearTimeout(timer);
@@ -745,7 +736,7 @@ function sunTimes(y, m, d, lat, lon) {
       else if (ev.key === "ArrowUp") { ev.preventDefault(); setActive(active - 1); }
       else if (ev.key === "Enter") {
         var links = list.querySelectorAll("a");
-        if (links[active]) { ev.preventDefault(); badge("arama"); location.href = links[active].getAttribute("href"); }
+        if (links[active]) { ev.preventDefault(); location.href = links[active].getAttribute("href"); }
       }
     });
     doc.getElementById("search-close").addEventListener("click", function () { dlg.close(); });
@@ -771,7 +762,7 @@ function sunTimes(y, m, d, lat, lon) {
   }
   window.sth = {
     longDate: longDate, refreshLive: refreshLive, isoWeek: isoWeek,
-    T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, badge: badge, tpl: tpl, norm: norm,
+    T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, tpl: tpl, norm: norm,
     nowMs: nowMs, nowDate: nowDate, mono: mono, prefs: prefs, makeFullscreen: makeFullscreen,
     parts: parts, offsetMin: offsetMin, fmt: fmt, localTz: localTz, durLabel: durLabel,
     syncState: function () { return sync; },

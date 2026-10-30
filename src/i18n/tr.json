@@ -257,7 +257,7 @@
           "**Harita (küre, dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz ve ana sayfadaki küreyi belli bir düzeyin ötesine yakınlaştırırsanız harita karoları OpenStreetMap'in sunucusundan (tile.openstreetmap.org) tarayıcınıza doğrudan indirilir; bu sırada IP adresiniz ve baktığınız bölgenin karo adresleri OpenStreetMap Vakfı'na ulaşır. İzin yoksa ya da küre uzaktayken bu istek yapılmaz. Saat Tarih sunucusu bunları görmez; OpenStreetMap'in kendi gizlilik koşulları geçerlidir.",
           "**E-posta listesi formu:** Forma yazdığınız e-posta adresi, açılan penceredeki \"Kabul ediyorum\" düğmesiyle verdiğiniz rıza, seçili dil ve formun bulunduğu sayfa; Bumba Group'un ortak liste servisi (bumbagroup.com) tarafından işlenir. Kayıt çift onaylıdır: onay e-postasındaki bağlantıya tıklamadan listeye eklenmezsiniz. Her e-postada tek tıkla çıkış bağlantısı bulunur. Ayrıntılar için [ortak aydınlatma metnine](https://bumbagroup.com/liste/aydinlatma) bakın.",
           "**Sunucu kayıtları:** Siteyi yayınlayan sunucu, her istek için IP adresi, tarayıcı bilgisi, istenen sayfa ve zaman bilgisini standart erişim kaydı olarak tutar. Bu kayıtlar yalnızca güvenlik ve hata ayıklama amacıyla kullanılır; kişi bazlı profil çıkarmak için kullanılmaz.",
-          "**Ziyaret istatistikleri (Umami, izinle):** Yalnız çerez bandında ya da çerez tercihlerinde istatistiğe izin verirseniz, kendi sunucumuzda çalışan Umami ile sayfa görüntülemeleri ve şu eylemler sayılır: dil ve tema değişimi, aramanın sonuç bulup bulmadığı, listeye katılım, saat modeli seçimi, tam ekran, bir aracın ilk kullanımı, konum seçiminin türü (il ya da konum), imsakiyenin açılması ya da indirilmesi ve ilk kez kazanılan rozetin kimliği. Umami bu sırada tarayıcı, işletim sistemi ve cihaz türünü, dili, ekran boyutunu, geldiğiniz sayfanın adresini ve IP adresinizden çıkarılan ülke ve şehri işler; IP adresinin kendisi saklanmaz. Umami çerez kullanmaz ama ziyaretleri takma adlı bir oturuma bağlar; bu yüzden anonim değildir. Aramaya yazdığınız sözcükler, e-posta adresiniz ve konumunuz gönderilmez. İzni altbilgideki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman geri alabilirsiniz; Umami bir sonraki sayfadan itibaren çalışmaz.",
+          "**Ziyaret istatistikleri (Umami, izinle):** Yalnız çerez bandında ya da çerez tercihlerinde istatistiğe izin verirseniz, kendi sunucumuzda çalışan Umami ile sayfa görüntülemeleri ve şu eylemler sayılır: dil ve tema değişimi, aramanın sonuç bulup bulmadığı, listeye katılım, saat modeli seçimi, tam ekran, bir aracın ilk kullanımı, konum seçiminin türü (il ya da konum) ve imsakiyenin açılması ya da indirilmesi. Umami bu sırada tarayıcı, işletim sistemi ve cihaz türünü, dili, ekran boyutunu, geldiğiniz sayfanın adresini ve IP adresinizden çıkarılan ülke ve şehri işler; IP adresinin kendisi saklanmaz. Umami çerez kullanmaz ama ziyaretleri takma adlı bir oturuma bağlar; bu yüzden anonim değildir. Aramaya yazdığınız sözcükler, e-posta adresiniz ve konumunuz gönderilmez. İzni altbilgideki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman geri alabilirsiniz; Umami bir sonraki sayfadan itibaren çalışmaz.",
           "**Saat senkronu:** Saati cihazınızdan bağımsız göstermek için tarayıcınız birkaç kez sitenin kendi sunucusuna küçük bir istek gönderir ve yanıtın tarih başlığını okur. Bu istek yalnızca sunucunun standart erişim kaydına düşer; ek bilgi gönderilmez."
         ]
       },
@@ -341,11 +341,6 @@
               "Siz silene kadar"
             ],
             [
-              "sth-rozet",
-              "Kazanım rozetlerinizi ve ilerlemenizi tutar (aşağıda).",
-              "Siz silene kadar"
-            ],
-            [
               "sth-conv",
               "Saat çeviricide seçtiğiniz şehirleri hatırlar.",
               "Siz silene kadar"
@@ -364,24 +359,13 @@
         }
       },
       {
-        "id": "rozetler",
-        "h": "Kazanım rozetleri",
-        "ul": [
-          "**Ne tutulur:** Kazandığınız rozetin kimliği ve kazanma günü (saat olmadan) ile koşulları hesaplamaya yeten sayaçlar: gördüğünüz saat modelleri, son ziyaret gününüz ve üst üste kaç gün geldiğiniz. Eylem günlüğü, ad ya da e-posta tutulmaz.",
-          "**Nerede:** Yalnız bu tarayıcının yerel depolamasında, sth-rozet anahtarında (birinci taraf). Hiçbir sunucuya gönderilmez.",
-          "**Ne kadar ve nasıl silinir:** Siz silene kadar. [Rozetler](/rozetler/) sayfasındaki \"Rozetleri sil\" düğmesiyle ya da tarayıcı verilerini temizleyerek silebilirsiniz.",
-          "**Hukuki sebep:** Meşru menfaat (KVKK m. 5/2-f); veri cihazınızdan çıkmaz, onu görür ve silebilirsiniz. Bu yüzden ayrıca izin istenmez.",
-          "**İstatistik:** İstatistiğe izin verdiyseniz bir rozet ilk kazanıldığında hangi rozet olduğu Umami'de sayılır; bu, sayfa ziyaretleri gibi tarayıcı, cihaz, ülke ve şehir bilgisiyle kaydedilir. Ad, e-posta ve ilerleme gönderilmez."
-        ]
-      },
-      {
         "id": "hukuki-sebep",
         "h": "Hukuki sebepler",
         "ul": [
           "E-posta listesi: açık rızanız (KVKK m. 5/1). Rızanızı dilediğiniz zaman e-postadaki çıkış bağlantısıyla geri alabilirsiniz.",
           "Ziyaret istatistikleri (Umami) ve dış hizmetler (Open-Meteo, OpenStreetMap): çerez bandında verdiğiniz açık rıza (KVKK m. 5/1). Dış hizmetlere izin verdiğinizde IP adresiniz yurt dışında olabilen bu hizmet sağlayıcılara ulaşır; rızanız bunu da kapsar. Rızanızı \"Çerez tercihleri\" bağlantısıyla geri alabilirsiniz.",
           "Sunucu kayıtları: sitenin güvenli ve çalışır tutulması için meşru menfaatimiz (KVKK m. 5/2-f).",
-          "Tercihleriniz ve kazanım rozetleri: meşru menfaat (KVKK m. 5/2-f); veriler yalnız cihazınızda durur."
+          "Tercihleriniz: meşru menfaat (KVKK m. 5/2-f); veriler yalnız cihazınızda durur."
         ]
       },
       {
@@ -1550,7 +1534,7 @@
   },
   "consent": {
     "barLabel": "Çerez tercihi",
-    "barText": "Tercihlerinizi (dil, tema, saat ve araç ayarları, rozetler) yalnız bu tarayıcıda tutarız. İzin verirseniz ziyaretler Umami ile sayılır; hava durumu ve yakın harita da dış hizmetlerden yüklenir.",
+    "barText": "Tercihlerinizi (dil, tema, saat ve araç ayarları) yalnız bu tarayıcıda tutarız. İzin verirseniz ziyaretler Umami ile sayılır; hava durumu ve yakın harita da dış hizmetlerden yüklenir.",
     "accept": "Kabul et",
     "reject": "Reddet",
     "prefs": "Tercihler",
@@ -1558,7 +1542,7 @@
     "title": "Çerez tercihleri",
     "intro": "Hangi grubun açık olacağını seçin; seçiminizi altbilgideki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman değiştirebilirsiniz.",
     "necessary": "Zorunlu",
-    "necessaryText": "Çerez seçiminiz, dil, tema, saat ve araç ayarları, konum seçiminiz, dünya saatleri listesi ve kazanım rozetleri bu tarayıcının yerel depolamasında tutulur. Sunucuya gitmez; site bunlarsız çalışmaz.",
+    "necessaryText": "Çerez seçiminiz, dil, tema, saat ve araç ayarları, konum seçiminiz ve dünya saatleri listesi bu tarayıcının yerel depolamasında tutulur. Sunucuya gitmez; site bunlarsız çalışmaz.",
     "alwaysOn": "Her zaman açık",
     "stats": "İstatistik",
     "statsText": "Umami ile sayfa ziyaretleri ve birkaç eylem sayılır (tarayıcı, cihaz, dil ve IP adresinden çıkarılan ülke ve şehir; IP saklanmaz). Çerez kullanılmaz. Varsayılan kapalı.",
@@ -1570,100 +1554,5 @@
     "wxBlocked": "Hava durumu Open-Meteo'dan yüklenir; göstermek için dış hizmetlere izin verin.",
     "mapBlocked": "Yakın harita OpenStreetMap'ten yüklenir; göstermek için dış hizmetlere izin verin.",
     "allow": "İzin ver"
-  },
-  "badges": {
-    "title": "Rozetler | Saat Tarih",
-    "description": "Saat Tarih'te kazandığınız rozetler ve nasıl kazanılacakları.",
-    "h1": "Rozetler",
-    "lead": "Saat Tarih'i kullandıkça rozet kazanırsın. Hepsi aşağıda; kazanılanlar günüyle görünür.",
-    "nav": "Rozetler",
-    "note": "Rozetlerin ve ilerlemen yalnız bu tarayıcıda, sen silene kadar saklanır.",
-    "privacyLink": "Gizlilik",
-    "earnedOn": "Kazanıldı: {date}",
-    "locked": "Henüz kazanılmadı",
-    "progress": "{n}/{total}",
-    "count": "{n}/{total} rozet kazanıldı",
-    "delete": "Rozetleri sil",
-    "deleteTitle": "Rozetler silinsin mi?",
-    "deleteText": "Bu tarayıcıdaki bütün rozetlerin ve ilerlemen (gördüğün saat modelleri, ziyaret serin) silinir. Geri alınamaz.",
-    "deleteYes": "Sil",
-    "deleteNo": "Vazgeç",
-    "deleted": "Rozetlerin silindi.",
-    "toast": "Yeni rozet: {name}",
-    "toastLink": "Rozetlerim",
-    "items": {
-      "tema": {
-        "name": "Gece ve gündüz",
-        "how": "Temayı açıktan koyuya ya da koyudan açığa çevir."
-      },
-      "saniye": {
-        "name": "Saniye avcısı",
-        "how": "Saate dokunarak saniyeleri aç ya da kapat."
-      },
-      "ilk-model": {
-        "name": "Yeni yüz",
-        "how": "Saat sahnesinde başka bir saat modeline geç."
-      },
-      "tam-ekran": {
-        "name": "Büyük ekran",
-        "how": "Saati tam ekranda aç."
-      },
-      "arama": {
-        "name": "Bulucu",
-        "how": "Site içi aramada bir sonuca git."
-      },
-      "takvim": {
-        "name": "Gün meraklısı",
-        "how": "Takvimde bir güne dokunup ayrıntısını aç."
-      },
-      "kronometre": {
-        "name": "Start!",
-        "how": "Kronometreyi başlat."
-      },
-      "geri-sayim": {
-        "name": "Geri sayım",
-        "how": "Bir geri sayım başlat."
-      },
-      "alarm": {
-        "name": "Erkenci",
-        "how": "Bir alarm kur."
-      },
-      "cevirici": {
-        "name": "Saat çevirmeni",
-        "how": "Saat çeviricide bir şehri ya da saati değiştir."
-      },
-      "tarih-hesap": {
-        "name": "Hesap ustası",
-        "how": "Tarih hesaplayıcıda bir hesap yap."
-      },
-      "dunya": {
-        "name": "Dünya vatandaşı",
-        "how": "Dünya saatlerine bir şehir ya da saat dilimi ekle."
-      },
-      "kure": {
-        "name": "Kâşif",
-        "how": "Dönen dünyayı yakınlaştır."
-      },
-      "pomodoro": {
-        "name": "Odak",
-        "how": "Bir pomodoro çalışma süresini sonuna kadar tamamla."
-      },
-      "seri-3": {
-        "name": "Üç gün üst üste",
-        "how": "Saat Tarih'e üç gün üst üste gel."
-      },
-      "model-10": {
-        "name": "Koleksiyoncu",
-        "how": "10 farklı saat modelini gör."
-      },
-      "seri-7": {
-        "name": "Bir hafta",
-        "how": "Saat Tarih'e yedi gün üst üste gel."
-      },
-      "model-hepsi": {
-        "name": "Saat ustası",
-        "how": "Saat sahnesindeki bütün modelleri gör."
-      }
-    }
   }
 }

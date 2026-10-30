@@ -159,7 +159,7 @@ struct ClockModelView: View {
 private struct AnalogPart: View {
     let now: Date
     let size: CGFloat
-    @AppStorage("secA") private var seconds = false
+    @AppStorage("secA") private var seconds = true // varsayılan: analogda saniye açık (30 Ekim 2026)
 
     var body: some View {
         AnalogClock(date: now, showSeconds: seconds)

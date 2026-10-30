@@ -60,8 +60,8 @@ const abs = (p) => ORIGIN + p;
 
 /* ---------- adresler ---------- */
 const ROUTES = {
-  tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", badges: "/rozetler/", calendar: "/takvim/", tools: "/araclar/", week: "/hafta-numarasi/", tz: "/turkiye-saat-dilimi/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
-  en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", badges: "/en/badges/", calendar: "/en/calendar/", tools: "/en/tools/", week: "/en/week-number/", tz: "/en/turkey-time-zone/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
+  tr: { home: "/", world: "/dunya-saatleri/", privacy: "/gizlilik/", calendar: "/takvim/", tools: "/araclar/", week: "/hafta-numarasi/", tz: "/turkiye-saat-dilimi/", stopwatch: "/kronometre/", countdown: "/geri-sayim/", alarm: "/alarm/", pomodoro: "/pomodoro/" },
+  en: { home: "/en/", world: "/en/world-clock/", privacy: "/en/privacy/", calendar: "/en/calendar/", tools: "/en/tools/", week: "/en/week-number/", tz: "/en/turkey-time-zone/", stopwatch: "/en/stopwatch/", countdown: "/en/countdown/", alarm: "/en/alarm/", pomodoro: "/en/pomodoro/" },
 };
 for (const l of LANGS) if (!ROUTES[l]) ROUTES[l] = deriveRoutes(ROUTES.en, l);
 const cityPath = (lang, c) => `${ROUTES[lang].world}${c[lang].slug}/`;
@@ -74,7 +74,6 @@ for (const [name, from] of [
   ["theme.js", "js/theme.js"],
   ["consent.js", "js/consent.js"],
   ["main.js", "js/main.js"],
-  ["badges.js", "js/badges.js"],
   ["tools.js", "js/tools.js"],
   ["calendar.js", "js/calendar.js"],
   ["dates.js", "js/dates.js"],
@@ -134,6 +133,8 @@ const LOGO = `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-
 
 const ICON_PIN = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>`;
 const ICON_GEAR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`;
+const ICON_LOCK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`;
+const ICON_COOKIE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.5A9 9 0 1 1 11.5 3a3 3 0 0 0 4 4 3 3 0 0 0 5.5 5.5z"/><circle cx="8.5" cy="11" r="1"/><circle cx="12" cy="16" r="1"/><circle cx="15.5" cy="13" r="1"/></svg>`;
 const ICON_MENU = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
 const ICON_FULL = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>`;
 const ICON_PREV = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5-7 7 7 7"/></svg>`;
@@ -325,7 +326,7 @@ function listForm(lang, pagePath) {
     <input type="hidden" name="kaynak" value="${esc(url)}">
     <input type="hidden" name="donus" value="${esc(url)}">
     <input class="bot-tuzagi" type="text" name="web_sitesi" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <label for="liste-eposta">${esc(l.label)}</label>
+    <label for="liste-eposta" class="sr-only">${esc(l.label)}</label>
     <div class="liste-row">
       <input id="liste-eposta" type="email" name="eposta" required autocomplete="email" placeholder="${esc(l.emailLabel)}">
       <button class="btn" type="submit" id="liste-katil">${esc(l.submit)}</button>
@@ -360,48 +361,6 @@ function cookieUi(lang) {
   ${group(c.ext, c.extText, `<input type="checkbox" data-consent-ext> `)}
   <div class="im-actions"><button type="button" class="btn" data-consent-save>${esc(c.save)}</button><button type="button" class="btn btn-ghost" data-consent-accept>${esc(c.accept)}</button><button type="button" class="btn btn-ghost" data-consent-reject>${esc(c.reject)}</button></div>
 </dialog>`;
-}
-
-/* Kazanım rozetleri (standart madde 13): kimlik, simge; kolaydan zora. Adlar ve koşullar i18n badges.items altında. */
-const BADGES = [
-  ["tema", "🌓"], ["saniye", "👆"], ["ilk-model", "🕰️"], ["tam-ekran", "🖥️"], ["arama", "🔍"], ["takvim", "📅"],
-  ["kronometre", "⏱️"], ["geri-sayim", "⏳"], ["alarm", "⏰"], ["cevirici", "🔁"], ["tarih-hesap", "🧮"], ["dunya", "🌍"],
-  ["kure", "🔭"], ["pomodoro", "🍅"], ["seri-3", "🔥"], ["model-10", "🎨"], ["seri-7", "🏆"], ["model-hepsi", "👑"],
-];
-const badgeClient = (lang) => {
-  const b = I[lang].badges;
-  return { ids: BADGES.map((x) => x[0]), icons: Object.fromEntries(BADGES), names: Object.fromEntries(BADGES.map(([id]) => [id, b.items[id].name])), toast: b.toast, toastLink: b.toastLink, note: b.note, earnedOn: b.earnedOn, locked: b.locked, progress: b.progress, count: b.count, deleted: b.deleted, url: ROUTES[lang].badges };
-};
-
-function buildBadges(lang) {
-  const t = I[lang];
-  const b = t.badges;
-  const pagePath = ROUTES[lang].badges;
-  const items = BADGES.map(([id, icon]) => `<li class="badge-item" data-badge="${id}"><span class="b-icon" aria-hidden="true">${icon}</span><div><h2 class="b-name">${esc(b.items[id].name)}</h2><p class="b-how">${esc(b.items[id].how)}</p><p class="b-status" data-badge-status>${esc(b.locked)}</p></div></li>`).join("");
-  const body = `<section class="hero">
-  <div class="wrap">
-    <h1>${esc(b.h1)}</h1>
-    <p class="lead">${esc(b.lead)}</p>
-  </div>
-</section>
-<section class="section">
-  <div class="wrap" data-badges-page data-models="${STAGE_ORDER.length}">
-    <p class="badges-note">${esc(b.note)} <a href="${ROUTES[lang].privacy}#${lang === "tr" ? "rozetler" : "badges"}">${esc(b.privacyLink)}</a></p>
-    <p class="meta" data-badges-count>&nbsp;</p>
-    <ul class="badge-grid">${items}</ul>
-    <p class="badges-actions"><button type="button" class="btn btn-ghost" data-badges-delete aria-haspopup="dialog">${esc(b.delete)}</button></p>
-    <p class="meta" data-badges-msg role="status"></p>
-  </div>
-</section>
-<dialog class="info-dialog" id="badges-delete" aria-labelledby="badges-delete-title">
-  <h2 id="badges-delete-title">${esc(b.deleteTitle)}</h2>
-  <p>${esc(b.deleteText)}</p>
-  <div class="im-actions"><button type="button" class="btn" data-badges-yes>${esc(b.deleteYes)}</button><button type="button" class="btn btn-ghost" data-badges-no>${esc(b.deleteNo)}</button></div>
-</dialog>`;
-  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: b.h1, path: pagePath }];
-  // Kişiye özel ekran: noindex; sitemap, llms.txt ve site içi aramaya girmez
-  const ld = [...baseLd(lang), webPageLd(lang, pagePath, b.title, b.description), breadcrumbLd(trail)];
-  return { lang, key: "badges", path: pagePath, title: b.title, description: b.description, body, ld, nav: "badges", noindex: true, noHreflang: true };
 }
 
 function badge(lang) {
@@ -460,7 +419,6 @@ function layout(p) {
     searchError: u.searchError,
     wx: weatherClient(t),
     pl: placeClient(t.prayer),
-    bd: badgeClient(lang),
   };
   const pageCfg = {
     locale: t.locale,
@@ -504,6 +462,8 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
         ${withFaq ? `<a class="set-item" href="${ROUTES[lang].faq}">${esc(u.faq)}</a>` : ""}
         <button type="button" class="set-item" data-search-open aria-haspopup="dialog">${ICON_SEARCH}<span>${esc(u.searchOpen)}</span></button>
         <button type="button" class="set-item" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}<span>${esc(u.theme)}</span></button>
+        <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
+        <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>
         <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="${sid}">${esc(u.langMenu)}</label><select id="${sid}" class="set-select" data-lang-select>${langOpts}</select></div>
         <noscript><div class="set-lang">${langLinks}</div></noscript>`;
   const settings = `<details class="settings-menu"><summary class="icon-btn" aria-label="${esc(u.settings)}" title="${esc(u.settings)}">${ICON_GEAR}</summary><div class="settings-pop">
@@ -561,7 +521,6 @@ ${listForm(lang, p.path || ROUTES[lang].home)}
       ${isError ? "" : `<p class="sr-only">${esc(u.updated)}: <time datetime="${cfg.updated}">${esc(updatedText(lang))}</time></p>`}
     </div>
   </div>
-  <div class="wrap footer-links"><a href="${ROUTES[lang].privacy}">${esc(t.consent.privacy)}</a><button type="button" class="link-btn" data-consent-open aria-haspopup="dialog">${esc(t.consent.footerLink)}</button><a href="${ROUTES[lang].badges}">${esc(t.badges.nav)}</a></div>
 </footer>
 ${cookieUi(lang)}
 ${searchDialog(lang)}
@@ -569,7 +528,6 @@ ${placeDialog(lang)}
 <script type="application/json" id="page-config">${JSON.stringify(pageCfg).replace(/</g, "\\u003c")}</script>
 <script defer src="${ASSETS["consent.js"]}"></script>
 <script defer src="${ASSETS["main.js"]}"></script>
-<script defer src="${ASSETS["badges.js"]}"></script>
 ${["place.js", ...(p.scripts || []).filter((n) => n !== "place.js")].map((n) => `<script defer src="${ASSETS[n]}"></script>`).join("\n")}
 </body>
 </html>
@@ -1722,7 +1680,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), buildBadges(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur
 }

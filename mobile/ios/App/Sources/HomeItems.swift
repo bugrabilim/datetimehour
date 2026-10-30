@@ -25,7 +25,7 @@ enum HomeItem: String, CaseIterable, Identifiable {
     }
 
     /// Dönen dünya varsayılan olarak açık (18 Ekim 2026, sahibin isteği); "Düzenle" ile kapatılabilir
-    static let defaultRaw = "-date,week,next,-prayers,-upcoming,-world,-weather,-sun,globe"
+    static let defaultRaw = "-date,-week,-next,-prayers,-upcoming,-world,-weather,-sun,-globe" // varsayılan: yalnız saat (30 Ekim 2026)
 }
 
 struct HomeLayout {

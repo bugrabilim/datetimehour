@@ -72,7 +72,6 @@
       var d = S.offsetMin(new Date(inst), ttz) - S.offsetMin(new Date(inst), ftz);
       diffEl.textContent = S.tpl(C.diff, { d: d === 0 ? "0" : (d > 0 ? "+" : "−") + S.durLabel(d) });
     }
-    cv.addEventListener("change", function () { if (S.badge) S.badge("cevirici"); });
     selF.addEventListener("change", function () { setNow(); });
     selT.addEventListener("change", update);
     when.addEventListener("input", update);

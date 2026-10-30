@@ -19,7 +19,7 @@
   var TILE_URL = "https://tile.openstreetmap.org/";
   /* OSM karoları "dış hizmetler" izniyle yüklenir (çerez bandı, consent.js); izin yoksa yer tutucu görünür */
   var extOk = function () { return !!(window.sthConsent && window.sthConsent.ext()); };
-  var consentEl = fig.querySelector("[data-globe-consent]"), zoomBadge = false;
+  var consentEl = fig.querySelector("[data-globe-consent]");
   var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
   var rtl = doc.documentElement.dir === "rtl";
 
@@ -537,7 +537,6 @@
     if (Math.abs(z - zoom) < 1e-6) return;
     zoom = z; dirty = true;
     if (zoom > 1.12) ensurePlaces();
-    if (zoom > 1.12 && !zoomBadge && S.badge) { zoomBadge = true; S.badge("kure"); }
     if (anchor && zoom > ZM0) { // işaret edilen nokta yerinde kalsın (Mercator'da)
       var W = 256 * Math.pow(2, Math.min(ZMAX_TILE, mapZ())), wx = (anchor.lon + 180) / 360 * W, wy = mercY(anchor.lat) * W;
       lon0 = (wx - (ax - cx)) / W * 360 - 180; tilt = Math.max(-80, Math.min(80, mercLat((wy - (ay - cy)) / W)));

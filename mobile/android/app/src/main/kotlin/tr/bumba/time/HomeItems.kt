@@ -102,7 +102,7 @@ enum class HomeItem(val key: String, val icon: ImageVector) {
         fun of(key: String) = entries.firstOrNull { it.key == key }
 
         /** Dönen dünya varsayılan olarak açık (18 Ekim 2026, sahibin isteği); "Düzenle" ile kapatılabilir */
-        const val DEFAULT_RAW = "-date,week,next,-prayers,-upcoming,-world,-weather,-sun,globe"
+        const val DEFAULT_RAW = "-date,-week,-next,-prayers,-upcoming,-world,-weather,-sun,-globe" // varsayılan: yalnız saat (30 Ekim 2026)
     }
 }
 

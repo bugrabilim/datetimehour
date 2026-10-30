@@ -94,9 +94,9 @@ struct ClockStage: View {
     let now: Date
     let place: AppPlace
     var height: CGFloat = 380
-    @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
+    @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
 
-    private var model: ClockModel { ClockModel(rawValue: modelID) ?? .wxDigitalCalWeek }
+    private var model: ClockModel { ClockModel(rawValue: modelID) ?? .classic }
 
     var body: some View {
         VStack(spacing: 8) {
@@ -144,7 +144,7 @@ struct ClockStage: View {
 /// ekran kapanmaz, çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
 struct FullscreenClock: View {
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
+    @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @State private var globeHeight: CGFloat = 260
 

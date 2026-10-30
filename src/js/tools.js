@@ -23,11 +23,7 @@
     return (showHours || h ? pad(h) + ":" : "") + pad(m) + ":" + pad(s);
   }
   var used = false;
-  var BADGE = { stopwatch: "kronometre", countdown: "geri-sayim", alarm: "alarm" };
-  function used1() {
-    if (!used) { used = true; S.track("arac", { arac: kind }); }
-    if (BADGE[kind] && S.badge) S.badge(BADGE[kind]);
-  }
+  function used1() { if (!used) { used = true; S.track("arac", { arac: kind }); } }
   function setTitle(t) { doc.title = t ? t + " · " + baseTitle : baseTitle; }
 
   /* ---------- Ses, bildirim, ortak "çalıyor" afişi ---------- */
@@ -442,7 +438,6 @@
       if (st.run && remaining() <= 0) {
         var name = P[st.phase];
         chime(); notify(tpl(P.phaseDone, { phase: name }), baseTitle);
-        if (st.phase === "work" && S.badge) S.badge("pomodoro"); // çalışma süresi sonuna kadar tamamlandı
         next(true);
       }
     }

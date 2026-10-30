@@ -23,8 +23,8 @@ object Prefs {
         h12 = sp.getBoolean("h12", false)
         keepAwake = sp.getBoolean("keepAwake", true)
         secD = sp.getBoolean("secD", true)
-        secA = sp.getBoolean("secA", false)
-        clockModel = sp.getInt("clockModel", 0)
+        secA = sp.getBoolean("secA", true) // varsayılan: analogda saniye açık (30 Ekim 2026)
+        clockModel = sp.getInt("clockModel", ClockModel.CLASSIC.ordinal) // varsayılan: rakamlı analog (30 Ekim 2026)
         province = sp.getString("province", "istanbul")!!
         world = sp.getString("world", City.DEFAULT_KEYS)!!
         units = sp.getString("units", null) ?: Units.systemDefault
@@ -38,12 +38,12 @@ object Prefs {
         private set
     var keepAwake by mutableStateOf(true)
         private set
-    /** Dijital saatte saniye (varsayılan açık), analogda (varsayılan kapalı) */
+    /** Dijital ve analog saatte saniye (ikisinde de varsayılan açık; analog 30 Ekim 2026'dan beri) */
     var secD by mutableStateOf(true)
         private set
-    var secA by mutableStateOf(false)
+    var secA by mutableStateOf(true)
         private set
-    var clockModel by mutableStateOf(0)
+    var clockModel by mutableStateOf(ClockModel.CLASSIC.ordinal)
         private set
     /** İl adı ya da "auto" (konumum) */
     var province by mutableStateOf("istanbul")
