@@ -190,6 +190,7 @@ struct FullscreenClock: View {
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @AppStorage(FullscreenBackground.key) private var bgRaw = ""
+    @AppStorage(NightMode.key) private var nightRaw = "off"
     @State private var globeHeight: CGFloat = 260
 
     var body: some View {
@@ -202,6 +203,8 @@ struct FullscreenClock: View {
                 let now = context.date
                 let place = PlaceModel.shared.place
                 let items = HomeLayout(raw: homeItems).visible
+                // Gece modunda siyah zemin, kırmızı ve kısık yazı, düşük parlaklık; arka plan fotoğrafı ve hareket yok
+                let night = NightMode.active(nightRaw, place: place, at: now)
                 ScrollView {
                     VStack(spacing: 16) {
                         TabView(selection: $modelID) {
@@ -216,14 +219,23 @@ struct FullscreenClock: View {
                         ForEach(items) { item in
                             HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight) { dismiss() }
                         }
-                        Button { dismiss() } label: {
-                            Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
-                                .font(.footnote)
+                        HStack(spacing: 20) {
+                            // Gece modu: açıkken kapatır, kapalıyken açar (otomatik seçim Ayarlar › Saat görünümü'nde)
+                            Button { nightRaw = NightMode.toggled(night) } label: {
+                                Label(L("night.title"), systemImage: night ? "moon.fill" : "moon")
+                                    .font(.footnote)
+                            }
+                            Button { dismiss() } label: {
+                                Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
+                                    .font(.footnote)
+                            }
                         }
                         .foregroundStyle(Theme.muted)
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
+                    // Ekran yanmasın diye dakikada bir birkaç nokta kayar
+                    .offset(night ? NightMode.shift(now) : .zero)
                     .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { h in
                         globeHeight = ClockTab.fitGlobe(contentHeight: h, viewport: geo.size.height, globe: globeHeight,
                                                         hasGlobe: items.contains(.globe))
@@ -234,7 +246,9 @@ struct FullscreenClock: View {
                 .scrollIndicators(.hidden)
                 .foregroundStyle(Theme.text)
                 .background {
-                    if let photo {
+                    if night {
+                        Color.black.ignoresSafeArea()
+                    } else if let photo {
                         Image(uiImage: photo).resizable().scaledToFill()
                             .overlay(Color.black.opacity(0.45))
                             .ignoresSafeArea()
@@ -244,9 +258,16 @@ struct FullscreenClock: View {
                         Theme.bg.ignoresSafeArea()
                     }
                 }
+                // Kırmızıya çevirme: siyah zemin üstünde çarpım (beyaz → kısık kırmızı, siyah siyah kalır)
+                .overlay {
+                    if night {
+                        NightMode.tint.blendMode(.multiply).ignoresSafeArea().allowsHitTesting(false)
+                    }
+                }
+                .environment(\.colorScheme, night || darkText ? .dark : colorScheme)
+                .modifier(NightBrightness(on: night))
             }
         }
-        .environment(\.colorScheme, darkText ? .dark : colorScheme)
         .onTapGesture(count: 2) { dismiss() }
         .onChange(of: vsc) { _, v in
             if v == .regular, closeOnPortrait { dismiss() }

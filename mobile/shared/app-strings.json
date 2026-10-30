@@ -2911,5 +2911,40 @@
     "de": "Dhu l-hiddscha",
     "az": "Zilhiccə",
     "ar": "ذو الحجة"
+  },
+  "night.title": {
+    "tr": "Gece modu",
+    "en": "Night mode",
+    "de": "Nachtmodus",
+    "az": "Gecə rejimi",
+    "ar": "الوضع الليلي"
+  },
+  "night.off": {
+    "tr": "Kapalı",
+    "en": "Off",
+    "de": "Aus",
+    "az": "Bağlı",
+    "ar": "إيقاف"
+  },
+  "night.on": {
+    "tr": "Açık",
+    "en": "On",
+    "de": "An",
+    "az": "Açıq",
+    "ar": "تشغيل"
+  },
+  "night.auto": {
+    "tr": "Güneş batınca (seçili yerde)",
+    "en": "After sunset (at the selected place)",
+    "de": "Nach Sonnenuntergang (am gewählten Ort)",
+    "az": "Gün batanda (seçilmiş yerdə)",
+    "ar": "بعد غروب الشمس (في المكان المحدد)"
+  },
+  "night.note": {
+    "tr": "Tam ekran saatte: siyah zemin, kırmızı ve kısık yazı, düşük ekran parlaklığı (gece görüşünü ve uykuyu az bozar). Ekran yanmasın diye saat dakikada bir birkaç nokta kayar. Tam ekranda ay düğmesiyle de açılıp kapanır.",
+    "en": "In the full-screen clock: black background, dim red text and low screen brightness (easier on night vision and sleep). The clock shifts a few points every minute to prevent screen burn-in. You can also switch it with the moon button in full screen.",
+    "de": "In der Vollbilduhr: schwarzer Hintergrund, gedimmte rote Schrift und niedrige Bildschirmhelligkeit (schont Nachtsicht und Schlaf). Die Uhr verschiebt sich jede Minute um einige Punkte, damit sich nichts einbrennt. Im Vollbild auch über die Mond-Taste schaltbar.",
+    "az": "Tam ekran saatda: qara fon, qırmızı və zəif yazı, aşağı ekran parlaqlığı (gecə görmənizə və yuxunuza az təsir edir). Ekran yanmasın deyə saat hər dəqiqə bir neçə nöqtə sürüşür. Tam ekranda ay düyməsi ilə də açılıb bağlanır.",
+    "ar": "في الساعة بملء الشاشة: خلفية سوداء ونص أحمر خافت وسطوع منخفض للشاشة (أخف على الرؤية الليلية والنوم). تتحرك الساعة بضع نقاط كل دقيقة لتجنب احتراق الشاشة. ويمكن تشغيله أيضًا بزر القمر في وضع ملء الشاشة."
   }
 }

@@ -875,5 +875,10 @@
     <string name="hijri_month_10">شوال</string>
     <string name="hijri_month_11">ذو القعدة</string>
     <string name="hijri_month_12">ذو الحجة</string>
+    <string name="night_title">الوضع الليلي</string>
+    <string name="night_off">إيقاف</string>
+    <string name="night_on">تشغيل</string>
+    <string name="night_auto">بعد غروب الشمس (في المكان المحدد)</string>
+    <string name="night_note">في الساعة بملء الشاشة: خلفية سوداء ونص أحمر خافت وسطوع منخفض للشاشة (أخف على الرؤية الليلية والنوم). تتحرك الساعة بضع نقاط كل دقيقة لتجنب احتراق الشاشة. ويمكن تشغيله أيضًا بزر القمر في وضع ملء الشاشة.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

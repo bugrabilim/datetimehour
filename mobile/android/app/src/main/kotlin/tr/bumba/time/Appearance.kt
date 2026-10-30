@@ -178,5 +178,16 @@ fun AppearanceScreen() {
             }
             Text(L("look.photo.note") + " " + L("look.bg.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
+        // Gece / yatak başı modu (tam ekran saat)
+        AppCard {
+            SectionTitle(L("night.title"))
+            for (m in NightMode.CHOICES) {
+                Row(Modifier.fillMaxWidth().clickable { Prefs.saveNightMode(m) }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(Prefs.nightMode == m, { Prefs.saveNightMode(m) }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(L("night.$m"), color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
+            Text(L("night.note"), color = Theme.c.muted, fontSize = 12.sp)
+        }
     }
 }

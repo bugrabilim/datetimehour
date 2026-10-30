@@ -37,6 +37,7 @@ object Prefs {
         clockFont = sp.getString("clockFont", "rounded")!!
         fsPhoto = sp.getLong("fsPhoto", 0L)
         fsBg = sp.getString(FullscreenBackground.KEY, null)
+        nightMode = sp.getString(NightMode.KEY, "off")!!
         world = sp.getString("world", City.DEFAULT_KEYS)!!
         units = sp.getString("units", null) ?: Units.systemDefault
         BadgeStore.load()
@@ -85,6 +86,10 @@ object Prefs {
     var fsBg by mutableStateOf<String?>(null)
         private set
     fun saveFsBg(v: String) { fsBg = v; sp.edit().putString(FullscreenBackground.KEY, v).apply() }
+    /** Gece / yatak başı modu (NightMode): off, on, auto */
+    var nightMode by mutableStateOf("off")
+        private set
+    fun saveNightMode(v: String) { nightMode = v; sp.edit().putString(NightMode.KEY, v).apply() }
     fun saveSecD(v: Boolean) { secD = v; sp.edit().putBoolean("secD", v).apply() }
     fun saveSecA(v: Boolean) { secA = v; sp.edit().putBoolean("secA", v).apply() }
     fun saveClockModel(v: Int) { clockModel = v; sp.edit().putInt("clockModel", v).apply() }

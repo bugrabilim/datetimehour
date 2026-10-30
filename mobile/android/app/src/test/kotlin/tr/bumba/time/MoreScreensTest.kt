@@ -110,6 +110,17 @@ class MoreScreensTest {
         page("tr-geri-sayimlar", "Zamanlayıcı") { CountdownsScreen() }
         CountdownItem.save(emptyList())
     }
+    /** Gece modu: siyah zemin, kırmızı ve kısık saat (yıldızlı arka plan seçili olsa da düz siyah) */
+    @Test fun nightMode() {
+        android.provider.Settings.Global.putFloat(RuntimeEnvironment.getApplication().contentResolver,
+            android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 0f)
+        Prefs.saveFsBg("stars")
+        Prefs.saveNightMode("on")
+        shot("tr-gece-modu") { FullscreenClock {} }
+        Prefs.saveNightMode("off")
+        Prefs.saveFsBg("plain")
+    }
+
     /** Hareketli arka planlar (testte tek kare): gece gökyüzü ve renk akışıyla tam ekran saat */
     @Test fun animatedBackgrounds() {
         // "Animasyonları kapat" açık: arka plan durağan tek kare çizer (sonsuz kare döngüsü ekran görüntüsünü bekletmesin)

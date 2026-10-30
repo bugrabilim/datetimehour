@@ -875,5 +875,10 @@
     <string name="hijri_month_10">Şəvval</string>
     <string name="hijri_month_11">Zilqədə</string>
     <string name="hijri_month_12">Zilhiccə</string>
+    <string name="night_title">Gecə rejimi</string>
+    <string name="night_off">Bağlı</string>
+    <string name="night_on">Açıq</string>
+    <string name="night_auto">Gün batanda (seçilmiş yerdə)</string>
+    <string name="night_note">Tam ekran saatda: qara fon, qırmızı və zəif yazı, aşağı ekran parlaqlığı (gecə görmənizə və yuxunuza az təsir edir). Ekran yanmasın deyə saat hər dəqiqə bir neçə nöqtə sürüşür. Tam ekranda ay düyməsi ilə də açılıb bağlanır.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

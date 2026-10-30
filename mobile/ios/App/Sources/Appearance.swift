@@ -83,6 +83,7 @@ struct AppearanceView: View {
     @AppStorage("clockFont") private var clockFont = ClockFont.rounded.rawValue
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @AppStorage(FullscreenBackground.key) private var bgRaw = ""
+    @AppStorage(NightMode.key) private var nightRaw = "off"
     @State private var item: PhotosPickerItem?
 
     private var background: FullscreenBackground { FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain) }
@@ -128,6 +129,18 @@ struct AppearanceView: View {
                 Text(L("look.photo"))
             } footer: {
                 Text(L("look.photo.note") + " " + L("look.bg.note"))
+            }
+            // Gece / yatak başı modu (tam ekran saat)
+            Section {
+                Picker(L("night.title"), selection: $nightRaw) {
+                    ForEach(NightMode.choices, id: \.self) { Text(L("night.\($0)")).tag($0) }
+                }
+                .pickerStyle(.inline)
+                .labelsHidden()
+            } header: {
+                Text(L("night.title"))
+            } footer: {
+                Text(L("night.note"))
             }
         }
         .themedBackground()

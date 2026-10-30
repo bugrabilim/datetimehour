@@ -875,5 +875,10 @@
     <string name="hijri_month_10">Shawwal</string>
     <string name="hijri_month_11">Dhu al-Qadah</string>
     <string name="hijri_month_12">Dhu al-Hijjah</string>
+    <string name="night_title">Night mode</string>
+    <string name="night_off">Off</string>
+    <string name="night_on">On</string>
+    <string name="night_auto">After sunset (at the selected place)</string>
+    <string name="night_note">In the full-screen clock: black background, dim red text and low screen brightness (easier on night vision and sleep). The clock shifts a few points every minute to prevent screen burn-in. You can also switch it with the moon button in full screen.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

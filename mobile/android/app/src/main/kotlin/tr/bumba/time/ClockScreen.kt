@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -29,6 +30,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Apps
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Fullscreen
 import androidx.compose.material.icons.filled.FullscreenExit
 import androidx.compose.material.icons.filled.Settings
@@ -50,6 +52,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -285,15 +288,21 @@ fun FullscreenClock(onExit: () -> Unit) {
     val pager = rememberClockPager()
     HideSystemBars()
     // Arka plan: fotoğraf (koyulaştırılmış) ya da hareketli; ikisinde de yazılar koyu temanın açık renklerine geçer
-    val bg = FullscreenBackground.current
+    // Gece modunda siyah zemin, kırmızı ve kısık yazı, düşük parlaklık; arka plan fotoğrafı ve hareket yok
+    val night = NightMode.active(Prefs.nightMode, place.lat, place.lon, now.toEpochMilli())
+    NightBrightness(night)
+    val bg = if (night) FullscreenBackground.PLAIN else FullscreenBackground.current
     val photo = if (bg == FullscreenBackground.PHOTO) FullscreenPhoto.image(LocalContext.current) else null
-    val colors = if (photo != null || bg.animated) AccentPalette.find(Prefs.accent).colors(true) else Theme.c
+    val colors = if (night || photo != null || bg.animated) AccentPalette.find(Prefs.accent).colors(true) else Theme.c
     CompositionLocalProvider(LocalColors provides colors) {
     BoxWithConstraints(
-        Modifier.fillMaxSize().background(Theme.c.bg).pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) },
+        Modifier.fillMaxSize().nightTint(night).background(if (night) Color.Black else Theme.c.bg)
+            .pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) },
     ) {
         if (photo != null) PhotoBackground(photo, Modifier.fillMaxSize())
         else if (bg.animated) AnimatedBackground(bg, Modifier.fillMaxSize())
+        // Ekran yanmasın diye dakikada bir birkaç nokta kayar
+        val (dx, dy) = if (night) NightMode.shift(now.toEpochMilli()) else 0 to 0
         val viewport = maxHeight
         // Yatayda saat ekranı doldurur, alanlar kaydırınca görünür
         val landscape = maxWidth > maxHeight
@@ -303,7 +312,7 @@ fun FullscreenClock(onExit: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Column(
-                Modifier.widthIn(max = 720.dp).fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
+                Modifier.offset(dx.dp, dy.dp).widthIn(max = 720.dp).fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
                     .fitGlobe(viewport, globeHeight, HomeItem.GLOBE in items),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -322,9 +331,16 @@ fun FullscreenClock(onExit: () -> Unit) {
                         Nav.tab = it.open()
                     }
                 }
-                TextButton(onClick = onExit) {
-                    Icon(Icons.Filled.FullscreenExit, null, tint = Theme.c.muted, modifier = Modifier.size(18.dp))
-                    Text(" " + L("client.exitFullscreen"), color = Theme.c.muted, fontSize = 13.sp)
+                Row {
+                    // Gece modu: açıkken kapatır, kapalıyken açar (otomatik seçim Ayarlar › Saat görünümü'nde)
+                    TextButton(onClick = { Prefs.saveNightMode(NightMode.toggled(night)) }) {
+                        Icon(Icons.Filled.DarkMode, null, tint = if (night) Theme.c.accent else Theme.c.muted, modifier = Modifier.size(18.dp))
+                        Text(" " + L("night.title"), color = Theme.c.muted, fontSize = 13.sp)
+                    }
+                    TextButton(onClick = onExit) {
+                        Icon(Icons.Filled.FullscreenExit, null, tint = Theme.c.muted, modifier = Modifier.size(18.dp))
+                        Text(" " + L("client.exitFullscreen"), color = Theme.c.muted, fontSize = 13.sp)
+                    }
                 }
             }
         }

@@ -30590,6 +30590,181 @@
           }
         }
       }
+    },
+    "night.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gece modu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Night mode"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nachtmodus"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gecə rejimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوضع الليلي"
+          }
+        }
+      }
+    },
+    "night.off": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapalı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Off"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إيقاف"
+          }
+        }
+      }
+    },
+    "night.on": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açıq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تشغيل"
+          }
+        }
+      }
+    },
+    "night.auto": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş batınca (seçili yerde)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "After sunset (at the selected place)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach Sonnenuntergang (am gewählten Ort)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün batanda (seçilmiş yerdə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بعد غروب الشمس (في المكان المحدد)"
+          }
+        }
+      }
+    },
+    "night.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekran saatte: siyah zemin, kırmızı ve kısık yazı, düşük ekran parlaklığı (gece görüşünü ve uykuyu az bozar). Ekran yanmasın diye saat dakikada bir birkaç nokta kayar. Tam ekranda ay düğmesiyle de açılıp kapanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In the full-screen clock: black background, dim red text and low screen brightness (easier on night vision and sleep). The clock shifts a few points every minute to prevent screen burn-in. You can also switch it with the moon button in full screen."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In der Vollbilduhr: schwarzer Hintergrund, gedimmte rote Schrift und niedrige Bildschirmhelligkeit (schont Nachtsicht und Schlaf). Die Uhr verschiebt sich jede Minute um einige Punkte, damit sich nichts einbrennt. Im Vollbild auch über die Mond-Taste schaltbar."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekran saatda: qara fon, qırmızı və zəif yazı, aşağı ekran parlaqlığı (gecə görmənizə və yuxunuza az təsir edir). Ekran yanmasın deyə saat hər dəqiqə bir neçə nöqtə sürüşür. Tam ekranda ay düyməsi ilə də açılıb bağlanır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في الساعة بملء الشاشة: خلفية سوداء ونص أحمر خافت وسطوع منخفض للشاشة (أخف على الرؤية الليلية والنوم). تتحرك الساعة بضع نقاط كل دقيقة لتجنب احتراق الشاشة. ويمكن تشغيله أيضًا بزر القمر في وضع ملء الشاشة."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

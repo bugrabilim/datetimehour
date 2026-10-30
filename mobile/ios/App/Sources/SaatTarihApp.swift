@@ -242,7 +242,7 @@ private struct TabBar: View {
 
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques
+         privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -273,6 +273,7 @@ enum DebugScreen: String, Identifiable {
         case .features: FeaturesView()
         case .qibla: QiblaView()
         case .mosques: NearbyMosquesView(place: place)
+        case .night: FullscreenClock() // -nightMode on ile gece modu
         case .globe:
             // App Store önizleme videosu için: tam ekran dönen dünya
             GlobeView(fullscreen: true)
