@@ -28,8 +28,9 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         }
     }
 
-    /// Kullanıcı kapatmadıkça açık
-    var isOn: Bool { UserDefaults.standard.object(forKey: key) as? Bool ?? true }
+    /// Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı)
+    var defaultOn: Bool { self != .hourly }
+    var isOn: Bool { UserDefaults.standard.object(forKey: key) as? Bool ?? defaultOn }
 
     /// Hava özetinin saati (gece yarısından dakika; varsayılan 07.30)
     static let weatherTimeKey = "notify.weatherTime"

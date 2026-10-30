@@ -640,7 +640,7 @@
     <string name="badges_items_model_hepsi_name">Saat ustası</string>
     <string name="badges_items_model_hepsi_how">Saat sahnesindeki bütün modelleri gör.</string>
     <string name="settings_notifications">Bildirimler</string>
-    <string name="notify_all_note">Her özelliğin bildirimi varsayılan olarak açıktır; istemediklerinizi buradan kapatabilirsiniz. Bildirimler telefonda hazırlanır; yalnız hava özeti için hava servisine sorulur.</string>
+    <string name="notify_all_note">Saat başı dışında her özelliğin bildirimi varsayılan olarak açıktır; istemediklerinizi buradan kapatabilir, saat başını açabilirsiniz. Bildirimler telefonda hazırlanır; yalnız hava özeti için hava servisine sorulur.</string>
     <string name="notify_all_limit">iPhone önceden en çok 64 bildirim kurabilir; liste arka planda ve uygulamayı her açışınızda yenilenir.</string>
     <string name="notify_cat_prayer">Namaz vakitleri</string>
     <string name="notify_cat_prayer_note">Seçtiğiniz vakitlerde ya da birkaç dakika önce.</string>

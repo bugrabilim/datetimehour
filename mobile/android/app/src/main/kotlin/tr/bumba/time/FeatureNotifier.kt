@@ -39,6 +39,8 @@ enum class NotifyFeature(val id: String, val tab: Tab) {
     DST("dst", Tab.WORLD);
 
     val key: String get() = "notify.$id"
+    /** Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı) */
+    val defaultOn: Boolean get() = this != HOURLY
     val title: String get() = L("notify.cat.$id")
     val note: String get() = L("notify.cat.$id.note")
 }
@@ -47,8 +49,7 @@ enum class NotifyFeature(val id: String, val tab: Tab) {
 object FeaturePrefs {
     private val sp get() = Prefs.store
 
-    /** Kullanıcı kapatmadıkça açık */
-    fun isOn(f: NotifyFeature): Boolean = sp.getBoolean(f.key, true)
+    fun isOn(f: NotifyFeature): Boolean = sp.getBoolean(f.key, f.defaultOn)
     fun set(f: NotifyFeature, on: Boolean) = sp.edit().putBoolean(f.key, on).apply()
 
     /** Hava özetinin saati (gece yarısından dakika; varsayılan 07.30) */

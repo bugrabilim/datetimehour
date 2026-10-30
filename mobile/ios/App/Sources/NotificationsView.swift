@@ -10,7 +10,7 @@ struct NotificationsView: View {
     @AppStorage(NotifyFeature.moon.key) private var moon = true
     @AppStorage(NotifyFeature.sun.key) private var sun = true
     @AppStorage(NotifyFeature.weather.key) private var weather = true
-    @AppStorage(NotifyFeature.hourly.key) private var hourly = true
+    @AppStorage(NotifyFeature.hourly.key) private var hourly = false
     @AppStorage(NotifyFeature.dst.key) private var dst = true
     @AppStorage(NotifyFeature.weatherTimeKey) private var weatherTime = 450
     @AppStorage(NotifyFeature.hourlyFromKey) private var hourlyFrom = 9

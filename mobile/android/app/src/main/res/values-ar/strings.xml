@@ -640,7 +640,7 @@
     <string name="badges_items_model_hepsi_name">سيّد الساعات</string>
     <string name="badges_items_model_hepsi_how">شاهد كل الأنماط على منصة الساعة.</string>
     <string name="settings_notifications">الإشعارات</string>
-    <string name="notify_all_note">إشعارات كل ميزة مفعّلة افتراضيًا، ويمكنك إيقاف ما لا تريده من هنا. تُجهَّز الإشعارات على هاتفك، ولا يُستعلم إلا عن ملخص الطقس من خدمة الطقس.</string>
+    <string name="notify_all_note">إشعارات كل ميزة مفعّلة افتراضيًا ما عدا إشعار بداية كل ساعة؛ يمكنك هنا إيقاف ما لا تريده أو تفعيل إشعار كل ساعة. تُجهَّز الإشعارات على هاتفك، ولا يُستعلم إلا عن ملخص الطقس من خدمة الطقس.</string>
     <string name="notify_all_limit">يمكن لجهاز iPhone جدولة 64 إشعارًا كحد أقصى مسبقًا، وتُحدَّث القائمة في الخلفية وعند كل فتح للتطبيق.</string>
     <string name="notify_cat_prayer">أوقات الصلاة</string>
     <string name="notify_cat_prayer_note">في الأوقات التي تختارها أو قبلها ببضع دقائق.</string>

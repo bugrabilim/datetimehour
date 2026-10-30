@@ -640,7 +640,7 @@
     <string name="badges_items_model_hepsi_name">Uhrenmeister</string>
     <string name="badges_items_model_hepsi_how">Sieh dir alle Stile auf der Uhrenbühne an.</string>
     <string name="settings_notifications">Benachrichtigungen</string>
-    <string name="notify_all_note">Benachrichtigungen sind für jede Funktion standardmäßig an; schalten Sie hier ab, was Sie nicht möchten. Sie werden auf dem Telefon vorbereitet; nur für die Wetterübersicht wird der Wetterdienst abgefragt.</string>
+    <string name="notify_all_note">Benachrichtigungen sind für jede Funktion außer der vollen Stunde standardmäßig an; schalten Sie hier ab, was Sie nicht möchten, oder die volle Stunde ein. Sie werden auf dem Telefon vorbereitet; nur für die Wetterübersicht wird der Wetterdienst abgefragt.</string>
     <string name="notify_all_limit">Das iPhone kann höchstens 64 Benachrichtigungen im Voraus planen; die Liste wird im Hintergrund und bei jedem Öffnen der App erneuert.</string>
     <string name="notify_cat_prayer">Gebetszeiten</string>
     <string name="notify_cat_prayer_note">Zu den gewählten Zeiten oder einige Minuten vorher.</string>

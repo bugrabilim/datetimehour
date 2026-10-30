@@ -21,10 +21,12 @@ class FeatureNotifierTest {
         val now = Instant.parse("2026-10-30T10:00:00Z")
         val all = FeatureNotifier.plan(context, now)
         assertTrue(all.all { it.at.isAfter(now) })
-        // 14 gün boyunca gün doğumu ve batımı, 2 gün saat başı (09–21), en az bir dolunay ve yeni ay
+        // 14 gün boyunca gün doğumu ve batımı, en az bir dolunay ve yeni ay; saat başı varsayılan kapalı
         assertTrue(all.count { it.id.startsWith("sunrise-") } >= 13)
         assertTrue(all.count { it.id.startsWith("sunset-") } >= 13)
-        assertTrue(all.count { it.id.startsWith("hourly-") } in 13..26)
+        assertEquals(0, all.count { it.id.startsWith("hourly-") })
+        FeaturePrefs.set(NotifyFeature.HOURLY, true)
+        assertTrue(FeatureNotifier.plan(context, now).count { it.id.startsWith("hourly-") } in 13..26)
         assertTrue(all.any { it.id.startsWith("moon-full-") } && all.any { it.id.startsWith("moon-new-") })
         // Sonraki mevsim başlangıcı: 21 Aralık 2026 kış gündönümü
         assertTrue(all.any { it.id.startsWith("season-") && it.at.toString().startsWith("2026-12-21") })
@@ -32,6 +34,6 @@ class FeatureNotifierTest {
 
         NotifyFeature.entries.forEach { FeaturePrefs.set(it, false) }
         assertEquals(emptyList<FeatureNotifier.Planned>(), FeatureNotifier.plan(context, now))
-        NotifyFeature.entries.forEach { FeaturePrefs.set(it, true) }
+        NotifyFeature.entries.forEach { Prefs.store.edit().remove(it.key).commit() }
     }
 }

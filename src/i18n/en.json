@@ -264,7 +264,7 @@
           "**Weather:** Weather in the app comes from Apple Weather (WeatherKit); for this, the approximate coordinates of the selected province or your location are sent to Apple. We never see this data; Apple's privacy terms apply.",
           "**Map:** The globe in the world clock is shown with Apple Maps; map imagery is downloaded from Apple.",
           "**Calendar:** Only if you allow it, events from the calendars on your phone are shown in the app; they are read on your phone and never sent anywhere. Adding and deleting events happens through the iPhone's own calendar screen and only with your confirmation.",
-          "**Notifications and alarms:** Prayer time notifications; special day, start of season, moon phase, sunrise and sunset, morning weather summary, on-the-hour and daylight saving notifications (each on by default, can be turned off in Settings › Notifications); alarms and timers are scheduled on your phone without any server. Only the weather summary asks the weather service (see the weather item above). The list is kept current with iOS background refresh; spoken announcements are generated on your phone.",
+          "**Notifications and alarms:** Prayer time notifications; special day, start of season, moon phase, sunrise and sunset, morning weather summary, on-the-hour and daylight saving notifications (each on by default except on-the-hour; can be changed in Settings › Notifications); alarms and timers are scheduled on your phone without any server. Only the weather summary asks the weather service (see the weather item above). The list is kept current with iOS background refresh; spoken announcements are generated on your phone.",
           "**Email list:** If you join the list from the About page, your email address is sent to the shared Bumba list exactly like the website form; the email list notes apply to the app as well.",
           "**Badges:** Achievement badges and your progress (badges earned and the day, clock models seen, the number of consecutive days of use) are stored only on your phone and never sent anywhere; you can delete them at any time with \"Delete badges\" in Tools › Badges.",
           "**Preferences:** Preferences such as the clock model, province and world clocks are stored only on your phone and are deleted when you delete the app."
@@ -563,6 +563,7 @@
       "hijri": "Islamic New Year",
       "ashura": "Day of Ashura",
       "mawlid": "Mawlid Kandil",
+      "feb14": "Valentine's Day",
       "mar8": "International Women's Day",
       "mothers": "Mother's Day",
       "fathers": "Father's Day",
@@ -1018,7 +1019,11 @@
         "q": "What does My location mean?",
         "a": "It uses your device's time zone, so you can convert the time where you are to another city."
       }
-    ]
+    ],
+    "shareLink": "Copy link",
+    "linkCopied": "Link copied",
+    "addIcs": "Add to calendar (.ics)",
+    "addGoogle": "Add to Google Calendar"
   },
   "planner": {
     "title": "Meeting Planner: Find Overlapping Working Hours | Saat Tarih",
@@ -1050,7 +1055,14 @@
         "q": "How many cities can I add?",
         "a": "You can add up to six cities. Your selection is stored on this device."
       }
-    ]
+    ],
+    "shareLink": "Copy link",
+    "linkCopied": "Link copied",
+    "addIcs": "Add to calendar (.ics)",
+    "addGoogle": "Add to Google Calendar",
+    "pickHint": "Tap an hour at the top of the table to pick the meeting time; the link and calendar entry include it.",
+    "meeting": "Meeting",
+    "picked": "Picked time: {time} ({city} time)"
   },
   "cdp": {
     "title": "How Many Days Until {dat}? Countdown | Saat Tarih",
@@ -1147,6 +1159,26 @@
       "aol": {
         "name": "AÖL exam (open high school)",
         "dat": "the AÖL exam"
+      },
+      "feb14": {
+        "name": "Valentine's Day",
+        "dat": "Valentine's Day"
+      },
+      "mar8": {
+        "name": "International Women's Day",
+        "dat": "International Women's Day"
+      },
+      "mothers": {
+        "name": "Mother's Day",
+        "dat": "Mother's Day"
+      },
+      "fathers": {
+        "name": "Father's Day",
+        "dat": "Father's Day"
+      },
+      "nov24": {
+        "name": "Teachers' Day",
+        "dat": "Teachers' Day"
       }
     },
     "exam": "Exam dates are taken from ÖSYM, MEB and Anadolu University announcements, which may change them. Dates that have not been announced are not guessed; they are added once published."

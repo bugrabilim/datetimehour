@@ -1121,6 +1121,8 @@ const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
 const pairPath = (lang, c) => `${ROUTES[lang].diff}${HOME_CITY[lang].slug}-${c[lang].slug}/`;
 const durTxt = (lang, min) => { const t = I[lang].client; const a = Math.abs(min), h = Math.floor(a / 60), m = a % 60; return [h && `${h} ${t.hourShort}`, m && `${m} ${t.minuteShort}`].filter(Boolean).join(" "); };
 const hh = (n) => String(((n % 24) + 24) % 24).padStart(2, "0");
+/* Paylaşılabilir bağlantı ve takvime ekle (30 Ekim 2026; .ics veri adresi, Google Takvim bağlantısı) */
+const shareRow = (s) => `<div class="share-row"><button type="button" class="toggle" data-share>${esc(s.shareLink)}</button><a class="toggle" data-ics hidden download="saat-tarih.ics">${esc(s.addIcs)}</a><a class="toggle" data-gcal hidden target="_blank" rel="noopener">${esc(s.addGoogle)}</a><span class="meta" role="status" aria-live="polite" data-share-status></span></div>`;
 const cityOptions = (lang, withMine) => `${withMine ? `<option value="">${esc(I[lang].converter.mine)}</option>` : ""}${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
 const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country }));
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
@@ -1213,6 +1215,7 @@ function buildConverter(lang) {
       </div>
       <p class="big-time cv-result" role="status" aria-live="polite" data-cv-result>&nbsp;</p>
       <p class="meta info-sub" data-cv-diff>&nbsp;</p>
+      ${shareRow(s)}
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>
     <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
@@ -1237,6 +1240,8 @@ function buildPlanner(lang) {
       <ul class="legend" aria-label="${esc(s.tableLabel)}"><li><span class="lg lg-work" aria-hidden="true"></span>${esc(s.legendWork)}</li><li><span class="lg lg-edge" aria-hidden="true"></span>${esc(s.legendEdge)}</li><li><span class="lg lg-night" aria-hidden="true"></span>${esc(s.legendNight)}</li></ul>
       <div class="table-wrap"><table class="planner" data-pl-table><caption class="sr-only">${esc(s.tableLabel)}</caption></table></div>
       <p class="pl-common" role="status" aria-live="polite" data-pl-common>&nbsp;</p>
+      <p class="meta pl-hint" data-pl-picked>${esc(s.pickHint)}</p>
+      ${shareRow(s)}
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>
     <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
@@ -1254,6 +1259,12 @@ const CDP = [
   { key: "apr23", keys: ["apr23"], tr: "23-nisan", en: "april-23" },
   { key: "may19", keys: ["may19"], tr: "19-mayis", en: "may-19" },
   { key: "aug30", keys: ["aug30"], tr: "30-agustos", en: "august-30" },
+  // Özel günler (30 Ekim 2026, rakip analizi: saat-kac.tr, vclock)
+  { key: "feb14", keys: ["feb14"], tr: "sevgililer-gunu", en: "valentines-day" },
+  { key: "mar8", keys: ["mar8"], tr: "kadinlar-gunu", en: "womens-day" },
+  { key: "mothers", keys: ["mothers"], tr: "anneler-gunu", en: "mothers-day" },
+  { key: "fathers", keys: ["fathers"], tr: "babalar-gunu", en: "fathers-day" },
+  { key: "nov24", keys: ["nov24"], tr: "ogretmenler-gunu", en: "teachers-day" },
   { key: "semester", keys: ["semester"], tr: "yariyil-tatili", en: "mid-year-break", school: true },
   { key: "karne", keys: ["term1End", "schoolEnd"], tr: "karne-gunu", en: "report-card-day", school: true },
   { key: "schoolStart", keys: ["schoolStart"], tr: "okul-acilisi", en: "school-start", school: true },
@@ -1288,7 +1299,7 @@ function buildCdp(lang, x) {
     if (ev.length) ev.forEach((e) => dates.push({ y, d: e.date, k: e.key }));
     else if (x.key === "newYear") dates.push({ y, d: `${y}-01-01`, k: "newYear" });
   }
-  const fixed = ["newYear", "apr23", "may19", "aug30", "oct29"].includes(x.key);
+  const fixed = ["newYear", "apr23", "may19", "aug30", "oct29", "feb14", "mar8", "nov24"].includes(x.key);
   const names = t.calendar.events;
   const rowsHtml = dates.map((r) => `<tr><th scope="row">${r.y}</th><td>${esc(f.full(r.d))}${x.keys.length > 1 ? ` · ${esc(names[r.k])}` : ""}</td></tr>`).join("");
   const faq = [

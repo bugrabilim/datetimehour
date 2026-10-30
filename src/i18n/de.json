@@ -291,7 +291,7 @@
           "**Wetter:** Das Wetter in der App stammt von Apple Wetter (WeatherKit); dafür werden die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts an Apple gesendet. Wir sehen diese Daten nicht; es gelten die Datenschutzbedingungen von Apple.",
           "**Karte:** Der Globus in der Weltuhr wird mit Apple Karten angezeigt; Kartenbilder werden von Apple geladen.",
           "**Kalender:** Nur mit Ihrer Erlaubnis werden Termine aus den Kalendern auf Ihrem Telefon in der App angezeigt; sie werden auf dem Telefon gelesen und nirgendwohin gesendet. Hinzufügen und Löschen erfolgt über den Kalenderbildschirm des iPhones und nur mit Ihrer Bestätigung.",
-          "**Mitteilungen und Wecker:** Gebetszeit-Mitteilungen; Mitteilungen zu besonderen Tagen, Jahreszeitenbeginn, Mondphasen, Sonnenauf- und -untergang, morgendlicher Wetterübersicht, voller Stunde und Zeitumstellung (jeweils standardmäßig an, abschaltbar unter Einstellungen › Benachrichtigungen); Wecker und Timer werden auf dem Telefon ohne Server eingerichtet. Nur für die Wetterübersicht wird der Wetterdienst abgefragt (siehe Punkt Wetter oben). Die Liste wird per iOS-Hintergrundaktualisierung aktuell gehalten; Sprachansagen werden auf dem Telefon erzeugt.",
+          "**Mitteilungen und Wecker:** Gebetszeit-Mitteilungen; Mitteilungen zu besonderen Tagen, Jahreszeitenbeginn, Mondphasen, Sonnenauf- und -untergang, morgendlicher Wetterübersicht, voller Stunde und Zeitumstellung (außer der vollen Stunde jeweils standardmäßig an; änderbar unter Einstellungen › Benachrichtigungen); Wecker und Timer werden auf dem Telefon ohne Server eingerichtet. Nur für die Wetterübersicht wird der Wetterdienst abgefragt (siehe Punkt Wetter oben). Die Liste wird per iOS-Hintergrundaktualisierung aktuell gehalten; Sprachansagen werden auf dem Telefon erzeugt.",
           "**E-Mail-Liste:** Wenn Sie auf der Seite „Über“ der Liste beitreten, wird Ihre E-Mail-Adresse genau wie beim Formular der Website an die gemeinsame Bumba-Liste gesendet; die Hinweise zur E-Mail-Liste gelten auch für die App.",
           "**Abzeichen:** Abzeichen und Ihr Fortschritt (verdiente Abzeichen mit Datum, gesehene Uhrmodelle, Zahl der aufeinanderfolgenden Nutzungstage) werden nur auf dem Telefon gespeichert und nirgendwohin gesendet; Sie können sie jederzeit mit „Abzeichen löschen“ unter Werkzeuge › Abzeichen löschen.",
           "**Einstellungen:** Einstellungen wie Uhrmodell, Provinz und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt."
@@ -590,6 +590,7 @@
       "hijri": "Islamisches Neujahr",
       "ashura": "Aschura-Tag",
       "mawlid": "Mevlid-Nacht (Mevlid Kandili)",
+      "feb14": "Valentinstag",
       "mar8": "Internationaler Frauentag",
       "mothers": "Muttertag",
       "fathers": "Vatertag",
@@ -1045,7 +1046,11 @@
         "q": "Was bedeutet „Mein Standort“?",
         "a": "Es wird die Zeitzone Ihres Geräts verwendet, sodass Sie die Uhrzeit an Ihrem Ort in die einer anderen Stadt umrechnen können."
       }
-    ]
+    ],
+    "shareLink": "Link kopieren",
+    "linkCopied": "Link kopiert",
+    "addIcs": "Zum Kalender hinzufügen (.ics)",
+    "addGoogle": "Zu Google Kalender hinzufügen"
   },
   "planner": {
     "title": "Meeting-Planer: gemeinsame Arbeitszeiten finden | Saat Tarih",
@@ -1077,7 +1082,14 @@
         "q": "Wie viele Städte kann ich hinzufügen?",
         "a": "Sie können bis zu sechs Städte hinzufügen. Ihre Auswahl wird auf diesem Gerät gespeichert."
       }
-    ]
+    ],
+    "shareLink": "Link kopieren",
+    "linkCopied": "Link kopiert",
+    "addIcs": "Zum Kalender hinzufügen (.ics)",
+    "addGoogle": "Zu Google Kalender hinzufügen",
+    "pickHint": "Tippen Sie oben in der Tabelle auf eine Stunde, um die Besprechungszeit zu wählen; Link und Kalendereintrag enthalten sie.",
+    "meeting": "Besprechung",
+    "picked": "Gewählte Zeit: {time} (Zeit in {city})"
   },
   "cdp": {
     "title": "Wie viele Tage bis {dat}? Countdown | Saat Tarih",
@@ -1174,6 +1186,26 @@
       "aol": {
         "name": "AÖL-Prüfung (offenes Gymnasium)",
         "dat": "zur AÖL-Prüfung"
+      },
+      "feb14": {
+        "name": "Valentinstag",
+        "dat": "zum Valentinstag"
+      },
+      "mar8": {
+        "name": "Internationaler Frauentag",
+        "dat": "zum Frauentag"
+      },
+      "mothers": {
+        "name": "Muttertag",
+        "dat": "zum Muttertag"
+      },
+      "fathers": {
+        "name": "Vatertag",
+        "dat": "zum Vatertag"
+      },
+      "nov24": {
+        "name": "Tag des Lehrers",
+        "dat": "zum Tag des Lehrers"
       }
     },
     "exam": "Die Prüfungstermine stammen aus Bekanntgaben von ÖSYM, MEB und der Anadolu-Universität, die sie ändern können. Noch nicht veröffentlichte Termine werden nicht geschätzt, sondern nachgetragen."

@@ -264,7 +264,7 @@
           "**Hava:** Tətbiqdəki hava Apple Hava (WeatherKit) xidmətindən gəlir; bunun üçün seçilmiş vilayətin və ya məkanınızın təxmini koordinatları Apple-a göndərilir. Bu məlumatları biz görmürük; Apple-ın məxfilik şərtləri tətbiq olunur.",
           "**Xəritə:** Dünya saatlarındakı kürə Apple Xəritələr ilə göstərilir; xəritə şəkilləri Apple-dan yüklənir.",
           "**Təqvim:** Yalnız icazə versəniz, telefonunuzdakı təqvim tədbirləri tətbiqdə göstərilir; tədbirlər telefonda oxunur, heç yerə göndərilmir. Tədbir əlavə etmək və silmək iPhone-un öz təqvim ekranı ilə və sizin təsdiqinizlə edilir.",
-          "**Bildirişlər və zəngli saatlar:** Vaxt bildirişləri; xüsusi gün, fəslin başlanğıcı, Ay fazası, gün doğuşu və batışı, səhər hava xülasəsi, saat başı və yay vaxtı bildirişləri (hər biri standart olaraq açıqdır, Ayarlar › Bildirişlər bölməsindən bağlana bilər); zəngli saatlar və taymerlər serversiz, telefonda qurulur. Yalnız hava xülasəsi üçün hava xidmətinə müraciət olunur (yuxarıdakı hava bəndi). Siyahı iOS-un arxa plan yeniləməsi ilə aktual saxlanılır; səsli elan telefonda yaradılır.",
+          "**Bildirişlər və zəngli saatlar:** Vaxt bildirişləri; xüsusi gün, fəslin başlanğıcı, Ay fazası, gün doğuşu və batışı, səhər hava xülasəsi, saat başı və yay vaxtı bildirişləri (saat başından başqa hər biri standart olaraq açıqdır; Ayarlar › Bildirişlər bölməsindən dəyişdirilə bilər); zəngli saatlar və taymerlər serversiz, telefonda qurulur. Yalnız hava xülasəsi üçün hava xidmətinə müraciət olunur (yuxarıdakı hava bəndi). Siyahı iOS-un arxa plan yeniləməsi ilə aktual saxlanılır; səsli elan telefonda yaradılır.",
           "**E-poçt siyahısı:** Haqqında səhifəsindən siyahıya qoşulsanız, e-poçt ünvanınız saytdakı forma ilə eyni şəkildə ortaq Bumba siyahısına göndərilir; e-poçt siyahısı ilə bağlı izahlar tətbiq üçün də keçərlidir.",
           "**Nişanlar:** Nişanlar və irəliləyişiniz (qazanılan nişan və günü, baxılan saat modelləri, ardıcıl istifadə günlərinin sayı) yalnız telefonda saxlanılır, heç yerə göndərilmir; Alətlər › Nişanlar bölməsindəki \"Nişanları sil\" ilə istədiyiniz vaxt silə bilərsiniz.",
           "**Seçimlər:** Saat modeli, vilayət, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir."
@@ -563,6 +563,7 @@
       "hijri": "Hicri yeni il",
       "ashura": "Aşura günü",
       "mawlid": "Mövlud gecəsi",
+      "feb14": "Sevgililər Günü",
       "mar8": "Beynəlxalq Qadınlar Günü",
       "mothers": "Analar Günü",
       "fathers": "Atalar Günü",
@@ -1018,7 +1019,11 @@
         "q": "\"Olduğum yer\" nə deməkdir?",
         "a": "Bu seçim cihazınızın saat qurşağından istifadə edir, beləliklə olduğunuz yerdəki vaxtı başqa şəhərin vaxtına çevirə bilərsiniz."
       }
-    ]
+    ],
+    "shareLink": "Linki kopyala",
+    "linkCopied": "Link kopyalandı",
+    "addIcs": "Təqvimə əlavə et (.ics)",
+    "addGoogle": "Google Təqvimə əlavə et"
   },
   "planner": {
     "title": "Görüş planlayıcısı: ortaq iş saatlarını tapın | Saat Tarih",
@@ -1050,7 +1055,14 @@
         "q": "Neçə şəhər əlavə edə bilərəm?",
         "a": "Altı şəhərə qədər əlavə edə bilərsiniz. Seçiminiz bu cihazda saxlanılır."
       }
-    ]
+    ],
+    "shareLink": "Linki kopyala",
+    "linkCopied": "Link kopyalandı",
+    "addIcs": "Təqvimə əlavə et (.ics)",
+    "addGoogle": "Google Təqvimə əlavə et",
+    "pickHint": "Görüş vaxtını seçmək üçün cədvəlin yuxarısındakı saata toxunun; link və təqvim seçilmiş saatı daxil edir.",
+    "meeting": "Görüş",
+    "picked": "Seçilmiş saat: {time} ({city} vaxtı ilə)"
   },
   "cdp": {
     "title": "{dat} neçə gün qalıb? Geriyə sayım | Saat Tarih",
@@ -1147,6 +1159,26 @@
       "aol": {
         "name": "AÖL imtahanı (açıq lisey)",
         "dat": "AÖL imtahanına"
+      },
+      "feb14": {
+        "name": "Sevgililər Günü",
+        "dat": "Sevgililər Gününə"
+      },
+      "mar8": {
+        "name": "Beynəlxalq Qadınlar Günü",
+        "dat": "Beynəlxalq Qadınlar Gününə"
+      },
+      "mothers": {
+        "name": "Analar Günü",
+        "dat": "Analar Gününə"
+      },
+      "fathers": {
+        "name": "Atalar Günü",
+        "dat": "Atalar Gününə"
+      },
+      "nov24": {
+        "name": "Müəllimlər Günü",
+        "dat": "Müəllimlər Gününə"
       }
     },
     "exam": "İmtahan tarixləri ÖSYM, MEB və Anadolu Universitetinin elanlarından götürülür; qurumlar onları dəyişə bilər. Hələ açıqlanmamış tarixlər təxmin edilmir, açıqlandıqda əlavə olunur."

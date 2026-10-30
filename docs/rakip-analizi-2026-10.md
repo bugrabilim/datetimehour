@@ -51,7 +51,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 **Bilerek yok:** ezan sesi; Kur'an, dua, zikirmatik, namaz ve oruç takibi, zekât; hesap ve eşitleme; API; tarayıcı uzantısı. Sahip isterse yeniden değerlendirilir.
 
-**Konumlanma notu:** En güçlü doğrudan namaz rakibi **Vakit** (Hakan Çelik). Ücretsiz ve reklamsız; Apple Watch, Mac, Live Activity, 12 hesap yöntemi ve 25 dil var. "Ücretsiz, reklamsız" farkımız ona karşı işlemez. Masa, flip ve alarm kategorilerinde ise rakiplerin çoğu reklamlı ya da abonelikli; orada bu fark belirgindir.
+**Konumlanma notu (sahibin düzeltmesiyle, 30 Ekim 2026):** En güçlü doğrudan namaz rakibi **Vakit** (Hakan Çelik). Ücretsiz ve reklamsız; Apple Watch, Mac, Live Activity, 12 hesap yöntemi ve 25 dil var. Ona karşı farkımız fiyat değil, **yalnız namaz uygulaması olmayışımız**: saat (19 model, tam ekran), dünya saatleri ve küre, takvim, hava, mevsimler ve araçlar tek uygulamada. Masa, flip ve alarm kategorilerinde rakiplerin çoğu reklamlı ya da abonelikli; orada "ücretsiz, reklamsız" da belirgin bir farktır.
 
 ## 2. Grup ayrıntıları (ajan raporları)
 

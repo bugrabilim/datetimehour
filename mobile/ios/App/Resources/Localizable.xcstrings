@@ -22372,31 +22372,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Her özelliğin bildirimi varsayılan olarak açıktır; istemediklerinizi buradan kapatabilirsiniz. Bildirimler telefonda hazırlanır; yalnız hava özeti için hava servisine sorulur."
+            "value": "Saat başı dışında her özelliğin bildirimi varsayılan olarak açıktır; istemediklerinizi buradan kapatabilir, saat başını açabilirsiniz. Bildirimler telefonda hazırlanır; yalnız hava özeti için hava servisine sorulur."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Notifications for every feature are on by default; turn off the ones you don't want here. Notifications are prepared on your phone; only the weather summary asks the weather service."
+            "value": "Notifications for every feature except on-the-hour are on by default; turn off the ones you don't want, or turn on the hourly one, here. Notifications are prepared on your phone; only the weather summary asks the weather service."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Benachrichtigungen sind für jede Funktion standardmäßig an; schalten Sie hier ab, was Sie nicht möchten. Sie werden auf dem Telefon vorbereitet; nur für die Wetterübersicht wird der Wetterdienst abgefragt."
+            "value": "Benachrichtigungen sind für jede Funktion außer der vollen Stunde standardmäßig an; schalten Sie hier ab, was Sie nicht möchten, oder die volle Stunde ein. Sie werden auf dem Telefon vorbereitet; nur für die Wetterübersicht wird der Wetterdienst abgefragt."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hər funksiyanın bildirişi standart olaraq açıqdır; istəmədiklərinizi burada bağlaya bilərsiniz. Bildirişlər telefonda hazırlanır; yalnız hava xülasəsi üçün hava xidmətinə müraciət olunur."
+            "value": "Saat başından başqa hər funksiyanın bildirişi standart olaraq açıqdır; istəmədiklərinizi burada bağlaya, saat başını aça bilərsiniz. Bildirişlər telefonda hazırlanır; yalnız hava xülasəsi üçün hava xidmətinə müraciət olunur."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "إشعارات كل ميزة مفعّلة افتراضيًا، ويمكنك إيقاف ما لا تريده من هنا. تُجهَّز الإشعارات على هاتفك، ولا يُستعلم إلا عن ملخص الطقس من خدمة الطقس."
+            "value": "إشعارات كل ميزة مفعّلة افتراضيًا ما عدا إشعار بداية كل ساعة؛ يمكنك هنا إيقاف ما لا تريده أو تفعيل إشعار كل ساعة. تُجهَّز الإشعارات على هاتفك، ولا يُستعلم إلا عن ملخص الطقس من خدمة الطقس."
           }
         }
       }
