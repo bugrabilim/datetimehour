@@ -55,9 +55,12 @@ jobs:
       - name: Yetkiler (geçici imza)
         if: steps.keys.outputs.ok == '1'
         # İmzasız arşivde yetkiler (WeatherKit) yoktur; dağıtım imzası yetkileri mevcut imzadan alır.
-        # Bu yüzden önce widget, sonra uygulama yetki dosyasıyla geçici (ad hoc) imzalanır.
+        # Bu yüzden önce içtekiler (Apple Watch komplikasyonu ve uygulaması, widget), sonra uygulama yetki dosyasıyla
+        # geçici (ad hoc) imzalanır.
         run: |
           APP="$RUNNER_TEMP/SaatTarih.xcarchive/Products/Applications/SaatTarih.app"
+          for X in "$APP"/Watch/*.app/PlugIns/*.appex; do [ -e "$X" ] && codesign --force --sign - "$X"; done
+          for X in "$APP"/Watch/*.app; do [ -e "$X" ] && codesign --force --sign - "$X"; done
           for X in "$APP"/PlugIns/*.appex; do codesign --force --sign - "$X"; done
           codesign --force --sign - --entitlements mobile/ios/App/SaatTarih.entitlements "$APP"
           codesign -d --entitlements - "$APP"

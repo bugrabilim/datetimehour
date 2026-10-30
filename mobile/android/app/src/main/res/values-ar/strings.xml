@@ -916,5 +916,9 @@
     <string name="live_iftar">الإفطار</string>
     <string name="live_sahur">السحور (الإمساك)</string>
     <string name="live_channel">العدادات الجارية</string>
+    <string name="wear_place">المكان</string>
+    <string name="wear_noLocation">تعذّر تحديد الموقع؛ يتم عرض إسطنبول.</string>
+    <string name="wear_phonePlace">المكان من iPhone</string>
+    <string name="wear_today">اليوم</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

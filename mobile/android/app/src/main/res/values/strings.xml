@@ -916,5 +916,9 @@
     <string name="live_iftar">İftar</string>
     <string name="live_sahur">Sahur (imsak)</string>
     <string name="live_channel">Süren sayaçlar</string>
+    <string name="wear_place">Yer</string>
+    <string name="wear_noLocation">Konum alınamadı; İstanbul gösteriliyor.</string>
+    <string name="wear_phonePlace">iPhone\'daki yer</string>
+    <string name="wear_today">Bugün</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

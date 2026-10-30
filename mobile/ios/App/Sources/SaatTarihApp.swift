@@ -10,6 +10,8 @@ struct SaatTarihApp: App {
     init() {
         // Özellik aç/kapa: ilk iş, önceki kullanıcıda hepsi açık kalsın (Features.migrate)
         Features.migrate()
+        // Apple Watch'a seçili yer (WatchConnectivity)
+        WatchSync.shared.start()
     }
 
     var body: some Scene {

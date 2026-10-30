@@ -79,16 +79,20 @@ jobs:
         working-directory: mobile/android
         env:
           VERSION_CODE: ${{ github.run_number }}
-        run: ./gradlew :app:assembleDebug :app:testDebugUnitTest
+        run: ./gradlew :app:assembleDebug :app:testDebugUnitTest :wear:assembleDebug :wear:testDebugUnitTest
       - uses: actions/upload-artifact@v4
         with:
           name: android-apk
-          path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            mobile/android/app/build/outputs/apk/debug/app-debug.apk
+            mobile/android/wear/build/outputs/apk/debug/wear-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: android-ekran-goruntuleri
-          path: mobile/android/app/build/screens
+          path: |
+            mobile/android/app/build/screens
+            mobile/android/wear/build/screens
 
   ios-app:
     name: iOS uygulaması (simülatör)
@@ -103,7 +107,7 @@ jobs:
         run: |
           xcodebuild -version
           xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarih -configuration Debug \
-            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO -quiet build
       - name: Ekran görüntüleri
         run: mobile/ios/scripts/screenshots.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app shots

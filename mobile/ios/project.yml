@@ -6,6 +6,7 @@ options:
   developmentLanguage: tr
   deploymentTarget:
     iOS: "17.0"
+    watchOS: "10.0"
 settings:
   base:
     # Uygulama ve widget aynı sürümde olmalı (App Store şartı)
@@ -24,6 +25,13 @@ targets:
     dependencies:
       - package: SaatCore
       - target: SaatTarihWidget
+      # Apple Watch uygulaması (komplikasyonlarıyla) iPhone uygulamasının Watch klasörüne gömülür
+      - target: SaatTarihWatch
+        embed: true
+        codeSign: false
+        copy:
+          destination: productsDirectory
+          subpath: $(CONTENTS_FOLDER_PATH)/Watch
     settings:
       base:
         PRODUCT_NAME: SaatTarih
@@ -89,6 +97,86 @@ targets:
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
         TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Apple Watch uygulaması (rakip analizi #6): saat, tarih (miladi + hicri), sıradaki vakit, bugünün vakitleri, yer
+  # seçimi (iPhone'daki yer WatchConnectivity ile gelir). Hesap SaatCore'da; ortak dosyalar App/Sources'tan.
+  SaatTarihWatch:
+    type: application
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources:
+      - path: Watch/Sources
+      - path: Watch/Assets.xcassets
+      - path: App/Sources/Province.swift
+      - path: App/Sources/Schedule.swift
+      - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
+      - path: App/Resources/Localizable.xcstrings
+      - path: App/Resources/InfoPlist.xcstrings
+      - path: App/Resources/provinces.json
+      - path: App/Resources/hijri.json
+    dependencies:
+      - package: SaatCore
+      - target: SaatTarihWatchWidget
+    info:
+      path: Watch/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        WKApplication: true
+        WKCompanionAppBundleIdentifier: tr.bumba.time
+        NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini göstermek için. Vakitler saatte hesaplanır, konum hiçbir yere gönderilmez."
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihWatch
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.watchkitapp
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "4"
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Apple Watch komplikasyonları (WidgetKit): sıradaki vakit ve hicri tarih
+  SaatTarihWatchWidget:
+    type: app-extension
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources:
+      - path: WatchWidget/Sources
+      - path: Widget/Sources/ProvinceIntent.swift
+      - path: App/Sources/Province.swift
+      - path: App/Sources/Schedule.swift
+      - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
+      - path: App/Resources/Localizable.xcstrings
+      - path: App/Resources/provinces.json
+      - path: App/Resources/hijri.json
+    dependencies:
+      - package: SaatCore
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+    info:
+      path: WatchWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        NSWidgetWantsLocation: true
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihWatchWidget
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.watchkitapp.widget
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "4"
         GENERATE_INFOPLIST_FILE: YES
         SKIP_INSTALL: YES
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES

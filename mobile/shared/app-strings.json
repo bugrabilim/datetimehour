@@ -3261,5 +3261,33 @@
     "de": "Laufende Zähler",
     "az": "İşləyən sayğaclar",
     "ar": "العدادات الجارية"
+  },
+  "wear.place": {
+    "tr": "Yer",
+    "en": "Place",
+    "de": "Ort",
+    "az": "Yer",
+    "ar": "المكان"
+  },
+  "wear.noLocation": {
+    "tr": "Konum alınamadı; İstanbul gösteriliyor.",
+    "en": "Location unavailable; showing Istanbul.",
+    "de": "Standort nicht verfügbar; Istanbul wird angezeigt.",
+    "az": "Məkan alınmadı; İstanbul göstərilir.",
+    "ar": "تعذّر تحديد الموقع؛ يتم عرض إسطنبول."
+  },
+  "wear.phonePlace": {
+    "tr": "iPhone'daki yer",
+    "en": "Place from iPhone",
+    "de": "Ort vom iPhone",
+    "az": "iPhone-dakı yer",
+    "ar": "المكان من iPhone"
+  },
+  "wear.today": {
+    "tr": "Bugün",
+    "en": "Today",
+    "de": "Heute",
+    "az": "Bu gün",
+    "ar": "اليوم"
   }
 }

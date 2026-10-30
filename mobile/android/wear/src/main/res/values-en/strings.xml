@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- gen-strings.mjs üretir; elle düzenlemeyin -->
+<resources>
+    <string name="prayer_fajr">Fajr</string>
+    <string name="prayer_sunrise">Sunrise</string>
+    <string name="prayer_dhuhr">Dhuhr</string>
+    <string name="prayer_asr">Asr</string>
+    <string name="prayer_maghrib">Maghrib</string>
+    <string name="prayer_isha">Isha</string>
+    <string name="prayer_nextIn">Time left to %1$s</string>
+    <string name="prayer_today">Today\'s times</string>
+    <string name="prayer_province">Province</string>
+    <string name="client_hourShort">h</string>
+    <string name="client_minuteShort">min</string>
+    <string name="prayer_monthHeading">Prayer times for %1$s %2$s</string>
+    <string name="prayer_colDay">Day</string>
+    <string name="prayer_prevMonth">Previous month</string>
+    <string name="prayer_nextMonth">Next month</string>
+    <string name="prayer_useLocation">Use my location</string>
+    <string name="prayer_imTitle">Ramadan Timetable %1$s</string>
+    <string name="prayer_imDay">Ramadan</string>
+    <string name="prayer_imDate">Date</string>
+    <string name="prayer_imSahur">suhoor</string>
+    <string name="prayer_imIftar">iftar</string>
+    <string name="prayer_imNote">Times are calculated; for official times follow the Presidency of Religious Affairs (Diyanet).</string>
+    <string name="prayer_imFile">ramadan-timetable</string>
+    <string name="prayer_imAlt">Ramadan %2$s timetable for %1$s</string>
+    <string name="place_myLocation">My location</string>
+    <string name="widget_province_auto">Automatic (my location)</string>
+    <string name="widget_next_name">Next prayer</string>
+    <string name="widget_next_desc">The next prayer, its time and the time left.</string>
+    <string name="prayer_monthly">Monthly prayer timetable</string>
+    <string name="hijri_title">Hijri date</string>
+    <string name="hijri_fmt">%1$s %2$s %3$s AH</string>
+    <string name="hijri_note">The Hijri date follows Türkiye\'s Diyanet calendar; in other countries a month may start a day earlier or later. The day changes at midnight, not at sunset.</string>
+    <string name="widget_hijri_name">Hijri date</string>
+    <string name="widget_hijri_desc">Today\'s Hijri date (Diyanet calendar) and Gregorian date.</string>
+    <string name="hijri_month_1">Muharram</string>
+    <string name="hijri_month_2">Safar</string>
+    <string name="hijri_month_3">Rabi al-Awwal</string>
+    <string name="hijri_month_4">Rabi al-Thani</string>
+    <string name="hijri_month_5">Jumada al-Ula</string>
+    <string name="hijri_month_6">Jumada al-Akhirah</string>
+    <string name="hijri_month_7">Rajab</string>
+    <string name="hijri_month_8">Shaban</string>
+    <string name="hijri_month_9">Ramadan</string>
+    <string name="hijri_month_10">Shawwal</string>
+    <string name="hijri_month_11">Dhu al-Qadah</string>
+    <string name="hijri_month_12">Dhu al-Hijjah</string>
+    <string name="live_iftar">Iftar</string>
+    <string name="live_sahur">Suhoor (imsak)</string>
+    <string name="wear_place">Place</string>
+    <string name="wear_noLocation">Location unavailable; showing Istanbul.</string>
+    <string name="wear_phonePlace">Place from iPhone</string>
+    <string name="wear_today">Today</string>
+    <string name="app_name">Time &amp; Date</string>
+</resources>

@@ -133,6 +133,9 @@ final class PlaceModel {
         place = new
         Task { await PrayerNotifier.reschedule() }
         WidgetCenter.shared.reloadAllTimelines()
+        // Apple Watch "iPhone'daki yer" ve kilit ekranındaki sıradaki vakit
+        WatchSync.shared.send(new)
+        LiveActivities.sync()
     }
 }
 

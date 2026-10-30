@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- gen-strings.mjs üretir; elle düzenlemeyin -->
+<resources>
+    <string name="prayer_fajr">İmsak</string>
+    <string name="prayer_sunrise">Güneş</string>
+    <string name="prayer_dhuhr">Öğle</string>
+    <string name="prayer_asr">İkindi</string>
+    <string name="prayer_maghrib">Akşam</string>
+    <string name="prayer_isha">Yatsı</string>
+    <string name="prayer_nextIn">%1$s vaktine kalan süre</string>
+    <string name="prayer_today">Bugünün vakitleri</string>
+    <string name="prayer_province">İl</string>
+    <string name="client_hourShort">sa</string>
+    <string name="client_minuteShort">dk</string>
+    <string name="prayer_monthHeading">%1$s %2$s vakit çizelgesi</string>
+    <string name="prayer_colDay">Gün</string>
+    <string name="prayer_prevMonth">Önceki ay</string>
+    <string name="prayer_nextMonth">Sonraki ay</string>
+    <string name="prayer_useLocation">Konumumu kullan</string>
+    <string name="prayer_imTitle">Ramazan İmsakiyesi %1$s</string>
+    <string name="prayer_imDay">Ramazan</string>
+    <string name="prayer_imDate">Tarih</string>
+    <string name="prayer_imSahur">sahur</string>
+    <string name="prayer_imIftar">iftar</string>
+    <string name="prayer_imNote">Vakitler hesaplanmıştır; resmî vakit için Diyanet İşleri Başkanlığı esas alınır.</string>
+    <string name="prayer_imFile">ramazan-imsakiyesi</string>
+    <string name="prayer_imAlt">%1$s için %2$s Ramazan imsakiyesi</string>
+    <string name="place_myLocation">Konumum</string>
+    <string name="widget_province_auto">Otomatik (konumum)</string>
+    <string name="widget_next_name">Sıradaki vakit</string>
+    <string name="widget_next_desc">Sıradaki vakit, saati ve kalan süre.</string>
+    <string name="prayer_monthly">Aylık vakit çizelgesi</string>
+    <string name="hijri_title">Hicri tarih</string>
+    <string name="hijri_fmt">%1$s %2$s %3$s</string>
+    <string name="hijri_note">Hicri tarih Diyanet takvimine göredir; başka ülkelerde ay başı bir gün farklı olabilir. Gün, akşam değil gece yarısı değişir.</string>
+    <string name="widget_hijri_name">Hicri tarih</string>
+    <string name="widget_hijri_desc">Bugünün hicri tarihi (Diyanet takvimi) ve miladi tarih.</string>
+    <string name="hijri_month_1">Muharrem</string>
+    <string name="hijri_month_2">Safer</string>
+    <string name="hijri_month_3">Rebiülevvel</string>
+    <string name="hijri_month_4">Rebiülahir</string>
+    <string name="hijri_month_5">Cemaziyelevvel</string>
+    <string name="hijri_month_6">Cemaziyelahir</string>
+    <string name="hijri_month_7">Recep</string>
+    <string name="hijri_month_8">Şaban</string>
+    <string name="hijri_month_9">Ramazan</string>
+    <string name="hijri_month_10">Şevval</string>
+    <string name="hijri_month_11">Zilkade</string>
+    <string name="hijri_month_12">Zilhicce</string>
+    <string name="live_iftar">İftar</string>
+    <string name="live_sahur">Sahur (imsak)</string>
+    <string name="wear_place">Yer</string>
+    <string name="wear_noLocation">Konum alınamadı; İstanbul gösteriliyor.</string>
+    <string name="wear_phonePlace">iPhone\'daki yer</string>
+    <string name="wear_today">Bugün</string>
+    <string name="app_name">Saat Tarih</string>
+</resources>

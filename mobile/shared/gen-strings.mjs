@@ -88,6 +88,9 @@ const androidEscape = (s) => s
   .replace(/\\/g, "\\\\").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
   .replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, "\\n").replace(/^([@?])/, "\\$1");
 const androidRes = Object.fromEntries(LANGS.map((l) => [l, []]));
+/* Wear OS saati: yalnız saat ekranlarının kullandığı metinler (mobile/android/wear) */
+const WEAR_KEYS = /^(prayer\.|hijri\.|wear\.|widget\.(next|hijri)\.|widget\.province\.auto$|live\.(iftar|sahur)$|place\.myLocation$|client\.(hourShort|minuteShort)$)/;
+const wearRes = Object.fromEntries(LANGS.map((l) => [l, []]));
 const androidNames = new Map();
 
 /* Siri ifadeleri (iOS App Shortcuts): "siri.phrase.*" yalnız AppShortcuts.xcstrings'e gider; anahtar İngilizce ifadedir,
@@ -135,12 +138,14 @@ for (const [key, get] of Object.entries(KEYS)) {
       const attr = v.includes("%") ? ' formatted="false"' : "";
       androidRes[l].push(`    <string name="${name}"${attr}>${androidEscape(v)}</string>`);
     }
+    if (WEAR_KEYS.test(key)) wearRes[l].push(androidRes[l][androidRes[l].length - 1]);
   }
 }
 // Uygulama adı (ana ekran simgesinin altında, dile göre)
 for (const l of LANGS) androidRes[l].push(`    <string name="app_name">${androidEscape(APP["app.displayName"][l])}</string>`);
-const androidXml = (l) => '<?xml version="1.0" encoding="utf-8"?>\n<!-- gen-strings.mjs üretir; elle düzenlemeyin -->\n<resources>\n' +
-  androidRes[l].join("\n") + "\n</resources>\n";
+for (const l of LANGS) wearRes[l].push(androidRes[l][androidRes[l].length - 1]);
+const androidXml = (l, res = androidRes) => '<?xml version="1.0" encoding="utf-8"?>\n<!-- gen-strings.mjs üretir; elle düzenlemeyin -->\n<resources>\n' +
+  res[l].join("\n") + "\n</resources>\n";
 const localesConfig = '<?xml version="1.0" encoding="utf-8"?>\n<locale-config xmlns:android="http://schemas.android.com/apk/res/android">\n' +
   LANGS.map((l) => `    <locale android:name="${l}" />`).join("\n") + "\n</locale-config>\n";
 const catalog = (s, source = "tr") => JSON.stringify({ sourceLanguage: source, strings: s, version: "1.0" }, null, 2) + "\n";
@@ -202,6 +207,11 @@ const files = {
   "mobile/android/app/src/main/assets/hijri.json": hijriJson,
   "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/app/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l)])),
+  // Wear OS saati (Wear modülü): il listesi, hicri ay başları ve saat ekranlarının metinleri
+  "mobile/android/wear/src/main/assets/provinces.json": provincesJson,
+  "mobile/android/wear/src/main/assets/hijri.json": hijriJson,
+  "mobile/android/wear/src/main/res/xml/locales_config.xml": localesConfig,
+  ...Object.fromEntries(LANGS.map((l) => [`mobile/android/wear/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l, wearRes)])),
 };
 const check = process.argv.includes("--check");
 const stale = [];

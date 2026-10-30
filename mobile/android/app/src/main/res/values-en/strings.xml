@@ -916,5 +916,9 @@
     <string name="live_iftar">Iftar</string>
     <string name="live_sahur">Suhoor (imsak)</string>
     <string name="live_channel">Running counters</string>
+    <string name="wear_place">Place</string>
+    <string name="wear_noLocation">Location unavailable; showing Istanbul.</string>
+    <string name="wear_phonePlace">Place from iPhone</string>
+    <string name="wear_today">Today</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>
