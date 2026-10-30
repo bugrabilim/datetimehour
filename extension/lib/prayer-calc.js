@@ -113,7 +113,40 @@
     return NaN;
   }
 
-  var api = { times: times, PARAMS: PARAMS, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA };
+  /* Güneşin belli bir yüksekliğe (derece, ufkun üstü pozitif) sabah çıktığı ve akşam indiği an; yerel ondalık saat,
+     o gün oluşmuyorsa NaN. Vakitlerdeki gibi düzeltmesiz, ikinci yaklaşımla (30 Ekim 2026: altın ve mavi saat). */
+  function sunAltTimes(y, m, d, lat, lon, tz, alt) {
+    var jd = julian(y, m, d) - lon / 360;
+    var at = function (t, ccw) {
+      var p = sunPos(jd + t);
+      var a = (sin(alt) - sin(p.decl) * sin(lat)) / (cos(p.decl) * cos(lat));
+      if (a < -1 || a > 1) return NaN;
+      return fixHour(12 - p.eqt) + (ccw ? -1 : 1) * acos(a) / 15;
+    };
+    var rise = at(6 / 24, true), set = at(18 / 24, false);
+    if (!isNaN(rise)) rise = at(rise / 24, true);
+    if (!isNaN(set)) set = at(set / 24, false);
+    var off = tz - lon / 15;
+    return { rise: rise + off, set: set + off };
+  }
+
+  /* Altın saat (Güneş +6° ile −4° arası) ve mavi saat (−4° ile −6° arası); sabah ve akşam [başlangıç, bitiş] */
+  var LIGHT = { golden: 6, edge: -4, blue: -6 };
+  function lightHours(y, m, d, lat, lon, tz) {
+    var g = sunAltTimes(y, m, d, lat, lon, tz, LIGHT.golden), e = sunAltTimes(y, m, d, lat, lon, tz, LIGHT.edge), b = sunAltTimes(y, m, d, lat, lon, tz, LIGHT.blue);
+    return { blueAm: [b.rise, e.rise], goldenAm: [e.rise, g.rise], goldenPm: [g.set, e.set], bluePm: [e.set, b.set] };
+  }
+
+  /* Kerahat vakitleri (yaklaşık): Diyanet'in yayımladığı bir dakika ölçüsü yok; takvimlerde yaygın olan 45 dakika
+     kullanılır. İşrak: güneş vaktinden 45 dk sonrasına; istiva: öğleden 45 dk önceden öğleye; isfirar: akşamdan
+     45 dk önceden akşama. r: times() sonucu. */
+  var KERAHAT_MIN = 45;
+  function kerahat(r) {
+    var k = KERAHAT_MIN / 60;
+    return { israk: [r.sunrise, r.sunrise + k], istiva: [r.dhuhr - k, r.dhuhr], isfirar: [r.maghrib - k, r.maghrib] };
+  }
+
+  var api = { times: times, PARAMS: PARAMS, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthPrayer = api;
 })(typeof window !== "undefined" ? window : globalThis);
