@@ -31,6 +31,9 @@ class AlarmRingService : Service() {
     private var player: MediaPlayer? = null
     private var vibrator: Vibrator? = null
     private var started = 0L
+    /** Saati sesli söyleme (rakip analizi #20): 20 sn'de bir, konuşurken zil kısılır */
+    private var tts: android.speech.tts.TextToSpeech? = null
+    private var rising = true
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -58,14 +61,16 @@ class AlarmRingService : Service() {
                 setDataSource(this@AlarmRingService, uri!!)
                 setWakeMode(this@AlarmRingService, PowerManager.PARTIAL_WAKE_LOCK)
                 isLooping = true
-                setVolume(MIN_VOLUME, MIN_VOLUME)
+                rising = item?.rise == true
+                setVolume(if (rising) MIN_VOLUME else 1f, if (rising) MIN_VOLUME else 1f)
                 prepare()
                 start()
             }
         }.getOrNull()
         if (item?.vibrate != false) vibrate()
         started = SystemClock.elapsedRealtime()
-        handler.post(ramp)
+        if (rising) handler.post(ramp)
+        if (item?.speak == true) startSpeech()
         // Kimse kapatmazsa 10 dk sonra susar (bildirim kalkar)
         handler.postDelayed({ AlarmScheduler.stop(this, id) }, 10 * 60_000L)
         return START_NOT_STICKY
@@ -77,6 +82,34 @@ class AlarmRingService : Service() {
             val v = volumeAt(elapsed)
             runCatching { player?.setVolume(v, v) }
             if (elapsed < RISE_MS) handler.postDelayed(this, 250)
+        }
+    }
+
+    private fun startSpeech() {
+        tts = android.speech.tts.TextToSpeech(this) { status ->
+            val t = tts ?: return@TextToSpeech
+            if (status != android.speech.tts.TextToSpeech.SUCCESS) return@TextToSpeech
+            val ok = t.setLanguage(Strings.locale)
+            // Azericede ses yoksa Türkçe ses (bildirim seslerindeki gibi)
+            if (ok < android.speech.tts.TextToSpeech.LANG_AVAILABLE && Strings.lang == "az") t.setLanguage(java.util.Locale("tr"))
+            t.setAudioAttributes(AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ALARM)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH).build())
+            handler.postDelayed(say, 1500)
+        }
+    }
+
+    private val say = object : Runnable {
+        override fun run() {
+            val t = tts ?: return
+            val now = java.time.ZonedDateTime.now()
+            runCatching { player?.setVolume(0.15f, 0.15f) }
+            t.speak(T("alarm.speakText", Fmt.time(now)), android.speech.tts.TextToSpeech.QUEUE_FLUSH, null, "say")
+            // Konuşma bitince zil eski düzeyine döner
+            handler.postDelayed({
+                val v = if (rising) volumeAt(SystemClock.elapsedRealtime() - started) else 1f
+                runCatching { player?.setVolume(v, v) }
+            }, 3000)
+            handler.postDelayed(this, 20_000)
         }
     }
 
@@ -98,6 +131,9 @@ class AlarmRingService : Service() {
         player = null
         vibrator?.cancel()
         vibrator = null
+        tts?.stop()
+        tts?.shutdown()
+        tts = null
     }
 
     override fun onDestroy() {

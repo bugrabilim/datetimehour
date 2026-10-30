@@ -273,6 +273,7 @@
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
         <receiver android:name=".AlarmReceiver" android:exported="false" />
+        <receiver android:name=".AlarmPreReceiver" android:exported="false" />
         <receiver android:name=".RescheduleReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

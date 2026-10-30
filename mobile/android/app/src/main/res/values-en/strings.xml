@@ -1133,35 +1133,35 @@
     <string name="look_slideAdd">Add photos</string>
     <string name="look_slideClear">Clear slideshow</string>
     <string name="look_slideEvery">Change every</string>
-    <string name="look_slideCount" formatted="false">%1$@ photos</string>
+    <string name="look_slideCount">%1$s photos</string>
     <string name="look_slideNote">Up to 10 photos take turns as the full-screen background; the photos stay on this device.</string>
     <string name="look_size">Clock size</string>
     <string name="look_fsNote">In full screen, swipe up or down along the edge of the screen to dim it, and pinch to resize the clock.</string>
     <string name="fs_lock">Lock orientation</string>
     <string name="fs_unlock">Unlock orientation</string>
-    <string name="fs_dim" formatted="false">Dimmed %1$@</string>
+    <string name="fs_dim">Dimmed %1$s</string>
     <string name="share_prayer">Share prayer times</string>
     <string name="share_card">Share</string>
     <string name="alarm_quick">Quick alarm</string>
-    <string name="alarm_quickIn" formatted="false">In %1$@ min</string>
-    <string name="alarm_quickSet" formatted="false">Alarm set: %1$@</string>
+    <string name="alarm_quickIn">In %1$s min</string>
+    <string name="alarm_quickSet">Alarm set: %1$s</string>
     <string name="alarm_swipe">Slide to stop</string>
     <string name="alarm_pre">Notify before ringing</string>
     <string name="alarm_preOff">Off</string>
-    <string name="alarm_preMin" formatted="false">%1$@ min before</string>
-    <string name="alarm_preTitle" formatted="false">Upcoming alarm: %1$@</string>
+    <string name="alarm_preMin">%1$s min before</string>
+    <string name="alarm_preTitle">Upcoming alarm: %1$s</string>
     <string name="alarm_preBody">Up early? You can skip this one.</string>
     <string name="alarm_preSkip">Skip this alarm</string>
     <string name="alarm_preNote">A silent notification; you can skip the alarm from it.</string>
     <string name="alarm_speak">Speak the time</string>
     <string name="alarm_speakNote">While ringing, the time is spoken with the phone\'s speech engine.</string>
     <string name="alarm_speakNoteIOS">The alarm sound becomes a short recording that speaks the time (made on the phone).</string>
-    <string name="alarm_speakText" formatted="false">It\'s %1$@</string>
+    <string name="alarm_speakText">It\'s %1$s</string>
     <string name="csv_laps">Share laps (CSV)</string>
     <string name="csv_pomo">Share history (CSV)</string>
-    <string name="world_dstForward" formatted="false">%1$@: clocks go forward %2$@</string>
-    <string name="world_dstBack" formatted="false">%1$@: clocks go back %2$@</string>
-    <string name="world_dstTitle" formatted="false">%1$@: clocks change</string>
+    <string name="world_dstForward">%1$s: clocks go forward %2$s</string>
+    <string name="world_dstBack">%1$s: clocks go back %2$s</string>
+    <string name="world_dstTitle">%1$s: clocks change</string>
     <string name="hijriConv_outsideApp">Outside the Diyanet table; calculated with the Umm al-Qura calendar, may differ by a day.</string>
     <string name="common_secondsShort">s</string>
     <string name="app_name">Time &amp; Date</string>

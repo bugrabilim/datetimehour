@@ -1133,35 +1133,35 @@
     <string name="look_slideAdd">Fotoğraf ekle</string>
     <string name="look_slideClear">Slaytı temizle</string>
     <string name="look_slideEvery">Değişme aralığı</string>
-    <string name="look_slideCount" formatted="false">%1$@ fotoğraf</string>
+    <string name="look_slideCount">%1$s fotoğraf</string>
     <string name="look_slideNote">Tam ekran arka planında en çok 10 fotoğraf sırayla gösterilir; fotoğraflar yalnız bu cihazda kalır.</string>
     <string name="look_size">Saat boyutu</string>
     <string name="look_fsNote">Tam ekranda ekranın kenarında yukarı ya da aşağı kaydırarak ekranı karartabilir, iki parmakla saati büyütüp küçültebilirsiniz.</string>
     <string name="fs_lock">Yönü kilitle</string>
     <string name="fs_unlock">Yön kilidini aç</string>
-    <string name="fs_dim" formatted="false">Karartma %1$@</string>
+    <string name="fs_dim">Karartma %1$s</string>
     <string name="share_prayer">Vakitleri paylaş</string>
     <string name="share_card">Paylaş</string>
     <string name="alarm_quick">Hızlı alarm</string>
-    <string name="alarm_quickIn" formatted="false">%1$@ dk sonra</string>
-    <string name="alarm_quickSet" formatted="false">Alarm kuruldu: %1$@</string>
+    <string name="alarm_quickIn">%1$s dk sonra</string>
+    <string name="alarm_quickSet">Alarm kuruldu: %1$s</string>
     <string name="alarm_swipe">Durdurmak için kaydırın</string>
     <string name="alarm_pre">Çalmadan önce haber ver</string>
     <string name="alarm_preOff">Kapalı</string>
-    <string name="alarm_preMin" formatted="false">%1$@ dk önce</string>
-    <string name="alarm_preTitle" formatted="false">Yaklaşan alarm: %1$@</string>
+    <string name="alarm_preMin">%1$s dk önce</string>
+    <string name="alarm_preTitle">Yaklaşan alarm: %1$s</string>
     <string name="alarm_preBody">Erken uyandıysanız bu çalmayı atlayabilirsiniz.</string>
     <string name="alarm_preSkip">Bu alarmı atla</string>
     <string name="alarm_preNote">Sessiz bildirim; dokunup alarmı atlayabilirsiniz.</string>
     <string name="alarm_speak">Saati sesli söylesin</string>
     <string name="alarm_speakNote">Alarm çalarken saat telefonun konuşma motoruyla söylenir.</string>
     <string name="alarm_speakNoteIOS">Alarm sesi, saati söyleyen kısa bir kayıtla değişir (kayıt telefonda üretilir).</string>
-    <string name="alarm_speakText" formatted="false">Saat %1$@</string>
+    <string name="alarm_speakText">Saat %1$s</string>
     <string name="csv_laps">Turları paylaş (CSV)</string>
     <string name="csv_pomo">Geçmişi paylaş (CSV)</string>
-    <string name="world_dstForward" formatted="false">%1$@: saatler %2$@ ileri alınıyor</string>
-    <string name="world_dstBack" formatted="false">%1$@: saatler %2$@ geri alınıyor</string>
-    <string name="world_dstTitle" formatted="false">%1$@: saat değişiyor</string>
+    <string name="world_dstForward">%1$s: saatler %2$s ileri alınıyor</string>
+    <string name="world_dstBack">%1$s: saatler %2$s geri alınıyor</string>
+    <string name="world_dstTitle">%1$s: saat değişiyor</string>
     <string name="hijriConv_outsideApp">Diyanet tablosunun dışında; Ümmü\'l-Kurâ takvimiyle hesaplandı, bir gün fark olabilir.</string>
     <string name="common_secondsShort">sn</string>
     <string name="app_name">Saat Tarih</string>

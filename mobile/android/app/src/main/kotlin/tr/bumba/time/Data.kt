@@ -55,6 +55,20 @@ data class City(
     val displayCountry: String get() = countries[Strings.lang] ?: countries["en"] ?: ""
     val zone: ZoneId get() = ZoneId.of(tz)
 
+    /** Sıradaki saat değişimi (`days` gün içindeyse): an ve fark (sn; ileri pozitif) — rakip analizi #30 */
+    fun nextDst(now: java.time.Instant, days: Long = 7): Pair<java.time.Instant, Int>? {
+        val tr = zone.rules.nextTransition(now) ?: return null
+        if (tr.instant.isAfter(now.plusSeconds(days * 86400))) return null
+        val delta = tr.offsetAfter.totalSeconds - tr.offsetBefore.totalSeconds
+        return if (delta == 0) null else tr.instant to delta
+    }
+
+    /** "2 Kasım: saatler 1 sa geri alınıyor" (şehrin yerel tarihiyle) */
+    fun dstNote(now: java.time.Instant, days: Long = 7): String? {
+        val (at, delta) = nextDst(now, days) ?: return null
+        return T(if (delta > 0) "world.dstForward" else "world.dstBack", Fmt.dayMonth(at.atZone(zone).toLocalDate()), Fmt.hm(kotlin.math.abs(delta)))
+    }
+
     companion object {
         val all: List<City> get() = AppData.cities
         /** Sitedeki varsayılan liste (Ankara ve İzmir İstanbul'la aynı dilimde olduğu için yok) */

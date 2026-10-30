@@ -1133,35 +1133,35 @@
     <string name="look_slideAdd">إضافة صور</string>
     <string name="look_slideClear">مسح العرض</string>
     <string name="look_slideEvery">التبديل كل</string>
-    <string name="look_slideCount" formatted="false">%1$@ صور</string>
+    <string name="look_slideCount">%1$s صور</string>
     <string name="look_slideNote">تتناوب حتى 10 صور خلفيةً لملء الشاشة، وتبقى الصور على هذا الجهاز.</string>
     <string name="look_size">حجم الساعة</string>
     <string name="look_fsNote">في ملء الشاشة اسحب لأعلى أو لأسفل على حافة الشاشة لتعتيمها، وقرّب إصبعين أو باعدهما لتغيير حجم الساعة.</string>
     <string name="fs_lock">قفل الاتجاه</string>
     <string name="fs_unlock">إلغاء قفل الاتجاه</string>
-    <string name="fs_dim" formatted="false">التعتيم %1$@</string>
+    <string name="fs_dim">التعتيم %1$s</string>
     <string name="share_prayer">مشاركة أوقات الصلاة</string>
     <string name="share_card">مشاركة</string>
     <string name="alarm_quick">منبه سريع</string>
-    <string name="alarm_quickIn" formatted="false">بعد %1$@ دقيقة</string>
-    <string name="alarm_quickSet" formatted="false">ضُبط المنبه: %1$@</string>
+    <string name="alarm_quickIn">بعد %1$s دقيقة</string>
+    <string name="alarm_quickSet">ضُبط المنبه: %1$s</string>
     <string name="alarm_swipe">اسحب للإيقاف</string>
     <string name="alarm_pre">التنبيه قبل الرنين</string>
     <string name="alarm_preOff">متوقف</string>
-    <string name="alarm_preMin" formatted="false">قبل %1$@ دقيقة</string>
-    <string name="alarm_preTitle" formatted="false">منبه قادم: %1$@</string>
+    <string name="alarm_preMin">قبل %1$s دقيقة</string>
+    <string name="alarm_preTitle">منبه قادم: %1$s</string>
     <string name="alarm_preBody">استيقظت مبكرًا؟ يمكنك تخطي هذا المنبه.</string>
     <string name="alarm_preSkip">تخطَّ هذا المنبه</string>
     <string name="alarm_preNote">إشعار صامت يمكنك منه تخطي المنبه.</string>
     <string name="alarm_speak">نطق الوقت</string>
     <string name="alarm_speakNote">أثناء الرنين يُنطق الوقت بمحرك الكلام في الهاتف.</string>
     <string name="alarm_speakNoteIOS">يصبح صوت المنبه تسجيلًا قصيرًا ينطق الوقت (يُنشأ على الهاتف).</string>
-    <string name="alarm_speakText" formatted="false">الساعة %1$@</string>
+    <string name="alarm_speakText">الساعة %1$s</string>
     <string name="csv_laps">مشاركة اللفات (CSV)</string>
     <string name="csv_pomo">مشاركة السجل (CSV)</string>
-    <string name="world_dstForward" formatted="false">%1$@: تُقدَّم الساعة %2$@</string>
-    <string name="world_dstBack" formatted="false">%1$@: تُؤخَّر الساعة %2$@</string>
-    <string name="world_dstTitle" formatted="false">%1$@: تغيير الساعة</string>
+    <string name="world_dstForward">%1$s: تُقدَّم الساعة %2$s</string>
+    <string name="world_dstBack">%1$s: تُؤخَّر الساعة %2$s</string>
+    <string name="world_dstTitle">%1$s: تغيير الساعة</string>
     <string name="hijriConv_outsideApp">خارج جدول ديانت؛ حُسب بتقويم أم القرى وقد يختلف بيوم.</string>
     <string name="common_secondsShort">ث</string>
     <string name="app_name">الوقت والتاريخ</string>

@@ -31,6 +31,7 @@ import androidx.compose.material.icons.filled.TableChart
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -83,7 +84,12 @@ fun PrayerScreen() {
     val next = place.next(now)
     NotifyPrefs.load()
     Column(Modifier.fillMaxSize()) {
+        val shareCtx = androidx.compose.ui.platform.LocalContext.current
         SubBar(L("tab.prayer"), actions = {
+            // Bugünün vakitlerini görsel kart olarak paylaş (rakip analizi #16)
+            IconButton(onClick = {
+                Share.image(shareCtx, ShareCards.prayer(place, java.time.Instant.now()), "vakitler-${place.today(now)}.png", L("share.prayer"))
+            }) { Icon(Icons.Filled.Share, L("share.prayer"), tint = Theme.c.accent) }
             IconButton(onClick = { page = "notify" }) {
                 Icon(
                     if (NotifyPrefs.enabled) Icons.Filled.Notifications else Icons.Outlined.Notifications,

@@ -50,6 +50,11 @@ data class AlarmItem(
     val code: String = "",
     /** Uyanma denetimi: kapattıktan 5 dk sonra "Uyanık mısınız?"; cevap gelmezse yeniden çalar */
     val wakeCheck: Boolean = false,
+    /** Çalmadan bu kadar dakika önce sessiz "yaklaşan alarm" bildirimi, içinden atlanabilir (0 = kapalı; rakip analizi #19).
+     *  Yeni alarmda 30, önceki sürümden gelen alarmda kapalı (iOS'taki AlarmItem ile aynı). */
+    val preNotify: Int = 30,
+    /** Çalarken saati telefonun konuşma motoruyla söyler (rakip analizi #20; AlarmRingService) */
+    val speak: Boolean = false,
 ) {
     /** Kapatırken istenecek görev (kod kaydedilmediyse matematik); yoksa "none" */
     val effectiveTask: String get() = if (task == "code" && code.isEmpty()) "math" else task
@@ -112,6 +117,7 @@ data class AlarmItem(
         .put("days", JSONArray(days)).put("enabled", enabled).put("snooze", snooze).put("skipUntil", skipUntil)
         .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise).put("skipHolidays", skipHolidays)
         .put("sunrise", sunrise).put("task", task).put("taskLevel", taskLevel).put("code", code).put("wakeCheck", wakeCheck)
+        .put("preNotify", preNotify).put("speak", speak)
 
     companion object {
         private const val KEY = "alarms"
@@ -119,6 +125,7 @@ data class AlarmItem(
         val SNOOZE_CHOICES = listOf(0, 5, 10, 15, 20, 30)
         val SNOOZE_MAX_CHOICES = listOf(0, 1, 2, 3, 5)
         val SUNRISE_CHOICES = listOf(0, 10, 20, 30)
+        val PRE_NOTIFY_CHOICES = listOf(0, 15, 30, 60)
 
         /** Gün doğumu ışığı seçili sıradaki alarm (tam ekran saat için): an ve pencere (dakika). Alarmdan 15 dk sonrasına
          *  kadar ışık yanık kaldığı için biraz geriden bakılır. */
@@ -144,6 +151,7 @@ data class AlarmItem(
                 o.optString("sound", ""), o.optBoolean("vibrate", true), o.optInt("snoozeMax", 0), o.optBoolean("rise", false),
                 o.optBoolean("skipHolidays", false), o.optInt("sunrise", 0),
                 o.optString("task", "none"), o.optInt("taskLevel", 2), o.optString("code", ""), o.optBoolean("wakeCheck", false),
+                o.optInt("preNotify", 0), o.optBoolean("speak", false),
             )
         }
 
@@ -289,6 +297,7 @@ object AlarmScheduler {
             set(c, it.nextAt(now), pending(c, it.id, it.title, "alarm", PendingIntent.FLAG_UPDATE_CURRENT)!!, clock = true)
         }
         Prefs.store.edit().putStringSet("alarms.scheduled", items.filter { it.enabled }.map { it.id }.toSet()).apply()
+        AlarmPre.sync(c, items, known)
     }
 
     /** Tek seferlik çalma (zamanlayıcı, pomodoro, erteleme) */
@@ -335,7 +344,8 @@ object AlarmScheduler {
         if (!canNotify(c)) return
         if (kind == WakeCheck.KIND) { WakeCheck.ask(c, id); return }
         val item = if (kind == "alarm") AlarmItem.find(id) else null
-        if (item?.rise == true && AlarmRingService.start(c, id, title, kind)) return
+        // Kademeli ses ya da saati sesli söyleme: ses hizmette çalar
+        if ((item?.rise == true || item?.speak == true) && AlarmRingService.start(c, id, title, kind)) return
         runCatching { NotificationManagerCompat.from(c).notify(id.hashCode(), notification(c, id, title, kind, silent = false)) }
     }
 
@@ -438,6 +448,81 @@ class AlarmReceiver : BroadcastReceiver() {
                 }
                 AlarmScheduler.ring(c, id, title, kind)
             }
+        }
+    }
+}
+
+/**
+ * Yaklaşan alarm bildirimi (rakip analizi #19; iOS'taki AlarmPreNotify): alarmdan `preNotify` dakika önce sessiz bildirim,
+ * "Bu alarmı atla" düğmesi o çalmayı atlar (skipUntil). Her sync'te sıradaki çalma için yeniden kurulur.
+ */
+object AlarmPre {
+    const val ACTION_PRE = "tr.bumba.time.ALARM_PRE"
+    const val ACTION_SKIP = "tr.bumba.time.ALARM_PRE_SKIP"
+    const val EXTRA_AT = "at"
+    private const val CHANNEL = "alarm-pre"
+
+    private fun pending(c: Context, id: String, at: Long, flags: Int): PendingIntent? = PendingIntent.getBroadcast(
+        c, ("pre-$id").hashCode(),
+        Intent(c, AlarmPreReceiver::class.java).setAction(ACTION_PRE).putExtra(AlarmScheduler.EXTRA_ID, id).putExtra(EXTRA_AT, at),
+        flags or PendingIntent.FLAG_IMMUTABLE,
+    )
+
+    fun sync(c: Context, items: List<AlarmItem>, known: Set<String>) {
+        val am = c.getSystemService(AlarmManager::class.java)
+        for (id in known + items.map { it.id }) pending(c, id, 0, PendingIntent.FLAG_NO_CREATE)?.let { am.cancel(it) }
+        val now = System.currentTimeMillis()
+        for (it in items) {
+            if (!it.enabled || it.preNotify <= 0) continue
+            val at = it.nextAt(now)
+            val fire = at - it.preNotify * 60_000L
+            if (fire <= now) continue
+            am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, fire, pending(c, it.id, at, PendingIntent.FLAG_UPDATE_CURRENT)!!)
+        }
+    }
+
+    /** Sessiz bildirim: başlıkta alarmın saati, içinden atlama */
+    fun show(c: Context, id: String, at: Long) {
+        val item = AlarmItem.find(id) ?: return
+        if (!item.enabled || !AlarmScheduler.canNotify(c)) return
+        val nm = c.getSystemService(NotificationManager::class.java)
+        if (Build.VERSION.SDK_INT >= 26 && nm.getNotificationChannel(CHANNEL) == null) {
+            nm.createNotificationChannel(NotificationChannel(CHANNEL, L("alarm.pre"), NotificationManager.IMPORTANCE_LOW))
+        }
+        val skip = PendingIntent.getBroadcast(
+            c, ("preskip-$id").hashCode(),
+            Intent(c, AlarmPreReceiver::class.java).setAction(ACTION_SKIP).putExtra(AlarmScheduler.EXTRA_ID, id).putExtra(EXTRA_AT, at),
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+        )
+        val time = Fmt.time(java.time.Instant.ofEpochMilli(at).atZone(java.time.ZoneId.systemDefault()))
+        val n = NotificationCompat.Builder(c, CHANNEL)
+            .setSmallIcon(R.drawable.ic_stat_alarm)
+            .setContentTitle(T("alarm.preTitle", time))
+            .setContentText(item.title + " · " + L("alarm.preBody"))
+            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setSilent(true)
+            .setTimeoutAfter(maxOf(60_000L, at - System.currentTimeMillis()))
+            .addAction(0, L("alarm.preSkip"), skip)
+            .build()
+        runCatching { NotificationManagerCompat.from(c).notify(("pre-$id").hashCode(), n) }
+    }
+
+    /** O çalmayı atlar ve alarmları yeniden kurar */
+    fun skip(c: Context, id: String, at: Long) {
+        val items = AlarmItem.load().map { if (it.id == id) it.copy(skipUntil = at + 60_000L) else it }
+        AlarmItem.save(items)
+        AlarmScheduler.sync(c, items)
+        NotificationManagerCompat.from(c).cancel(("pre-$id").hashCode())
+    }
+}
+
+class AlarmPreReceiver : BroadcastReceiver() {
+    override fun onReceive(c: Context, intent: Intent) {
+        val id = intent.getStringExtra(AlarmScheduler.EXTRA_ID) ?: return
+        val at = intent.getLongExtra(AlarmPre.EXTRA_AT, 0L)
+        when (intent.action) {
+            AlarmPre.ACTION_PRE -> AlarmPre.show(c, id, at)
+            AlarmPre.ACTION_SKIP -> AlarmPre.skip(c, id, at)
         }
     }
 }

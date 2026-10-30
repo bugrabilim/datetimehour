@@ -68,19 +68,28 @@ object PomoLog {
 
     fun load(): List<FocusLog.Entry> = runCatching {
         val a = JSONArray(Prefs.store.getString(KEY, "[]"))
-        (0 until a.length()).map { i -> a.getJSONObject(i).let { FocusLog.Entry(it.getString("d"), it.getInt("m"), it.optString("t")) } }
+        (0 until a.length()).map { i -> a.getJSONObject(i).let { FocusLog.Entry(it.getString("d"), it.getInt("m"), it.optString("t"), it.optString("g")) } }
     }.getOrDefault(emptyList())
 
     fun save(log: List<FocusLog.Entry>) {
         val a = JSONArray()
-        for (e in log) a.put(JSONObject().put("d", e.d).put("m", e.m).put("t", e.t))
+        for (e in log) a.put(JSONObject().put("d", e.d).put("m", e.m).put("t", e.t).apply { if (e.g.isNotEmpty()) put("g", e.g) })
         Prefs.store.edit().putString(KEY, a.toString()).apply()
     }
 
     /** Tamamlanan çalışma turu (çalışmanın bittiği yerel güne yazılır) */
-    fun record(minutes: Int, task: String, atMs: Long) {
+    fun record(minutes: Int, task: String, atMs: Long, tag: String = "none") {
         val day = Instant.ofEpochMilli(atMs).atZone(ZoneId.systemDefault()).toLocalDate().toString()
-        save(FocusLog.add(load(), FocusLog.Entry(day, minutes, task)))
+        save(FocusLog.add(load(), FocusLog.Entry(day, minutes, task, if (tag == "none") "" else tag)))
+    }
+
+    /** Etiketler (sitedeki pomodoroyla aynı) */
+    val TAGS = listOf("none", "work", "study", "personal", "other")
+
+    /** Geçmişi CSV olarak paylaş (rakip analizi #28; sitedeki CSV ile aynı sütunlar) */
+    fun shareCsv(context: android.content.Context, log: List<FocusLog.Entry>) {
+        Share.csv(context, "pomodoro-${LocalDate.now()}.csv",
+            listOf(listOf("date", "minutes", "task", "tag")) + log.map { listOf(it.d, it.m.toString(), it.t, it.g) }, L("csv.pomo"))
     }
 
     /** Son 7 günün anahtarları, eskiden yeniye */
@@ -318,8 +327,13 @@ fun FocusStatsCard(log: List<FocusLog.Entry>, onClear: () -> Unit) {
     var confirm by remember { mutableStateOf(false) }
     val days = PomoLog.lastDays()
     val s = FocusLog.stats(log, days, L("tools.pomodoro.noTask"))
+    val streak = FocusLog.streak(log, LocalDate.now())
+    val tags = FocusLog.tags(log, days.first())
+    val context = androidx.compose.ui.platform.LocalContext.current
     AppCard {
         SectionTitle(L("tools.pomodoro.statsHeading"))
+        // Odak serisi (rakip analizi #27): bugün ya da dün biten üst üste gün
+        if (streak >= 2) Text("🔥 " + T("tools.pomodoro.streak", streak), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
         if (log.isEmpty()) {
             Text(L("tools.pomodoro.empty"), color = Theme.c.muted, fontSize = 14.sp)
         } else {
@@ -345,7 +359,16 @@ fun FocusStatsCard(log: List<FocusLog.Entry>, onClear: () -> Unit) {
                 Text(L("tools.pomodoro.topTasks"), color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                 for ((name, m) in s.top) Row2(name, "$m ${L("tools.pomodoro.minUnit")}")
             }
-            TextButton(onClick = { confirm = true }) { Text(L("tools.pomodoro.clear"), color = DangerRed) }
+            // Etiketlere göre son 7 gün (yalnız etiket kullanıldıysa)
+            if (tags.size > 1 || (tags.size == 1 && tags[0].first != "none")) {
+                Text(L("tools.pomodoro.byTag"), color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                for ((tag, m) in tags) Row2(L("tools.pomodoro.tags.$tag"), "$m ${L("tools.pomodoro.minUnit")}")
+            }
+            Row {
+                TextButton(onClick = { PomoLog.shareCsv(context, log) }) { Text(L("csv.pomo"), color = Theme.c.accent) }
+                Spacer(Modifier.weight(1f))
+                TextButton(onClick = { confirm = true }) { Text(L("tools.pomodoro.clear"), color = DangerRed) }
+            }
         }
     }
     if (confirm) {

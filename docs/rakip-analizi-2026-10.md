@@ -18,7 +18,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 ## Tek liste (30 Ekim 2026'dan beri; sahibin isteği: "tek liste olarak tut, her işe bir numara ver, K-O-B sırala, bitenler de dursun")
 
-Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 36 bitti, 64 açık, 7 kararla yapılmayacak. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
+Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 66 bitti, 34 açık, 7 kararla yapılmayacak. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
 
 | No | İş | Nerede | Çaba | Durum | Eski no |
 |---|---|---|---|---|---|
@@ -33,36 +33,36 @@ Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 36 bitti, 
 | 9 | Dualar | Uygulama | K | bitti |  |
 | 10 | Zikirmatik | Uygulama | K | bitti |  |
 | 11 | Zekât hesaplama | Uygulama + site | K | bitti |  |
-| 12 | Kerahat vakti | Uygulama + site | K | açık |  |
-| 13 | Hicri–Miladi tarih çevirici | Uygulama + site | K | açık |  |
-| 14 | Fitre hesabı | Uygulama + site | K | açık |  |
-| 15 | Altın ve mavi saat | Uygulama + site | K | açık |  |
-| 16 | Vakit ve dini gün paylaşım kartı | Uygulama | K | açık |  |
-| 17 | Hızlı alarm ("X dakika sonra") | Uygulama | K | açık |  |
-| 18 | Kaydırarak durdurma (yanlışlıkla kapatmayı önler) | Uygulama | K | açık |  |
-| 19 | Alarm çalmadan önce bildirim, erken uyanınca kapatma | Uygulama | K | açık |  |
-| 20 | Alarmda saatin sesli okunması | Uygulama | K | açık |  |
-| 21 | Alarm çalarken uygulamayı kapatma/silme engeli | Android | K | açık |  |
-| 22 | Ekranı kaydırarak karartma, saat boyutu, yön kilidi | Uygulama | K | açık |  |
-| 23 | Saat ekranında pil ve sıradaki alarm alanı | Uygulama | K | açık |  |
-| 24 | Tam ekranda fotoğraf slaytı | Uygulama | K | açık |  |
-| 25 | Saatin altında kişisel metin | Uygulama | K | açık |  |
-| 26 | Çalışan zamanlayıcıya süre ekleme (+1 dk) | Uygulama + site | K | açık |  |
-| 27 | Odak serisi, günlük hedef, etiket | Uygulama + site | K | açık |  |
-| 28 | Tur ve odak geçmişini CSV olarak indirme | Uygulama + site | K | açık |  |
-| 29 | Geri sayımı görsel kart olarak paylaşma | Uygulama | K | açık |  |
-| 30 | Dünya saatlerindeki şehirler için yaz saati uyarısı | Uygulama | K | açık |  |
-| 31 | Saat hesaplama (saat:dakika toplama/çıkarma) | Site | K | açık |  |
-| 32 | "Kaç gün kaldı / kaç gün oldu" sayfaları | Site | K | açık |  |
-| 33 | 14 günlük hava tahmini | Site | K | açık |  |
-| 34 | Ay evreleri ve tutulmalar için takvim aboneliği (.ics) | Site | K | açık |  |
-| 35 | Sitede alarm sesi seçimi | Site | K | açık |  |
-| 36 | Sitede aralık (HIIT) zamanlayıcı | Site | K | açık |  |
-| 37 | Satranç saati | Site | K | açık |  |
-| 38 | Metronom | Site | K | açık |  |
-| 39 | Konuşan saat | Site | K | açık |  |
-| 40 | Sitede saat yazı tipi ve renk seçimi | Site | K | açık |  |
-| 41 | Burç hesaplama | Site | K | açık |  |
+| 12 | Kerahat vakti | Uygulama + site | K | bitti |  |
+| 13 | Hicri–Miladi tarih çevirici | Uygulama + site | K | bitti |  |
+| 14 | Fitre hesabı | Uygulama + site | K | bitti |  |
+| 15 | Altın ve mavi saat | Uygulama + site | K | bitti |  |
+| 16 | Vakit ve dini gün paylaşım kartı | Uygulama | K | bitti |  |
+| 17 | Hızlı alarm ("X dakika sonra") | Uygulama | K | bitti |  |
+| 18 | Kaydırarak durdurma (yanlışlıkla kapatmayı önler) | Uygulama | K | bitti (Android; iOS'ta durdurma AlarmKit'in sistem ekranında) |  |
+| 19 | Alarm çalmadan önce bildirim, erken uyanınca kapatma | Uygulama | K | bitti |  |
+| 20 | Alarmda saatin sesli okunması | Uygulama | K | bitti (iOS'ta saati söyleyen ses dosyası; cihazda denenmedi) |  |
+| 21 | Alarm çalarken uygulamayı kapatma/silme engeli | Android | K | bitti (çalarken geri tuşu kapalı; uygulamayı silme engeli yönetici izni ister, yapılmadı) |  |
+| 22 | Ekranı kaydırarak karartma, saat boyutu, yön kilidi | Uygulama | K | bitti |  |
+| 23 | Saat ekranında pil ve sıradaki alarm alanı | Uygulama | K | bitti |  |
+| 24 | Tam ekranda fotoğraf slaytı | Uygulama | K | bitti |  |
+| 25 | Saatin altında kişisel metin | Uygulama | K | bitti |  |
+| 26 | Çalışan zamanlayıcıya süre ekleme (+1 dk) | Uygulama + site | K | bitti |  |
+| 27 | Odak serisi, günlük hedef, etiket | Uygulama + site | K | bitti |  |
+| 28 | Tur ve odak geçmişini CSV olarak indirme | Uygulama + site | K | bitti |  |
+| 29 | Geri sayımı görsel kart olarak paylaşma | Uygulama | K | bitti |  |
+| 30 | Dünya saatlerindeki şehirler için yaz saati uyarısı | Uygulama | K | bitti |  |
+| 31 | Saat hesaplama (saat:dakika toplama/çıkarma) | Site | K | bitti |  |
+| 32 | "Kaç gün kaldı / kaç gün oldu" sayfaları | Site | K | bitti |  |
+| 33 | 14 günlük hava tahmini | Site | K | bitti |  |
+| 34 | Ay evreleri ve tutulmalar için takvim aboneliği (.ics) | Site | K | bitti |  |
+| 35 | Sitede alarm sesi seçimi | Site | K | bitti |  |
+| 36 | Sitede aralık (HIIT) zamanlayıcı | Site | K | bitti |  |
+| 37 | Satranç saati | Site | K | bitti |  |
+| 38 | Metronom | Site | K | bitti |  |
+| 39 | Konuşan saat | Site | K | bitti |  |
+| 40 | Sitede saat yazı tipi ve renk seçimi | Site | K | bitti |  |
+| 41 | Burç hesaplama | Site | K | bitti |  |
 | 42 | Live Activity / Dynamic Island: sayaçlar ve sıradaki vakit kilit ekranında | Uygulama | O | bitti | #2 |
 | 43 | Alarm ayarları (gün seçimi, erteleme süresi ve sınırı, atla, kademeli ses) | Uygulama | O | bitti | #3 |
 | 44 | Çevirmeli (flip) saat | Uygulama + site | O | bitti | #5 |

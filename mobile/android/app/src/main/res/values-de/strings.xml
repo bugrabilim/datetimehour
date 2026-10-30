@@ -1133,35 +1133,35 @@
     <string name="look_slideAdd">Fotos hinzufügen</string>
     <string name="look_slideClear">Diashow leeren</string>
     <string name="look_slideEvery">Wechsel alle</string>
-    <string name="look_slideCount" formatted="false">%1$@ Fotos</string>
+    <string name="look_slideCount">%1$s Fotos</string>
     <string name="look_slideNote">Bis zu 10 Fotos wechseln sich als Vollbild-Hintergrund ab; die Fotos bleiben auf diesem Gerät.</string>
     <string name="look_size">Uhrgröße</string>
     <string name="look_fsNote">Im Vollbild am Bildschirmrand nach oben oder unten wischen, um abzudunkeln; mit zwei Fingern die Uhr vergrößern oder verkleinern.</string>
     <string name="fs_lock">Ausrichtung sperren</string>
     <string name="fs_unlock">Ausrichtung entsperren</string>
-    <string name="fs_dim" formatted="false">Abgedunkelt %1$@</string>
+    <string name="fs_dim">Abgedunkelt %1$s</string>
     <string name="share_prayer">Gebetszeiten teilen</string>
     <string name="share_card">Teilen</string>
     <string name="alarm_quick">Schnellwecker</string>
-    <string name="alarm_quickIn" formatted="false">In %1$@ Min.</string>
-    <string name="alarm_quickSet" formatted="false">Wecker gestellt: %1$@</string>
+    <string name="alarm_quickIn">In %1$s Min.</string>
+    <string name="alarm_quickSet">Wecker gestellt: %1$s</string>
     <string name="alarm_swipe">Zum Beenden schieben</string>
     <string name="alarm_pre">Vor dem Klingeln benachrichtigen</string>
     <string name="alarm_preOff">Aus</string>
-    <string name="alarm_preMin" formatted="false">%1$@ Min. vorher</string>
-    <string name="alarm_preTitle" formatted="false">Anstehender Wecker: %1$@</string>
+    <string name="alarm_preMin">%1$s Min. vorher</string>
+    <string name="alarm_preTitle">Anstehender Wecker: %1$s</string>
     <string name="alarm_preBody">Schon wach? Sie können diesen Wecker überspringen.</string>
     <string name="alarm_preSkip">Diesen Wecker überspringen</string>
     <string name="alarm_preNote">Eine stille Mitteilung; Sie können den Wecker darüber überspringen.</string>
     <string name="alarm_speak">Uhrzeit ansagen</string>
     <string name="alarm_speakNote">Beim Klingeln wird die Uhrzeit mit der Sprachausgabe des Telefons angesagt.</string>
     <string name="alarm_speakNoteIOS">Der Weckton wird zu einer kurzen Aufnahme, die die Uhrzeit ansagt (auf dem Telefon erzeugt).</string>
-    <string name="alarm_speakText" formatted="false">Es ist %1$@</string>
+    <string name="alarm_speakText">Es ist %1$s</string>
     <string name="csv_laps">Runden teilen (CSV)</string>
     <string name="csv_pomo">Verlauf teilen (CSV)</string>
-    <string name="world_dstForward" formatted="false">%1$@: Uhren werden %2$@ vorgestellt</string>
-    <string name="world_dstBack" formatted="false">%1$@: Uhren werden %2$@ zurückgestellt</string>
-    <string name="world_dstTitle" formatted="false">%1$@: Zeitumstellung</string>
+    <string name="world_dstForward">%1$s: Uhren werden %2$s vorgestellt</string>
+    <string name="world_dstBack">%1$s: Uhren werden %2$s zurückgestellt</string>
+    <string name="world_dstTitle">%1$s: Zeitumstellung</string>
     <string name="hijriConv_outsideApp">Außerhalb der Diyanet-Tabelle; mit dem Umm-al-Qura-Kalender berechnet, Abweichung um einen Tag möglich.</string>
     <string name="common_secondsShort">Sek.</string>
     <string name="app_name">Uhr &amp; Datum</string>

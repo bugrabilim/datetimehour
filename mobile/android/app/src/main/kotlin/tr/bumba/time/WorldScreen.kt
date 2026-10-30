@@ -132,6 +132,8 @@ fun WorldScreen() {
                             },
                             color = Theme.c.muted, fontSize = 13.sp,
                         )
+                        // Yaz saati uyarısı (rakip analizi #30): şehirde 7 gün içinde saat değişiyorsa
+                        city.dstNote(now)?.let { Text("⟳ $it", color = Theme.c.accent, fontSize = 12.sp) }
                     }
                     if (editing) {
                         val i = keys.indexOf(city.key)

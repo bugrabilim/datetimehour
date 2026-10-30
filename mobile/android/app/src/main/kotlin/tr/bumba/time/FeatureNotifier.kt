@@ -129,7 +129,7 @@ object FeatureNotifier {
         if (FeaturePrefs.isOn(NotifyFeature.SEASONS)) out += seasons(place, now)
         if (FeaturePrefs.isOn(NotifyFeature.MOON)) out += moon(place, now)
         if (FeaturePrefs.isOn(NotifyFeature.SUN)) out += sun(place, now, days)
-        if (FeaturePrefs.isOn(NotifyFeature.DST)) out += dst(now)
+        if (FeaturePrefs.isOn(NotifyFeature.DST)) out += dst(now) + worldDst(now)
         if (FeaturePrefs.isOn(NotifyFeature.HOURLY)) out += hourly(now)
         if (FeaturePrefs.isOn(NotifyFeature.WEATHER)) out += weather(context, place, now)
         out += CountdownItem.reminders(now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
@@ -214,6 +214,20 @@ object FeatureNotifier {
             Planned("dst-${tr.instant.epochSecond}", fire, T(if (delta > 0) "notify.n.dstForward" else "notify.n.dstBack", amount),
                 Fmt.longDate(tr.instant.atZone(zone).toLocalDate()), NotifyFeature.DST.tab),
         )
+    }
+
+    /** Dünya saatlerindeki şehirlerde saat değişmeden önceki akşam 20.00'de (telefonun saatiyle; rakip analizi #30).
+     *  Telefonun kendi değişimiyle aynı an olan şehir atlanır (o bildirim zaten var). */
+    private fun worldDst(now: Instant): List<Planned> {
+        val zone = ZoneId.systemDefault()
+        val mine = zone.rules.nextTransition(now)?.instant
+        val keys = Prefs.world.split(",")
+        return keys.mapNotNull { k -> AppData.cities.firstOrNull { it.key == k } }.mapNotNull { city ->
+            val (at, _) = city.nextDst(now, 30) ?: return@mapNotNull null
+            if (at == mine) return@mapNotNull null
+            val fire = at.atZone(zone).toLocalDate().minusDays(1).atTime(20, 0).atZone(zone).toInstant()
+            Planned("wdst-${city.key}-${at.epochSecond}", fire, T("world.dstTitle", city.displayName), city.dstNote(now, 30) ?: "", Tab.WORLD)
+        }
     }
 
     /** Saat başı: seçili saatler arasında, önümüzdeki iki gün (her bildirimde plan ileri taşınır) */

@@ -47,6 +47,18 @@ class MoreScreensTest {
     private fun page(name: String, title: String, dark: Boolean = false, content: @Composable () -> Unit) =
         shot(name, dark = dark) { SubBar(title, onBack = {}); content() }
 
+    /** Paylaşım kartları (rakip analizi #16, #29): Canvas'la çizilen görseller doğrudan PNG olarak yazılır */
+    @Test
+    fun shareCards() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        val place = AppPlace.current()
+        val now = java.time.Instant.parse("2027-03-09T09:00:00Z") // Ramazan Bayramı 1. günü
+        java.io.File(dir).mkdirs()
+        java.io.FileOutputStream("$dir/tr-paylas-vakitler.png").use { ShareCards.prayer(place, now).compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it) }
+        val cd = CountdownItem(title = "Yaz tatili", emoji = "🏖️", target = java.time.Instant.parse("2027-06-25T09:00:00Z").toEpochMilli())
+        java.io.FileOutputStream("$dir/tr-paylas-geri-sayim.png").use { ShareCards.countdown(cd, now).compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it) }
+    }
+
     /** İstanbul için örnek hava durumu (Open-Meteo yanıtı biçiminde) */
     private fun seedWeather() {
         val now = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS)

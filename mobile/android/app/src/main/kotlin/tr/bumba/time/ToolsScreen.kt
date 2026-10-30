@@ -166,8 +166,15 @@ private fun Stopwatch() {
         val lapTimes = laps.mapIndexed { i, v -> v - (if (i > 0) laps[i - 1] else 0) }
         val best = if (lapTimes.size > 1) lapTimes.min() else null
         val worst = if (lapTimes.size > 1) lapTimes.max() else null
+        val context = androidx.compose.ui.platform.LocalContext.current
         Column(Modifier.verticalScroll(rememberScrollState())) {
             if (lapTimes.isEmpty()) Text(L("tools.stopwatch.empty"), color = Theme.c.muted)
+            // Turları CSV olarak paylaş (rakip analizi #28)
+            else androidx.compose.material3.TextButton(onClick = {
+                Share.csv(context, "laps-${java.time.LocalDate.now()}.csv",
+                    listOf(listOf(L("tools.stopwatch.lapNo"), L("tools.stopwatch.lapTime"), L("tools.stopwatch.total"))) +
+                        lapTimes.indices.map { listOf("${it + 1}", fmt(lapTimes[it]), fmt(laps[it])) }, L("csv.laps"))
+            }) { Text(L("csv.laps"), color = Theme.c.accent) }
             for (i in lapTimes.indices.reversed()) {
                 val lap = lapTimes[i]
                 Ltr {

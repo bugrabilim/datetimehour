@@ -4523,11 +4523,11 @@
     "ar": "التبديل كل"
   },
   "look.slideCount": {
-    "tr": "%1$@ fotoğraf",
-    "en": "%1$@ photos",
-    "de": "%1$@ Fotos",
-    "az": "%1$@ foto",
-    "ar": "%1$@ صور"
+    "tr": "{n} fotoğraf",
+    "en": "{n} photos",
+    "de": "{n} Fotos",
+    "az": "{n} foto",
+    "ar": "{n} صور"
   },
   "look.slideNote": {
     "tr": "Tam ekran arka planında en çok 10 fotoğraf sırayla gösterilir; fotoğraflar yalnız bu cihazda kalır.",
@@ -4565,11 +4565,11 @@
     "ar": "إلغاء قفل الاتجاه"
   },
   "fs.dim": {
-    "tr": "Karartma %1$@",
-    "en": "Dimmed %1$@",
-    "de": "Abgedunkelt %1$@",
-    "az": "Qaraltma %1$@",
-    "ar": "التعتيم %1$@"
+    "tr": "Karartma {value}",
+    "en": "Dimmed {value}",
+    "de": "Abgedunkelt {value}",
+    "az": "Qaraltma {value}",
+    "ar": "التعتيم {value}"
   },
   "share.prayer": {
     "tr": "Vakitleri paylaş",
@@ -4593,18 +4593,18 @@
     "ar": "منبه سريع"
   },
   "alarm.quickIn": {
-    "tr": "%1$@ dk sonra",
-    "en": "In %1$@ min",
-    "de": "In %1$@ Min.",
-    "az": "%1$@ dəq sonra",
-    "ar": "بعد %1$@ دقيقة"
+    "tr": "{n} dk sonra",
+    "en": "In {n} min",
+    "de": "In {n} Min.",
+    "az": "{n} dəq sonra",
+    "ar": "بعد {n} دقيقة"
   },
   "alarm.quickSet": {
-    "tr": "Alarm kuruldu: %1$@",
-    "en": "Alarm set: %1$@",
-    "de": "Wecker gestellt: %1$@",
-    "az": "Zəngli saat quruldu: %1$@",
-    "ar": "ضُبط المنبه: %1$@"
+    "tr": "Alarm kuruldu: {time}",
+    "en": "Alarm set: {time}",
+    "de": "Wecker gestellt: {time}",
+    "az": "Zəngli saat quruldu: {time}",
+    "ar": "ضُبط المنبه: {time}"
   },
   "alarm.swipe": {
     "tr": "Durdurmak için kaydırın",
@@ -4628,18 +4628,18 @@
     "ar": "متوقف"
   },
   "alarm.preMin": {
-    "tr": "%1$@ dk önce",
-    "en": "%1$@ min before",
-    "de": "%1$@ Min. vorher",
-    "az": "%1$@ dəq əvvəl",
-    "ar": "قبل %1$@ دقيقة"
+    "tr": "{n} dk önce",
+    "en": "{n} min before",
+    "de": "{n} Min. vorher",
+    "az": "{n} dəq əvvəl",
+    "ar": "قبل {n} دقيقة"
   },
   "alarm.preTitle": {
-    "tr": "Yaklaşan alarm: %1$@",
-    "en": "Upcoming alarm: %1$@",
-    "de": "Anstehender Wecker: %1$@",
-    "az": "Yaxınlaşan zəngli saat: %1$@",
-    "ar": "منبه قادم: %1$@"
+    "tr": "Yaklaşan alarm: {time}",
+    "en": "Upcoming alarm: {time}",
+    "de": "Anstehender Wecker: {time}",
+    "az": "Yaxınlaşan zəngli saat: {time}",
+    "ar": "منبه قادم: {time}"
   },
   "alarm.preBody": {
     "tr": "Erken uyandıysanız bu çalmayı atlayabilirsiniz.",
@@ -4684,11 +4684,11 @@
     "ar": "يصبح صوت المنبه تسجيلًا قصيرًا ينطق الوقت (يُنشأ على الهاتف)."
   },
   "alarm.speakText": {
-    "tr": "Saat %1$@",
-    "en": "It's %1$@",
-    "de": "Es ist %1$@",
-    "az": "Saat %1$@",
-    "ar": "الساعة %1$@"
+    "tr": "Saat {time}",
+    "en": "It's {time}",
+    "de": "Es ist {time}",
+    "az": "Saat {time}",
+    "ar": "الساعة {time}"
   },
   "csv.laps": {
     "tr": "Turları paylaş (CSV)",
@@ -4705,25 +4705,25 @@
     "ar": "مشاركة السجل (CSV)"
   },
   "world.dstForward": {
-    "tr": "%1$@: saatler %2$@ ileri alınıyor",
-    "en": "%1$@: clocks go forward %2$@",
-    "de": "%1$@: Uhren werden %2$@ vorgestellt",
-    "az": "%1$@: saatlar %2$@ irəli çəkilir",
-    "ar": "%1$@: تُقدَّم الساعة %2$@"
+    "tr": "{date}: saatler {amount} ileri alınıyor",
+    "en": "{date}: clocks go forward {amount}",
+    "de": "{date}: Uhren werden {amount} vorgestellt",
+    "az": "{date}: saatlar {amount} irəli çəkilir",
+    "ar": "{date}: تُقدَّم الساعة {amount}"
   },
   "world.dstBack": {
-    "tr": "%1$@: saatler %2$@ geri alınıyor",
-    "en": "%1$@: clocks go back %2$@",
-    "de": "%1$@: Uhren werden %2$@ zurückgestellt",
-    "az": "%1$@: saatlar %2$@ geri çəkilir",
-    "ar": "%1$@: تُؤخَّر الساعة %2$@"
+    "tr": "{date}: saatler {amount} geri alınıyor",
+    "en": "{date}: clocks go back {amount}",
+    "de": "{date}: Uhren werden {amount} zurückgestellt",
+    "az": "{date}: saatlar {amount} geri çəkilir",
+    "ar": "{date}: تُؤخَّر الساعة {amount}"
   },
   "world.dstTitle": {
-    "tr": "%1$@: saat değişiyor",
-    "en": "%1$@: clocks change",
-    "de": "%1$@: Zeitumstellung",
-    "az": "%1$@: saat dəyişir",
-    "ar": "%1$@: تغيير الساعة"
+    "tr": "{city}: saat değişiyor",
+    "en": "{city}: clocks change",
+    "de": "{city}: Zeitumstellung",
+    "az": "{city}: saat dəyişir",
+    "ar": "{city}: تغيير الساعة"
   },
   "hijriConv.outsideApp": {
     "tr": "Diyanet tablosunun dışında; Ümmü'l-Kurâ takvimiyle hesaplandı, bir gün fark olabilir.",

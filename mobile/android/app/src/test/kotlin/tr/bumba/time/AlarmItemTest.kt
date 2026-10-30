@@ -28,6 +28,17 @@ class AlarmItemTest {
         assertEquals(false, round.vibrate)
     }
 
+    /** Yaklaşan alarm bildirimi ve sesli saat (rakip analizi #19, #20): yeni alarmda 30 dk, eski kayıtta kapalı */
+    @Test fun preNotifyAndSpeak() {
+        val old = AlarmItem.fromJson(JSONObject().put("id", "x").put("hour", 7).put("minute", 0))
+        assertEquals(0, old.preNotify)
+        assertEquals(false, old.speak)
+        assertEquals(30, AlarmItem(hour = 7, minute = 0).preNotify)
+        val round = AlarmItem.fromJson(AlarmItem(id = "y", hour = 6, minute = 0, preNotify = 15, speak = true).toJson())
+        assertEquals(15, round.preNotify)
+        assertEquals(true, round.speak)
+    }
+
     @Test fun skipHolidays() {
         val old = AlarmItem.isHoliday
         try {

@@ -30,6 +30,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
@@ -208,6 +209,10 @@ fun CountdownsScreen() {
                         val local = at.atZone(ZoneId.systemDefault())
                         Text(Fmt.longDate(local.toLocalDate()) + (if (local.hour + local.minute > 0) " " + Fmt.time(local) else "") +
                             if (c.yearly) " · ↻" else "", color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    // Görsel kart olarak paylaş (rakip analizi #29)
+                    IconButton(onClick = { Share.image(context, ShareCards.countdown(c, Instant.now()), "geri-sayim.png", c.label) }) {
+                        Icon(Icons.Filled.Share, L("share.card"), tint = Theme.c.muted)
                     }
                     IconButton(onClick = { update(items.filter { it.id != c.id }) }) {
                         Icon(Icons.Filled.Close, L("timers.remove"), tint = Theme.c.muted)

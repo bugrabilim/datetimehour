@@ -8,6 +8,8 @@ import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -82,7 +84,23 @@ fun AlarmScreen() {
         if (!notify && Build.VERSION.SDK_INT >= 33 && items.any { it.enabled }) askNotify.launch(Manifest.permission.POST_NOTIFICATIONS)
     }
 
+    var quickMsg by remember { mutableStateOf("") }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+        // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
+        Text(L("alarm.quick"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            for (m in listOf(5, 10, 15, 20, 30, 45, 60)) {
+                Box(
+                    Modifier.background(Theme.c.surface2, RoundedCornerShape(50)).clickable {
+                        val at = java.time.ZonedDateTime.now().plusMinutes(m.toLong())
+                        update(items + AlarmItem(hour = at.hour, minute = at.minute, label = T("alarm.quickIn", m), preNotify = 0))
+                        quickMsg = T("alarm.quickSet", Fmt.time(at))
+                        BadgeStore.hit(Badge.ALARM)
+                    }.padding(horizontal = 14.dp, vertical = 8.dp),
+                ) { Text(T("alarm.quickIn", m), color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.SemiBold) }
+            }
+        }
+        if (quickMsg.isNotEmpty()) Text(quickMsg, color = Theme.c.accent, fontSize = 13.sp)
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(L("tools.alarm.listHeading"), Modifier.weight(1f), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
             IconButton(onClick = {
@@ -176,6 +194,8 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var taskLevel by remember { mutableStateOf(item.taskLevel) }
     var code by remember { mutableStateOf(item.code) }
     var wakeCheck by remember { mutableStateOf(item.wakeCheck) }
+    var preNotify by remember { mutableStateOf(item.preNotify) }
+    var speak by remember { mutableStateOf(item.speak) }
     // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
     val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
         if (r.resultCode == android.app.Activity.RESULT_OK) {
@@ -251,6 +271,17 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     }
                     Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
+                // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(L("alarm.speak"), color = Theme.c.text, fontSize = 15.sp)
+                        Text(L("alarm.speakNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    Switch(speak, { speak = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
+                fun preText(m: Int) = if (m == 0) L("alarm.preOff") else T("alarm.preMin", m)
+                ChoiceRow(L("alarm.pre"), preText(preNotify), AlarmItem.PRE_NOTIFY_CHOICES.map { it to preText(it) }) { preNotify = it }
+                Text(L("alarm.preNote"), color = Theme.c.muted, fontSize = 12.sp)
                 // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
                 fun sunriseText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.sunriseMin", m)
                 ChoiceRow(L("alarm.sunrise"), sunriseText(sunrise), AlarmItem.SUNRISE_CHOICES.map { it to sunriseText(it) }) { sunrise = it }
@@ -292,7 +323,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
                     snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
                     skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise, task = task, taskLevel = taskLevel,
-                    code = code, wakeCheck = wakeCheck))
+                    code = code, wakeCheck = wakeCheck, preNotify = preNotify, speak = speak))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },

@@ -1133,35 +1133,35 @@
     <string name="look_slideAdd">Foto əlavə et</string>
     <string name="look_slideClear">Slaydı təmizlə</string>
     <string name="look_slideEvery">Dəyişmə aralığı</string>
-    <string name="look_slideCount" formatted="false">%1$@ foto</string>
+    <string name="look_slideCount">%1$s foto</string>
     <string name="look_slideNote">Tam ekran fonunda ən çox 10 foto növbə ilə göstərilir; fotolar yalnız bu cihazda qalır.</string>
     <string name="look_size">Saat ölçüsü</string>
     <string name="look_fsNote">Tam ekranda ekranın kənarında yuxarı və ya aşağı sürüşdürərək ekranı qaralda, iki barmaqla saatı böyüdüb kiçildə bilərsiniz.</string>
     <string name="fs_lock">İstiqaməti kilidlə</string>
     <string name="fs_unlock">İstiqamət kilidini aç</string>
-    <string name="fs_dim" formatted="false">Qaraltma %1$@</string>
+    <string name="fs_dim">Qaraltma %1$s</string>
     <string name="share_prayer">Vaxtları paylaş</string>
     <string name="share_card">Paylaş</string>
     <string name="alarm_quick">Tez zəngli saat</string>
-    <string name="alarm_quickIn" formatted="false">%1$@ dəq sonra</string>
-    <string name="alarm_quickSet" formatted="false">Zəngli saat quruldu: %1$@</string>
+    <string name="alarm_quickIn">%1$s dəq sonra</string>
+    <string name="alarm_quickSet">Zəngli saat quruldu: %1$s</string>
     <string name="alarm_swipe">Dayandırmaq üçün sürüşdürün</string>
     <string name="alarm_pre">Çalmazdan əvvəl xəbər ver</string>
     <string name="alarm_preOff">Bağlı</string>
-    <string name="alarm_preMin" formatted="false">%1$@ dəq əvvəl</string>
-    <string name="alarm_preTitle" formatted="false">Yaxınlaşan zəngli saat: %1$@</string>
+    <string name="alarm_preMin">%1$s dəq əvvəl</string>
+    <string name="alarm_preTitle">Yaxınlaşan zəngli saat: %1$s</string>
     <string name="alarm_preBody">Tez oyandınızsa bu çalmanı keçə bilərsiniz.</string>
     <string name="alarm_preSkip">Bu zəngli saatı keç</string>
     <string name="alarm_preNote">Səssiz bildiriş; oradan zəngli saatı keçə bilərsiniz.</string>
     <string name="alarm_speak">Vaxtı səsli desin</string>
     <string name="alarm_speakNote">Zəngli saat çalarkən vaxt telefonun nitq mühərriki ilə deyilir.</string>
     <string name="alarm_speakNoteIOS">Zəngli saatın səsi vaxtı deyən qısa bir yazı ilə əvəz olunur (telefonda yaradılır).</string>
-    <string name="alarm_speakText" formatted="false">Saat %1$@</string>
+    <string name="alarm_speakText">Saat %1$s</string>
     <string name="csv_laps">Dövrələri paylaş (CSV)</string>
     <string name="csv_pomo">Tarixçəni paylaş (CSV)</string>
-    <string name="world_dstForward" formatted="false">%1$@: saatlar %2$@ irəli çəkilir</string>
-    <string name="world_dstBack" formatted="false">%1$@: saatlar %2$@ geri çəkilir</string>
-    <string name="world_dstTitle" formatted="false">%1$@: saat dəyişir</string>
+    <string name="world_dstForward">%1$s: saatlar %2$s irəli çəkilir</string>
+    <string name="world_dstBack">%1$s: saatlar %2$s geri çəkilir</string>
+    <string name="world_dstTitle">%1$s: saat dəyişir</string>
     <string name="hijriConv_outsideApp">Diyanət cədvəlindən kənarda; Ümmül-Qura təqvimi ilə hesablandı, bir gün fərq ola bilər.</string>
     <string name="common_secondsShort">san</string>
     <string name="app_name">Saat Tarix</string>

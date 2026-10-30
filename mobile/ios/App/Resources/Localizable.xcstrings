@@ -39627,31 +39627,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ fotoğraf"
+            "value": "%1$@ fotoğraf"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ photos"
+            "value": "%1$@ photos"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ Fotos"
+            "value": "%1$@ Fotos"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ foto"
+            "value": "%1$@ foto"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ صور"
+            "value": "%1$@ صور"
           }
         }
       }
@@ -39837,31 +39837,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Karartma %%1$@"
+            "value": "Karartma %1$@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dimmed %%1$@"
+            "value": "Dimmed %1$@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abgedunkelt %%1$@"
+            "value": "Abgedunkelt %1$@"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qaraltma %%1$@"
+            "value": "Qaraltma %1$@"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "التعتيم %%1$@"
+            "value": "التعتيم %1$@"
           }
         }
       }
@@ -39977,31 +39977,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ dk sonra"
+            "value": "%1$@ dk sonra"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "In %%1$@ min"
+            "value": "In %1$@ min"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "In %%1$@ Min."
+            "value": "In %1$@ Min."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ dəq sonra"
+            "value": "%1$@ dəq sonra"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "بعد %%1$@ دقيقة"
+            "value": "بعد %1$@ دقيقة"
           }
         }
       }
@@ -40012,31 +40012,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alarm kuruldu: %%1$@"
+            "value": "Alarm kuruldu: %1$@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alarm set: %%1$@"
+            "value": "Alarm set: %1$@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wecker gestellt: %%1$@"
+            "value": "Wecker gestellt: %1$@"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngli saat quruldu: %%1$@"
+            "value": "Zəngli saat quruldu: %1$@"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "ضُبط المنبه: %%1$@"
+            "value": "ضُبط المنبه: %1$@"
           }
         }
       }
@@ -40152,31 +40152,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ dk önce"
+            "value": "%1$@ dk önce"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ min before"
+            "value": "%1$@ min before"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ Min. vorher"
+            "value": "%1$@ Min. vorher"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@ dəq əvvəl"
+            "value": "%1$@ dəq əvvəl"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "قبل %%1$@ دقيقة"
+            "value": "قبل %1$@ دقيقة"
           }
         }
       }
@@ -40187,31 +40187,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yaklaşan alarm: %%1$@"
+            "value": "Yaklaşan alarm: %1$@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Upcoming alarm: %%1$@"
+            "value": "Upcoming alarm: %1$@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Anstehender Wecker: %%1$@"
+            "value": "Anstehender Wecker: %1$@"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yaxınlaşan zəngli saat: %%1$@"
+            "value": "Yaxınlaşan zəngli saat: %1$@"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "منبه قادم: %%1$@"
+            "value": "منبه قادم: %1$@"
           }
         }
       }
@@ -40432,31 +40432,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat %%1$@"
+            "value": "Saat %1$@"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "It's %%1$@"
+            "value": "It's %1$@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Es ist %%1$@"
+            "value": "Es ist %1$@"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat %%1$@"
+            "value": "Saat %1$@"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الساعة %%1$@"
+            "value": "الساعة %1$@"
           }
         }
       }
@@ -40537,31 +40537,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: saatler %%2$@ ileri alınıyor"
+            "value": "%1$@: saatler %2$@ ileri alınıyor"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: clocks go forward %%2$@"
+            "value": "%1$@: clocks go forward %2$@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: Uhren werden %%2$@ vorgestellt"
+            "value": "%1$@: Uhren werden %2$@ vorgestellt"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: saatlar %%2$@ irəli çəkilir"
+            "value": "%1$@: saatlar %2$@ irəli çəkilir"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: تُقدَّم الساعة %%2$@"
+            "value": "%1$@: تُقدَّم الساعة %2$@"
           }
         }
       }
@@ -40572,31 +40572,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: saatler %%2$@ geri alınıyor"
+            "value": "%1$@: saatler %2$@ geri alınıyor"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: clocks go back %%2$@"
+            "value": "%1$@: clocks go back %2$@"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: Uhren werden %%2$@ zurückgestellt"
+            "value": "%1$@: Uhren werden %2$@ zurückgestellt"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: saatlar %%2$@ geri çəkilir"
+            "value": "%1$@: saatlar %2$@ geri çəkilir"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: تُؤخَّر الساعة %%2$@"
+            "value": "%1$@: تُؤخَّر الساعة %2$@"
           }
         }
       }
@@ -40607,31 +40607,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: saat değişiyor"
+            "value": "%1$@: saat değişiyor"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: clocks change"
+            "value": "%1$@: clocks change"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: Zeitumstellung"
+            "value": "%1$@: Zeitumstellung"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: saat dəyişir"
+            "value": "%1$@: saat dəyişir"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "%%1$@: تغيير الساعة"
+            "value": "%1$@: تغيير الساعة"
           }
         }
       }

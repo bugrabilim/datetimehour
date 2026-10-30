@@ -296,6 +296,15 @@ fun TimersScreen() {
                                 Icon(Icons.Filled.PlayArrow, L("tools.countdown.resume"), tint = Theme.c.accent)
                             }
                         }
+                        // +1 dk (rakip analizi #26): sayarken bitişi, duraklatılmışken kalanı uzatır; bittiyse 1 dakikalık yeniden başlar
+                        androidx.compose.material3.TextButton(onClick = {
+                            update(items.map {
+                                if (it.id != t.id) it
+                                else if (done) start(it.copy(total = 60_000L), 60_000L)
+                                else if (it.running) start(it.copy(total = it.total + 60_000L), rem + 60_000L)
+                                else it.copy(total = it.total + 60_000L, left = it.left + 60_000L)
+                            })
+                        }) { Text(L("tools.countdown.addMinute"), color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.SemiBold) }
                         IconButton(onClick = { AlarmScheduler.cancel(context, t.alarmId); update(items.filter { it.id != t.id }) }) {
                             Icon(Icons.Filled.Close, L("timers.remove"), tint = Theme.c.muted)
                         }

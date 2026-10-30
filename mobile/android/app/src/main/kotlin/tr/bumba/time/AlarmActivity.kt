@@ -14,7 +14,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material3.Icon
@@ -59,6 +63,10 @@ class AlarmActivity : ComponentActivity() {
         val id = intent.getStringExtra(AlarmScheduler.EXTRA_ID) ?: run { finish(); return }
         val title = intent.getStringExtra(AlarmScheduler.EXTRA_TITLE) ?: L("tools.alarm.defaultLabel")
         val kind = intent.getStringExtra(AlarmScheduler.EXTRA_KIND) ?: "alarm"
+        // Çalarken geri tuşu ekranı kapatmaz (rakip analizi #21): alarm yalnız kaydırarak, görevle ya da ertelemeyle susar
+        onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {}
+        })
         setContent {
             AppTheme {
                 var morning by remember { mutableStateOf(false) }
@@ -90,7 +98,8 @@ class AlarmActivity : ComponentActivity() {
                             morning = true
                         }
                     } else {
-                        RoundButton(L("tools.alarm.stop"), true, Modifier.fillMaxWidth()) {
+                        // Kaydırarak durdur (rakip analizi #18): yanlışlıkla dokunuşla kapanmaz
+                        SwipeToStop(L("alarm.swipe")) {
                             AlarmScheduler.stop(this@AlarmActivity, id)
                             if (kind == "alarm") morning = true else finish()
                         }
@@ -107,6 +116,31 @@ class AlarmActivity : ComponentActivity() {
                 }
             }
         }
+    }
+}
+
+/** Sağa kaydırınca tetiklenen düğme (alarmı durdurmak için; yanlışlıkla dokunuşla kapanmasın) */
+@Composable
+fun SwipeToStop(label: String, onStop: () -> Unit) {
+    val density = androidx.compose.ui.platform.LocalDensity.current
+    var offset by remember { mutableStateOf(0f) }
+    androidx.compose.foundation.layout.BoxWithConstraints(
+        Modifier.fillMaxWidth().height(64.dp).background(Theme.c.surface2, androidx.compose.foundation.shape.RoundedCornerShape(50)),
+    ) {
+        val knob = 56.dp
+        val max = with(density) { (maxWidth - knob - 8.dp).toPx() }
+        Text(label, Modifier.align(Alignment.Center), color = Theme.c.muted, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+        Box(
+            Modifier.padding(4.dp).offset { androidx.compose.ui.unit.IntOffset(offset.toInt(), 0) }.size(knob)
+                .background(Theme.c.accent, androidx.compose.foundation.shape.CircleShape)
+                .pointerInput(Unit) {
+                    detectHorizontalDragGestures(
+                        onDragEnd = { if (offset >= max * 0.85f) onStop() else offset = 0f },
+                        onDragCancel = { offset = 0f },
+                    ) { _, dx -> offset = (offset + dx).coerceIn(0f, max) }
+                },
+            contentAlignment = Alignment.Center,
+        ) { Icon(Icons.Filled.Alarm, L("tools.alarm.stop"), tint = Theme.c.bg) }
     }
 }
 

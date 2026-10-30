@@ -34,6 +34,9 @@ object Fmt {
     fun shortDate(d: LocalDate): String =
         d.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).withLocale(Strings.locale))
 
+    /** "2 Kasım" (gün ve ay adı; uygulamanın ay adlarıyla) */
+    fun dayMonth(d: LocalDate): String = "${d.dayOfMonth} ${month(d.monthValue)}"
+
     fun shortDateTime(i: Instant, zone: ZoneId): String = shortDate(i.atZone(zone).toLocalDate()) + " " + hm(i, zone)
 
     fun month(m: Int): String = L("calendar.months.${m - 1}")
