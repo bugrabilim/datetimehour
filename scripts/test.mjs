@@ -172,7 +172,8 @@ for (const f of htmlFiles) {
   const h = fs.readFileSync(f, "utf8");
   for (const m of h.matchAll(/(?:href|src)="([^"]+)"/g)) {
     let u = m[1];
-    if (/^(https?:|mailto:|data:)/.test(u)) {
+    if (/^(https?:|mailto:|data:|webcal:)/.test(u)) {
+      if (u.startsWith("webcal:")) u = "https:" + u.slice(7); // takvim aboneliği (.ics) aynı dosyaya gider
       if (u.startsWith(ORIGIN)) u = u.slice(ORIGIN.length) || "/"; else continue;
     }
     if (u.startsWith("#")) { check(ids[f].has(u.slice(1)), `${rel(f)}: anchor ${u} yok`); continue; }
@@ -325,6 +326,16 @@ for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Typ
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
+// Takvim aboneliği (.ics) ve yazdırma (30 Ekim 2026, #21)
+for (const l of ["tr", "en", "de", "az", "ar"]) for (const k of ["holidays", "days"]) {
+  const f = path.join(DIST, "ics", `${l}-${k}.ics`);
+  const txt = fs.existsSync(f) ? fs.readFileSync(f, "utf8") : "";
+  const lines = txt.split("\r\n");
+  check(txt.startsWith("BEGIN:VCALENDAR\r\n") && txt.endsWith("END:VCALENDAR\r\n") && (txt.match(/BEGIN:VEVENT/g) || []).length > 50 && lines.every((x) => Buffer.byteLength(x) <= 75) && !/[^\r]\n/.test(txt), `ics bozuk: ${l}-${k}.ics`);
+}
+check(fs.readFileSync(path.join(DIST, "ics", "tr-holidays.ics"), "utf8").includes("DTSTART;VALUE=DATE:20270309"), "ics: 2027 Ramazan Bayramı 1. gün yok");
+check(/location \^~ \/ics\/[\s\S]*?default_type "text\/calendar/.test(ng), "nginx.conf: /ics/ text/calendar yok");
+check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index.html"), "utf8")) && /webcal:\/\//.test(fs.readFileSync(path.join(DIST, "en", "calendar", "2027", "index.html"), "utf8")), "takvim: dışa aktarma bölümü yok");
 // Köprü tatil (lib/bridges.mjs): 2027 Kurban + 19 Mayıs 2 gün izinle 9 gün; 2026 Ramazan 0,5 gün izinle 4 gün
 {
   const { computeYear } = await import("../lib/events.mjs");

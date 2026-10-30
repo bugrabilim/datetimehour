@@ -965,3 +965,21 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
 .br-table td:nth-child(5) { color: var(--muted); font-size: 0.92rem; }
 .br-best th, .br-best td { background: var(--accent-soft); }
 .badge { display: inline-block; padding: 0.05rem 0.45rem; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
+
+/* Takvim dışa aktarma ve yazdırma (30 Ekim 2026, rakip analizi #21): A4'e tek sayfa yıllık takvim */
+.cal-feed h3 { margin: 0.75rem 0 0.25rem; font-size: 1rem; }
+@media print {
+  @page { size: A4 portrait; margin: 10mm; }
+  body:has(.year-grid) .hero .lead, body:has(.year-grid) .year-nav, body:has(.year-grid) #events,
+  body:has(.year-grid) .cal-export, body:has(.year-grid) .faq-block, body:has(.year-grid) .crumbs,
+  body:has(.year-grid) .sync-line { display: none !important; }
+  body:has(.year-grid) { background: #fff; color: #000; font-size: 9pt; }
+  body:has(.year-grid) .hero, body:has(.year-grid) .section { padding: 0; margin: 0; }
+  body:has(.year-grid) h1 { font-size: 16pt; margin: 0 0 2mm; }
+  body:has(.year-grid) h1::after { content: " · Saat Tarih (time.bumba.tr)"; font-size: 9pt; font-weight: 400; }
+  body:has(.year-grid) .legend { margin: 0 0 2mm; font-size: 8pt; }
+  body:has(.year-grid) .year-grid { grid-template-columns: repeat(3, 1fr); gap: 2mm; }
+  body:has(.year-grid) .ymonth { padding: 1mm; break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body:has(.year-grid) .ymonth th, body:has(.year-grid) .ymonth td { height: 5mm; font-size: 7.5pt; }
+  body:has(.year-grid) .ymonth caption { padding: 0.5mm; font-size: 9pt; }
+}

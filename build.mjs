@@ -759,6 +759,40 @@ for (const lang of LANGS) {
 }
 const eventsVersion = Object.fromEntries(LANGS.map((l) => [l, hash(eventsJson[l])]));
 
+/* Takvim aboneliği (30 Ekim 2026, rakip analizi #21): her dilde iki .ics akışı, 2026–2031 bütün yıllar.
+   /ics/<dil>-holidays.ics: resmî tatiller ve yarım gün arifeler; /ics/<dil>-days.ics: dini ve özel günler.
+   Tüm gün etkinlikleri (DTSTART;VALUE=DATE), kimlik tarih+anahtar (abonelikte güncellenir), DTSTAMP site güncelleme tarihi. */
+const icsEsc = (v) => String(v).replace(/\\/g, "\\\\").replace(/[,;]/g, "\\$&").replace(/\r?\n/g, "\\n");
+const icsFold = (line) => {
+  const out = []; let cur = "", bytes = 0;
+  for (const ch of line) {
+    const b = Buffer.byteLength(ch);
+    if (bytes + b > (out.length ? 74 : 75)) { out.push(cur); cur = ""; bytes = 0; }
+    cur += ch; bytes += b;
+  }
+  out.push(cur);
+  return out.join("\r\n ");
+};
+const ICS_URL = (lang, kind) => `/ics/${lang}-${kind}.ics`;
+for (const lang of LANGS) {
+  const cal = I[lang].calendar;
+  const stamp = cfg.updated.replace(/-/g, "") + "T000000Z";
+  for (const [kind, types, name] of [["holidays", ["holiday", "half"], cal.icsCalHolidays], ["days", ["religious", "special"], cal.icsCalDays]]) {
+    const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:-//Bumba//Saat Tarih//${lang.toUpperCase()}`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH", `X-WR-CALNAME:${icsEsc(name)}`, "REFRESH-INTERVAL;VALUE=DURATION:P7D", "X-PUBLISHED-TTL:P7D"];
+    for (const y of HOL_YEARS) {
+      for (const e of YEAR_DATA[y].events) {
+        if (!types.includes(e.type) || !e.date.startsWith(String(y))) continue;
+        const d = e.date.replace(/-/g, ""), end = addDays(e.date, 1).replace(/-/g, "");
+        const title = cal.events[e.key] + (e.type === "half" ? ` (${cal.icsHalf})` : "");
+        const desc = [cal.types[TYPE_LABEL_KEY[e.type]], YEAR_DATA[y].projected && (e.type !== "special") && /^(rb|kb|ramadan|kadir|mirac|berat|regaib|mawlid|hijri|ashura|ucAylar)/.test(e.key) ? cal.icsProjected : "", `${abs(yearPath(lang, y))}`].filter(Boolean).join(" · ");
+        lines.push("BEGIN:VEVENT", `UID:${d}-${e.key}-${lang}@time.bumba.tr`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${d}`, `DTEND;VALUE=DATE:${end}`, `SUMMARY:${icsEsc(title)}`, `DESCRIPTION:${icsEsc(desc)}`, "TRANSP:TRANSPARENT", "END:VEVENT");
+      }
+    }
+    lines.push("END:VCALENDAR");
+    write(ICS_URL(lang, kind).slice(1), lines.map(icsFold).join("\r\n") + "\r\n");
+  }
+}
+
 function monthTable(lang, year, month, cy, ev) {
   const cal = I[lang].calendar;
   const days = daysInMonth(year, month);
@@ -859,6 +893,15 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
   <div class="wrap">
     <h2 id="events-h">${esc(tpl(cal.eventsHeading, v))}</h2>
     <div class="table-wrap"><table class="events-table"><caption>${esc(tpl(cal.tableCaption, v))}</caption><thead><tr><th scope="col">${esc(cal.colDate)}</th><th scope="col">${esc(cal.colDay)}</th><th scope="col">${esc(cal.colEvent)}</th><th scope="col">${esc(cal.colType)}</th><th scope="col">${esc(cal.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+  </div>
+</section>
+<section class="section cal-export" aria-labelledby="export-h">
+  <div class="wrap">
+    <h2 id="export-h">${esc(cal.icsHeading)}</h2>
+    ${["holidays", "days"].map((k) => { const u = ICS_URL(lang, k); return `<div class="cal-feed"><h3>${esc(k === "holidays" ? cal.icsHolidays : cal.icsDays)}</h3><p class="share-row"><a class="toggle" href="${u}" download>${esc(cal.icsDownload)}</a><a class="toggle" href="${ORIGIN.replace(/^https?:/, "webcal:")}${u}">${esc(cal.icsSubscribe)}</a><a class="toggle" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(ORIGIN.replace(/^https?:/, "webcal:") + u)}" target="_blank" rel="noopener">${esc(cal.icsGoogle)}</a></p></div>`; }).join("")}
+    <p class="meta">${esc(cal.icsNote)}</p>
+    <p><button type="button" class="btn" data-print>${esc(cal.print)}</button></p>
+    <p class="meta">${esc(cal.printNote)}</p>
   </div>
 </section>
 ${addFaq(lang, "calendar", t.faqPage.calendar, yearPath(lang, BUILD_YEAR), faq)}`;

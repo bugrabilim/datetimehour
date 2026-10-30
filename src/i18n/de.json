@@ -672,7 +672,20 @@
     "dayIn": "In {n} Tagen",
     "dayAgo": "Vor {n} Tagen",
     "dayClose": "Schließen",
-    "dayToList": "In der Tagesliste zeigen"
+    "dayToList": "In der Tagesliste zeigen",
+    "icsHeading": "Zum Kalender hinzufügen",
+    "icsHolidays": "Feiertage und Vorabende",
+    "icsDays": "Religiöse und besondere Tage",
+    "icsDownload": "Herunterladen (.ics)",
+    "icsSubscribe": "Abonnieren (iPhone, Mac, Outlook)",
+    "icsGoogle": "Zu Google Kalender hinzufügen",
+    "icsNote": "Mit einem Abo übernimmt Ihr Kalender die Daten neuer Jahre von selbst; 2026–2031 sind enthalten. Religiöse Tage ab 2028 beruhen auf dem Langzeitkalender von Diyanet.",
+    "print": "Drucken / als PDF speichern",
+    "printNote": "Wählen Sie im Druckdialog \"Als PDF speichern\" als Ziel; der Kalender passt auf eine A4-Seite.",
+    "icsCalHolidays": "Feiertage in der Türkei (Saat Tarih)",
+    "icsCalDays": "Religiöse und besondere Tage in der Türkei (Saat Tarih)",
+    "icsHalf": "halber Tag",
+    "icsProjected": "nach dem Langzeitkalender von Diyanet (Hochrechnung)"
   },
   "tools": {
     "hub": {

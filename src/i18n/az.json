@@ -645,7 +645,20 @@
     "dayIn": "{n} gün sonra",
     "dayAgo": "{n} gün əvvəl",
     "dayClose": "Bağla",
-    "dayToList": "Günlər siyahısında göstər"
+    "dayToList": "Günlər siyahısında göstər",
+    "icsHeading": "Təqviminizə əlavə edin",
+    "icsHolidays": "Rəsmi bayramlar və ərəfələr",
+    "icsDays": "Dini və xüsusi günlər",
+    "icsDownload": "Yüklə (.ics)",
+    "icsSubscribe": "Abunə ol (iPhone, Mac, Outlook)",
+    "icsGoogle": "Google Təqvimə əlavə et",
+    "icsNote": "Abunə olsanız, təqviminiz yeni illərin tarixlərini özü alır; 2026–2031 daxildir. 2028 və sonrakı dini günlər Diyanətin uzunmüddətli təqviminə əsaslanır.",
+    "print": "Çap et / PDF kimi saxla",
+    "printNote": "Çap pəncərəsində hədəf olaraq \"PDF kimi saxla\"nı seçin; təqvim A4 səhifəyə sığır.",
+    "icsCalHolidays": "Türkiyənin rəsmi bayramları (Saat Tarih)",
+    "icsCalDays": "Türkiyənin dini və xüsusi günləri (Saat Tarih)",
+    "icsHalf": "yarım gün",
+    "icsProjected": "Diyanətin uzunmüddətli təqviminə görə (proqnoz)"
   },
   "tools": {
     "hub": {

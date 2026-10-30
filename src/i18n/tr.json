@@ -645,7 +645,20 @@
     "dayIn": "{n} gün sonra",
     "dayAgo": "{n} gün önce",
     "dayClose": "Kapat",
-    "dayToList": "Günler listesinde göster"
+    "dayToList": "Günler listesinde göster",
+    "icsHeading": "Takviminize ekleyin",
+    "icsHolidays": "Resmî tatiller ve arifeler",
+    "icsDays": "Dini ve özel günler",
+    "icsDownload": "İndir (.ics)",
+    "icsSubscribe": "Abone ol (iPhone, Mac, Outlook)",
+    "icsGoogle": "Google Takvim'e ekle",
+    "icsNote": "Abone olursanız takviminiz yeni yılların tarihlerini kendiliğinden alır; 2026–2031 dahildir. 2028 ve sonrası dini günler Diyanet'in uzun vadeli takvimine dayanır.",
+    "print": "Yazdır / PDF olarak kaydet",
+    "printNote": "Yazdırma penceresinde hedef olarak \"PDF olarak kaydet\"i seçin; takvim A4 sayfaya sığar.",
+    "icsCalHolidays": "Türkiye resmî tatilleri (Saat Tarih)",
+    "icsCalDays": "Türkiye dini ve özel günler (Saat Tarih)",
+    "icsHalf": "yarım gün",
+    "icsProjected": "Diyanet'in uzun vadeli takvimine göre (projeksiyon)"
   },
   "tools": {
     "hub": {

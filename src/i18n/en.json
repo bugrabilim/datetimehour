@@ -645,7 +645,20 @@
     "dayIn": "In {n} days",
     "dayAgo": "{n} days ago",
     "dayClose": "Close",
-    "dayToList": "Show in the list of days"
+    "dayToList": "Show in the list of days",
+    "icsHeading": "Add to your calendar",
+    "icsHolidays": "Public holidays and eves",
+    "icsDays": "Religious and special days",
+    "icsDownload": "Download (.ics)",
+    "icsSubscribe": "Subscribe (iPhone, Mac, Outlook)",
+    "icsGoogle": "Add to Google Calendar",
+    "icsNote": "If you subscribe, your calendar picks up new years' dates by itself; 2026–2031 are included. Religious days from 2028 on are based on Diyanet's long-range calendar.",
+    "print": "Print / save as PDF",
+    "printNote": "In the print dialog choose \"Save as PDF\" as the destination; the calendar fits an A4 page.",
+    "icsCalHolidays": "Public holidays in Turkey (Saat Tarih)",
+    "icsCalDays": "Religious and special days in Turkey (Saat Tarih)",
+    "icsHalf": "half day",
+    "icsProjected": "based on Diyanet's long-range calendar (projection)"
   },
   "tools": {
     "hub": {
