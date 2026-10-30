@@ -42,7 +42,7 @@ enum SleepPlan {
     }
 
     /// Yatma hatırlatmaları: kalkış günü D için yatma = D'nin kalkış saati − uyku süresi, hatırlatma ondan `remind` dk önce
-    static func reminders(now: Date, days count: Int) -> [PlannedNotification] {
+    @MainActor static func reminders(now: Date, days count: Int) -> [PlannedNotification] {
         guard on, !days.isEmpty else { return [] }
         let cal = Calendar.current
         let start = cal.startOfDay(for: now)

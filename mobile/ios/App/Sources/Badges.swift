@@ -75,7 +75,7 @@ final class BadgeStore {
         if let d = try? JSONEncoder().encode(saved) { UserDefaults.standard.set(d, forKey: Self.key) }
     }
 
-    static func day(_ d: Date) -> String {
+    nonisolated static func day(_ d: Date) -> String {
         let c = Calendar(identifier: .gregorian).dateComponents([.year, .month, .day], from: d)
         return String(format: "%04d-%02d-%02d", c.year ?? 0, c.month ?? 0, c.day ?? 0)
     }
