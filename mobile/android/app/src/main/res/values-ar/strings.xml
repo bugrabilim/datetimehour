@@ -1333,5 +1333,11 @@
     <string name="meet_pickHint">اضغط على صف لاختيار وقت الاجتماع.</string>
     <string name="meet_here">هنا</string>
     <string name="journal_sleepShort">النوم: %1$s</string>
+    <string name="health_saveIos">الحفظ في تطبيق الصحة من Apple</string>
+    <string name="health_saveAndroid">الحفظ في Health Connect</string>
+    <string name="health_noteIos">يُسجَّل كل تمرين متقطع أو روتين منتهٍ في تطبيق الصحة كتمرين (النوع والبداية والمدة). لا يقرأ التطبيق بياناتك الصحية.</string>
+    <string name="health_noteAndroid">يُسجَّل كل تمرين متقطع أو روتين منتهٍ في Health Connect كجلسة تمرين (النوع والبداية والمدة). لا يقرأ التطبيق بياناتك الصحية.</string>
+    <string name="health_unavailable">غير متاح على هذا الجهاز.</string>
+    <string name="health_denied">لم يُمنح الإذن. يمكنك السماح به من إعدادات الهاتف.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

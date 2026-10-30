@@ -487,7 +487,7 @@ fun HiitScreen() {
     LaunchedEffect(start, paused) {
         while (start > 0 && paused == 0L) {
             now = System.currentTimeMillis()
-            if (cfg.phase(((now - start) / 1000).toInt()).kind == "done") break
+            if (cfg.phase(((now - start) / 1000).toInt()).kind == "done") { HealthLog.recordHiitIfDone(context); break }
             delay(200)
         }
     }
@@ -554,6 +554,7 @@ fun HiitScreen() {
             }
         }
         VoiceToggle()
+        HealthToggle()
         Text(L("hiit.note"), color = Theme.c.muted, fontSize = 13.sp)
         Spacer(Modifier.height(8.dp))
     }

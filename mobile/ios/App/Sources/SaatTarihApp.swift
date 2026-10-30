@@ -35,6 +35,8 @@ struct SaatTarihApp: App {
                 }
                 // Aralık antrenmanı sürüyorsa sesli duyurular (uygulama yeniden açılmış olabilir)
                 HiitRunner.shared.sync()
+                // Biten antrenman Apple Sağlık'a (açıksa ve daha önce yazılmadıysa)
+                HealthLog.recordHiitIfDone()
                 // Pomodoro arka plan sesi (süre uygulama kapalıyken bitmiş olabilir)
                 PomoNoise.sync()
                 // Kilit ekranı / Dynamic Island etkinlikleri (sıradaki vakit ileri taşınır, bitenler kapanır)

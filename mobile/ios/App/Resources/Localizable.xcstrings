@@ -46620,6 +46620,216 @@
           }
         }
       }
+    },
+    "health.saveIos": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Sağlık'a kaydet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save to Apple Health"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In Apple Health sichern"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Health-ə yaz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الحفظ في تطبيق الصحة من Apple"
+          }
+        }
+      }
+    },
+    "health.saveAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Health Connect'e kaydet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save to Health Connect"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In Health Connect sichern"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Health Connect-ə yaz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الحفظ في Health Connect"
+          }
+        }
+      }
+    },
+    "health.noteIos": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biten aralık antrenmanı ve rutin, Sağlık uygulamasına antrenman olarak yazılır (tür, başlangıç ve süre). Uygulama Sağlık verilerinizi okumaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each finished interval workout or routine is written to the Health app as a workout (type, start and duration). The app does not read your health data."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jedes beendete Intervalltraining oder jede Routine wird als Training in Health eingetragen (Art, Beginn und Dauer). Die App liest Ihre Gesundheitsdaten nicht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitən aralıq məşqi və rutin Sağlamlıq tətbiqinə məşq kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُسجَّل كل تمرين متقطع أو روتين منتهٍ في تطبيق الصحة كتمرين (النوع والبداية والمدة). لا يقرأ التطبيق بياناتك الصحية."
+          }
+        }
+      }
+    },
+    "health.noteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biten aralık antrenmanı ve rutin, Health Connect'e egzersiz oturumu olarak yazılır (tür, başlangıç ve süre). Uygulama sağlık verilerinizi okumaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each finished interval workout or routine is written to Health Connect as an exercise session (type, start and duration). The app does not read your health data."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jedes beendete Intervalltraining oder jede Routine wird als Trainingseinheit in Health Connect eingetragen (Art, Beginn und Dauer). Die App liest Ihre Gesundheitsdaten nicht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bitən aralıq məşqi və rutin Health Connect-ə məşq sessiyası kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُسجَّل كل تمرين متقطع أو روتين منتهٍ في Health Connect كجلسة تمرين (النوع والبداية والمدة). لا يقرأ التطبيق بياناتك الصحية."
+          }
+        }
+      }
+    },
+    "health.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazda kullanılamıyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not available on this device."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf diesem Gerät nicht verfügbar."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazda mövcud deyil."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غير متاح على هذا الجهاز."
+          }
+        }
+      }
+    },
+    "health.denied": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzin verilmedi. Telefonun ayarlarından açabilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Permission not granted. You can allow it in the phone's settings."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Berechtigung. Sie können sie in den Einstellungen des Telefons erteilen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İcazə verilmədi. Telefonun ayarlarından aça bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يُمنح الإذن. يمكنك السماح به من إعدادات الهاتف."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

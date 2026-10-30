@@ -1333,5 +1333,11 @@
     <string name="meet_pickHint">Tap a row to pick the meeting time.</string>
     <string name="meet_here">Here</string>
     <string name="journal_sleepShort">Sleep: %1$s</string>
+    <string name="health_saveIos">Save to Apple Health</string>
+    <string name="health_saveAndroid">Save to Health Connect</string>
+    <string name="health_noteIos">Each finished interval workout or routine is written to the Health app as a workout (type, start and duration). The app does not read your health data.</string>
+    <string name="health_noteAndroid">Each finished interval workout or routine is written to Health Connect as an exercise session (type, start and duration). The app does not read your health data.</string>
+    <string name="health_unavailable">Not available on this device.</string>
+    <string name="health_denied">Permission not granted. You can allow it in the phone\'s settings.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

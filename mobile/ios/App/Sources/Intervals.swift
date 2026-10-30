@@ -296,6 +296,7 @@ final class HiitRunner {
         if let text = cfg.cue(last: last, p) { say(text) }
         last = p
         guard p.kind == "done" else { return }
+        HealthLog.recordHiitIfDone()
         // "Bitti" söylensin, sonra ses oturumu kapanır (bitiş alarmı ayrıca çalar)
         timer?.invalidate()
         timer = nil
@@ -569,6 +570,7 @@ struct HiitView: View {
                 VStack(spacing: 16) {
                     if !active { settings } else { running(phase, elapsed: elapsed) }
                     VoiceToggle()
+                    HealthToggle()
                     Text(L("hiit.note")).font(.footnote).foregroundStyle(Theme.muted)
                 }
                 .padding(16)
@@ -580,6 +582,7 @@ struct HiitView: View {
             UIApplication.shared.isIdleTimerDisabled = active && paused == 0
             // Sesli duyurular HiitRunner'da (ekran kilitliyken de)
             HiitRunner.shared.sync()
+            HealthLog.recordHiitIfDone()
         }
     }
 

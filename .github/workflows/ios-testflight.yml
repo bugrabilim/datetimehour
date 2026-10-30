@@ -78,6 +78,7 @@ jobs:
           codesign -d --entitlements - Payload/SaatTarih.app
           codesign -d --entitlements - Payload/SaatTarih.app 2>&1 | grep -q weatherkit || { echo "::error::WeatherKit yetkisi dağıtım imzasında yok"; exit 1; }
           codesign -d --entitlements - Payload/SaatTarih.app 2>&1 | grep -q ubiquity-kvstore-identifier || { echo "::error::iCloud anahtar-değer yetkisi dağıtım imzasında yok (Apple Developer › Identifiers › tr.bumba.time › iCloud açılmalı)"; exit 1; }
+          codesign -d --entitlements - Payload/SaatTarih.app 2>&1 | grep -q com.apple.developer.healthkit || { echo "::error::HealthKit yetkisi dağıtım imzasında yok (Apple Developer › Identifiers › tr.bumba.time › HealthKit açılmalı)"; exit 1; }
       - name: Yükle
         if: steps.keys.outputs.ok == '1'
         run: |

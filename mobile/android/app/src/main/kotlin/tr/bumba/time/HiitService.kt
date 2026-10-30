@@ -80,6 +80,7 @@ class HiitService : Service() {
             }
             last = p
             if (p.kind == "done") {
+                HealthLog.recordHiitIfDone(this@HiitService)
                 // "Bitti" söylensin, sonra hizmet kapanır (bitiş alarmı ayrıca çalar)
                 handler.postDelayed({ stopSelf() }, 4000)
                 return

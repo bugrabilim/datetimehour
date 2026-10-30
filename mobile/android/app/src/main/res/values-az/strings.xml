@@ -1333,5 +1333,11 @@
     <string name="meet_pickHint">Görüş vaxtını seçmək üçün bir sətrə toxunun.</string>
     <string name="meet_here">Bura</string>
     <string name="journal_sleepShort">Yuxu: %1$s</string>
+    <string name="health_saveIos">Apple Health-ə yaz</string>
+    <string name="health_saveAndroid">Health Connect-ə yaz</string>
+    <string name="health_noteIos">Bitən aralıq məşqi və rutin Sağlamlıq tətbiqinə məşq kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur.</string>
+    <string name="health_noteAndroid">Bitən aralıq məşqi və rutin Health Connect-ə məşq sessiyası kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur.</string>
+    <string name="health_unavailable">Bu cihazda mövcud deyil.</string>
+    <string name="health_denied">İcazə verilmədi. Telefonun ayarlarından aça bilərsiniz.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

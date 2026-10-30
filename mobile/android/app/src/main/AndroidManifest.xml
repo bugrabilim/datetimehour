@@ -22,6 +22,12 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Vakitte telefonu Rahatsız Etmeyin'e alma (isteğe bağlı; kullanıcı ayardan izin verir) -->
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <!-- Health Connect: biten aralık antrenmanı egzersiz oturumu olarak yazılır (isteğe bağlı; okuma izni yok) -->
+    <uses-permission android:name="android.permission.health.WRITE_EXERCISE" />
+
+    <queries>
+        <package android:name="com.google.android.apps.healthdata" />
+    </queries>
 
     <!-- Vakit bildirimleri (PrayerNotifier): bildirim izni yalnız açarken istenir; tam zamanlı alarm; yeniden
          başlatmada plan yeniden kurulur -->
@@ -52,6 +58,27 @@
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
         </activity>
+
+        <!-- Health Connect izin gerekçesi: gizlilik sayfasını açar (Android 13 ve öncesi: ACTION_SHOW_PERMISSIONS_RATIONALE;
+             14+: VIEW_PERMISSION_USAGE takma adı) -->
+        <activity
+            android:name=".HealthRationaleActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+            </intent-filter>
+        </activity>
+        <activity-alias
+            android:name="ViewPermissionUsageActivity"
+            android:exported="true"
+            android:targetActivity=".HealthRationaleActivity"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity-alias>
 
         <!-- Asistan ve başka uygulamalardan zamanlayıcı/alarm (AlarmClock istekleri; ClockIntents.kt) -->
         <activity

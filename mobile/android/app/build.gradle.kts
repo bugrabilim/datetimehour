@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.code.scanner)
+    implementation(libs.health.connect)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
     testImplementation(platform(libs.compose.bom))

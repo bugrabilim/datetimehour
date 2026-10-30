@@ -175,6 +175,41 @@
           }
         }
       }
+    },
+    "NSHealthUpdateUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To write finished interval workouts and routines to the Health app as workouts, if you turn it on. The app does not read your health data."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um beendete Intervalltrainings und Routinen als Trainings in Health einzutragen, wenn Sie es einschalten. Die App liest Ihre Gesundheitsdaten nicht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siz açsanız, bitən aralıq məşqlərini və rutinləri Sağlamlıq tətbiqinə məşq kimi yazmaq üçün. Tətbiq sağlamlıq məlumatlarınızı oxumur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لتسجيل التمارين المتقطعة والروتينات المنتهية في تطبيق الصحة كتمارين، إذا فعّلت ذلك. لا يقرأ التطبيق بياناتك الصحية."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

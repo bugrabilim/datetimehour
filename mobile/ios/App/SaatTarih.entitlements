@@ -10,5 +10,10 @@
 	     ($(TeamIdentifierPrefix) değişkeni geçici imzada açılmaz); App ID'de iCloud açık olmalı. -->
 	<key>com.apple.developer.ubiquity-kvstore-identifier</key>
 	<string>3J9XN2P93D.tr.bumba.time</string>
+	<!-- Apple Sağlık (HealthKit, Health.swift): biten aralık antrenmanı yalnız yazılır, okunmaz. App ID'de HealthKit açık olmalı. -->
+	<key>com.apple.developer.healthkit</key>
+	<true/>
+	<key>com.apple.developer.healthkit.access</key>
+	<array/>
 </dict>
 </plist>

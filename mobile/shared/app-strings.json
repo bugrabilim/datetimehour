@@ -5599,5 +5599,54 @@
     "de": "Schlaf: {level}",
     "az": "Yuxu: {level}",
     "ar": "النوم: {level}"
+  },
+  "health.saveIos": {
+    "tr": "Apple Sağlık'a kaydet",
+    "en": "Save to Apple Health",
+    "de": "In Apple Health sichern",
+    "az": "Apple Health-ə yaz",
+    "ar": "الحفظ في تطبيق الصحة من Apple"
+  },
+  "health.saveAndroid": {
+    "tr": "Health Connect'e kaydet",
+    "en": "Save to Health Connect",
+    "de": "In Health Connect sichern",
+    "az": "Health Connect-ə yaz",
+    "ar": "الحفظ في Health Connect"
+  },
+  "health.noteIos": {
+    "tr": "Biten aralık antrenmanı ve rutin, Sağlık uygulamasına antrenman olarak yazılır (tür, başlangıç ve süre). Uygulama Sağlık verilerinizi okumaz.",
+    "en": "Each finished interval workout or routine is written to the Health app as a workout (type, start and duration). The app does not read your health data.",
+    "de": "Jedes beendete Intervalltraining oder jede Routine wird als Training in Health eingetragen (Art, Beginn und Dauer). Die App liest Ihre Gesundheitsdaten nicht.",
+    "az": "Bitən aralıq məşqi və rutin Sağlamlıq tətbiqinə məşq kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur.",
+    "ar": "يُسجَّل كل تمرين متقطع أو روتين منتهٍ في تطبيق الصحة كتمرين (النوع والبداية والمدة). لا يقرأ التطبيق بياناتك الصحية."
+  },
+  "health.noteAndroid": {
+    "tr": "Biten aralık antrenmanı ve rutin, Health Connect'e egzersiz oturumu olarak yazılır (tür, başlangıç ve süre). Uygulama sağlık verilerinizi okumaz.",
+    "en": "Each finished interval workout or routine is written to Health Connect as an exercise session (type, start and duration). The app does not read your health data.",
+    "de": "Jedes beendete Intervalltraining oder jede Routine wird als Trainingseinheit in Health Connect eingetragen (Art, Beginn und Dauer). Die App liest Ihre Gesundheitsdaten nicht.",
+    "az": "Bitən aralıq məşqi və rutin Health Connect-ə məşq sessiyası kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur.",
+    "ar": "يُسجَّل كل تمرين متقطع أو روتين منتهٍ في Health Connect كجلسة تمرين (النوع والبداية والمدة). لا يقرأ التطبيق بياناتك الصحية."
+  },
+  "health.unavailable": {
+    "tr": "Bu cihazda kullanılamıyor.",
+    "en": "Not available on this device.",
+    "de": "Auf diesem Gerät nicht verfügbar.",
+    "az": "Bu cihazda mövcud deyil.",
+    "ar": "غير متاح على هذا الجهاز."
+  },
+  "health.denied": {
+    "tr": "İzin verilmedi. Telefonun ayarlarından açabilirsiniz.",
+    "en": "Permission not granted. You can allow it in the phone's settings.",
+    "de": "Keine Berechtigung. Sie können sie in den Einstellungen des Telefons erteilen.",
+    "az": "İcazə verilmədi. Telefonun ayarlarından aça bilərsiniz.",
+    "ar": "لم يُمنح الإذن. يمكنك السماح به من إعدادات الهاتف."
+  },
+  "NSHealthUpdateUsageDescription": {
+    "tr": "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz.",
+    "en": "To write finished interval workouts and routines to the Health app as workouts, if you turn it on. The app does not read your health data.",
+    "de": "Um beendete Intervalltrainings und Routinen als Trainings in Health einzutragen, wenn Sie es einschalten. Die App liest Ihre Gesundheitsdaten nicht.",
+    "az": "Siz açsanız, bitən aralıq məşqlərini və rutinləri Sağlamlıq tətbiqinə məşq kimi yazmaq üçün. Tətbiq sağlamlıq məlumatlarınızı oxumur.",
+    "ar": "لتسجيل التمارين المتقطعة والروتينات المنتهية في تطبيق الصحة كتمارين، إذا فعّلت ذلك. لا يقرأ التطبيق بياناتك الصحية."
   }
 }

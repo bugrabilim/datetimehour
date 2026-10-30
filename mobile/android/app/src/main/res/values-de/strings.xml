@@ -1333,5 +1333,11 @@
     <string name="meet_pickHint">Tippen Sie auf eine Zeile, um die Besprechungszeit zu wählen.</string>
     <string name="meet_here">Hier</string>
     <string name="journal_sleepShort">Schlaf: %1$s</string>
+    <string name="health_saveIos">In Apple Health sichern</string>
+    <string name="health_saveAndroid">In Health Connect sichern</string>
+    <string name="health_noteIos">Jedes beendete Intervalltraining oder jede Routine wird als Training in Health eingetragen (Art, Beginn und Dauer). Die App liest Ihre Gesundheitsdaten nicht.</string>
+    <string name="health_noteAndroid">Jedes beendete Intervalltraining oder jede Routine wird als Trainingseinheit in Health Connect eingetragen (Art, Beginn und Dauer). Die App liest Ihre Gesundheitsdaten nicht.</string>
+    <string name="health_unavailable">Auf diesem Gerät nicht verfügbar.</string>
+    <string name="health_denied">Keine Berechtigung. Sie können sie in den Einstellungen des Telefons erteilen.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

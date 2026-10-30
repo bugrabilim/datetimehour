@@ -83,6 +83,8 @@ class MainActivity : ComponentActivity() {
         BadgeStore.appOpened()
         // Aralık antrenmanı sürüyorsa sesli duyuru hizmeti çalışsın (uygulama zorla kapatılmış olabilir)
         HiitService.sync(this)
+        // Biten antrenman Health Connect'e (açıksa ve daha önce yazılmadıysa)
+        HealthLog.recordHiitIfDone(this)
     }
 
     /** Uygulamadan çıkarken widget'lar güncel konum ve dille yeniden çizilir */

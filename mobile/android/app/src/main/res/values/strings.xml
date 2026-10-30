@@ -1333,5 +1333,11 @@
     <string name="meet_pickHint">Toplantı saatini seçmek için bir satıra dokunun.</string>
     <string name="meet_here">Burası</string>
     <string name="journal_sleepShort">Uyku: %1$s</string>
+    <string name="health_saveIos">Apple Sağlık\'a kaydet</string>
+    <string name="health_saveAndroid">Health Connect\'e kaydet</string>
+    <string name="health_noteIos">Biten aralık antrenmanı ve rutin, Sağlık uygulamasına antrenman olarak yazılır (tür, başlangıç ve süre). Uygulama Sağlık verilerinizi okumaz.</string>
+    <string name="health_noteAndroid">Biten aralık antrenmanı ve rutin, Health Connect\'e egzersiz oturumu olarak yazılır (tür, başlangıç ve süre). Uygulama sağlık verilerinizi okumaz.</string>
+    <string name="health_unavailable">Bu cihazda kullanılamıyor.</string>
+    <string name="health_denied">İzin verilmedi. Telefonun ayarlarından açabilirsiniz.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>
