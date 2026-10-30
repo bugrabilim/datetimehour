@@ -736,14 +736,14 @@
     <string name="hiit_round">Tur %1$s/%2$s</string>
     <string name="hiit_total">Toplam süre: %1$s</string>
     <string name="hiit_done">Antrenman bitti</string>
-    <string name="hiit_note">Antrenman sürerken ekran açık kalır. Uygulamadan çıkarsanız geçişler duyurulmaz, yalnız bitişte alarm çalar.</string>
+    <string name="hiit_note">Ekran kilitliyken ya da başka bir uygulamadayken de evre geçişleri ve son 3 saniye sesli duyurulur, bitişte alarm çalar. Müzik çalıyorsa duyurular müziğin üstüne söylenir.</string>
     <string name="hiit_say_warmup">Isınma</string>
     <string name="hiit_say_work">Çalış</string>
     <string name="hiit_say_rest">Dinlen</string>
     <string name="hiit_say_last">Son tur</string>
     <string name="hiit_say_done">Bitti, tebrikler!</string>
     <string name="tools_voice">Sesli duyuru</string>
-    <string name="tools_voiceNote">Telefonun kendi konuşma sesiyle; ekran açıkken.</string>
+    <string name="tools_voiceNote">Telefonun kendi konuşma sesiyle; internet gerekmez.</string>
     <string name="countdowns_heading">Geri sayımlarım</string>
     <string name="countdowns_empty">Henüz geri sayım yok. Doğum günü, tatil, sınav… eklemek için + düğmesine dokunun.</string>
     <string name="countdowns_add">Geri sayım ekle</string>
@@ -787,5 +787,6 @@
     <string name="features_prayer_note">Namaz vakitleri, vakit bildirimleri ve imsakiye</string>
     <string name="features_tools_note">Alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama</string>
     <string name="features_hint">Hava durumu, takvim, namaz vakitleri ve diğer özellikleri aç</string>
+    <string name="hiit_channel">Aralık antrenmanı</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

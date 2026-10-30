@@ -736,14 +736,14 @@
     <string name="hiit_round">Dövrə %1$s/%2$s</string>
     <string name="hiit_total">Ümumi vaxt: %1$s</string>
     <string name="hiit_done">Məşq bitdi</string>
-    <string name="hiit_note">Məşq zamanı ekran açıq qalır. Tətbiqdən çıxsanız keçidlər elan edilmir, yalnız sonda zəng çalır.</string>
+    <string name="hiit_note">Ekran kilidli olanda və ya başqa tətbiqdə olanda da mərhələ keçidləri və son 3 saniyə səsli elan edilir, sonda zəng çalır. Musiqi çalırsa, elanlar musiqinin üstündən səslənir.</string>
     <string name="hiit_say_warmup">İsinmə</string>
     <string name="hiit_say_work">İşlə</string>
     <string name="hiit_say_rest">Dincəl</string>
     <string name="hiit_say_last">Son dövrə</string>
     <string name="hiit_say_done">Bitdi, təbriklər!</string>
     <string name="tools_voice">Səsli elan</string>
-    <string name="tools_voiceNote">Telefonun öz danışıq səsi ilə; ekran açıq olarkən.</string>
+    <string name="tools_voiceNote">Telefonun öz danışıq səsi ilə; internet lazım deyil.</string>
     <string name="countdowns_heading">Geri sayımlarım</string>
     <string name="countdowns_empty">Hələ geri sayım yoxdur. Ad günü, tətil, imtahan… əlavə etmək üçün + düyməsinə toxunun.</string>
     <string name="countdowns_add">Geri sayım əlavə et</string>
@@ -787,5 +787,6 @@
     <string name="features_prayer_note">Namaz vaxtları, bildirişlər və imsakiyyə</string>
     <string name="features_tools_note">Zəngli saat, taymer, saniyəölçən, pomodoro, tarix hesablama</string>
     <string name="features_hint">Hava, təqvim, namaz vaxtları və digər xüsusiyyətləri aç</string>
+    <string name="hiit_channel">İnterval məşqi</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

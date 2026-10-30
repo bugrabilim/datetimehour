@@ -736,14 +736,14 @@
     <string name="hiit_round">الجولة %1$s/%2$s</string>
     <string name="hiit_total">المدة الإجمالية: %1$s</string>
     <string name="hiit_done">انتهى التمرين</string>
-    <string name="hiit_note">تبقى الشاشة مضاءة أثناء التمرين. إذا غادرت التطبيق فلن يُعلن عن الانتقالات، ويرن المنبه عند النهاية فقط.</string>
+    <string name="hiit_note">يُعلَن عن تغيّر المراحل والثواني الثلاث الأخيرة حتى مع قفل الشاشة أو أثناء استخدام تطبيق آخر، ويرن المنبّه عند النهاية. إذا كانت الموسيقى تعمل فستُسمع الإعلانات فوقها.</string>
     <string name="hiit_say_warmup">إحماء</string>
     <string name="hiit_say_work">ابدأ</string>
     <string name="hiit_say_rest">استرح</string>
     <string name="hiit_say_last">الجولة الأخيرة</string>
     <string name="hiit_say_done">انتهى، أحسنت!</string>
     <string name="tools_voice">إعلانات صوتية</string>
-    <string name="tools_voiceNote">بصوت النطق في هاتفك، ما دامت الشاشة مفتوحة.</string>
+    <string name="tools_voiceNote">بصوت النطق في هاتفك؛ لا حاجة إلى الإنترنت.</string>
     <string name="countdowns_heading">عدّاتي التنازلية</string>
     <string name="countdowns_empty">لا توجد عدّات تنازلية بعد. اضغط + لإضافة عيد ميلاد أو عطلة أو امتحان…</string>
     <string name="countdowns_add">إضافة عدّ تنازلي</string>
@@ -787,5 +787,6 @@
     <string name="features_prayer_note">أوقات الصلاة والإشعارات وإمساكية رمضان</string>
     <string name="features_tools_note">المنبّه والمؤقّت وساعة الإيقاف والبومودورو وحاسبة التاريخ</string>
     <string name="features_hint">فعّل الطقس والتقويم وأوقات الصلاة والمزيد</string>
+    <string name="hiit_channel">تمرين الفترات</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

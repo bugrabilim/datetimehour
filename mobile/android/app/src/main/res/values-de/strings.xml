@@ -736,14 +736,14 @@
     <string name="hiit_round">Runde %1$s/%2$s</string>
     <string name="hiit_total">Gesamtdauer: %1$s</string>
     <string name="hiit_done">Training beendet</string>
-    <string name="hiit_note">Während des Trainings bleibt der Bildschirm an. Verlassen Sie die App, werden Wechsel nicht angesagt; nur am Ende klingelt ein Alarm.</string>
+    <string name="hiit_note">Phasenwechsel und die letzten 3 Sekunden werden auch bei gesperrtem Bildschirm oder in einer anderen App angesagt, am Ende klingelt ein Alarm. Läuft Musik, erklingen die Ansagen darüber.</string>
     <string name="hiit_say_warmup">Aufwärmen</string>
     <string name="hiit_say_work">Los</string>
     <string name="hiit_say_rest">Pause</string>
     <string name="hiit_say_last">Letzte Runde</string>
     <string name="hiit_say_done">Fertig, gut gemacht!</string>
     <string name="tools_voice">Sprachansagen</string>
-    <string name="tools_voiceNote">Mit der Sprachausgabe des Telefons, solange der Bildschirm offen ist.</string>
+    <string name="tools_voiceNote">Mit der Sprachausgabe des Telefons; kein Internet nötig.</string>
     <string name="countdowns_heading">Meine Countdowns</string>
     <string name="countdowns_empty">Noch keine Countdowns. Tippen Sie auf +, um Geburtstag, Urlaub, Prüfung … hinzuzufügen.</string>
     <string name="countdowns_add">Countdown hinzufügen</string>
@@ -787,5 +787,6 @@
     <string name="features_prayer_note">Gebetszeiten, Benachrichtigungen und Ramadan-Kalender</string>
     <string name="features_tools_note">Wecker, Timer, Stoppuhr, Pomodoro, Datumsrechner</string>
     <string name="features_hint">Wetter, Kalender, Gebetszeiten und mehr einschalten</string>
+    <string name="hiit_channel">Intervalltraining</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

@@ -736,14 +736,14 @@
     <string name="hiit_round">Round %1$s/%2$s</string>
     <string name="hiit_total">Total time: %1$s</string>
     <string name="hiit_done">Workout complete</string>
-    <string name="hiit_note">The screen stays on during the workout. If you leave the app, phase changes are not announced; only the end rings an alarm.</string>
+    <string name="hiit_note">Phase changes and the last 3 seconds are announced even with the screen locked or while you use another app, and an alarm rings at the end. If music is playing, the announcements play over it.</string>
     <string name="hiit_say_warmup">Warm up</string>
     <string name="hiit_say_work">Work</string>
     <string name="hiit_say_rest">Rest</string>
     <string name="hiit_say_last">Last round</string>
     <string name="hiit_say_done">Done, well done!</string>
     <string name="tools_voice">Voice announcements</string>
-    <string name="tools_voiceNote">In your phone\'s own speech voice, while the screen is open.</string>
+    <string name="tools_voiceNote">In your phone\'s own speech voice; no internet needed.</string>
     <string name="countdowns_heading">My countdowns</string>
     <string name="countdowns_empty">No countdowns yet. Tap + to add a birthday, holiday, exam…</string>
     <string name="countdowns_add">Add countdown</string>
@@ -787,5 +787,6 @@
     <string name="features_prayer_note">Prayer times, notifications and the Ramadan timetable</string>
     <string name="features_tools_note">Alarm, timer, stopwatch, pomodoro, date calculator</string>
     <string name="features_hint">Turn on weather, calendar, prayer times and more</string>
+    <string name="hiit_channel">Interval workout</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

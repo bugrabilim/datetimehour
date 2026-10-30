@@ -25732,31 +25732,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Antrenman sürerken ekran açık kalır. Uygulamadan çıkarsanız geçişler duyurulmaz, yalnız bitişte alarm çalar."
+            "value": "Ekran kilitliyken ya da başka bir uygulamadayken de evre geçişleri ve son 3 saniye sesli duyurulur, bitişte alarm çalar. Müzik çalıyorsa duyurular müziğin üstüne söylenir."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The screen stays on during the workout. If you leave the app, phase changes are not announced; only the end rings an alarm."
+            "value": "Phase changes and the last 3 seconds are announced even with the screen locked or while you use another app, and an alarm rings at the end. If music is playing, the announcements play over it."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Während des Trainings bleibt der Bildschirm an. Verlassen Sie die App, werden Wechsel nicht angesagt; nur am Ende klingelt ein Alarm."
+            "value": "Phasenwechsel und die letzten 3 Sekunden werden auch bei gesperrtem Bildschirm oder in einer anderen App angesagt, am Ende klingelt ein Alarm. Läuft Musik, erklingen die Ansagen darüber."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Məşq zamanı ekran açıq qalır. Tətbiqdən çıxsanız keçidlər elan edilmir, yalnız sonda zəng çalır."
+            "value": "Ekran kilidli olanda və ya başqa tətbiqdə olanda da mərhələ keçidləri və son 3 saniyə səsli elan edilir, sonda zəng çalır. Musiqi çalırsa, elanlar musiqinin üstündən səslənir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تبقى الشاشة مضاءة أثناء التمرين. إذا غادرت التطبيق فلن يُعلن عن الانتقالات، ويرن المنبه عند النهاية فقط."
+            "value": "يُعلَن عن تغيّر المراحل والثواني الثلاث الأخيرة حتى مع قفل الشاشة أو أثناء استخدام تطبيق آخر، ويرن المنبّه عند النهاية. إذا كانت الموسيقى تعمل فستُسمع الإعلانات فوقها."
           }
         }
       }
@@ -25977,31 +25977,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Telefonun kendi konuşma sesiyle; ekran açıkken."
+            "value": "Telefonun kendi konuşma sesiyle; internet gerekmez."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "In your phone's own speech voice, while the screen is open."
+            "value": "In your phone's own speech voice; no internet needed."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mit der Sprachausgabe des Telefons, solange der Bildschirm offen ist."
+            "value": "Mit der Sprachausgabe des Telefons; kein Internet nötig."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Telefonun öz danışıq səsi ilə; ekran açıq olarkən."
+            "value": "Telefonun öz danışıq səsi ilə; internet lazım deyil."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "بصوت النطق في هاتفك، ما دامت الشاشة مفتوحة."
+            "value": "بصوت النطق في هاتفك؛ لا حاجة إلى الإنترنت."
           }
         }
       }
@@ -27507,6 +27507,41 @@
           "stringUnit": {
             "state": "translated",
             "value": "فعّل الطقس والتقويم وأوقات الصلاة والمزيد"
+          }
+        }
+      }
+    },
+    "hiit.channel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aralık antrenmanı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interval workout"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intervalltraining"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İnterval məşqi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تمرين الفترات"
           }
         }
       }

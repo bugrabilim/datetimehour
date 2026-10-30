@@ -175,7 +175,8 @@ struct StopwatchView: View {
 // MARK: Zamanlayıcı ve tarihe geri sayım
 
 struct TimerView: View {
-    @State private var mode = 0
+    /// Aralık antrenmanı sürüyorsa o sekme açılır
+    @State private var mode = UserDefaults.standard.double(forKey: "hiit.start") > 0 ? 1 : 0
     var body: some View {
         VStack(spacing: 0) {
             Picker("", selection: $mode) {

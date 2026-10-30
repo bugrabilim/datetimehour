@@ -60,7 +60,8 @@ import java.util.UUID
 /**
  * Birden çok adlı zamanlayıcı ve aralık (HIIT) antrenmanı (30 Ekim 2026, rakip analizi #12), iOS'taki Intervals.swift ile
  * aynı kayıtlar: "timers" (JSON) ve "hiit.cfg" / "hiit.start" / "hiit.paused". Sesli duyuru telefonun metin okuma
- * motoruyla (dosya ya da internet yok); yalnız ekran açıkken. Bitişte her zamanlayıcı kendi alarmını çalar.
+ * motoruyla (dosya ya da internet yok). Aralık antrenmanının duyuruları HiitService'te (ekran kapalıyken de);
+ * zamanlayıcının adı ekran açıkken söylenir. Bitişte her zamanlayıcı kendi alarmını çalar.
  */
 data class TimerItem(
     val id: String = UUID.randomUUID().toString(),
@@ -132,6 +133,26 @@ data class HiitConfig(val warmup: Int = 10, val work: Int = 30, val rest: Int = 
         return Phase("done", rounds, 0, rounds * 2 + 1)
     }
 
+    /** Söylenecek: evre değişince (ya da ilk bakışta) evrenin adı, evre içinde son 3 saniyede sayı; yoksa null */
+    fun cue(last: Phase?, p: Phase): String? = when {
+        last == null || p.index != last.index -> word(p)
+        p.kind != "done" && p.left in 1..3 && p.left != last.left -> p.left.toString()
+        else -> null
+    }
+
+    /** Evrenin sesli adı: "Isın", "Çalış" (son turda "Son tur. Çalış"), "Dinlen", "Bitti" */
+    fun word(p: Phase): String = when (p.kind) {
+        "warmup" -> L("hiit.say.warmup")
+        "work" -> if (p.round == rounds && rounds > 1) L("hiit.say.last") + ". " + L("hiit.say.work") else L("hiit.say.work")
+        "rest" -> L("hiit.say.rest")
+        else -> L("hiit.say.done")
+    }
+
+    /** Ekrandaki ad */
+    fun title(p: Phase): String = when (p.kind) {
+        "warmup" -> L("hiit.warmup"); "work" -> L("hiit.work"); "rest" -> L("hiit.rest"); else -> L("hiit.done")
+    }
+
     companion object {
         fun load(): HiitConfig = runCatching {
             val p = Prefs.store.getString("hiit.cfg", "")!!.split(",").map { it.toInt() }
@@ -146,16 +167,19 @@ object Speaker {
     private var ready = false
     val on: Boolean get() = Prefs.store.getBoolean("tools.voice", true)
 
+    /** Uygulamanın diline göre ses (Azericede Türkçe) */
+    fun locale(): Locale = when (Strings.lang) {
+        "en" -> Locale.US
+        "de" -> Locale.GERMANY
+        "ar" -> Locale.forLanguageTag("ar-SA")
+        else -> Locale.forLanguageTag("tr-TR")
+    }
+
     fun prepare(c: Context) {
         if (tts != null) return
         tts = TextToSpeech(c.applicationContext) { status ->
             ready = status == TextToSpeech.SUCCESS
-            if (ready) tts?.language = when (Strings.lang) {
-                "en" -> Locale.US
-                "de" -> Locale.GERMANY
-                "ar" -> Locale.forLanguageTag("ar-SA")
-                else -> Locale.forLanguageTag("tr-TR")
-            }
+            if (ready) tts?.language = locale()
         }
     }
 
@@ -305,7 +329,6 @@ private fun RowLine() = Box(Modifier.fillMaxWidth().height(1.dp).background(Them
 fun HiitScreen() {
     val context = LocalContext.current
     val ask = rememberNotifyAsk()
-    SpeakerLifecycle()
     var cfg by remember { mutableStateOf(HiitConfig.load()) }
     // Başlangıç anı (ms; duraklatılan süre kadar ileri kayar) ve duraklatıldığı an (0 = sürüyor)
     var start by remember { mutableLongStateOf(Prefs.store.getLong("hiit.start", 0L)) }
@@ -321,35 +344,20 @@ fun HiitScreen() {
         onDispose { view.keepScreenOn = false }
     }
 
+    // Durum kaydedilince hizmet başlar ya da durur (sesli duyurular ve bildirim hizmette, ekran kapalıyken de)
     fun saveState(s: Long, p: Long) {
         start = s; paused = p
         Prefs.store.edit().putLong("hiit.start", s).putLong("hiit.paused", p).apply()
+        HiitService.sync(context)
     }
     fun scheduleEnd(from: Long) {
         AlarmScheduler.schedule(context, "hiit", from + cfg.totalSeconds * 1000L, L("hiit.done"), AlarmScheduler.TIMER)
     }
-    fun phaseWord(p: HiitConfig.Phase) = when (p.kind) {
-        "warmup" -> L("hiit.say.warmup")
-        "work" -> if (p.round == cfg.rounds && cfg.rounds > 1) L("hiit.say.last") + ". " + L("hiit.say.work") else L("hiit.say.work")
-        "rest" -> L("hiit.say.rest")
-        else -> L("hiit.say.done")
-    }
 
-    // Evre değişince ve son 3 saniyede sesli duyuru
-    var lastIndex by remember { mutableIntStateOf(-1) }
-    var lastCount by remember { mutableIntStateOf(-1) }
     LaunchedEffect(start, paused) {
         while (start > 0 && paused == 0L) {
             now = System.currentTimeMillis()
-            val p = cfg.phase(((now - start) / 1000).toInt())
-            if (p.index != lastIndex) {
-                if (lastIndex >= 0 || p.index == 0) Speaker.say(phaseWord(p))
-                lastIndex = p.index
-            } else if (p.kind != "done" && p.left in 1..3 && p.left != lastCount) {
-                Speaker.say(p.left.toString())
-            }
-            lastCount = p.left
-            if (p.kind == "done") break
+            if (cfg.phase(((now - start) / 1000).toInt()).kind == "done") break
             delay(200)
         }
     }
@@ -371,17 +379,13 @@ fun HiitScreen() {
                 ask()
                 Prefs.store.edit().putString("hiit.cfg", cfg.toString()).apply()
                 val s = System.currentTimeMillis()
-                lastIndex = -1
                 saveState(s, 0)
                 scheduleEnd(s)
             }
         } else {
             val color = when (phase.kind) { "work" -> Theme.c.accent; "rest" -> Color(0xFF2E7D32); else -> Theme.c.muted }
             Spacer(Modifier.height(10.dp))
-            Text(
-                when (phase.kind) { "warmup" -> L("hiit.warmup"); "work" -> L("hiit.work"); "rest" -> L("hiit.rest"); else -> L("hiit.done") },
-                color = color, fontSize = 28.sp, fontWeight = FontWeight.Bold,
-            )
+            Text(cfg.title(phase), color = color, fontSize = 28.sp, fontWeight = FontWeight.Bold)
             if (phase.kind != "done") BigTime(clock(phase.left.toLong()))
             if (phase.kind == "work" || phase.kind == "rest") Text(T("hiit.round", phase.round, cfg.rounds), color = Theme.c.text, fontSize = 17.sp)
             // Antrenmanın ilerlemesi

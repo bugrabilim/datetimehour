@@ -62,7 +62,8 @@ import java.time.temporal.ChronoUnit
 /** Zamanlayıcılar (birden çok, adlı), aralık (HIIT) antrenmanı ve tarihe geri sayım (iOS'taki TimerView) */
 @Composable
 fun TimerScreen() {
-    var mode by rememberSaveable { mutableIntStateOf(0) }
+    // Aralık antrenmanı sürüyorsa (bildirimden açılınca da) o sekme açılır
+    var mode by rememberSaveable { mutableIntStateOf(if (ToolState.long("hiit.start") > 0) 1 else 0) }
     Column(Modifier.fillMaxSize()) {
         val tabs = listOf(L("tools.countdown.tabTimer"), L("hiit.tab"), L("tools.countdown.tabDate"))
         SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth().padding(16.dp)) {

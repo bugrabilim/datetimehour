@@ -27,6 +27,8 @@ struct SaatTarihApp: App {
                     await PrayerNotifier.reschedule()
                     await AlarmCenter.refreshSkips()
                 }
+                // Aralık antrenmanı sürüyorsa sesli duyurular (uygulama yeniden açılmış olabilir)
+                HiitRunner.shared.sync()
             } else if phase == .background {
                 BackgroundRefresh.schedule()
             }

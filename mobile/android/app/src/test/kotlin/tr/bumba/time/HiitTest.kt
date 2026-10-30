@@ -19,3 +19,31 @@ class HiitTest {
         assertEquals("work", HiitConfig(warmup = 0, work = 20, rest = 10, rounds = 2).phase(0).kind)
     }
 }
+
+/** Sesli duyurular: evre değişince adı, son 3 saniyede sayı (her saniye bir kez); sürdürünce o anki evre */
+@org.junit.runner.RunWith(org.robolectric.RobolectricTestRunner::class)
+@org.robolectric.annotation.Config(sdk = [35])
+class HiitCueTest {
+    @Test fun cues() {
+        val c = HiitConfig(warmup = 4, work = 5, rest = 4, rounds = 2)
+        var last: HiitConfig.Phase? = null
+        val said = mutableListOf<String>()
+        // Saniyede beş bakış (hizmetteki gibi 200 ms)
+        for (tenth in 0..c.totalSeconds * 5) {
+            val p = c.phase(tenth / 5)
+            c.cue(last, p)?.let { said += it }
+            last = p
+        }
+        val work = L("hiit.say.work")
+        val expected = listOf(
+            L("hiit.say.warmup"), "3", "2", "1",
+            work, "3", "2", "1",
+            L("hiit.say.rest"), "3", "2", "1",
+            L("hiit.say.last") + ". " + work, "3", "2", "1",
+            L("hiit.say.done"),
+        )
+        assertEquals(expected, said)
+        // Duraklatıp sürdürünce (last = null) o anki evre yeniden söylenir
+        assertEquals(work, c.cue(null, c.phase(6)))
+    }
+}

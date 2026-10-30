@@ -4,7 +4,8 @@ import UIKit
 
 /* Birden çok adlı zamanlayıcı ve aralık (HIIT) antrenmanı (30 Ekim 2026, rakip analizi #12); Android'deki Intervals.kt ile
    aynı kayıtlar: "timers" (JSON, zamanlar Unix ms) ve "hiit.cfg" / "hiit.start" / "hiit.paused". Sesli duyuru iPhone'un
-   konuşma sesiyle (dosya ya da internet yok), yalnız ekran açıkken. Bitişte her zamanlayıcı kendi alarmını çalar. */
+   konuşma sesiyle (dosya ya da internet yok). Aralık antrenmanının duyuruları HiitRunner'da (ekran kilitliyken de);
+   zamanlayıcının adı ekran açıkken söylenir. Bitişte her zamanlayıcı kendi alarmını çalar. */
 
 struct TimerItem: Codable, Identifiable, Equatable {
     var id = UUID().uuidString
@@ -66,6 +67,33 @@ struct HiitConfig: Equatable {
         return Phase(kind: "done", round: rounds, left: 0, index: rounds * 2 + 1)
     }
 
+    /// Söylenecek: evre değişince (ya da ilk bakışta) evrenin adı, evre içinde son 3 saniyede sayı; yoksa nil
+    func cue(last: Phase?, _ p: Phase) -> String? {
+        guard let last, p.index == last.index else { return word(p) }
+        if p.kind != "done", (1...3).contains(p.left), p.left != last.left { return "\(p.left)" }
+        return nil
+    }
+
+    /// Evrenin sesli adı: "Isın", "Çalış" (son turda "Son tur. Çalış"), "Dinlen", "Bitti"
+    func word(_ p: Phase) -> String {
+        switch p.kind {
+        case "warmup": L("hiit.say.warmup")
+        case "work": p.round == rounds && rounds > 1 ? L("hiit.say.last") + ". " + L("hiit.say.work") : L("hiit.say.work")
+        case "rest": L("hiit.say.rest")
+        default: L("hiit.say.done")
+        }
+    }
+
+    /// Ekrandaki ad
+    func title(_ p: Phase) -> String {
+        switch p.kind {
+        case "warmup": L("hiit.warmup")
+        case "work": L("hiit.work")
+        case "rest": L("hiit.rest")
+        default: L("hiit.done")
+        }
+    }
+
     static func load() -> HiitConfig {
         let p = (UserDefaults.standard.string(forKey: "hiit.cfg") ?? "").split(separator: ",").compactMap { Int($0) }
         guard p.count == 4 else { return HiitConfig() }
@@ -87,6 +115,124 @@ enum Speaker {
         let u = AVSpeechUtterance(string: text)
         u.voice = NotificationSounds.bestVoice
         synth.speak(u)
+    }
+}
+
+/// Aralık antrenmanı arka planda (30 Ekim 2026, sahibin isteği: "uygulama kapalıyken de çalışması şart"): antrenman
+/// sürerken ses oturumu açık tutulur (arka plan ses modu, Info.plist UIBackgroundModes: audio; sessiz bir ses döngüsü
+/// çalar), böylece ekran kilitliyken ya da başka uygulamadayken de evre geçişleri ve son 3 saniye telefonun sesiyle
+/// söylenir. Müzik çalıyorsa duyurular üstüne söylenir (mixWithOthers; müzik kısılmaz). Durum hiit.start / hiit.paused /
+/// hiit.cfg kayıtlarıdır; duraklatınca, sıfırlayınca ya da bitince ses oturumu kapanır. Bitişte ayrıca alarm çalar
+/// (AlarmKit). Uygulama kaydırılarak kapatılırsa iOS onu çalıştırmaz; o zaman yalnız bitiş alarmı çalar.
+@MainActor
+final class HiitRunner {
+    static let shared = HiitRunner()
+    private let engine = AVAudioEngine()
+    private let player = AVAudioPlayerNode()
+    private let synth = AVSpeechSynthesizer()
+    private var timer: Timer?
+    private var last: HiitConfig.Phase?
+    private var observers: [NSObjectProtocol] = []
+
+    private var start: Double { UserDefaults.standard.double(forKey: "hiit.start") }
+    private var paused: Double { UserDefaults.standard.double(forKey: "hiit.paused") }
+    private var elapsed: Int { Int((Date().timeIntervalSince1970 * 1000 - start) / 1000) }
+
+    private init() {
+        engine.attach(player)
+        // Telefon görüşmesi ya da kulaklık değişince ses motoru durur: antrenman sürüyorsa yeniden başlatılır
+        let center = NotificationCenter.default
+        observers.append(center.addObserver(forName: AVAudioSession.interruptionNotification, object: nil, queue: .main) { note in
+            let ended = (note.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt) == AVAudioSession.InterruptionType.ended.rawValue
+            if ended { MainActor.assumeIsolated { HiitRunner.shared.restartAudio() } }
+        })
+        observers.append(center.addObserver(forName: .AVAudioEngineConfigurationChange, object: engine, queue: .main) { _ in
+            MainActor.assumeIsolated { HiitRunner.shared.restartAudio() }
+        })
+    }
+
+    /// Antrenman sürüyorsa duyuruları başlatır, sürmüyorsa durdurur (ekrandaki düğmelerden ve uygulama öne gelince)
+    func sync() {
+        let running = start > 0 && paused == 0 && HiitConfig.load().phase(elapsed).kind != "done"
+        if running { begin() } else { end() }
+    }
+
+    private func begin() {
+        guard timer == nil else { return }
+        last = nil // sürdürünce o anki evre yeniden söylenir
+        startAudio()
+        let t = Timer(timeInterval: 0.2, repeats: true) { _ in
+            MainActor.assumeIsolated { HiitRunner.shared.tick() }
+        }
+        RunLoop.main.add(t, forMode: .common)
+        timer = t
+        tick()
+    }
+
+    private func end() {
+        timer?.invalidate()
+        timer = nil
+        last = nil
+        synth.stopSpeaking(at: .immediate)
+        stopAudio()
+    }
+
+    private func tick() {
+        guard start > 0, paused == 0 else { end(); return }
+        let cfg = HiitConfig.load()
+        let p = cfg.phase(elapsed)
+        if let text = cfg.cue(last: last, p) { say(text) }
+        last = p
+        guard p.kind == "done" else { return }
+        // "Bitti" söylensin, sonra ses oturumu kapanır (bitiş alarmı ayrıca çalar)
+        timer?.invalidate()
+        timer = nil
+        Task {
+            try? await Task.sleep(for: .seconds(4))
+            if timer == nil { stopAudio() }
+        }
+    }
+
+    private func say(_ text: String) {
+        guard Speaker.on else { return }
+        synth.stopSpeaking(at: .immediate)
+        let u = AVSpeechUtterance(string: text)
+        u.voice = NotificationSounds.bestVoice
+        synth.speak(u)
+    }
+
+    /// Sessiz döngü: ses oturumu açık kalsın, uygulama arka planda askıya alınmasın
+    private func startAudio() {
+        let session = AVAudioSession.sharedInstance()
+        try? session.setCategory(.playback, mode: .default, options: [.mixWithOthers])
+        try? session.setActive(true)
+        guard !engine.isRunning,
+              let format = AVAudioFormat(standardFormatWithSampleRate: 22050, channels: 1),
+              let silence = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: 22050) else { return }
+        silence.frameLength = silence.frameCapacity
+        if let data = silence.floatChannelData { data[0].update(repeating: 0, count: Int(silence.frameLength)) }
+        engine.connect(player, to: engine.mainMixerNode, format: format)
+        player.scheduleBuffer(silence, at: nil, options: .loops)
+        engine.prepare()
+        do {
+            try engine.start()
+            player.play()
+        } catch {
+            // Ses motoru açılamazsa duyurular yine ekran açıkken çalışır
+        }
+    }
+
+    private func restartAudio() {
+        guard timer != nil else { return }
+        player.stop()
+        engine.stop()
+        startAudio()
+    }
+
+    private func stopAudio() {
+        player.stop()
+        engine.stop()
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }
 
@@ -257,8 +403,6 @@ struct HiitView: View {
     @AppStorage("hiit.start") private var start = 0.0
     @AppStorage("hiit.paused") private var paused = 0.0
     @AppStorage("hiit.alarm") private var alarmID = ""
-    @State private var lastIndex = -1
-    @State private var lastCount = -1
 
     private var active: Bool { start > 0 }
 
@@ -275,11 +419,14 @@ struct HiitView: View {
                 }
                 .padding(16)
             }
-            .onChange(of: phase) { announce(phase) }
         }
         .onAppear { UIApplication.shared.isIdleTimerDisabled = active && paused == 0 }
         .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
-        .onChange(of: [start, paused]) { UIApplication.shared.isIdleTimerDisabled = active && paused == 0 }
+        .onChange(of: [start, paused]) {
+            UIApplication.shared.isIdleTimerDisabled = active && paused == 0
+            // Sesli duyurular HiitRunner'da (ekran kilitliyken de)
+            HiitRunner.shared.sync()
+        }
     }
 
     private var settings: some View {
@@ -296,19 +443,16 @@ struct HiitView: View {
             .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
             RoundButton(title: L("tools.countdown.start"), prominent: true) {
                 UserDefaults.standard.set(cfg.raw, forKey: "hiit.cfg")
-                lastIndex = -1
                 start = Date().timeIntervalSince1970 * 1000
                 paused = 0
                 scheduleEnd()
-                Speaker.say(phaseWord(cfg.phase(0)))
-                lastIndex = cfg.phase(0).index
             }
         }
     }
 
     @ViewBuilder private func running(_ phase: HiitConfig.Phase, elapsed: Int) -> some View {
         let color: Color = phase.kind == "work" ? Theme.accent : phase.kind == "rest" ? .green : Theme.muted
-        Text(phase.kind == "warmup" ? L("hiit.warmup") : phase.kind == "work" ? L("hiit.work") : phase.kind == "rest" ? L("hiit.rest") : L("hiit.done"))
+        Text(cfg.title(phase))
             .font(.largeTitle.bold())
             .foregroundStyle(color)
             .padding(.top, 10)
@@ -351,28 +495,8 @@ struct HiitView: View {
         }
     }
 
-    private func phaseWord(_ p: HiitConfig.Phase) -> String {
-        switch p.kind {
-        case "warmup": L("hiit.say.warmup")
-        case "work": p.round == cfg.rounds && cfg.rounds > 1 ? L("hiit.say.last") + ". " + L("hiit.say.work") : L("hiit.say.work")
-        case "rest": L("hiit.say.rest")
-        default: L("hiit.say.done")
-        }
-    }
-
-    /// Evre değişince adı, son 3 saniyede sayı söylenir (yalnız sürerken)
-    private func announce(_ p: HiitConfig.Phase) {
-        guard active, paused == 0 else { return }
-        if p.index != lastIndex {
-            if lastIndex >= 0 { Speaker.say(phaseWord(p)) }
-            lastIndex = p.index
-        } else if p.kind != "done", (1...3).contains(p.left), p.left != lastCount {
-            Speaker.say("\(p.left)")
-        }
-        lastCount = p.left
-    }
-
-    private func scheduleEnd() {
+        Text(cfg.title(phase))
+            .font(.largeTitle.bold())    private func scheduleEnd() {
         let id = UUID()
         alarmID = id.uuidString
         let at = Date(timeIntervalSince1970: start / 1000 + Double(cfg.totalSeconds))

@@ -2094,11 +2094,11 @@
     "ar": "انتهى التمرين"
   },
   "hiit.note": {
-    "tr": "Antrenman sürerken ekran açık kalır. Uygulamadan çıkarsanız geçişler duyurulmaz, yalnız bitişte alarm çalar.",
-    "en": "The screen stays on during the workout. If you leave the app, phase changes are not announced; only the end rings an alarm.",
-    "de": "Während des Trainings bleibt der Bildschirm an. Verlassen Sie die App, werden Wechsel nicht angesagt; nur am Ende klingelt ein Alarm.",
-    "az": "Məşq zamanı ekran açıq qalır. Tətbiqdən çıxsanız keçidlər elan edilmir, yalnız sonda zəng çalır.",
-    "ar": "تبقى الشاشة مضاءة أثناء التمرين. إذا غادرت التطبيق فلن يُعلن عن الانتقالات، ويرن المنبه عند النهاية فقط."
+    "tr": "Ekran kilitliyken ya da başka bir uygulamadayken de evre geçişleri ve son 3 saniye sesli duyurulur, bitişte alarm çalar. Müzik çalıyorsa duyurular müziğin üstüne söylenir.",
+    "en": "Phase changes and the last 3 seconds are announced even with the screen locked or while you use another app, and an alarm rings at the end. If music is playing, the announcements play over it.",
+    "de": "Phasenwechsel und die letzten 3 Sekunden werden auch bei gesperrtem Bildschirm oder in einer anderen App angesagt, am Ende klingelt ein Alarm. Läuft Musik, erklingen die Ansagen darüber.",
+    "az": "Ekran kilidli olanda və ya başqa tətbiqdə olanda da mərhələ keçidləri və son 3 saniyə səsli elan edilir, sonda zəng çalır. Musiqi çalırsa, elanlar musiqinin üstündən səslənir.",
+    "ar": "يُعلَن عن تغيّر المراحل والثواني الثلاث الأخيرة حتى مع قفل الشاشة أو أثناء استخدام تطبيق آخر، ويرن المنبّه عند النهاية. إذا كانت الموسيقى تعمل فستُسمع الإعلانات فوقها."
   },
   "hiit.say.warmup": {
     "tr": "Isınma",
@@ -2143,11 +2143,11 @@
     "ar": "إعلانات صوتية"
   },
   "tools.voiceNote": {
-    "tr": "Telefonun kendi konuşma sesiyle; ekran açıkken.",
-    "en": "In your phone's own speech voice, while the screen is open.",
-    "de": "Mit der Sprachausgabe des Telefons, solange der Bildschirm offen ist.",
-    "az": "Telefonun öz danışıq səsi ilə; ekran açıq olarkən.",
-    "ar": "بصوت النطق في هاتفك، ما دامت الشاشة مفتوحة."
+    "tr": "Telefonun kendi konuşma sesiyle; internet gerekmez.",
+    "en": "In your phone's own speech voice; no internet needed.",
+    "de": "Mit der Sprachausgabe des Telefons; kein Internet nötig.",
+    "az": "Telefonun öz danışıq səsi ilə; internet lazım deyil.",
+    "ar": "بصوت النطق في هاتفك؛ لا حاجة إلى الإنترنت."
   },
   "countdowns.heading": {
     "tr": "Geri sayımlarım",
@@ -2449,5 +2449,12 @@
     "de": "Wetter, Kalender, Gebetszeiten und mehr einschalten",
     "az": "Hava, təqvim, namaz vaxtları və digər xüsusiyyətləri aç",
     "ar": "فعّل الطقس والتقويم وأوقات الصلاة والمزيد"
+  },
+  "hiit.channel": {
+    "tr": "Aralık antrenmanı",
+    "en": "Interval workout",
+    "de": "Intervalltraining",
+    "az": "İnterval məşqi",
+    "ar": "تمرين الفترات"
   }
 }

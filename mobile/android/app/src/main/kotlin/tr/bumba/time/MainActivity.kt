@@ -63,6 +63,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         // Ekran görüntüsü için: adb shell am start … --ei startTab 4
         val start = intent.getIntExtra("startTab", -1)
+        intent.getStringExtra("tool")?.let { Nav.toolsRoute = it }
         setContent {
             AppTheme { Root(start) }
         }
@@ -71,13 +72,15 @@ class MainActivity : ComponentActivity() {
     /** Widget'tan ya da bildirimden açılınca istenen sekme */
     override fun onNewIntent(intent: android.content.Intent) {
         super.onNewIntent(intent)
-        Tab.entries.getOrNull(intent.getIntExtra("startTab", -1))?.let { Nav.tab = it; Nav.toolsRoute = null }
+        Tab.entries.getOrNull(intent.getIntExtra("startTab", -1))?.let { Nav.tab = it; Nav.toolsRoute = intent.getStringExtra("tool") }
     }
 
     /** Uygulama öne gelince rozetlerin gün serisi (yalnız son gün ve gün sayısı) */
     override fun onResume() {
         super.onResume()
         BadgeStore.appOpened()
+        // Aralık antrenmanı sürüyorsa sesli duyuru hizmeti çalışsın (uygulama zorla kapatılmış olabilir)
+        HiitService.sync(this)
     }
 
     /** Uygulamadan çıkarken widget'lar güncel konum ve dille yeniden çizilir */
@@ -122,7 +125,8 @@ object Nav {
 @Composable
 fun Root(start: Int) {
     // Ekran görüntüsü ya da bildirimden: istenen sekmede açılır
-    remember(start) { Tab.entries.getOrNull(start)?.let { Nav.tab = it; Nav.toolsRoute = null } }
+    // (Araçlar'da bildirimden gelen sayfa, ör. aralık antrenmanı, onCreate'te Nav.toolsRoute'a yazılmıştır)
+    remember(start) { Tab.entries.getOrNull(start)?.let { Nav.tab = it; if (it != Tab.TOOLS) Nav.toolsRoute = null } }
     val tab = Nav.tab
     val toolsRoute = Nav.toolsRoute
     var fullscreen by rememberSaveable { mutableStateOf(false) }
