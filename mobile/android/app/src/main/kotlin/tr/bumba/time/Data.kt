@@ -107,6 +107,8 @@ object AppData {
                  o.getJSONObject("name").toMap(), o.getJSONObject("country").toMap())
         }
 
+        Hijri.load(read("hijri.json"))
+
         val cal = JSONObject(read("calendar.json"))
         val years = cal.getJSONObject("years")
         val byDay = HashMap<LocalDate, MutableList<CalEvent>>()

@@ -554,6 +554,7 @@
     <string name="home_edit">Redaktə et</string>
     <string name="home_item_date">Tarix</string>
     <string name="home_item_week">Həftə və ilin günü</string>
+    <string name="home_item_hijri">Hicri tarix</string>
     <string name="home_item_next">Növbəti vaxt</string>
     <string name="home_item_prayers">Bugünkü vaxtlar</string>
     <string name="home_item_upcoming">Yaxınlaşan xüsusi gün</string>
@@ -857,5 +858,22 @@
     <string name="qibla_km">%1$s km</string>
     <string name="qibla_m">%1$s m</string>
     <string name="qibla_cardinals">Ş Ş C Q</string>
+    <string name="hijri_title">Hicri tarix</string>
+    <string name="hijri_fmt">%1$s %2$s %3$s</string>
+    <string name="hijri_note">Hicri tarix Türkiyə Diyanətinin təqviminə görədir; başqa ölkələrdə ay bir gün tez və ya gec başlaya bilər. Gün axşam deyil, gecə yarısı dəyişir.</string>
+    <string name="widget_hijri_name">Hicri tarix</string>
+    <string name="widget_hijri_desc">Bugünün hicri tarixi (Diyanət təqvimi) və miladi tarix.</string>
+    <string name="hijri_month_1">Məhərrəm</string>
+    <string name="hijri_month_2">Səfər</string>
+    <string name="hijri_month_3">Rəbiüləvvəl</string>
+    <string name="hijri_month_4">Rəbiülaxır</string>
+    <string name="hijri_month_5">Cəmadiyələvvəl</string>
+    <string name="hijri_month_6">Cəmadiyəlaxır</string>
+    <string name="hijri_month_7">Rəcəb</string>
+    <string name="hijri_month_8">Şaban</string>
+    <string name="hijri_month_9">Ramazan</string>
+    <string name="hijri_month_10">Şəvval</string>
+    <string name="hijri_month_11">Zilqədə</string>
+    <string name="hijri_month_12">Zilhiccə</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

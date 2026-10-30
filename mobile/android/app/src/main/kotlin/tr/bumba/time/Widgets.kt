@@ -228,6 +228,21 @@ class MoonWidget : BaseWidget() {
     }
 }
 
+/** Hicri tarih (Diyanet takvimi; gece yarısında yenilenir) ve miladi tarih; tablo dışında yalnız miladi tarih */
+class HijriWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_hijri)
+        val today = LocalDate.now()
+        val h = Hijri.date(today)
+        v.setTextViewText(R.id.day, h?.day?.toString() ?: "–")
+        v.setTextViewText(R.id.month, h?.monthName ?: "")
+        v.setTextViewText(R.id.year, h?.year?.toString() ?: "")
+        v.setTextViewText(R.id.date, Fmt.longDate(today))
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CALENDAR, id))
+        return v
+    }
+}
+
 /** Yenileme yayını: bir sonraki vakitte ya da gece yarısında gelir */
 class WidgetRefreshReceiver : android.content.BroadcastReceiver() {
     override fun onReceive(c: Context, intent: Intent) = WidgetUpdater.updateAll(c)
@@ -237,7 +252,7 @@ object WidgetUpdater {
     private val providers = listOf(
         NextPrayerWidget::class.java, TodayPrayersWidget::class.java, AnalogClockWidget::class.java,
         DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java,
-        SecondsClockWidget::class.java, WorldClockWidget::class.java, CountdownWidget::class.java,
+        SecondsClockWidget::class.java, WorldClockWidget::class.java, CountdownWidget::class.java, HijriWidget::class.java,
     )
 
     fun placeKey(id: Int) = "widget.place.$id"

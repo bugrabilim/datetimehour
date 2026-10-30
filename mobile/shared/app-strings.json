@@ -658,6 +658,13 @@
     "az": "Həftə və ilin günü",
     "ar": "الأسبوع ويوم السنة"
   },
+  "home.item.hijri": {
+    "tr": "Hicri tarih",
+    "en": "Hijri date",
+    "de": "Hidschri-Datum",
+    "az": "Hicri tarix",
+    "ar": "التاريخ الهجري"
+  },
   "home.item.next": {
     "tr": "Sıradaki vakit",
     "en": "Next prayer time",
@@ -2785,5 +2792,124 @@
     "de": "N O S W",
     "az": "Ş Ş C Q",
     "ar": "ش ق ج غ"
+  },
+  "hijri.title": {
+    "tr": "Hicri tarih",
+    "en": "Hijri date",
+    "de": "Hidschri-Datum",
+    "az": "Hicri tarix",
+    "ar": "التاريخ الهجري"
+  },
+  "hijri.fmt": {
+    "tr": "{d} {m} {y}",
+    "en": "{d} {m} {y} AH",
+    "de": "{d}. {m} {y} AH",
+    "az": "{d} {m} {y}",
+    "ar": "{d} {m} {y} هـ"
+  },
+  "hijri.note": {
+    "tr": "Hicri tarih Diyanet takvimine göredir; başka ülkelerde ay başı bir gün farklı olabilir. Gün, akşam değil gece yarısı değişir.",
+    "en": "The Hijri date follows Türkiye's Diyanet calendar; in other countries a month may start a day earlier or later. The day changes at midnight, not at sunset.",
+    "de": "Das Hidschri-Datum folgt dem Kalender des türkischen Diyanet; in anderen Ländern kann ein Monat einen Tag früher oder später beginnen. Der Tag wechselt um Mitternacht, nicht bei Sonnenuntergang.",
+    "az": "Hicri tarix Türkiyə Diyanətinin təqviminə görədir; başqa ölkələrdə ay bir gün tez və ya gec başlaya bilər. Gün axşam deyil, gecə yarısı dəyişir.",
+    "ar": "التاريخ الهجري وفق تقويم رئاسة الشؤون الدينية التركية؛ وقد يبدأ الشهر في بلدان أخرى قبل يوم أو بعده. يتغير اليوم عند منتصف الليل لا عند الغروب."
+  },
+  "widget.hijri.name": {
+    "tr": "Hicri tarih",
+    "en": "Hijri date",
+    "de": "Hidschri-Datum",
+    "az": "Hicri tarix",
+    "ar": "التاريخ الهجري"
+  },
+  "widget.hijri.desc": {
+    "tr": "Bugünün hicri tarihi (Diyanet takvimi) ve miladi tarih.",
+    "en": "Today's Hijri date (Diyanet calendar) and Gregorian date.",
+    "de": "Das heutige Hidschri-Datum (Diyanet-Kalender) und das gregorianische Datum.",
+    "az": "Bugünün hicri tarixi (Diyanət təqvimi) və miladi tarix.",
+    "ar": "التاريخ الهجري لليوم (تقويم الشؤون الدينية التركية) والتاريخ الميلادي."
+  },
+  "hijri.month.1": {
+    "tr": "Muharrem",
+    "en": "Muharram",
+    "de": "Muharram",
+    "az": "Məhərrəm",
+    "ar": "محرم"
+  },
+  "hijri.month.2": {
+    "tr": "Safer",
+    "en": "Safar",
+    "de": "Safar",
+    "az": "Səfər",
+    "ar": "صفر"
+  },
+  "hijri.month.3": {
+    "tr": "Rebiülevvel",
+    "en": "Rabi al-Awwal",
+    "de": "Rabi al-awwal",
+    "az": "Rəbiüləvvəl",
+    "ar": "ربيع الأول"
+  },
+  "hijri.month.4": {
+    "tr": "Rebiülahir",
+    "en": "Rabi al-Thani",
+    "de": "Rabi al-thani",
+    "az": "Rəbiülaxır",
+    "ar": "ربيع الآخر"
+  },
+  "hijri.month.5": {
+    "tr": "Cemaziyelevvel",
+    "en": "Jumada al-Ula",
+    "de": "Dschumada l-ula",
+    "az": "Cəmadiyələvvəl",
+    "ar": "جمادى الأولى"
+  },
+  "hijri.month.6": {
+    "tr": "Cemaziyelahir",
+    "en": "Jumada al-Akhirah",
+    "de": "Dschumada th-thaniya",
+    "az": "Cəmadiyəlaxır",
+    "ar": "جمادى الآخرة"
+  },
+  "hijri.month.7": {
+    "tr": "Recep",
+    "en": "Rajab",
+    "de": "Radschab",
+    "az": "Rəcəb",
+    "ar": "رجب"
+  },
+  "hijri.month.8": {
+    "tr": "Şaban",
+    "en": "Shaban",
+    "de": "Schaban",
+    "az": "Şaban",
+    "ar": "شعبان"
+  },
+  "hijri.month.9": {
+    "tr": "Ramazan",
+    "en": "Ramadan",
+    "de": "Ramadan",
+    "az": "Ramazan",
+    "ar": "رمضان"
+  },
+  "hijri.month.10": {
+    "tr": "Şevval",
+    "en": "Shawwal",
+    "de": "Schawwal",
+    "az": "Şəvval",
+    "ar": "شوال"
+  },
+  "hijri.month.11": {
+    "tr": "Zilkade",
+    "en": "Dhu al-Qadah",
+    "de": "Dhu l-qada",
+    "az": "Zilqədə",
+    "ar": "ذو القعدة"
+  },
+  "hijri.month.12": {
+    "tr": "Zilhicce",
+    "en": "Dhu al-Hijjah",
+    "de": "Dhu l-hiddscha",
+    "az": "Zilhiccə",
+    "ar": "ذو الحجة"
   }
 }

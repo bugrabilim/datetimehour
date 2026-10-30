@@ -554,6 +554,7 @@
     <string name="home_edit">Edit</string>
     <string name="home_item_date">Date</string>
     <string name="home_item_week">Week and day of year</string>
+    <string name="home_item_hijri">Hijri date</string>
     <string name="home_item_next">Next prayer time</string>
     <string name="home_item_prayers">Today\'s prayer times</string>
     <string name="home_item_upcoming">Next special day</string>
@@ -857,5 +858,22 @@
     <string name="qibla_km">%1$s km</string>
     <string name="qibla_m">%1$s m</string>
     <string name="qibla_cardinals">N E S W</string>
+    <string name="hijri_title">Hijri date</string>
+    <string name="hijri_fmt">%1$s %2$s %3$s AH</string>
+    <string name="hijri_note">The Hijri date follows Türkiye\'s Diyanet calendar; in other countries a month may start a day earlier or later. The day changes at midnight, not at sunset.</string>
+    <string name="widget_hijri_name">Hijri date</string>
+    <string name="widget_hijri_desc">Today\'s Hijri date (Diyanet calendar) and Gregorian date.</string>
+    <string name="hijri_month_1">Muharram</string>
+    <string name="hijri_month_2">Safar</string>
+    <string name="hijri_month_3">Rabi al-Awwal</string>
+    <string name="hijri_month_4">Rabi al-Thani</string>
+    <string name="hijri_month_5">Jumada al-Ula</string>
+    <string name="hijri_month_6">Jumada al-Akhirah</string>
+    <string name="hijri_month_7">Rajab</string>
+    <string name="hijri_month_8">Shaban</string>
+    <string name="hijri_month_9">Ramadan</string>
+    <string name="hijri_month_10">Shawwal</string>
+    <string name="hijri_month_11">Dhu al-Qadah</string>
+    <string name="hijri_month_12">Dhu al-Hijjah</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

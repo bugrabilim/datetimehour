@@ -124,6 +124,7 @@ fun CalendarScreen() {
         if (month.year in AppData.projectedYears) {
             Text(L("calendar.projected"), color = Theme.c.muted, fontSize = 12.sp, modifier = Modifier.padding(top = 8.dp))
         }
+        Text(L("hijri.note"), color = Theme.c.muted, fontSize = 12.sp, modifier = Modifier.padding(top = 8.dp))
     }
 }
 
@@ -219,6 +220,8 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
         }
         Text(listOf(rel, T("info.week.big", Fmt.isoWeek(d)), T("calendar.dayOfYear", d.dayOfYear)).joinToString(" · "),
             color = Theme.c.muted, fontSize = 13.sp)
+        // Hicri tarih (Diyanet takvimi)
+        Hijri.date(d)?.let { Text("☾ " + it.text, color = Theme.c.accent, fontSize = 13.sp) }
         for (e in ev.distinctBy { it.key }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.width(4.dp).height(34.dp).background(AppData.color(e.type), RoundedCornerShape(2.dp)))

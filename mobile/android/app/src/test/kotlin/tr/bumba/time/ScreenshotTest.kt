@@ -142,7 +142,7 @@ class ScreenshotTest {
     @Test fun clockWxCard() = shot("tr-saat-hava-kart", Tab.CLOCK, model = 5, weather = true)
     @Test fun clockFlip() = shot("tr-saat-cevirmeli", Tab.CLOCK, model = ClockModel.FLIP.ordinal, dark = true)
     @Test fun clockAllItems() = shot("tr-saat-alanlar", Tab.CLOCK, model = 18, weather = true,
-        items = "date,week,next,prayers,upcoming,world,weather,sun,-globe")
+        items = "date,week,hijri,next,prayers,upcoming,world,weather,sun,-globe")
     @Test fun clockArabic() = shot("ar-saat", Tab.CLOCK, "ar", weather = true)
     // Yan çevrilmiş: saat sekmesi tam ekran açılır; diğer sekmelerde alt bar ve sistem çubukları gizli
     @Test fun landscapeClock() = shot("tr-yatay-saat", Tab.CLOCK, "tr-land")

@@ -2,13 +2,14 @@
    sitede karşılığı olmayan uygulama metinleri mobile/shared/app-strings.json'dadır.
    Çıktılar: iOS String Catalog (Localizable.xcstrings; NS/CF ile başlayan Info.plist anahtarları InfoPlist.xcstrings'e),
    Android metinleri (res/values-…/strings.xml; anahtardaki nokta ve tire "_" olur) ve veri dosyaları
-   (il listesi, şehirler, takvim, dünya yerleri; iOS'ta App/Resources, Android'de assets).
+   (il listesi, şehirler, takvim, hicri ay başları, dünya yerleri; iOS'ta App/Resources, Android'de assets).
    Kullanım: node mobile/shared/gen-strings.mjs          → dosyaları yazar
              node mobile/shared/gen-strings.mjs --check  → güncel değilse hata verir (CI) */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeYear } from "../../lib/events.mjs";
+import { hijriTable } from "../../lib/hijri.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
@@ -139,6 +140,9 @@ for (const y of Object.keys(HOL.years).map(Number).sort((a, b) => a - b)) {
 }
 const calendarJson = JSON.stringify({ years, ramadans: HOL.ramadans }) + "\n";
 
+/* Hicri takvim: Diyanet'e hizalı ay başları (lib/hijri.mjs): [[ay başı, hicri yıl, ay], …]; son satır tablonun sonu */
+const hijriJson = JSON.stringify(hijriTable(HOL, JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri.json"), "utf8")))) + "\n";
+
 /* Dünya saatleri için şehirler: ad ve ülke beş dilde, IANA saat dilimi, koordinat */
 const cities = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/cities.json"), "utf8")).map((c) => ({
   key: c.key, tz: c.tz, lat: c.lat, lon: c.lon,
@@ -166,12 +170,14 @@ const files = {
   "mobile/ios/App/Resources/places.json": placesJson,
   "mobile/ios/App/Resources/eclipses.json": eclipsesJson,
   "mobile/ios/App/Resources/districts.json": districtsJson,
+  "mobile/ios/App/Resources/hijri.json": hijriJson,
   "mobile/android/app/src/main/assets/provinces.json": provincesJson,
   "mobile/android/app/src/main/assets/calendar.json": calendarJson,
   "mobile/android/app/src/main/assets/cities.json": citiesJson,
   "mobile/android/app/src/main/assets/places.json": placesJson,
   "mobile/android/app/src/main/assets/eclipses.json": eclipsesJson,
   "mobile/android/app/src/main/assets/districts.json": districtsJson,
+  "mobile/android/app/src/main/assets/hijri.json": hijriJson,
   "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/app/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l)])),
 };

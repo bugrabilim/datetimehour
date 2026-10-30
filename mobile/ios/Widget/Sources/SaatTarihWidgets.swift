@@ -14,5 +14,6 @@ struct SaatTarihWidgets: WidgetBundle {
         SecondsClockWidget()
         WorldClockWidget()
         CountdownWidget()
+        HijriWidget()
     }
 }

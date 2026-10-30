@@ -62,9 +62,11 @@ targets:
       - path: App/Sources/Schedule.swift
       - path: App/Sources/AnalogClock.swift
       - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
       - path: App/Resources/cities.json
+      - path: App/Resources/hijri.json
     dependencies:
       - package: SaatCore
       - sdk: WidgetKit.framework

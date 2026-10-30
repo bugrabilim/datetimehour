@@ -205,6 +205,12 @@ struct CalendarTab: View {
                         .joined(separator: " · "))
                     .font(.caption)
                     .foregroundStyle(Theme.muted)
+                // Hicri tarih (Diyanet takvimi)
+                if let h = Hijri.date(year: selected.year, month: selected.month, day: selected.day) {
+                    Label(h.text, systemImage: "moon")
+                        .font(.caption)
+                        .foregroundStyle(Theme.accent)
+                }
             }
             .textCase(nil)
             .padding(.vertical, 4)
@@ -222,6 +228,7 @@ struct CalendarTab: View {
                 if let y = data.years[month.year], y.projected {
                     Text(L("calendar.projected")).font(.footnote).foregroundStyle(Theme.muted)
                 }
+                Text(L("hijri.note")).font(.footnote).foregroundStyle(Theme.muted)
             }
             .padding(.top, 8)
         }

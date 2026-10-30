@@ -5,7 +5,7 @@ import WeatherKit
 /// Saat ekranında saatin altında görünebilecek alanlar. Seçim ve sıra "homeItems" anahtarında:
 /// bütün alanlar sırayla, kapalı olanın başında "-" ("date,week,next,-prayers,…").
 enum HomeItem: String, CaseIterable, Identifiable {
-    case date, week, next, prayers, upcoming, world, weather, sun, globe
+    case date, week, hijri, next, prayers, upcoming, world, weather, sun, globe
 
     var id: String { rawValue }
     var title: String { L("home.item.\(rawValue)") }
@@ -14,6 +14,7 @@ enum HomeItem: String, CaseIterable, Identifiable {
         switch self {
         case .date: return "calendar"
         case .week: return "number"
+        case .hijri: return "moon"
         case .next: return "hourglass"
         case .prayers: return "moon.stars"
         case .upcoming: return "star"
@@ -25,7 +26,7 @@ enum HomeItem: String, CaseIterable, Identifiable {
     }
 
     /// Dönen dünya varsayılan olarak açık (18 Ekim 2026, sahibin isteği); "Düzenle" ile kapatılabilir
-    static let defaultRaw = "-date,-week,-next,-prayers,-upcoming,-world,-weather,-sun,-globe" // varsayılan: yalnız saat (30 Ekim 2026)
+    static let defaultRaw = "-date,-week,-hijri,-next,-prayers,-upcoming,-world,-weather,-sun,-globe" // varsayılan: yalnız saat (30 Ekim 2026)
 }
 
 struct HomeLayout {
@@ -131,6 +132,13 @@ struct HomeItemView: View {
             Text(T("clock.weekDay", today.isoWeek.week, today.dayOfYear))
                 .font(.subheadline)
                 .foregroundStyle(Theme.muted)
+        case .hijri:
+            // Hicri tarih (Diyanet takvimi); tablo dışında boş
+            if let h = Hijri.date(now) {
+                Text(h.text)
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.muted)
+            }
         case .next:
             NextPrayerCard(now: now, place: place)
         case .prayers:

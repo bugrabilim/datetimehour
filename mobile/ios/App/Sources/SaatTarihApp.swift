@@ -102,7 +102,7 @@ final class Router {
 
     func open(_ item: HomeItem) {
         switch item {
-        case .date, .week:
+        case .date, .week, .hijri:
             calendarDay = CalendarDay(Date())
             tab = .calendar
         case .upcoming:

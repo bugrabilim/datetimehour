@@ -84,6 +84,8 @@ fun PrayerScreen() {
         ) {
             PlacePicker()
             SavedPlaceChips()
+            // Bugünün miladi ve hicri tarihi (Diyanet takvimi)
+            Hijri.date(today)?.let { Text(Fmt.longDate(today) + " · " + it.text, color = Theme.c.muted, fontSize = 13.sp) }
             if (next != null) {
                 Text(T("prayer.nextIn", next.prayer.title), color = Theme.c.muted, fontSize = 15.sp)
                 Text(

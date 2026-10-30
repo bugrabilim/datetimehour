@@ -43,7 +43,7 @@ done
 shoot tr tr_TR dark model-analog-date-koyu -clockModel analog-date -secA "<true/>"
 shoot ar ar_SA light model-wx-digital-cal-ar -clockModel wx-digital-cal
 # Saat ekranında bütün alanlar açık (Ayarlar › Saat ekranı)
-ALL="date,week,next,prayers,upcoming,world,weather,sun,globe"
+ALL="date,week,hijri,next,prayers,upcoming,world,weather,sun,globe"
 shoot tr tr_TR light tr-alanlar -homeItems "$ALL" -clockModel digital
 shoot ar ar_SA light ar-alanlar -homeItems "$ALL" -clockModel digital
 # Sekmeler: 0 saat, 1 hava durumu, 2 takvim, 3 dünya saatleri, 4 mevsimler, 5 vakitler, 6 araçlar

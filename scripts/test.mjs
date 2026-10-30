@@ -381,6 +381,16 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
     check(/data-bridge/.test(h) && (h.match(/data-br-year="/g) || []).length >= 6 && /bridge\.js/.test(h), `köprü tatil sayfası eksik: /${f}/`);
   }
 }
+// Hicri ay başları (lib/hijri.mjs, uygulamalar): Diyanet vakit tablosundaki hicri tarihler (30 Ekim 2026'da okundu)
+{
+  const { hijriTable, hijriDate } = await import("../lib/hijri.mjs");
+  const HOLD = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holidays.json"), "utf8"));
+  const t = hijriTable(HOLD, JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri.json"), "utf8")));
+  for (const [d, want] of [["2026-10-30", "1448/5/19"], ["2026-11-10", "1448/6/1"], ["2026-11-24", "1448/6/15"], ["2026-02-19", "1447/9/1"], ["2027-05-16", "1448/12/10"], ["2027-12-31", "1449/8/3"]]) {
+    check((hijriDate(t, d) || []).join("/") === want, `hicri tarih: ${d} ${want} değil (${hijriDate(t, d)})`);
+  }
+  check(hijriDate(t, "2025-12-20") === null && hijriDate(t, "2031-12-31") !== null, "hicri tarih: tablo aralığı");
+}
 for (const f of ["geri-sayim/5-dakika", "geri-sayim/1-saat", "en/countdown/5-minutes", "ar/countdown/2-hours", "alarm/07-00", "en/alarm/06-30", "de/alarm/05-15"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `hazır araç sayfası yok: /${f}/`);
 for (const f of ["kible", "en/qibla", "de/qibla", "az/qibla", "ar/qibla"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `kıble sayfası yok: /${f}/`);
 check(ng.split("https://overpass-api.de").length === 3, "nginx.conf: connect-src overpass (yakındaki camiler) iki konumda olmalı");

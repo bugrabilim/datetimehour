@@ -7,9 +7,8 @@ on:
       - "mobile/**"
       - "src/js/prayer-calc.js"
       - "src/js/nature-calc.js"
-      - "src/data/provinces.json"
-      - "src/data/cities.json"
-      - "src/data/places.json"
+      - "src/data/**"
+      - "lib/**"
       - "src/i18n/**"
       - ".github/workflows/mobile.yml"
   push:
@@ -18,9 +17,8 @@ on:
       - "mobile/**"
       - "src/js/prayer-calc.js"
       - "src/js/nature-calc.js"
-      - "src/data/provinces.json"
-      - "src/data/cities.json"
-      - "src/data/places.json"
+      - "src/data/**"
+      - "lib/**"
       - "src/i18n/**"
       - ".github/workflows/mobile.yml"
 

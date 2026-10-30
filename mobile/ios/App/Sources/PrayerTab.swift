@@ -79,6 +79,13 @@ struct PrayerPanel: View {
         VStack(spacing: 16) {
             PlacePicker()
             SavedPlaceChips()
+            // Bugünün miladi ve hicri tarihi (Diyanet takvimi)
+            if let h = Hijri.date(now, timeZone: place.zone) {
+                Text(Fmt.longDate(now, tz: place.zone) + " · " + h.text)
+                    .font(.footnote)
+                    .foregroundStyle(Theme.muted)
+                    .multilineTextAlignment(.center)
+            }
 
             if let next {
                 VStack(spacing: 4) {

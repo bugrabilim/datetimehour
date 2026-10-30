@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.DragHandle
 import androidx.compose.material.icons.filled.HourglassBottom
 import androidx.compose.material.icons.filled.Language
@@ -68,6 +69,7 @@ import kotlin.math.roundToInt
 enum class HomeItem(val key: String, val icon: ImageVector) {
     DATE("date", Icons.Filled.CalendarMonth),
     WEEK("week", Icons.Filled.Numbers),
+    HIJRI("hijri", Icons.Filled.DarkMode),
     NEXT("next", Icons.Filled.HourglassBottom),
     PRAYERS("prayers", Icons.Filled.NightsStay),
     UPCOMING("upcoming", Icons.Filled.Star),
@@ -83,7 +85,7 @@ enum class HomeItem(val key: String, val icon: ImageVector) {
      * Sekmeyi çağıran değiştirir (tam ekran önce kendini kapatır).
      */
     fun open(): Tab = when (this) {
-        DATE, WEEK -> {
+        DATE, WEEK, HIJRI -> {
             Nav.calendarDay = LocalDate.now()
             Tab.CALENDAR
         }
@@ -102,7 +104,7 @@ enum class HomeItem(val key: String, val icon: ImageVector) {
         fun of(key: String) = entries.firstOrNull { it.key == key }
 
         /** Dönen dünya varsayılan olarak açık (18 Ekim 2026, sahibin isteği); "Düzenle" ile kapatılabilir */
-        const val DEFAULT_RAW = "-date,-week,-next,-prayers,-upcoming,-world,-weather,-sun,-globe" // varsayılan: yalnız saat (30 Ekim 2026)
+        const val DEFAULT_RAW = "-date,-week,-hijri,-next,-prayers,-upcoming,-world,-weather,-sun,-globe" // varsayılan: yalnız saat (30 Ekim 2026)
     }
 }
 
@@ -223,6 +225,10 @@ fun HomeItemView(item: HomeItem, now: Instant, place: AppPlace, globeHeight: Dp,
         HomeItem.WEEK -> {
             val d = now.atZone(java.time.ZoneId.systemDefault()).toLocalDate()
             Text(T("clock.weekDay", Fmt.isoWeek(d), d.dayOfYear), tap, color = Theme.c.muted, fontSize = 14.sp)
+        }
+        // Hicri tarih (Diyanet takvimi); tablo dışında boş
+        HomeItem.HIJRI -> Hijri.date(now.atZone(java.time.ZoneId.systemDefault()).toLocalDate())?.let {
+            Text(it.text, tap, color = Theme.c.muted, fontSize = 14.sp)
         }
         HomeItem.NEXT -> NextPrayerCard(place, now, tap)
         HomeItem.PRAYERS -> TodayPrayersCard(place, now, tap)
