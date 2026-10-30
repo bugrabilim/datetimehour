@@ -326,6 +326,20 @@ for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Typ
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
+// Saat dilimleri, yaz saati, Unix (30 Ekim 2026, #25)
+{
+  const rd = (f) => (fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "");
+  const hub = rd("saat-dilimleri");
+  check((hub.match(/data-live="time" data-tz=/g) || []).length >= 25 && /href="\/saat-dilimleri\/cet\/"/.test(hub), "saat dilimleri merkezi eksik");
+  const cet = rd("saat-dilimleri/cet");
+  check(/UTC\+1/.test(cet) && /data-tz="Etc\/GMT-1"/.test(cet) && /Türkiye Saati/.test(cet), "CET sayfası eksik");
+  check(/UTC−5/.test(rd("en/time-zones/est")), "EST sayfası: UTC−5 yok");
+  const dstH = rd("yaz-saati"), at = (y, m, d, h) => Date.UTC(y, m - 1, d, h);
+  check(dstH.includes(`data-at="${at(2027, 3, 28, 1)}"`), "yaz saati: 28 Mart 2027 01:00 UTC (Avrupa) yok");
+  check(dstH.includes(`data-at="${at(2027, 3, 14, 7)}"`), "yaz saati: 14 Mart 2027 (ABD, New York 07:00 UTC) yok");
+  const ux = rd("unix-zaman-damgasi");
+  check(/data-unix/.test(ux) && /data-ux-ts/.test(ux) && /data-ux-date/.test(ux) && /zones\.js/.test(ux), "Unix sayfası eksik");
+}
 // Takvim aboneliği (.ics) ve yazdırma (30 Ekim 2026, #21)
 for (const l of ["tr", "en", "de", "az", "ar"]) for (const k of ["holidays", "days"]) {
   const f = path.join(DIST, "ics", `${l}-${k}.ics`);

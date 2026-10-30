@@ -719,6 +719,18 @@
         "bridge": {
           "name": "Köprü tatil",
           "desc": "Kaç gün izinle kaç gün tatil: resmî tatiller ve hafta sonları."
+        },
+        "dst": {
+          "name": "Yaz saati değişimleri",
+          "desc": "Dünyada saatlerin ileri ve geri alınacağı tarihler."
+        },
+        "unix": {
+          "name": "Unix zaman damgası",
+          "desc": "Canlı Unix saati, tarihe ve tarihten çevirme."
+        },
+        "zones": {
+          "name": "Saat dilimleri",
+          "desc": "UTC, CET, EST gibi kısaltmalar, farklar ve şu anki saat."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -1815,5 +1827,151 @@
       "q": "{year} yılında en verimli köprü tatil hangisi?",
       "a": "{year} yılında en verimli dönem {name}: {leave} gün izinle {days} gün tatil ({dates})."
     }
+  },
+  "zones": {
+    "hubTitle": "Saat dilimi kısaltmaları: UTC, GMT, CET, EST ve diğerleri | Saat Tarih",
+    "hubDescription": "UTC, GMT, CET, CEST, EET, TRT, MSK, EST, PST ve diğer saat dilimi kısaltmalarının açılımı, UTC farkı ve şu anki saati; Türkiye saatiyle farkları.",
+    "hubH1": "Saat dilimi kısaltmaları",
+    "hubLead": "Sık kullanılan saat dilimi kısaltmaları, açılımları, UTC farkları ve şu anki saatleri.",
+    "hubSearch": "saat dilimi kısaltma utc gmt cet cest eet est pst ist jst msk gst trt time zone abbreviation",
+    "colAbbr": "Kısaltma",
+    "colName": "Açılımı",
+    "colOffset": "UTC farkı",
+    "colNow": "Şu an",
+    "caption": "Saat dilimi kısaltmaları ve UTC farkları",
+    "pageTitle": "{abbr} saati: {name} ({offset}) | Saat Tarih",
+    "pageDescription": "{abbr} ({name}) {offset} saat dilimidir. Şu an {abbr} saati kaç, hangi ülkelerde kullanılır, Türkiye saati ve diğer saat dilimleriyle farkı ne?",
+    "pageH1": "{abbr}: {name}",
+    "pageLead": "{abbr}, {name} demektir; UTC'ye göre farkı {offset}.",
+    "nowLabel": "Şu an {abbr} saati",
+    "offsetLine": "UTC farkı: {offset}",
+    "usedIn": "Kullanıldığı yerler",
+    "usedNone": "UTC bir ülkenin yerel saati değil, dünyanın ortak zaman ölçeğidir; havacılıkta, bilimde ve bilgisayar sistemlerinde kullanılır.",
+    "dstWinter": "{abbr} standart (kış) saatidir; yaz saati uygulayan yerlerde yazın {pair} ({pairOffset}) kullanılır.",
+    "dstSummer": "{abbr} yaz saatidir; kışın {pair} ({pairOffset}) kullanılır.",
+    "dstNone": "Bu saat diliminde yaz saati uygulanmaz.",
+    "diffHeading": "{abbr} ile diğer saat dilimleri",
+    "colZone": "Saat dilimi",
+    "colDiff": "Fark",
+    "colExample": "{abbr} 12:00 iken",
+    "same": "Aynı saat",
+    "ahead": "{d} ileri",
+    "behind": "{d} geri",
+    "hoursShort": "sa",
+    "minutesShort": "dk",
+    "ambiguous": {
+      "IST": "IST kısaltması İrlanda Yaz Saati (UTC+1) ve İsrail Standart Saati (UTC+2) için de kullanılır; bu sayfa Hindistan Standart Saati'dir.",
+      "CST": "CST kısaltması Çin Standart Saati (UTC+8) ve Küba Standart Saati (UTC−5) için de kullanılır; bu sayfa Kuzey Amerika Merkezî Standart Saati'dir.",
+      "GST": "GST kısaltması Güney Georgia Saati (UTC−2) için de kullanılır; bu sayfa Körfez Saati'dir."
+    },
+    "trtName": "Türkiye Saati",
+    "faq": [
+      {
+        "q": "UTC ile GMT arasında fark var mı?",
+        "a": "Günlük kullanımda ikisi aynı saati gösterir (UTC+0). UTC atom saatleriyle tutulan ortak zaman ölçeğidir; GMT ise İngiltere ve bazı ülkelerin kışın kullandığı saat dilimidir. İngiltere yazın BST'ye (UTC+1) geçer, UTC hiç değişmez."
+      },
+      {
+        "q": "Türkiye hangi saat dilimini kullanır?",
+        "a": "Türkiye 2016'dan beri yıl boyu UTC+3 kullanır (TRT, Türkiye Saati); yaz saati uygulaması yoktur. Bu yüzden Avrupa ile fark yazın 1, kışın 2 saattir."
+      }
+    ]
+  },
+  "dst": {
+    "title": "Yaz saati değişimleri: saatler ne zaman değişecek? | Saat Tarih",
+    "description": "Avrupa, ABD, Kanada, Avustralya, Yeni Zelanda ve diğer ülkelerde saatlerin ileri ya da geri alınacağı tarihler ve saatler; önümüzdeki 12 ay. Türkiye'de yaz saati yok.",
+    "h1": "Dünyada yaz saati değişimleri",
+    "lead": "Önümüzdeki 12 ayda saatlerin ileri ya da geri alınacağı tarihler, yerel saatler ve ülkeler.",
+    "search": "yaz saati kış saati saatler geri alınacak ileri alınacak dst daylight saving time avrupa abd",
+    "colDate": "Tarih",
+    "colWhere": "Nerede",
+    "colChange": "Değişim",
+    "colLeft": "Kalan",
+    "forward": "Saatler 1 saat ileri: {from} → {to}",
+    "back": "Saatler 1 saat geri: {from} → {to}",
+    "forwardN": "Saatler {d} ileri: {from} → {to}",
+    "backN": "Saatler {d} geri: {from} → {to}",
+    "inDays": "{n} gün sonra",
+    "today": "Bugün",
+    "tomorrow": "Yarın",
+    "caption": "Önümüzdeki 12 ayda yaz saati değişimleri (yerel saatle)",
+    "groups": {
+      "eu": "Avrupa",
+      "us": "ABD ve Kanada",
+      "cl": "Şili",
+      "au": "Avustralya (güneydoğu)",
+      "nz": "Yeni Zelanda",
+      "il": "İsrail",
+      "lb": "Lübnan",
+      "eg": "Mısır",
+      "ma": "Fas",
+      "cu": "Küba",
+      "md": "Moldova",
+      "ps": "Filistin",
+      "gl": "Grönland"
+    },
+    "turkeyNote": "Türkiye'de yaz saati uygulaması yoktur: 2016'dan beri yıl boyu UTC+3 kullanılır.",
+    "note": "Tarihler IANA saat dilimi veritabanından hesaplanır (sayfa tarayıcınızda yeniden hesaplanır). Ülkeler kuralları değiştirebilir; resmî duyuruyu esas alın.",
+    "faq": [
+      {
+        "q": "Avrupa'da saatler ne zaman geri alınır?",
+        "a": "Avrupa Birliği ülkeleri ve İngiltere'de saatler Mart'ın son pazarı 01.00 UTC'de bir saat ileri, Ekim'in son pazarı 01.00 UTC'de bir saat geri alınır. Türkiye'de değişiklik olmadığı için Avrupa ile saat farkı yazın 1, kışın 2 saat olur."
+      },
+      {
+        "q": "Türkiye'de yaz saati var mı?",
+        "a": "Hayır. Türkiye 2016'dan beri yaz saati uygulamıyor ve yıl boyu UTC+3 (Türkiye Saati) kullanıyor."
+      }
+    ]
+  },
+  "unix": {
+    "title": "Unix zaman damgası: canlı Unix saati ve tarih çevirici | Saat Tarih",
+    "description": "Şu anki Unix zamanı (epoch) saniye ve milisaniye olarak canlı; zaman damgasını tarihe, tarihi zaman damgasına çevirin. UTC, yerel saat ve ISO 8601; 2038 sorunu.",
+    "h1": "Unix zaman damgası",
+    "lead": "1 Ocak 1970 00:00:00 UTC'den bu yana geçen saniye sayısı: canlı Unix saati ve iki yönlü çevirici.",
+    "search": "unix zaman damgası timestamp epoch unix time saniye milisaniye çevirici converter 2038",
+    "nowLabel": "Şu anki Unix zamanı",
+    "seconds": "saniye",
+    "milliseconds": "milisaniye",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı",
+    "toDateHeading": "Zaman damgasını tarihe çevir",
+    "tsLabel": "Unix zaman damgası (saniye ya da milisaniye)",
+    "fromDateHeading": "Tarihi zaman damgasına çevir",
+    "dateLabel": "Tarih ve saat",
+    "zoneLabel": "Saat dilimi",
+    "zoneLocal": "Yerel saat",
+    "zoneUtc": "UTC",
+    "resUtc": "UTC",
+    "resLocal": "Yerel saat",
+    "resIso": "ISO 8601",
+    "resRel": "Şu andan",
+    "resSec": "Saniye",
+    "resMs": "Milisaniye",
+    "detectedMs": "Milisaniye olarak okundu",
+    "detectedSec": "Saniye olarak okundu",
+    "invalid": "Geçerli bir sayı ya da tarih girin.",
+    "ago": "{d} önce",
+    "in": "{d} sonra",
+    "y2038Heading": "2038 sorunu",
+    "y2038": "32 bitlik işaretli tamsayıyla tutulan Unix zamanı 19 Ocak 2038 03:14:07 UTC'de (2147483647) taşar; güncel sistemler 64 bit kullanır.",
+    "y2038Left": "2038 sınırına kalan: {d}",
+    "factsHeading": "Bilinmesi gerekenler",
+    "facts": [
+      "Unix zamanı saat dilimine bağlı değildir: aynı anda dünyanın her yerinde aynı sayıdır.",
+      "Artık saniyeler sayılmaz; her gün tam 86.400 saniyedir.",
+      "JavaScript ve Java milisaniye (13 basamak), çoğu Unix aracı ve veritabanı saniye (10 basamak) kullanır."
+    ],
+    "days": "gün",
+    "hours": "saat",
+    "minutes": "dakika",
+    "faq": [
+      {
+        "q": "Unix zaman damgası nedir?",
+        "a": "Unix zaman damgası (epoch), 1 Ocak 1970 00:00:00 UTC'den bu yana geçen saniye sayısıdır. Saat diliminden bağımsızdır; bilgisayar sistemleri tarihleri bu sayıyla saklar."
+      },
+      {
+        "q": "Zaman damgası saniye mi milisaniye mi?",
+        "a": "10 basamaklı sayılar genellikle saniye, 13 basamaklı sayılar milisaniyedir. Bu sayfadaki çevirici basamak sayısına göre ikisini ayırır."
+      }
+    ]
   }
 }

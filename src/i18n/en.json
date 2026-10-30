@@ -719,6 +719,18 @@
         "bridge": {
           "name": "Long weekends",
           "desc": "How many days off for how much leave: Turkey's holidays and weekends."
+        },
+        "dst": {
+          "name": "Daylight saving changes",
+          "desc": "When clocks go forward or back around the world."
+        },
+        "unix": {
+          "name": "Unix timestamp",
+          "desc": "Live Unix time, convert to and from dates."
+        },
+        "zones": {
+          "name": "Time zones",
+          "desc": "Abbreviations like UTC, CET and EST, differences and the current time."
         }
       },
       "infoHeading": "Information pages"
@@ -1815,5 +1827,151 @@
       "q": "What is the best-value long weekend in {year}?",
       "a": "In {year} the best value is {name}: {days} days off for {leave} days of leave ({dates})."
     }
+  },
+  "zones": {
+    "hubTitle": "Time zone abbreviations: UTC, GMT, CET, EST and more | Saat Tarih",
+    "hubDescription": "What UTC, GMT, CET, CEST, EET, TRT, MSK, EST, PST and other time zone abbreviations stand for, their UTC offsets and current time, and their difference to Turkey.",
+    "hubH1": "Time zone abbreviations",
+    "hubLead": "Common time zone abbreviations, what they stand for, their UTC offsets and current times.",
+    "hubSearch": "time zone abbreviation utc gmt cet cest eet est pst ist jst msk gst trt saat dilimi",
+    "colAbbr": "Abbreviation",
+    "colName": "Name",
+    "colOffset": "UTC offset",
+    "colNow": "Now",
+    "caption": "Time zone abbreviations and UTC offsets",
+    "pageTitle": "{abbr} time: {name} ({offset}) | Saat Tarih",
+    "pageDescription": "{abbr} ({name}) is {offset}. What time is it in {abbr} now, where is it used, and how does it compare with Turkey and other time zones?",
+    "pageH1": "{abbr}: {name}",
+    "pageLead": "{abbr} stands for {name}; its offset from UTC is {offset}.",
+    "nowLabel": "Current time in {abbr}",
+    "offsetLine": "UTC offset: {offset}",
+    "usedIn": "Where it is used",
+    "usedNone": "UTC is not a country's local time but the world's common time scale, used in aviation, science and computer systems.",
+    "dstWinter": "{abbr} is standard (winter) time; places with daylight saving use {pair} ({pairOffset}) in summer.",
+    "dstSummer": "{abbr} is summer (daylight saving) time; {pair} ({pairOffset}) is used in winter.",
+    "dstNone": "There is no daylight saving time in this time zone.",
+    "diffHeading": "{abbr} compared with other time zones",
+    "colZone": "Time zone",
+    "colDiff": "Difference",
+    "colExample": "When it is 12:00 in {abbr}",
+    "same": "Same time",
+    "ahead": "{d} ahead",
+    "behind": "{d} behind",
+    "hoursShort": "h",
+    "minutesShort": "min",
+    "ambiguous": {
+      "IST": "IST is also used for Irish Standard Time (UTC+1) and Israel Standard Time (UTC+2); this page is India Standard Time.",
+      "CST": "CST is also used for China Standard Time (UTC+8) and Cuba Standard Time (UTC−5); this page is North American Central Standard Time.",
+      "GST": "GST is also used for South Georgia Time (UTC−2); this page is Gulf Standard Time."
+    },
+    "trtName": "Turkey Time",
+    "faq": [
+      {
+        "q": "Is there a difference between UTC and GMT?",
+        "a": "In everyday use both show the same time (UTC+0). UTC is the common time scale kept by atomic clocks; GMT is the time zone the UK and some other countries use in winter. The UK switches to BST (UTC+1) in summer, while UTC never changes."
+      },
+      {
+        "q": "What time zone does Turkey use?",
+        "a": "Turkey has used UTC+3 all year since 2016 (TRT, Turkey Time) with no daylight saving time, so the difference with Europe is 1 hour in summer and 2 hours in winter."
+      }
+    ]
+  },
+  "dst": {
+    "title": "Daylight saving time changes: when do clocks change? | Saat Tarih",
+    "description": "When clocks go forward or back in Europe, the US, Canada, Australia, New Zealand and other countries over the next 12 months, with local times. Turkey has no DST.",
+    "h1": "Daylight saving time changes worldwide",
+    "lead": "When clocks go forward or back over the next 12 months, with local times and countries.",
+    "search": "daylight saving time dst clocks go back forward summer time winter time europe us yaz saati",
+    "colDate": "Date",
+    "colWhere": "Where",
+    "colChange": "Change",
+    "colLeft": "In",
+    "forward": "Clocks go forward 1 hour: {from} → {to}",
+    "back": "Clocks go back 1 hour: {from} → {to}",
+    "forwardN": "Clocks go forward {d}: {from} → {to}",
+    "backN": "Clocks go back {d}: {from} → {to}",
+    "inDays": "in {n} days",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "caption": "Daylight saving time changes over the next 12 months (local time)",
+    "groups": {
+      "eu": "Europe",
+      "us": "US and Canada",
+      "cl": "Chile",
+      "au": "Australia (south-east)",
+      "nz": "New Zealand",
+      "il": "Israel",
+      "lb": "Lebanon",
+      "eg": "Egypt",
+      "ma": "Morocco",
+      "cu": "Cuba",
+      "md": "Moldova",
+      "ps": "Palestine",
+      "gl": "Greenland"
+    },
+    "turkeyNote": "Turkey has no daylight saving time: it has used UTC+3 all year since 2016.",
+    "note": "Dates are calculated from the IANA time zone database (the page recalculates in your browser). Countries can change their rules; the official announcement prevails.",
+    "faq": [
+      {
+        "q": "When do the clocks go back in Europe?",
+        "a": "In the EU and the UK, clocks go forward one hour at 01:00 UTC on the last Sunday of March and back one hour at 01:00 UTC on the last Sunday of October. Turkey does not change, so the difference with Europe is 1 hour in summer and 2 in winter."
+      },
+      {
+        "q": "Does Turkey have daylight saving time?",
+        "a": "No. Turkey stopped daylight saving time in 2016 and uses UTC+3 (Turkey Time) all year."
+      }
+    ]
+  },
+  "unix": {
+    "title": "Unix timestamp: live Unix time and date converter | Saat Tarih",
+    "description": "Current Unix time (epoch) live in seconds and milliseconds; convert timestamps to dates and dates to timestamps in UTC, local time and ISO 8601.",
+    "h1": "Unix timestamp",
+    "lead": "The number of seconds since 1 January 1970 00:00:00 UTC: live Unix time and a two-way converter.",
+    "search": "unix timestamp epoch unix time seconds milliseconds converter 2038 zaman damgası",
+    "nowLabel": "Current Unix time",
+    "seconds": "seconds",
+    "milliseconds": "milliseconds",
+    "copy": "Copy",
+    "copied": "Copied",
+    "toDateHeading": "Timestamp to date",
+    "tsLabel": "Unix timestamp (seconds or milliseconds)",
+    "fromDateHeading": "Date to timestamp",
+    "dateLabel": "Date and time",
+    "zoneLabel": "Time zone",
+    "zoneLocal": "Local time",
+    "zoneUtc": "UTC",
+    "resUtc": "UTC",
+    "resLocal": "Local time",
+    "resIso": "ISO 8601",
+    "resRel": "From now",
+    "resSec": "Seconds",
+    "resMs": "Milliseconds",
+    "detectedMs": "Read as milliseconds",
+    "detectedSec": "Read as seconds",
+    "invalid": "Enter a valid number or date.",
+    "ago": "{d} ago",
+    "in": "in {d}",
+    "y2038Heading": "The year 2038 problem",
+    "y2038": "Unix time stored in a signed 32-bit integer overflows at 03:14:07 UTC on 19 January 2038 (2147483647); current systems use 64 bits.",
+    "y2038Left": "Time left to the 2038 limit: {d}",
+    "factsHeading": "Good to know",
+    "facts": [
+      "Unix time does not depend on the time zone: it is the same number everywhere at the same moment.",
+      "Leap seconds are not counted; every day has exactly 86,400 seconds.",
+      "JavaScript and Java use milliseconds (13 digits); most Unix tools and databases use seconds (10 digits)."
+    ],
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "faq": [
+      {
+        "q": "What is a Unix timestamp?",
+        "a": "A Unix timestamp (epoch time) is the number of seconds since 00:00:00 UTC on 1 January 1970. It does not depend on the time zone; computer systems store dates as this number."
+      },
+      {
+        "q": "Is a timestamp in seconds or milliseconds?",
+        "a": "Numbers with 10 digits are usually seconds and 13 digits milliseconds. The converter on this page tells them apart by the number of digits."
+      }
+    ]
   }
 }

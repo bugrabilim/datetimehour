@@ -746,6 +746,18 @@
         "bridge": {
           "name": "Brückentage",
           "desc": "Wie viele freie Tage für wie viel Urlaub: Feiertage in der Türkei."
+        },
+        "dst": {
+          "name": "Zeitumstellungen",
+          "desc": "Wann die Uhren weltweit vor- oder zurückgestellt werden."
+        },
+        "unix": {
+          "name": "Unix-Zeitstempel",
+          "desc": "Live-Unix-Zeit, Umrechnung von und in Datum."
+        },
+        "zones": {
+          "name": "Zeitzonen",
+          "desc": "Abkürzungen wie UTC, MEZ und EST, Unterschiede und aktuelle Uhrzeit."
         }
       },
       "infoHeading": "Infoseiten"
@@ -1842,5 +1854,151 @@
       "q": "Welche Brückentage lohnen sich {year} am meisten?",
       "a": "{year} lohnt sich am meisten: {name} – {days} Tage frei mit {leave} Urlaubstagen ({dates})."
     }
+  },
+  "zones": {
+    "hubTitle": "Zeitzonen-Abkürzungen: UTC, GMT, CET, EST und mehr | Saat Tarih",
+    "hubDescription": "Wofür UTC, GMT, CET, CEST, EET, TRT, MSK, EST, PST und andere Zeitzonen-Abkürzungen stehen, ihr UTC-Versatz, die aktuelle Uhrzeit und der Unterschied zur Türkei.",
+    "hubH1": "Zeitzonen-Abkürzungen",
+    "hubLead": "Häufige Zeitzonen-Abkürzungen, ihre Bedeutung, ihr UTC-Versatz und die aktuelle Uhrzeit.",
+    "hubSearch": "zeitzone abkürzung utc gmt cet mez cest mesz eet est pst ist jst msk time zone",
+    "colAbbr": "Abkürzung",
+    "colName": "Bedeutung",
+    "colOffset": "UTC-Versatz",
+    "colNow": "Jetzt",
+    "caption": "Zeitzonen-Abkürzungen und UTC-Versatz",
+    "pageTitle": "{abbr}-Zeit: {name} ({offset}) | Saat Tarih",
+    "pageDescription": "{abbr} ({name}) ist {offset}. Wie spät ist es jetzt in {abbr}, wo gilt sie, und wie groß ist der Unterschied zur Türkei und zu anderen Zeitzonen?",
+    "pageH1": "{abbr}: {name}",
+    "pageLead": "{abbr} steht für {name}; der Versatz zu UTC beträgt {offset}.",
+    "nowLabel": "Aktuelle Uhrzeit in {abbr}",
+    "offsetLine": "UTC-Versatz: {offset}",
+    "usedIn": "Wo sie gilt",
+    "usedNone": "UTC ist keine Ortszeit eines Landes, sondern die gemeinsame Zeitskala der Welt, die in Luftfahrt, Wissenschaft und Computersystemen verwendet wird.",
+    "dstWinter": "{abbr} ist Normalzeit (Winterzeit); Orte mit Sommerzeit verwenden im Sommer {pair} ({pairOffset}).",
+    "dstSummer": "{abbr} ist Sommerzeit; im Winter gilt {pair} ({pairOffset}).",
+    "dstNone": "In dieser Zeitzone gibt es keine Sommerzeit.",
+    "diffHeading": "{abbr} im Vergleich mit anderen Zeitzonen",
+    "colZone": "Zeitzone",
+    "colDiff": "Unterschied",
+    "colExample": "Wenn es in {abbr} 12:00 ist",
+    "same": "Gleiche Zeit",
+    "ahead": "{d} voraus",
+    "behind": "{d} zurück",
+    "hoursShort": "Std.",
+    "minutesShort": "Min.",
+    "ambiguous": {
+      "IST": "IST steht auch für Irische Normalzeit (UTC+1) und Israelische Normalzeit (UTC+2); diese Seite ist die Indische Normalzeit.",
+      "CST": "CST steht auch für Chinesische Normalzeit (UTC+8) und Kubanische Normalzeit (UTC−5); diese Seite ist die nordamerikanische Central Standard Time.",
+      "GST": "GST steht auch für Südgeorgien-Zeit (UTC−2); diese Seite ist die Golf-Zeit."
+    },
+    "trtName": "Türkische Zeit",
+    "faq": [
+      {
+        "q": "Gibt es einen Unterschied zwischen UTC und GMT?",
+        "a": "Im Alltag zeigen beide dieselbe Uhrzeit (UTC+0). UTC ist die von Atomuhren gehaltene gemeinsame Zeitskala; GMT ist die Zeitzone, die Großbritannien und einige andere Länder im Winter nutzen. Großbritannien wechselt im Sommer zu BST (UTC+1), UTC ändert sich nie."
+      },
+      {
+        "q": "Welche Zeitzone gilt in der Türkei?",
+        "a": "Die Türkei nutzt seit 2016 ganzjährig UTC+3 (TRT, Türkische Zeit) ohne Sommerzeit. Der Unterschied zu Mitteleuropa beträgt daher im Sommer 1 und im Winter 2 Stunden."
+      }
+    ]
+  },
+  "dst": {
+    "title": "Zeitumstellung weltweit: wann werden Uhren umgestellt? | Saat Tarih",
+    "description": "Wann die Uhren in Europa, den USA, Kanada, Australien und anderen Ländern in den nächsten 12 Monaten umgestellt werden, mit Ortszeiten. Die Türkei stellt nicht um.",
+    "h1": "Zeitumstellungen weltweit",
+    "lead": "Wann die Uhren in den nächsten 12 Monaten vor- oder zurückgestellt werden, mit Ortszeiten und Ländern.",
+    "search": "zeitumstellung sommerzeit winterzeit uhren zurückstellen vorstellen dst europa usa",
+    "colDate": "Datum",
+    "colWhere": "Wo",
+    "colChange": "Umstellung",
+    "colLeft": "In",
+    "forward": "Uhren 1 Stunde vor: {from} → {to}",
+    "back": "Uhren 1 Stunde zurück: {from} → {to}",
+    "forwardN": "Uhren {d} vor: {from} → {to}",
+    "backN": "Uhren {d} zurück: {from} → {to}",
+    "inDays": "in {n} Tagen",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "caption": "Zeitumstellungen in den nächsten 12 Monaten (Ortszeit)",
+    "groups": {
+      "eu": "Europa",
+      "us": "USA und Kanada",
+      "cl": "Chile",
+      "au": "Australien (Südosten)",
+      "nz": "Neuseeland",
+      "il": "Israel",
+      "lb": "Libanon",
+      "eg": "Ägypten",
+      "ma": "Marokko",
+      "cu": "Kuba",
+      "md": "Moldau",
+      "ps": "Palästina",
+      "gl": "Grönland"
+    },
+    "turkeyNote": "Die Türkei hat keine Sommerzeit: Seit 2016 gilt ganzjährig UTC+3.",
+    "note": "Die Daten werden aus der IANA-Zeitzonendatenbank berechnet (die Seite rechnet in Ihrem Browser neu). Länder können ihre Regeln ändern; maßgeblich ist die amtliche Mitteilung.",
+    "faq": [
+      {
+        "q": "Wann werden in Europa die Uhren zurückgestellt?",
+        "a": "In der EU und in Großbritannien werden die Uhren am letzten Sonntag im März um 01:00 UTC eine Stunde vor- und am letzten Sonntag im Oktober um 01:00 UTC eine Stunde zurückgestellt. Die Türkei stellt nicht um, daher beträgt der Unterschied zu Mitteleuropa im Sommer 1 und im Winter 2 Stunden."
+      },
+      {
+        "q": "Gibt es in der Türkei Sommerzeit?",
+        "a": "Nein. Die Türkei hat die Zeitumstellung 2016 abgeschafft und nutzt ganzjährig UTC+3 (Türkische Zeit)."
+      }
+    ]
+  },
+  "unix": {
+    "title": "Unix-Zeitstempel: Live-Unix-Zeit und Datumsumrechner | Saat Tarih",
+    "description": "Aktuelle Unix-Zeit (Epoch) live in Sekunden und Millisekunden; Zeitstempel in Datum und Datum in Zeitstempel umrechnen, in UTC, Ortszeit und ISO 8601.",
+    "h1": "Unix-Zeitstempel",
+    "lead": "Die Sekunden seit 1. Januar 1970 00:00:00 UTC: Live-Unix-Zeit und ein Umrechner in beide Richtungen.",
+    "search": "unix zeitstempel timestamp epoch unix zeit sekunden millisekunden umrechner 2038",
+    "nowLabel": "Aktuelle Unix-Zeit",
+    "seconds": "Sekunden",
+    "milliseconds": "Millisekunden",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "toDateHeading": "Zeitstempel in Datum",
+    "tsLabel": "Unix-Zeitstempel (Sekunden oder Millisekunden)",
+    "fromDateHeading": "Datum in Zeitstempel",
+    "dateLabel": "Datum und Uhrzeit",
+    "zoneLabel": "Zeitzone",
+    "zoneLocal": "Ortszeit",
+    "zoneUtc": "UTC",
+    "resUtc": "UTC",
+    "resLocal": "Ortszeit",
+    "resIso": "ISO 8601",
+    "resRel": "Von jetzt",
+    "resSec": "Sekunden",
+    "resMs": "Millisekunden",
+    "detectedMs": "Als Millisekunden gelesen",
+    "detectedSec": "Als Sekunden gelesen",
+    "invalid": "Geben Sie eine gültige Zahl oder ein Datum ein.",
+    "ago": "vor {d}",
+    "in": "in {d}",
+    "y2038Heading": "Das Jahr-2038-Problem",
+    "y2038": "In einer vorzeichenbehafteten 32-Bit-Ganzzahl gespeicherte Unix-Zeit läuft am 19. Januar 2038 um 03:14:07 UTC über (2147483647); aktuelle Systeme nutzen 64 Bit.",
+    "y2038Left": "Zeit bis zur 2038-Grenze: {d}",
+    "factsHeading": "Gut zu wissen",
+    "facts": [
+      "Die Unix-Zeit hängt nicht von der Zeitzone ab: Im selben Moment ist es überall dieselbe Zahl.",
+      "Schaltsekunden werden nicht gezählt; jeder Tag hat genau 86.400 Sekunden.",
+      "JavaScript und Java verwenden Millisekunden (13 Stellen), die meisten Unix-Werkzeuge und Datenbanken Sekunden (10 Stellen)."
+    ],
+    "days": "Tage",
+    "hours": "Stunden",
+    "minutes": "Minuten",
+    "faq": [
+      {
+        "q": "Was ist ein Unix-Zeitstempel?",
+        "a": "Ein Unix-Zeitstempel (Epoch-Zeit) ist die Zahl der Sekunden seit 1. Januar 1970 00:00:00 UTC. Er hängt nicht von der Zeitzone ab; Computersysteme speichern Datumsangaben als diese Zahl."
+      },
+      {
+        "q": "Ist ein Zeitstempel in Sekunden oder Millisekunden?",
+        "a": "Zahlen mit 10 Stellen sind meist Sekunden, mit 13 Stellen Millisekunden. Der Umrechner auf dieser Seite unterscheidet sie an der Stellenzahl."
+      }
+    ]
   }
 }

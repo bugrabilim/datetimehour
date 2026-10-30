@@ -84,6 +84,7 @@ for (const [name, from] of [
   ["prayer.js", "js/prayer.js"],
   ["qibla.js", "js/qibla.js"],
   ["bridge.js", "js/bridge.js"],
+  ["zones.js", "js/zones.js"],
   ["imsakiye.js", "js/imsakiye.js"],
   ["world.js", "js/world.js"],
   ["place.js", "js/place.js"],
@@ -294,7 +295,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "datecalc", "embed", "prayer", "qibla", "nature", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "datecalc", "embed", "prayer", "qibla", "nature", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1086,6 +1087,9 @@ const TOOL_ART = {
   embed: svgArt('<rect x="10" y="12" width="76" height="40" rx="6" class="af"/><path d="M38 24l-9 8 9 8M58 24l9 8-9 8M52 22l-8 20"/>'),
   week: svgArt('<rect x="16" y="14" width="64" height="42" rx="6" class="af"/><path d="M16 26h64M32 8v10M64 8v10M30 36h8m6 0h8m6 0h8M30 46h8m6 0h8"/>'),
   tz: svgArt('<circle cx="48" cy="32" r="22" class="af"/><path d="M26 32h44M48 10c9 7 9 37 0 44M48 10c-9 7-9 37 0 44"/>'),
+  zones: svgArt('<circle cx="34" cy="32" r="20" class="af"/><path d="M14 32h40M34 12c7 6 7 34 0 40M34 12c-7 6-7 34 0 40"/><circle cx="70" cy="40" r="14" class="af"/><path d="M70 32v8l5 3"/>'),
+  dst: svgArt('<circle cx="30" cy="30" r="10" class="af"/><path d="M30 12v4M30 44v4M12 30h4M44 30h4M17 17l3 3M40 40l3 3M17 43l3-3M40 20l3-3"/><path d="M72 18a14 14 0 1 0 10 24 12 12 0 0 1-10-24z" class="af"/><path d="M50 52h20m-5-5 5 5-5 5"/>'),
+  unix: svgArt('<rect x="12" y="14" width="72" height="36" rx="6" class="af"/><path d="M24 26v12M30 26h6v12h-6zM44 26v12M50 26h6v12h-6zM64 26v12M70 26h6v12h-6z"/>'),
   bridge: svgArt('<path d="M8 46h80M14 46V30M82 46V30M14 30c10 0 18-10 34-10s24 10 34 10M30 46V26M48 46V20M66 46V26" class="af"/><path d="M8 54h80"/>'),
   qibla: svgArt('<circle cx="48" cy="34" r="24" class="af"/><path d="M48 6v6M48 56v6M20 34h-6M82 34h-6M48 34l12-14-4 18z"/><rect x="62" y="12" width="10" height="10" rx="1"/>'),
 };
@@ -1100,7 +1104,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "bridge", "qibla", "embed", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "zones", "dst", "unix", "bridge", "qibla", "embed", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1216,7 +1220,7 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
-extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", bridge: "/kopru-tatil/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", bridge: "/en/long-weekends/" } });
+extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1729,6 +1733,179 @@ const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to)
 const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
+/* ---------- Saat dilimi kısaltmaları, yaz saati değişimleri, Unix zamanı (30 Ekim 2026, rakip analizi #25) ----------
+   Kısaltma adları ICU'dan (Node Intl, temsilci dilim + ay: kış/yaz), TRT elle (ICU'da adı yok). Canlı saat sabit ofsetli
+   Etc/GMT±n ya da yaz saati olmayan temsilci dilimle (main.js data-live="time"). Yaz saati tablosu derlemede IANA
+   verisinden (sonraki 400 gün), zones.js kalan günü yazar ve geçenleri gizler. */
+const TZ_ABBRS = [
+  { a: "UTC", tz: "UTC", m: 1, off: 0, live: "UTC", regions: [] },
+  { a: "GMT", tz: "Europe/London", m: 1, off: 0, live: "Etc/GMT", regions: ["GB", "IE", "PT", "IS", "GH", "SN", "CI"], pair: ["BST", 60] },
+  { a: "BST", tz: "Europe/London", m: 7, off: 60, live: "Etc/GMT-1", regions: ["GB"], pair: ["GMT", 0], summer: true },
+  { a: "WET", tz: "Europe/Lisbon", m: 1, off: 0, live: "Etc/GMT", regions: ["PT", "FO"], pair: ["WEST", 60] },
+  { a: "CET", tz: "Europe/Berlin", m: 1, off: 60, live: "Etc/GMT-1", regions: ["DE", "FR", "IT", "ES", "NL", "BE", "AT", "CH", "PL", "CZ", "SE", "NO", "DK", "HU", "HR", "RS"], pair: ["CEST", 120] },
+  { a: "CEST", tz: "Europe/Berlin", m: 7, off: 120, live: "Etc/GMT-2", regions: ["DE", "FR", "IT", "ES", "NL", "BE", "AT", "CH", "PL", "CZ", "SE", "NO", "DK", "HU", "HR", "RS"], pair: ["CET", 60], summer: true },
+  { a: "EET", tz: "Europe/Athens", m: 1, off: 120, live: "Etc/GMT-2", regions: ["GR", "RO", "BG", "FI", "UA", "EE", "LV", "LT", "CY", "EG", "LB"], pair: ["EEST", 180] },
+  { a: "EEST", tz: "Europe/Athens", m: 7, off: 180, live: "Etc/GMT-3", regions: ["GR", "RO", "BG", "FI", "UA", "EE", "LV", "LT", "CY", "EG", "LB"], pair: ["EET", 120], summer: true },
+  { a: "TRT", tz: "Europe/Istanbul", m: 1, off: 180, live: "Europe/Istanbul", regions: ["TR"], trt: true },
+  { a: "MSK", tz: "Europe/Moscow", m: 1, off: 180, live: "Europe/Moscow", regions: ["RU", "BY"] },
+  { a: "GST", tz: "Asia/Dubai", m: 1, off: 240, live: "Asia/Dubai", regions: ["AE", "OM"] },
+  { a: "PKT", tz: "Asia/Karachi", m: 1, off: 300, live: "Asia/Karachi", regions: ["PK"] },
+  { a: "IST", tz: "Asia/Kolkata", m: 1, off: 330, live: "Asia/Kolkata", regions: ["IN", "LK"] },
+  { a: "SGT", tz: "Asia/Singapore", m: 1, off: 480, live: "Asia/Singapore", regions: ["SG"] },
+  { a: "JST", tz: "Asia/Tokyo", m: 1, off: 540, live: "Asia/Tokyo", regions: ["JP"] },
+  { a: "KST", tz: "Asia/Seoul", m: 1, off: 540, live: "Asia/Seoul", regions: ["KR"] },
+  { a: "AEST", tz: "Australia/Sydney", m: 7, off: 600, live: "Australia/Brisbane", regions: ["AU"], pair: ["AEDT", 660] },
+  { a: "AEDT", tz: "Australia/Sydney", m: 1, off: 660, live: "Etc/GMT-11", regions: ["AU"], pair: ["AEST", 600], summer: true },
+  { a: "EST", tz: "America/New_York", m: 1, off: -300, live: "Etc/GMT+5", regions: ["US", "CA", "PA", "JM"], pair: ["EDT", -240] },
+  { a: "EDT", tz: "America/New_York", m: 7, off: -240, live: "Etc/GMT+4", regions: ["US", "CA"], pair: ["EST", -300], summer: true },
+  { a: "CST", tz: "America/Chicago", m: 1, off: -360, live: "Etc/GMT+6", regions: ["US", "CA", "MX"], pair: ["CDT", -300] },
+  { a: "CDT", tz: "America/Chicago", m: 7, off: -300, live: "Etc/GMT+5", regions: ["US", "CA"], pair: ["CST", -360], summer: true },
+  { a: "MST", tz: "America/Denver", m: 1, off: -420, live: "America/Phoenix", regions: ["US", "CA", "MX"], pair: ["MDT", -360] },
+  { a: "PST", tz: "America/Los_Angeles", m: 1, off: -480, live: "Etc/GMT+8", regions: ["US", "CA"], pair: ["PDT", -420] },
+  { a: "PDT", tz: "America/Los_Angeles", m: 7, off: -420, live: "Etc/GMT+7", regions: ["US", "CA"], pair: ["PST", -480], summer: true },
+];
+const TZ_COMPARE = ["UTC", "GMT", "CET", "CEST", "EET", "TRT", "MSK", "GST", "IST", "JST", "AEST", "EST", "EDT", "CST", "PST"];
+const tzName = (lang, z) => z.trt ? I[lang].zones.trtName : new Intl.DateTimeFormat(lang, { timeZone: z.tz, timeZoneName: "long" }).formatToParts(new Date(Date.UTC(2026, z.m - 1, 15))).find((p) => p.type === "timeZoneName").value;
+const offTxt = (min) => `UTC${min === 0 ? "+0" : (min < 0 ? "−" : "+") + Math.floor(Math.abs(min) / 60) + (Math.abs(min) % 60 ? ":" + String(Math.abs(min) % 60).padStart(2, "0") : "")}`;
+const regionName = (lang, code) => { try { return new Intl.DisplayNames([lang], { type: "region" }).of(code); } catch { return code; } };
+const zonePath = (lang, z) => `${ROUTES[lang].zones}${z.a.toLowerCase()}/`;
+const diffTxt = (lang, min) => { const s = I[lang].zones; const a = Math.abs(min), h = Math.floor(a / 60), m = a % 60; return [h && `${h} ${s.hoursShort}`, m && `${m} ${s.minutesShort}`].filter(Boolean).join(" "); };
+const hm24 = (min) => `${String(Math.floor((((min % 1440) + 1440) % 1440) / 60)).padStart(2, "0")}:${String((((min % 1440) + 1440) % 1440) % 60).padStart(2, "0")}`;
+
+function buildZonesHub(lang) {
+  const t = I[lang], s = t.zones;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].zones }];
+  const rows = TZ_ABBRS.map((z) => `<tr><th scope="row"><a href="${zonePath(lang, z)}">${z.a}</a></th><td>${esc(tzName(lang, z))}</td><td><bdi dir="ltr">${offTxt(z.off)}</bdi></td><td><span class="tnum" data-live="time" data-tz="${z.live}">--:--</span></td></tr>`).join("");
+  const hero = `<div class="table-wrap"><table class="events-table zones-table"><caption class="sr-only">${esc(s.caption)}</caption><thead><tr><th scope="col">${esc(s.colAbbr)}</th><th scope="col">${esc(s.colName)}</th><th scope="col">${esc(s.colOffset)}</th><th scope="col">${esc(s.colNow)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="meta sync-line" data-sync-status>&nbsp;</p>`;
+  return simplePage(lang, "zones", { title: s.hubTitle, description: s.hubDescription, h1: s.hubH1, lead: s.hubLead, trail, bodyInner: { hero }, faq: s.faq, faqGroup: { id: "zones", title: s.hubH1 }, scripts: [], nav: "world", searchK: s.hubSearch });
+}
+
+function buildZone(lang, z) {
+  const t = I[lang], s = t.zones;
+  const name = tzName(lang, z);
+  const v = { abbr: z.a, name, offset: offTxt(z.off), pair: z.pair ? z.pair[0] : "", pairOffset: z.pair ? offTxt(z.pair[1]) : "" };
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].zones }, { name: tpl(s.pageH1, v), path: zonePath(lang, z) }];
+  const dst = !z.pair ? s.dstNone : tpl(z.summer ? s.dstSummer : s.dstWinter, v);
+  const regions = z.regions.length ? `<p>${esc(z.regions.map((c) => regionName(lang, c)).join(", "))}</p>` : `<p>${esc(s.usedNone)}</p>`;
+  const others = TZ_COMPARE.filter((a) => a !== z.a).map((a) => TZ_ABBRS.find((x) => x.a === a));
+  const rows = others.map((o) => {
+    const d = o.off - z.off;
+    const rel = d === 0 ? s.same : tpl(d > 0 ? s.ahead : s.behind, { d: diffTxt(lang, d) });
+    return `<tr><th scope="row"><a href="${zonePath(lang, o)}">${o.a}</a> <span class="meta">${esc(tzName(lang, o))}</span></th><td>${esc(rel)}</td><td class="tnum">${hm24(12 * 60 + d)}</td></tr>`;
+  }).join("");
+  const hero = `<div class="zone-now">
+      <p class="meta">${esc(tpl(s.nowLabel, v))}</p>
+      <p class="big-time" role="timer" data-live="time" data-sec data-tz="${z.live}">--:--:--</p>
+      <p class="info-sub"><bdi dir="ltr">${esc(tpl(s.offsetLine, v))}</bdi></p>
+      <p class="meta sync-line" data-sync-status>&nbsp;</p>
+    </div>
+    <p>${esc(dst)}</p>${s.ambiguous[z.a] ? `<p class="meta">${esc(s.ambiguous[z.a])}</p>` : ""}`;
+  const sections = `<section class="section" aria-labelledby="used-h"><div class="wrap">
+    <h2 id="used-h">${esc(s.usedIn)}</h2>${regions}
+  </div></section>
+  <section class="section" aria-labelledby="diff-h"><div class="wrap">
+    <h2 id="diff-h">${esc(tpl(s.diffHeading, v))}</h2>
+    <div class="table-wrap"><table class="events-table"><thead><tr><th scope="col">${esc(s.colZone)}</th><th scope="col">${esc(s.colDiff)}</th><th scope="col">${esc(tpl(s.colExample, v))}</th></tr></thead><tbody>${rows}</tbody></table></div>
+  </div></section>`;
+  // Uzun adlarda başlık ve açıklama için kısa genel ad (ör. "Pasifik Saati")
+  let title = tpl(s.pageTitle, v), description = tpl(s.pageDescription, v);
+  if (title.length > 70 || description.length > 170) {
+    const g = new Intl.DateTimeFormat(lang, { timeZone: z.tz, timeZoneName: "longGeneric" }).formatToParts(new Date(Date.UTC(2026, z.m - 1, 15))).find((p) => p.type === "timeZoneName").value;
+    if (title.length > 70) title = tpl(s.pageTitle, { ...v, name: g });
+    if (description.length > 170) description = tpl(s.pageDescription, { ...v, name: g });
+  }
+  return simplePage(lang, `zone:${z.a}`, { title, description, h1: tpl(s.pageH1, v), lead: tpl(s.pageLead, v), trail, bodyInner: { hero, sections }, scripts: [], nav: "world", searchK: `${z.a} ${name} ${offTxt(z.off)} saat dilimi time zone` });
+}
+
+/* Yaz saati değişimleri: temsilci dilimde 6 saatlik adımla ofset değişimi aranır, dakikaya kadar ikiye bölünür */
+const DST_GROUPS = [
+  ["eu", "Europe/Berlin", ["EU", "GB", "NO", "CH", "UA"]], ["us", "America/New_York", ["US", "CA"]], ["cl", "America/Santiago", ["CL"]],
+  ["au", "Australia/Sydney", ["AU"]], ["nz", "Pacific/Auckland", ["NZ"]], ["il", "Asia/Jerusalem", ["IL"]], ["lb", "Asia/Beirut", ["LB"]],
+  ["eg", "Africa/Cairo", ["EG"]], ["ma", "Africa/Casablanca", ["MA"]], ["cu", "America/Havana", ["CU"]], ["md", "Europe/Chisinau", ["MD"]],
+  ["ps", "Asia/Gaza", ["PS"]], ["gl", "America/Nuuk", ["GL"]],
+];
+const tzOffCache = new Map();
+function tzOffsetMin(tz, ms) {
+  let f = tzOffCache.get(tz);
+  if (!f) { f = new Intl.DateTimeFormat("en-US", { timeZone: tz, timeZoneName: "longOffset" }); tzOffCache.set(tz, f); }
+  const v = f.formatToParts(new Date(ms)).find((p) => p.type === "timeZoneName").value;
+  const m = v.match(/([+-])(\d\d):(\d\d)/);
+  return m ? (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]) : 0;
+}
+function tzTransitions(tz, from, to) {
+  const H6 = 6 * 3600000, out = [];
+  let prev = tzOffsetMin(tz, from);
+  for (let t = from + H6; t <= to; t += H6) {
+    const cur = tzOffsetMin(tz, t);
+    if (cur === prev) continue;
+    let lo = t - H6, hi = t;
+    while (hi - lo > 60000) { const mid = lo + Math.floor((hi - lo) / 120000) * 60000; if (mid === lo) break; if (tzOffsetMin(tz, mid) === prev) lo = mid; else hi = mid; }
+    out.push({ at: hi, from: prev, to: cur });
+    prev = cur;
+  }
+  return out;
+}
+const DST_FROM = Date.UTC(...cfg.updated.split("-").map((x, i) => (i === 1 ? +x - 1 : +x)));
+const DST_ROWS = DST_GROUPS.flatMap(([id, tz, regions]) => tzTransitions(tz, DST_FROM, DST_FROM + 400 * 86400000).map((x) => ({ id, tz, regions, ...x }))).sort((a, b) => a.at - b.at);
+
+function buildDst(lang) {
+  const t = I[lang], s = t.dst, cal = t.calendar;
+  const F = makeFmt(cal);
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].dst }];
+  const cityOf = (tz) => { const c = CITIES.find((x) => x.tz === tz); return c ? c[lang].name : tz.split("/").pop().replace(/_/g, " "); };
+  const rows = DST_ROWS.map((r) => {
+    const localBefore = r.at + r.from * 60000, localAfter = r.at + r.to * 60000;
+    const d = new Date(localAfter), date = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}-${String(d.getUTCDate()).padStart(2, "0")}`;
+    const fromT = hm24(Math.round((localBefore % 86400000) / 60000)), toT = hm24(Math.round((localAfter % 86400000) / 60000));
+    const step = Math.abs(r.to - r.from);
+    const tplKey = r.to > r.from ? (step === 60 ? s.forward : s.forwardN) : (step === 60 ? s.back : s.backN);
+    const change = tpl(tplKey, { from: fromT, to: toT, d: diffTxt(lang, step) }) + ` (${cityOf(r.tz)})`;
+    return `<tr data-at="${r.at}"><th scope="row">${esc(F.full(date))}</th><td><strong>${esc(s.groups[r.id])}</strong>${r.regions.length > 1 ? `<br><span class="meta">${esc(r.regions.map((c) => regionName(lang, c)).join(", "))}</span>` : ""}</td><td>${esc(change)}</td><td data-dst-left></td></tr>`;
+  }).join("");
+  const hero = `<p class="info-sub">${esc(s.turkeyNote)}</p>`;
+  const sections = `<section class="section"><div class="wrap">
+    <div class="table-wrap"><table class="events-table dst-table" data-dst data-today="${esc(s.today)}" data-tomorrow="${esc(s.tomorrow)}" data-in="${esc(s.inDays)}"><caption>${esc(s.caption)}</caption><thead><tr><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colWhere)}</th><th scope="col">${esc(s.colChange)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="meta">${esc(s.note)}</p>
+  </div></section>`;
+  return simplePage(lang, "dst", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "dst", title: s.h1 }, scripts: ["zones.js"], nav: "world", searchK: s.search });
+}
+
+function buildUnix(lang) {
+  const t = I[lang], s = t.unix;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].unix }];
+  const res = (k, label) => `<div class="fact"><dt>${esc(label)}</dt><dd data-ux-${k}>–</dd></div>`;
+  const hero = `<section class="unix" data-unix aria-labelledby="ux-h">
+      <h2 id="ux-h" class="sr-only">${esc(s.nowLabel)}</h2>
+      <p class="meta">${esc(s.nowLabel)}</p>
+      <p class="big-time unix-now" role="timer" data-ux-now dir="ltr">–</p>
+      <p class="meta"><span data-ux-now-ms dir="ltr">–</span> ${esc(s.milliseconds)} · <button type="button" class="toggle" data-ux-copy data-copied="${esc(s.copied)}">${esc(s.copy)}</button></p>
+      <p class="meta sync-line" data-sync-status>&nbsp;</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const sections = `<section class="section" aria-labelledby="ux-to-h"><div class="wrap">
+    <h2 id="ux-to-h">${esc(s.toDateHeading)}</h2>
+    <div class="field"><label for="ux-ts">${esc(s.tsLabel)}</label><input id="ux-ts" type="text" inputmode="numeric" autocomplete="off" dir="ltr" data-ux-ts></div>
+    <p class="meta" data-ux-detect role="status" aria-live="polite">&nbsp;</p>
+    <dl class="facts unix-res">${res("utc", s.resUtc)}${res("local", s.resLocal)}${res("iso", s.resIso)}${res("rel", s.resRel)}</dl>
+  </div></section>
+  <section class="section" aria-labelledby="ux-from-h"><div class="wrap">
+    <h2 id="ux-from-h">${esc(s.fromDateHeading)}</h2>
+    <div class="inputs-row"><div class="field"><label for="ux-date">${esc(s.dateLabel)}</label><input id="ux-date" type="datetime-local" step="1" data-ux-date></div>
+    <div class="field"><label for="ux-zone">${esc(s.zoneLabel)}</label><select id="ux-zone" data-ux-zone><option value="local">${esc(s.zoneLocal)}</option><option value="utc">${esc(s.zoneUtc)}</option></select></div></div>
+    <dl class="facts unix-res">${res("sec", s.resSec)}${res("ms", s.resMs)}</dl>
+  </div></section>
+  <section class="section" aria-labelledby="ux-38-h"><div class="wrap">
+    <h2 id="ux-38-h">${esc(s.y2038Heading)}</h2>
+    <p>${esc(s.y2038)}</p>
+    <p class="meta" data-ux-2038>&nbsp;</p>
+    <h2>${esc(s.factsHeading)}</h2>
+    <ul>${s.facts.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+  </div></section>`;
+  const ux = { invalid: s.invalid, detectedMs: s.detectedMs, detectedSec: s.detectedSec, ago: s.ago, in: s.in, y2038Left: s.y2038Left, days: s.days, hours: s.hours, minutes: s.minutes };
+  return simplePage(lang, "unix", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "unix", title: s.h1 }, scripts: ["zones.js"], clientExtra: { t: { ux } }, nav: "tools", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].unix, s.description)] });
+}
+
 /* ---------- Köprü tatil planlayıcı (30 Ekim 2026, rakip analizi #22): lib/bridges.mjs ---------- */
 function buildBridge(lang) {
   const t = I[lang];
@@ -1922,7 +2099,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildBridge(lang), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

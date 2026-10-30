@@ -983,3 +983,11 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
   body:has(.year-grid) .ymonth th, body:has(.year-grid) .ymonth td { height: 5mm; font-size: 7.5pt; }
   body:has(.year-grid) .ymonth caption { padding: 0.5mm; font-size: 9pt; }
 }
+
+/* Saat dilimleri, yaz saati, Unix (30 Ekim 2026, rakip analizi #25) */
+.zones-table td:nth-child(4), .tnum { font-variant-numeric: tabular-nums; }
+.zone-now { text-align: center; margin-top: 1rem; }
+.dst-table tr[hidden] { display: none; }
+.unix { text-align: center; margin-top: 1rem; }
+.unix-now { letter-spacing: 0.02em; }
+.unix-res dd { font-size: 1.05rem; font-weight: 600; overflow-wrap: anywhere; }

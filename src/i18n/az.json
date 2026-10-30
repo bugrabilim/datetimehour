@@ -719,6 +719,18 @@
         "bridge": {
           "name": "Körpü tətil",
           "desc": "Neçə gün məzuniyyətlə neçə gün tətil: Türkiyənin bayramları və həftə sonları."
+        },
+        "dst": {
+          "name": "Yay vaxtı dəyişiklikləri",
+          "desc": "Dünyada saatların irəli və geri çəkiləcəyi tarixlər."
+        },
+        "unix": {
+          "name": "Unix vaxt möhürü",
+          "desc": "Canlı Unix vaxtı, tarixə və tarixdən çevirmə."
+        },
+        "zones": {
+          "name": "Saat qurşaqları",
+          "desc": "UTC, CET, EST kimi qısaltmalar, fərqlər və indiki vaxt."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -1815,5 +1827,151 @@
       "q": "{year} ilində ən sərfəli körpü tətil hansıdır?",
       "a": "{year} ilində ən sərfəli dövr {name}: {leave} gün məzuniyyətlə {days} gün tətil ({dates})."
     }
+  },
+  "zones": {
+    "hubTitle": "Saat qurşağı qısaltmaları: UTC, GMT, CET, EST və s. | Saat Tarih",
+    "hubDescription": "UTC, GMT, CET, CEST, EET, TRT, MSK, EST, PST və digər saat qurşağı qısaltmalarının açılışı, UTC fərqi, indiki vaxtı və Türkiyə ilə fərqi.",
+    "hubH1": "Saat qurşağı qısaltmaları",
+    "hubLead": "Tez-tez istifadə olunan saat qurşağı qısaltmaları, açılışları, UTC fərqləri və indiki vaxtları.",
+    "hubSearch": "saat qurşağı qısaltma utc gmt cet cest eet est pst ist jst msk gst trt time zone",
+    "colAbbr": "Qısaltma",
+    "colName": "Açılışı",
+    "colOffset": "UTC fərqi",
+    "colNow": "İndi",
+    "caption": "Saat qurşağı qısaltmaları və UTC fərqləri",
+    "pageTitle": "{abbr} vaxtı: {name} ({offset}) | Saat Tarih",
+    "pageDescription": "{abbr} ({name}) {offset} saat qurşağıdır. İndi {abbr} ilə saat neçədir, harada istifadə olunur, Türkiyə və digər saat qurşaqları ilə fərqi nədir?",
+    "pageH1": "{abbr}: {name}",
+    "pageLead": "{abbr} {name} deməkdir; UTC-yə görə fərqi {offset}.",
+    "nowLabel": "İndi {abbr} vaxtı",
+    "offsetLine": "UTC fərqi: {offset}",
+    "usedIn": "İstifadə olunduğu yerlər",
+    "usedNone": "UTC bir ölkənin yerli vaxtı deyil, dünyanın ümumi vaxt şkalasıdır; aviasiyada, elmdə və kompüter sistemlərində istifadə olunur.",
+    "dstWinter": "{abbr} standart (qış) vaxtıdır; yay vaxtı tətbiq edən yerlərdə yayda {pair} ({pairOffset}) istifadə olunur.",
+    "dstSummer": "{abbr} yay vaxtıdır; qışda {pair} ({pairOffset}) istifadə olunur.",
+    "dstNone": "Bu saat qurşağında yay vaxtı tətbiq olunmur.",
+    "diffHeading": "{abbr} və digər saat qurşaqları",
+    "colZone": "Saat qurşağı",
+    "colDiff": "Fərq",
+    "colExample": "{abbr} ilə 12:00 olanda",
+    "same": "Eyni vaxt",
+    "ahead": "{d} irəli",
+    "behind": "{d} geri",
+    "hoursShort": "saat",
+    "minutesShort": "dəq",
+    "ambiguous": {
+      "IST": "IST qısaltması İrlandiya standart vaxtı (UTC+1) və İsrail standart vaxtı (UTC+2) üçün də işlədilir; bu səhifə Hindistan vaxtıdır.",
+      "CST": "CST qısaltması Çin standart vaxtı (UTC+8) və Kuba standart vaxtı (UTC−5) üçün də işlədilir; bu səhifə Şimali Amerika Mərkəzi standart vaxtıdır.",
+      "GST": "GST qısaltması Cənubi Georgiya vaxtı (UTC−2) üçün də işlədilir; bu səhifə Körfəz vaxtıdır."
+    },
+    "trtName": "Türkiyə vaxtı",
+    "faq": [
+      {
+        "q": "UTC ilə GMT arasında fərq varmı?",
+        "a": "Gündəlik istifadədə hər ikisi eyni vaxtı göstərir (UTC+0). UTC atom saatları ilə saxlanılan ümumi vaxt şkalasıdır; GMT isə Britaniya və bəzi ölkələrin qışda istifadə etdiyi saat qurşağıdır. Britaniya yayda BST-yə (UTC+1) keçir, UTC isə dəyişmir."
+      },
+      {
+        "q": "Türkiyə hansı saat qurşağından istifadə edir?",
+        "a": "Türkiyə 2016-cı ildən bəri il boyu UTC+3 (TRT, Türkiyə vaxtı) istifadə edir; yay vaxtı yoxdur."
+      }
+    ]
+  },
+  "dst": {
+    "title": "Yay vaxtı dəyişiklikləri: saatlar nə vaxt dəyişəcək? | Saat Tarih",
+    "description": "Avropa, ABŞ, Kanada, Avstraliya və digər ölkələrdə növbəti 12 ayda saatların dəyişəcəyi tarixlər və yerli saatlar. Türkiyədə yay vaxtı yoxdur.",
+    "h1": "Dünyada yay vaxtı dəyişiklikləri",
+    "lead": "Növbəti 12 ayda saatların irəli və ya geri çəkiləcəyi tarixlər, yerli saatlar və ölkələr.",
+    "search": "yay vaxtı qış vaxtı saatlar geri çəkiləcək irəli dst daylight saving time avropa abş",
+    "colDate": "Tarix",
+    "colWhere": "Harada",
+    "colChange": "Dəyişiklik",
+    "colLeft": "Qalan",
+    "forward": "Saatlar 1 saat irəli: {from} → {to}",
+    "back": "Saatlar 1 saat geri: {from} → {to}",
+    "forwardN": "Saatlar {d} irəli: {from} → {to}",
+    "backN": "Saatlar {d} geri: {from} → {to}",
+    "inDays": "{n} gün sonra",
+    "today": "Bu gün",
+    "tomorrow": "Sabah",
+    "caption": "Növbəti 12 ayda yay vaxtı dəyişiklikləri (yerli vaxtla)",
+    "groups": {
+      "eu": "Avropa",
+      "us": "ABŞ və Kanada",
+      "cl": "Çili",
+      "au": "Avstraliya (cənub-şərq)",
+      "nz": "Yeni Zelandiya",
+      "il": "İsrail",
+      "lb": "Livan",
+      "eg": "Misir",
+      "ma": "Mərakeş",
+      "cu": "Kuba",
+      "md": "Moldova",
+      "ps": "Fələstin",
+      "gl": "Qrenlandiya"
+    },
+    "turkeyNote": "Türkiyədə yay vaxtı yoxdur: 2016-cı ildən bəri il boyu UTC+3 istifadə olunur.",
+    "note": "Tarixlər IANA saat qurşağı bazasından hesablanır (səhifə brauzerinizdə yenidən hesablanır). Ölkələr qaydalarını dəyişə bilər; rəsmi elan əsasdır.",
+    "faq": [
+      {
+        "q": "Avropada saatlar nə vaxt geri çəkilir?",
+        "a": "Avropa İttifaqı ölkələrində və Britaniyada saatlar martın son bazar günü 01:00 UTC-də bir saat irəli, oktyabrın son bazar günü 01:00 UTC-də bir saat geri çəkilir."
+      },
+      {
+        "q": "Türkiyədə yay vaxtı varmı?",
+        "a": "Xeyr. Türkiyə 2016-cı ildə yay vaxtını ləğv edib və il boyu UTC+3 (Türkiyə vaxtı) istifadə edir."
+      }
+    ]
+  },
+  "unix": {
+    "title": "Unix vaxt möhürü: canlı Unix vaxtı və tarix çevirici | Saat Tarih",
+    "description": "İndiki Unix vaxtı (epoch) saniyə və millisaniyə ilə canlı; vaxt möhürünü tarixə, tarixi vaxt möhürünə çevirin. UTC, yerli vaxt və ISO 8601; 2038 problemi.",
+    "h1": "Unix vaxt möhürü",
+    "lead": "1 yanvar 1970 00:00:00 UTC-dən bəri keçən saniyələrin sayı: canlı Unix vaxtı və iki istiqamətli çevirici.",
+    "search": "unix vaxt möhürü timestamp epoch unix time saniyə millisaniyə çevirici 2038",
+    "nowLabel": "İndiki Unix vaxtı",
+    "seconds": "saniyə",
+    "milliseconds": "millisaniyə",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı",
+    "toDateHeading": "Vaxt möhürünü tarixə çevir",
+    "tsLabel": "Unix vaxt möhürü (saniyə və ya millisaniyə)",
+    "fromDateHeading": "Tarixi vaxt möhürünə çevir",
+    "dateLabel": "Tarix və saat",
+    "zoneLabel": "Saat qurşağı",
+    "zoneLocal": "Yerli vaxt",
+    "zoneUtc": "UTC",
+    "resUtc": "UTC",
+    "resLocal": "Yerli vaxt",
+    "resIso": "ISO 8601",
+    "resRel": "İndidən",
+    "resSec": "Saniyə",
+    "resMs": "Millisaniyə",
+    "detectedMs": "Millisaniyə kimi oxundu",
+    "detectedSec": "Saniyə kimi oxundu",
+    "invalid": "Düzgün rəqəm və ya tarix daxil edin.",
+    "ago": "{d} əvvəl",
+    "in": "{d} sonra",
+    "y2038Heading": "2038 problemi",
+    "y2038": "İşarəli 32 bitlik tam ədədlə saxlanan Unix vaxtı 19 yanvar 2038 03:14:07 UTC-də (2147483647) daşır; müasir sistemlər 64 bit istifadə edir.",
+    "y2038Left": "2038 həddinə qalan: {d}",
+    "factsHeading": "Bilmək faydalıdır",
+    "facts": [
+      "Unix vaxtı saat qurşağından asılı deyil: eyni anda dünyanın hər yerində eyni rəqəmdir.",
+      "Sıçrayış saniyələri sayılmır; hər gün dəqiq 86 400 saniyədir.",
+      "JavaScript və Java millisaniyə (13 rəqəm), Unix alətlərinin və verilənlər bazalarının çoxu saniyə (10 rəqəm) istifadə edir."
+    ],
+    "days": "gün",
+    "hours": "saat",
+    "minutes": "dəqiqə",
+    "faq": [
+      {
+        "q": "Unix vaxt möhürü nədir?",
+        "a": "Unix vaxt möhürü (epoch) 1 yanvar 1970 00:00:00 UTC-dən bəri keçən saniyələrin sayıdır. Saat qurşağından asılı deyil; kompüter sistemləri tarixləri bu rəqəmlə saxlayır."
+      },
+      {
+        "q": "Vaxt möhürü saniyədir, yoxsa millisaniyə?",
+        "a": "10 rəqəmli ədədlər adətən saniyə, 13 rəqəmli ədədlər millisaniyədir. Bu səhifədəki çevirici onları rəqəm sayına görə ayırır."
+      }
+    ]
   }
 }
