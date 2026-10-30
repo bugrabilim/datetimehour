@@ -46,12 +46,13 @@ class WakeTaskTest {
     @Test fun wakeCheckSchedulesAndCancels() {
         AlarmItem.save(listOf(AlarmItem(id = "w", hour = 7, minute = 0, wakeCheck = true)))
         val am = shadowOf(c.getSystemService(AlarmManager::class.java))
-        val before = am.scheduledAlarms.size
+        // Başka planlar (bildirimler) arka planda kurulabildiği için sayı değil kimlik denetlenir
+        fun ids() = am.scheduledAlarms.mapNotNull { a -> a.operation?.let { shadowOf(it).savedIntent.getStringExtra(AlarmScheduler.EXTRA_ID) } }
         AlarmScheduler.stop(c, "w")
         // Soru (5 dk) ve yedek alarm (7 dk)
-        assertEquals(before + 2, am.scheduledAlarms.size)
+        assertTrue("wakeask-w" in ids() && "wakecheck-w" in ids())
         WakeCheck.awake(c, "w")
-        assertEquals(before, am.scheduledAlarms.size)
+        assertFalse("wakeask-w" in ids() || "wakecheck-w" in ids())
         AlarmItem.save(emptyList())
     }
 }
