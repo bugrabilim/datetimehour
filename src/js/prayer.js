@@ -65,6 +65,12 @@
       var td = rows[k] && rows[k].querySelector("[data-pr-time]");
       if (td) td.textContent = fmt(t[k]);
     });
+    // Kerahat (yaklaşık, P.KERAHAT_MIN dakika): işrak, istiva, isfirar
+    var km = P.KERAHAT_MIN || 45, kr = { israk: [t.sunrise, t.sunrise + km], istiva: [t.dhuhr - km, t.dhuhr], isfirar: [t.maghrib - km, t.maghrib] };
+    Object.keys(kr).forEach(function (k) {
+      var el = doc.querySelector('[data-pr-kr="' + k + '"]');
+      if (el) el.textContent = kr[k][0] == null || isNaN(kr[k][0]) ? "–" : fmt(kr[k][0]) + "–" + fmt(kr[k][1]);
+    });
     pickNext(now);
   }
   function pickNext(now) {

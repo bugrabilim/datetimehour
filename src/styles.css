@@ -1022,3 +1022,49 @@ tr.is-past th, tr.is-past td { color: var(--muted); }
 .api-table td:first-child { white-space: nowrap; }
 .api-code { display: block; overflow-x: auto; padding: 0.9rem 1rem; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: var(--radius); text-align: left; }
 .table-wrap + .meta { margin-top: 0.6rem; }
+.pr-kerahat { margin-top: 0.8rem; max-width: 26rem; }
+.pr-kerahat summary { cursor: pointer; color: var(--muted); font-weight: 600; }
+.pr-kerahat ul { margin: 0.4rem 0; padding-inline-start: 1.1rem; }
+.pr-kerahat li span { font-variant-numeric: tabular-nums; font-weight: 600; }
+.light-hours { margin-top: 1rem; }
+.zk-fitre { margin-top: 1.5rem; }
+
+/* Saat görünümü (rakip analizi #40, 30 Ekim 2026): ayarlardaki yazı tipi ve renk; <html data-cfont data-ccolor>.
+   Saat rakamları (sahne, çevirmeli kartlar, araçların büyük süresi) ve analog ibre/rakamlar. Renkler iki temada ≥4,5:1. */
+html[data-cfont="rounded"] { --clock-font: ui-rounded, "SF Pro Rounded", "Nunito", "Varela Round", system-ui, sans-serif; }
+html[data-cfont="serif"] { --clock-font: ui-serif, Georgia, Cambria, "Times New Roman", serif; }
+html[data-cfont="mono"] { --clock-font: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; }
+html[data-cfont="light"] { --clock-weight: 300; }
+html[data-cfont] .clock, html[data-cfont] .flip-d, html[data-cfont] .big-time, html[data-cfont] .analog .num { font-family: var(--clock-font, inherit); }
+html[data-cfont="light"] .clock, html[data-cfont="light"] .flip-d, html[data-cfont="light"] .big-time { font-weight: var(--clock-weight); }
+html[data-cfont="mono"] .clock, html[data-cfont="mono"] .big-time { letter-spacing: -0.06em; }
+html[data-ccolor="ink"] { --clock-ink: #233a6b; }
+html[data-ccolor="blue"] { --clock-ink: #1d5fbf; }
+html[data-ccolor="green"] { --clock-ink: #1d7041; }
+html[data-ccolor="red"] { --clock-ink: #b3261e; }
+html[data-ccolor="purple"] { --clock-ink: #6f3bb3; }
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"])[data-ccolor="ink"] { --clock-ink: #a9bde6; }
+  html:not([data-theme="light"])[data-ccolor="blue"] { --clock-ink: #7fb0ff; }
+  html:not([data-theme="light"])[data-ccolor="green"] { --clock-ink: #6fd49a; }
+  html:not([data-theme="light"])[data-ccolor="red"] { --clock-ink: #ff8a7a; }
+  html:not([data-theme="light"])[data-ccolor="purple"] { --clock-ink: #c9a3ff; }
+}
+html[data-theme="dark"][data-ccolor="ink"] { --clock-ink: #a9bde6; }
+html[data-theme="dark"][data-ccolor="blue"] { --clock-ink: #7fb0ff; }
+html[data-theme="dark"][data-ccolor="green"] { --clock-ink: #6fd49a; }
+html[data-theme="dark"][data-ccolor="red"] { --clock-ink: #ff8a7a; }
+html[data-theme="dark"][data-ccolor="purple"] { --clock-ink: #c9a3ff; }
+html[data-ccolor] .clock, html[data-ccolor] .flip-d, html[data-ccolor] .big-time { color: var(--clock-ink); }
+html[data-ccolor] .analog .hand:not(.hand-sec), html[data-ccolor] .analog .tick-major { stroke: var(--clock-ink); }
+html[data-ccolor] .analog .num { fill: var(--clock-ink); }
+.set-look { display: grid; gap: 0.35rem; padding-block: 0.5rem; cursor: default; }
+.set-look:hover { background: none; }
+.set-look-h { font-weight: 600; }
+.set-look-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.set-look-row .set-select { max-width: 11rem; }
+
+/* Pomodoro günlük hedef ve etiket (#27) */
+.pomo-goal { margin: 0.25rem 0 0; text-align: center; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+.pomo-goal.is-done { color: var(--accent); }
+.pomo-task { align-items: end; }

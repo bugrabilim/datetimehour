@@ -47,7 +47,26 @@
     "placeChange": "Change location",
     "placeTitle": "Your location",
     "placeNote": "Your location stays on your device and is used on every page for prayer times, seasons and weather; it is not sent to the server.",
-    "placeClose": "Close"
+    "placeClose": "Close",
+    "look": "Clock appearance",
+    "lookFont": "Font",
+    "lookFonts": {
+      "rounded": "Rounded",
+      "standard": "Standard",
+      "serif": "Serif",
+      "mono": "Monospaced",
+      "light": "Light"
+    },
+    "lookColor": "Clock colour",
+    "lookColors": {
+      "default": "Site colour",
+      "ink": "Ink",
+      "blue": "Blue",
+      "green": "Green",
+      "red": "Red",
+      "purple": "Purple"
+    },
+    "lookNote": "Your choice is stored in this browser only."
   },
   "client": {
     "format24": "24-hour",
@@ -336,7 +355,7 @@
             ],
             [
               "sth-prefs",
-              "Remembers 24-hour or 12-hour display, the seconds setting and the clock style you chose last.",
+              "Remembers 24- or 12-hour display, the seconds setting, the clock model you last chose and the clock look (font, colour).",
               "Until you delete it"
             ],
             [
@@ -351,17 +370,17 @@
             ],
             [
               "sth-alarms",
-              "Remembers the alarms you set.",
+              "Remembers the alarms you set and each alarm's sound.",
               "Until you delete it"
             ],
             [
               "sth-pomo",
-              "Remembers pomodoro durations and state.",
+              "Remembers pomodoro durations, your daily goal, the chosen tag and state.",
               "Until you delete it"
             ],
             [
               "sth-pomo-log",
-              "Keeps completed work sessions (date, length, optional task name) on this device for pomodoro statistics; at most 1,000 entries.",
+              "Keeps completed work sessions (date, length, optional task name and tag) on this device for pomodoro statistics; at most 1,000 entries.",
               "Until you delete it"
             ],
             [
@@ -682,7 +701,8 @@
     "icsCalHolidays": "Public holidays in Turkey (Saat Tarih)",
     "icsCalDays": "Religious and special days in Turkey (Saat Tarih)",
     "icsHalf": "half day",
-    "icsProjected": "based on Diyanet's long-range calendar (projection)"
+    "icsProjected": "based on Diyanet's long-range calendar (projection)",
+    "icsCalMoon": "Moon phases and eclipses (Saat Tarih)"
   },
   "tools": {
     "hub": {
@@ -819,7 +839,8 @@
           "q": "What is a lap and how do I record one?",
           "a": "A lap is a split time taken without stopping the stopwatch. Press the Lap button or the L key while it runs; each lap time and the total are listed, with the best and slowest laps marked."
         }
-      ]
+      ],
+      "csv": "Download laps as CSV"
     },
     "countdown": {
       "title": "Countdown Timer: By Duration or Date | Saat Tarih",
@@ -870,7 +891,8 @@
       "namePlaceholder": "E.g. Holiday",
       "copyLink": "Copy link",
       "copied": "Link copied",
-      "shareNote": "You can share the link for the date you picked; the countdown starts by itself when the link is opened."
+      "shareNote": "You can share the link for the date you picked; the countdown starts by itself when the link is opened.",
+      "addMinute": "+1 min"
     },
     "alarm": {
       "title": "Online Alarm Clock: Repeating and Snooze | Saat Tarih",
@@ -921,7 +943,15 @@
           "q": "How do I snooze the alarm?",
           "a": "While it rings, press Snooze 5 min and it rings again five minutes later. The Close button silences it; repeating alarms ring again on the next chosen day."
         }
-      ]
+      ],
+      "soundLabel": "Alarm sound",
+      "sounds": {
+        "chime": "Triple chime",
+        "bell": "Bell",
+        "rise": "Rising",
+        "digital": "Digital beep",
+        "soft": "Soft"
+      }
     },
     "pomodoro": {
       "title": "Pomodoro Timer: Work 25 Minutes, Break 5 | Saat Tarih",
@@ -981,7 +1011,21 @@
       "volume": "Volume",
       "noiseNote": "The sound plays only while a work session is running; it is generated in the browser, nothing is downloaded.",
       "empty": "No completed pomodoros yet.",
-      "minUnit": "min"
+      "minUnit": "min",
+      "csv": "Download history as CSV",
+      "streak": "Streak: {n} days in a row",
+      "goalLabel": "Daily goal (sessions)",
+      "goalProgress": "Today {n}/{g} sessions",
+      "goalDone": "Daily goal reached",
+      "tagLabel": "Tag",
+      "tags": {
+        "none": "No tag",
+        "work": "Work",
+        "study": "Study",
+        "personal": "Personal",
+        "other": "Other"
+      },
+      "byTag": "By tag, last 7 days"
     },
     "presets": {
       "timerTitle": "{Name}: online countdown | Saat Tarih",
@@ -1545,7 +1589,14 @@
     "imIftar": "iftar",
     "imNote": "Times are calculated; for official times follow the Presidency of Religious Affairs (Diyanet).",
     "imFile": "ramadan-timetable",
-    "imBrand": "Bumba Group · Bumba Life"
+    "imBrand": "Bumba Group · Bumba Life",
+    "kerahatHeading": "Disliked prayer times (approx.)",
+    "kerahatNames": {
+      "israk": "Sunrise (ishraq)",
+      "istiva": "Before noon (istiwa)",
+      "isfirar": "Sunset (isfirar)"
+    },
+    "kerahatNote": "Voluntary prayers are not performed in these windows. The Diyanet publishes no exact minutes; the common calendar convention of about 45 minutes is used (sources give 10–45 minutes for the window before noon)."
   },
   "nature": {
     "title": "Seasons: Seasons Wheel, Equinoxes and Solstices | Saat Tarih",
@@ -1685,13 +1736,20 @@
     },
     "turnIn": "in {n} days",
     "turnAgo": "{n} days ago",
-    "turnToday": "today"
+    "turnToday": "today",
+    "goldenAm": "Morning golden hour",
+    "goldenPm": "Evening golden hour",
+    "blueAm": "Morning blue hour",
+    "bluePm": "Evening blue hour",
+    "lightNote": "Golden hour: the Sun between 6° above and 4° below the horizon, with soft, warm light. Blue hour: the Sun 4° to 6° below the horizon, a blue twilight. Handy for photographers.",
+    "moonIcsHeading": "Moon phases and eclipses in your calendar",
+    "moonIcsNote": "New moons, full moons and eclipses (2026–2031, as UTC instants; your calendar shows them in your time)."
   },
   "weather": {
-    "title": "Weather: Current, Hourly and 7-Day Forecast | Saat Tarih",
-    "description": "Current weather, an hourly and a 7-day forecast for your location or a province you choose: temperature, feels-like, wind, humidity, rain and UV.",
+    "title": "Weather: Current, Hourly and 14-Day Forecast | Saat Tarih",
+    "description": "Current weather, an hourly and a 14-day forecast for your location or a province you choose: temperature, feels-like, wind, humidity, rain and UV.",
     "h1": "Weather",
-    "lead": "The current temperature plus an hourly and 7-day forecast for your location or a province you choose. It can also be shown beside the full-screen clock.",
+    "lead": "The current temperature plus an hourly and 14-day forecast for your location or a province you choose. It can also be shown beside the full-screen clock.",
     "now": "Now",
     "feelsLike": "Feels like",
     "humidity": "Humidity",
@@ -1700,7 +1758,7 @@
     "pressure": "Pressure",
     "uv": "UV index",
     "hourlyHeading": "Hourly forecast (24 hours)",
-    "dailyHeading": "7-day forecast",
+    "dailyHeading": "14-day forecast",
     "sunrise": "Sunrise",
     "sunset": "Sunset",
     "loading": "Getting the weather…",
@@ -2111,7 +2169,12 @@
         "q": "Why do I type the gold price myself?",
         "a": "The page does not connect to outside services and does not save what you enter. To work out the nisab at today's price, you type the price of one gram of gold."
       }
-    ]
+    ],
+    "fitreHeading": "Fitra (zakat al-fitr)",
+    "fitreText": "Turkey's Presidency of Religious Affairs (High Board of Religious Affairs) set the {year} fitra at {amount} TL per person ({date}), valid from Ramadan {year} until the next Ramadan.",
+    "fitrePeople": "Number of people (including your dependants)",
+    "fitreTotal": "Total fitra",
+    "fitreNote": "The amount is for Turkey and is the minimum; those who can may give more (by the measure of dates or raisins). Fitra is given before the Eid prayer."
   },
   "api": {
     "title": "Open data (API): holidays, prayer times, Hijri calendar | Saat Tarih",

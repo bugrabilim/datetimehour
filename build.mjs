@@ -36,6 +36,9 @@ const extendRoutes = (table) => {
 const arm = cfg.arm;
 const BADGE_W = { games: 185, suites: 177, life: 164, ventures: 205 }[arm];
 
+/* "2026-01-13" → dilin uzun tarih biçiminde ("13 Ocak 2026") */
+const fmtDate = (lang, isoDate) => { const [y, m, d] = isoDate.split("-").map(Number); return tpl(I[lang].calendar.dateFmt, { day: d, month: I[lang].calendar.months[m - 1], year: y }); };
+
 function updatedText(lang) {
   const [y, m, d] = cfg.updated.split("-").map(Number);
   return tpl(I[lang].calendar.dateFmt, { day: d, month: I[lang].calendar.months[m - 1], year: y });
@@ -467,6 +470,10 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
         ${withFaq ? `<a class="set-item" href="${ROUTES[lang].faq}">${esc(u.faq)}</a>` : ""}
         <button type="button" class="set-item" data-search-open aria-haspopup="dialog">${ICON_SEARCH}<span>${esc(u.searchOpen)}</span></button>
         <button type="button" class="set-item" data-theme-toggle aria-label="${esc(u.themeToggle)}">${ICON_MOON}${ICON_SUN}<span>${esc(u.theme)}</span></button>
+        <div class="set-item set-look" role="group" aria-label="${esc(u.look)}"><span class="set-look-h">${esc(u.look)}</span>
+          <label class="set-look-row"><span>${esc(u.lookFont)}</span><select class="set-select" data-look="font">${["standard", "rounded", "serif", "mono", "light"].map((k) => `<option value="${k}">${esc(u.lookFonts[k])}</option>`).join("")}</select></label>
+          <label class="set-look-row"><span>${esc(u.lookColor)}</span><select class="set-select" data-look="color">${["default", "ink", "blue", "green", "red", "purple"].map((k) => `<option value="${k}">${esc(u.lookColors[k])}</option>`).join("")}</select></label>
+          <span class="set-sub">${esc(u.lookNote)}</span></div>
         <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
         <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>
         <div class="set-item set-langrow">${ICON_GLOBE}<label class="sr-only" for="${sid}">${esc(u.langMenu)}</label><select id="${sid}" class="set-select" data-lang-select>${langOpts}</select></div>
@@ -926,6 +933,8 @@ const TOOL_KEYS = ["stopwatch", "countdown", "alarm", "pomodoro"];
 const btn = (cls, attrs, label) => `<button type="button" class="${cls}" ${attrs}>${esc(label)}</button>`;
 const numField = (id, label, attrs) => `<div class="field"><label for="${id}">${esc(label)}</label><input id="${id}" type="number" inputmode="numeric" ${attrs}></div>`;
 const ringBanner = (tt, name) => `<div class="ring-banner" role="alertdialog" aria-label="${esc(tt.alarm.ringing)}" data-ring-banner hidden><p class="ring-title" data-ring-title>${esc(tt.alarm.ringing)}</p><div class="tool-actions">${btn("btn", "data-ring-stop", tt.common.close)}${name === "alarm" ? btn("toggle", "data-ring-snooze", tt.alarm.snooze) : ""}</div></div>`;
+const ALARM_SOUNDS = ["chime", "bell", "rise", "digital", "soft"];
+const POMO_TAGS = ["none", "work", "study", "personal", "other"];
 const soundRow = (tt) => `<div class="tool-extra"><label class="check-inline"><input type="checkbox" data-sound checked> ${esc(tt.common.sound)}</label>${btn("toggle", "data-test-sound", tt.common.testSound)}${btn("toggle", "data-notify", tt.common.notify)}</div>`;
 
 function toolBody(lang, key, preset = {}) {
@@ -937,7 +946,8 @@ function toolBody(lang, key, preset = {}) {
 <p class="meta">${esc(s.hint)}</p>
 <p class="sr-only" role="status" aria-live="polite" data-sw-announce></p>
 <p class="meta" data-sw-empty>${esc(s.empty)}</p>
-<div class="table-wrap laps" data-sw-laps hidden><table><caption>${esc(s.lapsCaption)}</caption><thead><tr><th scope="col">${esc(s.lapNo)}</th><th scope="col">${esc(s.lapTime)}</th><th scope="col">${esc(s.total)}</th></tr></thead><tbody data-sw-body></tbody></table></div>`;
+<div class="table-wrap laps" data-sw-laps hidden><table><caption>${esc(s.lapsCaption)}</caption><thead><tr><th scope="col">${esc(s.lapNo)}</th><th scope="col">${esc(s.lapTime)}</th><th scope="col">${esc(s.total)}</th></tr></thead><tbody data-sw-body></tbody></table></div>
+<div class="tool-extra" data-sw-csvrow hidden>${btn("toggle", "data-sw-csv", s.csv)}</div>`;
   if (key === "countdown")
     return `<div class="tabs" role="tablist" aria-label="${esc(s.panel)}">
   <button type="button" role="tab" id="tab-timer" aria-selected="true" aria-controls="cd-timer" data-cd-tab="timer">${esc(s.tabTimer)}</button>
@@ -958,7 +968,7 @@ function toolBody(lang, key, preset = {}) {
 <progress class="tool-progress" max="100" value="0" data-cd-progress aria-hidden="true"></progress>
 <p class="cd-message" role="status" data-cd-message hidden></p>
 ${preset.sec ? `<p class="meta" data-cd-endsat data-tpl="${esc(tt.presets.endsAt)}" data-tpl-run="${esc(tt.presets.endsAtRun)}">&nbsp;</p>` : ""}
-<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}</div>
+<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-add hidden", s.addMinute)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}</div>
 <p class="meta">${esc(s.shareNote)}</p>
 ${soundRow(tt)}
 ${ringBanner(tt, "countdown")}`;
@@ -972,6 +982,7 @@ ${ringBanner(tt, "countdown")}`;
     ${s.dayNames.map((d, i) => `<label class="day"><input type="checkbox" value="${i}" data-al-day><span>${esc(d)}</span></label>`).join("")}
     <span class="presets">${btn("chip", 'data-al-preset="none"', s.once)}${btn("chip", 'data-al-preset="weekdays"', s.weekdays)}${btn("chip", 'data-al-preset="all"', s.every)}</span>
   </fieldset>
+  <div class="field"><label for="al-sound">${esc(s.soundLabel)}</label><select id="al-sound" data-al-sound>${ALARM_SOUNDS.map((k) => `<option value="${k}">${esc(s.sounds[k])}</option>`).join("")}</select></div>
   <button class="btn" type="submit">${esc(s.add)}</button>
 </form>
 <h2 class="tool-h2">${esc(s.listHeading)}</h2>
@@ -983,27 +994,31 @@ ${ringBanner(tt, "countdown")}`;
 <p class="meta">${esc(s.note)}</p>
 ${ringBanner(tt, "alarm")}`;
   // pomodoro
-  return `<div class="field pomo-task"><label for="po-task">${esc(s.taskLabel)}</label><input id="po-task" type="text" maxlength="60" placeholder="${esc(s.taskPlaceholder)}" data-pomo-task></div>
+  return `<div class="inputs-row pomo-task"><div class="field grow"><label for="po-task">${esc(s.taskLabel)}</label><input id="po-task" type="text" maxlength="60" placeholder="${esc(s.taskPlaceholder)}" data-pomo-task></div><div class="field"><label for="po-tag">${esc(s.tagLabel)}</label><select id="po-tag" data-pomo-tag>${POMO_TAGS.map((k) => `<option value="${k}">${esc(s.tags[k])}</option>`).join("")}</select></div></div>
 <p class="phase" data-pomo-phase aria-live="polite">${esc(s.work)}</p>
 <p class="big-time" role="timer" aria-label="${esc(s.phaseLabel)}" data-pomo-display>25:00</p>
 <progress class="tool-progress" max="100" value="0" data-pomo-progress aria-hidden="true"></progress>
 <p class="meta" data-pomo-round>&nbsp;</p>
 <div class="tool-actions">${btn("btn", "data-pomo-start", s.start)}${btn("toggle", "data-pomo-skip", s.skip)}${btn("toggle", "data-pomo-reset", s.reset)}</div>
 <p class="meta" data-pomo-count>&nbsp;</p>
+<p class="pomo-goal" data-pomo-goal aria-live="polite">&nbsp;</p>
 <details class="pomo-settings"><summary>${esc(s.settings)}</summary>
-  <div class="inputs-row">${numField("po-w", s.workMin, 'min="1" max="180" value="25" data-pomo-w')}${numField("po-s", s.shortMin, 'min="1" max="60" value="5" data-pomo-s')}${numField("po-l", s.longMin, 'min="1" max="120" value="15" data-pomo-l')}${numField("po-r", s.roundsLabel, 'min="2" max="12" value="4" data-pomo-r')}</div>
+  <div class="inputs-row">${numField("po-w", s.workMin, 'min="1" max="180" value="25" data-pomo-w')}${numField("po-s", s.shortMin, 'min="1" max="60" value="5" data-pomo-s')}${numField("po-l", s.longMin, 'min="1" max="120" value="15" data-pomo-l')}${numField("po-r", s.roundsLabel, 'min="2" max="12" value="4" data-pomo-r')}${numField("po-g", s.goalLabel, 'min="1" max="24" value="4" data-pomo-g')}</div>
 </details>
 <div class="inputs-row pomo-noise"><div class="field"><label for="po-noise">${esc(s.noise)}</label><select id="po-noise" data-pomo-noise>${["off", "white", "pink", "brown", "rain"].map((k) => `<option value="${k}">${esc(s["noise" + k[0].toUpperCase() + k.slice(1)])}</option>`).join("")}</select></div><div class="field"><label for="po-vol">${esc(s.volume)}</label><input id="po-vol" type="range" min="0" max="100" value="40" data-pomo-vol></div></div>
 <p class="meta">${esc(s.noiseNote)}</p>
 ${soundRow(tt)}
 <section class="pomo-stats" aria-labelledby="pomo-stats-h">
   <h2 id="pomo-stats-h" class="tool-h2">${esc(s.statsHeading)}</h2>
+  <p class="meta" data-pomo-streak hidden></p>
   <dl class="facts"><div class="fact"><dt>${esc(s.today)}</dt><dd data-pomo-st-today>–</dd></div><div class="fact"><dt>${esc(s.week)}</dt><dd data-pomo-st-week>–</dd></div><div class="fact"><dt>${esc(s.total)}</dt><dd data-pomo-st-total>–</dd></div></dl>
   <figure class="pomo-chart"><div class="pomo-bars" data-pomo-bars aria-hidden="true"></div><figcaption class="meta">${esc(s.chartCaption)}</figcaption></figure>
   <h3 class="tool-h3">${esc(s.topTasks)}</h3>
   <ul class="pomo-tasks" data-pomo-tasks></ul>
+  <h3 class="tool-h3" data-pomo-tagsh hidden>${esc(s.byTag)}</h3>
+  <ul class="pomo-tasks" data-pomo-bytag hidden></ul>
   <p class="meta" data-pomo-empty>${esc(s.empty)}</p>
-  ${btn("toggle", "data-pomo-clear", s.clear)}
+  <div class="tool-actions">${btn("toggle", "data-pomo-csv", s.csv)}${btn("toggle", "data-pomo-clear", s.clear)}</div>
 </section>`;
 }
 
@@ -1569,6 +1584,8 @@ function buildNature(lang) {
     <dl class="facts">${cell(n.sunrise, "data-n-sun=\"rise\"")}${cell(n.sunset, "data-n-sun=\"set\"")}${cell(n.dayLength, "data-n-sun=\"len\"")}${cell(n.solarNoon, "data-n-sun=\"noon\"")}</dl>
     <p class="meta" data-n-delta>&nbsp;</p>
     <p class="meta" data-n-left>&nbsp;</p>
+    <dl class="facts light-hours">${["blueAm", "goldenAm", "goldenPm", "bluePm"].map((k) => cell(n[k], `data-n-light="${k}" dir="ltr"`)).join("")}</dl>
+    <p class="meta">${esc(n.lightNote)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="n-moon-h">
@@ -1601,6 +1618,9 @@ function buildNature(lang) {
     <ul class="eclipses" data-n-eclipses></ul>
     <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>
     <p class="meta">${esc(n.eclipseSource)}</p>
+    <h3>${esc(n.moonIcsHeading)}</h3>
+    <p class="share-row">${(() => { const u = ICS_URL(lang, "moon"), cal = t.calendar; return `<a class="toggle" href="${u}" download>${esc(cal.icsDownload)}</a><a class="toggle" href="${ORIGIN.replace(/^https?:/, "webcal:")}${u}">${esc(cal.icsSubscribe)}</a><a class="toggle" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(ORIGIN.replace(/^https?:/, "webcal:") + u)}" target="_blank" rel="noopener">${esc(cal.icsGoogle)}</a>`; })()}</p>
+    <p class="meta">${esc(n.moonIcsNote)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="n-chart-h">
@@ -1687,6 +1707,7 @@ function prayerBody(lang, prov, extra = "") {
       <div class="pr-right">
         <h3>${esc(s.todayHeading)}</h3>
         <table class="events-table pr-today"><thead class="sr-only"><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table>
+        <details class="pr-kerahat"><summary>${esc(s.kerahatHeading)}</summary><ul>${["israk", "istiva", "isfirar"].map((k) => `<li>${esc(s.kerahatNames[k])}: <span data-pr-kr="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.kerahatNote)}</p></details>
       </div>
       <noscript><p class="meta">${esc(s.noscript)}</p></noscript>
     </section>`;
@@ -2056,6 +2077,7 @@ function qiblaDial(lang) {
 /* Zekât hesaplama (30 Ekim 2026, sahibin isteği; uygulamalardaki İbadet › Zekât ile aynı hesap): nisab 80,18 g altın
    (Diyanet), oran 1/40, altın fiyatını kullanıcı yazar; tutarlar kaydedilmez, gönderilmez. Betik zakat.js. */
 const ZAKAT_FIELDS = ["cash", "goldGrams", "goldPrice", "silverValue", "foreign", "trade", "receivable", "debt"];
+const FITRE = readJson("src/data/fitre.json");
 function buildZakat(lang) {
   const t = I[lang], s = t.zakat;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].zakat }];
@@ -2072,7 +2094,15 @@ function buildZakat(lang) {
       <p class="meta">${esc(s.privacy)}</p>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
-  const sections = `<section class="section"><div class="wrap"><p class="meta">${esc(s.note)}</p></div></section>`;
+  const fy = Object.keys(FITRE.years).sort().pop(), fv = FITRE.years[fy];
+  const fitre = `<section class="zk-fitre" data-fitre="${fv.amount}" aria-labelledby="zk-f-h">
+      <h2 id="zk-f-h" class="zk-res-h">${esc(s.fitreHeading)}</h2>
+      <p>${esc(tpl(s.fitreText, { year: fy, amount: fv.amount, date: fmtDate(lang, fv.date) }))}</p>
+      <div class="zk-grid"><div class="field"><label for="zk-people">${esc(s.fitrePeople)}</label><input id="zk-people" type="number" inputmode="numeric" min="1" max="99" value="1" data-fitre-people></div></div>
+      <dl class="facts zk-res"><div class="fact"><dt>${esc(s.fitreTotal)}</dt><dd data-fitre-total dir="ltr">${fv.amount} TL</dd></div></dl>
+      <p class="meta">${esc(s.fitreNote)}</p>
+    </section>`;
+  const sections = `<section class="section"><div class="wrap">${fitre}<p class="meta">${esc(s.note)}</p></div></section>`;
   const zk = { needGold: s.needGold, due: s.due, notDue: s.notDue };
   return simplePage(lang, "zakat", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "zakat", title: s.h1 }, scripts: ["zakat.js"], clientExtra: { t: { zk } }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].zakat, s.description)] });
 }
@@ -2340,6 +2370,29 @@ write("500.html", errorPage("serverError"));
     hijri: { path: `${API_BASE}/hijri.json` },
     astronomy: { path: `${API_BASE}/astronomy/{year}.json`, years: HOL_YEARS },
   } });
+}
+
+/* Ay evreleri ve tutulmalar takvimi (30 Ekim 2026): /ics/<dil>-moon.ics, yeni ay, dolunay ve tutulmalar 2026–2031,
+   UTC anıyla (bitişsiz zamanlı etkinlik: RFC 5545'e göre başlangıç anında biter). Mevsimler sayfasındaki bağlantılar. */
+for (const lang of LANGS) {
+  const cal = I[lang].calendar, n = I[lang].nature;
+  const stamp = cfg.updated.replace(/-/g, "") + "T000000Z";
+  const ut = (ms) => new Date(ms).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+  const from = Date.UTC(HOL_YEARS[0], 0, 1), to = Date.UTC(HOL_YEARS[HOL_YEARS.length - 1] + 1, 0, 1);
+  const ev = [];
+  const k0 = Math.floor(((from / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861)) - 1;
+  for (let k = k0; ; k++) {
+    const nw = NATURE.phaseMs(k, false), fl = NATURE.phaseMs(k, true);
+    if (nw >= to) break;
+    if (nw >= from) ev.push({ at: nw, kind: "new", title: n.phases.new });
+    if (fl >= from && fl < to) ev.push({ at: fl, kind: "full", title: n.phases.full });
+  }
+  for (const e of ECLIPSES) if (e.ut >= from && e.ut < to) ev.push({ at: e.ut, kind: "ecl", title: n.eclipseTypes[e.kind + e.type[0].toUpperCase() + e.type.slice(1)] || e.type });
+  ev.sort((a, b) => a.at - b.at);
+  const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:-//Bumba//Saat Tarih Moon//${lang.toUpperCase()}`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH", `X-WR-CALNAME:${icsEsc(cal.icsCalMoon)}`, "REFRESH-INTERVAL;VALUE=DURATION:P30D", "X-PUBLISHED-TTL:P30D"];
+  for (const e of ev) lines.push("BEGIN:VEVENT", `UID:${ut(e.at)}-${e.kind}-${lang}@time.bumba.tr`, `DTSTAMP:${stamp}`, `DTSTART:${ut(e.at)}`, `SUMMARY:${icsEsc((e.kind === "new" ? "🌑 " : e.kind === "full" ? "🌕 " : "") + e.title)}`, `URL:${abs(ROUTES[lang].nature)}`, "TRANSP:TRANSPARENT", "END:VEVENT");
+  lines.push("END:VCALENDAR");
+  write(ICS_URL(lang, "moon").slice(1), lines.map(icsFold).join("\r\n") + "\r\n");
 }
 
 /* ---------- sitemap, robots, llms.txt, manifest ---------- */

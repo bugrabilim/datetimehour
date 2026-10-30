@@ -217,6 +217,14 @@
     var y = sun(prev.getUTCFullYear(), prev.getUTCMonth() + 1, prev.getUTCDate());
     var set = function (k, v) { var e = doc.querySelector('[data-n-sun="' + k + '"]'); if (e) e.textContent = v; };
     set("rise", hhmm(t.rise)); set("set", hhmm(t.set)); set("len", dur(t.len)); set("noon", hhmm(t.noon));
+    // Altın saat (+6°…−4°) ve mavi saat (−4°…−6°)
+    if (P.lightHours) {
+      var lh = P.lightHours(p.year, p.month, p.day, place.lat, place.lon, offH(p.year, p.month, p.day));
+      Object.keys(lh).forEach(function (k) {
+        var e = doc.querySelector('[data-n-light="' + k + '"]');
+        if (e) e.textContent = isFinite(lh[k][0]) && isFinite(lh[k][1]) ? hhmm(lh[k][0]) + "–" + hhmm(lh[k][1]) : "–";
+      });
+    }
     var dm = Math.round((t.len - y.len) * 60);
     setText("[data-n-delta]", dm === 0 ? "" : S.tpl(dm > 0 ? T.dayLonger : T.dayShorter, { m: Math.abs(dm) }));
     var nowH = (p.hour * 60 + p.minute) / 60 + p.second / 3600;

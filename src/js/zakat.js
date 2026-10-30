@@ -48,6 +48,16 @@
     verdict.classList.toggle("is-due", r.due);
   }
 
+  // Fitre: kişi sayısı × Diyanet'in açıkladığı tutar
+  var fBox = document.querySelector("[data-fitre]"), fIn = document.querySelector("[data-fitre-people]"), fOut = document.querySelector("[data-fitre-total]");
+  if (fBox && fIn && fOut) {
+    var fAmount = parseFloat(fBox.getAttribute("data-fitre")) || 0;
+    var nf0 = new Intl.NumberFormat(S.lang === "ar" ? "en" : S.locale, { maximumFractionDigits: 0 });
+    var fRender = function () { var n = Math.max(1, Math.min(99, parseInt(fIn.value, 10) || 1)); fOut.textContent = nf0.format(n * fAmount) + " TL"; };
+    fIn.addEventListener("input", fRender);
+    fRender();
+  }
+
   inputs.forEach(function (i) {
     i.addEventListener("input", function () {
       if (!used) { used = true; S.track("arac", { arac: "zekat" }); }

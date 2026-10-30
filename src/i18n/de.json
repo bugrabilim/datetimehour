@@ -47,7 +47,26 @@
     "placeChange": "Standort ändern",
     "placeTitle": "Ihr Standort",
     "placeNote": "Ihr Standort bleibt auf Ihrem Gerät und wird auf allen Seiten für Gebetszeiten, Jahreszeiten und Wetter verwendet; er wird nicht an den Server gesendet.",
-    "placeClose": "Schließen"
+    "placeClose": "Schließen",
+    "look": "Uhr-Darstellung",
+    "lookFont": "Schriftart",
+    "lookFonts": {
+      "rounded": "Abgerundet",
+      "standard": "Standard",
+      "serif": "Serif",
+      "mono": "Monospace",
+      "light": "Leicht"
+    },
+    "lookColor": "Uhrfarbe",
+    "lookColors": {
+      "default": "Seitenfarbe",
+      "ink": "Tinte",
+      "blue": "Blau",
+      "green": "Grün",
+      "red": "Rot",
+      "purple": "Lila"
+    },
+    "lookNote": "Ihre Auswahl wird nur in diesem Browser gespeichert."
   },
   "client": {
     "format24": "24 Stunden",
@@ -363,7 +382,7 @@
             ],
             [
               "sth-prefs",
-              "Speichert 24- oder 12-Stunden-Anzeige, die Sekundeneinstellung und den zuletzt gewählten Uhrstil.",
+              "Speichert 24- oder 12-Stunden-Anzeige, die Sekundeneinstellung, das zuletzt gewählte Uhrenmodell und das Aussehen der Uhr (Schrift, Farbe).",
               "Bis zur Löschung durch Sie"
             ],
             [
@@ -378,17 +397,17 @@
             ],
             [
               "sth-alarms",
-              "Speichert die von Ihnen gestellten Wecker.",
+              "Speichert Ihre Wecker und den Ton jedes Weckers.",
               "Bis zur Löschung durch Sie"
             ],
             [
               "sth-pomo",
-              "Speichert die Pomodoro-Zeiten und den aktuellen Stand.",
+              "Speichert Pomodoro-Dauern, Ihr Tagesziel, das gewählte Etikett und den Zustand.",
               "Bis zur Löschung durch Sie"
             ],
             [
               "sth-pomo-log",
-              "Speichert abgeschlossene Arbeitsphasen (Datum, Dauer, optionaler Aufgabenname) für die Pomodoro-Statistik auf diesem Gerät; höchstens 1.000 Einträge.",
+              "Speichert abgeschlossene Arbeitsphasen (Datum, Dauer, optionaler Aufgabenname und Etikett) für die Pomodoro-Statistik auf diesem Gerät; höchstens 1000 Einträge.",
               "Bis Sie es löschen"
             ],
             [
@@ -709,7 +728,8 @@
     "icsCalHolidays": "Feiertage in der Türkei (Saat Tarih)",
     "icsCalDays": "Religiöse und besondere Tage in der Türkei (Saat Tarih)",
     "icsHalf": "halber Tag",
-    "icsProjected": "nach dem Langzeitkalender von Diyanet (Hochrechnung)"
+    "icsProjected": "nach dem Langzeitkalender von Diyanet (Hochrechnung)",
+    "icsCalMoon": "Mondphasen und Finsternisse (Saat Tarih)"
   },
   "tools": {
     "hub": {
@@ -846,7 +866,8 @@
           "q": "Was ist eine Runde und wie erfasse ich sie?",
           "a": "Eine Runde ist eine Zwischenzeit, die genommen wird, ohne die Stoppuhr anzuhalten. Drücken Sie während der Messung die Schaltfläche „Runde“ oder die Taste L; jede Rundenzeit und die Gesamtzeit werden aufgelistet, die schnellste und die langsamste Runde sind markiert."
         }
-      ]
+      ],
+      "csv": "Runden als CSV herunterladen"
     },
     "countdown": {
       "title": "Countdown-Timer: nach Dauer oder bis zu einem Datum | Saat Tarih",
@@ -897,7 +918,8 @@
       "namePlaceholder": "z. B. Urlaub",
       "copyLink": "Link kopieren",
       "copied": "Link kopiert",
-      "shareNote": "Sie können den Link zum gewählten Datum teilen; beim Öffnen des Links startet der Countdown automatisch."
+      "shareNote": "Sie können den Link zum gewählten Datum teilen; beim Öffnen des Links startet der Countdown automatisch.",
+      "addMinute": "+1 Min."
     },
     "alarm": {
       "title": "Online-Wecker mit Wiederholung und Schlummerfunktion | Saat Tarih",
@@ -948,7 +970,15 @@
           "q": "Wie nutze ich die Schlummerfunktion?",
           "a": "Drücken Sie während des Klingelns „5 Min. schlummern“; der Wecker klingelt dann fünf Minuten später erneut. Die Schaltfläche „Schließen“ schaltet ihn stumm; wiederholte Wecker klingeln am nächsten gewählten Tag wieder."
         }
-      ]
+      ],
+      "soundLabel": "Wecktonart",
+      "sounds": {
+        "chime": "Dreiklang",
+        "bell": "Glocke",
+        "rise": "Ansteigend",
+        "digital": "Digitaler Piepton",
+        "soft": "Sanft"
+      }
     },
     "pomodoro": {
       "title": "Pomodoro-Timer: 25 Minuten Arbeit, 5 Minuten Pause | Saat Tarih",
@@ -1008,7 +1038,21 @@
       "volume": "Lautstärke",
       "noiseNote": "Das Geräusch läuft nur während einer Arbeitsphase; es wird im Browser erzeugt, nichts wird heruntergeladen.",
       "empty": "Noch keine abgeschlossenen Pomodoros.",
-      "minUnit": "Min."
+      "minUnit": "Min.",
+      "csv": "Verlauf als CSV herunterladen",
+      "streak": "Serie: {n} Tage in Folge",
+      "goalLabel": "Tagesziel (Einheiten)",
+      "goalProgress": "Heute {n}/{g} Einheiten",
+      "goalDone": "Tagesziel erreicht",
+      "tagLabel": "Kategorie",
+      "tags": {
+        "none": "Ohne",
+        "work": "Arbeit",
+        "study": "Lernen",
+        "personal": "Privat",
+        "other": "Sonstiges"
+      },
+      "byTag": "Nach Kategorie, letzte 7 Tage"
     },
     "presets": {
       "timerTitle": "{Name}: Online-Countdown | Saat Tarih",
@@ -1572,7 +1616,14 @@
     "imIftar": "Iftar",
     "imNote": "Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für religiöse Angelegenheiten (Diyanet).",
     "imFile": "ramadan-imsakiye",
-    "imBrand": "Bumba Group · Bumba Life"
+    "imBrand": "Bumba Group · Bumba Life",
+    "kerahatHeading": "Makruh-Zeiten (ungefähr)",
+    "kerahatNames": {
+      "israk": "Sonnenaufgang (Ischraq)",
+      "istiva": "Vor Mittag (Istiwa)",
+      "isfirar": "Sonnenuntergang (Isfirar)"
+    },
+    "kerahatNote": "In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Der Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten)."
   },
   "nature": {
     "title": "Jahreszeiten: Jahreskreis und Sonnenwenden | Saat Tarih",
@@ -1712,13 +1763,20 @@
     },
     "turnIn": "in {n} Tagen",
     "turnAgo": "vor {n} Tagen",
-    "turnToday": "heute"
+    "turnToday": "heute",
+    "goldenAm": "Goldene Stunde morgens",
+    "goldenPm": "Goldene Stunde abends",
+    "blueAm": "Blaue Stunde morgens",
+    "bluePm": "Blaue Stunde abends",
+    "lightNote": "Goldene Stunde: Sonne zwischen 6° über und 4° unter dem Horizont, weiches warmes Licht. Blaue Stunde: Sonne 4° bis 6° unter dem Horizont, blaue Dämmerung. Praktisch für Fotografen.",
+    "moonIcsHeading": "Mondphasen und Finsternisse im Kalender",
+    "moonIcsNote": "Neumonde, Vollmonde und Finsternisse (2026–2031, als UTC-Zeitpunkte; Ihr Kalender zeigt sie in Ihrer Zeit)."
   },
   "weather": {
-    "title": "Wetter: aktuell, stündlich und 7-Tage-Vorhersage | Saat Tarih",
-    "description": "Aktuelles Wetter sowie stündliche und 7-Tage-Vorhersage für Ihren Standort oder eine gewählte Provinz: Temperatur, gefühlt, Wind, Feuchte, Regen, UV.",
+    "title": "Wetter: aktuell, stündlich und 14-Tage-Vorhersage | Saat Tarih",
+    "description": "Aktuelles Wetter sowie stündliche und 14-Tage-Vorhersage für Ihren Standort oder eine gewählte Provinz: Temperatur, gefühlt, Wind, Feuchte, Regen, UV.",
     "h1": "Wetter",
-    "lead": "Die aktuelle Temperatur plus stündliche und 7-Tage-Vorhersage für Ihren Standort oder eine gewählte Provinz. Auch neben der Vollbild-Uhr einblendbar.",
+    "lead": "Die aktuelle Temperatur plus stündliche und 14-Tage-Vorhersage für Ihren Standort oder eine gewählte Provinz. Auch neben der Vollbild-Uhr einblendbar.",
     "now": "Jetzt",
     "feelsLike": "Gefühlt",
     "humidity": "Luftfeuchtigkeit",
@@ -1727,7 +1785,7 @@
     "pressure": "Luftdruck",
     "uv": "UV-Index",
     "hourlyHeading": "Stündliche Vorhersage (24 Stunden)",
-    "dailyHeading": "7-Tage-Vorhersage",
+    "dailyHeading": "14-Tage-Vorhersage",
     "sunrise": "Sonnenaufgang",
     "sunset": "Sonnenuntergang",
     "loading": "Wetter wird abgerufen …",
@@ -2138,7 +2196,12 @@
         "q": "Warum gebe ich den Goldpreis selbst ein?",
         "a": "Die Seite verbindet sich mit keinem fremden Dienst und speichert Ihre Eingaben nicht. Um den Nisab zum aktuellen Preis zu berechnen, tragen Sie den Grammpreis von Gold selbst ein."
       }
-    ]
+    ],
+    "fitreHeading": "Fitra (Zakat al-Fitr)",
+    "fitreText": "Der Hohe Rat für Religionsangelegenheiten des Diyanet hat die Fitra für {year} auf {amount} TL pro Person festgelegt ({date}); gültig ab Ramadan {year} bis zum nächsten Ramadan.",
+    "fitrePeople": "Anzahl der Personen (einschließlich Unterhaltsberechtigter)",
+    "fitreTotal": "Fitra gesamt",
+    "fitreNote": "Der Betrag gilt für die Türkei und ist das Minimum; wer kann, gibt mehr (nach dem Maß von Datteln oder Rosinen). Die Fitra wird vor dem Festgebet gegeben."
   },
   "api": {
     "title": "Offene Daten (API): Feiertage und Gebetszeiten | Saat Tarih",

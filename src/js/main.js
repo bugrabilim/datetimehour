@@ -155,6 +155,28 @@
   if (!/^[a-z]{2,12}$/.test(String(prefs.fsColor))) prefs.fsColor = "auto";
   prefs.sync = true; // saat her zaman sunucu saatine göre çalışır
 
+  /* Saat görünümü (rakip analizi #40, 30 Ekim 2026): yazı tipi ve renk ayarlar menüsünde (tam ekranda düğme yok,
+     9 Ekim kararı). sth-prefs.font / .color; <html data-cfont data-ccolor>, theme.js sayfa çizilmeden de uygular.
+     Gömme widget'ında uygulanmaz (__sthPrefs). */
+  var LOOK = { font: ["standard", "rounded", "serif", "mono", "light"], color: ["default", "ink", "blue", "green", "red", "purple"] };
+  function applyLook() {
+    var h = doc.documentElement;
+    ["font", "color"].forEach(function (k) {
+      var v = LOOK[k].indexOf(prefs[k]) > 0 && !window.__sthPrefs ? prefs[k] : "";
+      if (v) h.setAttribute(k === "font" ? "data-cfont" : "data-ccolor", v); else h.removeAttribute(k === "font" ? "data-cfont" : "data-ccolor");
+    });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-look]"), function (sel) {
+      var k = sel.getAttribute("data-look"); sel.value = LOOK[k].indexOf(prefs[k]) > 0 ? prefs[k] : LOOK[k][0];
+    });
+  }
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-look]"), function (sel) {
+    sel.addEventListener("change", function () {
+      prefs[sel.getAttribute("data-look")] = sel.value;
+      store("sth-prefs", JSON.stringify(prefs)); applyLook();
+    });
+  });
+  applyLook();
+
   var localTz;
   try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
 

@@ -47,7 +47,26 @@
     "placeChange": "Konumu değiştir",
     "placeTitle": "Konumunuz",
     "placeNote": "Konumunuz yalnızca cihazınızda kalır; namaz vakitleri, mevsimler ve hava durumu için tüm sayfalarda kullanılır, sunucuya gönderilmez.",
-    "placeClose": "Kapat"
+    "placeClose": "Kapat",
+    "look": "Saat görünümü",
+    "lookFont": "Yazı tipi",
+    "lookFonts": {
+      "rounded": "Yuvarlak",
+      "standard": "Standart",
+      "serif": "Tırnaklı",
+      "mono": "Eş aralıklı",
+      "light": "İnce"
+    },
+    "lookColor": "Saat rengi",
+    "lookColors": {
+      "default": "Sitenin rengi",
+      "ink": "Mürekkep",
+      "blue": "Mavi",
+      "green": "Yeşil",
+      "red": "Kırmızı",
+      "purple": "Mor"
+    },
+    "lookNote": "Seçim yalnız bu tarayıcıda saklanır."
   },
   "client": {
     "format24": "24 saat",
@@ -336,7 +355,7 @@
             ],
             [
               "sth-prefs",
-              "24 ya da 12 saat gösterimini, saniye tercihini ve son seçtiğiniz saat modelini hatırlar.",
+              "24 ya da 12 saat gösterimini, saniye tercihini, son seçtiğiniz saat modelini ve saat görünümünü (yazı tipi, renk) hatırlar.",
               "Siz silene kadar"
             ],
             [
@@ -351,17 +370,17 @@
             ],
             [
               "sth-alarms",
-              "Kurduğunuz alarmları hatırlar.",
+              "Kurduğunuz alarmları ve her alarmın sesini hatırlar.",
               "Siz silene kadar"
             ],
             [
               "sth-pomo",
-              "Pomodoro sürelerini ve durumunu hatırlar.",
+              "Pomodoro sürelerini, günlük hedefinizi, seçtiğiniz etiketi ve durumu hatırlar.",
               "Siz silene kadar"
             ],
             [
               "sth-pomo-log",
-              "Pomodoro istatistikleri için tamamlanan çalışma turlarını (tarih, süre, isteğe bağlı görev adı) bu cihazda tutar; en çok 1000 kayıt.",
+              "Pomodoro istatistikleri için tamamlanan çalışma turlarını (tarih, süre, isteğe bağlı görev adı ve etiket) bu cihazda tutar; en çok 1000 kayıt.",
               "Siz silene kadar"
             ],
             [
@@ -682,7 +701,8 @@
     "icsCalHolidays": "Türkiye resmî tatilleri (Saat Tarih)",
     "icsCalDays": "Türkiye dini ve özel günler (Saat Tarih)",
     "icsHalf": "yarım gün",
-    "icsProjected": "Diyanet'in uzun vadeli takvimine göre (projeksiyon)"
+    "icsProjected": "Diyanet'in uzun vadeli takvimine göre (projeksiyon)",
+    "icsCalMoon": "Ay evreleri ve tutulmalar (Saat Tarih)"
   },
   "tools": {
     "hub": {
@@ -819,7 +839,8 @@
           "q": "Tur nedir, nasıl kaydederim?",
           "a": "Tur, kronometreyi durdurmadan ara süre almaktır. Çalışırken Tur düğmesine ya da L tuşuna basın; her turun süresi ve toplam süre listelenir, en iyi ve en yavaş tur işaretlenir."
         }
-      ]
+      ],
+      "csv": "Turları CSV olarak indir"
     },
     "countdown": {
       "title": "Geri Sayım Sayacı ve Zamanlayıcı: Süre ve Tarihe Göre | Saat Tarih",
@@ -870,7 +891,8 @@
       "namePlaceholder": "Örn. Tatil",
       "copyLink": "Bağlantıyı kopyala",
       "copied": "Bağlantı kopyalandı",
-      "shareNote": "Seçtiğiniz tarihe ait bağlantıyı paylaşabilirsiniz; bağlantı açılınca sayım kendiliğinden başlar."
+      "shareNote": "Seçtiğiniz tarihe ait bağlantıyı paylaşabilirsiniz; bağlantı açılınca sayım kendiliğinden başlar.",
+      "addMinute": "+1 dk"
     },
     "alarm": {
       "title": "Online Alarm Saati: Tekrarlı ve Ertelemeli | Saat Tarih",
@@ -921,7 +943,15 @@
           "q": "Alarmı nasıl ertelerim?",
           "a": "Alarm çalarken 5 dk ertele düğmesine basın; alarm 5 dakika sonra yeniden çalar. Kapat düğmesi alarmı susturur; tekrarlı alarmlar bir sonraki günde yine çalar."
         }
-      ]
+      ],
+      "soundLabel": "Alarm sesi",
+      "sounds": {
+        "chime": "Üçlü zil",
+        "bell": "Çan",
+        "rise": "Yükselen",
+        "digital": "Dijital bip",
+        "soft": "Yumuşak"
+      }
     },
     "pomodoro": {
       "title": "Pomodoro Zamanlayıcı: 25 Dakika Çalış, 5 Dakika Mola | Saat Tarih",
@@ -981,7 +1011,21 @@
       "volume": "Ses düzeyi",
       "noiseNote": "Ses yalnız çalışma süresi işlerken çalar; tarayıcıda üretilir, dosya indirilmez.",
       "empty": "Henüz tamamlanan pomodoro yok.",
-      "minUnit": "dk"
+      "minUnit": "dk",
+      "csv": "Geçmişi CSV olarak indir",
+      "streak": "Seri: {n} gün üst üste",
+      "goalLabel": "Günlük hedef (tur)",
+      "goalProgress": "Bugün {n}/{g} tur",
+      "goalDone": "Günlük hedefe ulaşıldı",
+      "tagLabel": "Etiket",
+      "tags": {
+        "none": "Etiketsiz",
+        "work": "İş",
+        "study": "Ders",
+        "personal": "Kişisel",
+        "other": "Diğer"
+      },
+      "byTag": "Son 7 günde etiketlere göre"
     },
     "presets": {
       "timerTitle": "{Name}: online geri sayım | Saat Tarih",
@@ -1545,7 +1589,14 @@
     "imIftar": "iftar",
     "imNote": "Vakitler hesaplanmıştır; resmî vakit için Diyanet İşleri Başkanlığı esas alınır.",
     "imFile": "ramazan-imsakiyesi",
-    "imBrand": "Bumba Group · Bumba Life"
+    "imBrand": "Bumba Group · Bumba Life",
+    "kerahatHeading": "Kerahat vakitleri (yaklaşık)",
+    "kerahatNames": {
+      "israk": "Güneş doğarken (işrak)",
+      "istiva": "Öğle öncesi (istiva)",
+      "isfirar": "Güneş batarken (isfirar)"
+    },
+    "kerahatNote": "Bu sürelerde nafile namaz kılınmaz. Diyanet'in yayımladığı bir dakika ölçüsü yok; takvimlerde yaygın olan yaklaşık 45 dakika kullanıldı (öğle öncesi kerahat süresi kaynaklarda 10–45 dakika arasında değişir)."
   },
   "nature": {
     "title": "Mevsimler: Mevsim Çarkı, Ekinoks ve Gündönümü | Saat Tarih",
@@ -1685,13 +1736,20 @@
     },
     "turnIn": "{n} gün sonra",
     "turnAgo": "{n} gün önce",
-    "turnToday": "bugün"
+    "turnToday": "bugün",
+    "goldenAm": "Sabah altın saat",
+    "goldenPm": "Akşam altın saat",
+    "blueAm": "Sabah mavi saat",
+    "bluePm": "Akşam mavi saat",
+    "lightNote": "Altın saat: Güneş ufkun 6° üstü ile 4° altı arasında; yumuşak, sıcak ışık. Mavi saat: Güneş ufkun 4° ile 6° altında; mavi alacakaranlık. Fotoğrafçılar için.",
+    "moonIcsHeading": "Ay evreleri ve tutulmalar takviminize",
+    "moonIcsNote": "Yeni ay, dolunay ve tutulmalar (2026–2031, UTC anıyla; takviminiz kendi saatinize çevirir)."
   },
   "weather": {
-    "title": "Hava Durumu: Güncel, Saatlik ve 7 Günlük Tahmin | Saat Tarih",
-    "description": "Bulunduğunuz konum ya da seçtiğiniz il için güncel hava durumu, saatlik ve 7 günlük tahmin: sıcaklık, hissedilen, rüzgâr, nem, yağış ve UV.",
+    "title": "Hava Durumu: Güncel, Saatlik ve 14 Günlük Tahmin | Saat Tarih",
+    "description": "Bulunduğunuz konum ya da seçtiğiniz il için güncel hava durumu, saatlik ve 14 günlük tahmin: sıcaklık, hissedilen, rüzgâr, nem, yağış ve UV.",
     "h1": "Hava durumu",
-    "lead": "Bulunduğunuz konum ya da seçtiğiniz il için güncel sıcaklık, saatlik ve 7 günlük tahmin. Tam ekran saatin yanında da gösterilebilir.",
+    "lead": "Bulunduğunuz konum ya da seçtiğiniz il için güncel sıcaklık, saatlik ve 14 günlük tahmin. Tam ekran saatin yanında da gösterilebilir.",
     "now": "Şimdi",
     "feelsLike": "Hissedilen",
     "humidity": "Nem",
@@ -1700,7 +1758,7 @@
     "pressure": "Basınç",
     "uv": "UV indeksi",
     "hourlyHeading": "Saatlik tahmin (24 saat)",
-    "dailyHeading": "7 günlük tahmin",
+    "dailyHeading": "14 günlük tahmin",
     "sunrise": "Gün doğumu",
     "sunset": "Gün batımı",
     "loading": "Hava durumu alınıyor…",
@@ -2111,7 +2169,12 @@
         "q": "Altın fiyatını neden kendim yazıyorum?",
         "a": "Sayfa dış servislere bağlanmaz ve girdiğiniz tutarları kaydetmez. Nisabı güncel fiyatla hesaplamak için o günün gram altın fiyatını siz yazarsınız."
       }
-    ]
+    ],
+    "fitreHeading": "Fitre (sadaka-i fıtr)",
+    "fitreText": "Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu {year} yılı için fitreyi kişi başı {amount} TL olarak açıkladı ({date}). Geçerlilik: {year} Ramazan ayından bir sonraki Ramazan'a kadar.",
+    "fitrePeople": "Kişi sayısı (bakmakla yükümlü olduklarınız dahil)",
+    "fitreTotal": "Toplam fitre",
+    "fitreNote": "Tutar Türkiye için ve en düşük ölçüdür; imkânı olan hurma, üzüm gibi daha yüksek ölçüyle verebilir. Fitre bayram namazından önce verilir."
   },
   "api": {
     "title": "Açık veri (API): tatil, namaz vakti, hicri takvim | Saat Tarih",

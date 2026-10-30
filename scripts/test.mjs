@@ -396,6 +396,29 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   check((apiPage.match(/<tr><td dir="ltr"><a href="\/api\/v1\//g) || []).length === 6 && /"Dataset"/.test(apiPage), "API belge sayfası eksik");
   const zk = fs.readFileSync(path.join(DIST, "zekat-hesaplama", "index.html"), "utf8");
   check(/data-zakat\b/.test(zk) && (zk.match(/data-zk="/g) || []).length === 8 && /zakat\.js/.test(zk) && /data-zk-verdict/.test(zk), "zekât sayfası eksik");
+  check(/data-fitre="\d+"/.test(zk) && /data-fitre-people/.test(zk) && /data-fitre-total/.test(zk), "zekât sayfasında fitre bölümü yok");
+}
+// 9. tur (30 Ekim 2026, rakip analizi K maddeleri): kerahat, altın/mavi saat, Ay .ics, araç ekleri, saat görünümü
+{
+  const rd = (...p) => fs.readFileSync(path.join(DIST, ...p), "utf8");
+  const pr = rd("namaz-vakitleri", "istanbul", "index.html");
+  check(["israk", "istiva", "isfirar"].every((k) => pr.includes(`data-pr-kr="${k}"`)), "namaz il sayfasında kerahat vakitleri yok");
+  const pm = { exports: {} };
+  new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/prayer-calc.js"), "utf8"))(pm, undefined);
+  const P = pm.exports;
+  {
+    const lh = P.lightHours(2026, 10, 30, 41.0082, 28.9784, 3), hm = (h) => Math.round(h * 60);
+    check(Math.abs(hm(lh.goldenAm[1]) - (8 * 60 + 11)) <= 1 && Math.abs(hm(lh.bluePm[1]) - (18 * 60 + 31)) <= 1, "altın/mavi saat İstanbul 30.10.2026 beklenen değil");
+  }
+  const ns = rd("mevsimler", "index.html");
+  check(["blueAm", "goldenAm", "goldenPm", "bluePm"].every((k) => ns.includes(`data-n-light="${k}"`)) && ns.includes("/ics/tr-moon.ics"), "mevsimler: altın/mavi saat ya da Ay takvimi aboneliği yok");
+  const mi = rd("ics", "tr-moon.ics");
+  check(/^BEGIN:VCALENDAR\r\n/.test(mi) && (mi.match(/BEGIN:VEVENT/g) || []).length > 100 && /DTSTART:\d{8}T\d{6}Z/.test(mi) && /Dolunay/.test(mi), "tr-moon.ics yapısı bozuk");
+  const cd = rd("geri-sayim", "index.html"), sw = rd("kronometre", "index.html"), po = rd("pomodoro", "index.html"), al = rd("alarm", "index.html");
+  check(/data-cd-add/.test(cd) && /data-sw-csv/.test(sw) && /data-pomo-csv/.test(po) && /data-pomo-g/.test(po) && /data-pomo-tag/.test(po) && /data-pomo-streak/.test(po) && (al.match(/<option value="(chime|bell|rise|digital|soft)"/g) || []).length === 5, "araç ekleri (+1 dk, CSV, hedef, etiket, alarm sesi) eksik");
+  const home = rd("index.html");
+  check((home.match(/data-look="font"/g) || []).length === 2 && (home.match(/data-look="color"/g) || []).length === 2, "ayarlarda saat görünümü (yazı tipi, renk) yok");
+  check(/14/.test(dict.tr.get("weather.title")) && ![...dict.tr].some(([k, v]) => k.startsWith("weather.") && /\b7 gün/i.test(String(v))), "hava durumu 14 günlük değil");
 }
 // Köprü tatil (lib/bridges.mjs): 2027 Kurban + 19 Mayıs 2 gün izinle 9 gün; 2026 Ramazan 0,5 gün izinle 4 gün
 {

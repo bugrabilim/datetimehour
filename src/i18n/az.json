@@ -47,7 +47,26 @@
     "placeChange": "Məkanı dəyişin",
     "placeTitle": "Məkanınız",
     "placeNote": "Məkanınız yalnız cihazınızda qalır, namaz vaxtları, fəsillər və hava üçün bütün səhifələrdə istifadə olunur və serverə göndərilmir.",
-    "placeClose": "Bağla"
+    "placeClose": "Bağla",
+    "look": "Saatın görünüşü",
+    "lookFont": "Şrift",
+    "lookFonts": {
+      "rounded": "Yumru",
+      "standard": "Standart",
+      "serif": "Dırnaqlı",
+      "mono": "Bərabər aralıqlı",
+      "light": "İncə"
+    },
+    "lookColor": "Saatın rəngi",
+    "lookColors": {
+      "default": "Saytın rəngi",
+      "ink": "Mürəkkəb",
+      "blue": "Mavi",
+      "green": "Yaşıl",
+      "red": "Qırmızı",
+      "purple": "Bənövşəyi"
+    },
+    "lookNote": "Seçim yalnız bu brauzerdə saxlanılır."
   },
   "client": {
     "format24": "24 saat",
@@ -336,7 +355,7 @@
             ],
             [
               "sth-prefs",
-              "24 və ya 12 saatlıq göstərişi, saniyə seçimini və sonuncu seçdiyiniz saat modelini yadda saxlayır.",
+              "24 və ya 12 saat göstərilməsini, saniyə seçimini, son seçdiyiniz saat modelini və saatın görünüşünü (şrift, rəng) yadda saxlayır.",
               "Siz silənədək"
             ],
             [
@@ -351,17 +370,17 @@
             ],
             [
               "sth-alarms",
-              "Qurduğunuz zəngli saatları yadda saxlayır.",
+              "Qurduğunuz zəngli saatları və hər birinin səsini yadda saxlayır.",
               "Siz silənədək"
             ],
             [
               "sth-pomo",
-              "Pomodoro müddətlərini və vəziyyətini yadda saxlayır.",
+              "Pomodoro müddətlərini, gündəlik hədəfinizi, seçdiyiniz etiketi və vəziyyəti yadda saxlayır.",
               "Siz silənədək"
             ],
             [
               "sth-pomo-log",
-              "Pomodoro statistikası üçün tamamlanmış iş turlarını (tarix, müddət, istəyə bağlı tapşırıq adı) bu cihazda saxlayır; ən çox 1000 qeyd.",
+              "Pomodoro statistikası üçün tamamlanan iş dövrlərini (tarix, müddət, istəyə bağlı tapşırıq adı və etiket) bu cihazda saxlayır; ən çox 1000 qeyd.",
               "Siz silənə qədər"
             ],
             [
@@ -682,7 +701,8 @@
     "icsCalHolidays": "Türkiyənin rəsmi bayramları (Saat Tarih)",
     "icsCalDays": "Türkiyənin dini və xüsusi günləri (Saat Tarih)",
     "icsHalf": "yarım gün",
-    "icsProjected": "Diyanətin uzunmüddətli təqviminə görə (proqnoz)"
+    "icsProjected": "Diyanətin uzunmüddətli təqviminə görə (proqnoz)",
+    "icsCalMoon": "Ay fazaları və tutulmalar (Saat Tarih)"
   },
   "tools": {
     "hub": {
@@ -819,7 +839,8 @@
           "q": "Dövrə nədir və necə qeyd olunur?",
           "a": "Dövrə saniyəölçəni dayandırmadan götürülən ara vaxtdır. Saniyəölçən işləyərkən Dövrə düyməsini və ya L düyməsini basın; hər dövrə vaxtı və ümumi vaxt siyahıda göstərilir, ən yaxşı və ən yavaş dövrələr işarələnir."
         }
-      ]
+      ],
+      "csv": "Dövrələri CSV kimi yüklə"
     },
     "countdown": {
       "title": "Geriyə sayım taymeri: müddətə və ya tarixə görə | Saat Tarih",
@@ -870,7 +891,8 @@
       "namePlaceholder": "Məs. Məzuniyyət",
       "copyLink": "Keçidi kopyala",
       "copied": "Keçid kopyalandı",
-      "shareNote": "Seçdiyiniz tarixin keçidini paylaşa bilərsiniz; keçid açılanda geriyə sayım avtomatik başlayır."
+      "shareNote": "Seçdiyiniz tarixin keçidini paylaşa bilərsiniz; keçid açılanda geriyə sayım avtomatik başlayır.",
+      "addMinute": "+1 dəq"
     },
     "alarm": {
       "title": "Onlayn zəngli saat: təkrar və təxirə salma | Saat Tarih",
@@ -921,7 +943,15 @@
           "q": "Zəngli saatı necə təxirə salım?",
           "a": "Zəng çalarkən 5 dəq təxirə sal düyməsini basın, beş dəqiqə sonra yenidən çalacaq. Bağla düyməsi onu susdurur; təkrarlanan zəngli saatlar növbəti seçilmiş gündə yenidən çalır."
         }
-      ]
+      ],
+      "soundLabel": "Zəng səsi",
+      "sounds": {
+        "chime": "Üçlü zəng",
+        "bell": "Zəng",
+        "rise": "Yüksələn",
+        "digital": "Rəqəmsal bip",
+        "soft": "Yumşaq"
+      }
     },
     "pomodoro": {
       "title": "Pomodoro taymeri: 25 dəqiqə iş, 5 dəqiqə fasilə | Saat Tarih",
@@ -981,7 +1011,21 @@
       "volume": "Səs səviyyəsi",
       "noiseNote": "Səs yalnız iş müddəti gedərkən çalır; brauzerdə yaradılır, heç nə yüklənmir.",
       "empty": "Hələ tamamlanmış pomodoro yoxdur.",
-      "minUnit": "dəq"
+      "minUnit": "dəq",
+      "csv": "Keçmişi CSV kimi yüklə",
+      "streak": "Seriya: {n} gün ardıcıl",
+      "goalLabel": "Gündəlik hədəf (dövrə)",
+      "goalProgress": "Bu gün {n}/{g} dövrə",
+      "goalDone": "Gündəlik hədəfə çatıldı",
+      "tagLabel": "Etiket",
+      "tags": {
+        "none": "Etiketsiz",
+        "work": "İş",
+        "study": "Dərs",
+        "personal": "Şəxsi",
+        "other": "Digər"
+      },
+      "byTag": "Son 7 gündə etiketlərə görə"
     },
     "presets": {
       "timerTitle": "{Name}: onlayn geri sayım | Saat Tarih",
@@ -1545,7 +1589,14 @@
     "imIftar": "iftar",
     "imNote": "Vaxtlar hesablanmışdır; rəsmi vaxt üçün Diyanət İşləri Başqanlığının məlumatı əsasdır.",
     "imFile": "ramazan-imsakiyyesi",
-    "imBrand": "Bumba Group · Bumba Life"
+    "imBrand": "Bumba Group · Bumba Life",
+    "kerahatHeading": "Kərahət vaxtları (təxmini)",
+    "kerahatNames": {
+      "israk": "Günəş doğarkən (işraq)",
+      "istiva": "Günorta öncəsi (istiva)",
+      "isfirar": "Günəş batarkən (isfirar)"
+    },
+    "kerahatNote": "Bu vaxtlarda nafilə namaz qılınmır. Diyanətin açıqladığı dəqiq dəqiqə ölçüsü yoxdur; təqvimlərdə geniş yayılmış təxminən 45 dəqiqə istifadə olunub (günorta öncəsi üçün mənbələr 10–45 dəqiqə göstərir)."
   },
   "nature": {
     "title": "Fəsillər: Fəsil çarxı, bərabərlik və gündönümü | Saat Tarih",
@@ -1685,13 +1736,20 @@
     },
     "turnIn": "{n} gün sonra",
     "turnAgo": "{n} gün əvvəl",
-    "turnToday": "bu gün"
+    "turnToday": "bu gün",
+    "goldenAm": "Səhər qızıl saat",
+    "goldenPm": "Axşam qızıl saat",
+    "blueAm": "Səhər mavi saat",
+    "bluePm": "Axşam mavi saat",
+    "lightNote": "Qızıl saat: Günəş üfüqün 6° üstü ilə 4° altı arasında; yumşaq, isti işıq. Mavi saat: Günəş üfüqün 4° ilə 6° altında; mavi alatoran. Fotoqraflar üçün.",
+    "moonIcsHeading": "Ay fazaları və tutulmalar təqviminizə",
+    "moonIcsNote": "Yeni ay, bədr və tutulmalar (2026–2031, UTC anı ilə; təqviminiz öz saatınıza çevirir)."
   },
   "weather": {
-    "title": "Hava: Hazırkı, saatlıq və 7 günlük proqnoz | Saat Tarih",
-    "description": "Məkanınız və ya seçdiyiniz əyalət üçün hazırkı hava, saatlıq və 7 günlük proqnoz: temperatur, hiss olunan, külək, rütubət, yağış və UB.",
+    "title": "Hava: Hazırkı, saatlıq və 14 günlük proqnoz | Saat Tarih",
+    "description": "Məkanınız və ya seçdiyiniz əyalət üçün hazırkı hava, saatlıq və 14 günlük proqnoz: temperatur, hiss olunan, külək, rütubət, yağış və UB.",
     "h1": "Hava",
-    "lead": "Məkanınız və ya seçdiyiniz əyalət üçün hazırkı temperatur, saatlıq və 7 günlük proqnoz. Tam ekran saatın yanında da göstərilə bilər.",
+    "lead": "Məkanınız və ya seçdiyiniz əyalət üçün hazırkı temperatur, saatlıq və 14 günlük proqnoz. Tam ekran saatın yanında da göstərilə bilər.",
     "now": "İndi",
     "feelsLike": "Hiss olunan",
     "humidity": "Rütubət",
@@ -1700,7 +1758,7 @@
     "pressure": "Təzyiq",
     "uv": "UB indeksi",
     "hourlyHeading": "Saatlıq proqnoz (24 saat)",
-    "dailyHeading": "7 günlük proqnoz",
+    "dailyHeading": "14 günlük proqnoz",
     "sunrise": "Gün çıxması",
     "sunset": "Gün batması",
     "loading": "Hava məlumatı alınır…",
@@ -2111,7 +2169,12 @@
         "q": "Qızılın qiymətini niyə özüm yazıram?",
         "a": "Səhifə xarici xidmətlərə qoşulmur və yazdıqlarınızı saxlamır. Nisabı bugünkü qiymətlə hesablamaq üçün qram qızılın qiymətini özünüz yazırsınız."
       }
-    ]
+    ],
+    "fitreHeading": "Fitrə (sədəqeyi-fitr)",
+    "fitreText": "Türkiyə Diyanət İşləri Başqanlığının Din İşləri Ali Şurası {year} ili üçün fitrəni adambaşına {amount} TL açıqladı ({date}). Etibarlıdır: {year} Ramazanından növbəti Ramazana qədər.",
+    "fitrePeople": "Adam sayı (himayənizdəkilər daxil)",
+    "fitreTotal": "Cəmi fitrə",
+    "fitreNote": "Məbləğ Türkiyə üçündür və ən aşağı ölçüdür; imkanı olan xurma, kişmiş kimi daha yüksək ölçü ilə verə bilər. Fitrə bayram namazından əvvəl verilir."
   },
   "api": {
     "title": "Açıq məlumat (API): bayramlar və namaz vaxtları | Saat Tarih",
