@@ -256,9 +256,9 @@
       },
       {
         "id": "ios-uygulamasi",
-        "h": "iPhone uygulaması",
+        "h": "iPhone ve iPad uygulaması",
         "p": [
-          "Saat Tarih'in iPhone uygulaması da aynı ilkelerle çalışır: hesap istemez, reklam ve takip içermez, istatistik toplamaz. Uygulamada işlenen veriler:"
+          "Saat Tarih'in iPhone ve iPad uygulaması da aynı ilkelerle çalışır: hesap istemez, reklam ve takip içermez, istatistik toplamaz. Uygulamada işlenen veriler:"
         ],
         "ul": [
           "**Konum:** \"Konumumu kullan\" derseniz konumunuz telefonda vakit hesabı ve en yakın ili bulmak için kullanılır; yaklaşık konum (yaklaşık 1 km) yalnız telefonda saklanır. Widget'lardaki \"Otomatik\" seçeneği de konumu yalnız telefonda kullanır.",
@@ -272,7 +272,8 @@
           "**Fotoğraflar:** Tam ekran saat ya da geri sayımlar için seçtiğiniz fotoğraf iPhone'un fotoğraf seçicisiyle alınır (fotoğraf arşivinize erişim izni istenmez); küçültülmüş kopyası yalnız telefonda saklanır, hiçbir yere gönderilmez.",
           "**Tercihler:** Saat modeli, il, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir.",
           "**Kıble ve yakındaki camiler:** Kıble yönü telefonda hesaplanır; pusula için telefonun yön sensörü kullanılır (konum izni varsa gerçek kuzey için konum da yalnız telefonda kullanılır). \"Yakındaki camiler\" ekranında arama Apple Haritalar ile yapılır: arama sözcüğü (\"cami\") ve iki ondalığa yuvarlanmış bölge merkezi Apple'a gider; Apple'ın gizlilik koşulları geçerlidir.",
-          "**Apple Watch, Siri ve kilit ekranı:** Apple Watch uygulaması vakitleri saatte hesaplar; \"iPhone'daki yer\" seçiliyken seçili yerin adı ve koordinatları iPhone'dan saate (Apple'ın WatchConnectivity bağlantısıyla) gönderilir, başka bir yere gitmez; saatte \"Konumum\" seçilirse konum yalnız saatte kullanılır. Siri ve Kısayollar eylemleri (zamanlayıcı, alarm, tam ekran saat, sıradaki vakit, tarih) telefonda çalışır; sesli komutları Apple işler. Kilit ekranındaki canlı etkinlikler (sayaçlar, sıradaki vakit) telefonda oluşturulur."
+          "**Apple Watch, Siri ve kilit ekranı:** Apple Watch uygulaması vakitleri saatte hesaplar; \"iPhone'daki yer\" seçiliyken seçili yerin adı ve koordinatları iPhone'dan saate (Apple'ın WatchConnectivity bağlantısıyla) gönderilir, başka bir yere gitmez; saatte \"Konumum\" seçilirse konum yalnız saatte kullanılır. Siri ve Kısayollar eylemleri (zamanlayıcı, alarm, tam ekran saat, sıradaki vakit, tarih) telefonda çalışır; sesli komutları Apple işler. Kilit ekranındaki canlı etkinlikler (sayaçlar, sıradaki vakit) telefonda oluşturulur.",
+          "**Kamera, uyku ve odak:** Alarm kapatma görevindeki QR kodu ya da barkodu okumak için kamera yalnız siz kod kaydederken ve alarmı kapatırken açılır (izin ilk kullanımda sorulur); görüntü cihazda işlenir, kaydedilmez ve gönderilmez, yalnız okunan değer alarmla birlikte cihazda saklanır. Sallama ve adım görevleri hareket algılayıcısını yalnız görev ekranı açıkken kullanır; adımlar kaydedilmez. Pomodoro geçmişi (gün, dakika, görev adı) ve uyku planı yalnız cihazda durur; pomodoro gürültüsü ve uyku sesleri cihazda üretilir. Uyku takibi yapılmaz, mikrofon kullanılmaz."
         ]
       },
       {
@@ -291,7 +292,8 @@
           "**E-posta listesi:** Hakkında sayfasından listeye katılırsanız e-posta adresiniz sitedeki formla aynı biçimde ortak Bumba listesine gönderilir; e-posta listesiyle ilgili açıklamalar uygulama için de geçerlidir.",
           "**Rozetler ve tercihler:** Rozetler, saat modeli, konum, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir. Telefonunuzda Android'in yedeklemesi açıksa bu kayıtlar (ve seçtiğiniz fotoğrafların kopyası) Google hesabınızdaki cihaz yedeğine dahil edilebilir; bu yedek Google'ın koşullarına tabidir ve biz erişemeyiz.",
           "**Kıble ve yakındaki camiler:** Kıble yönü ve pusula telefonda hesaplanır. \"Yakındaki camiler\" ekranında iki ondalığa yuvarlanmış koordinat (yaklaşık 1 km) OpenStreetMap verisini sunan Overpass hizmetine (overpass-api.de) gönderilir; bu sırada IP adresiniz bu hizmete ulaşır. Bir camiye dokununca telefonunuzdaki harita uygulaması açılır.",
-          "**Wear OS saati ve kısayollar:** Wear OS uygulaması vakitleri saatte hesaplar; \"Konumum\" seçilirse yaklaşık konum yalnız saatte kullanılır, hiçbir yere gönderilmez. Asistanın ya da başka uygulamaların Saat Tarih'e kurdurduğu zamanlayıcı ve alarmlar yalnız telefonda saklanır; ekran koruyucu ve süren sayaç bildirimleri telefonda oluşturulur."
+          "**Wear OS saati ve kısayollar:** Wear OS uygulaması vakitleri saatte hesaplar; \"Konumum\" seçilirse yaklaşık konum yalnız saatte kullanılır, hiçbir yere gönderilmez. Asistanın ya da başka uygulamaların Saat Tarih'e kurdurduğu zamanlayıcı ve alarmlar yalnız telefonda saklanır; ekran koruyucu ve süren sayaç bildirimleri telefonda oluşturulur.",
+          "**Kamera, uyku ve odak:** Alarm kapatma görevindeki QR kodu ya da barkodu Google'ın kod tarayıcısı (Google Play hizmetleri) okur: uygulama kamera izni istemez ve görüntüyü görmez, yalnız okunan değer alarmla birlikte telefonda saklanır. Sallama ve adım görevleri ivmeölçeri yalnız alarm ekranı açıkken kullanır; adımlar kaydedilmez. Pomodoro geçmişi (gün, dakika, görev adı) ve uyku planı yalnız telefonda durur; pomodoro gürültüsü ve uyku sesleri telefonda üretilir (ekran kapalıyken çalabilmesi için ön plan hizmeti, bildirimde \"Sesi durdur\"). Uyku takibi yapılmaz, mikrofon kullanılmaz."
         ]
       },
       {

@@ -1,5 +1,5 @@
 #!/bin/bash
-# App Store ekran görüntüleri: 6,9" iPhone simülatöründe (1320×2868), dört mağaza dilinde.
+# App Store ekran görüntüleri: 6,9" iPhone (1320×2868) ve 13" iPad (2064×2752) simülatörlerinde, dört mağaza dilinde.
 # fastlane deliver bu klasörü olduğu gibi yükler: <çıktı>/<mağaza dili>/NN-ad.png
 # Kullanım: store-screenshots.sh <SaatTarih.app yolu> <çıktı klasörü>
 set -euo pipefail
@@ -38,5 +38,32 @@ for L in "tr tr_TR tr" "en en_US en-US" "de de_DE de-DE" "ar ar_SA ar-SA"; do
   shoot $1 $2 $3 04-dunya 15 -openScreen world
   shoot $1 $2 $3 05-araclar 6 -startTab 6
   shoot $1 $2 $3 06-imsakiye 6 -openScreen imsakiye
+done
+# iPad (rakip analizi #18; uygulama iPad'i de destekleyince App Store 13" iPad görüntüsü ister). deliver cihazı
+# çözünürlükten tanır; dosya adları iPhone'unkilerle karışmasın diye "ipad-" ile başlar.
+IPAD=$(xcrun simctl list devices available -j | python3 -c '
+import json, sys
+d = json.load(sys.stdin)["devices"]
+runtimes = sorted((k for k in d if "iOS" in k), key=lambda k: [int(x) for x in k.split("iOS-")[-1].split("-")], reverse=True)
+for k in runtimes:
+    hit = [x for x in d[k] if x["name"].startswith("iPad Pro 13-inch")]
+    if hit:
+        print(hit[0]["udid"]); sys.exit()
+sys.exit("13 inç iPad simülatörü yok")')
+echo "iPad simülatörü: $IPAD"
+xcrun simctl shutdown "$UDID" || true
+UDID="$IPAD"
+xcrun simctl boot "$UDID" || true
+xcrun simctl bootstatus "$UDID" -b
+xcrun simctl status_bar "$UDID" override --time "9:41" --batteryState charged --batteryLevel 100 --wifiBars 3 || true
+xcrun simctl install "$UDID" "$APP"
+xcrun simctl ui "$UDID" appearance light
+for L in "tr tr_TR tr" "en en_US en-US" "de de_DE de-DE" "ar ar_SA ar-SA"; do
+  set -- $L
+  shoot $1 $2 $3 ipad-01-saat 6 -clockModel stack -homeItems "$ITEMS"
+  shoot $1 $2 $3 ipad-02-vakitler 6 -startTab 5
+  shoot $1 $2 $3 ipad-03-takvim 6 -startTab 2
+  shoot $1 $2 $3 ipad-04-dunya 15 -openScreen world
+  shoot $1 $2 $3 ipad-05-araclar 6 -startTab 6
 done
 ls -R "$OUT"

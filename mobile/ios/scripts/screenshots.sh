@@ -92,3 +92,30 @@ DATA=$(xcrun simctl get_app_container "$UDID" "$BUNDLE" data)
 mkdir -p "$OUT/sesler"
 cp "$DATA"/Library/Sounds/*.caf "$OUT/sesler/" 2>/dev/null || echo "Ses dosyası üretilmedi"
 ls -la "$OUT" "$OUT/sesler"
+
+# iPad (rakip analizi #18): en yeni iOS'taki 13 inç iPad simülatörü (yoksa ilk iPad); sayfalar okunur genişlikte ortalı
+IPAD=$(xcrun simctl list devices available -j | python3 -c '
+import json, sys
+d = json.load(sys.stdin)["devices"]
+runtimes = sorted((k for k in d if "iOS" in k), key=lambda k: [int(x) for x in k.split("iOS-")[-1].split("-")], reverse=True)
+for k in runtimes:
+    pads = [x for x in d[k] if x["name"].startswith("iPad")]
+    if pads:
+        big = [x for x in pads if "13-inch" in x["name"]]
+        print((big or pads)[0]["udid"]); break')
+if [ -n "$IPAD" ]; then
+  echo "iPad simülatörü: $IPAD"
+  xcrun simctl shutdown "$UDID" || true
+  UDID="$IPAD"
+  xcrun simctl boot "$UDID" || true
+  xcrun simctl bootstatus "$UDID" -b
+  xcrun simctl status_bar "$UDID" override --time "09:41" --batteryState charged --batteryLevel 100 --wifiBars 3 || true
+  xcrun simctl install "$UDID" "$APP"
+  shoot tr tr_TR light ipad-saat
+  shoot tr tr_TR dark ipad-vakitler -startTab 5
+  shoot tr tr_TR light ipad-takvim -startTab 2
+  shoot en en_US light ipad-hava -startTab 1
+  shoot ar ar_SA light ipad-dunya -startTab 3
+  shoot tr tr_TR light ipad-uyku -openScreen sleep -sleep.on "<true/>"
+  ls -la "$OUT"/ipad-*
+fi

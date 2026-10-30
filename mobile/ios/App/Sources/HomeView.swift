@@ -111,7 +111,8 @@ struct ClockTab: View {
 extension ClockTab {
     /// Saat sahnesinin yüksekliği ekrana göre (küçük telefonda da saat, alanlar ve dünya bir ekrana sığsın)
     static func stageHeight(_ viewport: CGFloat) -> CGFloat {
-        min(380, max(280, viewport * 0.46))
+        // iPad'de (yükseklik 1000 pt'den fazla) saat daha büyük
+        min(viewport > 1000 ? 560 : 380, max(280, viewport * 0.46))
     }
 
     /// Dünya, sayfayı ekranın altına kadar dolduracak yüksekliği alır (en az 170 pt; daha fazla alan

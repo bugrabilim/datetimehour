@@ -56,6 +56,21 @@ alarm çalarken sesi kısıktan tam sese yükselterek çalar.
 - **Video:** Araçlar › Alarm › yeni alarm, "Kademeli ses" açık, 1 dk sonrasına kur → kilit ekranında alarm açılır, ses
   yükselir → Kapat. 30–60 sn yeterli.
 
+### 1c. Arka plan sesi: pomodoro ve uyku sesleri (mediaPlayback; 30 Ekim 2026, sıradaki sürüm)
+
+`SoundService` de `mediaPlayback` türündedir: kullanıcı başlatınca telefonda üretilen gürültüyü (beyaz, pembe,
+kahverengi, yağmur, dalga) ekran kapalıyken de çalar; pomodoro çalışma süresi ya da uyku seslerinin kapanma süresi
+bitince durur. Play Console'daki mediaPlayback beyanına bu kullanım da eklenir.
+
+- **Açıklama, yapıştır (1b'nin altına):**
+
+> Background sound. When the user starts a pomodoro work session with a background sound, or starts sleep sounds,
+> a foreground service plays noise generated on the device (white, pink, brown, rain, waves) so it continues with the
+> screen off. It stops when the work session or the chosen sleep timer ends, or when the user taps Stop in the
+> notification. No data is collected.
+
+- **Video:** Araçlar › Uyku › Uyku sesleri › Çal → ekranı kilitle, ses sürer → bildirimdeki "Sesi durdur". 30 sn yeterli.
+
 ## 2. Tam ekran bildirim izni (Full-screen intent)
 
 Uygulama `USE_FULL_SCREEN_INTENT` kullanır: alarm çalınca kilit ekranında `AlarmActivity` açılır.
@@ -83,7 +98,9 @@ Sitedeki gizlilik sayfasının "Android uygulaması" bölümüyle aynı olmalı:
   isteğe bağlı.
 - Kıble yönü ve pusula telefonda hesaplanır; yakındaki camiler aramasındaki koordinat yukarıdaki "yaklaşık konum"
   beyanına girer (aynı amaç).
-- Takvim etkinlikleri, fotoğraflar, rozetler ve tercihler telefondan çıkmaz: "toplanmaz".
+- Takvim etkinlikleri, fotoğraflar, rozetler, pomodoro geçmişi, uyku planı ve tercihler telefondan çıkmaz: "toplanmaz".
+- Alarm kapatma görevindeki QR/barkod okuma Google kod tarayıcısıyla (Play hizmetleri) yapılır: uygulama kamera izni
+  istemez, görüntü uygulamaya gelmez, yalnız okunan değer gelir ve telefonda saklanır ("toplanmaz").
 - Veri aktarımı şifreli (HTTPS). Silme: uygulama silinince yerel veriler silinir; e-posta listesinden çıkış
   e-postadaki bağlantıyla.
 - Reklam yok, izleme yok, istatistik yok.

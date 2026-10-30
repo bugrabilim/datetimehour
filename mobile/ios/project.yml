@@ -39,7 +39,9 @@ targets:
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
-        TARGETED_DEVICE_FAMILY: "1"
+        # iPhone ve iPad (rakip analizi #18; iPad'de bölünmüş ekran için dört yön de açık). Apple silikonlu Mac'lerde
+        # "iPad için tasarlandı" olarak çalışır (App Store Connect'te kapatılabilir)
+        TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: YES
         # INFOPLIST_KEY_* ile verilemeyen anahtarlar (AlarmKit izni) bu dosyada; Xcode ikisini birleştirir
         INFOPLIST_FILE: App/Info.plist
@@ -97,7 +99,7 @@ targets:
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
-        TARGETED_DEVICE_FAMILY: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: YES
         SKIP_INSTALL: YES
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES

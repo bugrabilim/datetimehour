@@ -147,7 +147,10 @@ struct RootView: View {
     /// Yan çevrilince (iPhone yatayda yüksekliği "compact") alt bar, durum çubuğu ve ana ekran çizgisi gizlenir:
     /// içerik sıkışmasın (30 Ekim 2026, sahibin isteği). Sekme değiştirmek için telefon dik tutulur.
     @Environment(\.verticalSizeClass) private var vsc
+    @Environment(\.horizontalSizeClass) private var hsc
     private var landscape: Bool { vsc == .compact }
+    /// iPad'de (geniş pencere) sayfalar okunur genişlikte ortalanır; kenarlar temanın zemin rengiyle dolar
+    private var readable: CGFloat { UIDevice.current.userInterfaceIdiom == .pad && hsc == .regular ? 900 : .infinity }
     /// Alarm son iki saatte çaldıysa açılışta günaydın kartı (MorningCheck)
     @State private var morning = false
     /// Görevli alarm durduruldu: görev ekranı (çözülmeden kapanmaz; WakeTasks)
@@ -159,7 +162,9 @@ struct RootView: View {
         VStack(spacing: 0) {
             content
                 .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)")
-                .frame(maxHeight: .infinity)
+                .frame(maxWidth: readable, maxHeight: .infinity)
+                .frame(maxWidth: .infinity)
+                .background(Theme.bg.ignoresSafeArea())
             let tabs = Features.barTabs(raw: features, current: router.tab)
             if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
         }
