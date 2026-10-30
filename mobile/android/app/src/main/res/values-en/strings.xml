@@ -498,7 +498,7 @@
     <string name="settings_website">Website</string>
     <string name="settings_version">Version</string>
     <string name="settings_privacy">Privacy</string>
-    <string name="settings_privacyNote">No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple\'s weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges.</string>
+    <string name="settings_privacyNote">No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple\'s weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone.</string>
     <string name="clock_fullscreen">Full screen</string>
     <string name="clock_weekDay">Week %1$s · day %2$s of the year</string>
     <string name="clock_tapToExit">Tap to exit</string>
@@ -612,7 +612,7 @@
     <string name="kids_fact4">Near the equator summer and winter feel almost the same; instead there are rainy and dry seasons.</string>
     <string name="kids_fact5">In the northern half, summer is a few days longer than winter: Earth moves a little slower when it\'s farther from the Sun.</string>
     <string name="kids_more">Next years</string>
-    <string name="settings_privacyNoteAndroid">The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone\'s calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges.</string>
+    <string name="settings_privacyNoteAndroid">The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone\'s calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone.</string>
     <string name="badges_h1">Badges</string>
     <string name="badges_privacyLink">Privacy</string>
     <string name="badges_earnedOn">Earned: %1$s</string>
@@ -705,6 +705,12 @@
     <string name="alarm_sound">Sound</string>
     <string name="alarm_soundDefault">Default alarm sound</string>
     <string name="alarm_vibrate">Vibration</string>
+    <string name="alarm_rise">Gradual volume</string>
+    <string name="alarm_riseNote">The alarm sound rises from quiet to full volume over the first 30 seconds.</string>
+    <string name="alarm_riseNoteIOS">A soft melody rises from quiet to full volume over 20 seconds; when on, it plays instead of the iPhone alarm sound.</string>
+    <string name="alarm_snoozeMax">Snooze limit</string>
+    <string name="alarm_snoozeMax_none">Unlimited</string>
+    <string name="alarm_snoozeMax_n">%1$s times</string>
     <string name="alarm_everyDay">Every day</string>
     <string name="morning_good">Good morning</string>
     <string name="morning_day">Good afternoon</string>
@@ -780,6 +786,12 @@
     <string name="look_photo_pick">Choose photo</string>
     <string name="look_photo_remove">Remove photo</string>
     <string name="look_photo_note">The photo is kept only on this phone and shown darkened behind the full-screen clock.</string>
+    <string name="look_bg_plain">Plain (theme colour)</string>
+    <string name="look_bg_photo">Photo</string>
+    <string name="look_bg_sky">Sky (follows the time of day)</string>
+    <string name="look_bg_flow">Colour flow</string>
+    <string name="look_bg_stars">Stars</string>
+    <string name="look_bg_note">Sky follows the Sun\'s height at the selected location: day, sunrise/sunset or night. If \"reduce motion\" is on, animated backgrounds are shown still.</string>
     <string name="features_title">Features</string>
     <string name="features_note">The clock is always on. Features you turn on appear in the bottom bar; with all of them off the bar is hidden and settings open from the gear on the clock screen.</string>
     <string name="features_clock_note">Always on: 20 clock styles, full screen, clock screen items</string>
@@ -791,5 +803,7 @@
     <string name="features_tools_note">Alarm, timer, stopwatch, pomodoro, date calculator</string>
     <string name="features_hint">Turn on weather, calendar, prayer times and more</string>
     <string name="hiit_channel">Interval workout</string>
+    <string name="countdowns_photo">Photo (optional)</string>
+    <string name="countdowns_photoNote">The photo is kept only on this phone and shown behind the countdown card.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

@@ -498,7 +498,7 @@
     <string name="settings_website">الموقع الإلكتروني</string>
     <string name="settings_version">الإصدار</string>
     <string name="settings_privacy">الخصوصية</string>
-    <string name="settings_privacyNote">لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات.</string>
+    <string name="settings_privacyNote">لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات. تُحفظ الصور التي تختارها (الساعة بملء الشاشة، العدّ التنازلي) على هاتفك فقط.</string>
     <string name="clock_fullscreen">ملء الشاشة</string>
     <string name="clock_weekDay">الأسبوع %1$s · اليوم %2$s من السنة</string>
     <string name="clock_tapToExit">انقر للخروج</string>
@@ -612,7 +612,7 @@
     <string name="kids_fact4">قرب خط الاستواء يكاد الصيف والشتاء يتشابهان؛ وبدلًا منهما هناك موسم مطير وموسم جاف.</string>
     <string name="kids_fact5">في النصف الشمالي يكون الصيف أطول من الشتاء ببضعة أيام: فالأرض تتحرك أبطأ قليلًا حين تكون أبعد عن الشمس.</string>
     <string name="kids_more">السنوات التالية</string>
-    <string name="settings_privacyNoteAndroid">لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات.</string>
+    <string name="settings_privacyNoteAndroid">لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات. تُحفظ الصور التي تختارها (الساعة بملء الشاشة، العدّ التنازلي) على هاتفك فقط.</string>
     <string name="badges_h1">الشارات</string>
     <string name="badges_privacyLink">الخصوصية</string>
     <string name="badges_earnedOn">حُصل عليها: %1$s</string>
@@ -705,6 +705,12 @@
     <string name="alarm_sound">الصوت</string>
     <string name="alarm_soundDefault">صوت المنبه الافتراضي</string>
     <string name="alarm_vibrate">الاهتزاز</string>
+    <string name="alarm_rise">صوت متصاعد</string>
+    <string name="alarm_riseNote">يرتفع صوت المنبه من الهادئ إلى أعلى مستوى خلال أول 30 ثانية.</string>
+    <string name="alarm_riseNoteIOS">لحن هادئ يرتفع من الخافت إلى أعلى مستوى خلال 20 ثانية؛ وعند تفعيله يُشغَّل بدل صوت منبه iPhone.</string>
+    <string name="alarm_snoozeMax">حدّ الغفوة</string>
+    <string name="alarm_snoozeMax_none">بلا حد</string>
+    <string name="alarm_snoozeMax_n">%1$s مرات</string>
     <string name="alarm_everyDay">كل يوم</string>
     <string name="morning_good">صباح الخير</string>
     <string name="morning_day">طاب يومك</string>
@@ -780,6 +786,12 @@
     <string name="look_photo_pick">اختيار صورة</string>
     <string name="look_photo_remove">إزالة الصورة</string>
     <string name="look_photo_note">تُحفظ الصورة على هذا الهاتف فقط وتظهر معتمة خلف الساعة بملء الشاشة.</string>
+    <string name="look_bg_plain">سادة (لون السمة)</string>
+    <string name="look_bg_photo">صورة</string>
+    <string name="look_bg_sky">السماء (حسب وقت اليوم)</string>
+    <string name="look_bg_flow">تدفق الألوان</string>
+    <string name="look_bg_stars">النجوم</string>
+    <string name="look_bg_note">تتبع السماء ارتفاع الشمس في الموقع المحدد: نهار أو شروق/غروب أو ليل. إذا كان «تقليل الحركة» مفعّلًا تظهر الخلفيات المتحركة ثابتة.</string>
     <string name="features_title">الميزات</string>
     <string name="features_note">الساعة مفعّلة دائمًا. تظهر الميزات التي تفعّلها في الشريط السفلي؛ وإذا عُطّلت كلها يختفي الشريط وتُفتح الإعدادات من رمز الترس في شاشة الساعة.</string>
     <string name="features_clock_note">مفعّلة دائمًا: 20 نمطًا للساعة وملء الشاشة وعناصر شاشة الساعة</string>
@@ -791,5 +803,7 @@
     <string name="features_tools_note">المنبّه والمؤقّت وساعة الإيقاف والبومودورو وحاسبة التاريخ</string>
     <string name="features_hint">فعّل الطقس والتقويم وأوقات الصلاة والمزيد</string>
     <string name="hiit_channel">تمرين الفترات</string>
+    <string name="countdowns_photo">صورة (اختيارية)</string>
+    <string name="countdowns_photoNote">تُحفظ الصورة على هذا الهاتف فقط وتظهر خلف بطاقة العدّ التنازلي.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

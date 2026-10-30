@@ -323,10 +323,25 @@ private struct AlarmEditor: View {
                     .environment(\.layoutDirection, .leftToRight)
                     Text(item.repeatText).font(.footnote).foregroundStyle(Theme.muted)
                 }
-                Picker(L("alarm.snooze"), selection: $item.snooze) {
-                    ForEach(AlarmItem.snoozeChoices, id: \.self) { m in
-                        Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)).tag(m)
+                Section {
+                    Picker(L("alarm.snooze"), selection: $item.snooze) {
+                        ForEach(AlarmItem.snoozeChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)).tag(m)
+                        }
                     }
+                    if item.snooze > 0 {
+                        Picker(L("alarm.snoozeMax"), selection: $item.snoozeMax) {
+                            ForEach(AlarmItem.snoozeMaxChoices, id: \.self) { n in
+                                Text(n == 0 ? L("alarm.snoozeMax.none") : T("alarm.snoozeMax.n", n)).tag(n)
+                            }
+                        }
+                    }
+                }
+                Section {
+                    Toggle(L("alarm.rise"), isOn: $item.rise)
+                        .tint(Theme.accent)
+                } footer: {
+                    Text(L("alarm.riseNoteIOS"))
                 }
             }
             .themedBackground()

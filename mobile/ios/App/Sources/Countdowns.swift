@@ -1,10 +1,12 @@
 import EventKit
+import PhotosUI
 import SwiftUI
 import SaatCore
 
 /* Kişisel geri sayım listesi (30 Ekim 2026, rakip analizi #15); Android'deki Countdowns.kt ile aynı kayıt: "countdowns"
    (JSON; hedef Unix ms). Simge (emoji), her yıl tekrar, hatırlatma (bir gün önce 09.00 ve zamanı gelince; özellik
-   bildirimleriyle birlikte kurulur), telefon takviminden seçme. Eski tek hedef (cd.target) bir kez taşınır. */
+   bildirimleriyle birlikte kurulur), telefon takviminden seçme, isteğe bağlı fotoğraf (yalnız telefonda,
+   "cd-<id>.jpg"; `photo` sürüm numarası). Eski tek hedef (cd.target) bir kez taşınır. */
 
 struct CountdownItem: Codable, Identifiable, Equatable {
     var id = UUID().uuidString
@@ -14,6 +16,8 @@ struct CountdownItem: Codable, Identifiable, Equatable {
     var target: Int64
     var yearly = false
     var remind = true
+    /// Fotoğrafın sürümü (yoksa nil); dosya "cd-<id>.jpg"
+    var photo: Double?
 
     static let emojis = ["⏳", "🎂", "🎉", "✈️", "🏖️", "🎓", "💍", "❤️", "🎄", "🌙", "⚽", "📚", "💼", "🏥", "👶", "🎁"]
 
@@ -22,6 +26,8 @@ struct CountdownItem: Codable, Identifiable, Equatable {
         set { target = Int64(newValue.timeIntervalSince1970 * 1000) }
     }
     var label: String { "\(emoji) \(title)".trimmingCharacters(in: .whitespaces) }
+    var photoName: String { "cd-\(id).jpg" }
+    var image: UIImage? { photo.flatMap { PhotoFile.image(photoName, version: $0) } }
 
     /// Yıllık olanda hedef günü geçtiyse sıradaki yıl (hedef günü boyunca "Bugün!")
     func effective(now: Date = Date()) -> Date {
@@ -95,6 +101,7 @@ func quickTargets(_ today: CalendarDay) -> [(String, CalendarDay)] {
 struct CountdownsView: View {
     @State private var items = CountdownItem.load()
     @State private var editing: CountdownItem?
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         let today = CalendarDay(Date())
@@ -114,6 +121,7 @@ struct CountdownsView: View {
                     if items.isEmpty { Text(L("countdowns.empty")).font(.subheadline).foregroundStyle(Theme.muted) }
                     ForEach(items.sorted { $0.effective(now: context.date) < $1.effective(now: context.date) }) { c in
                         let at = c.effective(now: context.date)
+                        let photo = c.image
                         HStack(spacing: 12) {
                             Text(c.emoji).font(.system(size: 34))
                             VStack(alignment: .leading, spacing: 2) {
@@ -131,7 +139,19 @@ struct CountdownsView: View {
                                 .foregroundStyle(Theme.muted)
                                 .accessibilityLabel(L("timers.remove"))
                         }
-                        .card()
+                        .padding(14)
+                        .frame(maxWidth: .infinity, minHeight: photo == nil ? nil : 120, alignment: .leading)
+                        .background {
+                            // Fotoğraflı kart: fotoğraf koyulaştırılır, yazılar koyu temanın açık renklerine geçer
+                            if let photo {
+                                Image(uiImage: photo).resizable().scaledToFill()
+                                    .overlay(Color.black.opacity(0.45))
+                            } else {
+                                Theme.surface
+                            }
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 14))
+                        .environment(\.colorScheme, photo != nil ? .dark : colorScheme)
                         .contentShape(Rectangle())
                         .onTapGesture { editing = c }
                     }
@@ -166,6 +186,8 @@ struct CountdownsView: View {
     }
 
     private func update(_ list: [CountdownItem]) {
+        // Silinen ya da fotoğrafı kaldırılan geri sayımların dosyaları silinir
+        for old in items where !list.contains(where: { $0.id == old.id && $0.photo != nil }) { PhotoFile.remove(old.photoName) }
         items = list
         CountdownItem.save(list)
         Task { await PrayerNotifier.reschedule() } // hatırlatmalar özellik bildirimleriyle birlikte kurulur
@@ -178,6 +200,7 @@ private struct CountdownEditor: View {
     let isNew: Bool
     let onSave: (CountdownItem) -> Void
     @State private var showCalendar = false
+    @State private var pick: PhotosPickerItem?
 
     var body: some View {
         NavigationStack {
@@ -202,6 +225,31 @@ private struct CountdownEditor: View {
                 Button("📅 " + L("countdowns.fromCalendar")) { showCalendar = true }
                 Toggle(L("countdowns.yearly"), isOn: $item.yearly)
                 Toggle(L("countdowns.remind"), isOn: $item.remind)
+                Section {
+                    if let img = item.image {
+                        Image(uiImage: img).resizable().scaledToFill()
+                            .frame(height: 120).frame(maxWidth: .infinity)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    PhotosPicker(selection: $pick, matching: .images) { Label(L("look.photo.pick"), systemImage: "photo") }
+                    if item.photo != nil {
+                        Button(role: .destructive) { item.photo = nil } label: { Label(L("look.photo.remove"), systemImage: "trash") }
+                    }
+                } header: {
+                    Text(L("countdowns.photo"))
+                } footer: {
+                    Text(L("countdowns.photoNote"))
+                }
+            }
+            .onChange(of: pick) { _, new in
+                guard let new else { return }
+                Task {
+                    if let data = try? await new.loadTransferable(type: Data.self),
+                       PhotoFile.save(data, name: item.photoName, maxSide: 1000) {
+                        item.photo = Date().timeIntervalSince1970
+                    }
+                    pick = nil
+                }
             }
             .tint(Theme.accent)
             .themedBackground()

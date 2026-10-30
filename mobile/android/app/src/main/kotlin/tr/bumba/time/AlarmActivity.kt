@@ -85,7 +85,8 @@ class AlarmActivity : ComponentActivity() {
                         AlarmScheduler.stop(this@AlarmActivity, id)
                         if (kind == "alarm") morning = true else finish()
                     }
-                    val snooze = if (kind == "alarm") AlarmItem.find(id)?.snooze ?: AlarmScheduler.SNOOZE_MIN else 0
+                    // Erteleme kapalıysa ya da sınır dolduysa düğme yok
+                    val snooze = AlarmScheduler.snoozeMinutes(id, kind)
                     if (snooze > 0) {
                         Spacer(Modifier.height(12.dp))
                         RoundButton(T("alarm.snoozeFor", snooze), false, Modifier.fillMaxWidth()) {

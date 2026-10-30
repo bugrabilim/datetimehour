@@ -3,11 +3,12 @@ import SwiftUI
 import UserNotifications
 import AppIntents
 #if canImport(AlarmKit)
+import ActivityKit
 import AlarmKit
 #endif
 
-/// Alarm: saat, etiket, günler, erteleme süresi, "sonraki alarmı atla" (30 Ekim 2026; eski kayıtlardaki
-/// `repeats` [bir kez / her gün / hafta içi] okunurken günlere çevrilir). Günler ISO: 1 pazartesi … 7 pazar.
+/// Alarm: saat, etiket, günler, erteleme süresi ve sınırı, "sonraki alarmı atla", kademeli ses (30 Ekim 2026; eski
+/// kayıtlardaki `repeats` [bir kez / her gün / hafta içi] okunurken günlere çevrilir). Günler ISO: 1 pazartesi … 7 pazar.
 struct AlarmItem: Codable, Identifiable, Hashable {
     var id = UUID()
     var hour: Int
@@ -20,8 +21,14 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var snooze: Int = 5
     /// Bu andan önceki çalmalar atlanır
     var skipUntil: Date?
+    /// En çok kaç kez ertelenebilir (0 = sınırsız)
+    var snoozeMax: Int = 0
+    /// Kademeli ses: AlarmKit sesi yükseltemediği için uygulamayla gelen yükselen melodi (alarm-rise.caf) çalar
+    var rise = false
 
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
+    static let snoozeMaxChoices = [0, 1, 2, 3, 5]
+    static let riseSound = "alarm-rise.caf"
     static let weekdays = [1, 2, 3, 4, 5]
 
     init(hour: Int, minute: Int) {
@@ -29,7 +36,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -41,6 +48,8 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         enabled = try c.decodeIfPresent(Bool.self, forKey: .enabled) ?? true
         snooze = try c.decodeIfPresent(Int.self, forKey: .snooze) ?? 5
         skipUntil = try c.decodeIfPresent(Date.self, forKey: .skipUntil)
+        snoozeMax = try c.decodeIfPresent(Int.self, forKey: .snoozeMax) ?? 0
+        rise = try c.decodeIfPresent(Bool.self, forKey: .rise) ?? false
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -144,7 +153,7 @@ enum AlarmCenter {
             let content = UNMutableNotificationContent()
             content.title = item.title
             content.body = item.timeText
-            content.sound = .default
+            content.sound = item.rise ? UNNotificationSound(named: UNNotificationSoundName(AlarmItem.riseSound)) : .default
             if item.days.isEmpty || item.days.count == 7 {
                 var c = DateComponents()
                 c.hour = item.hour
@@ -211,10 +220,31 @@ enum KitAlarms {
         }
     }
 
-    private static func attributes(title: String, snooze: Int) -> AlarmAttributes<SaatAlarmData> {
+    /// Erteleme ayarı: süre (dk; 0 = yok), kalan erteleme hakkı (-1 = sınırsız) ve kademeli ses
+    struct Options {
+        var snooze = 0
+        var remaining = -1
+        var rise = false
+
+        init(snooze: Int = 0, remaining: Int = -1, rise: Bool = false) {
+            self.snooze = snooze
+            self.remaining = remaining
+            self.rise = rise
+        }
+
+        init(_ item: AlarmItem) {
+            self.init(snooze: item.snooze, remaining: item.snoozeMax == 0 ? -1 : item.snoozeMax, rise: item.rise)
+        }
+
+        /// Erteleme düğmesi gösterilir mi
+        var canSnooze: Bool { snooze > 0 && remaining != 0 }
+    }
+
+    private static func attributes(title: String, options: Options) -> AlarmAttributes<SaatAlarmData> {
+        let snooze = options.snooze
         let stop = AlarmButton(text: LocalizedStringResource(stringLiteral: L("tools.alarm.stop")), textColor: .white, systemImageName: "stop.circle")
         let alert: AlarmPresentation.Alert
-        if snooze > 0 {
+        if options.canSnooze {
             // Ertele: alarm durur, uygulama aynı adla `snooze` dakika sonrasına tek seferlik alarm kurar (SnoozeAlarmIntent)
             let again = AlarmButton(text: LocalizedStringResource(stringLiteral: T("alarm.snoozeFor", snooze)), textColor: .white,
                                     systemImageName: "zzz")
@@ -226,10 +256,12 @@ enum KitAlarms {
         return AlarmAttributes(presentation: AlarmPresentation(alert: alert), metadata: SaatAlarmData(), tintColor: Theme.accent)
     }
 
-    private static func config(_ schedule: Alarm.Schedule, title: String, snooze: Int) -> AlarmManager.AlarmConfiguration<SaatAlarmData> {
+    private static func config(_ schedule: Alarm.Schedule, title: String, options: Options) -> AlarmManager.AlarmConfiguration<SaatAlarmData> {
         AlarmManager.AlarmConfiguration<SaatAlarmData>(
-            schedule: schedule, attributes: attributes(title: title, snooze: snooze),
-            secondaryIntent: snooze > 0 ? SnoozeAlarmIntent(minutes: snooze, label: title) : nil)
+            schedule: schedule, attributes: attributes(title: title, options: options),
+            secondaryIntent: options.canSnooze
+                ? SnoozeAlarmIntent(minutes: options.snooze, label: title, remaining: options.remaining, rise: options.rise) : nil,
+            sound: options.rise ? .named(AlarmItem.riseSound) : .default)
     }
 
     private static func weekday(_ iso: Int) -> Locale.Weekday {
@@ -251,7 +283,7 @@ enum KitAlarms {
                 let schedule: Alarm.Schedule = skipping
                     ? .fixed(item.next(after: now) ?? now)
                     : .relative(.init(time: time, repeats: .never))
-                if (try? await manager.schedule(id: item.id, configuration: config(schedule, title: item.title, snooze: item.snooze))) != nil {
+                if (try? await manager.schedule(id: item.id, configuration: config(schedule, title: item.title, options: Options(item)))) != nil {
                     scheduled.append(item.id.uuidString)
                 }
                 continue
@@ -264,30 +296,31 @@ enum KitAlarms {
                 days.removeAll { $0 == wd }
                 if let later = Calendar.current.date(byAdding: .day, value: 7, to: skipped) {
                     let extra = UUID()
-                    if (try? await manager.schedule(id: extra, configuration: config(.fixed(later), title: item.title, snooze: item.snooze))) != nil {
+                    if (try? await manager.schedule(id: extra, configuration: config(.fixed(later), title: item.title, options: Options(item)))) != nil {
                         scheduled.append(extra.uuidString)
                     }
                 }
             }
             guard !days.isEmpty else { continue }
             let schedule = Alarm.Schedule.relative(.init(time: time, repeats: .weekly(days.map(weekday))))
-            if (try? await manager.schedule(id: item.id, configuration: config(schedule, title: item.title, snooze: item.snooze))) != nil {
+            if (try? await manager.schedule(id: item.id, configuration: config(schedule, title: item.title, options: Options(item)))) != nil {
                 scheduled.append(item.id.uuidString)
             }
         }
         UserDefaults.standard.set(scheduled, forKey: idsKey)
     }
 
-    static func schedule(id: UUID, at date: Date, title: String, snooze: Int = 0) async -> Bool {
+    static func schedule(id: UUID, at date: Date, title: String, options: Options = Options()) async -> Bool {
         guard await requestAccess() else { return false }
-        return (try? await AlarmManager.shared.schedule(id: id, configuration: config(.fixed(date), title: title, snooze: snooze))) != nil
+        return (try? await AlarmManager.shared.schedule(id: id, configuration: config(.fixed(date), title: title, options: options))) != nil
     }
 
     static func cancel(id: UUID) {
         try? AlarmManager.shared.cancel(id: id)
     }
 }
-/// Alarm ekranındaki "ertele" düğmesi: alarm durur, aynı adla `minutes` dakika sonrasına yeni alarm kurulur
+/// Alarm ekranındaki "ertele" düğmesi: alarm durur, aynı adla `minutes` dakika sonrasına yeni alarm kurulur.
+/// `remaining` kalan erteleme hakkıdır (-1 = sınırsız); hak bitince yeni alarmda erteleme düğmesi olmaz.
 @available(iOS 26.0, *)
 struct SnoozeAlarmIntent: LiveActivityIntent {
     static let title: LocalizedStringResource = "Snooze"
@@ -295,16 +328,22 @@ struct SnoozeAlarmIntent: LiveActivityIntent {
 
     @Parameter(title: "Minutes") var minutes: Int
     @Parameter(title: "Label") var label: String
+    @Parameter(title: "Remaining") var remaining: Int
+    @Parameter(title: "Rise") var rise: Bool
 
     init() {}
 
-    init(minutes: Int, label: String) {
+    init(minutes: Int, label: String, remaining: Int, rise: Bool) {
         self.minutes = minutes
         self.label = label
+        self.remaining = remaining
+        self.rise = rise
     }
 
     func perform() async throws -> some IntentResult {
-        _ = await KitAlarms.schedule(id: UUID(), at: Date().addingTimeInterval(Double(max(1, minutes) * 60)), title: label, snooze: minutes)
+        let left = remaining < 0 ? -1 : max(0, remaining - 1)
+        _ = await KitAlarms.schedule(id: UUID(), at: Date().addingTimeInterval(Double(max(1, minutes) * 60)), title: label,
+                                     options: .init(snooze: minutes, remaining: left, rise: rise))
         return .result()
     }
 }

@@ -67,6 +67,9 @@ shoot tr tr_TR dark ekran-about-koyu -openScreen about
 shoot tr tr_TR light ekran-renk-cocuk -openScreen settings -accent kid-purple
 shoot tr tr_TR light tr-renk-cocuk -accent kid-green
 shoot tr tr_TR light ekran-google -openScreen google
+# Hareketli arka plan: saat görünümü sayfası (canlı örnek) gökyüzü ve renk akışıyla
+shoot tr tr_TR dark ekran-look-yildizlar -openScreen look -fsBg stars
+shoot tr tr_TR light ekran-look-renk-akisi -openScreen look -fsBg flow
 shoot en en_US light ekran-world-en -openScreen world
 # Yatay (yan çevrilmiş): saat sekmesi tam ekran açılır, diğerlerinde alt bar gizli. Sona konur ki sonraki
 # açılışlar dik kalsın; görüntü cihazın dik çerçevesinde yan döner.

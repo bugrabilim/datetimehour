@@ -404,9 +404,11 @@ function layout(p) {
   const u = t.ui;
   const isError = p.error;
   const canonical = p.canonicalPath ? abs(p.canonicalPath) : p.path ? abs(p.path) : "";
-  const alt = p.alt; // { tr: path, en: path, ... }
+  const alt = p.alt; // { tr: path, en: path, ... }; ilçe sayfaları gibi bazı sayfalar yalnız Türkçe
+  const altLangs = alt ? LANGS.filter((l) => alt[l]) : [];
+  const altHref = (l) => (alt && alt[l]) || (p.langFallback && p.langFallback[l]) || ROUTES[l].home;
   const alternates = alt && !p.noHreflang
-    ? [...LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(alt[l])}">`), `<link rel="alternate" hreflang="x-default" href="${abs(alt.tr)}">`].join("\n")
+    ? [...altLangs.map((l) => `<link rel="alternate" hreflang="${l}" href="${abs(alt[l])}">`), `<link rel="alternate" hreflang="x-default" href="${abs(alt.tr)}">`].join("\n")
     : "";
   const clientT = {
     ...t.client,
@@ -436,7 +438,7 @@ function layout(p) {
 <meta property="og:description" content="${esc(p.description)}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:locale" content="${t.ogLocale}">
-${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternate" content="${I[l].ogLocale}">`).join("\n")}
+${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternate" content="${I[l].ogLocale}">`).join("\n")}
 <meta property="og:image" content="${abs("/og.png")}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -450,10 +452,10 @@ ${LANGS.filter((l) => l !== lang).map((l) => `<meta property="og:locale:alternat
   const navLink = (key, label) =>
     `<a href="${key === "calendar" ? yearPath(lang, BUILD_YEAR) : ROUTES[lang][key]}"${p.nav === key ? ' aria-current="page"' : ""}>${esc(label)}</a>`;
   const langOpts = LANGS.map((l) => {
-    const href = isError ? ROUTES[l].home : alt[l];
+    const href = isError ? ROUTES[l].home : altHref(l);
     return `<option value="${href}" hreflang="${l}" lang="${l}" data-lang-switch${l === lang ? " selected" : ""}>${esc(LANG_NAMES[l])}</option>`;
   }).join("");
-  const langLinks = LANGS.map((l) => `<a href="${isError ? ROUTES[l].home : alt[l]}" hreflang="${l}" lang="${l}">${esc(LANG_NAMES[l])}</a>`).join(" ");
+  const langLinks = LANGS.map((l) => `<a href="${isError ? ROUTES[l].home : altHref(l)}" hreflang="${l}" lang="${l}">${esc(LANG_NAMES[l])}</a>`).join(" ");
   /* Ayarlar: konum, SSS, arama, tema, gizlilik ve dil. Masaüstünde dişli açılır kutusu, mobilde üç çizgi menüsünün içi (aynı öğeler). */
   const settingItems = (sid, withFaq) => `<button type="button" class="set-item" data-place-open aria-haspopup="dialog">${ICON_PIN}<span>${esc(u.placeChange)}<span class="set-sub" data-place-label></span></span></button>
         ${withFaq ? `<a class="set-item" href="${ROUTES[lang].faq}">${esc(u.faq)}</a>` : ""}
@@ -1132,7 +1134,7 @@ const cityOptions = (lang, withMine) => `${withMine ? `<option value="">${esc(I[
 const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country }));
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
 
-function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqGroup, scripts, clientExtra, nav = "tools", searchK, extraLd = [], needsPlace = false }) {
+function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqGroup, scripts, clientExtra, nav = "tools", searchK, extraLd = [], needsPlace = false, search = true }) {
   const pagePath = trail[trail.length - 1].path;
   const faqBlock = faq && faq.length && faqGroup ? addFaq(lang, faqGroup.id, faqGroup.title, faqGroup.href || pagePath, faq) : "";
   const body = `<section class="hero">
@@ -1147,7 +1149,7 @@ function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner,
 ${bodyInner.sections || ""}
 ${faqBlock}`;
   const ld = [...baseLd(lang), webPageLd(lang, pagePath, title, description), breadcrumbLd(trail), ...extraLd];
-  searchEntries[lang].push({ t: h1, u: pagePath, d: description, k: searchK });
+  if (search) searchEntries[lang].push({ t: h1, u: pagePath, d: description, k: searchK });
   return { lang, key, path: pagePath, title, description, body, ld, nav, scripts, clientExtra, needsPlace };
 }
 
@@ -1553,15 +1555,16 @@ const PRAYER_KEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
 const provName = (lang, p) => (lang === "ar" ? p.ar : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
 const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
 
-function prayerBody(lang, prov) {
+function prayerBody(lang, prov, extra = "") {
   const t = I[lang];
   const s = t.prayer;
   const rows = PRAYER_KEYS.map((k) => `<tr data-pr="${k}"><th scope="row">${esc(s.names[k])}</th><td data-pr-time>--:--</td></tr>`).join("");
-  const attrs = prov ? ` data-mode="city" data-city="${prov.slug}" data-name="${esc(provName(lang, prov))}" data-lat="${prov.lat}" data-lon="${prov.lon}"` : ` data-mode="hub"`;
+  const shown = prov ? prov.display || provName(lang, prov) : "";
+  const attrs = prov ? ` data-mode="city" data-city="${prov.slug}" data-name="${esc(shown)}" data-lat="${prov.lat}" data-lon="${prov.lon}"` : ` data-mode="hub"`;
   /* Solda geri sayım saati, sağda bugünün vakitleri; çerçeve yok. Konum üst bardaki ortak düğmeyle seçilir. */
   const hero = `<section class="pr-top" data-prayer${attrs} aria-labelledby="pr-h">
       <div class="pr-left">
-        <h2 id="pr-h" class="pr-place" data-pr-place>${prov ? esc(provName(lang, prov)) : "&nbsp;"}</h2>
+        <h2 id="pr-h" class="pr-place" data-pr-place>${prov ? esc(shown) : "&nbsp;"}</h2>
         <p class="meta" data-pr-nextlabel>&nbsp;</p>
         <p class="big-time" role="timer" data-pr-countdown>–</p>
       </div>
@@ -1594,8 +1597,37 @@ function prayerBody(lang, prov) {
   </div>
 </section>
 ${im}
-`;
+${extra}`;
   return { hero, sections };
+}
+
+/* İlçe namaz vakti sayfaları (30 Ekim 2026, rakip analizi #19): yalnız Türkçe (/namaz-vakitleri/<il>/<ilçe>/).
+   Koordinatlar GeoNames (CC BY 4.0), uygulamalardaki districts.json; Diyanet ilçe vakitleriyle 32.220 karşılaştırmada
+   en çok 1 dk fark. İl merkezi ilçesi (adı ille aynı) il sayfasındadır, ayrı sayfası yok. Diğer dillerde dil seçici il
+   sayfasına gider; hreflang yalnız tr. */
+const DISTRICTS = readJson("src/data/districts.json").provinces;
+const trSlug = (name) => name.toLocaleLowerCase("tr").replace(/ı/g, "i").replace(/ğ/g, "g").replace(/ü/g, "u").replace(/ş/g, "s")
+  .replace(/ö/g, "o").replace(/ç/g, "c").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const districtsOf = (prov) => (DISTRICTS[prov.slug] || [])
+  .map(([name, lat, lon]) => ({ name, lat, lon, slug: trSlug(name), prov }))
+  .filter((d) => d.slug !== prov.slug)
+  .sort((a, b) => a.name.localeCompare(b.name, "tr"));
+const districtPath = (d) => `${prayerPath("tr", d.prov)}${d.slug}/`;
+
+/** İl ve ilçe sayfalarının altında kapalı "İlçeler" listesi (yalnız Türkçe; ilk satır il merkezi) */
+function districtList(prov, current) {
+  const s = I.tr.prayer;
+  const list = districtsOf(prov);
+  if (!list.length) return "";
+  const item = (href, name, on) => `<li>${on ? `<span aria-current="page">${esc(name)}</span>` : `<a href="${href}">${esc(name)}</a>`}</li>`;
+  return `<section class="section pr-districts" aria-label="${esc(s.districtsHeading)}">
+  <div class="wrap">
+    <details${current ? " open" : ""}><summary>${esc(s.districtsHeading)} (${list.length})</summary>
+      <ul class="pr-district-list">${item(prayerPath("tr", prov), tpl(s.provinceCentre, { city: provName("tr", prov) }), !current)}${list.map((d) => item(districtPath(d), d.name, current === d.slug)).join("")}</ul>
+    </details>
+    ${current ? `<p class="meta">${esc(s.districtSource)}</p>` : ""}
+  </div>
+</section>`;
 }
 const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation });
 const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
@@ -1614,7 +1646,23 @@ function buildPrayerCity(lang, prov) {
   const name = provName(lang, prov);
   const v = { city: name };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }, { name: tpl(s.cityH1, v), path: prayerPath(lang, prov) }];
-  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov), faq: s.faq, faqGroup: { id: "prayer", title: t.ui.prayer, href: ROUTES[lang].prayer }, scripts: ["place.js", "prayer-calc.js", "prayer.js", "imsakiye.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}` });
+  return simplePage(lang, `prayer:${prov.slug}`, { title: tpl(s.cityTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, prov, lang === "tr" ? districtList(prov, null) : ""), faq: s.faq, faqGroup: { id: "prayer", title: t.ui.prayer, href: ROUTES[lang].prayer }, scripts: ["place.js", "prayer-calc.js", "prayer.js", "imsakiye.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", searchK: `${name} ${s.search}` });
+}
+
+function buildPrayerDistrict(d) {
+  const lang = "tr";
+  const t = I.tr;
+  const s = t.prayer;
+  const prov = provName(lang, d.prov);
+  const v = { city: `${d.name} (${prov})` };
+  const path = districtPath(d);
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].prayer }, { name: tpl(s.cityH1, { city: prov }), path: prayerPath(lang, d.prov) }, { name: tpl(s.cityH1, v), path }];
+  const place = { slug: `${d.prov.slug}/${d.slug}`, display: `${d.name}, ${prov}`, lat: d.lat, lon: d.lon };
+  const page = simplePage(lang, `district:${d.prov.slug}/${d.slug}`, { title: tpl(s.districtTitle, v), description: tpl(s.cityDescription, v), h1: tpl(s.cityH1, v), lead: tpl(s.cityLead, v), trail, bodyInner: prayerBody(lang, place, districtList(d.prov, d.slug)), scripts: ["place.js", "prayer-calc.js", "prayer.js", "imsakiye.js"], clientExtra: { t: prayerClient(s) }, nav: "prayer", search: false });
+  // Arama dizininde kısa satır (dizin büyümesin)
+  searchEntries.tr.push({ t: tpl(s.cityH1, { city: d.name }), u: path, d: prov, k: `${d.name} ${prov} ilçe namaz vakti ezan imsak` });
+  page.langFallback = Object.fromEntries(LANGS.map((l) => [l, prayerPath(l, d.prov)]));
+  return page;
 }
 
 /* Gömülü widget sayfası: yalnız seçilen saat modeli, başlık ve alt bilgi (indekslenmez) */
@@ -1685,6 +1733,7 @@ const built = [];
 for (const lang of LANGS) {
   built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
+  if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur
 }
 
@@ -1741,7 +1790,7 @@ ${indexable
     return `  <url>
     <loc>${abs(p.path)}</loc>
     <lastmod>${cfg.updated}</lastmod>
-${LANGS.map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${abs(a[l])}"/>`).join("\n")}
+${LANGS.filter((l) => a[l]).map((l) => `    <xhtml:link rel="alternate" hreflang="${l}" href="${abs(a[l])}"/>`).join("\n")}
     <xhtml:link rel="alternate" hreflang="x-default" href="${abs(a.tr)}"/>
   </url>`;
   })
@@ -1764,7 +1813,7 @@ const llmsBlock = (lang) => {
   const t = I[lang];
   const mine = built.filter((p) => p.lang === lang && !p.noindex);
   const prayers = mine.filter((p) => p.key.startsWith("prayer:"));
-  const main = mine.filter((p) => !p.key.startsWith("city:") && !p.key.startsWith("calendar:") && !p.key.startsWith("prayer:"));
+  const main = mine.filter((p) => !p.key.startsWith("city:") && !p.key.startsWith("calendar:") && !p.key.startsWith("prayer:") && !p.key.startsWith("district:"));
   const years = mine.filter((p) => p.key.startsWith("calendar:"));
   const cities = mine.filter((p) => p.key.startsWith("city:"));
   return `> ${t.llms.summary}\n\n## ${t.llms.pages}\n${[...main, ...years].map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.llms.cities}\n${cities.map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.prayer.provincesHeading}\n${prayers.map((p) => llmsLine(lang, p)).join("\n")}\n\n## ${t.llms.about}\n${t.llms.aboutText}\n`;

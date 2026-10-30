@@ -414,11 +414,11 @@
     "ar": "الخصوصية"
   },
   "settings.privacyNote": {
-    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz.",
-    "en": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges.",
-    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen.",
-    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz.",
-    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات."
+    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır.",
+    "en": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone.",
+    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen. Von Ihnen gewählte Fotos (Vollbilduhr, Countdowns) werden nur auf dem Telefon gespeichert.",
+    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır.",
+    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات. تُحفظ الصور التي تختارها (الساعة بملء الشاشة، العدّ التنازلي) على هاتفك فقط."
   },
   "clock.fullscreen": {
     "tr": "Tam ekran",
@@ -1226,11 +1226,11 @@
     "ar": "السنوات التالية"
   },
   "settings.privacyNoteAndroid": {
-    "tr": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz.",
-    "en": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges.",
-    "de": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen.",
-    "az": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz.",
-    "ar": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات."
+    "tr": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır.",
+    "en": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone.",
+    "de": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen. Von Ihnen gewählte Fotos (Vollbilduhr, Countdowns) werden nur auf dem Telefon gespeichert.",
+    "az": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır.",
+    "ar": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات. تُحفظ الصور التي تختارها (الساعة بملء الشاشة، العدّ التنازلي) على هاتفك فقط."
   },
   "badges.h1": {
     "tr": "Rozetler",
@@ -1876,6 +1876,48 @@
     "az": "Vibrasiya",
     "ar": "الاهتزاز"
   },
+  "alarm.rise": {
+    "tr": "Kademeli ses",
+    "en": "Gradual volume",
+    "de": "Ansteigende Lautstärke",
+    "az": "Tədricən yüksələn səs",
+    "ar": "صوت متصاعد"
+  },
+  "alarm.riseNote": {
+    "tr": "Alarm sesi ilk 30 saniyede kısıktan tam sese çıkar.",
+    "en": "The alarm sound rises from quiet to full volume over the first 30 seconds.",
+    "de": "Der Weckton steigt in den ersten 30 Sekunden von leise auf volle Lautstärke an.",
+    "az": "Zəng səsi ilk 30 saniyədə zəifdən tam səsə qalxır.",
+    "ar": "يرتفع صوت المنبه من الهادئ إلى أعلى مستوى خلال أول 30 ثانية."
+  },
+  "alarm.riseNoteIOS": {
+    "tr": "Yumuşak bir melodi 20 saniyede kısıktan tam sese çıkar; açıkken iPhone'un alarm sesi yerine çalar.",
+    "en": "A soft melody rises from quiet to full volume over 20 seconds; when on, it plays instead of the iPhone alarm sound.",
+    "de": "Eine sanfte Melodie steigt in 20 Sekunden von leise auf volle Lautstärke an; wenn aktiv, ersetzt sie den iPhone-Weckton.",
+    "az": "Yumşaq bir melodiya 20 saniyədə zəifdən tam səsə qalxır; açıq olanda iPhone-un zəng səsinin yerinə çalır.",
+    "ar": "لحن هادئ يرتفع من الخافت إلى أعلى مستوى خلال 20 ثانية؛ وعند تفعيله يُشغَّل بدل صوت منبه iPhone."
+  },
+  "alarm.snoozeMax": {
+    "tr": "Erteleme sınırı",
+    "en": "Snooze limit",
+    "de": "Schlummer-Limit",
+    "az": "Təxirə salma həddi",
+    "ar": "حدّ الغفوة"
+  },
+  "alarm.snoozeMax.none": {
+    "tr": "Sınırsız",
+    "en": "Unlimited",
+    "de": "Unbegrenzt",
+    "az": "Limitsiz",
+    "ar": "بلا حد"
+  },
+  "alarm.snoozeMax.n": {
+    "tr": "{n} kez",
+    "en": "{n} times",
+    "de": "{n}-mal",
+    "az": "{n} dəfə",
+    "ar": "{n} مرات"
+  },
   "alarm.everyDay": {
     "tr": "Her gün",
     "en": "Every day",
@@ -2401,6 +2443,48 @@
     "az": "Foto yalnız bu telefonda saxlanır; tam ekran saatın arxasında tündləşdirilərək göstərilir.",
     "ar": "تُحفظ الصورة على هذا الهاتف فقط وتظهر معتمة خلف الساعة بملء الشاشة."
   },
+  "look.bg.plain": {
+    "tr": "Düz (tema rengi)",
+    "en": "Plain (theme colour)",
+    "de": "Schlicht (Designfarbe)",
+    "az": "Sadə (tema rəngi)",
+    "ar": "سادة (لون السمة)"
+  },
+  "look.bg.photo": {
+    "tr": "Fotoğraf",
+    "en": "Photo",
+    "de": "Foto",
+    "az": "Foto",
+    "ar": "صورة"
+  },
+  "look.bg.sky": {
+    "tr": "Gökyüzü (günün saatine göre)",
+    "en": "Sky (follows the time of day)",
+    "de": "Himmel (nach Tageszeit)",
+    "az": "Səma (günün saatına görə)",
+    "ar": "السماء (حسب وقت اليوم)"
+  },
+  "look.bg.flow": {
+    "tr": "Renk akışı",
+    "en": "Colour flow",
+    "de": "Farbfluss",
+    "az": "Rəng axını",
+    "ar": "تدفق الألوان"
+  },
+  "look.bg.stars": {
+    "tr": "Yıldızlar",
+    "en": "Stars",
+    "de": "Sterne",
+    "az": "Ulduzlar",
+    "ar": "النجوم"
+  },
+  "look.bg.note": {
+    "tr": "Gökyüzü seçili konumda Güneş'in yüksekliğine göre gündüz, gün doğumu/batımı ya da gece olur. Telefonda \"hareketi azalt\" açıksa hareketli arka planlar durağan görünür.",
+    "en": "Sky follows the Sun's height at the selected location: day, sunrise/sunset or night. If \"reduce motion\" is on, animated backgrounds are shown still.",
+    "de": "Der Himmel folgt dem Sonnenstand am gewählten Ort: Tag, Sonnenauf-/-untergang oder Nacht. Ist „Bewegung reduzieren“ an, bleiben bewegte Hintergründe still.",
+    "az": "Səma seçilmiş yerdə Günəşin hündürlüyünə görə gündüz, gün doğuşu/batışı və ya gecə olur. Telefonda \"hərəkəti azalt\" açıqdırsa hərəkətli arxa fonlar sabit görünür.",
+    "ar": "تتبع السماء ارتفاع الشمس في الموقع المحدد: نهار أو شروق/غروب أو ليل. إذا كان «تقليل الحركة» مفعّلًا تظهر الخلفيات المتحركة ثابتة."
+  },
   "features.title": {
     "tr": "Özellikler",
     "en": "Features",
@@ -2477,5 +2561,19 @@
     "de": "Intervalltraining",
     "az": "İnterval məşqi",
     "ar": "تمرين الفترات"
+  },
+  "countdowns.photo": {
+    "tr": "Fotoğraf (isteğe bağlı)",
+    "en": "Photo (optional)",
+    "de": "Foto (optional)",
+    "az": "Foto (istəyə bağlı)",
+    "ar": "صورة (اختيارية)"
+  },
+  "countdowns.photoNote": {
+    "tr": "Fotoğraf yalnız bu telefonda saklanır, geri sayım kartının arkasında gösterilir.",
+    "en": "The photo is kept only on this phone and shown behind the countdown card.",
+    "de": "Das Foto bleibt nur auf diesem Telefon und erscheint hinter der Countdown-Karte.",
+    "az": "Foto yalnız bu telefonda saxlanılır, geri sayım kartının arxasında göstərilir.",
+    "ar": "تُحفظ الصورة على هذا الهاتف فقط وتظهر خلف بطاقة العدّ التنازلي."
   }
 }

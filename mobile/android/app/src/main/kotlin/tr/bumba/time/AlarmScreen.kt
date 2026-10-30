@@ -165,6 +165,8 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var snooze by remember { mutableStateOf(item.snooze) }
     var sound by remember { mutableStateOf(item.sound) }
     var vibrate by remember { mutableStateOf(item.vibrate) }
+    var snoozeMax by remember { mutableStateOf(item.snoozeMax) }
+    var rise by remember { mutableStateOf(item.rise) }
     // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
     val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
         if (r.resultCode == android.app.Activity.RESULT_OK) {
@@ -209,6 +211,10 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                 Text(item.copy(days = days).repeatText, color = Theme.c.muted, fontSize = 13.sp)
                 ChoiceRow(L("alarm.snooze"), if (snooze == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", snooze),
                     AlarmItem.SNOOZE_CHOICES.map { it to (if (it == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", it)) }) { snooze = it }
+                if (snooze > 0) {
+                    fun maxText(n: Int) = if (n == 0) L("alarm.snoozeMax.none") else T("alarm.snoozeMax.n", n)
+                    ChoiceRow(L("alarm.snoozeMax"), maxText(snoozeMax), AlarmItem.SNOOZE_MAX_CHOICES.map { it to maxText(it) }) { snoozeMax = it }
+                }
                 Row(
                     Modifier.fillMaxWidth().clickable {
                         val current = sound.takeIf { it.isNotEmpty() }?.let(Uri::parse) ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
@@ -229,13 +235,20 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     Text(L("alarm.vibrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     Switch(vibrate, { vibrate = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(L("alarm.rise"), color = Theme.c.text, fontSize = 15.sp)
+                        Text(L("alarm.riseNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
                 if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Color(0xFFD32F2F)) }
             }
         },
         confirmButton = {
             TextButton(onClick = {
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
-                    snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate))
+                    snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },

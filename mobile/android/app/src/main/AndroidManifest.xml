@@ -17,6 +17,8 @@
     <!-- Aralık antrenmanı (HiitService): ekran kapalıyken de evre geçişlerini sesli söyleyen ön plan hizmeti -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Kademeli alarm sesi (AlarmRingService): alarm çalarken sesi yükselterek çalan ön plan hizmeti -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- Vakit bildirimleri (PrayerNotifier): bildirim izni yalnız açarken istenir; tam zamanlı alarm; yeniden
@@ -200,6 +202,10 @@
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Interval workout timer: speaks phase changes (work, rest, last round) and the 3-2-1 countdown while the screen is off; runs only during a workout the user started" />
         </service>
+        <service
+            android:name=".AlarmRingService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
         <receiver android:name=".AlarmReceiver" android:exported="false" />
         <receiver android:name=".RescheduleReceiver" android:exported="false">
             <intent-filter>

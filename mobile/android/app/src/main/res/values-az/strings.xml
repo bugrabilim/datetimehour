@@ -498,7 +498,7 @@
     <string name="settings_website">Veb sayt</string>
     <string name="settings_version">Versiya</string>
     <string name="settings_privacy">Məxfilik</string>
-    <string name="settings_privacyNote">Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz.</string>
+    <string name="settings_privacyNote">Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır.</string>
     <string name="clock_fullscreen">Tam ekran</string>
     <string name="clock_weekDay">%1$s. həftə · ilin %2$s. günü</string>
     <string name="clock_tapToExit">Çıxmaq üçün toxunun</string>
@@ -612,7 +612,7 @@
     <string name="kids_fact4">Ekvatora yaxın ölkələrdə yay ilə qış arasında fərq azdır; orada yağışlı və quraq fəsillər olur.</string>
     <string name="kids_fact5">Şimal yarımkürəsində yay qışdan bir neçə gün uzundur: Yer Günəşdən uzaqda olanda bir az yavaş gedir.</string>
     <string name="kids_more">Növbəti illər</string>
-    <string name="settings_privacyNoteAndroid">Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz.</string>
+    <string name="settings_privacyNoteAndroid">Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır.</string>
     <string name="badges_h1">Nişanlar</string>
     <string name="badges_privacyLink">Məxfilik</string>
     <string name="badges_earnedOn">Qazanıldı: %1$s</string>
@@ -705,6 +705,12 @@
     <string name="alarm_sound">Səs</string>
     <string name="alarm_soundDefault">Standart zəng səsi</string>
     <string name="alarm_vibrate">Vibrasiya</string>
+    <string name="alarm_rise">Tədricən yüksələn səs</string>
+    <string name="alarm_riseNote">Zəng səsi ilk 30 saniyədə zəifdən tam səsə qalxır.</string>
+    <string name="alarm_riseNoteIOS">Yumşaq bir melodiya 20 saniyədə zəifdən tam səsə qalxır; açıq olanda iPhone-un zəng səsinin yerinə çalır.</string>
+    <string name="alarm_snoozeMax">Təxirə salma həddi</string>
+    <string name="alarm_snoozeMax_none">Limitsiz</string>
+    <string name="alarm_snoozeMax_n">%1$s dəfə</string>
     <string name="alarm_everyDay">Hər gün</string>
     <string name="morning_good">Sabahınız xeyir</string>
     <string name="morning_day">Gününüz xeyir</string>
@@ -780,6 +786,12 @@
     <string name="look_photo_pick">Foto seç</string>
     <string name="look_photo_remove">Fotonu sil</string>
     <string name="look_photo_note">Foto yalnız bu telefonda saxlanır; tam ekran saatın arxasında tündləşdirilərək göstərilir.</string>
+    <string name="look_bg_plain">Sadə (tema rəngi)</string>
+    <string name="look_bg_photo">Foto</string>
+    <string name="look_bg_sky">Səma (günün saatına görə)</string>
+    <string name="look_bg_flow">Rəng axını</string>
+    <string name="look_bg_stars">Ulduzlar</string>
+    <string name="look_bg_note">Səma seçilmiş yerdə Günəşin hündürlüyünə görə gündüz, gün doğuşu/batışı və ya gecə olur. Telefonda \"hərəkəti azalt\" açıqdırsa hərəkətli arxa fonlar sabit görünür.</string>
     <string name="features_title">Xüsusiyyətlər</string>
     <string name="features_note">Saat həmişə açıqdır. Açdığın xüsusiyyətlər alt zolaqda görünür; hamısı bağlı olduqda alt zolaq gizlənir, ayarlar saat ekranındakı dişli ilə açılır.</string>
     <string name="features_clock_note">Həmişə açıq: 20 saat modeli, tam ekran, saat ekranı sahələri</string>
@@ -791,5 +803,7 @@
     <string name="features_tools_note">Zəngli saat, taymer, saniyəölçən, pomodoro, tarix hesablama</string>
     <string name="features_hint">Hava, təqvim, namaz vaxtları və digər xüsusiyyətləri aç</string>
     <string name="hiit_channel">İnterval məşqi</string>
+    <string name="countdowns_photo">Foto (istəyə bağlı)</string>
+    <string name="countdowns_photoNote">Foto yalnız bu telefonda saxlanılır, geri sayım kartının arxasında göstərilir.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

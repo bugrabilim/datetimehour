@@ -36,6 +36,7 @@ object Prefs {
         savedPlaces = sp.getString("places.saved", "")!!.split("|").filter { it.isNotEmpty() }
         clockFont = sp.getString("clockFont", "rounded")!!
         fsPhoto = sp.getLong("fsPhoto", 0L)
+        fsBg = sp.getString(FullscreenBackground.KEY, null)
         world = sp.getString("world", City.DEFAULT_KEYS)!!
         units = sp.getString("units", null) ?: Units.systemDefault
         BadgeStore.load()
@@ -80,6 +81,10 @@ object Prefs {
     var fsPhoto by mutableStateOf(0L)
         private set
     fun saveFsPhoto(v: Long) { fsPhoto = v; sp.edit().putLong("fsPhoto", v).apply() }
+    /** Tam ekran arka planı (FullscreenBackground; null = fotoğraf varsa fotoğraf, yoksa düz) */
+    var fsBg by mutableStateOf<String?>(null)
+        private set
+    fun saveFsBg(v: String) { fsBg = v; sp.edit().putString(FullscreenBackground.KEY, v).apply() }
     fun saveSecD(v: Boolean) { secD = v; sp.edit().putBoolean("secD", v).apply() }
     fun saveSecA(v: Boolean) { secA = v; sp.edit().putBoolean("secA", v).apply() }
     fun saveClockModel(v: Int) { clockModel = v; sp.edit().putInt("clockModel", v).apply() }

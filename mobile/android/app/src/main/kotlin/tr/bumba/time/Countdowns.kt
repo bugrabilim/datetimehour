@@ -1,5 +1,12 @@
 package tr.bumba.time
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.ui.graphics.Color
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -74,7 +81,11 @@ data class CountdownItem(
     val target: Long,
     val yearly: Boolean = false,
     val remind: Boolean = true,
+    /** Fotoğrafın sürümü (0 = yok); dosya "cd-<id>.jpg" (yalnız telefonda) */
+    val photo: Long = 0,
 ) {
+    val photoName: String get() = "cd-$id.jpg"
+
     /** Yıllık olanda hedef günü geçtiyse sıradaki yıl (hedef günü boyunca "Bugün!") */
     fun effective(now: Instant = Instant.now(), zone: ZoneId = ZoneId.systemDefault()): Instant {
         var t = Instant.ofEpochMilli(target).atZone(zone)
@@ -85,7 +96,7 @@ data class CountdownItem(
     val label: String get() = "$emoji $title".trim()
 
     fun toJson(): JSONObject = JSONObject().put("id", id).put("title", title).put("emoji", emoji).put("target", target)
-        .put("yearly", yearly).put("remind", remind)
+        .put("yearly", yearly).put("remind", remind).put("photo", photo)
 
     companion object {
         private const val KEY = "countdowns"
@@ -100,7 +111,7 @@ data class CountdownItem(
                 (0 until a.length()).map { i ->
                     val o = a.getJSONObject(i)
                     CountdownItem(o.getString("id"), o.optString("title"), o.optString("emoji", "⏳"), o.getLong("target"),
-                        o.optBoolean("yearly"), o.optBoolean("remind", true))
+                        o.optBoolean("yearly"), o.optBoolean("remind", true), o.optLong("photo", 0))
                 }
             }.getOrDefault(emptyList())
             val old = sp.getLong("cd.target", 0L)
@@ -159,6 +170,8 @@ fun CountdownsScreen() {
     val now = rememberNow()
     val today = LocalDate.now()
     fun update(list: List<CountdownItem>) {
+        // Silinen ya da fotoğrafı kaldırılan geri sayımların dosyaları silinir
+        for (old in items) if (list.none { it.id == old.id && it.photo != 0L }) PhotoFile.remove(context, old.photoName)
         items = list
         CountdownItem.save(list)
         WidgetUpdater.updateAll(context)
@@ -177,7 +190,14 @@ fun CountdownsScreen() {
         if (sorted.isEmpty()) Text(L("countdowns.empty"), color = Theme.c.muted, fontSize = 14.sp)
         for (c in sorted) {
             val at = c.effective(now)
-            AppCard(Modifier.clickable { editing = c }) {
+            // Fotoğraflı kart: fotoğraf koyulaştırılır, yazılar koyu temanın açık renklerine geçer
+            val photo = PhotoFile.image(context, c.photoName, c.photo)
+            val colors = if (photo != null) AccentPalette.find(Prefs.accent).colors(true) else Theme.c
+            CompositionLocalProvider(LocalColors provides colors) {
+            Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp))) {
+            if (photo != null) PhotoBackground(photo, Modifier.matchParentSize())
+            AppCard(Modifier.clickable { editing = c }.then(if (photo != null) Modifier.heightIn(min = 120.dp) else Modifier),
+                background = if (photo != null) Color.Transparent else Theme.c.surface) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(c.emoji, fontSize = 34.sp)
                     Spacer(Modifier.width(12.dp))
@@ -193,6 +213,8 @@ fun CountdownsScreen() {
                         Icon(Icons.Filled.Close, L("timers.remove"), tint = Theme.c.muted)
                     }
                 }
+            }
+            }
             }
         }
         SectionTitle(L("tools.countdown.quickHeading"))
@@ -232,7 +254,12 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
     var at by remember { mutableStateOf(Instant.ofEpochMilli(item.target).atZone(zone).toLocalDateTime()) }
     var yearly by remember { mutableStateOf(item.yearly) }
     var remind by remember { mutableStateOf(item.remind) }
+    var photo by remember { mutableLongStateOf(item.photo) }
     var picking by remember { mutableIntStateOf(0) } // 1 tarih, 2 saat, 3 takvim
+    // Fotoğraf: Android'in fotoğraf seçicisi (izin istemez), küçültülmüş kopya uygulama dosyalarına
+    val pickPhoto = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null && PhotoFile.save(context, uri, item.photoName, 1000)) photo = System.currentTimeMillis()
+    }
     AlertDialog(
         onDismissRequest = onDismiss,
         title = { Text(L(if (isNew) "countdowns.add" else "countdowns.edit")) },
@@ -267,11 +294,23 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
                     Text(L("countdowns.remind"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     Switch(remind, { remind = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
+                Text(L("countdowns.photo"), color = Theme.c.muted, fontSize = 13.sp)
+                PhotoFile.image(context, item.photoName, photo)?.let {
+                    PhotoBackground(it, Modifier.fillMaxWidth().height(110.dp).clip(RoundedCornerShape(12.dp)))
+                }
+                Row {
+                    TextButton(onClick = { pickPhoto.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }) {
+                        Text(L("look.photo.pick"), color = Theme.c.accent)
+                    }
+                    if (photo != 0L) TextButton(onClick = { photo = 0 }) { Text(L("look.photo.remove"), color = Color(0xFFD32F2F)) }
+                }
+                Text(L("countdowns.photoNote"), color = Theme.c.muted, fontSize = 12.sp)
             }
         },
         confirmButton = {
             TextButton(onClick = {
-                onSave(item.copy(title = title.trim(), emoji = emoji, target = at.atZone(zone).toInstant().toEpochMilli(), yearly = yearly, remind = remind))
+                onSave(item.copy(title = title.trim(), emoji = emoji, target = at.atZone(zone).toInstant().toEpochMilli(), yearly = yearly,
+                    remind = remind, photo = photo))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },

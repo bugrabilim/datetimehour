@@ -2,43 +2,47 @@
 
 Apple'ın 20 Ekim 2026'daki bilgi isteğine (Guideline 2.1 - Information Needed, yeni geliştirici hesabı) verilen yanıt.
 Aynı metin App Store Connect › App Review Information › Notes alanına da girilir (Apple sonraki gönderimler için
-istedi). Uygulama değişirse (yeni özellik, yeni dış servis) bu metni de güncelleyin.
+istedi). Uygulama değişirse (yeni özellik, yeni dış servis) bu metni de güncelleyin. App Store Connect'teki alan en
+çok 4000 karakter alır (aşağıdaki metin; `python3 -c` ile sayılır). 30 Ekim 2026: özellik aç/kapa, bildirim
+kategorileri, arka plan yenilemesi, arka plan ses modu ve ezan sesi eklendi (sıradaki sürüm için).
 
 ---
 
 Hello, thank you for the review. The requested information is below. A screen recording made on a physical iPhone (latest iOS), starting with launching the app, is attached.
 
 1. SCREEN RECORDING
-Attached. The app has no account registration or login, no user-generated content and no paid content or in-app purchases.
+Attached. No account or login, no user-generated content, no paid content or in-app purchases.
 
 2. PURPOSE AND AUDIENCE
-Saat Tarih ("Time & Date") is a free clock and calendar utility: current time, date, prayer times, holidays and world clocks in one app.
-Audience: everyday users in Turkey and Turkish, Arabic, German and Azerbaijani speakers worldwide, especially people who follow daily prayer times and Turkey's official holiday calendar.
-Value: 19 clock faces, date and week number, prayer times for any location calculated on the device (optional reminders, Ramadan timetable image), a holiday calendar (optionally with the user's own calendars), world clocks with a globe, weather, seasons/sun/moon info for children, and tools (alarm, timer, stopwatch, pomodoro, date calculator). No ads, no tracking.
+Saat Tarih ("Time & Date") is a free clock and calendar utility: time, date, prayer times, holidays and world clocks in one app. Audience: everyday users in Turkey and Turkish, Arabic, German and Azerbaijani speakers worldwide, especially people who follow daily prayer times and Turkey's holiday calendar. No ads, no tracking.
 
 3. HOW TO USE
-No login or sample files needed; everything works right after launch.
-- Clock: swipe to change the face; tap the clock to show seconds; "Edit" picks the items below; full-screen button.
-- Location: Istanbul by default. Tap the location name to pick one of Turkey's 81 provinces or "Use my location" (permission asked only then).
-- Weather: current, hourly and 7-day forecast.
-- Calendar: holidays; tap a day for details; "Show my phone's calendars" (optional permission); "+" adds an event.
-- World: globe with local times and a world clock list.
-- Seasons: current season, sun and moon times.
-- Prayer: today's times and countdown; bell icon turns on reminders (notification permission asked then); monthly table and Ramadan timetable.
-- Tools: Alarm, Timer, Stopwatch, Pomodoro, Date calculator, Settings, About (website, contact, optional newsletter, privacy).
-The language follows the device (Turkish, English, German, Azerbaijani, Arabic).
+No login or sample files needed.
+- First launch shows only the clock. To see every feature, tap the gear on the clock screen > Features and turn on Weather, Calendar, World, Seasons, Prayer and Tools; each then appears in the bottom bar.
+- Clock: swipe to change among 20 faces; tap the clock for seconds; "Edit" picks the items below; full-screen button (optional photo or animated background).
+- Location: Istanbul by default; tap the location name to search a province or district, or "Use my location" (permission asked only then).
+- Calendar: holidays; tap a day for details; "Show my phone's calendars" (optional permission).
+- Prayer: today's times and countdown, monthly table, Ramadan timetable.
+- Tools: alarm, timers, interval workout, countdowns, stopwatch, pomodoro, date calculator, badges.
+The language follows the device.
 
-4. EXTERNAL SERVICES
-- Apple WeatherKit: weather. Every screen that shows WeatherKit data displays the Apple Weather mark and a "Legal" link to Apple's legal attribution page: Weather tab (right below current conditions), weather clock faces and the weather item on the Clock tab, and the globe (World tab and Clock tab, top-left corner; city temperatures).
+4. NOTIFICATIONS AND BACKGROUND MODES
+- Notifications (permission asked once at first launch; each category can be turned off in Settings > Notifications): prayer times, special days, season starts, moon phases, sunrise/sunset, a morning weather summary, daylight saving changes and hourly chimes (off by default). All are local notifications scheduled on the device.
+- Background App Refresh (fetch): only moves this local notification schedule forward when the app has not been opened for a while.
+- Audio (background mode): used only while an interval workout the user started is running, to speak phase changes ("Work", "Rest", "Last round") and the 3-2-1 countdown with the screen locked or over other apps. It mixes with music and stops when the workout is paused, reset or finished.
+- AlarmKit: alarms and timers ring at the set time (optional gradual volume uses a bundled sound).
+
+5. EXTERNAL SERVICES
+- Apple WeatherKit: weather. Every place that shows WeatherKit data displays the Apple Weather mark and a "Legal" link: Weather tab, weather clock faces and clock-screen item, the globe, the morning card; the weather notification ends with " Weather".
 - Apple MapKit: the globe.
-- On-device Apple frameworks: Core Location (optional), EventKit (optional), UserNotifications and AlarmKit, AVSpeechSynthesizer (spoken reminder sounds made on the device).
+- On-device frameworks: Core Location (optional), EventKit (optional), PhotosPicker (no photo library permission), UserNotifications, AlarmKit, AVSpeechSynthesizer.
 - Bumba mailing list (bumbagroup.com): only if the user enters an email in About, with explicit consent.
-No other servers: prayer times and sun/moon data are calculated on the device; the holiday calendar is bundled. No analytics, ads or AI services.
+No other servers: prayer times and sun/moon data are calculated on the device. No analytics, ads or AI services.
 
-5. REGIONAL DIFFERENCES
-The app works the same in all regions. Prayer times are calculated for any selected location worldwide. The holiday calendar shows Turkey's official and religious holidays for everyone. Weather depends on WeatherKit coverage.
+6. REGIONAL DIFFERENCES
+Same in all regions. Prayer times work for any location. The holiday calendar shows Turkey's holidays for everyone. Weather depends on WeatherKit coverage.
 
-6. REGULATED INDUSTRY / THIRD-PARTY MATERIAL
-Not applicable. No regulated services and no protected third-party content. Prayer times are informational, calculated with the method of Turkey's Presidency of Religious Affairs (Diyanet); the app states Diyanet's official times are authoritative. Holiday dates come from public official calendars.
+7. REGULATED INDUSTRY / THIRD-PARTY MATERIAL
+No regulated services. Prayer times are informational, calculated with the method of Turkey's Presidency of Religious Affairs (Diyanet); the app states Diyanet's official times are authoritative. Optional 5-second adhan notification sound: an excerpt of an openly licensed recording from Wikimedia Commons (CC BY-SA 4.0), credited in the app. District coordinates: GeoNames (CC BY 4.0), credited in the app.
 
 Developer: Bugra Bilim - bilgi@bumbagroup.com - https://time.bumba.tr

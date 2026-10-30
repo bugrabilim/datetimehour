@@ -267,7 +267,26 @@
           "**Bildirişlər və zəngli saatlar:** Vaxt bildirişləri; xüsusi gün, fəslin başlanğıcı, Ay fazası, gün doğuşu və batışı, səhər hava xülasəsi, saat başı və yay vaxtı bildirişləri (saat başından başqa hər biri standart olaraq açıqdır; Ayarlar › Bildirişlər bölməsindən dəyişdirilə bilər); zəngli saatlar və taymerlər serversiz, telefonda qurulur. Yalnız hava xülasəsi üçün hava xidmətinə müraciət olunur (yuxarıdakı hava bəndi). Siyahı iOS-un arxa plan yeniləməsi ilə aktual saxlanılır; səsli elan telefonda yaradılır.",
           "**E-poçt siyahısı:** Haqqında səhifəsindən siyahıya qoşulsanız, e-poçt ünvanınız saytdakı forma ilə eyni şəkildə ortaq Bumba siyahısına göndərilir; e-poçt siyahısı ilə bağlı izahlar tətbiq üçün də keçərlidir.",
           "**Nişanlar:** Nişanlar və irəliləyişiniz (qazanılan nişan və günü, baxılan saat modelləri, ardıcıl istifadə günlərinin sayı) yalnız telefonda saxlanılır, heç yerə göndərilmir; Alətlər › Nişanlar bölməsindəki \"Nişanları sil\" ilə istədiyiniz vaxt silə bilərsiniz.",
+          "**İnterval məşqi:** Başlatdığınız interval məşqi davam edərkən tətbiq mərhələ keçidlərini ekran kilidli olanda da elan etmək üçün iOS-un arxa fon səs rejimindən istifadə edir; səs telefonda yaradılır, heç bir məlumat göndərilmir.",
+          "**Fotolar:** Tam ekran saat və ya geri sayımlar üçün seçdiyiniz foto iPhone-un foto seçicisi ilə götürülür (foto arxivinizə giriş icazəsi istənmir); kiçildilmiş surəti yalnız telefonda saxlanılır, heç yerə göndərilmir.",
           "**Seçimlər:** Saat modeli, vilayət, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir."
+        ]
+      },
+      {
+        "id": "android-app",
+        "h": "Android tətbiqi",
+        "p": [
+          "Saat Tarih-in Android tətbiqi də eyni prinsiplərlə işləyir: hesab istəmir, reklam və izləmə yoxdur, statistika toplamır. Tətbiqdə işlənən məlumatlar:"
+        ],
+        "ul": [
+          "**Məkan:** \"Məkanımı istifadə et\" desəniz yalnız təxmini məkan icazəsi istənir; məkanınız telefonda namaz vaxtlarını hesablamaq və ən yaxın vilayəti və ya rayonu tapmaq üçün istifadə olunur, təxmini məkan (təxminən 1 km) yalnız telefonda saxlanılır.",
+          "**Hava:** Tətbiqdəki hava Open-Meteo-dan (open-meteo.com) gəlir; bunun üçün seçilmiş yerin iki onluğa yuvarlaqlaşdırılmış koordinatları (təxminən 1 km) Open-Meteo-ya göndərilir və bu sorğuda IP ünvanınız Open-Meteo serverinə çatır. Fırlanan dünyadakı şəhər havası üçün yalnız həmin şəhərlərin koordinatları göndərilir. Open-Meteo-nun məxfilik şərtləri tətbiq olunur; bu məlumatı biz görmürük.",
+          "**Dünya və xəritə:** Fırlanan dünya tətbiqin içindəki şəkillə çəkilir; xəritə üçün heç bir xidmətə qoşulmur.",
+          "**Təqvim:** Təqvim icazəsi yalnız \"Telefonumdakı təqvimləri göstər\" desəniz istənir; tədbirlər telefonda oxunur, heç yerə göndərilmir. Tədbir əlavə etmək telefonun öz təqvim tətbiqi ilə, silmək isə sizin təsdiqinizlə edilir.",
+          "**Bildirişlər, zəngli saatlar və interval məşqi:** Vaxt bildirişləri və digər bildiriş növləri (xüsusi gün, fəslin başlanğıcı, Ay fazası, gün doğuşu və batışı, səhər hava xülasəsi, saat başı, yay vaxtı; saat başından başqa hər biri standart olaraq açıqdır, Ayarlar › Bildirişlər bölməsindən dəyişdirilə bilər), zəngli saatlar və taymerlər telefonda qurulur, server istifadə olunmur; vaxtında çalmaları üçün dəqiq zəngli saat icazəsindən istifadə olunur. Başlatdığınız interval məşqi davam edərkən bildirişdə görünən ön plan xidməti mərhələ keçidlərini telefonun danışıq mühərriki ilə elan edir. Səsli elanlar telefonda yaradılır.",
+          "**Fotolar:** Tam ekran saat və ya geri sayımlar üçün seçdiyiniz foto Android-in foto seçicisi ilə götürülür (qalereya icazəsi istənmir); kiçildilmiş surəti yalnız tətbiqin fayllarında saxlanılır.",
+          "**E-poçt siyahısı:** Haqqında səhifəsindən siyahıya qoşulsanız e-poçt ünvanınız saytdakı forma ilə eyni şəkildə ümumi Bumba siyahısına göndərilir; e-poçt siyahısı ilə bağlı izahlar tətbiq üçün də keçərlidir.",
+          "**Nişanlar və seçimlər:** Nişanlar, saat modeli, məkan, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir. Telefonunuzda Android ehtiyat nüsxəsi açıqdırsa, bu qeydlər (və seçdiyiniz fotoların surəti) Google hesabınızdakı cihaz ehtiyat nüsxəsinə daxil edilə bilər; bu ehtiyat nüsxə Google-un şərtlərinə tabedir və biz ona daxil ola bilmirik."
         ]
       },
       {
@@ -1317,6 +1336,10 @@
     "otherPlace": "Başqa məkan üçün namaz vaxtları səhifəsinə keçin",
     "provincesHeading": "Vilayətlər üzrə namaz vaxtları",
     "provincesLead": "Vilayət seçin.",
+    "districtsHeading": "Rayonlar",
+    "districtTitle": "{city} Namaz Vaxtları | Saat Tarih",
+    "provinceCentre": "{city} (vilayət mərkəzi)",
+    "districtSource": "Rayon koordinatları GeoNames (CC BY 4.0) məlumatındandır; vaxtlar rayon mərkəzinin koordinatına görə hesablanır. Diyanet böyükşəhərlərin mərkəz rayonları üçün ayrıca vaxt vermir, vilayət vaxtını əsas götürür; rəsmi vaxt üçün Diyanet İşləri Başqanlığı əsasdır.",
     "noscript": "Namaz vaxtlarını görmək üçün brauzerdə JavaScript aktiv olmalıdır.",
     "faqHeading": "Tez-tez verilən suallar",
     "faq": [

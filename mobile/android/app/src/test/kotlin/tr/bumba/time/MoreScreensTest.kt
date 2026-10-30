@@ -95,13 +95,33 @@ class MoreScreensTest {
     @Test fun countdowns() {
         val z = java.time.ZoneId.systemDefault()
         fun at(d: LocalDate, h: Int = 0) = d.atTime(h, 0).atZone(z).toInstant().toEpochMilli()
+        // Fotoğraflı kart: sentez bir gün batımı görüntüsü (dosya uygulama dosyalarında "cd-a.jpg")
+        val c = RuntimeEnvironment.getApplication()
+        val bmp = android.graphics.Bitmap.createBitmap(400, 240, android.graphics.Bitmap.Config.ARGB_8888)
+        android.graphics.Canvas(bmp).drawPaint(android.graphics.Paint().apply {
+            shader = android.graphics.LinearGradient(0f, 0f, 0f, 240f, 0xFFFF8A3D.toInt(), 0xFF5B2A86.toInt(), android.graphics.Shader.TileMode.CLAMP)
+        })
+        java.io.File(c.filesDir, "cd-a.jpg").outputStream().use { bmp.compress(android.graphics.Bitmap.CompressFormat.JPEG, 90, it) }
         CountdownItem.save(listOf(
-            CountdownItem(id = "a", title = "Annemin doğum günü", emoji = "🎂", target = at(LocalDate.now().plusDays(23)), yearly = true),
+            CountdownItem(id = "a", title = "Annemin doğum günü", emoji = "🎂", target = at(LocalDate.now().plusDays(23)), yearly = true, photo = 1),
             CountdownItem(id = "b", title = "Tatil", emoji = "🏖️", target = at(LocalDate.now().plusDays(61), 8)),
             CountdownItem(id = "c", title = "Sunum", emoji = "💼", target = System.currentTimeMillis() + 5 * 3_600_000L),
         ))
         page("tr-geri-sayimlar", "Zamanlayıcı") { CountdownsScreen() }
         CountdownItem.save(emptyList())
+    }
+    /** Hareketli arka planlar (testte tek kare): gece gökyüzü ve renk akışıyla tam ekran saat */
+    @Test fun animatedBackgrounds() {
+        // "Animasyonları kapat" açık: arka plan durağan tek kare çizer (sonsuz kare döngüsü ekran görüntüsünü bekletmesin)
+        android.provider.Settings.Global.putFloat(RuntimeEnvironment.getApplication().contentResolver,
+            android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 0f)
+        Prefs.saveFsBg("stars")
+        shot("tr-tam-ekran-yildizlar") { FullscreenClock {} }
+        Prefs.saveFsBg("flow")
+        shot("tr-tam-ekran-renk-akisi") { FullscreenClock {} }
+        Prefs.saveFsBg("sky")
+        page("tr-saat-gorunumu-gokyuzu", "Saat görünümü") { AppearanceScreen() }
+        Prefs.saveFsBg("plain")
     }
     @Test fun appearance() {
         Prefs.saveClockFont("serif")

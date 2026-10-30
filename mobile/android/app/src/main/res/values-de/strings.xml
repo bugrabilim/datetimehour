@@ -498,7 +498,7 @@
     <string name="settings_website">Website</string>
     <string name="settings_version">Version</string>
     <string name="settings_privacy">Datenschutz</string>
-    <string name="settings_privacyNote">Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen.</string>
+    <string name="settings_privacyNote">Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen. Von Ihnen gewählte Fotos (Vollbilduhr, Countdowns) werden nur auf dem Telefon gespeichert.</string>
     <string name="clock_fullscreen">Vollbild</string>
     <string name="clock_weekDay">KW %1$s · %2$s. Tag des Jahres</string>
     <string name="clock_tapToExit">Zum Beenden tippen</string>
@@ -612,7 +612,7 @@
     <string name="kids_fact4">In der Nähe des Äquators sind Sommer und Winter fast gleich; dort gibt es Regen- und Trockenzeiten.</string>
     <string name="kids_fact5">Auf der Nordhalbkugel ist der Sommer ein paar Tage länger als der Winter: Weiter weg von der Sonne bewegt sich die Erde etwas langsamer.</string>
     <string name="kids_more">Folgende Jahre</string>
-    <string name="settings_privacyNoteAndroid">Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen.</string>
+    <string name="settings_privacyNoteAndroid">Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen. Von Ihnen gewählte Fotos (Vollbilduhr, Countdowns) werden nur auf dem Telefon gespeichert.</string>
     <string name="badges_h1">Abzeichen</string>
     <string name="badges_privacyLink">Datenschutz</string>
     <string name="badges_earnedOn">Verdient: %1$s</string>
@@ -705,6 +705,12 @@
     <string name="alarm_sound">Ton</string>
     <string name="alarm_soundDefault">Standard-Weckton</string>
     <string name="alarm_vibrate">Vibration</string>
+    <string name="alarm_rise">Ansteigende Lautstärke</string>
+    <string name="alarm_riseNote">Der Weckton steigt in den ersten 30 Sekunden von leise auf volle Lautstärke an.</string>
+    <string name="alarm_riseNoteIOS">Eine sanfte Melodie steigt in 20 Sekunden von leise auf volle Lautstärke an; wenn aktiv, ersetzt sie den iPhone-Weckton.</string>
+    <string name="alarm_snoozeMax">Schlummer-Limit</string>
+    <string name="alarm_snoozeMax_none">Unbegrenzt</string>
+    <string name="alarm_snoozeMax_n">%1$s-mal</string>
     <string name="alarm_everyDay">Täglich</string>
     <string name="morning_good">Guten Morgen</string>
     <string name="morning_day">Guten Tag</string>
@@ -780,6 +786,12 @@
     <string name="look_photo_pick">Foto wählen</string>
     <string name="look_photo_remove">Foto entfernen</string>
     <string name="look_photo_note">Das Foto bleibt nur auf diesem Telefon und wird abgedunkelt hinter der Vollbilduhr gezeigt.</string>
+    <string name="look_bg_plain">Schlicht (Designfarbe)</string>
+    <string name="look_bg_photo">Foto</string>
+    <string name="look_bg_sky">Himmel (nach Tageszeit)</string>
+    <string name="look_bg_flow">Farbfluss</string>
+    <string name="look_bg_stars">Sterne</string>
+    <string name="look_bg_note">Der Himmel folgt dem Sonnenstand am gewählten Ort: Tag, Sonnenauf-/-untergang oder Nacht. Ist „Bewegung reduzieren“ an, bleiben bewegte Hintergründe still.</string>
     <string name="features_title">Funktionen</string>
     <string name="features_note">Die Uhr ist immer an. Eingeschaltete Funktionen erscheinen in der unteren Leiste; sind alle aus, wird die Leiste ausgeblendet und die Einstellungen öffnen sich über das Zahnrad auf dem Uhrbildschirm.</string>
     <string name="features_clock_note">Immer an: 20 Uhrenmodelle, Vollbild, Felder auf dem Uhrbildschirm</string>
@@ -791,5 +803,7 @@
     <string name="features_tools_note">Wecker, Timer, Stoppuhr, Pomodoro, Datumsrechner</string>
     <string name="features_hint">Wetter, Kalender, Gebetszeiten und mehr einschalten</string>
     <string name="hiit_channel">Intervalltraining</string>
+    <string name="countdowns_photo">Foto (optional)</string>
+    <string name="countdowns_photoNote">Das Foto bleibt nur auf diesem Telefon und erscheint hinter der Countdown-Karte.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

@@ -267,7 +267,26 @@
           "**Notifications and alarms:** Prayer time notifications; special day, start of season, moon phase, sunrise and sunset, morning weather summary, on-the-hour and daylight saving notifications (each on by default except on-the-hour; can be changed in Settings › Notifications); alarms and timers are scheduled on your phone without any server. Only the weather summary asks the weather service (see the weather item above). The list is kept current with iOS background refresh; spoken announcements are generated on your phone.",
           "**Email list:** If you join the list from the About page, your email address is sent to the shared Bumba list exactly like the website form; the email list notes apply to the app as well.",
           "**Badges:** Achievement badges and your progress (badges earned and the day, clock models seen, the number of consecutive days of use) are stored only on your phone and never sent anywhere; you can delete them at any time with \"Delete badges\" in Tools › Badges.",
+          "**Interval workout:** While an interval workout you started is running, the app uses iOS background audio so it can announce phase changes with the screen locked; the voice is generated on your phone and no data is sent anywhere.",
+          "**Photos:** A photo you pick for the full-screen clock or a countdown is taken through the iPhone photo picker (no access to your photo library is requested); a reduced copy is stored only on your phone and never sent anywhere.",
           "**Preferences:** Preferences such as the clock model, province and world clocks are stored only on your phone and are deleted when you delete the app."
+        ]
+      },
+      {
+        "id": "android-app",
+        "h": "Android app",
+        "p": [
+          "The Saat Tarih Android app follows the same principles: no account, no ads, no tracking and no analytics. Data handled in the app:"
+        ],
+        "ul": [
+          "**Location:** If you tap \"Use my location\", only approximate location permission is requested; your location is used on your phone to calculate prayer times and find the nearest province or district, and an approximate location (about 1 km) is stored only on your phone.",
+          "**Weather:** Weather in the app comes from Open-Meteo (open-meteo.com); for this, the coordinates of the selected place, rounded to two decimals (about 1 km), are sent to Open-Meteo, and your IP address reaches Open-Meteo's server with that request. For city weather on the spinning globe only those cities' coordinates are sent. Open-Meteo's privacy terms apply; we never see this data.",
+          "**Globe and map:** The spinning globe is drawn from an image inside the app; no map service is contacted.",
+          "**Calendar:** Calendar permission is requested only if you tap \"Show my phone's calendars\"; events are read on your phone and never sent anywhere. Events are added through your phone's own calendar app and deleted only with your confirmation.",
+          "**Notifications, alarms and interval workout:** Prayer time notifications and the other notification types (special days, start of season, moon phase, sunrise and sunset, morning weather summary, on the hour, daylight saving; each on by default except on-the-hour, changeable in Settings › Notifications), alarms and timers are scheduled on your phone without any server; exact alarm permission is used so they ring on time. While an interval workout you started is running, a foreground service shown in the notification announces phase changes with your phone's text-to-speech engine. Spoken announcements are generated on your phone.",
+          "**Photos:** A photo you pick for the full-screen clock or a countdown is taken through the Android photo picker (no gallery permission is requested); a reduced copy is stored only in the app's own files.",
+          "**Email list:** If you join the list from the About page, your email address is sent to the shared Bumba list exactly like the website form; the email list notes apply to the app as well.",
+          "**Badges and preferences:** Badges and preferences such as the clock model, location and world clocks are stored only on your phone and are deleted when you delete the app. If Android backup is turned on on your phone, these records (and the copy of photos you picked) may be included in the device backup in your Google account; that backup is subject to Google's terms and we cannot access it."
         ]
       },
       {
@@ -1317,6 +1336,10 @@
     "otherPlace": "For another location, go to the prayer times page",
     "provincesHeading": "Prayer times by province",
     "provincesLead": "Select a province.",
+    "districtsHeading": "Districts",
+    "districtTitle": "{city} Prayer Times | Saat Tarih",
+    "provinceCentre": "{city} (provincial centre)",
+    "districtSource": "District locations are from GeoNames (CC BY 4.0); times are calculated for the district centre. Diyanet does not publish separate times for the central districts of metropolitan provinces and uses the provincial time; Turkey's Presidency of Religious Affairs (Diyanet) is authoritative.",
     "noscript": "JavaScript must be enabled in your browser to see the prayer times.",
     "faqHeading": "Frequently asked questions",
     "faq": [

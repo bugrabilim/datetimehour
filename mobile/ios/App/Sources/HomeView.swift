@@ -189,11 +189,14 @@ struct FullscreenClock: View {
     @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
+    @AppStorage(FullscreenBackground.key) private var bgRaw = ""
     @State private var globeHeight: CGFloat = 260
 
     var body: some View {
-        // Arka plan fotoğrafı varsa koyulaştırılarak gösterilir ve yazılar koyu temanın açık renklerine geçer
-        let photo = photoVersion > 0 ? FullscreenPhoto.image : nil
+        // Arka plan: fotoğraf (koyulaştırılmış) ya da hareketli; ikisinde de yazılar koyu temanın açık renklerine geçer
+        let bg = FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain)
+        let photo = bg == .photo && photoVersion > 0 ? FullscreenPhoto.image : nil
+        let darkText = photo != nil || bg.animated
         GeometryReader { geo in
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 let now = context.date
@@ -235,13 +238,15 @@ struct FullscreenClock: View {
                         Image(uiImage: photo).resizable().scaledToFill()
                             .overlay(Color.black.opacity(0.45))
                             .ignoresSafeArea()
+                    } else if bg.animated {
+                        AnimatedBackground(kind: bg)
                     } else {
                         Theme.bg.ignoresSafeArea()
                     }
                 }
             }
         }
-        .environment(\.colorScheme, photo != nil ? .dark : colorScheme)
+        .environment(\.colorScheme, darkText ? .dark : colorScheme)
         .onTapGesture(count: 2) { dismiss() }
         .onChange(of: vsc) { _, v in
             if v == .regular, closeOnPortrait { dismiss() }

@@ -116,7 +116,10 @@ for (const f of htmlFiles) {
   if (!err && !embed) {
     check(/rel="canonical" href="https:\/\//.test(h), `${name}: canonical yok`);
     if (!noidx) {
-      for (const l of [...LANGS, "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
+      // İlçe namaz vakti sayfaları yalnız Türkçe: hreflang yalnız tr ve x-default
+      const trOnly = /^\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/index\.html$/.test(name);
+      for (const l of [...(trOnly ? ["tr"] : LANGS), "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
+      if (trOnly) check(!LANGS.some((l) => l !== "tr" && h.includes(`<link rel="alternate" hreflang="${l}"`)), `${name}: ilçe sayfasında başka dil hreflang'ı olmamalı`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
     } else {
       check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
@@ -202,7 +205,20 @@ for (const l of LANGS) {
   check(evs.some((e) => e.t === "exam"), `events-${l}.json: sınav etkinliği yok`);
 }
 for (const l of LANGS) check(fs.existsSync(path.join(DIST, "assets", `search-${l}.json`)), `search-${l}.json yok`);
-check(sm.split("<url>").slice(1).every((u) => LANGS.every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
+check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/<\/loc>/.test(u) ? ["tr"] : LANGS).every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
+// İlçe namaz vakti sayfaları (yalnız Türkçe): il merkezi hariç 915 ilçe; il sayfasında kapalı ilçe listesi
+{
+  const dist = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/districts.json"), "utf8")).provinces;
+  const pages = pagesInfo.filter((p) => /^\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/index\.html$/.test(p.name));
+  check(pages.length >= 900 && pages.length < Object.values(dist).flat().length, `ilçe sayfası sayısı beklenmedik: ${pages.length}`);
+  const yk = fs.readFileSync(path.join(DIST, "namaz-vakitleri/hakkari/yuksekova/index.html"), "utf8");
+  check(/data-mode="city" data-city="hakkari\/yuksekova" data-name="Yüksekova, Hakkari" data-lat="[\d.]+" data-lon="[\d.]+"/.test(yk) && /GeoNames \(CC BY 4\.0\)/.test(yk) && /<title>Yüksekova \(Hakkari\) Namaz Vakitleri \| Saat Tarih<\/title>/.test(yk) && /aria-current="page">Yüksekova</.test(yk), "Yüksekova ilçe sayfası eksik");
+  const ist = fs.readFileSync(path.join(DIST, "namaz-vakitleri/istanbul/index.html"), "utf8");
+  check(/class="pr-district-list"/.test(ist) && /href="\/namaz-vakitleri\/istanbul\/kadikoy\/"/.test(ist), "İstanbul il sayfasında ilçe listesi yok");
+  check(!fs.existsSync(path.join(DIST, "en/prayer-times/istanbul/kadikoy")), "ilçe sayfaları yalnız Türkçe olmalı");
+  const enIst = fs.readFileSync(path.join(DIST, "en/prayer-times/istanbul/index.html"), "utf8");
+  check(!/pr-district-list/.test(enIst), "İngilizce il sayfasında ilçe listesi olmamalı");
+}
 
 // namaz vakti hesabı: İstanbul 9 Ekim 2026, Diyanet'in yayımladığı vakitlerle (±1 dk)
 {

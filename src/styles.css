@@ -699,6 +699,11 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .pr-month td { font-variant-numeric: tabular-nums; }
 .pr-month tr.is-today th, .pr-month tr.is-today td { background: var(--accent-soft); font-weight: 700; }
 .pr-month tr.is-fri th { text-decoration: underline dotted; text-underline-offset: 3px; }
+/* İlçeler: il ve ilçe sayfalarının altında kapalı liste (yalnız Türkçe) */
+.pr-districts summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.pr-district-list { list-style: none; padding: 0; margin: 0.75rem 0 0; columns: 3 11rem; column-gap: 1.5rem; }
+.pr-district-list li { padding: 0.15rem 0; break-inside: avoid; }
+.pr-district-list [aria-current] { font-weight: 600; }
 .pr-month-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.75rem; }
 .pr-month-head h2 { margin: 0; text-transform: capitalize; }
 .pr-month-nav { display: flex; gap: 0.5rem; }

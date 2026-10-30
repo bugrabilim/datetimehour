@@ -24,35 +24,68 @@ enum ClockFont: String, CaseIterable, Identifiable {
 /// Tam ekran arka plan fotoğrafı: yalnız telefonda (Application Support), en uzun kenar 1600 px JPEG
 enum FullscreenPhoto {
     static let versionKey = "fsPhoto"
-    static var url: URL {
-        let dir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
-        return dir.appendingPathComponent("fs-photo.jpg")
-    }
-    static var image: UIImage? { UIImage(contentsOfFile: url.path) }
+    private static let name = "fs-photo.jpg"
+    static var url: URL { PhotoFile.url(name) }
+    static var image: UIImage? { PhotoFile.image(name, version: UserDefaults.standard.double(forKey: versionKey)) }
 
     static func save(_ data: Data) -> Bool {
-        guard let img = UIImage(data: data) else { return false }
-        let scale = min(1, 1600 / max(img.size.width, img.size.height))
-        let size = CGSize(width: img.size.width * scale, height: img.size.height * scale)
-        let out = UIGraphicsImageRenderer(size: size).image { _ in img.draw(in: CGRect(origin: .zero, size: size)) }
-        guard let jpg = out.jpegData(compressionQuality: 0.8) else { return false }
-        try? jpg.write(to: url, options: .atomic)
+        guard PhotoFile.save(data, name: name, maxSide: 1600) else { return false }
         UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: versionKey)
         return true
     }
 
     static func remove() {
-        try? FileManager.default.removeItem(at: url)
+        PhotoFile.remove(name)
         UserDefaults.standard.set(0.0, forKey: versionKey)
+    }
+}
+
+/// Telefonda saklanan küçültülmüş fotoğraflar (tam ekran saat, geri sayımlar): Application Support altında JPEG.
+/// Okunan görüntü sürüm numarasıyla önbellekte tutulur (saniyede yenilenen ekranlar dosyayı tekrar okumasın).
+enum PhotoFile {
+    private static let cache = NSCache<NSString, UIImage>()
+
+    static func url(_ name: String) -> URL {
+        let dir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        return dir.appendingPathComponent(name)
+    }
+
+    static func image(_ name: String, version: Double) -> UIImage? {
+        guard version > 0 else { return nil }
+        let key = "\(name)#\(version)" as NSString
+        if let img = cache.object(forKey: key) { return img }
+        guard let img = UIImage(contentsOfFile: url(name).path) else { return nil }
+        cache.setObject(img, forKey: key)
+        return img
+    }
+
+    /// En uzun kenarı `maxSide` piksele küçültüp JPEG olarak yazar
+    static func save(_ data: Data, name: String, maxSide: CGFloat) -> Bool {
+        guard let img = UIImage(data: data) else { return false }
+        let scale = min(1, maxSide / max(img.size.width, img.size.height))
+        let size = CGSize(width: img.size.width * scale, height: img.size.height * scale)
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        let out = UIGraphicsImageRenderer(size: size, format: format).image { _ in img.draw(in: CGRect(origin: .zero, size: size)) }
+        guard let jpg = out.jpegData(compressionQuality: 0.8) else { return false }
+        return (try? jpg.write(to: url(name), options: .atomic)) != nil
+    }
+
+    static func remove(_ name: String) {
+        try? FileManager.default.removeItem(at: url(name))
     }
 }
 
 /// Ayarlar › Saat görünümü: yazı tipi (canlı örnek) ve tam ekran fotoğrafı
 struct AppearanceView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @AppStorage("clockFont") private var clockFont = ClockFont.rounded.rawValue
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
+    @AppStorage(FullscreenBackground.key) private var bgRaw = ""
     @State private var item: PhotosPickerItem?
+
+    private var background: FullscreenBackground { FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain) }
 
     var body: some View {
         Form {
@@ -74,24 +107,27 @@ struct AppearanceView: View {
                 .labelsHidden()
             }
             Section {
-                if photoVersion > 0, let img = FullscreenPhoto.image {
-                    Image(uiImage: img).resizable().scaledToFill()
-                        .frame(height: 160).frame(maxWidth: .infinity).clipped()
-                        .overlay(Color.black.opacity(0.45))
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .id(photoVersion)
+                // Canlı örnek: seçili arka plan ve saat
+                preview
+                Picker(L("look.photo"), selection: Binding(get: { background.rawValue }, set: { bgRaw = $0 })) {
+                    ForEach(FullscreenBackground.allCases) { b in
+                        Text(b.title).tag(b.rawValue)
+                    }
                 }
+                .pickerStyle(.inline)
+                .labelsHidden()
                 PhotosPicker(selection: $item, matching: .images) { Label(L("look.photo.pick"), systemImage: "photo") }
                 if photoVersion > 0 {
                     Button(L("look.photo.remove"), role: .destructive) {
                         FullscreenPhoto.remove()
                         photoVersion = 0
+                        if background == .photo { bgRaw = FullscreenBackground.plain.rawValue }
                     }
                 }
             } header: {
                 Text(L("look.photo"))
             } footer: {
-                Text(L("look.photo.note"))
+                Text(L("look.photo.note") + " " + L("look.bg.note"))
             }
         }
         .themedBackground()
@@ -103,9 +139,35 @@ struct AppearanceView: View {
             Task {
                 if let data = try? await new.loadTransferable(type: Data.self), FullscreenPhoto.save(data) {
                     photoVersion = UserDefaults.standard.double(forKey: FullscreenPhoto.versionKey)
+                    bgRaw = FullscreenBackground.photo.rawValue
                 }
                 item = nil
             }
         }
+    }
+
+    /// Seçili arka planın küçük örneği (fotoğraf yoksa "Fotoğraf"ta düz zemin)
+    @ViewBuilder private var preview: some View {
+        let bg = background
+        ZStack {
+            if bg == .photo, photoVersion > 0, let img = FullscreenPhoto.image {
+                Image(uiImage: img).resizable().scaledToFill().overlay(Color.black.opacity(0.45)).id(photoVersion)
+            } else if bg.animated {
+                AnimatedBackground(kind: bg)
+            } else {
+                Theme.bg
+            }
+            TimelineView(.periodic(from: .now, by: 1)) { context in
+                Text(Fmt.time(context.date))
+                    .font((ClockFont(rawValue: clockFont) ?? .rounded).font(44))
+                    .monospacedDigit()
+                    .foregroundStyle(Theme.ink)
+                    .environment(\.layoutDirection, .leftToRight)
+            }
+        }
+        .frame(height: 160)
+        .frame(maxWidth: .infinity)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .environment(\.colorScheme, bg == .plain || (bg == .photo && photoVersion == 0) ? colorScheme : .dark)
     }
 }

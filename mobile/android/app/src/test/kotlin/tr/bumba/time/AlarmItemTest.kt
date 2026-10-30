@@ -44,3 +44,39 @@ class AlarmItemTest {
         assertEquals(L("alarm.everyDay"), a.copy(days = (1..7).toList()).repeatText)
     }
 }
+
+/** Kademeli ses eğrisi ve erteleme sınırı */
+@org.junit.runner.RunWith(org.robolectric.RobolectricTestRunner::class)
+@org.robolectric.annotation.Config(sdk = [35])
+class AlarmRiseSnoozeTest {
+    @Test fun volumeCurve() {
+        assertEquals(AlarmRingService.MIN_VOLUME, AlarmRingService.volumeAt(0), 1e-6f)
+        assertEquals(1f, AlarmRingService.volumeAt(AlarmRingService.RISE_MS), 1e-6f)
+        assertEquals(1f, AlarmRingService.volumeAt(120_000), 1e-6f)
+        // Yarı yolda dörtte bire yakın (kare eğri), hep artan
+        val half = AlarmRingService.volumeAt(15_000)
+        org.junit.Assert.assertTrue(half in 0.25f..0.3f)
+        org.junit.Assert.assertTrue(AlarmRingService.volumeAt(10_000) < half && half < AlarmRingService.volumeAt(20_000))
+    }
+
+    @Test fun snoozeLimit() {
+        val c = org.robolectric.RuntimeEnvironment.getApplication()
+        val a = AlarmItem(id = "x", hour = 7, minute = 0, snooze = 5, snoozeMax = 2, rise = true)
+        AlarmItem.save(listOf(a))
+        assertEquals(a, AlarmItem.fromJson(a.toJson()))
+        assertEquals(5, AlarmScheduler.snoozeMinutes("x", "alarm"))
+        AlarmScheduler.snooze(c, "x", "t")
+        assertEquals(5, AlarmScheduler.snoozeMinutes(AlarmScheduler.SNOOZE + "x", "alarm"))
+        AlarmScheduler.snooze(c, AlarmScheduler.SNOOZE + "x", "t")
+        // İki erteleme kullanıldı: üçüncü çalmada erteleme düğmesi yok
+        assertEquals(0, AlarmScheduler.snoozeMinutes(AlarmScheduler.SNOOZE + "x", "alarm"))
+        // Kapatınca sayaç sıfırlanır
+        AlarmScheduler.stop(c, AlarmScheduler.SNOOZE + "x")
+        assertEquals(5, AlarmScheduler.snoozeMinutes("x", "alarm"))
+        // Sınırsız
+        AlarmItem.save(listOf(a.copy(snoozeMax = 0)))
+        repeat(6) { AlarmScheduler.snooze(c, AlarmScheduler.SNOOZE + "x", "t") }
+        assertEquals(5, AlarmScheduler.snoozeMinutes(AlarmScheduler.SNOOZE + "x", "alarm"))
+        AlarmItem.save(emptyList())
+    }
+}

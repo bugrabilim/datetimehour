@@ -22,9 +22,10 @@ import java.time.ZoneId
 import java.util.UUID
 
 /**
- * Alarm: saat, etiket, günler (ISO 1 pazartesi … 7 pazar; boş = bir kez), erteleme süresi (dk; 0 = yok), "sonraki
- * alarmı atla" (`skipUntil`, ms), ses (zil sesi adresi; boş = varsayılan alarm sesi) ve titreşim. iOS'taki AlarmItem ile
- * aynı alanlar (ses ve titreşim yalnız Android'de). Eski kayıtlardaki `repeats` okunurken günlere çevrilir.
+ * Alarm: saat, etiket, günler (ISO 1 pazartesi … 7 pazar; boş = bir kez), erteleme süresi (dk; 0 = yok) ve sınırı
+ * (`snoozeMax`; 0 = sınırsız), "sonraki alarmı atla" (`skipUntil`, ms), ses (zil sesi adresi; boş = varsayılan alarm
+ * sesi), titreşim ve kademeli ses (`rise`). iOS'taki AlarmItem ile aynı alanlar (ses ve titreşim yalnız Android'de).
+ * Eski kayıtlardaki `repeats` okunurken günlere çevrilir.
  */
 data class AlarmItem(
     val id: String = UUID.randomUUID().toString(),
@@ -37,6 +38,8 @@ data class AlarmItem(
     val skipUntil: Long = 0,
     val sound: String = "",
     val vibrate: Boolean = true,
+    val snoozeMax: Int = 0,
+    val rise: Boolean = false,
 ) {
     val title: String get() = label.ifEmpty { L("tools.alarm.defaultLabel") }
     val timeText: String get() = Fmt.time(LocalDateTime.now().withHour(hour).withMinute(minute).atZone(ZoneId.systemDefault()))
@@ -80,12 +83,13 @@ data class AlarmItem(
 
     fun toJson(): JSONObject = JSONObject().put("id", id).put("hour", hour).put("minute", minute).put("label", label)
         .put("days", JSONArray(days)).put("enabled", enabled).put("snooze", snooze).put("skipUntil", skipUntil)
-        .put("sound", sound).put("vibrate", vibrate)
+        .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise)
 
     companion object {
         private const val KEY = "alarms"
         val WEEKDAYS = listOf(1, 2, 3, 4, 5)
         val SNOOZE_CHOICES = listOf(0, 5, 10, 15, 20, 30)
+        val SNOOZE_MAX_CHOICES = listOf(0, 1, 2, 3, 5)
 
         fun fromJson(o: JSONObject): AlarmItem {
             val days = o.optJSONArray("days")?.let { a -> (0 until a.length()).map { a.getInt(it) } } ?: when (o.optString("repeats", "once")) {
@@ -96,7 +100,7 @@ data class AlarmItem(
             return AlarmItem(
                 o.getString("id"), o.getInt("hour"), o.getInt("minute"), o.optString("label"), days,
                 o.optBoolean("enabled", true), o.optInt("snooze", 5), o.optLong("skipUntil", 0),
-                o.optString("sound", ""), o.optBoolean("vibrate", true),
+                o.optString("sound", ""), o.optBoolean("vibrate", true), o.optInt("snoozeMax", 0), o.optBoolean("rise", false),
             )
         }
 
@@ -119,6 +123,8 @@ data class AlarmItem(
  * uygulama kapalıyken de çalar; telefon yeniden başlayınca ya da saat/dilim değişince yeniden kurulur
  * (RescheduleReceiver). Tam zamanlı alarm izni (Android 12+) yoksa yaklaşık zamanlı kurulur ve ekranda uyarı çıkar.
  * Çalma: alarm kanalında, alarm sesiyle ve sürekli (FLAG_INSISTENT) bildirim + kilit ekranında AlarmActivity.
+ * Kademeli seste bildirim sessiz kanaldan gelir, ses AlarmRingService'te yükselerek çalar (kanal sesi yükseltilemez).
+ * Erteleme sınırı: kullanılan erteleme sayısı "alarm.snoozed.<id>" kaydında; kapatınca ya da yeni çalmada sıfırlanır.
  */
 object AlarmScheduler {
     const val CHANNEL_ALARM = "alarm"
@@ -161,6 +167,20 @@ object AlarmScheduler {
             ch.enableVibration(true)
             nm.createNotificationChannel(ch)
         }
+    }
+
+    /** Kademeli seste bildirimin sessiz kanalı (ses ve titreşim AlarmRingService'te) */
+    private fun silentChannel(c: Context): String {
+        val id = "alarm-silent"
+        val nm = c.getSystemService(NotificationManager::class.java)
+        if (Build.VERSION.SDK_INT >= 26 && nm.getNotificationChannel(id) == null) {
+            val ch = NotificationChannel(id, L("tools.hub.cards.alarm.name") + " · " + L("alarm.rise"), NotificationManager.IMPORTANCE_HIGH)
+            ch.setSound(null, null)
+            ch.enableVibration(false)
+            ch.lockscreenVisibility = NotificationCompat.VISIBILITY_PUBLIC
+            nm.createNotificationChannel(ch)
+        }
+        return id
     }
 
     /** Alarmın kanalı: varsayılan ses ve titreşimde "alarm"; başka ses ya da titreşimsiz için ayrı kanal */
@@ -245,10 +265,29 @@ object AlarmScheduler {
         }
     }
 
-    /** Çalan alarmın bildirimi: alarm sesi sürekli çalar; kilit ekranında AlarmActivity açılır */
+    private fun snoozeKey(id: String) = "alarm.snoozed." + id.removePrefix(SNOOZE)
+
+    /** Bu çalmada erteleme süresi (dk); erteleme kapalıysa ya da sınır dolduysa 0 */
+    fun snoozeMinutes(id: String, kind: String): Int {
+        if (kind != "alarm") return 0
+        val item = AlarmItem.find(id)
+        val minutes = item?.snooze ?: SNOOZE_MIN
+        val max = item?.snoozeMax ?: 0
+        return if (minutes > 0 && (max == 0 || Prefs.store.getInt(snoozeKey(id), 0) < max)) minutes else 0
+    }
+
+    /** Çalan alarmın bildirimi: alarm sesi sürekli çalar; kilit ekranında AlarmActivity açılır.
+     *  Kademeli seste ses hizmeti başlar (başlatılamazsa normal sesli bildirime dönülür). */
     fun ring(c: Context, id: String, title: String, kind: String) {
         ensureChannels(c)
         if (!canNotify(c)) return
+        val item = if (kind == "alarm") AlarmItem.find(id) else null
+        if (item?.rise == true && AlarmRingService.start(c, id, title, kind)) return
+        runCatching { NotificationManagerCompat.from(c).notify(id.hashCode(), notification(c, id, title, kind, silent = false)) }
+    }
+
+    /** Çalan alarmın bildirimi (sessiz = kademeli seste, sesi hizmet çalar) */
+    fun notification(c: Context, id: String, title: String, kind: String, silent: Boolean): android.app.Notification {
         val nid = id.hashCode()
         val full = PendingIntent.getActivity(
             c, nid,
@@ -263,8 +302,8 @@ object AlarmScheduler {
         )
         val time = Fmt.time(java.time.ZonedDateTime.now())
         val item = if (kind == "alarm") AlarmItem.find(id) else null
-        val snoozeMin = item?.snooze ?: SNOOZE_MIN
-        val n = if (kind == POMODORO) {
+        val snoozeMin = snoozeMinutes(id, kind)
+        return if (kind == POMODORO) {
             NotificationCompat.Builder(c, CHANNEL_TOOLS)
                 .setSmallIcon(R.drawable.ic_stat_alarm)
                 .setContentTitle(title)
@@ -277,34 +316,45 @@ object AlarmScheduler {
                     PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT))
                 .build()
         } else {
-            val b = NotificationCompat.Builder(c, channelFor(c, item))
+            val b = NotificationCompat.Builder(c, if (silent) silentChannel(c) else channelFor(c, item))
                 .setSmallIcon(R.drawable.ic_stat_alarm)
                 .setContentTitle(title)
                 .setContentText(time)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setPriority(NotificationCompat.PRIORITY_MAX)
-                .setSound(item?.sound?.takeIf { it.isNotEmpty() }?.let(android.net.Uri::parse) ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM),
-                    android.media.AudioManager.STREAM_ALARM)
                 .setFullScreenIntent(full, true)
                 .setContentIntent(full)
                 .setOngoing(true)
                 .addAction(0, L("tools.alarm.stop"), action(ACTION_STOP))
-            if (kind == "alarm" && snoozeMin > 0) b.addAction(0, T("alarm.snoozeFor", snoozeMin), action(ACTION_SNOOZE))
-            b.build().also { it.flags = it.flags or android.app.Notification.FLAG_INSISTENT }
+            if (silent) b.setSilent(true)
+            else b.setSound(item?.sound?.takeIf { it.isNotEmpty() }?.let(android.net.Uri::parse) ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM),
+                android.media.AudioManager.STREAM_ALARM)
+            if (snoozeMin > 0) b.addAction(0, T("alarm.snoozeFor", snoozeMin), action(ACTION_SNOOZE))
+            b.build().also { if (!silent) it.flags = it.flags or android.app.Notification.FLAG_INSISTENT }
         }
-        runCatching { NotificationManagerCompat.from(c).notify(nid, n) }
     }
 
     const val ACTION_STOP = "tr.bumba.time.ALARM_STOP"
     const val ACTION_SNOOZE = "tr.bumba.time.ALARM_SNOOZE"
 
+    /** Kapat: bildirim ve kademeli ses durur, erteleme sayacı sıfırlanır */
     fun stop(c: Context, id: String) {
-        NotificationManagerCompat.from(c).cancel(id.hashCode())
+        silence(c, id)
+        Prefs.store.edit().remove(snoozeKey(id)).apply()
     }
 
+    private fun silence(c: Context, id: String) {
+        NotificationManagerCompat.from(c).cancel(id.hashCode())
+        AlarmRingService.stop(c, id)
+    }
+
+    /** Ertele: sınır dolmadıysa erteleme sayacı artar ve `snooze` dk sonrasına tek seferlik alarm kurulur */
     fun snooze(c: Context, id: String, title: String) {
-        stop(c, id)
-        val minutes = (AlarmItem.find(id)?.snooze ?: SNOOZE_MIN).takeIf { it > 0 } ?: return
+        val minutes = snoozeMinutes(id, "alarm")
+        silence(c, id)
+        if (minutes == 0) return
+        val key = snoozeKey(id)
+        Prefs.store.edit().putInt(key, Prefs.store.getInt(key, 0) + 1).apply()
         val sid = if (id.startsWith(SNOOZE)) id else SNOOZE + id
         schedule(c, sid, System.currentTimeMillis() + minutes * 60_000L, title, "alarm")
     }
@@ -321,6 +371,8 @@ class AlarmReceiver : BroadcastReceiver() {
             AlarmScheduler.ACTION_SNOOZE -> AlarmScheduler.snooze(c, id, title)
             else -> {
                 if (kind == "alarm" && !id.startsWith(AlarmScheduler.SNOOZE)) {
+                    // Yeni çalma: erteleme sayacı sıfırlanır
+                    Prefs.store.edit().remove("alarm.snoozed.$id").apply()
                     // Bir kezlik alarm kapanır; tekrarlı olanın sonraki çalması kurulur
                     val items = AlarmItem.load().map { if (it.id == id && it.days.isEmpty()) it.copy(enabled = false, skipUntil = 0) else it }
                     AlarmItem.save(items)

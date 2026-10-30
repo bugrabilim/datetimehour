@@ -17402,31 +17402,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz."
+            "value": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges."
+            "value": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen."
+            "value": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen. Von Ihnen gewählte Fotos (Vollbilduhr, Countdowns) werden nur auf dem Telefon gespeichert."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz."
+            "value": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات."
+            "value": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات. تُحفظ الصور التي تختارها (الساعة بملء الشاشة، العدّ التنازلي) على هاتفك فقط."
           }
         }
       }
@@ -21392,31 +21392,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz."
+            "value": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges."
+            "value": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges. Photos you pick (full-screen clock, countdowns) are stored only on your phone."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen."
+            "value": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen. Von Ihnen gewählte Fotos (Vollbilduhr, Countdowns) werden nur auf dem Telefon gespeichert."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz."
+            "value": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات."
+            "value": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات. تُحفظ الصور التي تختارها (الساعة بملء الشاشة، العدّ التنازلي) على هاتفك فقط."
           }
         }
       }
@@ -24641,6 +24641,216 @@
         }
       }
     },
+    "alarm.rise": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kademeli ses"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gradual volume"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ansteigende Lautstärke"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tədricən yüksələn səs"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صوت متصاعد"
+          }
+        }
+      }
+    },
+    "alarm.riseNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm sesi ilk 30 saniyede kısıktan tam sese çıkar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The alarm sound rises from quiet to full volume over the first 30 seconds."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Weckton steigt in den ersten 30 Sekunden von leise auf volle Lautstärke an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəng səsi ilk 30 saniyədə zəifdən tam səsə qalxır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يرتفع صوت المنبه من الهادئ إلى أعلى مستوى خلال أول 30 ثانية."
+          }
+        }
+      }
+    },
+    "alarm.riseNoteIOS": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yumuşak bir melodi 20 saniyede kısıktan tam sese çıkar; açıkken iPhone'un alarm sesi yerine çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A soft melody rises from quiet to full volume over 20 seconds; when on, it plays instead of the iPhone alarm sound."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine sanfte Melodie steigt in 20 Sekunden von leise auf volle Lautstärke an; wenn aktiv, ersetzt sie den iPhone-Weckton."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yumşaq bir melodiya 20 saniyədə zəifdən tam səsə qalxır; açıq olanda iPhone-un zəng səsinin yerinə çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لحن هادئ يرتفع من الخافت إلى أعلى مستوى خلال 20 ثانية؛ وعند تفعيله يُشغَّل بدل صوت منبه iPhone."
+          }
+        }
+      }
+    },
+    "alarm.snoozeMax": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erteleme sınırı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Snooze limit"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlummer-Limit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təxirə salma həddi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حدّ الغفوة"
+          }
+        }
+      }
+    },
+    "alarm.snoozeMax.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sınırsız"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlimited"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unbegrenzt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limitsiz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بلا حد"
+          }
+        }
+      }
+    },
+    "alarm.snoozeMax.n": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ kez"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ times"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@-mal"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dəfə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ مرات"
+          }
+        }
+      }
+    },
     "alarm.everyDay": {
       "extractionState": "manual",
       "localizations": {
@@ -27266,6 +27476,216 @@
         }
       }
     },
+    "look.bg.plain": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düz (tema rengi)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plain (theme colour)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlicht (Designfarbe)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sadə (tema rəngi)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سادة (لون السمة)"
+          }
+        }
+      }
+    },
+    "look.bg.photo": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صورة"
+          }
+        }
+      }
+    },
+    "look.bg.sky": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gökyüzü (günün saatine göre)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sky (follows the time of day)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Himmel (nach Tageszeit)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səma (günün saatına görə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السماء (حسب وقت اليوم)"
+          }
+        }
+      }
+    },
+    "look.bg.flow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Renk akışı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colour flow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Farbfluss"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rəng axını"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تدفق الألوان"
+          }
+        }
+      }
+    },
+    "look.bg.stars": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yıldızlar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stars"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sterne"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ulduzlar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "النجوم"
+          }
+        }
+      }
+    },
+    "look.bg.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gökyüzü seçili konumda Güneş'in yüksekliğine göre gündüz, gün doğumu/batımı ya da gece olur. Telefonda \"hareketi azalt\" açıksa hareketli arka planlar durağan görünür."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sky follows the Sun's height at the selected location: day, sunrise/sunset or night. If \"reduce motion\" is on, animated backgrounds are shown still."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Himmel folgt dem Sonnenstand am gewählten Ort: Tag, Sonnenauf-/-untergang oder Nacht. Ist „Bewegung reduzieren“ an, bleiben bewegte Hintergründe still."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səma seçilmiş yerdə Günəşin hündürlüyünə görə gündüz, gün doğuşu/batışı və ya gecə olur. Telefonda \"hərəkəti azalt\" açıqdırsa hərəkətli arxa fonlar sabit görünür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تتبع السماء ارتفاع الشمس في الموقع المحدد: نهار أو شروق/غروب أو ليل. إذا كان «تقليل الحركة» مفعّلًا تظهر الخلفيات المتحركة ثابتة."
+          }
+        }
+      }
+    },
     "features.title": {
       "extractionState": "manual",
       "localizations": {
@@ -27647,6 +28067,76 @@
           "stringUnit": {
             "state": "translated",
             "value": "تمرين الفترات"
+          }
+        }
+      }
+    },
+    "countdowns.photo": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf (isteğe bağlı)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo (optional)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto (optional)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto (istəyə bağlı)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صورة (اختيارية)"
+          }
+        }
+      }
+    },
+    "countdowns.photoNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf yalnız bu telefonda saklanır, geri sayım kartının arkasında gösterilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The photo is kept only on this phone and shown behind the countdown card."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Foto bleibt nur auf diesem Telefon und erscheint hinter der Countdown-Karte."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto yalnız bu telefonda saxlanılır, geri sayım kartının arxasında göstərilir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُحفظ الصورة على هذا الهاتف فقط وتظهر خلف بطاقة العدّ التنازلي."
           }
         }
       }

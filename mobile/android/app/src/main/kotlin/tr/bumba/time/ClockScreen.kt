@@ -284,14 +284,16 @@ fun FullscreenClock(onExit: () -> Unit) {
     val items = HomeItems.layout.visible
     val pager = rememberClockPager()
     HideSystemBars()
-    // Arka plan fotoğrafı varsa koyulaştırılarak gösterilir ve yazılar koyu temanın açık renklerine geçer
-    val photo = FullscreenPhoto.image(LocalContext.current)
-    val colors = if (photo != null) AccentPalette.find(Prefs.accent).colors(true) else Theme.c
+    // Arka plan: fotoğraf (koyulaştırılmış) ya da hareketli; ikisinde de yazılar koyu temanın açık renklerine geçer
+    val bg = FullscreenBackground.current
+    val photo = if (bg == FullscreenBackground.PHOTO) FullscreenPhoto.image(LocalContext.current) else null
+    val colors = if (photo != null || bg.animated) AccentPalette.find(Prefs.accent).colors(true) else Theme.c
     CompositionLocalProvider(LocalColors provides colors) {
     BoxWithConstraints(
         Modifier.fillMaxSize().background(Theme.c.bg).pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) },
     ) {
         if (photo != null) PhotoBackground(photo, Modifier.fillMaxSize())
+        else if (bg.animated) AnimatedBackground(bg, Modifier.fillMaxSize())
         val viewport = maxHeight
         // Yatayda saat ekranı doldurur, alanlar kaydırınca görünür
         val landscape = maxWidth > maxHeight

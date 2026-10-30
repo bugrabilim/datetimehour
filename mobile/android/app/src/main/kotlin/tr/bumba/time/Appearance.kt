@@ -59,36 +59,54 @@ enum class ClockFont(val id: String, val family: FontFamily, val weight: FontWei
 
 /** Tam ekran arka plan fotoğrafı: yalnız telefonda (uygulama dosyaları), en uzun kenar 1600 px JPEG */
 object FullscreenPhoto {
-    private fun file(c: Context) = File(c.filesDir, "fs-photo.jpg")
-    private var cache: Pair<Long, ImageBitmap>? = null
+    private const val NAME = "fs-photo.jpg"
 
-    fun image(c: Context): ImageBitmap? {
-        val v = Prefs.fsPhoto
-        if (v == 0L) return null
-        cache?.let { if (it.first == v) return it.second }
-        val bmp = BitmapFactory.decodeFile(file(c).path) ?: return null
-        return bmp.asImageBitmap().also { cache = v to it }
+    fun image(c: Context): ImageBitmap? = PhotoFile.image(c, NAME, Prefs.fsPhoto)
+
+    fun save(c: Context, uri: Uri): Boolean =
+        PhotoFile.save(c, uri, NAME, 1600).also { if (it) Prefs.saveFsPhoto(System.currentTimeMillis()) }
+
+    fun remove(c: Context) {
+        PhotoFile.remove(c, NAME)
+        Prefs.saveFsPhoto(0)
+    }
+}
+
+/**
+ * Telefonda saklanan küçültülmüş fotoğraflar (tam ekran saat, geri sayımlar): uygulama dosyalarında JPEG. Okunan görüntü
+ * sürüm numarasıyla bellekte tutulur (her saniye yenilenen ekranlar dosyayı yeniden okumasın).
+ */
+object PhotoFile {
+    private val cache = HashMap<String, Pair<Long, ImageBitmap>>()
+
+    private fun file(c: Context, name: String) = File(c.filesDir, name)
+
+    fun image(c: Context, name: String, version: Long): ImageBitmap? {
+        if (version == 0L) return null
+        cache[name]?.let { if (it.first == version) return it.second }
+        val bmp = BitmapFactory.decodeFile(file(c, name).path) ?: return null
+        return bmp.asImageBitmap().also { cache[name] = version to it }
     }
 
-    fun save(c: Context, uri: Uri): Boolean = runCatching {
+    /** En uzun kenarı `maxSide` piksele küçültüp JPEG olarak yazar */
+    fun save(c: Context, uri: Uri, name: String, maxSide: Int): Boolean = runCatching {
         val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
         c.contentResolver.openInputStream(uri)?.use { BitmapFactory.decodeStream(it, null, bounds) }
         var sample = 1
-        while (maxOf(bounds.outWidth, bounds.outHeight) / (sample * 2) >= 1600) sample *= 2
+        while (maxOf(bounds.outWidth, bounds.outHeight) / (sample * 2) >= maxSide) sample *= 2
         val bmp = c.contentResolver.openInputStream(uri)?.use {
             BitmapFactory.decodeStream(it, null, BitmapFactory.Options().apply { inSampleSize = sample })
         } ?: return false
-        val scale = minOf(1f, 1600f / maxOf(bmp.width, bmp.height))
+        val scale = minOf(1f, maxSide.toFloat() / maxOf(bmp.width, bmp.height))
         val out = if (scale < 1f) Bitmap.createScaledBitmap(bmp, (bmp.width * scale).toInt(), (bmp.height * scale).toInt(), true) else bmp
-        file(c).outputStream().use { out.compress(Bitmap.CompressFormat.JPEG, 80, it) }
-        Prefs.saveFsPhoto(System.currentTimeMillis())
+        file(c, name).outputStream().use { out.compress(Bitmap.CompressFormat.JPEG, 80, it) }
+        cache.remove(name)
         true
     }.getOrDefault(false)
 
-    fun remove(c: Context) {
-        file(c).delete()
-        cache = null
-        Prefs.saveFsPhoto(0)
+    fun remove(c: Context, name: String) {
+        file(c, name).delete()
+        cache.remove(name)
     }
 }
 
@@ -105,7 +123,9 @@ fun PhotoBackground(img: ImageBitmap, modifier: Modifier = Modifier) {
 @Composable
 fun AppearanceScreen() {
     val context = LocalContext.current
-    val pick = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri -> if (uri != null) FullscreenPhoto.save(context, uri) }
+    val pick = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null && FullscreenPhoto.save(context, uri)) Prefs.saveFsBg(FullscreenBackground.PHOTO.id)
+    }
     val now = rememberNow()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         AppCard {
@@ -125,18 +145,38 @@ fun AppearanceScreen() {
         }
         AppCard {
             SectionTitle(L("look.photo"))
-            FullscreenPhoto.image(context)?.let { img ->
-                PhotoBackground(img, Modifier.fillMaxWidth().height(160.dp).clip(RoundedCornerShape(12.dp)))
+            // Canlı örnek: seçili arka plan ve saat
+            val bg = FullscreenBackground.current
+            val photo = if (bg == FullscreenBackground.PHOTO) FullscreenPhoto.image(context) else null
+            val colors = if (photo != null || bg.animated) AccentPalette.find(Prefs.accent).colors(true) else Theme.c
+            androidx.compose.runtime.CompositionLocalProvider(LocalColors provides colors) {
+                Box(Modifier.fillMaxWidth().height(160.dp).clip(RoundedCornerShape(12.dp)).background(Theme.c.bg), contentAlignment = Alignment.Center) {
+                    if (photo != null) PhotoBackground(photo, Modifier.fillMaxSize())
+                    else if (bg.animated) AnimatedBackground(bg, Modifier.fillMaxSize())
+                    Ltr {
+                        Text(Fmt.time(now.atZone(java.time.ZoneId.systemDefault())), color = Theme.c.ink, fontSize = 44.sp,
+                            fontFamily = ClockFont.current.family, fontWeight = ClockFont.current.weight, style = Tnum)
+                    }
+                }
+            }
+            for (b in FullscreenBackground.entries) {
+                Row(Modifier.fillMaxWidth().clickable { Prefs.saveFsBg(b.id) }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(b == bg, { Prefs.saveFsBg(b.id) }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(b.title, color = Theme.c.text, fontSize = 15.sp)
+                }
             }
             Row {
                 TextButton(onClick = { pick.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }) {
                     Text(L("look.photo.pick"), color = Theme.c.accent)
                 }
-                if (Prefs.fsPhoto > 0) TextButton(onClick = { FullscreenPhoto.remove(context) }) {
+                if (Prefs.fsPhoto > 0) TextButton(onClick = {
+                    FullscreenPhoto.remove(context)
+                    if (bg == FullscreenBackground.PHOTO) Prefs.saveFsBg(FullscreenBackground.PLAIN.id)
+                }) {
                     Text(L("look.photo.remove"), color = Color(0xFFD32F2F))
                 }
             }
-            Text(L("look.photo.note"), color = Theme.c.muted, fontSize = 12.sp)
+            Text(L("look.photo.note") + " " + L("look.bg.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
 }

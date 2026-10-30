@@ -498,7 +498,7 @@
     <string name="settings_website">Web sitesi</string>
     <string name="settings_version">Sürüm</string>
     <string name="settings_privacy">Gizlilik</string>
-    <string name="settings_privacyNote">Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple\'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler\'den silebilirsiniz.</string>
+    <string name="settings_privacyNote">Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple\'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler\'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır.</string>
     <string name="clock_fullscreen">Tam ekran</string>
     <string name="clock_weekDay">%1$s. hafta · yılın %2$s. günü</string>
     <string name="clock_tapToExit">Çıkmak için dokunun</string>
@@ -612,7 +612,7 @@
     <string name="kids_fact4">Ekvatora yakın ülkelerde yaz ile kış arasında fark azdır; orada yağmurlu ve kurak mevsimler vardır.</string>
     <string name="kids_fact5">Kuzey yarımkürede yaz, kıştan birkaç gün uzundur: Dünya Güneş\'ten uzaktayken biraz daha yavaş gider.</string>
     <string name="kids_more">Sonraki yıllar</string>
-    <string name="settings_privacyNoteAndroid">Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo\'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler\'den silebilirsiniz.</string>
+    <string name="settings_privacyNoteAndroid">Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo\'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler\'den silebilirsiniz. Seçtiğiniz fotoğraflar (tam ekran saat, geri sayımlar) yalnız telefonda saklanır.</string>
     <string name="badges_h1">Rozetler</string>
     <string name="badges_privacyLink">Gizlilik</string>
     <string name="badges_earnedOn">Kazanıldı: %1$s</string>
@@ -705,6 +705,12 @@
     <string name="alarm_sound">Ses</string>
     <string name="alarm_soundDefault">Varsayılan alarm sesi</string>
     <string name="alarm_vibrate">Titreşim</string>
+    <string name="alarm_rise">Kademeli ses</string>
+    <string name="alarm_riseNote">Alarm sesi ilk 30 saniyede kısıktan tam sese çıkar.</string>
+    <string name="alarm_riseNoteIOS">Yumuşak bir melodi 20 saniyede kısıktan tam sese çıkar; açıkken iPhone\'un alarm sesi yerine çalar.</string>
+    <string name="alarm_snoozeMax">Erteleme sınırı</string>
+    <string name="alarm_snoozeMax_none">Sınırsız</string>
+    <string name="alarm_snoozeMax_n">%1$s kez</string>
     <string name="alarm_everyDay">Her gün</string>
     <string name="morning_good">Günaydın</string>
     <string name="morning_day">İyi günler</string>
@@ -780,6 +786,12 @@
     <string name="look_photo_pick">Fotoğraf seç</string>
     <string name="look_photo_remove">Fotoğrafı kaldır</string>
     <string name="look_photo_note">Fotoğraf yalnız bu telefonda saklanır; tam ekran saatin arkasında koyulaştırılarak gösterilir.</string>
+    <string name="look_bg_plain">Düz (tema rengi)</string>
+    <string name="look_bg_photo">Fotoğraf</string>
+    <string name="look_bg_sky">Gökyüzü (günün saatine göre)</string>
+    <string name="look_bg_flow">Renk akışı</string>
+    <string name="look_bg_stars">Yıldızlar</string>
+    <string name="look_bg_note">Gökyüzü seçili konumda Güneş\'in yüksekliğine göre gündüz, gün doğumu/batımı ya da gece olur. Telefonda \"hareketi azalt\" açıksa hareketli arka planlar durağan görünür.</string>
     <string name="features_title">Özellikler</string>
     <string name="features_note">Saat her zaman açık. Açtığın özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır.</string>
     <string name="features_clock_note">Her zaman açık: 20 saat modeli, tam ekran, saat ekranı alanları</string>
@@ -791,5 +803,7 @@
     <string name="features_tools_note">Alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama</string>
     <string name="features_hint">Hava durumu, takvim, namaz vakitleri ve diğer özellikleri aç</string>
     <string name="hiit_channel">Aralık antrenmanı</string>
+    <string name="countdowns_photo">Fotoğraf (isteğe bağlı)</string>
+    <string name="countdowns_photoNote">Fotoğraf yalnız bu telefonda saklanır, geri sayım kartının arkasında gösterilir.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

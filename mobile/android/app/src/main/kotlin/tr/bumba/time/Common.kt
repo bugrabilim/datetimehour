@@ -76,11 +76,14 @@ fun rememberNow(): Instant {
 
 /** Yuvarlak köşeli kart (sitedeki kartlar gibi) */
 @Composable
-fun AppCard(modifier: Modifier = Modifier, padding: Int = 16, content: @Composable ColumnScope.() -> Unit) {
+fun AppCard(
+    modifier: Modifier = Modifier, padding: Int = 16, background: androidx.compose.ui.graphics.Color = Theme.c.surface,
+    content: @Composable ColumnScope.() -> Unit,
+) {
     Column(
         modifier
             .fillMaxWidth()
-            .background(Theme.c.surface, RoundedCornerShape(16.dp))
+            .background(background, RoundedCornerShape(16.dp))
             .border(1.dp, Theme.c.border.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
             .padding(padding.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
