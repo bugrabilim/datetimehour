@@ -78,7 +78,6 @@
     dcRoots.forEach(function (root) {
       var kind = root.getAttribute("data-dc"), out = root.querySelector("[data-dc-out]");
       var update;
-      root.addEventListener("change", function () { if (S.badge) S.badge("tarih-hesap"); });
       if (kind === "diff") {
         var s1 = root.querySelector("[data-dc-start]"), e1 = root.querySelector("[data-dc-end]");
         update = function () {

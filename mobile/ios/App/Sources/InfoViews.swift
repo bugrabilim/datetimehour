@@ -91,6 +91,7 @@ struct AccentPickerView: View {
     private func swatch(_ p: AccentPalette, label: String) -> some View {
         let on = p.id == accent
         return Button {
+            if accent != p.id { BadgeStore.shared.hit(.renk) }
             accent = p.id
         } label: {
             // Üç renk: ana renk, ikinci renk ve kadran/zemin tonu

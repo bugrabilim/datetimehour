@@ -68,6 +68,12 @@ class MainActivity : ComponentActivity() {
         Tab.entries.getOrNull(intent.getIntExtra("startTab", -1))?.let { Nav.tab = it; Nav.toolsRoute = null }
     }
 
+    /** Uygulama öne gelince rozetlerin gün serisi (yalnız son gün ve gün sayısı) */
+    override fun onResume() {
+        super.onResume()
+        BadgeStore.appOpened()
+    }
+
     /** Uygulamadan çıkarken widget'lar güncel konum ve dille yeniden çizilir */
     override fun onStop() {
         super.onStop()
@@ -119,16 +125,20 @@ fun Root(start: Int) {
 
     if (fullscreen) {
         BackHandler { fullscreen = false }
-        FullscreenClock { fullscreen = false }
+        Box(Modifier.fillMaxSize()) {
+            FullscreenClock { fullscreen = false }
+            BadgeToast(Modifier.align(Alignment.TopCenter).statusBarsPadding())
+        }
         return
     }
     BackHandler(enabled = tab == Tab.TOOLS && toolsRoute != null) { Nav.toolsRoute = null }
     BackHandler(enabled = tab != Tab.CLOCK && !(tab == Tab.TOOLS && toolsRoute != null)) { Nav.tab = Tab.CLOCK }
 
+    Box(Modifier.fillMaxSize()) {
     Column(Modifier.fillMaxSize().background(Theme.c.bg)) {
         Box(Modifier.weight(1f).fillMaxWidth().statusBarsPadding()) {
             when (tab) {
-                Tab.CLOCK -> ClockScreen(onFullscreen = { fullscreen = true }, onOpen = { Nav.tab = it })
+                Tab.CLOCK -> ClockScreen(onFullscreen = { fullscreen = true; BadgeStore.hit(Badge.TAM_EKRAN) }, onOpen = { Nav.tab = it })
                 Tab.WEATHER -> WeatherScreen()
                 Tab.CALENDAR -> CalendarScreen()
                 Tab.WORLD -> WorldScreen()
@@ -141,6 +151,8 @@ fun Root(start: Int) {
             if (t == tab && t == Tab.TOOLS) Nav.toolsRoute = null
             Nav.tab = t
         }
+    }
+    BadgeToast(Modifier.align(Alignment.TopCenter).statusBarsPadding())
     }
 }
 

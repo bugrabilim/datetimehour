@@ -126,6 +126,7 @@ fun AlarmScreen() {
             onDelete = { update(items.filter { it.id != item.id }); editing = null },
         ) { saved ->
             update(items.filter { it.id != saved.id } + saved)
+            BadgeStore.hit(Badge.ALARM)
             editing = null
         }
     }

@@ -90,6 +90,16 @@ class MoreScreensTest {
     @Test fun about() = page("tr-hakkinda", "Hakkında") { AboutScreen() }
     @Test fun aboutDark() = page("tr-hakkinda-koyu", "Hakkında", dark = true) { AboutScreen() }
     @Test fun google() = page("tr-google-takvim", "Google Takvimi") { GoogleCalendarGuide() }
+    @Test fun badges() {
+        // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri
+        BadgeStore.deleteAll()
+        listOf(Badge.RENK, Badge.SANIYE, Badge.TAKVIM, Badge.KRONOMETRE).forEach { BadgeStore.hit(it) }
+        (0 until 6).forEach { BadgeStore.sawModel(it, ClockModel.count) }
+        BadgeStore.appOpened(LocalDate.now().minusDays(1)); BadgeStore.appOpened()
+        page("tr-rozetler", "Rozetler") { BadgesScreen() }
+        page("tr-rozetler-koyu", "Rozetler", dark = true) { BadgesScreen() }
+        BadgeStore.deleteAll()
+    }
 
     /** Widget'lar: RemoteViews gerçek görünüme uygulanıp çizilir (dp → px: xxhdpi = 3) */
     private fun widget(name: String, w: Int, h: Int, views: android.widget.RemoteViews) {

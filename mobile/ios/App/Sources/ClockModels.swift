@@ -5,8 +5,9 @@ import SaatCore
 /// Sitedeki saat sahnesinin 19 modeli (build.mjs STAGE_ORDER, aynı sıra ve kimlikler). Adlar sitedeki
 /// `stage.models.<kimlik>` metinleri. Hava durumlu modeller (wx) seçili konumun havasını WeatherKit'ten alır.
 enum ClockModel: String, CaseIterable, Identifiable {
+    case classic // 1. sırada: varsayılan saniyeli rakamlı analog (30 Ekim 2026, sahibin isteği)
     case wxDigitalCalWeek = "wx-digital-cal-week"
-    case classic, analogDate = "analog-date", stack
+    case analogDate = "analog-date", stack
     case wxAnalog = "wx-analog", wxStack = "wx-stack", wxAnalogDate = "wx-analog-date", wxFull = "wx-full"
     case hClassic = "h-classic", hAnalogDate = "h-analog-date", hStack = "h-stack"
     case hWxAnalog = "h-wx-analog", hWxStack = "h-wx-stack", hWxAnalogDate = "h-wx-analog-date", hWxFull = "h-wx-full"
@@ -159,13 +160,16 @@ struct ClockModelView: View {
 private struct AnalogPart: View {
     let now: Date
     let size: CGFloat
-    @AppStorage("secA") private var seconds = false
+    @AppStorage("secA") private var seconds = true // varsayılan: analogda saniye açık (30 Ekim 2026)
 
     var body: some View {
         AnalogClock(date: now, showSeconds: seconds)
             .frame(width: size, height: size)
             .contentShape(Circle())
-            .onTapGesture { seconds.toggle() }
+            .onTapGesture {
+                seconds.toggle()
+                BadgeStore.shared.hit(.saniye)
+            }
     }
 }
 
@@ -190,7 +194,10 @@ private struct DigitalPart: View {
         .minimumScaleFactor(0.3)
         .environment(\.layoutDirection, .leftToRight)
         .contentShape(Rectangle())
-        .onTapGesture { seconds.toggle() }
+        .onTapGesture {
+            seconds.toggle()
+            BadgeStore.shared.hit(.saniye)
+        }
     }
 }
 

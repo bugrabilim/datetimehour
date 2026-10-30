@@ -27,6 +27,7 @@ struct ClockTab: View {
                         HStack(spacing: 28) {
                             Button {
                                 fullscreen = true
+                                BadgeStore.shared.hit(.tamEkran)
                             } label: {
                                 Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
                             }
@@ -94,9 +95,9 @@ struct ClockStage: View {
     let now: Date
     let place: AppPlace
     var height: CGFloat = 380
-    @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
+    @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
 
-    private var model: ClockModel { ClockModel(rawValue: modelID) ?? .wxDigitalCalWeek }
+    private var model: ClockModel { ClockModel(rawValue: modelID) ?? .classic }
 
     var body: some View {
         VStack(spacing: 8) {
@@ -131,6 +132,13 @@ struct ClockStage: View {
             .foregroundStyle(Theme.accent)
             .environment(\.layoutDirection, .leftToRight)
         }
+        .onChange(of: modelID, initial: true) { old, new in
+            // Rozetler: görülen modeller (açılıştaki dahil) ve ilk model değişimi
+            if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
+                BadgeStore.shared.sawModel(i, of: ClockModel.allCases.count)
+            }
+            if old != new { BadgeStore.shared.hit(.ilkModel) }
+        }
     }
 
     private func step(_ d: Int) {
@@ -144,7 +152,7 @@ struct ClockStage: View {
 /// ekran kapanmaz, çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
 struct FullscreenClock: View {
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("clockModel") private var modelID = ClockModel.wxDigitalCalWeek.rawValue
+    @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @State private var globeHeight: CGFloat = 260
 
@@ -189,6 +197,13 @@ struct FullscreenClock: View {
             }
         }
         .onTapGesture(count: 2) { dismiss() }
+        .overlay(alignment: .top) { BadgeToast() }
+        .onChange(of: modelID) { _, new in
+            if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
+                BadgeStore.shared.sawModel(i, of: ClockModel.allCases.count)
+            }
+            BadgeStore.shared.hit(.ilkModel)
+        }
         .statusBarHidden()
         .persistentSystemOverlays(.hidden)
         .onAppear { UIApplication.shared.isIdleTimerDisabled = true }

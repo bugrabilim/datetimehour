@@ -138,7 +138,13 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit) {
 @Composable
 private fun rememberClockPager(): PagerState {
     val pager = rememberPagerState(initialPage = Prefs.clockModel.coerceIn(0, ClockModel.count - 1)) { ClockModel.count }
-    LaunchedEffect(pager.currentPage) { Prefs.saveClockModel(pager.currentPage) }
+    val first = remember { booleanArrayOf(true) }
+    LaunchedEffect(pager.currentPage) {
+        Prefs.saveClockModel(pager.currentPage)
+        // Rozetler: görülen modeller (açılıştaki dahil) ve ilk model değişimi
+        BadgeStore.sawModel(pager.currentPage, ClockModel.count)
+        if (first[0]) first[0] = false else BadgeStore.hit(Badge.ILK_MODEL)
+    }
     return pager
 }
 
@@ -209,7 +215,7 @@ fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier) {
     val hour = (t.hour % 12) + min / 60
     Canvas(
         modifier.aspectRatio(1f).widthIn(max = 520.dp)
-            .clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecA(!Prefs.secA) },
+            .clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecA(!Prefs.secA); BadgeStore.hit(Badge.SANIYE) },
     ) {
         val u = min(size.width, size.height) / 200f
         val center = Offset(size.width / 2, size.height / 2)

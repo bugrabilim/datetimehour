@@ -18,6 +18,15 @@ struct ToolsTab: View {
                     row(.datecalc, L("tools.hub.cards.datecalc.name"), "calendar.badge.clock")
                 }
                 Section {
+                    // Rozetler: girişin yanında bir satırlık not (Bumba standardı madde 13)
+                    NavigationLink(value: ToolRoute.badges) {
+                        VStack(alignment: .leading, spacing: 3) {
+                            Label(L("badges.h1"), systemImage: "rosette")
+                            Text(L("badges.note")).font(.caption).foregroundStyle(Theme.muted)
+                        }
+                    }
+                }
+                Section {
                     row(.settings, L("settings.title"), "gearshape")
                     row(.about, L("settings.about"), "info.circle")
                 }
@@ -34,6 +43,7 @@ struct ToolsTab: View {
                 case .datecalc: DateCalcView()
                 case .settings: SettingsView()
                 case .about: AboutView()
+                case .badges: BadgesView()
                 }
             }
         }
@@ -115,6 +125,7 @@ struct StopwatchView: View {
                         .disabled(t == 0)
                         RoundButton(title: L(t > 0 ? "tools.stopwatch.resume" : "tools.stopwatch.start"), prominent: true) {
                             start = Date().timeIntervalSinceReferenceDate
+                            BadgeStore.shared.hit(.kronometre)
                         }
                     }
                 }
@@ -254,6 +265,7 @@ private struct DurationTimer: View {
 
     private func start(seconds: Double) {
         guard seconds > 0 else { return }
+        BadgeStore.shared.hit(.zamanlayici)
         let id = UUID()
         alarmID = id.uuidString
         end = Date().timeIntervalSinceReferenceDate + seconds
@@ -390,6 +402,7 @@ struct AlarmsView: View {
         .sheet(item: $editing) { item in
             AlarmEditor(item: item) { saved in
                 if let i = items.firstIndex(where: { $0.id == saved.id }) { items[i] = saved } else { items.append(saved) }
+                BadgeStore.shared.hit(.alarm)
                 items.sort { ($0.hour, $0.minute) < ($1.hour, $1.minute) }
             }
         }
@@ -548,7 +561,10 @@ struct PomodoroView: View {
     private func advance(completed: Bool = false) {
         if !completed { cancelAlarm() }
         if phase == "work" {
-            if completed { done += 1 }
+            if completed {
+                done += 1
+                BadgeStore.shared.hit(.pomodoro) // çalışma süresi sonuna kadar tamamlandı
+            }
             phase = round >= rounds ? "long" : "short"
         } else {
             if phase == "long" { round = 1 } else { round += 1 }
@@ -618,6 +634,10 @@ struct DateCalcView: View {
         .themedBackground()
         .navigationTitle(L("tools.hub.cards.datecalc.name"))
         .navigationBarTitleDisplayMode(.inline)
+        // Rozet: kullanıcı bir hesap girdisini değiştirince
+        .onChange(of: [start, finish, base, birth]) { BadgeStore.shared.hit(.tarihHesap) }
+        .onChange(of: amount) { BadgeStore.shared.hit(.tarihHesap) }
+        .onChange(of: unit) { BadgeStore.shared.hit(.tarihHesap) }
     }
 
     private func workText(_ w: Double) -> String {

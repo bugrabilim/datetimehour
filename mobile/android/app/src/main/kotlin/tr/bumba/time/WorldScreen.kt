@@ -171,6 +171,7 @@ fun WorldScreen() {
                     items(City.all.filter { it.key !in keys }) { c ->
                         Column(Modifier.fillMaxWidth().clickable {
                             save(keys + c.key)
+                            BadgeStore.hit(Badge.DUNYA)
                             adding = false
                         }.padding(vertical = 8.dp)) {
                             Text(c.displayName, color = Theme.c.text)
@@ -194,6 +195,7 @@ fun WorldScreen() {
                         state.selectedDateMillis?.let {
                             val day = Instant.ofEpochMilli(it).atZone(ZoneOffset.UTC).toLocalDate()
                             whenMs = LocalDateTime.of(day, cur.toLocalTime()).atZone(here).toInstant().toEpochMilli()
+                            BadgeStore.hit(Badge.CEVIRICI)
                         }
                         picking = null
                     }) { Text(L("common.done")) }
@@ -208,6 +210,7 @@ fun WorldScreen() {
                 confirmButton = {
                     TextButton(onClick = {
                         whenMs = cur.withHour(state.hour).withMinute(state.minute).withSecond(0).toInstant().toEpochMilli()
+                        BadgeStore.hit(Badge.CEVIRICI)
                         picking = null
                     }) { Text(L("common.done")) }
                 },

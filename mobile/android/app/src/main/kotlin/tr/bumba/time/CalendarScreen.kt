@@ -109,7 +109,10 @@ fun CalendarScreen() {
                 if (total < -60) move(if (Strings.isRtl) -1 else 1) else if (total > 60) move(if (Strings.isRtl) 1 else -1)
                 total = 0f
             }) { _, d -> total += d }
-        }) { sel = it.toString() }
+        }) {
+            sel = it.toString()
+            BadgeStore.hit(Badge.TAKVIM)
+        }
         Spacer(Modifier.height(12.dp))
         DayDetail(selected, today, device[selected].orEmpty())
         Spacer(Modifier.height(12.dp))

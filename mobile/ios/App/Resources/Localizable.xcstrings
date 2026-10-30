@@ -16562,31 +16562,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir."
+            "value": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose."
+            "value": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet."
+            "value": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir."
+            "value": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض."
+            "value": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات."
           }
         }
       }
@@ -20552,31 +20552,1781 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir."
+            "value": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose."
+            "value": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt."
+            "value": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür."
+            "value": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط."
+            "value": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات."
+          }
+        }
+      }
+    },
+    "badges.h1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozetler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Badges"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abzeichen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nişanlar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشارات"
+          }
+        }
+      }
+    },
+    "badges.privacyLink": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gizlilik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datenschutz"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məxfilik"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الخصوصية"
+          }
+        }
+      }
+    },
+    "badges.earnedOn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kazanıldı: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Earned: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verdient: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qazanıldı: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حُصل عليها: %1$@"
+          }
+        }
+      }
+    },
+    "badges.locked": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz kazanılmadı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not earned yet"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch nicht verdient"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hələ qazanılmayıb"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم تُكتسب بعد"
+          }
+        }
+      }
+    },
+    "badges.progress": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@"
+          }
+        }
+      }
+    },
+    "badges.count": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@ rozet kazanıldı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@ badges earned"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@ Abzeichen verdient"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@ nişan qazanılıb"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@/%2$@ شارة مكتسبة"
+          }
+        }
+      }
+    },
+    "badges.delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozetleri sil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete badges"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abzeichen löschen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nişanları sil"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف الشارات"
+          }
+        }
+      }
+    },
+    "badges.deleteTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozetler silinsin mi?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete your badges?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abzeichen löschen?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nişanlar silinsin?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف شاراتك؟"
+          }
+        }
+      }
+    },
+    "badges.deleteYes": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Löschen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف"
+          }
+        }
+      }
+    },
+    "badges.deleteNo": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vazgeç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İmtina"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إلغاء"
+          }
+        }
+      }
+    },
+    "badges.deleted": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozetlerin silindi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your badges were deleted."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Abzeichen wurden gelöscht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nişanların silindi."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حُذفت شاراتك."
+          }
+        }
+      }
+    },
+    "badges.toast": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni rozet: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New badge: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neues Abzeichen: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni nişan: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شارة جديدة: %1$@"
+          }
+        }
+      }
+    },
+    "badges.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rozetlerin ve ilerlemen yalnız bu cihazda, sen silene kadar saklanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your badges and progress are stored only on this device until you delete them."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Abzeichen und dein Fortschritt werden nur auf diesem Gerät gespeichert, bis du sie löschst."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nişanların və irəliləyişin yalnız bu cihazda, sən silənə qədər saxlanılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُحفظ شاراتك وتقدّمك على هذا الجهاز فقط إلى أن تحذفها."
+          }
+        }
+      }
+    },
+    "badges.deleteText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazdaki bütün rozetlerin ve ilerlemen (gördüğün saat modelleri, kullanım serin) silinir. Geri alınamaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All your badges and progress on this device (the clock styles you have seen, your streak) will be deleted. This cannot be undone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle deine Abzeichen und dein Fortschritt auf diesem Gerät (gesehene Uhrstile, deine Serie) werden gelöscht. Das lässt sich nicht rückgängig machen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazdakı bütün nişanların və irəliləyişin (gördüyün saat modelləri, istifadə seriyan) silinəcək. Geri qaytarmaq olmur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ستُحذف كل شاراتك وتقدّمك على هذا الجهاز (أنماط الساعة التي رأيتها وسلسلة استخدامك). لا يمكن التراجع عن ذلك."
+          }
+        }
+      }
+    },
+    "badges.items.renk.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Renk ustası"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colorist"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Farbkünstler"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rəng ustası"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فنان الألوان"
+          }
+        }
+      }
+    },
+    "badges.items.renk.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayarlar'dan uygulama rengini değiştir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change the app color in Settings."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ändere in den Einstellungen die App-Farbe."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parametrlərdən tətbiqin rəngini dəyiş."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غيّر لون التطبيق من الإعدادات."
+          }
+        }
+      }
+    },
+    "badges.items.saniye.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saniye avcısı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Second hunter"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sekundenjäger"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saniyə ovçusu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صائد الثواني"
+          }
+        }
+      }
+    },
+    "badges.items.saniye.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saate dokunarak saniyeleri aç ya da kapat."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap the clock to turn the seconds on or off."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippe auf die Uhr, um die Sekunden ein- oder auszuschalten."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saata toxunaraq saniyələri aç və ya bağla."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المس الساعة لإظهار الثواني أو إخفائها."
+          }
+        }
+      }
+    },
+    "badges.items.ilk-model.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni yüz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New face"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neues Gesicht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni üz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وجه جديد"
+          }
+        }
+      }
+    },
+    "badges.items.ilk-model.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat sahnesinde başka bir saat modeline geç."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Switch to another clock style on the clock stage."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wechsle auf der Uhrenbühne zu einem anderen Uhrstil."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat səhnəsində başqa saat modelinə keç."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انتقل إلى نمط ساعة آخر على منصة الساعة."
+          }
+        }
+      }
+    },
+    "badges.items.tam-ekran.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Büyük ekran"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Big screen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Großbild"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Böyük ekran"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشاشة الكبيرة"
+          }
+        }
+      }
+    },
+    "badges.items.tam-ekran.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saati tam ekranda aç."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the clock in full screen."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne die Uhr im Vollbild."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatı tam ekranda aç."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح الساعة بملء الشاشة."
+          }
+        }
+      }
+    },
+    "badges.items.duzenle.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kendi ekranım"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "My screen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mein Bildschirm"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öz ekranım"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شاشتي"
+          }
+        }
+      }
+    },
+    "badges.items.duzenle.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ekranında \"Düzenle\" ile bir alanı aç ya da kapat."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn an item on or off with \"Edit\" on the Clock tab."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schalte mit „Bearbeiten“ auf dem Uhr-Tab ein Element ein oder aus."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ekranında \"Redaktə et\" ilə bir sahəni aç və ya bağla."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فعّل عنصرًا أو أوقفه من \"تعديل\" في تبويب الساعة."
+          }
+        }
+      }
+    },
+    "badges.items.takvim.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün meraklısı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day explorer"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tagesforscher"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün maraqlısı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مستكشف الأيام"
+          }
+        }
+      }
+    },
+    "badges.items.takvim.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvimde bir güne dokunup ayrıntısını aç."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap a day in the calendar to open its details."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippe im Kalender auf einen Tag, um die Details zu öffnen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvimdə bir günə toxunub təfərrüatını aç."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المس يومًا في التقويم لفتح تفاصيله."
+          }
+        }
+      }
+    },
+    "badges.items.kronometre.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start!"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los!"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başla!"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انطلق!"
+          }
+        }
+      }
+    },
+    "badges.items.kronometre.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kronometreyi başlat."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start the stopwatch."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starte die Stoppuhr."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saniyəölçəni işə sal."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شغّل ساعة الإيقاف."
+          }
+        }
+      }
+    },
+    "badges.items.zamanlayici.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri sayım"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Countdown"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Countdown"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri sayım"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العدّ التنازلي"
+          }
+        }
+      }
+    },
+    "badges.items.zamanlayici.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir zamanlayıcı başlat."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start a timer."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Starte einen Timer."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir taymer başlat."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابدأ مؤقّتًا."
+          }
+        }
+      }
+    },
+    "badges.items.alarm.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erkenci"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Early bird"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Frühaufsteher"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tezdən duran"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المبكّر"
+          }
+        }
+      }
+    },
+    "badges.items.alarm.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir alarm kur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set an alarm."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stelle einen Wecker."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir zəngli saat qur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اضبط منبّهًا."
+          }
+        }
+      }
+    },
+    "badges.items.cevirici.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat çevirmeni"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time translator"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeitübersetzer"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat tərcüməçisi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مترجم الوقت"
+          }
+        }
+      }
+    },
+    "badges.items.cevirici.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya saatlerinde başka bir zamana bak."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Look at another time in the world clock."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sieh dir in der Weltuhr eine andere Uhrzeit an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya saatlarında başqa bir vaxta bax."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اعرض وقتًا آخر في الساعة العالمية."
+          }
+        }
+      }
+    },
+    "badges.items.tarih-hesap.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesap ustası"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date wizard"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datumsprofi"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hesab ustası"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خبير التواريخ"
+          }
+        }
+      }
+    },
+    "badges.items.tarih-hesap.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarih hesaplayıcıda bir hesap yap."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Do a calculation in the date calculator."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mache eine Berechnung im Datumsrechner."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarix kalkulyatorunda bir hesablama et."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أجرِ عملية حساب في حاسبة التاريخ."
+          }
+        }
+      }
+    },
+    "badges.items.dunya.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya vatandaşı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "World citizen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weltbürger"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya vətəndaşı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مواطن عالمي"
+          }
+        }
+      }
+    },
+    "badges.items.dunya.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya saatlerine bir şehir ya da saat dilimi ekle."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add a city or time zone to the world clock."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Füge der Weltuhr eine Stadt oder Zeitzone hinzu."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya saatlarına bir şəhər və ya saat qurşağı əlavə et."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أضف مدينة أو منطقة زمنية إلى الساعة العالمية."
+          }
+        }
+      }
+    },
+    "badges.items.kure.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kâşif"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explorer"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entdecker"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kəşfiyyatçı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المستكشف"
+          }
+        }
+      }
+    },
+    "badges.items.kure.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya sekmesinde dönen dünyayı yakınlaştır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zoom in on the spinning globe on the World tab."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zoome auf dem Welt-Tab in den drehenden Globus hinein."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya bölməsində fırlanan dünyanı yaxınlaşdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قرّب الكرة الأرضية الدوّارة في تبويب العالم."
+          }
+        }
+      }
+    },
+    "badges.items.pomodoro.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odak"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Focus"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fokus"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fokus"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التركيز"
+          }
+        }
+      }
+    },
+    "badges.items.pomodoro.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir pomodoro çalışma süresini sonuna kadar tamamla."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finish a full pomodoro work session."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beende eine ganze Pomodoro-Arbeitsphase."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir pomodoro iş müddətini sonuna qədər tamamla."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أكمل فترة عمل بومودورو كاملة."
+          }
+        }
+      }
+    },
+    "badges.items.seri-3.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üç gün üst üste"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Three days in a row"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Drei Tage in Folge"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üç gün ardıcıl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ثلاثة أيام متتالية"
+          }
+        }
+      }
+    },
+    "badges.items.seri-3.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamayı üç gün üst üste aç."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the app three days in a row."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne die App drei Tage hintereinander."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqi üç gün ardıcıl aç."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح التطبيق ثلاثة أيام متتالية."
+          }
+        }
+      }
+    },
+    "badges.items.model-10.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koleksiyoncu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collector"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sammler"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kolleksiyaçı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الجامع"
+          }
+        }
+      }
+    },
+    "badges.items.model-10.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 farklı saat modelini gör."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See 10 different clock styles."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sieh dir 10 verschiedene Uhrstile an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10 fərqli saat modelini gör."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شاهد 10 أنماط ساعة مختلفة."
+          }
+        }
+      }
+    },
+    "badges.items.seri-7.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir hafta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "One week"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine Woche"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bir həftə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أسبوع كامل"
+          }
+        }
+      }
+    },
+    "badges.items.seri-7.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamayı yedi gün üst üste aç."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the app seven days in a row."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffne die App sieben Tage hintereinander."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqi yeddi gün ardıcıl aç."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح التطبيق سبعة أيام متتالية."
+          }
+        }
+      }
+    },
+    "badges.items.model-hepsi.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ustası"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clock master"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhrenmeister"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ustası"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سيّد الساعات"
+          }
+        }
+      }
+    },
+    "badges.items.model-hepsi.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat sahnesindeki bütün modelleri gör."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "See every style on the clock stage."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sieh dir alle Stile auf der Uhrenbühne an."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat səhnəsindəki bütün modelləri gör."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شاهد كل الأنماط على منصة الساعة."
           }
         }
       }

@@ -19,6 +19,7 @@ import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.material.icons.filled.HourglassBottom
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Spa
 import androidx.compose.material.icons.filled.Timer
@@ -59,6 +60,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "color" -> Page(L("settings.color"), { onRoute("settings") }) { ColorScreen() }
         "homeItems" -> Page(L("home.customize"), { onRoute("settings") }) { HomeItemsEditor() }
         "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
+        "badges" -> Page(L("badges.h1"), onRoute) { BadgesScreen() }
         else -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             Text(L("tab.tools"), color = Theme.c.text, fontSize = 26.sp, fontWeight = FontWeight.Bold)
             AppCard(padding = 4) {
@@ -67,6 +69,10 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
                 ToolRow(Icons.Filled.Timer, L("tools.hub.cards.stopwatch.name")) { onRoute("stopwatch") }
                 ToolRow(Icons.Filled.Spa, L("tools.hub.cards.pomodoro.name")) { onRoute("pomodoro") }
                 ToolRow(Icons.Filled.EditCalendar, L("tools.hub.cards.datecalc.name"), last = true) { onRoute("datecalc") }
+            }
+            // Rozetler: girişin yanında bir satırlık not (Bumba standardı madde 13)
+            AppCard(padding = 4) {
+                ToolRow(Icons.Filled.MilitaryTech, L("badges.h1"), last = true, note = L("badges.note")) { onRoute("badges") }
             }
             AppCard(padding = 4) {
                 ToolRow(Icons.Filled.Settings, L("settings.title")) { onRoute("settings") }
@@ -85,11 +91,14 @@ private fun Page(title: String, onRoute: (String?) -> Unit, content: @Composable
 }
 
 @Composable
-private fun ToolRow(icon: ImageVector, title: String, last: Boolean = false, onClick: () -> Unit) {
+private fun ToolRow(icon: ImageVector, title: String, last: Boolean = false, note: String? = null, onClick: () -> Unit) {
     Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
         Icon(icon, null, tint = Theme.c.accent)
         Spacer(Modifier.width(14.dp))
-        Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+        Column(Modifier.weight(1f)) {
+            Text(title, color = Theme.c.text, fontSize = 16.sp)
+            if (note != null) Text(note, color = Theme.c.muted, fontSize = 12.sp)
+        }
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
     }
     if (!last) HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
@@ -137,6 +146,7 @@ private fun Stopwatch() {
                 RoundButton(L(if (total > 0) "tools.stopwatch.resume" else "tools.stopwatch.start"), true, Modifier.weight(1f)) {
                     now = System.currentTimeMillis()
                     save(now, acc, lapsRaw)
+                    BadgeStore.hit(Badge.KRONOMETRE)
                 }
             }
         }

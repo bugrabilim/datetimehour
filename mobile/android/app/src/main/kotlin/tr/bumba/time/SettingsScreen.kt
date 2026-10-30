@@ -170,7 +170,7 @@ private fun Swatch(p: AccentPalette, label: String) {
     val on = Prefs.accent == p.id
     Box(
         Modifier.size(48.dp).border(2.dp, if (on) Theme.c.text.copy(alpha = 0.6f) else Color.Transparent, CircleShape).padding(4.dp)
-            .clip(CircleShape).clickable { Prefs.saveAccent(p.id) }.semantics { contentDescription = label },
+            .clip(CircleShape).clickable { if (Prefs.accent != p.id) BadgeStore.hit(Badge.RENK); Prefs.saveAccent(p.id) }.semantics { contentDescription = label },
         contentAlignment = Alignment.Center,
     ) {
         Row(Modifier.fillMaxSize()) {
@@ -224,7 +224,7 @@ fun AboutScreen() {
     }
 }
 
-private fun privacyUrl(): String {
+internal fun privacyUrl(): String {
     val l = Strings.lang
     return "https://time.bumba.tr" + if (l == "tr") "/gizlilik/" else "/$l/privacy/"
 }

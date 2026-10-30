@@ -70,7 +70,10 @@ fun PomodoroScreen() {
     fun advance(completed: Boolean) {
         if (!completed) AlarmScheduler.cancel(context, AlarmScheduler.POMODORO)
         if (phase == "work") {
-            if (completed) done += 1
+            if (completed) {
+                done += 1
+                BadgeStore.hit(Badge.POMODORO) // çalışma süresi sonuna kadar tamamlandı
+            }
             phase = if (round >= rounds) "long" else "short"
         } else {
             if (phase == "long") round = 1 else round += 1

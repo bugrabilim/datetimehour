@@ -178,13 +178,6 @@
     "upcomingLead": "Türkiyə təqvimində növbəti günlər.",
     "upcomingAll": "İllik təqvimə bax",
     "upcomingNone": "Yaxınlaşan gün tapılmadı.",
-    "globeLabel": "Fırlanan yer kürəsi: gecə və gündüz, saat qurşağı meridianları və böyük şəhərlərin yerli saatı",
-    "globeCaption": "İşıqlı tərəf gündüz, qaranlıq tərəf gecədir. Xətlər 15°-lik saat qurşağı meridianlarıdır (UTC fərqi ilə); qırmızı xətt sıfır nöqtəsi, yəni Qrinviç meridianıdır (UTC). Şəhərlərin yanında yerli saat yazılır. Kürəni sürüşdürərək fırlada, iki barmaqla, siçanın təkəri ilə və ya + və − düymələri ilə böyüdə bilərsiniz. Yaxınlaşdıqca o ərazidəki yerlərin yerli saatı da görünür. Daha da yaxınlaşanda OpenStreetMap xəritəsinə keçilir (küçə səviyyəsinə qədər), meridianın və meridian hissələrinin uzunluğu yazılır. Xəritə kafelləri həmin anda OpenStreetMap-dən yüklənir (© OpenStreetMap iştirakçıları); kürənin teksturu Natural Earth-dəndir (ictimai mülkiyyət). İki dəfə toxunmaq böyüdür.",
-    "globeTitle": "Yer kürəsi",
-    "globeInfo": "Kürə haqqında məlumat",
-    "zoomIn": "Böyüt",
-    "zoomOut": "Kiçilt",
-    "resetView": "Bütün dünya",
     "todayQ": "Bu gün ayın neçəsidir?",
     "todayA": "Bugünkü tarix və həftənin günü hər səhifənin yuxarı panelində canlı göstərilir və cihaz saatına deyil, serverlə sinxron saata uyğundur."
   },
@@ -254,10 +247,9 @@
           "**Saat və tarix:** Cihazınızın saatı və saat qurşağı yalnız brauzerinizdə oxunur və hesablanır. Bu məlumatlar serverə göndərilmir və saxlanılmır.",
           "**Məkan (namaz vaxtları):** Namaz vaxtları səhifəsində “Məkanımı istifadə et” seçsəniz, brauzeriniz məkanınızı yalnız cihazınızda vaxtların hesablanması üçün istifadə edir. Koordinatlar serverə göndərilmir və statistikaya düşmür; son seçiminiz brauzerinizin yerli yaddaşında qalır.",
           "**Hava proqnozu (xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə, hava proqnozu səhifəsi və hava proqnozlu saat modelləri seçdiyiniz vilayətin və ya yerinizin təxmini koordinatlarını (təxminən 1 km dəqiqliklə) brauzerinizdən birbaşa məlumatı təqdim edən Open-Meteo-ya (api.open-meteo.com) göndərir; bu zaman IP ünvanınız da Open-Meteo-ya çatır. İcazə yoxdursa sorğu edilmir, əvəzində qısa izah göstərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur.",
-          "**Xəritə (kürə, xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə və ana səhifədəki kürəni müəyyən səviyyədən çox yaxınlaşdırırsınızsa, xəritə kafelləri OpenStreetMap serverindən (tile.openstreetmap.org) birbaşa brauzerinizə yüklənir; bu zaman IP ünvanınız və baxdığınız ərazinin kafel ünvanları OpenStreetMap Fonduna çatır. İcazə yoxdursa və ya kürə uzaqdadırsa bu sorğu edilmir. Saat Tarih serveri bunları görmür; OpenStreetMap-in öz məxfilik şərtləri tətbiq olunur.",
           "**E-poçt siyahısı forması:** Formaya yazdığınız e-poçt ünvanı, açılan pəncərədəki \"Razıyam\" düyməsi ilə verdiyiniz razılıq, seçilmiş dil və formanın olduğu səhifə Bumba Group-un ortaq siyahı xidməti (bumbagroup.com) tərəfindən emal olunur. Qeydiyyat ikiqat təsdiqlidir: təsdiq e-poçtundakı keçidə klikləməsəniz siyahıya əlavə olunmursunuz; hər e-poçtda bir kliklə çıxış keçidi var. Ətraflı: [ortaq məlumatlandırma mətni](https://bumbagroup.com/liste/aydinlatma?dil=en).",
           "**Server jurnalları:** Saytı yerləşdirən server hər sorğu üçün IP ünvanı, brauzer məlumatları, sorğulanan səhifə və vaxtdan ibarət standart giriş jurnalı aparır. Bu jurnallar insanların profilini yaratmaq üçün deyil, yalnız təhlükəsizlik və nasazlıqların aradan qaldırılması üçün istifadə olunur.",
-          "**Ziyarət statistikası (Umami, icazə ilə):** Yalnız kuki bannerində və ya kuki seçimlərində statistikaya icazə versəniz, öz serverimizdə işləyən Umami səhifə baxışlarını və bu əməliyyatları sayır: dil və mövzu dəyişikliyi, axtarışın nəticə tapıb-tapmaması, siyahıya qoşulma, saat modelinin seçilməsi, tam ekran, alətin ilk istifadəsi, yer seçiminin növü (vilayət və ya yer), imsakiyyənin açılması və ya yüklənməsi və ilk dəfə qazanılan nişanın identifikatoru. Bu zaman Umami brauzer, əməliyyat sistemi və cihaz növünü, dili, ekran ölçüsünü, gəldiyiniz səhifənin ünvanını və IP ünvanınızdan çıxarılan ölkə və şəhəri emal edir; IP ünvanının özü saxlanılmır. Umami kuki istifadə etmir, lakin ziyarətləri təxəllüslü sessiyaya bağlayır; ona görə anonim deyil. Axtarışa yazdığınız sözlər, e-poçt ünvanınız və yeriniz göndərilmir. İcazəni istənilən vaxt altbilgidəki \"Kuki seçimləri\" keçidi ilə geri götürə bilərsiniz; Umami növbəti səhifədən işləmir.",
+          "**Ziyarət statistikası (Umami, icazə ilə):** Yalnız kuki bannerində və ya kuki seçimlərində statistikaya icazə versəniz, öz serverimizdə işləyən Umami səhifə baxışlarını və bu əməliyyatları sayır: dil və mövzu dəyişikliyi, axtarışın nəticə tapıb-tapmaması, siyahıya qoşulma, saat modelinin seçilməsi, tam ekran, alətin ilk istifadəsi, yer seçiminin növü (vilayət və ya yer) və imsakiyyənin açılması və ya yüklənməsi. Bu zaman Umami brauzer, əməliyyat sistemi və cihaz növünü, dili, ekran ölçüsünü, gəldiyiniz səhifənin ünvanını və IP ünvanınızdan çıxarılan ölkə və şəhəri emal edir; IP ünvanının özü saxlanılmır. Umami kuki istifadə etmir, lakin ziyarətləri təxəllüslü sessiyaya bağlayır; ona görə anonim deyil. Axtarışa yazdığınız sözlər, e-poçt ünvanınız və yeriniz göndərilmir. İcazəni istənilən vaxt ayarlar menyusundakı \"Kuki seçimləri\" keçidi ilə geri götürə bilərsiniz; Umami növbəti səhifədən işləmir.",
           "**Vaxt sinxronlaşması:** Vaxtı cihazınızın saatından asılı olmadan göstərmək üçün brauzeriniz saytın öz serverinə bir neçə kiçik sorğu göndərir və cavabın tarix başlığını oxuyur. Bu sorğular yalnız serverin standart giriş jurnalında görünür; əlavə heç bir məlumat göndərilmir."
         ]
       },
@@ -273,7 +265,8 @@
           "**Xəritə:** Dünya saatlarındakı kürə Apple Xəritələr ilə göstərilir; xəritə şəkilləri Apple-dan yüklənir.",
           "**Təqvim:** Yalnız icazə versəniz, telefonunuzdakı təqvim tədbirləri tətbiqdə göstərilir; tədbirlər telefonda oxunur, heç yerə göndərilmir. Tədbir əlavə etmək və silmək iPhone-un öz təqvim ekranı ilə və sizin təsdiqinizlə edilir.",
           "**Bildirişlər və zəngli saatlar:** Vaxt bildirişləri, zəngli saatlar və taymerlər serversiz, telefonda qurulur; səsli elan telefonda yaradılır.",
-          "**E-poçt siyahısı:** Ayarlardan siyahıya qoşulsanız, e-poçt ünvanınız saytdakı forma ilə eyni şəkildə ortaq Bumba siyahısına göndərilir; e-poçt siyahısı ilə bağlı izahlar tətbiq üçün də keçərlidir.",
+          "**E-poçt siyahısı:** Haqqında səhifəsindən siyahıya qoşulsanız, e-poçt ünvanınız saytdakı forma ilə eyni şəkildə ortaq Bumba siyahısına göndərilir; e-poçt siyahısı ilə bağlı izahlar tətbiq üçün də keçərlidir.",
+          "**Nişanlar:** Nişanlar və irəliləyişiniz (qazanılan nişan və günü, baxılan saat modelləri, ardıcıl istifadə günlərinin sayı) yalnız telefonda saxlanılır, heç yerə göndərilmir; Alətlər › Nişanlar bölməsindəki \"Nişanları sil\" ilə istədiyiniz vaxt silə bilərsiniz.",
           "**Seçimlər:** Saat modeli, vilayət, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir."
         ]
       },
@@ -281,7 +274,7 @@
         "id": "cookies",
         "h": "Kukilər və brauzer yaddaşı",
         "p": [
-          "Saat Tarih kuki qoymur. İlk ziyarətinizdə səhifənin altındakı banner ziyarət statistikası (Umami) və xarici xidmətlər (Open-Meteo, OpenStreetMap) üçün icazənizi soruşur; ikisi də siz icazə verənə qədər bağlıdır. Seçiminizi istənilən vaxt altbilgidəki \"Kuki seçimləri\" keçidi ilə dəyişə bilərsiniz. Seçimlərinizi yadda saxlamaq üçün brauzerinizin yerli yaddaşından (localStorage) istifadə edirik; bunlar zəruri qrupdadır, yalnız cihazınızda qalır və serverə göndərilmir. Brauzer ayarlarından istənilən vaxt silə bilərsiniz. Bumba Group-un ortaq kuki siyasəti: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih kuki qoymur. İlk ziyarətinizdə səhifənin altındakı banner ziyarət statistikası (Umami) və xarici xidmətlər (Open-Meteo) üçün icazənizi soruşur; ikisi də siz icazə verənə qədər bağlıdır. Seçiminizi istənilən vaxt ayarlar menyusundakı \"Kuki seçimləri\" keçidi ilə dəyişə bilərsiniz. Seçimlərinizi yadda saxlamaq üçün brauzerinizin yerli yaddaşından (localStorage) istifadə edirik; bunlar zəruri qrupdadır, yalnız cihazınızda qalır və serverə göndərilmir. Brauzer ayarlarından istənilən vaxt silə bilərsiniz. Bumba Group-un ortaq kuki siyasəti: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -341,11 +334,6 @@
               "Siz silənə qədər"
             ],
             [
-              "sth-rozet",
-              "Nişanlarınızı və irəliləyişinizi saxlayır (aşağıda).",
-              "Siz silənədək"
-            ],
-            [
               "sth-conv",
               "Saat çeviricisində seçdiyiniz şəhərləri yadda saxlayır.",
               "Siz silənədək"
@@ -364,24 +352,13 @@
         }
       },
       {
-        "id": "badges",
-        "h": "Nişanlar",
-        "ul": [
-          "**Nə saxlanılır:** Qazandığınız nişanın identifikatoru və qazanma günü (saatsız), həmçinin şərtləri yoxlamaq üçün lazım olan sayğaclar: gördüyünüz saat modelləri, son ziyarət gününüz və neçə gün ardıcıl gəldiyiniz. Fəaliyyət jurnalı, ad və ya e-poçt saxlanılmır.",
-          "**Harada:** Yalnız bu brauzerin yerli yaddaşında, sth-rozet açarında (birinci tərəf). Heç bir serverə göndərilmir.",
-          "**Nə qədər və necə silinir:** Siz silənə qədər; [Nişanlar](/az/badges/) səhifəsindəki \"Nişanları sil\" düyməsi ilə və ya brauzer məlumatlarını təmizləməklə.",
-          "**Hüquqi əsas:** Qanuni maraq (KVKK m. 5/2-f); məlumat cihazınızdan çıxmır, onu görür və silə bilərsiniz, buna görə ayrıca icazə istənilmir.",
-          "**Statistika:** Statistikaya icazə vermisinizsə, nişan ilk dəfə qazanıldıqda onun identifikatoru Umami-də sayılır; səhifə ziyarətləri kimi brauzer, cihaz, ölkə və şəhər məlumatı ilə qeyd olunur. Ad, e-poçt və irəliləyiş göndərilmir."
-        ]
-      },
-      {
         "id": "legal-basis",
         "h": "Hüquqi əsaslar",
         "ul": [
           "E-poçt siyahısı: açıq razılığınız (KVKK m. 5/1). Razılığınızı istənilən vaxt e-poçtdakı çıxış keçidi ilə geri götürə bilərsiniz.",
-          "Ziyarət statistikası (Umami) və xarici xidmətlər (Open-Meteo, OpenStreetMap): kuki bannerində verdiyiniz açıq razılıq (KVKK m. 5/1). Xarici xidmətlərə icazə verdikdə IP ünvanınız xaricdə ola bilən bu xidmət təminatçılarına çatır; razılığınız bunu da əhatə edir. \"Kuki seçimləri\" keçidi ilə geri götürə bilərsiniz.",
+          "Ziyarət statistikası (Umami) və xarici xidmətlər (Open-Meteo): kuki bannerində verdiyiniz açıq razılıq (KVKK m. 5/1). Xarici xidmətlərə icazə verdikdə IP ünvanınız xaricdə ola bilən bu xidmət təminatçılarına çatır; razılığınız bunu da əhatə edir. \"Kuki seçimləri\" keçidi ilə geri götürə bilərsiniz.",
           "Server qeydləri: saytı təhlükəsiz və işlək saxlamaq üçün qanuni marağımız (KVKK m. 5/2-f).",
-          "Seçimləriniz və nişanlar: qanuni maraq (KVKK m. 5/2-f); məlumat yalnız cihazınızda qalır."
+          "Seçimləriniz: qanuni maraq (KVKK m. 5/2-f); məlumat yalnız cihazınızda qalır."
         ]
       },
       {
@@ -1550,120 +1527,24 @@
   },
   "consent": {
     "barLabel": "Kuki seçimi",
-    "barText": "Seçimlərinizi (dil, mövzu, saat və alət ayarları, nişanlar) yalnız bu brauzerdə saxlayırıq. İcazə versəniz, ziyarətlər Umami ilə sayılır, hava proqnozu və yaxın xəritə xarici xidmətlərdən yüklənir.",
+    "barText": "Seçimlərinizi (dil, mövzu, saat və alət ayarları) yalnız bu brauzerdə saxlayırıq. İcazə versəniz, ziyarətlər Umami ilə sayılır və hava proqnozu xarici xidmətdən (Open-Meteo) yüklənir.",
     "accept": "Qəbul et",
     "reject": "İmtina et",
     "prefs": "Seçimlər",
     "policy": "Kuki siyasəti",
     "title": "Kuki seçimləri",
-    "intro": "Hansı qrupların açıq olacağını seçin; seçiminizi istənilən vaxt altbilgidəki \"Kuki seçimləri\" keçidi ilə dəyişə bilərsiniz.",
+    "intro": "Hansı qrupların açıq olacağını seçin; seçiminizi istənilən vaxt ayarlar menyusundakı \"Kuki seçimləri\" keçidi ilə dəyişə bilərsiniz.",
     "necessary": "Zəruri",
-    "necessaryText": "Kuki seçiminiz, dil, mövzu, saat və alət ayarları, seçdiyiniz yer, dünya saatları siyahısı və nişanlar bu brauzerin yerli yaddaşında saxlanılır. Serverə getmir; sayt bunlarsız işləmir.",
+    "necessaryText": "Kuki seçiminiz, dil, mövzu, saat və alət ayarları, seçdiyiniz yer və dünya saatları siyahısı bu brauzerin yerli yaddaşında saxlanılır. Serverə getmir; sayt bunlarsız işləmir.",
     "alwaysOn": "Həmişə açıq",
     "stats": "Statistika",
     "statsText": "Umami səhifə baxışlarını və bir neçə əməliyyatı sayır (brauzer, cihaz, dil və IP ünvanından çıxarılan ölkə və şəhər; IP saxlanılmır). Kuki istifadə olunmur. Standart olaraq bağlıdır.",
     "ext": "Xarici xidmətlər",
-    "extText": "Hava proqnozu Open-Meteo-dan (api.open-meteo.com), yaxınlaşdırılmış kürədəki xəritə OpenStreetMap-dən (tile.openstreetmap.org) yüklənir; bu zaman IP ünvanınız bu xidmətlərə çatır. Standart olaraq bağlıdır.",
+    "extText": "Hava proqnozu Open-Meteo-dan (api.open-meteo.com) yüklənir; bu zaman IP ünvanınız bu xidmətə çatır. Standart olaraq bağlıdır.",
     "save": "Seçimi saxla",
     "footerLink": "Kuki seçimləri",
     "privacy": "Məxfilik",
     "wxBlocked": "Hava proqnozu Open-Meteo-dan yüklənir; göstərmək üçün xarici xidmətlərə icazə verin.",
-    "mapBlocked": "Yaxın xəritə OpenStreetMap-dən yüklənir; göstərmək üçün xarici xidmətlərə icazə verin.",
     "allow": "İcazə ver"
-  },
-  "badges": {
-    "title": "Nişanlar | Saat Tarih",
-    "description": "Saat Tarih-də qazandığın nişanlar və onları necə qazanmaq olar.",
-    "h1": "Nişanlar",
-    "lead": "Saat Tarih-dən istifadə etdikcə nişan qazanırsan. Hamısı aşağıdadır; qazanılanlar günü ilə görünür.",
-    "nav": "Nişanlar",
-    "note": "Nişanların və irəliləyişin yalnız bu brauzerdə, sən silənə qədər saxlanılır.",
-    "privacyLink": "Məxfilik",
-    "earnedOn": "Qazanıldı: {date}",
-    "locked": "Hələ qazanılmayıb",
-    "progress": "{n}/{total}",
-    "count": "{n}/{total} nişan qazanılıb",
-    "delete": "Nişanları sil",
-    "deleteTitle": "Nişanlar silinsin?",
-    "deleteText": "Bu brauzerdəki bütün nişanların və irəliləyişin (gördüyün saat modelləri, ziyarət seriyan) silinəcək. Geri qaytarmaq olmur.",
-    "deleteYes": "Sil",
-    "deleteNo": "İmtina",
-    "deleted": "Nişanların silindi.",
-    "toast": "Yeni nişan: {name}",
-    "toastLink": "Nişanlarım",
-    "items": {
-      "tema": {
-        "name": "Gecə və gündüz",
-        "how": "Mövzunu açıqdan tündə və ya əksinə dəyiş."
-      },
-      "saniye": {
-        "name": "Saniyə ovçusu",
-        "how": "Saata toxunaraq saniyələri aç və ya bağla."
-      },
-      "ilk-model": {
-        "name": "Yeni üz",
-        "how": "Saat səhnəsində başqa saat modelinə keç."
-      },
-      "tam-ekran": {
-        "name": "Böyük ekran",
-        "how": "Saatı tam ekranda aç."
-      },
-      "arama": {
-        "name": "Tapıcı",
-        "how": "Sayt daxili axtarışda bir nəticəni aç."
-      },
-      "takvim": {
-        "name": "Gün maraqlısı",
-        "how": "Təqvimdə bir günə toxunub təfərrüatını aç."
-      },
-      "kronometre": {
-        "name": "Başla!",
-        "how": "Saniyəölçəni işə sal."
-      },
-      "geri-sayim": {
-        "name": "Geri sayım",
-        "how": "Bir geri sayım başlat."
-      },
-      "alarm": {
-        "name": "Tezdən duran",
-        "how": "Bir zəngli saat qur."
-      },
-      "cevirici": {
-        "name": "Saat tərcüməçisi",
-        "how": "Saat çeviricisində bir şəhəri və ya saatı dəyiş."
-      },
-      "tarih-hesap": {
-        "name": "Hesab ustası",
-        "how": "Tarix kalkulyatorunda bir hesablama et."
-      },
-      "dunya": {
-        "name": "Dünya vətəndaşı",
-        "how": "Dünya saatlarına bir şəhər və ya saat qurşağı əlavə et."
-      },
-      "kure": {
-        "name": "Kəşfiyyatçı",
-        "how": "Fırlanan dünyanı yaxınlaşdır."
-      },
-      "pomodoro": {
-        "name": "Fokus",
-        "how": "Bir pomodoro iş müddətini sonuna qədər tamamla."
-      },
-      "seri-3": {
-        "name": "Üç gün ardıcıl",
-        "how": "Saat Tarih-ə üç gün ardıcıl gəl."
-      },
-      "model-10": {
-        "name": "Kolleksiyaçı",
-        "how": "10 fərqli saat modelini gör."
-      },
-      "seri-7": {
-        "name": "Bir həftə",
-        "how": "Saat Tarih-ə yeddi gün ardıcıl gəl."
-      },
-      "model-hepsi": {
-        "name": "Saat ustası",
-        "how": "Saat səhnəsindəki bütün modelləri gör."
-      }
-    }
   }
 }

@@ -114,6 +114,7 @@ private fun DurationTimer() {
     fun save(e: Long, l: Long) { end = e; left = l; ToolState.putLong("tm.end", e); ToolState.putLong("tm.left", l) }
     fun start(ms: Long) {
         if (ms <= 0) return
+        BadgeStore.hit(Badge.ZAMANLAYICI)
         ask()
         val e = System.currentTimeMillis() + ms
         now = System.currentTimeMillis()

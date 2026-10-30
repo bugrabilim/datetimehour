@@ -31,7 +31,6 @@ for (const f of htmlFiles) {
   const err = name === "/404.html" || name === "/500.html";
   const noidx = /<meta name="robots" content="noindex/.test(h);
   const embed = new RegExp(`^/embed/(${LG})/index\\.html$`).test(name);
-  const badgesPage = new RegExp(`^/(rozetler|(${LG})/badges)/index\\.html$`).test(name);
   ids[f] = new Set([...h.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
   const title = (h.match(/<title>([^<]*)<\/title>/) || [])[1];
   const desc = (h.match(/<meta name="description" content="([^"]*)"/) || [])[1];
@@ -49,9 +48,11 @@ for (const f of htmlFiles) {
   check(!/istatistik\.bumba\.tr\/script\.js/.test(h), `${name}: Umami betiği izinsiz yükleniyor`);
   if (!embed) {
     check(/id="cookie-bar"[^>]* hidden/.test(h) && /data-consent-accept/.test(h) && /data-consent-reject/.test(h) && /data-consent-open/.test(h) && /bumbagroup\.com\/cerez-politikasi/.test(h) && /id="cookie-dialog"/.test(h) && /data-consent-stats/.test(h) && /data-consent-ext/.test(h), `${name}: çerez bandı ya da tercihler eksik`);
-    const ci = h.indexOf("consent.js"), mi = h.indexOf("/assets/main.js"), bi = h.indexOf("badges.js");
-    check(ci > 0 && ci < mi && bi > mi, `${name}: consent.js/main.js/badges.js sırası hatalı`);
-    check(/class="wrap footer-links"><a href="[^"]+">[^<]+<\/a><button type="button" class="link-btn" data-consent-open/.test(h), `${name}: altbilgide gizlilik/çerez tercihleri bağlantısı yok`);
+    const ci = h.indexOf("consent.js"), mi = h.indexOf("/assets/main.js");
+    check(ci > 0 && ci < mi && !/badges\.js|data-badge/.test(h), `${name}: consent.js/main.js sırası hatalı ya da web'de rozet kalmış`);
+    // Bu siteye özel (30 Ekim 2026, sahibin kararı): gizlilik ve çerez tercihleri altbilgide değil ayarlarda (masaüstü dişli + mobil menü)
+    const pops = [...h.matchAll(/class="set-item" href="([^"]+)">/g)].map((m) => m[1]);
+    check((h.match(/class="set-item" data-consent-open/g) || []).length === 2 && pops.some((u) => /\/(gizlilik|privacy)\/$/.test(u)) && !/footer-links/.test(h), `${name}: ayarlarda gizlilik/çerez tercihleri yok ya da altbilgide bağlantı satırı kalmış`);
   }
   check(/Content-Security-Policy/.test(h), `${name}: CSP yok`);
   if (embed) {
@@ -67,7 +68,7 @@ for (const f of htmlFiles) {
     check(/data-live="calendar"/.test(h), `${name}: özel model türleri eksik`);
   }
   if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name))) {
-    check(/data-globe/.test(h) && /globe\.js/.test(h) && /"globe":\{"earth":"\/assets\/earth\.jpg\?v=/.test(h) && /"places":"\/assets\/places\.json/.test(h) && /data-globe-attr/.test(h) && /data-globe-zoom="in"/.test(h), `${name}: dünya küresi eksik`);
+    check(!/data-globe|globe\.js|openstreetmap/.test(h), `${name}: ana sayfada dünya küresi kalmış (30 Ekim 2026'da kaldırıldı)`);
     check(!/data-upcoming/.test(h) && !/id="facts"/.test(h) && !/data-world="grid"/.test(h) && !/<details>/.test(h) && !/"FAQPage"/.test(h), `${name}: ana sayfada kaldırılan bölüm duruyor`);
     check(/<h1 class="sr-only">/.test(h), `${name}: ana sayfa H1 gizli olmalı`);
   }
@@ -117,8 +118,6 @@ for (const f of htmlFiles) {
     if (!noidx) {
       for (const l of [...LANGS, "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
-    } else if (badgesPage) {
-      check(/rel="alternate" hreflang/.test(h) === false && /data-badges-page/.test(h) && (h.match(/data-badge="/g) || []).length >= 15 && (h.match(/data-badge="/g) || []).length <= 20 && /data-badges-delete/.test(h) && /id="badges-delete"/.test(h) && /class="badges-note"[^>]*>[^<]+<a href="[^"]+#(rozetler|badges)"/.test(h), `${name}: rozetler sayfası eksik (15–20 rozet, not, silme penceresi)`);
     } else {
       check(/rel="alternate" hreflang/.test(h) === false && /rel="canonical" href="https:\/\/[^"]+\/\d{4}\/"/.test(h), `${name}: noindex giriş sayfası yıl sayfasına canonical vermeli`);
     }
@@ -182,9 +181,8 @@ check(!/Disallow:\s*\//.test(robots), "robots.txt engelliyor");
 for (const b of ["GPTBot", "ClaudeBot", "PerplexityBot", "OAI-SearchBot"]) check(robots.includes(`User-agent: ${b}`), `robots.txt ${b} yok`);
 const llms = fs.readFileSync(path.join(DIST, "llms.txt"), "utf8");
 check(/Saat Tarih/.test(llms), "llms.txt boş");
-// madde 13: Rozetler ekranı kişiye özel; sitemap, llms.txt ve arama dizinine girmez
-check(!/\/(rozetler|badges)\//.test(sm) && !/\/(rozetler|badges)\//.test(llms), "rozetler sayfası sitemap ya da llms.txt'de");
-for (const l of LANGS) check(!/\/(rozetler|badges)\//.test(fs.readFileSync(path.join(DIST, `assets/search-${l}.json`), "utf8")), `arama dizininde rozetler sayfası (${l})`);
+// Kazanım rozetleri web'de yok (30 Ekim 2026, yalnız mobil uygulamalarda); eski adresler nginx'te 301
+check(!fs.existsSync(path.join(DIST, "rozetler")) && !/\/(rozetler|badges)\//.test(sm), "web'de rozetler sayfası kalmış");
 
 // Dil dosyaları: anahtar ve dizi uzunluğu eşliği (tr = kaynak)
 const keys = (o, p = "") => Object.entries(o).flatMap(([k, v]) => (v && typeof v === "object" && !Array.isArray(v) ? keys(v, p + k + ".") : [p + k]));
@@ -258,7 +256,7 @@ for (const [n, t] of Object.entries(themes)) {
 const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
 for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
-check(ng.split("https://tile.openstreetmap.org").length === 3, "nginx.conf: img-src OpenStreetMap karoları iki konumda olmalı");
+check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");
 

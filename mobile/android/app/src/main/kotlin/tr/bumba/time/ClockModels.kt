@@ -41,8 +41,9 @@ import java.time.format.TextStyle as JTextStyle
  * Adlar sitedeki `stage.models.<kimlik>` metinleri. Hava durumlu (wx) modeller seçili konumun havasını alır.
  */
 enum class ClockModel(val id: String) {
+    CLASSIC("classic"), // 1. sırada: varsayılan saniyeli rakamlı analog (30 Ekim 2026, sahibin isteği)
     WX_DIGITAL_CAL_WEEK("wx-digital-cal-week"),
-    CLASSIC("classic"), ANALOG_DATE("analog-date"), STACK("stack"),
+    ANALOG_DATE("analog-date"), STACK("stack"),
     WX_ANALOG("wx-analog"), WX_STACK("wx-stack"), WX_ANALOG_DATE("wx-analog-date"), WX_FULL("wx-full"),
     H_CLASSIC("h-classic"), H_ANALOG_DATE("h-analog-date"), H_STACK("h-stack"),
     H_WX_ANALOG("h-wx-analog"), H_WX_STACK("h-wx-stack"), H_WX_ANALOG_DATE("h-wx-analog-date"), H_WX_FULL("h-wx-full"),
@@ -188,7 +189,7 @@ private fun DigitalPart(t: ZonedDateTime, size: Dp, maxWidth: Dp) {
     val max = size.asSp()
     Ltr {
         Row(
-            Modifier.widthIn(max = maxWidth).clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!Prefs.secD) },
+            Modifier.widthIn(max = maxWidth).clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!Prefs.secD); BadgeStore.hit(Badge.SANIYE) },
             verticalAlignment = Alignment.Bottom,
         ) {
             Text(

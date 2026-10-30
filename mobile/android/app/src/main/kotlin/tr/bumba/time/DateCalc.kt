@@ -28,6 +28,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -127,6 +128,11 @@ fun DateCalcScreen() {
     var unit by rememberSaveable { mutableStateOf("days") }
     var birth by rememberSaveable { mutableStateOf(today.minusYears(30).toString()) }
     var picking by remember { mutableStateOf<String?>(null) }
+    // Rozet: kullanıcı bir hesap girdisini değiştirince (açılıştaki ilk değerler sayılmaz)
+    val firstInputs = remember { listOf(start, finish, base, amount, unit, birth) }
+    LaunchedEffect(start, finish, base, amount, unit, birth) {
+        if (listOf(start, finish, base, amount, unit, birth) != firstInputs) BadgeStore.hit(Badge.TARIH_HESAP)
+    }
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         AppCard {

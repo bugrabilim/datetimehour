@@ -52,6 +52,7 @@ struct WorldClockView: View {
                     Toggle(L("world.changeTime"), isOn: $shift)
                     if shift {
                         DatePicker(L("converter.whenLabel"), selection: $when)
+                            .onChange(of: when) { BadgeStore.shared.hit(.cevirici) }
                     }
                 }
                 Section {
@@ -99,6 +100,7 @@ struct WorldClockView: View {
                     Button {
                         keysRaw = (cities.map(\.key) + [c.key]).joined(separator: ",")
                         adding = false
+                        BadgeStore.shared.hit(.dunya)
                     } label: {
                         VStack(alignment: .leading) {
                             Text(c.displayName).foregroundStyle(Theme.text)

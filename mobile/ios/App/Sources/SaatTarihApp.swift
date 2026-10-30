@@ -15,6 +15,7 @@ struct SaatTarihApp: App {
             // Her açılışta bildirim listesi yeniden kurulur (iOS'ta en çok 64 bekleyen bildirim)
             // Otomatik konumdaysa konum sessizce yenilenir (değişirse bildirimler de yeniden kurulur)
             if phase == .active {
+                BadgeStore.shared.appOpened()
                 Task {
                     await PlaceModel.shared.refresh()
                     await PrayerNotifier.reschedule()
@@ -56,7 +57,7 @@ enum AppTab: Int, CaseIterable {
 
 /// Araçlar sekmesindeki sayfalar
 enum ToolRoute: Hashable {
-    case alarm, timer, stopwatch, pomodoro, datecalc, settings, about
+    case alarm, timer, stopwatch, pomodoro, datecalc, settings, about, badges
 }
 
 /// Sekme ve Araçlar gezintisi; saat ekranındaki alanlar dokununca ilgili sayfayı açar.
@@ -108,6 +109,7 @@ struct RootView: View {
                 .frame(maxHeight: .infinity)
             if !keyboard { TabBar(selection: $router.tab) }
         }
+        .overlay(alignment: .top) { BadgeToast() }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboard = true }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboard = false }
         .tint(Theme.accent)
@@ -178,7 +180,7 @@ private struct TabBar: View {
 
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list, globe, google
+         privacy, about, list, globe, google, badges
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -201,6 +203,7 @@ enum DebugScreen: String, Identifiable {
         case .about: AboutView()
         case .list: ListSignupView()
         case .google: GoogleCalendarGuide()
+        case .badges: BadgesView()
         case .globe:
             // App Store önizleme videosu için: tam ekran dönen dünya
             GlobeView(fullscreen: true)
