@@ -2446,10 +2446,12 @@ const OTD_SRC = fs.existsSync(path.join(SRC, "data", "on-this-day.json")) ? read
 const OTD_LIMIT = { e: 8, f: 2, b: 5, d: 5 };
 const OTD_URL = {};
 function otdDay(lang, md) {
-  const out = { e: [], f: [], b: [], d: [] };
+  const out = { e: [], f: [], b: [], d: [] }, seen = new Set();
   for (const it of OTD_SRC.days[md] || []) {
     const name = it.l && it.l[lang];
-    if (!name || out[it.k].length >= OTD_LIMIT[it.k]) continue;
+    // Aynı öğe (ör. hem olay hem kuruluş olarak kayıtlı bir anlaşma) bir kez
+    if (!name || out[it.k].length >= OTD_LIMIT[it.k] || seen.has(it.q)) continue;
+    seen.add(it.q);
     out[it.k].push([it.y, it.k, name, (it.s && it.s[lang]) || "", it.q]);
   }
   return [...out.e.sort((a, b) => a[0] - b[0]), ...out.f.sort((a, b) => a[0] - b[0]), ...out.b.sort((a, b) => a[0] - b[0]), ...out.d.sort((a, b) => a[0] - b[0])];
@@ -2470,7 +2472,7 @@ function otdList(lang, md) {
   return groups.map(([k, h]) => {
     const items = rows.filter((r) => r[1] === k);
     if (!items.length) return "";
-    return `<h3>${esc(h)}</h3><ul class="otd-list">${items.map((r) => `<li><span class="otd-y" dir="ltr">${r[0]}</span> <span>${esc(k === "f" ? tpl(s.foundedFmt, { name: r[2] }) : r[2])}${r[3] ? ` <span class="meta">(${esc(r[3])})</span>` : ""}</span></li>`).join("")}</ul>`;
+    return `<h3>${esc(h)}</h3><ul class="otd-list">${items.map((r) => `<li><span class="otd-y" dir="ltr">${r[0]}</span> <span>${esc(k === "f" ? tpl(s.foundedFmt, { name: r[2] }) : r[2])}${r[3] ? ` <span class="meta">· ${esc(r[3])}</span>` : ""}</span></li>`).join("")}</ul>`;
   }).join("") || `<p class="meta">${esc(s.empty)}</p>`;
 }
 function buildOtd(lang) {

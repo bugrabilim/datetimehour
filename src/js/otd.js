@@ -23,7 +23,7 @@
         var li = doc.createElement("li"), y = doc.createElement("span"), tx = doc.createElement("span");
         y.className = "otd-y"; y.dir = "ltr"; y.textContent = r[0];
         tx.textContent = g[0] === "f" ? S.tpl(X.foundedFmt, { name: r[2] }) : r[2];
-        if (r[3]) { var ds = doc.createElement("span"); ds.className = "meta"; ds.textContent = " (" + r[3] + ")"; tx.appendChild(ds); }
+        if (r[3]) { var ds = doc.createElement("span"); ds.className = "meta"; ds.textContent = " · " + r[3]; tx.appendChild(ds); }
         li.appendChild(y); li.appendChild(doc.createTextNode(" ")); li.appendChild(tx); ul.appendChild(li);
       });
       list.appendChild(ul);
