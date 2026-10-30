@@ -100,6 +100,7 @@ for (const f of htmlFiles) {
     if (hub) check((h.match(/<option value="[a-z]+" data-lat=/g) || []).length === 81 && /data-place-geo/.test(h), `${name}: hub il listesi/konum düğmesi eksik`);
     else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
   }
+  if (/^\/((en|de|az|ar)\/qibla|kible)\/index\.html$/.test(name)) check(/data-qibla\b/.test(h) && /data-qb-rose/.test(h) && /data-qb-needle/.test(h) && /qibla\.js/.test(h) && /prayer-calc\.js/.test(h) && /data-qb-mq-show/.test(h) && /data-needs-place/.test(h), `${name}: kıble sayfası yapısı eksik`);
   if (/\/(mevsimler|seasons)\/index\.html$/.test(name)) {
     check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-n-turns/.test(h) && /data-n-moon="rise"/.test(h) && /data-n-mooncal/.test(h) && /data-n-eclipses/.test(h) && !/data-place-city="/.test(h.replace(/<dialog[\s\S]*?<\/dialog>/g, "")) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
     check(h.indexOf("<h1") < h.indexOf("data-nature"), `${name}: başlık çarkın üstünde olmalı`);
@@ -230,6 +231,14 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
     const [hh, mm] = v.split(":").map(Number);
     check(Math.abs(Math.round(r[k] * 60) - (hh * 60 + mm)) <= 1, `namaz hesabı: ${k} ${(r[k]).toFixed(3)} ≠ ${v}`);
   }
+  // Kıble (30 Ekim 2026): İstanbul 151,6° ve ~2405 km; kıble saati Diyanet'in yayımladığıyla (ezanvakti, İstanbul) ±1 dk
+  const kq = m.exports.qibla(41.01, 28.98);
+  check(Math.abs(kq.bearing - 151.6) < 0.1 && Math.abs(kq.km - 2405) < 5, `kıble: İstanbul ${kq.bearing.toFixed(2)}° ${kq.km.toFixed(0)} km`);
+  for (const [d, v] of [[24, "11:12"], [28, "11:09"], [29, "11:09"]]) {
+    const t = m.exports.qiblaTime(2026, 10, d, 41.01, 28.98, 3), [hh, mm] = v.split(":").map(Number);
+    check(Number.isFinite(t) && Math.abs(Math.round(t * 60) - (hh * 60 + mm)) <= 1, `kıble saati ${d}.10.2026: ${t} ≠ ${v}`);
+  }
+  check(!Number.isFinite(m.exports.qiblaTime(2026, 10, 30, 40.71, -74.01, -4)), "kıble saati: New York'ta olmamalı");
   // İlçe merkezleri (src/data/districts.json, GeoNames): Yüksekova ve Datça 30 Ekim 2026, Diyanet vakitleriyle (±1 dk)
   const DS = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/districts.json"), "utf8"));
   check(DS.count === 973 && Object.keys(DS.provinces).length === 81, `ilçe verisi: ${DS.count} ilçe`);
@@ -310,6 +319,8 @@ for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Typ
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
+for (const f of ["kible", "en/qibla", "de/qibla", "az/qibla", "ar/qibla"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `kıble sayfası yok: /${f}/`);
+check(ng.split("https://overpass-api.de").length === 3, "nginx.conf: connect-src overpass (yakındaki camiler) iki konumda olmalı");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");
 
 if (fails.length) {

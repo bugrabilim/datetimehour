@@ -274,6 +274,7 @@
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
           "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
           "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo.",
+          "**Qibla und Moscheen in der Nähe:** Qibla-Richtung, Entfernung und Qibla-Zeit werden in Ihrem Browser berechnet. Für den Kompass wird der Lagesensor Ihres Telefons nur im Browser gelesen (das iPhone fragt nach Erlaubnis) und nirgendwohin gesendet. Wenn Sie auf \"Moscheen anzeigen\" tippen und externe Dienste erlaubt haben, werden die auf zwei Dezimalstellen gerundeten Koordinaten des gewählten Ortes (etwa 1 km) von Ihrem Browser an den Overpass-Dienst (overpass-api.de) gesendet, der OpenStreetMap-Daten bereitstellt; dabei erreicht auch Ihre IP-Adresse diesen Dienst. Der Saat-Tarih-Server sieht diese Koordinaten nicht.",
           "**Formular der E-Mail-Liste:** Die eingegebene E-Mail-Adresse, die mit der Schaltfläche „Ich stimme zu“ im sich öffnenden Fenster erteilte Einwilligung, die gewählte Sprache und die Seite des Formulars werden vom gemeinsamen Listendienst der Bumba Group (bumbagroup.com) verarbeitet. Die Anmeldung erfolgt per Double-Opt-in: Sie werden erst aufgenommen, wenn Sie auf den Link in der Bestätigungs-E-Mail klicken; jede E-Mail enthält einen Abmeldelink. Einzelheiten im [gemeinsamen Datenschutzhinweis](https://bumbagroup.com/liste/aydinlatma?dil=en).",
           "**Server-Protokolle:** Der Server, auf dem die Website betrieben wird, führt für jede Anfrage ein übliches Zugriffsprotokoll mit IP-Adresse, Browserinformationen, aufgerufener Seite und Zeitpunkt. Diese Protokolle dienen ausschließlich der Sicherheit und der Fehlerbehebung, nicht der Erstellung von Personenprofilen.",
           "**Besuchsstatistik (Umami, mit Zustimmung):** Nur wenn Sie im Cookie-Banner oder in den Cookie-Einstellungen der Statistik zustimmen, zählt Umami, das auf unserem eigenen Server läuft, Seitenaufrufe und folgende Aktionen: Sprach- und Designwechsel, ob eine Suche ein Ergebnis fand, Anmeldung zur Liste, Wahl eines Uhrstils, Vollbild, die erste Nutzung eines Werkzeugs, die Art der Ortswahl (Provinz oder Standort) sowie Öffnen oder Herunterladen des Ramadan-Kalenders. Dabei verarbeitet Umami Browser, Betriebssystem und Gerätetyp, Sprache, Bildschirmgröße, die Adresse der vorherigen Seite sowie aus Ihrer IP-Adresse abgeleitetes Land und Stadt; die IP-Adresse selbst wird nicht gespeichert. Umami verwendet keine Cookies, verknüpft Besuche aber mit einer pseudonymen Sitzung und ist daher nicht anonym. Suchbegriffe, Ihre E-Mail-Adresse und Ihr Standort werden nicht gesendet. Sie können die Zustimmung jederzeit über den Link „Cookie-Einstellungen“ im Einstellungsmenü widerrufen; Umami läuft ab der nächsten Seite nicht mehr.",
@@ -296,7 +297,8 @@
           "**Abzeichen:** Abzeichen und Ihr Fortschritt (verdiente Abzeichen mit Datum, gesehene Uhrmodelle, Zahl der aufeinanderfolgenden Nutzungstage) werden nur auf dem Telefon gespeichert und nirgendwohin gesendet; Sie können sie jederzeit mit „Abzeichen löschen“ unter Werkzeuge › Abzeichen löschen.",
           "**Intervalltraining:** Während eines von Ihnen gestarteten Intervalltrainings nutzt die App den Hintergrund-Audiomodus von iOS, um Phasenwechsel auch bei gesperrtem Bildschirm anzusagen; die Sprache wird auf dem Telefon erzeugt, es werden keine Daten gesendet.",
           "**Fotos:** Ein Foto, das Sie für die Vollbilduhr oder einen Countdown wählen, wird über die Fotoauswahl des iPhone übernommen (kein Zugriff auf Ihre Mediathek nötig); eine verkleinerte Kopie wird nur auf dem Telefon gespeichert und nirgendwohin gesendet.",
-          "**Einstellungen:** Einstellungen wie Uhrmodell, Provinz und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt."
+          "**Einstellungen:** Einstellungen wie Uhrmodell, Provinz und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt.",
+          "**Qibla und Moscheen in der Nähe:** Die Qibla-Richtung wird auf dem Telefon berechnet; der Kompass nutzt den Lagesensor des Telefons (mit Standortberechtigung wird der Standort für geografisch Nord ebenfalls nur auf dem Telefon genutzt). Auf dem Bildschirm \"Moscheen in der Nähe\" sucht Apple Karten: Suchbegriff und auf zwei Dezimalstellen gerundetes Gebietszentrum gehen an Apple; es gelten Apples Datenschutzbedingungen."
         ]
       },
       {
@@ -313,7 +315,8 @@
           "**Mitteilungen, Wecker und Intervalltraining:** Gebetszeit-Mitteilungen und die übrigen Mitteilungsarten (besondere Tage, Jahreszeitenbeginn, Mondphase, Sonnenauf- und -untergang, morgendliche Wetterübersicht, volle Stunde, Zeitumstellung; außer der vollen Stunde jeweils standardmäßig an, änderbar unter Einstellungen › Mitteilungen), Wecker und Timer werden auf dem Telefon geplant, ohne Server; damit sie pünktlich klingeln, wird die Berechtigung für exakte Wecker genutzt. Während eines von Ihnen gestarteten Intervalltrainings sagt ein in der Mitteilung sichtbarer Vordergrunddienst die Phasenwechsel mit der Sprachausgabe des Telefons an. Sprachansagen werden auf dem Telefon erzeugt.",
           "**Fotos:** Ein Foto, das Sie für die Vollbilduhr oder einen Countdown wählen, wird über die Fotoauswahl von Android übernommen (keine Galerie-Berechtigung nötig); eine verkleinerte Kopie wird nur in den Dateien der App gespeichert.",
           "**E-Mail-Liste:** Wenn Sie sich auf der Seite „Über“ in die Liste eintragen, wird Ihre E-Mail-Adresse genauso wie beim Formular der Website an die gemeinsame Bumba-Liste gesendet; die Hinweise zur E-Mail-Liste gelten auch für die App.",
-          "**Abzeichen und Einstellungen:** Abzeichen und Einstellungen wie Uhrmodell, Standort und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt. Ist die Android-Sicherung auf Ihrem Telefon eingeschaltet, können diese Daten (und die Kopie gewählter Fotos) in die Gerätesicherung in Ihrem Google-Konto aufgenommen werden; diese Sicherung unterliegt den Bedingungen von Google, wir haben keinen Zugriff darauf."
+          "**Abzeichen und Einstellungen:** Abzeichen und Einstellungen wie Uhrmodell, Standort und Weltuhren werden nur auf dem Telefon gespeichert und beim Löschen der App entfernt. Ist die Android-Sicherung auf Ihrem Telefon eingeschaltet, können diese Daten (und die Kopie gewählter Fotos) in die Gerätesicherung in Ihrem Google-Konto aufgenommen werden; diese Sicherung unterliegt den Bedingungen von Google, wir haben keinen Zugriff darauf.",
+          "**Qibla und Moscheen in der Nähe:** Qibla-Richtung und Kompass werden auf dem Telefon berechnet. Auf dem Bildschirm \"Moscheen in der Nähe\" werden die auf zwei Dezimalstellen gerundeten Koordinaten (etwa 1 km) an den Overpass-Dienst (overpass-api.de) gesendet, der OpenStreetMap-Daten bereitstellt; dabei erreicht Ihre IP-Adresse diesen Dienst. Ein Tippen auf eine Moschee öffnet Ihre Karten-App."
         ]
       },
       {
@@ -722,6 +725,10 @@
         "embed": {
           "name": "Uhr-Widget",
           "desc": "Eine kostenlose Uhr in Ihre Website einbetten (iframe)."
+        },
+        "qibla": {
+          "name": "Qibla",
+          "desc": "Kompass, Qibla-Winkel, Qibla-Zeit und Moscheen in der Nähe."
         }
       },
       "infoHeading": "Infoseiten"
@@ -1632,7 +1639,7 @@
   },
   "consent": {
     "barLabel": "Cookie-Auswahl",
-    "barText": "Wir speichern Ihre Einstellungen (Sprache, Design, Uhr- und Werkzeugeinstellungen) nur in diesem Browser. Wenn Sie zustimmen, werden Besuche mit Umami gezählt und das Wetter von einem externen Dienst (Open-Meteo) geladen.",
+    "barText": "Wir speichern Ihre Einstellungen (Sprache, Design, Uhr- und Werkzeugeinstellungen) nur in diesem Browser. Wenn Sie zustimmen, werden Besuche mit Umami gezählt, und das Wetter (Open-Meteo) sowie Moscheen in der Nähe (OpenStreetMap) werden von externen Diensten geladen.",
     "accept": "Akzeptieren",
     "reject": "Ablehnen",
     "prefs": "Einstellungen",
@@ -1645,11 +1652,65 @@
     "stats": "Statistik",
     "statsText": "Umami zählt Seitenaufrufe und einige Aktionen (Browser, Gerät, Sprache sowie aus der IP-Adresse abgeleitetes Land und Stadt; die IP wird nicht gespeichert). Es werden keine Cookies verwendet. Standardmäßig aus.",
     "ext": "Externe Dienste",
-    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com) geladen; dabei erreicht Ihre IP-Adresse diesen Dienst. Standardmäßig aus.",
+    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com) und Moscheen in der Nähe vom Overpass-Dienst von OpenStreetMap (overpass-api.de) geladen; dabei erreicht Ihre IP-Adresse diese Dienste. Standardmäßig aus.",
     "save": "Auswahl speichern",
     "footerLink": "Cookie-Einstellungen",
     "privacy": "Datenschutz",
     "wxBlocked": "Das Wetter wird von Open-Meteo geladen; erlauben Sie externe Dienste, um es anzuzeigen.",
-    "allow": "Erlauben"
+    "allow": "Erlauben",
+    "mqBlocked": "Moscheen in der Nähe werden von OpenStreetMap (Overpass) geladen; erlauben Sie externe Dienste, um sie anzuzeigen."
+  },
+  "qibla": {
+    "title": "Qibla-Richtung: Kompass, Qibla-Winkel und Qibla-Zeit | Saat Tarih",
+    "description": "Die Richtung der Kaaba von Ihrem Ort: Live-Kompass, Qibla-Winkel ab Norden, Entfernung zur Kaaba, die heutige Qibla-Zeit und Moscheen in der Nähe.",
+    "h1": "Qibla-Richtung",
+    "lead": "Qibla-Winkel, Entfernung zur Kaaba und die heutige Qibla-Zeit für den gewählten Ort; Live-Richtung mit dem Kompass Ihres Telefons.",
+    "search": "qibla kibla richtung kompass kaaba mekka qibla-zeit qibla-winkel moschee moscheen in der nähe",
+    "angle": "Qibla-Richtung",
+    "angleNote": "Im Uhrzeigersinn von Norden",
+    "distance": "Entfernung zur Kaaba",
+    "time": "Qibla-Zeit",
+    "timeNote": "Zu dieser Zeit steht die Sonne genau in Qibla-Richtung: Wer zur Sonne blickt, blickt zur Qibla.",
+    "noTime": "Heute steht die Sonne nicht in Qibla-Richtung.",
+    "start": "Kompass starten",
+    "aligned": "Sie blicken zur Qibla",
+    "turn": "Halten Sie das Telefon waagerecht und drehen Sie sich in Pfeilrichtung",
+    "waiting": "Warte auf Kompassdaten…",
+    "noCompass": "Dieses Gerät oder dieser Browser hat keinen Kompass. Messen Sie den Qibla-Winkel im Uhrzeigersinn von Norden oder blicken Sie zur Qibla-Zeit zur Sonne.",
+    "denied": "Die Kompassberechtigung wurde nicht erteilt. Laden Sie die Seite neu, um es erneut zu versuchen.",
+    "calibrate": "Der Kompass muss evtl. kalibriert werden: Bewegen Sie das Telefon einige Male in Form einer 8 und halten Sie Abstand zu Magneten, Metall und Elektronik.",
+    "atKaaba": "Sie sind an der Kaaba.",
+    "method": "Die Qibla ist die Anfangsrichtung des kürzesten Weges (Großkreis) zur Kaaba, im Browser aus den Koordinaten des gewählten Ortes berechnet und nie an unseren Server gesendet. Bei einer Provinz gilt deren Zentrum (Abweichung innerhalb einer Provinz unter 1°). Die Qibla-Zeit stimmt mit der von Diyanet veröffentlichten Qibla-Zeit auf ±1 Minute überein. Die Genauigkeit des Kompasses hängt vom Sensor Ihres Telefons ab.",
+    "mosquesHeading": "Moscheen in der Nähe",
+    "mosquesText": "Moscheen rund um den gewählten Ort (4 km) werden aus OpenStreetMap-Daten aufgelistet.",
+    "mosquesShow": "Moscheen anzeigen",
+    "mosquesLoading": "Moscheen werden geladen…",
+    "mosquesNone": "Keine Moscheen in der Nähe gefunden.",
+    "mosquesError": "Moscheen konnten nicht geladen werden. Bitte später erneut versuchen.",
+    "mosquesAttribution": "Daten © OpenStreetMap-Mitwirkende (ODbL), über die Overpass API.",
+    "mosqueUnnamed": "Moschee",
+    "mapsText": "Auf einer Karte suchen:",
+    "mapsQuery": "Moschee",
+    "km": "{km} km",
+    "m": "{m} m",
+    "faq": [
+      {
+        "q": "Wie finde ich die Qibla-Richtung?",
+        "a": "Die Qibla ist die Richtung des kürzesten Weges von Ihrem Ort zur Kaaba in Mekka. Diese Seite gibt den Qibla-Winkel für den gewählten Ort in Grad im Uhrzeigersinn von Norden an; tippen Sie auf dem Telefon auf \"Kompass starten\", zeigt der Pfeil direkt zur Qibla. Ohne Kompass können Sie zur Qibla-Zeit auch zur Sonne blicken."
+      },
+      {
+        "q": "Was ist die Qibla-Zeit?",
+        "a": "Die Qibla-Zeit ist der Moment, in dem die Sonne genau in Qibla-Richtung steht; wer in dieser Minute zur Sonne blickt, blickt zur Qibla. Sie verschiebt sich täglich um einige Minuten und hängt vom Ort ab. An manchen Orten weit von der Kaaba erreicht die Sonne die Qibla-Richtung an einem Tag nie."
+      },
+      {
+        "q": "In welcher Richtung liegt die Qibla von Berlin?",
+        "a": "Von Berlin liegt die Qibla im Südosten: etwa 136,7° im Uhrzeigersinn von Norden. Die Großkreisentfernung zur Kaaba beträgt etwa 4.130 km."
+      },
+      {
+        "q": "Warum kann ein Handykompass falsch anzeigen?",
+        "a": "Ein Handykompass misst das Magnetfeld; Magnete, Metallgegenstände, Autos und Elektronik können ihn ablenken. Bewegen Sie das Telefon in Form einer 8, um ihn zu kalibrieren. Halten Sie das Telefon waagerecht und vergleichen Sie das Ergebnis mit dem Qibla-Winkel."
+      }
+    ],
+    "cardinals": "N O S W"
   }
 }

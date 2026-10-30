@@ -77,10 +77,12 @@ bildirimleri tam zamanında çalmalıdır.
 
 Sitedeki gizlilik sayfasının "Android uygulaması" bölümüyle aynı olmalı:
 
-- **Yaklaşık konum:** toplanır (hava durumu için iki ondalığa yuvarlanmış koordinat Open-Meteo'ya gider), amaç
-  uygulama işlevi, paylaşılmaz, kimlikle bağlantısız, isteğe bağlı ("Konumumu kullan").
+- **Yaklaşık konum:** toplanır (hava durumu ve yakındaki camiler için iki ondalığa yuvarlanmış koordinat Open-Meteo'ya
+  ve OpenStreetMap Overpass'a gider), amaç uygulama işlevi, paylaşılmaz, kimlikle bağlantısız, isteğe bağlı ("Konumumu kullan").
 - **E-posta adresi:** yalnız Hakkında'daki listeye katılan için toplanır, amaç geliştiricinin iletişimi/pazarlama,
   isteğe bağlı.
+- Kıble yönü ve pusula telefonda hesaplanır; yakındaki camiler aramasındaki koordinat yukarıdaki "yaklaşık konum"
+  beyanına girer (aynı amaç).
 - Takvim etkinlikleri, fotoğraflar, rozetler ve tercihler telefondan çıkmaz: "toplanmaz".
 - Veri aktarımı şifreli (HTTPS). Silme: uygulama silinince yerel veriler silinir; e-posta listesinden çıkış
   e-postadaki bağlantıyla.

@@ -207,7 +207,8 @@ struct QiblaView: View {
             if !atKaaba {
                 Divider()
                 if let t {
-                    row(L("qibla.time"), place.hm(place.startOfDay(today).addingTimeInterval(t * 3600)), note: L("qibla.timeNote"))
+                    // Namaz vakitleri gibi dakikaya yuvarlanır (Diyanet'in kıble saatiyle aynı)
+                    row(L("qibla.time"), place.hm(place.startOfDay(today).addingTimeInterval((t * 60).rounded() * 60)), note: L("qibla.timeNote"))
                 } else {
                     row(L("qibla.time"), "–", note: L("qibla.noTime"))
                 }

@@ -247,6 +247,7 @@
           "**Saat ve tarih:** Cihazınızın saati ve saat diliminiz yalnızca tarayıcınızda okunur ve hesaplanır. Sunucuya gönderilmez, kaydedilmez.",
           "**Konum (namaz vakitleri):** Namaz vakitleri sayfasında \"Konumumu kullan\" derseniz tarayıcınız konumunuzu yalnızca cihazınızda vakit hesabı için kullanır. Koordinatlar sunucuya gönderilmez ve istatistiklere girmez; son seçiminiz tarayıcınızın yerel depolamasında kalır.",
           "**Hava durumu (dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz hava durumu sayfasında ve hava durumlu saat modellerinde, seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) veriyi sağlayan Open-Meteo'ya (api.open-meteo.com) tarayıcınızdan doğrudan gönderilir; bu sırada IP adresiniz de Open-Meteo'ya ulaşır. İzin yoksa istek yapılmaz, yerine açıklama gösterilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir.",
+          "**Kıble ve yakındaki camiler:** Kıble yönü, uzaklık ve kıble saati tarayıcınızda hesaplanır. Pusula için telefonunuzun yön sensörü yalnız tarayıcıda okunur (iPhone'da izin sorulur) ve hiçbir yere gönderilmez. \"Camileri göster\" derseniz ve dış hizmetlere izin verdiyseniz, seçili yerin iki ondalığa yuvarlanmış koordinatları (yaklaşık 1 km) OpenStreetMap verisini sunan Overpass hizmetine (overpass-api.de) tarayıcınızdan gönderilir; bu sırada IP adresiniz de bu hizmete ulaşır. Saat Tarih sunucusu bu koordinatları görmez.",
           "**E-posta listesi formu:** Forma yazdığınız e-posta adresi, açılan penceredeki \"Kabul ediyorum\" düğmesiyle verdiğiniz rıza, seçili dil ve formun bulunduğu sayfa; Bumba Group'un ortak liste servisi (bumbagroup.com) tarafından işlenir. Kayıt çift onaylıdır: onay e-postasındaki bağlantıya tıklamadan listeye eklenmezsiniz. Her e-postada tek tıkla çıkış bağlantısı bulunur. Ayrıntılar için [ortak aydınlatma metnine](https://bumbagroup.com/liste/aydinlatma) bakın.",
           "**Sunucu kayıtları:** Siteyi yayınlayan sunucu, her istek için IP adresi, tarayıcı bilgisi, istenen sayfa ve zaman bilgisini standart erişim kaydı olarak tutar. Bu kayıtlar yalnızca güvenlik ve hata ayıklama amacıyla kullanılır; kişi bazlı profil çıkarmak için kullanılmaz.",
           "**Ziyaret istatistikleri (Umami, izinle):** Yalnız çerez bandında ya da çerez tercihlerinde istatistiğe izin verirseniz, kendi sunucumuzda çalışan Umami ile sayfa görüntülemeleri ve şu eylemler sayılır: dil ve tema değişimi, aramanın sonuç bulup bulmadığı, listeye katılım, saat modeli seçimi, tam ekran, bir aracın ilk kullanımı, konum seçiminin türü (il ya da konum) ve imsakiyenin açılması ya da indirilmesi. Umami bu sırada tarayıcı, işletim sistemi ve cihaz türünü, dili, ekran boyutunu, geldiğiniz sayfanın adresini ve IP adresinizden çıkarılan ülke ve şehri işler; IP adresinin kendisi saklanmaz. Umami çerez kullanmaz ama ziyaretleri takma adlı bir oturuma bağlar; bu yüzden anonim değildir. Aramaya yazdığınız sözcükler, e-posta adresiniz ve konumunuz gönderilmez. İzni ayarlar menüsündeki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman geri alabilirsiniz; Umami bir sonraki sayfadan itibaren çalışmaz.",
@@ -269,7 +270,8 @@
           "**Rozetler:** Kazanım rozetleri ve ilerlemeniz (kazanılan rozet ve günü, görülen saat modelleri, üst üste kullanılan gün sayısı) yalnız telefonda saklanır, hiçbir yere gönderilmez; Araçlar › Rozetler'deki \"Rozetleri sil\" ile istediğiniz an silebilirsiniz.",
           "**Aralık antrenmanı:** Başlattığınız aralık antrenmanı sürerken uygulama, evre geçişlerini ekran kilitliyken de söyleyebilmek için iOS'un arka plan ses modunu kullanır; sesler telefonda üretilir, hiçbir veri gönderilmez.",
           "**Fotoğraflar:** Tam ekran saat ya da geri sayımlar için seçtiğiniz fotoğraf iPhone'un fotoğraf seçicisiyle alınır (fotoğraf arşivinize erişim izni istenmez); küçültülmüş kopyası yalnız telefonda saklanır, hiçbir yere gönderilmez.",
-          "**Tercihler:** Saat modeli, il, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir."
+          "**Tercihler:** Saat modeli, il, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir.",
+          "**Kıble ve yakındaki camiler:** Kıble yönü telefonda hesaplanır; pusula için telefonun yön sensörü kullanılır (konum izni varsa gerçek kuzey için konum da yalnız telefonda kullanılır). \"Yakındaki camiler\" ekranında arama Apple Haritalar ile yapılır: arama sözcüğü (\"cami\") ve iki ondalığa yuvarlanmış bölge merkezi Apple'a gider; Apple'ın gizlilik koşulları geçerlidir."
         ]
       },
       {
@@ -286,7 +288,8 @@
           "**Bildirimler, alarmlar ve aralık antrenmanı:** Vakit bildirimleri ve diğer bildirim türleri (özel gün, mevsim başlangıcı, Ay evresi, gün doğumu ve batımı, sabah hava özeti, saat başı, yaz saati; saat başı dışında her biri varsayılan açık, Ayarlar › Bildirimler'den değiştirilebilir), alarmlar ve zamanlayıcılar telefonda kurulur, sunucu kullanılmaz; tam zamanında çalmaları için tam zamanlı alarm izni kullanılır. Başlattığınız aralık antrenmanı sürerken bildirimde görünen bir ön plan hizmeti evre geçişlerini telefonun konuşma motoruyla söyler. Sesli duyurular telefonda üretilir.",
           "**Fotoğraflar:** Tam ekran saat ya da geri sayımlar için seçtiğiniz fotoğraf Android'in fotoğraf seçicisiyle alınır (galeri izni istenmez); küçültülmüş kopyası yalnız uygulamanın dosyalarında saklanır.",
           "**E-posta listesi:** Hakkında sayfasından listeye katılırsanız e-posta adresiniz sitedeki formla aynı biçimde ortak Bumba listesine gönderilir; e-posta listesiyle ilgili açıklamalar uygulama için de geçerlidir.",
-          "**Rozetler ve tercihler:** Rozetler, saat modeli, konum, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir. Telefonunuzda Android'in yedeklemesi açıksa bu kayıtlar (ve seçtiğiniz fotoğrafların kopyası) Google hesabınızdaki cihaz yedeğine dahil edilebilir; bu yedek Google'ın koşullarına tabidir ve biz erişemeyiz."
+          "**Rozetler ve tercihler:** Rozetler, saat modeli, konum, dünya saatleri gibi tercihler yalnız telefonda saklanır ve uygulama silinince silinir. Telefonunuzda Android'in yedeklemesi açıksa bu kayıtlar (ve seçtiğiniz fotoğrafların kopyası) Google hesabınızdaki cihaz yedeğine dahil edilebilir; bu yedek Google'ın koşullarına tabidir ve biz erişemeyiz.",
+          "**Kıble ve yakındaki camiler:** Kıble yönü ve pusula telefonda hesaplanır. \"Yakındaki camiler\" ekranında iki ondalığa yuvarlanmış koordinat (yaklaşık 1 km) OpenStreetMap verisini sunan Overpass hizmetine (overpass-api.de) gönderilir; bu sırada IP adresiniz bu hizmete ulaşır. Bir camiye dokununca telefonunuzdaki harita uygulaması açılır."
         ]
       },
       {
@@ -695,6 +698,10 @@
         "embed": {
           "name": "Saat widget'ı",
           "desc": "Sitenize ücretsiz saat gömün (iframe)."
+        },
+        "qibla": {
+          "name": "Kıble",
+          "desc": "Pusula, kıble açısı, kıble saati ve yakındaki camiler."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -1605,7 +1612,7 @@
   },
   "consent": {
     "barLabel": "Çerez tercihi",
-    "barText": "Tercihlerinizi (dil, tema, saat ve araç ayarları) yalnız bu tarayıcıda tutarız. İzin verirseniz ziyaretler Umami ile sayılır ve hava durumu dış hizmetten (Open-Meteo) yüklenir.",
+    "barText": "Tercihlerinizi (dil, tema, saat ve araç ayarları) yalnız bu tarayıcıda tutarız. İzin verirseniz ziyaretler Umami ile sayılır; hava durumu (Open-Meteo) ve yakındaki camiler (OpenStreetMap) dış hizmetlerden yüklenir.",
     "accept": "Kabul et",
     "reject": "Reddet",
     "prefs": "Tercihler",
@@ -1618,11 +1625,65 @@
     "stats": "İstatistik",
     "statsText": "Umami ile sayfa ziyaretleri ve birkaç eylem sayılır (tarayıcı, cihaz, dil ve IP adresinden çıkarılan ülke ve şehir; IP saklanmaz). Çerez kullanılmaz. Varsayılan kapalı.",
     "ext": "Dış hizmetler",
-    "extText": "Hava durumu Open-Meteo'dan (api.open-meteo.com) yüklenir; bu sırada IP adresiniz bu hizmete ulaşır. Varsayılan kapalı.",
+    "extText": "Hava durumu Open-Meteo'dan (api.open-meteo.com), yakındaki camiler OpenStreetMap'in Overpass hizmetinden (overpass-api.de) yüklenir; bu sırada IP adresiniz bu hizmetlere ulaşır. Varsayılan kapalı.",
     "save": "Seçimi kaydet",
     "footerLink": "Çerez tercihleri",
     "privacy": "Gizlilik",
     "wxBlocked": "Hava durumu Open-Meteo'dan yüklenir; göstermek için dış hizmetlere izin verin.",
-    "allow": "İzin ver"
+    "allow": "İzin ver",
+    "mqBlocked": "Yakındaki camiler OpenStreetMap'ten (Overpass) yüklenir; göstermek için dış hizmetlere izin verin."
+  },
+  "qibla": {
+    "title": "Kıble Yönü: Pusula, Kıble Açısı ve Kıble Saati | Saat Tarih",
+    "description": "Bulunduğunuz yerden Kâbe'nin yönü: telefonda canlı pusula, kuzeye göre kıble açısı, Kâbe'ye uzaklık, Güneş'in tam kıble yönünde olduğu kıble saati ve yakındaki camiler.",
+    "h1": "Kıble yönü",
+    "lead": "Seçili konumdan Kâbe'ye kıble açısı, uzaklık ve bugünün kıble saati; telefonda pusula ile canlı yön.",
+    "search": "kıble kible yönü pusula kabe mekke kıble saati kıble açısı cami camii yakındaki camiler",
+    "angle": "Kıble açısı",
+    "angleNote": "Kuzeyden saat yönünde",
+    "distance": "Kâbe'ye uzaklık",
+    "time": "Kıble saati",
+    "timeNote": "Bu saatte Güneş tam kıble yönündedir: Güneş'e dönen kıbleye dönmüş olur.",
+    "noTime": "Bugün Güneş kıble yönünden geçmiyor.",
+    "start": "Pusulayı başlat",
+    "aligned": "Kıbleye dönüksünüz",
+    "turn": "Telefonu düz tutun ve okun gösterdiği yöne dönün",
+    "waiting": "Pusula verisi bekleniyor…",
+    "noCompass": "Bu cihazda ya da tarayıcıda pusula yok. Kıble açısını kuzeyden saat yönünde ölçün ya da kıble saatinde Güneş'e dönün.",
+    "denied": "Pusula izni verilmedi. Yeniden denemek için sayfayı yenileyin.",
+    "calibrate": "Pusula ayarsız olabilir: telefonu havada 8 çizerek birkaç kez çevirin; mıknatıs, metal ve elektronik eşyalardan uzak durun.",
+    "atKaaba": "Kâbe'nin yanındasınız.",
+    "method": "Kıble yönü Kâbe'ye en kısa yolun (büyük daire) başlangıç yönüdür; seçili yerin koordinatıyla tarayıcınızda hesaplanır, sunucuya gönderilmez. İl seçiliyse il merkezi esas alınır (il içinde fark 1°'den az). Kıble saati Diyanet'in yayımladığı kıble saatiyle ±1 dakika uyumludur. Pusulanın doğruluğu telefonun sensörüne bağlıdır.",
+    "mosquesHeading": "Yakındaki camiler",
+    "mosquesText": "Seçili yerin çevresindeki (4 km) camiler OpenStreetMap verisinden listelenir.",
+    "mosquesShow": "Camileri göster",
+    "mosquesLoading": "Camiler yükleniyor…",
+    "mosquesNone": "Yakında cami bulunamadı.",
+    "mosquesError": "Camiler yüklenemedi. Biraz sonra yeniden deneyin.",
+    "mosquesAttribution": "Veri © OpenStreetMap katkıcıları (ODbL), Overpass API ile.",
+    "mosqueUnnamed": "Cami",
+    "mapsText": "Haritada ara:",
+    "mapsQuery": "cami",
+    "km": "{km} km",
+    "m": "{m} m",
+    "faq": [
+      {
+        "q": "Kıble yönü nasıl bulunur?",
+        "a": "Kıble, bulunduğunuz yerden Mekke'deki Kâbe'ye en kısa yolun yönüdür. Bu sayfa seçili konuma göre kıble açısını kuzeyden saat yönünde derece olarak verir; telefonda \"Pusulayı başlat\" derseniz ok doğrudan kıbleyi gösterir. Pusula yoksa kıble saatinde Güneş'e dönerek de kıbleyi bulabilirsiniz."
+      },
+      {
+        "q": "Kıble saati nedir?",
+        "a": "Kıble saati, Güneş'in gökyüzünde tam kıble yönünde bulunduğu andır; o dakikada Güneş'e dönen kişi kıbleye dönmüş olur. Saat her gün birkaç dakika kayar ve yere göre değişir. Kâbe'ye çok uzak bazı yerlerde Güneş o gün kıble yönüne hiç gelmez."
+      },
+      {
+        "q": "İstanbul'da kıble hangi yönde?",
+        "a": "İstanbul'da kıble güneydoğudadır: kuzeyden saat yönünde yaklaşık 151,6°. Kâbe'ye kuş uçuşu uzaklık yaklaşık 2.405 km'dir."
+      },
+      {
+        "q": "Telefon pusulası neden yanlış gösterebilir?",
+        "a": "Telefon pusulası manyetik alanı ölçer; mıknatıs, metal eşya, araç içi ve elektronik cihazlar yönü saptırabilir. Telefonu havada 8 çizerek çevirmek pusulayı ayarlar. Telefonu yere paralel tutun ve sonucu kıble açısıyla karşılaştırın."
+      }
+    ],
+    "cardinals": "K D G B"
   }
 }

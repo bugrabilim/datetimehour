@@ -247,6 +247,7 @@
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
           "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
+          "**Qibla and nearby mosques:** The qibla direction, distance and qibla time are calculated in your browser. For the compass, your phone's orientation sensor is read only in the browser (iPhone asks for permission) and is never sent anywhere. If you tap \"Show mosques\" and have allowed external services, the selected place's coordinates rounded to two decimals (about 1 km) are sent from your browser to the Overpass service (overpass-api.de), which serves OpenStreetMap data; your IP address also reaches this service. The Saat Tarih server does not see these coordinates.",
           "**Email list form:** The email address you enter, the consent you give with the \"I agree\" button in the window that opens, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
           "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
           "**Visit statistics (Umami, with permission):** Only if you allow statistics in the cookie banner or the cookie preferences, Umami, which runs on our own server, counts page views and these actions: language and theme change, whether a search found a result, joining the list, choosing a clock style, full screen, the first use of a tool, the type of location choice (province or location), and opening or downloading the Ramadan timetable. While doing so Umami processes your browser, operating system and device type, language, screen size, the address of the page you came from, and the country and city derived from your IP address; the IP address itself is not stored. Umami does not use cookies, but it links visits to a pseudonymous session, so it is not anonymous. The words you type in search, your email address and your location are not sent. You can withdraw permission at any time with the \"Cookie preferences\" link in the settings menu; Umami stops from the next page on.",
@@ -269,7 +270,8 @@
           "**Badges:** Achievement badges and your progress (badges earned and the day, clock models seen, the number of consecutive days of use) are stored only on your phone and never sent anywhere; you can delete them at any time with \"Delete badges\" in Tools › Badges.",
           "**Interval workout:** While an interval workout you started is running, the app uses iOS background audio so it can announce phase changes with the screen locked; the voice is generated on your phone and no data is sent anywhere.",
           "**Photos:** A photo you pick for the full-screen clock or a countdown is taken through the iPhone photo picker (no access to your photo library is requested); a reduced copy is stored only on your phone and never sent anywhere.",
-          "**Preferences:** Preferences such as the clock model, province and world clocks are stored only on your phone and are deleted when you delete the app."
+          "**Preferences:** Preferences such as the clock model, province and world clocks are stored only on your phone and are deleted when you delete the app.",
+          "**Qibla and nearby mosques:** The qibla direction is calculated on the phone; the compass uses the phone's orientation sensor (with location permission, location is also used on the phone for true north). On the \"Nearby mosques\" screen the search uses Apple Maps: the search word and the area centre rounded to two decimals go to Apple; Apple's privacy terms apply."
         ]
       },
       {
@@ -286,7 +288,8 @@
           "**Notifications, alarms and interval workout:** Prayer time notifications and the other notification types (special days, start of season, moon phase, sunrise and sunset, morning weather summary, on the hour, daylight saving; each on by default except on-the-hour, changeable in Settings › Notifications), alarms and timers are scheduled on your phone without any server; exact alarm permission is used so they ring on time. While an interval workout you started is running, a foreground service shown in the notification announces phase changes with your phone's text-to-speech engine. Spoken announcements are generated on your phone.",
           "**Photos:** A photo you pick for the full-screen clock or a countdown is taken through the Android photo picker (no gallery permission is requested); a reduced copy is stored only in the app's own files.",
           "**Email list:** If you join the list from the About page, your email address is sent to the shared Bumba list exactly like the website form; the email list notes apply to the app as well.",
-          "**Badges and preferences:** Badges and preferences such as the clock model, location and world clocks are stored only on your phone and are deleted when you delete the app. If Android backup is turned on on your phone, these records (and the copy of photos you picked) may be included in the device backup in your Google account; that backup is subject to Google's terms and we cannot access it."
+          "**Badges and preferences:** Badges and preferences such as the clock model, location and world clocks are stored only on your phone and are deleted when you delete the app. If Android backup is turned on on your phone, these records (and the copy of photos you picked) may be included in the device backup in your Google account; that backup is subject to Google's terms and we cannot access it.",
+          "**Qibla and nearby mosques:** The qibla direction and compass are calculated on the phone. On the \"Nearby mosques\" screen the coordinates rounded to two decimals (about 1 km) are sent to the Overpass service (overpass-api.de), which serves OpenStreetMap data; your IP address reaches this service. Tapping a mosque opens your maps app."
         ]
       },
       {
@@ -695,6 +698,10 @@
         "embed": {
           "name": "Clock widget",
           "desc": "Embed a free clock on your site (iframe)."
+        },
+        "qibla": {
+          "name": "Qibla",
+          "desc": "Compass, qibla angle, qibla time and nearby mosques."
         }
       },
       "infoHeading": "Information pages"
@@ -1605,7 +1612,7 @@
   },
   "consent": {
     "barLabel": "Cookie choice",
-    "barText": "We keep your preferences (language, theme, clock and tool settings) only in this browser. If you allow it, visits are counted with Umami and the weather loads from an external service (Open-Meteo).",
+    "barText": "We keep your preferences (language, theme, clock and tool settings) only in this browser. If you allow it, visits are counted with Umami, and the weather (Open-Meteo) and nearby mosques (OpenStreetMap) are loaded from external services.",
     "accept": "Accept",
     "reject": "Reject",
     "prefs": "Preferences",
@@ -1618,11 +1625,65 @@
     "stats": "Statistics",
     "statsText": "Umami counts page visits and a few actions (browser, device, language, and the country and city derived from the IP address; the IP is not stored). No cookies are used. Off by default.",
     "ext": "External services",
-    "extText": "The weather loads from Open-Meteo (api.open-meteo.com); your IP address reaches this service. Off by default.",
+    "extText": "The weather is loaded from Open-Meteo (api.open-meteo.com) and nearby mosques from OpenStreetMap's Overpass service (overpass-api.de); your IP address reaches these services. Off by default.",
     "save": "Save choice",
     "footerLink": "Cookie preferences",
     "privacy": "Privacy",
     "wxBlocked": "The weather loads from Open-Meteo; allow external services to show it.",
-    "allow": "Allow"
+    "allow": "Allow",
+    "mqBlocked": "Nearby mosques are loaded from OpenStreetMap (Overpass); allow external services to show them."
+  },
+  "qibla": {
+    "title": "Qibla Direction: Compass, Qibla Angle and Qibla Time | Saat Tarih",
+    "description": "The Kaaba's direction from where you are: live phone compass, qibla angle from north, distance to the Kaaba, today's qibla time and nearby mosques.",
+    "h1": "Qibla direction",
+    "lead": "Qibla angle, distance to the Kaaba and today's qibla time for the selected place; live direction with your phone's compass.",
+    "search": "qibla kibla direction compass kaaba mecca qibla time qibla angle mosque nearby mosques",
+    "angle": "Qibla direction",
+    "angleNote": "Clockwise from north",
+    "distance": "Distance to the Kaaba",
+    "time": "Qibla time",
+    "timeNote": "At this time the Sun is exactly in the qibla direction: facing the Sun means facing the qibla.",
+    "noTime": "Today the Sun does not pass the qibla direction.",
+    "start": "Start compass",
+    "aligned": "You are facing the qibla",
+    "turn": "Hold the phone flat and turn toward the arrow",
+    "waiting": "Waiting for compass data…",
+    "noCompass": "This device or browser has no compass. Measure the qibla angle clockwise from north, or face the Sun at the qibla time.",
+    "denied": "Compass permission was not granted. Reload the page to try again.",
+    "calibrate": "The compass may need calibrating: move the phone in a figure 8 a few times and keep away from magnets, metal and electronics.",
+    "atKaaba": "You are at the Kaaba.",
+    "method": "The qibla is the initial direction of the shortest path (great circle) to the Kaaba, calculated in your browser from the selected place's coordinates and never sent to our server. For a province, its centre is used (difference within a province is under 1°). The qibla time matches the qibla time published by Diyanet within ±1 minute. Compass accuracy depends on your phone's sensor.",
+    "mosquesHeading": "Nearby mosques",
+    "mosquesText": "Mosques around the selected place (4 km) are listed from OpenStreetMap data.",
+    "mosquesShow": "Show mosques",
+    "mosquesLoading": "Loading mosques…",
+    "mosquesNone": "No mosques found nearby.",
+    "mosquesError": "Could not load mosques. Please try again later.",
+    "mosquesAttribution": "Data © OpenStreetMap contributors (ODbL), via the Overpass API.",
+    "mosqueUnnamed": "Mosque",
+    "mapsText": "Search on a map:",
+    "mapsQuery": "mosque",
+    "km": "{km} km",
+    "m": "{m} m",
+    "faq": [
+      {
+        "q": "How do I find the qibla direction?",
+        "a": "The qibla is the direction of the shortest path from where you are to the Kaaba in Mecca. This page gives the qibla angle for the selected place in degrees clockwise from north; on a phone, tap \"Start compass\" and the arrow points straight to the qibla. Without a compass you can also face the Sun at the qibla time."
+      },
+      {
+        "q": "What is the qibla time?",
+        "a": "The qibla time is the moment when the Sun stands exactly in the qibla direction; facing the Sun at that minute means facing the qibla. It shifts by a few minutes each day and depends on the place. In some places far from the Kaaba the Sun never reaches the qibla direction on a given day."
+      },
+      {
+        "q": "Which way is the qibla from London?",
+        "a": "From London the qibla is to the south-east: about 119.0° clockwise from north. The great-circle distance to the Kaaba is about 4,794 km."
+      },
+      {
+        "q": "Why can a phone compass be wrong?",
+        "a": "A phone compass measures the magnetic field; magnets, metal objects, cars and electronics can deflect it. Moving the phone in a figure 8 calibrates it. Hold the phone flat and compare the result with the qibla angle."
+      }
+    ],
+    "cardinals": "N E S W"
   }
 }

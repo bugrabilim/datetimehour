@@ -247,6 +247,7 @@
           "**Saat və tarix:** Cihazınızın saatı və saat qurşağı yalnız brauzerinizdə oxunur və hesablanır. Bu məlumatlar serverə göndərilmir və saxlanılmır.",
           "**Məkan (namaz vaxtları):** Namaz vaxtları səhifəsində “Məkanımı istifadə et” seçsəniz, brauzeriniz məkanınızı yalnız cihazınızda vaxtların hesablanması üçün istifadə edir. Koordinatlar serverə göndərilmir və statistikaya düşmür; son seçiminiz brauzerinizin yerli yaddaşında qalır.",
           "**Hava proqnozu (xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə, hava proqnozu səhifəsi və hava proqnozlu saat modelləri seçdiyiniz vilayətin və ya yerinizin təxmini koordinatlarını (təxminən 1 km dəqiqliklə) brauzerinizdən birbaşa məlumatı təqdim edən Open-Meteo-ya (api.open-meteo.com) göndərir; bu zaman IP ünvanınız da Open-Meteo-ya çatır. İcazə yoxdursa sorğu edilmir, əvəzində qısa izah göstərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur.",
+          "**Qiblə və yaxınlıqdakı məscidlər:** Qiblə istiqaməti, məsafə və qiblə saatı brauzerinizdə hesablanır. Kompas üçün telefonunuzun istiqamət sensoru yalnız brauzerdə oxunur (iPhone icazə soruşur) və heç yerə göndərilmir. \"Məscidləri göstər\" desəniz və xarici xidmətlərə icazə vermisinizsə, seçilmiş yerin iki onluğa yuvarlaqlaşdırılmış koordinatları (təxminən 1 km) brauzerinizdən OpenStreetMap məlumatını təqdim edən Overpass xidmətinə (overpass-api.de) göndərilir; bu zaman IP ünvanınız da bu xidmətə çatır. Saat Tarih serveri bu koordinatları görmür.",
           "**E-poçt siyahısı forması:** Formaya yazdığınız e-poçt ünvanı, açılan pəncərədəki \"Razıyam\" düyməsi ilə verdiyiniz razılıq, seçilmiş dil və formanın olduğu səhifə Bumba Group-un ortaq siyahı xidməti (bumbagroup.com) tərəfindən emal olunur. Qeydiyyat ikiqat təsdiqlidir: təsdiq e-poçtundakı keçidə klikləməsəniz siyahıya əlavə olunmursunuz; hər e-poçtda bir kliklə çıxış keçidi var. Ətraflı: [ortaq məlumatlandırma mətni](https://bumbagroup.com/liste/aydinlatma?dil=en).",
           "**Server jurnalları:** Saytı yerləşdirən server hər sorğu üçün IP ünvanı, brauzer məlumatları, sorğulanan səhifə və vaxtdan ibarət standart giriş jurnalı aparır. Bu jurnallar insanların profilini yaratmaq üçün deyil, yalnız təhlükəsizlik və nasazlıqların aradan qaldırılması üçün istifadə olunur.",
           "**Ziyarət statistikası (Umami, icazə ilə):** Yalnız kuki bannerində və ya kuki seçimlərində statistikaya icazə versəniz, öz serverimizdə işləyən Umami səhifə baxışlarını və bu əməliyyatları sayır: dil və mövzu dəyişikliyi, axtarışın nəticə tapıb-tapmaması, siyahıya qoşulma, saat modelinin seçilməsi, tam ekran, alətin ilk istifadəsi, yer seçiminin növü (vilayət və ya yer) və imsakiyyənin açılması və ya yüklənməsi. Bu zaman Umami brauzer, əməliyyat sistemi və cihaz növünü, dili, ekran ölçüsünü, gəldiyiniz səhifənin ünvanını və IP ünvanınızdan çıxarılan ölkə və şəhəri emal edir; IP ünvanının özü saxlanılmır. Umami kuki istifadə etmir, lakin ziyarətləri təxəllüslü sessiyaya bağlayır; ona görə anonim deyil. Axtarışa yazdığınız sözlər, e-poçt ünvanınız və yeriniz göndərilmir. İcazəni istənilən vaxt ayarlar menyusundakı \"Kuki seçimləri\" keçidi ilə geri götürə bilərsiniz; Umami növbəti səhifədən işləmir.",
@@ -269,7 +270,8 @@
           "**Nişanlar:** Nişanlar və irəliləyişiniz (qazanılan nişan və günü, baxılan saat modelləri, ardıcıl istifadə günlərinin sayı) yalnız telefonda saxlanılır, heç yerə göndərilmir; Alətlər › Nişanlar bölməsindəki \"Nişanları sil\" ilə istədiyiniz vaxt silə bilərsiniz.",
           "**İnterval məşqi:** Başlatdığınız interval məşqi davam edərkən tətbiq mərhələ keçidlərini ekran kilidli olanda da elan etmək üçün iOS-un arxa fon səs rejimindən istifadə edir; səs telefonda yaradılır, heç bir məlumat göndərilmir.",
           "**Fotolar:** Tam ekran saat və ya geri sayımlar üçün seçdiyiniz foto iPhone-un foto seçicisi ilə götürülür (foto arxivinizə giriş icazəsi istənmir); kiçildilmiş surəti yalnız telefonda saxlanılır, heç yerə göndərilmir.",
-          "**Seçimlər:** Saat modeli, vilayət, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir."
+          "**Seçimlər:** Saat modeli, vilayət, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir.",
+          "**Qiblə və yaxınlıqdakı məscidlər:** Qiblə istiqaməti telefonda hesablanır; kompas üçün telefonun istiqamət sensoru istifadə olunur (məkan icazəsi varsa, həqiqi şimal üçün məkan da yalnız telefonda istifadə olunur). \"Yaxınlıqdakı məscidlər\" ekranında axtarış Apple Xəritələr ilə edilir: axtarış sözü və iki onluğa yuvarlaqlaşdırılmış ərazi mərkəzi Apple-a gedir; Apple-ın məxfilik şərtləri tətbiq olunur."
         ]
       },
       {
@@ -286,7 +288,8 @@
           "**Bildirişlər, zəngli saatlar və interval məşqi:** Vaxt bildirişləri və digər bildiriş növləri (xüsusi gün, fəslin başlanğıcı, Ay fazası, gün doğuşu və batışı, səhər hava xülasəsi, saat başı, yay vaxtı; saat başından başqa hər biri standart olaraq açıqdır, Ayarlar › Bildirişlər bölməsindən dəyişdirilə bilər), zəngli saatlar və taymerlər telefonda qurulur, server istifadə olunmur; vaxtında çalmaları üçün dəqiq zəngli saat icazəsindən istifadə olunur. Başlatdığınız interval məşqi davam edərkən bildirişdə görünən ön plan xidməti mərhələ keçidlərini telefonun danışıq mühərriki ilə elan edir. Səsli elanlar telefonda yaradılır.",
           "**Fotolar:** Tam ekran saat və ya geri sayımlar üçün seçdiyiniz foto Android-in foto seçicisi ilə götürülür (qalereya icazəsi istənmir); kiçildilmiş surəti yalnız tətbiqin fayllarında saxlanılır.",
           "**E-poçt siyahısı:** Haqqında səhifəsindən siyahıya qoşulsanız e-poçt ünvanınız saytdakı forma ilə eyni şəkildə ümumi Bumba siyahısına göndərilir; e-poçt siyahısı ilə bağlı izahlar tətbiq üçün də keçərlidir.",
-          "**Nişanlar və seçimlər:** Nişanlar, saat modeli, məkan, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir. Telefonunuzda Android ehtiyat nüsxəsi açıqdırsa, bu qeydlər (və seçdiyiniz fotoların surəti) Google hesabınızdakı cihaz ehtiyat nüsxəsinə daxil edilə bilər; bu ehtiyat nüsxə Google-un şərtlərinə tabedir və biz ona daxil ola bilmirik."
+          "**Nişanlar və seçimlər:** Nişanlar, saat modeli, məkan, dünya saatları kimi seçimlər yalnız telefonda saxlanılır və tətbiq silinəndə silinir. Telefonunuzda Android ehtiyat nüsxəsi açıqdırsa, bu qeydlər (və seçdiyiniz fotoların surəti) Google hesabınızdakı cihaz ehtiyat nüsxəsinə daxil edilə bilər; bu ehtiyat nüsxə Google-un şərtlərinə tabedir və biz ona daxil ola bilmirik.",
+          "**Qiblə və yaxınlıqdakı məscidlər:** Qiblə istiqaməti və kompas telefonda hesablanır. \"Yaxınlıqdakı məscidlər\" ekranında iki onluğa yuvarlaqlaşdırılmış koordinat (təxminən 1 km) OpenStreetMap məlumatını təqdim edən Overpass xidmətinə (overpass-api.de) göndərilir; bu zaman IP ünvanınız bu xidmətə çatır. Məscidə toxunanda telefonunuzdakı xəritə tətbiqi açılır."
         ]
       },
       {
@@ -695,6 +698,10 @@
         "embed": {
           "name": "Saat vidceti",
           "desc": "Saytınıza pulsuz saat yerləşdirin (iframe)."
+        },
+        "qibla": {
+          "name": "Qiblə",
+          "desc": "Kompas, qiblə bucağı, qiblə saatı və yaxınlıqdakı məscidlər."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -1605,7 +1612,7 @@
   },
   "consent": {
     "barLabel": "Kuki seçimi",
-    "barText": "Seçimlərinizi (dil, mövzu, saat və alət ayarları) yalnız bu brauzerdə saxlayırıq. İcazə versəniz, ziyarətlər Umami ilə sayılır və hava proqnozu xarici xidmətdən (Open-Meteo) yüklənir.",
+    "barText": "Seçimlərinizi (dil, mövzu, saat və alət ayarları) yalnız bu brauzerdə saxlayırıq. İcazə versəniz, ziyarətlər Umami ilə sayılır; hava (Open-Meteo) və yaxınlıqdakı məscidlər (OpenStreetMap) xarici xidmətlərdən yüklənir.",
     "accept": "Qəbul et",
     "reject": "İmtina et",
     "prefs": "Seçimlər",
@@ -1618,11 +1625,65 @@
     "stats": "Statistika",
     "statsText": "Umami səhifə baxışlarını və bir neçə əməliyyatı sayır (brauzer, cihaz, dil və IP ünvanından çıxarılan ölkə və şəhər; IP saxlanılmır). Kuki istifadə olunmur. Standart olaraq bağlıdır.",
     "ext": "Xarici xidmətlər",
-    "extText": "Hava proqnozu Open-Meteo-dan (api.open-meteo.com) yüklənir; bu zaman IP ünvanınız bu xidmətə çatır. Standart olaraq bağlıdır.",
+    "extText": "Hava Open-Meteo-dan (api.open-meteo.com), yaxınlıqdakı məscidlər OpenStreetMap-in Overpass xidmətindən (overpass-api.de) yüklənir; bu zaman IP ünvanınız bu xidmətlərə çatır. Standart olaraq bağlıdır.",
     "save": "Seçimi saxla",
     "footerLink": "Kuki seçimləri",
     "privacy": "Məxfilik",
     "wxBlocked": "Hava proqnozu Open-Meteo-dan yüklənir; göstərmək üçün xarici xidmətlərə icazə verin.",
-    "allow": "İcazə ver"
+    "allow": "İcazə ver",
+    "mqBlocked": "Yaxınlıqdakı məscidlər OpenStreetMap-dən (Overpass) yüklənir; göstərmək üçün xarici xidmətlərə icazə verin."
+  },
+  "qibla": {
+    "title": "Qiblə istiqaməti: kompas, qiblə bucağı və qiblə saatı | Saat Tarih",
+    "description": "Olduğunuz yerdən Kəbənin istiqaməti: canlı kompas, şimala görə qiblə bucağı, Kəbəyə məsafə, bu günün qiblə saatı və yaxınlıqdakı məscidlər.",
+    "h1": "Qiblə istiqaməti",
+    "lead": "Seçilmiş yerdən Kəbəyə qiblə bucağı, məsafə və bu günün qiblə saatı; telefonda kompasla canlı istiqamət.",
+    "search": "qiblə qibla istiqaməti kompas kəbə məkkə qiblə saatı qiblə bucağı məscid yaxınlıqdakı məscidlər",
+    "angle": "Qiblə istiqaməti",
+    "angleNote": "Şimaldan saat əqrəbi istiqamətində",
+    "distance": "Kəbəyə məsafə",
+    "time": "Qiblə saatı",
+    "timeNote": "Bu vaxt Günəş tam qiblə istiqamətindədir: Günəşə üz tutan qibləyə üz tutmuş olur.",
+    "noTime": "Bu gün Günəş qiblə istiqamətindən keçmir.",
+    "start": "Kompası başlat",
+    "aligned": "Qibləyə üz tutmusunuz",
+    "turn": "Telefonu düz tutun və oxun göstərdiyi tərəfə dönün",
+    "waiting": "Kompas məlumatı gözlənilir…",
+    "noCompass": "Bu cihazda və ya brauzerdə kompas yoxdur. Qiblə bucağını şimaldan saat əqrəbi istiqamətində ölçün və ya qiblə saatında Günəşə üz tutun.",
+    "denied": "Kompas icazəsi verilmədi. Yenidən cəhd üçün səhifəni yeniləyin.",
+    "calibrate": "Kompas tənzimlənməmiş ola bilər: telefonu havada bir neçə dəfə 8 çəkərək fırladın; maqnit, metal və elektron əşyalardan uzaq durun.",
+    "atKaaba": "Kəbənin yanındasınız.",
+    "method": "Qiblə Kəbəyə ən qısa yolun (böyük dairə) başlanğıc istiqamətidir; seçilmiş yerin koordinatı ilə brauzerinizdə hesablanır, serverə göndərilmir. İl seçilibsə, il mərkəzi əsas götürülür (il daxilində fərq 1°-dən az). Qiblə saatı Diyanətin dərc etdiyi qiblə saatı ilə ±1 dəqiqə uyğundur. Kompasın dəqiqliyi telefonun sensorundan asılıdır.",
+    "mosquesHeading": "Yaxınlıqdakı məscidlər",
+    "mosquesText": "Seçilmiş yerin ətrafındakı (4 km) məscidlər OpenStreetMap məlumatından siyahılanır.",
+    "mosquesShow": "Məscidləri göstər",
+    "mosquesLoading": "Məscidlər yüklənir…",
+    "mosquesNone": "Yaxınlıqda məscid tapılmadı.",
+    "mosquesError": "Məscidlər yüklənmədi. Bir az sonra yenidən cəhd edin.",
+    "mosquesAttribution": "Məlumat © OpenStreetMap iştirakçıları (ODbL), Overpass API ilə.",
+    "mosqueUnnamed": "Məscid",
+    "mapsText": "Xəritədə axtar:",
+    "mapsQuery": "məscid",
+    "km": "{km} km",
+    "m": "{m} m",
+    "faq": [
+      {
+        "q": "Qiblə istiqaməti necə tapılır?",
+        "a": "Qiblə olduğunuz yerdən Məkkədəki Kəbəyə ən qısa yolun istiqamətidir. Bu səhifə seçilmiş yerə görə qiblə bucağını şimaldan saat əqrəbi istiqamətində dərəcə ilə verir; telefonda \"Kompası başlat\" desəniz, ox birbaşa qibləni göstərir. Kompas yoxdursa, qiblə saatında Günəşə üz tutaraq da qibləni tapa bilərsiniz."
+      },
+      {
+        "q": "Qiblə saatı nədir?",
+        "a": "Qiblə saatı Günəşin göydə tam qiblə istiqamətində olduğu andır; həmin dəqiqədə Günəşə üz tutan qibləyə üz tutmuş olur. Saat hər gün bir neçə dəqiqə sürüşür və yerə görə dəyişir. Kəbədən çox uzaq bəzi yerlərdə Günəş həmin gün qiblə istiqamətinə heç gəlmir."
+      },
+      {
+        "q": "Bakıda qiblə hansı istiqamətdədir?",
+        "a": "Bakıda qiblə cənub-qərbdədir: şimaldan saat əqrəbi istiqamətində təxminən 207,2°. Kəbəyə düz xətt üzrə məsafə təxminən 2.315 km-dir."
+      },
+      {
+        "q": "Telefon kompası niyə səhv göstərə bilər?",
+        "a": "Telefon kompası maqnit sahəsini ölçür; maqnit, metal əşyalar, avtomobil və elektron cihazlar istiqaməti yayındıra bilər. Telefonu havada 8 çəkərək fırlatmaq kompası tənzimləyir. Telefonu yerə paralel tutun və nəticəni qiblə bucağı ilə müqayisə edin."
+      }
+    ],
+    "cardinals": "Ş Ş C Q"
   }
 }

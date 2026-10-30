@@ -81,6 +81,7 @@ for (const [name, from] of [
   ["embed.js", "js/embed.js"],
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
+  ["qibla.js", "js/qibla.js"],
   ["imsakiye.js", "js/imsakiye.js"],
   ["world.js", "js/world.js"],
   ["place.js", "js/place.js"],
@@ -113,7 +114,7 @@ for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "
 const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
-  "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com",
+  "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com https://overpass-api.de",
   "img-src 'self' data: https://bumbagroup.com",
   "style-src 'self'",
   "font-src 'self'",
@@ -291,7 +292,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "datecalc", "embed", "prayer", "nature", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "datecalc", "embed", "prayer", "qibla", "nature", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -993,6 +994,7 @@ const TOOL_ART = {
   embed: svgArt('<rect x="10" y="12" width="76" height="40" rx="6" class="af"/><path d="M38 24l-9 8 9 8M58 24l9 8-9 8M52 22l-8 20"/>'),
   week: svgArt('<rect x="16" y="14" width="64" height="42" rx="6" class="af"/><path d="M16 26h64M32 8v10M64 8v10M30 36h8m6 0h8m6 0h8M30 46h8m6 0h8"/>'),
   tz: svgArt('<circle cx="48" cy="32" r="22" class="af"/><path d="M26 32h44M48 10c9 7 9 37 0 44M48 10c-9 7-9 37 0 44"/>'),
+  qibla: svgArt('<circle cx="48" cy="34" r="24" class="af"/><path d="M48 6v6M48 56v6M20 34h-6M82 34h-6M48 34l12-14-4 18z"/><rect x="62" y="12" width="10" height="10" rx="1"/>'),
 };
 
 function buildToolsHub(lang) {
@@ -1005,7 +1007,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "embed", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "qibla", "embed", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1121,7 +1123,7 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
-extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/" } });
+extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1634,6 +1636,57 @@ const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to)
 const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
+/* ---------- Kıble (30 Ekim 2026, rakip analizi #8): pusula, açı, uzaklık, kıble saati, yakındaki camiler ---------- */
+function qiblaDial(lang) {
+  const s = I[lang].qibla;
+  const ticks = Array.from({ length: 72 }, (_, i) => {
+    const major = i % 6 === 0, a = (i * 5 * Math.PI) / 180, r1 = major ? 126 : 132;
+    const f = (r) => `${(Math.sin(a) * r).toFixed(1)} ${(-Math.cos(a) * r).toFixed(1)}`;
+    return `<path d="M${f(r1)}L${f(140)}" class="${i % 18 === 0 ? "qb-tick-c" : major ? "qb-tick-m" : "qb-tick"}"/>`;
+  }).join("");
+  const letters = s.cardinals.split(" ").map((c, i) => `<text class="qb-card${i === 0 ? " qb-north" : ""}" transform="rotate(${i * 90}) translate(0 -104) rotate(${-i * 90})" text-anchor="middle" dominant-baseline="central">${esc(c)}</text>`).join("");
+  return `<svg class="qb-svg" viewBox="-165 -165 330 330" role="img" aria-labelledby="qb-svg-t" focusable="false"><title id="qb-svg-t">${esc(s.angle)}</title>
+  <g data-qb-rose><circle r="141" class="qb-face"/>${ticks}${letters}
+    <g data-qb-kaaba><rect x="-9" y="-161" width="18" height="18" rx="2" class="qb-kaaba"/><rect x="-9" y="-156" width="18" height="3" class="qb-kaaba-band"/></g>
+  </g>
+  <g data-qb-needle><path d="M0 -112L13 0H-13Z" class="qb-head"/><path d="M-13 0H13L0 92Z" class="qb-tail"/></g>
+  <circle r="7" class="qb-hub"/>
+</svg>`;
+}
+
+function buildQibla(lang) {
+  const t = I[lang];
+  const s = t.qibla;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].qibla }];
+  const hero = `<section class="qb" data-qibla aria-labelledby="qb-h">
+      <h2 id="qb-h" class="qb-place" data-qb-place>&nbsp;</h2>
+      <div class="qb-dial">${qiblaDial(lang)}</div>
+      <p class="qb-status" data-qb-status role="status" aria-live="polite">&nbsp;</p>
+      <button type="button" class="btn" data-qb-start hidden>${esc(s.start)}</button>
+      <p class="meta" data-qb-calib hidden>${esc(s.calibrate)}</p>
+      <dl class="qb-facts">
+        <div class="fact"><dt>${esc(s.angle)}</dt><dd data-qb-angle>–</dd><dd class="meta">${esc(s.angleNote)}</dd></div>
+        <div class="fact"><dt>${esc(s.distance)}</dt><dd data-qb-dist>–</dd></div>
+        <div class="fact"><dt>${esc(s.time)}</dt><dd data-qb-time>–</dd><dd class="meta" data-qb-time-note>&nbsp;</dd></div>
+      </dl>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const sections = `<section class="section" aria-labelledby="qb-mq-h">
+  <div class="wrap">
+    <h2 id="qb-mq-h">${esc(s.mosquesHeading)}</h2>
+    <p>${esc(s.mosquesText)}</p>
+    <p><button type="button" class="btn" data-qb-mq-show>${esc(s.mosquesShow)}</button></p>
+    <p class="meta consent-ph" data-qb-mq-state role="status" aria-live="polite"></p>
+    <ul class="qb-mosques" data-qb-mosques hidden></ul>
+    <p class="meta">${esc(s.mapsText)} <a data-qb-google href="https://www.google.com/maps" target="_blank" rel="noopener">Google Maps</a> · <a data-qb-apple href="https://maps.apple.com/" target="_blank" rel="noopener">Apple Maps</a> · <a data-qb-osm href="https://www.openstreetmap.org/" target="_blank" rel="noopener">OpenStreetMap</a></p>
+    <p class="meta">${esc(s.mosquesAttribution)}</p>
+    <p class="meta">${esc(s.method)}</p>
+  </div>
+</section>`;
+  const qb = { timeNote: s.timeNote, noTime: s.noTime, aligned: s.aligned, turn: s.turn, waiting: s.waiting, noCompass: s.noCompass, denied: s.denied, atKaaba: s.atKaaba, mosquesLoading: s.mosquesLoading, mosquesNone: s.mosquesNone, mosquesError: s.mosquesError, mosqueUnnamed: s.mosqueUnnamed, mapsQuery: s.mapsQuery, km: s.km, m: s.m, blocked: t.consent.mqBlocked, allow: t.consent.allow };
+  return simplePage(lang, "qibla", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "qibla", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "qibla.js"], clientExtra: { t: { pl: placeClient(t.prayer), qb } }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].qibla, s.description)] });
+}
+
 function buildPrayerHub(lang) {
   const t = I[lang];
   const s = t.prayer;
@@ -1731,7 +1784,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

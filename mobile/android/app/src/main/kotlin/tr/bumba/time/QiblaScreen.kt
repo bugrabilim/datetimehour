@@ -225,7 +225,8 @@ fun QiblaScreen(onBack: () -> Unit) {
                 if (!atKaaba) {
                     HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
                     if (t != null) {
-                        val at = today.atStartOfDay(place.zone).toInstant().plusSeconds((t * 3600).roundToInt().toLong())
+                        // Namaz vakitleri gibi dakikaya yuvarlanır (Diyanet'in kıble saatiyle aynı)
+                        val at = today.atStartOfDay(place.zone).toInstant().plusSeconds((t * 60).roundToInt() * 60L)
                         Fact(L("qibla.time"), Fmt.hm(at, place.zone), L("qibla.timeNote"))
                     } else {
                         Fact(L("qibla.time"), "–", L("qibla.noTime"))

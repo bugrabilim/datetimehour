@@ -18,7 +18,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 ## 1. Birleşik tablo (öncelik sırasıyla)
 
-**Durum (30 Ekim 2026, ikinci tur):** "kısmen" olup çabası K ya da O olan maddeler yapıldı (3, 5, 10, 11, 12, 14, 15, 19, 23, 24, 26); "Bizde" sütununda **yapıldı** yazar. Canlıya basma ve yeni iOS yapısı sahibin talimatıyla.
+**Durum (30 Ekim 2026, ikinci tur):** "kısmen" olup çabası K ya da O olan maddeler yapıldı (3, 5, 10, 11, 12, 14, 15, 19, 23, 24, 26); "Bizde" sütununda **yapıldı** yazar. Canlıya basma ve yeni iOS yapısı sahibin talimatıyla. Üçüncü tur (30 Ekim 2026, sahibin isteği): #8 kıble ve yakındaki camiler (uygulamalar + site).
 
 | # | Özellik | Örnek rakipler | Nerede | Bizde | Çaba | Not |
 |---|---|---|---|---|---|---|
@@ -29,7 +29,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 | 5 | Flip (çevirmeli kart) saat modeli | Fliqlo, Flip Clock: Digital Desk Widget, Zen Flip Clock | iOS, Android, masaüstü | **yapıldı** (sahnede 20. model, uygulamalarda) | K–O | Kategorinin adı; sahneye ve uygulamalara taşınabilir |
 | 6 | Apple Watch ve Wear OS (komplikasyon, bilekten erteleme) | Vakit, Vakitler, NV-Codeida, Fazilet, Timer+, Google Saat | watchOS, Wear OS | yok | B | Yol haritası 6. adım; Türk namaz rakiplerinin çoğunda var |
 | 7 | Siri / Kısayollar (App Intents): alarm/zamanlayıcı kur, "saati tam ekran aç"; şarja takınca açılma otomasyonu | Apple Saat, Timer+, Vakitler, Flip Clock | iOS (Android: Asistan, Daydream) | yok | O | Saat uygulaması (6. adım) öncesi ucuz ilk adım |
-| 8 | Kıble pusulası ve yakındaki camiler | İncelenen 13 namaz uygulamasının hepsi (e-Diyanet, Muslim Pro, Vakit…) | iOS, Android | yok | O | Dini metin değil, yön hesabı; camiler MapKit aramasıyla. **Sahip kararı gerekir** |
+| 8 | Kıble pusulası ve yakındaki camiler | İncelenen 13 namaz uygulamasının hepsi (e-Diyanet, Muslim Pro, Vakit…) | iOS, Android | **yapıldı** (uygulamalarda pusula, açı, uzaklık, kıble saati [Diyanet ±1 dk], yakındaki camiler [iOS MapKit, Android OSM Overpass]; sitede `/kible/` beş dilde, camiler izinle) | O | Dini metin değil, yön hesabı |
 | 9 | Hicri tarih (widget ve kilit ekranında) | Muslim Pro, Athan, e-Diyanet, Fazilet | iOS, Android | yok | K | Diyanet tarihinden bir gün kayabilir, sayfada uyarı gerekir |
 | 10 | Ay doğuş/batış, Ay takvimi (aylık ızgara), Ay evresi widget'ı, tutulmalar | Lunar, LunarPhase, Lumos, timeanddate | iOS, web | **yapıldı** (doğuş/batış USNO ±1 dk, Ay takvimi, Ay widget'ı, NASA tutulma listesi) | O | Meeus çekirdeği genişletilir; "ay tutulması ne zaman" SEO |
 | 11 | Saniyeli ve StandBy'a uygun widget'lar; dünya saati widget'ı; geri sayım widget'ı | Flip Clock widgets, World Clock Widget, Countdown Widget | iOS | **yapıldı** (saniyeli, dünya saatleri, geri sayım widget'ları; Android analogda saniye ibresi) | O | |
@@ -51,7 +51,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 | 27 | Çok ülkeli resmî tatil takvimleri | timeanddate, time.is, vclock | web | kısmen (yalnız Türkiye) | B | |
 | 28 | Saat başı bildirimi; dini/özel gün, mevsim, Ay, gün doğumu-batımı, hava, yaz saati bildirimleri | Flip Clock widgets, Desk Clock, e-Diyanet, Lunar, World Clock | iOS, Android | **bu turda yapıldı** (Ayarlar › Bildirimler, varsayılan açık) | — | Canlıya talimatla |
 
-**Bilerek yok:** ezan sesi; Kur'an, dua, zikirmatik, namaz ve oruç takibi, zekât; hesap ve eşitleme; API; tarayıcı uzantısı. Sahip isterse yeniden değerlendirilir.
+**Bilerek yok:** Kur'an, dua, zikirmatik, namaz ve oruç takibi, zekât; hesap ve eşitleme; API; tarayıcı uzantısı. Sahip isterse yeniden değerlendirilir.
 
 **Konumlanma notu (sahibin düzeltmesiyle, 30 Ekim 2026):** En güçlü doğrudan namaz rakibi **Vakit** (Hakan Çelik). Ücretsiz ve reklamsız; Apple Watch, Mac, Live Activity, 12 hesap yöntemi ve 25 dil var. Ona karşı farkımız fiyat değil, **yalnız namaz uygulaması olmayışımız**: saat (19 model, tam ekran), dünya saatleri ve küre, takvim, hava, mevsimler ve araçlar tek uygulamada. Masa, flip ve alarm kategorilerinde rakiplerin çoğu reklamlı ya da abonelikli; orada "ücretsiz, reklamsız" da belirgin bir farktır.
 

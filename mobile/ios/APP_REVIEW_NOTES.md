@@ -4,7 +4,8 @@ Apple'ın 20 Ekim 2026'daki bilgi isteğine (Guideline 2.1 - Information Needed,
 Aynı metin App Store Connect › App Review Information › Notes alanına da girilir (Apple sonraki gönderimler için
 istedi). Uygulama değişirse (yeni özellik, yeni dış servis) bu metni de güncelleyin. App Store Connect'teki alan en
 çok 4000 karakter alır (aşağıdaki metin; `python3 -c` ile sayılır). 30 Ekim 2026: özellik aç/kapa, bildirim
-kategorileri, arka plan yenilemesi, arka plan ses modu ve ezan sesi eklendi (sıradaki sürüm için).
+kategorileri, arka plan yenilemesi, arka plan ses modu, ezan sesi, kıble pusulası ve yakındaki camiler (MapKit araması)
+eklendi (sıradaki sürüm için).
 
 ---
 
@@ -22,7 +23,7 @@ No login or sample files needed.
 - Clock: swipe to change among 20 faces; tap the clock for seconds; "Edit" picks the items below; full-screen button (optional photo or animated background).
 - Location: Istanbul by default; tap the location name to search a province or district, or "Use my location" (permission asked only then).
 - Calendar: holidays; tap a day for details; "Show my phone's calendars" (optional permission).
-- Prayer: today's times and countdown, monthly table, Ramadan timetable.
+- Prayer: today's times and countdown, monthly table, Ramadan timetable, Qibla compass (no extra permission) and nearby mosques (Apple Maps search).
 - Tools: alarm, timers, interval workout, countdowns, stopwatch, pomodoro, date calculator, badges.
 The language follows the device.
 
@@ -34,10 +35,10 @@ The language follows the device.
 
 5. EXTERNAL SERVICES
 - Apple WeatherKit: weather. Every place that shows WeatherKit data displays the Apple Weather mark and a "Legal" link: Weather tab, weather clock faces and clock-screen item, the globe, the morning card; the weather notification ends with " Weather".
-- Apple MapKit: the globe.
+- Apple MapKit: the globe and the nearby mosques search (search word and an approximate area).
 - On-device frameworks: Core Location (optional), EventKit (optional), PhotosPicker (no photo library permission), UserNotifications, AlarmKit, AVSpeechSynthesizer.
 - Bumba mailing list (bumbagroup.com): only if the user enters an email in About, with explicit consent.
-No other servers: prayer times and sun/moon data are calculated on the device. No analytics, ads or AI services.
+No other servers: prayer times, the qibla direction and sun/moon data are calculated on the device. No analytics, ads or AI services.
 
 6. REGIONAL DIFFERENCES
 Same in all regions. Prayer times work for any location. The holiday calendar shows Turkey's holidays for everyone. Weather depends on WeatherKit coverage.

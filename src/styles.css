@@ -924,3 +924,36 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
 
 .faq-privacy { padding-block: 0 2rem; }
 .faq-privacy a { color: var(--muted); font-size: 0.95rem; }
+
+/* Kıble (30 Ekim 2026): pusula kadranı telefonun yönüyle döner, iğne kıbleyi gösterir; hizalanınca vurgu rengi */
+.qb { margin-top: 1rem; text-align: center; }
+.qb-place { margin: 0 0 0.5rem; font-size: 1.35rem; }
+.qb-dial { width: min(21rem, 86vw); margin: 0 auto; }
+.qb-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.qb-face { fill: var(--surface); stroke: var(--border); stroke-width: 1; }
+.qb-tick { stroke: var(--muted); stroke-opacity: 0.45; stroke-width: 1; }
+.qb-tick-m { stroke: var(--muted); stroke-width: 2; }
+.qb-tick-c { stroke: var(--text); stroke-width: 2.5; }
+.qb-card { fill: var(--muted); font-size: 17px; font-weight: 600; }
+.qb-north { fill: #d83a3f; font-weight: 700; }
+.qb-kaaba { fill: #1b1f27; stroke: var(--surface); stroke-width: 1; }
+.qb-kaaba-band { fill: #d9a520; }
+.qb-head { fill: var(--text); }
+.qb-tail { fill: var(--muted); fill-opacity: 0.35; }
+.qb-hub { fill: var(--surface-2); stroke: var(--border); }
+.qb.is-aligned .qb-head { fill: var(--accent); }
+.qb.is-aligned .qb-status { color: var(--accent); }
+.qb.is-kaaba .qb-dial { display: none; }
+.qb-status { min-height: 1.5em; margin: 0.75rem 0 0.25rem; font-weight: 600; }
+.qb-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem 1.5rem; max-width: 44rem; margin: 1.25rem auto 0; text-align: start; }
+.qb-facts .fact { margin: 0; }
+.qb-facts dt { color: var(--muted); font-size: 0.9rem; }
+.qb-facts dd { margin: 0.1rem 0 0; }
+.qb-facts dd.meta { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+.qb [hidden], .qb-mosques[hidden], [data-qb-mq-show][hidden] { display: none; }
+.qb-facts dd[data-qb-angle], .qb-facts dd[data-qb-dist], .qb-facts dd[data-qb-time] { font-size: 1.6rem; font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+.qb-mosques { list-style: none; margin: 0.5rem 0 1rem; padding: 0; max-width: 36rem; }
+.qb-mosques li + li { border-top: 1px solid var(--border); }
+.qb-mosques a { display: flex; gap: 1rem; justify-content: space-between; padding: 0.6rem 0.2rem; color: var(--text); text-decoration: none; }
+.qb-mosques a:hover .qb-mq-name, .qb-mosques a:focus-visible .qb-mq-name { text-decoration: underline; }
+.qb-mq-dist { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
