@@ -29,6 +29,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Alarm
+import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material.icons.filled.Autorenew
 import androidx.compose.material.icons.filled.Calculate
 import androidx.compose.material.icons.filled.CalendarMonth
@@ -88,6 +89,7 @@ enum class Badge(val id: String, val icon: ImageVector) {
     KRONOMETRE("kronometre", Icons.Filled.Timer),
     ZAMANLAYICI("zamanlayici", Icons.Filled.HourglassBottom),
     ALARM("alarm", Icons.Filled.Alarm),
+    UYANIK("uyanik", Icons.Filled.WbSunny),
     CEVIRICI("cevirici", Icons.Filled.SwapHoriz),
     TARIH_HESAP("tarih-hesap", Icons.Filled.Calculate),
     DUNYA("dunya", Icons.Filled.Public),

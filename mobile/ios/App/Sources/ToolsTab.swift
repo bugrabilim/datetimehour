@@ -502,6 +502,7 @@ struct PomodoroView: View {
                             .textFieldStyle(.roundedBorder)
                             .submitLabel(.done)
                     }
+                    PomoTodoCard(current: $task).id(log.count) // tur bitince sayaçlar yeniden okunur
                     VStack(alignment: .leading, spacing: 8) {
                         SectionTitle(text: L("tools.pomodoro.noise"))
                         NoiseControls(kind: $noise, volume: $volume)
@@ -565,6 +566,7 @@ struct PomodoroView: View {
                 BadgeStore.shared.hit(.pomodoro) // çalışma süresi sonuna kadar tamamlandı
                 // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
                 PomoLog.record(minutes: workMin, task: task, at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
+                PomoTodo.save(PomoTodo.credit(PomoTodo.load(), task: task))
                 log = PomoLog.load()
             }
             phase = round >= rounds ? "long" : "short"

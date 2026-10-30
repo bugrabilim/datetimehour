@@ -292,3 +292,107 @@ struct FocusStatsCard: View {
         return L("calendar.weekdaysShort.\((w + 5) % 7)")
     }
 }
+
+/// Pomodoro yapılacaklar listesi (rakip analizi #16'nın kalanı): görev ekle, şu anki görev yap (dokununca), bitti
+/// işaretle, sil; her tamamlanan çalışma turu şu anki görevin sayacını artırır. Kayıt "pomo.todo" (JSON [{id, t, d, n}],
+/// en çok 50), yalnız telefonda; Android'deki PomoTodo ile aynı biçim.
+struct PomoTodoItem: Codable, Identifiable, Equatable {
+    var id = UUID().uuidString
+    var t: String
+    var d = false
+    var n = 0
+}
+
+enum PomoTodo {
+    static let key = "pomo.todo", max = 50
+
+    static func load() -> [PomoTodoItem] {
+        guard let s = UserDefaults.standard.string(forKey: key), let d = s.data(using: .utf8) else { return [] }
+        return (try? JSONDecoder().decode([PomoTodoItem].self, from: d)) ?? []
+    }
+
+    static func save(_ items: [PomoTodoItem]) {
+        if let d = try? JSONEncoder().encode(items) { UserDefaults.standard.set(String(decoding: d, as: UTF8.self), forKey: key) }
+    }
+
+    static func add(_ items: [PomoTodoItem], _ title: String) -> [PomoTodoItem] {
+        let t = String(title.trimmingCharacters(in: .whitespacesAndNewlines).prefix(60))
+        guard !t.isEmpty, !items.contains(where: { $0.t == t && !$0.d }) else { return items }
+        return Array((items + [PomoTodoItem(t: t)]).suffix(max))
+    }
+
+    /// Tamamlanan çalışma turu: adı şu anki görevle aynı olan (bitmemiş) görevin sayacı artar
+    static func credit(_ items: [PomoTodoItem], task: String) -> [PomoTodoItem] {
+        var items = items
+        if let i = items.firstIndex(where: { $0.t == task.trimmingCharacters(in: .whitespaces) && !$0.d }) { items[i].n += 1 }
+        return items
+    }
+}
+
+/// Yapılacaklar kartı: satıra dokununca şu anki görev olur
+struct PomoTodoCard: View {
+    @Binding var current: String
+    @State private var items = PomoTodo.load()
+    @State private var input = ""
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            SectionTitle(text: L("pomo.todo"))
+            HStack {
+                TextField(L("pomo.todoPlaceholder"), text: $input)
+                    .textFieldStyle(.roundedBorder)
+                    .submitLabel(.done)
+                    .onSubmit(add)
+                Button(L("pomo.todoAdd"), action: add).disabled(input.trimmingCharacters(in: .whitespaces).isEmpty)
+            }
+            if items.isEmpty {
+                Text(L("pomo.todoEmpty")).font(.footnote).foregroundStyle(Theme.muted)
+            }
+            ForEach(items) { it in
+                let selected = it.t == current.trimmingCharacters(in: .whitespaces) && !it.d
+                HStack(spacing: 10) {
+                    Button { update(items.map { $0.id == it.id ? PomoTodoItem(id: $0.id, t: $0.t, d: !$0.d, n: $0.n) : $0 }) } label: {
+                        Image(systemName: it.d ? "checkmark.circle.fill" : "circle")
+                            .foregroundStyle(it.d ? Theme.accent : Theme.muted)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(it.t)
+                    .accessibilityAddTraits(it.d ? .isSelected : [])
+                    Text(it.t)
+                        .strikethrough(it.d)
+                        .fontWeight(selected ? .semibold : .regular)
+                        .foregroundStyle(it.d ? Theme.muted : Theme.text)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .contentShape(Rectangle())
+                        .onTapGesture { if !it.d { current = it.t } }
+                    if it.n > 0 {
+                        Text(T("pomo.todoPomos", it.n)).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                    Button { update(items.filter { $0.id != it.id }) } label: {
+                        Image(systemName: "xmark").foregroundStyle(Theme.muted)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(L("tools.alarm.delete"))
+                }
+                .padding(.vertical, 6)
+                .padding(.horizontal, 8)
+                .background(selected ? Theme.accent.opacity(0.12) : Color.clear, in: RoundedRectangle(cornerRadius: 10))
+            }
+            if items.contains(where: \.d) {
+                Button(L("pomo.todoClear")) { update(items.filter { !$0.d }) }.font(.subheadline)
+            }
+        }
+        .card()
+        .onAppear { items = PomoTodo.load() }
+    }
+
+    private func add() {
+        update(PomoTodo.add(items, input))
+        input = ""
+    }
+
+    private func update(_ l: [PomoTodoItem]) {
+        items = l
+        PomoTodo.save(l)
+    }
+}

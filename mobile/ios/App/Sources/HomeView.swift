@@ -197,6 +197,8 @@ struct FullscreenClock: View {
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @AppStorage(FullscreenBackground.key) private var bgRaw = ""
     @AppStorage(NightMode.key) private var nightRaw = "off"
+    /// Uyku zamanlayıcısı (rakip analizi #1): bitiş anı (1970'ten saniye, 0 = kapalı); tam ekrandan çıkınca silinir
+    @AppStorage(SleepTimer.key) private var sleepUntil = 0.0
     @State private var globeHeight: CGFloat = 260
 
     var body: some View {
@@ -213,6 +215,8 @@ struct FullscreenClock: View {
                 // Gün doğumu ışığı (rakip analizi #17): alarmdan önce zemin siyahtan sıcak beyaza döner, parlaklık artar
                 let sunrise = AlarmItem.nextSunrise(now: now).map { SunriseLight.level(now: now, alarmAt: $0.at, window: $0.window) } ?? 0
                 let night = sunrise == 0 && NightMode.active(nightRaw, place: place, at: now)
+                // Uyku zamanlayıcısı doldu: ekran kararır, telefon kendini kilitleyebilir, uyku sesleri durur
+                let asleep = sleepUntil > 0 && now.timeIntervalSince1970 >= sleepUntil
                 ScrollView {
                     VStack(spacing: 16) {
                         TabView(selection: $modelID) {
@@ -232,6 +236,18 @@ struct FullscreenClock: View {
                             Button { nightRaw = NightMode.toggled(night) } label: {
                                 Label(L("night.title"), systemImage: night ? "moon.fill" : "moon")
                                     .font(.footnote)
+                            }
+                            Menu {
+                                ForEach(SleepTimer.choices, id: \.self) { m in
+                                    Button(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)) {
+                                        sleepUntil = m > 0 ? Date().timeIntervalSince1970 + Double(m * 60) : 0
+                                    }
+                                }
+                            } label: {
+                                let left = Int((sleepUntil - now.timeIntervalSince1970).rounded(.up))
+                                Label(sleepUntil > 0 && left > 0 ? clock(left) : L("night.sleepTimer"), systemImage: "moon.zzz")
+                                    .font(.footnote.monospacedDigit())
+                                    .foregroundStyle(sleepUntil > 0 ? Theme.accent : Theme.muted)
                             }
                             Button { dismiss() } label: {
                                 Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
@@ -275,8 +291,18 @@ struct FullscreenClock: View {
                         NightMode.tint.blendMode(.multiply).ignoresSafeArea().allowsHitTesting(false)
                     }
                 }
+                .overlay {
+                    // Dokununca saat geri gelir
+                    if asleep {
+                        Color.black.ignoresSafeArea().onTapGesture { sleepUntil = 0 }
+                    }
+                }
+                .onChange(of: asleep) { _, a in
+                    UIApplication.shared.isIdleTimerDisabled = !a
+                    if a { NoisePlayer.shared.stop(source: "sleep") }
+                }
                 .environment(\.colorScheme, sunrise > 0.6 ? .light : (night || darkText || sunrise > 0 ? .dark : colorScheme))
-                .modifier(NightBrightness(target: sunrise > 0 ? SunriseLight.brightness(sunrise) : (night ? 0.05 : nil)))
+                .modifier(NightBrightness(target: asleep ? 0.01 : (sunrise > 0 ? SunriseLight.brightness(sunrise) : (night ? 0.05 : nil))))
             }
         }
         .onTapGesture(count: 2) { dismiss() }
@@ -295,6 +321,7 @@ struct FullscreenClock: View {
         .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = UserDefaults.standard.object(forKey: "keepAwake") as? Bool ?? true
+            sleepUntil = 0
         }
     }
 

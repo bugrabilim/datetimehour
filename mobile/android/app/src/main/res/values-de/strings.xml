@@ -998,5 +998,14 @@
     <string name="wake_checkBody">Tippen Sie hier; sonst klingelt der Wecker in 2 Minuten erneut.</string>
     <string name="wake_awake">Ich bin wach</string>
     <string name="wake_checkAlarm">Wach-Kontrolle</string>
+    <string name="night_sleepTimer">Schlaftimer</string>
+    <string name="badges_items_uyanik_name">Hellwach</string>
+    <string name="badges_items_uyanik_how">Schalte einen Wecker aus, indem du seine Aufgabe erledigst.</string>
+    <string name="pomo_todo">Aufgaben</string>
+    <string name="pomo_todoPlaceholder">Neue Aufgabe</string>
+    <string name="pomo_todoAdd">Hinzufügen</string>
+    <string name="pomo_todoEmpty">Fügen Sie Aufgaben hinzu; tippen Sie auf eine, um sie zur aktuellen Aufgabe zu machen – jede beendete Phase zählt für sie.</string>
+    <string name="pomo_todoClear">Erledigte entfernen</string>
+    <string name="pomo_todoPomos">%1$s Pomodoros</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

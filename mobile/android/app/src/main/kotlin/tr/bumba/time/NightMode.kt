@@ -62,3 +62,9 @@ fun ScreenBrightness(level: Float?) {
         }
     }
 }
+
+/** Tam ekran saatte uyku zamanlayıcısı: bitiş anı (Unix ms, 0 = kapalı); tam ekrandan çıkınca silinir */
+object SleepTimer {
+    const val KEY = "night.sleepUntil"
+    val CHOICES = listOf(0, 15, 30, 60, 90)
+}

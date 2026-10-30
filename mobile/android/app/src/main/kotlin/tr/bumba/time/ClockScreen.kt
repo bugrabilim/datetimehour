@@ -43,6 +43,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.material.icons.filled.Bedtime
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -293,7 +296,25 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     val sunrise = AlarmItem.nextSunrise(now.toEpochMilli())
         ?.let { (at, window) -> tr.bumba.time.core.SunriseLight.level(now.toEpochMilli(), at, window) } ?: 0.0
     val night = sunrise == 0.0 && NightMode.active(Prefs.nightMode, place.lat, place.lon, now.toEpochMilli())
-    ScreenBrightness(if (sunrise > 0) tr.bumba.time.core.SunriseLight.brightness(sunrise).toFloat() else if (night) 0.05f else null)
+    // Uyku zamanlayıcısı (rakip analizi #1): süre dolunca ekran kararır, telefon kendini kilitleyebilir, uyku sesleri durur
+    val context = LocalContext.current
+    var sleepUntil by remember { mutableLongStateOf(Prefs.store.getLong(SleepTimer.KEY, 0L)) }
+    val asleep = sleepUntil > 0 && now.toEpochMilli() >= sleepUntil
+    val view = LocalView.current
+    SideEffect { if (asleep) view.keepScreenOn = false }
+    LaunchedEffect(asleep) { if (asleep) SleepSounds.stop(context) }
+    DisposableEffect(Unit) { onDispose { Prefs.store.edit().remove(SleepTimer.KEY).apply() } }
+    fun setSleep(minutes: Int) {
+        sleepUntil = if (minutes > 0) System.currentTimeMillis() + minutes * 60_000L else 0L
+        Prefs.store.edit().putLong(SleepTimer.KEY, sleepUntil).apply()
+        view.keepScreenOn = true
+    }
+    ScreenBrightness(when {
+        asleep -> 0.01f
+        sunrise > 0 -> tr.bumba.time.core.SunriseLight.brightness(sunrise).toFloat()
+        night -> 0.05f
+        else -> null
+    })
     val bg = if (night || sunrise > 0) FullscreenBackground.PLAIN else FullscreenBackground.current
     val photo = if (bg == FullscreenBackground.PHOTO) FullscreenPhoto.image(LocalContext.current) else null
     val colors = when {
@@ -346,12 +367,28 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
                         Icon(Icons.Filled.DarkMode, null, tint = if (night) Theme.c.accent else Theme.c.muted, modifier = Modifier.size(18.dp))
                         Text(" " + L("night.title"), color = Theme.c.muted, fontSize = 13.sp)
                     }
+                    // Uyku zamanlayıcısı: seçilen süre sonra ekran kararır
+                    Box {
+                        var open by remember { mutableStateOf(false) }
+                        TextButton(onClick = { open = true }) {
+                            Icon(Icons.Filled.Bedtime, null, tint = if (sleepUntil > 0) Theme.c.accent else Theme.c.muted, modifier = Modifier.size(18.dp))
+                            val left = (sleepUntil - now.toEpochMilli() + 999) / 1000
+                            Text(" " + if (sleepUntil > 0 && left > 0) clock(left) else L("night.sleepTimer"), color = Theme.c.muted, fontSize = 13.sp, style = Tnum)
+                        }
+                        DropdownMenu(open, { open = false }) {
+                            for (m in SleepTimer.CHOICES) DropdownMenuItem(
+                                text = { Text(if (m == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", m)) },
+                                onClick = { open = false; setSleep(m) })
+                        }
+                    }
                     TextButton(onClick = onExit) {
                         Icon(Icons.Filled.FullscreenExit, null, tint = Theme.c.muted, modifier = Modifier.size(18.dp))
                         Text(" " + L("client.exitFullscreen"), color = Theme.c.muted, fontSize = 13.sp)
                     }
                 }
             }
+            // Uyku zamanlayıcısı doldu: siyah ekran; dokununca saat geri gelir
+            if (asleep) Box(Modifier.fillMaxSize().background(Color.Black).clickable { setSleep(0) })
         }
     }
     }

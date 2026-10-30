@@ -998,5 +998,14 @@
     <string name="wake_checkBody">المس هنا؛ وإلا يرنّ المنبّه مجددًا بعد دقيقتين.</string>
     <string name="wake_awake">أنا مستيقظ</string>
     <string name="wake_checkAlarm">التحقق من الاستيقاظ</string>
+    <string name="night_sleepTimer">مؤقّت النوم</string>
+    <string name="badges_items_uyanik_name">مستيقظ تمامًا</string>
+    <string name="badges_items_uyanik_how">أوقف منبّهًا بإنجاز مهمة إيقافه.</string>
+    <string name="pomo_todo">المهام</string>
+    <string name="pomo_todoPlaceholder">مهمة جديدة</string>
+    <string name="pomo_todoAdd">إضافة</string>
+    <string name="pomo_todoEmpty">أضف مهامك؛ المس مهمة لتصبح المهمة الحالية، وتُحسب لها كل فترة عمل مكتملة.</string>
+    <string name="pomo_todoClear">مسح المكتملة</string>
+    <string name="pomo_todoPomos">%1$s بومودورو</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

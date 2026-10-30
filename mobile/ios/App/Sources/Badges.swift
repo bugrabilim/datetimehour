@@ -7,7 +7,7 @@ import SaatCore
 enum Badge: String, CaseIterable, Identifiable {
     case renk, saniye
     case ilkModel = "ilk-model", tamEkran = "tam-ekran"
-    case duzenle, takvim, kronometre, zamanlayici, alarm, cevirici
+    case duzenle, takvim, kronometre, zamanlayici, alarm, uyanik, cevirici
     case tarihHesap = "tarih-hesap"
     case dunya, kure, pomodoro
     case seri3 = "seri-3", model10 = "model-10", seri7 = "seri-7", modelHepsi = "model-hepsi"
@@ -27,6 +27,7 @@ enum Badge: String, CaseIterable, Identifiable {
         case .kronometre: "stopwatch"
         case .zamanlayici: "timer"
         case .alarm: "alarm"
+        case .uyanik: "sun.max"
         case .cevirici: "arrow.left.arrow.right"
         case .tarihHesap: "plus.forwardslash.minus"
         case .dunya: "globe.europe.africa"

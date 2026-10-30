@@ -232,6 +232,7 @@ struct WakeTaskView: View {
 
     private func finish() {
         motion.stop()
+        BadgeStore.shared.hit(.uyanik)
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         onDone()
     }

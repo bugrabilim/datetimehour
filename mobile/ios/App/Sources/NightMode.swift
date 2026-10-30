@@ -57,3 +57,9 @@ struct NightBrightness: ViewModifier {
         }
     }
 }
+
+/// Tam ekran saatte uyku zamanlayıcısı: bitiş anı (1970'ten saniye, 0 = kapalı); tam ekrandan çıkınca silinir
+enum SleepTimer {
+    static let key = "night.sleepUntil"
+    static let choices = [0, 15, 30, 60, 90]
+}

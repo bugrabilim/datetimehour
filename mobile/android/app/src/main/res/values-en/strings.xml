@@ -998,5 +998,14 @@
     <string name="wake_checkBody">Tap here; otherwise the alarm rings again in 2 minutes.</string>
     <string name="wake_awake">I\'m awake</string>
     <string name="wake_checkAlarm">Wake-up check</string>
+    <string name="night_sleepTimer">Sleep timer</string>
+    <string name="badges_items_uyanik_name">Wide awake</string>
+    <string name="badges_items_uyanik_how">Turn off an alarm by completing its dismiss task.</string>
+    <string name="pomo_todo">To-do</string>
+    <string name="pomo_todoPlaceholder">New task</string>
+    <string name="pomo_todoAdd">Add</string>
+    <string name="pomo_todoEmpty">Add tasks; tap one to make it the current task, and every finished session counts towards it.</string>
+    <string name="pomo_todoClear">Clear completed</string>
+    <string name="pomo_todoPomos">%1$s pomodoros</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

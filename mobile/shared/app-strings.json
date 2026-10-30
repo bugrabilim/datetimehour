@@ -3842,5 +3842,68 @@
     "de": "Zum Scannen des QR-Codes oder Barcodes, den Sie für die Aufgabe eines Weckers gespeichert haben. Das Bild wird auf dem Telefon verarbeitet, nicht gespeichert und nirgendwohin gesendet.",
     "az": "Zəngin söndürmə tapşırığı üçün yadda saxladığınız QR kodu ya da barkodu oxumaq üçün. Görüntü telefonda işlənir, saxlanılmır və heç yerə göndərilmir.",
     "ar": "لمسح رمز QR أو الباركود الذي حفظته لمهمة إيقاف المنبّه. تُعالج الصورة على هاتفك ولا تُحفظ ولا تُرسل إلى أي مكان."
+  },
+  "night.sleepTimer": {
+    "tr": "Uyku zamanlayıcısı",
+    "en": "Sleep timer",
+    "de": "Schlaftimer",
+    "az": "Yuxu taymeri",
+    "ar": "مؤقّت النوم"
+  },
+  "badges.items.uyanik.name": {
+    "tr": "Uyanık",
+    "en": "Wide awake",
+    "de": "Hellwach",
+    "az": "Oyaq",
+    "ar": "مستيقظ تمامًا"
+  },
+  "badges.items.uyanik.how": {
+    "tr": "Bir alarmı kapatma görevini yaparak kapat.",
+    "en": "Turn off an alarm by completing its dismiss task.",
+    "de": "Schalte einen Wecker aus, indem du seine Aufgabe erledigst.",
+    "az": "Bir zəngi söndürmə tapşırığını yerinə yetirərək söndür.",
+    "ar": "أوقف منبّهًا بإنجاز مهمة إيقافه."
+  },
+  "pomo.todo": {
+    "tr": "Yapılacaklar",
+    "en": "To-do",
+    "de": "Aufgaben",
+    "az": "Ediləcəklər",
+    "ar": "المهام"
+  },
+  "pomo.todoPlaceholder": {
+    "tr": "Yeni görev",
+    "en": "New task",
+    "de": "Neue Aufgabe",
+    "az": "Yeni tapşırıq",
+    "ar": "مهمة جديدة"
+  },
+  "pomo.todoAdd": {
+    "tr": "Ekle",
+    "en": "Add",
+    "de": "Hinzufügen",
+    "az": "Əlavə et",
+    "ar": "إضافة"
+  },
+  "pomo.todoEmpty": {
+    "tr": "Görev ekleyin; dokunduğunuz görev şu anki görev olur ve biten her tur onun sayacına yazılır.",
+    "en": "Add tasks; tap one to make it the current task, and every finished session counts towards it.",
+    "de": "Fügen Sie Aufgaben hinzu; tippen Sie auf eine, um sie zur aktuellen Aufgabe zu machen – jede beendete Phase zählt für sie.",
+    "az": "Tapşırıq əlavə edin; toxunduğunuz tapşırıq cari tapşırıq olur və bitən hər dövr onun sayğacına yazılır.",
+    "ar": "أضف مهامك؛ المس مهمة لتصبح المهمة الحالية، وتُحسب لها كل فترة عمل مكتملة."
+  },
+  "pomo.todoClear": {
+    "tr": "Bitenleri temizle",
+    "en": "Clear completed",
+    "de": "Erledigte entfernen",
+    "az": "Bitənləri təmizlə",
+    "ar": "مسح المكتملة"
+  },
+  "pomo.todoPomos": {
+    "tr": "{n} pomodoro",
+    "en": "{n} pomodoros",
+    "de": "{n} Pomodoros",
+    "az": "{n} pomodoro",
+    "ar": "{n} بومودورو"
   }
 }

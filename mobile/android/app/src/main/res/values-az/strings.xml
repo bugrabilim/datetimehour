@@ -998,5 +998,14 @@
     <string name="wake_checkBody">Toxunun; toxunmasanız zəng 2 dəqiqə sonra yenidən çalır.</string>
     <string name="wake_awake">Oyağam</string>
     <string name="wake_checkAlarm">Oyanma yoxlaması</string>
+    <string name="night_sleepTimer">Yuxu taymeri</string>
+    <string name="badges_items_uyanik_name">Oyaq</string>
+    <string name="badges_items_uyanik_how">Bir zəngi söndürmə tapşırığını yerinə yetirərək söndür.</string>
+    <string name="pomo_todo">Ediləcəklər</string>
+    <string name="pomo_todoPlaceholder">Yeni tapşırıq</string>
+    <string name="pomo_todoAdd">Əlavə et</string>
+    <string name="pomo_todoEmpty">Tapşırıq əlavə edin; toxunduğunuz tapşırıq cari tapşırıq olur və bitən hər dövr onun sayğacına yazılır.</string>
+    <string name="pomo_todoClear">Bitənləri təmizlə</string>
+    <string name="pomo_todoPomos">%1$s pomodoro</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

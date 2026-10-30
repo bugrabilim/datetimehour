@@ -85,6 +85,7 @@ fun PomodoroScreen() {
                 BadgeStore.hit(Badge.POMODORO) // çalışma süresi sonuna kadar tamamlandı
                 // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
                 PomoLog.record(workMin, task, if (end > 0) end else System.currentTimeMillis())
+                PomoTodo.save(PomoTodo.credit(PomoTodo.load(), task))
                 log = PomoLog.load()
             }
             phase = if (round >= rounds) "long" else "short"
@@ -142,6 +143,8 @@ fun PomodoroScreen() {
         OutlinedTextField(task, { task = it.take(60); ToolState.putStr("pomo.task", task) }, Modifier.fillMaxWidth(),
             label = { Text(L("tools.pomodoro.taskLabel")) }, placeholder = { Text(L("tools.pomodoro.taskPlaceholder")) },
             singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done))
+        // Tur bitince sayaçlar yeniden okunsun (geçmiş uzayınca kart yenilenir)
+        androidx.compose.runtime.key(log.size) { PomoTodoCard(task) { task = it; ToolState.putStr("pomo.task", it) } }
         AppCard {
             SectionTitle(L("tools.pomodoro.noise"))
             NoiseControls(noise, volume,

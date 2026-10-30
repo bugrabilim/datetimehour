@@ -85,6 +85,7 @@ class AlarmActivity : ComponentActivity() {
                     val item = remember { if (kind == "alarm") AlarmItem.find(id) else null }
                     if (item != null && item.effectiveTask != "none") {
                         WakeTaskPanel(item) {
+                            BadgeStore.hit(Badge.UYANIK)
                             AlarmScheduler.stop(this@AlarmActivity, id)
                             morning = true
                         }

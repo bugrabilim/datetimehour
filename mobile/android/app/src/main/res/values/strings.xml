@@ -998,5 +998,14 @@
     <string name="wake_checkBody">Dokunun; dokunmazsanız alarm 2 dakika sonra yeniden çalar.</string>
     <string name="wake_awake">Uyanığım</string>
     <string name="wake_checkAlarm">Uyanma denetimi</string>
+    <string name="night_sleepTimer">Uyku zamanlayıcısı</string>
+    <string name="badges_items_uyanik_name">Uyanık</string>
+    <string name="badges_items_uyanik_how">Bir alarmı kapatma görevini yaparak kapat.</string>
+    <string name="pomo_todo">Yapılacaklar</string>
+    <string name="pomo_todoPlaceholder">Yeni görev</string>
+    <string name="pomo_todoAdd">Ekle</string>
+    <string name="pomo_todoEmpty">Görev ekleyin; dokunduğunuz görev şu anki görev olur ve biten her tur onun sayacına yazılır.</string>
+    <string name="pomo_todoClear">Bitenleri temizle</string>
+    <string name="pomo_todoPomos">%1$s pomodoro</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.automirrored.filled.VolumeDown
 import androidx.compose.material.icons.automirrored.filled.VolumeUp
 import androidx.compose.material3.AlertDialog
@@ -354,5 +355,85 @@ fun FocusStatsCard(log: List<FocusLog.Entry>, onClear: () -> Unit) {
             confirmButton = { TextButton(onClick = { confirm = false; onClear() }) { Text(L("tools.pomodoro.clear"), color = DangerRed) } },
             dismissButton = { TextButton(onClick = { confirm = false }) { Text(L("badges.deleteNo")) } },
         )
+    }
+}
+
+/**
+ * Pomodoro yapılacaklar listesi (rakip analizi #16'nın kalanı): görev ekle, şu anki görev yap (dokununca), bitti
+ * işaretle, sil; her tamamlanan çalışma turu şu anki görevin sayacını artırır. Kayıt "pomo.todo" (JSON
+ * [{id, t, d, n}], en çok 50), yalnız telefonda; iOS'taki PomoTodo ile aynı biçim.
+ */
+object PomoTodo {
+    const val KEY = "pomo.todo"
+    const val MAX = 50
+
+    data class Item(val id: String, val t: String, val d: Boolean = false, val n: Int = 0)
+
+    fun load(): List<Item> = runCatching {
+        val a = JSONArray(Prefs.store.getString(KEY, "[]"))
+        (0 until a.length()).map { i -> a.getJSONObject(i).let { Item(it.getString("id"), it.getString("t"), it.optBoolean("d"), it.optInt("n")) } }
+    }.getOrDefault(emptyList())
+
+    fun save(items: List<Item>) {
+        val a = JSONArray()
+        for (e in items) a.put(JSONObject().put("id", e.id).put("t", e.t).put("d", e.d).put("n", e.n))
+        Prefs.store.edit().putString(KEY, a.toString()).apply()
+    }
+
+    fun add(items: List<Item>, title: String): List<Item> {
+        val t = title.trim().take(60)
+        if (t.isEmpty() || items.any { it.t == t && !it.d }) return items
+        return (items + Item(java.util.UUID.randomUUID().toString(), t)).takeLast(MAX)
+    }
+
+    fun toggle(items: List<Item>, id: String) = items.map { if (it.id == id) it.copy(d = !it.d) else it }
+    fun remove(items: List<Item>, id: String) = items.filter { it.id != id }
+    fun clearDone(items: List<Item>) = items.filter { !it.d }
+
+    /** Tamamlanan çalışma turu: adı şu anki görevle aynı olan (bitmemiş) görevin sayacı artar */
+    fun credit(items: List<Item>, task: String): List<Item> {
+        val i = items.indexOfFirst { it.t == task.trim() && !it.d }
+        return if (i < 0) items else items.toMutableList().also { it[i] = it[i].copy(n = it[i].n + 1) }
+    }
+}
+
+/** Yapılacaklar kartı: satıra dokununca şu anki görev olur */
+@Composable
+fun PomoTodoCard(current: String, onPick: (String) -> Unit) {
+    var items by remember { mutableStateOf(PomoTodo.load()) }
+    var input by remember { mutableStateOf("") }
+    fun update(l: List<PomoTodo.Item>) { items = l; PomoTodo.save(l) }
+    AppCard {
+        SectionTitle(L("pomo.todo"))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            androidx.compose.material3.OutlinedTextField(input, { input = it.take(60) }, Modifier.weight(1f), singleLine = true,
+                placeholder = { Text(L("pomo.todoPlaceholder")) })
+            TextButton(onClick = { update(PomoTodo.add(items, input)); input = "" }, enabled = input.isNotBlank()) {
+                Text(L("pomo.todoAdd"), color = Theme.c.accent)
+            }
+        }
+        if (items.isEmpty()) Text(L("pomo.todoEmpty"), color = Theme.c.muted, fontSize = 13.sp)
+        for (it in items) {
+            val selected = it.t == current.trim() && !it.d
+            Row(
+                Modifier.fillMaxWidth()
+                    .background(if (selected) Theme.c.accent.copy(alpha = 0.12f) else androidx.compose.ui.graphics.Color.Transparent, RoundedCornerShape(10.dp))
+                    .clickable(enabled = !it.d) { onPick(it.t) }
+                    .semantics { this.selected = selected }
+                    .padding(horizontal = 6.dp, vertical = 2.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                androidx.compose.material3.Checkbox(it.d, { _ -> update(PomoTodo.toggle(items, it.id)) },
+                    colors = androidx.compose.material3.CheckboxDefaults.colors(checkedColor = Theme.c.accent))
+                Text(it.t, Modifier.weight(1f), color = if (it.d) Theme.c.muted else Theme.c.text, fontSize = 15.sp,
+                    textDecoration = if (it.d) androidx.compose.ui.text.style.TextDecoration.LineThrough else null,
+                    fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal)
+                if (it.n > 0) Text(T("pomo.todoPomos", it.n), color = Theme.c.muted, fontSize = 12.sp)
+                androidx.compose.material3.IconButton(onClick = { update(PomoTodo.remove(items, it.id)) }) {
+                    Icon(androidx.compose.material.icons.Icons.Filled.Close, L("tools.alarm.delete"), tint = Theme.c.muted)
+                }
+            }
+        }
+        if (items.any { it.d }) TextButton(onClick = { update(PomoTodo.clearDone(items)) }) { Text(L("pomo.todoClear"), color = Theme.c.accent) }
     }
 }
