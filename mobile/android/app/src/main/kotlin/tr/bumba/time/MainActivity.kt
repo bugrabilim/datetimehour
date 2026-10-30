@@ -110,6 +110,8 @@ object Nav {
     var toolsRoute by mutableStateOf<String?>(null)
     /** Takvim sekmesi bu günü açar (saat ekranından) */
     var calendarDay by mutableStateOf<LocalDate?>(null)
+    /** Saat ekranındaki dişliden açılan ayarlar (alt bar ve Araçlar'dan bağımsız; "settings", "features"…) */
+    var overlay by mutableStateOf<String?>(null)
 
     fun tool(route: String) {
         toolsRoute = route
@@ -151,6 +153,16 @@ fun Root(start: Int) {
         }
         return
     }
+    // Ayarlar katmanı: geri gelince alt sayfadan ayarlara, ayarlardan saat ekranına dönülür
+    Nav.overlay?.let { route ->
+        val back: (String?) -> Unit = { r -> Nav.overlay = r ?: if (route == "settings" || route == "features") null else "settings" }
+        BackHandler { back(null) }
+        Box(Modifier.fillMaxSize().background(Theme.c.bg).statusBarsPadding().navigationBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
+            ToolsScreen(route, back)
+            BadgeToast(Modifier.align(Alignment.TopCenter))
+        }
+        return
+    }
     BackHandler(enabled = tab == Tab.TOOLS && toolsRoute != null) { Nav.toolsRoute = null }
     BackHandler(enabled = tab != Tab.CLOCK && !(tab == Tab.TOOLS && toolsRoute != null)) { Nav.tab = Tab.CLOCK }
 
@@ -159,7 +171,10 @@ fun Root(start: Int) {
     Column(Modifier.fillMaxSize().background(Theme.c.bg)) {
         Box(Modifier.weight(1f).fillMaxWidth().statusBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
             when (tab) {
-                Tab.CLOCK -> ClockScreen(onFullscreen = { fullscreen = true; BadgeStore.hit(Badge.TAM_EKRAN) }, onOpen = { Nav.tab = it })
+                Tab.CLOCK -> ClockScreen(
+                    onFullscreen = { fullscreen = true; BadgeStore.hit(Badge.TAM_EKRAN) }, onOpen = { Nav.tab = it },
+                    onSettings = { Nav.overlay = it },
+                )
                 Tab.WEATHER -> WeatherScreen()
                 Tab.CALENDAR -> CalendarScreen()
                 Tab.WORLD -> WorldScreen()
@@ -168,8 +183,10 @@ fun Root(start: Int) {
                 Tab.TOOLS -> ToolsScreen(toolsRoute) { Nav.toolsRoute = it }
             }
         }
-        if (!landscape) {
-            TabBar(tab) { t ->
+        // Alt barda yalnız açık özellikler (ve geçici olarak şu anki sekme); yalnız Saat kalırsa bar yok
+        val tabs = Features.barTabs(tab)
+        if (!landscape && tabs.size > 1) {
+            TabBar(tabs, tab) { t ->
                 if (t == tab && t == Tab.TOOLS) Nav.toolsRoute = null
                 Nav.tab = t
             }
@@ -180,11 +197,11 @@ fun Root(start: Int) {
 }
 
 @Composable
-private fun TabBar(selected: Tab, onSelect: (Tab) -> Unit) {
+private fun TabBar(tabs: List<Tab>, selected: Tab, onSelect: (Tab) -> Unit) {
     Column(Modifier.fillMaxWidth().background(Theme.c.surface).navigationBarsPadding()) {
         HorizontalDivider(color = Theme.c.border.copy(alpha = 0.6f))
         Row(Modifier.fillMaxWidth().padding(top = 6.dp, bottom = 4.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
-            for (t in Tab.entries) {
+            for (t in tabs) {
                 val on = t == selected
                 val color = if (on) Theme.c.accent else Theme.c.muted
                 Column(

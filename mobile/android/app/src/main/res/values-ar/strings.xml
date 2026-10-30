@@ -777,5 +777,15 @@
     <string name="look_photo_pick">اختيار صورة</string>
     <string name="look_photo_remove">إزالة الصورة</string>
     <string name="look_photo_note">تُحفظ الصورة على هذا الهاتف فقط وتظهر معتمة خلف الساعة بملء الشاشة.</string>
+    <string name="features_title">الميزات</string>
+    <string name="features_note">الساعة مفعّلة دائمًا. تظهر الميزات التي تفعّلها في الشريط السفلي؛ وإذا عُطّلت كلها يختفي الشريط وتُفتح الإعدادات من رمز الترس في شاشة الساعة.</string>
+    <string name="features_clock_note">مفعّلة دائمًا: 20 نمطًا للساعة وملء الشاشة وعناصر شاشة الساعة</string>
+    <string name="features_weather_note">الطقس الحالي والتوقعات بالساعة ولسبعة أيام</string>
+    <string name="features_calendar_note">العطل الرسمية والأيام الدينية والخاصة وتقويمات هاتفك</string>
+    <string name="features_world_note">ساعات العالم والكرة الأرضية الدوّارة</string>
+    <string name="features_seasons_note">الفصول والشمس وأطوار القمر والكسوف والخسوف</string>
+    <string name="features_prayer_note">أوقات الصلاة والإشعارات وإمساكية رمضان</string>
+    <string name="features_tools_note">المنبّه والمؤقّت وساعة الإيقاف والبومودورو وحاسبة التاريخ</string>
+    <string name="features_hint">فعّل الطقس والتقويم وأوقات الصلاة والمزيد</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

@@ -27160,6 +27160,356 @@
           }
         }
       }
+    },
+    "features.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özellikler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Features"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Funktionen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xüsusiyyətlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الميزات"
+          }
+        }
+      }
+    },
+    "features.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat her zaman açık. Açtığın özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The clock is always on. Features you turn on appear in the bottom bar; with all of them off the bar is hidden and settings open from the gear on the clock screen."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Uhr ist immer an. Eingeschaltete Funktionen erscheinen in der unteren Leiste; sind alle aus, wird die Leiste ausgeblendet und die Einstellungen öffnen sich über das Zahnrad auf dem Uhrbildschirm."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat həmişə açıqdır. Açdığın xüsusiyyətlər alt zolaqda görünür; hamısı bağlı olduqda alt zolaq gizlənir, ayarlar saat ekranındakı dişli ilə açılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة مفعّلة دائمًا. تظهر الميزات التي تفعّلها في الشريط السفلي؛ وإذا عُطّلت كلها يختفي الشريط وتُفتح الإعدادات من رمز الترس في شاشة الساعة."
+          }
+        }
+      }
+    },
+    "features.clock.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her zaman açık: 20 saat modeli, tam ekran, saat ekranı alanları"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Always on: 20 clock styles, full screen, clock screen items"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Immer an: 20 Uhrenmodelle, Vollbild, Felder auf dem Uhrbildschirm"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Həmişə açıq: 20 saat modeli, tam ekran, saat ekranı sahələri"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مفعّلة دائمًا: 20 نمطًا للساعة وملء الشاشة وعناصر شاشة الساعة"
+          }
+        }
+      }
+    },
+    "features.weather.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anlık hava, saatlik ve 7 günlük tahmin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current conditions, hourly and 7-day forecast"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktuelles Wetter, stündliche und 7-Tage-Vorhersage"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cari hava, saatlıq və 7 günlük proqnoz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الطقس الحالي والتوقعات بالساعة ولسبعة أيام"
+          }
+        }
+      }
+    },
+    "features.calendar.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resmî tatiller, dini ve özel günler, telefonundaki takvimler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Public holidays, religious and special days, your phone's calendars"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feiertage, religiöse und besondere Tage, die Kalender deines Telefons"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rəsmi bayramlar, dini və xüsusi günlər, telefonundakı təqvimlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العطل الرسمية والأيام الدينية والخاصة وتقويمات هاتفك"
+          }
+        }
+      }
+    },
+    "features.world.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya saatleri ve dönen dünya"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "World clocks and the spinning globe"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weltuhren und der drehende Globus"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya saatları və fırlanan dünya"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعات العالم والكرة الأرضية الدوّارة"
+          }
+        }
+      }
+    },
+    "features.seasons.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mevsimler, Güneş, Ay evreleri ve tutulmalar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seasons, the Sun, Moon phases and eclipses"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jahreszeiten, Sonne, Mondphasen und Finsternisse"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fəsillər, Günəş, Ay fazaları və tutulmalar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الفصول والشمس وأطوار القمر والكسوف والخسوف"
+          }
+        }
+      }
+    },
+    "features.prayer.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namaz vakitleri, vakit bildirimleri ve imsakiye"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prayer times, notifications and the Ramadan timetable"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gebetszeiten, Benachrichtigungen und Ramadan-Kalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namaz vaxtları, bildirişlər və imsakiyyə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوقات الصلاة والإشعارات وإمساكية رمضان"
+          }
+        }
+      }
+    },
+    "features.tools.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm, timer, stopwatch, pomodoro, date calculator"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker, Timer, Stoppuhr, Pomodoro, Datumsrechner"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat, taymer, saniyəölçən, pomodoro, tarix hesablama"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المنبّه والمؤقّت وساعة الإيقاف والبومودورو وحاسبة التاريخ"
+          }
+        }
+      }
+    },
+    "features.hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava durumu, takvim, namaz vakitleri ve diğer özellikleri aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn on weather, calendar, prayer times and more"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wetter, Kalender, Gebetszeiten und mehr einschalten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava, təqvim, namaz vaxtları və digər xüsusiyyətləri aç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فعّل الطقس والتقويم وأوقات الصلاة والمزيد"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -24,7 +24,10 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.TextFields
@@ -67,11 +70,15 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
-/** Ayarlar (iOS'taki SettingsView): konum; uygulama rengi ve birimler; saat biçimi, ekran açık, görünüm, saat ekranı */
+/**
+ * Ayarlar (iOS'taki SettingsView): özellikler; konum ve bildirimler; uygulama rengi ve birimler; saat biçimi, ekran açık,
+ * görünüm, saat ekranı. Araçlar kapalıyken rozetler ve hakkında da buradadır (başka yoldan açılmazlar).
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(onRoute: (String) -> Unit) {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        AppCard(padding = 4) { SettingsRow(Icons.Filled.Apps, L("features.title")) { onRoute("features") } }
         AppCard {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("settings.location"), Modifier.weight(1f), color = Theme.c.text)
@@ -154,6 +161,26 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                 Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
             }
         }
+        if (!Features.isOn(Tab.TOOLS)) {
+            AppCard(padding = 4) {
+                SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
+                HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
+                SettingsRow(Icons.Filled.Info, L("settings.about")) { onRoute("about") }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SettingsRow(icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, onClick: () -> Unit) {
+    Row(
+        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(icon, null, tint = Theme.c.accent)
+        Spacer(Modifier.width(14.dp))
+        Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
     }
 }
 

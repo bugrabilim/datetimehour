@@ -28,8 +28,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Fullscreen
 import androidx.compose.material.icons.filled.FullscreenExit
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -60,6 +62,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -79,7 +82,7 @@ import kotlin.math.sin
  * Varsayılan düzende sayfa ekrana tam oturur: dönen dünya kalan boşluğu doldurur.
  */
 @Composable
-fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit) {
+fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (String) -> Unit = {}) {
     val now = rememberNow()
     val place = AppPlace.current()
     val items = HomeItems.layout.visible
@@ -116,6 +119,17 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit) {
                     TextButton(onClick = { customizing = true }) {
                         Icon(Icons.Filled.Tune, null, tint = Theme.c.accent)
                         Text(" " + L("home.edit"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+                    }
+                    // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
+                    IconButton(onClick = { onSettings("settings") }) {
+                        Icon(Icons.Filled.Settings, L("settings.title"), tint = Theme.c.accent)
+                    }
+                }
+                // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
+                if (Features.enabled.isEmpty()) {
+                    TextButton(onClick = { onSettings("features") }) {
+                        Icon(Icons.Filled.Apps, null, tint = Theme.c.muted, modifier = Modifier.size(18.dp))
+                        Text(" " + L("features.hint"), color = Theme.c.muted, fontSize = 14.sp, textAlign = TextAlign.Center)
                     }
                 }
             }

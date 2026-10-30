@@ -9,9 +9,13 @@ struct SettingsView: View {
     @AppStorage("units") private var units = Units.systemDefault
     /// Renk değişince bu sayfa da yeni renkle çizilir
     @AppStorage("accent") private var accent = AccentPalette.defaultID
+    @AppStorage(Features.key) private var features = ""
 
     var body: some View {
         Form {
+            Section {
+                NavigationLink { FeaturesView() } label: { Label(L("features.title"), systemImage: "square.grid.2x2") }
+            }
             Section {
                 LabeledContent(L("settings.location")) { PlacePicker(font: .body) }
                 NavigationLink { NotificationsView() } label: { Label(L("settings.notifications"), systemImage: "bell") }
@@ -42,6 +46,13 @@ struct SettingsView: View {
                     Text(L("settings.dark")).tag("dark")
                 }
                 NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
+            }
+            // Araçlar kapalıyken rozetler ve hakkında buradadır (başka yoldan açılmazlar)
+            if !Features.parse(features).contains(.tools) {
+                Section {
+                    NavigationLink { BadgesView() } label: { Label(L("badges.h1"), systemImage: "rosette") }
+                    NavigationLink { AboutView() } label: { Label(L("settings.about"), systemImage: "info.circle") }
+                }
             }
         }
         .themedBackground()

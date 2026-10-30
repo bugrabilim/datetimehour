@@ -777,5 +777,15 @@
     <string name="look_photo_pick">Fotoğraf seç</string>
     <string name="look_photo_remove">Fotoğrafı kaldır</string>
     <string name="look_photo_note">Fotoğraf yalnız bu telefonda saklanır; tam ekran saatin arkasında koyulaştırılarak gösterilir.</string>
+    <string name="features_title">Özellikler</string>
+    <string name="features_note">Saat her zaman açık. Açtığın özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır.</string>
+    <string name="features_clock_note">Her zaman açık: 20 saat modeli, tam ekran, saat ekranı alanları</string>
+    <string name="features_weather_note">Anlık hava, saatlik ve 7 günlük tahmin</string>
+    <string name="features_calendar_note">Resmî tatiller, dini ve özel günler, telefonundaki takvimler</string>
+    <string name="features_world_note">Dünya saatleri ve dönen dünya</string>
+    <string name="features_seasons_note">Mevsimler, Güneş, Ay evreleri ve tutulmalar</string>
+    <string name="features_prayer_note">Namaz vakitleri, vakit bildirimleri ve imsakiye</string>
+    <string name="features_tools_note">Alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama</string>
+    <string name="features_hint">Hava durumu, takvim, namaz vakitleri ve diğer özellikleri aç</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -18,6 +18,7 @@ object Prefs {
 
     fun init(c: Context) {
         sp = c.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+        Features.load(sp) // ilk iş: önceki kullanıcı mı diye dosyanın boş olup olmadığına bakar
         accent = sp.getString("accent", AccentPalette.DEFAULT_ID)!!
         appearance = sp.getString("appearance", "system")!!
         h12 = sp.getBoolean("h12", false)

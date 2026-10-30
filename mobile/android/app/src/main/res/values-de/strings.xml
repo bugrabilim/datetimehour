@@ -777,5 +777,15 @@
     <string name="look_photo_pick">Foto wählen</string>
     <string name="look_photo_remove">Foto entfernen</string>
     <string name="look_photo_note">Das Foto bleibt nur auf diesem Telefon und wird abgedunkelt hinter der Vollbilduhr gezeigt.</string>
+    <string name="features_title">Funktionen</string>
+    <string name="features_note">Die Uhr ist immer an. Eingeschaltete Funktionen erscheinen in der unteren Leiste; sind alle aus, wird die Leiste ausgeblendet und die Einstellungen öffnen sich über das Zahnrad auf dem Uhrbildschirm.</string>
+    <string name="features_clock_note">Immer an: 20 Uhrenmodelle, Vollbild, Felder auf dem Uhrbildschirm</string>
+    <string name="features_weather_note">Aktuelles Wetter, stündliche und 7-Tage-Vorhersage</string>
+    <string name="features_calendar_note">Feiertage, religiöse und besondere Tage, die Kalender deines Telefons</string>
+    <string name="features_world_note">Weltuhren und der drehende Globus</string>
+    <string name="features_seasons_note">Jahreszeiten, Sonne, Mondphasen und Finsternisse</string>
+    <string name="features_prayer_note">Gebetszeiten, Benachrichtigungen und Ramadan-Kalender</string>
+    <string name="features_tools_note">Wecker, Timer, Stoppuhr, Pomodoro, Datumsrechner</string>
+    <string name="features_hint">Wetter, Kalender, Gebetszeiten und mehr einschalten</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

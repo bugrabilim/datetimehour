@@ -6,6 +6,7 @@ import SaatCore
 struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
+    @AppStorage(Features.key) private var features = ""
     @State private var fullscreen = false
     @State private var customizing = false
     /// Yan çevirince tam ekran açılır, dikeye dönünce kapanır (düğmeyle açılan tam ekran dikeyde de kalır)
@@ -39,9 +40,27 @@ struct ClockTab: View {
                             } label: {
                                 Label(L("home.edit"), systemImage: "slider.horizontal.3")
                             }
+                            // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
+                            Button {
+                                Router.shared.sheet = .settings
+                            } label: {
+                                Image(systemName: "gearshape")
+                            }
+                            .accessibilityLabel(L("settings.title"))
                         }
                         .font(.headline)
                         .foregroundStyle(Theme.accent)
+                        // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
+                        if Features.parse(features).isEmpty {
+                            Button {
+                                Router.shared.sheet = .features
+                            } label: {
+                                Label(L("features.hint"), systemImage: "square.grid.2x2")
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .foregroundStyle(Theme.muted)
+                        }
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)

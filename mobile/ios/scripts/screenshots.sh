@@ -19,10 +19,13 @@ xcrun simctl bootstatus "$UDID" -b
 xcrun simctl status_bar "$UDID" override --time "09:41" --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 || true
 xcrun simctl install "$UDID" "$APP"
 
+# Görüntüler bütün özellikler açıkken alınır (yeni kurulumda yalnız Saat açık); FEAT= ile ilk açılış görünümü
+ALLFEAT="weather,calendar,world,seasons,prayer,tools"
 shoot() { # dil bölge görünüm dosya [ek uygulama argümanları]
   xcrun simctl ui "$UDID" appearance "$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" "${@:5}"
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" \
+    -features "${FEAT-$ALLFEAT}" "${@:5}"
   sleep 6
   xcrun simctl io "$UDID" screenshot "$OUT/$4.png"
 }
@@ -30,6 +33,9 @@ shoot tr tr_TR light tr-acik
 shoot tr tr_TR dark tr-koyu
 shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
+# İlk açılış: yalnız Saat (alt bar yok; dişli ve "özellikleri aç" satırı); iki özellik açıkken bar
+FEAT="" shoot tr tr_TR light tr-ilk-acilis
+FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
 # Saat modelleri (sitedeki 20 model; -clockModel kimlik)
 for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"
@@ -54,7 +60,7 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR dark ekran-about-koyu -openScreen about

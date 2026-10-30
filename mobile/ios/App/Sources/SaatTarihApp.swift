@@ -7,6 +7,11 @@ struct SaatTarihApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @Environment(\.scenePhase) private var scenePhase
 
+    init() {
+        // Özellik aç/kapa: ilk iş, önceki kullanıcıda hepsi açık kalsın (Features.migrate)
+        Features.migrate()
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()
@@ -49,6 +54,19 @@ enum AppTab: Int, CaseIterable {
         }
     }
 
+    /// Kayıtlardaki ad (`features` anahtarı; Android'deki Tab.key'in "tab." sonrası)
+    var key: String {
+        switch self {
+        case .clock: "clock"
+        case .weather: "weather"
+        case .calendar: "calendar"
+        case .world: "world"
+        case .seasons: "seasons"
+        case .prayer: "prayer"
+        case .tools: "tools"
+        }
+    }
+
     var icon: String {
         switch self {
         case .clock: "clock"
@@ -77,6 +95,8 @@ final class Router {
     var toolsPath: [ToolRoute] = []
     /// Takvim sekmesi bu günü açar (saat ekranından)
     var calendarDay: CalendarDay?
+    /// Saat ekranındaki dişliden açılan ayarlar (Araçlar kapalıyken de ulaşılsın)
+    var sheet: SettingsSheet?
 
     func open(_ item: HomeItem) {
         switch item {
@@ -103,6 +123,8 @@ struct RootView: View {
     @AppStorage("appearance") private var appearance = "system"
     /// Uygulama rengi (Ayarlar); değişince sekmeler yeni renkle yeniden çizilir
     @AppStorage("accent") private var accent = AccentPalette.defaultID
+    /// Açık özellikler: alt barda yalnız bunlar (ve geçici olarak şu anki sekme); yalnız Saat kalırsa bar yok
+    @AppStorage(Features.key) private var features = ""
     @State private var router = Router.shared
     /// Klavye açıkken alt bar gizlenir (sistemin sekme çubuğu gibi; klavyenin üstüne binmez)
     @State private var keyboard = false
@@ -120,7 +142,8 @@ struct RootView: View {
             content
                 .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)")
                 .frame(maxHeight: .infinity)
-            if !keyboard && !landscape { TabBar(selection: $router.tab) }
+            let tabs = Features.barTabs(raw: features, current: router.tab)
+            if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
         }
         .statusBarHidden(landscape)
         .persistentSystemOverlays(landscape ? .hidden : .automatic)
@@ -144,6 +167,16 @@ struct RootView: View {
             NavigationStack { s.view }
                 .preferredColorScheme(scheme)
         }
+        .sheet(item: $router.sheet) { s in
+            NavigationStack {
+                s.view
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { router.sheet = nil } }
+                    }
+            }
+            .tint(Theme.accent)
+            .preferredColorScheme(scheme)
+        }
     }
 
     @ViewBuilder private var content: some View {
@@ -164,13 +197,14 @@ struct RootView: View {
     @State private var screen = UserDefaults.standard.string(forKey: "openScreen").flatMap(DebugScreen.init(rawValue:))
 }
 
-/// Yedi düğmeli alt bar (simge + kısa ad; seçili olan uygulama renginde)
+/// Alt bar: açık özelliklerin düğmeleri (simge + kısa ad; seçili olan uygulama renginde)
 private struct TabBar: View {
+    let tabs: [AppTab]
     @Binding var selection: AppTab
 
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(AppTab.allCases, id: \.self) { tab in
+            ForEach(tabs, id: \.self) { tab in
                 let on = tab == selection
                 Button {
                     // Seçili sekmeye yeniden dokununca Araçlar'da açık sayfadan listeye dönülür
@@ -206,7 +240,7 @@ private struct TabBar: View {
 
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list, globe, google, badges, notifications, morning, moon, look
+         privacy, about, list, globe, google, badges, notifications, morning, moon, look, features
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -234,6 +268,7 @@ enum DebugScreen: String, Identifiable {
         case .morning: MorningCard()
         case .moon: MoonView()
         case .look: AppearanceView()
+        case .features: FeaturesView()
         case .globe:
             // App Store önizleme videosu için: tam ekran dönen dünya
             GlobeView(fullscreen: true)

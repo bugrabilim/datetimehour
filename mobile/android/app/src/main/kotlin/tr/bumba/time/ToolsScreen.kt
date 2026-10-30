@@ -61,6 +61,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "color" -> Page(L("settings.color"), { onRoute("settings") }) { ColorScreen() }
         "appearance" -> Page(L("look.title"), { onRoute("settings") }) { AppearanceScreen() }
         "homeItems" -> Page(L("home.customize"), { onRoute("settings") }) { HomeItemsEditor() }
+        "features" -> Page(L("features.title"), { onRoute("settings") }) { FeaturesScreen() }
         "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
         "badges" -> Page(L("badges.h1"), onRoute) { BadgesScreen() }
         "notifications" -> Page(L("settings.notifications"), { onRoute("settings") }) { NotificationsScreen(onRoute) }

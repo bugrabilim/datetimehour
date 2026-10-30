@@ -2379,5 +2379,75 @@
     "de": "Das Foto bleibt nur auf diesem Telefon und wird abgedunkelt hinter der Vollbilduhr gezeigt.",
     "az": "Foto yalnız bu telefonda saxlanır; tam ekran saatın arxasında tündləşdirilərək göstərilir.",
     "ar": "تُحفظ الصورة على هذا الهاتف فقط وتظهر معتمة خلف الساعة بملء الشاشة."
+  },
+  "features.title": {
+    "tr": "Özellikler",
+    "en": "Features",
+    "de": "Funktionen",
+    "az": "Xüsusiyyətlər",
+    "ar": "الميزات"
+  },
+  "features.note": {
+    "tr": "Saat her zaman açık. Açtığın özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır.",
+    "en": "The clock is always on. Features you turn on appear in the bottom bar; with all of them off the bar is hidden and settings open from the gear on the clock screen.",
+    "de": "Die Uhr ist immer an. Eingeschaltete Funktionen erscheinen in der unteren Leiste; sind alle aus, wird die Leiste ausgeblendet und die Einstellungen öffnen sich über das Zahnrad auf dem Uhrbildschirm.",
+    "az": "Saat həmişə açıqdır. Açdığın xüsusiyyətlər alt zolaqda görünür; hamısı bağlı olduqda alt zolaq gizlənir, ayarlar saat ekranındakı dişli ilə açılır.",
+    "ar": "الساعة مفعّلة دائمًا. تظهر الميزات التي تفعّلها في الشريط السفلي؛ وإذا عُطّلت كلها يختفي الشريط وتُفتح الإعدادات من رمز الترس في شاشة الساعة."
+  },
+  "features.clock.note": {
+    "tr": "Her zaman açık: 20 saat modeli, tam ekran, saat ekranı alanları",
+    "en": "Always on: 20 clock styles, full screen, clock screen items",
+    "de": "Immer an: 20 Uhrenmodelle, Vollbild, Felder auf dem Uhrbildschirm",
+    "az": "Həmişə açıq: 20 saat modeli, tam ekran, saat ekranı sahələri",
+    "ar": "مفعّلة دائمًا: 20 نمطًا للساعة وملء الشاشة وعناصر شاشة الساعة"
+  },
+  "features.weather.note": {
+    "tr": "Anlık hava, saatlik ve 7 günlük tahmin",
+    "en": "Current conditions, hourly and 7-day forecast",
+    "de": "Aktuelles Wetter, stündliche und 7-Tage-Vorhersage",
+    "az": "Cari hava, saatlıq və 7 günlük proqnoz",
+    "ar": "الطقس الحالي والتوقعات بالساعة ولسبعة أيام"
+  },
+  "features.calendar.note": {
+    "tr": "Resmî tatiller, dini ve özel günler, telefonundaki takvimler",
+    "en": "Public holidays, religious and special days, your phone's calendars",
+    "de": "Feiertage, religiöse und besondere Tage, die Kalender deines Telefons",
+    "az": "Rəsmi bayramlar, dini və xüsusi günlər, telefonundakı təqvimlər",
+    "ar": "العطل الرسمية والأيام الدينية والخاصة وتقويمات هاتفك"
+  },
+  "features.world.note": {
+    "tr": "Dünya saatleri ve dönen dünya",
+    "en": "World clocks and the spinning globe",
+    "de": "Weltuhren und der drehende Globus",
+    "az": "Dünya saatları və fırlanan dünya",
+    "ar": "ساعات العالم والكرة الأرضية الدوّارة"
+  },
+  "features.seasons.note": {
+    "tr": "Mevsimler, Güneş, Ay evreleri ve tutulmalar",
+    "en": "Seasons, the Sun, Moon phases and eclipses",
+    "de": "Jahreszeiten, Sonne, Mondphasen und Finsternisse",
+    "az": "Fəsillər, Günəş, Ay fazaları və tutulmalar",
+    "ar": "الفصول والشمس وأطوار القمر والكسوف والخسوف"
+  },
+  "features.prayer.note": {
+    "tr": "Namaz vakitleri, vakit bildirimleri ve imsakiye",
+    "en": "Prayer times, notifications and the Ramadan timetable",
+    "de": "Gebetszeiten, Benachrichtigungen und Ramadan-Kalender",
+    "az": "Namaz vaxtları, bildirişlər və imsakiyyə",
+    "ar": "أوقات الصلاة والإشعارات وإمساكية رمضان"
+  },
+  "features.tools.note": {
+    "tr": "Alarm, zamanlayıcı, kronometre, pomodoro, tarih hesaplama",
+    "en": "Alarm, timer, stopwatch, pomodoro, date calculator",
+    "de": "Wecker, Timer, Stoppuhr, Pomodoro, Datumsrechner",
+    "az": "Zəngli saat, taymer, saniyəölçən, pomodoro, tarix hesablama",
+    "ar": "المنبّه والمؤقّت وساعة الإيقاف والبومودورو وحاسبة التاريخ"
+  },
+  "features.hint": {
+    "tr": "Hava durumu, takvim, namaz vakitleri ve diğer özellikleri aç",
+    "en": "Turn on weather, calendar, prayer times and more",
+    "de": "Wetter, Kalender, Gebetszeiten und mehr einschalten",
+    "az": "Hava, təqvim, namaz vaxtları və digər xüsusiyyətləri aç",
+    "ar": "فعّل الطقس والتقويم وأوقات الصلاة والمزيد"
   }
 }

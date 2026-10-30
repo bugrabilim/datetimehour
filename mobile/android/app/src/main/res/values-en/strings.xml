@@ -777,5 +777,15 @@
     <string name="look_photo_pick">Choose photo</string>
     <string name="look_photo_remove">Remove photo</string>
     <string name="look_photo_note">The photo is kept only on this phone and shown darkened behind the full-screen clock.</string>
+    <string name="features_title">Features</string>
+    <string name="features_note">The clock is always on. Features you turn on appear in the bottom bar; with all of them off the bar is hidden and settings open from the gear on the clock screen.</string>
+    <string name="features_clock_note">Always on: 20 clock styles, full screen, clock screen items</string>
+    <string name="features_weather_note">Current conditions, hourly and 7-day forecast</string>
+    <string name="features_calendar_note">Public holidays, religious and special days, your phone\'s calendars</string>
+    <string name="features_world_note">World clocks and the spinning globe</string>
+    <string name="features_seasons_note">Seasons, the Sun, Moon phases and eclipses</string>
+    <string name="features_prayer_note">Prayer times, notifications and the Ramadan timetable</string>
+    <string name="features_tools_note">Alarm, timer, stopwatch, pomodoro, date calculator</string>
+    <string name="features_hint">Turn on weather, calendar, prayer times and more</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

@@ -23,10 +23,12 @@ class ScreenshotTest {
 
     private fun shot(
         name: String, tab: Tab, qualifiers: String = "tr", dark: Boolean = false, accent: String = "amber",
-        model: Int = 0, items: String = HomeItem.DEFAULT_RAW, weather: Boolean = false,
+        model: Int = 0, items: String = HomeItem.DEFAULT_RAW, weather: Boolean = false, features: Set<Tab> = Features.OPTIONAL.toSet(),
     ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
         Prefs.store.edit().putBoolean("notify.asked", true).commit()
+        // Sekme görüntüleri bütün özellikler açıkken (yeni kurulumda yalnız Saat açıktır; firstLaunch görüntüsü)
+        Features.save(features)
         Prefs.saveAppearance(if (dark) "dark" else "light")
         Prefs.saveAccent(accent)
         Prefs.saveClockModel(model)
@@ -146,6 +148,10 @@ class ScreenshotTest {
     @Test fun landscapeClock() = shot("tr-yatay-saat", Tab.CLOCK, "tr-land")
     @Test fun landscapeWeather() = shot("tr-yatay-hava", Tab.WEATHER, "tr-land", weather = true)
     @Test fun landscapePrayer() = shot("tr-yatay-vakitler", Tab.PRAYER, "tr-land", dark = true)
+    // İlk açılış: yalnız Saat (alt bar yok; dişli ve özellikleri açma satırı); bir özellik açıkken iki sekmeli bar
+    @Test fun firstLaunch() = shot("tr-ilk-acilis", Tab.CLOCK, features = emptySet())
+    @Test fun twoFeatures() = shot("tr-iki-ozellik", Tab.PRAYER, features = setOf(Tab.PRAYER, Tab.WEATHER))
+    @Test fun featuresPage() = tool("tr-ozellikler", "features")
     @Test fun homeItemsEditor() = capture("tr-saat-duzenle") { HomeItemsEditor() }
     @Test fun fullscreen() = capture("tr-saat-tam-ekran") { FullscreenClock {} }
 }
