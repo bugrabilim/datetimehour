@@ -759,5 +759,12 @@
     <string name="countdowns_today">Heute!</string>
     <string name="countdowns_remindTomorrow">Morgen: %1$s</string>
     <string name="countdowns_remindNow">%1$s: Es ist so weit</string>
+    <string name="place_districts">Landkreise</string>
+    <string name="place_wholeProvince">%1$s (Provinzhauptstadt)</string>
+    <string name="place_saved">Gespeicherte Orte</string>
+    <string name="place_save">Diesen Ort speichern</string>
+    <string name="place_remove">Aus Gespeicherten entfernen</string>
+    <string name="place_search">Provinz oder Landkreis suchen</string>
+    <string name="place_districtSource">Kreisstädte: GeoNames (CC BY 4.0). Maßgeblich für Gebetszeiten ist Diyanet.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

@@ -759,5 +759,12 @@
     <string name="countdowns_today">Bu gün!</string>
     <string name="countdowns_remindTomorrow">Sabah: %1$s</string>
     <string name="countdowns_remindNow">%1$s: vaxtı çatdı</string>
+    <string name="place_districts">Rayonlar</string>
+    <string name="place_wholeProvince">%1$s (il mərkəzi)</string>
+    <string name="place_saved">Saxlanmış yerlər</string>
+    <string name="place_save">Bu yeri saxla</string>
+    <string name="place_remove">Saxlanmışlardan çıxar</string>
+    <string name="place_search">İl və ya rayon axtar</string>
+    <string name="place_districtSource">Rayon mərkəzləri: GeoNames (CC BY 4.0). Rəsmi vaxt üçün Diyanət əsasdır.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

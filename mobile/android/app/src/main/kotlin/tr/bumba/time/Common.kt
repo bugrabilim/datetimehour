@@ -1,5 +1,11 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.horizontalScroll
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -124,8 +130,8 @@ fun SubBar(title: String, onBack: (() -> Unit)? = null, actions: @Composable () 
 }
 
 /**
- * Konum seçici: "Konumumu kullan" (izin ister; en yakın il ya da tam konum) ve 81 il. Seçim bütün uygulamada ortak
- * (vakitler, mevsimler). iOS'taki PlacePicker ile aynı.
+ * Konum seçici: "Konumumu kullan" (izin ister; en yakın il ya da tam konum), kayıtlı yerler, 81 il ve 973 ilçe (arama ya
+ * da ile dokunup "İlçeler"). Seçim bütün uygulamada ortak (vakitler, mevsimler). iOS'taki PlacePicker ile aynı.
  */
 @Composable
 fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
@@ -160,36 +166,85 @@ fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
     }
 
     if (open) {
+        // Arama, kayıtlı yerler, iller; ile dokununca ilçeleri (il merkezi en üstte)
+        var query by remember { mutableStateOf("") }
+        var expanded by remember { mutableStateOf<String?>(null) }
+        val coll = remember { java.text.Collator.getInstance(Strings.locale) }
+        fun pick(id: String) { Prefs.saveProvince(id); open = false }
         AlertDialog(
             onDismissRequest = { open = false },
             confirmButton = { TextButton(onClick = { open = false }) { Text(L("common.done")) } },
             title = { Text(L("settings.location")) },
             text = {
-                LazyColumn(Modifier.heightIn(max = 460.dp)) {
-                    item {
-                        Row(
-                            Modifier.fillMaxWidth().clickable {
-                                open = false
-                                val granted = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                                    PackageManager.PERMISSION_GRANTED
-                                if (granted) locate() else permission.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
-                            }.padding(vertical = 12.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Icon(Icons.Filled.MyLocation, null, tint = Theme.c.accent)
-                            Spacer(Modifier.width(10.dp))
-                            Text(L("place.useLocation"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+                Column {
+                    OutlinedTextField(query, { query = it; expanded = null }, Modifier.fillMaxWidth(), singleLine = true,
+                        placeholder = { Text(L("place.search")) })
+                    LazyColumn(Modifier.heightIn(max = 420.dp)) {
+                        val q = District.fold(query.trim())
+                        when {
+                            q.isNotEmpty() -> {
+                                val provinces = Province.all.filter { District.fold(it.displayName).contains(q) || District.fold(it.name).contains(q) }
+                                val districts = Province.all.flatMap { District.all(it.slug) }.filter { !it.isCentre && District.fold(it.name).contains(q) }
+                                items(provinces) { p -> PlaceRow(p.displayName, p.slug == place.id) { pick(p.slug) } }
+                                items(districts.take(60)) { d -> PlaceRow(d.label, d.id == place.id) { pick(d.id) } }
+                            }
+                            expanded != null -> {
+                                val slug = expanded!!
+                                item {
+                                    PlaceRow("‹ " + L("prayer.province"), false, accent = true) { expanded = null }
+                                    HorizontalDivider()
+                                    PlaceRow(T("place.wholeProvince", Province.find(slug).displayName), place.id == slug) { pick(slug) }
+                                }
+                                items(District.all(slug).filter { !it.isCentre }) { d -> PlaceRow(d.name, d.id == place.id) { pick(d.id) } }
+                            }
+                            else -> {
+                                item {
+                                    Row(
+                                        Modifier.fillMaxWidth().clickable {
+                                            open = false
+                                            val granted = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                                                PackageManager.PERMISSION_GRANTED
+                                            if (granted) locate() else permission.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+                                        }.padding(vertical = 12.dp),
+                                        verticalAlignment = Alignment.CenterVertically,
+                                    ) {
+                                        Icon(Icons.Filled.MyLocation, null, tint = Theme.c.accent)
+                                        Spacer(Modifier.width(10.dp))
+                                        Text(L("place.useLocation"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+                                    }
+                                    // Kayıtlı yerler: dokununca seçilir, × ile çıkar; şu anki yer kaydedilebilir
+                                    if (Prefs.savedPlaces.isNotEmpty()) {
+                                        HorizontalDivider()
+                                        Text(L("place.saved"), Modifier.padding(top = 10.dp), color = Theme.c.muted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                                        for (id in Prefs.savedPlaces) {
+                                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                                Box(Modifier.weight(1f)) { PlaceRow("★ " + AppPlace.byId(id).name, id == place.id) { pick(id) } }
+                                                IconButton(onClick = { Prefs.saveSavedPlaces(Prefs.savedPlaces - id) }) {
+                                                    Icon(Icons.Filled.Close, L("place.remove"), tint = Theme.c.muted, modifier = Modifier.size(18.dp))
+                                                }
+                                            }
+                                        }
+                                    }
+                                    if (!place.isAuto && place.id !in Prefs.savedPlaces) {
+                                        PlaceRow("☆ " + L("place.save") + " (" + place.name + ")", false, accent = true) {
+                                            Prefs.saveSavedPlaces(Prefs.savedPlaces + place.id)
+                                        }
+                                    }
+                                    HorizontalDivider()
+                                }
+                                items(Province.all.sortedWith(compareBy(coll) { it.displayName })) { p ->
+                                    val inside = place.id == p.slug || place.id.startsWith("d:${p.slug}:")
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Box(Modifier.weight(1f)) { PlaceRow(p.displayName, inside) { pick(p.slug) } }
+                                        // İlçeler
+                                        if (District.all(p.slug).size > 1) TextButton(onClick = { expanded = p.slug }) {
+                                            Text(L("place.districts") + " ›", color = Theme.c.accent, fontSize = 13.sp)
+                                        }
+                                    }
+                                }
+                            }
                         }
-                        HorizontalDivider()
-                    }
-                    items(Province.all.sortedWith(compareBy(java.text.Collator.getInstance(Strings.locale)) { it.displayName })) { p ->
-                        val selected = !place.isAuto && p.slug == place.id
-                        Text(
-                            p.displayName,
-                            Modifier.fillMaxWidth().clickable { Prefs.saveProvince(p.slug); open = false }.padding(vertical = 10.dp),
-                            color = if (selected) Theme.c.accent else Theme.c.text,
-                            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-                        )
+                        item { Text(L("place.districtSource"), Modifier.padding(top = 10.dp), color = Theme.c.muted, fontSize = 11.sp) }
                     }
                 }
             },
@@ -219,3 +274,32 @@ fun RefreshAutoPlace() {
 
 /** Sabit genişlikli rakamlar (saat ve süreler oynamasın), normal yazı tipiyle */
 val Tnum = androidx.compose.ui.text.TextStyle(fontFeatureSettings = "tnum")
+
+@Composable
+private fun PlaceRow(text: String, selected: Boolean, accent: Boolean = false, onClick: () -> Unit) {
+    Text(
+        text,
+        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(vertical = 10.dp),
+        color = if (selected || accent) Theme.c.accent else Theme.c.text,
+        fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
+    )
+}
+
+/** Kayıtlı yerler arasında hızlı geçiş (Vakitler); kayıtlı yer yoksa görünmez */
+@Composable
+fun SavedPlaceChips(modifier: Modifier = Modifier) {
+    val saved = Prefs.savedPlaces
+    if (saved.isEmpty()) return
+    val current = Prefs.province
+    Row(modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        for (id in saved) {
+            val on = id == current
+            Text(
+                AppPlace.byId(id).name,
+                Modifier.clip(RoundedCornerShape(50)).background(if (on) Theme.c.accentSoft else Theme.c.surface2)
+                    .clickable { Prefs.saveProvince(id) }.padding(horizontal = 14.dp, vertical = 8.dp),
+                color = if (on) Theme.c.accent else Theme.c.text, fontSize = 14.sp, fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal,
+            )
+        }
+    }
+}

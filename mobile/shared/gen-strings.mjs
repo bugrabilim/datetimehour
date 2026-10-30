@@ -150,6 +150,9 @@ const citiesJson = JSON.stringify(cities) + "\n";
 const placesSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/places.json"), "utf8"));
 const placesJson = JSON.stringify({ tz: placesSrc.tz, p: placesSrc.p, names: placesSrc.names }) + "\n";
 
+/* İlçeler (src/data/districts.json, GeoNames CC BY 4.0): il → [ad, enlem, boylam] (ilçe merkezi) */
+const districtsJson = JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/districts.json"), "utf8")).provinces) + "\n";
+
 /* Tutulmalar (NASA tablosu, src/data/eclipses.json): en büyük tutulma anı TD → UT (ΔT 69 sn, nature-calc.js ile aynı) */
 const eclSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/eclipses.json"), "utf8"));
 const eclipsesJson = JSON.stringify(["solar", "lunar"].flatMap((kind) => eclSrc[kind].map((e) => ({ kind, ut: Date.parse(e.td) - 69000, type: e.type, regions: e.regions, path: e.path || [] }))).sort((a, b) => a.ut - b.ut)) + "\n";
@@ -162,11 +165,13 @@ const files = {
   "mobile/ios/App/Resources/cities.json": citiesJson,
   "mobile/ios/App/Resources/places.json": placesJson,
   "mobile/ios/App/Resources/eclipses.json": eclipsesJson,
+  "mobile/ios/App/Resources/districts.json": districtsJson,
   "mobile/android/app/src/main/assets/provinces.json": provincesJson,
   "mobile/android/app/src/main/assets/calendar.json": calendarJson,
   "mobile/android/app/src/main/assets/cities.json": citiesJson,
   "mobile/android/app/src/main/assets/places.json": placesJson,
   "mobile/android/app/src/main/assets/eclipses.json": eclipsesJson,
+  "mobile/android/app/src/main/assets/districts.json": districtsJson,
   "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/app/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l)])),
 };

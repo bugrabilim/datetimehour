@@ -23,6 +23,25 @@ data class Province(val slug: String, val name: String, val lat: Double, val lon
     }
 }
 
+/** İlçe (src/data/districts.json, GeoNames CC BY 4.0): ad, ilçe merkezinin koordinatı, bağlı olduğu il */
+data class District(val name: String, val lat: Double, val lon: Double, val province: String) {
+    val id: String get() = "d:$province:$name"
+    /** İl merkezi ilçesi (adı ilin adı; "Hakkâri" / "Hakkari" gibi şapkalı yazımlar da) */
+    val isCentre: Boolean get() = fold(name) == fold(Province.find(province).name)
+    val label: String get() = if (isCentre) Province.find(province).displayName else "$name, ${Province.find(province).displayName}"
+
+    companion object {
+        fun all(province: String): List<District> = AppData.districts[province].orEmpty()
+        fun find(id: String): District? {
+            val parts = id.split(":", limit = 3)
+            if (parts.size != 3 || parts[0] != "d") return null
+            return all(parts[1]).firstOrNull { it.name == parts[2] }
+        }
+        fun fold(s: String) = java.text.Normalizer.normalize(s.lowercase(java.util.Locale.ROOT), java.text.Normalizer.Form.NFD)
+            .replace(Regex("\\p{M}"), "").replace("ı", "i")
+    }
+}
+
 /** Dünya saatleri için 31 şehir (sitedeki src/data/cities.json) */
 data class City(
     val key: String,
@@ -53,6 +72,9 @@ object AppData {
         private set
     lateinit var cities: List<City>
         private set
+    /** İl → ilçeleri (ada göre sıralı) */
+    lateinit var districts: Map<String, List<District>>
+        private set
     /** Gün → o günün olayları (birden çok güne yayılanlar her günde) */
     lateinit var events: Map<LocalDate, List<CalEvent>>
         private set
@@ -70,6 +92,12 @@ object AppData {
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
             Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"))
+        }
+
+        val dj = JSONObject(read("districts.json"))
+        districts = dj.keys().asSequence().associateWith { slug ->
+            val arr = dj.getJSONArray(slug)
+            (0 until arr.length()).map { i -> arr.getJSONArray(i).let { District(it.getString(0), it.getDouble(1), it.getDouble(2), slug) } }
         }
 
         val ci = JSONArray(read("cities.json"))

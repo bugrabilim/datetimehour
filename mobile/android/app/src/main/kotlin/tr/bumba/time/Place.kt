@@ -43,11 +43,20 @@ data class AppPlace(val id: String, val name: String, val lat: Double, val lon: 
         val turkey: ZoneId = ZoneId.of("Europe/Istanbul")
 
         fun of(p: Province, id: String = p.slug) = AppPlace(id, p.displayName, p.lat, p.lon, turkey)
+        fun of(d: District) = AppPlace(d.id, d.label, d.lat, d.lon, turkey)
+
+        /** Kayıtlı kimlikten yer: il, ilçe ("d:il:ilçe") ya da otomatik */
+        fun byId(id: String): AppPlace = when {
+            id == AUTO -> current()
+            id.startsWith("d:") -> District.find(id)?.let { of(it) } ?: of(Province.find(id.split(":").getOrElse(1) { "istanbul" }))
+            else -> of(Province.find(id))
+        }
 
         /** Kayıtlı seçim (Prefs.province okunur; Compose'da değişince yeniden hesaplanır) */
         fun current(): AppPlace {
             val slug = Prefs.province
-            if (slug != AUTO) return of(Province.find(slug))
+            if (slug.startsWith("d:")) District.find(slug)?.let { return of(it) }
+            if (slug != AUTO) return of(Province.find(slug.removePrefix("d:").substringBefore(":")))
             val lat = Prefs.autoLat() ?: return of(Province.find("istanbul"), AUTO)
             val ref = Prefs.autoRef()
             if (ref.startsWith("p:")) return of(Province.find(ref.drop(2)), AUTO)

@@ -2253,5 +2253,54 @@
     "de": "{title}: Es ist so weit",
     "az": "{title}: vaxtı çatdı",
     "ar": "{title}: حان الموعد"
+  },
+  "place.districts": {
+    "tr": "İlçeler",
+    "en": "Districts",
+    "de": "Landkreise",
+    "az": "Rayonlar",
+    "ar": "المناطق"
+  },
+  "place.wholeProvince": {
+    "tr": "{province} (il merkezi)",
+    "en": "{province} (provincial centre)",
+    "de": "{province} (Provinzhauptstadt)",
+    "az": "{province} (il mərkəzi)",
+    "ar": "{province} (مركز الولاية)"
+  },
+  "place.saved": {
+    "tr": "Kayıtlı yerler",
+    "en": "Saved places",
+    "de": "Gespeicherte Orte",
+    "az": "Saxlanmış yerlər",
+    "ar": "الأماكن المحفوظة"
+  },
+  "place.save": {
+    "tr": "Bu yeri kaydet",
+    "en": "Save this place",
+    "de": "Diesen Ort speichern",
+    "az": "Bu yeri saxla",
+    "ar": "حفظ هذا المكان"
+  },
+  "place.remove": {
+    "tr": "Kayıtlılardan çıkar",
+    "en": "Remove from saved",
+    "de": "Aus Gespeicherten entfernen",
+    "az": "Saxlanmışlardan çıxar",
+    "ar": "إزالة من المحفوظة"
+  },
+  "place.search": {
+    "tr": "İl ya da ilçe ara",
+    "en": "Search province or district",
+    "de": "Provinz oder Landkreis suchen",
+    "az": "İl və ya rayon axtar",
+    "ar": "ابحث عن ولاية أو منطقة"
+  },
+  "place.districtSource": {
+    "tr": "İlçe merkezleri: GeoNames (CC BY 4.0). Resmî vakit için Diyanet esastır.",
+    "en": "District centres: GeoNames (CC BY 4.0). Diyanet is the official reference for prayer times.",
+    "de": "Kreisstädte: GeoNames (CC BY 4.0). Maßgeblich für Gebetszeiten ist Diyanet.",
+    "az": "Rayon mərkəzləri: GeoNames (CC BY 4.0). Rəsmi vaxt üçün Diyanət əsasdır.",
+    "ar": "مراكز المناطق: GeoNames (CC BY 4.0). المرجع الرسمي لمواقيت الصلاة هو رئاسة الشؤون الدينية التركية."
   }
 }

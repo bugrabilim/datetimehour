@@ -759,5 +759,12 @@
     <string name="countdowns_today">Today!</string>
     <string name="countdowns_remindTomorrow">Tomorrow: %1$s</string>
     <string name="countdowns_remindNow">%1$s: it\'s time</string>
+    <string name="place_districts">Districts</string>
+    <string name="place_wholeProvince">%1$s (provincial centre)</string>
+    <string name="place_saved">Saved places</string>
+    <string name="place_save">Save this place</string>
+    <string name="place_remove">Remove from saved</string>
+    <string name="place_search">Search province or district</string>
+    <string name="place_districtSource">District centres: GeoNames (CC BY 4.0). Diyanet is the official reference for prayer times.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

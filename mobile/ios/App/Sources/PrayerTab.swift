@@ -73,6 +73,7 @@ struct PrayerPanel: View {
         let next = schedule.next(after: now)
         VStack(spacing: 16) {
             PlacePicker()
+            SavedPlaceChips()
 
             if let next {
                 VStack(spacing: 4) {

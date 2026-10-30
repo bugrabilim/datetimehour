@@ -759,5 +759,12 @@
     <string name="countdowns_today">اليوم!</string>
     <string name="countdowns_remindTomorrow">غدًا: %1$s</string>
     <string name="countdowns_remindNow">%1$s: حان الموعد</string>
+    <string name="place_districts">المناطق</string>
+    <string name="place_wholeProvince">%1$s (مركز الولاية)</string>
+    <string name="place_saved">الأماكن المحفوظة</string>
+    <string name="place_save">حفظ هذا المكان</string>
+    <string name="place_remove">إزالة من المحفوظة</string>
+    <string name="place_search">ابحث عن ولاية أو منطقة</string>
+    <string name="place_districtSource">مراكز المناطق: GeoNames (CC BY 4.0). المرجع الرسمي لمواقيت الصلاة هو رئاسة الشؤون الدينية التركية.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

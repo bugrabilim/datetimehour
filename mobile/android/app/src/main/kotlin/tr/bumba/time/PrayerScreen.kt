@@ -81,6 +81,7 @@ fun PrayerScreen() {
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             PlacePicker()
+            SavedPlaceChips()
             if (next != null) {
                 Text(T("prayer.nextIn", next.prayer.title), color = Theme.c.muted, fontSize = 15.sp)
                 Text(

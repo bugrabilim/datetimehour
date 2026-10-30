@@ -32,6 +32,7 @@ object Prefs {
             sp.edit().putInt("clockModel", clockModel).putInt("clockModelOrder", 2).apply()
         }
         province = sp.getString("province", "istanbul")!!
+        savedPlaces = sp.getString("places.saved", "")!!.split("|").filter { it.isNotEmpty() }
         world = sp.getString("world", City.DEFAULT_KEYS)!!
         units = sp.getString("units", null) ?: Units.systemDefault
         BadgeStore.load()
@@ -72,6 +73,14 @@ object Prefs {
     fun saveSecA(v: Boolean) { secA = v; sp.edit().putBoolean("secA", v).apply() }
     fun saveClockModel(v: Int) { clockModel = v; sp.edit().putInt("clockModel", v).apply() }
     fun saveProvince(v: String) { province = v; sp.edit().putString("province", v).apply() }
+
+    /** Kayıtlı yerler (il ya da ilçe kimlikleri, en çok 8; "|" ile ayrılır) */
+    var savedPlaces by mutableStateOf(emptyList<String>())
+        private set
+    fun saveSavedPlaces(v: List<String>) {
+        savedPlaces = v.distinct().take(8)
+        sp.edit().putString("places.saved", savedPlaces.joinToString("|")).apply()
+    }
     fun saveWorld(v: String) { world = v; sp.edit().putString("world", v).apply() }
 
     // Otomatik konumun son sonucu (2 ondalık; telefonda kalır)

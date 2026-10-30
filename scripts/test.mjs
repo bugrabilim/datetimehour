@@ -214,6 +214,19 @@ check(sm.split("<url>").slice(1).every((u) => LANGS.every((l) => u.includes(`hre
     const [hh, mm] = v.split(":").map(Number);
     check(Math.abs(Math.round(r[k] * 60) - (hh * 60 + mm)) <= 1, `namaz hesabı: ${k} ${(r[k]).toFixed(3)} ≠ ${v}`);
   }
+  // İlçe merkezleri (src/data/districts.json, GeoNames): Yüksekova ve Datça 30 Ekim 2026, Diyanet vakitleriyle (±1 dk)
+  const DS = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/districts.json"), "utf8"));
+  check(DS.count === 973 && Object.keys(DS.provinces).length === 81, `ilçe verisi: ${DS.count} ilçe`);
+  for (const [slug, name, want] of [["hakkari", "Yüksekova", "04:57 06:18 11:52 14:48 17:15 18:31"], ["mugla", "Datça", "06:03 07:24 12:58 15:56 18:22 19:38"]]) {
+    const d = (DS.provinces[slug] || []).find((x) => x[0] === name);
+    check(d, `ilçe verisi: ${name} yok`);
+    if (!d) continue;
+    const r = m.exports.times(2026, 10, 30, d[1], d[2], 3);
+    want.split(" ").forEach((v, i) => {
+      const k = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"][i], [hh, mm] = v.split(":").map(Number);
+      check(Math.abs(Math.round(r[k] * 60) - (hh * 60 + mm)) <= 1, `ilçe vakti ${name} ${k}: ${r[k].toFixed(3)} ≠ ${v}`);
+    });
+  }
   const hl = m.exports.times(2027, 6, 21, 64.1, -21.9, 0); // Reykjavik: imsak/yatsı açısı oluşmaz, yedide bir kuralı
   check(Object.values(hl).every((x) => Number.isFinite(x)), "namaz hesabı: yüksek enlemde NaN");
 }
