@@ -1068,3 +1068,43 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .pomo-goal { margin: 0.25rem 0 0; text-align: center; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
 .pomo-goal.is-done { color: var(--accent); }
 .pomo-task { align-items: end; }
+
+/* Ek araçlar (30 Ekim 2026): hicri çevirici, saat hesaplama, kaç gün kaldı, aralık zamanlayıcı, satranç saati,
+   metronom, konuşan saat, burç (more-tools.js) */
+.mt { margin-top: 1rem; }
+.mt-big { font-size: clamp(1.8rem, 7vw, 3.4rem); letter-spacing: -0.02em; }
+.mt-result { margin: 0.5rem 0 0; font-size: clamp(1.25rem, 4vw, 1.7rem); font-weight: 700; font-variant-numeric: tabular-nums; }
+.mt-lines { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; gap: 0.25rem; text-align: center; color: var(--muted); font-weight: 600; }
+.mt-words { margin: 0; text-align: center; font-size: clamp(1.1rem, 3.5vw, 1.6rem); font-weight: 600; color: var(--muted); }
+.mt-talk .clock { text-align: center; }
+.mt-tools-row { display: flex; justify-content: flex-end; }
+.tool .tool-actions .icon-btn { align-self: center; }
+.events-table tr.is-today th, .events-table tr.is-today td { background: var(--accent-soft); font-weight: 700; }
+.zo-res dd { font-size: 1.35rem; font-weight: 700; }
+/* Satranç saati: iki büyük düğme; dar ve dik ekranda üstteki (siyah) karşıdaki oyuncuya dönük */
+.chess-board { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.chess-side {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem; min-height: clamp(10rem, 34vh, 22rem);
+  padding: 1rem; border: 2px solid var(--border); border-radius: calc(var(--radius) + 4px); background: var(--surface-2); color: var(--text);
+  font: inherit; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent;
+}
+.chess-side.is-turn { border-color: var(--accent); background: var(--accent-soft); }
+.chess-side.is-flag { border-color: var(--danger, #b3261e); }
+.chess-name { font-weight: 600; color: var(--muted); }
+.chess-time { font-size: clamp(2.4rem, 10vw, 5.5rem); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.chess-moves { color: var(--muted); font-variant-numeric: tabular-nums; }
+.tool:fullscreen .chess-side, .tool.is-full .chess-side { min-height: 40vh; }
+@media (max-width: 40rem) and (orientation: portrait) {
+  .chess-board { grid-template-columns: 1fr; }
+  .chess-black { transform: rotate(180deg); }
+}
+/* Metronom */
+.metro-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem; min-height: 1.4rem; }
+.metro-dots span { width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--surface-2); border: 2px solid var(--border); transition: background 0.05s; }
+.metro-dots span.is-accent { border-color: var(--accent); }
+.metro-dots span.is-on { background: var(--accent); border-color: var(--accent); }
+.metro-row { display: flex; align-items: center; gap: 0.75rem; justify-content: center; }
+.metro-row input[type="range"] { flex: 1; max-width: 28rem; }
+.metro-row .toggle { min-width: 2.75rem; font-size: 1.3rem; }
+.mt-metro .big-time { font-size: clamp(3rem, 14vw, 6rem); }
+.mt-metro [data-mm-tempo] { margin: 0; text-align: center; font-weight: 600; }

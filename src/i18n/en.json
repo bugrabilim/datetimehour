@@ -389,6 +389,16 @@
               "Until you delete it"
             ],
             [
+              "sth-hiit",
+              "Remembers the interval timer's periods, number of rounds and spoken-cue setting.",
+              "Until you delete it"
+            ],
+            [
+              "sth-metro",
+              "Remembers the metronome's tempo, beats per bar and sound settings.",
+              "Until you delete it"
+            ],
+            [
               "sth-world",
               "Remembers the cities you chose for the world clock, and their order.",
               "Until you delete it"
@@ -787,6 +797,38 @@
         "api": {
           "name": "Open data (API)",
           "desc": "Holidays, prayer times and the Hijri calendar as JSON."
+        },
+        "hijriConv": {
+          "name": "Hijri date converter",
+          "desc": "Convert between Hijri and Gregorian dates."
+        },
+        "timeCalc": {
+          "name": "Time calculator",
+          "desc": "Add and subtract hours, time between two times."
+        },
+        "daysUntil": {
+          "name": "Days until",
+          "desc": "Days left until or since a date."
+        },
+        "interval": {
+          "name": "Interval timer",
+          "desc": "Spoken round timer for HIIT and Tabata."
+        },
+        "chess": {
+          "name": "Chess clock",
+          "desc": "Two-player game clock with increment."
+        },
+        "metronome": {
+          "name": "Metronome",
+          "desc": "BPM, time signature and tap tempo."
+        },
+        "talking": {
+          "name": "Talking clock",
+          "desc": "A clock that speaks the time."
+        },
+        "zodiac": {
+          "name": "Zodiac sign",
+          "desc": "Sun and Moon sign."
         }
       },
       "infoHeading": "Information pages"
@@ -2210,6 +2252,312 @@
       "Religious days from 2028 on are a projection based on the Diyanet's long-term calendar.",
       "There is no key or sign-up; the files are static and cacheable. Please request them at a reasonable rate (once a day is enough).",
       "The data is updated whenever the site is published; if the format changes a new version (v2) is added and v1 is kept."
+    ]
+  },
+  "hijriConv": {
+    "title": "Hijri Date Converter: Hijri to Gregorian and Back | Saat Tarih",
+    "description": "Convert Gregorian dates to Hijri and Hijri dates to Gregorian. Today's Hijri date and the month starts of this Hijri year, following Turkey's Diyanet calendar.",
+    "h1": "Hijri date converter",
+    "lead": "Today's Hijri date, conversion in both directions and the month starts of this Hijri year. Dates follow the calendar of Turkey's Presidency of Religious Affairs (Diyanet).",
+    "search": "hijri converter islamic calendar hijri to gregorian gregorian to hijri today hijri date hicri",
+    "todayLabel": "Today's Hijri date",
+    "toHijri": "Gregorian to Hijri",
+    "gregLabel": "Gregorian date",
+    "toGreg": "Hijri to Gregorian",
+    "yearLabel": "Hijri year",
+    "monthLabel": "Month",
+    "dayLabel": "Day",
+    "result": "Result",
+    "months": [
+      "Muharram",
+      "Safar",
+      "Rabi al-Awwal",
+      "Rabi al-Thani",
+      "Jumada al-Ula",
+      "Jumada al-Akhirah",
+      "Rajab",
+      "Shaban",
+      "Ramadan",
+      "Shawwal",
+      "Dhu al-Qadah",
+      "Dhu al-Hijjah"
+    ],
+    "fmt": "{d} {m} {y} AH",
+    "outside": "This date is outside the Diyanet table; it was calculated with the Umm al-Qura calendar and may differ by a day.",
+    "dayMax": "This Hijri month has {n} days.",
+    "invalid": "Enter a valid date.",
+    "yearHeading": "Month starts of Hijri year {y}",
+    "colMonth": "Month",
+    "colStart": "Starts on (Gregorian)",
+    "colDays": "Days",
+    "note": "A Hijri day begins at sunset; on this page the date changes at midnight. Month starts may differ by a day in some countries. 2026–2031 follow dates published by Diyanet; other years use the Umm al-Qura calculation.",
+    "faq": [
+      {
+        "q": "What is today's date in the Hijri calendar?",
+        "a": "Today's Hijri date is shown at the top of the page, following the Diyanet calendar. Since the Hijri day begins at sunset, the next date starts in the evening."
+      },
+      {
+        "q": "Why does the Hijri calendar move about 11 days each year?",
+        "a": "The Hijri calendar follows the phases of the Moon; 12 lunar months last about 354 days. That is about 11 days shorter than the Gregorian year, so Ramadan and the Eids come about 11 days earlier each year."
+      },
+      {
+        "q": "Why do Hijri dates differ between countries?",
+        "a": "Some countries start a month by sighting the crescent, others by calculation. Turkey uses Diyanet's calculated calendar and Saudi Arabia the Umm al-Qura calendar; they can differ by a day."
+      }
+    ]
+  },
+  "timeCalc": {
+    "title": "Time Calculator: Add, Subtract and Hours Between Times | Saat Tarih",
+    "description": "Find the duration between two times, add or subtract hours and minutes, and add up durations. Overnight shifts and decimal hours are handled too.",
+    "h1": "Time calculator",
+    "lead": "Duration between two times, adding or subtracting time, and summing durations. Spans past midnight and decimal hours are shown as well.",
+    "search": "time calculator hours between two times add hours subtract minutes shift hours sum durations decimal hours saat hesaplama",
+    "betweenHeading": "Duration between two times",
+    "startLabel": "Start",
+    "endLabel": "End",
+    "overnight": "The end is earlier than the start, so the span was counted past midnight.",
+    "duration": "{h} h {m} min",
+    "decimal": "Decimal: {x} hours",
+    "minutesTotal": "{n} minutes",
+    "addHeading": "Add or subtract time",
+    "timeLabel": "Time",
+    "opLabel": "Operation",
+    "opAdd": "Add (+)",
+    "opSub": "Subtract (−)",
+    "hoursLabel": "Hours",
+    "minutesLabel": "Minutes",
+    "resultTime": "Result: {time}",
+    "nextDay": "next day",
+    "prevDay": "previous day",
+    "daysLater": "{n} days later",
+    "daysEarlier": "{n} days earlier",
+    "sumHeading": "Add up durations",
+    "sumLabel": "Durations (one per line)",
+    "sumHint": "Write e.g. 1:30 (an hour and a half), 45 (minutes), 2:15:30 (hours:minutes:seconds); put − in front to subtract.",
+    "sumResult": "Total: {t}",
+    "sumBad": "Unreadable line: {n}",
+    "faq": [
+      {
+        "q": "How do I calculate the time between two times?",
+        "a": "Subtract the start from the end. If the end looks earlier (for example 22:00–06:00), midnight has passed: add 24 hours and the duration is 8 hours."
+      },
+      {
+        "q": "How do I convert minutes to decimal hours?",
+        "a": "Divide the minutes by 60: 30 minutes is 0.5 hours and 45 minutes is 0.75 hours. 7 hours 45 minutes is 7.75 hours."
+      },
+      {
+        "q": "How do I add up hours and minutes?",
+        "a": "Add the minutes first and turn every 60 minutes into an hour. For example 1:40 + 2:35 = 3 hours 75 minutes = 4 hours 15 minutes."
+      }
+    ]
+  },
+  "daysUntil": {
+    "title": "Days Until: How Many Days Until or Since a Date | Saat Tarih",
+    "description": "Find how many days are left until a date or have passed since it, in weeks, months and working days. Days left until holidays and key dates are listed too.",
+    "h1": "How many days until…?",
+    "lead": "Pick a date to see how many days are left or have passed, also in weeks and working days. Days until holidays and key dates are listed below.",
+    "search": "days until how many days until days since countdown days date counter kaç gün kaldı",
+    "dateLabel": "Date",
+    "left": "{n} days left",
+    "left1": "1 day left",
+    "passed": "{n} days ago",
+    "passed1": "1 day ago",
+    "today": "Today",
+    "weeks": "{w} weeks {d} days",
+    "months": "About {n} months",
+    "workdays": "{n} working days (excluding weekends and public holidays)",
+    "weekday": "Day of the week: {d}",
+    "upcomingHeading": "Days until key dates",
+    "colEvent": "Day",
+    "colDate": "Date",
+    "colLeft": "Left",
+    "daysUnit": "{n} days",
+    "daysUnit1": "1 day",
+    "faq": [
+      {
+        "q": "Is today included in the days left?",
+        "a": "No. The number of nights until the chosen date is shown: tomorrow is 1 day left. If the chosen day is today, it says “Today”."
+      },
+      {
+        "q": "How are working days counted?",
+        "a": "Saturdays, Sundays and full-day public holidays in Turkey are excluded from the days after today; half days before the Eids count as half. Holiday data covers 2026–2031."
+      }
+    ]
+  },
+  "interval": {
+    "title": "Interval Timer: Online HIIT and Tabata Timer | Saat Tarih",
+    "description": "Count rounds with warm-up, work and rest periods: a chime and spoken cues at each change and a count of the last three seconds. Tabata and HIIT presets, full screen.",
+    "h1": "Interval timer",
+    "lead": "Choose warm-up, work and rest periods and the number of rounds. A chime sounds at each change and the phase can be spoken aloud.",
+    "search": "interval timer hiit timer tabata timer workout timer emom round timer aralık zamanlayıcı",
+    "warmup": "Warm-up (s)",
+    "work": "Work (s)",
+    "rest": "Rest (s)",
+    "rounds": "Rounds",
+    "presets": "Presets",
+    "presetTabata": "Tabata 20/10 × 8",
+    "presetHiit": "HIIT 30/15 × 10",
+    "presetEmom": "EMOM 60 × 10",
+    "phases": {
+      "warmup": "Warm-up",
+      "work": "Work",
+      "rest": "Rest",
+      "done": "Done"
+    },
+    "lastRound": "Last round",
+    "roundOf": "Round {n}/{total}",
+    "total": "Total: {t}",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Reset",
+    "voice": "Spoken cues",
+    "voiceNote": "Cues use your browser's on-device speech engine; if there is no on-device voice for this language, only the chime sounds.",
+    "note": "Works while the page is open; in full screen the display stays on.",
+    "faq": [
+      {
+        "q": "What is Tabata?",
+        "a": "Tabata is a 4-minute interval workout of 8 rounds: 20 seconds of very hard work and 10 seconds of rest. Pick it from the presets."
+      },
+      {
+        "q": "Is there a rest after the last round?",
+        "a": "No. The workout ends when the last work period finishes; rest is only counted between rounds."
+      }
+    ]
+  },
+  "chess": {
+    "title": "Chess Clock: Online, With Increment and Full Screen | Saat Tarih",
+    "description": "Two-player online chess clock with time controls (1+0, 3+2, 5+0, 10+0, 15+10), Fischer increment, move counts and a chime when time runs out. Full screen on phones.",
+    "h1": "Chess clock",
+    "lead": "Choose a time control and tap your own clock after each move. Fischer increment and move counts are supported.",
+    "search": "chess clock online chess timer blitz bullet fischer increment game clock satranç saati",
+    "control": "Time control",
+    "custom": "Custom",
+    "minutes": "Minutes",
+    "increment": "Increment (s)",
+    "white": "White",
+    "black": "Black",
+    "hint": "To start, tap Black's clock; White's time starts running. The space bar stops the clock of the player to move.",
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Reset",
+    "moves": "{n} moves",
+    "flag": "{side}: time is up",
+    "faq": [
+      {
+        "q": "What does 3+2 mean in chess?",
+        "a": "Each player has 3 minutes and 2 seconds are added after every move they make (Fischer increment)."
+      },
+      {
+        "q": "Who starts the chess clock?",
+        "a": "Under the rules, the player with the black pieces starts the clock, so White's time begins to run."
+      }
+    ]
+  },
+  "metronome": {
+    "title": "Online Metronome: BPM, Time Signature and Tap Tempo | Saat Tarih",
+    "description": "A metronome in your browser: 30–250 BPM, beats per bar, accented first beat, subdivisions and tap tempo. The sound is generated on your device.",
+    "h1": "Metronome",
+    "lead": "Set the tempo or tap it, then choose beats per bar and subdivision. Sounds are generated in the browser.",
+    "search": "metronome online metronome bpm tempo time signature tap tempo click track metronom",
+    "bpm": "Tempo (BPM)",
+    "beats": "Beats per bar",
+    "sub": "Subdivision",
+    "subs": {
+      "1": "None",
+      "2": "Eighths",
+      "3": "Triplets",
+      "4": "Sixteenths"
+    },
+    "accent": "Accent the first beat",
+    "tap": "Tap tempo",
+    "start": "Start",
+    "stop": "Stop",
+    "slower": "Slower",
+    "faster": "Faster",
+    "volume": "Volume",
+    "tempoNote": "Italian tempo names are approximate ranges.",
+    "faq": [
+      {
+        "q": "What does BPM mean?",
+        "a": "BPM (beats per minute) is the number of beats in a minute. 60 BPM is one beat per second and 120 BPM is two."
+      },
+      {
+        "q": "How does tap tempo work?",
+        "a": "Tap the button along with the beat at least twice; the average time between the last taps is turned into BPM."
+      }
+    ]
+  },
+  "talking": {
+    "title": "Talking Clock: An Online Clock That Speaks the Time | Saat Tarih",
+    "description": "An online clock that speaks the time: at the press of a button or automatically every 1, 5, 15 or 30 minutes and on the hour. Handy for low vision or while working.",
+    "h1": "Talking clock",
+    "lead": "Press the button to hear the time; it can also speak by itself at set intervals. Works while the page is open.",
+    "search": "talking clock speaking clock say the time audio clock what time is it spoken konuşan saat",
+    "say": "Say the time",
+    "auto": "Speak automatically",
+    "every": {
+      "off": "Off",
+      "1": "Every minute",
+      "5": "Every 5 minutes",
+      "15": "Every 15 minutes",
+      "30": "Every 30 minutes",
+      "60": "On the hour"
+    },
+    "chime": "Chime first",
+    "noVoice": "No on-device voice for this language was found in this browser; the time is shown in words.",
+    "note": "Speech uses your browser's on-device engine; the text is not sent anywhere. Works while the page is open.",
+    "faq": [
+      {
+        "q": "Does the talking clock work while the phone is locked?",
+        "a": "No. Browsers restrict sound from background pages; automatic speech only works while the page is open and the screen is on."
+      },
+      {
+        "q": "Why is there no sound?",
+        "a": "The browser needs a voice for this language installed on the device. You can download voices in your phone's or computer's language and speech settings."
+      }
+    ]
+  },
+  "zodiac": {
+    "title": "Zodiac Sign Calculator: Sun and Moon Sign by Birth Date | Saat Tarih",
+    "description": "Find your Sun sign and Moon sign from your birth date and time with an astronomical calculation. Includes a table of the signs' date ranges.",
+    "h1": "Zodiac sign calculator",
+    "lead": "Enter your birth date and time; the signs the Sun and the Moon were in at that moment are calculated. Astrology is for fun.",
+    "search": "zodiac sign calculator what is my sign moon sign calculator sun sign birth date star sign burç",
+    "dateLabel": "Birth date",
+    "timeLabel": "Birth time (optional)",
+    "sun": "Sun sign",
+    "moon": "Moon sign",
+    "signs": [
+      "Aries",
+      "Taurus",
+      "Gemini",
+      "Cancer",
+      "Leo",
+      "Virgo",
+      "Libra",
+      "Scorpio",
+      "Sagittarius",
+      "Capricorn",
+      "Aquarius",
+      "Pisces"
+    ],
+    "noTime": "No birth time was entered, so 12:00 noon was assumed; the Moon changes sign about every 2.5 days.",
+    "cusp": "The Sun changes sign on this day; the birth time can change the result.",
+    "tzNote": "The time is read in this device's time zone.",
+    "tableHeading": "Date ranges of the signs",
+    "colSign": "Sign",
+    "colDates": "Dates (approximate)",
+    "fun": "Astrology is for entertainment and has no scientific basis. The calculation itself is astronomical: the ecliptic longitude of the Sun and the Moon (tropical zodiac).",
+    "faq": [
+      {
+        "q": "Why do the sign boundaries shift a little each year?",
+        "a": "The moment the Sun moves into a new sign shifts by a few hours each year, so the change days vary between the 19th and the 23rd. On those days the birth time matters too."
+      },
+      {
+        "q": "What is a Moon sign?",
+        "a": "It is the sign the Moon was in at the moment of birth. The Moon passes through a sign in about 2.5 days, so it may not be certain without the birth time."
+      }
     ]
   }
 }

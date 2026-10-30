@@ -793,6 +793,6 @@ function sunTimes(y, m, d, lat, lon) {
     T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, tpl: tpl, norm: norm,
     nowMs: nowMs, nowDate: nowDate, mono: mono, prefs: prefs, makeFullscreen: makeFullscreen,
     parts: parts, offsetMin: offsetMin, fmt: fmt, localTz: localTz, durLabel: durLabel,
-    syncState: function () { return sync; },
+    syncState: function () { return sync; }, wordsText: wordsText,
   };
 })();

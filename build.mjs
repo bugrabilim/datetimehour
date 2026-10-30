@@ -88,6 +88,7 @@ for (const [name, from] of [
   ["prayer.js", "js/prayer.js"],
   ["qibla.js", "js/qibla.js"],
   ["zakat.js", "js/zakat.js"],
+  ["more-tools.js", "js/more-tools.js"],
   ["bridge.js", "js/bridge.js"],
   ["zones.js", "js/zones.js"],
   ["imsakiye.js", "js/imsakiye.js"],
@@ -300,7 +301,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "worldHol", "datecalc", "embed", "prayer", "qibla", "zakat", "nature", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "nature", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1124,6 +1125,14 @@ const TOOL_ART = {
   qibla: svgArt('<circle cx="48" cy="34" r="24" class="af"/><path d="M48 6v6M48 56v6M20 34h-6M82 34h-6M48 34l12-14-4 18z"/><rect x="62" y="12" width="10" height="10" rx="1"/>'),
   zakat: svgArt('<ellipse cx="34" cy="46" rx="18" ry="6" class="af"/><path d="M16 46v-8c0 3 8 6 18 6s18-3 18-6v8M16 38v-8c0 3 8 6 18 6s18-3 18-6v8M16 30c0-3 8-6 18-6s18 3 18 6"/><path d="M62 18h20M62 30h20M72 12v24M64 44l16 12M80 44 64 56"/>'),
   api: svgArt('<rect x="14" y="12" width="68" height="44" rx="6" class="af"/><path d="M34 26l-8 8 8 8M62 26l8 8-8 8M52 22l-8 24"/>'),
+  hijriConv: svgArt('<rect x="10" y="14" width="46" height="42" rx="6" class="af"/><path d="M10 26h46M24 8v10M42 8v10M24 38h6M36 38h6M24 46h6"/><path d="M80 18a16 16 0 1 0 6 28 13 13 0 0 1-6-28z" class="af"/>'),
+  timeCalc: svgArt('<circle cx="34" cy="34" r="20" class="af"/><path d="M34 22v12l8 5M66 26h16M74 18v16M66 46h16"/>'),
+  daysUntil: svgArt('<rect x="12" y="14" width="52" height="42" rx="6" class="af"/><path d="M12 26h52M26 8v10M50 8v10M28 41h20m-6-6 6 6-6 6"/><circle cx="80" cy="41" r="7" class="af"/>'),
+  interval: svgArt('<circle cx="34" cy="36" r="19" class="af"/><path d="M28 12h12M34 36l7-8M62 54V40M72 54V26M82 54V34"/>'),
+  chess: svgArt('<rect x="8" y="24" width="80" height="30" rx="6" class="af"/><circle cx="29" cy="39" r="9"/><circle cx="67" cy="39" r="9"/><path d="M23 24v-6h12v6M61 24v-6h12v6M29 39v-5M67 39l4-3"/>'),
+  metronome: svgArt('<path d="M32 56 41 10h14l9 46z" class="af"/><path d="M48 46 66 14M28 56h40"/><circle cx="60" cy="25" r="3"/>'),
+  talking: svgArt('<circle cx="36" cy="34" r="20" class="af"/><path d="M36 22v12l7 4M64 24c4 6 4 14 0 20M73 17c7 10 7 24 0 34"/>'),
+  zodiac: svgArt('<circle cx="48" cy="32" r="23" class="af"/><path d="M48 17l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/>'),
 };
 
 function buildToolsHub(lang) {
@@ -1136,7 +1145,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "zones", "dst", "unix", "bridge", "worldHol", "qibla", "zakat", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "unix", "bridge", "worldHol", "qibla", "zakat", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1252,6 +1261,10 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
+extendRoutes({
+  tr: { hijriConv: "/hicri-takvim-cevirici/", timeCalc: "/saat-hesaplama/", daysUntil: "/kac-gun-kaldi/", interval: "/aralik-zamanlayici/", chess: "/satranc-saati/", metronome: "/metronom/", talking: "/konusan-saat/", zodiac: "/burc-hesaplama/" },
+  en: { hijriConv: "/en/hijri-converter/", timeCalc: "/en/time-calculator/", daysUntil: "/en/days-until/", interval: "/en/interval-timer/", chess: "/en/chess-clock/", metronome: "/en/metronome/", talking: "/en/talking-clock/", zodiac: "/en/zodiac-sign/" },
+});
 extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", zakat: "/zekat-hesaplama/", api: "/gelistiriciler/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/", worldHol: "/resmi-tatiller/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", zakat: "/en/zakat-calculator/", api: "/en/developers/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/", worldHol: "/en/public-holidays/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -2107,6 +2120,185 @@ function buildZakat(lang) {
   return simplePage(lang, "zakat", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "zakat", title: s.h1 }, scripts: ["zakat.js"], clientExtra: { t: { zk } }, nav: "prayer", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].zakat, s.description)] });
 }
 
+/* ---------- Ek araçlar (30 Ekim 2026, rakip analizi K maddeleri 13, 31, 32, 36–39, 41) ----------
+   Hicri takvim çevirici, saat hesaplama, kaç gün kaldı, aralık zamanlayıcı, satranç saati, metronom, konuşan saat,
+   burç hesaplama. Hepsi tarayıcıda çalışır (more-tools.js), dış istek yok; ses Web Audio ve cihazdaki konuşma motoru. */
+const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac"];
+const HIJRI_TABLE = hijriTable(HOL, readJson("src/data/hijri.json"));
+const DU_KEYS = ["newYear", "ramadanStart", "rb1", "apr23", "may1", "may19", "kb1", "jul15", "aug30", "oct29", "hijri", "ashura", "mawlid", "regaib", "mirac", "berat", "kadir", "feb14", "mothers", "fathers"];
+// Burçların yaklaşık başlangıç günleri (tropikal zodyak; Koç'tan başlayarak [ay, gün])
+const ZODIAC_START = [[3, 21], [4, 20], [5, 21], [6, 21], [7, 23], [8, 23], [9, 23], [10, 23], [11, 22], [12, 22], [1, 20], [2, 19]];
+const ZODIAC_SYM = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
+const mtField = (id, label, input) => `<div class="field"><label for="${id}">${esc(label)}</label>${input}</div>`;
+const mtNum = (id, label, attrs) => mtField(id, label, `<input id="${id}" type="number" inputmode="numeric" ${attrs}>`);
+const mtFsBtn = (t) => `<button type="button" class="icon-btn" data-fs aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>`;
+function moreBody(lang, key) {
+  const t = I[lang], s = t[key];
+  const res = (attr, label) => `<div class="fact"><dt>${esc(label)}</dt><dd ${attr}>–</dd></div>`;
+  if (key === "hijriConv") {
+    const cur = HIJRI_TABLE.filter((r) => r[0] <= cfg.updated).pop() || HIJRI_TABLE[0];
+    const hy = cur[1];
+    const rows = HIJRI_TABLE.map((r, i) => [r, HIJRI_TABLE[i + 1]]).filter(([r, n]) => r[1] === hy && n)
+      .map(([r, n]) => `<tr><th scope="row">${esc(s.months[r[2] - 1])}</th><td>${esc(fmtDate(lang, r[0]))}</td><td>${Math.round((Date.parse(n[0]) - Date.parse(r[0])) / 86400000)}</td></tr>`).join("");
+    const hero = `<section class="mt" data-mt="hijri" aria-labelledby="hj-h">
+      <h2 id="hj-h" class="sr-only">${esc(s.todayLabel)}</h2>
+      <p class="meta">${esc(s.todayLabel)}</p>
+      <p class="big-time mt-big" data-hj-today>–</p>
+      <p class="meta" data-hj-today-greg>&nbsp;</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section" aria-labelledby="hj-a"><div class="wrap">
+      <h2 id="hj-a">${esc(s.toHijri)}</h2>
+      <div class="inputs-row">${mtField("hj-g", s.gregLabel, '<input id="hj-g" type="date" min="1900-01-01" max="2100-12-31" data-hj-g>')}</div>
+      <p class="mt-result" data-hj-r1 role="status" aria-live="polite">&nbsp;</p><p class="meta" data-hj-n1 hidden></p>
+    </div></section>
+    <section class="section" aria-labelledby="hj-b"><div class="wrap">
+      <h2 id="hj-b">${esc(s.toGreg)}</h2>
+      <div class="inputs-row">${mtNum("hj-y", s.yearLabel, `min="1300" max="1600" value="${hy}" data-hj-y`)}${mtField("hj-m", s.monthLabel, `<select id="hj-m" data-hj-m>${s.months.map((m, i) => `<option value="${i + 1}">${esc(m)}</option>`).join("")}</select>`)}${mtNum("hj-d", s.dayLabel, 'min="1" max="30" value="1" data-hj-d')}</div>
+      <p class="mt-result" data-hj-r2 role="status" aria-live="polite">&nbsp;</p><p class="meta" data-hj-n2 hidden></p>
+    </div></section>
+    <section class="section" aria-labelledby="hj-c"><div class="wrap">
+      <div class="table-wrap"><table class="events-table" data-hj-table><caption id="hj-c">${esc(tpl(s.yearHeading, { y: hy }))}</caption><thead><tr><th scope="col">${esc(s.colMonth)}</th><th scope="col">${esc(s.colStart)}</th><th scope="col">${esc(s.colDays)}</th></tr></thead><tbody data-hj-tbody>${rows}</tbody></table></div>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: { months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE } };
+  }
+  if (key === "timeCalc") {
+    const hero = `<section class="mt" data-mt="timecalc" aria-labelledby="tc-a">
+      <h2 id="tc-a">${esc(s.betweenHeading)}</h2>
+      <div class="inputs-row">${mtField("tc-s", s.startLabel, '<input id="tc-s" type="time" value="09:00" data-tc-s>')}${mtField("tc-e", s.endLabel, '<input id="tc-e" type="time" value="17:30" data-tc-e>')}</div>
+      <p class="mt-result" data-tc-r1 role="status" aria-live="polite">&nbsp;</p><p class="meta" data-tc-n1>&nbsp;</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section" aria-labelledby="tc-b"><div class="wrap">
+      <h2 id="tc-b">${esc(s.addHeading)}</h2>
+      <div class="inputs-row">${mtField("tc-t", s.timeLabel, '<input id="tc-t" type="time" value="08:00" data-tc-t>')}${mtField("tc-op", s.opLabel, `<select id="tc-op" data-tc-op><option value="1">${esc(s.opAdd)}</option><option value="-1">${esc(s.opSub)}</option></select>`)}${mtNum("tc-h", s.hoursLabel, 'min="0" max="9999" value="2" data-tc-h')}${mtNum("tc-m", s.minutesLabel, 'min="0" max="59999" value="30" data-tc-m')}</div>
+      <p class="mt-result" data-tc-r2 role="status" aria-live="polite">&nbsp;</p>
+    </div></section>
+    <section class="section" aria-labelledby="tc-c"><div class="wrap">
+      <h2 id="tc-c">${esc(s.sumHeading)}</h2>
+      <div class="field"><label for="tc-sum">${esc(s.sumLabel)}</label><textarea id="tc-sum" rows="5" dir="ltr" data-tc-sum>1:30
+45
+2:15:30</textarea></div>
+      <p class="meta">${esc(s.sumHint)}</p>
+      <p class="mt-result" data-tc-r3 role="status" aria-live="polite">&nbsp;</p><p class="meta" data-tc-n3>&nbsp;</p>
+    </div></section>`;
+    return { hero, sections, client: { overnight: s.overnight, duration: s.duration, decimal: s.decimal, minutesTotal: s.minutesTotal, resultTime: s.resultTime, nextDay: s.nextDay, prevDay: s.prevDay, daysLater: s.daysLater, daysEarlier: s.daysEarlier, sumResult: s.sumResult, sumBad: s.sumBad } };
+  }
+  if (key === "daysUntil") {
+    const names = t.calendar.events;
+    const evs = HOL_YEARS.flatMap((y) => YEAR_DATA[y].events).filter((e) => DU_KEYS.includes(e.key) && e.date >= cfg.updated).slice(0, 30);
+    const rows = evs.map((e) => `<tr data-du-row="${e.date}"><th scope="row">${esc(names[e.key])}</th><td>${esc(fmtDate(lang, e.date))}</td><td data-du-left>–</td></tr>`).join("");
+    const hero = `<section class="mt" data-mt="days" aria-labelledby="du-h">
+      <h2 id="du-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="inputs-row">${mtField("du-d", s.dateLabel, `<input id="du-d" type="date" min="1900-01-01" max="2200-12-31" data-du-d>`)}</div>
+      <p class="big-time mt-big" data-du-main role="status" aria-live="polite">&nbsp;</p>
+      <ul class="mt-lines" data-du-lines hidden><li data-du-weeks></li><li data-du-months></li><li data-du-work></li><li data-du-dow></li></ul>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section" aria-labelledby="du-u"><div class="wrap">
+      <div class="table-wrap"><table class="events-table"><caption id="du-u">${esc(s.upcomingHeading)}</caption><thead><tr><th scope="col">${esc(s.colEvent)}</th><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    </div></section>`;
+    return { hero, sections, client: { left: s.left, left1: s.left1, passed: s.passed, passed1: s.passed1, today: s.today, weeks: s.weeks, months: s.months, workdays: s.workdays, weekday: s.weekday, daysUnit: s.daysUnit, daysUnit1: s.daysUnit1 } };
+  }
+  if (key === "interval") {
+    const hero = `<section class="tool mt mt-iv" data-mt="interval" aria-labelledby="iv-h">
+      <h2 id="iv-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="mt-tools-row">${mtFsBtn(t)}</div>
+      <p class="phase" data-iv-phase aria-live="polite">${esc(s.phases.warmup)}</p>
+      <p class="big-time" role="timer" data-iv-display>00:10</p>
+      <progress class="tool-progress" max="100" value="0" data-iv-progress aria-hidden="true"></progress>
+      <p class="meta" data-iv-round>&nbsp;</p>
+      <div class="tool-actions"><button type="button" class="btn" data-iv-start>${esc(s.start)}</button><button type="button" class="toggle" data-iv-reset>${esc(s.reset)}</button></div>
+      <p class="meta" data-iv-total>&nbsp;</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section"><div class="wrap">
+      <div class="inputs-row">${mtNum("iv-w", s.warmup, 'min="0" max="3600" value="10" data-iv-cfg="warm"')}${mtNum("iv-k", s.work, 'min="1" max="3600" value="30" data-iv-cfg="work"')}${mtNum("iv-r", s.rest, 'min="0" max="3600" value="15" data-iv-cfg="rest"')}${mtNum("iv-n", s.rounds, 'min="1" max="99" value="8" data-iv-cfg="rounds"')}</div>
+      <div class="presets" role="group" aria-label="${esc(s.presets)}"><button type="button" class="chip" data-iv-preset="10,20,10,8">${esc(s.presetTabata)}</button><button type="button" class="chip" data-iv-preset="10,30,15,10">${esc(s.presetHiit)}</button><button type="button" class="chip" data-iv-preset="10,60,0,10">${esc(s.presetEmom)}</button></div>
+      <div class="tool-extra"><label class="check-inline"><input type="checkbox" data-iv-voice checked> ${esc(s.voice)}</label></div>
+      <p class="meta">${esc(s.voiceNote)}</p>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: { phases: s.phases, lastRound: s.lastRound, roundOf: s.roundOf, total: s.total, start: s.start, pause: s.pause, resume: s.resume } };
+  }
+  if (key === "chess") {
+    const presets = [[1, 0], [3, 0], [3, 2], [5, 0], [5, 3], [10, 0], [15, 10], [30, 0]];
+    const side = (c, label) => `<button type="button" class="chess-side chess-${c}" data-ch-side="${c}" aria-label="${esc(label)}"><span class="chess-name">${esc(label)}</span><span class="chess-time" data-ch-time>05:00</span><span class="chess-moves" data-ch-moves>&nbsp;</span></button>`;
+    const hero = `<section class="tool mt mt-chess" data-mt="chess" aria-labelledby="ch-h">
+      <h2 id="ch-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="chess-board">${side("black", s.black)}${side("white", s.white)}</div>
+      <p class="cd-message" role="status" aria-live="assertive" data-ch-msg hidden></p>
+      <div class="tool-actions"><button type="button" class="toggle" data-ch-pause>${esc(s.pause)}</button><button type="button" class="toggle" data-ch-reset>${esc(s.reset)}</button>${mtFsBtn(t)}</div>
+      <p class="meta">${esc(s.hint)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section"><div class="wrap">
+      <div class="inputs-row">${mtField("ch-c", s.control, `<select id="ch-c" data-ch-control>${presets.map(([m, i]) => `<option value="${m},${i}"${m === 5 && i === 0 ? " selected" : ""}>${m} + ${i}</option>`).join("")}<option value="custom">${esc(s.custom)}</option></select>`)}${mtNum("ch-m", s.minutes, 'min="1" max="180" value="5" data-ch-min disabled')}${mtNum("ch-i", s.increment, 'min="0" max="60" value="0" data-ch-inc disabled')}</div>
+    </div></section>`;
+    return { hero, sections, client: { white: s.white, black: s.black, moves: s.moves, flag: s.flag, pause: s.pause, resume: s.resume } };
+  }
+  if (key === "metronome") {
+    const hero = `<section class="tool mt mt-metro" data-mt="metronome" aria-labelledby="mm-h">
+      <h2 id="mm-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="metro-dots" data-mm-dots aria-hidden="true"></div>
+      <p class="big-time" data-mm-bpm-show>100</p>
+      <p class="meta" data-mm-tempo>Andante</p>
+      <div class="metro-row"><button type="button" class="toggle" data-mm-step="-1" aria-label="${esc(s.slower)}">−</button><input type="range" min="30" max="250" value="100" aria-label="${esc(s.bpm)}" data-mm-range><button type="button" class="toggle" data-mm-step="1" aria-label="${esc(s.faster)}">+</button></div>
+      <div class="tool-actions"><button type="button" class="btn" data-mm-start>${esc(s.start)}</button><button type="button" class="toggle" data-mm-tap>${esc(s.tap)}</button>${mtFsBtn(t)}</div>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section"><div class="wrap">
+      <div class="inputs-row">${mtNum("mm-b", s.bpm, 'min="30" max="250" value="100" data-mm-bpm')}${mtField("mm-n", s.beats, `<select id="mm-n" data-mm-beats>${Array.from({ length: 12 }, (_, i) => `<option value="${i + 1}"${i === 3 ? " selected" : ""}>${i + 1}</option>`).join("")}</select>`)}${mtField("mm-s", s.sub, `<select id="mm-s" data-mm-sub>${["1", "2", "3", "4"].map((k) => `<option value="${k}">${esc(s.subs[k])}</option>`).join("")}</select>`)}${mtField("mm-v", s.volume, '<input id="mm-v" type="range" min="0" max="100" value="70" data-mm-vol>')}</div>
+      <div class="tool-extra"><label class="check-inline"><input type="checkbox" data-mm-accent checked> ${esc(s.accent)}</label></div>
+      <p class="meta">${esc(s.tempoNote)}</p>
+    </div></section>`;
+    return { hero, sections, client: { start: s.start, stop: s.stop } };
+  }
+  if (key === "talking") {
+    const hero = `<section class="tool mt mt-talk" data-mt="talking" aria-labelledby="tk-h">
+      <h2 id="tk-h" class="sr-only">${esc(s.h1)}</h2>
+      <p class="clock" data-live="time" data-sec>--:--:--</p>
+      <p class="mt-words" data-live="words">&nbsp;</p>
+      <div class="tool-actions"><button type="button" class="btn" data-tk-say>${esc(s.say)}</button>${mtFsBtn(t)}</div>
+      <p class="meta" data-tk-novoice hidden>${esc(s.noVoice)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section"><div class="wrap">
+      <div class="inputs-row">${mtField("tk-e", s.auto, `<select id="tk-e" data-tk-every>${["off", "1", "5", "15", "30", "60"].map((k) => `<option value="${k}">${esc(s.every[k])}</option>`).join("")}</select>`)}</div>
+      <div class="tool-extra"><label class="check-inline"><input type="checkbox" data-tk-chime checked> ${esc(s.chime)}</label></div>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: {} };
+  }
+  // zodiac
+  const ranges = ZODIAC_START.map((st, i) => {
+    const nx = ZODIAC_START[(i + 1) % 12], endD = new Date(Date.UTC(2027, nx[0] - 1, nx[1] - 1));
+    const f = (m, d) => tpl(t.calendar.shortFmt, { day: d, month: t.calendar.months[m - 1] });
+    return `<tr><th scope="row"><span aria-hidden="true">${ZODIAC_SYM[i]}&#xFE0E;</span> ${esc(s.signs[i])}</th><td>${esc(f(st[0], st[1]))} – ${esc(f(endD.getUTCMonth() + 1, endD.getUTCDate()))}</td></tr>`;
+  }).join("");
+  const hero = `<section class="mt" data-mt="zodiac" aria-labelledby="zo-h">
+      <h2 id="zo-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="inputs-row">${mtField("zo-d", s.dateLabel, '<input id="zo-d" type="date" min="1900-01-01" max="2100-12-31" value="2000-01-01" data-zo-d>')}${mtField("zo-t", s.timeLabel, '<input id="zo-t" type="time" data-zo-t>')}</div>
+      <dl class="facts zo-res"><div class="fact"><dt>${esc(s.sun)}</dt><dd data-zo-sun>–</dd></div><div class="fact"><dt>${esc(s.moon)}</dt><dd data-zo-moon>–</dd></div></dl>
+      <p class="meta" data-zo-note>&nbsp;</p>
+      <p class="meta">${esc(s.tzNote)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const sections = `<section class="section"><div class="wrap">
+      <div class="table-wrap"><table class="events-table"><caption>${esc(s.tableHeading)}</caption><thead><tr><th scope="col">${esc(s.colSign)}</th><th scope="col">${esc(s.colDates)}</th></tr></thead><tbody>${ranges}</tbody></table></div>
+      <p class="meta">${esc(s.fun)}</p>
+    </div></section>`;
+  return { hero, sections, client: { signs: s.signs, sym: ZODIAC_SYM, noTime: s.noTime, cusp: s.cusp } };
+}
+function buildMore(lang, key) {
+  const t = I[lang], s = t[key];
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang][key] }];
+  const b = moreBody(lang, key);
+  const scripts = key === "zodiac" ? ["prayer-calc.js", "nature-calc.js", "more-tools.js"] : ["more-tools.js"];
+  return simplePage(lang, key, { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero: b.hero, sections: b.sections }, faq: s.faq, faqGroup: { id: key, title: s.h1 }, scripts, clientExtra: { t: { mt: b.client } }, nav: "tools", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang][key], s.description)] });
+}
+
 /* Açık veri (statik API, 30 Ekim 2026, sahibin isteği): /api/v1/ altında derlemede üretilen JSON dosyaları (aşağıda,
    sitemap'ten önce) ve bu belge sayfası. Sunucu yok; nginx /api/ konumu CORS * verir. */
 const API_BASE = "/api/v1";
@@ -2276,7 +2468,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

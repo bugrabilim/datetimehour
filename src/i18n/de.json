@@ -416,6 +416,16 @@
               "Bis Sie es löschen"
             ],
             [
+              "sth-hiit",
+              "Speichert die Zeiten, die Rundenzahl und die Ansage-Einstellung des Intervall-Timers.",
+              "Bis Sie es löschen"
+            ],
+            [
+              "sth-metro",
+              "Speichert Tempo, Schläge pro Takt und Klangeinstellungen des Metronoms.",
+              "Bis Sie es löschen"
+            ],
+            [
               "sth-world",
               "Merkt sich die für die Weltzeituhr gewählten Städte und ihre Reihenfolge.",
               "Bis Sie es löschen"
@@ -814,6 +824,38 @@
         "api": {
           "name": "Offene Daten (API)",
           "desc": "Feiertage, Gebetszeiten und Hidschri-Kalender als JSON."
+        },
+        "hijriConv": {
+          "name": "Hidschri-Umrechner",
+          "desc": "Zwischen Hidschri- und gregorianischem Datum umrechnen."
+        },
+        "timeCalc": {
+          "name": "Zeitrechner",
+          "desc": "Stunden addieren, abziehen, Dauer zwischen Uhrzeiten."
+        },
+        "daysUntil": {
+          "name": "Wie viele Tage noch?",
+          "desc": "Tage bis zu oder seit einem Datum."
+        },
+        "interval": {
+          "name": "Intervall-Timer",
+          "desc": "Runden-Timer mit Ansage für HIIT und Tabata."
+        },
+        "chess": {
+          "name": "Schachuhr",
+          "desc": "Spieluhr für zwei mit Inkrement."
+        },
+        "metronome": {
+          "name": "Metronom",
+          "desc": "BPM, Taktart und Tap-Tempo."
+        },
+        "talking": {
+          "name": "Sprechende Uhr",
+          "desc": "Eine Uhr, die die Zeit ansagt."
+        },
+        "zodiac": {
+          "name": "Sternzeichen",
+          "desc": "Sonnen- und Mondzeichen."
         }
       },
       "infoHeading": "Infoseiten"
@@ -2237,6 +2279,312 @@
       "Religiöse Tage ab 2028 sind eine Vorausberechnung nach dem Langzeitkalender des Diyanet.",
       "Es gibt keinen Schlüssel und keine Anmeldung; die Dateien sind statisch und dürfen zwischengespeichert werden. Bitte rufen Sie sie in vernünftigen Abständen ab (einmal am Tag genügt).",
       "Die Daten werden bei jeder Veröffentlichung der Seite aktualisiert; ändert sich das Format, kommt eine neue Version (v2) hinzu und v1 bleibt erhalten."
+    ]
+  },
+  "hijriConv": {
+    "title": "Hidschri-Kalender-Umrechner: Hidschri und Gregorianisch | Saat Tarih",
+    "description": "Gregorianische Daten in Hidschri-Daten umrechnen und umgekehrt. Heutiges Hidschri-Datum und Monatsanfänge des Hidschri-Jahres nach dem Diyanet-Kalender.",
+    "h1": "Hidschri-Kalender-Umrechner",
+    "lead": "Das heutige Hidschri-Datum, Umrechnung in beide Richtungen und die Monatsanfänge dieses Hidschri-Jahres. Die Daten folgen dem Kalender des türkischen Diyanet.",
+    "search": "hidschri umrechner islamischer kalender hidschri gregorianisch heute hijri converter",
+    "todayLabel": "Heutiges Hidschri-Datum",
+    "toHijri": "Gregorianisch → Hidschri",
+    "gregLabel": "Gregorianisches Datum",
+    "toGreg": "Hidschri → Gregorianisch",
+    "yearLabel": "Hidschri-Jahr",
+    "monthLabel": "Monat",
+    "dayLabel": "Tag",
+    "result": "Ergebnis",
+    "months": [
+      "Muharram",
+      "Safar",
+      "Rabi al-Awwal",
+      "Rabi al-Thani",
+      "Dschumada al-Ula",
+      "Dschumada al-Achira",
+      "Radschab",
+      "Schaban",
+      "Ramadan",
+      "Schawwal",
+      "Dhu l-Qa'da",
+      "Dhu l-Hiddscha"
+    ],
+    "fmt": "{d}. {m} {y} AH",
+    "outside": "Dieses Datum liegt außerhalb der Diyanet-Tabelle; es wurde mit dem Umm-al-Qura-Kalender berechnet und kann um einen Tag abweichen.",
+    "dayMax": "Dieser Hidschri-Monat hat {n} Tage.",
+    "invalid": "Geben Sie ein gültiges Datum ein.",
+    "yearHeading": "Monatsanfänge des Hidschri-Jahres {y}",
+    "colMonth": "Monat",
+    "colStart": "Beginnt am (gregorianisch)",
+    "colDays": "Tage",
+    "note": "Ein Hidschri-Tag beginnt mit dem Sonnenuntergang; auf dieser Seite wechselt das Datum um Mitternacht. Monatsanfänge können in manchen Ländern um einen Tag abweichen. 2026–2031 folgen den von Diyanet veröffentlichten Daten, andere Jahre der Umm-al-Qura-Berechnung.",
+    "faq": [
+      {
+        "q": "Welches Datum ist heute im Hidschri-Kalender?",
+        "a": "Das heutige Hidschri-Datum steht oben auf der Seite, nach dem Diyanet-Kalender. Da der Hidschri-Tag mit dem Sonnenuntergang beginnt, beginnt das nächste Datum schon am Abend."
+      },
+      {
+        "q": "Warum verschiebt sich der Hidschri-Kalender jedes Jahr um etwa 11 Tage?",
+        "a": "Der Hidschri-Kalender folgt den Mondphasen; 12 Mondmonate dauern etwa 354 Tage. Das sind rund 11 Tage weniger als ein gregorianisches Jahr, daher kommen Ramadan und die Feste jedes Jahr etwa 11 Tage früher."
+      },
+      {
+        "q": "Warum unterscheiden sich Hidschri-Daten zwischen Ländern?",
+        "a": "Manche Länder beginnen den Monat mit der Sichtung der Mondsichel, andere nach Berechnung. Die Türkei nutzt den berechneten Diyanet-Kalender, Saudi-Arabien den Umm-al-Qura-Kalender; sie können um einen Tag abweichen."
+      }
+    ]
+  },
+  "timeCalc": {
+    "title": "Zeitrechner: Stunden addieren und Zeitdauer berechnen | Saat Tarih",
+    "description": "Dauer zwischen zwei Uhrzeiten berechnen, Stunden und Minuten addieren oder abziehen und Zeiten summieren. Auch Nachtschichten und Dezimalstunden.",
+    "h1": "Zeitrechner",
+    "lead": "Dauer zwischen zwei Uhrzeiten, Zeit addieren oder abziehen und Zeiten summieren. Zeiträume über Mitternacht und Dezimalstunden werden ebenfalls angezeigt.",
+    "search": "zeitrechner stundenrechner stunden addieren dauer zwischen zwei uhrzeiten arbeitszeit dezimalstunden time calculator",
+    "betweenHeading": "Dauer zwischen zwei Uhrzeiten",
+    "startLabel": "Beginn",
+    "endLabel": "Ende",
+    "overnight": "Das Ende liegt vor dem Beginn, daher wurde über Mitternacht gerechnet.",
+    "duration": "{h} Std. {m} Min.",
+    "decimal": "Dezimal: {x} Stunden",
+    "minutesTotal": "{n} Minuten",
+    "addHeading": "Zeit addieren oder abziehen",
+    "timeLabel": "Uhrzeit",
+    "opLabel": "Rechenart",
+    "opAdd": "Addieren (+)",
+    "opSub": "Abziehen (−)",
+    "hoursLabel": "Stunden",
+    "minutesLabel": "Minuten",
+    "resultTime": "Ergebnis: {time}",
+    "nextDay": "am nächsten Tag",
+    "prevDay": "am Vortag",
+    "daysLater": "{n} Tage später",
+    "daysEarlier": "{n} Tage früher",
+    "sumHeading": "Zeiten summieren",
+    "sumLabel": "Zeiten (eine pro Zeile)",
+    "sumHint": "Schreiben Sie z. B. 1:30 (anderthalb Stunden), 45 (Minuten), 2:15:30 (Std.:Min.:Sek.); mit − davor wird abgezogen.",
+    "sumResult": "Summe: {t}",
+    "sumBad": "Nicht lesbare Zeile: {n}",
+    "faq": [
+      {
+        "q": "Wie berechne ich die Zeit zwischen zwei Uhrzeiten?",
+        "a": "Ziehen Sie den Beginn vom Ende ab. Liegt das Ende scheinbar früher (z. B. 22:00–06:00), wurde Mitternacht überschritten: Rechnen Sie 24 Stunden hinzu, die Dauer beträgt dann 8 Stunden."
+      },
+      {
+        "q": "Wie rechne ich Minuten in Dezimalstunden um?",
+        "a": "Teilen Sie die Minuten durch 60: 30 Minuten sind 0,5 Stunden, 45 Minuten 0,75 Stunden. 7 Stunden 45 Minuten sind 7,75 Stunden."
+      },
+      {
+        "q": "Wie addiere ich Stunden und Minuten?",
+        "a": "Addieren Sie zuerst die Minuten und wandeln Sie je 60 Minuten in eine Stunde um. Beispiel: 1:40 + 2:35 = 3 Stunden 75 Minuten = 4 Stunden 15 Minuten."
+      }
+    ]
+  },
+  "daysUntil": {
+    "title": "Wie viele Tage noch? Tage bis zu einem Datum zählen | Saat Tarih",
+    "description": "Wie viele Tage bis zu einem Datum bleiben oder seitdem vergangen sind, mit Wochen, Monaten und Arbeitstagen. Dazu die Tage bis zu Feiertagen und wichtigen Daten.",
+    "h1": "Wie viele Tage noch?",
+    "lead": "Wählen Sie ein Datum: Die verbleibenden oder vergangenen Tage werden angezeigt, auch in Wochen und Arbeitstagen. Darunter die Tage bis zu Feiertagen und wichtigen Daten.",
+    "search": "wie viele tage noch tage bis tage seit tage zählen countdown datum days until",
+    "dateLabel": "Datum",
+    "left": "noch {n} Tage",
+    "left1": "noch 1 Tag",
+    "passed": "vor {n} Tagen",
+    "passed1": "vor 1 Tag",
+    "today": "Heute",
+    "weeks": "{w} Wochen {d} Tage",
+    "months": "Etwa {n} Monate",
+    "workdays": "{n} Arbeitstage (ohne Wochenenden und Feiertage)",
+    "weekday": "Wochentag: {d}",
+    "upcomingHeading": "Tage bis zu wichtigen Daten",
+    "colEvent": "Tag",
+    "colDate": "Datum",
+    "colLeft": "Noch",
+    "daysUnit": "{n} Tage",
+    "daysUnit1": "1 Tag",
+    "faq": [
+      {
+        "q": "Zählt der heutige Tag mit?",
+        "a": "Nein. Angezeigt wird die Zahl der Nächte bis zum gewählten Datum: Für morgen heißt es „noch 1 Tag“. Ist der gewählte Tag heute, steht dort „Heute“."
+      },
+      {
+        "q": "Wie werden Arbeitstage gezählt?",
+        "a": "Von den Tagen nach heute werden Samstage, Sonntage und ganztägige Feiertage in der Türkei abgezogen; Halbtage vor den Festen zählen halb. Die Feiertagsdaten umfassen 2026–2031."
+      }
+    ]
+  },
+  "interval": {
+    "title": "Intervall-Timer: Online HIIT- und Tabata-Timer | Saat Tarih",
+    "description": "Runden mit Aufwärm-, Belastungs- und Pausenzeiten zählen: Signal und Sprachansage bei jedem Wechsel, die letzten drei Sekunden gezählt. Tabata, HIIT, Vollbild.",
+    "h1": "Intervall-Timer",
+    "lead": "Wählen Sie Aufwärm-, Belastungs- und Pausenzeit sowie die Rundenzahl. Bei jedem Wechsel ertönt ein Signal, auf Wunsch wird die Phase angesagt.",
+    "search": "intervall timer hiit timer tabata timer trainings timer emom runden timer interval timer",
+    "warmup": "Aufwärmen (s)",
+    "work": "Belastung (s)",
+    "rest": "Pause (s)",
+    "rounds": "Runden",
+    "presets": "Vorlagen",
+    "presetTabata": "Tabata 20/10 × 8",
+    "presetHiit": "HIIT 30/15 × 10",
+    "presetEmom": "EMOM 60 × 10",
+    "phases": {
+      "warmup": "Aufwärmen",
+      "work": "Los",
+      "rest": "Pause",
+      "done": "Fertig"
+    },
+    "lastRound": "Letzte Runde",
+    "roundOf": "Runde {n}/{total}",
+    "total": "Gesamt: {t}",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Weiter",
+    "reset": "Zurücksetzen",
+    "voice": "Sprachansage",
+    "voiceNote": "Ansagen nutzen die Sprachausgabe Ihres Browsers auf dem Gerät; gibt es keine Gerätestimme für diese Sprache, ertönt nur das Signal.",
+    "note": "Läuft, solange die Seite geöffnet ist; im Vollbild bleibt der Bildschirm an.",
+    "faq": [
+      {
+        "q": "Was ist Tabata?",
+        "a": "Tabata ist ein 4-minütiges Intervalltraining aus 8 Runden: 20 Sekunden sehr intensive Belastung und 10 Sekunden Pause. Sie finden es unter den Vorlagen."
+      },
+      {
+        "q": "Gibt es nach der letzten Runde eine Pause?",
+        "a": "Nein. Das Training endet mit der letzten Belastung; Pausen werden nur zwischen den Runden gezählt."
+      }
+    ]
+  },
+  "chess": {
+    "title": "Schachuhr: Online, mit Inkrement und im Vollbild | Saat Tarih",
+    "description": "Online-Schachuhr für zwei Spieler: Bedenkzeiten (1+0, 3+2, 5+0, 10+0, 15+10), Fischer-Inkrement, Zugzähler und Signal bei Zeitablauf. Vollbild auf dem Handy.",
+    "h1": "Schachuhr",
+    "lead": "Wählen Sie die Bedenkzeit und tippen Sie nach Ihrem Zug auf Ihre eigene Uhr. Fischer-Inkrement und Zugzähler werden unterstützt.",
+    "search": "schachuhr online schachuhr blitz bullet fischer inkrement spieluhr chess clock",
+    "control": "Bedenkzeit",
+    "custom": "Eigene",
+    "minutes": "Minuten",
+    "increment": "Inkrement (s)",
+    "white": "Weiß",
+    "black": "Schwarz",
+    "hint": "Zum Start auf die Uhr von Schwarz tippen; die Zeit von Weiß beginnt zu laufen. Die Leertaste stoppt die Uhr des Spielers am Zug.",
+    "pause": "Pause",
+    "resume": "Weiter",
+    "reset": "Zurücksetzen",
+    "moves": "{n} Züge",
+    "flag": "{side}: Zeit abgelaufen",
+    "faq": [
+      {
+        "q": "Was bedeutet 3+2 im Schach?",
+        "a": "Jeder Spieler hat 3 Minuten, und nach jedem eigenen Zug kommen 2 Sekunden hinzu (Fischer-Inkrement)."
+      },
+      {
+        "q": "Wer startet die Schachuhr?",
+        "a": "Nach den Regeln startet der Spieler mit den schwarzen Steinen die Uhr, sodass die Zeit von Weiß zu laufen beginnt."
+      }
+    ]
+  },
+  "metronome": {
+    "title": "Online-Metronom: BPM, Taktart und Tap-Tempo | Saat Tarih",
+    "description": "Ein Metronom im Browser: 30–250 BPM, Schläge pro Takt, betonter erster Schlag, Unterteilungen und Tap-Tempo. Der Klang wird auf Ihrem Gerät erzeugt.",
+    "h1": "Metronom",
+    "lead": "Stellen Sie das Tempo ein oder tippen Sie es, dann wählen Sie Schläge pro Takt und Unterteilung. Die Klänge entstehen im Browser.",
+    "search": "metronom online metronom bpm tempo taktart tap tempo klick metronome",
+    "bpm": "Tempo (BPM)",
+    "beats": "Schläge pro Takt",
+    "sub": "Unterteilung",
+    "subs": {
+      "1": "Keine",
+      "2": "Achtel",
+      "3": "Triolen",
+      "4": "Sechzehntel"
+    },
+    "accent": "Ersten Schlag betonen",
+    "tap": "Tempo tippen",
+    "start": "Start",
+    "stop": "Stopp",
+    "slower": "Langsamer",
+    "faster": "Schneller",
+    "volume": "Lautstärke",
+    "tempoNote": "Die italienischen Tempobezeichnungen sind ungefähre Bereiche.",
+    "faq": [
+      {
+        "q": "Was bedeutet BPM?",
+        "a": "BPM (beats per minute) ist die Zahl der Schläge pro Minute. 60 BPM ist ein Schlag pro Sekunde, 120 BPM sind zwei."
+      },
+      {
+        "q": "Wie funktioniert Tap-Tempo?",
+        "a": "Tippen Sie mindestens zweimal im Takt der Musik auf die Schaltfläche; der Mittelwert der letzten Abstände wird in BPM umgerechnet."
+      }
+    ]
+  },
+  "talking": {
+    "title": "Sprechende Uhr: Online-Uhr, die die Uhrzeit ansagt | Saat Tarih",
+    "description": "Eine Online-Uhr, die die Uhrzeit ansagt: per Knopfdruck oder automatisch alle 1, 5, 15 oder 30 Minuten und zur vollen Stunde. Praktisch bei Sehschwäche.",
+    "h1": "Sprechende Uhr",
+    "lead": "Drücken Sie die Schaltfläche, um die Uhrzeit zu hören; sie kann auch in festen Abständen von selbst ansagen. Funktioniert, solange die Seite geöffnet ist.",
+    "search": "sprechende uhr zeitansage uhrzeit ansagen audio uhr talking clock",
+    "say": "Uhrzeit ansagen",
+    "auto": "Automatisch ansagen",
+    "every": {
+      "off": "Aus",
+      "1": "Jede Minute",
+      "5": "Alle 5 Minuten",
+      "15": "Alle 15 Minuten",
+      "30": "Alle 30 Minuten",
+      "60": "Zur vollen Stunde"
+    },
+    "chime": "Vorher ein Signal",
+    "noVoice": "In diesem Browser wurde keine Gerätestimme für diese Sprache gefunden; die Uhrzeit wird in Worten angezeigt.",
+    "note": "Die Ansage läuft über die Sprachausgabe Ihres Browsers auf dem Gerät; der Text wird nirgendwohin gesendet. Funktioniert, solange die Seite geöffnet ist.",
+    "faq": [
+      {
+        "q": "Funktioniert die sprechende Uhr bei gesperrtem Handy?",
+        "a": "Nein. Browser schränken Töne von Seiten im Hintergrund ein; die automatische Ansage funktioniert nur bei geöffneter Seite und eingeschaltetem Bildschirm."
+      },
+      {
+        "q": "Warum ist nichts zu hören?",
+        "a": "Der Browser braucht eine auf dem Gerät installierte Stimme für diese Sprache. Stimmen können Sie in den Sprach- und Sprachausgabe-Einstellungen von Handy oder Computer herunterladen."
+      }
+    ]
+  },
+  "zodiac": {
+    "title": "Sternzeichen berechnen: Sonnen- und Mondzeichen | Saat Tarih",
+    "description": "Ermitteln Sie Ihr Sonnenzeichen und Ihr Mondzeichen aus Geburtsdatum und -zeit mit einer astronomischen Berechnung. Mit Tabelle der Zeiträume der Sternzeichen.",
+    "h1": "Sternzeichen berechnen",
+    "lead": "Geben Sie Geburtsdatum und -zeit ein; berechnet wird, in welchem Zeichen Sonne und Mond in diesem Moment standen. Astrologie dient der Unterhaltung.",
+    "search": "sternzeichen berechnen welches sternzeichen bin ich mondzeichen sonnenzeichen geburtsdatum zodiac",
+    "dateLabel": "Geburtsdatum",
+    "timeLabel": "Geburtszeit (optional)",
+    "sun": "Sonnenzeichen",
+    "moon": "Mondzeichen",
+    "signs": [
+      "Widder",
+      "Stier",
+      "Zwillinge",
+      "Krebs",
+      "Löwe",
+      "Jungfrau",
+      "Waage",
+      "Skorpion",
+      "Schütze",
+      "Steinbock",
+      "Wassermann",
+      "Fische"
+    ],
+    "noTime": "Ohne Geburtszeit wurde 12:00 Uhr mittags angenommen; der Mond wechselt etwa alle 2,5 Tage das Zeichen.",
+    "cusp": "Die Sonne wechselt an diesem Tag das Zeichen; die Geburtszeit kann das Ergebnis ändern.",
+    "tzNote": "Die Uhrzeit wird in der Zeitzone dieses Geräts gelesen.",
+    "tableHeading": "Zeiträume der Sternzeichen",
+    "colSign": "Zeichen",
+    "colDates": "Zeitraum (ungefähr)",
+    "fun": "Astrologie dient der Unterhaltung und hat keine wissenschaftliche Grundlage. Die Berechnung selbst ist astronomisch: ekliptikale Länge von Sonne und Mond (tropischer Tierkreis).",
+    "faq": [
+      {
+        "q": "Warum verschieben sich die Grenzen der Sternzeichen jedes Jahr etwas?",
+        "a": "Der Moment, in dem die Sonne in ein neues Zeichen tritt, verschiebt sich jedes Jahr um einige Stunden; daher schwanken die Wechseltage zwischen dem 19. und 23. An diesen Tagen zählt auch die Geburtszeit."
+      },
+      {
+        "q": "Was ist das Mondzeichen?",
+        "a": "Das Zeichen, in dem der Mond im Moment der Geburt stand. Der Mond durchläuft ein Zeichen in etwa 2,5 Tagen, ohne Geburtszeit ist es daher nicht immer sicher."
+      }
     ]
   }
 }

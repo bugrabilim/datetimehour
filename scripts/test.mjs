@@ -418,6 +418,17 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   check(/data-cd-add/.test(cd) && /data-sw-csv/.test(sw) && /data-pomo-csv/.test(po) && /data-pomo-g/.test(po) && /data-pomo-tag/.test(po) && /data-pomo-streak/.test(po) && (al.match(/<option value="(chime|bell|rise|digital|soft)"/g) || []).length === 5, "araç ekleri (+1 dk, CSV, hedef, etiket, alarm sesi) eksik");
   const home = rd("index.html");
   check((home.match(/data-look="font"/g) || []).length === 2 && (home.match(/data-look="color"/g) || []).length === 2, "ayarlarda saat görünümü (yazı tipi, renk) yok");
+  // Ek araçlar: 8 sayfa her dilde, araçlar merkezinde kart, betik
+  const more = { "hicri-takvim-cevirici": ["data-hj-g", "data-hj-y", "data-hj-tbody"], "saat-hesaplama": ["data-tc-s", "data-tc-sum"], "kac-gun-kaldi": ["data-du-d", "data-du-row"], "aralik-zamanlayici": ["data-iv-start", "data-iv-preset"], "satranc-saati": ["data-ch-side=\"white\"", "data-ch-control"], "metronom": ["data-mm-range", "data-mm-tap"], "konusan-saat": ["data-tk-say", "data-live=\"words\""], "burc-hesaplama": ["data-zo-d", "nature-calc.js"] };
+  for (const [slug, marks] of Object.entries(more)) {
+    const h = rd(slug, "index.html");
+    check(/more-tools\.js/.test(h) && marks.every((m) => h.includes(m)) && /"WebApplication"/.test(h), `${slug}: ek araç sayfası eksik`);
+  }
+  for (const p of ["en/hijri-converter", "en/time-calculator", "en/days-until", "en/interval-timer", "en/chess-clock", "en/metronome", "en/talking-clock", "en/zodiac-sign", "de/chess-clock", "ar/zodiac-sign", "az/metronome"]) check(fs.existsSync(path.join(DIST, p, "index.html")), `${p} yok`);
+  const hub = rd("araclar", "index.html");
+  check(["/hicri-takvim-cevirici/", "/saat-hesaplama/", "/kac-gun-kaldi/", "/aralik-zamanlayici/", "/satranc-saati/", "/metronom/", "/konusan-saat/", "/burc-hesaplama/"].every((u) => hub.includes(`href="${u}"`)), "araçlar merkezinde ek araç kartları yok");
+  const hj = rd("hicri-takvim-cevirici", "index.html");
+  check(/Cemaziyelahir<\/th><td>10 Kasım 2026<\/td>/.test(hj), "hicri çevirici: Cemaziyelahir 1448 (10 Kasım 2026) tabloda yok");
   check(/14/.test(dict.tr.get("weather.title")) && ![...dict.tr].some(([k, v]) => k.startsWith("weather.") && /\b7 gün/i.test(String(v))), "hava durumu 14 günlük değil");
 }
 // Köprü tatil (lib/bridges.mjs): 2027 Kurban + 19 Mayıs 2 gün izinle 9 gün; 2026 Ramazan 0,5 gün izinle 4 gün

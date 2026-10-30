@@ -389,6 +389,16 @@
               "Siz silənə qədər"
             ],
             [
+              "sth-hiit",
+              "İnterval taymerinin müddətlərini, raund sayını və səsli elan seçimini yadda saxlayır.",
+              "Siz silənə qədər"
+            ],
+            [
+              "sth-metro",
+              "Metronomun tempini, ölçüsünü və səs seçimlərini yadda saxlayır.",
+              "Siz silənə qədər"
+            ],
+            [
               "sth-world",
               "Dünya saatları üçün seçdiyiniz şəhərləri və onların ardıcıllığını xatırlayır.",
               "Siz silənə qədər"
@@ -787,6 +797,38 @@
         "api": {
           "name": "Açıq məlumat (API)",
           "desc": "Bayramlar, namaz vaxtları və hicri təqvim JSON kimi."
+        },
+        "hijriConv": {
+          "name": "Hicri təqvim çeviricisi",
+          "desc": "Hicri və miladi tarix arasında çevirmə."
+        },
+        "timeCalc": {
+          "name": "Saat hesablama",
+          "desc": "Saat toplama, çıxma, iki saat arası müddət."
+        },
+        "daysUntil": {
+          "name": "Neçə gün qaldı?",
+          "desc": "Bir tarixə qalan və ya keçən gün."
+        },
+        "interval": {
+          "name": "İnterval taymeri",
+          "desc": "HIIT və Tabata üçün səsli raund sayğacı."
+        },
+        "chess": {
+          "name": "Şahmat saatı",
+          "desc": "İki oyunçulu, əlavə vaxtlı oyun saatı."
+        },
+        "metronome": {
+          "name": "Metronom",
+          "desc": "BPM, ölçü və toxunuşla temp."
+        },
+        "talking": {
+          "name": "Danışan saat",
+          "desc": "Vaxtı səsli deyən saat."
+        },
+        "zodiac": {
+          "name": "Bürc hesablama",
+          "desc": "Günəş və Ay bürcü."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -2210,6 +2252,312 @@
       "2028 və sonrakı dini günlər Diyanətin uzunmüddətli təqviminə əsaslanan proqnozdur.",
       "Açar və qeydiyyat yoxdur; fayllar statikdir və keşlənə bilər. Zəhmət olmasa, ağlabatan tezlikdə sorğu göndərin (gündə bir dəfə kifayətdir).",
       "Məlumatlar sayt hər dəfə yayımlananda yenilənir; format dəyişsə, yeni versiya (v2) açılır, v1 saxlanılır."
+    ]
+  },
+  "hijriConv": {
+    "title": "Hicri Təqvim Çeviricisi: Hicri və Miladi Tarix | Saat Tarih",
+    "description": "Miladi tarixi hicri tarixə, hicri tarixi miladi tarixə çevirin. Bugünkü hicri tarix və hicri ilin ay başlanğıcları, Türkiyə Diyanətinin təqviminə görə.",
+    "h1": "Hicri təqvim çeviricisi",
+    "lead": "Bugünkü hicri tarix, iki istiqamətdə çevirmə və bu hicri ilin ay başlanğıcları. Tarixlər Türkiyə Diyanət İşləri Başqanlığının təqviminə görədir.",
+    "search": "hicri təqvim çevirici hicri miladi bugün hicri tarix hijri converter islam təqvimi",
+    "todayLabel": "Bugünkü hicri tarix",
+    "toHijri": "Miladidən hicriyə",
+    "gregLabel": "Miladi tarix",
+    "toGreg": "Hicridən miladiyə",
+    "yearLabel": "Hicri il",
+    "monthLabel": "Ay",
+    "dayLabel": "Gün",
+    "result": "Nəticə",
+    "months": [
+      "Məhərrəm",
+      "Səfər",
+      "Rəbiüləvvəl",
+      "Rəbiülaxir",
+      "Cəmadiyələvvəl",
+      "Cəmadiyəlaxir",
+      "Rəcəb",
+      "Şaban",
+      "Ramazan",
+      "Şəvval",
+      "Zilqədə",
+      "Zilhiccə"
+    ],
+    "fmt": "{d} {m} {y}",
+    "outside": "Bu tarix Diyanət cədvəlindən kənardadır; Ümmül-Qura təqvimi ilə hesablandı, bir gün fərq ola bilər.",
+    "dayMax": "Bu hicri ay {n} gündür.",
+    "invalid": "Düzgün tarix yazın.",
+    "yearHeading": "{y} hicri ilinin ay başlanğıcları",
+    "colMonth": "Ay",
+    "colStart": "Başladığı gün (miladi)",
+    "colDays": "Gün sayı",
+    "note": "Hicri gün axşam gün batanda başlayır; bu səhifədə tarix gecə yarısı dəyişir. Ay başlanğıcları bəzi ölkələrdə bir gün fərqli ola bilər. 2026–2031 Diyanətin dərc etdiyi tarixlərə, digər illər Ümmül-Qura hesabına görədir.",
+    "faq": [
+      {
+        "q": "Bu gün hicri təqvimlə neçədir?",
+        "a": "Bugünkü hicri tarix səhifənin yuxarısında Diyanət təqviminə görə yazılıb. Hicri gün axşam başladığı üçün növbəti tarix axşamdan başlayır."
+      },
+      {
+        "q": "Hicri təqvim niyə hər il təxminən 11 gün sürüşür?",
+        "a": "Hicri təqvim Ayın fazalarına görə işləyir; 12 qəməri ay təxminən 354 gündür. Bu, miladi ildən təxminən 11 gün qısadır, ona görə Ramazan və bayramlar hər il təxminən 11 gün tez gəlir."
+      },
+      {
+        "q": "Hicri tarix niyə ölkədən ölkəyə dəyişir?",
+        "a": "Bəzi ölkələr ayın başlanğıcını hilalı görməklə, bəziləri hesabla müəyyən edir. Türkiyə Diyanətin hesablanmış təqvimini, Səudiyyə Ərəbistanı Ümmül-Qura təqvimini işlədir; aralarında bir gün fərq ola bilər."
+      }
+    ]
+  },
+  "timeCalc": {
+    "title": "Saat Hesablama: Toplama, Çıxma və İki Saat Arası Müddət | Saat Tarih",
+    "description": "İki saat arasındakı müddəti tapın, saata müddət əlavə edib çıxın, müddətləri toplayın. Gecə yarısını keçən növbələr və onluq saat da hesablanır.",
+    "h1": "Saat hesablama",
+    "lead": "İki saat arası müddət, saata müddət əlavə etmə və çıxma, müddət toplama. Gecə yarısını keçən müddətlər və onluq saat da göstərilir.",
+    "search": "saat hesablama saat toplama çıxma iki saat arası müddət iş saatı hesablama time calculator",
+    "betweenHeading": "İki saat arasındakı müddət",
+    "startLabel": "Başlanğıc",
+    "endLabel": "Son",
+    "overnight": "Son başlanğıcdan əvvəl olduğu üçün gecə yarısı keçilmiş sayıldı.",
+    "duration": "{h} saat {m} dəqiqə",
+    "decimal": "Onluq: {x} saat",
+    "minutesTotal": "{n} dəqiqə",
+    "addHeading": "Saata müddət əlavə et və ya çıx",
+    "timeLabel": "Saat",
+    "opLabel": "Əməliyyat",
+    "opAdd": "Əlavə et (+)",
+    "opSub": "Çıx (−)",
+    "hoursLabel": "Saat",
+    "minutesLabel": "Dəqiqə",
+    "resultTime": "Nəticə: {time}",
+    "nextDay": "ertəsi gün",
+    "prevDay": "əvvəlki gün",
+    "daysLater": "{n} gün sonra",
+    "daysEarlier": "{n} gün əvvəl",
+    "sumHeading": "Müddətləri topla",
+    "sumLabel": "Müddətlər (hər sətirdə biri)",
+    "sumHint": "1:30 (bir yarım saat), 45 (dəqiqə), 2:15:30 (saat:dəqiqə:saniyə) kimi yazın; çıxmaq üçün qabağına − qoyun.",
+    "sumResult": "Cəmi: {t}",
+    "sumBad": "Oxunmayan sətir: {n}",
+    "faq": [
+      {
+        "q": "İki saat arasındakı müddət necə hesablanır?",
+        "a": "Son saatdan başlanğıc saatı çıxılır. Son daha tez görünürsə (məsələn 22:00–06:00), gecə yarısı keçilib: 24 saat əlavə olunur və müddət 8 saat olur."
+      },
+      {
+        "q": "Dəqiqə onluq saata necə çevrilir?",
+        "a": "Dəqiqə 60-a bölünür: 30 dəqiqə 0,5 saat, 45 dəqiqə 0,75 saatdır. 7 saat 45 dəqiqə 7,75 saat edir."
+      },
+      {
+        "q": "Saatlar necə toplanır?",
+        "a": "Əvvəlcə dəqiqələr toplanır və hər 60 dəqiqə bir saata çevrilir. Məsələn 1:40 + 2:35 = 3 saat 75 dəqiqə = 4 saat 15 dəqiqə."
+      }
+    ]
+  },
+  "daysUntil": {
+    "title": "Neçə Gün Qaldı? Tarixə Qalan və Keçən Günlər | Saat Tarih",
+    "description": "Bir tarixə neçə gün qaldığını və ya ondan neçə gün keçdiyini həftə, ay və iş günü ilə öyrənin. Bayramlara və mühüm günlərə qalan günlər də var.",
+    "h1": "Neçə gün qaldı?",
+    "lead": "Bir tarix seçin; neçə gün qaldığı və ya keçdiyi həftə və iş günü ilə yazılır. Aşağıda bayramlara və mühüm günlərə qalan günlər var.",
+    "search": "neçə gün qaldı neçə gün keçdi tarixə qalan gün gün sayğacı days until",
+    "dateLabel": "Tarix",
+    "left": "{n} gün qaldı",
+    "left1": "1 gün qaldı",
+    "passed": "{n} gün keçdi",
+    "passed1": "1 gün keçdi",
+    "today": "Bu gün",
+    "weeks": "{w} həftə {d} gün",
+    "months": "Təxminən {n} ay",
+    "workdays": "{n} iş günü (həftə sonu və rəsmi bayramlar xaric)",
+    "weekday": "Həftənin günü: {d}",
+    "upcomingHeading": "Mühüm günlərə neçə gün qaldı?",
+    "colEvent": "Gün",
+    "colDate": "Tarix",
+    "colLeft": "Qalan",
+    "daysUnit": "{n} gün",
+    "daysUnit1": "1 gün",
+    "faq": [
+      {
+        "q": "Qalan günlərə bu gün daxildirmi?",
+        "a": "Xeyr. Seçilən tarixə qədər keçəcək gecələrin sayı yazılır: sabah üçün 1 gün qaldı deyilir. Seçilən gün bu gündürsə “Bu gün” yazılır."
+      },
+      {
+        "q": "İş günü necə hesablanır?",
+        "a": "Bu gündən sonrakı günlərdən şənbə, bazar və Türkiyədəki tam günlük rəsmi bayramlar çıxılır; bayram ərəfələri yarım gün sayılır. Bayram məlumatı 2026–2031 illərini əhatə edir."
+      }
+    ]
+  },
+  "interval": {
+    "title": "İnterval Taymeri: Onlayn HIIT və Tabata Sayğacı | Saat Tarih",
+    "description": "İsinmə, iş və istirahət müddətləri ilə raundları sayın: hər keçiddə zəng və səsli elan, son üç saniyənin sayılması. Tabata və HIIT ayarları, tam ekran.",
+    "h1": "İnterval taymeri",
+    "lead": "İsinmə, iş və istirahət müddətlərini və raund sayını seçin. Hər keçiddə zəng çalır, istəsəniz mərhələnin adı səsli deyilir.",
+    "search": "interval taymer hiit taymer tabata sayğac məşq taymeri emom raund",
+    "warmup": "İsinmə (san)",
+    "work": "İş (san)",
+    "rest": "İstirahət (san)",
+    "rounds": "Raund sayı",
+    "presets": "Hazır ayarlar",
+    "presetTabata": "Tabata 20/10 × 8",
+    "presetHiit": "HIIT 30/15 × 10",
+    "presetEmom": "EMOM 60 × 10",
+    "phases": {
+      "warmup": "İsinmə",
+      "work": "İşlə",
+      "rest": "Dincəl",
+      "done": "Bitdi"
+    },
+    "lastRound": "Son raund",
+    "roundOf": "Raund {n}/{total}",
+    "total": "Cəmi: {t}",
+    "start": "Başlat",
+    "pause": "Dayandır",
+    "resume": "Davam et",
+    "reset": "Sıfırla",
+    "voice": "Səsli elan",
+    "voiceNote": "Elanlar brauzerin cihazdakı nitq mühərriki ilə edilir; bu dildə cihaz səsi yoxdursa, yalnız zəng çalır.",
+    "note": "Səhifə açıq qaldıqca işləyir; tam ekranda ekran sönmür.",
+    "faq": [
+      {
+        "q": "Tabata nədir?",
+        "a": "Tabata 20 saniyə çox intensiv iş və 10 saniyə istirahətdən ibarət 8 raundluq, cəmi 4 dəqiqəlik interval məşqidir. Hazır ayarlardan seçə bilərsiniz."
+      },
+      {
+        "q": "Son raunddan sonra istirahət varmı?",
+        "a": "Xeyr. Son iş müddəti bitəndə məşq bitir; istirahət yalnız raundlar arasında sayılır."
+      }
+    ]
+  },
+  "chess": {
+    "title": "Şahmat Saatı: Onlayn, Əlavə Vaxtlı və Tam Ekran | Saat Tarih",
+    "description": "İki oyunçulu onlayn şahmat saatı: hazır vaxt nəzarətləri (1+0, 3+2, 5+0, 10+0, 15+10), əlavə vaxt, gediş sayı, vaxt bitəndə zəng. Telefonda tam ekran.",
+    "h1": "Şahmat saatı",
+    "lead": "Vaxt nəzarətini seçin, gedişinizi edəndə öz saatınıza toxunun. Fişer əlavəsi və gediş sayı dəstəklənir.",
+    "search": "şahmat saatı onlayn şahmat saatı blits bullet fişer əlavə oyun saatı chess clock",
+    "control": "Vaxt nəzarəti",
+    "custom": "Xüsusi",
+    "minutes": "Dəqiqə",
+    "increment": "Əlavə (san)",
+    "white": "Ağ",
+    "black": "Qara",
+    "hint": "Başlamaq üçün qaranın saatına toxunun; ağın vaxtı işləməyə başlayır. Boşluq düyməsi növbəsi olan oyunçunun saatını dayandırır.",
+    "pause": "Dayandır",
+    "resume": "Davam et",
+    "reset": "Sıfırla",
+    "moves": "{n} gediş",
+    "flag": "{side}: vaxt bitdi",
+    "faq": [
+      {
+        "q": "Şahmatda 3+2 nə deməkdir?",
+        "a": "Hər oyunçunun 3 dəqiqəsi var və etdiyi hər gedişdən sonra vaxtına 2 saniyə əlavə olunur (Fişer əlavəsi)."
+      },
+      {
+        "q": "Şahmat saatını kim başladır?",
+        "a": "Qaydalara görə qara fiqurlarla oynayan oyunçu saatı başladır; beləliklə ağın vaxtı işləməyə başlayır."
+      }
+    ]
+  },
+  "metronome": {
+    "title": "Onlayn Metronom: BPM, Ölçü və Toxunuşla Temp | Saat Tarih",
+    "description": "Brauzerdə işləyən metronom: 30–250 BPM, ölçüdəki vuruş sayı, ilk vuruşun vurğusu, bölmə və toxunaraq temp tapma. Səs cihazda yaradılır.",
+    "h1": "Metronom",
+    "lead": "Tempi seçin və ya toxunaraq tapın; ölçüdəki vuruş sayını və bölməni ayarlayın. Səslər brauzerdə yaradılır.",
+    "search": "metronom onlayn metronom bpm temp ölçü vuruş tap tempo metronome",
+    "bpm": "Temp (BPM)",
+    "beats": "Ölçüdəki vuruş",
+    "sub": "Bölmə",
+    "subs": {
+      "1": "Yoxdur",
+      "2": "İkili (səkkizlik)",
+      "3": "Üçlü (triol)",
+      "4": "Dördlü (on altılıq)"
+    },
+    "accent": "İlk vuruşu vurğula",
+    "tap": "Tempə toxun",
+    "start": "Başlat",
+    "stop": "Dayandır",
+    "slower": "Yavaşlat",
+    "faster": "Sürətləndir",
+    "volume": "Səs səviyyəsi",
+    "tempoNote": "İtalyan temp adları təxmini aralıqlardır.",
+    "faq": [
+      {
+        "q": "BPM nə deməkdir?",
+        "a": "BPM (beats per minute) dəqiqədəki vuruş sayıdır. 60 BPM saniyədə bir, 120 BPM saniyədə iki vuruşdur."
+      },
+      {
+        "q": "Tempə toxunmaq necə işləyir?",
+        "a": "Düyməyə musiqinin vuruşu ilə birlikdə ən azı iki dəfə toxunun; son toxunuşlar arasındakı orta müddət BPM-ə çevrilir."
+      }
+    ]
+  },
+  "talking": {
+    "title": "Danışan Saat: Vaxtı Səsli Deyən Onlayn Saat | Saat Tarih",
+    "description": "Vaxtı səsli deyən onlayn saat: düymə ilə və ya hər 1, 5, 15, 30 dəqiqədən bir və saat başı avtomatik. Görmə çətinliyi olanlar və işləyərkən vaxtı eşitmək üçün.",
+    "h1": "Danışan saat",
+    "lead": "Düyməyə basanda vaxt səsli deyilir; istəsəniz müəyyən aralıqlarla özü deyir. Səhifə açıq qaldıqca işləyir.",
+    "search": "danışan saat səsli saat vaxtı de saat neçədir səsli talking clock",
+    "say": "Vaxtı de",
+    "auto": "Avtomatik de",
+    "every": {
+      "off": "Bağlı",
+      "1": "Hər dəqiqə",
+      "5": "Hər 5 dəqiqədən bir",
+      "15": "Hər 15 dəqiqədən bir",
+      "30": "Hər 30 dəqiqədən bir",
+      "60": "Hər saat başı"
+    },
+    "chime": "Əvvəlcə zəng çalsın",
+    "noVoice": "Bu brauzerdə bu dil üçün cihaz səsi tapılmadı; vaxt yazı ilə göstərilir.",
+    "note": "Nitq brauzerin cihazdakı mühərriki ilə edilir; mətn heç yerə göndərilmir. Səhifə açıq qaldıqca işləyir.",
+    "faq": [
+      {
+        "q": "Danışan saat telefon kilidli olanda işləyirmi?",
+        "a": "Xeyr. Brauzerlər arxa plandakı səhifələrin səsini məhdudlaşdırır; avtomatik demə yalnız səhifə açıq və ekran yanılı olanda işləyir."
+      },
+      {
+        "q": "Niyə səs gəlmir?",
+        "a": "Brauzerin bu dil üçün cihazda quraşdırılmış səsi olmalıdır. Səsləri telefonun və ya kompüterin dil və nitq ayarlarından yükləyə bilərsiniz."
+      }
+    ]
+  },
+  "zodiac": {
+    "title": "Bürc Hesablama: Doğum Tarixinə Görə Günəş və Ay Bürcü | Saat Tarih",
+    "description": "Doğum tarixinizə və saatınıza görə Günəş bürcünüzü və Ay bürcünüzü astronomik hesabla tapın. Bürclərin tarix aralıqları cədvəli də var.",
+    "h1": "Bürc hesablama",
+    "lead": "Doğum tarixinizi və saatınızı yazın; Günəşin və Ayın o anda olduğu bürc hesablanır. Bürclər əyləncə məqsədlidir.",
+    "search": "bürc hesablama bürcüm nədir ay bürcü günəş bürcü doğum tarixinə görə bürc zodiac",
+    "dateLabel": "Doğum tarixi",
+    "timeLabel": "Doğum saatı (istəyə bağlı)",
+    "sun": "Günəş bürcü",
+    "moon": "Ay bürcü",
+    "signs": [
+      "Qoç",
+      "Buğa",
+      "Əkizlər",
+      "Xərçəng",
+      "Şir",
+      "Qız",
+      "Tərəzi",
+      "Əqrəb",
+      "Oxatan",
+      "Oğlaq",
+      "Dolça",
+      "Balıqlar"
+    ],
+    "noTime": "Doğum saatı yazılmadığı üçün günorta 12:00 qəbul edildi; Ay təxminən 2,5 gündən bir bürc dəyişir.",
+    "cusp": "Günəş bu gün bürc dəyişir; doğum saatı nəticəni dəyişə bilər.",
+    "tzNote": "Saat bu cihazın saat qurşağına görə oxunur.",
+    "tableHeading": "Bürclərin tarix aralıqları",
+    "colSign": "Bürc",
+    "colDates": "Tarixlər (təxmini)",
+    "fun": "Bürclər əyləncə məqsədlidir, elmi əsası yoxdur. Hesab astronomikdir: Günəşin və Ayın ekliptik uzunluğu (tropik zodiak).",
+    "faq": [
+      {
+        "q": "Bürc sərhədləri niyə hər il bir az dəyişir?",
+        "a": "Günəşin yeni bürcə keçdiyi an hər il bir neçə saat sürüşür; buna görə dəyişmə günləri ayın 19-u ilə 23-ü arasında olur. Bu günlərdə doğum saatı da önəmlidir."
+      },
+      {
+        "q": "Ay bürcü nədir?",
+        "a": "Doğum anında Ayın səmada olduğu bürcdür. Ay bir bürcü təxminən 2,5 günə keçdiyi üçün doğum saatı bilinmədən dəqiq deyilə bilməz."
+      }
     ]
   }
 }
