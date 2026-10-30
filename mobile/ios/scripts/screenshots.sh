@@ -54,7 +54,7 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR dark ekran-about-koyu -openScreen about

@@ -768,6 +768,21 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .moon { width: 6.5rem; height: 6.5rem; flex: none; }
 .moon-dark { fill: #1c2230; stroke: var(--border); stroke-width: 1; }
 .moon-lit { fill: #f2edd6; }
+/* Ay takvimi ve tutulmalar (Mevsimler) */
+.moon-cal { max-width: 34rem; }
+.mc-row, .mc-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.25rem; }
+.mc-head span { text-align: center; color: var(--muted); font-size: 0.8rem; font-weight: 600; padding-bottom: 0.25rem; }
+.mc-day { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; padding: 0.35rem 0.1rem; border-radius: var(--radius); min-height: 4.2rem; }
+.mc-day b { font-size: 0.85rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.mc-day small { font-size: 0.62rem; line-height: 1.1; color: var(--muted); text-align: center; }
+.mc-day.is-today { background: var(--surface-2); outline: 2px solid var(--accent); }
+.moon-mini { flex: none; }
+.eclipses { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.eclipse { padding: 0.9rem 1rem; border-top: 5px solid var(--border); background: var(--surface-2); border-radius: var(--radius); }
+.eclipse-solar { border-top-color: var(--accent); }
+.eclipse h3 { margin: 0 0 0.25rem; }
+.eclipse p { margin: 0 0 0.3rem; }
+.ecl-here { font-weight: 600; color: var(--accent); }
 .moon-phase { margin: 0 0 0.3rem; font-size: 1.4rem; font-weight: 700; }
 .daychart { margin: 0; }
 .daychart svg { width: 100%; height: auto; }

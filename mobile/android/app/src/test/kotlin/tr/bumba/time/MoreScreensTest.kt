@@ -92,6 +92,10 @@ class MoreScreensTest {
     @Test fun aboutDark() = page("tr-hakkinda-koyu", "Hakkında", dark = true) { AboutScreen() }
     @Test fun google() = page("tr-google-takvim", "Google Takvimi") { GoogleCalendarGuide() }
     @Test fun notifications() = shot("tr-bildirimler") { NotificationsScreen {} }
+    @Test fun moon() {
+        Prefs.saveProvince("istanbul")
+        page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }
+    }
     @Test fun morning() {
         seedWeather()
         shot("tr-gunaydin") { MorningCard {} }
@@ -134,5 +138,6 @@ class MoreScreensTest {
         widget("widget-analog", 170, 170, AnalogClockWidget().views(c, 3))
         widget("widget-dijital", 170, 80, DigitalClockWidget().views(c, 4))
         widget("widget-saat-tarih", 170, 170, ClockDateWidget().views(c, 5))
+        widget("widget-ay", 170, 170, MoonWidget().views(c, 6))
     }
 }

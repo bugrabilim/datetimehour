@@ -155,8 +155,6 @@ struct SeasonsView: View {
     static let seasonEmoji = ["🌸", "☀️", "🍂", "⛄"]
     static let seasonColor: [Color] = [Color(red: 0.30, green: 0.69, blue: 0.31), Color(red: 0.98, green: 0.62, blue: 0.11),
                                        Color(red: 0.80, green: 0.42, blue: 0.16), Color(red: 0.25, green: 0.53, blue: 0.85)]
-    private static let phaseKeys = ["new", "waxingCrescent", "firstQuarter", "waxingGibbous", "full", "waningGibbous", "lastQuarter", "waningCrescent"]
-    private static let phaseEmoji = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"]
 
     var body: some View {
         let now = Date()
@@ -287,18 +285,27 @@ struct SeasonsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(14)
             .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
-            VStack(alignment: .leading, spacing: 6) {
-                Text(L("nature.moonHeading")).font(.headline)
-                HStack(spacing: 8) {
-                    Text(Self.phaseEmoji[moon.phaseIndex]).font(.system(size: 36))
-                    Text(L("nature.phases.\(Self.phaseKeys[moon.phaseIndex])")).font(.subheadline)
+            // Ay: evre, aydınlık, bugün doğuş/batış; dokununca Ay takvimi ve tutulmalar
+            NavigationLink { MoonView() } label: {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(L("nature.moonHeading")).font(.headline)
+                    HStack(spacing: 8) {
+                        Text(moonPhaseEmoji[moon.phaseIndex]).font(.system(size: 36))
+                        Text(L("nature.phases.\(moonPhaseKeys[moon.phaseIndex])")).font(.subheadline)
+                    }
+                    Text(T("nature.illumination", Int((moon.illumination * 100).rounded())))
+                        .font(.caption).foregroundStyle(Theme.muted)
+                    let rs = place.moonRiseSet(CalendarDay(now, timeZone: place.zone))
+                    Text("↑ " + place.moonTime(rs.rise, none: "nature.moonNoRise")).monospacedDigit()
+                    Text("↓ " + place.moonTime(rs.set, none: "nature.moonNoSet")).monospacedDigit()
+                    Text(L("moon.calendarLink") + " ›").font(.caption.weight(.semibold)).foregroundStyle(Theme.accent)
                 }
-                Text(T("nature.illumination", Int((moon.illumination * 100).rounded())))
-                    .font(.caption).foregroundStyle(Theme.muted)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(14)
+                .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(14)
-            .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+            .buttonStyle(.plain)
+            .foregroundStyle(Theme.text)
         }
         .environment(\.layoutDirection, AppLocale.isRTL ? .rightToLeft : .leftToRight)
     }

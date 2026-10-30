@@ -101,7 +101,7 @@ for (const f of htmlFiles) {
     else check(/data-mode="city"/.test(h) && /data-lat="[\d.]+" data-lon="[\d.]+"/.test(h), `${name}: il sayfası verisi eksik`);
   }
   if (/\/(mevsimler|seasons)\/index\.html$/.test(name)) {
-    check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-n-turns/.test(h) && !/data-place-city="/.test(h.replace(/<dialog[\s\S]*?<\/dialog>/g, "")) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
+    check(/data-wheel/.test(h) && /data-n-chart/.test(h) && /data-moon/.test(h) && (h.match(/class="season-card /g) || []).length === 4 && /nature\.js/.test(h) && /nature-calc\.js/.test(h) && /data-n-turns/.test(h) && /data-n-moon="rise"/.test(h) && /data-n-mooncal/.test(h) && /data-n-eclipses/.test(h) && !/data-place-city="/.test(h.replace(/<dialog[\s\S]*?<\/dialog>/g, "")) && !/faq-more/.test(h) && !/"FAQPage"/.test(h), `${name}: doğa sayfası yapısı eksik`);
     check(h.indexOf("<h1") < h.indexOf("data-nature"), `${name}: başlık çarkın üstünde olmalı`);
   }
   if (/\/(hava-durumu|weather)\/index\.html$/.test(name)) {
@@ -233,6 +233,29 @@ check(sm.split("<url>").slice(1).every((u) => LANGS.every((l) => u.includes(`hre
   for (const [kind, y, mo, d, iso] of anchors) {
     const base = k(Date.UTC(y, mo, d)), got = [0, 1].map((o) => N.phaseMs(base + o, kind === "full"));
     check(got.some((ms) => Math.abs(ms - Date.parse(iso + ":00Z")) <= 10 * 60000), `ay anı ${kind} ${iso}: ${got.map((x) => new Date(x).toISOString()).join(" ")}`);
+  }
+  // Ay doğuşu/batışı: ABD Deniz Gözlemevi (USNO) değerleriyle ±1 dk (yerel saat; USNO dakikaya yuvarlar)
+  const usno = [
+    [41.01, 28.98, 3, "2026-10-30", "21:29", "12:36"], [51.51, -0.13, 0, "2026-11-15", "12:41", "21:02"],
+    [-33.87, 151.21, 11, "2026-12-24", "20:37", "05:12"], [24.71, 46.68, 3, "2027-06-21", "20:45", "06:52"],
+  ];
+  for (const [lat, lon, tz, d, rise, set] of usno) {
+    const start = Date.parse(d + "T00:00:00Z") - tz * 3600000, r = N.moonRiseSet(start, lat, lon);
+    const hm = (s) => start + (+s.slice(0, 2) * 60 + +s.slice(3)) * 60000;
+    check(r.rise !== null && Math.abs(r.rise - hm(rise)) <= 90000 && r.set !== null && Math.abs(r.set - hm(set)) <= 90000, `Ay doğuş/batış ${d} ${lat}: ${new Date(r.rise).toISOString()} ${new Date(r.set).toISOString()}`);
+  }
+  // Reykjavik 30 Ekim 2026: Ay ne doğar ne batar (USNO)
+  const rk = N.moonRiseSet(Date.parse("2026-10-30T00:00:00Z"), 64.15, -21.94);
+  check(rk.rise === null && rk.set === null, "Ay doğuş/batış: Reykjavik 30 Ekim 2026 boş olmalı");
+}
+// Tutulma verisi (NASA): her kaydın türü ve bölge kodları geçerli, beş dilde tür adı var
+{
+  const E = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/eclipses.json"), "utf8"));
+  const types = { solar: ["total", "annular", "partial", "hybrid"], lunar: ["total", "partial", "penumbral"] };
+  for (const kind of ["solar", "lunar"]) for (const e of E[kind]) {
+    check(types[kind].includes(e.type) && !Number.isNaN(Date.parse(e.td)), `tutulma ${kind} ${e.td}: tür/tarih`);
+    for (const c of [...e.regions, ...(e.path || [])]) check(/^([A-Z]{2}|\d{3})$/.test(c) && new Intl.DisplayNames(["tr"], { type: "region", fallback: "none" }).of(c), `tutulma ${e.td}: bölge kodu ${c}`);
+    for (const l of LANGS) check(dict[l].has(`nature.eclipseTypes.${kind}${e.type[0].toUpperCase()}${e.type.slice(1)}`), `${l}: tutulma türü adı ${kind} ${e.type}`);
   }
 }
 

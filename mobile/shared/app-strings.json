@@ -1896,5 +1896,26 @@
     "de": "Heute",
     "az": "Bu gün",
     "ar": "اليوم"
+  },
+  "moon.calendarLink": {
+    "tr": "Ay takvimi ve tutulmalar",
+    "en": "Moon calendar and eclipses",
+    "de": "Mondkalender und Finsternisse",
+    "az": "Ay təqvimi və tutulmalar",
+    "ar": "تقويم القمر والكسوف والخسوف"
+  },
+  "widget.moon.name": {
+    "tr": "Ay evresi",
+    "en": "Moon phase",
+    "de": "Mondphase",
+    "az": "Ayın fazası",
+    "ar": "طور القمر"
+  },
+  "widget.moon.desc": {
+    "tr": "Ay'ın bugünkü evresi, aydınlık yüzdesi ve sıradaki dolunay ya da yeni ay.",
+    "en": "Today's Moon phase, illumination and the next full or new moon.",
+    "de": "Heutige Mondphase, Beleuchtung und der nächste Voll- oder Neumond.",
+    "az": "Ayın bu günkü fazası, işıqlı hissəsi və növbəti bədirlənmə ya da təzə ay.",
+    "ar": "طور القمر اليوم ونسبة الإضاءة والبدر أو المحاق التالي."
   }
 }

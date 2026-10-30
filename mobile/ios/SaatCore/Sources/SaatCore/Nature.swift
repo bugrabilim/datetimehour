@@ -123,6 +123,109 @@ public enum Nature {
     public static func moon(at date: Date) -> Moon {
         moon(atMilliseconds: Int64(jsRound(date.timeIntervalSince1970 * 1000)))
     }
+
+    /// Ay'ın yer merkezli konumu (derece): sağ açıklık, dik açıklık, yatay paralaks.
+    public struct MoonPosition: Sendable, Equatable {
+        public let rightAscension: Double
+        public let declination: Double
+        public let parallax: Double
+    }
+
+    /// Ay'ın doğuşu ve batışı (UTC milisaniye; o aralıkta olmuyorsa nil).
+    public struct MoonRiseSet: Sendable, Equatable {
+        public let rise: Int64?
+        public let set: Int64?
+    }
+
+    /// Meeus bölüm 47, kısaltılmış seri: D, M, M', F, boylam (1e-6°), uzaklık (1e-3 km)
+    static let moonLR: [(Double, Double, Double, Double, Double, Double)] = [
+        (0, 0, 1, 0, 6288774, -20905355), (2, 0, -1, 0, 1274027, -3699111), (2, 0, 0, 0, 658314, -2955968), (0, 0, 2, 0, 213618, -569925),
+        (0, 1, 0, 0, -185116, 48888), (0, 0, 0, 2, -114332, -3149), (2, 0, -2, 0, 58793, 246158), (2, -1, -1, 0, 57066, -152138),
+        (2, 0, 1, 0, 53322, -170733), (2, -1, 0, 0, 45758, -204586), (0, 1, -1, 0, -40923, -129620), (1, 0, 0, 0, -34720, 108743),
+        (0, 1, 1, 0, -30383, 104755), (2, 0, 0, -2, 15327, 10321), (0, 0, 1, 2, -12528, 0), (0, 0, 1, -2, 10980, 79661),
+        (4, 0, -1, 0, 10675, -34782), (0, 0, 3, 0, 10034, -23210), (4, 0, -2, 0, 8548, -21636), (2, 1, -1, 0, -7888, 24208),
+        (2, 1, 0, 0, -6766, 30824), (1, 0, -1, 0, -5163, -8379), (1, 1, 0, 0, 4987, -16675), (2, -1, 1, 0, 4036, -12831),
+        (2, 0, 2, 0, 3994, -10445), (4, 0, 0, 0, 3861, -11650), (2, 0, -3, 0, 3665, 14403), (0, 1, -2, 0, -2689, -7003),
+        (2, 0, -1, 2, -2602, 0), (2, -1, -2, 0, 2390, 10056), (1, 0, 1, 0, -2348, 6322), (2, -2, 0, 0, 2236, -9884),
+    ]
+    /// D, M, M', F, enlem (1e-6°)
+    static let moonB: [(Double, Double, Double, Double, Double)] = [
+        (0, 0, 0, 1, 5128122), (0, 0, 1, 1, 280602), (0, 0, 1, -1, 277693), (2, 0, 0, -1, 173237), (2, 0, -1, 1, 55413),
+        (2, 0, -1, -1, 46271), (2, 0, 0, 1, 32573), (0, 0, 2, 1, 17198), (2, 0, 1, -1, 9266), (0, 0, 2, -1, 8822),
+        (2, -1, 0, -1, 8216), (2, 0, -2, -1, 4324), (2, 0, 1, 1, 4200), (2, 1, 0, -1, -3359), (2, -1, -1, 1, 2463),
+        (2, -1, 0, 1, 2211), (2, -1, -1, -1, 2065), (0, 1, -1, -1, -1870), (4, 0, -1, -1, 1828), (0, 1, 0, 1, -1794),
+        (0, 0, 0, 3, -1749), (0, 1, -1, 1, -1565), (1, 0, 0, 1, -1491), (0, 1, 1, 1, -1475), (0, 1, 1, -1, -1410),
+        (0, 1, 0, -1, -1344), (1, 0, 0, -1, -1335), (0, 0, 3, 1, 1107),
+    ]
+
+    /// ms anında Ay'ın konumu (sitedeki moonPos ile aynı işlem sırası)
+    public static func moonPosition(atMilliseconds ms: Double) -> MoonPosition {
+        let T = (ms / dayMs + unixJD + deltaT / 86400 - 2451545) / 36525
+        let T2 = T * T, T3 = T2 * T, T4 = T3 * T
+        let Lp = 218.3164477 + 481267.88123421 * T - 0.0015786 * T2 + T3 / 538841 - T4 / 65194000
+        let D = 297.8501921 + 445267.1114034 * T - 0.0018819 * T2 + T3 / 545868 - T4 / 113065000
+        let M = 357.5291092 + 35999.0502909 * T - 0.0001536 * T2 + T3 / 24490000
+        let Mp = 134.9633964 + 477198.8675055 * T + 0.0087414 * T2 + T3 / 69699 - T4 / 14712000
+        let F = 93.2720950 + 483202.0175233 * T - 0.0036539 * T2 - T3 / 3526000 + T4 / 863310000
+        let A1 = 119.75 + 131.849 * T, A2 = 53.09 + 479264.290 * T, A3 = 313.45 + 481266.484 * T
+        let E = 1 - 0.002516 * T - 0.0000074 * T2
+        var sl = 0.0, sr = 0.0, sb = 0.0
+        for t in moonLR {
+            let arg = t.0 * D + t.1 * M + t.2 * Mp + t.3 * F
+            let e = t.1 == 0 ? 1 : (t.1 == 2 || t.1 == -2 ? E * E : E)
+            sl += t.4 * e * dsin(arg)
+            sr += t.5 * e * dcos(arg)
+        }
+        for t in moonB {
+            let arg = t.0 * D + t.1 * M + t.2 * Mp + t.3 * F
+            let e = t.1 == 0 ? 1 : (t.1 == 2 || t.1 == -2 ? E * E : E)
+            sb += t.4 * e * dsin(arg)
+        }
+        sl += 3958 * dsin(A1) + 1962 * dsin(Lp - F) + 318 * dsin(A2)
+        sb += -2235 * dsin(Lp) + 382 * dsin(A3) + 175 * dsin(A1 - F) + 175 * dsin(A1 + F) + 127 * dsin(Lp - Mp) - 115 * dsin(Lp + Mp)
+        let lam = Lp + sl / 1000000, bet = sb / 1000000, dist = 385000.56 + sr / 1000
+        let eps = 23.4392911 - 0.0130042 * T
+        let ra = atan2(dsin(lam) * dcos(eps) - (dsin(bet) / dcos(bet)) * dsin(eps), dcos(lam)) / deg2rad
+        let dec = asin(dsin(bet) * dcos(eps) + dcos(bet) * dsin(eps) * dsin(lam)) / deg2rad
+        return MoonPosition(rightAscension: ra, declination: dec, parallax: asin(6378.14 / dist) / deg2rad)
+    }
+
+    /// Ufka göre yükseklik eksi doğuş/batış eşiği (Meeus bölüm 15); 0'dan büyükse Ay ufkun üstünde
+    public static func moonAltitude(_ ms: Double, lat: Double, lon: Double) -> Double {
+        let p = moonPosition(atMilliseconds: ms)
+        let d = ms / dayMs + unixJD - 2451545, T = d / 36525
+        let gmst = 280.46061837 + 360.98564736629 * d + 0.000387933 * T * T
+        let sh = dsin(lat) * dsin(p.declination) + dcos(lat) * dcos(p.declination) * dcos(gmst + lon - p.rightAscension)
+        return asin(sh) / deg2rad - (0.7275 * p.parallax - 0.5667)
+    }
+
+    /// `start`tan başlayan `span` (varsayılan 24 saat) içinde Ay'ın ilk doğuşu ve batışı
+    public static func moonRiseSet(startMilliseconds start: Int64, latitude lat: Double, longitude lon: Double,
+                                   spanMilliseconds span: Int64 = 86_400_000) -> MoonRiseSet {
+        let step = 600000.0, n = Int(jsRound(Double(span) / step))
+        var rise: Int64?, set: Int64?
+        var t0 = Double(start), f0 = moonAltitude(t0, lat: lat, lon: lon)
+        if n > 0 {
+            for i in 1...n {
+                let t1 = Double(start) + Double(i) * step, f1 = moonAltitude(t1, lat: lat, lon: lon)
+                if (f0 < 0) != (f1 < 0) {
+                    let isRise = f0 < 0
+                    if (isRise ? rise : set) == nil {
+                        var a = t0, b = t1, fa = f0
+                        for _ in 0..<12 {
+                            let m = (a + b) / 2, fm = moonAltitude(m, lat: lat, lon: lon)
+                            if (fa < 0) == (fm < 0) { a = m; fa = fm } else { b = m }
+                        }
+                        let at = Int64(jsRound((a + b) / 2))
+                        if isRise { rise = at } else { set = at }
+                    }
+                }
+                t0 = t1
+                f0 = f1
+            }
+        }
+        return MoonRiseSet(rise: rise, set: set)
+    }
 }
 
 public extension Date {

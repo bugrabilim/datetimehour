@@ -62,6 +62,20 @@ for (let ms = Date.UTC(2026, 0, 1); ms < Date.UTC(2029, 0, 1); ms += Math.round(
   const r = N.moon(ms);
   moon.push({ ms, age: r.age, frac: r.frac, illum: r.illum, idx: r.idx, nextNew: r.nextNew, nextFull: r.nextFull });
 }
+// Ay'ın konumu ve doğuş/batışı (yerel gece yarısından 24 saat): kuzey/güney, yüksek enlem (doğmayan/batmayan günler)
+const moonPos = [];
+for (let ms = Date.UTC(2026, 0, 1, 3); ms < Date.UTC(2028, 0, 1); ms += Math.round(11.7 * DAY)) {
+  const p = N.moonPos(ms);
+  moonPos.push({ ms, ra: p.ra, dec: p.dec, par: p.par });
+}
+const moonRise = [];
+for (const [lat, lon, tz] of [[41.01, 28.98, 3], [39.93, 32.86, 3], [51.51, -0.13, 0], [-33.87, 151.21, 11], [64.15, -21.94, 0], [69.65, 18.96, 1], [24.71, 46.68, 3]]) {
+  for (let d = Date.UTC(2026, 9, 30); d < Date.UTC(2027, 9, 30); d += 23 * DAY) {
+    const start = d - tz * 3600000;
+    const r = N.moonRiseSet(start, lat, lon);
+    moonRise.push({ lat, lon, start, rise: r.rise, set: r.set });
+  }
+}
 
 /* Her durum tek satır: farklar okunur kalır */
 const lines = (arr) => "[\n" + arr.map((o) => "    " + JSON.stringify(o)).join(",\n") + "\n  ]";
@@ -75,10 +89,12 @@ const files = {
 `,
   "nature.json": `{
   "source": "src/js/nature-calc.js",
-  "note": "Zamanlar UTC milisaniye. seasons: yılın 4 mevsim anı; phases: k için yeni ay ve dolunay; moon: o andaki Ay durumu.",
+  "note": "Zamanlar UTC milisaniye. seasons: yılın 4 mevsim anı; phases: k için yeni ay ve dolunay; moon: o andaki Ay durumu; moonPos: Ay'ın sağ açıklığı, dik açıklığı, paralaksı (derece); moonRise: start'tan 24 saat içinde ilk doğuş ve batış (null = yok).",
   "seasons": ${lines(seasons)},
   "phases": ${lines(phases)},
-  "moon": ${lines(moon)}
+  "moon": ${lines(moon)},
+  "moonPos": ${lines(moonPos)},
+  "moonRise": ${lines(moonRise)}
 }
 `,
 };
@@ -96,4 +112,4 @@ if (stale.length) {
   console.error(`Güncel değil: ${stale.join(", ")}. Çalıştırın: node mobile/shared/gen-vectors.mjs`);
   process.exit(1);
 }
-console.log(check ? "Test verisi güncel." : `Yazıldı: ${Object.keys(files).join(", ")} (${prayerCases.length} namaz, ${seasons.length} yıl, ${phases.length} ay evresi, ${moon.length} Ay örneği)`);
+console.log(check ? "Test verisi güncel." : `Yazıldı: ${Object.keys(files).join(", ")} (${prayerCases.length} namaz, ${seasons.length} yıl, ${phases.length} ay evresi, ${moon.length} Ay örneği, ${moonRise.length} Ay doğuş/batış)`);

@@ -46,6 +46,9 @@ const SITE_PATHS = [
   "nature.h1", "nature.seasons.*", "nature.current", "nature.nextIn", "nature.startsOn", "nature.sunHeading", "nature.sunrise", "nature.sunset",
   "nature.dayLength", "nature.solarNoon", "nature.moonHeading", "nature.phases.*", "nature.illumination", "nature.age", "nature.nextNew",
   "nature.nextFull", "nature.tableHeading", "nature.tableLead", "nature.colYear", "nature.hoursShort", "nature.minutesShort",
+  "nature.moonrise", "nature.moonset", "nature.moonNoRise", "nature.moonNoSet", "nature.moonCalHeading", "nature.eclipseHeading",
+  "nature.eclipseLead", "nature.eclipseTypes.*", "nature.eclipseRegions", "nature.eclipsePath", "nature.eclipseHere", "nature.eclipseNotHere",
+  "nature.eclipseSafety", "nature.eclipseSource",
   "weather.h1", "weather.now", "weather.feelsLike", "weather.humidity", "weather.wind", "weather.precipitation", "weather.uv",
   "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.pressure",
   "weather.codes.*", "weather.attribution", "weather.sunrise", "weather.sunset",
@@ -147,6 +150,10 @@ const citiesJson = JSON.stringify(cities) + "\n";
 const placesSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/places.json"), "utf8"));
 const placesJson = JSON.stringify({ tz: placesSrc.tz, p: placesSrc.p, names: placesSrc.names }) + "\n";
 
+/* Tutulmalar (NASA tablosu, src/data/eclipses.json): en büyük tutulma anı TD → UT (ΔT 69 sn, nature-calc.js ile aynı) */
+const eclSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/eclipses.json"), "utf8"));
+const eclipsesJson = JSON.stringify(["solar", "lunar"].flatMap((kind) => eclSrc[kind].map((e) => ({ kind, ut: Date.parse(e.td) - 69000, type: e.type, regions: e.regions, path: e.path || [] }))).sort((a, b) => a.ut - b.ut)) + "\n";
+
 const files = {
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
@@ -154,10 +161,12 @@ const files = {
   "mobile/ios/App/Resources/calendar.json": calendarJson,
   "mobile/ios/App/Resources/cities.json": citiesJson,
   "mobile/ios/App/Resources/places.json": placesJson,
+  "mobile/ios/App/Resources/eclipses.json": eclipsesJson,
   "mobile/android/app/src/main/assets/provinces.json": provincesJson,
   "mobile/android/app/src/main/assets/calendar.json": calendarJson,
   "mobile/android/app/src/main/assets/cities.json": citiesJson,
   "mobile/android/app/src/main/assets/places.json": placesJson,
+  "mobile/android/app/src/main/assets/eclipses.json": eclipsesJson,
   "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/app/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l)])),
 };

@@ -341,6 +341,26 @@
     <string name="nature_colYear">İl</string>
     <string name="nature_hoursShort">s</string>
     <string name="nature_minutesShort">dəq</string>
+    <string name="nature_moonrise">Ayın çıxması</string>
+    <string name="nature_moonset">Ayın batması</string>
+    <string name="nature_moonNoRise">Bu gün Ay çıxmır</string>
+    <string name="nature_moonNoSet">Bu gün Ay batmır</string>
+    <string name="nature_moonCalHeading">Ay təqvimi</string>
+    <string name="nature_eclipseHeading">Tutulmalar</string>
+    <string name="nature_eclipseLead">Qarşıdakı Günəş və Ay tutulmaları. Saat ən böyük tutulma anıdır (%1$s vaxtı ilə).</string>
+    <string name="nature_eclipseTypes_solarTotal">Tam Günəş tutulması</string>
+    <string name="nature_eclipseTypes_solarAnnular">Həlqəvi Günəş tutulması</string>
+    <string name="nature_eclipseTypes_solarPartial">Qismən Günəş tutulması</string>
+    <string name="nature_eclipseTypes_solarHybrid">Hibrid Günəş tutulması</string>
+    <string name="nature_eclipseTypes_lunarTotal">Tam Ay tutulması</string>
+    <string name="nature_eclipseTypes_lunarPartial">Qismən Ay tutulması</string>
+    <string name="nature_eclipseTypes_lunarPenumbral">Yarımkölgə Ay tutulması</string>
+    <string name="nature_eclipseRegions">Göründüyü yerlər: %1$s</string>
+    <string name="nature_eclipsePath">Tam və ya həlqəvi faza: %1$s</string>
+    <string name="nature_eclipseHere">%1$s: Ay o zaman üfüqün üstündədir, tutulma buradan görünür.</string>
+    <string name="nature_eclipseNotHere">%1$s: Ay o zaman üfüqün altındadır.</string>
+    <string name="nature_eclipseSafety">Günəş tutulmasına çılpaq gözlə və ya adi gün eynəyi ilə baxmayın; ISO 12312-2 təsdiqli tutulma eynəyindən istifadə edin.</string>
+    <string name="nature_eclipseSource">Mənbə: NASA tutulma saytı (Fred Espenak, NASA/GSFC).</string>
     <string name="weather_h1">Hava</string>
     <string name="weather_now">İndi</string>
     <string name="weather_feelsLike">Hiss olunan</string>
@@ -688,5 +708,8 @@
     <string name="morning_evening">Axşamınız xeyir</string>
     <string name="morning_night">Gecəniz xeyir</string>
     <string name="morning_today">Bu gün</string>
+    <string name="moon_calendarLink">Ay təqvimi və tutulmalar</string>
+    <string name="widget_moon_name">Ayın fazası</string>
+    <string name="widget_moon_desc">Ayın bu günkü fazası, işıqlı hissəsi və növbəti bədirlənmə ya da təzə ay.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

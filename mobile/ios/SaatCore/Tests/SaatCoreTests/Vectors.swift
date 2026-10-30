@@ -34,7 +34,11 @@ struct NatureVectors: Decodable {
         let idx: Int
         let nextNew: Int64, nextFull: Int64
     }
+    struct MoonPos: Decodable { let ms: Double; let ra: Double; let dec: Double; let par: Double }
+    struct MoonRise: Decodable { let lat: Double; let lon: Double; let start: Int64; let rise: Int64?; let set: Int64? }
     let seasons: [Season]
     let phases: [Phase]
     let moon: [MoonSample]
+    let moonPos: [MoonPos]
+    let moonRise: [MoonRise]
 }

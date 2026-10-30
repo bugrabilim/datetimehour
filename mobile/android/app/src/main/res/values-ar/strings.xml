@@ -341,6 +341,26 @@
     <string name="nature_colYear">السنة</string>
     <string name="nature_hoursShort">س</string>
     <string name="nature_minutesShort">د</string>
+    <string name="nature_moonrise">شروق القمر</string>
+    <string name="nature_moonset">غروب القمر</string>
+    <string name="nature_moonNoRise">لا يشرق القمر اليوم</string>
+    <string name="nature_moonNoSet">لا يغرب القمر اليوم</string>
+    <string name="nature_moonCalHeading">تقويم القمر</string>
+    <string name="nature_eclipseHeading">الكسوف والخسوف</string>
+    <string name="nature_eclipseLead">الكسوفات والخسوفات القادمة. الوقت هو لحظة ذروة الكسوف أو الخسوف (بتوقيت %1$s).</string>
+    <string name="nature_eclipseTypes_solarTotal">كسوف كلي للشمس</string>
+    <string name="nature_eclipseTypes_solarAnnular">كسوف حلقي للشمس</string>
+    <string name="nature_eclipseTypes_solarPartial">كسوف جزئي للشمس</string>
+    <string name="nature_eclipseTypes_solarHybrid">كسوف هجين للشمس</string>
+    <string name="nature_eclipseTypes_lunarTotal">خسوف كلي للقمر</string>
+    <string name="nature_eclipseTypes_lunarPartial">خسوف جزئي للقمر</string>
+    <string name="nature_eclipseTypes_lunarPenumbral">خسوف شبه ظلي للقمر</string>
+    <string name="nature_eclipseRegions">يُرى من: %1$s</string>
+    <string name="nature_eclipsePath">الطور الكلي أو الحلقي: %1$s</string>
+    <string name="nature_eclipseHere">%1$s: القمر فوق الأفق حينها، ويمكن رؤية الخسوف من هنا.</string>
+    <string name="nature_eclipseNotHere">%1$s: القمر تحت الأفق حينها.</string>
+    <string name="nature_eclipseSafety">لا تنظر إلى كسوف الشمس بالعين المجردة أو بنظارة شمسية عادية؛ استخدم نظارة كسوف معتمدة وفق ISO 12312-2.</string>
+    <string name="nature_eclipseSource">المصدر: موقع ناسا للكسوف (فريد إسبيناك، NASA/GSFC).</string>
     <string name="weather_h1">الطقس</string>
     <string name="weather_now">الآن</string>
     <string name="weather_feelsLike">الإحساس بالحرارة</string>
@@ -688,5 +708,8 @@
     <string name="morning_evening">مساء الخير</string>
     <string name="morning_night">تصبح على خير</string>
     <string name="morning_today">اليوم</string>
+    <string name="moon_calendarLink">تقويم القمر والكسوف والخسوف</string>
+    <string name="widget_moon_name">طور القمر</string>
+    <string name="widget_moon_desc">طور القمر اليوم ونسبة الإضاءة والبدر أو المحاق التالي.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import tr.bumba.time.core.Nature
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -147,6 +148,23 @@ class ClockDateWidget : BaseWidget() {
     }
 }
 
+/** Ay evresi: bugünkü evre (gece yarısında yenilenir), aydınlık yüzdesi, sıradaki dolunay ya da yeni ay */
+class MoonWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_moon)
+        val now = Instant.now()
+        val m = Nature.moon(now.toEpochMilli())
+        v.setTextViewText(R.id.icon, MOON_PHASE_EMOJI[m.phaseIndex])
+        v.setTextViewText(R.id.name, L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"))
+        v.setTextViewText(R.id.illum, T("nature.illumination", Math.round(m.illumination * 100)))
+        val full = m.nextFullMoon < m.nextNewMoon
+        val at = Instant.ofEpochMilli(if (full) m.nextFullMoon else m.nextNewMoon).atZone(ZoneId.systemDefault()).toLocalDate()
+        v.setTextViewText(R.id.next, (if (full) "🌕 " else "🌑 ") + Fmt.shortDate(at))
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.SEASONS, id))
+        return v
+    }
+}
+
 /** Yenileme yayını: bir sonraki vakitte ya da gece yarısında gelir */
 class WidgetRefreshReceiver : android.content.BroadcastReceiver() {
     override fun onReceive(c: Context, intent: Intent) = WidgetUpdater.updateAll(c)
@@ -155,7 +173,7 @@ class WidgetRefreshReceiver : android.content.BroadcastReceiver() {
 object WidgetUpdater {
     private val providers = listOf(
         NextPrayerWidget::class.java, TodayPrayersWidget::class.java, AnalogClockWidget::class.java,
-        DigitalClockWidget::class.java, ClockDateWidget::class.java,
+        DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java,
     )
 
     fun placeKey(id: Int) = "widget.place.$id"

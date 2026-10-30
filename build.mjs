@@ -421,6 +421,7 @@ function layout(p) {
     locale: t.locale,
     t: { ...clientT, ...(p.clientExtra && p.clientExtra.tools ? { tools: p.clientExtra.tools } : {}), ...((p.clientExtra && p.clientExtra.t) || {}) },
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
+    ...(p.clientExtra && p.clientExtra.eclipses ? { eclipses: p.clientExtra.eclipses } : {}),
     placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
     ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
@@ -734,6 +735,9 @@ const HOL = readJson("src/data/holidays.json");
 HOL.school = readJson("src/data/school.json");
 HOL.exams = readJson("src/data/exams.json");
 const HOL_YEARS = Object.keys(HOL.years).map(Number).sort((a, b) => a - b);
+/* Tutulmalar (NASA tablosu): en büyük tutulma anı TD → UT (ΔT 69 sn, nature-calc.js ile aynı). Mevsimler sayfası ve uygulamalar. */
+const ECLIPSES_SRC = JSON.parse(fs.readFileSync(path.join(SRC, "data", "eclipses.json"), "utf8"));
+const ECLIPSES = ["solar", "lunar"].flatMap((kind) => ECLIPSES_SRC[kind].map((e) => ({ kind, ut: Date.parse(e.td) - 69000, type: e.type, regions: e.regions, path: e.path || [] }))).sort((a, b) => a.ut - b.ut);
 const BUILD_YEAR = Math.min(Math.max(new Date().getFullYear(), HOL_YEARS[0]), HOL_YEARS[HOL_YEARS.length - 1]);
 const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school", exam: "exam" };
 const yearPath = (lang, y) => `${ROUTES[lang].calendar}${y}/`;
@@ -1462,6 +1466,23 @@ function buildNature(lang) {
         <p class="meta"><strong>${esc(n.nextFull)}:</strong> <span data-n-nextfull>–</span></p>
       </div>
     </div>
+    <dl class="facts">${cell(n.moonrise, "data-n-moon=\"rise\"")}${cell(n.moonset, "data-n-moon=\"set\"")}</dl>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-mcal-h">
+  <div class="wrap">
+    <h2 id="n-mcal-h">${esc(n.moonCalHeading)}</h2>
+    <div class="moon-cal" data-n-mooncal></div>
+    <p class="meta" data-n-mooncalcap>&nbsp;</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-ecl-h">
+  <div class="wrap">
+    <h2 id="n-ecl-h">${esc(n.eclipseHeading)}</h2>
+    <p class="meta" data-n-ecllead>&nbsp;</p>
+    <ul class="eclipses" data-n-eclipses></ul>
+    <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>
+    <p class="meta">${esc(n.eclipseSource)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="n-chart-h">
@@ -1489,7 +1510,7 @@ function buildNature(lang) {
     <p class="meta">${esc(n.methodNote)}</p>
   </div>
 </section>`;
-  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday } } }, nav: "nature", searchK: n.search, needsPlace: true });
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
 }
 
 function buildWeather(lang) {

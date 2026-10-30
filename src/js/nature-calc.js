@@ -1,5 +1,5 @@
-/* Doğa hesapları (dış veri yok): ekinoks/gündönümü anları (Meeus, Astronomical Algorithms bölüm 27)
-   ve yeni ay / dolunay anları (bölüm 49). Tarayıcıda window.sthNature, Node'da module.exports. */
+/* Doğa hesapları (dış veri yok): ekinoks/gündönümü anları (Meeus, Astronomical Algorithms bölüm 27),
+   yeni ay / dolunay anları (bölüm 49), Ay'ın konumu (bölüm 47, kısaltılmış) ve doğuş/batışı (bölüm 15). Tarayıcıda window.sthNature, Node'da module.exports. */
 (function (root) {
   "use strict";
   var D2R = Math.PI / 180;
@@ -75,7 +75,91 @@
     return { age: (ms - prevNew) / 86400000, frac: frac, illum: illum, idx: idx, nextNew: nextNew, nextFull: nextFull };
   }
 
-  var api = { seasons: seasons, moon: moon, phaseMs: phaseMs };
+  /* Ay'ın konumu: Meeus bölüm 47, kısaltılmış seri (boylamda en büyük 32, enlemde 28 terim; ~0,01°).
+     Satırlar: D, M, M', F, boylam (1e-6°), uzaklık (1e-3 km) / enlem (1e-6°). M'li terimler E (|M|=2: E²) ile çarpılır. */
+  var MOON_LR = [
+    [0, 0, 1, 0, 6288774, -20905355], [2, 0, -1, 0, 1274027, -3699111], [2, 0, 0, 0, 658314, -2955968], [0, 0, 2, 0, 213618, -569925],
+    [0, 1, 0, 0, -185116, 48888], [0, 0, 0, 2, -114332, -3149], [2, 0, -2, 0, 58793, 246158], [2, -1, -1, 0, 57066, -152138],
+    [2, 0, 1, 0, 53322, -170733], [2, -1, 0, 0, 45758, -204586], [0, 1, -1, 0, -40923, -129620], [1, 0, 0, 0, -34720, 108743],
+    [0, 1, 1, 0, -30383, 104755], [2, 0, 0, -2, 15327, 10321], [0, 0, 1, 2, -12528, 0], [0, 0, 1, -2, 10980, 79661],
+    [4, 0, -1, 0, 10675, -34782], [0, 0, 3, 0, 10034, -23210], [4, 0, -2, 0, 8548, -21636], [2, 1, -1, 0, -7888, 24208],
+    [2, 1, 0, 0, -6766, 30824], [1, 0, -1, 0, -5163, -8379], [1, 1, 0, 0, 4987, -16675], [2, -1, 1, 0, 4036, -12831],
+    [2, 0, 2, 0, 3994, -10445], [4, 0, 0, 0, 3861, -11650], [2, 0, -3, 0, 3665, 14403], [0, 1, -2, 0, -2689, -7003],
+    [2, 0, -1, 2, -2602, 0], [2, -1, -2, 0, 2390, 10056], [1, 0, 1, 0, -2348, 6322], [2, -2, 0, 0, 2236, -9884]
+  ];
+  var MOON_B = [
+    [0, 0, 0, 1, 5128122], [0, 0, 1, 1, 280602], [0, 0, 1, -1, 277693], [2, 0, 0, -1, 173237], [2, 0, -1, 1, 55413],
+    [2, 0, -1, -1, 46271], [2, 0, 0, 1, 32573], [0, 0, 2, 1, 17198], [2, 0, 1, -1, 9266], [0, 0, 2, -1, 8822],
+    [2, -1, 0, -1, 8216], [2, 0, -2, -1, 4324], [2, 0, 1, 1, 4200], [2, 1, 0, -1, -3359], [2, -1, -1, 1, 2463],
+    [2, -1, 0, 1, 2211], [2, -1, -1, -1, 2065], [0, 1, -1, -1, -1870], [4, 0, -1, -1, 1828], [0, 1, 0, 1, -1794],
+    [0, 0, 0, 3, -1749], [0, 1, -1, 1, -1565], [1, 0, 0, 1, -1491], [0, 1, 1, 1, -1475], [0, 1, 1, -1, -1410],
+    [0, 1, 0, -1, -1344], [1, 0, 0, -1, -1335], [0, 0, 3, 1, 1107]
+  ];
+  /** ms anında Ay'ın yer merkezli konumu: { ra, dec (derece), par (yatay paralaks, derece) } */
+  function moonPos(ms) {
+    var T = (ms / 86400000 + UNIX_JD + DELTA_T / 86400 - 2451545) / 36525;
+    var T2 = T * T, T3 = T2 * T, T4 = T3 * T;
+    var Lp = 218.3164477 + 481267.88123421 * T - 0.0015786 * T2 + T3 / 538841 - T4 / 65194000;
+    var D = 297.8501921 + 445267.1114034 * T - 0.0018819 * T2 + T3 / 545868 - T4 / 113065000;
+    var M = 357.5291092 + 35999.0502909 * T - 0.0001536 * T2 + T3 / 24490000;
+    var Mp = 134.9633964 + 477198.8675055 * T + 0.0087414 * T2 + T3 / 69699 - T4 / 14712000;
+    var F = 93.2720950 + 483202.0175233 * T - 0.0036539 * T2 - T3 / 3526000 + T4 / 863310000;
+    var A1 = 119.75 + 131.849 * T, A2 = 53.09 + 479264.290 * T, A3 = 313.45 + 481266.484 * T;
+    var E = 1 - 0.002516 * T - 0.0000074 * T2;
+    var sl = 0, sr = 0, sb = 0, i, t, arg, e;
+    for (i = 0; i < MOON_LR.length; i++) {
+      t = MOON_LR[i];
+      arg = t[0] * D + t[1] * M + t[2] * Mp + t[3] * F;
+      e = t[1] === 0 ? 1 : (t[1] === 2 || t[1] === -2 ? E * E : E);
+      sl += t[4] * e * sin(arg);
+      sr += t[5] * e * cos(arg);
+    }
+    for (i = 0; i < MOON_B.length; i++) {
+      t = MOON_B[i];
+      arg = t[0] * D + t[1] * M + t[2] * Mp + t[3] * F;
+      e = t[1] === 0 ? 1 : (t[1] === 2 || t[1] === -2 ? E * E : E);
+      sb += t[4] * e * sin(arg);
+    }
+    sl += 3958 * sin(A1) + 1962 * sin(Lp - F) + 318 * sin(A2);
+    sb += -2235 * sin(Lp) + 382 * sin(A3) + 175 * sin(A1 - F) + 175 * sin(A1 + F) + 127 * sin(Lp - Mp) - 115 * sin(Lp + Mp);
+    var lam = Lp + sl / 1000000, bet = sb / 1000000, dist = 385000.56 + sr / 1000;
+    var eps = 23.4392911 - 0.0130042 * T;
+    var ra = Math.atan2(sin(lam) * cos(eps) - (sin(bet) / cos(bet)) * sin(eps), cos(lam)) / D2R;
+    var dec = Math.asin(sin(bet) * cos(eps) + cos(bet) * sin(eps) * sin(lam)) / D2R;
+    return { ra: ra, dec: dec, par: Math.asin(6378.14 / dist) / D2R };
+  }
+  /* Ay'ın ufka göre yüksekliği eksi doğuş/batış eşiği (Meeus bölüm 15: h0 = 0,7275 π − 0°34') */
+  function moonAlt(ms, lat, lon) {
+    var p = moonPos(ms);
+    var d = ms / 86400000 + UNIX_JD - 2451545, T = d / 36525;
+    var gmst = 280.46061837 + 360.98564736629 * d + 0.000387933 * T * T;
+    var sh = sin(lat) * sin(p.dec) + cos(lat) * cos(p.dec) * cos(gmst + lon - p.ra);
+    return Math.asin(sh) / D2R - (0.7275 * p.par - 0.5667);
+  }
+  /** startMs'ten başlayan spanMs (varsayılan 24 sa) içinde Ay'ın ilk doğuşu ve batışı (ms; olmuyorsa null).
+      10 dakikalık adımlarla işaret değişimi aranır, 12 kez ikiye bölünerek ~0,15 sn'ye inilir. */
+  function moonRiseSet(startMs, lat, lon, spanMs) {
+    var step = 600000, n = Math.round((spanMs || 86400000) / step), out = { rise: null, set: null };
+    var t0 = startMs, f0 = moonAlt(t0, lat, lon);
+    for (var i = 1; i <= n; i++) {
+      var t1 = startMs + i * step, f1 = moonAlt(t1, lat, lon);
+      if ((f0 < 0) !== (f1 < 0)) {
+        var key = f0 < 0 ? "rise" : "set";
+        if (out[key] === null) {
+          var a = t0, b = t1, fa = f0;
+          for (var j = 0; j < 12; j++) {
+            var m = (a + b) / 2, fm = moonAlt(m, lat, lon);
+            if ((fa < 0) === (fm < 0)) { a = m; fa = fm; } else b = m;
+          }
+          out[key] = Math.round((a + b) / 2);
+        }
+      }
+      t0 = t1; f0 = f1;
+    }
+    return out;
+  }
+
+  var api = { seasons: seasons, moon: moon, phaseMs: phaseMs, moonPos: moonPos, moonRiseSet: moonRiseSet, moonAltitude: moonAlt };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthNature = api;
 })(typeof window !== "undefined" ? window : globalThis);

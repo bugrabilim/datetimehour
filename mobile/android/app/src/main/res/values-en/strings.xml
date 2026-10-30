@@ -341,6 +341,26 @@
     <string name="nature_colYear">Year</string>
     <string name="nature_hoursShort">h</string>
     <string name="nature_minutesShort">min</string>
+    <string name="nature_moonrise">Moonrise</string>
+    <string name="nature_moonset">Moonset</string>
+    <string name="nature_moonNoRise">No moonrise today</string>
+    <string name="nature_moonNoSet">No moonset today</string>
+    <string name="nature_moonCalHeading">Moon calendar</string>
+    <string name="nature_eclipseHeading">Eclipses</string>
+    <string name="nature_eclipseLead">Upcoming solar and lunar eclipses. The time is the moment of greatest eclipse (%1$s time).</string>
+    <string name="nature_eclipseTypes_solarTotal">Total solar eclipse</string>
+    <string name="nature_eclipseTypes_solarAnnular">Annular solar eclipse</string>
+    <string name="nature_eclipseTypes_solarPartial">Partial solar eclipse</string>
+    <string name="nature_eclipseTypes_solarHybrid">Hybrid solar eclipse</string>
+    <string name="nature_eclipseTypes_lunarTotal">Total lunar eclipse</string>
+    <string name="nature_eclipseTypes_lunarPartial">Partial lunar eclipse</string>
+    <string name="nature_eclipseTypes_lunarPenumbral">Penumbral lunar eclipse</string>
+    <string name="nature_eclipseRegions">Visible from: %1$s</string>
+    <string name="nature_eclipsePath">Total or annular phase: %1$s</string>
+    <string name="nature_eclipseHere">%1$s: the Moon is above the horizon then, so the eclipse can be seen from here.</string>
+    <string name="nature_eclipseNotHere">%1$s: the Moon is below the horizon then.</string>
+    <string name="nature_eclipseSafety">Never look at a solar eclipse with the naked eye or ordinary sunglasses; use eclipse glasses certified to ISO 12312-2.</string>
+    <string name="nature_eclipseSource">Source: NASA Eclipse Web Site (Fred Espenak, NASA/GSFC).</string>
     <string name="weather_h1">Weather</string>
     <string name="weather_now">Now</string>
     <string name="weather_feelsLike">Feels like</string>
@@ -688,5 +708,8 @@
     <string name="morning_evening">Good evening</string>
     <string name="morning_night">Good night</string>
     <string name="morning_today">Today</string>
+    <string name="moon_calendarLink">Moon calendar and eclipses</string>
+    <string name="widget_moon_name">Moon phase</string>
+    <string name="widget_moon_desc">Today\'s Moon phase, illumination and the next full or new moon.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

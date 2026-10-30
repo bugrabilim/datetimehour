@@ -11901,6 +11901,706 @@
         }
       }
     },
+    "nature.moonrise": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay doğuşu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moonrise"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mondaufgang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayın çıxması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شروق القمر"
+          }
+        }
+      }
+    },
+    "nature.moonset": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay batışı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moonset"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monduntergang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayın batması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غروب القمر"
+          }
+        }
+      }
+    },
+    "nature.moonNoRise": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün doğmuyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No moonrise today"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute kein Mondaufgang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu gün Ay çıxmır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يشرق القمر اليوم"
+          }
+        }
+      }
+    },
+    "nature.moonNoSet": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün batmıyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No moonset today"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute kein Monduntergang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu gün Ay batmır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يغرب القمر اليوم"
+          }
+        }
+      }
+    },
+    "nature.moonCalHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay takvimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moon calendar"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mondkalender"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay təqvimi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقويم القمر"
+          }
+        }
+      }
+    },
+    "nature.eclipseHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutulmalar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eclipses"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finsternisse"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutulmalar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الكسوف والخسوف"
+          }
+        }
+      }
+    },
+    "nature.eclipseLead": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önümüzdeki Güneş ve Ay tutulmaları. Saat, en büyük tutulma anıdır (%1$@ saatiyle)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upcoming solar and lunar eclipses. The time is the moment of greatest eclipse (%1$@ time)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kommende Sonnen- und Mondfinsternisse. Die Uhrzeit ist der Zeitpunkt der größten Verfinsterung (%1$@)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qarşıdakı Günəş və Ay tutulmaları. Saat ən böyük tutulma anıdır (%1$@ vaxtı ilə)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الكسوفات والخسوفات القادمة. الوقت هو لحظة ذروة الكسوف أو الخسوف (بتوقيت %1$@)."
+          }
+        }
+      }
+    },
+    "nature.eclipseTypes.solarTotal": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam Güneş tutulması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total solar eclipse"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Totale Sonnenfinsternis"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam Günəş tutulması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كسوف كلي للشمس"
+          }
+        }
+      }
+    },
+    "nature.eclipseTypes.solarAnnular": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halkalı Güneş tutulması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annular solar eclipse"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ringförmige Sonnenfinsternis"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Həlqəvi Günəş tutulması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كسوف حلقي للشمس"
+          }
+        }
+      }
+    },
+    "nature.eclipseTypes.solarPartial": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parçalı Güneş tutulması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partial solar eclipse"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partielle Sonnenfinsternis"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qismən Günəş tutulması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كسوف جزئي للشمس"
+          }
+        }
+      }
+    },
+    "nature.eclipseTypes.solarHybrid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Melez Güneş tutulması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hybrid solar eclipse"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hybride Sonnenfinsternis"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hibrid Günəş tutulması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "كسوف هجين للشمس"
+          }
+        }
+      }
+    },
+    "nature.eclipseTypes.lunarTotal": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam Ay tutulması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total lunar eclipse"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Totale Mondfinsternis"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam Ay tutulması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خسوف كلي للقمر"
+          }
+        }
+      }
+    },
+    "nature.eclipseTypes.lunarPartial": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parçalı Ay tutulması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partial lunar eclipse"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partielle Mondfinsternis"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qismən Ay tutulması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خسوف جزئي للقمر"
+          }
+        }
+      }
+    },
+    "nature.eclipseTypes.lunarPenumbral": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarı gölge Ay tutulması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Penumbral lunar eclipse"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halbschatten-Mondfinsternis"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarımkölgə Ay tutulması"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خسوف شبه ظلي للقمر"
+          }
+        }
+      }
+    },
+    "nature.eclipseRegions": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görüldüğü yerler: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Visible from: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichtbar in: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Göründüyü yerlər: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُرى من: %1$@"
+          }
+        }
+      }
+    },
+    "nature.eclipsePath": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ya da halkalı evre: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total or annular phase: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Totale oder ringförmige Phase: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam və ya həlqəvi faza: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الطور الكلي أو الحلقي: %1$@"
+          }
+        }
+      }
+    },
+    "nature.eclipseHere": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Ay o sırada ufkun üstünde, tutulma buradan izlenebilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: the Moon is above the horizon then, so the eclipse can be seen from here."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Der Mond steht dann über dem Horizont, die Finsternis ist von hier aus sichtbar."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Ay o zaman üfüqün üstündədir, tutulma buradan görünür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: القمر فوق الأفق حينها، ويمكن رؤية الخسوف من هنا."
+          }
+        }
+      }
+    },
+    "nature.eclipseNotHere": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Ay o sırada ufkun altında."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: the Moon is below the horizon then."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Der Mond steht dann unter dem Horizont."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Ay o zaman üfüqün altındadır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: القمر تحت الأفق حينها."
+          }
+        }
+      }
+    },
+    "nature.eclipseSafety": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş tutulmasına çıplak gözle ya da sıradan güneş gözlüğüyle bakmayın; ISO 12312-2 onaylı tutulma gözlüğü kullanın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Never look at a solar eclipse with the naked eye or ordinary sunglasses; use eclipse glasses certified to ISO 12312-2."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schauen Sie nie mit bloßem Auge oder normaler Sonnenbrille in eine Sonnenfinsternis; verwenden Sie eine Finsternisbrille nach ISO 12312-2."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş tutulmasına çılpaq gözlə və ya adi gün eynəyi ilə baxmayın; ISO 12312-2 təsdiqli tutulma eynəyindən istifadə edin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تنظر إلى كسوف الشمس بالعين المجردة أو بنظارة شمسية عادية؛ استخدم نظارة كسوف معتمدة وفق ISO 12312-2."
+          }
+        }
+      }
+    },
+    "nature.eclipseSource": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaynak: NASA Tutulma Sitesi (Fred Espenak, NASA/GSFC)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source: NASA Eclipse Web Site (Fred Espenak, NASA/GSFC)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelle: NASA Eclipse Web Site (Fred Espenak, NASA/GSFC)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mənbə: NASA tutulma saytı (Fred Espenak, NASA/GSFC)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المصدر: موقع ناسا للكسوف (فريد إسبيناك، NASA/GSFC)."
+          }
+        }
+      }
+    },
     "weather.h1": {
       "extractionState": "manual",
       "localizations": {
@@ -24042,6 +24742,111 @@
           "stringUnit": {
             "state": "translated",
             "value": "اليوم"
+          }
+        }
+      }
+    },
+    "moon.calendarLink": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay takvimi ve tutulmalar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moon calendar and eclipses"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mondkalender und Finsternisse"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay təqvimi və tutulmalar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقويم القمر والكسوف والخسوف"
+          }
+        }
+      }
+    },
+    "widget.moon.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay evresi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moon phase"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mondphase"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayın fazası"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طور القمر"
+          }
+        }
+      }
+    },
+    "widget.moon.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay'ın bugünkü evresi, aydınlık yüzdesi ve sıradaki dolunay ya da yeni ay."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today's Moon phase, illumination and the next full or new moon."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heutige Mondphase, Beleuchtung und der nächste Voll- oder Neumond."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayın bu günkü fazası, işıqlı hissəsi və növbəti bədirlənmə ya da təzə ay."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طور القمر اليوم ونسبة الإضاءة والبدر أو المحاق التالي."
           }
         }
       }
