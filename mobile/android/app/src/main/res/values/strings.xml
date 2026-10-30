@@ -1237,5 +1237,27 @@
     <string name="prayer_silent_grant">İzin ver</string>
     <string name="prayer_silent_channel">Vakitte sessiz</string>
     <string name="prayer_silent_active">Telefon %1$s saatine kadar sessizde</string>
+    <string name="alarm_onDate">Belirli bir tarihte</string>
+    <string name="alarm_date">Tarih</string>
+    <string name="alarm_biweekly">İki haftada bir</string>
+    <string name="alarm_untilToggle">Bitiş tarihi</string>
+    <string name="alarm_until">Son gün</string>
+    <string name="alarm_untilShort">%1$s tarihine kadar</string>
+    <string name="alarm_expired">Süresi doldu</string>
+    <string name="alarm_task_memory">Hafıza</string>
+    <string name="alarm_task_typing">Yazma</string>
+    <string name="alarm_task_photo">Fotoğraf</string>
+    <string name="alarm_photo_save">Yerin fotoğrafını kaydet</string>
+    <string name="alarm_photo_change">Fotoğrafı değiştir</string>
+    <string name="alarm_photo_saved">Kayıtlı. Alarmı kapatmak için aynı yerin fotoğrafını çekeceksiniz (ör. lavabo, kahve makinesi). Fotoğraf saklanmaz, yalnız küçük bir özeti tutulur.</string>
+    <string name="alarm_photo_missing">Fotoğraf kaydedilmedi; kaydedilmezse matematik sorulur.</string>
+    <string name="wake_memory_watch">Yanan kareleri izleyin</string>
+    <string name="wake_memory_repeat">Aynı sırayla dokunun</string>
+    <string name="wake_memory_wrong">Sıra yanlış, yeni bir dizi geliyor.</string>
+    <string name="wake_typing">Bu sözü aynen yazın</string>
+    <string name="wake_typing_field">Buraya yazın</string>
+    <string name="wake_photo">Kayıtlı yerin fotoğrafını çekin</string>
+    <string name="wake_photo_take">Fotoğraf çek</string>
+    <string name="wake_photo_wrong">Aynı yere benzemiyor, aynı açıdan yeniden deneyin.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

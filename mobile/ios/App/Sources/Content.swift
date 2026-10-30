@@ -205,6 +205,9 @@ enum Sayings {
         return list.isEmpty ? nil : list[(day.dayNumber % list.count + list.count) % list.count]
     }
 
+    /// Rastgele bir söz (alarm yazma görevi)
+    static func random() -> String? { (all[AppLocale.code] ?? all["en"])?.randomElement() }
+
     /// Hızır (6 Mayıs) ve Kasım (8 Kasım) günleri: geleneksel takvim yapraklarındaki gün sayısı
     static func hizirKasim(_ d: CalendarDay) -> (kasim: Bool, n: Int) {
         let hizir = CalendarDay(d.year, 5, 6), kasim = CalendarDay(d.year, 11, 8)

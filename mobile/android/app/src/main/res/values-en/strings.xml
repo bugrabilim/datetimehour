@@ -1237,5 +1237,27 @@
     <string name="prayer_silent_grant">Allow</string>
     <string name="prayer_silent_channel">Silent at prayer time</string>
     <string name="prayer_silent_active">Phone silenced until %1$s</string>
+    <string name="alarm_onDate">On a specific date</string>
+    <string name="alarm_date">Date</string>
+    <string name="alarm_biweekly">Every two weeks</string>
+    <string name="alarm_untilToggle">End date</string>
+    <string name="alarm_until">Last day</string>
+    <string name="alarm_untilShort">until %1$s</string>
+    <string name="alarm_expired">Ended</string>
+    <string name="alarm_task_memory">Memory</string>
+    <string name="alarm_task_typing">Typing</string>
+    <string name="alarm_task_photo">Photo</string>
+    <string name="alarm_photo_save">Save a photo of the place</string>
+    <string name="alarm_photo_change">Change the photo</string>
+    <string name="alarm_photo_saved">Saved. To turn the alarm off you will photograph the same spot (e.g. the sink or coffee machine). The photo is not kept, only a small fingerprint.</string>
+    <string name="alarm_photo_missing">No photo saved; without one a math task is used.</string>
+    <string name="wake_memory_watch">Watch the squares light up</string>
+    <string name="wake_memory_repeat">Tap them in the same order</string>
+    <string name="wake_memory_wrong">Wrong order, here comes a new sequence.</string>
+    <string name="wake_typing">Type this saying</string>
+    <string name="wake_typing_field">Type here</string>
+    <string name="wake_photo">Take a photo of the saved spot</string>
+    <string name="wake_photo_take">Take photo</string>
+    <string name="wake_photo_wrong">That doesn\'t look like the same spot; try again from the same angle.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

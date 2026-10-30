@@ -8,7 +8,7 @@ import kotlin.random.Random
  * uyanma denetimi. Burada yalnız hesap var; sensör ve kamera uygulamada.
  */
 object WakeTask {
-    val KINDS = listOf("none", "math", "shake", "steps", "code")
+    val KINDS = listOf("none", "math", "shake", "steps", "code", "memory", "typing", "photo")
     /** Matematik: üç işlem; sallama 30 kez; adım 20 */
     const val MATH_COUNT = 3
     const val SHAKES = 30
@@ -21,6 +21,34 @@ object WakeTask {
     const val REPEAT_MAX = 10
 
     data class Problem(val text: String, val answer: Int)
+
+    /** Hafıza görevi (rakip analizi listesi #75): 3×3 ızgarada yanıp sönen karelerin sırası; uzunluk 4/5/6 (zorluk) */
+    fun memorySequence(level: Int, rnd: Random): List<Int> {
+        val n = 3 + level.coerceIn(1, 3)
+        val out = mutableListOf<Int>()
+        while (out.size < n) { val c = rnd.nextInt(9); if (out.lastOrNull() != c) out += c }
+        return out
+    }
+
+    /** Yazma görevi: büyük/küçük harf, baştaki/sondaki boşluk ve noktalama farkı sayılmaz */
+    fun typed(target: String, input: String): Boolean {
+        fun norm(s: String) = s.lowercase().filter { it.isLetterOrDigit() || it == ' ' }.split(' ').filter { it.isNotEmpty() }.joinToString(" ")
+        return norm(target).isNotEmpty() && norm(target) == norm(input)
+    }
+
+    /** Fotoğraf görevi: 9×8 gri görüntüden 64 bit fark özeti (dHash); kayıtlı yerle aynı sahne mi diye karşılaştırılır */
+    fun dHash(gray: IntArray): Long {
+        require(gray.size == 72)
+        var h = 0L
+        for (y in 0 until 8) for (x in 0 until 8) {
+            h = (h shl 1) or (if (gray[y * 9 + x] > gray[y * 9 + x + 1]) 1L else 0L)
+        }
+        return h
+    }
+
+    /** Aynı sahne sayılan en büyük fark (64 bitten); ışık ve açı değişimine pay bırakır */
+    const val PHOTO_MAX_DISTANCE = 18
+    fun samePhoto(a: Long, b: Long): Boolean = java.lang.Long.bitCount(a xor b) <= PHOTO_MAX_DISTANCE
 
     /** level: 1 kolay (iki basamaklı toplama), 2 orta (çarpma + toplama), 3 zor (iki basamaklı çarpma + toplama) */
     fun problem(level: Int, rnd: Random): Problem = when (level) {

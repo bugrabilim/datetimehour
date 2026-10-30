@@ -7,7 +7,10 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.app.PendingIntent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.widthIn
@@ -101,6 +104,9 @@ fun WakeTaskPanel(item: AlarmItem, onSolved: () -> Unit) {
             "math" -> MathTask(level, onSolved)
             "shake", "steps" -> MotionTask(kind, onSolved)
             "code" -> CodeTask(item.code, onSolved)
+            "memory" -> MemoryTask(level, onSolved)
+            "typing" -> TypingTask(onSolved)
+            "photo" -> PhotoTask(item.code, onSolved)
         }
         if (kind != "math") TextButton(onClick = { kind = "math"; level = 3 }) { Text(L("wake.other"), color = Theme.c.muted) }
     }
@@ -172,6 +178,79 @@ private fun CodeTask(code: String, onSolved: () -> Unit) {
     }
     if (wrong) Text(L("wake.code.wrong"), color = Color(0xFFD32F2F), fontSize = 14.sp)
     if (failed) Text(L("wake.noCamera"), color = Theme.c.muted, fontSize = 14.sp, textAlign = TextAlign.Center)
+}
+
+/** Hafıza (#75): 3×3 ızgarada kareler sırayla yanar, aynı sırayla dokunulur; yanlışta yeni dizi */
+@Composable
+private fun MemoryTask(level: Int, onSolved: () -> Unit) {
+    var round by remember { mutableIntStateOf(0) }
+    val seq = remember(round) { WakeTask.memorySequence(level, Random(System.nanoTime())) }
+    var lit by remember(round) { mutableIntStateOf(-1) }
+    var showing by remember(round) { mutableStateOf(true) }
+    var pos by remember(round) { mutableIntStateOf(0) }
+    var wrong by remember { mutableStateOf(false) }
+    androidx.compose.runtime.LaunchedEffect(round) {
+        kotlinx.coroutines.delay(600)
+        for (c in seq) { lit = c; kotlinx.coroutines.delay(650); lit = -1; kotlinx.coroutines.delay(250) }
+        showing = false
+    }
+    Text(L(if (showing) "wake.memory.watch" else "wake.memory.repeat"), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        for (r in 0 until 3) androidx.compose.foundation.layout.Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            for (col in 0 until 3) {
+                val i = r * 3 + col
+                androidx.compose.foundation.layout.Box(
+                    Modifier.size(72.dp).background(if (lit == i) Theme.c.accent else Theme.c.surface2, androidx.compose.foundation.shape.RoundedCornerShape(14.dp))
+                        .clickable(enabled = !showing) {
+                            if (seq[pos] == i) {
+                                lit = i; pos++
+                                if (pos >= seq.size) onSolved()
+                            } else { wrong = true; round++ }
+                        },
+                )
+            }
+        }
+    }
+    Text(T("wake.progress", pos, seq.size), color = Theme.c.muted, fontSize = 14.sp)
+    if (wrong) Text(L("wake.memory.wrong"), color = Color(0xFFD32F2F), fontSize = 14.sp)
+}
+
+/** Yazma (#75): günün sözlerinden rastgele biri aynen yazılır (büyük/küçük harf ve noktalama sayılmaz) */
+@Composable
+private fun TypingTask(onSolved: () -> Unit) {
+    val context = LocalContext.current
+    val phrase = remember { Sayings.random(context) ?: "Saat Tarih" }
+    var input by remember { mutableStateOf("") }
+    Text(L("wake.typing"), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+    Text(phrase, color = Theme.c.ink, fontSize = 22.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+    OutlinedTextField(input, { input = it; if (WakeTask.typed(phrase, it)) onSolved() }, Modifier.fillMaxWidth(), label = { Text(L("wake.typing.field")) })
+}
+
+/** Fotoğraf (#75): kayıtlı yerin fotoğrafı çekilir; 9×8 gri özet (dHash) kayıtlıyla karşılaştırılır. Fotoğraf saklanmaz. */
+object PhotoHash {
+    const val PREFIX = "ph:"
+    fun of(bmp: android.graphics.Bitmap): Long {
+        val small = android.graphics.Bitmap.createScaledBitmap(bmp, 9, 8, true)
+        val gray = IntArray(72) { i ->
+            val p = small.getPixel(i % 9, i / 9)
+            ((p shr 16 and 0xFF) * 299 + (p shr 8 and 0xFF) * 587 + (p and 0xFF) * 114) / 1000
+        }
+        return WakeTask.dHash(gray)
+    }
+    fun encode(h: Long) = PREFIX + java.lang.Long.toHexString(h)
+    fun decode(code: String): Long? = if (code.startsWith(PREFIX)) java.lang.Long.parseUnsignedLong(code.removePrefix(PREFIX), 16) else null
+}
+
+@Composable
+private fun PhotoTask(code: String, onSolved: () -> Unit) {
+    var wrong by remember { mutableStateOf(false) }
+    val target = PhotoHash.decode(code)
+    val take = androidx.activity.compose.rememberLauncherForActivityResult(androidx.activity.result.contract.ActivityResultContracts.TakePicturePreview()) { bmp ->
+        if (bmp != null && target != null) { if (WakeTask.samePhoto(PhotoHash.of(bmp), target)) onSolved() else wrong = true }
+    }
+    Text(L("wake.photo"), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
+    RoundButton(L("wake.photo.take"), true, Modifier.fillMaxWidth()) { runCatching { take.launch(null) } }
+    if (wrong) Text(L("wake.photo.wrong"), color = Color(0xFFD32F2F), fontSize = 14.sp, textAlign = TextAlign.Center)
 }
 
 /** Google kod tarayıcı (Play hizmetleri): kamera izni istemez, yalnız okunan değer uygulamaya gelir */

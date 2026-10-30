@@ -275,7 +275,7 @@ private fun BatteryLine() {
 /** Uygulamada kurulu sıradaki alarm (rakip analizi #23) */
 @Composable
 private fun NextAlarmCard(now: Instant, modifier: Modifier) {
-    val next = AlarmItem.load().filter { it.enabled }.map { it to it.nextAt(now.toEpochMilli()) }.minByOrNull { it.second }
+    val next = AlarmItem.load().filter { it.enabled }.map { it to it.nextAt(now.toEpochMilli()) }.filter { it.second != AlarmItem.NEVER }.minByOrNull { it.second }
     AppCard(modifier) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {

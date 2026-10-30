@@ -10,6 +10,21 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class FocusSleepWakeTest {
+    /** Yeni alarm görevleri (#75): hafıza dizisi, yazma denetimi, fotoğraf özeti */
+    @Test
+    fun moreWakeTasks() {
+        val seq = WakeTask.memorySequence(2, kotlin.random.Random(7))
+        kotlin.test.assertEquals(5, seq.size)
+        kotlin.test.assertTrue(seq.all { it in 0..8 } && seq.zipWithNext().none { it.first == it.second })
+        kotlin.test.assertTrue(WakeTask.typed("Damlaya damlaya göl olur.", "  damlaya DAMLAYA göl olur "))
+        kotlin.test.assertFalse(WakeTask.typed("Damlaya damlaya göl olur.", "damlaya göl olur"))
+        val img = IntArray(72) { (it * 37) % 255 }
+        val same = img.map { (it + 6).coerceAtMost(255) }.toIntArray() // biraz daha aydınlık: özet aynı kalır
+        kotlin.test.assertTrue(WakeTask.samePhoto(WakeTask.dHash(img), WakeTask.dHash(same)))
+        val other = IntArray(72) { 255 - (it * 37) % 255 }
+        kotlin.test.assertFalse(WakeTask.samePhoto(WakeTask.dHash(img), WakeTask.dHash(other)))
+    }
+
     /** Odak serisi ve etiketler (rakip analizi #27): bugün ya da dün biten seri; etiketsizler "none" */
     @Test
     fun focusStreakAndTags() {

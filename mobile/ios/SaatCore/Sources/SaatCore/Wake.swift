@@ -3,7 +3,7 @@ import Foundation
 /// Alarm kapatma görevleri (30 Ekim 2026, rakip analizi #13): matematik, sallama, adım, kod (QR/barkod) okutma; ve
 /// uyanma denetimi. Burada yalnız hesap var; sensör ve kamera uygulamada. Android'deki WakeTask'ın aynısı.
 public enum WakeTask {
-    public static let kinds = ["none", "math", "shake", "steps", "code"]
+    public static let kinds = ["none", "math", "shake", "steps", "code", "memory", "typing", "photo"]
     /// Matematik: üç işlem; sallama 30 kez; adım 20
     public static let mathCount = 3
     public static let shakes = 30
@@ -19,6 +19,34 @@ public enum WakeTask {
         public let text: String
         public let answer: Int
     }
+
+    /// Hafıza görevi (rakip analizi listesi #75): 3×3 ızgarada yanıp sönen karelerin sırası; uzunluk 4/5/6 (zorluk)
+    public static func memorySequence<R: RandomNumberGenerator>(level: Int, using rng: inout R) -> [Int] {
+        let n = 3 + min(3, max(1, level))
+        var out: [Int] = []
+        while out.count < n { let c = Int.random(in: 0..<9, using: &rng); if out.last != c { out.append(c) } }
+        return out
+    }
+
+    /// Yazma görevi: büyük/küçük harf, baştaki/sondaki boşluk ve noktalama farkı sayılmaz
+    public static func typed(_ target: String, _ input: String) -> Bool {
+        func norm(_ s: String) -> String {
+            s.lowercased().filter { $0.isLetter || $0.isNumber || $0 == " " }.split(separator: " ").joined(separator: " ")
+        }
+        return !norm(target).isEmpty && norm(target) == norm(input)
+    }
+
+    /// Fotoğraf görevi: 9×8 gri görüntüden 64 bit fark özeti (dHash); kayıtlı yerle aynı sahne mi diye karşılaştırılır
+    public static func dHash(_ gray: [Int]) -> UInt64 {
+        precondition(gray.count == 72)
+        var h: UInt64 = 0
+        for y in 0..<8 { for x in 0..<8 { h = (h << 1) | (gray[y * 9 + x] > gray[y * 9 + x + 1] ? 1 : 0) } }
+        return h
+    }
+
+    /// Aynı sahne sayılan en büyük fark (64 bitten); ışık ve açı değişimine pay bırakır
+    public static let photoMaxDistance = 18
+    public static func samePhoto(_ a: UInt64, _ b: UInt64) -> Bool { (a ^ b).nonzeroBitCount <= photoMaxDistance }
 
     /// level: 1 kolay (iki basamaklı toplama), 2 orta (çarpma + toplama), 3 zor (iki basamaklı çarpma + toplama)
     public static func problem<R: RandomNumberGenerator>(level: Int, using rng: inout R) -> Problem {

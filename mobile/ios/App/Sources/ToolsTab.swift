@@ -339,6 +339,7 @@ private struct AlarmEditor: View {
     let onSave: (AlarmItem) -> Void
     @State private var time = Date()
     @State private var scanning = false
+    @State private var shootingRef = false
 
     var body: some View {
         NavigationStack {
@@ -367,6 +368,28 @@ private struct AlarmEditor: View {
                         }
                     }
                     .environment(\.layoutDirection, .leftToRight)
+                    // Esnek tekrar: belirli tarih (bir kezlik), iki haftada bir ve bitiş tarihi (tekrarlayan)
+                    if item.days.isEmpty {
+                        Toggle(L("alarm.onDate"), isOn: Binding(get: { !item.date.isEmpty }, set: { on in
+                            item.date = on ? CalendarDay(Date()).adding(days: 1).iso : ""
+                        }))
+                        if let d = CalendarDay(iso: item.date) {
+                            DatePicker(L("alarm.date"), selection: Binding(get: { d.noon(in: .current) }, set: { item.date = CalendarDay($0).iso }),
+                                       in: Calendar.current.startOfDay(for: Date())..., displayedComponents: .date)
+                        }
+                    } else {
+                        Toggle(L("alarm.biweekly"), isOn: Binding(get: { item.every > 1 }, set: { on in
+                            item.every = on ? 2 : 1
+                            if on && item.anchor.isEmpty { let t = CalendarDay(Date()); item.anchor = t.adding(days: -t.weekday).iso }
+                        }))
+                        Toggle(L("alarm.untilToggle"), isOn: Binding(get: { !item.until.isEmpty }, set: { on in
+                            item.until = on ? CalendarDay(Date()).adding(days: 30).iso : ""
+                        }))
+                        if let u = CalendarDay(iso: item.until) {
+                            DatePicker(L("alarm.until"), selection: Binding(get: { u.noon(in: .current) }, set: { item.until = CalendarDay($0).iso }),
+                                       in: Calendar.current.startOfDay(for: Date())..., displayedComponents: .date)
+                        }
+                    }
                     Text(item.repeatText).font(.footnote).foregroundStyle(Theme.muted)
                 }
                 Section {
@@ -420,7 +443,7 @@ private struct AlarmEditor: View {
                     Picker(L("alarm.task"), selection: $item.task) {
                         ForEach(WakeTask.kinds, id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
                     }
-                    if item.task == "math" {
+                    if item.task == "math" || item.task == "memory" {
                         Picker(L("alarm.task.level"), selection: $item.taskLevel) {
                             ForEach(1...3, id: \.self) { n in Text(L("alarm.task.level.\(n)")).tag(n) }
                         }
@@ -433,6 +456,14 @@ private struct AlarmEditor: View {
                         }
                         Text(L(item.code.isEmpty ? "alarm.code.missing" : "alarm.code.saved")).font(.footnote).foregroundStyle(Theme.muted)
                         Text(L("alarm.code.hint")).font(.footnote).foregroundStyle(Theme.muted)
+                    }
+                    if item.task == "photo" {
+                        if CameraShot.available {
+                            Button(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.change" : "alarm.photo.save")) { shootingRef = true }
+                        } else {
+                            Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        Text(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.saved" : "alarm.photo.missing")).font(.footnote).foregroundStyle(Theme.muted)
                     }
                     Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
                 } header: {
@@ -455,6 +486,13 @@ private struct AlarmEditor: View {
                 CodeScannerView { value in
                     item.code = value
                     scanning = false
+                }
+                .ignoresSafeArea()
+            }
+            .fullScreenCover(isPresented: $shootingRef) {
+                CameraShot { img in
+                    shootingRef = false
+                    if let img, let h = PhotoHash.of(img) { item.code = PhotoHash.encode(h) }
                 }
                 .ignoresSafeArea()
             }

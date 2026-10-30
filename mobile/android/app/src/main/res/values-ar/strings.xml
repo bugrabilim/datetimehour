@@ -1237,5 +1237,27 @@
     <string name="prayer_silent_grant">سماح</string>
     <string name="prayer_silent_channel">صامت عند الوقت</string>
     <string name="prayer_silent_active">الهاتف صامت حتى %1$s</string>
+    <string name="alarm_onDate">في تاريخ محدد</string>
+    <string name="alarm_date">التاريخ</string>
+    <string name="alarm_biweekly">كل أسبوعين</string>
+    <string name="alarm_untilToggle">تاريخ الانتهاء</string>
+    <string name="alarm_until">آخر يوم</string>
+    <string name="alarm_untilShort">حتى %1$s</string>
+    <string name="alarm_expired">انتهى</string>
+    <string name="alarm_task_memory">الذاكرة</string>
+    <string name="alarm_task_typing">الكتابة</string>
+    <string name="alarm_task_photo">صورة</string>
+    <string name="alarm_photo_save">احفظ صورة المكان</string>
+    <string name="alarm_photo_change">غيّر الصورة</string>
+    <string name="alarm_photo_saved">تم الحفظ. لإيقاف المنبه ستلتقط صورة للمكان نفسه (مثل المغسلة أو آلة القهوة). لا تُحفظ الصورة بل بصمة صغيرة منها فقط.</string>
+    <string name="alarm_photo_missing">لم تُحفظ صورة؛ بدونها تُطرح مسألة حسابية.</string>
+    <string name="wake_memory_watch">راقب المربعات المضيئة</string>
+    <string name="wake_memory_repeat">اضغط عليها بالترتيب نفسه</string>
+    <string name="wake_memory_wrong">ترتيب خاطئ، تأتي سلسلة جديدة.</string>
+    <string name="wake_typing">اكتب هذه العبارة</string>
+    <string name="wake_typing_field">اكتب هنا</string>
+    <string name="wake_photo">التقط صورة للمكان المحفوظ</string>
+    <string name="wake_photo_take">التقط صورة</string>
+    <string name="wake_photo_wrong">لا يبدو المكان نفسه، حاول مجددًا من الزاوية نفسها.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

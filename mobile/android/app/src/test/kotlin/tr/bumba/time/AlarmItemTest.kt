@@ -16,6 +16,24 @@ class AlarmItemTest {
     private val zone = ZoneId.systemDefault()
     private fun ms(s: String) = LocalDateTime.parse(s).atZone(zone).toInstant().toEpochMilli()
 
+    /** Esnek tekrar (#74): belirli tarih, iki haftada bir, bitiş tarihi; JSON'da korunur */
+    @Test fun flexibleRepeat() {
+        // Belirli tarih: 12 Kasım 2026 07:00, öncesinde o güne, sonrasında hiç
+        val onDate = AlarmItem(hour = 7, minute = 0, date = "2026-11-12")
+        assertEquals(ms("2026-11-12T07:00"), onDate.nextAt(ms("2026-10-30T10:00")))
+        assertEquals(AlarmItem.NEVER, onDate.nextAt(ms("2026-11-12T08:00")))
+        // İki haftada bir pazartesi; başlangıç haftası 2 Kasım 2026
+        val bi = AlarmItem(hour = 7, minute = 0, days = listOf(1), every = 2, anchor = "2026-11-02")
+        assertEquals(ms("2026-11-02T07:00"), bi.nextAt(ms("2026-10-30T10:00")))
+        assertEquals(ms("2026-11-16T07:00"), bi.nextAt(ms("2026-11-02T08:00")))
+        // Bitiş tarihi: 10 Kasım dahil hafta içi; 11 Kasım'dan sonra çalmaz
+        val until = AlarmItem(hour = 7, minute = 0, days = listOf(1, 2, 3, 4, 5), until = "2026-11-10")
+        assertEquals(ms("2026-11-10T07:00"), until.nextAt(ms("2026-11-09T08:00")))
+        assertEquals(AlarmItem.NEVER, until.nextAt(ms("2026-11-10T08:00")))
+        val back = AlarmItem.fromJson(bi.toJson())
+        assertEquals(2, back.every); assertEquals("2026-11-02", back.anchor)
+    }
+
     @Test fun legacyRepeats() {
         fun legacy(r: String) = AlarmItem.fromJson(JSONObject().put("id", "x").put("hour", 7).put("minute", 0).put("repeats", r))
         assertEquals(emptyList<Int>(), legacy("once").days)

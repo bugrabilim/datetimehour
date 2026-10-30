@@ -183,6 +183,12 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var label by remember { mutableStateOf(item.label) }
     val context = LocalContext.current
     var days by remember { mutableStateOf(item.days.sorted()) }
+    // Esnek tekrar: belirli tarih, iki haftada bir, bitiş tarihi
+    var onDate by remember { mutableStateOf(item.date) }
+    var every by remember { mutableStateOf(item.every) }
+    var anchor by remember { mutableStateOf(item.anchor) }
+    var until by remember { mutableStateOf(item.until) }
+    var pickDate by remember { mutableStateOf(0) }
     var snooze by remember { mutableStateOf(item.snooze) }
     var sound by remember { mutableStateOf(item.sound) }
     var vibrate by remember { mutableStateOf(item.vibrate) }
@@ -193,6 +199,10 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var task by remember { mutableStateOf(item.task) }
     var taskLevel by remember { mutableStateOf(item.taskLevel) }
     var code by remember { mutableStateOf(item.code) }
+    // Fotoğraf görevi: kayıtlı yerin özeti (fotoğraf saklanmaz)
+    val takeRef = androidx.activity.compose.rememberLauncherForActivityResult(androidx.activity.result.contract.ActivityResultContracts.TakePicturePreview()) { bmp ->
+        if (bmp != null) code = PhotoHash.encode(PhotoHash.of(bmp))
+    }
     var wakeCheck by remember { mutableStateOf(item.wakeCheck) }
     var preNotify by remember { mutableStateOf(item.preNotify) }
     var speak by remember { mutableStateOf(item.speak) }
@@ -237,7 +247,20 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                         }
                     }
                 }
-                Text(item.copy(days = days).repeatText, color = Theme.c.muted, fontSize = 13.sp)
+                if (days.isEmpty()) {
+                    FlexRow(L("alarm.onDate"), onDate.isNotEmpty(), AlarmItem.parse(onDate)?.let { Fmt.dayMonth(it) }, { pickDate = 1 }) { on ->
+                        onDate = if (on) java.time.LocalDate.now().plusDays(1).toString() else ""
+                    }
+                } else {
+                    FlexRow(L("alarm.biweekly"), every > 1, null, null) { on ->
+                        every = if (on) 2 else 1
+                        if (on && anchor.isEmpty()) anchor = java.time.LocalDate.now().let { it.minusDays(it.dayOfWeek.value - 1L) }.toString()
+                    }
+                    FlexRow(L("alarm.untilToggle"), until.isNotEmpty(), AlarmItem.parse(until)?.let { Fmt.dayMonth(it) }, { pickDate = 2 }) { on ->
+                        until = if (on) java.time.LocalDate.now().plusDays(30).toString() else ""
+                    }
+                }
+                Text(item.copy(days = days, date = onDate, every = every, anchor = anchor, until = until).repeatText, color = Theme.c.muted, fontSize = 13.sp)
                 ChoiceRow(L("alarm.snooze"), if (snooze == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", snooze),
                     AlarmItem.SNOOZE_CHOICES.map { it to (if (it == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", it)) }) { snooze = it }
                 if (snooze > 0) {
@@ -299,6 +322,16 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     Text(L(if (code.isEmpty()) "alarm.code.missing" else "alarm.code.saved"), color = Theme.c.muted, fontSize = 12.sp)
                     Text(L("alarm.code.hint"), color = Theme.c.muted, fontSize = 12.sp)
                 }
+                if (task == "memory") {
+                    ChoiceRow(L("alarm.task.level"), L("alarm.task.level.$taskLevel"), (1..3).map { it to L("alarm.task.level.$it") }) { taskLevel = it }
+                }
+                if (task == "photo") {
+                    val hasPhoto = code.startsWith(PhotoHash.PREFIX)
+                    TextButton(onClick = { runCatching { takeRef.launch(null) } }) {
+                        Text(L(if (hasPhoto) "alarm.photo.change" else "alarm.photo.save"), color = Theme.c.accent)
+                    }
+                    Text(L(if (hasPhoto) "alarm.photo.saved" else "alarm.photo.missing"), color = Theme.c.muted, fontSize = 12.sp)
+                }
                 if (task != "none") Text(L("alarm.task.note"), color = Theme.c.muted, fontSize = 12.sp)
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
@@ -323,11 +356,29 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
                     snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
                     skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise, task = task, taskLevel = taskLevel,
-                    code = code, wakeCheck = wakeCheck, preNotify = preNotify, speak = speak))
+                    code = code, wakeCheck = wakeCheck, preNotify = preNotify, speak = speak,
+                    date = if (days.isEmpty()) onDate else "", every = if (days.isEmpty()) 1 else every, anchor = anchor,
+                    until = if (days.isEmpty()) "" else until))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },
     )
+    if (pickDate > 0) {
+        val current = AlarmItem.parse(if (pickDate == 1) onDate else until) ?: java.time.LocalDate.now()
+        val state = androidx.compose.material3.rememberDatePickerState(current.atStartOfDay(java.time.ZoneOffset.UTC).toInstant().toEpochMilli())
+        androidx.compose.material3.DatePickerDialog(
+            onDismissRequest = { pickDate = 0 },
+            confirmButton = {
+                TextButton(onClick = {
+                    state.selectedDateMillis?.let {
+                        val d = java.time.Instant.ofEpochMilli(it).atZone(java.time.ZoneOffset.UTC).toLocalDate().toString()
+                        if (pickDate == 1) onDate = d else until = d
+                    }
+                    pickDate = 0
+                }) { Text(L("common.done"), color = Theme.c.accent) }
+            },
+        ) { androidx.compose.material3.DatePicker(state) }
+    }
 }
 
 /** Başlık + seçili değer; dokununca açılır liste */
@@ -342,5 +393,15 @@ internal fun ChoiceRow(title: String, value: String, options: List<Pair<Int, Str
                 for ((v, label) in options) DropdownMenuItem(text = { Text(label) }, onClick = { open = false; onPick(v) })
             }
         }
+    }
+}
+
+/** Esnek tekrar satırı: anahtar ve (açıksa) dokununca tarih seçilen değer */
+@Composable
+private fun FlexRow(title: String, on: Boolean, value: String?, onPick: (() -> Unit)?, onToggle: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+        if (on && value != null && onPick != null) TextButton(onClick = onPick) { Text(value, color = Theme.c.accent, fontSize = 15.sp) }
+        androidx.compose.material3.Switch(on, onToggle, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }

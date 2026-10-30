@@ -1237,5 +1237,27 @@
     <string name="prayer_silent_grant">İcazə ver</string>
     <string name="prayer_silent_channel">Vaxtda səssiz</string>
     <string name="prayer_silent_active">Telefon %1$s-dək səssizdə</string>
+    <string name="alarm_onDate">Müəyyən tarixdə</string>
+    <string name="alarm_date">Tarix</string>
+    <string name="alarm_biweekly">İki həftədən bir</string>
+    <string name="alarm_untilToggle">Bitmə tarixi</string>
+    <string name="alarm_until">Son gün</string>
+    <string name="alarm_untilShort">%1$s tarixinədək</string>
+    <string name="alarm_expired">Müddəti bitdi</string>
+    <string name="alarm_task_memory">Yaddaş</string>
+    <string name="alarm_task_typing">Yazma</string>
+    <string name="alarm_task_photo">Foto</string>
+    <string name="alarm_photo_save">Yerin fotosunu saxla</string>
+    <string name="alarm_photo_change">Fotonu dəyiş</string>
+    <string name="alarm_photo_saved">Saxlanıldı. Siqnalı söndürmək üçün eyni yerin fotosunu çəkəcəksiniz (məs. əlüzyuyan, qəhvə maşını). Foto saxlanmır, yalnız kiçik xülasəsi qalır.</string>
+    <string name="alarm_photo_missing">Foto saxlanmayıb; saxlanmasa riyaziyyat sualı verilir.</string>
+    <string name="wake_memory_watch">Yanan kvadratlara baxın</string>
+    <string name="wake_memory_repeat">Eyni ardıcıllıqla toxunun</string>
+    <string name="wake_memory_wrong">Ardıcıllıq səhvdir, yeni sıra gəlir.</string>
+    <string name="wake_typing">Bu sözü olduğu kimi yazın</string>
+    <string name="wake_typing_field">Bura yazın</string>
+    <string name="wake_photo">Saxlanmış yerin fotosunu çəkin</string>
+    <string name="wake_photo_take">Foto çək</string>
+    <string name="wake_photo_wrong">Eyni yerə bənzəmir, eyni bucaqdan yenidən cəhd edin.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

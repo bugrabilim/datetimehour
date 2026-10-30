@@ -41,6 +41,12 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var preNotify = 30
     /// Çalarken saati sesli söyler (rakip analizi #20; iOS'ta saati söyleyen ses dosyası alarm sesi olur)
     var speak = false
+    /// Esnek tekrar (rakip analizi listesi #74): bir kezlik alarmda belirli tarih (ISO; boşsa ilk uygun gün), tekrarlayanda
+    /// kaç haftada bir (1 ya da 2; başlangıç haftası `anchor`, ISO pazartesi) ve bitiş tarihi (ISO, o gün dahil; boşsa yok)
+    var date = ""
+    var every = 1
+    var anchor = ""
+    var until = ""
 
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
     static let snoozeMaxChoices = [0, 1, 2, 3, 5]
@@ -54,7 +60,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -76,6 +82,10 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         wakeCheck = try c.decodeIfPresent(Bool.self, forKey: .wakeCheck) ?? false
         preNotify = try c.decodeIfPresent(Int.self, forKey: .preNotify) ?? 0
         speak = try c.decodeIfPresent(Bool.self, forKey: .speak) ?? false
+        date = try c.decodeIfPresent(String.self, forKey: .date) ?? ""
+        every = try c.decodeIfPresent(Int.self, forKey: .every) ?? 1
+        anchor = try c.decodeIfPresent(String.self, forKey: .anchor) ?? ""
+        until = try c.decodeIfPresent(String.self, forKey: .until) ?? ""
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -90,10 +100,17 @@ struct AlarmItem: Codable, Identifiable, Hashable {
 
     var title: String { label.isEmpty ? L("tools.alarm.defaultLabel") : label }
 
+    /// Kaydı eksik görev matematiğe düşer: kod okutmada kod, fotoğrafta özet ("ph:…") yoksa
+    static func effectiveTask(_ task: String, code: String) -> String {
+        if task == "code" && (code.isEmpty || code.hasPrefix(PhotoHash.prefix)) { return "math" }
+        if task == "photo" && !code.hasPrefix(PhotoHash.prefix) { return "math" }
+        return task
+    }
+
     /// Durdurulunca istenecek görev ve denetim (görev ya da denetim yoksa nil)
     var wakeTask: PendingWakeTask? {
         guard task != "none" || wakeCheck else { return nil }
-        let t = task == "code" && code.isEmpty ? "math" : task
+        let t = Self.effectiveTask(task, code: code)
         return PendingWakeTask(task: t, level: taskLevel, code: code, wakeCheck: wakeCheck, title: title, rise: rise, rings: 0, repeatID: nil)
     }
     var timeText: String {
@@ -103,14 +120,34 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         return Fmt.time(Calendar.current.date(from: c) ?? Date())
     }
 
-    /// "Bir kez", "Her gün", "Hafta içi" ya da gün kısaltmaları
+    /// "Bir kez", "Her gün", "Hafta içi" ya da gün kısaltmaları; belirli tarih, iki haftada bir ve bitiş tarihi eklenir
     var repeatText: String {
         let d = Set(days)
-        if d.isEmpty { return L("tools.alarm.once") }
-        if d.count == 7 { return L("alarm.everyDay") }
-        if d == Set(Self.weekdays) { return L("tools.alarm.weekdays") }
-        return days.sorted().map { L("tools.alarm.dayNames.\($0 - 1)") }.joined(separator: " ")
+        var text: String
+        if d.isEmpty { text = CalendarDay(iso: date).map { Fmt.dayMonth($0.noon(in: .current)) } ?? L("tools.alarm.once") }
+        else if d.count == 7 { text = L("alarm.everyDay") }
+        else if d == Set(Self.weekdays) { text = L("tools.alarm.weekdays") }
+        else { text = days.sorted().map { L("tools.alarm.dayNames.\($0 - 1)") }.joined(separator: " ") }
+        if !d.isEmpty && every == 2 { text += " · " + L("alarm.biweekly") }
+        if !d.isEmpty, let u = CalendarDay(iso: until) { text += " · " + T("alarm.untilShort", Fmt.dayMonth(u.noon(in: .current))) }
+        return text
     }
+
+    /// Esnek tekrar kuralı: bu gün çalar mı (gün, iki haftada bir, belirli tarih, bitiş)
+    func allows(_ day: CalendarDay) -> Bool {
+        if let u = CalendarDay(iso: until), day > u { return false }
+        if days.isEmpty { return CalendarDay(iso: date).map { $0 == day } ?? true }
+        guard days.contains(day.weekday + 1) else { return false }
+        if every > 1, let a = CalendarDay(iso: anchor) {
+            let weeks = (day.adding(days: -day.weekday).dayNumber - a.adding(days: -a.weekday).dayNumber) / 7
+            return ((weeks % every) + every) % every == 0
+        }
+        return true
+    }
+    /// Haftalık tekrar AlarmKit'in yinelemesiyle kurulamıyorsa (iki haftada bir ya da bitiş tarihi): tek tek kurulur
+    var needsPlan: Bool { !days.isEmpty && (every > 1 || !until.isEmpty) }
+    /// Bitiş tarihi geçti ya da belirli tarih geçmişte kaldı: bir daha çalmaz
+    func expired(now: Date = Date()) -> Bool { next(after: now) == nil }
 
     /// ISO gün (1 pazartesi … 7 pazar)
     static func isoWeekday(_ date: Date) -> Int {
@@ -125,9 +162,14 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     /// `date` sonrasındaki ilk çalma (atlama hesaba katılmaz)
     func occurrence(after date: Date) -> Date? {
         let cal = Calendar.current
-        for add in 0...8 {
+        // Belirli tarih uzakta olabilir: o güne doğrudan bakılır
+        if days.isEmpty, let d = CalendarDay(iso: self.date) {
+            guard let t = at(d.noon(in: .current)), t > date, allows(d) else { return nil }
+            return t
+        }
+        for add in 0...15 {
             guard let day = cal.date(byAdding: .day, value: add, to: date), let t = at(day), t > date else { continue }
-            if days.isEmpty || days.contains(Self.isoWeekday(t)) { return t }
+            if allows(CalendarDay(t)) { return t }
         }
         return nil
     }
@@ -135,9 +177,9 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     /// `date` öncesindeki son çalma (günaydın kartı için)
     func occurrence(before date: Date) -> Date? {
         let cal = Calendar.current
-        for back in 0...8 {
+        for back in 0...15 {
             guard let day = cal.date(byAdding: .day, value: -back, to: date), let t = at(day), t <= date else { continue }
-            if days.isEmpty || days.contains(Self.isoWeekday(t)) { return t }
+            if (days.isEmpty && self.date.isEmpty) || allows(CalendarDay(t)) { return t }
         }
         return nil
     }
@@ -178,6 +220,12 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     /// tatile denk gelen çalmanın günü haftalık tekrardan çıkarılır, o günün sonraki 4 haftası tek seferlik kurulur
     /// (tatil olanlar hariç). Uygulama açılınca ya da arka plan yenilemesinde plan baştan kurulur.
     func plan(now: Date = Date()) -> (days: [Int], fixed: [Date]) {
+        // İki haftada bir ya da bitiş tarihli: haftalık yineleme yok, sonraki 8 çalma tek tek
+        if needsPlan {
+            var fixed: [Date] = [], t = next(after: now)
+            while let c = t, fixed.count < 8 { fixed.append(c); t = next(after: c) }
+            return ([], fixed)
+        }
         var weekly = days, fixed: [Date] = []
         var t = occurrence(after: now)
         let end = now.addingTimeInterval(7 * 86_400)
@@ -306,6 +354,12 @@ enum AlarmCenter {
             } else {
                 content.sound = item.rise ? UNNotificationSound(named: UNNotificationSoundName(AlarmItem.riseSound)) : .default
             }
+            if item.days.isEmpty, !item.date.isEmpty {
+                guard let at = item.next() else { continue }
+                let c = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: at)
+                try? await center.add(UNNotificationRequest(identifier: "alarm-\(item.id)-0", content: content, trigger: UNCalendarNotificationTrigger(dateMatching: c, repeats: false)))
+                continue
+            }
             if item.days.isEmpty || (item.days.count == 7 && item.plan().days.count == 7) {
                 var c = DateComponents()
                 c.hour = item.hour
@@ -336,7 +390,7 @@ enum AlarmCenter {
     static func refreshSkips(now: Date = Date()) async {
         var items = AlarmItem.load()
         let today = CalendarDay(now).iso
-        let holidayPlan = items.contains { $0.enabled && $0.skipHolidays && !$0.days.isEmpty }
+        let holidayPlan = items.contains { $0.enabled && (($0.skipHolidays && !$0.days.isEmpty) || $0.needsPlan) }
             && UserDefaults.standard.string(forKey: "alarm.planDay") != today
         guard holidayPlan || items.contains(where: { ($0.skipUntil ?? .distantFuture) <= now }) else { return }
         for i in items.indices where (items[i].skipUntil ?? .distantFuture) <= now { items[i].skipUntil = nil }
@@ -451,7 +505,8 @@ enum KitAlarms {
             let skipping = (item.skipUntil ?? .distantPast) > now
             if item.days.isEmpty {
                 // Bir kez: atlandıysa sonraki gün
-                let schedule: Alarm.Schedule = skipping
+                if !item.date.isEmpty && item.next(after: now) == nil { continue }
+                let schedule: Alarm.Schedule = skipping || !item.date.isEmpty
                     ? .fixed(item.next(after: now) ?? now)
                     : .relative(.init(time: time, repeats: .never))
                 if (try? await manager.schedule(id: item.id, configuration: config(schedule, id: item.id, title: item.title, options: options))) != nil {

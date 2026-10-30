@@ -17,6 +17,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import org.json.JSONArray
 import org.json.JSONObject
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.UUID
@@ -55,32 +56,67 @@ data class AlarmItem(
     val preNotify: Int = 30,
     /** Çalarken saati telefonun konuşma motoruyla söyler (rakip analizi #20; AlarmRingService) */
     val speak: Boolean = false,
+    /** Esnek tekrar (rakip analizi listesi #74; iOS ile aynı alanlar): bir kezlikte belirli tarih (ISO), tekrarlayanda kaç
+     *  haftada bir (1–2; başlangıç haftası `anchor`, ISO pazartesi) ve bitiş tarihi (ISO, o gün dahil) */
+    val date: String = "",
+    val every: Int = 1,
+    val anchor: String = "",
+    val until: String = "",
 ) {
     /** Kapatırken istenecek görev (kod kaydedilmediyse matematik); yoksa "none" */
-    val effectiveTask: String get() = if (task == "code" && code.isEmpty()) "math" else task
+    val effectiveTask: String get() = when {
+        task == "code" && (code.isEmpty() || code.startsWith(PhotoHash.PREFIX)) -> "math"
+        task == "photo" && !code.startsWith(PhotoHash.PREFIX) -> "math"
+        else -> task
+    }
 
     val title: String get() = label.ifEmpty { L("tools.alarm.defaultLabel") }
     val timeText: String get() = Fmt.time(LocalDateTime.now().withHour(hour).withMinute(minute).atZone(ZoneId.systemDefault()))
 
-    /** "Bir kez", "Her gün", "Hafta içi" ya da gün kısaltmaları */
-    val repeatText: String get() = when {
-        days.isEmpty() -> L("tools.alarm.once")
-        days.toSet().size == 7 -> L("alarm.everyDay")
-        days.toSet() == WEEKDAYS.toSet() -> L("tools.alarm.weekdays")
-        else -> days.sorted().joinToString(" ") { L("tools.alarm.dayNames.${it - 1}") }
+    /** "Bir kez", "Her gün", "Hafta içi" ya da gün kısaltmaları; belirli tarih, iki haftada bir ve bitiş tarihi eklenir */
+    val repeatText: String get() {
+        var text = when {
+            days.isEmpty() -> parse(date)?.let { Fmt.dayMonth(it) } ?: L("tools.alarm.once")
+            days.toSet().size == 7 -> L("alarm.everyDay")
+            days.toSet() == WEEKDAYS.toSet() -> L("tools.alarm.weekdays")
+            else -> days.sorted().joinToString(" ") { L("tools.alarm.dayNames.${it - 1}") }
+        }
+        if (days.isNotEmpty() && every > 1) text += " · " + L("alarm.biweekly")
+        if (days.isNotEmpty()) parse(until)?.let { text += " · " + T("alarm.untilShort", Fmt.dayMonth(it)) }
+        return text
     }
 
-    /** `afterMs` sonrasındaki ilk çalma (atlama hesaba katılmaz) */
+    /** Esnek tekrar kuralı: bu gün çalar mı */
+    fun allows(d: LocalDate): Boolean {
+        parse(until)?.let { if (d.isAfter(it)) return false }
+        if (days.isEmpty()) return parse(date)?.let { it == d } ?: true
+        if (d.dayOfWeek.value !in days) return false
+        val a = parse(anchor)
+        if (every > 1 && a != null) {
+            val weeks = java.time.temporal.ChronoUnit.WEEKS.between(a.minusDays(a.dayOfWeek.value - 1L), d.minusDays(d.dayOfWeek.value - 1L))
+            return Math.floorMod(weeks, every.toLong()) == 0L
+        }
+        return true
+    }
+
+    /** `afterMs` sonrasındaki ilk çalma (atlama hesaba katılmaz); bir daha çalmayacaksa NEVER */
     fun occurrenceAfter(afterMs: Long): Long {
         val zone = ZoneId.systemDefault()
+        if (days.isEmpty()) parse(date)?.let { d ->
+            val ms = d.atTime(hour, minute).atZone(zone).toInstant().toEpochMilli()
+            return if (ms > afterMs && allows(d)) ms else NEVER
+        }
         var t = java.time.Instant.ofEpochMilli(afterMs).atZone(zone).toLocalDateTime().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
-        repeat(9) {
+        repeat(16) {
             val ms = t.atZone(zone).toInstant().toEpochMilli()
-            if (ms > afterMs && (days.isEmpty() || t.dayOfWeek.value in days)) return ms
+            if (ms > afterMs && allows(t.toLocalDate())) return ms
             t = t.plusDays(1)
         }
-        return afterMs + 86_400_000L
+        return NEVER
     }
+
+    /** Bitiş tarihi geçti ya da belirli tarih geçmişte kaldı */
+    fun expired(nowMs: Long = System.currentTimeMillis()): Boolean = nextAt(nowMs) == NEVER
 
     /** `beforeMs` öncesindeki son çalma (günaydın kartı için) */
     fun occurrenceBefore(beforeMs: Long): Long? {
@@ -88,7 +124,7 @@ data class AlarmItem(
         var t = java.time.Instant.ofEpochMilli(beforeMs).atZone(zone).toLocalDateTime().withHour(hour).withMinute(minute).withSecond(0).withNano(0)
         repeat(9) {
             val ms = t.atZone(zone).toInstant().toEpochMilli()
-            if (ms <= beforeMs && (days.isEmpty() || t.dayOfWeek.value in days)) return ms
+            if (ms <= beforeMs && ((days.isEmpty() && date.isEmpty()) || allows(t.toLocalDate()))) return ms
             t = t.minusDays(1)
         }
         return null
@@ -101,7 +137,7 @@ data class AlarmItem(
         val zone = ZoneId.systemDefault()
         // Bayram en çok 4,5 gün sürer; 60 deneme her durumda yeter (bütün günler tatilse ilk çalma kalır)
         repeat(60) {
-            if (!isHoliday(java.time.Instant.ofEpochMilli(t).atZone(zone).toLocalDate())) return t
+            if (t == NEVER || !isHoliday(java.time.Instant.ofEpochMilli(t).atZone(zone).toLocalDate())) return t
             t = occurrenceAfter(t)
         }
         return occurrenceAfter(maxOf(nowMs, skipUntil))
@@ -117,10 +153,13 @@ data class AlarmItem(
         .put("days", JSONArray(days)).put("enabled", enabled).put("snooze", snooze).put("skipUntil", skipUntil)
         .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise).put("skipHolidays", skipHolidays)
         .put("sunrise", sunrise).put("task", task).put("taskLevel", taskLevel).put("code", code).put("wakeCheck", wakeCheck)
-        .put("preNotify", preNotify).put("speak", speak)
+        .put("preNotify", preNotify).put("speak", speak).put("date", date).put("every", every).put("anchor", anchor).put("until", until)
 
     companion object {
         private const val KEY = "alarms"
+        /** Bir daha çalmayacak alarmın "sıradaki çalma"sı */
+        const val NEVER = Long.MAX_VALUE
+        fun parse(iso: String): LocalDate? = if (iso.isEmpty()) null else runCatching { LocalDate.parse(iso) }.getOrNull()
         val WEEKDAYS = listOf(1, 2, 3, 4, 5)
         val SNOOZE_CHOICES = listOf(0, 5, 10, 15, 20, 30)
         val SNOOZE_MAX_CHOICES = listOf(0, 1, 2, 3, 5)
@@ -131,7 +170,7 @@ data class AlarmItem(
          *  kadar ışık yanık kaldığı için biraz geriden bakılır. */
         fun nextSunrise(nowMs: Long = System.currentTimeMillis()): Pair<Long, Int>? =
             load().filter { it.enabled && it.sunrise > 0 }
-                .map { it.nextAt(nowMs - tr.bumba.time.core.SunriseLight.AFTER_MS) to it.sunrise }
+                .map { it.nextAt(nowMs - tr.bumba.time.core.SunriseLight.AFTER_MS) to it.sunrise }.filter { it.first != NEVER }
                 .minByOrNull { it.first }
 
         /** Tam gün resmî tatil mi (takvim verisi; testte değiştirilebilir) */
@@ -152,6 +191,7 @@ data class AlarmItem(
                 o.optBoolean("skipHolidays", false), o.optInt("sunrise", 0),
                 o.optString("task", "none"), o.optInt("taskLevel", 2), o.optString("code", ""), o.optBoolean("wakeCheck", false),
                 o.optInt("preNotify", 0), o.optBoolean("speak", false),
+                o.optString("date", ""), o.optInt("every", 1), o.optString("anchor", ""), o.optString("until", ""),
             )
         }
 
@@ -294,7 +334,9 @@ object AlarmScheduler {
         for (id in known) pending(c, id, "", "alarm", PendingIntent.FLAG_NO_CREATE)?.let { am.cancel(it) }
         val now = System.currentTimeMillis()
         for (it in items.filter { it.enabled }) {
-            set(c, it.nextAt(now), pending(c, it.id, it.title, "alarm", PendingIntent.FLAG_UPDATE_CURRENT)!!, clock = true)
+            val at = it.nextAt(now)
+            if (at == AlarmItem.NEVER) continue
+            set(c, at, pending(c, it.id, it.title, "alarm", PendingIntent.FLAG_UPDATE_CURRENT)!!, clock = true)
         }
         Prefs.store.edit().putStringSet("alarms.scheduled", items.filter { it.enabled }.map { it.id }.toSet()).apply()
         AlarmPre.sync(c, items, known)
@@ -476,6 +518,7 @@ object AlarmPre {
         for (it in items) {
             if (!it.enabled || it.preNotify <= 0) continue
             val at = it.nextAt(now)
+            if (at == AlarmItem.NEVER) continue
             val fire = at - it.preNotify * 60_000L
             if (fire <= now) continue
             am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, fire, pending(c, it.id, at, PendingIntent.FLAG_UPDATE_CURRENT)!!)

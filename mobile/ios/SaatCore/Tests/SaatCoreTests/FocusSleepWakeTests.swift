@@ -3,6 +3,19 @@ import XCTest
 
 /// Android'deki core FocusSleepWakeTest ile aynı denetimler
 final class FocusSleepWakeTests: XCTestCase {
+    /// Yeni alarm görevleri (#75): hafıza dizisi, yazma denetimi, fotoğraf özeti
+    func testMoreWakeTasks() {
+        var rng = SplitMix64(seed: 7)
+        let seq = WakeTask.memorySequence(level: 2, using: &rng)
+        XCTAssertEqual(seq.count, 5)
+        XCTAssertTrue(seq.allSatisfy { (0...8).contains($0) } && zip(seq, seq.dropFirst()).allSatisfy { $0 != $1 })
+        XCTAssertTrue(WakeTask.typed("Damlaya damlaya göl olur.", "  damlaya DAMLAYA göl olur "))
+        XCTAssertFalse(WakeTask.typed("Damlaya damlaya göl olur.", "damlaya göl olur"))
+        let img = (0..<72).map { ($0 * 37) % 255 }
+        XCTAssertTrue(WakeTask.samePhoto(WakeTask.dHash(img), WakeTask.dHash(img.map { min(255, $0 + 6) })))
+        XCTAssertFalse(WakeTask.samePhoto(WakeTask.dHash(img), WakeTask.dHash((0..<72).map { 255 - ($0 * 37) % 255 })))
+    }
+
     private let days = (24...30).map { "2026-10-\($0)" }
 
     func testFocusStats() {

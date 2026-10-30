@@ -5011,5 +5011,159 @@
     "de": "Telefon bis {time} stumm",
     "az": "Telefon {time}-dək səssizdə",
     "ar": "الهاتف صامت حتى {time}"
+  },
+  "alarm.onDate": {
+    "tr": "Belirli bir tarihte",
+    "en": "On a specific date",
+    "de": "An einem bestimmten Datum",
+    "az": "Müəyyən tarixdə",
+    "ar": "في تاريخ محدد"
+  },
+  "alarm.date": {
+    "tr": "Tarih",
+    "en": "Date",
+    "de": "Datum",
+    "az": "Tarix",
+    "ar": "التاريخ"
+  },
+  "alarm.biweekly": {
+    "tr": "İki haftada bir",
+    "en": "Every two weeks",
+    "de": "Alle zwei Wochen",
+    "az": "İki həftədən bir",
+    "ar": "كل أسبوعين"
+  },
+  "alarm.untilToggle": {
+    "tr": "Bitiş tarihi",
+    "en": "End date",
+    "de": "Enddatum",
+    "az": "Bitmə tarixi",
+    "ar": "تاريخ الانتهاء"
+  },
+  "alarm.until": {
+    "tr": "Son gün",
+    "en": "Last day",
+    "de": "Letzter Tag",
+    "az": "Son gün",
+    "ar": "آخر يوم"
+  },
+  "alarm.untilShort": {
+    "tr": "{date} tarihine kadar",
+    "en": "until {date}",
+    "de": "bis {date}",
+    "az": "{date} tarixinədək",
+    "ar": "حتى {date}"
+  },
+  "alarm.expired": {
+    "tr": "Süresi doldu",
+    "en": "Ended",
+    "de": "Abgelaufen",
+    "az": "Müddəti bitdi",
+    "ar": "انتهى"
+  },
+  "alarm.task.memory": {
+    "tr": "Hafıza",
+    "en": "Memory",
+    "de": "Gedächtnis",
+    "az": "Yaddaş",
+    "ar": "الذاكرة"
+  },
+  "alarm.task.typing": {
+    "tr": "Yazma",
+    "en": "Typing",
+    "de": "Tippen",
+    "az": "Yazma",
+    "ar": "الكتابة"
+  },
+  "alarm.task.photo": {
+    "tr": "Fotoğraf",
+    "en": "Photo",
+    "de": "Foto",
+    "az": "Foto",
+    "ar": "صورة"
+  },
+  "alarm.photo.save": {
+    "tr": "Yerin fotoğrafını kaydet",
+    "en": "Save a photo of the place",
+    "de": "Foto des Ortes speichern",
+    "az": "Yerin fotosunu saxla",
+    "ar": "احفظ صورة المكان"
+  },
+  "alarm.photo.change": {
+    "tr": "Fotoğrafı değiştir",
+    "en": "Change the photo",
+    "de": "Foto ändern",
+    "az": "Fotonu dəyiş",
+    "ar": "غيّر الصورة"
+  },
+  "alarm.photo.saved": {
+    "tr": "Kayıtlı. Alarmı kapatmak için aynı yerin fotoğrafını çekeceksiniz (ör. lavabo, kahve makinesi). Fotoğraf saklanmaz, yalnız küçük bir özeti tutulur.",
+    "en": "Saved. To turn the alarm off you will photograph the same spot (e.g. the sink or coffee machine). The photo is not kept, only a small fingerprint.",
+    "de": "Gespeichert. Zum Ausschalten fotografieren Sie dieselbe Stelle (z. B. Waschbecken, Kaffeemaschine). Das Foto wird nicht gespeichert, nur ein kleiner Fingerabdruck.",
+    "az": "Saxlanıldı. Siqnalı söndürmək üçün eyni yerin fotosunu çəkəcəksiniz (məs. əlüzyuyan, qəhvə maşını). Foto saxlanmır, yalnız kiçik xülasəsi qalır.",
+    "ar": "تم الحفظ. لإيقاف المنبه ستلتقط صورة للمكان نفسه (مثل المغسلة أو آلة القهوة). لا تُحفظ الصورة بل بصمة صغيرة منها فقط."
+  },
+  "alarm.photo.missing": {
+    "tr": "Fotoğraf kaydedilmedi; kaydedilmezse matematik sorulur.",
+    "en": "No photo saved; without one a math task is used.",
+    "de": "Kein Foto gespeichert; ohne Foto gibt es eine Rechenaufgabe.",
+    "az": "Foto saxlanmayıb; saxlanmasa riyaziyyat sualı verilir.",
+    "ar": "لم تُحفظ صورة؛ بدونها تُطرح مسألة حسابية."
+  },
+  "wake.memory.watch": {
+    "tr": "Yanan kareleri izleyin",
+    "en": "Watch the squares light up",
+    "de": "Beobachten Sie die aufleuchtenden Felder",
+    "az": "Yanan kvadratlara baxın",
+    "ar": "راقب المربعات المضيئة"
+  },
+  "wake.memory.repeat": {
+    "tr": "Aynı sırayla dokunun",
+    "en": "Tap them in the same order",
+    "de": "Tippen Sie sie in derselben Reihenfolge an",
+    "az": "Eyni ardıcıllıqla toxunun",
+    "ar": "اضغط عليها بالترتيب نفسه"
+  },
+  "wake.memory.wrong": {
+    "tr": "Sıra yanlış, yeni bir dizi geliyor.",
+    "en": "Wrong order, here comes a new sequence.",
+    "de": "Falsche Reihenfolge, eine neue Folge kommt.",
+    "az": "Ardıcıllıq səhvdir, yeni sıra gəlir.",
+    "ar": "ترتيب خاطئ، تأتي سلسلة جديدة."
+  },
+  "wake.typing": {
+    "tr": "Bu sözü aynen yazın",
+    "en": "Type this saying",
+    "de": "Tippen Sie diesen Spruch ab",
+    "az": "Bu sözü olduğu kimi yazın",
+    "ar": "اكتب هذه العبارة"
+  },
+  "wake.typing.field": {
+    "tr": "Buraya yazın",
+    "en": "Type here",
+    "de": "Hier tippen",
+    "az": "Bura yazın",
+    "ar": "اكتب هنا"
+  },
+  "wake.photo": {
+    "tr": "Kayıtlı yerin fotoğrafını çekin",
+    "en": "Take a photo of the saved spot",
+    "de": "Fotografieren Sie die gespeicherte Stelle",
+    "az": "Saxlanmış yerin fotosunu çəkin",
+    "ar": "التقط صورة للمكان المحفوظ"
+  },
+  "wake.photo.take": {
+    "tr": "Fotoğraf çek",
+    "en": "Take photo",
+    "de": "Foto aufnehmen",
+    "az": "Foto çək",
+    "ar": "التقط صورة"
+  },
+  "wake.photo.wrong": {
+    "tr": "Aynı yere benzemiyor, aynı açıdan yeniden deneyin.",
+    "en": "That doesn't look like the same spot; try again from the same angle.",
+    "de": "Das sieht nicht nach derselben Stelle aus; versuchen Sie es aus demselben Winkel erneut.",
+    "az": "Eyni yerə bənzəmir, eyni bucaqdan yenidən cəhd edin.",
+    "ar": "لا يبدو المكان نفسه، حاول مجددًا من الزاوية نفسها."
   }
 }

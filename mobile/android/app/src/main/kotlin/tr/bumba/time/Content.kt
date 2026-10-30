@@ -207,6 +207,13 @@ object Sayings {
         return list.getString(Math.floorMod(day.toEpochDay(), list.length().toLong()).toInt())
     }
 
+    /** Rastgele bir söz (alarm yazma görevi) */
+    fun random(c: Context): String? {
+        today(c) // listeyi yükler
+        val list = cache?.optJSONArray(Strings.lang) ?: return null
+        return if (list.length() == 0) null else list.getString(kotlin.random.Random.nextInt(list.length()))
+    }
+
     /** Hızır (6 Mayıs) ve Kasım (8 Kasım) günleri: geleneksel takvim yapraklarındaki gün sayısı */
     fun hizirKasim(d: LocalDate): Pair<Boolean, Int> {
         val hizir = LocalDate.of(d.year, 5, 6)

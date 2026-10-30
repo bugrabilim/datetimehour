@@ -1237,5 +1237,27 @@
     <string name="prayer_silent_grant">Erlauben</string>
     <string name="prayer_silent_channel">Stumm zur Gebetszeit</string>
     <string name="prayer_silent_active">Telefon bis %1$s stumm</string>
+    <string name="alarm_onDate">An einem bestimmten Datum</string>
+    <string name="alarm_date">Datum</string>
+    <string name="alarm_biweekly">Alle zwei Wochen</string>
+    <string name="alarm_untilToggle">Enddatum</string>
+    <string name="alarm_until">Letzter Tag</string>
+    <string name="alarm_untilShort">bis %1$s</string>
+    <string name="alarm_expired">Abgelaufen</string>
+    <string name="alarm_task_memory">Gedächtnis</string>
+    <string name="alarm_task_typing">Tippen</string>
+    <string name="alarm_task_photo">Foto</string>
+    <string name="alarm_photo_save">Foto des Ortes speichern</string>
+    <string name="alarm_photo_change">Foto ändern</string>
+    <string name="alarm_photo_saved">Gespeichert. Zum Ausschalten fotografieren Sie dieselbe Stelle (z. B. Waschbecken, Kaffeemaschine). Das Foto wird nicht gespeichert, nur ein kleiner Fingerabdruck.</string>
+    <string name="alarm_photo_missing">Kein Foto gespeichert; ohne Foto gibt es eine Rechenaufgabe.</string>
+    <string name="wake_memory_watch">Beobachten Sie die aufleuchtenden Felder</string>
+    <string name="wake_memory_repeat">Tippen Sie sie in derselben Reihenfolge an</string>
+    <string name="wake_memory_wrong">Falsche Reihenfolge, eine neue Folge kommt.</string>
+    <string name="wake_typing">Tippen Sie diesen Spruch ab</string>
+    <string name="wake_typing_field">Hier tippen</string>
+    <string name="wake_photo">Fotografieren Sie die gespeicherte Stelle</string>
+    <string name="wake_photo_take">Foto aufnehmen</string>
+    <string name="wake_photo_wrong">Das sieht nicht nach derselben Stelle aus; versuchen Sie es aus demselben Winkel erneut.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>
