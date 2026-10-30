@@ -22,7 +22,7 @@ xcrun simctl install "$UDID" "$APP"
 shoot() { # dil bölge görünüm dosya [ek uygulama argümanları]
   xcrun simctl ui "$UDID" appearance "$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" "${@:5}"
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" "${@:5}"
   sleep 6
   xcrun simctl io "$UDID" screenshot "$OUT/$4.png"
 }
@@ -54,7 +54,7 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR dark ekran-about-koyu -openScreen about
@@ -62,6 +62,11 @@ shoot tr tr_TR light ekran-renk-cocuk -openScreen settings -accent kid-purple
 shoot tr tr_TR light tr-renk-cocuk -accent kid-green
 shoot tr tr_TR light ekran-google -openScreen google
 shoot en en_US light ekran-world-en -openScreen world
+# Yatay (yan çevrilmiş): saat sekmesi tam ekran açılır, diğerlerinde alt bar gizli. Sona konur ki sonraki
+# açılışlar dik kalsın; görüntü cihazın dik çerçevesinde yan döner.
+shoot tr tr_TR light tr-yatay-saat -landscape
+shoot tr tr_TR light tr-yatay-hava -startTab 1 -landscape
+shoot tr tr_TR dark tr-yatay-vakitler -startTab 5 -landscape
 # Uygulamanın Info.plist anahtarları (izin metinleri) derlenmiş pakette var mı
 plutil -p "$APP/Info.plist" | grep -E "NSAlarmKit|NSLocation|CFBundleDisplayName" || true
 # Bildirim sesi örnekleri (telefonda üretilen dosyalar): Library/Sounds → çıktı klasörü

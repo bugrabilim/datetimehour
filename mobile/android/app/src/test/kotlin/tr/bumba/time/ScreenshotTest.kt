@@ -26,6 +26,7 @@ class ScreenshotTest {
         model: Int = 0, items: String = HomeItem.DEFAULT_RAW, weather: Boolean = false,
     ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
+        Prefs.store.edit().putBoolean("notify.asked", true).commit()
         Prefs.saveAppearance(if (dark) "dark" else "light")
         Prefs.saveAccent(accent)
         Prefs.saveClockModel(model)
@@ -54,6 +55,7 @@ class ScreenshotTest {
 
     private fun capture(name: String, qualifiers: String = "tr", content: @androidx.compose.runtime.Composable () -> Unit) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
+        Prefs.store.edit().putBoolean("notify.asked", true).commit()
         Prefs.saveAppearance("light")
         Prefs.saveAccent("amber")
         captureRoboImage("$dir/$name.png") {
@@ -122,6 +124,10 @@ class ScreenshotTest {
     @Test fun clockAllItems() = shot("tr-saat-alanlar", Tab.CLOCK, model = 18, weather = true,
         items = "date,week,next,prayers,upcoming,world,weather,sun,-globe")
     @Test fun clockArabic() = shot("ar-saat", Tab.CLOCK, "ar", weather = true)
+    // Yan çevrilmiş: saat sekmesi tam ekran açılır; diğer sekmelerde alt bar ve sistem çubukları gizli
+    @Test fun landscapeClock() = shot("tr-yatay-saat", Tab.CLOCK, "tr-land")
+    @Test fun landscapeWeather() = shot("tr-yatay-hava", Tab.WEATHER, "tr-land", weather = true)
+    @Test fun landscapePrayer() = shot("tr-yatay-vakitler", Tab.PRAYER, "tr-land", dark = true)
     @Test fun homeItemsEditor() = capture("tr-saat-duzenle") { HomeItemsEditor() }
     @Test fun fullscreen() = capture("tr-saat-tam-ekran") { FullscreenClock {} }
 }

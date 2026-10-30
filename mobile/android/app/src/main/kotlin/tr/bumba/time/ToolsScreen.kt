@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -61,6 +62,11 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "homeItems" -> Page(L("home.customize"), { onRoute("settings") }) { HomeItemsEditor() }
         "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
         "badges" -> Page(L("badges.h1"), onRoute) { BadgesScreen() }
+        "notifications" -> Page(L("settings.notifications"), { onRoute("settings") }) { NotificationsScreen(onRoute) }
+        "prayerNotify" -> {
+            BackHandler { onRoute("notifications") }
+            NotificationSettingsScreen { onRoute("notifications") }
+        }
         else -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             Text(L("tab.tools"), color = Theme.c.text, fontSize = 26.sp, fontWeight = FontWeight.Bold)
             AppCard(padding = 4) {

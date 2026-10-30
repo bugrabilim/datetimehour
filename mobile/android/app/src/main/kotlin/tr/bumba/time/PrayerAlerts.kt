@@ -58,7 +58,8 @@ object NotifyPrefs {
     private val sp get() = Prefs.store
     private var loaded = false
 
-    var enabled by mutableStateOf(false)
+    /** Varsayılan açık (30 Ekim 2026, sahibin isteği: her özelliğin bildirimi açık gelir, kullanıcı kapatır) */
+    var enabled by mutableStateOf(true)
         private set
     var prayersRaw by mutableStateOf(encode(PrayerAlerts.DEFAULT_PRAYERS))
         private set
@@ -72,7 +73,7 @@ object NotifyPrefs {
     fun load() {
         if (loaded) return
         loaded = true
-        enabled = sp.getBoolean(ENABLED, false)
+        enabled = sp.getBoolean(ENABLED, true)
         prayersRaw = sp.getString(PRAYERS, null) ?: encode(PrayerAlerts.DEFAULT_PRAYERS)
         lead = sp.getInt(LEAD, 0)
         sound = sp.getString(SOUND, null)?.takeIf { it in SOUNDS } ?: "voice"

@@ -25,6 +25,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Palette
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Tune
@@ -74,6 +75,17 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("settings.location"), Modifier.weight(1f), color = Theme.c.text)
                 PlacePicker(size = 16.sp)
+            }
+        }
+        AppCard(padding = 4) {
+            Row(
+                Modifier.fillMaxWidth().clickable { onRoute("notifications") }.padding(horizontal = 12.dp, vertical = 14.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(Icons.Filled.Notifications, null, tint = Theme.c.accent)
+                Spacer(Modifier.width(14.dp))
+                Text(L("settings.notifications"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
             }
         }
         AppCard(padding = 4) {

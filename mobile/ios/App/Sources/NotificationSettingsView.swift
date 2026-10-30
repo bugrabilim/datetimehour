@@ -6,7 +6,7 @@ import SaatCore
 struct NotificationSettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
-    @AppStorage(NotificationPrefs.enabledKey) private var enabled = false
+    @AppStorage(NotificationPrefs.enabledKey) private var enabled = true
     @AppStorage(NotificationPrefs.prayersKey) private var prayersRaw = NotificationPrefs.defaultPrayers
     @AppStorage(NotificationPrefs.leadKey) private var lead = 0
     @AppStorage(SoundMode.key) private var sound = SoundMode.voice.rawValue

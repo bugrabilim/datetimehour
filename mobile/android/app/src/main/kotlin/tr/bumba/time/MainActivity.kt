@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
@@ -11,12 +12,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.displayCutout
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Eco
@@ -36,6 +40,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,6 +49,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -118,15 +124,29 @@ fun Root(start: Int) {
     val tab = Nav.tab
     val toolsRoute = Nav.toolsRoute
     var fullscreen by rememberSaveable { mutableStateOf(false) }
+    // Yan çevirince (30 Ekim 2026, sahibin isteği): saat sekmesinde tam ekran açılır, dikeye dönünce kapanır;
+    // diğer sekmelerde alt bar ve sistem çubukları gizlenir ki içerik sıkışmasın
+    val landscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+    var autoFull by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(landscape, tab) {
+        if (landscape && tab == Tab.CLOCK && !fullscreen) {
+            fullscreen = true
+            autoFull = true
+        } else if (!landscape && autoFull) {
+            fullscreen = false
+            autoFull = false
+        }
+    }
     RefreshAutoPlace()
+    AskNotificationsOnce()
 
     // Saat ekranında ekran kapanmaz (Ayarlar'dan kapatılabilir); tam ekranda her zaman açık
     LocalView.current.keepScreenOn = fullscreen || (tab == Tab.CLOCK && Prefs.keepAwake)
 
     if (fullscreen) {
-        BackHandler { fullscreen = false }
+        BackHandler { fullscreen = false; autoFull = false }
         Box(Modifier.fillMaxSize()) {
-            FullscreenClock { fullscreen = false }
+            FullscreenClock { fullscreen = false; autoFull = false }
             BadgeToast(Modifier.align(Alignment.TopCenter).statusBarsPadding())
         }
         return
@@ -134,9 +154,10 @@ fun Root(start: Int) {
     BackHandler(enabled = tab == Tab.TOOLS && toolsRoute != null) { Nav.toolsRoute = null }
     BackHandler(enabled = tab != Tab.CLOCK && !(tab == Tab.TOOLS && toolsRoute != null)) { Nav.tab = Tab.CLOCK }
 
+    if (landscape) HideSystemBars()
     Box(Modifier.fillMaxSize()) {
     Column(Modifier.fillMaxSize().background(Theme.c.bg)) {
-        Box(Modifier.weight(1f).fillMaxWidth().statusBarsPadding()) {
+        Box(Modifier.weight(1f).fillMaxWidth().statusBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
             when (tab) {
                 Tab.CLOCK -> ClockScreen(onFullscreen = { fullscreen = true; BadgeStore.hit(Badge.TAM_EKRAN) }, onOpen = { Nav.tab = it })
                 Tab.WEATHER -> WeatherScreen()
@@ -147,9 +168,11 @@ fun Root(start: Int) {
                 Tab.TOOLS -> ToolsScreen(toolsRoute) { Nav.toolsRoute = it }
             }
         }
-        TabBar(tab) { t ->
-            if (t == tab && t == Tab.TOOLS) Nav.toolsRoute = null
-            Nav.tab = t
+        if (!landscape) {
+            TabBar(tab) { t ->
+                if (t == tab && t == Tab.TOOLS) Nav.toolsRoute = null
+                Nav.tab = t
+            }
         }
     }
     BadgeToast(Modifier.align(Alignment.TopCenter).statusBarsPadding())

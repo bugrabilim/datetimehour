@@ -3,7 +3,7 @@ import SaatCore
 
 /// Vakitler sekmesi: il, sıradaki vakte kalan süre, bugünün vakitleri, aylık çizelge, imsakiye, bildirimler.
 struct PrayerTab: View {
-    @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = false
+    @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = true
     /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
     @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
 

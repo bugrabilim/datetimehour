@@ -272,6 +272,8 @@ fun FullscreenClock(onExit: () -> Unit) {
         Modifier.fillMaxSize().background(Theme.c.bg).pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) },
     ) {
         val viewport = maxHeight
+        // Yatayda saat ekranı doldurur, alanlar kaydırınca görünür
+        val landscape = maxWidth > maxHeight
         val globeHeight = rememberGlobeHeight()
         Column(
             Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
@@ -283,7 +285,11 @@ fun FullscreenClock(onExit: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                val stage = if (items.isEmpty()) maxOf(300.dp, viewport - 60.dp) else stageHeight(viewport * 1.08f)
+                val stage = when {
+                    landscape -> maxOf(220.dp, viewport - 48.dp)
+                    items.isEmpty() -> maxOf(300.dp, viewport - 60.dp)
+                    else -> stageHeight(viewport * 1.08f)
+                }
                 HorizontalPager(pager, Modifier.fillMaxWidth().height(stage)) { page ->
                     ClockModelPage(page, now, place, Modifier.padding(horizontal = 8.dp))
                 }
@@ -302,9 +308,9 @@ fun FullscreenClock(onExit: () -> Unit) {
     }
 }
 
-/** Tam ekranda durum ve gezinme çubukları gizlenir (kenardan kaydırınca geçici görünür) */
+/** Tam ekranda ve yatayda durum ve gezinme çubukları gizlenir (kenardan kaydırınca geçici görünür) */
 @Composable
-private fun HideSystemBars() {
+fun HideSystemBars() {
     val view = LocalView.current
     DisposableEffect(view) {
         val window = (view.context as? Activity)?.window

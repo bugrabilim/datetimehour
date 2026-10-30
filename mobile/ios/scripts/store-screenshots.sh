@@ -24,7 +24,7 @@ xcrun simctl ui "$UDID" appearance light
 shoot() { # dil bölge klasör dosya bekleme [ek uygulama argümanları]
   mkdir -p "$OUT/$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" "${@:6}"
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" "${@:6}"
   sleep "$5"
   xcrun simctl io "$UDID" screenshot "$OUT/$3/$4.png"
 }

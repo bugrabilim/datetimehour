@@ -14,6 +14,7 @@ struct SettingsView: View {
         Form {
             Section {
                 LabeledContent(L("settings.location")) { PlacePicker(font: .body) }
+                NavigationLink { NotificationsView() } label: { Label(L("settings.notifications"), systemImage: "bell") }
             }
             Section {
                 NavigationLink { AccentPickerView() } label: {

@@ -8,6 +8,9 @@ struct ClockTab: View {
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @State private var fullscreen = false
     @State private var customizing = false
+    /// Yan çevirince tam ekran açılır, dikeye dönünce kapanır (düğmeyle açılan tam ekran dikeyde de kalır)
+    @Environment(\.verticalSizeClass) private var vsc
+    @State private var autoFull = false
 
     /// Dönen dünyanın yüksekliği: varsayılan düzende sayfa ekrana tam otursun diye kalan boşluğu doldurur
     @State private var globeHeight: CGFloat = 260
@@ -55,7 +58,15 @@ struct ClockTab: View {
         .onAppear { UIApplication.shared.isIdleTimerDisabled = keepAwake }
         .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
         .onChange(of: keepAwake) { UIApplication.shared.isIdleTimerDisabled = keepAwake }
-        .fullScreenCover(isPresented: $fullscreen) { FullscreenClock() }
+        .onChange(of: vsc, initial: true) { _, v in
+            if v == .compact, !fullscreen {
+                autoFull = true
+                fullscreen = true
+            }
+        }
+        .fullScreenCover(isPresented: $fullscreen, onDismiss: { autoFull = false }) {
+            FullscreenClock(closeOnPortrait: autoFull)
+        }
         .sheet(isPresented: $customizing) {
             NavigationStack {
                 HomeItemsView()
@@ -151,7 +162,10 @@ struct ClockStage: View {
 /// Tam ekran saat: 19 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler);
 /// ekran kapanmaz, çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
 struct FullscreenClock: View {
+    /// Yan çevirince açıldıysa telefon dik tutulunca kapanır
+    var closeOnPortrait = false
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.verticalSizeClass) private var vsc
     @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @State private var globeHeight: CGFloat = 260
@@ -172,7 +186,7 @@ struct FullscreenClock: View {
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
-                        .frame(height: items.isEmpty ? max(300, geo.size.height - 60) : ClockTab.stageHeight(geo.size.height * 1.08))
+                        .frame(height: Self.stageHeight(geo.size, hasItems: !items.isEmpty))
                         ForEach(items) { item in
                             HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight) { dismiss() }
                         }
@@ -197,6 +211,9 @@ struct FullscreenClock: View {
             }
         }
         .onTapGesture(count: 2) { dismiss() }
+        .onChange(of: vsc) { _, v in
+            if v == .regular, closeOnPortrait { dismiss() }
+        }
         .overlay(alignment: .top) { BadgeToast() }
         .onChange(of: modelID) { _, new in
             if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
@@ -210,5 +227,11 @@ struct FullscreenClock: View {
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = UserDefaults.standard.object(forKey: "keepAwake") as? Bool ?? true
         }
+    }
+
+    /// Yatayda saat ekranı doldurur (alanlar kaydırınca görünür); dikeyde alan yoksa saat ekranı doldurur
+    static func stageHeight(_ size: CGSize, hasItems: Bool) -> CGFloat {
+        if size.width > size.height { return max(220, size.height - 44) }
+        return hasItems ? ClockTab.stageHeight(size.height * 1.08) : max(300, size.height - 60)
     }
 }

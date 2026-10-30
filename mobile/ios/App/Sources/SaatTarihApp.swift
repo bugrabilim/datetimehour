@@ -18,9 +18,15 @@ struct SaatTarihApp: App {
                 BadgeStore.shared.appOpened()
                 Task {
                     await PlaceModel.shared.refresh()
+                    await PrayerNotifier.askOnce()
                     await PrayerNotifier.reschedule()
                 }
+            } else if phase == .background {
+                BackgroundRefresh.schedule()
             }
+        }
+        .backgroundTask(.appRefresh(BackgroundRefresh.id)) {
+            await BackgroundRefresh.run()
         }
     }
 }
@@ -99,6 +105,10 @@ struct RootView: View {
     @State private var router = Router.shared
     /// Klavye açıkken alt bar gizlenir (sistemin sekme çubuğu gibi; klavyenin üstüne binmez)
     @State private var keyboard = false
+    /// Yan çevrilince (iPhone yatayda yüksekliği "compact") alt bar, durum çubuğu ve ana ekran çizgisi gizlenir:
+    /// içerik sıkışmasın (30 Ekim 2026, sahibin isteği). Sekme değiştirmek için telefon dik tutulur.
+    @Environment(\.verticalSizeClass) private var vsc
+    private var landscape: Bool { vsc == .compact }
 
     var body: some View {
         // Bar sayfanın altında ayrı bir satır: sayfanın son satırları barın altında kalmaz
@@ -107,13 +117,22 @@ struct RootView: View {
             content
                 .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)")
                 .frame(maxHeight: .infinity)
-            if !keyboard { TabBar(selection: $router.tab) }
+            if !keyboard && !landscape { TabBar(selection: $router.tab) }
         }
+        .statusBarHidden(landscape)
+        .persistentSystemOverlays(landscape ? .hidden : .automatic)
         .overlay(alignment: .top) { BadgeToast() }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboard = true }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboard = false }
         .tint(Theme.accent)
         .preferredColorScheme(scheme)
+        .task {
+            // CI ekran görüntüsü: -landscape ile uygulama yatay açılır
+            guard ProcessInfo.processInfo.arguments.contains("-landscape"),
+                  let scene = UIApplication.shared.connectedScenes.first(where: { $0 is UIWindowScene }) as? UIWindowScene
+            else { return }
+            scene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
+        }
         .fullScreenCover(item: $screen) { s in
             NavigationStack { s.view }
                 .preferredColorScheme(scheme)
@@ -180,7 +199,7 @@ private struct TabBar: View {
 
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
-         privacy, about, list, globe, google, badges
+         privacy, about, list, globe, google, badges, notifications
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -204,6 +223,7 @@ enum DebugScreen: String, Identifiable {
         case .list: ListSignupView()
         case .google: GoogleCalendarGuide()
         case .badges: BadgesView()
+        case .notifications: NotificationsView()
         case .globe:
             // App Store önizleme videosu için: tam ekran dönen dünya
             GlobeView(fullscreen: true)

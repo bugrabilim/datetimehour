@@ -45,6 +45,7 @@ object PrayerNotifier {
     fun start(context: Context) {
         val app = context.applicationContext
         createChannels(app)
+        FeatureNotifier.createChannel(app)
         // Konum (il ya da otomatik konum) değişince plan yeniden kurulur; Prefs.kt'ye dokunmadan izlenir
         val keys = setOf("province", "auto.lat", "auto.lon", "auto.ref")
         prefListener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
@@ -79,9 +80,13 @@ object PrayerNotifier {
         return context.getSystemService(AlarmManager::class.java)?.canScheduleExactAlarms() ?: false
     }
 
-    /** Bekleyen vakit alarmlarını siler, plana göre yeniden kurar; sesli duyuru dosyalarını arka planda hazırlar */
+    /**
+     * Bekleyen vakit alarmlarını siler, plana göre yeniden kurar; sesli duyuru dosyalarını arka planda hazırlar.
+     * Özellik bildirimleri (FeatureNotifier) de aynı anlarda yeniden kurulur.
+     */
     fun reschedule(context: Context) {
         val app = context.applicationContext
+        FeatureNotifier.reschedule(app)
         val am = app.getSystemService(AlarmManager::class.java) ?: return
         for (i in 0 until SLOTS) {
             PendingIntent.getBroadcast(app, i, fireIntent(app), PendingIntent.FLAG_NO_CREATE or PendingIntent.FLAG_IMMUTABLE)

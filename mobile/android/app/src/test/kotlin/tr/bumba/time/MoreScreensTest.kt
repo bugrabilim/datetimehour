@@ -32,6 +32,7 @@ class MoreScreensTest {
 
     private fun shot(name: String, qualifiers: String = "tr", dark: Boolean = false, imperial: Boolean = false, content: @Composable () -> Unit) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
+        Prefs.store.edit().putBoolean("notify.asked", true).commit()
         Prefs.saveAppearance(if (dark) "dark" else "light")
         Prefs.saveAccent("amber")
         // Robolectric'te bölge ABD: birimler açıkça metrik
@@ -90,6 +91,7 @@ class MoreScreensTest {
     @Test fun about() = page("tr-hakkinda", "Hakkında") { AboutScreen() }
     @Test fun aboutDark() = page("tr-hakkinda-koyu", "Hakkında", dark = true) { AboutScreen() }
     @Test fun google() = page("tr-google-takvim", "Google Takvimi") { GoogleCalendarGuide() }
+    @Test fun notifications() = shot("tr-bildirimler") { NotificationsScreen {} }
     @Test fun badges() {
         // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri
         BadgeStore.deleteAll()

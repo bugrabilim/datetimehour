@@ -145,6 +145,7 @@
         <!-- Vakit bildirimleri: alarm geldiğinde bildirim + zil/duyuru; açılış, saat değişikliği ve güncellemede
              plan yeniden kurulur -->
         <receiver android:name=".PrayerAlarmReceiver" android:exported="false" />
+        <receiver android:name=".FeatureAlarmReceiver" android:exported="false" />
         <receiver android:name=".PrayerRescheduleReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
