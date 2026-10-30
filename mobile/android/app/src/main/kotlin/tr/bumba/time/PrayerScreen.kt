@@ -29,6 +29,8 @@ import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.TableChart
 import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -119,6 +121,7 @@ fun PrayerScreen() {
                     }
                 }
             }
+            KerahatCard(entries, place)
             // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
             val context = androidx.compose.ui.platform.LocalContext.current
             var liveOn by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.PRAYER_KEY, false)) }
@@ -142,6 +145,32 @@ fun PrayerScreen() {
             LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { page = "zikir" }
             LinkCard(Icons.Filled.TaskAlt, L("track.title")) { page = "track" }
             LinkCard(Icons.Filled.Calculate, L("zakat.title")) { page = "zakat" }
+        }
+    }
+}
+
+/** Kerahat vakitleri (rakip analizi #12; sitedeki namaz sayfasıyla aynı): yaklaşık 45 dk, açılır kart */
+@Composable
+private fun KerahatCard(entries: List<AppPlace.Entry>, place: AppPlace) {
+    fun at(p: Prayer) = entries.firstOrNull { it.prayer == p }?.at
+    val sr = at(Prayer.SUNRISE) ?: return
+    val dh = at(Prayer.DHUHR) ?: return
+    val mg = at(Prayer.MAGHRIB) ?: return
+    val k = tr.bumba.time.core.PrayerTimes.KERAHAT_MIN * 60L
+    var open by remember { mutableStateOf(false) }
+    AppCard(Modifier.clickable { open = !open }) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(L("prayer.kerahatHeading"), Modifier.weight(1f), color = Theme.c.text, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
+            Icon(if (open) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown, null, tint = Theme.c.muted)
+        }
+        if (open) {
+            for ((key, a, b) in listOf(Triple("israk", sr, sr.plusSeconds(k)), Triple("istiva", dh.minusSeconds(k), dh), Triple("isfirar", mg.minusSeconds(k), mg))) {
+                Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+                    Text(L("prayer.kerahatNames.$key"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Text(Fmt.hm(a, place.zone) + "–" + Fmt.hm(b, place.zone), color = Theme.c.text, fontSize = 15.sp, style = Tnum)
+                }
+            }
+            Text(L("prayer.kerahatNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
 }

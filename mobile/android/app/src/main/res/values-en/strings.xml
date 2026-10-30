@@ -177,6 +177,7 @@
     <string name="tools_stopwatch_lapsCaption">Lap times</string>
     <string name="tools_stopwatch_lapAdded">Lap %1$s added: %2$s</string>
     <string name="tools_stopwatch_panel">Stopwatch</string>
+    <string name="tools_stopwatch_csv">Download laps as CSV</string>
     <string name="tools_countdown_title">Countdown Timer: By Duration or Date | Saat Tarih</string>
     <string name="tools_countdown_description">Free countdown: a minute timer or the time left until a date you choose. Countdown to New Year and bayram, sound alert and full screen.</string>
     <string name="tools_countdown_h1">Countdown</string>
@@ -212,6 +213,7 @@
     <string name="tools_countdown_copyLink">Copy link</string>
     <string name="tools_countdown_copied">Link copied</string>
     <string name="tools_countdown_shareNote">You can share the link for the date you picked; the countdown starts by itself when the link is opened.</string>
+    <string name="tools_countdown_addMinute">+1 min</string>
     <string name="tools_alarm_title">Online Alarm Clock: Repeating and Snooze | Saat Tarih</string>
     <string name="tools_alarm_description">Free alarm that runs in your browser: time, label, repeat on chosen weekdays, 5-minute snooze and notifications. The alarm rings while the page is open.</string>
     <string name="tools_alarm_h1">Online alarm</string>
@@ -238,6 +240,7 @@
     <string name="tools_alarm_note">For important wake-ups also set your phone\'s own alarm; a browser alarm will not ring if the page is closed.</string>
     <string name="tools_alarm_panel">Alarm</string>
     <string name="tools_alarm_defaultLabel">Alarm</string>
+    <string name="tools_alarm_soundLabel">Alarm sound</string>
     <string name="tools_alarm_dayNames_0">Mon</string>
     <string name="tools_alarm_dayNames_1">Tue</string>
     <string name="tools_alarm_dayNames_2">Wed</string>
@@ -289,6 +292,13 @@
     <string name="tools_pomodoro_noiseNote">The sound plays only while a work session is running; it is generated in the browser, nothing is downloaded.</string>
     <string name="tools_pomodoro_empty">No completed pomodoros yet.</string>
     <string name="tools_pomodoro_minUnit">min</string>
+    <string name="tools_pomodoro_csv">Download history as CSV</string>
+    <string name="tools_pomodoro_streak">Streak: %1$s days in a row</string>
+    <string name="tools_pomodoro_goalLabel">Daily goal (sessions)</string>
+    <string name="tools_pomodoro_goalProgress">Today %1$s/%2$s sessions</string>
+    <string name="tools_pomodoro_goalDone">Daily goal reached</string>
+    <string name="tools_pomodoro_tagLabel">Tag</string>
+    <string name="tools_pomodoro_byTag">By tag, last 7 days</string>
     <string name="datecalc_title">Date Calculator: Days, Working Days, Age | Saat Tarih</string>
     <string name="datecalc_description">How many days and working days between two dates? Add or subtract days, months or years from a date and calculate age. Turkish public holidays are taken into account.</string>
     <string name="datecalc_h1">Date calculator</string>
@@ -391,7 +401,7 @@
     <string name="weather_precipitation">Precipitation</string>
     <string name="weather_uv">UV index</string>
     <string name="weather_hourlyHeading">Hourly forecast (24 hours)</string>
-    <string name="weather_dailyHeading">7-day forecast</string>
+    <string name="weather_dailyHeading">14-day forecast</string>
     <string name="weather_loading">Getting the weather…</string>
     <string name="weather_error">Could not get the weather. Check your connection and try again.</string>
     <string name="weather_retry">Try again</string>
@@ -463,6 +473,34 @@
     <string name="list_fullText">Full text</string>
     <string name="list_label">Email list</string>
     <string name="list_formErr">We could not sign you up. Check your email address and try again a little later.</string>
+    <string name="prayer_kerahatHeading">Disliked prayer times (approx.)</string>
+    <string name="prayer_kerahatNames_israk">Sunrise (ishraq)</string>
+    <string name="prayer_kerahatNames_istiva">Before noon (istiwa)</string>
+    <string name="prayer_kerahatNames_isfirar">Sunset (isfirar)</string>
+    <string name="prayer_kerahatNote">Voluntary prayers are not performed in these windows. The Diyanet publishes no exact minutes; the common calendar convention of about 45 minutes is used (sources give 10–45 minutes for the window before noon).</string>
+    <string name="nature_goldenAm">Morning golden hour</string>
+    <string name="nature_goldenPm">Evening golden hour</string>
+    <string name="nature_blueAm">Morning blue hour</string>
+    <string name="nature_bluePm">Evening blue hour</string>
+    <string name="nature_lightNote">Golden hour: the Sun between 6° above and 4° below the horizon, with soft, warm light. Blue hour: the Sun 4° to 6° below the horizon, a blue twilight. Handy for photographers.</string>
+    <string name="zakat_fitreHeading">Fitra (zakat al-fitr)</string>
+    <string name="zakat_fitreText">Turkey\'s Presidency of Religious Affairs (High Board of Religious Affairs) set the %1$s fitra at %2$s TL per person (%3$s), valid from Ramadan %1$s until the next Ramadan.</string>
+    <string name="zakat_fitrePeople">Number of people (including your dependants)</string>
+    <string name="zakat_fitreTotal">Total fitra</string>
+    <string name="zakat_fitreNote">The amount is for Turkey and is the minimum; those who can may give more (by the measure of dates or raisins). Fitra is given before the Eid prayer.</string>
+    <string name="hijriConv_h1">Hijri date converter</string>
+    <string name="hijriConv_toHijri">Gregorian to Hijri</string>
+    <string name="hijriConv_toGreg">Hijri to Gregorian</string>
+    <string name="hijriConv_gregLabel">Gregorian date</string>
+    <string name="hijriConv_yearLabel">Hijri year</string>
+    <string name="hijriConv_monthLabel">Month</string>
+    <string name="hijriConv_dayLabel">Day</string>
+    <string name="hijriConv_dayMax">This Hijri month has %1$s days.</string>
+    <string name="tools_pomodoro_tags_none">No tag</string>
+    <string name="tools_pomodoro_tags_work">Work</string>
+    <string name="tools_pomodoro_tags_study">Study</string>
+    <string name="tools_pomodoro_tags_personal">Personal</string>
+    <string name="tools_pomodoro_tags_other">Other</string>
     <string name="common_done">Done</string>
     <string name="notify_heading">Prayer time notifications</string>
     <string name="notify_enable">Notify me at prayer times</string>
@@ -1084,5 +1122,47 @@
     <string name="sync_note">Your settings, world clocks, countdowns, saved places, pomodoro and sleep records and worship records are synced across the iPhone, iPad and Mac signed in to the same Apple Account. The data stays in your iCloud account and never reaches us. Location, alarms, running timers, notification settings, badges and photos stay separate on each device.</string>
     <string name="sync_androidTitle">Backup and new phone</string>
     <string name="sync_androidNote">If your phone\'s Google backup is on, your settings and records (world clocks, countdowns, alarms, pomodoro, sleep and worship records, photos) go into the backup in your Google Account and are restored when you move to a new phone or reinstall the app. Google manages this backup; nothing reaches us. Phone Settings › Google › Backup.</string>
+    <string name="home_item_battery">Battery</string>
+    <string name="home_item_alarm">Next alarm</string>
+    <string name="home_alarmNone">No alarm set</string>
+    <string name="home_charging">charging</string>
+    <string name="look_text">Text under the clock</string>
+    <string name="look_textPlaceholder">e.g. Good morning!</string>
+    <string name="look_textNote">Shown under the clock on the clock screen and in full screen; stored only on this device.</string>
+    <string name="look_slideshow">Photo slideshow</string>
+    <string name="look_slideAdd">Add photos</string>
+    <string name="look_slideClear">Clear slideshow</string>
+    <string name="look_slideEvery">Change every</string>
+    <string name="look_slideCount" formatted="false">%1$@ photos</string>
+    <string name="look_slideNote">Up to 10 photos take turns as the full-screen background; the photos stay on this device.</string>
+    <string name="look_size">Clock size</string>
+    <string name="look_fsNote">In full screen, swipe up or down along the edge of the screen to dim it, and pinch to resize the clock.</string>
+    <string name="fs_lock">Lock orientation</string>
+    <string name="fs_unlock">Unlock orientation</string>
+    <string name="fs_dim" formatted="false">Dimmed %1$@</string>
+    <string name="share_prayer">Share prayer times</string>
+    <string name="share_card">Share</string>
+    <string name="alarm_quick">Quick alarm</string>
+    <string name="alarm_quickIn" formatted="false">In %1$@ min</string>
+    <string name="alarm_quickSet" formatted="false">Alarm set: %1$@</string>
+    <string name="alarm_swipe">Slide to stop</string>
+    <string name="alarm_pre">Notify before ringing</string>
+    <string name="alarm_preOff">Off</string>
+    <string name="alarm_preMin" formatted="false">%1$@ min before</string>
+    <string name="alarm_preTitle" formatted="false">Upcoming alarm: %1$@</string>
+    <string name="alarm_preBody">Up early? You can skip this one.</string>
+    <string name="alarm_preSkip">Skip this alarm</string>
+    <string name="alarm_preNote">A silent notification; you can skip the alarm from it.</string>
+    <string name="alarm_speak">Speak the time</string>
+    <string name="alarm_speakNote">While ringing, the time is spoken with the phone\'s speech engine.</string>
+    <string name="alarm_speakNoteIOS">The alarm sound becomes a short recording that speaks the time (made on the phone).</string>
+    <string name="alarm_speakText" formatted="false">It\'s %1$@</string>
+    <string name="csv_laps">Share laps (CSV)</string>
+    <string name="csv_pomo">Share history (CSV)</string>
+    <string name="world_dstForward" formatted="false">%1$@: clocks go forward %2$@</string>
+    <string name="world_dstBack" formatted="false">%1$@: clocks go back %2$@</string>
+    <string name="world_dstTitle" formatted="false">%1$@: clocks change</string>
+    <string name="hijriConv_outsideApp">Outside the Diyanet table; calculated with the Umm al-Qura calendar, may differ by a day.</string>
+    <string name="common_secondsShort">s</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

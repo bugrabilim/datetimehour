@@ -158,4 +158,19 @@ private fun SunMoon(place: AppPlace, now: Instant, openMoon: () -> Unit) {
             Text(L("moon.calendarLink") + " ›", color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         }
     }
+    // Altın ve mavi saat (rakip analizi #15; sitedeki Mevsimler ile aynı: Güneş +6°/−4°/−6°)
+    val off = place.zone.rules.getOffset(day.atTime(12, 0).atZone(place.zone).toInstant()).totalSeconds / 3600.0
+    val light = PrayerTimes.lightHours(day.year, day.monthValue, day.dayOfMonth, place.lat, place.lon, off)
+    fun hm(h: Double?): String = h?.let { val m = Math.round(it * 60).toInt(); "%02d:%02d".format(java.util.Locale.ROOT, (m / 60 + 24) % 24, m % 60) } ?: "–"
+    fun span(r: Pair<Double?, Double?>) = if (r.first == null || r.second == null) "–" else hm(r.first) + "–" + hm(r.second)
+    AppCard {
+        for ((key, icon, r) in listOf(Triple("nature.blueAm", "🔵", light.blueAm), Triple("nature.goldenAm", "🟠", light.goldenAm),
+                Triple("nature.goldenPm", "🟠", light.goldenPm), Triple("nature.bluePm", "🔵", light.bluePm))) {
+            Row(Modifier.fillMaxWidth()) {
+                Text("$icon ${L(key)}", Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                Text(span(r), color = Theme.c.text, fontSize = 15.sp, style = Tnum)
+            }
+        }
+        Text(L("nature.lightNote"), color = Theme.c.muted, fontSize = 12.sp)
+    }
 }

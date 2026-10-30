@@ -28,6 +28,38 @@ object Hijri {
         }
     }
 
+    /** Hicri çevirici (rakip analizi #13): tabloda Diyanet, dışında Java'nın Umm al-Qura takvimi (`outside`) */
+    fun convert(d: LocalDate): Pair<HijriDate, Boolean>? {
+        date(d)?.let { return it to false }
+        return try {
+            val h = java.time.chrono.HijrahDate.from(d)
+            HijriDate(h.get(java.time.temporal.ChronoField.YEAR), h.get(java.time.temporal.ChronoField.MONTH_OF_YEAR),
+                h.get(java.time.temporal.ChronoField.DAY_OF_MONTH)) to true
+        } catch (_: Exception) { null }
+    }
+
+    sealed interface Reverse {
+        data class Date(val date: LocalDate, val outside: Boolean) : Reverse
+        data class TooLong(val days: Int) : Reverse
+        data object None : Reverse
+    }
+
+    /** Hicri (yıl, ay, gün) → miladi; ay o kadar gün çekmiyorsa ayın gün sayısı */
+    fun gregorian(year: Int, month: Int, day: Int): Reverse {
+        for (i in 0 until table.size - 1) {
+            val (start, y, m) = table[i]
+            if (y == year && m == month) {
+                val len = (table[i + 1].first - start).toInt()
+                return if (day > len) Reverse.TooLong(len) else Reverse.Date(LocalDate.ofEpochDay(start + day - 1), false)
+            }
+        }
+        return try {
+            val first = java.time.chrono.HijrahDate.of(year, month, 1)
+            val len = first.lengthOfMonth()
+            if (day > len) Reverse.TooLong(len) else Reverse.Date(LocalDate.from(first.plus((day - 1).toLong(), java.time.temporal.ChronoUnit.DAYS)), true)
+        } catch (_: Exception) { Reverse.None }
+    }
+
     /** Takvim günü için hicri tarih; tablo dışında null */
     fun date(d: LocalDate): HijriDate? {
         val n = d.toEpochDay()

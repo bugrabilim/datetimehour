@@ -6161,6 +6161,41 @@
         }
       }
     },
+    "tools.stopwatch.csv": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turları CSV olarak indir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download laps as CSV"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runden als CSV herunterladen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dövrələri CSV kimi yüklə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تنزيل اللفات بصيغة CSV"
+          }
+        }
+      }
+    },
     "tools.countdown.title": {
       "extractionState": "manual",
       "localizations": {
@@ -7386,6 +7421,41 @@
         }
       }
     },
+    "tools.countdown.addMinute": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+1 dk"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+1 min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+1 Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+1 dəq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "+1 دقيقة"
+          }
+        }
+      }
+    },
     "tools.alarm.title": {
       "extractionState": "manual",
       "localizations": {
@@ -8292,6 +8362,41 @@
           "stringUnit": {
             "state": "translated",
             "value": "منبّه"
+          }
+        }
+      }
+    },
+    "tools.alarm.soundLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm sesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm sound"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecktonart"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəng səsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صوت المنبه"
           }
         }
       }
@@ -10077,6 +10182,251 @@
           "stringUnit": {
             "state": "translated",
             "value": "دقيقة"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.csv": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçmişi CSV olarak indir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Download history as CSV"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verlauf als CSV herunterladen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keçmişi CSV kimi yüklə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تنزيل السجل بصيغة CSV"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.streak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seri: %1$@ gün üst üste"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Streak: %1$@ days in a row"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Serie: %1$@ Tage in Folge"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seriya: %1$@ gün ardıcıl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سلسلة: %1$@ يوم متتالٍ"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.goalLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük hedef (tur)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily goal (sessions)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tagesziel (Einheiten)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gündəlik hədəf (dövrə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الهدف اليومي (جلسات)"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.goalProgress": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün %1$@/%2$@ tur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today %1$@/%2$@ sessions"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute %1$@/%2$@ Einheiten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu gün %1$@/%2$@ dövrə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اليوم %1$@/%2$@ جلسة"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.goalDone": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günlük hedefe ulaşıldı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily goal reached"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tagesziel erreicht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gündəlik hədəfə çatıldı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تحقق الهدف اليومي"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.tagLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etiket"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tag"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kategorie"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etiket"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوسم"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.byTag": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son 7 günde etiketlere göre"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By tag, last 7 days"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach Kategorie, letzte 7 Tage"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Son 7 gündə etiketlərə görə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حسب الوسم، آخر 7 أيام"
           }
         }
       }
@@ -13657,31 +14007,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "7 günlük tahmin"
+            "value": "14 günlük tahmin"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "7-day forecast"
+            "value": "14-day forecast"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "7-Tage-Vorhersage"
+            "value": "14-Tage-Vorhersage"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "7 günlük proqnoz"
+            "value": "14 günlük proqnoz"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "توقعات 7 أيام"
+            "value": "توقعات 14 يومًا"
           }
         }
       }
@@ -16167,6 +16517,986 @@
           "stringUnit": {
             "state": "translated",
             "value": "تعذّر تسجيلك. تحقّق من عنوان بريدك الإلكتروني وحاول مرة أخرى بعد قليل."
+          }
+        }
+      }
+    },
+    "prayer.kerahatHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kerahat vakitleri (yaklaşık)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disliked prayer times (approx.)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Makruh-Zeiten (ungefähr)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kərahət vaxtları (təxmini)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوقات الكراهة (تقريبية)"
+          }
+        }
+      }
+    },
+    "prayer.kerahatNames.israk": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş doğarken (işrak)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunrise (ishraq)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenaufgang (Ischraq)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş doğarkən (işraq)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند الشروق (الإشراق)"
+          }
+        }
+      }
+    },
+    "prayer.kerahatNames.istiva": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öğle öncesi (istiva)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Before noon (istiwa)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vor Mittag (Istiwa)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günorta öncəsi (istiva)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قبل الظهر (الاستواء)"
+          }
+        }
+      }
+    },
+    "prayer.kerahatNames.isfirar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Güneş batarken (isfirar)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunset (isfirar)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenuntergang (Isfirar)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Günəş batarkən (isfirar)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند الغروب (الاصفرار)"
+          }
+        }
+      }
+    },
+    "prayer.kerahatNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sürelerde nafile namaz kılınmaz. Diyanet'in yayımladığı bir dakika ölçüsü yok; takvimlerde yaygın olan yaklaşık 45 dakika kullanıldı (öğle öncesi kerahat süresi kaynaklarda 10–45 dakika arasında değişir)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voluntary prayers are not performed in these windows. The Diyanet publishes no exact minutes; the common calendar convention of about 45 minutes is used (sources give 10–45 minutes for the window before noon)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Der Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu vaxtlarda nafilə namaz qılınmır. Diyanətin açıqladığı dəqiq dəqiqə ölçüsü yoxdur; təqvimlərdə geniş yayılmış təxminən 45 dəqiqə istifadə olunub (günorta öncəsi üçün mənbələr 10–45 dəqiqə göstərir)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تُصلّى النوافل في هذه الأوقات. لا تنشر رئاسة الشؤون الدينية مدة محددة بالدقائق؛ استُخدمت المدة الشائعة في التقاويم وهي نحو 45 دقيقة (تذكر المصادر 10–45 دقيقة لما قبل الظهر)."
+          }
+        }
+      }
+    },
+    "nature.goldenAm": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabah altın saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morning golden hour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goldene Stunde morgens"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhər qızıl saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة الذهبية صباحًا"
+          }
+        }
+      }
+    },
+    "nature.goldenPm": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşam altın saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evening golden hour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goldene Stunde abends"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axşam qızıl saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة الذهبية مساءً"
+          }
+        }
+      }
+    },
+    "nature.blueAm": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabah mavi saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morning blue hour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blaue Stunde morgens"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhər mavi saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة الزرقاء صباحًا"
+          }
+        }
+      }
+    },
+    "nature.bluePm": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akşam mavi saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Evening blue hour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Blaue Stunde abends"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axşam mavi saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة الزرقاء مساءً"
+          }
+        }
+      }
+    },
+    "nature.lightNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Altın saat: Güneş ufkun 6° üstü ile 4° altı arasında; yumuşak, sıcak ışık. Mavi saat: Güneş ufkun 4° ile 6° altında; mavi alacakaranlık. Fotoğrafçılar için."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golden hour: the Sun between 6° above and 4° below the horizon, with soft, warm light. Blue hour: the Sun 4° to 6° below the horizon, a blue twilight. Handy for photographers."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goldene Stunde: Sonne zwischen 6° über und 4° unter dem Horizont, weiches warmes Licht. Blaue Stunde: Sonne 4° bis 6° unter dem Horizont, blaue Dämmerung. Praktisch für Fotografen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qızıl saat: Günəş üfüqün 6° üstü ilə 4° altı arasında; yumşaq, isti işıq. Mavi saat: Günəş üfüqün 4° ilə 6° altında; mavi alatoran. Fotoqraflar üçün."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة الذهبية: الشمس بين 6° فوق الأفق و4° تحته، بضوء دافئ ناعم. الساعة الزرقاء: الشمس بين 4° و6° تحت الأفق، شفق أزرق. مفيدة للمصورين."
+          }
+        }
+      }
+    },
+    "zakat.fitreHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fitre (sadaka-i fıtr)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fitra (zakat al-fitr)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fitra (Zakat al-Fitr)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fitrə (sədəqeyi-fitr)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زكاة الفطر"
+          }
+        }
+      }
+    },
+    "zakat.fitreText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet İşleri Başkanlığı Din İşleri Yüksek Kurulu %1$@ yılı için fitreyi kişi başı %2$@ TL olarak açıkladı (%3$@). Geçerlilik: %1$@ Ramazan ayından bir sonraki Ramazan'a kadar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turkey's Presidency of Religious Affairs (High Board of Religious Affairs) set the %1$@ fitra at %2$@ TL per person (%3$@), valid from Ramadan %1$@ until the next Ramadan."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Hohe Rat für Religionsangelegenheiten des Diyanet hat die Fitra für %1$@ auf %2$@ TL pro Person festgelegt (%3$@); gültig ab Ramadan %1$@ bis zum nächsten Ramadan."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Türkiyə Diyanət İşləri Başqanlığının Din İşləri Ali Şurası %1$@ ili üçün fitrəni adambaşına %2$@ TL açıqladı (%3$@). Etibarlıdır: %1$@ Ramazanından növbəti Ramazana qədər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حددت الهيئة العليا للشؤون الدينية في رئاسة الشؤون الدينية التركية زكاة الفطر لعام %1$@ بمبلغ %2$@ ليرة للشخص (%3$@)، وتسري من رمضان %1$@ حتى رمضان التالي."
+          }
+        }
+      }
+    },
+    "zakat.fitrePeople": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişi sayısı (bakmakla yükümlü olduklarınız dahil)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Number of people (including your dependants)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anzahl der Personen (einschließlich Unterhaltsberechtigter)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adam sayı (himayənizdəkilər daxil)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عدد الأشخاص (بمن تعولهم)"
+          }
+        }
+      }
+    },
+    "zakat.fitreTotal": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toplam fitre"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total fitra"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fitra gesamt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cəmi fitrə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إجمالي زكاة الفطر"
+          }
+        }
+      }
+    },
+    "zakat.fitreNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutar Türkiye için ve en düşük ölçüdür; imkânı olan hurma, üzüm gibi daha yüksek ölçüyle verebilir. Fitre bayram namazından önce verilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The amount is for Turkey and is the minimum; those who can may give more (by the measure of dates or raisins). Fitra is given before the Eid prayer."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Betrag gilt für die Türkei und ist das Minimum; wer kann, gibt mehr (nach dem Maß von Datteln oder Rosinen). Die Fitra wird vor dem Festgebet gegeben."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məbləğ Türkiyə üçündür və ən aşağı ölçüdür; imkanı olan xurma, kişmiş kimi daha yüksək ölçü ilə verə bilər. Fitrə bayram namazından əvvəl verilir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المبلغ خاص بتركيا وهو الحد الأدنى؛ ومن استطاع أن يعطي أكثر (بمقدار التمر أو الزبيب) فله ذلك. تُخرج قبل صلاة العيد."
+          }
+        }
+      }
+    },
+    "hijriConv.h1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri takvim çevirici"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hijri date converter"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidschri-Kalender-Umrechner"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri təqvim çeviricisi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "محول التاريخ الهجري"
+          }
+        }
+      }
+    },
+    "hijriConv.toHijri": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miladi tarihten hicri tarihe"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gregorian to Hijri"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gregorianisch → Hidschri"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miladidən hicriyə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "من الميلادي إلى الهجري"
+          }
+        }
+      }
+    },
+    "hijriConv.toGreg": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri tarihten miladi tarihe"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hijri to Gregorian"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidschri → Gregorianisch"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicridən miladiyə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "من الهجري إلى الميلادي"
+          }
+        }
+      }
+    },
+    "hijriConv.gregLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miladi tarih"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gregorian date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gregorianisches Datum"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Miladi tarix"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التاريخ الميلادي"
+          }
+        }
+      }
+    },
+    "hijriConv.yearLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri yıl"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hijri year"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidschri-Jahr"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hicri il"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السنة الهجرية"
+          }
+        }
+      }
+    },
+    "hijriConv.monthLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Month"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monat"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ay"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشهر"
+          }
+        }
+      }
+    },
+    "hijriConv.dayLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Day"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tag"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اليوم"
+          }
+        }
+      }
+    },
+    "hijriConv.dayMax": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hicri ay %1$@ gün çekiyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This Hijri month has %1$@ days."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Hidschri-Monat hat %1$@ Tage."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu hicri ay %1$@ gündür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا الشهر الهجري %1$@ يومًا."
+          }
+        }
+      }
+    },
+    "tools.pomodoro.tags.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etiketsiz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No tag"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etiketsiz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بلا وسم"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.tags.work": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Work"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arbeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İş"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عمل"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.tags.study": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ders"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Study"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lernen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dərs"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دراسة"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.tags.personal": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kişisel"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privat"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəxsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شخصي"
+          }
+        }
+      }
+    },
+    "tools.pomodoro.tags.other": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diğer"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonstiges"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Digər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أخرى"
           }
         }
       }
@@ -37902,6 +39232,1476 @@
           "stringUnit": {
             "state": "translated",
             "value": "إذا كان النسخ الاحتياطي من Google مفعّلًا في هاتفك، تدخل إعداداتك وسجلاتك (ساعات العالم والعدّ التنازلي والمنبهات وسجلات بومودورو والنوم والعبادة والصور) في النسخة الاحتياطية بحساب Google وتُستعاد عند الانتقال إلى هاتف جديد أو إعادة تثبيت التطبيق. تدير Google هذه النسخة ولا يصل إلينا شيء. إعدادات الهاتف › Google › النسخ الاحتياطي."
+          }
+        }
+      }
+    },
+    "home.item.battery": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Battery"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akku"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Batareya"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "البطارية"
+          }
+        }
+      }
+    },
+    "home.item.alarm": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıradaki alarm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next alarm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächster Wecker"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Növbəti zəngli saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المنبه التالي"
+          }
+        }
+      }
+    },
+    "home.alarmNone": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurulu alarm yok"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No alarm set"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Wecker gestellt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat qurulmayıb"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يوجد منبه"
+          }
+        }
+      }
+    },
+    "home.charging": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "şarj oluyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "charging"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "wird geladen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "şarj olunur"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قيد الشحن"
+          }
+        }
+      }
+    },
+    "look.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatin altındaki metin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text under the clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text unter der Uhr"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saatın altındakı mətn"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نص تحت الساعة"
+          }
+        }
+      }
+    },
+    "look.textPlaceholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ör. Günaydın!"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. Good morning!"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "z. B. Guten Morgen!"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "məs. Sabahınız xeyir!"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مثلًا: صباح الخير!"
+          }
+        }
+      }
+    },
+    "look.textNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ekranında ve tam ekranda saatin altında görünür; yalnız bu cihazda saklanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shown under the clock on the clock screen and in full screen; stored only on this device."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erscheint auf dem Uhrbildschirm und im Vollbild unter der Uhr; nur auf diesem Gerät gespeichert."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ekranında və tam ekranda saatın altında görünür; yalnız bu cihazda saxlanılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يظهر تحت الساعة في شاشة الساعة وفي ملء الشاشة، ويُحفظ على هذا الجهاز فقط."
+          }
+        }
+      }
+    },
+    "look.slideshow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf slaytı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photo slideshow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto-Diashow"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto slayd"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عرض شرائح الصور"
+          }
+        }
+      }
+    },
+    "look.slideAdd": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf ekle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add photos"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotos hinzufügen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto əlavə et"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إضافة صور"
+          }
+        }
+      }
+    },
+    "look.slideClear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slaytı temizle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear slideshow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diashow leeren"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slaydı təmizlə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مسح العرض"
+          }
+        }
+      }
+    },
+    "look.slideEvery": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Değişme aralığı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change every"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wechsel alle"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dəyişmə aralığı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التبديل كل"
+          }
+        }
+      }
+    },
+    "look.slideCount": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ fotoğraf"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ photos"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ Fotos"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ foto"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ صور"
+          }
+        }
+      }
+    },
+    "look.slideNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekran arka planında en çok 10 fotoğraf sırayla gösterilir; fotoğraflar yalnız bu cihazda kalır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up to 10 photos take turns as the full-screen background; the photos stay on this device."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bis zu 10 Fotos wechseln sich als Vollbild-Hintergrund ab; die Fotos bleiben auf diesem Gerät."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekran fonunda ən çox 10 foto növbə ilə göstərilir; fotolar yalnız bu cihazda qalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تتناوب حتى 10 صور خلفيةً لملء الشاشة، وتبقى الصور على هذا الجهاز."
+          }
+        }
+      }
+    },
+    "look.size": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat boyutu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clock size"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhrgröße"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ölçüsü"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حجم الساعة"
+          }
+        }
+      }
+    },
+    "look.fsNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekranda ekranın kenarında yukarı ya da aşağı kaydırarak ekranı karartabilir, iki parmakla saati büyütüp küçültebilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In full screen, swipe up or down along the edge of the screen to dim it, and pinch to resize the clock."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Vollbild am Bildschirmrand nach oben oder unten wischen, um abzudunkeln; mit zwei Fingern die Uhr vergrößern oder verkleinern."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam ekranda ekranın kənarında yuxarı və ya aşağı sürüşdürərək ekranı qaralda, iki barmaqla saatı böyüdüb kiçildə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في ملء الشاشة اسحب لأعلى أو لأسفل على حافة الشاشة لتعتيمها، وقرّب إصبعين أو باعدهما لتغيير حجم الساعة."
+          }
+        }
+      }
+    },
+    "fs.lock": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yönü kilitle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lock orientation"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausrichtung sperren"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İstiqaməti kilidlə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قفل الاتجاه"
+          }
+        }
+      }
+    },
+    "fs.unlock": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yön kilidini aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unlock orientation"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausrichtung entsperren"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İstiqamət kilidini aç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إلغاء قفل الاتجاه"
+          }
+        }
+      }
+    },
+    "fs.dim": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karartma %%1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dimmed %%1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abgedunkelt %%1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qaraltma %%1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التعتيم %%1$@"
+          }
+        }
+      }
+    },
+    "share.prayer": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vakitleri paylaş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share prayer times"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gebetszeiten teilen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaxtları paylaş"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مشاركة أوقات الصلاة"
+          }
+        }
+      }
+    },
+    "share.card": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teilen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paylaş"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مشاركة"
+          }
+        }
+      }
+    },
+    "alarm.quick": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hızlı alarm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quick alarm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schnellwecker"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tez zəngli saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "منبه سريع"
+          }
+        }
+      }
+    },
+    "alarm.quickIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ dk sonra"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In %%1$@ min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In %%1$@ Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ dəq sonra"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بعد %%1$@ دقيقة"
+          }
+        }
+      }
+    },
+    "alarm.quickSet": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm kuruldu: %%1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm set: %%1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker gestellt: %%1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat quruldu: %%1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضُبط المنبه: %%1$@"
+          }
+        }
+      }
+    },
+    "alarm.swipe": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durdurmak için kaydırın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slide to stop"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum Beenden schieben"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayandırmaq üçün sürüşdürün"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسحب للإيقاف"
+          }
+        }
+      }
+    },
+    "alarm.pre": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çalmadan önce haber ver"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notify before ringing"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vor dem Klingeln benachrichtigen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çalmazdan əvvəl xəbər ver"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التنبيه قبل الرنين"
+          }
+        }
+      }
+    },
+    "alarm.preOff": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapalı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Off"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bağlı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متوقف"
+          }
+        }
+      }
+    },
+    "alarm.preMin": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ dk önce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ min before"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ Min. vorher"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@ dəq əvvəl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قبل %%1$@ دقيقة"
+          }
+        }
+      }
+    },
+    "alarm.preTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaklaşan alarm: %%1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Upcoming alarm: %%1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anstehender Wecker: %%1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaxınlaşan zəngli saat: %%1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "منبه قادم: %%1$@"
+          }
+        }
+      }
+    },
+    "alarm.preBody": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erken uyandıysanız bu çalmayı atlayabilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up early? You can skip this one."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schon wach? Sie können diesen Wecker überspringen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tez oyandınızsa bu çalmanı keçə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استيقظت مبكرًا؟ يمكنك تخطي هذا المنبه."
+          }
+        }
+      }
+    },
+    "alarm.preSkip": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu alarmı atla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skip this alarm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diesen Wecker überspringen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu zəngli saatı keç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تخطَّ هذا المنبه"
+          }
+        }
+      }
+    },
+    "alarm.preNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sessiz bildirim; dokunup alarmı atlayabilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A silent notification; you can skip the alarm from it."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine stille Mitteilung; Sie können den Wecker darüber überspringen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səssiz bildiriş; oradan zəngli saatı keçə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إشعار صامت يمكنك منه تخطي المنبه."
+          }
+        }
+      }
+    },
+    "alarm.speak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saati sesli söylesin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speak the time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhrzeit ansagen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaxtı səsli desin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نطق الوقت"
+          }
+        }
+      }
+    },
+    "alarm.speakNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm çalarken saat telefonun konuşma motoruyla söylenir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "While ringing, the time is spoken with the phone's speech engine."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Klingeln wird die Uhrzeit mit der Sprachausgabe des Telefons angesagt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat çalarkən vaxt telefonun nitq mühərriki ilə deyilir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أثناء الرنين يُنطق الوقت بمحرك الكلام في الهاتف."
+          }
+        }
+      }
+    },
+    "alarm.speakNoteIOS": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm sesi, saati söyleyen kısa bir kayıtla değişir (kayıt telefonda üretilir)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The alarm sound becomes a short recording that speaks the time (made on the phone)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Weckton wird zu einer kurzen Aufnahme, die die Uhrzeit ansagt (auf dem Telefon erzeugt)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saatın səsi vaxtı deyən qısa bir yazı ilə əvəz olunur (telefonda yaradılır)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يصبح صوت المنبه تسجيلًا قصيرًا ينطق الوقت (يُنشأ على الهاتف)."
+          }
+        }
+      }
+    },
+    "alarm.speakText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat %%1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "It's %%1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es ist %%1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat %%1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الساعة %%1$@"
+          }
+        }
+      }
+    },
+    "csv.laps": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turları paylaş (CSV)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share laps (CSV)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runden teilen (CSV)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dövrələri paylaş (CSV)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مشاركة اللفات (CSV)"
+          }
+        }
+      }
+    },
+    "csv.pomo": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geçmişi paylaş (CSV)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share history (CSV)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verlauf teilen (CSV)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarixçəni paylaş (CSV)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مشاركة السجل (CSV)"
+          }
+        }
+      }
+    },
+    "world.dstForward": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: saatler %%2$@ ileri alınıyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: clocks go forward %%2$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: Uhren werden %%2$@ vorgestellt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: saatlar %%2$@ irəli çəkilir"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: تُقدَّم الساعة %%2$@"
+          }
+        }
+      }
+    },
+    "world.dstBack": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: saatler %%2$@ geri alınıyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: clocks go back %%2$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: Uhren werden %%2$@ zurückgestellt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: saatlar %%2$@ geri çəkilir"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: تُؤخَّر الساعة %%2$@"
+          }
+        }
+      }
+    },
+    "world.dstTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: saat değişiyor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: clocks change"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: Zeitumstellung"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: saat dəyişir"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%%1$@: تغيير الساعة"
+          }
+        }
+      }
+    },
+    "hijriConv.outsideApp": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet tablosunun dışında; Ümmü'l-Kurâ takvimiyle hesaplandı, bir gün fark olabilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Outside the Diyanet table; calculated with the Umm al-Qura calendar, may differ by a day."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Außerhalb der Diyanet-Tabelle; mit dem Umm-al-Qura-Kalender berechnet, Abweichung um einen Tag möglich."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanət cədvəlindən kənarda; Ümmül-Qura təqvimi ilə hesablandı, bir gün fərq ola bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خارج جدول ديانت؛ حُسب بتقويم أم القرى وقد يختلف بيوم."
+          }
+        }
+      }
+    },
+    "common.secondsShort": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sn"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "s"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sek."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "san"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ث"
           }
         }
       }

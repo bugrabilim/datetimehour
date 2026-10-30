@@ -25,6 +25,11 @@
     <string name="prayer_imNote">Times are calculated; for official times follow the Presidency of Religious Affairs (Diyanet).</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">Ramadan %2$s timetable for %1$s</string>
+    <string name="prayer_kerahatHeading">Disliked prayer times (approx.)</string>
+    <string name="prayer_kerahatNames_israk">Sunrise (ishraq)</string>
+    <string name="prayer_kerahatNames_istiva">Before noon (istiwa)</string>
+    <string name="prayer_kerahatNames_isfirar">Sunset (isfirar)</string>
+    <string name="prayer_kerahatNote">Voluntary prayers are not performed in these windows. The Diyanet publishes no exact minutes; the common calendar convention of about 45 minutes is used (sources give 10–45 minutes for the window before noon).</string>
     <string name="place_myLocation">My location</string>
     <string name="widget_province_auto">Automatic (my location)</string>
     <string name="widget_next_name">Next prayer</string>

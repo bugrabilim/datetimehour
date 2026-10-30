@@ -1,11 +1,12 @@
 import SwiftUI
+import UIKit
 import SaatCore
 import WeatherKit
 
 /// Saat ekranında saatin altında görünebilecek alanlar. Seçim ve sıra "homeItems" anahtarında:
 /// bütün alanlar sırayla, kapalı olanın başında "-" ("date,week,next,-prayers,…").
 enum HomeItem: String, CaseIterable, Identifiable {
-    case date, week, hijri, next, prayers, upcoming, world, weather, sun, globe
+    case date, week, hijri, next, prayers, upcoming, world, weather, sun, globe, battery, alarm
 
     var id: String { rawValue }
     var title: String { L("home.item.\(rawValue)") }
@@ -22,11 +23,13 @@ enum HomeItem: String, CaseIterable, Identifiable {
         case .weather: return "cloud.sun"
         case .sun: return "sunrise"
         case .globe: return "globe.europe.africa"
+        case .battery: return "battery.75percent"
+        case .alarm: return "alarm"
         }
     }
 
     /// Dönen dünya varsayılan olarak açık (18 Ekim 2026, sahibin isteği); "Düzenle" ile kapatılabilir
-    static let defaultRaw = "-date,-week,-hijri,-next,-prayers,-upcoming,-world,-weather,-sun,-globe" // varsayılan: yalnız saat (30 Ekim 2026)
+    static let defaultRaw = "-date,-week,-hijri,-next,-prayers,-upcoming,-world,-weather,-sun,-globe,-battery,-alarm" // varsayılan: yalnız saat (30 Ekim 2026)
 }
 
 struct HomeLayout {
@@ -159,7 +162,54 @@ struct HomeItemView: View {
                 .overlay(alignment: .topLeading) {
                     AppleWeatherMark(compact: true, onDark: true).padding(10) // WeatherKit işareti, tıklanabilir
                 }
+        case .battery:
+            BatteryLine()
+        case .alarm:
+            NextAlarmCard(now: now)
         }
+    }
+}
+
+/// Pil düzeyi (rakip analizi #23); simülatörde ve bilinmiyorsa görünmez
+private struct BatteryLine: View {
+    var body: some View {
+        let dev = UIDevice.current
+        let _ = { dev.isBatteryMonitoringEnabled = true }()
+        if dev.batteryLevel >= 0 {
+            let charging = dev.batteryState == .charging || dev.batteryState == .full
+            let pct = Int((dev.batteryLevel * 100).rounded())
+            Label(Fmt.percent(pct) + (charging ? " · " + L("home.charging") : ""),
+                  systemImage: charging ? "battery.100percent.bolt" : pct <= 20 ? "battery.25percent" : "battery.75percent")
+                .font(.subheadline.monospacedDigit())
+                .foregroundStyle(pct <= 20 && !charging ? Theme.accent : Theme.muted)
+                .environment(\.layoutDirection, .leftToRight)
+        }
+    }
+}
+
+/// Uygulamada kurulu sıradaki alarm (rakip analizi #23)
+private struct NextAlarmCard: View {
+    let now: Date
+
+    var body: some View {
+        let next = AlarmItem.load().filter(\.enabled).compactMap { a in a.next(after: now).map { (a, $0) } }.min { $0.1 < $1.1 }
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text(L("home.item.alarm")).font(.caption.weight(.semibold)).foregroundStyle(Theme.accent)
+                if let n = next {
+                    Text(Fmt.time(n.1) + (n.0.label.isEmpty ? "" : " · " + n.0.label)).font(.headline).foregroundStyle(Theme.text)
+                } else {
+                    Text(L("home.alarmNone")).font(.subheadline).foregroundStyle(Theme.muted)
+                }
+            }
+            Spacer()
+            if let n = next {
+                Text(Fmt.hm(seconds: Int(n.1.timeIntervalSince(now))))
+                    .font(.subheadline.weight(.semibold).monospacedDigit())
+                    .foregroundStyle(Theme.accent)
+            }
+        }
+        .card()
     }
 }
 

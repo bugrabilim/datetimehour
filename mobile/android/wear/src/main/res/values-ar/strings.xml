@@ -25,6 +25,11 @@
     <string name="prayer_imNote">الأوقات محسوبة؛ والمعتمد هو ما تنشره رئاسة الشؤون الدينية (ديانت).</string>
     <string name="prayer_imFile">imsakiyah</string>
     <string name="prayer_imAlt">إمساكية رمضان %2$s لمدينة %1$s</string>
+    <string name="prayer_kerahatHeading">أوقات الكراهة (تقريبية)</string>
+    <string name="prayer_kerahatNames_israk">عند الشروق (الإشراق)</string>
+    <string name="prayer_kerahatNames_istiva">قبل الظهر (الاستواء)</string>
+    <string name="prayer_kerahatNames_isfirar">عند الغروب (الاصفرار)</string>
+    <string name="prayer_kerahatNote">لا تُصلّى النوافل في هذه الأوقات. لا تنشر رئاسة الشؤون الدينية مدة محددة بالدقائق؛ استُخدمت المدة الشائعة في التقاويم وهي نحو 45 دقيقة (تذكر المصادر 10–45 دقيقة لما قبل الظهر).</string>
     <string name="place_myLocation">موقعي</string>
     <string name="widget_province_auto">تلقائي (موقعي)</string>
     <string name="widget_next_name">الصلاة التالية</string>

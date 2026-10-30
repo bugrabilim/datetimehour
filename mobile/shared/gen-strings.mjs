@@ -54,6 +54,13 @@ const SITE_PATHS = [
   "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.pressure",
   "weather.codes.*", "weather.attribution", "weather.sunrise", "weather.sunset",
   "stage.models.*", "stage.prev", "stage.next", "stage.dots", "list.*",
+  // 9. tur (30 Ekim 2026): kerahat, altın/mavi saat, fitre, hicri çevirici, pomodoro etiketleri
+  "prayer.kerahatHeading", "prayer.kerahatNames.*", "prayer.kerahatNote",
+  "nature.goldenAm", "nature.goldenPm", "nature.blueAm", "nature.bluePm", "nature.lightNote",
+  "zakat.fitreHeading", "zakat.fitreText", "zakat.fitrePeople", "zakat.fitreTotal", "zakat.fitreNote",
+  "hijriConv.h1", "hijriConv.toHijri", "hijriConv.toGreg", "hijriConv.gregLabel", "hijriConv.yearLabel", "hijriConv.monthLabel",
+  "hijriConv.dayLabel", "hijriConv.dayMax",
+  "tools.pomodoro.tags.*",
 ];
 const at = (obj, parts) => parts.reduce((o, k) => (o == null ? undefined : o[k]), obj);
 for (const spec of SITE_PATHS) {
@@ -169,6 +176,11 @@ const calendarJson = JSON.stringify({ years, ramadans: HOL.ramadans }) + "\n";
 /* Hicri takvim: Diyanet'e hizalı ay başları (lib/hijri.mjs): [[ay başı, hicri yıl, ay], …]; son satır tablonun sonu */
 const hijriJson = JSON.stringify(hijriTable(HOL, JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/hijri.json"), "utf8")))) + "\n";
 
+/* Fitre (src/data/fitre.json): en son açıklanan yıl, tutar (TL) ve açıklama tarihi */
+const fitreSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/fitre.json"), "utf8")).years;
+const fitreYear = Object.keys(fitreSrc).sort().pop();
+const fitreJson = JSON.stringify({ year: +fitreYear, amount: fitreSrc[fitreYear].amount, date: fitreSrc[fitreYear].date }) + "\n";
+
 /* Dünya saatleri için şehirler: ad ve ülke beş dilde, IANA saat dilimi, koordinat */
 const cities = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/cities.json"), "utf8")).map((c) => ({
   key: c.key, tz: c.tz, lat: c.lat, lon: c.lon,
@@ -198,6 +210,7 @@ const files = {
   "mobile/ios/App/Resources/eclipses.json": eclipsesJson,
   "mobile/ios/App/Resources/districts.json": districtsJson,
   "mobile/ios/App/Resources/hijri.json": hijriJson,
+  "mobile/ios/App/Resources/fitre.json": fitreJson,
   "mobile/android/app/src/main/assets/provinces.json": provincesJson,
   "mobile/android/app/src/main/assets/calendar.json": calendarJson,
   "mobile/android/app/src/main/assets/cities.json": citiesJson,
@@ -205,6 +218,7 @@ const files = {
   "mobile/android/app/src/main/assets/eclipses.json": eclipsesJson,
   "mobile/android/app/src/main/assets/districts.json": districtsJson,
   "mobile/android/app/src/main/assets/hijri.json": hijriJson,
+  "mobile/android/app/src/main/assets/fitre.json": fitreJson,
   "mobile/android/app/src/main/res/xml/locales_config.xml": localesConfig,
   ...Object.fromEntries(LANGS.map((l) => [`mobile/android/app/src/main/res/${ANDROID_DIRS[l]}/strings.xml`, androidXml(l)])),
   // Wear OS saati (Wear modülü): il listesi, hicri ay başları ve saat ekranlarının metinleri

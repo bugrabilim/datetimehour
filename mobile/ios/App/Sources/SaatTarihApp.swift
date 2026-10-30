@@ -134,6 +134,11 @@ final class Router {
             tab = .world
         case .sun:
             tab = .seasons
+        case .alarm:
+            tab = .tools
+            toolsPath = [.alarm]
+        case .battery:
+            break
         }
     }
 }

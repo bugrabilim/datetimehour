@@ -134,6 +134,42 @@ struct PrayerPanel: View {
                     .background(isNext ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 10))
                 }
             }
+            KerahatBox(entries: schedule.entries(on: now), place: place)
+        }
+    }
+}
+
+/// Kerahat vakitleri (rakip analizi #12; sitedeki namaz sayfasıyla aynı): güneş vaktinden sonra, öğleden ve akşamdan önce
+/// yaklaşık 45 dk (`PrayerTimes.kerahatMinutes`; Diyanet'in yayımladığı bir dakika ölçüsü yok, notta yazar).
+struct KerahatBox: View {
+    let entries: [PrayerSchedule.Entry]
+    let place: AppPlace
+    @State private var open = false
+
+    var body: some View {
+        let at = { (p: Prayer) in entries.first(where: { $0.prayer == p })?.at }
+        if let sr = at(.sunrise), let dh = at(.dhuhr), let mg = at(.maghrib) {
+            let k = TimeInterval(PrayerTimes.kerahatMinutes * 60)
+            let rows: [(String, Date, Date)] = [("israk", sr, sr + k), ("istiva", dh - k, dh), ("isfirar", mg - k, mg)]
+            DisclosureGroup(isExpanded: $open) {
+                VStack(alignment: .leading, spacing: 8) {
+                    ForEach(rows, id: \.0) { row in
+                        HStack {
+                            Text(L("prayer.kerahatNames." + row.0))
+                            Spacer()
+                            Text(place.hm(row.1) + "–" + place.hm(row.2))
+                                .monospacedDigit()
+                                .environment(\.layoutDirection, .leftToRight)
+                        }
+                    }
+                    Text(L("prayer.kerahatNote")).font(.footnote).foregroundStyle(Theme.muted)
+                }
+                .padding(.top, 8)
+            } label: {
+                Text(L("prayer.kerahatHeading")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.text)
+            }
+            .tint(Theme.accent)
+            .card()
         }
     }
 }

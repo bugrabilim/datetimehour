@@ -6,7 +6,13 @@ import android.app.Activity
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.calculateZoom
 import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.detectVerticalDragGestures
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -60,7 +66,11 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.rotate
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.material.icons.filled.ScreenLockRotation
+import androidx.compose.material.icons.filled.ScreenRotation
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
@@ -114,6 +124,9 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                     }
                     StageControls(pager)
                 }
+                // Saatin altındaki kişisel metin (rakip analizi #25)
+                if (FsLook.text.isNotEmpty()) Text(FsLook.text, color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                 for (item in items) {
                     HomeItemView(item, now, place, globeHeight.value) { onOpen(it.open()) }
                 }
@@ -316,7 +329,15 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
         else -> null
     })
     val bg = if (night || sunrise > 0) FullscreenBackground.PLAIN else FullscreenBackground.current
-    val photo = if (bg == FullscreenBackground.PHOTO) FullscreenPhoto.image(LocalContext.current) else null
+    // Fotoğraf: ana fotoğraf ve slaytlar sırayla (rakip analizi #24)
+    val photo = if (bg == FullscreenBackground.PHOTO) FsLook.image(LocalContext.current, now.toEpochMilli()) else null
+    // Yön kilidi (rakip analizi #22): açıksa tam ekran o anki yöne kilitlenir; çıkınca bırakılır
+    val activity = LocalContext.current as? Activity
+    DisposableEffect(FsLook.lock) {
+        if (FsLook.lock) activity?.requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LOCKED
+        onDispose { activity?.requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED }
+    }
+    var dimming by remember { mutableStateOf(false) }
     val colors = when {
         sunrise > 0.6 -> AccentPalette.find(Prefs.accent).colors(false)
         night || sunrise > 0 || photo != null || bg.animated -> AccentPalette.find(Prefs.accent).colors(true)
@@ -326,7 +347,21 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     CompositionLocalProvider(LocalColors provides colors) {
     BoxWithConstraints(
         Modifier.fillMaxSize().nightTint(night).background(if (sunrise > 0) sunriseColor else if (night) Color.Black else Theme.c.bg)
-            .pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) },
+            .pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) }
+            // İki parmakla saat boyutu (çocuklardan önce yakalanır; tek parmak kaydırma ve sayfalama bozulmaz)
+            .pointerInput(Unit) {
+                awaitEachGesture {
+                    awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
+                    do {
+                        val event = awaitPointerEvent(PointerEventPass.Initial)
+                        if (event.changes.count { it.pressed } >= 2) {
+                            val zoom = event.calculateZoom()
+                            if (zoom != 1f) FsLook.saveScale(FsLook.scale * zoom)
+                            event.changes.forEach { it.consume() }
+                        }
+                    } while (event.changes.any { it.pressed })
+                }
+            },
     ) {
         if (photo != null) PhotoBackground(photo, Modifier.fillMaxSize())
         else if (bg.animated) AnimatedBackground(bg, Modifier.fillMaxSize())
@@ -352,8 +387,10 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
                     else -> stageHeight(viewport * 1.08f)
                 }
                 HorizontalPager(pager, Modifier.fillMaxWidth().height(stage)) { page ->
-                    ClockModelPage(page, now, place, Modifier.padding(horizontal = 8.dp))
+                    ClockModelPage(page, now, place, Modifier.padding(horizontal = 8.dp).graphicsLayer(scaleX = FsLook.scale, scaleY = FsLook.scale))
                 }
+                if (FsLook.text.isNotEmpty()) Text(FsLook.text, color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.SemiBold,
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                 for (item in items) {
                     HomeItemView(item, now, place, globeHeight.value) {
                         onExit()
@@ -381,6 +418,11 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
                                 onClick = { open = false; setSleep(m) })
                         }
                     }
+                    // Yön kilidi: şu anki yöne kilitler
+                    IconButton(onClick = { FsLook.saveLock(!FsLook.lock) }) {
+                        Icon(if (FsLook.lock) Icons.Filled.ScreenLockRotation else Icons.Filled.ScreenRotation,
+                            L(if (FsLook.lock) "fs.unlock" else "fs.lock"), tint = if (FsLook.lock) Theme.c.accent else Theme.c.muted, modifier = Modifier.size(20.dp))
+                    }
                     TextButton(onClick = onExit) {
                         Icon(Icons.Filled.FullscreenExit, null, tint = Theme.c.muted, modifier = Modifier.size(18.dp))
                         Text(" " + L("client.exitFullscreen"), color = Theme.c.muted, fontSize = 13.sp)
@@ -390,6 +432,19 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
             // Uyku zamanlayıcısı doldu: siyah ekran; dokununca saat geri gelir
             if (asleep) Box(Modifier.fillMaxSize().background(Color.Black).clickable { setSleep(0) })
         }
+        // Karartma (rakip analizi #22): ekranın kenarında yukarı-aşağı kaydırma
+        Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = FsLook.dim * 0.85f)))
+        Box(
+            Modifier.align(Alignment.CenterStart).width(44.dp).fillMaxHeight()
+                .pointerInput(Unit) {
+                    detectVerticalDragGestures(onDragStart = { dimming = true }, onDragEnd = { dimming = false }, onDragCancel = { dimming = false }) { _, dy ->
+                        FsLook.saveDim(FsLook.dim + dy / 1200f)
+                    }
+                },
+        )
+        if (dimming) Text(T("fs.dim", Fmt.percent(Math.round(FsLook.dim * 100))), Modifier.align(Alignment.Center)
+            .background(Color.Black.copy(alpha = 0.6f), androidx.compose.foundation.shape.RoundedCornerShape(50)).padding(horizontal = 14.dp, vertical = 8.dp),
+            color = Color.White, fontSize = 17.sp, style = Tnum)
     }
     }
 }

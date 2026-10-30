@@ -44,6 +44,48 @@ enum Hijri {
         return nil
     }
 
+    /// Jülyen gün numarasından Gregoryen (yıl, ay, gün)
+    static func fromJdn(_ n: Int) -> (Int, Int, Int) {
+        let a = n + 32044, b = (4 * a + 3) / 146097, c = a - 146097 * b / 4
+        let d = (4 * c + 3) / 1461, e = c - 1461 * d / 4, m = (5 * e + 2) / 153
+        return (100 * b + d - 4800 + m / 10, m + 3 - 12 * (m / 10), e - (153 * m + 2) / 5 + 1)
+    }
+
+    private static let utc = TimeZone(identifier: "UTC")!
+    private static var ummAlQura: Calendar { var c = Calendar(identifier: .islamicUmmAlQura); c.timeZone = utc; return c }
+    private static var gregorian: Calendar { var c = Calendar(identifier: .gregorian); c.timeZone = utc; return c }
+
+    /// Hicri çevirici (rakip analizi #13): tabloda Diyanet, dışında Umm al-Qura (`outside`)
+    static func convert(year: Int, month: Int, day: Int) -> (date: HijriDate, outside: Bool)? {
+        if let h = date(year: year, month: month, day: day) { return (h, false) }
+        guard let g = gregorian.date(from: DateComponents(year: year, month: month, day: day, hour: 12)) else { return nil }
+        let c = ummAlQura.dateComponents([.year, .month, .day], from: g)
+        guard let y = c.year, let m = c.month, let d = c.day else { return nil }
+        return (HijriDate(year: y, month: m, day: d), true)
+    }
+
+    enum Reverse { case date(year: Int, month: Int, day: Int, outside: Bool), tooLong(Int), none }
+
+    /// Hicri (yıl, ay, gün) → Gregoryen; ay o kadar gün çekmiyorsa ayın gün sayısı
+    static func gregorian(year: Int, month: Int, day: Int) -> Reverse {
+        if table.count >= 2 {
+            for i in 0..<(table.count - 1) where table[i].year == year && table[i].month == month {
+                let len = table[i + 1].start - table[i].start
+                if day > len { return .tooLong(len) }
+                let g = fromJdn(table[i].start + day - 1)
+                return .date(year: g.0, month: g.1, day: g.2, outside: false)
+            }
+        }
+        let uq = ummAlQura
+        guard let first = uq.date(from: DateComponents(year: year, month: month, day: 1, hour: 12)) else { return .none }
+        let len = uq.range(of: .day, in: .month, for: first)?.count ?? 30
+        if day > len { return .tooLong(len) }
+        let at = first.addingTimeInterval(Double(day - 1) * 86400)
+        let c = gregorian.dateComponents([.year, .month, .day], from: at)
+        guard let y = c.year, let m = c.month, let d = c.day else { return .none }
+        return .date(year: y, month: m, day: d, outside: true)
+    }
+
     /// Cihazın saat dilimindeki takvim günü için hicri tarih
     static func date(_ d: Date, timeZone: TimeZone = .current) -> HijriDate? {
         var cal = Calendar(identifier: .gregorian)

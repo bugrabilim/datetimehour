@@ -72,6 +72,9 @@ enum Fmt {
 
     static func day(_ d: CalendarDay) -> String { longDate(d.noon(in: .current)) }
 
+    /// Yüzde: Türkçe ve Azericede "%40", diğerlerinde "40%"
+    static func percent(_ n: Int) -> String { ["tr", "az"].contains(AppLocale.code) ? "%\(n)" : "\(n)%" }
+
     /// Süre: "2 sa 30 dk"
     static func hm(seconds: Int) -> String {
         let h = abs(seconds) / 3600, m = (abs(seconds) % 3600) / 60

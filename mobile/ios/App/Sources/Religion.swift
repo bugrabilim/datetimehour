@@ -691,7 +691,21 @@ enum Zakat {
     }
 }
 
+/// Fitre tutarı (gen-strings, src/data/fitre.json): en son açıklanan yıl
+enum Fitre {
+    static let info: (year: Int, amount: Int, date: CalendarDay)? = {
+        guard let url = Bundle.main.url(forResource: "fitre", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let o = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let y = o["year"] as? Int, let a = o["amount"] as? Int, let d = o["date"] as? String else { return nil }
+        let p = d.split(separator: "-").compactMap { Int($0) }
+        guard p.count == 3 else { return nil }
+        return (y, a, CalendarDay(p[0], p[1], p[2]))
+    }()
+}
+
 struct ZakatView: View {
+    @State private var fitrePeople = 1
     @State private var texts: [String: String] = Zakat.load().mapValues { v in
         v == v.rounded() ? String(Int64(v)) : String(v)
     }
@@ -727,6 +741,20 @@ struct ZakatView: View {
                 }
             } footer: {
                 Text(L("zakat.note"))
+            }
+            // Fitre (rakip analizi #14): Diyanet'in açıkladığı kişi başı tutar (fitre.json, sitedeki src/data/fitre.json)
+            if let f = Fitre.info {
+                Section {
+                    Text(T("zakat.fitreText", f.year, f.amount, Fmt.day(f.date))).font(.subheadline)
+                    Stepper("\(L("zakat.fitrePeople")): \(fitrePeople)", value: $fitrePeople, in: 1...99)
+                    LabeledContent(L("zakat.fitreTotal")) {
+                        Text(Zakat.format(Double(f.amount * fitrePeople)) + " TL").monospacedDigit().fontWeight(.bold).foregroundStyle(Theme.accent)
+                    }
+                } header: {
+                    Text(L("zakat.fitreHeading"))
+                } footer: {
+                    Text(L("zakat.fitreNote"))
+                }
             }
         }
         .themedBackground()

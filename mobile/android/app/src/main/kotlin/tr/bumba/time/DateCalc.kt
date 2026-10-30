@@ -127,6 +127,11 @@ fun DateCalcScreen() {
     var amount by rememberSaveable { mutableStateOf("30") }
     var unit by rememberSaveable { mutableStateOf("days") }
     var birth by rememberSaveable { mutableStateOf(today.minusYears(30).toString()) }
+    var hijriFrom by rememberSaveable { mutableStateOf(today.toString()) }
+    val todayH = Hijri.date(today)
+    var hY by rememberSaveable { mutableStateOf(todayH?.year ?: 1448) }
+    var hM by rememberSaveable { mutableStateOf(todayH?.month ?: 1) }
+    var hD by rememberSaveable { mutableStateOf(todayH?.day ?: 1) }
     var picking by remember { mutableStateOf<String?>(null) }
     // Rozet: kullanıcı bir hesap girdisini değiştirince (açılıştaki ilk değerler sayılmaz)
     val firstInputs = remember { listOf(start, finish, base, amount, unit, birth) }
@@ -151,6 +156,35 @@ fun DateCalcScreen() {
             Text(T("datecalc.diffYmd", r.years, r.months, r.days), color = Theme.c.text)
             Text(T("datecalc.diffWork", workText(DateCalc.workdays(a, b))), color = Theme.c.text)
             Text(L("datecalc.diffNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        // Hicri–miladi çevirici (rakip analizi #13): Diyanet tablosu, dışında Umm al-Qura
+        AppCard {
+            SectionTitle(L("hijriConv.h1"))
+            DateRow(L("hijriConv.gregLabel"), LocalDate.parse(hijriFrom)) { picking = "hijri" }
+            Hijri.convert(LocalDate.parse(hijriFrom))?.let { (h, outside) ->
+                Text(h.text, color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
+                if (outside) Text(L("hijriConv.outsideApp"), color = Theme.c.muted, fontSize = 12.sp)
+            }
+            HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
+            StepRow(L("hijriConv.yearLabel"), hY, 1300..1600) { hY = it }
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (m in 1..12) {
+                    val on = m == hM
+                    Box(
+                        Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, RoundedCornerShape(50))
+                            .clickable { hM = m }.padding(horizontal = 12.dp, vertical = 7.dp),
+                    ) { Text(L("hijri.month.$m"), color = if (on) Theme.c.bg else Theme.c.text, fontSize = 14.sp) }
+                }
+            }
+            StepRow(L("hijriConv.dayLabel"), hD, 1..30) { hD = it }
+            when (val r = Hijri.gregorian(hY, hM, hD)) {
+                is Hijri.Reverse.Date -> {
+                    Text(Fmt.longDate(r.date), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+                    if (r.outside) Text(L("hijriConv.outsideApp"), color = Theme.c.muted, fontSize = 12.sp)
+                }
+                is Hijri.Reverse.TooLong -> Text(T("hijriConv.dayMax", r.days), color = Theme.c.muted)
+                Hijri.Reverse.None -> Text("–", color = Theme.c.muted)
+            }
         }
         AppCard {
             SectionTitle(L("datecalc.addHeading"))
@@ -210,7 +244,7 @@ fun DateCalcScreen() {
     }
 
     picking?.let { which ->
-        val current = LocalDate.parse(when (which) { "start" -> start; "finish" -> finish; "base" -> base; else -> birth })
+        val current = LocalDate.parse(when (which) { "start" -> start; "finish" -> finish; "base" -> base; "hijri" -> hijriFrom; else -> birth })
         val state = rememberDatePickerState(initialSelectedDateMillis = current.atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli())
         DatePickerDialog(
             onDismissRequest = { picking = null },
@@ -219,12 +253,23 @@ fun DateCalcScreen() {
                     state.selectedDateMillis?.let {
                         val d = Instant.ofEpochMilli(it).atZone(ZoneOffset.UTC).toLocalDate()
                         val v = (if (which == "birth" && d.isAfter(today)) today else d).toString()
-                        when (which) { "start" -> start = v; "finish" -> finish = v; "base" -> base = v; else -> birth = v }
+                        when (which) { "start" -> start = v; "finish" -> finish = v; "base" -> base = v; "hijri" -> hijriFrom = d.toString(); else -> birth = v }
                     }
                     picking = null
                 }) { Text(L("common.done")) }
             },
         ) { DatePicker(state) }
+    }
+}
+
+/** − değer + satırı */
+@Composable
+private fun StepRow(title: String, value: Int, range: IntRange, onChange: (Int) -> Unit) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.weight(1f), color = Theme.c.text)
+        IconButton(onClick = { onChange((value - 1).coerceIn(range)) }) { Icon(Icons.Filled.Remove, null, tint = Theme.c.accent) }
+        Text(value.toString(), color = Theme.c.text, fontSize = 17.sp, style = Tnum)
+        IconButton(onClick = { onChange((value + 1).coerceIn(range)) }) { Icon(Icons.Filled.Add, null, tint = Theme.c.accent) }
     }
 }
 

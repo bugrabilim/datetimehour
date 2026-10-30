@@ -57,6 +57,9 @@ object Fmt {
     }
 
     /** "+3 sa" gibi fark */
+    /** Yüzde: Türkçe ve Azericede "%40", diğerlerinde "40%" */
+    fun percent(n: Int): String = if (Strings.lang == "tr" || Strings.lang == "az") "%$n" else "$n%"
+
     fun hm(seconds: Int): String {
         val m = kotlin.math.abs(seconds) / 60
         return if (m % 60 == 0) "${m / 60} ${L("client.hourShort")}"

@@ -198,6 +198,7 @@ struct SeasonsView: View {
                     }
                 }
                 sunAndMoon(place: place, now: now)
+                lightHours(place: place, now: now)
                 startsTable(year: year, tz: tr)
             }
             .padding(16)
@@ -350,6 +351,33 @@ struct SeasonsView: View {
     }
 
     /// Güneşin doğuşu, batışı ve tepe noktası (vakit düzeltmeleri olmadan, ufuk 0,833°)
+    /// Altın ve mavi saat (rakip analizi #15; sitedeki Mevsimler ile aynı: Güneş +6°/−4°/−6°)
+    private func lightHours(place: AppPlace, now: Date) -> some View {
+        let d = CalendarDay(now, timeZone: place.zone)
+        let noon = d.noon(in: place.zone), midnight = noon.addingTimeInterval(-12 * 3600)
+        let off = Double(place.zone.secondsFromGMT(for: noon)) / 3600
+        let l = PrayerTimes.lightHours(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon, utcOffset: off)
+        func span(_ r: (Double?, Double?)) -> String {
+            guard let a = r.0, let b = r.1 else { return "–" }
+            return place.hm(midnight.addingTimeInterval(a * 3600)) + "–" + place.hm(midnight.addingTimeInterval(b * 3600))
+        }
+        let rows: [(String, String, String)] = [("nature.blueAm", "🔵", span(l.blueAm)), ("nature.goldenAm", "🟠", span(l.goldenAm)),
+                                                ("nature.goldenPm", "🟠", span(l.goldenPm)), ("nature.bluePm", "🔵", span(l.bluePm))]
+        return VStack(alignment: .leading, spacing: 8) {
+            ForEach(rows, id: \.0) { row in
+                HStack {
+                    Text(row.1 + " " + L(row.0))
+                    Spacer()
+                    Text(row.2).monospacedDigit().environment(\.layoutDirection, .leftToRight)
+                }
+            }
+            Text(L("nature.lightNote")).font(.caption).foregroundStyle(Theme.muted)
+        }
+        .foregroundStyle(Theme.text)
+        .padding(14)
+        .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+    }
+
     static func sun(place: AppPlace, now: Date) -> (rise: Date, set: Date, noon: Date)? {
         var p = PrayerTimes.Parameters()
         p.adjustments.sunrise = 0

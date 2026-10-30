@@ -588,6 +588,10 @@ struct DateCalcView: View {
     @State private var amount = 30
     @State private var unit = "days"
     @State private var birth = Calendar.current.date(byAdding: .year, value: -30, to: Date()) ?? Date()
+    @State private var hijriFrom = Date()
+    @State private var hYear = Hijri.date(Date())?.year ?? 1448
+    @State private var hMonth = Hijri.date(Date())?.month ?? 1
+    @State private var hDay = Hijri.date(Date())?.day ?? 1
 
     private let off = CalendarData.shared.offDays
 
@@ -606,6 +610,29 @@ struct DateCalcView: View {
                 Text(T("datecalc.diffYmd", r.years, r.months, r.days))
                 Text(T("datecalc.diffWork", workText(DateCalc.workdays(from: a, to: b, offDays: off))))
                 Text(L("datecalc.diffNote")).font(.footnote).foregroundStyle(Theme.muted)
+            }
+            // Hicri–miladi çevirici (rakip analizi #13): Diyanet tablosu, dışında Umm al-Qura
+            Section(L("hijriConv.h1")) {
+                DatePicker(L("hijriConv.gregLabel"), selection: $hijriFrom, displayedComponents: .date)
+                let c = Calendar.current.dateComponents([.year, .month, .day], from: hijriFrom)
+                if let r = Hijri.convert(year: c.year ?? 2026, month: c.month ?? 1, day: c.day ?? 1) {
+                    Text(r.date.text).font(.headline)
+                    if r.outside { Text(L("hijriConv.outsideApp")).font(.footnote).foregroundStyle(Theme.muted) }
+                }
+                Stepper("\(L("hijriConv.yearLabel")): \(hYear)", value: $hYear, in: 1300...1600)
+                Picker(L("hijriConv.monthLabel"), selection: $hMonth) {
+                    ForEach(1...12, id: \.self) { Text(L("hijri.month.\($0)")).tag($0) }
+                }
+                Stepper("\(L("hijriConv.dayLabel")): \(hDay)", value: $hDay, in: 1...30)
+                switch Hijri.gregorian(year: hYear, month: hMonth, day: hDay) {
+                case let .date(y, m, d, outside):
+                    Text(Fmt.longDate(CalendarDay(y, m, d).noon(in: .current))).font(.headline)
+                    if outside { Text(L("hijriConv.outsideApp")).font(.footnote).foregroundStyle(Theme.muted) }
+                case let .tooLong(n):
+                    Text(T("hijriConv.dayMax", n)).foregroundStyle(Theme.muted)
+                case .none:
+                    Text("–")
+                }
             }
             Section(L("datecalc.addHeading")) {
                 DatePicker(L("datecalc.startLabel"), selection: $base, displayedComponents: .date)

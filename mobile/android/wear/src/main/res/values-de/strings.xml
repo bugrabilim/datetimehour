@@ -25,6 +25,11 @@
     <string name="prayer_imNote">Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für religiöse Angelegenheiten (Diyanet).</string>
     <string name="prayer_imFile">ramadan-imsakiye</string>
     <string name="prayer_imAlt">Ramadan-Zeitplan %2$s für %1$s</string>
+    <string name="prayer_kerahatHeading">Makruh-Zeiten (ungefähr)</string>
+    <string name="prayer_kerahatNames_israk">Sonnenaufgang (Ischraq)</string>
+    <string name="prayer_kerahatNames_istiva">Vor Mittag (Istiwa)</string>
+    <string name="prayer_kerahatNames_isfirar">Sonnenuntergang (Isfirar)</string>
+    <string name="prayer_kerahatNote">In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Der Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten).</string>
     <string name="place_myLocation">Mein Standort</string>
     <string name="widget_province_auto">Automatisch (mein Standort)</string>
     <string name="widget_next_name">Nächstes Gebet</string>

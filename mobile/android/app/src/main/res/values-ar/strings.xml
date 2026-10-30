@@ -177,6 +177,7 @@
     <string name="tools_stopwatch_lapsCaption">أوقات اللفات</string>
     <string name="tools_stopwatch_lapAdded">أُضيفت اللفة %1$s: %2$s</string>
     <string name="tools_stopwatch_panel">ساعة الإيقاف</string>
+    <string name="tools_stopwatch_csv">تنزيل اللفات بصيغة CSV</string>
     <string name="tools_countdown_title">عدّ تنازلي: بالمدة أو حتى تاريخ محدد | Saat Tarih</string>
     <string name="tools_countdown_description">عدّ تنازلي مجاني: مؤقت بالدقائق أو الوقت المتبقي حتى تاريخ تختاره. عدّ تنازلي لرأس السنة والعيد، مع تنبيه صوتي وملء الشاشة.</string>
     <string name="tools_countdown_h1">العدّ التنازلي</string>
@@ -212,6 +213,7 @@
     <string name="tools_countdown_copyLink">نسخ الرابط</string>
     <string name="tools_countdown_copied">نُسخ الرابط</string>
     <string name="tools_countdown_shareNote">يمكنك مشاركة رابط التاريخ الذي اخترته؛ ويبدأ العدّ التنازلي تلقائيًا عند فتح الرابط.</string>
+    <string name="tools_countdown_addMinute">+1 دقيقة</string>
     <string name="tools_alarm_title">منبّه أونلاين: تكرار وغفوة | Saat Tarih</string>
     <string name="tools_alarm_description">منبّه مجاني يعمل في متصفحك: الوقت، والتسمية، والتكرار في أيام تختارها، وغفوة 5 دقائق، وإشعارات. يرنّ المنبّه ما دامت الصفحة مفتوحة.</string>
     <string name="tools_alarm_h1">منبّه على الإنترنت</string>
@@ -238,6 +240,7 @@
     <string name="tools_alarm_note">للاستيقاظ في المواعيد المهمة اضبط أيضًا منبّه هاتفك؛ فمنبّه المتصفح لا يرنّ إذا كانت الصفحة مغلقة.</string>
     <string name="tools_alarm_panel">المنبّه</string>
     <string name="tools_alarm_defaultLabel">منبّه</string>
+    <string name="tools_alarm_soundLabel">صوت المنبه</string>
     <string name="tools_alarm_dayNames_0">اثنين</string>
     <string name="tools_alarm_dayNames_1">ثلاثاء</string>
     <string name="tools_alarm_dayNames_2">أربعاء</string>
@@ -289,6 +292,13 @@
     <string name="tools_pomodoro_noiseNote">يعمل الصوت فقط أثناء فترة العمل؛ ويُولَّد في المتصفح دون تنزيل أي ملف.</string>
     <string name="tools_pomodoro_empty">لا توجد جلسات بومودورو مكتملة بعد.</string>
     <string name="tools_pomodoro_minUnit">دقيقة</string>
+    <string name="tools_pomodoro_csv">تنزيل السجل بصيغة CSV</string>
+    <string name="tools_pomodoro_streak">سلسلة: %1$s يوم متتالٍ</string>
+    <string name="tools_pomodoro_goalLabel">الهدف اليومي (جلسات)</string>
+    <string name="tools_pomodoro_goalProgress">اليوم %1$s/%2$s جلسة</string>
+    <string name="tools_pomodoro_goalDone">تحقق الهدف اليومي</string>
+    <string name="tools_pomodoro_tagLabel">الوسم</string>
+    <string name="tools_pomodoro_byTag">حسب الوسم، آخر 7 أيام</string>
     <string name="datecalc_title">حاسبة التاريخ: الأيام وأيام العمل والعمر | Saat Tarih</string>
     <string name="datecalc_description">كم يومًا ويوم عمل بين تاريخين؟ أضف أيامًا أو شهورًا أو سنوات إلى تاريخ أو اطرحها منه، واحسب العمر، مع مراعاة العطل الرسمية في تركيا.</string>
     <string name="datecalc_h1">حاسبة التاريخ</string>
@@ -391,7 +401,7 @@
     <string name="weather_precipitation">الهطول</string>
     <string name="weather_uv">مؤشر الأشعة فوق البنفسجية</string>
     <string name="weather_hourlyHeading">توقعات كل ساعة (24 ساعة)</string>
-    <string name="weather_dailyHeading">توقعات 7 أيام</string>
+    <string name="weather_dailyHeading">توقعات 14 يومًا</string>
     <string name="weather_loading">جارٍ جلب الطقس…</string>
     <string name="weather_error">تعذّر الحصول على حالة الطقس. تحقّق من اتصالك وحاول مرة أخرى.</string>
     <string name="weather_retry">حاول مرة أخرى</string>
@@ -463,6 +473,34 @@
     <string name="list_fullText">النص الكامل</string>
     <string name="list_label">القائمة البريدية</string>
     <string name="list_formErr">تعذّر تسجيلك. تحقّق من عنوان بريدك الإلكتروني وحاول مرة أخرى بعد قليل.</string>
+    <string name="prayer_kerahatHeading">أوقات الكراهة (تقريبية)</string>
+    <string name="prayer_kerahatNames_israk">عند الشروق (الإشراق)</string>
+    <string name="prayer_kerahatNames_istiva">قبل الظهر (الاستواء)</string>
+    <string name="prayer_kerahatNames_isfirar">عند الغروب (الاصفرار)</string>
+    <string name="prayer_kerahatNote">لا تُصلّى النوافل في هذه الأوقات. لا تنشر رئاسة الشؤون الدينية مدة محددة بالدقائق؛ استُخدمت المدة الشائعة في التقاويم وهي نحو 45 دقيقة (تذكر المصادر 10–45 دقيقة لما قبل الظهر).</string>
+    <string name="nature_goldenAm">الساعة الذهبية صباحًا</string>
+    <string name="nature_goldenPm">الساعة الذهبية مساءً</string>
+    <string name="nature_blueAm">الساعة الزرقاء صباحًا</string>
+    <string name="nature_bluePm">الساعة الزرقاء مساءً</string>
+    <string name="nature_lightNote">الساعة الذهبية: الشمس بين 6° فوق الأفق و4° تحته، بضوء دافئ ناعم. الساعة الزرقاء: الشمس بين 4° و6° تحت الأفق، شفق أزرق. مفيدة للمصورين.</string>
+    <string name="zakat_fitreHeading">زكاة الفطر</string>
+    <string name="zakat_fitreText">حددت الهيئة العليا للشؤون الدينية في رئاسة الشؤون الدينية التركية زكاة الفطر لعام %1$s بمبلغ %2$s ليرة للشخص (%3$s)، وتسري من رمضان %1$s حتى رمضان التالي.</string>
+    <string name="zakat_fitrePeople">عدد الأشخاص (بمن تعولهم)</string>
+    <string name="zakat_fitreTotal">إجمالي زكاة الفطر</string>
+    <string name="zakat_fitreNote">المبلغ خاص بتركيا وهو الحد الأدنى؛ ومن استطاع أن يعطي أكثر (بمقدار التمر أو الزبيب) فله ذلك. تُخرج قبل صلاة العيد.</string>
+    <string name="hijriConv_h1">محول التاريخ الهجري</string>
+    <string name="hijriConv_toHijri">من الميلادي إلى الهجري</string>
+    <string name="hijriConv_toGreg">من الهجري إلى الميلادي</string>
+    <string name="hijriConv_gregLabel">التاريخ الميلادي</string>
+    <string name="hijriConv_yearLabel">السنة الهجرية</string>
+    <string name="hijriConv_monthLabel">الشهر</string>
+    <string name="hijriConv_dayLabel">اليوم</string>
+    <string name="hijriConv_dayMax">هذا الشهر الهجري %1$s يومًا.</string>
+    <string name="tools_pomodoro_tags_none">بلا وسم</string>
+    <string name="tools_pomodoro_tags_work">عمل</string>
+    <string name="tools_pomodoro_tags_study">دراسة</string>
+    <string name="tools_pomodoro_tags_personal">شخصي</string>
+    <string name="tools_pomodoro_tags_other">أخرى</string>
     <string name="common_done">تم</string>
     <string name="notify_heading">إشعارات أوقات الصلاة</string>
     <string name="notify_enable">أعلمني عند أوقات الصلاة</string>
@@ -1084,5 +1122,47 @@
     <string name="sync_note">تُزامَن إعداداتك وساعات العالم والعدّ التنازلي والأماكن المحفوظة وسجلات بومودورو والنوم وسجلات العبادة بين أجهزة iPhone وiPad وMac المسجّلة بحساب Apple نفسه. تبقى البيانات في حساب iCloud الخاص بك ولا تصل إلينا. الموقع والمنبهات والمؤقتات الجارية وإعدادات الإشعارات والشارات والصور تبقى منفصلة على كل جهاز.</string>
     <string name="sync_androidTitle">النسخ الاحتياطي والهاتف الجديد</string>
     <string name="sync_androidNote">إذا كان النسخ الاحتياطي من Google مفعّلًا في هاتفك، تدخل إعداداتك وسجلاتك (ساعات العالم والعدّ التنازلي والمنبهات وسجلات بومودورو والنوم والعبادة والصور) في النسخة الاحتياطية بحساب Google وتُستعاد عند الانتقال إلى هاتف جديد أو إعادة تثبيت التطبيق. تدير Google هذه النسخة ولا يصل إلينا شيء. إعدادات الهاتف › Google › النسخ الاحتياطي.</string>
+    <string name="home_item_battery">البطارية</string>
+    <string name="home_item_alarm">المنبه التالي</string>
+    <string name="home_alarmNone">لا يوجد منبه</string>
+    <string name="home_charging">قيد الشحن</string>
+    <string name="look_text">نص تحت الساعة</string>
+    <string name="look_textPlaceholder">مثلًا: صباح الخير!</string>
+    <string name="look_textNote">يظهر تحت الساعة في شاشة الساعة وفي ملء الشاشة، ويُحفظ على هذا الجهاز فقط.</string>
+    <string name="look_slideshow">عرض شرائح الصور</string>
+    <string name="look_slideAdd">إضافة صور</string>
+    <string name="look_slideClear">مسح العرض</string>
+    <string name="look_slideEvery">التبديل كل</string>
+    <string name="look_slideCount" formatted="false">%1$@ صور</string>
+    <string name="look_slideNote">تتناوب حتى 10 صور خلفيةً لملء الشاشة، وتبقى الصور على هذا الجهاز.</string>
+    <string name="look_size">حجم الساعة</string>
+    <string name="look_fsNote">في ملء الشاشة اسحب لأعلى أو لأسفل على حافة الشاشة لتعتيمها، وقرّب إصبعين أو باعدهما لتغيير حجم الساعة.</string>
+    <string name="fs_lock">قفل الاتجاه</string>
+    <string name="fs_unlock">إلغاء قفل الاتجاه</string>
+    <string name="fs_dim" formatted="false">التعتيم %1$@</string>
+    <string name="share_prayer">مشاركة أوقات الصلاة</string>
+    <string name="share_card">مشاركة</string>
+    <string name="alarm_quick">منبه سريع</string>
+    <string name="alarm_quickIn" formatted="false">بعد %1$@ دقيقة</string>
+    <string name="alarm_quickSet" formatted="false">ضُبط المنبه: %1$@</string>
+    <string name="alarm_swipe">اسحب للإيقاف</string>
+    <string name="alarm_pre">التنبيه قبل الرنين</string>
+    <string name="alarm_preOff">متوقف</string>
+    <string name="alarm_preMin" formatted="false">قبل %1$@ دقيقة</string>
+    <string name="alarm_preTitle" formatted="false">منبه قادم: %1$@</string>
+    <string name="alarm_preBody">استيقظت مبكرًا؟ يمكنك تخطي هذا المنبه.</string>
+    <string name="alarm_preSkip">تخطَّ هذا المنبه</string>
+    <string name="alarm_preNote">إشعار صامت يمكنك منه تخطي المنبه.</string>
+    <string name="alarm_speak">نطق الوقت</string>
+    <string name="alarm_speakNote">أثناء الرنين يُنطق الوقت بمحرك الكلام في الهاتف.</string>
+    <string name="alarm_speakNoteIOS">يصبح صوت المنبه تسجيلًا قصيرًا ينطق الوقت (يُنشأ على الهاتف).</string>
+    <string name="alarm_speakText" formatted="false">الساعة %1$@</string>
+    <string name="csv_laps">مشاركة اللفات (CSV)</string>
+    <string name="csv_pomo">مشاركة السجل (CSV)</string>
+    <string name="world_dstForward" formatted="false">%1$@: تُقدَّم الساعة %2$@</string>
+    <string name="world_dstBack" formatted="false">%1$@: تُؤخَّر الساعة %2$@</string>
+    <string name="world_dstTitle" formatted="false">%1$@: تغيير الساعة</string>
+    <string name="hijriConv_outsideApp">خارج جدول ديانت؛ حُسب بتقويم أم القرى وقد يختلف بيوم.</string>
+    <string name="common_secondsShort">ث</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

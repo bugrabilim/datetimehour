@@ -25,6 +25,11 @@
     <string name="prayer_imNote">Vaxtlar hesablanmışdır; rəsmi vaxt üçün Diyanət İşləri Başqanlığının məlumatı əsasdır.</string>
     <string name="prayer_imFile">ramazan-imsakiyyesi</string>
     <string name="prayer_imAlt">%1$s üçün %2$s Ramazan imsakiyyəsi</string>
+    <string name="prayer_kerahatHeading">Kərahət vaxtları (təxmini)</string>
+    <string name="prayer_kerahatNames_israk">Günəş doğarkən (işraq)</string>
+    <string name="prayer_kerahatNames_istiva">Günorta öncəsi (istiva)</string>
+    <string name="prayer_kerahatNames_isfirar">Günəş batarkən (isfirar)</string>
+    <string name="prayer_kerahatNote">Bu vaxtlarda nafilə namaz qılınmır. Diyanətin açıqladığı dəqiq dəqiqə ölçüsü yoxdur; təqvimlərdə geniş yayılmış təxminən 45 dəqiqə istifadə olunub (günorta öncəsi üçün mənbələr 10–45 dəqiqə göstərir).</string>
     <string name="place_myLocation">Məkanım</string>
     <string name="widget_province_auto">Avtomatik (məkanım)</string>
     <string name="widget_next_name">Növbəti vaxt</string>

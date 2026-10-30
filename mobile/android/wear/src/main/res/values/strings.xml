@@ -25,6 +25,11 @@
     <string name="prayer_imNote">Vakitler hesaplanmıştır; resmî vakit için Diyanet İşleri Başkanlığı esas alınır.</string>
     <string name="prayer_imFile">ramazan-imsakiyesi</string>
     <string name="prayer_imAlt">%1$s için %2$s Ramazan imsakiyesi</string>
+    <string name="prayer_kerahatHeading">Kerahat vakitleri (yaklaşık)</string>
+    <string name="prayer_kerahatNames_israk">Güneş doğarken (işrak)</string>
+    <string name="prayer_kerahatNames_istiva">Öğle öncesi (istiva)</string>
+    <string name="prayer_kerahatNames_isfirar">Güneş batarken (isfirar)</string>
+    <string name="prayer_kerahatNote">Bu sürelerde nafile namaz kılınmaz. Diyanet\'in yayımladığı bir dakika ölçüsü yok; takvimlerde yaygın olan yaklaşık 45 dakika kullanıldı (öğle öncesi kerahat süresi kaynaklarda 10–45 dakika arasında değişir).</string>
     <string name="place_myLocation">Konumum</string>
     <string name="widget_province_auto">Otomatik (konumum)</string>
     <string name="widget_next_name">Sıradaki vakit</string>

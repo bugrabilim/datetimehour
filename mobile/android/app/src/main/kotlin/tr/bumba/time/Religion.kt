@@ -587,7 +587,37 @@ fun ZakatScreen(onBack: () -> Unit) {
                 if (r.due) Row2(L("zakat.amount"), fmtMoney(r.zakat), bold = true, color = Theme.c.accent)
             }
             Text(L("zakat.note"), color = Theme.c.muted, fontSize = 12.sp)
+            // Fitre (rakip analizi #14): Diyanet'in açıkladığı kişi başı tutar (assets/fitre.json)
+            Fitre.info?.let { f ->
+                var people by remember { mutableStateOf(1) }
+                AppCard {
+                    SectionTitle(L("zakat.fitreHeading"))
+                    Text(T("zakat.fitreText", f.year, f.amount, Fmt.longDate(f.date)), color = Theme.c.text, fontSize = 14.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(L("zakat.fitrePeople"), Modifier.weight(1f), color = Theme.c.text, fontSize = 14.sp)
+                        IconButton(onClick = { people = (people - 1).coerceIn(1, 99) }) { Icon(Icons.Filled.Remove, null, tint = Theme.c.accent) }
+                        Text(people.toString(), color = Theme.c.text, fontSize = 17.sp, style = Tnum)
+                        IconButton(onClick = { people = (people + 1).coerceIn(1, 99) }) { Icon(Icons.Filled.Add, null, tint = Theme.c.accent) }
+                    }
+                    Row2(L("zakat.fitreTotal"), fmtMoney((f.amount * people).toDouble()) + " TL", bold = true, color = Theme.c.accent)
+                    Text(L("zakat.fitreNote"), color = Theme.c.muted, fontSize = 12.sp)
+                }
+            }
         }
+    }
+}
+
+/** Fitre tutarı (gen-strings, src/data/fitre.json): en son açıklanan yıl */
+object Fitre {
+    data class Info(val year: Int, val amount: Int, val date: java.time.LocalDate)
+    var info: Info? = null
+        private set
+
+    fun load(json: String) {
+        info = try {
+            val o = org.json.JSONObject(json)
+            Info(o.getInt("year"), o.getInt("amount"), java.time.LocalDate.parse(o.getString("date")))
+        } catch (_: Exception) { null }
     }
 }
 

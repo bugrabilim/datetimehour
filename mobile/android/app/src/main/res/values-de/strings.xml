@@ -177,6 +177,7 @@
     <string name="tools_stopwatch_lapsCaption">Rundenzeiten</string>
     <string name="tools_stopwatch_lapAdded">Runde %1$s erfasst: %2$s</string>
     <string name="tools_stopwatch_panel">Stoppuhr</string>
+    <string name="tools_stopwatch_csv">Runden als CSV herunterladen</string>
     <string name="tools_countdown_title">Countdown-Timer: nach Dauer oder bis zu einem Datum | Saat Tarih</string>
     <string name="tools_countdown_description">Kostenloser Countdown: Minuten-Timer oder die Zeit bis zu einem Wunschdatum. Countdown bis Neujahr und zum Bayram, mit Tonsignal und Vollbild.</string>
     <string name="tools_countdown_h1">Countdown</string>
@@ -212,6 +213,7 @@
     <string name="tools_countdown_copyLink">Link kopieren</string>
     <string name="tools_countdown_copied">Link kopiert</string>
     <string name="tools_countdown_shareNote">Sie können den Link zum gewählten Datum teilen; beim Öffnen des Links startet der Countdown automatisch.</string>
+    <string name="tools_countdown_addMinute">+1 Min.</string>
     <string name="tools_alarm_title">Online-Wecker mit Wiederholung und Schlummerfunktion | Saat Tarih</string>
     <string name="tools_alarm_description">Kostenloser Wecker im Browser: Uhrzeit, Bezeichnung, Wiederholung an gewählten Wochentagen, 5 Minuten Schlummern und Benachrichtigungen.</string>
     <string name="tools_alarm_h1">Online-Wecker</string>
@@ -238,6 +240,7 @@
     <string name="tools_alarm_note">Stellen Sie für wichtige Weckzeiten zusätzlich den Wecker Ihres Telefons; ein Browser-Wecker klingelt nicht, wenn die Seite geschlossen ist.</string>
     <string name="tools_alarm_panel">Wecker</string>
     <string name="tools_alarm_defaultLabel">Wecker</string>
+    <string name="tools_alarm_soundLabel">Wecktonart</string>
     <string name="tools_alarm_dayNames_0">Mo</string>
     <string name="tools_alarm_dayNames_1">Di</string>
     <string name="tools_alarm_dayNames_2">Mi</string>
@@ -289,6 +292,13 @@
     <string name="tools_pomodoro_noiseNote">Das Geräusch läuft nur während einer Arbeitsphase; es wird im Browser erzeugt, nichts wird heruntergeladen.</string>
     <string name="tools_pomodoro_empty">Noch keine abgeschlossenen Pomodoros.</string>
     <string name="tools_pomodoro_minUnit">Min.</string>
+    <string name="tools_pomodoro_csv">Verlauf als CSV herunterladen</string>
+    <string name="tools_pomodoro_streak">Serie: %1$s Tage in Folge</string>
+    <string name="tools_pomodoro_goalLabel">Tagesziel (Einheiten)</string>
+    <string name="tools_pomodoro_goalProgress">Heute %1$s/%2$s Einheiten</string>
+    <string name="tools_pomodoro_goalDone">Tagesziel erreicht</string>
+    <string name="tools_pomodoro_tagLabel">Kategorie</string>
+    <string name="tools_pomodoro_byTag">Nach Kategorie, letzte 7 Tage</string>
     <string name="datecalc_title">Datumsrechner: Tage, Arbeitstage, Alter | Saat Tarih</string>
     <string name="datecalc_description">Wie viele Tage und Arbeitstage liegen zwischen zwei Daten? Tage, Monate oder Jahre addieren und abziehen, Alter berechnen – mit türkischen Feiertagen.</string>
     <string name="datecalc_h1">Datumsrechner</string>
@@ -391,7 +401,7 @@
     <string name="weather_precipitation">Niederschlag</string>
     <string name="weather_uv">UV-Index</string>
     <string name="weather_hourlyHeading">Stündliche Vorhersage (24 Stunden)</string>
-    <string name="weather_dailyHeading">7-Tage-Vorhersage</string>
+    <string name="weather_dailyHeading">14-Tage-Vorhersage</string>
     <string name="weather_loading">Wetter wird abgerufen …</string>
     <string name="weather_error">Das Wetter konnte nicht abgerufen werden. Prüfen Sie Ihre Verbindung und versuchen Sie es erneut.</string>
     <string name="weather_retry">Erneut versuchen</string>
@@ -463,6 +473,34 @@
     <string name="list_fullText">Vollständiger Text</string>
     <string name="list_label">E-Mail-Liste</string>
     <string name="list_formErr">Die Anmeldung hat nicht geklappt. Prüfen Sie Ihre E-Mail-Adresse und versuchen Sie es etwas später erneut.</string>
+    <string name="prayer_kerahatHeading">Makruh-Zeiten (ungefähr)</string>
+    <string name="prayer_kerahatNames_israk">Sonnenaufgang (Ischraq)</string>
+    <string name="prayer_kerahatNames_istiva">Vor Mittag (Istiwa)</string>
+    <string name="prayer_kerahatNames_isfirar">Sonnenuntergang (Isfirar)</string>
+    <string name="prayer_kerahatNote">In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Der Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten).</string>
+    <string name="nature_goldenAm">Goldene Stunde morgens</string>
+    <string name="nature_goldenPm">Goldene Stunde abends</string>
+    <string name="nature_blueAm">Blaue Stunde morgens</string>
+    <string name="nature_bluePm">Blaue Stunde abends</string>
+    <string name="nature_lightNote">Goldene Stunde: Sonne zwischen 6° über und 4° unter dem Horizont, weiches warmes Licht. Blaue Stunde: Sonne 4° bis 6° unter dem Horizont, blaue Dämmerung. Praktisch für Fotografen.</string>
+    <string name="zakat_fitreHeading">Fitra (Zakat al-Fitr)</string>
+    <string name="zakat_fitreText">Der Hohe Rat für Religionsangelegenheiten des Diyanet hat die Fitra für %1$s auf %2$s TL pro Person festgelegt (%3$s); gültig ab Ramadan %1$s bis zum nächsten Ramadan.</string>
+    <string name="zakat_fitrePeople">Anzahl der Personen (einschließlich Unterhaltsberechtigter)</string>
+    <string name="zakat_fitreTotal">Fitra gesamt</string>
+    <string name="zakat_fitreNote">Der Betrag gilt für die Türkei und ist das Minimum; wer kann, gibt mehr (nach dem Maß von Datteln oder Rosinen). Die Fitra wird vor dem Festgebet gegeben.</string>
+    <string name="hijriConv_h1">Hidschri-Kalender-Umrechner</string>
+    <string name="hijriConv_toHijri">Gregorianisch → Hidschri</string>
+    <string name="hijriConv_toGreg">Hidschri → Gregorianisch</string>
+    <string name="hijriConv_gregLabel">Gregorianisches Datum</string>
+    <string name="hijriConv_yearLabel">Hidschri-Jahr</string>
+    <string name="hijriConv_monthLabel">Monat</string>
+    <string name="hijriConv_dayLabel">Tag</string>
+    <string name="hijriConv_dayMax">Dieser Hidschri-Monat hat %1$s Tage.</string>
+    <string name="tools_pomodoro_tags_none">Ohne</string>
+    <string name="tools_pomodoro_tags_work">Arbeit</string>
+    <string name="tools_pomodoro_tags_study">Lernen</string>
+    <string name="tools_pomodoro_tags_personal">Privat</string>
+    <string name="tools_pomodoro_tags_other">Sonstiges</string>
     <string name="common_done">Fertig</string>
     <string name="notify_heading">Benachrichtigungen zu Gebetszeiten</string>
     <string name="notify_enable">Bei Gebetszeiten benachrichtigen</string>
@@ -1084,5 +1122,47 @@
     <string name="sync_note">Ihre Einstellungen, Weltuhren, Countdowns, gespeicherten Orte, Pomodoro- und Schlafdaten sowie Gottesdienst-Einträge werden zwischen iPhone, iPad und Mac mit demselben Apple-Account synchronisiert. Die Daten bleiben in Ihrem iCloud-Account und erreichen uns nie. Standort, Wecker, laufende Timer, Mitteilungseinstellungen, Abzeichen und Fotos bleiben auf jedem Gerät getrennt.</string>
     <string name="sync_androidTitle">Sicherung und neues Telefon</string>
     <string name="sync_androidNote">Ist die Google-Sicherung des Telefons aktiv, landen Ihre Einstellungen und Einträge (Weltuhren, Countdowns, Wecker, Pomodoro-, Schlaf- und Gottesdienst-Einträge, Fotos) in der Sicherung Ihres Google-Kontos und werden beim Wechsel auf ein neues Telefon oder bei Neuinstallation wiederhergestellt. Diese Sicherung verwaltet Google; uns erreicht nichts. Telefoneinstellungen › Google › Sicherung.</string>
+    <string name="home_item_battery">Akku</string>
+    <string name="home_item_alarm">Nächster Wecker</string>
+    <string name="home_alarmNone">Kein Wecker gestellt</string>
+    <string name="home_charging">wird geladen</string>
+    <string name="look_text">Text unter der Uhr</string>
+    <string name="look_textPlaceholder">z. B. Guten Morgen!</string>
+    <string name="look_textNote">Erscheint auf dem Uhrbildschirm und im Vollbild unter der Uhr; nur auf diesem Gerät gespeichert.</string>
+    <string name="look_slideshow">Foto-Diashow</string>
+    <string name="look_slideAdd">Fotos hinzufügen</string>
+    <string name="look_slideClear">Diashow leeren</string>
+    <string name="look_slideEvery">Wechsel alle</string>
+    <string name="look_slideCount" formatted="false">%1$@ Fotos</string>
+    <string name="look_slideNote">Bis zu 10 Fotos wechseln sich als Vollbild-Hintergrund ab; die Fotos bleiben auf diesem Gerät.</string>
+    <string name="look_size">Uhrgröße</string>
+    <string name="look_fsNote">Im Vollbild am Bildschirmrand nach oben oder unten wischen, um abzudunkeln; mit zwei Fingern die Uhr vergrößern oder verkleinern.</string>
+    <string name="fs_lock">Ausrichtung sperren</string>
+    <string name="fs_unlock">Ausrichtung entsperren</string>
+    <string name="fs_dim" formatted="false">Abgedunkelt %1$@</string>
+    <string name="share_prayer">Gebetszeiten teilen</string>
+    <string name="share_card">Teilen</string>
+    <string name="alarm_quick">Schnellwecker</string>
+    <string name="alarm_quickIn" formatted="false">In %1$@ Min.</string>
+    <string name="alarm_quickSet" formatted="false">Wecker gestellt: %1$@</string>
+    <string name="alarm_swipe">Zum Beenden schieben</string>
+    <string name="alarm_pre">Vor dem Klingeln benachrichtigen</string>
+    <string name="alarm_preOff">Aus</string>
+    <string name="alarm_preMin" formatted="false">%1$@ Min. vorher</string>
+    <string name="alarm_preTitle" formatted="false">Anstehender Wecker: %1$@</string>
+    <string name="alarm_preBody">Schon wach? Sie können diesen Wecker überspringen.</string>
+    <string name="alarm_preSkip">Diesen Wecker überspringen</string>
+    <string name="alarm_preNote">Eine stille Mitteilung; Sie können den Wecker darüber überspringen.</string>
+    <string name="alarm_speak">Uhrzeit ansagen</string>
+    <string name="alarm_speakNote">Beim Klingeln wird die Uhrzeit mit der Sprachausgabe des Telefons angesagt.</string>
+    <string name="alarm_speakNoteIOS">Der Weckton wird zu einer kurzen Aufnahme, die die Uhrzeit ansagt (auf dem Telefon erzeugt).</string>
+    <string name="alarm_speakText" formatted="false">Es ist %1$@</string>
+    <string name="csv_laps">Runden teilen (CSV)</string>
+    <string name="csv_pomo">Verlauf teilen (CSV)</string>
+    <string name="world_dstForward" formatted="false">%1$@: Uhren werden %2$@ vorgestellt</string>
+    <string name="world_dstBack" formatted="false">%1$@: Uhren werden %2$@ zurückgestellt</string>
+    <string name="world_dstTitle" formatted="false">%1$@: Zeitumstellung</string>
+    <string name="hijriConv_outsideApp">Außerhalb der Diyanet-Tabelle; mit dem Umm-al-Qura-Kalender berechnet, Abweichung um einen Tag möglich.</string>
+    <string name="common_secondsShort">Sek.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

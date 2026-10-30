@@ -4444,5 +4444,299 @@
     "de": "Ist die Google-Sicherung des Telefons aktiv, landen Ihre Einstellungen und Einträge (Weltuhren, Countdowns, Wecker, Pomodoro-, Schlaf- und Gottesdienst-Einträge, Fotos) in der Sicherung Ihres Google-Kontos und werden beim Wechsel auf ein neues Telefon oder bei Neuinstallation wiederhergestellt. Diese Sicherung verwaltet Google; uns erreicht nichts. Telefoneinstellungen › Google › Sicherung.",
     "az": "Telefonun Google ehtiyat nüsxəsi açıqdırsa, ayarlarınız və qeydləriniz (dünya saatları, geri sayımlar, zəngli saatlar, pomodoro, yuxu və ibadət qeydləri, fotolar) Google hesabınızdakı ehtiyat nüsxəyə düşür və yeni telefona keçəndə ya tətbiqi yenidən quranda bərpa olunur. Bu ehtiyat nüsxəni Google idarə edir; bizə heç nə gəlmir. Telefon Ayarları › Google › Ehtiyat nüsxə.",
     "ar": "إذا كان النسخ الاحتياطي من Google مفعّلًا في هاتفك، تدخل إعداداتك وسجلاتك (ساعات العالم والعدّ التنازلي والمنبهات وسجلات بومودورو والنوم والعبادة والصور) في النسخة الاحتياطية بحساب Google وتُستعاد عند الانتقال إلى هاتف جديد أو إعادة تثبيت التطبيق. تدير Google هذه النسخة ولا يصل إلينا شيء. إعدادات الهاتف › Google › النسخ الاحتياطي."
+  },
+  "home.item.battery": {
+    "tr": "Pil",
+    "en": "Battery",
+    "de": "Akku",
+    "az": "Batareya",
+    "ar": "البطارية"
+  },
+  "home.item.alarm": {
+    "tr": "Sıradaki alarm",
+    "en": "Next alarm",
+    "de": "Nächster Wecker",
+    "az": "Növbəti zəngli saat",
+    "ar": "المنبه التالي"
+  },
+  "home.alarmNone": {
+    "tr": "Kurulu alarm yok",
+    "en": "No alarm set",
+    "de": "Kein Wecker gestellt",
+    "az": "Zəngli saat qurulmayıb",
+    "ar": "لا يوجد منبه"
+  },
+  "home.charging": {
+    "tr": "şarj oluyor",
+    "en": "charging",
+    "de": "wird geladen",
+    "az": "şarj olunur",
+    "ar": "قيد الشحن"
+  },
+  "look.text": {
+    "tr": "Saatin altındaki metin",
+    "en": "Text under the clock",
+    "de": "Text unter der Uhr",
+    "az": "Saatın altındakı mətn",
+    "ar": "نص تحت الساعة"
+  },
+  "look.textPlaceholder": {
+    "tr": "ör. Günaydın!",
+    "en": "e.g. Good morning!",
+    "de": "z. B. Guten Morgen!",
+    "az": "məs. Sabahınız xeyir!",
+    "ar": "مثلًا: صباح الخير!"
+  },
+  "look.textNote": {
+    "tr": "Saat ekranında ve tam ekranda saatin altında görünür; yalnız bu cihazda saklanır.",
+    "en": "Shown under the clock on the clock screen and in full screen; stored only on this device.",
+    "de": "Erscheint auf dem Uhrbildschirm und im Vollbild unter der Uhr; nur auf diesem Gerät gespeichert.",
+    "az": "Saat ekranında və tam ekranda saatın altında görünür; yalnız bu cihazda saxlanılır.",
+    "ar": "يظهر تحت الساعة في شاشة الساعة وفي ملء الشاشة، ويُحفظ على هذا الجهاز فقط."
+  },
+  "look.slideshow": {
+    "tr": "Fotoğraf slaytı",
+    "en": "Photo slideshow",
+    "de": "Foto-Diashow",
+    "az": "Foto slayd",
+    "ar": "عرض شرائح الصور"
+  },
+  "look.slideAdd": {
+    "tr": "Fotoğraf ekle",
+    "en": "Add photos",
+    "de": "Fotos hinzufügen",
+    "az": "Foto əlavə et",
+    "ar": "إضافة صور"
+  },
+  "look.slideClear": {
+    "tr": "Slaytı temizle",
+    "en": "Clear slideshow",
+    "de": "Diashow leeren",
+    "az": "Slaydı təmizlə",
+    "ar": "مسح العرض"
+  },
+  "look.slideEvery": {
+    "tr": "Değişme aralığı",
+    "en": "Change every",
+    "de": "Wechsel alle",
+    "az": "Dəyişmə aralığı",
+    "ar": "التبديل كل"
+  },
+  "look.slideCount": {
+    "tr": "%1$@ fotoğraf",
+    "en": "%1$@ photos",
+    "de": "%1$@ Fotos",
+    "az": "%1$@ foto",
+    "ar": "%1$@ صور"
+  },
+  "look.slideNote": {
+    "tr": "Tam ekran arka planında en çok 10 fotoğraf sırayla gösterilir; fotoğraflar yalnız bu cihazda kalır.",
+    "en": "Up to 10 photos take turns as the full-screen background; the photos stay on this device.",
+    "de": "Bis zu 10 Fotos wechseln sich als Vollbild-Hintergrund ab; die Fotos bleiben auf diesem Gerät.",
+    "az": "Tam ekran fonunda ən çox 10 foto növbə ilə göstərilir; fotolar yalnız bu cihazda qalır.",
+    "ar": "تتناوب حتى 10 صور خلفيةً لملء الشاشة، وتبقى الصور على هذا الجهاز."
+  },
+  "look.size": {
+    "tr": "Saat boyutu",
+    "en": "Clock size",
+    "de": "Uhrgröße",
+    "az": "Saat ölçüsü",
+    "ar": "حجم الساعة"
+  },
+  "look.fsNote": {
+    "tr": "Tam ekranda ekranın kenarında yukarı ya da aşağı kaydırarak ekranı karartabilir, iki parmakla saati büyütüp küçültebilirsiniz.",
+    "en": "In full screen, swipe up or down along the edge of the screen to dim it, and pinch to resize the clock.",
+    "de": "Im Vollbild am Bildschirmrand nach oben oder unten wischen, um abzudunkeln; mit zwei Fingern die Uhr vergrößern oder verkleinern.",
+    "az": "Tam ekranda ekranın kənarında yuxarı və ya aşağı sürüşdürərək ekranı qaralda, iki barmaqla saatı böyüdüb kiçildə bilərsiniz.",
+    "ar": "في ملء الشاشة اسحب لأعلى أو لأسفل على حافة الشاشة لتعتيمها، وقرّب إصبعين أو باعدهما لتغيير حجم الساعة."
+  },
+  "fs.lock": {
+    "tr": "Yönü kilitle",
+    "en": "Lock orientation",
+    "de": "Ausrichtung sperren",
+    "az": "İstiqaməti kilidlə",
+    "ar": "قفل الاتجاه"
+  },
+  "fs.unlock": {
+    "tr": "Yön kilidini aç",
+    "en": "Unlock orientation",
+    "de": "Ausrichtung entsperren",
+    "az": "İstiqamət kilidini aç",
+    "ar": "إلغاء قفل الاتجاه"
+  },
+  "fs.dim": {
+    "tr": "Karartma %1$@",
+    "en": "Dimmed %1$@",
+    "de": "Abgedunkelt %1$@",
+    "az": "Qaraltma %1$@",
+    "ar": "التعتيم %1$@"
+  },
+  "share.prayer": {
+    "tr": "Vakitleri paylaş",
+    "en": "Share prayer times",
+    "de": "Gebetszeiten teilen",
+    "az": "Vaxtları paylaş",
+    "ar": "مشاركة أوقات الصلاة"
+  },
+  "share.card": {
+    "tr": "Paylaş",
+    "en": "Share",
+    "de": "Teilen",
+    "az": "Paylaş",
+    "ar": "مشاركة"
+  },
+  "alarm.quick": {
+    "tr": "Hızlı alarm",
+    "en": "Quick alarm",
+    "de": "Schnellwecker",
+    "az": "Tez zəngli saat",
+    "ar": "منبه سريع"
+  },
+  "alarm.quickIn": {
+    "tr": "%1$@ dk sonra",
+    "en": "In %1$@ min",
+    "de": "In %1$@ Min.",
+    "az": "%1$@ dəq sonra",
+    "ar": "بعد %1$@ دقيقة"
+  },
+  "alarm.quickSet": {
+    "tr": "Alarm kuruldu: %1$@",
+    "en": "Alarm set: %1$@",
+    "de": "Wecker gestellt: %1$@",
+    "az": "Zəngli saat quruldu: %1$@",
+    "ar": "ضُبط المنبه: %1$@"
+  },
+  "alarm.swipe": {
+    "tr": "Durdurmak için kaydırın",
+    "en": "Slide to stop",
+    "de": "Zum Beenden schieben",
+    "az": "Dayandırmaq üçün sürüşdürün",
+    "ar": "اسحب للإيقاف"
+  },
+  "alarm.pre": {
+    "tr": "Çalmadan önce haber ver",
+    "en": "Notify before ringing",
+    "de": "Vor dem Klingeln benachrichtigen",
+    "az": "Çalmazdan əvvəl xəbər ver",
+    "ar": "التنبيه قبل الرنين"
+  },
+  "alarm.preOff": {
+    "tr": "Kapalı",
+    "en": "Off",
+    "de": "Aus",
+    "az": "Bağlı",
+    "ar": "متوقف"
+  },
+  "alarm.preMin": {
+    "tr": "%1$@ dk önce",
+    "en": "%1$@ min before",
+    "de": "%1$@ Min. vorher",
+    "az": "%1$@ dəq əvvəl",
+    "ar": "قبل %1$@ دقيقة"
+  },
+  "alarm.preTitle": {
+    "tr": "Yaklaşan alarm: %1$@",
+    "en": "Upcoming alarm: %1$@",
+    "de": "Anstehender Wecker: %1$@",
+    "az": "Yaxınlaşan zəngli saat: %1$@",
+    "ar": "منبه قادم: %1$@"
+  },
+  "alarm.preBody": {
+    "tr": "Erken uyandıysanız bu çalmayı atlayabilirsiniz.",
+    "en": "Up early? You can skip this one.",
+    "de": "Schon wach? Sie können diesen Wecker überspringen.",
+    "az": "Tez oyandınızsa bu çalmanı keçə bilərsiniz.",
+    "ar": "استيقظت مبكرًا؟ يمكنك تخطي هذا المنبه."
+  },
+  "alarm.preSkip": {
+    "tr": "Bu alarmı atla",
+    "en": "Skip this alarm",
+    "de": "Diesen Wecker überspringen",
+    "az": "Bu zəngli saatı keç",
+    "ar": "تخطَّ هذا المنبه"
+  },
+  "alarm.preNote": {
+    "tr": "Sessiz bildirim; dokunup alarmı atlayabilirsiniz.",
+    "en": "A silent notification; you can skip the alarm from it.",
+    "de": "Eine stille Mitteilung; Sie können den Wecker darüber überspringen.",
+    "az": "Səssiz bildiriş; oradan zəngli saatı keçə bilərsiniz.",
+    "ar": "إشعار صامت يمكنك منه تخطي المنبه."
+  },
+  "alarm.speak": {
+    "tr": "Saati sesli söylesin",
+    "en": "Speak the time",
+    "de": "Uhrzeit ansagen",
+    "az": "Vaxtı səsli desin",
+    "ar": "نطق الوقت"
+  },
+  "alarm.speakNote": {
+    "tr": "Alarm çalarken saat telefonun konuşma motoruyla söylenir.",
+    "en": "While ringing, the time is spoken with the phone's speech engine.",
+    "de": "Beim Klingeln wird die Uhrzeit mit der Sprachausgabe des Telefons angesagt.",
+    "az": "Zəngli saat çalarkən vaxt telefonun nitq mühərriki ilə deyilir.",
+    "ar": "أثناء الرنين يُنطق الوقت بمحرك الكلام في الهاتف."
+  },
+  "alarm.speakNoteIOS": {
+    "tr": "Alarm sesi, saati söyleyen kısa bir kayıtla değişir (kayıt telefonda üretilir).",
+    "en": "The alarm sound becomes a short recording that speaks the time (made on the phone).",
+    "de": "Der Weckton wird zu einer kurzen Aufnahme, die die Uhrzeit ansagt (auf dem Telefon erzeugt).",
+    "az": "Zəngli saatın səsi vaxtı deyən qısa bir yazı ilə əvəz olunur (telefonda yaradılır).",
+    "ar": "يصبح صوت المنبه تسجيلًا قصيرًا ينطق الوقت (يُنشأ على الهاتف)."
+  },
+  "alarm.speakText": {
+    "tr": "Saat %1$@",
+    "en": "It's %1$@",
+    "de": "Es ist %1$@",
+    "az": "Saat %1$@",
+    "ar": "الساعة %1$@"
+  },
+  "csv.laps": {
+    "tr": "Turları paylaş (CSV)",
+    "en": "Share laps (CSV)",
+    "de": "Runden teilen (CSV)",
+    "az": "Dövrələri paylaş (CSV)",
+    "ar": "مشاركة اللفات (CSV)"
+  },
+  "csv.pomo": {
+    "tr": "Geçmişi paylaş (CSV)",
+    "en": "Share history (CSV)",
+    "de": "Verlauf teilen (CSV)",
+    "az": "Tarixçəni paylaş (CSV)",
+    "ar": "مشاركة السجل (CSV)"
+  },
+  "world.dstForward": {
+    "tr": "%1$@: saatler %2$@ ileri alınıyor",
+    "en": "%1$@: clocks go forward %2$@",
+    "de": "%1$@: Uhren werden %2$@ vorgestellt",
+    "az": "%1$@: saatlar %2$@ irəli çəkilir",
+    "ar": "%1$@: تُقدَّم الساعة %2$@"
+  },
+  "world.dstBack": {
+    "tr": "%1$@: saatler %2$@ geri alınıyor",
+    "en": "%1$@: clocks go back %2$@",
+    "de": "%1$@: Uhren werden %2$@ zurückgestellt",
+    "az": "%1$@: saatlar %2$@ geri çəkilir",
+    "ar": "%1$@: تُؤخَّر الساعة %2$@"
+  },
+  "world.dstTitle": {
+    "tr": "%1$@: saat değişiyor",
+    "en": "%1$@: clocks change",
+    "de": "%1$@: Zeitumstellung",
+    "az": "%1$@: saat dəyişir",
+    "ar": "%1$@: تغيير الساعة"
+  },
+  "hijriConv.outsideApp": {
+    "tr": "Diyanet tablosunun dışında; Ümmü'l-Kurâ takvimiyle hesaplandı, bir gün fark olabilir.",
+    "en": "Outside the Diyanet table; calculated with the Umm al-Qura calendar, may differ by a day.",
+    "de": "Außerhalb der Diyanet-Tabelle; mit dem Umm-al-Qura-Kalender berechnet, Abweichung um einen Tag möglich.",
+    "az": "Diyanət cədvəlindən kənarda; Ümmül-Qura təqvimi ilə hesablandı, bir gün fərq ola bilər.",
+    "ar": "خارج جدول ديانت؛ حُسب بتقويم أم القرى وقد يختلف بيوم."
+  },
+  "common.secondsShort": {
+    "tr": "sn",
+    "en": "s",
+    "de": "Sek.",
+    "az": "san",
+    "ar": "ث"
   }
 }

@@ -108,6 +108,7 @@ object AppData {
         }
 
         Hijri.load(read("hijri.json"))
+        Fitre.load(read("fitre.json"))
 
         val cal = JSONObject(read("calendar.json"))
         val years = cal.getJSONObject("years")

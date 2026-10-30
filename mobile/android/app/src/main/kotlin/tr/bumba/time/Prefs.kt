@@ -57,6 +57,7 @@ object Prefs {
         fsPhoto = sp.getLong("fsPhoto", 0L)
         fsBg = sp.getString(FullscreenBackground.KEY, null)
         nightMode = sp.getString(NightMode.KEY, "off")!!
+        FsLook.load()
         world = sp.getString("world", City.DEFAULT_KEYS)!!
         units = sp.getString("units", null) ?: Units.systemDefault
         BadgeStore.load()

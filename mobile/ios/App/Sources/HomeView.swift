@@ -7,6 +7,7 @@ struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @AppStorage(Features.key) private var features = ""
+    @AppStorage("fs.text") private var personalText = ""
     @State private var fullscreen = false
     @State private var customizing = false
     /// Yan çevirince tam ekran açılır, dikeye dönünce kapanır (düğmeyle açılan tam ekran dikeyde de kalır)
@@ -25,6 +26,9 @@ struct ClockTab: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         ClockStage(now: now, place: place, height: Self.stageHeight(geo.size.height))
+                        if !personalText.isEmpty {
+                            Text(personalText).font(.title3.weight(.semibold)).multilineTextAlignment(.center).foregroundStyle(Theme.text)
+                        }
                         ForEach(items) { item in
                             HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight)
                         }
@@ -199,13 +203,21 @@ struct FullscreenClock: View {
     @AppStorage(NightMode.key) private var nightRaw = "off"
     /// Uyku zamanlayıcısı (rakip analizi #1): bitiş anı (1970'ten saniye, 0 = kapalı); tam ekrandan çıkınca silinir
     @AppStorage(SleepTimer.key) private var sleepUntil = 0.0
+    @AppStorage(FullscreenPhoto.slidesKey) private var slideCount = 0
+    /// Saatin altındaki kişisel metin, saat boyutu, karartma ve yön kilidi (rakip analizi #25, #22)
+    @AppStorage("fs.text") private var personalText = ""
+    @AppStorage("fs.scale") private var scale = 1.0
+    @AppStorage("fs.dim") private var dim = 0.0
+    @AppStorage("fs.lock") private var locked = false
+    @State private var dimStart: Double?
+    @State private var scaleStart: Double?
     @State private var globeHeight: CGFloat = 260
 
     var body: some View {
-        // Arka plan: fotoğraf (koyulaştırılmış) ya da hareketli; ikisinde de yazılar koyu temanın açık renklerine geçer
+        // Arka plan: fotoğraf (koyulaştırılmış; slayt varsa sırayla) ya da hareketli; ikisinde de yazılar açık renk
         let bg = FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain)
-        let photo = bg == .photo && photoVersion > 0 ? FullscreenPhoto.image : nil
-        let darkText = photo != nil || bg.animated
+        let hasPhoto = bg == .photo && (photoVersion > 0 || slideCount > 0)
+        let darkText = hasPhoto || bg.animated
         GeometryReader { geo in
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 let now = context.date
@@ -222,12 +234,16 @@ struct FullscreenClock: View {
                         TabView(selection: $modelID) {
                             ForEach(ClockModel.allCases) { m in
                                 ClockModelView(model: m, now: now, place: place)
+                                    .scaleEffect(scale)
                                     .padding(.horizontal, 8)
                                     .tag(m.rawValue)
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
                         .frame(height: Self.stageHeight(geo.size, hasItems: !items.isEmpty))
+                        if !personalText.isEmpty {
+                            Text(personalText).font(.title2.weight(.semibold)).multilineTextAlignment(.center)
+                        }
                         ForEach(items) { item in
                             HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight) { dismiss() }
                         }
@@ -249,6 +265,14 @@ struct FullscreenClock: View {
                                     .font(.footnote.monospacedDigit())
                                     .foregroundStyle(sleepUntil > 0 ? Theme.accent : Theme.muted)
                             }
+                            // Yön kilidi: şu anki yöne kilitler (tam ekrandan çıkınca bırakılır)
+                            Button {
+                                locked.toggle()
+                                if locked { OrientationLock.lockCurrent() } else { OrientationLock.unlock() }
+                            } label: {
+                                Image(systemName: locked ? "lock.rotation" : "rotate.right").font(.footnote)
+                            }
+                            .accessibilityLabel(L(locked ? "fs.unlock" : "fs.lock"))
                             Button { dismiss() } label: {
                                 Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
                                     .font(.footnote)
@@ -275,10 +299,12 @@ struct FullscreenClock: View {
                         Color(red: Double(c.r) / 255, green: Double(c.g) / 255, blue: Double(c.b) / 255).ignoresSafeArea()
                     } else if night {
                         Color.black.ignoresSafeArea()
-                    } else if let photo {
+                    } else if hasPhoto, let photo = FullscreenPhoto.image(at: now) {
                         Image(uiImage: photo).resizable().scaledToFill()
                             .overlay(Color.black.opacity(0.45))
                             .ignoresSafeArea()
+                            .id(ObjectIdentifier(photo))
+                            .transition(.opacity)
                     } else if bg.animated {
                         AnimatedBackground(kind: bg)
                     } else {
@@ -291,6 +317,30 @@ struct FullscreenClock: View {
                         NightMode.tint.blendMode(.multiply).ignoresSafeArea().allowsHitTesting(false)
                     }
                 }
+                // Karartma: ekranın kenarında yukarı-aşağı kaydırma; iki parmakla saat boyutu
+                .overlay {
+                    Color.black.opacity(dim * 0.85).ignoresSafeArea().allowsHitTesting(false)
+                }
+                .overlay(alignment: .leading) {
+                    Color.clear.frame(width: 44).contentShape(Rectangle())
+                        .gesture(DragGesture(minimumDistance: 8).onChanged { v in
+                            let start = dimStart ?? dim
+                            dimStart = start
+                            dim = min(1, max(0, start + Double(v.translation.height) / 400))
+                        }.onEnded { _ in dimStart = nil })
+                        .accessibilityHidden(true)
+                }
+                .overlay {
+                    if dimStart != nil {
+                        Text(T("fs.dim", Fmt.percent(Int((dim * 100).rounded())))).font(.headline.monospacedDigit())
+                            .padding(10).background(.regularMaterial, in: Capsule()).allowsHitTesting(false)
+                    }
+                }
+                .simultaneousGesture(MagnifyGesture().onChanged { v in
+                    let start = scaleStart ?? scale
+                    scaleStart = start
+                    scale = min(1, max(0.5, start * v.magnification))
+                }.onEnded { _ in scaleStart = nil })
                 .overlay {
                     // Dokununca saat geri gelir
                     if asleep {
@@ -318,10 +368,14 @@ struct FullscreenClock: View {
         }
         .statusBarHidden()
         .persistentSystemOverlays(.hidden)
-        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+        .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true
+            if locked { OrientationLock.lockCurrent() }
+        }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = UserDefaults.standard.object(forKey: "keepAwake") as? Bool ?? true
             sleepUntil = 0
+            if locked { OrientationLock.unlock() }
         }
     }
 

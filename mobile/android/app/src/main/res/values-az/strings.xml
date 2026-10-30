@@ -177,6 +177,7 @@
     <string name="tools_stopwatch_lapsCaption">Dövrə vaxtları</string>
     <string name="tools_stopwatch_lapAdded">%1$s. dövrə əlavə edildi: %2$s</string>
     <string name="tools_stopwatch_panel">Saniyəölçən</string>
+    <string name="tools_stopwatch_csv">Dövrələri CSV kimi yüklə</string>
     <string name="tools_countdown_title">Geriyə sayım taymeri: müddətə və ya tarixə görə | Saat Tarih</string>
     <string name="tools_countdown_description">Pulsuz geriyə sayım: dəqiqə taymeri və ya seçdiyiniz tarixə qalan vaxt. Yeni ilə və bayrama geriyə sayım, səsli xəbərdarlıq və tam ekran.</string>
     <string name="tools_countdown_h1">Geriyə sayım</string>
@@ -212,6 +213,7 @@
     <string name="tools_countdown_copyLink">Keçidi kopyala</string>
     <string name="tools_countdown_copied">Keçid kopyalandı</string>
     <string name="tools_countdown_shareNote">Seçdiyiniz tarixin keçidini paylaşa bilərsiniz; keçid açılanda geriyə sayım avtomatik başlayır.</string>
+    <string name="tools_countdown_addMinute">+1 dəq</string>
     <string name="tools_alarm_title">Onlayn zəngli saat: təkrar və təxirə salma | Saat Tarih</string>
     <string name="tools_alarm_description">Brauzerdə işləyən pulsuz zəngli saat: vaxt, ad, seçilmiş günlərdə təkrar, 5 dəqiqəlik təxirə salma və bildirişlər. Səhifə açıq olduqca çalır.</string>
     <string name="tools_alarm_h1">Onlayn zəngli saat</string>
@@ -238,6 +240,7 @@
     <string name="tools_alarm_note">Vacib oyanışlar üçün telefonunuzun öz zəngli saatını da qurun; səhifə bağlı olarsa, brauzerdəki zəngli saat çalmayacaq.</string>
     <string name="tools_alarm_panel">Zəngli saat</string>
     <string name="tools_alarm_defaultLabel">Zəngli saat</string>
+    <string name="tools_alarm_soundLabel">Zəng səsi</string>
     <string name="tools_alarm_dayNames_0">B.e.</string>
     <string name="tools_alarm_dayNames_1">Ç.a.</string>
     <string name="tools_alarm_dayNames_2">Ç.</string>
@@ -289,6 +292,13 @@
     <string name="tools_pomodoro_noiseNote">Səs yalnız iş müddəti gedərkən çalır; brauzerdə yaradılır, heç nə yüklənmir.</string>
     <string name="tools_pomodoro_empty">Hələ tamamlanmış pomodoro yoxdur.</string>
     <string name="tools_pomodoro_minUnit">dəq</string>
+    <string name="tools_pomodoro_csv">Keçmişi CSV kimi yüklə</string>
+    <string name="tools_pomodoro_streak">Seriya: %1$s gün ardıcıl</string>
+    <string name="tools_pomodoro_goalLabel">Gündəlik hədəf (dövrə)</string>
+    <string name="tools_pomodoro_goalProgress">Bu gün %1$s/%2$s dövrə</string>
+    <string name="tools_pomodoro_goalDone">Gündəlik hədəfə çatıldı</string>
+    <string name="tools_pomodoro_tagLabel">Etiket</string>
+    <string name="tools_pomodoro_byTag">Son 7 gündə etiketlərə görə</string>
     <string name="datecalc_title">Tarix kalkulyatoru: günlər, iş günləri, yaş | Saat Tarih</string>
     <string name="datecalc_description">İki tarix arasında neçə gün və iş günü var? Tarixə gün, ay və ya il əlavə edin, çıxın, yaşı hesablayın. Türkiyənin rəsmi bayramları nəzərə alınır.</string>
     <string name="datecalc_h1">Tarix kalkulyatoru</string>
@@ -391,7 +401,7 @@
     <string name="weather_precipitation">Yağıntı</string>
     <string name="weather_uv">UB indeksi</string>
     <string name="weather_hourlyHeading">Saatlıq proqnoz (24 saat)</string>
-    <string name="weather_dailyHeading">7 günlük proqnoz</string>
+    <string name="weather_dailyHeading">14 günlük proqnoz</string>
     <string name="weather_loading">Hava məlumatı alınır…</string>
     <string name="weather_error">Hava məlumatı alına bilmədi. Bağlantınızı yoxlayıb yenidən cəhd edin.</string>
     <string name="weather_retry">Yenidən cəhd et</string>
@@ -463,6 +473,34 @@
     <string name="list_fullText">Tam mətn</string>
     <string name="list_label">E-poçt siyahısı</string>
     <string name="list_formErr">Qeydiyyat alınmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin.</string>
+    <string name="prayer_kerahatHeading">Kərahət vaxtları (təxmini)</string>
+    <string name="prayer_kerahatNames_israk">Günəş doğarkən (işraq)</string>
+    <string name="prayer_kerahatNames_istiva">Günorta öncəsi (istiva)</string>
+    <string name="prayer_kerahatNames_isfirar">Günəş batarkən (isfirar)</string>
+    <string name="prayer_kerahatNote">Bu vaxtlarda nafilə namaz qılınmır. Diyanətin açıqladığı dəqiq dəqiqə ölçüsü yoxdur; təqvimlərdə geniş yayılmış təxminən 45 dəqiqə istifadə olunub (günorta öncəsi üçün mənbələr 10–45 dəqiqə göstərir).</string>
+    <string name="nature_goldenAm">Səhər qızıl saat</string>
+    <string name="nature_goldenPm">Axşam qızıl saat</string>
+    <string name="nature_blueAm">Səhər mavi saat</string>
+    <string name="nature_bluePm">Axşam mavi saat</string>
+    <string name="nature_lightNote">Qızıl saat: Günəş üfüqün 6° üstü ilə 4° altı arasında; yumşaq, isti işıq. Mavi saat: Günəş üfüqün 4° ilə 6° altında; mavi alatoran. Fotoqraflar üçün.</string>
+    <string name="zakat_fitreHeading">Fitrə (sədəqeyi-fitr)</string>
+    <string name="zakat_fitreText">Türkiyə Diyanət İşləri Başqanlığının Din İşləri Ali Şurası %1$s ili üçün fitrəni adambaşına %2$s TL açıqladı (%3$s). Etibarlıdır: %1$s Ramazanından növbəti Ramazana qədər.</string>
+    <string name="zakat_fitrePeople">Adam sayı (himayənizdəkilər daxil)</string>
+    <string name="zakat_fitreTotal">Cəmi fitrə</string>
+    <string name="zakat_fitreNote">Məbləğ Türkiyə üçündür və ən aşağı ölçüdür; imkanı olan xurma, kişmiş kimi daha yüksək ölçü ilə verə bilər. Fitrə bayram namazından əvvəl verilir.</string>
+    <string name="hijriConv_h1">Hicri təqvim çeviricisi</string>
+    <string name="hijriConv_toHijri">Miladidən hicriyə</string>
+    <string name="hijriConv_toGreg">Hicridən miladiyə</string>
+    <string name="hijriConv_gregLabel">Miladi tarix</string>
+    <string name="hijriConv_yearLabel">Hicri il</string>
+    <string name="hijriConv_monthLabel">Ay</string>
+    <string name="hijriConv_dayLabel">Gün</string>
+    <string name="hijriConv_dayMax">Bu hicri ay %1$s gündür.</string>
+    <string name="tools_pomodoro_tags_none">Etiketsiz</string>
+    <string name="tools_pomodoro_tags_work">İş</string>
+    <string name="tools_pomodoro_tags_study">Dərs</string>
+    <string name="tools_pomodoro_tags_personal">Şəxsi</string>
+    <string name="tools_pomodoro_tags_other">Digər</string>
     <string name="common_done">Hazır</string>
     <string name="notify_heading">Vaxt bildirişləri</string>
     <string name="notify_enable">Namaz vaxtlarında bildiriş al</string>
@@ -1084,5 +1122,47 @@
     <string name="sync_note">Ayarlarınız, dünya saatları, geri sayımlar, saxlanmış yerlər, pomodoro və yuxu qeydləri, eləcə də ibadət qeydləri eyni Apple hesabındakı iPhone, iPad və Mac-da sinxronlaşdırılır. Məlumat iCloud hesabınızda qalır, bizə gəlmir. Məkan, zəngli saatlar, işləyən sayğaclar, bildiriş ayarları, nişanlar və fotolar hər cihazda ayrıdır.</string>
     <string name="sync_androidTitle">Ehtiyat nüsxə və yeni telefon</string>
     <string name="sync_androidNote">Telefonun Google ehtiyat nüsxəsi açıqdırsa, ayarlarınız və qeydləriniz (dünya saatları, geri sayımlar, zəngli saatlar, pomodoro, yuxu və ibadət qeydləri, fotolar) Google hesabınızdakı ehtiyat nüsxəyə düşür və yeni telefona keçəndə ya tətbiqi yenidən quranda bərpa olunur. Bu ehtiyat nüsxəni Google idarə edir; bizə heç nə gəlmir. Telefon Ayarları › Google › Ehtiyat nüsxə.</string>
+    <string name="home_item_battery">Batareya</string>
+    <string name="home_item_alarm">Növbəti zəngli saat</string>
+    <string name="home_alarmNone">Zəngli saat qurulmayıb</string>
+    <string name="home_charging">şarj olunur</string>
+    <string name="look_text">Saatın altındakı mətn</string>
+    <string name="look_textPlaceholder">məs. Sabahınız xeyir!</string>
+    <string name="look_textNote">Saat ekranında və tam ekranda saatın altında görünür; yalnız bu cihazda saxlanılır.</string>
+    <string name="look_slideshow">Foto slayd</string>
+    <string name="look_slideAdd">Foto əlavə et</string>
+    <string name="look_slideClear">Slaydı təmizlə</string>
+    <string name="look_slideEvery">Dəyişmə aralığı</string>
+    <string name="look_slideCount" formatted="false">%1$@ foto</string>
+    <string name="look_slideNote">Tam ekran fonunda ən çox 10 foto növbə ilə göstərilir; fotolar yalnız bu cihazda qalır.</string>
+    <string name="look_size">Saat ölçüsü</string>
+    <string name="look_fsNote">Tam ekranda ekranın kənarında yuxarı və ya aşağı sürüşdürərək ekranı qaralda, iki barmaqla saatı böyüdüb kiçildə bilərsiniz.</string>
+    <string name="fs_lock">İstiqaməti kilidlə</string>
+    <string name="fs_unlock">İstiqamət kilidini aç</string>
+    <string name="fs_dim" formatted="false">Qaraltma %1$@</string>
+    <string name="share_prayer">Vaxtları paylaş</string>
+    <string name="share_card">Paylaş</string>
+    <string name="alarm_quick">Tez zəngli saat</string>
+    <string name="alarm_quickIn" formatted="false">%1$@ dəq sonra</string>
+    <string name="alarm_quickSet" formatted="false">Zəngli saat quruldu: %1$@</string>
+    <string name="alarm_swipe">Dayandırmaq üçün sürüşdürün</string>
+    <string name="alarm_pre">Çalmazdan əvvəl xəbər ver</string>
+    <string name="alarm_preOff">Bağlı</string>
+    <string name="alarm_preMin" formatted="false">%1$@ dəq əvvəl</string>
+    <string name="alarm_preTitle" formatted="false">Yaxınlaşan zəngli saat: %1$@</string>
+    <string name="alarm_preBody">Tez oyandınızsa bu çalmanı keçə bilərsiniz.</string>
+    <string name="alarm_preSkip">Bu zəngli saatı keç</string>
+    <string name="alarm_preNote">Səssiz bildiriş; oradan zəngli saatı keçə bilərsiniz.</string>
+    <string name="alarm_speak">Vaxtı səsli desin</string>
+    <string name="alarm_speakNote">Zəngli saat çalarkən vaxt telefonun nitq mühərriki ilə deyilir.</string>
+    <string name="alarm_speakNoteIOS">Zəngli saatın səsi vaxtı deyən qısa bir yazı ilə əvəz olunur (telefonda yaradılır).</string>
+    <string name="alarm_speakText" formatted="false">Saat %1$@</string>
+    <string name="csv_laps">Dövrələri paylaş (CSV)</string>
+    <string name="csv_pomo">Tarixçəni paylaş (CSV)</string>
+    <string name="world_dstForward" formatted="false">%1$@: saatlar %2$@ irəli çəkilir</string>
+    <string name="world_dstBack" formatted="false">%1$@: saatlar %2$@ geri çəkilir</string>
+    <string name="world_dstTitle" formatted="false">%1$@: saat dəyişir</string>
+    <string name="hijriConv_outsideApp">Diyanət cədvəlindən kənarda; Ümmül-Qura təqvimi ilə hesablandı, bir gün fərq ola bilər.</string>
+    <string name="common_secondsShort">san</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

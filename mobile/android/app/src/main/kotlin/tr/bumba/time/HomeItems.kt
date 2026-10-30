@@ -20,6 +20,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Alarm
+import androidx.compose.material.icons.filled.BatteryChargingFull
+import androidx.compose.material.icons.filled.BatteryStd
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.DragHandle
@@ -76,7 +79,9 @@ enum class HomeItem(val key: String, val icon: ImageVector) {
     WORLD("world", Icons.Filled.Language),
     WEATHER("weather", Icons.Filled.WbSunny),
     SUN("sun", Icons.Filled.WbTwilight),
-    GLOBE("globe", Icons.Filled.Public);
+    GLOBE("globe", Icons.Filled.Public),
+    BATTERY("battery", Icons.Filled.BatteryStd),
+    ALARM("alarm", Icons.Filled.Alarm);
 
     val title: String get() = L("home.item.$key")
 
@@ -98,13 +103,15 @@ enum class HomeItem(val key: String, val icon: ImageVector) {
         WEATHER -> Tab.WEATHER
         WORLD, GLOBE -> Tab.WORLD
         SUN -> Tab.SEASONS
+        ALARM -> { Nav.toolsRoute = "alarm"; Tab.TOOLS }
+        BATTERY -> Nav.tab
     }
 
     companion object {
         fun of(key: String) = entries.firstOrNull { it.key == key }
 
         /** Dönen dünya varsayılan olarak açık (18 Ekim 2026, sahibin isteği); "Düzenle" ile kapatılabilir */
-        const val DEFAULT_RAW = "-date,-week,-hijri,-next,-prayers,-upcoming,-world,-weather,-sun,-globe" // varsayılan: yalnız saat (30 Ekim 2026)
+        const val DEFAULT_RAW = "-date,-week,-hijri,-next,-prayers,-upcoming,-world,-weather,-sun,-globe,-battery,-alarm" // varsayılan: yalnız saat (30 Ekim 2026)
     }
 }
 
@@ -240,6 +247,47 @@ fun HomeItemView(item: HomeItem, now: Instant, place: AppPlace, globeHeight: Dp,
             GlobeView(Modifier.fillMaxSize(), interactive = false)
             // Küçük kopyada dokunuş haritaya gitmez; Dünya sekmesi açılır
             Box(Modifier.matchParentSize().clickable { onOpen(item) })
+        }
+        HomeItem.BATTERY -> BatteryLine()
+        HomeItem.ALARM -> NextAlarmCard(now, tap)
+    }
+}
+
+/** Pil düzeyi (rakip analizi #23): sistemin yapışkan pil yayınından okunur */
+@Composable
+private fun BatteryLine() {
+    val ctx = androidx.compose.ui.platform.LocalContext.current
+    val i = ctx.registerReceiver(null, android.content.IntentFilter(android.content.Intent.ACTION_BATTERY_CHANGED)) ?: return
+    val level = i.getIntExtra(android.os.BatteryManager.EXTRA_LEVEL, -1)
+    val scale = i.getIntExtra(android.os.BatteryManager.EXTRA_SCALE, 100)
+    if (level < 0 || scale <= 0) return
+    val pct = level * 100 / scale
+    val status = i.getIntExtra(android.os.BatteryManager.EXTRA_STATUS, -1)
+    val charging = status == android.os.BatteryManager.BATTERY_STATUS_CHARGING || status == android.os.BatteryManager.BATTERY_STATUS_FULL
+    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+        Icon(if (charging) Icons.Filled.BatteryChargingFull else Icons.Filled.BatteryStd, null,
+            tint = if (pct <= 20 && !charging) Theme.c.accent else Theme.c.muted)
+        Text(Fmt.percent(pct) + if (charging) " · " + L("home.charging") else "", color = if (pct <= 20 && !charging) Theme.c.accent else Theme.c.muted,
+            fontSize = 14.sp, style = Tnum)
+    }
+}
+
+/** Uygulamada kurulu sıradaki alarm (rakip analizi #23) */
+@Composable
+private fun NextAlarmCard(now: Instant, modifier: Modifier) {
+    val next = AlarmItem.load().filter { it.enabled }.map { it to it.nextAt(now.toEpochMilli()) }.minByOrNull { it.second }
+    AppCard(modifier) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Column(Modifier.weight(1f)) {
+                Text(L("home.item.alarm"), color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                if (next != null) {
+                    val at = Instant.ofEpochMilli(next.second).atZone(java.time.ZoneId.systemDefault())
+                    Text(Fmt.time(at) + if (next.first.label.isEmpty()) "" else " · " + next.first.label,
+                        color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+                } else Text(L("home.alarmNone"), color = Theme.c.muted, fontSize = 15.sp)
+            }
+            if (next != null) Text(Fmt.hm(((next.second - now.toEpochMilli()) / 1000).toInt()), color = Theme.c.accent, fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold, style = Tnum)
         }
     }
 }

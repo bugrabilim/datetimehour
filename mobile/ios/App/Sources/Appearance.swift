@@ -38,6 +38,70 @@ enum FullscreenPhoto {
         PhotoFile.remove(name)
         UserDefaults.standard.set(0.0, forKey: versionKey)
     }
+
+    // MARK: Fotoğraf slaytı (rakip analizi #24): ana fotoğrafa ek en çok 10 fotoğraf, `fsSlideEvery` saniyede bir sırayla
+    static let slidesKey = "fsSlides", slideVersionKey = "fsSlideV", slideEveryKey = "fsSlideEvery"
+    static let maxSlides = 10
+    static let intervals = [10, 30, 60, 300]
+    private static func slideName(_ i: Int) -> String { "fs-slide-\(i).jpg" }
+    static var slideCount: Int { UserDefaults.standard.integer(forKey: slidesKey) }
+    static var hasAny: Bool { UserDefaults.standard.double(forKey: versionKey) > 0 || slideCount > 0 }
+
+    /// Seçilen fotoğrafları slayda ekler; eklenen sayıyı döner
+    static func addSlides(_ items: [Data]) -> Int {
+        var n = slideCount, added = 0
+        for d in items where n < maxSlides {
+            if PhotoFile.save(d, name: slideName(n), maxSide: 1600) { n += 1; added += 1 }
+        }
+        UserDefaults.standard.set(n, forKey: slidesKey)
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: slideVersionKey)
+        return added
+    }
+
+    static func clearSlides() {
+        for i in 0..<maxSlides { PhotoFile.remove(slideName(i)) }
+        UserDefaults.standard.set(0, forKey: slidesKey)
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: slideVersionKey)
+    }
+
+    /// O anda gösterilecek fotoğraf (ana fotoğraf + slaytlar sırayla)
+    static func image(at date: Date) -> UIImage? {
+        let d = UserDefaults.standard
+        var list: [(String, Double)] = []
+        let v = d.double(forKey: versionKey), sv = d.double(forKey: slideVersionKey)
+        if v > 0 { list.append((name, v)) }
+        for i in 0..<slideCount { list.append((slideName(i), sv)) }
+        guard !list.isEmpty else { return nil }
+        let every = max(5, d.integer(forKey: slideEveryKey) == 0 ? 30 : d.integer(forKey: slideEveryKey))
+        let i = Int(date.timeIntervalSince1970 / Double(every)) % list.count
+        return PhotoFile.image(list[i].0, version: list[i].1)
+    }
+}
+
+/// Tam ekranda yön kilidi (rakip analizi #22): AppDelegate bu maskeyi döner
+@MainActor
+enum OrientationLock {
+    static var mask: UIInterfaceOrientationMask = UIDevice.current.userInterfaceIdiom == .pad ? .all : .allButUpsideDown
+
+    static func set(_ m: UIInterfaceOrientationMask) {
+        mask = m
+        guard let scene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first else { return }
+        for w in scene.windows { w.rootViewController?.setNeedsUpdateOfSupportedInterfaceOrientations() }
+        scene.requestGeometryUpdate(.iOS(interfaceOrientations: m)) { _ in }
+    }
+
+    /// Şu anki yöne kilitle
+    static func lockCurrent() {
+        let o = UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.interfaceOrientation }.first ?? .portrait
+        switch o {
+        case .landscapeLeft: set(.landscapeLeft)
+        case .landscapeRight: set(.landscapeRight)
+        case .portraitUpsideDown: set(.portraitUpsideDown)
+        default: set(.portrait)
+        }
+    }
+
+    static func unlock() { set(UIDevice.current.userInterfaceIdiom == .pad ? .all : .allButUpsideDown) }
 }
 
 /// Telefonda saklanan küçültülmüş fotoğraflar (tam ekran saat, geri sayımlar): Application Support altında JPEG.
@@ -84,7 +148,12 @@ struct AppearanceView: View {
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @AppStorage(FullscreenBackground.key) private var bgRaw = ""
     @AppStorage(NightMode.key) private var nightRaw = "off"
+    @AppStorage("fs.text") private var personalText = ""
+    @AppStorage("fs.scale") private var scale = 1.0
+    @AppStorage(FullscreenPhoto.slidesKey) private var slideCount = 0
+    @AppStorage(FullscreenPhoto.slideEveryKey) private var slideEvery = 30
     @State private var item: PhotosPickerItem?
+    @State private var slideItems: [PhotosPickerItem] = []
 
     private var background: FullscreenBackground { FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain) }
 
@@ -122,13 +191,54 @@ struct AppearanceView: View {
                     Button(L("look.photo.remove"), role: .destructive) {
                         FullscreenPhoto.remove()
                         photoVersion = 0
-                        if background == .photo { bgRaw = FullscreenBackground.plain.rawValue }
+                        if background == .photo && slideCount == 0 { bgRaw = FullscreenBackground.plain.rawValue }
                     }
                 }
             } header: {
                 Text(L("look.photo"))
             } footer: {
                 Text(L("look.photo.note") + " " + L("look.bg.note"))
+            }
+            // Fotoğraf slaytı: ana fotoğrafa ek en çok 10 fotoğraf sırayla
+            Section {
+                if FullscreenPhoto.maxSlides - slideCount > 0 {
+                    PhotosPicker(selection: $slideItems, maxSelectionCount: FullscreenPhoto.maxSlides - slideCount, matching: .images) {
+                        Label(L("look.slideAdd"), systemImage: "photo.stack")
+                    }
+                }
+                if slideCount > 0 {
+                    Text(T("look.slideCount", slideCount)).foregroundStyle(Theme.muted)
+                    Picker(L("look.slideEvery"), selection: $slideEvery) {
+                        ForEach(FullscreenPhoto.intervals, id: \.self) { s in
+                            Text(s < 60 ? "\(s) " + L("common.secondsShort") : "\(s / 60) " + L("client.minuteShort")).tag(s)
+                        }
+                    }
+                    Button(L("look.slideClear"), role: .destructive) {
+                        FullscreenPhoto.clearSlides()
+                        slideCount = 0
+                        if background == .photo && photoVersion == 0 { bgRaw = FullscreenBackground.plain.rawValue }
+                    }
+                }
+            } header: {
+                Text(L("look.slideshow"))
+            } footer: {
+                Text(L("look.slideNote"))
+            }
+            // Saatin altındaki kişisel metin ve tam ekranda saat boyutu (rakip analizi #25, #22)
+            Section {
+                TextField(L("look.textPlaceholder"), text: Binding(get: { personalText }, set: { personalText = String($0.prefix(60)) }))
+            } header: {
+                Text(L("look.text"))
+            } footer: {
+                Text(L("look.textNote"))
+            }
+            Section {
+                Slider(value: $scale, in: 0.5...1.0, step: 0.05) { Text(L("look.size")) }
+                Text("\(Int((scale * 100).rounded()))%").monospacedDigit().foregroundStyle(Theme.muted)
+            } header: {
+                Text(L("look.size"))
+            } footer: {
+                Text(L("look.fsNote"))
             }
             // Gece / yatak başı modu (tam ekran saat)
             Section {
@@ -147,6 +257,18 @@ struct AppearanceView: View {
         .tint(Theme.accent)
         .navigationTitle(L("look.title"))
         .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: slideItems) { _, new in
+            guard !new.isEmpty else { return }
+            Task {
+                var datas: [Data] = []
+                for it in new { if let d = try? await it.loadTransferable(type: Data.self) { datas.append(d) } }
+                if FullscreenPhoto.addSlides(datas) > 0 {
+                    slideCount = FullscreenPhoto.slideCount
+                    bgRaw = FullscreenBackground.photo.rawValue
+                }
+                slideItems = []
+            }
+        }
         .onChange(of: item) { _, new in
             guard let new else { return }
             Task {
