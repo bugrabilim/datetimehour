@@ -42,3 +42,15 @@ struct NatureVectors: Decodable {
     let moonPos: [MoonPos]
     let moonRise: [MoonRise]
 }
+
+struct QiblaVectors: Decodable {
+    struct Case: Decodable {
+        let id: String
+        let lat: Double, lon: Double
+        let bearing: Double, km: Double
+        let tz: [Double]
+        let time: [Double?]
+    }
+    let dates: [[Int]]
+    let cases: [Case]
+}

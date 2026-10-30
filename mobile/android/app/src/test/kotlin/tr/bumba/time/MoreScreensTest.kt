@@ -132,6 +132,20 @@ class MoreScreensTest {
         Prefs.saveProvince("istanbul")
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }
     }
+    /** Kıble (Robolectric'te pusula sensörü yok: kuzey yukarıda sabit kadran) ve örnek verili yakındaki camiler */
+    @Test fun qibla() {
+        Prefs.saveProvince("istanbul")
+        shot("tr-kible") { QiblaScreen {} }
+        shot("ar-kible-koyu", "ar", dark = true) { QiblaScreen {} }
+        val p = AppPlace.current()
+        NearbyMosques.seed(p.lat, p.lon, listOf(
+            Mosque("Süleymaniye Camii", 41.0162, 28.9640, 0.0),
+            Mosque("Yeni Cami", 41.0171, 28.9706, 0.0),
+            Mosque("Rüstem Paşa Camii", 41.0176, 28.9688, 0.0),
+            Mosque("Sultanahmet Camii", 41.0054, 28.9768, 0.0),
+        ))
+        shot("tr-yakindaki-camiler") { NearbyMosquesScreen {} }
+    }
     @Test fun morning() {
         seedWeather()
         shot("tr-gunaydin") { MorningCard {} }

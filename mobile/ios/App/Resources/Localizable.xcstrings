@@ -28140,6 +28140,951 @@
           }
         }
       }
+    },
+    "qibla.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kıble"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qiblə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "القبلة"
+          }
+        }
+      }
+    },
+    "qibla.link": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kıble ve yakındaki camiler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla and nearby mosques"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla und Moscheen in der Nähe"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qiblə və yaxınlıqdakı məscidlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "القبلة والمساجد القريبة"
+          }
+        }
+      }
+    },
+    "qibla.angle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kıble açısı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla direction"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla-Richtung"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qiblə istiqaməti"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اتجاه القبلة"
+          }
+        }
+      }
+    },
+    "qibla.angleNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kuzeyden saat yönünde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clockwise from north"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Uhrzeigersinn von Norden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimaldan saat əqrəbi istiqamətində"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باتجاه عقارب الساعة من الشمال"
+          }
+        }
+      }
+    },
+    "qibla.distance": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kâbe'ye uzaklık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Distance to the Kaaba"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entfernung zur Kaaba"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kəbəyə məsafə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المسافة إلى الكعبة"
+          }
+        }
+      }
+    },
+    "qibla.time": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kıble saati"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibla-Zeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qiblə saatı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت القبلة"
+          }
+        }
+      }
+    },
+    "qibla.timeNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu saatte Güneş tam kıble yönündedir: Güneş'e dönen kıbleye dönmüş olur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At this time the Sun is exactly in the qibla direction: facing the Sun means facing the qibla."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zu dieser Zeit steht die Sonne genau in Qibla-Richtung: Wer zur Sonne blickt, blickt zur Qibla."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu vaxt Günəş tam qiblə istiqamətindədir: Günəşə üz tutan qibləyə üz tutmuş olur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في هذا الوقت تكون الشمس في اتجاه القبلة تمامًا: من يستقبل الشمس يستقبل القبلة."
+          }
+        }
+      }
+    },
+    "qibla.noTime": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bugün Güneş kıble yönünden geçmiyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Today the Sun does not pass the qibla direction."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute steht die Sonne nicht in Qibla-Richtung."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu gün Günəş qiblə istiqamətindən keçmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تمر الشمس اليوم باتجاه القبلة."
+          }
+        }
+      }
+    },
+    "qibla.aligned": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kıbleye dönüksünüz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are facing the qibla"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie blicken zur Qibla"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qibləyə üz tutmusunuz"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أنت متجه إلى القبلة"
+          }
+        }
+      }
+    },
+    "qibla.turn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonu düz tutun ve okun gösterdiği yöne dönün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold the phone flat and turn toward the arrow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halten Sie das Telefon waagerecht und drehen Sie sich in Pfeilrichtung"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonu düz tutun və oxun göstərdiyi tərəfə dönün"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أمسك الهاتف بشكل مستوٍ واستدر نحو السهم"
+          }
+        }
+      }
+    },
+    "qibla.noCompass": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazda pusula yok. Yukarıdaki açıyı kuzeyden saat yönünde ölçün."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device has no compass. Measure the angle above clockwise from north."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Gerät hat keinen Kompass. Messen Sie den Winkel oben im Uhrzeigersinn von Norden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihazda kompas yoxdur. Yuxarıdakı bucağı şimaldan saat əqrəbi istiqamətində ölçün."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا توجد بوصلة في هذا الجهاز. قِس الزاوية أعلاه باتجاه عقارب الساعة من الشمال."
+          }
+        }
+      }
+    },
+    "qibla.calibrate": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pusula ayarsız olabilir: telefonu havada 8 çizerek birkaç kez çevirin; mıknatıs, metal ve elektronik eşyalardan uzak durun."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The compass may need calibrating: move the phone in a figure 8 a few times and keep away from magnets, metal and electronics."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kompass muss evtl. kalibriert werden: Bewegen Sie das Telefon einige Male in Form einer 8 und halten Sie Abstand zu Magneten, Metall und Elektronik."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kompas tənzimlənməmiş ola bilər: telefonu havada bir neçə dəfə 8 çəkərək fırladın; maqnit, metal və elektron əşyalardan uzaq durun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قد تحتاج البوصلة إلى معايرة: حرّك الهاتف على شكل الرقم 8 عدة مرات وابتعد عن المغناطيس والمعادن والأجهزة الإلكترونية."
+          }
+        }
+      }
+    },
+    "qibla.magnetic": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pusula manyetik kuzeye göre çalışıyor; gerçek kuzey için konum iznini açın (Türkiye'de fark 4–7°)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The compass uses magnetic north; allow location for true north."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kompass nutzt magnetisch Nord; erlauben Sie den Standort für geografisch Nord."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kompas maqnit şimalına görə işləyir; həqiqi şimal üçün məkan icazəsini açın."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعمل البوصلة وفق الشمال المغناطيسي؛ اسمح بالموقع للحصول على الشمال الحقيقي."
+          }
+        }
+      }
+    },
+    "qibla.atKaaba": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kâbe'nin yanındasınız."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You are at the Kaaba."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie sind an der Kaaba."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kəbənin yanındasınız."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أنت عند الكعبة."
+          }
+        }
+      }
+    },
+    "qibla.method": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kıble yönü Kâbe'ye en kısa yol (büyük daire) yönüdür; seçili yerin koordinatıyla telefonda hesaplanır. İl seçiliyse il merkezi esas alınır (il içinde fark 1°'den az). Kıble saati Diyanet'in yayımladığı kıble saatiyle ±1 dk uyumludur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The qibla is the direction of the shortest path (great circle) to the Kaaba, calculated on the phone from the selected place's coordinates. The qibla time matches the published Diyanet qibla time within ±1 min."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Qibla ist die Richtung des kürzesten Weges (Großkreis) zur Kaaba, auf dem Telefon aus den Koordinaten des gewählten Ortes berechnet. Die Qibla-Zeit stimmt mit der veröffentlichten Diyanet-Qibla-Zeit auf ±1 Min. überein."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qiblə Kəbəyə ən qısa yolun (böyük dairə) istiqamətidir; seçilmiş yerin koordinatı ilə telefonda hesablanır. Qiblə saatı Diyanətin dərc etdiyi qiblə saatı ilə ±1 dəq uyğundur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "القبلة هي اتجاه أقصر طريق (الدائرة العظمى) إلى الكعبة، وتُحسب على الهاتف من إحداثيات المكان المحدد. ويتوافق وقت القبلة مع وقت القبلة الذي تنشره رئاسة الشؤون الدينية التركية بفارق ±1 دقيقة."
+          }
+        }
+      }
+    },
+    "qibla.mosques": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yakındaki camiler"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nearby mosques"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moscheen in der Nähe"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaxınlıqdakı məscidlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المساجد القريبة"
+          }
+        }
+      }
+    },
+    "qibla.mosqueQuery": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cami"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mosque"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moschee"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "məscid"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مسجد"
+          }
+        }
+      }
+    },
+    "qibla.mosqueUnnamed": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cami"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mosque"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moschee"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məscid"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مسجد"
+          }
+        }
+      }
+    },
+    "qibla.mosquesNone": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yakında cami bulunamadı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No mosques found nearby."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Moscheen in der Nähe gefunden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yaxınlıqda məscid tapılmadı."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يُعثر على مساجد قريبة."
+          }
+        }
+      }
+    },
+    "qibla.mosquesError": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camiler yüklenemedi. İnternet bağlantısını denetleyip yeniden deneyin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not load mosques. Check your connection and try again."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moscheen konnten nicht geladen werden. Prüfen Sie die Verbindung und versuchen Sie es erneut."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məscidlər yüklənmədi. İnternet bağlantısını yoxlayıb yenidən cəhd edin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذّر تحميل المساجد. تحقق من الاتصال وحاول مرة أخرى."
+          }
+        }
+      }
+    },
+    "qibla.mosquesNear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ yakınında (konum izni yok)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Near %1$@ (no location permission)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In der Nähe von %1$@ (keine Standortberechtigung)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ yaxınlığında (məkan icazəsi yoxdur)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بالقرب من %1$@ (لا يوجد إذن بالموقع)"
+          }
+        }
+      }
+    },
+    "qibla.mosquesNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arama Apple Haritalar ile yapılır: arama sözcüğü ve yaklaşık bölge Apple'a gider. Bir camiye dokununca Haritalar'da açılır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The search uses Apple Maps: the search word and approximate area go to Apple. Tap a mosque to open it in Maps."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Suche nutzt Apple Karten: Suchbegriff und ungefähres Gebiet gehen an Apple. Tippen Sie auf eine Moschee, um sie in Karten zu öffnen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Axtarış Apple Xəritələr ilə edilir: axtarış sözü və təxmini ərazi Apple-a gedir. Məscidə toxunanda Xəritələrdə açılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يتم البحث عبر خرائط Apple: تُرسل كلمة البحث والمنطقة التقريبية إلى Apple. اضغط على مسجد لفتحه في الخرائط."
+          }
+        }
+      }
+    },
+    "qibla.mosquesNoteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camiler OpenStreetMap verisinden Overpass servisiyle aranır: yalnız yaklaşık bölge (iki ondalığa yuvarlanmış koordinat) bu servise gider. Bir camiye dokununca harita uygulamasında açılır. Veri © OpenStreetMap katkıcıları (ODbL)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mosques are searched in OpenStreetMap data via the Overpass service: only the approximate area (coordinates rounded to two decimals) is sent. Tap a mosque to open it in your maps app. Data © OpenStreetMap contributors (ODbL)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Moscheen werden in OpenStreetMap-Daten über den Overpass-Dienst gesucht: Nur das ungefähre Gebiet (auf zwei Dezimalstellen gerundete Koordinaten) wird gesendet. Tippen Sie auf eine Moschee, um sie in Ihrer Karten-App zu öffnen. Daten © OpenStreetMap-Mitwirkende (ODbL)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məscidlər OpenStreetMap məlumatında Overpass xidməti ilə axtarılır: yalnız təxmini ərazi (iki onluğa yuvarlaqlaşdırılmış koordinat) göndərilir. Məscidə toxunanda xəritə tətbiqində açılır. Məlumat © OpenStreetMap iştirakçıları (ODbL)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يتم البحث عن المساجد في بيانات OpenStreetMap عبر خدمة Overpass: تُرسل المنطقة التقريبية فقط (إحداثيات مقرّبة إلى منزلتين عشريتين). اضغط على مسجد لفتحه في تطبيق الخرائط. البيانات © مساهمو OpenStreetMap ‏(ODbL)."
+          }
+        }
+      }
+    },
+    "qibla.openMaps": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haritada ara"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search in maps"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In Karten suchen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xəritədə axtar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابحث في الخرائط"
+          }
+        }
+      }
+    },
+    "qibla.km": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ km"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ km"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ km"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ km"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ كم"
+          }
+        }
+      }
+    },
+    "qibla.m": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ m"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ m"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ m"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ m"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ م"
+          }
+        }
+      }
+    },
+    "qibla.cardinals": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "K D G B"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "N E S W"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "N O S W"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ş Ş C Q"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ش ق ج غ"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

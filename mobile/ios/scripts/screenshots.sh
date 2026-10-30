@@ -60,7 +60,7 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR dark ekran-about-koyu -openScreen about
@@ -71,6 +71,7 @@ shoot tr tr_TR light ekran-google -openScreen google
 shoot tr tr_TR dark ekran-look-yildizlar -openScreen look -fsBg stars
 shoot tr tr_TR light ekran-look-renk-akisi -openScreen look -fsBg flow
 shoot en en_US light ekran-world-en -openScreen world
+shoot ar ar_SA dark ekran-qibla-ar -openScreen qibla
 # Yatay (yan çevrilmiş): saat sekmesi tam ekran açılır, diğerlerinde alt bar gizli. Sona konur ki sonraki
 # açılışlar dik kalsın; görüntü cihazın dik çerçevesinde yan döner.
 shoot tr tr_TR light tr-yatay-saat -landscape

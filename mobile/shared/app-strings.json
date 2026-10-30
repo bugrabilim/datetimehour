@@ -190,11 +190,11 @@
     "ar": "الوقت وتاريخ اليوم."
   },
   "NSLocationWhenInUseUsageDescription": {
-    "tr": "Bulunduğunuz yerin namaz vakitlerini ve hava durumunu göstermek için. Vakitler telefonda hesaplanır; hava durumu için yalnız yaklaşık konum Apple'ın hava servisine gönderilir.",
-    "en": "To show prayer times and the weather for where you are. Prayer times are calculated on your phone; for the weather only an approximate location is sent to Apple's weather service.",
-    "de": "Um Gebetszeiten und Wetter für Ihren Ort anzuzeigen. Die Gebetszeiten werden auf dem Telefon berechnet; für das Wetter wird nur ein ungefährer Ort an den Wetterdienst von Apple gesendet.",
-    "az": "Olduğunuz yerin namaz vaxtlarını və havasını göstərmək üçün. Vaxtlar telefonda hesablanır; hava üçün yalnız təxmini məkan Apple-ın hava xidmətinə göndərilir.",
-    "ar": "لعرض أوقات الصلاة والطقس في مكانك. تُحسب الأوقات على هاتفك؛ ولأجل الطقس يُرسل موقع تقريبي فقط إلى خدمة الطقس من Apple."
+    "tr": "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir.",
+    "en": "To show prayer times, the qibla direction, nearby mosques and the weather for where you are. Prayer times and the qibla are calculated on your phone; for the weather and the mosque search only an approximate location is sent to Apple's services.",
+    "de": "Um Gebetszeiten, die Qibla-Richtung, Moscheen in der Nähe und das Wetter für Ihren Ort anzuzeigen. Gebetszeiten und Qibla werden auf dem Telefon berechnet; für Wetter und Moscheesuche wird nur ein ungefährer Ort an Apples Dienste gesendet.",
+    "az": "Olduğunuz yerin namaz vaxtlarını, qiblə istiqamətini, yaxınlıqdakı məscidləri və havasını göstərmək üçün. Vaxtlar və qiblə telefonda hesablanır; hava və məscid axtarışı üçün yalnız təxmini məkan Apple-ın xidmətlərinə göndərilir.",
+    "ar": "لعرض أوقات الصلاة واتجاه القبلة والمساجد القريبة والطقس في مكانك. تُحسب الأوقات والقبلة على هاتفك؛ ولأجل الطقس والبحث عن المساجد يُرسل موقع تقريبي فقط إلى خدمات Apple."
   },
   "notify.sound": {
     "tr": "Bildirim sesi",
@@ -2575,5 +2575,194 @@
     "de": "Das Foto bleibt nur auf diesem Telefon und erscheint hinter der Countdown-Karte.",
     "az": "Foto yalnız bu telefonda saxlanılır, geri sayım kartının arxasında göstərilir.",
     "ar": "تُحفظ الصورة على هذا الهاتف فقط وتظهر خلف بطاقة العدّ التنازلي."
+  },
+  "qibla.title": {
+    "tr": "Kıble",
+    "en": "Qibla",
+    "de": "Qibla",
+    "az": "Qiblə",
+    "ar": "القبلة"
+  },
+  "qibla.link": {
+    "tr": "Kıble ve yakındaki camiler",
+    "en": "Qibla and nearby mosques",
+    "de": "Qibla und Moscheen in der Nähe",
+    "az": "Qiblə və yaxınlıqdakı məscidlər",
+    "ar": "القبلة والمساجد القريبة"
+  },
+  "qibla.angle": {
+    "tr": "Kıble açısı",
+    "en": "Qibla direction",
+    "de": "Qibla-Richtung",
+    "az": "Qiblə istiqaməti",
+    "ar": "اتجاه القبلة"
+  },
+  "qibla.angleNote": {
+    "tr": "Kuzeyden saat yönünde",
+    "en": "Clockwise from north",
+    "de": "Im Uhrzeigersinn von Norden",
+    "az": "Şimaldan saat əqrəbi istiqamətində",
+    "ar": "باتجاه عقارب الساعة من الشمال"
+  },
+  "qibla.distance": {
+    "tr": "Kâbe'ye uzaklık",
+    "en": "Distance to the Kaaba",
+    "de": "Entfernung zur Kaaba",
+    "az": "Kəbəyə məsafə",
+    "ar": "المسافة إلى الكعبة"
+  },
+  "qibla.time": {
+    "tr": "Kıble saati",
+    "en": "Qibla time",
+    "de": "Qibla-Zeit",
+    "az": "Qiblə saatı",
+    "ar": "وقت القبلة"
+  },
+  "qibla.timeNote": {
+    "tr": "Bu saatte Güneş tam kıble yönündedir: Güneş'e dönen kıbleye dönmüş olur.",
+    "en": "At this time the Sun is exactly in the qibla direction: facing the Sun means facing the qibla.",
+    "de": "Zu dieser Zeit steht die Sonne genau in Qibla-Richtung: Wer zur Sonne blickt, blickt zur Qibla.",
+    "az": "Bu vaxt Günəş tam qiblə istiqamətindədir: Günəşə üz tutan qibləyə üz tutmuş olur.",
+    "ar": "في هذا الوقت تكون الشمس في اتجاه القبلة تمامًا: من يستقبل الشمس يستقبل القبلة."
+  },
+  "qibla.noTime": {
+    "tr": "Bugün Güneş kıble yönünden geçmiyor.",
+    "en": "Today the Sun does not pass the qibla direction.",
+    "de": "Heute steht die Sonne nicht in Qibla-Richtung.",
+    "az": "Bu gün Günəş qiblə istiqamətindən keçmir.",
+    "ar": "لا تمر الشمس اليوم باتجاه القبلة."
+  },
+  "qibla.aligned": {
+    "tr": "Kıbleye dönüksünüz",
+    "en": "You are facing the qibla",
+    "de": "Sie blicken zur Qibla",
+    "az": "Qibləyə üz tutmusunuz",
+    "ar": "أنت متجه إلى القبلة"
+  },
+  "qibla.turn": {
+    "tr": "Telefonu düz tutun ve okun gösterdiği yöne dönün",
+    "en": "Hold the phone flat and turn toward the arrow",
+    "de": "Halten Sie das Telefon waagerecht und drehen Sie sich in Pfeilrichtung",
+    "az": "Telefonu düz tutun və oxun göstərdiyi tərəfə dönün",
+    "ar": "أمسك الهاتف بشكل مستوٍ واستدر نحو السهم"
+  },
+  "qibla.noCompass": {
+    "tr": "Bu cihazda pusula yok. Yukarıdaki açıyı kuzeyden saat yönünde ölçün.",
+    "en": "This device has no compass. Measure the angle above clockwise from north.",
+    "de": "Dieses Gerät hat keinen Kompass. Messen Sie den Winkel oben im Uhrzeigersinn von Norden.",
+    "az": "Bu cihazda kompas yoxdur. Yuxarıdakı bucağı şimaldan saat əqrəbi istiqamətində ölçün.",
+    "ar": "لا توجد بوصلة في هذا الجهاز. قِس الزاوية أعلاه باتجاه عقارب الساعة من الشمال."
+  },
+  "qibla.calibrate": {
+    "tr": "Pusula ayarsız olabilir: telefonu havada 8 çizerek birkaç kez çevirin; mıknatıs, metal ve elektronik eşyalardan uzak durun.",
+    "en": "The compass may need calibrating: move the phone in a figure 8 a few times and keep away from magnets, metal and electronics.",
+    "de": "Der Kompass muss evtl. kalibriert werden: Bewegen Sie das Telefon einige Male in Form einer 8 und halten Sie Abstand zu Magneten, Metall und Elektronik.",
+    "az": "Kompas tənzimlənməmiş ola bilər: telefonu havada bir neçə dəfə 8 çəkərək fırladın; maqnit, metal və elektron əşyalardan uzaq durun.",
+    "ar": "قد تحتاج البوصلة إلى معايرة: حرّك الهاتف على شكل الرقم 8 عدة مرات وابتعد عن المغناطيس والمعادن والأجهزة الإلكترونية."
+  },
+  "qibla.magnetic": {
+    "tr": "Pusula manyetik kuzeye göre çalışıyor; gerçek kuzey için konum iznini açın (Türkiye'de fark 4–7°).",
+    "en": "The compass uses magnetic north; allow location for true north.",
+    "de": "Der Kompass nutzt magnetisch Nord; erlauben Sie den Standort für geografisch Nord.",
+    "az": "Kompas maqnit şimalına görə işləyir; həqiqi şimal üçün məkan icazəsini açın.",
+    "ar": "تعمل البوصلة وفق الشمال المغناطيسي؛ اسمح بالموقع للحصول على الشمال الحقيقي."
+  },
+  "qibla.atKaaba": {
+    "tr": "Kâbe'nin yanındasınız.",
+    "en": "You are at the Kaaba.",
+    "de": "Sie sind an der Kaaba.",
+    "az": "Kəbənin yanındasınız.",
+    "ar": "أنت عند الكعبة."
+  },
+  "qibla.method": {
+    "tr": "Kıble yönü Kâbe'ye en kısa yol (büyük daire) yönüdür; seçili yerin koordinatıyla telefonda hesaplanır. İl seçiliyse il merkezi esas alınır (il içinde fark 1°'den az). Kıble saati Diyanet'in yayımladığı kıble saatiyle ±1 dk uyumludur.",
+    "en": "The qibla is the direction of the shortest path (great circle) to the Kaaba, calculated on the phone from the selected place's coordinates. The qibla time matches the published Diyanet qibla time within ±1 min.",
+    "de": "Die Qibla ist die Richtung des kürzesten Weges (Großkreis) zur Kaaba, auf dem Telefon aus den Koordinaten des gewählten Ortes berechnet. Die Qibla-Zeit stimmt mit der veröffentlichten Diyanet-Qibla-Zeit auf ±1 Min. überein.",
+    "az": "Qiblə Kəbəyə ən qısa yolun (böyük dairə) istiqamətidir; seçilmiş yerin koordinatı ilə telefonda hesablanır. Qiblə saatı Diyanətin dərc etdiyi qiblə saatı ilə ±1 dəq uyğundur.",
+    "ar": "القبلة هي اتجاه أقصر طريق (الدائرة العظمى) إلى الكعبة، وتُحسب على الهاتف من إحداثيات المكان المحدد. ويتوافق وقت القبلة مع وقت القبلة الذي تنشره رئاسة الشؤون الدينية التركية بفارق ±1 دقيقة."
+  },
+  "qibla.mosques": {
+    "tr": "Yakındaki camiler",
+    "en": "Nearby mosques",
+    "de": "Moscheen in der Nähe",
+    "az": "Yaxınlıqdakı məscidlər",
+    "ar": "المساجد القريبة"
+  },
+  "qibla.mosqueQuery": {
+    "tr": "cami",
+    "en": "mosque",
+    "de": "Moschee",
+    "az": "məscid",
+    "ar": "مسجد"
+  },
+  "qibla.mosqueUnnamed": {
+    "tr": "Cami",
+    "en": "Mosque",
+    "de": "Moschee",
+    "az": "Məscid",
+    "ar": "مسجد"
+  },
+  "qibla.mosquesNone": {
+    "tr": "Yakında cami bulunamadı.",
+    "en": "No mosques found nearby.",
+    "de": "Keine Moscheen in der Nähe gefunden.",
+    "az": "Yaxınlıqda məscid tapılmadı.",
+    "ar": "لم يُعثر على مساجد قريبة."
+  },
+  "qibla.mosquesError": {
+    "tr": "Camiler yüklenemedi. İnternet bağlantısını denetleyip yeniden deneyin.",
+    "en": "Could not load mosques. Check your connection and try again.",
+    "de": "Moscheen konnten nicht geladen werden. Prüfen Sie die Verbindung und versuchen Sie es erneut.",
+    "az": "Məscidlər yüklənmədi. İnternet bağlantısını yoxlayıb yenidən cəhd edin.",
+    "ar": "تعذّر تحميل المساجد. تحقق من الاتصال وحاول مرة أخرى."
+  },
+  "qibla.mosquesNear": {
+    "tr": "{place} yakınında (konum izni yok)",
+    "en": "Near {place} (no location permission)",
+    "de": "In der Nähe von {place} (keine Standortberechtigung)",
+    "az": "{place} yaxınlığında (məkan icazəsi yoxdur)",
+    "ar": "بالقرب من {place} (لا يوجد إذن بالموقع)"
+  },
+  "qibla.mosquesNote": {
+    "tr": "Arama Apple Haritalar ile yapılır: arama sözcüğü ve yaklaşık bölge Apple'a gider. Bir camiye dokununca Haritalar'da açılır.",
+    "en": "The search uses Apple Maps: the search word and approximate area go to Apple. Tap a mosque to open it in Maps.",
+    "de": "Die Suche nutzt Apple Karten: Suchbegriff und ungefähres Gebiet gehen an Apple. Tippen Sie auf eine Moschee, um sie in Karten zu öffnen.",
+    "az": "Axtarış Apple Xəritələr ilə edilir: axtarış sözü və təxmini ərazi Apple-a gedir. Məscidə toxunanda Xəritələrdə açılır.",
+    "ar": "يتم البحث عبر خرائط Apple: تُرسل كلمة البحث والمنطقة التقريبية إلى Apple. اضغط على مسجد لفتحه في الخرائط."
+  },
+  "qibla.mosquesNoteAndroid": {
+    "tr": "Camiler OpenStreetMap verisinden Overpass servisiyle aranır: yalnız yaklaşık bölge (iki ondalığa yuvarlanmış koordinat) bu servise gider. Bir camiye dokununca harita uygulamasında açılır. Veri © OpenStreetMap katkıcıları (ODbL).",
+    "en": "Mosques are searched in OpenStreetMap data via the Overpass service: only the approximate area (coordinates rounded to two decimals) is sent. Tap a mosque to open it in your maps app. Data © OpenStreetMap contributors (ODbL).",
+    "de": "Moscheen werden in OpenStreetMap-Daten über den Overpass-Dienst gesucht: Nur das ungefähre Gebiet (auf zwei Dezimalstellen gerundete Koordinaten) wird gesendet. Tippen Sie auf eine Moschee, um sie in Ihrer Karten-App zu öffnen. Daten © OpenStreetMap-Mitwirkende (ODbL).",
+    "az": "Məscidlər OpenStreetMap məlumatında Overpass xidməti ilə axtarılır: yalnız təxmini ərazi (iki onluğa yuvarlaqlaşdırılmış koordinat) göndərilir. Məscidə toxunanda xəritə tətbiqində açılır. Məlumat © OpenStreetMap iştirakçıları (ODbL).",
+    "ar": "يتم البحث عن المساجد في بيانات OpenStreetMap عبر خدمة Overpass: تُرسل المنطقة التقريبية فقط (إحداثيات مقرّبة إلى منزلتين عشريتين). اضغط على مسجد لفتحه في تطبيق الخرائط. البيانات © مساهمو OpenStreetMap ‏(ODbL)."
+  },
+  "qibla.openMaps": {
+    "tr": "Haritada ara",
+    "en": "Search in maps",
+    "de": "In Karten suchen",
+    "az": "Xəritədə axtar",
+    "ar": "ابحث في الخرائط"
+  },
+  "qibla.km": {
+    "tr": "{km} km",
+    "en": "{km} km",
+    "de": "{km} km",
+    "az": "{km} km",
+    "ar": "{km} كم"
+  },
+  "qibla.m": {
+    "tr": "{m} m",
+    "en": "{m} m",
+    "de": "{m} m",
+    "az": "{m} m",
+    "ar": "{m} م"
+  },
+  "qibla.cardinals": {
+    "tr": "K D G B",
+    "en": "N E S W",
+    "de": "N O S W",
+    "az": "Ş Ş C Q",
+    "ar": "ش ق ج غ"
   }
 }

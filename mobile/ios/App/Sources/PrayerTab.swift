@@ -20,6 +20,11 @@ struct PrayerTab: View {
                             } label: {
                                 linkRow(L("prayer.monthly"), "tablecells")
                             }
+                            NavigationLink {
+                                QiblaView()
+                            } label: {
+                                linkRow(L("qibla.link"), "location.north.circle")
+                            }
                             if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(context.date)) {
                                 NavigationLink {
                                     ImsakiyeView(place: place, ramadan: ramadan)

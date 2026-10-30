@@ -19,6 +19,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Explore
 import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.TableChart
@@ -45,7 +46,7 @@ import java.time.YearMonth
 
 /**
  * Vakitler (iOS'taki PrayerTab): üstte zil (vakit bildirimleri), konum, sıradaki vakte kalan süre, bugünün
- * vakitleri, aylık çizelge ve sıradaki Ramazan'ın imsakiyesi.
+ * vakitleri, aylık çizelge, kıble ve yakındaki camiler, sıradaki Ramazan'ın imsakiyesi.
  */
 @Composable
 fun PrayerScreen() {
@@ -55,6 +56,7 @@ fun PrayerScreen() {
     when (page) {
         "monthly" -> { BackHandler { page = null }; MonthlyPrayers { page = null }; return }
         "notify" -> { BackHandler { page = null }; NotificationSettingsScreen { page = null }; return }
+        "qibla" -> { BackHandler { page = null }; QiblaScreen { page = null }; return }
         "imsakiye" -> if (ramadan != null) {
             BackHandler { page = null }
             ImsakiyeScreen(place, ramadan) { page = null }
@@ -104,6 +106,7 @@ fun PrayerScreen() {
                 }
             }
             LinkCard(Icons.Filled.TableChart, L("prayer.monthly")) { page = "monthly" }
+            LinkCard(Icons.Filled.Explore, L("qibla.link")) { page = "qibla" }
             if (ramadan != null) LinkCard(Icons.Filled.NightsStay, T("imsakiye.title", ramadan.start.year)) { page = "imsakiye" }
         }
     }

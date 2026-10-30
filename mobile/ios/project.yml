@@ -45,7 +45,7 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         # Metnin diğer dilleri App/Resources/InfoPlist.xcstrings'te (gen-strings.mjs üretir)
-        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini ve hava durumunu göstermek için. Vakitler telefonda hesaplanır; hava durumu için yalnız yaklaşık konum Apple'ın hava servisine gönderilir."
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir."
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES

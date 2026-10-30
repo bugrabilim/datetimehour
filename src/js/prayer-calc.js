@@ -76,7 +76,44 @@
     return r;
   }
 
-  var api = { times: times, PARAMS: PARAMS, julian: julian, sunPos: sunPos };
+  /* Kıble (30 Ekim 2026): Kâbe'ye büyük daire başlangıç yönü (kuzeyden saat yönünde, derece) ve uzaklık (km) */
+  var KAABA = { lat: 21.422487, lon: 39.826206 };
+  function qibla(lat, lon) {
+    var dl = KAABA.lon - lon;
+    var bearing = fixAngle(atan2(sin(dl), cos(lat) * tan(KAABA.lat) - sin(lat) * cos(dl)));
+    var c = sin(lat) * sin(KAABA.lat) + cos(lat) * cos(KAABA.lat) * cos(dl);
+    var km = Math.acos(Math.max(-1, Math.min(1, c))) * 6371.0088;
+    return { bearing: bearing, km: km };
+  }
+
+  /* Güneşin yüksekliği ve azimutu (derece; azimut kuzeyden saat yönünde) — UT ondalık saatinde */
+  function sunAltAz(y, m, d, ut, lat, lon) {
+    var p = sunPos(julian(y, m, d) + ut / 24);
+    var H = 15 * (ut + p.eqt + lon / 15 - 12); // saat açısı
+    var alt = asin(sin(lat) * sin(p.decl) + cos(lat) * cos(p.decl) * cos(H));
+    var az = fixAngle(atan2(sin(H), cos(H) * sin(lat) - tan(p.decl) * cos(lat)) + 180);
+    return { alt: alt, az: az };
+  }
+
+  /* Kıble saati: Güneşin kıble yönünde olduğu an (gölge kıbleye ters düşer); yerel ondalık saat, gündüz yoksa NaN.
+     Gündüz 5 dk adımla taranır, azimut farkının işaret değiştirdiği aralık ikiye bölünür. */
+  function qiblaTime(y, m, d, lat, lon, tz) {
+    var q = qibla(lat, lon).bearing;
+    var diff = function (ut) { var a = sunAltAz(y, m, d, ut, lat, lon); return { alt: a.alt, f: ((a.az - q + 540) % 360) - 180 }; };
+    var step = 5 / 60, prev = diff(-tz);
+    for (var ut = -tz + step; ut <= 24 - tz + 1e-9; ut += step) {
+      var cur = diff(ut);
+      if (prev.alt > 0 && cur.alt > 0 && prev.f <= 0 && cur.f > 0 && cur.f - prev.f < 90) {
+        var lo = ut - step, hi = ut;
+        for (var i = 0; i < 30; i++) { var mid = (lo + hi) / 2; if (diff(mid).f <= 0) lo = mid; else hi = mid; }
+        return (lo + hi) / 2 + tz;
+      }
+      prev = cur;
+    }
+    return NaN;
+  }
+
+  var api = { times: times, PARAMS: PARAMS, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthPrayer = api;
 })(typeof window !== "undefined" ? window : globalThis);
