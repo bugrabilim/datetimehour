@@ -27,6 +27,7 @@ struct ClockTab: View {
                         HStack(spacing: 28) {
                             Button {
                                 fullscreen = true
+                                BadgeStore.shared.hit(.tamEkran)
                             } label: {
                                 Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
                             }
@@ -131,6 +132,13 @@ struct ClockStage: View {
             .foregroundStyle(Theme.accent)
             .environment(\.layoutDirection, .leftToRight)
         }
+        .onChange(of: modelID, initial: true) { old, new in
+            // Rozetler: görülen modeller (açılıştaki dahil) ve ilk model değişimi
+            if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
+                BadgeStore.shared.sawModel(i, of: ClockModel.allCases.count)
+            }
+            if old != new { BadgeStore.shared.hit(.ilkModel) }
+        }
     }
 
     private func step(_ d: Int) {
@@ -189,6 +197,13 @@ struct FullscreenClock: View {
             }
         }
         .onTapGesture(count: 2) { dismiss() }
+        .overlay(alignment: .top) { BadgeToast() }
+        .onChange(of: modelID) { _, new in
+            if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
+                BadgeStore.shared.sawModel(i, of: ClockModel.allCases.count)
+            }
+            BadgeStore.shared.hit(.ilkModel)
+        }
         .statusBarHidden()
         .persistentSystemOverlays(.hidden)
         .onAppear { UIApplication.shared.isIdleTimerDisabled = true }

@@ -175,6 +175,7 @@ fun HomeItemsEditor() {
                                 val l = HomeItems.layout
                                 if (on) l.enabled += item else l.enabled -= item
                                 HomeItems.raw = l.raw
+                                BadgeStore.hit(Badge.DUZENLE)
                             },
                             colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent),
                         )

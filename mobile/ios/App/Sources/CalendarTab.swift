@@ -29,7 +29,10 @@ struct CalendarTab: View {
         NavigationStack {
             List {
                 Section {
-                    MonthGrid(month: month, today: today, selected: selected, deviceEvents: deviceEvents) { selected = $0 }
+                    MonthGrid(month: month, today: today, selected: selected, deviceEvents: deviceEvents) {
+                        selected = $0
+                        BadgeStore.shared.hit(.takvim)
+                    }
                         .gesture(DragGesture(minimumDistance: 30).onEnded { v in
                             if abs(v.translation.width) > abs(v.translation.height) {
                                 let forward = (v.translation.width < 0) != AppLocale.isRTL

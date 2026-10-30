@@ -98,6 +98,8 @@ fun GlobeView(modifier: Modifier = Modifier, fullscreen: Boolean = false, intera
         GlobeConst.TEST || Settings.Global.getFloat(context.contentResolver, Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
     }
     val state = remember { GlobeState(reduce) }
+    val zoomedIn = state.zoom > 1.12f
+    LaunchedEffect(zoomedIn) { if (zoomedIn && interactive) BadgeStore.hit(Badge.KURE) }
     var showFullscreen by remember { mutableStateOf(false) }
 
     BoxWithConstraints(

@@ -88,17 +88,13 @@ for (const [name, from] of [
   ["nature.js", "js/nature.js"],
   ["weather-core.js", "js/weather-core.js"],
   ["weather.js", "js/weather.js"],
-  ["globe.js", "js/globe.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
   ASSETS[name] = `/assets/${name}?v=${hash(buf)}`;
 }
-/* Küre: Natural Earth kabartmalı dünya dokusu (kamu malı) ve yer adları (Natural Earth 1:10m Populated Places, kamu malı;
-   src/data/places.json, saat dilimiyle birlikte). Hepsi repodaki dosyalardan; derlemede dış veri indirilmez. */
-const EARTH_BUF = fs.readFileSync(path.join(SRC, "assets/earth.jpg"));
-write("assets/earth.jpg", EARTH_BUF);
-const EARTH_URL = `/assets/earth.jpg?v=${hash(EARTH_BUF)}`;
+/* Dünya yerleri (Natural Earth 1:10m Populated Places, kamu malı; src/data/places.json, saat dilimiyle): "konumumu kullan"
+   sonucunu en yakın şehre çevirmek için (place.js). Web küresi 30 Ekim 2026'da kaldırıldı; earth.jpg yalnız uygulamalarda. */
 const PLACES_SRC = readJson("src/data/places.json");
 const PLACES_JSON = JSON.stringify({ tz: PLACES_SRC.tz, p: PLACES_SRC.p.map((r) => r.slice(0, 3)) });
 write("assets/places.json", PLACES_JSON);
@@ -118,7 +114,7 @@ const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
   "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com",
-  "img-src 'self' data: https://bumbagroup.com https://tile.openstreetmap.org",
+  "img-src 'self' data: https://bumbagroup.com",
   "style-src 'self'",
   "font-src 'self'",
   "form-action 'self' https://bumbagroup.com",
@@ -227,7 +223,7 @@ addModel("flip", "s-flip", (tz) => flipHtml(tz) + pDate(tz));
 addModel("words", "s-words", (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz));
 addModel("rings", "s-rings", (tz) => ringsHtml(tz) + pDate(tz));
 addModel("bigdate", "s-bigdate", (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}`);
-const STAGE_ORDER = ["wx-digital-cal-week", "classic", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal"];
+const STAGE_ORDER = ["classic", "wx-digital-cal-week", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal"];
 const MODELS = STAGE_ORDER.map((id) => M[id]);
 const EMBED_MODELS = Object.values(M).filter((m) => !m.wx);
 
@@ -424,7 +420,6 @@ function layout(p) {
     locale: t.locale,
     t: { ...clientT, ...(p.clientExtra && p.clientExtra.tools ? { tools: p.clientExtra.tools } : {}), ...((p.clientExtra && p.clientExtra.t) || {}) },
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
-    ...(p.clientExtra && p.clientExtra.globe ? { globe: p.clientExtra.globe } : {}),
     placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
     ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
@@ -580,7 +575,6 @@ const webPageLd = (lang, pagePath, title, description) => ({
 const pages = []; // { lang, path, html, indexable, alt }
 const searchEntries = Object.fromEntries(LANGS.map((l) => [l, []]));
 
-const GLOBE_CITIES = ["istanbul", "london", "moscow", "dubai", "mumbai", "singapore", "beijing", "tokyo", "sydney", "cairo", "johannesburg", "sao-paulo", "new-york", "los-angeles"];
 function buildHome(lang) {
   const t = I[lang];
   const h = t.home;
@@ -594,28 +588,6 @@ function buildHome(lang) {
 <section class="sr-only" aria-labelledby="today-q">
   <h2 id="today-q">${esc(h.todayQ)}</h2>
   <p>${esc(h.todayA)} <span data-live="date">&nbsp;</span></p>
-</section>
-<section class="globe-sec" aria-label="${esc(h.globeLabel)}">
-  <figure class="globe" data-globe>
-    <div class="globe-bar">
-      <button type="button" class="icon-btn" data-globe-zoom="in" aria-label="${esc(h.zoomIn)}" title="${esc(h.zoomIn)}">+</button>
-      <button type="button" class="icon-btn info-btn" data-info-open="globe-info" aria-haspopup="dialog" aria-label="${esc(h.globeInfo)}" title="${esc(h.globeInfo)}">${ICON_INFO}</button>
-      <button type="button" class="icon-btn" data-globe-zoom="out" aria-label="${esc(h.zoomOut)}" title="${esc(h.zoomOut)}">−</button>
-      <button type="button" class="icon-btn globe-reset" data-globe-reset aria-label="${esc(h.resetView)}" title="${esc(h.resetView)}" hidden>${ICON_GLOBE}</button>
-    </div>
-    <div class="globe-view">
-      <canvas class="globe-gl" aria-hidden="true"></canvas>
-      <canvas class="globe-fx" role="img" aria-label="${esc(h.globeLabel)}"></canvas>
-      <a class="globe-attr" data-globe-attr href="https://www.openstreetmap.org/copyright" rel="noopener" hidden>© OpenStreetMap contributors</a>
-      <p class="globe-consent consent-ph" data-globe-consent hidden>${esc(t.consent.mapBlocked)} <button type="button" class="btn btn-sm" data-consent-allow-ext>${esc(t.consent.allow)}</button></p>
-      <noscript><p class="meta globe-noscript">${esc(h.globeCaption)}</p></noscript>
-    </div>
-    <dialog class="info-dialog" id="globe-info" aria-labelledby="globe-info-title">
-      <h2 id="globe-info-title">${esc(h.globeTitle)}</h2>
-      <p class="meta">${esc(h.globeCaption)}</p>
-      <button type="button" class="btn" data-info-close>${esc(t.stage.infoClose)}</button>
-    </dialog>
-  </figure>
 </section>`;
   const ld = [
     ...baseLd(lang),
@@ -638,10 +610,8 @@ function buildHome(lang) {
   e.push({ t: t.ui.home, u: pagePath, d: h.description, k: "saat tarih bugün clock date today time now saat kaç" });
   e.push({ t: t.stage.label, u: pagePath + "#model-classic", d: t.stage.hint, k: "saat model stil style clock tam ekran full screen fullscreen" });
   MODELS.forEach((m) => e.push({ t: t.stage.models[m.id], u: `${pagePath}#model-${m.id}`, d: t.stage.label, k: "saat model clock style" }));
-  e.push({ t: h.globeLabel, u: pagePath, d: h.globeCaption, k: "dünya küre gece gündüz meridyen saat dilimi globe earth day night time zone meridian" });
   e.push({ t: t.list.heading, u: pagePath + "#liste-form", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
-  const globe = { earth: EARTH_URL, places: PLACES_URL, names: PLACE_NAMES_URL[lang], cities: CITIES.map((c) => ({ n: c[lang].name, lat: c.lat, lon: c.lon, tz: c.tz, ...(GLOBE_CITIES.includes(c.key) ? { m: 1 } : {}) })) };
-  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js", "globe.js"], clientExtra: { globe } };
+  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js"] };
 }
 
 /* Dünya saatleri: Türkiye'den yalnız İstanbul; Ankara ve İzmir kendi sayfalarında durur ama dünya çizgisinde yoktur */

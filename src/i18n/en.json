@@ -178,13 +178,6 @@
     "upcomingLead": "The next days on the Turkish calendar.",
     "upcomingAll": "See the yearly calendar",
     "upcomingNone": "No upcoming days found.",
-    "globeLabel": "Rotating globe showing day and night, time zone meridians and the local time in major cities",
-    "globeCaption": "The lit side is day, the dark side is night. Lines are the 15° time zone meridians (with their UTC offset); the red line is the zero point, the Greenwich meridian (UTC). Each city shows its local time. Drag the globe to turn it; zoom with two fingers, the mouse wheel or the + and − buttons. As you zoom in, the local time of places in that area appears too. Zoom in further and it switches to the OpenStreetMap map (down to street level), labelling meridians and meridian segments with their longitude. Map tiles are downloaded from OpenStreetMap at that moment (© OpenStreetMap contributors); the globe texture is from Natural Earth (public domain). A double tap zooms in.",
-    "globeTitle": "World globe",
-    "globeInfo": "About the globe",
-    "zoomIn": "Zoom in",
-    "zoomOut": "Zoom out",
-    "resetView": "Whole world",
     "todayQ": "What is today's date?",
     "todayA": "Today's date and weekday are shown live in the bar at the top of every page and follow the server-synced clock rather than your device clock."
   },
@@ -254,10 +247,9 @@
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
           "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
-          "**Map (globe, external service, with permission):** If you have allowed external services in the cookie preferences and you zoom the globe on the home page beyond a certain level, map tiles are downloaded straight to your browser from OpenStreetMap's server (tile.openstreetmap.org); your IP address and the tile addresses of the area you are looking at then reach the OpenStreetMap Foundation. Without permission, or while the globe is zoomed out, this request is not made. The Saat Tarih server does not see them; OpenStreetMap's own privacy terms apply.",
           "**Email list form:** The email address you enter, the consent you give with the \"I agree\" button in the window that opens, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
           "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
-          "**Visit statistics (Umami, with permission):** Only if you allow statistics in the cookie banner or the cookie preferences, Umami, which runs on our own server, counts page views and these actions: language and theme change, whether a search found a result, joining the list, choosing a clock style, full screen, the first use of a tool, the type of location choice (province or location), and opening or downloading the Ramadan timetable. While doing so Umami processes your browser, operating system and device type, language, screen size, the address of the page you came from, and the country and city derived from your IP address; the IP address itself is not stored. Umami does not use cookies, but it links visits to a pseudonymous session, so it is not anonymous. The words you type in search, your email address and your location are not sent. You can withdraw permission at any time with the \"Cookie preferences\" link in the footer; Umami stops from the next page on.",
+          "**Visit statistics (Umami, with permission):** Only if you allow statistics in the cookie banner or the cookie preferences, Umami, which runs on our own server, counts page views and these actions: language and theme change, whether a search found a result, joining the list, choosing a clock style, full screen, the first use of a tool, the type of location choice (province or location), and opening or downloading the Ramadan timetable. While doing so Umami processes your browser, operating system and device type, language, screen size, the address of the page you came from, and the country and city derived from your IP address; the IP address itself is not stored. Umami does not use cookies, but it links visits to a pseudonymous session, so it is not anonymous. The words you type in search, your email address and your location are not sent. You can withdraw permission at any time with the \"Cookie preferences\" link in the settings menu; Umami stops from the next page on.",
           "**Time synchronisation:** To show the time independently of your device clock, your browser sends a few small requests to the site's own server and reads the date header of the reply. These requests only appear in the server's standard access log; nothing extra is sent."
         ]
       },
@@ -273,7 +265,8 @@
           "**Map:** The globe in the world clock is shown with Apple Maps; map imagery is downloaded from Apple.",
           "**Calendar:** Only if you allow it, events from the calendars on your phone are shown in the app; they are read on your phone and never sent anywhere. Adding and deleting events happens through the iPhone's own calendar screen and only with your confirmation.",
           "**Notifications and alarms:** Prayer time notifications, alarms and timers are scheduled on your phone without any server; spoken announcements are generated on your phone.",
-          "**Email list:** If you join the list from Settings, your email address is sent to the shared Bumba list exactly like the website form; the email list notes apply to the app as well.",
+          "**Email list:** If you join the list from the About page, your email address is sent to the shared Bumba list exactly like the website form; the email list notes apply to the app as well.",
+          "**Badges:** Achievement badges and your progress (badges earned and the day, clock models seen, the number of consecutive days of use) are stored only on your phone and never sent anywhere; you can delete them at any time with \"Delete badges\" in Tools › Badges.",
           "**Preferences:** Preferences such as the clock model, province and world clocks are stored only on your phone and are deleted when you delete the app."
         ]
       },
@@ -281,7 +274,7 @@
         "id": "cookies",
         "h": "Cookies and browser storage",
         "p": [
-          "Saat Tarih does not set any cookies. On your first visit a banner at the bottom of the page asks for your permission for visit statistics (Umami) and external services (Open-Meteo, OpenStreetMap); both stay off until you allow them. You can change your choice at any time with the \"Cookie preferences\" link in the footer. To remember your choices we use your browser's local storage (localStorage); these items are in the necessary group, stay on your device and are not sent to a server. You can delete them at any time in your browser settings. Bumba Group's shared cookie policy: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih does not set any cookies. On your first visit a banner at the bottom of the page asks for your permission for visit statistics (Umami) and external services (Open-Meteo); both stay off until you allow them. You can change your choice at any time with the \"Cookie preferences\" link in the settings menu. To remember your choices we use your browser's local storage (localStorage); these items are in the necessary group, stay on your device and are not sent to a server. You can delete them at any time in your browser settings. Bumba Group's shared cookie policy: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -363,7 +356,7 @@
         "h": "Legal bases",
         "ul": [
           "Email list: your explicit consent (KVKK art. 5/1). You can withdraw it at any time with the unsubscribe link in each email.",
-          "Visit statistics (Umami) and external services (Open-Meteo, OpenStreetMap): the explicit consent you give in the cookie banner (KVKK art. 5/1). When you allow external services your IP address reaches these providers, which may be abroad; your consent covers this too. You can withdraw it with the \"Cookie preferences\" link.",
+          "Visit statistics (Umami) and external services (Open-Meteo): the explicit consent you give in the cookie banner (KVKK art. 5/1). When you allow external services your IP address reaches these providers, which may be abroad; your consent covers this too. You can withdraw it with the \"Cookie preferences\" link.",
           "Server logs: our legitimate interest in keeping the site secure and working (KVKK art. 5/2-f).",
           "Your preferences: legitimate interest (KVKK art. 5/2-f); the data stays only on your device."
         ]
@@ -1534,25 +1527,24 @@
   },
   "consent": {
     "barLabel": "Cookie choice",
-    "barText": "We keep your preferences (language, theme, clock and tool settings) only in this browser. If you allow it, visits are counted with Umami and the weather and close-up map load from external services.",
+    "barText": "We keep your preferences (language, theme, clock and tool settings) only in this browser. If you allow it, visits are counted with Umami and the weather loads from an external service (Open-Meteo).",
     "accept": "Accept",
     "reject": "Reject",
     "prefs": "Preferences",
     "policy": "Cookie policy",
     "title": "Cookie preferences",
-    "intro": "Choose which groups are on; you can change your choice at any time with the \"Cookie preferences\" link in the footer.",
+    "intro": "Choose which groups are on; you can change your choice at any time with the \"Cookie preferences\" link in the settings menu.",
     "necessary": "Necessary",
     "necessaryText": "Your cookie choice, language, theme, clock and tool settings, chosen location and world clock list are kept in this browser's local storage. They never reach a server; the site does not work without them.",
     "alwaysOn": "Always on",
     "stats": "Statistics",
     "statsText": "Umami counts page visits and a few actions (browser, device, language, and the country and city derived from the IP address; the IP is not stored). No cookies are used. Off by default.",
     "ext": "External services",
-    "extText": "The weather loads from Open-Meteo (api.open-meteo.com) and the map on the zoomed-in globe from OpenStreetMap (tile.openstreetmap.org); your IP address reaches these services. Off by default.",
+    "extText": "The weather loads from Open-Meteo (api.open-meteo.com); your IP address reaches this service. Off by default.",
     "save": "Save choice",
     "footerLink": "Cookie preferences",
     "privacy": "Privacy",
     "wxBlocked": "The weather loads from Open-Meteo; allow external services to show it.",
-    "mapBlocked": "The close-up map loads from OpenStreetMap; allow external services to show it.",
     "allow": "Allow"
   }
 }

@@ -68,7 +68,7 @@ for (const f of htmlFiles) {
     check(/data-live="calendar"/.test(h), `${name}: özel model türleri eksik`);
   }
   if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name))) {
-    check(/data-globe/.test(h) && /globe\.js/.test(h) && /"globe":\{"earth":"\/assets\/earth\.jpg\?v=/.test(h) && /"places":"\/assets\/places\.json/.test(h) && /data-globe-attr/.test(h) && /data-globe-zoom="in"/.test(h), `${name}: dünya küresi eksik`);
+    check(!/data-globe|globe\.js|openstreetmap/.test(h), `${name}: ana sayfada dünya küresi kalmış (30 Ekim 2026'da kaldırıldı)`);
     check(!/data-upcoming/.test(h) && !/id="facts"/.test(h) && !/data-world="grid"/.test(h) && !/<details>/.test(h) && !/"FAQPage"/.test(h), `${name}: ana sayfada kaldırılan bölüm duruyor`);
     check(/<h1 class="sr-only">/.test(h), `${name}: ana sayfa H1 gizli olmalı`);
   }
@@ -256,7 +256,7 @@ for (const [n, t] of Object.entries(themes)) {
 const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
 for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
-check(ng.split("https://tile.openstreetmap.org").length === 3, "nginx.conf: img-src OpenStreetMap karoları iki konumda olmalı");
+check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");
 

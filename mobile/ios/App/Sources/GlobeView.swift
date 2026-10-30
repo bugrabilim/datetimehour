@@ -75,6 +75,7 @@ struct GlobeView: View {
             }
             .accessibilityElement(children: .contain)
             .accessibilityLabel(L("globe.label"))
+            .onChange(of: zoomed) { _, z in if z, interactive { BadgeStore.shared.hit(.kure) } }
     }
 
     /// Gece yarımküresi iki parça (her biri 180°'lik; harita 360°'lik tek çokgeni yanlış çizebilir).

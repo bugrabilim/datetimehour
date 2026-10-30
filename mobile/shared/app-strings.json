@@ -393,11 +393,11 @@
     "ar": "الخصوصية"
   },
   "settings.privacyNote": {
-    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir.",
-    "en": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose.",
-    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet.",
-    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir.",
-    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض."
+    "tr": "Uygulama hesap istemez, reklam ve takip içermez. Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için seçili yerin yaklaşık konumu Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir. E-posta listesine katılırsanız adresiniz yalnız bu iş için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz.",
+    "en": "No account, no ads, no tracking. Your location is used on your phone to calculate prayer times; only for the weather is the approximate location of the selected place sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone. If you join the email list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges.",
+    "de": "Kein Konto, keine Werbung, kein Tracking. Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird der ungefähre Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie der E-Mail-Liste beitreten, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste gesendet. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen.",
+    "az": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz.",
+    "ar": "لا حساب ولا إعلانات ولا تتبع. يُستخدم موقعك على هاتفك لحساب أوقات الصلاة؛ ولأجل الطقس فقط يُرسل الموقع التقريبي للمكان المختار إلى خدمة الطقس من Apple. لا تُقرأ تقويماتك إلا بإذنك وعلى هاتفك فقط. إذا انضممت إلى القائمة البريدية فلا يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات."
   },
   "clock.fullscreen": {
     "tr": "Tam ekran",
@@ -1205,10 +1205,360 @@
     "ar": "السنوات التالية"
   },
   "settings.privacyNoteAndroid": {
-    "tr": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir.",
-    "en": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose.",
-    "de": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt.",
-    "az": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür.",
-    "ar": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط."
+    "tr": "Uygulama hesap istemez, reklam ve izleme yoktur. Konumunuz namaz vakitleri ve mevsimler için yalnız telefonda hesapta kullanılır. Hava durumu için seçili konumun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) Open-Meteo'ya gönderilir. Telefonunuzdaki takvimler yalnız izin verirseniz ve yalnız telefonda okunur. E-posta listesine katılırsanız adresiniz yalnız bunun için ortak Bumba listesine iletilir. Rozetler ve ilerlemeniz yalnız telefonda saklanır; Araçlar › Rozetler'den silebilirsiniz.",
+    "en": "The app needs no account and has no ads or tracking. Your location is used only on the phone to calculate prayer times and seasons. For the weather, the approximate coordinates of the selected place (to about 1 km) are sent to Open-Meteo. Your phone's calendars are read only if you allow it, and only on the phone. If you join the mailing list, your address is sent only to the shared Bumba list for that purpose. Badges and your progress are stored only on the phone; you can delete them in Tools › Badges.",
+    "de": "Die App braucht kein Konto und enthält weder Werbung noch Tracking. Ihr Standort wird nur auf dem Telefon zur Berechnung der Gebetszeiten und Jahreszeiten verwendet. Für das Wetter werden die ungefähren Koordinaten des gewählten Ortes (auf etwa 1 km genau) an Open-Meteo gesendet. Die Kalender Ihres Telefons werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen. Wenn Sie sich in die Mailingliste eintragen, wird Ihre Adresse nur dafür an die gemeinsame Bumba-Liste übermittelt. Abzeichen und Ihr Fortschritt werden nur auf dem Telefon gespeichert; Sie können sie unter Werkzeuge › Abzeichen löschen.",
+    "az": "Tətbiq hesab istəmir, reklam və izləmə yoxdur. Məkanınız namaz vaxtları və fəsillər üçün yalnız telefonda hesablamada istifadə olunur. Hava proqnozu üçün seçilmiş yerin təxmini koordinatları (təxminən 1 km dəqiqliklə) Open-Meteo-ya göndərilir. Telefonunuzdakı təqvimlər yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına ötürülür. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz.",
+    "ar": "لا يحتاج التطبيق إلى حساب ولا يحتوي على إعلانات أو تتبع. يُستخدم موقعك على الهاتف فقط لحساب أوقات الصلاة والفصول. ولحالة الطقس تُرسل الإحداثيات التقريبية للمكان المختار (بدقة نحو 1 كم) إلى Open-Meteo. لا تُقرأ تقاويم هاتفك إلا بإذنك وعلى الهاتف فقط. إذا انضممت إلى القائمة البريدية فلن يُرسل عنوانك إلا إلى قائمة Bumba المشتركة لهذا الغرض فقط. تُحفظ الشارات وتقدّمك على الهاتف فقط؛ ويمكنك حذفها من الأدوات › الشارات."
+  },
+  "badges.h1": {
+    "tr": "Rozetler",
+    "en": "Badges",
+    "de": "Abzeichen",
+    "az": "Nişanlar",
+    "ar": "الشارات"
+  },
+  "badges.privacyLink": {
+    "tr": "Gizlilik",
+    "en": "Privacy",
+    "de": "Datenschutz",
+    "az": "Məxfilik",
+    "ar": "الخصوصية"
+  },
+  "badges.earnedOn": {
+    "tr": "Kazanıldı: {date}",
+    "en": "Earned: {date}",
+    "de": "Verdient: {date}",
+    "az": "Qazanıldı: {date}",
+    "ar": "حُصل عليها: {date}"
+  },
+  "badges.locked": {
+    "tr": "Henüz kazanılmadı",
+    "en": "Not earned yet",
+    "de": "Noch nicht verdient",
+    "az": "Hələ qazanılmayıb",
+    "ar": "لم تُكتسب بعد"
+  },
+  "badges.progress": {
+    "tr": "{n}/{total}",
+    "en": "{n}/{total}",
+    "de": "{n}/{total}",
+    "az": "{n}/{total}",
+    "ar": "{n}/{total}"
+  },
+  "badges.count": {
+    "tr": "{n}/{total} rozet kazanıldı",
+    "en": "{n}/{total} badges earned",
+    "de": "{n}/{total} Abzeichen verdient",
+    "az": "{n}/{total} nişan qazanılıb",
+    "ar": "{n}/{total} شارة مكتسبة"
+  },
+  "badges.delete": {
+    "tr": "Rozetleri sil",
+    "en": "Delete badges",
+    "de": "Abzeichen löschen",
+    "az": "Nişanları sil",
+    "ar": "حذف الشارات"
+  },
+  "badges.deleteTitle": {
+    "tr": "Rozetler silinsin mi?",
+    "en": "Delete your badges?",
+    "de": "Abzeichen löschen?",
+    "az": "Nişanlar silinsin?",
+    "ar": "حذف شاراتك؟"
+  },
+  "badges.deleteYes": {
+    "tr": "Sil",
+    "en": "Delete",
+    "de": "Löschen",
+    "az": "Sil",
+    "ar": "حذف"
+  },
+  "badges.deleteNo": {
+    "tr": "Vazgeç",
+    "en": "Cancel",
+    "de": "Abbrechen",
+    "az": "İmtina",
+    "ar": "إلغاء"
+  },
+  "badges.deleted": {
+    "tr": "Rozetlerin silindi.",
+    "en": "Your badges were deleted.",
+    "de": "Deine Abzeichen wurden gelöscht.",
+    "az": "Nişanların silindi.",
+    "ar": "حُذفت شاراتك."
+  },
+  "badges.toast": {
+    "tr": "Yeni rozet: {name}",
+    "en": "New badge: {name}",
+    "de": "Neues Abzeichen: {name}",
+    "az": "Yeni nişan: {name}",
+    "ar": "شارة جديدة: {name}"
+  },
+  "badges.note": {
+    "tr": "Rozetlerin ve ilerlemen yalnız bu cihazda, sen silene kadar saklanır.",
+    "en": "Your badges and progress are stored only on this device until you delete them.",
+    "de": "Deine Abzeichen und dein Fortschritt werden nur auf diesem Gerät gespeichert, bis du sie löschst.",
+    "az": "Nişanların və irəliləyişin yalnız bu cihazda, sən silənə qədər saxlanılır.",
+    "ar": "تُحفظ شاراتك وتقدّمك على هذا الجهاز فقط إلى أن تحذفها."
+  },
+  "badges.deleteText": {
+    "tr": "Bu cihazdaki bütün rozetlerin ve ilerlemen (gördüğün saat modelleri, kullanım serin) silinir. Geri alınamaz.",
+    "en": "All your badges and progress on this device (the clock styles you have seen, your streak) will be deleted. This cannot be undone.",
+    "de": "Alle deine Abzeichen und dein Fortschritt auf diesem Gerät (gesehene Uhrstile, deine Serie) werden gelöscht. Das lässt sich nicht rückgängig machen.",
+    "az": "Bu cihazdakı bütün nişanların və irəliləyişin (gördüyün saat modelləri, istifadə seriyan) silinəcək. Geri qaytarmaq olmur.",
+    "ar": "ستُحذف كل شاراتك وتقدّمك على هذا الجهاز (أنماط الساعة التي رأيتها وسلسلة استخدامك). لا يمكن التراجع عن ذلك."
+  },
+  "badges.items.renk.name": {
+    "tr": "Renk ustası",
+    "en": "Colorist",
+    "de": "Farbkünstler",
+    "az": "Rəng ustası",
+    "ar": "فنان الألوان"
+  },
+  "badges.items.renk.how": {
+    "tr": "Ayarlar'dan uygulama rengini değiştir.",
+    "en": "Change the app color in Settings.",
+    "de": "Ändere in den Einstellungen die App-Farbe.",
+    "az": "Parametrlərdən tətbiqin rəngini dəyiş.",
+    "ar": "غيّر لون التطبيق من الإعدادات."
+  },
+  "badges.items.saniye.name": {
+    "tr": "Saniye avcısı",
+    "en": "Second hunter",
+    "de": "Sekundenjäger",
+    "az": "Saniyə ovçusu",
+    "ar": "صائد الثواني"
+  },
+  "badges.items.saniye.how": {
+    "tr": "Saate dokunarak saniyeleri aç ya da kapat.",
+    "en": "Tap the clock to turn the seconds on or off.",
+    "de": "Tippe auf die Uhr, um die Sekunden ein- oder auszuschalten.",
+    "az": "Saata toxunaraq saniyələri aç və ya bağla.",
+    "ar": "المس الساعة لإظهار الثواني أو إخفائها."
+  },
+  "badges.items.ilk-model.name": {
+    "tr": "Yeni yüz",
+    "en": "New face",
+    "de": "Neues Gesicht",
+    "az": "Yeni üz",
+    "ar": "وجه جديد"
+  },
+  "badges.items.ilk-model.how": {
+    "tr": "Saat sahnesinde başka bir saat modeline geç.",
+    "en": "Switch to another clock style on the clock stage.",
+    "de": "Wechsle auf der Uhrenbühne zu einem anderen Uhrstil.",
+    "az": "Saat səhnəsində başqa saat modelinə keç.",
+    "ar": "انتقل إلى نمط ساعة آخر على منصة الساعة."
+  },
+  "badges.items.tam-ekran.name": {
+    "tr": "Büyük ekran",
+    "en": "Big screen",
+    "de": "Großbild",
+    "az": "Böyük ekran",
+    "ar": "الشاشة الكبيرة"
+  },
+  "badges.items.tam-ekran.how": {
+    "tr": "Saati tam ekranda aç.",
+    "en": "Open the clock in full screen.",
+    "de": "Öffne die Uhr im Vollbild.",
+    "az": "Saatı tam ekranda aç.",
+    "ar": "افتح الساعة بملء الشاشة."
+  },
+  "badges.items.duzenle.name": {
+    "tr": "Kendi ekranım",
+    "en": "My screen",
+    "de": "Mein Bildschirm",
+    "az": "Öz ekranım",
+    "ar": "شاشتي"
+  },
+  "badges.items.duzenle.how": {
+    "tr": "Saat ekranında \"Düzenle\" ile bir alanı aç ya da kapat.",
+    "en": "Turn an item on or off with \"Edit\" on the Clock tab.",
+    "de": "Schalte mit „Bearbeiten“ auf dem Uhr-Tab ein Element ein oder aus.",
+    "az": "Saat ekranında \"Redaktə et\" ilə bir sahəni aç və ya bağla.",
+    "ar": "فعّل عنصرًا أو أوقفه من \"تعديل\" في تبويب الساعة."
+  },
+  "badges.items.takvim.name": {
+    "tr": "Gün meraklısı",
+    "en": "Day explorer",
+    "de": "Tagesforscher",
+    "az": "Gün maraqlısı",
+    "ar": "مستكشف الأيام"
+  },
+  "badges.items.takvim.how": {
+    "tr": "Takvimde bir güne dokunup ayrıntısını aç.",
+    "en": "Tap a day in the calendar to open its details.",
+    "de": "Tippe im Kalender auf einen Tag, um die Details zu öffnen.",
+    "az": "Təqvimdə bir günə toxunub təfərrüatını aç.",
+    "ar": "المس يومًا في التقويم لفتح تفاصيله."
+  },
+  "badges.items.kronometre.name": {
+    "tr": "Start!",
+    "en": "Go!",
+    "de": "Los!",
+    "az": "Başla!",
+    "ar": "انطلق!"
+  },
+  "badges.items.kronometre.how": {
+    "tr": "Kronometreyi başlat.",
+    "en": "Start the stopwatch.",
+    "de": "Starte die Stoppuhr.",
+    "az": "Saniyəölçəni işə sal.",
+    "ar": "شغّل ساعة الإيقاف."
+  },
+  "badges.items.zamanlayici.name": {
+    "tr": "Geri sayım",
+    "en": "Countdown",
+    "de": "Countdown",
+    "az": "Geri sayım",
+    "ar": "العدّ التنازلي"
+  },
+  "badges.items.zamanlayici.how": {
+    "tr": "Bir zamanlayıcı başlat.",
+    "en": "Start a timer.",
+    "de": "Starte einen Timer.",
+    "az": "Bir taymer başlat.",
+    "ar": "ابدأ مؤقّتًا."
+  },
+  "badges.items.alarm.name": {
+    "tr": "Erkenci",
+    "en": "Early bird",
+    "de": "Frühaufsteher",
+    "az": "Tezdən duran",
+    "ar": "المبكّر"
+  },
+  "badges.items.alarm.how": {
+    "tr": "Bir alarm kur.",
+    "en": "Set an alarm.",
+    "de": "Stelle einen Wecker.",
+    "az": "Bir zəngli saat qur.",
+    "ar": "اضبط منبّهًا."
+  },
+  "badges.items.cevirici.name": {
+    "tr": "Saat çevirmeni",
+    "en": "Time translator",
+    "de": "Zeitübersetzer",
+    "az": "Saat tərcüməçisi",
+    "ar": "مترجم الوقت"
+  },
+  "badges.items.cevirici.how": {
+    "tr": "Dünya saatlerinde başka bir zamana bak.",
+    "en": "Look at another time in the world clock.",
+    "de": "Sieh dir in der Weltuhr eine andere Uhrzeit an.",
+    "az": "Dünya saatlarında başqa bir vaxta bax.",
+    "ar": "اعرض وقتًا آخر في الساعة العالمية."
+  },
+  "badges.items.tarih-hesap.name": {
+    "tr": "Hesap ustası",
+    "en": "Date wizard",
+    "de": "Datumsprofi",
+    "az": "Hesab ustası",
+    "ar": "خبير التواريخ"
+  },
+  "badges.items.tarih-hesap.how": {
+    "tr": "Tarih hesaplayıcıda bir hesap yap.",
+    "en": "Do a calculation in the date calculator.",
+    "de": "Mache eine Berechnung im Datumsrechner.",
+    "az": "Tarix kalkulyatorunda bir hesablama et.",
+    "ar": "أجرِ عملية حساب في حاسبة التاريخ."
+  },
+  "badges.items.dunya.name": {
+    "tr": "Dünya vatandaşı",
+    "en": "World citizen",
+    "de": "Weltbürger",
+    "az": "Dünya vətəndaşı",
+    "ar": "مواطن عالمي"
+  },
+  "badges.items.dunya.how": {
+    "tr": "Dünya saatlerine bir şehir ya da saat dilimi ekle.",
+    "en": "Add a city or time zone to the world clock.",
+    "de": "Füge der Weltuhr eine Stadt oder Zeitzone hinzu.",
+    "az": "Dünya saatlarına bir şəhər və ya saat qurşağı əlavə et.",
+    "ar": "أضف مدينة أو منطقة زمنية إلى الساعة العالمية."
+  },
+  "badges.items.kure.name": {
+    "tr": "Kâşif",
+    "en": "Explorer",
+    "de": "Entdecker",
+    "az": "Kəşfiyyatçı",
+    "ar": "المستكشف"
+  },
+  "badges.items.kure.how": {
+    "tr": "Dünya sekmesinde dönen dünyayı yakınlaştır.",
+    "en": "Zoom in on the spinning globe on the World tab.",
+    "de": "Zoome auf dem Welt-Tab in den drehenden Globus hinein.",
+    "az": "Dünya bölməsində fırlanan dünyanı yaxınlaşdır.",
+    "ar": "قرّب الكرة الأرضية الدوّارة في تبويب العالم."
+  },
+  "badges.items.pomodoro.name": {
+    "tr": "Odak",
+    "en": "Focus",
+    "de": "Fokus",
+    "az": "Fokus",
+    "ar": "التركيز"
+  },
+  "badges.items.pomodoro.how": {
+    "tr": "Bir pomodoro çalışma süresini sonuna kadar tamamla.",
+    "en": "Finish a full pomodoro work session.",
+    "de": "Beende eine ganze Pomodoro-Arbeitsphase.",
+    "az": "Bir pomodoro iş müddətini sonuna qədər tamamla.",
+    "ar": "أكمل فترة عمل بومودورو كاملة."
+  },
+  "badges.items.seri-3.name": {
+    "tr": "Üç gün üst üste",
+    "en": "Three days in a row",
+    "de": "Drei Tage in Folge",
+    "az": "Üç gün ardıcıl",
+    "ar": "ثلاثة أيام متتالية"
+  },
+  "badges.items.seri-3.how": {
+    "tr": "Uygulamayı üç gün üst üste aç.",
+    "en": "Open the app three days in a row.",
+    "de": "Öffne die App drei Tage hintereinander.",
+    "az": "Tətbiqi üç gün ardıcıl aç.",
+    "ar": "افتح التطبيق ثلاثة أيام متتالية."
+  },
+  "badges.items.model-10.name": {
+    "tr": "Koleksiyoncu",
+    "en": "Collector",
+    "de": "Sammler",
+    "az": "Kolleksiyaçı",
+    "ar": "الجامع"
+  },
+  "badges.items.model-10.how": {
+    "tr": "10 farklı saat modelini gör.",
+    "en": "See 10 different clock styles.",
+    "de": "Sieh dir 10 verschiedene Uhrstile an.",
+    "az": "10 fərqli saat modelini gör.",
+    "ar": "شاهد 10 أنماط ساعة مختلفة."
+  },
+  "badges.items.seri-7.name": {
+    "tr": "Bir hafta",
+    "en": "One week",
+    "de": "Eine Woche",
+    "az": "Bir həftə",
+    "ar": "أسبوع كامل"
+  },
+  "badges.items.seri-7.how": {
+    "tr": "Uygulamayı yedi gün üst üste aç.",
+    "en": "Open the app seven days in a row.",
+    "de": "Öffne die App sieben Tage hintereinander.",
+    "az": "Tətbiqi yeddi gün ardıcıl aç.",
+    "ar": "افتح التطبيق سبعة أيام متتالية."
+  },
+  "badges.items.model-hepsi.name": {
+    "tr": "Saat ustası",
+    "en": "Clock master",
+    "de": "Uhrenmeister",
+    "az": "Saat ustası",
+    "ar": "سيّد الساعات"
+  },
+  "badges.items.model-hepsi.how": {
+    "tr": "Saat sahnesindeki bütün modelleri gör.",
+    "en": "See every style on the clock stage.",
+    "de": "Sieh dir alle Stile auf der Uhrenbühne an.",
+    "az": "Saat səhnəsindəki bütün modelləri gör.",
+    "ar": "شاهد كل الأنماط على منصة الساعة."
   }
 }

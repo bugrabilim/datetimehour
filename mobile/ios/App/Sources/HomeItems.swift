@@ -71,6 +71,7 @@ struct HomeItemsView: View {
                             var l = HomeLayout(raw: raw)
                             if on { l.enabled.insert(item) } else { l.enabled.remove(item) }
                             raw = l.raw
+                            BadgeStore.shared.hit(.duzenle)
                         }
                     )) {
                         Label(item.title, systemImage: item.icon)
