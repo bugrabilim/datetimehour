@@ -89,3 +89,17 @@ Sitedeki gizlilik sayfasının "Android uygulaması" bölümüyle aynı olmalı:
 - Reklam yok, izleme yok, istatistik yok.
 
 Gizlilik politikası adresi: https://time.bumba.tr/gizlilik/ (İngilizce: https://time.bumba.tr/en/privacy/).
+
+## 5. Wear OS, kısayollar ve ekran koruyucu (30 Ekim 2026, sıradaki sürüm)
+
+- **Wear OS uygulaması** (`mobile/android/wear`, paket adı telefonla aynı `tr.bumba.time`, minSdk 30): Play Console'da
+  "Form faktörleri" › Wear OS eklenir, Wear OS ekran görüntüleri (`wear-saat.png` CI artifact'inde) ve ayrı sürüm
+  (Wear OS kanalı) yüklenir. Bağımsız çalışır (`com.google.android.wearable.standalone` = true). İzin: yalnız yaklaşık
+  konum ("Konumum" seçilirse, saatte hesap için; hiçbir yere gönderilmez). Kutucuk ve iki komplikasyon (sıradaki vakit,
+  hicri tarih) internet kullanmaz.
+- **Saat uygulaması istekleri** (`ClockIntentActivity`: SET_TIMER, SET_ALARM, SHOW_ALARMS, SHOW_TIMERS): çağıranın
+  `com.android.alarm.permission.SET_ALARM` iznine sahip olması gerekir (AOSP saat uygulamasındaki gibi); yeni izin
+  istemez, beyan gerekmez.
+- **Ekran koruyucu** (`ClockDreamService`, BIND_DREAM_SERVICE) ve **süren sayaç bildirimleri** (kanal `live`):
+  yeni izin yok.
+- Veri güvenliği beyanı değişmez: saat tarafındaki konum cihazdan çıkmaz ("toplanmaz").
