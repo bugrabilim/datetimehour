@@ -326,6 +326,12 @@ for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Typ
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
+// Pomodoro istatistikleri (30 Ekim 2026, #16 web)
+{
+  const h = fs.readFileSync(path.join(DIST, "pomodoro", "index.html"), "utf8");
+  check(/data-pomo-task/.test(h) && /data-pomo-noise/.test(h) && /data-pomo-bars/.test(h) && /data-pomo-clear/.test(h), "pomodoro: istatistik/görev/ses eksik");
+  check(/sth-pomo-log/.test(fs.readFileSync(path.join(DIST, "gizlilik", "index.html"), "utf8")), "gizlilik: sth-pomo-log yok");
+}
 // Saat dilimleri, yaz saati, Unix (30 Ekim 2026, #25)
 {
   const rd = (f) => (fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "");

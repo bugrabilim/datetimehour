@@ -991,3 +991,16 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
 .unix { text-align: center; margin-top: 1rem; }
 .unix-now { letter-spacing: 0.02em; }
 .unix-res dd { font-size: 1.05rem; font-weight: 600; overflow-wrap: anywhere; }
+
+/* Pomodoro istatistikleri ve arka plan sesi (30 Ekim 2026, rakip analizi #16) */
+.pomo-task { max-width: 28rem; margin: 0 auto 0.75rem; }
+.pomo-stats { margin-top: 1.5rem; text-align: start; }
+.pomo-chart { margin: 1rem 0; }
+.pomo-bars { display: flex; align-items: flex-end; gap: 0.5rem; height: 7rem; padding: 0 0.25rem; border-bottom: 1px solid var(--border); }
+.pomo-col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 0.25rem; }
+.pomo-col span { display: block; width: 100%; max-width: 2.5rem; min-height: 2px; background: var(--accent); border-radius: 4px 4px 0 0; }
+.pomo-col small { color: var(--muted); font-size: 0.75rem; }
+.pomo-tasks { margin: 0.25rem 0 0.75rem; padding-inline-start: 1.2rem; }
+.tool-h3 { font-size: 1rem; margin: 0.75rem 0 0.25rem; }
+.pomo-stats [hidden] { display: none; }
+.pomo-stats .fact dd { font-size: 1.15rem; }

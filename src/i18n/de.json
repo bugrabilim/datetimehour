@@ -373,6 +373,16 @@
               "Bis zur Löschung durch Sie"
             ],
             [
+              "sth-pomo-log",
+              "Speichert abgeschlossene Arbeitsphasen (Datum, Dauer, optionaler Aufgabenname) für die Pomodoro-Statistik auf diesem Gerät; höchstens 1.000 Einträge.",
+              "Bis Sie es löschen"
+            ],
+            [
+              "sth-pomo-noise",
+              "Merkt sich Ihr Pomodoro-Hintergrundgeräusch und die Lautstärke.",
+              "Bis Sie es löschen"
+            ],
+            [
               "sth-world",
               "Merkt sich die für die Weltzeituhr gewählten Städte und ihre Reihenfolge.",
               "Bis Sie es löschen"
@@ -950,7 +960,29 @@
           "q": "Wechseln die Phasen automatisch?",
           "a": "Ja. Wenn die Zeit abgelaufen ist, ertönt ein Ton, und die nächste Phase (Arbeit oder Pause) beginnt von selbst. Mit „Pause“ halten Sie an."
         }
-      ]
+      ],
+      "taskLabel": "Woran arbeiten Sie? (optional)",
+      "taskPlaceholder": "Zum Beispiel: Bericht schreiben",
+      "statsHeading": "Statistik (nur auf diesem Gerät)",
+      "today": "Heute",
+      "week": "Letzte 7 Tage",
+      "total": "Gesamt",
+      "statLine": "{n} Pomodoros · {m} Minuten",
+      "chartCaption": "Fokusminuten der letzten 7 Tage",
+      "topTasks": "Am meisten bearbeitet (7 Tage)",
+      "noTask": "Ohne Titel",
+      "clear": "Verlauf löschen",
+      "clearConfirm": "Pomodoro-Verlauf von diesem Gerät löschen?",
+      "noise": "Hintergrundgeräusch beim Arbeiten",
+      "noiseOff": "Aus",
+      "noiseWhite": "Weißes Rauschen",
+      "noisePink": "Rosa Rauschen",
+      "noiseBrown": "Braunes Rauschen",
+      "noiseRain": "Regen",
+      "volume": "Lautstärke",
+      "noiseNote": "Das Geräusch läuft nur während einer Arbeitsphase; es wird im Browser erzeugt, nichts wird heruntergeladen.",
+      "empty": "Noch keine abgeschlossenen Pomodoros.",
+      "minUnit": "Min."
     },
     "presets": {
       "timerTitle": "{Name}: Online-Countdown | Saat Tarih",

@@ -981,7 +981,8 @@ ${ringBanner(tt, "countdown")}`;
 <p class="meta">${esc(s.note)}</p>
 ${ringBanner(tt, "alarm")}`;
   // pomodoro
-  return `<p class="phase" data-pomo-phase aria-live="polite">${esc(s.work)}</p>
+  return `<div class="field pomo-task"><label for="po-task">${esc(s.taskLabel)}</label><input id="po-task" type="text" maxlength="60" placeholder="${esc(s.taskPlaceholder)}" data-pomo-task></div>
+<p class="phase" data-pomo-phase aria-live="polite">${esc(s.work)}</p>
 <p class="big-time" role="timer" aria-label="${esc(s.phaseLabel)}" data-pomo-display>25:00</p>
 <progress class="tool-progress" max="100" value="0" data-pomo-progress aria-hidden="true"></progress>
 <p class="meta" data-pomo-round>&nbsp;</p>
@@ -990,7 +991,18 @@ ${ringBanner(tt, "alarm")}`;
 <details class="pomo-settings"><summary>${esc(s.settings)}</summary>
   <div class="inputs-row">${numField("po-w", s.workMin, 'min="1" max="180" value="25" data-pomo-w')}${numField("po-s", s.shortMin, 'min="1" max="60" value="5" data-pomo-s')}${numField("po-l", s.longMin, 'min="1" max="120" value="15" data-pomo-l')}${numField("po-r", s.roundsLabel, 'min="2" max="12" value="4" data-pomo-r')}</div>
 </details>
-${soundRow(tt)}`;
+<div class="inputs-row pomo-noise"><div class="field"><label for="po-noise">${esc(s.noise)}</label><select id="po-noise" data-pomo-noise>${["off", "white", "pink", "brown", "rain"].map((k) => `<option value="${k}">${esc(s["noise" + k[0].toUpperCase() + k.slice(1)])}</option>`).join("")}</select></div><div class="field"><label for="po-vol">${esc(s.volume)}</label><input id="po-vol" type="range" min="0" max="100" value="40" data-pomo-vol></div></div>
+<p class="meta">${esc(s.noiseNote)}</p>
+${soundRow(tt)}
+<section class="pomo-stats" aria-labelledby="pomo-stats-h">
+  <h2 id="pomo-stats-h" class="tool-h2">${esc(s.statsHeading)}</h2>
+  <dl class="facts"><div class="fact"><dt>${esc(s.today)}</dt><dd data-pomo-st-today>–</dd></div><div class="fact"><dt>${esc(s.week)}</dt><dd data-pomo-st-week>–</dd></div><div class="fact"><dt>${esc(s.total)}</dt><dd data-pomo-st-total>–</dd></div></dl>
+  <figure class="pomo-chart"><div class="pomo-bars" data-pomo-bars aria-hidden="true"></div><figcaption class="meta">${esc(s.chartCaption)}</figcaption></figure>
+  <h3 class="tool-h3">${esc(s.topTasks)}</h3>
+  <ul class="pomo-tasks" data-pomo-tasks></ul>
+  <p class="meta" data-pomo-empty>${esc(s.empty)}</p>
+  ${btn("toggle", "data-pomo-clear", s.clear)}
+</section>`;
 }
 
 function buildTool(lang, key, preset = null) {

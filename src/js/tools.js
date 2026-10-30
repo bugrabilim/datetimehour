@@ -416,6 +416,75 @@
     var iW = q("[data-pomo-w]"), iS = q("[data-pomo-s]"), iL = q("[data-pomo-l]"), iR = q("[data-pomo-r]");
     var st = load("sth-pomo", { w: 25, s: 5, l: 15, r: 4, phase: "work", round: 1, done: 0, run: false, rem: 0, wallEnd: 0 });
     var endMono = 0, tick = 0;
+    /* Görev adı, istatistik ve arka plan sesi (30 Ekim 2026, rakip analizi #16): tamamlanan çalışma turları yalnız bu
+       cihazda sth-pomo-log'da ({d: yerel gün, m: dakika, t: görev}, en çok 1000); gürültü Web Audio ile üretilir. */
+    var taskIn = q("[data-pomo-task]"), noiseSel = q("[data-pomo-noise]"), volIn = q("[data-pomo-vol]");
+    var log = (function () { try { var a = JSON.parse(store("sth-pomo-log") || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } })();
+    var CAL = S.cfg.cal || {};
+    function dayKey(ms) { var d = new Date(ms); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+    function addLog(min) {
+      log.push({ d: dayKey(S.nowMs()), m: min, t: (st.task || "").slice(0, 60) });
+      if (log.length > 1000) log = log.slice(-1000);
+      save("sth-pomo-log", log); stats();
+    }
+    function stats() {
+      var now = S.nowMs(), days = [], i;
+      for (i = 6; i >= 0; i--) days.push(dayKey(now - i * 86400000));
+      var sum = function (f) { var n = 0, m = 0; log.forEach(function (e) { if (f(e)) { n++; m += e.m; } }); return tpl(P.statLine, { n: n, m: m }); };
+      q("[data-pomo-st-today]").textContent = sum(function (e) { return e.d === days[6]; });
+      q("[data-pomo-st-week]").textContent = sum(function (e) { return e.d >= days[0]; });
+      q("[data-pomo-st-total]").textContent = sum(function () { return true; });
+      var per = days.map(function (d) { var m = 0; log.forEach(function (e) { if (e.d === d) m += e.m; }); return m; }), max = Math.max.apply(null, per.concat([1]));
+      var bars = q("[data-pomo-bars]"); bars.textContent = "";
+      days.forEach(function (d, k) {
+        var col = doc.createElement("div"), bar = doc.createElement("span"), lab = doc.createElement("small"), p = d.split("-");
+        col.className = "pomo-col"; bar.style.height = Math.round((per[k] / max) * 100) + "%"; bar.title = per[k] + "";
+        lab.textContent = (CAL.weekdaysShort || [])[(new Date(+p[0], +p[1] - 1, +p[2]).getDay() + 6) % 7] || p[2];
+        col.appendChild(bar); col.appendChild(lab); bars.appendChild(col);
+      });
+      var tasks = {}; log.forEach(function (e) { if (e.d >= days[0]) { var k = e.t || P.noTask; tasks[k] = (tasks[k] || 0) + e.m; } });
+      var ul = q("[data-pomo-tasks]"); ul.textContent = "";
+      Object.keys(tasks).sort(function (a, b) { return tasks[b] - tasks[a]; }).slice(0, 5).forEach(function (k) {
+        var li = doc.createElement("li"); li.textContent = k + " · " + tasks[k] + " " + P.minUnit; ul.appendChild(li);
+      });
+      q("[data-pomo-empty]").hidden = log.length > 0;
+      q("[data-pomo-clear]").hidden = log.length === 0;
+    }
+    q("[data-pomo-clear]").addEventListener("click", function () { if (window.confirm(P.clearConfirm)) { log = []; save("sth-pomo-log", log); stats(); } });
+    if (taskIn) { taskIn.value = st.task || ""; taskIn.addEventListener("input", function () { st.task = taskIn.value.trim().slice(0, 60); persist(); }); }
+    var noise = { node: null, gain: null, kind: "" };
+    function noiseBuffer(c, kind) {
+      var len = c.sampleRate * 4, buf = c.createBuffer(1, len, c.sampleRate), d = buf.getChannelData(0);
+      var b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0, last = 0;
+      for (var i = 0; i < len; i++) {
+        var w = Math.random() * 2 - 1;
+        if (kind === "white") d[i] = w * 0.5;
+        else if (kind === "brown") { last = (last + 0.02 * w) / 1.02; d[i] = last * 3.5; }
+        else { // pembe (Paul Kellet); yağmur da pembe gürültüden süzülür
+          b0 = 0.99886 * b0 + w * 0.0555179; b1 = 0.99332 * b1 + w * 0.0750759; b2 = 0.969 * b2 + w * 0.153852;
+          b3 = 0.8665 * b3 + w * 0.3104856; b4 = 0.55 * b4 + w * 0.5329522; b5 = -0.7616 * b5 - w * 0.016898;
+          d[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11; b6 = w * 0.115926;
+        }
+      }
+      return buf;
+    }
+    function noiseStop() { if (noise.node) { try { noise.node.stop(); } catch (e) {} noise.node.disconnect(); noise.node = null; noise.kind = ""; } }
+    function noiseSync() {
+      var kind = noiseSel ? noiseSel.value : "off", want = kind !== "off" && st.run && st.phase === "work";
+      if (!want) { noiseStop(); return; }
+      var c = ctx(); if (!c) return;
+      if (!noise.gain) { noise.gain = c.createGain(); noise.gain.connect(c.destination); }
+      noise.gain.gain.value = (+(volIn ? volIn.value : 40) / 100) * 0.6;
+      if (noise.kind === kind) return;
+      noiseStop();
+      var src = c.createBufferSource(); src.buffer = noiseBuffer(c, kind); src.loop = true;
+      var out = src;
+      if (kind === "rain") { var hp = c.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 900; var lp = c.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 7000; src.connect(hp); hp.connect(lp); out = lp; }
+      out.connect(noise.gain); src.start(); noise.node = src; noise.kind = kind;
+    }
+    var pref = load("sth-pomo-noise", { k: "off", v: 40 });
+    if (noiseSel) { noiseSel.value = pref.k; noiseSel.addEventListener("change", function () { pref.k = noiseSel.value; save("sth-pomo-noise", pref); ctx(); noiseSync(); }); }
+    if (volIn) { volIn.value = pref.v; volIn.addEventListener("input", function () { pref.v = +volIn.value; save("sth-pomo-noise", pref); noiseSync(); }); }
     function clamp(v, a, b, d) { v = Math.round(+v); return isNaN(v) ? d : Math.min(b, Math.max(a, v)); }
     function readSettings() { st.w = clamp(iW.value, 1, 180, 25); st.s = clamp(iS.value, 1, 60, 5); st.l = clamp(iL.value, 1, 120, 15); st.r = clamp(iR.value, 2, 12, 4); }
     function phaseMs(p) { return (p === "work" ? st.w : p === "short" ? st.s : st.l) * 60000; }
@@ -431,6 +500,7 @@
       countEl.textContent = tpl(P.completed, { n: st.done });
       bStart.textContent = st.run ? P.pause : (st.rem > 0 && st.rem < phaseMs(st.phase) ? P.resume : P.start);
       setTitle(st.run ? hms(r, false) + " " + P[st.phase] : "");
+      noiseSync();
     }
     function begin(phase, autostart) {
       st.phase = phase; st.rem = phaseMs(phase);
@@ -447,6 +517,7 @@
       paint();
       if (st.run && remaining() <= 0) {
         var name = P[st.phase];
+        if (st.phase === "work") addLog(st.w);
         chime(); notify(tpl(P.phaseDone, { phase: name }), baseTitle);
         next(true);
       }
@@ -471,7 +542,7 @@
       if (left > 0) { st.rem = left; endMono = S.mono() + left; } else { st.run = false; st.rem = 0; }
     }
     if (!(st.rem > 0) && !st.run) st.rem = phaseMs(st.phase);
-    paint();
+    paint(); stats();
     setInterval(loop, 250);
   }
 

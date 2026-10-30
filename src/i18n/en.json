@@ -346,6 +346,16 @@
               "Until you delete it"
             ],
             [
+              "sth-pomo-log",
+              "Keeps completed work sessions (date, length, optional task name) on this device for pomodoro statistics; at most 1,000 entries.",
+              "Until you delete it"
+            ],
+            [
+              "sth-pomo-noise",
+              "Remembers your pomodoro background sound and volume.",
+              "Until you delete it"
+            ],
+            [
               "sth-world",
               "Remembers the cities you chose for the world clock, and their order.",
               "Until you delete it"
@@ -923,7 +933,29 @@
           "q": "Do the phases switch automatically?",
           "a": "Yes. When time is up a sound plays and the next phase (work or break) starts by itself. Press Pause to stop."
         }
-      ]
+      ],
+      "taskLabel": "What are you working on? (optional)",
+      "taskPlaceholder": "For example: writing the report",
+      "statsHeading": "Statistics (on this device only)",
+      "today": "Today",
+      "week": "Last 7 days",
+      "total": "Total",
+      "statLine": "{n} pomodoros · {m} minutes",
+      "chartCaption": "Focus minutes over the last 7 days",
+      "topTasks": "Most worked on (7 days)",
+      "noTask": "Untitled",
+      "clear": "Clear history",
+      "clearConfirm": "Delete the pomodoro history from this device?",
+      "noise": "Background sound while working",
+      "noiseOff": "Off",
+      "noiseWhite": "White noise",
+      "noisePink": "Pink noise",
+      "noiseBrown": "Brown noise",
+      "noiseRain": "Rain",
+      "volume": "Volume",
+      "noiseNote": "The sound plays only while a work session is running; it is generated in the browser, nothing is downloaded.",
+      "empty": "No completed pomodoros yet.",
+      "minUnit": "min"
     },
     "presets": {
       "timerTitle": "{Name}: online countdown | Saat Tarih",

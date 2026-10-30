@@ -346,6 +346,16 @@
               "Siz silene kadar"
             ],
             [
+              "sth-pomo-log",
+              "Pomodoro istatistikleri için tamamlanan çalışma turlarını (tarih, süre, isteğe bağlı görev adı) bu cihazda tutar; en çok 1000 kayıt.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-pomo-noise",
+              "Pomodorodaki arka plan sesi seçiminizi ve ses düzeyini hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
               "sth-world",
               "Dünya saatleri için seçtiğiniz şehirleri ve sırasını hatırlar.",
               "Siz silene kadar"
@@ -923,7 +933,29 @@
           "q": "Aşamalar otomatik mi geçiyor?",
           "a": "Evet. Süre dolunca sesli uyarı çalar ve bir sonraki aşama (çalışma ya da mola) kendiliğinden başlar. Duraklatmak için Duraklat düğmesine basın."
         }
-      ]
+      ],
+      "taskLabel": "Ne üzerinde çalışıyorsunuz? (isteğe bağlı)",
+      "taskPlaceholder": "Örneğin: rapor yazımı",
+      "statsHeading": "İstatistikler (yalnız bu cihazda)",
+      "today": "Bugün",
+      "week": "Son 7 gün",
+      "total": "Toplam",
+      "statLine": "{n} pomodoro · {m} dakika",
+      "chartCaption": "Son 7 günün odak dakikaları",
+      "topTasks": "En çok çalışılanlar (7 gün)",
+      "noTask": "Adsız",
+      "clear": "Geçmişi sil",
+      "clearConfirm": "Pomodoro geçmişi bu cihazdan silinsin mi?",
+      "noise": "Çalışırken arka plan sesi",
+      "noiseOff": "Kapalı",
+      "noiseWhite": "Beyaz gürültü",
+      "noisePink": "Pembe gürültü",
+      "noiseBrown": "Kahverengi gürültü",
+      "noiseRain": "Yağmur",
+      "volume": "Ses düzeyi",
+      "noiseNote": "Ses yalnız çalışma süresi işlerken çalar; tarayıcıda üretilir, dosya indirilmez.",
+      "empty": "Henüz tamamlanan pomodoro yok.",
+      "minUnit": "dk"
     },
     "presets": {
       "timerTitle": "{Name}: online geri sayım | Saat Tarih",

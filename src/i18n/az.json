@@ -346,6 +346,16 @@
               "Siz silənədək"
             ],
             [
+              "sth-pomo-log",
+              "Pomodoro statistikası üçün tamamlanmış iş turlarını (tarix, müddət, istəyə bağlı tapşırıq adı) bu cihazda saxlayır; ən çox 1000 qeyd.",
+              "Siz silənə qədər"
+            ],
+            [
+              "sth-pomo-noise",
+              "Pomodorodakı fon səsi seçiminizi və səs səviyyəsini xatırlayır.",
+              "Siz silənə qədər"
+            ],
+            [
               "sth-world",
               "Dünya saatları üçün seçdiyiniz şəhərləri və onların ardıcıllığını xatırlayır.",
               "Siz silənə qədər"
@@ -923,7 +933,29 @@
           "q": "Mərhələlər avtomatik dəyişirmi?",
           "a": "Bəli. Vaxt bitəndə səs çalınır və növbəti mərhələ (iş və ya fasilə) özü başlayır. Saxlamaq üçün Dayandır düyməsini basın."
         }
-      ]
+      ],
+      "taskLabel": "Nə üzərində işləyirsiniz? (istəyə bağlı)",
+      "taskPlaceholder": "Məsələn: hesabat yazmaq",
+      "statsHeading": "Statistika (yalnız bu cihazda)",
+      "today": "Bu gün",
+      "week": "Son 7 gün",
+      "total": "Cəmi",
+      "statLine": "{n} pomodoro · {m} dəqiqə",
+      "chartCaption": "Son 7 günün diqqət dəqiqələri",
+      "topTasks": "Ən çox işlənənlər (7 gün)",
+      "noTask": "Adsız",
+      "clear": "Tarixçəni sil",
+      "clearConfirm": "Pomodoro tarixçəsi bu cihazdan silinsin?",
+      "noise": "İşləyərkən fon səsi",
+      "noiseOff": "Bağlı",
+      "noiseWhite": "Ağ küy",
+      "noisePink": "Çəhrayı küy",
+      "noiseBrown": "Qəhvəyi küy",
+      "noiseRain": "Yağış",
+      "volume": "Səs səviyyəsi",
+      "noiseNote": "Səs yalnız iş müddəti gedərkən çalır; brauzerdə yaradılır, heç nə yüklənmir.",
+      "empty": "Hələ tamamlanmış pomodoro yoxdur.",
+      "minUnit": "dəq"
     },
     "presets": {
       "timerTitle": "{Name}: onlayn geri sayım | Saat Tarih",
