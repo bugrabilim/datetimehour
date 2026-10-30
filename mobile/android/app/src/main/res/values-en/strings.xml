@@ -711,5 +711,14 @@
     <string name="moon_calendarLink">Moon calendar and eclipses</string>
     <string name="widget_moon_name">Moon phase</string>
     <string name="widget_moon_desc">Today\'s Moon phase, illumination and the next full or new moon.</string>
+    <string name="widget_seconds_name">Clock with seconds</string>
+    <string name="widget_seconds_desc">Digital clock with seconds and today\'s date.</string>
+    <string name="widget_world_desc">The first four cities in your world clock list.</string>
+    <string name="widget_world_descIOS">The time in four cities you choose in the widget settings.</string>
+    <string name="widget_city">City</string>
+    <string name="widget_countdown_desc">Days left until the date you set in Tools › Countdown; New Year if none is set.</string>
+    <string name="widget_countdown_descIOS">Choose a title and date in the widget settings; New Year by default.</string>
+    <string name="widget_countdown_titleParam">Title</string>
+    <string name="widget_countdown_dateParam">Date</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

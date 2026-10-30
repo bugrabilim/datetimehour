@@ -139,5 +139,8 @@ class MoreScreensTest {
         widget("widget-dijital", 170, 80, DigitalClockWidget().views(c, 4))
         widget("widget-saat-tarih", 170, 170, ClockDateWidget().views(c, 5))
         widget("widget-ay", 170, 170, MoonWidget().views(c, 6))
+        widget("widget-saniyeli", 170, 170, SecondsClockWidget().views(c, 7))
+        widget("widget-dunya", 360, 170, WorldClockWidget().views(c, 8))
+        widget("widget-geri-sayim", 170, 170, CountdownWidget().views(c, 9))
     }
 }

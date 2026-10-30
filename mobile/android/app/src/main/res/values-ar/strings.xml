@@ -711,5 +711,14 @@
     <string name="moon_calendarLink">تقويم القمر والكسوف والخسوف</string>
     <string name="widget_moon_name">طور القمر</string>
     <string name="widget_moon_desc">طور القمر اليوم ونسبة الإضاءة والبدر أو المحاق التالي.</string>
+    <string name="widget_seconds_name">ساعة بالثواني</string>
+    <string name="widget_seconds_desc">ساعة رقمية بالثواني وتاريخ اليوم.</string>
+    <string name="widget_world_desc">أول أربع مدن في قائمة ساعات العالم لديك.</string>
+    <string name="widget_world_descIOS">الوقت في أربع مدن تختارها من إعدادات الأداة.</string>
+    <string name="widget_city">المدينة</string>
+    <string name="widget_countdown_desc">الأيام المتبقية حتى التاريخ الذي حددته في الأدوات › العد التنازلي؛ وإن لم يُحدَّد فرأس السنة.</string>
+    <string name="widget_countdown_descIOS">اختر عنوانًا وتاريخًا من إعدادات الأداة؛ الافتراضي رأس السنة.</string>
+    <string name="widget_countdown_titleParam">العنوان</string>
+    <string name="widget_countdown_dateParam">التاريخ</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

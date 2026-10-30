@@ -24850,6 +24850,321 @@
           }
         }
       }
+    },
+    "widget.seconds.name": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saniyeli saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clock with seconds"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uhr mit Sekunden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saniyəli saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعة بالثواني"
+          }
+        }
+      }
+    },
+    "widget.seconds.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saniyeleriyle dijital saat ve bugünün tarihi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Digital clock with seconds and today's date."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Digitaluhr mit Sekunden und dem heutigen Datum."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saniyələri ilə rəqəmsal saat və bu günün tarixi."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعة رقمية بالثواني وتاريخ اليوم."
+          }
+        }
+      }
+    },
+    "widget.world.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya saatleri listenizdeki ilk dört şehir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The first four cities in your world clock list."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die ersten vier Städte Ihrer Weltuhr-Liste."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dünya saatləri siyahınızdakı ilk dörd şəhər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أول أربع مدن في قائمة ساعات العالم لديك."
+          }
+        }
+      }
+    },
+    "widget.world.descIOS": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget ayarından seçtiğiniz dört şehrin saati."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The time in four cities you choose in the widget settings."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Uhrzeit in vier Städten, die Sie in den Widget-Einstellungen wählen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vidjet ayarında seçdiyiniz dörd şəhərin saatı."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوقت في أربع مدن تختارها من إعدادات الأداة."
+          }
+        }
+      }
+    },
+    "widget.city": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şehir"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "City"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stadt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəhər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المدينة"
+          }
+        }
+      }
+    },
+    "widget.countdown.desc": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Araçlar › Geri sayım'da kurduğunuz tarihe kalan gün; kurulu değilse yılbaşı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Days left until the date you set in Tools › Countdown; New Year if none is set."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tage bis zu dem Datum, das Sie unter Werkzeuge › Countdown festgelegt haben; sonst Neujahr."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alətlər › Geri sayımda qurduğunuz tarixə qalan gün; qurulmayıbsa, Yeni il."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأيام المتبقية حتى التاريخ الذي حددته في الأدوات › العد التنازلي؛ وإن لم يُحدَّد فرأس السنة."
+          }
+        }
+      }
+    },
+    "widget.countdown.descIOS": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget ayarından başlık ve tarih seçin; varsayılan yılbaşı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a title and date in the widget settings; New Year by default."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wählen Sie Titel und Datum in den Widget-Einstellungen; standardmäßig Neujahr."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vidjet ayarından başlıq və tarix seçin; susmaya görə Yeni il."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر عنوانًا وتاريخًا من إعدادات الأداة؛ الافتراضي رأس السنة."
+          }
+        }
+      }
+    },
+    "widget.countdown.titleParam": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Title"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlıq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العنوان"
+          }
+        }
+      }
+    },
+    "widget.countdown.dateParam": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarih"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarix"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التاريخ"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

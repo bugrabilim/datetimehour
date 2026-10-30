@@ -711,5 +711,14 @@
     <string name="moon_calendarLink">Mondkalender und Finsternisse</string>
     <string name="widget_moon_name">Mondphase</string>
     <string name="widget_moon_desc">Heutige Mondphase, Beleuchtung und der nächste Voll- oder Neumond.</string>
+    <string name="widget_seconds_name">Uhr mit Sekunden</string>
+    <string name="widget_seconds_desc">Digitaluhr mit Sekunden und dem heutigen Datum.</string>
+    <string name="widget_world_desc">Die ersten vier Städte Ihrer Weltuhr-Liste.</string>
+    <string name="widget_world_descIOS">Die Uhrzeit in vier Städten, die Sie in den Widget-Einstellungen wählen.</string>
+    <string name="widget_city">Stadt</string>
+    <string name="widget_countdown_desc">Tage bis zu dem Datum, das Sie unter Werkzeuge › Countdown festgelegt haben; sonst Neujahr.</string>
+    <string name="widget_countdown_descIOS">Wählen Sie Titel und Datum in den Widget-Einstellungen; standardmäßig Neujahr.</string>
+    <string name="widget_countdown_titleParam">Titel</string>
+    <string name="widget_countdown_dateParam">Datum</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

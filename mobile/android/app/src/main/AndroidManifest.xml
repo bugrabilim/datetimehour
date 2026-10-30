@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Widget'lar (Widgets.kt): altı widget, yenileme alıcısı ve vakit widget'ının yer seçimi -->
+        <!-- Widget'lar (Widgets.kt): dokuz widget, yenileme alıcısı ve vakit widget'ının yer seçimi -->
         <receiver
             android:name=".NextPrayerWidget"
             android:exported="false"
@@ -124,6 +124,48 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_moon_info" />
+        </receiver>
+        <receiver
+            android:name=".SecondsClockWidget"
+            android:exported="false"
+            android:label="@string/widget_seconds_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_seconds_info" />
+        </receiver>
+        <receiver
+            android:name=".WorldClockWidget"
+            android:exported="false"
+            android:label="@string/world_h1">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_world_info" />
+        </receiver>
+        <receiver
+            android:name=".CountdownWidget"
+            android:exported="false"
+            android:label="@string/tools_hub_cards_countdown_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_countdown_info" />
         </receiver>
         <receiver
             android:name=".WidgetRefreshReceiver"

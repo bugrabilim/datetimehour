@@ -711,5 +711,14 @@
     <string name="moon_calendarLink">Ay takvimi ve tutulmalar</string>
     <string name="widget_moon_name">Ay evresi</string>
     <string name="widget_moon_desc">Ay\'ın bugünkü evresi, aydınlık yüzdesi ve sıradaki dolunay ya da yeni ay.</string>
+    <string name="widget_seconds_name">Saniyeli saat</string>
+    <string name="widget_seconds_desc">Saniyeleriyle dijital saat ve bugünün tarihi.</string>
+    <string name="widget_world_desc">Dünya saatleri listenizdeki ilk dört şehir.</string>
+    <string name="widget_world_descIOS">Widget ayarından seçtiğiniz dört şehrin saati.</string>
+    <string name="widget_city">Şehir</string>
+    <string name="widget_countdown_desc">Araçlar › Geri sayım\'da kurduğunuz tarihe kalan gün; kurulu değilse yılbaşı.</string>
+    <string name="widget_countdown_descIOS">Widget ayarından başlık ve tarih seçin; varsayılan yılbaşı.</string>
+    <string name="widget_countdown_titleParam">Başlık</string>
+    <string name="widget_countdown_dateParam">Tarih</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

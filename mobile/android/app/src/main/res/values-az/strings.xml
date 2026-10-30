@@ -711,5 +711,14 @@
     <string name="moon_calendarLink">Ay təqvimi və tutulmalar</string>
     <string name="widget_moon_name">Ayın fazası</string>
     <string name="widget_moon_desc">Ayın bu günkü fazası, işıqlı hissəsi və növbəti bədirlənmə ya da təzə ay.</string>
+    <string name="widget_seconds_name">Saniyəli saat</string>
+    <string name="widget_seconds_desc">Saniyələri ilə rəqəmsal saat və bu günün tarixi.</string>
+    <string name="widget_world_desc">Dünya saatləri siyahınızdakı ilk dörd şəhər.</string>
+    <string name="widget_world_descIOS">Vidjet ayarında seçdiyiniz dörd şəhərin saatı.</string>
+    <string name="widget_city">Şəhər</string>
+    <string name="widget_countdown_desc">Alətlər › Geri sayımda qurduğunuz tarixə qalan gün; qurulmayıbsa, Yeni il.</string>
+    <string name="widget_countdown_descIOS">Vidjet ayarından başlıq və tarix seçin; susmaya görə Yeni il.</string>
+    <string name="widget_countdown_titleParam">Başlıq</string>
+    <string name="widget_countdown_dateParam">Tarix</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

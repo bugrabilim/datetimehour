@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Geri sayım widget'ı: başlık, kalan gün (son gün Chronometer geri sayar), hedef tarih -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/widget_accent"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/days"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:autoSizeMaxTextSize="56sp"
+        android:autoSizeMinTextSize="18sp"
+        android:autoSizeTextType="uniform"
+        android:fontFeatureSettings="tnum"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/widget_text"
+        android:textStyle="bold" />
+
+    <Chronometer
+        android:id="@+id/left"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFeatureSettings="tnum"
+        android:gravity="center"
+        android:layoutDirection="ltr"
+        android:textColor="@color/widget_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/widget_muted"
+        android:textSize="12sp" />
+</LinearLayout>

@@ -190,6 +190,7 @@ private fun Wheel(value: Int, range: IntRange, unit: String, onChange: (Int) -> 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DateCountdown() {
+    val context = androidx.compose.ui.platform.LocalContext.current
     var target by remember { mutableLongStateOf(ToolState.long("cd.target")) }
     var title by remember { mutableStateOf(ToolState.str("cd.title")) }
     var pickedDay by rememberSaveable { mutableStateOf(LocalDate.now().plusDays(1).toString()) }
@@ -197,7 +198,10 @@ private fun DateCountdown() {
     var picking by remember { mutableIntStateOf(0) } // 1 tarih, 2 saat
     val now = rememberNow()
     val today = LocalDate.now()
-    fun set(ms: Long, t: String) { target = ms; title = t; ToolState.putLong("cd.target", ms); ToolState.putStr("cd.title", t) }
+    fun set(ms: Long, t: String) {
+        target = ms; title = t; ToolState.putLong("cd.target", ms); ToolState.putStr("cd.title", t)
+        WidgetUpdater.updateAll(context) // geri sayım widget'ı yeni hedefi gösterir
+    }
 
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp),

@@ -1917,5 +1917,68 @@
     "de": "Heutige Mondphase, Beleuchtung und der nächste Voll- oder Neumond.",
     "az": "Ayın bu günkü fazası, işıqlı hissəsi və növbəti bədirlənmə ya da təzə ay.",
     "ar": "طور القمر اليوم ونسبة الإضاءة والبدر أو المحاق التالي."
+  },
+  "widget.seconds.name": {
+    "tr": "Saniyeli saat",
+    "en": "Clock with seconds",
+    "de": "Uhr mit Sekunden",
+    "az": "Saniyəli saat",
+    "ar": "ساعة بالثواني"
+  },
+  "widget.seconds.desc": {
+    "tr": "Saniyeleriyle dijital saat ve bugünün tarihi.",
+    "en": "Digital clock with seconds and today's date.",
+    "de": "Digitaluhr mit Sekunden und dem heutigen Datum.",
+    "az": "Saniyələri ilə rəqəmsal saat və bu günün tarixi.",
+    "ar": "ساعة رقمية بالثواني وتاريخ اليوم."
+  },
+  "widget.world.desc": {
+    "tr": "Dünya saatleri listenizdeki ilk dört şehir.",
+    "en": "The first four cities in your world clock list.",
+    "de": "Die ersten vier Städte Ihrer Weltuhr-Liste.",
+    "az": "Dünya saatləri siyahınızdakı ilk dörd şəhər.",
+    "ar": "أول أربع مدن في قائمة ساعات العالم لديك."
+  },
+  "widget.world.descIOS": {
+    "tr": "Widget ayarından seçtiğiniz dört şehrin saati.",
+    "en": "The time in four cities you choose in the widget settings.",
+    "de": "Die Uhrzeit in vier Städten, die Sie in den Widget-Einstellungen wählen.",
+    "az": "Vidjet ayarında seçdiyiniz dörd şəhərin saatı.",
+    "ar": "الوقت في أربع مدن تختارها من إعدادات الأداة."
+  },
+  "widget.city": {
+    "tr": "Şehir",
+    "en": "City",
+    "de": "Stadt",
+    "az": "Şəhər",
+    "ar": "المدينة"
+  },
+  "widget.countdown.desc": {
+    "tr": "Araçlar › Geri sayım'da kurduğunuz tarihe kalan gün; kurulu değilse yılbaşı.",
+    "en": "Days left until the date you set in Tools › Countdown; New Year if none is set.",
+    "de": "Tage bis zu dem Datum, das Sie unter Werkzeuge › Countdown festgelegt haben; sonst Neujahr.",
+    "az": "Alətlər › Geri sayımda qurduğunuz tarixə qalan gün; qurulmayıbsa, Yeni il.",
+    "ar": "الأيام المتبقية حتى التاريخ الذي حددته في الأدوات › العد التنازلي؛ وإن لم يُحدَّد فرأس السنة."
+  },
+  "widget.countdown.descIOS": {
+    "tr": "Widget ayarından başlık ve tarih seçin; varsayılan yılbaşı.",
+    "en": "Choose a title and date in the widget settings; New Year by default.",
+    "de": "Wählen Sie Titel und Datum in den Widget-Einstellungen; standardmäßig Neujahr.",
+    "az": "Vidjet ayarından başlıq və tarix seçin; susmaya görə Yeni il.",
+    "ar": "اختر عنوانًا وتاريخًا من إعدادات الأداة؛ الافتراضي رأس السنة."
+  },
+  "widget.countdown.titleParam": {
+    "tr": "Başlık",
+    "en": "Title",
+    "de": "Titel",
+    "az": "Başlıq",
+    "ar": "العنوان"
+  },
+  "widget.countdown.dateParam": {
+    "tr": "Tarih",
+    "en": "Date",
+    "de": "Datum",
+    "az": "Tarix",
+    "ar": "التاريخ"
   }
 }

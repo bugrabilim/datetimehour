@@ -64,6 +64,7 @@ targets:
       - path: App/Sources/Location.swift
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
+      - path: App/Resources/cities.json
     dependencies:
       - package: SaatCore
       - sdk: WidgetKit.framework
