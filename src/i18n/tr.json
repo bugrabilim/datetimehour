@@ -409,6 +409,11 @@
               "Siz silene kadar"
             ],
             [
+              "sth-prayer",
+              "Namaz vakitleri için seçtiğiniz hesap yöntemini ve ikindi (standart ya da Hanefî) tercihini hatırlar; Diyanet ve standart ikindi seçiliyken kayıt tutulmaz.",
+              "Siz silene kadar"
+            ],
+            [
               "sth-conv",
               "Saat çeviricide seçtiğiniz şehirleri hatırlar.",
               "Siz silene kadar"
@@ -829,6 +834,14 @@
         "zodiac": {
           "name": "Burç hesaplama",
           "desc": "Güneş ve Ay burcu."
+        },
+        "sky": {
+          "name": "Gece gökyüzü",
+          "desc": "Bu gece görünen gezegenler, gökyüzü çizimi, Ay'ın uzaklığı."
+        },
+        "otd": {
+          "name": "Tarihte bugün",
+          "desc": "Bugün ve istediğiniz günde tarihte neler oldu."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -1616,6 +1629,10 @@
       {
         "q": "Yurt dışında kullanabilir miyim?",
         "a": "Evet. Konumumu kullan düğmesiyle dünyanın her yerinde vakit hesaplanır. Çok yüksek enlemlerde imsak ya da yatsı açısı oluşmayabilir; o durumda gecenin yedide biri kuralıyla yaklaşık değer verilir."
+      },
+      {
+        "q": "Hanefî ikindi vakti nedir, neden farklı?",
+        "a": "İkindi vakti, bir cismin gölgesi öğle anındaki gölgesine kendi boyu kadar eklendiğinde başlar (asr-ı evvel); Diyanet ve Şâfiî, Mâlikî, Hanbelî mezhepleri bunu esas alır. Hanefî mezhebinde ise gölgenin iki boy uzaması beklenir (asr-ı sânî), bu yüzden ikindi mevsime göre yaklaşık 30–80 dakika sonra başlar. Namaz vakitleri sayfasındaki \"Hesap yöntemi\" bölümünden Hanefî ikindisini ve başka ülkelerin hesap yöntemlerini seçebilirsiniz."
       }
     ],
     "search": "namaz vakti ezan imsak iftar sahur sahur vakti iftar saati prayer times adhan fajr imsakiye ramazan imsakiyesi",
@@ -1638,7 +1655,33 @@
       "istiva": "Öğle öncesi (istiva)",
       "isfirar": "Güneş batarken (isfirar)"
     },
-    "kerahatNote": "Bu sürelerde nafile namaz kılınmaz. Diyanet'in yayımladığı bir dakika ölçüsü yok; takvimlerde yaygın olan yaklaşık 45 dakika kullanıldı (öğle öncesi kerahat süresi kaynaklarda 10–45 dakika arasında değişir)."
+    "kerahatNote": "Bu sürelerde nafile namaz kılınmaz. Diyanet'in yayımladığı bir dakika ölçüsü yok; takvimlerde yaygın olan yaklaşık 45 dakika kullanıldı (öğle öncesi kerahat süresi kaynaklarda 10–45 dakika arasında değişir).",
+    "method": {
+      "heading": "Hesap yöntemi",
+      "label": "Yöntem",
+      "asrLabel": "İkindi",
+      "asrStd": "Standart (asr-ı evvel; Şâfiî, Mâlikî, Hanbelî, Diyanet)",
+      "asrHanafi": "Hanefî (asr-ı sânî; gölge iki katı)",
+      "note": "Türkiye'de resmî vakitler Diyanet'in vakitleridir. Başka bir yöntem seçerseniz bu sayfadaki vakitler, aylık çizelge ve imsakiye o yönteme göre hesaplanır; seçim yalnız bu tarayıcıda saklanır.",
+      "active": "Yöntem: {name}",
+      "hanafiShort": "Hanefî ikindisi",
+      "names": {
+        "diyanet": "Diyanet İşleri Başkanlığı (Türkiye)",
+        "mwl": "Müslüman Dünya Birliği",
+        "isna": "Kuzey Amerika İslam Birliği (ISNA)",
+        "egypt": "Mısır Genel Araştırma Kurumu",
+        "makkah": "Ümmü'l-Kura (Mekke)",
+        "karachi": "Karaçi İslami Bilimler Üniversitesi",
+        "tehran": "Tahran Jeofizik Enstitüsü",
+        "jafari": "Caferî (Kum)",
+        "gulf": "Körfez bölgesi",
+        "kuwait": "Kuveyt",
+        "qatar": "Katar",
+        "singapore": "Singapur",
+        "france": "Fransa (UOIF)",
+        "russia": "Rusya Müslümanları Dinî İdaresi"
+      }
+    }
   },
   "nature": {
     "title": "Mevsimler: Mevsim Çarkı, Ekinoks ve Gündönümü | Saat Tarih",
@@ -1785,7 +1828,33 @@
     "bluePm": "Akşam mavi saat",
     "lightNote": "Altın saat: Güneş ufkun 6° üstü ile 4° altı arasında; yumuşak, sıcak ışık. Mavi saat: Güneş ufkun 4° ile 6° altında; mavi alacakaranlık. Fotoğrafçılar için.",
     "moonIcsHeading": "Ay evreleri ve tutulmalar takviminize",
-    "moonIcsNote": "Yeni ay, dolunay ve tutulmalar (2026–2031, UTC anıyla; takviminiz kendi saatinize çevirir)."
+    "moonIcsNote": "Yeni ay, dolunay ve tutulmalar (2026–2031, UTC anıyla; takviminiz kendi saatinize çevirir).",
+    "crescentHeading": "Hilal görünürlüğü",
+    "crescentLead": "{place} için {date} yeni ayından sonraki akşamlar. Hesap Yallop (1997) ölçütüyle yapılır.",
+    "crescentCols": [
+      "Akşam",
+      "Gün batımı",
+      "Ay batımı",
+      "Ay'ın yaşı",
+      "Durum"
+    ],
+    "crescentAge": "{h} sa",
+    "crescentLag": "{m} dk sonra",
+    "crescentBefore": "Güneş'ten önce",
+    "crescentCats": {
+      "A": "Çıplak gözle kolayca görülür",
+      "B": "İyi havada çıplak gözle görülür",
+      "C": "Önce dürbünle bulunursa gözle görülebilir",
+      "D": "Yalnız dürbün ya da teleskopla",
+      "E": "Teleskopla bile görülmez",
+      "F": "Görülmez"
+    },
+    "crescentNote": "Bu bir tahmindir: bulut, ufuk ve göz keskinliği sonucu değiştirir. Türkiye'de hicri ay başları Diyanet takvimine göredir ve önceden hesapla belirlenir; gözleme dayanan ülkelerde bir gün fark olabilir.",
+    "eclMapHeading": "Tutulma haritası",
+    "eclMapLabel": "Tutulma",
+    "eclMapSolar": "Turuncu: tutulmanın parçalı görüldüğü yerler (koyulaştıkça Güneş'in daha çok kısmı örtülür). Koyu kırmızı: tam tutulma yolu; mor: halkalı tutulma yolu. Siyah nokta: seçili yer.",
+    "eclMapLunar": "Mavi: tutulmanın en büyük anında Ay'ın ufkun üstünde olduğu, yani tutulmanın görülebildiği yerler. Mavi nokta: Ay'ın tam tepede olduğu yer; siyah nokta: seçili yer.",
+    "eclMapNote": "Harita tarayıcıda Güneş ve Ay'ın konumlarından yaklaşık olarak hesaplanır (yol kenarlarında birkaç on km sapabilir). Kara sınırları: Natural Earth. Kesin yol ve saatler için NASA'nın tutulma sayfalarına bakın."
   },
   "weather": {
     "title": "Hava Durumu: Güncel, Saatlik ve 14 Günlük Tahmin | Saat Tarih",
@@ -2557,6 +2626,91 @@
       {
         "q": "Ay burcu nedir?",
         "a": "Doğum anında Ay'ın gökyüzünde bulunduğu burçtur. Ay bir burcu yaklaşık 2,5 günde geçtiği için doğum saati bilinmeden kesin söylenemeyebilir."
+      }
+    ]
+  },
+  "sky": {
+    "title": "Gece Gökyüzü: Bu Gece Görünen Gezegenler ve Ay Uzaklığı | Saat Tarih",
+    "description": "Bulunduğunuz yerden bu gece hangi gezegenler görünür, ne zaman ve hangi yönde; gökyüzü çizimi, parlak yıldızlar, Ay'ın uzaklığı, en yakın ve en uzak noktası.",
+    "h1": "Gece gökyüzü",
+    "lead": "Seçili konumda bu gece Merkür, Venüs, Mars, Jüpiter ve Satürn'ün görülebileceği saatler, yönleri ve parlaklıkları; Ay'ın Dünya'ya uzaklığı.",
+    "search": "gece gökyüzü gezegen gezegenler bu gece venüs jüpiter mars satürn merkür yıldız ay uzaklığı süper ay perigee apogee",
+    "planets": {
+      "mercury": "Merkür",
+      "venus": "Venüs",
+      "mars": "Mars",
+      "jupiter": "Jüpiter",
+      "saturn": "Satürn"
+    },
+    "moon": "Ay",
+    "sun": "Güneş",
+    "chartHeading": "Gökyüzü çizimi",
+    "chartCaption": "{place}, {time}. Ortası başınızın üstü, kenar ufuk; kuzey yukarıda, doğu solda (başınızın üstüne tutulmuş harita gibi).",
+    "timeLabel": "Saat",
+    "now": "Şimdi",
+    "tableHeading": "Bu gece gezegenler",
+    "cols": [
+      "Gezegen",
+      "Ne zaman görülür",
+      "Yön",
+      "En yüksek",
+      "Parlaklık",
+      "Uzaklık"
+    ],
+    "window": "{from}–{to}",
+    "tooClose": "Güneş'e çok yakın, görülmez",
+    "below": "Bu gece karanlıkta ufkun üstüne çıkmıyor",
+    "riseSet": "Doğuş {rise} · Batış {set}",
+    "altFmt": "{deg}° ({time})",
+    "mkm": "{v} milyon km",
+    "moonHeading": "Ay'ın uzaklığı",
+    "moonNow": "Şu an Dünya'ya uzaklığı",
+    "perigee": "Sıradaki en yakın nokta (perige)",
+    "apogee": "Sıradaki en uzak nokta (apoje)",
+    "superMoon": "{date} dolunayı en yakın noktaya yakın: \"süper ay\" (Ay biraz daha büyük ve parlak görünür).",
+    "km": "{v} km",
+    "note": "Konumlar tarayıcıda hesaplanır: gezegenler JPL'in yaklaşık yörünge öğeleriyle (yay dakikası doğruluğu), Ay ve Güneş Meeus'un formülleriyle. \"Ne zaman görülür\": Güneş ufkun 6° altındayken gezegenin ufkun en az 5° üstünde olduğu saatler. Parlaklık kadir olarak (küçük sayı daha parlak); Satürn'de halkaların etkisi katılmaz. Yıldızlar J2000 konumlarıyla çizilir.",
+    "faq": [
+      {
+        "q": "Bu gece hangi gezegenler görülür?",
+        "a": "Gece gökyüzü sayfası seçili konum için Merkür, Venüs, Mars, Jüpiter ve Satürn'ün bu gece karanlıkta ufkun üstünde olduğu saatleri, yönlerini ve parlaklıklarını hesaplar. Venüs ve Jüpiter genellikle en parlak olanlardır; Merkür Güneş'e yakın olduğu için yalnız alacakaranlıkta kısa süre görülür."
+      },
+      {
+        "q": "Ay Dünya'ya ne kadar uzak?",
+        "a": "Ay'ın Dünya'ya ortalama uzaklığı yaklaşık 384.400 km'dir. Yörünge elips olduğu için uzaklık ay içinde yaklaşık 356.500 km (en yakın, perige) ile 406.700 km (en uzak, apoje) arasında değişir. Sayfada şu anki uzaklık ve sıradaki en yakın ve en uzak nokta yazar."
+      },
+      {
+        "q": "Süper ay nedir?",
+        "a": "Dolunayın, Ay'ın Dünya'ya en yakın olduğu noktanın (perige) çevresine denk gelmesine halk arasında süper ay denir. Ay en uzak noktadaki dolunaya göre yaklaşık %14 daha büyük ve %30 daha parlak görünür; fark çıplak gözle zor seçilir."
+      }
+    ]
+  },
+  "otd": {
+    "title": "Tarihte Bugün: Bugün Neler Oldu, Kimler Doğdu | Saat Tarih",
+    "description": "Tarihte bugün yaşanan önemli olaylar, kurulan devletler ve kuruluşlar, doğan ve ölen ünlüler; istediğiniz günü seçin. Kaynak Wikidata.",
+    "h1": "Tarihte bugün",
+    "lead": "Bugünün ve seçtiğiniz günün tarihteki önemli olayları, kuruluşları, doğumları ve ölümleri.",
+    "search": "tarihte bugün bugün ne oldu bugün kim doğdu tarihte bugün olaylar doğumlar ölümler yıl dönümü",
+    "events": "Olaylar",
+    "founded": "Kuruluşlar",
+    "births": "Doğumlar",
+    "deaths": "Ölümler",
+    "foundedFmt": "{name} kuruldu",
+    "dayLabel": "Gün",
+    "prev": "Önceki gün",
+    "next": "Sonraki gün",
+    "today": "Bugün",
+    "heading": "{date}",
+    "empty": "Bu gün için kayıt yok.",
+    "source": "Kaynak: Wikidata (CC0). Her gün için en bilinen kayıtlar, Vikipedi'deki madde sayısına göre seçilir; adlar Wikidata'daki gibidir. Tarihler miladi takvime göredir; 1582'den önceki tarihlerde kaynaklar Jülyen takvimini kullanabilir.",
+    "faq": [
+      {
+        "q": "Tarihte bugün listesi nereden geliyor?",
+        "a": "Liste Wikidata'dan (açık veri, CC0) alınır: tarihi tam günüyle bilinen olaylar, devletlerin ve uluslararası kuruluşların kuruluşları, ünlülerin doğum ve ölüm günleri. Her gün için Vikipedi'de en çok dilde maddesi olan kayıtlar gösterilir. Liste her yıl yenilenir."
+      },
+      {
+        "q": "Başka bir günün olaylarına bakabilir miyim?",
+        "a": "Evet. Tarihte bugün sayfasındaki gün seçiciyle yılın herhangi bir gününü seçebilir ya da önceki ve sonraki gün düğmeleriyle gezinebilirsiniz; adres çubuğundaki bağlantı o günü gösterir."
       }
     ]
   }

@@ -436,6 +436,11 @@
               "Bis Sie es löschen"
             ],
             [
+              "sth-prayer",
+              "Speichert die gewählte Berechnungsmethode für Gebetszeiten und den Asr (Standard oder hanafitisch); bei Diyanet und Standard-Asr wird nichts gespeichert.",
+              "Bis Sie es löschen"
+            ],
+            [
               "sth-conv",
               "Speichert die im Zeitumrechner gewählten Städte.",
               "Bis zur Löschung durch Sie"
@@ -856,6 +861,14 @@
         "zodiac": {
           "name": "Sternzeichen",
           "desc": "Sonnen- und Mondzeichen."
+        },
+        "sky": {
+          "name": "Nachthimmel",
+          "desc": "Heute sichtbare Planeten, Himmelskarte, Mondentfernung."
+        },
+        "otd": {
+          "name": "Heute in der Geschichte",
+          "desc": "Was an diesem Tag in der Geschichte geschah."
         }
       },
       "infoHeading": "Infoseiten"
@@ -1643,6 +1656,10 @@
       {
         "q": "Kann ich die Seite im Ausland nutzen?",
         "a": "Ja. Mit „Meinen Standort verwenden“ werden die Zeiten überall auf der Welt berechnet. In sehr hohen Breiten kann der Winkel für Fadschr oder Ischa ausbleiben; dann wird ein Näherungswert nach der Siebtel-der-Nacht-Regel angegeben."
+      },
+      {
+        "q": "Was ist die hanafitische Asr-Zeit und warum weicht sie ab?",
+        "a": "Asr beginnt, wenn der Schatten eines Gegenstands so lang ist wie der Gegenstand selbst plus sein Mittagsschatten; Diyanet sowie die schafiitische, malikitische und hanbalitische Rechtsschule folgen dem. Die hanafitische Schule wartet, bis der Schatten doppelt so lang ist, daher beginnt Asr je nach Jahreszeit etwa 30 bis 80 Minuten später. Auf der Seite der Gebetszeiten können Sie unter \"Berechnungsmethode\" den hanafitischen Asr und Methoden anderer Länder wählen."
       }
     ],
     "search": "gebetszeiten gebetszeit gebetsruf adhan fadschr dhuhr asr maghrib ischa iftar sahur namaz vakitleri imsakiye ramadan zeitplan suhur iftar",
@@ -1665,7 +1682,33 @@
       "istiva": "Vor Mittag (Istiwa)",
       "isfirar": "Sonnenuntergang (Isfirar)"
     },
-    "kerahatNote": "In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Der Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten)."
+    "kerahatNote": "In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Der Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten).",
+    "method": {
+      "heading": "Berechnungsmethode",
+      "label": "Methode",
+      "asrLabel": "Asr",
+      "asrStd": "Standard (Schafiitisch, Malikitisch, Hanbalitisch, Diyanet)",
+      "asrHanafi": "Hanafitisch (doppelte Schattenlänge)",
+      "note": "In der Türkei gelten die Zeiten des Präsidiums für Religionsangelegenheiten (Diyanet). Wählen Sie eine andere Methode, werden die Zeiten, die Monatstabelle und der Ramadan-Kalender auf dieser Seite danach berechnet; die Auswahl wird nur in diesem Browser gespeichert.",
+      "active": "Methode: {name}",
+      "hanafiShort": "Hanafitischer Asr",
+      "names": {
+        "diyanet": "Diyanet (Türkei)",
+        "mwl": "Islamische Weltliga",
+        "isna": "Islamic Society of North America (ISNA)",
+        "egypt": "Ägyptische Vermessungsbehörde",
+        "makkah": "Umm al-Qura (Mekka)",
+        "karachi": "Universität für Islamische Wissenschaften, Karatschi",
+        "tehran": "Geophysikalisches Institut Teheran",
+        "jafari": "Schiitisch (Ghom)",
+        "gulf": "Golfregion",
+        "kuwait": "Kuwait",
+        "qatar": "Katar",
+        "singapore": "Singapur",
+        "france": "Frankreich (UOIF)",
+        "russia": "Geistliche Verwaltung der Muslime Russlands"
+      }
+    }
   },
   "nature": {
     "title": "Jahreszeiten: Jahreskreis und Sonnenwenden | Saat Tarih",
@@ -1812,7 +1855,33 @@
     "bluePm": "Blaue Stunde abends",
     "lightNote": "Goldene Stunde: Sonne zwischen 6° über und 4° unter dem Horizont, weiches warmes Licht. Blaue Stunde: Sonne 4° bis 6° unter dem Horizont, blaue Dämmerung. Praktisch für Fotografen.",
     "moonIcsHeading": "Mondphasen und Finsternisse im Kalender",
-    "moonIcsNote": "Neumonde, Vollmonde und Finsternisse (2026–2031, als UTC-Zeitpunkte; Ihr Kalender zeigt sie in Ihrer Zeit)."
+    "moonIcsNote": "Neumonde, Vollmonde und Finsternisse (2026–2031, als UTC-Zeitpunkte; Ihr Kalender zeigt sie in Ihrer Zeit).",
+    "crescentHeading": "Sichtbarkeit der Mondsichel",
+    "crescentLead": "Abende nach dem Neumond vom {date} für {place}, berechnet nach dem Kriterium von Yallop (1997).",
+    "crescentCols": [
+      "Abend",
+      "Sonnenuntergang",
+      "Monduntergang",
+      "Mondalter",
+      "Sichtbarkeit"
+    ],
+    "crescentAge": "{h} Std.",
+    "crescentLag": "{m} Min. später",
+    "crescentBefore": "Vor der Sonne",
+    "crescentCats": {
+      "A": "Mit bloßem Auge leicht sichtbar",
+      "B": "Bei besten Bedingungen mit bloßem Auge sichtbar",
+      "C": "Erst mit Fernglas finden, dann mit bloßem Auge",
+      "D": "Nur mit Fernglas oder Teleskop",
+      "E": "Selbst mit Teleskop nicht sichtbar",
+      "F": "Nicht sichtbar"
+    },
+    "crescentNote": "Dies ist eine Vorhersage: Wolken, Horizont und Sehschärfe beeinflussen das Ergebnis. In der Türkei richten sich die Monatsanfänge nach dem Diyanet-Kalender, der vorab berechnet wird; Länder mit Sichtung können um einen Tag abweichen.",
+    "eclMapHeading": "Finsterniskarte",
+    "eclMapLabel": "Finsternis",
+    "eclMapSolar": "Orange: Gebiete mit partieller Finsternis (je dunkler, desto mehr der Sonne ist bedeckt). Dunkelrot: Totalitätszone; violett: Zone der ringförmigen Finsternis. Schwarzer Punkt: gewählter Ort.",
+    "eclMapLunar": "Blau: Gebiete, in denen der Mond bei maximaler Finsternis über dem Horizont steht und die Finsternis sichtbar ist. Blauer Punkt: Mond im Zenit; schwarzer Punkt: gewählter Ort.",
+    "eclMapNote": "Die Karte wird im Browser näherungsweise aus den Positionen von Sonne und Mond berechnet (Ränder können um einige Dutzend km abweichen). Küstenlinien: Natural Earth. Genaue Zonen und Zeiten auf den Finsternisseiten der NASA."
   },
   "weather": {
     "title": "Wetter: aktuell, stündlich und 14-Tage-Vorhersage | Saat Tarih",
@@ -2584,6 +2653,91 @@
       {
         "q": "Was ist das Mondzeichen?",
         "a": "Das Zeichen, in dem der Mond im Moment der Geburt stand. Der Mond durchläuft ein Zeichen in etwa 2,5 Tagen, ohne Geburtszeit ist es daher nicht immer sicher."
+      }
+    ]
+  },
+  "sky": {
+    "title": "Nachthimmel heute: sichtbare Planeten und Mondentfernung | Saat Tarih",
+    "description": "Welche Planeten Sie heute Nacht sehen, wann und in welcher Richtung; Himmelskarte mit hellen Sternen, Mondentfernung, nächstes Perigäum und Apogäum.",
+    "h1": "Nachthimmel",
+    "lead": "Wann Merkur, Venus, Mars, Jupiter und Saturn heute Nacht am gewählten Ort zu sehen sind, wohin man schauen muss und wie hell sie sind; die Entfernung des Mondes.",
+    "search": "nachthimmel heute planeten sichtbar venus jupiter mars saturn merkur sterne mondentfernung supermond perigäum apogäum",
+    "planets": {
+      "mercury": "Merkur",
+      "venus": "Venus",
+      "mars": "Mars",
+      "jupiter": "Jupiter",
+      "saturn": "Saturn"
+    },
+    "moon": "Mond",
+    "sun": "Sonne",
+    "chartHeading": "Himmelskarte",
+    "chartCaption": "{place}, {time}. Die Mitte ist der Zenit, der Rand der Horizont; Norden oben, Osten links (wie über den Kopf gehalten).",
+    "timeLabel": "Uhrzeit",
+    "now": "Jetzt",
+    "tableHeading": "Planeten heute Nacht",
+    "cols": [
+      "Planet",
+      "Sichtbar",
+      "Richtung",
+      "Höchststand",
+      "Helligkeit",
+      "Entfernung"
+    ],
+    "window": "{from}–{to}",
+    "tooClose": "Zu nah an der Sonne, nicht sichtbar",
+    "below": "Heute Nacht im Dunkeln nicht über dem Horizont",
+    "riseSet": "Aufgang {rise} · Untergang {set}",
+    "altFmt": "{deg}° ({time})",
+    "mkm": "{v} Mio. km",
+    "moonHeading": "Entfernung des Mondes",
+    "moonNow": "Aktuelle Entfernung zur Erde",
+    "perigee": "Nächstes Perigäum (erdnächster Punkt)",
+    "apogee": "Nächstes Apogäum (erdfernster Punkt)",
+    "superMoon": "Der Vollmond am {date} liegt nahe am Perigäum: ein \"Supermond\" (der Mond wirkt etwas größer und heller).",
+    "km": "{v} km",
+    "note": "Die Positionen werden im Browser berechnet: Planeten mit den genäherten Bahnelementen des JPL (Bogenminuten-Genauigkeit), Mond und Sonne nach Meeus. \"Sichtbar\" sind die Stunden, in denen die Sonne 6° unter und der Planet mindestens 5° über dem Horizont steht. Helligkeit in Größenklassen (kleiner ist heller); Saturns Ringe sind nicht berücksichtigt. Sterne an ihren J2000-Positionen.",
+    "faq": [
+      {
+        "q": "Welche Planeten sind heute Nacht sichtbar?",
+        "a": "Die Seite Nachthimmel berechnet für den gewählten Ort, wann Merkur, Venus, Mars, Jupiter und Saturn heute Nacht im Dunkeln über dem Horizont stehen, wohin man schauen muss und wie hell sie sind. Venus und Jupiter sind meist am hellsten; Merkur steht nahe der Sonne und ist nur kurz in der Dämmerung zu sehen."
+      },
+      {
+        "q": "Wie weit ist der Mond entfernt?",
+        "a": "Der Mond ist im Mittel etwa 384.400 km von der Erde entfernt. Da seine Bahn elliptisch ist, schwankt die Entfernung jeden Monat zwischen rund 356.500 km (Perigäum) und 406.700 km (Apogäum). Die Seite zeigt die aktuelle Entfernung sowie das nächste Perigäum und Apogäum."
+      },
+      {
+        "q": "Was ist ein Supermond?",
+        "a": "Als Supermond bezeichnet man einen Vollmond nahe dem Perigäum, dem erdnächsten Punkt der Mondbahn. Er wirkt etwa 14 % größer und 30 % heller als ein Vollmond im Apogäum; mit bloßem Auge ist der Unterschied kaum zu erkennen."
+      }
+    ]
+  },
+  "otd": {
+    "title": "Heute in der Geschichte: Ereignisse und Geburtstage | Saat Tarih",
+    "description": "Was an diesem Tag geschah: wichtige Ereignisse, gegründete Staaten und Organisationen, berühmte Geburtstage und Todestage; beliebigen Tag wählen. Quelle Wikidata.",
+    "h1": "Heute in der Geschichte",
+    "lead": "Wichtige Ereignisse, Gründungen, Geburten und Todesfälle der Geschichte für heute oder einen Tag Ihrer Wahl.",
+    "search": "heute in der geschichte was geschah heute geboren gestorben jahrestag ereignisse geburtstage todestage",
+    "events": "Ereignisse",
+    "founded": "Gründungen",
+    "births": "Geboren",
+    "deaths": "Gestorben",
+    "foundedFmt": "Gründung: {name}",
+    "dayLabel": "Tag",
+    "prev": "Vorheriger Tag",
+    "next": "Nächster Tag",
+    "today": "Heute",
+    "heading": "{date}",
+    "empty": "Keine Einträge für diesen Tag.",
+    "source": "Quelle: Wikidata (CC0). Für jeden Tag werden die bekanntesten Einträge nach der Zahl der Wikipedia-Artikel ausgewählt; Namen wie in Wikidata. Daten im gregorianischen Kalender; vor 1582 können Quellen den julianischen Kalender verwenden.",
+    "faq": [
+      {
+        "q": "Woher stammt die Liste „Heute in der Geschichte“?",
+        "a": "Die Liste stammt aus Wikidata (offene Daten, CC0): Ereignisse mit genau bekanntem Tag, Gründungen von Staaten und internationalen Organisationen sowie Geburts- und Todestage berühmter Menschen. Für jeden Tag werden die Einträge mit Wikipedia-Artikeln in den meisten Sprachen gezeigt. Die Liste wird jährlich erneuert."
+      },
+      {
+        "q": "Kann ich einen anderen Tag ansehen?",
+        "a": "Ja. Mit der Tagesauswahl können Sie jeden Tag des Jahres wählen oder mit den Schaltflächen vor- und zurückblättern; der Link in der Adresszeile zeigt diesen Tag."
       }
     ]
   }

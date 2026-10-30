@@ -1108,3 +1108,45 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .metro-row .toggle { min-width: 2.75rem; font-size: 1.3rem; }
 .mt-metro .big-time { font-size: clamp(3rem, 14vw, 6rem); }
 .mt-metro [data-mm-tempo] { margin: 0; text-align: center; font-weight: 600; }
+/* Namaz hesap yöntemi (30 Ekim 2026) */
+.pr-method .field-label { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); }
+.pr-method select { width: 100%; max-width: 26rem; margin-top: 0.2rem; }
+.crescent .cres-A, .crescent .cres-B { color: var(--ok, var(--accent)); font-weight: 600; }
+.crescent .cres-E, .crescent .cres-F { color: var(--muted); }
+/* Gece gökyüzü (30 Ekim 2026) */
+.sky { display: grid; justify-items: center; gap: 0.6rem; padding: 1rem 0; }
+.sky-chart { margin: 0; width: min(100%, 30rem); }
+.sky-svg { width: 100%; height: auto; overflow: visible; }
+.sky-bg { fill: #0d1730; }
+.sky-twilight .sky-bg { fill: #1d2a55; }
+.sky-civil .sky-bg { fill: #3a4e85; }
+.sky-day .sky-bg { fill: #7fb0dd; }
+.sky-ring { fill: none; stroke: rgba(255, 255, 255, 0.18); stroke-dasharray: 3 4; }
+.sky-card { fill: var(--muted); font-size: 13px; font-weight: 700; }
+.sky-star { fill: #fff; opacity: 0.9; }
+.sky-sname { fill: rgba(255, 255, 255, 0.65); font-size: 9px; }
+.sky-pname { fill: #fff; font-size: 11px; font-weight: 600; paint-order: stroke; stroke: rgba(0, 0, 0, 0.55); stroke-width: 2px; }
+.sky-moon { fill: #e9edf2; }
+.sky-sun { fill: #ffd34d; }
+.sky-planet { stroke: rgba(0, 0, 0, 0.4); }
+.sky-time { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; justify-content: center; }
+.sky-time input { width: min(16rem, 60vw); }
+.sky-time output { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 3.5rem; }
+.sky-table td, .sky-table th { white-space: normal; }
+/* Tutulma haritası (30 Ekim 2026) */
+.ecl-map { margin-top: 1rem; }
+.ecl-map canvas { display: block; width: 100%; height: auto; margin-top: 0.6rem; border-radius: 6px; --ecl-sea: #d9e6f2; --ecl-land: #f3efe4; --ecl-coast: #9aa6b2; }
+:root[data-theme="dark"] .ecl-map canvas { --ecl-sea: #1b2a3c; --ecl-land: #33404d; --ecl-coast: #56677a; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ecl-map canvas { --ecl-sea: #1b2a3c; --ecl-land: #33404d; --ecl-coast: #56677a; } }
+/* Tarihte bugün (30 Ekim 2026) */
+.otd { padding: 1rem 0; }
+.otd-nav { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.otd-list { list-style: none; padding: 0; margin: 0.3rem 0 1rem; }
+.otd-list li { padding: 0.35rem 0; border-bottom: 1px solid var(--line, rgba(0, 0, 0, 0.08)); }
+.otd-y { display: inline-block; min-width: 3.2rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent); }
+/* Emeklilik hesaplama (30 Ekim 2026) */
+.rt-form { display: grid; gap: 0.8rem; max-width: 32rem; }
+.rt-gender { border: 0; padding: 0; margin: 0; display: flex; gap: 1rem; flex-wrap: wrap; }
+.rt-gender legend { font-weight: 600; margin-bottom: 0.3rem; }
+.rt-out { margin-top: 1.2rem; }
+.rt-date { font-size: 1.4rem; font-weight: 700; color: var(--accent); }

@@ -34,7 +34,8 @@
     for (var t = t0; t <= t1; t += 86400000, n++) {
       var d = new Date(t), y = d.getUTCFullYear(), m = d.getUTCMonth() + 1, dd = d.getUTCDate();
       var off = S.offsetMin(new Date(Date.UTC(y, m - 1, dd, 12)), place.tz) / 60;
-      var r = P.times(y, m, dd, place.lat, place.lon, off), wd = (d.getUTCDay() + 6) % 7;
+      var pm = {}; try { pm = JSON.parse(S.store("sth-prayer") || "{}") || {}; } catch (e) {}
+      var r = P.times(y, m, dd, place.lat, place.lon, off, P.methodParams(pm.m || "diyanet", !!pm.h)), wd = (d.getUTCDay() + 6) % 7;
       out.push({ n: n, y: y, m: m, d: dd, wd: wd, t: ORDER.map(function (k) { return hm(r[k]); }) });
     }
     return out;

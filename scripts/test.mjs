@@ -124,7 +124,7 @@ for (const f of htmlFiles) {
     check(/rel="canonical" href="https:\/\//.test(h), `${name}: canonical yok`);
     if (!noidx) {
       // İlçe namaz vakti sayfaları yalnız Türkçe: hreflang yalnız tr ve x-default
-      const trOnly = /^\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/index\.html$/.test(name);
+      const trOnly = /^\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/index\.html$/.test(name) || name === "/emeklilik-hesaplama/index.html";
       for (const l of [...(trOnly ? ["tr"] : LANGS), "x-default"]) check(h.includes(`hreflang="${l}" href="${ORIGIN}`), `${name}: hreflang ${l} yok`);
       if (trOnly) check(!LANGS.some((l) => l !== "tr" && h.includes(`<link rel="alternate" hreflang="${l}"`)), `${name}: ilçe sayfasında başka dil hreflang'ı olmamalı`);
       check(/og:image/.test(h) && /twitter:card/.test(h), `${name}: OG/Twitter yok`);
@@ -213,7 +213,7 @@ for (const l of LANGS) {
   check(evs.some((e) => e.t === "exam"), `events-${l}.json: sınav etkinliği yok`);
 }
 for (const l of LANGS) check(fs.existsSync(path.join(DIST, "assets", `search-${l}.json`)), `search-${l}.json yok`);
-check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/<\/loc>/.test(u) ? ["tr"] : LANGS).every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
+check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z0-9-]+\/<\/loc>|\/emeklilik-hesaplama\/<\/loc>/.test(u) ? ["tr"] : LANGS).every((l) => u.includes(`hreflang="${l}"`))), "sitemap: bir adreste hreflang eksik");
 // İlçe namaz vakti sayfaları (yalnız Türkçe): il merkezi hariç 915 ilçe; il sayfasında kapalı ilçe listesi
 {
   const dist = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/districts.json"), "utf8")).provinces;
@@ -454,6 +454,41 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
     check((hijriDate(t, d) || []).join("/") === want, `hicri tarih: ${d} ${want} değil (${hijriDate(t, d)})`);
   }
   check(hijriDate(t, "2025-12-20") === null && hijriDate(t, "2031-12-31") !== null, "hicri tarih: tablo aralığı");
+}
+// O maddeleri (30 Ekim 2026): hesap yöntemleri, hilal, gece gökyüzü, tutulma haritası, tarihte bugün, emeklilik
+{
+  const ld = (rel) => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(ROOT, rel), "utf8"))(m, undefined); return m.exports; };
+  const P = ld("src/js/prayer-calc.js"), N = ld("src/js/nature-calc.js"), K = ld("src/js/sky-calc.js");
+  const hm = (h) => Math.round(h * 60);
+  const d0 = P.times(2026, 10, 30, 41.01, 28.98, 3), dh = P.times(2026, 10, 30, 41.01, 28.98, 3, P.methodParams("diyanet", true));
+  check(hm(d0.fajr) === hm(dh.fajr) && hm(dh.asr) - hm(d0.asr) > 30, "Hanefî ikindisi: yalnız ikindi ve daha geç olmalı");
+  check(P.METHOD_IDS.length === 14 && P.methodParams("bilinmeyen", false) === P.PARAMS, "hesap yöntemleri: 14 yöntem, bilinmeyen Diyanet");
+  const mk = P.times(2026, 10, 30, 21.42, 39.83, 3, P.methodParams("makkah", false));
+  check(Math.abs((mk.isha - mk.maghrib) * 60 - 90) < 0.01, "Ümmü'l-Kura: yatsı akşamdan 90 dk sonra olmalı");
+  const pr = fs.readFileSync(path.join(DIST, "namaz-vakitleri", "istanbul", "index.html"), "utf8");
+  check((pr.match(/<select id="pr-method"[^]*?<\/select>/) || [""])[0].split("<option").length - 1 === 14 && /data-pr-asr/.test(pr), "namaz sayfasında yöntem seçimi yok");
+  // Hilal (Yallop): Ramazan 1447 kavuşumu 17 Şubat 2026; İstanbul'da ilk akşam görülmez, ikinci akşam görülür
+  const conj = N.phaseMs(Math.floor((Date.UTC(2026, 1, 17) / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861), false);
+  const cr = N.crescent(conj, 41.01, 28.98, 3);
+  check(Math.abs(conj - Date.UTC(2026, 1, 17, 12, 1)) < 5 * 60000 && cr[0].cat === "F" && cr[1].cat === "A", `hilal görünürlüğü: 17/18 Şubat 2026 beklenen değil (${cr.map((e) => e.cat)})`);
+  check(/data-n-crescent/.test(fs.readFileSync(path.join(DIST, "mevsimler", "index.html"), "utf8")), "Mevsimler'de hilal görünürlüğü yok");
+  // Gezegenler: JPL Horizons, 30 Ekim 2026 00:00 UT (görünür RA/Dec); yay dakikası doğruluk
+  const REF = { mercury: [225.55519, -19.36992], venus: [203.34531, -15.48105], mars: [140.54922, 17.03933], jupiter: [146.61936, 14.14025], saturn: [9.70730, 1.25734] };
+  for (const [n, [ra, dec]] of Object.entries(REF)) {
+    const pl = K.planet(n, Date.UTC(2026, 9, 30)), err = Math.hypot((pl.ra - ra) * Math.cos(dec * Math.PI / 180), pl.dec - dec) * 60;
+    check(err < (n === "saturn" ? 6 : 2), `gezegen konumu: ${n} JPL'den ${err.toFixed(1)}' uzak`);
+  }
+  for (const f of ["gece-gokyuzu", "en/night-sky", "de/night-sky", "az/night-sky", "ar/night-sky"]) {
+    const h = fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "";
+    check(/data-sky-chart/.test(h) && /sky-calc\.js/.test(h), `gece gökyüzü sayfası eksik: /${f}/`);
+  }
+  // Tutulma haritası: kara sınırları ve harita bölümü
+  check(fs.existsSync(path.join(DIST, "assets", "land.json")) && /data-ecl-map/.test(fs.readFileSync(path.join(DIST, "en", "seasons", "index.html"), "utf8")), "tutulma haritası eksik");
+  // Tarihte bugün: beş dilde sayfa, ay dosyaları
+  for (const f of ["tarihte-bugun", "en/on-this-day", "de/on-this-day", "az/on-this-day", "ar/on-this-day"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `tarihte bugün sayfası yok: /${f}/`);
+  check(fs.existsSync(path.join(DIST, "assets", "otd", "tr-10.json")) && fs.existsSync(path.join(DIST, "assets", "otd", "ar-02.json")), "tarihte bugün ay dosyaları yok");
+  // Emeklilik: yalnız Türkçe, araçlar merkezinde (yalnız TR)
+  check(/data-retire/.test(fs.readFileSync(path.join(DIST, "emeklilik-hesaplama", "index.html"), "utf8")) && fs.readFileSync(path.join(DIST, "araclar", "index.html"), "utf8").includes('href="/emeklilik-hesaplama/"') && !fs.readFileSync(path.join(DIST, "en", "tools", "index.html"), "utf8").includes("emeklilik"), "emeklilik hesaplama sayfası/kartı");
 }
 for (const f of ["geri-sayim/5-dakika", "geri-sayim/1-saat", "en/countdown/5-minutes", "ar/countdown/2-hours", "alarm/07-00", "en/alarm/06-30", "de/alarm/05-15"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `hazır araç sayfası yok: /${f}/`);
 for (const f of ["kible", "en/qibla", "de/qibla", "az/qibla", "ar/qibla"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `kıble sayfası yok: /${f}/`);

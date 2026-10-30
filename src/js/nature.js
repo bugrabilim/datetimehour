@@ -210,6 +210,26 @@
     });
   }
 
+  /* Hilal görünürlüğü (Yallop): son yeni aydan 3 günden az geçtiyse o, değilse sıradaki yeni ay; üç akşam */
+  function drawCrescent(ms) {
+    var body = doc.querySelector("[data-n-crescent]"); if (!body || !N.crescent) return;
+    var m = N.moon(ms), conj = m.age < 3 ? Math.round(ms - m.age * 86400000) : m.nextNew;
+    var fd = S.fmt("cres-d", place.tz, { day: "numeric", month: "long", weekday: "short" });
+    var ft = S.fmt("cres-t", place.tz, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    var fl = S.fmt("cres-l", place.tz, { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    setText("[data-n-creslead]", S.tpl(T.crescentLead, { place: place.name, date: fl.format(new Date(roundMin(conj))) }));
+    body.textContent = "";
+    N.crescent(conj, place.lat, place.lon, 3).forEach(function (e) {
+      var tr = doc.createElement("tr");
+      var cells = [fd.format(new Date(e.sunset)), ft.format(new Date(roundMin(e.sunset))),
+        e.moonset == null ? "–" : ft.format(new Date(roundMin(e.moonset))) + (e.lag != null ? " (" + (e.lag > 0 ? S.tpl(T.crescentLag, { m: Math.round(e.lag) }) : T.crescentBefore) + ")" : ""),
+        e.age > 0 ? S.tpl(T.crescentAge, { h: Math.round(e.age) }) : "–",
+        (T.crescentCats || {})[e.cat] || e.cat];
+      cells.forEach(function (v, i) { var td = doc.createElement(i ? "td" : "th"); if (!i) td.scope = "row"; td.textContent = v; if (i === 4) td.className = "cres-" + e.cat; tr.appendChild(td); });
+      body.appendChild(tr);
+    });
+  }
+
   function drawSun(nowMs) {
     var p = S.parts(new Date(nowMs), place.tz);
     var t = sun(p.year, p.month, p.day);
@@ -266,7 +286,7 @@
 
   function renderAll() {
     var now = S.nowMs();
-    drawWheel(now); drawSun(now); drawMoon(now); drawChart(now); drawMoonCal(now); drawEclipses(now);
+    drawWheel(now); drawSun(now); drawMoon(now); drawChart(now); drawMoonCal(now); drawCrescent(now); drawEclipses(now);
   }
   window.sthPlace.attach(root, function (p) { place = p; renderAll(); });
   setInterval(function () { if (place && !doc.hidden) { var n = S.nowMs(); drawSun(n); drawMoon(n); } }, 60000);

@@ -24,6 +24,29 @@
   var mPrev = doc.querySelector("[data-pr-prev]"), mNext = doc.querySelector("[data-pr-next]");
 
   var state = null, view = null, lastDay = "", nextAt = 0, nextKey = "";
+  /* Hesap yöntemi ve ikindi (sth-prayer: { m, h }); varsayılan Diyanet, standart ikindi */
+  var mSel = doc.querySelector("[data-pr-method]"), aSel = doc.querySelector("[data-pr-asr]"), mAct = doc.querySelector("[data-pr-method-active]");
+  var method = {}; try { method = JSON.parse(S.store("sth-prayer") || "{}") || {}; } catch (e) {}
+  var params = P.methodParams(method.m || "diyanet", !!method.h);
+  function showMethod() {
+    if (mSel) mSel.value = P.METHODS[method.m] ? method.m : "diyanet";
+    if (aSel) aSel.value = method.h ? "1" : "0";
+    if (!mAct) return;
+    var custom = (method.m && method.m !== "diyanet") || method.h;
+    mAct.hidden = !custom;
+    if (custom) mAct.textContent = S.tpl(T.mActive, { name: (T.mNames || {})[method.m || "diyanet"] || "" }) + (method.h ? " · " + T.hanafi : "");
+  }
+  function setMethod() {
+    method = { m: mSel ? mSel.value : "diyanet", h: aSel && aSel.value === "1" ? 1 : 0 };
+    if (method.m === "diyanet" && !method.h) { try { localStorage.removeItem("sth-prayer"); } catch (e) {} } else S.store("sth-prayer", JSON.stringify(method));
+    params = P.methodParams(method.m, !!method.h);
+    showMethod();
+    if (state) { renderToday(); renderMonth(); tick(); }
+    doc.dispatchEvent(new CustomEvent("sth-prayer-method"));
+  }
+  showMethod();
+  if (mSel) mSel.addEventListener("change", setMethod);
+  if (aSel) aSel.addEventListener("change", setMethod);
 
   function pad(n) { return String(n).padStart(2, "0"); }
   function fmt(min) {
@@ -35,7 +58,7 @@
   /* Günün vakitleri: gece yarısından itibaren dakika (yuvarlanmış) */
   function dayTimes(y, m, d) {
     var off = offHours(y, m, d);
-    var r = P.times(y, m, d, state.lat, state.lon, off);
+    var r = P.times(y, m, d, state.lat, state.lon, off, params);
     var out = { off: off };
     order.forEach(function (k) { out[k] = isFinite(r[k]) ? Math.round(r[k] * 60) : null; });
     return out;

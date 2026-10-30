@@ -409,6 +409,11 @@
               "Siz silənə qədər"
             ],
             [
+              "sth-prayer",
+              "Namaz vaxtları üçün seçdiyiniz hesablama üsulunu və ikindi (standart və ya Hənəfi) seçimini yadda saxlayır; Diyanət və standart ikindi seçiləndə heç nə saxlanılmır.",
+              "Siz silənə qədər"
+            ],
+            [
               "sth-conv",
               "Saat çeviricisində seçdiyiniz şəhərləri yadda saxlayır.",
               "Siz silənədək"
@@ -829,6 +834,14 @@
         "zodiac": {
           "name": "Bürc hesablama",
           "desc": "Günəş və Ay bürcü."
+        },
+        "sky": {
+          "name": "Gecə səması",
+          "desc": "Bu gecə görünən planetlər, səma xəritəsi, Ayın məsafəsi."
+        },
+        "otd": {
+          "name": "Tarixdə bu gün",
+          "desc": "Bu gün və istədiyiniz gündə tarixdə nə baş verib."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -1616,6 +1629,10 @@
       {
         "q": "Xaricdə istifadə edə bilərəmmi?",
         "a": "Bəli. “Məkanımı istifadə et” düyməsi ilə dünyanın istənilən yerində vaxtlar hesablanır. Çox yüksək enliklərdə sübh və ya işa bucağı yaranmaya bilər; bu halda gecənin yeddidə biri qaydası ilə təxmini dəyər verilir."
+      },
+      {
+        "q": "Hənəfi ikindi vaxtı nədir, niyə fərqlidir?",
+        "a": "İkindi vaxtı əşyanın kölgəsi günorta kölgəsi üzərinə öz boyu qədər artdıqda başlayır; Diyanət və Şafii, Maliki, Hənbəli məzhəbləri bunu əsas götürür. Hənəfi məzhəbində kölgənin iki boy uzanması gözlənilir, buna görə ikindi mövsümdən asılı olaraq təxminən 30–80 dəqiqə gec başlayır. Namaz vaxtları səhifəsindəki \"Hesablama üsulu\" bölməsindən Hənəfi ikindisini və başqa ölkələrin üsullarını seçə bilərsiniz."
       }
     ],
     "search": "namaz vaxtları azan sübh zöhr əsr məğrib işa iftar səhur namaz vakitleri prayer times imsakiyyə ramazan sahur iftar",
@@ -1638,7 +1655,33 @@
       "istiva": "Günorta öncəsi (istiva)",
       "isfirar": "Günəş batarkən (isfirar)"
     },
-    "kerahatNote": "Bu vaxtlarda nafilə namaz qılınmır. Diyanətin açıqladığı dəqiq dəqiqə ölçüsü yoxdur; təqvimlərdə geniş yayılmış təxminən 45 dəqiqə istifadə olunub (günorta öncəsi üçün mənbələr 10–45 dəqiqə göstərir)."
+    "kerahatNote": "Bu vaxtlarda nafilə namaz qılınmır. Diyanətin açıqladığı dəqiq dəqiqə ölçüsü yoxdur; təqvimlərdə geniş yayılmış təxminən 45 dəqiqə istifadə olunub (günorta öncəsi üçün mənbələr 10–45 dəqiqə göstərir).",
+    "method": {
+      "heading": "Hesablama üsulu",
+      "label": "Üsul",
+      "asrLabel": "İkindi",
+      "asrStd": "Standart (Şafii, Maliki, Hənbəli, Diyanət)",
+      "asrHanafi": "Hənəfi (kölgə iki qat)",
+      "note": "Türkiyədə rəsmi vaxtlar Diyanət İşləri Başkanlığının vaxtlarıdır. Başqa üsul seçsəniz, bu səhifədəki vaxtlar, aylıq cədvəl və imsakiyyə həmin üsulla hesablanır; seçim yalnız bu brauzerdə saxlanılır.",
+      "active": "Üsul: {name}",
+      "hanafiShort": "Hənəfi ikindisi",
+      "names": {
+        "diyanet": "Diyanət (Türkiyə)",
+        "mwl": "Müsəlman Dünya Liqası",
+        "isna": "Şimali Amerika İslam Cəmiyyəti (ISNA)",
+        "egypt": "Misir Ümumi Ölçmə İdarəsi",
+        "makkah": "Ümmül-Qura (Məkkə)",
+        "karachi": "Kəraçi İslam Elmləri Universiteti",
+        "tehran": "Tehran Geofizika İnstitutu",
+        "jafari": "Cəfəri (Qum)",
+        "gulf": "Körfəz bölgəsi",
+        "kuwait": "Küveyt",
+        "qatar": "Qətər",
+        "singapore": "Sinqapur",
+        "france": "Fransa (UOIF)",
+        "russia": "Rusiya Müsəlmanları Dini İdarəsi"
+      }
+    }
   },
   "nature": {
     "title": "Fəsillər: Fəsil çarxı, bərabərlik və gündönümü | Saat Tarih",
@@ -1785,7 +1828,33 @@
     "bluePm": "Axşam mavi saat",
     "lightNote": "Qızıl saat: Günəş üfüqün 6° üstü ilə 4° altı arasında; yumşaq, isti işıq. Mavi saat: Günəş üfüqün 4° ilə 6° altında; mavi alatoran. Fotoqraflar üçün.",
     "moonIcsHeading": "Ay fazaları və tutulmalar təqviminizə",
-    "moonIcsNote": "Yeni ay, bədr və tutulmalar (2026–2031, UTC anı ilə; təqviminiz öz saatınıza çevirir)."
+    "moonIcsNote": "Yeni ay, bədr və tutulmalar (2026–2031, UTC anı ilə; təqviminiz öz saatınıza çevirir).",
+    "crescentHeading": "Hilalın görünməsi",
+    "crescentLead": "{place} üçün {date} yeni ayından sonrakı axşamlar, Yallop (1997) meyarı ilə hesablanır.",
+    "crescentCols": [
+      "Axşam",
+      "Gün batımı",
+      "Ay batımı",
+      "Ayın yaşı",
+      "Vəziyyət"
+    ],
+    "crescentAge": "{h} saat",
+    "crescentLag": "{m} dəq sonra",
+    "crescentBefore": "Günəşdən əvvəl",
+    "crescentCats": {
+      "A": "Çılpaq gözlə asanlıqla görünür",
+      "B": "Yaxşı havada çılpaq gözlə görünür",
+      "C": "Əvvəl durbinlə tapılsa gözlə görünə bilər",
+      "D": "Yalnız durbin və ya teleskopla",
+      "E": "Teleskopla belə görünmür",
+      "F": "Görünmür"
+    },
+    "crescentNote": "Bu, proqnozdur: bulud, üfüq və görmə qabiliyyəti nəticəni dəyişir. Türkiyədə hicri ay başlanğıcları əvvəlcədən hesablanan Diyanət təqviminə görədir; müşahidəyə əsaslanan ölkələrdə bir gün fərq ola bilər.",
+    "eclMapHeading": "Tutulma xəritəsi",
+    "eclMapLabel": "Tutulma",
+    "eclMapSolar": "Narıncı: tutulmanın qismən göründüyü yerlər (tündləşdikcə Günəşin daha çox hissəsi örtülür). Tünd qırmızı: tam tutulma zolağı; bənövşəyi: halqavari tutulma zolağı. Qara nöqtə: seçilmiş yer.",
+    "eclMapLunar": "Mavi: tutulmanın ən böyük anında Ayın üfüqdən yuxarıda olduğu, yəni tutulmanın göründüyü yerlər. Mavi nöqtə: Ayın başın üstündə olduğu yer; qara nöqtə: seçilmiş yer.",
+    "eclMapNote": "Xəritə brauzerdə Günəş və Ayın mövqelərindən təxmini hesablanır (zolağın kənarları bir neçə on km sürüşə bilər). Sahil xətləri: Natural Earth. Dəqiq zolaq və saatlar üçün NASA-nın tutulma səhifələrinə baxın."
   },
   "weather": {
     "title": "Hava: Hazırkı, saatlıq və 14 günlük proqnoz | Saat Tarih",
@@ -2557,6 +2626,91 @@
       {
         "q": "Ay bürcü nədir?",
         "a": "Doğum anında Ayın səmada olduğu bürcdür. Ay bir bürcü təxminən 2,5 günə keçdiyi üçün doğum saatı bilinmədən dəqiq deyilə bilməz."
+      }
+    ]
+  },
+  "sky": {
+    "title": "Gecə səması: bu gecə görünən planetlər və Ayın məsafəsi | Saat Tarih",
+    "description": "Olduğunuz yerdən bu gecə hansı planetlər, nə vaxt və hansı istiqamətdə görünür; parlaq ulduzlarla səma xəritəsi, Ayın məsafəsi, ən yaxın və ən uzaq nöqtəsi.",
+    "h1": "Gecə səması",
+    "lead": "Seçilmiş yerdə bu gecə Merkuri, Venera, Mars, Yupiter və Saturnun görünə biləcəyi saatlar, istiqamətləri və parlaqlıqları; Ayın Yerə məsafəsi.",
+    "search": "gecə səması planetlər bu gecə venera yupiter mars saturn merkuri ulduz ayın məsafəsi super ay perigey apogey",
+    "planets": {
+      "mercury": "Merkuri",
+      "venus": "Venera",
+      "mars": "Mars",
+      "jupiter": "Yupiter",
+      "saturn": "Saturn"
+    },
+    "moon": "Ay",
+    "sun": "Günəş",
+    "chartHeading": "Səma xəritəsi",
+    "chartCaption": "{place}, {time}. Ortası başınızın üstü, kənarı üfüqdür; şimal yuxarıda, şərq solda (başınızın üstündə tutulan xəritə kimi).",
+    "timeLabel": "Saat",
+    "now": "İndi",
+    "tableHeading": "Bu gecə planetlər",
+    "cols": [
+      "Planet",
+      "Nə vaxt görünür",
+      "İstiqamət",
+      "Ən hündür",
+      "Parlaqlıq",
+      "Məsafə"
+    ],
+    "window": "{from}–{to}",
+    "tooClose": "Günəşə çox yaxındır, görünmür",
+    "below": "Bu gecə qaranlıqda üfüqdən yuxarı qalxmır",
+    "riseSet": "Doğuş {rise} · Batış {set}",
+    "altFmt": "{deg}° ({time})",
+    "mkm": "{v} milyon km",
+    "moonHeading": "Ayın məsafəsi",
+    "moonNow": "İndiki məsafə",
+    "perigee": "Növbəti ən yaxın nöqtə (perigey)",
+    "apogee": "Növbəti ən uzaq nöqtə (apogey)",
+    "superMoon": "{date} bədirlənməsi ən yaxın nöqtəyə yaxındır: \"super ay\" (Ay bir az böyük və parlaq görünür).",
+    "km": "{v} km",
+    "note": "Mövqelər brauzerdə hesablanır: planetlər JPL-in təxmini orbit elementləri ilə (qövs dəqiqəsi dəqiqliyi), Ay və Günəş Meeus düsturları ilə. \"Nə vaxt görünür\": Günəş üfüqdən 6° aşağıda, planet ən azı 5° yuxarıda olduğu saatlar. Parlaqlıq ulduz ölçüsü ilə (kiçik rəqəm daha parlaq); Saturnda halqaların təsiri nəzərə alınmır. Ulduzlar J2000 mövqeləri ilə çəkilir.",
+    "faq": [
+      {
+        "q": "Bu gecə hansı planetlər görünür?",
+        "a": "Gecə səması səhifəsi seçilmiş yer üçün Merkuri, Venera, Mars, Yupiter və Saturnun bu gecə qaranlıqda üfüqdən yuxarıda olduğu saatları, istiqamətlərini və parlaqlıqlarını hesablayır. Venera və Yupiter adətən ən parlaqlarıdır; Merkuri Günəşə yaxın olduğu üçün yalnız alaqaranlıqda qısa müddət görünür."
+      },
+      {
+        "q": "Ay Yerdən nə qədər uzaqdır?",
+        "a": "Ayın Yerə orta məsafəsi təxminən 384 400 km-dir. Orbiti ellips olduğu üçün məsafə hər ay təxminən 356 500 km (perigey) ilə 406 700 km (apogey) arasında dəyişir. Səhifədə indiki məsafə və növbəti perigey ilə apogey yazılır."
+      },
+      {
+        "q": "Super ay nədir?",
+        "a": "Bədirlənmənin Ayın Yerə ən yaxın nöqtəsi (perigey) ətrafına düşməsinə super ay deyilir. Ay apogeydəki bədirlənməyə görə təxminən 14% böyük və 30% parlaq görünür; fərqi çılpaq gözlə seçmək çətindir."
+      }
+    ]
+  },
+  "otd": {
+    "title": "Tarixdə bu gün: hadisələr, doğumlar, ölümlər | Saat Tarih",
+    "description": "Tarixdə bu gün baş verən mühüm hadisələr, qurulan dövlətlər və təşkilatlar, doğulan və vəfat edən məşhurlar; istədiyiniz günü seçin. Mənbə Wikidata.",
+    "h1": "Tarixdə bu gün",
+    "lead": "Bu günün və seçdiyiniz günün tarixdəki mühüm hadisələri, qurulmaları, doğumları və ölümləri.",
+    "search": "tarixdə bu gün bu gün nə oldu bu gün kim doğulub hadisələr doğumlar ölümlər ildönümü",
+    "events": "Hadisələr",
+    "founded": "Qurulmalar",
+    "births": "Doğumlar",
+    "deaths": "Ölümlər",
+    "foundedFmt": "{name} quruldu",
+    "dayLabel": "Gün",
+    "prev": "Əvvəlki gün",
+    "next": "Növbəti gün",
+    "today": "Bu gün",
+    "heading": "{date}",
+    "empty": "Bu gün üçün qeyd yoxdur.",
+    "source": "Mənbə: Wikidata (CC0). Hər gün üçün ən tanınmış qeydlər Vikipediyadakı məqalə sayına görə seçilir; adlar Wikidata-dakı kimidir. Tarixlər qriqorian təqvimi ilədir; 1582-dən əvvəlki tarixlərdə mənbələr yulian təqvimindən istifadə edə bilər.",
+    "faq": [
+      {
+        "q": "Tarixdə bu gün siyahısı haradan gəlir?",
+        "a": "Siyahı Wikidata-dan (açıq məlumat, CC0) götürülür: dəqiq günü bilinən hadisələr, dövlətlərin və beynəlxalq təşkilatların qurulması, məşhurların doğum və ölüm günləri. Hər gün üçün Vikipediyada ən çox dildə məqaləsi olan qeydlər göstərilir. Siyahı hər il yenilənir."
+      },
+      {
+        "q": "Başqa bir günə baxa bilərəmmi?",
+        "a": "Bəli. Səhifədəki gün seçicisi ilə ilin istənilən gününü seçə və ya əvvəlki/növbəti gün düymələri ilə keçə bilərsiniz; ünvan sətrindəki keçid həmin günü göstərir."
       }
     ]
   }

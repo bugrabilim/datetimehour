@@ -409,6 +409,11 @@
               "Until you delete it"
             ],
             [
+              "sth-prayer",
+              "Remembers the prayer time calculation method and Asr (standard or Hanafi) you chose; nothing is stored while Diyanet and standard Asr are selected.",
+              "Until you delete it"
+            ],
+            [
               "sth-conv",
               "Remembers the cities you chose in the time converter.",
               "Until you delete it"
@@ -829,6 +834,14 @@
         "zodiac": {
           "name": "Zodiac sign",
           "desc": "Sun and Moon sign."
+        },
+        "sky": {
+          "name": "Night sky",
+          "desc": "Planets visible tonight, a sky chart and the Moon's distance."
+        },
+        "otd": {
+          "name": "On this day",
+          "desc": "What happened on this day in history."
         }
       },
       "infoHeading": "Information pages"
@@ -1616,6 +1629,10 @@
       {
         "q": "Can I use it abroad?",
         "a": "Yes. The Use my location button calculates the times anywhere in the world. At very high latitudes the fajr or isha angle may not occur; then an approximate time is given with the one-seventh-of-the-night rule."
+      },
+      {
+        "q": "What is the Hanafi Asr time and why is it different?",
+        "a": "Asr begins when the shadow of an object equals its own length plus its shadow at noon; Diyanet and the Shafi'i, Maliki and Hanbali schools use this. The Hanafi school waits until the shadow is twice the object's length, so Asr starts roughly 30 to 80 minutes later depending on the season. You can choose the Hanafi Asr and other countries' calculation methods under \"Calculation method\" on the prayer times page."
       }
     ],
     "search": "prayer times adhan azan fajr dhuhr asr maghrib isha iftar suhoor namaz vakitleri ezan imsakiye ramadan timetable suhoor iftar",
@@ -1638,7 +1655,33 @@
       "istiva": "Before noon (istiwa)",
       "isfirar": "Sunset (isfirar)"
     },
-    "kerahatNote": "Voluntary prayers are not performed in these windows. The Diyanet publishes no exact minutes; the common calendar convention of about 45 minutes is used (sources give 10–45 minutes for the window before noon)."
+    "kerahatNote": "Voluntary prayers are not performed in these windows. The Diyanet publishes no exact minutes; the common calendar convention of about 45 minutes is used (sources give 10–45 minutes for the window before noon).",
+    "method": {
+      "heading": "Calculation method",
+      "label": "Method",
+      "asrLabel": "Asr",
+      "asrStd": "Standard (Shafi'i, Maliki, Hanbali, Diyanet)",
+      "asrHanafi": "Hanafi (shadow twice the length)",
+      "note": "In Türkiye the official times are those of the Presidency of Religious Affairs (Diyanet). If you choose another method, the times, monthly table and Ramadan timetable on this page are calculated with it; your choice is stored only in this browser.",
+      "active": "Method: {name}",
+      "hanafiShort": "Hanafi Asr",
+      "names": {
+        "diyanet": "Diyanet (Türkiye)",
+        "mwl": "Muslim World League",
+        "isna": "Islamic Society of North America (ISNA)",
+        "egypt": "Egyptian General Authority of Survey",
+        "makkah": "Umm al-Qura (Makkah)",
+        "karachi": "University of Islamic Sciences, Karachi",
+        "tehran": "Institute of Geophysics, Tehran",
+        "jafari": "Shia Ithna Ashari (Qum)",
+        "gulf": "Gulf region",
+        "kuwait": "Kuwait",
+        "qatar": "Qatar",
+        "singapore": "Singapore",
+        "france": "France (UOIF)",
+        "russia": "Spiritual Administration of Muslims of Russia"
+      }
+    }
   },
   "nature": {
     "title": "Seasons: Seasons Wheel, Equinoxes and Solstices | Saat Tarih",
@@ -1785,7 +1828,33 @@
     "bluePm": "Evening blue hour",
     "lightNote": "Golden hour: the Sun between 6° above and 4° below the horizon, with soft, warm light. Blue hour: the Sun 4° to 6° below the horizon, a blue twilight. Handy for photographers.",
     "moonIcsHeading": "Moon phases and eclipses in your calendar",
-    "moonIcsNote": "New moons, full moons and eclipses (2026–2031, as UTC instants; your calendar shows them in your time)."
+    "moonIcsNote": "New moons, full moons and eclipses (2026–2031, as UTC instants; your calendar shows them in your time).",
+    "crescentHeading": "Crescent visibility",
+    "crescentLead": "Evenings after the new moon of {date} for {place}, calculated with Yallop's (1997) criterion.",
+    "crescentCols": [
+      "Evening",
+      "Sunset",
+      "Moonset",
+      "Moon age",
+      "Visibility"
+    ],
+    "crescentAge": "{h} h",
+    "crescentLag": "{m} min later",
+    "crescentBefore": "Before the Sun",
+    "crescentCats": {
+      "A": "Easily visible to the naked eye",
+      "B": "Visible to the naked eye in perfect conditions",
+      "C": "May need binoculars to find, then naked eye",
+      "D": "Binoculars or telescope only",
+      "E": "Not visible even with a telescope",
+      "F": "Not visible"
+    },
+    "crescentNote": "This is a prediction: clouds, the horizon and eyesight change the result. In Türkiye Hijri months follow the Diyanet calendar, which is fixed in advance by calculation; countries that rely on sighting may differ by a day.",
+    "eclMapHeading": "Eclipse map",
+    "eclMapLabel": "Eclipse",
+    "eclMapSolar": "Orange: where the eclipse is seen as partial (darker means more of the Sun is covered). Dark red: path of totality; purple: path of the annular eclipse. Black dot: selected place.",
+    "eclMapLunar": "Blue: where the Moon is above the horizon at greatest eclipse, so the eclipse can be seen. Blue dot: where the Moon is overhead; black dot: selected place.",
+    "eclMapNote": "The map is calculated approximately in your browser from the positions of the Sun and Moon (path edges may be off by a few tens of km). Coastlines: Natural Earth. For exact paths and times see NASA's eclipse pages."
   },
   "weather": {
     "title": "Weather: Current, Hourly and 14-Day Forecast | Saat Tarih",
@@ -2557,6 +2626,91 @@
       {
         "q": "What is a Moon sign?",
         "a": "It is the sign the Moon was in at the moment of birth. The Moon passes through a sign in about 2.5 days, so it may not be certain without the birth time."
+      }
+    ]
+  },
+  "sky": {
+    "title": "Night Sky Tonight: Visible Planets and Moon Distance | Saat Tarih",
+    "description": "Which planets you can see tonight from where you are, when and in which direction; a sky chart with bright stars, the Moon's distance and its next perigee and apogee.",
+    "h1": "Night sky",
+    "lead": "When Mercury, Venus, Mars, Jupiter and Saturn can be seen tonight from the selected place, where to look and how bright they are; the Moon's distance from Earth.",
+    "search": "night sky tonight planets visible venus jupiter mars saturn mercury stars moon distance supermoon perigee apogee",
+    "planets": {
+      "mercury": "Mercury",
+      "venus": "Venus",
+      "mars": "Mars",
+      "jupiter": "Jupiter",
+      "saturn": "Saturn"
+    },
+    "moon": "Moon",
+    "sun": "Sun",
+    "chartHeading": "Sky chart",
+    "chartCaption": "{place}, {time}. The centre is straight overhead and the edge is the horizon; north is up and east is left, as if held above your head.",
+    "timeLabel": "Time",
+    "now": "Now",
+    "tableHeading": "Planets tonight",
+    "cols": [
+      "Planet",
+      "When visible",
+      "Direction",
+      "Highest",
+      "Brightness",
+      "Distance"
+    ],
+    "window": "{from}–{to}",
+    "tooClose": "Too close to the Sun to be seen",
+    "below": "Not above the horizon in darkness tonight",
+    "riseSet": "Rises {rise} · Sets {set}",
+    "altFmt": "{deg}° ({time})",
+    "mkm": "{v} million km",
+    "moonHeading": "Distance to the Moon",
+    "moonNow": "Distance from Earth now",
+    "perigee": "Next perigee (closest)",
+    "apogee": "Next apogee (farthest)",
+    "superMoon": "The full moon of {date} is close to perigee: a \"supermoon\" (the Moon looks slightly larger and brighter).",
+    "km": "{v} km",
+    "note": "Positions are calculated in your browser: the planets with JPL's approximate orbital elements (arcminute accuracy), the Moon and Sun with Meeus's formulas. \"When visible\" means the hours when the Sun is 6° below the horizon and the planet at least 5° above it. Brightness is in magnitudes (lower is brighter); Saturn's rings are not included. Stars are drawn at their J2000 positions.",
+    "faq": [
+      {
+        "q": "Which planets are visible tonight?",
+        "a": "The night sky page calculates when Mercury, Venus, Mars, Jupiter and Saturn are above the horizon in darkness tonight at the selected place, where to look and how bright they are. Venus and Jupiter are usually the brightest; Mercury stays close to the Sun and is only briefly visible in twilight."
+      },
+      {
+        "q": "How far away is the Moon?",
+        "a": "The Moon is on average about 384,400 km from Earth. Because its orbit is an ellipse, the distance changes each month between roughly 356,500 km (perigee) and 406,700 km (apogee). The page shows the current distance and the next perigee and apogee."
+      },
+      {
+        "q": "What is a supermoon?",
+        "a": "A supermoon is the popular name for a full moon that falls near perigee, the Moon's closest point to Earth. It looks about 14% larger and 30% brighter than a full moon at apogee; the difference is hard to notice with the naked eye."
+      }
+    ]
+  },
+  "otd": {
+    "title": "On This Day in History: Events, Births and Deaths | Saat Tarih",
+    "description": "What happened on this day in history: major events, founded states and organizations, famous births and deaths; pick any day. Source: Wikidata.",
+    "h1": "On this day",
+    "lead": "Notable events, foundings, births and deaths in history for today or any day you choose.",
+    "search": "on this day today in history what happened today born today died today anniversary events births deaths",
+    "events": "Events",
+    "founded": "Founded",
+    "births": "Births",
+    "deaths": "Deaths",
+    "foundedFmt": "{name} founded",
+    "dayLabel": "Day",
+    "prev": "Previous day",
+    "next": "Next day",
+    "today": "Today",
+    "heading": "{date}",
+    "empty": "No entries for this day.",
+    "source": "Source: Wikidata (CC0). For each day the best-known entries are chosen by the number of Wikipedia articles; names are as in Wikidata. Dates are Gregorian; sources may use the Julian calendar for dates before 1582.",
+    "faq": [
+      {
+        "q": "Where does the On this day list come from?",
+        "a": "The list comes from Wikidata (open data, CC0): events whose exact day is known, foundings of states and international organizations, and birth and death days of famous people. For each day the entries with Wikipedia articles in the most languages are shown. The list is refreshed every year."
+      },
+      {
+        "q": "Can I look at another day?",
+        "a": "Yes. Use the day picker on the On this day page to choose any day of the year, or step with the previous and next day buttons; the link in the address bar shows that day."
       }
     ]
   }

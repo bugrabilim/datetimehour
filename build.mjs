@@ -87,6 +87,11 @@ for (const [name, from] of [
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
   ["qibla.js", "js/qibla.js"],
+  ["sky-calc.js", "js/sky-calc.js"],
+  ["sky.js", "js/sky.js"],
+  ["eclipse-map.js", "js/eclipse-map.js"],
+  ["otd.js", "js/otd.js"],
+  ["retire.js", "js/retire.js"],
   ["zakat.js", "js/zakat.js"],
   ["more-tools.js", "js/more-tools.js"],
   ["bridge.js", "js/bridge.js"],
@@ -109,6 +114,10 @@ const PLACES_SRC = readJson("src/data/places.json");
 const PLACES_JSON = JSON.stringify({ tz: PLACES_SRC.tz, p: PLACES_SRC.p.map((r) => r.slice(0, 3)) });
 write("assets/places.json", PLACES_JSON);
 const PLACES_URL = `/assets/places.json?v=${hash(PLACES_JSON)}`;
+/* Tutulma haritası için kara sınırları (Natural Earth 1:110m, kamu malı; scripts/fetch-land.mjs) */
+const LAND_JSON = JSON.stringify({ rings: JSON.parse(fs.readFileSync(path.join(SRC, "data", "land-110m.json"), "utf8")).rings });
+write("assets/land.json", LAND_JSON);
+const LAND_URL = `/assets/land.json?v=${hash(LAND_JSON)}`;
 const PLACE_NAMES_URL = {};
 for (const l of LANGS) {
   const j = JSON.stringify(PLACES_SRC.names[l] || PLACES_SRC.names.en);
@@ -301,7 +310,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "nature", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1132,6 +1141,9 @@ const TOOL_ART = {
   chess: svgArt('<rect x="8" y="24" width="80" height="30" rx="6" class="af"/><circle cx="29" cy="39" r="9"/><circle cx="67" cy="39" r="9"/><path d="M23 24v-6h12v6M61 24v-6h12v6M29 39v-5M67 39l4-3"/>'),
   metronome: svgArt('<path d="M32 56 41 10h14l9 46z" class="af"/><path d="M48 46 66 14M28 56h40"/><circle cx="60" cy="25" r="3"/>'),
   talking: svgArt('<circle cx="36" cy="34" r="20" class="af"/><path d="M36 22v12l7 4M64 24c4 6 4 14 0 20M73 17c7 10 7 24 0 34"/>'),
+  sky: svgArt('<circle cx="48" cy="34" r="25" class="af"/><circle cx="40" cy="28" r="6"/><path d="M34 28h12"/><circle cx="60" cy="42" r="2"/><circle cx="56" cy="20" r="1.5"/><circle cx="34" cy="46" r="1.5"/>'),
+  retire: svgArt('<circle cx="48" cy="30" r="20" class="af"/><path d="M48 18v12l8 6M30 62h36M36 56h24"/>'),
+  otd: svgArt('<rect x="24" y="12" width="48" height="44" rx="4" class="af"/><path d="M24 24h48M36 8v8M60 8v8M34 34h28M34 42h20"/>'),
   zodiac: svgArt('<circle cx="48" cy="32" r="23" class="af"/><path d="M48 17l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/>'),
 };
 
@@ -1144,8 +1156,8 @@ function buildToolsHub(lang) {
     { name: h.h1, path: pagePath },
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
-  const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "unix", "bridge", "worldHol", "qibla", "zakat", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
+  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1266,6 +1278,8 @@ extendRoutes({
   en: { hijriConv: "/en/hijri-converter/", timeCalc: "/en/time-calculator/", daysUntil: "/en/days-until/", interval: "/en/interval-timer/", chess: "/en/chess-clock/", metronome: "/en/metronome/", talking: "/en/talking-clock/", zodiac: "/en/zodiac-sign/" },
 });
 extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", zakat: "/zekat-hesaplama/", api: "/gelistiriciler/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/", worldHol: "/resmi-tatiller/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", zakat: "/en/zakat-calculator/", api: "/en/developers/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/", worldHol: "/en/public-holidays/" } });
+extendRoutes({ tr: { sky: "/gece-gokyuzu/", otd: "/tarihte-bugun/" }, en: { sky: "/en/night-sky/", otd: "/en/on-this-day/" } });
+ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1624,11 +1638,26 @@ function buildNature(lang) {
     <p class="meta" data-n-mooncalcap>&nbsp;</p>
   </div>
 </section>
+<section class="section" aria-labelledby="n-cres-h">
+  <div class="wrap">
+    <h2 id="n-cres-h">${esc(n.crescentHeading)}</h2>
+    <p class="meta" data-n-creslead>&nbsp;</p>
+    <div class="table-wrap"><table class="events-table crescent"><thead><tr>${n.crescentCols.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody data-n-crescent></tbody></table></div>
+    <p class="meta">${esc(n.crescentNote)}</p>
+  </div>
+</section>
 <section class="section" aria-labelledby="n-ecl-h">
   <div class="wrap">
     <h2 id="n-ecl-h">${esc(n.eclipseHeading)}</h2>
     <p class="meta" data-n-ecllead>&nbsp;</p>
     <ul class="eclipses" data-n-eclipses></ul>
+    <div class="ecl-map" data-ecl-map data-land="${LAND_URL}">
+      <h3>${esc(n.eclMapHeading)}</h3>
+      <label class="field-label" for="ecl-sel">${esc(n.eclMapLabel)}</label> <select id="ecl-sel" data-ecl-sel></select>
+      <canvas data-ecl-canvas width="720" height="360" role="img" aria-label="${esc(n.eclMapHeading)}" hidden></canvas>
+      <p class="meta" data-ecl-legend></p>
+      <p class="meta">${esc(n.eclMapNote)}</p>
+    </div>
     <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>
     <p class="meta">${esc(n.eclipseSource)}</p>
     <h3>${esc(n.moonIcsHeading)}</h3>
@@ -1661,7 +1690,7 @@ function buildNature(lang) {
     <p class="meta">${esc(n.methodNote)}</p>
   </div>
 </section>`;
-  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js", "eclipse-map.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
 }
 
 function buildWeather(lang) {
@@ -1721,6 +1750,14 @@ function prayerBody(lang, prov, extra = "") {
         <h3>${esc(s.todayHeading)}</h3>
         <table class="events-table pr-today"><thead class="sr-only"><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table>
         <details class="pr-kerahat"><summary>${esc(s.kerahatHeading)}</summary><ul>${["israk", "istiva", "isfirar"].map((k) => `<li>${esc(s.kerahatNames[k])}: <span data-pr-kr="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.kerahatNote)}</p></details>
+        <details class="pr-kerahat pr-method"><summary>${esc(s.method.heading)}</summary>
+          <p class="meta" data-pr-method-active hidden></p>
+          <label class="field-label" for="pr-method">${esc(s.method.label)}</label>
+          <select id="pr-method" data-pr-method>${Object.keys(s.method.names).map((k) => `<option value="${k}">${esc(s.method.names[k])}</option>`).join("")}</select>
+          <label class="field-label" for="pr-asr">${esc(s.method.asrLabel)}</label>
+          <select id="pr-asr" data-pr-asr><option value="0">${esc(s.method.asrStd)}</option><option value="1">${esc(s.method.asrHanafi)}</option></select>
+          <p class="meta">${esc(s.method.note)}</p>
+        </details>
       </div>
       <noscript><p class="meta">${esc(s.noscript)}</p></noscript>
     </section>`;
@@ -1781,7 +1818,7 @@ function districtList(prov, current) {
 }
 const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation });
 const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
-const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
+const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
 /* ---------- Saat dilimi kısaltmaları, yaz saati değişimleri, Unix zamanı (30 Ekim 2026, rakip analizi #25) ----------
@@ -2371,6 +2408,123 @@ function buildQibla(lang) {
   return simplePage(lang, "qibla", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "qibla", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "qibla.js"], clientExtra: { t: { pl: placeClient(t.prayer), qb } }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].qibla, s.description)] });
 }
 
+/* Gece gökyüzü (30 Ekim 2026, rakip analizi listesi #87): bu gece görünen gezegenler (sky-calc.js, JPL yaklaşık
+   öğeleri), gökyüzü çizimi (parlak yıldızlar J2000), Ay'ın uzaklığı, sıradaki perige ve apoje. Hesap tarayıcıda. */
+function buildSky(lang) {
+  const t = I[lang];
+  const s = t.sky;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].sky }];
+  const hero = `<section class="sky" data-sky aria-labelledby="sky-h">
+      <h2 id="sky-h" class="qb-place" data-sky-place>&nbsp;</h2>
+      <figure class="sky-chart"><svg data-sky-chart viewBox="-200 -200 400 400" role="img" aria-labelledby="sky-cap"></svg><figcaption id="sky-cap" class="meta" data-sky-cap>&nbsp;</figcaption></figure>
+      <p class="sky-time"><label for="sky-t">${esc(s.timeLabel)}</label> <input id="sky-t" type="range" min="0" max="96" step="1" value="0" data-sky-time> <output data-sky-time-out dir="ltr">–</output> <button type="button" class="toggle" data-sky-now>${esc(s.now)}</button></p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const sections = `<section class="section" aria-labelledby="sky-pl-h">
+  <div class="wrap">
+    <h2 id="sky-pl-h">${esc(s.tableHeading)}</h2>
+    <div class="table-wrap"><table class="events-table sky-table"><thead><tr>${s.cols.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody data-sky-planets></tbody></table></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="sky-moon-h">
+  <div class="wrap">
+    <h2 id="sky-moon-h">${esc(s.moonHeading)}</h2>
+    <dl class="facts"><div class="fact"><dt>${esc(s.moonNow)}</dt><dd data-sky-mdist>–</dd></div><div class="fact"><dt>${esc(s.perigee)}</dt><dd data-sky-perigee>–</dd></div><div class="fact"><dt>${esc(s.apogee)}</dt><dd data-sky-apogee>–</dd></div></dl>
+    <p class="meta" data-sky-super hidden></p>
+    <p class="meta">${esc(s.note)}</p>
+  </div>
+</section>`;
+  const sk = { planets: s.planets, moon: s.moon, sun: s.sun, chartCaption: s.chartCaption, window: s.window, tooClose: s.tooClose, below: s.below, riseSet: s.riseSet, altFmt: s.altFmt, mkm: s.mkm, km: s.km, superMoon: s.superMoon, compass: t.weather.compass, cardinals: t.qibla.cardinals };
+  return simplePage(lang, "sky", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "sky", title: s.h1 }, scripts: ["place.js", "nature-calc.js", "sky-calc.js", "sky.js"], clientExtra: { t: { pl: placeClient(t.prayer), sk } }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].sky, s.description)] });
+}
+
+/* Tarihte bugün (30 Ekim 2026, rakip analizi listesi #89): Wikidata (CC0) verisi, scripts/fetch-on-this-day.mjs ile elle
+   yenilenir (derleme ağa çıkmaz). Her dil için ay başına bir dosya: { "MM-DD": [[yıl, tür, ad, açıklama, Qkimlik]] };
+   tür e olay, f kuruluş, b doğum, d ölüm. Adı o dilde olmayan kayıt o dilde gösterilmez. Sayfa derleme gününün listesini
+   HTML olarak taşır; otd.js bugünün (ya da ?d=AA-GG) listesini yükler. */
+const OTD_SRC = fs.existsSync(path.join(SRC, "data", "on-this-day.json")) ? readJson("src/data/on-this-day.json") : { days: {} };
+const OTD_LIMIT = { e: 8, f: 2, b: 5, d: 5 };
+const OTD_URL = {};
+function otdDay(lang, md) {
+  const out = { e: [], f: [], b: [], d: [] };
+  for (const it of OTD_SRC.days[md] || []) {
+    const name = it.l && it.l[lang];
+    if (!name || out[it.k].length >= OTD_LIMIT[it.k]) continue;
+    out[it.k].push([it.y, it.k, name, (it.s && it.s[lang]) || "", it.q]);
+  }
+  return [...out.e.sort((a, b) => a[0] - b[0]), ...out.f.sort((a, b) => a[0] - b[0]), ...out.b.sort((a, b) => a[0] - b[0]), ...out.d.sort((a, b) => a[0] - b[0])];
+}
+for (const lang of LANGS) {
+  OTD_URL[lang] = {};
+  for (let m = 1; m <= 12; m++) {
+    const mm = String(m).padStart(2, "0"), days = {};
+    for (let d = 1; d <= 31; d++) { const md = `${mm}-${String(d).padStart(2, "0")}`; if (OTD_SRC.days[md]) days[md] = otdDay(lang, md); }
+    const j = JSON.stringify(days);
+    write(`assets/otd/${lang}-${mm}.json`, j);
+    OTD_URL[lang][mm] = `/assets/otd/${lang}-${mm}.json?v=${hash(j)}`;
+  }
+}
+function otdList(lang, md) {
+  const s = I[lang].otd, rows = otdDay(lang, md);
+  const groups = [["e", s.events], ["f", s.founded], ["b", s.births], ["d", s.deaths]];
+  return groups.map(([k, h]) => {
+    const items = rows.filter((r) => r[1] === k);
+    if (!items.length) return "";
+    return `<h3>${esc(h)}</h3><ul class="otd-list">${items.map((r) => `<li><span class="otd-y" dir="ltr">${r[0]}</span> <span>${esc(k === "f" ? tpl(s.foundedFmt, { name: r[2] }) : r[2])}${r[3] ? ` <span class="meta">(${esc(r[3])})</span>` : ""}</span></li>`).join("")}</ul>`;
+  }).join("") || `<p class="meta">${esc(s.empty)}</p>`;
+}
+function buildOtd(lang) {
+  const t = I[lang];
+  const s = t.otd;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].otd }];
+  const [y, m, d] = cfg.updated.split("-").map(Number);
+  const md = `${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+  const cal = t.calendar;
+  const dateTxt = tpl(cal.shortFmt || "{day} {month}", { day: d, month: cal.months[m - 1] });
+  const hero = `<section class="otd" data-otd data-md="${md}" aria-labelledby="otd-h">
+      <p class="otd-nav"><button type="button" class="toggle" data-otd-prev>${esc(s.prev)}</button> <label for="otd-day" class="sr-only">${esc(s.dayLabel)}</label><input id="otd-day" type="date" data-otd-day value="${cfg.updated}"> <button type="button" class="toggle" data-otd-next>${esc(s.next)}</button> <button type="button" class="toggle" data-otd-today>${esc(s.today)}</button></p>
+      <h2 id="otd-h" data-otd-title>${esc(dateTxt)}</h2>
+      <div data-otd-list>${otdList(lang, md)}</div>
+      <p class="meta">${esc(s.source)}</p>
+    </section>`;
+  const ot = { events: s.events, founded: s.founded, births: s.births, deaths: s.deaths, foundedFmt: s.foundedFmt, empty: s.empty, urls: OTD_URL[lang] };
+  return simplePage(lang, "otd", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections: "" }, faq: s.faq, faqGroup: { id: "otd", title: s.h1 }, scripts: ["otd.js"], clientExtra: { t: { ot } }, nav: "tools", searchK: s.search });
+}
+
+/* Emeklilik hesaplama (30 Ekim 2026, rakip analizi listesi #86): yalnız Türkçe, yalnız 4/a (SSK). Kurallar retire.js'te,
+   kanun metinlerinden (5510 m.28, geçici 9 ve 95; 506 geçici 81). Metinler src/data/retire-tr.json. */
+const RETIRE = readJson("src/data/retire-tr.json");
+function buildRetire() {
+  const lang = "tr", t = I.tr, s = RETIRE;
+  const trail = [{ name: t.ui.home, path: ROUTES.tr.home }, { name: s.h1, path: ROUTES.tr.retire }];
+  const hero = `<section class="rt" data-retire aria-labelledby="rt-h">
+      <h2 id="rt-h" class="sr-only">${esc(s.h1)}</h2>
+      <form class="rt-form" data-rt-form novalidate>
+        <fieldset class="rt-gender"><legend>${esc(s.gender)}</legend><label><input type="radio" name="g" value="f" checked> ${esc(s.women)}</label> <label><input type="radio" name="g" value="m"> ${esc(s.men)}</label></fieldset>
+        <div class="field"><label for="rt-birth">${esc(s.birth)}</label><input id="rt-birth" type="date" data-rt-birth required min="1930-01-01" max="2015-12-31"></div>
+        <div class="field"><label for="rt-start">${esc(s.start)}</label><input id="rt-start" type="date" data-rt-start required min="1950-01-01"></div>
+        <div class="field"><label for="rt-days">${esc(s.days)}</label><input id="rt-days" type="number" inputmode="numeric" min="0" max="20000" step="1" data-rt-days required><p class="meta">${esc(s.daysHint)}</p></div>
+        <div class="field"><label for="rt-rate">${esc(s.rate)}</label><select id="rt-rate" data-rt-rate><option value="360">${esc(s.rateFull)}</option><option value="180">${esc(s.rateHalf)}</option><option value="0">${esc(s.rateNone)}</option></select></div>
+        <button type="submit" class="btn">${esc(s.calc)}</button>
+      </form>
+      <div class="rt-out" data-rt-out role="status" aria-live="polite" hidden>
+        <p class="rt-date" data-rt-date></p>
+        <p data-rt-age></p>
+        <p class="meta" data-rt-group></p>
+        <div class="table-wrap"><table class="events-table"><thead><tr>${s.cols.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody data-rt-rows></tbody></table></div>
+      </div>
+      <p class="meta">${esc(s.noteScope)}</p>
+      <p class="meta">${esc(s.noteLaw)}</p>
+      <p class="meta">${esc(s.noteData)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+  const keys = ["result", "resultAge", "resultLeft", "resultPast", "resultNever", "group", "groups", "routes", "condDays", "condYears", "condAge", "condNoAge", "done", "never", "years", "months"];
+  const rt = Object.fromEntries(keys.map((k) => [k, s[k]]));
+  const page = simplePage(lang, "retire", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections: "" }, faq: s.faq, faqGroup: { id: "retire", title: s.h1 }, scripts: ["retire.js"], clientExtra: { t: { rt } }, nav: "tools", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES.tr.retire, s.description)] });
+  page.langFallback = Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].tools]));
+  return page;
+}
+
 function buildPrayerHub(lang) {
   const t = I[lang];
   const s = t.prayer;
@@ -2468,7 +2622,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur
