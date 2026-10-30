@@ -165,6 +165,10 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                         Text("  " + L("notify.sound.preview"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
                     }
                     Text(L("notify.sound.note"), color = Theme.c.muted, fontSize = 13.sp)
+                    if (NotifyPrefs.sound == "adhan") {
+                        Text(L("notify.sound.adhanNote"), color = Theme.c.muted, fontSize = 13.sp)
+                        Text(L("notify.sound.adhanCredit"), color = Theme.c.muted, fontSize = 11.sp)
+                    }
                     if (NotifyPrefs.sound == "voice" && voice != null && voice != NotificationSounds.VoiceStatus.GOOD) {
                         Text(L("notify.sound.betterAndroid"), color = Theme.c.muted, fontSize = 13.sp)
                     }

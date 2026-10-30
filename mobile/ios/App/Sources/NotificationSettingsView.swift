@@ -53,6 +53,10 @@ struct NotificationSettingsView: View {
                     } footer: {
                         VStack(alignment: .leading, spacing: 6) {
                             Text(L("notify.sound.note"))
+                            if sound == SoundMode.adhan.rawValue {
+                                Text(L("notify.sound.adhanNote"))
+                                Text(L("notify.sound.adhanCredit")).font(.caption2)
+                            }
                             if sound == SoundMode.voice.rawValue && NotificationSounds.hasOnlyBasicVoice {
                                 Text(L("notify.sound.better"))
                             }

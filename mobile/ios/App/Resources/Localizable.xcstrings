@@ -16451,6 +16451,111 @@
         }
       }
     },
+    "notify.sound.adhan": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ezan (vaktinde, 5 sn)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhan (at prayer time, 5 s)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhan (zur Gebetszeit, 5 s)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azan (vaxtında, 5 san)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأذان (عند دخول الوقت، 5 ثوانٍ)"
+          }
+        }
+      }
+    },
+    "notify.sound.adhanNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaktinde ezanın ilk cümlesi (\"Allahu Ekber, Allahu Ekber\") çalar; vakitten önceki bildirimlerde ve Güneş'te sesli duyuru çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At prayer time the first phrase of the adhan (\"Allāhu akbar, Allāhu akbar\") plays; notifications before the time and for sunrise use the spoken announcement."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zur Gebetszeit erklingt der erste Satz des Adhan („Allāhu akbar, Allāhu akbar“); Benachrichtigungen vor der Zeit und zum Sonnenaufgang nutzen die gesprochene Ansage."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaxtında azanın ilk cümləsi (\"Allahu Əkbər, Allahu Əkbər\") səslənir; vaxtdan əvvəlki bildirişlərdə və Günəşdə səsli elan səslənir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند دخول الوقت تُسمع أول جملة من الأذان («الله أكبر، الله أكبر»)؛ وتستخدم الإشعارات قبل الوقت وعند الشروق الإعلانَ الصوتي."
+          }
+        }
+      }
+    },
+    "notify.sound.adhanCredit": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ezan kaydı: Aaqib Azeez (yükleyen Atcovi), Wikimedia Commons, CC BY-SA 4.0; ilk 5 saniye."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhan recording: Aaqib Azeez (uploaded by Atcovi), Wikimedia Commons, CC BY-SA 4.0; first 5 seconds."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhan-Aufnahme: Aaqib Azeez (hochgeladen von Atcovi), Wikimedia Commons, CC BY-SA 4.0; erste 5 Sekunden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azan qeydi: Aaqib Azeez (yükləyən Atcovi), Wikimedia Commons, CC BY-SA 4.0; ilk 5 saniyə."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تسجيل الأذان: Aaqib Azeez (رفعه Atcovi)، ويكيميديا كومنز، CC BY-SA 4.0؛ أول 5 ثوانٍ."
+          }
+        }
+      }
+    },
     "notify.sound.system": {
       "extractionState": "manual",
       "localizations": {

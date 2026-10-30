@@ -91,6 +91,8 @@ data class CountdownItem(
         private const val KEY = "countdowns"
         val EMOJIS = listOf("⏳", "🎂", "🎉", "✈️", "🏖️", "🎓", "💍", "❤️", "🎄", "🌙", "⚽", "📚", "💼", "🏥", "👶", "🎁")
 
+        /** Kilitli: bildirim planı arka planda da okur; eski kaydın taşınması iki kez yapılmasın */
+        @Synchronized
         fun load(): List<CountdownItem> {
             val sp = Prefs.store
             val list = runCatching {

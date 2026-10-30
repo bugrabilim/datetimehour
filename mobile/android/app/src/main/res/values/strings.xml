@@ -471,6 +471,9 @@
     <string name="notify_sound">Bildirim sesi</string>
     <string name="notify_sound_voice">Sesli duyuru</string>
     <string name="notify_sound_chime">Kısa zil</string>
+    <string name="notify_sound_adhan">Ezan (vaktinde, 5 sn)</string>
+    <string name="notify_sound_adhanNote">Vaktinde ezanın ilk cümlesi (\"Allahu Ekber, Allahu Ekber\") çalar; vakitten önceki bildirimlerde ve Güneş\'te sesli duyuru çalar.</string>
+    <string name="notify_sound_adhanCredit">Ezan kaydı: Aaqib Azeez (yükleyen Atcovi), Wikimedia Commons, CC BY-SA 4.0; ilk 5 saniye.</string>
     <string name="notify_sound_system">Telefonun sesi</string>
     <string name="notify_sound_preview">Dinle</string>
     <string name="notify_sound_note">Sesli duyuru kısa bir zilden sonra vakti söyler, örneğin \"Öğle vakti geldi.\" Telefon sessizdeyken bildirim yalnız titreşir.</string>

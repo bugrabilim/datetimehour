@@ -471,6 +471,9 @@
     <string name="notify_sound">Notification sound</string>
     <string name="notify_sound_voice">Spoken announcement</string>
     <string name="notify_sound_chime">Short chime</string>
+    <string name="notify_sound_adhan">Adhan (at prayer time, 5 s)</string>
+    <string name="notify_sound_adhanNote">At prayer time the first phrase of the adhan (\"Allāhu akbar, Allāhu akbar\") plays; notifications before the time and for sunrise use the spoken announcement.</string>
+    <string name="notify_sound_adhanCredit">Adhan recording: Aaqib Azeez (uploaded by Atcovi), Wikimedia Commons, CC BY-SA 4.0; first 5 seconds.</string>
     <string name="notify_sound_system">Phone\'s default sound</string>
     <string name="notify_sound_preview">Listen</string>
     <string name="notify_sound_note">The spoken announcement says the prayer after a short chime, for example \"It is time for Dhuhr.\" When the phone is silenced, notifications only vibrate.</string>

@@ -108,7 +108,8 @@ object PrayerNotifier {
             if (exact) am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi)
             else am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi)
         }
-        if (NotifyPrefs.sound == "voice") {
+        // Ezan seçiliyken de vakitten önceki bildirimler ve Güneş sesli duyuruyla çalar
+        if (NotifyPrefs.sound == "voice" || NotifyPrefs.sound == "adhan") {
             val prayers = alerts.map { it.prayer }.toSet()
             scope.launch { runCatching { NotificationSounds.prepare(app, prayers, settings.leadMinutes) } }
         }

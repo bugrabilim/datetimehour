@@ -471,6 +471,9 @@
     <string name="notify_sound">Benachrichtigungston</string>
     <string name="notify_sound_voice">Gesprochene Ansage</string>
     <string name="notify_sound_chime">Kurzer Gong</string>
+    <string name="notify_sound_adhan">Adhan (zur Gebetszeit, 5 s)</string>
+    <string name="notify_sound_adhanNote">Zur Gebetszeit erklingt der erste Satz des Adhan („Allāhu akbar, Allāhu akbar“); Benachrichtigungen vor der Zeit und zum Sonnenaufgang nutzen die gesprochene Ansage.</string>
+    <string name="notify_sound_adhanCredit">Adhan-Aufnahme: Aaqib Azeez (hochgeladen von Atcovi), Wikimedia Commons, CC BY-SA 4.0; erste 5 Sekunden.</string>
     <string name="notify_sound_system">Standardton des Telefons</string>
     <string name="notify_sound_preview">Anhören</string>
     <string name="notify_sound_note">Die Ansage nennt nach einem kurzen Gong das Gebet, zum Beispiel „Es ist Zeit für Dhuhr.“ Ist das Telefon stumm geschaltet, vibrieren Benachrichtigungen nur.</string>

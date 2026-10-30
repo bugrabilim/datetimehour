@@ -471,6 +471,9 @@
     <string name="notify_sound">صوت الإشعار</string>
     <string name="notify_sound_voice">إعلان صوتي</string>
     <string name="notify_sound_chime">رنين قصير</string>
+    <string name="notify_sound_adhan">الأذان (عند دخول الوقت، 5 ثوانٍ)</string>
+    <string name="notify_sound_adhanNote">عند دخول الوقت تُسمع أول جملة من الأذان («الله أكبر، الله أكبر»)؛ وتستخدم الإشعارات قبل الوقت وعند الشروق الإعلانَ الصوتي.</string>
+    <string name="notify_sound_adhanCredit">تسجيل الأذان: Aaqib Azeez (رفعه Atcovi)، ويكيميديا كومنز، CC BY-SA 4.0؛ أول 5 ثوانٍ.</string>
     <string name="notify_sound_system">صوت الهاتف الافتراضي</string>
     <string name="notify_sound_preview">استمع</string>
     <string name="notify_sound_note">يذكر الإعلان الصوتي الصلاة بعد رنين قصير، مثل «حان وقت الظهر». عندما يكون الهاتف صامتًا يكتفي الإشعار بالاهتزاز.</string>

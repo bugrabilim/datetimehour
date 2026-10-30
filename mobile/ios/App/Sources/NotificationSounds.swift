@@ -5,10 +5,13 @@ import UserNotifications
 import SaatCore
 
 /// Bildirim sesleri telefonda üretilir: kısa bir zil ve isteğe bağlı sesli duyuru ("Öğle vakti geldi.").
-/// Duyuru iPhone'un kendi konuşma sesiyle (AVSpeechSynthesizer) yazılır; dışarıdan ses kaydı yok, internet gerekmez.
+/// Duyuru iPhone'un kendi konuşma sesiyle (AVSpeechSynthesizer) yazılır; internet gerekmez.
 /// Dosyalar Library/Sounds içine yazılır; iOS bildirim sesini orada arar (en çok 30 sn).
+/// "Ezan" seçeneği (30 Ekim 2026, sahibin kararı): vaktinde uygulamayla gelen 5 sn'lik ezan kesiti (ezan.caf;
+/// Wikimedia Commons, CC BY-SA 4.0, atıf ayarda; kaynak mobile/shared/ezan/README.md). Vakitten önceki
+/// bildirimlerde ve Güneş'te sesli duyuru çalar.
 enum SoundMode: String, CaseIterable {
-    case voice, chime, system
+    case voice, chime, adhan, system
 
     static let key = "notify.sound"
     static var current: SoundMode { SoundMode(rawValue: UserDefaults.standard.string(forKey: key) ?? "") ?? .voice }
@@ -56,8 +59,17 @@ enum NotificationSounds {
     }
 
     /// Ayara göre bildirim sesi; üretilemezse telefonun sesi
+    static let adhanFile = "ezan.caf"
+
+    /// Ezan yalnız vaktinde ve namaz vakitlerinde (Güneş bir namaz vakti değil); diğerlerinde sesli duyuru
+    static func effective(_ mode: SoundMode, prayer: Prayer, lead: Int) -> SoundMode {
+        mode == .adhan && (lead > 0 || prayer == .sunrise) ? .voice : mode
+    }
+
     static func sound(for prayer: Prayer, lead: Int, mode: SoundMode = .current) async -> UNNotificationSound {
-        switch mode {
+        switch effective(mode, prayer: prayer, lead: lead) {
+        case .adhan:
+            return UNNotificationSound(named: UNNotificationSoundName(adhanFile))
         case .system:
             return .default
         case .chime:
@@ -73,7 +85,13 @@ enum NotificationSounds {
     /// Ayar penceresindeki "Dinle": seçili sesin örneği (öğle vakti)
     static func preview(mode: SoundMode, lead: Int) async {
         let name: String
-        switch mode {
+        switch effective(mode, prayer: .dhuhr, lead: lead) {
+        case .adhan:
+            guard let url = Bundle.main.url(forResource: "ezan", withExtension: "caf") else { return }
+            try? AVAudioSession.sharedInstance().setCategory(.playback, options: [.duckOthers])
+            player = try? AVAudioPlayer(contentsOf: url)
+            player?.play()
+            return
         case .system:
             AudioServicesPlaySystemSound(1007) // iOS'un bildirim sesine en yakın sistem sesi
             return

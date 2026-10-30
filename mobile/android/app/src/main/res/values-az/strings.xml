@@ -471,6 +471,9 @@
     <string name="notify_sound">Bildiriş səsi</string>
     <string name="notify_sound_voice">Səsli elan</string>
     <string name="notify_sound_chime">Qısa zəng</string>
+    <string name="notify_sound_adhan">Azan (vaxtında, 5 san)</string>
+    <string name="notify_sound_adhanNote">Vaxtında azanın ilk cümləsi (\"Allahu Əkbər, Allahu Əkbər\") səslənir; vaxtdan əvvəlki bildirişlərdə və Günəşdə səsli elan səslənir.</string>
+    <string name="notify_sound_adhanCredit">Azan qeydi: Aaqib Azeez (yükləyən Atcovi), Wikimedia Commons, CC BY-SA 4.0; ilk 5 saniyə.</string>
     <string name="notify_sound_system">Telefonun səsi</string>
     <string name="notify_sound_preview">Dinlə</string>
     <string name="notify_sound_note">Səsli elan qısa zəngdən sonra vaxtı deyir, məsələn \"Zöhr vaxtı gəldi.\" Telefon səssiz rejimdə olanda bildiriş yalnız titrəyir.</string>

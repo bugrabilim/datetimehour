@@ -65,7 +65,7 @@ object NotifyPrefs {
         private set
     var lead by mutableIntStateOf(0)
         private set
-    /** "voice" (sesli duyuru, varsayılan), "chime" (kısa zil), "system" (telefonun sesi) */
+    /** "voice" (sesli duyuru, varsayılan), "chime" (kısa zil), "adhan" (vaktinde 5 sn ezan), "system" (telefonun sesi) */
     var sound by mutableStateOf("voice")
         private set
 
@@ -79,7 +79,7 @@ object NotifyPrefs {
         sound = sp.getString(SOUND, null)?.takeIf { it in SOUNDS } ?: "voice"
     }
 
-    val SOUNDS = listOf("voice", "chime", "system")
+    val SOUNDS = listOf("voice", "chime", "adhan", "system")
 
     val prayers: Set<Prayer> get() { load(); return decode(prayersRaw) }
 

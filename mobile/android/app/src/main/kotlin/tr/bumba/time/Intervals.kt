@@ -83,6 +83,8 @@ data class TimerItem(
     companion object {
         private const val KEY = "timers"
 
+        /** Kilitli: eski kaydın taşınması iki kez yapılmasın (geri sayımlardaki gibi) */
+        @Synchronized
         fun load(): List<TimerItem> {
             val sp = Prefs.store
             // Eski tek zamanlayıcı (tm.end / tm.left) bir kez listeye taşınır

@@ -217,6 +217,27 @@
     "az": "Qısa zəng",
     "ar": "رنين قصير"
   },
+  "notify.sound.adhan": {
+    "tr": "Ezan (vaktinde, 5 sn)",
+    "en": "Adhan (at prayer time, 5 s)",
+    "de": "Adhan (zur Gebetszeit, 5 s)",
+    "az": "Azan (vaxtında, 5 san)",
+    "ar": "الأذان (عند دخول الوقت، 5 ثوانٍ)"
+  },
+  "notify.sound.adhanNote": {
+    "tr": "Vaktinde ezanın ilk cümlesi (\"Allahu Ekber, Allahu Ekber\") çalar; vakitten önceki bildirimlerde ve Güneş'te sesli duyuru çalar.",
+    "en": "At prayer time the first phrase of the adhan (\"Allāhu akbar, Allāhu akbar\") plays; notifications before the time and for sunrise use the spoken announcement.",
+    "de": "Zur Gebetszeit erklingt der erste Satz des Adhan („Allāhu akbar, Allāhu akbar“); Benachrichtigungen vor der Zeit und zum Sonnenaufgang nutzen die gesprochene Ansage.",
+    "az": "Vaxtında azanın ilk cümləsi (\"Allahu Əkbər, Allahu Əkbər\") səslənir; vaxtdan əvvəlki bildirişlərdə və Günəşdə səsli elan səslənir.",
+    "ar": "عند دخول الوقت تُسمع أول جملة من الأذان («الله أكبر، الله أكبر»)؛ وتستخدم الإشعارات قبل الوقت وعند الشروق الإعلانَ الصوتي."
+  },
+  "notify.sound.adhanCredit": {
+    "tr": "Ezan kaydı: Aaqib Azeez (yükleyen Atcovi), Wikimedia Commons, CC BY-SA 4.0; ilk 5 saniye.",
+    "en": "Adhan recording: Aaqib Azeez (uploaded by Atcovi), Wikimedia Commons, CC BY-SA 4.0; first 5 seconds.",
+    "de": "Adhan-Aufnahme: Aaqib Azeez (hochgeladen von Atcovi), Wikimedia Commons, CC BY-SA 4.0; erste 5 Sekunden.",
+    "az": "Azan qeydi: Aaqib Azeez (yükləyən Atcovi), Wikimedia Commons, CC BY-SA 4.0; ilk 5 saniyə.",
+    "ar": "تسجيل الأذان: Aaqib Azeez (رفعه Atcovi)، ويكيميديا كومنز، CC BY-SA 4.0؛ أول 5 ثوانٍ."
+  },
   "notify.sound.system": {
     "tr": "Telefonun sesi",
     "en": "Phone's default sound",

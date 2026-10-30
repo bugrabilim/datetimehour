@@ -32,7 +32,9 @@ import kotlin.math.sin
 /**
  * Bildirim sesleri telefonda üretilir (iOS'taki NotificationSounds gibi): kısa bir zil ve isteğe bağlı sesli duyuru
  * ("Öğle vakti geldi."). Duyuru telefonun kendi metin okuma motoruyla (TextToSpeech) dosyaya yazılır; dışarıdan ses
- * kaydı yok, internet gerekmez. Ezan sesi bilerek yok.
+ * kaydı yok, internet gerekmez. "Ezan" seçeneği (30 Ekim 2026, sahibin kararı): vaktinde uygulamayla gelen 5 sn'lik ezan
+ * kesiti (res/raw/ezan.ogg; Wikimedia Commons, CC BY-SA 4.0, atıf ayarda; kaynak mobile/shared/ezan/README.md);
+ * vakitten önceki bildirimlerde ve Güneş'te sesli duyuru çalar.
  *
  * Neden bildirim kanalının sesi değil: Android'de kanal sesi kanal kurulunca sabitlenir ve sistem arayüzünün
  * okuyabileceği bir adres ister (uygulama dosyası için FileProvider + sistem paketine izin; üreticiye göre kırılgan).
@@ -69,10 +71,24 @@ object NotificationSounds {
     private fun voiceFile(context: Context, voiceKey: String, prayer: Prayer, lead: Int) =
         File(dir(context), "$VERSION-${Strings.lang}-$voiceKey-${prayer.key}-$lead.wav")
 
+    /** Uygulamayla gelen ezan kesiti, çalınabilsin diye uygulama dosyalarına bir kez kopyalanır */
+    fun adhanFile(context: Context): File {
+        val f = File(dir(context), "ezan-v1.ogg")
+        if (!f.exists() || f.length() == 0L) {
+            context.resources.openRawResource(R.raw.ezan).use { input -> FileOutputStream(f).use { input.copyTo(it) } }
+        }
+        return f
+    }
+
+    /** Ezan yalnız vaktinde ve namaz vakitlerinde (Güneş bir namaz vakti değil); diğerlerinde sesli duyuru */
+    fun effective(mode: String, prayer: Prayer, lead: Int): String =
+        if (mode == "adhan" && (lead > 0 || prayer == Prayer.SUNRISE)) "voice" else mode
+
     /** Bildirim anında çalınacak dosyalar (sırayla); hazır değilse yalnız zil */
-    fun filesFor(context: Context, prayer: Prayer, lead: Int, mode: String): List<File> = when (mode) {
+    fun filesFor(context: Context, prayer: Prayer, lead: Int, mode: String): List<File> = when (effective(mode, prayer, lead)) {
         "system" -> emptyList()
         "chime" -> listOf(chimeFile(context))
+        "adhan" -> listOf(adhanFile(context))
         else -> listOf(chimeFile(context)) + listOfNotNull(
             dir(context).listFiles()?.firstOrNull { it.name.startsWith("$VERSION-${Strings.lang}-") && it.name.endsWith("-${prayer.key}-$lead.wav") },
         )
@@ -87,7 +103,7 @@ object NotificationSounds {
         withTts(context) { tts, voiceKey ->
             val keep = prayers.map { voiceFile(context, voiceKey, it, lead).name }.toSet()
             dir(context).listFiles()?.forEach { f ->
-                if (!f.name.startsWith("$VERSION-chime") && f.name !in keep) f.delete()
+                if (!f.name.startsWith("$VERSION-chime") && !f.name.startsWith("ezan-") && f.name !in keep) f.delete()
             }
             for (p in prayers) {
                 val f = voiceFile(context, voiceKey, p, lead)
@@ -111,7 +127,7 @@ object NotificationSounds {
             }
             return
         }
-        if (mode == "voice") prepare(context, setOf(Prayer.DHUHR), lead)
+        if (effective(mode, Prayer.DHUHR, lead) == "voice") prepare(context, setOf(Prayer.DHUHR), lead)
         play(context, filesFor(context, Prayer.DHUHR, lead, mode), AudioAttributes.USAGE_MEDIA) {}
     }
 
