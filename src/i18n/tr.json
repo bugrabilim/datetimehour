@@ -300,6 +300,13 @@
         ]
       },
       {
+        "id": "eklenti",
+        "h": "Tarayıcı eklentisi",
+        "p": [
+          "Saat Tarih tarayıcı eklentisi (Chrome, Edge, Firefox) internete hiç bağlanmaz: saat cihazınızdan, namaz vakitleri ve hicri tarih eklentinin içindeki verilerle cihazda hesaplanır. Yalnız seçtiğiniz il ve 24/12 saat tercihi tarayıcının eklenti deposunda saklanır; eklentiyi kaldırınca silinir. İstatistik, reklam ve takip yoktur."
+        ]
+      },
+      {
         "id": "cerezler",
         "h": "Çerezler ve tarayıcı depolaması",
         "p": [

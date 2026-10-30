@@ -1,0 +1,38 @@
+{
+  "_": "Eklentiye özgü metinler (beş dil). Namaz adları, il etiketi ve hicri ay adları sitedeki ve uygulamalardaki metinlerden scripts/build-extension.mjs ile eklenir.",
+  "name": {
+    "tr": "Saat Tarih: saat, tarih ve namaz vakitleri",
+    "en": "Saat Tarih: clock, date and prayer times",
+    "de": "Saat Tarih: Uhr, Datum und Gebetszeiten",
+    "az": "Saat Tarih: saat, tarix və namaz vaxtları",
+    "ar": "Saat Tarih: الساعة والتاريخ ومواقيت الصلاة"
+  },
+  "description": {
+    "tr": "Tarayıcınızda saat, bugünün tarihi, hicri tarih ve 81 il için namaz vakitleri. İnternete bağlanmaz.",
+    "en": "Clock, today's date, the Hijri date and prayer times for Turkey's 81 provinces in your browser. Works offline.",
+    "de": "Uhr, heutiges Datum, Hidschri-Datum und Gebetszeiten für die 81 Provinzen der Türkei im Browser. Funktioniert offline.",
+    "az": "Brauzerinizdə saat, bugünkü tarix, hicri tarix və Türkiyənin 81 vilayəti üçün namaz vaxtları. İnternetə qoşulmur.",
+    "ar": "الساعة وتاريخ اليوم والتاريخ الهجري ومواقيت الصلاة لـ 81 ولاية تركية في متصفحك. يعمل دون اتصال."
+  },
+  "format": {
+    "tr": "24/12 saat",
+    "en": "24/12 hour",
+    "de": "24/12 Stunden",
+    "az": "24/12 saat",
+    "ar": "نظام 24/12 ساعة"
+  },
+  "open": {
+    "tr": "time.bumba.tr'de aç",
+    "en": "Open time.bumba.tr",
+    "de": "time.bumba.tr öffnen",
+    "az": "time.bumba.tr-də aç",
+    "ar": "افتح time.bumba.tr"
+  },
+  "note": {
+    "tr": "Vakitler Diyanet yöntemiyle cihazda hesaplanır ve Türkiye saatiyle gösterilir; resmî vakit için Diyanet esastır. Eklenti internete bağlanmaz; yalnız seçtiğiniz il tarayıcıda saklanır.",
+    "en": "Times are calculated on your device with the Diyanet method and shown in Turkey time; the Diyanet's official times are authoritative. The extension never goes online; only your chosen province is stored in the browser.",
+    "de": "Die Zeiten werden auf Ihrem Gerät nach der Diyanet-Methode berechnet und in türkischer Zeit angezeigt; maßgeblich sind die offiziellen Zeiten des Diyanet. Die Erweiterung geht nie online; nur die gewählte Provinz wird im Browser gespeichert.",
+    "az": "Vaxtlar cihazda Diyanət üsulu ilə hesablanır və Türkiyə vaxtı ilə göstərilir; rəsmi vaxt üçün Diyanət əsasdır. Əlavə internetə qoşulmur; yalnız seçdiyiniz vilayət brauzerdə saxlanılır.",
+    "ar": "تُحسب المواقيت على جهازك بطريقة رئاسة الشؤون الدينية وتُعرض بتوقيت تركيا؛ والمعتمد المواقيت الرسمية للرئاسة. لا تتصل الإضافة بالإنترنت؛ تُحفظ الولاية التي تختارها فقط في المتصفح."
+  }
+}

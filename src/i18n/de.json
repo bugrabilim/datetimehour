@@ -327,6 +327,13 @@
         ]
       },
       {
+        "id": "eklenti",
+        "h": "Browser-Erweiterung",
+        "p": [
+          "Die Browser-Erweiterung von Saat Tarih (Chrome, Edge, Firefox) verbindet sich nie mit dem Internet: Die Uhr stammt von Ihrem Gerät, Gebetszeiten und Hidschri-Datum werden auf Ihrem Gerät aus Daten in der Erweiterung berechnet. Nur die gewählte Provinz und die 24/12-Stunden-Einstellung werden im Erweiterungsspeicher des Browsers abgelegt und beim Entfernen der Erweiterung gelöscht. Keine Statistik, keine Werbung, kein Tracking."
+        ]
+      },
+      {
         "id": "cookies",
         "h": "Cookies und Browser-Speicher",
         "p": [

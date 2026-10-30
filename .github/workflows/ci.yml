@@ -12,3 +12,4 @@ jobs:
         with:
           node-version: 22
       - run: npm test
+      - run: node scripts/build-extension.mjs --check

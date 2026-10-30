@@ -300,6 +300,13 @@
         ]
       },
       {
+        "id": "eklenti",
+        "h": "Brauzer əlavəsi",
+        "p": [
+          "Saat Tarih brauzer əlavəsi (Chrome, Edge, Firefox) heç vaxt internetə qoşulmur: saat cihazınızdan götürülür, namaz vaxtları və hicri tarix əlavənin içindəki məlumatlarla cihazda hesablanır. Yalnız seçdiyiniz vilayət və 24/12 saat seçimi brauzerin əlavə anbarında saxlanılır və əlavəni silərkən silinir. Statistika, reklam və izləmə yoxdur."
+        ]
+      },
+      {
         "id": "cookies",
         "h": "Kukilər və brauzer yaddaşı",
         "p": [

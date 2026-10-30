@@ -300,6 +300,13 @@
         ]
       },
       {
+        "id": "eklenti",
+        "h": "Browser extension",
+        "p": [
+          "The Saat Tarih browser extension (Chrome, Edge, Firefox) never connects to the internet: the clock comes from your device, and prayer times and the Hijri date are calculated on your device from data inside the extension. Only your chosen province and the 24/12-hour setting are kept in the browser's extension storage and are deleted when you remove the extension. No statistics, ads or tracking."
+        ]
+      },
+      {
         "id": "cookies",
         "h": "Cookies and browser storage",
         "p": [
