@@ -54,6 +54,10 @@ struct CalendarTab: View {
                     Button(L("client.today")) { go(to: today) }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink { CalendarLeafView() } label: { Image(systemName: "doc.text.image") }
+                        .accessibilityLabel(L("leaf.title"))
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Button { adding = AddRequest(day: selected) } label: { Image(systemName: "plus") }
                         .accessibilityLabel(L("calendar.add"))
                 }

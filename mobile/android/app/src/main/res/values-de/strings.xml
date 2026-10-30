@@ -1164,5 +1164,24 @@
     <string name="world_dstTitle">%1$s: Zeitumstellung</string>
     <string name="hijriConv_outsideApp">Außerhalb der Diyanet-Tabelle; mit dem Umm-al-Qura-Kalender berechnet, Abweichung um einen Tag möglich.</string>
     <string name="common_secondsShort">Sek.</string>
+    <string name="esma_title">Die 99 Namen Allahs</string>
+    <string name="esma_search">Name oder Bedeutung suchen</string>
+    <string name="esma_note">Die in der Türkei übliche Liste (99 Namen, beginnend mit Allah, nach at-Tirmidhi). Die Bedeutungen sind kurze Erläuterungen.</string>
+    <string name="hadith_title">Hadithe</string>
+    <string name="hadith_today">Hadith des Tages</string>
+    <string name="hadith_source">%1$s · %2$s · an-Nawawis Vierzig Hadithe %3$s</string>
+    <string name="hadith_note">Arabischer Text aus den Vierzig Hadithen von Imam an-Nawawi (gemeinfreie offene Daten). Die Bedeutungen sind die Übersetzung von Saat Tarih; für ausführliche Erläuterungen wenden Sie sich an einen Gelehrten.</string>
+    <string name="guide_title">Gebetsanleitung</string>
+    <string name="guide_duas">Gesprochene Bittgebete</string>
+    <string name="leaf_title">Kalenderblatt</string>
+    <string name="leaf_dayOfYear">%1$s. Tag des Jahres · %2$s. Woche</string>
+    <string name="leaf_saying">Spruch des Tages</string>
+    <string name="leaf_sun">Sonne</string>
+    <string name="leaf_sunTimes">Aufgang %1$s · Untergang %2$s</string>
+    <string name="leaf_special">Heute</string>
+    <string name="leaf_hizir">Hızır-Tage: Tag %1$s</string>
+    <string name="leaf_kasim">Kasım-Tage: Tag %1$s</string>
+    <string name="leaf_prev">Vorheriger Tag</string>
+    <string name="leaf_next">Nächster Tag</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

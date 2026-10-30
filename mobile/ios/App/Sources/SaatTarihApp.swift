@@ -286,7 +286,7 @@ private struct TabBar: View {
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
-         wake, quran, sura, duas, zikir, track, zakat
+         wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -324,6 +324,10 @@ enum DebugScreen: String, Identifiable {
         case .quran: QuranView()
         case .sura: SuraView(sura: 36, start: 1)
         case .duas: DuasView()
+        case .esma: EsmaView()
+        case .hadith: HadithView()
+        case .guide: PrayerGuideView()
+        case .leaf: CalendarLeafView()
         case .zikir: ZikirView()
         case .track: TrackerView()
         case .zakat: ZakatView()

@@ -17,7 +17,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AutoAwesome
 import androidx.compose.material.icons.filled.Calculate
+import androidx.compose.material.icons.filled.FormatQuote
+import androidx.compose.material.icons.filled.SelfImprovement
 import androidx.compose.material.icons.filled.TaskAlt
 import androidx.compose.material.icons.filled.TouchApp
 import androidx.compose.material.icons.filled.VolunteerActivism
@@ -72,6 +75,9 @@ fun PrayerScreen() {
         "zikir" -> { BackHandler { page = null }; ZikirScreen { page = null }; return }
         "track" -> { BackHandler { page = null }; TrackerScreen { page = null }; return }
         "zakat" -> { BackHandler { page = null }; ZakatScreen { page = null }; return }
+        "esma" -> { BackHandler { page = null }; EsmaScreen { page = null }; return }
+        "hadith" -> { BackHandler { page = null }; HadithScreen { page = null }; return }
+        "guide" -> { BackHandler { page = null }; PrayerGuideScreen({ page = null }) { page = "duas" }; return }
         "imsakiye" -> if (ramadan != null) {
             BackHandler { page = null }
             ImsakiyeScreen(place, ramadan) { page = null }
@@ -148,6 +154,9 @@ fun PrayerScreen() {
             Text(L("worship.title"), Modifier.fillMaxWidth().padding(top = 6.dp), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
             LinkCard(Icons.AutoMirrored.Filled.MenuBook, L("quran.title")) { page = "quran" }
             LinkCard(Icons.Filled.VolunteerActivism, L("dua.title")) { page = "duas" }
+            LinkCard(Icons.Filled.AutoAwesome, L("esma.title")) { page = "esma" }
+            LinkCard(Icons.Filled.FormatQuote, L("hadith.title")) { page = "hadith" }
+            LinkCard(Icons.Filled.SelfImprovement, L("guide.title")) { page = "guide" }
             LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { page = "zikir" }
             LinkCard(Icons.Filled.TaskAlt, L("track.title")) { page = "track" }
             LinkCard(Icons.Filled.Calculate, L("zakat.title")) { page = "zakat" }

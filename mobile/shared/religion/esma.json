@@ -1,0 +1,896 @@
+{
+ "_": "Esmaü'l-Hüsna (uygulamalar, Vakitler › İbadet). Türkiye'de yaygın liste: Allah ile başlayan 99 isim (Tirmizî rivayeti; el-Ehad yok). Satır: [Arapça, Türkçe okunuş, Latin harfli okunuş (en/de), anlam tr, en, de, az]; ar arayüzünde yalnız Arapça ad. Anlamlar kısa açıklamadır (Saat Tarih, 30 Ekim 2026); gözden geçirme bekler.",
+ "items": [
+  [
+   "اللَّهُ",
+   "Allah",
+   "Allah",
+   "Bütün güzel isimlerin sahibi, eşi ve benzeri olmayan, ibadete layık tek ilah",
+   "The one true God, possessor of all beautiful names",
+   "Der eine Gott, Träger aller schönen Namen",
+   "Bütün gözəl adların sahibi, tək ilah"
+  ],
+  [
+   "الرَّحْمَنُ",
+   "Er-Rahmân",
+   "Ar-Rahman",
+   "Dünyada bütün yaratılmışlara merhamet eden",
+   "The Most Merciful to all creation",
+   "Der Allerbarmer",
+   "Dünyada bütün yaradılmışlara mərhəmət edən"
+  ],
+  [
+   "الرَّحِيمُ",
+   "Er-Rahîm",
+   "Ar-Rahim",
+   "Ahirette müminlere sonsuz merhamet eden",
+   "The Especially Merciful",
+   "Der Barmherzige",
+   "Axirətdə möminlərə sonsuz mərhəmət edən"
+  ],
+  [
+   "الْمَلِكُ",
+   "El-Melik",
+   "Al-Malik",
+   "Mülkün ve kâinatın gerçek sahibi",
+   "The King, the Sovereign",
+   "Der König",
+   "Mülkün və kainatın həqiqi sahibi"
+  ],
+  [
+   "الْقُدُّوسُ",
+   "El-Kuddûs",
+   "Al-Quddus",
+   "Her türlü eksiklikten uzak, tertemiz",
+   "The Most Holy",
+   "Der Heilige",
+   "Hər cür nöqsandan uzaq, tərtəmiz"
+  ],
+  [
+   "السَّلَامُ",
+   "Es-Selâm",
+   "As-Salam",
+   "Esenlik veren, kullarını selamete çıkaran",
+   "The Source of Peace",
+   "Der Friede",
+   "Əmin-amanlıq verən"
+  ],
+  [
+   "الْمُؤْمِنُ",
+   "El-Mü'min",
+   "Al-Mu'min",
+   "Güven veren, emniyete kavuşturan",
+   "The Giver of Security",
+   "Der Gewährer der Sicherheit",
+   "Güvən verən, əmin edən"
+  ],
+  [
+   "الْمُهَيْمِنُ",
+   "El-Müheymin",
+   "Al-Muhaymin",
+   "Her şeyi gözetip koruyan",
+   "The Guardian, the Overseer",
+   "Der Wächter",
+   "Hər şeyi gözləyib qoruyan"
+  ],
+  [
+   "الْعَزِيزُ",
+   "El-Azîz",
+   "Al-Aziz",
+   "Mutlak güç sahibi, yenilmeyen",
+   "The Almighty",
+   "Der Allmächtige",
+   "Mütləq qüdrət sahibi, məğlubedilməz"
+  ],
+  [
+   "الْجَبَّارُ",
+   "El-Cebbâr",
+   "Al-Jabbar",
+   "Dilediğini yaptıran, kırığı onaran",
+   "The Compeller, the Restorer",
+   "Der Bezwinger",
+   "İstədiyini edən, sınığı bərpa edən"
+  ],
+  [
+   "الْمُتَكَبِّرُ",
+   "El-Mütekebbir",
+   "Al-Mutakabbir",
+   "Büyüklükte eşi olmayan",
+   "The Supreme in Greatness",
+   "Der Erhabene in Seiner Größe",
+   "Böyüklükdə tayı olmayan"
+  ],
+  [
+   "الْخَالِقُ",
+   "El-Hâlık",
+   "Al-Khaliq",
+   "Yoktan var eden, yaratan",
+   "The Creator",
+   "Der Schöpfer",
+   "Yoxdan var edən, yaradan"
+  ],
+  [
+   "الْبَارِئُ",
+   "El-Bâri'",
+   "Al-Bari'",
+   "Her şeyi kusursuz ve uyumlu yaratan",
+   "The Originator",
+   "Der Erschaffer",
+   "Hər şeyi qüsursuz yaradan"
+  ],
+  [
+   "الْمُصَوِّرُ",
+   "El-Musavvir",
+   "Al-Musawwir",
+   "Her şeye şekil ve suret veren",
+   "The Fashioner of Forms",
+   "Der Gestalter",
+   "Hər şeyə şəkil verən"
+  ],
+  [
+   "الْغَفَّارُ",
+   "El-Gaffâr",
+   "Al-Ghaffar",
+   "Günahları çokça bağışlayan",
+   "The Ever-Forgiving",
+   "Der immer wieder Vergebende",
+   "Günahları çox bağışlayan"
+  ],
+  [
+   "الْقَهَّارُ",
+   "El-Kahhâr",
+   "Al-Qahhar",
+   "Her şeye galip gelen",
+   "The Subduer",
+   "Der Bezwingende",
+   "Hər şeyə qalib gələn"
+  ],
+  [
+   "الْوَهَّابُ",
+   "El-Vehhâb",
+   "Al-Wahhab",
+   "Karşılıksız bol bol veren",
+   "The Bestower",
+   "Der Schenkende",
+   "Əvəzsiz bol-bol verən"
+  ],
+  [
+   "الرَّزَّاقُ",
+   "Er-Rezzâk",
+   "Ar-Razzaq",
+   "Bütün canlıların rızkını veren",
+   "The Provider",
+   "Der Versorger",
+   "Bütün canlıların ruzisini verən"
+  ],
+  [
+   "الْفَتَّاحُ",
+   "El-Fettâh",
+   "Al-Fattah",
+   "Her türlü darlığı açan, hükmeden",
+   "The Opener, the Judge",
+   "Der Öffnende",
+   "Hər çətinliyi açan"
+  ],
+  [
+   "الْعَلِيمُ",
+   "El-Alîm",
+   "Al-Alim",
+   "Her şeyi bilen",
+   "The All-Knowing",
+   "Der Allwissende",
+   "Hər şeyi bilən"
+  ],
+  [
+   "الْقَابِضُ",
+   "El-Kâbız",
+   "Al-Qabid",
+   "Dilediğine darlık veren, alan",
+   "The Withholder",
+   "Der Zurückhaltende",
+   "İstədiyinə darlıq verən"
+  ],
+  [
+   "الْبَاسِطُ",
+   "El-Bâsıt",
+   "Al-Basit",
+   "Dilediğine bolluk veren, genişleten",
+   "The Expander",
+   "Der Gewährende",
+   "İstədiyinə bolluq verən"
+  ],
+  [
+   "الْخَافِضُ",
+   "El-Hâfıd",
+   "Al-Khafid",
+   "Dilediğini alçaltan",
+   "The Abaser",
+   "Der Erniedrigende",
+   "İstədiyini alçaldan"
+  ],
+  [
+   "الرَّافِعُ",
+   "Er-Râfi'",
+   "Ar-Rafi'",
+   "Dilediğini yükselten",
+   "The Exalter",
+   "Der Erhöhende",
+   "İstədiyini yüksəldən"
+  ],
+  [
+   "الْمُعِزُّ",
+   "El-Muizz",
+   "Al-Mu'izz",
+   "Dilediğine izzet ve şeref veren",
+   "The Giver of Honour",
+   "Der Ehrende",
+   "İstədiyinə izzət verən"
+  ],
+  [
+   "الْمُذِلُّ",
+   "El-Müzill",
+   "Al-Mudhill",
+   "Dilediğini zillete düşüren",
+   "The Humiliator",
+   "Der Demütigende",
+   "İstədiyini zillətə salan"
+  ],
+  [
+   "السَّمِيعُ",
+   "Es-Semî'",
+   "As-Sami'",
+   "Her şeyi işiten",
+   "The All-Hearing",
+   "Der Allhörende",
+   "Hər şeyi eşidən"
+  ],
+  [
+   "الْبَصِيرُ",
+   "El-Basîr",
+   "Al-Basir",
+   "Her şeyi gören",
+   "The All-Seeing",
+   "Der Allsehende",
+   "Hər şeyi görən"
+  ],
+  [
+   "الْحَكَمُ",
+   "El-Hakem",
+   "Al-Hakam",
+   "Mutlak hakem, hüküm veren",
+   "The Judge",
+   "Der Richter",
+   "Mütləq hakim, hökm verən"
+  ],
+  [
+   "الْعَدْلُ",
+   "El-Adl",
+   "Al-Adl",
+   "Mutlak adalet sahibi",
+   "The Utterly Just",
+   "Der Gerechte",
+   "Mütləq ədalət sahibi"
+  ],
+  [
+   "اللَّطِيفُ",
+   "El-Latîf",
+   "Al-Latif",
+   "En ince işleri bilen, lütfu bol",
+   "The Subtle, the Kind",
+   "Der Feinfühlige",
+   "Ən incə işləri bilən, lütfkar"
+  ],
+  [
+   "الْخَبِيرُ",
+   "El-Habîr",
+   "Al-Khabir",
+   "Her şeyin iç yüzünden haberdar",
+   "The All-Aware",
+   "Der Kundige",
+   "Hər şeyin daxilindən xəbərdar"
+  ],
+  [
+   "الْحَلِيمُ",
+   "El-Halîm",
+   "Al-Halim",
+   "Cezada acele etmeyen, yumuşak davranan",
+   "The Forbearing",
+   "Der Nachsichtige",
+   "Cəzada tələsməyən, həlim"
+  ],
+  [
+   "الْعَظِيمُ",
+   "El-Azîm",
+   "Al-Azim",
+   "Pek büyük, azamet sahibi",
+   "The Magnificent",
+   "Der Gewaltige",
+   "Çox böyük, əzəmət sahibi"
+  ],
+  [
+   "الْغَفُورُ",
+   "El-Gafûr",
+   "Al-Ghafur",
+   "Bağışlaması bol olan",
+   "The All-Forgiving",
+   "Der Vergebende",
+   "Bağışlaması bol olan"
+  ],
+  [
+   "الشَّكُورُ",
+   "Eş-Şekûr",
+   "Ash-Shakur",
+   "Az amele bol karşılık veren",
+   "The Appreciative",
+   "Der Dankbare",
+   "Az əmələ bol mükafat verən"
+  ],
+  [
+   "الْعَلِيُّ",
+   "El-Aliyy",
+   "Al-Aliyy",
+   "Yüceler yücesi",
+   "The Most High",
+   "Der Höchste",
+   "Ucalardan uca"
+  ],
+  [
+   "الْكَبِيرُ",
+   "El-Kebîr",
+   "Al-Kabir",
+   "Pek büyük",
+   "The Most Great",
+   "Der Große",
+   "Çox böyük"
+  ],
+  [
+   "الْحَفِيظُ",
+   "El-Hafîz",
+   "Al-Hafiz",
+   "Her şeyi koruyan",
+   "The Preserver",
+   "Der Bewahrer",
+   "Hər şeyi qoruyan"
+  ],
+  [
+   "الْمُقِيتُ",
+   "El-Mukît",
+   "Al-Muqit",
+   "Her canlının gıdasını yaratıp veren",
+   "The Sustainer",
+   "Der Erhalter",
+   "Hər canlının qidasını verən"
+  ],
+  [
+   "الْحَسِيبُ",
+   "El-Hasîb",
+   "Al-Hasib",
+   "Hesaba çeken, yeten",
+   "The Reckoner, the Sufficient",
+   "Der Abrechnende",
+   "Hesaba çəkən, kifayət edən"
+  ],
+  [
+   "الْجَلِيلُ",
+   "El-Celîl",
+   "Al-Jalil",
+   "Celal ve ululuk sahibi",
+   "The Majestic",
+   "Der Majestätische",
+   "Cəlal və ululuq sahibi"
+  ],
+  [
+   "الْكَرِيمُ",
+   "El-Kerîm",
+   "Al-Karim",
+   "Cömertliği bol olan",
+   "The Most Generous",
+   "Der Großzügige",
+   "Kərəmi bol olan"
+  ],
+  [
+   "الرَّقِيبُ",
+   "Er-Rakîb",
+   "Ar-Raqib",
+   "Her şeyi gözetleyen",
+   "The Watchful",
+   "Der Wachsame",
+   "Hər şeyi izləyən"
+  ],
+  [
+   "الْمُجِيبُ",
+   "El-Mucîb",
+   "Al-Mujib",
+   "Duaları kabul eden",
+   "The Responsive",
+   "Der Erhörende",
+   "Duaları qəbul edən"
+  ],
+  [
+   "الْوَاسِعُ",
+   "El-Vâsi'",
+   "Al-Wasi'",
+   "İlmi ve rahmeti her şeyi kuşatan",
+   "The All-Encompassing",
+   "Der Allumfassende",
+   "Elmi və rəhməti hər şeyi əhatə edən"
+  ],
+  [
+   "الْحَكِيمُ",
+   "El-Hakîm",
+   "Al-Hakim",
+   "Her işi hikmetli olan",
+   "The All-Wise",
+   "Der Allweise",
+   "Hər işi hikmətli olan"
+  ],
+  [
+   "الْوَدُودُ",
+   "El-Vedûd",
+   "Al-Wadud",
+   "Kullarını seven, sevilmeye layık olan",
+   "The Loving",
+   "Der Liebevolle",
+   "Qullarını sevən, sevilməyə layiq"
+  ],
+  [
+   "الْمَجِيدُ",
+   "El-Mecîd",
+   "Al-Majid",
+   "Şanı yüce, şerefi büyük",
+   "The Glorious",
+   "Der Ruhmreiche",
+   "Şanı uca, şərəfi böyük"
+  ],
+  [
+   "الْبَاعِثُ",
+   "El-Bâis",
+   "Al-Ba'ith",
+   "Ölüleri dirilten, peygamber gönderen",
+   "The Resurrector",
+   "Der Auferweckende",
+   "Ölüləri dirildən"
+  ],
+  [
+   "الشَّهِيدُ",
+   "Eş-Şehîd",
+   "Ash-Shahid",
+   "Her şeye şahit olan",
+   "The Witness",
+   "Der Zeuge",
+   "Hər şeyə şahid olan"
+  ],
+  [
+   "الْحَقُّ",
+   "El-Hakk",
+   "Al-Haqq",
+   "Varlığı gerçek ve değişmez olan",
+   "The Truth",
+   "Die Wahrheit",
+   "Varlığı həqiqi və dəyişməz olan"
+  ],
+  [
+   "الْوَكِيلُ",
+   "El-Vekîl",
+   "Al-Wakil",
+   "Kendisine güvenilip dayanılan",
+   "The Trustee",
+   "Der Sachwalter",
+   "Ona güvənilən, təvəkkül edilən"
+  ],
+  [
+   "الْقَوِيُّ",
+   "El-Kaviyy",
+   "Al-Qawiyy",
+   "Kudreti en mükemmel",
+   "The All-Strong",
+   "Der Starke",
+   "Qüdrəti ən kamil"
+  ],
+  [
+   "الْمَتِينُ",
+   "El-Metîn",
+   "Al-Matin",
+   "Pek sağlam, sarsılmaz",
+   "The Firm",
+   "Der Feste",
+   "Çox möhkəm, sarsılmaz"
+  ],
+  [
+   "الْوَلِيُّ",
+   "El-Veliyy",
+   "Al-Waliyy",
+   "Müminlerin dostu ve yardımcısı",
+   "The Protecting Friend",
+   "Der Schutzherr",
+   "Möminlərin dostu və köməkçisi"
+  ],
+  [
+   "الْحَمِيدُ",
+   "El-Hamîd",
+   "Al-Hamid",
+   "Övülmeye layık olan",
+   "The Praiseworthy",
+   "Der Lobenswerte",
+   "Həmdə layiq olan"
+  ],
+  [
+   "الْمُحْصِي",
+   "El-Muhsî",
+   "Al-Muhsi",
+   "Her şeyin sayısını bilen",
+   "The Accounter",
+   "Der Zählende",
+   "Hər şeyin sayını bilən"
+  ],
+  [
+   "الْمُبْدِئُ",
+   "El-Mübdi'",
+   "Al-Mubdi'",
+   "Maddesiz ve örneksiz ilk kez yaratan",
+   "The Originator",
+   "Der Beginnende",
+   "İlk dəfə yaradan"
+  ],
+  [
+   "الْمُعِيدُ",
+   "El-Muîd",
+   "Al-Mu'id",
+   "Yarattıklarını yok ettikten sonra yeniden yaratan",
+   "The Restorer",
+   "Der Wiederherstellende",
+   "Yenidən yaradan"
+  ],
+  [
+   "الْمُحْيِي",
+   "El-Muhyî",
+   "Al-Muhyi",
+   "Hayat veren, dirilten",
+   "The Giver of Life",
+   "Der Lebensspender",
+   "Həyat verən, dirildən"
+  ],
+  [
+   "الْمُمِيتُ",
+   "El-Mümît",
+   "Al-Mumit",
+   "Ölümü yaratan",
+   "The Bringer of Death",
+   "Der Tod Gebende",
+   "Ölümü yaradan"
+  ],
+  [
+   "الْحَيُّ",
+   "El-Hayy",
+   "Al-Hayy",
+   "Diri, ezelî ve ebedî hayat sahibi",
+   "The Ever-Living",
+   "Der Lebendige",
+   "Diri, əbədi həyat sahibi"
+  ],
+  [
+   "الْقَيُّومُ",
+   "El-Kayyûm",
+   "Al-Qayyum",
+   "Her şeyi ayakta tutan, kendi zatıyla var olan",
+   "The Self-Subsisting Sustainer",
+   "Der Beständige",
+   "Hər şeyi ayaqda tutan"
+  ],
+  [
+   "الْوَاجِدُ",
+   "El-Vâcid",
+   "Al-Wajid",
+   "İstediğini istediği anda bulan, hiçbir şeye muhtaç olmayan",
+   "The Finder",
+   "Der Findende",
+   "İstədiyini istədiyi anda tapan"
+  ],
+  [
+   "الْمَاجِدُ",
+   "El-Mâcid",
+   "Al-Majid",
+   "Şanı yüce, keremi bol",
+   "The Noble",
+   "Der Edle",
+   "Şanı uca, kərəmi bol"
+  ],
+  [
+   "الْوَاحِدُ",
+   "El-Vâhid",
+   "Al-Wahid",
+   "Zatında, sıfatlarında ve fiillerinde tek",
+   "The One",
+   "Der Eine",
+   "Zatında və sifətlərində tək"
+  ],
+  [
+   "الصَّمَدُ",
+   "Es-Samed",
+   "As-Samad",
+   "Hiçbir şeye muhtaç olmayan, herkesin ona muhtaç olduğu",
+   "The Eternal Refuge",
+   "Der Unabhängige, an den sich alle wenden",
+   "Heç nəyə möhtac olmayan, hər kəsin Ona möhtac olduğu"
+  ],
+  [
+   "الْقَادِرُ",
+   "El-Kâdir",
+   "Al-Qadir",
+   "Dilediğini dilediği gibi yapmaya gücü yeten",
+   "The All-Capable",
+   "Der Mächtige",
+   "İstədiyini istədiyi kimi etməyə qadir"
+  ],
+  [
+   "الْمُقْتَدِرُ",
+   "El-Muktedir",
+   "Al-Muqtadir",
+   "Kudret sahiplerinin üzerinde kudret sahibi",
+   "The All-Determiner",
+   "Der Allmächtige Bestimmer",
+   "Bütün qüdrət sahiblərindən üstün"
+  ],
+  [
+   "الْمُقَدِّمُ",
+   "El-Mukaddim",
+   "Al-Muqaddim",
+   "Dilediğini öne alan",
+   "The Expediter",
+   "Der Voranstellende",
+   "İstədiyini önə çəkən"
+  ],
+  [
+   "الْمُؤَخِّرُ",
+   "El-Muahhir",
+   "Al-Mu'akhkhir",
+   "Dilediğini geri bırakan",
+   "The Delayer",
+   "Der Zurückstellende",
+   "İstədiyini geri saxlayan"
+  ],
+  [
+   "الْأَوَّلُ",
+   "El-Evvel",
+   "Al-Awwal",
+   "Başlangıcı olmayan, ilk",
+   "The First",
+   "Der Erste",
+   "Başlanğıcı olmayan, ilk"
+  ],
+  [
+   "الْآخِرُ",
+   "El-Âhir",
+   "Al-Akhir",
+   "Sonu olmayan, son",
+   "The Last",
+   "Der Letzte",
+   "Sonu olmayan, son"
+  ],
+  [
+   "الظَّاهِرُ",
+   "Ez-Zâhir",
+   "Az-Zahir",
+   "Varlığı açık delillerle bilinen",
+   "The Manifest",
+   "Der Offenbare",
+   "Varlığı aşkar dəlillərlə bilinən"
+  ],
+  [
+   "الْبَاطِنُ",
+   "El-Bâtın",
+   "Al-Batin",
+   "Zatının mahiyeti gizli olan",
+   "The Hidden",
+   "Der Verborgene",
+   "Zatının mahiyyəti gizli olan"
+  ],
+  [
+   "الْوَالِي",
+   "El-Vâlî",
+   "Al-Wali",
+   "Bütün kâinatı yöneten",
+   "The Governor",
+   "Der Regierende",
+   "Bütün kainatı idarə edən"
+  ],
+  [
+   "الْمُتَعَالِي",
+   "El-Müteâlî",
+   "Al-Muta'ali",
+   "Her şeyin üstünde, pek yüce",
+   "The Self-Exalted",
+   "Der Erhabene",
+   "Hər şeydən uca"
+  ],
+  [
+   "الْبَرُّ",
+   "El-Berr",
+   "Al-Barr",
+   "İyiliği bol olan",
+   "The Source of Goodness",
+   "Der Gütige",
+   "Yaxşılığı bol olan"
+  ],
+  [
+   "التَّوَّابُ",
+   "Et-Tevvâb",
+   "At-Tawwab",
+   "Tövbeleri kabul eden",
+   "The Acceptor of Repentance",
+   "Der die Reue Annehmende",
+   "Tövbələri qəbul edən"
+  ],
+  [
+   "الْمُنْتَقِمُ",
+   "El-Müntekım",
+   "Al-Muntaqim",
+   "Suçluları adaletle cezalandıran",
+   "The Avenger (with justice)",
+   "Der Vergeltende",
+   "Günahkarları ədalətlə cəzalandıran"
+  ],
+  [
+   "الْعَفُوُّ",
+   "El-Afüvv",
+   "Al-Afuww",
+   "Affı çok olan, günahları silen",
+   "The Pardoner",
+   "Der Verzeihende",
+   "Əfvi çox olan, günahları silən"
+  ],
+  [
+   "الرَّءُوفُ",
+   "Er-Raûf",
+   "Ar-Ra'uf",
+   "Çok şefkatli",
+   "The Most Kind",
+   "Der Gnädige",
+   "Çox şəfqətli"
+  ],
+  [
+   "مَالِكُ الْمُلْكِ",
+   "Mâlikü'l-Mülk",
+   "Malik al-Mulk",
+   "Mülkün ebedî sahibi",
+   "Owner of All Sovereignty",
+   "Herr der Herrschaft",
+   "Mülkün əbədi sahibi"
+  ],
+  [
+   "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+   "Zü'l-Celâli ve'l-İkrâm",
+   "Dhul-Jalali wal-Ikram",
+   "Celal ve ikram sahibi",
+   "Lord of Majesty and Generosity",
+   "Der Majestät und Ehre Besitzende",
+   "Cəlal və ikram sahibi"
+  ],
+  [
+   "الْمُقْسِطُ",
+   "El-Muksit",
+   "Al-Muqsit",
+   "Bütün işlerini adaletle yapan",
+   "The Equitable",
+   "Der Gerechte",
+   "Bütün işlərini ədalətlə edən"
+  ],
+  [
+   "الْجَامِعُ",
+   "El-Câmi'",
+   "Al-Jami'",
+   "Dilediğini dilediği yerde toplayan",
+   "The Gatherer",
+   "Der Versammelnde",
+   "İstədiyini istədiyi yerdə toplayan"
+  ],
+  [
+   "الْغَنِيُّ",
+   "El-Ganiyy",
+   "Al-Ghaniyy",
+   "Hiçbir şeye ihtiyacı olmayan",
+   "The Self-Sufficient",
+   "Der Unabhängige",
+   "Heç nəyə ehtiyacı olmayan"
+  ],
+  [
+   "الْمُغْنِي",
+   "El-Muğnî",
+   "Al-Mughni",
+   "Dilediğini zengin eden",
+   "The Enricher",
+   "Der Reichmachende",
+   "İstədiyini zəngin edən"
+  ],
+  [
+   "الْمَانِعُ",
+   "El-Mâni'",
+   "Al-Mani'",
+   "Dilemediği şeye engel olan",
+   "The Preventer",
+   "Der Verhindernde",
+   "İstəmədiyi şeyə mane olan"
+  ],
+  [
+   "الضَّارُّ",
+   "Ed-Dârr",
+   "Ad-Darr",
+   "Elem ve zarar verecek şeyleri de yaratan",
+   "The Creator of Harm",
+   "Der Schaden Zulassende",
+   "Zərər verəcək şeyləri də yaradan"
+  ],
+  [
+   "النَّافِعُ",
+   "En-Nâfi'",
+   "An-Nafi'",
+   "Fayda veren şeyleri yaratan",
+   "The Creator of Benefit",
+   "Der Nutzen Bringende",
+   "Fayda verən şeyləri yaradan"
+  ],
+  [
+   "النُّورُ",
+   "En-Nûr",
+   "An-Nur",
+   "Âlemleri nurlandıran, nur kaynağı",
+   "The Light",
+   "Das Licht",
+   "Aləmləri nurlandıran"
+  ],
+  [
+   "الْهَادِي",
+   "El-Hâdî",
+   "Al-Hadi",
+   "Hidayet veren, doğru yolu gösteren",
+   "The Guide",
+   "Der Rechtleitende",
+   "Hidayət verən, doğru yolu göstərən"
+  ],
+  [
+   "الْبَدِيعُ",
+   "El-Bedî'",
+   "Al-Badi'",
+   "Eşsiz ve örneksiz yaratan",
+   "The Incomparable Originator",
+   "Der Unvergleichliche Schöpfer",
+   "Tayı və nümunəsi olmadan yaradan"
+  ],
+  [
+   "الْبَاقِي",
+   "El-Bâkî",
+   "Al-Baqi",
+   "Varlığının sonu olmayan",
+   "The Everlasting",
+   "Der Ewige",
+   "Varlığının sonu olmayan"
+  ],
+  [
+   "الْوَارِثُ",
+   "El-Vâris",
+   "Al-Warith",
+   "Her şeyin asıl sahibi olarak kalan",
+   "The Inheritor",
+   "Der Erbe",
+   "Hər şeyin əsl sahibi olaraq qalan"
+  ],
+  [
+   "الرَّشِيدُ",
+   "Er-Reşîd",
+   "Ar-Rashid",
+   "Bütün işleri isabetli, doğru yolu gösteren",
+   "The Guide to the Right Path",
+   "Der Rechtleitende in Weisheit",
+   "Bütün işləri doğru, doğru yolu göstərən"
+  ],
+  [
+   "الصَّبُورُ",
+   "Es-Sabûr",
+   "As-Sabur",
+   "Çok sabırlı, cezada acele etmeyen",
+   "The Most Patient",
+   "Der Geduldige",
+   "Çox səbirli, cəzada tələsməyən"
+  ]
+ ]
+}

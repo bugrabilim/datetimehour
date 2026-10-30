@@ -780,6 +780,9 @@ struct WorshipLinks: View {
             Text(L("worship.title")).font(.headline).foregroundStyle(Theme.text).padding(.top, 4)
             link(L("quran.title"), "book") { QuranView() }
             link(L("dua.title"), "hands.sparkles") { DuasView() }
+            link(L("esma.title"), "sparkles") { EsmaView() }
+            link(L("hadith.title"), "text.quote") { HadithView() }
+            link(L("guide.title"), "figure.mind.and.body") { PrayerGuideView() }
             link(L("zikir.title"), "hand.tap") { ZikirView() }
             link(L("track.title"), "checklist") { TrackerView() }
             link(L("zakat.title"), "percent") { ZakatView() }

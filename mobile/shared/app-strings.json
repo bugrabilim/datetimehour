@@ -4738,5 +4738,138 @@
     "de": "Sek.",
     "az": "san",
     "ar": "ث"
+  },
+  "esma.title": {
+    "tr": "Esmaü'l-Hüsna",
+    "en": "The 99 Names of Allah",
+    "de": "Die 99 Namen Allahs",
+    "az": "Əsmaül-Hüsna",
+    "ar": "أسماء الله الحسنى"
+  },
+  "esma.search": {
+    "tr": "İsim ya da anlam ara",
+    "en": "Search name or meaning",
+    "de": "Name oder Bedeutung suchen",
+    "az": "Ad və ya məna axtar",
+    "ar": "ابحث عن اسم"
+  },
+  "esma.note": {
+    "tr": "Türkiye'de yaygın liste (Allah ile başlayan 99 isim, Tirmizî rivayeti). Anlamlar kısa açıklamadır.",
+    "en": "The list common in Türkiye (99 names beginning with Allah, as narrated by at-Tirmidhi). Meanings are short explanations.",
+    "de": "Die in der Türkei übliche Liste (99 Namen, beginnend mit Allah, nach at-Tirmidhi). Die Bedeutungen sind kurze Erläuterungen.",
+    "az": "Türkiyədə yayğın siyahı (Allah ilə başlayan 99 ad, Tirmizi rəvayəti). Mənalar qısa izahdır.",
+    "ar": "القائمة الشائعة في تركيا (99 اسمًا تبدأ بلفظ الجلالة، برواية الترمذي)."
+  },
+  "hadith.title": {
+    "tr": "Hadisler",
+    "en": "Hadith",
+    "de": "Hadithe",
+    "az": "Hədislər",
+    "ar": "الأحاديث"
+  },
+  "hadith.today": {
+    "tr": "Günün hadisi",
+    "en": "Hadith of the day",
+    "de": "Hadith des Tages",
+    "az": "Günün hədisi",
+    "ar": "حديث اليوم"
+  },
+  "hadith.source": {
+    "tr": "{narrator} · {book} · Nevevî, Kırk Hadis {n}",
+    "en": "{narrator} · {book} · an-Nawawi's Forty Hadith {n}",
+    "de": "{narrator} · {book} · an-Nawawis Vierzig Hadithe {n}",
+    "az": "{narrator} · {book} · Nəvəvi, Qırx hədis {n}",
+    "ar": "{narrator} · {book} · الأربعون النووية {n}"
+  },
+  "hadith.note": {
+    "tr": "Arapça metin İmam Nevevî'nin Kırk Hadis'inden (kamu malı açık veri). Anlamlar Saat Tarih'in çevirisidir; ayrıntılı açıklama için bir din görevlisine danışın.",
+    "en": "Arabic text from Imam an-Nawawi's Forty Hadith (public domain open data). The meanings are Saat Tarih's translation; consult a scholar for detailed explanation.",
+    "de": "Arabischer Text aus den Vierzig Hadithen von Imam an-Nawawi (gemeinfreie offene Daten). Die Bedeutungen sind die Übersetzung von Saat Tarih; für ausführliche Erläuterungen wenden Sie sich an einen Gelehrten.",
+    "az": "Ərəb mətni İmam Nəvəvinin Qırx hədisindən (ictimai mülkiyyətdə açıq məlumat). Mənalar Saat Tarih-in tərcüməsidir; ətraflı izah üçün din xadiminə müraciət edin.",
+    "ar": "النص من الأربعين النووية للإمام النووي (بيانات مفتوحة في الملك العام)."
+  },
+  "guide.title": {
+    "tr": "Namaz rehberi",
+    "en": "Prayer guide",
+    "de": "Gebetsanleitung",
+    "az": "Namaz bələdçisi",
+    "ar": "دليل الصلاة"
+  },
+  "guide.duas": {
+    "tr": "Okunan dualar",
+    "en": "Supplications recited",
+    "de": "Gesprochene Bittgebete",
+    "az": "Oxunan dualar",
+    "ar": "الأدعية المقروءة"
+  },
+  "leaf.title": {
+    "tr": "Takvim yaprağı",
+    "en": "Calendar page",
+    "de": "Kalenderblatt",
+    "az": "Təqvim vərəqi",
+    "ar": "ورقة التقويم"
+  },
+  "leaf.dayOfYear": {
+    "tr": "Yılın {n}. günü · {w}. hafta",
+    "en": "Day {n} of the year · week {w}",
+    "de": "{n}. Tag des Jahres · {w}. Woche",
+    "az": "İlin {n}-ci günü · {w}-ci həftə",
+    "ar": "اليوم {n} من السنة · الأسبوع {w}"
+  },
+  "leaf.saying": {
+    "tr": "Günün sözü",
+    "en": "Saying of the day",
+    "de": "Spruch des Tages",
+    "az": "Günün sözü",
+    "ar": "حكمة اليوم"
+  },
+  "leaf.sun": {
+    "tr": "Güneş",
+    "en": "Sun",
+    "de": "Sonne",
+    "az": "Günəş",
+    "ar": "الشمس"
+  },
+  "leaf.sunTimes": {
+    "tr": "Doğuş {rise} · Batış {set}",
+    "en": "Rises {rise} · Sets {set}",
+    "de": "Aufgang {rise} · Untergang {set}",
+    "az": "Doğuş {rise} · Batış {set}",
+    "ar": "الشروق {rise} · الغروب {set}"
+  },
+  "leaf.special": {
+    "tr": "Bugün",
+    "en": "Today",
+    "de": "Heute",
+    "az": "Bu gün",
+    "ar": "اليوم"
+  },
+  "leaf.hizir": {
+    "tr": "Hızır günleri: {n}. gün",
+    "en": "Hızır days: day {n}",
+    "de": "Hızır-Tage: Tag {n}",
+    "az": "Xıdır günləri: {n}-ci gün",
+    "ar": "أيام الخضر: اليوم {n}"
+  },
+  "leaf.kasim": {
+    "tr": "Kasım günleri: {n}. gün",
+    "en": "Kasım days: day {n}",
+    "de": "Kasım-Tage: Tag {n}",
+    "az": "Qasım günləri: {n}-ci gün",
+    "ar": "أيام قاسم: اليوم {n}"
+  },
+  "leaf.prev": {
+    "tr": "Önceki gün",
+    "en": "Previous day",
+    "de": "Vorheriger Tag",
+    "az": "Əvvəlki gün",
+    "ar": "اليوم السابق"
+  },
+  "leaf.next": {
+    "tr": "Sonraki gün",
+    "en": "Next day",
+    "de": "Nächster Tag",
+    "az": "Növbəti gün",
+    "ar": "اليوم التالي"
   }
 }

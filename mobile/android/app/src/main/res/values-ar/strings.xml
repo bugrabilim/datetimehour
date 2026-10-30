@@ -1164,5 +1164,24 @@
     <string name="world_dstTitle">%1$s: تغيير الساعة</string>
     <string name="hijriConv_outsideApp">خارج جدول ديانت؛ حُسب بتقويم أم القرى وقد يختلف بيوم.</string>
     <string name="common_secondsShort">ث</string>
+    <string name="esma_title">أسماء الله الحسنى</string>
+    <string name="esma_search">ابحث عن اسم</string>
+    <string name="esma_note">القائمة الشائعة في تركيا (99 اسمًا تبدأ بلفظ الجلالة، برواية الترمذي).</string>
+    <string name="hadith_title">الأحاديث</string>
+    <string name="hadith_today">حديث اليوم</string>
+    <string name="hadith_source">%1$s · %2$s · الأربعون النووية %3$s</string>
+    <string name="hadith_note">النص من الأربعين النووية للإمام النووي (بيانات مفتوحة في الملك العام).</string>
+    <string name="guide_title">دليل الصلاة</string>
+    <string name="guide_duas">الأدعية المقروءة</string>
+    <string name="leaf_title">ورقة التقويم</string>
+    <string name="leaf_dayOfYear">اليوم %1$s من السنة · الأسبوع %2$s</string>
+    <string name="leaf_saying">حكمة اليوم</string>
+    <string name="leaf_sun">الشمس</string>
+    <string name="leaf_sunTimes">الشروق %1$s · الغروب %2$s</string>
+    <string name="leaf_special">اليوم</string>
+    <string name="leaf_hizir">أيام الخضر: اليوم %1$s</string>
+    <string name="leaf_kasim">أيام قاسم: اليوم %1$s</string>
+    <string name="leaf_prev">اليوم السابق</string>
+    <string name="leaf_next">اليوم التالي</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

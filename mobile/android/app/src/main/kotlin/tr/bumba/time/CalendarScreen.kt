@@ -4,6 +4,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Article
 import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.material.icons.filled.EventAvailable
 import androidx.compose.material.icons.filled.Link
@@ -68,6 +69,7 @@ fun CalendarScreen() {
     var ym by rememberSaveable { mutableStateOf(YearMonth.from(today).toString()) }
     var sel by rememberSaveable { mutableStateOf(today.toString()) }
     var guide by rememberSaveable { mutableStateOf(false) }
+    var leaf by rememberSaveable { mutableStateOf(false) }
     val month = YearMonth.parse(ym)
     val selected = LocalDate.parse(sel)
     fun go(d: LocalDate) {
@@ -84,6 +86,11 @@ fun CalendarScreen() {
         Nav.calendarDay?.let { go(it); Nav.calendarDay = null }
     }
     LaunchedEffect(Unit) { DeviceCalendar.reload(context) }
+    if (leaf) {
+        BackHandler { leaf = false }
+        CalendarLeafScreen { leaf = false }
+        return
+    }
     if (guide) {
         BackHandler { guide = false; DeviceCalendar.reload(context) }
         Column(Modifier.fillMaxSize()) {
@@ -101,6 +108,7 @@ fun CalendarScreen() {
             TextButton(onClick = { go(today) }) { Text(L("client.today"), color = Theme.c.accent) }
             IconButton(onClick = { move(-1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("prayer.prevMonth"), tint = Theme.c.accent) }
             IconButton(onClick = { move(1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent) }
+            IconButton(onClick = { leaf = true }) { Icon(Icons.Filled.Article, L("leaf.title"), tint = Theme.c.accent) }
             IconButton(onClick = { DeviceCalendar.add(context, selected) }) { Icon(Icons.Filled.Add, L("calendar.add"), tint = Theme.c.accent) }
         }
         MonthGrid(month, today, selected, device, Modifier.pointerInput(ym) {

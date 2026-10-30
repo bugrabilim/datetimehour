@@ -225,6 +225,15 @@ class MoreScreensTest {
         shot("tr-zekat") { ZakatScreen {} }
         Zakat.save(emptyMap())
     }
+    @Test fun content() {
+        shot("tr-esma") { EsmaScreen {} }
+        shot("ar-esma", "ar") { EsmaScreen {} }
+        shot("tr-hadis") { HadithScreen {} }
+        shot("en-hadis-koyu", "en", dark = true) { HadithScreen {} }
+        shot("tr-namaz-rehberi") { PrayerGuideScreen({}) {} }
+        shot("tr-takvim-yapragi") { CalendarLeafScreen {} }
+        shot("de-takvim-yapragi", "de") { CalendarLeafScreen {} }
+    }
     @Test fun morning() {
         seedWeather()
         shot("tr-gunaydin") { MorningCard {} }

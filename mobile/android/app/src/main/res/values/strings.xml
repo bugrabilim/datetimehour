@@ -1164,5 +1164,24 @@
     <string name="world_dstTitle">%1$s: saat değişiyor</string>
     <string name="hijriConv_outsideApp">Diyanet tablosunun dışında; Ümmü\'l-Kurâ takvimiyle hesaplandı, bir gün fark olabilir.</string>
     <string name="common_secondsShort">sn</string>
+    <string name="esma_title">Esmaü\'l-Hüsna</string>
+    <string name="esma_search">İsim ya da anlam ara</string>
+    <string name="esma_note">Türkiye\'de yaygın liste (Allah ile başlayan 99 isim, Tirmizî rivayeti). Anlamlar kısa açıklamadır.</string>
+    <string name="hadith_title">Hadisler</string>
+    <string name="hadith_today">Günün hadisi</string>
+    <string name="hadith_source">%1$s · %2$s · Nevevî, Kırk Hadis %3$s</string>
+    <string name="hadith_note">Arapça metin İmam Nevevî\'nin Kırk Hadis\'inden (kamu malı açık veri). Anlamlar Saat Tarih\'in çevirisidir; ayrıntılı açıklama için bir din görevlisine danışın.</string>
+    <string name="guide_title">Namaz rehberi</string>
+    <string name="guide_duas">Okunan dualar</string>
+    <string name="leaf_title">Takvim yaprağı</string>
+    <string name="leaf_dayOfYear">Yılın %1$s. günü · %2$s. hafta</string>
+    <string name="leaf_saying">Günün sözü</string>
+    <string name="leaf_sun">Güneş</string>
+    <string name="leaf_sunTimes">Doğuş %1$s · Batış %2$s</string>
+    <string name="leaf_special">Bugün</string>
+    <string name="leaf_hizir">Hızır günleri: %1$s. gün</string>
+    <string name="leaf_kasim">Kasım günleri: %1$s. gün</string>
+    <string name="leaf_prev">Önceki gün</string>
+    <string name="leaf_next">Sonraki gün</string>
     <string name="app_name">Saat Tarih</string>
 </resources>
