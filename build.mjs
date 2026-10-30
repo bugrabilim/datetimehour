@@ -4,6 +4,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
+import { bridges } from "./lib/bridges.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
@@ -82,6 +83,7 @@ for (const [name, from] of [
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
   ["qibla.js", "js/qibla.js"],
+  ["bridge.js", "js/bridge.js"],
   ["imsakiye.js", "js/imsakiye.js"],
   ["world.js", "js/world.js"],
   ["place.js", "js/place.js"],
@@ -292,7 +294,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "datecalc", "embed", "prayer", "qibla", "nature", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "datecalc", "embed", "prayer", "qibla", "nature", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1041,6 +1043,7 @@ const TOOL_ART = {
   embed: svgArt('<rect x="10" y="12" width="76" height="40" rx="6" class="af"/><path d="M38 24l-9 8 9 8M58 24l9 8-9 8M52 22l-8 20"/>'),
   week: svgArt('<rect x="16" y="14" width="64" height="42" rx="6" class="af"/><path d="M16 26h64M32 8v10M64 8v10M30 36h8m6 0h8m6 0h8M30 46h8m6 0h8"/>'),
   tz: svgArt('<circle cx="48" cy="32" r="22" class="af"/><path d="M26 32h44M48 10c9 7 9 37 0 44M48 10c-9 7-9 37 0 44"/>'),
+  bridge: svgArt('<path d="M8 46h80M14 46V30M82 46V30M14 30c10 0 18-10 34-10s24 10 34 10M30 46V26M48 46V20M66 46V26" class="af"/><path d="M8 54h80"/>'),
   qibla: svgArt('<circle cx="48" cy="34" r="24" class="af"/><path d="M48 6v6M48 56v6M20 34h-6M82 34h-6M48 34l12-14-4 18z"/><rect x="62" y="12" width="10" height="10" rx="1"/>'),
 };
 
@@ -1054,7 +1057,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "qibla", "embed", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "converter", "planner", "datecalc", "diff", "bridge", "qibla", "embed", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1170,7 +1173,7 @@ const ROUTES_EXTRA = {
   en: { diff: "/en/time-difference/", converter: "/en/time-converter/", planner: "/en/meeting-planner/" },
 };
 extendRoutes(ROUTES_EXTRA);
-extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/" } });
+extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", bridge: "/kopru-tatil/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", bridge: "/en/long-weekends/" } });
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
 const PAIR_CITIES = CITIES.filter((c) => c.tz !== HOME_CITY.tz);
@@ -1683,6 +1686,51 @@ const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to)
 const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
+/* ---------- Köprü tatil planlayıcı (30 Ekim 2026, rakip analizi #22): lib/bridges.mjs ---------- */
+function buildBridge(lang) {
+  const t = I[lang];
+  const s = t.bridge;
+  const cal = t.calendar;
+  const F = makeFmt(cal);
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].bridge }];
+  const num = (n) => n.toLocaleString(t.locale);
+  const gname = (g) => s.groups[g] || cal.events[g];
+  const dayFmt = (d) => `${F.short(d)}${d.slice(0, 4) !== d0year ? ` ${d.slice(0, 4)}` : ""} ${cal.weekdaysShort[dowOf(d)]}`;
+  let d0year = "";
+  let bestFaq = null;
+  const years = HOL_YEARS.map((y) => {
+    d0year = String(y);
+    const ev = [y - 1, y, y + 1].flatMap((x) => (YEAR_DATA[x] || computeYear(x, HOL)).events).filter((e) => e.type === "holiday" || e.type === "half");
+    const list = bridges(y, ev);
+    const paid = list.filter((b) => b.leave > 0);
+    // En verimli: en az bir haftalık dönemler arasında gün/izin oranı en yüksek olan (yoksa bütün izinli dönemler)
+    const pool = paid.filter((b) => b.days >= 7).length ? paid.filter((b) => b.days >= 7) : paid;
+    const best = pool.length ? pool.reduce((a, b) => (b.days / b.leave > a.days / a.leave ? b : a)) : null;
+    if (best && y === BUILD_YEAR + 1) bestFaq = { year: y, name: best.groups.map(gname).join(" + "), leave: num(best.leave), days: best.days, dates: `${dayFmt(best.from)} – ${dayFmt(best.to)}` };
+    const rows = list.map((b) => {
+      const days = [...b.leaveDays.map((d) => [d, dayFmt(d)]), ...b.halfDays.map((d) => [d, tpl(s.halfNote, { date: dayFmt(d) })])].sort((x, y) => (x[0] < y[0] ? -1 : 1)).map((x) => x[1]);
+      return `<tr data-leave="${b.leave}"${b === best ? ' class="br-best"' : ""}><th scope="row">${esc(b.groups.map(gname).join(" + "))}${b === best ? ` <span class="badge">${esc(s.best)}</span>` : ""}</th><td>${esc(dayFmt(b.from))} – ${esc(dayFmt(b.to))}</td><td>${b.leave ? esc(tpl(s.leaveN, { n: num(b.leave) })) : esc(s.noLeave)}</td><td><strong>${esc(tpl(s.totalN, { n: b.days }))}</strong></td><td>${days.length ? esc(days.join(lang === "ar" ? "، " : ", ")) : esc(s.none)}</td></tr>`;
+    }).join("");
+    return `<section class="br-year" data-br-year="${y}" aria-labelledby="br-${y}">
+    <h2 id="br-${y}">${y}</h2>
+    ${YEAR_DATA[y].projected ? `<p class="meta">${esc(s.projected)}</p>` : ""}
+    <div class="table-wrap"><table class="events-table br-table"><caption class="sr-only">${esc(tpl(s.caption, { year: y }))}</caption><thead><tr><th scope="col">${esc(s.colHoliday)}</th><th scope="col">${esc(s.colDates)}</th><th scope="col">${esc(s.colLeave)}</th><th scope="col">${esc(s.colTotal)}</th><th scope="col">${esc(s.colDays)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+  </section>`;
+  }).join("\n");
+  const opts = HOL_YEARS.map((y) => `<option value="${y}"${y === BUILD_YEAR ? " selected" : ""}>${y}</option>`).join("");
+  const maxOpts = [`<option value="9">${esc(s.maxAll)}</option>`, ...[1, 2, 3, 4].map((n) => `<option value="${n}">${esc(tpl(s.maxN, { n }))}</option>`)].join("");
+  const hero = `<div class="br-controls" data-bridge hidden>
+      <div class="field"><label for="br-y">${esc(s.yearLabel)}</label><select id="br-y" data-br-y>${opts}</select></div>
+      <div class="field"><label for="br-max">${esc(s.maxLabel)}</label><select id="br-max" data-br-max>${maxOpts}</select></div>
+    </div>`;
+  const sections = `<section class="section"><div class="wrap">
+  ${years}
+  <p class="meta">${esc(s.note)}</p>
+</div></section>`;
+  const faq = [...s.faq, ...(bestFaq ? [{ q: tpl(s.faqBest.q, bestFaq), a: tpl(s.faqBest.a, bestFaq) }] : [])];
+  return simplePage(lang, "bridge", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq, faqGroup: { id: "bridge", title: s.h1 }, scripts: ["bridge.js"], nav: "tools", searchK: s.search, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].bridge, s.description)] });
+}
+
 /* ---------- Kıble (30 Ekim 2026, rakip analizi #8): pusula, açı, uzaklık, kıble saati, yakındaki camiler ---------- */
 function qiblaDial(lang) {
   const s = I[lang].qibla;
@@ -1831,7 +1879,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildBridge(lang), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

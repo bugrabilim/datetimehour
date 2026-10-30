@@ -702,6 +702,10 @@
         "qibla": {
           "name": "Qibla",
           "desc": "Compass, qibla angle, qibla time and nearby mosques."
+        },
+        "bridge": {
+          "name": "Long weekends",
+          "desc": "How many days off for how much leave: Turkey's holidays and weekends."
         }
       },
       "infoHeading": "Information pages"
@@ -1759,5 +1763,44 @@
       }
     ],
     "cardinals": "N E S W"
+  },
+  "bridge": {
+    "title": "Long weekend planner for Turkey: leave days vs days off | Saat Tarih",
+    "description": "Turkey's public holidays, half-day eves and weekends combined: for each holiday, the longest breaks with 1 to 4 days of leave, with dates and the days to take off.",
+    "h1": "Long weekend planner (Turkey)",
+    "lead": "Which days should you take off to join Turkey's public holidays to a weekend? For each holiday, the longest break by number of leave days.",
+    "search": "long weekend bridge holiday leave planner turkey public holidays days off eid break köprü tatil",
+    "yearLabel": "Year",
+    "maxLabel": "Max leave",
+    "maxAll": "All",
+    "maxN": "{n} days",
+    "colHoliday": "Holiday",
+    "colDates": "Break",
+    "colLeave": "Leave",
+    "colTotal": "Total",
+    "colDays": "Days to take off",
+    "noLeave": "None",
+    "leaveN": "{n} days",
+    "totalN": "{n} days",
+    "halfNote": "{date} (half day)",
+    "none": "No leave needed",
+    "best": "Best value",
+    "caption": "Long weekends in {year}: longest breaks by number of leave days",
+    "groups": {
+      "rb": "Eid al-Fitr",
+      "kb": "Eid al-Adha"
+    },
+    "note": "Weekends and public holidays need no leave; a half-day eve on a weekday counts as half a day of leave. Eves are afternoon-off in the public sector; check your employer in the private sector. Administrative leave and company bridge days are not included.",
+    "projected": "This year's religious holiday dates are based on Diyanet's long-range calendar (projection).",
+    "faq": [
+      {
+        "q": "How are bridge holidays (long weekends) worked out?",
+        "a": "You take leave on the working days between a public holiday and a weekend, so the break runs on without a gap. This page shows, for each holiday, the longest break you get with 0, 1, 2… days of leave, with dates. A half-day eve on a weekday counts as half a day of leave."
+      }
+    ],
+    "faqBest": {
+      "q": "What is the best-value long weekend in {year}?",
+      "a": "In {year} the best value is {name}: {days} days off for {leave} days of leave ({dates})."
+    }
   }
 }

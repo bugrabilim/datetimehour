@@ -702,6 +702,10 @@
         "qibla": {
           "name": "Kıble",
           "desc": "Pusula, kıble açısı, kıble saati ve yakındaki camiler."
+        },
+        "bridge": {
+          "name": "Köprü tatil",
+          "desc": "Kaç gün izinle kaç gün tatil: resmî tatiller ve hafta sonları."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -1759,5 +1763,44 @@
       }
     ],
     "cardinals": "K D G B"
+  },
+  "bridge": {
+    "title": "Köprü tatil planlayıcı: kaç gün izinle kaç gün tatil? | Saat Tarih",
+    "description": "Resmî tatiller, yarım gün arifeler ve hafta sonlarıyla en uzun tatil: her bayram ve tatil için 1–4 gün izinle 9 güne varan dönemler, tarihleri ve izin alınacak günler.",
+    "h1": "Köprü tatil planlayıcı",
+    "lead": "Resmî tatilleri hafta sonlarına bağlamak için hangi günlerde izin almalısınız? Her tatil için izin günü sayısına göre en uzun tatil dönemleri.",
+    "search": "köprü tatil izin hesaplama kaç gün izinle kaç gün tatil uzun hafta sonu bayram tatili 9 gün long weekend",
+    "yearLabel": "Yıl",
+    "maxLabel": "En çok izin",
+    "maxAll": "Hepsi",
+    "maxN": "{n} gün",
+    "colHoliday": "Tatil",
+    "colDates": "Tatil dönemi",
+    "colLeave": "İzin",
+    "colTotal": "Toplam",
+    "colDays": "İzin alınacak günler",
+    "noLeave": "İzinsiz",
+    "leaveN": "{n} gün",
+    "totalN": "{n} gün",
+    "halfNote": "{date} (yarım gün)",
+    "none": "İzin gerekmez",
+    "best": "En verimli",
+    "caption": "{year} köprü tatilleri: izin günü sayısına göre en uzun tatil dönemleri",
+    "groups": {
+      "rb": "Ramazan Bayramı",
+      "kb": "Kurban Bayramı"
+    },
+    "note": "Hafta sonu ve resmî tatil günleri izin gerektirmez; hafta içine düşen yarım gün arifeler 0,5 gün izin sayılır. Arifeler kamu kurumlarında öğleden sonra tatildir; özel sektörde iş yerinin uygulamasına bakın. İdari izin ve iş yeri köprüleri eklenmemiştir.",
+    "projected": "Bu yılın dini bayram tarihleri Diyanet'in uzun vadeli takvimine dayanır (projeksiyon).",
+    "faq": [
+      {
+        "q": "Köprü tatil nasıl hesaplanır?",
+        "a": "Resmî tatil ile hafta sonu arasında kalan iş günleri için izin alınır; böylece tatil kesintisiz uzar. Bu sayfa her tatil için 0, 1, 2… gün izinle ulaşılabilen en uzun dönemi tarihleriyle gösterir. Hafta içine düşen yarım gün arife 0,5 gün izin sayılır."
+      }
+    ],
+    "faqBest": {
+      "q": "{year} yılında en verimli köprü tatil hangisi?",
+      "a": "{year} yılında en verimli dönem {name}: {leave} gün izinle {days} gün tatil ({dates})."
+    }
   }
 }

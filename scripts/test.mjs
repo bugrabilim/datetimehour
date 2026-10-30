@@ -325,6 +325,20 @@ for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Typ
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
+// Köprü tatil (lib/bridges.mjs): 2027 Kurban + 19 Mayıs 2 gün izinle 9 gün; 2026 Ramazan 0,5 gün izinle 4 gün
+{
+  const { computeYear } = await import("../lib/events.mjs");
+  const { bridges } = await import("../lib/bridges.mjs");
+  const HOLD = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holidays.json"), "utf8"));
+  const evs = (y) => [y - 1, y, y + 1].flatMap((x) => computeYear(x, HOLD).events).filter((e) => e.type === "holiday" || e.type === "half");
+  const b27 = bridges(2027, evs(2027)), b26 = bridges(2026, evs(2026));
+  check(b27.some((b) => b.groups.includes("kb") && b.leave === 2 && b.days === 9 && b.from === "2027-05-15"), "köprü tatil: 2027 Kurban 2 gün izinle 9 gün yok");
+  check(b26.some((b) => b.group === "rb" && b.leave === 0.5 && b.days === 4), "köprü tatil: 2026 Ramazan 0,5 gün izinle 4 gün yok");
+  for (const f of ["kopru-tatil", "en/long-weekends", "ar/long-weekends"]) {
+    const h = fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "";
+    check(/data-bridge/.test(h) && (h.match(/data-br-year="/g) || []).length >= 6 && /bridge\.js/.test(h), `köprü tatil sayfası eksik: /${f}/`);
+  }
+}
 for (const f of ["geri-sayim/5-dakika", "geri-sayim/1-saat", "en/countdown/5-minutes", "ar/countdown/2-hours", "alarm/07-00", "en/alarm/06-30", "de/alarm/05-15"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `hazır araç sayfası yok: /${f}/`);
 for (const f of ["kible", "en/qibla", "de/qibla", "az/qibla", "ar/qibla"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `kıble sayfası yok: /${f}/`);
 check(ng.split("https://overpass-api.de").length === 3, "nginx.conf: connect-src overpass (yakındaki camiler) iki konumda olmalı");

@@ -729,6 +729,10 @@
         "qibla": {
           "name": "Qibla",
           "desc": "Kompass, Qibla-Winkel, Qibla-Zeit und Moscheen in der Nähe."
+        },
+        "bridge": {
+          "name": "Brückentage",
+          "desc": "Wie viele freie Tage für wie viel Urlaub: Feiertage in der Türkei."
         }
       },
       "infoHeading": "Infoseiten"
@@ -1786,5 +1790,44 @@
       }
     ],
     "cardinals": "N O S W"
+  },
+  "bridge": {
+    "title": "Brückentage-Planer Türkei: mit wenig Urlaub lange frei | Saat Tarih",
+    "description": "Feiertage, halbe Vorabende und Wochenenden in der Türkei kombiniert: für jeden Feiertag die längsten freien Zeiträume mit 1 bis 4 Urlaubstagen, samt Daten.",
+    "h1": "Brückentage-Planer (Türkei)",
+    "lead": "An welchen Tagen sollten Sie Urlaub nehmen, um die Feiertage in der Türkei mit einem Wochenende zu verbinden? Für jeden Feiertag die längsten freien Zeiträume nach Zahl der Urlaubstage.",
+    "search": "brückentage urlaub planer türkei feiertage langes wochenende bayram köprü tatil",
+    "yearLabel": "Jahr",
+    "maxLabel": "Höchstens Urlaub",
+    "maxAll": "Alle",
+    "maxN": "{n} Tage",
+    "colHoliday": "Feiertag",
+    "colDates": "Frei",
+    "colLeave": "Urlaub",
+    "colTotal": "Gesamt",
+    "colDays": "Urlaubstage",
+    "noLeave": "Keiner",
+    "leaveN": "{n} Tage",
+    "totalN": "{n} Tage",
+    "halfNote": "{date} (halber Tag)",
+    "none": "Kein Urlaub nötig",
+    "best": "Am lohnendsten",
+    "caption": "Brückentage {year}: längste freie Zeiträume nach Zahl der Urlaubstage",
+    "groups": {
+      "rb": "Zuckerfest",
+      "kb": "Opferfest"
+    },
+    "note": "Wochenenden und Feiertage brauchen keinen Urlaub; ein halber Vorabend an einem Werktag zählt als halber Urlaubstag. Vorabende sind im öffentlichen Dienst nachmittags frei; in der Privatwirtschaft gilt die Regel des Arbeitgebers. Verwaltungsurlaub und betriebliche Brückentage sind nicht enthalten.",
+    "projected": "Die religiösen Feiertage dieses Jahres beruhen auf dem Langzeitkalender von Diyanet (Hochrechnung).",
+    "faq": [
+      {
+        "q": "Wie werden Brückentage berechnet?",
+        "a": "Sie nehmen Urlaub an den Werktagen zwischen einem Feiertag und dem Wochenende, sodass die freie Zeit ohne Unterbrechung länger wird. Diese Seite zeigt für jeden Feiertag den längsten Zeitraum mit 0, 1, 2… Urlaubstagen samt Daten. Ein halber Vorabend an einem Werktag zählt als halber Urlaubstag."
+      }
+    ],
+    "faqBest": {
+      "q": "Welche Brückentage lohnen sich {year} am meisten?",
+      "a": "{year} lohnt sich am meisten: {name} – {days} Tage frei mit {leave} Urlaubstagen ({dates})."
+    }
   }
 }

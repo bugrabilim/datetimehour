@@ -702,6 +702,10 @@
         "qibla": {
           "name": "Qiblə",
           "desc": "Kompas, qiblə bucağı, qiblə saatı və yaxınlıqdakı məscidlər."
+        },
+        "bridge": {
+          "name": "Körpü tətil",
+          "desc": "Neçə gün məzuniyyətlə neçə gün tətil: Türkiyənin bayramları və həftə sonları."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -1759,5 +1763,44 @@
       }
     ],
     "cardinals": "Ş Ş C Q"
+  },
+  "bridge": {
+    "title": "Körpü tətil planlayıcı: məzuniyyət və bayram günləri | Saat Tarih",
+    "description": "Türkiyənin rəsmi bayramları, yarım günlük ərəfələr və həftə sonları birlikdə: hər bayram üçün 1–4 gün məzuniyyətlə ən uzun tətil dövrləri və tarixləri.",
+    "h1": "Körpü tətil planlayıcı (Türkiyə)",
+    "lead": "Türkiyənin rəsmi bayramlarını həftə sonuna birləşdirmək üçün hansı günlər məzuniyyət götürməlisiniz? Hər bayram üçün məzuniyyət günlərinin sayına görə ən uzun tətil dövrləri.",
+    "search": "körpü tətil məzuniyyət planlayıcı türkiyə bayram uzun həftə sonu köprü tatil",
+    "yearLabel": "İl",
+    "maxLabel": "Ən çox məzuniyyət",
+    "maxAll": "Hamısı",
+    "maxN": "{n} gün",
+    "colHoliday": "Bayram",
+    "colDates": "Tətil dövrü",
+    "colLeave": "Məzuniyyət",
+    "colTotal": "Cəmi",
+    "colDays": "Məzuniyyət günləri",
+    "noLeave": "Yoxdur",
+    "leaveN": "{n} gün",
+    "totalN": "{n} gün",
+    "halfNote": "{date} (yarım gün)",
+    "none": "Məzuniyyət lazım deyil",
+    "best": "Ən sərfəli",
+    "caption": "{year} körpü tətilləri: məzuniyyət günlərinin sayına görə ən uzun tətil dövrləri",
+    "groups": {
+      "rb": "Ramazan bayramı",
+      "kb": "Qurban bayramı"
+    },
+    "note": "Həftə sonu və rəsmi bayram günləri məzuniyyət tələb etmir; iş gününə düşən yarım günlük ərəfə 0,5 gün məzuniyyət sayılır. Ərəfələr Türkiyədə dövlət qurumlarında günortadan sonra istirahətdir; özəl sektorda işəgötürənin qaydasına baxın. İnzibati məzuniyyət və iş yeri körpüləri daxil edilməyib.",
+    "projected": "Bu ilin dini bayram tarixləri Diyanətin uzunmüddətli təqviminə əsaslanır (proqnoz).",
+    "faq": [
+      {
+        "q": "Körpü tətil necə hesablanır?",
+        "a": "Rəsmi bayramla həftə sonu arasında qalan iş günləri üçün məzuniyyət götürülür; beləliklə tətil fasiləsiz uzanır. Bu səhifə hər bayram üçün 0, 1, 2… gün məzuniyyətlə əldə olunan ən uzun dövrü tarixləri ilə göstərir. İş gününə düşən yarım günlük ərəfə 0,5 gün məzuniyyət sayılır."
+      }
+    ],
+    "faqBest": {
+      "q": "{year} ilində ən sərfəli körpü tətil hansıdır?",
+      "a": "{year} ilində ən sərfəli dövr {name}: {leave} gün məzuniyyətlə {days} gün tətil ({dates})."
+    }
   }
 }

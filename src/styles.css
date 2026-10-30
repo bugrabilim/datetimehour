@@ -957,3 +957,11 @@ html[dir="rtl"] .tl-axis, html[dir="rtl"] .tl-items { direction: ltr; }
 .qb-mosques a { display: flex; gap: 1rem; justify-content: space-between; padding: 0.6rem 0.2rem; color: var(--text); text-decoration: none; }
 .qb-mosques a:hover .qb-mq-name, .qb-mosques a:focus-visible .qb-mq-name { text-decoration: underline; }
 .qb-mq-dist { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Köprü tatil planlayıcı (30 Ekim 2026) */
+.br-controls { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; margin-top: 1rem; }
+.br-controls[hidden], .br-year[hidden], .br-table tr[hidden] { display: none; }
+.br-year h2 { margin-top: 0.5rem; }
+.br-table td:nth-child(5) { color: var(--muted); font-size: 0.92rem; }
+.br-best th, .br-best td { background: var(--accent-soft); }
+.badge { display: inline-block; padding: 0.05rem 0.45rem; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font-size: 0.75rem; font-weight: 600; vertical-align: middle; }
