@@ -716,7 +716,7 @@
     <string name="widget_world_desc">Dünya saatləri siyahınızdakı ilk dörd şəhər.</string>
     <string name="widget_world_descIOS">Vidjet ayarında seçdiyiniz dörd şəhərin saatı.</string>
     <string name="widget_city">Şəhər</string>
-    <string name="widget_countdown_desc">Alətlər › Geri sayımda qurduğunuz tarixə qalan gün; qurulmayıbsa, Yeni il.</string>
+    <string name="widget_countdown_desc">Ən yaxın geri sayımınız; yoxdursa, Yeni il.</string>
     <string name="widget_countdown_descIOS">Vidjet ayarından başlıq və tarix seçin; susmaya görə Yeni il.</string>
     <string name="widget_countdown_titleParam">Başlıq</string>
     <string name="widget_countdown_dateParam">Tarix</string>
@@ -744,5 +744,20 @@
     <string name="hiit_say_done">Bitdi, təbriklər!</string>
     <string name="tools_voice">Səsli elan</string>
     <string name="tools_voiceNote">Telefonun öz danışıq səsi ilə; ekran açıq olarkən.</string>
+    <string name="countdowns_heading">Geri sayımlarım</string>
+    <string name="countdowns_empty">Hələ geri sayım yoxdur. Ad günü, tətil, imtahan… əlavə etmək üçün + düyməsinə toxunun.</string>
+    <string name="countdowns_add">Geri sayım əlavə et</string>
+    <string name="countdowns_edit">Geri sayımı düzəlt</string>
+    <string name="countdowns_title">Başlıq</string>
+    <string name="countdowns_titlePlaceholder">Məs. Anamın ad günü</string>
+    <string name="countdowns_emoji">Simvol</string>
+    <string name="countdowns_yearly">Hər il təkrarla</string>
+    <string name="countdowns_remind">Xatırlat (bir gün əvvəl və vaxtı çatanda)</string>
+    <string name="countdowns_fromCalendar">Təqvimimdən seç</string>
+    <string name="countdowns_calendarNone">Növbəti 60 gündə təqvim tədbiri yoxdur.</string>
+    <string name="countdowns_calendarDenied">Telefon təqviminə icazə verilməyib; Təqvim bölməsindəki \"Telefonumdakı təqvimləri göstər\" ilə aça bilərsiniz.</string>
+    <string name="countdowns_today">Bu gün!</string>
+    <string name="countdowns_remindTomorrow">Sabah: %1$s</string>
+    <string name="countdowns_remindNow">%1$s: vaxtı çatdı</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

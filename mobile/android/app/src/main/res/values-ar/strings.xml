@@ -716,7 +716,7 @@
     <string name="widget_world_desc">أول أربع مدن في قائمة ساعات العالم لديك.</string>
     <string name="widget_world_descIOS">الوقت في أربع مدن تختارها من إعدادات الأداة.</string>
     <string name="widget_city">المدينة</string>
-    <string name="widget_countdown_desc">الأيام المتبقية حتى التاريخ الذي حددته في الأدوات › العد التنازلي؛ وإن لم يُحدَّد فرأس السنة.</string>
+    <string name="widget_countdown_desc">أقرب عدّ تنازلي لديك؛ وإن لم يوجد فرأس السنة.</string>
     <string name="widget_countdown_descIOS">اختر عنوانًا وتاريخًا من إعدادات الأداة؛ الافتراضي رأس السنة.</string>
     <string name="widget_countdown_titleParam">العنوان</string>
     <string name="widget_countdown_dateParam">التاريخ</string>
@@ -744,5 +744,20 @@
     <string name="hiit_say_done">انتهى، أحسنت!</string>
     <string name="tools_voice">إعلانات صوتية</string>
     <string name="tools_voiceNote">بصوت النطق في هاتفك، ما دامت الشاشة مفتوحة.</string>
+    <string name="countdowns_heading">عدّاتي التنازلية</string>
+    <string name="countdowns_empty">لا توجد عدّات تنازلية بعد. اضغط + لإضافة عيد ميلاد أو عطلة أو امتحان…</string>
+    <string name="countdowns_add">إضافة عدّ تنازلي</string>
+    <string name="countdowns_edit">تعديل العد التنازلي</string>
+    <string name="countdowns_title">العنوان</string>
+    <string name="countdowns_titlePlaceholder">مثلًا: عيد ميلاد أمي</string>
+    <string name="countdowns_emoji">الرمز</string>
+    <string name="countdowns_yearly">التكرار كل عام</string>
+    <string name="countdowns_remind">ذكّرني (قبل يوم وعند حلول الموعد)</string>
+    <string name="countdowns_fromCalendar">اختر من تقويمي</string>
+    <string name="countdowns_calendarNone">لا توجد أحداث في التقويم خلال الأيام الستين القادمة.</string>
+    <string name="countdowns_calendarDenied">الوصول إلى التقويم متوقف؛ فعّله من «إظهار تقويمات هاتفي» في تبويب التقويم.</string>
+    <string name="countdowns_today">اليوم!</string>
+    <string name="countdowns_remindTomorrow">غدًا: %1$s</string>
+    <string name="countdowns_remindNow">%1$s: حان الموعد</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

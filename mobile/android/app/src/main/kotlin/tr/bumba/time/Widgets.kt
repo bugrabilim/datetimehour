@@ -186,15 +186,15 @@ class WorldClockWidget : BaseWidget() {
     }
 }
 
-/** Geri sayım: Araçlar › Geri sayım'daki hedef (yoksa ya da geçtiyse yılbaşı); son 24 saatte Chronometer geri sayar */
+/** Geri sayım: geri sayımlarımın en yakını (yoksa yılbaşı); son 24 saatte Chronometer geri sayar */
 class CountdownWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_countdown)
         val now = Instant.now()
         val zone = ZoneId.systemDefault()
-        val saved = Prefs.store.getLong("cd.target", 0L)
-        val (title, at) = if (saved > now.toEpochMilli()) {
-            Prefs.store.getString("cd.title", "")!!.ifEmpty { L("tools.hub.cards.countdown.name") } to Instant.ofEpochMilli(saved)
+        val near = CountdownItem.nearest(now)
+        val (title, at) = if (near != null) {
+            near.label.ifBlank { L("tools.hub.cards.countdown.name") } to near.effective(now)
         } else {
             L("calendar.events.newYear") to LocalDate.now().plusYears(1).withDayOfYear(1).atStartOfDay(zone).toInstant()
         }

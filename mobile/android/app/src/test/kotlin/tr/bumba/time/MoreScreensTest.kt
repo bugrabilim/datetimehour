@@ -92,6 +92,17 @@ class MoreScreensTest {
     @Test fun aboutDark() = page("tr-hakkinda-koyu", "Hakkında", dark = true) { AboutScreen() }
     @Test fun google() = page("tr-google-takvim", "Google Takvimi") { GoogleCalendarGuide() }
     @Test fun notifications() = shot("tr-bildirimler") { NotificationsScreen {} }
+    @Test fun countdowns() {
+        val z = java.time.ZoneId.systemDefault()
+        fun at(d: LocalDate, h: Int = 0) = d.atTime(h, 0).atZone(z).toInstant().toEpochMilli()
+        CountdownItem.save(listOf(
+            CountdownItem(id = "a", title = "Annemin doğum günü", emoji = "🎂", target = at(LocalDate.now().plusDays(23)), yearly = true),
+            CountdownItem(id = "b", title = "Tatil", emoji = "🏖️", target = at(LocalDate.now().plusDays(61), 8)),
+            CountdownItem(id = "c", title = "Sunum", emoji = "💼", target = System.currentTimeMillis() + 5 * 3_600_000L),
+        ))
+        page("tr-geri-sayimlar", "Zamanlayıcı") { CountdownsScreen() }
+        CountdownItem.save(emptyList())
+    }
     @Test fun moon() {
         Prefs.saveProvince("istanbul")
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }

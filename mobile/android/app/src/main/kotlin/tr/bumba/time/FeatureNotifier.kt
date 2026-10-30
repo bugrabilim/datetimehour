@@ -131,6 +131,7 @@ object FeatureNotifier {
         if (FeaturePrefs.isOn(NotifyFeature.DST)) out += dst(now)
         if (FeaturePrefs.isOn(NotifyFeature.HOURLY)) out += hourly(now)
         if (FeaturePrefs.isOn(NotifyFeature.WEATHER)) out += weather(context, place, now)
+        out += CountdownItem.reminders(now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
         return out.filter { it.at.isAfter(now) }
     }
 

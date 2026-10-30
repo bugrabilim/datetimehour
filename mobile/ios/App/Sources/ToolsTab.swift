@@ -188,79 +188,13 @@ struct TimerView: View {
             switch mode {
             case 0: TimersView()
             case 1: HiitView()
-            default: DateCountdown()
+            default: CountdownsView()
             }
             Spacer(minLength: 0)
         }
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle(L("tools.timer"))
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-private struct DateCountdown: View {
-    @AppStorage("cd.target") private var target = 0.0
-    @AppStorage("cd.title") private var title = ""
-    @State private var picked = Date().addingTimeInterval(86400)
-
-    var body: some View {
-        let today = CalendarDay(Date())
-        let quick = quickTargets(today)
-        TimelineView(.periodic(from: .now, by: 1)) { context in
-            ScrollView {
-                VStack(spacing: 18) {
-                    if target > 0 {
-                        let left = Int((Date(timeIntervalSinceReferenceDate: target).timeIntervalSince(context.date)).rounded(.up))
-                        VStack(spacing: 6) {
-                            if !title.isEmpty { Text(title).font(.headline).foregroundStyle(Theme.accent) }
-                            BigTime(text: left <= 0 ? L("tools.countdown.finishedDate") : Fmt.countdown(left))
-                            Text(Fmt.longDate(Date(timeIntervalSinceReferenceDate: target)) + " " + Fmt.time(Date(timeIntervalSinceReferenceDate: target)))
-                                .font(.subheadline)
-                                .foregroundStyle(Theme.muted)
-                        }
-                        .padding(.top, 20)
-                    }
-                    DatePicker(L("tools.countdown.targetLabel"), selection: $picked, in: Date()...)
-                    Button(L("tools.countdown.targetSet")) {
-                        target = picked.timeIntervalSinceReferenceDate
-                        title = ""
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(Theme.accent)
-                    VStack(alignment: .leading, spacing: 8) {
-                        SectionTitle(text: L("tools.countdown.quickHeading"))
-                        ForEach(Array(quick.enumerated()), id: \.offset) { _, pair in
-                            Button {
-                                target = pair.1.noon(in: .current).addingTimeInterval(-12 * 3600).timeIntervalSinceReferenceDate
-                                title = pair.0
-                            } label: {
-                                HStack {
-                                    Text(pair.0).foregroundStyle(Theme.text)
-                                    Spacer()
-                                    Text(relative(pair.1, today)).font(.caption).foregroundStyle(Theme.muted)
-                                }
-                                .card()
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                }
-                .padding(.horizontal, 16)
-            }
-        }
-    }
-
-    /// Yeni yıl, Ramazan, bayramlar, 23 Nisan, 19 Mayıs, 30 Ağustos, 29 Ekim: her birinin sıradaki tarihi
-    private func quickTargets(_ today: CalendarDay) -> [(String, CalendarDay)] {
-        let keys = ["newYear", "ramadanStart", "rb1", "kb1", "apr23", "may19", "aug30", "oct29"]
-        let events = CalendarData.shared.years.keys.sorted().flatMap { CalendarData.shared.years[$0]!.events }
-        var out: [(String, CalendarDay)] = []
-        for key in keys {
-            if let e = events.first(where: { $0.key == key && ($0.day ?? today) > today }), let d = e.day {
-                out.append((key == "newYear" ? L("tools.countdown.quickNewYear") : e.name, d))
-            }
-        }
-        return out.sorted { $0.1 < $1.1 }
     }
 }
 

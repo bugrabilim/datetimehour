@@ -1954,11 +1954,11 @@
     "ar": "المدينة"
   },
   "widget.countdown.desc": {
-    "tr": "Araçlar › Geri sayım'da kurduğunuz tarihe kalan gün; kurulu değilse yılbaşı.",
-    "en": "Days left until the date you set in Tools › Countdown; New Year if none is set.",
-    "de": "Tage bis zu dem Datum, das Sie unter Werkzeuge › Countdown festgelegt haben; sonst Neujahr.",
-    "az": "Alətlər › Geri sayımda qurduğunuz tarixə qalan gün; qurulmayıbsa, Yeni il.",
-    "ar": "الأيام المتبقية حتى التاريخ الذي حددته في الأدوات › العد التنازلي؛ وإن لم يُحدَّد فرأس السنة."
+    "tr": "Geri sayımlarınızın en yakını; yoksa yılbaşı.",
+    "en": "Your nearest countdown; New Year if you have none.",
+    "de": "Ihr nächster Countdown; sonst Neujahr.",
+    "az": "Ən yaxın geri sayımınız; yoxdursa, Yeni il.",
+    "ar": "أقرب عدّ تنازلي لديك؛ وإن لم يوجد فرأس السنة."
   },
   "widget.countdown.descIOS": {
     "tr": "Widget ayarından başlık ve tarih seçin; varsayılan yılbaşı.",
@@ -2148,5 +2148,110 @@
     "de": "Mit der Sprachausgabe des Telefons, solange der Bildschirm offen ist.",
     "az": "Telefonun öz danışıq səsi ilə; ekran açıq olarkən.",
     "ar": "بصوت النطق في هاتفك، ما دامت الشاشة مفتوحة."
+  },
+  "countdowns.heading": {
+    "tr": "Geri sayımlarım",
+    "en": "My countdowns",
+    "de": "Meine Countdowns",
+    "az": "Geri sayımlarım",
+    "ar": "عدّاتي التنازلية"
+  },
+  "countdowns.empty": {
+    "tr": "Henüz geri sayım yok. Doğum günü, tatil, sınav… eklemek için + düğmesine dokunun.",
+    "en": "No countdowns yet. Tap + to add a birthday, holiday, exam…",
+    "de": "Noch keine Countdowns. Tippen Sie auf +, um Geburtstag, Urlaub, Prüfung … hinzuzufügen.",
+    "az": "Hələ geri sayım yoxdur. Ad günü, tətil, imtahan… əlavə etmək üçün + düyməsinə toxunun.",
+    "ar": "لا توجد عدّات تنازلية بعد. اضغط + لإضافة عيد ميلاد أو عطلة أو امتحان…"
+  },
+  "countdowns.add": {
+    "tr": "Geri sayım ekle",
+    "en": "Add countdown",
+    "de": "Countdown hinzufügen",
+    "az": "Geri sayım əlavə et",
+    "ar": "إضافة عدّ تنازلي"
+  },
+  "countdowns.edit": {
+    "tr": "Geri sayımı düzenle",
+    "en": "Edit countdown",
+    "de": "Countdown bearbeiten",
+    "az": "Geri sayımı düzəlt",
+    "ar": "تعديل العد التنازلي"
+  },
+  "countdowns.title": {
+    "tr": "Başlık",
+    "en": "Title",
+    "de": "Titel",
+    "az": "Başlıq",
+    "ar": "العنوان"
+  },
+  "countdowns.titlePlaceholder": {
+    "tr": "Örn. Annemin doğum günü",
+    "en": "e.g. Mum's birthday",
+    "de": "z. B. Mamas Geburtstag",
+    "az": "Məs. Anamın ad günü",
+    "ar": "مثلًا: عيد ميلاد أمي"
+  },
+  "countdowns.emoji": {
+    "tr": "Simge",
+    "en": "Icon",
+    "de": "Symbol",
+    "az": "Simvol",
+    "ar": "الرمز"
+  },
+  "countdowns.yearly": {
+    "tr": "Her yıl tekrarla",
+    "en": "Repeat every year",
+    "de": "Jedes Jahr wiederholen",
+    "az": "Hər il təkrarla",
+    "ar": "التكرار كل عام"
+  },
+  "countdowns.remind": {
+    "tr": "Hatırlat (bir gün önce ve zamanı gelince)",
+    "en": "Remind me (a day before and when it's time)",
+    "de": "Erinnern (einen Tag vorher und zum Zeitpunkt)",
+    "az": "Xatırlat (bir gün əvvəl və vaxtı çatanda)",
+    "ar": "ذكّرني (قبل يوم وعند حلول الموعد)"
+  },
+  "countdowns.fromCalendar": {
+    "tr": "Takvimimden seç",
+    "en": "Pick from my calendar",
+    "de": "Aus meinem Kalender wählen",
+    "az": "Təqvimimdən seç",
+    "ar": "اختر من تقويمي"
+  },
+  "countdowns.calendarNone": {
+    "tr": "Önümüzdeki 60 günde takvim etkinliği yok.",
+    "en": "No calendar events in the next 60 days.",
+    "de": "Keine Kalendertermine in den nächsten 60 Tagen.",
+    "az": "Növbəti 60 gündə təqvim tədbiri yoxdur.",
+    "ar": "لا توجد أحداث في التقويم خلال الأيام الستين القادمة."
+  },
+  "countdowns.calendarDenied": {
+    "tr": "Telefon takvimine izin verilmemiş; Takvim sekmesindeki \"Telefonumdaki takvimleri göster\" ile açabilirsiniz.",
+    "en": "Calendar access is off; turn it on with \"Show my phone's calendars\" in the Calendar tab.",
+    "de": "Kalenderzugriff ist aus; aktivieren Sie ihn im Kalender-Tab mit „Kalender meines Telefons anzeigen“.",
+    "az": "Telefon təqviminə icazə verilməyib; Təqvim bölməsindəki \"Telefonumdakı təqvimləri göstər\" ilə aça bilərsiniz.",
+    "ar": "الوصول إلى التقويم متوقف؛ فعّله من «إظهار تقويمات هاتفي» في تبويب التقويم."
+  },
+  "countdowns.today": {
+    "tr": "Bugün!",
+    "en": "Today!",
+    "de": "Heute!",
+    "az": "Bu gün!",
+    "ar": "اليوم!"
+  },
+  "countdowns.remindTomorrow": {
+    "tr": "Yarın: {title}",
+    "en": "Tomorrow: {title}",
+    "de": "Morgen: {title}",
+    "az": "Sabah: {title}",
+    "ar": "غدًا: {title}"
+  },
+  "countdowns.remindNow": {
+    "tr": "{title}: zamanı geldi",
+    "en": "{title}: it's time",
+    "de": "{title}: Es ist so weit",
+    "az": "{title}: vaxtı çatdı",
+    "ar": "{title}: حان الموعد"
   }
 }

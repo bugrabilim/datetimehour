@@ -73,7 +73,7 @@ fun TimerScreen() {
         when (mode) {
             0 -> TimersScreen()
             1 -> HiitScreen()
-            else -> DateCountdown()
+            else -> CountdownsScreen()
         }
     }
 }
@@ -116,101 +116,8 @@ internal fun NumberWheel(value: Int, range: IntRange, unit: String, onChange: (I
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun DateCountdown() {
-    val context = androidx.compose.ui.platform.LocalContext.current
-    var target by remember { mutableLongStateOf(ToolState.long("cd.target")) }
-    var title by remember { mutableStateOf(ToolState.str("cd.title")) }
-    var pickedDay by rememberSaveable { mutableStateOf(LocalDate.now().plusDays(1).toString()) }
-    var pickedTime by rememberSaveable { mutableStateOf("09:00") }
-    var picking by remember { mutableIntStateOf(0) } // 1 tarih, 2 saat
-    val now = rememberNow()
-    val today = LocalDate.now()
-    fun set(ms: Long, t: String) {
-        target = ms; title = t; ToolState.putLong("cd.target", ms); ToolState.putStr("cd.title", t)
-        WidgetUpdater.updateAll(context) // geri sayım widget'ı yeni hedefi gösterir
-    }
-
-    Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(14.dp),
-    ) {
-        if (target > 0) {
-            val left = (target - now.toEpochMilli() + 999) / 1000
-            Column(Modifier.fillMaxWidth().padding(top = 12.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                if (title.isNotEmpty()) Text(title, color = Theme.c.accent, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
-                BigTime(if (left <= 0) L("tools.countdown.finishedDate") else daysCountdown(left))
-                val at = Instant.ofEpochMilli(target).atZone(ZoneId.systemDefault())
-                Text(Fmt.longDate(at.toLocalDate()) + " " + Fmt.time(at), color = Theme.c.muted, fontSize = 14.sp)
-            }
-        }
-        AppCard {
-            SectionTitle(L("tools.countdown.targetLabel"))
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-                Text(Fmt.longDate(LocalDate.parse(pickedDay)), Modifier.weight(1f).clickable { picking = 1 }.padding(vertical = 10.dp),
-                    color = Theme.c.accent, fontSize = 16.sp)
-                Ltr {
-                    Text(pickedTime, Modifier.clickable { picking = 2 }.padding(10.dp), color = Theme.c.accent, fontSize = 18.sp,
-                        fontWeight = FontWeight.SemiBold, style = Tnum)
-                }
-            }
-            RoundButton(L("tools.countdown.targetSet"), true, Modifier.fillMaxWidth()) {
-                val at = LocalDateTime.of(LocalDate.parse(pickedDay), LocalTime.parse(pickedTime)).atZone(ZoneId.systemDefault())
-                set(at.toInstant().toEpochMilli(), "")
-            }
-        }
-        SectionTitle(L("tools.countdown.quickHeading"))
-        for ((name, day) in quickTargets(today)) {
-            Row(
-                Modifier.fillMaxWidth().background(Theme.c.surface, RoundedCornerShape(14.dp))
-                    .border(1.dp, Theme.c.border.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
-                    .clickable { set(day.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli(), name) }
-                    .padding(14.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(name, Modifier.weight(1f), color = Theme.c.text)
-                Text(T("client.daysLeft", ChronoUnit.DAYS.between(today, day)), color = Theme.c.muted, fontSize = 12.sp)
-            }
-        }
-        Spacer(Modifier.height(8.dp))
-    }
-
-    if (picking == 1) {
-        val state = rememberDatePickerState(
-            initialSelectedDateMillis = LocalDate.parse(pickedDay).atStartOfDay().toInstant(ZoneOffset.UTC).toEpochMilli(),
-        )
-        DatePickerDialog(
-            onDismissRequest = { picking = 0 },
-            confirmButton = {
-                TextButton(onClick = {
-                    state.selectedDateMillis?.let { pickedDay = Instant.ofEpochMilli(it).atZone(ZoneOffset.UTC).toLocalDate().toString() }
-                    picking = 0
-                }) { Text(L("common.done")) }
-            },
-        ) { DatePicker(state) }
-    } else if (picking == 2) {
-        val t = LocalTime.parse(pickedTime)
-        val state = rememberTimePickerState(t.hour, t.minute, is24Hour = !Prefs.h12)
-        androidx.compose.material3.AlertDialog(
-            onDismissRequest = { picking = 0 },
-            confirmButton = {
-                TextButton(onClick = { pickedTime = "%02d:%02d".format(state.hour, state.minute); picking = 0 }) { Text(L("common.done")) }
-            },
-            text = { Ltr { TimePicker(state) } },
-        )
-    }
-}
-
-/** "12 gün 03:04:05" */
-private fun daysCountdown(seconds: Long): String {
-    val d = seconds / 86400
-    val rest = Fmt.countdown(seconds % 86400)
-    return if (d > 0) "$d ${L("tools.countdown.days")} $rest" else rest
-}
-
 /** Yeni yıl, Ramazan, bayramlar, 23 Nisan, 19 Mayıs, 30 Ağustos, 29 Ekim: her birinin sıradaki tarihi (iOS ile aynı) */
-private fun quickTargets(today: LocalDate): List<Pair<String, LocalDate>> {
+internal fun quickTargets(today: LocalDate): List<Pair<String, LocalDate>> {
     val keys = listOf("newYear", "ramadanStart", "rb1", "kb1", "apr23", "may19", "aug30", "oct29")
     val all = AppData.events.entries.flatMap { (d, list) -> list.filter { it.date == d } }.sortedBy { it.date }
     return keys.mapNotNull { k ->

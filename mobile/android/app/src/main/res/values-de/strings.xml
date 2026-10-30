@@ -716,7 +716,7 @@
     <string name="widget_world_desc">Die ersten vier Städte Ihrer Weltuhr-Liste.</string>
     <string name="widget_world_descIOS">Die Uhrzeit in vier Städten, die Sie in den Widget-Einstellungen wählen.</string>
     <string name="widget_city">Stadt</string>
-    <string name="widget_countdown_desc">Tage bis zu dem Datum, das Sie unter Werkzeuge › Countdown festgelegt haben; sonst Neujahr.</string>
+    <string name="widget_countdown_desc">Ihr nächster Countdown; sonst Neujahr.</string>
     <string name="widget_countdown_descIOS">Wählen Sie Titel und Datum in den Widget-Einstellungen; standardmäßig Neujahr.</string>
     <string name="widget_countdown_titleParam">Titel</string>
     <string name="widget_countdown_dateParam">Datum</string>
@@ -744,5 +744,20 @@
     <string name="hiit_say_done">Fertig, gut gemacht!</string>
     <string name="tools_voice">Sprachansagen</string>
     <string name="tools_voiceNote">Mit der Sprachausgabe des Telefons, solange der Bildschirm offen ist.</string>
+    <string name="countdowns_heading">Meine Countdowns</string>
+    <string name="countdowns_empty">Noch keine Countdowns. Tippen Sie auf +, um Geburtstag, Urlaub, Prüfung … hinzuzufügen.</string>
+    <string name="countdowns_add">Countdown hinzufügen</string>
+    <string name="countdowns_edit">Countdown bearbeiten</string>
+    <string name="countdowns_title">Titel</string>
+    <string name="countdowns_titlePlaceholder">z. B. Mamas Geburtstag</string>
+    <string name="countdowns_emoji">Symbol</string>
+    <string name="countdowns_yearly">Jedes Jahr wiederholen</string>
+    <string name="countdowns_remind">Erinnern (einen Tag vorher und zum Zeitpunkt)</string>
+    <string name="countdowns_fromCalendar">Aus meinem Kalender wählen</string>
+    <string name="countdowns_calendarNone">Keine Kalendertermine in den nächsten 60 Tagen.</string>
+    <string name="countdowns_calendarDenied">Kalenderzugriff ist aus; aktivieren Sie ihn im Kalender-Tab mit „Kalender meines Telefons anzeigen“.</string>
+    <string name="countdowns_today">Heute!</string>
+    <string name="countdowns_remindTomorrow">Morgen: %1$s</string>
+    <string name="countdowns_remindNow">%1$s: Es ist so weit</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

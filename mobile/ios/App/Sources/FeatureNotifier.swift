@@ -66,6 +66,7 @@ enum FeatureNotifier {
         if NotifyFeature.sun.isOn { out += sun(place: place, now: now, days: days) }
         if NotifyFeature.dst.isOn { out += dst(now: now) }
         if NotifyFeature.weather.isOn { out += await weather(place: place, now: now) }
+        out += CountdownItem.reminders(now: now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
         return out.filter { $0.fireAt > now }
     }
 
