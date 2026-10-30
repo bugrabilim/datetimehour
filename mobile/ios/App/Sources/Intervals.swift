@@ -495,8 +495,7 @@ struct HiitView: View {
         }
     }
 
-        Text(cfg.title(phase))
-            .font(.largeTitle.bold())    private func scheduleEnd() {
+    private func scheduleEnd() {
         let id = UUID()
         alarmID = id.uuidString
         let at = Date(timeIntervalSince1970: start / 1000 + Double(cfg.totalSeconds))
