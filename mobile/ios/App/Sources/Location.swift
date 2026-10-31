@@ -25,8 +25,12 @@ final class OneShotLocation: NSObject, CLLocationManagerDelegate {
             }
         }
         let status = manager.authorizationStatus
+        #if os(macOS)
+        guard status == .authorizedAlways else { return nil }
+        #else
         guard status == .authorizedWhenInUse || status == .authorizedAlways else { return nil }
-        #if !os(watchOS) && !os(tvOS)
+        #endif
+        #if os(iOS)
         if forWidget && !manager.isAuthorizedForWidgetUpdates { return nil }
         #endif
         if let last = manager.location, -last.timestamp.timeIntervalSinceNow < 30 * 60 { return last }
