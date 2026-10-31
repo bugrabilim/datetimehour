@@ -60,7 +60,8 @@ import kotlinx.coroutines.delay
 @Composable
 fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
     when (route) {
-        "alarm" -> Page(L("tools.hub.cards.alarm.name"), onRoute) { AlarmScreen() }
+        "alarm" -> Page(L("tools.hub.cards.alarm.name"), onRoute) { AlarmScreen { onRoute("geo") } }
+        "geo" -> Page(L("geo.title"), { onRoute("alarm") }) { GeoAlarmsScreen() }
         "timer" -> Page(L("tools.timer"), onRoute) { TimerScreen() }
         "stopwatch" -> Page(L("tools.hub.cards.stopwatch.name"), onRoute) { Stopwatch() }
         "pomodoro" -> Page(L("tools.hub.cards.pomodoro.name"), onRoute) { PomodoroScreen() }

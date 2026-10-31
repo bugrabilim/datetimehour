@@ -372,7 +372,7 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
 }
 
 /** Telefondaki takvimlerden önümüzdeki 60 günün etkinlikleri (tüm gün olanlar yerel gece yarısında) */
-private fun upcomingDeviceEvents(c: Context): List<Pair<String, LocalDateTime>> {
+internal fun upcomingDeviceEvents(c: Context): List<Pair<String, LocalDateTime>> {
     val zone = ZoneId.systemDefault()
     val now = Instant.now()
     val seen = HashSet<String>()

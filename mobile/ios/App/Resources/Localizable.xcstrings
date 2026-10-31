@@ -48125,6 +48125,1126 @@
           }
         }
       }
+    },
+    "geo.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konuma bağlı hatırlatıcılar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location reminders"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortsbasierte Erinnerungen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məkana bağlı xatırladıcılar"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تذكيرات حسب الموقع"
+          }
+        }
+      }
+    },
+    "geo.defaultLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum hatırlatıcısı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location reminder"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ortserinnerung"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məkan xatırladıcısı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تذكير بالموقع"
+          }
+        }
+      }
+    },
+    "geo.add": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hatırlatıcı ekle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add reminder"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnerung hinzufügen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xatırladıcı əlavə et"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إضافة تذكير"
+          }
+        }
+      }
+    },
+    "geo.delete": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Löschen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف"
+          }
+        }
+      }
+    },
+    "geo.arrived": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu yere vardınız."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You have arrived at this place."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie sind an diesem Ort angekommen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu yerə çatdınız."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لقد وصلت إلى هذا المكان."
+          }
+        }
+      }
+    },
+    "geo.left": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu yerden ayrıldınız."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You have left this place."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie haben diesen Ort verlassen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu yerdən ayrıldınız."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لقد غادرت هذا المكان."
+          }
+        }
+      }
+    },
+    "geo.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Henüz konum hatırlatıcısı yok. + ile bir yer seçin; oraya varınca ya da oradan ayrılınca uyarılırsınız."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No location reminders yet. Choose a place with +; you are alerted when you arrive there or leave it."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Ortserinnerungen. Wählen Sie mit + einen Ort; Sie werden beim Ankommen oder Verlassen benachrichtigt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hələ məkan xatırladıcısı yoxdur. + ilə yer seçin; ora çatanda ya da oradan ayrılanda xəbərdar olunursunuz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا توجد تذكيرات بالموقع بعد. اختر مكانًا بـ+؛ وستُنبَّه عند الوصول إليه أو مغادرته."
+          }
+        }
+      }
+    },
+    "geo.onArrive": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varınca"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On arrival"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Ankommen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çatanda"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند الوصول"
+          }
+        }
+      }
+    },
+    "geo.onLeave": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayrılınca"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On leaving"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Verlassen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayrılanda"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند المغادرة"
+          }
+        }
+      }
+    },
+    "geo.when": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ne zaman"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wann"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nə vaxt"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متى"
+          }
+        }
+      }
+    },
+    "geo.radius": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Area"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bereich"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "النطاق"
+          }
+        }
+      }
+    },
+    "geo.radiusM": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ m"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ m"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ m"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ m"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ م"
+          }
+        }
+      }
+    },
+    "geo.once": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bir kez"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "once"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "einmal"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "bir dəfə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مرة واحدة"
+          }
+        }
+      }
+    },
+    "geo.every": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Her seferinde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jedes Mal"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hər dəfə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في كل مرة"
+          }
+        }
+      }
+    },
+    "geo.labelPlaceholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad (ör. Eve vardım, ilacı al)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name (e.g. Home: take medicine)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Name (z. B. Zuhause: Medikament nehmen)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ad (məs. Evə çatdım, dərmanı iç)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الاسم (مثل: في البيت، تناول الدواء)"
+          }
+        }
+      }
+    },
+    "geo.useMine": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şu anki konumumu kullan"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use my current location"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktuellen Standort verwenden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hazırkı məkanımı istifadə et"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استخدم موقعي الحالي"
+          }
+        }
+      }
+    },
+    "geo.locating": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum bulunuyor…"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Locating…"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standort wird ermittelt …"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məkan tapılır…"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جارٍ تحديد الموقع…"
+          }
+        }
+      }
+    },
+    "geo.noLocation": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum bulunamadı; konum izni ve kesin konum açık mı?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location not found; are location permission and precise location on?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standort nicht gefunden; sind Standortzugriff und genauer Standort aktiv?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məkan tapılmadı; məkan icazəsi və dəqiq məkan açıqdır?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذّر تحديد الموقع؛ هل إذن الموقع والموقع الدقيق مفعّلان؟"
+          }
+        }
+      }
+    },
+    "geo.mapHint": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeri değiştirmek için haritaya dokunun. Harita Apple'dan gelir; hatırlatıcının yeri telefonda kalır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap the map to move the place. The map comes from Apple; the reminder's place stays on your phone."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippen Sie auf die Karte, um den Ort zu verschieben. Die Karte stammt von Apple; der Ort der Erinnerung bleibt auf dem Telefon."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeri dəyişmək üçün xəritəyə toxunun. Xəritə Apple-dan gəlir; xatırladıcının yeri telefonda qalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انقر على الخريطة لتغيير المكان. الخريطة من Apple؛ ويبقى مكان التذكير على هاتفك."
+          }
+        }
+      }
+    },
+    "geo.placeHintAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yer, yeni hatırlatıcıda uygulamada seçili konumdur; bulunduğunuz yeri kullanmak için yukarıdaki düğmeye dokunun."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A new reminder starts at the place selected in the app; tap the button above to use where you are."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine neue Erinnerung beginnt am in der App gewählten Ort; tippen Sie oben, um Ihren aktuellen Standort zu verwenden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yeni xatırladıcıda yer tətbiqdə seçilmiş məkandır; olduğunuz yeri istifadə etmək üçün yuxarıdakı düyməyə toxunun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يبدأ التذكير الجديد بالمكان المحدد في التطبيق؛ انقر الزر أعلاه لاستخدام مكانك الحالي."
+          }
+        }
+      }
+    },
+    "geo.allow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum iznini ver"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow location access"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standortzugriff erlauben"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məkan icazəsi ver"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السماح بالوصول إلى الموقع"
+          }
+        }
+      }
+    },
+    "geo.allowAlways": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Her zaman izin ver\"i seç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose \"Allow all the time\""
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Immer zulassen\" wählen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Həmişə icazə ver\"i seç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر \"السماح طوال الوقت\""
+          }
+        }
+      }
+    },
+    "geo.denied": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum izni olmadan hatırlatıcılar çalışmaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reminders do not work without location access."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Standortzugriff funktionieren die Erinnerungen nicht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məkan icazəsi olmadan xatırladıcılar işləmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تعمل التذكيرات دون إذن الوصول إلى الموقع."
+          }
+        }
+      }
+    },
+    "geo.notPrecise": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Kesin Konum\" kapalı: iPhone bölge hatırlatıcılarını yalnız kesin konumla çalıştırır (Ayarlar › Saat Tarih › Konum)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Precise Location\" is off: iPhone runs place reminders only with precise location (Settings › Time & Date › Location)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Genauer Standort\" ist aus: Das iPhone führt Ortserinnerungen nur mit genauem Standort aus (Einstellungen › Uhr & Datum › Standort)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Dəqiq məkan\" bağlıdır: iPhone yer xatırladıcılarını yalnız dəqiq məkanla işlədir (Ayarlar › Saat Tarix › Məkan)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"الموقع الدقيق\" متوقف: لا يشغّل iPhone تذكيرات المكان إلا بالموقع الدقيق (الإعدادات › الوقت والتاريخ › الموقع)."
+          }
+        }
+      }
+    },
+    "geo.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varış ve ayrılışı iPhone kendisi izler; uygulama arka planda çalışmaz, konumunuz hiçbir yere gönderilmez. En çok 20 hatırlatıcı. Bildirim telefonun ses ayarına uyar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone itself watches for arrivals and departures; the app does not run in the background and your location is not sent anywhere. Up to 20 reminders. The alert follows the phone's sound settings."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das iPhone selbst erkennt Ankunft und Verlassen; die App läuft nicht im Hintergrund und Ihr Standort wird nirgendwohin gesendet. Höchstens 20 Erinnerungen. Die Mitteilung folgt den Toneinstellungen des Telefons."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çatma və ayrılmanı iPhone özü izləyir; tətbiq arxa planda işləmir, məkanınız heç yerə göndərilmir. Ən çox 20 xatırladıcı. Bildiriş telefonun səs ayarına uyğundur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يراقب iPhone نفسه الوصول والمغادرة؛ لا يعمل التطبيق في الخلفية ولا يُرسل موقعك إلى أي مكان. 20 تذكيرًا على الأكثر. يتبع التنبيه إعدادات صوت الهاتف."
+          }
+        }
+      }
+    },
+    "geo.noteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Varış ve ayrılışı Android'in bölge izleme hizmeti izler; uygulama arka planda çalışmaz, konumunuz hiçbir yere gönderilmez. Bunun için \"Her zaman izin ver\" konum izni gerekir. En çok 20 hatırlatıcı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Android's geofencing service watches for arrivals and departures; the app does not run in the background and your location is not sent anywhere. This needs the \"Allow all the time\" location permission. Up to 20 reminders."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Geofencing-Dienst von Android erkennt Ankunft und Verlassen; die App läuft nicht im Hintergrund und Ihr Standort wird nirgendwohin gesendet. Dafür ist die Standortberechtigung \"Immer zulassen\" nötig. Höchstens 20 Erinnerungen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çatma və ayrılmanı Android-in sahə izləmə xidməti izləyir; tətbiq arxa planda işləmir, məkanınız heç yerə göndərilmir. Bunun üçün \"Həmişə icazə ver\" məkan icazəsi lazımdır. Ən çox 20 xatırladıcı."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تراقب خدمة السياج الجغرافي في Android الوصول والمغادرة؛ لا يعمل التطبيق في الخلفية ولا يُرسل موقعك إلى أي مكان. يتطلب ذلك إذن الموقع \"السماح طوال الوقت\". 20 تذكيرًا على الأكثر."
+          }
+        }
+      }
+    },
+    "geo.backgroundAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hatırlatıcıların uygulama kapalıyken çalışması için konum izninde \"Her zaman izin ver\" seçilmeli."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For reminders to work while the app is closed, choose \"Allow all the time\" in the location permission."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Damit Erinnerungen bei geschlossener App funktionieren, wählen Sie in der Standortberechtigung \"Immer zulassen\"."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Xatırladıcıların tətbiq bağlı ikən işləməsi üçün məkan icazəsində \"Həmişə icazə ver\" seçilməlidir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لكي تعمل التذكيرات والتطبيق مغلق، اختر \"السماح طوال الوقت\" في إذن الموقع."
+          }
+        }
+      }
+    },
+    "alarm.calLead": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etkinlikten önce"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Before the event"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vor dem Termin"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tədbirdən əvvəl"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قبل الحدث"
+          }
+        }
+      }
+    },
+    "alarm.calLead.zero": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlarken"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "At start"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bei Beginn"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başlayanda"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند البدء"
+          }
+        }
+      }
+    },
+    "alarm.fromCalendar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Takvimdeki etkinliğe alarm kur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set an alarm for a calendar event"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wecker für einen Kalendertermin stellen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təqvimdəki tədbirə zəng qur"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اضبط منبّهًا لحدث في التقويم"
+          }
+        }
+      }
+    },
+    "alarm.fromCalendarNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etkinlik telefondaki takvimlerden seçilir; başlangıcından seçilen süre önce bir kezlik alarm kurulur (tüm gün etkinlikte o gün 09.00). Takvim izni Takvim sekmesinden verilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The event is picked from the phone's calendars; a one-time alarm is set the chosen time before it starts (09:00 that day for all-day events). Calendar access is granted in the Calendar tab."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Termin wird aus den Kalendern des Telefons gewählt; ein einmaliger Wecker klingelt die gewählte Zeit vor Beginn (bei ganztägigen Terminen an dem Tag um 09:00). Kalenderzugriff wird im Tab Kalender erteilt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tədbir telefondakı təqvimlərdən seçilir; başlanğıcından seçilən müddət əvvəl birdəfəlik zəng qurulur (bütün günlük tədbirdə həmin gün 09:00). Təqvim icazəsi Təqvim bölməsindən verilir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُختار الحدث من تقويمات الهاتف؛ ويُضبط منبّه لمرة واحدة قبل بدايته بالمدة المختارة (الساعة 09:00 في ذلك اليوم للأحداث طوال اليوم). يُمنح إذن التقويم من تبويب التقويم."
+          }
+        }
+      }
+    },
+    "alarm.fromCalendarPast": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu etkinliğin alarm zamanı geçti."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The alarm time for this event has passed."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Weckzeit für diesen Termin ist vorbei."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu tədbirin zəng vaxtı keçib."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انقضى وقت المنبّه لهذا الحدث."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

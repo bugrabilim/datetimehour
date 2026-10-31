@@ -32,6 +32,7 @@ struct SaatTarihApp: App {
                     await PrayerNotifier.reschedule()
                     await AlarmCenter.refreshSkips()
                     await PrayerAlarms.sync()
+                    await GeoAlarms.refresh()
                 }
                 // Aralık antrenmanı sürüyorsa sesli duyurular (uygulama yeniden açılmış olabilir)
                 HiitRunner.shared.sync()

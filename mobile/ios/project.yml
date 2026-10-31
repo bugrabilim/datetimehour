@@ -58,7 +58,7 @@ targets:
         INFOPLIST_KEY_NSAppleMusicUsageDescription: "Alarm sesi olarak müzik arşivinizden bir şarkı seçebilmeniz için. Şarkıdan alınan kısa bölüm telefonda kalır, hiçbir yere gönderilmez."
         INFOPLIST_KEY_NSCameraUsageDescription: "Alarm kapatma görevi için kaydettiğiniz QR kodu ya da barkodu okumak için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez."
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz."
-        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir."
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir. Konuma bağlı hatırlatıcılarda bir yere varışınızı ya da ayrılışınızı iPhone kendisi izler."
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES

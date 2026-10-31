@@ -8,10 +8,10 @@ final class OneShotLocation: NSObject, CLLocationManagerDelegate {
     private var authWait: CheckedContinuation<Void, Never>?
     private var locWait: CheckedContinuation<CLLocation?, Never>?
 
-    override init() {
+    init(accuracy: CLLocationAccuracy = kCLLocationAccuracyKilometer) {
         super.init()
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyKilometer
+        manager.desiredAccuracy = accuracy
     }
 
     /// - Parameter requestPermission: izin sorulabilir mi (yalnız uygulamada; widget izin isteyemez)

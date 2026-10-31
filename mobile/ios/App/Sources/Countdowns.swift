@@ -274,7 +274,7 @@ private struct CountdownEditor: View {
                 }
             }
             .sheet(isPresented: $showCalendar) {
-                CalendarEventPicker { title, date in
+                CalendarEventPicker { title, date, _ in
                     item.title = String(title.prefix(40))
                     item.date = date
                 }
@@ -284,9 +284,10 @@ private struct CountdownEditor: View {
 }
 
 /// Telefondaki takvimlerden önümüzdeki 60 günün etkinlikleri
-private struct CalendarEventPicker: View {
+struct CalendarEventPicker: View {
     @Environment(\.dismiss) private var dismiss
-    let onPick: (String, Date) -> Void
+    /// Başlık, başlangıç (tüm gün etkinlikte gün başı) ve tüm gün mü
+    let onPick: (String, Date, Bool) -> Void
 
     var body: some View {
         let device = DeviceCalendar.shared
@@ -304,7 +305,7 @@ private struct CalendarEventPicker: View {
                 }
                 ForEach(events, id: \.calendarItemIdentifier) { e in
                     Button {
-                        onPick(e.title ?? "", e.isAllDay ? Calendar.current.startOfDay(for: e.startDate) : e.startDate)
+                        onPick(e.title ?? "", e.isAllDay ? Calendar.current.startOfDay(for: e.startDate) : e.startDate, e.isAllDay)
                         dismiss()
                     } label: {
                         VStack(alignment: .leading, spacing: 2) {

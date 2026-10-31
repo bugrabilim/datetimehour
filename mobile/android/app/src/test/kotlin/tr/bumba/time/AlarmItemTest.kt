@@ -144,4 +144,18 @@ class AlarmRiseSnoozeTest {
         assertEquals(5, AlarmScheduler.snoozeMinutes(AlarmScheduler.SNOOZE + "x", "alarm"))
         AlarmItem.save(emptyList())
     }
+
+    /** Takvim etkinliğine alarm ve konum hatırlatıcısı kaydı (#93) */
+    @Test fun calendarAndGeo() {
+        val now = LocalDateTime.parse("2026-11-01T10:00")
+        val meet = CalendarAlarm.item("Toplantı", LocalDateTime.parse("2026-11-03T14:30"), 15, now)!!
+        assertEquals(14, meet.hour); assertEquals(15, meet.minute); assertEquals("2026-11-03", meet.date)
+        // Tüm gün etkinlik: o gün 09.00; geçmiş etkinlik: alarm yok
+        val allDay = CalendarAlarm.item("Doğum günü", LocalDateTime.parse("2026-11-05T00:00"), 30, now)!!
+        assertEquals(9, allDay.hour); assertEquals(0, allDay.minute)
+        assertEquals(null, CalendarAlarm.item("Geçti", LocalDateTime.parse("2026-11-01T10:10"), 15, now))
+        val g = GeoAlarm(label = "Ev", lat = 41.01, lon = 28.97, r = 300, on = "leave", repeats = false)
+        val back = GeoAlarm.fromJson(JSONObject(g.toJson().toString()))
+        assertEquals(g, back)
+    }
 }

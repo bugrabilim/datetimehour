@@ -190,11 +190,11 @@
     "ar": "الوقت وتاريخ اليوم."
   },
   "NSLocationWhenInUseUsageDescription": {
-    "tr": "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir.",
-    "en": "To show prayer times, the qibla direction, nearby mosques and the weather for where you are. Prayer times and the qibla are calculated on your phone; for the weather and the mosque search only an approximate location is sent to Apple's services.",
-    "de": "Um Gebetszeiten, die Qibla-Richtung, Moscheen in der Nähe und das Wetter für Ihren Ort anzuzeigen. Gebetszeiten und Qibla werden auf dem Telefon berechnet; für Wetter und Moscheesuche wird nur ein ungefährer Ort an Apples Dienste gesendet.",
-    "az": "Olduğunuz yerin namaz vaxtlarını, qiblə istiqamətini, yaxınlıqdakı məscidləri və havasını göstərmək üçün. Vaxtlar və qiblə telefonda hesablanır; hava və məscid axtarışı üçün yalnız təxmini məkan Apple-ın xidmətlərinə göndərilir.",
-    "ar": "لعرض أوقات الصلاة واتجاه القبلة والمساجد القريبة والطقس في مكانك. تُحسب الأوقات والقبلة على هاتفك؛ ولأجل الطقس والبحث عن المساجد يُرسل موقع تقريبي فقط إلى خدمات Apple."
+    "tr": "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir. Konuma bağlı hatırlatıcılarda bir yere varışınızı ya da ayrılışınızı iPhone kendisi izler.",
+    "en": "To show prayer times, the qibla direction, nearby mosques and the weather for where you are. Prayer times and the qibla are calculated on your phone; for the weather and the mosque search only an approximate location is sent to Apple's services. For location reminders, iPhone itself detects when you arrive at or leave a place.",
+    "de": "Um Gebetszeiten, die Qibla-Richtung, Moscheen in der Nähe und das Wetter für Ihren Ort anzuzeigen. Gebetszeiten und Qibla werden auf dem Telefon berechnet; für Wetter und Moscheesuche wird nur ein ungefährer Ort an Apples Dienste gesendet. Bei Ortserinnerungen erkennt das iPhone selbst, wann Sie einen Ort erreichen oder verlassen.",
+    "az": "Olduğunuz yerin namaz vaxtlarını, qiblə istiqamətini, yaxınlıqdakı məscidləri və havasını göstərmək üçün. Vaxtlar və qiblə telefonda hesablanır; hava və məscid axtarışı üçün yalnız təxmini məkan Apple-ın xidmətlərinə göndərilir. Məkana bağlı xatırladıcılarda bir yerə çatmanızı ya da ayrılmanızı iPhone özü izləyir.",
+    "ar": "لعرض أوقات الصلاة واتجاه القبلة والمساجد القريبة والطقس في مكانك. تُحسب الأوقات والقبلة على هاتفك؛ ولأجل الطقس والبحث عن المساجد يُرسل موقع تقريبي فقط إلى خدمات Apple. في تذكيرات الموقع، يكتشف iPhone نفسه وصولك إلى مكان أو مغادرته."
   },
   "notify.sound": {
     "tr": "Bildirim sesi",
@@ -5914,5 +5914,229 @@
     "de": "Damit Sie einen Titel aus Ihrer Musikmediathek als Weckton wählen können. Der kurze Ausschnitt bleibt auf dem Telefon und wird nirgendwohin gesendet.",
     "az": "Zəng səsi kimi musiqi arxivinizdən mahnı seçə biləsiniz deyə. Mahnıdan götürülən qısa hissə telefonda qalır, heç yerə göndərilmir.",
     "ar": "لكي تختار أغنية من مكتبة الموسيقى صوتًا للمنبّه. يبقى الجزء القصير المأخوذ من الأغنية على هاتفك ولا يُرسل إلى أي مكان."
+  },
+  "geo.title": {
+    "tr": "Konuma bağlı hatırlatıcılar",
+    "en": "Location reminders",
+    "de": "Ortsbasierte Erinnerungen",
+    "az": "Məkana bağlı xatırladıcılar",
+    "ar": "تذكيرات حسب الموقع"
+  },
+  "geo.defaultLabel": {
+    "tr": "Konum hatırlatıcısı",
+    "en": "Location reminder",
+    "de": "Ortserinnerung",
+    "az": "Məkan xatırladıcısı",
+    "ar": "تذكير بالموقع"
+  },
+  "geo.add": {
+    "tr": "Hatırlatıcı ekle",
+    "en": "Add reminder",
+    "de": "Erinnerung hinzufügen",
+    "az": "Xatırladıcı əlavə et",
+    "ar": "إضافة تذكير"
+  },
+  "geo.delete": {
+    "tr": "Sil",
+    "en": "Delete",
+    "de": "Löschen",
+    "az": "Sil",
+    "ar": "حذف"
+  },
+  "geo.arrived": {
+    "tr": "Bu yere vardınız.",
+    "en": "You have arrived at this place.",
+    "de": "Sie sind an diesem Ort angekommen.",
+    "az": "Bu yerə çatdınız.",
+    "ar": "لقد وصلت إلى هذا المكان."
+  },
+  "geo.left": {
+    "tr": "Bu yerden ayrıldınız.",
+    "en": "You have left this place.",
+    "de": "Sie haben diesen Ort verlassen.",
+    "az": "Bu yerdən ayrıldınız.",
+    "ar": "لقد غادرت هذا المكان."
+  },
+  "geo.none": {
+    "tr": "Henüz konum hatırlatıcısı yok. + ile bir yer seçin; oraya varınca ya da oradan ayrılınca uyarılırsınız.",
+    "en": "No location reminders yet. Choose a place with +; you are alerted when you arrive there or leave it.",
+    "de": "Noch keine Ortserinnerungen. Wählen Sie mit + einen Ort; Sie werden beim Ankommen oder Verlassen benachrichtigt.",
+    "az": "Hələ məkan xatırladıcısı yoxdur. + ilə yer seçin; ora çatanda ya da oradan ayrılanda xəbərdar olunursunuz.",
+    "ar": "لا توجد تذكيرات بالموقع بعد. اختر مكانًا بـ+؛ وستُنبَّه عند الوصول إليه أو مغادرته."
+  },
+  "geo.onArrive": {
+    "tr": "Varınca",
+    "en": "On arrival",
+    "de": "Beim Ankommen",
+    "az": "Çatanda",
+    "ar": "عند الوصول"
+  },
+  "geo.onLeave": {
+    "tr": "Ayrılınca",
+    "en": "On leaving",
+    "de": "Beim Verlassen",
+    "az": "Ayrılanda",
+    "ar": "عند المغادرة"
+  },
+  "geo.when": {
+    "tr": "Ne zaman",
+    "en": "When",
+    "de": "Wann",
+    "az": "Nə vaxt",
+    "ar": "متى"
+  },
+  "geo.radius": {
+    "tr": "Alan",
+    "en": "Area",
+    "de": "Bereich",
+    "az": "Sahə",
+    "ar": "النطاق"
+  },
+  "geo.radiusM": {
+    "tr": "{m} m",
+    "en": "{m} m",
+    "de": "{m} m",
+    "az": "{m} m",
+    "ar": "{m} م"
+  },
+  "geo.once": {
+    "tr": "bir kez",
+    "en": "once",
+    "de": "einmal",
+    "az": "bir dəfə",
+    "ar": "مرة واحدة"
+  },
+  "geo.every": {
+    "tr": "Her seferinde",
+    "en": "Every time",
+    "de": "Jedes Mal",
+    "az": "Hər dəfə",
+    "ar": "في كل مرة"
+  },
+  "geo.labelPlaceholder": {
+    "tr": "Ad (ör. Eve vardım, ilacı al)",
+    "en": "Name (e.g. Home: take medicine)",
+    "de": "Name (z. B. Zuhause: Medikament nehmen)",
+    "az": "Ad (məs. Evə çatdım, dərmanı iç)",
+    "ar": "الاسم (مثل: في البيت، تناول الدواء)"
+  },
+  "geo.useMine": {
+    "tr": "Şu anki konumumu kullan",
+    "en": "Use my current location",
+    "de": "Aktuellen Standort verwenden",
+    "az": "Hazırkı məkanımı istifadə et",
+    "ar": "استخدم موقعي الحالي"
+  },
+  "geo.locating": {
+    "tr": "Konum bulunuyor…",
+    "en": "Locating…",
+    "de": "Standort wird ermittelt …",
+    "az": "Məkan tapılır…",
+    "ar": "جارٍ تحديد الموقع…"
+  },
+  "geo.noLocation": {
+    "tr": "Konum bulunamadı; konum izni ve kesin konum açık mı?",
+    "en": "Location not found; are location permission and precise location on?",
+    "de": "Standort nicht gefunden; sind Standortzugriff und genauer Standort aktiv?",
+    "az": "Məkan tapılmadı; məkan icazəsi və dəqiq məkan açıqdır?",
+    "ar": "تعذّر تحديد الموقع؛ هل إذن الموقع والموقع الدقيق مفعّلان؟"
+  },
+  "geo.mapHint": {
+    "tr": "Yeri değiştirmek için haritaya dokunun. Harita Apple'dan gelir; hatırlatıcının yeri telefonda kalır.",
+    "en": "Tap the map to move the place. The map comes from Apple; the reminder's place stays on your phone.",
+    "de": "Tippen Sie auf die Karte, um den Ort zu verschieben. Die Karte stammt von Apple; der Ort der Erinnerung bleibt auf dem Telefon.",
+    "az": "Yeri dəyişmək üçün xəritəyə toxunun. Xəritə Apple-dan gəlir; xatırladıcının yeri telefonda qalır.",
+    "ar": "انقر على الخريطة لتغيير المكان. الخريطة من Apple؛ ويبقى مكان التذكير على هاتفك."
+  },
+  "geo.placeHintAndroid": {
+    "tr": "Yer, yeni hatırlatıcıda uygulamada seçili konumdur; bulunduğunuz yeri kullanmak için yukarıdaki düğmeye dokunun.",
+    "en": "A new reminder starts at the place selected in the app; tap the button above to use where you are.",
+    "de": "Eine neue Erinnerung beginnt am in der App gewählten Ort; tippen Sie oben, um Ihren aktuellen Standort zu verwenden.",
+    "az": "Yeni xatırladıcıda yer tətbiqdə seçilmiş məkandır; olduğunuz yeri istifadə etmək üçün yuxarıdakı düyməyə toxunun.",
+    "ar": "يبدأ التذكير الجديد بالمكان المحدد في التطبيق؛ انقر الزر أعلاه لاستخدام مكانك الحالي."
+  },
+  "geo.allow": {
+    "tr": "Konum iznini ver",
+    "en": "Allow location access",
+    "de": "Standortzugriff erlauben",
+    "az": "Məkan icazəsi ver",
+    "ar": "السماح بالوصول إلى الموقع"
+  },
+  "geo.allowAlways": {
+    "tr": "\"Her zaman izin ver\"i seç",
+    "en": "Choose \"Allow all the time\"",
+    "de": "\"Immer zulassen\" wählen",
+    "az": "\"Həmişə icazə ver\"i seç",
+    "ar": "اختر \"السماح طوال الوقت\""
+  },
+  "geo.denied": {
+    "tr": "Konum izni olmadan hatırlatıcılar çalışmaz.",
+    "en": "Reminders do not work without location access.",
+    "de": "Ohne Standortzugriff funktionieren die Erinnerungen nicht.",
+    "az": "Məkan icazəsi olmadan xatırladıcılar işləmir.",
+    "ar": "لا تعمل التذكيرات دون إذن الوصول إلى الموقع."
+  },
+  "geo.notPrecise": {
+    "tr": "\"Kesin Konum\" kapalı: iPhone bölge hatırlatıcılarını yalnız kesin konumla çalıştırır (Ayarlar › Saat Tarih › Konum).",
+    "en": "\"Precise Location\" is off: iPhone runs place reminders only with precise location (Settings › Time & Date › Location).",
+    "de": "\"Genauer Standort\" ist aus: Das iPhone führt Ortserinnerungen nur mit genauem Standort aus (Einstellungen › Uhr & Datum › Standort).",
+    "az": "\"Dəqiq məkan\" bağlıdır: iPhone yer xatırladıcılarını yalnız dəqiq məkanla işlədir (Ayarlar › Saat Tarix › Məkan).",
+    "ar": "\"الموقع الدقيق\" متوقف: لا يشغّل iPhone تذكيرات المكان إلا بالموقع الدقيق (الإعدادات › الوقت والتاريخ › الموقع)."
+  },
+  "geo.note": {
+    "tr": "Varış ve ayrılışı iPhone kendisi izler; uygulama arka planda çalışmaz, konumunuz hiçbir yere gönderilmez. En çok 20 hatırlatıcı. Bildirim telefonun ses ayarına uyar.",
+    "en": "iPhone itself watches for arrivals and departures; the app does not run in the background and your location is not sent anywhere. Up to 20 reminders. The alert follows the phone's sound settings.",
+    "de": "Das iPhone selbst erkennt Ankunft und Verlassen; die App läuft nicht im Hintergrund und Ihr Standort wird nirgendwohin gesendet. Höchstens 20 Erinnerungen. Die Mitteilung folgt den Toneinstellungen des Telefons.",
+    "az": "Çatma və ayrılmanı iPhone özü izləyir; tətbiq arxa planda işləmir, məkanınız heç yerə göndərilmir. Ən çox 20 xatırladıcı. Bildiriş telefonun səs ayarına uyğundur.",
+    "ar": "يراقب iPhone نفسه الوصول والمغادرة؛ لا يعمل التطبيق في الخلفية ولا يُرسل موقعك إلى أي مكان. 20 تذكيرًا على الأكثر. يتبع التنبيه إعدادات صوت الهاتف."
+  },
+  "geo.noteAndroid": {
+    "tr": "Varış ve ayrılışı Android'in bölge izleme hizmeti izler; uygulama arka planda çalışmaz, konumunuz hiçbir yere gönderilmez. Bunun için \"Her zaman izin ver\" konum izni gerekir. En çok 20 hatırlatıcı.",
+    "en": "Android's geofencing service watches for arrivals and departures; the app does not run in the background and your location is not sent anywhere. This needs the \"Allow all the time\" location permission. Up to 20 reminders.",
+    "de": "Der Geofencing-Dienst von Android erkennt Ankunft und Verlassen; die App läuft nicht im Hintergrund und Ihr Standort wird nirgendwohin gesendet. Dafür ist die Standortberechtigung \"Immer zulassen\" nötig. Höchstens 20 Erinnerungen.",
+    "az": "Çatma və ayrılmanı Android-in sahə izləmə xidməti izləyir; tətbiq arxa planda işləmir, məkanınız heç yerə göndərilmir. Bunun üçün \"Həmişə icazə ver\" məkan icazəsi lazımdır. Ən çox 20 xatırladıcı.",
+    "ar": "تراقب خدمة السياج الجغرافي في Android الوصول والمغادرة؛ لا يعمل التطبيق في الخلفية ولا يُرسل موقعك إلى أي مكان. يتطلب ذلك إذن الموقع \"السماح طوال الوقت\". 20 تذكيرًا على الأكثر."
+  },
+  "geo.backgroundAndroid": {
+    "tr": "Hatırlatıcıların uygulama kapalıyken çalışması için konum izninde \"Her zaman izin ver\" seçilmeli.",
+    "en": "For reminders to work while the app is closed, choose \"Allow all the time\" in the location permission.",
+    "de": "Damit Erinnerungen bei geschlossener App funktionieren, wählen Sie in der Standortberechtigung \"Immer zulassen\".",
+    "az": "Xatırladıcıların tətbiq bağlı ikən işləməsi üçün məkan icazəsində \"Həmişə icazə ver\" seçilməlidir.",
+    "ar": "لكي تعمل التذكيرات والتطبيق مغلق، اختر \"السماح طوال الوقت\" في إذن الموقع."
+  },
+  "alarm.calLead": {
+    "tr": "Etkinlikten önce",
+    "en": "Before the event",
+    "de": "Vor dem Termin",
+    "az": "Tədbirdən əvvəl",
+    "ar": "قبل الحدث"
+  },
+  "alarm.calLead.zero": {
+    "tr": "Başlarken",
+    "en": "At start",
+    "de": "Bei Beginn",
+    "az": "Başlayanda",
+    "ar": "عند البدء"
+  },
+  "alarm.fromCalendar": {
+    "tr": "Takvimdeki etkinliğe alarm kur",
+    "en": "Set an alarm for a calendar event",
+    "de": "Wecker für einen Kalendertermin stellen",
+    "az": "Təqvimdəki tədbirə zəng qur",
+    "ar": "اضبط منبّهًا لحدث في التقويم"
+  },
+  "alarm.fromCalendarNote": {
+    "tr": "Etkinlik telefondaki takvimlerden seçilir; başlangıcından seçilen süre önce bir kezlik alarm kurulur (tüm gün etkinlikte o gün 09.00). Takvim izni Takvim sekmesinden verilir.",
+    "en": "The event is picked from the phone's calendars; a one-time alarm is set the chosen time before it starts (09:00 that day for all-day events). Calendar access is granted in the Calendar tab.",
+    "de": "Der Termin wird aus den Kalendern des Telefons gewählt; ein einmaliger Wecker klingelt die gewählte Zeit vor Beginn (bei ganztägigen Terminen an dem Tag um 09:00). Kalenderzugriff wird im Tab Kalender erteilt.",
+    "az": "Tədbir telefondakı təqvimlərdən seçilir; başlanğıcından seçilən müddət əvvəl birdəfəlik zəng qurulur (bütün günlük tədbirdə həmin gün 09:00). Təqvim icazəsi Təqvim bölməsindən verilir.",
+    "ar": "يُختار الحدث من تقويمات الهاتف؛ ويُضبط منبّه لمرة واحدة قبل بدايته بالمدة المختارة (الساعة 09:00 في ذلك اليوم للأحداث طوال اليوم). يُمنح إذن التقويم من تبويب التقويم."
+  },
+  "alarm.fromCalendarPast": {
+    "tr": "Bu etkinliğin alarm zamanı geçti.",
+    "en": "The alarm time for this event has passed.",
+    "de": "Die Weckzeit für diesen Termin ist vorbei.",
+    "az": "Bu tədbirin zəng vaxtı keçib.",
+    "ar": "انقضى وقت المنبّه لهذا الحدث."
   }
 }

@@ -61,7 +61,7 @@ import java.time.LocalTime
 
 /** Alarmlar (iOS'taki AlarmsView): liste, aç/kapat, dokununca düzenle, + ile yeni; uygulama kapalıyken de çalar */
 @Composable
-fun AlarmScreen() {
+fun AlarmScreen(onGeo: () -> Unit = {}) {
     val context = LocalContext.current
     var items by remember { mutableStateOf(AlarmItem.load()) }
     var editing by remember { mutableStateOf<AlarmItem?>(null) }
@@ -101,6 +101,35 @@ fun AlarmScreen() {
             }
         }
         if (quickMsg.isNotEmpty()) Text(quickMsg, color = Theme.c.accent, fontSize = 13.sp)
+        // Takvimdeki etkinliğe alarm ve konuma bağlı hatırlatıcı (rakip analizi listesi #93)
+        var calLead by remember { mutableStateOf(Prefs.store.getInt(CalendarAlarm.LEAD_KEY, 15)) }
+        var pickingEvent by remember { mutableStateOf(false) }
+        AppCard(padding = 12) {
+            ChoiceRow(L("alarm.calLead"), if (calLead == 0) L("alarm.calLead.zero") else T("alarm.preMin", calLead),
+                CalendarAlarm.LEADS.map { it to if (it == 0) L("alarm.calLead.zero") else T("alarm.preMin", it) }) {
+                calLead = it
+                Prefs.store.edit().putInt(CalendarAlarm.LEAD_KEY, it).apply()
+            }
+            Text("📅 " + L("alarm.fromCalendar"), Modifier.fillMaxWidth().clickable {
+                DeviceCalendar.reload(context)
+                pickingEvent = true
+            }.padding(vertical = 8.dp), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+            Text("📍 " + L("geo.title"), Modifier.fillMaxWidth().clickable { onGeo() }.padding(vertical = 8.dp),
+                color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+            Text(L("alarm.fromCalendarNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        if (pickingEvent) {
+            CalendarEventDialog(onDismiss = { pickingEvent = false }) { title, start ->
+                pickingEvent = false
+                val item = CalendarAlarm.item(title, start, calLead)
+                if (item == null) quickMsg = L("alarm.fromCalendarPast")
+                else {
+                    update(items + item)
+                    quickMsg = T("alarm.quickSet", Fmt.longDate(start.toLocalDate()) + " " + item.timeText)
+                    BadgeStore.hit(Badge.ALARM)
+                }
+            }
+        }
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(L("tools.alarm.listHeading"), Modifier.weight(1f), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
             IconButton(onClick = {

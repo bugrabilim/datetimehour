@@ -7,31 +7,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir."
+            "value": "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir. Konuma bağlı hatırlatıcılarda bir yere varışınızı ya da ayrılışınızı iPhone kendisi izler."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "To show prayer times, the qibla direction, nearby mosques and the weather for where you are. Prayer times and the qibla are calculated on your phone; for the weather and the mosque search only an approximate location is sent to Apple's services."
+            "value": "To show prayer times, the qibla direction, nearby mosques and the weather for where you are. Prayer times and the qibla are calculated on your phone; for the weather and the mosque search only an approximate location is sent to Apple's services. For location reminders, iPhone itself detects when you arrive at or leave a place."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Um Gebetszeiten, die Qibla-Richtung, Moscheen in der Nähe und das Wetter für Ihren Ort anzuzeigen. Gebetszeiten und Qibla werden auf dem Telefon berechnet; für Wetter und Moscheesuche wird nur ein ungefährer Ort an Apples Dienste gesendet."
+            "value": "Um Gebetszeiten, die Qibla-Richtung, Moscheen in der Nähe und das Wetter für Ihren Ort anzuzeigen. Gebetszeiten und Qibla werden auf dem Telefon berechnet; für Wetter und Moscheesuche wird nur ein ungefährer Ort an Apples Dienste gesendet. Bei Ortserinnerungen erkennt das iPhone selbst, wann Sie einen Ort erreichen oder verlassen."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Olduğunuz yerin namaz vaxtlarını, qiblə istiqamətini, yaxınlıqdakı məscidləri və havasını göstərmək üçün. Vaxtlar və qiblə telefonda hesablanır; hava və məscid axtarışı üçün yalnız təxmini məkan Apple-ın xidmətlərinə göndərilir."
+            "value": "Olduğunuz yerin namaz vaxtlarını, qiblə istiqamətini, yaxınlıqdakı məscidləri və havasını göstərmək üçün. Vaxtlar və qiblə telefonda hesablanır; hava və məscid axtarışı üçün yalnız təxmini məkan Apple-ın xidmətlərinə göndərilir. Məkana bağlı xatırladıcılarda bir yerə çatmanızı ya da ayrılmanızı iPhone özü izləyir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لعرض أوقات الصلاة واتجاه القبلة والمساجد القريبة والطقس في مكانك. تُحسب الأوقات والقبلة على هاتفك؛ ولأجل الطقس والبحث عن المساجد يُرسل موقع تقريبي فقط إلى خدمات Apple."
+            "value": "لعرض أوقات الصلاة واتجاه القبلة والمساجد القريبة والطقس في مكانك. تُحسب الأوقات والقبلة على هاتفك؛ ولأجل الطقس والبحث عن المساجد يُرسل موقع تقريبي فقط إلى خدمات Apple. في تذكيرات الموقع، يكتشف iPhone نفسه وصولك إلى مكان أو مغادرته."
           }
         }
       }

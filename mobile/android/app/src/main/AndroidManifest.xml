@@ -3,6 +3,9 @@
 
     <!-- "Konumumu kullan" (yaklaşık konum yeterli; konum telefonda kalır) -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Konuma bağlı hatırlatıcı (#93): bölge izleme kesin ve "her zaman" konum ister; yalnız hatırlatıcı eklenirken istenir -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <!-- Hava durumu (Open-Meteo) ve e-posta listesi -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Telefondaki takvimler (Google dahil): yalnız "Telefonumdaki takvimleri göster" ile istenir; silmek için yazma -->
@@ -375,6 +378,7 @@
         <!-- Vakit bildirimleri: alarm geldiğinde bildirim + zil/duyuru; açılış, saat değişikliği ve güncellemede
              plan yeniden kurulur -->
         <receiver android:name=".PrayerAlarmReceiver" android:exported="false" />
+        <receiver android:name=".GeoAlarmReceiver" android:exported="false" />
         <receiver android:name=".FeatureAlarmReceiver" android:exported="false" />
         <receiver android:name=".PrayerRescheduleReceiver" android:exported="true">
             <intent-filter>

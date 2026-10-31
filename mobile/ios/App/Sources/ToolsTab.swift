@@ -300,6 +300,8 @@ struct AlarmsView: View {
     @State private var editing: AlarmItem?
     @State private var denied = false
     @State private var quickMsg = ""
+    @State private var pickingEvent = false
+    @AppStorage(CalendarAlarm.leadKey) private var calLead = 15
 
     var body: some View {
         List {
@@ -315,6 +317,22 @@ struct AlarmsView: View {
                     }
                 }
                 if !quickMsg.isEmpty { Text(quickMsg).font(.footnote).foregroundStyle(Theme.accent) }
+            }
+            // Takvimdeki etkinliğe alarm ve konuma bağlı hatırlatıcı (rakip analizi listesi #93)
+            Section {
+                Picker(L("alarm.calLead"), selection: $calLead) {
+                    ForEach(CalendarAlarm.leads, id: \.self) { m in
+                        Text(m == 0 ? L("alarm.calLead.zero") : T("alarm.preMin", m)).tag(m)
+                    }
+                }
+                Button("📅 " + L("alarm.fromCalendar")) { pickingEvent = true }
+                NavigationLink {
+                    GeoAlarmsView()
+                } label: {
+                    Label(L("geo.title"), systemImage: "mappin.and.ellipse")
+                }
+            } footer: {
+                Text(L("alarm.fromCalendarNote"))
             }
             if items.isEmpty {
                 Text(L("tools.alarm.none")).foregroundStyle(Theme.muted)
@@ -368,6 +386,18 @@ struct AlarmsView: View {
                     editing = AlarmItem(hour: now.hour ?? 7, minute: now.minute ?? 0)
                 } label: { Image(systemName: "plus") }
                 .accessibilityLabel(L("tools.alarm.add"))
+            }
+        }
+        .sheet(isPresented: $pickingEvent) {
+            CalendarEventPicker { title, start, allDay in
+                if let item = CalendarAlarm.item(title: title, start: start, allDay: allDay, lead: calLead) {
+                    items.append(item)
+                    items.sort { ($0.hour, $0.minute) < ($1.hour, $1.minute) }
+                    quickMsg = T("alarm.quickSet", Fmt.longDate(start) + " " + Fmt.time(Calendar.current.date(bySettingHour: item.hour, minute: item.minute, second: 0, of: start) ?? start))
+                    BadgeStore.shared.hit(.alarm)
+                } else {
+                    quickMsg = L("alarm.fromCalendarPast")
+                }
             }
         }
         .sheet(item: $editing) { item in

@@ -98,7 +98,7 @@ enum PrayerNotifier {
         guard mine == generation else { return }
 
         let hourly = FeatureNotifier.hourlyRequests()
-        let room = max(0, 63 - hourly.count)
+        let room = max(0, 63 - hourly.count - GeoAlarms.activeCount)
         let kept = Array(planned.sorted { $0.fireAt < $1.fireAt }.prefix(room))
         var requests = hourly + kept.map { p -> UNNotificationRequest in
             let content = UNMutableNotificationContent()
