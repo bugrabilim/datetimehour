@@ -83,6 +83,11 @@ class ScreenshotTest {
     @Test fun persian() = shot("fa-vakitler", Tab.PRAYER, "fa")
     @Test fun french() = shot("fr-araclar", Tab.TOOLS, "fr")
     @Test fun russian() = shot("ru-takvim", Tab.CALENDAR, "ru")
+    @Test fun japanese() = shot("ja-vakitler", Tab.PRAYER, "ja")
+    @Test fun korean() = shot("ko-saat", Tab.CLOCK, "ko")
+    @Test fun chinese() = shot("zh-takvim", Tab.CALENDAR, "zh")
+    @Test fun filipino() = shot("fil-araclar", Tab.TOOLS, "b+fil")
+    @Test fun thai() = shot("th-takvim", Tab.CALENDAR, "th")
     // Araçlar alt sayfaları
     private fun tool(name: String, route: String) {
         RuntimeEnvironment.setQualifiers("+tr")

@@ -27,7 +27,7 @@ WERKZEUGE
 WIDGETS
 • Nächstes Gebet, heutige Zeiten, analoge und digitale Uhr, Uhr und Datum; auch auf dem Sperrbildschirm
 
-In zehn Sprachen: Deutsch, Türkisch, Englisch, Aserbaidschanisch, Arabisch, Indonesisch, Urdu, Persisch, Französisch und Russisch.
+In fünfzehn Sprachen: Deutsch, Türkisch, Englisch, Aserbaidschanisch, Arabisch, Indonesisch, Urdu, Persisch, Französisch, Russisch, Japanisch, Koreanisch, Chinesisch, Filipino und Thailändisch.
 
 Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird ein ungefährer Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen.
 

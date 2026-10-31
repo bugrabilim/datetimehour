@@ -1,5 +1,5 @@
 {
- "_": "Dünya resmî tatil adlarının çevirileri (İngilizce ad → tr, de, az, ar, fr, ru, id, fa, ur); listede olmayan adlar İngilizce ve yerel adıyla gösterilir.",
+ "_": "Dünya resmî tatil adlarının çevirileri (İngilizce ad → tr, de, az, ar, fr, ru, id, fa, ur, ja, ko, zh, fil, th); listede olmayan adlar İngilizce ve yerel adıyla gösterilir.",
  "names": {
   "New Year's Day": {
    "tr": "Yılbaşı",
@@ -10,7 +10,12 @@
    "ru": "Новый год",
    "id": "Tahun Baru",
    "fa": "سال نو میلادی",
-   "ur": "نئے سال کا دن"
+   "ur": "نئے سال کا دن",
+   "ja": "元日",
+   "ko": "새해 첫날",
+   "zh": "元旦",
+   "fil": "Araw ng Bagong Taon",
+   "th": "วันขึ้นปีใหม่"
   },
   "New Year holiday": {
    "tr": "Yılbaşı tatili",
@@ -21,7 +26,12 @@
    "ru": "Новогодние каникулы",
    "id": "Libur Tahun Baru",
    "fa": "تعطیلات سال نو",
-   "ur": "نئے سال کی تعطیل"
+   "ur": "نئے سال کی تعطیل",
+   "ja": "年始休暇",
+   "ko": "새해 연휴",
+   "zh": "新年假期",
+   "fil": "Bakasyon ng Bagong Taon",
+   "th": "วันหยุดปีใหม่"
   },
   "Christmas Day": {
    "tr": "Noel",
@@ -32,7 +42,12 @@
    "ru": "Рождество",
    "id": "Hari Natal",
    "fa": "کریسمس",
-   "ur": "کرسمس"
+   "ur": "کرسمس",
+   "ja": "クリスマス",
+   "ko": "성탄절",
+   "zh": "圣诞节",
+   "fil": "Araw ng Pasko",
+   "th": "วันคริสต์มาส"
   },
   "Christmas Eve": {
    "tr": "Noel arifesi",
@@ -43,7 +58,12 @@
    "ru": "Сочельник",
    "id": "Malam Natal",
    "fa": "شب کریسمس",
-   "ur": "کرسمس کی شام"
+   "ur": "کرسمس کی شام",
+   "ja": "クリスマス・イブ",
+   "ko": "크리스마스 이브",
+   "zh": "平安夜",
+   "fil": "Bisperas ng Pasko",
+   "th": "วันคริสต์มาสอีฟ"
   },
   "Christmas Day (Orthodox)": {
    "tr": "Ortodoks Noeli",
@@ -54,7 +74,12 @@
    "ru": "Православное Рождество",
    "id": "Natal Ortodoks",
    "fa": "کریسمس ارتدکس",
-   "ur": "آرتھوڈوکس کرسمس"
+   "ur": "آرتھوڈوکس کرسمس",
+   "ja": "正教会のクリスマス",
+   "ko": "정교회 성탄절",
+   "zh": "东正教圣诞节",
+   "fil": "Pasko ng Ortodokso",
+   "th": "วันคริสต์มาส (ออร์โธดอกซ์)"
   },
   "St. Stephen's Day": {
    "tr": "Noel'in ikinci günü (Aziz Stefanos Günü)",
@@ -65,7 +90,12 @@
    "ru": "День святого Стефана",
    "id": "Hari Santo Stefanus",
    "fa": "روز قدیس استفان",
-   "ur": "سینٹ اسٹیفن کا دن"
+   "ur": "سینٹ اسٹیفن کا دن",
+   "ja": "聖ステファノの日",
+   "ko": "성 스테파노의 날",
+   "zh": "圣斯德望日",
+   "fil": "Araw ni San Esteban",
+   "th": "วันนักบุญสเทเฟน"
   },
   "Easter Monday": {
    "tr": "Paskalya Pazartesisi",
@@ -76,7 +106,12 @@
    "ru": "Пасхальный понедельник",
    "id": "Senin Paskah",
    "fa": "دوشنبهٔ عید پاک",
-   "ur": "ایسٹر پیر"
+   "ur": "ایسٹر پیر",
+   "ja": "イースター・マンデー",
+   "ko": "부활절 월요일",
+   "zh": "复活节星期一",
+   "fil": "Lunes ng Pagkabuhay",
+   "th": "วันจันทร์อีสเตอร์"
   },
   "Easter Sunday": {
    "tr": "Paskalya",
@@ -87,7 +122,12 @@
    "ru": "Пасха",
    "id": "Minggu Paskah",
    "fa": "عید پاک",
-   "ur": "ایسٹر"
+   "ur": "ایسٹر",
+   "ja": "イースター",
+   "ko": "부활절",
+   "zh": "复活节",
+   "fil": "Linggo ng Pagkabuhay",
+   "th": "วันอาทิตย์อีสเตอร์"
   },
   "Good Friday": {
    "tr": "Kutsal Cuma",
@@ -98,7 +138,12 @@
    "ru": "Страстная пятница",
    "id": "Jumat Agung",
    "fa": "جمعهٔ نیک",
-   "ur": "گڈ فرائیڈے"
+   "ur": "گڈ فرائیڈے",
+   "ja": "聖金曜日",
+   "ko": "성금요일",
+   "zh": "耶稣受难日",
+   "fil": "Biyernes Santo",
+   "th": "วันศุกร์ประเสริฐ"
   },
   "Holy Saturday": {
    "tr": "Kutsal Cumartesi",
@@ -109,7 +154,12 @@
    "ru": "Великая суббота",
    "id": "Sabtu Suci",
    "fa": "شنبهٔ مقدس",
-   "ur": "مقدس ہفتہ"
+   "ur": "مقدس ہفتہ",
+   "ja": "聖土曜日",
+   "ko": "성토요일",
+   "zh": "圣星期六",
+   "fil": "Sabado de Gloria",
+   "th": "วันเสาร์ศักดิ์สิทธิ์"
   },
   "Maundy Thursday": {
    "tr": "Kutsal Perşembe",
@@ -120,7 +170,12 @@
    "ru": "Великий четверг",
    "id": "Kamis Putih",
    "fa": "پنجشنبهٔ مقدس",
-   "ur": "مقدس جمعرات"
+   "ur": "مقدس جمعرات",
+   "ja": "聖木曜日",
+   "ko": "성목요일",
+   "zh": "濯足节",
+   "fil": "Huwebes Santo",
+   "th": "วันพฤหัสศักดิ์สิทธิ์"
   },
   "Labour Day": {
    "tr": "Emek ve Dayanışma Günü",
@@ -131,7 +186,12 @@
    "ru": "День труда",
    "id": "Hari Buruh",
    "fa": "روز کارگر",
-   "ur": "یومِ مزدور"
+   "ur": "یومِ مزدور",
+   "ja": "メーデー",
+   "ko": "노동절",
+   "zh": "劳动节",
+   "fil": "Araw ng Paggawa",
+   "th": "วันแรงงาน"
   },
   "International Workers' Day": {
    "tr": "Emek ve Dayanışma Günü",
@@ -142,7 +202,12 @@
    "ru": "День труда",
    "id": "Hari Buruh Internasional",
    "fa": "روز جهانی کارگر",
-   "ur": "مزدوروں کا عالمی دن"
+   "ur": "مزدوروں کا عالمی دن",
+   "ja": "メーデー",
+   "ko": "노동절",
+   "zh": "国际劳动节",
+   "fil": "Araw ng Paggawa",
+   "th": "วันแรงงานสากล"
   },
   "International Workers Day": {
    "tr": "Emek ve Dayanışma Günü",
@@ -153,7 +218,12 @@
    "ru": "День труда",
    "id": "Hari Buruh Internasional",
    "fa": "روز جهانی کارگر",
-   "ur": "مزدوروں کا عالمی دن"
+   "ur": "مزدوروں کا عالمی دن",
+   "ja": "メーデー",
+   "ko": "노동절",
+   "zh": "国际劳动节",
+   "fil": "Araw ng Paggawa",
+   "th": "วันแรงงานสากล"
   },
   "May Day": {
    "tr": "1 Mayıs",
@@ -164,7 +234,12 @@
    "ru": "Первомай",
    "id": "Hari Buruh (1 Mei)",
    "fa": "اول ماه مه",
-   "ur": "یکم مئی"
+   "ur": "یکم مئی",
+   "ja": "メーデー",
+   "ko": "메이데이",
+   "zh": "五一节",
+   "fil": "Unang Araw ng Mayo",
+   "th": "วันเมย์เดย์"
   },
   "Whit Monday": {
    "tr": "Pentekost Pazartesisi",
@@ -175,7 +250,12 @@
    "ru": "Духов день",
    "id": "Senin Pentakosta",
    "fa": "دوشنبهٔ پنطیکاست",
-   "ur": "پینتیکوست پیر"
+   "ur": "پینتیکوست پیر",
+   "ja": "聖霊降臨祭の月曜日",
+   "ko": "성령 강림 대축일 월요일",
+   "zh": "圣灵降临节星期一",
+   "fil": "Lunes ng Pentekostes",
+   "th": "วันจันทร์หลังเพนเทคอสต์"
   },
   "Pentecost": {
    "tr": "Pentekost",
@@ -186,7 +266,12 @@
    "ru": "Пятидесятница",
    "id": "Pentakosta",
    "fa": "پنطیکاست",
-   "ur": "پینتیکوست"
+   "ur": "پینتیکوست",
+   "ja": "聖霊降臨祭",
+   "ko": "성령 강림 대축일",
+   "zh": "圣灵降临节",
+   "fil": "Pentekostes",
+   "th": "วันเพนเทคอสต์"
   },
   "Ascension Day": {
    "tr": "Göğe Yükseliş Günü",
@@ -197,7 +282,12 @@
    "ru": "Вознесение",
    "id": "Kenaikan Isa Almasih",
    "fa": "عروج مسیح",
-   "ur": "عروجِ مسیح"
+   "ur": "عروجِ مسیح",
+   "ja": "キリスト昇天祭",
+   "ko": "예수 승천 대축일",
+   "zh": "耶稣升天节",
+   "fil": "Pag-akyat sa Langit",
+   "th": "วันเสด็จขึ้นสวรรค์"
   },
   "Epiphany": {
    "tr": "Epifani",
@@ -208,7 +298,12 @@
    "ru": "Богоявление",
    "id": "Epifani",
    "fa": "عید ظهور",
-   "ur": "ظہورِ مسیح"
+   "ur": "ظہورِ مسیح",
+   "ja": "公現祭",
+   "ko": "주님 공현 대축일",
+   "zh": "主显节",
+   "fil": "Araw ng Tatlong Hari",
+   "th": "วันสมโภชพระคริสต์แสดงองค์"
   },
   "Independence Day": {
    "tr": "Bağımsızlık Günü",
@@ -219,7 +314,12 @@
    "ru": "День независимости",
    "id": "Hari Kemerdekaan",
    "fa": "روز استقلال",
-   "ur": "یومِ آزادی"
+   "ur": "یومِ آزادی",
+   "ja": "独立記念日",
+   "ko": "독립기념일",
+   "zh": "独立日",
+   "fil": "Araw ng Kalayaan",
+   "th": "วันประกาศอิสรภาพ"
   },
   "Assumption Day": {
    "tr": "Meryem'in Göğe Kabulü",
@@ -230,7 +330,12 @@
    "ru": "Успение Богородицы",
    "id": "Maria Diangkat ke Surga",
    "fa": "عروج مریم",
-   "ur": "عروجِ مریم"
+   "ur": "عروجِ مریم",
+   "ja": "聖母被昇天祭",
+   "ko": "성모 승천 대축일",
+   "zh": "圣母升天节",
+   "fil": "Pag-akyat kay Maria sa Langit",
+   "th": "วันแม่พระรับเกียรติยกขึ้นสวรรค์"
   },
   "Assumption": {
    "tr": "Meryem'in Göğe Kabulü",
@@ -241,7 +346,12 @@
    "ru": "Успение Богородицы",
    "id": "Maria Diangkat ke Surga",
    "fa": "عروج مریم",
-   "ur": "عروجِ مریم"
+   "ur": "عروجِ مریم",
+   "ja": "聖母被昇天祭",
+   "ko": "성모 승천 대축일",
+   "zh": "圣母升天节",
+   "fil": "Pag-akyat kay Maria sa Langit",
+   "th": "วันแม่พระรับเกียรติยกขึ้นสวรรค์"
   },
   "Assumption of the Virgin Mary": {
    "tr": "Meryem'in Göğe Kabulü",
@@ -252,7 +362,12 @@
    "ru": "Успение Богородицы",
    "id": "Maria Diangkat ke Surga",
    "fa": "عروج مریم",
-   "ur": "عروجِ مریم"
+   "ur": "عروجِ مریم",
+   "ja": "聖母被昇天祭",
+   "ko": "성모 승천 대축일",
+   "zh": "圣母升天节",
+   "fil": "Pag-akyat kay Maria sa Langit",
+   "th": "วันแม่พระรับเกียรติยกขึ้นสวรรค์"
   },
   "All Saints' Day": {
    "tr": "Azizler Günü",
@@ -263,7 +378,12 @@
    "ru": "День всех святых",
    "id": "Hari Raya Semua Orang Kudus",
    "fa": "روز همهٔ قدیسان",
-   "ur": "تمام اولیا کا دن"
+   "ur": "تمام اولیا کا دن",
+   "ja": "諸聖人の日",
+   "ko": "모든 성인 대축일",
+   "zh": "诸圣节",
+   "fil": "Araw ng mga Santo",
+   "th": "วันสมโภชนักบุญทั้งหลาย"
   },
   "All Saints Day": {
    "tr": "Azizler Günü",
@@ -274,7 +394,12 @@
    "ru": "День всех святых",
    "id": "Hari Raya Semua Orang Kudus",
    "fa": "روز همهٔ قدیسان",
-   "ur": "تمام اولیا کا دن"
+   "ur": "تمام اولیا کا دن",
+   "ja": "諸聖人の日",
+   "ko": "모든 성인 대축일",
+   "zh": "诸圣节",
+   "fil": "Araw ng mga Santo",
+   "th": "วันสมโภชนักบุญทั้งหลาย"
   },
   "Constitution Day": {
    "tr": "Anayasa Günü",
@@ -285,7 +410,12 @@
    "ru": "День Конституции",
    "id": "Hari Konstitusi",
    "fa": "روز قانون اساسی",
-   "ur": "یومِ آئین"
+   "ur": "یومِ آئین",
+   "ja": "憲法記念日",
+   "ko": "제헌절",
+   "zh": "宪法日",
+   "fil": "Araw ng Konstitusyon",
+   "th": "วันรัฐธรรมนูญ"
   },
   "Corpus Christi": {
    "tr": "Corpus Christi",
@@ -296,7 +426,12 @@
    "ru": "Праздник Тела и Крови Христовых",
    "id": "Hari Raya Tubuh dan Darah Kristus",
    "fa": "عید جسم مسیح",
-   "ur": "کارپس کرسٹی"
+   "ur": "کارپس کرسٹی",
+   "ja": "聖体祭",
+   "ko": "성체 성혈 대축일",
+   "zh": "基督圣体节",
+   "fil": "Corpus Christi",
+   "th": "วันสมโภชพระวรกายพระคริสต์"
   },
   "Immaculate Conception": {
    "tr": "Lekesiz Gebelik Bayramı",
@@ -307,7 +442,12 @@
    "ru": "Непорочное зачатие",
    "id": "Maria Dikandung Tanpa Noda",
    "fa": "لقاح مطهر",
-   "ur": "بے داغ حمل"
+   "ur": "بے داغ حمل",
+   "ja": "無原罪の御宿り",
+   "ko": "원죄 없이 잉태되신 성모 마리아 대축일",
+   "zh": "圣母无原罪始胎节",
+   "fil": "Kalinis-linisang Paglilihi",
+   "th": "วันสมโภชแม่พระผู้ปฏิสนธินิรมล"
   },
   "National Day": {
    "tr": "Ulusal Gün",
@@ -318,7 +458,12 @@
    "ru": "Национальный день",
    "id": "Hari Nasional",
    "fa": "روز ملی",
-   "ur": "قومی دن"
+   "ur": "قومی دن",
+   "ja": "建国記念日",
+   "ko": "국경일",
+   "zh": "国庆日",
+   "fil": "Pambansang Araw",
+   "th": "วันชาติ"
   },
   "National Holiday": {
    "tr": "Ulusal Bayram",
@@ -329,7 +474,12 @@
    "ru": "Национальный праздник",
    "id": "Hari Libur Nasional",
    "fa": "تعطیل ملی",
-   "ur": "قومی تعطیل"
+   "ur": "قومی تعطیل",
+   "ja": "国の祝日",
+   "ko": "국경일",
+   "zh": "国家节日",
+   "fil": "Pambansang Pista Opisyal",
+   "th": "วันหยุดราชการ"
   },
   "International Women's Day": {
    "tr": "Dünya Kadınlar Günü",
@@ -340,7 +490,12 @@
    "ru": "Международный женский день",
    "id": "Hari Perempuan Internasional",
    "fa": "روز جهانی زن",
-   "ur": "خواتین کا عالمی دن"
+   "ur": "خواتین کا عالمی دن",
+   "ja": "国際女性デー",
+   "ko": "세계 여성의 날",
+   "zh": "国际妇女节",
+   "fil": "Pandaigdigang Araw ng Kababaihan",
+   "th": "วันสตรีสากล"
   },
   "Republic Day": {
    "tr": "Cumhuriyet Günü",
@@ -351,7 +506,12 @@
    "ru": "День Республики",
    "id": "Hari Republik",
    "fa": "روز جمهوری",
-   "ur": "یومِ جمہوریہ"
+   "ur": "یومِ جمہوریہ",
+   "ja": "共和国記念日",
+   "ko": "공화국의 날",
+   "zh": "共和国日",
+   "fil": "Araw ng Republika",
+   "th": "วันสาธารณรัฐ"
   },
   "Armistice Day": {
    "tr": "Ateşkes Günü",
@@ -362,7 +522,12 @@
    "ru": "День перемирия",
    "id": "Hari Gencatan Senjata",
    "fa": "روز آتش‌بس",
-   "ur": "یومِ جنگ بندی"
+   "ur": "یومِ جنگ بندی",
+   "ja": "休戦記念日",
+   "ko": "휴전기념일",
+   "zh": "停战纪念日",
+   "fil": "Araw ng Armistisyo",
+   "th": "วันสงบศึก"
   },
   "Liberation Day": {
    "tr": "Kurtuluş Günü",
@@ -373,7 +538,12 @@
    "ru": "День освобождения",
    "id": "Hari Pembebasan",
    "fa": "روز رهایی",
-   "ur": "یومِ نجات"
+   "ur": "یومِ نجات",
+   "ja": "解放記念日",
+   "ko": "해방기념일",
+   "zh": "解放日",
+   "fil": "Araw ng Paglaya",
+   "th": "วันปลดปล่อย"
   },
   "Freedom Day": {
    "tr": "Özgürlük Günü",
@@ -384,7 +554,12 @@
    "ru": "День свободы",
    "id": "Hari Kebebasan",
    "fa": "روز آزادی",
-   "ur": "یومِ حریت"
+   "ur": "یومِ حریت",
+   "ja": "自由の日",
+   "ko": "자유의 날",
+   "zh": "自由日",
+   "fil": "Araw ng Kalayaan",
+   "th": "วันเสรีภาพ"
   },
   "Victory Day": {
    "tr": "Zafer Günü",
@@ -395,7 +570,12 @@
    "ru": "День Победы",
    "id": "Hari Kemenangan",
    "fa": "روز پیروزی",
-   "ur": "یومِ فتح"
+   "ur": "یومِ فتح",
+   "ja": "戦勝記念日",
+   "ko": "전승기념일",
+   "zh": "胜利日",
+   "fil": "Araw ng Tagumpay",
+   "th": "วันแห่งชัยชนะ"
   },
   "Victory in Europe Day": {
    "tr": "Avrupa'da Zafer Günü",
@@ -406,7 +586,12 @@
    "ru": "День Победы в Европе",
    "id": "Hari Kemenangan di Eropa",
    "fa": "روز پیروزی در اروپا",
-   "ur": "یورپ میں یومِ فتح"
+   "ur": "یورپ میں یومِ فتح",
+   "ja": "ヨーロッパ戦勝記念日",
+   "ko": "유럽 전승 기념일",
+   "zh": "欧战胜利纪念日",
+   "fil": "Araw ng Tagumpay sa Europa",
+   "th": "วันแห่งชัยชนะในยุโรป"
   },
   "Children's Day": {
    "tr": "Çocuk Bayramı",
@@ -417,7 +602,12 @@
    "ru": "День детей",
    "id": "Hari Anak",
    "fa": "روز کودک",
-   "ur": "بچوں کا دن"
+   "ur": "بچوں کا دن",
+   "ja": "こどもの日",
+   "ko": "어린이날",
+   "zh": "儿童节",
+   "fil": "Araw ng mga Bata",
+   "th": "วันเด็ก"
   },
   "Saint George's Day": {
    "tr": "Aziz Yorgi Günü",
@@ -428,7 +618,12 @@
    "ru": "День святого Георгия",
    "id": "Hari Santo Georgius",
    "fa": "روز قدیس جرج",
-   "ur": "سینٹ جارج کا دن"
+   "ur": "سینٹ جارج کا دن",
+   "ja": "聖ゲオルギオスの日",
+   "ko": "성 조지의 날",
+   "zh": "圣乔治日",
+   "fil": "Araw ni San Jorge",
+   "th": "วันนักบุญจอร์จ"
   },
   "Defender of the Fatherland Day": {
    "tr": "Vatan Savunucuları Günü",
@@ -439,7 +634,12 @@
    "ru": "День защитника Отечества",
    "id": "Hari Pembela Tanah Air",
    "fa": "روز مدافعان میهن",
-   "ur": "محافظینِ وطن کا دن"
+   "ur": "محافظینِ وطن کا دن",
+   "ja": "祖国防衛者の日",
+   "ko": "조국 수호자의 날",
+   "zh": "祖国保卫者日",
+   "fil": "Araw ng Tagapagtanggol ng Bayan",
+   "th": "วันผู้พิทักษ์มาตุภูมิ"
   },
   "Chinese New Year": {
    "tr": "Çin Yeni Yılı",
@@ -450,7 +650,12 @@
    "ru": "Китайский Новый год",
    "id": "Tahun Baru Imlek",
    "fa": "سال نو چینی",
-   "ur": "چینی نیا سال"
+   "ur": "چینی نیا سال",
+   "ja": "春節",
+   "ko": "춘절",
+   "zh": "春节",
+   "fil": "Bagong Taon ng mga Tsino",
+   "th": "วันตรุษจีน"
   },
   "Dragon Boat Festival": {
    "tr": "Ejderha Teknesi Festivali",
@@ -461,7 +666,12 @@
    "ru": "Праздник драконьих лодок",
    "id": "Festival Perahu Naga",
    "fa": "جشنوارهٔ قایق اژدها",
-   "ur": "ڈریگن بوٹ تہوار"
+   "ur": "ڈریگن بوٹ تہوار",
+   "ja": "端午節",
+   "ko": "단오절",
+   "zh": "端午节",
+   "fil": "Pista ng Bangkang Dragon",
+   "th": "เทศกาลไหว้บ๊ะจ่าง"
   },
   "Eid Al-Adha": {
    "tr": "Kurban Bayramı",
@@ -472,7 +682,12 @@
    "ru": "Курбан-байрам",
    "id": "Iduladha",
    "fa": "عید قربان",
-   "ur": "عید الاضحیٰ"
+   "ur": "عید الاضحیٰ",
+   "ja": "イード・アル＝アドハー（犠牲祭）",
+   "ko": "이드 알아드하",
+   "zh": "宰牲节",
+   "fil": "Eid al-Adha",
+   "th": "วันอีดิ้ลอัฎฮา"
   },
   "Eid al-Adha": {
    "tr": "Kurban Bayramı",
@@ -483,7 +698,12 @@
    "ru": "Курбан-байрам",
    "id": "Iduladha",
    "fa": "عید قربان",
-   "ur": "عید الاضحیٰ"
+   "ur": "عید الاضحیٰ",
+   "ja": "イード・アル＝アドハー（犠牲祭）",
+   "ko": "이드 알아드하",
+   "zh": "宰牲节",
+   "fil": "Eid al-Adha",
+   "th": "วันอีดิ้ลอัฎฮา"
   },
   "Eid al-Fitr": {
    "tr": "Ramazan Bayramı",
@@ -494,7 +714,12 @@
    "ru": "Ураза-байрам",
    "id": "Idulfitri",
    "fa": "عید فطر",
-   "ur": "عید الفطر"
+   "ur": "عید الفطر",
+   "ja": "イード・アル＝フィトル（断食明け祭）",
+   "ko": "이드 알피트르",
+   "zh": "开斋节",
+   "fil": "Eid al-Fitr",
+   "th": "วันอีดิ้ลฟิฏรี"
   },
   "Eid Al-Fitr": {
    "tr": "Ramazan Bayramı",
@@ -505,7 +730,12 @@
    "ru": "Ураза-байрам",
    "id": "Idulfitri",
    "fa": "عید فطر",
-   "ur": "عید الفطر"
+   "ur": "عید الفطر",
+   "ja": "イード・アル＝フィトル（断食明け祭）",
+   "ko": "이드 알피트르",
+   "zh": "开斋节",
+   "fil": "Eid al-Fitr",
+   "th": "วันอีดิ้ลฟิฏรี"
   },
   "Islamic New Year": {
    "tr": "Hicri Yılbaşı",
@@ -516,7 +746,12 @@
    "ru": "Исламский Новый год",
    "id": "Tahun Baru Islam",
    "fa": "سال نو هجری قمری",
-   "ur": "اسلامی نیا سال"
+   "ur": "اسلامی نیا سال",
+   "ja": "イスラム暦新年",
+   "ko": "이슬람 새해",
+   "zh": "伊斯兰新年",
+   "fil": "Bagong Taon ng Islam",
+   "th": "วันขึ้นปีใหม่อิสลาม"
   },
   "Prophet Muhammad's Birthday (Tentative Date)": {
    "tr": "Mevlid Kandili (yaklaşık tarih)",
@@ -527,7 +762,12 @@
    "ru": "Мавлид (предварительная дата)",
    "id": "Maulid Nabi (tanggal perkiraan)",
    "fa": "میلاد پیامبر (تاریخ تقریبی)",
-   "ur": "عید میلاد النبی (متوقع تاریخ)"
+   "ur": "عید میلاد النبی (متوقع تاریخ)",
+   "ja": "預言者ムハンマド生誕祭（暫定日）",
+   "ko": "예언자 무함마드 탄신일 (잠정)",
+   "zh": "先知穆罕默德诞辰（暂定日期）",
+   "fil": "Kaarawan ni Propeta Muhammad (pansamantalang petsa)",
+   "th": "วันประสูติท่านนบีมุฮัมมัด (วันที่ชั่วคราว)"
   },
   "Thanksgiving Day": {
    "tr": "Şükran Günü",
@@ -538,7 +778,12 @@
    "ru": "День благодарения",
    "id": "Hari Pengucapan Syukur",
    "fa": "روز شکرگزاری",
-   "ur": "یومِ تشکر"
+   "ur": "یومِ تشکر",
+   "ja": "感謝祭",
+   "ko": "추수감사절",
+   "zh": "感恩节",
+   "fil": "Araw ng Pasasalamat",
+   "th": "วันขอบคุณพระเจ้า"
   },
   "Thanksgiving": {
    "tr": "Şükran Günü",
@@ -549,7 +794,12 @@
    "ru": "День благодарения",
    "id": "Hari Pengucapan Syukur",
    "fa": "روز شکرگزاری",
-   "ur": "یومِ تشکر"
+   "ur": "یومِ تشکر",
+   "ja": "感謝祭",
+   "ko": "추수감사절",
+   "zh": "感恩节",
+   "fil": "Araw ng Pasasalamat",
+   "th": "วันขอบคุณพระเจ้า"
   },
   "Memorial Day": {
    "tr": "Anma Günü",
@@ -560,7 +810,12 @@
    "ru": "День памяти",
    "id": "Hari Peringatan",
    "fa": "روز یادبود",
-   "ur": "یومِ یادگار"
+   "ur": "یومِ یادگار",
+   "ja": "メモリアル・デー（戦没将兵追悼記念日）",
+   "ko": "메모리얼 데이 (현충일)",
+   "zh": "阵亡将士纪念日",
+   "fil": "Memorial Day (Araw ng Paggunita)",
+   "th": "วันรำลึกทหารผ่านศึก"
   },
   "Labor Day": {
    "tr": "İşçi Bayramı (ABD)",
@@ -571,7 +826,12 @@
    "ru": "День труда (США)",
    "id": "Hari Buruh (AS)",
    "fa": "روز کارگر (آمریکا)",
-   "ur": "یومِ مزدور (امریکہ)"
+   "ur": "یومِ مزدور (امریکہ)",
+   "ja": "レイバー・デー（米国の労働者の日）",
+   "ko": "노동절 (미국)",
+   "zh": "劳动节（美国）",
+   "fil": "Labor Day (Araw ng Manggagawa sa US)",
+   "th": "วันแรงงาน (สหรัฐอเมริกา)"
   },
   "Early May Bank Holiday": {
    "tr": "Mayıs başı resmî tatili",
@@ -582,7 +842,12 @@
    "ru": "Майский банковский выходной",
    "id": "Libur Bank Awal Mei",
    "fa": "تعطیل بانکی اوایل مه",
-   "ur": "مئی کے آغاز کی سرکاری تعطیل"
+   "ur": "مئی کے آغاز کی سرکاری تعطیل",
+   "ja": "5月初旬のバンクホリデー",
+   "ko": "5월 초 공휴일",
+   "zh": "五月初银行假日",
+   "fil": "Bank Holiday sa Unang Bahagi ng Mayo",
+   "th": "วันหยุดธนาคารต้นเดือนพฤษภาคม"
   },
   "Spring Bank Holiday": {
    "tr": "Bahar resmî tatili",
@@ -593,7 +858,12 @@
    "ru": "Весенний банковский выходной",
    "id": "Libur Bank Musim Semi",
    "fa": "تعطیل بانکی بهاری",
-   "ur": "بہار کی سرکاری تعطیل"
+   "ur": "بہار کی سرکاری تعطیل",
+   "ja": "春のバンクホリデー",
+   "ko": "봄 공휴일",
+   "zh": "春季银行假日",
+   "fil": "Bank Holiday sa Tagsibol",
+   "th": "วันหยุดธนาคารฤดูใบไม้ผลิ"
   },
   "German Unity Day": {
    "tr": "Alman Birliği Günü",
@@ -604,7 +874,12 @@
    "ru": "День германского единства",
    "id": "Hari Persatuan Jerman",
    "fa": "روز وحدت آلمان",
-   "ur": "جرمن اتحاد کا دن"
+   "ur": "جرمن اتحاد کا دن",
+   "ja": "ドイツ統一の日",
+   "ko": "독일 통일의 날",
+   "zh": "德国统一日",
+   "fil": "Araw ng Pagkakaisa ng Alemanya",
+   "th": "วันเอกภาพเยอรมัน"
   },
   "Bastille Day": {
    "tr": "Bastille Günü (Fransa Ulusal Bayramı)",
@@ -615,7 +890,12 @@
    "ru": "День взятия Бастилии",
    "id": "Hari Bastille",
    "fa": "روز باستیل",
-   "ur": "باستیل ڈے"
+   "ur": "باستیل ڈے",
+   "ja": "フランス革命記念日（パリ祭）",
+   "ko": "프랑스 혁명 기념일",
+   "zh": "法国国庆日",
+   "fil": "Araw ng Bastille",
+   "th": "วันบัสตีย์"
   },
   "King's Day": {
    "tr": "Kral Günü",
@@ -626,7 +906,12 @@
    "ru": "День короля",
    "id": "Hari Raja",
    "fa": "روز پادشاه",
-   "ur": "بادشاہ کا دن"
+   "ur": "بادشاہ کا دن",
+   "ja": "国王の日",
+   "ko": "국왕의 날",
+   "zh": "国王节",
+   "fil": "Araw ng Hari",
+   "th": "วันพระราชา"
   },
   "Nauryz Meyramy": {
    "tr": "Nevruz",
@@ -637,7 +922,12 @@
    "ru": "Наурыз мейрамы",
    "id": "Nowruz",
    "fa": "نوروز",
-   "ur": "نوروز"
+   "ur": "نوروز",
+   "ja": "ナウルズ（ノウルーズ）",
+   "ko": "나우르즈 (노루즈)",
+   "zh": "纳吾肉孜节",
+   "fil": "Nowruz",
+   "th": "นาวรูซ"
   },
   "Clean Monday": {
    "tr": "Temiz Pazartesi",
@@ -648,7 +938,12 @@
    "ru": "Чистый понедельник",
    "id": "Senin Bersih",
    "fa": "دوشنبهٔ پاک",
-   "ur": "صاف پیر"
+   "ur": "صاف پیر",
+   "ja": "清浄なる月曜日",
+   "ko": "깨끗한 월요일",
+   "zh": "洁净星期一",
+   "fil": "Malinis na Lunes",
+   "th": "วันจันทร์บริสุทธิ์"
   },
   "Annunciation": {
    "tr": "Meryem'e Müjde",
@@ -659,7 +954,12 @@
    "ru": "Благовещение",
    "id": "Kabar Sukacita",
    "fa": "بشارت",
-   "ur": "بشارت"
+   "ur": "بشارت",
+   "ja": "受胎告知の祝日",
+   "ko": "주님 탄생 예고 대축일",
+   "zh": "天使报喜节",
+   "fil": "Pagbati ng Anghel",
+   "th": "วันแม่พระรับสาร"
   },
   "Greek Independence Day": {
    "tr": "Yunanistan Bağımsızlık Günü",
@@ -670,7 +970,12 @@
    "ru": "День независимости Греции",
    "id": "Hari Kemerdekaan Yunani",
    "fa": "روز استقلال یونان",
-   "ur": "یونان کا یومِ آزادی"
+   "ur": "یونان کا یومِ آزادی",
+   "ja": "ギリシャ独立記念日",
+   "ko": "그리스 독립기념일",
+   "zh": "希腊独立日",
+   "fil": "Araw ng Kalayaan ng Gresya",
+   "th": "วันประกาศอิสรภาพกรีซ"
   },
   "Ochi Day": {
    "tr": "Ohi Günü",
@@ -681,7 +986,12 @@
    "ru": "День «Охи»",
    "id": "Hari Ochi",
    "fa": "روز اوخی",
-   "ur": "اوخی ڈے"
+   "ur": "اوخی ڈے",
+   "ja": "オーヒの日",
+   "ko": "오히의 날",
+   "zh": "“不”日（Ochi日）",
+   "fil": "Araw ng Ochi",
+   "th": "วันโอฮี"
   },
   "Labour Day (Orthodox)": {
    "tr": "Emek ve Dayanışma Günü",
@@ -692,7 +1002,12 @@
    "ru": "День труда",
    "id": "Hari Buruh",
    "fa": "روز کارگر",
-   "ur": "یومِ مزدور"
+   "ur": "یومِ مزدور",
+   "ja": "メーデー",
+   "ko": "노동절",
+   "zh": "劳动节",
+   "fil": "Araw ng Paggawa",
+   "th": "วันแรงงาน"
   },
   "Veterans Day": {
    "tr": "Gaziler Günü",
@@ -703,7 +1018,12 @@
    "ru": "День ветеранов",
    "id": "Hari Veteran",
    "fa": "روز کهنه‌سربازان",
-   "ur": "سابق فوجیوں کا دن"
+   "ur": "سابق فوجیوں کا دن",
+   "ja": "退役軍人の日",
+   "ko": "재향군인의 날",
+   "zh": "退伍军人节",
+   "fil": "Araw ng mga Beterano",
+   "th": "วันทหารผ่านศึก"
   },
   "Martin Luther King, Jr. Day": {
    "tr": "Martin Luther King Günü",
@@ -714,7 +1034,12 @@
    "ru": "День Мартина Лютера Кинга",
    "id": "Hari Martin Luther King",
    "fa": "روز مارتین لوتر کینگ",
-   "ur": "مارٹن لوتھر کنگ ڈے"
+   "ur": "مارٹن لوتھر کنگ ڈے",
+   "ja": "キング牧師記念日",
+   "ko": "마틴 루서 킹 데이",
+   "zh": "马丁·路德·金纪念日",
+   "fil": "Araw ni Martin Luther King Jr.",
+   "th": "วันมาร์ติน ลูเธอร์ คิง จูเนียร์"
   },
   "Presidents Day": {
    "tr": "Başkanlar Günü",
@@ -725,7 +1050,12 @@
    "ru": "День президентов",
    "id": "Hari Presiden",
    "fa": "روز رؤسای جمهور",
-   "ur": "صدور کا دن"
+   "ur": "صدور کا دن",
+   "ja": "大統領の日",
+   "ko": "대통령의 날",
+   "zh": "总统日",
+   "fil": "Araw ng mga Pangulo",
+   "th": "วันประธานาธิบดี"
   },
   "Juneteenth National Independence Day": {
    "tr": "Juneteenth (Köleliğin Sonu Günü)",
@@ -736,7 +1066,12 @@
    "ru": "Джунтин (день отмены рабства)",
    "id": "Juneteenth (Hari Akhir Perbudakan)",
    "fa": "جون‌تینث (روز پایان برده‌داری)",
-   "ur": "جونٹینتھ (غلامی کے خاتمے کا دن)"
+   "ur": "جونٹینتھ (غلامی کے خاتمے کا دن)",
+   "ja": "ジューンティーンス（奴隷解放記念日）",
+   "ko": "준틴스 (노예 해방 기념일)",
+   "zh": "六月节（奴隶解放纪念日）",
+   "fil": "Juneteenth (Araw ng Pagpapalaya)",
+   "th": "วันจูนทีนท์ (วันเลิกทาส)"
   },
   "Canada Day": {
    "tr": "Kanada Günü",
@@ -747,7 +1082,12 @@
    "ru": "День Канады",
    "id": "Hari Kanada",
    "fa": "روز کانادا",
-   "ur": "کینیڈا ڈے"
+   "ur": "کینیڈا ڈے",
+   "ja": "カナダ・デー",
+   "ko": "캐나다 데이",
+   "zh": "加拿大日",
+   "fil": "Araw ng Canada",
+   "th": "วันแคนาดา"
   },
   "Victoria Day": {
    "tr": "Victoria Günü",
@@ -758,7 +1098,12 @@
    "ru": "День Виктории",
    "id": "Hari Victoria",
    "fa": "روز ویکتوریا",
-   "ur": "وکٹوریہ ڈے"
+   "ur": "وکٹوریہ ڈے",
+   "ja": "ヴィクトリア・デー",
+   "ko": "빅토리아 데이",
+   "zh": "维多利亚日",
+   "fil": "Araw ni Victoria",
+   "th": "วันวิกตอเรีย"
   },
   "Australia Day": {
    "tr": "Avustralya Günü",
@@ -769,7 +1114,12 @@
    "ru": "День Австралии",
    "id": "Hari Australia",
    "fa": "روز استرالیا",
-   "ur": "آسٹریلیا ڈے"
+   "ur": "آسٹریلیا ڈے",
+   "ja": "オーストラリア・デー",
+   "ko": "오스트레일리아 데이",
+   "zh": "澳大利亚日",
+   "fil": "Araw ng Australia",
+   "th": "วันชาติออสเตรเลีย"
   },
   "Anzac Day": {
    "tr": "Anzak Günü",
@@ -780,7 +1130,12 @@
    "ru": "День АНЗАК",
    "id": "Hari Anzac",
    "fa": "روز آنزاک",
-   "ur": "انزیک ڈے"
+   "ur": "انزیک ڈے",
+   "ja": "アンザック・デー",
+   "ko": "안작 데이",
+   "zh": "澳新军团日",
+   "fil": "Anzac Day",
+   "th": "วันแอนแซก"
   },
   "Saint Patrick's Day": {
    "tr": "Aziz Patrick Günü",
@@ -791,7 +1146,12 @@
    "ru": "День святого Патрика",
    "id": "Hari Santo Patrick",
    "fa": "روز سنت پاتریک",
-   "ur": "سینٹ پیٹرک ڈے"
+   "ur": "سینٹ پیٹرک ڈے",
+   "ja": "聖パトリックの祝日",
+   "ko": "성 패트릭의 날",
+   "zh": "圣帕特里克节",
+   "fil": "Araw ni San Patricio",
+   "th": "วันนักบุญแพทริก"
   },
   "Mother's Day": {
    "tr": "Anneler Günü",
@@ -802,7 +1162,12 @@
    "ru": "День матери",
    "id": "Hari Ibu",
    "fa": "روز مادر",
-   "ur": "ماؤں کا دن"
+   "ur": "ماؤں کا دن",
+   "ja": "母の日",
+   "ko": "어머니날",
+   "zh": "母亲节",
+   "fil": "Araw ng mga Ina",
+   "th": "วันแม่"
   },
   "Mid-Autumn Festival": {
    "tr": "Sonbahar Ortası Festivali",
@@ -813,7 +1178,12 @@
    "ru": "Праздник середины осени",
    "id": "Festival Pertengahan Musim Gugur",
    "fa": "جشنوارهٔ نیمهٔ پاییز",
-   "ur": "وسطِ خزاں کا تہوار"
+   "ur": "وسطِ خزاں کا تہوار",
+   "ja": "中秋節",
+   "ko": "중추절",
+   "zh": "中秋节",
+   "fil": "Pista ng Kalagitnaan ng Taglagas",
+   "th": "เทศกาลไหว้พระจันทร์"
   },
   "Lunar New Year": {
    "tr": "Ay Yeni Yılı",
@@ -824,7 +1194,12 @@
    "ru": "Лунный Новый год",
    "id": "Tahun Baru Imlek",
    "fa": "سال نو قمری (شرق آسیا)",
-   "ur": "قمری نیا سال (مشرقی ایشیا)"
+   "ur": "قمری نیا سال (مشرقی ایشیا)",
+   "ja": "旧正月",
+   "ko": "설날",
+   "zh": "农历新年",
+   "fil": "Lunar New Year",
+   "th": "วันตรุษจีน"
   },
   "Chinese New Year (Spring Festival)": {
    "tr": "Çin Yeni Yılı (Bahar Bayramı)",
@@ -835,7 +1210,12 @@
    "ru": "Китайский Новый год (Праздник весны)",
    "id": "Tahun Baru Imlek (Festival Musim Semi)",
    "fa": "سال نو چینی (جشن بهار)",
-   "ur": "چینی نیا سال (بہار کا تہوار)"
+   "ur": "چینی نیا سال (بہار کا تہوار)",
+   "ja": "春節",
+   "ko": "춘절",
+   "zh": "春节",
+   "fil": "Bagong Taon ng mga Tsino (Pista ng Tagsibol)",
+   "th": "วันตรุษจีน"
   },
   "Good Friday (Orthodox)": {
    "tr": "Ortodoks Kutsal Cuma",
@@ -846,7 +1226,12 @@
    "ru": "Великая пятница (православная)",
    "id": "Jumat Agung Ortodoks",
    "fa": "جمعهٔ نیک ارتدکس",
-   "ur": "آرتھوڈوکس گڈ فرائیڈے"
+   "ur": "آرتھوڈوکس گڈ فرائیڈے",
+   "ja": "正教会の聖金曜日",
+   "ko": "정교회 성금요일",
+   "zh": "东正教耶稣受难日",
+   "fil": "Biyernes Santo ng Ortodokso",
+   "th": "วันศุกร์ประเสริฐ (ออร์โธดอกซ์)"
   },
   "Easter Monday (Orthodox)": {
    "tr": "Ortodoks Paskalya Pazartesisi",
@@ -857,7 +1242,12 @@
    "ru": "Пасхальный понедельник (православный)",
    "id": "Senin Paskah Ortodoks",
    "fa": "دوشنبهٔ عید پاک ارتدکس",
-   "ur": "آرتھوڈوکس ایسٹر پیر"
+   "ur": "آرتھوڈوکس ایسٹر پیر",
+   "ja": "正教会のイースター・マンデー",
+   "ko": "정교회 부활절 월요일",
+   "zh": "东正教复活节星期一",
+   "fil": "Lunes ng Pagkabuhay ng Ortodokso",
+   "th": "วันจันทร์อีสเตอร์ (ออร์โธดอกซ์)"
   },
   "Unity Day": {
    "tr": "Birlik Günü",
@@ -868,7 +1258,12 @@
    "ru": "День единства",
    "id": "Hari Persatuan",
    "fa": "روز وحدت",
-   "ur": "یومِ اتحاد"
+   "ur": "یومِ اتحاد",
+   "ja": "統一の日",
+   "ko": "통합의 날",
+   "zh": "团结日",
+   "fil": "Araw ng Pagkakaisa",
+   "th": "วันเอกภาพ"
   },
   "Russia Day": {
    "tr": "Rusya Günü",
@@ -879,7 +1274,12 @@
    "ru": "День России",
    "id": "Hari Rusia",
    "fa": "روز روسیه",
-   "ur": "روس کا دن"
+   "ur": "روس کا دن",
+   "ja": "ロシアの日",
+   "ko": "러시아의 날",
+   "zh": "俄罗斯日",
+   "fil": "Araw ng Rusya",
+   "th": "วันรัสเซีย"
   },
   "Workers' Day": {
    "tr": "İşçi Bayramı",
@@ -890,7 +1290,12 @@
    "ru": "День трудящихся",
    "id": "Hari Pekerja",
    "fa": "روز کارگران",
-   "ur": "یومِ مزدور"
+   "ur": "یومِ مزدور",
+   "ja": "労働者の日",
+   "ko": "노동자의 날",
+   "zh": "劳动者节",
+   "fil": "Araw ng mga Manggagawa",
+   "th": "วันแรงงาน"
   },
   "Youth Day": {
    "tr": "Gençlik Günü",
@@ -901,7 +1306,12 @@
    "ru": "День молодёжи",
    "id": "Hari Pemuda",
    "fa": "روز جوان",
-   "ur": "یومِ نوجوانان"
+   "ur": "یومِ نوجوانان",
+   "ja": "青年の日",
+   "ko": "청년의 날",
+   "zh": "青年节",
+   "fil": "Araw ng Kabataan",
+   "th": "วันเยาวชน"
   },
   "Heritage Day": {
    "tr": "Miras Günü",
@@ -912,7 +1322,12 @@
    "ru": "День наследия",
    "id": "Hari Warisan",
    "fa": "روز میراث",
-   "ur": "ورثے کا دن"
+   "ur": "ورثے کا دن",
+   "ja": "遺産の日",
+   "ko": "유산의 날",
+   "zh": "遗产日",
+   "fil": "Araw ng Pamana",
+   "th": "วันมรดก"
   },
   "Human Rights Day": {
    "tr": "İnsan Hakları Günü",
@@ -923,7 +1338,12 @@
    "ru": "День прав человека",
    "id": "Hari Hak Asasi Manusia",
    "fa": "روز حقوق بشر",
-   "ur": "انسانی حقوق کا دن"
+   "ur": "انسانی حقوق کا دن",
+   "ja": "人権デー",
+   "ko": "인권의 날",
+   "zh": "人权日",
+   "fil": "Araw ng Karapatang Pantao",
+   "th": "วันสิทธิมนุษยชน"
   }
  }
 }

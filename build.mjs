@@ -17,17 +17,19 @@ const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
 const HOST = new URL(ORIGIN).host;
 const UMAMI_ID = process.env.UMAMI_ID ?? cfg.umamiId ?? "";
 /* Diller: tr (varsayılan) ve en zorunlu; diğerleri src/i18n/<dil>.json varsa derlenir. */
-const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
+const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
 const LANGS = ALL_LANGS.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const I = Object.fromEntries(LANGS.map((l) => [l, readJson(`src/i18n/${l}.json`)]));
 const CITIES = readJson("src/data/cities.json");
-const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский" };
+const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский", ja: "日本語", ko: "한국어", zh: "简体中文", fil: "Filipino", th: "ไทย" };
 /* Ortak liste servisinin bildiği diller (bumbagroup.com/api/liste/katil); servis yeni dil eklediğinde buraya yaz */
 const LIST_LANGS = ["tr", "en"];
 /* Sağdan sola yazılan diller */
 const RTL = ["ar", "ur", "fa"];
 const DIR = (l) => (RTL.includes(l) ? "rtl" : "ltr");
 const ARROW = (l) => (RTL.includes(l) ? "←" : "→");
+/* Liste ayırıcısı: Arapça yazılı dillerde Arapça virgül, Japonca ve Çincede ideografik virgül */
+const LSEP = (l) => (RTL.includes(l) ? "، " : ["ja", "zh"].includes(l) ? "、" : ", ");
 /* Türkçe dışındaki dillerin adresleri İngilizce tablodan türetilir: /en/ → /<dil>/ */
 const deriveRoutes = (o, l) =>
   Object.fromEntries(Object.entries(o).map(([k, v]) => [k, v.replace(/^\/en\//, `/${l}/`).replace(/^\/embed\/en\//, `/embed/${l}/`)]));
@@ -1734,8 +1736,10 @@ function buildWeather(lang) {
 /* ---------- Namaz vakitleri: konuma göre hub + 81 il sayfası (hesap tarayıcıda, prayer-calc.js) ---------- */
 const PROVINCES = readJson("src/data/provinces.json");
 const PRAYER_KEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
-/* İl adı: Arapça, Rusça ve Farsçada kendi yazısıyla (provinces.json ar/ru/fa); Türkçe ve Azericede Türkçe yazımla; diğerlerinde İ → I */
-const provName = (lang, p) => (p[lang] && ["ar", "ru", "fa"].includes(lang) ? p[lang] : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
+/* İl adı: Latin dışı yazılı dillerde kendi yazısıyla (provinces.json ar/ru/fa/ja/ko/zh/th); Türkçe ve Azericede Türkçe
+   yazımla; diğerlerinde İ → I */
+const NATIVE_PROV = ["ar", "ru", "fa", "ja", "ko", "zh", "th"];
+const provName = (lang, p) => (p[lang] && NATIVE_PROV.includes(lang) ? p[lang] : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
 const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
 
 function prayerBody(lang, prov, extra = "") {
@@ -1881,7 +1885,7 @@ function buildZone(lang, z) {
   const v = { abbr: z.a, name, offset: offTxt(z.off), pair: z.pair ? z.pair[0] : "", pairOffset: z.pair ? offTxt(z.pair[1]) : "" };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].zones }, { name: tpl(s.pageH1, v), path: zonePath(lang, z) }];
   const dst = !z.pair ? s.dstNone : tpl(z.summer ? s.dstSummer : s.dstWinter, v);
-  const regions = z.regions.length ? `<p>${esc(z.regions.map((c) => regionName(lang, c)).join(", "))}</p>` : `<p>${esc(s.usedNone)}</p>`;
+  const regions = z.regions.length ? `<p>${esc(z.regions.map((c) => regionName(lang, c)).join(LSEP(lang)))}</p>` : `<p>${esc(s.usedNone)}</p>`;
   const others = TZ_COMPARE.filter((a) => a !== z.a).map((a) => TZ_ABBRS.find((x) => x.a === a));
   const rows = others.map((o) => {
     const d = o.off - z.off;
@@ -1955,7 +1959,7 @@ function buildDst(lang) {
     const step = Math.abs(r.to - r.from);
     const tplKey = r.to > r.from ? (step === 60 ? s.forward : s.forwardN) : (step === 60 ? s.back : s.backN);
     const change = tpl(tplKey, { from: fromT, to: toT, d: diffTxt(lang, step) }) + ` (${cityOf(r.tz)})`;
-    return `<tr data-at="${r.at}"><th scope="row">${esc(F.full(date))}</th><td><strong>${esc(s.groups[r.id])}</strong>${r.regions.length > 1 ? `<br><span class="meta">${esc(r.regions.map((c) => regionName(lang, c)).join(", "))}</span>` : ""}</td><td>${esc(change)}</td><td data-dst-left></td></tr>`;
+    return `<tr data-at="${r.at}"><th scope="row">${esc(F.full(date))}</th><td><strong>${esc(s.groups[r.id])}</strong>${r.regions.length > 1 ? `<br><span class="meta">${esc(r.regions.map((c) => regionName(lang, c)).join(LSEP(lang)))}</span>` : ""}</td><td>${esc(change)}</td><td data-dst-left></td></tr>`;
   }).join("");
   const hero = `<p class="info-sub">${esc(s.turkeyNote)}</p>`;
   const sections = `<section class="section"><div class="wrap">
@@ -1981,7 +1985,7 @@ function buildTzNews(lang) {
     const [h, p] = it.t[lang];
     const clocks = it.zones.map((z) => `<li><span class="meta">${esc(zoneName(z))}</span> <span data-live="time" data-tz="${z}" dir="ltr">--:--</span></li>`).join("");
     return `<article class="tzn-item" id="${it.id}"><h2>${esc(h)}</h2>
-      <p class="meta">${esc(tpl(s.effective, { date: F.full(it.date) }))} · ${esc(it.cc.map((c) => regionName(lang, c)).join(", "))}</p>
+      <p class="meta">${esc(tpl(s.effective, { date: F.full(it.date) }))} · ${esc(it.cc.map((c) => regionName(lang, c)).join(LSEP(lang)))}</p>
       <p>${esc(p)}</p>
       <ul class="tzn-now" aria-label="${esc(s.nowIn)}">${clocks}</ul>
       <p class="meta">${esc(tpl(s.source, { rel: it.release, date: F.full(it.releaseDate) }))}</p>
@@ -2058,12 +2062,12 @@ function buildUnix(lang) {
 
 /* ---------- Dünya resmî tatilleri (30 Ekim 2026, rakip analizi #27) ----------
    Veri src/data/world-holidays.json (Nager.Date, MIT; scripts/fetch-world-holidays.mjs ile elle güncellenir), yalnız
-   ülke genelindeki resmî tatiller. Ad: İngilizce sayfada İngilizce; ülkenin dilindeki sayfada (de: DE/AT/CH, ar: EG, fr: FR, ru: RU)
+   ülke genelindeki resmî tatiller. Ad: İngilizce sayfada İngilizce; ülkenin dilindeki sayfada (de: DE/AT/CH, ar: EG, fr: FR, ru: RU, ja: JP, zh: CN)
    yerel ad; diğerlerinde src/data/holiday-names.json çevirisi, yoksa İngilizce. Yerel ad ayrıca gösterilir. */
 const WHOL = readJson("src/data/world-holidays.json");
 const HOLNAMES = readJson("src/data/holiday-names.json").names;
 const WCC = Object.keys(WHOL.countries);
-const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"] };
+const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"] };
 const holName = (lang, cc, h) => {
   const main = lang === "en" ? h.n : (NATIVE_CC[lang] || []).includes(cc) && h.l !== h.n ? h.l : (HOLNAMES[h.n] && HOLNAMES[h.n][lang]) || h.n;
   return { main, local: h.l && h.l !== main && h.l !== h.n ? h.l : "" };
@@ -2145,7 +2149,7 @@ function buildBridge(lang) {
     if (best && y === BUILD_YEAR + 1) bestFaq = { year: y, name: best.groups.map(gname).join(" + "), leave: num(best.leave), days: best.days, dates: `${dayFmt(best.from)} – ${dayFmt(best.to)}` };
     const rows = list.map((b) => {
       const days = [...b.leaveDays.map((d) => [d, dayFmt(d)]), ...b.halfDays.map((d) => [d, tpl(s.halfNote, { date: dayFmt(d) })])].sort((x, y) => (x[0] < y[0] ? -1 : 1)).map((x) => x[1]);
-      return `<tr data-leave="${b.leave}"${b === best ? ' class="br-best"' : ""}><th scope="row">${esc(b.groups.map(gname).join(" + "))}${b === best ? ` <span class="badge">${esc(s.best)}</span>` : ""}</th><td>${esc(dayFmt(b.from))} – ${esc(dayFmt(b.to))}</td><td>${b.leave ? esc(tpl(s.leaveN, { n: num(b.leave) })) : esc(s.noLeave)}</td><td><strong>${esc(tpl(s.totalN, { n: b.days }))}</strong></td><td>${days.length ? esc(days.join(RTL.includes(lang) ? "، " : ", ")) : esc(s.none)}</td></tr>`;
+      return `<tr data-leave="${b.leave}"${b === best ? ' class="br-best"' : ""}><th scope="row">${esc(b.groups.map(gname).join(" + "))}${b === best ? ` <span class="badge">${esc(s.best)}</span>` : ""}</th><td>${esc(dayFmt(b.from))} – ${esc(dayFmt(b.to))}</td><td>${b.leave ? esc(tpl(s.leaveN, { n: num(b.leave) })) : esc(s.noLeave)}</td><td><strong>${esc(tpl(s.totalN, { n: b.days }))}</strong></td><td>${days.length ? esc(days.join(LSEP(lang))) : esc(s.none)}</td></tr>`;
     }).join("");
     return `<section class="br-year" data-br-year="${y}" aria-labelledby="br-${y}">
     <h2 id="br-${y}">${y}</h2>
@@ -2501,19 +2505,21 @@ function buildSky(lang) {
 
 /* Tarihte bugün (30 Ekim 2026, rakip analizi listesi #89): Wikidata (CC0) verisi, scripts/fetch-on-this-day.mjs ile elle
    yenilenir (derleme ağa çıkmaz). Her dil için ay başına bir dosya: { "MM-DD": [[yıl, tür, ad, açıklama, Qkimlik]] };
-   tür e olay, f kuruluş, b doğum, d ölüm. Adı o dilde olmayan kayıt o dilde gösterilmez. Sayfa derleme gününün listesini
+   tür e olay, f kuruluş, b doğum, d ölüm. Adı o dilde olmayan kayıt o dilde gösterilmez (Filipincede İngilizce ad). Sayfa derleme gününün listesini
    HTML olarak taşır; otd.js bugünün (ya da ?d=AA-GG) listesini yükler. */
 const OTD_SRC = fs.existsSync(path.join(SRC, "data", "on-this-day.json")) ? readJson("src/data/on-this-day.json") : { days: {} };
 const OTD_LIMIT = { e: 8, f: 2, b: 5, d: 5 };
 const OTD_URL = {};
+/* Filipincede Wikidata etiketleri azdır (kayıtların ~%30'u); Filipinler'de yaygın olan İngilizce ad ve açıklama kullanılır */
+const OTD_FALLBACK = { fil: "en" };
 function otdDay(lang, md) {
-  const out = { e: [], f: [], b: [], d: [] }, seen = new Set();
+  const out = { e: [], f: [], b: [], d: [] }, seen = new Set(), fb = OTD_FALLBACK[lang];
   for (const it of OTD_SRC.days[md] || []) {
-    const name = it.l && it.l[lang];
+    const own = it.l && it.l[lang], name = own || (fb && it.l && it.l[fb]);
     // Aynı öğe (ör. hem olay hem kuruluş olarak kayıtlı bir anlaşma) bir kez
     if (!name || out[it.k].length >= OTD_LIMIT[it.k] || seen.has(it.q)) continue;
     seen.add(it.q);
-    out[it.k].push([it.y, it.k, name, (it.s && it.s[lang]) || "", it.q]);
+    out[it.k].push([it.y, it.k, name, (it.s && (own ? it.s[lang] : it.s[fb])) || "", it.q]);
   }
   return [...out.e.sort((a, b) => a[0] - b[0]), ...out.f.sort((a, b) => a[0] - b[0]), ...out.b.sort((a, b) => a[0] - b[0]), ...out.d.sort((a, b) => a[0] - b[0])];
 }

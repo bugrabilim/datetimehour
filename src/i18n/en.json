@@ -502,7 +502,7 @@
     "pages": "Pages",
     "cities": "City pages",
     "about": "About",
-    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in ten languages: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French and Russian. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in fifteen languages: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino and Thai. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Clock styles",

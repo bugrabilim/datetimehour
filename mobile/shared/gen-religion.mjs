@@ -69,7 +69,7 @@ const verse = (ref) => {
 
 // Dualar: Kur'an'dan olanların Arapçası verilen sıradaki sözcükten ayet sonuna kadar (Tanzil metni değiştirilmeden)
 /* Uygulamanın dilleri (gen-strings.mjs ile aynı) */
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
 const duaSrc = JSON.parse(fs.readFileSync(path.join(SRC, "duas.json"), "utf8"));
 const duas = duaSrc.items.map((d) => {
   const out = { id: d.id, title: d.title, when: d.when, okunus: d.okunus };
@@ -93,8 +93,8 @@ const duas = duaSrc.items.map((d) => {
 
 // Esmaü'l-Hüsna, hadis, namaz rehberi, günün sözü (30 Ekim 2026)
 const esma = JSON.parse(fs.readFileSync(path.join(SRC, "esma.json"), "utf8")).items;
-/* Satır: [Arapça, Türkçe okunuş, Latin okunuş, anlam tr, en, de, az, id, ur, fa, fr, ru] (ar arayüzünde yalnız Arapça ad) */
-if (esma.length !== 99 || esma.some((r) => r.length !== 12 || r.some((x) => !x))) throw new Error("esma.json: 99 satır, 12 alan olmalı");
+/* Satır: [Arapça, Türkçe okunuş, Latin okunuş, anlam tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th] (ar arayüzünde yalnız Arapça ad) */
+if (esma.length !== 99 || esma.some((r) => r.length !== 17 || r.some((x) => !x))) throw new Error("esma.json: 99 satır, 17 alan olmalı");
 const nawawi = JSON.parse(fs.readFileSync(path.join(SRC, "source/ara-nawawi.json"), "utf8")).hadiths;
 const hadith = JSON.parse(fs.readFileSync(path.join(SRC, "hadith.json"), "utf8")).items.map((h) => {
   const src = nawawi.find((x) => x.hadithnumber === h.n);

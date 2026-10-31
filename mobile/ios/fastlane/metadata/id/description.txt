@@ -27,7 +27,7 @@ ALAT
 WIDGET
 • Salat berikutnya, jadwal hari ini, jam analog dan digital, jam dan tanggal; juga di Layar Terkunci
 
-Tersedia dalam sepuluh bahasa: Indonesia, Inggris, Turki, Jerman, Azerbaijan, Arab, Urdu, Persia, Prancis, dan Rusia.
+Tersedia dalam lima belas bahasa: Indonesia, Inggris, Turki, Jerman, Azerbaijan, Arab, Urdu, Persia, Prancis, Rusia, Jepang, Korea, Tionghoa, Filipino, dan Thai.
 
 Lokasi Anda dipakai di ponsel untuk menghitung jadwal salat; hanya untuk cuaca, lokasi perkiraan dikirim ke layanan cuaca Apple. Kalender Anda hanya dibaca bila Anda mengizinkan, dan hanya di ponsel.
 

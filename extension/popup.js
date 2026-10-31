@@ -4,9 +4,11 @@
 (function () {
   "use strict";
   var D = window.STH_DATA, P = window.sthPrayer;
-  var LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
+  var LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
   var RTL = ["ar", "ur", "fa"];
-  var ui = ((window.chrome && chrome.i18n && chrome.i18n.getUILanguage && chrome.i18n.getUILanguage()) || navigator.language || "en").slice(0, 2).toLowerCase();
+  var uiTag = ((window.chrome && chrome.i18n && chrome.i18n.getUILanguage && chrome.i18n.getUILanguage()) || navigator.language || "en").toLowerCase();
+  // Filipince üç harfli kod (fil; eski Tagalog kodu tl), diğerleri iki harf
+  var ui = /^(fil|tl)\b/.test(uiTag) ? "fil" : uiTag.slice(0, 2);
   var lang = LANGS.indexOf(ui) >= 0 ? ui : "en";
   var S = D.strings[lang];
   var ORDER = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
@@ -24,9 +26,9 @@
   var store = (window.chrome && chrome.storage && chrome.storage.local) || null;
   var state = { province: "istanbul", h12: false };
 
-  // İller: arayüz dilinde sıralı (Arapça, Rusça ve Farsçada kendi yazısıyla: p[4] ar, p[5] ru, p[6] fa)
+  // İller: arayüz dilinde sıralı (Latin dışı yazılı dillerde kendi yazısıyla: p[4] ar, p[5] ru, p[6] fa, p[7] ja, p[8] ko, p[9] zh, p[10] th)
   var sel = $("province");
-  var nameIdx = { ar: 4, ru: 5, fa: 6 }[lang];
+  var nameIdx = { ar: 4, ru: 5, fa: 6, ja: 7, ko: 8, zh: 9, th: 10 }[lang];
   D.provinces.map(function (p) { return { slug: p[0], name: nameIdx && p[nameIdx] ? p[nameIdx] : p[1] }; })
     .sort(function (a, b) { return a.name.localeCompare(b.name, lang); })
     .forEach(function (p) { var o = document.createElement("option"); o.value = p.slug; o.textContent = p.name; sel.appendChild(o); });

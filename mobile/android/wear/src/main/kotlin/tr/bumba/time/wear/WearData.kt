@@ -23,9 +23,9 @@ class WearApp : Application() {
 }
 
 /** İl (provinces.json; telefondaki listeyle aynı) */
-data class WProvince(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String, val ru: String = "", val fa: String = "") {
+data class WProvince(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String, val local: Map<String, String> = emptyMap()) {
     /** Arapça, Rusça ve Farsçada kendi yazısıyla */
-    val displayName: String get() = when (Wear.lang) { "ar" -> ar; "ru" -> ru.ifEmpty { name }; "fa" -> fa.ifEmpty { name }; else -> name }
+    val displayName: String get() = if (Wear.lang == "ar") ar else local[Wear.lang]?.ifEmpty { null } ?: name
 }
 
 /** Vakitlerin hesaplandığı yer */
@@ -68,7 +68,7 @@ object Wear {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), o.optString("ru"), o.optString("fa"))
+            WProvince(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th").associateWith { o.optString(it) })
         }.sortedWith(compareBy(java.text.Collator.getInstance(Locale.forLanguageTag("tr"))) { it.name })
         val h = JSONArray(read("hijri.json"))
         hijri = (0 until h.length()).map { i -> h.getJSONArray(i).let { Triple(LocalDate.parse(it.getString(0)).toEpochDay(), it.getInt(1), it.getInt(2)) } }
@@ -78,8 +78,8 @@ object Wear {
 
     val lang: String
         get() {
-            val l = app.resources.configuration.locales[0].language.let { if (it == "in") "id" else it }
-            return if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru")) l else "tr"
+            val l = app.resources.configuration.locales[0].language.let { when (it) { "in" -> "id"; "tl" -> "fil"; else -> it } }
+            return if (l in listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th")) l else "tr"
         }
 
     @SuppressLint("DiscouragedApi")

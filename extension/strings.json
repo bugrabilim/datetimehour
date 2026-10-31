@@ -10,7 +10,12 @@
     "ur": "Saat Tarih: گھڑی، تاریخ اور اوقاتِ نماز",
     "fa": "Saat Tarih: ساعت، تاریخ و اوقات شرعی",
     "fr": "Saat Tarih : horloge, date et heures de prière",
-    "ru": "Saat Tarih: часы, дата и время намаза"
+    "ru": "Saat Tarih: часы, дата и время намаза",
+    "ja": "Saat Tarih：時計・日付・礼拝時刻",
+    "ko": "Saat Tarih: 시계, 날짜, 기도 시간",
+    "zh": "Saat Tarih：时钟、日期和礼拜时间",
+    "fil": "Saat Tarih: orasan, petsa at oras ng pagdarasal",
+    "th": "Saat Tarih: นาฬิกา วันที่ และเวลาละหมาด"
   },
   "description": {
     "tr": "Tarayıcınızda saat, bugünün tarihi, hicri tarih ve 81 il için namaz vakitleri. İnternete bağlanmaz.",
@@ -22,7 +27,12 @@
     "ur": "آپ کے براؤزر میں گھڑی، آج کی تاریخ، ہجری تاریخ اور ترکی کے 81 صوبوں کے اوقاتِ نماز۔ انٹرنیٹ کے بغیر کام کرتا ہے۔",
     "fa": "ساعت، تاریخ امروز، تاریخ قمری و اوقات شرعی 81 استان ترکیه در مرورگر شما. بدون اینترنت کار می‌کند.",
     "fr": "Horloge, date du jour, date hégirienne et heures de prière des 81 provinces turques dans votre navigateur. Fonctionne hors ligne.",
-    "ru": "Часы, сегодняшняя дата, дата по хиджре и время намаза для 81 провинции Турции в браузере. Работает без интернета."
+    "ru": "Часы, сегодняшняя дата, дата по хиджре и время намаза для 81 провинции Турции в браузере. Работает без интернета.",
+    "ja": "時計、今日の日付、ヒジュラ暦の日付、トルコ81県の礼拝時刻をブラウザで表示。オフラインで動作します。",
+    "ko": "시계, 오늘 날짜, 이슬람력 날짜, 튀르키예 81개 주의 기도 시간을 브라우저에서. 오프라인으로 작동합니다.",
+    "zh": "在浏览器中显示时钟、今天的日期、伊斯兰历日期和土耳其81个省的礼拜时间。可离线使用。",
+    "fil": "Orasan, petsa ngayon, petsang Hijri at oras ng pagdarasal ng 81 lalawigan ng Turkey sa iyong browser. Gumagana offline.",
+    "th": "นาฬิกา วันที่วันนี้ วันที่ฮิจเราะห์ และเวลาละหมาดของ 81 จังหวัดในตุรกีบนเบราว์เซอร์ ใช้งานแบบออฟไลน์ได้"
   },
   "format": {
     "tr": "24/12 saat",
@@ -34,7 +44,12 @@
     "ur": "24/12 گھنٹے",
     "fa": "24/12 ساعته",
     "fr": "Format 24/12 h",
-    "ru": "24/12 часов"
+    "ru": "24/12 часов",
+    "ja": "24/12時間表示",
+    "ko": "24/12시간제",
+    "zh": "24/12小时制",
+    "fil": "24/12 oras",
+    "th": "24/12 ชั่วโมง"
   },
   "open": {
     "tr": "time.bumba.tr'de aç",
@@ -46,7 +61,12 @@
     "ur": "time.bumba.tr کھولیں",
     "fa": "باز کردن time.bumba.tr",
     "fr": "Ouvrir time.bumba.tr",
-    "ru": "Открыть time.bumba.tr"
+    "ru": "Открыть time.bumba.tr",
+    "ja": "time.bumba.tr を開く",
+    "ko": "time.bumba.tr 열기",
+    "zh": "打开 time.bumba.tr",
+    "fil": "Buksan ang time.bumba.tr",
+    "th": "เปิด time.bumba.tr"
   },
   "note": {
     "tr": "Vakitler Diyanet yöntemiyle cihazda hesaplanır ve Türkiye saatiyle gösterilir; resmî vakit için Diyanet esastır. Eklenti internete bağlanmaz; yalnız seçtiğiniz il tarayıcıda saklanır.",
@@ -58,6 +78,11 @@
     "ur": "اوقات آپ کے آلے پر دیانت کے طریقے سے حساب کیے جاتے ہیں اور ترکی کے وقت میں دکھائے جاتے ہیں؛ سرکاری اوقات کے لیے دیانت معتبر ہے۔ ایکسٹینشن انٹرنیٹ سے نہیں جڑتی؛ صرف آپ کا منتخب صوبہ براؤزر میں محفوظ ہوتا ہے۔",
     "fa": "اوقات با روش دیانت روی دستگاه شما محاسبه و به وقت ترکیه نمایش داده می‌شوند؛ مرجع اوقات رسمی دیانت است. افزونه هرگز به اینترنت وصل نمی‌شود؛ فقط استانی که انتخاب کرده‌اید در مرورگر ذخیره می‌شود.",
     "fr": "Les heures sont calculées sur votre appareil selon la méthode de la Diyanet et affichées à l’heure de la Turquie ; les heures officielles de la Diyanet font foi. L’extension ne se connecte jamais à Internet ; seule la province choisie est enregistrée dans le navigateur.",
-    "ru": "Время рассчитывается на устройстве по методу Diyanet и показывается по времени Турции; официальным считается время Diyanet. Расширение не выходит в интернет; в браузере хранится только выбранная провинция."
+    "ru": "Время рассчитывается на устройстве по методу Diyanet и показывается по времени Турции; официальным считается время Diyanet. Расширение не выходит в интернет; в браузере хранится только выбранная провинция.",
+    "ja": "時刻はディヤーネット（トルコ宗務庁）の方法で端末上で計算し、トルコ時間で表示します。正式な時刻はディヤーネットの発表に従ってください。この拡張機能はインターネットに接続せず、選んだ県だけをブラウザに保存します。",
+    "ko": "시간은 디야넷(튀르키예 종교청) 방식으로 기기에서 계산되어 튀르키예 시간으로 표시됩니다. 공식 시간은 디야넷 발표를 따르세요. 이 확장 프로그램은 인터넷에 연결하지 않으며, 선택한 주만 브라우저에 저장합니다.",
+    "zh": "时间按照迪亚内特（土耳其宗教事务局）的方法在您的设备上计算，并以土耳其时间显示；以迪亚内特公布的官方时间为准。此扩展程序从不联网，只在浏览器中保存您选择的省份。",
+    "fil": "Kinakalkula ang mga oras sa iyong device gamit ang paraan ng Diyanet at ipinapakita sa oras ng Turkey; ang opisyal na oras ng Diyanet ang masusunod. Hindi kumokonekta sa internet ang extension; ang napili mong lalawigan lang ang naka-save sa browser.",
+    "th": "เวลาคำนวณบนอุปกรณ์ของคุณตามวิธีของดียาเนต (กรมกิจการศาสนาตุรกี) และแสดงตามเวลาตุรกี ให้ยึดเวลาอย่างเป็นทางการของดียาเนต ส่วนขยายนี้ไม่เชื่อมต่ออินเทอร์เน็ต และเก็บเฉพาะจังหวัดที่คุณเลือกไว้ในเบราว์เซอร์"
   }
 }

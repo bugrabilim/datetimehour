@@ -13,7 +13,9 @@ import { hijriTable } from "../../lib/hijri.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+/* iOS String Catalog dil kodları: Çince Basitleştirilmiş Çince (zh-Hans); diğerleri aynı */
+const IOS_CODE = (l) => (l === "zh" ? "zh-Hans" : l);
 const I = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"))]));
 
 /* Uygulama anahtarı → sitedeki metin. {ad} yer tutucuları iOS biçimine (%@) çevrilir. */
@@ -99,8 +101,11 @@ const names = (s) => [...new Set([...s.matchAll(/\{([a-z]+)\}/gi)].map((m) => m[
 const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
 
 /* Android: {ad} → %1$s; yer tutucusu olmayan metinde % olduğu gibi kalır (formatted="false") */
-/* Endonezce Android kaynaklarında eski "in" koduyla (values-in) durur; dil seçimi (locales_config) BCP 47 "id" ile */
-const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru" };
+/* Endonezce Android kaynaklarında eski "in" koduyla (values-in) durur; Filipince üç harfli kod BCP 47 biçimiyle (values-b+fil);
+   Çince Basitleştirilmiş (values-zh bütün Çince yerel ayarlara uyar, Geleneksel Çincede de Türkçe yerine bu gelir).
+   Dil seçimi (locales_config) BCP 47 kodlarıyla: id, fil, zh-Hans. */
+const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru", ja: "values-ja", ko: "values-ko", zh: "values-zh", fil: "values-b+fil", th: "values-th" };
+const LOCALE_TAG = (l) => (l === "zh" ? "zh-Hans" : l);
 const androidName = (key) => key.replace(/[^A-Za-z0-9_]/g, "_");
 const androidEscape = (s) => s
   .replace(/\\/g, "\\\\").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -126,7 +131,7 @@ for (const [key, get] of Object.entries(KEYS)) {
   for (const l of LANGS) {
     const v = get(I[l], l);
     if (phrase && !v.includes("{app}")) throw new Error(`${l}: ${key} {app} içermeli`);
-    localizations[l] = { stringUnit: { state: "translated", value: conv(v) } };
+    localizations[IOS_CODE(l)] = { stringUnit: { state: "translated", value: conv(v) } };
   }
   shortcutStrings[phrase ? en : key] = { extractionState: "manual", localizations };
 }
@@ -140,7 +145,7 @@ for (const [key, get] of Object.entries(KEYS)) {
     const v = get(I[l], l);
     if (typeof v !== "string" || !v) throw new Error(`${l}: ${key} metni yok`);
     if (names(v).sort().join() !== [...order].sort().join()) throw new Error(`${l}: ${key} yer tutucuları Türkçeyle aynı değil`);
-    localizations[l] = { stringUnit: { state: "translated", value: toIOS(v, order) } };
+    localizations[IOS_CODE(l)] = { stringUnit: { state: "translated", value: toIOS(v, order) } };
   }
   (/^(NS|CF)/.test(key) ? plistStrings : strings)[key] = { extractionState: "manual", localizations };
   if (/^(NS|CF)/.test(key)) continue;
@@ -165,12 +170,12 @@ for (const l of LANGS) wearRes[l].push(androidRes[l][androidRes[l].length - 1]);
 const androidXml = (l, res = androidRes) => '<?xml version="1.0" encoding="utf-8"?>\n<!-- gen-strings.mjs üretir; elle düzenlemeyin -->\n<resources>\n' +
   res[l].join("\n") + "\n</resources>\n";
 const localesConfig = '<?xml version="1.0" encoding="utf-8"?>\n<locale-config xmlns:android="http://schemas.android.com/apk/res/android">\n' +
-  LANGS.map((l) => `    <locale android:name="${l}" />`).join("\n") + "\n</locale-config>\n";
+  LANGS.map((l) => `    <locale android:name="${LOCALE_TAG(l)}" />`).join("\n") + "\n</locale-config>\n";
 const catalog = (s, source = "tr") => JSON.stringify({ sourceLanguage: source, strings: s, version: "1.0" }, null, 2) + "\n";
 const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
-  .map(({ slug, name, lat, lon, ar, ru, fa }) => ({ slug, name, lat, lon, ar, ru, fa }));
+  .map(({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th }) => ({ slug, name, lat, lon, ar, ru, fa, ja, ko, zh, th }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
 /* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak; sınavlar takvimde yok). */

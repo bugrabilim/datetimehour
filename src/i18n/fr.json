@@ -529,7 +529,7 @@
     "pages": "Pages",
     "cities": "Pages des villes",
     "about": "À propos",
-    "aboutText": "L’heure est synchronisée avec l’horloge du serveur du site (indépendamment de l’horloge de l’appareil) ; le fuseau horaire est lu dans le navigateur et aucune donnée personnelle n’est envoyée. Disponible en dix langues : turc, anglais, allemand, azerbaïdjanais, arabe, indonésien, ourdou, persan, français et russe. Responsable du traitement : Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact : bilgi@bumbagroup.com."
+    "aboutText": "L’heure est synchronisée avec l’horloge du serveur du site (indépendamment de l’horloge de l’appareil) ; le fuseau horaire est lu dans le navigateur et aucune donnée personnelle n’est envoyée. Disponible en quinze langues : turc, anglais, allemand, azerbaïdjanais, arabe, indonésien, ourdou, persan, français, russe, japonais, coréen, chinois, filipino et thaï. Responsable du traitement : Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact : bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Styles d’horloge",

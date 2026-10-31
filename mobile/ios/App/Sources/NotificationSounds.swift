@@ -45,10 +45,11 @@ enum NotificationSounds {
     }
 
     /// Uygulamanın görünen dili ve ona uygun konuşma sesi (Azericede Türkçe ses)
-    private static var language: String { Bundle.main.preferredLocalizations.first ?? "tr" }
+    private static var language: String { AppLocale.code }
     private static var voiceCode: String {
         ["tr": "tr-TR", "en": "en-US", "de": "de-DE", "az": "tr-TR", "ar": "ar-SA",
-         "id": "id-ID", "ur": "ur-PK", "fa": "fa-IR", "fr": "fr-FR", "ru": "ru-RU"][language] ?? "tr-TR"
+         "id": "id-ID", "ur": "ur-PK", "fa": "fa-IR", "fr": "fr-FR", "ru": "ru-RU",
+         "ja": "ja-JP", "ko": "ko-KR", "zh": "zh-CN", "fil": "fil-PH", "th": "th-TH"][language] ?? "tr-TR"
     }
 
     /// Kurulu en iyi ses: önce "Premium", sonra "Gelişmiş", yoksa standart ses.

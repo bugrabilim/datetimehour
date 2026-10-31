@@ -291,7 +291,7 @@ enum Duas {
             let refs = r.refs ?? []
             // Anlam: arayüz dilinde; Kur'an'dan olanlarda İngilizce meal (tr/az'da Diyanet bağlantısı), Arapça yazılı dillerde (ar, fa, ur) yok
             let mean: String? = if lang == "ar" { nil }
-                else if !refs.isEmpty { ["en", "de", "id", "fr", "ru"].contains(lang) ? r.mean["en"] : nil }
+                else if !refs.isEmpty { !["tr", "az", "ar", "fa", "ur"].contains(lang) ? r.mean["en"] : nil }
                 else { r.mean[lang] ?? r.mean["en"] }
             return Dua(id: r.id, title: r.title[lang] ?? r.title["en"] ?? r.id, when: r.when[lang] ?? r.when["en"] ?? "",
                        ar: r.ar, okunus: r.okunus ?? "", mean: mean, refs: refs)

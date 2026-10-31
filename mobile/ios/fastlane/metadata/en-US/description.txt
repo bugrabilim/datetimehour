@@ -27,7 +27,7 @@ TOOLS
 WIDGETS
 • Next prayer, today's times, analog and digital clock, clock and date; also on the Lock Screen
 
-Available in ten languages: English, Turkish, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French and Russian.
+Available in fifteen languages: English, Turkish, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino and Thai.
 
 Your location is used on your phone to calculate prayer times; only for the weather is an approximate location sent to Apple's weather service. Your calendars are read only if you allow it, and only on your phone.
 

@@ -502,7 +502,7 @@
     "pages": "Səhifələr",
     "cities": "Şəhər səhifələri",
     "about": "Haqqında",
-    "aboutText": "Vaxt saytın server saatı ilə sinxronlaşdırılır (cihazın saatından asılı deyil); saat qurşağı brauzerdən oxunur və heç bir şəxsi məlumat göndərilmir. On dildə mövcuddur: türk, ingilis, alman, Azərbaycan, ərəb, indoneziya, urdu, fars, fransız və rus dilləri. Məlumat nəzarətçisi: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. Əlaqə: bilgi@bumbagroup.com."
+    "aboutText": "Vaxt saytın server saatı ilə sinxronlaşdırılır (cihazın saatından asılı deyil); saat qurşağı brauzerdən oxunur və heç bir şəxsi məlumat göndərilmir. On beş dildə mövcuddur: türk, ingilis, alman, Azərbaycan, ərəb, indoneziya, urdu, fars, fransız, rus, yapon, koreya, çin, filippin və tay dilləri. Məlumat nəzarətçisi: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. Əlaqə: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Saat görünüşləri",

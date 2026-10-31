@@ -270,7 +270,7 @@ object Duas {
             // Anlam: arayüz dilinde; Kur'an'dan olanlarda İngilizce meal (tr/az'da Diyanet bağlantısı), Arapça yazılı dillerde (ar, fa, ur) yok
             val m = when {
                 lang == "ar" -> null
-                refs.isNotEmpty() -> if (lang in listOf("en", "de", "id", "fr", "ru")) mean.optString("en") else null
+                refs.isNotEmpty() -> if (lang !in listOf("tr", "az", "ar", "fa", "ur")) mean.optString("en") else null
                 else -> mean.optString(lang).ifEmpty { mean.optString("en") }
             }
             Dua(o.getString("id"), o.getJSONObject("title").getString(lang), o.getJSONObject("when").getString(lang),

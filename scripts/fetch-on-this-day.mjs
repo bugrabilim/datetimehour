@@ -6,7 +6,12 @@
 import fs from "node:fs";
 
 const UA = "SaatTarih/1.0 (https://time.bumba.tr)";
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+/* Wikidata'daki etiket dilleri: Filipincede Tagalog etiketi (tl) de; Çincede Basitleştirilmiş önce (zh-hans, zh-cn), yoksa zh */
+const WD_LANGS = { fil: ["fil", "tl"], zh: ["zh-hans", "zh-cn", "zh-sg", "zh"] };
+const wdFor = (l) => WD_LANGS[l] || [l];
+/* Wikidata dil kodu → sitenin dili ve önceliği (küçük olan kazanır) */
+const WD_MAP = Object.fromEntries(LANGS.flatMap((l) => wdFor(l).map((w, i) => [w, [l, i]])));
 const OUT = "src/data/on-this-day.json";
 const WDQS = "https://query.wikidata.org/sparql";
 
@@ -37,14 +42,19 @@ const PEOPLE_OCC = ["Q82955", "Q36180", "Q33999", "Q177220", "Q1028181", "Q36834
 /* Adlar ve kısa açıklamalar (sitenin dilleri), 250'lik kümelerle */
 async function fetchLabels(ids) {
   const labels = {};
-  const langs = LANGS.map((l) => `"${l}"`).join(",");
+  const langs = Object.keys(WD_MAP).map((l) => `"${l}"`).join(",");
+  const rank = {};
   for (let i = 0; i < ids.length; i += 250) {
     const vals = ids.slice(i, i + 250).map((q) => "wd:" + q).join(" ");
     const rows = await sparql(`SELECT ?item ?l ?ll ?ds WHERE { VALUES ?item { ${vals} } { ?item rdfs:label ?l . BIND(LANG(?l) AS ?ll) FILTER(?ll IN (${langs})) } UNION { ?item schema:description ?ds . BIND(LANG(?ds) AS ?ll) FILTER(?ll IN (${langs})) } }`);
     for (const b of rows) {
       const q = qid(b.item.value), o = (labels[q] ||= { l: {}, s: {} });
-      if (b.l) o.l[b.ll.value] = b.l.value;
-      if (b.ds) o.s[b.ll.value] = b.ds.value;
+      const [lang, pri] = WD_MAP[b.ll.value] || [];
+      if (!lang) continue;
+      const kind = b.l ? "l" : "s", key = `${q}|${kind}|${lang}`;
+      if (rank[key] !== undefined && rank[key] <= pri) continue;
+      rank[key] = pri;
+      o[kind][lang] = (b.l || b.ds).value;
     }
     console.log(`adlar ${Math.min(i + 250, ids.length)}/${ids.length}`);
   }

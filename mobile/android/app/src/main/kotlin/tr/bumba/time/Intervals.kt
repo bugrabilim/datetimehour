@@ -274,6 +274,11 @@ object Speaker {
         "fa" -> Locale.forLanguageTag("fa-IR")
         "fr" -> Locale.FRANCE
         "ru" -> Locale.forLanguageTag("ru-RU")
+        "ja" -> Locale.JAPAN
+        "ko" -> Locale.KOREA
+        "zh" -> Locale.SIMPLIFIED_CHINESE
+        "fil" -> Locale.forLanguageTag("fil-PH")
+        "th" -> Locale.forLanguageTag("th-TH")
         else -> Locale.forLanguageTag("tr-TR")
     }
 

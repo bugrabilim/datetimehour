@@ -11,15 +11,17 @@ import { hijriTable } from "../lib/hijri.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const EXT = path.join(ROOT, "extension");
-const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
-// Chrome'un desteklediği _locales klasörleri (Azerice ve Urduca listede yok; o arayüzler İngilizce ad ve açıklamayı görür)
-const CHROME_LOCALES = ["tr", "en", "de", "ar", "id", "fa", "fr", "ru"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+// Chrome'un desteklediği _locales klasörleri (Azerice ve Urduca listede yok; o arayüzler İngilizce ad ve açıklamayı görür).
+// Çince klasörü zh_CN (Basitleştirilmiş).
+const CHROME_LOCALES = ["tr", "en", "de", "ar", "id", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
+const CHROME_DIR = (l) => (l === "zh" ? "zh_CN" : l);
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
 const check = process.argv.includes("--check");
 
 const own = read("extension/strings.json");
 const app = read("mobile/shared/app-strings.json");
-const provinces = read("src/data/provinces.json").map((p) => [p.slug, p.name, p.lat, p.lon, p.ar || "", p.ru || "", p.fa || ""]);
+const provinces = read("src/data/provinces.json").map((p) => [p.slug, p.name, p.lat, p.lon, p.ar || "", p.ru || "", p.fa || "", p.ja || "", p.ko || "", p.zh || "", p.th || ""]);
 const hijri = hijriTable(read("src/data/holidays.json"), read("src/data/hijri.json"));
 const strings = Object.fromEntries(LANGS.map((l) => {
   const site = read(`src/i18n/${l}.json`);
@@ -36,7 +38,7 @@ const files = {
   "lib/data.js": `/* scripts/build-extension.mjs ile üretilir; elle değiştirmeyin. İller: src/data/provinces.json; hicri tablo: lib/hijri.mjs */\nwindow.STH_DATA = ${JSON.stringify({ provinces, hijri, strings })};\n`,
 };
 for (const l of CHROME_LOCALES) {
-  files[`_locales/${l}/messages.json`] = JSON.stringify({
+  files[`_locales/${CHROME_DIR(l)}/messages.json`] = JSON.stringify({
     name: { message: own.name[l] }, description: { message: own.description[l] },
   }, null, 2) + "\n";
 }

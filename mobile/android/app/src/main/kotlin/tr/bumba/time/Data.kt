@@ -12,9 +12,10 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 /** 81 il (sitedeki src/data/provinces.json) */
-data class Province(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String, val ru: String = "", val fa: String = "") {
+data class Province(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String, val local: Map<String, String> = emptyMap()) {
     /** Arapça, Rusça ve Farsçada kendi yazısıyla; diğer dillerde Türkçe yazım */
-    val displayName: String get() = when (Strings.lang) { "ar" -> ar; "ru" -> ru.ifEmpty { name }; "fa" -> fa.ifEmpty { name }; else -> name }
+    /** Arapçada Arapça ad; Rusça, Farsça, Japonca, Korece, Çince ve Taycada o dildeki ad (provinces.json), diğerlerinde Türkçe ad */
+    val displayName: String get() = if (Strings.lang == "ar") ar else local[Strings.lang]?.ifEmpty { null } ?: name
 
     companion object {
         val all: List<Province> get() = AppData.provinces
@@ -106,7 +107,7 @@ object AppData {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), o.optString("ru"), o.optString("fa"))
+            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th").associateWith { o.optString(it) })
         }
 
         val dj = JSONObject(read("districts.json"))

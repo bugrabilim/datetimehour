@@ -7,7 +7,7 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DIST = path.join(ROOT, "dist");
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "site.config.json"), "utf8"));
 const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
-const ALL = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
+const ALL = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
 const RTL = ["ar", "ur", "fa"];
 const LANGS = ALL.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const LG = LANGS.join("|");

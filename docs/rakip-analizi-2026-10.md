@@ -18,7 +18,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 ## Tek liste (30 Ekim 2026'dan beri; sahibin isteği: "tek liste olarak tut, her işe bir numara ver, K-O-B sırala, bitenler de dursun")
 
-Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 99 bitti, 1 açık, 7 kararla yapılmayacak. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
+Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 100 bitti, 7 kararla yapılmayacak (açık iş kalmadı, 31 Ekim 2026). Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
 
 | No | İş | Nerede | Çaba | Durum | Eski no |
 |---|---|---|---|---|---|
@@ -121,7 +121,7 @@ Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 99 bitti, 
 | 97 | Vision Pro uygulaması | Vision Pro | B | bitti |  |
 | 98 | Odakta uygulama/site engelleme | Uygulama | B | bitti (iOS'ta Apple'ın FamilyControls onayı bekleniyor, o zamana kadar gizli) |  |
 | 100 | Saat dilimi haberleri ve bülten | Site | B | bitti (sayfa ve Atom akışı; e-posta bülteni yok) |  |
-| 99 | Daha çok dil | Uygulama + site | B | açık (ilk dalga bitti 31 Ekim 2026: id, ur, fa, fr, ru; sıradaki dalga ja, ko, zh, fil, th) |  |
+| 99 | Daha çok dil | Uygulama + site | B | bitti (31 Ekim 2026: ilk dalga id, ur, fa, fr, ru; ikinci dalga ja, ko, zh, fil, th; on beş dil, metinler gözden geçirme bekler) |  |
 | 101 | Uyku takibi, horlama kaydı, uyku evresine göre akıllı alarm | Uygulama | — | yapılmayacak (gizlilik: mikrofon, hareket) |  |
 | 102 | Sitede hesap ve üyelik | Site | — | yapılmayacak (standartta bu proje için yok) |  |
 | 103 | 81 il saat sayfaları | Site | — | yapılmayacak (kopya içerik riski) |  |

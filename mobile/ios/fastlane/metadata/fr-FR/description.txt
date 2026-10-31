@@ -27,7 +27,7 @@ OUTILS
 WIDGETS
 • Prochaine prière, heures du jour, horloge analogique et numérique, heure et date ; aussi sur l’écran verrouillé
 
-Disponible en dix langues : français, anglais, turc, allemand, azerbaïdjanais, arabe, indonésien, ourdou, persan et russe.
+Disponible en quinze langues : français, anglais, turc, allemand, azerbaïdjanais, arabe, indonésien, ourdou, persan, russe, japonais, coréen, chinois, filipino et thaï.
 
 Votre position sert sur votre téléphone à calculer les heures de prière ; seule une position approximative est envoyée au service météo d’Apple pour la météo. Vos calendriers ne sont lus qu’avec votre accord, et uniquement sur votre téléphone.
 

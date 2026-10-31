@@ -1,5 +1,5 @@
 #!/bin/bash
-# App Store ekran görüntüleri: 6,9" iPhone (1320×2868) ve 13" iPad (2064×2752) simülatörlerinde, dört mağaza dilinde.
+# App Store ekran görüntüleri: 6,9" iPhone (1320×2868) ve 13" iPad (2064×2752) simülatörlerinde, on bir mağaza dilinde.
 # fastlane deliver bu klasörü olduğu gibi yükler: <çıktı>/<mağaza dili>/NN-ad.png
 # Kullanım: store-screenshots.sh <SaatTarih.app yolu> <çıktı klasörü>
 set -euo pipefail
@@ -29,9 +29,9 @@ shoot() { # dil bölge klasör dosya bekleme [ek uygulama argümanları]
   sleep "$5"
   xcrun simctl io "$UDID" screenshot "$OUT/$3/$4.png"
 }
-# App Store dilleri: "uygulama dili, bölge, fastlane klasörü" (App Store'da Azerice ve Farsça yok; Urduca fastlane listesinde
-# yoksa deliver hata verir, yayından önce bakılır)
-STORE_LANGS="tr:tr_TR:tr en:en_US:en-US de:de_DE:de-DE ar:ar_SA:ar-SA fr:fr_FR:fr-FR ru:ru_RU:ru id:id_ID:id"
+# App Store dilleri: "uygulama dili, bölge, fastlane klasörü" (App Store'da Azerice, Farsça ve Filipince yok; Urduca fastlane
+# listesinde yoksa deliver hata verir, yayından önce bakılır)
+STORE_LANGS="tr:tr_TR:tr en:en_US:en-US de:de_DE:de-DE ar:ar_SA:ar-SA fr:fr_FR:fr-FR ru:ru_RU:ru id:id_ID:id ja:ja_JP:ja ko:ko_KR:ko zh-Hans:zh_CN:zh-Hans th:th_TH:th"
 ITEMS="-date,week,next,prayers,-upcoming,-world,-weather,-sun,-globe"
 for L in $STORE_LANGS; do
   set -- ${L//:/ }

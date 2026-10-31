@@ -1,0 +1,2816 @@
+{
+  "lang": "fil",
+  "locale": "fil-PH",
+  "ogLocale": "tl_PH",
+  "langName": "Filipino",
+  "site": {
+    "name": "Saat Tarih",
+    "tagline": "Live na orasan, petsa ngayon at oras sa mundo",
+    "description": "Ang Saat Tarih ay libreng website na nagpapakita nang live ng iyong lokal na oras, petsa ngayon, numero ng linggo at oras sa mga lungsod sa buong mundo."
+  },
+  "ui": {
+    "skip": "Lumaktaw sa nilalaman",
+    "home": "Home",
+    "world": "Orasan ng mundo",
+    "privacy": "Privacy at cookies",
+    "mainNav": "Pangunahing nabigasyon",
+    "footerNav": "Nabigasyon sa ibaba",
+    "langSwitch": "Filipino",
+    "langSwitchLabel": "Lumipat sa Filipino",
+    "themeToggle": "Magpalit sa maliwanag o madilim na tema",
+    "searchOpen": "Maghanap sa site",
+    "searchTitle": "Maghanap sa site",
+    "searchLabel": "Hahanapin",
+    "searchPlaceholder": "Mag-type ng lungsod, pahina o paksa…",
+    "searchClose": "Isara ang paghahanap",
+    "searchEmpty": "Walang nahanap. Subukan ang ibang salita, gaya ng pangalan ng lungsod o \"linggo\".",
+    "searchHint": "Gamitin ang ↑ ↓ para lumipat, Enter para buksan, Esc para isara.",
+    "searchCount": "{n} resulta",
+    "searchResults": "Mga resulta ng paghahanap",
+    "searchError": "Hindi ma-load ang index ng paghahanap. I-refresh ang pahina at subukan muli.",
+    "breadcrumb": "Breadcrumb",
+    "updated": "Huling na-update",
+    "noscript": "Kailangang naka-on ang JavaScript sa iyong browser para makita ang live na orasan.",
+    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "logoAlt": "Home ng Saat Tarih",
+    "calendar": "Kalendaryo",
+    "tools": "Mga tool",
+    "langMenu": "Wika",
+    "menu": "Menu",
+    "prayer": "Oras ng pagdarasal",
+    "nature": "Mga panahon",
+    "weather": "Panahon",
+    "today": "Ngayon",
+    "faq": "FAQ",
+    "settings": "Mga setting",
+    "theme": "Maliwanag / madilim na tema",
+    "placeChange": "Palitan ang lokasyon",
+    "placeTitle": "Iyong lokasyon",
+    "placeNote": "Nananatili ang iyong lokasyon sa iyong device at ginagamit sa bawat pahina para sa oras ng pagdarasal, mga panahon at lagay ng panahon; hindi ito ipinapadala sa server.",
+    "placeClose": "Isara",
+    "look": "Itsura ng orasan",
+    "lookFont": "Font",
+    "lookFonts": {
+      "rounded": "Bilugan",
+      "standard": "Karaniwan",
+      "serif": "Serif",
+      "mono": "Monospaced",
+      "light": "Manipis"
+    },
+    "lookColor": "Kulay ng orasan",
+    "lookColors": {
+      "default": "Kulay ng site",
+      "ink": "Tinta",
+      "blue": "Asul",
+      "green": "Berde",
+      "red": "Pula",
+      "purple": "Lila"
+    },
+    "lookNote": "Sa browser na ito lang naka-save ang iyong pinili."
+  },
+  "client": {
+    "format24": "24 oras",
+    "format12": "12 oras",
+    "seconds": "Segundo",
+    "diffSame": "Kapareho ng oras mo",
+    "diffAhead": "{d} na mas maaga sa iyo",
+    "diffBehind": "{d} na mas huli sa iyo",
+    "hourShort": "o",
+    "minuteShort": "min",
+    "yourZone": "Iyong time zone",
+    "yearDone": "{p}% ng taon ang lumipas na",
+    "fullscreen": "Full screen",
+    "exitFullscreen": "Lumabas sa full screen",
+    "weekShort": "Lgg",
+    "words": {
+      "units": [
+        "sero",
+        "uno",
+        "dos",
+        "tres",
+        "kuwatro",
+        "singko",
+        "sais",
+        "siyete",
+        "otso",
+        "nuwebe",
+        "diyes",
+        "onse",
+        "dose",
+        "trese",
+        "katorse",
+        "kinse",
+        "disisais",
+        "disisiyete",
+        "disiotso",
+        "disinuwebe",
+        "beynte",
+        "beynte y uno",
+        "beynte y dos",
+        "beynte y tres",
+        "beynte y kuwatro",
+        "beynte y singko",
+        "beynte y sais",
+        "beynte y siyete",
+        "beynte y otso",
+        "beynte y nuwebe",
+        "treynta",
+        "treynta y uno",
+        "treynta y dos",
+        "treynta y tres",
+        "treynta y kuwatro",
+        "treynta y singko",
+        "treynta y sais",
+        "treynta y siyete",
+        "treynta y otso",
+        "treynta y nuwebe",
+        "kuwarenta",
+        "kuwarenta y uno",
+        "kuwarenta y dos",
+        "kuwarenta y tres",
+        "kuwarenta y kuwatro",
+        "kuwarenta y singko",
+        "kuwarenta y sais",
+        "kuwarenta y siyete",
+        "kuwarenta y otso",
+        "kuwarenta y nuwebe",
+        "singkuwenta",
+        "singkuwenta y uno",
+        "singkuwenta y dos",
+        "singkuwenta y tres",
+        "singkuwenta y kuwatro",
+        "singkuwenta y singko",
+        "singkuwenta y sais",
+        "singkuwenta y siyete",
+        "singkuwenta y otso",
+        "singkuwenta y nuwebe"
+      ],
+      "tens": [
+        "",
+        "",
+        "beynte",
+        "treynta",
+        "kuwarenta",
+        "singkuwenta"
+      ],
+      "join": " y ",
+      "oh": "",
+      "sentence": "Ngayon ay {h} y {m}",
+      "oclock": "Ngayon ay {h} na",
+      "unitFirst": false,
+      "hours": [
+        "alas-dose",
+        "ala-una",
+        "alas-dos",
+        "alas-tres",
+        "alas-kuwatro",
+        "alas-singko",
+        "alas-sais",
+        "alas-siyete",
+        "alas-otso",
+        "alas-nuwebe",
+        "alas-diyes",
+        "alas-onse",
+        "alas-dose",
+        "ala-una",
+        "alas-dos",
+        "alas-tres",
+        "alas-kuwatro",
+        "alas-singko",
+        "alas-sais",
+        "alas-siyete",
+        "alas-otso",
+        "alas-nuwebe",
+        "alas-diyes",
+        "alas-onse"
+      ]
+    },
+    "syncLabel": "Oras ng server",
+    "syncPending": "Sini-sync sa orasan ng server…",
+    "syncOk": "Ang orasan ng iyong device ay {device}: naka-sync sa server (diperensya ±{ms} ms).",
+    "syncAhead": "Ang orasan ng iyong device ay {device}: {s} segundong mas maaga kaysa sa server.",
+    "syncBehind": "Ang orasan ng iyong device ay {device}: {s} segundong mas huli kaysa sa server.",
+    "syncOff": "Ginagamit ang orasan ng iyong device.",
+    "syncFail": "Hindi maabot ang orasan ng server; ipinapakita ang orasan ng iyong device ({device}).",
+    "daysLeft": "{n} araw na lang",
+    "today": "Ngayon",
+    "tomorrow": "Bukas",
+    "passed": "Lumipas na",
+    "upcomingNone": "Walang paparating na araw.",
+    "refAhead": "{d} na mas maaga sa oras ng {ref}",
+    "refBehind": "{d} na mas huli sa oras ng {ref}",
+    "refSame": "Kapareho ng oras ng {ref}",
+    "weekFound": "Ang {date} ay nasa linggo {n} ng ISO year {y}.",
+    "pickDate": "Pumili ng petsa.",
+    "daysShort": "araw",
+    "formatLabel": "Format ng oras",
+    "fsWeatherNeed": "Pumili ng lokasyon para sa lagay ng panahon:",
+    "fsWeatherLink": "pumili ng lokasyon",
+    "fsWeatherFail": "Hindi makuha ang lagay ng panahon."
+  },
+  "home": {
+    "title": "Anong Oras Na? Live na Orasan at Petsa Ngayon | Saat Tarih",
+    "description": "Anong oras na at anong petsa ngayon? Tingnan nang live ang iyong lokal na oras, petsa, numero ng linggo at oras sa mga lungsod sa mundo sa iisang pahina.",
+    "h1": "Anong oras na ngayon?",
+    "lead": "Ang Saat Tarih ay libreng website na nagpapakita nang live ng iyong lokal na oras, petsa ngayon, numero ng linggo at oras sa mga lungsod sa buong mundo. Para sa lahat, walang kailangang pag-sign up. Mag-swipe sa {n} istilo ng orasan at ipakita ang alinman sa full screen.",
+    "clockHeading": "Live na orasan",
+    "factsHeading": "Tungkol sa araw na ito",
+    "factWeek": "Numero ng linggo (ISO)",
+    "factDoy": "Araw ng taon",
+    "factLeft": "Natitirang araw sa taon",
+    "factUnix": "Unix timestamp",
+    "factUtc": "Oras sa UTC",
+    "factProgress": "Usad ng taon",
+    "worldHeading": "Oras sa mga lungsod sa mundo",
+    "worldLead": "Kasalukuyang lokal na oras sa ilang lungsod. Pumili ng lungsod para sa detalye.",
+    "worldAll": "Tingnan ang lahat ng lungsod",
+    "faqHeading": "Mga madalas itanong",
+    "faq": [
+      {
+        "q": "Paano kinakalkula ang oras sa site na ito?",
+        "a": "Naka-sync ang oras sa server ng site, kaya tama ito kahit mali ang orasan ng iyong device. Binabasa ang time zone mula sa setting ng iyong device. Ilang maliliit na request lang ang ipinapadala sa server para sa pag-sync, at walang personal na datos."
+      },
+      {
+        "q": "May daylight saving time ba sa Türkiye?",
+        "a": "Wala. Mula 2016, UTC+3 ang gamit ng Türkiye buong taon, at hindi iniaabante o iniuurong ang orasan. Marami pang bansa sa Europa ang nagpapalit ng orasan, kaya puwedeng magbago nang isang oras ang diperensya nila sa Türkiye sa loob ng taon."
+      },
+      {
+        "q": "Paano kinakalkula ang numero ng linggo?",
+        "a": "Ayon sa ISO 8601, nagsisimula ang linggo sa Lunes at ang linggo 1 ay ang linggong may unang Huwebes ng taon. Kaya ang mga unang at huling araw ng taon ay puwedeng mapabilang sa linggo ng katabing taon."
+      },
+      {
+        "q": "Paano nakukuha ang diperensya ng oras ng mga lungsod?",
+        "a": "Kinukuha ang kasalukuyang UTC offset ng bawat lungsod mula sa time zone database (IANA) ng iyong browser, at awtomatikong inilalapat ang pagbabago ng daylight saving. Ang \"mas maaga\" at \"mas huli\" ay laging batay sa iyong time zone."
+      },
+      {
+        "q": "Paano ko papalitan ang istilo ng orasan?",
+        "a": "Mag-swipe pakaliwa o pakanan sa orasan; sa computer, gamitin ang mga tuldok sa ibaba o ang arrow keys. Kasama sa mga istilo ang klasiko at simpleng analog, digital, analog at digital nang sabay, may petsa o wala, may buwanang kalendaryo, flip clock, orasang nakasulat sa salita, ring clock at malaking petsa. Natatandaan ang iyong pinili sa device na ito."
+      },
+      {
+        "q": "Paano ko makikita ang orasan sa full screen?",
+        "a": "Pindutin ang button na full screen sa ilalim ng orasan. Para lumabas, pindutin ulit ang button o ang Esc key. Puwede ka pa ring mag-swipe ng istilo sa full screen."
+      },
+      {
+        "q": "Gumagana ba ang orasan nang hiwalay sa orasan ng device ko?",
+        "a": "Oo. Naka-sync ang oras sa server ng site, kaya tama ang ipinapakita kahit mali ang orasan ng iyong device, at sinasabi rin kung gaano kalayo ang orasan ng device mo. Binabasa pa rin ang time zone mula sa setting ng device."
+      },
+      {
+        "q": "Saan ko makikita ang mga pista opisyal at Ramadan sa Türkiye?",
+        "a": "Sa pahina ng taunang kalendaryo makikita sa iisang kalendaryo ang mga pista opisyal, ang mga araw ng bayram at bisperas nito, ang mga gabi ng kandil at ang buwan ng Ramadan. Ang seksyong \"Mga paparating na araw\" sa itaas ng pahina ng kalendaryo ay nagsasabi kung ilang araw pa bago ang susunod na pista opisyal."
+      }
+    ],
+    "upcomingHeading": "Mga paparating na pista opisyal at espesyal na araw",
+    "upcomingLead": "Ang mga susunod na araw sa kalendaryo ng Türkiye.",
+    "upcomingAll": "Tingnan ang taunang kalendaryo",
+    "upcomingNone": "Walang paparating na araw.",
+    "todayQ": "Anong petsa ngayon?",
+    "todayA": "Live na ipinapakita ang petsa at araw ngayon sa bar sa itaas ng bawat pahina, at sinusunod nito ang orasang naka-sync sa server, hindi ang orasan ng iyong device."
+  },
+  "world": {
+    "title": "Orasan ng Mundo: Kasalukuyang Oras sa mga Lungsod | Saat Tarih",
+    "description": "Anong oras na sa Istanbul, London, New York, Tokyo at iba pa? Tingnan nang live ang lokal na oras sa mga lungsod sa mundo at ang diperensya nila sa iyo.",
+    "h1": "Orasan ng mundo",
+    "lead": "Ipinapakita ng pahinang ito ang kasalukuyang lokal na oras sa {n} lungsod, kasama ang Istanbul, London, New York at Tokyo, at ang diperensya nila sa iyo. Awtomatikong inilalapat ang pagbabago ng daylight saving.",
+    "colCity": "Lungsod",
+    "colCountry": "Bansa",
+    "colTime": "Oras",
+    "colOffset": "UTC offset",
+    "colDiff": "Diperensya sa iyo",
+    "tableCaption": "Kasalukuyang lokal na oras sa mga lungsod",
+    "customize": "Magdagdag / mag-alis ng lungsod",
+    "customizeLead": "Magdagdag o mag-alis ng mga lungsod sa timeline; sa browser na ito lang naka-save ang iyong pinili.",
+    "addCity": "Magdagdag ng lungsod",
+    "addZone": "Magdagdag ng ibang time zone",
+    "add": "Idagdag",
+    "remove": "Alisin",
+    "reset": "Ibalik sa default",
+    "empty": "Walang napiling lungsod.",
+    "select": "Pumili…",
+    "done": "Tapos"
+  },
+  "city": {
+    "title": "Kasalukuyang Oras sa {name} ({country}) | Saat Tarih",
+    "description": "Anong oras na sa {name}? Tingnan nang live ang lokal na oras, petsa at UTC offset ng {name}, {country}. Time zone: {tz}.",
+    "h1": "Kasalukuyang oras sa {name}",
+    "lead": "Makikita sa ibaba ang kasalukuyang lokal na oras sa {name}, {country}. Nasa time zone na {tz} ang {name}, na may standard offset na UTC{std}.",
+    "dstYes": "May daylight saving time sa {name}, kaya nagbabago nang isang oras ang UTC offset nito sa loob ng taon.",
+    "dstNo": "Walang daylight saving time sa {name}, kaya pareho ang UTC offset nito buong taon.",
+    "liveOffset": "Kasalukuyang UTC offset",
+    "liveDiff": "Diperensya sa iyo",
+    "otherHeading": "Oras sa ibang lungsod",
+    "faqHeading": "Mga madalas itanong tungkol sa oras sa {name}",
+    "faqTime": "Anong oras na sa {name}?",
+    "faqTimeA": "Makikita sa live na orasan sa itaas ang lokal na oras sa {name}. Kinakalkula ito mula sa time zone na {tz} at nag-a-update bawat segundo.",
+    "faqZone": "Anong time zone ang {name}?",
+    "faqZoneA": "Nasa time zone na {tz} ang {name}, na may standard offset na UTC{std}.",
+    "faqDst": "May daylight saving time ba sa {name}?",
+    "faqDstYesA": "Oo. May daylight saving time sa {name}; nagbabago nang isang oras ang UTC offset nito sa mga araw ng pagpapalit, at awtomatikong inilalapat ito ng pahinang ito.",
+    "faqDstNoA": "Wala. Walang daylight saving time sa {name}, kaya pareho ang UTC offset nito buong taon.",
+    "breadcrumbWorld": "Orasan ng mundo",
+    "sunrise": "Pagsikat ng araw",
+    "sunset": "Paglubog ng araw",
+    "daylen": "Haba ng araw",
+    "sunNote": "Tantiya lang ang pagsikat at paglubog ng araw, batay sa petsa ngayon at lokasyon ng lungsod (puwedeng magkamali nang ilang minuto)."
+  },
+  "privacy": {
+    "title": "Patakaran sa Privacy at Cookies | Saat Tarih",
+    "description": "Anong datos ang pinoproseso ng Saat Tarih, paano ginagamit ang cookies at local storage, ang Umami statistics, ang email list at ang iyong karapatan sa KVKK ng Türkiye.",
+    "h1": "Patakaran sa privacy at cookies",
+    "lead": "Ipinapaliwanag ng pahinang ito kung anong datos ang pinoproseso kapag ginagamit mo ang Saat Tarih, bakit, at ano ang iyong mga karapatan. Ang kailangan lang ang kinokolekta ng site; walang account o ad at walang cookies na inilalagay; tumatakbo lang ang statistics at mga panlabas na serbisyo kapag pinayagan mo.",
+    "sections": [
+      {
+        "id": "controller",
+        "h": "Data controller",
+        "p": [
+          "Ang data controller ay ang Bumba Teknoloji Limited Şirketi (Ataşehir / Istanbul, Türkiye). Para sa anumang tanong o kahilingan tungkol sa proteksyon ng datos: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "data",
+        "h": "Anong datos ang pinoproseso namin?",
+        "ul": [
+          "**Oras at petsa:** Ang oras at time zone ng iyong device ay binabasa at kinakalkula lang sa iyong browser. Hindi ito ipinapadala sa server o sine-save.",
+          "**Lokasyon (oras ng pagdarasal):** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\" sa pahina ng oras ng pagdarasal, ginagamit ng browser ang iyong lokasyon sa device mo lang para kalkulahin ang mga oras. Hindi ipinapadala sa server ang coordinates at hindi isinasama sa statistics; nananatili ang huli mong pinili sa local storage ng browser.",
+          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang request at maikling paalala ang ipinapakita. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling patakaran sa privacy ng Open-Meteo ang umiiral.",
+          "**Qibla at kalapit na mga masjid:** Kinakalkula sa iyong browser ang direksyon ng qibla, layo at oras ng qibla. Para sa compass, binabasa lang sa browser ang orientation sensor ng telepono (humihingi ng pahintulot ang iPhone) at hindi ito ipinapadala kahit saan. Kung pipindutin mo ang \"Ipakita ang mga masjid\" at pinayagan mo ang mga panlabas na serbisyo, ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km) ay ipinapadala mula sa browser sa serbisyong Overpass (overpass-api.de), na naghahatid ng datos ng OpenStreetMap; nakakarating din dito ang iyong IP address. Hindi nakikita ng server ng Saat Tarih ang coordinates na ito.",
+          "**Form ng email list:** Ang email address na inilagay mo, ang pahintulot na ibinigay mo sa button na \"Pumapayag ako\" sa bintanang lumalabas, ang napiling wika at ang pahina ng form ay pinoproseso ng shared list service ng Bumba Group (bumbagroup.com). Double opt-in ang pagsali: hindi ka idaragdag hangga't hindi mo pinipindot ang link sa email ng kumpirmasyon, at bawat email ay may link para mag-unsubscribe sa isang click. Tingnan ang [shared na paunawa sa privacy](https://bumbagroup.com/liste/aydinlatma?dil=en) para sa detalye.",
+          "**Server logs:** Ang server na nagho-host ng site ay nagtatago ng karaniwang access log para sa bawat request, kasama ang IP address, impormasyon ng browser, ang hiniling na pahina at ang oras. Ginagamit lang ang mga log na ito para sa seguridad at pag-aayos ng problema, hindi para gumawa ng profile ng tao.",
+          "**Statistics ng pagbisita (Umami, may pahintulot):** Kung papayagan mo lang ang statistics sa cookie banner o cookie preferences, ang Umami na tumatakbo sa sarili naming server ay bibilang ng page views at ng mga aksyong ito: pagpapalit ng wika at tema, kung may resulta ang paghahanap, pagsali sa listahan, pagpili ng istilo ng orasan, full screen, unang paggamit ng tool, uri ng pagpili ng lokasyon (lalawigan o lokasyon), at pagbukas o pag-download ng iskedyul ng Ramadan. Habang ginagawa ito, pinoproseso ng Umami ang iyong browser, operating system at uri ng device, wika, laki ng screen, address ng pahinang pinanggalingan mo, at ang bansa at lungsod na nakuha mula sa iyong IP address; hindi sine-save ang IP address mismo. Hindi gumagamit ng cookies ang Umami, pero iniuugnay nito ang mga pagbisita sa isang pseudonymous na session, kaya hindi ito anonymous. Hindi ipinapadala ang mga salitang tina-type mo sa paghahanap, ang iyong email address at ang iyong lokasyon. Puwede mong bawiin ang pahintulot anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting; titigil ang Umami mula sa susunod na pahina.",
+          "**Pag-sync ng oras:** Para maipakita ang oras nang hiwalay sa orasan ng iyong device, nagpapadala ang browser ng ilang maliliit na request sa sariling server ng site at binabasa ang date header ng sagot. Lumalabas lang ang mga request na ito sa karaniwang access log ng server; walang ibang ipinapadala."
+        ]
+      },
+      {
+        "id": "ios-app",
+        "h": "App para sa iPhone at iPad",
+        "p": [
+          "Sinusunod ng Saat Tarih app para sa iPhone at iPad ang parehong prinsipyo: walang account, ad, tracking o analytics. Datos na hinahawakan sa app:"
+        ],
+        "ul": [
+          "**Lokasyon:** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\", ginagamit ang iyong lokasyon sa telepono para kalkulahin ang oras ng pagdarasal at hanapin ang pinakamalapit na lalawigan; ang tantiyang lokasyon (mga 1 km) ay sa telepono mo lang naka-save. Ang opsyong \"Awtomatiko\" sa widgets ay gumagamit din ng lokasyon sa telepono lang.",
+          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang patakaran sa privacy ng Apple ang umiiral.",
+          "**Mapa:** Ipinapakita gamit ang Apple Maps ang globo sa orasan ng mundo; dina-download mula sa Apple ang mga larawan ng mapa.",
+          "**Kalendaryo:** Kung papayagan mo lang, ipinapakita sa app ang mga event mula sa mga kalendaryo sa iyong telepono; binabasa ang mga ito sa telepono at hindi ipinapadala kahit saan. Ang pagdagdag at pagbura ng event ay sa sariling screen ng kalendaryo ng iPhone at kapag kinumpirma mo lang.",
+          "**Mga notification at alarma:** Mga notification sa oras ng pagdarasal; mga notification para sa espesyal na araw, simula ng panahon, yugto ng buwan, pagsikat at paglubog ng araw, buod ng panahon sa umaga, bawat oras at daylight saving (bawat isa ay naka-on bilang default maliban sa bawat oras; mababago sa Settings › Notifications); ang mga alarma at timer ay ini-iskedyul sa iyong telepono nang walang server. Ang buod ng panahon lang ang nagtatanong sa serbisyo ng panahon (tingnan ang item tungkol sa panahon sa itaas). Pinananatiling updated ang listahan gamit ang background refresh ng iOS; ginagawa sa telepono ang mga pasalitang anunsyo.",
+          "**Email list:** Kung sasali ka sa listahan mula sa pahinang About, ipinapadala ang iyong email address sa shared na listahan ng Bumba gaya ng sa form ng website; umiiral din sa app ang mga paalala tungkol sa email list.",
+          "**Badges:** Ang mga achievement badge at ang iyong progreso (mga nakuhang badge at araw, mga istilo ng orasan na nakita, bilang ng magkakasunod na araw ng paggamit) ay sa telepono lang naka-save at hindi ipinapadala kahit saan; mabubura mo ang mga ito anumang oras gamit ang \"Burahin ang badges\" sa Tools › Badges.",
+          "**Interval workout:** Habang tumatakbo ang interval workout na sinimulan mo, gumagamit ang app ng background audio ng iOS para maianunsyo ang mga pagpapalit ng yugto kahit naka-lock ang screen; ginagawa sa telepono ang boses at walang datos na ipinapadala.",
+          "**Mga larawan:** Ang larawang pinili mo para sa full-screen na orasan o countdown ay kinukuha gamit ang photo picker ng iPhone (walang hinihinging access sa photo library); sa telepono lang naka-save ang pinaliit na kopya at hindi ito ipinapadala kahit saan. Ang mga larawang pinili mo para sa slideshow (hanggang 10) ay nananatili rin sa telepono. Ang mga share card ng oras ng pagdarasal at countdown at mga CSV file ay ginagawa sa telepono at ipinapadala lang sa app na pipiliin mo.",
+          "**Mga kagustuhan:** Ang mga kagustuhan gaya ng istilo ng orasan, lalawigan at orasan ng mundo ay sa telepono lang naka-save at nabubura kapag binura mo ang app.",
+          "**Qibla at kalapit na mga masjid:** Kinakalkula sa telepono ang direksyon ng qibla; gumagamit ang compass ng orientation sensor ng telepono (kapag may pahintulot sa lokasyon, ginagamit din sa telepono ang lokasyon para sa tunay na hilaga). Sa screen na \"Kalapit na mga masjid\", gumagamit ang paghahanap ng Apple Maps: napupunta sa Apple ang salitang hinahanap at ang gitna ng lugar na ni-round sa dalawang decimal; ang patakaran sa privacy ng Apple ang umiiral.",
+          "**Apple Watch, Siri at Lock Screen:** Kinakalkula ng Apple Watch app ang oras ng pagdarasal sa relo; kapag napili ang \"Lugar mula sa iPhone\", ang pangalan at coordinates ng napiling lugar ay ipinapadala mula sa iPhone papunta sa relo (WatchConnectivity ng Apple) at wala nang iba; kung napili ang \"Aking lokasyon\" sa relo, sa relo lang ginagamit ang lokasyon. Tumatakbo sa telepono ang mga aksyon ng Siri at Shortcuts (timer, alarma, full-screen na orasan, susunod na dasal, petsa); pinoproseso ng Apple ang mga voice request. Ginagawa sa telepono ang Live Activities sa Lock Screen (mga counter, susunod na dasal).",
+          "**Camera, tulog at focus:** Para mabasa ang QR code o barcode ng gawaing pampatay ng alarma, bubukas lang ang camera habang sine-save mo ang code at habang pinapatay mo ang alarma (hihingi ng pahintulot sa unang beses); pinoproseso sa device ang larawan, hindi sine-save at hindi ipinapadala, at ang nabasang halaga lang ang itinatago sa device kasama ng alarma. Ginagamit lang ng mga gawaing pag-alog at paghakbang ang motion sensor habang bukas ang screen ng gawain; hindi itinatala ang mga hakbang. Nananatili sa device ang kasaysayan ng pomodoro (araw, minuto, pangalan ng gawain) at ang iskedyul ng tulog; ginagawa sa device ang ingay ng pomodoro at mga tunog pantulog. Walang sleep tracking at hindi ginagamit ang mikropono.",
+          "**Pagsamba:** Ang iyong bookmark sa Quran, laki ng teksto, bilang ng dhikr, tracker ng dasal at pag-aayuno (mga nagawang dasal, bilang ng kaza, mga araw na nag-ayuno) at ang mga halagang inilagay mo sa zakat calculator ay sa device lang nananatili; hindi ipinapadala kahit saan at hindi ginagamit para sa statistics o badges. Kasama na sa app ang teksto ng Quran at mga dasal. Kapag pinindot mo ang link papunta sa site ng salin ng Diyanet, bubukas ang site na iyon sa iyong browser. Ikaw mismo ang naglalagay ng presyo ng ginto para sa zakat; hindi kumukuha ng presyo ang app.",
+          "**iCloud sync:** Kung naka-on ang \"I-sync sa iCloud\" sa Settings (default), sini-sync sa pamamagitan ng iCloud key-value storage ng Apple ang mga setting, orasan ng mundo, countdown, naka-save na lugar, mga tala ng pomodoro at tulog at mga tala ng pagsamba sa mga iPhone, iPad at Mac na naka-sign in sa iisang Apple Account. Nananatili ang datos na ito sa iyong iCloud account sa ilalim ng mga tuntunin ng Apple; hindi namin ito ma-access at hindi ito nakakarating sa aming mga server. Hindi sini-sync ang lokasyon, alarma, tumatakbong timer, setting ng notification, badges at mga larawan. Kapag pinatay ang switch, titigil ang pag-sync sa device na iyon.",
+          "**Health, journal sa umaga, larawan ng alarma at lumulutang na orasan:** Kung i-o-on mo ang \"I-save sa Apple Health\", isusulat sa Health app bilang workout (uri, simula, tagal) ang bawat natapos na interval workout; hindi binabasa ng app ang iyong health data at walang server na napupuntahan ng datos na ito. Ang journal sa umaga (mood, tulog, intensyon, tala) ay sa iyong mga device lang nananatili (sa mga device ng iyong Apple Account kung naka-on ang iCloud sync). Para sa gawaing alarma na may larawan, hindi sine-save ang larawan; isang maliit na fingerprint lang (72 antas ng abo) ang itinatago sa telepono para sa paghahambing. Nananatili rin sa telepono ang iyong paraan ng pagkalkula, mga alarma sa oras ng pagdarasal (iOS 26+) at mga button sa Control Center. Ang lumulutang na orasan ay isang picture-in-picture na bintana; walang tunog at walang ipinapadalang datos.",
+          "**Alarma na may musika, paalala ayon sa lokasyon at kalendaryo, focus blocking, Mac, Apple TV at Vision Pro:** Para sa tunog ng alarma, isinusulat sa sound file sa telepono ang 30-segundong bahagi ng kantang pinili mo mula sa music library o Files; hindi ipinapadala kahit saan ang kanta (hinihingi lang ang access sa music library kapag pumipili ka). Para sa mga paalala ayon sa lokasyon, ang iPhone mismo ang nakakaalam ng pagdating at pag-alis; nananatili sa telepono ang lugar ng paalala at galing sa Apple ang mapa. Kapag nagtakda ka ng alarma para sa event sa kalendaryo, ang pamagat at oras lang ng event na iyon ang ginagamit. Gumagamit ang focus blocking ng Screen Time framework ng Apple; ang mga app at website na pinili mo ay mga naka-encrypt na token ng Apple at hindi makikita ng app kung ano ang mga ito. Kinakalkula ng mga app para sa Mac, Apple TV at Vision Pro ang oras ng pagdarasal sa device; kung papayagan mo ang lokasyon, sa device lang ito ginagamit para hanapin ang pinakamalapit na lalawigan."
+        ]
+      },
+      {
+        "id": "android-app",
+        "h": "Android app",
+        "p": [
+          "Sinusunod ng Saat Tarih Android app ang parehong prinsipyo: walang account, ad, tracking o analytics. Datos na hinahawakan sa app:"
+        ],
+        "ul": [
+          "**Lokasyon:** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\", pahintulot lang sa tantiyang lokasyon ang hinihingi; ginagamit ang iyong lokasyon sa telepono para kalkulahin ang oras ng pagdarasal at hanapin ang pinakamalapit na lalawigan o distrito, at ang tantiyang lokasyon (mga 1 km) ay sa telepono lang naka-save.",
+          "**Lagay ng panahon:** Galing sa Open-Meteo (open-meteo.com) ang panahon sa app; para rito, ipinapadala sa Open-Meteo ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km), at nakakarating sa server ng Open-Meteo ang iyong IP address kasama ng request na iyon. Para sa panahon ng mga lungsod sa umiikot na globo, ang coordinates lang ng mga lungsod na iyon ang ipinapadala. Ang patakaran sa privacy ng Open-Meteo ang umiiral; hindi namin nakikita ang datos na ito.",
+          "**Globo at mapa:** Iginuguhit ang umiikot na globo mula sa isang larawan sa loob ng app; walang serbisyo ng mapa na kinokontak.",
+          "**Kalendaryo:** Hinihingi lang ang pahintulot sa kalendaryo kung pipindutin mo ang \"Ipakita ang mga kalendaryo ng telepono ko\"; binabasa sa telepono ang mga event at hindi ipinapadala kahit saan. Idinadagdag ang mga event gamit ang sariling calendar app ng telepono at binubura lang kapag kinumpirma mo.",
+          "**Mga notification, alarma at interval workout:** Ang mga notification sa oras ng pagdarasal at ang iba pang uri ng notification (espesyal na araw, simula ng panahon, yugto ng buwan, pagsikat at paglubog ng araw, buod ng panahon sa umaga, bawat oras, daylight saving; bawat isa ay naka-on bilang default maliban sa bawat oras, mababago sa Settings › Notifications), mga alarma at timer ay ini-iskedyul sa iyong telepono nang walang server; ginagamit ang pahintulot sa eksaktong alarma para tumunog sa oras. Habang tumatakbo ang interval workout na sinimulan mo, isang foreground service na makikita sa notification ang nag-aanunsyo ng pagpapalit ng yugto gamit ang text-to-speech ng telepono. Ginagawa sa telepono ang mga pasalitang anunsyo.",
+          "**Mga larawan:** Ang larawang pinili mo para sa full-screen na orasan o countdown ay kinukuha gamit ang photo picker ng Android (walang hinihinging pahintulot sa gallery); sa sariling file ng app lang naka-save ang pinaliit na kopya. Ang mga larawang pinili mo para sa slideshow (hanggang 10) ay nananatili rin sa telepono. Ang mga share card ng oras ng pagdarasal at countdown at mga CSV file ay ginagawa sa telepono at ipinapadala lang sa app na pipiliin mo.",
+          "**Email list:** Kung sasali ka sa listahan mula sa pahinang About, ipinapadala ang iyong email address sa shared na listahan ng Bumba gaya ng sa form ng website; umiiral din sa app ang mga paalala tungkol sa email list.",
+          "**Badges at mga kagustuhan:** Ang badges at ang mga kagustuhan gaya ng istilo ng orasan, lokasyon at orasan ng mundo ay sa telepono lang naka-save at nabubura kapag binura mo ang app. Kung naka-on ang Android backup sa iyong telepono, puwedeng maisama ang mga talang ito (at ang kopya ng mga larawang pinili mo) sa backup ng device sa iyong Google account; sakop ng mga tuntunin ng Google ang backup na iyon at hindi namin ito ma-access.",
+          "**Qibla at kalapit na mga masjid:** Kinakalkula sa telepono ang direksyon ng qibla at ang compass. Sa screen na \"Kalapit na mga masjid\", ipinapadala ang coordinates na ni-round sa dalawang decimal (mga 1 km) sa serbisyong Overpass (overpass-api.de), na naghahatid ng datos ng OpenStreetMap; nakakarating dito ang iyong IP address. Kapag pinindot ang isang masjid, bubukas ang iyong maps app.",
+          "**Wear OS na relo at shortcuts:** Kinakalkula ng Wear OS app ang oras ng pagdarasal sa relo; kung napili ang \"Aking lokasyon\", sa relo lang ginagamit ang tantiyang lokasyon at hindi ipinapadala kahit saan. Ang mga timer at alarma na itinakda ng Assistant o ng ibang app sa Saat Tarih ay sa telepono lang naka-save; ginagawa sa telepono ang screen saver at mga notification ng tumatakbong counter.",
+          "**Camera, tulog at focus:** Binabasa ng code scanner ng Google (Google Play services) ang QR code o barcode ng gawaing pampatay ng alarma: hindi humihingi ng pahintulot sa camera ang app at hindi nito nakikita ang larawan; ang nabasang halaga lang ang itinatago sa telepono kasama ng alarma. Ginagamit lang ng mga gawaing pag-alog at paghakbang ang accelerometer habang bukas ang screen ng alarma; hindi itinatala ang mga hakbang. Nananatili sa telepono ang kasaysayan ng pomodoro (araw, minuto, pangalan ng gawain) at ang iskedyul ng tulog; ginagawa sa telepono ang ingay ng pomodoro at mga tunog pantulog (may foreground service para tumugtog kahit patay ang screen, at may \"Itigil ang tunog\" sa notification). Walang sleep tracking at hindi ginagamit ang mikropono.",
+          "**Pagsamba:** Ang iyong bookmark sa Quran, laki ng teksto, bilang ng dhikr, tracker ng dasal at pag-aayuno (mga nagawang dasal, bilang ng kaza, mga araw na nag-ayuno) at ang mga halagang inilagay mo sa zakat calculator ay sa telepono lang nananatili; hindi ipinapadala kahit saan at hindi ginagamit para sa statistics o badges. Kasama na sa app ang teksto ng Quran at mga dasal. Kapag pinindot mo ang link papunta sa site ng salin ng Diyanet, bubukas ang site na iyon sa iyong browser. Ikaw mismo ang naglalagay ng presyo ng ginto para sa zakat; hindi kumukuha ng presyo ang app.",
+          "**Health, journal sa umaga, larawan ng alarma, pagpapatahimik at lumulutang na orasan:** Kung i-o-on mo ang \"I-save sa Health Connect\", pahintulot lang sa pagsulat ng ehersisyo ang hinihingi at isusulat bilang exercise session (uri, simula, tagal) ang bawat natapos na interval workout; hindi binabasa ng app ang iyong health data. Sa telepono lang (at sa Google backup ng telepono) nananatili ang journal sa umaga. Para sa gawaing alarma na may larawan, kinukunan ang larawan gamit ang sariling camera ng telepono (walang hinihinging pahintulot sa camera) at hindi ito sine-save; isang maliit na fingerprint lang ang itinatago. Ginagamit lang ang access sa Do Not Disturb para sa \"Patahimikin sa oras ng pagdarasal\" kung i-o-on mo ito at ibibigay sa mga setting ng telepono. Gumagamit ang lumulutang na orasan ng pahintulot na \"Display over other apps\"; wala itong binabasa sa screen at orasan lang ang iginuguhit. Gumagamit ang widgets at Quick Settings tiles ng sariling mga counter ng app.",
+          "**Paalala ayon sa lokasyon at kalendaryo, focus blocking at Android TV:** Kung magdadagdag ka ng paalala ayon sa lokasyon, hinihingi ang eksaktong lokasyon at access na \"Allow all the time\"; ang geofencing ng Google Play services ang nakakaalam ng pagdating at pag-alis, nananatili sa telepono ang lugar ng paalala at hindi ipinapadala ng app ang iyong lokasyon kahit saan. Kapag nagtakda ka ng alarma para sa event sa kalendaryo, ang pamagat at oras lang ng event na iyon ang ginagamit. Kung ibibigay mo ang usage access para sa focus blocking, babasahin ng app sa telepono ang pangalan ng app na nasa harap bawat segundo, habang oras lang ng trabaho sa pomodoro; hindi ito sine-save o ipinapadala. Ginagamit ng screen ng Android TV ang lugar na napili sa app."
+        ]
+      },
+      {
+        "id": "eklenti",
+        "h": "Browser extension",
+        "p": [
+          "Hindi kailanman kumokonekta sa internet ang Saat Tarih browser extension (Chrome, Edge, Firefox): galing sa iyong device ang orasan, at kinakalkula sa iyong device ang oras ng pagdarasal at ang petsang Hijri mula sa datos sa loob ng extension. Ang napili mong lalawigan at ang setting na 24/12 oras lang ang itinatago sa extension storage ng browser at nabubura kapag inalis mo ang extension. Walang statistics, ad o tracking."
+        ]
+      },
+      {
+        "id": "cookies",
+        "h": "Cookies at storage ng browser",
+        "p": [
+          "Walang anumang cookie na inilalagay ang Saat Tarih. Sa una mong pagbisita, isang banner sa ibaba ng pahina ang humihingi ng pahintulot mo para sa statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo); parehong naka-off hangga't hindi mo pinapayagan. Mapapalitan mo ang iyong pinili anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting. Para matandaan ang iyong mga pinili, ginagamit namin ang local storage (localStorage) ng iyong browser; kabilang ang mga item na ito sa kinakailangang grupo, nananatili sa iyong device at hindi ipinapadala sa server. Mabubura mo ang mga ito anumang oras sa mga setting ng browser. Shared na patakaran sa cookies ng Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+        ],
+        "table": {
+          "head": [
+            "Pangalan",
+            "Layunin",
+            "Tagal"
+          ],
+          "rows": [
+            [
+              "bumba-cerez",
+              "Tinatandaan ang iyong pinili sa cookie banner (statistics at panlabas na serbisyo) at ang bersyon ng patakaran.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-theme",
+              "Tinatandaan ang pinili mong maliwanag o madilim na tema.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-lang",
+              "Tinatandaan ang pinili mong wika.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-prefs",
+              "Tinatandaan ang 24 o 12 oras na display, ang setting ng segundo, ang huling istilo ng orasan na pinili mo at ang itsura ng orasan (font, kulay).",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-sw",
+              "Tinatandaan ang estado ng stopwatch at mga lap time.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-cd",
+              "Tinatandaan ang countdown.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-alarms",
+              "Tinatandaan ang mga alarmang itinakda mo at ang tunog ng bawat alarma.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-pomo",
+              "Tinatandaan ang tagal ng pomodoro, ang iyong pang-araw-araw na layunin, ang napiling tag at ang estado.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-pomo-log",
+              "Itinatago sa device na ito ang mga natapos na sesyon ng trabaho (petsa, haba, opsyonal na pangalan ng gawain at tag) para sa statistics ng pomodoro; hanggang 1,000 entry.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-pomo-noise",
+              "Tinatandaan ang background sound at volume ng pomodoro.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-hiit",
+              "Tinatandaan ang mga yugto, bilang ng round at setting ng pasalitang hudyat ng interval timer.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-metro",
+              "Tinatandaan ang tempo, beats bawat bar at setting ng tunog ng metronome.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-world",
+              "Tinatandaan ang mga lungsod na pinili mo para sa orasan ng mundo at ang pagkakasunod-sunod nila.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-place",
+              "Tinatandaan ang huling lalawigan o lokasyong pinili mo para sa mga pahina ng oras ng pagdarasal, kalikasan at panahon.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-prayer",
+              "Tinatandaan ang pinili mong paraan ng pagkalkula ng oras ng pagdarasal at Asr (karaniwan o Hanafi); walang sine-save habang Diyanet at karaniwang Asr ang napili.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-conv",
+              "Tinatandaan ang mga lungsod na pinili mo sa time converter.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-planner",
+              "Tinatandaan ang mga lungsod na pinili mo sa meeting planner.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-wake",
+              "Tinatandaan kung pinananatiling bukas ng mga tool ang screen.",
+              "Hanggang burahin mo"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "legal-basis",
+        "h": "Mga legal na batayan",
+        "ul": [
+          "Email list: ang iyong tahasang pahintulot (KVKK art. 5/1). Mababawi mo ito anumang oras gamit ang unsubscribe link sa bawat email.",
+          "Statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo): ang tahasang pahintulot na ibinigay mo sa cookie banner (KVKK art. 5/1). Kapag pinayagan mo ang mga panlabas na serbisyo, nakakarating ang iyong IP address sa mga provider na ito, na maaaring nasa ibang bansa; sakop din ito ng iyong pahintulot. Mababawi mo ito gamit ang link na \"Cookie preferences\".",
+          "Server logs: ang lehitimong interes naming panatilihing ligtas at gumagana ang site (KVKK art. 5/2-f).",
+          "Ang iyong mga kagustuhan: lehitimong interes (KVKK art. 5/2-f); sa iyong device lang nananatili ang datos."
+        ]
+      },
+      {
+        "id": "rights",
+        "h": "Ang iyong mga karapatan",
+        "p": [
+          "Sa ilalim ng artikulo 11 ng Turkish Personal Data Protection Law (KVKK), puwede mong itanong kung pinoproseso ang iyong datos, humingi ng impormasyon tungkol dito, hilinging itama o burahin ito, at tumutol sa pagproseso nito. Ipadala ang iyong kahilingan sa [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "changes",
+        "h": "Mga pagbabago",
+        "p": [
+          "Ina-update ang tekstong ito habang nagbabago ang site. Ipinapakita sa itaas ng pahina ang petsa ng kasalukuyang bersyon."
+        ]
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Hindi nahanap ang pahina (404) | Saat Tarih",
+    "h1": "Hindi namin mahanap ang pahinang iyon",
+    "p": "Baka mali ang pagkaka-type ng address o nailipat na ang pahina. Makikita mo ang kasalukuyang oras sa home page.",
+    "cta": "Bumalik sa home page"
+  },
+  "serverError": {
+    "title": "May nangyaring mali (500) | Saat Tarih",
+    "h1": "May nangyaring mali",
+    "p": "May pansamantalang problema sa server. Subukan muli pagkalipas ng ilang minuto.",
+    "cta": "Bumalik sa home page"
+  },
+  "list": {
+    "heading": "Manatiling updated",
+    "lead": "Gusto mo bang makatanggap ng balita tungkol sa Saat Tarih sa email? Puwede kang mag-unsubscribe anumang oras sa isang click.",
+    "emailLabel": "Iyong email address",
+    "submit": "Sumali",
+    "ok": "Nagpadala kami ng email para sa kumpirmasyon; i-click ang link sa iyong inbox para matapos ang pagsali sa listahan.",
+    "err": "Hindi namin ma-save ang iyong pag-sign up. Tingnan ang email address at ang checkbox, saka subukan muli mamaya.",
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
+    "popupTitle": "Paunawa sa privacy ng email list",
+    "popupText": "Pinoproseso ng Bumba Teknoloji Limited Şirketi ang iyong email address para lang maisali ka sa listahang ito. Puwede kang mag-unsubscribe anumang oras sa isang click.",
+    "readNote": "Basahin ang paunawa sa privacy",
+    "consentText": "Nabasa ko ang paunawa sa privacy at pumapayag akong makatanggap ng email.",
+    "accept": "Pumapayag ako",
+    "cancel": "Kanselahin",
+    "loading": "Nilo-load ang teksto…",
+    "loadFail": "Hindi ma-load ang teksto. Mababasa mo ang buong teksto sa link sa ibaba; subukan muli mamaya.",
+    "fullText": "Buong teksto",
+    "label": "Email list",
+    "formErr": "Hindi ka namin maisali. Tingnan ang iyong email address at subukan muli mamaya."
+  },
+  "badge": {
+    "title": "Bumba Life, bahagi ng Bumba Group",
+    "alt": "Isang produkto ng Bumba Life"
+  },
+  "llms": {
+    "summary": "Ang Saat Tarih ay libreng website na nagpapakita nang live ng iyong lokal na oras, petsa ngayon, numero ng linggo at oras sa mga lungsod sa buong mundo. Produkto ito ng Bumba Life (Bumba Group).",
+    "pages": "Mga pahina",
+    "cities": "Mga pahina ng lungsod",
+    "about": "Tungkol",
+    "aboutText": "Naka-sync ang oras sa orasan ng server ng site (hiwalay sa orasan ng device); binabasa ang time zone mula sa browser at walang personal na datos na ipinapadala. Available sa 15 wika: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French, Russian, Japanese, Korean, Chinese, Filipino at Thai. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+  },
+  "stage": {
+    "label": "Mga istilo ng orasan",
+    "hint": "Mag-swipe o gamitin ang mga arrow para magpalit ng istilo.",
+    "prev": "Nakaraang istilo",
+    "next": "Susunod na istilo",
+    "slide": "{n} / {total}: {name}",
+    "carousel": "carousel",
+    "slideRole": "slide",
+    "dots": "Pumili ng istilo",
+    "models": {
+      "classic": "Klasikong analog",
+      "minimal": "Simpleng analog",
+      "analog-date": "Analog na may petsa",
+      "digital": "Digital",
+      "digital-date": "Digital na may petsa",
+      "duo": "Analog at digital",
+      "duo-date": "Analog, digital at petsa",
+      "calendar": "Digital na may buwanang kalendaryo",
+      "calendar-analog": "Analog na may buwanang kalendaryo",
+      "flip": "Flip clock",
+      "words": "Orasang nakasulat sa salita",
+      "rings": "Ring clock",
+      "wx-analog": "Analog na may lagay ng panahon",
+      "wx-digital": "Digital, petsa at panahon",
+      "wx-stack": "Analog, digital at panahon",
+      "bigdate": "Malaking petsa",
+      "stack": "Analog na may digital sa ilalim",
+      "wx-analog-date": "Analog, petsa at panahon",
+      "wx-full": "Analog, digital, petsa at panahon",
+      "h-classic": "Magkatabing analog",
+      "h-analog-date": "Magkatabing analog at petsa",
+      "h-stack": "Magkatabing analog at digital",
+      "h-wx-analog": "Magkatabing analog at panahon",
+      "h-wx-stack": "Magkatabing analog, digital at panahon",
+      "h-wx-analog-date": "Magkatabing analog, petsa at panahon",
+      "h-wx-full": "Magkatabing analog, digital, petsa at panahon",
+      "wx-digital-cal": "Digital, petsa, panahon at buwanang kalendaryo",
+      "wx-digital-cal-week": "Digital, petsa, panahon, buwanang kalendaryo at lingguhang forecast"
+    },
+    "source": "Hindi nakadepende sa iyong device ang orasang ito: binabasa ito mula sa orasan ng server ng Saat Tarih na naka-sync sa NTP at sinusukat muli bawat 15 minuto.",
+    "info": "Tungkol sa pinagmulan ng oras ng orasang ito",
+    "infoTitle": "Saan galing ang oras na ito?",
+    "infoClose": "Isara",
+    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital na orasan at nakasara sa analog."
+  },
+  "calendar": {
+    "title": "Kalendaryo {year}: Mga Pista Opisyal sa Türkiye at Ramadan | Saat Tarih",
+    "description": "Mga pista opisyal sa Türkiye sa {year}, petsa ng Ramadan at Eid al-Adha, mga bisperas, gabi ng kandil at buwan ng Ramadan sa iisang taunang kalendaryo.",
+    "h1": "Kalendaryo {year}",
+    "lead": "Sa {year}, ang Ramadan ay {ramadan}, ang Ramazan Bayramı (Eid al-Fitr) ay {rb} at ang Kurban Bayramı (Eid al-Adha) ay {kb}. May {n} araw ng pista opisyal sa taon, {w} sa mga ito ay karaniwang araw. Kalahating araw ang mga bisperas ng bayram at ng Araw ng Republika.",
+    "legend": "Alamat",
+    "legendLabel": "Alamat ng kalendaryo",
+    "types": {
+      "holiday": "Pista opisyal",
+      "half": "Kalahating araw (bisperas)",
+      "religious": "Panrelihiyong araw o gabi",
+      "ramadan": "Buwan ng Ramadan",
+      "special": "Espesyal na araw",
+      "weekend": "Weekend",
+      "today": "Ngayon",
+      "school": "Bakasyon sa paaralan o petsa ng termino (MEB)",
+      "exam": "Pagsusulit o kaugnay na petsa (ÖSYM, MEB, AÖF)"
+    },
+    "eventsHeading": "Listahan ng mga araw sa {year}",
+    "colDate": "Petsa",
+    "colDay": "Araw",
+    "colEvent": "Pangalan",
+    "colType": "Uri",
+    "colLeft": "Natitira",
+    "tableCaption": "Mga pista opisyal, panrelihiyong araw at espesyal na araw sa {year}",
+    "yearNav": "Pumili ng taon",
+    "prevYear": "← {year}",
+    "nextYear": "{year} →",
+    "monthLabel": "{month} {year}",
+    "faqHeading": "Mga madalas itanong tungkol sa kalendaryo ng {year}",
+    "faqRb": "Kailan ang Ramazan Bayramı (Eid al-Fitr) sa {year}?",
+    "faqRbA": "Ang Ramazan Bayramı sa {year} ay {rb}. Ang bisperas ay {eve} at kalahating araw ito.",
+    "faqKb": "Kailan ang Kurban Bayramı (Eid al-Adha) sa {year}?",
+    "faqKbA": "Ang Kurban Bayramı sa {year} ay {kb}. Ang bisperas ay {eve} at kalahating araw ito.",
+    "faqRamadan": "Kailan magsisimula ang Ramadan sa {year}?",
+    "faqRamadanA": "Ang Ramadan sa {year} ay magsisimula sa {start} at magtatapos sa {end}. Ang Laylat al-Qadr (Kadir Gecesi) ay sa gabi ng {kadir}.",
+    "faqHolidays": "Ilan ang pista opisyal sa {year}?",
+    "faqHolidaysA": "May {n} araw ng pista opisyal sa {year}, {w} sa mga ito ay karaniwang araw. Kalahating araw ang mga bisperas ng Ramazan Bayramı at Kurban Bayramı at ang 28 Oktubre.",
+    "noYear": "Walang datos para sa taong ito.",
+    "months": [
+      "Enero",
+      "Pebrero",
+      "Marso",
+      "Abril",
+      "Mayo",
+      "Hunyo",
+      "Hulyo",
+      "Agosto",
+      "Setyembre",
+      "Oktubre",
+      "Nobyembre",
+      "Disyembre"
+    ],
+    "weekdays": [
+      "Lunes",
+      "Martes",
+      "Miyerkules",
+      "Huwebes",
+      "Biyernes",
+      "Sabado",
+      "Linggo"
+    ],
+    "weekdaysShort": [
+      "Lun",
+      "Mar",
+      "Miy",
+      "Huw",
+      "Biy",
+      "Sab",
+      "Lin"
+    ],
+    "events": {
+      "newYear": "Araw ng Bagong Taon",
+      "apr23": "Araw ng Pambansang Soberanya at ng mga Bata",
+      "may1": "Araw ng Paggawa at Pagkakaisa",
+      "may19": "Paggunita kay Atatürk, Araw ng Kabataan at Palakasan",
+      "jul15": "Araw ng Demokrasya at Pambansang Pagkakaisa",
+      "aug30": "Araw ng Tagumpay",
+      "oct28": "Bisperas ng Araw ng Republika",
+      "oct29": "Araw ng Republika",
+      "ucAylar": "Simula ng Tatlong Banal na Buwan",
+      "regaib": "Regaib Kandil",
+      "mirac": "Miraj Kandil",
+      "berat": "Berat Kandil",
+      "ramadanStart": "Unang araw ng Ramadan",
+      "kadir": "Laylat al-Qadr (Kadir Gecesi)",
+      "rbEve": "Bisperas ng Ramazan Bayramı",
+      "rb1": "Ramazan Bayramı, unang araw",
+      "rb2": "Ramazan Bayramı, ikalawang araw",
+      "rb3": "Ramazan Bayramı, ikatlong araw",
+      "kbEve": "Bisperas ng Kurban Bayramı",
+      "kb1": "Kurban Bayramı, unang araw",
+      "kb2": "Kurban Bayramı, ikalawang araw",
+      "kb3": "Kurban Bayramı, ikatlong araw",
+      "kb4": "Kurban Bayramı, ikaapat na araw",
+      "hijri": "Bagong Taon ng Islam",
+      "ashura": "Araw ng Ashura",
+      "mawlid": "Mawlid Kandil",
+      "feb14": "Araw ng mga Puso",
+      "mar8": "Pandaigdigang Araw ng Kababaihan",
+      "mothers": "Araw ng mga Ina",
+      "fathers": "Araw ng mga Ama",
+      "nov10": "Araw ng Paggunita kay Atatürk",
+      "nov24": "Araw ng mga Guro",
+      "schoolStart": "Pagbubukas ng klase (MEB)",
+      "midterm1": "Simula ng bakasyon sa gitna ng unang termino (MEB)",
+      "term1End": "Pagtatapos ng unang termino, araw ng report card (MEB)",
+      "semester": "Simula ng bakasyon sa gitna ng taon (MEB)",
+      "term2Start": "Simula ng ikalawang termino (MEB)",
+      "midterm2": "Simula ng bakasyon sa gitna ng ikalawang termino (MEB)",
+      "schoolEnd": "Pagtatapos ng taon ng pasukan, araw ng report card (MEB)",
+      "teacherStart": "Simula ng propesyonal na gawain ng mga guro (MEB)",
+      "adaptation": "Simula ng linggo ng oryentasyon sa preschool at grade 1 (MEB)",
+      "teacherEnd": "Simula ng propesyonal na gawain ng mga guro sa katapusan ng taon (MEB)",
+      "yksTyt": "YKS: sesyon ng TYT (ÖSYM)",
+      "yksAytYdt": "YKS: mga sesyon ng AYT at YDT (ÖSYM)",
+      "tryos": "TR-YÖS/2: pagsusulit para sa mga dayuhang estudyante (ÖSYM)",
+      "eyds1": "e-YDS 2026/11 (ÖSYM)",
+      "eyds2": "e-YDS 2026/12 (ÖSYM)",
+      "kpssOrta": "KPSS antas ng sekondarya (ÖSYM)",
+      "kpssDhbt": "KPSS DHBT: pagsusulit sa larangan ng serbisyong panrelihiyon (ÖSYM)",
+      "dus2": "DUS ikalawang sesyon: pagsusulit sa espesyalidad sa dentistry (ÖSYM)",
+      "eus": "EUS: pagsusulit sa espesyalidad sa parmasya (ÖSYM)",
+      "yds2": "YDS/2: pagsusulit sa kahusayan sa banyagang wika (ÖSYM)",
+      "ales3": "ALES/3: pagsusulit sa pagpasok sa graduate studies (ÖSYM)",
+      "alesApply": "Panahon ng aplikasyon sa ALES/3 (ÖSYM)",
+      "kpssOnResult": "Resulta ng KPSS antas ng associate degree (ÖSYM)",
+      "kpssOrtaResult": "Resulta ng KPSS antas ng sekondarya (ÖSYM)",
+      "ydsResult": "Resulta ng YDS/2 (ÖSYM)",
+      "alesResult": "Resulta ng ALES/3 (ÖSYM)",
+      "kpssTercih": "Mga kagustuhan sa placement ng KPSS-2026/2 (ÖSYM)",
+      "common1": "Termino 1, unang sabayang nakasulat na pagsusulit (MEB)",
+      "common2": "Termino 1, ikalawang sabayang nakasulat na pagsusulit (MEB)",
+      "common3": "Termino 2, unang sabayang nakasulat na pagsusulit (MEB)",
+      "common4": "Termino 2, ikalawang sabayang nakasulat na pagsusulit (MEB)",
+      "aolRegister": "Panahon ng pagpaparehistro sa open high school (AÖL) (MEB)",
+      "aolEsinav": "Panahon ng e-exam ng AÖL (MEB)",
+      "aolWritten": "Nakasulat na pagsusulit ng AÖL (MEB)",
+      "aolResult": "Resulta ng unang termino ng AÖL (MEB)",
+      "aofMid1": "Midterm ng AÖF sa taglagas (Anadolu University)",
+      "aofFinal1": "Final exam ng AÖF sa taglagas (Anadolu University)",
+      "aofMid2": "Midterm ng AÖF sa tagsibol (Anadolu University)",
+      "aofFinal2": "Final exam ng AÖF sa tagsibol (Anadolu University)",
+      "aofSummer": "Pagsusulit ng summer school ng AÖF (Anadolu University)"
+    },
+    "hubName": "Taunang kalendaryo",
+    "hubDesc": "Mga pista opisyal, mga araw ng bayram at bisperas, mga gabi ng kandil at buwan ng Ramadan.",
+    "projected": "Sinusunod ng mga panrelihiyong petsa ngayong taon ang pangmatagalang kalendaryo ng Diyanet at puwedeng magbago habang papalapit ang taon.",
+    "fullFmt": "{weekday}, {month} {day}, {year}",
+    "shortFmt": "{month} {day}",
+    "dateFmt": "{month} {day}, {year}",
+    "dayNone": "Walang nakatalang espesyal na araw.",
+    "dayWeek": "Linggo {n}",
+    "dayDoy": "Ika-{n} araw ng taon",
+    "dayToday": "Ngayon",
+    "dayIn": "Sa loob ng {n} araw",
+    "dayAgo": "{n} araw na ang nakalipas",
+    "dayClose": "Isara",
+    "dayToList": "Ipakita sa listahan ng mga araw",
+    "icsHeading": "Idagdag sa iyong kalendaryo",
+    "icsHolidays": "Mga pista opisyal at bisperas",
+    "icsDays": "Mga panrelihiyon at espesyal na araw",
+    "icsDownload": "I-download (.ics)",
+    "icsSubscribe": "Mag-subscribe (iPhone, Mac, Outlook)",
+    "icsGoogle": "Idagdag sa Google Calendar",
+    "icsNote": "Kung mag-subscribe ka, kusang makukuha ng iyong kalendaryo ang mga petsa ng bagong taon; kasama ang 2026–2031. Batay sa pangmatagalang kalendaryo ng Diyanet ang mga panrelihiyong araw mula 2028.",
+    "print": "I-print / i-save bilang PDF",
+    "printNote": "Sa print dialog, piliin ang \"Save as PDF\" bilang destinasyon; kasya ang kalendaryo sa isang A4 na pahina.",
+    "icsCalHolidays": "Mga pista opisyal sa Türkiye (Saat Tarih)",
+    "icsCalDays": "Mga panrelihiyon at espesyal na araw sa Türkiye (Saat Tarih)",
+    "icsHalf": "kalahating araw",
+    "icsProjected": "batay sa pangmatagalang kalendaryo ng Diyanet (projection)",
+    "icsCalMoon": "Mga yugto ng buwan at eklipse (Saat Tarih)"
+  },
+  "tools": {
+    "hub": {
+      "title": "Mga Tool ng Orasan: Stopwatch, Countdown, Alarma | Saat Tarih",
+      "description": "Libreng online stopwatch, countdown timer, alarma at pomodoro timer. Walang sign-up, walang ad; may full screen at tunog na paalala.",
+      "h1": "Mga tool ng orasan",
+      "lead": "Tumatakbo sa iyong browser ang mga tool ng Saat Tarih nang walang sign-up o install. Stopwatch, countdown, alarma at pomodoro timer, lahat ay may full screen at dark mode.",
+      "open": "Buksan",
+      "cards": {
+        "stopwatch": {
+          "name": "Stopwatch",
+          "desc": "Mga lap time, pinakamabilis at pinakamabagal na lap, full screen."
+        },
+        "countdown": {
+          "name": "Countdown",
+          "desc": "Ayon sa tagal o petsa; natitirang oras bago ang Bagong Taon at bayram."
+        },
+        "alarm": {
+          "name": "Alarma",
+          "desc": "Oras, label, ulit sa piling araw at snooze."
+        },
+        "pomodoro": {
+          "name": "Pomodoro",
+          "desc": "Magtrabaho nang 25 minuto, magpahinga nang 5; may mahabang pahinga."
+        },
+        "week": {
+          "name": "Anong linggo na?",
+          "desc": "ISO week number, mga petsa ng linggong ito, lahat ng linggo ng taon."
+        },
+        "tz": {
+          "name": "Time zone ng Türkiye",
+          "desc": "May daylight saving ba? UTC+3 at diperensya sa ibang lungsod."
+        },
+        "converter": {
+          "name": "Time converter",
+          "desc": "I-convert ang oras ng isang lungsod sa iba."
+        },
+        "planner": {
+          "name": "Meeting planner",
+          "desc": "Hanapin ang magkakatugmang oras ng trabaho sa iba't ibang time zone."
+        },
+        "diff": {
+          "name": "Diperensya ng oras",
+          "desc": "Diperensya ng oras ng Istanbul at mga lungsod sa mundo."
+        },
+        "datecalc": {
+          "name": "Date calculator",
+          "desc": "Mga araw at araw ng trabaho sa pagitan ng petsa, pagdagdag sa petsa, edad."
+        },
+        "embed": {
+          "name": "Clock widget",
+          "desc": "Maglagay ng libreng orasan sa iyong site (iframe)."
+        },
+        "qibla": {
+          "name": "Qibla",
+          "desc": "Compass, anggulo ng qibla, oras ng qibla at kalapit na mga masjid."
+        },
+        "bridge": {
+          "name": "Mahahabang weekend",
+          "desc": "Ilang araw na pahinga sa ilang araw na leave: mga holiday at weekend sa Türkiye."
+        },
+        "dst": {
+          "name": "Pagpapalit ng daylight saving",
+          "desc": "Kailan iniaabante o iniuurong ang orasan sa buong mundo."
+        },
+        "unix": {
+          "name": "Unix timestamp",
+          "desc": "Live na Unix time, pag-convert mula at papunta sa petsa."
+        },
+        "zones": {
+          "name": "Mga time zone",
+          "desc": "Mga daglat gaya ng UTC, CET at EST, mga diperensya at kasalukuyang oras."
+        },
+        "worldHol": {
+          "name": "Mga pista opisyal sa mundo",
+          "desc": "Mga pista opisyal sa 30 bansa, may petsa at natitirang araw."
+        },
+        "zakat": {
+          "name": "Zakat calculator",
+          "desc": "Nisab at halaga ng zakat ayon sa mga tuntunin ng Diyanet."
+        },
+        "api": {
+          "name": "Open data (API)",
+          "desc": "Mga holiday, oras ng pagdarasal at kalendaryong Hijri bilang JSON."
+        },
+        "hijriConv": {
+          "name": "Hijri date converter",
+          "desc": "I-convert ang petsa sa pagitan ng Hijri at Gregorian."
+        },
+        "timeCalc": {
+          "name": "Time calculator",
+          "desc": "Magdagdag at magbawas ng oras, oras sa pagitan ng dalawang oras."
+        },
+        "daysUntil": {
+          "name": "Ilang araw pa",
+          "desc": "Mga araw bago o mula sa isang petsa."
+        },
+        "interval": {
+          "name": "Interval timer",
+          "desc": "Round timer na may boses para sa HIIT at Tabata."
+        },
+        "chess": {
+          "name": "Chess clock",
+          "desc": "Orasan ng laro para sa dalawang manlalaro, may increment."
+        },
+        "metronome": {
+          "name": "Metronome",
+          "desc": "BPM, time signature at tap tempo."
+        },
+        "talking": {
+          "name": "Nagsasalitang orasan",
+          "desc": "Orasang binibigkas ang oras."
+        },
+        "zodiac": {
+          "name": "Zodiac sign",
+          "desc": "Sun sign at Moon sign."
+        },
+        "sky": {
+          "name": "Langit sa gabi",
+          "desc": "Mga planetang makikita ngayong gabi, sky chart at layo ng Buwan."
+        },
+        "otd": {
+          "name": "Sa araw na ito",
+          "desc": "Ano ang nangyari sa araw na ito sa kasaysayan."
+        },
+        "tzn": {
+          "name": "Balita sa time zone",
+          "desc": "Mga desisyon ng mga bansa sa time zone at daylight saving."
+        }
+      },
+      "infoHeading": "Mga pahina ng impormasyon"
+    },
+    "common": {
+      "fullscreen": "Full screen",
+      "exitFullscreen": "Lumabas sa full screen",
+      "sound": "Tunog na paalala",
+      "notify": "Payagan ang notifications",
+      "notifyOn": "Naka-on ang notifications",
+      "notifyDenied": "Tinanggihan ang pahintulot sa notification",
+      "testSound": "Subukan ang tunog",
+      "close": "Isara",
+      "relatedHeading": "Iba pang tool",
+      "pageOpenNote": "Gumagana lang ang tool na ito habang bukas ang pahina; hindi ka nito aabisuhan kung isasara mo ang tab.",
+      "faqHeading": "Mga madalas itanong",
+      "syncNote": "Tumatakbo ang oras sa orasan ng server, kaya tama ang resulta kahit mali ang orasan ng iyong device.",
+      "toolsHub": "Lahat ng tool"
+    },
+    "stopwatch": {
+      "title": "Online Stopwatch na may Laps at Full Screen | Saat Tarih",
+      "description": "Libreng online stopwatch: mga lap time, pinakamabilis at pinakamabagal na lap, full screen at keyboard shortcuts. Nananatili ang oras kahit i-reload ang pahina.",
+      "h1": "Online stopwatch",
+      "lead": "Eksakto hanggang sandaang bahagi ng segundo ang stopwatch, nagtatala ng mga lap time at pinananatili ang oras kahit i-reload o isara at buksan muli ang pahina. Space para simulan at itigil, L para sa lap.",
+      "start": "Simulan",
+      "stop": "Itigil",
+      "resume": "Ituloy",
+      "lap": "Lap",
+      "reset": "I-reset",
+      "lapNo": "Lap",
+      "lapTime": "Lap time",
+      "total": "Kabuuan",
+      "best": "Pinakamabilis",
+      "worst": "Pinakamabagal",
+      "empty": "Wala pang lap.",
+      "hint": "Shortcuts: Space simulan/itigil, L lap, R reset.",
+      "lapsCaption": "Mga lap time",
+      "lapAdded": "Naidagdag ang lap {n}: {t}",
+      "panel": "Stopwatch",
+      "faq": [
+        {
+          "q": "Gaano kaeksakto ang stopwatch?",
+          "a": "Sinusukat ang oras gamit ang high-resolution na orasan ng browser at ipinapakita hanggang sandaang bahagi ng segundo. Hindi ito naaapektuhan ng pagpapalit ng orasan ng device."
+        },
+        {
+          "q": "Mawawala ba ang oras ko kung isasara ko ang pahina?",
+          "a": "Hindi. Naka-save sa device na ito ang oras ng pagsisimula ng tumatakbong stopwatch, kaya ipinapakita nito ang oras kung saan ito huminto kapag ni-reload o binuksan muli ang pahina. Binubura ito ng button na Reset."
+        },
+        {
+          "q": "Ano ang lap at paano ako magtatala nito?",
+          "a": "Ang lap ay split time na kinukuha nang hindi itinitigil ang stopwatch. Pindutin ang button na Lap o ang L key habang tumatakbo ito; nakalista ang bawat lap time at kabuuan, at minamarkahan ang pinakamabilis at pinakamabagal na lap."
+        }
+      ],
+      "csv": "I-download ang laps bilang CSV"
+    },
+    "countdown": {
+      "title": "Countdown Timer: Ayon sa Tagal o Petsa | Saat Tarih",
+      "description": "Libreng countdown: timer sa minuto o natitirang oras bago ang petsang pipiliin mo. Countdown sa Bagong Taon at bayram, tunog na paalala at full screen.",
+      "h1": "Countdown",
+      "lead": "Dalawang paraan ang countdown: timer na nag-aabiso kapag natapos ang napili mong tagal, o live na pagpapakita ng natitirang araw, oras at segundo bago ang petsang pipiliin mo. Mag-countdown sa Bagong Taon, isang bayram o sarili mong petsa.",
+      "tabTimer": "Timer",
+      "tabDate": "Hanggang sa petsa",
+      "hours": "Oras",
+      "minutes": "Minuto",
+      "seconds": "Segundo",
+      "presetsLabel": "Mabilisang tagal",
+      "presetMin": "{n} min",
+      "start": "Simulan",
+      "pause": "I-pause",
+      "resume": "Ituloy",
+      "reset": "I-reset",
+      "targetLabel": "Target na petsa at oras",
+      "targetSet": "Simulang magbilang",
+      "quickHeading": "Mabilisang target",
+      "quickNewYear": "Bagong Taon",
+      "remaining": "Natitirang oras",
+      "days": "araw",
+      "hoursShort": "o",
+      "minutesShort": "min",
+      "secondsShort": "s",
+      "finished": "Tapos na ang oras!",
+      "finishedDate": "Naabot na ang target na oras!",
+      "invalid": "Maglagay ng tamang tagal o petsa sa hinaharap.",
+      "panel": "Countdown",
+      "timerRegion": "Timer",
+      "dateRegion": "Countdown hanggang sa petsa",
+      "faq": [
+        {
+          "q": "Ano ang mangyayari kapag natapos ang countdown?",
+          "a": "Tutunog ang paalala, kikislap ang pamagat ng pahina at, kung pinayagan mo, lalabas ang notification. Ihinto ang paalala gamit ang button na Isara."
+        },
+        {
+          "q": "Paano mag-countdown sa isang tiyak na petsa?",
+          "a": "Sa tab na Hanggang sa petsa, piliin ang target na petsa at oras o pindutin ang isa sa mabilisang target gaya ng Bagong Taon at ng mga bayram. Live na nag-a-update ang araw, oras, minuto at segundo."
+        },
+        {
+          "q": "Tuloy ba ang countdown kung isasara ko ang tab?",
+          "a": "Naka-save ang countdown sa device na ito, kaya kapag binuksan muli ang pahina ay tama ang ipinapakitang natitirang oras. Hindi tutunog ang paalala habang sarado ang pahina."
+        }
+      ],
+      "nameLabel": "Pamagat (opsyonal)",
+      "namePlaceholder": "Hal. Bakasyon",
+      "copyLink": "Kopyahin ang link",
+      "copied": "Nakopya ang link",
+      "shareNote": "Maibabahagi mo ang link para sa petsang pinili mo; kusang magsisimula ang countdown kapag binuksan ang link.",
+      "addMinute": "+1 min"
+    },
+    "alarm": {
+      "title": "Online Alarm Clock: Paulit-ulit at Snooze | Saat Tarih",
+      "description": "Libreng alarma na tumatakbo sa browser: oras, label, ulit sa piling araw, 5-minutong snooze at notifications. Tumutunog ang alarma habang bukas ang pahina.",
+      "h1": "Online na alarma",
+      "lead": "Pumili ng oras ng alarma at mga araw na gusto mo; pagdating ng oras, tutunog ito at lalabas ang notification. Naka-save ang mga alarma sa device na ito. Dahil sa limitasyon ng browser, tumutunog lang ang alarma habang bukas ang pahinang ito (tab).",
+      "timeLabel": "Oras ng alarma",
+      "labelLabel": "Label (opsyonal)",
+      "labelPlaceholder": "Hal. Miting",
+      "repeatLabel": "Ulitin",
+      "once": "Isang beses",
+      "every": "Araw-araw",
+      "weekdays": "Weekdays",
+      "add": "Magdagdag ng alarma",
+      "listHeading": "Iyong mga alarma",
+      "none": "Wala pang alarma.",
+      "delete": "Burahin",
+      "enable": "I-on/i-off",
+      "ringing": "Tumutunog ang alarma",
+      "snooze": "Snooze 5 min",
+      "stop": "Isara",
+      "next": "Susunod na alarma",
+      "nextNone": "Walang aktibong alarma",
+      "wake": "Panatilihing bukas ang screen",
+      "wakeNote": "Kapag namatay ang screen, puwedeng patulugin ng browser ang tab; pinipigilan ng opsyong ito na mamatay ang screen habang may nakatakdang alarma.",
+      "note": "Para sa mahalagang paggising, itakda rin ang sariling alarma ng iyong telepono; hindi tutunog ang alarma ng browser kapag sarado ang pahina.",
+      "panel": "Alarma",
+      "dayNames": [
+        "Lun",
+        "Mar",
+        "Miy",
+        "Huw",
+        "Biy",
+        "Sab",
+        "Lin"
+      ],
+      "defaultLabel": "Alarma",
+      "faq": [
+        {
+          "q": "Tutunog ba ang alarma kung isasara ko ang tab?",
+          "a": "Hindi. Hindi makapagpatunog ang mga website habang sarado ang pahina. Dapat manatiling bukas ang pahinang ito sa isang tab at gising ang device; makakatulong ang opsyong Panatilihing bukas ang screen."
+        },
+        {
+          "q": "Nakadepende ba ang alarma sa orasan ng device ko?",
+          "a": "Hindi. Sinusuri ang alarma laban sa orasang naka-sync sa server, kaya tumutunog ito sa tamang sandali kahit ilang segundong mali ang orasan ng iyong device. Galing sa iyong device ang time zone."
+        },
+        {
+          "q": "Paano i-snooze ang alarma?",
+          "a": "Habang tumutunog, pindutin ang Snooze 5 min at tutunog itong muli pagkalipas ng limang minuto. Pinapatahimik ito ng button na Isara; tutunog muli ang paulit-ulit na alarma sa susunod na napiling araw."
+        }
+      ],
+      "soundLabel": "Tunog ng alarma",
+      "sounds": {
+        "chime": "Tatlong chime",
+        "bell": "Kampana",
+        "rise": "Palakas nang palakas",
+        "digital": "Digital beep",
+        "soft": "Malambot"
+      }
+    },
+    "pomodoro": {
+      "title": "Pomodoro Timer: 25 Minutong Trabaho, 5 Pahinga | Saat Tarih",
+      "description": "Libreng pomodoro timer: 25 minutong trabaho, 5-minutong maikling pahinga at mahabang pahinga bawat 4 na round. Naaayos na tagal, tunog na paalala at full screen.",
+      "h1": "Pomodoro timer",
+      "lead": "Pinagsasalit-salit ng Pomodoro technique ang 25 minutong nakatutok na trabaho at 5-minutong maikling pahinga, at may mahabang pahinga pagkatapos ng 4 na round. Mapapalitan ang mga tagal at may tunog sa bawat pagpapalit.",
+      "work": "Trabaho",
+      "short": "Maikling pahinga",
+      "long": "Mahabang pahinga",
+      "start": "Simulan",
+      "pause": "I-pause",
+      "resume": "Ituloy",
+      "skip": "Lumaktaw sa susunod",
+      "reset": "I-reset",
+      "settings": "Tagal (minuto)",
+      "workMin": "Trabaho",
+      "shortMin": "Maikling pahinga",
+      "longMin": "Mahabang pahinga",
+      "roundsLabel": "Mga round bago ang mahabang pahinga",
+      "round": "Round {n} ng {total}",
+      "completed": "Mga natapos na pomodoro: {n}",
+      "phaseDone": "Natapos ang {phase}",
+      "panel": "Pomodoro",
+      "phaseLabel": "Kasalukuyang yugto",
+      "faq": [
+        {
+          "q": "Ano ang Pomodoro technique?",
+          "a": "Binuo ni Francesco Cirillo, pinagtatrabaho ka nito nang tuloy-tuloy sa loob ng 25 minuto at saka magpapahinga nang 5 minuto. Pagkatapos ng apat na round ng trabaho, magpapahinga ka nang mas matagal, 15 hanggang 30 minuto."
+        },
+        {
+          "q": "Mapapalitan ko ba ang mga tagal?",
+          "a": "Oo. Maitatakda mo ang haba ng trabaho, maikli at mahabang pahinga at ang bilang ng round bago ang mahabang pahinga; naka-save ang mga setting sa device na ito."
+        },
+        {
+          "q": "Kusa bang nagpapalit ang mga yugto?",
+          "a": "Oo. Kapag tapos na ang oras, may tunog at kusang magsisimula ang susunod na yugto (trabaho o pahinga). Pindutin ang Pause para huminto."
+        }
+      ],
+      "taskLabel": "Ano ang ginagawa mo? (opsyonal)",
+      "taskPlaceholder": "Halimbawa: pagsusulat ng ulat",
+      "statsHeading": "Statistics (sa device na ito lang)",
+      "today": "Ngayon",
+      "week": "Huling 7 araw",
+      "total": "Kabuuan",
+      "statLine": "{n} pomodoro · {m} minuto",
+      "chartCaption": "Mga minuto ng pagtutok sa huling 7 araw",
+      "topTasks": "Pinakamadalas na ginawa (7 araw)",
+      "noTask": "Walang pamagat",
+      "clear": "Burahin ang kasaysayan",
+      "clearConfirm": "Burahin ang kasaysayan ng pomodoro sa device na ito?",
+      "noise": "Background sound habang nagtatrabaho",
+      "noiseOff": "Naka-off",
+      "noiseWhite": "White noise",
+      "noisePink": "Pink noise",
+      "noiseBrown": "Brown noise",
+      "noiseRain": "Ulan",
+      "volume": "Volume",
+      "noiseNote": "Tumutugtog lang ang tunog habang may tumatakbong sesyon ng trabaho; ginagawa ito sa browser at walang dina-download.",
+      "empty": "Wala pang natapos na pomodoro.",
+      "minUnit": "min",
+      "csv": "I-download ang kasaysayan bilang CSV",
+      "streak": "Streak: {n} araw na sunod-sunod",
+      "goalLabel": "Pang-araw-araw na layunin (sesyon)",
+      "goalProgress": "Ngayon {n}/{g} sesyon",
+      "goalDone": "Naabot ang pang-araw-araw na layunin",
+      "tagLabel": "Tag",
+      "tags": {
+        "none": "Walang tag",
+        "work": "Trabaho",
+        "study": "Pag-aaral",
+        "personal": "Personal",
+        "other": "Iba pa"
+      },
+      "byTag": "Ayon sa tag, huling 7 araw"
+    },
+    "presets": {
+      "timerTitle": "{Name}: online na countdown | Saat Tarih",
+      "timerDescription": "Handa na ang countdown na {label}: pindutin ang Simulan at tutunog ang alarma kapag tapos na ang oras. May pause, full screen at link na maibabahagi; walang i-install.",
+      "timerLead": "Handa na ang countdown na nakatakda sa {label}. Pindutin ang Simulan; tutunog ang alarma kapag tapos na ang oras.",
+      "timerFacts": "{label} = {s} segundo = {ms} millisecond.",
+      "endsAt": "Kung sisimulan ngayon, matatapos ito nang {time}",
+      "endsAtRun": "Matatapos nang {time}",
+      "alarmTitle": "Mag-alarma nang {time12} ({time}): online alarm clock | Saat Tarih",
+      "alarmDescription": "Handa na ang alarma para sa {time12}: pindutin ang Idagdag at tutunog ito habang bukas ang pahina. May mungkahing oras ng pagtulog ayon sa sleep cycle.",
+      "alarmH1": "Mag-alarma nang {time12}",
+      "alarmLead": "Handa na ang alarma para sa {time12} ({time}). Pindutin ang Idagdag; tutunog ito nang {time12}.",
+      "sleepHeading": "Kailan ako dapat matulog?",
+      "sleepText": "Mga oras ng pagtulog para magising nang {time12}, batay sa 90-minutong sleep cycle (may dagdag na 15 minuto para makatulog):",
+      "sleepRow": "{bed}: {cycles} cycle, {hours} oras na tulog",
+      "sleepNote": "Iba-iba ang sleep cycle ng bawat tao; tantiyang gabay lang ang mga oras na ito.",
+      "durations": {
+        "1": {
+          "label": "1 minuto",
+          "name": "1-minutong timer"
+        },
+        "2": {
+          "label": "2 minuto",
+          "name": "2-minutong timer"
+        },
+        "3": {
+          "label": "3 minuto",
+          "name": "3-minutong timer"
+        },
+        "5": {
+          "label": "5 minuto",
+          "name": "5-minutong timer"
+        },
+        "10": {
+          "label": "10 minuto",
+          "name": "10-minutong timer"
+        },
+        "15": {
+          "label": "15 minuto",
+          "name": "15-minutong timer"
+        },
+        "20": {
+          "label": "20 minuto",
+          "name": "20-minutong timer"
+        },
+        "25": {
+          "label": "25 minuto",
+          "name": "25-minutong timer"
+        },
+        "30": {
+          "label": "30 minuto",
+          "name": "30-minutong timer"
+        },
+        "40": {
+          "label": "40 minuto",
+          "name": "40-minutong timer"
+        },
+        "45": {
+          "label": "45 minuto",
+          "name": "45-minutong timer"
+        },
+        "60": {
+          "label": "1 oras",
+          "name": "1-oras na timer"
+        },
+        "90": {
+          "label": "90 minuto",
+          "name": "90-minutong timer"
+        },
+        "120": {
+          "label": "2 oras",
+          "name": "2-oras na timer"
+        }
+      }
+    }
+  },
+  "info": {
+    "week": {
+      "title": "Anong Linggo Na? ISO Week Number at Mga Petsa | Saat Tarih",
+      "description": "Anong linggo ng taon na ngayon? Ang ISO week number, saklaw ng petsa ng linggong ito, lahat ng linggo ng {year} at tool para mahanap ang week number ng anumang petsa.",
+      "h1": "Anong linggo na?",
+      "lead": "Ipinapakita nang live ng Saat Tarih kung anong linggo ng taon na ayon sa ISO 8601. Nagsisimula sa Lunes ang mga linggo at ang linggo 1 ay ang linggong may unang Huwebes ng taon. May {weeks} linggo ang {year}.",
+      "big": "Linggo {n}",
+      "thisWeek": "Mga petsa ng linggong ito",
+      "findHeading": "Hanapin ang week number ng isang petsa",
+      "findLabel": "Pumili ng petsa",
+      "tableHeading": "Kalendaryo ng mga linggo sa {year}",
+      "colWeek": "Linggo",
+      "colStart": "Simula (Lunes)",
+      "colEnd": "Katapusan (Linggo)",
+      "tableCaption": "Mga ISO week number at saklaw ng petsa sa {year}",
+      "faqHeading": "Mga madalas itanong tungkol sa week number",
+      "faq": [
+        {
+          "q": "Anong linggo ng taon na ngayon?",
+          "a": "Ipinapakita ng live na counter sa itaas ang week number ngayon. Sinusunod nito ang ISO 8601: nagsisimula sa Lunes ang mga linggo at ang linggo 1 ay ang linggong may unang Huwebes ng taon."
+        },
+        {
+          "q": "Ilang linggo mayroon sa isang taon?",
+          "a": "May 52 o 53 linggo ang ISO year. May 53 linggo kapag Huwebes ang 1 Enero (o Miyerkules sa leap year). May {weeks} linggo ang {year}."
+        },
+        {
+          "q": "Bakit minsan nasa huling linggo ng nakaraang taon ang 1 Enero?",
+          "a": "Ayon sa ISO, nasa linggo 1 ang unang Huwebes. Kung Biyernes, Sabado o Linggo ang 1 Enero, kabilang ito sa linggo 52 o 53 ng nakaraang taon, at ang ilang araw sa katapusan ng Disyembre ay puwedeng mapabilang sa linggo 1 ng susunod na taon."
+        },
+        {
+          "q": "Para saan ang week number?",
+          "a": "Hindi gaanong ginagamit sa araw-araw ang week number, pero karaniwan ang ISO week number sa pagpaplano ng negosyo, logistics, edukasyon at software. Ipinapakita ng tool sa pahinang ito ang week number ng anumang petsang pipiliin mo."
+        }
+      ]
+    },
+    "tz": {
+      "title": "May Daylight Saving ba sa Türkiye? UTC+3 | Saat Tarih",
+      "description": "May daylight saving time ba sa Türkiye? UTC+3 na ang gamit ng Türkiye buong taon mula 2016. Mga diperensya ng oras at daylight saving ng mga lungsod sa mundo.",
+      "h1": "May daylight saving time ba sa Türkiye?",
+      "lead": "Wala. Mula 2016, UTC+3 ang time zone ng Türkiye buong taon; hindi iniaabante o iniuurong ang orasan sa tag-araw o taglamig. Tinatawag itong Türkiye Time (TRT) at ang IANA identifier nito ay Europe/Istanbul.",
+      "nowLabel": "Kasalukuyang oras sa Türkiye",
+      "factsHeading": "Sa isang tingin",
+      "facts": [
+        "Time zone: UTC+3 (Türkiye Time, TRT)",
+        "Daylight saving time: wala, mula 2016",
+        "IANA identifier: Europe/Istanbul",
+        "Hindi nagpapalit ng orasan nang dalawang beses sa isang taon"
+      ],
+      "historyHeading": "Maikling kasaysayan",
+      "history": [
+        "Hanggang 2016, UTC+2 ang gamit ng Türkiye sa taglamig (Eastern European Time) at UTC+3 sa tag-araw (Eastern European Summer Time).",
+        "Isang desisyon noong 2016 ang ginawang permanente ang summer time; mula noon, UTC+3 na ang Türkiye buong taon."
+      ],
+      "tableHeading": "Diperensya ng oras ng Türkiye at mga lungsod sa mundo",
+      "tableCaption": "Karaniwang diperensya sa oras ng Türkiye at kung may daylight saving",
+      "colCity": "Lungsod",
+      "colStd": "Karaniwang diperensya",
+      "colDst": "Daylight saving",
+      "colNow": "Ngayon",
+      "yes": "Oo",
+      "no": "Wala",
+      "note": "Ang karaniwang diperensya ay ang diperensya kapag walang daylight saving. Sa mga lungsod na may daylight saving, nagbabago ito nang isang oras sa bahagi ng taon; ipinapakita ng column na \"Ngayon\" ang totoong diperensya ngayon.",
+      "faqHeading": "Mga madalas itanong tungkol sa time zone ng Türkiye",
+      "faq": [
+        {
+          "q": "May daylight saving time ba ang Türkiye?",
+          "a": "Wala. Ginawang permanente ng Türkiye ang summer time noong 2016; UTC+3 ang gamit buong taon at hindi iniaabante o iniuurong ang orasan."
+        },
+        {
+          "q": "Anong time zone ang Türkiye?",
+          "a": "Nasa UTC+3 na time zone ang Türkiye, na kilala bilang Türkiye Time (TRT); ang IANA identifier nito ay Europe/Istanbul."
+        },
+        {
+          "q": "Pareho ba buong taon ang diperensya ng oras sa Europa?",
+          "a": "Hindi. Maraming bansa sa Europa ang may daylight saving time, kaya nagbabago nang isang oras ang diperensya nila sa Türkiye sa loob ng taon. Ipinapakita ng talahanayan sa itaas ang diperensya ngayon."
+        },
+        {
+          "q": "Ano ang ibig sabihin ng UTC+3?",
+          "a": "Ang UTC+3 ay tatlong oras na mas maaga sa Coordinated Universal Time (UTC). Kapag 12:00 UTC, 15:00 na sa Türkiye."
+        }
+      ]
+    }
+  },
+  "pair": {
+    "title": "Agwat ng Oras: {a} at {b} | Saat Tarih",
+    "description": "Ilang oras ang pagitan ng {a} at {b}? Ang karaniwang diperensya, epekto ng daylight saving, kasalukuyang diperensya at talahanayan ng pag-convert ng oras.",
+    "h1": "Diperensya ng oras ng {a} at {b}",
+    "ahead": "Mas maaga nang {d} ang oras ng {a} kaysa sa oras ng {b} sa standard time.",
+    "behind": "Mas huli nang {d} ang oras ng {a} kaysa sa oras ng {b} sa standard time.",
+    "same": "Pareho ang oras ng {a} at {b}; walang diperensya.",
+    "dstNote": "Dahil may daylight saving time sa {b}, nagiging {d} ang diperensya sa bahagi ng taon.",
+    "dstSame": "Dahil may daylight saving time sa {b}, pareho ang oras ng dalawang lungsod sa bahagi ng taon.",
+    "noDst": "Walang daylight saving time ang alinman sa dalawang lungsod, kaya pareho ang diperensya buong taon.",
+    "nowHeading": "Ngayon",
+    "convHeading": "Pag-convert ng oras ng {a} sa oras ng {b}",
+    "convCaption": "Oras ng {a} at katumbas na oras ng {b}",
+    "colA": "Oras ng {a}",
+    "colB": "Oras ng {b}",
+    "nextDay": "kinabukasan",
+    "prevDay": "nakaraang araw",
+    "convNote": "Kinakalkula ang talahanayan mula sa kasalukuyang diperensya sa iyong browser; puwedeng magbago ito nang isang oras sa paligid ng pagpapalit ng daylight saving. Kung walang JavaScript, ang karaniwang diperensya ang ipinapakita.",
+    "faqHeading": "Mga madalas itanong tungkol sa diperensya ng oras ng {a} at {b}",
+    "faqDiff": "Ilang oras ang pagitan ng {a} at {b}?",
+    "faqNow": "Ano ang diperensya ng {a} at {b} ngayon?",
+    "faqNowA": "Ipinapakita sa live na linya sa itaas ang kasalukuyang diperensya. Sa paligid ng pagpapalit ng daylight saving, puwede itong iba nang isang oras sa karaniwang diperensya.",
+    "faqDst": "May daylight saving time ba sa {b}?",
+    "faqDstYes": "Oo. May daylight saving time sa {b}, kaya nagbabago nang isang oras ang diperensya nito sa {a} sa loob ng taon.",
+    "faqDstNo": "Wala. Walang daylight saving time sa {b}, kaya pareho ang diperensya buong taon.",
+    "converter": "Para mag-convert ng ibang oras, gamitin ang time converter.",
+    "converterLink": "Time converter"
+  },
+  "pairHub": {
+    "title": "Diperensya ng Oras: Istanbul at mga Lungsod | Saat Tarih",
+    "description": "Diperensya ng oras ng Istanbul at London, New York, Dubai, Tokyo at iba pang lungsod. Karaniwang diperensya, epekto ng daylight saving at mga talahanayan.",
+    "h1": "Diperensya ng oras",
+    "lead": "Piliin ang diperensya ng oras ng Istanbul at isang lungsod sa mundo. May karaniwang diperensya, epekto ng daylight saving, kasalukuyang diperensya at talahanayan ng pag-convert sa bawat pahina.",
+    "listHeading": "Diperensya ng oras sa Istanbul",
+    "linkText": "{a} – {b}"
+  },
+  "converter": {
+    "title": "Time Converter: I-convert ang Oras ng mga Lungsod | Saat Tarih",
+    "description": "I-convert ang oras ng isang lungsod sa oras ng iba. Time converter para sa mga lungsod sa mundo na awtomatikong naglalapat ng daylight saving.",
+    "h1": "Time converter",
+    "lead": "Piliin ang pinagmulan at target na lungsod at ang petsa at oras; agad lalabas ang katumbas na oras. Awtomatikong inilalapat ang pagbabago ng daylight saving.",
+    "fromLabel": "Mula sa lungsod",
+    "toLabel": "Papunta sa lungsod",
+    "whenLabel": "Petsa at oras",
+    "mine": "Aking lokasyon",
+    "swap": "Pagpalitin",
+    "now": "Ngayon",
+    "resultLabel": "Resulta",
+    "result": "Kapag {fromTime} sa {from}, {toTime} sa {to}.",
+    "diff": "Diperensya: {d}",
+    "sameDay": "parehong araw",
+    "faqHeading": "Mga madalas itanong tungkol sa time converter",
+    "faq": [
+      {
+        "q": "Paano gumagana ang time converter?",
+        "a": "Kinokonvert nito ang petsa at oras sa pinagmulang lungsod sa universal time gamit ang time zone ng lungsod na iyon, saka inilalapat ang time zone ng target na lungsod. Galing sa time zone database ng iyong browser ang pagbabago ng daylight saving."
+      },
+      {
+        "q": "Nakakaapekto ba ang daylight saving sa diperensya?",
+        "a": "Oo. Sa mga lungsod na may daylight saving, nagbabago nang isang oras ang diperensya sa bahagi ng taon. Ginagamit ng converter ang totoong diperensya sa petsang pinili mo."
+      },
+      {
+        "q": "Ano ang ibig sabihin ng Aking lokasyon?",
+        "a": "Ginagamit nito ang time zone ng iyong device, kaya maikokonvert mo ang oras kung nasaan ka papunta sa ibang lungsod."
+      }
+    ],
+    "shareLink": "Kopyahin ang link",
+    "linkCopied": "Nakopya ang link",
+    "addIcs": "Idagdag sa kalendaryo (.ics)",
+    "addGoogle": "Idagdag sa Google Calendar"
+  },
+  "planner": {
+    "title": "Meeting Planner: Hanapin ang Sabayang Oras ng Trabaho | Saat Tarih",
+    "description": "Hanapin ang pinakamagandang oras ng miting sa iba't ibang time zone. May kulay ang oras ng trabaho, maaga o gabing oras at oras ng gabi sa bawat lungsod.",
+    "h1": "Meeting planner",
+    "lead": "Magdagdag ng mga lungsod at pumili ng petsa; lalabas nang magkakatabi ang oras-oras na timeline ng bawat lungsod. Awtomatikong hinahanap ang sabayang oras ng trabaho (09:00–18:00).",
+    "addLabel": "Magdagdag ng lungsod",
+    "addBtn": "Idagdag",
+    "dateLabel": "Petsa",
+    "remove": "Alisin",
+    "legendWork": "Oras ng trabaho (09–18)",
+    "legendEdge": "Maaga o gabi (07–09, 18–22)",
+    "legendNight": "Gabi",
+    "common": "Sabayang oras ng trabaho (sa oras ng {city}): {hours}",
+    "noCommon": "Walang sabayang oras ng trabaho ang mga napiling lungsod; piliin sa timeline ang mga oras na hindi gaanong abala.",
+    "tableLabel": "24-oras na timeline ng mga napiling lungsod",
+    "minCities": "Pumili ng hindi bababa sa dalawang lungsod.",
+    "faqHeading": "Mga madalas itanong tungkol sa meeting planner",
+    "faq": [
+      {
+        "q": "Paano hinahanap ang sabayang oras ng trabaho?",
+        "a": "Itinuturing na 09:00–18:00 ang oras ng trabaho sa bawat lungsod. Ang mga oras na nasa trabaho nang sabay ang lahat ng napiling lungsod ay minamarkahang berde at inililista."
+      },
+      {
+        "q": "Isinasaalang-alang ba ang daylight saving time?",
+        "a": "Oo. Ginagamit ang totoong diperensya ng oras sa petsang pinili mo, kaya awtomatikong inilalapat ang pagbabago ng daylight saving."
+      },
+      {
+        "q": "Ilang lungsod ang puwede kong idagdag?",
+        "a": "Hanggang anim na lungsod. Naka-save sa device na ito ang iyong pinili."
+      }
+    ],
+    "shareLink": "Kopyahin ang link",
+    "linkCopied": "Nakopya ang link",
+    "addIcs": "Idagdag sa kalendaryo (.ics)",
+    "addGoogle": "Idagdag sa Google Calendar",
+    "pickHint": "I-tap ang isang oras sa itaas ng talahanayan para piliin ang oras ng miting; kasama ito sa link at sa entry sa kalendaryo.",
+    "meeting": "Miting",
+    "picked": "Napiling oras: {time} (oras ng {city})"
+  },
+  "cdp": {
+    "title": "Ilang Araw Pa Bago ang {dat}? | Saat Tarih",
+    "description": "Ilang araw at oras pa bago ang {dat}? Live na countdown, ang target na petsa at mga petsa sa susunod na mga taon.",
+    "h1": "Ilang araw pa bago ang {dat}?",
+    "lead": "Live na countdown sa {name}. Tumatakbo ang counter sa orasang naka-sync sa server; nag-a-update bawat segundo ang natitirang araw, oras, minuto at segundo.",
+    "target": "Target na petsa",
+    "noTarget": "Walang paparating na petsa para sa event na ito.",
+    "today": "Ngayon na!",
+    "yearsHeading": "Mga petsa ng {name}",
+    "yearsCaption": "Mga petsa ng {name} ayon sa taon",
+    "colYear": "Taon",
+    "colDate": "Petsa",
+    "customHeading": "Gumawa ng sarili mong countdown",
+    "customText": "Sa countdown tool, makakapili ka ng anumang petsa at maibabahagi mo ang link nito.",
+    "customLink": "Buksan ang countdown tool",
+    "listHeading": "Iba pang countdown",
+    "faqHeading": "Mga madalas itanong tungkol sa {name}",
+    "faqWhen": "Kailan ang {name}?",
+    "faqWhenFixed": "Ang {name} ay tuwing {date} bawat taon.",
+    "faqWhenYears": "{name}: {list}.",
+    "faqHow": "Paano gumagana ang countdown?",
+    "faqHowA": "Inihahambing ng counter ang oras na naka-sync sa server sa simula ng target na petsa (00:00) at nag-a-update bawat segundo. Galing ang target na petsa sa datos ng aming mga pahina ng kalendaryo.",
+    "school": "Sinusunod ng kalendaryo ng paaralan ang 2026-2027 na kalendaryo ng Ministry of National Education ng Türkiye; maaaring may lokal na pagkakaiba ayon sa mga directorate ng lalawigan.",
+    "targets": {
+      "newYear": {
+        "name": "Bagong Taon",
+        "dat": "Bagong Taon"
+      },
+      "rb1": {
+        "name": "Ramazan Bayramı (Eid al-Fitr)",
+        "dat": "Ramazan Bayramı"
+      },
+      "kb1": {
+        "name": "Kurban Bayramı (Eid al-Adha)",
+        "dat": "Kurban Bayramı"
+      },
+      "oct29": {
+        "name": "Araw ng Republika",
+        "dat": "Araw ng Republika"
+      },
+      "ramadanStart": {
+        "name": "Ramadan",
+        "dat": "Ramadan"
+      },
+      "apr23": {
+        "name": "23 Abril",
+        "dat": "23 Abril"
+      },
+      "may19": {
+        "name": "19 Mayo",
+        "dat": "19 Mayo"
+      },
+      "aug30": {
+        "name": "Araw ng Tagumpay (30 Agosto)",
+        "dat": "Araw ng Tagumpay"
+      },
+      "semester": {
+        "name": "ang bakasyon sa gitna ng taon",
+        "dat": "bakasyon sa gitna ng taon"
+      },
+      "karne": {
+        "name": "ang araw ng report card",
+        "dat": "araw ng report card"
+      },
+      "yks": {
+        "name": "YKS (pagsusulit sa pagpasok sa unibersidad)",
+        "dat": "YKS"
+      },
+      "kpss": {
+        "name": "KPSS (pagsusulit sa pagpili ng tauhan ng gobyerno)",
+        "dat": "KPSS"
+      },
+      "ales": {
+        "name": "ALES (pagsusulit sa pagpasok sa graduate studies)",
+        "dat": "ALES"
+      },
+      "yds": {
+        "name": "YDS (pagsusulit sa kahusayan sa banyagang wika)",
+        "dat": "YDS"
+      },
+      "schoolStart": {
+        "name": "Pagbubukas ng klase",
+        "dat": "pagbubukas ng klase"
+      },
+      "midterm": {
+        "name": "ang bakasyon sa gitna ng termino",
+        "dat": "bakasyon sa gitna ng termino"
+      },
+      "aof": {
+        "name": "Mga pagsusulit ng AÖF (open education ng Anadolu University)",
+        "dat": "mga pagsusulit ng AÖF"
+      },
+      "aol": {
+        "name": "Pagsusulit ng AÖL (open high school)",
+        "dat": "pagsusulit ng AÖL"
+      },
+      "feb14": {
+        "name": "Araw ng mga Puso",
+        "dat": "Araw ng mga Puso"
+      },
+      "mar8": {
+        "name": "Pandaigdigang Araw ng Kababaihan",
+        "dat": "Araw ng Kababaihan"
+      },
+      "mothers": {
+        "name": "Araw ng mga Ina",
+        "dat": "Araw ng mga Ina"
+      },
+      "fathers": {
+        "name": "Araw ng mga Ama",
+        "dat": "Araw ng mga Ama"
+      },
+      "nov24": {
+        "name": "Araw ng mga Guro",
+        "dat": "Araw ng mga Guro"
+      }
+    },
+    "exam": "Kinukuha ang mga petsa ng pagsusulit sa mga anunsyo ng ÖSYM, MEB at Anadolu University, na puwedeng magbago. Hindi hinuhulaan ang mga petsang hindi pa inaanunsyo; idinadagdag ang mga ito kapag nailathala na."
+  },
+  "datecalc": {
+    "title": "Date Calculator: Mga Araw, Araw ng Trabaho, Edad | Saat Tarih",
+    "description": "Ilang araw at araw ng trabaho ang pagitan ng dalawang petsa? Magdagdag o magbawas ng araw, buwan o taon at kalkulahin ang edad. Kasama ang mga holiday ng Türkiye.",
+    "h1": "Date calculator",
+    "lead": "Kalkulahin ang mga araw, linggo at araw ng trabaho sa pagitan ng dalawang petsa; magdagdag ng araw, buwan, taon o araw ng trabaho sa petsa; at alamin ang iyong edad at susunod na kaarawan. Hindi kasama sa bilang ng araw ng trabaho ang weekend at mga pista opisyal sa Türkiye.",
+    "diffHeading": "Sa pagitan ng dalawang petsa",
+    "startLabel": "Petsa ng simula",
+    "endLabel": "Petsa ng katapusan",
+    "diffDays": "Diperensya: {n} araw",
+    "diffWeeks": "Iyon ay {w} linggo at {d} araw",
+    "diffYmd": "{y} taon, {m} buwan, {d} araw",
+    "diffWork": "Araw ng trabaho (kasama ang simula, hindi kasama ang katapusan): {n}",
+    "diffNote": "Hindi kasama sa araw ng trabaho ang weekend at pista opisyal; 0.5 ang bilang ng kalahating araw sa bisperas ng bayram.",
+    "addHeading": "Magdagdag o magbawas sa petsa",
+    "amountLabel": "Dami",
+    "unitLabel": "Yunit",
+    "units": {
+      "days": "Araw",
+      "weeks": "Linggo",
+      "months": "Buwan",
+      "years": "Taon",
+      "workdays": "Araw ng trabaho"
+    },
+    "addResult": "Resulta: {date}",
+    "addHint": "Maglagay ng negatibong numero para magbawas.",
+    "ageHeading": "Age calculator",
+    "birthLabel": "Petsa ng kapanganakan",
+    "ageResult": "{y} taon, {m} buwan, {d} araw",
+    "ageDays": "Kabuuang araw na nabuhay: {n}",
+    "ageNext": "Susunod na kaarawan: {date} (sa loob ng {n} araw)",
+    "ageToday": "Kaarawan mo ngayon!",
+    "invalid": "Maglagay ng tamang petsa.",
+    "pick": "Piliin ang mga petsa.",
+    "range": "Sakop ng datos ng holiday ang {from}–{to}; sa labas nito, weekend lang ang hindi kasama.",
+    "faqHeading": "Mga madalas itanong tungkol sa pagkalkula ng petsa",
+    "faq": [
+      {
+        "q": "Paano kinakalkula ang mga araw sa pagitan ng dalawang petsa?",
+        "a": "Ibabawas ang petsa ng simula sa petsa ng katapusan; awtomatiko itong ginagawa ng calculator at ipinapakita rin ang resulta sa linggo at sa taon, buwan at araw."
+      },
+      {
+        "q": "Hindi ba kasama ang pista opisyal sa araw ng trabaho?",
+        "a": "Hindi kasama sa bilang ng araw ng trabaho ang weekend at mga pista opisyal sa Türkiye; 0.5 araw ng trabaho ang kalahating araw sa bisperas ng bayram. Ang datos ng holiday ay ang datos ng 2026–2031 mula sa aming mga pahina ng kalendaryo."
+      },
+      {
+        "q": "Paano kinakalkula ang edad?",
+        "a": "Binibilang ang buong taon, buwan at araw mula sa petsa ng kapanganakan hanggang ngayon. Ipinapakita rin ng calculator ang kabuuang araw na nabuhay at ang mga araw bago ang susunod na kaarawan."
+      },
+      {
+        "q": "Paano hinahawakan ang katapusan ng buwan kapag nagdaragdag ng buwan?",
+        "a": "Kung walang ganoong araw ang target na buwan, ang huling araw nito ang ginagamit; halimbawa, ang pagdagdag ng 1 buwan sa 31 Enero ay nagbibigay ng huling araw ng Pebrero."
+      }
+    ]
+  },
+  "embedgen": {
+    "title": "Clock Widget: Maglagay ng Libreng Orasan sa Site Mo | Saat Tarih",
+    "description": "Maglagay ng libreng orasan sa iyong site: 13 istilo, pagpili ng lungsod, maliwanag o madilim na tema. Kopyahin ang handang iframe code at i-paste.",
+    "h1": "Maglagay ng orasan sa iyong site",
+    "lead": "Piliin ang istilo, lungsod at tema, saka kopyahin ang handang iframe code at i-paste sa iyong site. Walang ad ang widget, hindi gumagamit ng cookies at tumatakbo sa orasang naka-sync sa server.",
+    "modelLabel": "Istilo ng orasan",
+    "cityLabel": "Lungsod",
+    "cityLocal": "Lokasyon ng bisita",
+    "themeLabel": "Tema",
+    "themeAuto": "Awtomatiko (kagustuhan ng bisita)",
+    "themeLight": "Maliwanag",
+    "themeDark": "Madilim",
+    "langLabel": "Wika",
+    "secLabel": "Ipakita ang segundo",
+    "h12Label": "12 oras na format",
+    "widthLabel": "Lapad (px)",
+    "heightLabel": "Taas (px)",
+    "previewHeading": "Preview",
+    "codeHeading": "Embed code",
+    "copy": "Kopyahin ang code",
+    "copied": "Nakopya ang code",
+    "note": "May link sa Saat Tarih at pirma ng Bumba sa ilalim ng widget; pakiusap na huwag alisin.",
+    "previewTitle": "Preview ng widget ng Saat Tarih",
+    "frameTitle": "Clock widget ng Saat Tarih",
+    "faqHeading": "Mga madalas itanong tungkol sa clock widget",
+    "faq": [
+      {
+        "q": "Libre ba ang widget?",
+        "a": "Oo. Libre at walang ad ang widget. May link sa Saat Tarih at pirma ng Bumba sa ilalim nito."
+      },
+      {
+        "q": "Paano ko ito idaragdag sa site ko?",
+        "a": "Piliin ang istilo at lungsod, kopyahin ang nabuong iframe code at i-paste sa HTML ng iyong pahina. Mababago mo ang lapad at taas ayon sa iyong layout."
+      },
+      {
+        "q": "Kumokolekta ba ang widget ng datos ng mga bisita ko?",
+        "a": "Hindi naglalagay ng cookies ang widget at hindi kumokolekta ng personal na datos. Nagpapadala ito ng ilang maliliit na request sa server para maipakita ang tamang oras; binibilang ang page views sa anonymous na statistics na walang cookies."
+      }
+    ],
+    "sizeNote": "Kailangan ng hindi bababa sa 460 px na taas ang mga istilong may kalendaryo; kasya na sa 360 px ang iba."
+  },
+  "embed": {
+    "link": "Saat Tarih"
+  },
+  "prayer": {
+    "title": "Oras ng Pagdarasal: Oras ng Adhan sa Iyong Lokasyon | Saat Tarih",
+    "description": "Oras ng dasal para sa iyong lokasyon o anumang lalawigan sa Türkiye: fajr, pagsikat ng araw, dhuhr, asr, maghrib at isha, oras bago ang susunod at buwanang talaan.",
+    "h1": "Oras ng pagdarasal",
+    "lead": "Fajr, pagsikat ng araw, dhuhr, asr, maghrib at isha para sa iyong lokasyon o lalawigang pinili mo. Live na tumatakbo sa orasang naka-sync sa server ang natitirang oras bago ang susunod na dasal.",
+    "cityTitle": "Oras ng Pagdarasal sa {city}: Fajr, Adhan | Saat Tarih",
+    "cityDescription": "Oras ng pagdarasal ngayon sa {city}: fajr, pagsikat ng araw, dhuhr, asr, maghrib at isha, natitirang oras bago ang susunod at buwanang talahanayan.",
+    "cityH1": "Oras ng pagdarasal sa {city}",
+    "cityLead": "Ang oras ng fajr, pagsikat ng araw, dhuhr, asr, maghrib at isha ngayon sa {city}, kasama ang natitirang oras bago ang susunod na dasal. Nasa talahanayan sa ibaba ang bawat araw ng buwang ito.",
+    "chooseLabel": "Lalawigan",
+    "useLocation": "Gamitin ang aking lokasyon",
+    "locating": "Kinukuha ang iyong lokasyon…",
+    "locationDenied": "Hindi makuha ang iyong lokasyon. Tingnan ang pahintulot ng browser o pumili ng lalawigan sa listahan.",
+    "locationUnsupported": "Hindi sinusuportahan ng iyong browser ang lokasyon. Pumili ng lalawigan sa listahan.",
+    "yourLocation": "Iyong lokasyon",
+    "locationNote": "Sa device mo lang ginagamit ang iyong lokasyon para kalkulahin ang mga oras; hindi ito ipinapadala sa server.",
+    "nextIn": "Natitirang oras bago ang {name}",
+    "todayHeading": "Mga oras ngayon",
+    "colPrayer": "Dasal",
+    "colTime": "Oras",
+    "monthHeading": "Oras ng pagdarasal sa {month} {year}",
+    "colDay": "Araw",
+    "prevMonth": "Nakaraang buwan",
+    "nextMonth": "Susunod na buwan",
+    "tableCaption": "{place}: oras ng pagdarasal sa {month} {year}",
+    "names": {
+      "fajr": "Fajr",
+      "sunrise": "Pagsikat ng araw",
+      "dhuhr": "Dhuhr",
+      "asr": "Asr",
+      "maghrib": "Maghrib",
+      "isha": "Isha"
+    },
+    "otherPlace": "Para sa ibang lokasyon, pumunta sa pahina ng oras ng pagdarasal",
+    "provincesHeading": "Oras ng pagdarasal ayon sa lalawigan",
+    "provincesLead": "Pumili ng lalawigan.",
+    "districtsHeading": "Mga distrito",
+    "districtTitle": "Oras ng Pagdarasal sa {city} | Saat Tarih",
+    "provinceCentre": "{city} (sentro ng lalawigan)",
+    "districtSource": "Galing sa GeoNames (CC BY 4.0) ang lokasyon ng mga distrito; kinakalkula ang mga oras para sa sentro ng distrito. Hindi naglalathala ang Diyanet ng hiwalay na oras para sa mga sentral na distrito ng malalaking lalawigan at ginagamit ang oras ng lalawigan; ang Presidency of Religious Affairs ng Türkiye (Diyanet) ang masusunod.",
+    "noscript": "Kailangang naka-on ang JavaScript sa iyong browser para makita ang oras ng pagdarasal.",
+    "faqHeading": "Mga madalas itanong",
+    "faq": [
+      {
+        "q": "Paano kinakalkula ang oras ng pagdarasal?",
+        "a": "Kinakalkula ang posisyon ng araw sa maghapon mula sa iyong latitude at longitude. Nagsisimula ang fajr kapag 18° ang araw sa ilalim ng horizon, ang isha sa 17°, at ang asr kapag kasinghaba ng bagay ang anino nito. Tumatakbo sa iyong browser ang kalkulasyon."
+      },
+      {
+        "q": "Ipinapadala ba sa server ang lokasyon ko?",
+        "a": "Hindi. Kung papayagan mo ang lokasyon, sa device mo lang ginagamit ang coordinates para kalkulahin ang mga oras; hindi ito ipinapadala sa server o isinasama sa statistics. Sa local storage lang ng browser nananatili ang huli mong pinili."
+      },
+      {
+        "q": "Pareho ba ang mga oras sa Diyanet?",
+        "a": "Inayos ang kalkulasyon para tumugma sa mga oras ng Diyanet at hanggang 1 minuto lang ang diperensya sa mga sentro ng lalawigan. Ang opisyal na oras pa rin ay ang inilalathala ng Presidency of Religious Affairs ng Türkiye."
+      },
+      {
+        "q": "Kailan ang iftar at suhoor?",
+        "a": "Ang iftar ay sa oras ng maghrib (adhan sa gabi), at ang suhoor ay hanggang fajr (imsak). Sa Ramadan, makikita mo pareho sa buwanang talahanayan."
+      },
+      {
+        "q": "Magagamit ko ba ito sa ibang bansa?",
+        "a": "Oo. Kinakalkula ng button na Gamitin ang aking lokasyon ang mga oras saanman sa mundo. Sa napakataas na latitude, puwedeng hindi maabot ang anggulo ng fajr o isha; sa ganoong kaso, tantiyang oras ang ibinibigay ayon sa tuntunin ng ikapitong bahagi ng gabi."
+      },
+      {
+        "q": "Ano ang Hanafi na oras ng Asr at bakit ito iba?",
+        "a": "Nagsisimula ang Asr kapag ang anino ng bagay ay kasinghaba ng sarili nitong haba dagdag ang anino nito sa tanghali; ito ang gamit ng Diyanet at ng mga paaralang Shafi'i, Maliki at Hanbali. Hinihintay ng paaralang Hanafi na maging doble ng haba ng bagay ang anino, kaya mga 30 hanggang 80 minutong mas huli nagsisimula ang Asr depende sa panahon. Mapipili mo ang Hanafi na Asr at ang mga paraan ng pagkalkula ng ibang bansa sa \"Paraan ng pagkalkula\" sa pahina ng oras ng pagdarasal."
+      }
+    ],
+    "search": "oras ng pagdarasal salah adhan azan fajr dhuhr asr maghrib isha iftar suhoor ramadan iskedyul prayer times namaz vakitleri ezan imsakiye",
+    "imHeading": "Iskedyul ng Ramadan (imsakiye)",
+    "imText": "Makulay na iskedyul ng Ramadan na may oras ng suhoor (fajr) at iftar (maghrib) para sa darating na Ramadan, kinakalkula para sa iyong lokasyon. Buksan ito, o i-download bilang larawan para ibahagi o i-print.",
+    "imOpen": "Buksan ang iskedyul",
+    "imDownload": "I-download bilang PNG",
+    "imTitle": "Iskedyul ng Ramadan {year}",
+    "imAlt": "Iskedyul ng Ramadan {year} para sa {place}",
+    "imDay": "Ramadan",
+    "imDate": "Petsa",
+    "imSahur": "suhoor",
+    "imIftar": "iftar",
+    "imNote": "Kinakalkula ang mga oras; para sa opisyal na oras, sundin ang Presidency of Religious Affairs (Diyanet).",
+    "imFile": "ramadan-timetable",
+    "imBrand": "Bumba Group · Bumba Life",
+    "kerahatHeading": "Mga oras na hindi kanais-nais magdasal (tantiya)",
+    "kerahatNames": {
+      "israk": "Pagsikat ng araw (ishraq)",
+      "istiva": "Bago magtanghali (istiwa)",
+      "isfirar": "Paglubog ng araw (isfirar)"
+    },
+    "kerahatNote": "Hindi isinasagawa ang mga boluntaryong dasal sa mga oras na ito. Walang inilalathalang eksaktong minuto ang Diyanet; ginagamit ang karaniwang kumbensyon ng kalendaryo na mga 45 minuto (10–45 minuto ang ibinibigay ng mga sanggunian para sa oras bago magtanghali).",
+    "method": {
+      "heading": "Paraan ng pagkalkula",
+      "label": "Paraan",
+      "asrLabel": "Asr",
+      "asrStd": "Karaniwan (Shafi'i, Maliki, Hanbali, Diyanet)",
+      "asrHanafi": "Hanafi (anino na doble ng haba)",
+      "note": "Sa Türkiye, ang opisyal na oras ay mula sa Presidency of Religious Affairs (Diyanet). Kung pipili ka ng ibang paraan, kakalkulahin gamit ito ang mga oras, buwanang talahanayan at iskedyul ng Ramadan sa pahinang ito; sa browser na ito lang naka-save ang iyong pinili.",
+      "active": "Paraan: {name}",
+      "hanafiShort": "Hanafi na Asr",
+      "names": {
+        "diyanet": "Diyanet (Türkiye)",
+        "mwl": "Muslim World League",
+        "isna": "Islamic Society of North America (ISNA)",
+        "egypt": "Egyptian General Authority of Survey",
+        "makkah": "Umm al-Qura (Makkah)",
+        "karachi": "University of Islamic Sciences, Karachi",
+        "tehran": "Institute of Geophysics, Tehran",
+        "jafari": "Shia Ithna Ashari (Qum)",
+        "gulf": "Rehiyon ng Gulf",
+        "kuwait": "Kuwait",
+        "qatar": "Qatar",
+        "singapore": "Singapore",
+        "france": "France (UOIF)",
+        "russia": "Spiritual Administration of Muslims of Russia"
+      }
+    }
+  },
+  "nature": {
+    "title": "Mga Panahon: Gulong ng Panahon, Equinox at Solstice | Saat Tarih",
+    "description": "Gulong ng mga panahon (tag-araw sa itaas), equinox at solstice, pinakamahabang araw at gabi, pagsikat at paglubog ng araw, yugto ng Buwan at haba ng araw sa buong taon.",
+    "h1": "Mga panahon",
+    "lead": "Umiikot ang taon na parang gulong: anong panahon na, ilang araw pa bago ang susunod, kailan sisikat at lulubog ang araw, at anong yugto ng Buwan? Lahat sa iisang pahina para sa iyong lokasyon o lalawigang pinili mo.",
+    "wheelLabel": "Taunang gulong ng mga panahon",
+    "seasons": {
+      "spring": "Tagsibol",
+      "summer": "Tag-araw",
+      "autumn": "Taglagas",
+      "winter": "Taglamig"
+    },
+    "current": "Ngayon ay {season}",
+    "dayOf": "Araw {n} (ng {total})",
+    "nextIn": "{days} araw pa bago magsimula ang {season}",
+    "startsOn": "Simula ng {season}: {date}",
+    "sunHeading": "Ang araw ngayon",
+    "sunrise": "Pagsikat ng araw",
+    "sunset": "Paglubog ng araw",
+    "dayLength": "Haba ng araw",
+    "solarNoon": "Tanghaling-araw",
+    "dayLonger": "Mas mahaba nang {m} min ang araw kaysa kahapon",
+    "dayShorter": "Mas maikli nang {m} min ang araw kaysa kahapon",
+    "dayLeft": "Bago lumubog ang araw: {t}",
+    "moonHeading": "Ang Buwan",
+    "phases": {
+      "new": "Bagong buwan",
+      "waxingCrescent": "Lumalaking gasuklay",
+      "firstQuarter": "Unang kapat",
+      "waxingGibbous": "Lumalaking umbok",
+      "full": "Kabilugan ng buwan",
+      "waningGibbous": "Lumiliit na umbok",
+      "lastQuarter": "Huling kapat",
+      "waningCrescent": "Lumiliit na gasuklay"
+    },
+    "illumination": "{p}% naiilawan",
+    "age": "Edad ng Buwan: {d} araw",
+    "nextNew": "Susunod na bagong buwan",
+    "nextFull": "Susunod na kabilugan",
+    "moonrise": "Pagsikat ng Buwan",
+    "moonset": "Paglubog ng Buwan",
+    "moonNoRise": "Walang pagsikat ng Buwan ngayon",
+    "moonNoSet": "Walang paglubog ng Buwan ngayon",
+    "moonCalHeading": "Kalendaryo ng Buwan",
+    "moonCalCaption": "{month}: ang yugto ng Buwan sa tanghali bawat araw",
+    "eclipseHeading": "Mga eklipse",
+    "eclipseLead": "Mga paparating na eklipse ng araw at buwan. Ang oras ay ang sandali ng pinakamalaking eklipse (oras ng {place}).",
+    "eclipseTypes": {
+      "solarTotal": "Kabuuang eklipse ng araw",
+      "solarAnnular": "Annular na eklipse ng araw",
+      "solarPartial": "Bahagyang eklipse ng araw",
+      "solarHybrid": "Hybrid na eklipse ng araw",
+      "lunarTotal": "Kabuuang eklipse ng buwan",
+      "lunarPartial": "Bahagyang eklipse ng buwan",
+      "lunarPenumbral": "Penumbral na eklipse ng buwan"
+    },
+    "eclipseRegions": "Makikita mula sa: {list}",
+    "eclipsePath": "Kabuuan o annular na bahagi: {list}",
+    "eclipseHere": "{place}: nasa itaas ng horizon ang Buwan sa oras na iyon, kaya makikita mula rito ang eklipse.",
+    "eclipseNotHere": "{place}: nasa ilalim ng horizon ang Buwan sa oras na iyon.",
+    "eclipseSafety": "Huwag tumingin sa eklipse ng araw nang walang proteksyon o gamit ang karaniwang sunglasses; gumamit ng eclipse glasses na sertipikado sa ISO 12312-2.",
+    "eclipseSource": "Pinagmulan: NASA Eclipse Web Site (Fred Espenak, NASA/GSFC).",
+    "chartHeading": "Haba ng araw sa buong taon",
+    "chartCaption": "{place}: liwanag bawat araw (oras), {year}",
+    "longest": "Pinakamahabang araw",
+    "shortest": "Pinakamaikling araw",
+    "hoursShort": "o",
+    "minutesShort": "min",
+    "tableHeading": "Mga petsa ng simula ng panahon",
+    "tableLead": "Mga astronomikal na panahon, ibig sabihin ang mga sandali ng equinox at solstice. Nasa oras ng Türkiye (UTC+3) ang mga oras.",
+    "colYear": "Taon",
+    "meteoNote": "Tatlong-buwang bloke ang mga meteorolohikal na panahon: nagsisimula ang tagsibol sa 1 Marso, tag-araw sa 1 Hunyo, taglagas sa 1 Setyembre at taglamig sa 1 Disyembre. Ginagamit ang mga ito sa kalendaryo at statistics.",
+    "factsHeading": "Kalikasan sa bawat panahon",
+    "facts": {
+      "spring": [
+        "Magkasinghaba ang araw at gabi sa equinox, at mabilis na humahaba ang mga araw sa mga sumunod na buwan.",
+        "Namumulaklak ang mga bulaklak at nagiging luntian ang mga puno; bumabalik pahilaga ang mga ibong lumilipat.",
+        "Natutunaw ang niyebe at tumataas ang mga ilog; inihahanda ang lupa para sa pagtatanim."
+      ],
+      "summer": [
+        "Sa summer solstice ang pinakamahabang araw ng taon.",
+        "Umiinit ang dagat at lupa, at rurok ng panahon ng prutas at gulay.",
+        "Dahil maikli ang gabi at maaliwalas ang langit, ito ang pinakamagandang panahon para panoorin ang Milky Way."
+      ],
+      "autumn": [
+        "Muling nagkakasinghaba ang araw at gabi, at nagsisimulang umikli ang mga araw.",
+        "Nagbabago ng kulay at nalalaglag ang mga dahon; lumilipat patimog ang mga ibon gaya ng stork at crane.",
+        "Panahon ng anihan: inaani ang ubas, walnut, hazelnut at kastanyas."
+      ],
+      "winter": [
+        "Sa winter solstice ang pinakamaikling araw ng taon, at pagkatapos ay humahaba muli ang mga araw.",
+        "Maraming hayop ang naghi-hibernate at natutulog ang mga halaman.",
+        "Iniimbak ng niyebe sa bundok ang tubig para sa tagsibol at tag-araw."
+      ]
+    },
+    "whyHeading": "Bakit may mga panahon?",
+    "why": [
+      "Nagkakaroon ng mga panahon dahil nakakiling nang mga 23.4° ang axis ng pag-ikot ng Earth kumpara sa orbit nito sa paligid ng Araw, hindi dahil sa layo nito sa Araw.",
+      "Kapag nakakiling ang axis papunta sa Araw, mas direktang liwanag at mas mahabang araw ang natatanggap ng hemisphere na iyon, at tag-araw ito. Kapag palayo, taglamig.",
+      "Sa mga equinox (mga 20 Marso at 22 Setyembre) halos magkasinghaba ang araw at gabi; sa mga solstice (mga 21 Hunyo at 21 Disyembre) pinakamahaba o pinakamaikli ang araw."
+    ],
+    "hemisphereNote": "Baligtad ang mga panahon sa southern hemisphere; kung nasa timog ang iyong lokasyon, nagbabago ang mga pangalan ng panahon nang naaayon.",
+    "methodNote": "Kinakalkula sa iyong browser gamit ang mga pormulang astronomikal ang araw, Buwan at mga sandali ng panahon: sa loob ng ilang minuto ang mga sandali ng panahon, tantiya ang yugto at oras ng Buwan.",
+    "weatherLink": "Pumunta sa pahina ng lagay ng panahon",
+    "faqHeading": "Mga madalas itanong",
+    "faq": [
+      {
+        "q": "Kailan nagsisimula ang mga panahon?",
+        "a": "Sa astronomiya, nagsisimula ang tagsibol mga 20 Marso, tag-araw sa 21 Hunyo, taglagas sa 22-23 Setyembre at taglamig sa 21 Disyembre. Nagbabago nang ilang oras ang eksaktong sandali taon-taon; tingnan ang talahanayan sa itaas."
+      },
+      {
+        "q": "Ano ang pagkakaiba ng astronomikal at meteorolohikal na panahon?",
+        "a": "Batay sa equinox at solstice ang astronomikal na panahon, samantalang buong buwan ng kalendaryo ang gamit ng meteorolohikal (halimbawa, Marso hanggang Mayo ay tagsibol). Mas madaling magtala ng klima gamit ang huli."
+      },
+      {
+        "q": "Paano nagbabago ang haba ng araw?",
+        "a": "Humahaba ang araw mula winter solstice hanggang summer solstice at saka umiikli muli. Pinakamabilis ang pagbabago sa paligid ng mga equinox, ilang minuto bawat araw, at halos hindi gumagalaw sa mga solstice."
+      },
+      {
+        "q": "Paano kinakalkula ang yugto ng Buwan?",
+        "a": "Galing ang yugto sa oras mula sa nakaraang bagong buwan bilang bahagi ng lunar cycle (mga 29.5 araw). Kinakalkula ang oras ng bagong buwan at kabilugan gamit ang mga pormulang astronomikal sa loob ng ilang minuto."
+      }
+    ],
+    "search": "panahon tagsibol tag-araw taglagas taglamig equinox solstice yugto ng buwan kabilugan bagong buwan pagsikat paglubog haba ng araw seasons mevsimler",
+    "turnHeading": "Mga equinox at solstice",
+    "turnNames": {
+      "springEq": "Spring equinox",
+      "summerSol": "Summer solstice",
+      "autumnEq": "Autumn equinox",
+      "winterSol": "Winter solstice"
+    },
+    "turnNotes": {
+      "eq": "Halos magkasinghaba ang araw at gabi (12 oras).",
+      "longDay": "Ang pinakamahabang araw at pinakamaikling gabi ng taon.",
+      "longNight": "Ang pinakamaikling araw at pinakamahabang gabi ng taon."
+    },
+    "turnIn": "sa loob ng {n} araw",
+    "turnAgo": "{n} araw na ang nakalipas",
+    "turnToday": "ngayon",
+    "goldenAm": "Golden hour sa umaga",
+    "goldenPm": "Golden hour sa hapon",
+    "blueAm": "Blue hour sa umaga",
+    "bluePm": "Blue hour sa gabi",
+    "lightNote": "Golden hour: ang Araw ay nasa pagitan ng 6° sa itaas at 4° sa ibaba ng horizon, malambot at mainit ang liwanag. Blue hour: ang Araw ay 4° hanggang 6° sa ibaba ng horizon, asul na takipsilim. Kapaki-pakinabang sa mga photographer.",
+    "moonIcsHeading": "Mga yugto ng Buwan at eklipse sa iyong kalendaryo",
+    "moonIcsNote": "Mga bagong buwan, kabilugan at eklipse (2026–2031, bilang mga sandali sa UTC; ipinapakita ng iyong kalendaryo sa iyong oras).",
+    "crescentHeading": "Pagkakita sa gasuklay",
+    "crescentLead": "Mga gabi pagkatapos ng bagong buwan ng {date} para sa {place}, kinakalkula gamit ang pamantayan ni Yallop (1997).",
+    "crescentCols": [
+      "Gabi",
+      "Paglubog ng araw",
+      "Paglubog ng Buwan",
+      "Edad ng Buwan",
+      "Pagkakita"
+    ],
+    "crescentAge": "{h} o",
+    "crescentLag": "{m} min na mas huli",
+    "crescentBefore": "Bago ang Araw",
+    "crescentCats": {
+      "A": "Madaling makita ng mata",
+      "B": "Nakikita ng mata sa perpektong kondisyon",
+      "C": "Baka kailangan ng binocular para mahanap, saka makikita ng mata",
+      "D": "Sa binocular o teleskopyo lang",
+      "E": "Hindi makikita kahit sa teleskopyo",
+      "F": "Hindi makikita"
+    },
+    "crescentNote": "Hula ito: nababago ng ulap, horizon at paningin ang resulta. Sa Türkiye, sinusunod ng mga buwang Hijri ang kalendaryo ng Diyanet, na itinatakda nang maaga sa pamamagitan ng kalkulasyon; puwedeng magkaiba nang isang araw ang mga bansang umaasa sa aktuwal na pagkakita.",
+    "eclMapHeading": "Mapa ng eklipse",
+    "eclMapLabel": "Eklipse",
+    "eclMapSolar": "Kahel: kung saan bahagyang makikita ang eklipse (mas madilim, mas maraming natatakpan sa Araw). Madilim na pula: landas ng kabuuang eklipse; lila: landas ng annular na eklipse. Itim na tuldok: napiling lugar.",
+    "eclMapLunar": "Asul: kung saan nasa itaas ng horizon ang Buwan sa pinakamalaking eklipse, kaya makikita ito. Asul na tuldok: kung saan nasa itaas mismo ang Buwan; itim na tuldok: napiling lugar.",
+    "eclMapNote": "Tantiyang kinakalkula sa iyong browser ang mapa mula sa posisyon ng Araw at Buwan (puwedeng malihis nang ilang sampung km ang gilid ng landas). Mga baybayin: Natural Earth. Para sa eksaktong landas at oras, tingnan ang mga pahina ng eklipse ng NASA."
+  },
+  "weather": {
+    "title": "Panahon: Ngayon, Bawat Oras at 14 na Araw | Saat Tarih",
+    "description": "Kasalukuyang panahon, forecast bawat oras at para sa 14 na araw ng iyong lokasyon o lalawigang pinili mo: temperatura, pakiramdam, hangin, halumigmig, ulan at UV.",
+    "h1": "Lagay ng panahon",
+    "lead": "Ang kasalukuyang temperatura at forecast bawat oras at para sa 14 na araw ng iyong lokasyon o lalawigang pinili mo. Maipapakita rin ito sa tabi ng full-screen na orasan.",
+    "now": "Ngayon",
+    "feelsLike": "Pakiramdam",
+    "humidity": "Halumigmig",
+    "wind": "Hangin",
+    "precipitation": "Presipitasyon",
+    "pressure": "Presyon",
+    "uv": "UV index",
+    "hourlyHeading": "Forecast bawat oras (24 oras)",
+    "dailyHeading": "Forecast sa 14 na araw",
+    "sunrise": "Pagsikat ng araw",
+    "sunset": "Paglubog ng araw",
+    "loading": "Kinukuha ang lagay ng panahon…",
+    "error": "Hindi makuha ang lagay ng panahon. Tingnan ang iyong koneksyon at subukan muli.",
+    "retry": "Subukan muli",
+    "locationNote": "Ang coordinates ng lokasyong pinili mo (mga 1 km) ay direktang ipinapadala mula sa browser sa Open-Meteo, na nagbibigay ng datos ng panahon; hindi ito nakikita ng server ng Saat Tarih.",
+    "attribution": "Datos ng panahon: Open-Meteo.com (CC BY 4.0)",
+    "updated": "Na-update: {time}",
+    "rainChance": "{p}% tsansa ng ulan",
+    "windFrom": "mula sa {dir}",
+    "codes": {
+      "clear": "Maaliwalas",
+      "mostlyClear": "Halos maaliwalas",
+      "partly": "Bahagyang maulap",
+      "overcast": "Makulimlim",
+      "fog": "Hamog",
+      "drizzle": "Ambon",
+      "freezingDrizzle": "Nagyeyelong ambon",
+      "rain": "Ulan",
+      "freezingRain": "Nagyeyelong ulan",
+      "snow": "Niyebe",
+      "snowGrains": "Butil ng niyebe",
+      "showers": "Mga pag-ulan",
+      "snowShowers": "Pag-ulan ng niyebe",
+      "thunder": "Bagyong may kulog",
+      "thunderHail": "Bagyong may kulog at yelo"
+    },
+    "compass": [
+      "hilaga",
+      "hilagang-silangan",
+      "silangan",
+      "timog-silangan",
+      "timog",
+      "timog-kanluran",
+      "kanluran",
+      "hilagang-kanluran"
+    ],
+    "natureLink": "Pahina ng mga panahon",
+    "faqHeading": "Mga madalas itanong",
+    "faq": [
+      {
+        "q": "Saan galing ang datos ng panahon?",
+        "a": "Direktang dina-download sa iyong browser ang datos mula sa Open-Meteo, isang bukas na serbisyo ng panahon. Forecast ito ng modelo at puwedeng magkaiba nang ilang digri at oras sa lokal na sukat."
+      },
+      {
+        "q": "Ibinabahagi ba ang lokasyon ko?",
+        "a": "Kung pipili ka ng lokasyon, ipinapadala lang sa Open-Meteo ang tantiyang coordinates (mga 1 km) para makuha ang panahon. Hindi ito nakikita o sine-save ng server ng Saat Tarih."
+      },
+      {
+        "q": "Ano ang feels-like na temperatura?",
+        "a": "Ang feels-like na temperatura ay kung gaano kainit ang pakiramdam ng katawan kapag isinama ang hangin at halumigmig; puwede itong iba sa totoong temperatura ng hangin."
+      },
+      {
+        "q": "Makikita ko ba ang panahon sa full-screen na orasan?",
+        "a": "Oo. Sa full screen, ipinapakita ng button ng panahon sa bar na lumalabas kapag tinap ang screen ang panahon ng napili mong lokasyon sa tabi ng orasan."
+      }
+    ],
+    "search": "panahon forecast temperatura ulan hangin halumigmig uv bukas ngayong linggo weather hava durumu tahmin"
+  },
+  "faqPage": {
+    "title": "Mga madalas itanong: oras, kalendaryo, pagdarasal | Saat Tarih",
+    "description": "Lahat ng madalas itanong sa Saat Tarih sa iisang pahina: oras ng server, orasan ng mundo, kalendaryo at pista opisyal, mga tool, oras ng pagdarasal, kalikasan at panahon.",
+    "h1": "Mga madalas itanong",
+    "lead": "Ang mga tanong mula sa bawat pahina ng site, tinipon dito ayon sa paksa. Binubuksan ng link sa ilalim ng bawat heading ang kaugnay na pahina.",
+    "toc": "Mga paksa",
+    "open": "Pumunta sa pahina",
+    "general": "Pangkalahatan",
+    "countdowns": "Mga pahina ng countdown",
+    "calendar": "Kalendaryo, pista opisyal at mga bayram"
+  },
+  "consent": {
+    "barLabel": "Pagpili sa cookies",
+    "barText": "Sa browser na ito lang namin itinatago ang iyong mga kagustuhan (wika, tema, setting ng orasan at tool). Kung papayagan mo, bibilangin ang mga pagbisita gamit ang Umami, at ilo-load ang panahon (Open-Meteo) at kalapit na mga masjid (OpenStreetMap) mula sa mga panlabas na serbisyo.",
+    "accept": "Tanggapin",
+    "reject": "Tanggihan",
+    "prefs": "Mga kagustuhan",
+    "policy": "Patakaran sa cookies",
+    "title": "Cookie preferences",
+    "intro": "Piliin kung aling mga grupo ang naka-on; mapapalitan mo ito anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting.",
+    "necessary": "Kinakailangan",
+    "necessaryText": "Itinatago sa local storage ng browser na ito ang iyong pinili sa cookies, wika, tema, setting ng orasan at tool, napiling lokasyon at listahan ng orasan ng mundo. Hindi ito nakakarating sa server; hindi gagana ang site kung wala ang mga ito.",
+    "alwaysOn": "Laging naka-on",
+    "stats": "Statistics",
+    "statsText": "Binibilang ng Umami ang mga pagbisita sa pahina at ilang aksyon (browser, device, wika, at ang bansa at lungsod mula sa IP address; hindi sine-save ang IP). Walang cookies na ginagamit. Naka-off bilang default.",
+    "ext": "Mga panlabas na serbisyo",
+    "extText": "Ilo-load ang panahon mula sa Open-Meteo (api.open-meteo.com) at kalapit na mga masjid mula sa serbisyong Overpass ng OpenStreetMap (overpass-api.de); nakakarating sa mga serbisyong ito ang iyong IP address. Naka-off bilang default.",
+    "save": "I-save ang pinili",
+    "footerLink": "Cookie preferences",
+    "privacy": "Privacy",
+    "wxBlocked": "Galing sa Open-Meteo ang panahon; payagan ang mga panlabas na serbisyo para maipakita ito.",
+    "allow": "Payagan",
+    "mqBlocked": "Galing sa OpenStreetMap (Overpass) ang kalapit na mga masjid; payagan ang mga panlabas na serbisyo para maipakita ang mga ito."
+  },
+  "qibla": {
+    "title": "Direksyon ng Qibla: Compass, Anggulo at Oras | Saat Tarih",
+    "description": "Direksiyon ng Kaaba mula sa kinaroroonan mo: live na compass ng telepono, anggulo ng qibla mula sa hilaga, layo sa Kaaba, oras ng qibla ngayon at kalapit na masjid.",
+    "h1": "Direksyon ng qibla",
+    "lead": "Anggulo ng qibla, layo sa Kaaba at oras ng qibla ngayon para sa napiling lugar; live na direksyon gamit ang compass ng iyong telepono.",
+    "search": "qibla kibla direksyon compass kaaba mecca oras ng qibla anggulo masjid moske kalapit na masjid kıble",
+    "angle": "Direksyon ng qibla",
+    "angleNote": "Pakanan mula sa hilaga",
+    "distance": "Layo sa Kaaba",
+    "time": "Oras ng qibla",
+    "timeNote": "Sa oras na ito, eksaktong nasa direksyon ng qibla ang Araw: ang pagharap sa Araw ay pagharap sa qibla.",
+    "noTime": "Ngayon, hindi dumadaan ang Araw sa direksyon ng qibla.",
+    "start": "Simulan ang compass",
+    "aligned": "Nakaharap ka sa qibla",
+    "turn": "Hawakan nang patag ang telepono at umikot papunta sa arrow",
+    "waiting": "Naghihintay ng datos ng compass…",
+    "noCompass": "Walang compass ang device o browser na ito. Sukatin ang anggulo ng qibla pakanan mula sa hilaga, o humarap sa Araw sa oras ng qibla.",
+    "denied": "Hindi naibigay ang pahintulot sa compass. I-reload ang pahina para subukan muli.",
+    "calibrate": "Baka kailangang i-calibrate ang compass: igalaw ang telepono nang pa-figure 8 nang ilang beses at lumayo sa magnet, metal at electronics.",
+    "atKaaba": "Nasa Kaaba ka.",
+    "method": "Ang qibla ay ang panimulang direksyon ng pinakamaikling daan (great circle) papunta sa Kaaba, kinakalkula sa iyong browser mula sa coordinates ng napiling lugar at hindi ipinapadala sa aming server. Para sa lalawigan, ang sentro nito ang ginagamit (wala pang 1° ang pagkakaiba sa loob ng lalawigan). Tumutugma ang oras ng qibla sa inilalathala ng Diyanet sa loob ng ±1 minuto. Nakadepende sa sensor ng telepono ang katumpakan ng compass.",
+    "mosquesHeading": "Kalapit na mga masjid",
+    "mosquesText": "Inililista mula sa datos ng OpenStreetMap ang mga masjid sa paligid ng napiling lugar (4 km).",
+    "mosquesShow": "Ipakita ang mga masjid",
+    "mosquesLoading": "Nilo-load ang mga masjid…",
+    "mosquesNone": "Walang nakitang masjid sa malapit.",
+    "mosquesError": "Hindi ma-load ang mga masjid. Subukan muli mamaya.",
+    "mosquesAttribution": "Datos © OpenStreetMap contributors (ODbL), sa pamamagitan ng Overpass API.",
+    "mosqueUnnamed": "Masjid",
+    "mapsText": "Hanapin sa mapa:",
+    "mapsQuery": "mosque",
+    "km": "{km} km",
+    "m": "{m} m",
+    "faq": [
+      {
+        "q": "Paano hanapin ang direksyon ng qibla?",
+        "a": "Ang qibla ay ang direksyon ng pinakamaikling daan mula sa kinaroroonan mo papunta sa Kaaba sa Mecca. Ibinibigay ng pahinang ito ang anggulo ng qibla ng napiling lugar sa digri pakanan mula sa hilaga; sa telepono, i-tap ang \"Simulan ang compass\" at diretsong ituturo ng arrow ang qibla. Kung walang compass, puwede ka ring humarap sa Araw sa oras ng qibla."
+      },
+      {
+        "q": "Ano ang oras ng qibla?",
+        "a": "Ang oras ng qibla ay ang sandaling eksaktong nasa direksyon ng qibla ang Araw; ang pagharap sa Araw sa minutong iyon ay pagharap sa qibla. Nagbabago ito nang ilang minuto araw-araw at nakadepende sa lugar. Sa ilang lugar na malayo sa Kaaba, hindi umaabot ang Araw sa direksyon ng qibla sa ilang araw."
+      },
+      {
+        "q": "Saang direksyon ang qibla mula sa London?",
+        "a": "Mula sa London, nasa timog-silangan ang qibla: mga 119.0° pakanan mula sa hilaga. Mga 4,794 km ang great-circle na layo sa Kaaba."
+      },
+      {
+        "q": "Bakit puwedeng mali ang compass ng telepono?",
+        "a": "Sinusukat ng compass ng telepono ang magnetic field; mapapalihis ito ng magnet, metal, kotse at electronics. Kina-calibrate ito ng paggalaw ng telepono nang pa-figure 8. Hawakan nang patag ang telepono at ihambing ang resulta sa anggulo ng qibla."
+      }
+    ],
+    "cardinals": "H S T K"
+  },
+  "bridge": {
+    "title": "Planner ng mahabang weekend sa Türkiye: leave at pahinga | Saat Tarih",
+    "description": "Pinagsamang pista opisyal, kalahating araw na bisperas at weekend sa Türkiye: para sa bawat holiday, ang pinakamahabang pahinga gamit ang 1 hanggang 4 na araw ng leave.",
+    "h1": "Planner ng mahabang weekend (Türkiye)",
+    "lead": "Aling mga araw ang dapat mong i-leave para madugtong ang mga pista opisyal sa Türkiye sa weekend? Para sa bawat holiday, ang pinakamahabang pahinga ayon sa bilang ng araw ng leave.",
+    "search": "mahabang weekend bridge holiday leave planner türkiye pista opisyal pahinga eid köprü tatil long weekend",
+    "yearLabel": "Taon",
+    "maxLabel": "Pinakamaraming leave",
+    "maxAll": "Lahat",
+    "maxN": "{n} araw",
+    "colHoliday": "Holiday",
+    "colDates": "Pahinga",
+    "colLeave": "Leave",
+    "colTotal": "Kabuuan",
+    "colDays": "Mga araw na ili-leave",
+    "noLeave": "Wala",
+    "leaveN": "{n} araw",
+    "totalN": "{n} araw",
+    "halfNote": "{date} (kalahating araw)",
+    "none": "Hindi kailangan ng leave",
+    "best": "Pinakasulit",
+    "caption": "Mahahabang weekend sa {year}: pinakamahabang pahinga ayon sa bilang ng araw ng leave",
+    "groups": {
+      "rb": "Eid al-Fitr",
+      "kb": "Eid al-Adha"
+    },
+    "note": "Hindi kailangan ng leave sa weekend at pista opisyal; kalahating araw ng leave ang bisperas na kalahating araw kapag tumapat sa karaniwang araw. Hapon lang ang walang pasok sa bisperas sa pampublikong sektor; tanungin ang iyong employer sa pribadong sektor. Hindi kasama ang administrative leave at bridge day ng kumpanya.",
+    "projected": "Batay sa pangmatagalang kalendaryo ng Diyanet ang mga petsa ng panrelihiyong holiday ngayong taon (projection).",
+    "faq": [
+      {
+        "q": "Paano nakukuha ang mga bridge holiday (mahabang weekend)?",
+        "a": "Mag-leave ka sa mga araw ng trabaho sa pagitan ng pista opisyal at weekend, para tuloy-tuloy ang pahinga. Ipinapakita ng pahinang ito, para sa bawat holiday, ang pinakamahabang pahingang makukuha mo sa 0, 1, 2… araw ng leave, kasama ang mga petsa. Kalahating araw ng leave ang bisperas na kalahating araw kapag tumapat sa karaniwang araw."
+      }
+    ],
+    "faqBest": {
+      "q": "Ano ang pinakasulit na mahabang weekend sa {year}?",
+      "a": "Sa {year}, pinakasulit ang {name}: {days} araw na pahinga sa {leave} araw ng leave ({dates})."
+    }
+  },
+  "zones": {
+    "hubTitle": "Mga daglat ng time zone: UTC, GMT, CET, EST at iba pa | Saat Tarih",
+    "hubDescription": "Kahulugan ng UTC, GMT, CET, CEST, EET, TRT, MSK, EST, PST at iba pang daglat ng time zone, ang UTC offset at kasalukuyang oras, at diperensya sa Türkiye.",
+    "hubH1": "Mga daglat ng time zone",
+    "hubLead": "Mga karaniwang daglat ng time zone, ang kahulugan nila, UTC offset at kasalukuyang oras.",
+    "hubSearch": "time zone daglat utc gmt cet cest eet est pst ist jst msk gst trt pst pht saat dilimi",
+    "colAbbr": "Daglat",
+    "colName": "Pangalan",
+    "colOffset": "UTC offset",
+    "colNow": "Ngayon",
+    "caption": "Mga daglat ng time zone at UTC offset",
+    "pageTitle": "Oras sa {abbr}: {name} ({offset}) | Saat Tarih",
+    "pageDescription": "Ang {abbr} ({name}) ay {offset}. Anong oras na sa {abbr}, saan ito ginagamit, at paano ito ihahambing sa Türkiye at ibang time zone?",
+    "pageH1": "{abbr}: {name}",
+    "pageLead": "Ang {abbr} ay nangangahulugang {name}; {offset} ang offset nito mula sa UTC.",
+    "nowLabel": "Kasalukuyang oras sa {abbr}",
+    "offsetLine": "UTC offset: {offset}",
+    "usedIn": "Saan ito ginagamit",
+    "usedNone": "Hindi lokal na oras ng anumang bansa ang UTC kundi ang pangkalahatang sukatan ng oras sa mundo, na ginagamit sa aviation, agham at mga computer system.",
+    "dstWinter": "Ang {abbr} ay standard (taglamig) na oras; ginagamit ng mga lugar na may daylight saving ang {pair} ({pairOffset}) sa tag-araw.",
+    "dstSummer": "Ang {abbr} ay summer (daylight saving) na oras; ginagamit ang {pair} ({pairOffset}) sa taglamig.",
+    "dstNone": "Walang daylight saving time sa time zone na ito.",
+    "diffHeading": "Paghahambing ng {abbr} sa ibang time zone",
+    "colZone": "Time zone",
+    "colDiff": "Diperensya",
+    "colExample": "Kapag 12:00 sa {abbr}",
+    "same": "Parehong oras",
+    "ahead": "{d} na mas maaga",
+    "behind": "{d} na mas huli",
+    "hoursShort": "o",
+    "minutesShort": "min",
+    "ambiguous": {
+      "IST": "Ginagamit din ang IST para sa Irish Standard Time (UTC+1) at Israel Standard Time (UTC+2); India Standard Time ang pahinang ito.",
+      "CST": "Ginagamit din ang CST para sa China Standard Time (UTC+8) at Cuba Standard Time (UTC−5); North American Central Standard Time ang pahinang ito.",
+      "GST": "Ginagamit din ang GST para sa South Georgia Time (UTC−2); Gulf Standard Time ang pahinang ito."
+    },
+    "trtName": "Türkiye Time",
+    "faq": [
+      {
+        "q": "May pagkakaiba ba ang UTC at GMT?",
+        "a": "Sa pang-araw-araw na gamit, parehong oras (UTC+0) ang ipinapakita nila. Ang UTC ay ang pangkalahatang sukatan ng oras na pinananatili ng mga atomic clock; ang GMT ay ang time zone na ginagamit ng UK at ilang bansa sa taglamig. Lumilipat ang UK sa BST (UTC+1) sa tag-araw, samantalang hindi nagbabago ang UTC."
+      },
+      {
+        "q": "Anong time zone ang gamit ng Türkiye?",
+        "a": "Mula 2016, UTC+3 (TRT, Türkiye Time) ang gamit ng Türkiye buong taon nang walang daylight saving, kaya 1 oras ang diperensya sa Europa sa tag-araw at 2 oras sa taglamig."
+      }
+    ]
+  },
+  "dst": {
+    "title": "Daylight saving time: kailan iuusog ang orasan? | Saat Tarih",
+    "description": "Kailan iuusog pasulong o paurong ang orasan sa Europa, US, Canada, Australia, New Zealand at iba pa sa susunod na 12 buwan, sa lokal na oras. Walang DST ang Türkiye.",
+    "h1": "Mga pagbabago ng daylight saving time sa mundo",
+    "lead": "Kailan iuusog pasulong o paurong ang orasan sa susunod na 12 buwan, kasama ang lokal na oras at mga bansa.",
+    "search": "daylight saving time dst orasan pasulong paurong summer time winter time europa us yaz saati",
+    "colDate": "Petsa",
+    "colWhere": "Saan",
+    "colChange": "Pagbabago",
+    "colLeft": "Sa loob ng",
+    "forward": "Iuusog pasulong ng 1 oras: {from} → {to}",
+    "back": "Iuusog paurong ng 1 oras: {from} → {to}",
+    "forwardN": "Iuusog pasulong ng {d}: {from} → {to}",
+    "backN": "Iuusog paurong ng {d}: {from} → {to}",
+    "inDays": "sa loob ng {n} araw",
+    "today": "Ngayon",
+    "tomorrow": "Bukas",
+    "caption": "Mga pagbabago ng daylight saving time sa susunod na 12 buwan (lokal na oras)",
+    "groups": {
+      "eu": "Europa",
+      "us": "US at Canada",
+      "cl": "Chile",
+      "au": "Australia (timog-silangan)",
+      "nz": "New Zealand",
+      "il": "Israel",
+      "lb": "Lebanon",
+      "eg": "Egypt",
+      "ma": "Morocco",
+      "cu": "Cuba",
+      "md": "Moldova",
+      "ps": "Palestine",
+      "gl": "Greenland"
+    },
+    "turkeyNote": "Walang daylight saving time ang Türkiye: UTC+3 ang gamit nito buong taon mula 2016.",
+    "note": "Kinukuwenta ang mga petsa mula sa IANA time zone database (muling kinukuwenta ng pahina sa iyong browser). Maaaring baguhin ng mga bansa ang kanilang patakaran; ang opisyal na anunsiyo ang masusunod.",
+    "faq": [
+      {
+        "q": "Kailan iuusog paurong ang orasan sa Europa?",
+        "a": "Sa EU at UK, iniuusog pasulong ng isang oras ang orasan sa 01:00 UTC sa huling Linggo ng Marso at paurong ng isang oras sa 01:00 UTC sa huling Linggo ng Oktubre. Hindi nagbabago ang Türkiye, kaya 1 oras ang agwat sa Europa tuwing tag-init at 2 tuwing taglamig."
+      },
+      {
+        "q": "May daylight saving time ba ang Türkiye?",
+        "a": "Wala. Itinigil ng Türkiye ang daylight saving time noong 2016 at UTC+3 (Oras ng Türkiye) ang gamit buong taon."
+      }
+    ]
+  },
+  "unix": {
+    "title": "Unix timestamp: live na Unix time at converter ng petsa | Saat Tarih",
+    "description": "Kasalukuyang Unix time (epoch) nang live sa segundo at milisegundo; i-convert ang timestamp sa petsa at petsa sa timestamp sa UTC, lokal na oras at ISO 8601.",
+    "h1": "Unix timestamp",
+    "lead": "Ang bilang ng segundo mula 1 Enero 1970 00:00:00 UTC: live na Unix time at converter sa dalawang direksiyon.",
+    "search": "unix timestamp epoch unix time segundo milisegundo converter 2038 zaman damgası",
+    "nowLabel": "Kasalukuyang Unix time",
+    "seconds": "segundo",
+    "milliseconds": "milisegundo",
+    "copy": "Kopyahin",
+    "copied": "Nakopya",
+    "toDateHeading": "Timestamp papuntang petsa",
+    "tsLabel": "Unix timestamp (segundo o milisegundo)",
+    "fromDateHeading": "Petsa papuntang timestamp",
+    "dateLabel": "Petsa at oras",
+    "zoneLabel": "Time zone",
+    "zoneLocal": "Lokal na oras",
+    "zoneUtc": "UTC",
+    "resUtc": "UTC",
+    "resLocal": "Lokal na oras",
+    "resIso": "ISO 8601",
+    "resRel": "Mula ngayon",
+    "resSec": "Segundo",
+    "resMs": "Milisegundo",
+    "detectedMs": "Binasa bilang milisegundo",
+    "detectedSec": "Binasa bilang segundo",
+    "invalid": "Maglagay ng tamang numero o petsa.",
+    "ago": "{d} ang nakalipas",
+    "in": "sa loob ng {d}",
+    "y2038Heading": "Ang problema ng taong 2038",
+    "y2038": "Ang Unix time na nakatago sa signed 32-bit integer ay aapaw sa 03:14:07 UTC sa 19 Enero 2038 (2147483647); 64 bit ang gamit ng mga sistema ngayon.",
+    "y2038Left": "Natitirang oras bago ang hangganan ng 2038: {d}",
+    "factsHeading": "Mabuting malaman",
+    "facts": [
+      "Hindi nakadepende sa time zone ang Unix time: iisang numero ito saanman sa iisang sandali.",
+      "Hindi binibilang ang leap second; eksaktong 86,400 segundo ang bawat araw.",
+      "Milisegundo (13 digit) ang gamit ng JavaScript at Java; segundo (10 digit) ang gamit ng karamihan ng Unix tool at database."
+    ],
+    "days": "araw",
+    "hours": "oras",
+    "minutes": "minuto",
+    "faq": [
+      {
+        "q": "Ano ang Unix timestamp?",
+        "a": "Ang Unix timestamp (epoch time) ay ang bilang ng segundo mula 00:00:00 UTC noong 1 Enero 1970. Hindi ito nakadepende sa time zone; ganitong numero ang pag-iimbak ng mga computer sa petsa."
+      },
+      {
+        "q": "Segundo ba o milisegundo ang timestamp?",
+        "a": "Karaniwang segundo ang numerong may 10 digit at milisegundo ang may 13. Pinag-iiba ito ng converter sa pahinang ito ayon sa dami ng digit."
+      }
+    ]
+  },
+  "worldHol": {
+    "hubTitle": "Mga pampublikong holiday ayon sa bansa 2026–2028 | Saat Tarih",
+    "hubDescription": "Mga pambansang holiday sa Germany, UK, US, Netherlands, France at 25 pang bansa: mga petsa, araw ng linggo, ang susunod na holiday at natitirang araw.",
+    "hubH1": "Mga pampublikong holiday ayon sa bansa",
+    "hubLead": "Mga pambansang holiday sa 30 bansa at ang natitirang araw bago ang susunod.",
+    "hubSearch": "public holidays holiday bansa germany uk us netherlands france bank holiday kalendaryo resmi tatil",
+    "colCountry": "Bansa",
+    "colNext": "Susunod na holiday",
+    "colCount": "Mga holiday sa {year}",
+    "turkey": "Türkiye",
+    "pageTitle": "Mga pampublikong holiday sa {country} {from}–{to} | Saat Tarih",
+    "pageDescription": "Mga pambansang holiday sa {country} {from}–{to}: petsa, araw ng linggo at natitirang araw. May {n} pampublikong holiday ang {year}, {w} sa mga ito ay sa karaniwang araw.",
+    "pageH1": "Mga pampublikong holiday sa {country}",
+    "pageLead": "Mga pambansang holiday sa {country}, ang mga petsa nito at natitirang araw.",
+    "search": "public holidays holiday bank holiday walang pasok resmi tatil",
+    "caption": "Mga pampublikong holiday sa {country} sa {year}",
+    "colDate": "Petsa",
+    "colDay": "Araw",
+    "colName": "Holiday",
+    "colLeft": "Natitirang araw",
+    "summary": "{year}: {n} pampublikong holiday, {w} sa karaniwang araw.",
+    "regional": "Bukod dito, may {n} holiday sa {year} na para lang sa ilang estado o rehiyon; hindi ito ipinapakita rito.",
+    "nextLabel": "Susunod na holiday",
+    "source": "Pinagmulan: Nager.Date (date.nager.at, lisensiyang MIT), kinuha noong {date}. Pambansang holiday lang; maaaring magbago ang mga petsa, ang opisyal na anunsiyo ang masusunod.",
+    "localName": "Lokal na pangalan: {name}",
+    "inDays": "sa loob ng {n} araw",
+    "today": "Ngayon",
+    "tomorrow": "Bukas",
+    "passed": "Lumipas na",
+    "faq": [
+      {
+        "q": "Aling mga bansa ang nakalista ang holiday?",
+        "a": "Nakalista rito ang mga pambansang holiday sa 30 bansa: Germany, UK, France, Netherlands, Belgium, Austria, Switzerland at iba pa sa Europa, pati na ang US, Canada, Brazil, Australia, Japan, China, Russia, Georgia, Singapore at South Africa. Nasa mga pahina ng taunang kalendaryo ang mga holiday ng Türkiye."
+      }
+    ]
+  },
+  "zakat": {
+    "title": "Zakat calculator: nisab at magkano ang zakat | Saat Tarih",
+    "description": "Kuwentahin ang zakat mula sa cash, ginto, pilak, dayuhang pera, paninda at pautang bawas ang utang: nisab ay 80.18 g na ginto, rate ay isang-ikaapatnapu (Diyanet).",
+    "h1": "Zakat calculator",
+    "lead": "Ilagay ang iyong ari-arian at utang para makita kung abot mo ang nisab at magkano ang zakat mo.",
+    "search": "zakat calculator nisab ginto pilak 2.5 porsiyento magkano ang zakat zekat hesaplama",
+    "intro": "Ilagay ang halaga sa sarili mong pera. I-type ang presyo ng isang gramo ng ginto para sa nisab; hindi kumukuha ng presyo online ang pahina.",
+    "fields": {
+      "cash": "Cash at bangko",
+      "goldGrams": "Ginto (gramo, katumbas na 24 karat)",
+      "goldPrice": "Presyo ng 1 g na ginto",
+      "silverValue": "Pilak (halaga)",
+      "foreign": "Dayuhang pera at shares (halaga)",
+      "trade": "Paninda",
+      "receivable": "Mga pautang na inaasahang masisingil",
+      "debt": "Mga utang"
+    },
+    "resultHeading": "Resulta",
+    "net": "Netong ari-arian",
+    "nisab": "Nisab ({g} g na ginto)",
+    "needGold": "Ilagay ang presyo ng 1 g na ginto para makuwenta ang nisab.",
+    "due": "Abot ng iyong yaman ang nisab; may zakat kang dapat ibigay.",
+    "notDue": "Kulang sa nisab ang iyong yaman; walang zakat na dapat ibigay.",
+    "amount": "Zakat (1/40)",
+    "privacy": "Sa pahinang ito lang kinukuwenta ang mga halagang inilagay mo; hindi ito sine-save o ipinapadala kahit saan.",
+    "note": "Batay sa mga patakaran ng Presidency of Religious Affairs ng Türkiye (Diyanet): ang nisab ay 80.18 g na ginto, ang rate ay isang-ikaapatnapu, at dapat lumipas ang isang lunar na taon sa yaman. Hindi binibilang ang iyong bahay, kotse at personal na gamit. Magtanong sa isang iskolar para makatiyak.",
+    "faq": [
+      {
+        "q": "Ano ang nisab ng zakat?",
+        "a": "Ayon sa Presidency of Religious Affairs ng Türkiye, ang nisab ay 80.18 g na ginto o pera at kalakal na kapareho ang halaga. Ang yamang umabot dito matapos ang pangunahing pangangailangan at utang, at hawak nang isang lunar na taon, ay may zakat."
+      },
+      {
+        "q": "Ano ang rate ng zakat?",
+        "a": "Para sa pera, ginto, pilak, dayuhang pera at paninda, ang zakat ay isang-ikaapatnapu ng yaman (2.5 porsiyento)."
+      },
+      {
+        "q": "Ano ang hindi binibilang sa zakat?",
+        "a": "Hindi binibilang ang mga pangunahing pangangailangan gaya ng bahay na tinitirhan, kotseng ginagamit, gamit sa bahay at kasangkapan sa trabaho. Para sa ari-ariang kumikita gaya ng paupahang bahay, ang naipong kita lang ang binibilang."
+      },
+      {
+        "q": "Bakit ako ang magta-type ng presyo ng ginto?",
+        "a": "Hindi kumokonekta ang pahina sa mga panlabas na serbisyo at hindi nito sine-save ang inilalagay mo. Para makuwenta ang nisab sa presyo ngayon, ikaw ang magta-type ng presyo ng isang gramo ng ginto."
+      }
+    ],
+    "fitreHeading": "Fitra (zakat al-fitr)",
+    "fitreText": "Itinakda ng Presidency of Religious Affairs ng Türkiye (High Board of Religious Affairs) ang fitra ng {year} sa {amount} TL bawat tao ({date}), may bisa mula Ramadan {year} hanggang sa susunod na Ramadan.",
+    "fitrePeople": "Bilang ng tao (kasama ang iyong mga dependent)",
+    "fitreTotal": "Kabuuang fitra",
+    "fitreNote": "Para sa Türkiye ang halagang ito at ito ang pinakamababa; maaaring magbigay nang higit ang may kaya (ayon sa sukat ng datiles o pasas). Ibinibigay ang fitra bago ang dasal ng Eid."
+  },
+  "api": {
+    "title": "Open data (API): holiday, oras ng dasal, Hijri | Saat Tarih",
+    "description": "Mga holiday at relihiyosong araw ng Türkiye, oras ng dasal sa 81 lalawigan, kalendaryong Hijri ayon sa Diyanet at datos ng astronomiya: libreng JSON, walang key, CORS.",
+    "h1": "Open data (API)",
+    "lead": "Ang datos na kinukuwenta ng Saat Tarih, bilang pampublikong JSON file; walang sign-up o API key.",
+    "search": "api open data json public holidays api türkiye prayer times api hijri calendar api developer açık veri",
+    "endpointsHeading": "Mga endpoint",
+    "colPath": "Path",
+    "colDesc": "Nilalaman",
+    "ep": {
+      "index": "Listahan ng mga endpoint at impormasyon ng bersiyon",
+      "holidays": "Mga pampublikong holiday ng isang taon, bisperas na kalahating araw, relihiyoso at espesyal na araw (mga pangalan sa lahat ng wika ng site) at ang panahon ng Ramadan",
+      "prayer": "Oras ng dasal ng isang lalawigan sa isang taon (fajr, pagsikat ng araw, dhuhr, asr, maghrib, isha; oras ng Türkiye)",
+      "provinces": "81 lalawigan: slug, pangalan, latitude, longitude",
+      "hijri": "Talaan ng simula ng mga buwan ng Hijri (tugma sa kalendaryo ng Diyanet)",
+      "astronomy": "Mga sandali ng equinox at solstice ng isang taon, bagong buwan at kabilugan, mga eklipse (UTC)"
+    },
+    "yearsNote": "Saklaw ng mga file ng holiday at astronomiya ang {from}–{to}; ang oras ng dasal ay {p1} at {p2}. Nasa provinces.json ang mga slug ng lalawigan (hal. istanbul, ankara, izmir).",
+    "fieldsHeading": "Mga field",
+    "fields": [
+      "Ang petsa ay YYYY-MM-DD at ang oras ay HH:MM (oras ng Türkiye, UTC+3); ang mga sandali ay ISO 8601 UTC.",
+      "Uri ng holiday: holiday (pampublikong holiday), half (bisperas na kalahating araw), religious (relihiyosong araw), special (espesyal na araw).",
+      "Sa file ng oras ng dasal, bawat hilera ng days array ay [petsa, fajr, pagsikat ng araw, dhuhr, asr, maghrib, isha].",
+      "Sa talaang Hijri, bawat hilera ay [petsang Gregorian ng simula ng buwan, taong Hijri, buwang Hijri]; ang huling hilera ay ang araw na nagtatapos ang talaan."
+    ],
+    "exampleHeading": "Halimbawa",
+    "exampleNote": "Mga oras ngayong araw sa Istanbul gamit ang JavaScript:",
+    "termsHeading": "Mga tuntunin ng paggamit",
+    "terms": [
+      "Maaaring gamitin ang datos sa ilalim ng lisensiyang Creative Commons Attribution 4.0 (CC BY 4.0); ilagay ang \"Saat Tarih (time.bumba.tr)\" kung saan mo ito ginagamit.",
+      "Kinukuwenta ang oras ng dasal sa paraan ng Diyanet at maaaring magkaiba ng 1–2 minuto sa opisyal na oras; ang oras ng Diyanet ang masusunod.",
+      "Ang mga relihiyosong araw mula 2028 ay pagtataya batay sa pangmatagalang kalendaryo ng Diyanet.",
+      "Walang key o sign-up; static at maaaring i-cache ang mga file. Humiling sa makatwirang dalas (sapat na ang isang beses bawat araw).",
+      "Ina-update ang datos tuwing inilalathala ang site; kapag nagbago ang format, magdaragdag ng bagong bersiyon (v2) at pananatilihin ang v1."
+    ]
+  },
+  "hijriConv": {
+    "title": "Hijri date converter: Hijri at Gregorian | Saat Tarih",
+    "description": "I-convert ang petsang Gregorian sa Hijri at ang Hijri sa Gregorian. Petsang Hijri ngayon at simula ng mga buwan ngayong taon, ayon sa kalendaryo ng Diyanet.",
+    "h1": "Hijri date converter",
+    "lead": "Ang petsang Hijri ngayon, conversion sa dalawang direksiyon at ang simula ng mga buwan ngayong taong Hijri. Sumusunod ang mga petsa sa kalendaryo ng Presidency of Religious Affairs ng Türkiye (Diyanet).",
+    "search": "hijri converter kalendaryong islamiko hijri gregorian petsang hijri ngayon hicri",
+    "todayLabel": "Petsang Hijri ngayon",
+    "toHijri": "Gregorian papuntang Hijri",
+    "gregLabel": "Petsang Gregorian",
+    "toGreg": "Hijri papuntang Gregorian",
+    "yearLabel": "Taong Hijri",
+    "monthLabel": "Buwan",
+    "dayLabel": "Araw",
+    "result": "Resulta",
+    "months": [
+      "Muharram",
+      "Safar",
+      "Rabi al-Awwal",
+      "Rabi al-Thani",
+      "Jumada al-Ula",
+      "Jumada al-Akhirah",
+      "Rajab",
+      "Shaban",
+      "Ramadan",
+      "Shawwal",
+      "Dhu al-Qadah",
+      "Dhu al-Hijjah"
+    ],
+    "fmt": "{d} {m} {y} AH",
+    "outside": "Labas sa talaan ng Diyanet ang petsang ito; kinuwenta ito gamit ang kalendaryong Umm al-Qura at maaaring magkaiba ng isang araw.",
+    "dayMax": "May {n} araw ang buwang Hijri na ito.",
+    "invalid": "Maglagay ng tamang petsa.",
+    "yearHeading": "Simula ng mga buwan ng taong Hijri {y}",
+    "colMonth": "Buwan",
+    "colStart": "Nagsisimula sa (Gregorian)",
+    "colDays": "Araw",
+    "note": "Nagsisimula ang araw na Hijri sa paglubog ng araw; sa pahinang ito nagbabago ang petsa sa hatinggabi. Maaaring magkaiba ng isang araw ang simula ng buwan sa ilang bansa. Ang 2026–2031 ay ayon sa mga petsang inilathala ng Diyanet; ang ibang taon ay ayon sa kuwenta ng Umm al-Qura.",
+    "faq": [
+      {
+        "q": "Anong petsa ngayon sa kalendaryong Hijri?",
+        "a": "Nasa itaas ng pahina ang petsang Hijri ngayon, ayon sa kalendaryo ng Diyanet. Dahil nagsisimula ang araw na Hijri sa paglubog ng araw, sa gabi nagsisimula ang susunod na petsa."
+      },
+      {
+        "q": "Bakit umuusog nang mga 11 araw bawat taon ang kalendaryong Hijri?",
+        "a": "Sumusunod ang kalendaryong Hijri sa yugto ng buwan; mga 354 araw ang 12 buwang lunar. Mga 11 araw itong mas maikli sa taong Gregorian, kaya mga 11 araw na mas maaga bawat taon ang Ramadan at ang mga Eid."
+      },
+      {
+        "q": "Bakit magkakaiba ang petsang Hijri sa iba't ibang bansa?",
+        "a": "May mga bansang nagsisimula ng buwan sa pagkakita ng bagong buwan, at may mga ayon sa kuwenta. Kalendaryong kinuwenta ng Diyanet ang gamit ng Türkiye at Umm al-Qura ang sa Saudi Arabia; maaari silang magkaiba ng isang araw."
+      }
+    ]
+  },
+  "timeCalc": {
+    "title": "Time calculator: magdagdag, magbawas at oras sa pagitan | Saat Tarih",
+    "description": "Tagal sa pagitan ng dalawang oras, pagdagdag o pagbawas ng oras at minuto, at pagsama ng mga tagal. Kasama ang shift na lampas hatinggabi at decimal na oras.",
+    "h1": "Time calculator",
+    "lead": "Tagal sa pagitan ng dalawang oras, pagdagdag o pagbawas ng oras, at pagsama ng mga tagal. Ipinapakita rin ang lampas hatinggabi at decimal na oras.",
+    "search": "time calculator oras sa pagitan magdagdag ng oras magbawas ng minuto shift kabuuang tagal decimal saat hesaplama",
+    "betweenHeading": "Tagal sa pagitan ng dalawang oras",
+    "startLabel": "Simula",
+    "endLabel": "Katapusan",
+    "overnight": "Mas maaga ang katapusan kaysa simula, kaya binilang itong lampas hatinggabi.",
+    "duration": "{h} oras {m} min",
+    "decimal": "Decimal: {x} oras",
+    "minutesTotal": "{n} minuto",
+    "addHeading": "Magdagdag o magbawas ng oras",
+    "timeLabel": "Oras",
+    "opLabel": "Operasyon",
+    "opAdd": "Idagdag (+)",
+    "opSub": "Ibawas (−)",
+    "hoursLabel": "Oras",
+    "minutesLabel": "Minuto",
+    "resultTime": "Resulta: {time}",
+    "nextDay": "kinabukasan",
+    "prevDay": "nakaraang araw",
+    "daysLater": "pagkalipas ng {n} araw",
+    "daysEarlier": "{n} araw na mas maaga",
+    "sumHeading": "Pagsamahin ang mga tagal",
+    "sumLabel": "Mga tagal (isa bawat linya)",
+    "sumHint": "Isulat hal. 1:30 (isa't kalahating oras), 45 (minuto), 2:15:30 (oras:minuto:segundo); lagyan ng − sa unahan para ibawas.",
+    "sumResult": "Kabuuan: {t}",
+    "sumBad": "Hindi mabasang linya: {n}",
+    "faq": [
+      {
+        "q": "Paano kuwentahin ang oras sa pagitan ng dalawang oras?",
+        "a": "Ibawas ang simula sa katapusan. Kung mukhang mas maaga ang katapusan (halimbawa 22:00–06:00), lumampas ito sa hatinggabi: magdagdag ng 24 na oras at 8 oras ang tagal."
+      },
+      {
+        "q": "Paano gawing decimal na oras ang minuto?",
+        "a": "Hatiin sa 60 ang minuto: ang 30 minuto ay 0.5 oras at ang 45 minuto ay 0.75 oras. Ang 7 oras at 45 minuto ay 7.75 oras."
+      },
+      {
+        "q": "Paano pagsamahin ang oras at minuto?",
+        "a": "Pagsamahin muna ang minuto at gawing isang oras ang bawat 60 minuto. Halimbawa 1:40 + 2:35 = 3 oras 75 minuto = 4 oras 15 minuto."
+      }
+    ]
+  },
+  "daysUntil": {
+    "title": "Ilang araw pa: ilang araw bago o mula sa isang petsa | Saat Tarih",
+    "description": "Ilang araw pa bago ang isang petsa o ilang araw na ang lumipas, sa linggo, buwan at araw ng trabaho. May listahan din ng araw bago ang holiday at mahahalagang petsa.",
+    "h1": "Ilang araw pa bago…?",
+    "lead": "Pumili ng petsa para makita kung ilang araw pa o ilang araw na ang lumipas, pati sa linggo at araw ng trabaho. Nasa ibaba ang mga araw bago ang holiday at mahahalagang petsa.",
+    "search": "ilang araw pa days until ilang araw na ang lumipas countdown bilang ng araw petsa kaç gün kaldı",
+    "dateLabel": "Petsa",
+    "left": "{n} araw pa",
+    "left1": "1 araw pa",
+    "passed": "{n} araw na ang nakalipas",
+    "passed1": "1 araw na ang nakalipas",
+    "today": "Ngayon",
+    "weeks": "{w} linggo {d} araw",
+    "months": "Mga {n} buwan",
+    "workdays": "{n} araw ng trabaho (hindi kasama ang weekend at mga holiday sa Türkiye)",
+    "weekday": "Araw ng linggo: {d}",
+    "upcomingHeading": "Mga araw bago ang mahahalagang petsa",
+    "colEvent": "Araw",
+    "colDate": "Petsa",
+    "colLeft": "Natitira",
+    "daysUnit": "{n} araw",
+    "daysUnit1": "1 araw",
+    "faq": [
+      {
+        "q": "Kasama ba ang araw na ito sa natitirang araw?",
+        "a": "Hindi. Ang ipinapakita ay ang bilang ng gabi hanggang sa napiling petsa: kapag bukas, 1 araw pa. Kung ngayon ang napiling araw, “Ngayon” ang nakasulat."
+      },
+      {
+        "q": "Paano binibilang ang araw ng trabaho?",
+        "a": "Inaalis sa mga araw pagkatapos ngayon ang Sabado, Linggo at buong-araw na holiday sa Türkiye; kalahati ang bilang ng kalahating araw bago ang Eid. Saklaw ng datos ng holiday ang 2026–2031."
+      }
+    ]
+  },
+  "interval": {
+    "title": "Interval timer: online na HIIT at Tabata timer | Saat Tarih",
+    "description": "Bilangin ang mga round ng warm-up, trabaho at pahinga: tunog at sinasabing cue sa bawat palit, bilang ng huling 3 segundo. May preset na Tabata at HIIT, full screen.",
+    "h1": "Interval timer",
+    "lead": "Piliin ang tagal ng warm-up, trabaho at pahinga at ang bilang ng round. May tunog sa bawat palit at maaaring sabihin nang malakas ang yugto.",
+    "search": "interval timer hiit timer tabata timer workout timer emom round timer aralık zamanlayıcı",
+    "warmup": "Warm-up (s)",
+    "work": "Trabaho (s)",
+    "rest": "Pahinga (s)",
+    "rounds": "Mga round",
+    "presets": "Mga preset",
+    "presetTabata": "Tabata 20/10 × 8",
+    "presetHiit": "HIIT 30/15 × 10",
+    "presetEmom": "EMOM 60 × 10",
+    "phases": {
+      "warmup": "Warm-up",
+      "work": "Trabaho",
+      "rest": "Pahinga",
+      "done": "Tapos na"
+    },
+    "lastRound": "Huling round",
+    "roundOf": "Round {n}/{total}",
+    "total": "Kabuuan: {t}",
+    "start": "Simulan",
+    "pause": "I-pause",
+    "resume": "Ituloy",
+    "reset": "I-reset",
+    "voice": "Sinasabing cue",
+    "voiceNote": "Ginagamit ng mga cue ang speech engine ng iyong browser sa device; kung walang boses sa device para sa wikang ito, tunog lang ang maririnig.",
+    "note": "Gumagana habang bukas ang pahina; sa full screen, nananatiling bukas ang screen.",
+    "faq": [
+      {
+        "q": "Ano ang Tabata?",
+        "a": "Ang Tabata ay 4 na minutong interval workout na may 8 round: 20 segundong napakabigat na ehersisyo at 10 segundong pahinga. Piliin ito sa mga preset."
+      },
+      {
+        "q": "May pahinga ba pagkatapos ng huling round?",
+        "a": "Wala. Natatapos ang workout pagkatapos ng huling yugto ng trabaho; sa pagitan lang ng mga round binibilang ang pahinga."
+      }
+    ]
+  },
+  "chess": {
+    "title": "Chess clock: online, may increment at full screen | Saat Tarih",
+    "description": "Online na chess clock para sa dalawa: time control (1+0, 3+2, 5+0, 10+0, 15+10), Fischer increment, bilang ng tira at tunog kapag ubos ang oras. Full screen sa telepono.",
+    "h1": "Chess clock",
+    "lead": "Pumili ng time control at i-tap ang sarili mong orasan pagkatapos ng bawat tira. Suportado ang Fischer increment at bilang ng tira.",
+    "search": "chess clock online chess timer blitz bullet fischer increment game clock satranç saati",
+    "control": "Time control",
+    "custom": "Custom",
+    "minutes": "Minuto",
+    "increment": "Increment (s)",
+    "white": "Puti",
+    "black": "Itim",
+    "hint": "Para magsimula, i-tap ang orasan ng Itim; tatakbo ang oras ng Puti. Pinapahinto ng space bar ang orasan ng manlalarong titira.",
+    "pause": "I-pause",
+    "resume": "Ituloy",
+    "reset": "I-reset",
+    "moves": "{n} tira",
+    "flag": "{side}: ubos na ang oras",
+    "faq": [
+      {
+        "q": "Ano ang ibig sabihin ng 3+2 sa chess?",
+        "a": "May 3 minuto ang bawat manlalaro at nadaragdagan ng 2 segundo pagkatapos ng bawat tira nila (Fischer increment)."
+      },
+      {
+        "q": "Sino ang nagsisimula ng chess clock?",
+        "a": "Ayon sa patakaran, ang manlalarong may itim na piyesa ang nagsisimula ng orasan, kaya tumatakbo ang oras ng Puti."
+      }
+    ]
+  },
+  "metronome": {
+    "title": "Online metronome: BPM, time signature at tap tempo | Saat Tarih",
+    "description": "Metronome sa iyong browser: 30–250 BPM, beat bawat bar, may diin ang unang beat, subdivision at tap tempo. Sa iyong device ginagawa ang tunog.",
+    "h1": "Metronome",
+    "lead": "Itakda o i-tap ang tempo, saka piliin ang beat bawat bar at subdivision. Sa browser ginagawa ang tunog.",
+    "search": "metronome online metronome bpm tempo time signature tap tempo click track metronom",
+    "bpm": "Tempo (BPM)",
+    "beats": "Beat bawat bar",
+    "sub": "Subdivision",
+    "subs": {
+      "1": "Wala",
+      "2": "Eighth",
+      "3": "Triplet",
+      "4": "Sixteenth"
+    },
+    "accent": "Diinan ang unang beat",
+    "tap": "Tap tempo",
+    "start": "Simulan",
+    "stop": "Ihinto",
+    "slower": "Mas mabagal",
+    "faster": "Mas mabilis",
+    "volume": "Lakas",
+    "tempoNote": "Tinatayang saklaw lang ang mga pangalan ng tempo sa Italyano.",
+    "faq": [
+      {
+        "q": "Ano ang ibig sabihin ng BPM?",
+        "a": "Ang BPM (beats per minute) ay ang bilang ng beat sa isang minuto. Ang 60 BPM ay isang beat bawat segundo at ang 120 BPM ay dalawa."
+      },
+      {
+        "q": "Paano gumagana ang tap tempo?",
+        "a": "I-tap ang button kasabay ng beat nang hindi bababa sa dalawang beses; ginagawang BPM ang average na pagitan ng mga huling tap."
+      }
+    ]
+  },
+  "talking": {
+    "title": "Talking clock: online na orasang nagsasabi ng oras | Saat Tarih",
+    "description": "Orasang nagsasabi ng oras: sa pagpindot ng button o kusa bawat 1, 5, 15 o 30 minuto at tuwing eksaktong oras. Para sa malabong paningin o habang nagtatrabaho.",
+    "h1": "Talking clock",
+    "lead": "Pindutin ang button para marinig ang oras; maaari rin itong kusang magsalita sa itinakdang pagitan. Gumagana habang bukas ang pahina.",
+    "search": "talking clock orasang nagsasalita sabihin ang oras audio clock anong oras na konuşan saat",
+    "say": "Sabihin ang oras",
+    "auto": "Kusang magsalita",
+    "every": {
+      "off": "Naka-off",
+      "1": "Bawat minuto",
+      "5": "Bawat 5 minuto",
+      "15": "Bawat 15 minuto",
+      "30": "Bawat 30 minuto",
+      "60": "Tuwing eksaktong oras"
+    },
+    "chime": "Tumunog muna",
+    "noVoice": "Walang nakitang boses sa device para sa wikang ito sa browser na ito; ipinapakita ang oras sa salita.",
+    "note": "Ginagamit ng pagsasalita ang engine ng iyong browser sa device; hindi ipinapadala kahit saan ang teksto. Gumagana habang bukas ang pahina.",
+    "faq": [
+      {
+        "q": "Gumagana ba ang talking clock habang naka-lock ang telepono?",
+        "a": "Hindi. Nililimitahan ng mga browser ang tunog ng mga pahinang nasa background; gumagana lang ang kusang pagsasalita habang bukas ang pahina at nakabukas ang screen."
+      },
+      {
+        "q": "Bakit walang tunog?",
+        "a": "Kailangan ng browser ng nakainstall na boses para sa wikang ito sa device. Maaari kang mag-download ng boses sa mga setting ng wika at pagsasalita ng iyong telepono o computer."
+      }
+    ]
+  },
+  "zodiac": {
+    "title": "Zodiac sign calculator: Sun at Moon sign ayon sa kaarawan | Saat Tarih",
+    "description": "Alamin ang iyong Sun sign at Moon sign mula sa petsa at oras ng kapanganakan sa pamamagitan ng kuwentang astronomiko. May talaan din ng mga petsa ng bawat sign.",
+    "h1": "Zodiac sign calculator",
+    "lead": "Ilagay ang petsa at oras ng iyong kapanganakan; kinukuwenta kung saang sign naroon ang Araw at Buwan sa sandaling iyon. Para sa kasiyahan lang ang astrolohiya.",
+    "search": "zodiac sign calculator ano ang zodiac sign ko moon sign sun sign kaarawan star sign burç",
+    "dateLabel": "Petsa ng kapanganakan",
+    "timeLabel": "Oras ng kapanganakan (opsiyonal)",
+    "sun": "Sun sign",
+    "moon": "Moon sign",
+    "signs": [
+      "Aries",
+      "Taurus",
+      "Gemini",
+      "Cancer",
+      "Leo",
+      "Virgo",
+      "Libra",
+      "Scorpio",
+      "Sagittarius",
+      "Capricorn",
+      "Aquarius",
+      "Pisces"
+    ],
+    "noTime": "Walang inilagay na oras ng kapanganakan, kaya ipinalagay na 12:00 ng tanghali; nagpapalit ng sign ang Buwan halos bawat 2.5 araw.",
+    "cusp": "Nagpapalit ng sign ang Araw sa araw na ito; maaaring baguhin ng oras ng kapanganakan ang resulta.",
+    "tzNote": "Binabasa ang oras sa time zone ng device na ito.",
+    "tableHeading": "Mga petsa ng bawat sign",
+    "colSign": "Sign",
+    "colDates": "Petsa (tinatayang)",
+    "fun": "Para sa libangan ang astrolohiya at walang batayang siyentipiko. Astronomiko ang mismong kuwenta: ang ecliptic longitude ng Araw at Buwan (tropical zodiac).",
+    "faq": [
+      {
+        "q": "Bakit bahagyang umuusog bawat taon ang hangganan ng mga sign?",
+        "a": "Umuusog nang ilang oras bawat taon ang sandali ng paglipat ng Araw sa bagong sign, kaya nag-iiba ang araw ng palit mula ika-19 hanggang ika-23. Sa mga araw na iyon, mahalaga rin ang oras ng kapanganakan."
+      },
+      {
+        "q": "Ano ang Moon sign?",
+        "a": "Ito ang sign kung saan naroon ang Buwan sa sandali ng kapanganakan. Dumaraan ang Buwan sa isang sign sa loob ng mga 2.5 araw, kaya maaaring hindi tiyak kung walang oras ng kapanganakan."
+      }
+    ]
+  },
+  "sky": {
+    "title": "Kalangitan ngayong gabi: mga planeta at layo ng Buwan | Saat Tarih",
+    "description": "Aling mga planeta ang makikita ngayong gabi mula sa kinaroroonan mo, kailan at saan; sky chart na may maliliwanag na bituin, layo ng Buwan, susunod na perigee at apogee.",
+    "h1": "Kalangitan sa gabi",
+    "lead": "Kailan makikita ngayong gabi mula sa napiling lugar ang Mercury, Venus, Mars, Jupiter at Saturn, saan titingin at gaano kaliwanag; ang layo ng Buwan sa Daigdig.",
+    "search": "kalangitan ngayong gabi planeta nakikita venus jupiter mars saturn mercury bituin buwan layo supermoon perigee apogee",
+    "planets": {
+      "mercury": "Mercury",
+      "venus": "Venus",
+      "mars": "Mars",
+      "jupiter": "Jupiter",
+      "saturn": "Saturn"
+    },
+    "moon": "Buwan",
+    "sun": "Araw",
+    "chartHeading": "Sky chart",
+    "chartCaption": "{place}, {time}. Ang gitna ay tuwirang nasa itaas at ang gilid ay ang horizon; nasa itaas ang hilaga at nasa kaliwa ang silangan, na parang hawak sa itaas ng ulo.",
+    "timeLabel": "Oras",
+    "now": "Ngayon",
+    "tableHeading": "Mga planeta ngayong gabi",
+    "cols": [
+      "Planeta",
+      "Kailan makikita",
+      "Direksiyon",
+      "Pinakamataas",
+      "Liwanag",
+      "Layo"
+    ],
+    "window": "{from}–{to}",
+    "tooClose": "Masyadong malapit sa Araw para makita",
+    "below": "Wala sa itaas ng horizon habang madilim ngayong gabi",
+    "riseSet": "Sumisikat {rise} · Lumulubog {set}",
+    "altFmt": "{deg}° ({time})",
+    "mkm": "{v} milyong km",
+    "moonHeading": "Layo ng Buwan",
+    "moonNow": "Layo mula sa Daigdig ngayon",
+    "perigee": "Susunod na perigee (pinakamalapit)",
+    "apogee": "Susunod na apogee (pinakamalayo)",
+    "superMoon": "Malapit sa perigee ang kabilugan ng buwan sa {date}: isang \"supermoon\" (mukhang bahagyang mas malaki at mas maliwanag ang Buwan).",
+    "km": "{v} km",
+    "note": "Kinukuwenta sa iyong browser ang mga posisyon: ang mga planeta gamit ang tinatayang orbital element ng JPL (tumpak sa arcminute), ang Buwan at Araw gamit ang mga pormula ni Meeus. Ang \"Kailan makikita\" ay ang mga oras na 6° sa ilalim ng horizon ang Araw at hindi bababa sa 5° sa itaas nito ang planeta. Nasa magnitude ang liwanag (mas mababa, mas maliwanag); hindi kasama ang mga singsing ng Saturn. Iginuguhit ang mga bituin sa posisyong J2000.",
+    "faq": [
+      {
+        "q": "Aling mga planeta ang makikita ngayong gabi?",
+        "a": "Kinukuwenta ng pahina ng kalangitan kung kailan nasa itaas ng horizon habang madilim ngayong gabi ang Mercury, Venus, Mars, Jupiter at Saturn sa napiling lugar, saan titingin at gaano kaliwanag. Karaniwang pinakamaliwanag ang Venus at Jupiter; malapit sa Araw ang Mercury at saglit lang makikita sa takipsilim."
+      },
+      {
+        "q": "Gaano kalayo ang Buwan?",
+        "a": "Mga 384,400 km sa karaniwan ang layo ng Buwan sa Daigdig. Dahil elliptical ang orbit nito, nagbabago ang layo bawat buwan mula mga 356,500 km (perigee) hanggang 406,700 km (apogee). Ipinapakita ng pahina ang kasalukuyang layo at ang susunod na perigee at apogee."
+      },
+      {
+        "q": "Ano ang supermoon?",
+        "a": "Ang supermoon ay popular na tawag sa kabilugan ng buwan na malapit sa perigee, ang pinakamalapit na punto ng Buwan sa Daigdig. Mukha itong mga 14% na mas malaki at 30% na mas maliwanag kaysa sa kabilugan sa apogee; mahirap mapansin ang pagkakaiba sa mata lang."
+      }
+    ]
+  },
+  "otd": {
+    "title": "Sa araw na ito sa kasaysayan | Saat Tarih",
+    "description": "Ano ang nangyari sa araw na ito sa kasaysayan: mahahalagang pangyayari, pagkakatatag, kapanganakan at pagpanaw ng kilalang tao; pumili ng anumang araw. Mula sa Wikidata.",
+    "h1": "Sa araw na ito",
+    "lead": "Mahahalagang pangyayari, pagkakatatag, kapanganakan at pagpanaw sa kasaysayan para sa araw na ito o anumang araw na pipiliin mo.",
+    "search": "sa araw na ito kasaysayan ngayong araw ano ang nangyari ipinanganak ngayon namatay ngayon anibersaryo on this day",
+    "events": "Mga pangyayari",
+    "founded": "Itinatag",
+    "births": "Ipinanganak",
+    "deaths": "Pumanaw",
+    "foundedFmt": "Itinatag ang {name}",
+    "dayLabel": "Araw",
+    "prev": "Nakaraang araw",
+    "next": "Susunod na araw",
+    "today": "Ngayon",
+    "heading": "{date}",
+    "empty": "Walang tala para sa araw na ito.",
+    "source": "Pinagmulan: Wikidata (CC0). Para sa bawat araw, pinipili ang pinakakilalang tala ayon sa bilang ng artikulo sa Wikipedia; ang mga pangalan ay ayon sa Wikidata (Ingles kapag walang Filipino). Gregorian ang mga petsa; maaaring Julian ang gamit ng mga pinagmulan para sa petsang bago ang 1582.",
+    "faq": [
+      {
+        "q": "Saan galing ang listahan ng Sa araw na ito?",
+        "a": "Galing ang listahan sa Wikidata (open data, CC0): mga pangyayaring alam ang eksaktong araw, pagkakatatag ng mga estado at internasyonal na organisasyon, at araw ng kapanganakan at pagpanaw ng mga kilalang tao. Para sa bawat araw, ipinapakita ang mga talang may artikulo sa Wikipedia sa pinakamaraming wika. Ina-update ang listahan bawat taon."
+      },
+      {
+        "q": "Puwede ko bang tingnan ang ibang araw?",
+        "a": "Oo. Gamitin ang tagapili ng araw sa pahinang Sa araw na ito para pumili ng anumang araw ng taon, o lumipat gamit ang mga button na nakaraan at susunod na araw; ipinapakita ng link sa address bar ang araw na iyon."
+      }
+    ]
+  },
+  "tzn": {
+    "title": "Balita sa time zone at daylight saving time | Saat Tarih",
+    "description": "Mga pagbabago sa time zone at daylight saving time: mga bansang lumilipat sa permanenteng oras, mga lugar na hindi na nag-uusog ng orasan, bagong time zone. Mula sa IANA.",
+    "h1": "Balita sa time zone",
+    "lead": "Mga desisyon ng mga bansa sa time zone at daylight saving time, pinakabago muna. Ipinapakita ng bawat isa kung kailan magkakabisa at ang kasalukuyang oras doon.",
+    "search": "balita time zone daylight saving time pagbabago permanenteng daylight time binago ang time zone tzdata",
+    "effective": "Magkakabisa: {date}",
+    "source": "Pinagmulan: IANA tz database, tzdata {rel} ({date})",
+    "nowIn": "Ngayon",
+    "feed": "Mag-subscribe sa news feed (Atom)",
+    "feedNote": "Idagdag ito sa iyong feed reader; lalabas doon ang mga bagong desisyon sa time zone kapag naidagdag.",
+    "note": "Natatanggap ng mga telepono at computer ang mga pagbabagong ito sa pamamagitan ng update ng operating system; kung luma ang iyong device, maaaring mali ang orasan nito nang ilang panahon. Naka-sync sa server ang orasan ng Saat Tarih, pero galing sa iyong browser ang mga patakaran ng time zone.",
+    "latest": "Huling sinuri: tzdata {rel} ({date})",
+    "feedTitle": "Saat Tarih: Balita sa time zone",
+    "faq": [
+      {
+        "q": "Saan galing ang balita sa time zone?",
+        "a": "Mula sa mga anunsiyo ng IANA tz database (tzdata), na ginagamit ng mga operating system at browser. Nakasaad sa bawat balita ang release ng tzdata na nagdagdag nito."
+      },
+      {
+        "q": "Paano nalalaman ng device ko na binago ng isang bansa ang orasan nito?",
+        "a": "Nagpapadala ang Apple, Google at Microsoft ng bagong release ng tz database kasama ng update ng operating system. Kung updated ang iyong device, kusang magiging tama ang oras."
+      }
+    ]
+  }
+}

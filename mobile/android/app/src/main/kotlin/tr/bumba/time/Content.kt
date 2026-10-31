@@ -73,8 +73,8 @@ object Esma {
 
     fun load(c: Context): List<Name> = runCatching {
         val a = JSONArray(asset(c, "esma.json") ?: "[]")
-        // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru]; Farsça ve Urducada okunuş yok (ad Arapça yazıyla okunur)
-        val col = when (Strings.lang) { "tr" -> 3; "en" -> 4; "de" -> 5; "az" -> 6; "id" -> 7; "ur" -> 8; "fa" -> 9; "fr" -> 10; "ru" -> 11; else -> -1 }
+        // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th]; Farsça ve Urducada okunuş yok (ad Arapça yazıyla okunur)
+        val col = when (Strings.lang) { "tr" -> 3; "en" -> 4; "de" -> 5; "az" -> 6; "id" -> 7; "ur" -> 8; "fa" -> 9; "fr" -> 10; "ru" -> 11; "ja" -> 12; "ko" -> 13; "zh" -> 14; "fil" -> 15; "th" -> 16; else -> -1 }
         (0 until a.length()).map { i ->
             val r = a.getJSONArray(i)
             val read = when (Strings.lang) { "tr", "az" -> r.getString(1); "ur", "fa" -> ""; else -> r.getString(2) }

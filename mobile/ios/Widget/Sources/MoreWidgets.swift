@@ -72,7 +72,7 @@ struct CityEntity: AppEntity, Decodable {
     let name: [String: String]
 
     var id: String { key }
-    var displayName: String { name[Bundle.main.preferredLocalizations.first ?? "tr"] ?? name["en"] ?? key }
+    var displayName: String { name[(Bundle.main.preferredLocalizations.first ?? "tr").hasPrefix("zh") ? "zh" : Bundle.main.preferredLocalizations.first ?? "tr"] ?? name["en"] ?? key }
     var zone: TimeZone { TimeZone(identifier: tz) ?? .current }
 
     static var typeDisplayRepresentation: TypeDisplayRepresentation { TypeDisplayRepresentation(name: "widget.city") }

@@ -261,6 +261,11 @@ class MoreScreensTest {
         shot("id-esma", "in") { EsmaScreen {} }
         shot("ru-hadis", "ru") { HadithScreen {} }
         shot("fa-namaz-rehberi", "fa") { PrayerGuideScreen({}) {} }
+        shot("ja-esma", "ja") { EsmaScreen {} }
+        shot("th-esma", "th") { EsmaScreen {} }
+        shot("zh-hadis", "zh") { HadithScreen {} }
+        shot("ko-namaz-rehberi", "ko") { PrayerGuideScreen({}) {} }
+        shot("fil-hadis", "b+fil") { HadithScreen {} }
         shot("tr-hadis") { HadithScreen {} }
         shot("en-hadis-koyu", "en", dark = true) { HadithScreen {} }
         shot("tr-namaz-rehberi") { PrayerGuideScreen({}) {} }
