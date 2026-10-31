@@ -48,6 +48,10 @@ android {
                 it.systemProperty("roborazzi.test.record", "true")
                 it.systemProperty("screens.dir", layout.buildDirectory.dir("screens").get().asFile.path)
                 it.maxHeapSize = "2g"
+                // Robolectric'in Android kitaplıkları Maven Central yerine Google'ın Central aynasından: CI'da Central
+                // zaman zaman bağlantı hatası/429 veriyor (31 Ekim 2026, 15 test sınıfı indirme hatasıyla düştü)
+                it.systemProperty("robolectric.dependency.repo.url", "https://maven-central.storage-download.googleapis.com/maven2")
+                it.systemProperty("robolectric.dependency.repo.id", "google-central-mirror")
             }
         }
     }
