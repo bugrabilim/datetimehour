@@ -1341,5 +1341,15 @@
     <string name="health_denied">İcazə verilmədi. Telefonun ayarlarından aça bilərsiniz.</string>
     <string name="look_bg_weather">Hava</string>
     <string name="look_bg_weatherNote">Hava arxa fonu seçilmiş yerdəki havanı (açıq, buludlu, yağış, qar, duman, tufan) səmanın üzərində çəkir; təxminən 15 dəqiqədən bir yenilənir.</string>
+    <string name="widget_zikir_name">Zikrmatik</string>
+    <string name="widget_zikir_desc">Saymaq üçün vidcetə toxunun; sıfırlama düyməsi ilə yenidən başlayın.</string>
+    <string name="widget_stopwatch_desc">Vidcetdən başladın və dayandırın.</string>
+    <string name="widget_reset">Sıfırla</string>
+    <string name="control_clock">Tam ekran saat</string>
+    <string name="control_timer">Taymer</string>
+    <string name="control_prayer">Namaz vaxtları</string>
+    <string name="tile_clock">Saat</string>
+    <string name="tile_stopwatchRunning">Sayır</string>
+    <string name="tile_stopwatchStopped">Dayandı</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

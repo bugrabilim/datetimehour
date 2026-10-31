@@ -12,6 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.json.JSONObject
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -312,5 +314,16 @@ class MoreScreensTest {
         widget("widget-saniyeli", 170, 170, SecondsClockWidget().views(c, 7))
         widget("widget-dunya", 360, 170, WorldClockWidget().views(c, 8))
         widget("widget-geri-sayim", 170, 170, CountdownWidget().views(c, 9))
+        // Dokunulabilen widget'lar: zikirmatik (uygulamadaki sayaç) ve kronometre (durmuş, 2:05)
+        Prefs.store.edit().putInt("zikir.count", 21).putInt("zikir.target", 33).putLong("sw.start", 0L).putLong("sw.acc", 125_000L).commit()
+        widget("widget-zikir", 170, 170, ZikirWidget().views(c, 10))
+        widget("widget-kronometre", 170, 170, StopwatchToolWidget().views(c, 11))
+        ToolActions.zikirTap(c)
+        assertEquals(22, Prefs.store.getInt("zikir.count", 0))
+        ToolActions.swToggle(c)
+        assertTrue(ToolActions.swRunning())
+        ToolActions.swReset(c)
+        assertEquals(0L, ToolActions.swElapsed())
+        Prefs.store.edit().remove("zikir.count").remove("zikir.target").commit()
     }
 }

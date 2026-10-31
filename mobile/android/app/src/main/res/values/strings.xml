@@ -1341,5 +1341,15 @@
     <string name="health_denied">İzin verilmedi. Telefonun ayarlarından açabilirsiniz.</string>
     <string name="look_bg_weather">Hava durumu</string>
     <string name="look_bg_weatherNote">Hava durumu arka planı seçili konumdaki havayı (açık, bulutlu, yağmur, kar, sis, fırtına) gökyüzünün üstüne çizer; hava yaklaşık 15 dakikada bir yenilenir.</string>
+    <string name="widget_zikir_name">Zikirmatik</string>
+    <string name="widget_zikir_desc">Widget\'a dokunarak sayın; sıfırlama düğmesiyle baştan başlayın.</string>
+    <string name="widget_stopwatch_desc">Widget\'tan başlatıp durdurun.</string>
+    <string name="widget_reset">Sıfırla</string>
+    <string name="control_clock">Tam ekran saat</string>
+    <string name="control_timer">Zamanlayıcı</string>
+    <string name="control_prayer">Namaz vakitleri</string>
+    <string name="tile_clock">Saat</string>
+    <string name="tile_stopwatchRunning">Sayıyor</string>
+    <string name="tile_stopwatchStopped">Durdu</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -15,6 +15,14 @@ struct SaatTarihWidgets: WidgetBundle {
         WorldClockWidget()
         CountdownWidget()
         HijriWidget()
+        ZikirWidget()
+        StopwatchWidget()
         SaatLiveActivity()
+        // Denetim Merkezi düğmeleri (iOS 18+)
+        if #available(iOSApplicationExtension 18.0, *) {
+            ClockControl()
+            TimerControl()
+            PrayerControl()
+        }
     }
 }

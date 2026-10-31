@@ -193,6 +193,55 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_clock_date_info" />
         </receiver>
+        <!-- Dokunulabilen widget'lar ve Hızlı Ayarlar kutucukları (ToolWidgets.kt) -->
+        <receiver
+            android:name=".ZikirWidget"
+            android:exported="false"
+            android:label="@string/widget_zikir_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_zikir_info" />
+        </receiver>
+        <receiver
+            android:name=".StopwatchToolWidget"
+            android:exported="false"
+            android:label="@string/tools_hub_cards_stopwatch_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_stopwatch_info" />
+        </receiver>
+        <receiver
+            android:name=".ToolWidgetReceiver"
+            android:exported="false" />
+        <service
+            android:name=".ClockTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_clock"
+            android:label="@string/control_clock"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".StopwatchTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_stopwatch"
+            android:label="@string/tools_hub_cards_stopwatch_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
         <receiver
             android:name=".MoonWidget"
             android:exported="false"

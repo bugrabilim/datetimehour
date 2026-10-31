@@ -1341,5 +1341,15 @@
     <string name="health_denied">Permission not granted. You can allow it in the phone\'s settings.</string>
     <string name="look_bg_weather">Weather</string>
     <string name="look_bg_weatherNote">The weather background draws the current weather at the selected location (clear, cloudy, rain, snow, fog, storm) over the sky; it refreshes about every 15 minutes.</string>
+    <string name="widget_zikir_name">Tasbih counter</string>
+    <string name="widget_zikir_desc">Tap the widget to count; start over with the reset button.</string>
+    <string name="widget_stopwatch_desc">Start and stop it from the widget.</string>
+    <string name="widget_reset">Reset</string>
+    <string name="control_clock">Full-screen clock</string>
+    <string name="control_timer">Timer</string>
+    <string name="control_prayer">Prayer times</string>
+    <string name="tile_clock">Clock</string>
+    <string name="tile_stopwatchRunning">Running</string>
+    <string name="tile_stopwatchStopped">Stopped</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

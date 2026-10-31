@@ -17,6 +17,18 @@
 		<string>audio</string>
 		<string>fetch</string>
 	</array>
+	<!-- Denetim Merkezi düğmeleri ve kısayollar uygulamayı saattarih://fullscreen|timer|stopwatch|alarm|prayer ile açar -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>tr.bumba.time</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>saattarih</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSCalendarsFullAccessUsageDescription</key>
 	<string>Takvimlerinizdeki etkinlikleri uygulamadaki takvimde göstermek ve silmenize izin vermek için. Etkinlikler yalnız telefonda kullanılır.</string>
 </dict>

@@ -5662,5 +5662,75 @@
     "de": "Der Wetter-Hintergrund zeigt das aktuelle Wetter am gewählten Ort (klar, bewölkt, Regen, Schnee, Nebel, Gewitter) über dem Himmel; er wird etwa alle 15 Minuten aktualisiert.",
     "az": "Hava arxa fonu seçilmiş yerdəki havanı (açıq, buludlu, yağış, qar, duman, tufan) səmanın üzərində çəkir; təxminən 15 dəqiqədən bir yenilənir.",
     "ar": "ترسم خلفية الطقس حالة الطقس الحالية في الموقع المحدد (صافٍ، غائم، مطر، ثلج، ضباب، عاصفة) فوق السماء، وتُحدَّث كل 15 دقيقة تقريبًا."
+  },
+  "widget.zikir.name": {
+    "tr": "Zikirmatik",
+    "en": "Tasbih counter",
+    "de": "Tasbih-Zähler",
+    "az": "Zikrmatik",
+    "ar": "عدّاد التسبيح"
+  },
+  "widget.zikir.desc": {
+    "tr": "Widget'a dokunarak sayın; sıfırlama düğmesiyle baştan başlayın.",
+    "en": "Tap the widget to count; start over with the reset button.",
+    "de": "Tippen Sie auf das Widget, um zu zählen; mit der Zurücksetzen-Taste beginnen Sie neu.",
+    "az": "Saymaq üçün vidcetə toxunun; sıfırlama düyməsi ilə yenidən başlayın.",
+    "ar": "اضغط على الأداة للعدّ، وابدأ من جديد بزر إعادة التعيين."
+  },
+  "widget.stopwatch.desc": {
+    "tr": "Widget'tan başlatıp durdurun.",
+    "en": "Start and stop it from the widget.",
+    "de": "Direkt im Widget starten und stoppen.",
+    "az": "Vidcetdən başladın və dayandırın.",
+    "ar": "شغّلها وأوقفها من الأداة."
+  },
+  "widget.reset": {
+    "tr": "Sıfırla",
+    "en": "Reset",
+    "de": "Zurücksetzen",
+    "az": "Sıfırla",
+    "ar": "إعادة التعيين"
+  },
+  "control.clock": {
+    "tr": "Tam ekran saat",
+    "en": "Full-screen clock",
+    "de": "Vollbilduhr",
+    "az": "Tam ekran saat",
+    "ar": "ساعة بملء الشاشة"
+  },
+  "control.timer": {
+    "tr": "Zamanlayıcı",
+    "en": "Timer",
+    "de": "Timer",
+    "az": "Taymer",
+    "ar": "المؤقت"
+  },
+  "control.prayer": {
+    "tr": "Namaz vakitleri",
+    "en": "Prayer times",
+    "de": "Gebetszeiten",
+    "az": "Namaz vaxtları",
+    "ar": "أوقات الصلاة"
+  },
+  "tile.clock": {
+    "tr": "Saat",
+    "en": "Clock",
+    "de": "Uhr",
+    "az": "Saat",
+    "ar": "الساعة"
+  },
+  "tile.stopwatchRunning": {
+    "tr": "Sayıyor",
+    "en": "Running",
+    "de": "Läuft",
+    "az": "Sayır",
+    "ar": "قيد التشغيل"
+  },
+  "tile.stopwatchStopped": {
+    "tr": "Durdu",
+    "en": "Stopped",
+    "de": "Gestoppt",
+    "az": "Dayandı",
+    "ar": "متوقفة"
   }
 }

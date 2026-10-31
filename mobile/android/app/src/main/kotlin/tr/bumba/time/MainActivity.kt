@@ -132,6 +132,7 @@ object Nav {
             "fullscreen" -> { overlay = null; tab = Tab.CLOCK; openFullscreen = true }
             "timer" -> { overlay = null; tool("timer") }
             "alarm" -> { overlay = null; tool("alarm") }
+            "stopwatch" -> { overlay = null; tool("stopwatch") }
             "prayer" -> { overlay = null; tab = Tab.PRAYER }
         }
     }

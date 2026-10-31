@@ -1341,5 +1341,15 @@
     <string name="health_denied">Keine Berechtigung. Sie können sie in den Einstellungen des Telefons erteilen.</string>
     <string name="look_bg_weather">Wetter</string>
     <string name="look_bg_weatherNote">Der Wetter-Hintergrund zeigt das aktuelle Wetter am gewählten Ort (klar, bewölkt, Regen, Schnee, Nebel, Gewitter) über dem Himmel; er wird etwa alle 15 Minuten aktualisiert.</string>
+    <string name="widget_zikir_name">Tasbih-Zähler</string>
+    <string name="widget_zikir_desc">Tippen Sie auf das Widget, um zu zählen; mit der Zurücksetzen-Taste beginnen Sie neu.</string>
+    <string name="widget_stopwatch_desc">Direkt im Widget starten und stoppen.</string>
+    <string name="widget_reset">Zurücksetzen</string>
+    <string name="control_clock">Vollbilduhr</string>
+    <string name="control_timer">Timer</string>
+    <string name="control_prayer">Gebetszeiten</string>
+    <string name="tile_clock">Uhr</string>
+    <string name="tile_stopwatchRunning">Läuft</string>
+    <string name="tile_stopwatchStopped">Gestoppt</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

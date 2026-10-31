@@ -114,6 +114,20 @@ final class Router {
     /// Siri / Kısayollar "Tam ekran saati aç": saat sekmesi tam ekran açılır
     var wantsFullscreen = false
 
+    /// saattarih://<yol> (Denetim Merkezi düğmeleri): fullscreen, timer, stopwatch, alarm, prayer
+    func handle(_ url: URL) {
+        guard url.scheme == "saattarih" else { return }
+        sheet = nil
+        switch url.host() ?? "" {
+        case "fullscreen": openFullscreen()
+        case "timer": tab = .tools; toolsPath = [.timer]
+        case "stopwatch": tab = .tools; toolsPath = [.stopwatch]
+        case "alarm": tab = .tools; toolsPath = [.alarm]
+        case "prayer": tab = .prayer
+        default: break
+        }
+    }
+
     func openFullscreen() {
         sheet = nil
         tab = .clock
@@ -182,6 +196,7 @@ struct RootView: View {
         .statusBarHidden(landscape)
         .persistentSystemOverlays(landscape ? .hidden : .automatic)
         .overlay(alignment: .top) { BadgeToast() }
+        .onOpenURL { router.handle($0) }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in keyboard = true }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in keyboard = false }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in

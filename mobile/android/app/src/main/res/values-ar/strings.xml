@@ -1341,5 +1341,15 @@
     <string name="health_denied">لم يُمنح الإذن. يمكنك السماح به من إعدادات الهاتف.</string>
     <string name="look_bg_weather">الطقس</string>
     <string name="look_bg_weatherNote">ترسم خلفية الطقس حالة الطقس الحالية في الموقع المحدد (صافٍ، غائم، مطر، ثلج، ضباب، عاصفة) فوق السماء، وتُحدَّث كل 15 دقيقة تقريبًا.</string>
+    <string name="widget_zikir_name">عدّاد التسبيح</string>
+    <string name="widget_zikir_desc">اضغط على الأداة للعدّ، وابدأ من جديد بزر إعادة التعيين.</string>
+    <string name="widget_stopwatch_desc">شغّلها وأوقفها من الأداة.</string>
+    <string name="widget_reset">إعادة التعيين</string>
+    <string name="control_clock">ساعة بملء الشاشة</string>
+    <string name="control_timer">المؤقت</string>
+    <string name="control_prayer">أوقات الصلاة</string>
+    <string name="tile_clock">الساعة</string>
+    <string name="tile_stopwatchRunning">قيد التشغيل</string>
+    <string name="tile_stopwatchStopped">متوقفة</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>
