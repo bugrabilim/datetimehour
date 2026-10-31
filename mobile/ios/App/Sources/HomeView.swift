@@ -1,13 +1,18 @@
 import SwiftUI
 import SaatCore
 
-/// Saat sekmesi: sitedeki 19 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının seçtiği
+/// Saat sekmesi: sitedeki 20 saat modeli (kaydırarak ya da sayaçtan seçilir), altında kullanıcının seçtiği
 /// alanlar (Ayarlar › Saat ekranı; dokununca ilgili sayfa açılır) ve tam ekran.
 struct ClockTab: View {
     @AppStorage("keepAwake") private var keepAwake = true
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
+    @AppStorage(Features.key) private var features = ""
+    @AppStorage("fs.text") private var personalText = ""
     @State private var fullscreen = false
     @State private var customizing = false
+    /// Yan çevirince tam ekran açılır, dikeye dönünce kapanır (düğmeyle açılan tam ekran dikeyde de kalır)
+    @Environment(\.verticalSizeClass) private var vsc
+    @State private var autoFull = false
 
     /// Dönen dünyanın yüksekliği: varsayılan düzende sayfa ekrana tam otursun diye kalan boşluğu doldurur
     @State private var globeHeight: CGFloat = 260
@@ -21,6 +26,9 @@ struct ClockTab: View {
                 ScrollView {
                     VStack(spacing: 16) {
                         ClockStage(now: now, place: place, height: Self.stageHeight(geo.size.height))
+                        if !personalText.isEmpty {
+                            Text(personalText).font(.title3.weight(.semibold)).multilineTextAlignment(.center).foregroundStyle(Theme.text)
+                        }
                         ForEach(items) { item in
                             HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight)
                         }
@@ -36,9 +44,27 @@ struct ClockTab: View {
                             } label: {
                                 Label(L("home.edit"), systemImage: "slider.horizontal.3")
                             }
+                            // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
+                            Button {
+                                Router.shared.sheet = .settings
+                            } label: {
+                                Image(systemName: "gearshape")
+                            }
+                            .accessibilityLabel(L("settings.title"))
                         }
                         .font(.headline)
                         .foregroundStyle(Theme.accent)
+                        // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
+                        if Features.parse(features).isEmpty {
+                            Button {
+                                Router.shared.sheet = .features
+                            } label: {
+                                Label(L("features.hint"), systemImage: "square.grid.2x2")
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                            }
+                            .foregroundStyle(Theme.muted)
+                        }
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
@@ -55,7 +81,20 @@ struct ClockTab: View {
         .onAppear { UIApplication.shared.isIdleTimerDisabled = keepAwake }
         .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
         .onChange(of: keepAwake) { UIApplication.shared.isIdleTimerDisabled = keepAwake }
-        .fullScreenCover(isPresented: $fullscreen) { FullscreenClock() }
+        .onChange(of: vsc, initial: true) { _, v in
+            if v == .compact, !fullscreen {
+                autoFull = true
+                fullscreen = true
+            }
+        }
+        .onChange(of: Router.shared.wantsFullscreen, initial: true) { _, want in
+            guard want else { return }
+            Router.shared.wantsFullscreen = false
+            fullscreen = true
+        }
+        .fullScreenCover(isPresented: $fullscreen, onDismiss: { autoFull = false }) {
+            FullscreenClock(closeOnPortrait: autoFull)
+        }
         .sheet(isPresented: $customizing) {
             NavigationStack {
                 HomeItemsView()
@@ -76,7 +115,8 @@ struct ClockTab: View {
 extension ClockTab {
     /// Saat sahnesinin yüksekliği ekrana göre (küçük telefonda da saat, alanlar ve dünya bir ekrana sığsın)
     static func stageHeight(_ viewport: CGFloat) -> CGFloat {
-        min(380, max(280, viewport * 0.46))
+        // iPad'de (yükseklik 1000 pt'den fazla) saat daha büyük
+        min(viewport > 1000 ? 560 : 380, max(280, viewport * 0.46))
     }
 
     /// Dünya, sayfayı ekranın altına kadar dolduracak yüksekliği alır (en az 170 pt; daha fazla alan
@@ -88,7 +128,7 @@ extension ClockTab {
     }
 }
 
-/// Saat sahnesi: modeller yatay kaydırılır; altta (sitedeki gibi) ‹ 1/19 › — sayaca dokununca model listesi.
+/// Saat sahnesi: modeller yatay kaydırılır; altta (sitedeki gibi) ‹ 1/20 › — sayaca dokununca model listesi.
 /// Yükseklik sabit: model değişince alttaki alanlar oynamaz. Saate dokununca saniye açılır/kapanır
 /// (dijitalde varsayılan açık, analogda kapalı).
 struct ClockStage: View {
@@ -148,42 +188,102 @@ struct ClockStage: View {
     }
 }
 
-/// Tam ekran saat: 19 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler);
+/// Tam ekran saat: 20 model yatay kaydırılır, altında saat ekranındaki alanlar (Düzenle ile seçilenler);
 /// ekran kapanmaz, çift dokununca ya da düğmeyle çıkılır. Bir alana dokununca tam ekran kapanır, sayfası açılır.
 struct FullscreenClock: View {
+    /// Yan çevirince açıldıysa telefon dik tutulunca kapanır
+    var closeOnPortrait = false
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.verticalSizeClass) private var vsc
+    @Environment(\.colorScheme) private var colorScheme
     @AppStorage("clockModel") private var modelID = ClockModel.classic.rawValue
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
+    @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
+    @AppStorage(FullscreenBackground.key) private var bgRaw = ""
+    @AppStorage(NightMode.key) private var nightRaw = "off"
+    /// Uyku zamanlayıcısı (rakip analizi #1): bitiş anı (1970'ten saniye, 0 = kapalı); tam ekrandan çıkınca silinir
+    @AppStorage(SleepTimer.key) private var sleepUntil = 0.0
+    @AppStorage(FullscreenPhoto.slidesKey) private var slideCount = 0
+    /// Saatin altındaki kişisel metin, saat boyutu, karartma ve yön kilidi (rakip analizi #25, #22)
+    @AppStorage("fs.text") private var personalText = ""
+    @AppStorage("fs.scale") private var scale = 1.0
+    @AppStorage("fs.dim") private var dim = 0.0
+    @AppStorage("fs.lock") private var locked = false
+    @State private var dimStart: Double?
+    @State private var scaleStart: Double?
     @State private var globeHeight: CGFloat = 260
 
     var body: some View {
+        // Arka plan: fotoğraf (koyulaştırılmış; slayt varsa sırayla) ya da hareketli; ikisinde de yazılar açık renk
+        let bg = FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain)
+        let hasPhoto = bg == .photo && (photoVersion > 0 || slideCount > 0)
+        let darkText = hasPhoto || bg.animated
         GeometryReader { geo in
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 let now = context.date
                 let place = PlaceModel.shared.place
                 let items = HomeLayout(raw: homeItems).visible
+                // Gece modunda siyah zemin, kırmızı ve kısık yazı, düşük parlaklık; arka plan fotoğrafı ve hareket yok
+                // Gün doğumu ışığı (rakip analizi #17): alarmdan önce zemin siyahtan sıcak beyaza döner, parlaklık artar
+                let sunrise = AlarmItem.nextSunrise(now: now).map { SunriseLight.level(now: now, alarmAt: $0.at, window: $0.window) } ?? 0
+                let night = sunrise == 0 && NightMode.active(nightRaw, place: place, at: now)
+                // Uyku zamanlayıcısı doldu: ekran kararır, telefon kendini kilitleyebilir, uyku sesleri durur
+                let asleep = sleepUntil > 0 && now.timeIntervalSince1970 >= sleepUntil
                 ScrollView {
                     VStack(spacing: 16) {
                         TabView(selection: $modelID) {
                             ForEach(ClockModel.allCases) { m in
                                 ClockModelView(model: m, now: now, place: place)
+                                    .scaleEffect(scale)
                                     .padding(.horizontal, 8)
                                     .tag(m.rawValue)
                             }
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
-                        .frame(height: items.isEmpty ? max(300, geo.size.height - 60) : ClockTab.stageHeight(geo.size.height * 1.08))
+                        .frame(height: Self.stageHeight(geo.size, hasItems: !items.isEmpty))
+                        if !personalText.isEmpty {
+                            Text(personalText).font(.title2.weight(.semibold)).multilineTextAlignment(.center)
+                        }
                         ForEach(items) { item in
                             HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight) { dismiss() }
                         }
-                        Button { dismiss() } label: {
-                            Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
-                                .font(.footnote)
+                        HStack(spacing: 20) {
+                            // Gece modu: açıkken kapatır, kapalıyken açar (otomatik seçim Ayarlar › Saat görünümü'nde)
+                            Button { nightRaw = NightMode.toggled(night) } label: {
+                                Label(L("night.title"), systemImage: night ? "moon.fill" : "moon")
+                                    .font(.footnote)
+                            }
+                            Menu {
+                                ForEach(SleepTimer.choices, id: \.self) { m in
+                                    Button(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)) {
+                                        sleepUntil = m > 0 ? Date().timeIntervalSince1970 + Double(m * 60) : 0
+                                    }
+                                }
+                            } label: {
+                                let left = Int((sleepUntil - now.timeIntervalSince1970).rounded(.up))
+                                Label(sleepUntil > 0 && left > 0 ? clock(left) : L("night.sleepTimer"), systemImage: "moon.zzz")
+                                    .font(.footnote.monospacedDigit())
+                                    .foregroundStyle(sleepUntil > 0 ? Theme.accent : Theme.muted)
+                            }
+                            // Yön kilidi: şu anki yöne kilitler (tam ekrandan çıkınca bırakılır)
+                            Button {
+                                locked.toggle()
+                                if locked { OrientationLock.lockCurrent() } else { OrientationLock.unlock() }
+                            } label: {
+                                Image(systemName: locked ? "lock.rotation" : "rotate.right").font(.footnote)
+                            }
+                            .accessibilityLabel(L(locked ? "fs.unlock" : "fs.lock"))
+                            Button { dismiss() } label: {
+                                Label(L("client.exitFullscreen"), systemImage: "arrow.down.right.and.arrow.up.left")
+                                    .font(.footnote)
+                            }
                         }
                         .foregroundStyle(Theme.muted)
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
+                    // Ekran yanmasın diye dakikada bir birkaç nokta kayar
+                    .offset(night ? NightMode.shift(now) : .zero)
                     .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { h in
                         globeHeight = ClockTab.fitGlobe(contentHeight: h, viewport: geo.size.height, globe: globeHeight,
                                                         hasGlobe: items.contains(.globe))
@@ -193,10 +293,72 @@ struct FullscreenClock: View {
                 }
                 .scrollIndicators(.hidden)
                 .foregroundStyle(Theme.text)
-                .background(Theme.bg.ignoresSafeArea())
+                .background {
+                    if sunrise > 0 {
+                        let c = SunriseLight.rgb(sunrise)
+                        Color(red: Double(c.r) / 255, green: Double(c.g) / 255, blue: Double(c.b) / 255).ignoresSafeArea()
+                    } else if night {
+                        Color.black.ignoresSafeArea()
+                    } else if hasPhoto, let photo = FullscreenPhoto.image(at: now) {
+                        Image(uiImage: photo).resizable().scaledToFill()
+                            .overlay(Color.black.opacity(0.45))
+                            .ignoresSafeArea()
+                            .id(ObjectIdentifier(photo))
+                            .transition(.opacity)
+                    } else if bg.animated {
+                        AnimatedBackground(kind: bg)
+                    } else {
+                        Theme.bg.ignoresSafeArea()
+                    }
+                }
+                // Kırmızıya çevirme: siyah zemin üstünde çarpım (beyaz → kısık kırmızı, siyah siyah kalır)
+                .overlay {
+                    if night {
+                        NightMode.tint.blendMode(.multiply).ignoresSafeArea().allowsHitTesting(false)
+                    }
+                }
+                // Karartma: ekranın kenarında yukarı-aşağı kaydırma; iki parmakla saat boyutu
+                .overlay {
+                    Color.black.opacity(dim * 0.85).ignoresSafeArea().allowsHitTesting(false)
+                }
+                .overlay(alignment: .leading) {
+                    Color.clear.frame(width: 44).contentShape(Rectangle())
+                        .gesture(DragGesture(minimumDistance: 8).onChanged { v in
+                            let start = dimStart ?? dim
+                            dimStart = start
+                            dim = min(1, max(0, start + Double(v.translation.height) / 400))
+                        }.onEnded { _ in dimStart = nil })
+                        .accessibilityHidden(true)
+                }
+                .overlay {
+                    if dimStart != nil {
+                        Text(T("fs.dim", Fmt.percent(Int((dim * 100).rounded())))).font(.headline.monospacedDigit())
+                            .padding(10).background(.regularMaterial, in: Capsule()).allowsHitTesting(false)
+                    }
+                }
+                .simultaneousGesture(MagnifyGesture().onChanged { v in
+                    let start = scaleStart ?? scale
+                    scaleStart = start
+                    scale = min(1, max(0.5, start * Double(v.magnification)))
+                }.onEnded { _ in scaleStart = nil })
+                .overlay {
+                    // Dokununca saat geri gelir
+                    if asleep {
+                        Color.black.ignoresSafeArea().onTapGesture { sleepUntil = 0 }
+                    }
+                }
+                .onChange(of: asleep) { _, a in
+                    UIApplication.shared.isIdleTimerDisabled = !a
+                    if a { NoisePlayer.shared.stop(source: "sleep") }
+                }
+                .environment(\.colorScheme, sunrise > 0.6 ? .light : (night || darkText || sunrise > 0 ? .dark : colorScheme))
+                .modifier(NightBrightness(target: asleep ? CGFloat(0.01) : (sunrise > 0 ? CGFloat(SunriseLight.brightness(sunrise)) : (night ? CGFloat(0.05) : nil))))
             }
         }
         .onTapGesture(count: 2) { dismiss() }
+        .onChange(of: vsc) { _, v in
+            if v == .regular, closeOnPortrait { dismiss() }
+        }
         .overlay(alignment: .top) { BadgeToast() }
         .onChange(of: modelID) { _, new in
             if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
@@ -206,9 +368,20 @@ struct FullscreenClock: View {
         }
         .statusBarHidden()
         .persistentSystemOverlays(.hidden)
-        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+        .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true
+            if locked { OrientationLock.lockCurrent() }
+        }
         .onDisappear {
             UIApplication.shared.isIdleTimerDisabled = UserDefaults.standard.object(forKey: "keepAwake") as? Bool ?? true
+            sleepUntil = 0
+            if locked { OrientationLock.unlock() }
         }
+    }
+
+    /// Yatayda saat ekranı doldurur (alanlar kaydırınca görünür); dikeyde alan yoksa saat ekranı doldurur
+    static func stageHeight(_ size: CGSize, hasItems: Bool) -> CGFloat {
+        if size.width > size.height { return max(220, size.height - 44) }
+        return hasItems ? ClockTab.stageHeight(size.height * 1.08) : max(300, size.height - 60)
     }
 }

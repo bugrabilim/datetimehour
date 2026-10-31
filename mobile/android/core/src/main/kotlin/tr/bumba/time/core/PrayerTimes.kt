@@ -52,7 +52,11 @@ object PrayerTimes {
         val asr: Double = 4.5,
         val maghrib: Double = 7.9,
         val isha: Double = 0.9,
-    )
+    ) {
+        companion object {
+            val ZERO = Adjustments(0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+        }
+    }
 
     data class Parameters(
         val fajrAngle: Double = 18.0,
@@ -60,13 +64,46 @@ object PrayerTimes {
         val sunriseAngle: Double = 0.833,
         val sunsetAngle: Double = 0.833,
         val asrFactor: Double = 1.0,
+        /** Yatsı akşamdan bu kadar dakika sonra (0 = açıyla; Ümmü'l-Kura, Körfez, Katar) */
+        val ishaMinutes: Double = 0.0,
         val adjustments: Adjustments = Adjustments(),
     ) {
         companion object {
             /** Diyanet ile uyumlu varsayılanlar. */
             val DIYANET = Parameters()
+
+            /** Hesap yöntemi ve ikindi seçimi (sitedeki `methodParams` ile aynı); bilinmeyen yöntem Diyanet sayılır. */
+            fun method(id: String, hanafi: Boolean): Parameters {
+                val m = METHODS[id]
+                if (m == null || id == "diyanet") return if (hanafi) Parameters(asrFactor = 2.0) else DIYANET
+                return Parameters(
+                    fajrAngle = m.fajr, ishaAngle = m.isha, sunsetAngle = m.maghrib, ishaMinutes = m.ishaMinutes,
+                    asrFactor = if (hanafi) 2.0 else 1.0, adjustments = Adjustments.ZERO,
+                )
+            }
         }
     }
+
+    /** Hesap yöntemleri (sitedeki METHODS ile aynı sıra ve değerler). Diyanet varsayılandır; Türkiye'de resmî vakit odur. */
+    data class Method(val fajr: Double, val isha: Double, val ishaMinutes: Double = 0.0, val maghrib: Double = 0.833)
+
+    val METHOD_IDS = listOf("diyanet", "mwl", "isna", "egypt", "makkah", "karachi", "tehran", "jafari", "gulf", "kuwait", "qatar", "singapore", "france", "russia")
+    val METHODS: Map<String, Method> = mapOf(
+        "diyanet" to Method(18.0, 17.0),
+        "mwl" to Method(18.0, 17.0),
+        "isna" to Method(15.0, 15.0),
+        "egypt" to Method(19.5, 17.5),
+        "makkah" to Method(18.5, 0.0, ishaMinutes = 90.0),
+        "karachi" to Method(18.0, 18.0),
+        "tehran" to Method(17.7, 14.0, maghrib = 4.5),
+        "jafari" to Method(16.0, 14.0, maghrib = 4.0),
+        "gulf" to Method(19.5, 0.0, ishaMinutes = 90.0),
+        "kuwait" to Method(18.0, 17.5),
+        "qatar" to Method(18.0, 0.0, ishaMinutes = 90.0),
+        "singapore" to Method(20.0, 18.0),
+        "france" to Method(12.0, 12.0),
+        "russia" to Method(16.0, 15.0),
+    )
 
     internal data class SunPosition(val decl: Double, val eqt: Double)
 
@@ -119,6 +156,8 @@ object PrayerTimes {
             if (fajr.isNaN()) fajr = sunrise - night / 7
             if (isha.isNaN()) isha = maghrib + night / 7
         }
+        // Yatsı akşamdan sabit dakika sonra (Ümmü'l-Kura, Körfez, Katar)
+        if (p.ishaMinutes != 0.0) isha = maghrib + p.ishaMinutes / 60
         val a = p.adjustments
         fajr += a.fajr / 60; sunrise += a.sunrise / 60; dhuhr += a.dhuhr / 60
         asr += a.asr / 60; maghrib += a.maghrib / 60; isha += a.isha / 60
@@ -138,6 +177,58 @@ object PrayerTimes {
         val noon = date.atTime(LocalTime.NOON).toInstant(ZoneOffset.UTC)
         val offset = zone.rules.getOffset(noon).totalSeconds / 3600.0
         return times(date.year, date.monthValue, date.dayOfMonth, latitude, longitude, offset, parameters)
+    }
+
+    /** Güneş'in bir yüksekliğe sabah çıktığı ve akşam indiği an (yerel ondalık saat; oluşmuyorsa null). */
+    data class AltitudeTimes(val rise: Double?, val set: Double?)
+
+    /**
+     * Güneş'in [altitude] dereceye (ufkun üstü pozitif) sabah çıktığı ve akşam indiği an; düzeltmesiz, ikinci
+     * yaklaşımla. Sitedeki `sunAltTimes` ile birebir (test verisi `sun-altitude.json`).
+     */
+    fun sunAltitudeTimes(year: Int, month: Int, day: Int, latitude: Double, longitude: Double, utcOffset: Double, altitude: Double): AltitudeTimes {
+        val jd = julian(year, month, day) - longitude / 360
+        fun at(t: Double, ccw: Boolean): Double {
+            val p = sunPosition(jd + t)
+            val a = (dsin(altitude) - dsin(p.decl) * dsin(latitude)) / (dcos(p.decl) * dcos(latitude))
+            if (a < -1 || a > 1) return Double.NaN
+            return fixHour(12 - p.eqt) + (if (ccw) -1 else 1) * dacos(a) / 15
+        }
+        var rise = at(6.0 / 24, true)
+        var set = at(18.0 / 24, false)
+        if (!rise.isNaN()) rise = at(rise / 24, true)
+        if (!set.isNaN()) set = at(set / 24, false)
+        val off = utcOffset - longitude / 15
+        return AltitudeTimes(if (rise.isNaN()) null else rise + off, if (set.isNaN()) null else set + off)
+    }
+
+    /** Altın saat (Güneş +6° ile −4° arası) ve mavi saat (−4° ile −6° arası), sabah ve akşam [başlangıç, bitiş]. */
+    data class LightHours(
+        val blueAm: Pair<Double?, Double?>, val goldenAm: Pair<Double?, Double?>,
+        val goldenPm: Pair<Double?, Double?>, val bluePm: Pair<Double?, Double?>,
+    )
+
+    fun lightHours(year: Int, month: Int, day: Int, latitude: Double, longitude: Double, utcOffset: Double): LightHours {
+        val g = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, 6.0)
+        val e = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, -4.0)
+        val b = sunAltitudeTimes(year, month, day, latitude, longitude, utcOffset, -6.0)
+        return LightHours(b.rise to e.rise, e.rise to g.rise, g.set to e.set, e.set to b.set)
+    }
+
+    /**
+     * Kerahat vakitleri (yaklaşık; Diyanet'in yayımladığı dakika ölçüsü yok, takvimlerde yaygın 45 dk): işrak güneş
+     * vaktinden 45 dk sonrasına, istiva öğleden 45 dk önceden öğleye, isfirar akşamdan 45 dk önceden akşama.
+     */
+    const val KERAHAT_MIN = 45
+    data class Kerahat(val israk: Pair<Double, Double>?, val istiva: Pair<Double, Double>?, val isfirar: Pair<Double, Double>?)
+
+    fun kerahat(day: PrayerDay): Kerahat {
+        val k = KERAHAT_MIN / 60.0
+        return Kerahat(
+            day.sunrise?.let { it to it + k },
+            day.dhuhr?.let { it - k to it },
+            day.maghrib?.let { it - k to it },
+        )
     }
 
     // Güneş konumu (PrayTimes tarzı düşük duyarlıklı formüller)

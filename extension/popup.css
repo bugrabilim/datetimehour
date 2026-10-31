@@ -1,0 +1,33 @@
+/* Saat Tarih eklentisi: sitedeki renk token'ları (açık "kâğıt", koyu "gece") */
+:root {
+  color-scheme: light dark;
+  --bg: #f7f4ee; --surface: #ffffff; --surface-2: #efebe2; --text: #1b1f27; --muted: #565c68;
+  --border: #d6cfbf; --accent: #9a3f00; --accent-soft: #f6e5d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #11141a; --surface: #1a1e26; --surface-2: #232834; --text: #eef0f4; --muted: #a5acb9; --border: #343b49; --accent: #f2a65a; --accent-soft: #3a2b1d; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; width: 320px; background: var(--bg); color: var(--text); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { padding: 14px 16px 12px; }
+.clock { margin: 0; font-size: 44px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
+.date { margin: 2px 0 0; text-align: center; font-weight: 600; }
+.hijri { margin: 0 0 10px; text-align: center; color: var(--muted); }
+.prayer { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; }
+.row { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+label { color: var(--muted); }
+select { flex: 1; max-width: 190px; font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 4px 6px; }
+.next { margin: 10px 0 6px; text-align: center; }
+.next strong { color: var(--accent); font-size: 18px; font-variant-numeric: tabular-nums; }
+.times { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.times li { background: var(--surface-2); border-radius: 8px; padding: 6px 4px; text-align: center; }
+.times li.is-next { background: var(--accent-soft); outline: 2px solid var(--accent); }
+.times span { display: block; color: var(--muted); font-size: 12px; }
+.times b { font-size: 16px; font-variant-numeric: tabular-nums; }
+.foot { margin-top: 10px; }
+button { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; cursor: pointer; }
+a { color: var(--accent); font-weight: 600; text-decoration: none; }
+a:hover, a:focus-visible { text-decoration: underline; }
+.note { margin: 10px 0 0; color: var(--muted); font-size: 11.5px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+html[dir="rtl"] .clock, html[dir="rtl"] .times b { direction: ltr; }

@@ -45,9 +45,35 @@
     o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + dur + 0.05);
   }
   function soundOn() { var cb = q("[data-sound]"); return !cb || cb.checked; }
-  function chime() { if (!soundOn()) return; beep(880, 0.18, 0); beep(880, 0.18, 0.26); beep(1175, 0.32, 0.52); }
+  /* Alarm sesleri (rakip analizi #35): hepsi Web Audio ile üretilir, dosya yok. n: aynı çalmada kaçıncı tekrar
+     ("yükselen" her tekrarda biraz daha yüksek). */
+  function tone(type, freq, dur, when, vol) {
+    var c = ctx(); if (!c) return;
+    var o = c.createOscillator(), g = c.createGain(), t = c.currentTime + when;
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(vol, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + dur + 0.05);
+  }
+  function chime(kind, n) {
+    if (!soundOn()) return;
+    n = n || 0;
+    if (kind === "bell") { [523.25, 1046.5, 1568].forEach(function (f, i) { tone("sine", f, 1.8 - i * 0.4, 0, [0.3, 0.12, 0.06][i]); }); }
+    else if (kind === "rise") { var v = Math.min(0.35, 0.04 + n * 0.035); [660, 784, 988].forEach(function (f, i) { tone("triangle", f, 0.22, i * 0.2, v); }); }
+    else if (kind === "digital") { for (var i = 0; i < 4; i++) tone("square", 1760, 0.08, i * 0.14, 0.12); }
+    else if (kind === "soft") { tone("sine", 440, 0.9, 0, 0.18); tone("sine", 554.37, 0.9, 0.45, 0.16); }
+    else { beep(880, 0.18, 0); beep(880, 0.18, 0.26); beep(1175, 0.32, 0.52); }
+  }
   var testBtn = q("[data-test-sound]");
-  if (testBtn) testBtn.addEventListener("click", function () { ctx(); chime(); });
+  if (testBtn) testBtn.addEventListener("click", function () { ctx(); var sel = q("[data-al-sound]"); chime(sel ? sel.value : "", 6); });
+  /* CSV indirme (#28): Excel Türkçe karakterleri doğru açsın diye UTF-8 BOM ile */
+  function csvDownload(name, rows) {
+    var text = "\ufeff" + rows.map(function (r) { return r.map(function (v) { v = String(v == null ? "" : v); return /[",\n\r;]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(","); }).join("\r\n") + "\r\n";
+    var a = doc.createElement("a"), url = URL.createObjectURL(new Blob([text], { type: "text/csv;charset=utf-8" }));
+    a.href = url; a.download = name; doc.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
 
   var notifyBtn = q("[data-notify]");
   function notifyLabel() {
@@ -70,14 +96,31 @@
 
   var banner = q("[data-ring-banner]");
   var ringTimer = null, flashTimer = null, ringOnStop = null, ringUntil = 0;
-  function ring(title, onStop) {
+  var media = banner && banner.querySelector("[data-ring-media]");
+  /* Alarm müziği (31 Ekim 2026): YouTube gelişmiş gizlilik modu oynatıcısı, yalnız dış hizmet izniyle. yt: "v:<kimlik>" ya da
+     "list:<kimlik>". Müzik varken alarm sesi 1 dakika sonra başlar (tarayıcı videoyu kendiliğinden oynatmazsa da uyandırsın diye). */
+  function ytEmbed(yt) {
+    if (!media || !yt || !(window.sthConsent && window.sthConsent.ext())) return false;
+    var i = yt.indexOf(":"), kind = yt.slice(0, i), id = yt.slice(i + 1);
+    if (!/^[\w-]{10,64}$/.test(id)) return false;
+    var src = kind === "list" ? "https://www.youtube-nocookie.com/embed/videoseries?list=" + id + "&autoplay=1&rel=0"
+      : kind === "v" ? "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&loop=1&playlist=" + id : "";
+    if (!src) return false;
+    var f = doc.createElement("iframe");
+    f.src = src; f.title = "YouTube"; f.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
+    f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin"); f.setAttribute("allowfullscreen", "");
+    media.textContent = ""; media.appendChild(f); media.hidden = false;
+    return true;
+  }
+  function ring(title, onStop, sound, yt) {
     ringOnStop = onStop || null;
-    ringUntil = performance.now() + 5 * 60 * 1000;
+    var n = 0, delay = ytEmbed(yt) ? 60000 : 0, start = performance.now() + delay;
+    ringUntil = performance.now() + delay + 5 * 60 * 1000;
     if (banner) { q("[data-ring-title]").textContent = title; banner.hidden = false; var b = banner.querySelector("[data-ring-stop]"); if (b) b.focus(); }
     notify(title, baseTitle);
     clearInterval(ringTimer); clearInterval(flashTimer);
-    chime();
-    ringTimer = setInterval(function () { if (performance.now() > ringUntil) stopRing(); else chime(); }, 2200);
+    if (!delay) chime(sound, n);
+    ringTimer = setInterval(function () { var t = performance.now(); if (t > ringUntil) stopRing(); else if (t >= start) chime(sound, delay ? n++ : ++n); }, 2200);
     var on = false;
     flashTimer = setInterval(function () { on = !on; doc.title = on ? "🔔 " + title : baseTitle; }, 800);
   }
@@ -85,6 +128,7 @@
     clearInterval(ringTimer); clearInterval(flashTimer); ringTimer = flashTimer = null;
     doc.title = baseTitle;
     if (banner) banner.hidden = true;
+    if (media) { media.textContent = ""; media.hidden = true; }
     var cb = ringOnStop; ringOnStop = null; if (cb) cb();
   }
   if (banner) {
@@ -102,6 +146,12 @@
     var disp = q("[data-sw-display]"), bStart = q("[data-sw-start]"), bLap = q("[data-sw-lap]"), bReset = q("[data-sw-reset]");
     var lapsBox = q("[data-sw-laps]"), body = q("[data-sw-body]"), empty = q("[data-sw-empty]"), ann = q("[data-sw-announce]");
     var st = load("sth-sw", { run: false, wall: 0, base: 0, laps: [] });
+    var csvRow = q("[data-sw-csvrow]"), csvBtn = q("[data-sw-csv]");
+    if (csvBtn) csvBtn.addEventListener("click", function () {
+      var lt = lapTimes(), rows = [[P.lapNo, P.lapTime, P.total]];
+      lt.forEach(function (t, i) { rows.push([i + 1, fmt(t), fmt(st.laps[i])]); });
+      csvDownload("kronometre-" + new Date(S.nowMs()).toISOString().slice(0, 10) + ".csv", rows);
+    });
     var t0 = 0, raf = 0, titleTick = 0;
     if (st.run) { st.base += Math.max(0, Date.now() - st.wall); }
     function elapsed() { return st.run ? st.base + (performance.now() - t0) : st.base; }
@@ -127,6 +177,7 @@
         tr.appendChild(th); tr.appendChild(a); tr.appendChild(b); body.appendChild(tr);
       }
       lapsBox.hidden = !lt.length; empty.hidden = !!lt.length;
+      if (csvRow) csvRow.hidden = !lt.length;
     }
     function buttons() {
       var idle = !st.run && st.base === 0;
@@ -167,6 +218,9 @@
     var disp = q("[data-cd-display]"), prog = q("[data-cd-progress]"), msg = q("[data-cd-message]");
     var bStart = q("[data-cd-start]"), bReset = q("[data-cd-reset]"), quick = q("[data-cd-quick]");
     var st = load("sth-cd", { mode: "timer", run: false, dur: 300000, rem: 300000, wallEnd: 0, target: "", name: "" });
+    // Hazır süre sayfası (/geri-sayim/5-dakika/): aynı süre çalışmıyorsa sayfanın süresi gösterilir (kayda dokunmadan)
+    var fixed = +((doc.querySelector("[data-tool]") || doc.body).getAttribute("data-cd-fixed") || 0), endsEl = q("[data-cd-endsat]");
+    if (fixed && !(st.run && st.mode === "timer" && st.dur === fixed)) st = { mode: "timer", run: false, dur: fixed, rem: fixed, wallEnd: 0, target: "", name: "" };
     var nameEl = q("[data-cd-name]"), nameIn = q("[data-cd-nameinput]"), copyBtn = q("[data-cd-copy]");
     var endMono = 0, tick = 0;
     function mode() { return st.mode; }
@@ -192,17 +246,34 @@
       return targetMs() - S.nowMs();
     }
     function msgShow(t) { msg.textContent = t || ""; msg.hidden = !t; }
+    var bAdd = q("[data-cd-add]");
     function buttons() {
       bStart.textContent = st.run ? P.pause : (mode() === "timer" && st.rem < st.dur && st.rem > 0 ? P.resume : (mode() === "date" ? P.targetSet : P.start));
+      // +1 dk (#26): süre sayarken, duraklatılmışken ya da bitip çalarken
+      if (bAdd) bAdd.hidden = !(mode() === "timer" && (st.run || (st.rem > 0 && st.rem < st.dur) || ringTimer));
     }
+    if (bAdd) bAdd.addEventListener("click", function () {
+      if (mode() !== "timer") return;
+      ctx(); msgShow("");
+      if (st.run) { endMono += 60000; st.wallEnd += 60000; st.dur += 60000; st.rem = Math.max(0, endMono - S.mono()); persist(); loop(); return; }
+      if (ringTimer) { stopRing(); st.dur = 60000; st.rem = 60000; endMono = S.mono() + 60000; st.wallEnd = Date.now() + 60000; st.run = true; persist(); buttons(); run(); return; }
+      st.rem += 60000; st.dur += 60000; persist(); buttons(); loop();
+    });
     function finish() {
       st.run = false; st.rem = 0; persist(); clearInterval(tick); tick = 0; show(text(0)); prog.value = 0; buttons();
       msgShow(mode() === "timer" ? P.finished : P.finishedDate);
-      ring(mode() === "timer" ? P.finished : P.finishedDate, function () { msgShow(""); });
+      ring(mode() === "timer" ? P.finished : P.finishedDate, function () { msgShow(""); buttons(); });
+      buttons();
     }
     function loop() {
       var r = remaining();
       showName();
+      if (endsEl && mode() === "timer") {
+        var end = new Date(S.nowMs() + Math.max(r, 0)), tp = S.parts(end, S.localTz);
+        var hm = String(tp.hour).padStart(2, "0") + ":" + String(tp.minute).padStart(2, "0");
+        var line = S.tpl(endsEl.getAttribute(st.run ? "data-tpl-run" : "data-tpl"), { time: hm });
+        if (endsEl.textContent !== line) endsEl.textContent = line;
+      }
       show(text(Math.max(r, 0)));
       if (mode() === "timer") prog.value = st.dur ? Math.max(0, (r / st.dur) * 100) : 0;
       setTitle(st.run ? text(r) : "");
@@ -299,6 +370,7 @@
       } else if (targetMs() <= S.nowMs()) { st.run = false; persist(); }
     }
     buttons(); loop(); if (st.run) run();
+    if (endsEl) setInterval(function () { if (!st.run) loop(); }, 10000); // bitiş saati boşta da ilerlesin
   }
 
   /* ---------- Alarm ---------- */
@@ -307,7 +379,34 @@
     var form = q("[data-alarm-form]"), list = q("[data-al-list]"), empty = q("[data-al-empty]"), nextEl = q("[data-al-next]");
     var wake = q("[data-wake]");
     var alarms = (function () { try { var a = JSON.parse(store("sth-alarms") || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } })();
-    var snoozeUntil = 0, ringing = null, lock = null;
+    var snoozeUntil = 0, ringing = null, lock = null, lastSound = "chime", lastYt = "";
+    var soundSel = q("[data-al-sound]"), ytIn = q("[data-al-yt]"), ytNote = q("[data-al-yt-note]");
+    /* YouTube bağlantısı: youtube.com/watch?v=, youtu.be/, music.youtube.com, /shorts/, /embed/, playlist?list= */
+    function ytParse(u) {
+      u = (u || "").trim(); if (!u) return null;
+      var x; try { x = new URL(/^https?:\/\//i.test(u) ? u : "https://" + u); } catch (e) { return false; }
+      var h = x.hostname.toLowerCase().replace(/^(www|m)\./, "");
+      if (h === "open.spotify.com" || h === "spotify.link") return "spotify";
+      if (h === "youtu.be") { var id = x.pathname.slice(1).split("/")[0]; return /^[\w-]{11}$/.test(id) ? "v:" + id : false; }
+      if (h === "youtube.com" || h === "music.youtube.com" || h === "youtube-nocookie.com") {
+        var v = x.searchParams.get("v"), list = x.searchParams.get("list"), m = /^\/(?:embed|shorts|live)\/([\w-]{11})/.exec(x.pathname);
+        if (!v && m) v = m[1];
+        if (v && /^[\w-]{11}$/.test(v)) return "v:" + v;
+        if (list && /^[\w-]{10,64}$/.test(list)) return "list:" + list;
+      }
+      return false;
+    }
+    function ytHint() {
+      if (!ytIn || !ytNote) return;
+      var r = ytParse(ytIn.value), allowed = !!(window.sthConsent && window.sthConsent.ext());
+      ytNote.textContent = r === false ? P.ytInvalid : r === "spotify" ? P.spotifyNote : r && !allowed ? P.ytBlocked + " " : P.ytNote;
+      ytNote.classList.toggle("is-err", r === false || r === "spotify");
+      if (r && r !== "spotify" && !allowed) {
+        var b = doc.createElement("button"); b.type = "button"; b.className = "btn btn-sm"; b.textContent = (S.T.wx && S.T.wx.allow) || "OK";
+        b.setAttribute("data-consent-allow-ext", ""); ytNote.appendChild(b);
+      }
+    }
+    if (ytIn) { ytIn.addEventListener("input", ytHint); window.addEventListener("sth-consent", ytHint); }
     function persist() { save("sth-alarms", alarms); }
     function label(a) { return a.label || P.defaultLabel; }
     function daysText(a) {
@@ -334,7 +433,7 @@
         cb.addEventListener("change", function () { a.on = cb.checked; if (a.on) ctx(); persist(); renderNext(); lockSync(); });
         var info = doc.createElement("label"); info.setAttribute("for", cb.id); info.className = "al-info";
         var tm = doc.createElement("strong"); tm.textContent = a.time;
-        var tx = doc.createElement("span"); tx.textContent = label(a) + " · " + daysText(a);
+        var tx = doc.createElement("span"); tx.textContent = label(a) + " · " + daysText(a) + (a.sound && a.sound !== "chime" && P.sounds ? " · " + P.sounds[a.sound] : "") + (a.yt ? " · ▶ YouTube" : "");
         info.appendChild(tm); info.appendChild(tx);
         var del = doc.createElement("button"); del.type = "button"; del.className = "toggle"; del.textContent = P["delete"];
         del.setAttribute("aria-label", P["delete"] + ": " + a.time + " " + label(a));
@@ -372,17 +471,22 @@
       ev.preventDefault(); ctx(); used1();
       var time = q("[data-al-time]").value;
       if (!/^\d\d:\d\d$/.test(time)) return;
-      alarms.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), time: time, label: q("[data-al-label]").value.trim().slice(0, 40), days: qa("[data-al-day]").filter(function (c) { return c.checked; }).map(function (c) { return +c.value; }), on: true, last: "" });
-      q("[data-al-label]").value = "";
+      var yt = ytIn ? ytParse(ytIn.value) : null;
+      if (yt === false || yt === "spotify") { ytHint(); ytIn.focus(); return; }
+      var item = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), time: time, label: q("[data-al-label]").value.trim().slice(0, 40), days: qa("[data-al-day]").filter(function (c) { return c.checked; }).map(function (c) { return +c.value; }), on: true, last: "", sound: soundSel ? soundSel.value : "chime" };
+      if (yt) item.yt = yt;
+      alarms.push(item);
+      q("[data-al-label]").value = ""; if (ytIn) { ytIn.value = ""; ytHint(); }
       persist(); render(); lockSync();
     });
     function fire(a, key) {
       ringing = a; a.last = key; if (!a.days.length) a.on = false; persist(); render();
-      ring(label(a) + " · " + a.time, function () { ringing = null; });
+      lastSound = a.sound || "chime"; lastYt = a.yt || "";
+      ring(label(a) + " · " + a.time, function () { ringing = null; }, lastSound, lastYt);
     }
     function check() {
       var now = S.nowDate(), key = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate(), mod = now.getHours() * 60 + now.getMinutes();
-      if (snoozeUntil && S.nowMs() >= snoozeUntil && !ringing) { snoozeUntil = 0; ring(P.ringing, null); return; }
+      if (snoozeUntil && S.nowMs() >= snoozeUntil && !ringing) { snoozeUntil = 0; ring(P.ringing, null, lastSound, lastYt); return; }
       alarms.forEach(function (a) {
         if (!a.on || ringing) return;
         var am = +a.time.slice(0, 2) * 60 + +a.time.slice(3, 5), diff = (mod - am + 1440) % 1440;
@@ -404,10 +508,111 @@
     var disp = q("[data-pomo-display]"), prog = q("[data-pomo-progress]"), phaseEl = q("[data-pomo-phase]"), roundEl = q("[data-pomo-round]"), countEl = q("[data-pomo-count]");
     var bStart = q("[data-pomo-start]"), bSkip = q("[data-pomo-skip]"), bReset = q("[data-pomo-reset]");
     var iW = q("[data-pomo-w]"), iS = q("[data-pomo-s]"), iL = q("[data-pomo-l]"), iR = q("[data-pomo-r]");
-    var st = load("sth-pomo", { w: 25, s: 5, l: 15, r: 4, phase: "work", round: 1, done: 0, run: false, rem: 0, wallEnd: 0 });
+    var st = load("sth-pomo", { w: 25, s: 5, l: 15, r: 4, goal: 4, tag: "none", phase: "work", round: 1, done: 0, run: false, rem: 0, wallEnd: 0 });
     var endMono = 0, tick = 0;
+    /* Görev adı, istatistik ve arka plan sesi (30 Ekim 2026, rakip analizi #16): tamamlanan çalışma turları yalnız bu
+       cihazda sth-pomo-log'da ({d: yerel gün, m: dakika, t: görev}, en çok 1000); gürültü Web Audio ile üretilir. */
+    var taskIn = q("[data-pomo-task]"), noiseSel = q("[data-pomo-noise]"), volIn = q("[data-pomo-vol]");
+    var log = (function () { try { var a = JSON.parse(store("sth-pomo-log") || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } })();
+    var CAL = S.cfg.cal || {};
+    function dayKey(ms) { var d = new Date(ms); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+    function addLog(min) {
+      var e = { d: dayKey(S.nowMs()), m: min, t: (st.task || "").slice(0, 60) };
+      if (st.tag && st.tag !== "none") e.g = st.tag;
+      log.push(e);
+      if (log.length > 1000) log = log.slice(-1000);
+      save("sth-pomo-log", log); stats();
+    }
+    function stats() {
+      var now = S.nowMs(), days = [], i;
+      for (i = 6; i >= 0; i--) days.push(dayKey(now - i * 86400000));
+      var sum = function (f) { var n = 0, m = 0; log.forEach(function (e) { if (f(e)) { n++; m += e.m; } }); return tpl(P.statLine, { n: n, m: m }); };
+      q("[data-pomo-st-today]").textContent = sum(function (e) { return e.d === days[6]; });
+      q("[data-pomo-st-week]").textContent = sum(function (e) { return e.d >= days[0]; });
+      q("[data-pomo-st-total]").textContent = sum(function () { return true; });
+      var per = days.map(function (d) { var m = 0; log.forEach(function (e) { if (e.d === d) m += e.m; }); return m; }), max = Math.max.apply(null, per.concat([1]));
+      var bars = q("[data-pomo-bars]"); bars.textContent = "";
+      days.forEach(function (d, k) {
+        var col = doc.createElement("div"), bar = doc.createElement("span"), lab = doc.createElement("small"), p = d.split("-");
+        col.className = "pomo-col"; bar.style.height = Math.round((per[k] / max) * 100) + "%"; bar.title = per[k] + "";
+        lab.textContent = (CAL.weekdaysShort || [])[(new Date(+p[0], +p[1] - 1, +p[2]).getDay() + 6) % 7] || p[2];
+        col.appendChild(bar); col.appendChild(lab); bars.appendChild(col);
+      });
+      var tasks = {}; log.forEach(function (e) { if (e.d >= days[0]) { var k = e.t || P.noTask; tasks[k] = (tasks[k] || 0) + e.m; } });
+      var ul = q("[data-pomo-tasks]"); ul.textContent = "";
+      Object.keys(tasks).sort(function (a, b) { return tasks[b] - tasks[a]; }).slice(0, 5).forEach(function (k) {
+        var li = doc.createElement("li"); li.textContent = k + " · " + tasks[k] + " " + P.minUnit; ul.appendChild(li);
+      });
+      // Etiketlere göre (#27): son 7 gün, etiketsizler ayrı satır
+      var tagM = {}; log.forEach(function (e) { if (e.d >= days[0]) { var k = e.g || "none"; tagM[k] = (tagM[k] || 0) + e.m; } });
+      var tagKeys = Object.keys(tagM).sort(function (a, b) { return tagM[b] - tagM[a]; }), tl = q("[data-pomo-bytag]");
+      tl.textContent = "";
+      tagKeys.forEach(function (k) { var li = doc.createElement("li"); li.textContent = ((P.tags || {})[k] || k) + " · " + tagM[k] + " " + P.minUnit; tl.appendChild(li); });
+      var showTags = tagKeys.length > 1 || (tagKeys.length === 1 && tagKeys[0] !== "none");
+      tl.hidden = !showTags; q("[data-pomo-tagsh]").hidden = !showTags;
+      // Seri (#27): bugün ya da dün biten, üst üste çalışılan günler
+      var have = {}; log.forEach(function (e) { have[e.d] = 1; });
+      var n = 0, k0 = have[days[6]] ? 0 : 1;
+      while (have[dayKey(now - (k0 + n) * 86400000)]) n++;
+      var stEl = q("[data-pomo-streak]"); stEl.hidden = n < 2; stEl.textContent = tpl(P.streak, { n: n });
+      goalLine();
+      q("[data-pomo-empty]").hidden = log.length > 0;
+      q("[data-pomo-clear]").hidden = log.length === 0;
+      q("[data-pomo-csv]").hidden = log.length === 0;
+    }
+    // Günlük hedef (#27): bugün biten çalışma turu / hedef
+    function goalLine() {
+      var el = q("[data-pomo-goal]"); if (!el) return;
+      var today = dayKey(S.nowMs()), n = 0; log.forEach(function (e) { if (e.d === today) n++; });
+      var g = st.goal || 4;
+      el.textContent = n >= g ? P.goalDone + " (" + tpl(P.goalProgress, { n: n, g: g }) + ")" : tpl(P.goalProgress, { n: n, g: g });
+      el.classList.toggle("is-done", n >= g);
+    }
+    q("[data-pomo-csv]").addEventListener("click", function () {
+      var rows = [["date", "minutes", "task", "tag"]];
+      log.forEach(function (e) { rows.push([e.d, e.m, e.t || "", e.g || ""]); });
+      csvDownload("pomodoro-" + dayKey(S.nowMs()) + ".csv", rows);
+    });
+    var tagSel = q("[data-pomo-tag]");
+    if (tagSel) { tagSel.value = st.tag || "none"; tagSel.addEventListener("change", function () { st.tag = tagSel.value; persist(); }); }
+    q("[data-pomo-clear]").addEventListener("click", function () { if (window.confirm(P.clearConfirm)) { log = []; save("sth-pomo-log", log); stats(); } });
+    if (taskIn) { taskIn.value = st.task || ""; taskIn.addEventListener("input", function () { st.task = taskIn.value.trim().slice(0, 60); persist(); }); }
+    var noise = { node: null, gain: null, kind: "" };
+    function noiseBuffer(c, kind) {
+      var len = c.sampleRate * 4, buf = c.createBuffer(1, len, c.sampleRate), d = buf.getChannelData(0);
+      var b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0, last = 0;
+      for (var i = 0; i < len; i++) {
+        var w = Math.random() * 2 - 1;
+        if (kind === "white") d[i] = w * 0.5;
+        else if (kind === "brown") { last = (last + 0.02 * w) / 1.02; d[i] = last * 3.5; }
+        else { // pembe (Paul Kellet); yağmur da pembe gürültüden süzülür
+          b0 = 0.99886 * b0 + w * 0.0555179; b1 = 0.99332 * b1 + w * 0.0750759; b2 = 0.969 * b2 + w * 0.153852;
+          b3 = 0.8665 * b3 + w * 0.3104856; b4 = 0.55 * b4 + w * 0.5329522; b5 = -0.7616 * b5 - w * 0.016898;
+          d[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11; b6 = w * 0.115926;
+        }
+      }
+      return buf;
+    }
+    function noiseStop() { if (noise.node) { try { noise.node.stop(); } catch (e) {} noise.node.disconnect(); noise.node = null; noise.kind = ""; } }
+    function noiseSync() {
+      var kind = noiseSel ? noiseSel.value : "off", want = kind !== "off" && st.run && st.phase === "work";
+      if (!want) { noiseStop(); return; }
+      var c = ctx(); if (!c) return;
+      if (!noise.gain) { noise.gain = c.createGain(); noise.gain.connect(c.destination); }
+      noise.gain.gain.value = (+(volIn ? volIn.value : 40) / 100) * 0.6;
+      if (noise.kind === kind) return;
+      noiseStop();
+      var src = c.createBufferSource(); src.buffer = noiseBuffer(c, kind); src.loop = true;
+      var out = src;
+      if (kind === "rain") { var hp = c.createBiquadFilter(); hp.type = "highpass"; hp.frequency.value = 900; var lp = c.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 7000; src.connect(hp); hp.connect(lp); out = lp; }
+      out.connect(noise.gain); src.start(); noise.node = src; noise.kind = kind;
+    }
+    var pref = load("sth-pomo-noise", { k: "off", v: 40 });
+    if (noiseSel) { noiseSel.value = pref.k; noiseSel.addEventListener("change", function () { pref.k = noiseSel.value; save("sth-pomo-noise", pref); ctx(); noiseSync(); }); }
+    if (volIn) { volIn.value = pref.v; volIn.addEventListener("input", function () { pref.v = +volIn.value; save("sth-pomo-noise", pref); noiseSync(); }); }
     function clamp(v, a, b, d) { v = Math.round(+v); return isNaN(v) ? d : Math.min(b, Math.max(a, v)); }
-    function readSettings() { st.w = clamp(iW.value, 1, 180, 25); st.s = clamp(iS.value, 1, 60, 5); st.l = clamp(iL.value, 1, 120, 15); st.r = clamp(iR.value, 2, 12, 4); }
+    var iG = q("[data-pomo-g]");
+    function readSettings() { st.w = clamp(iW.value, 1, 180, 25); st.s = clamp(iS.value, 1, 60, 5); st.l = clamp(iL.value, 1, 120, 15); st.r = clamp(iR.value, 2, 12, 4); if (iG) st.goal = clamp(iG.value, 1, 24, 4); }
     function phaseMs(p) { return (p === "work" ? st.w : p === "short" ? st.s : st.l) * 60000; }
     function persist() { save("sth-pomo", st); }
     function remaining() { return st.run ? endMono - S.mono() : st.rem; }
@@ -421,6 +626,7 @@
       countEl.textContent = tpl(P.completed, { n: st.done });
       bStart.textContent = st.run ? P.pause : (st.rem > 0 && st.rem < phaseMs(st.phase) ? P.resume : P.start);
       setTitle(st.run ? hms(r, false) + " " + P[st.phase] : "");
+      noiseSync();
     }
     function begin(phase, autostart) {
       st.phase = phase; st.rem = phaseMs(phase);
@@ -437,6 +643,7 @@
       paint();
       if (st.run && remaining() <= 0) {
         var name = P[st.phase];
+        if (st.phase === "work") addLog(st.w);
         chime(); notify(tpl(P.phaseDone, { phase: name }), baseTitle);
         next(true);
       }
@@ -455,13 +662,14 @@
     bSkip.addEventListener("click", function () { ctx(); var was = st.run; next(was); });
     bReset.addEventListener("click", reset);
     [iW, iS, iL, iR].forEach(function (i) { i.addEventListener("change", function () { readSettings(); if (!st.run) { st.rem = phaseMs(st.phase); } persist(); paint(); }); });
-    iW.value = st.w; iS.value = st.s; iL.value = st.l; iR.value = st.r;
+    if (iG) iG.addEventListener("change", function () { readSettings(); persist(); goalLine(); });
+    iW.value = st.w; iS.value = st.s; iL.value = st.l; iR.value = st.r; if (iG) iG.value = st.goal || 4;
     if (st.run) {
       var left = st.wallEnd - Date.now();
       if (left > 0) { st.rem = left; endMono = S.mono() + left; } else { st.run = false; st.rem = 0; }
     }
     if (!(st.rem > 0) && !st.run) st.rem = phaseMs(st.phase);
-    paint();
+    paint(); stats();
     setInterval(loop, 250);
   }
 

@@ -6,6 +6,10 @@ options:
   developmentLanguage: tr
   deploymentTarget:
     iOS: "17.0"
+    watchOS: "10.0"
+    macOS: "14.0"
+    tvOS: "17.0"
+    visionOS: "2.0"
 settings:
   base:
     # Uygulama ve widget aynı sürümde olmalı (App Store şartı)
@@ -24,6 +28,13 @@ targets:
     dependencies:
       - package: SaatCore
       - target: SaatTarihWidget
+      # Apple Watch uygulaması (komplikasyonlarıyla) iPhone uygulamasının Watch klasörüne gömülür
+      - target: SaatTarihWatch
+        embed: true
+        codeSign: false
+        copy:
+          destination: productsDirectory
+          subpath: $(CONTENTS_FOLDER_PATH)/Watch
     settings:
       base:
         PRODUCT_NAME: SaatTarih
@@ -31,7 +42,9 @@ targets:
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
-        TARGETED_DEVICE_FAMILY: "1"
+        # iPhone ve iPad (rakip analizi #18; iPad'de bölünmüş ekran için dört yön de açık). Apple silikonlu Mac'lerde
+        # "iPad için tasarlandı" olarak çalışır (App Store Connect'te kapatılabilir)
+        TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: YES
         # INFOPLIST_KEY_* ile verilemeyen anahtarlar (AlarmKit izni) bu dosyada; Xcode ikisini birleştirir
         INFOPLIST_FILE: App/Info.plist
@@ -45,7 +58,10 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         # Metnin diğer dilleri App/Resources/InfoPlist.xcstrings'te (gen-strings.mjs üretir)
-        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini ve hava durumunu göstermek için. Vakitler telefonda hesaplanır; hava durumu için yalnız yaklaşık konum Apple'ın hava servisine gönderilir."
+        INFOPLIST_KEY_NSAppleMusicUsageDescription: "Alarm sesi olarak müzik arşivinizden bir şarkı seçebilmeniz için. Şarkıdan alınan kısa bölüm telefonda kalır, hiçbir yere gönderilmez."
+        INFOPLIST_KEY_NSCameraUsageDescription: "Alarm kapatma görevi için kaydettiğiniz QR kodu ya da barkodu okumak için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez."
+        INFOPLIST_KEY_NSHealthUpdateUsageDescription: "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz."
+        INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir. Konuma bağlı hatırlatıcılarda bir yere varışınızı ya da ayrılışınızı iPhone kendisi izler."
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES
@@ -62,8 +78,12 @@ targets:
       - path: App/Sources/Schedule.swift
       - path: App/Sources/AnalogClock.swift
       - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
+      - path: App/Sources/LiveActivityModel.swift
       - path: App/Resources/Localizable.xcstrings
       - path: App/Resources/provinces.json
+      - path: App/Resources/cities.json
+      - path: App/Resources/hijri.json
     dependencies:
       - package: SaatCore
       - sdk: WidgetKit.framework
@@ -84,7 +104,215 @@ targets:
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
-        TARGETED_DEVICE_FAMILY: "1"
+        TARGETED_DEVICE_FAMILY: "1,2"
         GENERATE_INFOPLIST_FILE: YES
         SKIP_INSTALL: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Apple Watch uygulaması (rakip analizi #6): saat, tarih (miladi + hicri), sıradaki vakit, bugünün vakitleri, yer
+  # seçimi (iPhone'daki yer WatchConnectivity ile gelir). Hesap SaatCore'da; ortak dosyalar App/Sources'tan.
+  SaatTarihWatch:
+    type: application
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources:
+      - path: Watch/Sources
+      - path: Watch/Assets.xcassets
+      - path: App/Sources/Province.swift
+      - path: App/Sources/Schedule.swift
+      - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
+      - path: App/Resources/Localizable.xcstrings
+      - path: App/Resources/InfoPlist.xcstrings
+      - path: App/Resources/provinces.json
+      - path: App/Resources/hijri.json
+    dependencies:
+      - package: SaatCore
+      - target: SaatTarihWatchWidget
+    info:
+      path: Watch/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        WKApplication: true
+        WKCompanionAppBundleIdentifier: tr.bumba.time
+        NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini göstermek için. Vakitler saatte hesaplanır, konum hiçbir yere gönderilmez."
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihWatch
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.watchkitapp
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "4"
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Apple Watch komplikasyonları (WidgetKit): sıradaki vakit ve hicri tarih
+  SaatTarihWatchWidget:
+    type: app-extension
+    platform: watchOS
+    deploymentTarget: "10.0"
+    sources:
+      - path: WatchWidget/Sources
+      - path: Widget/Sources/ProvinceIntent.swift
+      - path: App/Sources/Province.swift
+      - path: App/Sources/Schedule.swift
+      - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
+      - path: App/Resources/Localizable.xcstrings
+      - path: App/Resources/provinces.json
+      - path: App/Resources/hijri.json
+    dependencies:
+      - package: SaatCore
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+    info:
+      path: WatchWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        NSWidgetWantsLocation: true
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihWatchWidget
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.watchkitapp.widget
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "4"
+        GENERATE_INFOPLIST_FILE: YES
+        SKIP_INSTALL: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Mac menü çubuğu uygulaması (rakip analizi listesi #96): menü çubuğunda sıradaki vakit ve kalan süre, açılır panelde saat,
+  # tarih ve bugünün vakitleri (Desk/Sources ortak görünüm). Dock'ta simgesi yok.
+  SaatTarihMac:
+    type: application
+    scheme:
+      testTargets: []
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Mac/Sources
+      - path: Mac/Assets.xcassets
+      - path: Desk/Sources
+      - path: App/Sources/Province.swift
+      - path: App/Sources/Schedule.swift
+      - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
+      - path: App/Resources/Localizable.xcstrings
+      - path: App/Resources/InfoPlist.xcstrings
+      - path: App/Resources/provinces.json
+      - path: App/Resources/hijri.json
+    dependencies:
+      - package: SaatCore
+    info:
+      path: Mac/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.utilities
+        NSLocationUsageDescription: "Bulunduğunuz yerin namaz vakitlerini göstermek için. Vakitler Mac'te hesaplanır, konum hiçbir yere gönderilmez."
+        NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini göstermek için. Vakitler Mac'te hesaplanır, konum hiçbir yere gönderilmez."
+    entitlements:
+      path: Mac/SaatTarihMac.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.personal-information.location: true
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihMac
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.mac
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        GENERATE_INFOPLIST_FILE: YES
+        ENABLE_HARDENED_RUNTIME: YES
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Apple TV uygulaması (rakip analizi listesi #95): televizyonda tam ekran saat ve vakitler
+  SaatTarihTV:
+    type: application
+    scheme:
+      testTargets: []
+    platform: tvOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: TV/Sources
+      - path: TV/Assets.xcassets
+      - path: Desk/Sources
+      - path: App/Sources/Province.swift
+      - path: App/Sources/Schedule.swift
+      - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
+      - path: App/Resources/Localizable.xcstrings
+      - path: App/Resources/InfoPlist.xcstrings
+      - path: App/Resources/provinces.json
+      - path: App/Resources/hijri.json
+    dependencies:
+      - package: SaatCore
+    info:
+      path: TV/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini göstermek için. Vakitler Apple TV'de hesaplanır, konum hiçbir yere gönderilmez."
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihTV
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.tv
+        # Katmanlı simge ve üst raf görselleri (scripts/gen-desk-icons.py)
+        ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "3"
+        GENERATE_INFOPLIST_FILE: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  # Vision Pro uygulaması (rakip analizi listesi #97): odaya yerleştirilen pencerede saat ve vakitler
+  SaatTarihVision:
+    type: application
+    scheme:
+      testTargets: []
+    platform: visionOS
+    deploymentTarget: "2.0"
+    sources:
+      - path: Vision/Sources
+      - path: Vision/Assets.xcassets
+      - path: Desk/Sources
+      - path: App/Sources/Province.swift
+      - path: App/Sources/Schedule.swift
+      - path: App/Sources/Location.swift
+      - path: App/Sources/Hijri.swift
+      - path: App/Resources/Localizable.xcstrings
+      - path: App/Resources/InfoPlist.xcstrings
+      - path: App/Resources/provinces.json
+      - path: App/Resources/hijri.json
+    dependencies:
+      - package: SaatCore
+    info:
+      path: Vision/Info.plist
+      properties:
+        CFBundleDisplayName: Saat Tarih
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini göstermek için. Vakitler cihazda hesaplanır, konum hiçbir yere gönderilmez."
+    settings:
+      base:
+        PRODUCT_NAME: SaatTarihVision
+        PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.vision
+        # Üç katmanlı simge (scripts/gen-desk-icons.py)
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        DEVELOPMENT_TEAM: 3J9XN2P93D
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.0"
+        TARGETED_DEVICE_FAMILY: "7"
+        GENERATE_INFOPLIST_FILE: YES
         LOCALIZATION_PREFERS_STRING_CATALOGS: YES

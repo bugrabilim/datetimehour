@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- "Konumumu kullan" (yaklaşık konum yeterli; konum telefonda kalır) -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Konuma bağlı hatırlatıcı (#93): bölge izleme kesin ve "her zaman" konum ister; yalnız hatırlatıcı eklenirken istenir -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <!-- Hava durumu (Open-Meteo) ve e-posta listesi -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Telefondaki takvimler (Google dahil): yalnız "Telefonumdaki takvimleri göster" ile istenir; silmek için yazma -->
@@ -14,6 +18,37 @@
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Aralık antrenmanı (HiitService): ekran kapalıyken de evre geçişlerini sesli söyleyen ön plan hizmeti -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Kademeli alarm sesi (AlarmRingService) ve arka plan sesi (SoundService: pomodoro, uyku sesleri) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Akıllı alarm (SmartSleep.kt): uyku oturumu ön plan hizmeti (tür health); önkoşul olarak HIGH_SAMPLING_RATE_SENSORS
+         (normal izin, sorulmaz). Yalnız ivmeölçer okunur, kayıt ve mikrofon yok -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
+    <!-- Vakitte telefonu Rahatsız Etmeyin'e alma (isteğe bağlı; kullanıcı ayardan izin verir) -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+    <!-- Health Connect: biten aralık antrenmanı egzersiz oturumu olarak yazılır (isteğe bağlı; okuma izni yok) -->
+    <uses-permission android:name="android.permission.health.WRITE_EXERCISE" />
+    <!-- Yüzen saat (FloatingClock.kt): başka uygulamaların üstünde küçük saat penceresi; kullanıcı ayardan izin verir -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Odakta engelleme (FocusBlock.kt): pomodoro sürerken öne gelen uygulamayı okumak için; kullanıcı Ayarlar'dan verir -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
+
+    <!-- Android TV (TvActivity): dokunmatik ekran ve leanback zorunlu değil, uygulama telefonda da kurulur -->
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+
+    <queries>
+        <package android:name="com.google.android.apps.healthdata" />
+        <!-- Odakta engelleme: engellenecek uygulama seçicisi yalnız ana ekranda simgesi olan uygulamaları listeler -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
 
     <!-- Vakit bildirimleri (PrayerNotifier): bildirim izni yalnız açarken istenir; tam zamanlı alarm; yeniden
          başlatmada plan yeniden kurulur -->
@@ -24,6 +59,8 @@
     <application
         android:name=".SaatTarihApp"
         android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -38,9 +75,75 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
-        <!-- Widget'lar (Widgets.kt): beş widget, yenileme alıcısı ve vakit widget'ının yer seçimi -->
+        <!-- Health Connect izin gerekçesi: gizlilik sayfasını açar (Android 13 ve öncesi: ACTION_SHOW_PERMISSIONS_RATIONALE;
+             14+: VIEW_PERMISSION_USAGE takma adı) -->
+        <activity
+            android:name=".HealthRationaleActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="androidx.health.ACTION_SHOW_PERMISSIONS_RATIONALE" />
+            </intent-filter>
+        </activity>
+        <activity-alias
+            android:name="ViewPermissionUsageActivity"
+            android:exported="true"
+            android:targetActivity=".HealthRationaleActivity"
+            android:permission="android.permission.START_VIEW_PERMISSION_USAGE">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_PERMISSION_USAGE" />
+                <category android:name="android.intent.category.HEALTH_PERMISSIONS" />
+            </intent-filter>
+        </activity-alias>
+
+        <!-- Asistan ve başka uygulamalardan zamanlayıcı/alarm (AlarmClock istekleri; ClockIntents.kt) -->
+        <activity
+            android:name=".ClockIntentActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:noHistory="true"
+            android:permission="com.android.alarm.permission.SET_ALARM"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SET_TIMER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SET_ALARM" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SHOW_ALARMS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SHOW_TIMERS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- Süren sayaçlar bildirimi: bitişte ve vakitte yeniden çizilir (LiveNotifications.kt) -->
+        <receiver
+            android:name=".LiveRefreshReceiver"
+            android:exported="false" />
+        <!-- Ekran koruyucu (şarjda tam ekran saat) -->
+        <service
+            android:name=".ClockDreamService"
+            android:exported="true"
+            android:label="@string/dream_name"
+            android:permission="android.permission.BIND_DREAM_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <!-- Widget'lar (Widgets.kt): dokuz widget, yenileme alıcısı ve vakit widget'ının yer seçimi -->
         <receiver
             android:name=".NextPrayerWidget"
             android:exported="false"
@@ -111,6 +214,125 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_clock_date_info" />
         </receiver>
+        <!-- Dokunulabilen widget'lar ve Hızlı Ayarlar kutucukları (ToolWidgets.kt) -->
+        <receiver
+            android:name=".ZikirWidget"
+            android:exported="false"
+            android:label="@string/widget_zikir_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_zikir_info" />
+        </receiver>
+        <receiver
+            android:name=".StopwatchToolWidget"
+            android:exported="false"
+            android:label="@string/tools_hub_cards_stopwatch_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_stopwatch_info" />
+        </receiver>
+        <receiver
+            android:name=".ToolWidgetReceiver"
+            android:exported="false" />
+        <service
+            android:name=".ClockTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_clock"
+            android:label="@string/control_clock"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".StopwatchTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_tile_stopwatch"
+            android:label="@string/tools_hub_cards_stopwatch_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+        <receiver
+            android:name=".MoonWidget"
+            android:exported="false"
+            android:label="@string/widget_moon_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_moon_info" />
+        </receiver>
+        <receiver
+            android:name=".HijriWidget"
+            android:exported="false"
+            android:label="@string/widget_hijri_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_hijri_info" />
+        </receiver>
+        <receiver
+            android:name=".SecondsClockWidget"
+            android:exported="false"
+            android:label="@string/widget_seconds_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_seconds_info" />
+        </receiver>
+        <receiver
+            android:name=".WorldClockWidget"
+            android:exported="false"
+            android:label="@string/world_h1">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_world_info" />
+        </receiver>
+        <receiver
+            android:name=".CountdownWidget"
+            android:exported="false"
+            android:label="@string/tools_hub_cards_countdown_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_countdown_info" />
+        </receiver>
         <receiver
             android:name=".WidgetRefreshReceiver"
             android:exported="false" />
@@ -132,7 +354,63 @@
             android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:taskAffinity="" />
+        <service
+            android:name=".HiitService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Interval workout timer: speaks phase changes (work, rest, last round) and the 3-2-1 countdown while the screen is off; runs only during a workout the user started" />
+        </service>
+        <service
+            android:name=".FocusBlockService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Focus timer app blocking: while a pomodoro work session the user started is running, checks the foreground app once a second and shows a focus screen over apps the user chose to block; stops when the session ends" />
+        </service>
+        <activity
+            android:name=".TvActivity"
+            android:exported="true"
+            android:banner="@drawable/tv_banner"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FocusBlockActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="" />
+        <service
+            android:name=".FloatingClockService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Floating clock: keeps a small always-on-top clock window (TYPE_APPLICATION_OVERLAY) the user turned on; stopped from its notification" />
+        </service>
+        <service
+            android:name=".SmartSleepService"
+            android:exported="false"
+            android:foregroundServiceType="health" />
+        <service
+            android:name=".AlarmRingService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+        <!-- Arka plan sesi (SoundService): pomodoro ve uyku sesleri için telefonda üretilen gürültü, ekran kapalıyken de -->
+        <service
+            android:name=".SoundService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
         <receiver android:name=".AlarmReceiver" android:exported="false" />
+        <receiver android:name=".AlarmPreReceiver" android:exported="false" />
+        <receiver android:name=".PrayerSilentReceiver" android:exported="false" />
         <receiver android:name=".RescheduleReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -145,6 +423,8 @@
         <!-- Vakit bildirimleri: alarm geldiğinde bildirim + zil/duyuru; açılış, saat değişikliği ve güncellemede
              plan yeniden kurulur -->
         <receiver android:name=".PrayerAlarmReceiver" android:exported="false" />
+        <receiver android:name=".GeoAlarmReceiver" android:exported="false" />
+        <receiver android:name=".FeatureAlarmReceiver" android:exported="false" />
         <receiver android:name=".PrayerRescheduleReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

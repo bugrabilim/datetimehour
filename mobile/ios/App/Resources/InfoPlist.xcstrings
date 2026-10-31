@@ -7,31 +7,91 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bulunduğunuz yerin namaz vakitlerini ve hava durumunu göstermek için. Vakitler telefonda hesaplanır; hava durumu için yalnız yaklaşık konum Apple'ın hava servisine gönderilir."
+            "value": "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir. Konuma bağlı hatırlatıcılarda bir yere varışınızı ya da ayrılışınızı iPhone kendisi izler."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "To show prayer times and the weather for where you are. Prayer times are calculated on your phone; for the weather only an approximate location is sent to Apple's weather service."
+            "value": "To show prayer times, the qibla direction, nearby mosques and the weather for where you are. Prayer times and the qibla are calculated on your phone; for the weather and the mosque search only an approximate location is sent to Apple's services. For location reminders, iPhone itself detects when you arrive at or leave a place."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Um Gebetszeiten und Wetter für Ihren Ort anzuzeigen. Die Gebetszeiten werden auf dem Telefon berechnet; für das Wetter wird nur ein ungefährer Ort an den Wetterdienst von Apple gesendet."
+            "value": "Um Gebetszeiten, die Qibla-Richtung, Moscheen in der Nähe und das Wetter für Ihren Ort anzuzeigen. Gebetszeiten und Qibla werden auf dem Telefon berechnet; für Wetter und Moscheesuche wird nur ein ungefährer Ort an Apples Dienste gesendet. Bei Ortserinnerungen erkennt das iPhone selbst, wann Sie einen Ort erreichen oder verlassen."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Olduğunuz yerin namaz vaxtlarını və havasını göstərmək üçün. Vaxtlar telefonda hesablanır; hava üçün yalnız təxmini məkan Apple-ın hava xidmətinə göndərilir."
+            "value": "Olduğunuz yerin namaz vaxtlarını, qiblə istiqamətini, yaxınlıqdakı məscidləri və havasını göstərmək üçün. Vaxtlar və qiblə telefonda hesablanır; hava və məscid axtarışı üçün yalnız təxmini məkan Apple-ın xidmətlərinə göndərilir. Məkana bağlı xatırladıcılarda bir yerə çatmanızı ya da ayrılmanızı iPhone özü izləyir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لعرض أوقات الصلاة والطقس في مكانك. تُحسب الأوقات على هاتفك؛ ولأجل الطقس يُرسل موقع تقريبي فقط إلى خدمة الطقس من Apple."
+            "value": "لعرض أوقات الصلاة واتجاه القبلة والمساجد القريبة والطقس في مكانك. تُحسب الأوقات والقبلة على هاتفك؛ ولأجل الطقس والبحث عن المساجد يُرسل موقع تقريبي فقط إلى خدمات Apple. في تذكيرات الموقع، يكتشف iPhone نفسه وصولك إلى مكان أو مغادرته."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk menampilkan jadwal salat, arah kiblat, masjid terdekat, dan cuaca di tempat Anda. Jadwal salat dan kiblat dihitung di ponsel Anda; untuk cuaca dan pencarian masjid hanya lokasi perkiraan yang dikirim ke layanan Apple. Untuk pengingat lokasi, iPhone sendiri yang mendeteksi saat Anda tiba di atau meninggalkan suatu tempat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ جہاں ہیں وہاں کے اوقاتِ نماز، قبلے کی سمت، قریبی مساجد اور موسم دکھانے کے لیے۔ اوقاتِ نماز اور قبلہ آپ کے فون پر حساب کیے جاتے ہیں؛ موسم اور مساجد کی تلاش کے لیے صرف تقریبی مقام ایپل کی سروسز کو بھیجا جاتا ہے۔ مقام کی یاد دہانیوں کے لیے آئی فون خود معلوم کرتا ہے کہ آپ کسی جگہ پہنچے یا وہاں سے نکلے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای نمایش اوقات شرعی، جهت قبله، مسجدهای نزدیک و آب‌وهوای جایی که هستید. اوقات شرعی و قبله روی گوشی شما محاسبه می‌شوند؛ برای آب‌وهوا و جست‌وجوی مسجد فقط موقعیت تقریبی به سرویس‌های اپل فرستاده می‌شود. برای یادآورهای مکانی، خود آیفون رسیدن یا ترک یک مکان را تشخیص می‌دهد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour afficher les heures de prière, la direction de la qibla, les mosquées proches et la météo de l’endroit où vous êtes. Les heures de prière et la qibla sont calculées sur votre téléphone ; pour la météo et la recherche de mosquées, seule une position approximative est envoyée aux services d’Apple. Pour les rappels de lieu, l’iPhone détecte lui-même votre arrivée ou votre départ."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы показывать время намаза, направление киблы, мечети поблизости и погоду там, где вы находитесь. Время намаза и кибла рассчитываются на телефоне; для погоды и поиска мечетей в сервисы Apple отправляется только приблизительное местоположение. Для напоминаний по месту iPhone сам определяет, когда вы приходите в место или уходите из него."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在地の礼拝時刻、キブラの方向、近くのモスク、天気を表示するためです。礼拝時刻とキブラはスマホ上で計算し、天気とモスク検索のためにおおよその位置だけをAppleのサービスに送ります。場所のリマインダーでは、到着や出発をiPhone自体が検知します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 위치의 기도 시간, 키블라 방향, 가까운 모스크, 날씨를 보여 주기 위해서입니다. 기도 시간과 키블라는 휴대폰에서 계산하며, 날씨와 모스크 검색에는 대략적인 위치만 Apple 서비스로 보냅니다. 위치 미리 알림은 iPhone이 직접 장소 도착과 출발을 감지합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用于显示您所在地的礼拜时间、朝向（基卜拉）、附近的清真寺和天气。礼拜时间和朝向在手机上计算；仅在查询天气和搜索清真寺时向Apple的服务发送大致位置。对于位置提醒，由iPhone本身检测您何时到达或离开某地。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para ipakita ang oras ng dasal, direksiyon ng qibla, kalapit na masjid at panahon kung nasaan ka. Sa telepono kinukuwenta ang oras ng dasal at ang qibla; para sa panahon at paghahanap ng masjid, tinatayang lokasyon lang ang ipinapadala sa mga serbisyo ng Apple. Para sa mga paalala ayon sa lokasyon, ang iPhone mismo ang nakakaalam kung dumating o umalis ka sa isang lugar."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อแสดงเวลาละหมาด ทิศกิบลัต มัสยิดใกล้เคียง และสภาพอากาศในที่ที่คุณอยู่ เวลาละหมาดและกิบลัตคำนวณบนโทรศัพท์ สำหรับสภาพอากาศและการค้นหามัสยิดจะส่งเพียงตำแหน่งโดยประมาณไปยังบริการของ Apple สำหรับการเตือนตามสถานที่ iPhone จะตรวจจับเองว่าคุณมาถึงหรือออกจากสถานที่"
           }
         }
       }
@@ -68,6 +128,66 @@
             "state": "translated",
             "value": "الوقت والتاريخ"
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam & Tanggal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت اور تاریخ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت و تاریخ"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heure & Date"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Время и дата"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "時刻と日付"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시간과 날짜"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时间与日期"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oras at Petsa"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เวลาและวันที่"
+          }
         }
       }
     },
@@ -103,6 +223,66 @@
             "state": "translated",
             "value": "حتى ترن المنبهات والمؤقتات التي تضبطها حتى عندما يكون الهاتف صامتًا."
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agar alarm dan pengatur waktu yang Anda pasang tetap berbunyi meski ponsel dalam mode senyap."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاکہ آپ کے لگائے ہوئے الارم اور ٹائمر فون خاموش ہونے پر بھی بجیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تا هشدارها و تایمرهایی که تنظیم می‌کنید حتی وقتی گوشی بی‌صداست زنگ بزنند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour que les alarmes et minuteurs que vous réglez sonnent même quand le téléphone est en silencieux."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы заданные будильники и таймеры звонили, даже когда телефон в беззвучном режиме."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定したアラームとタイマーがマナーモードでも鳴るようにするためです。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "설정한 알람과 타이머가 무음 모드에서도 울리도록 하기 위해서입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让您设置的闹钟和计时器在手机静音时也能响起。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para tumunog ang mga alarma at timer na itinakda mo kahit naka-silent ang telepono."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อให้นาฬิกาปลุกและตัวจับเวลาที่คุณตั้งไว้ดังแม้ปิดเสียงโทรศัพท์"
+          }
         }
       }
     },
@@ -137,6 +317,351 @@
           "stringUnit": {
             "state": "translated",
             "value": "لعرض أحداث تقويماتك في تقويم التطبيق والسماح لك بحذفها. تُستخدم الأحداث على هاتفك فقط."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk menampilkan acara di kalender Anda pada kalender aplikasi dan memungkinkan Anda menghapusnya. Acara hanya digunakan di ponsel Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کے کیلنڈرز کی تقریبات ایپ کے کیلنڈر میں دکھانے اور انہیں حذف کرنے دینے کے لیے۔ تقریبات صرف آپ کے فون پر استعمال ہوتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای نمایش رویدادهای تقویم‌های شما در تقویم برنامه و امکان حذف آن‌ها. رویدادها فقط روی گوشی شما به کار می‌روند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour afficher les événements de vos calendriers dans le calendrier de l’app et vous permettre de les supprimer. Les événements sont utilisés uniquement sur votre téléphone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы показывать события ваших календарей в календаре приложения и позволить их удалять. События используются только на телефоне."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カレンダーの予定をアプリのカレンダーに表示し、削除できるようにするためです。予定はスマホ上でだけ使います。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "달력의 일정을 앱 달력에 보여 주고 삭제할 수 있도록 하기 위해서입니다. 일정은 휴대폰에서만 쓰입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用于在应用的日历中显示您日历里的日程，并允许您删除。日程只在手机上使用。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para ipakita ang mga event ng iyong mga kalendaryo sa kalendaryo ng app at para mabura mo ang mga ito. Sa telepono lang ginagamit ang mga event."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อแสดงกิจกรรมในปฏิทินของคุณในปฏิทินของแอปและให้คุณลบได้ กิจกรรมใช้บนโทรศัพท์เท่านั้น"
+          }
+        }
+      }
+    },
+    "NSCameraUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm kapatma görevi için kaydettiğiniz QR kodu ya da barkodu okumak için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To scan the QR code or barcode you saved for an alarm's dismiss task. The image is processed on your phone, not stored and not sent anywhere."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum Scannen des QR-Codes oder Barcodes, den Sie für die Aufgabe eines Weckers gespeichert haben. Das Bild wird auf dem Telefon verarbeitet, nicht gespeichert und nirgendwohin gesendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngin söndürmə tapşırığı üçün yadda saxladığınız QR kodu ya da barkodu oxumaq üçün. Görüntü telefonda işlənir, saxlanılmır və heç yerə göndərilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لمسح رمز QR أو الباركود الذي حفظته لمهمة إيقاف المنبّه. تُعالج الصورة على هاتفك ولا تُحفظ ولا تُرسل إلى أي مكان."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk memindai kode QR atau barcode yang Anda simpan untuk tugas mematikan alarm. Gambar diproses di ponsel Anda, tidak disimpan, dan tidak dikirim ke mana pun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم بند کرنے کے کام کے لیے محفوظ کیا گیا QR کوڈ یا بارکوڈ اسکین کرنے کے لیے۔ تصویر آپ کے فون پر پروسیس ہوتی ہے، نہ محفوظ ہوتی ہے نہ کہیں بھیجی جاتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای اسکن کد QR یا بارکدی که برای کار خاموش کردن هشدار ذخیره کرده‌اید. تصویر روی گوشی شما پردازش می‌شود، ذخیره نمی‌شود و به جایی فرستاده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour scanner le QR code ou le code-barres enregistré pour la tâche d’arrêt d’une alarme. L’image est traitée sur votre téléphone, ni conservée ni envoyée."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы сканировать QR-код или штрихкод, сохранённый для задания отключения будильника. Изображение обрабатывается на телефоне, не сохраняется и никуда не отправляется."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラームの停止の課題用に保存したQRコードやバーコードを読み取るためです。画像はスマホ上で処理され、保存も送信もされません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알람 끄기 미션용으로 저장한 QR 코드나 바코드를 스캔하기 위해서입니다. 이미지는 휴대폰에서 처리되며 저장하거나 보내지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用于扫描您为闹钟关闭任务保存的二维码或条形码。图像在手机上处理，不保存也不发送。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para i-scan ang QR code o barcode na na-save mo para sa gawaing pampatay ng alarma. Sa iyong telepono pinoproseso ang larawan, hindi ito sine-save at hindi ipinapadala kahit saan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อสแกน QR โค้ดหรือบาร์โค้ดที่คุณบันทึกไว้สำหรับภารกิจปิดนาฬิกาปลุก ภาพประมวลผลบนโทรศัพท์ ไม่ถูกเก็บและไม่ส่งไปที่ใด"
+          }
+        }
+      }
+    },
+    "NSHealthUpdateUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To write finished interval workouts and routines to the Health app as workouts, if you turn it on. The app does not read your health data."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um beendete Intervalltrainings und Routinen als Trainings in Health einzutragen, wenn Sie es einschalten. Die App liest Ihre Gesundheitsdaten nicht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siz açsanız, bitən aralıq məşqlərini və rutinləri Sağlamlıq tətbiqinə məşq kimi yazmaq üçün. Tətbiq sağlamlıq məlumatlarınızı oxumur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لتسجيل التمارين المتقطعة والروتينات المنتهية في تطبيق الصحة كتمارين، إذا فعّلت ذلك. لا يقرأ التطبيق بياناتك الصحية."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk menulis latihan interval dan rutinitas yang selesai ke app Kesehatan sebagai latihan, jika Anda mengaktifkannya. Aplikasi tidak membaca data kesehatan Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر آپ آن کریں تو مکمل وقفہ وار ورزشیں اور روٹینز ہیلتھ ایپ میں ورزش کے طور پر لکھنے کے لیے۔ ایپ آپ کا صحت کا ڈیٹا نہیں پڑھتی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای نوشتن تمرین‌های تناوبی و برنامه‌های تمام‌شده در برنامهٔ سلامت، اگر روشنش کنید. برنامه دادهٔ سلامت شما را نمی‌خواند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour écrire dans l’app Santé, si vous l’activez, les entraînements fractionnés et routines terminés. L’app ne lit pas vos données de santé."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы, если вы включите это, записывать завершённые интервальные тренировки и программы в приложение «Здоровье». Приложение не читает данные о здоровье."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オンにした場合に、終えたインターバルトレーニングとルーティンをワークアウトとしてヘルスケアアプリに書き込むためです。アプリがあなたの健康データを読むことはありません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "켜 둔 경우, 마친 인터벌 운동과 루틴을 건강 앱에 운동으로 기록하기 위해서입니다. 앱은 건강 데이터를 읽지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在您开启时，把完成的间歇训练和训练计划作为体能训练写入“健康”应用。应用不会读取您的健康数据。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para isulat sa Health app bilang workout ang natapos na interval workout at routine, kung io-on mo ito. Hindi binabasa ng app ang iyong datos pangkalusugan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อบันทึกการออกกำลังกายแบบอินเทอร์วัลและชุดที่ทำเสร็จลงแอปสุขภาพเป็นการออกกำลังกาย หากคุณเปิดใช้ แอปไม่อ่านข้อมูลสุขภาพของคุณ"
+          }
+        }
+      }
+    },
+    "NSAppleMusicUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm sesi olarak müzik arşivinizden bir şarkı seçebilmeniz için. Şarkıdan alınan kısa bölüm telefonda kalır, hiçbir yere gönderilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So you can choose a song from your music library as an alarm sound. The short part taken from the song stays on your phone and is not sent anywhere."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Damit Sie einen Titel aus Ihrer Musikmediathek als Weckton wählen können. Der kurze Ausschnitt bleibt auf dem Telefon und wird nirgendwohin gesendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəng səsi kimi musiqi arxivinizdən mahnı seçə biləsiniz deyə. Mahnıdan götürülən qısa hissə telefonda qalır, heç yerə göndərilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لكي تختار أغنية من مكتبة الموسيقى صوتًا للمنبّه. يبقى الجزء القصير المأخوذ من الأغنية على هاتفك ولا يُرسل إلى أي مكان."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agar Anda dapat memilih lagu dari perpustakaan musik sebagai suara alarm. Potongan singkat dari lagu tetap di ponsel Anda dan tidak dikirim ke mana pun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاکہ آپ اپنی موسیقی لائبریری سے کوئی گانا الارم کی آواز کے طور پر چن سکیں۔ گانے سے لیا گیا مختصر حصہ آپ کے فون پر رہتا ہے اور کہیں نہیں بھیجا جاتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تا بتوانید آهنگی از کتابخانهٔ موسیقی‌تان را صدای هشدار کنید. بخش کوتاه برداشته‌شده از آهنگ روی گوشی شما می‌ماند و به جایی فرستاده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour choisir un morceau de votre bibliothèque musicale comme son d’alarme. Le court extrait reste sur votre téléphone et n’est envoyé nulle part."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы выбрать песню из медиатеки как звук будильника. Короткий отрывок остаётся на телефоне и никуда не отправляется."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ミュージックライブラリの曲をアラーム音に選べるようにするためです。曲から切り出した短い区間はスマホに残り、どこにも送信されません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "음악 보관함의 곡을 알람 소리로 고를 수 있도록 하기 위해서입니다. 곡에서 잘라 낸 짧은 구간은 휴대폰에 남으며 어디에도 보내지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "让您可以从资料库中选择歌曲作为闹钟声音。从歌曲中截取的短片段留在手机上，不会发送到任何地方。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para makapili ka ng kanta mula sa iyong music library bilang tunog ng alarma. Nananatili sa iyong telepono ang maikling bahaging kinuha sa kanta at hindi ipinapadala kahit saan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อให้คุณเลือกเพลงจากคลังเพลงเป็นเสียงปลุก ช่วงสั้น ๆ ที่ตัดจากเพลงอยู่บนโทรศัพท์และไม่ส่งไปที่ใด"
           }
         }
       }

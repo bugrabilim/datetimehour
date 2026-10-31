@@ -1,0 +1,2846 @@
+{
+  "lang": "id",
+  "locale": "id-ID",
+  "ogLocale": "id_ID",
+  "langName": "Bahasa Indonesia",
+  "site": {
+    "name": "Saat Tarih",
+    "tagline": "Jam langsung, tanggal hari ini, dan waktu dunia",
+    "description": "Saat Tarih adalah situs gratis yang menampilkan secara langsung waktu setempat Anda, tanggal hari ini, nomor minggu, dan waktu di kota-kota di seluruh dunia."
+  },
+  "ui": {
+    "skip": "Langsung ke konten",
+    "home": "Beranda",
+    "world": "Jam dunia",
+    "privacy": "Privasi dan cookie",
+    "mainNav": "Navigasi utama",
+    "footerNav": "Navigasi kaki halaman",
+    "langSwitch": "Bahasa Indonesia",
+    "langSwitchLabel": "Beralih ke Bahasa Indonesia",
+    "themeToggle": "Beralih antara tema terang dan gelap",
+    "searchOpen": "Cari di situs",
+    "searchTitle": "Cari di situs",
+    "searchLabel": "Kata pencarian",
+    "searchPlaceholder": "Ketik kota, halaman, atau topik…",
+    "searchClose": "Tutup pencarian",
+    "searchEmpty": "Tidak ada hasil. Coba kata lain, misalnya nama kota atau \"minggu\".",
+    "searchHint": "Gunakan ↑ ↓ untuk berpindah, Enter untuk membuka, Esc untuk menutup.",
+    "searchCount": "{n} hasil",
+    "searchResults": "Hasil pencarian",
+    "searchError": "Indeks pencarian tidak dapat dimuat. Muat ulang halaman lalu coba lagi.",
+    "breadcrumb": "Remah roti",
+    "updated": "Terakhir diperbarui",
+    "noscript": "JavaScript harus diaktifkan di peramban Anda untuk melihat jam langsung.",
+    "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
+    "logoAlt": "Beranda Saat Tarih",
+    "calendar": "Kalender",
+    "tools": "Alat",
+    "langMenu": "Bahasa",
+    "menu": "Menu",
+    "prayer": "Jadwal salat",
+    "nature": "Musim",
+    "weather": "Cuaca",
+    "today": "Hari ini",
+    "faq": "Tanya jawab",
+    "settings": "Pengaturan",
+    "theme": "Tema terang / gelap",
+    "placeChange": "Ganti lokasi",
+    "placeTitle": "Lokasi Anda",
+    "placeNote": "Lokasi Anda tetap berada di perangkat dan dipakai di semua halaman untuk jadwal salat, musim, dan cuaca; lokasi tidak dikirim ke server.",
+    "placeClose": "Tutup",
+    "look": "Tampilan jam",
+    "lookFont": "Fon",
+    "lookFonts": {
+      "rounded": "Membulat",
+      "standard": "Standar",
+      "serif": "Serif",
+      "mono": "Monospasi",
+      "light": "Tipis"
+    },
+    "lookColor": "Warna jam",
+    "lookColors": {
+      "default": "Warna situs",
+      "ink": "Tinta",
+      "blue": "Biru",
+      "green": "Hijau",
+      "red": "Merah",
+      "purple": "Ungu"
+    },
+    "lookNote": "Pilihan Anda hanya disimpan di peramban ini."
+  },
+  "client": {
+    "format24": "24 jam",
+    "format12": "12 jam",
+    "seconds": "Detik",
+    "diffSame": "Sama dengan waktu Anda",
+    "diffAhead": "{d} lebih cepat dari Anda",
+    "diffBehind": "{d} lebih lambat dari Anda",
+    "hourShort": "j",
+    "minuteShort": "mnt",
+    "yourZone": "Zona waktu Anda",
+    "yearDone": "{p}% tahun ini telah berlalu",
+    "fullscreen": "Layar penuh",
+    "exitFullscreen": "Keluar dari layar penuh",
+    "weekShort": "Mg",
+    "words": {
+      "units": [
+        "nol",
+        "satu",
+        "dua",
+        "tiga",
+        "empat",
+        "lima",
+        "enam",
+        "tujuh",
+        "delapan",
+        "sembilan",
+        "sepuluh",
+        "sebelas",
+        "dua belas",
+        "tiga belas",
+        "empat belas",
+        "lima belas",
+        "enam belas",
+        "tujuh belas",
+        "delapan belas",
+        "sembilan belas"
+      ],
+      "tens": [
+        "",
+        "",
+        "dua puluh",
+        "tiga puluh",
+        "empat puluh",
+        "lima puluh"
+      ],
+      "join": " ",
+      "oh": "",
+      "sentence": "Sekarang pukul {h} lewat {m} menit",
+      "oclock": "Sekarang tepat pukul {h}",
+      "unitFirst": false
+    },
+    "syncLabel": "Waktu server",
+    "syncPending": "Menyinkronkan dengan jam server…",
+    "syncOk": "Jam perangkat Anda menunjukkan {device}: sinkron dengan server (selisih ±{ms} md).",
+    "syncAhead": "Jam perangkat Anda menunjukkan {device}: {s} dtk lebih cepat dari server.",
+    "syncBehind": "Jam perangkat Anda menunjukkan {device}: {s} dtk lebih lambat dari server.",
+    "syncOff": "Menggunakan jam perangkat Anda.",
+    "syncFail": "Jam server tidak dapat dijangkau; jam perangkat Anda yang ditampilkan ({device}).",
+    "daysLeft": "{n} hari lagi",
+    "today": "Hari ini",
+    "tomorrow": "Besok",
+    "passed": "Sudah lewat",
+    "upcomingNone": "Tidak ada hari mendatang.",
+    "refAhead": "{d} lebih cepat dari waktu {ref}",
+    "refBehind": "{d} lebih lambat dari waktu {ref}",
+    "refSame": "Sama dengan waktu {ref}",
+    "weekFound": "{date} jatuh pada minggu ke-{n} tahun ISO {y}.",
+    "pickDate": "Pilih tanggal.",
+    "daysShort": "hari",
+    "formatLabel": "Format waktu",
+    "fsWeatherNeed": "Pilih lokasi untuk cuaca:",
+    "fsWeatherLink": "pilih lokasi",
+    "fsWeatherFail": "Cuaca tidak dapat diambil."
+  },
+  "home": {
+    "title": "Jam Berapa Sekarang? Jam Langsung dan Tanggal Hari Ini | Saat Tarih",
+    "description": "Jam berapa sekarang dan tanggal berapa hari ini? Lihat waktu setempat Anda secara langsung, tanggal, nomor minggu, dan waktu di kota-kota dunia dalam satu halaman.",
+    "h1": "Jam berapa sekarang?",
+    "lead": "Saat Tarih adalah situs gratis yang menampilkan secara langsung waktu setempat Anda, tanggal hari ini, nomor minggu, dan waktu di kota-kota di seluruh dunia. Untuk semua orang, tanpa pendaftaran. Geser di antara {n} gaya jam dan tampilkan yang mana pun dalam layar penuh.",
+    "clockHeading": "Jam langsung",
+    "factsHeading": "Tentang hari ini",
+    "factWeek": "Nomor minggu (ISO)",
+    "factDoy": "Hari ke- dalam tahun",
+    "factLeft": "Sisa hari dalam tahun",
+    "factUnix": "Stempel waktu Unix",
+    "factUtc": "Waktu UTC",
+    "factProgress": "Kemajuan tahun",
+    "worldHeading": "Waktu di kota-kota dunia",
+    "worldLead": "Waktu setempat saat ini di kota-kota pilihan. Pilih kota untuk detailnya.",
+    "worldAll": "Lihat semua kota",
+    "faqHeading": "Pertanyaan yang sering diajukan",
+    "faq": [
+      {
+        "q": "Bagaimana waktu di situs ini dihitung?",
+        "a": "Waktu disinkronkan dengan server situs, sehingga tetap tepat walaupun jam perangkat Anda salah. Zona waktu dibaca dari pengaturan perangkat Anda. Sinkronisasi hanya mengirim beberapa permintaan kecil ke server tanpa data pribadi apa pun."
+      },
+      {
+        "q": "Apakah Turki memakai waktu musim panas?",
+        "a": "Tidak. Sejak 2016 Turki memakai UTC+3 sepanjang tahun dan jam tidak dimajukan atau dimundurkan. Banyak negara Eropa masih mengubah jamnya, sehingga selisih waktunya dengan Turki dapat bergeser satu jam dalam setahun."
+      },
+      {
+        "q": "Bagaimana nomor minggu dihitung?",
+        "a": "Menurut ISO 8601, minggu dimulai pada hari Senin dan minggu ke-1 adalah minggu yang memuat hari Kamis pertama dalam tahun itu. Karena itu, hari-hari pertama dan terakhir suatu tahun dapat termasuk ke dalam minggu tahun sebelahnya."
+      },
+      {
+        "q": "Bagaimana selisih waktu antarkota diketahui?",
+        "a": "Selisih UTC setiap kota saat ini diambil dari basis data zona waktu peramban Anda (IANA), dan perubahan waktu musim panas diterapkan secara otomatis. \"Lebih cepat dari Anda\" dan \"lebih lambat dari Anda\" selalu mengacu pada zona waktu Anda sendiri."
+      },
+      {
+        "q": "Bagaimana cara mengganti gaya jam?",
+        "a": "Geser jam ke kiri atau ke kanan; di komputer, gunakan titik-titik di bawahnya atau tombol panah pada papan ketik. Gayanya meliputi jam analog klasik dan minimalis, digital, analog dan digital sekaligus, dengan atau tanpa tanggal, jam dengan kalender bulanan, jam flip, jam dengan kata-kata, jam cincin, dan tanggal besar. Pilihan Anda diingat di perangkat ini."
+      },
+      {
+        "q": "Bagaimana melihat jam dalam layar penuh?",
+        "a": "Tekan tombol layar penuh di bawah jam. Untuk keluar, tekan tombol yang sama atau tombol Esc. Anda tetap dapat menggeser antargaya dalam layar penuh."
+      },
+      {
+        "q": "Apakah jam ini bekerja terlepas dari jam perangkat saya?",
+        "a": "Ya. Waktu disinkronkan dengan server situs, sehingga menunjukkan waktu yang benar walaupun jam perangkat Anda salah, dan memberi tahu seberapa jauh selisihnya. Zona waktu tetap dibaca dari pengaturan perangkat Anda."
+      },
+      {
+        "q": "Di mana saya dapat melihat hari libur resmi Turki dan Ramadan?",
+        "a": "Halaman kalender tahunan menampilkan hari libur resmi, hari bayram dan malam sebelumnya, malam kandil, serta bulan Ramadan dalam satu kalender. Bagian \"Hari mendatang\" di bagian atas halaman kalender memberi tahu berapa hari lagi menuju hari libur berikutnya."
+      }
+    ],
+    "upcomingHeading": "Hari libur resmi dan hari istimewa mendatang",
+    "upcomingLead": "Tanggal-tanggal berikutnya di kalender Turki.",
+    "upcomingAll": "Lihat kalender tahunan",
+    "upcomingNone": "Tidak ada hari mendatang.",
+    "globeLabel": "Bola dunia berputar yang menampilkan siang dan malam, meridian zona waktu, dan waktu setempat di kota-kota besar",
+    "globeCaption": "Sisi yang terang adalah siang, sisi yang gelap adalah malam. Garis-garisnya adalah meridian zona waktu setiap 15° (dengan selisih UTC); garis merah adalah titik nol, yaitu meridian Greenwich (UTC). Di samping setiap kota tertulis waktu setempatnya. Seret bola dunia untuk memutarnya; perbesar dengan dua jari, roda tetikus, atau tombol + dan −. Saat diperbesar, waktu setempat tempat-tempat di wilayah itu juga muncul. Jika diperbesar lagi, tampilan beralih ke peta OpenStreetMap (hingga tingkat jalan) dan bujur meridian serta potongan meridian dituliskan. Ubin peta diunduh dari OpenStreetMap saat itu juga (© kontributor OpenStreetMap); tekstur bola dunia berasal dari Natural Earth (domain publik). Ketuk dua kali untuk memperbesar.",
+    "globeTitle": "Bola dunia",
+    "globeInfo": "Tentang bola dunia",
+    "zoomIn": "Perbesar",
+    "zoomOut": "Perkecil",
+    "resetView": "Seluruh dunia",
+    "todayQ": "Tanggal berapa hari ini?",
+    "todayA": "Tanggal dan hari ini ditampilkan secara langsung di bilah atas setiap halaman, mengikuti jam yang disinkronkan dengan server, bukan jam perangkat Anda."
+  },
+  "world": {
+    "title": "Jam Dunia: Waktu Saat Ini di Kota-kota | Saat Tarih",
+    "description": "Jam berapa di Istanbul, London, New York, Tokyo, dan kota lain? Lihat waktu setempat secara langsung di kota-kota dunia dan selisihnya dengan Anda.",
+    "h1": "Jam dunia",
+    "lead": "Halaman ini menampilkan waktu setempat saat ini di {n} kota, antara lain Istanbul, London, New York, dan Tokyo, beserta selisih waktunya dengan Anda. Perubahan waktu musim panas diterapkan secara otomatis.",
+    "colCity": "Kota",
+    "colCountry": "Negara",
+    "colTime": "Waktu",
+    "colOffset": "Selisih UTC",
+    "colDiff": "Selisih dengan Anda",
+    "tableCaption": "Waktu setempat saat ini di kota-kota",
+    "customize": "Tambah / hapus kota",
+    "customizeLead": "Tambahkan atau hapus kota yang tampil di garis waktu; pilihan Anda hanya disimpan di peramban ini.",
+    "addCity": "Tambah kota",
+    "addZone": "Tambah zona waktu lain",
+    "add": "Tambah",
+    "remove": "Hapus",
+    "reset": "Kembalikan ke bawaan",
+    "empty": "Belum ada kota yang dipilih.",
+    "select": "Pilih…",
+    "done": "Selesai"
+  },
+  "city": {
+    "title": "Waktu Saat Ini di {name} ({country}) | Saat Tarih",
+    "description": "Jam berapa sekarang di {name}? Lihat waktu setempat secara langsung, tanggal, dan selisih UTC untuk {name}, {country}. Zona waktu: {tz}.",
+    "h1": "Waktu saat ini di {name}",
+    "lead": "Waktu setempat saat ini di {name}, {country}, ditampilkan di bawah. {name} berada di zona waktu {tz} dengan selisih standar UTC{std}.",
+    "dstYes": "{name} memakai waktu musim panas, sehingga selisih UTC-nya berubah satu jam dalam setahun.",
+    "dstNo": "{name} tidak memakai waktu musim panas, sehingga selisih UTC-nya tetap sepanjang tahun.",
+    "liveOffset": "Selisih UTC saat ini",
+    "liveDiff": "Selisih dengan Anda",
+    "otherHeading": "Waktu di kota lain",
+    "faqHeading": "Pertanyaan umum tentang waktu di {name}",
+    "faqTime": "Jam berapa di {name}?",
+    "faqTimeA": "Waktu setempat di {name} ditampilkan pada jam langsung di atas. Waktu itu dihitung dari zona waktu {tz} dan diperbarui setiap detik.",
+    "faqZone": "{name} berada di zona waktu apa?",
+    "faqZoneA": "{name} berada di zona waktu {tz} dengan selisih standar UTC{std}.",
+    "faqDst": "Apakah {name} memakai waktu musim panas?",
+    "faqDstYesA": "Ya. {name} memakai waktu musim panas; selisih UTC-nya berubah satu jam pada tanggal perubahan, dan halaman ini menerapkannya secara otomatis.",
+    "faqDstNoA": "Tidak. {name} tidak memakai waktu musim panas, sehingga selisih UTC-nya tetap sepanjang tahun.",
+    "breadcrumbWorld": "Jam dunia",
+    "sunrise": "Matahari terbit",
+    "sunset": "Matahari terbenam",
+    "daylen": "Panjang siang",
+    "sunNote": "Waktu matahari terbit dan terbenam bersifat perkiraan, dihitung dari tanggal hari ini dan lokasi kota (dapat meleset beberapa menit)."
+  },
+  "privacy": {
+    "title": "Kebijakan Privasi dan Cookie | Saat Tarih",
+    "description": "Data yang diproses Saat Tarih, penggunaan cookie dan penyimpanan lokal, statistik Umami, daftar email, dan hak Anda menurut UU perlindungan data Turki (KVKK).",
+    "h1": "Kebijakan privasi dan cookie",
+    "lead": "Halaman ini menjelaskan data apa yang diproses saat Anda memakai Saat Tarih, mengapa, dan apa hak Anda. Situs hanya mengumpulkan yang diperlukan; tidak ada akun, tidak ada iklan, dan tidak ada cookie; statistik dan layanan eksternal hanya berjalan dengan izin Anda.",
+    "sections": [
+      {
+        "id": "controller",
+        "h": "Pengendali data",
+        "p": [
+          "Pengendali data adalah Bumba Teknoloji Limited Şirketi (Ataşehir / Istanbul, Turki). Untuk pertanyaan atau permintaan terkait perlindungan data: [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "data",
+        "h": "Data apa yang kami proses?",
+        "ul": [
+          "**Waktu dan tanggal:** Waktu dan zona waktu perangkat Anda dibaca dan dihitung hanya di peramban Anda. Data ini tidak dikirim ke server dan tidak disimpan.",
+          "**Lokasi (jadwal salat):** Jika Anda menekan \"Gunakan lokasi saya\" di halaman jadwal salat, peramban memakai lokasi Anda hanya di perangkat untuk menghitung waktu. Koordinat tidak dikirim ke server dan tidak masuk statistik; pilihan terakhir Anda tetap di penyimpanan lokal peramban.",
+          "**Cuaca (layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie, halaman cuaca dan gaya jam dengan cuaca mengirim koordinat perkiraan provinsi atau lokasi pilihan Anda (sekitar 1 km) langsung dari peramban ke Open-Meteo (api.open-meteo.com), penyedia datanya; alamat IP Anda juga sampai ke Open-Meteo. Tanpa izin tidak ada permintaan yang dibuat dan catatan singkat ditampilkan sebagai gantinya. Server Saat Tarih tidak melihat atau menyimpan koordinat ini; ketentuan privasi Open-Meteo berlaku.",
+          "**Peta (bola dunia, layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie dan memperbesar bola dunia di beranda melewati tingkat tertentu, ubin peta diunduh langsung ke peramban Anda dari server OpenStreetMap (tile.openstreetmap.org); alamat IP Anda dan alamat ubin wilayah yang Anda lihat sampai ke OpenStreetMap Foundation. Tanpa izin, atau selama bola dunia diperkecil, permintaan ini tidak dibuat. Server Saat Tarih tidak melihatnya; ketentuan privasi OpenStreetMap sendiri yang berlaku.",
+          "**Kiblat dan masjid terdekat:** Arah kiblat, jarak, dan waktu kiblat dihitung di peramban Anda. Untuk kompas, sensor orientasi ponsel dibaca hanya di peramban (iPhone meminta izin) dan tidak pernah dikirim ke mana pun. Jika Anda menekan \"Tampilkan masjid\" dan telah mengizinkan layanan eksternal, koordinat tempat terpilih yang dibulatkan ke dua desimal (sekitar 1 km) dikirim dari peramban ke layanan Overpass (overpass-api.de) yang menyediakan data OpenStreetMap; alamat IP Anda juga sampai ke layanan ini. Server Saat Tarih tidak melihat koordinat ini.",
+          "**Musik alarm (YouTube, layanan eksternal, dengan izin):** Jika Anda menambahkan tautan YouTube ke alarm di alat alarm dan mengizinkan layanan eksternal, saat alarm berbunyi video dimuat ke peramban Anda dengan pemutar mode privasi yang ditingkatkan dari YouTube (youtube-nocookie.com); alamat IP Anda dan ID video sampai ke Google (YouTube), dan pemutar dapat menyimpan datanya sendiri di peramban Anda. Tautan hanya tersimpan di peramban ini, bersama alarm Anda. Tanpa izin, pemutar tidak dimuat dan alarm berbunyi dengan suaranya sendiri. Server Saat Tarih tidak melihatnya; ketentuan privasi YouTube (Google) sendiri yang berlaku.",
+          "**Polling rapat:** Judul polling, waktu usulan, nama penyelenggara dan peserta, serta jawaban mereka berada di bagian tautan setelah tanda #; peramban tidak mengirim bagian itu ke server, sehingga server Saat Tarih dan statistik tidak melihatnya. Siapa pun yang Anda beri tautannya (lewat pesan atau email) dapat melihatnya. Polling dan jawaban yang Anda lihat hanya disimpan di peramban ini, di kunci sth-polls.",
+          "**Formulir daftar email:** Alamat email yang Anda isi, persetujuan yang Anda berikan dengan tombol \"Saya setuju\" di jendela yang terbuka, bahasa yang dipilih, dan halaman formulir diproses oleh layanan daftar bersama Bumba Group (bumbagroup.com). Pendaftaran memakai konfirmasi ganda: Anda baru ditambahkan setelah mengklik tautan di email konfirmasi, dan setiap email memuat tautan berhenti berlangganan satu klik. Lihat [pemberitahuan privasi bersama](https://bumbagroup.com/liste/aydinlatma?dil=en) untuk rinciannya.",
+          "**Log server:** Server yang menampung situs menyimpan log akses standar untuk setiap permintaan, berisi alamat IP, informasi peramban, halaman yang diminta, dan waktunya. Log ini hanya dipakai untuk keamanan dan pemecahan masalah, bukan untuk membuat profil orang.",
+          "**Statistik kunjungan (Umami, dengan izin):** Hanya jika Anda mengizinkan statistik di spanduk atau preferensi cookie, Umami yang berjalan di server kami sendiri menghitung tayangan halaman dan tindakan berikut: penggantian bahasa dan tema, apakah pencarian menemukan hasil, bergabung dengan daftar, memilih gaya jam, layar penuh, penggunaan pertama suatu alat, jenis pilihan lokasi (provinsi atau lokasi), serta membuka atau mengunduh jadwal imsakiyah Ramadan. Dalam proses itu Umami memproses peramban, sistem operasi dan jenis perangkat, bahasa, ukuran layar, alamat halaman asal Anda, serta negara dan kota yang diturunkan dari alamat IP; alamat IP itu sendiri tidak disimpan. Umami tidak memakai cookie, tetapi mengaitkan kunjungan dengan sesi berpseudonim, jadi tidak anonim. Kata yang Anda ketik di pencarian, alamat email, dan lokasi Anda tidak dikirim. Anda dapat menarik izin kapan saja lewat tautan \"Preferensi cookie\" di menu pengaturan; Umami berhenti mulai halaman berikutnya.",
+          "**Sinkronisasi waktu:** Untuk menampilkan waktu terlepas dari jam perangkat, peramban Anda mengirim beberapa permintaan kecil ke server situs dan membaca header tanggal pada jawabannya. Permintaan ini hanya tercatat di log akses standar server; tidak ada hal lain yang dikirim."
+        ]
+      },
+      {
+        "id": "ios-app",
+        "h": "Aplikasi iPhone dan iPad",
+        "p": [
+          "Aplikasi Saat Tarih untuk iPhone dan iPad mengikuti prinsip yang sama: tanpa akun, tanpa iklan, tanpa pelacakan, dan tanpa analitik. Data yang ditangani di aplikasi:"
+        ],
+        "ul": [
+          "**Lokasi:** Jika Anda mengetuk \"Gunakan lokasi saya\", lokasi Anda dipakai di ponsel untuk menghitung jadwal salat dan mencari provinsi terdekat; lokasi perkiraan (sekitar 1 km) disimpan hanya di ponsel. Opsi \"Otomatis\" pada widget juga memakai lokasi Anda hanya di ponsel.",
+          "**Cuaca:** Cuaca di aplikasi berasal dari Apple Cuaca (WeatherKit); untuk itu koordinat perkiraan provinsi terpilih atau lokasi Anda dikirim ke Apple. Kami tidak pernah melihat data ini; ketentuan privasi Apple berlaku.",
+          "**Peta:** Bola dunia di jam dunia ditampilkan dengan Apple Peta; citra peta diunduh dari Apple.",
+          "**Kalender:** Hanya jika Anda mengizinkannya, acara dari kalender di ponsel ditampilkan di aplikasi; acara dibaca di ponsel dan tidak pernah dikirim. Penambahan dan penghapusan acara dilakukan lewat layar kalender iPhone sendiri dan hanya dengan konfirmasi Anda.",
+          "**Notifikasi dan alarm:** Notifikasi waktu salat; notifikasi hari istimewa, awal musim, fase Bulan, matahari terbit dan terbenam, ringkasan cuaca pagi, setiap jam, dan perubahan waktu musim panas (semuanya aktif secara bawaan kecuali setiap jam; dapat diubah di Pengaturan › Notifikasi); alarm dan pengatur waktu dijadwalkan di ponsel tanpa server. Hanya ringkasan cuaca yang menghubungi layanan cuaca (lihat poin cuaca di atas). Daftar tetap mutakhir berkat penyegaran latar belakang iOS; pengumuman suara dibuat di ponsel Anda.",
+          "**Daftar email:** Jika Anda bergabung dari halaman Tentang, alamat email Anda dikirim ke daftar Bumba bersama persis seperti formulir di situs; catatan tentang daftar email juga berlaku untuk aplikasi.",
+          "**Lencana:** Lencana pencapaian dan kemajuan Anda (lencana yang diperoleh dan tanggalnya, model jam yang telah dilihat, jumlah hari pemakaian berturut-turut) disimpan hanya di ponsel dan tidak pernah dikirim; Anda dapat menghapusnya kapan saja dengan \"Hapus lencana\" di Alat › Lencana.",
+          "**Latihan interval:** Selama latihan interval yang Anda mulai berjalan, aplikasi memakai audio latar iOS agar dapat mengumumkan pergantian fase saat layar terkunci; suaranya dibuat di ponsel dan tidak ada data yang dikirim.",
+          "**Foto:** Foto yang Anda pilih untuk jam layar penuh atau hitung mundur diambil melalui pemilih foto iPhone (akses ke pustaka foto tidak diminta); salinan yang diperkecil disimpan hanya di ponsel dan tidak pernah dikirim. Foto untuk tayangan slide (hingga 10) juga tetap di ponsel. Kartu berbagi jadwal salat dan hitung mundur serta file CSV dibuat di ponsel dan hanya dikirim ke aplikasi yang Anda pilih.",
+          "**Preferensi:** Preferensi seperti model jam, provinsi, dan jam dunia disimpan hanya di ponsel dan terhapus saat aplikasi dihapus.",
+          "**Kiblat dan masjid terdekat:** Arah kiblat dihitung di ponsel; kompas memakai sensor orientasi ponsel (dengan izin lokasi, lokasi juga dipakai di ponsel untuk utara sejati). Di layar \"Masjid terdekat\", pencarian memakai Apple Peta: kata pencarian dan pusat area yang dibulatkan ke dua desimal dikirim ke Apple; ketentuan privasi Apple berlaku.",
+          "**Apple Watch, Siri, dan Layar Terkunci:** Aplikasi Apple Watch menghitung jadwal salat di jam tangan; jika \"Tempat dari iPhone\" dipilih, nama dan koordinat tempat dikirim dari iPhone ke jam tangan (WatchConnectivity milik Apple) dan tidak ke tempat lain; jika \"Lokasi saya\" dipilih di jam tangan, lokasi hanya dipakai di jam tangan. Tindakan Siri dan Pintasan (pengatur waktu, alarm, jam layar penuh, salat berikutnya, tanggal) berjalan di ponsel; Apple memproses permintaan suara. Aktivitas Langsung di Layar Terkunci (penghitung, salat berikutnya) dibuat di ponsel.",
+          "**Kamera, tidur, dan fokus:** Untuk membaca kode QR atau kode batang tugas mematikan alarm, kamera hanya terbuka saat Anda menyimpan kode dan saat mematikan alarm (izin diminta pertama kali); gambar diproses di perangkat, tidak disimpan dan tidak dikirim, dan hanya nilai yang terbaca yang disimpan bersama alarm. Tugas goyang dan langkah memakai sensor gerak hanya selama layar tugas terbuka; langkah tidak dicatat. Riwayat pomodoro (hari, menit, nama tugas) dan jadwal tidur tetap di perangkat; suara latar pomodoro dan suara tidur dibuat di perangkat. Alarm pintar: jika Anda memulai sesi di layar Tidur, sensor gerak (akselerometer) dibaca selama jendela alarm pintar dan alarm berbunyi lebih awal saat ada tanda tidur ringan; data gerakan hanya ada di memori serta tidak disimpan atau dikirim. Tidak ada pelacakan tidur (tahap tidur, rekaman) dan mikrofon tidak dipakai.",
+          "**Ibadah:** Penanda Al-Qur'an, ukuran teks, hitungan zikir, pencatat salat dan puasa (salat yang dikerjakan, hitungan qada, hari berpuasa), dan jumlah yang Anda isi di kalkulator zakat tetap hanya di perangkat; tidak dikirim ke mana pun dan tidak dipakai untuk statistik atau lencana. Teks Al-Qur'an dan doa sudah ada di dalam aplikasi. Saat Anda mengetuk tautan ke situs terjemahan Diyanet, situs itu terbuka di peramban. Harga emas untuk zakat Anda ketik sendiri; aplikasi tidak mengambil harga.",
+          "**Sinkronisasi iCloud:** Jika \"Sinkronkan dengan iCloud\" di Pengaturan aktif (bawaan), pengaturan, jam dunia, hitung mundur, tempat tersimpan, catatan pomodoro dan tidur, serta catatan ibadah disinkronkan melalui penyimpanan kunci-nilai iCloud milik Apple dengan iPhone, iPad, dan Mac yang masuk ke Akun Apple yang sama. Data ini tetap di akun iCloud Anda menurut ketentuan Apple; kami tidak dapat mengaksesnya dan data ini tidak pernah sampai ke server kami. Lokasi, alarm, pengatur waktu yang berjalan, pengaturan notifikasi, lencana, dan foto tidak disinkronkan. Mematikan sakelar menghentikan sinkronisasi di perangkat itu.",
+          "**Kesehatan, jurnal pagi, foto alarm, dan jam mengambang:** Jika Anda mengaktifkan \"Simpan ke Apple Kesehatan\", setiap latihan interval yang selesai ditulis ke app Kesehatan sebagai latihan (jenis, waktu mulai, durasi); aplikasi tidak membaca data kesehatan Anda dan data ini tidak menuju server mana pun. Jurnal pagi (suasana hati, tidur, niat, catatan) hanya tersimpan di perangkat Anda (di perangkat Akun Apple Anda jika sinkronisasi iCloud aktif). Untuk tugas alarm foto, fotonya tidak disimpan; hanya sidik jari kecil (72 tingkat abu-abu) yang disimpan di ponsel untuk perbandingan. Metode perhitungan, alarm waktu salat (iOS 26+), dan tombol Pusat Kontrol tetap di ponsel. Jam mengambang adalah jendela gambar-dalam-gambar; tidak memutar suara dan tidak mengirim data.",
+          "**Alarm musik, pengingat lokasi dan kalender, pemblokiran saat fokus, Mac, Apple TV, dan Vision Pro:** Untuk suara alarm, potongan 30 detik dari lagu yang Anda pilih di pustaka musik atau File ditulis ke file suara di ponsel; lagunya tidak dikirim ke mana pun (akses pustaka musik hanya diminta saat Anda memilih). Untuk pengingat lokasi, iPhone sendiri yang mendeteksi kedatangan dan kepergian; tempat pengingat tetap di ponsel dan peta berasal dari Apple. Saat Anda memasang alarm untuk acara kalender, hanya judul dan waktu acara itu yang dipakai. Pemblokiran saat fokus memakai kerangka Durasi Layar milik Apple; aplikasi dan situs yang Anda pilih adalah token terenkripsi Apple dan aplikasi tidak dapat melihat apa itu. Aplikasi Mac, Apple TV, dan Vision Pro menghitung jadwal salat di perangkat; jika Anda mengizinkan lokasi, lokasi hanya dipakai di perangkat untuk mencari provinsi terdekat."
+        ]
+      },
+      {
+        "id": "android-app",
+        "h": "Aplikasi Android",
+        "p": [
+          "Aplikasi Saat Tarih untuk Android mengikuti prinsip yang sama: tanpa akun, tanpa iklan, tanpa pelacakan, dan tanpa analitik. Data yang ditangani di aplikasi:"
+        ],
+        "ul": [
+          "**Lokasi:** Jika Anda mengetuk \"Gunakan lokasi saya\", hanya izin lokasi perkiraan yang diminta; lokasi dipakai di ponsel untuk menghitung jadwal salat dan mencari provinsi atau distrik terdekat, dan lokasi perkiraan (sekitar 1 km) disimpan hanya di ponsel.",
+          "**Cuaca:** Cuaca di aplikasi berasal dari Open-Meteo (open-meteo.com); untuk itu koordinat tempat terpilih yang dibulatkan ke dua desimal (sekitar 1 km) dikirim ke Open-Meteo, dan alamat IP Anda sampai ke server Open-Meteo bersama permintaan itu. Untuk cuaca kota di bola dunia yang berputar, hanya koordinat kota-kota itu yang dikirim. Ketentuan privasi Open-Meteo berlaku; kami tidak pernah melihat data ini.",
+          "**Bola dunia dan peta:** Bola dunia yang berputar digambar dari gambar di dalam aplikasi; tidak ada layanan peta yang dihubungi.",
+          "**Kalender:** Izin kalender hanya diminta jika Anda mengetuk \"Tampilkan kalender ponsel saya\"; acara dibaca di ponsel dan tidak pernah dikirim. Acara ditambahkan lewat aplikasi kalender ponsel dan dihapus hanya dengan konfirmasi Anda.",
+          "**Notifikasi, alarm, dan latihan interval:** Notifikasi waktu salat dan jenis notifikasi lainnya (hari istimewa, awal musim, fase Bulan, matahari terbit dan terbenam, ringkasan cuaca pagi, setiap jam, perubahan waktu musim panas; semuanya aktif secara bawaan kecuali setiap jam, dapat diubah di Pengaturan › Notifikasi), alarm, dan pengatur waktu dijadwalkan di ponsel tanpa server; izin alarm tepat dipakai agar berbunyi tepat waktu. Selama latihan interval yang Anda mulai berjalan, layanan latar depan yang tampil di notifikasi mengumumkan pergantian fase dengan mesin teks-ke-suara ponsel. Pengumuman suara dibuat di ponsel Anda.",
+          "**Foto:** Foto yang Anda pilih untuk jam layar penuh atau hitung mundur diambil melalui pemilih foto Android (izin galeri tidak diminta); salinan yang diperkecil disimpan hanya di file aplikasi. Foto untuk tayangan slide (hingga 10) juga tetap di ponsel. Kartu berbagi jadwal salat dan hitung mundur serta file CSV dibuat di ponsel dan hanya dikirim ke aplikasi yang Anda pilih.",
+          "**Daftar email:** Jika Anda bergabung dari halaman Tentang, alamat email Anda dikirim ke daftar Bumba bersama persis seperti formulir di situs; catatan tentang daftar email juga berlaku untuk aplikasi.",
+          "**Lencana dan preferensi:** Lencana dan preferensi seperti model jam, lokasi, dan jam dunia disimpan hanya di ponsel dan terhapus saat aplikasi dihapus. Jika pencadangan Android aktif di ponsel Anda, catatan ini (dan salinan foto yang Anda pilih) dapat masuk ke cadangan perangkat di akun Google Anda; cadangan itu tunduk pada ketentuan Google dan kami tidak dapat mengaksesnya.",
+          "**Kiblat dan masjid terdekat:** Arah kiblat dan kompas dihitung di ponsel. Di layar \"Masjid terdekat\", koordinat yang dibulatkan ke dua desimal (sekitar 1 km) dikirim ke layanan Overpass (overpass-api.de) yang menyediakan data OpenStreetMap; alamat IP Anda sampai ke layanan ini. Mengetuk masjid membuka aplikasi peta Anda.",
+          "**Jam tangan Wear OS dan pintasan:** Aplikasi Wear OS menghitung jadwal salat di jam tangan; jika \"Lokasi saya\" dipilih, lokasi perkiraan hanya dipakai di jam tangan dan tidak dikirim ke mana pun. Pengatur waktu dan alarm yang dipasang Asisten atau aplikasi lain di Saat Tarih disimpan hanya di ponsel; screensaver dan notifikasi penghitung yang berjalan dibuat di ponsel.",
+          "**Kamera, tidur, dan fokus:** Kode QR atau kode batang tugas mematikan alarm dibaca oleh pemindai kode Google (layanan Google Play): aplikasi tidak meminta izin kamera dan tidak pernah melihat gambarnya; hanya nilai yang terbaca yang disimpan di ponsel bersama alarm. Tugas goyang dan langkah memakai akselerometer hanya selama layar alarm terbuka; langkah tidak dicatat. Riwayat pomodoro (hari, menit, nama tugas) dan jadwal tidur tetap di ponsel; suara latar pomodoro dan suara tidur dibuat di ponsel (layanan latar depan memungkinkan suara tetap berbunyi saat layar mati, dengan \"Hentikan suara\" di notifikasi). Alarm pintar: jika Anda memulai sesi di layar Tidur, sensor gerak (akselerometer) dibaca selama jendela alarm pintar dan alarm berbunyi lebih awal saat ada tanda tidur ringan; data gerakan hanya ada di memori serta tidak disimpan atau dikirim. Tidak ada pelacakan tidur (tahap tidur, rekaman) dan mikrofon tidak dipakai. Sesi berjalan sebagai layanan latar depan (dengan \"Hentikan\" di notifikasi). Jika Anda menambahkan tautan Spotify atau YouTube ke alarm, tautan dibuka di aplikasi tersebut saat alarm berbunyi; aplikasi hanya membuka tautan dan tidak mengakses musiknya.",
+          "**Ibadah:** Penanda Al-Qur'an, ukuran teks, hitungan zikir, pencatat salat dan puasa (salat yang dikerjakan, hitungan qada, hari berpuasa), dan jumlah yang Anda isi di kalkulator zakat tetap hanya di ponsel; tidak dikirim ke mana pun dan tidak dipakai untuk statistik atau lencana. Teks Al-Qur'an dan doa sudah ada di dalam aplikasi. Saat Anda mengetuk tautan ke situs terjemahan Diyanet, situs itu terbuka di peramban. Harga emas untuk zakat Anda ketik sendiri; aplikasi tidak mengambil harga.",
+          "**Kesehatan, jurnal pagi, foto alarm, mode senyap, dan jam mengambang:** Jika Anda mengaktifkan \"Simpan ke Health Connect\", hanya izin menulis olahraga yang diminta dan setiap latihan interval yang selesai ditulis sebagai sesi olahraga (jenis, waktu mulai, durasi); aplikasi tidak membaca data kesehatan Anda. Jurnal pagi hanya tersimpan di ponsel (dan di cadangan Google ponsel). Untuk tugas alarm foto, fotonya diambil dengan kamera ponsel sendiri (izin kamera tidak diminta) dan tidak disimpan; hanya sidik jari kecil yang disimpan. Akses Jangan Ganggu untuk \"Senyapkan saat waktu salat\" hanya dipakai jika Anda mengaktifkannya dan memberikannya di pengaturan ponsel. Jam mengambang memakai izin \"Tampilkan di atas aplikasi lain\"; jam itu tidak membaca apa pun di layar dan hanya menggambar jam. Widget dan petak Setelan Cepat memakai penghitung aplikasi sendiri.",
+          "**Pengingat lokasi dan kalender, pemblokiran saat fokus, dan Android TV:** Jika Anda menambahkan pengingat lokasi, akses lokasi akurat dan \"Izinkan sepanjang waktu\" diminta; geofencing layanan Google Play mendeteksi kedatangan dan kepergian, tempat pengingat tetap di ponsel, dan aplikasi tidak mengirim lokasi Anda ke mana pun. Saat Anda memasang alarm untuk acara kalender, hanya judul dan waktu acara itu yang dipakai. Jika Anda memberi akses penggunaan untuk pemblokiran saat fokus, aplikasi membaca nama aplikasi yang sedang di depan sekali per detik di ponsel, hanya selama waktu kerja pomodoro; informasi ini tidak disimpan atau dikirim. Layar Android TV memakai tempat yang dipilih di aplikasi."
+        ]
+      },
+      {
+        "id": "eklenti",
+        "h": "Ekstensi peramban",
+        "p": [
+          "Ekstensi peramban Saat Tarih (Chrome, Edge, Firefox) tidak pernah terhubung ke internet: jam berasal dari perangkat Anda, sedangkan jadwal salat dan tanggal Hijriah dihitung di perangkat dari data di dalam ekstensi. Hanya provinsi pilihan Anda dan pengaturan 24/12 jam yang disimpan di penyimpanan ekstensi peramban dan dihapus saat ekstensi dilepas. Tanpa statistik, iklan, atau pelacakan."
+        ]
+      },
+      {
+        "id": "cookies",
+        "h": "Cookie dan penyimpanan peramban",
+        "p": [
+          "Saat Tarih tidak memasang cookie apa pun. Pada kunjungan pertama, spanduk di bagian bawah halaman meminta izin Anda untuk statistik kunjungan (Umami) dan layanan eksternal (Open-Meteo, OpenStreetMap, YouTube); keduanya tetap nonaktif sampai Anda mengizinkannya. Anda dapat mengubah pilihan kapan saja lewat tautan \"Preferensi cookie\" di menu pengaturan. Untuk mengingat pilihan Anda kami memakai penyimpanan lokal peramban (localStorage); item ini termasuk kelompok yang diperlukan, tetap di perangkat Anda, dan tidak dikirim ke server. Anda dapat menghapusnya kapan saja di pengaturan peramban. Kebijakan cookie bersama Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+        ],
+        "table": {
+          "head": [
+            "Nama",
+            "Tujuan",
+            "Masa simpan"
+          ],
+          "rows": [
+            [
+              "bumba-cerez",
+              "Mengingat pilihan Anda di spanduk cookie (statistik dan layanan eksternal) serta versi kebijakan.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-theme",
+              "Mengingat pilihan tema terang atau gelap.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-lang",
+              "Mengingat pilihan bahasa.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-prefs",
+              "Mengingat tampilan 24 atau 12 jam, pengaturan detik, model jam yang terakhir dipilih, dan tampilan jam (fon, warna).",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-sw",
+              "Mengingat keadaan stopwatch dan catatan waktu putaran.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-cd",
+              "Mengingat hitung mundur.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-alarms",
+              "Mengingat alarm yang Anda atur, suara setiap alarm, dan tautan YouTube-nya bila ada.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-pomo",
+              "Mengingat durasi pomodoro, target harian, label yang dipilih, dan keadaannya.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-pomo-log",
+              "Menyimpan sesi kerja yang selesai (tanggal, durasi, nama tugas dan label opsional) di perangkat ini untuk statistik pomodoro; paling banyak 1.000 entri.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-pomo-noise",
+              "Mengingat suara latar pomodoro dan volumenya.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-hiit",
+              "Mengingat periode pengatur waktu interval, jumlah putaran, dan pengaturan aba-aba suara.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-metro",
+              "Mengingat tempo metronom, ketukan per birama, dan pengaturan suara.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-world",
+              "Mengingat kota yang dipilih untuk jam dunia beserta urutannya.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-place",
+              "Mengingat provinsi atau lokasi yang terakhir dipilih untuk halaman jadwal salat, alam, dan cuaca.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-prayer",
+              "Mengingat metode perhitungan jadwal salat dan Asar (standar atau Hanafi) yang dipilih; tidak ada yang disimpan selama Diyanet dan Asar standar dipilih.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-conv",
+              "Mengingat kota yang dipilih di pengonversi waktu.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-planner",
+              "Mengingat kota yang dipilih di perencana rapat.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-polls",
+              "Menyimpan polling rapat yang Anda buat atau buka dan jawaban yang diterima (hingga 20 polling).",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-poll-name",
+              "Mengingat nama yang Anda tulis di polling rapat untuk jawaban berikutnya.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-wake",
+              "Mengingat apakah alat menjaga layar tetap menyala.",
+              "Sampai Anda menghapusnya"
+            ]
+          ]
+        }
+      },
+      {
+        "id": "legal-basis",
+        "h": "Dasar hukum",
+        "ul": [
+          "Daftar email: persetujuan eksplisit Anda (KVKK pasal 5/1). Anda dapat menariknya kapan saja dengan tautan berhenti berlangganan di setiap email.",
+          "Statistik kunjungan (Umami) dan layanan eksternal (Open-Meteo, OpenStreetMap, YouTube): persetujuan eksplisit yang Anda berikan di spanduk cookie (KVKK pasal 5/1). Saat Anda mengizinkan layanan eksternal, alamat IP Anda sampai ke penyedia tersebut, yang mungkin berada di luar negeri; persetujuan Anda juga mencakup hal ini. Anda dapat menariknya lewat tautan \"Preferensi cookie\".",
+          "Log server: kepentingan sah kami untuk menjaga situs tetap aman dan berfungsi (KVKK pasal 5/2-f).",
+          "Preferensi Anda: kepentingan sah (KVKK pasal 5/2-f); data hanya tersimpan di perangkat Anda."
+        ]
+      },
+      {
+        "id": "rights",
+        "h": "Hak Anda",
+        "p": [
+          "Berdasarkan pasal 11 Undang-Undang Perlindungan Data Pribadi Turki (KVKK), Anda dapat menanyakan apakah data Anda diproses, meminta informasi tentangnya, meminta perbaikan atau penghapusan, dan menolak pemrosesannya. Kirim permintaan Anda ke [bilgi@bumbagroup.com](mailto:bilgi@bumbagroup.com)."
+        ]
+      },
+      {
+        "id": "changes",
+        "h": "Perubahan",
+        "p": [
+          "Teks ini diperbarui seiring perubahan situs. Tanggal versi yang berlaku ditampilkan di bagian atas halaman."
+        ]
+      }
+    ]
+  },
+  "notFound": {
+    "title": "Halaman tidak ditemukan (404) | Saat Tarih",
+    "h1": "Halaman itu tidak kami temukan",
+    "p": "Mungkin alamatnya salah ketik atau halamannya sudah dipindahkan. Anda dapat melihat waktu saat ini di beranda.",
+    "cta": "Kembali ke beranda"
+  },
+  "serverError": {
+    "title": "Terjadi kesalahan (500) | Saat Tarih",
+    "h1": "Terjadi kesalahan",
+    "p": "Server sedang mengalami masalah sementara. Silakan coba lagi beberapa menit lagi.",
+    "cta": "Kembali ke beranda"
+  },
+  "list": {
+    "heading": "Dapatkan kabar terbaru",
+    "lead": "Ingin menerima kabar tentang Saat Tarih lewat email? Anda dapat berhenti berlangganan kapan saja dengan satu klik.",
+    "emailLabel": "Alamat email Anda",
+    "submit": "Daftar",
+    "ok": "Kami telah mengirim email konfirmasi; klik tautan di dalamnya untuk menyelesaikan pendaftaran.",
+    "err": "Pendaftaran Anda tidak dapat disimpan. Periksa alamat email dan kotak centang, lalu coba lagi sebentar lagi.",
+    "noteLink": "https://bumbagroup.com/liste/aydinlatma?dil=en",
+    "popupTitle": "Pemberitahuan privasi daftar email",
+    "popupText": "Alamat email Anda diproses oleh Bumba Teknoloji Limited Şirketi hanya untuk mendaftarkan Anda ke daftar ini. Anda dapat berhenti berlangganan kapan saja dengan satu klik.",
+    "readNote": "Baca pemberitahuan privasi",
+    "consentText": "Saya telah membaca pemberitahuan privasi dan setuju menerima email.",
+    "accept": "Saya setuju",
+    "cancel": "Batal",
+    "loading": "Memuat teks…",
+    "loadFail": "Teks tidak dapat dimuat. Anda dapat membaca teks lengkap melalui tautan di bawah dan mencoba lagi nanti.",
+    "fullText": "Teks lengkap",
+    "label": "Daftar email",
+    "formErr": "Pendaftaran gagal. Periksa alamat email Anda lalu coba lagi nanti."
+  },
+  "badge": {
+    "title": "Bumba Life, bagian dari Bumba Group",
+    "alt": "Produk Bumba Life"
+  },
+  "llms": {
+    "summary": "Saat Tarih adalah situs gratis yang menampilkan secara langsung waktu setempat Anda, tanggal hari ini, nomor minggu, dan waktu di kota-kota di seluruh dunia. Ini adalah produk Bumba Life (Bumba Group).",
+    "pages": "Halaman",
+    "cities": "Halaman kota",
+    "about": "Tentang",
+    "aboutText": "Waktu disinkronkan dengan jam server situs (terlepas dari jam perangkat); zona waktu dibaca dari peramban dan tidak ada data pribadi yang dikirim. Tersedia dalam lima belas bahasa: Turki, Inggris, Jerman, Azerbaijan, Arab, Indonesia, Urdu, Persia, Prancis, Rusia, Jepang, Korea, Tionghoa, Filipino, dan Thai. Pengendali data: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Kontak: bilgi@bumbagroup.com."
+  },
+  "stage": {
+    "label": "Gaya jam",
+    "hint": "Geser antargaya atau gunakan tanda panah.",
+    "prev": "Gaya sebelumnya",
+    "next": "Gaya berikutnya",
+    "slide": "{n} / {total}: {name}",
+    "carousel": "korsel",
+    "slideRole": "slide",
+    "dots": "Pilih gaya",
+    "models": {
+      "classic": "Analog klasik",
+      "minimal": "Analog minimalis",
+      "analog-date": "Analog dengan tanggal",
+      "digital": "Digital",
+      "digital-date": "Digital dengan tanggal",
+      "duo": "Analog dan digital",
+      "duo-date": "Analog, digital, dan tanggal",
+      "calendar": "Digital dengan kalender bulanan",
+      "calendar-analog": "Analog dengan kalender bulanan",
+      "flip": "Jam flip",
+      "words": "Jam dengan kata-kata",
+      "rings": "Jam cincin",
+      "wx-analog": "Analog dengan cuaca",
+      "wx-digital": "Digital, tanggal, dan cuaca",
+      "wx-stack": "Analog, digital, dan cuaca",
+      "bigdate": "Tanggal besar",
+      "stack": "Analog dengan digital di bawahnya",
+      "wx-analog-date": "Analog, tanggal, dan cuaca",
+      "wx-full": "Analog, digital, tanggal, dan cuaca",
+      "h-classic": "Analog berdampingan",
+      "h-analog-date": "Analog dan tanggal berdampingan",
+      "h-stack": "Analog dan digital berdampingan",
+      "h-wx-analog": "Analog dan cuaca berdampingan",
+      "h-wx-stack": "Analog, digital, dan cuaca berdampingan",
+      "h-wx-analog-date": "Analog, tanggal, dan cuaca berdampingan",
+      "h-wx-full": "Analog, digital, tanggal, dan cuaca berdampingan",
+      "wx-digital-cal": "Digital, tanggal, cuaca, dan kalender bulanan",
+      "wx-digital-cal-week": "Digital, tanggal, cuaca, kalender bulanan, dan prakiraan mingguan"
+    },
+    "source": "Jam ini tidak bergantung pada perangkat Anda: waktunya dibaca dari jam server Saat Tarih yang disinkronkan dengan NTP dan diukur ulang setiap 15 menit.",
+    "info": "Tentang sumber waktu jam ini",
+    "infoTitle": "Dari mana waktu ini berasal?",
+    "infoClose": "Tutup",
+    "infoSeconds": "Ketuk jam untuk menampilkan atau menyembunyikan detik. Detik awalnya tampil pada jam digital dan tersembunyi pada jam analog."
+  },
+  "calendar": {
+    "title": "Kalender {year}: Hari Libur Resmi Turki dan Ramadan | Saat Tarih",
+    "description": "Hari libur resmi Turki {year}, tanggal Ramadan dan Iduladha, hari menjelang bayram, malam kandil, dan bulan Ramadan dalam satu kalender tahunan.",
+    "h1": "Kalender {year}",
+    "lead": "Pada {year}, Ramadan berlangsung {ramadan}, Ramazan Bayramı (Idulfitri) jatuh pada {rb}, dan Kurban Bayramı (Iduladha) pada {kb}. Ada {n} hari libur resmi dalam setahun, {w} di antaranya jatuh pada hari kerja. Hari menjelang bayram dan Hari Republik adalah setengah hari kerja.",
+    "legend": "Keterangan",
+    "legendLabel": "Keterangan kalender",
+    "types": {
+      "holiday": "Hari libur resmi",
+      "half": "Setengah hari (malam menjelang)",
+      "religious": "Hari atau malam keagamaan",
+      "ramadan": "Bulan Ramadan",
+      "special": "Hari istimewa",
+      "weekend": "Akhir pekan",
+      "today": "Hari ini",
+      "school": "Libur atau tanggal sekolah (MEB)",
+      "exam": "Ujian atau tanggal terkait ujian (ÖSYM, MEB, AÖF)"
+    },
+    "eventsHeading": "Daftar hari pada {year}",
+    "colDate": "Tanggal",
+    "colDay": "Hari",
+    "colEvent": "Nama",
+    "colType": "Jenis",
+    "colLeft": "Sisa",
+    "tableCaption": "Hari libur resmi, hari keagamaan, dan hari istimewa pada {year}",
+    "yearNav": "Pilih tahun",
+    "prevYear": "← {year}",
+    "nextYear": "{year} →",
+    "monthLabel": "{month} {year}",
+    "faqHeading": "Pertanyaan umum tentang kalender {year}",
+    "faqRb": "Kapan Ramazan Bayramı (Idulfitri) pada {year}?",
+    "faqRbA": "Ramazan Bayramı {year} jatuh pada {rb}. Hari sebelumnya, {eve}, adalah setengah hari kerja.",
+    "faqKb": "Kapan Kurban Bayramı (Iduladha) pada {year}?",
+    "faqKbA": "Kurban Bayramı {year} jatuh pada {kb}. Hari sebelumnya, {eve}, adalah setengah hari kerja.",
+    "faqRamadan": "Kapan Ramadan dimulai pada {year}?",
+    "faqRamadanA": "Ramadan {year} dimulai pada {start} dan berakhir pada {end}. Lailatulqadar (Kadir Gecesi) jatuh pada malam {kadir}.",
+    "faqHolidays": "Berapa banyak hari libur resmi pada {year}?",
+    "faqHolidaysA": "Ada {n} hari libur resmi pada {year}, {w} di antaranya jatuh pada hari kerja. Hari menjelang Ramazan Bayramı dan Kurban Bayramı serta 28 Oktober adalah setengah hari kerja.",
+    "noYear": "Tidak ada data untuk tahun ini.",
+    "months": [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+    ],
+    "weekdays": [
+      "Senin",
+      "Selasa",
+      "Rabu",
+      "Kamis",
+      "Jumat",
+      "Sabtu",
+      "Minggu"
+    ],
+    "weekdaysShort": [
+      "Sen",
+      "Sel",
+      "Rab",
+      "Kam",
+      "Jum",
+      "Sab",
+      "Min"
+    ],
+    "events": {
+      "newYear": "Tahun Baru",
+      "apr23": "Hari Kedaulatan Nasional dan Hari Anak",
+      "may1": "Hari Buruh dan Solidaritas",
+      "may19": "Peringatan Atatürk, Hari Pemuda dan Olahraga",
+      "jul15": "Hari Demokrasi dan Persatuan Nasional",
+      "aug30": "Hari Kemenangan",
+      "oct28": "Malam menjelang Hari Republik",
+      "oct29": "Hari Republik",
+      "ucAylar": "Awal Tiga Bulan Suci",
+      "regaib": "Malam Ragaib (Regaib Kandili)",
+      "mirac": "Malam Isra Mikraj (Miraç Kandili)",
+      "berat": "Malam Nisfu Syakban (Berat Kandili)",
+      "ramadanStart": "Hari pertama Ramadan",
+      "kadir": "Lailatulqadar (Kadir Gecesi)",
+      "rbEve": "Hari menjelang Ramazan Bayramı",
+      "rb1": "Ramazan Bayramı, hari ke-1",
+      "rb2": "Ramazan Bayramı, hari ke-2",
+      "rb3": "Ramazan Bayramı, hari ke-3",
+      "kbEve": "Hari menjelang Kurban Bayramı",
+      "kb1": "Kurban Bayramı, hari ke-1",
+      "kb2": "Kurban Bayramı, hari ke-2",
+      "kb3": "Kurban Bayramı, hari ke-3",
+      "kb4": "Kurban Bayramı, hari ke-4",
+      "hijri": "Tahun Baru Islam",
+      "ashura": "Hari Asyura",
+      "mawlid": "Malam Maulid Nabi (Mevlid Kandili)",
+      "feb14": "Hari Valentine",
+      "mar8": "Hari Perempuan Internasional",
+      "mothers": "Hari Ibu",
+      "fathers": "Hari Ayah",
+      "nov10": "Hari Peringatan Atatürk",
+      "nov24": "Hari Guru",
+      "schoolStart": "Sekolah dimulai (MEB)",
+      "midterm1": "Libur tengah semester pertama dimulai (MEB)",
+      "term1End": "Akhir semester pertama, hari rapor (MEB)",
+      "semester": "Libur tengah tahun dimulai (MEB)",
+      "term2Start": "Semester kedua dimulai (MEB)",
+      "midterm2": "Libur tengah semester kedua dimulai (MEB)",
+      "schoolEnd": "Akhir tahun ajaran, hari rapor (MEB)",
+      "teacherStart": "Kegiatan profesional guru dimulai (MEB)",
+      "adaptation": "Pekan orientasi PAUD dan kelas 1 dimulai (MEB)",
+      "teacherEnd": "Kegiatan profesional akhir tahun guru dimulai (MEB)",
+      "yksTyt": "YKS: sesi TYT (ÖSYM)",
+      "yksAytYdt": "YKS: sesi AYT dan YDT (ÖSYM)",
+      "tryos": "TR-YÖS/2: ujian mahasiswa internasional (ÖSYM)",
+      "eyds1": "e-YDS 2026/11 (ÖSYM)",
+      "eyds2": "e-YDS 2026/12 (ÖSYM)",
+      "kpssOrta": "KPSS tingkat pendidikan menengah (ÖSYM)",
+      "kpssDhbt": "KPSS DHBT: tes bidang layanan keagamaan (ÖSYM)",
+      "dus2": "DUS sesi kedua: ujian spesialis kedokteran gigi (ÖSYM)",
+      "eus": "EUS: ujian spesialis farmasi (ÖSYM)",
+      "yds2": "YDS/2: ujian kemampuan bahasa asing (ÖSYM)",
+      "ales3": "ALES/3: ujian masuk pascasarjana (ÖSYM)",
+      "alesApply": "Masa pendaftaran ALES/3 (ÖSYM)",
+      "kpssOnResult": "Hasil KPSS tingkat diploma (ÖSYM)",
+      "kpssOrtaResult": "Hasil KPSS tingkat pendidikan menengah (ÖSYM)",
+      "ydsResult": "Hasil YDS/2 (ÖSYM)",
+      "alesResult": "Hasil ALES/3 (ÖSYM)",
+      "kpssTercih": "Pemilihan penempatan KPSS-2026/2 (ÖSYM)",
+      "common1": "Semester 1, ujian tulis bersama pertama (MEB)",
+      "common2": "Semester 1, ujian tulis bersama kedua (MEB)",
+      "common3": "Semester 2, ujian tulis bersama pertama (MEB)",
+      "common4": "Semester 2, ujian tulis bersama kedua (MEB)",
+      "aolRegister": "Masa pendaftaran SMA terbuka (AÖL) (MEB)",
+      "aolEsinav": "Masa ujian elektronik AÖL (MEB)",
+      "aolWritten": "Ujian tulis AÖL (MEB)",
+      "aolResult": "Hasil semester pertama AÖL (MEB)",
+      "aofMid1": "AÖF: ujian tengah semester musim gugur (Universitas Anadolu)",
+      "aofFinal1": "AÖF: ujian akhir musim gugur (Universitas Anadolu)",
+      "aofMid2": "AÖF: ujian tengah semester musim semi (Universitas Anadolu)",
+      "aofFinal2": "AÖF: ujian akhir musim semi (Universitas Anadolu)",
+      "aofSummer": "AÖF: ujian sekolah musim panas (Universitas Anadolu)"
+    },
+    "hubName": "Kalender tahunan",
+    "hubDesc": "Hari libur resmi, hari bayram dan malam sebelumnya, malam kandil, serta bulan Ramadan.",
+    "projected": "Tanggal keagamaan tahun ini mengikuti kalender jangka panjang Diyanet dan dapat berubah menjelang tahunnya.",
+    "fullFmt": "{weekday}, {day} {month} {year}",
+    "shortFmt": "{day} {month}",
+    "dateFmt": "{day} {month} {year}",
+    "dayNone": "Tidak ada hari istimewa yang tercatat.",
+    "dayWeek": "Minggu ke-{n}",
+    "dayDoy": "Hari ke-{n} dalam tahun",
+    "dayToday": "Hari ini",
+    "dayIn": "{n} hari lagi",
+    "dayAgo": "{n} hari yang lalu",
+    "dayClose": "Tutup",
+    "dayToList": "Tampilkan di daftar hari",
+    "icsHeading": "Tambahkan ke kalender Anda",
+    "icsHolidays": "Hari libur resmi dan malam menjelang",
+    "icsDays": "Hari keagamaan dan hari istimewa",
+    "icsDownload": "Unduh (.ics)",
+    "icsSubscribe": "Berlangganan (iPhone, Mac, Outlook)",
+    "icsGoogle": "Tambahkan ke Google Kalender",
+    "icsNote": "Jika Anda berlangganan, kalender Anda mengambil tanggal tahun-tahun baru dengan sendirinya; 2026–2031 sudah termasuk. Hari keagamaan mulai 2028 didasarkan pada kalender jangka panjang Diyanet.",
+    "print": "Cetak / simpan sebagai PDF",
+    "printNote": "Di jendela cetak, pilih \"Simpan sebagai PDF\" sebagai tujuan; kalender muat dalam satu halaman A4.",
+    "icsCalHolidays": "Hari libur resmi di Turki (Saat Tarih)",
+    "icsCalDays": "Hari keagamaan dan hari istimewa di Turki (Saat Tarih)",
+    "icsHalf": "setengah hari",
+    "icsProjected": "berdasarkan kalender jangka panjang Diyanet (proyeksi)",
+    "icsCalMoon": "Fase Bulan dan gerhana (Saat Tarih)"
+  },
+  "tools": {
+    "hub": {
+      "title": "Alat Waktu: Stopwatch, Hitung Mundur, Alarm, Pomodoro | Saat Tarih",
+      "description": "Stopwatch, pengatur hitung mundur, alarm, dan pengatur waktu pomodoro gratis secara daring. Tanpa pendaftaran, tanpa iklan; layar penuh dan peringatan suara.",
+      "h1": "Alat waktu",
+      "lead": "Alat-alat Saat Tarih berjalan di peramban Anda tanpa pendaftaran atau pemasangan. Stopwatch, hitung mundur, alarm, dan pengatur waktu pomodoro, semuanya tersedia dalam layar penuh dan mode gelap.",
+      "open": "Buka",
+      "cards": {
+        "stopwatch": {
+          "name": "Stopwatch",
+          "desc": "Waktu putaran, putaran terbaik dan terlambat, layar penuh."
+        },
+        "countdown": {
+          "name": "Hitung mundur",
+          "desc": "Menurut durasi atau tanggal; sisa waktu menuju Tahun Baru dan bayram."
+        },
+        "alarm": {
+          "name": "Alarm",
+          "desc": "Waktu, label, ulangi pada hari pilihan, dan tunda."
+        },
+        "pomodoro": {
+          "name": "Pomodoro",
+          "desc": "Kerja 25 menit, istirahat 5; termasuk istirahat panjang."
+        },
+        "week": {
+          "name": "Minggu ke berapa sekarang?",
+          "desc": "Nomor minggu ISO, tanggal minggu ini, semua minggu dalam setahun."
+        },
+        "tz": {
+          "name": "Zona waktu Turki",
+          "desc": "Ada waktu musim panas? UTC+3 dan selisih waktu dengan kota lain."
+        },
+        "converter": {
+          "name": "Pengonversi waktu",
+          "desc": "Ubah waktu di satu kota ke kota lain."
+        },
+        "planner": {
+          "name": "Perencana rapat",
+          "desc": "Cari jam kerja yang bertepatan di berbagai zona waktu."
+        },
+        "poll": {
+          "name": "Polling rapat",
+          "desc": "Bagikan waktu usulan, biarkan semua menandai yang cocok."
+        },
+        "diff": {
+          "name": "Selisih waktu",
+          "desc": "Selisih waktu antara Istanbul dan kota-kota dunia."
+        },
+        "datecalc": {
+          "name": "Kalkulator tanggal",
+          "desc": "Hari dan hari kerja antara dua tanggal, tambah ke tanggal, usia."
+        },
+        "embed": {
+          "name": "Widget jam",
+          "desc": "Pasang jam gratis di situs Anda (iframe)."
+        },
+        "qibla": {
+          "name": "Kiblat",
+          "desc": "Kompas, sudut kiblat, waktu kiblat, dan masjid terdekat."
+        },
+        "bridge": {
+          "name": "Libur panjang",
+          "desc": "Berapa hari libur untuk berapa hari cuti: hari libur dan akhir pekan di Turki."
+        },
+        "dst": {
+          "name": "Perubahan waktu musim panas",
+          "desc": "Kapan jam dimajukan atau dimundurkan di seluruh dunia."
+        },
+        "unix": {
+          "name": "Stempel waktu Unix",
+          "desc": "Waktu Unix langsung, konversi dari dan ke tanggal."
+        },
+        "zones": {
+          "name": "Zona waktu",
+          "desc": "Singkatan seperti UTC, CET, dan EST, selisih, dan waktu saat ini."
+        },
+        "worldHol": {
+          "name": "Hari libur resmi dunia",
+          "desc": "Hari libur resmi di 30 negara, lengkap dengan tanggal dan sisa hari."
+        },
+        "zakat": {
+          "name": "Kalkulator zakat",
+          "desc": "Nisab dan jumlah zakat menurut ketentuan Diyanet."
+        },
+        "api": {
+          "name": "Data terbuka (API)",
+          "desc": "Hari libur, jadwal salat, dan kalender Hijriah dalam JSON."
+        },
+        "hijriConv": {
+          "name": "Pengonversi tanggal Hijriah",
+          "desc": "Konversi antara tanggal Hijriah dan Masehi."
+        },
+        "timeCalc": {
+          "name": "Kalkulator jam",
+          "desc": "Tambah dan kurangi jam, selisih antara dua waktu."
+        },
+        "daysUntil": {
+          "name": "Berapa hari lagi",
+          "desc": "Sisa hari menuju atau sejak suatu tanggal."
+        },
+        "interval": {
+          "name": "Pengatur waktu interval",
+          "desc": "Pengatur ronde bersuara untuk HIIT dan Tabata."
+        },
+        "chess": {
+          "name": "Jam catur",
+          "desc": "Jam permainan dua pemain dengan penambahan waktu."
+        },
+        "metronome": {
+          "name": "Metronom",
+          "desc": "BPM, tanda birama, dan tempo ketuk."
+        },
+        "talking": {
+          "name": "Jam bicara",
+          "desc": "Jam yang mengucapkan waktu."
+        },
+        "zodiac": {
+          "name": "Zodiak",
+          "desc": "Zodiak Matahari dan Bulan."
+        },
+        "sky": {
+          "name": "Langit malam",
+          "desc": "Planet yang tampak malam ini, peta langit, dan jarak Bulan."
+        },
+        "otd": {
+          "name": "Hari ini dalam sejarah",
+          "desc": "Apa yang terjadi pada hari ini dalam sejarah."
+        },
+        "tzn": {
+          "name": "Berita zona waktu",
+          "desc": "Keputusan negara-negara tentang zona waktu dan waktu musim panas."
+        }
+      },
+      "infoHeading": "Halaman informasi"
+    },
+    "common": {
+      "fullscreen": "Layar penuh",
+      "exitFullscreen": "Keluar dari layar penuh",
+      "sound": "Peringatan suara",
+      "notify": "Izinkan notifikasi",
+      "notifyOn": "Notifikasi aktif",
+      "notifyDenied": "Izin notifikasi ditolak",
+      "testSound": "Uji suara",
+      "close": "Tutup",
+      "relatedHeading": "Alat lainnya",
+      "pageOpenNote": "Alat ini hanya bekerja selama halaman terbuka; tidak akan memberi peringatan jika tab ditutup.",
+      "faqHeading": "Pertanyaan yang sering diajukan",
+      "syncNote": "Waktu mengikuti jam server, jadi hasilnya tepat walaupun jam perangkat Anda salah.",
+      "toolsHub": "Semua alat"
+    },
+    "stopwatch": {
+      "title": "Stopwatch Daring dengan Putaran dan Layar Penuh | Saat Tarih",
+      "description": "Stopwatch daring gratis: waktu putaran, putaran terbaik dan terlambat, layar penuh, dan pintasan papan ketik. Waktu Anda tetap tersimpan walaupun halaman dimuat ulang.",
+      "h1": "Stopwatch daring",
+      "lead": "Stopwatch ini akurat hingga seperseratus detik, mencatat waktu putaran, dan menyimpan waktu Anda walaupun halaman dimuat ulang atau ditutup lalu dibuka lagi. Spasi untuk mulai dan berhenti, L untuk menambah putaran.",
+      "start": "Mulai",
+      "stop": "Berhenti",
+      "resume": "Lanjutkan",
+      "lap": "Putaran",
+      "reset": "Atur ulang",
+      "lapNo": "Putaran",
+      "lapTime": "Waktu putaran",
+      "total": "Total",
+      "best": "Terbaik",
+      "worst": "Terlambat",
+      "empty": "Belum ada putaran.",
+      "hint": "Pintasan: Spasi mulai/berhenti, L putaran, R atur ulang.",
+      "lapsCaption": "Waktu putaran",
+      "lapAdded": "Putaran {n} ditambahkan: {t}",
+      "panel": "Stopwatch",
+      "faq": [
+        {
+          "q": "Seberapa akurat stopwatch ini?",
+          "a": "Waktu diukur dengan jam resolusi tinggi milik peramban dan ditampilkan hingga seperseratus detik. Mengubah jam perangkat tidak memengaruhinya."
+        },
+        {
+          "q": "Apakah waktu saya hilang jika halaman ditutup?",
+          "a": "Tidak. Waktu mulai stopwatch yang berjalan disimpan di perangkat ini, sehingga saat halaman dimuat ulang atau dibuka lagi waktunya berlanjut. Tombol Atur ulang menghapusnya."
+        },
+        {
+          "q": "Apa itu putaran dan bagaimana mencatatnya?",
+          "a": "Putaran adalah waktu antara yang diambil tanpa menghentikan stopwatch. Tekan tombol Putaran atau tombol L saat berjalan; setiap waktu putaran dan totalnya ditampilkan, dengan putaran terbaik dan terlambat ditandai."
+        }
+      ],
+      "csv": "Unduh putaran sebagai CSV"
+    },
+    "countdown": {
+      "title": "Hitung Mundur: Menurut Durasi atau Tanggal | Saat Tarih",
+      "description": "Hitung mundur gratis: pengatur waktu menit atau sisa waktu menuju tanggal pilihan Anda. Hitung mundur Tahun Baru dan bayram, peringatan suara, dan layar penuh.",
+      "h1": "Hitung mundur",
+      "lead": "Hitung mundur bekerja dengan dua cara: pengatur waktu yang memberi peringatan saat durasi pilihan berakhir, atau tampilan langsung hari, jam, dan detik menuju tanggal yang Anda pilih. Hitung mundur menuju Tahun Baru, bayram, atau tanggal Anda sendiri.",
+      "tabTimer": "Pengatur waktu",
+      "tabDate": "Menuju tanggal",
+      "hours": "Jam",
+      "minutes": "Menit",
+      "seconds": "Detik",
+      "presetsLabel": "Durasi cepat",
+      "presetMin": "{n} mnt",
+      "start": "Mulai",
+      "pause": "Jeda",
+      "resume": "Lanjutkan",
+      "reset": "Atur ulang",
+      "targetLabel": "Tanggal dan waktu target",
+      "targetSet": "Mulai menghitung",
+      "quickHeading": "Target cepat",
+      "quickNewYear": "Tahun Baru",
+      "remaining": "Sisa waktu",
+      "days": "hari",
+      "hoursShort": "j",
+      "minutesShort": "mnt",
+      "secondsShort": "dtk",
+      "finished": "Waktu habis!",
+      "finishedDate": "Waktu target telah tiba!",
+      "invalid": "Masukkan durasi yang valid atau tanggal di masa depan.",
+      "panel": "Hitung mundur",
+      "timerRegion": "Pengatur waktu",
+      "dateRegion": "Hitung mundur menuju tanggal",
+      "faq": [
+        {
+          "q": "Apa yang terjadi saat hitung mundur selesai?",
+          "a": "Peringatan suara berbunyi, judul halaman berkedip, dan jika Anda mengizinkan, notifikasi muncul. Hentikan peringatan dengan tombol Tutup."
+        },
+        {
+          "q": "Bagaimana menghitung mundur menuju tanggal tertentu?",
+          "a": "Di tab Menuju tanggal, pilih tanggal dan waktu target atau tekan salah satu target cepat seperti Tahun Baru dan bayram. Hari, jam, menit, dan detik diperbarui secara langsung."
+        },
+        {
+          "q": "Apakah hitung mundur tetap berjalan jika tab ditutup?",
+          "a": "Hitung mundur disimpan di perangkat ini, jadi saat halaman dibuka lagi sisa waktunya tepat. Peringatan suara tidak dapat berbunyi selama halaman tertutup."
+        }
+      ],
+      "nameLabel": "Judul (opsional)",
+      "namePlaceholder": "Mis. Liburan",
+      "copyLink": "Salin tautan",
+      "copied": "Tautan disalin",
+      "shareNote": "Anda dapat membagikan tautan tanggal yang dipilih; hitung mundur dimulai sendiri saat tautan dibuka.",
+      "addMinute": "+1 mnt"
+    },
+    "alarm": {
+      "title": "Alarm Daring: Berulang dan Tunda | Saat Tarih",
+      "description": "Alarm gratis yang berjalan di peramban: waktu, label, ulangi pada hari pilihan, tunda 5 menit, dan notifikasi. Alarm berbunyi selama halaman terbuka.",
+      "h1": "Alarm daring",
+      "lead": "Pilih waktu alarm dan hari yang diinginkan; saat waktunya tiba suara berbunyi dan notifikasi muncul. Alarm disimpan di perangkat ini. Karena batasan peramban, alarm hanya berbunyi selama halaman (tab) ini tetap terbuka.",
+      "timeLabel": "Waktu alarm",
+      "labelLabel": "Label (opsional)",
+      "labelPlaceholder": "Mis. Rapat",
+      "repeatLabel": "Ulangi",
+      "once": "Sekali",
+      "every": "Setiap hari",
+      "weekdays": "Hari kerja",
+      "add": "Tambah alarm",
+      "listHeading": "Alarm Anda",
+      "none": "Belum ada alarm.",
+      "delete": "Hapus",
+      "enable": "Nyalakan/matikan",
+      "ringing": "Alarm berbunyi",
+      "snooze": "Tunda 5 mnt",
+      "stop": "Tutup",
+      "next": "Alarm berikutnya",
+      "nextNone": "Tidak ada alarm aktif",
+      "wake": "Jaga layar tetap menyala",
+      "wakeNote": "Jika layar mati, peramban dapat menidurkan tab; opsi ini mencegah layar mati selama alarm terpasang.",
+      "note": "Untuk bangun yang penting, pasang juga alarm di ponsel Anda; alarm peramban tidak berbunyi jika halaman ditutup.",
+      "panel": "Alarm",
+      "dayNames": [
+        "Sen",
+        "Sel",
+        "Rab",
+        "Kam",
+        "Jum",
+        "Sab",
+        "Min"
+      ],
+      "defaultLabel": "Alarm",
+      "faq": [
+        {
+          "q": "Apakah alarm berbunyi jika tab ditutup?",
+          "a": "Tidak. Situs web tidak dapat memutar suara saat halaman ditutup. Halaman ini harus tetap terbuka di sebuah tab dan perangkat harus tetap aktif; opsi Jaga layar tetap menyala membantu hal itu."
+        },
+        {
+          "q": "Apakah alarm bergantung pada jam perangkat saya?",
+          "a": "Tidak. Alarm diperiksa terhadap jam yang disinkronkan dengan server, jadi berbunyi tepat waktu walaupun jam perangkat Anda meleset beberapa detik. Zona waktu berasal dari perangkat Anda."
+        },
+        {
+          "q": "Bagaimana menunda alarm?",
+          "a": "Saat berbunyi, tekan Tunda 5 mnt dan alarm berbunyi lagi lima menit kemudian. Tombol Tutup menghentikannya; alarm berulang berbunyi lagi pada hari pilihan berikutnya."
+        }
+      ],
+      "soundLabel": "Suara alarm",
+      "sounds": {
+        "chime": "Lonceng tiga kali",
+        "bell": "Bel",
+        "rise": "Makin keras",
+        "digital": "Bip digital",
+        "soft": "Lembut"
+      },
+      "ytLabel": "Musik YouTube (opsional)",
+      "ytNote": "Saat alarm berbunyi, video ini diputar; jika tidak Anda matikan dalam 1 menit, suara alarm juga berbunyi (juga bila peramban tidak memutar video dengan sendirinya). Video dimuat dari YouTube, jadi layanan eksternal harus diizinkan.",
+      "ytInvalid": "Ini bukan tautan YouTube.",
+      "ytBlocked": "Izinkan layanan eksternal untuk musik YouTube; tanpa izin, alarm berbunyi dengan suaranya sendiri.",
+      "spotifyNote": "Spotify tidak diputar dengan sendirinya di peramban; Anda dapat memakai Spotify sebagai musik alarm di aplikasi Android."
+    },
+    "pomodoro": {
+      "title": "Pengatur Waktu Pomodoro: Kerja 25 Menit, Istirahat 5 | Saat Tarih",
+      "description": "Pengatur waktu pomodoro gratis: kerja 25 menit, istirahat pendek 5 menit, dan istirahat panjang setiap 4 putaran. Durasi dapat diatur, peringatan suara, dan layar penuh.",
+      "h1": "Pengatur waktu pomodoro",
+      "lead": "Teknik Pomodoro menyelingi 25 menit kerja fokus dengan istirahat pendek 5 menit, lalu istirahat panjang setelah 4 putaran. Durasinya dapat diubah dan suara berbunyi di setiap pergantian.",
+      "work": "Kerja",
+      "short": "Istirahat pendek",
+      "long": "Istirahat panjang",
+      "start": "Mulai",
+      "pause": "Jeda",
+      "resume": "Lanjutkan",
+      "skip": "Lewati ke berikutnya",
+      "reset": "Atur ulang",
+      "settings": "Durasi (menit)",
+      "workMin": "Kerja",
+      "shortMin": "Istirahat pendek",
+      "longMin": "Istirahat panjang",
+      "roundsLabel": "Putaran sebelum istirahat panjang",
+      "round": "Putaran {n} dari {total}",
+      "completed": "Pomodoro selesai: {n}",
+      "phaseDone": "{phase} selesai",
+      "panel": "Pomodoro",
+      "phaseLabel": "Fase saat ini",
+      "faq": [
+        {
+          "q": "Apa itu teknik Pomodoro?",
+          "a": "Teknik yang dikembangkan Francesco Cirillo ini meminta Anda bekerja tanpa gangguan selama 25 menit lalu beristirahat 5 menit. Setelah empat putaran kerja, Anda mengambil istirahat lebih panjang 15 hingga 30 menit."
+        },
+        {
+          "q": "Bisakah saya mengubah durasinya?",
+          "a": "Ya. Anda dapat mengatur lama kerja, istirahat pendek, dan istirahat panjang serta jumlah putaran sebelum istirahat panjang; pengaturan disimpan di perangkat ini."
+        },
+        {
+          "q": "Apakah fase berganti secara otomatis?",
+          "a": "Ya. Saat waktu habis suara berbunyi dan fase berikutnya (kerja atau istirahat) dimulai dengan sendirinya. Tekan Jeda untuk berhenti."
+        }
+      ],
+      "taskLabel": "Sedang mengerjakan apa? (opsional)",
+      "taskPlaceholder": "Misalnya: menulis laporan",
+      "statsHeading": "Statistik (hanya di perangkat ini)",
+      "today": "Hari ini",
+      "week": "7 hari terakhir",
+      "total": "Total",
+      "statLine": "{n} pomodoro · {m} menit",
+      "chartCaption": "Menit fokus selama 7 hari terakhir",
+      "topTasks": "Paling banyak dikerjakan (7 hari)",
+      "noTask": "Tanpa judul",
+      "clear": "Hapus riwayat",
+      "clearConfirm": "Hapus riwayat pomodoro dari perangkat ini?",
+      "noise": "Suara latar saat bekerja",
+      "noiseOff": "Mati",
+      "noiseWhite": "Derau putih",
+      "noisePink": "Derau merah muda",
+      "noiseBrown": "Derau cokelat",
+      "noiseRain": "Hujan",
+      "volume": "Volume",
+      "noiseNote": "Suara hanya diputar selama sesi kerja berjalan; suara dibuat di peramban, tidak ada yang diunduh.",
+      "empty": "Belum ada pomodoro yang selesai.",
+      "minUnit": "mnt",
+      "csv": "Unduh riwayat sebagai CSV",
+      "streak": "Beruntun: {n} hari",
+      "goalLabel": "Target harian (sesi)",
+      "goalProgress": "Hari ini {n}/{g} sesi",
+      "goalDone": "Target harian tercapai",
+      "tagLabel": "Label",
+      "tags": {
+        "none": "Tanpa label",
+        "work": "Kerja",
+        "study": "Belajar",
+        "personal": "Pribadi",
+        "other": "Lainnya"
+      },
+      "byTag": "Menurut label, 7 hari terakhir"
+    },
+    "presets": {
+      "timerTitle": "{Name}: hitung mundur daring | Saat Tarih",
+      "timerDescription": "Hitung mundur {label} yang siap dipakai: tekan Mulai dan alarm berbunyi saat waktu habis. Jeda, layar penuh, dan tautan untuk dibagikan; tanpa perlu memasang apa pun.",
+      "timerLead": "Hitung mundur {label} sudah siap. Tekan Mulai; alarm berbunyi saat waktu habis.",
+      "timerFacts": "{label} = {s} detik = {ms} milidetik.",
+      "endsAt": "Jika dimulai sekarang, selesai pukul {time}",
+      "endsAtRun": "Selesai pukul {time}",
+      "alarmTitle": "Pasang alarm pukul {time}: alarm daring | Saat Tarih",
+      "alarmDescription": "Alarm pukul {time} sudah siap: tekan Tambah dan alarm berbunyi selama halaman terbuka. Saran jam tidur berdasarkan siklus tidur juga ada di halaman ini.",
+      "alarmH1": "Pasang alarm pukul {time}",
+      "alarmLead": "Alarm pukul {time} sudah siap. Tekan Tambah; alarm berbunyi pukul {time}.",
+      "sleepHeading": "Kapan sebaiknya saya tidur?",
+      "sleepText": "Jam tidur agar bangun pukul {time}, berdasarkan siklus tidur 90 menit (ditambah 15 menit untuk terlelap):",
+      "sleepRow": "{bed}: {cycles} siklus, tidur {hours} jam",
+      "sleepNote": "Siklus tidur berbeda pada setiap orang; waktu ini hanya panduan kasar.",
+      "durations": {
+        "1": {
+          "label": "1 menit",
+          "name": "Pengatur waktu 1 menit"
+        },
+        "2": {
+          "label": "2 menit",
+          "name": "Pengatur waktu 2 menit"
+        },
+        "3": {
+          "label": "3 menit",
+          "name": "Pengatur waktu 3 menit"
+        },
+        "5": {
+          "label": "5 menit",
+          "name": "Pengatur waktu 5 menit"
+        },
+        "10": {
+          "label": "10 menit",
+          "name": "Pengatur waktu 10 menit"
+        },
+        "15": {
+          "label": "15 menit",
+          "name": "Pengatur waktu 15 menit"
+        },
+        "20": {
+          "label": "20 menit",
+          "name": "Pengatur waktu 20 menit"
+        },
+        "25": {
+          "label": "25 menit",
+          "name": "Pengatur waktu 25 menit"
+        },
+        "30": {
+          "label": "30 menit",
+          "name": "Pengatur waktu 30 menit"
+        },
+        "40": {
+          "label": "40 menit",
+          "name": "Pengatur waktu 40 menit"
+        },
+        "45": {
+          "label": "45 menit",
+          "name": "Pengatur waktu 45 menit"
+        },
+        "60": {
+          "label": "1 jam",
+          "name": "Pengatur waktu 1 jam"
+        },
+        "90": {
+          "label": "90 menit",
+          "name": "Pengatur waktu 90 menit"
+        },
+        "120": {
+          "label": "2 jam",
+          "name": "Pengatur waktu 2 jam"
+        }
+      }
+    }
+  },
+  "info": {
+    "week": {
+      "title": "Minggu ke Berapa Sekarang? Nomor Minggu ISO dan Tanggal | Saat Tarih",
+      "description": "Sekarang minggu ke berapa dalam setahun? Nomor minggu ISO, rentang tanggal minggu ini, semua minggu pada {year}, dan alat untuk mencari nomor minggu tanggal mana pun.",
+      "h1": "Minggu ke berapa sekarang?",
+      "lead": "Saat Tarih menampilkan secara langsung minggu ke berapa dalam setahun menurut ISO 8601. Minggu dimulai hari Senin dan minggu ke-1 adalah minggu yang memuat hari Kamis pertama. Tahun {year} memiliki {weeks} minggu.",
+      "big": "Minggu ke-{n}",
+      "thisWeek": "Tanggal minggu ini",
+      "findHeading": "Cari nomor minggu suatu tanggal",
+      "findLabel": "Pilih tanggal",
+      "tableHeading": "Kalender minggu {year}",
+      "colWeek": "Minggu",
+      "colStart": "Awal (Senin)",
+      "colEnd": "Akhir (Minggu)",
+      "tableCaption": "Nomor minggu ISO dan rentang tanggal tahun {year}",
+      "faqHeading": "Pertanyaan umum tentang nomor minggu",
+      "faq": [
+        {
+          "q": "Sekarang minggu ke berapa?",
+          "a": "Penghitung langsung di atas menunjukkan nomor minggu hari ini. Penghitungan mengikuti ISO 8601: minggu dimulai hari Senin dan minggu ke-1 memuat hari Kamis pertama dalam tahun itu."
+        },
+        {
+          "q": "Berapa minggu dalam setahun?",
+          "a": "Tahun ISO memiliki 52 atau 53 minggu. Jumlahnya 53 bila 1 Januari jatuh pada hari Kamis (atau Rabu pada tahun kabisat). Tahun {year} memiliki {weeks} minggu."
+        },
+        {
+          "q": "Mengapa 1 Januari kadang masuk minggu terakhir tahun sebelumnya?",
+          "a": "Menurut aturan ISO, minggu ke-1 memuat hari Kamis pertama. Jika 1 Januari jatuh pada Jumat, Sabtu, atau Minggu, tanggal itu termasuk minggu ke-52 atau ke-53 tahun sebelumnya, dan beberapa hari di akhir Desember dapat termasuk minggu ke-1 tahun berikutnya."
+        },
+        {
+          "q": "Untuk apa nomor minggu?",
+          "a": "Nomor minggu jarang dipakai dalam keseharian, tetapi nomor minggu ISO lazim dalam perencanaan bisnis, logistik, pendidikan, dan perangkat lunak. Alat di halaman ini menunjukkan nomor minggu tanggal mana pun yang Anda pilih."
+        }
+      ]
+    },
+    "tz": {
+      "title": "Apakah Turki Memakai Waktu Musim Panas? Penjelasan UTC+3 | Saat Tarih",
+      "description": "Apakah Turki memakai waktu musim panas? Sejak 2016 Turki memakai UTC+3 sepanjang tahun. Selisih waktu dan status waktu musim panas kota-kota dunia.",
+      "h1": "Apakah Turki memakai waktu musim panas?",
+      "lead": "Tidak. Sejak 2016 Turki memakai zona waktu UTC+3 sepanjang tahun; jam tidak dimajukan atau dimundurkan pada musim panas maupun dingin. Zona ini disebut Waktu Turki (TRT) dan pengenal IANA-nya Europe/Istanbul.",
+      "nowLabel": "Waktu saat ini di Turki",
+      "factsHeading": "Sekilas",
+      "facts": [
+        "Zona waktu: UTC+3 (Waktu Turki, TRT)",
+        "Waktu musim panas: tidak ada, sejak 2016",
+        "Pengenal IANA: Europe/Istanbul",
+        "Jam tidak diubah dua kali setahun"
+      ],
+      "historyHeading": "Sejarah singkat",
+      "history": [
+        "Hingga 2016 Turki memakai UTC+2 pada musim dingin (Waktu Eropa Timur) dan UTC+3 pada musim panas (Waktu Musim Panas Eropa Timur).",
+        "Keputusan tahun 2016 membuat waktu musim panas menjadi permanen; sejak itu Turki tetap memakai UTC+3 sepanjang tahun."
+      ],
+      "tableHeading": "Selisih waktu antara Turki dan kota-kota dunia",
+      "tableCaption": "Selisih standar dengan waktu Turki dan status waktu musim panas",
+      "colCity": "Kota",
+      "colStd": "Selisih standar",
+      "colDst": "Waktu musim panas",
+      "colNow": "Saat ini",
+      "yes": "Ya",
+      "no": "Tidak",
+      "note": "Selisih standar adalah selisih ketika waktu musim panas tidak berlaku. Untuk kota yang memakai waktu musim panas, selisih ini berubah satu jam selama sebagian tahun; kolom \"Saat ini\" menunjukkan selisih sebenarnya hari ini.",
+      "faqHeading": "Pertanyaan umum tentang zona waktu Turki",
+      "faq": [
+        {
+          "q": "Apakah Turki memakai waktu musim panas?",
+          "a": "Tidak. Turki menjadikan waktu musim panas permanen pada 2016; UTC+3 berlaku sepanjang tahun dan jam tidak dimajukan atau dimundurkan."
+        },
+        {
+          "q": "Turki berada di zona waktu apa?",
+          "a": "Turki berada di zona waktu UTC+3 yang dikenal sebagai Waktu Turki (TRT); pengenal IANA-nya Europe/Istanbul."
+        },
+        {
+          "q": "Apakah selisih waktu dengan Eropa sama sepanjang tahun?",
+          "a": "Tidak. Banyak negara Eropa memakai waktu musim panas, jadi selisihnya dengan Turki berubah satu jam dalam setahun. Tabel di atas menunjukkan selisih hari ini."
+        },
+        {
+          "q": "Apa arti UTC+3?",
+          "a": "UTC+3 berarti tiga jam lebih cepat dari Waktu Universal Terkoordinasi (UTC). Saat pukul 12.00 UTC, di Turki pukul 15.00."
+        }
+      ]
+    }
+  },
+  "pair": {
+    "title": "Selisih Waktu {a} – {b}: Berapa Jam? | Saat Tarih",
+    "description": "Berapa jam selisih waktu {a} dan {b}? Selisih standar, pengaruh waktu musim panas, selisih saat ini, dan tabel konversi waktu.",
+    "h1": "Selisih waktu antara {a} dan {b}",
+    "ahead": "Waktu {a} {d} lebih cepat dari waktu {b} pada waktu standar.",
+    "behind": "Waktu {a} {d} lebih lambat dari waktu {b} pada waktu standar.",
+    "same": "{a} dan {b} memakai waktu yang sama; tidak ada selisih waktu.",
+    "dstNote": "Karena {b} memakai waktu musim panas, selisihnya menjadi {d} selama sebagian tahun.",
+    "dstSame": "Karena {b} memakai waktu musim panas, kedua kota memiliki waktu yang sama selama sebagian tahun.",
+    "noDst": "Kedua kota tidak memakai waktu musim panas, jadi selisihnya tetap sepanjang tahun.",
+    "nowHeading": "Saat ini",
+    "convHeading": "Mengonversi waktu {a} ke waktu {b}",
+    "convCaption": "Waktu {a} dan waktu {b} yang sesuai",
+    "colA": "Waktu {a}",
+    "colB": "Waktu {b}",
+    "nextDay": "hari berikutnya",
+    "prevDay": "hari sebelumnya",
+    "convNote": "Tabel dihitung dari selisih waktu saat ini di peramban Anda; dapat bergeser satu jam di sekitar perubahan waktu musim panas. Tanpa JavaScript, tabel menunjukkan selisih standar.",
+    "faqHeading": "Pertanyaan umum tentang selisih waktu {a} – {b}",
+    "faqDiff": "Berapa jam selisih waktu {a} dan {b}?",
+    "faqNow": "Berapa selisih waktu {a} dan {b} saat ini?",
+    "faqNowA": "Selisih saat ini ditampilkan di baris langsung di atas. Di sekitar perubahan waktu musim panas, selisih ini dapat berbeda satu jam dari selisih standar.",
+    "faqDst": "Apakah {b} memakai waktu musim panas?",
+    "faqDstYes": "Ya. {b} memakai waktu musim panas, jadi selisihnya dengan {a} berubah satu jam dalam setahun.",
+    "faqDstNo": "Tidak. {b} tidak memakai waktu musim panas, jadi selisihnya tetap sepanjang tahun.",
+    "converter": "Untuk mengonversi waktu lain, gunakan pengonversi waktu.",
+    "converterLink": "Pengonversi waktu"
+  },
+  "pairHub": {
+    "title": "Selisih Waktu: Istanbul dan Kota-kota Dunia | Saat Tarih",
+    "description": "Selisih waktu antara Istanbul dan London, New York, Dubai, Tokyo, serta kota lain. Selisih standar, pengaruh waktu musim panas, dan tabel konversi.",
+    "h1": "Selisih waktu",
+    "lead": "Pilih selisih waktu antara Istanbul dan sebuah kota di dunia. Setiap halaman memuat selisih standar, pengaruh waktu musim panas, selisih saat ini, dan tabel konversi waktu.",
+    "listHeading": "Selisih waktu dengan Istanbul",
+    "linkText": "{a} – {b}"
+  },
+  "converter": {
+    "title": "Pengonversi Waktu: Ubah Waktu Antarkota | Saat Tarih",
+    "description": "Ubah waktu di satu kota ke waktu di kota lain. Pengonversi waktu untuk kota-kota dunia yang menerapkan waktu musim panas secara otomatis.",
+    "h1": "Pengonversi waktu",
+    "lead": "Pilih kota asal dan kota tujuan serta tanggal dan waktunya; waktu yang sesuai langsung muncul. Perubahan waktu musim panas diterapkan secara otomatis.",
+    "fromLabel": "Dari kota",
+    "toLabel": "Ke kota",
+    "whenLabel": "Tanggal dan waktu",
+    "mine": "Lokasi saya",
+    "swap": "Tukar",
+    "now": "Sekarang",
+    "resultLabel": "Hasil",
+    "result": "Saat pukul {fromTime} di {from}, di {to} pukul {toTime}.",
+    "diff": "Selisih: {d}",
+    "sameDay": "hari yang sama",
+    "faqHeading": "Pertanyaan umum tentang pengonversi waktu",
+    "faq": [
+      {
+        "q": "Bagaimana pengonversi waktu bekerja?",
+        "a": "Alat ini mengubah tanggal dan waktu kota asal ke waktu universal menggunakan zona waktu kota itu, lalu menerapkan zona waktu kota tujuan. Perubahan waktu musim panas berasal dari basis data zona waktu peramban Anda."
+      },
+      {
+        "q": "Apakah waktu musim panas memengaruhi selisih?",
+        "a": "Ya. Untuk kota yang memakai waktu musim panas, selisihnya berubah satu jam selama sebagian tahun. Pengonversi memakai selisih sebenarnya pada tanggal yang Anda pilih."
+      },
+      {
+        "q": "Apa arti Lokasi saya?",
+        "a": "Opsi ini memakai zona waktu perangkat Anda, sehingga Anda dapat mengonversi waktu di tempat Anda ke kota lain."
+      }
+    ],
+    "shareLink": "Salin tautan",
+    "linkCopied": "Tautan disalin",
+    "addIcs": "Tambahkan ke kalender (.ics)",
+    "addGoogle": "Tambahkan ke Google Kalender"
+  },
+  "planner": {
+    "title": "Perencana Rapat: Temukan Jam Kerja yang Bertepatan | Saat Tarih",
+    "description": "Cari waktu rapat terbaik di berbagai zona waktu. Jam kerja, jam pagi atau malam, dan jam larut ditandai warna untuk setiap kota.",
+    "h1": "Perencana rapat",
+    "lead": "Tambahkan kota dan pilih tanggal; garis waktu per jam setiap kota tampil berdampingan. Jam kerja yang bertepatan (09.00–18.00) ditemukan secara otomatis.",
+    "addLabel": "Tambah kota",
+    "addBtn": "Tambah",
+    "dateLabel": "Tanggal",
+    "remove": "Hapus",
+    "legendWork": "Jam kerja (09–18)",
+    "legendEdge": "Pagi atau malam (07–09, 18–22)",
+    "legendNight": "Larut malam",
+    "common": "Jam kerja yang bertepatan (waktu {city}): {hours}",
+    "noCommon": "Kota-kota pilihan tidak memiliki jam kerja yang bertepatan; pilih jam yang paling tidak merepotkan dari garis waktu.",
+    "tableLabel": "Garis waktu 24 jam kota-kota pilihan",
+    "minCities": "Pilih setidaknya dua kota.",
+    "faqHeading": "Pertanyaan umum tentang perencana rapat",
+    "faq": [
+      {
+        "q": "Bagaimana jam kerja yang bertepatan ditemukan?",
+        "a": "Jam kerja dianggap 09.00–18.00 di setiap kota. Jam ketika semua kota pilihan sedang bekerja bersamaan ditandai hijau dan didaftar."
+      },
+      {
+        "q": "Apakah waktu musim panas diperhitungkan?",
+        "a": "Ya. Selisih waktu sebenarnya pada tanggal yang Anda pilih dipakai, jadi perubahan waktu musim panas diterapkan otomatis."
+      },
+      {
+        "q": "Berapa kota yang dapat saya tambahkan?",
+        "a": "Anda dapat menambahkan hingga enam kota. Pilihan Anda disimpan di perangkat ini."
+      }
+    ],
+    "shareLink": "Salin tautan",
+    "linkCopied": "Tautan disalin",
+    "addIcs": "Tambahkan ke kalender (.ics)",
+    "addGoogle": "Tambahkan ke Google Kalender",
+    "pickHint": "Ketuk satu jam di bagian atas tabel untuk memilih waktu rapat; tautan dan entri kalender akan memuatnya.",
+    "meeting": "Rapat",
+    "picked": "Waktu yang dipilih: {time} (waktu {city})"
+  },
+  "poll": {
+    "title": "Polling Rapat: Pilih Waktu Terbaik Bersama | Saat Tarih",
+    "description": "Pilih waktu usulan, bagikan tautannya, dan biarkan semua orang menandai waktu luangnya. Tanpa akun dan server; tiap orang melihat waktu di zona waktunya.",
+    "h1": "Polling rapat",
+    "lead": "Tambahkan waktu usulan dan bagikan tautan polling. Peserta menandai waktu yang cocok lalu mengirimi Anda tautan jawaban; waktu terbaik ditemukan otomatis.",
+    "titleLabel": "Nama rapat",
+    "orgLabel": "Nama Anda (opsional)",
+    "durLabel": "Durasi",
+    "slotsHeading": "Waktu usulan",
+    "dateLabel": "Tanggal",
+    "timeLabel": "Jam",
+    "addSlot": "Tambah waktu",
+    "removeSlot": "Hapus",
+    "maxSlots": "Anda dapat menambahkan hingga {n} waktu usulan.",
+    "needSlot": "Tambahkan setidaknya satu waktu usulan.",
+    "create": "Buat tautan polling",
+    "tzNote": "Waktu ditampilkan di zona waktu Anda: {tz}.",
+    "orgTime": "Waktu penyelenggara: {time} ({tz})",
+    "byLine": "Penyelenggara: {name}",
+    "linkHeading": "Tautan polling",
+    "linkHint": "Kirim tautan ini kepada peserta. Setiap peserta menandai waktu yang cocok dan mengirimi Anda tautan jawaban; saat Anda membukanya atau menempelkannya di bawah, jawaban ditambahkan ke hasil.",
+    "linkLabel": "Tautan",
+    "copy": "Salin",
+    "copied": "Disalin",
+    "share": "Bagikan",
+    "voteHeading": "Tandai waktu yang cocok untuk Anda",
+    "yourName": "Nama Anda",
+    "yes": "Bisa",
+    "maybe": "Mungkin",
+    "no": "Tidak bisa",
+    "respond": "Buat tautan jawaban saya",
+    "responseHint": "Kirim tautan jawaban ini kepada penyelenggara (lewat pesan atau email).",
+    "ownSaved": "Jawaban Anda ditambahkan ke hasil di peramban ini. Jika Anda memakai perangkat lain, kirim tautan ini ke diri sendiri.",
+    "needName": "Tulis nama Anda.",
+    "resultsHeading": "Hasil",
+    "participant": "Peserta",
+    "total": "Jumlah",
+    "best": "Waktu terbaik: {slot} ({n} dari {total} orang bisa)",
+    "noAnswers": "Belum ada jawaban. Jawaban muncul di sini saat Anda membuka tautan jawaban peserta atau menempelkannya di bawah.",
+    "pasteLabel": "Tempel tautan jawaban yang Anda terima",
+    "pasteBtn": "Tambah",
+    "pasteBad": "Tautan ini bukan jawaban yang sah untuk polling ini.",
+    "added": "Jawaban ditambahkan: {names}",
+    "removeAnswer": "Hapus jawaban",
+    "resultsLink": "Salin tautan hasil",
+    "myPolls": "Polling di peramban ini",
+    "answers": "{n} jawaban",
+    "deletePoll": "Hapus polling",
+    "invalid": "Tautan polling ini rusak atau tidak lengkap.",
+    "newPoll": "Buat polling baru",
+    "privacyNote": "Tanpa akun dan server: polling dan jawaban dibawa di bagian tautan setelah tanda # (peramban tidak mengirim bagian itu ke server); jawaban yang Anda lihat hanya disimpan di peramban ini.",
+    "faq": [
+      {
+        "q": "Di mana data polling disimpan?",
+        "a": "Tidak di server. Judul, waktu usulan, nama, dan jawaban dibawa di bagian tautan setelah tanda #, yang tidak dikirim peramban ke server. Jawaban yang dilihat penyelenggara hanya disimpan di perambannya sendiri; siapa pun yang Anda beri tautannya dapat melihatnya."
+      },
+      {
+        "q": "Bagaimana peserta mengirimkan jawabannya kepada saya?",
+        "a": "Setiap peserta menulis namanya, menandai waktu yang cocok, dan membuat tautan jawaban yang dikirim kepada Anda lewat pesan atau email. Saat Anda membuka tautan itu atau menempelkannya ke kotak di halaman polling, jawabannya ditambahkan ke tabel hasil."
+      },
+      {
+        "q": "Waktu ditampilkan dalam zona waktu apa?",
+        "a": "Setiap orang melihat waktu dalam zona waktu perangkatnya sendiri; jika zona waktu penyelenggara berbeda, waktunya juga ditampilkan di samping tiap pilihan. Perubahan waktu musim panas diperhitungkan."
+      }
+    ]
+  },
+  "cdp": {
+    "title": "Berapa Hari Lagi {dat}? Hitung Mundur | Saat Tarih",
+    "description": "Berapa hari dan jam lagi menuju {dat}? Hitung mundur langsung, tanggal target, dan tanggal untuk tahun-tahun mendatang.",
+    "h1": "Berapa hari lagi menuju {dat}?",
+    "lead": "Hitung mundur langsung menuju {name}. Penghitung berjalan dengan jam yang disinkronkan dengan server; sisa hari, jam, menit, dan detik diperbarui setiap detik.",
+    "target": "Tanggal target",
+    "noTarget": "Tidak ada tanggal mendatang untuk acara ini.",
+    "today": "Hari ini!",
+    "yearsHeading": "Tanggal {name}",
+    "yearsCaption": "Tanggal {name} per tahun",
+    "colYear": "Tahun",
+    "colDate": "Tanggal",
+    "customHeading": "Buat hitung mundur sendiri",
+    "customText": "Di alat hitung mundur Anda dapat memilih tanggal apa pun dan membagikan tautannya.",
+    "customLink": "Buka alat hitung mundur",
+    "listHeading": "Hitung mundur lainnya",
+    "faqHeading": "Pertanyaan umum tentang {name}",
+    "faqWhen": "Kapan {name}?",
+    "faqWhenFixed": "{name} jatuh pada {date} setiap tahun.",
+    "faqWhenYears": "{name}: {list}.",
+    "faqHow": "Bagaimana hitung mundur bekerja?",
+    "faqHowA": "Penghitung membandingkan waktu yang disinkronkan dengan server dengan awal tanggal target (00.00) dan diperbarui setiap detik. Tanggal target berasal dari data di halaman kalender kami.",
+    "school": "Kalender sekolah mengikuti kalender kerja 2026-2027 Kementerian Pendidikan Nasional Turki; dinas provinsi dapat berbeda setempat.",
+    "targets": {
+      "newYear": {
+        "name": "Tahun Baru",
+        "dat": "Tahun Baru"
+      },
+      "rb1": {
+        "name": "Ramazan Bayramı (Idulfitri)",
+        "dat": "Ramazan Bayramı"
+      },
+      "kb1": {
+        "name": "Kurban Bayramı (Iduladha)",
+        "dat": "Kurban Bayramı"
+      },
+      "oct29": {
+        "name": "Hari Republik",
+        "dat": "Hari Republik"
+      },
+      "ramadanStart": {
+        "name": "Ramadan",
+        "dat": "Ramadan"
+      },
+      "apr23": {
+        "name": "23 April",
+        "dat": "23 April"
+      },
+      "may19": {
+        "name": "19 Mei",
+        "dat": "19 Mei"
+      },
+      "aug30": {
+        "name": "Hari Kemenangan (30 Agustus)",
+        "dat": "Hari Kemenangan"
+      },
+      "semester": {
+        "name": "libur tengah tahun",
+        "dat": "libur tengah tahun"
+      },
+      "karne": {
+        "name": "hari rapor",
+        "dat": "hari rapor"
+      },
+      "yks": {
+        "name": "YKS (ujian masuk universitas)",
+        "dat": "YKS"
+      },
+      "kpss": {
+        "name": "KPSS (ujian seleksi pegawai negeri)",
+        "dat": "KPSS"
+      },
+      "ales": {
+        "name": "ALES (ujian masuk pascasarjana)",
+        "dat": "ALES"
+      },
+      "yds": {
+        "name": "YDS (ujian kemampuan bahasa asing)",
+        "dat": "YDS"
+      },
+      "schoolStart": {
+        "name": "Hari pertama sekolah",
+        "dat": "hari pertama sekolah"
+      },
+      "midterm": {
+        "name": "libur tengah semester",
+        "dat": "libur tengah semester"
+      },
+      "aof": {
+        "name": "ujian AÖF (pendidikan terbuka Universitas Anadolu)",
+        "dat": "ujian AÖF"
+      },
+      "aol": {
+        "name": "ujian AÖL (SMA terbuka)",
+        "dat": "ujian AÖL"
+      },
+      "feb14": {
+        "name": "Hari Valentine",
+        "dat": "Hari Valentine"
+      },
+      "mar8": {
+        "name": "Hari Perempuan Internasional",
+        "dat": "Hari Perempuan"
+      },
+      "mothers": {
+        "name": "Hari Ibu",
+        "dat": "Hari Ibu"
+      },
+      "fathers": {
+        "name": "Hari Ayah",
+        "dat": "Hari Ayah"
+      },
+      "nov24": {
+        "name": "Hari Guru",
+        "dat": "Hari Guru"
+      }
+    },
+    "exam": "Tanggal ujian diambil dari pengumuman ÖSYM, MEB, dan Universitas Anadolu, yang dapat mengubahnya. Tanggal yang belum diumumkan tidak ditebak; tanggal ditambahkan setelah diterbitkan."
+  },
+  "datecalc": {
+    "title": "Kalkulator Tanggal: Hari, Hari Kerja, Usia | Saat Tarih",
+    "description": "Berapa hari dan hari kerja antara dua tanggal? Tambah atau kurangi hari, bulan, atau tahun dari suatu tanggal dan hitung usia. Hari libur resmi Turki diperhitungkan.",
+    "h1": "Kalkulator tanggal",
+    "lead": "Hitung hari, minggu, dan hari kerja antara dua tanggal; tambahkan hari, bulan, tahun, atau hari kerja ke suatu tanggal; dan temukan usia serta ulang tahun berikutnya. Hari kerja tidak menghitung akhir pekan dan hari libur resmi Turki.",
+    "diffHeading": "Antara dua tanggal",
+    "startLabel": "Tanggal mulai",
+    "endLabel": "Tanggal akhir",
+    "diffDays": "Selisih: {n} hari",
+    "diffWeeks": "Yaitu {w} minggu {d} hari",
+    "diffYmd": "{y} tahun, {m} bulan, {d} hari",
+    "diffWork": "Hari kerja (awal termasuk, akhir tidak): {n}",
+    "diffNote": "Hari kerja tidak menghitung akhir pekan dan hari libur resmi; setengah hari menjelang bayram dihitung 0,5.",
+    "addHeading": "Tambah atau kurangi dari tanggal",
+    "amountLabel": "Jumlah",
+    "unitLabel": "Satuan",
+    "units": {
+      "days": "Hari",
+      "weeks": "Minggu",
+      "months": "Bulan",
+      "years": "Tahun",
+      "workdays": "Hari kerja"
+    },
+    "addResult": "Hasil: {date}",
+    "addHint": "Masukkan angka negatif untuk mengurangi.",
+    "ageHeading": "Kalkulator usia",
+    "birthLabel": "Tanggal lahir",
+    "ageResult": "Usia {y} tahun, {m} bulan, {d} hari",
+    "ageDays": "Total hari yang telah dijalani: {n}",
+    "ageNext": "Ulang tahun berikutnya: {date} ({n} hari lagi)",
+    "ageToday": "Hari ini ulang tahun Anda!",
+    "invalid": "Masukkan tanggal yang valid.",
+    "pick": "Pilih tanggalnya.",
+    "range": "Data hari libur mencakup {from}–{to}; di luar rentang itu hanya akhir pekan yang tidak dihitung.",
+    "faqHeading": "Pertanyaan umum tentang perhitungan tanggal",
+    "faq": [
+      {
+        "q": "Bagaimana menghitung hari antara dua tanggal?",
+        "a": "Tanggal akhir dikurangi tanggal mulai; kalkulator melakukannya otomatis dan juga menampilkan hasilnya dalam minggu serta dalam tahun, bulan, dan hari."
+      },
+      {
+        "q": "Apakah hari kerja tidak menghitung hari libur resmi?",
+        "a": "Hitungan hari kerja tidak memasukkan akhir pekan dan hari libur resmi Turki; setengah hari menjelang bayram dihitung 0,5 hari kerja. Data hari libur adalah data 2026–2031 dari halaman kalender kami."
+      },
+      {
+        "q": "Bagaimana usia dihitung?",
+        "a": "Tahun, bulan, dan hari penuh sejak tanggal lahir hingga hari ini dihitung. Kalkulator juga menampilkan total hari yang telah dijalani dan sisa hari menuju ulang tahun berikutnya."
+      },
+      {
+        "q": "Bagaimana akhir bulan ditangani saat menambah bulan?",
+        "a": "Jika bulan tujuan tidak memiliki tanggal tersebut, hari terakhirnya yang dipakai; misalnya 31 Januari ditambah 1 bulan menjadi hari terakhir Februari."
+      }
+    ]
+  },
+  "embedgen": {
+    "title": "Widget Jam: Pasang Jam Gratis di Situs Anda | Saat Tarih",
+    "description": "Pasang jam gratis di situs Anda: 13 gaya jam, pilihan kota, tema terang atau gelap. Salin kode iframe siap pakai lalu tempelkan.",
+    "h1": "Pasang jam di situs Anda",
+    "lead": "Pilih gaya, kota, dan tema, lalu salin kode iframe siap pakai dan tempelkan ke situs Anda. Widget ini tanpa iklan, tanpa cookie, dan memakai jam yang disinkronkan dengan server.",
+    "modelLabel": "Gaya jam",
+    "cityLabel": "Kota",
+    "cityLocal": "Lokasi pengunjung",
+    "themeLabel": "Tema",
+    "themeAuto": "Otomatis (pilihan pengunjung)",
+    "themeLight": "Terang",
+    "themeDark": "Gelap",
+    "langLabel": "Bahasa",
+    "secLabel": "Tampilkan detik",
+    "h12Label": "Format 12 jam",
+    "widthLabel": "Lebar (px)",
+    "heightLabel": "Tinggi (px)",
+    "previewHeading": "Pratinjau",
+    "codeHeading": "Kode sematan",
+    "copy": "Salin kode",
+    "copied": "Kode disalin",
+    "note": "Tautan ke Saat Tarih dan tanda tangan Bumba tampil di bawah widget; mohon jangan dihapus.",
+    "previewTitle": "Pratinjau widget Saat Tarih",
+    "frameTitle": "Widget jam Saat Tarih",
+    "faqHeading": "Pertanyaan umum tentang widget jam",
+    "faq": [
+      {
+        "q": "Apakah widget ini gratis?",
+        "a": "Ya. Widget ini gratis dan tanpa iklan. Tautan ke Saat Tarih dan tanda tangan Bumba tampil di bawahnya."
+      },
+      {
+        "q": "Bagaimana cara menambahkannya ke situs saya?",
+        "a": "Pilih gaya dan kota, salin kode iframe yang dibuat, lalu tempelkan ke HTML halaman Anda. Lebar dan tinggi dapat disesuaikan dengan tata letak Anda."
+      },
+      {
+        "q": "Apakah widget ini mengumpulkan data pengunjung saya?",
+        "a": "Widget ini tidak memasang cookie dan tidak mengumpulkan data pribadi. Widget mengirim beberapa permintaan kecil ke server untuk menampilkan waktu yang benar; tayangan halaman dihitung dalam statistik anonim tanpa cookie."
+      }
+    ],
+    "sizeNote": "Gaya dengan kalender memerlukan tinggi minimal 460 px; gaya lainnya muat dengan nyaman dalam 360 px."
+  },
+  "embed": {
+    "link": "Saat Tarih"
+  },
+  "prayer": {
+    "title": "Jadwal Salat: Waktu Azan untuk Lokasi Anda | Saat Tarih",
+    "description": "Jadwal salat untuk lokasi Anda atau provinsi mana pun di Turki: subuh, terbit, zuhur, asar, magrib, dan isya, sisa waktu menuju salat berikutnya, dan tabel bulanan.",
+    "h1": "Jadwal salat",
+    "lead": "Subuh, terbit, zuhur, asar, magrib, dan isya untuk lokasi Anda atau provinsi pilihan. Sisa waktu menuju salat berikutnya berjalan langsung dengan jam yang disinkronkan dengan server.",
+    "cityTitle": "Jadwal Salat {city}: Subuh, Waktu Azan | Saat Tarih",
+    "cityDescription": "Jadwal salat hari ini untuk {city}: subuh, terbit, zuhur, asar, magrib, dan isya, sisa waktu menuju salat berikutnya, dan tabel salat bulanan.",
+    "cityH1": "Jadwal salat {city}",
+    "cityLead": "Waktu subuh, terbit, zuhur, asar, magrib, dan isya hari ini untuk {city}, beserta sisa waktu menuju salat berikutnya. Setiap hari bulan ini ada di tabel di bawah.",
+    "chooseLabel": "Provinsi",
+    "useLocation": "Gunakan lokasi saya",
+    "locating": "Mencari lokasi Anda…",
+    "locationDenied": "Lokasi Anda tidak dapat diambil. Periksa izin peramban atau pilih provinsi dari daftar.",
+    "locationUnsupported": "Peramban Anda tidak mendukung lokasi. Pilih provinsi dari daftar.",
+    "yourLocation": "Lokasi Anda",
+    "locationNote": "Lokasi Anda hanya dipakai di perangkat untuk menghitung waktu; lokasi tidak dikirim ke server.",
+    "nextIn": "Sisa waktu menuju {name}",
+    "todayHeading": "Jadwal hari ini",
+    "colPrayer": "Salat",
+    "colTime": "Waktu",
+    "monthHeading": "Jadwal salat {month} {year}",
+    "colDay": "Hari",
+    "prevMonth": "Bulan sebelumnya",
+    "nextMonth": "Bulan berikutnya",
+    "tableCaption": "{place}: jadwal salat {month} {year}",
+    "names": {
+      "fajr": "Subuh",
+      "sunrise": "Terbit",
+      "dhuhr": "Zuhur",
+      "asr": "Asar",
+      "maghrib": "Magrib",
+      "isha": "Isya"
+    },
+    "otherPlace": "Untuk lokasi lain, buka halaman jadwal salat",
+    "provincesHeading": "Jadwal salat per provinsi",
+    "provincesLead": "Pilih provinsi.",
+    "districtsHeading": "Distrik",
+    "districtTitle": "Jadwal Salat {city} | Saat Tarih",
+    "provinceCentre": "{city} (ibu kota provinsi)",
+    "districtSource": "Lokasi distrik berasal dari GeoNames (CC BY 4.0); waktu dihitung untuk pusat distrik. Diyanet tidak menerbitkan waktu tersendiri untuk distrik pusat di provinsi metropolitan dan memakai waktu provinsi; Kepresidenan Urusan Agama Turki (Diyanet) yang menjadi acuan.",
+    "noscript": "JavaScript harus diaktifkan di peramban Anda untuk melihat jadwal salat.",
+    "faqHeading": "Pertanyaan yang sering diajukan",
+    "faq": [
+      {
+        "q": "Bagaimana jadwal salat dihitung?",
+        "a": "Posisi matahari sepanjang hari dihitung dari lintang dan bujur Anda. Subuh dimulai saat matahari 18° di bawah ufuk, isya pada 17°, dan asar saat bayangan benda sama dengan panjangnya. Perhitungan berjalan di peramban Anda."
+      },
+      {
+        "q": "Apakah lokasi saya dikirim ke server?",
+        "a": "Tidak. Jika Anda mengizinkan akses lokasi, koordinat hanya dipakai di perangkat untuk menghitung waktu; tidak dikirim ke server dan tidak masuk statistik. Pilihan terakhir Anda hanya disimpan di penyimpanan lokal peramban."
+      },
+      {
+        "q": "Apakah waktunya sama dengan Diyanet?",
+        "a": "Perhitungan disetel agar sesuai dengan waktu Diyanet dan selisihnya paling banyak 1 menit di ibu kota provinsi. Waktu resmi tetap yang diterbitkan Kepresidenan Urusan Agama Turki."
+      },
+      {
+        "q": "Kapan waktu berbuka dan sahur?",
+        "a": "Berbuka puasa pada waktu magrib (azan petang), dan sahur berlangsung hingga subuh (imsak). Pada bulan Ramadan keduanya dapat dilihat di tabel bulanan."
+      },
+      {
+        "q": "Bisakah dipakai di luar negeri?",
+        "a": "Ya. Tombol Gunakan lokasi saya menghitung waktu di mana pun di dunia. Di lintang sangat tinggi, sudut subuh atau isya mungkin tidak tercapai; maka diberikan waktu perkiraan dengan aturan sepertujuh malam."
+      },
+      {
+        "q": "Apa itu waktu asar Hanafi dan mengapa berbeda?",
+        "a": "Asar dimulai saat bayangan benda sama dengan panjangnya ditambah bayangan saat tengah hari; Diyanet serta mazhab Syafi'i, Maliki, dan Hanbali memakai ini. Mazhab Hanafi menunggu hingga bayangan dua kali panjang benda, sehingga asar dimulai sekitar 30 hingga 80 menit lebih lambat tergantung musim. Anda dapat memilih asar Hanafi dan metode perhitungan negara lain di \"Metode perhitungan\" pada halaman jadwal salat."
+      }
+    ],
+    "search": "prayer times adhan azan fajr dhuhr asr maghrib isha iftar suhoor namaz vakitleri ezan imsakiye ramadan timetable jadwal salat sholat waktu azan subuh zuhur asar magrib isya buka puasa sahur imsakiyah",
+    "imHeading": "Jadwal imsakiyah Ramadan",
+    "imText": "Jadwal imsakiyah Ramadan berwarna dengan waktu sahur (subuh) dan berbuka (magrib) untuk Ramadan mendatang, dihitung untuk lokasi Anda. Buka atau unduh sebagai gambar untuk dibagikan atau dicetak.",
+    "imOpen": "Buka jadwal",
+    "imDownload": "Unduh sebagai PNG",
+    "imTitle": "Jadwal Imsakiyah Ramadan {year}",
+    "imAlt": "Jadwal Ramadan {year} untuk {place}",
+    "imDay": "Ramadan",
+    "imDate": "Tanggal",
+    "imSahur": "sahur",
+    "imIftar": "berbuka",
+    "imNote": "Waktu merupakan hasil perhitungan; untuk waktu resmi ikuti Kepresidenan Urusan Agama (Diyanet).",
+    "imFile": "jadwal-ramadan",
+    "imBrand": "Bumba Group · Bumba Life",
+    "kerahatHeading": "Waktu makruh salat (perkiraan)",
+    "kerahatNames": {
+      "israk": "Matahari terbit (isyraq)",
+      "istiva": "Menjelang tengah hari (istiwa)",
+      "isfirar": "Matahari terbenam (isfirar)"
+    },
+    "kerahatNote": "Salat sunah tidak dikerjakan pada waktu-waktu ini. Diyanet tidak menerbitkan menit yang pasti; dipakai kebiasaan kalender umum sekitar 45 menit (sumber menyebut 10–45 menit untuk waktu menjelang tengah hari).",
+    "method": {
+      "heading": "Metode perhitungan",
+      "label": "Metode",
+      "asrLabel": "Asar",
+      "asrStd": "Standar (Syafi'i, Maliki, Hanbali, Diyanet)",
+      "asrHanafi": "Hanafi (bayangan dua kali panjang)",
+      "note": "Di Turki, waktu resmi adalah waktu Kepresidenan Urusan Agama (Diyanet). Jika Anda memilih metode lain, waktu, tabel bulanan, dan jadwal imsakiyah di halaman ini dihitung dengan metode itu; pilihan Anda hanya disimpan di peramban ini.",
+      "active": "Metode: {name}",
+      "hanafiShort": "Asar Hanafi",
+      "names": {
+        "diyanet": "Diyanet (Turki)",
+        "mwl": "Liga Muslim Dunia",
+        "isna": "Islamic Society of North America (ISNA)",
+        "egypt": "Otoritas Survei Umum Mesir",
+        "makkah": "Umm al-Qura (Makkah)",
+        "karachi": "Universitas Ilmu-Ilmu Islam, Karachi",
+        "tehran": "Institut Geofisika, Teheran",
+        "jafari": "Syiah Itsna Asyariyah (Qum)",
+        "gulf": "Kawasan Teluk",
+        "kuwait": "Kuwait",
+        "qatar": "Qatar",
+        "singapore": "Singapura",
+        "france": "Prancis (UOIF)",
+        "russia": "Dewan Spiritual Muslim Rusia"
+      }
+    }
+  },
+  "nature": {
+    "title": "Musim: Roda Musim, Ekuinoks, dan Titik Balik Matahari | Saat Tarih",
+    "description": "Roda musim, tanggal ekuinoks dan titik balik matahari, siang dan malam terpanjang, matahari terbit dan terbenam, fase Bulan, dan panjang siang sepanjang tahun.",
+    "h1": "Musim",
+    "lead": "Tahun berputar seperti roda: sedang musim apa, berapa hari lagi menuju musim berikutnya, kapan matahari terbit dan terbenam, dan bagaimana fase Bulan? Semua dalam satu halaman untuk lokasi Anda atau provinsi pilihan.",
+    "wheelLabel": "Roda musim tahunan",
+    "seasons": {
+      "spring": "Musim semi",
+      "summer": "Musim panas",
+      "autumn": "Musim gugur",
+      "winter": "Musim dingin"
+    },
+    "current": "Sekarang {season}",
+    "dayOf": "Hari ke-{n} (dari {total})",
+    "nextIn": "{days} hari lagi menuju awal {season}",
+    "startsOn": "{season} dimulai: {date}",
+    "sunHeading": "Matahari hari ini",
+    "sunrise": "Matahari terbit",
+    "sunset": "Matahari terbenam",
+    "dayLength": "Panjang siang",
+    "solarNoon": "Tengah hari matahari",
+    "dayLonger": "Siang {m} mnt lebih panjang dari kemarin",
+    "dayShorter": "Siang {m} mnt lebih pendek dari kemarin",
+    "dayLeft": "Hingga matahari terbenam: {t}",
+    "moonHeading": "Bulan",
+    "phases": {
+      "new": "Bulan baru",
+      "waxingCrescent": "Sabit awal",
+      "firstQuarter": "Kuartal pertama",
+      "waxingGibbous": "Cembung awal",
+      "full": "Bulan purnama",
+      "waningGibbous": "Cembung akhir",
+      "lastQuarter": "Kuartal akhir",
+      "waningCrescent": "Sabit akhir"
+    },
+    "illumination": "{p}% tersinari",
+    "age": "Umur Bulan: {d} hari",
+    "nextNew": "Bulan baru berikutnya",
+    "nextFull": "Purnama berikutnya",
+    "moonrise": "Bulan terbit",
+    "moonset": "Bulan terbenam",
+    "moonNoRise": "Bulan tidak terbit hari ini",
+    "moonNoSet": "Bulan tidak terbenam hari ini",
+    "moonCalHeading": "Kalender Bulan",
+    "moonCalCaption": "{month}: fase Bulan pada tengah hari setiap hari",
+    "eclipseHeading": "Gerhana",
+    "eclipseLead": "Gerhana Matahari dan Bulan mendatang. Waktunya adalah puncak gerhana (waktu {place}).",
+    "eclipseTypes": {
+      "solarTotal": "Gerhana Matahari total",
+      "solarAnnular": "Gerhana Matahari cincin",
+      "solarPartial": "Gerhana Matahari sebagian",
+      "solarHybrid": "Gerhana Matahari hibrida",
+      "lunarTotal": "Gerhana Bulan total",
+      "lunarPartial": "Gerhana Bulan sebagian",
+      "lunarPenumbral": "Gerhana Bulan penumbra"
+    },
+    "eclipseRegions": "Terlihat dari: {list}",
+    "eclipsePath": "Fase total atau cincin: {list}",
+    "eclipseHere": "{place}: Bulan saat itu di atas ufuk, jadi gerhana dapat dilihat dari sini.",
+    "eclipseNotHere": "{place}: Bulan saat itu di bawah ufuk.",
+    "eclipseSafety": "Jangan pernah melihat gerhana Matahari dengan mata telanjang atau kacamata hitam biasa; gunakan kacamata gerhana bersertifikat ISO 12312-2.",
+    "eclipseSource": "Sumber: NASA Eclipse Web Site (Fred Espenak, NASA/GSFC).",
+    "chartHeading": "Panjang siang sepanjang tahun",
+    "chartCaption": "{place}: lama siang per hari (jam), {year}",
+    "longest": "Siang terpanjang",
+    "shortest": "Siang terpendek",
+    "hoursShort": "j",
+    "minutesShort": "mnt",
+    "tableHeading": "Tanggal awal musim",
+    "tableLead": "Musim astronomis, yaitu saat ekuinoks dan titik balik matahari. Waktu dalam waktu Turki (UTC+3).",
+    "colYear": "Tahun",
+    "meteoNote": "Musim meteorologis adalah blok tiga bulan: musim semi mulai 1 Maret, musim panas 1 Juni, musim gugur 1 September, dan musim dingin 1 Desember. Musim ini dipakai untuk kalender dan statistik.",
+    "factsHeading": "Alam sepanjang musim",
+    "facts": {
+      "spring": [
+        "Siang dan malam sama panjang saat ekuinoks, lalu dalam bulan-bulan berikutnya siang cepat memanjang.",
+        "Bunga mekar dan pohon menghijau; burung migran kembali ke utara.",
+        "Salju mencair dan sungai naik; tanah disiapkan untuk bercocok tanam."
+      ],
+      "summer": [
+        "Siang terpanjang dalam setahun jatuh pada titik balik matahari musim panas.",
+        "Laut dan tanah menghangat, dan musim buah serta sayur mencapai puncaknya.",
+        "Malam yang pendek dan langit cerah menjadikannya waktu terbaik untuk mengamati Bima Sakti."
+      ],
+      "autumn": [
+        "Siang dan malam kembali sama panjang, lalu siang mulai memendek.",
+        "Daun berubah warna dan gugur; burung seperti bangau dan jenjang bermigrasi ke selatan.",
+        "Waktunya panen: anggur, kenari, hazelnut, dan kastanye dipetik."
+      ],
+      "winter": [
+        "Siang terpendek dalam setahun jatuh pada titik balik matahari musim dingin, setelah itu siang memanjang lagi.",
+        "Banyak hewan berhibernasi dan tumbuhan memasuki masa dorman.",
+        "Salju di pegunungan menyimpan air untuk musim semi dan panas."
+      ]
+    },
+    "whyHeading": "Mengapa ada musim?",
+    "why": [
+      "Musim terjadi karena sumbu rotasi Bumi miring sekitar 23,4° terhadap orbitnya mengelilingi Matahari, bukan karena jaraknya dari Matahari.",
+      "Saat sumbu condong ke Matahari, belahan itu menerima cahaya lebih langsung dan siang lebih panjang: musim panas. Saat condong menjauh, musim dingin.",
+      "Pada ekuinoks (sekitar 20 Maret dan 22 September) siang dan malam hampir sama; pada titik balik (sekitar 21 Juni dan 21 Desember) siang paling panjang atau paling pendek."
+    ],
+    "hemisphereNote": "Musim di belahan bumi selatan terbalik; jika lokasi Anda di selatan, nama musim berubah sesuai.",
+    "methodNote": "Matahari, Bulan, dan saat pergantian musim dihitung di peramban dengan rumus astronomi: saat musim hingga selisih beberapa menit, fase dan waktu Bulan secara perkiraan.",
+    "weatherLink": "Buka halaman cuaca",
+    "faqHeading": "Pertanyaan yang sering diajukan",
+    "faq": [
+      {
+        "q": "Kapan musim dimulai?",
+        "a": "Secara astronomis, musim semi dimulai sekitar 20 Maret, musim panas 21 Juni, musim gugur 22-23 September, dan musim dingin 21 Desember. Waktu tepatnya bergeser beberapa jam dari tahun ke tahun; lihat tabel di atas."
+      },
+      {
+        "q": "Apa beda musim astronomis dan meteorologis?",
+        "a": "Musim astronomis didasarkan pada ekuinoks dan titik balik matahari, sedangkan musim meteorologis memakai bulan kalender penuh (misalnya Maret–Mei untuk musim semi). Cara kedua memudahkan pencatatan iklim."
+      },
+      {
+        "q": "Bagaimana panjang siang berubah?",
+        "a": "Panjang siang bertambah dari titik balik musim dingin hingga titik balik musim panas, lalu memendek lagi. Perubahan tercepat terjadi di sekitar ekuinoks, beberapa menit per hari, dan hampir diam pada titik balik."
+      },
+      {
+        "q": "Bagaimana fase Bulan dihitung?",
+        "a": "Fase berasal dari waktu sejak bulan baru terakhir sebagai bagian dari siklus Bulan (sekitar 29,5 hari). Waktu bulan baru dan purnama dihitung dengan rumus astronomi hingga selisih beberapa menit."
+      }
+    ],
+    "search": "seasons spring summer autumn winter equinox solstice moon phase full moon new moon sunrise sunset day length mevsimler ilkbahar yaz sonbahar kış musim semi musim panas musim gugur musim dingin ekuinoks fase bulan purnama",
+    "turnHeading": "Ekuinoks dan titik balik matahari",
+    "turnNames": {
+      "springEq": "Ekuinoks musim semi",
+      "summerSol": "Titik balik musim panas",
+      "autumnEq": "Ekuinoks musim gugur",
+      "winterSol": "Titik balik musim dingin"
+    },
+    "turnNotes": {
+      "eq": "Siang dan malam hampir sama (12 jam).",
+      "longDay": "Siang terpanjang dan malam terpendek dalam setahun.",
+      "longNight": "Siang terpendek dan malam terpanjang dalam setahun."
+    },
+    "turnIn": "{n} hari lagi",
+    "turnAgo": "{n} hari yang lalu",
+    "turnToday": "hari ini",
+    "goldenAm": "Jam emas pagi",
+    "goldenPm": "Jam emas sore",
+    "blueAm": "Jam biru pagi",
+    "bluePm": "Jam biru petang",
+    "lightNote": "Jam emas: Matahari antara 6° di atas dan 4° di bawah ufuk, cahayanya lembut dan hangat. Jam biru: Matahari 4° hingga 6° di bawah ufuk, senja kebiruan. Berguna bagi fotografer.",
+    "moonIcsHeading": "Fase Bulan dan gerhana di kalender Anda",
+    "moonIcsNote": "Bulan baru, purnama, dan gerhana (2026–2031, sebagai waktu UTC; kalender Anda menampilkannya dalam waktu Anda).",
+    "crescentHeading": "Visibilitas hilal",
+    "crescentLead": "Petang-petang setelah bulan baru {date} untuk {place}, dihitung dengan kriteria Yallop (1997).",
+    "crescentCols": [
+      "Petang",
+      "Matahari terbenam",
+      "Bulan terbenam",
+      "Umur Bulan",
+      "Visibilitas"
+    ],
+    "crescentAge": "{h} j",
+    "crescentLag": "{m} mnt kemudian",
+    "crescentBefore": "Sebelum Matahari",
+    "crescentCats": {
+      "A": "Mudah terlihat dengan mata telanjang",
+      "B": "Terlihat dengan mata telanjang dalam kondisi sempurna",
+      "C": "Mungkin perlu teropong untuk menemukan, lalu mata telanjang",
+      "D": "Hanya dengan teropong atau teleskop",
+      "E": "Tidak terlihat bahkan dengan teleskop",
+      "F": "Tidak terlihat"
+    },
+    "crescentNote": "Ini adalah prakiraan: awan, ufuk, dan penglihatan mengubah hasilnya. Di Turki bulan Hijriah mengikuti kalender Diyanet yang ditetapkan lebih dulu dengan hisab; negara yang memakai rukyat dapat berbeda satu hari.",
+    "eclMapHeading": "Peta gerhana",
+    "eclMapLabel": "Gerhana",
+    "eclMapSolar": "Oranye: tempat gerhana terlihat sebagian (makin gelap, makin banyak Matahari tertutup). Merah tua: jalur total; ungu: jalur gerhana cincin. Titik hitam: tempat terpilih.",
+    "eclMapLunar": "Biru: tempat Bulan berada di atas ufuk saat puncak gerhana, sehingga gerhana dapat dilihat. Titik biru: tempat Bulan di zenit; titik hitam: tempat terpilih.",
+    "eclMapNote": "Peta dihitung secara perkiraan di peramban dari posisi Matahari dan Bulan (tepi jalur dapat meleset beberapa puluh km). Garis pantai: Natural Earth. Untuk jalur dan waktu yang tepat lihat halaman gerhana NASA."
+  },
+  "weather": {
+    "title": "Cuaca: Saat Ini, Per Jam, dan Prakiraan 14 Hari | Saat Tarih",
+    "description": "Cuaca saat ini, prakiraan per jam dan 14 hari untuk lokasi Anda atau provinsi pilihan: suhu, terasa seperti, angin, kelembapan, hujan, dan UV.",
+    "h1": "Cuaca",
+    "lead": "Suhu saat ini serta prakiraan per jam dan 14 hari untuk lokasi Anda atau provinsi pilihan. Cuaca juga dapat ditampilkan di samping jam layar penuh.",
+    "now": "Sekarang",
+    "feelsLike": "Terasa seperti",
+    "humidity": "Kelembapan",
+    "wind": "Angin",
+    "precipitation": "Curah hujan",
+    "pressure": "Tekanan udara",
+    "uv": "Indeks UV",
+    "hourlyHeading": "Prakiraan per jam (24 jam)",
+    "dailyHeading": "Prakiraan 14 hari",
+    "sunrise": "Matahari terbit",
+    "sunset": "Matahari terbenam",
+    "loading": "Mengambil data cuaca…",
+    "error": "Cuaca tidak dapat diambil. Periksa koneksi Anda lalu coba lagi.",
+    "retry": "Coba lagi",
+    "locationNote": "Koordinat lokasi pilihan Anda (sekitar 1 km) dikirim langsung dari peramban ke Open-Meteo, penyedia data cuaca; server Saat Tarih tidak melihatnya.",
+    "attribution": "Data cuaca: Open-Meteo.com (CC BY 4.0)",
+    "updated": "Diperbarui: {time}",
+    "rainChance": "Peluang hujan {p}%",
+    "windFrom": "dari arah {dir}",
+    "codes": {
+      "clear": "Cerah",
+      "mostlyClear": "Sebagian besar cerah",
+      "partly": "Berawan sebagian",
+      "overcast": "Mendung",
+      "fog": "Kabut",
+      "drizzle": "Gerimis",
+      "freezingDrizzle": "Gerimis beku",
+      "rain": "Hujan",
+      "freezingRain": "Hujan beku",
+      "snow": "Salju",
+      "snowGrains": "Butiran salju",
+      "showers": "Hujan lebat sesaat",
+      "snowShowers": "Hujan salju sesaat",
+      "thunder": "Badai petir",
+      "thunderHail": "Badai petir disertai hujan es"
+    },
+    "compass": [
+      "utara",
+      "timur laut",
+      "timur",
+      "tenggara",
+      "selatan",
+      "barat daya",
+      "barat",
+      "barat laut"
+    ],
+    "natureLink": "Halaman musim",
+    "faqHeading": "Pertanyaan yang sering diajukan",
+    "faq": [
+      {
+        "q": "Dari mana data cuaca berasal?",
+        "a": "Data diunduh langsung ke peramban Anda dari Open-Meteo, layanan cuaca terbuka. Ini adalah prakiraan model dan dapat berbeda beberapa derajat dan beberapa jam dari pengukuran setempat."
+      },
+      {
+        "q": "Apakah lokasi saya dibagikan?",
+        "a": "Jika Anda memilih lokasi, koordinat perkiraan (sekitar 1 km) dikirim ke Open-Meteo hanya untuk mengambil cuaca. Server Saat Tarih tidak melihat atau menyimpannya."
+      },
+      {
+        "q": "Apa itu suhu terasa seperti?",
+        "a": "Suhu terasa seperti adalah seberapa hangat udara terasa bagi tubuh setelah memperhitungkan angin dan kelembapan; nilainya dapat berbeda dari suhu udara sebenarnya."
+      },
+      {
+        "q": "Dapatkah saya melihat cuaca di jam layar penuh?",
+        "a": "Ya. Dalam layar penuh, tombol cuaca di bilah yang muncul saat Anda menyentuh layar menampilkan cuaca lokasi pilihan Anda di samping jam."
+      }
+    ],
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin cuaca prakiraan suhu hujan angin kelembapan besok minggu ini"
+  },
+  "faqPage": {
+    "title": "Pertanyaan umum: waktu, kalender, salat | Saat Tarih",
+    "description": "Semua pertanyaan umum di Saat Tarih dalam satu halaman: waktu server, jam dunia, kalender dan hari libur, alat, jadwal salat, alam, dan cuaca.",
+    "h1": "Pertanyaan yang sering diajukan",
+    "lead": "Pertanyaan dari semua halaman situs, dikumpulkan di sini menurut topik. Tautan di bawah setiap judul membuka halaman terkait.",
+    "toc": "Topik",
+    "open": "Buka halaman",
+    "general": "Umum",
+    "countdowns": "Halaman hitung mundur",
+    "calendar": "Kalender, hari libur resmi, dan bayram"
+  },
+  "consent": {
+    "barLabel": "Pilihan cookie",
+    "barText": "Kami menyimpan preferensi Anda (bahasa, tema, pengaturan jam dan alat) hanya di peramban ini. Jika Anda mengizinkan, kunjungan dihitung dengan Umami, serta cuaca (Open-Meteo), peta dekat bola dunia dan masjid terdekat (OpenStreetMap), dan musik alarm (YouTube) dimuat dari layanan eksternal.",
+    "accept": "Terima",
+    "reject": "Tolak",
+    "prefs": "Preferensi",
+    "policy": "Kebijakan cookie",
+    "title": "Preferensi cookie",
+    "intro": "Pilih kelompok mana yang aktif; Anda dapat mengubah pilihan kapan saja lewat tautan \"Preferensi cookie\" di menu pengaturan.",
+    "necessary": "Diperlukan",
+    "necessaryText": "Pilihan cookie, bahasa, tema, pengaturan jam dan alat, lokasi pilihan, dan daftar jam dunia Anda disimpan di penyimpanan lokal peramban ini. Data ini tidak pernah sampai ke server; situs tidak berfungsi tanpanya.",
+    "alwaysOn": "Selalu aktif",
+    "stats": "Statistik",
+    "statsText": "Umami menghitung kunjungan halaman dan beberapa tindakan (peramban, perangkat, bahasa, serta negara dan kota yang diturunkan dari alamat IP; IP tidak disimpan). Tidak ada cookie yang dipakai. Nonaktif secara bawaan.",
+    "ext": "Layanan eksternal",
+    "extText": "Cuaca dimuat dari Open-Meteo (api.open-meteo.com), peta pada bola dunia yang diperbesar dari OpenStreetMap (tile.openstreetmap.org), masjid terdekat dari layanan Overpass OpenStreetMap (overpass-api.de), dan musik YouTube yang Anda tambahkan ke alarm dari YouTube (youtube-nocookie.com); alamat IP Anda sampai ke layanan ini. Nonaktif secara bawaan.",
+    "save": "Simpan pilihan",
+    "footerLink": "Preferensi cookie",
+    "privacy": "Privasi",
+    "wxBlocked": "Cuaca dimuat dari Open-Meteo; izinkan layanan eksternal untuk menampilkannya.",
+    "allow": "Izinkan",
+    "mqBlocked": "Masjid terdekat dimuat dari OpenStreetMap (Overpass); izinkan layanan eksternal untuk menampilkannya.",
+    "mapBlocked": "Peta dekat dimuat dari OpenStreetMap; izinkan layanan eksternal untuk menampilkannya."
+  },
+  "qibla": {
+    "title": "Arah Kiblat: Kompas, Sudut, dan Waktu Kiblat | Saat Tarih",
+    "description": "Arah Ka'bah dari tempat Anda: kompas ponsel langsung, sudut kiblat dari utara, jarak ke Ka'bah, waktu kiblat hari ini, dan masjid terdekat.",
+    "h1": "Arah kiblat",
+    "lead": "Sudut kiblat, jarak ke Ka'bah, dan waktu kiblat hari ini untuk tempat terpilih; arah langsung dengan kompas ponsel Anda.",
+    "search": "qibla kibla direction compass kaaba mecca qibla time qibla angle mosque nearby mosques arah kiblat kompas kakbah mekah waktu kiblat masjid terdekat",
+    "angle": "Arah kiblat",
+    "angleNote": "Searah jarum jam dari utara",
+    "distance": "Jarak ke Ka'bah",
+    "time": "Waktu kiblat",
+    "timeNote": "Pada waktu ini Matahari tepat berada di arah kiblat: menghadap Matahari berarti menghadap kiblat.",
+    "noTime": "Hari ini Matahari tidak melewati arah kiblat.",
+    "start": "Mulai kompas",
+    "aligned": "Anda menghadap kiblat",
+    "turn": "Pegang ponsel mendatar dan berputarlah ke arah panah",
+    "waiting": "Menunggu data kompas…",
+    "noCompass": "Perangkat atau peramban ini tidak memiliki kompas. Ukur sudut kiblat searah jarum jam dari utara, atau hadaplah Matahari pada waktu kiblat.",
+    "denied": "Izin kompas tidak diberikan. Muat ulang halaman untuk mencoba lagi.",
+    "calibrate": "Kompas mungkin perlu dikalibrasi: gerakkan ponsel membentuk angka 8 beberapa kali dan jauhkan dari magnet, logam, dan perangkat elektronik.",
+    "atKaaba": "Anda berada di Ka'bah.",
+    "method": "Kiblat adalah arah awal jalur terpendek (lingkaran besar) menuju Ka'bah, dihitung di peramban dari koordinat tempat terpilih dan tidak pernah dikirim ke server kami. Untuk provinsi, pusatnya yang dipakai (perbedaan di dalam satu provinsi kurang dari 1°). Waktu kiblat sesuai dengan waktu kiblat yang diterbitkan Diyanet dalam ±1 menit. Ketelitian kompas bergantung pada sensor ponsel Anda.",
+    "mosquesHeading": "Masjid terdekat",
+    "mosquesText": "Masjid di sekitar tempat terpilih (4 km) didaftar dari data OpenStreetMap.",
+    "mosquesShow": "Tampilkan masjid",
+    "mosquesLoading": "Memuat masjid…",
+    "mosquesNone": "Tidak ditemukan masjid di sekitar.",
+    "mosquesError": "Masjid tidak dapat dimuat. Coba lagi nanti.",
+    "mosquesAttribution": "Data © kontributor OpenStreetMap (ODbL), melalui Overpass API.",
+    "mosqueUnnamed": "Masjid",
+    "mapsText": "Cari di peta:",
+    "mapsQuery": "masjid",
+    "km": "{km} km",
+    "m": "{m} m",
+    "faq": [
+      {
+        "q": "Bagaimana mencari arah kiblat?",
+        "a": "Kiblat adalah arah jalur terpendek dari tempat Anda ke Ka'bah di Mekah. Halaman ini memberi sudut kiblat untuk tempat terpilih dalam derajat searah jarum jam dari utara; di ponsel, ketuk \"Mulai kompas\" dan panah menunjuk langsung ke kiblat. Tanpa kompas, Anda juga dapat menghadap Matahari pada waktu kiblat."
+      },
+      {
+        "q": "Apa itu waktu kiblat?",
+        "a": "Waktu kiblat adalah saat Matahari tepat berada di arah kiblat; menghadap Matahari pada menit itu berarti menghadap kiblat. Waktunya bergeser beberapa menit setiap hari dan bergantung pada tempat. Di beberapa tempat yang jauh dari Ka'bah, pada hari tertentu Matahari tidak pernah mencapai arah kiblat."
+      },
+      {
+        "q": "Ke arah mana kiblat dari London?",
+        "a": "Dari London kiblat berada di tenggara: sekitar 119,0° searah jarum jam dari utara. Jarak lingkaran besar ke Ka'bah sekitar 4.794 km."
+      },
+      {
+        "q": "Mengapa kompas ponsel bisa keliru?",
+        "a": "Kompas ponsel mengukur medan magnet; magnet, benda logam, mobil, dan perangkat elektronik dapat membelokkannya. Menggerakkan ponsel membentuk angka 8 akan mengalibrasinya. Pegang ponsel mendatar dan bandingkan hasilnya dengan sudut kiblat."
+      }
+    ],
+    "cardinals": "U T S B"
+  },
+  "bridge": {
+    "title": "Perencana libur panjang di Turki: cuti vs hari libur | Saat Tarih",
+    "description": "Hari libur resmi Turki, setengah hari menjelang bayram, dan akhir pekan digabung: libur terpanjang untuk tiap hari raya dengan 1 hingga 4 hari cuti dan tanggalnya.",
+    "h1": "Perencana libur panjang (Turki)",
+    "lead": "Hari apa yang perlu diambil cuti agar hari libur resmi Turki tersambung dengan akhir pekan? Untuk setiap hari libur, jeda terpanjang menurut jumlah hari cuti.",
+    "search": "long weekend bridge holiday leave planner turkey public holidays days off eid break köprü tatil libur panjang cuti bersama hari kejepit turki",
+    "yearLabel": "Tahun",
+    "maxLabel": "Cuti maks.",
+    "maxAll": "Semua",
+    "maxN": "{n} hari",
+    "colHoliday": "Hari libur",
+    "colDates": "Jeda",
+    "colLeave": "Cuti",
+    "colTotal": "Total",
+    "colDays": "Hari yang diambil cuti",
+    "noLeave": "Tidak ada",
+    "leaveN": "{n} hari",
+    "totalN": "{n} hari",
+    "halfNote": "{date} (setengah hari)",
+    "none": "Tidak perlu cuti",
+    "best": "Paling menguntungkan",
+    "caption": "Libur panjang {year}: jeda terpanjang menurut jumlah hari cuti",
+    "groups": {
+      "rb": "Idulfitri",
+      "kb": "Iduladha"
+    },
+    "note": "Akhir pekan dan hari libur resmi tidak memerlukan cuti; setengah hari menjelang bayram pada hari kerja dihitung setengah hari cuti. Di sektor publik, hari menjelang itu libur sejak siang; di sektor swasta tanyakan kepada pemberi kerja. Cuti administratif dan hari kejepit perusahaan tidak dimasukkan.",
+    "projected": "Tanggal hari raya keagamaan tahun ini didasarkan pada kalender jangka panjang Diyanet (proyeksi).",
+    "faq": [
+      {
+        "q": "Bagaimana libur panjang (hari kejepit) dihitung?",
+        "a": "Anda mengambil cuti pada hari kerja di antara hari libur resmi dan akhir pekan, sehingga jeda berlangsung tanpa putus. Halaman ini menunjukkan, untuk setiap hari libur, jeda terpanjang yang didapat dengan 0, 1, 2… hari cuti, lengkap dengan tanggalnya. Setengah hari menjelang bayram pada hari kerja dihitung setengah hari cuti."
+      }
+    ],
+    "faqBest": {
+      "q": "Libur panjang apa yang paling menguntungkan pada {year}?",
+      "a": "Pada {year}, yang paling menguntungkan adalah {name}: {days} hari libur dengan {leave} hari cuti ({dates})."
+    }
+  },
+  "zones": {
+    "hubTitle": "Singkatan zona waktu: UTC, GMT, CET, EST, dan lainnya | Saat Tarih",
+    "hubDescription": "Arti UTC, GMT, CET, CEST, EET, TRT, MSK, EST, PST, dan singkatan zona waktu lainnya, selisih UTC, waktu saat ini, dan selisihnya dengan Turki.",
+    "hubH1": "Singkatan zona waktu",
+    "hubLead": "Singkatan zona waktu yang umum, artinya, selisih UTC, dan waktu saat ini.",
+    "hubSearch": "time zone abbreviation utc gmt cet cest eet est pst ist jst msk gst trt saat dilimi zona waktu singkatan wib wita wit",
+    "colAbbr": "Singkatan",
+    "colName": "Nama",
+    "colOffset": "Selisih UTC",
+    "colNow": "Sekarang",
+    "caption": "Singkatan zona waktu dan selisih UTC",
+    "pageTitle": "Waktu {abbr}: {name} ({offset}) | Saat Tarih",
+    "pageDescription": "{abbr} ({name}) adalah {offset}. Jam berapa sekarang menurut {abbr}, di mana dipakai, dan bagaimana selisihnya dengan Turki dan zona waktu lain?",
+    "pageH1": "{abbr}: {name}",
+    "pageLead": "{abbr} adalah singkatan dari {name}; selisihnya dengan UTC adalah {offset}.",
+    "nowLabel": "Waktu saat ini menurut {abbr}",
+    "offsetLine": "Selisih UTC: {offset}",
+    "usedIn": "Tempat dipakainya",
+    "usedNone": "UTC bukan waktu setempat negara mana pun, melainkan skala waktu bersama dunia yang dipakai dalam penerbangan, sains, dan sistem komputer.",
+    "dstWinter": "{abbr} adalah waktu standar (musim dingin); tempat yang memakai waktu musim panas menggunakan {pair} ({pairOffset}) saat musim panas.",
+    "dstSummer": "{abbr} adalah waktu musim panas; {pair} ({pairOffset}) dipakai saat musim dingin.",
+    "dstNone": "Zona waktu ini tidak memakai waktu musim panas.",
+    "diffHeading": "{abbr} dibandingkan dengan zona waktu lain",
+    "colZone": "Zona waktu",
+    "colDiff": "Selisih",
+    "colExample": "Saat pukul 12.00 menurut {abbr}",
+    "same": "Waktu sama",
+    "ahead": "{d} lebih cepat",
+    "behind": "{d} lebih lambat",
+    "hoursShort": "j",
+    "minutesShort": "mnt",
+    "ambiguous": {
+      "IST": "IST juga dipakai untuk Waktu Standar Irlandia (UTC+1) dan Waktu Standar Israel (UTC+2); halaman ini tentang Waktu Standar India.",
+      "CST": "CST juga dipakai untuk Waktu Standar Tiongkok (UTC+8) dan Waktu Standar Kuba (UTC−5); halaman ini tentang Waktu Standar Tengah Amerika Utara.",
+      "GST": "GST juga dipakai untuk Waktu Georgia Selatan (UTC−2); halaman ini tentang Waktu Standar Teluk."
+    },
+    "trtName": "Waktu Turki",
+    "faq": [
+      {
+        "q": "Apakah ada beda antara UTC dan GMT?",
+        "a": "Dalam penggunaan sehari-hari keduanya menunjukkan waktu yang sama (UTC+0). UTC adalah skala waktu bersama yang dijaga jam atom; GMT adalah zona waktu yang dipakai Inggris dan beberapa negara lain pada musim dingin. Inggris beralih ke BST (UTC+1) pada musim panas, sedangkan UTC tidak pernah berubah."
+      },
+      {
+        "q": "Zona waktu apa yang dipakai Turki?",
+        "a": "Sejak 2016 Turki memakai UTC+3 sepanjang tahun (TRT, Waktu Turki) tanpa waktu musim panas, jadi selisihnya dengan Eropa 1 jam pada musim panas dan 2 jam pada musim dingin."
+      }
+    ]
+  },
+  "dst": {
+    "title": "Perubahan waktu musim panas: kapan jam diubah? | Saat Tarih",
+    "description": "Kapan jam dimajukan atau dimundurkan di Eropa, AS, Kanada, Australia, dan negara lain dalam 12 bulan ke depan, dengan waktu setempat. Turki tanpa waktu musim panas.",
+    "h1": "Perubahan waktu musim panas di seluruh dunia",
+    "lead": "Kapan jam dimajukan atau dimundurkan dalam 12 bulan ke depan, dengan waktu setempat dan negaranya.",
+    "search": "daylight saving time dst clocks go back forward summer time winter time europe us yaz saati waktu musim panas jam dimajukan dimundurkan",
+    "colDate": "Tanggal",
+    "colWhere": "Tempat",
+    "colChange": "Perubahan",
+    "colLeft": "Dalam",
+    "forward": "Jam dimajukan 1 jam: {from} → {to}",
+    "back": "Jam dimundurkan 1 jam: {from} → {to}",
+    "forwardN": "Jam dimajukan {d}: {from} → {to}",
+    "backN": "Jam dimundurkan {d}: {from} → {to}",
+    "inDays": "{n} hari lagi",
+    "today": "Hari ini",
+    "tomorrow": "Besok",
+    "caption": "Perubahan waktu musim panas dalam 12 bulan ke depan (waktu setempat)",
+    "groups": {
+      "eu": "Eropa",
+      "us": "AS dan Kanada",
+      "cl": "Chili",
+      "au": "Australia (tenggara)",
+      "nz": "Selandia Baru",
+      "il": "Israel",
+      "lb": "Lebanon",
+      "eg": "Mesir",
+      "ma": "Maroko",
+      "cu": "Kuba",
+      "md": "Moldova",
+      "ps": "Palestina",
+      "gl": "Greenland"
+    },
+    "turkeyNote": "Turki tidak memakai waktu musim panas: sejak 2016 memakai UTC+3 sepanjang tahun.",
+    "note": "Tanggal dihitung dari basis data zona waktu IANA (halaman menghitung ulang di peramban Anda). Negara dapat mengubah aturannya; pengumuman resmi yang berlaku.",
+    "faq": [
+      {
+        "q": "Kapan jam dimundurkan di Eropa?",
+        "a": "Di UE dan Inggris, jam dimajukan satu jam pada pukul 01.00 UTC hari Minggu terakhir bulan Maret dan dimundurkan satu jam pada pukul 01.00 UTC hari Minggu terakhir bulan Oktober. Turki tidak berubah, jadi selisihnya dengan Eropa 1 jam pada musim panas dan 2 jam pada musim dingin."
+      },
+      {
+        "q": "Apakah Turki memakai waktu musim panas?",
+        "a": "Tidak. Turki menghentikan waktu musim panas pada 2016 dan memakai UTC+3 (Waktu Turki) sepanjang tahun."
+      }
+    ]
+  },
+  "unix": {
+    "title": "Stempel Waktu Unix: Waktu Unix Langsung dan Konversi | Saat Tarih",
+    "description": "Waktu Unix (epoch) saat ini dalam detik dan milidetik; ubah stempel waktu menjadi tanggal dan sebaliknya dalam UTC, waktu setempat, dan ISO 8601.",
+    "h1": "Stempel waktu Unix",
+    "lead": "Jumlah detik sejak 1 Januari 1970 pukul 00:00:00 UTC: waktu Unix langsung dan pengonversi dua arah.",
+    "search": "unix timestamp epoch unix time seconds milliseconds converter 2038 zaman damgası stempel waktu unix",
+    "nowLabel": "Waktu Unix saat ini",
+    "seconds": "detik",
+    "milliseconds": "milidetik",
+    "copy": "Salin",
+    "copied": "Disalin",
+    "toDateHeading": "Stempel waktu ke tanggal",
+    "tsLabel": "Stempel waktu Unix (detik atau milidetik)",
+    "fromDateHeading": "Tanggal ke stempel waktu",
+    "dateLabel": "Tanggal dan waktu",
+    "zoneLabel": "Zona waktu",
+    "zoneLocal": "Waktu setempat",
+    "zoneUtc": "UTC",
+    "resUtc": "UTC",
+    "resLocal": "Waktu setempat",
+    "resIso": "ISO 8601",
+    "resRel": "Dari sekarang",
+    "resSec": "Detik",
+    "resMs": "Milidetik",
+    "detectedMs": "Dibaca sebagai milidetik",
+    "detectedSec": "Dibaca sebagai detik",
+    "invalid": "Masukkan angka atau tanggal yang valid.",
+    "ago": "{d} yang lalu",
+    "in": "{d} lagi",
+    "y2038Heading": "Masalah tahun 2038",
+    "y2038": "Waktu Unix yang disimpan dalam bilangan bulat bertanda 32-bit akan meluap pada 19 Januari 2038 pukul 03:14:07 UTC (2147483647); sistem saat ini memakai 64-bit.",
+    "y2038Left": "Sisa waktu menuju batas 2038: {d}",
+    "factsHeading": "Perlu diketahui",
+    "facts": [
+      "Waktu Unix tidak bergantung pada zona waktu: angkanya sama di mana pun pada saat yang sama.",
+      "Detik kabisat tidak dihitung; setiap hari tepat 86.400 detik.",
+      "JavaScript dan Java memakai milidetik (13 digit); sebagian besar alat Unix dan basis data memakai detik (10 digit)."
+    ],
+    "days": "hari",
+    "hours": "jam",
+    "minutes": "menit",
+    "faq": [
+      {
+        "q": "Apa itu stempel waktu Unix?",
+        "a": "Stempel waktu Unix (waktu epoch) adalah jumlah detik sejak pukul 00:00:00 UTC tanggal 1 Januari 1970. Nilainya tidak bergantung pada zona waktu; sistem komputer menyimpan tanggal sebagai angka ini."
+      },
+      {
+        "q": "Apakah stempel waktu dalam detik atau milidetik?",
+        "a": "Angka 10 digit biasanya detik dan 13 digit milidetik. Pengonversi di halaman ini membedakannya dari jumlah digit."
+      }
+    ]
+  },
+  "worldHol": {
+    "hubTitle": "Hari libur resmi menurut negara 2026–2028 | Saat Tarih",
+    "hubDescription": "Hari libur nasional di Jerman, Inggris, AS, Belanda, Prancis, dan 25 negara lain: tanggal, hari, hari libur berikutnya, dan sisa harinya.",
+    "hubH1": "Hari libur resmi menurut negara",
+    "hubLead": "Hari libur nasional di 30 negara dan sisa hari menuju hari libur berikutnya.",
+    "hubSearch": "public holidays country germany uk us netherlands france bank holidays calendar resmi tatil hari libur nasional negara kalender",
+    "colCountry": "Negara",
+    "colNext": "Hari libur berikutnya",
+    "colCount": "Hari libur {year}",
+    "turkey": "Turki",
+    "pageTitle": "Hari libur resmi {country} {from}–{to} | Saat Tarih",
+    "pageDescription": "Hari libur nasional {country} {from}–{to}: tanggal, hari, dan sisa harinya. Tahun {year} memiliki {n} hari libur resmi, {w} di antaranya pada hari kerja.",
+    "pageH1": "Hari libur resmi {country}",
+    "pageLead": "Hari libur nasional {country}, tanggalnya, dan sisa harinya.",
+    "search": "public holidays bank holidays days off resmi tatil hari libur",
+    "caption": "Hari libur resmi {country} tahun {year}",
+    "colDate": "Tanggal",
+    "colDay": "Hari",
+    "colName": "Hari libur",
+    "colLeft": "Sisa hari",
+    "summary": "{year}: {n} hari libur resmi, {w} pada hari kerja.",
+    "regional": "Selain itu, tahun {year} memiliki {n} hari libur yang hanya berlaku di sebagian negara bagian atau wilayah; tidak ditampilkan di sini.",
+    "nextLabel": "Hari libur berikutnya",
+    "source": "Sumber: Nager.Date (date.nager.at, lisensi MIT), diambil pada {date}. Hanya hari libur nasional; tanggal dapat berubah, pengumuman resmi yang berlaku.",
+    "localName": "Nama setempat: {name}",
+    "inDays": "{n} hari lagi",
+    "today": "Hari ini",
+    "tomorrow": "Besok",
+    "passed": "Sudah lewat",
+    "faq": [
+      {
+        "q": "Hari libur negara mana saja yang tercantum?",
+        "a": "Bagian ini mencantumkan hari libur nasional di 30 negara: Jerman, Inggris, Prancis, Belanda, Belgia, Austria, Swiss, dan lainnya di Eropa, serta AS, Kanada, Brasil, Australia, Jepang, Tiongkok, Rusia, Georgia, Singapura, dan Afrika Selatan. Hari libur Turki ada di halaman kalender tahunan."
+      }
+    ]
+  },
+  "zakat": {
+    "title": "Kalkulator zakat: nisab dan jumlah zakat | Saat Tarih",
+    "description": "Hitung zakat dari uang tunai, emas, perak, valuta asing, barang dagangan, dan piutang dikurangi utang: nisab 80,18 g emas, kadar seperempat puluh (ketentuan Diyanet).",
+    "h1": "Kalkulator zakat",
+    "lead": "Masukkan harta dan utang Anda untuk melihat apakah mencapai nisab dan berapa zakat yang wajib dikeluarkan.",
+    "search": "zakat calculator nisab gold silver 2.5 percent how much zakat zekat hesaplama kalkulator zakat nisab emas perak zakat mal",
+    "intro": "Masukkan jumlah dalam mata uang Anda. Ketik harga satu gram emas untuk nisab; halaman ini tidak mengambil harga secara daring.",
+    "fields": {
+      "cash": "Uang tunai dan tabungan",
+      "goldGrams": "Emas (gram, setara 24 karat)",
+      "goldPrice": "Harga 1 g emas",
+      "silverValue": "Perak (nilai)",
+      "foreign": "Valuta asing dan saham (nilai)",
+      "trade": "Barang dagangan",
+      "receivable": "Piutang yang diharapkan tertagih",
+      "debt": "Utang"
+    },
+    "resultHeading": "Hasil",
+    "net": "Harta bersih",
+    "nisab": "Nisab ({g} g emas)",
+    "needGold": "Masukkan harga 1 g emas untuk menghitung nisab.",
+    "due": "Harta Anda mencapai nisab; zakat wajib dikeluarkan.",
+    "notDue": "Harta Anda di bawah nisab; tidak wajib zakat.",
+    "amount": "Zakat (1/40)",
+    "privacy": "Jumlah yang Anda masukkan hanya dihitung di halaman ini; tidak disimpan atau dikirim ke mana pun.",
+    "note": "Berdasarkan ketentuan Kepresidenan Urusan Agama Turki (Diyanet): nisab 80,18 g emas, kadar seperempat puluh, dan harta harus telah melewati satu tahun hijriah. Rumah, mobil, dan barang pribadi tidak dihitung. Tanyakan kepada ulama untuk kepastian.",
+    "faq": [
+      {
+        "q": "Berapa nisab zakat?",
+        "a": "Menurut Kepresidenan Urusan Agama Turki, nisab adalah 80,18 g emas atau uang dan barang senilai itu. Harta yang mencapainya setelah kebutuhan pokok dan utang, serta dimiliki selama satu tahun hijriah, wajib dizakati."
+      },
+      {
+        "q": "Berapa kadar zakat?",
+        "a": "Untuk uang, emas, perak, valuta asing, dan barang dagangan, zakatnya seperempat puluh dari harta (2,5 persen)."
+      },
+      {
+        "q": "Apa yang tidak dihitung dalam zakat?",
+        "a": "Kebutuhan pokok seperti rumah tinggal, mobil yang dipakai, perabot rumah tangga, dan alat kerja tidak dihitung. Untuk harta yang menghasilkan, seperti apartemen yang disewakan, hanya penghasilan yang ditabung yang dihitung."
+      },
+      {
+        "q": "Mengapa saya mengetik harga emas sendiri?",
+        "a": "Halaman ini tidak terhubung ke layanan luar dan tidak menyimpan isian Anda. Untuk menghitung nisab dengan harga hari ini, Anda mengetik harga satu gram emas."
+      }
+    ],
+    "fitreHeading": "Zakat fitrah",
+    "fitreText": "Kepresidenan Urusan Agama Turki (Dewan Tinggi Urusan Agama) menetapkan zakat fitrah {year} sebesar {amount} TL per orang ({date}), berlaku sejak Ramadan {year} hingga Ramadan berikutnya.",
+    "fitrePeople": "Jumlah orang (termasuk tanggungan)",
+    "fitreTotal": "Total zakat fitrah",
+    "fitreNote": "Jumlah ini untuk Turki dan merupakan batas minimal; yang mampu dapat memberi lebih (dengan takaran kurma atau kismis). Zakat fitrah ditunaikan sebelum salat Id."
+  },
+  "api": {
+    "title": "Data terbuka (API): hari libur, salat, Hijriah | Saat Tarih",
+    "description": "Hari libur resmi dan hari keagamaan Turki, jadwal salat 81 provinsi, kalender Hijriah selaras Diyanet, dan data astronomi: file JSON gratis, tanpa kunci, CORS terbuka.",
+    "h1": "Data terbuka (API)",
+    "lead": "Data yang dihitung Saat Tarih dalam bentuk file JSON publik; tanpa pendaftaran atau kunci API.",
+    "search": "api open data json public holidays api turkey prayer times api hijri calendar api developer açık veri data terbuka api hari libur jadwal salat",
+    "endpointsHeading": "Titik akhir",
+    "colPath": "Jalur",
+    "colDesc": "Isi",
+    "ep": {
+      "index": "Daftar titik akhir dan informasi versi",
+      "holidays": "Hari libur resmi setahun, setengah hari menjelang bayram, hari keagamaan dan hari istimewa (nama dalam semua bahasa situs), serta rentang Ramadan",
+      "prayer": "Jadwal salat satu provinsi selama setahun (subuh, terbit, zuhur, asar, magrib, isya; waktu Turki)",
+      "provinces": "81 provinsi: slug, nama, lintang, bujur",
+      "hijri": "Tabel awal bulan Hijriah (selaras dengan kalender Diyanet)",
+      "astronomy": "Saat ekuinoks dan titik balik matahari setahun, bulan baru dan purnama, gerhana (UTC)"
+    },
+    "yearsNote": "File hari libur dan astronomi mencakup {from}–{to}; jadwal salat mencakup {p1} dan {p2}. Slug provinsi ada di provinces.json (mis. istanbul, ankara, izmir).",
+    "fieldsHeading": "Bidang",
+    "fields": [
+      "Tanggal berformat YYYY-MM-DD dan waktu HH:MM (waktu Turki, UTC+3); saat tertentu dalam ISO 8601 UTC.",
+      "Jenis hari: holiday (hari libur resmi), half (setengah hari menjelang bayram), religious (hari keagamaan), special (hari istimewa).",
+      "Dalam file jadwal salat, setiap baris larik days adalah [tanggal, subuh, terbit, zuhur, asar, magrib, isya].",
+      "Dalam tabel Hijriah, setiap baris adalah [tanggal Masehi awal bulan, tahun Hijriah, bulan Hijriah]; baris terakhir adalah hari berakhirnya tabel."
+    ],
+    "exampleHeading": "Contoh",
+    "exampleNote": "Jadwal hari ini untuk Istanbul dengan JavaScript:",
+    "termsHeading": "Ketentuan penggunaan",
+    "terms": [
+      "Data dapat dipakai dengan lisensi Creative Commons Attribution 4.0 (CC BY 4.0); cantumkan \"Saat Tarih (time.bumba.tr)\" di tempat Anda memakainya.",
+      "Jadwal salat dihitung dengan metode Diyanet dan dapat berbeda 1–2 menit dari waktu resmi; waktu Diyanet yang menjadi acuan.",
+      "Hari keagamaan mulai 2028 merupakan proyeksi berdasarkan kalender jangka panjang Diyanet.",
+      "Tidak ada kunci atau pendaftaran; file bersifat statis dan dapat disimpan dalam cache. Mohon ambil dengan frekuensi wajar (sekali sehari sudah cukup).",
+      "Data diperbarui setiap kali situs diterbitkan; jika formatnya berubah, versi baru (v2) ditambahkan dan v1 tetap dipertahankan."
+    ]
+  },
+  "hijriConv": {
+    "title": "Konversi Tanggal Hijriah ke Masehi dan Sebaliknya | Saat Tarih",
+    "description": "Ubah tanggal Masehi ke Hijriah dan tanggal Hijriah ke Masehi. Tanggal Hijriah hari ini dan awal bulan tahun Hijriah ini, mengikuti kalender Diyanet Turki.",
+    "h1": "Pengonversi tanggal Hijriah",
+    "lead": "Tanggal Hijriah hari ini, konversi dua arah, dan awal bulan tahun Hijriah ini. Tanggal mengikuti kalender Kepresidenan Urusan Agama Turki (Diyanet).",
+    "search": "hijri converter islamic calendar hijri to gregorian gregorian to hijri today hijri date hicri konversi hijriah kalender islam tanggal hijriah hari ini",
+    "todayLabel": "Tanggal Hijriah hari ini",
+    "toHijri": "Masehi ke Hijriah",
+    "gregLabel": "Tanggal Masehi",
+    "toGreg": "Hijriah ke Masehi",
+    "yearLabel": "Tahun Hijriah",
+    "monthLabel": "Bulan",
+    "dayLabel": "Hari",
+    "result": "Hasil",
+    "months": [
+      "Muharam",
+      "Safar",
+      "Rabiulawal",
+      "Rabiulakhir",
+      "Jumadilawal",
+      "Jumadilakhir",
+      "Rajab",
+      "Syakban",
+      "Ramadan",
+      "Syawal",
+      "Zulkaidah",
+      "Zulhijah"
+    ],
+    "fmt": "{d} {m} {y} H",
+    "outside": "Tanggal ini di luar tabel Diyanet; dihitung dengan kalender Umm al-Qura dan dapat berbeda satu hari.",
+    "dayMax": "Bulan Hijriah ini memiliki {n} hari.",
+    "invalid": "Masukkan tanggal yang valid.",
+    "yearHeading": "Awal bulan tahun Hijriah {y}",
+    "colMonth": "Bulan",
+    "colStart": "Dimulai (Masehi)",
+    "colDays": "Hari",
+    "note": "Hari Hijriah dimulai saat matahari terbenam; di halaman ini tanggal berganti pada tengah malam. Awal bulan dapat berbeda satu hari di beberapa negara. Tahun 2026–2031 mengikuti tanggal yang diterbitkan Diyanet; tahun lain memakai perhitungan Umm al-Qura.",
+    "faq": [
+      {
+        "q": "Tanggal berapa hari ini dalam kalender Hijriah?",
+        "a": "Tanggal Hijriah hari ini ditampilkan di bagian atas halaman, mengikuti kalender Diyanet. Karena hari Hijriah dimulai saat matahari terbenam, tanggal berikutnya dimulai pada petang hari."
+      },
+      {
+        "q": "Mengapa kalender Hijriah bergeser sekitar 11 hari setiap tahun?",
+        "a": "Kalender Hijriah mengikuti fase Bulan; 12 bulan kamariah lamanya sekitar 354 hari, sekitar 11 hari lebih pendek dari tahun Masehi. Karena itu Ramadan dan hari raya datang sekitar 11 hari lebih awal setiap tahun."
+      },
+      {
+        "q": "Mengapa tanggal Hijriah berbeda antarnegara?",
+        "a": "Sebagian negara memulai bulan dengan rukyat hilal, sebagian lagi dengan hisab. Turki memakai kalender hisab Diyanet dan Arab Saudi kalender Umm al-Qura; keduanya dapat berbeda satu hari."
+      }
+    ]
+  },
+  "timeCalc": {
+    "title": "Kalkulator Jam: Tambah, Kurang, dan Selisih Dua Waktu | Saat Tarih",
+    "description": "Cari durasi antara dua waktu, tambah atau kurangi jam dan menit, serta jumlahkan durasi. Sif malam dan jam desimal juga ditangani.",
+    "h1": "Kalkulator jam",
+    "lead": "Durasi antara dua waktu, penambahan atau pengurangan waktu, dan penjumlahan durasi. Rentang yang melewati tengah malam dan jam desimal juga ditampilkan.",
+    "search": "time calculator hours between two times add hours subtract minutes shift hours sum durations decimal hours saat hesaplama kalkulator jam hitung jam selisih waktu",
+    "betweenHeading": "Durasi antara dua waktu",
+    "startLabel": "Mulai",
+    "endLabel": "Selesai",
+    "overnight": "Waktu selesai lebih awal dari waktu mulai, jadi rentangnya dihitung melewati tengah malam.",
+    "duration": "{h} j {m} mnt",
+    "decimal": "Desimal: {x} jam",
+    "minutesTotal": "{n} menit",
+    "addHeading": "Tambah atau kurangi waktu",
+    "timeLabel": "Waktu",
+    "opLabel": "Operasi",
+    "opAdd": "Tambah (+)",
+    "opSub": "Kurangi (−)",
+    "hoursLabel": "Jam",
+    "minutesLabel": "Menit",
+    "resultTime": "Hasil: {time}",
+    "nextDay": "hari berikutnya",
+    "prevDay": "hari sebelumnya",
+    "daysLater": "{n} hari kemudian",
+    "daysEarlier": "{n} hari sebelumnya",
+    "sumHeading": "Jumlahkan durasi",
+    "sumLabel": "Durasi (satu per baris)",
+    "sumHint": "Tulis misalnya 1:30 (satu setengah jam), 45 (menit), 2:15:30 (jam:menit:detik); beri tanda − di depan untuk mengurangi.",
+    "sumResult": "Total: {t}",
+    "sumBad": "Baris tidak terbaca: {n}",
+    "faq": [
+      {
+        "q": "Bagaimana menghitung waktu antara dua jam?",
+        "a": "Kurangi waktu selesai dengan waktu mulai. Jika waktu selesai tampak lebih awal (misalnya 22.00–06.00), tengah malam telah lewat: tambahkan 24 jam dan durasinya 8 jam."
+      },
+      {
+        "q": "Bagaimana mengubah menit menjadi jam desimal?",
+        "a": "Bagi menit dengan 60: 30 menit sama dengan 0,5 jam dan 45 menit 0,75 jam. 7 jam 45 menit sama dengan 7,75 jam."
+      },
+      {
+        "q": "Bagaimana menjumlahkan jam dan menit?",
+        "a": "Jumlahkan menitnya lebih dulu dan ubah setiap 60 menit menjadi satu jam. Misalnya 1:40 + 2:35 = 3 jam 75 menit = 4 jam 15 menit."
+      }
+    ]
+  },
+  "daysUntil": {
+    "title": "Berapa Hari Lagi: Hari Menuju atau Sejak Suatu Tanggal | Saat Tarih",
+    "description": "Berapa hari lagi menuju suatu tanggal atau sudah berapa hari sejak itu, dalam minggu, bulan, dan hari kerja, plus sisa hari menuju hari libur dan tanggal penting.",
+    "h1": "Berapa hari lagi menuju…?",
+    "lead": "Pilih tanggal untuk melihat berapa hari lagi atau sudah berapa hari berlalu, juga dalam minggu dan hari kerja. Sisa hari menuju hari libur dan tanggal penting tercantum di bawah.",
+    "search": "days until how many days until days since countdown days date counter kaç gün kaldı berapa hari lagi hitung hari menuju tanggal",
+    "dateLabel": "Tanggal",
+    "left": "{n} hari lagi",
+    "left1": "1 hari lagi",
+    "passed": "{n} hari yang lalu",
+    "passed1": "1 hari yang lalu",
+    "today": "Hari ini",
+    "weeks": "{w} minggu {d} hari",
+    "months": "Sekitar {n} bulan",
+    "workdays": "{n} hari kerja (tanpa akhir pekan dan hari libur resmi)",
+    "weekday": "Hari: {d}",
+    "upcomingHeading": "Sisa hari menuju tanggal penting",
+    "colEvent": "Hari",
+    "colDate": "Tanggal",
+    "colLeft": "Sisa",
+    "daysUnit": "{n} hari",
+    "daysUnit1": "1 hari",
+    "faq": [
+      {
+        "q": "Apakah hari ini ikut dihitung?",
+        "a": "Tidak. Yang ditampilkan adalah jumlah malam hingga tanggal pilihan: besok berarti 1 hari lagi. Jika hari yang dipilih adalah hari ini, tertulis \"Hari ini\"."
+      },
+      {
+        "q": "Bagaimana hari kerja dihitung?",
+        "a": "Sabtu, Minggu, dan hari libur resmi penuh di Turki tidak dihitung dari hari-hari setelah hari ini; setengah hari menjelang hari raya dihitung setengah. Data hari libur mencakup 2026–2031."
+      }
+    ]
+  },
+  "interval": {
+    "title": "Pengatur Waktu Interval: Pengatur HIIT dan Tabata Daring | Saat Tarih",
+    "description": "Ronde dengan pemanasan, kerja, dan istirahat: lonceng dan aba-aba suara di setiap pergantian serta hitungan tiga detik terakhir. Preset Tabata dan HIIT, layar penuh.",
+    "h1": "Pengatur waktu interval",
+    "lead": "Atur pemanasan, kerja, istirahat, dan jumlah ronde. Lonceng berbunyi di setiap pergantian dan fasenya dapat diucapkan.",
+    "search": "interval timer hiit timer tabata timer workout timer emom round timer aralık zamanlayıcı pengatur waktu interval tabata hiit latihan",
+    "warmup": "Pemanasan (dtk)",
+    "work": "Kerja (dtk)",
+    "rest": "Istirahat (dtk)",
+    "rounds": "Ronde",
+    "presets": "Preset",
+    "presetTabata": "Tabata 20/10 × 8",
+    "presetHiit": "HIIT 30/15 × 10",
+    "presetEmom": "EMOM 60 × 10",
+    "phases": {
+      "warmup": "Pemanasan",
+      "work": "Kerja",
+      "rest": "Istirahat",
+      "done": "Selesai"
+    },
+    "lastRound": "Ronde terakhir",
+    "roundOf": "Ronde {n}/{total}",
+    "total": "Total: {t}",
+    "start": "Mulai",
+    "pause": "Jeda",
+    "resume": "Lanjutkan",
+    "reset": "Atur ulang",
+    "voice": "Aba-aba suara",
+    "voiceNote": "Aba-aba memakai mesin suara di perangkat Anda; jika tidak ada suara bawaan untuk bahasa ini, hanya lonceng yang berbunyi.",
+    "note": "Bekerja selama halaman terbuka; dalam layar penuh, layar tetap menyala.",
+    "faq": [
+      {
+        "q": "Apa itu Tabata?",
+        "a": "Tabata adalah latihan interval 4 menit dalam 8 ronde: 20 detik kerja sangat berat dan 10 detik istirahat. Pilih dari preset."
+      },
+      {
+        "q": "Apakah ada istirahat setelah ronde terakhir?",
+        "a": "Tidak. Latihan selesai saat periode kerja terakhir berakhir; istirahat hanya dihitung di antara ronde."
+      }
+    ]
+  },
+  "chess": {
+    "title": "Jam Catur Daring dengan Penambahan Waktu | Saat Tarih",
+    "description": "Jam catur daring dua pemain dengan kontrol waktu (1+0, 3+2, 5+0, 10+0, 15+10), penambahan Fischer, hitungan langkah, dan bunyi saat waktu habis. Layar penuh di ponsel.",
+    "h1": "Jam catur",
+    "lead": "Pilih kontrol waktu dan ketuk jam Anda sendiri setelah setiap langkah. Penambahan Fischer dan hitungan langkah didukung.",
+    "search": "chess clock online chess timer blitz bullet fischer increment game clock satranç saati jam catur online blitz",
+    "control": "Kontrol waktu",
+    "custom": "Kustom",
+    "minutes": "Menit",
+    "increment": "Penambahan (dtk)",
+    "white": "Putih",
+    "black": "Hitam",
+    "hint": "Untuk memulai, ketuk jam Hitam; waktu Putih mulai berjalan. Tombol spasi menghentikan jam pemain yang sedang melangkah.",
+    "pause": "Jeda",
+    "resume": "Lanjutkan",
+    "reset": "Atur ulang",
+    "moves": "{n} langkah",
+    "flag": "{side}: waktu habis",
+    "faq": [
+      {
+        "q": "Apa arti 3+2 dalam catur?",
+        "a": "Setiap pemain memiliki 3 menit dan 2 detik ditambahkan setelah setiap langkahnya (penambahan Fischer)."
+      },
+      {
+        "q": "Siapa yang memulai jam catur?",
+        "a": "Menurut aturan, pemain bidak hitam yang memulai jam, sehingga waktu Putih mulai berjalan."
+      }
+    ]
+  },
+  "metronome": {
+    "title": "Metronom Daring: BPM, Tanda Birama, dan Tempo Ketuk | Saat Tarih",
+    "description": "Metronom di peramban Anda: 30–250 BPM, ketukan per birama, aksen ketukan pertama, subdivisi, dan tempo ketuk. Suaranya dibuat di perangkat Anda.",
+    "h1": "Metronom",
+    "lead": "Atur tempo atau ketuk, lalu pilih ketukan per birama dan subdivisinya. Suara dibuat di peramban.",
+    "search": "metronome online metronome bpm tempo time signature tap tempo click track metronom metronom online tempo",
+    "bpm": "Tempo (BPM)",
+    "beats": "Ketukan per birama",
+    "sub": "Subdivisi",
+    "subs": {
+      "1": "Tidak ada",
+      "2": "Seperdelapan",
+      "3": "Triol",
+      "4": "Seperenam belas"
+    },
+    "accent": "Aksen pada ketukan pertama",
+    "tap": "Ketuk tempo",
+    "start": "Mulai",
+    "stop": "Berhenti",
+    "slower": "Lebih lambat",
+    "faster": "Lebih cepat",
+    "volume": "Volume",
+    "tempoNote": "Nama tempo Italia adalah rentang perkiraan.",
+    "faq": [
+      {
+        "q": "Apa arti BPM?",
+        "a": "BPM (beats per minute) adalah jumlah ketukan dalam satu menit. 60 BPM berarti satu ketukan per detik dan 120 BPM dua."
+      },
+      {
+        "q": "Bagaimana tempo ketuk bekerja?",
+        "a": "Ketuk tombol mengikuti irama setidaknya dua kali; rata-rata selang di antara ketukan terakhir diubah menjadi BPM."
+      }
+    ]
+  },
+  "talking": {
+    "title": "Jam Berbicara: Jam Daring yang Mengucapkan Waktu | Saat Tarih",
+    "description": "Jam daring yang mengucapkan waktu: dengan tombol atau otomatis setiap 1, 5, 15, atau 30 menit dan setiap jam tepat. Berguna bagi yang penglihatannya terbatas.",
+    "h1": "Jam berbicara",
+    "lead": "Tekan tombol untuk mendengar waktu; jam juga dapat mengucapkannya sendiri pada selang tertentu. Bekerja selama halaman terbuka.",
+    "search": "talking clock speaking clock say the time audio clock what time is it spoken konuşan saat jam berbicara jam bersuara jam berapa sekarang",
+    "say": "Ucapkan waktu",
+    "auto": "Ucapkan otomatis",
+    "every": {
+      "off": "Mati",
+      "1": "Setiap menit",
+      "5": "Setiap 5 menit",
+      "15": "Setiap 15 menit",
+      "30": "Setiap 30 menit",
+      "60": "Setiap jam tepat"
+    },
+    "chime": "Bunyikan lonceng dulu",
+    "noVoice": "Tidak ditemukan suara bawaan perangkat untuk bahasa ini di peramban; waktu ditampilkan dalam kata-kata.",
+    "note": "Ucapan memakai mesin bawaan peramban Anda; teks tidak dikirim ke mana pun. Bekerja selama halaman terbuka.",
+    "faq": [
+      {
+        "q": "Apakah jam berbicara bekerja saat ponsel terkunci?",
+        "a": "Tidak. Peramban membatasi suara dari halaman latar belakang; ucapan otomatis hanya bekerja selama halaman terbuka dan layar menyala."
+      },
+      {
+        "q": "Mengapa tidak ada suara?",
+        "a": "Peramban membutuhkan suara untuk bahasa ini yang terpasang di perangkat. Anda dapat mengunduh suara di pengaturan bahasa dan ucapan ponsel atau komputer."
+      }
+    ]
+  },
+  "zodiac": {
+    "title": "Kalkulator Zodiak Matahari dan Bulan | Saat Tarih",
+    "description": "Temukan zodiak Matahari dan zodiak Bulan Anda dari tanggal dan jam lahir dengan perhitungan astronomis. Dilengkapi tabel rentang tanggal zodiak.",
+    "h1": "Kalkulator zodiak",
+    "lead": "Masukkan tanggal dan jam lahir; zodiak tempat Matahari dan Bulan berada pada saat itu dihitung. Astrologi hanya untuk hiburan.",
+    "search": "zodiac sign calculator what is my sign moon sign calculator sun sign birth date star sign burç kalkulator zodiak zodiak saya zodiak bulan",
+    "dateLabel": "Tanggal lahir",
+    "timeLabel": "Jam lahir (opsional)",
+    "sun": "Zodiak Matahari",
+    "moon": "Zodiak Bulan",
+    "signs": [
+      "Aries",
+      "Taurus",
+      "Gemini",
+      "Cancer",
+      "Leo",
+      "Virgo",
+      "Libra",
+      "Scorpio",
+      "Sagitarius",
+      "Capricorn",
+      "Aquarius",
+      "Pisces"
+    ],
+    "noTime": "Jam lahir tidak diisi, jadi dianggap pukul 12.00 siang; Bulan berganti zodiak sekitar setiap 2,5 hari.",
+    "cusp": "Matahari berganti zodiak pada hari ini; jam lahir dapat mengubah hasilnya.",
+    "tzNote": "Jam dibaca dalam zona waktu perangkat ini.",
+    "tableHeading": "Rentang tanggal zodiak",
+    "colSign": "Zodiak",
+    "colDates": "Tanggal (perkiraan)",
+    "fun": "Astrologi adalah hiburan dan tidak memiliki dasar ilmiah. Perhitungannya sendiri bersifat astronomis: bujur ekliptika Matahari dan Bulan (zodiak tropis).",
+    "faq": [
+      {
+        "q": "Mengapa batas zodiak sedikit bergeser setiap tahun?",
+        "a": "Saat Matahari masuk ke zodiak baru bergeser beberapa jam setiap tahun, sehingga hari pergantiannya berkisar antara tanggal 19 dan 23. Pada hari-hari itu jam lahir juga berpengaruh."
+      },
+      {
+        "q": "Apa itu zodiak Bulan?",
+        "a": "Zodiak tempat Bulan berada pada saat kelahiran. Bulan melewati satu zodiak dalam sekitar 2,5 hari, jadi tanpa jam lahir hasilnya mungkin tidak pasti."
+      }
+    ]
+  },
+  "sky": {
+    "title": "Langit Malam Ini: Planet yang Terlihat dan Jarak Bulan | Saat Tarih",
+    "description": "Planet mana yang dapat dilihat malam ini dari tempat Anda, kapan, dan ke arah mana; peta langit dengan bintang terang, jarak Bulan, serta perige dan apoge berikutnya.",
+    "h1": "Langit malam",
+    "lead": "Kapan Merkurius, Venus, Mars, Yupiter, dan Saturnus dapat dilihat malam ini dari tempat pilihan, ke mana melihat, dan seberapa terang; jarak Bulan dari Bumi.",
+    "search": "night sky tonight planets visible venus jupiter mars saturn mercury stars moon distance supermoon perigee apogee langit malam ini planet terlihat jarak bulan supermoon",
+    "planets": {
+      "mercury": "Merkurius",
+      "venus": "Venus",
+      "mars": "Mars",
+      "jupiter": "Yupiter",
+      "saturn": "Saturnus"
+    },
+    "moon": "Bulan",
+    "sun": "Matahari",
+    "chartHeading": "Peta langit",
+    "chartCaption": "{place}, {time}. Bagian tengah adalah titik tepat di atas kepala dan tepinya cakrawala; utara di atas dan timur di kiri, seperti dipegang di atas kepala.",
+    "timeLabel": "Waktu",
+    "now": "Sekarang",
+    "tableHeading": "Planet malam ini",
+    "cols": [
+      "Planet",
+      "Kapan terlihat",
+      "Arah",
+      "Tertinggi",
+      "Kecerlangan",
+      "Jarak"
+    ],
+    "window": "{from}–{to}",
+    "tooClose": "Terlalu dekat dengan Matahari untuk dilihat",
+    "below": "Tidak di atas cakrawala saat gelap malam ini",
+    "riseSet": "Terbit {rise} · Terbenam {set}",
+    "altFmt": "{deg}° ({time})",
+    "mkm": "{v} juta km",
+    "moonHeading": "Jarak ke Bulan",
+    "moonNow": "Jarak dari Bumi sekarang",
+    "perigee": "Perige berikutnya (terdekat)",
+    "apogee": "Apoge berikutnya (terjauh)",
+    "superMoon": "Bulan purnama {date} dekat dengan perige: \"supermoon\" (Bulan tampak sedikit lebih besar dan lebih terang).",
+    "km": "{v} km",
+    "note": "Posisi dihitung di peramban Anda: planet dengan elemen orbit perkiraan JPL (ketelitian sekitar menit busur), Bulan dan Matahari dengan rumus Meeus. \"Kapan terlihat\" berarti jam-jam saat Matahari 6° di bawah cakrawala dan planet setidaknya 5° di atasnya. Kecerlangan dalam magnitudo (lebih kecil berarti lebih terang); cincin Saturnus tidak dihitung. Bintang digambar pada posisi J2000.",
+    "faq": [
+      {
+        "q": "Planet apa saja yang terlihat malam ini?",
+        "a": "Halaman langit malam menghitung kapan Merkurius, Venus, Mars, Yupiter, dan Saturnus berada di atas cakrawala saat gelap malam ini di tempat pilihan, ke mana melihat, dan seberapa terang. Venus dan Yupiter biasanya paling terang; Merkurius selalu dekat Matahari dan hanya terlihat sebentar saat senja atau fajar."
+      },
+      {
+        "q": "Seberapa jauh Bulan?",
+        "a": "Rata-rata Bulan berjarak sekitar 384.400 km dari Bumi. Karena orbitnya elips, jaraknya berubah setiap bulan antara kira-kira 356.500 km (perige) dan 406.700 km (apoge). Halaman ini menunjukkan jarak saat ini serta perige dan apoge berikutnya."
+      },
+      {
+        "q": "Apa itu supermoon?",
+        "a": "Supermoon adalah sebutan populer untuk bulan purnama yang terjadi dekat perige, titik orbit Bulan yang terdekat dengan Bumi. Bulan tampak sekitar 14% lebih besar dan 30% lebih terang dibanding purnama di apoge; perbedaannya sulit terlihat dengan mata telanjang."
+      }
+    ]
+  },
+  "otd": {
+    "title": "Hari Ini dalam Sejarah: Peristiwa dan Tokoh | Saat Tarih",
+    "description": "Apa yang terjadi pada hari ini dalam sejarah: peristiwa besar, pendirian negara dan organisasi, kelahiran dan kematian tokoh; pilih hari apa saja. Sumber: Wikidata.",
+    "h1": "Hari ini dalam sejarah",
+    "lead": "Peristiwa penting, pendirian, kelahiran, dan kematian dalam sejarah untuk hari ini atau hari pilihan Anda.",
+    "search": "on this day today in history what happened today born today died today anniversary events births deaths hari ini dalam sejarah peristiwa hari ini lahir hari ini",
+    "events": "Peristiwa",
+    "founded": "Didirikan",
+    "births": "Kelahiran",
+    "deaths": "Kematian",
+    "foundedFmt": "Berdirinya {name}",
+    "dayLabel": "Hari",
+    "prev": "Hari sebelumnya",
+    "next": "Hari berikutnya",
+    "today": "Hari ini",
+    "heading": "{date}",
+    "empty": "Tidak ada catatan untuk hari ini.",
+    "source": "Sumber: Wikidata (CC0). Untuk setiap hari, catatan paling terkenal dipilih menurut jumlah artikel Wikipedia; nama sesuai Wikidata. Tanggal dalam kalender Masehi (Gregorius); untuk tanggal sebelum 1582 sumber mungkin memakai kalender Julian.",
+    "faq": [
+      {
+        "q": "Dari mana daftar Hari ini dalam sejarah berasal?",
+        "a": "Daftar ini berasal dari Wikidata (data terbuka, CC0): peristiwa yang harinya diketahui pasti, pendirian negara dan organisasi internasional, serta hari lahir dan wafat tokoh terkenal. Untuk setiap hari ditampilkan catatan yang memiliki artikel Wikipedia dalam bahasa terbanyak. Daftar diperbarui setiap tahun."
+      },
+      {
+        "q": "Bisakah saya melihat hari lain?",
+        "a": "Bisa. Gunakan pemilih hari di halaman Hari ini dalam sejarah untuk memilih hari apa pun dalam setahun, atau berpindah dengan tombol hari sebelumnya dan berikutnya; tautan di bilah alamat menunjukkan hari itu."
+      }
+    ]
+  },
+  "tzn": {
+    "title": "Berita Zona Waktu: Waktu Musim Panas dan Perubahan Zona | Saat Tarih",
+    "description": "Perubahan zona waktu dan waktu musim panas di dunia: negara yang beralih ke waktu tetap, yang tidak lagi memundurkan jam, dan zona baru. Sumber: basis data tz IANA.",
+    "h1": "Berita zona waktu",
+    "lead": "Keputusan negara-negara tentang zona waktu dan waktu musim panas, yang terbaru di atas. Setiap berita menunjukkan kapan berlaku dan waktu saat ini di sana.",
+    "search": "time zone news daylight saving time change permanent daylight time time zone changed tzdata berita zona waktu perubahan jam waktu musim panas",
+    "effective": "Berlaku: {date}",
+    "source": "Sumber: basis data tz IANA, tzdata {rel} ({date})",
+    "nowIn": "Sekarang",
+    "feed": "Berlangganan umpan berita (Atom)",
+    "feedNote": "Tambahkan ke pembaca umpan Anda; keputusan zona waktu baru muncul di sana begitu ditambahkan.",
+    "note": "Ponsel dan komputer menerima perubahan ini lewat pembaruan sistem operasi; jika perangkat Anda belum diperbarui, jamnya bisa salah untuk sementara. Jam Saat Tarih disinkronkan dengan server, tetapi aturan zona waktu berasal dari peramban Anda.",
+    "latest": "Terakhir diperiksa: tzdata {rel} ({date})",
+    "feedTitle": "Saat Tarih: Berita zona waktu",
+    "faq": [
+      {
+        "q": "Dari mana berita zona waktu berasal?",
+        "a": "Dari pengumuman basis data tz IANA (tzdata), yang dipakai sistem operasi dan peramban. Setiap berita menyebutkan rilis tzdata yang menambahkannya."
+      },
+      {
+        "q": "Bagaimana perangkat saya tahu bahwa suatu negara mengubah jamnya?",
+        "a": "Apple, Google, dan Microsoft mengirimkan rilis baru basis data tz bersama pembaruan sistem operasi. Jika perangkat Anda selalu diperbarui, waktunya akan benar dengan sendirinya."
+      }
+    ]
+  }
+}

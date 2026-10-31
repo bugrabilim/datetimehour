@@ -47,7 +47,7 @@ jobs:
       - name: Simülatör için derle
         run: |
           xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarih -configuration Debug \
-            -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO -quiet build
       - name: Ekran görüntüleri
         run: mobile/ios/scripts/store-screenshots.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app mobile/ios/fastlane/screenshots

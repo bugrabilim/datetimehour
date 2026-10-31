@@ -1,0 +1,34 @@
+Jam & Tanggal menyatukan jam, tanggal, jadwal salat, kalender, dan cuaca dalam satu aplikasi yang rapi. Tanpa akun, tanpa iklan, tanpa pelacakan.
+
+JAM
+• 19 tampilan jam dari situs kami: analog, digital, berdampingan, dengan kalender dan cuaca
+• Jam layar penuh yang menjaga layar tetap menyala
+• Pilih apa yang tampil di bawah jam: salat berikutnya, jadwal salat hari ini, hari istimewa berikutnya, jam dunia, cuaca, matahari terbit
+
+JADWAL SALAT
+• Jadwal harian dan bulanan untuk 81 provinsi Turki atau lokasi Anda
+• Notifikasi tepat waktu atau sebelumnya, dengan pengumuman suara
+• Jadwal Ramadan sebagai gambar yang bisa dibagikan
+
+KALENDER
+• Hari libur resmi, setengah hari, hari keagamaan dan istimewa, libur sekolah di Turki
+• Kalender di ponsel Anda (iCloud, Google, Outlook) di layar yang sama
+• Tambah dan hapus acara; tambahkan hari istimewa ke kalender Anda
+
+CUACA
+• Cuaca saat ini, prakiraan per jam dan 7 hari dari Apple Cuaca
+
+ALAT
+• Alarm (berbunyi meski dalam mode senyap), pengatur waktu, hitung mundur ke suatu tanggal
+• Stopwatch, pomodoro, kalkulator tanggal (termasuk hari kerja)
+• Jam dunia dengan bola dunia berputar
+• Musim, ekuinoks dan titik balik matahari, fase Bulan
+
+WIDGET
+• Salat berikutnya, jadwal hari ini, jam analog dan digital, jam dan tanggal; juga di Layar Terkunci
+
+Tersedia dalam lima belas bahasa: Indonesia, Inggris, Turki, Jerman, Azerbaijan, Arab, Urdu, Persia, Prancis, Rusia, Jepang, Korea, Tionghoa, Filipino, dan Thai.
+
+Lokasi Anda dipakai di ponsel untuk menghitung jadwal salat; hanya untuk cuaca, lokasi perkiraan dikirim ke layanan cuaca Apple. Kalender Anda hanya dibaca bila Anda mengizinkan, dan hanya di ponsel.
+
+Jam & Tanggal adalah produk Bumba Life. Web: time.bumba.tr

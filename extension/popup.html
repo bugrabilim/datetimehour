@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saat Tarih</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main>
+    <p class="clock" id="clock" dir="ltr" role="timer">--:--:--</p>
+    <p class="date" id="date">&nbsp;</p>
+    <p class="hijri" id="hijri">&nbsp;</p>
+    <section class="prayer" aria-labelledby="pr-h">
+      <div class="row">
+        <label for="province" id="province-label">İl</label>
+        <select id="province"></select>
+      </div>
+      <p class="next"><span id="next-label">&nbsp;</span> <strong id="next-in" dir="ltr">--:--:--</strong></p>
+      <h2 id="pr-h" class="sr-only">&nbsp;</h2>
+      <ul class="times" id="times"></ul>
+    </section>
+    <div class="row foot">
+      <button type="button" id="fmt"></button>
+      <a id="site" href="https://time.bumba.tr" target="_blank" rel="noopener"></a>
+    </div>
+    <p class="note" id="note"></p>
+  </main>
+  <script src="lib/prayer-calc.js"></script>
+  <script src="lib/data.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

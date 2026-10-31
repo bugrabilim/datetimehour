@@ -8,10 +8,10 @@ final class OneShotLocation: NSObject, CLLocationManagerDelegate {
     private var authWait: CheckedContinuation<Void, Never>?
     private var locWait: CheckedContinuation<CLLocation?, Never>?
 
-    override init() {
+    init(accuracy: CLLocationAccuracy = kCLLocationAccuracyKilometer) {
         super.init()
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyKilometer
+        manager.desiredAccuracy = accuracy
     }
 
     /// - Parameter requestPermission: izin sorulabilir mi (yalnız uygulamada; widget izin isteyemez)
@@ -25,8 +25,16 @@ final class OneShotLocation: NSObject, CLLocationManagerDelegate {
             }
         }
         let status = manager.authorizationStatus
+        #if os(macOS)
+        guard status == .authorizedAlways else { return nil }
+        #elseif os(visionOS)
+        guard status == .authorizedWhenInUse else { return nil }
+        #else
         guard status == .authorizedWhenInUse || status == .authorizedAlways else { return nil }
+        #endif
+        #if os(iOS)
         if forWidget && !manager.isAuthorizedForWidgetUpdates { return nil }
+        #endif
         if let last = manager.location, -last.timestamp.timeIntervalSinceNow < 30 * 60 { return last }
         return await withCheckedContinuation { c in
             locWait = c

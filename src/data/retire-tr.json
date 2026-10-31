@@ -1,0 +1,70 @@
+{
+  "title": "Emeklilik Hesaplama: Ne Zaman Emekli Olurum? (SSK, EYT) | Saat Tarih",
+  "description": "4/a (SSK) sigortalıları için emeklilik tarihi: ilk sigorta girişi, doğum tarihi ve prim gününe göre EYT dahil yaş, prim günü ve sigortalılık süresi şartları.",
+  "h1": "Emeklilik hesaplama",
+  "lead": "Hizmet akdiyle çalışanlar (4/a, eski SSK) için en erken emeklilik tarihi; 5510 ve 506 sayılı kanunlardaki şartlara göre, EYT düzenlemesi dahil.",
+  "search": "emeklilik hesaplama ne zaman emekli olurum emeklilik yaşı eyt ssk 4a prim günü 7200 gün 5400 gün 5975 gün sigortalılık süresi",
+  "gender": "Cinsiyet",
+  "women": "Kadın",
+  "men": "Erkek",
+  "birth": "Doğum tarihi",
+  "start": "İlk sigortalı olarak çalışmaya başlama (ilk işe giriş) tarihi",
+  "days": "Bugüne kadarki toplam prim günü",
+  "daysHint": "e-Devlet › SGK Tescil ve Hizmet Dökümü'nde yazar.",
+  "rate": "Bundan sonra yılda çalışılacak gün",
+  "rateFull": "Kesintisiz çalışacağım (yılda 360 gün)",
+  "rateHalf": "Yılın yarısı (180 gün)",
+  "rateNone": "Artık prim ödenmeyecek",
+  "calc": "Hesapla",
+  "result": "En erken emeklilik tarihi: {date}",
+  "resultAge": "O tarihte {age} yaşında olursunuz.",
+  "resultLeft": "Bugünden {left} sonra.",
+  "resultPast": "Şartları bugün itibarıyla sağlıyorsunuz.",
+  "resultNever": "Bu bilgilerle prim günü şartı tamamlanmıyor (bundan sonra prim ödenmeyecek seçili).",
+  "group": "Sizin grubunuz: {name}",
+  "groups": {
+    "a": "8 Eylül 1999'dan önce sigortalı, 1999 öncesi kurallar (506 sayılı Kanun geçici 81/A)",
+    "b": "8 Eylül 1999'dan önce sigortalı (EYT; 506 sayılı Kanun geçici 81/B, yaş şartı yok)",
+    "mid": "8 Eylül 1999 – 30 Nisan 2008 arasında sigortalı (5510 sayılı Kanun geçici 9)",
+    "post": "1 Mayıs 2008'den sonra sigortalı (5510 sayılı Kanun madde 28)"
+  },
+  "routes": {
+    "full": "Tam emeklilik",
+    "mid1": "Yaş + 7000 gün",
+    "mid2": "Yaş + 25 yıl sigortalılık + 4500 gün",
+    "partialPre": "Yaştan emeklilik (15 yıl + 3600 gün)",
+    "partialPost": "Yaştan emeklilik (5400 gün, yaş 3 yıl fazla)"
+  },
+  "cols": [
+    "Yol",
+    "Şart",
+    "Ne zaman",
+    "Emeklilik"
+  ],
+  "condDays": "{n} prim günü",
+  "condYears": "{n} yıl sigortalılık",
+  "condAge": "{n} yaş",
+  "condNoAge": "Yaş şartı yok",
+  "done": "tamam",
+  "never": "tamamlanmıyor",
+  "years": "{n} yıl",
+  "months": "{n} ay",
+  "noteScope": "Hesap yalnız 4/a (hizmet akdiyle çalışan, eski SSK) sigortalıları içindir. 4/b (Bağ-Kur) ve 4/c (memur) için şartlar farklıdır. Askerlik ve doğum borçlanması, yurt dışı borçlanması, yıpranma payı, engellilik, ağır engelli çocuğu olan anneler ve maden işleri gibi özel durumlar hesaba katılmaz; borçlanma günlerini prim gününe eklerseniz yaklaşık sonuç alırsınız.",
+  "noteLaw": "Dayanak: 5510 sayılı Kanun madde 28, geçici madde 9 ve geçici madde 95 (EYT, 7438 sayılı Kanun); 506 sayılı Kanun geçici madde 81. Metinler mevzuat.gov.tr'den okundu (30 Ekim 2026). Kesin tarih için e-Devlet'teki SGK emeklilik hizmetlerine ya da SGK'ya başvurun.",
+  "noteData": "Girdiğiniz bilgiler yalnız bu sayfada, tarayıcınızda hesaplanır; kaydedilmez ve hiçbir yere gönderilmez.",
+  "faq": [
+    {
+      "q": "EYT ile kimler yaş şartı olmadan emekli olur?",
+      "a": "8 Eylül 1999'dan önce sigortalı olan 4/a (SSK) çalışanları, 3 Mart 2023'te yürürlüğe giren 7438 sayılı Kanunla eklenen 5510 sayılı Kanun geçici 95. maddeye göre yaş şartı aranmadan emekli olur. Kadınlar için 20, erkekler için 25 yıllık sigortalılık süresi ve ilk işe giriş tarihine göre 5000 ile 5975 arasında prim günü gerekir. Emeklilik hesaplama sayfası bu tabloyu uygular."
+    },
+    {
+      "q": "2008'den sonra sigortalı olanlar ne zaman emekli olur?",
+      "a": "1 Mayıs 2008'den sonra ilk kez 4/a sigortalısı olanlar 7200 prim günü ve kadın 58, erkek 60 yaşıyla emekli olur. Yaş şartı 7200 günün tamamlandığı tarihe göre yükselir: 2036'dan itibaren her iki yılda bir artar ve 2048'den sonra herkes için 65 olur. 5400 gün prim ödeyenler ise bu yaşlara 3 yıl eklenerek (en çok 65) emekli olabilir."
+    },
+    {
+      "q": "1999–2008 arasında sigortalı olanlar ne zaman emekli olur?",
+      "a": "8 Eylül 1999 ile 30 Nisan 2008 arasında ilk kez 4/a sigortalısı olanlar kadın 58, erkek 60 yaşını doldurup 7000 prim günü ya da 25 yıl sigortalılık ve 4500 prim günüyle emekli olur (5510 sayılı Kanun geçici 9. madde)."
+    }
+  ],
+  "cardName": "Emeklilik hesaplama"
+}

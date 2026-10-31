@@ -109,6 +109,8 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                 }
                 Text(L("notify.note"), color = Theme.c.muted, fontSize = 13.sp)
             }
+            PrayerAlarmCard()
+            PrayerSilentCard()
             if (denied) {
                 AppCard {
                     Text(L("notify.denied"), color = Theme.c.text, fontSize = 14.sp)
@@ -160,11 +162,25 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                             changed()
                         }
                     }
+                    if (NotifyPrefs.sound == "adhan") {
+                        SectionTitle(L("notify.adhanVoice"))
+                        for (v in NotifyPrefs.ADHAN_VOICES) {
+                            Choice(L("notify.adhan.$v"), NotifyPrefs.adhanVoice == v) {
+                                NotifyPrefs.saveAdhanVoice(v)
+                                changed()
+                            }
+                        }
+                    }
                     TextButton(onClick = { scope.launch { NotificationSounds.preview(context, NotifyPrefs.sound, NotifyPrefs.lead) } }) {
                         Icon(Icons.Filled.PlayCircle, null, tint = Theme.c.accent)
                         Text("  " + L("notify.sound.preview"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
                     }
                     Text(L("notify.sound.note"), color = Theme.c.muted, fontSize = 13.sp)
+                    if (NotifyPrefs.sound == "adhan") {
+                        Text(L("notify.sound.adhanNote"), color = Theme.c.muted, fontSize = 13.sp)
+                        val credit = if (NotifyPrefs.adhanVoice == "azeez") "notify.sound.adhanCredit" else "notify.adhan.credit.${NotifyPrefs.adhanVoice}"
+                        Text(L(credit), color = Theme.c.muted, fontSize = 11.sp)
+                    }
                     if (NotifyPrefs.sound == "voice" && voice != null && voice != NotificationSounds.VoiceStatus.GOOD) {
                         Text(L("notify.sound.betterAndroid"), color = Theme.c.muted, fontSize = 13.sp)
                     }

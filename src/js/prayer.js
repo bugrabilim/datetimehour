@@ -9,7 +9,8 @@
   if (!root) return;
   var T = S.T.pr || {};
   var CAL = S.cfg.cal || {};
-  var months = CAL.months || [];
+  // Başlıkta ayın yalın hâli (Rusçada tarih içindeki çekimli hâlden ayrı: calendar.monthsTitle)
+  var months = CAL.monthsTitle || CAL.months || [];
   var order = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
   var TR_TZ = "Europe/Istanbul";
 
@@ -24,6 +25,29 @@
   var mPrev = doc.querySelector("[data-pr-prev]"), mNext = doc.querySelector("[data-pr-next]");
 
   var state = null, view = null, lastDay = "", nextAt = 0, nextKey = "";
+  /* Hesap yöntemi ve ikindi (sth-prayer: { m, h }); varsayılan Diyanet, standart ikindi */
+  var mSel = doc.querySelector("[data-pr-method]"), aSel = doc.querySelector("[data-pr-asr]"), mAct = doc.querySelector("[data-pr-method-active]");
+  var method = {}; try { method = JSON.parse(S.store("sth-prayer") || "{}") || {}; } catch (e) {}
+  var params = P.methodParams(method.m || "diyanet", !!method.h);
+  function showMethod() {
+    if (mSel) mSel.value = P.METHODS[method.m] ? method.m : "diyanet";
+    if (aSel) aSel.value = method.h ? "1" : "0";
+    if (!mAct) return;
+    var custom = (method.m && method.m !== "diyanet") || method.h;
+    mAct.hidden = !custom;
+    if (custom) mAct.textContent = S.tpl(T.mActive, { name: (T.mNames || {})[method.m || "diyanet"] || "" }) + (method.h ? " · " + T.hanafi : "");
+  }
+  function setMethod() {
+    method = { m: mSel ? mSel.value : "diyanet", h: aSel && aSel.value === "1" ? 1 : 0 };
+    if (method.m === "diyanet" && !method.h) { try { localStorage.removeItem("sth-prayer"); } catch (e) {} } else S.store("sth-prayer", JSON.stringify(method));
+    params = P.methodParams(method.m, !!method.h);
+    showMethod();
+    if (state) { renderToday(); renderMonth(); tick(); }
+    doc.dispatchEvent(new CustomEvent("sth-prayer-method"));
+  }
+  showMethod();
+  if (mSel) mSel.addEventListener("change", setMethod);
+  if (aSel) aSel.addEventListener("change", setMethod);
 
   function pad(n) { return String(n).padStart(2, "0"); }
   function fmt(min) {
@@ -35,7 +59,7 @@
   /* Günün vakitleri: gece yarısından itibaren dakika (yuvarlanmış) */
   function dayTimes(y, m, d) {
     var off = offHours(y, m, d);
-    var r = P.times(y, m, d, state.lat, state.lon, off);
+    var r = P.times(y, m, d, state.lat, state.lon, off, params);
     var out = { off: off };
     order.forEach(function (k) { out[k] = isFinite(r[k]) ? Math.round(r[k] * 60) : null; });
     return out;
@@ -64,6 +88,12 @@
     order.forEach(function (k) {
       var td = rows[k] && rows[k].querySelector("[data-pr-time]");
       if (td) td.textContent = fmt(t[k]);
+    });
+    // Kerahat (yaklaşık, P.KERAHAT_MIN dakika): işrak, istiva, isfirar
+    var km = P.KERAHAT_MIN || 45, kr = { israk: [t.sunrise, t.sunrise + km], istiva: [t.dhuhr - km, t.dhuhr], isfirar: [t.maghrib - km, t.maghrib] };
+    Object.keys(kr).forEach(function (k) {
+      var el = doc.querySelector('[data-pr-kr="' + k + '"]');
+      if (el) el.textContent = kr[k][0] == null || isNaN(kr[k][0]) ? "–" : fmt(kr[k][0]) + "–" + fmt(kr[k][1]);
     });
     pickNext(now);
   }

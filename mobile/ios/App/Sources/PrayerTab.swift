@@ -3,9 +3,12 @@ import SaatCore
 
 /// Vakitler sekmesi: il, sıradaki vakte kalan süre, bugünün vakitleri, aylık çizelge, imsakiye, bildirimler.
 struct PrayerTab: View {
-    @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = false
+    @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = true
+    /// Kilit ekranında / Dynamic Island'da sıradaki vakit (Live Activity)
+    @AppStorage(LiveActivities.prayerKey) private var liveOn = false
     /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
     @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
+    @State private var sharing = false
 
     var body: some View {
         NavigationStack {
@@ -14,11 +17,34 @@ struct PrayerTab: View {
                 ScrollView {
                     VStack(spacing: 24) {
                         PrayerPanel(now: context.date, place: place)
+                        SunMoonArc(now: context.date, place: place)
+                        VStack(alignment: .leading, spacing: 6) {
+                            Toggle(isOn: $liveOn) {
+                                Label(L("live.prayer.toggle"), systemImage: "lock.iphone")
+                            }
+                            .tint(Theme.accent)
+                            Text(L("live.prayer.note")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        .card()
+                        .onChange(of: liveOn) { LiveActivities.sync() }
+                        // Yer değişince ya da vakit girince kilit ekranındaki sayaç ileri taşınır
+                        .onChange(of: place.name) { LiveActivities.sync() }
+                        .onChange(of: place.schedule.next(after: context.date)?.at) { LiveActivities.sync() }
                         VStack(spacing: 10) {
                             NavigationLink {
                                 MonthlyPrayerView(place: place)
                             } label: {
                                 linkRow(L("prayer.monthly"), "tablecells")
+                            }
+                            NavigationLink {
+                                PrayerMethodView()
+                            } label: {
+                                linkRow(L("prayer.method.app") + (PrayerMethod.isCustom ? " · " + PrayerMethod.name(PrayerMethod.id) : ""), "slider.horizontal.3")
+                            }
+                            NavigationLink {
+                                QiblaView()
+                            } label: {
+                                linkRow(L("qibla.link"), "location.north.circle")
                             }
                             if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(context.date)) {
                                 NavigationLink {
@@ -28,6 +54,7 @@ struct PrayerTab: View {
                                 }
                             }
                         }
+                        WorshipLinks()
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 20)
@@ -39,6 +66,11 @@ struct PrayerTab: View {
             .navigationTitle(L("tab.prayer"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                // Bugünün vakitlerini görsel kart olarak paylaş (rakip analizi #16)
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { sharing = true } label: { Image(systemName: "square.and.arrow.up") }
+                        .accessibilityLabel(L("share.prayer"))
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { showNotify = true } label: {
                         Image(systemName: notifyOn ? "bell.fill" : "bell")
@@ -47,6 +79,10 @@ struct PrayerTab: View {
                 }
             }
             .sheet(isPresented: $showNotify) { NotificationSettingsView() }
+            .sheet(isPresented: $sharing) {
+                let place = PlaceModel.shared.place, now = Date()
+                ShareCardSheet(title: L("share.prayer")) { PrayerShareCard(place: place, now: now) }
+            }
         }
     }
 
@@ -73,6 +109,14 @@ struct PrayerPanel: View {
         let next = schedule.next(after: now)
         VStack(spacing: 16) {
             PlacePicker()
+            SavedPlaceChips()
+            // Bugünün miladi ve hicri tarihi (Diyanet takvimi)
+            if let h = Hijri.date(now, timeZone: place.zone) {
+                Text(Fmt.longDate(now, tz: place.zone) + " · " + h.text)
+                    .font(.footnote)
+                    .foregroundStyle(Theme.muted)
+                    .multilineTextAlignment(.center)
+            }
 
             if let next {
                 VStack(spacing: 4) {
@@ -106,6 +150,42 @@ struct PrayerPanel: View {
                     .background(isNext ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 10))
                 }
             }
+            KerahatBox(entries: schedule.entries(on: now), place: place)
+        }
+    }
+}
+
+/// Kerahat vakitleri (rakip analizi #12; sitedeki namaz sayfasıyla aynı): güneş vaktinden sonra, öğleden ve akşamdan önce
+/// yaklaşık 45 dk (`PrayerTimes.kerahatMinutes`; Diyanet'in yayımladığı bir dakika ölçüsü yok, notta yazar).
+struct KerahatBox: View {
+    let entries: [PrayerSchedule.Entry]
+    let place: AppPlace
+    @State private var open = false
+
+    var body: some View {
+        let at = { (p: Prayer) in entries.first(where: { $0.prayer == p })?.at }
+        if let sr = at(.sunrise), let dh = at(.dhuhr), let mg = at(.maghrib) {
+            let k = TimeInterval(PrayerTimes.kerahatMinutes * 60)
+            let rows: [(String, Date, Date)] = [("israk", sr, sr + k), ("istiva", dh - k, dh), ("isfirar", mg - k, mg)]
+            DisclosureGroup(isExpanded: $open) {
+                VStack(alignment: .leading, spacing: 8) {
+                    ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
+                        HStack {
+                            Text(L("prayer.kerahatNames." + row.0))
+                            Spacer()
+                            Text(place.hm(row.1) + "–" + place.hm(row.2))
+                                .monospacedDigit()
+                                .environment(\.layoutDirection, .leftToRight)
+                        }
+                    }
+                    Text(L("prayer.kerahatNote")).font(.footnote).foregroundStyle(Theme.muted)
+                }
+                .padding(.top, 8)
+            } label: {
+                Text(L("prayer.kerahatHeading")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.text)
+            }
+            .tint(Theme.accent)
+            .card()
         }
     }
 }

@@ -19,6 +19,19 @@ struct City: Decodable, Identifiable, Hashable {
     var displayCountry: String { country[AppLocale.code] ?? country["en"] ?? "" }
     var zone: TimeZone { TimeZone(identifier: tz) ?? .current }
 
+    /// Sıradaki saat değişimi (`days` gün içindeyse): an ve fark (sn; ileri pozitif)
+    func nextDST(after now: Date, days: Double = 7) -> (at: Date, delta: Int)? {
+        guard let t = zone.nextDaylightSavingTimeTransition(after: now), t.timeIntervalSince(now) <= days * 86400 else { return nil }
+        let delta = zone.secondsFromGMT(for: t.addingTimeInterval(3600)) - zone.secondsFromGMT(for: t.addingTimeInterval(-3600))
+        return delta == 0 ? nil : (t, delta)
+    }
+
+    /// "2 Kasım: saatler 1 sa geri alınıyor" (şehrin yerel tarihiyle)
+    func dstNote(now: Date, days: Double = 7) -> String? {
+        guard let d = nextDST(after: now, days: days) else { return nil }
+        return T(d.delta > 0 ? "world.dstForward" : "world.dstBack", Fmt.dayMonth(d.at, tz: zone), Fmt.hm(seconds: abs(d.delta)))
+    }
+
     static let all: [City] = Bundle.main.url(forResource: "cities", withExtension: "json")
         .flatMap { try? Data(contentsOf: $0) }
         .flatMap { try? JSONDecoder().decode([City].self, from: $0) } ?? []
@@ -128,6 +141,10 @@ struct WorldClockView: View {
                 Text(diff == 0 ? L("client.diffSame") : T(diff > 0 ? "client.diffAhead" : "client.diffBehind", Fmt.hm(seconds: diff)))
                     .font(.caption)
                     .foregroundStyle(Theme.muted)
+                // Yaz saati uyarısı (rakip analizi #30): şehirde 7 gün içinde saat değişiyorsa
+                if let note = city.dstNote(now: date) {
+                    Label(note, systemImage: "clock.arrow.2.circlepath").font(.caption2).foregroundStyle(Theme.accent)
+                }
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 2) {
@@ -155,8 +172,6 @@ struct SeasonsView: View {
     static let seasonEmoji = ["🌸", "☀️", "🍂", "⛄"]
     static let seasonColor: [Color] = [Color(red: 0.30, green: 0.69, blue: 0.31), Color(red: 0.98, green: 0.62, blue: 0.11),
                                        Color(red: 0.80, green: 0.42, blue: 0.16), Color(red: 0.25, green: 0.53, blue: 0.85)]
-    private static let phaseKeys = ["new", "waxingCrescent", "firstQuarter", "waxingGibbous", "full", "waningGibbous", "lastQuarter", "waningCrescent"]
-    private static let phaseEmoji = ["🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘"]
 
     var body: some View {
         let now = Date()
@@ -200,6 +215,7 @@ struct SeasonsView: View {
                     }
                 }
                 sunAndMoon(place: place, now: now)
+                lightHours(place: place, now: now)
                 startsTable(year: year, tz: tr)
             }
             .padding(16)
@@ -287,18 +303,27 @@ struct SeasonsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(14)
             .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
-            VStack(alignment: .leading, spacing: 6) {
-                Text(L("nature.moonHeading")).font(.headline)
-                HStack(spacing: 8) {
-                    Text(Self.phaseEmoji[moon.phaseIndex]).font(.system(size: 36))
-                    Text(L("nature.phases.\(Self.phaseKeys[moon.phaseIndex])")).font(.subheadline)
+            // Ay: evre, aydınlık, bugün doğuş/batış; dokununca Ay takvimi ve tutulmalar
+            NavigationLink { MoonView() } label: {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(L("nature.moonHeading")).font(.headline)
+                    HStack(spacing: 8) {
+                        Text(moonPhaseEmoji[moon.phaseIndex]).font(.system(size: 36))
+                        Text(L("nature.phases.\(moonPhaseKeys[moon.phaseIndex])")).font(.subheadline)
+                    }
+                    Text(T("nature.illumination", Int((moon.illumination * 100).rounded())))
+                        .font(.caption).foregroundStyle(Theme.muted)
+                    let rs = place.moonRiseSet(CalendarDay(now, timeZone: place.zone))
+                    Text("↑ " + place.moonTime(rs.rise, none: "nature.moonNoRise")).monospacedDigit()
+                    Text("↓ " + place.moonTime(rs.set, none: "nature.moonNoSet")).monospacedDigit()
+                    Text(L("moon.calendarLink") + " ›").font(.caption.weight(.semibold)).foregroundStyle(Theme.accent)
                 }
-                Text(T("nature.illumination", Int((moon.illumination * 100).rounded())))
-                    .font(.caption).foregroundStyle(Theme.muted)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(14)
+                .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(14)
-            .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+            .buttonStyle(.plain)
+            .foregroundStyle(Theme.text)
         }
         .environment(\.layoutDirection, AppLocale.isRTL ? .rightToLeft : .leftToRight)
     }
@@ -343,6 +368,33 @@ struct SeasonsView: View {
     }
 
     /// Güneşin doğuşu, batışı ve tepe noktası (vakit düzeltmeleri olmadan, ufuk 0,833°)
+    /// Altın ve mavi saat (rakip analizi #15; sitedeki Mevsimler ile aynı: Güneş +6°/−4°/−6°)
+    private func lightHours(place: AppPlace, now: Date) -> some View {
+        let d = CalendarDay(now, timeZone: place.zone)
+        let noon = d.noon(in: place.zone), midnight = noon.addingTimeInterval(-12 * 3600)
+        let off = Double(place.zone.secondsFromGMT(for: noon)) / 3600
+        let l = PrayerTimes.lightHours(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon, utcOffset: off)
+        func span(_ r: (Double?, Double?)) -> String {
+            guard let a = r.0, let b = r.1 else { return "–" }
+            return place.hm(midnight.addingTimeInterval(a * 3600)) + "–" + place.hm(midnight.addingTimeInterval(b * 3600))
+        }
+        let rows: [(String, String, String)] = [("nature.blueAm", "🔵", span(l.blueAm)), ("nature.goldenAm", "🟠", span(l.goldenAm)),
+                                                ("nature.goldenPm", "🟠", span(l.goldenPm)), ("nature.bluePm", "🔵", span(l.bluePm))]
+        return VStack(alignment: .leading, spacing: 8) {
+            ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
+                HStack {
+                    Text(row.1 + " " + L(row.0))
+                    Spacer()
+                    Text(row.2).monospacedDigit().environment(\.layoutDirection, .leftToRight)
+                }
+            }
+            Text(L("nature.lightNote")).font(.caption).foregroundStyle(Theme.muted)
+        }
+        .foregroundStyle(Theme.text)
+        .padding(14)
+        .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+    }
+
     static func sun(place: AppPlace, now: Date) -> (rise: Date, set: Date, noon: Date)? {
         var p = PrayerTimes.Parameters()
         p.adjustments.sunrise = 0
@@ -482,7 +534,7 @@ private struct SeasonYearBars: View {
             bar(starts: meteo, total: total, showDates: false)
             HStack(spacing: 0) {
                 ForEach(0..<12, id: \.self) { m in
-                    Text(String(L("calendar.months.\(m)").prefix(AppLocale.code == "ar" ? 4 : 3)))
+                    Text(String(L("calendar.months.\(m)").prefix(AppLocale.isRTL ? 4 : 3)))
                         .font(.system(size: 9))
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)

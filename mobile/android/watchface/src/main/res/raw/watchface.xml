@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Saat Tarih Wear OS kadranı (Watch Face Format 1; rakip analizi listesi #78): rakamlı analog kadran, saniye ibresi
+     (ortam modunda gizli), iki komplikasyon yeri. Üstteki yer varsayılan olarak Saat Tarih saat uygulamasının "Sıradaki
+     vakit" komplikasyonunu, alttaki tarih ve günü gösterir; ikisi de kadran düzenlenirken değiştirilebilir. -->
+<WatchFace width="450" height="450" clipShape="CIRCLE">
+    <Metadata key="CLOCK_TYPE" value="ANALOG" />
+    <Metadata key="PREVIEW_TIME" value="10:08:32" />
+    <Scene backgroundColor="#ff0b1020">
+        <PartImage x="0" y="0" width="450" height="450" name="dial">
+            <Image resource="wf_dial" />
+        </PartImage>
+        <ComplicationSlot slotId="0" x="125" y="112" width="200" height="64" supportedTypes="SHORT_TEXT" isCustomizable="TRUE">
+            <DefaultProviderPolicy defaultSystemProvider="SUNRISE_SUNSET" defaultSystemProviderType="SHORT_TEXT"
+                primaryProvider="tr.bumba.time/tr.bumba.time.wear.NextPrayerComplicationService" primaryProviderType="SHORT_TEXT" />
+            <BoundingBox x="0" y="0" width="200" height="64" />
+            <Complication type="SHORT_TEXT">
+                <PartText x="0" y="0" width="200" height="64">
+                    <Text align="CENTER" ellipsis="TRUE">
+                        <Font family="SYNC_TO_DEVICE" size="26" weight="BOLD" color="#fff0a55c">
+                            <Template>%s %s<Parameter expression="[COMPLICATION.TITLE]" /><Parameter expression="[COMPLICATION.TEXT]" /></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Complication>
+        </ComplicationSlot>
+        <ComplicationSlot slotId="1" x="125" y="280" width="200" height="64" supportedTypes="SHORT_TEXT" isCustomizable="TRUE">
+            <DefaultProviderPolicy defaultSystemProvider="DAY_AND_DATE" defaultSystemProviderType="SHORT_TEXT" />
+            <BoundingBox x="0" y="0" width="200" height="64" />
+            <Complication type="SHORT_TEXT">
+                <PartText x="0" y="0" width="200" height="64">
+                    <Text align="CENTER" ellipsis="TRUE">
+                        <Font family="SYNC_TO_DEVICE" size="24" weight="BOLD" color="#ff96a0b4">
+                            <Template>%s %s<Parameter expression="[COMPLICATION.TITLE]" /><Parameter expression="[COMPLICATION.TEXT]" /></Template>
+                        </Font>
+                    </Text>
+                </PartText>
+            </Complication>
+        </ComplicationSlot>
+        <AnalogClock x="0" y="0" width="450" height="450">
+            <HourHand resource="wf_hour" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" />
+            <MinuteHand resource="wf_minute" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5" />
+            <SecondHand resource="wf_second" x="0" y="0" width="450" height="450" pivotX="0.5" pivotY="0.5">
+                <Variant mode="AMBIENT" target="alpha" value="0" />
+                <Sweep frequency="15" />
+            </SecondHand>
+        </AnalogClock>
+    </Scene>
+</WatchFace>

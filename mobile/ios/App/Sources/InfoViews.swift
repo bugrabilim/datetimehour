@@ -1,4 +1,5 @@
 import SwiftUI
+import AppIntents
 
 // MARK: Ayarlar
 
@@ -9,11 +10,17 @@ struct SettingsView: View {
     @AppStorage("units") private var units = Units.systemDefault
     /// Renk değişince bu sayfa da yeni renkle çizilir
     @AppStorage("accent") private var accent = AccentPalette.defaultID
+    @AppStorage(Features.key) private var features = ""
+    @State private var syncOn = CloudSync.enabled
 
     var body: some View {
         Form {
             Section {
+                NavigationLink { FeaturesView() } label: { Label(L("features.title"), systemImage: "square.grid.2x2") }
+            }
+            Section {
                 LabeledContent(L("settings.location")) { PlacePicker(font: .body) }
+                NavigationLink { NotificationsView() } label: { Label(L("settings.notifications"), systemImage: "bell") }
             }
             Section {
                 NavigationLink { AccentPickerView() } label: {
@@ -23,6 +30,7 @@ struct SettingsView: View {
                         Circle().fill(Theme.accent).frame(width: 18, height: 18)
                     }
                 }
+                NavigationLink { AppearanceView() } label: { Label(L("look.title"), systemImage: "textformat.size") }
                 Picker(L("settings.units"), selection: $units) {
                     Text(L("settings.units.metric")).tag("metric")
                     Text(L("settings.units.imperial")).tag("imperial")
@@ -40,6 +48,30 @@ struct SettingsView: View {
                     Text(L("settings.dark")).tag("dark")
                 }
                 NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
+            }
+            // Sunucusuz eşitleme (CloudSync.swift): aynı Apple hesabındaki cihazlar arasında, iCloud anahtar-değer deposu
+            Section {
+                Toggle(isOn: Binding(get: { syncOn }, set: { syncOn = $0; CloudSync.setEnabled($0) })) {
+                    Label(L("sync.title"), systemImage: "icloud")
+                }
+            } footer: {
+                Text(L("sync.note"))
+            }
+            // Siri ve Kısayollar (AppIntents.swift): Kısayollar uygulamasındaki eylemlere bağlantı ve şarj otomasyonu notu
+            Section {
+                ShortcutsLink()
+                    .shortcutsLinkStyle(.automaticOutline)
+            } header: {
+                Text(L("siri.title"))
+            } footer: {
+                Text(L("siri.note"))
+            }
+            // Araçlar kapalıyken rozetler ve hakkında buradadır (başka yoldan açılmazlar)
+            if !Features.parse(features).contains(.tools) {
+                Section {
+                    NavigationLink { BadgesView() } label: { Label(L("badges.h1"), systemImage: "rosette") }
+                    NavigationLink { AboutView() } label: { Label(L("settings.about"), systemImage: "info.circle") }
+                }
             }
         }
         .themedBackground()

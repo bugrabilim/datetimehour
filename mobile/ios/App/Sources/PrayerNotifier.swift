@@ -20,14 +20,16 @@ enum NotificationPrefs {
 
     static var current: PrayerAlerts.Settings {
         let d = UserDefaults.standard
-        return .init(enabled: d.bool(forKey: enabledKey),
+        // Varsayılan açık (30 Ekim 2026, sahibin isteği: her özelliğin bildirimi açık gelir, kullanıcı kapatır)
+        return .init(enabled: d.object(forKey: enabledKey) as? Bool ?? true,
                      prayers: decode(d.string(forKey: prayersKey) ?? defaultPrayers),
                      leadMinutes: d.integer(forKey: leadKey))
     }
 }
 
-/// Vakit bildirimlerini telefonda kurar. iOS en çok 64 bekleyen yerel bildirim tutar: plan 63 vakit
-/// (5 vakitle yaklaşık 12 gün) ve sonunda "uygulamayı açın" hatırlatması. Uygulama her açıldığında,
+/// Vakit ve özellik bildirimlerini (FeatureNotifier) telefonda kurar. iOS en çok 64 bekleyen yerel bildirim tutar:
+/// saat başı bildirimleri saat başına bir yinelenen kayıt, geri kalan yer zamana göre sıralı tek seferlik bildirimlere
+/// verilir; vakitler açıksa sonunda "uygulamayı açın" hatırlatması. Uygulama her açıldığında, arka plan yenilemesinde,
 /// il ya da tercih değişince liste baştan kurulur.
 @MainActor
 enum PrayerNotifier {
@@ -45,41 +47,71 @@ enum PrayerNotifier {
         (try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])) ?? false
     }
 
+    /// İlk açılışta bildirim izni bir kez sorulur (bildirimler varsayılan açık); sonra yalnız Ayarlar'dan
+    static func askOnce() async {
+        let d = UserDefaults.standard
+        guard !d.bool(forKey: "notify.asked") else { return }
+        d.set(true, forKey: "notify.asked")
+        if await authorizationStatus() == .notDetermined { _ = await requestAuthorization() }
+    }
+
+    /// Bu planın kurduğu bildirimler (alarm ve zamanlayıcı bildirimleri ayrı, onlara dokunulmaz)
+    private static func isPlanned(_ id: String) -> Bool {
+        id.hasPrefix("prayer-") || id == "reopen" || id.hasPrefix(FeatureNotifier.featurePrefix)
+            || id.hasPrefix(FeatureNotifier.hourlyPrefix)
+    }
+
     static func reschedule() async {
         generation += 1
         let mine = generation
         let center = UNUserNotificationCenter.current()
-        // Yalnız vakit bildirimleri silinir (alarm ve zamanlayıcı bildirimleri kalır)
-        let old = await center.pendingNotificationRequests().map(\.identifier).filter { $0.hasPrefix("prayer-") || $0 == "reopen" }
+        let old = await center.pendingNotificationRequests().map(\.identifier).filter(isPlanned)
         center.removePendingNotificationRequests(withIdentifiers: old)
         guard mine == generation else { return }
-        let settings = NotificationPrefs.current
-        guard settings.enabled else { return }
         let status = await authorizationStatus()
         guard isAllowed(status), mine == generation else { return }
 
+        let settings = NotificationPrefs.current
         let place = AppPlace.stored()
-        let alerts = PrayerAlerts.plan(schedule: place.schedule, settings: settings, now: Date())
-        // Her vakit için ses bir kez üretilir (sesli duyuru vakit adını söyler)
-        var sounds: [Prayer: UNNotificationSound] = [:]
-        NotificationSounds.removeStale(keeping: Set(Prayer.allCases.map { NotificationSounds.fileName($0, lead: settings.leadMinutes) }))
-        for prayer in Set(alerts.map(\.prayer)) {
-            sounds[prayer] = await NotificationSounds.sound(for: prayer, lead: settings.leadMinutes)
-            guard mine == generation else { return }
+        let now = Date()
+        var planned: [PlannedNotification] = []
+        if settings.enabled {
+            let alerts = PrayerAlerts.plan(schedule: place.schedule, settings: settings, now: now)
+            // Her vakit için ses bir kez üretilir (sesli duyuru vakit adını söyler)
+            var sounds: [Prayer: UNNotificationSound] = [:]
+            NotificationSounds.removeStale(keeping: Set(Prayer.allCases.map { NotificationSounds.fileName($0, lead: settings.leadMinutes) }))
+            for prayer in Set(alerts.map(\.prayer)) {
+                sounds[prayer] = await NotificationSounds.sound(for: prayer, lead: settings.leadMinutes)
+                guard mine == generation else { return }
+            }
+            planned += alerts.map { a in
+                let name = a.prayer.localizedName
+                return PlannedNotification(
+                    id: "prayer-\(Int(a.prayerAt.timeIntervalSince1970))-\(a.prayer.rawValue)", fireAt: a.fireAt,
+                    title: settings.leadMinutes > 0
+                        ? String(format: L("notify.title.before"), name, String(settings.leadMinutes))
+                        : String(format: L("notify.title.now"), name),
+                    body: "\(place.name) · \(place.hm(a.prayerAt))", thread: "prayer", sound: sounds[a.prayer] ?? .default)
+            }
         }
-        var requests = alerts.map { a -> UNNotificationRequest in
+        planned += await FeatureNotifier.planned(place: place, now: now)
+        guard mine == generation else { return }
+
+        let hourly = FeatureNotifier.hourlyRequests()
+        let room = max(0, 63 - hourly.count - GeoAlarms.activeCount)
+        let kept = Array(planned.sorted { $0.fireAt < $1.fireAt }.prefix(room))
+        var requests = hourly + kept.map { p -> UNNotificationRequest in
             let content = UNMutableNotificationContent()
-            let name = a.prayer.localizedName
-            content.title = settings.leadMinutes > 0
-                ? String(format: L("notify.title.before"), name, String(settings.leadMinutes))
-                : String(format: L("notify.title.now"), name)
-            content.body = "\(place.name) · \(place.hm(a.prayerAt))"
-            content.sound = sounds[a.prayer] ?? .default
-            content.threadIdentifier = "prayer"
-            return UNNotificationRequest(identifier: "prayer-\(Int(a.prayerAt.timeIntervalSince1970))-\(a.prayer.rawValue)",
-                                         content: content, trigger: trigger(at: a.fireAt))
+            content.title = p.title
+            content.body = p.body
+            content.sound = p.sound
+            content.threadIdentifier = p.thread
+            if let c = p.category { content.categoryIdentifier = c }
+            if p.passive { content.interruptionLevel = .passive }
+            if !p.info.isEmpty { content.userInfo = p.info }
+            return UNNotificationRequest(identifier: p.id, content: content, trigger: trigger(at: p.fireAt))
         }
-        if let last = alerts.last {
+        if settings.enabled, let last = kept.last {
             let content = UNMutableNotificationContent()
             content.title = L("notify.heading")
             content.body = L("notify.reopen")
@@ -108,7 +140,28 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
+        MainActor.assumeIsolated { UNUserNotificationCenter.current().setNotificationCategories(AlarmPreNotify.categories) }
         return true
+    }
+
+    /// Yaklaşan alarm bildirimindeki "Bu alarmı atla"
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let info = response.notification.request.content.userInfo
+        if response.actionIdentifier == AlarmPreNotify.skipAction, let id = info["alarm"] as? String,
+           let at = (info["at"] as? String).flatMap(TimeInterval.init) {
+            Task { @MainActor in
+                await AlarmPreNotify.skip(alarmID: id, at: at)
+                completionHandler()
+            }
+            return
+        }
+        completionHandler()
+    }
+
+    /// Tam ekranda yön kilidi (OrientationLock)
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        MainActor.assumeIsolated { OrientationLock.mask }
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,

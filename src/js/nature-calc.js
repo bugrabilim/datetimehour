@@ -1,5 +1,5 @@
-/* Doğa hesapları (dış veri yok): ekinoks/gündönümü anları (Meeus, Astronomical Algorithms bölüm 27)
-   ve yeni ay / dolunay anları (bölüm 49). Tarayıcıda window.sthNature, Node'da module.exports. */
+/* Doğa hesapları (dış veri yok): ekinoks/gündönümü anları (Meeus, Astronomical Algorithms bölüm 27),
+   yeni ay / dolunay anları (bölüm 49), Ay'ın konumu (bölüm 47, kısaltılmış) ve doğuş/batışı (bölüm 15). Tarayıcıda window.sthNature, Node'da module.exports. */
 (function (root) {
   "use strict";
   var D2R = Math.PI / 180;
@@ -75,7 +75,172 @@
     return { age: (ms - prevNew) / 86400000, frac: frac, illum: illum, idx: idx, nextNew: nextNew, nextFull: nextFull };
   }
 
-  var api = { seasons: seasons, moon: moon, phaseMs: phaseMs };
+  /* Ay'ın konumu: Meeus bölüm 47, kısaltılmış seri (boylamda en büyük 32, enlemde 28 terim; ~0,01°).
+     Satırlar: D, M, M', F, boylam (1e-6°), uzaklık (1e-3 km) / enlem (1e-6°). M'li terimler E (|M|=2: E²) ile çarpılır. */
+  var MOON_LR = [
+    [0, 0, 1, 0, 6288774, -20905355], [2, 0, -1, 0, 1274027, -3699111], [2, 0, 0, 0, 658314, -2955968], [0, 0, 2, 0, 213618, -569925],
+    [0, 1, 0, 0, -185116, 48888], [0, 0, 0, 2, -114332, -3149], [2, 0, -2, 0, 58793, 246158], [2, -1, -1, 0, 57066, -152138],
+    [2, 0, 1, 0, 53322, -170733], [2, -1, 0, 0, 45758, -204586], [0, 1, -1, 0, -40923, -129620], [1, 0, 0, 0, -34720, 108743],
+    [0, 1, 1, 0, -30383, 104755], [2, 0, 0, -2, 15327, 10321], [0, 0, 1, 2, -12528, 0], [0, 0, 1, -2, 10980, 79661],
+    [4, 0, -1, 0, 10675, -34782], [0, 0, 3, 0, 10034, -23210], [4, 0, -2, 0, 8548, -21636], [2, 1, -1, 0, -7888, 24208],
+    [2, 1, 0, 0, -6766, 30824], [1, 0, -1, 0, -5163, -8379], [1, 1, 0, 0, 4987, -16675], [2, -1, 1, 0, 4036, -12831],
+    [2, 0, 2, 0, 3994, -10445], [4, 0, 0, 0, 3861, -11650], [2, 0, -3, 0, 3665, 14403], [0, 1, -2, 0, -2689, -7003],
+    [2, 0, -1, 2, -2602, 0], [2, -1, -2, 0, 2390, 10056], [1, 0, 1, 0, -2348, 6322], [2, -2, 0, 0, 2236, -9884]
+  ];
+  var MOON_B = [
+    [0, 0, 0, 1, 5128122], [0, 0, 1, 1, 280602], [0, 0, 1, -1, 277693], [2, 0, 0, -1, 173237], [2, 0, -1, 1, 55413],
+    [2, 0, -1, -1, 46271], [2, 0, 0, 1, 32573], [0, 0, 2, 1, 17198], [2, 0, 1, -1, 9266], [0, 0, 2, -1, 8822],
+    [2, -1, 0, -1, 8216], [2, 0, -2, -1, 4324], [2, 0, 1, 1, 4200], [2, 1, 0, -1, -3359], [2, -1, -1, 1, 2463],
+    [2, -1, 0, 1, 2211], [2, -1, -1, -1, 2065], [0, 1, -1, -1, -1870], [4, 0, -1, -1, 1828], [0, 1, 0, 1, -1794],
+    [0, 0, 0, 3, -1749], [0, 1, -1, 1, -1565], [1, 0, 0, 1, -1491], [0, 1, 1, 1, -1475], [0, 1, 1, -1, -1410],
+    [0, 1, 0, -1, -1344], [1, 0, 0, -1, -1335], [0, 0, 3, 1, 1107]
+  ];
+  /** ms anında Ay'ın yer merkezli konumu: { ra, dec (derece), par (yatay paralaks, derece) } */
+  function moonPos(ms) {
+    var T = (ms / 86400000 + UNIX_JD + DELTA_T / 86400 - 2451545) / 36525;
+    var T2 = T * T, T3 = T2 * T, T4 = T3 * T;
+    var Lp = 218.3164477 + 481267.88123421 * T - 0.0015786 * T2 + T3 / 538841 - T4 / 65194000;
+    var D = 297.8501921 + 445267.1114034 * T - 0.0018819 * T2 + T3 / 545868 - T4 / 113065000;
+    var M = 357.5291092 + 35999.0502909 * T - 0.0001536 * T2 + T3 / 24490000;
+    var Mp = 134.9633964 + 477198.8675055 * T + 0.0087414 * T2 + T3 / 69699 - T4 / 14712000;
+    var F = 93.2720950 + 483202.0175233 * T - 0.0036539 * T2 - T3 / 3526000 + T4 / 863310000;
+    var A1 = 119.75 + 131.849 * T, A2 = 53.09 + 479264.290 * T, A3 = 313.45 + 481266.484 * T;
+    var E = 1 - 0.002516 * T - 0.0000074 * T2;
+    var sl = 0, sr = 0, sb = 0, i, t, arg, e;
+    for (i = 0; i < MOON_LR.length; i++) {
+      t = MOON_LR[i];
+      arg = t[0] * D + t[1] * M + t[2] * Mp + t[3] * F;
+      e = t[1] === 0 ? 1 : (t[1] === 2 || t[1] === -2 ? E * E : E);
+      sl += t[4] * e * sin(arg);
+      sr += t[5] * e * cos(arg);
+    }
+    for (i = 0; i < MOON_B.length; i++) {
+      t = MOON_B[i];
+      arg = t[0] * D + t[1] * M + t[2] * Mp + t[3] * F;
+      e = t[1] === 0 ? 1 : (t[1] === 2 || t[1] === -2 ? E * E : E);
+      sb += t[4] * e * sin(arg);
+    }
+    sl += 3958 * sin(A1) + 1962 * sin(Lp - F) + 318 * sin(A2);
+    sb += -2235 * sin(Lp) + 382 * sin(A3) + 175 * sin(A1 - F) + 175 * sin(A1 + F) + 127 * sin(Lp - Mp) - 115 * sin(Lp + Mp);
+    var lam = Lp + sl / 1000000, bet = sb / 1000000, dist = 385000.56 + sr / 1000;
+    var eps = 23.4392911 - 0.0130042 * T;
+    var ra = Math.atan2(sin(lam) * cos(eps) - (sin(bet) / cos(bet)) * sin(eps), cos(lam)) / D2R;
+    var dec = Math.asin(sin(bet) * cos(eps) + cos(bet) * sin(eps) * sin(lam)) / D2R;
+    return { ra: ra, dec: dec, par: Math.asin(6378.14 / dist) / D2R, dist: dist };
+  }
+  /* Ay'ın ufka göre yüksekliği eksi doğuş/batış eşiği (Meeus bölüm 15: h0 = 0,7275 π − 0°34') */
+  function moonAlt(ms, lat, lon) {
+    var p = moonPos(ms);
+    var d = ms / 86400000 + UNIX_JD - 2451545, T = d / 36525;
+    var gmst = 280.46061837 + 360.98564736629 * d + 0.000387933 * T * T;
+    var sh = sin(lat) * sin(p.dec) + cos(lat) * cos(p.dec) * cos(gmst + lon - p.ra);
+    return Math.asin(sh) / D2R - (0.7275 * p.par - 0.5667);
+  }
+  /** startMs'ten başlayan spanMs (varsayılan 24 sa) içinde Ay'ın ilk doğuşu ve batışı (ms; olmuyorsa null).
+      10 dakikalık adımlarla işaret değişimi aranır, 12 kez ikiye bölünerek ~0,15 sn'ye inilir. */
+  function moonRiseSet(startMs, lat, lon, spanMs) {
+    var step = 600000, n = Math.round((spanMs || 86400000) / step), out = { rise: null, set: null };
+    var t0 = startMs, f0 = moonAlt(t0, lat, lon);
+    for (var i = 1; i <= n; i++) {
+      var t1 = startMs + i * step, f1 = moonAlt(t1, lat, lon);
+      if ((f0 < 0) !== (f1 < 0)) {
+        var key = f0 < 0 ? "rise" : "set";
+        if (out[key] === null) {
+          var a = t0, b = t1, fa = f0;
+          for (var j = 0; j < 12; j++) {
+            var m = (a + b) / 2, fm = moonAlt(m, lat, lon);
+            if ((fa < 0) === (fm < 0)) { a = m; fa = fm; } else b = m;
+          }
+          out[key] = Math.round((a + b) / 2);
+        }
+      }
+      t0 = t1; f0 = f1;
+    }
+    return out;
+  }
+
+  /* Güneş'in yer merkezli konumu: Meeus bölüm 25, düşük duyarlıklı (~0,01°). { ra, dec (derece), dist (AB) } */
+  function sunPos(ms) {
+    var T = (ms / 86400000 + UNIX_JD + DELTA_T / 86400 - 2451545) / 36525;
+    var L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T;
+    var M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T;
+    var e = 0.016708634 - 0.000042037 * T;
+    var C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * sin(M) + (0.019993 - 0.000101 * T) * sin(2 * M) + 0.000289 * sin(3 * M);
+    var nu = M + C, R = 1.000001018 * (1 - e * e) / (1 + e * cos(nu));
+    var Om = 125.04 - 1934.136 * T, lam = L0 + C - 0.00569 - 0.00478 * sin(Om);
+    var eps = 23.4392911 - 0.0130042 * T + 0.00256 * cos(Om);
+    var ra = Math.atan2(cos(eps) * sin(lam), cos(lam)) / D2R;
+    var dec = Math.asin(sin(eps) * sin(lam)) / D2R;
+    return { ra: ra, dec: dec, dist: R };
+  }
+  /* Yerel yükseklik ve azimut (derece; azimut kuzeyden saat yönünde), havasız, yer merkezli */
+  function altAz(ms, ra, dec, lat, lon) {
+    var d = ms / 86400000 + UNIX_JD - 2451545, T = d / 36525;
+    var H = 280.46061837 + 360.98564736629 * d + 0.000387933 * T * T + lon - ra;
+    var alt = Math.asin(sin(lat) * sin(dec) + cos(lat) * cos(dec) * cos(H)) / D2R;
+    var az = Math.atan2(sin(H), cos(H) * sin(lat) - Math.tan(dec * D2R) * cos(lat)) / D2R + 180;
+    return { alt: alt, az: ((az % 360) + 360) % 360 };
+  }
+  function sunAlt(ms, lat, lon) { var p = sunPos(ms); return altAz(ms, p.ra, p.dec, lat, lon).alt + 0.8333; }
+  /* startMs'ten sonraki spanMs içinde f'nin ilk + → − geçişi (batış); 10 dk adım, 12 kez ikiye bölme */
+  function firstSet(f, startMs, spanMs, lat, lon) {
+    var step = 600000, t0 = startMs, f0 = f(t0, lat, lon);
+    for (var t1 = startMs + step; t1 <= startMs + spanMs; t1 += step) {
+      var f1 = f(t1, lat, lon);
+      if (f0 >= 0 && f1 < 0) {
+        var a = t0, b = t1;
+        for (var j = 0; j < 12; j++) { var m = (a + b) / 2; if (f(m, lat, lon) >= 0) a = m; else b = m; }
+        return Math.round((a + b) / 2);
+      }
+      t0 = t1; f0 = f1;
+    }
+    return null;
+  }
+
+  /* Hilal görünürlüğü (30 Ekim 2026): Yallop (1997, NAO Technical Note 69) q ölçütü. Kavuşumdan (yeni ay) sonraki ilk
+     üç akşam için: gün batımı, Ay batımı, gecikme, Ay'ın yaşı, en iyi gözlem anında (Tb = gün batımı + 4/9 gecikme)
+     yükseklik farkı (ARCV, yer merkezli), uzanım (ARCL), hilal kalınlığı (W', yerel) ve q. Sınıflar: A (> +0,216) kolay
+     görülür, B (> −0,014) iyi koşulda görülür, C (> −0,160) önce dürbünle bulunmalı, D (> −0,232) yalnız dürbün/teleskopla,
+     E (> −0,293) teleskopla bile görülmez, F görülmez. Ay güneşten önce batıyorsa ya da kavuşum gün batımından sonraysa F. */
+  var YALLOP = [[0.216, "A"], [-0.014, "B"], [-0.160, "C"], [-0.232, "D"], [-0.293, "E"]];
+  function sep(a1, d1, a2, d2) {
+    var c = sin(d1) * sin(d2) + cos(d1) * cos(d2) * cos(a1 - a2);
+    return Math.acos(Math.max(-1, Math.min(1, c))) / D2R;
+  }
+  function crescentEvening(conjMs, sunsetMs, lat, lon) {
+    var out = { sunset: sunsetMs, moonset: null, age: (sunsetMs - conjMs) / 3600000, lag: null, alt: null, arcl: null, arcv: null, w: null, q: null, cat: "F" };
+    out.moonset = firstSet(moonAlt, sunsetMs - 6 * 3600000, 12 * 3600000, lat, lon);
+    var ms0 = moonPos(sunsetMs), s0 = sunPos(sunsetMs), mh = altAz(sunsetMs, ms0.ra, ms0.dec, lat, lon);
+    out.alt = mh.alt - ms0.par * cos(mh.alt);
+    out.arcl = sep(ms0.ra, ms0.dec, s0.ra, s0.dec);
+    if (out.moonset !== null) out.lag = (out.moonset - sunsetMs) / 60000;
+    if (out.age <= 0 || out.lag === null || out.lag <= 0) return out;
+    var tb = sunsetMs + (4 / 9) * out.lag * 60000;
+    var m = moonPos(tb), s = sunPos(tb), mp = altAz(tb, m.ra, m.dec, lat, lon), sp = altAz(tb, s.ra, s.dec, lat, lon);
+    var arcv = mp.alt - sp.alt, daz = sp.az - mp.az;
+    var altT = mp.alt - m.par * cos(mp.alt);
+    var arclT = Math.acos(Math.max(-1, Math.min(1, cos(altT - sp.alt) * cos(daz)))) / D2R;
+    var sd = 0.27245 * m.par * 60 * (1 + sin(altT) * sin(m.par)); // yerel yarı çap, yay dakikası
+    var w = sd * (1 - cos(arclT));
+    var q = (arcv - (11.8371 - 6.3226 * w + 0.7319 * w * w - 0.1018 * w * w * w)) / 10;
+    out.arcv = arcv; out.w = w; out.q = q; out.arcl = sep(m.ra, m.dec, s.ra, s.dec);
+    out.cat = "F";
+    for (var i = 0; i < YALLOP.length; i++) if (q > YALLOP[i][0]) { out.cat = YALLOP[i][1]; break; }
+    return out;
+  }
+  /** conjMs (yeni ay) sonrasındaki ilk n (varsayılan 3) akşam için hilal görünürlüğü; gün batımı yoksa (kutup) atlanır. */
+  function crescent(conjMs, lat, lon, n) {
+    var list = [], t = conjMs;
+    for (var i = 0; i < (n || 3); i++) {
+      var ss = firstSet(sunAlt, t, 30 * 3600000, lat, lon);
+      if (ss === null) break;
+      list.push(crescentEvening(conjMs, ss, lat, lon));
+      t = ss + 3600000;
+    }
+    return list;
+  }
+
+  var api = { seasons: seasons, moon: moon, phaseMs: phaseMs, moonPos: moonPos, moonRiseSet: moonRiseSet, moonAltitude: moonAlt, sunPos: sunPos, altAz: altAz, crescent: crescent, YALLOP: YALLOP };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthNature = api;
 })(typeof window !== "undefined" ? window : globalThis);

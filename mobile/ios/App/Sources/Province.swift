@@ -7,12 +7,27 @@ struct Province: Decodable, Identifiable, Hashable {
     let lat: Double
     let lon: Double
     let ar: String
+    let ru: String?
+    let fa: String?
+    let ja: String?
+    let ko: String?
+    let zh: String?
+    let th: String?
 
     var id: String { slug }
 
-    /// Arapça arayüzde Arapça ad, diğer dillerde Türkçe ad.
+    /// Arapça, Rusça, Farsça, Japonca, Korece, Çince ve Tayca arayüzde o dildeki ad, diğer dillerde Türkçe ad.
     var displayName: String {
-        Locale.current.language.languageCode?.identifier == "ar" ? ar : name
+        switch Locale.current.language.languageCode?.identifier {
+        case "ar": ar
+        case "ru": ru ?? name
+        case "fa": fa ?? name
+        case "ja": ja ?? name
+        case "ko": ko ?? name
+        case "zh": zh ?? name
+        case "th": th ?? name
+        default: name
+        }
     }
 
     static let all: [Province] = {

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simgeye uzun basınca kısayollar (rakip analizi #7); MainActivity "shortcut" ekstrasını Nav.handleShortcut'la açar -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_sc_clock"
+        android:shortcutId="fullscreen"
+        android:shortcutShortLabel="@string/siri_short_full">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="tr.bumba.time.MainActivity"
+            android:targetPackage="tr.bumba.time">
+            <extra
+                android:name="shortcut"
+                android:value="fullscreen" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_sc_timer"
+        android:shortcutId="timer"
+        android:shortcutShortLabel="@string/siri_short_timer">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="tr.bumba.time.MainActivity"
+            android:targetPackage="tr.bumba.time">
+            <extra
+                android:name="shortcut"
+                android:value="timer" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_sc_alarm"
+        android:shortcutId="alarm"
+        android:shortcutShortLabel="@string/siri_short_alarm">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="tr.bumba.time.MainActivity"
+            android:targetPackage="tr.bumba.time">
+            <extra
+                android:name="shortcut"
+                android:value="alarm" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_sc_prayer"
+        android:shortcutId="prayer"
+        android:shortcutShortLabel="@string/siri_short_prayer">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="tr.bumba.time.MainActivity"
+            android:targetPackage="tr.bumba.time">
+            <extra
+                android:name="shortcut"
+                android:value="prayer" />
+        </intent>
+    </shortcut>
+</shortcuts>

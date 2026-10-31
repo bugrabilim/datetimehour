@@ -27,6 +27,33 @@ final class NatureTests: XCTestCase {
         }
     }
 
+    /// Ay'ın konumu ve doğuş/batışı sitedeki hesapla aynı (doğuş/batış ikiye bölme ile bulunduğu için ±1 sn)
+    func testMoonRiseSetMatchesWeb() throws {
+        let file = try Vectors.load("nature.json", as: NatureVectors.self)
+        XCTAssertGreaterThan(file.moonRise.count, 50)
+        for p in file.moonPos {
+            let got = Nature.moonPosition(atMilliseconds: p.ms)
+            XCTAssertEqual(got.rightAscension, p.ra, accuracy: 1e-9, "sağ açıklık \(p.ms)")
+            XCTAssertEqual(got.declination, p.dec, accuracy: 1e-9, "dik açıklık \(p.ms)")
+            XCTAssertEqual(got.parallax, p.par, accuracy: 1e-12, "paralaks \(p.ms)")
+        }
+        for r in file.moonRise {
+            let got = Nature.moonRiseSet(startMilliseconds: r.start, latitude: r.lat, longitude: r.lon)
+            XCTAssertEqual(got.rise == nil, r.rise == nil, "doğuş var mı \(r.lat) \(r.start)")
+            XCTAssertEqual(got.set == nil, r.set == nil, "batış var mı \(r.lat) \(r.start)")
+            if let g = got.rise, let w = r.rise { XCTAssertLessThanOrEqual(abs(g - w), 1000, "doğuş \(r.lat) \(r.start)") }
+            if let g = got.set, let w = r.set { XCTAssertLessThanOrEqual(abs(g - w), 1000, "batış \(r.lat) \(r.start)") }
+        }
+    }
+
+    /// ABD Deniz Gözlemevi (USNO) ile: İstanbul 30 Ekim 2026 Ay doğuşu 21.29, batışı 12.36 (±1 dk)
+    func testMoonRiseSetMatchesUSNO() {
+        let start = Int64(ISO8601DateFormatter().date(from: "2026-10-29T21:00:00Z")!.timeIntervalSince1970 * 1000)
+        let r = Nature.moonRiseSet(startMilliseconds: start, latitude: 41.01, longitude: 28.98)
+        XCTAssertLessThanOrEqual(abs(r.rise! - (start + (21 * 60 + 29) * 60_000)), 90_000)
+        XCTAssertLessThanOrEqual(abs(r.set! - (start + (12 * 60 + 36) * 60_000)), 90_000)
+    }
+
     /// Yayımlanmış astronomik anlarla (±2 dk); scripts/test.mjs ile aynı denetim
     func testSeasonsMatchPublishedInstants() {
         let want: [Int: [String]] = [

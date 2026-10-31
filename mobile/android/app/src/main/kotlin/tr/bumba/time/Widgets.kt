@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import tr.bumba.time.core.Nature
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -147,6 +148,101 @@ class ClockDateWidget : BaseWidget() {
     }
 }
 
+/** Saniyeli saat: TextClock saniyeyi kendisi işler; tarih ve gün gece yarısı yenilenir */
+class SecondsClockWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_seconds)
+        val today = LocalDate.now()
+        v.setTextViewText(R.id.date, today.dayOfMonth.toString() + " " + Fmt.month(today.monthValue) + " " + today.year)
+        v.setTextViewText(R.id.weekday, L("calendar.weekdays.${today.dayOfWeek.value - 1}"))
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
+        return v
+    }
+}
+
+/** Dünya saatleri: uygulamadaki listenin ilk dört şehri; saatleri TextClock şehrin diliminde kendisi işler */
+class WorldClockWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_world)
+        val cities = Prefs.world.split(",").mapNotNull { k -> City.all.firstOrNull { it.key == k } }.take(4)
+        val rows = listOf(R.id.row1, R.id.row2, R.id.row3, R.id.row4)
+        val names = listOf(R.id.n1, R.id.n2, R.id.n3, R.id.n4)
+        val diffs = listOf(R.id.d1, R.id.d2, R.id.d3, R.id.d4)
+        val times = listOf(R.id.t1, R.id.t2, R.id.t3, R.id.t4)
+        val now = Instant.now()
+        val here = ZoneId.systemDefault().rules.getOffset(now).totalSeconds
+        for (i in 0..3) {
+            val city = cities.getOrNull(i)
+            v.setViewVisibility(rows[i], if (city == null) android.view.View.GONE else android.view.View.VISIBLE)
+            if (city == null) continue
+            v.setTextViewText(names[i], city.displayName)
+            v.setString(times[i], "setTimeZone", city.tz)
+            // Fark gece yarısı ve saat/dilim değişince yenilenir (yaz saati geçişinde en geç ertesi gece)
+            val diff = city.zone.rules.getOffset(now).totalSeconds - here
+            v.setTextViewText(diffs[i], if (diff == 0) "" else (if (diff > 0) "+" else "−") + Fmt.hm(diff))
+        }
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.WORLD, id))
+        return v
+    }
+}
+
+/** Geri sayım: geri sayımlarımın en yakını (yoksa yılbaşı); son 24 saatte Chronometer geri sayar */
+class CountdownWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_countdown)
+        val now = Instant.now()
+        val zone = ZoneId.systemDefault()
+        val near = CountdownItem.nearest(now)
+        val (title, at) = if (near != null) {
+            near.label.ifBlank { L("tools.hub.cards.countdown.name") } to near.effective(now)
+        } else {
+            L("calendar.events.newYear") to LocalDate.now().plusYears(1).withDayOfYear(1).atStartOfDay(zone).toInstant()
+        }
+        v.setTextViewText(R.id.title, title)
+        val local = at.atZone(zone)
+        v.setTextViewText(R.id.date, Fmt.longDate(local.toLocalDate()) + if (local.hour != 0 || local.minute != 0) " " + Fmt.time(local) else "")
+        val days = java.time.temporal.ChronoUnit.DAYS.between(LocalDate.now(), local.toLocalDate())
+        val lastDay = at.toEpochMilli() - now.toEpochMilli() < 86_400_000L
+        v.setViewVisibility(R.id.days, if (lastDay) android.view.View.GONE else android.view.View.VISIBLE)
+        v.setViewVisibility(R.id.left, if (lastDay) android.view.View.VISIBLE else android.view.View.GONE)
+        if (lastDay) WidgetUpdater.countdown(v, R.id.left, at, now) else v.setTextViewText(R.id.days, T("client.daysLeft", days))
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.TOOLS, id))
+        return v
+    }
+}
+
+/** Ay evresi: bugünkü evre (gece yarısında yenilenir), aydınlık yüzdesi, sıradaki dolunay ya da yeni ay */
+class MoonWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_moon)
+        val now = Instant.now()
+        val m = Nature.moon(now.toEpochMilli())
+        v.setTextViewText(R.id.icon, MOON_PHASE_EMOJI[m.phaseIndex])
+        v.setTextViewText(R.id.name, L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"))
+        v.setTextViewText(R.id.illum, T("nature.illumination", Math.round(m.illumination * 100)))
+        val full = m.nextFullMoon < m.nextNewMoon
+        val at = Instant.ofEpochMilli(if (full) m.nextFullMoon else m.nextNewMoon).atZone(ZoneId.systemDefault()).toLocalDate()
+        v.setTextViewText(R.id.next, (if (full) "🌕 " else "🌑 ") + Fmt.shortDate(at))
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.SEASONS, id))
+        return v
+    }
+}
+
+/** Hicri tarih (Diyanet takvimi; gece yarısında yenilenir) ve miladi tarih; tablo dışında yalnız miladi tarih */
+class HijriWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_hijri)
+        val today = LocalDate.now()
+        val h = Hijri.date(today)
+        v.setTextViewText(R.id.day, h?.day?.toString() ?: "–")
+        v.setTextViewText(R.id.month, h?.monthName ?: "")
+        v.setTextViewText(R.id.year, h?.year?.toString() ?: "")
+        v.setTextViewText(R.id.date, Fmt.longDate(today))
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CALENDAR, id))
+        return v
+    }
+}
+
 /** Yenileme yayını: bir sonraki vakitte ya da gece yarısında gelir */
 class WidgetRefreshReceiver : android.content.BroadcastReceiver() {
     override fun onReceive(c: Context, intent: Intent) = WidgetUpdater.updateAll(c)
@@ -155,7 +251,8 @@ class WidgetRefreshReceiver : android.content.BroadcastReceiver() {
 object WidgetUpdater {
     private val providers = listOf(
         NextPrayerWidget::class.java, TodayPrayersWidget::class.java, AnalogClockWidget::class.java,
-        DigitalClockWidget::class.java, ClockDateWidget::class.java,
+        DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java,
+        SecondsClockWidget::class.java, WorldClockWidget::class.java, CountdownWidget::class.java, HijriWidget::class.java,
     )
 
     fun placeKey(id: Int) = "widget.place.$id"

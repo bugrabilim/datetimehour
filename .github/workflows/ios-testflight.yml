@@ -1,15 +1,11 @@
 name: iOS TestFlight
-# main'e iOS değişikliği girince (ya da elle "Run workflow") uygulamayı imzalayıp TestFlight'a yükler.
+# Yalnız elle ("Run workflow") uygulamayı imzalayıp TestFlight'a yükler. 31 Ekim 2026'dan beri main'e iOS değişikliği girmesi
+# yapı başlatmaz (sahibin kararı: bütün Apple yayınları tek seferde, sahibin onayıyla; site ayrıca canlıya alınabilsin diye).
 # Gerekli gizli değişkenler (App Store Connect API anahtarı): ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8.
 # Anahtar yoksa iş hata vermeden atlanır. İmzalama Xcode'un bulut imzalamasıyla yapılır (sertifika depoda yok).
 # Arşiv imzasız alınır: geliştirme imzası kayıtlı cihaz ister, hesapta cihaz yok. Dağıtım imzası yüklemede atılır.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "mobile/ios/**"
-      - ".github/workflows/ios-testflight.yml"
 
 concurrency:
   group: ios-testflight
@@ -55,9 +51,12 @@ jobs:
       - name: Yetkiler (geçici imza)
         if: steps.keys.outputs.ok == '1'
         # İmzasız arşivde yetkiler (WeatherKit) yoktur; dağıtım imzası yetkileri mevcut imzadan alır.
-        # Bu yüzden önce widget, sonra uygulama yetki dosyasıyla geçici (ad hoc) imzalanır.
+        # Bu yüzden önce içtekiler (Apple Watch komplikasyonu ve uygulaması, widget), sonra uygulama yetki dosyasıyla
+        # geçici (ad hoc) imzalanır.
         run: |
           APP="$RUNNER_TEMP/SaatTarih.xcarchive/Products/Applications/SaatTarih.app"
+          for X in "$APP"/Watch/*.app/PlugIns/*.appex; do [ -e "$X" ] && codesign --force --sign - "$X"; done
+          for X in "$APP"/Watch/*.app; do [ -e "$X" ] && codesign --force --sign - "$X"; done
           for X in "$APP"/PlugIns/*.appex; do codesign --force --sign - "$X"; done
           codesign --force --sign - --entitlements mobile/ios/App/SaatTarih.entitlements "$APP"
           codesign -d --entitlements - "$APP"
@@ -74,6 +73,8 @@ jobs:
           echo "Dağıtım imzasındaki yetkiler:"
           codesign -d --entitlements - Payload/SaatTarih.app
           codesign -d --entitlements - Payload/SaatTarih.app 2>&1 | grep -q weatherkit || { echo "::error::WeatherKit yetkisi dağıtım imzasında yok"; exit 1; }
+          codesign -d --entitlements - Payload/SaatTarih.app 2>&1 | grep -q ubiquity-kvstore-identifier || { echo "::error::iCloud anahtar-değer yetkisi dağıtım imzasında yok (Apple Developer › Identifiers › tr.bumba.time › iCloud açılmalı)"; exit 1; }
+          codesign -d --entitlements - Payload/SaatTarih.app 2>&1 | grep -q com.apple.developer.healthkit || { echo "::error::HealthKit yetkisi dağıtım imzasında yok (Apple Developer › Identifiers › tr.bumba.time › HealthKit açılmalı)"; exit 1; }
       - name: Yükle
         if: steps.keys.outputs.ok == '1'
         run: |

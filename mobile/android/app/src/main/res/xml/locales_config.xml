@@ -5,4 +5,14 @@
     <locale android:name="de" />
     <locale android:name="az" />
     <locale android:name="ar" />
+    <locale android:name="id" />
+    <locale android:name="ur" />
+    <locale android:name="fa" />
+    <locale android:name="fr" />
+    <locale android:name="ru" />
+    <locale android:name="ja" />
+    <locale android:name="ko" />
+    <locale android:name="zh-Hans" />
+    <locale android:name="fil" />
+    <locale android:name="th" />
 </locale-config>

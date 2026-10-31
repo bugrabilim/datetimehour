@@ -4,3 +4,5 @@ dist
 *.md
 .github
 mobile
+extension
+dist-extension

@@ -19,10 +19,13 @@ xcrun simctl bootstatus "$UDID" -b
 xcrun simctl status_bar "$UDID" override --time "09:41" --batteryState charged --batteryLevel 100 --cellularBars 4 --wifiBars 3 || true
 xcrun simctl install "$UDID" "$APP"
 
+# Görüntüler bütün özellikler açıkken alınır (yeni kurulumda yalnız Saat açık); FEAT= ile ilk açılış görünümü
+ALLFEAT="weather,calendar,world,seasons,prayer,tools"
 shoot() { # dil bölge görünüm dosya [ek uygulama argümanları]
   xcrun simctl ui "$UDID" appearance "$3"
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" "${@:5}"
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" \
+    -features "${FEAT-$ALLFEAT}" "${@:5}"
   sleep 6
   xcrun simctl io "$UDID" screenshot "$OUT/$4.png"
 }
@@ -30,14 +33,17 @@ shoot tr tr_TR light tr-acik
 shoot tr tr_TR dark tr-koyu
 shoot en en_US light en-acik
 shoot ar ar_SA light ar-acik
-# Saat modelleri (sitedeki 19 model; -clockModel kimlik)
-for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal; do
+# İlk açılış: yalnız Saat (alt bar yok; dişli ve "özellikleri aç" satırı); iki özellik açıkken bar
+FEAT="" shoot tr tr_TR light tr-ilk-acilis
+FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
+# Saat modelleri (sitedeki 20 model; -clockModel kimlik)
+for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"
 done
 shoot tr tr_TR dark model-analog-date-koyu -clockModel analog-date -secA "<true/>"
 shoot ar ar_SA light model-wx-digital-cal-ar -clockModel wx-digital-cal
 # Saat ekranında bütün alanlar açık (Ayarlar › Saat ekranı)
-ALL="date,week,next,prayers,upcoming,world,weather,sun,globe"
+ALL="date,week,hijri,next,prayers,upcoming,world,weather,sun,globe"
 shoot tr tr_TR light tr-alanlar -homeItems "$ALL" -clockModel digital
 shoot ar ar_SA light ar-alanlar -homeItems "$ALL" -clockModel digital
 # Sekmeler: 0 saat, 1 hava durumu, 2 takvim, 3 dünya saatleri, 4 mevsimler, 5 vakitler, 6 araçlar
@@ -54,14 +60,41 @@ shoot tr tr_TR light tr-araclar -startTab 6
 # Bildirim ayarı penceresi (açık hâli; izin sorulmaz, yalnız görünüm)
 shoot tr tr_TR light tr-bildirim -startTab 5 -openNotifications -notify.enabled "<true/>" -notify.lead "<integer>10</integer>"
 # Alt ekranlar (doğrudan açılır)
-for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges; do
+for S in monthly imsakiye alarm timer stopwatch pomodoro datecalc world seasons settings homeItems privacy about list badges notifications morning moon look features qibla; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR dark ekran-about-koyu -openScreen about
 shoot tr tr_TR light ekran-renk-cocuk -openScreen settings -accent kid-purple
 shoot tr tr_TR light tr-renk-cocuk -accent kid-green
 shoot tr tr_TR light ekran-google -openScreen google
+# Hareketli arka plan: saat görünümü sayfası (canlı örnek) gökyüzü ve renk akışıyla
+shoot tr tr_TR dark ekran-look-yildizlar -openScreen look -fsBg stars
+shoot tr tr_TR light ekran-look-renk-akisi -openScreen look -fsBg flow
 shoot en en_US light ekran-world-en -openScreen world
+shoot ar ar_SA dark ekran-qibla-ar -openScreen qibla
+# İbadet: Kur'an (liste, Yâsîn; İngilizce meal açık, Arapça koyu), dualar, zikirmatik, takip, zekât
+for S in sura duas track zakat esma hadith guide leaf method journal planner; do
+  shoot tr tr_TR light "ekran-$S" -openScreen "$S"
+done
+shoot tr tr_TR light ekran-quran -openScreen quran -quran.bookmark "<string>18:10</string>"
+shoot tr tr_TR light ekran-zikir -openScreen zikir -zikir.tesbihat "<true/>" -zikir.count "<integer>41</integer>" -zikir.total "<integer>1250</integer>"
+shoot en en_US light ekran-sura-en -openScreen sura
+shoot ar ar_SA dark ekran-sura-ar -openScreen sura
+shoot en en_US dark ekran-hadith-en -openScreen hadith
+shoot ar ar_SA light ekran-esma-ar -openScreen esma
+shoot tr tr_TR light ekran-zakat-ornek -openScreen zakat \
+  -zakat.values '<string>{"cash":400000,"debt":30000,"goldGrams":20,"goldPrice":4000}</string>'
+# Uyku: plan açık (kalkış 07.00, 8 saat; yatma 23.00)
+shoot tr tr_TR light ekran-uyku -openScreen sleep -sleep.on "<true/>"
+# Alarm kapatma görevi (matematik)
+shoot tr tr_TR dark ekran-alarm-gorevi -openScreen wake
+# Gece modu: siyah zemin, kısık kırmızı saat (yıldızlı arka plan seçili olsa da düz siyah)
+shoot tr tr_TR dark ekran-gece-modu -openScreen night -nightMode on -fsBg stars
+# Yatay (yan çevrilmiş): saat sekmesi tam ekran açılır, diğerlerinde alt bar gizli. Sona konur ki sonraki
+# açılışlar dik kalsın; görüntü cihazın dik çerçevesinde yan döner.
+shoot tr tr_TR light tr-yatay-saat -landscape
+shoot tr tr_TR light tr-yatay-hava -startTab 1 -landscape
+shoot tr tr_TR dark tr-yatay-vakitler -startTab 5 -landscape
 # Uygulamanın Info.plist anahtarları (izin metinleri) derlenmiş pakette var mı
 plutil -p "$APP/Info.plist" | grep -E "NSAlarmKit|NSLocation|CFBundleDisplayName" || true
 # Bildirim sesi örnekleri (telefonda üretilen dosyalar): Library/Sounds → çıktı klasörü
@@ -71,3 +104,30 @@ DATA=$(xcrun simctl get_app_container "$UDID" "$BUNDLE" data)
 mkdir -p "$OUT/sesler"
 cp "$DATA"/Library/Sounds/*.caf "$OUT/sesler/" 2>/dev/null || echo "Ses dosyası üretilmedi"
 ls -la "$OUT" "$OUT/sesler"
+
+# iPad (rakip analizi #18): en yeni iOS'taki 13 inç iPad simülatörü (yoksa ilk iPad); sayfalar okunur genişlikte ortalı
+IPAD=$(xcrun simctl list devices available -j | python3 -c '
+import json, sys
+d = json.load(sys.stdin)["devices"]
+runtimes = sorted((k for k in d if "iOS" in k), key=lambda k: [int(x) for x in k.split("iOS-")[-1].split("-")], reverse=True)
+for k in runtimes:
+    pads = [x for x in d[k] if x["name"].startswith("iPad")]
+    if pads:
+        big = [x for x in pads if "13-inch" in x["name"]]
+        print((big or pads)[0]["udid"]); break')
+if [ -n "$IPAD" ]; then
+  echo "iPad simülatörü: $IPAD"
+  xcrun simctl shutdown "$UDID" || true
+  UDID="$IPAD"
+  xcrun simctl boot "$UDID" || true
+  xcrun simctl bootstatus "$UDID" -b
+  xcrun simctl status_bar "$UDID" override --time "09:41" --batteryState charged --batteryLevel 100 --wifiBars 3 || true
+  xcrun simctl install "$UDID" "$APP"
+  shoot tr tr_TR light ipad-saat
+  shoot tr tr_TR dark ipad-vakitler -startTab 5
+  shoot tr tr_TR light ipad-takvim -startTab 2
+  shoot en en_US light ipad-hava -startTab 1
+  shoot ar ar_SA light ipad-dunya -startTab 3
+  shoot tr tr_TR light ipad-uyku -openScreen sleep -sleep.on "<true/>"
+  ls -la "$OUT"/ipad-*
+fi

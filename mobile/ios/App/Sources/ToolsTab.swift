@@ -15,6 +15,9 @@ struct ToolsTab: View {
                     row(.timer, L("tools.timer"), "timer")
                     row(.stopwatch, L("tools.hub.cards.stopwatch.name"), "stopwatch")
                     row(.pomodoro, L("tools.hub.cards.pomodoro.name"), "leaf")
+                    row(.sleep, L("sleep.title"), "bed.double")
+                    row(.journal, L("journal.title"), "sun.horizon")
+                    row(.planner, L("planner.h1"), "person.2.wave.2")
                     row(.datecalc, L("tools.hub.cards.datecalc.name"), "calendar.badge.clock")
                 }
                 Section {
@@ -40,6 +43,9 @@ struct ToolsTab: View {
                 case .timer: TimerView()
                 case .stopwatch: StopwatchView()
                 case .pomodoro: PomodoroView()
+                case .sleep: SleepView()
+                case .journal: JournalView()
+                case .planner: MeetingPlannerView()
                 case .datecalc: DateCalcView()
                 case .settings: SettingsView()
                 case .about: AboutView()
@@ -57,7 +63,7 @@ struct ToolsTab: View {
 // MARK: Ortak
 
 /// Büyük süre göstergesi
-private struct BigTime: View {
+struct BigTime: View {
     let text: String
     var body: some View {
         Text(text)
@@ -71,7 +77,7 @@ private struct BigTime: View {
     }
 }
 
-private struct RoundButton: View {
+struct RoundButton: View {
     let title: String
     var prominent = false
     let action: () -> Void
@@ -88,18 +94,38 @@ private struct RoundButton: View {
 }
 
 /// Saniyelik süre: "1:02:03" ya da "02:03"
-private func clock(_ seconds: Int) -> String {
+func clock(_ seconds: Int) -> String {
     let s = max(0, seconds)
     return s >= 3600 ? String(format: "%d:%02d:%02d", s / 3600, (s % 3600) / 60, s % 60) : String(format: "%02d:%02d", s / 60, s % 60)
 }
 
 // MARK: Kronometre
 
+/// Ek kronometreler (rakip analizi listesi #81): her biri ayrı sayar; kayıt `stopwatches` (JSON, Unix ms; Android'le aynı)
+struct StopwatchItem: Codable, Identifiable, Equatable {
+    var id = UUID().uuidString
+    var name = ""
+    /// Çalışırken başlangıç anı (Unix ms; 0 = durdu) ve önceki toplam (ms)
+    var start: Int64 = 0
+    var acc: Int64 = 0
+
+    func elapsed(_ now: Int64) -> Int64 { acc + (start > 0 ? max(0, now - start) : 0) }
+
+    static let key = "stopwatches"
+    static func load() -> [StopwatchItem] {
+        UserDefaults.standard.data(forKey: key).flatMap { try? JSONDecoder().decode([StopwatchItem].self, from: $0) } ?? []
+    }
+    static func save(_ items: [StopwatchItem]) {
+        UserDefaults.standard.set(try? JSONEncoder().encode(items), forKey: key)
+    }
+}
+
 struct StopwatchView: View {
     /// Çalışırken başlangıç anı (0 = durdu); toplam ve turlar kalıcı (uygulama kapansa da süre kaybolmaz)
     @AppStorage("sw.start") private var start = 0.0
     @AppStorage("sw.acc") private var acc = 0.0
     @AppStorage("sw.laps") private var lapsRaw = ""
+    @State private var extra = StopwatchItem.load()
 
     private var laps: [Double] { lapsRaw.split(separator: ",").compactMap { Double($0) } }
     private func elapsed(_ now: Date) -> Double { acc + (start > 0 ? now.timeIntervalSinceReferenceDate - start : 0) }
@@ -134,6 +160,8 @@ struct StopwatchView: View {
             .padding(.horizontal, 20)
         }
         .background(Theme.bg.ignoresSafeArea())
+        // Kilit ekranı / Dynamic Island: çalışan kronometre
+        .onChange(of: start) { LiveActivities.sync() }
         .navigationTitle(L("tools.hub.cards.stopwatch.name"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -154,6 +182,15 @@ struct StopwatchView: View {
             if lapTimes.isEmpty {
                 Text(L("tools.stopwatch.empty")).foregroundStyle(Theme.muted)
             }
+            if !lapTimes.isEmpty {
+                ShareLink(item: CSVFile(name: "laps-\(BadgeStore.day(Date())).csv",
+                                        rows: [[L("tools.stopwatch.lapNo"), L("tools.stopwatch.lapTime"), L("tools.stopwatch.total")]]
+                                            + lapTimes.enumerated().map { [String($0.offset + 1), format($0.element), format(totals[$0.offset])] }),
+                          preview: SharePreview("laps.csv")) {
+                    Label(L("csv.laps"), systemImage: "square.and.arrow.up")
+                }
+                .foregroundStyle(Theme.accent)
+            }
             ForEach(Array(lapTimes.enumerated()).reversed(), id: \.offset) { i, lap in
                 HStack {
                     Text(verbatim: "\(L("tools.stopwatch.lapNo")) \(i + 1)")
@@ -165,190 +202,94 @@ struct StopwatchView: View {
                 }
                 .environment(\.layoutDirection, .leftToRight)
             }
+            extraSection
         }
         .themedBackground()
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
+    }
+
+    /// Ek kronometreler: ad, süre, başlat/durdur, sıfırla, kaldır
+    @ViewBuilder private var extraSection: some View {
+        Section {
+            ForEach(Array(extra.enumerated()), id: \.element.id) { i, w in
+                let now = Int64(Date().timeIntervalSince1970 * 1000)
+                HStack(spacing: 12) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        TextField(T("sw.multi.default", i + 2), text: Binding(get: { w.name }, set: { v in updateExtra(w.id) { $0.name = String(v.prefix(30)) } }))
+                            .font(.footnote)
+                            .foregroundStyle(Theme.muted)
+                        Text(format(Double(w.elapsed(now)) / 1000))
+                            .font(.system(size: 28, weight: .light, design: .rounded))
+                            .monospacedDigit()
+                            .environment(\.layoutDirection, .leftToRight)
+                    }
+                    Spacer()
+                    if w.start == 0 && w.acc > 0 {
+                        Button { updateExtra(w.id) { $0.acc = 0 } } label: { Image(systemName: "arrow.counterclockwise") }
+                            .accessibilityLabel(L("tools.stopwatch.reset"))
+                    }
+                    Button {
+                        updateExtra(w.id) { x in
+                            let t = Int64(Date().timeIntervalSince1970 * 1000)
+                            if x.start > 0 { x.acc = x.elapsed(t); x.start = 0 } else { x.start = t }
+                        }
+                    } label: { Image(systemName: w.start > 0 ? "pause.fill" : "play.fill") }
+                        .accessibilityLabel(L(w.start > 0 ? "tools.stopwatch.stop" : "tools.stopwatch.start"))
+                    Button {
+                        extra.removeAll { $0.id == w.id }
+                        StopwatchItem.save(extra)
+                    } label: { Image(systemName: "xmark").foregroundStyle(Theme.muted) }
+                        .accessibilityLabel(L("timers.remove"))
+                }
+                .font(.title3)
+                .foregroundStyle(Theme.accent)
+                .buttonStyle(.borderless)
+            }
+            if extra.count < 10 {
+                Button {
+                    extra.append(StopwatchItem(start: Int64(Date().timeIntervalSince1970 * 1000)))
+                    StopwatchItem.save(extra)
+                } label: { Label(L("sw.multi.add"), systemImage: "plus") }
+                    .foregroundStyle(Theme.accent)
+            }
+            Text(L("sw.multi.note")).font(.footnote).foregroundStyle(Theme.muted)
+        } header: {
+            Text(L("sw.multi.heading"))
+        }
+    }
+
+    private func updateExtra(_ id: String, _ change: (inout StopwatchItem) -> Void) {
+        guard let i = extra.firstIndex(where: { $0.id == id }) else { return }
+        change(&extra[i])
+        StopwatchItem.save(extra)
     }
 }
 
 // MARK: Zamanlayıcı ve tarihe geri sayım
 
 struct TimerView: View {
-    @State private var mode = 0
+    /// Aralık antrenmanı sürüyorsa o sekme açılır
+    @State private var mode = UserDefaults.standard.double(forKey: "hiit.start") > 0 ? 1 : 0
     var body: some View {
         VStack(spacing: 0) {
             Picker("", selection: $mode) {
                 Text(L("tools.countdown.tabTimer")).tag(0)
-                Text(L("tools.countdown.tabDate")).tag(1)
+                Text(L("hiit.tab")).tag(1)
+                Text(L("tools.countdown.tabDate")).tag(2)
             }
             .pickerStyle(.segmented)
             .padding(16)
-            if mode == 0 { DurationTimer() } else { DateCountdown() }
+            switch mode {
+            case 0: TimersView()
+            case 1: HiitView()
+            default: CountdownsView()
+            }
             Spacer(minLength: 0)
         }
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle(L("tools.timer"))
         .navigationBarTitleDisplayMode(.inline)
-    }
-}
-
-private struct DurationTimer: View {
-    @AppStorage("tm.end") private var end = 0.0      // çalışırken bitiş anı
-    @AppStorage("tm.left") private var left = 0.0    // duraklatılmışken kalan
-    @AppStorage("tm.id") private var alarmID = ""
-    @State private var h = 0
-    @State private var m = 5
-    @State private var s = 0
-
-    private var running: Bool { end > 0 }
-    private var paused: Bool { end == 0 && left > 0 }
-
-    var body: some View {
-        TimelineView(.periodic(from: .now, by: 0.5)) { context in
-            let remaining = running ? max(0, end - context.date.timeIntervalSinceReferenceDate) : left
-            VStack(spacing: 20) {
-                if running || paused {
-                    BigTime(text: remaining <= 0 ? L("tools.countdown.finished") : clock(Int(remaining.rounded(.up))))
-                        .padding(.top, 30)
-                } else {
-                    HStack(spacing: 0) {
-                        wheel($h, 0..<24, L("tools.countdown.hoursShort"))
-                        wheel($m, 0..<60, L("tools.countdown.minutesShort"))
-                        wheel($s, 0..<60, L("tools.countdown.secondsShort"))
-                    }
-                    .frame(height: 180)
-                    .environment(\.layoutDirection, .leftToRight)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach([1, 3, 5, 10, 15, 25, 30, 45, 60], id: \.self) { n in
-                                Button(T("tools.countdown.presetMin", n)) { h = n / 60; m = n % 60; s = 0; start(seconds: Double(n * 60)) }
-                                    .buttonStyle(.bordered)
-                                    .tint(Theme.accent)
-                            }
-                        }
-                        .padding(.horizontal, 16)
-                    }
-                }
-                HStack(spacing: 12) {
-                    if running {
-                        RoundButton(title: L("tools.countdown.reset")) { reset() }
-                        RoundButton(title: L("tools.countdown.pause"), prominent: true) {
-                            left = remaining
-                            end = 0
-                            cancelAlarm()
-                        }
-                    } else if paused {
-                        RoundButton(title: L("tools.countdown.reset")) { reset() }
-                        RoundButton(title: L("tools.countdown.resume"), prominent: true) { start(seconds: left) }
-                    } else {
-                        RoundButton(title: L("tools.countdown.start"), prominent: true) { start(seconds: Double(h * 3600 + m * 60 + s)) }
-                            .disabled(h + m + s == 0)
-                    }
-                }
-                .padding(.horizontal, 20)
-                if running && remaining <= 0 {
-                    Text(L("tools.countdown.finished")).font(.headline).foregroundStyle(Theme.accent)
-                }
-                AlarmNote()
-            }
-        }
-    }
-
-    private func wheel(_ value: Binding<Int>, _ range: Range<Int>, _ unit: String) -> some View {
-        Picker(unit, selection: value) {
-            ForEach(range, id: \.self) { Text("\($0) \(unit)").tag($0) }
-        }
-        .pickerStyle(.wheel)
-        .frame(maxWidth: .infinity)
-    }
-
-    private func start(seconds: Double) {
-        guard seconds > 0 else { return }
-        BadgeStore.shared.hit(.zamanlayici)
-        let id = UUID()
-        alarmID = id.uuidString
-        end = Date().timeIntervalSinceReferenceDate + seconds
-        left = 0
-        let at = Date(timeIntervalSinceReferenceDate: end)
-        Task { await AlarmCenter.schedule(id: id, at: at, title: L("tools.countdown.finished")) }
-    }
-
-    private func cancelAlarm() {
-        if let id = UUID(uuidString: alarmID) { AlarmCenter.cancel(id: id) }
-        alarmID = ""
-    }
-
-    private func reset() {
-        cancelAlarm()
-        end = 0
-        left = 0
-    }
-}
-
-private struct DateCountdown: View {
-    @AppStorage("cd.target") private var target = 0.0
-    @AppStorage("cd.title") private var title = ""
-    @State private var picked = Date().addingTimeInterval(86400)
-
-    var body: some View {
-        let today = CalendarDay(Date())
-        let quick = quickTargets(today)
-        TimelineView(.periodic(from: .now, by: 1)) { context in
-            ScrollView {
-                VStack(spacing: 18) {
-                    if target > 0 {
-                        let left = Int((Date(timeIntervalSinceReferenceDate: target).timeIntervalSince(context.date)).rounded(.up))
-                        VStack(spacing: 6) {
-                            if !title.isEmpty { Text(title).font(.headline).foregroundStyle(Theme.accent) }
-                            BigTime(text: left <= 0 ? L("tools.countdown.finishedDate") : Fmt.countdown(left))
-                            Text(Fmt.longDate(Date(timeIntervalSinceReferenceDate: target)) + " " + Fmt.time(Date(timeIntervalSinceReferenceDate: target)))
-                                .font(.subheadline)
-                                .foregroundStyle(Theme.muted)
-                        }
-                        .padding(.top, 20)
-                    }
-                    DatePicker(L("tools.countdown.targetLabel"), selection: $picked, in: Date()...)
-                    Button(L("tools.countdown.targetSet")) {
-                        target = picked.timeIntervalSinceReferenceDate
-                        title = ""
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(Theme.accent)
-                    VStack(alignment: .leading, spacing: 8) {
-                        SectionTitle(text: L("tools.countdown.quickHeading"))
-                        ForEach(Array(quick.enumerated()), id: \.offset) { _, pair in
-                            Button {
-                                target = pair.1.noon(in: .current).addingTimeInterval(-12 * 3600).timeIntervalSinceReferenceDate
-                                title = pair.0
-                            } label: {
-                                HStack {
-                                    Text(pair.0).foregroundStyle(Theme.text)
-                                    Spacer()
-                                    Text(relative(pair.1, today)).font(.caption).foregroundStyle(Theme.muted)
-                                }
-                                .card()
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                }
-                .padding(.horizontal, 16)
-            }
-        }
-    }
-
-    /// Yeni yıl, Ramazan, bayramlar, 23 Nisan, 19 Mayıs, 30 Ağustos, 29 Ekim: her birinin sıradaki tarihi
-    private func quickTargets(_ today: CalendarDay) -> [(String, CalendarDay)] {
-        let keys = ["newYear", "ramadanStart", "rb1", "kb1", "apr23", "may19", "aug30", "oct29"]
-        let events = CalendarData.shared.years.keys.sorted().flatMap { CalendarData.shared.years[$0]!.events }
-        var out: [(String, CalendarDay)] = []
-        for key in keys {
-            if let e = events.first(where: { $0.key == key && ($0.day ?? today) > today }), let d = e.day {
-                out.append((key == "newYear" ? L("tools.countdown.quickNewYear") : e.name, d))
-            }
-        }
-        return out.sorted { $0.1 < $1.1 }
     }
 }
 
@@ -358,9 +299,41 @@ struct AlarmsView: View {
     @State private var items = AlarmItem.load()
     @State private var editing: AlarmItem?
     @State private var denied = false
+    @State private var quickMsg = ""
+    @State private var pickingEvent = false
+    @AppStorage(CalendarAlarm.leadKey) private var calLead = 15
 
     var body: some View {
         List {
+            // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
+            Section(L("alarm.quick")) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach([5, 10, 15, 20, 30, 45, 60], id: \.self) { m in
+                            Button(T("alarm.quickIn", m)) { quick(m) }
+                                .buttonStyle(.bordered)
+                                .tint(Theme.accent)
+                        }
+                    }
+                }
+                if !quickMsg.isEmpty { Text(quickMsg).font(.footnote).foregroundStyle(Theme.accent) }
+            }
+            // Takvimdeki etkinliğe alarm ve konuma bağlı hatırlatıcı (rakip analizi listesi #93)
+            Section {
+                Picker(L("alarm.calLead"), selection: $calLead) {
+                    ForEach(CalendarAlarm.leads, id: \.self) { m in
+                        Text(m == 0 ? L("alarm.calLead.zero") : T("alarm.preMin", m)).tag(m)
+                    }
+                }
+                Button("📅 " + L("alarm.fromCalendar")) { pickingEvent = true }
+                NavigationLink {
+                    GeoAlarmsView()
+                } label: {
+                    Label(L("geo.title"), systemImage: "mappin.and.ellipse")
+                }
+            } footer: {
+                Text(L("alarm.fromCalendarNote"))
+            }
             if items.isEmpty {
                 Text(L("tools.alarm.none")).foregroundStyle(Theme.muted)
             }
@@ -371,15 +344,31 @@ struct AlarmsView: View {
                             .font(.system(size: 40, weight: .light, design: .rounded))
                             .monospacedDigit()
                             .environment(\.layoutDirection, .leftToRight)
-                        Text(item.title + " · " + L("tools.alarm.\(item.repeats.rawValue)"))
+                        Text(item.title + " · " + item.repeatText)
                             .font(.subheadline)
                             .foregroundStyle(Theme.muted)
+                        if let skip = item.skipUntil, skip > Date(), let at = item.unskipped.next() {
+                            Text(T("alarm.skipped", Fmt.longDate(at)))
+                                .font(.caption)
+                                .foregroundStyle(Theme.accent)
+                        }
+                        if item.enabled, item.holidayShifted(), let at = item.next() {
+                            Text(T("alarm.holidayNext", Fmt.longDate(at)))
+                                .font(.caption)
+                                .foregroundStyle(Theme.muted)
+                        }
                     }
                     Spacer()
                     Toggle(L("tools.alarm.enable"), isOn: $item.enabled).labelsHidden()
                 }
                 .contentShape(Rectangle())
                 .onTapGesture { editing = item }
+                .swipeActions(edge: .leading) {
+                    if item.enabled { skipButton($item) }
+                }
+                .contextMenu {
+                    if item.enabled { skipButton($item) }
+                }
             }
             .onDelete { items.remove(atOffsets: $0) }
             Section {
@@ -399,6 +388,18 @@ struct AlarmsView: View {
                 .accessibilityLabel(L("tools.alarm.add"))
             }
         }
+        .sheet(isPresented: $pickingEvent) {
+            CalendarEventPicker { title, start, allDay in
+                if let item = CalendarAlarm.item(title: title, start: start, allDay: allDay, lead: calLead) {
+                    items.append(item)
+                    items.sort { ($0.hour, $0.minute) < ($1.hour, $1.minute) }
+                    quickMsg = T("alarm.quickSet", Fmt.longDate(start) + " " + Fmt.time(Calendar.current.date(bySettingHour: item.hour, minute: item.minute, second: 0, of: start) ?? start))
+                    BadgeStore.shared.hit(.alarm)
+                } else {
+                    quickMsg = L("alarm.fromCalendarPast")
+                }
+            }
+        }
         .sheet(item: $editing) { item in
             AlarmEditor(item: item) { saved in
                 if let i = items.firstIndex(where: { $0.id == saved.id }) { items[i] = saved } else { items.append(saved) }
@@ -412,7 +413,33 @@ struct AlarmsView: View {
                 await AlarmCenter.sync(items)
                 let allowed = await AlarmCenter.requestAccess()
                 denied = !allowed && items.contains { $0.enabled }
+                await PrayerNotifier.reschedule() // yaklaşan alarm bildirimleri
             }
+        }
+    }
+
+    private func quick(_ minutes: Int) {
+        let at = Date().addingTimeInterval(Double(minutes * 60))
+        let c = Calendar.current.dateComponents([.hour, .minute], from: at)
+        var item = AlarmItem(hour: c.hour ?? 0, minute: c.minute ?? 0)
+        item.label = T("alarm.quickIn", minutes)
+        item.preNotify = 0
+        items.append(item)
+        items.sort { ($0.hour, $0.minute) < ($1.hour, $1.minute) }
+        quickMsg = T("alarm.quickSet", Fmt.time(at))
+        BadgeStore.shared.hit(.alarm)
+    }
+}
+
+extension AlarmsView {
+    /// "Sonraki alarmı atla" ya da geri al
+    @ViewBuilder fileprivate func skipButton(_ item: Binding<AlarmItem>) -> some View {
+        let now = Date()
+        if let skip = item.wrappedValue.skipUntil, skip > now {
+            Button { item.wrappedValue.skipUntil = nil } label: { Label(L("alarm.unskip"), systemImage: "arrow.uturn.backward") }
+        } else if let next = item.wrappedValue.unskipped.next(after: now) {
+            Button { item.wrappedValue.skipUntil = next.addingTimeInterval(60) } label: { Label(L("alarm.skip"), systemImage: "forward.end") }
+                .tint(Theme.accent)
         }
     }
 }
@@ -422,6 +449,8 @@ private struct AlarmEditor: View {
     @State var item: AlarmItem
     let onSave: (AlarmItem) -> Void
     @State private var time = Date()
+    @State private var scanning = false
+    @State private var shootingRef = false
 
     var body: some View {
         NavigationStack {
@@ -431,11 +460,164 @@ private struct AlarmEditor: View {
                     .labelsHidden()
                     .frame(maxWidth: .infinity)
                 TextField(L("tools.alarm.labelPlaceholder"), text: $item.label)
-                Picker(L("tools.alarm.repeatLabel"), selection: $item.repeats) {
-                    ForEach(AlarmItem.Repeat.allCases, id: \.self) { Text(L("tools.alarm.\($0.rawValue)")).tag($0) }
+                Section(L("alarm.days")) {
+                    // Pazartesiden pazara yedi düğme; hiçbiri seçili değilse bir kez çalar
+                    HStack(spacing: 6) {
+                        ForEach(1...7, id: \.self) { d in
+                            let on = item.days.contains(d)
+                            Button {
+                                if on { item.days.removeAll { $0 == d } } else { item.days.append(d); item.days.sort() }
+                            } label: {
+                                Text(L("tools.alarm.dayNames.\(d - 1)"))
+                                    .font(.footnote.weight(.semibold))
+                                    .frame(maxWidth: .infinity, minHeight: 36)
+                                    .background(on ? Theme.accent : Theme.surface2, in: Capsule())
+                                    .foregroundStyle(on ? Color.white : Theme.text)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityAddTraits(on ? .isSelected : [])
+                        }
+                    }
+                    .environment(\.layoutDirection, .leftToRight)
+                    // Esnek tekrar: belirli tarih (bir kezlik), iki haftada bir ve bitiş tarihi (tekrarlayan)
+                    if item.days.isEmpty {
+                        Toggle(L("alarm.onDate"), isOn: Binding(get: { !item.date.isEmpty }, set: { on in
+                            item.date = on ? CalendarDay(Date()).adding(days: 1).iso : ""
+                        }))
+                        if let d = CalendarDay(iso: item.date) {
+                            DatePicker(L("alarm.date"), selection: Binding(get: { d.noon(in: .current) }, set: { item.date = CalendarDay($0).iso }),
+                                       in: Calendar.current.startOfDay(for: Date())..., displayedComponents: .date)
+                        }
+                    } else {
+                        Toggle(L("alarm.biweekly"), isOn: Binding(get: { item.every > 1 }, set: { on in
+                            item.every = on ? 2 : 1
+                            if on && item.anchor.isEmpty { let t = CalendarDay(Date()); item.anchor = t.adding(days: -t.weekday).iso }
+                        }))
+                        Toggle(L("alarm.untilToggle"), isOn: Binding(get: { !item.until.isEmpty }, set: { on in
+                            item.until = on ? CalendarDay(Date()).adding(days: 30).iso : ""
+                        }))
+                        if let u = CalendarDay(iso: item.until) {
+                            DatePicker(L("alarm.until"), selection: Binding(get: { u.noon(in: .current) }, set: { item.until = CalendarDay($0).iso }),
+                                       in: Calendar.current.startOfDay(for: Date())..., displayedComponents: .date)
+                        }
+                    }
+                    Text(item.repeatText).font(.footnote).foregroundStyle(Theme.muted)
+                }
+                Section {
+                    Picker(L("alarm.snooze"), selection: $item.snooze) {
+                        ForEach(AlarmItem.snoozeChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)).tag(m)
+                        }
+                    }
+                    if item.snooze > 0 {
+                        Picker(L("alarm.snoozeMax"), selection: $item.snoozeMax) {
+                            ForEach(AlarmItem.snoozeMaxChoices, id: \.self) { n in
+                                Text(n == 0 ? L("alarm.snoozeMax.none") : T("alarm.snoozeMax.n", n)).tag(n)
+                            }
+                        }
+                    }
+                }
+                AlarmMusicSection(item: $item)
+                Section {
+                    Toggle(L("alarm.rise"), isOn: $item.rise)
+                        .tint(Theme.accent)
+                } footer: {
+                    Text(L("alarm.riseNoteIOS"))
+                }
+                // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
+                Section {
+                    Toggle(L("alarm.speak"), isOn: $item.speak)
+                        .tint(Theme.accent)
+                } footer: {
+                    Text(L("alarm.speakNoteIOS"))
+                }
+                Section {
+                    Picker(L("alarm.pre"), selection: $item.preNotify) {
+                        ForEach(AlarmItem.preNotifyChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                        }
+                    }
+                } footer: {
+                    Text(L("alarm.preNote"))
+                }
+                // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
+                Section {
+                    Picker(L("alarm.smart"), selection: $item.smart) {
+                        ForEach(AlarmItem.smartChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.smartMin", m)).tag(m)
+                        }
+                    }
+                } footer: {
+                    Text(L("alarm.smart.note"))
+                }
+                // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
+                Section {
+                    Picker(L("alarm.sunrise"), selection: $item.sunrise) {
+                        ForEach(AlarmItem.sunriseChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.sunriseMin", m)).tag(m)
+                        }
+                    }
+                } footer: {
+                    Text(L("alarm.sunriseNote"))
+                }
+                // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
+                Section {
+                    Picker(L("alarm.task"), selection: $item.task) {
+                        ForEach(WakeTask.kinds, id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                    }
+                    if item.task == "math" || item.task == "memory" {
+                        Picker(L("alarm.task.level"), selection: $item.taskLevel) {
+                            ForEach(1...3, id: \.self) { n in Text(L("alarm.task.level.\(n)")).tag(n) }
+                        }
+                    }
+                    if item.task == "code" {
+                        if CodeScannerView.available {
+                            Button(L(item.code.isEmpty ? "alarm.code.save" : "alarm.code.change")) { scanning = true }
+                        } else {
+                            Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        Text(L(item.code.isEmpty ? "alarm.code.missing" : "alarm.code.saved")).font(.footnote).foregroundStyle(Theme.muted)
+                        Text(L("alarm.code.hint")).font(.footnote).foregroundStyle(Theme.muted)
+                    }
+                    if item.task == "photo" {
+                        if CameraShot.available {
+                            Button(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.change" : "alarm.photo.save")) { shootingRef = true }
+                        } else {
+                            Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        Text(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.saved" : "alarm.photo.missing")).font(.footnote).foregroundStyle(Theme.muted)
+                    }
+                    Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
+                } header: {
+                    Text(L("alarm.task.heading"))
+                } footer: {
+                    Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note"))
+                }
+                // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
+                if !item.days.isEmpty {
+                    Section {
+                        Toggle(L("alarm.skipHolidays"), isOn: $item.skipHolidays)
+                            .tint(Theme.accent)
+                    } footer: {
+                        Text(L("alarm.skipHolidaysNote"))
+                    }
                 }
             }
             .themedBackground()
+            .sheet(isPresented: $scanning) {
+                CodeScannerView { value in
+                    item.code = value
+                    scanning = false
+                }
+                .ignoresSafeArea()
+            }
+            .fullScreenCover(isPresented: $shootingRef) {
+                CameraShot { img in
+                    shootingRef = false
+                    if let img, let h = PhotoHash.of(img) { item.code = PhotoHash.encode(h) }
+                }
+                .ignoresSafeArea()
+            }
             .navigationTitle(L("alarm.new"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -446,6 +628,8 @@ private struct AlarmEditor: View {
                         item.hour = c.hour ?? 0
                         item.minute = c.minute ?? 0
                         item.enabled = true
+                        item.skipUntil = nil
+                        if item.days.isEmpty { item.skipHolidays = false }
                         onSave(item)
                         dismiss()
                     }
@@ -484,6 +668,14 @@ struct PomodoroView: View {
     @AppStorage("pomo.left") private var left = 0.0
     @AppStorage("pomo.done") private var done = 0
     @AppStorage("pomo.id") private var alarmID = ""
+    // Görev adı, istatistik ve arka plan sesi (rakip analizi #16; sitedeki pomodoroyla aynı)
+    @AppStorage("pomo.task") private var task = ""
+    @AppStorage("pomo.noise") private var noise = "off"
+    @AppStorage("pomo.vol") private var volume = 40
+    // Günlük hedef ve etiket (rakip analizi #27)
+    @AppStorage("pomo.goal") private var goal = 4
+    @AppStorage("pomo.tag") private var tag = "none"
+    @State private var log = PomoLog.load()
 
     private var phaseSeconds: Double { Double((phase == "work" ? workMin : phase == "short" ? shortMin : longMin) * 60) }
     private var running: Bool { end > 0 }
@@ -514,21 +706,49 @@ struct PomodoroView: View {
                         }
                     }
                     Text(T("tools.pomodoro.completed", done)).font(.footnote).foregroundStyle(Theme.muted)
+                    let todayCount = log.filter { $0.d == BadgeStore.day(context.date) }.count
+                    Text(todayCount >= goal ? L("tools.pomodoro.goalDone") + " · " + T("tools.pomodoro.goalProgress", todayCount, goal)
+                         : T("tools.pomodoro.goalProgress", todayCount, goal))
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(todayCount >= goal ? Theme.accent : Theme.muted)
                     Button(L("tools.pomodoro.reset")) {
                         cancelAlarm()
                         end = 0; left = 0; phase = "work"; round = 1; done = 0
                     }
                     .tint(Theme.accent)
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(L("tools.pomodoro.taskLabel")).font(.subheadline).foregroundStyle(Theme.muted)
+                        TextField(L("tools.pomodoro.taskPlaceholder"), text: Binding(get: { task }, set: { task = String($0.prefix(60)) }))
+                            .textFieldStyle(.roundedBorder)
+                            .submitLabel(.done)
+                        Picker(L("tools.pomodoro.tagLabel"), selection: $tag) {
+                            ForEach(PomoLog.tags, id: \.self) { Text(L("tools.pomodoro.tags.\($0)")).tag($0) }
+                        }
+                        .pickerStyle(.segmented)
+                    }
+                    PomoTodoCard(current: $task).id(log.count) // tur bitince sayaçlar yeniden okunur
+                    VStack(alignment: .leading, spacing: 8) {
+                        SectionTitle(text: L("tools.pomodoro.noise"))
+                        NoiseControls(kind: $noise, volume: $volume)
+                        Text(L("pomo.noiseNote")).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                    .card()
+                    FocusBlockCard()
+                    FocusStatsCard(log: log) {
+                        PomoLog.save([])
+                        log = []
+                    }
                     Form {
                         Section(L("tools.pomodoro.settings")) {
                             Stepper("\(L("tools.pomodoro.workMin")): \(workMin)", value: $workMin, in: 5...90, step: 5)
                             Stepper("\(L("tools.pomodoro.shortMin")): \(shortMin)", value: $shortMin, in: 1...30)
                             Stepper("\(L("tools.pomodoro.longMin")): \(longMin)", value: $longMin, in: 5...60, step: 5)
                             Stepper("\(L("tools.pomodoro.roundsLabel")): \(rounds)", value: $rounds, in: 2...8)
+                            Stepper("\(L("tools.pomodoro.goalLabel")): \(goal)", value: $goal, in: 1...24)
                         }
                     }
                     .themedBackground()
-                    .frame(height: 280)
+                    .frame(height: 330)
                     .scrollDisabled(true)
                 }
                 .padding(.horizontal, 20)
@@ -538,6 +758,12 @@ struct PomodoroView: View {
             }
         }
         .background(Theme.bg.ignoresSafeArea())
+        // Kilit ekranı / Dynamic Island: çalışan pomodoro aşaması; arka plan sesi çalışma süresince
+        .onChange(of: end) { LiveActivities.sync(); PomoNoise.sync(); FocusBlock.sync() }
+        .onChange(of: phase) { PomoNoise.sync(); FocusBlock.sync() }
+        .onChange(of: noise) { PomoNoise.sync() }
+        .onChange(of: volume) { if NoisePlayer.shared.source == "pomo" { NoisePlayer.shared.setVolume(volume) } }
+        .onAppear { log = PomoLog.load(); PomoNoise.sync() }
         .navigationTitle(L("tools.hub.cards.pomodoro.name"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -564,6 +790,10 @@ struct PomodoroView: View {
             if completed {
                 done += 1
                 BadgeStore.shared.hit(.pomodoro) // çalışma süresi sonuna kadar tamamlandı
+                // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
+                PomoLog.record(minutes: workMin, task: task, tag: tag, at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
+                PomoTodo.save(PomoTodo.credit(PomoTodo.load(), task: task))
+                log = PomoLog.load()
             }
             phase = round >= rounds ? "long" : "short"
         } else {
@@ -584,6 +814,10 @@ struct DateCalcView: View {
     @State private var amount = 30
     @State private var unit = "days"
     @State private var birth = Calendar.current.date(byAdding: .year, value: -30, to: Date()) ?? Date()
+    @State private var hijriFrom = Date()
+    @State private var hYear = Hijri.date(Date())?.year ?? 1448
+    @State private var hMonth = Hijri.date(Date())?.month ?? 1
+    @State private var hDay = Hijri.date(Date())?.day ?? 1
 
     private let off = CalendarData.shared.offDays
 
@@ -602,6 +836,29 @@ struct DateCalcView: View {
                 Text(T("datecalc.diffYmd", r.years, r.months, r.days))
                 Text(T("datecalc.diffWork", workText(DateCalc.workdays(from: a, to: b, offDays: off))))
                 Text(L("datecalc.diffNote")).font(.footnote).foregroundStyle(Theme.muted)
+            }
+            // Hicri–miladi çevirici (rakip analizi #13): Diyanet tablosu, dışında Umm al-Qura
+            Section(L("hijriConv.h1")) {
+                DatePicker(L("hijriConv.gregLabel"), selection: $hijriFrom, displayedComponents: .date)
+                let c = Calendar.current.dateComponents([.year, .month, .day], from: hijriFrom)
+                if let r = Hijri.convert(year: c.year ?? 2026, month: c.month ?? 1, day: c.day ?? 1) {
+                    Text(r.date.text).font(.headline)
+                    if r.outside { Text(L("hijriConv.outsideApp")).font(.footnote).foregroundStyle(Theme.muted) }
+                }
+                Stepper("\(L("hijriConv.yearLabel")): \(hYear)", value: $hYear, in: 1300...1600)
+                Picker(L("hijriConv.monthLabel"), selection: $hMonth) {
+                    ForEach(1...12, id: \.self) { Text(L("hijri.month.\($0)")).tag($0) }
+                }
+                Stepper("\(L("hijriConv.dayLabel")): \(hDay)", value: $hDay, in: 1...30)
+                switch Hijri.gregorian(year: hYear, month: hMonth, day: hDay) {
+                case let .date(y, m, d, outside):
+                    Text(Fmt.longDate(CalendarDay(y, m, d).noon(in: .current))).font(.headline)
+                    if outside { Text(L("hijriConv.outsideApp")).font(.footnote).foregroundStyle(Theme.muted) }
+                case let .tooLong(n):
+                    Text(T("hijriConv.dayMax", n)).foregroundStyle(Theme.muted)
+                case .none:
+                    Text("–")
+                }
             }
             Section(L("datecalc.addHeading")) {
                 DatePicker(L("datecalc.startLabel"), selection: $base, displayedComponents: .date)

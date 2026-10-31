@@ -22,12 +22,12 @@ xcrun simctl install "$UDID" "$APP"
 xcrun simctl ui "$UDID" appearance dark
 
 # Isınma: ilk açılışta harita ve gölgelendiriciler hazırlanırken kayıt kesik çıkıyordu (ilk video 12 sn)
-xcrun simctl launch "$UDID" "$BUNDLE" -openScreen globe
+xcrun simctl launch "$UDID" "$BUNDLE" -notify.asked "<true/>" -openScreen globe
 sleep 25
 
 record() { # dil bölge klasör → onizleme-<klasör>.mp4; en az 16 sn değilse false
   xcrun simctl terminate "$UDID" "$BUNDLE" 2>/dev/null || true
-  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -openScreen globe
+  SIMCTL_CHILD_TZ=Europe/Istanbul xcrun simctl launch "$UDID" "$BUNDLE" -AppleLanguages "($1)" -AppleLocale "$2" -notify.asked "<true/>" -openScreen globe
   sleep 12 # harita görüntüleri yüklensin
   RAW="$OUT/ham-$3.mov"
   xcrun simctl io "$UDID" recordVideo --codec=h264 --force "$RAW" &

@@ -54,6 +54,10 @@ struct CalendarTab: View {
                     Button(L("client.today")) { go(to: today) }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink { CalendarLeafView() } label: { Image(systemName: "doc.text.image") }
+                        .accessibilityLabel(L("leaf.title"))
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Button { adding = AddRequest(day: selected) } label: { Image(systemName: "plus") }
                         .accessibilityLabel(L("calendar.add"))
                 }
@@ -107,7 +111,9 @@ struct CalendarTab: View {
             Text(L("calendar.months.\(month.month - 1)"))
                 .font(.largeTitle.weight(.bold))
                 .foregroundStyle(Theme.text)
+                .lineLimit(1).minimumScaleFactor(0.6)
             Text(String(month.year))
+                .lineLimit(1).fixedSize()
                 .font(.title2.weight(.semibold))
                 .foregroundStyle(Theme.accent)
             Spacer()
@@ -205,6 +211,12 @@ struct CalendarTab: View {
                         .joined(separator: " · "))
                     .font(.caption)
                     .foregroundStyle(Theme.muted)
+                // Hicri tarih (Diyanet takvimi)
+                if let h = Hijri.date(year: selected.year, month: selected.month, day: selected.day) {
+                    Label(h.text, systemImage: "moon")
+                        .font(.caption)
+                        .foregroundStyle(Theme.accent)
+                }
             }
             .textCase(nil)
             .padding(.vertical, 4)
@@ -222,6 +234,7 @@ struct CalendarTab: View {
                 if let y = data.years[month.year], y.projected {
                     Text(L("calendar.projected")).font(.footnote).foregroundStyle(Theme.muted)
                 }
+                Text(L("hijri.note")).font(.footnote).foregroundStyle(Theme.muted)
             }
             .padding(.top, 8)
         }

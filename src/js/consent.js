@@ -1,6 +1,6 @@
 /* Çerez onayı (Bumba standardı madde 14): ilk ziyarette bant, tercihler penceresi, Umami yalnız istatistik izniyle.
    Seçim `bumba-cerez` anahtarında: {"surum":"2026-10-21","istatistik":bool,"dis":bool}. "dis": dış hizmetler
-   (Open-Meteo hava durumu), varsayılan kapalı. main.js'ten önce çalışır. */
+   (Open-Meteo hava durumu, OSM harita karoları ve Overpass camileri, alarmdaki YouTube müziği), varsayılan kapalı. main.js'ten önce çalışır. */
 (function () {
   "use strict";
   var doc = document;

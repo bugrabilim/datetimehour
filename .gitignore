@@ -6,3 +6,6 @@ dist/
 # fastlane çıktıları (ekran görüntüleri CI'da üretilir)
 mobile/ios/fastlane/screenshots/
 mobile/ios/fastlane/report.xml
+
+# Tarayıcı eklentisi paketi (node scripts/build-extension.mjs --zip)
+dist-extension/

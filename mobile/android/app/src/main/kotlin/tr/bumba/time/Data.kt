@@ -12,14 +12,35 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 /** 81 il (sitedeki src/data/provinces.json) */
-data class Province(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String) {
-    val displayName: String get() = if (Strings.lang == "ar") ar else name
+data class Province(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String, val local: Map<String, String> = emptyMap()) {
+    /** Arapça, Rusça ve Farsçada kendi yazısıyla; diğer dillerde Türkçe yazım */
+    /** Arapçada Arapça ad; Rusça, Farsça, Japonca, Korece, Çince ve Taycada o dildeki ad (provinces.json), diğerlerinde Türkçe ad */
+    val displayName: String get() = if (Strings.lang == "ar") ar else local[Strings.lang]?.ifEmpty { null } ?: name
 
     companion object {
         val all: List<Province> get() = AppData.provinces
         fun find(slug: String): Province = all.firstOrNull { it.slug == slug } ?: all.first { it.slug == "istanbul" }
         fun nearest(lat: Double, lon: Double): Pair<Province, Double> =
             all.map { it to km(it.lat, it.lon, lat, lon) }.minBy { it.second }
+    }
+}
+
+/** İlçe (src/data/districts.json, GeoNames CC BY 4.0): ad, ilçe merkezinin koordinatı, bağlı olduğu il */
+data class District(val name: String, val lat: Double, val lon: Double, val province: String) {
+    val id: String get() = "d:$province:$name"
+    /** İl merkezi ilçesi (adı ilin adı; "Hakkâri" / "Hakkari" gibi şapkalı yazımlar da) */
+    val isCentre: Boolean get() = fold(name) == fold(Province.find(province).name)
+    val label: String get() = if (isCentre) Province.find(province).displayName else "$name, ${Province.find(province).displayName}"
+
+    companion object {
+        fun all(province: String): List<District> = AppData.districts[province].orEmpty()
+        fun find(id: String): District? {
+            val parts = id.split(":", limit = 3)
+            if (parts.size != 3 || parts[0] != "d") return null
+            return all(parts[1]).firstOrNull { it.name == parts[2] }
+        }
+        fun fold(s: String) = java.text.Normalizer.normalize(s.lowercase(java.util.Locale.ROOT), java.text.Normalizer.Form.NFD)
+            .replace(Regex("\\p{M}"), "").replace("ı", "i")
     }
 }
 
@@ -35,6 +56,20 @@ data class City(
     val displayName: String get() = names[Strings.lang] ?: names["en"] ?: key
     val displayCountry: String get() = countries[Strings.lang] ?: countries["en"] ?: ""
     val zone: ZoneId get() = ZoneId.of(tz)
+
+    /** Sıradaki saat değişimi (`days` gün içindeyse): an ve fark (sn; ileri pozitif) — rakip analizi #30 */
+    fun nextDst(now: java.time.Instant, days: Long = 7): Pair<java.time.Instant, Int>? {
+        val tr = zone.rules.nextTransition(now) ?: return null
+        if (tr.instant.isAfter(now.plusSeconds(days * 86400))) return null
+        val delta = tr.offsetAfter.totalSeconds - tr.offsetBefore.totalSeconds
+        return if (delta == 0) null else tr.instant to delta
+    }
+
+    /** "2 Kasım: saatler 1 sa geri alınıyor" (şehrin yerel tarihiyle) */
+    fun dstNote(now: java.time.Instant, days: Long = 7): String? {
+        val (at, delta) = nextDst(now, days) ?: return null
+        return T(if (delta > 0) "world.dstForward" else "world.dstBack", Fmt.dayMonth(at.atZone(zone).toLocalDate()), Fmt.hm(kotlin.math.abs(delta)))
+    }
 
     companion object {
         val all: List<City> get() = AppData.cities
@@ -53,6 +88,9 @@ object AppData {
         private set
     lateinit var cities: List<City>
         private set
+    /** İl → ilçeleri (ada göre sıralı) */
+    lateinit var districts: Map<String, List<District>>
+        private set
     /** Gün → o günün olayları (birden çok güne yayılanlar her günde) */
     lateinit var events: Map<LocalDate, List<CalEvent>>
         private set
@@ -69,7 +107,13 @@ object AppData {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"))
+            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), listOf("ru", "fa", "ja", "ko", "zh", "th").associateWith { o.optString(it) })
+        }
+
+        val dj = JSONObject(read("districts.json"))
+        districts = dj.keys().asSequence().associateWith { slug ->
+            val arr = dj.getJSONArray(slug)
+            (0 until arr.length()).map { i -> arr.getJSONArray(i).let { District(it.getString(0), it.getDouble(1), it.getDouble(2), slug) } }
         }
 
         val ci = JSONArray(read("cities.json"))
@@ -78,6 +122,9 @@ object AppData {
             City(o.getString("key"), o.getString("tz"), o.getDouble("lat"), o.getDouble("lon"),
                  o.getJSONObject("name").toMap(), o.getJSONObject("country").toMap())
         }
+
+        Hijri.load(read("hijri.json"))
+        Fitre.load(read("fitre.json"))
 
         val cal = JSONObject(read("calendar.json"))
         val years = cal.getJSONObject("years")

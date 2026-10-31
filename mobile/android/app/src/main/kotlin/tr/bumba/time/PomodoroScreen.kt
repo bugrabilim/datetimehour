@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -15,6 +18,9 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -51,11 +57,22 @@ fun PomodoroScreen() {
     var left by remember { mutableLongStateOf(ToolState.long("pomo.left")) }
     var done by remember { mutableIntStateOf(ToolState.int("pomo.done", 0)) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    // Görev adı, istatistik ve arka plan sesi (rakip analizi #16; sitedeki pomodoroyla aynı)
+    var task by remember { mutableStateOf(ToolState.str("pomo.task")) }
+    var noise by remember { mutableStateOf(ToolState.str("pomo.noise", "off")) }
+    var volume by remember { mutableIntStateOf(ToolState.int("pomo.vol", 40)) }
+    var log by remember { mutableStateOf(PomoLog.load()) }
+    // Günlük hedef ve etiket (rakip analizi #27)
+    var goal by remember { mutableIntStateOf(ToolState.int("pomo.goal", 4)) }
+    var tag by remember { mutableStateOf(ToolState.str("pomo.tag", "none")) }
 
     fun phaseMs() = (when (phase) { "work" -> workMin; "short" -> shortMin; else -> longMin }) * 60_000L
     fun persist() {
         ToolState.putStr("pomo.phase", phase); ToolState.putInt("pomo.round", round); ToolState.putLong("pomo.end", end)
         ToolState.putLong("pomo.left", left); ToolState.putInt("pomo.done", done)
+        PomoNoise.sync(context)
+        LiveNotifications.sync(context)
+        FocusBlock.sync(context)
     }
     fun start(ms: Long) {
         ask()
@@ -73,6 +90,10 @@ fun PomodoroScreen() {
             if (completed) {
                 done += 1
                 BadgeStore.hit(Badge.POMODORO) // çalışma süresi sonuna kadar tamamlandı
+                // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
+                PomoLog.record(workMin, task, if (end > 0) end else System.currentTimeMillis(), tag)
+                PomoTodo.save(PomoTodo.credit(PomoTodo.load(), task))
+                log = PomoLog.load()
             }
             phase = if (round >= rounds) "long" else "short"
         } else {
@@ -121,17 +142,47 @@ fun PomodoroScreen() {
             }
         }
         Text(T("tools.pomodoro.completed", done), color = Theme.c.muted, fontSize = 13.sp)
+        val todayCount = log.count { it.d == java.time.LocalDate.now().toString() }
+        Text(if (todayCount >= goal) L("tools.pomodoro.goalDone") + " · " + T("tools.pomodoro.goalProgress", todayCount, goal)
+            else T("tools.pomodoro.goalProgress", todayCount, goal),
+            color = if (todayCount >= goal) Theme.c.accent else Theme.c.muted, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
         TextButton(onClick = {
             AlarmScheduler.cancel(context, AlarmScheduler.POMODORO)
             end = 0; left = 0; phase = "work"; round = 1; done = 0
             persist()
         }) { Text(L("tools.pomodoro.reset"), color = Theme.c.accent) }
+        OutlinedTextField(task, { task = it.take(60); ToolState.putStr("pomo.task", task) }, Modifier.fillMaxWidth(),
+            label = { Text(L("tools.pomodoro.taskLabel")) }, placeholder = { Text(L("tools.pomodoro.taskPlaceholder")) },
+            singleLine = true, keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done))
+        // Etiket
+        androidx.compose.foundation.layout.Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            for (k in PomoLog.TAGS) {
+                val on = k == tag
+                androidx.compose.foundation.layout.Box(
+                    Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, androidx.compose.foundation.shape.RoundedCornerShape(50))
+                        .clickable { tag = k; ToolState.putStr("pomo.tag", k) }.padding(horizontal = 14.dp, vertical = 8.dp),
+                ) { Text(L("tools.pomodoro.tags.$k"), color = if (on) Theme.c.bg else Theme.c.text, fontSize = 14.sp) }
+            }
+        }
+        // Tur bitince sayaçlar yeniden okunsun (geçmiş uzayınca kart yenilenir)
+        androidx.compose.runtime.key(log.size) { PomoTodoCard(task) { task = it; ToolState.putStr("pomo.task", it) } }
+        AppCard {
+            SectionTitle(L("tools.pomodoro.noise"))
+            NoiseControls(noise, volume,
+                onKind = { noise = it; ToolState.putStr("pomo.noise", it); PomoNoise.sync(context) },
+                onVolume = { volume = it; ToolState.putInt("pomo.vol", it); if (SoundService.source == "pomo") PomoNoise.sync(context) })
+            Text(L("pomo.noiseNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        FocusBlockCard()
+        FocusStatsCard(log) { PomoLog.save(emptyList()); log = emptyList() }
         AppCard {
             SectionTitle(L("tools.pomodoro.settings"))
             Stepper(L("tools.pomodoro.workMin"), workMin, 5..90, 5) { workMin = it; ToolState.putInt("pomo.work", it) }
             Stepper(L("tools.pomodoro.shortMin"), shortMin, 1..30, 1) { shortMin = it; ToolState.putInt("pomo.short", it) }
             Stepper(L("tools.pomodoro.longMin"), longMin, 5..60, 5) { longMin = it; ToolState.putInt("pomo.long", it) }
             Stepper(L("tools.pomodoro.roundsLabel"), rounds, 2..8, 1) { rounds = it; ToolState.putInt("pomo.rounds", it) }
+            Stepper(L("tools.pomodoro.goalLabel"), goal, 1..24, 1) { goal = it; ToolState.putInt("pomo.goal", it) }
         }
         Spacer(Modifier.height(8.dp))
     }

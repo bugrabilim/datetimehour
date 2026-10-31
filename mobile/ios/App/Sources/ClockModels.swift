@@ -2,7 +2,7 @@ import SwiftUI
 import WeatherKit
 import SaatCore
 
-/// Sitedeki saat sahnesinin 19 modeli (build.mjs STAGE_ORDER, aynı sıra ve kimlikler). Adlar sitedeki
+/// Sitedeki saat sahnesinin 20 modeli (build.mjs STAGE_ORDER, aynı sıra ve kimlikler). Adlar sitedeki
 /// `stage.models.<kimlik>` metinleri. Hava durumlu modeller (wx) seçili konumun havasını WeatherKit'ten alır.
 enum ClockModel: String, CaseIterable, Identifiable {
     case classic // 1. sırada: varsayılan saniyeli rakamlı analog (30 Ekim 2026, sahibin isteği)
@@ -12,6 +12,7 @@ enum ClockModel: String, CaseIterable, Identifiable {
     case hClassic = "h-classic", hAnalogDate = "h-analog-date", hStack = "h-stack"
     case hWxAnalog = "h-wx-analog", hWxStack = "h-wx-stack", hWxAnalogDate = "h-wx-analog-date", hWxFull = "h-wx-full"
     case digital, digitalDate = "digital-date", wxDigital = "wx-digital", wxDigitalCal = "wx-digital-cal"
+    case flip // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5)
 
     var id: String { rawValue }
     var name: String { L("stage.models.\(rawValue)") }
@@ -91,6 +92,11 @@ struct ClockModelView: View {
                         }
                         .frame(width: w * 0.42)
                         MonthPart(now: now, width: w * 0.54)
+                    }
+                case .flip:
+                    VStack(spacing: s * 0.05) {
+                        FlipPart(now: now, width: w * 0.92, height: h * 0.55)
+                        DatePart(now: now, size: s * 0.065)
                     }
                 case .wxDigitalCalWeek:
                     VStack(spacing: s * 0.03) {
@@ -179,11 +185,12 @@ private struct DigitalPart: View {
     let size: CGFloat
     @AppStorage("secD") private var seconds = true
     @AppStorage("h12") private var h12 = false
+    @AppStorage("clockFont") private var clockFont = ClockFont.rounded.rawValue
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: size * 0.08) {
             Text(Fmt.time(now, seconds: seconds))
-                .font(.system(size: size, weight: .bold, design: .rounded))
+                .font((ClockFont(rawValue: clockFont) ?? .rounded).font(size))
                 .monospacedDigit()
                 .foregroundStyle(Theme.ink)
             if h12 {
@@ -197,6 +204,75 @@ private struct DigitalPart: View {
         .onTapGesture {
             seconds.toggle()
             BadgeStore.shared.hit(.saniye)
+        }
+    }
+}
+
+/// Çevirmeli saat: her rakam bir kart, değişince kart yukarıdan aşağı döner (hareketi azalt tercihinde dönmez).
+/// Dokununca dijital saniye açılır/kapanır (sitedeki gibi dijital sayılır).
+private struct FlipPart: View {
+    let now: Date
+    let width: CGFloat
+    let height: CGFloat
+    @AppStorage("secD") private var seconds = true
+    @AppStorage("h12") private var h12 = false
+
+    var body: some View {
+        let c = Calendar.current.dateComponents([.hour, .minute, .second], from: now)
+        let hour = h12 ? ((c.hour ?? 0) % 12 == 0 ? 12 : (c.hour ?? 0) % 12) : (c.hour ?? 0)
+        let groups = [hour, c.minute ?? 0] + (seconds ? [c.second ?? 0] : [])
+        // Kart boyu: genişliğe (grup aralıklarıyla) ve yüksekliğe göre
+        let n = CGFloat(groups.count * 2)
+        let cardW = min(width / (n + CGFloat(groups.count - 1) * 0.35 + n * 0.08), height / 1.4)
+        HStack(spacing: cardW * 0.35) {
+            ForEach(Array(groups.enumerated()), id: \.offset) { _, v in
+                HStack(spacing: cardW * 0.08) {
+                    FlipCard(digit: v / 10, width: cardW)
+                    FlipCard(digit: v % 10, width: cardW)
+                }
+            }
+            if h12 {
+                Text(Fmt.ampm(now)).font(.system(size: cardW * 0.32, weight: .bold)).foregroundStyle(Theme.muted)
+            }
+        }
+        .environment(\.layoutDirection, .leftToRight)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            seconds.toggle()
+            BadgeStore.shared.hit(.saniye)
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Fmt.time(now, seconds: seconds))
+    }
+}
+
+private struct FlipCard: View {
+    let digit: Int
+    let width: CGFloat
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var angle: Double = 0
+
+    var body: some View {
+        let h = width * 1.4
+        ZStack {
+            RoundedRectangle(cornerRadius: width * 0.12)
+                .fill(Theme.surface2)
+                .overlay(RoundedRectangle(cornerRadius: width * 0.12).stroke(Theme.border, lineWidth: 1))
+                .shadow(color: .black.opacity(0.12), radius: width * 0.06, y: width * 0.03)
+            Text("\(digit)")
+                .font(ClockFont.current.font(width * 1.0))
+                .monospacedDigit()
+                .foregroundStyle(Theme.ink)
+                .rotation3DEffect(.degrees(angle), axis: (x: 1, y: 0, z: 0), perspective: 0.5)
+                .opacity(angle == 0 ? 1 : 0.4)
+            // Ortadaki ayrım çizgisi
+            Rectangle().fill(Theme.bg).frame(height: max(1, width * 0.03))
+        }
+        .frame(width: width, height: h)
+        .onChange(of: digit) {
+            guard !reduceMotion else { return }
+            angle = -80
+            withAnimation(.easeOut(duration: 0.3)) { angle = 0 }
         }
     }
 }

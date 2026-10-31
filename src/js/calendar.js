@@ -5,6 +5,8 @@
   var S = window.sth;
   if (!S) return;
   var doc = document;
+  // Yazdır / PDF olarak kaydet (30 Ekim 2026): tarayıcının yazdırma penceresi; düzen styles.css @media print
+  doc.addEventListener("click", function (e) { if (e.target.closest && e.target.closest("[data-print]")) window.print(); });
 
   function dayStart(d) { return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
   function parse(s) { var p = s.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }

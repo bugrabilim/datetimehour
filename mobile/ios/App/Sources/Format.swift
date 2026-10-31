@@ -4,9 +4,14 @@ import SaatCore
 
 /// Uygulamanın görünen dili (tarih ve sayı biçimleri bununla; cihazın bölge ayarı farklı olabilir)
 enum AppLocale {
-    static let code = Bundle.main.preferredLocalizations.first ?? "tr"
-    static let locale = Locale(identifier: code)
-    static var isRTL: Bool { code == "ar" }
+    /// Dil kodu: veri dosyalarındaki adlarla aynı (Basitleştirilmiş Çince "zh-Hans" yerelleştirmesi "zh")
+    static let code: String = { let c = Bundle.main.preferredLocalizations.first ?? "tr"; return c.hasPrefix("zh") ? "zh" : c }()
+    /// Biçim yerel ayarı: Çincede Basitleştirilmiş; Taycada Gregoryen takvim (Tay yerel ayarının varsayılanı Budist takvimi)
+    static let locale = Locale(identifier: code == "zh" ? "zh-Hans" : code == "th" ? "th_TH@calendar=gregorian" : code)
+    /// Sağdan sola yazılan diller
+    static var isRTL: Bool { ["ar", "ur", "fa"].contains(code) }
+    /// Sayı biçimi: sağdan sola dillerde (Arapça/Farsça rakam yerine) Latin rakamı için ABD biçimi
+    static var numberLocale: Locale { isRTL ? Locale(identifier: "en_US_POSIX") : locale }
     /// Tarihler her dilde Gregoryen takvimle (Arapça bölge ayarı Hicrî takvim seçebilir; site de Gregoryen kullanır)
     static let gregorian = Calendar(identifier: .gregorian)
 }
@@ -16,10 +21,10 @@ func T(_ key: String, _ args: CustomStringConvertible...) -> String {
     String(format: L(key), arguments: args.map { "\($0)" as CVarArg })
 }
 
-/// Sayı, uygulama dilinde (Arapçada da Latin rakamı; saat ve vakitlerle tutarlı)
+/// Sayı, uygulama dilinde (sağdan sola dillerde de Latin rakamı; saat ve vakitlerle tutarlı)
 func num(_ n: Int) -> String {
     let f = NumberFormatter()
-    f.locale = Locale(identifier: AppLocale.code == "ar" ? "en_US_POSIX" : AppLocale.code)
+    f.locale = AppLocale.numberLocale
     f.numberStyle = .decimal
     return f.string(from: NSNumber(value: n)) ?? String(n)
 }
@@ -71,6 +76,9 @@ enum Fmt {
     }
 
     static func day(_ d: CalendarDay) -> String { longDate(d.noon(in: .current)) }
+
+    /// Yüzde: Türkçe ve Azericede "%40", diğerlerinde "40%"
+    static func percent(_ n: Int) -> String { ["tr", "az"].contains(AppLocale.code) ? "%\(n)" : "\(n)%" }
 
     /// Süre: "2 sa 30 dk"
     static func hm(seconds: Int) -> String {

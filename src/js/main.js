@@ -155,6 +155,28 @@
   if (!/^[a-z]{2,12}$/.test(String(prefs.fsColor))) prefs.fsColor = "auto";
   prefs.sync = true; // saat her zaman sunucu saatine göre çalışır
 
+  /* Saat görünümü (rakip analizi #40, 30 Ekim 2026): yazı tipi ve renk ayarlar menüsünde (tam ekranda düğme yok,
+     9 Ekim kararı). sth-prefs.font / .color; <html data-cfont data-ccolor>, theme.js sayfa çizilmeden de uygular.
+     Gömme widget'ında uygulanmaz (__sthPrefs). */
+  var LOOK = { font: ["standard", "rounded", "serif", "mono", "light"], color: ["default", "ink", "blue", "green", "red", "purple"] };
+  function applyLook() {
+    var h = doc.documentElement;
+    ["font", "color"].forEach(function (k) {
+      var v = LOOK[k].indexOf(prefs[k]) > 0 && !window.__sthPrefs ? prefs[k] : "";
+      if (v) h.setAttribute(k === "font" ? "data-cfont" : "data-ccolor", v); else h.removeAttribute(k === "font" ? "data-cfont" : "data-ccolor");
+    });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-look]"), function (sel) {
+      var k = sel.getAttribute("data-look"); sel.value = LOOK[k].indexOf(prefs[k]) > 0 ? prefs[k] : LOOK[k][0];
+    });
+  }
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-look]"), function (sel) {
+    sel.addEventListener("change", function () {
+      prefs[sel.getAttribute("data-look")] = sel.value;
+      store("sth-prefs", JSON.stringify(prefs)); applyLook();
+    });
+  });
+  applyLook();
+
   var localTz;
   try { localTz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (e) {}
 
@@ -302,10 +324,11 @@ function sunTimes(y, m, d, lat, lon) {
   }
   var W = T.words || { units: [], tens: [], join: " ", oh: "", sentence: "{h} {m}", oclock: "{h}" };
   function numWords(n) {
-    if (n < 20) return W.units[n];
+    // units 20 öğe (onlar + birler kuralı) ya da sayıları düzensiz dillerde (Urduca) 60 öğe; oneJoin: "vingt et un"
+    if (n < W.units.length) return W.units[n];
     var u = n % 10, t = W.tens[Math.floor(n / 10)];
     if (!u) return t;
-    return W.unitFirst ? (u === 1 && W.one ? W.one : W.units[u]) + W.join + t : t + W.join + W.units[u];
+    return W.unitFirst ? (u === 1 && W.one ? W.one : W.units[u]) + W.join + t : t + (u === 1 && W.oneJoin ? W.oneJoin : W.join) + W.units[u];
   }
   function hourWords(h) { return W.hours && W.hours[h] ? W.hours[h] : numWords(h); }
   function wordsText(p) {
@@ -323,7 +346,7 @@ function sunTimes(y, m, d, lat, lon) {
     var title = el.querySelector("[data-cal-title]");
     var head = el.querySelector("[data-cal-head]");
     var body = el.querySelector("[data-cal-body]");
-    title.textContent = useOwn ? CAL.months[p.month - 1] + " " + p.year : fmt("calTitle", "UTC", { month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, 1, 12)));
+    title.textContent = useOwn ? (CAL.monthsTitle || CAL.months)[p.month - 1] + " " + p.year : fmt("calTitle", "UTC", { month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, 1, 12)));
     head.textContent = "";
     var wk = doc.createElement("th");
     wk.scope = "col"; wk.textContent = T.weekShort;
@@ -389,7 +412,7 @@ function sunTimes(y, m, d, lat, lon) {
           if (kind === "daylen") { var mins = Math.round((st.set - st.rise) / 60000); out = Math.floor(mins / 60) + " " + T.hourShort + " " + (mins % 60) + " " + T.minuteShort; }
           else out = fmt("sun", tz, { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" }).format(new Date(kind === "sunrise" ? st.rise : st.set));
           break;
-        case "monthyear": p = parts(now, tz); out = useOwn ? CAL.months[p.month - 1] + " " + p.year : fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
+        case "monthyear": p = parts(now, tz); out = useOwn ? (CAL.monthsTitle || CAL.months)[p.month - 1] + " " + p.year : fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
         case "weekday": out = useOwn ? CAL.weekdays[dowOfParts(parts(now, tz))] : fmt("wdl", tz, { weekday: "long" }).format(now); break;
         case "ampm": out = prefs.h12 ? dayPeriod(now, tz) : ""; break;
         case "words": out = wordsText(parts(now, tz)); break;
@@ -422,9 +445,15 @@ function sunTimes(y, m, d, lat, lon) {
           p = parts(now, tz);
           var hh = prefs.h12 ? (p.hour % 12 || 12) : p.hour;
           var digits = [Math.floor(hh / 10), hh % 10, Math.floor(p.minute / 10), p.minute % 10, Math.floor(p.second / 10), p.second % 10];
+          el.classList.toggle("no-sec", !prefs.secD);
           el.querySelectorAll("[data-flip-d]").forEach(function (n) {
             var v = String(digits[+n.getAttribute("data-flip-d")]);
-            if (n.textContent !== v) n.textContent = v;
+            var c = n.firstElementChild || n;
+            if (c.textContent === v) return;
+            c.textContent = v;
+            // Kart çevrilme hareketi (rakam değişince; ilk çizimde yok, hareket azaltma tercihinde CSS kapatır)
+            if (n.hasAttribute("data-flip-seen")) { n.classList.remove("is-flip"); void n.offsetWidth; n.classList.add("is-flip"); }
+            n.setAttribute("data-flip-seen", "");
           });
           return;
         case "rings":
@@ -482,8 +511,8 @@ function sunTimes(y, m, d, lat, lon) {
      Dijital saatte varsayılan açık, analogda kapalı; dokunulan saatin türü değişir. */
   var toggleSec = function (slide, target) {
     var analog = target && target.closest && target.closest(".analog");
-    var digital = target && target.closest && target.closest("[data-live=time]");
-    var hasDigital = slide && slide.querySelector(".clock");
+    var digital = target && target.closest && target.closest("[data-live=time], .flip");
+    var hasDigital = slide && slide.querySelector(".clock, .flip");
     if (analog || (!digital && !hasDigital)) prefs.secA = !prefs.secA; else prefs.secD = !prefs.secD;
     savePrefs();
   };
@@ -765,6 +794,6 @@ function sunTimes(y, m, d, lat, lon) {
     T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, tpl: tpl, norm: norm,
     nowMs: nowMs, nowDate: nowDate, mono: mono, prefs: prefs, makeFullscreen: makeFullscreen,
     parts: parts, offsetMin: offsetMin, fmt: fmt, localTz: localTz, durLabel: durLabel,
-    syncState: function () { return sync; },
+    syncState: function () { return sync; }, wordsText: wordsText,
   };
 })();

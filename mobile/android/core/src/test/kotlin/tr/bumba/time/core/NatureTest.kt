@@ -36,6 +36,37 @@ class NatureTest {
         }
     }
 
+    /** Ay'ın konumu ve doğuş/batışı sitedeki hesapla aynı (doğuş/batış ikiye bölme ile bulunduğu için ±1 sn) */
+    @Test
+    fun moonRiseSetMatchesWeb() {
+        val file = Vectors.load("nature.json")
+        for (p in file.getJSONArray("moonPos").objects()) {
+            val got = Nature.moonPosition(p.getDouble("ms"))
+            assertEquals(p.getDouble("ra"), got.rightAscension, 1e-9, "sağ açıklık")
+            assertEquals(p.getDouble("dec"), got.declination, 1e-9, "dik açıklık")
+            assertEquals(p.getDouble("par"), got.parallax, 1e-12, "paralaks")
+        }
+        val rises = file.getJSONArray("moonRise").objects()
+        assertTrue(rises.size > 50)
+        for (r in rises) {
+            val got = Nature.moonRiseSet(r.getLong("start"), r.getDouble("lat"), r.getDouble("lon"))
+            for ((key, g) in listOf("rise" to got.rise, "set" to got.set)) {
+                val want = if (r.isNull(key)) null else r.getLong(key)
+                assertEquals(want == null, g == null, "$key var mı ${r.getDouble("lat")} ${r.getLong("start")}")
+                if (want != null && g != null) assertTrue(abs(g - want) <= 1000, "$key ${r.getDouble("lat")} ${r.getLong("start")}")
+            }
+        }
+    }
+
+    /** ABD Deniz Gözlemevi (USNO) ile: İstanbul 30 Ekim 2026 Ay doğuşu 21.29, batışı 12.36 (±1 dk) */
+    @Test
+    fun moonRiseSetMatchesUsno() {
+        val start = Instant.parse("2026-10-29T21:00:00Z").toEpochMilli()
+        val r = Nature.moonRiseSet(start, 41.01, 28.98)
+        assertTrue(abs(r.rise!! - (start + (21 * 60 + 29) * 60_000L)) <= 90_000)
+        assertTrue(abs(r.set!! - (start + (12 * 60 + 36) * 60_000L)) <= 90_000)
+    }
+
     /** Yayımlanmış astronomik anlarla (±2 dk); scripts/test.mjs ile aynı denetim */
     @Test
     fun seasonsMatchPublishedInstants() {
