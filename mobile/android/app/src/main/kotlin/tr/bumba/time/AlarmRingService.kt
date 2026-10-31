@@ -25,6 +25,7 @@ import kotlin.math.min
  * seçili alarmda bildirim sessiz kanaldan gelir, alarmın sesi bu ön plan hizmetinde (tür mediaPlayback) alarm ses
  * düzeyiyle döngüde çalar ve ilk 30 sn'de kısıktan tam sese çıkar; titreşim de buradan. Kapat/ertele ya da 10 dk sonra
  * durur. Hizmet başlatılamazsa (izin, arka plan kısıtı) AlarmScheduler normal sesli bildirime döner.
+ * Müzik bağlantılı alarmda (31 Ekim 2026, MusicLink) bağlantı açılır; ses, titreşim ve konuşma 1 dk sonra başlar.
  */
 class AlarmRingService : Service() {
     private val handler = Handler(Looper.getMainLooper())
@@ -51,6 +52,9 @@ class AlarmRingService : Service() {
         release()
         current = id
         val item = AlarmItem.find(id)
+        // Müzik bağlantısı: bağlantı açılır, alarmın kendi sesi ve titreşimi 1 dk sonra başlar (MusicLink)
+        val delay = if (item?.link?.isNotEmpty() == true) MusicLink.DELAY_MS else 0L
+        if (delay > 0) MusicLink.openOnce(this, id, item!!.link) // arka plandan açılamazsa alarm ekranı açar
         val uri: Uri? = item?.sound?.takeIf { it.isNotEmpty() }?.let(Uri::parse)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
@@ -64,15 +68,19 @@ class AlarmRingService : Service() {
                 rising = item?.rise == true
                 setVolume(if (rising) MIN_VOLUME else 1f, if (rising) MIN_VOLUME else 1f)
                 prepare()
-                start()
+                if (delay == 0L) start()
             }
         }.getOrNull()
-        if (item?.vibrate != false) vibrate()
-        started = SystemClock.elapsedRealtime()
-        if (rising) handler.post(ramp)
-        if (item?.speak == true) startSpeech()
+        started = SystemClock.elapsedRealtime() + delay
+        val begin = Runnable {
+            if (delay > 0) runCatching { player?.start() }
+            if (item?.vibrate != false) vibrate()
+            if (rising) handler.post(ramp)
+            if (item?.speak == true) startSpeech()
+        }
+        if (delay > 0) handler.postDelayed(begin, delay) else begin.run()
         // Kimse kapatmazsa 10 dk sonra susar (bildirim kalkar)
-        handler.postDelayed({ AlarmScheduler.stop(this, id) }, 10 * 60_000L)
+        handler.postDelayed({ AlarmScheduler.stop(this, id) }, delay + 10 * 60_000L)
         return START_NOT_STICKY
     }
 

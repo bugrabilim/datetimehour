@@ -149,7 +149,8 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                             Text(item.timeText, color = if (item.enabled) Theme.c.text else Theme.c.muted, fontSize = 40.sp,
                                 fontWeight = FontWeight.Light, style = Tnum)
                         }
-                        Text(item.title + " · " + item.repeatText, color = Theme.c.muted, fontSize = 14.sp)
+                        Text(item.title + " · " + item.repeatText + (if (item.link.isNotEmpty()) " · ▶ " + (if (MusicLink.kind(item.link) == "spotify") "Spotify" else "YouTube") else "") +
+                            (if (item.smart > 0) " · " + L("alarm.smart") else ""), color = Theme.c.muted, fontSize = 14.sp)
                         // Sonraki alarm atlanacaksa hangi gün; dokununca geri alınır, değilse "atla"
                         if (item.enabled) {
                             val skipped = item.skipping
@@ -235,6 +236,10 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var wakeCheck by remember { mutableStateOf(item.wakeCheck) }
     var preNotify by remember { mutableStateOf(item.preNotify) }
     var speak by remember { mutableStateOf(item.speak) }
+    // Müzik bağlantısı (Spotify/YouTube) ve akıllı alarm penceresi (31 Ekim 2026)
+    var link by remember { mutableStateOf(item.link) }
+    var smart by remember { mutableStateOf(item.smart) }
+    val linkNorm = MusicLink.normalize(link)
     // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
     val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
         if (r.resultCode == android.app.Activity.RESULT_OK) {
@@ -323,6 +328,20 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     }
                     Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
+                // Müzik bağlantısı: çalınca Spotify ya da YouTube'da açılır, alarm sesi 1 dk sonra (MusicLink)
+                OutlinedTextField(link, { link = it.take(300) }, Modifier.fillMaxWidth(), singleLine = true,
+                    label = { Text(L("alarm.link")) }, placeholder = { Text(L("alarm.link.placeholder")) },
+                    isError = linkNorm == null,
+                    keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Uri))
+                Text(L(if (linkNorm == null) "alarm.link.invalid" else "alarm.link.note"),
+                    color = if (linkNorm == null) Color(0xFFD32F2F) else Theme.c.muted, fontSize = 12.sp)
+                if (!linkNorm.isNullOrEmpty()) TextButton(onClick = { MusicLink.open(context, linkNorm) }) {
+                    Text("▶ " + L("alarm.link.try"), color = Theme.c.accent)
+                }
+                // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
+                fun smartText(m: Int) = if (m == 0) L("alarm.snoozeOff") else T("alarm.smartMin", m)
+                ChoiceRow(L("alarm.smart"), smartText(smart), AlarmItem.SMART_CHOICES.map { it to smartText(it) }) { smart = it }
+                Text(L("alarm.smart.note"), color = Theme.c.muted, fontSize = 12.sp)
                 // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Column(Modifier.weight(1f)) {
@@ -381,8 +400,9 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
             }
         },
         confirmButton = {
-            TextButton(onClick = {
+            TextButton(enabled = linkNorm != null, onClick = {
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
+                    link = linkNorm ?: "", smart = smart,
                     snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
                     skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise, task = task, taskLevel = taskLevel,
                     code = code, wakeCheck = wakeCheck, preNotify = preNotify, speak = speak,

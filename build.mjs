@@ -87,6 +87,7 @@ for (const [name, from] of [
   ["calendar.js", "js/calendar.js"],
   ["dates.js", "js/dates.js"],
   ["planner.js", "js/planner.js"],
+  ["poll.js", "js/poll.js"],
   ["embed.js", "js/embed.js"],
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
@@ -107,13 +108,18 @@ for (const [name, from] of [
   ["nature.js", "js/nature.js"],
   ["weather-core.js", "js/weather-core.js"],
   ["weather.js", "js/weather.js"],
+  ["globe.js", "js/globe.js"],
 ]) {
   const buf = fs.readFileSync(path.join(SRC, from));
   write(`assets/${name}`, buf);
   ASSETS[name] = `/assets/${name}?v=${hash(buf)}`;
 }
-/* Dünya yerleri (Natural Earth 1:10m Populated Places, kamu malı; src/data/places.json, saat dilimiyle): "konumumu kullan"
-   sonucunu en yakın şehre çevirmek için (place.js). Web küresi 30 Ekim 2026'da kaldırıldı; earth.jpg yalnız uygulamalarda. */
+/* Küre: Natural Earth kabartmalı dünya dokusu (kamu malı) ve yer adları (Natural Earth 1:10m Populated Places, kamu malı;
+   src/data/places.json, saat dilimiyle birlikte). Yerler ayrıca "konumumu kullan" sonucunu en yakın şehre çevirir (place.js).
+   Hepsi repodaki dosyalardan; derlemede dış veri indirilmez. Web küresi 30 Ekim'de kaldırılmış, 31 Ekim 2026'da ana sayfaya geri döndü. */
+const EARTH_BUF = fs.readFileSync(path.join(SRC, "assets/earth.jpg"));
+write("assets/earth.jpg", EARTH_BUF);
+const EARTH_URL = `/assets/earth.jpg?v=${hash(EARTH_BUF)}`;
 const PLACES_SRC = readJson("src/data/places.json");
 const PLACES_JSON = JSON.stringify({ tz: PLACES_SRC.tz, p: PLACES_SRC.p.map((r) => r.slice(0, 3)) });
 write("assets/places.json", PLACES_JSON);
@@ -137,7 +143,8 @@ const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
   "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com https://overpass-api.de",
-  "img-src 'self' data: https://bumbagroup.com",
+  "img-src 'self' data: https://bumbagroup.com https://tile.openstreetmap.org",
+  "frame-src https://www.youtube-nocookie.com", // alarm müziği (YouTube gelişmiş gizlilik modu; dış hizmet izniyle, 31 Ekim 2026)
   "style-src 'self'",
   "font-src 'self'",
   "form-action 'self' https://bumbagroup.com",
@@ -314,7 +321,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -446,6 +453,7 @@ function layout(p) {
     locale: t.locale,
     t: { ...clientT, ...(p.clientExtra && p.clientExtra.tools ? { tools: p.clientExtra.tools } : {}), ...((p.clientExtra && p.clientExtra.t) || {}) },
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
+    ...(p.clientExtra && p.clientExtra.globe ? { globe: p.clientExtra.globe } : {}),
     ...(p.clientExtra && p.clientExtra.eclipses ? { eclipses: p.clientExtra.eclipses } : {}),
     placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
     ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
@@ -606,6 +614,7 @@ const webPageLd = (lang, pagePath, title, description) => ({
 const pages = []; // { lang, path, html, indexable, alt }
 const searchEntries = Object.fromEntries(LANGS.map((l) => [l, []]));
 
+const GLOBE_CITIES = ["istanbul", "london", "moscow", "dubai", "mumbai", "singapore", "beijing", "tokyo", "sydney", "cairo", "johannesburg", "sao-paulo", "new-york", "los-angeles"];
 function buildHome(lang) {
   const t = I[lang];
   const h = t.home;
@@ -619,6 +628,28 @@ function buildHome(lang) {
 <section class="sr-only" aria-labelledby="today-q">
   <h2 id="today-q">${esc(h.todayQ)}</h2>
   <p>${esc(h.todayA)} <span data-live="date">&nbsp;</span></p>
+</section>
+<section class="globe-sec" aria-label="${esc(h.globeLabel)}">
+  <figure class="globe" data-globe>
+    <div class="globe-bar">
+      <button type="button" class="icon-btn" data-globe-zoom="in" aria-label="${esc(h.zoomIn)}" title="${esc(h.zoomIn)}">+</button>
+      <button type="button" class="icon-btn info-btn" data-info-open="globe-info" aria-haspopup="dialog" aria-label="${esc(h.globeInfo)}" title="${esc(h.globeInfo)}">${ICON_INFO}</button>
+      <button type="button" class="icon-btn" data-globe-zoom="out" aria-label="${esc(h.zoomOut)}" title="${esc(h.zoomOut)}">−</button>
+      <button type="button" class="icon-btn globe-reset" data-globe-reset aria-label="${esc(h.resetView)}" title="${esc(h.resetView)}" hidden>${ICON_GLOBE}</button>
+    </div>
+    <div class="globe-view">
+      <canvas class="globe-gl" aria-hidden="true"></canvas>
+      <canvas class="globe-fx" role="img" aria-label="${esc(h.globeLabel)}"></canvas>
+      <a class="globe-attr" data-globe-attr href="https://www.openstreetmap.org/copyright" rel="noopener" hidden>© OpenStreetMap contributors</a>
+      <p class="globe-consent consent-ph" data-globe-consent hidden>${esc(t.consent.mapBlocked)} <button type="button" class="btn btn-sm" data-consent-allow-ext>${esc(t.consent.allow)}</button></p>
+      <noscript><p class="meta globe-noscript">${esc(h.globeCaption)}</p></noscript>
+    </div>
+    <dialog class="info-dialog" id="globe-info" aria-labelledby="globe-info-title">
+      <h2 id="globe-info-title">${esc(h.globeTitle)}</h2>
+      <p class="meta">${esc(h.globeCaption)}</p>
+      <button type="button" class="btn" data-info-close>${esc(t.stage.infoClose)}</button>
+    </dialog>
+  </figure>
 </section>`;
   const ld = [
     ...baseLd(lang),
@@ -641,8 +672,10 @@ function buildHome(lang) {
   e.push({ t: t.ui.home, u: pagePath, d: h.description, k: "saat tarih bugün clock date today time now saat kaç" });
   e.push({ t: t.stage.label, u: pagePath + "#model-classic", d: t.stage.hint, k: "saat model stil style clock tam ekran full screen fullscreen" });
   MODELS.forEach((m) => e.push({ t: t.stage.models[m.id], u: `${pagePath}#model-${m.id}`, d: t.stage.label, k: "saat model clock style" }));
+  e.push({ t: h.globeLabel, u: pagePath, d: h.globeCaption, k: "dünya küre gece gündüz meridyen saat dilimi globe earth day night time zone meridian" });
   e.push({ t: t.list.heading, u: pagePath + "#liste-form", d: t.list.lead, k: "e-posta email bülten newsletter liste list" });
-  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js"] };
+  const globe = { earth: EARTH_URL, places: PLACES_URL, names: PLACE_NAMES_URL[lang], cities: CITIES.map((c) => ({ n: c[lang].name, lat: c.lat, lon: c.lon, tz: c.tz, ...(GLOBE_CITIES.includes(c.key) ? { m: 1 } : {}) })) };
+  return { lang, key: "home", path: pagePath, title: h.title, description: h.description, body, ld, home: true, nav: "home", scripts: ["calendar.js", "place.js", "weather-core.js", "globe.js"], clientExtra: { globe } };
 }
 
 /* Dünya saatleri: Türkiye'den yalnız İstanbul; Ankara ve İzmir kendi sayfalarında durur ama dünya çizgisinde yoktur */
@@ -946,7 +979,7 @@ ${addFaq(lang, "calendar", t.faqPage.calendar, yearPath(lang, BUILD_YEAR), faq)}
 const TOOL_KEYS = ["stopwatch", "countdown", "alarm", "pomodoro"];
 const btn = (cls, attrs, label) => `<button type="button" class="${cls}" ${attrs}>${esc(label)}</button>`;
 const numField = (id, label, attrs) => `<div class="field"><label for="${id}">${esc(label)}</label><input id="${id}" type="number" inputmode="numeric" ${attrs}></div>`;
-const ringBanner = (tt, name) => `<div class="ring-banner" role="alertdialog" aria-label="${esc(tt.alarm.ringing)}" data-ring-banner hidden><p class="ring-title" data-ring-title>${esc(tt.alarm.ringing)}</p><div class="tool-actions">${btn("btn", "data-ring-stop", tt.common.close)}${name === "alarm" ? btn("toggle", "data-ring-snooze", tt.alarm.snooze) : ""}</div></div>`;
+const ringBanner = (tt, name) => `<div class="ring-banner" role="alertdialog" aria-label="${esc(tt.alarm.ringing)}" data-ring-banner hidden><p class="ring-title" data-ring-title>${esc(tt.alarm.ringing)}</p>${name === "alarm" ? `<div class="ring-media" data-ring-media hidden></div>` : ""}<div class="tool-actions">${btn("btn", "data-ring-stop", tt.common.close)}${name === "alarm" ? btn("toggle", "data-ring-snooze", tt.alarm.snooze) : ""}</div></div>`;
 const ALARM_SOUNDS = ["chime", "bell", "rise", "digital", "soft"];
 const POMO_TAGS = ["none", "work", "study", "personal", "other"];
 const soundRow = (tt) => `<div class="tool-extra"><label class="check-inline"><input type="checkbox" data-sound checked> ${esc(tt.common.sound)}</label>${btn("toggle", "data-test-sound", tt.common.testSound)}${btn("toggle", "data-notify", tt.common.notify)}</div>`;
@@ -996,7 +1029,11 @@ ${ringBanner(tt, "countdown")}`;
     ${s.dayNames.map((d, i) => `<label class="day"><input type="checkbox" value="${i}" data-al-day><span>${esc(d)}</span></label>`).join("")}
     <span class="presets">${btn("chip", 'data-al-preset="none"', s.once)}${btn("chip", 'data-al-preset="weekdays"', s.weekdays)}${btn("chip", 'data-al-preset="all"', s.every)}</span>
   </fieldset>
-  <div class="field"><label for="al-sound">${esc(s.soundLabel)}</label><select id="al-sound" data-al-sound>${ALARM_SOUNDS.map((k) => `<option value="${k}">${esc(s.sounds[k])}</option>`).join("")}</select></div>
+  <div class="inputs-row al-music">
+    <div class="field"><label for="al-sound">${esc(s.soundLabel)}</label><select id="al-sound" data-al-sound>${ALARM_SOUNDS.map((k) => `<option value="${k}">${esc(s.sounds[k])}</option>`).join("")}</select></div>
+    <div class="field grow"><label for="al-yt">${esc(s.ytLabel)}</label><input id="al-yt" type="url" inputmode="url" autocomplete="off" placeholder="https://www.youtube.com/watch?v=…" data-al-yt></div>
+  </div>
+  <p class="meta al-yt-note" data-al-yt-note>${esc(s.ytNote)}</p>
   <button class="btn" type="submit">${esc(s.add)}</button>
 </form>
 <h2 class="tool-h2">${esc(s.listHeading)}</h2>
@@ -1125,6 +1162,7 @@ const TOOL_ART = {
   pomodoro: svgArt('<path d="M48 18c-18 0-26 10-26 21s10 17 26 17 26-6 26-17-8-21-26-21z" class="af"/><path d="M48 18c-2-5-6-8-12-8 3 4 6 6 12 8zm0 0c2-5 6-8 12-8-3 4-6 6-12 8zM48 18V9"/>'),
   converter: svgArt('<circle cx="26" cy="30" r="15" class="af"/><path d="M26 21v9l6 4"/><circle cx="70" cy="34" r="15" class="af"/><path d="M70 25v9l6 4M40 12h16m-5-5 5 5-5 5M56 56H40m5 5-5-5 5-5"/>'),
   planner: svgArt('<rect x="16" y="14" width="64" height="42" rx="6" class="af"/><path d="M16 26h64M32 8v10M64 8v10"/><circle cx="34" cy="40" r="4"/><circle cx="48" cy="40" r="4"/><circle cx="62" cy="40" r="4"/>'),
+  poll: svgArt('<rect x="16" y="12" width="64" height="48" rx="6" class="af"/><path d="M28 26h8M28 38h8M28 50h8M46 24l4 4 7-8M46 36h10M46 48l4 4 7-8"/><path d="M64 26h6M64 38h6M64 50h6"/>'),
   datecalc: svgArt('<rect x="14" y="14" width="46" height="42" rx="6" class="af"/><path d="M14 26h46M28 8v10M46 8v10"/><path d="M74 28v20M64 38h20"/>'),
   diff: svgArt('<circle cx="24" cy="32" r="14" class="af"/><path d="M24 24v8l5 3"/><circle cx="72" cy="32" r="14" class="af"/><path d="M72 24v8l5 3M42 32h12m-4-4 4 4-4 4"/>'),
   embed: svgArt('<rect x="10" y="12" width="76" height="40" rx="6" class="af"/><path d="M38 24l-9 8 9 8M58 24l9 8-9 8M52 22l-8 20"/>'),
@@ -1162,7 +1200,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1285,6 +1323,7 @@ extendRoutes({
 extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", zakat: "/zekat-hesaplama/", api: "/gelistiriciler/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/", worldHol: "/resmi-tatiller/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", zakat: "/en/zakat-calculator/", api: "/en/developers/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/", worldHol: "/en/public-holidays/" } });
 extendRoutes({ tr: { sky: "/gece-gokyuzu/", otd: "/tarihte-bugun/" }, en: { sky: "/en/night-sky/", otd: "/en/on-this-day/" } });
 extendRoutes({ tr: { tzn: "/saat-dilimi-haberleri/" }, en: { tzn: "/en/time-zone-news/" } });
+extendRoutes({ tr: { poll: "/toplanti-oylamasi/" }, en: { poll: "/en/meeting-poll/" } });
 ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -1418,6 +1457,47 @@ function buildPlanner(lang) {
     <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
   };
   return simplePage(lang, "planner", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "planner", title: t.tools.hub.cards.planner.name }, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { plan: s } }, searchK: "toplantı planlayıcı meeting planner ortak mesai saatleri world meeting", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].planner, s.description)] });
+}
+
+/* Toplantı oylaması (31 Ekim 2026, sahibin kararı: sunucusuz, bağlantıyla; src/js/poll.js) */
+const POLL_CLIENT_KEYS = ["slotsHeading", "removeSlot", "maxSlots", "needSlot", "tzNote", "orgTime", "byLine", "linkHeading", "linkHint", "linkLabel", "copy", "copied", "share",
+  "voteHeading", "yourName", "yes", "maybe", "no", "respond", "responseHint", "ownSaved", "needName", "resultsHeading", "participant", "total", "best", "noAnswers",
+  "pasteLabel", "pasteBtn", "pasteBad", "added", "removeAnswer", "resultsLink", "myPolls", "answers", "deletePoll", "invalid", "newPoll"];
+function buildPoll(lang) {
+  const t = I[lang];
+  const s = t.poll;
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].poll }];
+  const durOpts = [15, 30, 45, 60, 90, 120, 180].map((m) => `<option value="${m}"${m === 60 ? " selected" : ""}>${esc(durTxt(lang, m))}</option>`).join("");
+  const inner = {
+    hero: `<section class="tool poll" data-poll aria-labelledby="tool-h">
+      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <div data-poll-create>
+        <div class="inputs-row">
+          <div class="field grow"><label for="po-title">${esc(s.titleLabel)}</label><input id="po-title" type="text" maxlength="80" placeholder="${esc(t.planner.meeting)}" data-po-title></div>
+          <div class="field"><label for="po-org">${esc(s.orgLabel)}</label><input id="po-org" type="text" maxlength="40" autocomplete="name" data-po-org></div>
+          <div class="field"><label for="po-dur">${esc(s.durLabel)}</label><select id="po-dur" data-po-dur>${durOpts}</select></div>
+        </div>
+        <h3 class="poll-h">${esc(s.slotsHeading)}</h3>
+        <div class="inputs-row">
+          <div class="field"><label for="po-date">${esc(s.dateLabel)}</label><input id="po-date" type="date" data-po-date></div>
+          <div class="field"><label for="po-time">${esc(s.timeLabel)}</label><input id="po-time" type="time" step="300" data-po-time></div>
+          <button type="button" class="toggle" data-po-add>${esc(s.addSlot)}</button>
+        </div>
+        <ul class="chips-list poll-slots" data-po-slots aria-label="${esc(s.slotsHeading)}"></ul>
+        <p class="meta poll-tz" data-po-tz></p>
+        <div class="tool-actions"><button type="button" class="btn" data-po-create>${esc(s.create)}</button></div>
+        <p class="meta poll-msg" role="status" aria-live="polite" data-po-msg></p>
+      </div>
+      <div data-poll-link hidden></div>
+      <div class="poll-view" data-poll-view hidden></div>
+      <div class="poll-minebox" data-poll-mine hidden></div>
+      <p class="meta poll-privacy">${esc(s.privacyNote)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>
+    <p class="meta sync-line" data-sync-status>&nbsp;</p>`,
+  };
+  const client = Object.fromEntries(POLL_CLIENT_KEYS.map((k) => [k, s[k]]));
+  return simplePage(lang, "poll", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "poll", title: t.tools.hub.cards.poll.name }, scripts: ["poll.js"], clientExtra: { t: { poll: client, plan: { meeting: t.planner.meeting, addIcs: t.planner.addIcs, addGoogle: t.planner.addGoogle } } }, searchK: "toplantı oylaması anket uygun saat doodle meeting poll vote schedule availability", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].poll, s.description)] });
 }
 
 /* Hazır geri sayım sayfaları */
@@ -2691,7 +2771,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildPoll(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

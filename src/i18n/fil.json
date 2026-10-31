@@ -263,6 +263,13 @@
     "upcomingLead": "Ang mga susunod na araw sa kalendaryo ng Türkiye.",
     "upcomingAll": "Tingnan ang taunang kalendaryo",
     "upcomingNone": "Walang paparating na araw.",
+    "globeLabel": "Umiikot na globo na nagpapakita ng araw at gabi, mga meridian ng time zone at ang lokal na oras sa malalaking lungsod",
+    "globeCaption": "Araw ang maliwanag na bahagi at gabi ang madilim. Ang mga linya ay mga meridian ng time zone bawat 15° (kasama ang agwat sa UTC); ang pulang linya ang zero point, ang meridian ng Greenwich (UTC). Nakasulat sa tabi ng bawat lungsod ang lokal na oras nito. I-drag ang globo para paikutin ito; mag-zoom gamit ang dalawang daliri, ang mouse wheel o ang mga button na + at −. Habang nag-zo-zoom in, lumilitaw din ang lokal na oras ng mga lugar sa bahaging iyon. Kapag nag-zoom in pa, lilipat ito sa mapa ng OpenStreetMap (hanggang antas ng kalye) at isusulat ang longitude ng mga meridian at ng mga bahagi nito. Dina-download mula sa OpenStreetMap ang mga tile ng mapa sa sandaling iyon (© mga kontributor ng OpenStreetMap); galing sa Natural Earth (public domain) ang texture ng globo. Nag-zo-zoom in ang dobleng pag-tap.",
+    "globeTitle": "Globo ng mundo",
+    "globeInfo": "Tungkol sa globo",
+    "zoomIn": "I-zoom in",
+    "zoomOut": "I-zoom out",
+    "resetView": "Buong mundo",
     "todayQ": "Anong petsa ngayon?",
     "todayA": "Live na ipinapakita ang petsa at araw ngayon sa bar sa itaas ng bawat pahina, at sinusunod nito ang orasang naka-sync sa server, hindi ang orasan ng iyong device."
   },
@@ -332,7 +339,10 @@
           "**Oras at petsa:** Ang oras at time zone ng iyong device ay binabasa at kinakalkula lang sa iyong browser. Hindi ito ipinapadala sa server o sine-save.",
           "**Lokasyon (oras ng pagdarasal):** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\" sa pahina ng oras ng pagdarasal, ginagamit ng browser ang iyong lokasyon sa device mo lang para kalkulahin ang mga oras. Hindi ipinapadala sa server ang coordinates at hindi isinasama sa statistics; nananatili ang huli mong pinili sa local storage ng browser.",
           "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang request at maikling paalala ang ipinapakita. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling patakaran sa privacy ng Open-Meteo ang umiiral.",
+          "**Mapa (globo, panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences at nag-zoom ka sa globo sa home page lampas sa isang antas, direktang dina-download sa iyong browser ang mga tile ng mapa mula sa server ng OpenStreetMap (tile.openstreetmap.org); nakakarating noon sa OpenStreetMap Foundation ang iyong IP address at ang mga address ng tile ng lugar na tinitingnan mo. Kung walang pahintulot, o habang naka-zoom out ang globo, hindi ginagawa ang request na ito. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng OpenStreetMap ang umiiral.",
           "**Qibla at kalapit na mga masjid:** Kinakalkula sa iyong browser ang direksyon ng qibla, layo at oras ng qibla. Para sa compass, binabasa lang sa browser ang orientation sensor ng telepono (humihingi ng pahintulot ang iPhone) at hindi ito ipinapadala kahit saan. Kung pipindutin mo ang \"Ipakita ang mga masjid\" at pinayagan mo ang mga panlabas na serbisyo, ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km) ay ipinapadala mula sa browser sa serbisyong Overpass (overpass-api.de), na naghahatid ng datos ng OpenStreetMap; nakakarating din dito ang iyong IP address. Hindi nakikita ng server ng Saat Tarih ang coordinates na ito.",
+          "**Musika ng alarma (YouTube, panlabas na serbisyo, may pahintulot):** Kung nagdagdag ka ng link sa YouTube sa isang alarma sa tool ng alarma at pinayagan mo ang mga panlabas na serbisyo, kapag tumunog ang alarma ilo-load sa iyong browser ang video gamit ang player ng YouTube sa privacy-enhanced mode (youtube-nocookie.com); nakakarating noon sa Google (YouTube) ang iyong IP address at ang ID ng video, at maaaring mag-imbak ang player ng sarili nitong data sa iyong browser. Nananatili lang ang link sa browser na ito, kasama ng iyong alarma. Kung walang pahintulot, hindi ilo-load ang player at tutunog ang alarma sa sarili nitong tunog. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng YouTube (Google) ang umiiral.",
+          "**Botohan sa miting:** Nasa bahagi ng link pagkatapos ng tandang # ang pamagat ng botohan, ang mga mungkahing oras, ang mga pangalan ng nag-organisa at mga kalahok at ang kanilang mga sagot; hindi ipinapadala ng mga browser ang bahaging iyon sa server, kaya hindi ito nakikita ng server ng Saat Tarih at ng mga istatistika. Nakikita ito ng sinumang padalhan mo ng link (sa mensahe o email). Sa browser na ito lang naiimbak ang mga botohan at sagot na nakikita mo, sa key na sth-polls.",
           "**Form ng email list:** Ang email address na inilagay mo, ang pahintulot na ibinigay mo sa button na \"Pumapayag ako\" sa bintanang lumalabas, ang napiling wika at ang pahina ng form ay pinoproseso ng shared list service ng Bumba Group (bumbagroup.com). Double opt-in ang pagsali: hindi ka idaragdag hangga't hindi mo pinipindot ang link sa email ng kumpirmasyon, at bawat email ay may link para mag-unsubscribe sa isang click. Tingnan ang [shared na paunawa sa privacy](https://bumbagroup.com/liste/aydinlatma?dil=en) para sa detalye.",
           "**Server logs:** Ang server na nagho-host ng site ay nagtatago ng karaniwang access log para sa bawat request, kasama ang IP address, impormasyon ng browser, ang hiniling na pahina at ang oras. Ginagamit lang ang mga log na ito para sa seguridad at pag-aayos ng problema, hindi para gumawa ng profile ng tao.",
           "**Statistics ng pagbisita (Umami, may pahintulot):** Kung papayagan mo lang ang statistics sa cookie banner o cookie preferences, ang Umami na tumatakbo sa sarili naming server ay bibilang ng page views at ng mga aksyong ito: pagpapalit ng wika at tema, kung may resulta ang paghahanap, pagsali sa listahan, pagpili ng istilo ng orasan, full screen, unang paggamit ng tool, uri ng pagpili ng lokasyon (lalawigan o lokasyon), at pagbukas o pag-download ng iskedyul ng Ramadan. Habang ginagawa ito, pinoproseso ng Umami ang iyong browser, operating system at uri ng device, wika, laki ng screen, address ng pahinang pinanggalingan mo, at ang bansa at lungsod na nakuha mula sa iyong IP address; hindi sine-save ang IP address mismo. Hindi gumagamit ng cookies ang Umami, pero iniuugnay nito ang mga pagbisita sa isang pseudonymous na session, kaya hindi ito anonymous. Hindi ipinapadala ang mga salitang tina-type mo sa paghahanap, ang iyong email address at ang iyong lokasyon. Puwede mong bawiin ang pahintulot anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting; titigil ang Umami mula sa susunod na pahina.",
@@ -399,7 +409,7 @@
         "id": "cookies",
         "h": "Cookies at storage ng browser",
         "p": [
-          "Walang anumang cookie na inilalagay ang Saat Tarih. Sa una mong pagbisita, isang banner sa ibaba ng pahina ang humihingi ng pahintulot mo para sa statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo); parehong naka-off hangga't hindi mo pinapayagan. Mapapalitan mo ang iyong pinili anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting. Para matandaan ang iyong mga pinili, ginagamit namin ang local storage (localStorage) ng iyong browser; kabilang ang mga item na ito sa kinakailangang grupo, nananatili sa iyong device at hindi ipinapadala sa server. Mabubura mo ang mga ito anumang oras sa mga setting ng browser. Shared na patakaran sa cookies ng Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Walang anumang cookie na inilalagay ang Saat Tarih. Sa una mong pagbisita, isang banner sa ibaba ng pahina ang humihingi ng pahintulot mo para sa statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo, OpenStreetMap, YouTube); parehong naka-off hangga't hindi mo pinapayagan. Mapapalitan mo ang iyong pinili anumang oras sa link na \"Cookie preferences\" sa menu ng mga setting. Para matandaan ang iyong mga pinili, ginagamit namin ang local storage (localStorage) ng iyong browser; kabilang ang mga item na ito sa kinakailangang grupo, nananatili sa iyong device at hindi ipinapadala sa server. Mabubura mo ang mga ito anumang oras sa mga setting ng browser. Shared na patakaran sa cookies ng Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -440,7 +450,7 @@
             ],
             [
               "sth-alarms",
-              "Tinatandaan ang mga alarmang itinakda mo at ang tunog ng bawat alarma.",
+              "Tinatandaan ang mga alarmang itinakda mo, ang tunog ng bawat alarma at ang link nito sa YouTube kung mayroon.",
               "Hanggang burahin mo"
             ],
             [
@@ -494,6 +504,16 @@
               "Hanggang burahin mo"
             ],
             [
+              "sth-polls",
+              "Itinatago ang mga botohan sa miting na ginawa o binuksan mo at ang mga natanggap na sagot (hanggang 20 botohan).",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-poll-name",
+              "Tinatandaan ang pangalang inilagay mo sa botohan sa miting para sa susunod mong sagot.",
+              "Hanggang burahin mo"
+            ],
+            [
               "sth-wake",
               "Tinatandaan kung pinananatiling bukas ng mga tool ang screen.",
               "Hanggang burahin mo"
@@ -506,7 +526,7 @@
         "h": "Mga legal na batayan",
         "ul": [
           "Email list: ang iyong tahasang pahintulot (KVKK art. 5/1). Mababawi mo ito anumang oras gamit ang unsubscribe link sa bawat email.",
-          "Statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo): ang tahasang pahintulot na ibinigay mo sa cookie banner (KVKK art. 5/1). Kapag pinayagan mo ang mga panlabas na serbisyo, nakakarating ang iyong IP address sa mga provider na ito, na maaaring nasa ibang bansa; sakop din ito ng iyong pahintulot. Mababawi mo ito gamit ang link na \"Cookie preferences\".",
+          "Statistics ng pagbisita (Umami) at mga panlabas na serbisyo (Open-Meteo, OpenStreetMap, YouTube): ang tahasang pahintulot na ibinigay mo sa cookie banner (KVKK art. 5/1). Kapag pinayagan mo ang mga panlabas na serbisyo, nakakarating ang iyong IP address sa mga provider na ito, na maaaring nasa ibang bansa; sakop din ito ng iyong pahintulot. Mababawi mo ito gamit ang link na \"Cookie preferences\".",
           "Server logs: ang lehitimong interes naming panatilihing ligtas at gumagana ang site (KVKK art. 5/2-f).",
           "Ang iyong mga kagustuhan: lehitimong interes (KVKK art. 5/2-f); sa iyong device lang nananatili ang datos."
         ]
@@ -829,6 +849,10 @@
           "name": "Meeting planner",
           "desc": "Hanapin ang magkakatugmang oras ng trabaho sa iba't ibang time zone."
         },
+        "poll": {
+          "name": "Botohan sa miting",
+          "desc": "Ibahagi ang mga oras at hayaang markahan ng lahat ang puwede."
+        },
         "diff": {
           "name": "Diperensya ng oras",
           "desc": "Diperensya ng oras ng Istanbul at mga lungsod sa mundo."
@@ -1080,7 +1104,12 @@
         "rise": "Palakas nang palakas",
         "digital": "Digital beep",
         "soft": "Malambot"
-      }
+      },
+      "ytLabel": "Musika sa YouTube (opsyonal)",
+      "ytNote": "Kapag tumunog ang alarma, tutugtog ang video na ito; kung hindi mo ito papatayin sa loob ng 1 minuto, tutunog din ang alarma (pati kung hindi kusang patugtugin ng browser ang video). Galing sa YouTube ang video, kaya kailangang payagan ang mga panlabas na serbisyo.",
+      "ytInvalid": "Hindi ito link sa YouTube.",
+      "ytBlocked": "Payagan ang mga panlabas na serbisyo para sa musika sa YouTube; kung walang pahintulot, tutunog ang alarma sa sarili nitong tunog.",
+      "spotifyNote": "Hindi kusang tumutugtog ang Spotify sa browser; magagamit mo ang Spotify bilang musika ng alarma sa Android app."
     },
     "pomodoro": {
       "title": "Pomodoro Timer: 25 Minutong Trabaho, 5 Pahinga | Saat Tarih",
@@ -1423,6 +1452,72 @@
     "pickHint": "I-tap ang isang oras sa itaas ng talahanayan para piliin ang oras ng miting; kasama ito sa link at sa entry sa kalendaryo.",
     "meeting": "Miting",
     "picked": "Napiling oras: {time} (oras ng {city})"
+  },
+  "poll": {
+    "title": "Botohan sa Miting: Pumili ng Oras nang Sama-sama | Saat Tarih",
+    "description": "Pumili ng mga oras, ibahagi ang link at markahan ng lahat kung kailan sila puwede. Walang account o server; makikita ng bawat isa ang oras sa sariling time zone.",
+    "h1": "Botohan sa miting",
+    "lead": "Magdagdag ng mga mungkahing oras at ibahagi ang link ng botohan. Mamarkahan ng mga kalahok ang mga oras na puwede sila at magpapadala sa iyo ng reply link; awtomatikong mahahanap ang pinakamagandang oras.",
+    "titleLabel": "Pangalan ng miting",
+    "orgLabel": "Pangalan mo (opsyonal)",
+    "durLabel": "Haba",
+    "slotsHeading": "Mga mungkahing oras",
+    "dateLabel": "Petsa",
+    "timeLabel": "Oras",
+    "addSlot": "Idagdag ang oras",
+    "removeSlot": "Alisin",
+    "maxSlots": "Hanggang {n} mungkahing oras ang maidaragdag mo.",
+    "needSlot": "Magdagdag ng kahit isang mungkahing oras.",
+    "create": "Gumawa ng link ng botohan",
+    "tzNote": "Ipinapakita ang mga oras sa iyong time zone: {tz}.",
+    "orgTime": "Oras ng nag-organisa: {time} ({tz})",
+    "byLine": "Inorganisa ni {name}",
+    "linkHeading": "Link ng botohan",
+    "linkHint": "Ipadala ang link na ito sa mga kalahok. Mamarkahan ng bawat isa ang mga oras na puwede sila at magpapadala sa iyo ng reply link; kapag binuksan mo ito o idinikit sa ibaba, maidaragdag ito sa resulta.",
+    "linkLabel": "Link",
+    "copy": "Kopyahin",
+    "copied": "Nakopya",
+    "share": "Ibahagi",
+    "voteHeading": "Markahan ang mga oras na puwede ka",
+    "yourName": "Pangalan mo",
+    "yes": "Puwede",
+    "maybe": "Siguro",
+    "no": "Hindi puwede",
+    "respond": "Gawin ang aking reply link",
+    "responseHint": "Ipadala ang reply link na ito sa nag-organisa (sa mensahe o email).",
+    "ownSaved": "Naidagdag ang sagot mo sa resulta sa browser na ito. Kung nasa ibang device ka, ipadala sa sarili mo ang link na ito.",
+    "needName": "Ilagay ang pangalan mo.",
+    "resultsHeading": "Resulta",
+    "participant": "Kalahok",
+    "total": "Kabuuan",
+    "best": "Pinakamagandang oras: {slot} ({n} sa {total} ang puwede)",
+    "noAnswers": "Wala pang sagot. Lalabas dito ang mga ito kapag binuksan mo ang mga reply link ng mga kalahok o idinikit sa ibaba.",
+    "pasteLabel": "Idikit ang natanggap mong reply link",
+    "pasteBtn": "Idagdag",
+    "pasteBad": "Hindi wastong sagot sa botohang ito ang link na ito.",
+    "added": "Naidagdag ang sagot: {names}",
+    "removeAnswer": "Alisin ang sagot",
+    "resultsLink": "Kopyahin ang link ng resulta",
+    "myPolls": "Mga botohan sa browser na ito",
+    "answers": "{n} sagot",
+    "deletePoll": "Alisin ang botohan",
+    "invalid": "Sira o kulang ang link ng botohang ito.",
+    "newPoll": "Gumawa ng bagong botohan",
+    "privacyNote": "Walang account at walang server: dinadala ang botohan at mga sagot sa bahagi ng link pagkatapos ng tandang # (hindi ito ipinapadala ng mga browser sa server); sa browser na ito lang naiimbak ang mga sagot na nakikita mo.",
+    "faq": [
+      {
+        "q": "Saan naiimbak ang data ng botohan?",
+        "a": "Hindi sa server. Dinadala ang pamagat, mga mungkahing oras, mga pangalan at sagot sa bahagi ng link pagkatapos ng tandang #, na hindi ipinapadala ng mga browser sa server. Sa sariling browser lang ng nag-organisa naiimbak ang mga sagot na nakikita niya; nakikita ito ng sinumang padalhan mo ng link."
+      },
+      {
+        "q": "Paano ipapadala sa akin ng mga kalahok ang sagot nila?",
+        "a": "Ilalagay ng bawat kalahok ang pangalan, mamarkahan ang mga oras na puwede siya at gagawa ng reply link na ipapadala sa iyo sa mensahe o email. Kapag binuksan mo ang link o idinikit sa kahon sa pahina ng botohan, maidaragdag ang sagot sa talahanayan ng resulta."
+      },
+      {
+        "q": "Sa anong time zone ipinapakita ang mga oras?",
+        "a": "Nakikita ng bawat isa ang mga oras sa time zone ng sarili niyang device; kung iba ang time zone ng nag-organisa, nakasulat din sa tabi ng bawat oras ang oras niya. Isinasaalang-alang ang daylight saving time."
+      }
+    ]
   },
   "cdp": {
     "title": "Ilang Araw Pa Bago ang {dat}? | Saat Tarih",
@@ -2016,7 +2111,7 @@
   },
   "consent": {
     "barLabel": "Pagpili sa cookies",
-    "barText": "Sa browser na ito lang namin itinatago ang iyong mga kagustuhan (wika, tema, setting ng orasan at tool). Kung papayagan mo, bibilangin ang mga pagbisita gamit ang Umami, at ilo-load ang panahon (Open-Meteo) at kalapit na mga masjid (OpenStreetMap) mula sa mga panlabas na serbisyo.",
+    "barText": "Sa browser na ito lang namin itinatago ang iyong mga kagustuhan (wika, tema, setting ng orasan at tool). Kung papayagan mo, bibilangin ang mga pagbisita gamit ang Umami, at ilo-load ang panahon (Open-Meteo), ang malapitang mapa ng globo at kalapit na mga masjid (OpenStreetMap), at ang musika ng alarma (YouTube) mula sa mga panlabas na serbisyo.",
     "accept": "Tanggapin",
     "reject": "Tanggihan",
     "prefs": "Mga kagustuhan",
@@ -2029,13 +2124,14 @@
     "stats": "Statistics",
     "statsText": "Binibilang ng Umami ang mga pagbisita sa pahina at ilang aksyon (browser, device, wika, at ang bansa at lungsod mula sa IP address; hindi sine-save ang IP). Walang cookies na ginagamit. Naka-off bilang default.",
     "ext": "Mga panlabas na serbisyo",
-    "extText": "Ilo-load ang panahon mula sa Open-Meteo (api.open-meteo.com) at kalapit na mga masjid mula sa serbisyong Overpass ng OpenStreetMap (overpass-api.de); nakakarating sa mga serbisyong ito ang iyong IP address. Naka-off bilang default.",
+    "extText": "Ilo-load ang panahon mula sa Open-Meteo (api.open-meteo.com), ang mapa ng naka-zoom na globo mula sa OpenStreetMap (tile.openstreetmap.org), kalapit na mga masjid mula sa serbisyong Overpass ng OpenStreetMap (overpass-api.de), at ang musika sa YouTube na idinagdag mo sa alarma mula sa YouTube (youtube-nocookie.com); nakakarating sa mga serbisyong ito ang iyong IP address. Naka-off bilang default.",
     "save": "I-save ang pinili",
     "footerLink": "Cookie preferences",
     "privacy": "Privacy",
     "wxBlocked": "Galing sa Open-Meteo ang panahon; payagan ang mga panlabas na serbisyo para maipakita ito.",
     "allow": "Payagan",
-    "mqBlocked": "Galing sa OpenStreetMap (Overpass) ang kalapit na mga masjid; payagan ang mga panlabas na serbisyo para maipakita ang mga ito."
+    "mqBlocked": "Galing sa OpenStreetMap (Overpass) ang kalapit na mga masjid; payagan ang mga panlabas na serbisyo para maipakita ang mga ito.",
+    "mapBlocked": "Galing sa OpenStreetMap ang malapitang mapa; payagan ang mga panlabas na serbisyo para maipakita ito."
   },
   "qibla": {
     "title": "Direksyon ng Qibla: Compass, Anggulo at Oras | Saat Tarih",

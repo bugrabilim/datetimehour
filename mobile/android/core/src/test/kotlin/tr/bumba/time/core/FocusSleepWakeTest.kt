@@ -141,4 +141,33 @@ class FocusSleepWakeTest {
         for (i in 0 until 250) shake.feed(i * 20L, 2.5 * sin(2 * PI * 2 * i * 20 / 1000), 0.0, 1.0)
         assertTrue(shake.count in 18..22, "shake ${shake.count}")
     }
+
+    /** Akıllı alarm: durgunlukta erken çalmaz; pencerede iki dakika hareket olunca çalar; tek kıpırtı ya da pencere öncesi
+     *  hareket yetmez (iOS SmartWakeTests ile aynı senaryo ve aynı sözde rastgele gürültü) */
+    @Test
+    fun smartWake() {
+        val alarm = 1_800_000_000_000L - 1_800_000_000_000L % 60_000L
+        fun run(bursts: Set<Int>): Long? {
+            val w = SmartWake()
+            var seed = 12345L
+            var t = alarm - 50 * 60_000L
+            while (t < alarm) {
+                seed = (seed * 1103515245L + 12345L) % 2147483648L
+                val noise = (seed / 2147483648.0 - 0.5) * 0.01
+                val minute = ((alarm - t + 59_999) / 60_000).toInt() // alarma kalan dakika (yukarı yuvarlı)
+                val inBurst = minute in bursts && (t / 100) % 600 < 20
+                val z = 1.0 + noise + if (inBurst) 0.1 * sin(t / 100.0) else 0.0
+                w.add(t, 0.0, 0.0, z)
+                if (w.shouldWake(t, alarm, 30)) return t
+                t += 100
+            }
+            return null
+        }
+        assertEquals(null, run(emptySet()), "durgunlukta erken çalmamalı")
+        val at = run(setOf(20, 19))
+        assertTrue(at != null && at >= alarm - 19 * 60_000L && at < alarm - 18 * 60_000L, "iki dakika hareket: 19. dakikada çalmalı ($at)")
+        assertEquals(null, run(setOf(20)), "tek dakikalık kıpırtı yetmemeli")
+        assertEquals(null, run(setOf(45, 44)), "pencere öncesi hareket sayılmamalı")
+        assertEquals(null, SmartWake().let { it.add(0, 0.0, 0.0, 1.0); if (it.shouldWake(alarm - 60_000L, alarm, 0)) 1 else null }, "pencere 0 ise kapalı")
+    }
 }

@@ -20,6 +20,8 @@
   --shadow: 0 1px 2px rgb(27 31 39 / 0.06), 0 8px 24px rgb(27 31 39 / 0.06);
   --radius: 14px;
   --maxw: 68rem;
+  --globe-ocean: #7fb6dc; --globe-land: #8fbf6a; --globe-ocean-night: #1c2f4d; --globe-land-night: #2c3d33;
+  --globe-grid: rgba(255, 255, 255, 0.55); --globe-label: #1b1f27; --globe-halo: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,6 +43,8 @@
     --err: #ff9d9d;
     --err-bg: #3a1a1a;
     --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.35);
+    --globe-ocean: #2f6d99; --globe-land: #5d8f4a; --globe-ocean-night: #0c1626; --globe-land-night: #18241c;
+    --globe-grid: rgba(238, 240, 244, 0.3); --globe-label: #eef0f4; --globe-halo: #11141a;
   }
 }
 
@@ -62,6 +66,8 @@
   --err: #ff9d9d;
   --err-bg: #3a1a1a;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.35);
+  --globe-ocean: #2f6d99; --globe-land: #5d8f4a; --globe-ocean-night: #0c1626; --globe-land-night: #18241c;
+  --globe-grid: rgba(238, 240, 244, 0.3); --globe-label: #eef0f4; --globe-halo: #11141a;
 }
 
 /* Temaya göre görünen/gizlenen parçalar (tema simgesi, Bumba rozeti). */
@@ -203,7 +209,27 @@ p { margin: 0 0 1rem; }
 html.sec-off .hand-sec { display: none; }
 .intro { border-top: 0; padding-block: 1.5rem 2rem; }
 /* Ana sayfa: tam sayfa dünya küresi (çerçevesiz) */
+.globe-sec { margin: 0; padding: 0; border: 0; }
+.globe { margin: 0; max-width: none; }
+.globe-view { position: relative; width: 100%; height: 100vh; height: 100svh; min-height: 26rem; overflow: hidden; container-type: size; }
+.globe-view canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.globe-gl { pointer-events: none; }
+.globe-fx { touch-action: pan-y; cursor: grab; }
+.globe-fx:active { cursor: grabbing; }
+.globe.is-zoomed .globe-fx { touch-action: none; }
+.globe-bar { display: flex; justify-content: center; align-items: center; gap: 0.6rem; padding: 0.6rem 1rem; border-top: 1px solid var(--border); margin-top: 0.4rem; }
+.globe-bar .icon-btn { font-size: 1.35rem; line-height: 1; min-width: 2.5rem; min-height: 2.5rem; }
+.globe-bar .icon-btn svg { width: 1.2rem; height: 1.2rem; }
+.globe-bar .icon-btn:disabled { opacity: 0.4; cursor: default; }
+.globe-attr { position: absolute; inset-inline-end: 0.5rem; bottom: 0.4rem; font-size: 0.7rem; line-height: 1.4; padding: 0 0.35rem; border-radius: 4px; background: rgba(255, 255, 255, 0.85); color: #333; text-decoration: none; }
 /* Yakınlaşınca harita belirli bir kare çerçeve içinde görünür */
+.globe.is-zoomed .globe-view canvas { clip-path: inset(calc((100cqh - min(100cqw, 100cqh)) / 2) calc((100cqw - min(100cqw, 100cqh)) / 2) round var(--radius)); }
+.globe.is-zoomed .globe-view::after { content: ""; position: absolute; left: 50%; top: 50%; width: min(100cqw, 100cqh); height: min(100cqw, 100cqh); transform: translate(-50%, -50%); border: 2px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); pointer-events: none; }
+.globe.is-zoomed .globe-attr { inset-inline-end: calc((100cqw - min(100cqw, 100cqh)) / 2 + 0.5rem); bottom: calc((100cqh - min(100cqw, 100cqh)) / 2 + 0.4rem); z-index: 1; }
+.globe-attr:hover { text-decoration: underline; }
+.globe-attr[hidden], .globe-bar [hidden] { display: none; }
+.globe-noscript { position: absolute; inset: auto 1rem 3rem; text-align: center; }
+.globe-consent { position: absolute; inset-inline: 1rem; bottom: 2.5rem; margin: 0 auto; max-width: 28rem; padding: 0.7rem 0.9rem; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); text-align: center; z-index: 3; }
 /* SSS: sayfalarda bağlantı, tek SSS sayfasında içindekiler */
 .faq-toc { margin-top: 1rem; }
 .info-date + .inline-links { justify-content: center; margin: 0.5rem 0 0.75rem; }
@@ -457,7 +483,7 @@ tbody th a { color: var(--text); }
 .list-dialog p { margin: 0 0 0.6rem; }
 .field { display: grid; gap: 0.35rem; margin-bottom: 0.9rem; }
 .field label { font-weight: 600; }
-input[type="email"], input[type="search"], input[type="number"], input[type="time"], input[type="text"], input[type="datetime-local"], input[type="date"], select {
+input[type="email"], input[type="search"], input[type="url"], input[type="number"], input[type="time"], input[type="text"], input[type="datetime-local"], input[type="date"], select {
   width: 100%; min-height: 2.9rem; padding: 0 0.9rem; font: inherit; color: var(--text);
   background: var(--bg); border: 1px solid var(--muted); border-radius: 10px;
 }
@@ -1157,3 +1183,52 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .tzn-item p { margin: .35rem 0; }
 .tzn-now { list-style: none; padding: 0; margin: .4rem 0; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
 .tzn-now li { font-variant-numeric: tabular-nums; }
+
+/* Toplantı oylaması (31 Ekim 2026; sunucusuz, bağlantıyla) */
+.poll .poll-h { font-size: 1.05rem; text-align: center; margin: 1.25rem 0 0.5rem; }
+.poll-slots { margin-top: 0.75rem; }
+.poll-tz, .poll-msg, .poll-privacy { text-align: center; }
+.poll-view h3.poll-title { text-align: center; margin: 0.25rem 0 0.2rem; }
+.poll-view > .meta { text-align: center; margin: 0.1rem 0; }
+.poll-view h4 { font-size: 1rem; margin: 1.25rem 0 0.5rem; }
+.poll-note { text-align: center; color: var(--ok); font-weight: 600; margin: 0.5rem 0; }
+.poll-linkbox { margin-top: 0.75rem; }
+.poll-linkbox .share-row { margin-top: 0.5rem; }
+.poll-url { flex: 1 1 18rem; min-width: 0; max-width: 34rem; font-size: 0.85rem; }
+.poll-vote .field { max-width: 22rem; }
+.poll-slot { border: 1px solid var(--border); border-radius: var(--radius); padding: 0.5rem 0.75rem 0.75rem; margin: 0.6rem 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.poll-slot legend { font-weight: 700; padding: 0 0.3rem; }
+.poll-org { display: block; font-weight: 400; }
+.poll-opt { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 2.5rem; padding: 0 0.85rem; border: 1px solid var(--border); border-radius: 999px; cursor: pointer; font-weight: 600; background: var(--surface); }
+.poll-opt input { margin: 0; accent-color: var(--accent); }
+.poll-opt.is-yes:has(input:checked) { background: var(--ok-bg); color: var(--ok); border-color: var(--ok); }
+.poll-opt.is-maybe:has(input:checked) { background: var(--accent-soft); border-color: var(--accent); }
+.poll-opt.is-no:has(input:checked) { background: var(--err-bg); color: var(--err); border-color: var(--err); }
+.poll-table { border-collapse: collapse; margin: 0 auto; font-size: 0.92rem; }
+.poll-table th, .poll-table td { padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); text-align: center; white-space: nowrap; }
+.poll-table tbody th, .poll-table tfoot th { text-align: start; }
+.poll-table td.is-yes { color: var(--ok); font-weight: 700; }
+.poll-table td.is-no { color: var(--err); }
+.poll-table .is-best { background: var(--ok-bg); }
+.poll-table .poll-del { border-bottom: 1px solid var(--border); }
+.poll-table .poll-x, .poll-mine .poll-x { min-height: 2rem; min-width: 2rem; padding: 0; }
+.poll-best { text-align: center; font-weight: 700; margin: 0.75rem 0 0; }
+.poll-paste { margin-top: 1.25rem; }
+.poll-paste label { display: block; text-align: center; font-weight: 600; }
+.poll-paste .share-row { margin-top: 0.4rem; }
+.poll-paste input { flex: 1 1 18rem; min-width: 0; max-width: 34rem; }
+.poll-paste .meta { text-align: center; }
+.poll-new { text-align: center; margin-top: 1.25rem; }
+.poll-minebox h3 { font-size: 1rem; text-align: center; margin: 1.5rem 0 0.5rem; }
+.poll-mine { list-style: none; margin: 0 auto; padding: 0; max-width: 36rem; }
+.poll-mine li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+.poll-mine li .meta { flex: 1; margin: 0; }
+
+/* Alarm müziği (YouTube, dış hizmet izniyle; 31 Ekim 2026) */
+.al-music { margin-top: 0.5rem; }
+.al-yt-note { text-align: center; }
+.al-yt-note.is-err { color: var(--err); }
+.al-yt-note .btn { margin-inline-start: 0.4rem; }
+.ring-media { max-width: 32rem; margin: 0.6rem auto; }
+.ring-media iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; background: #000; }
+.ring-media[hidden] { display: none; }

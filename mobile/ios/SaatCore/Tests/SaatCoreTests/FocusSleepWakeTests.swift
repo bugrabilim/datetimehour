@@ -135,4 +135,32 @@ final class FocusSleepWakeTests: XCTestCase {
         for i in 0..<250 { shake.feed(t: Double(i) * 0.02, x: 2.5 * sin(2 * .pi * 2 * Double(i) * 0.02), y: 0, z: 1) }
         XCTAssert((18...22).contains(shake.count), "shake \(shake.count)")
     }
+
+    /// Akıllı alarm: Android FocusSleepWakeTest.smartWake ile aynı senaryo ve aynı sözde rastgele gürültü
+    func testSmartWake() {
+        let alarm: Int64 = 1_800_000_000_000 - 1_800_000_000_000 % 60_000
+        func run(_ bursts: Set<Int>) -> Int64? {
+            var w = SmartWake()
+            var seed: Int64 = 12345
+            var t = alarm - 50 * 60_000
+            while t < alarm {
+                seed = (seed &* 1103515245 &+ 12345) % 2147483648
+                let noise = (Double(seed) / 2147483648.0 - 0.5) * 0.01
+                let minute = Int((alarm - t + 59_999) / 60_000)
+                let inBurst = bursts.contains(minute) && (t / 100) % 600 < 20
+                let z = 1.0 + noise + (inBurst ? 0.1 * sin(Double(t) / 100.0) : 0)
+                w.add(tMs: t, x: 0, y: 0, z: z)
+                if w.shouldWake(nowMs: t, alarmMs: alarm, windowMin: 30) { return t }
+                t += 100
+            }
+            return nil
+        }
+        XCTAssertNil(run([]), "durgunlukta erken çalmamalı")
+        let at = run([20, 19])
+        XCTAssertNotNil(at)
+        if let at { XCTAssertTrue(at >= alarm - 19 * 60_000 && at < alarm - 18 * 60_000, "iki dakika hareket: 19. dakikada çalmalı (\(at))") }
+        XCTAssertNil(run([20]), "tek dakikalık kıpırtı yetmemeli")
+        XCTAssertNil(run([45, 44]), "pencere öncesi hareket sayılmamalı")
+        XCTAssertFalse(SmartWake().shouldWake(nowMs: alarm - 60_000, alarmMs: alarm, windowMin: 0))
+    }
 }

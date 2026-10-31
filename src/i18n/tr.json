@@ -197,6 +197,13 @@
     "upcomingLead": "Türkiye takvimine göre sıradaki günler.",
     "upcomingAll": "Yıllık takvimi gör",
     "upcomingNone": "Yaklaşan gün bulunamadı.",
+    "globeLabel": "Dönen dünya küresi: gündüz ve gece bölgeleri, saat dilimi meridyenleri ve büyük şehirlerin yerel saati",
+    "globeCaption": "Aydınlık taraf gündüz, karanlık taraf gece. Çizgiler 15°'lik saat dilimi meridyenleridir (UTC farkıyla); kırmızı çizgi sıfır noktası, yani Greenwich meridyenidir (UTC). Şehirlerin yanında yerel saat yazar. Küreyi sürükleyerek çevirebilir; iki parmakla, fare tekerleğiyle ya da + ve − düğmeleriyle yakınlaştırabilirsiniz. Yakınlaştıkça o bölgedeki yerlerin yerel saati de görünür. Daha da yakınlaşınca OpenStreetMap haritasına geçilir (sokak düzeyine kadar), meridyenin ve meridyen parçalarının boylamı yazılır. Harita karoları o anda OpenStreetMap'ten indirilir (© OpenStreetMap katkıda bulunanlar); küre dokusu Natural Earth'tendir (kamu malı). Çift dokunuş yakınlaştırır.",
+    "globeTitle": "Dünya küresi",
+    "globeInfo": "Küre hakkında bilgi",
+    "zoomIn": "Yakınlaştır",
+    "zoomOut": "Uzaklaştır",
+    "resetView": "Tüm dünya",
     "todayQ": "Bugün ayın kaçı?",
     "todayA": "Bugünün tarihi ve günü, her sayfanın üst çubuğunda canlı gösterilir ve cihazınızın saatine değil, sunucu saatiyle senkron çalışan saate göre güncellenir."
   },
@@ -266,7 +273,10 @@
           "**Saat ve tarih:** Cihazınızın saati ve saat diliminiz yalnızca tarayıcınızda okunur ve hesaplanır. Sunucuya gönderilmez, kaydedilmez.",
           "**Konum (namaz vakitleri):** Namaz vakitleri sayfasında \"Konumumu kullan\" derseniz tarayıcınız konumunuzu yalnızca cihazınızda vakit hesabı için kullanır. Koordinatlar sunucuya gönderilmez ve istatistiklere girmez; son seçiminiz tarayıcınızın yerel depolamasında kalır.",
           "**Hava durumu (dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz hava durumu sayfasında ve hava durumlu saat modellerinde, seçtiğiniz ilin ya da konumunuzun yaklaşık koordinatları (yaklaşık 1 km duyarlıkla) veriyi sağlayan Open-Meteo'ya (api.open-meteo.com) tarayıcınızdan doğrudan gönderilir; bu sırada IP adresiniz de Open-Meteo'ya ulaşır. İzin yoksa istek yapılmaz, yerine açıklama gösterilir. Saat Tarih sunucusu bu koordinatları görmez ve saklamaz; Open-Meteo'nun kendi gizlilik koşulları geçerlidir.",
+          "**Harita (küre, dış hizmet, izinle):** Çerez tercihlerinde dış hizmetlere izin verdiyseniz ve ana sayfadaki küreyi belli bir düzeyin ötesine yakınlaştırırsanız harita karoları OpenStreetMap'in sunucusundan (tile.openstreetmap.org) tarayıcınıza doğrudan indirilir; bu sırada IP adresiniz ve baktığınız bölgenin karo adresleri OpenStreetMap Vakfı'na ulaşır. İzin yoksa ya da küre uzaktayken bu istek yapılmaz. Saat Tarih sunucusu bunları görmez; OpenStreetMap'in kendi gizlilik koşulları geçerlidir.",
           "**Kıble ve yakındaki camiler:** Kıble yönü, uzaklık ve kıble saati tarayıcınızda hesaplanır. Pusula için telefonunuzun yön sensörü yalnız tarayıcıda okunur (iPhone'da izin sorulur) ve hiçbir yere gönderilmez. \"Camileri göster\" derseniz ve dış hizmetlere izin verdiyseniz, seçili yerin iki ondalığa yuvarlanmış koordinatları (yaklaşık 1 km) OpenStreetMap verisini sunan Overpass hizmetine (overpass-api.de) tarayıcınızdan gönderilir; bu sırada IP adresiniz de bu hizmete ulaşır. Saat Tarih sunucusu bu koordinatları görmez.",
+          "**Alarm müziği (YouTube, dış hizmet, izinle):** Alarm aracında bir alarma YouTube bağlantısı eklediyseniz ve dış hizmetlere izin verdiyseniz, alarm çaldığında video YouTube'un gelişmiş gizlilik modundaki oynatıcısıyla (youtube-nocookie.com) tarayıcınıza yüklenir; bu sırada IP adresiniz ve videonun kimliği Google'a (YouTube) ulaşır, oynatıcı da tarayıcınızda kendi verilerini saklayabilir. Bağlantı yalnız bu tarayıcıda, alarmınızla birlikte durur. İzin yoksa oynatıcı yüklenmez ve alarm kendi sesiyle çalar. Saat Tarih sunucusu bunları görmez; YouTube'un (Google) kendi gizlilik koşulları geçerlidir.",
+          "**Toplantı oylaması:** Oylamanın başlığı, aday saatleri, düzenleyicinin ve katılımcıların adları ile yanıtları bağlantının # işaretinden sonraki kısmında durur; tarayıcılar bu kısmı sunucuya göndermez, bu yüzden Saat Tarih sunucusu ve istatistikler bunları görmez. Bağlantıyı kiminle paylaşırsanız (mesaj ya da e-postayla) onlar görür. Gördüğünüz oylamalar ve yanıtlar yalnız bu tarayıcıda, sth-polls anahtarında durur.",
           "**E-posta listesi formu:** Forma yazdığınız e-posta adresi, açılan penceredeki \"Kabul ediyorum\" düğmesiyle verdiğiniz rıza, seçili dil ve formun bulunduğu sayfa; Bumba Group'un ortak liste servisi (bumbagroup.com) tarafından işlenir. Kayıt çift onaylıdır: onay e-postasındaki bağlantıya tıklamadan listeye eklenmezsiniz. Her e-postada tek tıkla çıkış bağlantısı bulunur. Ayrıntılar için [ortak aydınlatma metnine](https://bumbagroup.com/liste/aydinlatma) bakın.",
           "**Sunucu kayıtları:** Siteyi yayınlayan sunucu, her istek için IP adresi, tarayıcı bilgisi, istenen sayfa ve zaman bilgisini standart erişim kaydı olarak tutar. Bu kayıtlar yalnızca güvenlik ve hata ayıklama amacıyla kullanılır; kişi bazlı profil çıkarmak için kullanılmaz.",
           "**Ziyaret istatistikleri (Umami, izinle):** Yalnız çerez bandında ya da çerez tercihlerinde istatistiğe izin verirseniz, kendi sunucumuzda çalışan Umami ile sayfa görüntülemeleri ve şu eylemler sayılır: dil ve tema değişimi, aramanın sonuç bulup bulmadığı, listeye katılım, saat modeli seçimi, tam ekran, bir aracın ilk kullanımı, konum seçiminin türü (il ya da konum) ve imsakiyenin açılması ya da indirilmesi. Umami bu sırada tarayıcı, işletim sistemi ve cihaz türünü, dili, ekran boyutunu, geldiğiniz sayfanın adresini ve IP adresinizden çıkarılan ülke ve şehri işler; IP adresinin kendisi saklanmaz. Umami çerez kullanmaz ama ziyaretleri takma adlı bir oturuma bağlar; bu yüzden anonim değildir. Aramaya yazdığınız sözcükler, e-posta adresiniz ve konumunuz gönderilmez. İzni ayarlar menüsündeki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman geri alabilirsiniz; Umami bir sonraki sayfadan itibaren çalışmaz.",
@@ -333,7 +343,7 @@
         "id": "cerezler",
         "h": "Çerezler ve tarayıcı depolaması",
         "p": [
-          "Saat Tarih çerez bırakmaz. İlk ziyaretinizde sayfanın altındaki bantta ziyaret istatistiği (Umami) ve dış hizmetler (Open-Meteo) için izninizi sorarız; ikisi de siz izin verene kadar kapalıdır. Seçiminizi ayarlar menüsündeki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman değiştirebilirsiniz. Tercihlerinizi hatırlamak için tarayıcınızın yerel depolama alanını (localStorage) kullanırız; bunlar zorunlu gruptadır, yalnızca cihazınızda durur ve sunucuya gönderilmez. Tarayıcı ayarlarından istediğiniz zaman silebilirsiniz. Bumba Group'un ortak çerez politikası: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi)."
+          "Saat Tarih çerez bırakmaz. İlk ziyaretinizde sayfanın altındaki bantta ziyaret istatistiği (Umami) ve dış hizmetler (Open-Meteo, OpenStreetMap, YouTube) için izninizi sorarız; ikisi de siz izin verene kadar kapalıdır. Seçiminizi ayarlar menüsündeki \"Çerez tercihleri\" bağlantısıyla istediğiniz zaman değiştirebilirsiniz. Tercihlerinizi hatırlamak için tarayıcınızın yerel depolama alanını (localStorage) kullanırız; bunlar zorunlu gruptadır, yalnızca cihazınızda durur ve sunucuya gönderilmez. Tarayıcı ayarlarından istediğiniz zaman silebilirsiniz. Bumba Group'un ortak çerez politikası: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi)."
         ],
         "table": {
           "head": [
@@ -374,7 +384,7 @@
             ],
             [
               "sth-alarms",
-              "Kurduğunuz alarmları ve her alarmın sesini hatırlar.",
+              "Kurduğunuz alarmları, her alarmın sesini ve varsa YouTube bağlantısını hatırlar.",
               "Siz silene kadar"
             ],
             [
@@ -428,6 +438,16 @@
               "Siz silene kadar"
             ],
             [
+              "sth-polls",
+              "Oluşturduğunuz ya da açtığınız toplantı oylamalarını ve gelen yanıtları tutar (en çok 20 oylama).",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-poll-name",
+              "Toplantı oylamasında yazdığınız adı bir sonraki yanıt için hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
               "sth-wake",
               "Araçlarda ekranın açık kalması tercihini hatırlar.",
               "Siz silene kadar"
@@ -440,7 +460,7 @@
         "h": "Hukuki sebepler",
         "ul": [
           "E-posta listesi: açık rızanız (KVKK m. 5/1). Rızanızı dilediğiniz zaman e-postadaki çıkış bağlantısıyla geri alabilirsiniz.",
-          "Ziyaret istatistikleri (Umami) ve dış hizmetler (Open-Meteo): çerez bandında verdiğiniz açık rıza (KVKK m. 5/1). Dış hizmetlere izin verdiğinizde IP adresiniz yurt dışında olabilen bu hizmet sağlayıcılara ulaşır; rızanız bunu da kapsar. Rızanızı \"Çerez tercihleri\" bağlantısıyla geri alabilirsiniz.",
+          "Ziyaret istatistikleri (Umami) ve dış hizmetler (Open-Meteo, OpenStreetMap, YouTube): çerez bandında verdiğiniz açık rıza (KVKK m. 5/1). Dış hizmetlere izin verdiğinizde IP adresiniz yurt dışında olabilen bu hizmet sağlayıcılara ulaşır; rızanız bunu da kapsar. Rızanızı \"Çerez tercihleri\" bağlantısıyla geri alabilirsiniz.",
           "Sunucu kayıtları: sitenin güvenli ve çalışır tutulması için meşru menfaatimiz (KVKK m. 5/2-f).",
           "Tercihleriniz: meşru menfaat (KVKK m. 5/2-f); veriler yalnız cihazınızda durur."
         ]
@@ -763,6 +783,10 @@
           "name": "Toplantı planlayıcı",
           "desc": "Farklı saat dilimlerinde ortak mesai saatlerini bulun."
         },
+        "poll": {
+          "name": "Toplantı oylaması",
+          "desc": "Aday saatleri paylaşın, herkes uygun saati işaretlesin."
+        },
         "diff": {
           "name": "Saat farkı",
           "desc": "İstanbul ile dünya şehirleri arasındaki saat farkı."
@@ -1014,7 +1038,12 @@
         "rise": "Yükselen",
         "digital": "Dijital bip",
         "soft": "Yumuşak"
-      }
+      },
+      "ytLabel": "YouTube müziği (isteğe bağlı)",
+      "ytNote": "Alarm çalınca bu video oynar; 1 dakika içinde kapatmazsanız alarm sesi de çalar (tarayıcı videoyu kendiliğinden oynatmazsa da). Video YouTube'dan yüklendiği için dış hizmetlere izin gerekir.",
+      "ytInvalid": "Bu bir YouTube bağlantısı değil.",
+      "ytBlocked": "YouTube müziği için dış hizmetlere izin verin; izin yoksa alarm kendi sesiyle çalar.",
+      "spotifyNote": "Spotify tarayıcıda kendiliğinden çalmaz; Spotify'ı alarm müziği olarak Android uygulamasında kullanabilirsiniz."
     },
     "pomodoro": {
       "title": "Pomodoro Zamanlayıcı: 25 Dakika Çalış, 5 Dakika Mola | Saat Tarih",
@@ -1357,6 +1386,72 @@
     "pickHint": "Toplantı saatini seçmek için tablonun üstündeki saate dokunun; bağlantı ve takvim seçili saati içerir.",
     "meeting": "Toplantı",
     "picked": "Seçili saat: {time} ({city} saatiyle)"
+  },
+  "poll": {
+    "title": "Toplantı Oylaması: Uygun Saati Birlikte Seçin | Saat Tarih",
+    "description": "Aday saatleri seçin, bağlantıyı paylaşın, herkes uygun saatleri işaretlesin. Hesap ve sunucu yok; her kişi saatleri kendi saat diliminde görür.",
+    "h1": "Toplantı oylaması",
+    "lead": "Aday saatleri ekleyip oylama bağlantısını paylaşın. Katılımcılar uygun saatleri işaretleyip size bir yanıt bağlantısı gönderir; en uygun saat kendiliğinden bulunur.",
+    "titleLabel": "Toplantının adı",
+    "orgLabel": "Adınız (isteğe bağlı)",
+    "durLabel": "Süre",
+    "slotsHeading": "Aday saatler",
+    "dateLabel": "Tarih",
+    "timeLabel": "Saat",
+    "addSlot": "Saati ekle",
+    "removeSlot": "Kaldır",
+    "maxSlots": "En çok {n} aday saat ekleyebilirsiniz.",
+    "needSlot": "En az bir aday saat ekleyin.",
+    "create": "Oylama bağlantısını oluştur",
+    "tzNote": "Saatler sizin saat diliminizde gösterilir: {tz}.",
+    "orgTime": "Düzenleyicinin saatiyle {time} ({tz})",
+    "byLine": "Düzenleyen: {name}",
+    "linkHeading": "Oylama bağlantısı",
+    "linkHint": "Bu bağlantıyı katılımcılara gönderin. Her katılımcı uygun saatleri işaretleyip size bir yanıt bağlantısı gönderir; onu açtığınızda ya da aşağıya yapıştırdığınızda sonuçlara eklenir.",
+    "linkLabel": "Bağlantı",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı",
+    "share": "Paylaş",
+    "voteHeading": "Uygun olduğunuz saatleri işaretleyin",
+    "yourName": "Adınız",
+    "yes": "Uygun",
+    "maybe": "Olabilir",
+    "no": "Uygun değil",
+    "respond": "Yanıt bağlantımı oluştur",
+    "responseHint": "Bu yanıt bağlantısını düzenleyiciye gönderin (mesaj ya da e-postayla).",
+    "ownSaved": "Yanıtınız bu tarayıcıdaki sonuçlara eklendi. Başka bir cihazdaysanız bu bağlantıyı kendinize gönderin.",
+    "needName": "Adınızı yazın.",
+    "resultsHeading": "Sonuçlar",
+    "participant": "Katılımcı",
+    "total": "Toplam",
+    "best": "En uygun saat: {slot} ({n}/{total} kişi uygun)",
+    "noAnswers": "Henüz yanıt yok. Katılımcıların yanıt bağlantılarını açtığınızda ya da aşağıya yapıştırdığınızda burada görünür.",
+    "pasteLabel": "Gelen yanıt bağlantısını yapıştırın",
+    "pasteBtn": "Ekle",
+    "pasteBad": "Bu bağlantı bu oylamaya ait geçerli bir yanıt değil.",
+    "added": "Yanıt eklendi: {names}",
+    "removeAnswer": "Yanıtı kaldır",
+    "resultsLink": "Sonuç bağlantısını kopyala",
+    "myPolls": "Bu tarayıcıdaki oylamalar",
+    "answers": "{n} yanıt",
+    "deletePoll": "Oylamayı kaldır",
+    "invalid": "Bu oylama bağlantısı bozuk ya da eksik.",
+    "newPoll": "Yeni oylama oluştur",
+    "privacyNote": "Hesap ve sunucu yok: oylama ve yanıtlar bağlantının # işaretinden sonraki kısmında taşınır (tarayıcılar bu kısmı sunucuya göndermez); gördüğünüz yanıtlar yalnız bu tarayıcıda saklanır.",
+    "faq": [
+      {
+        "q": "Oylama bilgileri nerede saklanıyor?",
+        "a": "Sunucuda değil. Başlık, aday saatler, adlar ve yanıtlar bağlantının # işaretinden sonraki kısmında taşınır; tarayıcılar bu kısmı sunucuya göndermez. Düzenleyicinin gördüğü yanıtlar yalnız kendi tarayıcısında saklanır; bağlantıyı kiminle paylaşırsanız onlar görür."
+      },
+      {
+        "q": "Katılımcılar yanıtlarını bana nasıl gönderir?",
+        "a": "Her katılımcı adını yazıp uygun saatleri işaretler ve bir yanıt bağlantısı oluşturur; bu bağlantıyı size mesaj ya da e-postayla gönderir. Bağlantıyı açtığınızda ya da oylama sayfasındaki kutuya yapıştırdığınızda yanıt sonuç tablosuna eklenir."
+      },
+      {
+        "q": "Saatler hangi saat dilimine göre gösteriliyor?",
+        "a": "Herkes saatleri kendi cihazının saat diliminde görür; düzenleyicinin saat dilimi farklıysa her saatin yanında onun saati de yazar. Yaz saati geçişleri hesaba katılır."
+      }
+    ]
   },
   "cdp": {
     "title": "{dat} Kaç Gün Kaldı? Geri Sayım | Saat Tarih",
@@ -1950,7 +2045,7 @@
   },
   "consent": {
     "barLabel": "Çerez tercihi",
-    "barText": "Tercihlerinizi (dil, tema, saat ve araç ayarları) yalnız bu tarayıcıda tutarız. İzin verirseniz ziyaretler Umami ile sayılır; hava durumu (Open-Meteo) ve yakındaki camiler (OpenStreetMap) dış hizmetlerden yüklenir.",
+    "barText": "Tercihlerinizi (dil, tema, saat ve araç ayarları) yalnız bu tarayıcıda tutarız. İzin verirseniz ziyaretler Umami ile sayılır; hava durumu (Open-Meteo), küredeki yakın harita ve yakındaki camiler (OpenStreetMap) ve alarm müziği (YouTube) dış hizmetlerden yüklenir.",
     "accept": "Kabul et",
     "reject": "Reddet",
     "prefs": "Tercihler",
@@ -1963,13 +2058,14 @@
     "stats": "İstatistik",
     "statsText": "Umami ile sayfa ziyaretleri ve birkaç eylem sayılır (tarayıcı, cihaz, dil ve IP adresinden çıkarılan ülke ve şehir; IP saklanmaz). Çerez kullanılmaz. Varsayılan kapalı.",
     "ext": "Dış hizmetler",
-    "extText": "Hava durumu Open-Meteo'dan (api.open-meteo.com), yakındaki camiler OpenStreetMap'in Overpass hizmetinden (overpass-api.de) yüklenir; bu sırada IP adresiniz bu hizmetlere ulaşır. Varsayılan kapalı.",
+    "extText": "Hava durumu Open-Meteo'dan (api.open-meteo.com), yakınlaştırılan küredeki harita OpenStreetMap'ten (tile.openstreetmap.org), yakındaki camiler OpenStreetMap'in Overpass hizmetinden (overpass-api.de), alarma eklediğiniz YouTube müziği YouTube'dan (youtube-nocookie.com) yüklenir; bu sırada IP adresiniz bu hizmetlere ulaşır. Varsayılan kapalı.",
     "save": "Seçimi kaydet",
     "footerLink": "Çerez tercihleri",
     "privacy": "Gizlilik",
     "wxBlocked": "Hava durumu Open-Meteo'dan yüklenir; göstermek için dış hizmetlere izin verin.",
     "allow": "İzin ver",
-    "mqBlocked": "Yakındaki camiler OpenStreetMap'ten (Overpass) yüklenir; göstermek için dış hizmetlere izin verin."
+    "mqBlocked": "Yakındaki camiler OpenStreetMap'ten (Overpass) yüklenir; göstermek için dış hizmetlere izin verin.",
+    "mapBlocked": "Yakın harita OpenStreetMap'ten yüklenir; göstermek için dış hizmetlere izin verin."
   },
   "qibla": {
     "title": "Kıble Yönü: Pusula, Kıble Açısı ve Kıble Saati | Saat Tarih",

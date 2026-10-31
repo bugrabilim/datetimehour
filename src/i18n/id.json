@@ -197,6 +197,13 @@
     "upcomingLead": "Tanggal-tanggal berikutnya di kalender Turki.",
     "upcomingAll": "Lihat kalender tahunan",
     "upcomingNone": "Tidak ada hari mendatang.",
+    "globeLabel": "Bola dunia berputar yang menampilkan siang dan malam, meridian zona waktu, dan waktu setempat di kota-kota besar",
+    "globeCaption": "Sisi yang terang adalah siang, sisi yang gelap adalah malam. Garis-garisnya adalah meridian zona waktu setiap 15° (dengan selisih UTC); garis merah adalah titik nol, yaitu meridian Greenwich (UTC). Di samping setiap kota tertulis waktu setempatnya. Seret bola dunia untuk memutarnya; perbesar dengan dua jari, roda tetikus, atau tombol + dan −. Saat diperbesar, waktu setempat tempat-tempat di wilayah itu juga muncul. Jika diperbesar lagi, tampilan beralih ke peta OpenStreetMap (hingga tingkat jalan) dan bujur meridian serta potongan meridian dituliskan. Ubin peta diunduh dari OpenStreetMap saat itu juga (© kontributor OpenStreetMap); tekstur bola dunia berasal dari Natural Earth (domain publik). Ketuk dua kali untuk memperbesar.",
+    "globeTitle": "Bola dunia",
+    "globeInfo": "Tentang bola dunia",
+    "zoomIn": "Perbesar",
+    "zoomOut": "Perkecil",
+    "resetView": "Seluruh dunia",
     "todayQ": "Tanggal berapa hari ini?",
     "todayA": "Tanggal dan hari ini ditampilkan secara langsung di bilah atas setiap halaman, mengikuti jam yang disinkronkan dengan server, bukan jam perangkat Anda."
   },
@@ -266,7 +273,10 @@
           "**Waktu dan tanggal:** Waktu dan zona waktu perangkat Anda dibaca dan dihitung hanya di peramban Anda. Data ini tidak dikirim ke server dan tidak disimpan.",
           "**Lokasi (jadwal salat):** Jika Anda menekan \"Gunakan lokasi saya\" di halaman jadwal salat, peramban memakai lokasi Anda hanya di perangkat untuk menghitung waktu. Koordinat tidak dikirim ke server dan tidak masuk statistik; pilihan terakhir Anda tetap di penyimpanan lokal peramban.",
           "**Cuaca (layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie, halaman cuaca dan gaya jam dengan cuaca mengirim koordinat perkiraan provinsi atau lokasi pilihan Anda (sekitar 1 km) langsung dari peramban ke Open-Meteo (api.open-meteo.com), penyedia datanya; alamat IP Anda juga sampai ke Open-Meteo. Tanpa izin tidak ada permintaan yang dibuat dan catatan singkat ditampilkan sebagai gantinya. Server Saat Tarih tidak melihat atau menyimpan koordinat ini; ketentuan privasi Open-Meteo berlaku.",
+          "**Peta (bola dunia, layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie dan memperbesar bola dunia di beranda melewati tingkat tertentu, ubin peta diunduh langsung ke peramban Anda dari server OpenStreetMap (tile.openstreetmap.org); alamat IP Anda dan alamat ubin wilayah yang Anda lihat sampai ke OpenStreetMap Foundation. Tanpa izin, atau selama bola dunia diperkecil, permintaan ini tidak dibuat. Server Saat Tarih tidak melihatnya; ketentuan privasi OpenStreetMap sendiri yang berlaku.",
           "**Kiblat dan masjid terdekat:** Arah kiblat, jarak, dan waktu kiblat dihitung di peramban Anda. Untuk kompas, sensor orientasi ponsel dibaca hanya di peramban (iPhone meminta izin) dan tidak pernah dikirim ke mana pun. Jika Anda menekan \"Tampilkan masjid\" dan telah mengizinkan layanan eksternal, koordinat tempat terpilih yang dibulatkan ke dua desimal (sekitar 1 km) dikirim dari peramban ke layanan Overpass (overpass-api.de) yang menyediakan data OpenStreetMap; alamat IP Anda juga sampai ke layanan ini. Server Saat Tarih tidak melihat koordinat ini.",
+          "**Musik alarm (YouTube, layanan eksternal, dengan izin):** Jika Anda menambahkan tautan YouTube ke alarm di alat alarm dan mengizinkan layanan eksternal, saat alarm berbunyi video dimuat ke peramban Anda dengan pemutar mode privasi yang ditingkatkan dari YouTube (youtube-nocookie.com); alamat IP Anda dan ID video sampai ke Google (YouTube), dan pemutar dapat menyimpan datanya sendiri di peramban Anda. Tautan hanya tersimpan di peramban ini, bersama alarm Anda. Tanpa izin, pemutar tidak dimuat dan alarm berbunyi dengan suaranya sendiri. Server Saat Tarih tidak melihatnya; ketentuan privasi YouTube (Google) sendiri yang berlaku.",
+          "**Polling rapat:** Judul polling, waktu usulan, nama penyelenggara dan peserta, serta jawaban mereka berada di bagian tautan setelah tanda #; peramban tidak mengirim bagian itu ke server, sehingga server Saat Tarih dan statistik tidak melihatnya. Siapa pun yang Anda beri tautannya (lewat pesan atau email) dapat melihatnya. Polling dan jawaban yang Anda lihat hanya disimpan di peramban ini, di kunci sth-polls.",
           "**Formulir daftar email:** Alamat email yang Anda isi, persetujuan yang Anda berikan dengan tombol \"Saya setuju\" di jendela yang terbuka, bahasa yang dipilih, dan halaman formulir diproses oleh layanan daftar bersama Bumba Group (bumbagroup.com). Pendaftaran memakai konfirmasi ganda: Anda baru ditambahkan setelah mengklik tautan di email konfirmasi, dan setiap email memuat tautan berhenti berlangganan satu klik. Lihat [pemberitahuan privasi bersama](https://bumbagroup.com/liste/aydinlatma?dil=en) untuk rinciannya.",
           "**Log server:** Server yang menampung situs menyimpan log akses standar untuk setiap permintaan, berisi alamat IP, informasi peramban, halaman yang diminta, dan waktunya. Log ini hanya dipakai untuk keamanan dan pemecahan masalah, bukan untuk membuat profil orang.",
           "**Statistik kunjungan (Umami, dengan izin):** Hanya jika Anda mengizinkan statistik di spanduk atau preferensi cookie, Umami yang berjalan di server kami sendiri menghitung tayangan halaman dan tindakan berikut: penggantian bahasa dan tema, apakah pencarian menemukan hasil, bergabung dengan daftar, memilih gaya jam, layar penuh, penggunaan pertama suatu alat, jenis pilihan lokasi (provinsi atau lokasi), serta membuka atau mengunduh jadwal imsakiyah Ramadan. Dalam proses itu Umami memproses peramban, sistem operasi dan jenis perangkat, bahasa, ukuran layar, alamat halaman asal Anda, serta negara dan kota yang diturunkan dari alamat IP; alamat IP itu sendiri tidak disimpan. Umami tidak memakai cookie, tetapi mengaitkan kunjungan dengan sesi berpseudonim, jadi tidak anonim. Kata yang Anda ketik di pencarian, alamat email, dan lokasi Anda tidak dikirim. Anda dapat menarik izin kapan saja lewat tautan \"Preferensi cookie\" di menu pengaturan; Umami berhenti mulai halaman berikutnya.",
@@ -333,7 +343,7 @@
         "id": "cookies",
         "h": "Cookie dan penyimpanan peramban",
         "p": [
-          "Saat Tarih tidak memasang cookie apa pun. Pada kunjungan pertama, spanduk di bagian bawah halaman meminta izin Anda untuk statistik kunjungan (Umami) dan layanan eksternal (Open-Meteo); keduanya tetap nonaktif sampai Anda mengizinkannya. Anda dapat mengubah pilihan kapan saja lewat tautan \"Preferensi cookie\" di menu pengaturan. Untuk mengingat pilihan Anda kami memakai penyimpanan lokal peramban (localStorage); item ini termasuk kelompok yang diperlukan, tetap di perangkat Anda, dan tidak dikirim ke server. Anda dapat menghapusnya kapan saja di pengaturan peramban. Kebijakan cookie bersama Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih tidak memasang cookie apa pun. Pada kunjungan pertama, spanduk di bagian bawah halaman meminta izin Anda untuk statistik kunjungan (Umami) dan layanan eksternal (Open-Meteo, OpenStreetMap, YouTube); keduanya tetap nonaktif sampai Anda mengizinkannya. Anda dapat mengubah pilihan kapan saja lewat tautan \"Preferensi cookie\" di menu pengaturan. Untuk mengingat pilihan Anda kami memakai penyimpanan lokal peramban (localStorage); item ini termasuk kelompok yang diperlukan, tetap di perangkat Anda, dan tidak dikirim ke server. Anda dapat menghapusnya kapan saja di pengaturan peramban. Kebijakan cookie bersama Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -374,7 +384,7 @@
             ],
             [
               "sth-alarms",
-              "Mengingat alarm yang dipasang dan suara setiap alarm.",
+              "Mengingat alarm yang Anda atur, suara setiap alarm, dan tautan YouTube-nya bila ada.",
               "Sampai Anda menghapusnya"
             ],
             [
@@ -428,6 +438,16 @@
               "Sampai Anda menghapusnya"
             ],
             [
+              "sth-polls",
+              "Menyimpan polling rapat yang Anda buat atau buka dan jawaban yang diterima (hingga 20 polling).",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-poll-name",
+              "Mengingat nama yang Anda tulis di polling rapat untuk jawaban berikutnya.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
               "sth-wake",
               "Mengingat apakah alat menjaga layar tetap menyala.",
               "Sampai Anda menghapusnya"
@@ -440,7 +460,7 @@
         "h": "Dasar hukum",
         "ul": [
           "Daftar email: persetujuan eksplisit Anda (KVKK pasal 5/1). Anda dapat menariknya kapan saja dengan tautan berhenti berlangganan di setiap email.",
-          "Statistik kunjungan (Umami) dan layanan eksternal (Open-Meteo): persetujuan eksplisit yang Anda berikan di spanduk cookie (KVKK pasal 5/1). Saat Anda mengizinkan layanan eksternal, alamat IP Anda sampai ke penyedia tersebut, yang mungkin berada di luar negeri; persetujuan Anda juga mencakup hal ini. Anda dapat menariknya lewat tautan \"Preferensi cookie\".",
+          "Statistik kunjungan (Umami) dan layanan eksternal (Open-Meteo, OpenStreetMap, YouTube): persetujuan eksplisit yang Anda berikan di spanduk cookie (KVKK pasal 5/1). Saat Anda mengizinkan layanan eksternal, alamat IP Anda sampai ke penyedia tersebut, yang mungkin berada di luar negeri; persetujuan Anda juga mencakup hal ini. Anda dapat menariknya lewat tautan \"Preferensi cookie\".",
           "Log server: kepentingan sah kami untuk menjaga situs tetap aman dan berfungsi (KVKK pasal 5/2-f).",
           "Preferensi Anda: kepentingan sah (KVKK pasal 5/2-f); data hanya tersimpan di perangkat Anda."
         ]
@@ -763,6 +783,10 @@
           "name": "Perencana rapat",
           "desc": "Cari jam kerja yang bertepatan di berbagai zona waktu."
         },
+        "poll": {
+          "name": "Polling rapat",
+          "desc": "Bagikan waktu usulan, biarkan semua menandai yang cocok."
+        },
         "diff": {
           "name": "Selisih waktu",
           "desc": "Selisih waktu antara Istanbul dan kota-kota dunia."
@@ -1014,7 +1038,12 @@
         "rise": "Makin keras",
         "digital": "Bip digital",
         "soft": "Lembut"
-      }
+      },
+      "ytLabel": "Musik YouTube (opsional)",
+      "ytNote": "Saat alarm berbunyi, video ini diputar; jika tidak Anda matikan dalam 1 menit, suara alarm juga berbunyi (juga bila peramban tidak memutar video dengan sendirinya). Video dimuat dari YouTube, jadi layanan eksternal harus diizinkan.",
+      "ytInvalid": "Ini bukan tautan YouTube.",
+      "ytBlocked": "Izinkan layanan eksternal untuk musik YouTube; tanpa izin, alarm berbunyi dengan suaranya sendiri.",
+      "spotifyNote": "Spotify tidak diputar dengan sendirinya di peramban; Anda dapat memakai Spotify sebagai musik alarm di aplikasi Android."
     },
     "pomodoro": {
       "title": "Pengatur Waktu Pomodoro: Kerja 25 Menit, Istirahat 5 | Saat Tarih",
@@ -1357,6 +1386,72 @@
     "pickHint": "Ketuk satu jam di bagian atas tabel untuk memilih waktu rapat; tautan dan entri kalender akan memuatnya.",
     "meeting": "Rapat",
     "picked": "Waktu yang dipilih: {time} (waktu {city})"
+  },
+  "poll": {
+    "title": "Polling Rapat: Pilih Waktu Terbaik Bersama | Saat Tarih",
+    "description": "Pilih waktu usulan, bagikan tautannya, dan biarkan semua orang menandai waktu luangnya. Tanpa akun dan server; tiap orang melihat waktu di zona waktunya.",
+    "h1": "Polling rapat",
+    "lead": "Tambahkan waktu usulan dan bagikan tautan polling. Peserta menandai waktu yang cocok lalu mengirimi Anda tautan jawaban; waktu terbaik ditemukan otomatis.",
+    "titleLabel": "Nama rapat",
+    "orgLabel": "Nama Anda (opsional)",
+    "durLabel": "Durasi",
+    "slotsHeading": "Waktu usulan",
+    "dateLabel": "Tanggal",
+    "timeLabel": "Jam",
+    "addSlot": "Tambah waktu",
+    "removeSlot": "Hapus",
+    "maxSlots": "Anda dapat menambahkan hingga {n} waktu usulan.",
+    "needSlot": "Tambahkan setidaknya satu waktu usulan.",
+    "create": "Buat tautan polling",
+    "tzNote": "Waktu ditampilkan di zona waktu Anda: {tz}.",
+    "orgTime": "Waktu penyelenggara: {time} ({tz})",
+    "byLine": "Penyelenggara: {name}",
+    "linkHeading": "Tautan polling",
+    "linkHint": "Kirim tautan ini kepada peserta. Setiap peserta menandai waktu yang cocok dan mengirimi Anda tautan jawaban; saat Anda membukanya atau menempelkannya di bawah, jawaban ditambahkan ke hasil.",
+    "linkLabel": "Tautan",
+    "copy": "Salin",
+    "copied": "Disalin",
+    "share": "Bagikan",
+    "voteHeading": "Tandai waktu yang cocok untuk Anda",
+    "yourName": "Nama Anda",
+    "yes": "Bisa",
+    "maybe": "Mungkin",
+    "no": "Tidak bisa",
+    "respond": "Buat tautan jawaban saya",
+    "responseHint": "Kirim tautan jawaban ini kepada penyelenggara (lewat pesan atau email).",
+    "ownSaved": "Jawaban Anda ditambahkan ke hasil di peramban ini. Jika Anda memakai perangkat lain, kirim tautan ini ke diri sendiri.",
+    "needName": "Tulis nama Anda.",
+    "resultsHeading": "Hasil",
+    "participant": "Peserta",
+    "total": "Jumlah",
+    "best": "Waktu terbaik: {slot} ({n} dari {total} orang bisa)",
+    "noAnswers": "Belum ada jawaban. Jawaban muncul di sini saat Anda membuka tautan jawaban peserta atau menempelkannya di bawah.",
+    "pasteLabel": "Tempel tautan jawaban yang Anda terima",
+    "pasteBtn": "Tambah",
+    "pasteBad": "Tautan ini bukan jawaban yang sah untuk polling ini.",
+    "added": "Jawaban ditambahkan: {names}",
+    "removeAnswer": "Hapus jawaban",
+    "resultsLink": "Salin tautan hasil",
+    "myPolls": "Polling di peramban ini",
+    "answers": "{n} jawaban",
+    "deletePoll": "Hapus polling",
+    "invalid": "Tautan polling ini rusak atau tidak lengkap.",
+    "newPoll": "Buat polling baru",
+    "privacyNote": "Tanpa akun dan server: polling dan jawaban dibawa di bagian tautan setelah tanda # (peramban tidak mengirim bagian itu ke server); jawaban yang Anda lihat hanya disimpan di peramban ini.",
+    "faq": [
+      {
+        "q": "Di mana data polling disimpan?",
+        "a": "Tidak di server. Judul, waktu usulan, nama, dan jawaban dibawa di bagian tautan setelah tanda #, yang tidak dikirim peramban ke server. Jawaban yang dilihat penyelenggara hanya disimpan di perambannya sendiri; siapa pun yang Anda beri tautannya dapat melihatnya."
+      },
+      {
+        "q": "Bagaimana peserta mengirimkan jawabannya kepada saya?",
+        "a": "Setiap peserta menulis namanya, menandai waktu yang cocok, dan membuat tautan jawaban yang dikirim kepada Anda lewat pesan atau email. Saat Anda membuka tautan itu atau menempelkannya ke kotak di halaman polling, jawabannya ditambahkan ke tabel hasil."
+      },
+      {
+        "q": "Waktu ditampilkan dalam zona waktu apa?",
+        "a": "Setiap orang melihat waktu dalam zona waktu perangkatnya sendiri; jika zona waktu penyelenggara berbeda, waktunya juga ditampilkan di samping tiap pilihan. Perubahan waktu musim panas diperhitungkan."
+      }
+    ]
   },
   "cdp": {
     "title": "Berapa Hari Lagi {dat}? Hitung Mundur | Saat Tarih",
@@ -1950,7 +2045,7 @@
   },
   "consent": {
     "barLabel": "Pilihan cookie",
-    "barText": "Kami menyimpan preferensi Anda (bahasa, tema, pengaturan jam dan alat) hanya di peramban ini. Jika Anda mengizinkan, kunjungan dihitung dengan Umami, serta cuaca (Open-Meteo) dan masjid terdekat (OpenStreetMap) dimuat dari layanan eksternal.",
+    "barText": "Kami menyimpan preferensi Anda (bahasa, tema, pengaturan jam dan alat) hanya di peramban ini. Jika Anda mengizinkan, kunjungan dihitung dengan Umami, serta cuaca (Open-Meteo), peta dekat bola dunia dan masjid terdekat (OpenStreetMap), dan musik alarm (YouTube) dimuat dari layanan eksternal.",
     "accept": "Terima",
     "reject": "Tolak",
     "prefs": "Preferensi",
@@ -1963,13 +2058,14 @@
     "stats": "Statistik",
     "statsText": "Umami menghitung kunjungan halaman dan beberapa tindakan (peramban, perangkat, bahasa, serta negara dan kota yang diturunkan dari alamat IP; IP tidak disimpan). Tidak ada cookie yang dipakai. Nonaktif secara bawaan.",
     "ext": "Layanan eksternal",
-    "extText": "Cuaca dimuat dari Open-Meteo (api.open-meteo.com) dan masjid terdekat dari layanan Overpass OpenStreetMap (overpass-api.de); alamat IP Anda sampai ke layanan ini. Nonaktif secara bawaan.",
+    "extText": "Cuaca dimuat dari Open-Meteo (api.open-meteo.com), peta pada bola dunia yang diperbesar dari OpenStreetMap (tile.openstreetmap.org), masjid terdekat dari layanan Overpass OpenStreetMap (overpass-api.de), dan musik YouTube yang Anda tambahkan ke alarm dari YouTube (youtube-nocookie.com); alamat IP Anda sampai ke layanan ini. Nonaktif secara bawaan.",
     "save": "Simpan pilihan",
     "footerLink": "Preferensi cookie",
     "privacy": "Privasi",
     "wxBlocked": "Cuaca dimuat dari Open-Meteo; izinkan layanan eksternal untuk menampilkannya.",
     "allow": "Izinkan",
-    "mqBlocked": "Masjid terdekat dimuat dari OpenStreetMap (Overpass); izinkan layanan eksternal untuk menampilkannya."
+    "mqBlocked": "Masjid terdekat dimuat dari OpenStreetMap (Overpass); izinkan layanan eksternal untuk menampilkannya.",
+    "mapBlocked": "Peta dekat dimuat dari OpenStreetMap; izinkan layanan eksternal untuk menampilkannya."
   },
   "qibla": {
     "title": "Arah Kiblat: Kompas, Sudut, dan Waktu Kiblat | Saat Tarih",

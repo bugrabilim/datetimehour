@@ -224,6 +224,13 @@
     "upcomingLead": "Die nächsten Tage im türkischen Kalender.",
     "upcomingAll": "Zum Jahreskalender",
     "upcomingNone": "Keine bevorstehenden Tage gefunden.",
+    "globeLabel": "Rotierender Globus mit Tag und Nacht, Zeitzonen-Meridianen und der Ortszeit großer Städte",
+    "globeCaption": "Die helle Seite ist Tag, die dunkle Nacht. Die Linien sind die 15°-Zeitzonenmeridiane (mit UTC-Versatz); die rote Linie ist der Nullpunkt, der Meridian von Greenwich (UTC). Bei jeder Stadt steht die Ortszeit. Ziehen Sie den Globus, um ihn zu drehen; zoomen Sie mit zwei Fingern, dem Mausrad oder den Tasten + und −. Beim Hineinzoomen erscheint auch die Ortszeit der Orte in diesem Gebiet. Noch weiter hinein wechselt die Ansicht zur OpenStreetMap-Karte (bis auf Straßenebene); Meridiane und Meridianabschnitte werden mit ihrer Länge beschriftet. Die Kartenkacheln werden dann von OpenStreetMap geladen (© OpenStreetMap-Mitwirkende); die Globustextur stammt von Natural Earth (gemeinfrei). Doppeltippen vergrößert.",
+    "globeTitle": "Weltkugel",
+    "globeInfo": "Info zum Globus",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern",
+    "resetView": "Ganze Welt",
     "todayQ": "Welches Datum haben wir heute?",
     "todayA": "Das heutige Datum und der Wochentag stehen live in der Leiste oben auf jeder Seite und folgen der serversynchronisierten Uhr statt der Geräteuhr."
   },
@@ -293,7 +300,10 @@
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
           "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
           "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo.",
+          "**Karte (Globus, externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben und den Globus auf der Startseite über eine bestimmte Stufe hinaus vergrößern, werden Kartenkacheln direkt vom Server von OpenStreetMap (tile.openstreetmap.org) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kacheladressen des betrachteten Gebiets die OpenStreetMap Foundation. Ohne Zustimmung oder bei verkleinertem Globus wird diese Anfrage nicht gestellt. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbedingungen von OpenStreetMap.",
           "**Qibla und Moscheen in der Nähe:** Qibla-Richtung, Entfernung und Qibla-Zeit werden in Ihrem Browser berechnet. Für den Kompass wird der Lagesensor Ihres Telefons nur im Browser gelesen (das iPhone fragt nach Erlaubnis) und nirgendwohin gesendet. Wenn Sie auf \"Moscheen anzeigen\" tippen und externe Dienste erlaubt haben, werden die auf zwei Dezimalstellen gerundeten Koordinaten des gewählten Ortes (etwa 1 km) von Ihrem Browser an den Overpass-Dienst (overpass-api.de) gesendet, der OpenStreetMap-Daten bereitstellt; dabei erreicht auch Ihre IP-Adresse diesen Dienst. Der Saat-Tarih-Server sieht diese Koordinaten nicht.",
+          "**Weckermusik (YouTube, externer Dienst, mit Zustimmung):** Wenn Sie im Wecker-Werkzeug einem Wecker einen YouTube-Link hinzufügen und externe Dienste erlaubt haben, wird das Video beim Klingeln mit dem Player im erweiterten Datenschutzmodus von YouTube (youtube-nocookie.com) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kennung des Videos Google (YouTube), und der Player kann eigene Daten in Ihrem Browser speichern. Der Link bleibt nur in diesem Browser, zusammen mit Ihrem Wecker. Ohne Zustimmung wird der Player nicht geladen und der Wecker klingelt mit seinem eigenen Ton. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbestimmungen von YouTube (Google).",
+          "**Terminumfrage:** Titel, Terminvorschläge, die Namen von Organisator und Teilnehmern und ihre Antworten stehen im Teil des Links nach dem #-Zeichen; Browser senden diesen Teil nicht an den Server, daher sehen der Server von Saat Tarih und die Statistik sie nicht. Wer den Link (per Nachricht oder E-Mail) erhält, kann ihn sehen. Die Umfragen und Antworten, die Sie sehen, werden nur in diesem Browser unter dem Schlüssel sth-polls gespeichert.",
           "**Formular der E-Mail-Liste:** Die eingegebene E-Mail-Adresse, die mit der Schaltfläche „Ich stimme zu“ im sich öffnenden Fenster erteilte Einwilligung, die gewählte Sprache und die Seite des Formulars werden vom gemeinsamen Listendienst der Bumba Group (bumbagroup.com) verarbeitet. Die Anmeldung erfolgt per Double-Opt-in: Sie werden erst aufgenommen, wenn Sie auf den Link in der Bestätigungs-E-Mail klicken; jede E-Mail enthält einen Abmeldelink. Einzelheiten im [gemeinsamen Datenschutzhinweis](https://bumbagroup.com/liste/aydinlatma?dil=en).",
           "**Server-Protokolle:** Der Server, auf dem die Website betrieben wird, führt für jede Anfrage ein übliches Zugriffsprotokoll mit IP-Adresse, Browserinformationen, aufgerufener Seite und Zeitpunkt. Diese Protokolle dienen ausschließlich der Sicherheit und der Fehlerbehebung, nicht der Erstellung von Personenprofilen.",
           "**Besuchsstatistik (Umami, mit Zustimmung):** Nur wenn Sie im Cookie-Banner oder in den Cookie-Einstellungen der Statistik zustimmen, zählt Umami, das auf unserem eigenen Server läuft, Seitenaufrufe und folgende Aktionen: Sprach- und Designwechsel, ob eine Suche ein Ergebnis fand, Anmeldung zur Liste, Wahl eines Uhrstils, Vollbild, die erste Nutzung eines Werkzeugs, die Art der Ortswahl (Provinz oder Standort) sowie Öffnen oder Herunterladen des Ramadan-Kalenders. Dabei verarbeitet Umami Browser, Betriebssystem und Gerätetyp, Sprache, Bildschirmgröße, die Adresse der vorherigen Seite sowie aus Ihrer IP-Adresse abgeleitetes Land und Stadt; die IP-Adresse selbst wird nicht gespeichert. Umami verwendet keine Cookies, verknüpft Besuche aber mit einer pseudonymen Sitzung und ist daher nicht anonym. Suchbegriffe, Ihre E-Mail-Adresse und Ihr Standort werden nicht gesendet. Sie können die Zustimmung jederzeit über den Link „Cookie-Einstellungen“ im Einstellungsmenü widerrufen; Umami läuft ab der nächsten Seite nicht mehr.",
@@ -360,7 +370,7 @@
         "id": "cookies",
         "h": "Cookies und Browser-Speicher",
         "p": [
-          "Saat Tarih setzt keine Cookies. Beim ersten Besuch fragt ein Banner unten auf der Seite nach Ihrer Zustimmung zur Besuchsstatistik (Umami) und zu externen Diensten (Open-Meteo); beides bleibt aus, bis Sie zustimmen. Sie können Ihre Wahl jederzeit über den Link „Cookie-Einstellungen“ im Einstellungsmenü ändern. Um Ihre Einstellungen zu speichern, nutzen wir den lokalen Speicher Ihres Browsers (localStorage); diese Einträge gehören zur notwendigen Gruppe, bleiben auf Ihrem Gerät und werden nicht an einen Server gesendet. Sie können sie jederzeit in den Browsereinstellungen löschen. Gemeinsame Cookie-Richtlinie der Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih setzt keine Cookies. Beim ersten Besuch fragt ein Banner unten auf der Seite nach Ihrer Zustimmung zur Besuchsstatistik (Umami) und zu externen Diensten (Open-Meteo, OpenStreetMap, YouTube); beides bleibt aus, bis Sie zustimmen. Sie können Ihre Wahl jederzeit über den Link „Cookie-Einstellungen“ im Einstellungsmenü ändern. Um Ihre Einstellungen zu speichern, nutzen wir den lokalen Speicher Ihres Browsers (localStorage); diese Einträge gehören zur notwendigen Gruppe, bleiben auf Ihrem Gerät und werden nicht an einen Server gesendet. Sie können sie jederzeit in den Browsereinstellungen löschen. Gemeinsame Cookie-Richtlinie der Bumba Group: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -401,7 +411,7 @@
             ],
             [
               "sth-alarms",
-              "Speichert Ihre Wecker und den Ton jedes Weckers.",
+              "Speichert die eingestellten Wecker, den Ton jedes Weckers und gegebenenfalls seinen YouTube-Link.",
               "Bis zur Löschung durch Sie"
             ],
             [
@@ -455,6 +465,16 @@
               "Bis zur Löschung durch Sie"
             ],
             [
+              "sth-polls",
+              "Speichert die Terminumfragen, die Sie erstellt oder geöffnet haben, und die erhaltenen Antworten (bis zu 20 Umfragen).",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-poll-name",
+              "Merkt sich den Namen, den Sie in einer Terminumfrage eingegeben haben, für die nächste Antwort.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
               "sth-wake",
               "Speichert, ob die Werkzeuge den Bildschirm eingeschaltet lassen.",
               "Bis zur Löschung durch Sie"
@@ -467,7 +487,7 @@
         "h": "Rechtsgrundlagen",
         "ul": [
           "E-Mail-Liste: Ihre ausdrückliche Einwilligung (KVKK Art. 5/1). Sie können sie jederzeit über den Abmeldelink in jeder E-Mail widerrufen.",
-          "Besuchsstatistik (Umami) und externe Dienste (Open-Meteo): Ihre im Cookie-Banner erteilte ausdrückliche Einwilligung (KVKK Art. 5/1). Wenn Sie externe Dienste erlauben, erreicht Ihre IP-Adresse diese möglicherweise im Ausland ansässigen Anbieter; Ihre Einwilligung umfasst auch dies. Widerruf über den Link „Cookie-Einstellungen“.",
+          "Besuchsstatistik (Umami) und externe Dienste (Open-Meteo, OpenStreetMap, YouTube): Ihre im Cookie-Banner erteilte ausdrückliche Einwilligung (KVKK Art. 5/1). Wenn Sie externe Dienste erlauben, erreicht Ihre IP-Adresse diese möglicherweise im Ausland ansässigen Anbieter; Ihre Einwilligung umfasst auch dies. Widerruf über den Link „Cookie-Einstellungen“.",
           "Serverprotokolle: unser berechtigtes Interesse, die Website sicher und funktionsfähig zu halten (KVKK Art. 5/2-f).",
           "Ihre Einstellungen: berechtigtes Interesse (KVKK Art. 5/2-f); die Daten bleiben nur auf Ihrem Gerät."
         ]
@@ -790,6 +810,10 @@
           "name": "Meeting-Planer",
           "desc": "Gemeinsame Arbeitszeiten über Zeitzonen hinweg finden."
         },
+        "poll": {
+          "name": "Terminumfrage",
+          "desc": "Terminvorschläge teilen, alle markieren, was passt."
+        },
         "diff": {
           "name": "Zeitverschiebung",
           "desc": "Die Zeitverschiebung zwischen Istanbul und Städten weltweit."
@@ -1041,7 +1065,12 @@
         "rise": "Ansteigend",
         "digital": "Digitaler Piepton",
         "soft": "Sanft"
-      }
+      },
+      "ytLabel": "YouTube-Musik (optional)",
+      "ytNote": "Beim Klingeln läuft dieses Video; schalten Sie den Wecker nicht innerhalb von 1 Minute aus, ertönt zusätzlich der Weckton (auch wenn der Browser das Video nicht von selbst startet). Das Video wird von YouTube geladen, daher müssen externe Dienste erlaubt sein.",
+      "ytInvalid": "Das ist kein YouTube-Link.",
+      "ytBlocked": "Erlauben Sie externe Dienste für YouTube-Musik; ohne Zustimmung klingelt der Wecker mit seinem eigenen Ton.",
+      "spotifyNote": "Spotify startet im Browser nicht von selbst; in der Android-App können Sie Spotify als Weckermusik verwenden."
     },
     "pomodoro": {
       "title": "Pomodoro-Timer: 25 Minuten Arbeit, 5 Minuten Pause | Saat Tarih",
@@ -1384,6 +1413,72 @@
     "pickHint": "Tippen Sie oben in der Tabelle auf eine Stunde, um die Besprechungszeit zu wählen; Link und Kalendereintrag enthalten sie.",
     "meeting": "Besprechung",
     "picked": "Gewählte Zeit: {time} (Zeit in {city})"
+  },
+  "poll": {
+    "title": "Terminumfrage: Gemeinsam die beste Zeit finden | Saat Tarih",
+    "description": "Terminvorschläge wählen, Link teilen, alle markieren, wann sie können. Ohne Konto und Server; jeder sieht die Zeiten in seiner eigenen Zeitzone.",
+    "h1": "Terminumfrage",
+    "lead": "Fügen Sie Terminvorschläge hinzu und teilen Sie den Umfragelink. Die Teilnehmer markieren passende Zeiten und senden Ihnen einen Antwortlink; der beste Termin wird automatisch ermittelt.",
+    "titleLabel": "Name des Termins",
+    "orgLabel": "Ihr Name (optional)",
+    "durLabel": "Dauer",
+    "slotsHeading": "Terminvorschläge",
+    "dateLabel": "Datum",
+    "timeLabel": "Uhrzeit",
+    "addSlot": "Zeit hinzufügen",
+    "removeSlot": "Entfernen",
+    "maxSlots": "Sie können bis zu {n} Terminvorschläge hinzufügen.",
+    "needSlot": "Fügen Sie mindestens einen Terminvorschlag hinzu.",
+    "create": "Umfragelink erstellen",
+    "tzNote": "Die Zeiten werden in Ihrer Zeitzone angezeigt: {tz}.",
+    "orgTime": "Zeit des Organisators: {time} ({tz})",
+    "byLine": "Organisiert von {name}",
+    "linkHeading": "Umfragelink",
+    "linkHint": "Senden Sie diesen Link an die Teilnehmer. Jeder markiert passende Zeiten und sendet Ihnen einen Antwortlink; wenn Sie ihn öffnen oder unten einfügen, wird er zu den Ergebnissen hinzugefügt.",
+    "linkLabel": "Link",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "share": "Teilen",
+    "voteHeading": "Markieren Sie die Zeiten, die Ihnen passen",
+    "yourName": "Ihr Name",
+    "yes": "Ja",
+    "maybe": "Vielleicht",
+    "no": "Nein",
+    "respond": "Meinen Antwortlink erstellen",
+    "responseHint": "Senden Sie diesen Antwortlink an den Organisator (per Nachricht oder E-Mail).",
+    "ownSaved": "Ihre Antwort wurde zu den Ergebnissen in diesem Browser hinzugefügt. Auf einem anderen Gerät senden Sie sich diesen Link selbst.",
+    "needName": "Geben Sie Ihren Namen ein.",
+    "resultsHeading": "Ergebnisse",
+    "participant": "Teilnehmer",
+    "total": "Summe",
+    "best": "Bester Termin: {slot} ({n} von {total} können)",
+    "noAnswers": "Noch keine Antworten. Sie erscheinen hier, wenn Sie die Antwortlinks der Teilnehmer öffnen oder unten einfügen.",
+    "pasteLabel": "Erhaltenen Antwortlink einfügen",
+    "pasteBtn": "Hinzufügen",
+    "pasteBad": "Dieser Link ist keine gültige Antwort auf diese Umfrage.",
+    "added": "Antwort hinzugefügt: {names}",
+    "removeAnswer": "Antwort entfernen",
+    "resultsLink": "Ergebnislink kopieren",
+    "myPolls": "Umfragen in diesem Browser",
+    "answers": "{n} Antworten",
+    "deletePoll": "Umfrage entfernen",
+    "invalid": "Dieser Umfragelink ist beschädigt oder unvollständig.",
+    "newPoll": "Neue Umfrage erstellen",
+    "privacyNote": "Ohne Konto und Server: Umfrage und Antworten stehen im Teil des Links nach dem #-Zeichen (Browser senden diesen Teil nicht an den Server); die angezeigten Antworten werden nur in diesem Browser gespeichert.",
+    "faq": [
+      {
+        "q": "Wo werden die Umfragedaten gespeichert?",
+        "a": "Nicht auf einem Server. Titel, Terminvorschläge, Namen und Antworten stehen im Teil des Links nach dem #-Zeichen, den Browser nicht an den Server senden. Die Antworten, die der Organisator sieht, werden nur in seinem Browser gespeichert; wer den Link erhält, kann ihn sehen."
+      },
+      {
+        "q": "Wie senden mir die Teilnehmer ihre Antworten?",
+        "a": "Jeder Teilnehmer gibt seinen Namen ein, markiert passende Zeiten und erstellt einen Antwortlink, den er Ihnen per Nachricht oder E-Mail schickt. Wenn Sie den Link öffnen oder in das Feld auf der Umfrageseite einfügen, wird die Antwort in die Ergebnistabelle übernommen."
+      },
+      {
+        "q": "In welcher Zeitzone werden die Zeiten angezeigt?",
+        "a": "Jeder sieht die Zeiten in der Zeitzone seines Geräts; hat der Organisator eine andere Zeitzone, steht seine Zeit zusätzlich bei jedem Termin. Sommerzeitumstellungen werden berücksichtigt."
+      }
+    ]
   },
   "cdp": {
     "title": "Wie viele Tage bis {dat}? Countdown | Saat Tarih",
@@ -1977,7 +2072,7 @@
   },
   "consent": {
     "barLabel": "Cookie-Auswahl",
-    "barText": "Wir speichern Ihre Einstellungen (Sprache, Design, Uhr- und Werkzeugeinstellungen) nur in diesem Browser. Wenn Sie zustimmen, werden Besuche mit Umami gezählt, und das Wetter (Open-Meteo) sowie Moscheen in der Nähe (OpenStreetMap) werden von externen Diensten geladen.",
+    "barText": "Wir speichern Ihre Einstellungen (Sprache, Design, Uhr- und Werkzeugeinstellungen) nur in diesem Browser. Wenn Sie zustimmen, werden Besuche mit Umami gezählt, und das Wetter (Open-Meteo), die Detailkarte des Globus und Moscheen in der Nähe (OpenStreetMap) sowie Weckermusik (YouTube) werden von externen Diensten geladen.",
     "accept": "Akzeptieren",
     "reject": "Ablehnen",
     "prefs": "Einstellungen",
@@ -1990,13 +2085,14 @@
     "stats": "Statistik",
     "statsText": "Umami zählt Seitenaufrufe und einige Aktionen (Browser, Gerät, Sprache sowie aus der IP-Adresse abgeleitetes Land und Stadt; die IP wird nicht gespeichert). Es werden keine Cookies verwendet. Standardmäßig aus.",
     "ext": "Externe Dienste",
-    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com) und Moscheen in der Nähe vom Overpass-Dienst von OpenStreetMap (overpass-api.de) geladen; dabei erreicht Ihre IP-Adresse diese Dienste. Standardmäßig aus.",
+    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com), die Karte des vergrößerten Globus von OpenStreetMap (tile.openstreetmap.org), Moscheen in der Nähe vom Overpass-Dienst von OpenStreetMap (overpass-api.de) und YouTube-Musik, die Sie einem Wecker hinzufügen, von YouTube (youtube-nocookie.com) geladen; dabei erreicht Ihre IP-Adresse diese Dienste. Standardmäßig aus.",
     "save": "Auswahl speichern",
     "footerLink": "Cookie-Einstellungen",
     "privacy": "Datenschutz",
     "wxBlocked": "Das Wetter wird von Open-Meteo geladen; erlauben Sie externe Dienste, um es anzuzeigen.",
     "allow": "Erlauben",
-    "mqBlocked": "Moscheen in der Nähe werden von OpenStreetMap (Overpass) geladen; erlauben Sie externe Dienste, um sie anzuzeigen."
+    "mqBlocked": "Moscheen in der Nähe werden von OpenStreetMap (Overpass) geladen; erlauben Sie externe Dienste, um sie anzuzeigen.",
+    "mapBlocked": "Die Detailkarte wird von OpenStreetMap geladen; erlauben Sie externe Dienste, um sie anzuzeigen."
   },
   "qibla": {
     "title": "Qibla-Richtung: Kompass, Qibla-Winkel und Qibla-Zeit | Saat Tarih",

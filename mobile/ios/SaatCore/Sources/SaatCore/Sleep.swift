@@ -60,3 +60,55 @@ public enum SunriseLight {
     /// Ekran parlaklığı (0,05 – 1)
     public static func brightness(_ level: Double) -> Double { 0.05 + 0.95 * max(0, min(1, level)) }
 }
+
+/// Akıllı alarm (31 Ekim 2026, sahibin kararı: uyku takibinden yalnız akıllı alarm). Telefon yataktayken ivmeölçerin
+/// büyüklüğü (g) yavaş izlenen tabana göre `threshold`'tan fazla saparsa o örnek "hareket" sayılır; bir dakikada en az
+/// `minSamples` hareketli örnek varsa o dakika hareketlidir. Alarm penceresinde son `span` dakikanın en az `need`'i
+/// hareketliyse erken çalınır. Kayıt yok; yalnız bellekte son 10 dakika. Android :core'daki SmartWake ile aynı kural.
+public struct SmartWake {
+    public static let epochMs: Int64 = 60_000
+    public static let afterMs: Int64 = 2 * 60_000
+    let threshold: Double
+    let minSamples: Int
+    let need: Int
+    let span: Int
+    private var base = Double.nan
+    private var counts: [Int64: Int] = [:]
+    private var lastCounted = Int64.min
+    /// Pencere içinde hareketli bulunan dakika sayısı (ekranda)
+    public private(set) var movingMinutes = 0
+
+    public init(threshold: Double = 0.025, minSamples: Int = 3, need: Int = 2, span: Int = 3) {
+        self.threshold = threshold
+        self.minSamples = minSamples
+        self.need = need
+        self.span = span
+    }
+
+    private static func epoch(_ t: Int64) -> Int64 { t >= 0 ? t / epochMs : (t - epochMs + 1) / epochMs }
+
+    /// x, y, z: g biriminde (yer çekimi dahil)
+    public mutating func add(tMs: Int64, x: Double, y: Double, z: Double) {
+        let m = (x * x + y * y + z * z).squareRoot()
+        if base.isNaN { base = m; return }
+        let d = abs(m - base)
+        base += 0.05 * (m - base)
+        guard d > threshold else { return }
+        let e = Self.epoch(tMs)
+        let n = (counts[e] ?? 0) + 1
+        counts[e] = n
+        if n == minSamples && e != lastCounted { movingMinutes += 1; lastCounted = e }
+        for k in counts.keys where k < e - 10 { counts.removeValue(forKey: k) }
+    }
+
+    /// Son `span` dakikadan (şimdiki dahil) kaçı hareketli
+    public func movingEpochs(nowMs: Int64) -> Int {
+        let e = Self.epoch(nowMs)
+        return (0..<Int64(span)).filter { (counts[e - $0] ?? 0) >= minSamples }.count
+    }
+
+    /// Pencerede (alarmdan `windowMin` dk önce – alarm) ve yeterli hareket varsa true
+    public func shouldWake(nowMs: Int64, alarmMs: Int64, windowMin: Int) -> Bool {
+        windowMin > 0 && nowMs >= alarmMs - Int64(windowMin) * 60_000 && nowMs < alarmMs && movingEpochs(nowMs: nowMs) >= need
+    }
+}

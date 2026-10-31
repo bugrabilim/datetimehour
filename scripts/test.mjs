@@ -70,7 +70,8 @@ for (const f of htmlFiles) {
     check(/data-live="calendar"/.test(h), `${name}: özel model türleri eksik`);
   }
   if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name))) {
-    check(!/data-globe|globe\.js|openstreetmap/.test(h), `${name}: ana sayfada dünya küresi kalmış (30 Ekim 2026'da kaldırıldı)`);
+    // Dönen dünya web ana sayfasına geri döndü (31 Ekim 2026, sahibin kararı); OSM karoları dış hizmet izniyle
+    check(/data-globe/.test(h) && /globe\.js/.test(h) && /"globe":\{"earth":"\/assets\/earth\.jpg\?v=/.test(h) && /"places":"\/assets\/places\.json/.test(h) && /data-globe-attr/.test(h) && /data-globe-zoom="in"/.test(h) && /data-globe-consent/.test(h), `${name}: dünya küresi eksik`);
     check(!/data-upcoming/.test(h) && !/id="facts"/.test(h) && !/data-world="grid"/.test(h) && !/<details>/.test(h) && !/"FAQPage"/.test(h), `${name}: ana sayfada kaldırılan bölüm duruyor`);
     check(/<h1 class="sr-only">/.test(h), `${name}: ana sayfa H1 gizli olmalı`);
   }
@@ -327,7 +328,8 @@ for (const [n, t] of Object.entries(themes)) {
 const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
 for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
-check(!ng.includes("openstreetmap"), "nginx.conf: OpenStreetMap izni kalmış (web küresi kaldırıldı)");
+check(ng.split("https://tile.openstreetmap.org").length === 3, "nginx.conf: img-src OpenStreetMap karoları iki konumda olmalı (ana sayfa küresi)");
+check(ng.split("frame-src https://www.youtube-nocookie.com").length === 3, "nginx.conf: frame-src YouTube (alarm müziği) iki konumda olmalı");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
 // Dünya resmî tatilleri (30 Ekim 2026, #27)
 {
@@ -510,6 +512,21 @@ for (const f of ["geri-sayim/5-dakika", "geri-sayim/1-saat", "en/countdown/5-min
 for (const f of ["kible", "en/qibla", "de/qibla", "az/qibla", "ar/qibla"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `kıble sayfası yok: /${f}/`);
 check(ng.split("https://overpass-api.de").length === 3, "nginx.conf: connect-src overpass (yakındaki camiler) iki konumda olmalı");
 check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/preload kullanılmamalı");
+// Web alarmında YouTube müziği (31 Ekim 2026; dış hizmet izniyle, youtube-nocookie.com)
+for (const f of ["alarm", "en/alarm", "ja/alarm", "alarm/07-00"]) {
+  const h = fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "";
+  check(/data-al-yt\b/.test(h) && /data-ring-media/.test(h) && /frame-src https:\/\/www\.youtube-nocookie\.com/.test(h), `alarm sayfasında YouTube müziği alanı ya da frame-src eksik: /${f}/`);
+}
+// Toplantı oylaması (31 Ekim 2026): sunucusuz, bağlantıyla; bütün dillerde sayfa, araçlar kartı, gizlilik tablosunda sth-polls
+for (const l of LANGS) {
+  const f = l === "tr" ? "toplanti-oylamasi" : `${l}/meeting-poll`;
+  const h = fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "";
+  check(/data-poll\b/.test(h) && /data-po-create/.test(h) && /data-po-add/.test(h) && /data-poll-view/.test(h) && /poll\.js/.test(h) && /"poll":\{"slotsHeading"/.test(h), `toplantı oylaması sayfası eksik: /${f}/`);
+  const tools = fs.readFileSync(path.join(DIST, l === "tr" ? "araclar" : `${l}/tools`, "index.html"), "utf8");
+  check(tools.includes(`href="/${f}/"`), `araçlar merkezinde toplantı oylaması kartı yok (${l})`);
+  const pv = fs.readFileSync(path.join(DIST, l === "tr" ? "gizlilik" : `${l}/privacy`, "index.html"), "utf8");
+  check(/sth-polls/.test(pv) && /youtube-nocookie\.com/.test(pv) && /tile\.openstreetmap\.org/.test(pv), `gizlilik: sth-polls, YouTube ya da OSM maddesi eksik (${l})`);
+}
 
 if (fails.length) {
   console.error(`${fails.length} sorun:\n- ` + fails.join("\n- "));

@@ -224,6 +224,13 @@
     "upcomingLead": "Les prochaines dates du calendrier turc.",
     "upcomingAll": "Voir le calendrier annuel",
     "upcomingNone": "Aucun jour à venir trouvé.",
+    "globeLabel": "Globe en rotation montrant le jour et la nuit, les méridiens des fuseaux horaires et l’heure locale des grandes villes",
+    "globeCaption": "La face éclairée est le jour, la face sombre la nuit. Les lignes sont les méridiens des fuseaux horaires tous les 15° (avec leur décalage UTC) ; la ligne rouge est le point zéro, le méridien de Greenwich (UTC). Chaque ville affiche son heure locale. Faites glisser le globe pour le tourner ; zoomez avec deux doigts, la molette de la souris ou les boutons + et −. En zoomant, l’heure locale des lieux de la zone apparaît aussi. En zoomant davantage, l’affichage passe à la carte OpenStreetMap (jusqu’au niveau de la rue) et la longitude des méridiens et de leurs segments est indiquée. Les tuiles de la carte sont téléchargées depuis OpenStreetMap à ce moment-là (© contributeurs d’OpenStreetMap) ; la texture du globe provient de Natural Earth (domaine public). Un double appui zoome.",
+    "globeTitle": "Globe terrestre",
+    "globeInfo": "À propos du globe",
+    "zoomIn": "Zoom avant",
+    "zoomOut": "Zoom arrière",
+    "resetView": "Le monde entier",
     "todayQ": "Quelle est la date d’aujourd’hui ?",
     "todayA": "La date et le jour de la semaine s’affichent en direct dans la barre en haut de chaque page ; ils suivent l’horloge synchronisée avec le serveur et non celle de votre appareil."
   },
@@ -293,7 +300,10 @@
           "**Heure et date :** l’heure et le fuseau horaire de votre appareil sont lus et calculés uniquement dans votre navigateur. Ils ne sont ni envoyés à un serveur ni conservés.",
           "**Lieu (heures de prière) :** si vous appuyez sur « Utiliser ma position » sur la page des heures de prière, votre navigateur utilise votre position uniquement sur votre appareil pour calculer les heures. Les coordonnées ne sont ni envoyées au serveur ni incluses dans les statistiques ; votre dernier choix reste dans le stockage local de votre navigateur.",
           "**Météo (service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies, la page météo et les styles d’horloge avec météo envoient les coordonnées approximatives de la province ou du lieu choisi (à environ 1 km près) directement depuis votre navigateur à Open-Meteo (api.open-meteo.com), qui fournit les données ; votre adresse IP parvient aussi à Open-Meteo. Sans autorisation, aucune requête n’est faite et une courte note s’affiche à la place. Le serveur de Saat Tarih ne voit ni ne conserve ces coordonnées ; les conditions de confidentialité d’Open-Meteo s’appliquent.",
+          "**Carte (globe, service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies et que vous zoomez sur le globe de la page d’accueil au-delà d’un certain niveau, les tuiles de la carte sont téléchargées directement dans votre navigateur depuis le serveur d’OpenStreetMap (tile.openstreetmap.org) ; votre adresse IP et les adresses des tuiles de la zone que vous regardez parviennent alors à la Fondation OpenStreetMap. Sans autorisation, ou tant que le globe est dézoomé, cette requête n’est pas faite. Le serveur de Saat Tarih ne les voit pas ; les conditions de confidentialité d’OpenStreetMap s’appliquent.",
           "**Qibla et mosquées proches :** la direction de la qibla, la distance et l’heure de la qibla sont calculées dans votre navigateur. Pour la boussole, le capteur d’orientation de votre téléphone est lu uniquement dans le navigateur (l’iPhone demande l’autorisation) et n’est jamais transmis. Si vous appuyez sur « Afficher les mosquées » et avez autorisé les services externes, les coordonnées du lieu choisi arrondies à deux décimales (environ 1 km) sont envoyées depuis votre navigateur au service Overpass (overpass-api.de), qui fournit les données OpenStreetMap ; votre adresse IP parvient aussi à ce service. Le serveur de Saat Tarih ne voit pas ces coordonnées.",
+          "**Musique de réveil (YouTube, service externe, avec autorisation) :** si vous ajoutez un lien YouTube à une alarme dans l’outil de réveil et avez autorisé les services externes, la vidéo est chargée dans votre navigateur quand l’alarme sonne, avec le lecteur en mode confidentialité renforcée de YouTube (youtube-nocookie.com) ; votre adresse IP et l’identifiant de la vidéo parviennent alors à Google (YouTube), et le lecteur peut enregistrer ses propres données dans votre navigateur. Le lien reste uniquement dans ce navigateur, avec votre alarme. Sans autorisation, le lecteur n’est pas chargé et l’alarme sonne avec son propre son. Le serveur de Saat Tarih ne voit pas ces données ; les conditions de confidentialité de YouTube (Google) s’appliquent.",
+          "**Sondage de réunion :** le titre du sondage, les créneaux, les noms de l’organisateur et des participants et leurs réponses se trouvent dans la partie du lien après le signe # ; les navigateurs n’envoient pas cette partie au serveur, donc le serveur de Saat Tarih et les statistiques ne les voient pas. Toute personne à qui vous transmettez le lien (par message ou e-mail) peut le voir. Les sondages et réponses que vous voyez sont conservés uniquement dans ce navigateur, sous la clé sth-polls.",
           "**Formulaire de la liste de diffusion :** l’adresse e-mail saisie, le consentement donné avec le bouton « J’accepte » dans la fenêtre qui s’ouvre, la langue choisie et la page du formulaire sont traités par le service de liste partagé de Bumba Group (bumbagroup.com). L’inscription se fait en double confirmation : vous n’êtes ajouté qu’après avoir cliqué sur le lien de l’e-mail de confirmation, et chaque e-mail contient un lien de désinscription en un clic. Voir l’[information de confidentialité partagée](https://bumbagroup.com/liste/aydinlatma?dil=en) pour plus de détails.",
           "**Journaux du serveur :** le serveur qui héberge le site tient un journal d’accès standard pour chaque requête, avec l’adresse IP, les informations du navigateur, la page demandée et l’heure. Ces journaux servent uniquement à la sécurité et au dépannage, jamais au profilage des personnes.",
           "**Statistiques de visite (Umami, avec autorisation) :** uniquement si vous autorisez les statistiques dans le bandeau ou les préférences de cookies, Umami, qui fonctionne sur notre propre serveur, compte les pages vues et ces actions : changement de langue et de thème, si une recherche a donné un résultat, l’inscription à la liste, le choix d’un style d’horloge, le plein écran, la première utilisation d’un outil, le type de choix de lieu (province ou position) et l’ouverture ou le téléchargement du calendrier du Ramadan. Ce faisant, Umami traite votre navigateur, votre système d’exploitation et votre type d’appareil, votre langue, la taille de l’écran, l’adresse de la page d’où vous venez ainsi que le pays et la ville déduits de votre adresse IP ; l’adresse IP elle-même n’est pas conservée. Umami n’utilise pas de cookies, mais relie les visites à une session pseudonyme : ce n’est donc pas anonyme. Les mots saisis dans la recherche, votre adresse e-mail et votre position ne sont pas envoyés. Vous pouvez retirer votre autorisation à tout moment avec le lien « Préférences de cookies » du menu des paramètres ; Umami s’arrête dès la page suivante.",
@@ -360,7 +370,7 @@
         "id": "cookies",
         "h": "Cookies et stockage du navigateur",
         "p": [
-          "Saat Tarih ne dépose aucun cookie. Lors de votre première visite, un bandeau en bas de page vous demande l’autorisation pour les statistiques de visite (Umami) et les services externes (Open-Meteo) ; les deux restent désactivés tant que vous ne les autorisez pas. Vous pouvez modifier votre choix à tout moment avec le lien « Préférences de cookies » du menu des paramètres. Pour mémoriser vos choix, nous utilisons le stockage local de votre navigateur (localStorage) ; ces éléments font partie du groupe nécessaire, restent sur votre appareil et ne sont pas envoyés à un serveur. Vous pouvez les supprimer à tout moment dans les réglages du navigateur. Politique de cookies partagée de Bumba Group : [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih ne dépose aucun cookie. Lors de votre première visite, un bandeau en bas de page vous demande l’autorisation pour les statistiques de visite (Umami) et les services externes (Open-Meteo, OpenStreetMap, YouTube) ; les deux restent désactivés tant que vous ne les autorisez pas. Vous pouvez modifier votre choix à tout moment avec le lien « Préférences de cookies » du menu des paramètres. Pour mémoriser vos choix, nous utilisons le stockage local de votre navigateur (localStorage) ; ces éléments font partie du groupe nécessaire, restent sur votre appareil et ne sont pas envoyés à un serveur. Vous pouvez les supprimer à tout moment dans les réglages du navigateur. Politique de cookies partagée de Bumba Group : [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -401,7 +411,7 @@
             ],
             [
               "sth-alarms",
-              "Mémorise les alarmes réglées et le son de chacune.",
+              "Retient les alarmes que vous avez réglées, le son de chacune et, le cas échéant, son lien YouTube.",
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
@@ -455,6 +465,16 @@
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
+              "sth-polls",
+              "Conserve les sondages de réunion que vous avez créés ou ouverts et les réponses reçues (jusqu’à 20 sondages).",
+              "Jusqu’à ce que vous le supprimiez"
+            ],
+            [
+              "sth-poll-name",
+              "Retient le nom saisi dans un sondage de réunion pour votre prochaine réponse.",
+              "Jusqu’à ce que vous le supprimiez"
+            ],
+            [
               "sth-wake",
               "Mémorise si les outils gardent l’écran allumé.",
               "Jusqu’à ce que vous le supprimiez"
@@ -467,7 +487,7 @@
         "h": "Bases juridiques",
         "ul": [
           "Liste de diffusion : votre consentement explicite (KVKK art. 5/1). Vous pouvez le retirer à tout moment avec le lien de désinscription de chaque e-mail.",
-          "Statistiques de visite (Umami) et services externes (Open-Meteo) : le consentement explicite donné dans le bandeau de cookies (KVKK art. 5/1). Lorsque vous autorisez les services externes, votre adresse IP parvient à ces prestataires, qui peuvent se trouver à l’étranger ; votre consentement couvre aussi ce point. Vous pouvez le retirer avec le lien « Préférences de cookies ».",
+          "Statistiques de visite (Umami) et services externes (Open-Meteo, OpenStreetMap, YouTube) : le consentement explicite donné dans le bandeau de cookies (KVKK art. 5/1). Lorsque vous autorisez les services externes, votre adresse IP parvient à ces prestataires, qui peuvent se trouver à l’étranger ; votre consentement couvre aussi ce point. Vous pouvez le retirer avec le lien « Préférences de cookies ».",
           "Journaux du serveur : notre intérêt légitime à maintenir le site sûr et fonctionnel (KVKK art. 5/2-f).",
           "Vos préférences : intérêt légitime (KVKK art. 5/2-f) ; les données restent uniquement sur votre appareil."
         ]
@@ -804,6 +824,10 @@
           "name": "Planificateur de réunions",
           "desc": "Trouver des heures de travail communes entre fuseaux horaires."
         },
+        "poll": {
+          "name": "Sondage de réunion",
+          "desc": "Partagez des créneaux, chacun coche ce qui lui convient."
+        },
         "diff": {
           "name": "Décalage horaire",
           "desc": "Le décalage horaire entre Istanbul et les villes du monde."
@@ -1055,7 +1079,12 @@
         "rise": "Progressif",
         "digital": "Bip numérique",
         "soft": "Doux"
-      }
+      },
+      "ytLabel": "Musique YouTube (facultatif)",
+      "ytNote": "Quand l’alarme sonne, cette vidéo se lance ; si vous ne l’arrêtez pas dans la minute, le son de l’alarme retentit aussi (y compris si le navigateur ne lance pas la vidéo tout seul). La vidéo est chargée depuis YouTube : les services externes doivent être autorisés.",
+      "ytInvalid": "Ce n’est pas un lien YouTube.",
+      "ytBlocked": "Autorisez les services externes pour la musique YouTube ; sans autorisation, l’alarme sonne avec son propre son.",
+      "spotifyNote": "Spotify ne démarre pas tout seul dans le navigateur ; vous pouvez utiliser Spotify comme musique de réveil dans l’application Android."
     },
     "pomodoro": {
       "title": "Minuteur pomodoro : 25 minutes de travail, 5 de pause | Saat Tarih",
@@ -1398,6 +1427,72 @@
     "pickHint": "Touchez une heure en haut du tableau pour choisir l’heure de la réunion ; le lien et l’entrée de calendrier l’incluent.",
     "meeting": "Réunion",
     "picked": "Heure choisie : {time} (heure de {city})"
+  },
+  "poll": {
+    "title": "Sondage de réunion : choisir le bon créneau ensemble | Saat Tarih",
+    "description": "Proposez des créneaux, partagez le lien et chacun coche ses disponibilités. Sans compte ni serveur ; chacun voit les heures dans son propre fuseau horaire.",
+    "h1": "Sondage de réunion",
+    "lead": "Ajoutez des créneaux et partagez le lien du sondage. Les participants cochent leurs disponibilités et vous envoient un lien de réponse ; le meilleur créneau est trouvé automatiquement.",
+    "titleLabel": "Nom de la réunion",
+    "orgLabel": "Votre nom (facultatif)",
+    "durLabel": "Durée",
+    "slotsHeading": "Créneaux proposés",
+    "dateLabel": "Date",
+    "timeLabel": "Heure",
+    "addSlot": "Ajouter le créneau",
+    "removeSlot": "Retirer",
+    "maxSlots": "Vous pouvez ajouter jusqu’à {n} créneaux.",
+    "needSlot": "Ajoutez au moins un créneau.",
+    "create": "Créer le lien du sondage",
+    "tzNote": "Les heures sont affichées dans votre fuseau horaire : {tz}.",
+    "orgTime": "Heure de l’organisateur : {time} ({tz})",
+    "byLine": "Organisé par {name}",
+    "linkHeading": "Lien du sondage",
+    "linkHint": "Envoyez ce lien aux participants. Chacun coche ses disponibilités et vous envoie un lien de réponse ; quand vous l’ouvrez ou le collez ci-dessous, il s’ajoute aux résultats.",
+    "linkLabel": "Lien",
+    "copy": "Copier",
+    "copied": "Copié",
+    "share": "Partager",
+    "voteHeading": "Cochez les créneaux qui vous conviennent",
+    "yourName": "Votre nom",
+    "yes": "Oui",
+    "maybe": "Peut-être",
+    "no": "Non",
+    "respond": "Créer mon lien de réponse",
+    "responseHint": "Envoyez ce lien de réponse à l’organisateur (par message ou e-mail).",
+    "ownSaved": "Votre réponse a été ajoutée aux résultats dans ce navigateur. Sur un autre appareil, envoyez-vous ce lien.",
+    "needName": "Saisissez votre nom.",
+    "resultsHeading": "Résultats",
+    "participant": "Participant",
+    "total": "Total",
+    "best": "Meilleur créneau : {slot} ({n} sur {total} disponibles)",
+    "noAnswers": "Pas encore de réponse. Elles apparaissent ici quand vous ouvrez les liens de réponse des participants ou les collez ci-dessous.",
+    "pasteLabel": "Collez un lien de réponse reçu",
+    "pasteBtn": "Ajouter",
+    "pasteBad": "Ce lien n’est pas une réponse valide à ce sondage.",
+    "added": "Réponse ajoutée : {names}",
+    "removeAnswer": "Retirer la réponse",
+    "resultsLink": "Copier le lien des résultats",
+    "myPolls": "Sondages dans ce navigateur",
+    "answers": "{n} réponses",
+    "deletePoll": "Retirer le sondage",
+    "invalid": "Ce lien de sondage est cassé ou incomplet.",
+    "newPoll": "Créer un nouveau sondage",
+    "privacyNote": "Sans compte ni serveur : le sondage et les réponses voyagent dans la partie du lien après le signe # (les navigateurs ne l’envoient pas au serveur) ; les réponses que vous voyez sont conservées uniquement dans ce navigateur.",
+    "faq": [
+      {
+        "q": "Où sont conservées les données du sondage ?",
+        "a": "Pas sur un serveur. Le titre, les créneaux, les noms et les réponses voyagent dans la partie du lien après le signe #, que les navigateurs n’envoient pas au serveur. Les réponses que voit l’organisateur sont conservées uniquement dans son navigateur ; toute personne à qui vous transmettez le lien peut le voir."
+      },
+      {
+        "q": "Comment les participants m’envoient-ils leurs réponses ?",
+        "a": "Chaque participant saisit son nom, coche ses disponibilités et crée un lien de réponse qu’il vous envoie par message ou e-mail. Quand vous ouvrez ce lien ou le collez dans le champ de la page du sondage, la réponse s’ajoute au tableau des résultats."
+      },
+      {
+        "q": "Dans quel fuseau horaire les heures sont-elles affichées ?",
+        "a": "Chacun voit les heures dans le fuseau horaire de son appareil ; si celui de l’organisateur est différent, son heure figure aussi à côté de chaque créneau. Les changements d’heure sont pris en compte."
+      }
+    ]
   },
   "cdp": {
     "title": "Jours avant {dat} : compte à rebours | Saat Tarih",
@@ -1991,7 +2086,7 @@
   },
   "consent": {
     "barLabel": "Choix des cookies",
-    "barText": "Nous conservons vos préférences (langue, thème, réglages de l’horloge et des outils) uniquement dans ce navigateur. Si vous l’autorisez, les visites sont comptées avec Umami, et la météo (Open-Meteo) et les mosquées proches (OpenStreetMap) sont chargées depuis des services externes.",
+    "barText": "Nous conservons vos préférences (langue, thème, réglages de l’horloge et des outils) uniquement dans ce navigateur. Si vous l’autorisez, les visites sont comptées avec Umami, et la météo (Open-Meteo), la carte rapprochée du globe et les mosquées proches (OpenStreetMap) ainsi que la musique de réveil (YouTube) sont chargées depuis des services externes.",
     "accept": "Accepter",
     "reject": "Refuser",
     "prefs": "Préférences",
@@ -2004,13 +2099,14 @@
     "stats": "Statistiques",
     "statsText": "Umami compte les visites de pages et quelques actions (navigateur, appareil, langue, ainsi que le pays et la ville déduits de l’adresse IP ; l’IP n’est pas conservée). Aucun cookie n’est utilisé. Désactivé par défaut.",
     "ext": "Services externes",
-    "extText": "La météo est chargée depuis Open-Meteo (api.open-meteo.com) et les mosquées proches depuis le service Overpass d’OpenStreetMap (overpass-api.de) ; votre adresse IP parvient à ces services. Désactivé par défaut.",
+    "extText": "La météo est chargée depuis Open-Meteo (api.open-meteo.com), la carte du globe zoomé depuis OpenStreetMap (tile.openstreetmap.org), les mosquées proches depuis le service Overpass d’OpenStreetMap (overpass-api.de) et la musique YouTube ajoutée à une alarme depuis YouTube (youtube-nocookie.com) ; votre adresse IP parvient à ces services. Désactivé par défaut.",
     "save": "Enregistrer le choix",
     "footerLink": "Préférences de cookies",
     "privacy": "Confidentialité",
     "wxBlocked": "La météo est chargée depuis Open-Meteo ; autorisez les services externes pour l’afficher.",
     "allow": "Autoriser",
-    "mqBlocked": "Les mosquées proches sont chargées depuis OpenStreetMap (Overpass) ; autorisez les services externes pour les afficher."
+    "mqBlocked": "Les mosquées proches sont chargées depuis OpenStreetMap (Overpass) ; autorisez les services externes pour les afficher.",
+    "mapBlocked": "La carte rapprochée est chargée depuis OpenStreetMap ; autorisez les services externes pour l’afficher."
   },
   "qibla": {
     "title": "Direction de la qibla : boussole, angle et heure | Saat Tarih",

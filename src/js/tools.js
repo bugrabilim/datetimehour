@@ -96,15 +96,31 @@
 
   var banner = q("[data-ring-banner]");
   var ringTimer = null, flashTimer = null, ringOnStop = null, ringUntil = 0;
-  function ring(title, onStop, sound) {
+  var media = banner && banner.querySelector("[data-ring-media]");
+  /* Alarm müziği (31 Ekim 2026): YouTube gelişmiş gizlilik modu oynatıcısı, yalnız dış hizmet izniyle. yt: "v:<kimlik>" ya da
+     "list:<kimlik>". Müzik varken alarm sesi 1 dakika sonra başlar (tarayıcı videoyu kendiliğinden oynatmazsa da uyandırsın diye). */
+  function ytEmbed(yt) {
+    if (!media || !yt || !(window.sthConsent && window.sthConsent.ext())) return false;
+    var i = yt.indexOf(":"), kind = yt.slice(0, i), id = yt.slice(i + 1);
+    if (!/^[\w-]{10,64}$/.test(id)) return false;
+    var src = kind === "list" ? "https://www.youtube-nocookie.com/embed/videoseries?list=" + id + "&autoplay=1&rel=0"
+      : kind === "v" ? "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&loop=1&playlist=" + id : "";
+    if (!src) return false;
+    var f = doc.createElement("iframe");
+    f.src = src; f.title = "YouTube"; f.setAttribute("allow", "autoplay; encrypted-media; picture-in-picture");
+    f.setAttribute("referrerpolicy", "strict-origin-when-cross-origin"); f.setAttribute("allowfullscreen", "");
+    media.textContent = ""; media.appendChild(f); media.hidden = false;
+    return true;
+  }
+  function ring(title, onStop, sound, yt) {
     ringOnStop = onStop || null;
-    var n = 0;
-    ringUntil = performance.now() + 5 * 60 * 1000;
+    var n = 0, delay = ytEmbed(yt) ? 60000 : 0, start = performance.now() + delay;
+    ringUntil = performance.now() + delay + 5 * 60 * 1000;
     if (banner) { q("[data-ring-title]").textContent = title; banner.hidden = false; var b = banner.querySelector("[data-ring-stop]"); if (b) b.focus(); }
     notify(title, baseTitle);
     clearInterval(ringTimer); clearInterval(flashTimer);
-    chime(sound, n);
-    ringTimer = setInterval(function () { if (performance.now() > ringUntil) stopRing(); else chime(sound, ++n); }, 2200);
+    if (!delay) chime(sound, n);
+    ringTimer = setInterval(function () { var t = performance.now(); if (t > ringUntil) stopRing(); else if (t >= start) chime(sound, delay ? n++ : ++n); }, 2200);
     var on = false;
     flashTimer = setInterval(function () { on = !on; doc.title = on ? "🔔 " + title : baseTitle; }, 800);
   }
@@ -112,6 +128,7 @@
     clearInterval(ringTimer); clearInterval(flashTimer); ringTimer = flashTimer = null;
     doc.title = baseTitle;
     if (banner) banner.hidden = true;
+    if (media) { media.textContent = ""; media.hidden = true; }
     var cb = ringOnStop; ringOnStop = null; if (cb) cb();
   }
   if (banner) {
@@ -362,8 +379,34 @@
     var form = q("[data-alarm-form]"), list = q("[data-al-list]"), empty = q("[data-al-empty]"), nextEl = q("[data-al-next]");
     var wake = q("[data-wake]");
     var alarms = (function () { try { var a = JSON.parse(store("sth-alarms") || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } })();
-    var snoozeUntil = 0, ringing = null, lock = null, lastSound = "chime";
-    var soundSel = q("[data-al-sound]");
+    var snoozeUntil = 0, ringing = null, lock = null, lastSound = "chime", lastYt = "";
+    var soundSel = q("[data-al-sound]"), ytIn = q("[data-al-yt]"), ytNote = q("[data-al-yt-note]");
+    /* YouTube bağlantısı: youtube.com/watch?v=, youtu.be/, music.youtube.com, /shorts/, /embed/, playlist?list= */
+    function ytParse(u) {
+      u = (u || "").trim(); if (!u) return null;
+      var x; try { x = new URL(/^https?:\/\//i.test(u) ? u : "https://" + u); } catch (e) { return false; }
+      var h = x.hostname.toLowerCase().replace(/^(www|m)\./, "");
+      if (h === "open.spotify.com" || h === "spotify.link") return "spotify";
+      if (h === "youtu.be") { var id = x.pathname.slice(1).split("/")[0]; return /^[\w-]{11}$/.test(id) ? "v:" + id : false; }
+      if (h === "youtube.com" || h === "music.youtube.com" || h === "youtube-nocookie.com") {
+        var v = x.searchParams.get("v"), list = x.searchParams.get("list"), m = /^\/(?:embed|shorts|live)\/([\w-]{11})/.exec(x.pathname);
+        if (!v && m) v = m[1];
+        if (v && /^[\w-]{11}$/.test(v)) return "v:" + v;
+        if (list && /^[\w-]{10,64}$/.test(list)) return "list:" + list;
+      }
+      return false;
+    }
+    function ytHint() {
+      if (!ytIn || !ytNote) return;
+      var r = ytParse(ytIn.value), allowed = !!(window.sthConsent && window.sthConsent.ext());
+      ytNote.textContent = r === false ? P.ytInvalid : r === "spotify" ? P.spotifyNote : r && !allowed ? P.ytBlocked + " " : P.ytNote;
+      ytNote.classList.toggle("is-err", r === false || r === "spotify");
+      if (r && r !== "spotify" && !allowed) {
+        var b = doc.createElement("button"); b.type = "button"; b.className = "btn btn-sm"; b.textContent = (S.T.wx && S.T.wx.allow) || "OK";
+        b.setAttribute("data-consent-allow-ext", ""); ytNote.appendChild(b);
+      }
+    }
+    if (ytIn) { ytIn.addEventListener("input", ytHint); window.addEventListener("sth-consent", ytHint); }
     function persist() { save("sth-alarms", alarms); }
     function label(a) { return a.label || P.defaultLabel; }
     function daysText(a) {
@@ -390,7 +433,7 @@
         cb.addEventListener("change", function () { a.on = cb.checked; if (a.on) ctx(); persist(); renderNext(); lockSync(); });
         var info = doc.createElement("label"); info.setAttribute("for", cb.id); info.className = "al-info";
         var tm = doc.createElement("strong"); tm.textContent = a.time;
-        var tx = doc.createElement("span"); tx.textContent = label(a) + " · " + daysText(a) + (a.sound && a.sound !== "chime" && P.sounds ? " · " + P.sounds[a.sound] : "");
+        var tx = doc.createElement("span"); tx.textContent = label(a) + " · " + daysText(a) + (a.sound && a.sound !== "chime" && P.sounds ? " · " + P.sounds[a.sound] : "") + (a.yt ? " · ▶ YouTube" : "");
         info.appendChild(tm); info.appendChild(tx);
         var del = doc.createElement("button"); del.type = "button"; del.className = "toggle"; del.textContent = P["delete"];
         del.setAttribute("aria-label", P["delete"] + ": " + a.time + " " + label(a));
@@ -428,18 +471,22 @@
       ev.preventDefault(); ctx(); used1();
       var time = q("[data-al-time]").value;
       if (!/^\d\d:\d\d$/.test(time)) return;
-      alarms.push({ id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), time: time, label: q("[data-al-label]").value.trim().slice(0, 40), days: qa("[data-al-day]").filter(function (c) { return c.checked; }).map(function (c) { return +c.value; }), on: true, last: "", sound: soundSel ? soundSel.value : "chime" });
-      q("[data-al-label]").value = "";
+      var yt = ytIn ? ytParse(ytIn.value) : null;
+      if (yt === false || yt === "spotify") { ytHint(); ytIn.focus(); return; }
+      var item = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), time: time, label: q("[data-al-label]").value.trim().slice(0, 40), days: qa("[data-al-day]").filter(function (c) { return c.checked; }).map(function (c) { return +c.value; }), on: true, last: "", sound: soundSel ? soundSel.value : "chime" };
+      if (yt) item.yt = yt;
+      alarms.push(item);
+      q("[data-al-label]").value = ""; if (ytIn) { ytIn.value = ""; ytHint(); }
       persist(); render(); lockSync();
     });
     function fire(a, key) {
       ringing = a; a.last = key; if (!a.days.length) a.on = false; persist(); render();
-      lastSound = a.sound || "chime";
-      ring(label(a) + " · " + a.time, function () { ringing = null; }, lastSound);
+      lastSound = a.sound || "chime"; lastYt = a.yt || "";
+      ring(label(a) + " · " + a.time, function () { ringing = null; }, lastSound, lastYt);
     }
     function check() {
       var now = S.nowDate(), key = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate(), mod = now.getHours() * 60 + now.getMinutes();
-      if (snoozeUntil && S.nowMs() >= snoozeUntil && !ringing) { snoozeUntil = 0; ring(P.ringing, null, lastSound); return; }
+      if (snoozeUntil && S.nowMs() >= snoozeUntil && !ringing) { snoozeUntil = 0; ring(P.ringing, null, lastSound, lastYt); return; }
       alarms.forEach(function (a) {
         if (!a.on || ringing) return;
         var am = +a.time.slice(0, 2) * 60 + +a.time.slice(3, 5), diff = (mod - am + 1440) % 1440;

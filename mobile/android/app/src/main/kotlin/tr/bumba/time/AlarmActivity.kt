@@ -51,18 +51,25 @@ import java.time.ZoneId
 class AlarmActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (Build.VERSION.SDK_INT >= 27) {
-            setShowWhenLocked(true)
-            setTurnScreenOn(true)
-            getSystemService(KeyguardManager::class.java)?.requestDismissKeyguard(this, null)
-        } else {
-            @Suppress("DEPRECATION")
-            window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
-        }
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         val id = intent.getStringExtra(AlarmScheduler.EXTRA_ID) ?: run { finish(); return }
         val title = intent.getStringExtra(AlarmScheduler.EXTRA_TITLE) ?: L("tools.alarm.defaultLabel")
         val kind = intent.getStringExtra(AlarmScheduler.EXTRA_KIND) ?: "alarm"
+        // Müzik bağlantısı (MusicLink): kilit açıksa hemen, kilitliyse kilit açılınca Spotify/YouTube'da açılır
+        val music = if (kind == "alarm") AlarmItem.find(id)?.link?.takeIf { it.isNotEmpty() } else null
+        if (Build.VERSION.SDK_INT >= 27) {
+            setShowWhenLocked(true)
+            setTurnScreenOn(true)
+            val km = getSystemService(KeyguardManager::class.java)
+            if (music != null && km?.isKeyguardLocked != true) MusicLink.openOnce(this, id, music)
+            km?.requestDismissKeyguard(this, if (music == null) null else object : KeyguardManager.KeyguardDismissCallback() {
+                override fun onDismissSucceeded() { MusicLink.openOnce(this@AlarmActivity, id, music) }
+            })
+        } else {
+            @Suppress("DEPRECATION")
+            window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON)
+            if (music != null) MusicLink.openOnce(this, id, music)
+        }
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
         // Çalarken geri tuşu ekranı kapatmaz (rakip analizi #21): alarm yalnız kaydırarak, görevle ya da ertelemeyle susar
         onBackPressedDispatcher.addCallback(this, object : androidx.activity.OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {}
@@ -88,6 +95,10 @@ class AlarmActivity : ComponentActivity() {
                     }
                     Text(title, color = Theme.c.text, fontSize = 24.sp, textAlign = TextAlign.Center)
                     Text(L("tools.alarm.ringing"), color = Theme.c.muted, fontSize = 15.sp)
+                    if (music != null) {
+                        Spacer(Modifier.height(16.dp))
+                        RoundButton("▶ " + L("alarm.link.open"), false, Modifier.fillMaxWidth()) { MusicLink.open(this@AlarmActivity, music) }
+                    }
                     Spacer(Modifier.height(40.dp))
                     // Kapatma görevi (rakip analizi #13): görev yapılınca alarm susar
                     val item = remember { if (kind == "alarm") AlarmItem.find(id) else null }

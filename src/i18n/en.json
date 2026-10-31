@@ -197,6 +197,13 @@
     "upcomingLead": "The next days on the Turkish calendar.",
     "upcomingAll": "See the yearly calendar",
     "upcomingNone": "No upcoming days found.",
+    "globeLabel": "Rotating globe showing day and night, time zone meridians and the local time in major cities",
+    "globeCaption": "The lit side is day, the dark side is night. Lines are the 15° time zone meridians (with their UTC offset); the red line is the zero point, the Greenwich meridian (UTC). Each city shows its local time. Drag the globe to turn it; zoom with two fingers, the mouse wheel or the + and − buttons. As you zoom in, the local time of places in that area appears too. Zoom in further and it switches to the OpenStreetMap map (down to street level), labelling meridians and meridian segments with their longitude. Map tiles are downloaded from OpenStreetMap at that moment (© OpenStreetMap contributors); the globe texture is from Natural Earth (public domain). A double tap zooms in.",
+    "globeTitle": "World globe",
+    "globeInfo": "About the globe",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "resetView": "Whole world",
     "todayQ": "What is today's date?",
     "todayA": "Today's date and weekday are shown live in the bar at the top of every page and follow the server-synced clock rather than your device clock."
   },
@@ -266,7 +273,10 @@
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
           "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
+          "**Map (globe, external service, with permission):** If you have allowed external services in the cookie preferences and you zoom the globe on the home page beyond a certain level, map tiles are downloaded straight to your browser from OpenStreetMap's server (tile.openstreetmap.org); your IP address and the tile addresses of the area you are looking at then reach the OpenStreetMap Foundation. Without permission, or while the globe is zoomed out, this request is not made. The Saat Tarih server does not see them; OpenStreetMap's own privacy terms apply.",
           "**Qibla and nearby mosques:** The qibla direction, distance and qibla time are calculated in your browser. For the compass, your phone's orientation sensor is read only in the browser (iPhone asks for permission) and is never sent anywhere. If you tap \"Show mosques\" and have allowed external services, the selected place's coordinates rounded to two decimals (about 1 km) are sent from your browser to the Overpass service (overpass-api.de), which serves OpenStreetMap data; your IP address also reaches this service. The Saat Tarih server does not see these coordinates.",
+          "**Alarm music (YouTube, external service, with permission):** If you add a YouTube link to an alarm in the alarm tool and have allowed external services, when the alarm rings the video is loaded into your browser with YouTube's privacy-enhanced player (youtube-nocookie.com); your IP address and the video's ID then reach Google (YouTube), and the player may store its own data in your browser. The link stays only in this browser, with your alarm. Without permission the player is not loaded and the alarm rings with its own sound. The Saat Tarih server does not see these; YouTube's (Google's) own privacy terms apply.",
+          "**Meeting poll:** The poll's title, candidate times, the names of the organizer and participants and their replies are kept in the part of the link after the # sign; browsers don't send that part to the server, so the Saat Tarih server and statistics don't see them. Whoever you share the link with (by message or email) can see it. The polls and replies you see are kept only in this browser, under the sth-polls key.",
           "**Email list form:** The email address you enter, the consent you give with the \"I agree\" button in the window that opens, the selected language and the page of the form are processed by Bumba Group's shared list service (bumbagroup.com). Sign-up uses double opt-in: you are not added until you click the link in the confirmation email, and every email contains a one-click unsubscribe link. See the [shared privacy notice](https://bumbagroup.com/liste/aydinlatma?dil=en) for details.",
           "**Server logs:** The server that hosts the site keeps a standard access log for each request, with the IP address, browser information, the requested page and the time. These logs are used only for security and troubleshooting, not to build profiles of people.",
           "**Visit statistics (Umami, with permission):** Only if you allow statistics in the cookie banner or the cookie preferences, Umami, which runs on our own server, counts page views and these actions: language and theme change, whether a search found a result, joining the list, choosing a clock style, full screen, the first use of a tool, the type of location choice (province or location), and opening or downloading the Ramadan timetable. While doing so Umami processes your browser, operating system and device type, language, screen size, the address of the page you came from, and the country and city derived from your IP address; the IP address itself is not stored. Umami does not use cookies, but it links visits to a pseudonymous session, so it is not anonymous. The words you type in search, your email address and your location are not sent. You can withdraw permission at any time with the \"Cookie preferences\" link in the settings menu; Umami stops from the next page on.",
@@ -333,7 +343,7 @@
         "id": "cookies",
         "h": "Cookies and browser storage",
         "p": [
-          "Saat Tarih does not set any cookies. On your first visit a banner at the bottom of the page asks for your permission for visit statistics (Umami) and external services (Open-Meteo); both stay off until you allow them. You can change your choice at any time with the \"Cookie preferences\" link in the settings menu. To remember your choices we use your browser's local storage (localStorage); these items are in the necessary group, stay on your device and are not sent to a server. You can delete them at any time in your browser settings. Bumba Group's shared cookie policy: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
+          "Saat Tarih does not set any cookies. On your first visit a banner at the bottom of the page asks for your permission for visit statistics (Umami) and external services (Open-Meteo, OpenStreetMap, YouTube); both stay off until you allow them. You can change your choice at any time with the \"Cookie preferences\" link in the settings menu. To remember your choices we use your browser's local storage (localStorage); these items are in the necessary group, stay on your device and are not sent to a server. You can delete them at any time in your browser settings. Bumba Group's shared cookie policy: [bumbagroup.com/cerez-politikasi](https://bumbagroup.com/cerez-politikasi?dil=en)."
         ],
         "table": {
           "head": [
@@ -374,7 +384,7 @@
             ],
             [
               "sth-alarms",
-              "Remembers the alarms you set and each alarm's sound.",
+              "Remembers the alarms you set, each alarm's sound and its YouTube link, if any.",
               "Until you delete it"
             ],
             [
@@ -428,6 +438,16 @@
               "Until you delete it"
             ],
             [
+              "sth-polls",
+              "Keeps the meeting polls you created or opened and the replies received (up to 20 polls).",
+              "Until you delete it"
+            ],
+            [
+              "sth-poll-name",
+              "Remembers the name you entered in a meeting poll for your next reply.",
+              "Until you delete it"
+            ],
+            [
               "sth-wake",
               "Remembers whether the tools keep the screen on.",
               "Until you delete it"
@@ -440,7 +460,7 @@
         "h": "Legal bases",
         "ul": [
           "Email list: your explicit consent (KVKK art. 5/1). You can withdraw it at any time with the unsubscribe link in each email.",
-          "Visit statistics (Umami) and external services (Open-Meteo): the explicit consent you give in the cookie banner (KVKK art. 5/1). When you allow external services your IP address reaches these providers, which may be abroad; your consent covers this too. You can withdraw it with the \"Cookie preferences\" link.",
+          "Visit statistics (Umami) and external services (Open-Meteo, OpenStreetMap, YouTube): the explicit consent you give in the cookie banner (KVKK art. 5/1). When you allow external services your IP address reaches these providers, which may be abroad; your consent covers this too. You can withdraw it with the \"Cookie preferences\" link.",
           "Server logs: our legitimate interest in keeping the site secure and working (KVKK art. 5/2-f).",
           "Your preferences: legitimate interest (KVKK art. 5/2-f); the data stays only on your device."
         ]
@@ -763,6 +783,10 @@
           "name": "Meeting planner",
           "desc": "Find overlapping working hours across time zones."
         },
+        "poll": {
+          "name": "Meeting poll",
+          "desc": "Share candidate times and let everyone mark what suits them."
+        },
         "diff": {
           "name": "Time difference",
           "desc": "The time difference between Istanbul and cities worldwide."
@@ -1014,7 +1038,12 @@
         "rise": "Rising",
         "digital": "Digital beep",
         "soft": "Soft"
-      }
+      },
+      "ytLabel": "YouTube music (optional)",
+      "ytNote": "When the alarm rings this video plays; if you don't turn it off within 1 minute, the alarm sound plays too (also if the browser doesn't start the video by itself). The video loads from YouTube, so external services must be allowed.",
+      "ytInvalid": "This is not a YouTube link.",
+      "ytBlocked": "Allow external services for YouTube music; without permission the alarm rings with its own sound.",
+      "spotifyNote": "Spotify doesn't start by itself in the browser; you can use Spotify as alarm music in the Android app."
     },
     "pomodoro": {
       "title": "Pomodoro Timer: Work 25 Minutes, Break 5 | Saat Tarih",
@@ -1357,6 +1386,72 @@
     "pickHint": "Tap an hour at the top of the table to pick the meeting time; the link and calendar entry include it.",
     "meeting": "Meeting",
     "picked": "Picked time: {time} ({city} time)"
+  },
+  "poll": {
+    "title": "Meeting Poll: Pick the Best Time Together | Saat Tarih",
+    "description": "Choose candidate times, share the link and let everyone mark when they're free. No account or server; everyone sees the times in their own time zone.",
+    "h1": "Meeting poll",
+    "lead": "Add candidate times and share the poll link. Participants mark the times that suit them and send you a reply link; the best time is found automatically.",
+    "titleLabel": "Meeting name",
+    "orgLabel": "Your name (optional)",
+    "durLabel": "Duration",
+    "slotsHeading": "Candidate times",
+    "dateLabel": "Date",
+    "timeLabel": "Time",
+    "addSlot": "Add time",
+    "removeSlot": "Remove",
+    "maxSlots": "You can add up to {n} candidate times.",
+    "needSlot": "Add at least one candidate time.",
+    "create": "Create poll link",
+    "tzNote": "Times are shown in your time zone: {tz}.",
+    "orgTime": "Organizer's time: {time} ({tz})",
+    "byLine": "Organized by {name}",
+    "linkHeading": "Poll link",
+    "linkHint": "Send this link to the participants. Each one marks the times that suit them and sends you a reply link; when you open it or paste it below, it is added to the results.",
+    "linkLabel": "Link",
+    "copy": "Copy",
+    "copied": "Copied",
+    "share": "Share",
+    "voteHeading": "Mark the times that suit you",
+    "yourName": "Your name",
+    "yes": "Yes",
+    "maybe": "Maybe",
+    "no": "No",
+    "respond": "Create my reply link",
+    "responseHint": "Send this reply link to the organizer (by message or email).",
+    "ownSaved": "Your reply was added to the results in this browser. If you're on another device, send this link to yourself.",
+    "needName": "Enter your name.",
+    "resultsHeading": "Results",
+    "participant": "Participant",
+    "total": "Total",
+    "best": "Best time: {slot} ({n} of {total} can make it)",
+    "noAnswers": "No replies yet. They appear here when you open the participants' reply links or paste them below.",
+    "pasteLabel": "Paste a reply link you received",
+    "pasteBtn": "Add",
+    "pasteBad": "This link is not a valid reply to this poll.",
+    "added": "Reply added: {names}",
+    "removeAnswer": "Remove reply",
+    "resultsLink": "Copy results link",
+    "myPolls": "Polls in this browser",
+    "answers": "{n} replies",
+    "deletePoll": "Remove poll",
+    "invalid": "This poll link is broken or incomplete.",
+    "newPoll": "Create a new poll",
+    "privacyNote": "No account and no server: the poll and replies travel in the part of the link after the # sign (browsers don't send that part to the server); the replies you see are stored only in this browser.",
+    "faq": [
+      {
+        "q": "Where is the poll data stored?",
+        "a": "Not on a server. The title, candidate times, names and replies travel in the part of the link after the # sign, which browsers don't send to the server. The replies the organizer sees are stored only in their own browser; whoever you share the link with can see it."
+      },
+      {
+        "q": "How do participants send me their replies?",
+        "a": "Each participant enters their name, marks the times that suit them and creates a reply link, which they send you by message or email. When you open the link or paste it into the box on the poll page, the reply is added to the results table."
+      },
+      {
+        "q": "Which time zone are the times shown in?",
+        "a": "Everyone sees the times in their own device's time zone; if the organizer's time zone is different, their time is shown next to each slot too. Daylight saving changes are taken into account."
+      }
+    ]
   },
   "cdp": {
     "title": "How Many Days Until {dat}? Countdown | Saat Tarih",
@@ -1950,7 +2045,7 @@
   },
   "consent": {
     "barLabel": "Cookie choice",
-    "barText": "We keep your preferences (language, theme, clock and tool settings) only in this browser. If you allow it, visits are counted with Umami, and the weather (Open-Meteo) and nearby mosques (OpenStreetMap) are loaded from external services.",
+    "barText": "We keep your preferences (language, theme, clock and tool settings) only in this browser. If you allow it, visits are counted with Umami, and the weather (Open-Meteo), the close-up globe map and nearby mosques (OpenStreetMap) and alarm music (YouTube) are loaded from external services.",
     "accept": "Accept",
     "reject": "Reject",
     "prefs": "Preferences",
@@ -1963,13 +2058,14 @@
     "stats": "Statistics",
     "statsText": "Umami counts page visits and a few actions (browser, device, language, and the country and city derived from the IP address; the IP is not stored). No cookies are used. Off by default.",
     "ext": "External services",
-    "extText": "The weather is loaded from Open-Meteo (api.open-meteo.com) and nearby mosques from OpenStreetMap's Overpass service (overpass-api.de); your IP address reaches these services. Off by default.",
+    "extText": "The weather is loaded from Open-Meteo (api.open-meteo.com), the map on the zoomed globe from OpenStreetMap (tile.openstreetmap.org), nearby mosques from OpenStreetMap's Overpass service (overpass-api.de) and YouTube music you add to an alarm from YouTube (youtube-nocookie.com); your IP address reaches these services. Off by default.",
     "save": "Save choice",
     "footerLink": "Cookie preferences",
     "privacy": "Privacy",
     "wxBlocked": "The weather loads from Open-Meteo; allow external services to show it.",
     "allow": "Allow",
-    "mqBlocked": "Nearby mosques are loaded from OpenStreetMap (Overpass); allow external services to show them."
+    "mqBlocked": "Nearby mosques are loaded from OpenStreetMap (Overpass); allow external services to show them.",
+    "mapBlocked": "The close-up map loads from OpenStreetMap; allow external services to show it."
   },
   "qibla": {
     "title": "Qibla Direction: Compass, Qibla Angle and Qibla Time | Saat Tarih",

@@ -62,6 +62,11 @@ data class AlarmItem(
     val every: Int = 1,
     val anchor: String = "",
     val until: String = "",
+    /** Müzik bağlantısı (31 Ekim 2026; yalnız Android): çalınca Spotify ya da YouTube'da açılır, alarm sesi 1 dk sonra (MusicLink) */
+    val link: String = "",
+    /** Akıllı alarm (31 Ekim 2026; iOS ile aynı alan): alarmdan önceki bu kadar dakikada uyku oturumu hafif uyku (hareket)
+     *  algılarsa erken çalar; 0 = kapalı (SmartSleep) */
+    val smart: Int = 0,
 ) {
     /** Kapatırken istenecek görev (kod kaydedilmediyse matematik); yoksa "none" */
     val effectiveTask: String get() = when {
@@ -154,6 +159,7 @@ data class AlarmItem(
         .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise).put("skipHolidays", skipHolidays)
         .put("sunrise", sunrise).put("task", task).put("taskLevel", taskLevel).put("code", code).put("wakeCheck", wakeCheck)
         .put("preNotify", preNotify).put("speak", speak).put("date", date).put("every", every).put("anchor", anchor).put("until", until)
+        .put("link", link).put("smart", smart)
 
     companion object {
         private const val KEY = "alarms"
@@ -165,6 +171,7 @@ data class AlarmItem(
         val SNOOZE_MAX_CHOICES = listOf(0, 1, 2, 3, 5)
         val SUNRISE_CHOICES = listOf(0, 10, 20, 30)
         val PRE_NOTIFY_CHOICES = listOf(0, 15, 30, 60)
+        val SMART_CHOICES = listOf(0, 10, 20, 30)
 
         /** Gün doğumu ışığı seçili sıradaki alarm (tam ekran saat için): an ve pencere (dakika). Alarmdan 15 dk sonrasına
          *  kadar ışık yanık kaldığı için biraz geriden bakılır. */
@@ -192,6 +199,7 @@ data class AlarmItem(
                 o.optString("task", "none"), o.optInt("taskLevel", 2), o.optString("code", ""), o.optBoolean("wakeCheck", false),
                 o.optInt("preNotify", 0), o.optBoolean("speak", false),
                 o.optString("date", ""), o.optInt("every", 1), o.optString("anchor", ""), o.optString("until", ""),
+                link = o.optString("link", ""), smart = o.optInt("smart", 0),
             )
         }
 
@@ -387,8 +395,8 @@ object AlarmScheduler {
         if (!canNotify(c)) return
         if (kind == WakeCheck.KIND) { WakeCheck.ask(c, id); return }
         val item = if (kind == "alarm") AlarmItem.find(id) else null
-        // Kademeli ses ya da saati sesli söyleme: ses hizmette çalar
-        if ((item?.rise == true || item?.speak == true) && AlarmRingService.start(c, id, title, kind)) return
+        // Kademeli ses, saati sesli söyleme ya da müzik bağlantısı: ses hizmette çalar
+        if ((item?.rise == true || item?.speak == true || item?.link?.isNotEmpty() == true) && AlarmRingService.start(c, id, title, kind)) return
         runCatching { NotificationManagerCompat.from(c).notify(id.hashCode(), notification(c, id, title, kind, silent = false)) }
     }
 
