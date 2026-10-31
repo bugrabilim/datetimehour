@@ -27,6 +27,8 @@ final class OneShotLocation: NSObject, CLLocationManagerDelegate {
         let status = manager.authorizationStatus
         #if os(macOS)
         guard status == .authorizedAlways else { return nil }
+        #elseif os(visionOS)
+        guard status == .authorizedWhenInUse else { return nil }
         #else
         guard status == .authorizedWhenInUse || status == .authorizedAlways else { return nil }
         #endif
