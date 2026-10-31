@@ -1,38 +1,63 @@
 {
-  "_": "Eklentiye özgü metinler (beş dil). Namaz adları, il etiketi ve hicri ay adları sitedeki ve uygulamalardaki metinlerden scripts/build-extension.mjs ile eklenir.",
+  "_": "Eklentiye özgü metinler (sitenin dilleri). Namaz adları, il etiketi ve hicri ay adları sitedeki ve uygulamalardaki metinlerden scripts/build-extension.mjs ile eklenir.",
   "name": {
     "tr": "Saat Tarih: saat, tarih ve namaz vakitleri",
     "en": "Saat Tarih: clock, date and prayer times",
     "de": "Saat Tarih: Uhr, Datum und Gebetszeiten",
     "az": "Saat Tarih: saat, tarix və namaz vaxtları",
-    "ar": "Saat Tarih: الساعة والتاريخ ومواقيت الصلاة"
+    "ar": "Saat Tarih: الساعة والتاريخ ومواقيت الصلاة",
+    "id": "Saat Tarih: jam, tanggal, dan jadwal salat",
+    "ur": "Saat Tarih: گھڑی، تاریخ اور اوقاتِ نماز",
+    "fa": "Saat Tarih: ساعت، تاریخ و اوقات شرعی",
+    "fr": "Saat Tarih : horloge, date et heures de prière",
+    "ru": "Saat Tarih: часы, дата и время намаза"
   },
   "description": {
     "tr": "Tarayıcınızda saat, bugünün tarihi, hicri tarih ve 81 il için namaz vakitleri. İnternete bağlanmaz.",
     "en": "Clock, today's date, the Hijri date and prayer times for Turkey's 81 provinces in your browser. Works offline.",
     "de": "Uhr, heutiges Datum, Hidschri-Datum und Gebetszeiten für die 81 Provinzen der Türkei im Browser. Funktioniert offline.",
     "az": "Brauzerinizdə saat, bugünkü tarix, hicri tarix və Türkiyənin 81 vilayəti üçün namaz vaxtları. İnternetə qoşulmur.",
-    "ar": "الساعة وتاريخ اليوم والتاريخ الهجري ومواقيت الصلاة لـ 81 ولاية تركية في متصفحك. يعمل دون اتصال."
+    "ar": "الساعة وتاريخ اليوم والتاريخ الهجري ومواقيت الصلاة لـ 81 ولاية تركية في متصفحك. يعمل دون اتصال.",
+    "id": "Jam, tanggal hari ini, tanggal Hijriah, dan jadwal salat untuk 81 provinsi Turki di peramban Anda. Bekerja tanpa internet.",
+    "ur": "آپ کے براؤزر میں گھڑی، آج کی تاریخ، ہجری تاریخ اور ترکی کے 81 صوبوں کے اوقاتِ نماز۔ انٹرنیٹ کے بغیر کام کرتا ہے۔",
+    "fa": "ساعت، تاریخ امروز، تاریخ قمری و اوقات شرعی 81 استان ترکیه در مرورگر شما. بدون اینترنت کار می‌کند.",
+    "fr": "Horloge, date du jour, date hégirienne et heures de prière des 81 provinces turques dans votre navigateur. Fonctionne hors ligne.",
+    "ru": "Часы, сегодняшняя дата, дата по хиджре и время намаза для 81 провинции Турции в браузере. Работает без интернета."
   },
   "format": {
     "tr": "24/12 saat",
     "en": "24/12 hour",
     "de": "24/12 Stunden",
     "az": "24/12 saat",
-    "ar": "نظام 24/12 ساعة"
+    "ar": "نظام 24/12 ساعة",
+    "id": "Format 24/12 jam",
+    "ur": "24/12 گھنٹے",
+    "fa": "24/12 ساعته",
+    "fr": "Format 24/12 h",
+    "ru": "24/12 часов"
   },
   "open": {
     "tr": "time.bumba.tr'de aç",
     "en": "Open time.bumba.tr",
     "de": "time.bumba.tr öffnen",
     "az": "time.bumba.tr-də aç",
-    "ar": "افتح time.bumba.tr"
+    "ar": "افتح time.bumba.tr",
+    "id": "Buka time.bumba.tr",
+    "ur": "time.bumba.tr کھولیں",
+    "fa": "باز کردن time.bumba.tr",
+    "fr": "Ouvrir time.bumba.tr",
+    "ru": "Открыть time.bumba.tr"
   },
   "note": {
     "tr": "Vakitler Diyanet yöntemiyle cihazda hesaplanır ve Türkiye saatiyle gösterilir; resmî vakit için Diyanet esastır. Eklenti internete bağlanmaz; yalnız seçtiğiniz il tarayıcıda saklanır.",
     "en": "Times are calculated on your device with the Diyanet method and shown in Turkey time; the Diyanet's official times are authoritative. The extension never goes online; only your chosen province is stored in the browser.",
     "de": "Die Zeiten werden auf Ihrem Gerät nach der Diyanet-Methode berechnet und in türkischer Zeit angezeigt; maßgeblich sind die offiziellen Zeiten des Diyanet. Die Erweiterung geht nie online; nur die gewählte Provinz wird im Browser gespeichert.",
     "az": "Vaxtlar cihazda Diyanət üsulu ilə hesablanır və Türkiyə vaxtı ilə göstərilir; rəsmi vaxt üçün Diyanət əsasdır. Əlavə internetə qoşulmur; yalnız seçdiyiniz vilayət brauzerdə saxlanılır.",
-    "ar": "تُحسب المواقيت على جهازك بطريقة رئاسة الشؤون الدينية وتُعرض بتوقيت تركيا؛ والمعتمد المواقيت الرسمية للرئاسة. لا تتصل الإضافة بالإنترنت؛ تُحفظ الولاية التي تختارها فقط في المتصفح."
+    "ar": "تُحسب المواقيت على جهازك بطريقة رئاسة الشؤون الدينية وتُعرض بتوقيت تركيا؛ والمعتمد المواقيت الرسمية للرئاسة. لا تتصل الإضافة بالإنترنت؛ تُحفظ الولاية التي تختارها فقط في المتصفح.",
+    "id": "Waktu dihitung di perangkat Anda dengan metode Diyanet dan ditampilkan dalam waktu Turki; waktu resmi Diyanet yang berlaku. Ekstensi tidak pernah terhubung ke internet; hanya provinsi pilihan Anda yang disimpan di peramban.",
+    "ur": "اوقات آپ کے آلے پر دیانت کے طریقے سے حساب کیے جاتے ہیں اور ترکی کے وقت میں دکھائے جاتے ہیں؛ سرکاری اوقات کے لیے دیانت معتبر ہے۔ ایکسٹینشن انٹرنیٹ سے نہیں جڑتی؛ صرف آپ کا منتخب صوبہ براؤزر میں محفوظ ہوتا ہے۔",
+    "fa": "اوقات با روش دیانت روی دستگاه شما محاسبه و به وقت ترکیه نمایش داده می‌شوند؛ مرجع اوقات رسمی دیانت است. افزونه هرگز به اینترنت وصل نمی‌شود؛ فقط استانی که انتخاب کرده‌اید در مرورگر ذخیره می‌شود.",
+    "fr": "Les heures sont calculées sur votre appareil selon la méthode de la Diyanet et affichées à l’heure de la Turquie ; les heures officielles de la Diyanet font foi. L’extension ne se connecte jamais à Internet ; seule la province choisie est enregistrée dans le navigateur.",
+    "ru": "Время рассчитывается на устройстве по методу Diyanet и показывается по времени Турции; официальным считается время Diyanet. Расширение не выходит в интернет; в браузере хранится только выбранная провинция."
   }
 }

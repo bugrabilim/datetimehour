@@ -529,7 +529,7 @@
     "pages": "Seiten",
     "cities": "Städteseiten",
     "about": "Über die Website",
-    "aboutText": "Die Uhrzeit wird mit der Serveruhr der Website synchronisiert (unabhängig von der Geräteuhr); die Zeitzone wird aus dem Browser gelesen, und es werden keine personenbezogenen Daten übermittelt. Verfügbar auf Türkisch, Englisch und Deutsch. Verantwortlicher: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Kontakt: bilgi@bumbagroup.com."
+    "aboutText": "Die Uhrzeit wird mit der Serveruhr der Website synchronisiert (unabhängig von der Geräteuhr); die Zeitzone wird aus dem Browser gelesen, und es werden keine personenbezogenen Daten übermittelt. Verfügbar in zehn Sprachen: Türkisch, Englisch, Deutsch, Aserbaidschanisch, Arabisch, Indonesisch, Urdu, Persisch, Französisch und Russisch. Verantwortlicher: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Kontakt: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Uhrenstile",
@@ -2333,7 +2333,7 @@
     "colDesc": "Inhalt",
     "ep": {
       "index": "Liste der Endpunkte und Versionsangaben",
-      "holidays": "Feiertage, halbe Vortage, religiöse und besondere Tage eines Jahres (Namen in fünf Sprachen) und der Ramadan-Zeitraum",
+      "holidays": "Feiertage, halbe Vortage, religiöse und besondere Tage eines Jahres (Namen in allen Sprachen der Website) und der Ramadan-Zeitraum",
       "prayer": "Gebetszeiten einer Provinz für ein Jahr (Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib, Ischa; türkische Zeit)",
       "provinces": "81 Provinzen: Kurzname, Name, Breite, Länge",
       "hijri": "Tabelle der Hidschri-Monatsanfänge (am Diyanet-Kalender ausgerichtet)",

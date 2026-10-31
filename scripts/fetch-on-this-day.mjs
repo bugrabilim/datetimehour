@@ -1,11 +1,12 @@
 /* "Tarihte bugün" verisi (30 Ekim 2026): Wikidata (CC0) sorgu hizmetinden olaylar, kuruluşlar ve (hizmet yanıt
-   verirse) doğum/ölümler; gün-ay başına en çok bilinenler (Vikipedi bağlantı sayısına göre), beş dilde ad.
+   verirse) doğum/ölümler; gün-ay başına en çok bilinenler (Vikipedi bağlantı sayısına göre), sitenin dillerinde ad.
    Derleme ağa çıkmaz; bu betik elle çalıştırılır ve src/data/on-this-day.json yazılır.
-   Kullanım: node scripts/fetch-on-this-day.mjs */
+   Kullanım: node scripts/fetch-on-this-day.mjs
+   Yalnız adlar (yeni dil eklenince; kayıtlar ve seçim değişmez): node scripts/fetch-on-this-day.mjs --labels */
 import fs from "node:fs";
 
 const UA = "SaatTarih/1.0 (https://time.bumba.tr)";
-const LANGS = ["tr", "en", "de", "az", "ar"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
 const OUT = "src/data/on-this-day.json";
 const WDQS = "https://query.wikidata.org/sparql";
 
@@ -32,6 +33,40 @@ const FOUND_CLASSES = ["Q6256", "Q3624078", "Q3024240", "Q484652"];
    kimyager, film yönetmeni, iş insanı, astronot, kâşif, mimar, hükümdar (soylu), din adamı, bilim insanı */
 const PEOPLE_OCC = ["Q82955", "Q36180", "Q33999", "Q177220", "Q1028181", "Q36834", "Q4964182", "Q937857", "Q49757", "Q189290",
   "Q170790", "Q169470", "Q593644", "Q2526255", "Q43845", "Q11631", "Q11900058", "Q42973", "Q2478141", "Q250867", "Q901"];
+
+/* Adlar ve kısa açıklamalar (sitenin dilleri), 250'lik kümelerle */
+async function fetchLabels(ids) {
+  const labels = {};
+  const langs = LANGS.map((l) => `"${l}"`).join(",");
+  for (let i = 0; i < ids.length; i += 250) {
+    const vals = ids.slice(i, i + 250).map((q) => "wd:" + q).join(" ");
+    const rows = await sparql(`SELECT ?item ?l ?ll ?ds WHERE { VALUES ?item { ${vals} } { ?item rdfs:label ?l . BIND(LANG(?l) AS ?ll) FILTER(?ll IN (${langs})) } UNION { ?item schema:description ?ds . BIND(LANG(?ds) AS ?ll) FILTER(?ll IN (${langs})) } }`);
+    for (const b of rows) {
+      const q = qid(b.item.value), o = (labels[q] ||= { l: {}, s: {} });
+      if (b.l) o.l[b.ll.value] = b.l.value;
+      if (b.ds) o.s[b.ll.value] = b.ds.value;
+    }
+    console.log(`adlar ${Math.min(i + 250, ids.length)}/${ids.length}`);
+  }
+  return labels;
+}
+
+/* --labels: mevcut kayıtların adlarını yeniler (yeni dil eklenince); seçim ve sıra korunur */
+async function relabel() {
+  const data = JSON.parse(fs.readFileSync(OUT, "utf8"));
+  const ids = [...new Set(Object.values(data.days).flat().map((x) => x.q))];
+  const labels = await fetchLabels(ids);
+  for (const list of Object.values(data.days)) for (const x of list) {
+    const lb = labels[x.q];
+    if (!lb) continue;
+    x.l = { ...x.l, ...lb.l };
+    if (x.s) x.s = { ...x.s, ...lb.s };
+  }
+  data.langs = LANGS;
+  data.labelsFetched = new Date().toISOString().slice(0, 10);
+  fs.writeFileSync(OUT, JSON.stringify(data) + "\n");
+  console.log(`Yazıldı: ${OUT} (${ids.length} öğenin adları)`);
+}
 
 async function main() {
   const items = new Map(); // qid → { d: "MM-DD", y, k, n }
@@ -77,17 +112,7 @@ async function main() {
   for (const d of Object.keys(byDay)) for (const k of Object.keys(byDay[d])) chosen.push(...byDay[d][k].sort((a, b) => b.n - a.n).slice(0, LIMIT[k] * 2));
   // Adlar ve kişiler için kısa açıklama (beş dil)
   const ids = [...new Set(chosen.map((c) => c.q))];
-  const labels = {};
-  for (let i = 0; i < ids.length; i += 250) {
-    const vals = ids.slice(i, i + 250).map((q) => "wd:" + q).join(" ");
-    const rows = await sparql(`SELECT ?item ?l ?ll ?ds WHERE { VALUES ?item { ${vals} } { ?item rdfs:label ?l . BIND(LANG(?l) AS ?ll) FILTER(?ll IN ("tr","en","de","az","ar")) } UNION { ?item schema:description ?ds . BIND(LANG(?ds) AS ?ll) FILTER(?ll IN ("tr","en","de","az","ar")) } }`);
-    for (const b of rows) {
-      const q = qid(b.item.value), o = (labels[q] ||= { l: {}, s: {} });
-      if (b.l) o.l[b.ll.value] = b.l.value;
-      if (b.ds) o.s[b.ll.value] = b.ds.value;
-    }
-    console.log(`adlar ${Math.min(i + 250, ids.length)}/${ids.length}`);
-  }
+  const labels = await fetchLabels(ids);
   const out = {};
   for (const c of chosen) {
     const lb = labels[c.q];
@@ -99,4 +124,4 @@ async function main() {
   fs.writeFileSync(OUT, JSON.stringify({ source: "Wikidata (CC0), query.wikidata.org", fetched: new Date().toISOString().slice(0, 10), langs: LANGS, limits: LIMIT, days: sorted }) + "\n");
   console.log(`Yazıldı: ${OUT} (${Object.keys(sorted).length} gün, ${chosen.length} kayıt)`);
 }
-main().catch((e) => { console.error(e); process.exit(1); });
+(process.argv.includes("--labels") ? relabel() : main()).catch((e) => { console.error(e); process.exit(1); });

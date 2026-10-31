@@ -16,7 +16,7 @@
   var statusEl = q("[data-qb-status]"), startBtn = q("[data-qb-start]"), calib = q("[data-qb-calib]");
   var place = null, bearing = 0, heading = null, aligned = false, listening = false, gotAbsolute = false;
   var nf = function (frac) {
-    var loc = S.lang === "ar" ? "en-US" : S.locale;
+    var loc = /^(ar|fa|ur)$/.test(S.lang) ? "en-US" : S.locale;
     return new Intl.NumberFormat(loc, { minimumFractionDigits: frac, maximumFractionDigits: frac });
   };
   var deg = function (x) { return nf(1).format(x) + "°"; };

@@ -25,7 +25,7 @@ struct QuranSura: Identifiable, Hashable, Sendable {
     var title: String {
         switch AppLocale.code {
         case "tr", "az": tr
-        case "ar": ar
+        case "ar", "fa", "ur": ar
         default: tname
         }
     }
@@ -289,9 +289,9 @@ enum Duas {
         let lang = AppLocale.code
         return raw.map { r in
             let refs = r.refs ?? []
-            // Anlam: arayüz dilinde; Kur'an'dan olanlarda İngilizce meal (tr/az'da Diyanet bağlantısı), Arapçada yok
+            // Anlam: arayüz dilinde; Kur'an'dan olanlarda İngilizce meal (tr/az'da Diyanet bağlantısı), Arapça yazılı dillerde (ar, fa, ur) yok
             let mean: String? = if lang == "ar" { nil }
-                else if !refs.isEmpty { (lang == "en" || lang == "de") ? r.mean["en"] : nil }
+                else if !refs.isEmpty { ["en", "de", "id", "fr", "ru"].contains(lang) ? r.mean["en"] : nil }
                 else { r.mean[lang] ?? r.mean["en"] }
             return Dua(id: r.id, title: r.title[lang] ?? r.title["en"] ?? r.id, when: r.when[lang] ?? r.when["en"] ?? "",
                        ar: r.ar, okunus: r.okunus ?? "", mean: mean, refs: refs)
@@ -673,10 +673,10 @@ enum Zakat {
         }
     }
 
-    /// Sayı, uygulama dilinde (Arapçada Latin rakamı)
+    /// Sayı, uygulama dilinde (sağdan sola dillerde Latin rakamı)
     static func format(_ x: Double, fraction: Int = 2) -> String {
         let f = NumberFormatter()
-        f.locale = Locale(identifier: AppLocale.code == "ar" ? "en_US_POSIX" : AppLocale.code)
+        f.locale = AppLocale.numberLocale
         f.numberStyle = .decimal
         f.minimumFractionDigits = fraction
         f.maximumFractionDigits = fraction

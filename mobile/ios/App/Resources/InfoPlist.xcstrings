@@ -33,6 +33,36 @@
             "state": "translated",
             "value": "لعرض أوقات الصلاة واتجاه القبلة والمساجد القريبة والطقس في مكانك. تُحسب الأوقات والقبلة على هاتفك؛ ولأجل الطقس والبحث عن المساجد يُرسل موقع تقريبي فقط إلى خدمات Apple. في تذكيرات الموقع، يكتشف iPhone نفسه وصولك إلى مكان أو مغادرته."
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk menampilkan jadwal salat, arah kiblat, masjid terdekat, dan cuaca di tempat Anda. Jadwal salat dan kiblat dihitung di ponsel Anda; untuk cuaca dan pencarian masjid hanya lokasi perkiraan yang dikirim ke layanan Apple. Untuk pengingat lokasi, iPhone sendiri yang mendeteksi saat Anda tiba di atau meninggalkan suatu tempat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ جہاں ہیں وہاں کے اوقاتِ نماز، قبلے کی سمت، قریبی مساجد اور موسم دکھانے کے لیے۔ اوقاتِ نماز اور قبلہ آپ کے فون پر حساب کیے جاتے ہیں؛ موسم اور مساجد کی تلاش کے لیے صرف تقریبی مقام ایپل کی سروسز کو بھیجا جاتا ہے۔ مقام کی یاد دہانیوں کے لیے آئی فون خود معلوم کرتا ہے کہ آپ کسی جگہ پہنچے یا وہاں سے نکلے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای نمایش اوقات شرعی، جهت قبله، مسجدهای نزدیک و آب‌وهوای جایی که هستید. اوقات شرعی و قبله روی گوشی شما محاسبه می‌شوند؛ برای آب‌وهوا و جست‌وجوی مسجد فقط موقعیت تقریبی به سرویس‌های اپل فرستاده می‌شود. برای یادآورهای مکانی، خود آیفون رسیدن یا ترک یک مکان را تشخیص می‌دهد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour afficher les heures de prière, la direction de la qibla, les mosquées proches et la météo de l’endroit où vous êtes. Les heures de prière et la qibla sont calculées sur votre téléphone ; pour la météo et la recherche de mosquées, seule une position approximative est envoyée aux services d’Apple. Pour les rappels de lieu, l’iPhone détecte lui-même votre arrivée ou votre départ."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы показывать время намаза, направление киблы, мечети поблизости и погоду там, где вы находитесь. Время намаза и кибла рассчитываются на телефоне; для погоды и поиска мечетей в сервисы Apple отправляется только приблизительное местоположение. Для напоминаний по месту iPhone сам определяет, когда вы приходите в место или уходите из него."
+          }
         }
       }
     },
@@ -67,6 +97,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "الوقت والتاريخ"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam & Tanggal"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت اور تاریخ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت و تاریخ"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heure & Date"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Время и дата"
           }
         }
       }
@@ -103,6 +163,36 @@
             "state": "translated",
             "value": "حتى ترن المنبهات والمؤقتات التي تضبطها حتى عندما يكون الهاتف صامتًا."
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agar alarm dan pengatur waktu yang Anda pasang tetap berbunyi meski ponsel dalam mode senyap."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاکہ آپ کے لگائے ہوئے الارم اور ٹائمر فون خاموش ہونے پر بھی بجیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تا هشدارها و تایمرهایی که تنظیم می‌کنید حتی وقتی گوشی بی‌صداست زنگ بزنند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour que les alarmes et minuteurs que vous réglez sonnent même quand le téléphone est en silencieux."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы заданные будильники и таймеры звонили, даже когда телефон в беззвучном режиме."
+          }
         }
       }
     },
@@ -137,6 +227,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "لعرض أحداث تقويماتك في تقويم التطبيق والسماح لك بحذفها. تُستخدم الأحداث على هاتفك فقط."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk menampilkan acara di kalender Anda pada kalender aplikasi dan memungkinkan Anda menghapusnya. Acara hanya digunakan di ponsel Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کے کیلنڈرز کی تقریبات ایپ کے کیلنڈر میں دکھانے اور انہیں حذف کرنے دینے کے لیے۔ تقریبات صرف آپ کے فون پر استعمال ہوتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای نمایش رویدادهای تقویم‌های شما در تقویم برنامه و امکان حذف آن‌ها. رویدادها فقط روی گوشی شما به کار می‌روند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour afficher les événements de vos calendriers dans le calendrier de l’app et vous permettre de les supprimer. Les événements sont utilisés uniquement sur votre téléphone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы показывать события ваших календарей в календаре приложения и позволить их удалять. События используются только на телефоне."
           }
         }
       }
@@ -173,6 +293,36 @@
             "state": "translated",
             "value": "لمسح رمز QR أو الباركود الذي حفظته لمهمة إيقاف المنبّه. تُعالج الصورة على هاتفك ولا تُحفظ ولا تُرسل إلى أي مكان."
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk memindai kode QR atau barcode yang Anda simpan untuk tugas mematikan alarm. Gambar diproses di ponsel Anda, tidak disimpan, dan tidak dikirim ke mana pun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم بند کرنے کے کام کے لیے محفوظ کیا گیا QR کوڈ یا بارکوڈ اسکین کرنے کے لیے۔ تصویر آپ کے فون پر پروسیس ہوتی ہے، نہ محفوظ ہوتی ہے نہ کہیں بھیجی جاتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای اسکن کد QR یا بارکدی که برای کار خاموش کردن هشدار ذخیره کرده‌اید. تصویر روی گوشی شما پردازش می‌شود، ذخیره نمی‌شود و به جایی فرستاده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour scanner le QR code ou le code-barres enregistré pour la tâche d’arrêt d’une alarme. L’image est traitée sur votre téléphone, ni conservée ni envoyée."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы сканировать QR-код или штрихкод, сохранённый для задания отключения будильника. Изображение обрабатывается на телефоне, не сохраняется и никуда не отправляется."
+          }
         }
       }
     },
@@ -208,6 +358,36 @@
             "state": "translated",
             "value": "لتسجيل التمارين المتقطعة والروتينات المنتهية في تطبيق الصحة كتمارين، إذا فعّلت ذلك. لا يقرأ التطبيق بياناتك الصحية."
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk menulis latihan interval dan rutinitas yang selesai ke app Kesehatan sebagai latihan, jika Anda mengaktifkannya. Aplikasi tidak membaca data kesehatan Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر آپ آن کریں تو مکمل وقفہ وار ورزشیں اور روٹینز ہیلتھ ایپ میں ورزش کے طور پر لکھنے کے لیے۔ ایپ آپ کا صحت کا ڈیٹا نہیں پڑھتی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای نوشتن تمرین‌های تناوبی و برنامه‌های تمام‌شده در برنامهٔ سلامت، اگر روشنش کنید. برنامه دادهٔ سلامت شما را نمی‌خواند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour écrire dans l’app Santé, si vous l’activez, les entraînements fractionnés et routines terminés. L’app ne lit pas vos données de santé."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы, если вы включите это, записывать завершённые интервальные тренировки и программы в приложение «Здоровье». Приложение не читает данные о здоровье."
+          }
         }
       }
     },
@@ -242,6 +422,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "لكي تختار أغنية من مكتبة الموسيقى صوتًا للمنبّه. يبقى الجزء القصير المأخوذ من الأغنية على هاتفك ولا يُرسل إلى أي مكان."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agar Anda dapat memilih lagu dari perpustakaan musik sebagai suara alarm. Potongan singkat dari lagu tetap di ponsel Anda dan tidak dikirim ke mana pun."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاکہ آپ اپنی موسیقی لائبریری سے کوئی گانا الارم کی آواز کے طور پر چن سکیں۔ گانے سے لیا گیا مختصر حصہ آپ کے فون پر رہتا ہے اور کہیں نہیں بھیجا جاتا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تا بتوانید آهنگی از کتابخانهٔ موسیقی‌تان را صدای هشدار کنید. بخش کوتاه برداشته‌شده از آهنگ روی گوشی شما می‌ماند و به جایی فرستاده نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour choisir un morceau de votre bibliothèque musicale comme son d’alarme. Le court extrait reste sur votre téléphone et n’est envoyé nulle part."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы выбрать песню из медиатеки как звук будильника. Короткий отрывок остаётся на телефоне и никуда не отправляется."
           }
         }
       }

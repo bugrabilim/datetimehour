@@ -27,7 +27,7 @@ ARAÇLAR
 WIDGET'LAR
 • Sıradaki vakit, bugünün vakitleri, analog ve dijital saat, saat ve tarih; kilit ekranında da
 
-Türkçe, İngilizce, Almanca, Azerice ve Arapça.
+On dilde: Türkçe, İngilizce, Almanca, Azerice, Arapça, Endonezce, Urduca, Farsça, Fransızca ve Rusça.
 
 Konumunuz telefonda vakit hesabı için kullanılır; yalnız hava durumu için yaklaşık konum Apple'ın hava servisine gönderilir. Takvimlerinize yalnız izin verirseniz, telefonda erişilir.
 

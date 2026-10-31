@@ -5,6 +5,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Article
+import androidx.compose.material.icons.filled.Today
 import androidx.compose.material.icons.filled.EditCalendar
 import androidx.compose.material.icons.filled.EventAvailable
 import androidx.compose.material.icons.filled.Link
@@ -103,9 +104,13 @@ fun CalendarScreen() {
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 12.dp, vertical = 8.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(Fmt.month(month.monthValue), color = Theme.c.text, fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text("  ${month.year}", color = Theme.c.accent, fontSize = 22.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.weight(1f))
-            TextButton(onClick = { go(today) }) { Text(L("client.today"), color = Theme.c.accent) }
+            // Ay ve yıl alt alta (uzun ay adlı dillerde, ör. Rusça/Fransızca, düğmelerle sığsın); "Bugün" simge düğmesi
+            Column(Modifier.weight(1f)) {
+                Text(Fmt.month(month.monthValue), color = Theme.c.text, fontSize = 28.sp, fontWeight = FontWeight.Bold,
+                    maxLines = 1, softWrap = false, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+                Text("${month.year}", color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+            }
+            IconButton(onClick = { go(today) }) { Icon(Icons.Filled.Today, L("client.today"), tint = Theme.c.accent) }
             IconButton(onClick = { move(-1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("prayer.prevMonth"), tint = Theme.c.accent) }
             IconButton(onClick = { move(1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent) }
             IconButton(onClick = { leaf = true }) { Icon(Icons.Filled.Article, L("leaf.title"), tint = Theme.c.accent) }

@@ -2,7 +2,7 @@
 
 Manifest V3 eklentisi (Chrome, Edge, Firefox 128+). Araç çubuğundaki simgeye basınca: saat (cihaz saati, 24/12),
 bugünün tarihi, hicri tarih (uygulamalardaki Diyanet'e hizalı tablo), seçilen il için bugünün namaz vakitleri ve
-sıradaki vakte kalan süre (Türkiye saati). Arayüz dili tarayıcının dilinden (tr, en, de, az, ar; diğerlerinde İngilizce).
+sıradaki vakte kalan süre (Türkiye saati). Arayüz dili tarayıcının dilinden (tr, en, de, az, ar, id, ur, fa, fr, ru; diğerlerinde İngilizce; ar/ur/fa sağdan sola; il adları Arapça, Rusça ve Farsçada kendi yazısıyla).
 
 **İnternete bağlanmaz:** izin yalnız `storage` (seçilen il ve 24/12 tercihi, `storage.local`); ağ isteği yok
 (`connect-src 'none'`), istatistik, reklam ve takip yok. Gizlilik metni sitenin gizlilik sayfasında "Tarayıcı eklentisi"
@@ -11,11 +11,11 @@ bölümüdür (https://time.bumba.tr/gizlilik/#eklenti, İngilizce https://time.
 ## Dosyalar
 
 - Elle yazılanlar: `manifest.json`, `popup.html`, `popup.css`, `popup.js`, `strings.json` (eklentiye özgü metinler,
-  beş dil), `icons/` (site simgesinden, `src/assets/favicon.svg`; 16/32/48/128 px).
+  sitenin dilleri), `icons/` (site simgesinden, `src/assets/favicon.svg`; 16/32/48/128 px).
 - Üretilenler (`node scripts/build-extension.mjs`; CI `--check` ile denetler): `lib/prayer-calc.js` (sitedeki hesabın
   kopyası), `lib/data.js` (81 il, hicri tablo, sitedeki ve uygulamalardaki metinlerden namaz adları ve hicri ay adları),
-  `_locales/{tr,en,de,ar}/messages.json` (Chrome'un desteklediği diller; Azerice listede olmadığı için Azerice tarayıcıda
-  ad ve açıklama İngilizce, eklentinin içi Azerice).
+  `_locales/{tr,en,de,ar,id,fa,fr,ru}/messages.json` (Chrome'un desteklediği diller; Azerice ve Urduca listede olmadığı
+  için o tarayıcılarda ad ve açıklama İngilizce, eklentinin içi kendi dilinde).
 - `src/i18n`, `mobile/shared/app-strings.json`, `src/data/provinces.json`, `holidays.json`, `hijri.json` ya da
   `src/js/prayer-calc.js` değişince betiği yeniden çalıştırın.
 

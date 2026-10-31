@@ -86,7 +86,7 @@ import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin
 
-private val numberLocale: Locale get() = if (Strings.locale.language == "ar") Locale.US else Strings.locale
+private val numberLocale: Locale get() = Strings.numberLocale
 
 /** Bir ondalıklı sayı, uygulama dilinde (Arapçada da Latin rakamı) */
 private fun oneDecimal(x: Double): String = NumberFormat.getInstance(numberLocale).apply {

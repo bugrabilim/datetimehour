@@ -9,7 +9,8 @@
   if (!root) return;
   var T = S.T.pr || {};
   var CAL = S.cfg.cal || {};
-  var months = CAL.months || [];
+  // Başlıkta ayın yalın hâli (Rusçada tarih içindeki çekimli hâlden ayrı: calendar.monthsTitle)
+  var months = CAL.monthsTitle || CAL.months || [];
   var order = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
   var TR_TZ = "Europe/Istanbul";
 

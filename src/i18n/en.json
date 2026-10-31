@@ -502,7 +502,7 @@
     "pages": "Pages",
     "cities": "City pages",
     "about": "About",
-    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in Turkish, English, German, Azerbaijani and Arabic. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
+    "aboutText": "The time is synchronised with the site's server clock (independent of the device clock); the time zone is read from the browser and no personal data is sent. Available in ten languages: Turkish, English, German, Azerbaijani, Arabic, Indonesian, Urdu, Persian, French and Russian. Data controller: Bumba Teknoloji Limited Şirketi, Ataşehir / Istanbul. Contact: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Clock styles",
@@ -2306,7 +2306,7 @@
     "colDesc": "Contents",
     "ep": {
       "index": "List of endpoints and version information",
-      "holidays": "A year's public holidays, half-day eves, religious and special days (names in five languages) and the Ramadan range",
+      "holidays": "A year's public holidays, half-day eves, religious and special days (names in all site languages) and the Ramadan range",
       "prayer": "A province's prayer times for one year (fajr, sunrise, dhuhr, asr, maghrib, isha; Turkey time)",
       "provinces": "81 provinces: slug, name, latitude, longitude",
       "hijri": "Table of Hijri month starts (aligned with the Diyanet calendar)",

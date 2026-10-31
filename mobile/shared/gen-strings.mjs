@@ -13,7 +13,7 @@ import { hijriTable } from "../../lib/hijri.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
-const LANGS = ["tr", "en", "de", "az", "ar"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
 const I = Object.fromEntries(LANGS.map((l) => [l, JSON.parse(fs.readFileSync(path.join(ROOT, "src/i18n", `${l}.json`), "utf8"))]));
 
 /* Uygulama anahtarı → sitedeki metin. {ad} yer tutucuları iOS biçimine (%@) çevrilir. */
@@ -83,6 +83,10 @@ for (const spec of SITE_PATHS) {
   }
 }
 
+/* Uygulamalarda ay adları yalnız başlıkta (takvim, aylık çizelge) kullanılır: yalın hâl (calendar.monthsTitle) varsa o
+   (Rusçada calendar.months tarih içindeki tamlama hâlidir: "31 октября"; başlık "Октябрь"). */
+for (let i = 0; i < 12; i++) KEYS[`calendar.months.${i}`] = (t) => (t.calendar.monthsTitle || t.calendar.months)[i];
+
 const APP = JSON.parse(fs.readFileSync(path.join(HERE, "app-strings.json"), "utf8"));
 for (const [key, byLang] of Object.entries(APP)) {
   if (key === "_") continue;
@@ -95,7 +99,8 @@ const names = (s) => [...new Set([...s.matchAll(/\{([a-z]+)\}/gi)].map((m) => m[
 const toIOS = (s, order) => s.replace(/%/g, "%%").replace(/\{([a-z]+)\}/gi, (_, n) => `%${order.indexOf(n) + 1}$@`);
 
 /* Android: {ad} → %1$s; yer tutucusu olmayan metinde % olduğu gibi kalır (formatted="false") */
-const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar" };
+/* Endonezce Android kaynaklarında eski "in" koduyla (values-in) durur; dil seçimi (locales_config) BCP 47 "id" ile */
+const ANDROID_DIRS = { tr: "values", en: "values-en", de: "values-de", az: "values-az", ar: "values-ar", id: "values-in", ur: "values-ur", fa: "values-fa", fr: "values-fr", ru: "values-ru" };
 const androidName = (key) => key.replace(/[^A-Za-z0-9_]/g, "_");
 const androidEscape = (s) => s
   .replace(/\\/g, "\\\\").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
@@ -165,7 +170,7 @@ const catalog = (s, source = "tr") => JSON.stringify({ sourceLanguage: source, s
 const xcstrings = catalog(strings);
 
 const provinces = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/provinces.json"), "utf8"))
-  .map(({ slug, name, lat, lon, ar }) => ({ slug, name, lat, lon, ar }));
+  .map(({ slug, name, lat, lon, ar, ru, fa }) => ({ slug, name, lat, lon, ar, ru, fa }));
 const provincesJson = JSON.stringify(provinces) + "\n";
 
 /* Takvim: resmî tatiller, arifeler, dini ve özel günler, okul takvimi (sitenin takvim sayfalarıyla aynı kaynak; sınavlar takvimde yok). */

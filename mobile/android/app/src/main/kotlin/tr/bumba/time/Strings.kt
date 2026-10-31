@@ -17,15 +17,25 @@ object Strings {
         context = c.applicationContext
     }
 
-    /** Uygulamanın dili (tr, en, de, az, ar); desteklenmeyen dilde Türkçe metinler gösterilir */
+    /** Uygulamanın dilleri (gen-strings.mjs ile aynı); sağdan sola yazılanlar */
+    val LANGS = listOf("tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru")
+    val RTL = listOf("ar", "ur", "fa")
+
+    /** Uygulamanın dili; desteklenmeyen dilde Türkçe metinler gösterilir. Java eski Endonezce kodunu ("in") verebilir. */
     val lang: String
         get() {
-            val l = context.resources.configuration.locales[0].language
-            return if (l in listOf("tr", "en", "de", "az", "ar")) l else "tr"
+            val l = context.resources.configuration.locales[0].language.let { if (it == "in") "id" else it }
+            return if (l in LANGS) l else "tr"
         }
 
     val locale: Locale get() = Locale.forLanguageTag(lang)
-    val isRtl: Boolean get() = lang == "ar"
+    val isRtl: Boolean get() = lang in RTL
+
+    /** Sayılar her dilde Latin rakamıyla: sağdan sola dillerde (Arapça/Farsça rakam vermesin diye) ABD biçimi */
+    val numberLocale: Locale get() = if (isRtl) Locale.US else locale
+
+    /** Ondalık ayırıcı: İngilizce ve sağdan sola dillerde nokta, diğerlerinde virgül */
+    val decimalPoint: String get() = if (lang == "en" || isRtl) "." else ","
 
     @SuppressLint("DiscouragedApi")
     fun id(key: String): Int = cache.getOrPut(key) {

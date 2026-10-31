@@ -33,6 +33,36 @@
             "state": "translated",
             "value": "مؤقت"
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pengatur waktu"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ٹائمر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تایمر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minuteur"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Таймер"
+          }
         }
       }
     },
@@ -67,6 +97,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "منبه"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هشدار"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarme"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Будильник"
           }
         }
       }
@@ -103,6 +163,36 @@
             "state": "translated",
             "value": "ساعة بملء الشاشة"
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jam layar penuh"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پوری اسکرین گھڑی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت تمام‌صفحه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Horloge plein écran"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Полноэкранные часы"
+          }
         }
       }
     },
@@ -137,6 +227,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "الصلاة التالية"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salat berikutnya"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگلی نماز"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نماز بعدی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prochaine prière"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следующий намаз"
           }
         }
       }
@@ -173,6 +293,36 @@
             "state": "translated",
             "value": "تاريخ اليوم"
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanggal hari ini"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آج کی تاریخ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخ امروز"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Date du jour"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сегодняшняя дата"
+          }
         }
       }
     },
@@ -207,6 +357,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "ابدأ مؤقتًا في ${applicationName}"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mulai pengatur waktu di ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں ٹائمر شروع کرو"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در ${applicationName} تایمر را شروع کن"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lance un minuteur dans ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Запусти таймер в ${applicationName}"
           }
         }
       }
@@ -243,6 +423,36 @@
             "state": "translated",
             "value": "اضبط مؤقت ${applicationName}"
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pasang pengatur waktu ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} کا ٹائمر لگاؤ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تایمر ${applicationName} را تنظیم کن"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Règle un minuteur ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поставь таймер ${applicationName}"
+          }
         }
       }
     },
@@ -277,6 +487,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "اضبط منبهًا في ${applicationName}"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pasang alarm di ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں الارم لگاؤ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در ${applicationName} هشدار بگذار"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Règle une alarme dans ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поставь будильник в ${applicationName}"
           }
         }
       }
@@ -313,6 +553,36 @@
             "state": "translated",
             "value": "اعرض الساعة في ${applicationName}"
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tampilkan jam di ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں گھڑی دکھاؤ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت را در ${applicationName} نشان بده"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Affiche l’horloge dans ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Покажи часы в ${applicationName}"
+          }
         }
       }
     },
@@ -347,6 +617,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "افتح الساعة بملء الشاشة في ${applicationName}"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka jam layar penuh di ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں پوری اسکرین گھڑی کھولو"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعت تمام‌صفحه را در ${applicationName} باز کن"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvre l’horloge plein écran dans ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открой полноэкранные часы в ${applicationName}"
           }
         }
       }
@@ -383,6 +683,36 @@
             "state": "translated",
             "value": "متى الصلاة التالية في ${applicationName}"
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapan salat berikutnya di ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں اگلی نماز کب ہے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نماز بعدی در ${applicationName} کی است"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand est la prochaine prière dans ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда следующий намаз в ${applicationName}"
+          }
         }
       }
     },
@@ -417,6 +747,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "وقت الصلاة التالية في ${applicationName}"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waktu salat berikutnya di ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں اگلی نماز کا وقت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت نماز بعدی در ${applicationName}"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prochaine prière dans ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следующий намаз в ${applicationName}"
           }
         }
       }
@@ -453,6 +813,36 @@
             "state": "translated",
             "value": "ما تاريخ اليوم في ${applicationName}"
           }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanggal berapa hari ini di ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں آج کیا تاریخ ہے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امروز در ${applicationName} چندم است"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelle est la date dans ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Какое сегодня число в ${applicationName}"
+          }
         }
       }
     },
@@ -487,6 +877,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "ما التاريخ الهجري في ${applicationName}"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tanggal Hijriah berapa di ${applicationName}"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "${applicationName} میں ہجری تاریخ کیا ہے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخ قمری در ${applicationName} چیست"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelle est la date hégirienne dans ${applicationName}"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Какая дата по хиджре в ${applicationName}"
           }
         }
       }

@@ -32,8 +32,7 @@ enum SleepPlan {
 
     /// Döngü süresi saat olarak: "7,5" (Arapçada da Latin rakamı)
     static func hours(_ minutes: Int) -> String {
-        let code = AppLocale.code == "ar" ? "en" : AppLocale.code
-        return (Double(minutes) / 60).formatted(.number.precision(.fractionLength(0...1)).locale(Locale(identifier: code)))
+        return (Double(minutes) / 60).formatted(.number.precision(.fractionLength(0...1)).locale(AppLocale.numberLocale))
     }
 
     /// "8 sa 30 dk"

@@ -29,9 +29,12 @@ shoot() { # dil bölge klasör dosya bekleme [ek uygulama argümanları]
   sleep "$5"
   xcrun simctl io "$UDID" screenshot "$OUT/$3/$4.png"
 }
+# App Store dilleri: "uygulama dili, bölge, fastlane klasörü" (App Store'da Azerice ve Farsça yok; Urduca fastlane listesinde
+# yoksa deliver hata verir, yayından önce bakılır)
+STORE_LANGS="tr:tr_TR:tr en:en_US:en-US de:de_DE:de-DE ar:ar_SA:ar-SA fr:fr_FR:fr-FR ru:ru_RU:ru id:id_ID:id"
 ITEMS="-date,week,next,prayers,-upcoming,-world,-weather,-sun,-globe"
-for L in "tr tr_TR tr" "en en_US en-US" "de de_DE de-DE" "ar ar_SA ar-SA"; do
-  set -- $L
+for L in $STORE_LANGS; do
+  set -- ${L//:/ }
   shoot $1 $2 $3 01-saat 6 -clockModel stack -homeItems "$ITEMS"
   shoot $1 $2 $3 02-vakitler 6 -startTab 5
   shoot $1 $2 $3 03-takvim 6 -startTab 2
@@ -58,8 +61,8 @@ xcrun simctl bootstatus "$UDID" -b
 xcrun simctl status_bar "$UDID" override --time "9:41" --batteryState charged --batteryLevel 100 --wifiBars 3 || true
 xcrun simctl install "$UDID" "$APP"
 xcrun simctl ui "$UDID" appearance light
-for L in "tr tr_TR tr" "en en_US en-US" "de de_DE de-DE" "ar ar_SA ar-SA"; do
-  set -- $L
+for L in $STORE_LANGS; do
+  set -- ${L//:/ }
   shoot $1 $2 $3 ipad-01-saat 6 -clockModel stack -homeItems "$ITEMS"
   shoot $1 $2 $3 ipad-02-vakitler 6 -startTab 5
   shoot $1 $2 $3 ipad-03-takvim 6 -startTab 2

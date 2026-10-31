@@ -51,7 +51,7 @@ object Share {
 object ShareCards {
     private const val W = 1080
     private const val PAD = 72f
-    private val rtl get() = Strings.lang == "ar"
+    private val rtl get() = Strings.isRtl
     private const val GOLD = 0xFFFFD173.toInt()
 
     private fun paint(size: Float, bold: Boolean = false, color: Int = 0xFFFFFFFF.toInt(), alpha: Int = 255) =
@@ -67,14 +67,14 @@ object ShareCards {
         var y = PAD
         fun block(text: String, p: TextPaint, gap: Float = 12f) {
             val l = StaticLayout.Builder.obtain(text, 0, text.length, p, (W - 2 * PAD).toInt())
-                .setAlignment(if (Strings.lang == "ar") Layout.Alignment.ALIGN_OPPOSITE else Layout.Alignment.ALIGN_NORMAL).build()
+                .setAlignment(if (Strings.isRtl) Layout.Alignment.ALIGN_OPPOSITE else Layout.Alignment.ALIGN_NORMAL).build()
             c.save(); c.translate(PAD, y); l.draw(c); c.restore()
             y += l.height + gap
         }
         fun row(left: String, right: String, p: TextPaint, gap: Float = 18f) {
             val h = p.fontSpacing
-            val a = if (Strings.lang == "ar") right else left
-            val b = if (Strings.lang == "ar") left else right
+            val a = if (Strings.isRtl) right else left
+            val b = if (Strings.isRtl) left else right
             p.textAlign = Paint.Align.LEFT
             c.drawText(a, PAD, y + h * 0.8f, p)
             p.textAlign = Paint.Align.RIGHT

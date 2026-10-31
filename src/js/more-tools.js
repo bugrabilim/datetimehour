@@ -14,7 +14,7 @@
   function setText(el, v) { if (el && el.textContent !== v) el.textContent = v; }
   var used = false;
   function used1() { if (!used) { used = true; S.track("arac", { arac: kind }); } }
-  function numFmt(opts) { return new Intl.NumberFormat(S.lang === "ar" ? "en" : S.locale, opts); }
+  function numFmt(opts) { return new Intl.NumberFormat(/^(ar|fa|ur)$/.test(S.lang) ? "en" : S.locale, opts); }
   function load(key, fb) { try { return Object.assign({}, fb, JSON.parse(S.store(key) || "{}")); } catch (e) { return fb; } }
   function save(key, v) { S.store(key, JSON.stringify(v)); }
   function typing(ev) { var t = ev.target; return t && (/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName) || t.isContentEditable); }

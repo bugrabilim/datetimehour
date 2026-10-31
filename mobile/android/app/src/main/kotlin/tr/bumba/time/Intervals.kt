@@ -269,6 +269,11 @@ object Speaker {
         "en" -> Locale.US
         "de" -> Locale.GERMANY
         "ar" -> Locale.forLanguageTag("ar-SA")
+        "id" -> Locale.forLanguageTag("id-ID")
+        "ur" -> Locale.forLanguageTag("ur-PK")
+        "fa" -> Locale.forLanguageTag("fa-IR")
+        "fr" -> Locale.FRANCE
+        "ru" -> Locale.forLanguageTag("ru-RU")
         else -> Locale.forLanguageTag("tr-TR")
     }
 

@@ -257,6 +257,10 @@ class MoreScreensTest {
     @Test fun content() {
         shot("tr-esma") { EsmaScreen {} }
         shot("ar-esma", "ar") { EsmaScreen {} }
+        shot("ur-esma", "ur") { EsmaScreen {} }
+        shot("id-esma", "in") { EsmaScreen {} }
+        shot("ru-hadis", "ru") { HadithScreen {} }
+        shot("fa-namaz-rehberi", "fa") { PrayerGuideScreen({}) {} }
         shot("tr-hadis") { HadithScreen {} }
         shot("en-hadis-koyu", "en", dark = true) { HadithScreen {} }
         shot("tr-namaz-rehberi") { PrayerGuideScreen({}) {} }

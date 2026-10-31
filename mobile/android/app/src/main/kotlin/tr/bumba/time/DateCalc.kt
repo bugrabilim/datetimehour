@@ -114,7 +114,7 @@ object DateCalc {
 }
 
 /** Binlik ayraçlı sayı (Arapçada da Latin rakamı) */
-private fun num(n: Int): String = NumberFormat.getIntegerInstance(if (Strings.lang == "ar") java.util.Locale.US else Strings.locale).format(n)
+private fun num(n: Int): String = NumberFormat.getIntegerInstance(Strings.numberLocale).format(n)
 
 /** Tarih hesaplama (iOS'taki DateCalcView): iki tarih arası, tarihe ekle/çıkar, yaş */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -280,4 +280,4 @@ private fun DateRow(title: String, d: LocalDate, onClick: () -> Unit) {
 
 private fun workText(w: Double): String =
     if (w == Math.rint(w)) num(w.toInt())
-    else String.format(java.util.Locale.ROOT, "%.1f", w).replace(".", if (Strings.lang == "en") "." else ",")
+    else String.format(java.util.Locale.ROOT, "%.1f", w).replace(".", Strings.decimalPoint)

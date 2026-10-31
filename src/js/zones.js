@@ -55,7 +55,7 @@
   var nowEl = q("[data-ux-now]"), nowMsEl = q("[data-ux-now-ms]"), copyBtn = q("[data-ux-copy]");
   var tsIn = q("[data-ux-ts]"), detect = q("[data-ux-detect]"), dateIn = q("[data-ux-date]"), zoneSel = q("[data-ux-zone]");
   var y38 = q("[data-ux-2038]"), LIMIT = 2147483647000;
-  var nf = new Intl.NumberFormat(S.lang === "ar" ? "en-US" : S.locale);
+  var nf = new Intl.NumberFormat(/^(ar|fa|ur)$/.test(S.lang) ? "en-US" : S.locale);
   var pad = function (n) { return String(n).padStart(2, "0"); };
   function set(k, v) { var e = q("[data-ux-" + k + "]"); if (e) e.textContent = v; }
   function span(ms) {

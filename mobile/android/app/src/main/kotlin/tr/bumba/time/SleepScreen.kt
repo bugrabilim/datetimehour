@@ -95,7 +95,7 @@ object SleepPlan {
 
     /** Döngü süresi saat olarak: "7,5" (Arapçada da Latin rakamı) */
     fun hours(minutes: Int): String {
-        val loc = Strings.locale.let { if (it.language == "ar") Locale.ENGLISH else it }
+        val loc = Strings.numberLocale
         return NumberFormat.getNumberInstance(loc).apply { maximumFractionDigits = 1 }.format(minutes / 60.0)
     }
 

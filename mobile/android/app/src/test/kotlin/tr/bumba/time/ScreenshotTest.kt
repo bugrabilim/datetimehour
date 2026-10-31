@@ -77,6 +77,12 @@ class ScreenshotTest {
     @Test fun tools() = shot("tr-araclar", Tab.TOOLS)
     @Test fun english() = shot("en-saat", Tab.CLOCK, "en")
     @Test fun arabic() = shot("ar-vakitler", Tab.PRAYER, "ar")
+    // İlk dalga yeni diller (31 Ekim 2026): Endonezce (Android kaynak kodu "in"), Urduca ve Farsça (sağdan sola), Fransızca, Rusça
+    @Test fun indonesian() = shot("id-vakitler", Tab.PRAYER, "in")
+    @Test fun urdu() = shot("ur-saat", Tab.CLOCK, "ur")
+    @Test fun persian() = shot("fa-vakitler", Tab.PRAYER, "fa")
+    @Test fun french() = shot("fr-araclar", Tab.TOOLS, "fr")
+    @Test fun russian() = shot("ru-takvim", Tab.CALENDAR, "ru")
     // Araçlar alt sayfaları
     private fun tool(name: String, route: String) {
         RuntimeEnvironment.setQualifiers("+tr")

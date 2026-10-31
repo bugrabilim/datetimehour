@@ -4,7 +4,8 @@
 (function () {
   "use strict";
   var D = window.STH_DATA, P = window.sthPrayer;
-  var LANGS = ["tr", "en", "de", "az", "ar"];
+  var LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
+  var RTL = ["ar", "ur", "fa"];
   var ui = ((window.chrome && chrome.i18n && chrome.i18n.getUILanguage && chrome.i18n.getUILanguage()) || navigator.language || "en").slice(0, 2).toLowerCase();
   var lang = LANGS.indexOf(ui) >= 0 ? ui : "en";
   var S = D.strings[lang];
@@ -13,7 +14,7 @@
   var $ = function (id) { return document.getElementById(id); };
 
   document.documentElement.lang = lang;
-  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.documentElement.dir = RTL.indexOf(lang) >= 0 ? "rtl" : "ltr";
   $("province-label").textContent = S.province;
   $("pr-h").textContent = S.today;
   $("site").textContent = S.open;
@@ -23,15 +24,16 @@
   var store = (window.chrome && chrome.storage && chrome.storage.local) || null;
   var state = { province: "istanbul", h12: false };
 
-  // İller: arayüz dilinde sıralı (Arapçada Arapça ad)
+  // İller: arayüz dilinde sıralı (Arapça, Rusça ve Farsçada kendi yazısıyla: p[4] ar, p[5] ru, p[6] fa)
   var sel = $("province");
-  D.provinces.map(function (p) { return { slug: p[0], name: lang === "ar" && p[4] ? p[4] : p[1] }; })
+  var nameIdx = { ar: 4, ru: 5, fa: 6 }[lang];
+  D.provinces.map(function (p) { return { slug: p[0], name: nameIdx && p[nameIdx] ? p[nameIdx] : p[1] }; })
     .sort(function (a, b) { return a.name.localeCompare(b.name, lang); })
     .forEach(function (p) { var o = document.createElement("option"); o.value = p.slug; o.textContent = p.name; sel.appendChild(o); });
 
   var pad = function (n) { return String(n).padStart(2, "0"); };
   var hm = function (min) { min = ((Math.round(min) % 1440) + 1440) % 1440; return pad(Math.floor(min / 60)) + ":" + pad(min % 60); };
-  var dateFmt = new Intl.DateTimeFormat(lang === "ar" ? "ar-u-nu-latn-ca-gregory" : lang + "-u-ca-gregory", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+  var dateFmt = new Intl.DateTimeFormat(lang + "-u-nu-latn-ca-gregory", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
   /* Türkiye saatinde şimdiki gün ve gece yarısından bu yana saniye */
   function trNow(ms) {

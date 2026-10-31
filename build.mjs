@@ -17,15 +17,17 @@ const ORIGIN = (process.env.SITE_ORIGIN || cfg.origin).replace(/\/+$/, "");
 const HOST = new URL(ORIGIN).host;
 const UMAMI_ID = process.env.UMAMI_ID ?? cfg.umamiId ?? "";
 /* Diller: tr (varsayılan) ve en zorunlu; diğerleri src/i18n/<dil>.json varsa derlenir. */
-const ALL_LANGS = ["tr", "en", "de", "az", "ar"];
+const ALL_LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
 const LANGS = ALL_LANGS.filter((l) => fs.existsSync(path.join(ROOT, "src/i18n", `${l}.json`)));
 const I = Object.fromEntries(LANGS.map((l) => [l, readJson(`src/i18n/${l}.json`)]));
 const CITIES = readJson("src/data/cities.json");
-const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية" };
+const LANG_NAMES = { tr: "Türkçe", en: "English", de: "Deutsch", az: "Azərbaycanca", ar: "العربية", id: "Bahasa Indonesia", ur: "اردو", fa: "فارسی", fr: "Français", ru: "Русский" };
 /* Ortak liste servisinin bildiği diller (bumbagroup.com/api/liste/katil); servis yeni dil eklediğinde buraya yaz */
 const LIST_LANGS = ["tr", "en"];
-const DIR = (l) => (l === "ar" ? "rtl" : "ltr");
-const ARROW = (l) => (l === "ar" ? "←" : "→");
+/* Sağdan sola yazılan diller */
+const RTL = ["ar", "ur", "fa"];
+const DIR = (l) => (RTL.includes(l) ? "rtl" : "ltr");
+const ARROW = (l) => (RTL.includes(l) ? "←" : "→");
 /* Türkçe dışındaki dillerin adresleri İngilizce tablodan türetilir: /en/ → /<dil>/ */
 const deriveRoutes = (o, l) =>
   Object.fromEntries(Object.entries(o).map(([k, v]) => [k, v.replace(/^\/en\//, `/${l}/`).replace(/^\/embed\/en\//, `/embed/${l}/`)]));
@@ -447,7 +449,7 @@ function layout(p) {
     ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
     eventsUrl: `/assets/events-${lang}.json?v=${eventsVersion[lang]}`,
-    cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt, calBase: ROUTES[lang].calendar, calMin: HOL_YEARS[0], calMax: HOL_YEARS[HOL_YEARS.length - 1] },
+    cal: { ...((p.clientExtra && p.clientExtra.cal) || {}), months: t.calendar.months, monthsTitle: t.calendar.monthsTitle, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt, calBase: ROUTES[lang].calendar, calMin: HOL_YEARS[0], calMax: HOL_YEARS[HOL_YEARS.length - 1] },
   };
   const og = p.noindex
     ? ""
@@ -835,7 +837,7 @@ function monthTable(lang, year, month, cy, ev) {
     }
     rows += `<tr>${tr}</tr>`;
   }
-  return `<table class="ymonth"><caption>${esc(cal.months[month - 1])}</caption><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>`;
+  return `<table class="ymonth"><caption>${esc((cal.monthsTitle || cal.months)[month - 1])}</caption><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>`;
 }
 
 function buildCalendarYear(lang, year, { index = false } = {}) {
@@ -1732,7 +1734,8 @@ function buildWeather(lang) {
 /* ---------- Namaz vakitleri: konuma göre hub + 81 il sayfası (hesap tarayıcıda, prayer-calc.js) ---------- */
 const PROVINCES = readJson("src/data/provinces.json");
 const PRAYER_KEYS = ["fajr", "sunrise", "dhuhr", "asr", "maghrib", "isha"];
-const provName = (lang, p) => (lang === "ar" ? p.ar : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
+/* İl adı: Arapça, Rusça ve Farsçada kendi yazısıyla (provinces.json ar/ru/fa); Türkçe ve Azericede Türkçe yazımla; diğerlerinde İ → I */
+const provName = (lang, p) => (p[lang] && ["ar", "ru", "fa"].includes(lang) ? p[lang] : lang === "tr" || lang === "az" ? p.name : p.name.replace(/İ/g, "I"));
 const prayerPath = (lang, p) => `${ROUTES[lang].prayer}${p.slug}/`;
 
 function prayerBody(lang, prov, extra = "") {
@@ -2055,12 +2058,12 @@ function buildUnix(lang) {
 
 /* ---------- Dünya resmî tatilleri (30 Ekim 2026, rakip analizi #27) ----------
    Veri src/data/world-holidays.json (Nager.Date, MIT; scripts/fetch-world-holidays.mjs ile elle güncellenir), yalnız
-   ülke genelindeki resmî tatiller. Ad: İngilizce sayfada İngilizce; ülkenin dilindeki sayfada (de: DE/AT/CH, ar: EG)
+   ülke genelindeki resmî tatiller. Ad: İngilizce sayfada İngilizce; ülkenin dilindeki sayfada (de: DE/AT/CH, ar: EG, fr: FR, ru: RU)
    yerel ad; diğerlerinde src/data/holiday-names.json çevirisi, yoksa İngilizce. Yerel ad ayrıca gösterilir. */
 const WHOL = readJson("src/data/world-holidays.json");
 const HOLNAMES = readJson("src/data/holiday-names.json").names;
 const WCC = Object.keys(WHOL.countries);
-const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"] };
+const NATIVE_CC = { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"] };
 const holName = (lang, cc, h) => {
   const main = lang === "en" ? h.n : (NATIVE_CC[lang] || []).includes(cc) && h.l !== h.n ? h.l : (HOLNAMES[h.n] && HOLNAMES[h.n][lang]) || h.n;
   return { main, local: h.l && h.l !== main && h.l !== h.n ? h.l : "" };
@@ -2142,7 +2145,7 @@ function buildBridge(lang) {
     if (best && y === BUILD_YEAR + 1) bestFaq = { year: y, name: best.groups.map(gname).join(" + "), leave: num(best.leave), days: best.days, dates: `${dayFmt(best.from)} – ${dayFmt(best.to)}` };
     const rows = list.map((b) => {
       const days = [...b.leaveDays.map((d) => [d, dayFmt(d)]), ...b.halfDays.map((d) => [d, tpl(s.halfNote, { date: dayFmt(d) })])].sort((x, y) => (x[0] < y[0] ? -1 : 1)).map((x) => x[1]);
-      return `<tr data-leave="${b.leave}"${b === best ? ' class="br-best"' : ""}><th scope="row">${esc(b.groups.map(gname).join(" + "))}${b === best ? ` <span class="badge">${esc(s.best)}</span>` : ""}</th><td>${esc(dayFmt(b.from))} – ${esc(dayFmt(b.to))}</td><td>${b.leave ? esc(tpl(s.leaveN, { n: num(b.leave) })) : esc(s.noLeave)}</td><td><strong>${esc(tpl(s.totalN, { n: b.days }))}</strong></td><td>${days.length ? esc(days.join(lang === "ar" ? "، " : ", ")) : esc(s.none)}</td></tr>`;
+      return `<tr data-leave="${b.leave}"${b === best ? ' class="br-best"' : ""}><th scope="row">${esc(b.groups.map(gname).join(" + "))}${b === best ? ` <span class="badge">${esc(s.best)}</span>` : ""}</th><td>${esc(dayFmt(b.from))} – ${esc(dayFmt(b.to))}</td><td>${b.leave ? esc(tpl(s.leaveN, { n: num(b.leave) })) : esc(s.noLeave)}</td><td><strong>${esc(tpl(s.totalN, { n: b.days }))}</strong></td><td>${days.length ? esc(days.join(RTL.includes(lang) ? "، " : ", ")) : esc(s.none)}</td></tr>`;
     }).join("");
     return `<section class="br-year" data-br-year="${y}" aria-labelledby="br-${y}">
     <h2 id="br-${y}">${y}</h2>
@@ -2191,7 +2194,7 @@ function buildZakat(lang) {
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].zakat }];
   const field = (k) => `<div class="field"><label for="zk-${k}">${esc(s.fields[k])}</label><input id="zk-${k}" type="text" inputmode="decimal" autocomplete="off" dir="ltr" data-zk="${k}"></div>`;
   const res = (k, label) => `<div class="fact"><dt${k === "nisab" ? " data-zk-nisab-label" : ""}>${esc(label)}</dt><dd data-zk-${k} dir="ltr">–</dd></div>`;
-  const nisabLabel = tpl(s.nisab, { g: new Intl.NumberFormat(lang === "ar" ? "en" : I[lang].locale, { maximumFractionDigits: 2 }).format(80.18) });
+  const nisabLabel = tpl(s.nisab, { g: new Intl.NumberFormat(RTL.includes(lang) ? "en" : I[lang].locale, { maximumFractionDigits: 2 }).format(80.18) });
   const hero = `<section class="zk" data-zakat aria-labelledby="zk-h">
       <h2 id="zk-h" class="sr-only">${esc(s.h1)}</h2>
       <p class="meta">${esc(s.intro)}</p>
@@ -2620,7 +2623,7 @@ function buildPrayerDistrict(d) {
 function embedFramePage(lang) {
   const t = I[lang];
   const slides = EMBED_MODELS.map((m) => `<section class="slide ${m.cls}" data-model="${m.id}" aria-hidden="true">${m.html("")}</section>`).join("");
-  const pageCfg = { locale: t.locale, t: { ...t.client }, cities: clientCities(lang), cal: { months: t.calendar.months, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt } };
+  const pageCfg = { locale: t.locale, t: { ...t.client }, cities: clientCities(lang), cal: { months: t.calendar.months, monthsTitle: t.calendar.monthsTitle, weekdays: t.calendar.weekdays, weekdaysShort: t.calendar.weekdaysShort, fullFmt: t.calendar.fullFmt, shortFmt: t.calendar.shortFmt, dateFmt: t.calendar.dateFmt } };
   return `<!doctype html>
 <html lang="${lang}" dir="${DIR(lang)}" data-embed="1">
 <head>

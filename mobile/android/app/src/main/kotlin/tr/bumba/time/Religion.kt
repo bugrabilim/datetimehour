@@ -82,7 +82,7 @@ import java.time.LocalDate
 object Quran {
     class Sura(val no: Int, val ar: String, val tname: String, val en: String, val tr: String, val mecca: Boolean, val ayas: Int, val start: Int) {
         /** Arayüz dilinde ad */
-        val title: String get() = when (Strings.lang) { "tr", "az" -> tr; "ar" -> ar; else -> tname }
+        val title: String get() = when (Strings.lang) { "tr", "az" -> tr; "ar", "fa", "ur" -> ar; else -> tname }
     }
 
     lateinit var suras: List<Sura>
@@ -267,10 +267,10 @@ object Duas {
             val o = a.getJSONObject(i)
             val mean = o.getJSONObject("mean")
             val refs = o.optJSONArray("refs")?.let { r -> (0 until r.length()).map { r.getString(it) } } ?: emptyList()
-            // Anlam: arayüz dilinde; Kur'an'dan olanlarda İngilizce meal (tr/az'da Diyanet bağlantısı), Arapçada yok
+            // Anlam: arayüz dilinde; Kur'an'dan olanlarda İngilizce meal (tr/az'da Diyanet bağlantısı), Arapça yazılı dillerde (ar, fa, ur) yok
             val m = when {
                 lang == "ar" -> null
-                refs.isNotEmpty() -> if (lang == "en" || lang == "de") mean.optString("en") else null
+                refs.isNotEmpty() -> if (lang in listOf("en", "de", "id", "fr", "ru")) mean.optString("en") else null
                 else -> mean.optString(lang).ifEmpty { mean.optString("en") }
             }
             Dua(o.getString("id"), o.getJSONObject("title").getString(lang), o.getJSONObject("when").getString(lang),
@@ -621,9 +621,9 @@ object Fitre {
     }
 }
 
-private fun fmtNum(x: Double) = if (x == Math.floor(x)) x.toLong().toString() else x.toString().replace(".", if (Strings.lang == "en" || Strings.lang == "ar") "." else ",")
+private fun fmtNum(x: Double) = if (x == Math.floor(x)) x.toLong().toString() else x.toString().replace(".", Strings.decimalPoint)
 
 private fun fmtMoney(x: Double): String {
-    val loc = Strings.locale.let { if (it.language == "ar") java.util.Locale.ENGLISH else it }
+    val loc = Strings.numberLocale
     return java.text.NumberFormat.getNumberInstance(loc).apply { maximumFractionDigits = 2; minimumFractionDigits = 2 }.format(x)
 }

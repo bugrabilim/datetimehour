@@ -49,7 +49,7 @@ final class Compass: NSObject, ObservableObject, CLLocationManagerDelegate {
 /// Bir ondalıklı sayı, uygulama dilinde (Arapçada da Latin rakamı)
 private func oneDecimal(_ x: Double) -> String {
     let f = NumberFormatter()
-    f.locale = Locale(identifier: AppLocale.code == "ar" ? "en_US_POSIX" : AppLocale.code)
+    f.locale = AppLocale.numberLocale
     f.minimumFractionDigits = 1
     f.maximumFractionDigits = 1
     return f.string(from: NSNumber(value: x)) ?? String(format: "%.1f", x)

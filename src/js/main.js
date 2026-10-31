@@ -324,10 +324,11 @@ function sunTimes(y, m, d, lat, lon) {
   }
   var W = T.words || { units: [], tens: [], join: " ", oh: "", sentence: "{h} {m}", oclock: "{h}" };
   function numWords(n) {
-    if (n < 20) return W.units[n];
+    // units 20 öğe (onlar + birler kuralı) ya da sayıları düzensiz dillerde (Urduca) 60 öğe; oneJoin: "vingt et un"
+    if (n < W.units.length) return W.units[n];
     var u = n % 10, t = W.tens[Math.floor(n / 10)];
     if (!u) return t;
-    return W.unitFirst ? (u === 1 && W.one ? W.one : W.units[u]) + W.join + t : t + W.join + W.units[u];
+    return W.unitFirst ? (u === 1 && W.one ? W.one : W.units[u]) + W.join + t : t + (u === 1 && W.oneJoin ? W.oneJoin : W.join) + W.units[u];
   }
   function hourWords(h) { return W.hours && W.hours[h] ? W.hours[h] : numWords(h); }
   function wordsText(p) {
@@ -345,7 +346,7 @@ function sunTimes(y, m, d, lat, lon) {
     var title = el.querySelector("[data-cal-title]");
     var head = el.querySelector("[data-cal-head]");
     var body = el.querySelector("[data-cal-body]");
-    title.textContent = useOwn ? CAL.months[p.month - 1] + " " + p.year : fmt("calTitle", "UTC", { month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, 1, 12)));
+    title.textContent = useOwn ? (CAL.monthsTitle || CAL.months)[p.month - 1] + " " + p.year : fmt("calTitle", "UTC", { month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, 1, 12)));
     head.textContent = "";
     var wk = doc.createElement("th");
     wk.scope = "col"; wk.textContent = T.weekShort;
@@ -411,7 +412,7 @@ function sunTimes(y, m, d, lat, lon) {
           if (kind === "daylen") { var mins = Math.round((st.set - st.rise) / 60000); out = Math.floor(mins / 60) + " " + T.hourShort + " " + (mins % 60) + " " + T.minuteShort; }
           else out = fmt("sun", tz, { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" }).format(new Date(kind === "sunrise" ? st.rise : st.set));
           break;
-        case "monthyear": p = parts(now, tz); out = useOwn ? CAL.months[p.month - 1] + " " + p.year : fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
+        case "monthyear": p = parts(now, tz); out = useOwn ? (CAL.monthsTitle || CAL.months)[p.month - 1] + " " + p.year : fmt("my", tz, { month: "long", year: "numeric" }).format(now); break;
         case "weekday": out = useOwn ? CAL.weekdays[dowOfParts(parts(now, tz))] : fmt("wdl", tz, { weekday: "long" }).format(now); break;
         case "ampm": out = prefs.h12 ? dayPeriod(now, tz) : ""; break;
         case "words": out = wordsText(parts(now, tz)); break;

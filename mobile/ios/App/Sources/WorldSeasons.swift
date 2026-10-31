@@ -534,7 +534,7 @@ private struct SeasonYearBars: View {
             bar(starts: meteo, total: total, showDates: false)
             HStack(spacing: 0) {
                 ForEach(0..<12, id: \.self) { m in
-                    Text(String(L("calendar.months.\(m)").prefix(AppLocale.code == "ar" ? 4 : 3)))
+                    Text(String(L("calendar.months.\(m)").prefix(AppLocale.isRTL ? 4 : 3)))
                         .font(.system(size: 9))
                         .lineLimit(1)
                         .minimumScaleFactor(0.6)

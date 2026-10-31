@@ -502,7 +502,7 @@
     "pages": "Sayfalar",
     "cities": "Şehir sayfaları",
     "about": "Hakkında",
-    "aboutText": "Saat, sitenin sunucu saatiyle senkronize edilir (cihaz saatinden bağımsız); saat dilimi tarayıcıdan okunur ve kişisel veri gönderilmez. Türkçe, İngilizce, Almanca, Azerice ve Arapça sunulur. Veri sorumlusu: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. İletişim: bilgi@bumbagroup.com."
+    "aboutText": "Saat, sitenin sunucu saatiyle senkronize edilir (cihaz saatinden bağımsız); saat dilimi tarayıcıdan okunur ve kişisel veri gönderilmez. Türkçe, İngilizce, Almanca, Azerice, Arapça, Endonezce, Urduca, Farsça, Fransızca ve Rusça olmak üzere on dilde sunulur. Veri sorumlusu: Bumba Teknoloji Limited Şirketi, Ataşehir / İstanbul. İletişim: bilgi@bumbagroup.com."
   },
   "stage": {
     "label": "Saat modelleri",
@@ -2306,7 +2306,7 @@
     "colDesc": "İçerik",
     "ep": {
       "index": "Uç noktaların listesi ve sürüm bilgisi",
-      "holidays": "Bir yılın resmî tatilleri, yarım gün arifeleri, dini ve özel günleri (beş dilde adlarıyla) ve Ramazan aralığı",
+      "holidays": "Bir yılın resmî tatilleri, yarım gün arifeleri, dini ve özel günleri (sitenin bütün dillerinde adlarıyla) ve Ramazan aralığı",
       "prayer": "Bir ilin bir yıllık namaz vakitleri (imsak, güneş, öğle, ikindi, akşam, yatsı; Türkiye saati)",
       "provinces": "81 il: kısa ad, ad, enlem, boylam",
       "hijri": "Hicri ay başları tablosu (Diyanet takvimine hizalı)",

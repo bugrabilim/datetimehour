@@ -34,8 +34,10 @@ enum Esma {
         let rows = bundleJSON("esma", [[String]].self) ?? []
         let lang = AppLocale.code
         return rows.enumerated().map { i, r in
-            let read = (lang == "tr" || lang == "az") ? r[1] : r[2]
-            let mean = switch lang { case "tr": r[3]; case "de": r[5]; case "az": r[6]; case "ar": ""; default: r[4] }
+            // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru]; Farsça ve Urducada okunuş yok
+            let read = switch lang { case "tr", "az": r[1]; case "ur", "fa": ""; default: r[2] }
+            let col = ["tr": 3, "en": 4, "de": 5, "az": 6, "id": 7, "ur": 8, "fa": 9, "fr": 10, "ru": 11][lang]
+            let mean = col.map { $0 < r.count ? r[$0] : "" } ?? ""
             return EsmaName(id: i + 1, ar: r[0], okunus: read, meaning: mean)
         }
     }()
@@ -57,8 +59,8 @@ struct EsmaView: View {
                         Text("\(n.id)").font(.caption.monospacedDigit()).foregroundStyle(Theme.muted).frame(width: 26, alignment: .trailing)
                         VStack(alignment: .leading, spacing: 3) {
                             if AppLocale.code != "ar" {
-                                Text(n.okunus).font(.headline).foregroundStyle(Theme.text)
-                                Text(n.meaning).font(.subheadline).foregroundStyle(Theme.muted)
+                                if !n.okunus.isEmpty { Text(n.okunus).font(.headline).foregroundStyle(Theme.text) }
+                                Text(n.meaning).font(n.okunus.isEmpty ? .body : .subheadline).foregroundStyle(n.okunus.isEmpty ? Theme.text : Theme.muted)
                             }
                         }
                         Spacer(minLength: 8)

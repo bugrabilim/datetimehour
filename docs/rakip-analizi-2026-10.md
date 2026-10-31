@@ -121,7 +121,7 @@ Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 99 bitti, 
 | 97 | Vision Pro uygulaması | Vision Pro | B | bitti |  |
 | 98 | Odakta uygulama/site engelleme | Uygulama | B | bitti (iOS'ta Apple'ın FamilyControls onayı bekleniyor, o zamana kadar gizli) |  |
 | 100 | Saat dilimi haberleri ve bülten | Site | B | bitti (sayfa ve Atom akışı; e-posta bülteni yok) |  |
-| 99 | Daha çok dil | Uygulama + site | B | açık |  |
+| 99 | Daha çok dil | Uygulama + site | B | açık (ilk dalga bitti 31 Ekim 2026: id, ur, fa, fr, ru; sıradaki dalga ja, ko, zh, fil, th) |  |
 | 101 | Uyku takibi, horlama kaydı, uyku evresine göre akıllı alarm | Uygulama | — | yapılmayacak (gizlilik: mikrofon, hareket) |  |
 | 102 | Sitede hesap ve üyelik | Site | — | yapılmayacak (standartta bu proje için yok) |  |
 | 103 | 81 il saat sayfaları | Site | — | yapılmayacak (kopya içerik riski) |  |

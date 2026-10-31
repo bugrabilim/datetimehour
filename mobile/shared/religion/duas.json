@@ -3,139 +3,184 @@
   "items": [
     {
       "id": "subhaneke",
-      "title": {"tr": "Sübhâneke", "en": "Subhanaka", "de": "Subhanaka", "az": "Sübhanəkə", "ar": "دعاء الاستفتاح"},
-      "when": {"tr": "Namazda, ilk rekâtta iftitah tekbirinden sonra", "en": "In prayer, after the opening takbir of the first unit", "de": "Im Gebet, nach dem Eröffnungs-Takbir der ersten Einheit", "az": "Namazda, ilk rükətdə təkbirdən sonra", "ar": "في الصلاة بعد تكبيرة الإحرام في الركعة الأولى"},
+      "title": {"tr": "Sübhâneke", "en": "Subhanaka", "de": "Subhanaka", "az": "Sübhanəkə", "ar": "دعاء الاستفتاح", "id": "Subhanaka", "ur": "ثنا (سبحانک)", "fa": "سبحانک", "fr": "Subhanaka", "ru": "Субханака"},
+      "when": {"tr": "Namazda, ilk rekâtta iftitah tekbirinden sonra", "en": "In prayer, after the opening takbir of the first unit", "de": "Im Gebet, nach dem Eröffnungs-Takbir der ersten Einheit", "az": "Namazda, ilk rükətdə təkbirdən sonra", "ar": "في الصلاة بعد تكبيرة الإحرام في الركعة الأولى", "id": "Dalam salat, setelah takbiratul ihram pada rakaat pertama", "ur": "نماز میں، پہلی رکعت میں تکبیرِ تحریمہ کے بعد", "fa": "در نماز، پس از تکبیرة‌الاحرام در رکعت نخست", "fr": "Dans la prière, après le takbir d’ouverture de la première unité", "ru": "В намазе, после открывающего такбира первого ракаата"},
       "ar": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ",
       "okunus": "Sübhânekellâhümme ve bi hamdik, ve tebârakesmük, ve teâlâ ceddük, ve lâ ilâhe ğayruk.",
       "mean": {
         "tr": "Allah'ım! Sen eksik sıfatlardan uzaksın; seni daima böyle tenzih eder ve överim. Senin adın mübarektir, varlığın her şeyden üstündür. Senden başka ilah yoktur.",
         "en": "Glory be to You, O Allah, and praise. Blessed is Your name and exalted is Your majesty; there is no god but You.",
         "de": "Gepriesen seist Du, o Allah, und Dir gebührt das Lob. Gesegnet ist Dein Name und erhaben Deine Majestät; es gibt keinen Gott außer Dir.",
-        "az": "Allahım! Sən hər cür nöqsandan uzaqsan; Səni həmişə belə təqdis edir və həmd edirəm. Adın mübarəkdir, varlığın hər şeydən ucadır. Səndən başqa ilah yoxdur."
+        "az": "Allahım! Sən hər cür nöqsandan uzaqsan; Səni həmişə belə təqdis edir və həmd edirəm. Adın mübarəkdir, varlığın hər şeydən ucadır. Səndən başqa ilah yoxdur.",
+        "id": "Mahasuci Engkau ya Allah, dan dengan memuji-Mu. Mahaberkah nama-Mu dan Mahatinggi keagungan-Mu; tiada tuhan selain Engkau.",
+        "ur": "اے اللہ! تو پاک ہے اور تیری ہی تعریف ہے۔ تیرا نام بابرکت ہے اور تیری شان بلند ہے؛ تیرے سوا کوئی معبود نہیں۔",
+        "fa": "پاکی تو را ای خدا، و ستایش تو را. نامت خجسته و شکوهت والاست؛ معبودی جز تو نیست.",
+        "fr": "Gloire à Toi, ô Allah, et louange à Toi. Béni soit Ton nom et exaltée soit Ta majesté ; il n’y a pas de divinité en dehors de Toi.",
+        "ru": "Пречист Ты, о Аллах, и хвала Тебе. Благословенно имя Твоё и превыше всего величие Твоё; нет божества, кроме Тебя."
       }
     },
     {
       "id": "tahiyyat",
-      "title": {"tr": "Ettehiyyâtü", "en": "At-Tahiyyat", "de": "At-Tahiyyat", "az": "Əttəhiyyatu", "ar": "التحيات"},
-      "when": {"tr": "Namazda, her oturuşta", "en": "In prayer, in every sitting", "de": "Im Gebet, in jedem Sitzen", "az": "Namazda, hər oturuşda", "ar": "في الصلاة في كل جلوس"},
+      "title": {"tr": "Ettehiyyâtü", "en": "At-Tahiyyat", "de": "At-Tahiyyat", "az": "Əttəhiyyatu", "ar": "التحيات", "id": "At-Tahiyyat", "ur": "التحیات", "fa": "التحیات", "fr": "At-Tahiyyat", "ru": "Ат-Тахият"},
+      "when": {"tr": "Namazda, her oturuşta", "en": "In prayer, in every sitting", "de": "Im Gebet, in jedem Sitzen", "az": "Namazda, hər oturuşda", "ar": "في الصلاة في كل جلوس", "id": "Dalam salat, pada setiap duduk", "ur": "نماز میں، ہر قعدے میں", "fa": "در نماز، در هر نشستن", "fr": "Dans la prière, à chaque position assise", "ru": "В намазе, при каждом сидении"},
       "ar": "التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Ettehiyyâtü lillâhi vessalevâtü vettayyibât. Esselâmü aleyke eyyühen-Nebiyyü ve rahmetullâhi ve berakâtüh. Esselâmü aleynâ ve alâ ibâdillâhis-sâlihîn. Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
       "mean": {
         "tr": "Bütün dualar, övgüler, bedenî ve malî ibadetler Allah'adır. Ey Peygamber! Allah'ın selamı, rahmeti ve bereketi senin üzerine olsun. Selam bizim ve Allah'ın iyi kullarının üzerine olsun. Şahitlik ederim ki Allah'tan başka ilah yoktur; yine şahitlik ederim ki Muhammed O'nun kulu ve elçisidir.",
         "en": "All greetings, prayers and good deeds are for Allah. Peace be upon you, O Prophet, and the mercy of Allah and His blessings. Peace be upon us and upon the righteous servants of Allah. I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and messenger.",
         "de": "Alle Grüße, Gebete und guten Werke gehören Allah. Friede sei mit dir, o Prophet, sowie die Barmherzigkeit Allahs und Sein Segen. Friede sei mit uns und mit den rechtschaffenen Dienern Allahs. Ich bezeuge, dass es keinen Gott gibt außer Allah, und ich bezeuge, dass Muhammad Sein Diener und Gesandter ist.",
-        "az": "Bütün dualar, həmdlər, bədəni və maddi ibadətlər Allaha məxsusdur. Ey Peyğəmbər! Allahın salamı, rəhməti və bərəkəti sənin üzərinə olsun. Salam bizim və Allahın saleh qullarının üzərinə olsun. Şəhadət edirəm ki, Allahdan başqa ilah yoxdur və şəhadət edirəm ki, Məhəmməd Onun qulu və elçisidir."
+        "az": "Bütün dualar, həmdlər, bədəni və maddi ibadətlər Allaha məxsusdur. Ey Peyğəmbər! Allahın salamı, rəhməti və bərəkəti sənin üzərinə olsun. Salam bizim və Allahın saleh qullarının üzərinə olsun. Şəhadət edirəm ki, Allahdan başqa ilah yoxdur və şəhadət edirəm ki, Məhəmməd Onun qulu və elçisidir.",
+        "id": "Segala penghormatan, salawat, dan kebaikan bagi Allah. Semoga keselamatan tercurah kepadamu wahai Nabi, beserta rahmat Allah dan berkah-Nya. Semoga keselamatan tercurah kepada kami dan hamba-hamba Allah yang saleh. Aku bersaksi bahwa tiada tuhan selain Allah, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya.",
+        "ur": "تمام قولی، بدنی اور مالی عبادتیں اللہ کے لیے ہیں۔ اے نبی! آپ پر سلام اور اللہ کی رحمت اور اس کی برکتیں ہوں۔ ہم پر اور اللہ کے نیک بندوں پر سلام ہو۔ میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں اور میں گواہی دیتا ہوں کہ محمد اس کے بندے اور رسول ہیں۔",
+        "fa": "همهٔ درودها، نمازها و نیکی‌ها از آنِ خداست. سلام بر تو ای پیامبر و رحمت و برکات خدا بر تو باد. سلام بر ما و بر بندگان شایستهٔ خدا. گواهی می‌دهم که معبودی جز خدا نیست و گواهی می‌دهم که محمد بنده و فرستادهٔ اوست.",
+        "fr": "Les salutations, les prières et les bonnes œuvres sont à Allah. Que la paix soit sur toi, ô Prophète, ainsi que la miséricorde d’Allah et Ses bénédictions. Que la paix soit sur nous et sur les pieux serviteurs d’Allah. J’atteste qu’il n’y a de divinité qu’Allah et j’atteste que Muhammad est Son serviteur et Son messager.",
+        "ru": "Приветствия, молитвы и благие дела — Аллаху. Мир тебе, о Пророк, милость Аллаха и Его благословения. Мир нам и праведным рабам Аллаха. Свидетельствую, что нет божества, кроме Аллаха, и свидетельствую, что Мухаммад — Его раб и посланник."
       }
     },
     {
       "id": "salli",
-      "title": {"tr": "Allâhümme Salli", "en": "Allahumma Salli", "de": "Allahumma Salli", "az": "Allahummə Salli", "ar": "اللهم صل"},
-      "when": {"tr": "Namazda, son oturuşta Ettehiyyâtü'den sonra", "en": "In prayer, in the last sitting after At-Tahiyyat", "de": "Im Gebet, im letzten Sitzen nach At-Tahiyyat", "az": "Namazda, son oturuşda Əttəhiyyatudan sonra", "ar": "في الصلاة في الجلوس الأخير بعد التحيات"},
+      "title": {"tr": "Allâhümme Salli", "en": "Allahumma Salli", "de": "Allahumma Salli", "az": "Allahummə Salli", "ar": "اللهم صل", "id": "Allahumma Salli", "ur": "درود (اللھم صل)", "fa": "اللهم صلّ", "fr": "Allahumma Salli", "ru": "Аллахумма салли"},
+      "when": {"tr": "Namazda, son oturuşta Ettehiyyâtü'den sonra", "en": "In prayer, in the last sitting after At-Tahiyyat", "de": "Im Gebet, im letzten Sitzen nach At-Tahiyyat", "az": "Namazda, son oturuşda Əttəhiyyatudan sonra", "ar": "في الصلاة في الجلوس الأخير بعد التحيات", "id": "Dalam salat, pada duduk terakhir setelah At-Tahiyyat", "ur": "نماز میں، آخری قعدے میں التحیات کے بعد", "fa": "در نماز، در نشستن آخر پس از التحیات", "fr": "Dans la prière, à la dernière position assise, après At-Tahiyyat", "ru": "В намазе, в последнем сидении после Ат-Тахият"},
       "ar": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
       "okunus": "Allâhümme salli alâ Muhammedin ve alâ âli Muhammed, kemâ salleyte alâ İbrâhîme ve alâ âli İbrâhîm, inneke hamîdün mecîd.",
       "mean": {
         "tr": "Allah'ım! İbrahim'e ve ailesine rahmet ettiğin gibi Muhammed'e ve ailesine de rahmet et. Şüphesiz sen övülmeye layıksın, şanı yücesin.",
         "en": "O Allah, send prayers upon Muhammad and the family of Muhammad, as You sent prayers upon Abraham and the family of Abraham. You are Praiseworthy, Glorious.",
         "de": "O Allah, segne Muhammad und die Familie Muhammads, wie Du Abraham und die Familie Abrahams gesegnet hast. Du bist des Lobes würdig und ruhmreich.",
-        "az": "Allahım! İbrahimə və ailəsinə rəhmət etdiyin kimi Məhəmmədə və ailəsinə də rəhmət et. Şübhəsiz, Sən həmdə layiqsən, şanı ucasan."
+        "az": "Allahım! İbrahimə və ailəsinə rəhmət etdiyin kimi Məhəmmədə və ailəsinə də rəhmət et. Şübhəsiz, Sən həmdə layiqsən, şanı ucasan.",
+        "id": "Ya Allah, limpahkanlah salawat kepada Muhammad dan keluarga Muhammad, sebagaimana Engkau limpahkan salawat kepada Ibrahim dan keluarga Ibrahim. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.",
+        "ur": "اے اللہ! محمد اور آلِ محمد پر رحمت نازل فرما، جیسے تو نے ابراہیم اور آلِ ابراہیم پر رحمت نازل فرمائی۔ بے شک تو قابلِ تعریف اور بزرگی والا ہے۔",
+        "fa": "خدایا، بر محمد و خاندان محمد درود فرست، چنان که بر ابراهیم و خاندان ابراهیم درود فرستادی. همانا تو ستوده و بزرگواری.",
+        "fr": "Ô Allah, prie sur Muhammad et sur la famille de Muhammad, comme Tu as prié sur Abraham et sur la famille d’Abraham. Tu es certes Digne de louange et Glorieux.",
+        "ru": "О Аллах, благослови Мухаммада и семью Мухаммада, как Ты благословил Ибрахима и семью Ибрахима. Поистине, Ты Достохвальный, Славный."
       }
     },
     {
       "id": "barik",
-      "title": {"tr": "Allâhümme Bârik", "en": "Allahumma Barik", "de": "Allahumma Barik", "az": "Allahummə Barik", "ar": "اللهم بارك"},
-      "when": {"tr": "Namazda, son oturuşta Salli'den sonra", "en": "In prayer, in the last sitting after Salli", "de": "Im Gebet, im letzten Sitzen nach Salli", "az": "Namazda, son oturuşda Sallidən sonra", "ar": "في الصلاة في الجلوس الأخير بعد اللهم صل"},
+      "title": {"tr": "Allâhümme Bârik", "en": "Allahumma Barik", "de": "Allahumma Barik", "az": "Allahummə Barik", "ar": "اللهم بارك", "id": "Allahumma Barik", "ur": "درود (اللھم بارک)", "fa": "اللهم بارک", "fr": "Allahumma Barik", "ru": "Аллахумма барик"},
+      "when": {"tr": "Namazda, son oturuşta Salli'den sonra", "en": "In prayer, in the last sitting after Salli", "de": "Im Gebet, im letzten Sitzen nach Salli", "az": "Namazda, son oturuşda Sallidən sonra", "ar": "في الصلاة في الجلوس الأخير بعد اللهم صل", "id": "Dalam salat, pada duduk terakhir setelah Salli", "ur": "نماز میں، آخری قعدے میں اللھم صل کے بعد", "fa": "در نماز، در نشستن آخر پس از صلّ", "fr": "Dans la prière, à la dernière position assise, après Salli", "ru": "В намазе, в последнем сидении после Салли"},
       "ar": "اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
       "okunus": "Allâhümme bârik alâ Muhammedin ve alâ âli Muhammed, kemâ bârakte alâ İbrâhîme ve alâ âli İbrâhîm, inneke hamîdün mecîd.",
       "mean": {
         "tr": "Allah'ım! İbrahim'e ve ailesine bereket verdiğin gibi Muhammed'e ve ailesine de bereket ver. Şüphesiz sen övülmeye layıksın, şanı yücesin.",
         "en": "O Allah, bless Muhammad and the family of Muhammad, as You blessed Abraham and the family of Abraham. You are Praiseworthy, Glorious.",
         "de": "O Allah, gib Muhammad und der Familie Muhammads Segen, wie Du Abraham und der Familie Abrahams Segen gegeben hast. Du bist des Lobes würdig und ruhmreich.",
-        "az": "Allahım! İbrahimə və ailəsinə bərəkət verdiyin kimi Məhəmmədə və ailəsinə də bərəkət ver. Şübhəsiz, Sən həmdə layiqsən, şanı ucasan."
+        "az": "Allahım! İbrahimə və ailəsinə bərəkət verdiyin kimi Məhəmmədə və ailəsinə də bərəkət ver. Şübhəsiz, Sən həmdə layiqsən, şanı ucasan.",
+        "id": "Ya Allah, berkahilah Muhammad dan keluarga Muhammad, sebagaimana Engkau berkahi Ibrahim dan keluarga Ibrahim. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.",
+        "ur": "اے اللہ! محمد اور آلِ محمد پر برکت نازل فرما، جیسے تو نے ابراہیم اور آلِ ابراہیم پر برکت نازل فرمائی۔ بے شک تو قابلِ تعریف اور بزرگی والا ہے۔",
+        "fa": "خدایا، بر محمد و خاندان محمد برکت ده، چنان که بر ابراهیم و خاندان ابراهیم برکت دادی. همانا تو ستوده و بزرگواری.",
+        "fr": "Ô Allah, bénis Muhammad et la famille de Muhammad, comme Tu as béni Abraham et la famille d’Abraham. Tu es certes Digne de louange et Glorieux.",
+        "ru": "О Аллах, ниспошли благодать Мухаммаду и семье Мухаммада, как Ты ниспослал благодать Ибрахиму и семье Ибрахима. Поистине, Ты Достохвальный, Славный."
       }
     },
     {
       "id": "rabbena",
-      "title": {"tr": "Rabbenâ", "en": "Rabbana", "de": "Rabbana", "az": "Rabbəna", "ar": "ربنا"},
-      "when": {"tr": "Namazda, son oturuşta Bârik'ten sonra (Bakara 201, İbrâhîm 41)", "en": "In prayer, in the last sitting after Barik (Quran 2:201, 14:41)", "de": "Im Gebet, im letzten Sitzen nach Barik (Koran 2:201, 14:41)", "az": "Namazda, son oturuşda Barikdən sonra (Bəqərə 201, İbrahim 41)", "ar": "في الصلاة في الجلوس الأخير (البقرة ٢٠١، إبراهيم ٤١)"},
+      "title": {"tr": "Rabbenâ", "en": "Rabbana", "de": "Rabbana", "az": "Rabbəna", "ar": "ربنا", "id": "Rabbana", "ur": "ربنا", "fa": "ربّنا", "fr": "Rabbana", "ru": "Раббана"},
+      "when": {"tr": "Namazda, son oturuşta Bârik'ten sonra (Bakara 201, İbrâhîm 41)", "en": "In prayer, in the last sitting after Barik (Quran 2:201, 14:41)", "de": "Im Gebet, im letzten Sitzen nach Barik (Koran 2:201, 14:41)", "az": "Namazda, son oturuşda Barikdən sonra (Bəqərə 201, İbrahim 41)", "ar": "في الصلاة في الجلوس الأخير (البقرة ٢٠١، إبراهيم ٤١)", "id": "Dalam salat, pada duduk terakhir setelah Barik (Al-Qur'an 2:201, 14:41)", "ur": "نماز میں، آخری قعدے میں اللھم بارک کے بعد (قرآن 2:201، 14:41)", "fa": "در نماز، در نشستن آخر پس از بارک (قرآن 2:201، 14:41)", "fr": "Dans la prière, à la dernière position assise, après Barik (Coran 2:201, 14:41)", "ru": "В намазе, в последнем сидении после Барик (Коран 2:201, 14:41)"},
       "quran": [["2:201", 3], ["14:41", 0]],
       "okunus": "Rabbenâ âtinâ fid-dünyâ haseneten ve fil-âhireti haseneten ve kınâ azâben-nâr. Rabbenağfirlî ve li-vâlideyye ve lil-mü'minîne yevme yekûmül-hısâb."
     },
     {
       "id": "kunut1",
-      "title": {"tr": "Kunut duası (1)", "en": "Qunut (1)", "de": "Qunut (1)", "az": "Qunut duası (1)", "ar": "دعاء القنوت (١)"},
-      "when": {"tr": "Vitir namazının üçüncü rekâtında", "en": "In the third unit of the witr prayer", "de": "In der dritten Einheit des Witr-Gebets", "az": "Vitr namazının üçüncü rükətində", "ar": "في الركعة الثالثة من صلاة الوتر"},
+      "title": {"tr": "Kunut duası (1)", "en": "Qunut (1)", "de": "Qunut (1)", "az": "Qunut duası (1)", "ar": "دعاء القنوت (١)", "id": "Qunut (1)", "ur": "دعائے قنوت (1)", "fa": "قنوت (1)", "fr": "Qunut (1)", "ru": "Кунут (1)"},
+      "when": {"tr": "Vitir namazının üçüncü rekâtında", "en": "In the third unit of the witr prayer", "de": "In der dritten Einheit des Witr-Gebets", "az": "Vitr namazının üçüncü rükətində", "ar": "في الركعة الثالثة من صلاة الوتر", "id": "Pada rakaat ketiga salat witir", "ur": "نمازِ وتر کی تیسری رکعت میں", "fa": "در رکعت سوم نماز وتر", "fr": "À la troisième unité de la prière du witr", "ru": "В третьем ракаате намаза витр"},
       "ar": "اللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنَسْتَهْدِيكَ وَنُؤْمِنُ بِكَ وَنَتُوبُ إِلَيْكَ وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِي عَلَيْكَ الْخَيْرَ كُلَّهُ نَشْكُرُكَ وَلَا نَكْفُرُكَ وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ",
       "okunus": "Allâhümme innâ nesteînüke ve nestağfirüke ve nestehdîk. Ve nü'minü bike ve netûbü ileyk. Ve netevekkelü aleyke ve nüsnî aleykel-hayra külleh. Neşkürüke ve lâ nekfürük. Ve nahleu ve netrükü men yefcürük.",
       "mean": {
         "tr": "Allah'ım! Senden yardım, bağışlanma ve hidayet isteriz. Sana inanır, sana tövbe eder, sana güveniriz. Seni bütün hayırlarla överiz; sana şükrederiz, nimetlerini inkâr etmeyiz. Sana karşı geleni bırakır, ondan uzak dururuz.",
         "en": "O Allah, we ask You for help, forgiveness and guidance. We believe in You, turn to You in repentance and rely on You. We praise You with all good; we thank You and are not ungrateful to You. We forsake and leave whoever disobeys You.",
         "de": "O Allah, wir bitten Dich um Hilfe, Vergebung und Rechtleitung. Wir glauben an Dich, kehren reuig zu Dir zurück und vertrauen auf Dich. Wir loben Dich mit allem Guten; wir danken Dir und sind nicht undankbar. Wir sagen uns los von dem, der sich Dir widersetzt.",
-        "az": "Allahım! Səndən kömək, bağışlanma və hidayət diləyirik. Sənə inanır, Sənə tövbə edir, Sənə təvəkkül edirik. Səni bütün xeyirlərlə tərifləyirik; Sənə şükr edirik, nemətlərini inkar etmirik. Sənə qarşı çıxanı tərk edirik."
+        "az": "Allahım! Səndən kömək, bağışlanma və hidayət diləyirik. Sənə inanır, Sənə tövbə edir, Sənə təvəkkül edirik. Səni bütün xeyirlərlə tərifləyirik; Sənə şükr edirik, nemətlərini inkar etmirik. Sənə qarşı çıxanı tərk edirik.",
+        "id": "Ya Allah, kami memohon pertolongan, ampunan, dan petunjuk-Mu. Kami beriman kepada-Mu, bertobat kepada-Mu, dan bertawakal kepada-Mu. Kami memuji-Mu dengan segala kebaikan; kami bersyukur kepada-Mu dan tidak mengingkari-Mu. Kami meninggalkan siapa pun yang durhaka kepada-Mu.",
+        "ur": "اے اللہ! ہم تجھ سے مدد، بخشش اور ہدایت مانگتے ہیں۔ ہم تجھ پر ایمان لاتے ہیں، تیری طرف توبہ کرتے ہیں اور تجھ پر بھروسا کرتے ہیں۔ ہم ہر بھلائی کے ساتھ تیری تعریف کرتے ہیں؛ تیرا شکر کرتے ہیں اور تیری ناشکری نہیں کرتے۔ جو تیری نافرمانی کرے ہم اسے چھوڑتے اور اس سے الگ ہوتے ہیں۔",
+        "fa": "خدایا، از تو یاری، آمرزش و هدایت می‌خواهیم. به تو ایمان داریم، به سوی تو توبه می‌کنیم و بر تو توکل می‌کنیم. تو را به همهٔ نیکی‌ها می‌ستاییم؛ سپاست می‌گزاریم و ناسپاس تو نیستیم. هر که از تو نافرمانی کند رهایش می‌کنیم و از او دوری می‌گزینیم.",
+        "fr": "Ô Allah, nous Te demandons aide, pardon et guidée. Nous croyons en Toi, nous nous repentons auprès de Toi et nous nous en remettons à Toi. Nous Te louons de tout bien ; nous Te remercions et ne sommes pas ingrats envers Toi. Nous délaissons et quittons quiconque Te désobéit.",
+        "ru": "О Аллах, мы просим у Тебя помощи, прощения и руководства. Мы веруем в Тебя, каемся перед Тобой и уповаем на Тебя. Восхваляем Тебя всяким благом, благодарим Тебя и не отвергаем Тебя. Оставляем и покидаем того, кто ослушивается Тебя."
       }
     },
     {
       "id": "kunut2",
-      "title": {"tr": "Kunut duası (2)", "en": "Qunut (2)", "de": "Qunut (2)", "az": "Qunut duası (2)", "ar": "دعاء القنوت (٢)"},
-      "when": {"tr": "Vitir namazında birinci Kunut'tan sonra", "en": "In the witr prayer, after the first Qunut", "de": "Im Witr-Gebet nach dem ersten Qunut", "az": "Vitr namazında birinci Qunutdan sonra", "ar": "في صلاة الوتر بعد القنوت الأول"},
+      "title": {"tr": "Kunut duası (2)", "en": "Qunut (2)", "de": "Qunut (2)", "az": "Qunut duası (2)", "ar": "دعاء القنوت (٢)", "id": "Qunut (2)", "ur": "دعائے قنوت (2)", "fa": "قنوت (2)", "fr": "Qunut (2)", "ru": "Кунут (2)"},
+      "when": {"tr": "Vitir namazında birinci Kunut'tan sonra", "en": "In the witr prayer, after the first Qunut", "de": "Im Witr-Gebet nach dem ersten Qunut", "az": "Vitr namazında birinci Qunutdan sonra", "ar": "في صلاة الوتر بعد القنوت الأول", "id": "Dalam salat witir, setelah Qunut pertama", "ur": "نمازِ وتر میں، پہلی دعائے قنوت کے بعد", "fa": "در نماز وتر، پس از قنوت نخست", "fr": "Dans la prière du witr, après le premier Qunut", "ru": "В намазе витр, после первого Кунута"},
       "ar": "اللَّهُمَّ إِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّي وَنَسْجُدُ وَإِلَيْكَ نَسْعَى وَنَحْفِدُ نَرْجُو رَحْمَتَكَ وَنَخْشَى عَذَابَكَ إِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ",
       "okunus": "Allâhümme iyyâke na'büdü ve leke nüsallî ve nescüdü ve ileyke nes'â ve nahfidü. Nercû rahmeteke ve nahşâ azâbeke, inne azâbeke bil-küffâri mülhık.",
       "mean": {
         "tr": "Allah'ım! Yalnız sana kulluk eder, yalnız senin için namaz kılar ve secde ederiz. Sana koşar, sana yaklaşmaya çalışırız. Rahmetini umar, azabından korkarız. Şüphesiz senin azabın inkâr edenlere ulaşacaktır.",
         "en": "O Allah, You alone we worship; to You we pray and prostrate; to You we hasten and strive. We hope for Your mercy and fear Your punishment. Surely Your punishment will reach the disbelievers.",
         "de": "O Allah, Dir allein dienen wir; zu Dir beten wir und vor Dir werfen wir uns nieder; zu Dir eilen wir und um Dich bemühen wir uns. Wir hoffen auf Deine Barmherzigkeit und fürchten Deine Strafe. Gewiss trifft Deine Strafe die Ungläubigen.",
-        "az": "Allahım! Yalnız Sənə ibadət edir, yalnız Sənin üçün namaz qılır və səcdə edirik. Sənə tələsir, Sənə yaxınlaşmağa çalışırıq. Rəhmətini umur, əzabından qorxuruq. Şübhəsiz, Sənin əzabın kafirlərə çatacaqdır."
+        "az": "Allahım! Yalnız Sənə ibadət edir, yalnız Sənin üçün namaz qılır və səcdə edirik. Sənə tələsir, Sənə yaxınlaşmağa çalışırıq. Rəhmətini umur, əzabından qorxuruq. Şübhəsiz, Sənin əzabın kafirlərə çatacaqdır.",
+        "id": "Ya Allah, hanya kepada-Mu kami menyembah; untuk-Mu kami salat dan bersujud; kepada-Mu kami bersegera dan berusaha. Kami mengharap rahmat-Mu dan takut akan azab-Mu. Sesungguhnya azab-Mu pasti menimpa orang-orang kafir.",
+        "ur": "اے اللہ! ہم صرف تیری ہی عبادت کرتے ہیں؛ تیرے ہی لیے نماز پڑھتے اور سجدہ کرتے ہیں؛ تیری ہی طرف دوڑتے اور کوشش کرتے ہیں۔ ہم تیری رحمت کی امید رکھتے ہیں اور تیرے عذاب سے ڈرتے ہیں۔ بے شک تیرا عذاب کافروں کو پہنچنے والا ہے۔",
+        "fa": "خدایا، تنها تو را می‌پرستیم؛ برای تو نماز می‌گزاریم و سجده می‌کنیم؛ به سوی تو می‌شتابیم و می‌کوشیم. به رحمتت امید داریم و از عذابت می‌ترسیم. همانا عذاب تو به کافران خواهد رسید.",
+        "fr": "Ô Allah, c’est Toi seul que nous adorons ; pour Toi nous prions et nous prosternons ; vers Toi nous nous hâtons et nous efforçons. Nous espérons Ta miséricorde et craignons Ton châtiment. Ton châtiment atteindra certes les mécréants.",
+        "ru": "О Аллах, Тебе одному мы поклоняемся; Тебе молимся и перед Тобой падаем ниц; к Тебе стремимся и спешим. Надеемся на Твою милость и страшимся Твоего наказания. Поистине, Твоё наказание постигнет неверных."
       }
     },
     {
       "id": "ayetelkursi",
-      "title": {"tr": "Âyetü'l-Kürsî", "en": "Ayat al-Kursi", "de": "Ayat al-Kursi", "az": "Ayətül-Kürsi", "ar": "آية الكرسي"},
-      "when": {"tr": "Bakara 255", "en": "Quran 2:255", "de": "Koran 2:255", "az": "Bəqərə 255", "ar": "البقرة ٢٥٥"},
+      "title": {"tr": "Âyetü'l-Kürsî", "en": "Ayat al-Kursi", "de": "Ayat al-Kursi", "az": "Ayətül-Kürsi", "ar": "آية الكرسي", "id": "Ayat Kursi", "ur": "آیت الکرسی", "fa": "آیت‌الکرسی", "fr": "Ayat al-Kursi (verset du Trône)", "ru": "Аят аль-Курси"},
+      "when": {"tr": "Bakara 255", "en": "Quran 2:255", "de": "Koran 2:255", "az": "Bəqərə 255", "ar": "البقرة ٢٥٥", "id": "Al-Qur'an 2:255", "ur": "قرآن 2:255", "fa": "قرآن 2:255", "fr": "Coran 2:255", "ru": "Коран 2:255"},
       "quran": [["2:255", 0]],
       "okunus": "Allâhü lâ ilâhe illâ hüvel-hayyül-kayyûm. Lâ te'huzühû sinetün ve lâ nevm. Lehû mâ fis-semâvâti ve mâ fil-ard. Men zellezî yeşfeu indehû illâ bi-iznih. Ya'lemü mâ beyne eydîhim ve mâ halfehüm. Ve lâ yuhîtûne bi-şey'in min ilmihî illâ bimâ şâ'. Vesia kürsiyyühüs-semâvâti vel-ard. Ve lâ yeûdühû hıfzuhümâ ve hüvel-aliyyül-azîm."
     },
     {
       "id": "amentu",
-      "title": {"tr": "Âmentü", "en": "Amantu", "de": "Amantu", "az": "Aməntu", "ar": "آمنت بالله"},
-      "when": {"tr": "İmanın esasları", "en": "The articles of faith", "de": "Die Glaubensgrundsätze", "az": "İmanın əsasları", "ar": "أركان الإيمان"},
+      "title": {"tr": "Âmentü", "en": "Amantu", "de": "Amantu", "az": "Aməntu", "ar": "آمنت بالله", "id": "Amantu", "ur": "ایمانِ مفصل", "fa": "آمنتُ", "fr": "Amantu", "ru": "Аманту"},
+      "when": {"tr": "İmanın esasları", "en": "The articles of faith", "de": "Die Glaubensgrundsätze", "az": "İmanın əsasları", "ar": "أركان الإيمان", "id": "Rukun iman", "ur": "ایمان کے ارکان", "fa": "اصول ایمان", "fr": "Les articles de foi", "ru": "Основы веры"},
       "ar": "آمَنْتُ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ وَالْيَوْمِ الْآخِرِ وَبِالْقَدَرِ خَيْرِهِ وَشَرِّهِ مِنَ اللَّهِ تَعَالَى وَالْبَعْثُ بَعْدَ الْمَوْتِ حَقٌّ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Âmentü billâhi ve melâiketihî ve kütübihî ve rusülihî vel-yevmil-âhiri ve bil-kaderi hayrihî ve şerrihî minallâhi teâlâ, vel-ba'sü ba'del-mevti hakkun. Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
       "mean": {
         "tr": "Allah'a, meleklerine, kitaplarına, peygamberlerine, ahiret gününe, kadere, hayrın ve şerrin Allah'tan olduğuna inandım. Öldükten sonra dirilmek haktır. Şahitlik ederim ki Allah'tan başka ilah yoktur; yine şahitlik ederim ki Muhammed O'nun kulu ve elçisidir.",
         "en": "I believe in Allah, His angels, His books, His messengers, the Last Day, and in destiny, its good and its evil being from Allah the Exalted; and resurrection after death is true. I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and messenger.",
         "de": "Ich glaube an Allah, Seine Engel, Seine Bücher, Seine Gesandten, den Jüngsten Tag und an die Vorherbestimmung, dass Gutes und Schlechtes von Allah, dem Erhabenen, kommen; und die Auferstehung nach dem Tod ist wahr. Ich bezeuge, dass es keinen Gott gibt außer Allah, und ich bezeuge, dass Muhammad Sein Diener und Gesandter ist.",
-        "az": "Allaha, Onun mələklərinə, kitablarına, peyğəmbərlərinə, axirət gününə, qədərə, xeyrin və şərrin Allahdan olduğuna inandım. Öldükdən sonra dirilmək haqdır. Şəhadət edirəm ki, Allahdan başqa ilah yoxdur və şəhadət edirəm ki, Məhəmməd Onun qulu və elçisidir."
+        "az": "Allaha, Onun mələklərinə, kitablarına, peyğəmbərlərinə, axirət gününə, qədərə, xeyrin və şərrin Allahdan olduğuna inandım. Öldükdən sonra dirilmək haqdır. Şəhadət edirəm ki, Allahdan başqa ilah yoxdur və şəhadət edirəm ki, Məhəmməd Onun qulu və elçisidir.",
+        "id": "Aku beriman kepada Allah, malaikat-malaikat-Nya, kitab-kitab-Nya, rasul-rasul-Nya, hari akhir, dan takdir, baik dan buruknya dari Allah Yang Mahatinggi; dan kebangkitan setelah mati adalah benar. Aku bersaksi bahwa tiada tuhan selain Allah, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya.",
+        "ur": "میں ایمان لایا اللہ پر، اس کے فرشتوں پر، اس کی کتابوں پر، اس کے رسولوں پر، قیامت کے دن پر اور اس پر کہ اچھی بری تقدیر اللہ تعالیٰ کی طرف سے ہے؛ اور موت کے بعد اٹھایا جانا حق ہے۔ میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں اور میں گواہی دیتا ہوں کہ محمد اس کے بندے اور رسول ہیں۔",
+        "fa": "به خدا، فرشتگانش، کتاب‌هایش، پیامبرانش، روز واپسین و به تقدیر ایمان آوردم که خیر و شرش از خدای بلندمرتبه است؛ و برانگیخته شدن پس از مرگ حق است. گواهی می‌دهم که معبودی جز خدا نیست و گواهی می‌دهم که محمد بنده و فرستادهٔ اوست.",
+        "fr": "Je crois en Allah, en Ses anges, en Ses livres, en Ses messagers, au Jour dernier et au destin, son bien comme son mal venant d’Allah le Très-Haut ; et la résurrection après la mort est vraie. J’atteste qu’il n’y a de divinité qu’Allah et j’atteste que Muhammad est Son serviteur et Son messager.",
+        "ru": "Я уверовал в Аллаха, Его ангелов, Его книги, Его посланников, в Последний день и в предопределение, что добро и зло его от Всевышнего Аллаха; и воскрешение после смерти — истина. Свидетельствую, что нет божества, кроме Аллаха, и свидетельствую, что Мухаммад — Его раб и посланник."
       }
     },
     {
       "id": "iftar",
-      "title": {"tr": "İftar duası", "en": "Iftar prayer", "de": "Iftar-Bittgebet", "az": "İftar duası", "ar": "دعاء الإفطار"},
-      "when": {"tr": "Orucu açarken", "en": "When breaking the fast", "de": "Beim Fastenbrechen", "az": "Orucu açarkən", "ar": "عند الإفطار"},
+      "title": {"tr": "İftar duası", "en": "Iftar prayer", "de": "Iftar-Bittgebet", "az": "İftar duası", "ar": "دعاء الإفطار", "id": "Doa berbuka puasa", "ur": "افطار کی دعا", "fa": "دعای افطار", "fr": "Invocation de l’iftar", "ru": "Дуа при ифтаре"},
+      "when": {"tr": "Orucu açarken", "en": "When breaking the fast", "de": "Beim Fastenbrechen", "az": "Orucu açarkən", "ar": "عند الإفطار", "id": "Saat berbuka puasa", "ur": "روزہ کھولتے وقت", "fa": "هنگام افطار", "fr": "À la rupture du jeûne", "ru": "При разговении"},
       "ar": "اللَّهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَيْكَ تَوَكَّلْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ",
       "okunus": "Allâhümme leke sumtü ve bike âmentü ve aleyke tevekkeltü ve alâ rızkıke eftartü.",
       "mean": {
         "tr": "Allah'ım! Senin rızan için oruç tuttum, sana inandım, sana güvendim ve senin rızkınla orucumu açtım.",
         "en": "O Allah, for You I fasted, in You I believe, upon You I rely, and with Your provision I break my fast.",
         "de": "O Allah, für Dich habe ich gefastet, an Dich glaube ich, auf Dich vertraue ich, und mit Deiner Versorgung breche ich mein Fasten.",
-        "az": "Allahım! Sənin rizan üçün oruc tutdum, Sənə inandım, Sənə təvəkkül etdim və Sənin ruzinlə orucumu açdım."
+        "az": "Allahım! Sənin rizan üçün oruc tutdum, Sənə inandım, Sənə təvəkkül etdim və Sənin ruzinlə orucumu açdım.",
+        "id": "Ya Allah, untuk-Mu aku berpuasa, kepada-Mu aku beriman, kepada-Mu aku bertawakal, dan dengan rezeki-Mu aku berbuka.",
+        "ur": "اے اللہ! میں نے تیرے لیے روزہ رکھا، تجھ پر ایمان لایا، تجھ پر بھروسا کیا اور تیرے دیے ہوئے رزق سے افطار کیا۔",
+        "fa": "خدایا، برای تو روزه گرفتم، به تو ایمان آوردم، بر تو توکل کردم و با روزی تو افطار می‌کنم.",
+        "fr": "Ô Allah, c’est pour Toi que j’ai jeûné, en Toi que je crois, sur Toi que je compte, et c’est avec Ta subsistance que je romps mon jeûne.",
+        "ru": "О Аллах, ради Тебя я постился, в Тебя уверовал, на Тебя уповаю и Твоим уделом разговляюсь."
       }
     },
     {
       "id": "sehadet",
-      "title": {"tr": "Kelime-i Şehâdet", "en": "Shahada", "de": "Schahada", "az": "Kəlmeyi-şəhadət", "ar": "الشهادة"},
-      "when": {"tr": "İmanın tanıklığı", "en": "The testimony of faith", "de": "Das Glaubensbekenntnis", "az": "İmanın şəhadəti", "ar": "شهادة الإيمان"},
+      "title": {"tr": "Kelime-i Şehâdet", "en": "Shahada", "de": "Schahada", "az": "Kəlmeyi-şəhadət", "ar": "الشهادة", "id": "Syahadat", "ur": "کلمۂ شہادت", "fa": "شهادتین", "fr": "Chahada", "ru": "Шахада"},
+      "when": {"tr": "İmanın tanıklığı", "en": "The testimony of faith", "de": "Das Glaubensbekenntnis", "az": "İmanın şəhadəti", "ar": "شهادة الإيمان", "id": "Kesaksian iman", "ur": "ایمان کی گواہی", "fa": "گواهی ایمان", "fr": "L’attestation de foi", "ru": "Свидетельство веры"},
       "ar": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
       "mean": {
         "tr": "Şahitlik ederim ki Allah'tan başka ilah yoktur; yine şahitlik ederim ki Muhammed O'nun kulu ve elçisidir.",
         "en": "I bear witness that there is no god but Allah, and I bear witness that Muhammad is His servant and messenger.",
         "de": "Ich bezeuge, dass es keinen Gott gibt außer Allah, und ich bezeuge, dass Muhammad Sein Diener und Gesandter ist.",
-        "az": "Şəhadət edirəm ki, Allahdan başqa ilah yoxdur və şəhadət edirəm ki, Məhəmməd Onun qulu və elçisidir."
+        "az": "Şəhadət edirəm ki, Allahdan başqa ilah yoxdur və şəhadət edirəm ki, Məhəmməd Onun qulu və elçisidir.",
+        "id": "Aku bersaksi bahwa tiada tuhan selain Allah, dan aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya.",
+        "ur": "میں گواہی دیتا ہوں کہ اللہ کے سوا کوئی معبود نہیں اور میں گواہی دیتا ہوں کہ محمد اس کے بندے اور رسول ہیں۔",
+        "fa": "گواهی می‌دهم که معبودی جز خدا نیست و گواهی می‌دهم که محمد بنده و فرستادهٔ اوست.",
+        "fr": "J’atteste qu’il n’y a de divinité qu’Allah et j’atteste que Muhammad est Son serviteur et Son messager.",
+        "ru": "Свидетельствую, что нет божества, кроме Аллаха, и свидетельствую, что Мухаммад — Его раб и посланник."
       }
     },
     {
       "id": "ilim",
-      "title": {"tr": "Rabbi zidnî ilmâ", "en": "Rabbi zidni ilma", "de": "Rabbi zidni ilma", "az": "Rəbbi zidni ilma", "ar": "رب زدني علما"},
-      "when": {"tr": "Tâhâ 114", "en": "Quran 20:114", "de": "Koran 20:114", "az": "Taha 114", "ar": "طه ١١٤"},
+      "title": {"tr": "Rabbi zidnî ilmâ", "en": "Rabbi zidni ilma", "de": "Rabbi zidni ilma", "az": "Rəbbi zidni ilma", "ar": "رب زدني علما", "id": "Rabbi zidni ilma", "ur": "رب زدنی علما", "fa": "ربّ زدنی علماً", "fr": "Rabbi zidni ilma", "ru": "Рабби зидни ильма"},
+      "when": {"tr": "Tâhâ 114", "en": "Quran 20:114", "de": "Koran 20:114", "az": "Taha 114", "ar": "طه ١١٤", "id": "Al-Qur'an 20:114", "ur": "قرآن 20:114", "fa": "قرآن 20:114", "fr": "Coran 20:114", "ru": "Коран 20:114"},
       "quran": [["20:114", 14]],
       "okunus": "Rabbi zidnî ilmâ."
     }

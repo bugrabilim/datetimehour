@@ -73,10 +73,12 @@ object Esma {
 
     fun load(c: Context): List<Name> = runCatching {
         val a = JSONArray(asset(c, "esma.json") ?: "[]")
-        val col = when (Strings.lang) { "tr" -> 3; "de" -> 5; "az" -> 6; "ar" -> -1; else -> 4 }
+        // Sütunlar: [ar, Türkçe okunuş, Latin okunuş, tr, en, de, az, id, ur, fa, fr, ru]; Farsça ve Urducada okunuş yok (ad Arapça yazıyla okunur)
+        val col = when (Strings.lang) { "tr" -> 3; "en" -> 4; "de" -> 5; "az" -> 6; "id" -> 7; "ur" -> 8; "fa" -> 9; "fr" -> 10; "ru" -> 11; else -> -1 }
         (0 until a.length()).map { i ->
             val r = a.getJSONArray(i)
-            Name(i + 1, r.getString(0), r.getString(if (turkic) 1 else 2), if (col < 0) "" else r.getString(col))
+            val read = when (Strings.lang) { "tr", "az" -> r.getString(1); "ur", "fa" -> ""; else -> r.getString(2) }
+            Name(i + 1, r.getString(0), read, if (col < 0 || col >= r.length()) "" else r.getString(col))
         }
     }.getOrDefault(emptyList())
 }
@@ -96,8 +98,8 @@ fun EsmaScreen(onBack: () -> Unit) {
                     Text("${n.no}", Modifier.width(30.dp), color = Theme.c.muted, fontSize = 12.sp, style = Tnum)
                     Column(Modifier.weight(1f)) {
                         if (Strings.lang != "ar") {
-                            Text(n.read, color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
-                            Text(n.meaning, color = Theme.c.muted, fontSize = 14.sp)
+                            if (n.read.isNotEmpty()) Text(n.read, color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+                            Text(n.meaning, color = if (n.read.isEmpty()) Theme.c.text else Theme.c.muted, fontSize = if (n.read.isEmpty()) 16.sp else 14.sp)
                         }
                     }
                     Text(n.ar, color = Theme.c.ink, fontSize = 24.sp)

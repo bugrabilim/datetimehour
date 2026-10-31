@@ -51,12 +51,7 @@ object NotificationSounds {
 
     /** Uygulamanın dili ve konuşma dili (Azericede Türkçe ses, iOS'taki gibi) */
     private val speechLocale: Locale
-        get() = when (Strings.lang) {
-            "en" -> Locale.US
-            "de" -> Locale.GERMANY
-            "ar" -> Locale.forLanguageTag("ar-SA")
-            else -> Locale.forLanguageTag("tr-TR")
-        }
+        get() = Speaker.locale()
 
     fun spokenText(prayer: Prayer, lead: Int): String =
         if (lead > 0) T("notify.spoken.before", prayer.title, lead) else T("notify.spoken.now", prayer.title)

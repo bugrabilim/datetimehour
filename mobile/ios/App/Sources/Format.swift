@@ -6,7 +6,10 @@ import SaatCore
 enum AppLocale {
     static let code = Bundle.main.preferredLocalizations.first ?? "tr"
     static let locale = Locale(identifier: code)
-    static var isRTL: Bool { code == "ar" }
+    /// Sağdan sola yazılan diller
+    static var isRTL: Bool { ["ar", "ur", "fa"].contains(code) }
+    /// Sayı biçimi: sağdan sola dillerde (Arapça/Farsça rakam yerine) Latin rakamı için ABD biçimi
+    static var numberLocale: Locale { isRTL ? Locale(identifier: "en_US_POSIX") : locale }
     /// Tarihler her dilde Gregoryen takvimle (Arapça bölge ayarı Hicrî takvim seçebilir; site de Gregoryen kullanır)
     static let gregorian = Calendar(identifier: .gregorian)
 }
@@ -16,10 +19,10 @@ func T(_ key: String, _ args: CustomStringConvertible...) -> String {
     String(format: L(key), arguments: args.map { "\($0)" as CVarArg })
 }
 
-/// Sayı, uygulama dilinde (Arapçada da Latin rakamı; saat ve vakitlerle tutarlı)
+/// Sayı, uygulama dilinde (sağdan sola dillerde de Latin rakamı; saat ve vakitlerle tutarlı)
 func num(_ n: Int) -> String {
     let f = NumberFormatter()
-    f.locale = Locale(identifier: AppLocale.code == "ar" ? "en_US_POSIX" : AppLocale.code)
+    f.locale = AppLocale.numberLocale
     f.numberStyle = .decimal
     return f.string(from: NSNumber(value: n)) ?? String(n)
 }

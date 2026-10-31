@@ -12,8 +12,9 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 /** 81 il (sitedeki src/data/provinces.json) */
-data class Province(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String) {
-    val displayName: String get() = if (Strings.lang == "ar") ar else name
+data class Province(val slug: String, val name: String, val lat: Double, val lon: Double, val ar: String, val ru: String = "", val fa: String = "") {
+    /** Arapça, Rusça ve Farsçada kendi yazısıyla; diğer dillerde Türkçe yazım */
+    val displayName: String get() = when (Strings.lang) { "ar" -> ar; "ru" -> ru.ifEmpty { name }; "fa" -> fa.ifEmpty { name }; else -> name }
 
     companion object {
         val all: List<Province> get() = AppData.provinces
@@ -105,7 +106,7 @@ object AppData {
         val p = JSONArray(read("provinces.json"))
         provinces = (0 until p.length()).map { i ->
             val o = p.getJSONObject(i)
-            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"))
+            Province(o.getString("slug"), o.getString("name"), o.getDouble("lat"), o.getDouble("lon"), o.getString("ar"), o.optString("ru"), o.optString("fa"))
         }
 
         val dj = JSONObject(read("districts.json"))

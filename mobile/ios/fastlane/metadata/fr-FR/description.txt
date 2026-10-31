@@ -1,0 +1,34 @@
+Heure & Date réunit l’horloge, la date, les heures de prière, le calendrier et la météo dans une app simple. Sans compte, sans publicité, sans suivi.
+
+HORLOGE
+• 19 cadrans issus de notre site : analogique, numérique, côte à côte, avec calendrier et météo
+• Horloge plein écran qui garde l’écran allumé
+• Choisissez ce qui s’affiche sous l’horloge : prochaine prière, heures de prière du jour, prochain jour particulier, horloges mondiales, météo, lever du soleil
+
+HEURES DE PRIÈRE
+• Heures quotidiennes et mensuelles pour les 81 provinces de Turquie ou votre position
+• Notifications à l’heure ou à l’avance, avec annonce vocale
+• Calendrier du Ramadan à partager en image
+
+CALENDRIER
+• Jours fériés, demi-journées, jours religieux et particuliers, vacances scolaires en Turquie
+• Les calendriers de votre téléphone (iCloud, Google, Outlook) sur le même écran
+• Ajoutez et supprimez des événements ; ajoutez les jours particuliers à votre calendrier
+
+MÉTÉO
+• Conditions actuelles, prévisions horaires et sur 7 jours avec Apple Météo
+
+OUTILS
+• Alarme (sonne même en mode silencieux), minuteur, compte à rebours jusqu’à une date
+• Chronomètre, pomodoro, calcul de dates (y compris les jours ouvrés)
+• Horloges mondiales avec globe en rotation
+• Saisons, équinoxes et solstices, phases de la Lune
+
+WIDGETS
+• Prochaine prière, heures du jour, horloge analogique et numérique, heure et date ; aussi sur l’écran verrouillé
+
+Disponible en dix langues : français, anglais, turc, allemand, azerbaïdjanais, arabe, indonésien, ourdou, persan et russe.
+
+Votre position sert sur votre téléphone à calculer les heures de prière ; seule une position approximative est envoyée au service météo d’Apple pour la météo. Vos calendriers ne sont lus qu’avec votre accord, et uniquement sur votre téléphone.
+
+Heure & Date est un produit Bumba Life. Web : time.bumba.tr

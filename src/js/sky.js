@@ -13,7 +13,7 @@
   var place = null, base = 0, night = null;
   var STEP = 15 * 60000, MIN = 60000, HOUR = 3600000;
   var COLORS = { mercury: "#b9a68d", venus: "#f4e3a1", mars: "#e8714c", jupiter: "#e9c48f", saturn: "#d9c27a" };
-  var nf = function (frac) { return new Intl.NumberFormat(S.lang === "ar" ? "en-US" : S.locale, { minimumFractionDigits: frac, maximumFractionDigits: frac }); };
+  var nf = function (frac) { return new Intl.NumberFormat(/^(ar|fa|ur)$/.test(S.lang) ? "en-US" : S.locale, { minimumFractionDigits: frac, maximumFractionDigits: frac }); };
   var NS = "http://www.w3.org/2000/svg";
   function el(tag, attrs, parent) { var e = doc.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
   var hm = function (ms) { return S.fmt("sky-hm", place.tz, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).format(new Date(Math.round(ms / MIN) * MIN)); };

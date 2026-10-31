@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Tarayıcı eklentisinin (extension/) üretilen dosyalarını yazar: lib/prayer-calc.js (sitedeki hesabın kopyası),
-// lib/data.js (81 il, hicri ay başları tablosu, beş dilde metinler) ve _locales/<dil>/messages.json (ad ve açıklama).
+// lib/data.js (81 il, hicri ay başları tablosu, sitenin dillerinde metinler) ve _locales/<dil>/messages.json (ad ve açıklama).
 // Elle yazılanlar: manifest.json, popup.html/css/js, strings.json, icons/. Kullanım: node scripts/build-extension.mjs [--check]
 // --zip: dist-extension/saat-tarih-<sürüm>.zip (Chrome Web Store ve Firefox Add-ons'a yüklenecek paket; zip komutu gerekir).
 import fs from "node:fs";
@@ -11,15 +11,15 @@ import { hijriTable } from "../lib/hijri.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const EXT = path.join(ROOT, "extension");
-const LANGS = ["tr", "en", "de", "az", "ar"];
-// Chrome'un desteklediği _locales klasörleri (Azerice listede yok; Azerice arayüz İngilizce ad ve açıklamayı görür)
-const CHROME_LOCALES = ["tr", "en", "de", "ar"];
+const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru"];
+// Chrome'un desteklediği _locales klasörleri (Azerice ve Urduca listede yok; o arayüzler İngilizce ad ve açıklamayı görür)
+const CHROME_LOCALES = ["tr", "en", "de", "ar", "id", "fa", "fr", "ru"];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
 const check = process.argv.includes("--check");
 
 const own = read("extension/strings.json");
 const app = read("mobile/shared/app-strings.json");
-const provinces = read("src/data/provinces.json").map((p) => [p.slug, p.name, p.lat, p.lon, p.ar || ""]);
+const provinces = read("src/data/provinces.json").map((p) => [p.slug, p.name, p.lat, p.lon, p.ar || "", p.ru || "", p.fa || ""]);
 const hijri = hijriTable(read("src/data/holidays.json"), read("src/data/hijri.json"));
 const strings = Object.fromEntries(LANGS.map((l) => {
   const site = read(`src/i18n/${l}.json`);

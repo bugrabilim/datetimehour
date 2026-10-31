@@ -11,9 +11,9 @@
   var q = function (sel) { return root.querySelector(sel); };
   var netEl = q("[data-zk-net]"), nisabEl = q("[data-zk-nisab]"), amountEl = q("[data-zk-amount]");
   var amountBox = q("[data-zk-amount-box]"), verdict = q("[data-zk-verdict]");
-  // Ondalık ayırıcı dile göre: tr/de/az virgül (nokta binlik), en/ar nokta (virgül binlik); Arapça rakamlar da okunur
-  var comma = ["tr", "de", "az"].indexOf(S.lang) >= 0;
-  var nf = new Intl.NumberFormat(S.lang === "ar" ? "en" : S.locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  // Ondalık ayırıcı dile göre: tr/de/az/fr/ru/id virgül, en/ar/fa/ur nokta (virgül binlik); Arapça rakamlar da okunur
+  var comma = ["tr", "de", "az", "fr", "ru", "id"].indexOf(S.lang) >= 0;
+  var nf = new Intl.NumberFormat(/^(ar|fa|ur)$/.test(S.lang) ? "en" : S.locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   var used = false;
 
   function parse(s) {
@@ -52,7 +52,7 @@
   var fBox = document.querySelector("[data-fitre]"), fIn = document.querySelector("[data-fitre-people]"), fOut = document.querySelector("[data-fitre-total]");
   if (fBox && fIn && fOut) {
     var fAmount = parseFloat(fBox.getAttribute("data-fitre")) || 0;
-    var nf0 = new Intl.NumberFormat(S.lang === "ar" ? "en" : S.locale, { maximumFractionDigits: 0 });
+    var nf0 = new Intl.NumberFormat(/^(ar|fa|ur)$/.test(S.lang) ? "en" : S.locale, { maximumFractionDigits: 0 });
     var fRender = function () { var n = Math.max(1, Math.min(99, parseInt(fIn.value, 10) || 1)); fOut.textContent = nf0.format(n * fAmount) + " TL"; };
     fIn.addEventListener("input", fRender);
     fRender();

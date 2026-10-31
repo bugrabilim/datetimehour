@@ -1,5 +1,5 @@
 {
- "_": "Esmaü'l-Hüsna (uygulamalar, Vakitler › İbadet). Türkiye'de yaygın liste: Allah ile başlayan 99 isim (Tirmizî rivayeti; el-Ehad yok). Satır: [Arapça, Türkçe okunuş, Latin harfli okunuş (en/de), anlam tr, en, de, az]; ar arayüzünde yalnız Arapça ad. Anlamlar kısa açıklamadır (Saat Tarih, 30 Ekim 2026); gözden geçirme bekler.",
+ "_": "Esmaü'l-Hüsna (uygulamalar, Vakitler › İbadet). Türkiye'de yaygın liste: Allah ile başlayan 99 isim (Tirmizî rivayeti; el-Ehad yok). Satır: [Arapça, Türkçe okunuş, Latin harfli okunuş, anlam tr, en, de, az, id, ur, fa, fr, ru]; ar arayüzünde yalnız Arapça ad. Anlamlar kısa açıklamadır (Saat Tarih, 30 Ekim 2026); gözden geçirme bekler.",
  "items": [
   [
    "اللَّهُ",
@@ -8,7 +8,12 @@
    "Bütün güzel isimlerin sahibi, eşi ve benzeri olmayan, ibadete layık tek ilah",
    "The one true God, possessor of all beautiful names",
    "Der eine Gott, Träger aller schönen Namen",
-   "Bütün gözəl adların sahibi, tək ilah"
+   "Bütün gözəl adların sahibi, tək ilah",
+   "Tuhan Yang Maha Esa, pemilik segala nama yang indah",
+   "واحد سچا معبود، تمام اچھے ناموں والا",
+   "خدای یگانه و راستین، دارندهٔ همهٔ نام‌های نیکو",
+   "Le Dieu unique et véritable, possesseur des plus beaux noms",
+   "Единый истинный Бог, обладатель всех прекрасных имён"
   ],
   [
    "الرَّحْمَنُ",
@@ -17,7 +22,12 @@
    "Dünyada bütün yaratılmışlara merhamet eden",
    "The Most Merciful to all creation",
    "Der Allerbarmer",
-   "Dünyada bütün yaradılmışlara mərhəmət edən"
+   "Dünyada bütün yaradılmışlara mərhəmət edən",
+   "Yang Maha Pengasih kepada seluruh makhluk",
+   "تمام مخلوق پر بڑا مہربان",
+   "بخشایندهٔ همهٔ آفریدگان",
+   "Le Tout Miséricordieux envers toute la création",
+   "Милостивый ко всем творениям"
   ],
   [
    "الرَّحِيمُ",
@@ -26,7 +36,12 @@
    "Ahirette müminlere sonsuz merhamet eden",
    "The Especially Merciful",
    "Der Barmherzige",
-   "Axirətdə möminlərə sonsuz mərhəmət edən"
+   "Axirətdə möminlərə sonsuz mərhəmət edən",
+   "Yang Maha Penyayang",
+   "نہایت رحم والا",
+   "مهربان",
+   "Le Très Miséricordieux",
+   "Милосердный"
   ],
   [
    "الْمَلِكُ",
@@ -35,7 +50,12 @@
    "Mülkün ve kâinatın gerçek sahibi",
    "The King, the Sovereign",
    "Der König",
-   "Mülkün və kainatın həqiqi sahibi"
+   "Mülkün və kainatın həqiqi sahibi",
+   "Yang Maha Merajai",
+   "بادشاہ",
+   "فرمانروا",
+   "Le Roi, le Souverain",
+   "Царь, Властелин"
   ],
   [
    "الْقُدُّوسُ",
@@ -44,7 +64,12 @@
    "Her türlü eksiklikten uzak, tertemiz",
    "The Most Holy",
    "Der Heilige",
-   "Hər cür nöqsandan uzaq, tərtəmiz"
+   "Hər cür nöqsandan uzaq, tərtəmiz",
+   "Yang Maha Suci",
+   "نہایت پاک",
+   "بسیار پاک",
+   "Le Très Saint",
+   "Святой"
   ],
   [
    "السَّلَامُ",
@@ -53,7 +78,12 @@
    "Esenlik veren, kullarını selamete çıkaran",
    "The Source of Peace",
    "Der Friede",
-   "Əmin-amanlıq verən"
+   "Əmin-amanlıq verən",
+   "Yang Maha Memberi Kesejahteraan",
+   "سلامتی کا سرچشمہ",
+   "سرچشمهٔ سلامت و آرامش",
+   "La Source de la paix",
+   "Источник мира"
   ],
   [
    "الْمُؤْمِنُ",
@@ -62,7 +92,12 @@
    "Güven veren, emniyete kavuşturan",
    "The Giver of Security",
    "Der Gewährer der Sicherheit",
-   "Güvən verən, əmin edən"
+   "Güvən verən, əmin edən",
+   "Yang Maha Memberi Keamanan",
+   "امن دینے والا",
+   "ایمنی‌بخش",
+   "Celui qui donne la sécurité",
+   "Дарующий безопасность"
   ],
   [
    "الْمُهَيْمِنُ",
@@ -71,7 +106,12 @@
    "Her şeyi gözetip koruyan",
    "The Guardian, the Overseer",
    "Der Wächter",
-   "Hər şeyi gözləyib qoruyan"
+   "Hər şeyi gözləyib qoruyan",
+   "Yang Maha Memelihara dan Mengawasi",
+   "نگہبان",
+   "نگهبان و چیره",
+   "Le Protecteur, le Vigilant",
+   "Хранитель, Охраняющий"
   ],
   [
    "الْعَزِيزُ",
@@ -80,7 +120,12 @@
    "Mutlak güç sahibi, yenilmeyen",
    "The Almighty",
    "Der Allmächtige",
-   "Mütləq qüdrət sahibi, məğlubedilməz"
+   "Mütləq qüdrət sahibi, məğlubedilməz",
+   "Yang Maha Perkasa",
+   "غالب",
+   "شکست‌ناپذیر",
+   "Le Tout-Puissant",
+   "Могущественный"
   ],
   [
    "الْجَبَّارُ",
@@ -89,7 +134,12 @@
    "Dilediğini yaptıran, kırığı onaran",
    "The Compeller, the Restorer",
    "Der Bezwinger",
-   "İstədiyini edən, sınığı bərpa edən"
+   "İstədiyini edən, sınığı bərpa edən",
+   "Yang Maha Kuasa memaksa dan memperbaiki",
+   "زبردست، ٹوٹے کو جوڑنے والا",
+   "جبران‌کننده و چیره",
+   "Le Contraignant, Celui qui répare",
+   "Всепобеждающий, Исправляющий"
   ],
   [
    "الْمُتَكَبِّرُ",
@@ -98,7 +148,12 @@
    "Büyüklükte eşi olmayan",
    "The Supreme in Greatness",
    "Der Erhabene in Seiner Größe",
-   "Böyüklükdə tayı olmayan"
+   "Böyüklükdə tayı olmayan",
+   "Yang Maha Megah",
+   "بڑائی والا",
+   "برتر در بزرگی",
+   "Le Suprême en grandeur",
+   "Превосходящий в величии"
   ],
   [
    "الْخَالِقُ",
@@ -107,7 +162,12 @@
    "Yoktan var eden, yaratan",
    "The Creator",
    "Der Schöpfer",
-   "Yoxdan var edən, yaradan"
+   "Yoxdan var edən, yaradan",
+   "Yang Maha Pencipta",
+   "پیدا کرنے والا",
+   "آفریننده",
+   "Le Créateur",
+   "Творец"
   ],
   [
    "الْبَارِئُ",
@@ -116,7 +176,12 @@
    "Her şeyi kusursuz ve uyumlu yaratan",
    "The Originator",
    "Der Erschaffer",
-   "Hər şeyi qüsursuz yaradan"
+   "Hər şeyi qüsursuz yaradan",
+   "Yang Maha Mengadakan",
+   "وجود بخشنے والا",
+   "پدیدآورنده",
+   "Celui qui donne l’existence",
+   "Создатель из ничего"
   ],
   [
    "الْمُصَوِّرُ",
@@ -125,7 +190,12 @@
    "Her şeye şekil ve suret veren",
    "The Fashioner of Forms",
    "Der Gestalter",
-   "Hər şeyə şəkil verən"
+   "Hər şeyə şəkil verən",
+   "Yang Maha Membentuk Rupa",
+   "صورت گری کرنے والا",
+   "صورتگر",
+   "Celui qui façonne les formes",
+   "Придающий облик"
   ],
   [
    "الْغَفَّارُ",
@@ -134,7 +204,12 @@
    "Günahları çokça bağışlayan",
    "The Ever-Forgiving",
    "Der immer wieder Vergebende",
-   "Günahları çox bağışlayan"
+   "Günahları çox bağışlayan",
+   "Yang Maha Pengampun",
+   "بہت بخشنے والا",
+   "بسیار آمرزنده",
+   "Le Grand Pardonneur",
+   "Многопрощающий"
   ],
   [
    "الْقَهَّارُ",
@@ -143,7 +218,12 @@
    "Her şeye galip gelen",
    "The Subduer",
    "Der Bezwingende",
-   "Hər şeyə qalib gələn"
+   "Hər şeyə qalib gələn",
+   "Yang Maha Menundukkan",
+   "سب پر غالب",
+   "چیره",
+   "Le Dominateur",
+   "Покоряющий"
   ],
   [
    "الْوَهَّابُ",
@@ -152,7 +232,12 @@
    "Karşılıksız bol bol veren",
    "The Bestower",
    "Der Schenkende",
-   "Əvəzsiz bol-bol verən"
+   "Əvəzsiz bol-bol verən",
+   "Yang Maha Pemberi Karunia",
+   "بہت عطا کرنے والا",
+   "بخشندهٔ بی‌حساب",
+   "Le Donateur",
+   "Дарующий"
   ],
   [
    "الرَّزَّاقُ",
@@ -161,7 +246,12 @@
    "Bütün canlıların rızkını veren",
    "The Provider",
    "Der Versorger",
-   "Bütün canlıların ruzisini verən"
+   "Bütün canlıların ruzisini verən",
+   "Yang Maha Pemberi Rezeki",
+   "رزق دینے والا",
+   "روزی‌دهنده",
+   "Le Pourvoyeur",
+   "Наделяющий уделом"
   ],
   [
    "الْفَتَّاحُ",
@@ -170,7 +260,12 @@
    "Her türlü darlığı açan, hükmeden",
    "The Opener, the Judge",
    "Der Öffnende",
-   "Hər çətinliyi açan"
+   "Hər çətinliyi açan",
+   "Yang Maha Pembuka, Maha Pemberi Keputusan",
+   "کھولنے والا، فیصلہ کرنے والا",
+   "گشاینده و داور",
+   "Celui qui ouvre, le Juge",
+   "Открывающий, Судья"
   ],
   [
    "الْعَلِيمُ",
@@ -179,7 +274,12 @@
    "Her şeyi bilen",
    "The All-Knowing",
    "Der Allwissende",
-   "Hər şeyi bilən"
+   "Hər şeyi bilən",
+   "Yang Maha Mengetahui",
+   "سب کچھ جاننے والا",
+   "دانا",
+   "L’Omniscient",
+   "Всезнающий"
   ],
   [
    "الْقَابِضُ",
@@ -188,7 +288,12 @@
    "Dilediğine darlık veren, alan",
    "The Withholder",
    "Der Zurückhaltende",
-   "İstədiyinə darlıq verən"
+   "İstədiyinə darlıq verən",
+   "Yang Maha Menyempitkan",
+   "تنگی کرنے والا",
+   "تنگ‌گیرنده",
+   "Celui qui retient",
+   "Удерживающий"
   ],
   [
    "الْبَاسِطُ",
@@ -197,7 +302,12 @@
    "Dilediğine bolluk veren, genişleten",
    "The Expander",
    "Der Gewährende",
-   "İstədiyinə bolluq verən"
+   "İstədiyinə bolluq verən",
+   "Yang Maha Melapangkan",
+   "کشادگی دینے والا",
+   "گشایش‌دهنده",
+   "Celui qui étend",
+   "Расширяющий"
   ],
   [
    "الْخَافِضُ",
@@ -206,7 +316,12 @@
    "Dilediğini alçaltan",
    "The Abaser",
    "Der Erniedrigende",
-   "İstədiyini alçaldan"
+   "İstədiyini alçaldan",
+   "Yang Maha Merendahkan",
+   "پست کرنے والا",
+   "پست‌کننده",
+   "Celui qui abaisse",
+   "Принижающий"
   ],
   [
    "الرَّافِعُ",
@@ -215,7 +330,12 @@
    "Dilediğini yükselten",
    "The Exalter",
    "Der Erhöhende",
-   "İstədiyini yüksəldən"
+   "İstədiyini yüksəldən",
+   "Yang Maha Meninggikan",
+   "بلند کرنے والا",
+   "برافرازنده",
+   "Celui qui élève",
+   "Возвышающий"
   ],
   [
    "الْمُعِزُّ",
@@ -224,7 +344,12 @@
    "Dilediğine izzet ve şeref veren",
    "The Giver of Honour",
    "Der Ehrende",
-   "İstədiyinə izzət verən"
+   "İstədiyinə izzət verən",
+   "Yang Maha Memuliakan",
+   "عزت دینے والا",
+   "عزت‌دهنده",
+   "Celui qui honore",
+   "Дарующий могущество"
   ],
   [
    "الْمُذِلُّ",
@@ -233,7 +358,12 @@
    "Dilediğini zillete düşüren",
    "The Humiliator",
    "Der Demütigende",
-   "İstədiyini zillətə salan"
+   "İstədiyini zillətə salan",
+   "Yang Maha Menghinakan",
+   "ذلت دینے والا",
+   "خوارکننده",
+   "Celui qui humilie",
+   "Унижающий"
   ],
   [
    "السَّمِيعُ",
@@ -242,7 +372,12 @@
    "Her şeyi işiten",
    "The All-Hearing",
    "Der Allhörende",
-   "Hər şeyi eşidən"
+   "Hər şeyi eşidən",
+   "Yang Maha Mendengar",
+   "سب کچھ سننے والا",
+   "شنوا",
+   "Celui qui entend tout",
+   "Всеслышащий"
   ],
   [
    "الْبَصِيرُ",
@@ -251,7 +386,12 @@
    "Her şeyi gören",
    "The All-Seeing",
    "Der Allsehende",
-   "Hər şeyi görən"
+   "Hər şeyi görən",
+   "Yang Maha Melihat",
+   "سب کچھ دیکھنے والا",
+   "بینا",
+   "Celui qui voit tout",
+   "Всевидящий"
   ],
   [
    "الْحَكَمُ",
@@ -260,7 +400,12 @@
    "Mutlak hakem, hüküm veren",
    "The Judge",
    "Der Richter",
-   "Mütləq hakim, hökm verən"
+   "Mütləq hakim, hökm verən",
+   "Yang Maha Menetapkan Hukum",
+   "فیصلہ کرنے والا",
+   "داور",
+   "Le Juge",
+   "Судья"
   ],
   [
    "الْعَدْلُ",
@@ -269,7 +414,12 @@
    "Mutlak adalet sahibi",
    "The Utterly Just",
    "Der Gerechte",
-   "Mütləq ədalət sahibi"
+   "Mütləq ədalət sahibi",
+   "Yang Maha Adil",
+   "سراپا انصاف",
+   "دادگر",
+   "Le Parfaitement Juste",
+   "Справедливый"
   ],
   [
    "اللَّطِيفُ",
@@ -278,7 +428,12 @@
    "En ince işleri bilen, lütfu bol",
    "The Subtle, the Kind",
    "Der Feinfühlige",
-   "Ən incə işləri bilən, lütfkar"
+   "Ən incə işləri bilən, lütfkar",
+   "Yang Maha Lembut",
+   "باریک بین، مہربان",
+   "باریک‌بین و مهربان",
+   "Le Subtil, le Bienveillant",
+   "Проницательный, Добрый"
   ],
   [
    "الْخَبِيرُ",
@@ -287,7 +442,12 @@
    "Her şeyin iç yüzünden haberdar",
    "The All-Aware",
    "Der Kundige",
-   "Hər şeyin daxilindən xəbərdar"
+   "Hər şeyin daxilindən xəbərdar",
+   "Yang Maha Mengenal",
+   "باخبر",
+   "آگاه",
+   "Le Parfaitement Informé",
+   "Ведающий"
   ],
   [
    "الْحَلِيمُ",
@@ -296,7 +456,12 @@
    "Cezada acele etmeyen, yumuşak davranan",
    "The Forbearing",
    "Der Nachsichtige",
-   "Cəzada tələsməyən, həlim"
+   "Cəzada tələsməyən, həlim",
+   "Yang Maha Penyantun",
+   "بردبار",
+   "بردبار",
+   "Le Longanime",
+   "Выдержанный"
   ],
   [
    "الْعَظِيمُ",
@@ -305,7 +470,12 @@
    "Pek büyük, azamet sahibi",
    "The Magnificent",
    "Der Gewaltige",
-   "Çox böyük, əzəmət sahibi"
+   "Çox böyük, əzəmət sahibi",
+   "Yang Maha Agung",
+   "عظمت والا",
+   "بزرگ",
+   "Le Magnifique",
+   "Величайший"
   ],
   [
    "الْغَفُورُ",
@@ -314,7 +484,12 @@
    "Bağışlaması bol olan",
    "The All-Forgiving",
    "Der Vergebende",
-   "Bağışlaması bol olan"
+   "Bağışlaması bol olan",
+   "Yang Maha Memberi Pengampunan",
+   "بخشنے والا",
+   "آمرزنده",
+   "Le Pardonneur",
+   "Всепрощающий"
   ],
   [
    "الشَّكُورُ",
@@ -323,7 +498,12 @@
    "Az amele bol karşılık veren",
    "The Appreciative",
    "Der Dankbare",
-   "Az əmələ bol mükafat verən"
+   "Az əmələ bol mükafat verən",
+   "Yang Maha Mensyukuri",
+   "قدر دان",
+   "سپاس‌پذیر",
+   "Le Reconnaissant",
+   "Признательный"
   ],
   [
    "الْعَلِيُّ",
@@ -332,7 +512,12 @@
    "Yüceler yücesi",
    "The Most High",
    "Der Höchste",
-   "Ucalardan uca"
+   "Ucalardan uca",
+   "Yang Maha Tinggi",
+   "بلند مرتبہ",
+   "بلندمرتبه",
+   "Le Très-Haut",
+   "Возвышенный"
   ],
   [
    "الْكَبِيرُ",
@@ -341,7 +526,12 @@
    "Pek büyük",
    "The Most Great",
    "Der Große",
-   "Çox böyük"
+   "Çox böyük",
+   "Yang Maha Besar",
+   "سب سے بڑا",
+   "بزرگ",
+   "Le Très-Grand",
+   "Большой"
   ],
   [
    "الْحَفِيظُ",
@@ -350,7 +540,12 @@
    "Her şeyi koruyan",
    "The Preserver",
    "Der Bewahrer",
-   "Hər şeyi qoruyan"
+   "Hər şeyi qoruyan",
+   "Yang Maha Memelihara",
+   "حفاظت کرنے والا",
+   "نگهدار",
+   "Le Gardien",
+   "Хранящий"
   ],
   [
    "الْمُقِيتُ",
@@ -359,7 +554,12 @@
    "Her canlının gıdasını yaratıp veren",
    "The Sustainer",
    "Der Erhalter",
-   "Hər canlının qidasını verən"
+   "Hər canlının qidasını verən",
+   "Yang Maha Pemberi Kecukupan",
+   "روزی پہنچانے والا",
+   "روزی‌رسان",
+   "Celui qui nourrit",
+   "Питающий"
   ],
   [
    "الْحَسِيبُ",
@@ -368,7 +568,12 @@
    "Hesaba çeken, yeten",
    "The Reckoner, the Sufficient",
    "Der Abrechnende",
-   "Hesaba çəkən, kifayət edən"
+   "Hesaba çəkən, kifayət edən",
+   "Yang Maha Membuat Perhitungan, Yang Mencukupi",
+   "حساب لینے والا، کافی",
+   "حسابرس و کافی",
+   "Celui qui tient compte, Celui qui suffit",
+   "Учитывающий, Достаточный"
   ],
   [
    "الْجَلِيلُ",
@@ -377,7 +582,12 @@
    "Celal ve ululuk sahibi",
    "The Majestic",
    "Der Majestätische",
-   "Cəlal və ululuq sahibi"
+   "Cəlal və ululuq sahibi",
+   "Yang Maha Luhur",
+   "جلال والا",
+   "شکوهمند",
+   "Le Majestueux",
+   "Величественный"
   ],
   [
    "الْكَرِيمُ",
@@ -386,7 +596,12 @@
    "Cömertliği bol olan",
    "The Most Generous",
    "Der Großzügige",
-   "Kərəmi bol olan"
+   "Kərəmi bol olan",
+   "Yang Maha Pemurah",
+   "بڑا کرم کرنے والا",
+   "بزرگوار و بخشنده",
+   "Le Très Généreux",
+   "Щедрый"
   ],
   [
    "الرَّقِيبُ",
@@ -395,7 +610,12 @@
    "Her şeyi gözetleyen",
    "The Watchful",
    "Der Wachsame",
-   "Hər şeyi izləyən"
+   "Hər şeyi izləyən",
+   "Yang Maha Mengawasi",
+   "نگرانی کرنے والا",
+   "مراقب",
+   "L’Observateur",
+   "Наблюдающий"
   ],
   [
    "الْمُجِيبُ",
@@ -404,7 +624,12 @@
    "Duaları kabul eden",
    "The Responsive",
    "Der Erhörende",
-   "Duaları qəbul edən"
+   "Duaları qəbul edən",
+   "Yang Maha Mengabulkan",
+   "دعا قبول کرنے والا",
+   "پاسخ‌دهنده",
+   "Celui qui exauce",
+   "Отвечающий на мольбы"
   ],
   [
    "الْوَاسِعُ",
@@ -413,7 +638,12 @@
    "İlmi ve rahmeti her şeyi kuşatan",
    "The All-Encompassing",
    "Der Allumfassende",
-   "Elmi və rəhməti hər şeyi əhatə edən"
+   "Elmi və rəhməti hər şeyi əhatə edən",
+   "Yang Maha Luas",
+   "وسعت والا",
+   "فراگیر",
+   "Celui qui embrasse tout",
+   "Объемлющий"
   ],
   [
    "الْحَكِيمُ",
@@ -422,7 +652,12 @@
    "Her işi hikmetli olan",
    "The All-Wise",
    "Der Allweise",
-   "Hər işi hikmətli olan"
+   "Hər işi hikmətli olan",
+   "Yang Maha Bijaksana",
+   "حکمت والا",
+   "فرزانه",
+   "Le Sage",
+   "Мудрый"
   ],
   [
    "الْوَدُودُ",
@@ -431,7 +666,12 @@
    "Kullarını seven, sevilmeye layık olan",
    "The Loving",
    "Der Liebevolle",
-   "Qullarını sevən, sevilməyə layiq"
+   "Qullarını sevən, sevilməyə layiq",
+   "Yang Maha Mengasihi",
+   "محبت کرنے والا",
+   "دوستدار",
+   "Le Très Aimant",
+   "Любящий"
   ],
   [
    "الْمَجِيدُ",
@@ -440,7 +680,12 @@
    "Şanı yüce, şerefi büyük",
    "The Glorious",
    "Der Ruhmreiche",
-   "Şanı uca, şərəfi böyük"
+   "Şanı uca, şərəfi böyük",
+   "Yang Maha Mulia",
+   "بزرگی والا",
+   "ارجمند",
+   "Le Glorieux",
+   "Славный"
   ],
   [
    "الْبَاعِثُ",
@@ -449,7 +694,12 @@
    "Ölüleri dirilten, peygamber gönderen",
    "The Resurrector",
    "Der Auferweckende",
-   "Ölüləri dirildən"
+   "Ölüləri dirildən",
+   "Yang Maha Membangkitkan",
+   "دوبارہ اٹھانے والا",
+   "برانگیزاننده",
+   "Celui qui ressuscite",
+   "Воскрешающий"
   ],
   [
    "الشَّهِيدُ",
@@ -458,7 +708,12 @@
    "Her şeye şahit olan",
    "The Witness",
    "Der Zeuge",
-   "Hər şeyə şahid olan"
+   "Hər şeyə şahid olan",
+   "Yang Maha Menyaksikan",
+   "گواہ",
+   "گواه",
+   "Le Témoin",
+   "Свидетель"
   ],
   [
    "الْحَقُّ",
@@ -467,7 +722,12 @@
    "Varlığı gerçek ve değişmez olan",
    "The Truth",
    "Die Wahrheit",
-   "Varlığı həqiqi və dəyişməz olan"
+   "Varlığı həqiqi və dəyişməz olan",
+   "Yang Maha Benar",
+   "برحق",
+   "حق",
+   "La Vérité",
+   "Истина"
   ],
   [
    "الْوَكِيلُ",
@@ -476,7 +736,12 @@
    "Kendisine güvenilip dayanılan",
    "The Trustee",
    "Der Sachwalter",
-   "Ona güvənilən, təvəkkül edilən"
+   "Ona güvənilən, təvəkkül edilən",
+   "Yang Maha Mewakili, tempat berserah",
+   "کارساز",
+   "کارساز",
+   "Le Garant",
+   "Попечитель"
   ],
   [
    "الْقَوِيُّ",
@@ -485,7 +750,12 @@
    "Kudreti en mükemmel",
    "The All-Strong",
    "Der Starke",
-   "Qüdrəti ən kamil"
+   "Qüdrəti ən kamil",
+   "Yang Maha Kuat",
+   "بڑی قوت والا",
+   "نیرومند",
+   "Le Très Fort",
+   "Сильный"
   ],
   [
    "الْمَتِينُ",
@@ -494,7 +764,12 @@
    "Pek sağlam, sarsılmaz",
    "The Firm",
    "Der Feste",
-   "Çox möhkəm, sarsılmaz"
+   "Çox möhkəm, sarsılmaz",
+   "Yang Maha Kokoh",
+   "مضبوط",
+   "استوار",
+   "L’Inébranlable",
+   "Прочный"
   ],
   [
    "الْوَلِيُّ",
@@ -503,7 +778,12 @@
    "Müminlerin dostu ve yardımcısı",
    "The Protecting Friend",
    "Der Schutzherr",
-   "Möminlərin dostu və köməkçisi"
+   "Möminlərin dostu və köməkçisi",
+   "Yang Maha Melindungi",
+   "دوست و مددگار",
+   "دوست و سرپرست",
+   "L’Allié protecteur",
+   "Покровитель"
   ],
   [
    "الْحَمِيدُ",
@@ -512,7 +792,12 @@
    "Övülmeye layık olan",
    "The Praiseworthy",
    "Der Lobenswerte",
-   "Həmdə layiq olan"
+   "Həmdə layiq olan",
+   "Yang Maha Terpuji",
+   "قابلِ تعریف",
+   "ستوده",
+   "Le Digne de louange",
+   "Достохвальный"
   ],
   [
    "الْمُحْصِي",
@@ -521,7 +806,12 @@
    "Her şeyin sayısını bilen",
    "The Accounter",
    "Der Zählende",
-   "Hər şeyin sayını bilən"
+   "Hər şeyin sayını bilən",
+   "Yang Maha Menghitung",
+   "شمار کرنے والا",
+   "شمارنده",
+   "Celui qui dénombre",
+   "Исчисляющий"
   ],
   [
    "الْمُبْدِئُ",
@@ -530,7 +820,12 @@
    "Maddesiz ve örneksiz ilk kez yaratan",
    "The Originator",
    "Der Beginnende",
-   "İlk dəfə yaradan"
+   "İlk dəfə yaradan",
+   "Yang Maha Memulai",
+   "پہلی بار پیدا کرنے والا",
+   "آغازگر آفرینش",
+   "Celui qui commence la création",
+   "Начинающий творение"
   ],
   [
    "الْمُعِيدُ",
@@ -539,7 +834,12 @@
    "Yarattıklarını yok ettikten sonra yeniden yaratan",
    "The Restorer",
    "Der Wiederherstellende",
-   "Yenidən yaradan"
+   "Yenidən yaradan",
+   "Yang Maha Mengembalikan",
+   "دوبارہ لوٹانے والا",
+   "بازگرداننده",
+   "Celui qui fait revenir",
+   "Возвращающий"
   ],
   [
    "الْمُحْيِي",
@@ -548,7 +848,12 @@
    "Hayat veren, dirilten",
    "The Giver of Life",
    "Der Lebensspender",
-   "Həyat verən, dirildən"
+   "Həyat verən, dirildən",
+   "Yang Maha Menghidupkan",
+   "زندگی دینے والا",
+   "زنده‌کننده",
+   "Celui qui donne la vie",
+   "Оживляющий"
   ],
   [
    "الْمُمِيتُ",
@@ -557,7 +862,12 @@
    "Ölümü yaratan",
    "The Bringer of Death",
    "Der Tod Gebende",
-   "Ölümü yaradan"
+   "Ölümü yaradan",
+   "Yang Maha Mematikan",
+   "موت دینے والا",
+   "میراننده",
+   "Celui qui donne la mort",
+   "Умерщвляющий"
   ],
   [
    "الْحَيُّ",
@@ -566,7 +876,12 @@
    "Diri, ezelî ve ebedî hayat sahibi",
    "The Ever-Living",
    "Der Lebendige",
-   "Diri, əbədi həyat sahibi"
+   "Diri, əbədi həyat sahibi",
+   "Yang Maha Hidup",
+   "ہمیشہ زندہ",
+   "زنده",
+   "Le Vivant",
+   "Живой"
   ],
   [
    "الْقَيُّومُ",
@@ -575,7 +890,12 @@
    "Her şeyi ayakta tutan, kendi zatıyla var olan",
    "The Self-Subsisting Sustainer",
    "Der Beständige",
-   "Hər şeyi ayaqda tutan"
+   "Hər şeyi ayaqda tutan",
+   "Yang Maha Berdiri Sendiri dan Mengurus makhluk",
+   "سب کو قائم رکھنے والا",
+   "پاینده و نگه‌دارندهٔ همه",
+   "Celui qui subsiste par Lui-même et maintient tout",
+   "Вседержитель, Сущий"
   ],
   [
    "الْوَاجِدُ",
@@ -584,7 +904,12 @@
    "İstediğini istediği anda bulan, hiçbir şeye muhtaç olmayan",
    "The Finder",
    "Der Findende",
-   "İstədiyini istədiyi anda tapan"
+   "İstədiyini istədiyi anda tapan",
+   "Yang Maha Menemukan",
+   "پانے والا",
+   "یابنده",
+   "Celui qui trouve",
+   "Находящий"
   ],
   [
    "الْمَاجِدُ",
@@ -593,7 +918,12 @@
    "Şanı yüce, keremi bol",
    "The Noble",
    "Der Edle",
-   "Şanı uca, kərəmi bol"
+   "Şanı uca, kərəmi bol",
+   "Yang Maha Berkemuliaan",
+   "بزرگ و برتر",
+   "بزرگوار",
+   "Le Noble",
+   "Благородный"
   ],
   [
    "الْوَاحِدُ",
@@ -602,7 +932,12 @@
    "Zatında, sıfatlarında ve fiillerinde tek",
    "The One",
    "Der Eine",
-   "Zatında və sifətlərində tək"
+   "Zatında və sifətlərində tək",
+   "Yang Maha Esa",
+   "ایک",
+   "یگانه",
+   "L’Unique",
+   "Единый"
   ],
   [
    "الصَّمَدُ",
@@ -611,7 +946,12 @@
    "Hiçbir şeye muhtaç olmayan, herkesin ona muhtaç olduğu",
    "The Eternal Refuge",
    "Der Unabhängige, an den sich alle wenden",
-   "Heç nəyə möhtac olmayan, hər kəsin Ona möhtac olduğu"
+   "Heç nəyə möhtac olmayan, hər kəsin Ona möhtac olduğu",
+   "Yang Maha Dibutuhkan, tempat bergantung",
+   "بے نیاز، سب کا سہارا",
+   "بی‌نیاز و پناه همه",
+   "L’Absolu, le Refuge éternel",
+   "Самодостаточный, Вечный"
   ],
   [
    "الْقَادِرُ",
@@ -620,7 +960,12 @@
    "Dilediğini dilediği gibi yapmaya gücü yeten",
    "The All-Capable",
    "Der Mächtige",
-   "İstədiyini istədiyi kimi etməyə qadir"
+   "İstədiyini istədiyi kimi etməyə qadir",
+   "Yang Maha Kuasa",
+   "قدرت والا",
+   "توانا",
+   "Le Puissant",
+   "Могущий"
   ],
   [
    "الْمُقْتَدِرُ",
@@ -629,7 +974,12 @@
    "Kudret sahiplerinin üzerinde kudret sahibi",
    "The All-Determiner",
    "Der Allmächtige Bestimmer",
-   "Bütün qüdrət sahiblərindən üstün"
+   "Bütün qüdrət sahiblərindən üstün",
+   "Yang Maha Berkuasa menentukan",
+   "پوری قدرت والا",
+   "توانمند",
+   "Le Tout-Puissant qui décide",
+   "Всемогущий"
   ],
   [
    "الْمُقَدِّمُ",
@@ -638,7 +988,12 @@
    "Dilediğini öne alan",
    "The Expediter",
    "Der Voranstellende",
-   "İstədiyini önə çəkən"
+   "İstədiyini önə çəkən",
+   "Yang Maha Mendahulukan",
+   "آگے کرنے والا",
+   "پیش‌دارنده",
+   "Celui qui avance",
+   "Приближающий"
   ],
   [
    "الْمُؤَخِّرُ",
@@ -647,7 +1002,12 @@
    "Dilediğini geri bırakan",
    "The Delayer",
    "Der Zurückstellende",
-   "İstədiyini geri saxlayan"
+   "İstədiyini geri saxlayan",
+   "Yang Maha Mengakhirkan",
+   "پیچھے کرنے والا",
+   "پس‌دارنده",
+   "Celui qui retarde",
+   "Отдаляющий"
   ],
   [
    "الْأَوَّلُ",
@@ -656,7 +1016,12 @@
    "Başlangıcı olmayan, ilk",
    "The First",
    "Der Erste",
-   "Başlanğıcı olmayan, ilk"
+   "Başlanğıcı olmayan, ilk",
+   "Yang Maha Awal",
+   "سب سے پہلا",
+   "نخستین",
+   "Le Premier",
+   "Первый"
   ],
   [
    "الْآخِرُ",
@@ -665,7 +1030,12 @@
    "Sonu olmayan, son",
    "The Last",
    "Der Letzte",
-   "Sonu olmayan, son"
+   "Sonu olmayan, son",
+   "Yang Maha Akhir",
+   "سب سے آخر",
+   "واپسین",
+   "Le Dernier",
+   "Последний"
   ],
   [
    "الظَّاهِرُ",
@@ -674,7 +1044,12 @@
    "Varlığı açık delillerle bilinen",
    "The Manifest",
    "Der Offenbare",
-   "Varlığı aşkar dəlillərlə bilinən"
+   "Varlığı aşkar dəlillərlə bilinən",
+   "Yang Maha Nyata",
+   "ظاہر",
+   "آشکار",
+   "L’Apparent",
+   "Явный"
   ],
   [
    "الْبَاطِنُ",
@@ -683,7 +1058,12 @@
    "Zatının mahiyeti gizli olan",
    "The Hidden",
    "Der Verborgene",
-   "Zatının mahiyyəti gizli olan"
+   "Zatının mahiyyəti gizli olan",
+   "Yang Maha Tersembunyi",
+   "پوشیدہ",
+   "نهان",
+   "Le Caché",
+   "Скрытый"
   ],
   [
    "الْوَالِي",
@@ -692,7 +1072,12 @@
    "Bütün kâinatı yöneten",
    "The Governor",
    "Der Regierende",
-   "Bütün kainatı idarə edən"
+   "Bütün kainatı idarə edən",
+   "Yang Maha Memerintah",
+   "مالک و کارساز",
+   "فرمانروا",
+   "Le Gouverneur",
+   "Правитель"
   ],
   [
    "الْمُتَعَالِي",
@@ -701,7 +1086,12 @@
    "Her şeyin üstünde, pek yüce",
    "The Self-Exalted",
    "Der Erhabene",
-   "Hər şeydən uca"
+   "Hər şeydən uca",
+   "Yang Maha Tinggi di atas segalanya",
+   "سب سے بلند",
+   "برتر",
+   "Le Très-Élevé",
+   "Превышний"
   ],
   [
    "الْبَرُّ",
@@ -710,7 +1100,12 @@
    "İyiliği bol olan",
    "The Source of Goodness",
    "Der Gütige",
-   "Yaxşılığı bol olan"
+   "Yaxşılığı bol olan",
+   "Yang Maha Sumber Kebaikan",
+   "بھلائی کا سرچشمہ",
+   "سرچشمهٔ نیکی",
+   "La Source de bonté",
+   "Источник добра"
   ],
   [
    "التَّوَّابُ",
@@ -719,7 +1114,12 @@
    "Tövbeleri kabul eden",
    "The Acceptor of Repentance",
    "Der die Reue Annehmende",
-   "Tövbələri qəbul edən"
+   "Tövbələri qəbul edən",
+   "Yang Maha Penerima Tobat",
+   "توبہ قبول کرنے والا",
+   "توبه‌پذیر",
+   "Celui qui accueille le repentir",
+   "Принимающий покаяние"
   ],
   [
    "الْمُنْتَقِمُ",
@@ -728,7 +1128,12 @@
    "Suçluları adaletle cezalandıran",
    "The Avenger (with justice)",
    "Der Vergeltende",
-   "Günahkarları ədalətlə cəzalandıran"
+   "Günahkarları ədalətlə cəzalandıran",
+   "Yang Maha Pemberi Balasan (dengan adil)",
+   "بدلہ لینے والا (انصاف سے)",
+   "کیفردهنده (به عدل)",
+   "Celui qui punit (avec justice)",
+   "Карающий (по справедливости)"
   ],
   [
    "الْعَفُوُّ",
@@ -737,7 +1142,12 @@
    "Affı çok olan, günahları silen",
    "The Pardoner",
    "Der Verzeihende",
-   "Əfvi çox olan, günahları silən"
+   "Əfvi çox olan, günahları silən",
+   "Yang Maha Pemaaf",
+   "معاف کرنے والا",
+   "درگذرنده",
+   "L’Indulgent",
+   "Снисходительный"
   ],
   [
    "الرَّءُوفُ",
@@ -746,7 +1156,12 @@
    "Çok şefkatli",
    "The Most Kind",
    "Der Gnädige",
-   "Çox şəfqətli"
+   "Çox şəfqətli",
+   "Yang Maha Belas Kasih",
+   "نہایت شفیق",
+   "بسیار مهربان",
+   "Le Très Bon",
+   "Сострадательный"
   ],
   [
    "مَالِكُ الْمُلْكِ",
@@ -755,7 +1170,12 @@
    "Mülkün ebedî sahibi",
    "Owner of All Sovereignty",
    "Herr der Herrschaft",
-   "Mülkün əbədi sahibi"
+   "Mülkün əbədi sahibi",
+   "Pemilik segala Kerajaan",
+   "ملک کا مالک",
+   "دارندهٔ فرمانروایی",
+   "Le Possesseur de la royauté",
+   "Владыка царства"
   ],
   [
    "ذُو الْجَلَالِ وَالْإِكْرَامِ",
@@ -764,7 +1184,12 @@
    "Celal ve ikram sahibi",
    "Lord of Majesty and Generosity",
    "Der Majestät und Ehre Besitzende",
-   "Cəlal və ikram sahibi"
+   "Cəlal və ikram sahibi",
+   "Pemilik Kebesaran dan Kemuliaan",
+   "جلال اور اکرام والا",
+   "صاحب شکوه و بزرگواری",
+   "Le Seigneur de majesté et de générosité",
+   "Обладатель величия и щедрости"
   ],
   [
    "الْمُقْسِطُ",
@@ -773,7 +1198,12 @@
    "Bütün işlerini adaletle yapan",
    "The Equitable",
    "Der Gerechte",
-   "Bütün işlərini ədalətlə edən"
+   "Bütün işlərini ədalətlə edən",
+   "Yang Maha Pemberi Keadilan",
+   "انصاف کرنے والا",
+   "دادگستر",
+   "L’Équitable",
+   "Беспристрастный"
   ],
   [
    "الْجَامِعُ",
@@ -782,7 +1212,12 @@
    "Dilediğini dilediği yerde toplayan",
    "The Gatherer",
    "Der Versammelnde",
-   "İstədiyini istədiyi yerdə toplayan"
+   "İstədiyini istədiyi yerdə toplayan",
+   "Yang Maha Mengumpulkan",
+   "جمع کرنے والا",
+   "گردآورنده",
+   "Celui qui rassemble",
+   "Собирающий"
   ],
   [
    "الْغَنِيُّ",
@@ -791,7 +1226,12 @@
    "Hiçbir şeye ihtiyacı olmayan",
    "The Self-Sufficient",
    "Der Unabhängige",
-   "Heç nəyə ehtiyacı olmayan"
+   "Heç nəyə ehtiyacı olmayan",
+   "Yang Maha Kaya",
+   "بے نیاز",
+   "بی‌نیاز",
+   "Celui qui se suffit à Lui-même",
+   "Богатый, ни в чём не нуждающийся"
   ],
   [
    "الْمُغْنِي",
@@ -800,7 +1240,12 @@
    "Dilediğini zengin eden",
    "The Enricher",
    "Der Reichmachende",
-   "İstədiyini zəngin edən"
+   "İstədiyini zəngin edən",
+   "Yang Maha Pemberi Kekayaan",
+   "غنی کرنے والا",
+   "بی‌نیازکننده",
+   "Celui qui enrichit",
+   "Обогащающий"
   ],
   [
    "الْمَانِعُ",
@@ -809,7 +1254,12 @@
    "Dilemediği şeye engel olan",
    "The Preventer",
    "Der Verhindernde",
-   "İstəmədiyi şeyə mane olan"
+   "İstəmədiyi şeyə mane olan",
+   "Yang Maha Mencegah",
+   "روکنے والا",
+   "بازدارنده",
+   "Celui qui empêche",
+   "Удерживающий от зла"
   ],
   [
    "الضَّارُّ",
@@ -818,7 +1268,12 @@
    "Elem ve zarar verecek şeyleri de yaratan",
    "The Creator of Harm",
    "Der Schaden Zulassende",
-   "Zərər verəcək şeyləri də yaradan"
+   "Zərər verəcək şeyləri də yaradan",
+   "Yang Maha Pencipta mudarat",
+   "نقصان پیدا کرنے والا",
+   "آفرینندهٔ زیان",
+   "Le Créateur de ce qui nuit",
+   "Творец вреда"
   ],
   [
    "النَّافِعُ",
@@ -827,7 +1282,12 @@
    "Fayda veren şeyleri yaratan",
    "The Creator of Benefit",
    "Der Nutzen Bringende",
-   "Fayda verən şeyləri yaradan"
+   "Fayda verən şeyləri yaradan",
+   "Yang Maha Pencipta manfaat",
+   "نفع پیدا کرنے والا",
+   "آفرینندهٔ سود",
+   "Le Créateur de ce qui profite",
+   "Творец пользы"
   ],
   [
    "النُّورُ",
@@ -836,7 +1296,12 @@
    "Âlemleri nurlandıran, nur kaynağı",
    "The Light",
    "Das Licht",
-   "Aləmləri nurlandıran"
+   "Aləmləri nurlandıran",
+   "Yang Maha Bercahaya",
+   "نور",
+   "نور",
+   "La Lumière",
+   "Свет"
   ],
   [
    "الْهَادِي",
@@ -845,7 +1310,12 @@
    "Hidayet veren, doğru yolu gösteren",
    "The Guide",
    "Der Rechtleitende",
-   "Hidayət verən, doğru yolu göstərən"
+   "Hidayət verən, doğru yolu göstərən",
+   "Yang Maha Pemberi Petunjuk",
+   "ہدایت دینے والا",
+   "راهنما",
+   "Le Guide",
+   "Ведущий прямым путём"
   ],
   [
    "الْبَدِيعُ",
@@ -854,7 +1324,12 @@
    "Eşsiz ve örneksiz yaratan",
    "The Incomparable Originator",
    "Der Unvergleichliche Schöpfer",
-   "Tayı və nümunəsi olmadan yaradan"
+   "Tayı və nümunəsi olmadan yaradan",
+   "Yang Maha Pencipta tiada banding",
+   "بے مثال پیدا کرنے والا",
+   "نوآفرین بی‌همتا",
+   "Le Créateur incomparable",
+   "Несравненный Творец"
   ],
   [
    "الْبَاقِي",
@@ -863,7 +1338,12 @@
    "Varlığının sonu olmayan",
    "The Everlasting",
    "Der Ewige",
-   "Varlığının sonu olmayan"
+   "Varlığının sonu olmayan",
+   "Yang Maha Kekal",
+   "ہمیشہ باقی رہنے والا",
+   "ماندگار",
+   "L’Éternel",
+   "Вечный"
   ],
   [
    "الْوَارِثُ",
@@ -872,7 +1352,12 @@
    "Her şeyin asıl sahibi olarak kalan",
    "The Inheritor",
    "Der Erbe",
-   "Hər şeyin əsl sahibi olaraq qalan"
+   "Hər şeyin əsl sahibi olaraq qalan",
+   "Yang Maha Pewaris",
+   "سب کا وارث",
+   "وارث",
+   "L’Héritier",
+   "Наследник"
   ],
   [
    "الرَّشِيدُ",
@@ -881,7 +1366,12 @@
    "Bütün işleri isabetli, doğru yolu gösteren",
    "The Guide to the Right Path",
    "Der Rechtleitende in Weisheit",
-   "Bütün işləri doğru, doğru yolu göstərən"
+   "Bütün işləri doğru, doğru yolu göstərən",
+   "Yang Maha Membimbing ke jalan yang benar",
+   "سیدھی راہ دکھانے والا",
+   "راهنمای راه راست",
+   "Celui qui guide vers le droit chemin",
+   "Указывающий правильный путь"
   ],
   [
    "الصَّبُورُ",
@@ -890,7 +1380,12 @@
    "Çok sabırlı, cezada acele etmeyen",
    "The Most Patient",
    "Der Geduldige",
-   "Çox səbirli, cəzada tələsməyən"
+   "Çox səbirli, cəzada tələsməyən",
+   "Yang Maha Sabar",
+   "بڑا صبر کرنے والا",
+   "بسیار شکیبا",
+   "Le Très Patient",
+   "Терпеливый"
   ]
  ]
 }
