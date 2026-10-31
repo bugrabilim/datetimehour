@@ -62,9 +62,7 @@ ffmpeg -i clip.wav -c:a libvorbis -q:a 4 mobile/android/app/src/main/res/raw/eza
   tabloya yazılır.
 - "Adhan in Istanbul.webm" (Viceskeeni2, CC0; SHA-1 `15ea3b39550146a4b18a8d7debadb99f3ea7b5e2`): indirildi; 50 sn'lik
   sokak kaydı, ezanın başı yok (ses ilk saniyeden sürüyor) ve şehir gürültüsü var: alınmadı.
-- "Hminsec150 Konya.webm" (Frans van der Vaart, YouTube'dan aktarım, CC BY 3.0; SHA-1 Commons'takiyle aynı
-  `47048d30f90e48addba288e98d91db29285bc5b2`): indirildi, ama ses 0,1. saniyede tam düzeyde başlıyor (videodan
-  kesilmiş); ilk 0,1–16 sn'nin ezanın ilk cümlesi olduğu dinlenmeden doğrulanamadığı için uygulamaya konmadı. Sahip
-  dinleyip onaylarsa `-ss 0.1 -t 16.4`, sonda 1,5 sn yumuşatma ile eklenir (kimlik `konya`).
+- "Hminsec150 Konya.webm" (Frans van der Vaart, CC BY 3.0): indirildi, ilk 16 sn'lik aday kesit sahibe dinletildi;
+  31 Ekim 2026'da sahip beğenmedi, alınmadı.
 - Sabah Fakhry kaydı ("public domain" beyanı dayanaksız), Cambridge Kahire (CC BY-NC-ND), everyayah/QuranicAudio
   (yalnız kişisel kullanım): uygulamaya konamaz.
