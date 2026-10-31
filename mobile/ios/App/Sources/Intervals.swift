@@ -148,7 +148,7 @@ struct HiitConfig: Equatable {
     }
 
     /// Rutin JSON'u (Android'deki routineJson ile aynı alanlar: n, rounds, steps[{n, s, r}])
-    var routineJSON: [String: Any] { ["n": name, "rounds": rounds, "steps": steps.map { ["n": $0.n, "s": $0.s, "r": $0.r] }] }
+    var routineJSON: [String: Any] { ["n": name, "rounds": rounds, "steps": steps.map { ["n": $0.n, "s": $0.s, "r": $0.r] as [String: Any] }] }
 
     static func fromRoutine(_ o: [String: Any]) -> HiitConfig {
         let steps = (o["steps"] as? [[String: Any]] ?? []).compactMap { d -> Step? in

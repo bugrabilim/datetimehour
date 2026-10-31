@@ -70,8 +70,8 @@ import kotlin.math.sin
 object PrayerMethod {
     const val METHOD = "prayer.method"
     const val HANAFI = "prayer.hanafi"
-    val id: String get() = Prefs.store.getString(METHOD, "diyanet") ?: "diyanet"
-    val hanafi: Boolean get() = Prefs.store.getBoolean(HANAFI, false)
+    val id: String get() = if (Prefs.ready) Prefs.store.getString(METHOD, "diyanet") ?: "diyanet" else "diyanet"
+    val hanafi: Boolean get() = Prefs.ready && Prefs.store.getBoolean(HANAFI, false)
     fun params(): PrayerTimes.Parameters = PrayerTimes.Parameters.method(id, hanafi)
     val isCustom: Boolean get() = id != "diyanet" || hanafi
     fun name(id: String) = L("prayer.method.names.$id")

@@ -171,7 +171,7 @@ enum PrayerAlarms {
     }
 
     /// Kurulu vakit alarmlarını siler, seçime göre yeniden kurar (açılış, arka plan yenilemesi, ayar değişimi)
-    static func sync() async {
+    @MainActor static func sync() async {
         #if canImport(AlarmKit)
         if #available(iOS 26.0, *) {
             for id in (UserDefaults.standard.stringArray(forKey: idsKey) ?? []).compactMap(UUID.init(uuidString:)) { KitAlarms.cancel(id: id) }

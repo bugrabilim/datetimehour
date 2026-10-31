@@ -15,6 +15,8 @@ object Prefs {
 
     /** Ekranlara özgü küçük kayıtlar için (araçlar, bildirim tercihleri…): aynı "prefs" dosyası */
     val store: SharedPreferences get() = sp
+    /** Uygulama başlamadan (saf birim testlerinde) tercihler okunmaz; varsayılanlar kullanılır */
+    val ready: Boolean get() = ::sp.isInitialized
 
     /**
      * Google yedeğinden yeni telefona geri yüklenen kayıtlarda cihaza özgü olanlar silinir: bildirim izni sorusu
