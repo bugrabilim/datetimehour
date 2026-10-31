@@ -2,7 +2,7 @@
 
 Play'e ilk yüklemeden önce Play Console › Uygulama içeriği (App content) bölümünde doldurulacak beyanlar.
 Yapıştırılacak metinler İngilizcedir (Play incelemesi İngilizce okur). Uygulama değişirse (yeni izin, yeni hizmet) bu
-dosya da güncellenir. Hazırlanma: 30 Ekim 2026.
+dosya da güncellenir. Hazırlanma: 30 Ekim 2026 (son ek 31 Ekim 2026).
 
 ## 1. Ön plan hizmeti izinleri (Foreground service permissions)
 
@@ -73,6 +73,25 @@ bitince durur. Play Console'daki mediaPlayback beyanına bu kullanım da eklenir
 
 - **Video:** Araçlar › Uyku › Uyku sesleri › Çal → ekranı kilitle, ses sürer → bildirimdeki "Sesi durdur". 30 sn yeterli.
 
+### 1d. Yüzen saat (specialUse; 31 Ekim 2026, sıradaki sürüm)
+
+`FloatingClockService` de `specialUse` türündedir (manifestte alt tür yazılı): kullanıcı Saat görünümü sayfasında
+"Yüzen saati aç" deyince başka uygulamaların üstünde küçük bir saat penceresi tutar (`SYSTEM_ALERT_WINDOW`, aşağıda 6).
+
+- **Açıklama, yapıştır (1'in altına, ikinci kullanım olarak):**
+
+> Floating clock. When the user turns on the floating clock in Settings › Clock appearance, a foreground service keeps
+> a small, draggable clock window above other apps (the user grants "Display over other apps" in system settings).
+> The window only draws the current time; it reads nothing from the screen and collects no data. The ongoing
+> notification has a Close action; the service stops when the user closes it.
+
+- **Kullanıcıya etkisi, yapıştır:**
+
+> If the service were stopped, the clock window the user asked for would disappear while they use another app.
+
+- **Video:** Ayarlar › Saat görünümü › Yüzen saati aç → izin ekranında izin ver → başka bir uygulamaya geç, saat
+  üstte durur, sürükle → bildirimdeki "Yüzen saati kapat". 30 sn yeterli.
+
 ## 2. Tam ekran bildirim izni (Full-screen intent)
 
 Uygulama `USE_FULL_SCREEN_INTENT` kullanır: alarm çalınca kilit ekranında `AlarmActivity` açılır.
@@ -126,3 +145,26 @@ Gizlilik politikası adresi: https://time.bumba.tr/gizlilik/ (İngilizce: https:
 - **Ekran koruyucu** (`ClockDreamService`, BIND_DREAM_SERVICE) ve **süren sayaç bildirimleri** (kanal `live`):
   yeni izin yok.
 - Veri güvenliği beyanı değişmez: saat tarafındaki konum cihazdan çıkmaz ("toplanmaz").
+- **Saat kadranı** (`mobile/android/watchface`, Watch Face Format, kodsuz): ayrı paket `tr.bumba.time.watchface`
+  (Play'de kadranlar ayrı uygulama olarak yayımlanır; "Watch face" kategorisi, Wear OS 4+). İzin yok, veri yok.
+  Kadranın üst komplikasyonu varsayılan olarak saat uygulamasının "Sıradaki vakit" komplikasyonudur (saat uygulaması
+  kurulu değilse gün doğumu/batımı).
+
+## 6. Diğer izinler ve beyanlar (31 Ekim 2026, sıradaki sürüm)
+
+- **Health Connect** (`android.permission.health.WRITE_EXERCISE`; okuma izni yok): Play Console › Uygulama içeriği ›
+  Health Connect beyanı doldurulur. Yapıştır:
+
+> The app writes one exercise session (type: high-intensity interval training, start and end time, title) to Health
+> Connect when the user finishes an interval workout, only if the user turned on "Save to Health Connect". It does not
+> read any health data and does not send health data anywhere.
+
+  Gizlilik politikası Health Connect bölümünü içerir (gizlilik sayfası › Android uygulaması). İzin gerekçesi ekranı
+  (`HealthRationaleActivity`) gizlilik sayfasını açar.
+- **Diğer uygulamaların üzerinde göster** (`SYSTEM_ALERT_WINDOW`): yalnız yüzen saat için; kullanıcı sistem ayarlarından
+  verir. Play'de ayrı beyan formu yok; inceleme sorarsa 1d'deki metin.
+- **Rahatsız Etmeyin erişimi** (`ACCESS_NOTIFICATION_POLICY`): "Vakitte sessize al" (isteğe bağlı) için; kullanıcı
+  sistem ayarlarından verir, beyan gerekmez.
+- **Widget'lar ve Hızlı Ayarlar kutucukları** (zikirmatik, kronometre, tam ekran saat): yeni izin yok.
+- Veri güvenliği: sabah günlüğü, fotoğraflı alarm görevinin özeti ve Health Connect'e yazılan antrenman uygulama
+  sunucusuna gitmez ("toplanmaz"; Health Connect telefondaki sistem deposudur).

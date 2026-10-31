@@ -18,7 +18,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 ## Tek liste (30 Ekim 2026'dan beri; sahibin isteği: "tek liste olarak tut, her işe bir numara ver, K-O-B sırala, bitenler de dursun")
 
-Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 66 bitti, 34 açık, 7 kararla yapılmayacak. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
+Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 91 bitti, 9 açık, 7 kararla yapılmayacak. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
 
 | No | İş | Nerede | Çaba | Durum | Eski no |
 |---|---|---|---|---|---|
@@ -86,31 +86,31 @@ Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 66 bitti, 
 | 62 | Hesapsız eşitleme (iCloud, Android yedeği) | Uygulama | O | bitti |  |
 | 63 | Açık veri (API) | Site | O | bitti |  |
 | 64 | Tarayıcı eklentisi | Chrome, Edge, Firefox | O | bitti |  |
-| 65 | Vakit ekranında Güneş/Ay yayı | Uygulama | O | açık |  |
-| 66 | Başka hesap yöntemleri ve Hanefi ikindisi | Uygulama + site | O | açık |  |
-| 67 | Vakti gerçek alarm olarak kurma (telefon sessizdeyken de çalar) | Uygulama | O | açık |  |
-| 68 | Vakitte telefonu sessize alma | Android | O | açık |  |
-| 69 | Esmaü'l-Hüsna | Uygulama | O | açık |  |
-| 70 | Hadis | Uygulama | O | açık |  |
-| 71 | Namaz rehberi | Uygulama | O | açık |  |
-| 72 | Takvim yaprağı, günün sözü | Uygulama | O | açık |  |
-| 73 | Hilal görünürlüğü | Uygulama + site | O | açık |  |
-| 74 | Esnek alarm tekrarı (belirli tarih, iki haftada bir, bitiş tarihi) | Uygulama | O | açık |  |
-| 75 | Başka alarm görevleri (hafıza, yazma, fotoğraf) | Uygulama | O | açık |  |
-| 76 | Sabah günlüğü | Uygulama | O | açık |  |
-| 77 | Dokunulabilen widget'lar, iPhone Denetim Merkezi düğmeleri | Uygulama | O | açık |  |
-| 78 | Wear OS saat kadranı | Android saat | O | açık |  |
-| 79 | Havaya göre hareketli arka plan | Uygulama | O | açık |  |
-| 80 | Diğer uygulamaların üstünde yüzen saat | Uygulama | O | açık |  |
-| 81 | Aynı anda birden çok kronometre | Uygulama | O | açık |  |
-| 82 | Zamanlayıcı geçmişi | Uygulama | O | açık |  |
-| 83 | Çok adımlı antrenman rutini şablonları | Uygulama | O | açık |  |
-| 84 | Apple Sağlık / Health Connect kaydı | Uygulama | O | açık |  |
-| 85 | Uygulamada toplantı planlayıcı | Uygulama | O | açık |  |
-| 86 | Emeklilik hesaplama | Site | O | açık |  |
-| 87 | Gece gökyüzü, gezegenler, Ay uzaklığı | Site | O | açık |  |
-| 88 | Tutulma haritası | Site | O | açık |  |
-| 89 | "Tarihte bugün" | Site | O | açık |  |
+| 65 | Vakit ekranında Güneş/Ay yayı | Uygulama | O | bitti |  |
+| 66 | Başka hesap yöntemleri ve Hanefi ikindisi | Uygulama + site | O | bitti |  |
+| 67 | Vakti gerçek alarm olarak kurma (telefon sessizdeyken de çalar) | Uygulama | O | bitti |  |
+| 68 | Vakitte telefonu sessize alma | Android | O | bitti |  |
+| 69 | Esmaü'l-Hüsna | Uygulama | O | bitti |  |
+| 70 | Hadis | Uygulama | O | bitti |  |
+| 71 | Namaz rehberi | Uygulama | O | bitti |  |
+| 72 | Takvim yaprağı, günün sözü | Uygulama | O | bitti |  |
+| 73 | Hilal görünürlüğü | Uygulama + site | O | bitti |  |
+| 74 | Esnek alarm tekrarı (belirli tarih, iki haftada bir, bitiş tarihi) | Uygulama | O | bitti |  |
+| 75 | Başka alarm görevleri (hafıza, yazma, fotoğraf) | Uygulama | O | bitti |  |
+| 76 | Sabah günlüğü | Uygulama | O | bitti |  |
+| 77 | Dokunulabilen widget'lar, iPhone Denetim Merkezi düğmeleri | Uygulama | O | bitti |  |
+| 78 | Wear OS saat kadranı | Android saat | O | bitti |  |
+| 79 | Havaya göre hareketli arka plan | Uygulama | O | bitti |  |
+| 80 | Diğer uygulamaların üstünde yüzen saat | Uygulama | O | bitti |  |
+| 81 | Aynı anda birden çok kronometre | Uygulama | O | bitti |  |
+| 82 | Zamanlayıcı geçmişi | Uygulama | O | bitti |  |
+| 83 | Çok adımlı antrenman rutini şablonları | Uygulama | O | bitti |  |
+| 84 | Apple Sağlık / Health Connect kaydı | Uygulama | O | bitti |  |
+| 85 | Uygulamada toplantı planlayıcı | Uygulama | O | bitti |  |
+| 86 | Emeklilik hesaplama | Site | O | bitti |  |
+| 87 | Gece gökyüzü, gezegenler, Ay uzaklığı | Site | O | bitti |  |
+| 88 | Tutulma haritası | Site | O | bitti |  |
+| 89 | "Tarihte bugün" | Site | O | bitti |  |
 | 90 | Apple Watch ve Wear OS uygulamaları | Uygulama | B | bitti | #6 |
 | 91 | Çok ülkeli resmî tatil takvimleri | Site | B | bitti | #27 |
 | 92 | Başka ezan sesleri | Uygulama | B | açık |  |
