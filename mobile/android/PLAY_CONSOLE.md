@@ -92,6 +92,27 @@ bitince durur. Play Console'daki mediaPlayback beyanına bu kullanım da eklenir
 - **Video:** Ayarlar › Saat görünümü › Yüzen saati aç → izin ekranında izin ver → başka bir uygulamaya geç, saat
   üstte durur, sürükle → bildirimdeki "Yüzen saati kapat". 30 sn yeterli.
 
+### 1e. Odakta uygulama engelleme (specialUse; 31 Ekim 2026, sıradaki sürüm)
+
+`FocusBlockService` `specialUse` türündedir (manifestte alt tür yazılı): yalnız kullanıcının başlattığı pomodoro çalışma
+süresinde, kullanıcı "Odakta engelle"yi açtıysa çalışır; öne gelen uygulamayı saniyede bir kullanım istatistiklerinden
+okur (`PACKAGE_USAGE_STATS`, kullanıcı Ayarlar › Kullanım erişimi'nden verir) ve seçilen bir uygulamaysa "Odaklanma
+zamanı" ekranını açar (`SYSTEM_ALERT_WINDOW` ile, aşağıda 6). Süre bitince kendiliğinden durur.
+
+- **Açıklama, yapıştır (üçüncü kullanım olarak):**
+
+> Focus blocking. While a pomodoro work session that the user started is running, and only if the user turned on
+> "Block while focusing" and chose apps, a foreground service checks once a second which app is in front (usage
+> access granted by the user) and shows a "Time to focus" screen over the chosen apps. Nothing is stored or sent.
+> The service stops when the work session ends.
+
+- **Kullanıcıya etkisi, yapıştır:**
+
+> If the service were stopped, the apps the user chose to block during their focus session would open normally.
+
+- **Video:** Pomodoro › Odakta engelle aç → bir uygulama seç → kullanım erişimini ver → Başlat → seçilen uygulamayı aç,
+  "Odaklanma zamanı" ekranı gelir → "Ana ekrana dön". 30 sn yeterli.
+
 ## 2. Tam ekran bildirim izni (Full-screen intent)
 
 Uygulama `USE_FULL_SCREEN_INTENT` kullanır: alarm çalınca kilit ekranında `AlarmActivity` açılır.
@@ -168,3 +189,28 @@ Gizlilik politikası adresi: https://time.bumba.tr/gizlilik/ (İngilizce: https:
 - **Widget'lar ve Hızlı Ayarlar kutucukları** (zikirmatik, kronometre, tam ekran saat): yeni izin yok.
 - Veri güvenliği: sabah günlüğü, fotoğraflı alarm görevinin özeti ve Health Connect'e yazılan antrenman uygulama
   sunucusuna gitmez ("toplanmaz"; Health Connect telefondaki sistem deposudur).
+
+## 7. Konum hatırlatıcıları, odak engeli ve Android TV (31 Ekim 2026, sıradaki sürüm)
+
+- **Arka planda konum** (`ACCESS_BACKGROUND_LOCATION`, ayrıca `ACCESS_FINE_LOCATION`): yalnız "Konuma bağlı
+  hatırlatıcılar" için (Google Play hizmetleri bölge izleme; Android 10+ bölge bildirimini "Her zaman izin ver" olmadan
+  vermez). İzin yalnız kullanıcı hatırlatıcı eklerken istenir. Play Console › Uygulama içeriği › **Konum izinleri**
+  beyanı doldurulur ve kısa video istenir. Yapıştır:
+
+> Location reminders: the user can add a reminder for a place they choose ("when I arrive" or "when I leave"). The
+> app registers a geofence with Google Play services; Android needs "Allow all the time" location access to deliver
+> geofence events while the app is closed. The location is used only on the device to trigger the reminder; it is not
+> sent to any server, shared or used for ads. Without background access, the reminders do not work and the rest of
+> the app is unaffected.
+
+  **Video:** Araçlar › Alarm › Konuma bağlı hatırlatıcılar › + → "Şu anki konumumu kullan" → Kaydet → izin ekranında
+  "Her zaman izin ver" → bildirimin bölgeye girişte gelmesi (emülatörde konum değiştirerek). 30–60 sn.
+- **Kullanım erişimi** (`PACKAGE_USAGE_STATS`): yalnız odak engeli için; kullanıcı Ayarlar'dan verir, Play'de ayrı beyan
+  formu yok. Uygulama listesi yalnız başlatıcı uygulamalarını sorgular (`<queries>` içinde LAUNCHER niyeti;
+  `QUERY_ALL_PACKAGES` yok).
+- **Takvim etkinliğine alarm:** mevcut takvim izinlerini kullanır (yeni izin yok).
+- **Android TV:** `TvActivity` (LEANBACK_LAUNCHER, banner `res/drawable-xhdpi/tv_banner.png`), manifestte
+  `android.software.leanback` ve `android.hardware.touchscreen` zorunlu değil. Play Console › Kurulum › Gelişmiş ayarlar ›
+  Form faktörleri'nde **Android TV** eklenir; TV için en az bir ekran görüntüsü (1920×1080; CI `tr-tv.png` örneği) ve
+  320×180 banner istenir, TV incelemesi ayrıca yapılır.
+- Veri güvenliği: konum hatırlatıcısının yeri ve odak engeli için okunan uygulama adı cihazdan çıkmaz ("toplanmaz").

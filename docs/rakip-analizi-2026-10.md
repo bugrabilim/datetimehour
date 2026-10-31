@@ -18,7 +18,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 ## Tek liste (30 Ekim 2026'dan beri; sahibin isteği: "tek liste olarak tut, her işe bir numara ver, K-O-B sırala, bitenler de dursun")
 
-Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 91 bitti, 9 açık, 7 kararla yapılmayacak. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
+Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 99 bitti, 1 açık, 7 kararla yapılmayacak. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
 
 | No | İş | Nerede | Çaba | Durum | Eski no |
 |---|---|---|---|---|---|
@@ -113,15 +113,15 @@ Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 91 bitti, 
 | 89 | "Tarihte bugün" | Site | O | bitti |  |
 | 90 | Apple Watch ve Wear OS uygulamaları | Uygulama | B | bitti | #6 |
 | 91 | Çok ülkeli resmî tatil takvimleri | Site | B | bitti | #27 |
-| 92 | Başka ezan sesleri | Uygulama | B | açık |  |
-| 93 | Konuma ya da takvime bağlı alarm | Uygulama | B | açık |  |
-| 94 | iPhone'da müzikle alarm | Uygulama | B | açık |  |
-| 95 | Apple TV ve Android TV uygulamaları | TV | B | açık |  |
-| 96 | Yerel Mac uygulaması (menü çubuğunda vakit) | Mac | B | açık |  |
-| 97 | Vision Pro uygulaması | Vision Pro | B | açık |  |
-| 98 | Odakta uygulama/site engelleme | Uygulama | B | açık |  |
+| 92 | Başka ezan sesleri | Uygulama | B | bitti (Medine kaydı, ses seçimi; Mekke, İstanbul, Konya adayları indirilemedi) |  |
+| 93 | Konuma ya da takvime bağlı alarm | Uygulama | B | bitti |  |
+| 94 | iPhone'da müzikle alarm | Uygulama | B | bitti |  |
+| 95 | Apple TV ve Android TV uygulamaları | TV | B | bitti |  |
+| 96 | Yerel Mac uygulaması (menü çubuğunda vakit) | Mac | B | bitti |  |
+| 97 | Vision Pro uygulaması | Vision Pro | B | bitti |  |
+| 98 | Odakta uygulama/site engelleme | Uygulama | B | bitti (iOS'ta Apple'ın FamilyControls onayı bekleniyor, o zamana kadar gizli) |  |
+| 100 | Saat dilimi haberleri ve bülten | Site | B | bitti (sayfa ve Atom akışı; e-posta bülteni yok) |  |
 | 99 | Daha çok dil | Uygulama + site | B | açık |  |
-| 100 | Saat dilimi haberleri ve bülten | Site | B | açık |  |
 | 101 | Uyku takibi, horlama kaydı, uyku evresine göre akıllı alarm | Uygulama | — | yapılmayacak (gizlilik: mikrofon, hareket) |  |
 | 102 | Sitede hesap ve üyelik | Site | — | yapılmayacak (standartta bu proje için yok) |  |
 | 103 | 81 il saat sayfaları | Site | — | yapılmayacak (kopya içerik riski) |  |
