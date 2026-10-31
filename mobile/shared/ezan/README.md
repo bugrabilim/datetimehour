@@ -57,9 +57,11 @@ ffmpeg -i clip.wav -c:a libvorbis -q:a 4 mobile/android/app/src/main/res/raw/eza
 
 ## Bakılan ama alınmayanlar
 
-- "Adhan, Great Mosque of Mecca - Jan 21, 2013.webm" (CC BY 3.0, YouTube'dan aktarım) ve "Adhan in Istanbul.webm"
-  (CC0, sokak kaydı): uygun lisanslı, ama 31 Ekim 2026'da Wikimedia dosya sunucusu geliştirme ortamına 429 (çok istek)
-  verdiği için indirilemedi; eklenirse yukarıdaki tabloya yazılır.
+- "Adhan, Great Mosque of Mecca - Jan 21, 2013.webm" (CC BY 3.0, YouTube'dan aktarım): uygun lisanslı, ama 31 Ekim
+  2026'da Wikimedia dosya sunucusu geliştirme ortamına 20 denemede de 429 (çok istek) verdi; eklenirse yukarıdaki
+  tabloya yazılır.
+- "Adhan in Istanbul.webm" (Viceskeeni2, CC0; SHA-1 `15ea3b39550146a4b18a8d7debadb99f3ea7b5e2`): indirildi; 50 sn'lik
+  sokak kaydı, ezanın başı yok (ses ilk saniyeden sürüyor) ve şehir gürültüsü var: alınmadı.
 - "Hminsec150 Konya.webm" (Frans van der Vaart, YouTube'dan aktarım, CC BY 3.0; SHA-1 Commons'takiyle aynı
   `47048d30f90e48addba288e98d91db29285bc5b2`): indirildi, ama ses 0,1. saniyede tam düzeyde başlıyor (videodan
   kesilmiş); ilk 0,1–16 sn'nin ezanın ilk cümlesi olduğu dinlenmeden doğrulanamadığı için uygulamaya konmadı. Sahip
