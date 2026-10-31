@@ -71,11 +71,15 @@ object NotificationSounds {
     private fun voiceFile(context: Context, voiceKey: String, prayer: Prayer, lead: Int) =
         File(dir(context), "$VERSION-${Strings.lang}-$voiceKey-${prayer.key}-$lead.wav")
 
-    /** Uygulamayla gelen ezan kesiti, çalınabilsin diye uygulama dosyalarına bir kez kopyalanır */
-    fun adhanFile(context: Context): File {
-        val f = File(dir(context), "ezan-v1.ogg")
+    /** Uygulamayla gelen ezan kesiti (seçili ses, #92), çalınabilsin diye uygulama dosyalarına bir kez kopyalanır */
+    fun adhanFile(context: Context, voice: String = NotifyPrefs.adhanVoice): File {
+        val (name, res) = when (voice) {
+            "medina" -> "ezan-medina-v1.ogg" to R.raw.ezan_medina
+            else -> "ezan-v1.ogg" to R.raw.ezan
+        }
+        val f = File(dir(context), name)
         if (!f.exists() || f.length() == 0L) {
-            context.resources.openRawResource(R.raw.ezan).use { input -> FileOutputStream(f).use { input.copyTo(it) } }
+            context.resources.openRawResource(res).use { input -> FileOutputStream(f).use { input.copyTo(it) } }
         }
         return f
     }

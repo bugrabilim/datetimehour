@@ -68,6 +68,29 @@ object PrayerNotifier {
         )
     }
 
+    /**
+     * Ezan sesi bildirim kanalının kendi sesidir (#92): sistem kaydı sonuna kadar çalar (alıcının 9 sn sınırına
+     * takılmaz), sessiz modda ve Rahatsız Etmeyin'de çalmaz. Ses başına bir kanal (kanal sesi sonradan değişmez).
+     */
+    fun adhanChannel(context: Context, voice: String): String {
+        val id = "prayer-adhan-$voice"
+        val nm = context.getSystemService(NotificationManager::class.java) ?: return id
+        if (nm.getNotificationChannel(id) == null) {
+            val res = if (voice == "medina") R.raw.ezan_medina else R.raw.ezan
+            val uri = android.net.Uri.parse("android.resource://${context.packageName}/$res")
+            val attrs = android.media.AudioAttributes.Builder()
+                .setUsage(android.media.AudioAttributes.USAGE_NOTIFICATION)
+                .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION).build()
+            nm.createNotificationChannel(
+                NotificationChannel(id, L("notify.heading") + " · " + L("notify.adhan.$voice"), NotificationManager.IMPORTANCE_HIGH).apply {
+                    setSound(uri, attrs)
+                    enableVibration(true)
+                },
+            )
+        }
+        return id
+    }
+
     fun notificationsAllowed(context: Context): Boolean {
         if (Build.VERSION.SDK_INT >= 33 &&
             ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED
@@ -134,7 +157,13 @@ object PrayerNotifier {
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
             )
-            val n = NotificationCompat.Builder(context, if (mode == "system") CHANNEL_SOUND else CHANNEL_QUIET)
+            val adhan = NotificationSounds.effective(mode, prayer, lead) == "adhan"
+            val channel = when {
+                adhan -> adhanChannel(context, NotifyPrefs.adhanVoice)
+                mode == "system" -> CHANNEL_SOUND
+                else -> CHANNEL_QUIET
+            }
+            val n = NotificationCompat.Builder(context, channel)
                 .setSmallIcon(R.drawable.ic_stat_prayer)
                 .setContentTitle(title)
                 .setContentText("${place.name} · ${Fmt.hm(prayerAt, place.zone)}")
@@ -145,7 +174,7 @@ object PrayerNotifier {
                 .setGroup("prayer")
                 .build()
             runCatching { NotificationManagerCompat.from(context).notify("prayer", (prayerAt.epochSecond / 60).toInt(), n) }
-            if (mode != "system" && NotificationSounds.canPlayNow(context)) {
+            if (mode != "system" && !adhan && NotificationSounds.canPlayNow(context)) {
                 // Alıcının süresi sınırlı: en geç 9 sn'de kapanır
                 val main = Handler(Looper.getMainLooper())
                 var finished = false

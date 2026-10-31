@@ -1,6 +1,19 @@
-# Ezan sesi (vakit bildirimi, 5 sn)
+# Ezan sesleri (vakit bildirimi, ilk cümle)
 
 Vakit bildirimlerinde "Ezan" ses seçeneği, vaktinde bir ezanın ilk cümlesini ("Allāhu akbar, Allāhu akbar") çalar.
+"Ezan sesi" seçimi (`notify.adhanVoice`, iOS ve Android aynı kimlikler; rakip analizi listesi #92, 31 Ekim 2026):
+
+| Kimlik | Dosyalar | Kayıt | Lisans |
+|---|---|---|---|
+| `azeez` (varsayılan) | `ezan.caf`, `res/raw/ezan.ogg` | Aaqib Azeez, 5 sn | CC BY-SA 4.0 |
+| `medina` | `ezan-medina.caf`, `res/raw/ezan_medina.ogg` | Medine, Mescid-i Nebevî (kaydedenin beyanı), 17,7 sn | CC BY 3.0 |
+
+Android'de ezan, ses başına ayrı bildirim kanalının sesidir (`prayer-adhan-<kimlik>`): sistem kaydı sonuna kadar çalar,
+sessiz modda ve Rahatsız Etmeyin'de çalmaz. Yeni kayıt eklemek: dosyaları üret, iOS `AdhanVoice`, Android
+`NotifyPrefs.ADHAN_VOICES` ve `NotificationSounds.adhanFile` / `PrayerNotifier.adhanChannel`, metinler
+`notify.adhan.<kimlik>` ve `notify.adhan.credit.<kimlik>` (app-strings.json).
+
+## Aaqib Azeez (`azeez`)
 
 - **Kaynak:** "The Adhan - Muslim Call to Prayer - Aaqib Azeez.mp3", Wikimedia Commons
   (https://commons.wikimedia.org/wiki/File:The_Adhan_-_Muslim_Call_to_Prayer_-_Aaqib_Azeez.mp3),
@@ -22,3 +35,30 @@ ffmpeg -ss 0.30 -t 5.0 -i adhan.mp3 -ac 1 \
 ffmpeg -i clip.wav -c:a pcm_s16le -f caf mobile/ios/App/Resources/ezan.caf          # iOS (bildirim sesi en çok 30 sn)
 ffmpeg -i clip.wav -c:a libvorbis -q:a 5 mobile/android/app/src/main/res/raw/ezan.ogg # Android
 ```
+
+## Medine (`medina`)
+
+- **Kaynak:** "33937 ejaz215 call-to-prayer-from-the-prophet-s-mo.ogg", Wikimedia Commons
+  (https://commons.wikimedia.org/wiki/File:33937_ejaz215_call-to-prayer-from-the-prophet-s-mo.ogg), özgün yükleme
+  Freesound'da ejaz215 (http://www.freesound.org/people/ejaz215/sounds/33937/), açıklama "Islamic call to prayer from
+  the prophet mosque".
+- **Lisans:** CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/). Değişiklik belirtilir (kısaltıldı, ses düzeyi
+  eşitlendi); atıf ayarda (`notify.adhan.credit.medina`).
+- **Kesim:** özgün dosyanın 0,8–18,5. saniyesi (ilk cümle 1,0–16,0 sn, ardından yankı), başta 0,1 sn ve sonda 2,3 sn
+  yumuşatma, `loudnorm` (−16 LUFS). iOS dosyası IMA4 (bildirim sesinin 30 sn sınırı içinde, ~0,4 MB). Özgün dosyanın
+  SHA-256'sı `4d0fabe0e0ef52186646a256220f74a972ba698ac269165fed5d52de3202d656`.
+
+```sh
+ffmpeg -ss 0.8 -t 17.7 -i medina.ogg -ac 1 \
+  -af "afade=t=in:st=0:d=0.1,afade=t=out:st=15.4:d=2.3,loudnorm=I=-16:TP=-1.5:LRA=11" -ar 44100 clip.wav
+ffmpeg -i clip.wav -c:a adpcm_ima_qt -f caf mobile/ios/App/Resources/ezan-medina.caf
+ffmpeg -i clip.wav -c:a libvorbis -q:a 4 mobile/android/app/src/main/res/raw/ezan_medina.ogg
+```
+
+## Bakılan ama alınmayanlar
+
+- "Adhan, Great Mosque of Mecca - Jan 21, 2013.webm" (CC BY 3.0, YouTube'dan aktarım) ve "Adhan in Istanbul.webm"
+  (CC0, sokak kaydı), "Hminsec150 Konya.webm" (CC BY 3.0): uygun lisanslı, ama 31 Ekim 2026'da Wikimedia dosya
+  sunucusu geliştirme ortamına 429 (çok istek) verdiği için indirilemedi; eklenirse yukarıdaki tabloya yazılır.
+- Sabah Fakhry kaydı ("public domain" beyanı dayanaksız), Cambridge Kahire (CC BY-NC-ND), everyayah/QuranicAudio
+  (yalnız kişisel kullanım): uygulamaya konamaz.

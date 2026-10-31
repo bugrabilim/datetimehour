@@ -54,6 +54,7 @@ object NotifyPrefs {
     const val PRAYERS = "notify.prayers"
     const val LEAD = "notify.lead"
     const val SOUND = "notify.sound"
+    const val ADHAN_VOICE = "notify.adhanVoice"
 
     private val sp get() = Prefs.store
     private var loaded = false
@@ -65,8 +66,11 @@ object NotifyPrefs {
         private set
     var lead by mutableIntStateOf(0)
         private set
-    /** "voice" (sesli duyuru, varsayılan), "chime" (kısa zil), "adhan" (vaktinde 5 sn ezan), "system" (telefonun sesi) */
+    /** "voice" (sesli duyuru, varsayılan), "chime" (kısa zil), "adhan" (vaktinde ezanın ilk cümlesi), "system" (telefonun sesi) */
     var sound by mutableStateOf("voice")
+        private set
+    /** Ezan sesi (#92; iOS'la aynı kimlikler): "azeez" (5 sn, varsayılan), "medina" */
+    var adhanVoice by mutableStateOf("azeez")
         private set
 
     /** Prefs.init'ten sonra ilk kullanımda okunur */
@@ -77,9 +81,11 @@ object NotifyPrefs {
         prayersRaw = sp.getString(PRAYERS, null) ?: encode(PrayerAlerts.DEFAULT_PRAYERS)
         lead = sp.getInt(LEAD, 0)
         sound = sp.getString(SOUND, null)?.takeIf { it in SOUNDS } ?: "voice"
+        adhanVoice = sp.getString(ADHAN_VOICE, null)?.takeIf { it in ADHAN_VOICES } ?: "azeez"
     }
 
     val SOUNDS = listOf("voice", "chime", "adhan", "system")
+    val ADHAN_VOICES = listOf("azeez", "medina")
 
     val prayers: Set<Prayer> get() { load(); return decode(prayersRaw) }
 
@@ -90,6 +96,7 @@ object NotifyPrefs {
     fun savePrayers(v: Set<Prayer>) { load(); prayersRaw = encode(v); sp.edit().putString(PRAYERS, prayersRaw).apply() }
     fun saveLead(v: Int) { load(); lead = v; sp.edit().putInt(LEAD, v).apply() }
     fun saveSound(v: String) { load(); sound = v; sp.edit().putString(SOUND, v).apply() }
+    fun saveAdhanVoice(v: String) { load(); adhanVoice = v; sp.edit().putString(ADHAN_VOICE, v).apply() }
 
     fun decode(raw: String): Set<Prayer> =
         raw.split(",").mapNotNull { k -> Prayer.entries.firstOrNull { it.key == k } }.toSet()

@@ -577,7 +577,7 @@
     <string name="notify_sound">Benachrichtigungston</string>
     <string name="notify_sound_voice">Gesprochene Ansage</string>
     <string name="notify_sound_chime">Kurzer Gong</string>
-    <string name="notify_sound_adhan">Adhan (zur Gebetszeit, 5 s)</string>
+    <string name="notify_sound_adhan">Adhan (zur Gebetszeit, erster Satz)</string>
     <string name="notify_sound_adhanNote">Zur Gebetszeit erklingt der erste Satz des Adhan („Allāhu akbar, Allāhu akbar“); Benachrichtigungen vor der Zeit und zum Sonnenaufgang nutzen die gesprochene Ansage.</string>
     <string name="notify_sound_adhanCredit">Adhan-Aufnahme: Aaqib Azeez (hochgeladen von Atcovi), Wikimedia Commons, CC BY-SA 4.0; erste 5 Sekunden.</string>
     <string name="notify_sound_system">Standardton des Telefons</string>
@@ -1358,5 +1358,9 @@
     <string name="float_noteAndroid">Die Uhr bleibt in einem kleinen Fenster über anderen Apps; zum Verschieben ziehen, über die Benachrichtigung schließen. Beim ersten Mal wird die Berechtigung „Über anderen Apps einblenden“ angefragt.</string>
     <string name="float_unsupported">Dieses Gerät unterstützt Bild-in-Bild nicht.</string>
     <string name="float_channel">Schwebende Uhr</string>
+    <string name="notify_adhanVoice">Adhan-Stimme</string>
+    <string name="notify_adhan_azeez">Aaqib Azeez (5 s)</string>
+    <string name="notify_adhan_medina">Medina, Prophetenmoschee (18 s)</string>
+    <string name="notify_adhan_credit_medina">Adhan-Aufnahme: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; erster Satz, gekürzt und in der Lautstärke angeglichen.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

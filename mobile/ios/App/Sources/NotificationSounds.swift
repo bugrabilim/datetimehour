@@ -19,6 +19,21 @@ enum SoundMode: String, CaseIterable {
     var label: String { L("notify.sound." + rawValue) }
 }
 
+/// Ezan sesi (rakip analizi listesi #92): uygulamayla gelen açık lisanslı kayıtların ilk cümlesi; kaynaklar ve kesim
+/// mobile/shared/ezan/README.md. Seçim `notify.adhanVoice` (Android'le aynı kimlikler); atıf ayarda seçili kaydın altında.
+enum AdhanVoice: String, CaseIterable {
+    case azeez, medina
+
+    static let key = "notify.adhanVoice"
+    static var current: AdhanVoice { AdhanVoice(rawValue: UserDefaults.standard.string(forKey: key) ?? "") ?? .azeez }
+
+    /// Uygulama paketindeki dosya (iOS bildirim sesi en çok 30 sn)
+    var resource: String { self == .azeez ? "ezan" : "ezan-\(rawValue)" }
+    var file: String { resource + ".caf" }
+    var label: String { L("notify.adhan." + rawValue) }
+    var credit: String { L(self == .azeez ? "notify.sound.adhanCredit" : "notify.adhan.credit." + rawValue) }
+}
+
 @MainActor
 enum NotificationSounds {
     /// Dosya adı sürümü: ses üretimi değişirse artırılır, eski dosyalar silinir
@@ -59,8 +74,6 @@ enum NotificationSounds {
     }
 
     /// Ayara göre bildirim sesi; üretilemezse telefonun sesi
-    static let adhanFile = "ezan.caf"
-
     /// Ezan yalnız vaktinde ve namaz vakitlerinde (Güneş bir namaz vakti değil); diğerlerinde sesli duyuru
     static func effective(_ mode: SoundMode, prayer: Prayer, lead: Int) -> SoundMode {
         mode == .adhan && (lead > 0 || prayer == .sunrise) ? .voice : mode
@@ -69,7 +82,7 @@ enum NotificationSounds {
     static func sound(for prayer: Prayer, lead: Int, mode: SoundMode = .current) async -> UNNotificationSound {
         switch effective(mode, prayer: prayer, lead: lead) {
         case .adhan:
-            return UNNotificationSound(named: UNNotificationSoundName(adhanFile))
+            return UNNotificationSound(named: UNNotificationSoundName(AdhanVoice.current.file))
         case .system:
             return .default
         case .chime:
@@ -83,11 +96,11 @@ enum NotificationSounds {
     }
 
     /// Ayar penceresindeki "Dinle": seçili sesin örneği (öğle vakti)
-    static func preview(mode: SoundMode, lead: Int) async {
+    static func preview(mode: SoundMode, lead: Int, voice: AdhanVoice = .current) async {
         let name: String
         switch effective(mode, prayer: .dhuhr, lead: lead) {
         case .adhan:
-            guard let url = Bundle.main.url(forResource: "ezan", withExtension: "caf") else { return }
+            guard let url = Bundle.main.url(forResource: voice.resource, withExtension: "caf") else { return }
             try? AVAudioSession.sharedInstance().setCategory(.playback, options: [.duckOthers])
             player = try? AVAudioPlayer(contentsOf: url)
             player?.play()

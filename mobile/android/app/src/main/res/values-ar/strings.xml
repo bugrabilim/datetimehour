@@ -577,7 +577,7 @@
     <string name="notify_sound">صوت الإشعار</string>
     <string name="notify_sound_voice">إعلان صوتي</string>
     <string name="notify_sound_chime">رنين قصير</string>
-    <string name="notify_sound_adhan">الأذان (عند دخول الوقت، 5 ثوانٍ)</string>
+    <string name="notify_sound_adhan">الأذان (عند دخول الوقت، الجملة الأولى)</string>
     <string name="notify_sound_adhanNote">عند دخول الوقت تُسمع أول جملة من الأذان («الله أكبر، الله أكبر»)؛ وتستخدم الإشعارات قبل الوقت وعند الشروق الإعلانَ الصوتي.</string>
     <string name="notify_sound_adhanCredit">تسجيل الأذان: Aaqib Azeez (رفعه Atcovi)، ويكيميديا كومنز، CC BY-SA 4.0؛ أول 5 ثوانٍ.</string>
     <string name="notify_sound_system">صوت الهاتف الافتراضي</string>
@@ -1358,5 +1358,9 @@
     <string name="float_noteAndroid">تبقى الساعة فوق التطبيقات الأخرى في نافذة صغيرة؛ اسحبها لتحريكها وأغلقها من الإشعار. في المرة الأولى يُطلب إذن «العرض فوق التطبيقات الأخرى».</string>
     <string name="float_unsupported">هذا الجهاز لا يدعم صورة داخل صورة.</string>
     <string name="float_channel">ساعة عائمة</string>
+    <string name="notify_adhanVoice">صوت الأذان</string>
+    <string name="notify_adhan_azeez">عاقب عزيز (5 ثوانٍ)</string>
+    <string name="notify_adhan_medina">المدينة المنورة، المسجد النبوي (18 ثانية)</string>
+    <string name="notify_adhan_credit_medina">تسجيل الأذان: ejaz215 (Freesound)، ويكيميديا كومنز، CC BY 3.0؛ الجملة الأولى، مقتطعة ومعادلة الصوت.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

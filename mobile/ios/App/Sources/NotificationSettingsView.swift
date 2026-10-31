@@ -10,6 +10,7 @@ struct NotificationSettingsView: View {
     @AppStorage(NotificationPrefs.prayersKey) private var prayersRaw = NotificationPrefs.defaultPrayers
     @AppStorage(NotificationPrefs.leadKey) private var lead = 0
     @AppStorage(SoundMode.key) private var sound = SoundMode.voice.rawValue
+    @AppStorage(AdhanVoice.key) private var adhanVoice = AdhanVoice.azeez.rawValue
     @State private var denied = false
 
     var body: some View {
@@ -46,8 +47,14 @@ struct NotificationSettingsView: View {
                         Picker(L("notify.sound"), selection: $sound) {
                             ForEach(SoundMode.allCases, id: \.rawValue) { Text($0.label).tag($0.rawValue) }
                         }
+                        if sound == SoundMode.adhan.rawValue {
+                            Picker(L("notify.adhanVoice"), selection: $adhanVoice) {
+                                ForEach(AdhanVoice.allCases, id: \.rawValue) { Text($0.label).tag($0.rawValue) }
+                            }
+                        }
                         Button {
-                            Task { await NotificationSounds.preview(mode: SoundMode(rawValue: sound) ?? .voice, lead: lead) }
+                            Task { await NotificationSounds.preview(mode: SoundMode(rawValue: sound) ?? .voice, lead: lead,
+                                                                     voice: AdhanVoice(rawValue: adhanVoice) ?? .azeez) }
                         } label: {
                             Label(L("notify.sound.preview"), systemImage: "play.circle")
                         }
@@ -56,7 +63,7 @@ struct NotificationSettingsView: View {
                             Text(L("notify.sound.note"))
                             if sound == SoundMode.adhan.rawValue {
                                 Text(L("notify.sound.adhanNote"))
-                                Text(L("notify.sound.adhanCredit")).font(.caption2)
+                                Text((AdhanVoice(rawValue: adhanVoice) ?? .azeez).credit).font(.caption2)
                             }
                             if sound == SoundMode.voice.rawValue && NotificationSounds.hasOnlyBasicVoice {
                                 Text(L("notify.sound.better"))
@@ -82,6 +89,7 @@ struct NotificationSettingsView: View {
         .onChange(of: prayersRaw) { Task { await PrayerNotifier.reschedule() } }
         .onChange(of: lead) { Task { await PrayerNotifier.reschedule() } }
         .onChange(of: sound) { Task { await PrayerNotifier.reschedule() } }
+        .onChange(of: adhanVoice) { Task { await PrayerNotifier.reschedule() } }
     }
 
     private func selected(_ prayer: Prayer) -> Binding<Bool> {

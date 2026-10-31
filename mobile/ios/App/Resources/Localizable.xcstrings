@@ -20167,31 +20167,31 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ezan (vaktinde, 5 sn)"
+            "value": "Ezan (vaktinde, ilk cümle)"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Adhan (at prayer time, 5 s)"
+            "value": "Adhan (at prayer time, first phrase)"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Adhan (zur Gebetszeit, 5 s)"
+            "value": "Adhan (zur Gebetszeit, erster Satz)"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Azan (vaxtında, 5 san)"
+            "value": "Azan (vaxtında, ilk cümlə)"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الأذان (عند دخول الوقت، 5 ثوانٍ)"
+            "value": "الأذان (عند دخول الوقت، الجملة الأولى)"
           }
         }
       }
@@ -47492,6 +47492,146 @@
           "stringUnit": {
             "state": "translated",
             "value": "ساعة عائمة"
+          }
+        }
+      }
+    },
+    "notify.adhanVoice": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ezan sesi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhan voice"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhan-Stimme"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azan səsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صوت الأذان"
+          }
+        }
+      }
+    },
+    "notify.adhan.azeez": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aaqib Azeez (5 sn)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aaqib Azeez (5 s)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aaqib Azeez (5 s)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aaqib Azeez (5 san)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عاقب عزيز (5 ثوانٍ)"
+          }
+        }
+      }
+    },
+    "notify.adhan.medina": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Medine, Mescid-i Nebevî (18 sn)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Medina, Prophet's Mosque (18 s)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Medina, Prophetenmoschee (18 s)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mədinə, Məscidi-Nəbəvi (18 san)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المدينة المنورة، المسجد النبوي (18 ثانية)"
+          }
+        }
+      }
+    },
+    "notify.adhan.credit.medina": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ezan kaydı: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümle, kısaltıldı ve ses düzeyi eşitlendi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhan recording: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; first phrase, trimmed and loudness-normalised."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adhan-Aufnahme: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; erster Satz, gekürzt und in der Lautstärke angeglichen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azan qeydi: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümlə, qısaldılıb və səs səviyyəsi bərabərləşdirilib."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تسجيل الأذان: ejaz215 (Freesound)، ويكيميديا كومنز، CC BY 3.0؛ الجملة الأولى، مقتطعة ومعادلة الصوت."
           }
         }
       }

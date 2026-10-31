@@ -577,7 +577,7 @@
     <string name="notify_sound">Bildiriş səsi</string>
     <string name="notify_sound_voice">Səsli elan</string>
     <string name="notify_sound_chime">Qısa zəng</string>
-    <string name="notify_sound_adhan">Azan (vaxtında, 5 san)</string>
+    <string name="notify_sound_adhan">Azan (vaxtında, ilk cümlə)</string>
     <string name="notify_sound_adhanNote">Vaxtında azanın ilk cümləsi (\"Allahu Əkbər, Allahu Əkbər\") səslənir; vaxtdan əvvəlki bildirişlərdə və Günəşdə səsli elan səslənir.</string>
     <string name="notify_sound_adhanCredit">Azan qeydi: Aaqib Azeez (yükləyən Atcovi), Wikimedia Commons, CC BY-SA 4.0; ilk 5 saniyə.</string>
     <string name="notify_sound_system">Telefonun səsi</string>
@@ -1358,5 +1358,9 @@
     <string name="float_noteAndroid">Saat digər tətbiqlərin üstündə kiçik pəncərədə qalır; sürüşdürərək daşıyın, bildirişdən bağlayın. İlk dəfə \"Digər tətbiqlərin üzərində göstər\" icazəsi istənilir.</string>
     <string name="float_unsupported">Bu cihaz şəkil içində şəkli dəstəkləmir.</string>
     <string name="float_channel">Üzən saat</string>
+    <string name="notify_adhanVoice">Azan səsi</string>
+    <string name="notify_adhan_azeez">Aaqib Azeez (5 san)</string>
+    <string name="notify_adhan_medina">Mədinə, Məscidi-Nəbəvi (18 san)</string>
+    <string name="notify_adhan_credit_medina">Azan qeydi: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümlə, qısaldılıb və səs səviyyəsi bərabərləşdirilib.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

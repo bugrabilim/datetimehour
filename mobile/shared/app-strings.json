@@ -218,11 +218,11 @@
     "ar": "رنين قصير"
   },
   "notify.sound.adhan": {
-    "tr": "Ezan (vaktinde, 5 sn)",
-    "en": "Adhan (at prayer time, 5 s)",
-    "de": "Adhan (zur Gebetszeit, 5 s)",
-    "az": "Azan (vaxtında, 5 san)",
-    "ar": "الأذان (عند دخول الوقت، 5 ثوانٍ)"
+    "tr": "Ezan (vaktinde, ilk cümle)",
+    "en": "Adhan (at prayer time, first phrase)",
+    "de": "Adhan (zur Gebetszeit, erster Satz)",
+    "az": "Azan (vaxtında, ilk cümlə)",
+    "ar": "الأذان (عند دخول الوقت، الجملة الأولى)"
   },
   "notify.sound.adhanNote": {
     "tr": "Vaktinde ezanın ilk cümlesi (\"Allahu Ekber, Allahu Ekber\") çalar; vakitten önceki bildirimlerde ve Güneş'te sesli duyuru çalar.",
@@ -5781,5 +5781,33 @@
     "de": "Schwebende Uhr",
     "az": "Üzən saat",
     "ar": "ساعة عائمة"
+  },
+  "notify.adhanVoice": {
+    "tr": "Ezan sesi",
+    "en": "Adhan voice",
+    "de": "Adhan-Stimme",
+    "az": "Azan səsi",
+    "ar": "صوت الأذان"
+  },
+  "notify.adhan.azeez": {
+    "tr": "Aaqib Azeez (5 sn)",
+    "en": "Aaqib Azeez (5 s)",
+    "de": "Aaqib Azeez (5 s)",
+    "az": "Aaqib Azeez (5 san)",
+    "ar": "عاقب عزيز (5 ثوانٍ)"
+  },
+  "notify.adhan.medina": {
+    "tr": "Medine, Mescid-i Nebevî (18 sn)",
+    "en": "Medina, Prophet's Mosque (18 s)",
+    "de": "Medina, Prophetenmoschee (18 s)",
+    "az": "Mədinə, Məscidi-Nəbəvi (18 san)",
+    "ar": "المدينة المنورة، المسجد النبوي (18 ثانية)"
+  },
+  "notify.adhan.credit.medina": {
+    "tr": "Ezan kaydı: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümle, kısaltıldı ve ses düzeyi eşitlendi.",
+    "en": "Adhan recording: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; first phrase, trimmed and loudness-normalised.",
+    "de": "Adhan-Aufnahme: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; erster Satz, gekürzt und in der Lautstärke angeglichen.",
+    "az": "Azan qeydi: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümlə, qısaldılıb və səs səviyyəsi bərabərləşdirilib.",
+    "ar": "تسجيل الأذان: ejaz215 (Freesound)، ويكيميديا كومنز، CC BY 3.0؛ الجملة الأولى، مقتطعة ومعادلة الصوت."
   }
 }
