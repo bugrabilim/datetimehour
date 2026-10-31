@@ -1408,5 +1408,20 @@
     <string name="alarm_fromCalendar">Takvimdeki etkinliğe alarm kur</string>
     <string name="alarm_fromCalendarNote">Etkinlik telefondaki takvimlerden seçilir; başlangıcından seçilen süre önce bir kezlik alarm kurulur (tüm gün etkinlikte o gün 09.00). Takvim izni Takvim sekmesinden verilir.</string>
     <string name="alarm_fromCalendarPast">Bu etkinliğin alarm zamanı geçti.</string>
+    <string name="focus_title">Odakta engelle</string>
+    <string name="focus_toggle">Çalışma süresinde seçilenleri engelle</string>
+    <string name="focus_chosenIOS">Seçilenler: %1$s uygulama, %2$s kategori, %3$s site</string>
+    <string name="focus_chosenAndroid">Seçilen uygulamalar: %1$s (değiştir)</string>
+    <string name="focus_pickApps">Engellenecek uygulamalar</string>
+    <string name="focus_blocking">%1$s uygulama engelli; çalışma süresinin sonuna kadar</string>
+    <string name="focus_screenTitle">Odaklanma zamanı</string>
+    <string name="focus_screenNote">Bu uygulamayı pomodoro çalışma süresinde engellemeyi seçtiniz. Süre bitince yeniden açılır.</string>
+    <string name="focus_home">Ana ekrana dön</string>
+    <string name="focus_openApp">Pomodoro\'yu aç</string>
+    <string name="focus_needUsage">Kullanım erişimini ver (öne gelen uygulamayı görmek için) ›</string>
+    <string name="focus_needOverlay">\"Diğer uygulamaların üzerinde göster\" iznini ver ›</string>
+    <string name="focus_noteAndroid">Pomodoro çalışma süresi işlerken seçtiğiniz uygulamalardan biri açılırsa \"Odaklanma zamanı\" ekranı gelir. Uygulama öne gelen uygulamayı yalnız telefonda, saniyede bir okur; hiçbir şey kaydedilmez ya da gönderilmez. Sitelerin engellenmesi Android\'de yok.</string>
+    <string name="focus_noteIOS">Pomodoro çalışma süresi işlerken seçtiğiniz uygulamalar ve siteler Ekran Süresi kalkanıyla kapanır. Seçim Apple\'ın şifreli belirteçleridir; uygulama neyi seçtiğinizi göremez. Süre bittiğinde kalkan kalkar (uygulama kapalıysa bir sonraki açılışta).</string>
+    <string name="focus_denied">Ekran Süresi izni verilmedi.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

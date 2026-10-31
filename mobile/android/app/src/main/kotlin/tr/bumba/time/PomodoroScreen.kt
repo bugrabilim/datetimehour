@@ -72,6 +72,7 @@ fun PomodoroScreen() {
         ToolState.putLong("pomo.left", left); ToolState.putInt("pomo.done", done)
         PomoNoise.sync(context)
         LiveNotifications.sync(context)
+        FocusBlock.sync(context)
     }
     fun start(ms: Long) {
         ask()
@@ -173,6 +174,7 @@ fun PomodoroScreen() {
                 onVolume = { volume = it; ToolState.putInt("pomo.vol", it); if (SoundService.source == "pomo") PomoNoise.sync(context) })
             Text(L("pomo.noiseNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
+        FocusBlockCard()
         FocusStatsCard(log) { PomoLog.save(emptyList()); log = emptyList() }
         AppCard {
             SectionTitle(L("tools.pomodoro.settings"))

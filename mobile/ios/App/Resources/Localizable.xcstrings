@@ -49245,6 +49245,531 @@
           }
         }
       }
+    },
+    "focus.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odakta engelle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Block while focusing"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Fokussieren sperren"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fokusda blokla"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الحظر أثناء التركيز"
+          }
+        }
+      }
+    },
+    "focus.toggle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çalışma süresinde seçilenleri engelle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Block chosen items during work time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswahl während der Arbeitszeit sperren"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İş vaxtında seçilənləri blokla"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حظر العناصر المختارة أثناء وقت العمل"
+          }
+        }
+      }
+    },
+    "focus.chosenIOS": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçilenler: %1$@ uygulama, %2$@ kategori, %3$@ site"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chosen: %1$@ apps, %2$@ categories, %3$@ websites"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausgewählt: %1$@ Apps, %2$@ Kategorien, %3$@ Websites"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçilənlər: %1$@ tətbiq, %2$@ kateqoriya, %3$@ sayt"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المختار: %1$@ تطبيقات، %2$@ فئات، %3$@ مواقع"
+          }
+        }
+      }
+    },
+    "focus.chosenAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçilen uygulamalar: %1$@ (değiştir)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Chosen apps: %1$@ (change)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausgewählte Apps: %1$@ (ändern)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçilən tətbiqlər: %1$@ (dəyiş)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التطبيقات المختارة: %1$@ (تغيير)"
+          }
+        }
+      }
+    },
+    "focus.pickApps": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Engellenecek uygulamalar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apps to block"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zu sperrende Apps"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bloklanacaq tətbiqlər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التطبيقات المراد حظرها"
+          }
+        }
+      }
+    },
+    "focus.blocking": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ uygulama engelli; çalışma süresinin sonuna kadar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ apps blocked until the end of work time"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ Apps gesperrt bis zum Ende der Arbeitszeit"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ tətbiq iş vaxtının sonuna qədər bloklanıb"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ تطبيقات محظورة حتى نهاية وقت العمل"
+          }
+        }
+      }
+    },
+    "focus.screenTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Odaklanma zamanı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time to focus"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeit zum Fokussieren"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fokuslanma vaxtı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقت التركيز"
+          }
+        }
+      }
+    },
+    "focus.screenNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu uygulamayı pomodoro çalışma süresinde engellemeyi seçtiniz. Süre bitince yeniden açılır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You chose to block this app during pomodoro work time. It opens again when the time is up."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sie haben diese App für die Pomodoro-Arbeitszeit gesperrt. Nach Ablauf öffnet sie sich wieder."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu tətbiqi pomodoro iş vaxtında bloklamağı seçdiniz. Vaxt bitəndə yenidən açılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اخترت حظر هذا التطبيق أثناء وقت عمل البومودورو. يُفتح مجددًا عند انتهاء الوقت."
+          }
+        }
+      }
+    },
+    "focus.home": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ana ekrana dön"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Go to home screen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum Startbildschirm"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əsas ekrana qayıt"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العودة إلى الشاشة الرئيسية"
+          }
+        }
+      }
+    },
+    "focus.openApp": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro'yu aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open pomodoro"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro öffnen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoronu aç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح البومودورو"
+          }
+        }
+      }
+    },
+    "focus.needUsage": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kullanım erişimini ver (öne gelen uygulamayı görmek için) ›"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grant usage access (to see the app in front) ›"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nutzungszugriff erlauben (um die App im Vordergrund zu sehen) ›"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İstifadə girişini ver (öndəki tətbiqi görmək üçün) ›"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امنح إذن الوصول إلى الاستخدام (لمعرفة التطبيق في الواجهة) ›"
+          }
+        }
+      }
+    },
+    "focus.needOverlay": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Diğer uygulamaların üzerinde göster\" iznini ver ›"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow \"Display over other apps\" ›"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Über anderen Apps einblenden\" erlauben ›"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "\"Digər tətbiqlərin üzərində göstər\" icazəsini ver ›"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسمح بـ\"العرض فوق التطبيقات الأخرى\" ›"
+          }
+        }
+      }
+    },
+    "focus.noteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro çalışma süresi işlerken seçtiğiniz uygulamalardan biri açılırsa \"Odaklanma zamanı\" ekranı gelir. Uygulama öne gelen uygulamayı yalnız telefonda, saniyede bir okur; hiçbir şey kaydedilmez ya da gönderilmez. Sitelerin engellenmesi Android'de yok."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you open one of the chosen apps while pomodoro work time is running, a \"Time to focus\" screen appears. The app reads the app in front once a second, only on your phone; nothing is stored or sent. Website blocking is not available on Android."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffnen Sie während der Pomodoro-Arbeitszeit eine der gewählten Apps, erscheint ein Bildschirm \"Zeit zum Fokussieren\". Die App liest die App im Vordergrund einmal pro Sekunde, nur auf dem Telefon; nichts wird gespeichert oder gesendet. Websites lassen sich unter Android nicht sperren."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro iş vaxtı gedərkən seçdiyiniz tətbiqlərdən biri açılsa, \"Fokuslanma vaxtı\" ekranı gəlir. Tətbiq öndəki tətbiqi yalnız telefonda, saniyədə bir dəfə oxuyur; heç nə saxlanılmır və göndərilmir. Saytların bloklanması Android-də yoxdur."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إذا فتحت أحد التطبيقات المختارة أثناء وقت عمل البومودورو تظهر شاشة \"وقت التركيز\". يقرأ التطبيق التطبيقَ الموجود في الواجهة مرة كل ثانية، على هاتفك فقط؛ لا يُحفظ شيء ولا يُرسل. حظر المواقع غير متاح على Android."
+          }
+        }
+      }
+    },
+    "focus.noteIOS": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro çalışma süresi işlerken seçtiğiniz uygulamalar ve siteler Ekran Süresi kalkanıyla kapanır. Seçim Apple'ın şifreli belirteçleridir; uygulama neyi seçtiğinizi göremez. Süre bittiğinde kalkan kalkar (uygulama kapalıysa bir sonraki açılışta)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "While pomodoro work time is running, the apps and websites you chose are closed with a Screen Time shield. The choice is Apple's encrypted tokens; the app cannot see what you chose. The shield is removed when the time is up (if the app is closed, the next time it opens)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Während der Pomodoro-Arbeitszeit werden die gewählten Apps und Websites mit einer Bildschirmzeit-Sperre geschlossen. Die Auswahl besteht aus verschlüsselten Apple-Token; die App sieht nicht, was Sie gewählt haben. Die Sperre endet mit der Zeit (ist die App geschlossen, beim nächsten Öffnen)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomodoro iş vaxtı gedərkən seçdiyiniz tətbiqlər və saytlar Ekran Vaxtı qalxanı ilə bağlanır. Seçim Apple-ın şifrəli tokenləridir; tətbiq nəyi seçdiyinizi görə bilməz. Vaxt bitəndə qalxan götürülür (tətbiq bağlıdırsa, növbəti açılışda)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أثناء وقت عمل البومودورو تُغلق التطبيقات والمواقع التي اخترتها بدرع مدة استخدام الجهاز. الاختيار رموز مشفرة من Apple؛ لا يستطيع التطبيق رؤية ما اخترته. يُزال الدرع عند انتهاء الوقت (إن كان التطبيق مغلقًا ففي المرة التالية التي يُفتح فيها)."
+          }
+        }
+      }
+    },
+    "focus.denied": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran Süresi izni verilmedi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screen Time permission was not granted."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Bildschirmzeit-Berechtigung wurde nicht erteilt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran Vaxtı icazəsi verilmədi."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يُمنح إذن مدة استخدام الجهاز."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

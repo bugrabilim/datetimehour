@@ -1408,5 +1408,20 @@
     <string name="alarm_fromCalendar">Təqvimdəki tədbirə zəng qur</string>
     <string name="alarm_fromCalendarNote">Tədbir telefondakı təqvimlərdən seçilir; başlanğıcından seçilən müddət əvvəl birdəfəlik zəng qurulur (bütün günlük tədbirdə həmin gün 09:00). Təqvim icazəsi Təqvim bölməsindən verilir.</string>
     <string name="alarm_fromCalendarPast">Bu tədbirin zəng vaxtı keçib.</string>
+    <string name="focus_title">Fokusda blokla</string>
+    <string name="focus_toggle">İş vaxtında seçilənləri blokla</string>
+    <string name="focus_chosenIOS">Seçilənlər: %1$s tətbiq, %2$s kateqoriya, %3$s sayt</string>
+    <string name="focus_chosenAndroid">Seçilən tətbiqlər: %1$s (dəyiş)</string>
+    <string name="focus_pickApps">Bloklanacaq tətbiqlər</string>
+    <string name="focus_blocking">%1$s tətbiq iş vaxtının sonuna qədər bloklanıb</string>
+    <string name="focus_screenTitle">Fokuslanma vaxtı</string>
+    <string name="focus_screenNote">Bu tətbiqi pomodoro iş vaxtında bloklamağı seçdiniz. Vaxt bitəndə yenidən açılır.</string>
+    <string name="focus_home">Əsas ekrana qayıt</string>
+    <string name="focus_openApp">Pomodoronu aç</string>
+    <string name="focus_needUsage">İstifadə girişini ver (öndəki tətbiqi görmək üçün) ›</string>
+    <string name="focus_needOverlay">\"Digər tətbiqlərin üzərində göstər\" icazəsini ver ›</string>
+    <string name="focus_noteAndroid">Pomodoro iş vaxtı gedərkən seçdiyiniz tətbiqlərdən biri açılsa, \"Fokuslanma vaxtı\" ekranı gəlir. Tətbiq öndəki tətbiqi yalnız telefonda, saniyədə bir dəfə oxuyur; heç nə saxlanılmır və göndərilmir. Saytların bloklanması Android-də yoxdur.</string>
+    <string name="focus_noteIOS">Pomodoro iş vaxtı gedərkən seçdiyiniz tətbiqlər və saytlar Ekran Vaxtı qalxanı ilə bağlanır. Seçim Apple-ın şifrəli tokenləridir; tətbiq nəyi seçdiyinizi görə bilməz. Vaxt bitəndə qalxan götürülür (tətbiq bağlıdırsa, növbəti açılışda).</string>
+    <string name="focus_denied">Ekran Vaxtı icazəsi verilmədi.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

@@ -85,6 +85,8 @@ class MainActivity : ComponentActivity() {
         HiitService.sync(this)
         // Biten antrenman Health Connect'e (açıksa ve daha önce yazılmadıysa)
         HealthLog.recordHiitIfDone(this)
+        // Odakta engelleme: pomodoro sürüyorsa izleme hizmeti çalışsın, bittiyse dursun (#98)
+        FocusBlock.sync(this)
     }
 
     /** Uygulamadan çıkarken widget'lar güncel konum ve dille yeniden çizilir */
@@ -133,6 +135,7 @@ object Nav {
             "timer" -> { overlay = null; tool("timer") }
             "alarm" -> { overlay = null; tool("alarm") }
             "stopwatch" -> { overlay = null; tool("stopwatch") }
+            "pomodoro" -> { overlay = null; tool("pomodoro") }
             "prayer" -> { overlay = null; tab = Tab.PRAYER }
         }
     }

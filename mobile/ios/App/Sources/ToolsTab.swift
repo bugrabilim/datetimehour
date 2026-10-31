@@ -723,6 +723,7 @@ struct PomodoroView: View {
                         Text(L("pomo.noiseNote")).font(.caption).foregroundStyle(Theme.muted)
                     }
                     .card()
+                    FocusBlockCard()
                     FocusStatsCard(log: log) {
                         PomoLog.save([])
                         log = []
@@ -748,8 +749,8 @@ struct PomodoroView: View {
         }
         .background(Theme.bg.ignoresSafeArea())
         // Kilit ekranı / Dynamic Island: çalışan pomodoro aşaması; arka plan sesi çalışma süresince
-        .onChange(of: end) { LiveActivities.sync(); PomoNoise.sync() }
-        .onChange(of: phase) { PomoNoise.sync() }
+        .onChange(of: end) { LiveActivities.sync(); PomoNoise.sync(); FocusBlock.sync() }
+        .onChange(of: phase) { PomoNoise.sync(); FocusBlock.sync() }
         .onChange(of: noise) { PomoNoise.sync() }
         .onChange(of: volume) { if NoisePlayer.shared.source == "pomo" { NoisePlayer.shared.setVolume(volume) } }
         .onAppear { log = PomoLog.load(); PomoNoise.sync() }

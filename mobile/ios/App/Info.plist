@@ -10,6 +10,9 @@
 	<array>
 		<string>tr.bumba.time.refresh</string>
 	</array>
+	<!-- Odakta engelleme (FamilyControls): Apple yetkiyi onaylayınca true (FocusBlock.swift) -->
+	<key>SaatFamilyControls</key>
+	<false/>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>UIBackgroundModes</key>

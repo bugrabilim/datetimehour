@@ -40,6 +40,8 @@ struct SaatTarihApp: App {
                 HealthLog.recordHiitIfDone()
                 // Pomodoro arka plan sesi (süre uygulama kapalıyken bitmiş olabilir)
                 PomoNoise.sync()
+                // Odakta engelleme: süre bittiyse kalkan kalkar (#98)
+                FocusBlock.sync()
                 // Kilit ekranı / Dynamic Island etkinlikleri (sıradaki vakit ileri taşınır, bitenler kapanır)
                 LiveActivities.sync()
             } else if phase == .background {

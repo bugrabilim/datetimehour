@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- "Konumumu kullan" (yaklaşık konum yeterli; konum telefonda kalır) -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -29,9 +30,16 @@
     <uses-permission android:name="android.permission.health.WRITE_EXERCISE" />
     <!-- Yüzen saat (FloatingClock.kt): başka uygulamaların üstünde küçük saat penceresi; kullanıcı ayardan izin verir -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Odakta engelleme (FocusBlock.kt): pomodoro sürerken öne gelen uygulamayı okumak için; kullanıcı Ayarlar'dan verir -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
 
     <queries>
         <package android:name="com.google.android.apps.healthdata" />
+        <!-- Odakta engelleme: engellenecek uygulama seçicisi yalnız ana ekranda simgesi olan uygulamaları listeler -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
     </queries>
 
     <!-- Vakit bildirimleri (PrayerNotifier): bildirim izni yalnız açarken istenir; tam zamanlı alarm; yeniden
@@ -346,6 +354,20 @@
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Interval workout timer: speaks phase changes (work, rest, last round) and the 3-2-1 countdown while the screen is off; runs only during a workout the user started" />
         </service>
+        <service
+            android:name=".FocusBlockService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Focus timer app blocking: while a pomodoro work session the user started is running, checks the foreground app once a second and shows a focus screen over apps the user chose to block; stops when the session ends" />
+        </service>
+        <activity
+            android:name=".FocusBlockActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:taskAffinity="" />
         <service
             android:name=".FloatingClockService"
             android:exported="false"

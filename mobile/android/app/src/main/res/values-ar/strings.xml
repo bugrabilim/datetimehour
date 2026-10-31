@@ -1408,5 +1408,20 @@
     <string name="alarm_fromCalendar">اضبط منبّهًا لحدث في التقويم</string>
     <string name="alarm_fromCalendarNote">يُختار الحدث من تقويمات الهاتف؛ ويُضبط منبّه لمرة واحدة قبل بدايته بالمدة المختارة (الساعة 09:00 في ذلك اليوم للأحداث طوال اليوم). يُمنح إذن التقويم من تبويب التقويم.</string>
     <string name="alarm_fromCalendarPast">انقضى وقت المنبّه لهذا الحدث.</string>
+    <string name="focus_title">الحظر أثناء التركيز</string>
+    <string name="focus_toggle">حظر العناصر المختارة أثناء وقت العمل</string>
+    <string name="focus_chosenIOS">المختار: %1$s تطبيقات، %2$s فئات، %3$s مواقع</string>
+    <string name="focus_chosenAndroid">التطبيقات المختارة: %1$s (تغيير)</string>
+    <string name="focus_pickApps">التطبيقات المراد حظرها</string>
+    <string name="focus_blocking">%1$s تطبيقات محظورة حتى نهاية وقت العمل</string>
+    <string name="focus_screenTitle">وقت التركيز</string>
+    <string name="focus_screenNote">اخترت حظر هذا التطبيق أثناء وقت عمل البومودورو. يُفتح مجددًا عند انتهاء الوقت.</string>
+    <string name="focus_home">العودة إلى الشاشة الرئيسية</string>
+    <string name="focus_openApp">افتح البومودورو</string>
+    <string name="focus_needUsage">امنح إذن الوصول إلى الاستخدام (لمعرفة التطبيق في الواجهة) ›</string>
+    <string name="focus_needOverlay">اسمح بـ\"العرض فوق التطبيقات الأخرى\" ›</string>
+    <string name="focus_noteAndroid">إذا فتحت أحد التطبيقات المختارة أثناء وقت عمل البومودورو تظهر شاشة \"وقت التركيز\". يقرأ التطبيق التطبيقَ الموجود في الواجهة مرة كل ثانية، على هاتفك فقط؛ لا يُحفظ شيء ولا يُرسل. حظر المواقع غير متاح على Android.</string>
+    <string name="focus_noteIOS">أثناء وقت عمل البومودورو تُغلق التطبيقات والمواقع التي اخترتها بدرع مدة استخدام الجهاز. الاختيار رموز مشفرة من Apple؛ لا يستطيع التطبيق رؤية ما اخترته. يُزال الدرع عند انتهاء الوقت (إن كان التطبيق مغلقًا ففي المرة التالية التي يُفتح فيها).</string>
+    <string name="focus_denied">لم يُمنح إذن مدة استخدام الجهاز.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

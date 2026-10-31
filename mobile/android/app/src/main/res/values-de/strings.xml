@@ -1408,5 +1408,20 @@
     <string name="alarm_fromCalendar">Wecker für einen Kalendertermin stellen</string>
     <string name="alarm_fromCalendarNote">Der Termin wird aus den Kalendern des Telefons gewählt; ein einmaliger Wecker klingelt die gewählte Zeit vor Beginn (bei ganztägigen Terminen an dem Tag um 09:00). Kalenderzugriff wird im Tab Kalender erteilt.</string>
     <string name="alarm_fromCalendarPast">Die Weckzeit für diesen Termin ist vorbei.</string>
+    <string name="focus_title">Beim Fokussieren sperren</string>
+    <string name="focus_toggle">Auswahl während der Arbeitszeit sperren</string>
+    <string name="focus_chosenIOS">Ausgewählt: %1$s Apps, %2$s Kategorien, %3$s Websites</string>
+    <string name="focus_chosenAndroid">Ausgewählte Apps: %1$s (ändern)</string>
+    <string name="focus_pickApps">Zu sperrende Apps</string>
+    <string name="focus_blocking">%1$s Apps gesperrt bis zum Ende der Arbeitszeit</string>
+    <string name="focus_screenTitle">Zeit zum Fokussieren</string>
+    <string name="focus_screenNote">Sie haben diese App für die Pomodoro-Arbeitszeit gesperrt. Nach Ablauf öffnet sie sich wieder.</string>
+    <string name="focus_home">Zum Startbildschirm</string>
+    <string name="focus_openApp">Pomodoro öffnen</string>
+    <string name="focus_needUsage">Nutzungszugriff erlauben (um die App im Vordergrund zu sehen) ›</string>
+    <string name="focus_needOverlay">\"Über anderen Apps einblenden\" erlauben ›</string>
+    <string name="focus_noteAndroid">Öffnen Sie während der Pomodoro-Arbeitszeit eine der gewählten Apps, erscheint ein Bildschirm \"Zeit zum Fokussieren\". Die App liest die App im Vordergrund einmal pro Sekunde, nur auf dem Telefon; nichts wird gespeichert oder gesendet. Websites lassen sich unter Android nicht sperren.</string>
+    <string name="focus_noteIOS">Während der Pomodoro-Arbeitszeit werden die gewählten Apps und Websites mit einer Bildschirmzeit-Sperre geschlossen. Die Auswahl besteht aus verschlüsselten Apple-Token; die App sieht nicht, was Sie gewählt haben. Die Sperre endet mit der Zeit (ist die App geschlossen, beim nächsten Öffnen).</string>
+    <string name="focus_denied">Die Bildschirmzeit-Berechtigung wurde nicht erteilt.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

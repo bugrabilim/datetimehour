@@ -1408,5 +1408,20 @@
     <string name="alarm_fromCalendar">Set an alarm for a calendar event</string>
     <string name="alarm_fromCalendarNote">The event is picked from the phone\'s calendars; a one-time alarm is set the chosen time before it starts (09:00 that day for all-day events). Calendar access is granted in the Calendar tab.</string>
     <string name="alarm_fromCalendarPast">The alarm time for this event has passed.</string>
+    <string name="focus_title">Block while focusing</string>
+    <string name="focus_toggle">Block chosen items during work time</string>
+    <string name="focus_chosenIOS">Chosen: %1$s apps, %2$s categories, %3$s websites</string>
+    <string name="focus_chosenAndroid">Chosen apps: %1$s (change)</string>
+    <string name="focus_pickApps">Apps to block</string>
+    <string name="focus_blocking">%1$s apps blocked until the end of work time</string>
+    <string name="focus_screenTitle">Time to focus</string>
+    <string name="focus_screenNote">You chose to block this app during pomodoro work time. It opens again when the time is up.</string>
+    <string name="focus_home">Go to home screen</string>
+    <string name="focus_openApp">Open pomodoro</string>
+    <string name="focus_needUsage">Grant usage access (to see the app in front) ›</string>
+    <string name="focus_needOverlay">Allow \"Display over other apps\" ›</string>
+    <string name="focus_noteAndroid">If you open one of the chosen apps while pomodoro work time is running, a \"Time to focus\" screen appears. The app reads the app in front once a second, only on your phone; nothing is stored or sent. Website blocking is not available on Android.</string>
+    <string name="focus_noteIOS">While pomodoro work time is running, the apps and websites you chose are closed with a Screen Time shield. The choice is Apple\'s encrypted tokens; the app cannot see what you chose. The shield is removed when the time is up (if the app is closed, the next time it opens).</string>
+    <string name="focus_denied">Screen Time permission was not granted.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>
