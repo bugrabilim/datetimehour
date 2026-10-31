@@ -5809,5 +5809,110 @@
     "de": "Adhan-Aufnahme: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; erster Satz, gekürzt und in der Lautstärke angeglichen.",
     "az": "Azan qeydi: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümlə, qısaldılıb və səs səviyyəsi bərabərləşdirilib.",
     "ar": "تسجيل الأذان: ejaz215 (Freesound)، ويكيميديا كومنز، CC BY 3.0؛ الجملة الأولى، مقتطعة ومعادلة الصوت."
+  },
+  "alarm.music": {
+    "tr": "Müzik",
+    "en": "Music",
+    "de": "Musik",
+    "az": "Musiqi",
+    "ar": "الموسيقى"
+  },
+  "alarm.music.none": {
+    "tr": "Yok (alarm sesi)",
+    "en": "None (alarm sound)",
+    "de": "Keine (Weckton)",
+    "az": "Yoxdur (zəng səsi)",
+    "ar": "لا شيء (صوت المنبّه)"
+  },
+  "alarm.music.library": {
+    "tr": "Müzik arşivinden seç",
+    "en": "Choose from music library",
+    "de": "Aus der Musikmediathek wählen",
+    "az": "Musiqi arxivindən seç",
+    "ar": "اختر من مكتبة الموسيقى"
+  },
+  "alarm.music.files": {
+    "tr": "Dosyalardan seç",
+    "en": "Choose from Files",
+    "de": "Aus Dateien wählen",
+    "az": "Fayllardan seç",
+    "ar": "اختر من الملفات"
+  },
+  "alarm.music.clear": {
+    "tr": "Müziği kaldır",
+    "en": "Remove music",
+    "de": "Musik entfernen",
+    "az": "Musiqini sil",
+    "ar": "إزالة الموسيقى"
+  },
+  "alarm.music.note": {
+    "tr": "Seçtiğiniz şarkının 30 saniyelik bir bölümü alarm sesi olur (iPhone alarm ve bildirim seslerini 30 sn ile sınırlar). Yalnız telefonda duran korumasız şarkılar ve ses dosyaları kullanılabilir; Apple Music'ten indirilen şarkılar korumalıdır. Şarkı telefonda kalır. Saati sesli söyleme açıksa o çalar.",
+    "en": "A 30-second part of the song you choose becomes the alarm sound (iPhone limits alarm and notification sounds to 30 s). Only unprotected songs stored on the phone and audio files can be used; songs downloaded from Apple Music are protected. The song stays on your phone. If speaking the time is on, that plays instead.",
+    "de": "Ein 30-Sekunden-Ausschnitt des gewählten Titels wird zum Weckton (iPhone begrenzt Wecker- und Mitteilungstöne auf 30 s). Nur ungeschützte, auf dem Telefon gespeicherte Titel und Audiodateien sind möglich; aus Apple Music geladene Titel sind geschützt. Der Titel bleibt auf dem Telefon. Ist die Zeitansage an, wird diese abgespielt.",
+    "az": "Seçdiyiniz mahnının 30 saniyəlik hissəsi zəng səsi olur (iPhone zəng və bildiriş səslərini 30 san ilə məhdudlaşdırır). Yalnız telefonda saxlanan qorunmayan mahnılar və səs faylları istifadə oluna bilər; Apple Music-dən endirilən mahnılar qorunur. Mahnı telefonda qalır. Saatı səsli demək açıqdırsa, o səslənir.",
+    "ar": "يصبح جزء مدته 30 ثانية من الأغنية التي تختارها صوتَ المنبّه (يحدّ iPhone أصوات المنبّه والإشعارات بـ30 ثانية). لا يمكن استخدام إلا الأغاني غير المحمية المخزنة على الهاتف والملفات الصوتية؛ الأغاني المنزّلة من Apple Music محمية. تبقى الأغنية على هاتفك. إذا كان نطق الوقت مفعّلًا فهو الذي يُسمع."
+  },
+  "alarm.music.protected": {
+    "tr": "Bu şarkı korumalı (Apple Music) ya da telefonda değil; başka bir şarkı ya da Dosyalar'dan bir ses dosyası seçin.",
+    "en": "This song is protected (Apple Music) or not on the phone; choose another song or an audio file from Files.",
+    "de": "Dieser Titel ist geschützt (Apple Music) oder nicht auf dem Telefon; wählen Sie einen anderen Titel oder eine Audiodatei aus Dateien.",
+    "az": "Bu mahnı qorunur (Apple Music) ya da telefonda deyil; başqa mahnı ya da Fayllardan səs faylı seçin.",
+    "ar": "هذه الأغنية محمية (Apple Music) أو ليست على الهاتف؛ اختر أغنية أخرى أو ملفًا صوتيًا من الملفات."
+  },
+  "alarm.music.unreadable": {
+    "tr": "Bu dosya okunamadı.",
+    "en": "This file could not be read.",
+    "de": "Diese Datei konnte nicht gelesen werden.",
+    "az": "Bu fayl oxuna bilmədi.",
+    "ar": "تعذّرت قراءة هذا الملف."
+  },
+  "alarm.music.start": {
+    "tr": "Bölüm: {from} – {to}",
+    "en": "Part: {from} – {to}",
+    "de": "Ausschnitt: {from} – {to}",
+    "az": "Hissə: {from} – {to}",
+    "ar": "الجزء: {from} – {to}"
+  },
+  "alarm.music.listen": {
+    "tr": "Dinle",
+    "en": "Listen",
+    "de": "Anhören",
+    "az": "Dinlə",
+    "ar": "استمع"
+  },
+  "alarm.music.stop": {
+    "tr": "Durdur",
+    "en": "Stop",
+    "de": "Stopp",
+    "az": "Dayandır",
+    "ar": "إيقاف"
+  },
+  "alarm.music.save": {
+    "tr": "Kaydet",
+    "en": "Save",
+    "de": "Sichern",
+    "az": "Saxla",
+    "ar": "حفظ"
+  },
+  "alarm.music.trimNote": {
+    "tr": "Kaydırıcıyla şarkının hangi 30 saniyesinin çalacağını seçin. Kademeli ses açıksa bölüm kısık başlar.",
+    "en": "Use the slider to choose which 30 seconds of the song play. If gradual volume is on, the part starts quietly.",
+    "de": "Wählen Sie mit dem Regler, welche 30 Sekunden des Titels erklingen. Ist ansteigende Lautstärke an, beginnt der Ausschnitt leise.",
+    "az": "Sürüşdürücü ilə mahnının hansı 30 saniyəsinin səslənəcəyini seçin. Tədricən səs açıqdırsa, hissə zəif başlayır.",
+    "ar": "اختر بشريط التمرير أي 30 ثانية من الأغنية ستُسمع. إذا كان الصوت المتدرّج مفعّلًا يبدأ الجزء هادئًا."
+  },
+  "alarm.music.prompt": {
+    "tr": "Alarm için bir şarkı seçin",
+    "en": "Choose a song for the alarm",
+    "de": "Wählen Sie einen Titel für den Wecker",
+    "az": "Zəng üçün mahnı seçin",
+    "ar": "اختر أغنية للمنبّه"
+  },
+  "NSAppleMusicUsageDescription": {
+    "tr": "Alarm sesi olarak müzik arşivinizden bir şarkı seçebilmeniz için. Şarkıdan alınan kısa bölüm telefonda kalır, hiçbir yere gönderilmez.",
+    "en": "So you can choose a song from your music library as an alarm sound. The short part taken from the song stays on your phone and is not sent anywhere.",
+    "de": "Damit Sie einen Titel aus Ihrer Musikmediathek als Weckton wählen können. Der kurze Ausschnitt bleibt auf dem Telefon und wird nirgendwohin gesendet.",
+    "az": "Zəng səsi kimi musiqi arxivinizdən mahnı seçə biləsiniz deyə. Mahnıdan götürülən qısa hissə telefonda qalır, heç yerə göndərilmir.",
+    "ar": "لكي تختار أغنية من مكتبة الموسيقى صوتًا للمنبّه. يبقى الجزء القصير المأخوذ من الأغنية على هاتفك ولا يُرسل إلى أي مكان."
   }
 }

@@ -210,6 +210,41 @@
           }
         }
       }
+    },
+    "NSAppleMusicUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm sesi olarak müzik arşivinizden bir şarkı seçebilmeniz için. Şarkıdan alınan kısa bölüm telefonda kalır, hiçbir yere gönderilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So you can choose a song from your music library as an alarm sound. The short part taken from the song stays on your phone and is not sent anywhere."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Damit Sie einen Titel aus Ihrer Musikmediathek als Weckton wählen können. Der kurze Ausschnitt bleibt auf dem Telefon und wird nirgendwohin gesendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəng səsi kimi musiqi arxivinizdən mahnı seçə biləsiniz deyə. Mahnıdan götürülən qısa hissə telefonda qalır, heç yerə göndərilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لكي تختار أغنية من مكتبة الموسيقى صوتًا للمنبّه. يبقى الجزء القصير المأخوذ من الأغنية على هاتفك ولا يُرسل إلى أي مكان."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

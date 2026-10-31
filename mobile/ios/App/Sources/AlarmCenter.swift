@@ -47,6 +47,10 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var every = 1
     var anchor = ""
     var until = ""
+    /// Müzikle alarm (rakip analizi listesi #94): seçilen şarkıdan kesit anahtarı (Library/Sounds/alarm-music-<anahtar>.caf;
+    /// boşsa yok) ve şarkının adı. Yalnız iPhone'da; Android'de alarm sesi sistemin zil sesi seçicisinden seçilir.
+    var music = ""
+    var musicName = ""
 
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
     static let snoozeMaxChoices = [0, 1, 2, 3, 5]
@@ -60,7 +64,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until, music, musicName }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -86,6 +90,8 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         every = try c.decodeIfPresent(Int.self, forKey: .every) ?? 1
         anchor = try c.decodeIfPresent(String.self, forKey: .anchor) ?? ""
         until = try c.decodeIfPresent(String.self, forKey: .until) ?? ""
+        music = try c.decodeIfPresent(String.self, forKey: .music) ?? ""
+        musicName = try c.decodeIfPresent(String.self, forKey: .musicName) ?? ""
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -279,6 +285,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     }
     static func save(_ items: [AlarmItem]) {
         UserDefaults.standard.set(try? JSONEncoder().encode(items), forKey: storeKey)
+        AlarmMusic.cleanup(keeping: items)
     }
 }
 
@@ -349,7 +356,7 @@ enum AlarmCenter {
             let content = UNMutableNotificationContent()
             content.title = item.title
             content.body = item.timeText
-            if let say = await AlarmSpeech.sound(for: item) {
+            if let say = await AlarmSpeech.sound(for: item) ?? AlarmMusic.sound(for: item) {
                 content.sound = UNNotificationSound(named: UNNotificationSoundName(say))
             } else {
                 content.sound = item.rise ? UNNotificationSound(named: UNNotificationSoundName(AlarmItem.riseSound)) : .default
@@ -456,6 +463,7 @@ enum KitAlarms {
         init(_ item: AlarmItem) {
             self.init(snooze: item.snooze, remaining: item.snoozeMax == 0 ? -1 : item.snoozeMax, rise: item.rise)
             wake = item.wakeTask
+            soundName = AlarmMusic.sound(for: item)
         }
 
         /// Erteleme düğmesi gösterilir mi
@@ -483,7 +491,8 @@ enum KitAlarms {
             schedule: schedule, attributes: attributes(title: title, options: options),
             stopIntent: options.wake.map { AlarmStopIntent(alarmID: id.uuidString, wake: $0) },
             secondaryIntent: options.canSnooze
-                ? SnoozeAlarmIntent(minutes: options.snooze, label: title, remaining: options.remaining, rise: options.rise, wake: options.wake) : nil,
+                ? SnoozeAlarmIntent(minutes: options.snooze, label: title, remaining: options.remaining, rise: options.rise, wake: options.wake,
+                                    sound: options.soundName) : nil,
             sound: options.soundName.map { .named($0) } ?? (options.rise ? .named(AlarmItem.riseSound) : .default))
     }
 
@@ -500,7 +509,7 @@ enum KitAlarms {
         let now = Date()
         for item in items where item.enabled {
             var options = Options(item)
-            options.soundName = await AlarmSpeech.sound(for: item)
+            if let say = await AlarmSpeech.sound(for: item) { options.soundName = say }
             let time = Alarm.Schedule.Relative.Time(hour: item.hour, minute: item.minute)
             let skipping = (item.skipUntil ?? .distantPast) > now
             if item.days.isEmpty {
@@ -555,21 +564,25 @@ struct SnoozeAlarmIntent: LiveActivityIntent {
     @Parameter(title: "Rise") var rise: Bool
     /// Kapatma görevi ve uyanma denetimi ertelenen alarmda da sürer (JSON, PendingWakeTask; boşsa yok)
     @Parameter(title: "Wake") var wake: String
+    /// Alarmın kendi ses dosyası (müzik kesiti ya da saati söyleyen ses; yoksa nil), ertelenen alarmda da çalar
+    @Parameter(title: "Sound") var sound: String?
 
     init() {}
 
-    init(minutes: Int, label: String, remaining: Int, rise: Bool, wake: PendingWakeTask?) {
+    init(minutes: Int, label: String, remaining: Int, rise: Bool, wake: PendingWakeTask?, sound: String? = nil) {
         self.minutes = minutes
         self.label = label
         self.remaining = remaining
         self.rise = rise
         self.wake = wake.flatMap { try? JSONEncoder().encode($0) }.map { String(decoding: $0, as: UTF8.self) } ?? ""
+        self.sound = sound
     }
 
     func perform() async throws -> some IntentResult {
         let left = remaining < 0 ? -1 : max(0, remaining - 1)
         var options = KitAlarms.Options(snooze: minutes, remaining: left, rise: rise)
         options.wake = try? JSONDecoder().decode(PendingWakeTask.self, from: Data(wake.utf8))
+        options.soundName = sound
         _ = await KitAlarms.schedule(id: UUID(), at: Date().addingTimeInterval(Double(max(1, minutes) * 60)), title: label, options: options)
         return .result()
     }

@@ -1362,5 +1362,19 @@
     <string name="notify_adhan_azeez">عاقب عزيز (5 ثوانٍ)</string>
     <string name="notify_adhan_medina">المدينة المنورة، المسجد النبوي (18 ثانية)</string>
     <string name="notify_adhan_credit_medina">تسجيل الأذان: ejaz215 (Freesound)، ويكيميديا كومنز، CC BY 3.0؛ الجملة الأولى، مقتطعة ومعادلة الصوت.</string>
+    <string name="alarm_music">الموسيقى</string>
+    <string name="alarm_music_none">لا شيء (صوت المنبّه)</string>
+    <string name="alarm_music_library">اختر من مكتبة الموسيقى</string>
+    <string name="alarm_music_files">اختر من الملفات</string>
+    <string name="alarm_music_clear">إزالة الموسيقى</string>
+    <string name="alarm_music_note">يصبح جزء مدته 30 ثانية من الأغنية التي تختارها صوتَ المنبّه (يحدّ iPhone أصوات المنبّه والإشعارات بـ30 ثانية). لا يمكن استخدام إلا الأغاني غير المحمية المخزنة على الهاتف والملفات الصوتية؛ الأغاني المنزّلة من Apple Music محمية. تبقى الأغنية على هاتفك. إذا كان نطق الوقت مفعّلًا فهو الذي يُسمع.</string>
+    <string name="alarm_music_protected">هذه الأغنية محمية (Apple Music) أو ليست على الهاتف؛ اختر أغنية أخرى أو ملفًا صوتيًا من الملفات.</string>
+    <string name="alarm_music_unreadable">تعذّرت قراءة هذا الملف.</string>
+    <string name="alarm_music_start">الجزء: %1$s – %2$s</string>
+    <string name="alarm_music_listen">استمع</string>
+    <string name="alarm_music_stop">إيقاف</string>
+    <string name="alarm_music_save">حفظ</string>
+    <string name="alarm_music_trimNote">اختر بشريط التمرير أي 30 ثانية من الأغنية ستُسمع. إذا كان الصوت المتدرّج مفعّلًا يبدأ الجزء هادئًا.</string>
+    <string name="alarm_music_prompt">اختر أغنية للمنبّه</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

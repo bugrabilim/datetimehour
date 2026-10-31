@@ -1362,5 +1362,19 @@
     <string name="notify_adhan_azeez">Aaqib Azeez (5 s)</string>
     <string name="notify_adhan_medina">Medina, Prophetenmoschee (18 s)</string>
     <string name="notify_adhan_credit_medina">Adhan-Aufnahme: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; erster Satz, gekürzt und in der Lautstärke angeglichen.</string>
+    <string name="alarm_music">Musik</string>
+    <string name="alarm_music_none">Keine (Weckton)</string>
+    <string name="alarm_music_library">Aus der Musikmediathek wählen</string>
+    <string name="alarm_music_files">Aus Dateien wählen</string>
+    <string name="alarm_music_clear">Musik entfernen</string>
+    <string name="alarm_music_note">Ein 30-Sekunden-Ausschnitt des gewählten Titels wird zum Weckton (iPhone begrenzt Wecker- und Mitteilungstöne auf 30 s). Nur ungeschützte, auf dem Telefon gespeicherte Titel und Audiodateien sind möglich; aus Apple Music geladene Titel sind geschützt. Der Titel bleibt auf dem Telefon. Ist die Zeitansage an, wird diese abgespielt.</string>
+    <string name="alarm_music_protected">Dieser Titel ist geschützt (Apple Music) oder nicht auf dem Telefon; wählen Sie einen anderen Titel oder eine Audiodatei aus Dateien.</string>
+    <string name="alarm_music_unreadable">Diese Datei konnte nicht gelesen werden.</string>
+    <string name="alarm_music_start">Ausschnitt: %1$s – %2$s</string>
+    <string name="alarm_music_listen">Anhören</string>
+    <string name="alarm_music_stop">Stopp</string>
+    <string name="alarm_music_save">Sichern</string>
+    <string name="alarm_music_trimNote">Wählen Sie mit dem Regler, welche 30 Sekunden des Titels erklingen. Ist ansteigende Lautstärke an, beginnt der Ausschnitt leise.</string>
+    <string name="alarm_music_prompt">Wählen Sie einen Titel für den Wecker</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

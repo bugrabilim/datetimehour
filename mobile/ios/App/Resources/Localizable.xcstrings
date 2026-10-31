@@ -47635,6 +47635,496 @@
           }
         }
       }
+    },
+    "alarm.music": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Müzik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musik"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musiqi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الموسيقى"
+          }
+        }
+      }
+    },
+    "alarm.music.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yok (alarm sesi)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "None (alarm sound)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine (Weckton)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yoxdur (zəng səsi)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا شيء (صوت المنبّه)"
+          }
+        }
+      }
+    },
+    "alarm.music.library": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Müzik arşivinden seç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose from music library"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus der Musikmediathek wählen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musiqi arxivindən seç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر من مكتبة الموسيقى"
+          }
+        }
+      }
+    },
+    "alarm.music.files": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dosyalardan seç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose from Files"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus Dateien wählen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fayllardan seç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر من الملفات"
+          }
+        }
+      }
+    },
+    "alarm.music.clear": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Müziği kaldır"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove music"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musik entfernen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musiqini sil"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إزالة الموسيقى"
+          }
+        }
+      }
+    },
+    "alarm.music.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçtiğiniz şarkının 30 saniyelik bir bölümü alarm sesi olur (iPhone alarm ve bildirim seslerini 30 sn ile sınırlar). Yalnız telefonda duran korumasız şarkılar ve ses dosyaları kullanılabilir; Apple Music'ten indirilen şarkılar korumalıdır. Şarkı telefonda kalır. Saati sesli söyleme açıksa o çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A 30-second part of the song you choose becomes the alarm sound (iPhone limits alarm and notification sounds to 30 s). Only unprotected songs stored on the phone and audio files can be used; songs downloaded from Apple Music are protected. The song stays on your phone. If speaking the time is on, that plays instead."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein 30-Sekunden-Ausschnitt des gewählten Titels wird zum Weckton (iPhone begrenzt Wecker- und Mitteilungstöne auf 30 s). Nur ungeschützte, auf dem Telefon gespeicherte Titel und Audiodateien sind möglich; aus Apple Music geladene Titel sind geschützt. Der Titel bleibt auf dem Telefon. Ist die Zeitansage an, wird diese abgespielt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçdiyiniz mahnının 30 saniyəlik hissəsi zəng səsi olur (iPhone zəng və bildiriş səslərini 30 san ilə məhdudlaşdırır). Yalnız telefonda saxlanan qorunmayan mahnılar və səs faylları istifadə oluna bilər; Apple Music-dən endirilən mahnılar qorunur. Mahnı telefonda qalır. Saatı səsli demək açıqdırsa, o səslənir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يصبح جزء مدته 30 ثانية من الأغنية التي تختارها صوتَ المنبّه (يحدّ iPhone أصوات المنبّه والإشعارات بـ30 ثانية). لا يمكن استخدام إلا الأغاني غير المحمية المخزنة على الهاتف والملفات الصوتية؛ الأغاني المنزّلة من Apple Music محمية. تبقى الأغنية على هاتفك. إذا كان نطق الوقت مفعّلًا فهو الذي يُسمع."
+          }
+        }
+      }
+    },
+    "alarm.music.protected": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu şarkı korumalı (Apple Music) ya da telefonda değil; başka bir şarkı ya da Dosyalar'dan bir ses dosyası seçin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This song is protected (Apple Music) or not on the phone; choose another song or an audio file from Files."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieser Titel ist geschützt (Apple Music) oder nicht auf dem Telefon; wählen Sie einen anderen Titel oder eine Audiodatei aus Dateien."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu mahnı qorunur (Apple Music) ya da telefonda deyil; başqa mahnı ya da Fayllardan səs faylı seçin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذه الأغنية محمية (Apple Music) أو ليست على الهاتف؛ اختر أغنية أخرى أو ملفًا صوتيًا من الملفات."
+          }
+        }
+      }
+    },
+    "alarm.music.unreadable": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu dosya okunamadı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This file could not be read."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Datei konnte nicht gelesen werden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu fayl oxuna bilmədi."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذّرت قراءة هذا الملف."
+          }
+        }
+      }
+    },
+    "alarm.music.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bölüm: %1$@ – %2$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Part: %1$@ – %2$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausschnitt: %1$@ – %2$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hissə: %1$@ – %2$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الجزء: %1$@ – %2$@"
+          }
+        }
+      }
+    },
+    "alarm.music.listen": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dinle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anhören"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dinlə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استمع"
+          }
+        }
+      }
+    },
+    "alarm.music.stop": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durdur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stopp"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayandır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إيقاف"
+          }
+        }
+      }
+    },
+    "alarm.music.save": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydet"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sichern"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saxla"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حفظ"
+          }
+        }
+      }
+    },
+    "alarm.music.trimNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaydırıcıyla şarkının hangi 30 saniyesinin çalacağını seçin. Kademeli ses açıksa bölüm kısık başlar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use the slider to choose which 30 seconds of the song play. If gradual volume is on, the part starts quietly."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wählen Sie mit dem Regler, welche 30 Sekunden des Titels erklingen. Ist ansteigende Lautstärke an, beginnt der Ausschnitt leise."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sürüşdürücü ilə mahnının hansı 30 saniyəsinin səslənəcəyini seçin. Tədricən səs açıqdırsa, hissə zəif başlayır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر بشريط التمرير أي 30 ثانية من الأغنية ستُسمع. إذا كان الصوت المتدرّج مفعّلًا يبدأ الجزء هادئًا."
+          }
+        }
+      }
+    },
+    "alarm.music.prompt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm için bir şarkı seçin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a song for the alarm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wählen Sie einen Titel für den Wecker"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəng üçün mahnı seçin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر أغنية للمنبّه"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

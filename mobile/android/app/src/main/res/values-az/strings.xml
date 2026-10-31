@@ -1362,5 +1362,19 @@
     <string name="notify_adhan_azeez">Aaqib Azeez (5 san)</string>
     <string name="notify_adhan_medina">Mədinə, Məscidi-Nəbəvi (18 san)</string>
     <string name="notify_adhan_credit_medina">Azan qeydi: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümlə, qısaldılıb və səs səviyyəsi bərabərləşdirilib.</string>
+    <string name="alarm_music">Musiqi</string>
+    <string name="alarm_music_none">Yoxdur (zəng səsi)</string>
+    <string name="alarm_music_library">Musiqi arxivindən seç</string>
+    <string name="alarm_music_files">Fayllardan seç</string>
+    <string name="alarm_music_clear">Musiqini sil</string>
+    <string name="alarm_music_note">Seçdiyiniz mahnının 30 saniyəlik hissəsi zəng səsi olur (iPhone zəng və bildiriş səslərini 30 san ilə məhdudlaşdırır). Yalnız telefonda saxlanan qorunmayan mahnılar və səs faylları istifadə oluna bilər; Apple Music-dən endirilən mahnılar qorunur. Mahnı telefonda qalır. Saatı səsli demək açıqdırsa, o səslənir.</string>
+    <string name="alarm_music_protected">Bu mahnı qorunur (Apple Music) ya da telefonda deyil; başqa mahnı ya da Fayllardan səs faylı seçin.</string>
+    <string name="alarm_music_unreadable">Bu fayl oxuna bilmədi.</string>
+    <string name="alarm_music_start">Hissə: %1$s – %2$s</string>
+    <string name="alarm_music_listen">Dinlə</string>
+    <string name="alarm_music_stop">Dayandır</string>
+    <string name="alarm_music_save">Saxla</string>
+    <string name="alarm_music_trimNote">Sürüşdürücü ilə mahnının hansı 30 saniyəsinin səslənəcəyini seçin. Tədricən səs açıqdırsa, hissə zəif başlayır.</string>
+    <string name="alarm_music_prompt">Zəng üçün mahnı seçin</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

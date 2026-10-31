@@ -1362,5 +1362,19 @@
     <string name="notify_adhan_azeez">Aaqib Azeez (5 s)</string>
     <string name="notify_adhan_medina">Medina, Prophet\'s Mosque (18 s)</string>
     <string name="notify_adhan_credit_medina">Adhan recording: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; first phrase, trimmed and loudness-normalised.</string>
+    <string name="alarm_music">Music</string>
+    <string name="alarm_music_none">None (alarm sound)</string>
+    <string name="alarm_music_library">Choose from music library</string>
+    <string name="alarm_music_files">Choose from Files</string>
+    <string name="alarm_music_clear">Remove music</string>
+    <string name="alarm_music_note">A 30-second part of the song you choose becomes the alarm sound (iPhone limits alarm and notification sounds to 30 s). Only unprotected songs stored on the phone and audio files can be used; songs downloaded from Apple Music are protected. The song stays on your phone. If speaking the time is on, that plays instead.</string>
+    <string name="alarm_music_protected">This song is protected (Apple Music) or not on the phone; choose another song or an audio file from Files.</string>
+    <string name="alarm_music_unreadable">This file could not be read.</string>
+    <string name="alarm_music_start">Part: %1$s – %2$s</string>
+    <string name="alarm_music_listen">Listen</string>
+    <string name="alarm_music_stop">Stop</string>
+    <string name="alarm_music_save">Save</string>
+    <string name="alarm_music_trimNote">Use the slider to choose which 30 seconds of the song play. If gradual volume is on, the part starts quietly.</string>
+    <string name="alarm_music_prompt">Choose a song for the alarm</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

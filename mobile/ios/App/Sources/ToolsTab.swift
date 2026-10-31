@@ -487,6 +487,7 @@ private struct AlarmEditor: View {
                         }
                     }
                 }
+                AlarmMusicSection(item: $item)
                 Section {
                     Toggle(L("alarm.rise"), isOn: $item.rise)
                         .tint(Theme.accent)

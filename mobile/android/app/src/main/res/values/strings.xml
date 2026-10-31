@@ -1362,5 +1362,19 @@
     <string name="notify_adhan_azeez">Aaqib Azeez (5 sn)</string>
     <string name="notify_adhan_medina">Medine, Mescid-i Nebevî (18 sn)</string>
     <string name="notify_adhan_credit_medina">Ezan kaydı: ejaz215 (Freesound), Wikimedia Commons, CC BY 3.0; ilk cümle, kısaltıldı ve ses düzeyi eşitlendi.</string>
+    <string name="alarm_music">Müzik</string>
+    <string name="alarm_music_none">Yok (alarm sesi)</string>
+    <string name="alarm_music_library">Müzik arşivinden seç</string>
+    <string name="alarm_music_files">Dosyalardan seç</string>
+    <string name="alarm_music_clear">Müziği kaldır</string>
+    <string name="alarm_music_note">Seçtiğiniz şarkının 30 saniyelik bir bölümü alarm sesi olur (iPhone alarm ve bildirim seslerini 30 sn ile sınırlar). Yalnız telefonda duran korumasız şarkılar ve ses dosyaları kullanılabilir; Apple Music\'ten indirilen şarkılar korumalıdır. Şarkı telefonda kalır. Saati sesli söyleme açıksa o çalar.</string>
+    <string name="alarm_music_protected">Bu şarkı korumalı (Apple Music) ya da telefonda değil; başka bir şarkı ya da Dosyalar\'dan bir ses dosyası seçin.</string>
+    <string name="alarm_music_unreadable">Bu dosya okunamadı.</string>
+    <string name="alarm_music_start">Bölüm: %1$s – %2$s</string>
+    <string name="alarm_music_listen">Dinle</string>
+    <string name="alarm_music_stop">Durdur</string>
+    <string name="alarm_music_save">Kaydet</string>
+    <string name="alarm_music_trimNote">Kaydırıcıyla şarkının hangi 30 saniyesinin çalacağını seçin. Kademeli ses açıksa bölüm kısık başlar.</string>
+    <string name="alarm_music_prompt">Alarm için bir şarkı seçin</string>
     <string name="app_name">Saat Tarih</string>
 </resources>
