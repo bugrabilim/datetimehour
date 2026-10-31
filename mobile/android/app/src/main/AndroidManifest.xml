@@ -33,6 +33,10 @@
     <!-- Odakta engelleme (FocusBlock.kt): pomodoro sürerken öne gelen uygulamayı okumak için; kullanıcı Ayarlar'dan verir -->
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
 
+    <!-- Android TV (TvActivity): dokunmatik ekran ve leanback zorunlu değil, uygulama telefonda da kurulur -->
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+
     <queries>
         <package android:name="com.google.android.apps.healthdata" />
         <!-- Odakta engelleme: engellenecek uygulama seçicisi yalnız ana ekranda simgesi olan uygulamaları listeler -->
@@ -362,6 +366,17 @@
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Focus timer app blocking: while a pomodoro work session the user started is running, checks the foreground app once a second and shows a focus screen over apps the user chose to block; stops when the session ends" />
         </service>
+        <activity
+            android:name=".TvActivity"
+            android:exported="true"
+            android:banner="@drawable/tv_banner"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".FocusBlockActivity"
             android:exported="false"

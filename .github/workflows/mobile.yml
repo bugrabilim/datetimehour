@@ -117,3 +117,33 @@ jobs:
         with:
           name: ios-ekran-goruntuleri
           path: shots
+
+  # Mac menü çubuğu, Apple TV ve Vision Pro uygulamaları (rakip analizi listesi #95–#97): derlenir, imzasız.
+  # Koşucuda tvOS ya da visionOS platformu kurulu değilse önce indirilir.
+  apple-desk:
+    name: Mac, Apple TV ve Vision Pro uygulamaları
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: XcodeGen
+        run: brew install xcodegen
+      - name: Xcode projesi
+        run: xcodegen generate --spec mobile/ios/project.yml
+      - name: Platformlar
+        run: |
+          xcodebuild -version
+          xcodebuild -showsdks | tee sdks.txt
+          grep -q appletvsimulator sdks.txt || xcodebuild -downloadPlatform tvOS
+          grep -q xrsimulator sdks.txt || xcodebuild -downloadPlatform visionOS
+      - name: Mac
+        run: |
+          xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarihMac -configuration Debug \
+            -destination 'generic/platform=macOS' -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet build
+      - name: Apple TV
+        run: |
+          xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarihTV -configuration Debug \
+            -destination 'generic/platform=tvOS Simulator' -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet build
+      - name: Vision Pro
+        run: |
+          xcodebuild -project mobile/ios/SaatTarih.xcodeproj -scheme SaatTarihVision -configuration Debug \
+            -destination 'generic/platform=visionOS Simulator' -derivedDataPath build CODE_SIGNING_ALLOWED=NO -quiet build

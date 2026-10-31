@@ -6243,5 +6243,40 @@
     "de": "Die Bildschirmzeit-Berechtigung wurde nicht erteilt.",
     "az": "Ekran Vaxtı icazəsi verilmədi.",
     "ar": "لم يُمنح إذن مدة استخدام الجهاز."
+  },
+  "desk.minutes": {
+    "tr": "{n} dk",
+    "en": "{n} min",
+    "de": "{n} Min.",
+    "az": "{n} dəq",
+    "ar": "{n} د"
+  },
+  "desk.launchAtLogin": {
+    "tr": "Oturum açılınca başlat",
+    "en": "Open at login",
+    "de": "Beim Anmelden öffnen",
+    "az": "Sistemə girişdə başlat",
+    "ar": "الفتح عند تسجيل الدخول"
+  },
+  "desk.quit": {
+    "tr": "Çık",
+    "en": "Quit",
+    "de": "Beenden",
+    "az": "Çıx",
+    "ar": "إنهاء"
+  },
+  "desk.h12": {
+    "tr": "12 saat biçimi",
+    "en": "12-hour clock",
+    "de": "12-Stunden-Format",
+    "az": "12 saat formatı",
+    "ar": "نظام 12 ساعة"
+  },
+  "desk.macNote": {
+    "tr": "Vakit bildirimleri iPhone uygulamasında.",
+    "en": "Prayer notifications are in the iPhone app.",
+    "de": "Gebetsbenachrichtigungen gibt es in der iPhone-App.",
+    "az": "Vaxt bildirişləri iPhone tətbiqindədir.",
+    "ar": "إشعارات الصلاة في تطبيق iPhone."
   }
 }

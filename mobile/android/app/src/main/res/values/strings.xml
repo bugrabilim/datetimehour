@@ -1423,5 +1423,10 @@
     <string name="focus_noteAndroid">Pomodoro çalışma süresi işlerken seçtiğiniz uygulamalardan biri açılırsa \"Odaklanma zamanı\" ekranı gelir. Uygulama öne gelen uygulamayı yalnız telefonda, saniyede bir okur; hiçbir şey kaydedilmez ya da gönderilmez. Sitelerin engellenmesi Android\'de yok.</string>
     <string name="focus_noteIOS">Pomodoro çalışma süresi işlerken seçtiğiniz uygulamalar ve siteler Ekran Süresi kalkanıyla kapanır. Seçim Apple\'ın şifreli belirteçleridir; uygulama neyi seçtiğinizi göremez. Süre bittiğinde kalkan kalkar (uygulama kapalıysa bir sonraki açılışta).</string>
     <string name="focus_denied">Ekran Süresi izni verilmedi.</string>
+    <string name="desk_minutes">%1$s dk</string>
+    <string name="desk_launchAtLogin">Oturum açılınca başlat</string>
+    <string name="desk_quit">Çık</string>
+    <string name="desk_h12">12 saat biçimi</string>
+    <string name="desk_macNote">Vakit bildirimleri iPhone uygulamasında.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

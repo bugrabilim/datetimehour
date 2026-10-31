@@ -1423,5 +1423,10 @@
     <string name="focus_noteAndroid">If you open one of the chosen apps while pomodoro work time is running, a \"Time to focus\" screen appears. The app reads the app in front once a second, only on your phone; nothing is stored or sent. Website blocking is not available on Android.</string>
     <string name="focus_noteIOS">While pomodoro work time is running, the apps and websites you chose are closed with a Screen Time shield. The choice is Apple\'s encrypted tokens; the app cannot see what you chose. The shield is removed when the time is up (if the app is closed, the next time it opens).</string>
     <string name="focus_denied">Screen Time permission was not granted.</string>
+    <string name="desk_minutes">%1$s min</string>
+    <string name="desk_launchAtLogin">Open at login</string>
+    <string name="desk_quit">Quit</string>
+    <string name="desk_h12">12-hour clock</string>
+    <string name="desk_macNote">Prayer notifications are in the iPhone app.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

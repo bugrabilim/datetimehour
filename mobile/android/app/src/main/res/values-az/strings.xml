@@ -1423,5 +1423,10 @@
     <string name="focus_noteAndroid">Pomodoro iş vaxtı gedərkən seçdiyiniz tətbiqlərdən biri açılsa, \"Fokuslanma vaxtı\" ekranı gəlir. Tətbiq öndəki tətbiqi yalnız telefonda, saniyədə bir dəfə oxuyur; heç nə saxlanılmır və göndərilmir. Saytların bloklanması Android-də yoxdur.</string>
     <string name="focus_noteIOS">Pomodoro iş vaxtı gedərkən seçdiyiniz tətbiqlər və saytlar Ekran Vaxtı qalxanı ilə bağlanır. Seçim Apple-ın şifrəli tokenləridir; tətbiq nəyi seçdiyinizi görə bilməz. Vaxt bitəndə qalxan götürülür (tətbiq bağlıdırsa, növbəti açılışda).</string>
     <string name="focus_denied">Ekran Vaxtı icazəsi verilmədi.</string>
+    <string name="desk_minutes">%1$s dəq</string>
+    <string name="desk_launchAtLogin">Sistemə girişdə başlat</string>
+    <string name="desk_quit">Çıx</string>
+    <string name="desk_h12">12 saat formatı</string>
+    <string name="desk_macNote">Vaxt bildirişləri iPhone tətbiqindədir.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

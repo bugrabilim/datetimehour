@@ -198,6 +198,18 @@ class MoreScreensTest {
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }
     }
     /** Kıble (Robolectric'te pusula sensörü yok: kuzey yukarıda sabit kadran) ve örnek verili yakındaki camiler */
+    /** Android TV (#95): televizyon ekranı (yatay, 1080p oranı) */
+    @Test fun tv() {
+        Prefs.saveProvince("istanbul")
+        shot("tr-tv", "tr-w960dp-h540dp-land", dark = true) { TvClock() }
+        RuntimeEnvironment.setQualifiers("w412dp-h915dp-port")
+        // Odakta engelleme kartı (#98) pomodoro sayfasında
+        Prefs.store.edit().putBoolean(FocusBlock.ON, true).apply()
+        FocusBlock.saveApps(setOf("com.example.video"))
+        shot("tr-odak-engeli") { FocusBlockCard() }
+        Prefs.store.edit().putBoolean(FocusBlock.ON, false).apply()
+    }
+
     @Test fun qibla() {
         Prefs.saveProvince("istanbul")
         shot("tr-kible") { QiblaScreen {} }

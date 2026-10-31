@@ -49770,6 +49770,181 @@
           }
         }
       }
+    },
+    "desk.minutes": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dk"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dəq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ د"
+          }
+        }
+      }
+    },
+    "desk.launchAtLogin": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oturum açılınca başlat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open at login"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Anmelden öffnen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistemə girişdə başlat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الفتح عند تسجيل الدخول"
+          }
+        }
+      }
+    },
+    "desk.quit": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quit"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beenden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çıx"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إنهاء"
+          }
+        }
+      }
+    },
+    "desk.h12": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 saat biçimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12-hour clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12-Stunden-Format"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 saat formatı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نظام 12 ساعة"
+          }
+        }
+      }
+    },
+    "desk.macNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vakit bildirimleri iPhone uygulamasında."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prayer notifications are in the iPhone app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gebetsbenachrichtigungen gibt es in der iPhone-App."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaxt bildirişləri iPhone tətbiqindədir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إشعارات الصلاة في تطبيق iPhone."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

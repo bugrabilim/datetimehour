@@ -1423,5 +1423,10 @@
     <string name="focus_noteAndroid">Öffnen Sie während der Pomodoro-Arbeitszeit eine der gewählten Apps, erscheint ein Bildschirm \"Zeit zum Fokussieren\". Die App liest die App im Vordergrund einmal pro Sekunde, nur auf dem Telefon; nichts wird gespeichert oder gesendet. Websites lassen sich unter Android nicht sperren.</string>
     <string name="focus_noteIOS">Während der Pomodoro-Arbeitszeit werden die gewählten Apps und Websites mit einer Bildschirmzeit-Sperre geschlossen. Die Auswahl besteht aus verschlüsselten Apple-Token; die App sieht nicht, was Sie gewählt haben. Die Sperre endet mit der Zeit (ist die App geschlossen, beim nächsten Öffnen).</string>
     <string name="focus_denied">Die Bildschirmzeit-Berechtigung wurde nicht erteilt.</string>
+    <string name="desk_minutes">%1$s Min.</string>
+    <string name="desk_launchAtLogin">Beim Anmelden öffnen</string>
+    <string name="desk_quit">Beenden</string>
+    <string name="desk_h12">12-Stunden-Format</string>
+    <string name="desk_macNote">Gebetsbenachrichtigungen gibt es in der iPhone-App.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>
