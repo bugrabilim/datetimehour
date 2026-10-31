@@ -1,15 +1,11 @@
 name: iOS TestFlight
-# main'e iOS değişikliği girince (ya da elle "Run workflow") uygulamayı imzalayıp TestFlight'a yükler.
+# Yalnız elle ("Run workflow") uygulamayı imzalayıp TestFlight'a yükler. 31 Ekim 2026'dan beri main'e iOS değişikliği girmesi
+# yapı başlatmaz (sahibin kararı: bütün Apple yayınları tek seferde, sahibin onayıyla; site ayrıca canlıya alınabilsin diye).
 # Gerekli gizli değişkenler (App Store Connect API anahtarı): ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8.
 # Anahtar yoksa iş hata vermeden atlanır. İmzalama Xcode'un bulut imzalamasıyla yapılır (sertifika depoda yok).
 # Arşiv imzasız alınır: geliştirme imzası kayıtlı cihaz ister, hesapta cihaz yok. Dağıtım imzası yüklemede atılır.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "mobile/ios/**"
-      - ".github/workflows/ios-testflight.yml"
 
 concurrency:
   group: ios-testflight
