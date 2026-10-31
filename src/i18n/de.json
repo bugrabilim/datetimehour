@@ -871,6 +871,10 @@
         "otd": {
           "name": "Heute in der Geschichte",
           "desc": "Was an diesem Tag in der Geschichte geschah."
+        },
+        "tzn": {
+          "name": "Zeitzonen-Nachrichten",
+          "desc": "Entscheidungen der Länder zu Zeitzonen und Sommerzeit."
         }
       },
       "infoHeading": "Infoseiten"
@@ -2740,6 +2744,31 @@
       {
         "q": "Kann ich einen anderen Tag ansehen?",
         "a": "Ja. Mit der Tagesauswahl können Sie jeden Tag des Jahres wählen oder mit den Schaltflächen vor- und zurückblättern; der Link in der Adresszeile zeigt diesen Tag."
+      }
+    ]
+  },
+  "tzn": {
+    "title": "Zeitzonen-Nachrichten: Sommerzeit-Änderungen | Saat Tarih",
+    "description": "Änderungen bei Zeitzonen und Sommerzeit weltweit: Länder mit dauerhafter Zeit, Orte ohne Zeitumstellung, neue Zeitzonen. Quelle: IANA-tz-Datenbank.",
+    "h1": "Zeitzonen-Nachrichten",
+    "lead": "Entscheidungen der Länder zu Zeitzonen und Sommerzeit, die neueste zuerst. Jede Meldung zeigt, ab wann sie gilt, und die aktuelle Uhrzeit dort.",
+    "search": "zeitzonen nachrichten sommerzeit änderung dauerhafte sommerzeit zeitzone geändert tzdata",
+    "effective": "Gilt ab: {date}",
+    "source": "Quelle: IANA-tz-Datenbank, tzdata {rel} ({date})",
+    "nowIn": "Jetzt",
+    "feed": "Nachrichten-Feed abonnieren (Atom)",
+    "feedNote": "Fügen Sie ihn Ihrem Feedreader hinzu; neue Zeitzonen-Entscheidungen erscheinen dort, sobald sie ergänzt werden.",
+    "note": "Telefone und Computer erhalten diese Änderungen über Betriebssystem-Updates; ist Ihr Gerät nicht aktuell, kann die Uhrzeit eine Weile falsch sein. Die Uhr von Saat Tarih wird mit dem Server abgeglichen, die Zeitzonenregeln stammen aber aus Ihrem Browser.",
+    "latest": "Zuletzt geprüft: tzdata {rel} ({date})",
+    "feedTitle": "Saat Tarih: Zeitzonen-Nachrichten",
+    "faq": [
+      {
+        "q": "Woher stammen die Zeitzonen-Nachrichten?",
+        "a": "Aus den Mitteilungen der IANA-tz-Datenbank (tzdata), die Betriebssysteme und Browser nutzen. Bei jeder Meldung steht, mit welcher tzdata-Version sie hinzukam."
+      },
+      {
+        "q": "Wie erfährt mein Gerät, dass ein Land seine Uhrzeit ändert?",
+        "a": "Apple, Google und Microsoft liefern neue Versionen der tz-Datenbank mit Betriebssystem-Updates aus. Halten Sie Ihr Gerät aktuell, stimmt die Uhrzeit von selbst."
       }
     ]
   }

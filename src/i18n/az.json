@@ -844,6 +844,10 @@
         "otd": {
           "name": "Tarixdə bu gün",
           "desc": "Bu gün və istədiyiniz gündə tarixdə nə baş verib."
+        },
+        "tzn": {
+          "name": "Saat qurşağı xəbərləri",
+          "desc": "Ölkələrin saat qurşağı və yay vaxtı qərarları."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -2713,6 +2717,31 @@
       {
         "q": "Başqa bir günə baxa bilərəmmi?",
         "a": "Bəli. Səhifədəki gün seçicisi ilə ilin istənilən gününü seçə və ya əvvəlki/növbəti gün düymələri ilə keçə bilərsiniz; ünvan sətrindəki keçid həmin günü göstərir."
+      }
+    ]
+  },
+  "tzn": {
+    "title": "Saat Qurşağı Xəbərləri: Yay Vaxtı Dəyişiklikləri | Saat Tarih",
+    "description": "Dünyada saat qurşağı və yay vaxtı dəyişiklikləri: daimi vaxta keçən ölkələr, saatları geri çəkməyənlər, yeni saat qurşaqları. Mənbə: IANA tz verilənlər bazası.",
+    "h1": "Saat qurşağı xəbərləri",
+    "lead": "Ölkələrin saat qurşağı və yay vaxtı qərarları; ən yenisi yuxarıda. Hər xəbərdə qüvvəyə minmə tarixi və oradakı indiki vaxt var.",
+    "search": "saat qurşağı xəbərləri yay vaxtı dəyişikliyi daimi yay vaxtı saat qurşağı dəyişdi tzdata",
+    "effective": "Qüvvəyə minir: {date}",
+    "source": "Mənbə: IANA tz verilənlər bazası, tzdata {rel} ({date})",
+    "nowIn": "İndi",
+    "feed": "Xəbər axınına abunə olun (Atom)",
+    "feedNote": "Axın oxuyucunuza əlavə edin; yeni saat qurşağı qərarı əlavə olunanda orada görünür.",
+    "note": "Telefonlar və kompüterlər bu dəyişiklikləri əməliyyat sistemi yeniləmələri ilə alır; cihazınız yenilənməyibsə, saat bir müddət səhv görünə bilər. Saat Tarih-in saatı serverlə eyniləşdirilir, lakin saat qurşağı qaydaları brauzerinizdən gəlir.",
+    "latest": "Son yoxlama: tzdata {rel} ({date})",
+    "feedTitle": "Saat Tarih: Saat qurşağı xəbərləri",
+    "faq": [
+      {
+        "q": "Saat qurşağı xəbərləri haradan gəlir?",
+        "a": "Əməliyyat sistemlərinin və brauzerlərin istifadə etdiyi IANA tz verilənlər bazasının (tzdata) elanlarından. Hər xəbərin altında hansı tzdata versiyası ilə əlavə edildiyi yazılıb."
+      },
+      {
+        "q": "Bir ölkə saatını dəyişəndə cihazım bunu necə öyrənir?",
+        "a": "Apple, Google və Microsoft tz verilənlər bazasının yeni versiyasını əməliyyat sistemi yeniləmələri ilə yayır. Cihazınızı yenilənmiş saxlasanız, saat özü düzgün olar."
       }
     ]
   }

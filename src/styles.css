@@ -1150,3 +1150,10 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .rt-gender legend { font-weight: 600; margin-bottom: 0.3rem; }
 .rt-out { margin-top: 1.2rem; }
 .rt-date { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+
+/* Saat dilimi haberleri */
+.tzn-item { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+.tzn-item h2 { margin: 0 0 .25rem; font-size: 1.15rem; }
+.tzn-item p { margin: .35rem 0; }
+.tzn-now { list-style: none; padding: 0; margin: .4rem 0; display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; }
+.tzn-now li { font-variant-numeric: tabular-nums; }

@@ -490,6 +490,19 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   // Emeklilik: yalnız Türkçe, araçlar merkezinde (yalnız TR)
   check(/data-retire/.test(fs.readFileSync(path.join(DIST, "emeklilik-hesaplama", "index.html"), "utf8")) && fs.readFileSync(path.join(DIST, "araclar", "index.html"), "utf8").includes('href="/emeklilik-hesaplama/"') && !fs.readFileSync(path.join(DIST, "en", "tools", "index.html"), "utf8").includes("emeklilik"), "emeklilik hesaplama sayfası/kartı");
 }
+// Saat dilimi haberleri (31 Ekim 2026): beş dilde sayfa, her haber için yürürlük ve kaynak, Atom akışı
+{
+  const tzn = JSON.parse(fs.readFileSync(path.join(ROOT, "src", "data", "tz-news.json"), "utf8"));
+  check(tzn.items.every((it) => ["tr", "en", "de", "az", "ar"].every((l) => Array.isArray(it.t[l]) && it.t[l].length === 2 && it.t[l].every(Boolean)) && /^\d{4}-\d\d-\d\d$/.test(it.date) && it.zones.length), "tz-news.json: her haberin beş dilde başlık+metni, tarihi ve dilimi olmalı");
+  for (const f of ["saat-dilimi-haberleri", "en/time-zone-news", "de/time-zone-news", "az/time-zone-news", "ar/time-zone-news"]) {
+    const h = fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "";
+    check((h.match(/class="tzn-item"/g) || []).length === tzn.items.length && h.includes("tz-news.xml"), `saat dilimi haberleri sayfası eksik: /${f}/`);
+  }
+  for (const l of ["tr", "en", "de", "az", "ar"]) {
+    const x = fs.existsSync(path.join(DIST, "feeds", `${l}-tz-news.xml`)) ? fs.readFileSync(path.join(DIST, "feeds", `${l}-tz-news.xml`), "utf8") : "";
+    check(/^<\?xml/.test(x) && (x.match(/<entry>/g) || []).length === tzn.items.length && x.includes("cuba-2026"), `Atom akışı eksik: /feeds/${l}-tz-news.xml`);
+  }
+}
 for (const f of ["geri-sayim/5-dakika", "geri-sayim/1-saat", "en/countdown/5-minutes", "ar/countdown/2-hours", "alarm/07-00", "en/alarm/06-30", "de/alarm/05-15"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `hazır araç sayfası yok: /${f}/`);
 for (const f of ["kible", "en/qibla", "de/qibla", "az/qibla", "ar/qibla"]) check(fs.existsSync(path.join(DIST, f, "index.html")), `kıble sayfası yok: /${f}/`);
 check(ng.split("https://overpass-api.de").length === 3, "nginx.conf: connect-src overpass (yakındaki camiler) iki konumda olmalı");

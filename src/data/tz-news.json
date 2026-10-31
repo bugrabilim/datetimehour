@@ -1,0 +1,488 @@
+{
+ "source": "IANA Time Zone Database NEWS (public domain), https://data.iana.org/time-zones/tzdb/NEWS",
+ "latest": "2026f",
+ "latestDate": "2026-10-27",
+ "items": [
+  {
+   "id": "cuba-2026",
+   "date": "2026-11-01",
+   "release": "2026f",
+   "releaseDate": "2026-10-27",
+   "zones": [
+    "America/Havana"
+   ],
+   "cc": [
+    "CU"
+   ],
+   "t": {
+    "tr": [
+     "Küba bu kış saatleri geri almıyor",
+     "Küba 1 Kasım 2026'da saatleri bir saat geri almayacak; 7 Kasım 2027'ye kadar UTC−4'te (yaz saati) kalmayı planlıyor."
+    ],
+    "en": [
+     "Cuba will not turn its clocks back this winter",
+     "Cuba will not set its clocks back an hour on 1 November 2026; it plans to stay on UTC−4 (daylight time) until 7 November 2027."
+    ],
+    "de": [
+     "Kuba stellt die Uhren diesen Winter nicht zurück",
+     "Kuba stellt die Uhren am 1. November 2026 nicht um eine Stunde zurück und will bis zum 7. November 2027 bei UTC−4 (Sommerzeit) bleiben."
+    ],
+    "az": [
+     "Kuba bu qış saatları geri çəkmir",
+     "Kuba 1 noyabr 2026-cı ildə saatları bir saat geri çəkməyəcək; 7 noyabr 2027-ci ilə qədər UTC−4-də (yay vaxtı) qalmağı planlaşdırır."
+    ],
+    "ar": [
+     "كوبا لن تؤخر ساعاتها هذا الشتاء",
+     "لن تؤخر كوبا ساعاتها ساعة واحدة في 1 نوفمبر 2026، وتخطط للبقاء على UTC−4 (التوقيت الصيفي) حتى 7 نوفمبر 2027."
+    ]
+   }
+  },
+  {
+   "id": "manitoba-2026",
+   "date": "2026-10-31",
+   "release": "2026e",
+   "releaseDate": "2026-09-29",
+   "zones": [
+    "America/Winnipeg"
+   ],
+   "cc": [
+    "CA"
+   ],
+   "t": {
+    "tr": [
+     "Manitoba kalıcı olarak UTC−5'e geçti",
+     "Kanada'nın Manitoba eyaleti 31 Ekim 2026'dan itibaren yıl boyu UTC−5 kullanıyor; 8 Mart 2026'daki ileri alma son saat değişikliğiydi. Kuzeybatı Ontario'da Winnipeg saatini izleyen yerlerin de aynı yolu izlemesi bekleniyor."
+    ],
+    "en": [
+     "Manitoba moves to permanent UTC−5",
+     "The Canadian province of Manitoba uses UTC−5 all year from 31 October 2026; the spring-forward on 8 March 2026 was its last clock change. Parts of northwestern Ontario that follow Winnipeg time are expected to do the same."
+    ],
+    "de": [
+     "Manitoba bleibt dauerhaft bei UTC−5",
+     "Die kanadische Provinz Manitoba nutzt ab dem 31. Oktober 2026 ganzjährig UTC−5; die Umstellung am 8. März 2026 war die letzte. Teile des nordwestlichen Ontario, die der Winnipeg-Zeit folgen, dürften sich anschließen."
+    ],
+    "az": [
+     "Manitoba daimi olaraq UTC−5-ə keçdi",
+     "Kanadanın Manitoba əyaləti 31 oktyabr 2026-cı ildən il boyu UTC−5 istifadə edir; 8 mart 2026-cı ildəki irəli çəkmə son saat dəyişikliyi idi. Şimal-qərbi Ontarioda Vinnipeq vaxtına uyan yerlərin də eyni yolu tutacağı gözlənilir."
+    ],
+    "ar": [
+     "مانيتوبا تعتمد UTC−5 بشكل دائم",
+     "تستخدم مقاطعة مانيتوبا الكندية التوقيت UTC−5 طوال العام اعتبارًا من 31 أكتوبر 2026، وكان تقديم الساعة في 8 مارس 2026 آخر تغيير. ويُتوقع أن تحذو حذوها أجزاء من شمال غرب أونتاريو تتبع توقيت وينيبيغ."
+    ]
+   }
+  },
+  {
+   "id": "morocco-2026",
+   "date": "2026-09-20",
+   "release": "2026c",
+   "releaseDate": "2026-07-08",
+   "zones": [
+    "Africa/Casablanca",
+    "Africa/El_Aaiun"
+   ],
+   "cc": [
+    "MA",
+    "EH"
+   ],
+   "t": {
+    "tr": [
+     "Fas kalıcı olarak UTC+0'a döndü",
+     "Fas (ve Batı Sahra) 20 Eylül 2026 saat 02:00'den itibaren yaz saati uygulamadan yıl boyu UTC+0 kullanıyor; Ramazan'daki geçici saat değişiklikleri de sona erdi."
+    ],
+    "en": [
+     "Morocco returns to permanent UTC+0",
+     "From 20 September 2026 at 02:00, Morocco (and Western Sahara) uses UTC+0 all year without daylight saving time; the temporary clock changes around Ramadan also end."
+    ],
+    "de": [
+     "Marokko kehrt dauerhaft zu UTC+0 zurück",
+     "Seit dem 20. September 2026 um 02:00 Uhr nutzt Marokko (und die Westsahara) ganzjährig UTC+0 ohne Sommerzeit; auch die vorübergehenden Umstellungen im Ramadan entfallen."
+    ],
+    "az": [
+     "Mərakeş daimi olaraq UTC+0-a qayıtdı",
+     "Mərakeş (və Qərbi Səhra) 20 sentyabr 2026-cı il saat 02:00-dan etibarən yay vaxtı tətbiq etmədən il boyu UTC+0 istifadə edir; Ramazandakı müvəqqəti saat dəyişiklikləri də bitdi."
+    ],
+    "ar": [
+     "المغرب يعود إلى UTC+0 بشكل دائم",
+     "منذ 20 سبتمبر 2026 الساعة 02:00 يعتمد المغرب (والصحراء الغربية) التوقيت UTC+0 طوال العام دون توقيت صيفي، وتنتهي كذلك التغييرات المؤقتة للساعة في رمضان."
+    ]
+   }
+  },
+  {
+   "id": "nwt-2026",
+   "date": "2026-08-21",
+   "release": "2026d",
+   "releaseDate": "2026-09-11",
+   "zones": [
+    "America/Inuvik",
+    "America/Edmonton"
+   ],
+   "cc": [
+    "CA"
+   ],
+   "t": {
+    "tr": [
+     "Kanada'nın Kuzeybatı Toprakları kalıcı UTC−6'da",
+     "Kuzeybatı Toprakları 21 Ağustos 2026'dan beri yıl boyu UTC−6 kullanıyor ve 1 Kasım 2026'da saatleri geri almıyor; komşu Alberta ile aynı."
+    ],
+    "en": [
+     "Canada's Northwest Territories on permanent UTC−6",
+     "The Northwest Territories have used UTC−6 all year since 21 August 2026 and do not turn the clocks back on 1 November 2026, matching neighbouring Alberta."
+    ],
+    "de": [
+     "Kanadas Nordwest-Territorien dauerhaft bei UTC−6",
+     "Die Nordwest-Territorien nutzen seit dem 21. August 2026 ganzjährig UTC−6 und stellen die Uhren am 1. November 2026 nicht zurück, wie das benachbarte Alberta."
+    ],
+    "az": [
+     "Kanadanın Şimal-Qərb Əraziləri daimi UTC−6-da",
+     "Şimal-Qərb Əraziləri 21 avqust 2026-cı ildən il boyu UTC−6 istifadə edir və 1 noyabr 2026-cı ildə saatları geri çəkmir; qonşu Alberta ilə eyni."
+    ],
+    "ar": [
+     "الأقاليم الشمالية الغربية في كندا على UTC−6 بشكل دائم",
+     "تعتمد الأقاليم الشمالية الغربية التوقيت UTC−6 طوال العام منذ 21 أغسطس 2026 ولن تؤخر ساعاتها في 1 نوفمبر 2026، مثل ألبرتا المجاورة."
+    ]
+   }
+  },
+  {
+   "id": "alberta-2026",
+   "date": "2026-06-18",
+   "release": "2026c",
+   "releaseDate": "2026-07-08",
+   "zones": [
+    "America/Edmonton"
+   ],
+   "cc": [
+    "CA"
+   ],
+   "t": {
+    "tr": [
+     "Alberta kalıcı olarak UTC−6'ya geçti",
+     "Kanada'nın Alberta eyaleti 18 Haziran 2026'dan beri yıl boyu UTC−6 kullanıyor; 8 Mart 2026'daki ileri alma son saat değişikliğiydi, 1 Kasım 2026'da saatler geri alınmıyor."
+    ],
+    "en": [
+     "Alberta moves to permanent UTC−6",
+     "The Canadian province of Alberta has used UTC−6 all year since 18 June 2026; the spring-forward on 8 March 2026 was its last clock change, and clocks are not turned back on 1 November 2026."
+    ],
+    "de": [
+     "Alberta bleibt dauerhaft bei UTC−6",
+     "Die kanadische Provinz Alberta nutzt seit dem 18. Juni 2026 ganzjährig UTC−6; die Umstellung am 8. März 2026 war die letzte, am 1. November 2026 werden die Uhren nicht zurückgestellt."
+    ],
+    "az": [
+     "Alberta daimi olaraq UTC−6-ya keçdi",
+     "Kanadanın Alberta əyaləti 18 iyun 2026-cı ildən il boyu UTC−6 istifadə edir; 8 mart 2026-cı ildəki irəli çəkmə son saat dəyişikliyi idi, 1 noyabr 2026-cı ildə saatlar geri çəkilmir."
+    ],
+    "ar": [
+     "ألبرتا تعتمد UTC−6 بشكل دائم",
+     "تستخدم مقاطعة ألبرتا الكندية التوقيت UTC−6 طوال العام منذ 18 يونيو 2026، وكان تقديم الساعة في 8 مارس 2026 آخر تغيير، فلن تُؤخَّر الساعات في 1 نوفمبر 2026."
+    ]
+   }
+  },
+  {
+   "id": "bc-2026",
+   "date": "2026-03-09",
+   "release": "2026b",
+   "releaseDate": "2026-04-22",
+   "zones": [
+    "America/Vancouver"
+   ],
+   "cc": [
+    "CA"
+   ],
+   "t": {
+    "tr": [
+     "Britanya Kolumbiyası kalıcı olarak UTC−7'ye geçti",
+     "Kanada'nın Britanya Kolumbiyası eyaleti 9 Mart 2026'dan beri yıl boyu UTC−7 kullanıyor; 8 Mart 2026'daki ileri alma son saat değişikliğiydi."
+    ],
+    "en": [
+     "British Columbia moves to permanent UTC−7",
+     "The Canadian province of British Columbia has used UTC−7 all year since 9 March 2026; the spring-forward on 8 March 2026 was its last clock change."
+    ],
+    "de": [
+     "British Columbia bleibt dauerhaft bei UTC−7",
+     "Die kanadische Provinz British Columbia nutzt seit dem 9. März 2026 ganzjährig UTC−7; die Umstellung am 8. März 2026 war die letzte."
+    ],
+    "az": [
+     "Britaniya Kolumbiyası daimi olaraq UTC−7-yə keçdi",
+     "Kanadanın Britaniya Kolumbiyası əyaləti 9 mart 2026-cı ildən il boyu UTC−7 istifadə edir; 8 mart 2026-cı ildəki irəli çəkmə son saat dəyişikliyi idi."
+    ],
+    "ar": [
+     "كولومبيا البريطانية تعتمد UTC−7 بشكل دائم",
+     "تستخدم مقاطعة كولومبيا البريطانية الكندية التوقيت UTC−7 طوال العام منذ 9 مارس 2026، وكان تقديم الساعة في 8 مارس 2026 آخر تغيير."
+    ]
+   }
+  },
+  {
+   "id": "moldova-eu",
+   "date": "2022-03-27",
+   "release": "2026a",
+   "releaseDate": "2026-03-01",
+   "zones": [
+    "Europe/Chisinau"
+   ],
+   "cc": [
+    "MD"
+   ],
+   "t": {
+    "tr": [
+     "Moldova saatleri AB ile aynı anda değiştiriyor",
+     "Moldova 2022'den beri saatleri Avrupa Birliği ile aynı anda değiştiriyor: ileri alma yerel saatle 03:00'te, geri alma 04:00'te. tz veritabanı bu bilgiyi 2026'da düzeltti."
+    ],
+    "en": [
+     "Moldova changes clocks at EU times",
+     "Since 2022 Moldova has changed its clocks at the same moment as the European Union: spring forward at 03:00 and fall back at 04:00 local time. The tz database corrected this in 2026."
+    ],
+    "de": [
+     "Moldau stellt die Uhren zu EU-Zeiten um",
+     "Moldau stellt die Uhren seit 2022 zeitgleich mit der EU um: vor um 03:00 und zurück um 04:00 Ortszeit. Die tz-Datenbank hat dies 2026 korrigiert."
+    ],
+    "az": [
+     "Moldova saatları AB ilə eyni anda dəyişir",
+     "Moldova 2022-ci ildən saatları Avropa İttifaqı ilə eyni anda dəyişir: irəli çəkmə yerli vaxtla 03:00-da, geri çəkmə 04:00-da. tz verilənlər bazası bunu 2026-cı ildə düzəltdi."
+    ],
+    "ar": [
+     "مولدوفا تغيّر ساعاتها مع الاتحاد الأوروبي",
+     "منذ 2022 تغيّر مولدوفا ساعاتها في اللحظة نفسها مع الاتحاد الأوروبي: التقديم الساعة 03:00 والتأخير الساعة 04:00 بالتوقيت المحلي. وقد صحّحت قاعدة بيانات tz ذلك في 2026."
+    ]
+   }
+  },
+  {
+   "id": "aysen-2025",
+   "date": "2025-03-20",
+   "release": "2025b",
+   "releaseDate": "2025-03-22",
+   "zones": [
+    "America/Coyhaique"
+   ],
+   "cc": [
+    "CL"
+   ],
+   "t": {
+    "tr": [
+     "Şili'nin Aysén Bölgesi yıl boyu UTC−3'te",
+     "Şili'nin Aysén Bölgesi 2025'ten beri yıl boyu UTC−3 kullanıyor ve 5 Nisan 2025'te saatleri geri almadı (Magallanes gibi). Bunun için yeni bir saat dilimi açıldı: America/Coyhaique."
+    ],
+    "en": [
+     "Chile's Aysén Region on UTC−3 all year",
+     "Chile's Aysén Region has used UTC−3 all year since 2025 and did not turn the clocks back on 5 April 2025 (like Magallanes). A new time zone was created for it: America/Coyhaique."
+    ],
+    "de": [
+     "Chiles Region Aysén ganzjährig bei UTC−3",
+     "Die chilenische Region Aysén nutzt seit 2025 ganzjährig UTC−3 und hat die Uhren am 5. April 2025 nicht zurückgestellt (wie Magallanes). Dafür wurde eine neue Zeitzone angelegt: America/Coyhaique."
+    ],
+    "az": [
+     "Çilinin Aysen regionu il boyu UTC−3-də",
+     "Çilinin Aysen regionu 2025-ci ildən il boyu UTC−3 istifadə edir və 5 aprel 2025-ci ildə saatları geri çəkmədi (Magallanes kimi). Bunun üçün yeni saat qurşağı yaradıldı: America/Coyhaique."
+    ],
+    "ar": [
+     "منطقة أيسن في تشيلي على UTC−3 طوال العام",
+     "تستخدم منطقة أيسن التشيلية التوقيت UTC−3 طوال العام منذ 2025 ولم تؤخر ساعاتها في 5 أبريل 2025 (مثل ماغايانس). وأُنشئت لها منطقة زمنية جديدة: America/Coyhaique."
+    ]
+   }
+  },
+  {
+   "id": "paraguay-2024",
+   "date": "2024-10-06",
+   "release": "2025a",
+   "releaseDate": "2025-01-15",
+   "zones": [
+    "America/Asuncion"
+   ],
+   "cc": [
+    "PY"
+   ],
+   "t": {
+    "tr": [
+     "Paraguay kalıcı olarak UTC−3'te",
+     "Paraguay 6 Ekim 2024'teki ileri almadan sonra saatleri değiştirmeyi bıraktı; artık yıl boyu UTC−3 kullanıyor."
+    ],
+    "en": [
+     "Paraguay on permanent UTC−3",
+     "Paraguay stopped changing its clocks after the spring-forward on 6 October 2024 and now uses UTC−3 all year."
+    ],
+    "de": [
+     "Paraguay dauerhaft bei UTC−3",
+     "Paraguay stellt die Uhren seit der Umstellung am 6. Oktober 2024 nicht mehr um und nutzt nun ganzjährig UTC−3."
+    ],
+    "az": [
+     "Paraqvay daimi olaraq UTC−3-də",
+     "Paraqvay 6 oktyabr 2024-cü ildəki irəli çəkmədən sonra saatları dəyişməyi dayandırdı; indi il boyu UTC−3 istifadə edir."
+    ],
+    "ar": [
+     "باراغواي على UTC−3 بشكل دائم",
+     "توقفت باراغواي عن تغيير ساعاتها بعد تقديمها في 6 أكتوبر 2024، وتستخدم الآن UTC−3 طوال العام."
+    ]
+   }
+  },
+  {
+   "id": "scoresbysund-2024",
+   "date": "2024-03-31",
+   "release": "2023d",
+   "releaseDate": "2023-12-21",
+   "zones": [
+    "America/Scoresbysund"
+   ],
+   "cc": [
+    "GL"
+   ],
+   "t": {
+    "tr": [
+     "Grönland'ın Ittoqqortoormiit kasabası saat dilimini değiştirdi",
+     "Ittoqqortoormiit 31 Mart 2024'te UTC−1/+0'dan Grönland'ın büyük kısmının kullandığı UTC−2/−1'e geçti; o gün saatler ileri alınmadı."
+    ],
+    "en": [
+     "Ittoqqortoormiit in Greenland changed time zone",
+     "On 31 March 2024 Ittoqqortoormiit moved from UTC−1/+0 to UTC−2/−1, used by most of Greenland; its clocks did not spring forward that day."
+    ],
+    "de": [
+     "Ittoqqortoormiit in Grönland wechselte die Zeitzone",
+     "Am 31. März 2024 wechselte Ittoqqortoormiit von UTC−1/+0 zu UTC−2/−1 wie der größte Teil Grönlands; an diesem Tag wurden die Uhren nicht vorgestellt."
+    ],
+    "az": [
+     "Qrenlandiyanın İttokkortoormiit qəsəbəsi saat qurşağını dəyişdi",
+     "İttokkortoormiit 31 mart 2024-cü ildə UTC−1/+0-dan Qrenlandiyanın böyük hissəsinin istifadə etdiyi UTC−2/−1-ə keçdi; həmin gün saatlar irəli çəkilmədi."
+    ],
+    "ar": [
+     "إيتوكورتورميت في غرينلاند غيّرت منطقتها الزمنية",
+     "في 31 مارس 2024 انتقلت إيتوكورتورميت من UTC−1/+0 إلى UTC−2/−1 الذي يستخدمه معظم غرينلاند، ولم تُقدَّم الساعات في ذلك اليوم."
+    ]
+   }
+  },
+  {
+   "id": "kazakhstan-2024",
+   "date": "2024-03-01",
+   "release": "2024a",
+   "releaseDate": "2024-02-01",
+   "zones": [
+    "Asia/Almaty",
+    "Asia/Qostanay"
+   ],
+   "cc": [
+    "KZ"
+   ],
+   "t": {
+    "tr": [
+     "Kazakistan tek saat dilimine geçti",
+     "Kazakistan'ın doğusu 1 Mart 2024'te UTC+6'dan UTC+5'e geçti; ülkenin tamamı artık UTC+5 kullanıyor."
+    ],
+    "en": [
+     "Kazakhstan unified on a single time zone",
+     "Eastern Kazakhstan moved from UTC+6 to UTC+5 on 1 March 2024; the whole country now uses UTC+5."
+    ],
+    "de": [
+     "Kasachstan hat eine einheitliche Zeitzone",
+     "Der Osten Kasachstans wechselte am 1. März 2024 von UTC+6 zu UTC+5; das ganze Land nutzt nun UTC+5."
+    ],
+    "az": [
+     "Qazaxıstan vahid saat qurşağına keçdi",
+     "Qazaxıstanın şərqi 1 mart 2024-cü ildə UTC+6-dan UTC+5-ə keçdi; bütün ölkə indi UTC+5 istifadə edir."
+    ],
+    "ar": [
+     "كازاخستان توحّد منطقتها الزمنية",
+     "انتقل شرق كازاخستان من UTC+6 إلى UTC+5 في 1 مارس 2024، وتستخدم البلاد كلها الآن UTC+5."
+    ]
+   }
+  },
+  {
+   "id": "nuuk-2023",
+   "date": "2023-10-29",
+   "release": "2023a",
+   "releaseDate": "2023-03-22",
+   "zones": [
+    "America/Nuuk"
+   ],
+   "cc": [
+    "GL"
+   ],
+   "t": {
+    "tr": [
+     "Grönland'ın büyük kısmı UTC−2'ye geçti",
+     "Nuuk ve Grönland'ın büyük kısmı Ekim 2023'te saatleri geri almadı; standart saat UTC−2 oldu ve 2024'ten beri AB kurallarıyla yaz saati (UTC−1) uygulanıyor."
+    ],
+    "en": [
+     "Most of Greenland moved to UTC−2",
+     "Nuuk and most of Greenland did not turn the clocks back in October 2023; standard time became UTC−2, with daylight time (UTC−1) under EU rules since 2024."
+    ],
+    "de": [
+     "Großteil Grönlands wechselte zu UTC−2",
+     "Nuuk und der Großteil Grönlands stellten die Uhren im Oktober 2023 nicht zurück; die Normalzeit ist nun UTC−2, mit Sommerzeit (UTC−1) nach EU-Regeln seit 2024."
+    ],
+    "az": [
+     "Qrenlandiyanın böyük hissəsi UTC−2-yə keçdi",
+     "Nuuk və Qrenlandiyanın böyük hissəsi 2023-cü ilin oktyabrında saatları geri çəkmədi; standart vaxt UTC−2 oldu və 2024-cü ildən AB qaydaları ilə yay vaxtı (UTC−1) tətbiq olunur."
+    ],
+    "ar": [
+     "معظم غرينلاند انتقل إلى UTC−2",
+     "لم تؤخر نوك ومعظم غرينلاند ساعاتها في أكتوبر 2023، فأصبح التوقيت القياسي UTC−2، مع توقيت صيفي (UTC−1) وفق قواعد الاتحاد الأوروبي منذ 2024."
+    ]
+   }
+  },
+  {
+   "id": "egypt-2023",
+   "date": "2023-04-28",
+   "release": "2023a",
+   "releaseDate": "2023-03-22",
+   "zones": [
+    "Africa/Cairo"
+   ],
+   "cc": [
+    "EG"
+   ],
+   "t": {
+    "tr": [
+     "Mısır yaz saatine döndü",
+     "Mısır 2023'ten beri yaz saati uyguluyor: saatler Nisan'ın son Cuma günü ileri, Ekim'in son Perşembe gününün sonunda geri alınıyor."
+    ],
+    "en": [
+     "Egypt brought back daylight saving time",
+     "Egypt has observed daylight saving time since 2023: clocks go forward on April's last Friday and back at the end of October's last Thursday."
+    ],
+    "de": [
+     "Ägypten führte die Sommerzeit wieder ein",
+     "Ägypten hat seit 2023 wieder Sommerzeit: Die Uhren werden am letzten Freitag im April vor- und am Ende des letzten Donnerstags im Oktober zurückgestellt."
+    ],
+    "az": [
+     "Misir yay vaxtına qayıtdı",
+     "Misir 2023-cü ildən yay vaxtı tətbiq edir: saatlar aprelin son cümə günü irəli, oktyabrın son cümə axşamının sonunda geri çəkilir."
+    ],
+    "ar": [
+     "مصر أعادت التوقيت الصيفي",
+     "تطبق مصر التوقيت الصيفي منذ 2023: تُقدَّم الساعات يوم الجمعة الأخيرة من أبريل وتُؤخَّر في نهاية الخميس الأخير من أكتوبر."
+    ]
+   }
+  },
+  {
+   "id": "mexico-2022",
+   "date": "2022-10-30",
+   "release": "2022f",
+   "releaseDate": "2022-10-28",
+   "zones": [
+    "America/Mexico_City",
+    "America/Ciudad_Juarez"
+   ],
+   "cc": [
+    "MX"
+   ],
+   "t": {
+    "tr": [
+     "Meksika yaz saatini kaldırdı",
+     "Meksika 30 Ekim 2022'den beri yaz saati uygulamıyor; ABD sınırındaki bazı yerler (ör. Ciudad Juárez) ABD ile birlikte saat değiştirmeye devam ediyor."
+    ],
+    "en": [
+     "Mexico abolished daylight saving time",
+     "Mexico has not observed daylight saving time since 30 October 2022; some places on the US border (such as Ciudad Juárez) still change clocks with the US."
+    ],
+    "de": [
+     "Mexiko hat die Sommerzeit abgeschafft",
+     "Mexiko hat seit dem 30. Oktober 2022 keine Sommerzeit mehr; einige Orte an der US-Grenze (etwa Ciudad Juárez) stellen die Uhren weiterhin mit den USA um."
+    ],
+    "az": [
+     "Meksika yay vaxtını ləğv etdi",
+     "Meksika 30 oktyabr 2022-ci ildən yay vaxtı tətbiq etmir; ABŞ sərhədindəki bəzi yerlər (məs. Syudad Xuares) ABŞ ilə birlikdə saatları dəyişməyə davam edir."
+    ],
+    "ar": [
+     "المكسيك ألغت التوقيت الصيفي",
+     "لا تطبق المكسيك التوقيت الصيفي منذ 30 أكتوبر 2022، بينما تواصل بعض المناطق على الحدود الأمريكية (مثل سيوداد خواريز) تغيير الساعات مع الولايات المتحدة."
+    ]
+   }
+  }
+ ]
+}

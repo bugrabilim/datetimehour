@@ -844,6 +844,10 @@
         "otd": {
           "name": "On this day",
           "desc": "What happened on this day in history."
+        },
+        "tzn": {
+          "name": "Time zone news",
+          "desc": "Countries' time zone and daylight saving decisions."
         }
       },
       "infoHeading": "Information pages"
@@ -2713,6 +2717,31 @@
       {
         "q": "Can I look at another day?",
         "a": "Yes. Use the day picker on the On this day page to choose any day of the year, or step with the previous and next day buttons; the link in the address bar shows that day."
+      }
+    ]
+  },
+  "tzn": {
+    "title": "Time Zone News: Daylight Saving and Time Zone Changes | Saat Tarih",
+    "description": "Time zone and daylight saving time changes around the world: countries moving to permanent time, places not turning clocks back, new time zones. Source: IANA tz database.",
+    "h1": "Time zone news",
+    "lead": "Countries' decisions on time zones and daylight saving time, newest first. Each item shows when it takes effect and the current time there.",
+    "search": "time zone news daylight saving time change permanent daylight time time zone changed tzdata",
+    "effective": "Takes effect: {date}",
+    "source": "Source: IANA tz database, tzdata {rel} ({date})",
+    "nowIn": "Now",
+    "feed": "Subscribe to the news feed (Atom)",
+    "feedNote": "Add it to your feed reader; new time zone decisions appear there when they are added.",
+    "note": "Phones and computers get these changes through operating system updates; if your device is out of date, its clock may be wrong for a while. Saat Tarih's clock is synced with the server, but time zone rules come from your browser.",
+    "latest": "Last checked: tzdata {rel} ({date})",
+    "feedTitle": "Saat Tarih: Time zone news",
+    "faq": [
+      {
+        "q": "Where does the time zone news come from?",
+        "a": "From the announcements of the IANA tz database (tzdata), which operating systems and browsers use. Each item names the tzdata release that added it."
+      },
+      {
+        "q": "How does my device learn that a country changed its clocks?",
+        "a": "Apple, Google and Microsoft ship new tz database releases with operating system updates. If you keep your device up to date, the time will be correct on its own."
       }
     ]
   }

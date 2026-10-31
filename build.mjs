@@ -310,7 +310,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1128,6 +1128,7 @@ const TOOL_ART = {
   tz: svgArt('<circle cx="48" cy="32" r="22" class="af"/><path d="M26 32h44M48 10c9 7 9 37 0 44M48 10c-9 7-9 37 0 44"/>'),
   worldHol: svgArt('<rect x="12" y="14" width="46" height="40" rx="6" class="af"/><path d="M12 26h46M26 8v10M44 8v10M24 38h6M38 38h6"/><circle cx="72" cy="40" r="14" class="af"/><path d="M58 40h28M72 26c5 4 5 24 0 28M72 26c-5 4-5 24 0 28"/>'),
   zones: svgArt('<circle cx="34" cy="32" r="20" class="af"/><path d="M14 32h40M34 12c7 6 7 34 0 40M34 12c-7 6-7 34 0 40"/><circle cx="70" cy="40" r="14" class="af"/><path d="M70 32v8l5 3"/>'),
+  tzn: svgArt('<circle cx="34" cy="34" r="20" class="af"/><path d="M34 22v12l8 5"/><rect x="58" y="18" width="30" height="34" rx="4"/><path d="M64 28h18M64 35h18M64 42h12"/>'),
   dst: svgArt('<circle cx="30" cy="30" r="10" class="af"/><path d="M30 12v4M30 44v4M12 30h4M44 30h4M17 17l3 3M40 40l3 3M17 43l3-3M40 20l3-3"/><path d="M72 18a14 14 0 1 0 10 24 12 12 0 0 1-10-24z" class="af"/><path d="M50 52h20m-5-5 5 5-5 5"/>'),
   unix: svgArt('<rect x="12" y="14" width="72" height="36" rx="6" class="af"/><path d="M24 26v12M30 26h6v12h-6zM44 26v12M50 26h6v12h-6zM64 26v12M70 26h6v12h-6z"/>'),
   bridge: svgArt('<path d="M8 46h80M14 46V30M82 46V30M14 30c10 0 18-10 34-10s24 10 34 10M30 46V26M48 46V20M66 46V26" class="af"/><path d="M8 54h80"/>'),
@@ -1157,7 +1158,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1279,6 +1280,7 @@ extendRoutes({
 });
 extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather: "/hava-durumu/", qibla: "/kible/", zakat: "/zekat-hesaplama/", api: "/gelistiriciler/", bridge: "/kopru-tatil/", zones: "/saat-dilimleri/", dst: "/yaz-saati/", unix: "/unix-zaman-damgasi/", worldHol: "/resmi-tatiller/" }, en: { prayer: "/en/prayer-times/", nature: "/en/seasons/", weather: "/en/weather/", qibla: "/en/qibla/", zakat: "/en/zakat-calculator/", api: "/en/developers/", bridge: "/en/long-weekends/", zones: "/en/time-zones/", dst: "/en/daylight-saving-time/", unix: "/en/unix-time/", worldHol: "/en/public-holidays/" } });
 extendRoutes({ tr: { sky: "/gece-gokyuzu/", otd: "/tarihte-bugun/" }, en: { sky: "/en/night-sky/", otd: "/en/on-this-day/" } });
+extendRoutes({ tr: { tzn: "/saat-dilimi-haberleri/" }, en: { tzn: "/en/time-zone-news/" } });
 ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -1960,6 +1962,62 @@ function buildDst(lang) {
   return simplePage(lang, "dst", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "dst", title: s.h1 }, scripts: ["zones.js"], nav: "world", searchK: s.search });
 }
 
+/* Saat dilimi haberleri (31 Ekim 2026, rakip analizi listesi #100): IANA tz veritabanının NEWS dosyasındaki
+   geleceğe dönük değişikliklerden (kamu malı) elle yazılmış özetler, src/data/tz-news.json (beş dil). Yeni tzdata
+   sürümü çıkınca NEWS okunur, yeni karar eklenir, `latest` güncellenir. Her dilde Atom akışı /feeds/<dil>-tz-news.xml.
+   E-posta bülteni yok: e-posta yalnız ortak Bumba listesinden gider (standart). */
+const TZN = readJson("src/data/tz-news.json");
+const TZN_FEED = (lang) => `/feeds/${lang}-tz-news.xml`;
+function buildTzNews(lang) {
+  const t = I[lang], s = t.tzn, cal = t.calendar;
+  const F = makeFmt(cal);
+  const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].tzn }];
+  const items = [...TZN.items].sort((a, b) => b.date.localeCompare(a.date));
+  const zoneName = (tz) => { const c = CITIES.find((x) => x.tz === tz); return c ? c[lang].name : tz.split("/").pop().replace(/_/g, " "); };
+  const list = items.map((it) => {
+    const [h, p] = it.t[lang];
+    const clocks = it.zones.map((z) => `<li><span class="meta">${esc(zoneName(z))}</span> <span data-live="time" data-tz="${z}" dir="ltr">--:--</span></li>`).join("");
+    return `<article class="tzn-item" id="${it.id}"><h2>${esc(h)}</h2>
+      <p class="meta">${esc(tpl(s.effective, { date: F.full(it.date) }))} · ${esc(it.cc.map((c) => regionName(lang, c)).join(", "))}</p>
+      <p>${esc(p)}</p>
+      <ul class="tzn-now" aria-label="${esc(s.nowIn)}">${clocks}</ul>
+      <p class="meta">${esc(tpl(s.source, { rel: it.release, date: F.full(it.releaseDate) }))}</p>
+    </article>`;
+  }).join("");
+  const hero = `<p class="info-sub">${esc(tpl(s.latest, { rel: TZN.latest, date: F.full(TZN.latestDate) }))}</p>`;
+  const sections = `<section class="section"><div class="wrap tzn">
+    ${list}
+    <p><a href="${TZN_FEED(lang)}" type="application/atom+xml">${esc(s.feed)}</a></p>
+    <p class="meta">${esc(s.feedNote)}</p>
+    <p class="meta">${esc(s.note)}</p>
+  </div></section>`;
+  // Atom akışı (en yeni 30 haber; güncelleme = tzdata duyuru tarihi)
+  const abs = (u) => ORIGIN + u;
+  const entries = items.slice(0, 30).map((it) => {
+    const [h, p] = it.t[lang];
+    return `  <entry>
+    <id>tag:${new URL(ORIGIN).host},2026:tz-news/${it.id}</id>
+    <title>${esc(h)}</title>
+    <updated>${it.releaseDate}T00:00:00Z</updated>
+    <link rel="alternate" href="${abs(ROUTES[lang].tzn)}#${it.id}"/>
+    <summary>${esc(p)}</summary>
+  </entry>`;
+  }).join("\n");
+  const updated = items.reduce((m, it) => (it.releaseDate > m ? it.releaseDate : m), "");
+  write(TZN_FEED(lang).slice(1), `<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="${lang}">
+  <id>${abs(ROUTES[lang].tzn)}</id>
+  <title>${esc(s.feedTitle)}</title>
+  <updated>${updated}T00:00:00Z</updated>
+  <link rel="alternate" href="${abs(ROUTES[lang].tzn)}"/>
+  <link rel="self" href="${abs(TZN_FEED(lang))}"/>
+  <author><name>Saat Tarih</name></author>
+${entries}
+</feed>
+`);
+  return simplePage(lang, "tzn", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "tzn", title: s.h1 }, nav: "world", searchK: s.search });
+}
+
 function buildUnix(lang) {
   const t = I[lang], s = t.unix;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].unix }];
@@ -2624,7 +2682,7 @@ ${sections}
 
 const built = [];
 for (const lang of LANGS) {
-  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
+  built.push(buildHome(lang), buildWorld(lang), buildToolsHub(lang), ...TOOL_KEYS.map((k) => buildTool(lang, k)), ...TIMER_PRESETS.map((m) => buildTimerPreset(lang, m)), ...ALARM_PRESETS.map((t) => buildAlarmPreset(lang, t)), buildWeek(lang), buildTz(lang), buildConverter(lang), buildPlanner(lang), buildDateCalc(lang), buildEmbedGen(lang), buildPrayerHub(lang), ...PROVINCES.map((pr) => buildPrayerCity(lang, pr)), buildQibla(lang), buildZakat(lang), buildSky(lang), buildOtd(lang), ...(lang === "tr" ? [buildRetire()] : []), ...MORE_KEYS.map((k) => buildMore(lang, k)), buildApi(lang), buildBridge(lang), buildZonesHub(lang), ...TZ_ABBRS.map((z) => buildZone(lang, z)), buildDst(lang), buildTzNews(lang), buildUnix(lang), buildWorldHolHub(lang), ...WCC.map((cc) => buildWorldHol(lang, cc)), buildNature(lang), buildWeather(lang), buildPairHub(lang), ...PAIR_CITIES.map((c) => buildPair(lang, c)), ...CDP.map((x) => buildCdp(lang, x)), buildPrivacy(lang), ...CITIES.map((c) => buildCity(lang, c)));
   built.push(...HOL_YEARS.map((y) => buildCalendarYear(lang, y)), buildCalendarYear(lang, BUILD_YEAR, { index: true }));
   if (lang === "tr") built.push(...PROVINCES.flatMap((pr) => districtsOf(pr).map(buildPrayerDistrict)));
   built.push(buildFaq(lang)); // en sonda: diğer sayfaların SSS'leri toplanmış olur

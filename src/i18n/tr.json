@@ -844,6 +844,10 @@
         "otd": {
           "name": "Tarihte bugün",
           "desc": "Bugün ve istediğiniz günde tarihte neler oldu."
+        },
+        "tzn": {
+          "name": "Saat dilimi haberleri",
+          "desc": "Ülkelerin saat dilimi ve yaz saati kararları."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -2713,6 +2717,31 @@
       {
         "q": "Başka bir günün olaylarına bakabilir miyim?",
         "a": "Evet. Tarihte bugün sayfasındaki gün seçiciyle yılın herhangi bir gününü seçebilir ya da önceki ve sonraki gün düğmeleriyle gezinebilirsiniz; adres çubuğundaki bağlantı o günü gösterir."
+      }
+    ]
+  },
+  "tzn": {
+    "title": "Saat Dilimi Haberleri: Yaz Saati Değişiklikleri | Saat Tarih",
+    "description": "Dünyada saat dilimi ve yaz saati değişiklikleri: kalıcı saate geçen ülkeler, saatleri geri almayanlar, yeni saat dilimleri. Kaynak IANA tz veritabanı.",
+    "h1": "Saat dilimi haberleri",
+    "lead": "Ülkelerin saat dilimi ve yaz saati kararları; en yenisi en üstte. Her haberde yürürlük tarihi ve o yerde şu anki saat var.",
+    "search": "saat dilimi haberleri yaz saati değişikliği kalıcı yaz saati saat dilimi değişti tzdata time zone news",
+    "effective": "Yürürlük: {date}",
+    "source": "Kaynak: IANA tz veritabanı, tzdata {rel} ({date})",
+    "nowIn": "Şu an",
+    "feed": "Haber akışına abone olun (Atom)",
+    "feedNote": "Akış okuyucunuza ekleyin; yeni bir saat dilimi kararı eklendiğinde orada görünür.",
+    "note": "Telefonlar ve bilgisayarlar bu değişiklikleri işletim sistemi güncellemeleriyle alır; cihazınız güncel değilse saat bir süre yanlış görünebilir. Saat Tarih'in saati sunucuyla eşitlenir ama saat dilimi kuralları tarayıcınızdan gelir.",
+    "latest": "Son kontrol: tzdata {rel} ({date})",
+    "feedTitle": "Saat Tarih: Saat dilimi haberleri",
+    "faq": [
+      {
+        "q": "Saat dilimi haberleri nereden geliyor?",
+        "a": "İşletim sistemlerinin ve tarayıcıların kullandığı IANA tz veritabanının (tzdata) duyurularından. Her haberin altında hangi tzdata sürümüyle eklendiği yazar."
+      },
+      {
+        "q": "Bir ülke saatini değiştirince cihazım nasıl haberdar olur?",
+        "a": "Apple, Google ve Microsoft tz veritabanının yeni sürümünü işletim sistemi güncellemeleriyle dağıtır. Cihazınızı güncel tutarsanız saat kendiliğinden doğru olur."
       }
     ]
   }
