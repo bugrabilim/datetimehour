@@ -18,3 +18,4 @@ rootProject.name = "SaatTarih"
 include(":core")
 include(":app")
 include(":wear")
+include(":watchface")
