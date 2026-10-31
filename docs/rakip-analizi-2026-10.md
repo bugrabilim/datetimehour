@@ -113,7 +113,7 @@ Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 99 bitti, 
 | 89 | "Tarihte bugün" | Site | O | bitti |  |
 | 90 | Apple Watch ve Wear OS uygulamaları | Uygulama | B | bitti | #6 |
 | 91 | Çok ülkeli resmî tatil takvimleri | Site | B | bitti | #27 |
-| 92 | Başka ezan sesleri | Uygulama | B | bitti (Medine kaydı, ses seçimi; Mekke, İstanbul, Konya adayları indirilemedi) |  |
+| 92 | Başka ezan sesleri | Uygulama | B | bitti (Medine kaydı, ses seçimi; Konya adayı sahibin dinleyip onayını bekliyor; Mekke ve İstanbul indirilemedi) |  |
 | 93 | Konuma ya da takvime bağlı alarm | Uygulama | B | bitti |  |
 | 94 | iPhone'da müzikle alarm | Uygulama | B | bitti |  |
 | 95 | Apple TV ve Android TV uygulamaları | TV | B | bitti |  |
