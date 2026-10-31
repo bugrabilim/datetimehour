@@ -5732,5 +5732,54 @@
     "de": "Gestoppt",
     "az": "Dayandı",
     "ar": "متوقفة"
+  },
+  "float.title": {
+    "tr": "Yüzen saat",
+    "en": "Floating clock",
+    "de": "Schwebende Uhr",
+    "az": "Üzən saat",
+    "ar": "ساعة عائمة"
+  },
+  "float.start": {
+    "tr": "Yüzen saati aç",
+    "en": "Show floating clock",
+    "de": "Schwebende Uhr zeigen",
+    "az": "Üzən saatı aç",
+    "ar": "إظهار الساعة العائمة"
+  },
+  "float.stop": {
+    "tr": "Yüzen saati kapat",
+    "en": "Hide floating clock",
+    "de": "Schwebende Uhr ausblenden",
+    "az": "Üzən saatı bağla",
+    "ar": "إخفاء الساعة العائمة"
+  },
+  "float.noteIos": {
+    "tr": "Saat, resim içinde resim penceresinde başka uygulamaların üstünde durur; pencereyi sürükleyip küçültebilir ya da kenara itebilirsiniz. Ses çalmaz, internet gerekmez.",
+    "en": "The clock stays above other apps in a picture-in-picture window; drag, resize or tuck it to the side. It plays no sound and needs no internet.",
+    "de": "Die Uhr bleibt in einem Bild-in-Bild-Fenster über anderen Apps; ziehen, verkleinern oder an den Rand schieben. Kein Ton, kein Internet nötig.",
+    "az": "Saat şəkil içində şəkil pəncərəsində digər tətbiqlərin üstündə qalır; pəncərəni sürüşdürə, kiçildə və ya kənara itələyə bilərsiniz. Səs çalmır, internet lazım deyil.",
+    "ar": "تبقى الساعة فوق التطبيقات الأخرى في نافذة صورة داخل صورة؛ يمكنك سحبها أو تصغيرها أو دفعها إلى الحافة. لا تُصدر صوتًا ولا تحتاج إلى الإنترنت."
+  },
+  "float.noteAndroid": {
+    "tr": "Saat, başka uygulamaların üstünde küçük bir pencerede durur; sürükleyerek taşıyın, bildirimden kapatın. İlk açışta \"Diğer uygulamaların üzerinde göster\" izni istenir.",
+    "en": "The clock stays above other apps in a small window; drag it to move it and close it from the notification. The first time, the \"Display over other apps\" permission is requested.",
+    "de": "Die Uhr bleibt in einem kleinen Fenster über anderen Apps; zum Verschieben ziehen, über die Benachrichtigung schließen. Beim ersten Mal wird die Berechtigung „Über anderen Apps einblenden“ angefragt.",
+    "az": "Saat digər tətbiqlərin üstündə kiçik pəncərədə qalır; sürüşdürərək daşıyın, bildirişdən bağlayın. İlk dəfə \"Digər tətbiqlərin üzərində göstər\" icazəsi istənilir.",
+    "ar": "تبقى الساعة فوق التطبيقات الأخرى في نافذة صغيرة؛ اسحبها لتحريكها وأغلقها من الإشعار. في المرة الأولى يُطلب إذن «العرض فوق التطبيقات الأخرى»."
+  },
+  "float.unsupported": {
+    "tr": "Bu cihaz resim içinde resmi desteklemiyor.",
+    "en": "This device does not support picture in picture.",
+    "de": "Dieses Gerät unterstützt Bild-in-Bild nicht.",
+    "az": "Bu cihaz şəkil içində şəkli dəstəkləmir.",
+    "ar": "هذا الجهاز لا يدعم صورة داخل صورة."
+  },
+  "float.channel": {
+    "tr": "Yüzen saat",
+    "en": "Floating clock",
+    "de": "Schwebende Uhr",
+    "az": "Üzən saat",
+    "ar": "ساعة عائمة"
   }
 }

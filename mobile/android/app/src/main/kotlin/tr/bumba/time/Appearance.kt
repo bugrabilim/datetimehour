@@ -257,6 +257,7 @@ fun AppearanceScreen() {
             }
             Text(L("look.photo.note") + " " + L("look.bg.note") + " " + L("look.bg.weatherNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
+        FloatingClockCard()
         // Fotoğraf slaytı: ana fotoğrafa ek en çok 10 fotoğraf sırayla
         AppCard {
             SectionTitle(L("look.slideshow"))

@@ -1351,5 +1351,12 @@
     <string name="tile_clock">الساعة</string>
     <string name="tile_stopwatchRunning">قيد التشغيل</string>
     <string name="tile_stopwatchStopped">متوقفة</string>
+    <string name="float_title">ساعة عائمة</string>
+    <string name="float_start">إظهار الساعة العائمة</string>
+    <string name="float_stop">إخفاء الساعة العائمة</string>
+    <string name="float_noteIos">تبقى الساعة فوق التطبيقات الأخرى في نافذة صورة داخل صورة؛ يمكنك سحبها أو تصغيرها أو دفعها إلى الحافة. لا تُصدر صوتًا ولا تحتاج إلى الإنترنت.</string>
+    <string name="float_noteAndroid">تبقى الساعة فوق التطبيقات الأخرى في نافذة صغيرة؛ اسحبها لتحريكها وأغلقها من الإشعار. في المرة الأولى يُطلب إذن «العرض فوق التطبيقات الأخرى».</string>
+    <string name="float_unsupported">هذا الجهاز لا يدعم صورة داخل صورة.</string>
+    <string name="float_channel">ساعة عائمة</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

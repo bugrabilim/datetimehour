@@ -1351,5 +1351,12 @@
     <string name="tile_clock">Saat</string>
     <string name="tile_stopwatchRunning">Sayıyor</string>
     <string name="tile_stopwatchStopped">Durdu</string>
+    <string name="float_title">Yüzen saat</string>
+    <string name="float_start">Yüzen saati aç</string>
+    <string name="float_stop">Yüzen saati kapat</string>
+    <string name="float_noteIos">Saat, resim içinde resim penceresinde başka uygulamaların üstünde durur; pencereyi sürükleyip küçültebilir ya da kenara itebilirsiniz. Ses çalmaz, internet gerekmez.</string>
+    <string name="float_noteAndroid">Saat, başka uygulamaların üstünde küçük bir pencerede durur; sürükleyerek taşıyın, bildirimden kapatın. İlk açışta \"Diğer uygulamaların üzerinde göster\" izni istenir.</string>
+    <string name="float_unsupported">Bu cihaz resim içinde resmi desteklemiyor.</string>
+    <string name="float_channel">Yüzen saat</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

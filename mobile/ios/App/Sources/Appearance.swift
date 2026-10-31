@@ -199,6 +199,7 @@ struct AppearanceView: View {
             } footer: {
                 Text(L("look.photo.note") + " " + L("look.bg.note") + " " + L("look.bg.weatherNote"))
             }
+            FloatingClockSection()
             // Fotoğraf slaytı: ana fotoğrafa ek en çok 10 fotoğraf sırayla
             Section {
                 if FullscreenPhoto.maxSlides - slideCount > 0 {

@@ -47250,6 +47250,251 @@
           }
         }
       }
+    },
+    "float.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzen saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Floating clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schwebende Uhr"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üzən saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعة عائمة"
+          }
+        }
+      }
+    },
+    "float.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzen saati aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show floating clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schwebende Uhr zeigen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üzən saatı aç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إظهار الساعة العائمة"
+          }
+        }
+      }
+    },
+    "float.stop": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzen saati kapat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide floating clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schwebende Uhr ausblenden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üzən saatı bağla"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إخفاء الساعة العائمة"
+          }
+        }
+      }
+    },
+    "float.noteIos": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat, resim içinde resim penceresinde başka uygulamaların üstünde durur; pencereyi sürükleyip küçültebilir ya da kenara itebilirsiniz. Ses çalmaz, internet gerekmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The clock stays above other apps in a picture-in-picture window; drag, resize or tuck it to the side. It plays no sound and needs no internet."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Uhr bleibt in einem Bild-in-Bild-Fenster über anderen Apps; ziehen, verkleinern oder an den Rand schieben. Kein Ton, kein Internet nötig."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat şəkil içində şəkil pəncərəsində digər tətbiqlərin üstündə qalır; pəncərəni sürüşdürə, kiçildə və ya kənara itələyə bilərsiniz. Səs çalmır, internet lazım deyil."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبقى الساعة فوق التطبيقات الأخرى في نافذة صورة داخل صورة؛ يمكنك سحبها أو تصغيرها أو دفعها إلى الحافة. لا تُصدر صوتًا ولا تحتاج إلى الإنترنت."
+          }
+        }
+      }
+    },
+    "float.noteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat, başka uygulamaların üstünde küçük bir pencerede durur; sürükleyerek taşıyın, bildirimden kapatın. İlk açışta \"Diğer uygulamaların üzerinde göster\" izni istenir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The clock stays above other apps in a small window; drag it to move it and close it from the notification. The first time, the \"Display over other apps\" permission is requested."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Uhr bleibt in einem kleinen Fenster über anderen Apps; zum Verschieben ziehen, über die Benachrichtigung schließen. Beim ersten Mal wird die Berechtigung „Über anderen Apps einblenden“ angefragt."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat digər tətbiqlərin üstündə kiçik pəncərədə qalır; sürüşdürərək daşıyın, bildirişdən bağlayın. İlk dəfə \"Digər tətbiqlərin üzərində göstər\" icazəsi istənilir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبقى الساعة فوق التطبيقات الأخرى في نافذة صغيرة؛ اسحبها لتحريكها وأغلقها من الإشعار. في المرة الأولى يُطلب إذن «العرض فوق التطبيقات الأخرى»."
+          }
+        }
+      }
+    },
+    "float.unsupported": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihaz resim içinde resmi desteklemiyor."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device does not support picture in picture."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Gerät unterstützt Bild-in-Bild nicht."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu cihaz şəkil içində şəkli dəstəkləmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا الجهاز لا يدعم صورة داخل صورة."
+          }
+        }
+      }
+    },
+    "float.channel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yüzen saat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Floating clock"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schwebende Uhr"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üzən saat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساعة عائمة"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

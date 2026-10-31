@@ -1351,5 +1351,12 @@
     <string name="tile_clock">Uhr</string>
     <string name="tile_stopwatchRunning">Läuft</string>
     <string name="tile_stopwatchStopped">Gestoppt</string>
+    <string name="float_title">Schwebende Uhr</string>
+    <string name="float_start">Schwebende Uhr zeigen</string>
+    <string name="float_stop">Schwebende Uhr ausblenden</string>
+    <string name="float_noteIos">Die Uhr bleibt in einem Bild-in-Bild-Fenster über anderen Apps; ziehen, verkleinern oder an den Rand schieben. Kein Ton, kein Internet nötig.</string>
+    <string name="float_noteAndroid">Die Uhr bleibt in einem kleinen Fenster über anderen Apps; zum Verschieben ziehen, über die Benachrichtigung schließen. Beim ersten Mal wird die Berechtigung „Über anderen Apps einblenden“ angefragt.</string>
+    <string name="float_unsupported">Dieses Gerät unterstützt Bild-in-Bild nicht.</string>
+    <string name="float_channel">Schwebende Uhr</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

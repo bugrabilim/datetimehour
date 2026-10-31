@@ -1351,5 +1351,12 @@
     <string name="tile_clock">Clock</string>
     <string name="tile_stopwatchRunning">Running</string>
     <string name="tile_stopwatchStopped">Stopped</string>
+    <string name="float_title">Floating clock</string>
+    <string name="float_start">Show floating clock</string>
+    <string name="float_stop">Hide floating clock</string>
+    <string name="float_noteIos">The clock stays above other apps in a picture-in-picture window; drag, resize or tuck it to the side. It plays no sound and needs no internet.</string>
+    <string name="float_noteAndroid">The clock stays above other apps in a small window; drag it to move it and close it from the notification. The first time, the \"Display over other apps\" permission is requested.</string>
+    <string name="float_unsupported">This device does not support picture in picture.</string>
+    <string name="float_channel">Floating clock</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

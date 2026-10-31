@@ -24,6 +24,8 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <!-- Health Connect: biten aralık antrenmanı egzersiz oturumu olarak yazılır (isteğe bağlı; okuma izni yok) -->
     <uses-permission android:name="android.permission.health.WRITE_EXERCISE" />
+    <!-- Yüzen saat (FloatingClock.kt): başka uygulamaların üstünde küçük saat penceresi; kullanıcı ayardan izin verir -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <queries>
         <package android:name="com.google.android.apps.healthdata" />
@@ -340,6 +342,14 @@
             <property
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Interval workout timer: speaks phase changes (work, rest, last round) and the 3-2-1 countdown while the screen is off; runs only during a workout the user started" />
+        </service>
+        <service
+            android:name=".FloatingClockService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Floating clock: keeps a small always-on-top clock window (TYPE_APPLICATION_OVERLAY) the user turned on; stopped from its notification" />
         </service>
         <service
             android:name=".AlarmRingService"
