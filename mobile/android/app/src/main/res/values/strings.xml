@@ -1339,5 +1339,7 @@
     <string name="health_noteAndroid">Biten aralık antrenmanı ve rutin, Health Connect\'e egzersiz oturumu olarak yazılır (tür, başlangıç ve süre). Uygulama sağlık verilerinizi okumaz.</string>
     <string name="health_unavailable">Bu cihazda kullanılamıyor.</string>
     <string name="health_denied">İzin verilmedi. Telefonun ayarlarından açabilirsiniz.</string>
+    <string name="look_bg_weather">Hava durumu</string>
+    <string name="look_bg_weatherNote">Hava durumu arka planı seçili konumdaki havayı (açık, bulutlu, yağmur, kar, sis, fırtına) gökyüzünün üstüne çizer; hava yaklaşık 15 dakikada bir yenilenir.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -2,6 +2,13 @@ package tr.bumba.time
 
 import android.provider.Settings
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -28,10 +35,10 @@ import kotlin.math.sin
  * yüksekliğine göre gündüz, alacakaranlık ya da gece olur. iOS'taki AnimatedBackground ile aynı renkler ve hareket.
  */
 enum class FullscreenBackground(val id: String) {
-    PLAIN("plain"), PHOTO("photo"), SKY("sky"), FLOW("flow"), STARS("stars");
+    PLAIN("plain"), PHOTO("photo"), SKY("sky"), FLOW("flow"), STARS("stars"), WEATHER("weather");
 
     val title: String get() = L("look.bg.$id")
-    val animated: Boolean get() = this == SKY || this == FLOW || this == STARS
+    val animated: Boolean get() = this != PLAIN && this != PHOTO
 
     companion object {
         const val KEY = "fsBg"
@@ -40,6 +47,22 @@ enum class FullscreenBackground(val id: String) {
             entries.firstOrNull { it.id == raw } ?: if (hasPhoto) PHOTO else PLAIN
 
         val current: FullscreenBackground get() = of(Prefs.fsBg, Prefs.fsPhoto > 0)
+    }
+}
+
+/** Havaya göre arka planın türü (rakip analizi listesi #79; iOS'taki SkyWeather ile aynı): WMO kodundan */
+enum class SkyWeather {
+    CLEAR, CLOUDY, RAIN, SNOW, FOG, STORM;
+
+    companion object {
+        fun of(code: Int): SkyWeather = when (code) {
+            0, 1 -> CLEAR
+            45, 48 -> FOG
+            in 51..67, in 80..82 -> RAIN
+            in 71..77, 85, 86 -> SNOW
+            in 95..99 -> STORM
+            else -> CLOUDY
+        }
     }
 }
 
@@ -69,11 +92,71 @@ fun AnimatedBackground(kind: FullscreenBackground, modifier: Modifier = Modifier
     val place = AppPlace.current()
     val accent = Theme.c.accent
     val accent2 = Theme.c.accent2
-    Canvas(modifier) {
-        when (kind) {
-            FullscreenBackground.SKY -> sky(t, SkyMath.sunAltitude(place.lat, place.lon, System.currentTimeMillis()))
-            FullscreenBackground.FLOW -> flow(t, listOf(accent, accent2, Color(0xFF6C4AB6)))
-            else -> stars(t, listOf(Color(0xFF05070F), Color(0xFF111A3A)), 1f)
+    // Hava durumu arka planı: seçili yerin güncel havası (Open-Meteo, 15 dk önbellek)
+    var sky by remember { mutableStateOf(WeatherCache.cached(place.lat, place.lon)?.let { SkyWeather.of(it.current.code) }) }
+    if (kind == FullscreenBackground.WEATHER) LaunchedEffect(place.id) {
+        while (true) {
+            runCatching { WeatherCache.weather(place.lat, place.lon) }.getOrNull()?.let { sky = SkyWeather.of(it.current.code) }
+            kotlinx.coroutines.delay(900_000)
+        }
+    }
+    Box(modifier) {
+        Canvas(Modifier.fillMaxSize()) {
+            when (kind) {
+                FullscreenBackground.SKY -> sky(t, SkyMath.sunAltitude(place.lat, place.lon, System.currentTimeMillis()))
+                FullscreenBackground.WEATHER -> weather(t, SkyMath.sunAltitude(place.lat, place.lon, System.currentTimeMillis()), sky ?: SkyWeather.CLEAR)
+                FullscreenBackground.FLOW -> flow(t, listOf(accent, accent2, Color(0xFF6C4AB6)))
+                else -> stars(t, listOf(Color(0xFF05070F), Color(0xFF111A3A)), 1f)
+            }
+        }
+        // Veri Open-Meteo'dan: atıf (CC BY 4.0)
+        if (kind == FullscreenBackground.WEATHER && sky != null) {
+            WeatherAttribution(Modifier.align(Alignment.TopStart).statusBarsPadding().padding(12.dp))
+        }
+    }
+}
+
+/** Gökyüzü (Güneş'in yüksekliğine göre) + hava: bulut, yağmur, kar, sis, şimşek */
+private fun DrawScope.weather(t: Double, alt: Double, w: SkyWeather) {
+    sky(t, alt)
+    val dp = density
+    when (w) {
+        SkyWeather.CLEAR -> Unit
+        SkyWeather.CLOUDY -> { drawRect(Color(0xFF737373).copy(alpha = 0.25f)); clouds(t * 0.8) }
+        SkyWeather.FOG -> { drawRect(Brush.verticalGradient(listOf(Color.White.copy(alpha = 0.15f), Color.White.copy(alpha = 0.45f)))); clouds(t * 0.4) }
+        SkyWeather.RAIN, SkyWeather.STORM -> {
+            drawRect(Color(0xFF333333).copy(alpha = 0.35f))
+            clouds(t)
+            if (w == SkyWeather.STORM) {
+                // Arada bir kısa şimşek (12 sn'de bir, 0,15 sn)
+                val p = t % 12
+                if (p < 0.15) drawRect(Color.White.copy(alpha = (0.35 * (1 - p / 0.15)).toFloat()))
+            }
+            var seed = 0xA1A1L
+            fun rnd(): Double { seed = seed * 6364136223846793005L + 1442695040888963407L; return (seed ushr 11).toDouble() / (1L shl 53).toDouble() }
+            repeat(if (w == SkyWeather.STORM) 140 else 90) {
+                val x0 = rnd() * size.width
+                val speed = (380 + rnd() * 220) * dp
+                val len = (10 + rnd() * 14) * dp
+                val y = (rnd() * size.height + t * speed) % (size.height + len) - len
+                var x = (x0 - (y + len) * 0.12) % size.width
+                if (x < 0) x += size.width
+                drawLine(Color.White.copy(alpha = 0.45f), Offset(x.toFloat(), y.toFloat()), Offset((x - len * 0.12).toFloat(), (y + len).toFloat()), strokeWidth = 1.2f * dp)
+            }
+        }
+        SkyWeather.SNOW -> {
+            drawRect(Color(0xFF999999).copy(alpha = 0.2f))
+            var seed = 0x5E0L
+            fun rnd(): Double { seed = seed * 6364136223846793005L + 1442695040888963407L; return (seed ushr 11).toDouble() / (1L shl 53).toDouble() }
+            repeat(110) {
+                val x0 = rnd() * size.width
+                val speed = (25 + rnd() * 45) * dp
+                val r = ((1.2 + rnd() * 2.6) * dp).toFloat()
+                val ph = rnd() * 6.28
+                val y = (rnd() * size.height + t * speed) % (size.height + 10 * dp) - 5 * dp
+                val x = x0 + 12 * dp * sin(t * 0.8 + ph)
+                drawCircle(Color.White.copy(alpha = 0.8f), r, Offset(x.toFloat(), y.toFloat()))
+            }
         }
     }
 }

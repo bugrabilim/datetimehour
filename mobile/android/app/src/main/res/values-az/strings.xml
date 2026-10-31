@@ -1339,5 +1339,7 @@
     <string name="health_noteAndroid">Bitən aralıq məşqi və rutin Health Connect-ə məşq sessiyası kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur.</string>
     <string name="health_unavailable">Bu cihazda mövcud deyil.</string>
     <string name="health_denied">İcazə verilmədi. Telefonun ayarlarından aça bilərsiniz.</string>
+    <string name="look_bg_weather">Hava</string>
+    <string name="look_bg_weatherNote">Hava arxa fonu seçilmiş yerdəki havanı (açıq, buludlu, yağış, qar, duman, tufan) səmanın üzərində çəkir; təxminən 15 dəqiqədən bir yenilənir.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

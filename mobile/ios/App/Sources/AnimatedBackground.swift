@@ -1,20 +1,39 @@
 import SwiftUI
+import WeatherKit
 
 /// Tam ekran saatin arka planı (30 Ekim 2026, rakip analizi #26): düz, fotoğraf ya da hareketli (gökyüzü, renk akışı,
 /// yıldızlar). Seçim `fsBg`; kayıt yoksa fotoğraf varsa "photo", yoksa "plain". Hareketli olanlar Canvas ile çizilir;
 /// "hareketi azalt" açıksa durağan tek kare. Gökyüzü, seçili yerde Güneş'in yüksekliğine göre (küredeki Güneş formülü)
 /// gündüz, alacakaranlık ya da gece olur. Android'deki AnimatedBackground ile aynı renkler ve hareket.
 enum FullscreenBackground: String, CaseIterable, Identifiable {
-    case plain, photo, sky, flow, stars
+    case plain, photo, sky, flow, stars, weather
 
     static let key = "fsBg"
     var id: String { rawValue }
     var title: String { L("look.bg.\(rawValue)") }
-    var animated: Bool { self == .sky || self == .flow || self == .stars }
+    var animated: Bool { self != .plain && self != .photo }
 
     static var current: FullscreenBackground {
         if let raw = UserDefaults.standard.string(forKey: key), let v = FullscreenBackground(rawValue: raw) { return v }
         return UserDefaults.standard.double(forKey: FullscreenPhoto.versionKey) > 0 ? .photo : .plain
+    }
+}
+
+/// Havaya göre arka planın türü (rakip analizi listesi #79): gökyüzünün üstüne çizilen hava
+enum SkyWeather: String {
+    case clear, cloudy, rain, snow, fog, storm
+
+    /// WeatherKit durumu → çizim türü
+    init(_ c: WeatherCondition) {
+        switch c {
+        case .clear, .mostlyClear, .hot, .frigid: self = .clear
+        case .partlyCloudy, .mostlyCloudy, .cloudy, .breezy, .windy, .smoky, .blowingDust: self = .cloudy
+        case .foggy, .haze: self = .fog
+        case .snow, .heavySnow, .flurries, .blowingSnow, .blizzard, .sleet, .wintryMix, .freezingRain, .hail, .sunFlurries: self = .snow
+        case .thunderstorms, .isolatedThunderstorms, .scatteredThunderstorms, .strongStorms, .tropicalStorm, .hurricane: self = .storm
+        case .rain, .heavyRain, .drizzle, .freezingDrizzle, .sunShowers: self = .rain
+        @unknown default: self = .cloudy
+        }
     }
 }
 
@@ -23,20 +42,83 @@ struct AnimatedBackground: View {
     let kind: FullscreenBackground
     var place: AppPlace = PlaceModel.shared.place
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    /// Hava durumu arka planı için seçili yerin güncel havası (WeatherKit, 15 dk önbellek)
+    @State private var weather: SkyWeather?
 
     var body: some View {
-        TimelineView(.animation(minimumInterval: 1.0 / 30, paused: reduceMotion)) { context in
-            let t = reduceMotion ? 0 : context.date.timeIntervalSinceReferenceDate
-            Canvas { ctx, size in
-                switch kind {
-                case .sky: Self.sky(&ctx, size, t: t, alt: Self.sunAltitude(place: place, at: context.date))
-                case .flow: Self.flow(&ctx, size, t: t)
-                default: Self.stars(&ctx, size, t: t, base: [Color(hex: 0x05070F), Color(hex: 0x111A3A)], alpha: 1)
+        ZStack(alignment: .topLeading) {
+            TimelineView(.animation(minimumInterval: 1.0 / 30, paused: reduceMotion)) { context in
+                let t = reduceMotion ? 0 : context.date.timeIntervalSinceReferenceDate
+                Canvas { ctx, size in
+                    switch kind {
+                    case .sky: Self.sky(&ctx, size, t: t, alt: Self.sunAltitude(place: place, at: context.date))
+                    case .weather: Self.weather(&ctx, size, t: t, alt: Self.sunAltitude(place: place, at: context.date), sky: weather ?? .clear)
+                    case .flow: Self.flow(&ctx, size, t: t)
+                    default: Self.stars(&ctx, size, t: t, base: [Color(hex: 0x05070F), Color(hex: 0x111A3A)], alpha: 1)
+                    }
                 }
             }
+            .ignoresSafeArea()
+            .accessibilityHidden(true)
+            // WeatherKit verisi gösterildiği için Apple Hava Durumu işareti ve yasal bağlantı (App Review 5.2.5)
+            if kind == .weather, weather != nil {
+                AppleWeatherMark(compact: true, onDark: true)
+                    .padding(12)
+            }
         }
-        .ignoresSafeArea()
-        .accessibilityHidden(true)
+        .task(id: kind == .weather ? place.key : "") {
+            guard kind == .weather else { return }
+            while !Task.isCancelled {
+                if let w = try? await WeatherCache.weather(lat: place.lat, lon: place.lon) { weather = SkyWeather(w.currentWeather.condition) }
+                try? await Task.sleep(for: .seconds(900))
+            }
+        }
+    }
+
+    /// Gökyüzü (Güneş'in yüksekliğine göre) + hava: bulut, yağmur, kar, sis, şimşek
+    static func weather(_ ctx: inout GraphicsContext, _ size: CGSize, t: Double, alt: Double, sky w: SkyWeather) {
+        sky(&ctx, size, t: t, alt: alt)
+        let full = Path(CGRect(origin: .zero, size: size))
+        switch w {
+        case .clear:
+            break
+        case .cloudy:
+            ctx.fill(full, with: .color(Color(white: 0.45).opacity(0.25)))
+            clouds(&ctx, size, t: t * 0.8)
+        case .fog:
+            ctx.fill(full, with: .linearGradient(Gradient(colors: [.white.opacity(0.15), .white.opacity(0.45)]),
+                                                 startPoint: .zero, endPoint: CGPoint(x: 0, y: size.height)))
+            clouds(&ctx, size, t: t * 0.4)
+        case .rain, .storm:
+            ctx.fill(full, with: .color(Color(white: 0.2).opacity(0.35)))
+            clouds(&ctx, size, t: t)
+            if w == .storm {
+                // Arada bir kısa şimşek (12 sn'de bir, 0,15 sn)
+                let p = t.truncatingRemainder(dividingBy: 12)
+                if p < 0.15 { ctx.fill(full, with: .color(.white.opacity(0.35 * (1 - p / 0.15)))) }
+            }
+            var seed: UInt64 = 0xA1A1
+            func rnd() -> Double { seed = seed &* 6364136223846793005 &+ 1442695040888963407; return Double(seed >> 11) / Double(1 << 53) }
+            var drops = Path()
+            for _ in 0..<(w == .storm ? 140 : 90) {
+                let x0 = rnd() * size.width, speed = 380 + rnd() * 220, len = 10 + rnd() * 14
+                let y = (rnd() * size.height + t * speed).truncatingRemainder(dividingBy: size.height + len) - len
+                let x = (x0 - (y + len) * 0.12).truncatingRemainder(dividingBy: size.width)
+                drops.move(to: CGPoint(x: x < 0 ? x + size.width : x, y: y))
+                drops.addLine(to: CGPoint(x: (x < 0 ? x + size.width : x) - len * 0.12, y: y + len))
+            }
+            ctx.stroke(drops, with: .color(.white.opacity(0.45)), lineWidth: 1.2)
+        case .snow:
+            ctx.fill(full, with: .color(Color(white: 0.6).opacity(0.2)))
+            var seed: UInt64 = 0x5E0
+            func rnd() -> Double { seed = seed &* 6364136223846793005 &+ 1442695040888963407; return Double(seed >> 11) / Double(1 << 53) }
+            for _ in 0..<110 {
+                let x0 = rnd() * size.width, speed = 25 + rnd() * 45, r = 1.2 + rnd() * 2.6, ph = rnd() * 6.28
+                let y = (rnd() * size.height + t * speed).truncatingRemainder(dividingBy: size.height + 10) - 5
+                let x = x0 + 12 * sin(t * 0.8 + ph)
+                ctx.fill(Path(ellipseIn: CGRect(x: x - r, y: y - r, width: 2 * r, height: 2 * r)), with: .color(.white.opacity(0.8)))
+            }
+        }
     }
 
     /// Seçili yerde Güneş'in yüksekliği (derece): alt güneş noktasından küresel üçgen

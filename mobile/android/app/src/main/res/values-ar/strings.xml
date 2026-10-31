@@ -1339,5 +1339,7 @@
     <string name="health_noteAndroid">يُسجَّل كل تمرين متقطع أو روتين منتهٍ في Health Connect كجلسة تمرين (النوع والبداية والمدة). لا يقرأ التطبيق بياناتك الصحية.</string>
     <string name="health_unavailable">غير متاح على هذا الجهاز.</string>
     <string name="health_denied">لم يُمنح الإذن. يمكنك السماح به من إعدادات الهاتف.</string>
+    <string name="look_bg_weather">الطقس</string>
+    <string name="look_bg_weatherNote">ترسم خلفية الطقس حالة الطقس الحالية في الموقع المحدد (صافٍ، غائم، مطر، ثلج، ضباب، عاصفة) فوق السماء، وتُحدَّث كل 15 دقيقة تقريبًا.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

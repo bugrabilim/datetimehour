@@ -1339,5 +1339,7 @@
     <string name="health_noteAndroid">Each finished interval workout or routine is written to Health Connect as an exercise session (type, start and duration). The app does not read your health data.</string>
     <string name="health_unavailable">Not available on this device.</string>
     <string name="health_denied">Permission not granted. You can allow it in the phone\'s settings.</string>
+    <string name="look_bg_weather">Weather</string>
+    <string name="look_bg_weatherNote">The weather background draws the current weather at the selected location (clear, cloudy, rain, snow, fog, storm) over the sky; it refreshes about every 15 minutes.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

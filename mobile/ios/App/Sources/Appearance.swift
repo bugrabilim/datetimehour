@@ -197,7 +197,7 @@ struct AppearanceView: View {
             } header: {
                 Text(L("look.photo"))
             } footer: {
-                Text(L("look.photo.note") + " " + L("look.bg.note"))
+                Text(L("look.photo.note") + " " + L("look.bg.note") + " " + L("look.bg.weatherNote"))
             }
             // Fotoğraf slaytı: ana fotoğrafa ek en çok 10 fotoğraf sırayla
             Section {

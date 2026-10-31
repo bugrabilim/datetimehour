@@ -60,7 +60,7 @@ class MoreScreensTest {
     }
 
     /** İstanbul için örnek hava durumu (Open-Meteo yanıtı biçiminde) */
-    private fun seedWeather() {
+    private fun seedWeather(current: Int = 2) {
         val now = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS)
         val hours = (0 until 48).map { now.plusHours(it.toLong()) }
         val days = (0 until 7).map { LocalDate.now().plusDays(it.toLong()) }
@@ -69,7 +69,7 @@ class MoreScreensTest {
             .put("timezone", "Europe/Istanbul")
             .put("current", JSONObject().put("temperature_2m", 18.4).put("apparent_temperature", 17.2)
                 .put("relative_humidity_2m", 64).put("wind_speed_10m", 14.0).put("wind_direction_10m", 40)
-                .put("pressure_msl", 1016.0).put("uv_index", 3.1).put("weather_code", 2).put("is_day", 1).put("precipitation", 0))
+                .put("pressure_msl", 1016.0).put("uv_index", 3.1).put("weather_code", current).put("is_day", 1).put("precipitation", 0))
             .put("hourly", JSONObject()
                 .put("time", hours.map { it.toString() }.let { org.json.JSONArray(it) })
                 .put("temperature_2m", org.json.JSONArray(hours.indices.map { 14 + 5 * kotlin.math.sin(it / 4.0) }))
@@ -177,6 +177,13 @@ class MoreScreensTest {
         shot("tr-tam-ekran-renk-akisi") { FullscreenClock {} }
         Prefs.saveFsBg("sky")
         page("tr-saat-gorunumu-gokyuzu", "Saat görünümü") { AppearanceScreen() }
+        // Havaya göre: İstanbul'da yağmur ve kar (örnek veri)
+        Prefs.saveProvince("istanbul")
+        Prefs.saveFsBg("weather")
+        seedWeather(61)
+        shot("tr-tam-ekran-hava-yagmur") { FullscreenClock {} }
+        seedWeather(73)
+        shot("tr-tam-ekran-hava-kar") { FullscreenClock {} }
         Prefs.saveFsBg("plain")
     }
     @Test fun appearance() {

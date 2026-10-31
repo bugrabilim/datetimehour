@@ -255,7 +255,7 @@ fun AppearanceScreen() {
                     Text(L("look.photo.remove"), color = Color(0xFFD32F2F))
                 }
             }
-            Text(L("look.photo.note") + " " + L("look.bg.note"), color = Theme.c.muted, fontSize = 12.sp)
+            Text(L("look.photo.note") + " " + L("look.bg.note") + " " + L("look.bg.weatherNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         // Fotoğraf slaytı: ana fotoğrafa ek en çok 10 fotoğraf sırayla
         AppCard {
