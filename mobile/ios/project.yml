@@ -245,6 +245,7 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: TV/Sources
+      - path: TV/Assets.xcassets
       - path: Desk/Sources
       - path: App/Sources/Province.swift
       - path: App/Sources/Schedule.swift
@@ -267,6 +268,8 @@ targets:
       base:
         PRODUCT_NAME: SaatTarihTV
         PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.tv
+        # Katmanlı simge ve üst raf görselleri (scripts/gen-desk-icons.py)
+        ASSETCATALOG_COMPILER_APPICON_NAME: "App Icon & Top Shelf Image"
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
@@ -282,6 +285,7 @@ targets:
     deploymentTarget: "2.0"
     sources:
       - path: Vision/Sources
+      - path: Vision/Assets.xcassets
       - path: Desk/Sources
       - path: App/Sources/Province.swift
       - path: App/Sources/Schedule.swift
@@ -304,6 +308,8 @@ targets:
       base:
         PRODUCT_NAME: SaatTarihVision
         PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.vision
+        # Üç katmanlı simge (scripts/gen-desk-icons.py)
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic
         SWIFT_VERSION: "5.0"
