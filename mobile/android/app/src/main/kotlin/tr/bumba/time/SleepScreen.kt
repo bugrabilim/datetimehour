@@ -220,6 +220,25 @@ fun SleepScreen() {
             Text(L("sleep.cycles.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
 
+        // Akıllı alarm (SmartSleep): pencereli sıradaki alarm için uyku oturumu
+        SectionTitle(L("alarm.smart"))
+        AppCard {
+            fun hm(ms: Long) = Fmt.time(java.time.Instant.ofEpochMilli(ms).atZone(ZoneId.systemDefault()))
+            val session = SmartSleep.session
+            val next = remember(now.epochSecond / 30, session) { SmartSleep.next() }
+            if (session != null) {
+                Text(T("smart.running", hm(session.windowStart), hm(session.at)), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                Text(if (SmartSleep.watching) T("smart.moving", SmartSleep.movingMinutes) else L("smart.waiting"), color = Theme.c.muted, fontSize = 13.sp)
+                RoundButton(L("smart.stop"), false, Modifier.fillMaxWidth()) { SmartSleep.stop(context) }
+            } else if (next != null) {
+                Text(T("smart.next", hm(next.second - next.first.smart * 60_000L), hm(next.second)), color = Theme.c.text, fontSize = 15.sp)
+                RoundButton(L("smart.start"), true, Modifier.fillMaxWidth()) { ask(); SmartSleep.start(context) }
+            } else {
+                Text(L("smart.none"), color = Theme.c.text, fontSize = 14.sp)
+            }
+            Text(L("smart.how"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+
         SectionTitle(L("sleep.sounds"))
         AppCard {
             NoiseControls(noise, volume, allowOff = false,

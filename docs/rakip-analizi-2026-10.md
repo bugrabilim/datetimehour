@@ -18,7 +18,7 @@ Sahibin isteği (30 Ekim 2026): rakip uygulama ve sitelerde olup Saat Tarih'te o
 
 ## Tek liste (30 Ekim 2026'dan beri; sahibin isteği: "tek liste olarak tut, her işe bir numara ver, K-O-B sırala, bitenler de dursun")
 
-Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 100 bitti, 7 kararla yapılmayacak (açık iş kalmadı, 31 Ekim 2026). Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
+Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 104 bitti (dördü 31 Ekim 2026 akşamı sahibin kararıyla sınırlı kapsamda: 101, 104, 106, 107), 3 kararla yapılmayacak (102, 103, 105); açık iş kalmadı. Sıra çabaya göre (K küçük: bir tur; O orta; B büyük), her çaba grubunda önce bitenler, sonra açıklar; en altta kararla yapılmayanlar. Numaralar sabittir: iş bitince yalnız "Durum" değişir, yeni iş en sona eklenir. "Eski no" sütunu ilk 28 maddelik tablonun numarasıdır; CLAUDE.md ve commit mesajlarındaki "rakip analizi #N" bu eski numarayı gösterir. Hangi açık işin yapılacağı sahibin kararıdır.
 
 | No | İş | Nerede | Çaba | Durum | Eski no |
 |---|---|---|---|---|---|
@@ -122,13 +122,13 @@ Ajan raporlarındaki bütün maddeler tek numaralı listede: 107 iş; 100 bitti,
 | 98 | Odakta uygulama/site engelleme | Uygulama | B | bitti (iOS'ta Apple'ın FamilyControls onayı bekleniyor, o zamana kadar gizli) |  |
 | 100 | Saat dilimi haberleri ve bülten | Site | B | bitti (sayfa ve Atom akışı; e-posta bülteni yok) |  |
 | 99 | Daha çok dil | Uygulama + site | B | bitti (31 Ekim 2026: ilk dalga id, ur, fa, fr, ru; ikinci dalga ja, ko, zh, fil, th; on beş dil, metinler gözden geçirme bekler) |  |
-| 101 | Uyku takibi, horlama kaydı, uyku evresine göre akıllı alarm | Uygulama | — | yapılmayacak (gizlilik: mikrofon, hareket) |  |
-| 102 | Sitede hesap ve üyelik | Site | — | yapılmayacak (standartta bu proje için yok) |  |
-| 103 | 81 il saat sayfaları | Site | — | yapılmayacak (kopya içerik riski) |  |
-| 104 | Saat dilimi haritası (dönen dünya) | Site | — | yapılmayacak (sitede kaldırıldı, 30 Ekim kararı; uygulamada var) |  |
-| 105 | Namaz serileri, ibadet rozeti | Uygulama | — | yapılmayacak (inanç ele vermemek için) |  |
-| 106 | Ekip planlama, toplantı oylaması | Site | — | yapılmayacak (hesap gerektirir) |  |
-| 107 | Spotify/YouTube alarm sesleri | Uygulama | — | yapılmayacak (dış hesap gerektirir) |  |
+| 101 | Uyku takibi, horlama kaydı, uyku evresine göre akıllı alarm | Uygulama | O | bitti, yalnız akıllı alarm (31 Ekim 2026, sahibin kararı: hareketle hafif uyku, alarm penceresinde; uyku takibi ve horlama kaydı yok) |  |
+| 102 | Sitede hesap ve üyelik | Site | — | yapılmayacak (Bumba standardı statik sitede yasaklar; 31 Ekim 2026'da sahip de "olmasın" dedi) |  |
+| 103 | 81 il saat sayfaları | Site | — | yapılmayacak (kopya içerik riski; 31 Ekim 2026 sahip: "gerek yok") |  |
+| 104 | Saat dilimi haritası (dönen dünya) | Site | K | bitti (31 Ekim 2026, sahibin kararı: web ana sayfasına geri döndü; OSM karoları dış hizmet izniyle) |  |
+| 105 | Namaz serileri, ibadet rozeti | Uygulama | — | yapılmayacak (rozet: Bumba standardı madde 13; seri: 31 Ekim 2026 sahip "gerek yok") |  |
+| 106 | Ekip planlama, toplantı oylaması | Site | O | bitti (31 Ekim 2026: sunucusuz, bağlantıyla toplantı oylaması `/toplanti-oylamasi/`) |  |
+| 107 | Spotify/YouTube alarm sesleri | Uygulama + site | O | bitti, iPhone hariç (31 Ekim 2026: Android'de çalınca Spotify/YouTube bağlantısı açılır; web alarmında YouTube oynatıcısı, dış hizmet izniyle) |  |
 
 **Konumlanma notu (sahibin düzeltmesiyle, 30 Ekim 2026):** En güçlü doğrudan namaz rakibi **Vakit** (Hakan Çelik). Ücretsiz ve reklamsız; Apple Watch, Mac, Live Activity, 12 hesap yöntemi ve 25 dil var. Ona karşı farkımız fiyat değil, **yalnız namaz uygulaması olmayışımız**: saat (19 model, tam ekran), dünya saatleri ve küre, takvim, hava, mevsimler ve araçlar tek uygulamada. Masa, flip ve alarm kategorilerinde rakiplerin çoğu reklamlı ya da abonelikli; orada "ücretsiz, reklamsız" da belirgin bir farktır.
 

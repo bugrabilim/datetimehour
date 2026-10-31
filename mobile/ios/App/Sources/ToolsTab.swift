@@ -540,6 +540,16 @@ private struct AlarmEditor: View {
                 } footer: {
                     Text(L("alarm.preNote"))
                 }
+                // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
+                Section {
+                    Picker(L("alarm.smart"), selection: $item.smart) {
+                        ForEach(AlarmItem.smartChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.smartMin", m)).tag(m)
+                        }
+                    }
+                } footer: {
+                    Text(L("alarm.smart.note"))
+                }
                 // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
                 Section {
                     Picker(L("alarm.sunrise"), selection: $item.sunrise) {

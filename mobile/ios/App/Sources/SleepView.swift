@@ -143,6 +143,9 @@ struct SleepView: View {
                 Text(L("sleep.cycles.note"))
             }
 
+            // Akıllı alarm (SmartSleep): pencereli sıradaki alarm için uyku oturumu
+            SmartSleepSection()
+
             Section {
                 NoiseControls(kind: $noise, volume: $volume, allowOff: false)
                 Picker(L("sleep.timer"), selection: $timer) {

@@ -113,6 +113,32 @@ zamanı" ekranını açar (`SYSTEM_ALERT_WINDOW` ile, aşağıda 6). Süre bitin
 - **Video:** Pomodoro › Odakta engelle aç → bir uygulama seç → kullanım erişimini ver → Başlat → seçilen uygulamayı aç,
   "Odaklanma zamanı" ekranı gelir → "Ana ekrana dön". 30 sn yeterli.
 
+### 1f. Akıllı alarm (health; 31 Ekim 2026, sıradaki sürüm)
+
+`SmartSleepService` (SmartSleep.kt): kullanıcı Araçlar › Uyku › "Akıllı alarmla uyu"ya basınca başlar; alarmın akıllı
+alarm penceresinde (10–30 dk) ivmeölçeri okur, hafif uyku belirtisi (iki dakika hareket) görünce alarmı erken çalar;
+alarmdan 2 dk sonra ya da bildirimdeki "Durdur" ile kapanır. Tür `health`, izin `FOREGROUND_SERVICE_HEALTH`, önkoşul
+`HIGH_SAMPLING_RATE_SENSORS` (normal izin, sorulmaz; vücut sensörü ve etkinlik tanıma izni yok). Mikrofon ve kayıt yok.
+
+- **Tür:** Health
+- **Açıklama, yapıştır:**
+
+> Smart alarm: the user starts a sleep session for an alarm that has a smart-alarm window (10–30 minutes). Only during
+> that window the service reads the phone's accelerometer on the bed and, when movement suggests light sleep, rings
+> the alarm a little early; otherwise the alarm rings at its set time. No microphone, no recording; motion data stays
+> in memory and is never saved or sent. The ongoing notification shows the window and a Stop button.
+
+- **Kullanıcıya etkisi, yapıştır:**
+
+> If the service is stopped, the alarm still rings at its normal time (AlarmManager), but it cannot ring early in a
+> lighter sleep phase.
+
+- **Video:** Alarm düzenle › Akıllı alarm "30 dk" → Uyku › Akıllı alarmla uyu → bildirim görünür → telefonu sallayınca
+  (emülatörde sanal sensörle) alarm erken çalar. 30–60 sn.
+- **Alarm müziği bağlantısı** (Spotify/YouTube, `MusicLink`): yeni izin yok; alarm çalınca bağlantı `ACTION_VIEW` ile o
+  uygulamada açılır, alarm sesi `AlarmRingService`'te 1 dk sonra başlar (1b'deki mediaPlayback kullanımı). Veri güvenliği:
+  bağlantı cihazdan çıkmaz (yalnız kullanıcının seçtiği uygulamada açılır).
+
 ## 2. Tam ekran bildirim izni (Full-screen intent)
 
 Uygulama `USE_FULL_SCREEN_INTENT` kullanır: alarm çalınca kilit ekranında `AlarmActivity` açılır.

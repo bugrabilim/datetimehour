@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">Будильник</string>
     <string name="tools_alarm_defaultLabel">Будильник</string>
     <string name="tools_alarm_soundLabel">Звук будильника</string>
+    <string name="tools_alarm_ytLabel">Музыка YouTube (необязательно)</string>
+    <string name="tools_alarm_ytNote">Когда будильник срабатывает, запускается это видео; если не выключить его в течение 1 минуты, зазвучит и сигнал будильника (в том числе если браузер не запустит видео сам). Видео загружается с YouTube, поэтому нужно разрешить внешние сервисы.</string>
+    <string name="tools_alarm_ytInvalid">Это не ссылка на YouTube.</string>
+    <string name="tools_alarm_ytBlocked">Разрешите внешние сервисы для музыки YouTube; без разрешения будильник звонит своим звуком.</string>
+    <string name="tools_alarm_spotifyNote">Spotify не запускается в браузере сам; Spotify можно использовать как музыку будильника в приложении для Android.</string>
     <string name="tools_alarm_dayNames_0">Пн</string>
     <string name="tools_alarm_dayNames_1">Вт</string>
     <string name="tools_alarm_dayNames_2">Ср</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">Играть</string>
     <string name="sleep_stop">Стоп</string>
     <string name="sleep_sunriseInfo">Выберите «Свет рассвета» в будильнике (Инструменты › Будильник). Перед сном поставьте телефон на зарядку и оставьте полноэкранные часы открытыми (подойдёт и ночной режим): экран медленно светлеет за 10–30 минут до будильника.</string>
-    <string name="sleep_privacy">Отслеживания сна нет: микрофон и датчики движения не используются. Режим и настройки остаются на этом телефоне.</string>
+    <string name="sleep_privacy">Отслеживания сна нет, микрофон не используется. Во время сеанса умного будильника датчик движения читается только в окне будильника; ничего не сохраняется. Режим и настройки остаются на этом телефоне.</string>
     <string name="sleep_n_soon">Скоро время сна</string>
     <string name="sleep_n_now">Пора спать</string>
     <string name="sleep_n_body">Сон %1$s · подъём %2$s (%3$s сна)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">Выйти</string>
     <string name="desk_h12">12-часовой формат</string>
     <string name="desk_macNote">Уведомления о намазе — в приложении на iPhone.</string>
+    <string name="alarm_link">Ссылка на музыку</string>
+    <string name="alarm_link_placeholder">Ссылка на Spotify или YouTube</string>
+    <string name="alarm_link_note">Когда будильник срабатывает, ссылка открывается в приложении Spotify или YouTube; если не выключить его за 1 минуту, зазвучит и сигнал будильника. Если телефон заблокирован, музыка начнётся после разблокировки; запустит ли Spotify воспроизведение сам, зависит от приложения Spotify.</string>
+    <string name="alarm_link_invalid">Это не ссылка на Spotify или YouTube.</string>
+    <string name="alarm_link_try">Проверить</string>
+    <string name="alarm_link_open">Открыть музыку</string>
+    <string name="alarm_smart">Умный будильник</string>
+    <string name="alarm_smartMin">В пределах %1$s мин</string>
+    <string name="alarm_smart_note">Если на экране «Сон» запустить «Спать с умным будильником» и положить телефон на кровать, будильник сработает раньше, когда в этот промежуток до него будет замечено движение (лёгкий сон); иначе — вовремя.</string>
+    <string name="smart_notif">Умный будильник включён</string>
+    <string name="smart_notifText">%1$s–%2$s · оставьте телефон на кровати</string>
+    <string name="smart_start">Спать с умным будильником</string>
+    <string name="smart_stop">Остановить</string>
+    <string name="smart_next">Следующий умный будильник: между %1$s и %2$s</string>
+    <string name="smart_running">Умный будильник включён: сработает в лёгком сне между %1$s и %2$s.</string>
+    <string name="smart_moving">Минут с движением: %1$s</string>
+    <string name="smart_waiting">Движение отслеживается с начала окна.</string>
+    <string name="smart_none">Ни у одного будильника не задано окно умного будильника. Выберите окно «Умный будильник» в редакторе будильника.</string>
+    <string name="smart_how">Положите телефон на кровать рядом с подушкой и поставьте на зарядку. Датчик движения читается только в окне; ничего не записывается, данные остаются в памяти телефона и не сохраняются. Если движения нет, будильник сработает в обычное время.</string>
+    <string name="smart_howIOS">На iPhone сеанс идёт, пока приложение открыто (экран затемняется) или играет звук для сна; если выйти из приложения, будильник сработает в обычное время.</string>
     <string name="app_name">Время и дата</string>
 </resources>

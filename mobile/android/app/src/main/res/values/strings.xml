@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">Alarm</string>
     <string name="tools_alarm_defaultLabel">Alarm</string>
     <string name="tools_alarm_soundLabel">Alarm sesi</string>
+    <string name="tools_alarm_ytLabel">YouTube müziği (isteğe bağlı)</string>
+    <string name="tools_alarm_ytNote">Alarm çalınca bu video oynar; 1 dakika içinde kapatmazsanız alarm sesi de çalar (tarayıcı videoyu kendiliğinden oynatmazsa da). Video YouTube\'dan yüklendiği için dış hizmetlere izin gerekir.</string>
+    <string name="tools_alarm_ytInvalid">Bu bir YouTube bağlantısı değil.</string>
+    <string name="tools_alarm_ytBlocked">YouTube müziği için dış hizmetlere izin verin; izin yoksa alarm kendi sesiyle çalar.</string>
+    <string name="tools_alarm_spotifyNote">Spotify tarayıcıda kendiliğinden çalmaz; Spotify\'ı alarm müziği olarak Android uygulamasında kullanabilirsiniz.</string>
     <string name="tools_alarm_dayNames_0">Pzt</string>
     <string name="tools_alarm_dayNames_1">Sal</string>
     <string name="tools_alarm_dayNames_2">Çar</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">Çal</string>
     <string name="sleep_stop">Durdur</string>
     <string name="sleep_sunriseInfo">Bir alarmda \"Gün doğumu ışığı\"nı seçin (Araçlar › Alarm). Yatarken telefonu şarja takıp tam ekran saati açık bırakın (gece modu da olur): alarmdan 10–30 dakika önce ekran yavaşça aydınlanır.</string>
-    <string name="sleep_privacy">Uyku takibi yapılmaz: mikrofon ve hareket algılayıcısı kullanılmaz. Plan ve ayarlar yalnız bu telefonda durur.</string>
+    <string name="sleep_privacy">Uyku takibi yapılmaz, mikrofon kullanılmaz. Akıllı alarm oturumu açıkken yalnız alarm penceresinde hareket algılayıcısı okunur; veri kaydedilmez. Plan ve ayarlar yalnız bu telefonda durur.</string>
     <string name="sleep_n_soon">Yatma saati yaklaşıyor</string>
     <string name="sleep_n_now">Yatma saati</string>
     <string name="sleep_n_body">Yatma %1$s · kalkış %2$s (%3$s uyku)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">Çık</string>
     <string name="desk_h12">12 saat biçimi</string>
     <string name="desk_macNote">Vakit bildirimleri iPhone uygulamasında.</string>
+    <string name="alarm_link">Müzik bağlantısı</string>
+    <string name="alarm_link_placeholder">Spotify ya da YouTube bağlantısı</string>
+    <string name="alarm_link_note">Alarm çalınca bağlantı Spotify ya da YouTube uygulamasında açılır; 1 dakika içinde kapatmazsanız alarm sesi de çalar. Telefon kilitliyse müzik kilit açılınca başlar; Spotify\'ın kendiliğinden çalması Spotify uygulamasına bağlıdır.</string>
+    <string name="alarm_link_invalid">Bu bir Spotify ya da YouTube bağlantısı değil.</string>
+    <string name="alarm_link_try">Dene</string>
+    <string name="alarm_link_open">Müziği aç</string>
+    <string name="alarm_smart">Akıllı alarm</string>
+    <string name="alarm_smartMin">%1$s dk içinde</string>
+    <string name="alarm_smart_note">Uyku ekranında \"Akıllı alarmla uyu\"yu başlatıp telefonu yatağa koyarsanız, alarmdan önceki bu süre içinde hareket (hafif uyku) algılanınca alarm erken çalar; algılanmazsa saatinde çalar.</string>
+    <string name="smart_notif">Akıllı alarm açık</string>
+    <string name="smart_notifText">%1$s–%2$s · telefonu yatakta bırakın</string>
+    <string name="smart_start">Akıllı alarmla uyu</string>
+    <string name="smart_stop">Durdur</string>
+    <string name="smart_next">Sıradaki akıllı alarm: %1$s–%2$s arasında</string>
+    <string name="smart_running">Akıllı alarm açık: %1$s–%2$s arasında hafif uykuda çalar.</string>
+    <string name="smart_moving">Hareket algılanan dakika: %1$s</string>
+    <string name="smart_waiting">Pencere başlayınca hareket izlenir.</string>
+    <string name="smart_none">Akıllı alarm süresi seçilmiş bir alarm yok. Alarm düzenleyicisinde \"Akıllı alarm\" süresini seçin.</string>
+    <string name="smart_how">Telefonu yastığınızın yanına, yatağın üstüne koyun ve şarja takın. Hareket algılayıcısı yalnız pencerede okunur; ses kaydı yok, veri telefonda bellekte kalır ve kaydedilmez. Hareket algılanmazsa alarm normal saatinde çalar.</string>
+    <string name="smart_howIOS">iPhone\'da oturum, uygulama açıkken (ekran kararır) ya da uyku sesi çalarken sürer; uygulamadan çıkarsanız alarm normal saatinde çalar.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

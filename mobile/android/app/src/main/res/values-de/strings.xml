@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">Wecker</string>
     <string name="tools_alarm_defaultLabel">Wecker</string>
     <string name="tools_alarm_soundLabel">Wecktonart</string>
+    <string name="tools_alarm_ytLabel">YouTube-Musik (optional)</string>
+    <string name="tools_alarm_ytNote">Beim Klingeln läuft dieses Video; schalten Sie den Wecker nicht innerhalb von 1 Minute aus, ertönt zusätzlich der Weckton (auch wenn der Browser das Video nicht von selbst startet). Das Video wird von YouTube geladen, daher müssen externe Dienste erlaubt sein.</string>
+    <string name="tools_alarm_ytInvalid">Das ist kein YouTube-Link.</string>
+    <string name="tools_alarm_ytBlocked">Erlauben Sie externe Dienste für YouTube-Musik; ohne Zustimmung klingelt der Wecker mit seinem eigenen Ton.</string>
+    <string name="tools_alarm_spotifyNote">Spotify startet im Browser nicht von selbst; in der Android-App können Sie Spotify als Weckermusik verwenden.</string>
     <string name="tools_alarm_dayNames_0">Mo</string>
     <string name="tools_alarm_dayNames_1">Di</string>
     <string name="tools_alarm_dayNames_2">Mi</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">Abspielen</string>
     <string name="sleep_stop">Stoppen</string>
     <string name="sleep_sunriseInfo">Wählen Sie bei einem Wecker \"Sonnenaufgangslicht\" (Werkzeuge › Wecker). Legen Sie das Telefon zum Schlafen ans Ladegerät und lassen Sie die Vollbilduhr geöffnet (auch im Nachtmodus): 10–30 Minuten vor dem Wecker wird der Bildschirm langsam heller.</string>
-    <string name="sleep_privacy">Es gibt keine Schlafaufzeichnung: Mikrofon und Bewegungssensoren werden nicht verwendet. Plan und Einstellungen bleiben auf diesem Telefon.</string>
+    <string name="sleep_privacy">Es gibt keine Schlafaufzeichnung, das Mikrofon wird nicht verwendet. Während einer Sitzung mit intelligentem Wecker wird der Bewegungssensor nur im Zeitfenster gelesen; nichts wird gespeichert. Plan und Einstellungen bleiben auf diesem Telefon.</string>
     <string name="sleep_n_soon">Bald ist Schlafenszeit</string>
     <string name="sleep_n_now">Schlafenszeit</string>
     <string name="sleep_n_body">Schlafen %1$s · aufstehen %2$s (%3$s Schlaf)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">Beenden</string>
     <string name="desk_h12">12-Stunden-Format</string>
     <string name="desk_macNote">Gebetsbenachrichtigungen gibt es in der iPhone-App.</string>
+    <string name="alarm_link">Musiklink</string>
+    <string name="alarm_link_placeholder">Spotify- oder YouTube-Link</string>
+    <string name="alarm_link_note">Beim Klingeln öffnet sich der Link in der Spotify- oder YouTube-App; schalten Sie den Wecker nicht innerhalb von 1 Minute aus, ertönt zusätzlich der Weckton. Ist das Telefon gesperrt, startet die Musik nach dem Entsperren; ob Spotify von selbst abspielt, hängt von der Spotify-App ab.</string>
+    <string name="alarm_link_invalid">Das ist kein Spotify- oder YouTube-Link.</string>
+    <string name="alarm_link_try">Testen</string>
+    <string name="alarm_link_open">Musik öffnen</string>
+    <string name="alarm_smart">Intelligenter Wecker</string>
+    <string name="alarm_smartMin">Innerhalb von %1$s Min.</string>
+    <string name="alarm_smart_note">Wenn Sie im Bildschirm Schlaf „Mit intelligentem Wecker schlafen“ starten und das Telefon aufs Bett legen, klingelt der Wecker früher, sobald in dieser Zeit davor Bewegung (leichter Schlaf) erkannt wird; sonst pünktlich.</string>
+    <string name="smart_notif">Intelligenter Wecker an</string>
+    <string name="smart_notifText">%1$s–%2$s · Telefon auf dem Bett lassen</string>
+    <string name="smart_start">Mit intelligentem Wecker schlafen</string>
+    <string name="smart_stop">Beenden</string>
+    <string name="smart_next">Nächster intelligenter Wecker: zwischen %1$s und %2$s</string>
+    <string name="smart_running">Intelligenter Wecker an: klingelt zwischen %1$s und %2$s im leichten Schlaf.</string>
+    <string name="smart_moving">Minuten mit Bewegung: %1$s</string>
+    <string name="smart_waiting">Bewegung wird ab Beginn des Zeitfensters beobachtet.</string>
+    <string name="smart_none">Kein Wecker hat ein Zeitfenster für den intelligenten Wecker. Wählen Sie im Weckereditor ein „Intelligenter Wecker“-Fenster.</string>
+    <string name="smart_how">Legen Sie das Telefon neben das Kopfkissen aufs Bett und schließen Sie es ans Ladegerät an. Der Bewegungssensor wird nur im Zeitfenster gelesen; es wird nichts aufgezeichnet, die Daten bleiben im Speicher des Telefons und werden nicht gespeichert. Ohne Bewegung klingelt der Wecker zur normalen Zeit.</string>
+    <string name="smart_howIOS">Auf dem iPhone läuft die Sitzung, solange die App geöffnet ist (der Bildschirm wird abgedunkelt) oder ein Schlafklang spielt; verlassen Sie die App, klingelt der Wecker zur normalen Zeit.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

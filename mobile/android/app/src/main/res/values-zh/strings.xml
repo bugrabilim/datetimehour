@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">闹钟</string>
     <string name="tools_alarm_defaultLabel">闹钟</string>
     <string name="tools_alarm_soundLabel">闹钟铃声</string>
+    <string name="tools_alarm_ytLabel">YouTube 音乐（可选）</string>
+    <string name="tools_alarm_ytNote">闹钟响起时会播放此视频；如果您在 1 分钟内没有关闭，闹钟铃声也会响起（浏览器没有自动播放视频时也是如此）。视频从 YouTube 加载，因此需要允许外部服务。</string>
+    <string name="tools_alarm_ytInvalid">这不是 YouTube 链接。</string>
+    <string name="tools_alarm_ytBlocked">请允许外部服务以使用 YouTube 音乐；没有许可时闹钟以自身的铃声响起。</string>
+    <string name="tools_alarm_spotifyNote">Spotify 在浏览器中不会自动播放；您可以在 Android 应用中把 Spotify 用作闹钟音乐。</string>
     <string name="tools_alarm_dayNames_0">周一</string>
     <string name="tools_alarm_dayNames_1">周二</string>
     <string name="tools_alarm_dayNames_2">周三</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">播放</string>
     <string name="sleep_stop">停止</string>
     <string name="sleep_sunriseInfo">在闹钟中选择“日出光”（工具 › 闹钟）。睡前把手机接上充电器并开着全屏时钟（夜间模式也可以）：闹钟前10–30分钟屏幕会慢慢变亮。</string>
-    <string name="sleep_privacy">不追踪睡眠：不使用麦克风和运动传感器。您的计划和设置留在这部手机上。</string>
+    <string name="sleep_privacy">不追踪睡眠，也不使用麦克风。智能闹钟会话期间，只在闹钟时间窗口内读取运动传感器，不保存任何内容。您的计划和设置留在这部手机上。</string>
     <string name="sleep_n_soon">快到就寝时间了</string>
     <string name="sleep_n_now">该睡觉了</string>
     <string name="sleep_n_body">就寝%1$s · 起床%2$s（睡%3$s）</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">退出</string>
     <string name="desk_h12">12小时制</string>
     <string name="desk_macNote">礼拜通知在iPhone应用中。</string>
+    <string name="alarm_link">音乐链接</string>
+    <string name="alarm_link_placeholder">Spotify 或 YouTube 链接</string>
+    <string name="alarm_link_note">闹钟响起时，链接会在 Spotify 或 YouTube 应用中打开；如果您在 1 分钟内没有关闭，闹钟铃声也会响起。手机锁定时，音乐会在解锁后开始；Spotify 是否自动播放取决于 Spotify 应用。</string>
+    <string name="alarm_link_invalid">这不是 Spotify 或 YouTube 链接。</string>
+    <string name="alarm_link_try">试一下</string>
+    <string name="alarm_link_open">打开音乐</string>
+    <string name="alarm_smart">智能闹钟</string>
+    <string name="alarm_smartMin">%1$s 分钟内</string>
+    <string name="alarm_smart_note">在“睡眠”页面开始“用智能闹钟入睡”并把手机放在床上，若在闹钟前的这段时间内检测到动作（浅睡），闹钟会提前响起；否则按时响起。</string>
+    <string name="smart_notif">智能闹钟已开启</string>
+    <string name="smart_notifText">%1$s–%2$s · 请把手机留在床上</string>
+    <string name="smart_start">用智能闹钟入睡</string>
+    <string name="smart_stop">停止</string>
+    <string name="smart_next">下一个智能闹钟：%1$s–%2$s 之间</string>
+    <string name="smart_running">智能闹钟已开启：将在 %1$s–%2$s 之间的浅睡时响起。</string>
+    <string name="smart_moving">检测到动作的分钟数：%1$s</string>
+    <string name="smart_waiting">时间窗口开始后开始检测动作。</string>
+    <string name="smart_none">没有设置智能闹钟时间窗口的闹钟。请在闹钟编辑中选择“智能闹钟”时间窗口。</string>
+    <string name="smart_how">把手机放在床上枕头旁并接上充电器。只在时间窗口内读取运动传感器；不录音，数据只在手机内存中，不会保存。若未检测到动作，闹钟会按原定时间响起。</string>
+    <string name="smart_howIOS">在 iPhone 上，应用保持打开（屏幕会变暗）或正在播放助眠声音时会话才会持续；离开应用后，闹钟会按原定时间响起。</string>
     <string name="app_name">时间与日期</string>
 </resources>

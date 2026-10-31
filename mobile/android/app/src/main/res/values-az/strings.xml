@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">Zəngli saat</string>
     <string name="tools_alarm_defaultLabel">Zəngli saat</string>
     <string name="tools_alarm_soundLabel">Zəng səsi</string>
+    <string name="tools_alarm_ytLabel">YouTube musiqisi (istəyə görə)</string>
+    <string name="tools_alarm_ytNote">Zəng çalanda bu video oynayır; 1 dəqiqə ərzində söndürməsəniz, zəng səsi də çalır (brauzer videonu özü başlatmasa da). Video YouTube-dan yükləndiyi üçün xarici xidmətlərə icazə lazımdır.</string>
+    <string name="tools_alarm_ytInvalid">Bu YouTube keçidi deyil.</string>
+    <string name="tools_alarm_ytBlocked">YouTube musiqisi üçün xarici xidmətlərə icazə verin; icazə yoxdursa, zəng öz səsi ilə çalır.</string>
+    <string name="tools_alarm_spotifyNote">Spotify brauzerdə özü başlamır; Spotify-ı zəng musiqisi kimi Android tətbiqində istifadə edə bilərsiniz.</string>
     <string name="tools_alarm_dayNames_0">B.e.</string>
     <string name="tools_alarm_dayNames_1">Ç.a.</string>
     <string name="tools_alarm_dayNames_2">Ç.</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">Çal</string>
     <string name="sleep_stop">Dayandır</string>
     <string name="sleep_sunriseInfo">Zəngdə \"Gün çıxışı işığı\"nı seçin (Alətlər › Zəngli saat). Yatanda telefonu şarja qoşub tam ekran saatı açıq saxlayın (gecə rejimi də olar): zəngdən 10–30 dəqiqə əvvəl ekran yavaş-yavaş işıqlanır.</string>
-    <string name="sleep_privacy">Yuxu izlənmir: mikrofon və hərəkət sensoru istifadə olunmur. Plan və ayarlar yalnız bu telefonda qalır.</string>
+    <string name="sleep_privacy">Yuxu izlənmir, mikrofon istifadə olunmur. Ağıllı zəng sessiyası açıq olanda hərəkət sensoru yalnız zəng pəncərəsində oxunur; heç nə saxlanılmır. Plan və ayarlar yalnız bu telefonda qalır.</string>
     <string name="sleep_n_soon">Yatma vaxtı yaxınlaşır</string>
     <string name="sleep_n_now">Yatma vaxtıdır</string>
     <string name="sleep_n_body">Yatma %1$s · oyanma %2$s (%3$s yuxu)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">Çıx</string>
     <string name="desk_h12">12 saat formatı</string>
     <string name="desk_macNote">Vaxt bildirişləri iPhone tətbiqindədir.</string>
+    <string name="alarm_link">Musiqi keçidi</string>
+    <string name="alarm_link_placeholder">Spotify və ya YouTube keçidi</string>
+    <string name="alarm_link_note">Zəng çalanda keçid Spotify və ya YouTube tətbiqində açılır; 1 dəqiqə ərzində söndürməsəniz, zəng səsi də çalır. Telefon kilidlidirsə, musiqi kilid açılanda başlayır; Spotify-ın özü çalması Spotify tətbiqindən asılıdır.</string>
+    <string name="alarm_link_invalid">Bu Spotify və ya YouTube keçidi deyil.</string>
+    <string name="alarm_link_try">Yoxla</string>
+    <string name="alarm_link_open">Musiqini aç</string>
+    <string name="alarm_smart">Ağıllı zəng</string>
+    <string name="alarm_smartMin">%1$s dəq ərzində</string>
+    <string name="alarm_smart_note">Yuxu ekranında \"Ağıllı zənglə yat\"ı başladıb telefonu yatağa qoysanız, zəngdən əvvəlki bu müddətdə hərəkət (yüngül yuxu) aşkarlananda zəng tez çalır; aşkarlanmasa, vaxtında çalır.</string>
+    <string name="smart_notif">Ağıllı zəng açıqdır</string>
+    <string name="smart_notifText">%1$s–%2$s · telefonu yataqda saxlayın</string>
+    <string name="smart_start">Ağıllı zənglə yat</string>
+    <string name="smart_stop">Dayandır</string>
+    <string name="smart_next">Növbəti ağıllı zəng: %1$s–%2$s arasında</string>
+    <string name="smart_running">Ağıllı zəng açıqdır: %1$s–%2$s arasında yüngül yuxuda çalır.</string>
+    <string name="smart_moving">Hərəkət aşkarlanan dəqiqə: %1$s</string>
+    <string name="smart_waiting">Pəncərə başlayanda hərəkət izlənir.</string>
+    <string name="smart_none">Ağıllı zəng müddəti seçilmiş zəng yoxdur. Zəng redaktorunda \"Ağıllı zəng\" müddətini seçin.</string>
+    <string name="smart_how">Telefonu yastığınızın yanına, yatağın üstünə qoyun və şarja taxın. Hərəkət sensoru yalnız pəncərədə oxunur; səs yazılmır, məlumat telefonun yaddaşında qalır və saxlanılmır. Hərəkət aşkarlanmasa, zəng adi vaxtında çalır.</string>
+    <string name="smart_howIOS">iPhone-da sessiya tətbiq açıq olanda (ekran qaralır) və ya yuxu səsi çalanda davam edir; tətbiqdən çıxsanız, zəng adi vaxtında çalır.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

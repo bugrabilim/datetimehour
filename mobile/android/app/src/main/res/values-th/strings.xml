@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">นาฬิกาปลุก</string>
     <string name="tools_alarm_defaultLabel">นาฬิกาปลุก</string>
     <string name="tools_alarm_soundLabel">เสียงปลุก</string>
+    <string name="tools_alarm_ytLabel">เพลงจาก YouTube (ไม่บังคับ)</string>
+    <string name="tools_alarm_ytNote">เมื่อนาฬิกาปลุกดัง วิดีโอนี้จะเล่น หากไม่ปิดภายใน 1 นาที เสียงปลุกจะดังด้วย (รวมถึงกรณีที่เบราว์เซอร์ไม่เล่นวิดีโอเอง) วิดีโอโหลดจาก YouTube จึงต้องอนุญาตบริการภายนอก</string>
+    <string name="tools_alarm_ytInvalid">นี่ไม่ใช่ลิงก์ YouTube</string>
+    <string name="tools_alarm_ytBlocked">โปรดอนุญาตบริการภายนอกสำหรับเพลงจาก YouTube หากไม่อนุญาต นาฬิกาปลุกจะดังด้วยเสียงของตัวเอง</string>
+    <string name="tools_alarm_spotifyNote">Spotify ไม่เล่นเองในเบราว์เซอร์ คุณใช้ Spotify เป็นเพลงปลุกได้ในแอป Android</string>
     <string name="tools_alarm_dayNames_0">จ.</string>
     <string name="tools_alarm_dayNames_1">อ.</string>
     <string name="tools_alarm_dayNames_2">พ.</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">เล่น</string>
     <string name="sleep_stop">หยุด</string>
     <string name="sleep_sunriseInfo">เลือก \"แสงอรุณ\" ในนาฬิกาปลุก (เครื่องมือ › นาฬิกาปลุก) ก่อนนอนให้เสียบชาร์จโทรศัพท์และเปิดนาฬิกาเต็มจอทิ้งไว้ (ใช้โหมดกลางคืนได้) หน้าจอจะค่อย ๆ สว่างขึ้น 10–30 นาทีก่อนนาฬิกาปลุก</string>
-    <string name="sleep_privacy">ไม่มีการติดตามการนอน: ไม่ใช้ไมโครโฟนและเซนเซอร์การเคลื่อนไหว ตารางและการตั้งค่าอยู่บนโทรศัพท์นี้</string>
+    <string name="sleep_privacy">ไม่มีการติดตามการนอนและไม่ใช้ไมโครโฟน ระหว่างเซสชันนาฬิกาปลุกอัจฉริยะ จะอ่านเซนเซอร์การเคลื่อนไหวเฉพาะในช่วงนาฬิกาปลุก และไม่บันทึกสิ่งใด ตารางและการตั้งค่าอยู่บนโทรศัพท์นี้</string>
     <string name="sleep_n_soon">ใกล้ถึงเวลานอนแล้ว</string>
     <string name="sleep_n_now">ถึงเวลานอนแล้ว</string>
     <string name="sleep_n_body">นอน %1$s · ตื่น %2$s (นอน %3$s)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">ออก</string>
     <string name="desk_h12">นาฬิกา 12 ชั่วโมง</string>
     <string name="desk_macNote">การแจ้งเตือนเวลาละหมาดอยู่ในแอป iPhone</string>
+    <string name="alarm_link">ลิงก์เพลง</string>
+    <string name="alarm_link_placeholder">ลิงก์ Spotify หรือ YouTube</string>
+    <string name="alarm_link_note">เมื่อนาฬิกาปลุกดัง ลิงก์จะเปิดในแอป Spotify หรือ YouTube หากไม่ปิดภายใน 1 นาที เสียงปลุกจะดังด้วย หากโทรศัพท์ล็อกอยู่ เพลงจะเริ่มหลังปลดล็อก การเล่นเองของ Spotify ขึ้นอยู่กับแอป Spotify</string>
+    <string name="alarm_link_invalid">นี่ไม่ใช่ลิงก์ Spotify หรือ YouTube</string>
+    <string name="alarm_link_try">ลอง</string>
+    <string name="alarm_link_open">เปิดเพลง</string>
+    <string name="alarm_smart">นาฬิกาปลุกอัจฉริยะ</string>
+    <string name="alarm_smartMin">ภายใน %1$s นาที</string>
+    <string name="alarm_smart_note">หากเริ่ม \"นอนด้วยนาฬิกาปลุกอัจฉริยะ\" ในหน้าการนอนและวางโทรศัพท์บนเตียง นาฬิกาปลุกจะดังก่อนเมื่อตรวจพบการเคลื่อนไหว (หลับตื้น) ในช่วงเวลานี้ก่อนปลุก หากไม่พบจะดังตามเวลา</string>
+    <string name="smart_notif">นาฬิกาปลุกอัจฉริยะเปิดอยู่</string>
+    <string name="smart_notifText">%1$s–%2$s · วางโทรศัพท์ไว้บนเตียง</string>
+    <string name="smart_start">นอนด้วยนาฬิกาปลุกอัจฉริยะ</string>
+    <string name="smart_stop">หยุด</string>
+    <string name="smart_next">นาฬิกาปลุกอัจฉริยะถัดไป: ระหว่าง %1$s–%2$s</string>
+    <string name="smart_running">นาฬิกาปลุกอัจฉริยะเปิดอยู่: จะดังขณะหลับตื้นระหว่าง %1$s–%2$s</string>
+    <string name="smart_moving">นาทีที่ตรวจพบการเคลื่อนไหว: %1$s</string>
+    <string name="smart_waiting">จะเริ่มตรวจการเคลื่อนไหวเมื่อถึงช่วงเวลา</string>
+    <string name="smart_none">ยังไม่มีนาฬิกาปลุกที่ตั้งช่วงนาฬิกาปลุกอัจฉริยะ เลือกช่วง \"นาฬิกาปลุกอัจฉริยะ\" ในตัวแก้ไขนาฬิกาปลุก</string>
+    <string name="smart_how">วางโทรศัพท์บนเตียงข้างหมอนและเสียบชาร์จ เซนเซอร์การเคลื่อนไหวจะอ่านเฉพาะในช่วงเวลานั้น ไม่มีการบันทึก ข้อมูลอยู่ในหน่วยความจำของโทรศัพท์และไม่ถูกเก็บ หากไม่พบการเคลื่อนไหว นาฬิกาปลุกจะดังตามเวลาปกติ</string>
+    <string name="smart_howIOS">บน iPhone เซสชันจะทำงานขณะเปิดแอปอยู่ (หน้าจอจะหรี่ลง) หรือขณะเล่นเสียงช่วยนอน หากออกจากแอป นาฬิกาปลุกจะดังตามเวลาปกติ</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

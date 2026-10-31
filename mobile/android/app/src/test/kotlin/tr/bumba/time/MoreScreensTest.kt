@@ -143,6 +143,11 @@ class MoreScreensTest {
         SleepPlan.on = true
         page("tr-uyku", L("sleep.title")) { SleepScreen() }
         SleepPlan.on = false
+        // Akıllı alarm penceresi seçili alarm varken Uyku ekranındaki akıllı alarm kartı (31 Ekim 2026)
+        val saved = AlarmItem.load()
+        AlarmItem.save(listOf(AlarmItem(id = "smart", hour = 7, minute = 0, days = (1..7).toList(), smart = 30)))
+        page("tr-akilli-alarm", L("sleep.title")) { SleepScreen() }
+        AlarmItem.save(saved)
     }
 
     /** Alarm kapatma görevi (#13): matematik ve sallama */

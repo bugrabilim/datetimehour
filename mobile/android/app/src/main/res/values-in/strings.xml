@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">Alarm</string>
     <string name="tools_alarm_defaultLabel">Alarm</string>
     <string name="tools_alarm_soundLabel">Suara alarm</string>
+    <string name="tools_alarm_ytLabel">Musik YouTube (opsional)</string>
+    <string name="tools_alarm_ytNote">Saat alarm berbunyi, video ini diputar; jika tidak Anda matikan dalam 1 menit, suara alarm juga berbunyi (juga bila peramban tidak memutar video dengan sendirinya). Video dimuat dari YouTube, jadi layanan eksternal harus diizinkan.</string>
+    <string name="tools_alarm_ytInvalid">Ini bukan tautan YouTube.</string>
+    <string name="tools_alarm_ytBlocked">Izinkan layanan eksternal untuk musik YouTube; tanpa izin, alarm berbunyi dengan suaranya sendiri.</string>
+    <string name="tools_alarm_spotifyNote">Spotify tidak diputar dengan sendirinya di peramban; Anda dapat memakai Spotify sebagai musik alarm di aplikasi Android.</string>
     <string name="tools_alarm_dayNames_0">Sen</string>
     <string name="tools_alarm_dayNames_1">Sel</string>
     <string name="tools_alarm_dayNames_2">Rab</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">Putar</string>
     <string name="sleep_stop">Berhenti</string>
     <string name="sleep_sunriseInfo">Pilih \"Cahaya fajar\" pada alarm (Alat › Alarm). Saat tidur, isi daya ponsel dan biarkan jam layar penuh terbuka (mode malam juga bisa): layar perlahan menjadi terang 10–30 menit sebelum alarm.</string>
-    <string name="sleep_privacy">Tidak ada pelacakan tidur: mikrofon dan sensor gerak tidak dipakai. Jadwal dan pengaturan Anda tetap di ponsel ini.</string>
+    <string name="sleep_privacy">Tidak ada pelacakan tidur dan mikrofon tidak dipakai. Selama sesi alarm pintar, sensor gerak hanya dibaca dalam jendela alarm; tidak ada yang disimpan. Jadwal dan pengaturan Anda tetap di ponsel ini.</string>
     <string name="sleep_n_soon">Waktu tidur sebentar lagi</string>
     <string name="sleep_n_now">Sudah waktunya tidur</string>
     <string name="sleep_n_body">Tidur %1$s · bangun %2$s (%3$s tidur)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">Keluar</string>
     <string name="desk_h12">Format 12 jam</string>
     <string name="desk_macNote">Notifikasi salat ada di aplikasi iPhone.</string>
+    <string name="alarm_link">Tautan musik</string>
+    <string name="alarm_link_placeholder">Tautan Spotify atau YouTube</string>
+    <string name="alarm_link_note">Saat alarm berbunyi, tautan dibuka di aplikasi Spotify atau YouTube; jika tidak Anda matikan dalam 1 menit, suara alarm juga berbunyi. Jika ponsel terkunci, musik mulai setelah kunci dibuka; apakah Spotify memutar dengan sendirinya bergantung pada aplikasi Spotify.</string>
+    <string name="alarm_link_invalid">Ini bukan tautan Spotify atau YouTube.</string>
+    <string name="alarm_link_try">Coba</string>
+    <string name="alarm_link_open">Buka musik</string>
+    <string name="alarm_smart">Alarm pintar</string>
+    <string name="alarm_smartMin">Dalam %1$s mnt</string>
+    <string name="alarm_smart_note">Jika Anda memulai \"Tidur dengan alarm pintar\" di layar Tidur dan menaruh ponsel di kasur, alarm berbunyi lebih awal saat gerakan (tidur ringan) terdeteksi dalam waktu ini sebelumnya; jika tidak, alarm berbunyi tepat waktu.</string>
+    <string name="smart_notif">Alarm pintar aktif</string>
+    <string name="smart_notifText">%1$s–%2$s · biarkan ponsel di kasur</string>
+    <string name="smart_start">Tidur dengan alarm pintar</string>
+    <string name="smart_stop">Hentikan</string>
+    <string name="smart_next">Alarm pintar berikutnya: antara %1$s dan %2$s</string>
+    <string name="smart_running">Alarm pintar aktif: berbunyi saat tidur ringan antara %1$s dan %2$s.</string>
+    <string name="smart_moving">Menit dengan gerakan: %1$s</string>
+    <string name="smart_waiting">Gerakan dipantau saat jendela waktu dimulai.</string>
+    <string name="smart_none">Belum ada alarm dengan jendela alarm pintar. Pilih jendela \"Alarm pintar\" di penyunting alarm.</string>
+    <string name="smart_how">Taruh ponsel di kasur di samping bantal dan sambungkan ke pengisi daya. Sensor gerak hanya dibaca selama jendela waktu; tidak ada yang direkam, data tetap di memori ponsel dan tidak disimpan. Jika tidak ada gerakan, alarm berbunyi pada waktu biasa.</string>
+    <string name="smart_howIOS">Di iPhone, sesi berjalan selama aplikasi terbuka (layar meredup) atau selama suara tidur diputar; jika Anda keluar dari aplikasi, alarm berbunyi pada waktu biasa.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

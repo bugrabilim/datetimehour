@@ -24,6 +24,10 @@
     <!-- Kademeli alarm sesi (AlarmRingService) ve arka plan sesi (SoundService: pomodoro, uyku sesleri) -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Akıllı alarm (SmartSleep.kt): uyku oturumu ön plan hizmeti (tür health); önkoşul olarak HIGH_SAMPLING_RATE_SENSORS
+         (normal izin, sorulmaz). Yalnız ivmeölçer okunur, kayıt ve mikrofon yok -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
+    <uses-permission android:name="android.permission.HIGH_SAMPLING_RATE_SENSORS" />
     <!-- Vakitte telefonu Rahatsız Etmeyin'e alma (isteğe bağlı; kullanıcı ayardan izin verir) -->
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <!-- Health Connect: biten aralık antrenmanı egzersiz oturumu olarak yazılır (isteğe bağlı; okuma izni yok) -->
@@ -391,6 +395,10 @@
                 android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
                 android:value="Floating clock: keeps a small always-on-top clock window (TYPE_APPLICATION_OVERLAY) the user turned on; stopped from its notification" />
         </service>
+        <service
+            android:name=".SmartSleepService"
+            android:exported="false"
+            android:foregroundServiceType="health" />
         <service
             android:name=".AlarmRingService"
             android:exported="false"

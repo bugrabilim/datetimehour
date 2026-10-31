@@ -158,4 +158,46 @@ class AlarmRiseSnoozeTest {
         val back = GeoAlarm.fromJson(JSONObject(g.toJson().toString()))
         assertEquals(g, back)
     }
+
+    /** Müzik bağlantısı (Spotify/YouTube) ve akıllı alarm penceresi (31 Ekim 2026): tanıma, JSON'da korunma, erken çalma */
+    @Test fun musicLinkAndSmart() {
+        val sp = "https://open.spotify.com/intl-tr/playlist/37i9dQZF1DXcBWIGoYBM5M?si=abc"
+        assertEquals(sp, MusicLink.normalize("  $sp "))
+        assertEquals("spotify:playlist:37i9dQZF1DXcBWIGoYBM5M:play", MusicLink.spotifyUri(sp))
+        assertEquals("spotify", MusicLink.kind(sp))
+        assertEquals("spotify:track:4uLU6hMCjMI75M1A2tKUQC:play", MusicLink.spotifyUri("spotify:track:4uLU6hMCjMI75M1A2tKUQC"))
+        for (yt in listOf("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "https://youtu.be/dQw4w9WgXcQ", "https://music.youtube.com/watch?v=dQw4w9WgXcQ&list=RDAMVM",
+                "https://www.youtube.com/playlist?list=PL590L5WQmH8fJ54F369BLDSqIwcs-TCfs", "youtube.com/shorts/dQw4w9WgXcQ")) {
+            org.junit.Assert.assertNotNull(yt, MusicLink.normalize(yt))
+            assertEquals("youtube", MusicLink.kind(MusicLink.normalize(yt)!!))
+        }
+        assertEquals("", MusicLink.normalize("   "))
+        for (bad in listOf("https://example.com/x", "https://youtu.be/kisa", "not a link", "https://open.spotify.com/user/abc")) {
+            assertEquals(bad, null, MusicLink.normalize(bad))
+        }
+        val a = AlarmItem(hour = 7, minute = 0, days = listOf(1, 2, 3, 4, 5), link = sp, smart = 20)
+        val back = AlarmItem.fromJson(JSONObject(a.toJson().toString()))
+        assertEquals(sp, back.link); assertEquals(20, back.smart)
+        // Eski kayıt: alanlar yok → kapalı
+        val old = AlarmItem.fromJson(JSONObject().put("id", "x").put("hour", 7).put("minute", 0))
+        assertEquals("", old.link); assertEquals(0, old.smart)
+    }
+
+    /** Akıllı alarmla erken çalma: tekrarlayan alarmın o çalması atlanır, bir kezlik alarm kapanır */
+    @Test fun smartFireEarly() {
+        val c = org.robolectric.RuntimeEnvironment.getApplication()
+        Prefs.init(c)
+        val now = System.currentTimeMillis()
+        val rep = AlarmItem(id = "rep", hour = 7, minute = 0, days = (1..7).toList(), smart = 30)
+        val once = AlarmItem(id = "once", hour = 7, minute = 30, smart = 10)
+        AlarmItem.save(listOf(rep, once))
+        val at = rep.nextAt(now)
+        assertEquals(rep.id, SmartSleep.next(now)?.first?.id)
+        SmartSleep.fireEarly(c, SmartSleep.Session(rep.id, at, 30))
+        val after = AlarmItem.load().first { it.id == "rep" }
+        assertEquals(at + 60_000L, after.skipUntil)
+        org.junit.Assert.assertTrue(after.nextAt(now) > at)
+        SmartSleep.fireEarly(c, SmartSleep.Session(once.id, once.nextAt(now), 10))
+        assertEquals(false, AlarmItem.load().first { it.id == "once" }.enabled)
+    }
 }

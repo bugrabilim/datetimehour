@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">Alarme</string>
     <string name="tools_alarm_defaultLabel">Alarme</string>
     <string name="tools_alarm_soundLabel">Son de l’alarme</string>
+    <string name="tools_alarm_ytLabel">Musique YouTube (facultatif)</string>
+    <string name="tools_alarm_ytNote">Quand l’alarme sonne, cette vidéo se lance ; si vous ne l’arrêtez pas dans la minute, le son de l’alarme retentit aussi (y compris si le navigateur ne lance pas la vidéo tout seul). La vidéo est chargée depuis YouTube : les services externes doivent être autorisés.</string>
+    <string name="tools_alarm_ytInvalid">Ce n’est pas un lien YouTube.</string>
+    <string name="tools_alarm_ytBlocked">Autorisez les services externes pour la musique YouTube ; sans autorisation, l’alarme sonne avec son propre son.</string>
+    <string name="tools_alarm_spotifyNote">Spotify ne démarre pas tout seul dans le navigateur ; vous pouvez utiliser Spotify comme musique de réveil dans l’application Android.</string>
     <string name="tools_alarm_dayNames_0">lun.</string>
     <string name="tools_alarm_dayNames_1">mar.</string>
     <string name="tools_alarm_dayNames_2">mer.</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">Lecture</string>
     <string name="sleep_stop">Arrêter</string>
     <string name="sleep_sunriseInfo">Choisissez « Lumière de l’aube » sur une alarme (Outils › Alarme). Au coucher, branchez le téléphone et laissez l’horloge plein écran ouverte (le mode nuit fonctionne aussi) : l’écran s’éclaire lentement 10 à 30 minutes avant l’alarme.</string>
-    <string name="sleep_privacy">Pas de suivi du sommeil : le micro et les capteurs de mouvement ne sont pas utilisés. Votre programme et vos réglages restent sur ce téléphone.</string>
+    <string name="sleep_privacy">Pas de suivi du sommeil et le micro n’est pas utilisé. Pendant une session de réveil intelligent, le capteur de mouvement n’est lu que dans la plage de l’alarme ; rien n’est conservé. Votre programme et vos réglages restent sur ce téléphone.</string>
     <string name="sleep_n_soon">L’heure du coucher approche</string>
     <string name="sleep_n_now">C’est l’heure du coucher</string>
     <string name="sleep_n_body">Coucher %1$s · réveil %2$s (%3$s de sommeil)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">Quitter</string>
     <string name="desk_h12">Format 12 heures</string>
     <string name="desk_macNote">Les notifications de prière sont dans l’app iPhone.</string>
+    <string name="alarm_link">Lien musical</string>
+    <string name="alarm_link_placeholder">Lien Spotify ou YouTube</string>
+    <string name="alarm_link_note">Quand l’alarme sonne, le lien s’ouvre dans l’application Spotify ou YouTube ; si vous ne l’arrêtez pas dans la minute, le son de l’alarme retentit aussi. Si le téléphone est verrouillé, la musique démarre après le déverrouillage ; la lecture automatique dépend de l’application Spotify.</string>
+    <string name="alarm_link_invalid">Ce n’est pas un lien Spotify ou YouTube.</string>
+    <string name="alarm_link_try">Essayer</string>
+    <string name="alarm_link_open">Ouvrir la musique</string>
+    <string name="alarm_smart">Réveil intelligent</string>
+    <string name="alarm_smartMin">Dans les %1$s min</string>
+    <string name="alarm_smart_note">Si vous lancez « Dormir avec le réveil intelligent » dans l’écran Sommeil et posez le téléphone sur le lit, l’alarme sonne plus tôt quand un mouvement (sommeil léger) est détecté dans ce délai avant elle ; sinon elle sonne à l’heure.</string>
+    <string name="smart_notif">Réveil intelligent activé</string>
+    <string name="smart_notifText">%1$s–%2$s · laissez le téléphone sur le lit</string>
+    <string name="smart_start">Dormir avec le réveil intelligent</string>
+    <string name="smart_stop">Arrêter</string>
+    <string name="smart_next">Prochain réveil intelligent : entre %1$s et %2$s</string>
+    <string name="smart_running">Réveil intelligent activé : il sonne en sommeil léger entre %1$s et %2$s.</string>
+    <string name="smart_moving">Minutes avec mouvement : %1$s</string>
+    <string name="smart_waiting">Les mouvements sont suivis dès le début de la plage.</string>
+    <string name="smart_none">Aucune alarme n’a de plage de réveil intelligent. Choisissez une plage « Réveil intelligent » dans l’éditeur d’alarme.</string>
+    <string name="smart_how">Posez le téléphone sur le lit près de votre oreiller et branchez-le. Le capteur de mouvement n’est lu que pendant la plage ; rien n’est enregistré, les données restent dans la mémoire du téléphone et ne sont pas conservées. Sans mouvement, l’alarme sonne à l’heure prévue.</string>
+    <string name="smart_howIOS">Sur iPhone, la session dure tant que l’application est ouverte (l’écran s’assombrit) ou qu’un son de sommeil joue ; si vous quittez l’application, l’alarme sonne à l’heure prévue.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

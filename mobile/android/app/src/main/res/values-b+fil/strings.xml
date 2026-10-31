@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">Alarma</string>
     <string name="tools_alarm_defaultLabel">Alarma</string>
     <string name="tools_alarm_soundLabel">Tunog ng alarma</string>
+    <string name="tools_alarm_ytLabel">Musika sa YouTube (opsyonal)</string>
+    <string name="tools_alarm_ytNote">Kapag tumunog ang alarma, tutugtog ang video na ito; kung hindi mo ito papatayin sa loob ng 1 minuto, tutunog din ang alarma (pati kung hindi kusang patugtugin ng browser ang video). Galing sa YouTube ang video, kaya kailangang payagan ang mga panlabas na serbisyo.</string>
+    <string name="tools_alarm_ytInvalid">Hindi ito link sa YouTube.</string>
+    <string name="tools_alarm_ytBlocked">Payagan ang mga panlabas na serbisyo para sa musika sa YouTube; kung walang pahintulot, tutunog ang alarma sa sarili nitong tunog.</string>
+    <string name="tools_alarm_spotifyNote">Hindi kusang tumutugtog ang Spotify sa browser; magagamit mo ang Spotify bilang musika ng alarma sa Android app.</string>
     <string name="tools_alarm_dayNames_0">Lun</string>
     <string name="tools_alarm_dayNames_1">Mar</string>
     <string name="tools_alarm_dayNames_2">Miy</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">I-play</string>
     <string name="sleep_stop">Ihinto</string>
     <string name="sleep_sunriseInfo">Piliin ang \"Liwanag ng pagsikat\" sa isang alarma (Kagamitan › Alarma). Sa oras ng pagtulog, ilagay ang telepono sa charger at iwanang bukas ang full-screen na orasan (gumagana rin ang night mode): dahan-dahang lumiliwanag ang screen 10–30 minuto bago ang alarma.</string>
-    <string name="sleep_privacy">Walang sleep tracking: hindi ginagamit ang mikropono at motion sensor. Nananatili sa teleponong ito ang iyong schedule at settings.</string>
+    <string name="sleep_privacy">Walang sleep tracking at hindi ginagamit ang mikropono. Habang may session ng matalinong alarma, binabasa lang ang motion sensor sa window ng alarma; walang sine-save. Nananatili sa teleponong ito ang iyong schedule at settings.</string>
     <string name="sleep_n_soon">Malapit na ang oras ng pagtulog</string>
     <string name="sleep_n_now">Oras na ng pagtulog</string>
     <string name="sleep_n_body">Tulog %1$s · gising %2$s (%3$s na tulog)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">Umalis</string>
     <string name="desk_h12">12-oras na orasan</string>
     <string name="desk_macNote">Nasa iPhone app ang mga abiso sa dasal.</string>
+    <string name="alarm_link">Link ng musika</string>
+    <string name="alarm_link_placeholder">Link ng Spotify o YouTube</string>
+    <string name="alarm_link_note">Kapag tumunog ang alarma, bubukas ang link sa Spotify o YouTube app; kung hindi mo ito papatayin sa loob ng 1 minuto, tutunog din ang alarma. Kung naka-lock ang telepono, magsisimula ang musika pagka-unlock; nakadepende sa Spotify app kung kusa itong tutugtog.</string>
+    <string name="alarm_link_invalid">Hindi ito link ng Spotify o YouTube.</string>
+    <string name="alarm_link_try">Subukan</string>
+    <string name="alarm_link_open">Buksan ang musika</string>
+    <string name="alarm_smart">Matalinong alarma</string>
+    <string name="alarm_smartMin">Sa loob ng %1$s min</string>
+    <string name="alarm_smart_note">Kung sisimulan mo ang \"Matulog na may matalinong alarma\" sa screen ng Tulog at ilalagay ang telepono sa kama, maagang tutunog ang alarma kapag may galaw (mababaw na tulog) sa loob ng oras na ito bago nito; kung wala, tutunog ito sa oras.</string>
+    <string name="smart_notif">Naka-on ang matalinong alarma</string>
+    <string name="smart_notifText">%1$s–%2$s · iwan ang telepono sa kama</string>
+    <string name="smart_start">Matulog na may matalinong alarma</string>
+    <string name="smart_stop">Itigil</string>
+    <string name="smart_next">Susunod na matalinong alarma: mula %1$s hanggang %2$s</string>
+    <string name="smart_running">Naka-on ang matalinong alarma: tutunog sa mababaw na tulog mula %1$s hanggang %2$s.</string>
+    <string name="smart_moving">Mga minutong may galaw: %1$s</string>
+    <string name="smart_waiting">Babantayan ang galaw pagsimula ng window.</string>
+    <string name="smart_none">Walang alarmang may window ng matalinong alarma. Pumili ng window na \"Matalinong alarma\" sa editor ng alarma.</string>
+    <string name="smart_how">Ilagay ang telepono sa kama sa tabi ng unan at i-charge ito. Binabasa lang ang motion sensor sa loob ng window; walang nire-record, nananatili ang data sa memory ng telepono at hindi sine-save. Kung walang galaw, tutunog ang alarma sa karaniwang oras.</string>
+    <string name="smart_howIOS">Sa iPhone, tumatakbo ang session habang bukas ang app (dumidilim ang screen) o habang tumutugtog ang tunog pantulog; kung aalis ka sa app, tutunog ang alarma sa karaniwang oras.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

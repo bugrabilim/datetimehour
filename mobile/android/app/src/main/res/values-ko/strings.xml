@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">알람</string>
     <string name="tools_alarm_defaultLabel">알람</string>
     <string name="tools_alarm_soundLabel">알람 소리</string>
+    <string name="tools_alarm_ytLabel">YouTube 음악(선택)</string>
+    <string name="tools_alarm_ytNote">알람이 울리면 이 동영상이 재생됩니다. 1분 안에 끄지 않으면 알람 소리도 함께 울립니다(브라우저가 동영상을 자동으로 재생하지 않을 때도). 동영상은 YouTube에서 불러오므로 외부 서비스를 허락해야 합니다.</string>
+    <string name="tools_alarm_ytInvalid">YouTube 링크가 아닙니다.</string>
+    <string name="tools_alarm_ytBlocked">YouTube 음악을 쓰려면 외부 서비스를 허락하세요. 허락하지 않으면 알람은 자체 소리로 울립니다.</string>
+    <string name="tools_alarm_spotifyNote">Spotify는 브라우저에서 자동으로 재생되지 않습니다. Android 앱에서는 Spotify를 알람 음악으로 쓸 수 있습니다.</string>
     <string name="tools_alarm_dayNames_0">월</string>
     <string name="tools_alarm_dayNames_1">화</string>
     <string name="tools_alarm_dayNames_2">수</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">재생</string>
     <string name="sleep_stop">정지</string>
     <string name="sleep_sunriseInfo">알람에서 \"일출 빛\"을 고르세요(도구 › 알람). 잘 때 휴대폰을 충전기에 꽂고 전체 화면 시계를 열어 두세요(야간 모드도 됩니다). 알람 10~30분 전에 화면이 천천히 밝아집니다.</string>
-    <string name="sleep_privacy">수면 추적은 하지 않습니다. 마이크와 동작 센서를 쓰지 않습니다. 일정과 설정은 이 휴대폰에 남습니다.</string>
+    <string name="sleep_privacy">수면 추적은 하지 않고 마이크도 쓰지 않습니다. 스마트 알람 세션 중에는 알람 시간대에만 동작 센서를 읽으며 아무것도 저장하지 않습니다. 일정과 설정은 이 휴대폰에 남습니다.</string>
     <string name="sleep_n_soon">곧 취침 시간입니다</string>
     <string name="sleep_n_now">취침 시간입니다</string>
     <string name="sleep_n_body">취침 %1$s · 기상 %2$s(수면 %3$s)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">종료</string>
     <string name="desk_h12">12시간제</string>
     <string name="desk_macNote">기도 알림은 iPhone 앱에 있습니다.</string>
+    <string name="alarm_link">음악 링크</string>
+    <string name="alarm_link_placeholder">Spotify 또는 YouTube 링크</string>
+    <string name="alarm_link_note">알람이 울리면 링크가 Spotify나 YouTube 앱에서 열립니다. 1분 안에 끄지 않으면 알람 소리도 함께 울립니다. 휴대폰이 잠겨 있으면 잠금을 풀었을 때 음악이 시작되며, Spotify가 자동으로 재생하는지는 Spotify 앱에 달려 있습니다.</string>
+    <string name="alarm_link_invalid">Spotify 또는 YouTube 링크가 아닙니다.</string>
+    <string name="alarm_link_try">시험</string>
+    <string name="alarm_link_open">음악 열기</string>
+    <string name="alarm_smart">스마트 알람</string>
+    <string name="alarm_smartMin">%1$s분 이내</string>
+    <string name="alarm_smart_note">수면 화면에서 \"스마트 알람으로 자기\"를 시작하고 휴대폰을 침대에 두면, 알람 전 이 시간 안에 움직임(얕은 잠)이 감지될 때 알람이 일찍 울립니다. 감지되지 않으면 제시간에 울립니다.</string>
+    <string name="smart_notif">스마트 알람 켜짐</string>
+    <string name="smart_notifText">%1$s–%2$s · 휴대폰을 침대에 두세요</string>
+    <string name="smart_start">스마트 알람으로 자기</string>
+    <string name="smart_stop">중지</string>
+    <string name="smart_next">다음 스마트 알람: %1$s–%2$s 사이</string>
+    <string name="smart_running">스마트 알람 켜짐: %1$s–%2$s 사이 얕은 잠일 때 울립니다.</string>
+    <string name="smart_moving">움직임이 감지된 분: %1$s</string>
+    <string name="smart_waiting">시간대가 시작되면 움직임을 살핍니다.</string>
+    <string name="smart_none">스마트 알람 시간대가 설정된 알람이 없습니다. 알람 편집에서 \"스마트 알람\" 시간대를 고르세요.</string>
+    <string name="smart_how">휴대폰을 베개 옆 침대 위에 두고 충전기에 연결하세요. 동작 센서는 시간대 동안에만 읽습니다. 녹음은 하지 않으며 데이터는 휴대폰 메모리에만 있고 저장되지 않습니다. 움직임이 없으면 알람은 원래 시간에 울립니다.</string>
+    <string name="smart_howIOS">iPhone에서는 앱이 열려 있는 동안(화면이 어두워짐) 또는 수면 소리가 재생되는 동안 세션이 이어집니다. 앱을 나가면 알람은 원래 시간에 울립니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

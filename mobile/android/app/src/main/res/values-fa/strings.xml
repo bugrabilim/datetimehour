@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">زنگ</string>
     <string name="tools_alarm_defaultLabel">زنگ</string>
     <string name="tools_alarm_soundLabel">صدای زنگ</string>
+    <string name="tools_alarm_ytLabel">موسیقی YouTube (اختیاری)</string>
+    <string name="tools_alarm_ytNote">هنگام زنگ این ویدیو پخش می‌شود؛ اگر ظرف 1 دقیقه خاموشش نکنید، صدای زنگ هم پخش می‌شود (حتی اگر مرورگر ویدیو را خودبه‌خود پخش نکند). ویدیو از YouTube بارگیری می‌شود، پس اجازهٔ خدمات بیرونی لازم است.</string>
+    <string name="tools_alarm_ytInvalid">این پیوند YouTube نیست.</string>
+    <string name="tools_alarm_ytBlocked">برای موسیقی YouTube به خدمات بیرونی اجازه دهید؛ بدون اجازه زنگ با صدای خودش به صدا درمی‌آید.</string>
+    <string name="tools_alarm_spotifyNote">Spotify در مرورگر خودبه‌خود پخش نمی‌شود؛ می‌توانید در برنامهٔ Android از Spotify به‌عنوان موسیقی زنگ استفاده کنید.</string>
     <string name="tools_alarm_dayNames_0">دوشنبه</string>
     <string name="tools_alarm_dayNames_1">سه‌شنبه</string>
     <string name="tools_alarm_dayNames_2">چهارشنبه</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">پخش</string>
     <string name="sleep_stop">توقف</string>
     <string name="sleep_sunriseInfo">«نور طلوع» را روی یک هشدار برگزینید (ابزارها › هشدار). هنگام خواب گوشی را به شارژ بزنید و ساعت تمام‌صفحه را باز بگذارید (حالت شب هم کار می‌کند): صفحه 10 تا 30 دقیقه پیش از هشدار آرام روشن می‌شود.</string>
-    <string name="sleep_privacy">ردیابی خواب در کار نیست: میکروفون و حسگرهای حرکت به کار نمی‌روند. برنامه و تنظیمات شما روی همین گوشی می‌مانند.</string>
+    <string name="sleep_privacy">ردیابی خواب در کار نیست و از میکروفون استفاده نمی‌شود. در جلسهٔ زنگ هوشمند، حسگر حرکت فقط در بازهٔ زنگ خوانده می‌شود؛ چیزی ذخیره نمی‌شود. برنامه و تنظیمات شما روی همین گوشی می‌مانند.</string>
     <string name="sleep_n_soon">وقت خواب نزدیک است</string>
     <string name="sleep_n_now">وقت خواب است</string>
     <string name="sleep_n_body">خواب %1$s · بیداری %2$s (%3$s خواب)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">خروج</string>
     <string name="desk_h12">ساعت 12 ساعته</string>
     <string name="desk_macNote">اعلان‌های نماز در برنامهٔ آیفون است.</string>
+    <string name="alarm_link">پیوند موسیقی</string>
+    <string name="alarm_link_placeholder">پیوند Spotify یا YouTube</string>
+    <string name="alarm_link_note">هنگام زنگ، پیوند در برنامهٔ Spotify یا YouTube باز می‌شود؛ اگر ظرف 1 دقیقه خاموشش نکنید، صدای زنگ هم پخش می‌شود. اگر گوشی قفل باشد، موسیقی پس از باز کردن قفل شروع می‌شود؛ پخش خودکار Spotify به خود برنامهٔ Spotify بستگی دارد.</string>
+    <string name="alarm_link_invalid">این پیوند Spotify یا YouTube نیست.</string>
+    <string name="alarm_link_try">امتحان</string>
+    <string name="alarm_link_open">باز کردن موسیقی</string>
+    <string name="alarm_smart">زنگ هوشمند</string>
+    <string name="alarm_smartMin">در %1$s دقیقه</string>
+    <string name="alarm_smart_note">اگر در صفحهٔ خواب «خواب با زنگ هوشمند» را آغاز کنید و گوشی را روی تخت بگذارید، با تشخیص حرکت (خواب سبک) در این مدت پیش از زنگ، زنگ زودتر به صدا درمی‌آید؛ وگرنه سر وقت.</string>
+    <string name="smart_notif">زنگ هوشمند روشن است</string>
+    <string name="smart_notifText">%1$s–%2$s · گوشی را روی تخت بگذارید</string>
+    <string name="smart_start">خواب با زنگ هوشمند</string>
+    <string name="smart_stop">توقف</string>
+    <string name="smart_next">زنگ هوشمند بعدی: بین %1$s و %2$s</string>
+    <string name="smart_running">زنگ هوشمند روشن است: بین %1$s و %2$s در خواب سبک به صدا درمی‌آید.</string>
+    <string name="smart_moving">دقیقه‌های دارای حرکت: %1$s</string>
+    <string name="smart_waiting">با آغاز بازه، حرکت پایش می‌شود.</string>
+    <string name="smart_none">هیچ زنگی بازهٔ زنگ هوشمند ندارد. در ویرایشگر زنگ، بازهٔ «زنگ هوشمند» را انتخاب کنید.</string>
+    <string name="smart_how">گوشی را کنار بالشتان روی تخت بگذارید و به شارژر وصل کنید. حسگر حرکت فقط در بازه خوانده می‌شود؛ چیزی ضبط نمی‌شود، داده در حافظهٔ گوشی می‌ماند و ذخیره نمی‌شود. اگر حرکتی دیده نشود، زنگ سر وقت همیشگی به صدا درمی‌آید.</string>
+    <string name="smart_howIOS">در iPhone جلسه تا وقتی برنامه باز است (صفحه کم‌نور می‌شود) یا صدای خواب پخش می‌شود ادامه دارد؛ اگر از برنامه بیرون بروید، زنگ سر وقت همیشگی به صدا درمی‌آید.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">アラーム</string>
     <string name="tools_alarm_defaultLabel">アラーム</string>
     <string name="tools_alarm_soundLabel">アラーム音</string>
+    <string name="tools_alarm_ytLabel">YouTube の音楽（任意）</string>
+    <string name="tools_alarm_ytNote">アラームが鳴るとこの動画が再生されます。1分以内に止めないと、アラーム音も鳴ります（ブラウザが動画を自動再生しない場合も同じです）。動画は YouTube から読み込むため、外部サービスの許可が必要です。</string>
+    <string name="tools_alarm_ytInvalid">YouTube のリンクではありません。</string>
+    <string name="tools_alarm_ytBlocked">YouTube の音楽には外部サービスを許可してください。許可がなければアラームは自分の音で鳴ります。</string>
+    <string name="tools_alarm_spotifyNote">Spotify はブラウザでは自動で再生されません。Android アプリでは Spotify をアラームの音楽に使えます。</string>
     <string name="tools_alarm_dayNames_0">月</string>
     <string name="tools_alarm_dayNames_1">火</string>
     <string name="tools_alarm_dayNames_2">水</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">再生</string>
     <string name="sleep_stop">停止</string>
     <string name="sleep_sunriseInfo">アラームで「日の出の光」を選びます（ツール › アラーム）。寝るときにスマホを充電器につなぎ、全画面時計を開いたままにします（ナイトモードでも可）。アラームの10～30分前に画面がゆっくり明るくなります。</string>
-    <string name="sleep_privacy">睡眠の記録はしません。マイクと動きのセンサーは使いません。スケジュールと設定はこのスマホに残ります。</string>
+    <string name="sleep_privacy">睡眠の記録はせず、マイクも使いません。スマートアラームのセッション中は、アラームの時間帯だけ動きのセンサーを読み取り、何も保存しません。スケジュールと設定はこのスマホに残ります。</string>
     <string name="sleep_n_soon">まもなく就寝時刻です</string>
     <string name="sleep_n_now">就寝時刻です</string>
     <string name="sleep_n_body">就寝 %1$s · 起床 %2$s（睡眠%3$s）</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">終了</string>
     <string name="desk_h12">12時間表示</string>
     <string name="desk_macNote">礼拝の通知はiPhoneアプリにあります。</string>
+    <string name="alarm_link">音楽のリンク</string>
+    <string name="alarm_link_placeholder">Spotify または YouTube のリンク</string>
+    <string name="alarm_link_note">アラームが鳴るとリンクが Spotify または YouTube アプリで開きます。1分以内に止めないとアラーム音も鳴ります。スマホがロック中なら、音楽はロック解除後に始まります。Spotify が自動で再生するかどうかは Spotify アプリによります。</string>
+    <string name="alarm_link_invalid">Spotify または YouTube のリンクではありません。</string>
+    <string name="alarm_link_try">試す</string>
+    <string name="alarm_link_open">音楽を開く</string>
+    <string name="alarm_smart">スマートアラーム</string>
+    <string name="alarm_smartMin">%1$s分以内</string>
+    <string name="alarm_smart_note">睡眠画面で「スマートアラームで眠る」を開始してスマホをベッドに置くと、アラーム前のこの時間内に動き（浅い眠り）を検知した時点で早めに鳴ります。検知しなければ時刻どおりに鳴ります。</string>
+    <string name="smart_notif">スマートアラーム オン</string>
+    <string name="smart_notifText">%1$s–%2$s ・ スマホはベッドに置いたままに</string>
+    <string name="smart_start">スマートアラームで眠る</string>
+    <string name="smart_stop">停止</string>
+    <string name="smart_next">次のスマートアラーム：%1$s〜%2$s</string>
+    <string name="smart_running">スマートアラーム オン：%1$s〜%2$s の浅い眠りのときに鳴ります。</string>
+    <string name="smart_moving">動きを検知した分数：%1$s</string>
+    <string name="smart_waiting">時間帯が始まると動きを見守ります。</string>
+    <string name="smart_none">スマートアラームの時間帯を設定したアラームがありません。アラームの編集で「スマートアラーム」の時間帯を選んでください。</string>
+    <string name="smart_how">スマホを枕のそばのベッドの上に置き、充電器につないでください。動きのセンサーは時間帯の間だけ読み取ります。録音はせず、データはスマホのメモリにだけあって保存されません。動きがなければアラームは通常の時刻に鳴ります。</string>
+    <string name="smart_howIOS">iPhone では、アプリを開いている間（画面は暗くなります）か睡眠用サウンドの再生中にセッションが続きます。アプリを閉じるとアラームは通常の時刻に鳴ります。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

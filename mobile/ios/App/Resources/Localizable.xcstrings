@@ -22801,6 +22801,481 @@
         }
       }
     },
+    "tools.alarm.ytLabel": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube müziği (isteğe bağlı)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube music (optional)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube-Musik (optional)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube musiqisi (istəyə görə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسيقى YouTube (اختياري)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musik YouTube (opsional)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube موسیقی (اختیاری)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسیقی YouTube (اختیاری)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musique YouTube (facultatif)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Музыка YouTube (необязательно)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube の音楽（任意）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube 음악(선택)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube 音乐（可选）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musika sa YouTube (opsyonal)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพลงจาก YouTube (ไม่บังคับ)"
+          }
+        }
+      }
+    },
+    "tools.alarm.ytNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm çalınca bu video oynar; 1 dakika içinde kapatmazsanız alarm sesi de çalar (tarayıcı videoyu kendiliğinden oynatmazsa da). Video YouTube'dan yüklendiği için dış hizmetlere izin gerekir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When the alarm rings this video plays; if you don't turn it off within 1 minute, the alarm sound plays too (also if the browser doesn't start the video by itself). The video loads from YouTube, so external services must be allowed."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Klingeln läuft dieses Video; schalten Sie den Wecker nicht innerhalb von 1 Minute aus, ertönt zusätzlich der Weckton (auch wenn der Browser das Video nicht von selbst startet). Das Video wird von YouTube geladen, daher müssen externe Dienste erlaubt sein."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəng çalanda bu video oynayır; 1 dəqiqə ərzində söndürməsəniz, zəng səsi də çalır (brauzer videonu özü başlatmasa da). Video YouTube-dan yükləndiyi üçün xarici xidmətlərə icazə lazımdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند رنين المنبّه يُشغَّل هذا الفيديو؛ وإن لم توقفه خلال دقيقة واحدة يرنّ صوت المنبّه أيضًا (وكذلك إن لم يبدأ المتصفح تشغيل الفيديو تلقائيًا). يُحمَّل الفيديو من YouTube، لذا يلزم السماح بالخدمات الخارجية."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat alarm berbunyi, video ini diputar; jika tidak Anda matikan dalam 1 menit, suara alarm juga berbunyi (juga bila peramban tidak memutar video dengan sendirinya). Video dimuat dari YouTube, jadi layanan eksternal harus diizinkan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم بجنے پر یہ ویڈیو چلتی ہے؛ اگر آپ 1 منٹ میں اسے بند نہ کریں تو الارم کی آواز بھی بجتی ہے (اگر براؤزر ویڈیو خود نہ چلائے تب بھی)۔ ویڈیو YouTube سے لوڈ ہوتی ہے، اس لیے بیرونی خدمات کی اجازت ضروری ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هنگام زنگ این ویدیو پخش می‌شود؛ اگر ظرف 1 دقیقه خاموشش نکنید، صدای زنگ هم پخش می‌شود (حتی اگر مرورگر ویدیو را خودبه‌خود پخش نکند). ویدیو از YouTube بارگیری می‌شود، پس اجازهٔ خدمات بیرونی لازم است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand l’alarme sonne, cette vidéo se lance ; si vous ne l’arrêtez pas dans la minute, le son de l’alarme retentit aussi (y compris si le navigateur ne lance pas la vidéo tout seul). La vidéo est chargée depuis YouTube : les services externes doivent être autorisés."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда будильник срабатывает, запускается это видео; если не выключить его в течение 1 минуты, зазвучит и сигнал будильника (в том числе если браузер не запустит видео сам). Видео загружается с YouTube, поэтому нужно разрешить внешние сервисы."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラームが鳴るとこの動画が再生されます。1分以内に止めないと、アラーム音も鳴ります（ブラウザが動画を自動再生しない場合も同じです）。動画は YouTube から読み込むため、外部サービスの許可が必要です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알람이 울리면 이 동영상이 재생됩니다. 1분 안에 끄지 않으면 알람 소리도 함께 울립니다(브라우저가 동영상을 자동으로 재생하지 않을 때도). 동영상은 YouTube에서 불러오므로 외부 서비스를 허락해야 합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "闹钟响起时会播放此视频；如果您在 1 分钟内没有关闭，闹钟铃声也会响起（浏览器没有自动播放视频时也是如此）。视频从 YouTube 加载，因此需要允许外部服务。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapag tumunog ang alarma, tutugtog ang video na ito; kung hindi mo ito papatayin sa loob ng 1 minuto, tutunog din ang alarma (pati kung hindi kusang patugtugin ng browser ang video). Galing sa YouTube ang video, kaya kailangang payagan ang mga panlabas na serbisyo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมื่อนาฬิกาปลุกดัง วิดีโอนี้จะเล่น หากไม่ปิดภายใน 1 นาที เสียงปลุกจะดังด้วย (รวมถึงกรณีที่เบราว์เซอร์ไม่เล่นวิดีโอเอง) วิดีโอโหลดจาก YouTube จึงต้องอนุญาตบริการภายนอก"
+          }
+        }
+      }
+    },
+    "tools.alarm.ytInvalid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu bir YouTube bağlantısı değil."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is not a YouTube link."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das ist kein YouTube-Link."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu YouTube keçidi deyil."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا ليس رابط YouTube."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ini bukan tautan YouTube."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ YouTube کا لنک نہیں ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این پیوند YouTube نیست."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce n’est pas un lien YouTube."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Это не ссылка на YouTube."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube のリンクではありません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube 링크가 아닙니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这不是 YouTube 链接。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi ito link sa YouTube."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นี่ไม่ใช่ลิงก์ YouTube"
+          }
+        }
+      }
+    },
+    "tools.alarm.ytBlocked": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube müziği için dış hizmetlere izin verin; izin yoksa alarm kendi sesiyle çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow external services for YouTube music; without permission the alarm rings with its own sound."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlauben Sie externe Dienste für YouTube-Musik; ohne Zustimmung klingelt der Wecker mit seinem eigenen Ton."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube musiqisi üçün xarici xidmətlərə icazə verin; icazə yoxdursa, zəng öz səsi ilə çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسمح بالخدمات الخارجية لموسيقى YouTube؛ ومن دون إذن يرنّ المنبّه بصوته الخاص."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izinkan layanan eksternal untuk musik YouTube; tanpa izin, alarm berbunyi dengan suaranya sendiri."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube موسیقی کے لیے بیرونی خدمات کی اجازت دیں؛ اجازت نہ ہو تو الارم اپنی آواز سے بجتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای موسیقی YouTube به خدمات بیرونی اجازه دهید؛ بدون اجازه زنگ با صدای خودش به صدا درمی‌آید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisez les services externes pour la musique YouTube ; sans autorisation, l’alarme sonne avec son propre son."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешите внешние сервисы для музыки YouTube; без разрешения будильник звонит своим звуком."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube の音楽には外部サービスを許可してください。許可がなければアラームは自分の音で鳴ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube 음악을 쓰려면 외부 서비스를 허락하세요. 허락하지 않으면 알람은 자체 소리로 울립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请允许外部服务以使用 YouTube 音乐；没有许可时闹钟以自身的铃声响起。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payagan ang mga panlabas na serbisyo para sa musika sa YouTube; kung walang pahintulot, tutunog ang alarma sa sarili nitong tunog."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โปรดอนุญาตบริการภายนอกสำหรับเพลงจาก YouTube หากไม่อนุญาต นาฬิกาปลุกจะดังด้วยเสียงของตัวเอง"
+          }
+        }
+      }
+    },
+    "tools.alarm.spotifyNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify tarayıcıda kendiliğinden çalmaz; Spotify'ı alarm müziği olarak Android uygulamasında kullanabilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify doesn't start by itself in the browser; you can use Spotify as alarm music in the Android app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify startet im Browser nicht von selbst; in der Android-App können Sie Spotify als Weckermusik verwenden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify brauzerdə özü başlamır; Spotify-ı zəng musiqisi kimi Android tətbiqində istifadə edə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يبدأ Spotify تلقائيًا في المتصفح؛ يمكنك استخدام Spotify موسيقى للمنبّه في تطبيق Android."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify tidak diputar dengan sendirinya di peramban; Anda dapat memakai Spotify sebagai musik alarm di aplikasi Android."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify براؤزر میں خود نہیں چلتا؛ آپ Android ایپ میں Spotify کو الارم کی موسیقی کے طور پر استعمال کر سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify در مرورگر خودبه‌خود پخش نمی‌شود؛ می‌توانید در برنامهٔ Android از Spotify به‌عنوان موسیقی زنگ استفاده کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify ne démarre pas tout seul dans le navigateur ; vous pouvez utiliser Spotify comme musique de réveil dans l’application Android."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify не запускается в браузере сам; Spotify можно использовать как музыку будильника в приложении для Android."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify はブラウザでは自動で再生されません。Android アプリでは Spotify をアラームの音楽に使えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify는 브라우저에서 자동으로 재생되지 않습니다. Android 앱에서는 Spotify를 알람 음악으로 쓸 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify 在浏览器中不会自动播放；您可以在 Android 应用中把 Spotify 用作闹钟音乐。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi kusang tumutugtog ang Spotify sa browser; magagamit mo ang Spotify bilang musika ng alarma sa Android app."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify ไม่เล่นเองในเบราว์เซอร์ คุณใช้ Spotify เป็นเพลงปลุกได้ในแอป Android"
+          }
+        }
+      }
+    },
     "tools.alarm.dayNames.0": {
       "extractionState": "manual",
       "localizations": {
@@ -98617,91 +99092,91 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uyku takibi yapılmaz: mikrofon ve hareket algılayıcısı kullanılmaz. Plan ve ayarlar yalnız bu telefonda durur."
+            "value": "Uyku takibi yapılmaz, mikrofon kullanılmaz. Akıllı alarm oturumu açıkken yalnız alarm penceresinde hareket algılayıcısı okunur; veri kaydedilmez. Plan ve ayarlar yalnız bu telefonda durur."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "There is no sleep tracking: the microphone and motion sensors are not used. Your schedule and settings stay on this phone."
+            "value": "There is no sleep tracking and the microphone is not used. While a smart alarm session is on, the motion sensor is read only during the alarm window; nothing is saved. Your schedule and settings stay on this phone."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Es gibt keine Schlafaufzeichnung: Mikrofon und Bewegungssensoren werden nicht verwendet. Plan und Einstellungen bleiben auf diesem Telefon."
+            "value": "Es gibt keine Schlafaufzeichnung, das Mikrofon wird nicht verwendet. Während einer Sitzung mit intelligentem Wecker wird der Bewegungssensor nur im Zeitfenster gelesen; nichts wird gespeichert. Plan und Einstellungen bleiben auf diesem Telefon."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yuxu izlənmir: mikrofon və hərəkət sensoru istifadə olunmur. Plan və ayarlar yalnız bu telefonda qalır."
+            "value": "Yuxu izlənmir, mikrofon istifadə olunmur. Ağıllı zəng sessiyası açıq olanda hərəkət sensoru yalnız zəng pəncərəsində oxunur; heç nə saxlanılmır. Plan və ayarlar yalnız bu telefonda qalır."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا يوجد تتبّع للنوم: لا يُستخدم الميكروفون ولا مستشعرات الحركة. يبقى الجدول والإعدادات على هذا الهاتف فقط."
+            "value": "لا يوجد تتبّع للنوم ولا يُستخدم الميكروفون. أثناء جلسة المنبّه الذكي لا يُقرأ مستشعر الحركة إلا خلال نافذة المنبّه؛ ولا يُحفظ شيء. يبقى الجدول والإعدادات على هذا الهاتف فقط."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tidak ada pelacakan tidur: mikrofon dan sensor gerak tidak dipakai. Jadwal dan pengaturan Anda tetap di ponsel ini."
+            "value": "Tidak ada pelacakan tidur dan mikrofon tidak dipakai. Selama sesi alarm pintar, sensor gerak hanya dibaca dalam jendela alarm; tidak ada yang disimpan. Jadwal dan pengaturan Anda tetap di ponsel ini."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "نیند کی ٹریکنگ نہیں: مائیکروفون اور حرکت کے سینسر استعمال نہیں ہوتے۔ آپ کا شیڈول اور ترتیبات اسی فون پر رہتی ہیں۔"
+            "value": "نیند کی ٹریکنگ نہیں ہوتی اور مائیکروفون استعمال نہیں ہوتا۔ سمارٹ الارم سیشن کے دوران حرکت کا سینسر صرف الارم کے وقفے میں پڑھا جاتا ہے؛ کچھ محفوظ نہیں ہوتا۔ آپ کا شیڈول اور ترتیبات اسی فون پر رہتی ہیں۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ردیابی خواب در کار نیست: میکروفون و حسگرهای حرکت به کار نمی‌روند. برنامه و تنظیمات شما روی همین گوشی می‌مانند."
+            "value": "ردیابی خواب در کار نیست و از میکروفون استفاده نمی‌شود. در جلسهٔ زنگ هوشمند، حسگر حرکت فقط در بازهٔ زنگ خوانده می‌شود؛ چیزی ذخیره نمی‌شود. برنامه و تنظیمات شما روی همین گوشی می‌مانند."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pas de suivi du sommeil : le micro et les capteurs de mouvement ne sont pas utilisés. Votre programme et vos réglages restent sur ce téléphone."
+            "value": "Pas de suivi du sommeil et le micro n’est pas utilisé. Pendant une session de réveil intelligent, le capteur de mouvement n’est lu que dans la plage de l’alarme ; rien n’est conservé. Votre programme et vos réglages restent sur ce téléphone."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Отслеживания сна нет: микрофон и датчики движения не используются. Режим и настройки остаются на этом телефоне."
+            "value": "Отслеживания сна нет, микрофон не используется. Во время сеанса умного будильника датчик движения читается только в окне будильника; ничего не сохраняется. Режим и настройки остаются на этом телефоне."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "睡眠の記録はしません。マイクと動きのセンサーは使いません。スケジュールと設定はこのスマホに残ります。"
+            "value": "睡眠の記録はせず、マイクも使いません。スマートアラームのセッション中は、アラームの時間帯だけ動きのセンサーを読み取り、何も保存しません。スケジュールと設定はこのスマホに残ります。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "수면 추적은 하지 않습니다. 마이크와 동작 센서를 쓰지 않습니다. 일정과 설정은 이 휴대폰에 남습니다."
+            "value": "수면 추적은 하지 않고 마이크도 쓰지 않습니다. 스마트 알람 세션 중에는 알람 시간대에만 동작 센서를 읽으며 아무것도 저장하지 않습니다. 일정과 설정은 이 휴대폰에 남습니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "不追踪睡眠：不使用麦克风和运动传感器。您的计划和设置留在这部手机上。"
+            "value": "不追踪睡眠，也不使用麦克风。智能闹钟会话期间，只在闹钟时间窗口内读取运动传感器，不保存任何内容。您的计划和设置留在这部手机上。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Walang sleep tracking: hindi ginagamit ang mikropono at motion sensor. Nananatili sa teleponong ito ang iyong schedule at settings."
+            "value": "Walang sleep tracking at hindi ginagamit ang mikropono. Habang may session ng matalinong alarma, binabasa lang ang motion sensor sa window ng alarma; walang sine-save. Nananatili sa teleponong ito ang iyong schedule at settings."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ไม่มีการติดตามการนอน: ไม่ใช้ไมโครโฟนและเซนเซอร์การเคลื่อนไหว ตารางและการตั้งค่าอยู่บนโทรศัพท์นี้"
+            "value": "ไม่มีการติดตามการนอนและไม่ใช้ไมโครโฟน ระหว่างเซสชันนาฬิกาปลุกอัจฉริยะ จะอ่านเซนเซอร์การเคลื่อนไหวเฉพาะในช่วงนาฬิกาปลุก และไม่บันทึกสิ่งใด ตารางและการตั้งค่าอยู่บนโทรศัพท์นี้"
           }
         }
       }
@@ -135562,6 +136037,1906 @@
           "stringUnit": {
             "state": "translated",
             "value": "การแจ้งเตือนเวลาละหมาดอยู่ในแอป iPhone"
+          }
+        }
+      }
+    },
+    "alarm.link": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Müzik bağlantısı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Music link"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musiklink"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musiqi keçidi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رابط الموسيقى"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tautan musik"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسیقی کا لنک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیوند موسیقی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lien musical"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ссылка на музыку"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音楽のリンク"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "음악 링크"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音乐链接"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link ng musika"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลิงก์เพลง"
+          }
+        }
+      }
+    },
+    "alarm.link.placeholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify ya da YouTube bağlantısı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify or YouTube link"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify- oder YouTube-Link"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify və ya YouTube keçidi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رابط Spotify أو YouTube"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tautan Spotify atau YouTube"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify یا YouTube کا لنک"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پیوند Spotify یا YouTube"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lien Spotify ou YouTube"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ссылка на Spotify или YouTube"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify または YouTube のリンク"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify 또는 YouTube 링크"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify 或 YouTube 链接"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link ng Spotify o YouTube"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลิงก์ Spotify หรือ YouTube"
+          }
+        }
+      }
+    },
+    "alarm.link.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm çalınca bağlantı Spotify ya da YouTube uygulamasında açılır; 1 dakika içinde kapatmazsanız alarm sesi de çalar. Telefon kilitliyse müzik kilit açılınca başlar; Spotify'ın kendiliğinden çalması Spotify uygulamasına bağlıdır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When the alarm rings, the link opens in the Spotify or YouTube app; if you don't turn it off within 1 minute, the alarm sound plays too. If the phone is locked, the music starts once you unlock it; whether Spotify starts playing by itself depends on the Spotify app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beim Klingeln öffnet sich der Link in der Spotify- oder YouTube-App; schalten Sie den Wecker nicht innerhalb von 1 Minute aus, ertönt zusätzlich der Weckton. Ist das Telefon gesperrt, startet die Musik nach dem Entsperren; ob Spotify von selbst abspielt, hängt von der Spotify-App ab."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəng çalanda keçid Spotify və ya YouTube tətbiqində açılır; 1 dəqiqə ərzində söndürməsəniz, zəng səsi də çalır. Telefon kilidlidirsə, musiqi kilid açılanda başlayır; Spotify-ın özü çalması Spotify tətbiqindən asılıdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عند رنين المنبّه يُفتح الرابط في تطبيق Spotify أو YouTube؛ وإن لم توقفه خلال دقيقة واحدة يرنّ صوت المنبّه أيضًا. وإن كان الهاتف مقفلًا تبدأ الموسيقى بعد فتح القفل؛ أما بدء Spotify التشغيل تلقائيًا فيعتمد على تطبيق Spotify."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat alarm berbunyi, tautan dibuka di aplikasi Spotify atau YouTube; jika tidak Anda matikan dalam 1 menit, suara alarm juga berbunyi. Jika ponsel terkunci, musik mulai setelah kunci dibuka; apakah Spotify memutar dengan sendirinya bergantung pada aplikasi Spotify."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم بجنے پر لنک Spotify یا YouTube ایپ میں کھلتا ہے؛ اگر آپ 1 منٹ میں اسے بند نہ کریں تو الارم کی آواز بھی بجتی ہے۔ فون لاک ہو تو موسیقی لاک کھلنے پر شروع ہوتی ہے؛ Spotify کا خود چلنا Spotify ایپ پر منحصر ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هنگام زنگ، پیوند در برنامهٔ Spotify یا YouTube باز می‌شود؛ اگر ظرف 1 دقیقه خاموشش نکنید، صدای زنگ هم پخش می‌شود. اگر گوشی قفل باشد، موسیقی پس از باز کردن قفل شروع می‌شود؛ پخش خودکار Spotify به خود برنامهٔ Spotify بستگی دارد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand l’alarme sonne, le lien s’ouvre dans l’application Spotify ou YouTube ; si vous ne l’arrêtez pas dans la minute, le son de l’alarme retentit aussi. Si le téléphone est verrouillé, la musique démarre après le déverrouillage ; la lecture automatique dépend de l’application Spotify."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда будильник срабатывает, ссылка открывается в приложении Spotify или YouTube; если не выключить его за 1 минуту, зазвучит и сигнал будильника. Если телефон заблокирован, музыка начнётся после разблокировки; запустит ли Spotify воспроизведение сам, зависит от приложения Spotify."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラームが鳴るとリンクが Spotify または YouTube アプリで開きます。1分以内に止めないとアラーム音も鳴ります。スマホがロック中なら、音楽はロック解除後に始まります。Spotify が自動で再生するかどうかは Spotify アプリによります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알람이 울리면 링크가 Spotify나 YouTube 앱에서 열립니다. 1분 안에 끄지 않으면 알람 소리도 함께 울립니다. 휴대폰이 잠겨 있으면 잠금을 풀었을 때 음악이 시작되며, Spotify가 자동으로 재생하는지는 Spotify 앱에 달려 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "闹钟响起时，链接会在 Spotify 或 YouTube 应用中打开；如果您在 1 分钟内没有关闭，闹钟铃声也会响起。手机锁定时，音乐会在解锁后开始；Spotify 是否自动播放取决于 Spotify 应用。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapag tumunog ang alarma, bubukas ang link sa Spotify o YouTube app; kung hindi mo ito papatayin sa loob ng 1 minuto, tutunog din ang alarma. Kung naka-lock ang telepono, magsisimula ang musika pagka-unlock; nakadepende sa Spotify app kung kusa itong tutugtog."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมื่อนาฬิกาปลุกดัง ลิงก์จะเปิดในแอป Spotify หรือ YouTube หากไม่ปิดภายใน 1 นาที เสียงปลุกจะดังด้วย หากโทรศัพท์ล็อกอยู่ เพลงจะเริ่มหลังปลดล็อก การเล่นเองของ Spotify ขึ้นอยู่กับแอป Spotify"
+          }
+        }
+      }
+    },
+    "alarm.link.invalid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu bir Spotify ya da YouTube bağlantısı değil."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This is not a Spotify or YouTube link."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das ist kein Spotify- oder YouTube-Link."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu Spotify və ya YouTube keçidi deyil."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا ليس رابط Spotify أو YouTube."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ini bukan tautan Spotify atau YouTube."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ Spotify یا YouTube کا لنک نہیں ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این پیوند Spotify یا YouTube نیست."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce n’est pas un lien Spotify ou YouTube."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Это не ссылка на Spotify или YouTube."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify または YouTube のリンクではありません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spotify 또는 YouTube 링크가 아닙니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这不是 Spotify 或 YouTube 链接。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi ito link ng Spotify o YouTube."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นี่ไม่ใช่ลิงก์ Spotify หรือ YouTube"
+          }
+        }
+      }
+    },
+    "alarm.link.try": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dene"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Testen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yoxla"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تجربة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coba"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آزمائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امتحان"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Essayer"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Проверить"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "試す"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시험"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "试一下"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subukan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลอง"
+          }
+        }
+      }
+    },
+    "alarm.link.open": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Müziği aç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open the music"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musik öffnen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Musiqini aç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "افتح الموسيقى"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buka musik"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسیقی کھولیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باز کردن موسیقی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ouvrir la musique"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Открыть музыку"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音楽を開く"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "음악 열기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "打开音乐"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buksan ang musika"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เปิดเพลง"
+          }
+        }
+      }
+    },
+    "alarm.smart": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akıllı alarm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smart alarm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intelligenter Wecker"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağıllı zəng"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المنبّه الذكي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm pintar"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سمارٹ الارم"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنگ هوشمند"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réveil intelligent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Умный будильник"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スマートアラーム"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스마트 알람"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能闹钟"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matalinong alarma"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นาฬิกาปลุกอัจฉริยะ"
+          }
+        }
+      }
+    },
+    "alarm.smartMin": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dk içinde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Within %1$@ min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Innerhalb von %1$@ Min."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ dəq ərzində"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خلال %1$@ د"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dalam %1$@ mnt"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ منٹ کے اندر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در %1$@ دقیقه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dans les %1$@ min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "В пределах %1$@ мин"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@分以内"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@분 이내"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 分钟内"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa loob ng %1$@ min"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ภายใน %1$@ นาที"
+          }
+        }
+      }
+    },
+    "alarm.smart.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uyku ekranında \"Akıllı alarmla uyu\"yu başlatıp telefonu yatağa koyarsanız, alarmdan önceki bu süre içinde hareket (hafif uyku) algılanınca alarm erken çalar; algılanmazsa saatinde çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "If you start \"Sleep with smart alarm\" on the Sleep screen and put the phone on the bed, the alarm rings early when movement (light sleep) is detected within this time before it; otherwise it rings on time."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn Sie im Bildschirm Schlaf „Mit intelligentem Wecker schlafen“ starten und das Telefon aufs Bett legen, klingelt der Wecker früher, sobald in dieser Zeit davor Bewegung (leichter Schlaf) erkannt wird; sonst pünktlich."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxu ekranında \"Ağıllı zənglə yat\"ı başladıb telefonu yatağa qoysanız, zəngdən əvvəlki bu müddətdə hərəkət (yüngül yuxu) aşkarlananda zəng tez çalır; aşkarlanmasa, vaxtında çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إذا بدأت \"النوم مع المنبّه الذكي\" في شاشة النوم ووضعت الهاتف على السرير، يرنّ المنبّه مبكرًا عند رصد حركة (نوم خفيف) خلال هذه المدة قبله؛ وإلا يرنّ في موعده."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika Anda memulai \"Tidur dengan alarm pintar\" di layar Tidur dan menaruh ponsel di kasur, alarm berbunyi lebih awal saat gerakan (tidur ringan) terdeteksi dalam waktu ini sebelumnya; jika tidak, alarm berbunyi tepat waktu."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر آپ نیند کی اسکرین پر \"سمارٹ الارم کے ساتھ سوئیں\" شروع کر کے فون بستر پر رکھیں تو الارم سے پہلے اس وقت میں حرکت (ہلکی نیند) محسوس ہونے پر الارم جلد بجتا ہے؛ ورنہ وقت پر بجتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگر در صفحهٔ خواب «خواب با زنگ هوشمند» را آغاز کنید و گوشی را روی تخت بگذارید، با تشخیص حرکت (خواب سبک) در این مدت پیش از زنگ، زنگ زودتر به صدا درمی‌آید؛ وگرنه سر وقت."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Si vous lancez « Dormir avec le réveil intelligent » dans l’écran Sommeil et posez le téléphone sur le lit, l’alarme sonne plus tôt quand un mouvement (sommeil léger) est détecté dans ce délai avant elle ; sinon elle sonne à l’heure."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если на экране «Сон» запустить «Спать с умным будильником» и положить телефон на кровать, будильник сработает раньше, когда в этот промежуток до него будет замечено движение (лёгкий сон); иначе — вовремя."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睡眠画面で「スマートアラームで眠る」を開始してスマホをベッドに置くと、アラーム前のこの時間内に動き（浅い眠り）を検知した時点で早めに鳴ります。検知しなければ時刻どおりに鳴ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "수면 화면에서 \"스마트 알람으로 자기\"를 시작하고 휴대폰을 침대에 두면, 알람 전 이 시간 안에 움직임(얕은 잠)이 감지될 때 알람이 일찍 울립니다. 감지되지 않으면 제시간에 울립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在“睡眠”页面开始“用智能闹钟入睡”并把手机放在床上，若在闹钟前的这段时间内检测到动作（浅睡），闹钟会提前响起；否则按时响起。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kung sisimulan mo ang \"Matulog na may matalinong alarma\" sa screen ng Tulog at ilalagay ang telepono sa kama, maagang tutunog ang alarma kapag may galaw (mababaw na tulog) sa loob ng oras na ito bago nito; kung wala, tutunog ito sa oras."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หากเริ่ม \"นอนด้วยนาฬิกาปลุกอัจฉริยะ\" ในหน้าการนอนและวางโทรศัพท์บนเตียง นาฬิกาปลุกจะดังก่อนเมื่อตรวจพบการเคลื่อนไหว (หลับตื้น) ในช่วงเวลานี้ก่อนปลุก หากไม่พบจะดังตามเวลา"
+          }
+        }
+      }
+    },
+    "smart.notif": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akıllı alarm açık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smart alarm on"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intelligenter Wecker an"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağıllı zəng açıqdır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المنبّه الذكي يعمل"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm pintar aktif"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سمارٹ الارم آن ہے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنگ هوشمند روشن است"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réveil intelligent activé"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Умный будильник включён"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スマートアラーム オン"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스마트 알람 켜짐"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能闹钟已开启"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naka-on ang matalinong alarma"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นาฬิกาปลุกอัจฉริยะเปิดอยู่"
+          }
+        }
+      }
+    },
+    "smart.notifText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · telefonu yatakta bırakın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · leave the phone on the bed"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · Telefon auf dem Bett lassen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · telefonu yataqda saxlayın"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · اترك الهاتف على السرير"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · biarkan ponsel di kasur"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · فون بستر پر رہنے دیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · گوشی را روی تخت بگذارید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · laissez le téléphone sur le lit"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · оставьте телефон на кровати"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ ・ スマホはベッドに置いたままに"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · 휴대폰을 침대에 두세요"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · 请把手机留在床上"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · iwan ang telepono sa kama"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@–%2$@ · วางโทรศัพท์ไว้บนเตียง"
+          }
+        }
+      }
+    },
+    "smart.start": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akıllı alarmla uyu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sleep with smart alarm"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit intelligentem Wecker schlafen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağıllı zənglə yat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "النوم مع المنبّه الذكي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidur dengan alarm pintar"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سمارٹ الارم کے ساتھ سوئیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خواب با زنگ هوشمند"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dormir avec le réveil intelligent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спать с умным будильником"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スマートアラームで眠る"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스마트 알람으로 자기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用智能闹钟入睡"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matulog na may matalinong alarma"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นอนด้วยนาฬิกาปลุกอัจฉริยะ"
+          }
+        }
+      }
+    },
+    "smart.stop": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durdur"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stop"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beenden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dayandır"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إيقاف"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hentikan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روکیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "توقف"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arrêter"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Остановить"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "중지"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "停止"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Itigil"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หยุด"
+          }
+        }
+      }
+    },
+    "smart.next": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıradaki akıllı alarm: %1$@–%2$@ arasında"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next smart alarm: between %1$@ and %2$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nächster intelligenter Wecker: zwischen %1$@ und %2$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Növbəti ağıllı zəng: %1$@–%2$@ arasında"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المنبّه الذكي التالي: بين %1$@ و%2$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm pintar berikutnya: antara %1$@ dan %2$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگلا سمارٹ الارم: %1$@ اور %2$@ کے درمیان"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنگ هوشمند بعدی: بین %1$@ و %2$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prochain réveil intelligent : entre %1$@ et %2$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Следующий умный будильник: между %1$@ и %2$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "次のスマートアラーム：%1$@〜%2$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다음 스마트 알람: %1$@–%2$@ 사이"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一个智能闹钟：%1$@–%2$@ 之间"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Susunod na matalinong alarma: mula %1$@ hanggang %2$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นาฬิกาปลุกอัจฉริยะถัดไป: ระหว่าง %1$@–%2$@"
+          }
+        }
+      }
+    },
+    "smart.running": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akıllı alarm açık: %1$@–%2$@ arasında hafif uykuda çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smart alarm on: it rings during light sleep between %1$@ and %2$@."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intelligenter Wecker an: klingelt zwischen %1$@ und %2$@ im leichten Schlaf."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağıllı zəng açıqdır: %1$@–%2$@ arasında yüngül yuxuda çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المنبّه الذكي يعمل: يرنّ في النوم الخفيف بين %1$@ و%2$@."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm pintar aktif: berbunyi saat tidur ringan antara %1$@ dan %2$@."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سمارٹ الارم آن ہے: %1$@ اور %2$@ کے درمیان ہلکی نیند میں بجے گا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زنگ هوشمند روشن است: بین %1$@ و %2$@ در خواب سبک به صدا درمی‌آید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réveil intelligent activé : il sonne en sommeil léger entre %1$@ et %2$@."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Умный будильник включён: сработает в лёгком сне между %1$@ и %2$@."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スマートアラーム オン：%1$@〜%2$@ の浅い眠りのときに鳴ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스마트 알람 켜짐: %1$@–%2$@ 사이 얕은 잠일 때 울립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "智能闹钟已开启：将在 %1$@–%2$@ 之间的浅睡时响起。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Naka-on ang matalinong alarma: tutunog sa mababaw na tulog mula %1$@ hanggang %2$@."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นาฬิกาปลุกอัจฉริยะเปิดอยู่: จะดังขณะหลับตื้นระหว่าง %1$@–%2$@"
+          }
+        }
+      }
+    },
+    "smart.moving": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hareket algılanan dakika: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minutes with movement: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minuten mit Bewegung: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hərəkət aşkarlanan dəqiqə: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الدقائق التي رُصدت فيها حركة: %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menit dengan gerakan: %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حرکت والے منٹ: %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دقیقه‌های دارای حرکت: %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Minutes avec mouvement : %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Минут с движением: %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "動きを検知した分数：%1$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "움직임이 감지된 분: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "检测到动作的分钟数：%1$@"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mga minutong may galaw: %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นาทีที่ตรวจพบการเคลื่อนไหว: %1$@"
+          }
+        }
+      }
+    },
+    "smart.waiting": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pencere başlayınca hareket izlenir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Movement is watched once the window starts."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bewegung wird ab Beginn des Zeitfensters beobachtet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pəncərə başlayanda hərəkət izlənir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُراقَب الحركة عند بدء النافذة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerakan dipantau saat jendela waktu dimulai."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقفہ شروع ہوتے ہی حرکت دیکھی جاتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "با آغاز بازه، حرکت پایش می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les mouvements sont suivis dès le début de la plage."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Движение отслеживается с начала окна."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "時間帯が始まると動きを見守ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시간대가 시작되면 움직임을 살핍니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "时间窗口开始后开始检测动作。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Babantayan ang galaw pagsimula ng window."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "จะเริ่มตรวจการเคลื่อนไหวเมื่อถึงช่วงเวลา"
+          }
+        }
+      }
+    },
+    "smart.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Akıllı alarm süresi seçilmiş bir alarm yok. Alarm düzenleyicisinde \"Akıllı alarm\" süresini seçin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No alarm has a smart alarm window. Choose a \"Smart alarm\" window in the alarm editor."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Wecker hat ein Zeitfenster für den intelligenten Wecker. Wählen Sie im Weckereditor ein „Intelligenter Wecker“-Fenster."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağıllı zəng müddəti seçilmiş zəng yoxdur. Zəng redaktorunda \"Ağıllı zəng\" müddətini seçin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يوجد منبّه له نافذة منبّه ذكي. اختر نافذة \"المنبّه الذكي\" في محرر المنبّه."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Belum ada alarm dengan jendela alarm pintar. Pilih jendela \"Alarm pintar\" di penyunting alarm."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کسی الارم کا سمارٹ الارم وقفہ منتخب نہیں۔ الارم ایڈیٹر میں \"سمارٹ الارم\" کا وقفہ چنیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هیچ زنگی بازهٔ زنگ هوشمند ندارد. در ویرایشگر زنگ، بازهٔ «زنگ هوشمند» را انتخاب کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucune alarme n’a de plage de réveil intelligent. Choisissez une plage « Réveil intelligent » dans l’éditeur d’alarme."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ни у одного будильника не задано окно умного будильника. Выберите окно «Умный будильник» в редакторе будильника."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スマートアラームの時間帯を設定したアラームがありません。アラームの編集で「スマートアラーム」の時間帯を選んでください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스마트 알람 시간대가 설정된 알람이 없습니다. 알람 편집에서 \"스마트 알람\" 시간대를 고르세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "没有设置智能闹钟时间窗口的闹钟。请在闹钟编辑中选择“智能闹钟”时间窗口。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Walang alarmang may window ng matalinong alarma. Pumili ng window na \"Matalinong alarma\" sa editor ng alarma."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ยังไม่มีนาฬิกาปลุกที่ตั้งช่วงนาฬิกาปลุกอัจฉริยะ เลือกช่วง \"นาฬิกาปลุกอัจฉริยะ\" ในตัวแก้ไขนาฬิกาปลุก"
+          }
+        }
+      }
+    },
+    "smart.how": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonu yastığınızın yanına, yatağın üstüne koyun ve şarja takın. Hareket algılayıcısı yalnız pencerede okunur; ses kaydı yok, veri telefonda bellekte kalır ve kaydedilmez. Hareket algılanmazsa alarm normal saatinde çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Put the phone on the bed next to your pillow and plug it in. The motion sensor is read only during the window; nothing is recorded, the data stays in the phone's memory and is not saved. If no movement is detected, the alarm rings at its normal time."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Legen Sie das Telefon neben das Kopfkissen aufs Bett und schließen Sie es ans Ladegerät an. Der Bewegungssensor wird nur im Zeitfenster gelesen; es wird nichts aufgezeichnet, die Daten bleiben im Speicher des Telefons und werden nicht gespeichert. Ohne Bewegung klingelt der Wecker zur normalen Zeit."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonu yastığınızın yanına, yatağın üstünə qoyun və şarja taxın. Hərəkət sensoru yalnız pəncərədə oxunur; səs yazılmır, məlumat telefonun yaddaşında qalır və saxlanılmır. Hərəkət aşkarlanmasa, zəng adi vaxtında çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضع الهاتف على السرير بجانب وسادتك ووصّله بالشاحن. لا يُقرأ مستشعر الحركة إلا خلال النافذة؛ لا يُسجَّل شيء، وتبقى البيانات في ذاكرة الهاتف ولا تُحفظ. وإن لم تُرصد حركة يرنّ المنبّه في موعده المعتاد."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taruh ponsel di kasur di samping bantal dan sambungkan ke pengisi daya. Sensor gerak hanya dibaca selama jendela waktu; tidak ada yang direkam, data tetap di memori ponsel dan tidak disimpan. Jika tidak ada gerakan, alarm berbunyi pada waktu biasa."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فون کو تکیے کے پاس بستر پر رکھیں اور چارجر سے لگائیں۔ حرکت کا سینسر صرف وقفے میں پڑھا جاتا ہے؛ کچھ ریکارڈ نہیں ہوتا، ڈیٹا فون کی میموری میں رہتا ہے اور محفوظ نہیں ہوتا۔ حرکت نہ ملے تو الارم معمول کے وقت بجتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گوشی را کنار بالشتان روی تخت بگذارید و به شارژر وصل کنید. حسگر حرکت فقط در بازه خوانده می‌شود؛ چیزی ضبط نمی‌شود، داده در حافظهٔ گوشی می‌ماند و ذخیره نمی‌شود. اگر حرکتی دیده نشود، زنگ سر وقت همیشگی به صدا درمی‌آید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posez le téléphone sur le lit près de votre oreiller et branchez-le. Le capteur de mouvement n’est lu que pendant la plage ; rien n’est enregistré, les données restent dans la mémoire du téléphone et ne sont pas conservées. Sans mouvement, l’alarme sonne à l’heure prévue."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Положите телефон на кровать рядом с подушкой и поставьте на зарядку. Датчик движения читается только в окне; ничего не записывается, данные остаются в памяти телефона и не сохраняются. Если движения нет, будильник сработает в обычное время."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スマホを枕のそばのベッドの上に置き、充電器につないでください。動きのセンサーは時間帯の間だけ読み取ります。録音はせず、データはスマホのメモリにだけあって保存されません。動きがなければアラームは通常の時刻に鳴ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰을 베개 옆 침대 위에 두고 충전기에 연결하세요. 동작 센서는 시간대 동안에만 읽습니다. 녹음은 하지 않으며 데이터는 휴대폰 메모리에만 있고 저장되지 않습니다. 움직임이 없으면 알람은 원래 시간에 울립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "把手机放在床上枕头旁并接上充电器。只在时间窗口内读取运动传感器；不录音，数据只在手机内存中，不会保存。若未检测到动作，闹钟会按原定时间响起。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ilagay ang telepono sa kama sa tabi ng unan at i-charge ito. Binabasa lang ang motion sensor sa loob ng window; walang nire-record, nananatili ang data sa memory ng telepono at hindi sine-save. Kung walang galaw, tutunog ang alarma sa karaniwang oras."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วางโทรศัพท์บนเตียงข้างหมอนและเสียบชาร์จ เซนเซอร์การเคลื่อนไหวจะอ่านเฉพาะในช่วงเวลานั้น ไม่มีการบันทึก ข้อมูลอยู่ในหน่วยความจำของโทรศัพท์และไม่ถูกเก็บ หากไม่พบการเคลื่อนไหว นาฬิกาปลุกจะดังตามเวลาปกติ"
+          }
+        }
+      }
+    },
+    "smart.howIOS": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone'da oturum, uygulama açıkken (ekran kararır) ya da uyku sesi çalarken sürer; uygulamadan çıkarsanız alarm normal saatinde çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On iPhone the session runs while the app is open (the screen dims) or while a sleep sound plays; if you leave the app, the alarm rings at its normal time."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf dem iPhone läuft die Sitzung, solange die App geöffnet ist (der Bildschirm wird abgedunkelt) oder ein Schlafklang spielt; verlassen Sie die App, klingelt der Wecker zur normalen Zeit."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone-da sessiya tətbiq açıq olanda (ekran qaralır) və ya yuxu səsi çalanda davam edir; tətbiqdən çıxsanız, zəng adi vaxtında çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "على iPhone تستمر الجلسة ما دام التطبيق مفتوحًا (تخفت الشاشة) أو أثناء تشغيل صوت النوم؛ وإن خرجت من التطبيق يرنّ المنبّه في موعده المعتاد."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di iPhone, sesi berjalan selama aplikasi terbuka (layar meredup) atau selama suara tidur diputar; jika Anda keluar dari aplikasi, alarm berbunyi pada waktu biasa."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone پر سیشن ایپ کھلی رہنے تک (اسکرین مدھم ہو جاتی ہے) یا نیند کی آواز چلنے تک جاری رہتا ہے؛ ایپ سے نکلیں تو الارم معمول کے وقت بجتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در iPhone جلسه تا وقتی برنامه باز است (صفحه کم‌نور می‌شود) یا صدای خواب پخش می‌شود ادامه دارد؛ اگر از برنامه بیرون بروید، زنگ سر وقت همیشگی به صدا درمی‌آید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sur iPhone, la session dure tant que l’application est ouverte (l’écran s’assombrit) ou qu’un son de sommeil joue ; si vous quittez l’application, l’alarme sonne à l’heure prévue."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На iPhone сеанс идёт, пока приложение открыто (экран затемняется) или играет звук для сна; если выйти из приложения, будильник сработает в обычное время."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone では、アプリを開いている間（画面は暗くなります）か睡眠用サウンドの再生中にセッションが続きます。アプリを閉じるとアラームは通常の時刻に鳴ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iPhone에서는 앱이 열려 있는 동안(화면이 어두워짐) 또는 수면 소리가 재생되는 동안 세션이 이어집니다. 앱을 나가면 알람은 원래 시간에 울립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在 iPhone 上，应用保持打开（屏幕会变暗）或正在播放助眠声音时会话才会持续；离开应用后，闹钟会按原定时间响起。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa iPhone, tumatakbo ang session habang bukas ang app (dumidilim ang screen) o habang tumutugtog ang tunog pantulog; kung aalis ka sa app, tutunog ang alarma sa karaniwang oras."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บน iPhone เซสชันจะทำงานขณะเปิดแอปอยู่ (หน้าจอจะหรี่ลง) หรือขณะเล่นเสียงช่วยนอน หากออกจากแอป นาฬิกาปลุกจะดังตามเวลาปกติ"
           }
         }
       }

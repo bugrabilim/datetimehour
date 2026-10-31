@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">الارم</string>
     <string name="tools_alarm_defaultLabel">الارم</string>
     <string name="tools_alarm_soundLabel">الارم کی آواز</string>
+    <string name="tools_alarm_ytLabel">YouTube موسیقی (اختیاری)</string>
+    <string name="tools_alarm_ytNote">الارم بجنے پر یہ ویڈیو چلتی ہے؛ اگر آپ 1 منٹ میں اسے بند نہ کریں تو الارم کی آواز بھی بجتی ہے (اگر براؤزر ویڈیو خود نہ چلائے تب بھی)۔ ویڈیو YouTube سے لوڈ ہوتی ہے، اس لیے بیرونی خدمات کی اجازت ضروری ہے۔</string>
+    <string name="tools_alarm_ytInvalid">یہ YouTube کا لنک نہیں ہے۔</string>
+    <string name="tools_alarm_ytBlocked">YouTube موسیقی کے لیے بیرونی خدمات کی اجازت دیں؛ اجازت نہ ہو تو الارم اپنی آواز سے بجتا ہے۔</string>
+    <string name="tools_alarm_spotifyNote">Spotify براؤزر میں خود نہیں چلتا؛ آپ Android ایپ میں Spotify کو الارم کی موسیقی کے طور پر استعمال کر سکتے ہیں۔</string>
     <string name="tools_alarm_dayNames_0">پیر</string>
     <string name="tools_alarm_dayNames_1">منگل</string>
     <string name="tools_alarm_dayNames_2">بدھ</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">چلائیں</string>
     <string name="sleep_stop">روکیں</string>
     <string name="sleep_sunriseInfo">کسی الارم پر «طلوع کی روشنی» منتخب کریں (ٹولز › الارم)۔ سوتے وقت فون چارجر پر لگائیں اور پوری اسکرین گھڑی کھلی رہنے دیں (رات کا موڈ بھی چلتا ہے): الارم سے 10–30 منٹ پہلے اسکرین آہستہ روشن ہوتی ہے۔</string>
-    <string name="sleep_privacy">نیند کی ٹریکنگ نہیں: مائیکروفون اور حرکت کے سینسر استعمال نہیں ہوتے۔ آپ کا شیڈول اور ترتیبات اسی فون پر رہتی ہیں۔</string>
+    <string name="sleep_privacy">نیند کی ٹریکنگ نہیں ہوتی اور مائیکروفون استعمال نہیں ہوتا۔ سمارٹ الارم سیشن کے دوران حرکت کا سینسر صرف الارم کے وقفے میں پڑھا جاتا ہے؛ کچھ محفوظ نہیں ہوتا۔ آپ کا شیڈول اور ترتیبات اسی فون پر رہتی ہیں۔</string>
     <string name="sleep_n_soon">سونے کا وقت قریب ہے</string>
     <string name="sleep_n_now">سونے کا وقت ہو گیا</string>
     <string name="sleep_n_body">سونا %1$s · جاگنا %2$s (%3$s نیند)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">بند کریں</string>
     <string name="desk_h12">12 گھنٹے کی گھڑی</string>
     <string name="desk_macNote">نماز کی اطلاعات آئی فون ایپ میں ہیں۔</string>
+    <string name="alarm_link">موسیقی کا لنک</string>
+    <string name="alarm_link_placeholder">Spotify یا YouTube کا لنک</string>
+    <string name="alarm_link_note">الارم بجنے پر لنک Spotify یا YouTube ایپ میں کھلتا ہے؛ اگر آپ 1 منٹ میں اسے بند نہ کریں تو الارم کی آواز بھی بجتی ہے۔ فون لاک ہو تو موسیقی لاک کھلنے پر شروع ہوتی ہے؛ Spotify کا خود چلنا Spotify ایپ پر منحصر ہے۔</string>
+    <string name="alarm_link_invalid">یہ Spotify یا YouTube کا لنک نہیں ہے۔</string>
+    <string name="alarm_link_try">آزمائیں</string>
+    <string name="alarm_link_open">موسیقی کھولیں</string>
+    <string name="alarm_smart">سمارٹ الارم</string>
+    <string name="alarm_smartMin">%1$s منٹ کے اندر</string>
+    <string name="alarm_smart_note">اگر آپ نیند کی اسکرین پر \"سمارٹ الارم کے ساتھ سوئیں\" شروع کر کے فون بستر پر رکھیں تو الارم سے پہلے اس وقت میں حرکت (ہلکی نیند) محسوس ہونے پر الارم جلد بجتا ہے؛ ورنہ وقت پر بجتا ہے۔</string>
+    <string name="smart_notif">سمارٹ الارم آن ہے</string>
+    <string name="smart_notifText">%1$s–%2$s · فون بستر پر رہنے دیں</string>
+    <string name="smart_start">سمارٹ الارم کے ساتھ سوئیں</string>
+    <string name="smart_stop">روکیں</string>
+    <string name="smart_next">اگلا سمارٹ الارم: %1$s اور %2$s کے درمیان</string>
+    <string name="smart_running">سمارٹ الارم آن ہے: %1$s اور %2$s کے درمیان ہلکی نیند میں بجے گا۔</string>
+    <string name="smart_moving">حرکت والے منٹ: %1$s</string>
+    <string name="smart_waiting">وقفہ شروع ہوتے ہی حرکت دیکھی جاتی ہے۔</string>
+    <string name="smart_none">کسی الارم کا سمارٹ الارم وقفہ منتخب نہیں۔ الارم ایڈیٹر میں \"سمارٹ الارم\" کا وقفہ چنیں۔</string>
+    <string name="smart_how">فون کو تکیے کے پاس بستر پر رکھیں اور چارجر سے لگائیں۔ حرکت کا سینسر صرف وقفے میں پڑھا جاتا ہے؛ کچھ ریکارڈ نہیں ہوتا، ڈیٹا فون کی میموری میں رہتا ہے اور محفوظ نہیں ہوتا۔ حرکت نہ ملے تو الارم معمول کے وقت بجتا ہے۔</string>
+    <string name="smart_howIOS">iPhone پر سیشن ایپ کھلی رہنے تک (اسکرین مدھم ہو جاتی ہے) یا نیند کی آواز چلنے تک جاری رہتا ہے؛ ایپ سے نکلیں تو الارم معمول کے وقت بجتا ہے۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

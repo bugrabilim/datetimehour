@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">المنبّه</string>
     <string name="tools_alarm_defaultLabel">منبّه</string>
     <string name="tools_alarm_soundLabel">صوت المنبه</string>
+    <string name="tools_alarm_ytLabel">موسيقى YouTube (اختياري)</string>
+    <string name="tools_alarm_ytNote">عند رنين المنبّه يُشغَّل هذا الفيديو؛ وإن لم توقفه خلال دقيقة واحدة يرنّ صوت المنبّه أيضًا (وكذلك إن لم يبدأ المتصفح تشغيل الفيديو تلقائيًا). يُحمَّل الفيديو من YouTube، لذا يلزم السماح بالخدمات الخارجية.</string>
+    <string name="tools_alarm_ytInvalid">هذا ليس رابط YouTube.</string>
+    <string name="tools_alarm_ytBlocked">اسمح بالخدمات الخارجية لموسيقى YouTube؛ ومن دون إذن يرنّ المنبّه بصوته الخاص.</string>
+    <string name="tools_alarm_spotifyNote">لا يبدأ Spotify تلقائيًا في المتصفح؛ يمكنك استخدام Spotify موسيقى للمنبّه في تطبيق Android.</string>
     <string name="tools_alarm_dayNames_0">اثنين</string>
     <string name="tools_alarm_dayNames_1">ثلاثاء</string>
     <string name="tools_alarm_dayNames_2">أربعاء</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">تشغيل</string>
     <string name="sleep_stop">إيقاف</string>
     <string name="sleep_sunriseInfo">اختر \"ضوء الشروق\" في أحد المنبّهات (الأدوات › المنبّه). عند النوم ضع الهاتف على الشاحن واترك الساعة بملء الشاشة مفتوحة (يعمل الوضع الليلي أيضًا): تضيء الشاشة ببطء قبل المنبّه بـ 10–30 دقيقة.</string>
-    <string name="sleep_privacy">لا يوجد تتبّع للنوم: لا يُستخدم الميكروفون ولا مستشعرات الحركة. يبقى الجدول والإعدادات على هذا الهاتف فقط.</string>
+    <string name="sleep_privacy">لا يوجد تتبّع للنوم ولا يُستخدم الميكروفون. أثناء جلسة المنبّه الذكي لا يُقرأ مستشعر الحركة إلا خلال نافذة المنبّه؛ ولا يُحفظ شيء. يبقى الجدول والإعدادات على هذا الهاتف فقط.</string>
     <string name="sleep_n_soon">اقترب وقت النوم</string>
     <string name="sleep_n_now">حان وقت النوم</string>
     <string name="sleep_n_body">النوم %1$s · الاستيقاظ %2$s (%3$s من النوم)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">إنهاء</string>
     <string name="desk_h12">نظام 12 ساعة</string>
     <string name="desk_macNote">إشعارات الصلاة في تطبيق iPhone.</string>
+    <string name="alarm_link">رابط الموسيقى</string>
+    <string name="alarm_link_placeholder">رابط Spotify أو YouTube</string>
+    <string name="alarm_link_note">عند رنين المنبّه يُفتح الرابط في تطبيق Spotify أو YouTube؛ وإن لم توقفه خلال دقيقة واحدة يرنّ صوت المنبّه أيضًا. وإن كان الهاتف مقفلًا تبدأ الموسيقى بعد فتح القفل؛ أما بدء Spotify التشغيل تلقائيًا فيعتمد على تطبيق Spotify.</string>
+    <string name="alarm_link_invalid">هذا ليس رابط Spotify أو YouTube.</string>
+    <string name="alarm_link_try">تجربة</string>
+    <string name="alarm_link_open">افتح الموسيقى</string>
+    <string name="alarm_smart">المنبّه الذكي</string>
+    <string name="alarm_smartMin">خلال %1$s د</string>
+    <string name="alarm_smart_note">إذا بدأت \"النوم مع المنبّه الذكي\" في شاشة النوم ووضعت الهاتف على السرير، يرنّ المنبّه مبكرًا عند رصد حركة (نوم خفيف) خلال هذه المدة قبله؛ وإلا يرنّ في موعده.</string>
+    <string name="smart_notif">المنبّه الذكي يعمل</string>
+    <string name="smart_notifText">%1$s–%2$s · اترك الهاتف على السرير</string>
+    <string name="smart_start">النوم مع المنبّه الذكي</string>
+    <string name="smart_stop">إيقاف</string>
+    <string name="smart_next">المنبّه الذكي التالي: بين %1$s و%2$s</string>
+    <string name="smart_running">المنبّه الذكي يعمل: يرنّ في النوم الخفيف بين %1$s و%2$s.</string>
+    <string name="smart_moving">الدقائق التي رُصدت فيها حركة: %1$s</string>
+    <string name="smart_waiting">تُراقَب الحركة عند بدء النافذة.</string>
+    <string name="smart_none">لا يوجد منبّه له نافذة منبّه ذكي. اختر نافذة \"المنبّه الذكي\" في محرر المنبّه.</string>
+    <string name="smart_how">ضع الهاتف على السرير بجانب وسادتك ووصّله بالشاحن. لا يُقرأ مستشعر الحركة إلا خلال النافذة؛ لا يُسجَّل شيء، وتبقى البيانات في ذاكرة الهاتف ولا تُحفظ. وإن لم تُرصد حركة يرنّ المنبّه في موعده المعتاد.</string>
+    <string name="smart_howIOS">على iPhone تستمر الجلسة ما دام التطبيق مفتوحًا (تخفت الشاشة) أو أثناء تشغيل صوت النوم؛ وإن خرجت من التطبيق يرنّ المنبّه في موعده المعتاد.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

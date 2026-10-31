@@ -241,6 +241,11 @@
     <string name="tools_alarm_panel">Alarm</string>
     <string name="tools_alarm_defaultLabel">Alarm</string>
     <string name="tools_alarm_soundLabel">Alarm sound</string>
+    <string name="tools_alarm_ytLabel">YouTube music (optional)</string>
+    <string name="tools_alarm_ytNote">When the alarm rings this video plays; if you don\'t turn it off within 1 minute, the alarm sound plays too (also if the browser doesn\'t start the video by itself). The video loads from YouTube, so external services must be allowed.</string>
+    <string name="tools_alarm_ytInvalid">This is not a YouTube link.</string>
+    <string name="tools_alarm_ytBlocked">Allow external services for YouTube music; without permission the alarm rings with its own sound.</string>
+    <string name="tools_alarm_spotifyNote">Spotify doesn\'t start by itself in the browser; you can use Spotify as alarm music in the Android app.</string>
     <string name="tools_alarm_dayNames_0">Mon</string>
     <string name="tools_alarm_dayNames_1">Tue</string>
     <string name="tools_alarm_dayNames_2">Wed</string>
@@ -1039,7 +1044,7 @@
     <string name="sleep_play">Play</string>
     <string name="sleep_stop">Stop</string>
     <string name="sleep_sunriseInfo">Choose \"Sunrise light\" on an alarm (Tools › Alarm). At bedtime, put the phone on its charger and leave the full-screen clock open (night mode works too): the screen slowly brightens 10–30 minutes before the alarm.</string>
-    <string name="sleep_privacy">There is no sleep tracking: the microphone and motion sensors are not used. Your schedule and settings stay on this phone.</string>
+    <string name="sleep_privacy">There is no sleep tracking and the microphone is not used. While a smart alarm session is on, the motion sensor is read only during the alarm window; nothing is saved. Your schedule and settings stay on this phone.</string>
     <string name="sleep_n_soon">Bedtime is coming up</string>
     <string name="sleep_n_now">It\'s bedtime</string>
     <string name="sleep_n_body">Bed %1$s · wake %2$s (%3$s of sleep)</string>
@@ -1428,5 +1433,25 @@
     <string name="desk_quit">Quit</string>
     <string name="desk_h12">12-hour clock</string>
     <string name="desk_macNote">Prayer notifications are in the iPhone app.</string>
+    <string name="alarm_link">Music link</string>
+    <string name="alarm_link_placeholder">Spotify or YouTube link</string>
+    <string name="alarm_link_note">When the alarm rings, the link opens in the Spotify or YouTube app; if you don\'t turn it off within 1 minute, the alarm sound plays too. If the phone is locked, the music starts once you unlock it; whether Spotify starts playing by itself depends on the Spotify app.</string>
+    <string name="alarm_link_invalid">This is not a Spotify or YouTube link.</string>
+    <string name="alarm_link_try">Try</string>
+    <string name="alarm_link_open">Open the music</string>
+    <string name="alarm_smart">Smart alarm</string>
+    <string name="alarm_smartMin">Within %1$s min</string>
+    <string name="alarm_smart_note">If you start \"Sleep with smart alarm\" on the Sleep screen and put the phone on the bed, the alarm rings early when movement (light sleep) is detected within this time before it; otherwise it rings on time.</string>
+    <string name="smart_notif">Smart alarm on</string>
+    <string name="smart_notifText">%1$s–%2$s · leave the phone on the bed</string>
+    <string name="smart_start">Sleep with smart alarm</string>
+    <string name="smart_stop">Stop</string>
+    <string name="smart_next">Next smart alarm: between %1$s and %2$s</string>
+    <string name="smart_running">Smart alarm on: it rings during light sleep between %1$s and %2$s.</string>
+    <string name="smart_moving">Minutes with movement: %1$s</string>
+    <string name="smart_waiting">Movement is watched once the window starts.</string>
+    <string name="smart_none">No alarm has a smart alarm window. Choose a \"Smart alarm\" window in the alarm editor.</string>
+    <string name="smart_how">Put the phone on the bed next to your pillow and plug it in. The motion sensor is read only during the window; nothing is recorded, the data stays in the phone\'s memory and is not saved. If no movement is detected, the alarm rings at its normal time.</string>
+    <string name="smart_howIOS">On iPhone the session runs while the app is open (the screen dims) or while a sleep sound plays; if you leave the app, the alarm rings at its normal time.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>
