@@ -179,3 +179,40 @@ Yöntem: App Store TR ve US aramaları (`itunes.apple.com/search`), ayrıntı `i
   - Gökyüzü cisimleri için kısa bilgi kartı ("Gelgitler çoğunlukla Ay'ın çekiminden") — yok (sitede SSS var, cisim kartı yok) — K — ücretsiz.
   - Gözlem müziği — yok — rakipte ücretli; öneri: bizdeki uyku/odak sesleri (`FocusSounds`) yeterli.
 
+## Star Walk 2 Plus: Live Sky Map (id1112481571; US 4,63 / 96.122, TR 4,58 / 7.427; Vito Technology)
+- Ücret modeli: ücretsiz + reklam ("Ads+" adı, "Sky Map: Full Version, No Ads" ₺499,99) + abonelik: StarWalk2 Ads+ Monthly Premium ₺6,49 / ₺39,99 / ₺79,99, Yearly Premium ₺229,99 / ₺399,99, "Stargazers App: Limited Offer" ₺299,99, "Discover Solar System Objects" ₺49,99. Pro sürümü ayrı ücretli uygulama (Star Walk 2 Pro ₺149,99). Sürüm 2.21.0 (1 Ağustos 2026), 12 dil, Türkçe yok.
+- İncelenen görüntü: 10 iPhone (koyu mor-lacivert #121238–#19193D zemin, **dar kalın** başlık yazı tipi (Roboto Condensed benzeri) "See the sky like never before").
+- Öne çıkan ekranlar:
+  - Gökyüzü: takımyıldızlar **alçak çokgen (low-poly) 3B figürler** (ayı gökdelenler üstünde; dağ keçisi), Ay fotoğraf dokulu, kırmızı gece görüşü modu (her şey kırmızı: "Moon", "Jupiter", "Aldebaran").
+  - Haberler listesi (küçük görsel + başlık): "Full Moon Calendar 2025: Full Moons With Names, Dates, Supermoons", "Meteor Showers 2025: Meteor Shower Calendar", "Calendar of All Astronomical Events 2025", "Summer Solstice…".
+  - Uzay bilgi yarışması (trivia): fotoğraf (At Başı Bulutsusu), üç şıklı yuvarlak seçenek, doğru cevapta "84%" (oy oranı) ve mizahi at görselleri.
+  - **Tutulma infografiği**: "September 7, 2025: TOTAL LUNAR ECLIPSE": Ay'ın gölge (Umbra, yarı gölge) içinden geçişi fotoğraf dokulu Aylarla, her temas anı GMT ile ("Penumbral phase begins 15:28 GMT", "Totality begins 17:30", "Maximum 18:11"), ekliptik kesik çizgisi, E/W; altında görünürlük dünya haritaları (Güneş tutulmaları için de).
+  - **Planet Walk / "When do planets align?"**: hilal çizimi + "6 PLANETS 6 AT ONCE", "Best nights to see planets" hap düğmesi; mor gökyüzü yarım daire yayı üstünde gezegenlerin 3B küçük resimleri (E–S–W ekseni, "17:29" saat, oynat düğmesi ve zaman çubuğu); altta gezegen kartları "MERCURY m −1.6 ↑07:12 ↓17:21 Capricornus" (parlaklık, doğuş, batış, takımyıldız simgesi).
+  - **Güneş, Ay ve gezegenler özeti**: fotoğraf gerçekliğinde 3B Güneş (lekeli), Ay evre dizisi yayı, Venüs, Mars, Jüpiter, Satürn; her birinde ↑ doğuş, ↓ batış, ⦣ en yüksek açı (Sun ↑07:10 ☼11:50 ↓19:00 46.9°).
+  - ISS: gökyüzünde yörünge izi noktalı, ISS daire içinde 3B model.
+- Tasarım: zemin #121238 / #19193D, kartlar #29294F, vurgu mor #7268C1 ve parlak mavi hap düğmeler; büyük/küçük harf karışık dar başlıklar. Tek koyu tema + kırmızı gece modu.
+- Bizde olmayan ya da farklı olan:
+  - Gezegenlerin gökte yay üzerinde canlandırılması (zaman oynatma) ve "gezegen dizilimi / en iyi geceler" — yok — `src/js/sky.js` — O — rakipte ücretsiz görünüyor.
+  - Gezegen ve Güneş/Ay için fotoğraf gerçekliğinde küçük görseller — yok (sitede gezegen tablosu düz metin; gökyüzü çiziminde renkli nokta) — `src/js/sky.js` — K (NASA kamu malı görseller) — ücretsiz.
+  - Ay tutulması infografiği (gölge içinden geçiş, temas anları) — kısmen (sitede tutulma haritası ve tek "en büyük tutulma" anı; temas anları ve gölge çizimi yok; uygulamada harita da yok) — `src/js/eclipse-map.js`, `src/data/eclipses.json`, `MoonView.swift` — O — ücretsiz.
+  - Kırmızı gece görüşü modu gökyüzü sayfasında — kısmen (uygulamada tam ekran saatte gece modu var: `NightMode.swift`; site gökyüzü sayfasında yok) — K — ücretsiz.
+  - Dolunay adları (Kurt Ayı, Hasat Ayı vb.) — yok — K (kültürel adlar; Türkçe karşılıkları doğrulanmalı) — ücretsiz.
+  - Bilgi yarışması — yok — O — ücretsiz.
+
+## Sky Tonight - Stargazing Guide (id1570594940; US 4,76 / 76.484, TR 4,77 / 352; Vito Technology)
+- Ücret modeli: ücretsiz + abonelik: 1-month Premium ₺10,99 / ₺99,99, 1-year ₺149,99 / ₺199,99, Lifetime ₺699,99 (indirimli ₺399,99). Reklam görülmedi. Sürüm 2.5.3 (12 Temmuz 2026), 12 dil, Türkçe yok.
+- İncelenen görüntü: 10 iPhone (mor gradyan zemin, büyük harf kalın soru başlıkları "WHEN IS THE NEXT FULL MOON?", telefon ekranı yuvarlak köşeli renkli neon çerçeve içinde).
+- Öne çıkan ekranlar:
+  - Arama: "Relevant / A-Z / Date / Magnitude" bölümlü düğme; satırda fotoğraf gerçekliğinde gezegen, "Planet Mercury 10/9 from 11:05 to 19:56" (görünür olduğu aralık), hedef simgesi.
+  - ISS "Visible Passes" tablosu: tarih, görünme/en yüksek/kaybolma saati, parlaklık (−1.9), yükseklik (12.5°); "Info / Figures / Events" sekmeleri; kalp (favori), paylaş.
+  - **Calendar** (dört sekme): **Events** (her günde küçük olay simgeleri: Ay, gezegen, meteor), **Moon** (her günde fotoğraf dokulu Ay), **Meteors** (her meteor yağmurunun etkin olduğu günler boyunca uzanan renkli yatay çizgiler, tepe günü noktalı), **Sky** (her günde yeşil-sarı halka: o günün gözlem uygunluğu); seçili günün ayrıntısında **24 saatlik halka kadran** (gündüz sarı, alacakaranlık turuncu, gece mavi, yeşil gözlem penceresi; ↑06:20 ↓21:16 Ay, ↑05:50 ↓20:14 Güneş, gün uzunluğu 14h 24m; "Twilight: Civil 05:18 / 20:45, Nautical 04:40 / 21:23, Astronomical 03:57 / 22:06").
+  - **Visible Tonight**: "29 July 2022", konum, "1 day", filtre simgeleri; **"Index / Weather"** bölümlü düğme; büyük ince "71%" (gözlem endeksi, renkli dikey çubuk) ve yanında: karanlık aralık 20:14–05:50, Ay "Waxing Crescent (1%)", görüş 100%, bulut 22%.
+  - Makaleler ("Meteor Shower Calendar: June–September 2022", "How Super Is a Supermoon", "5 planets Lined Up: Planet Parade", "6 min read" hapı).
+  - Gökyüzü: takımyıldız figürleri ince kontur, ekvatoral koordinat ızgarası; Ay'ın saat etiketli yörünge izi (23:20, 23:40, 0:20).
+- Tasarım: koyu lacivert #0D1426 civarı kartlar, mavi vurgu (#3D7BF7), sekme bölümlü düğmeler; ince "71%". Mağaza: mor #4B2470 civarı neon.
+- Bizde olmayan ya da farklı olan:
+  - Meteor yağmuru takvimi (etkinlik aralığı, tepe günü, saatlik sayı, o geceki Ay aydınlığıyla) — yok — `grep -ri meteor src mobile` boş — K/O (IMO yıllık listesi; veri doğrulanmalı) — ücretsiz görünüyor.
+  - Gözlem uygunluğu endeksi (Ay aydınlığı + bulut + karanlık süre) — yok — K (Open-Meteo bulut + bizdeki Ay hesabı) — ücretsiz görünüyor.
+  - Sivil / denizcilik / astronomik alacakaranlık saatleri ve 24 saatlik gün halkası — yok (yalnız altın/mavi saat ve doğuş/batış: `src/js/nature-calc.js` `sunAltTimes` −4°/−6°/+6°) — K — ücretsiz.
+  - Takvimde "Ay / Meteor / Gökyüzü / Olaylar" sekmeli tek gökbilim takvimi — kısmen (Ay takvimi var) — `MoonView.swift`, `src/js/nature.js` — O — ücretsiz görünüyor.
+
