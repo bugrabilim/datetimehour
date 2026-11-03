@@ -185,3 +185,49 @@ Karşılaştırma için kendi canlı sitemizin görüntüleri: `rakip2/web/biz/`
 - İncelenen görüntü: 2 (masaüstü, telefon).
 - Tasarım ve yapı vClock ile birebir aynı: mavi (`#0090dd`) bar, Tatiller, Araçlar ▾, Uygulamalar, tema ve dişli; solda Alarm, Zamanlayıcı, Kronometre, Saat kaç; LCD italik rakamlar "15:02:52", altında **Türkçe tarih normal yazıyla** "Salı – 3 Kasım 2026" (vClock'ta LCD), yeşil "Alarm Etkinleştir" düğmesi; kartın altında boş reklam kutusu. Telefonda başlık "Online Alarm Saati - Alarm K…" (**kesik başlık**, taşma).
 - Bizde olmayan ya da farklı olan: vClock bölümündekilerle aynı (saat boyutu +/−, LCD yazı tipi, paylaşım).
+
+## NamazVakti.com (https://www.namazvakti.com; web sitesi olarak, yalnız tasarım ve araçlar)
+- Ücret modeli: ücretsiz; ilk ekranda reklam görülmedi. Dil: TÜRKÇE | ENGLISH | العربي + açılır dil listesi (dünya simgesi).
+- İncelenen görüntü: 2 (masaüstü, telefon; ilk ekran).
+- Ana ekran ve gezinme: koyu kahve-gri (`~#3a3434`) başlık, turuncu-beyaz "NamazVakti.com" logosu ve "DÜNYA ŞEHİRLERİ İÇİN NAMAZ VAKİTLERİ"; ANA SAYFA | BİLGİLER; şehir arama kutusu + açılır ok, turuncu "Ülkeler listesi için tıklayınız", sağda konum düğmesi. Masaüstünde sayfa ortada sabit genişlikte (~995 px) gölgeli kutu, kenarlar gri `~#dcdad6`.
+- Öne çıkan ekranlar:
+  - Başlıkta şehir ("İstanbul", "İstanbul / Türkiye") ve **Ay evresi resmiyle hicri tarih** "23 Cemâzil-evvel 1448".
+  - **Vakit kartı:** "Öğle" (şimdiki vakit, camgöbeği), altında **ilerleme çubuğu** (vaktin ne kadarı geçti), "İkindi'ye kalan zaman 39 dakika"; liste İmsâk, **Sabâh** (imsaktan ayrı satır), Güneş, Öğle (turuncu dolu satır), İkindi, Akşam, Yatsı + "⌄" ile ek vakitler; sağda büyük serif "3 / Kasım 2026 / Salı", koyu kutuda "Mahalli Sâat 15:05:29", "Europe/Istanbul +03:00"; altta "AYLIK VAKİTLER", "YILLIK VAKİTLER".
+  - **Kıble kartı:** "Kıble Sâati Vakti 11:06", metal çerçeveli pusula çizimi (kırmızı iğne, Kâbe simgesi), **"Coğrafi kuzeyden kıble açısı 152°" ve "Pusula kuzeyinden kıble açısı 146°"** (manyetik sapma düzeltilmiş ikinci açı, kırmızı).
+  - **Harita kartı:** uydu haritası (Leaflet + Esri), şehirde kırmızı iğne ve **Kâbe yönüne yeşil çizgi**, koordinat "41.0000, 29.0000", "Şehirden çıkan yeşil hat, kıble istikametidir."
+  - Altta BİLGİLER bağlantıları ("İmsak Vakti Hakkında Mühim Açıklama!..").
+- Tasarım: krem kartlar (`~#fdfcf8`), 6 px köşe, Arial benzeri yazı, serif tarih, turuncu (`~#f7941d`) vurgu, camgöbeği ilerleme.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Vakit ilerleme çubuğu (şimdiki vaktin ne kadarı geçti) — bizde sitede yok (`src/js/prayer.js`'te çubuk yok; geri sayım yazıyla). Uygulamalarda Güneş/Ay yayı var. **Mevcut 2. analiz #65'e ek ayrıntı** (vakit ekranı görselleri; web'de de). Çaba K.
+  - **Kıble haritasında Kâbe'ye çizgi** — bizde sitede yok (`src/js/qibla.js` yalnız SVG kadran ve harita arama bağlantıları, 71–74. satırlar). **Mevcut 2. analiz #67'ye ek ayrıntı** (web'de de; OSM karoları dış hizmet izniyle zaten kürede kullanılıyor). Çaba O.
+  - **Pusula kuzeyine göre (manyetik sapmalı) kıble açısı** — bizde yok (`qibla.js` yalnız coğrafi açı; iPhone'da `webkitCompassHeading` manyetik okunuyor, sapma eklenmiyor; Android uygulamasında `GeomagneticField` var). Çaba K.
+  - Yıllık vakit çizelgesi sayfada — bizde aylık çizelge var (`prayer.js`), yıllık yalnız açık veri JSON'unda (`/api/v1/prayer-times/<il>/<yıl>.json`). Çaba K.
+  - Başlıkta Ay evresi resmiyle hicri tarih — bizde sitede namaz sayfasında hicri tarih yok (hicri çevirici ayrı sayfa; uygulamalarda Vakitler başlığında var). Çaba K.
+
+## Every Time Zone (https://everytimezone.com, Slash7 LLC; puan yok)
+- Ücret modeli: ücretsiz + **Pro** (üst menüde "Meetings Pro", "People Pro"; "Share iCal Pro"); "Sign In". Fiyat görülmedi. Altbilgide kendi ürünü Noko'nun reklamı.
+- İncelenen görüntü: 2 (masaüstü, telefon).
+- Ana ekran ve gezinme: mor gradyan (`~#3a1180`) üst bar, logo + "Never warp your brain with time zone math again."; Timeline, Meetings Pro, People Pro, Sign In. İkinci satırda takvim simgesi + "November 1 – 6" (kesik alt çizgili, tıklanır), mavi "Share Link", "Share iCal Pro", sağda "Customize new".
+- Öne çıkan ekranlar:
+  - **Zaman çizelgesi:** koyu zemin (`~#1d1f20`), her satırda bayrak + bölge adı kalın + gri kısaltma ve UTC ("PST UTC-8"), satırın üstünde o bölgenin saati ("ÖÖ 4:05"); altında günlere bölünmüş koyu gri **gün çubukları** (gündüz kısmı açık gri, gece koyu; ortada gün adı "November 2"). Dikey **sarı-yeşil (`~#d4f54a`) şimdi çizgisi** ve başında "ÖS 3:05 your local time" etiketi + "link" düğmesi (o anın bağlantısı). Çizgi sürüklenerek zaman değiştirilir (ipucu: çift çizgi tutamaç).
+  - Telefonda aynı çizelge daraltılmış; saat solda büyük, bölge adı sağda iki satır.
+- Hatalar: arayüz İngilizce iken saatler tarayıcı diline göre "ÖÖ/ÖS" (karışık dil). Görüntüde şimdi çizgisi gün çubuklarında "November 2" etiketli çubuğun üstüne düşüyor (bugün 3 Kasım); etiketlerin çubuk ortasına konmasından mı tarih kaymasından mı olduğu doğrulanmadı.
+- Bizde olmayan ya da farklı olan:
+  - **Sürüklenebilir "şimdi" çizgisi** ile çok bölgeli zaman çizelgesi ve anın bağlantısı — bizde kısmen: planlayıcıda saate dokunma + bağlantı (`src/js/planner.js`), dünya saatlerinde UTC zaman çizgisi (`src/js/world.js`); sürükleme yok. **Mevcut 2. analiz #72'ye ek ayrıntı.** Çaba O.
+  - Ekip/kişi saat dilimleri ("People") ve toplantı yönetimi — **hesap gerektirir** (Pro). Bizde toplantı oylaması bağlantıyla var (`/toplanti-oylamasi/`, `src/js/poll.js`).
+
+## 24TimeZones (https://24timezones.com; puan yok)
+- Ücret modeli: reklamlı ücretsiz; üst menüde "Announce event!". Dil seçici "EN ▾" (ilk analize göre 12 dil).
+- İncelenen görüntü: 1 (masaüstü ilk ekran).
+- Ana ekran: ekmek kırıntısı, sağda **am/pm | 24** düğmeleri ve dil; turuncu kare "24" logolu "timezones", geniş arama kutusu ("e.g. India, London, Japan"); koyu menü çubuğu (World Time, Time Zones, Time Converter, Maps, Clock Widgets, About Us — açılır oklu). Menünün altında ~250 px **boş reklam alanı**, sonra H1 "World Time Clock — what time is it around the world?" (sarı alt çizgi), "Customizable world clock with seconds & World time zones" ve **düz dünya haritası**: mavi tonlu, gece/gündüz eğrisi (gündüz açık mavi), şehir noktaları, kırmızı etiketli şehir saatleri (London 12:06, New York 07:06, Tokyo 21:06), sol üstte arama kutusu, sağda saat, dişli, kalem (düzenle), tam ekran simgeleri.
+- Bizde olmayan ya da farklı olan: düz (Mercator benzeri) gece/gündüz haritası — bizde dönen küre (`src/js/globe.js`) aynı bilgiyi veriyor (ilk analiz #104). Var/farklı biçim.
+
+## Savvy Time (https://savvytime.com; puan yok)
+- Ücret modeli: ücretsiz; ilk ekranda reklam görülmedi. Menüde "Mobile".
+- İncelenen görüntü: 1 (masaüstü ilk ekran).
+- Ana ekran: beyaz/çok açık gri zemin (`~#fafafc`), renkli halka logo "Savvy Time"; menü Home (mavi seçili), Converter, Local Time, Map, Unix Time, Timers ▾, Calendar ▾, Mobile. H1 "World clock", altında **"Your list is saved in this browser; nothing is sent to our servers."** Solda 8 px köşeli kart: arama kutusu, **12h | 24h** bölütlü anahtar, "✎ Edit"; satırlar: "Your time / Istanbul time" ve şehirler (kalın ad; altında bayrak + ülke + kısaltma "United Kingdom · GMT"), sağda büyük saat + küçük "pm", altında "UTC+0 · Tue, Nov 3"; altta "Compare these cities at another time →" ve "Your list stays in this browser." Sağda "Major cities now" listesi (şehir mavi bağlantı, saat, UTC), **ertesi günde olan şehirde turuncu "Wed"** (Auckland 1:06 am Wed).
+- Bizde olmayan ya da farklı olan:
+  - Satırda saat dilimi kısaltması ve bayrak — bizde dünya saatleri kartında yok (`src/js/world.js`: ad, saat, "Sizden X sa ileride"). Çaba K.
+  - **Ertesi/önceki gün işareti** ("Wed") — bizde yok: kartta yalnız saat, ofset ve "Sizden X sa ileride" var (`src/js/world.js` 83–85. satırlar; `main.js` `diff` türü gün yazmıyor). Çaba K.
+  - Gizlilik cümlesi araç üstünde görünür ("listeniz bu tarayıcıda") — bizde aynı davranış var, cümle gizlilik sayfasında. Çaba K (yalnız metin).

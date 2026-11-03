@@ -357,3 +357,25 @@ Kaynak: canlı site Playwright görüntüleri (time.bumba.tr/mevsimler/ ve /gece
 - Bizde olup rakiplerde az görülen: Türkçe ve 15 dil, Diyanet'e uyumlu hilal görünürlüğü (Yallop), konuma göre "Ay tutulması buradan izlenebilir mi", çocuklara yönelik mevsim anlatımı, ücretsiz ve reklamsız; .ics ile Ay evreleri aboneliği (sitede).
 - Rakiplerde olup bizde olmayanların çoğu **ücretsiz katmanda**: fotoğraf dokulu Ay, tarih/saat kaydırma, Ay doğuşuna/dolunaya kalan süre, dördün tarihleri, olay takvimi (kavuşum, meteor yağmuru), alacakaranlık türleri, Ay kilit ekranı widget'ı. Ücretli olanlar: astroloji, AR, harita/gölge araçları, bildirim özelleştirme (Moon Phases'ta ₺49,99, Lumos'ta Pro), widget'lar (Lumos Pro).
 
+## Önerilen işler (bu alanın özeti; numaralar öneri, ana belgeye sahibin kararıyla eklenir)
+- G1 Fotoğraf dokulu Ay (NASA SVS CGI Moon Kit, cihazda gölgelendirme; sürekli evre, yeryüzü ışığı, güney yarımküre) — uygulama + site + widget — O.
+- G2 Evre adlandırma (dördün yalnız yarım Ay'a yakın) ve açık temada Ay karşıtlığı — K (hata).
+- G3 Tutulma bölge adları i18n'den (M49), harita seçicisinde tarih tutarlılığı — K (hata).
+- G4 Ay ekranında tarih/saat kaydırma, Ay takviminde güne dokununca o günün Ay'ı — K/O.
+- G5 Ay verileri uygulamada: doğuşa/batışa kalan, üst geçiş, dolunaya kalan gün, dördün tarihleri, uzaklık, perige/apoje, süper/mavi Ay — K.
+- G6 Yıl evre çarkı ve tablosu — K.
+- G7 Ay widget'ları (orta/büyük: sıradaki 4 evre, evreli ay takvimi; kilit ekranı; saat komplikasyonu) — O (kilit ekranı kısmı mevcut #14'e ek).
+- G8 Güneş Live Activity (gün batımına/altın saate kalan) + Güneş widget'ları (mevcut #15'e ek) — K/O.
+- G9 Alacakaranlık türleri, ilk/son ışık, 24 saat ışık halkası/şeridi — K.
+- G10 Özelleştirilebilir Güneş/Ay bildirimleri (olay, önce süresi, günler; tutulma, dördün, süper Ay, altın saat) — K.
+- G11 Güneşe bağlı kayan alarm (doğuş/batış ± dk) — K.
+- G12 Gökyüzü olay takvimi (kavuşum, karşı konum, meteor yağmuru, tutulma) + bildirim + .ics — O.
+- G13 "Bu gece" özeti: gezegen yükseklik grafiği, gözlem uygunluğu (bulut + Ay + karanlık), öneri cümleleri — O.
+- G14 Gece gökyüzü çizimi: takımyıldız çizgileri/adları, Ay, zaman oynatma, tarih seçimi, kırmızı mod, etiket taşması — O.
+- G15 Gece gökyüzünü uygulamaya taşıma — O.
+- G16 Güneş yolu pusulası, doğuş/batış azimutu, gölge uzunluğu — O.
+- G17 Ay tutulması infografiği (temas anları), uygulamada tutulma haritası, konuma göre Güneş tutulması örtme yüzdesi — O.
+- G18 Ay'ı görsel kart olarak paylaşma — K.
+- G19 Çocuklar: "Ay neden şekil değiştirir?", etkileşimli yörünge, bilgi yarışması — O.
+- G20 ISS geçişleri — B. G21 AR gökyüzü/Güneş yolu — B. G22 Işık kirliliği, kutup ışığı, gün batımı kalitesi — B. G23 Dolunay adları — K.
+- Önerilmeyen: astroloji (Ay burcu, Ay boşluğu, gezegen saatleri, saç kesimi/bahçe takvimleri, doğum haritası), yapay zekâ sohbeti, SharePlay, kurt uluması sesi.
