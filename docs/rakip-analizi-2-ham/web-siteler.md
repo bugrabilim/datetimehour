@@ -136,3 +136,52 @@ Karşılaştırma için kendi canlı sitemizin görüntüleri: `rakip2/web/biz/`
   - **Görsel (rakamsız) zamanlayıcılar**: pasta dilimi, kum saati, renkli çubuk; çocuklar ve sınıf için — bizde yok (geri sayım rakamla; `src/js/tools.js`). Çaba K.
   - Sınıf araçları: isim seçici, rastgele sayı, takım oluşturucu, sayaç — bizde sitede yok (uygulamada zikirmatik sayaç var, sitede yok). İlk analiz tablosunda "yok" yazıyordu, 107'lik listeye alınmamış. Çaba K–O (zaman ürünü kapsamı sahibin kararı).
   - Temalı (yarış, tatil) eğlenceli zamanlayıcılar — bizde yok. Çaba O.
+
+## saat-kac.tr (https://saat-kac.tr, "Türkiye'nin Canlı Saat Sitesi · UTC+3"; puan yok)
+- Ücret modeli: reklamlı ücretsiz (Google). Hesap yok.
+- İncelenen görüntü: 6 (masaüstü ilk ekran ve tam sayfa, telefon, Matematik Temalı Saat, Hologram Temalı Saat).
+- İlk açılış / tanıtım / ödeme sayfası: yok. Çerez bandı görülmedi.
+- Ana ekran ve gezinme: koyu lacivert (`#1e2130`) üst bar, solda altın çerçeveli analog saat logolu "saat-kaç.tr" görseli; telefonda hamburger. Masaüstünde **solda uzun kenar menü**: Şu An Saat Kaç? (turuncu vurgulu seçili), Dünya Saatleri, Saat Dilimi Çevirici, Kaçıncı Haftadayız?, 2026 Takvimi; TÜRKİYE İLLERİ (Tüm 81 İl →, İstanbul/Ankara/İzmir/Antalya/Bursa/Adana/Trabzon/Konya Saati); TAM EKRAN SAATLER (Analog, **Hologram Temalı**, **Matrix Temalı**, **Matematik Temalı**); ZAMANLAYICILAR (Online Alarm, Kronometre, Zamanlayıcı, Geri Sayım Sayacı); GERİ SAYIM SAYAÇLARI (LGS, Okul Kapanış, Ramazan Bayramı, Kurban Bayramı, Sevgililer Günü, Anneler Günü, Babalar Günü, Yeni Yıl, YKS); HESAPLAMA ARAÇLARI (Kaç Gün Kaldı?, Kaç Gün Oldu?, Uyku Hesaplama, Yaş Hesaplama, Burç Hesaplama Sayacı, Emeklilik Hesaplama).
+- Öne çıkan ekranlar:
+  - **Ana sayfa:** görünür ekmek kırıntısı "Ana Sayfa", H1 "Şu An Saat Kaç? Anlık ve Doğru Türkiye Saati", görünür kısa açıklama; beyaz kart (16 px köşe, ince kenarlık) içinde **Dijital | Analog hap anahtarı** (seçili siyah dolu), **çok büyük kalın eşit aralıklı (monospace) rakamlar** "15:03:19" (`#1e2130` benzeri koyu), altında "03.11.2026 · Türkiye İstanbul", renkli küçük haplar: UTC+3 (mavi), Türkiye Saati (yeşil), **Yaz Saati Yok** (turuncu), Europe/Istanbul (mor). "Popüler Ülke Saatleri": **bayraklı** 12 kart (ülke kalın, şehir küçük, saat sağda), "Tüm Dünya Saatleri" hap düğmesi.
+  - **SEO metni:** "Türkiye Saati Nasıl Belirleniyor?", "Canlı Saat Ne Demektir?" (sunucu Unix zamanı, `performance.now()`, "/api/time.php ile beş dakikada bir eşitleme, gidiş-dönüş süresi hesaba katılır" — **senkron yöntemini açıkça anlatıyor**), "Türkiye Saati (Europe/Istanbul) Nedir?", "İstanbul Saati ile Türkiye Saati Arasında Fark Var mı?", "Dijital Saat mi, Analog Saat mi?", "Dünya Saatleri ve Saat Farkı Neden Önemlidir?" + tablo (Londra 2–3 saat geride…), "UTC ve GMT Kısaca", "Türkiye Saati Hakkında Sorular" (+ simgeli açılır SSS).
+  - **Matematik Temalı Saat:** koyu lacivert ızgaralı kart, saat rakamları matematik ifadeleriyle ("sin(π/2)+5 : 0!−1 ⌊π⌋ : 4" gibi; karekök, üs, faktöriyel), sağ üstte "Tam ekran" hap düğmesi.
+  - **Hologram Temalı Saat:** koyu camgöbeği ızgaralı zemin, neon parlayan açık camgöbeği eşit aralıklı rakamlar, "Tam ekran".
+- Ayarlar: görülmedi (yalnız Dijital/Analog anahtarı).
+- Widget / kilit ekranı / saat: görülmedi.
+- Tasarım: beyaz zemin `#ffffff`, koyu üst bar `#1e2130`, Inter benzeri gövde, saat monospace kalın; kartlar 12–16 px köşe, ince gri kenarlık; renkli pastel haplar.
+- Reklam yerleri: **çok yoğun**. Her bölümün başında ve kenar menüde Google "Daha fazlasını keşfedin" arama-reklam blokları (Canlı saat uygulaması, Zaman takip hizmeti, Saat dilimi dönüştürücü, Dijital saat satışı, Kol saati modelleri, Analog saat satışı, "time", "Takvim Seç", "Atlas İncele", "Tarih Kitabı"…); metin içindeki sözcüklere eklenen mavi **reklam bağlantıları** (□ simgeli "saati", "saat", "matematik") ve mavi hap reklam ("Zaman takip hizmeti", "Duvar Saati", "Türkiye şehir saatleri" — "Popüler Ülke Saatleri" başlığının yanında bile); tema sayfalarında altta yapışkan afiş (APNIC); SSS öncesi boş reklam alanı. "Türkiye Saati" hapının içine bile reklam bağlantısı girmiş.
+- Hatalar: reklam bağlantıları içerik haplarının içine girmiş ("Türkiye □ Saati"); kenar menüde "Burç Hesaplama Sayacı" (adı tuhaf).
+- Bizde olmayan ya da farklı olan:
+  - **Görünür kısa özet, ekmek kırıntısı ve sayfada SSS** — bizde bilerek görünmez (`.lead` `sr-only`, ekmek kırıntısı boş, SSS yalnız `/sss/`; CLAUDE.md "9 Ekim 2026 ikinci düzenleme turu"). Farklı (sahibin kararı); arama motoru için metin duruyor.
+  - **Ana sayfada saat bilgisi hapları** (UTC+3, "Yaz saati yok", IANA adı) — bizde ana sayfada yok (bilgiler `/turkiye-saat-dilimi/` sayfasında). Çaba K.
+  - Ana sayfada **Dijital | Analog tek dokunuşla anahtar** — bizde 20 model ok/sayaçla gezilir (`build.mjs` `STAGE_ORDER`); farklı, eksik değil.
+  - **Dünya saatlerinde bayrak** — bizde yok (`src/js/world.js`'te bayrak yok). Çaba K.
+  - **Temalı tam ekran saatler** (Hologram, Matrix, Matematik ifadeli) — bizde yok. **Mevcut 2. analiz #9 ve #23'e ek ayrıntı** (web'de de; matematik ifadeli saat yeni bir tür). Çaba K.
+  - 81 il saat sayfaları — **kararla yapılmayacak** (ilk analiz #103).
+  - Uyku hesaplama sayfası — bizde ayrı sayfa yok, 90 dk döngü önerisi hazır alarm sayfalarında (`build.mjs` `ALARM_PRESETS`, CLAUDE.md "Hazır süre ve alarm sayfaları"). Kısmen.
+  - "Okul kapanış" ve LGS sayacı — bizde LGS bilerek yok (MEB tarihi açıklanmadı), karne günü sayfası var (`/geri-sayim/karne-gunu/`). Var/karar.
+
+## Canlı Saat (https://canlisaat.com; puan yok)
+- Ücret modeli: ücretsiz; bu turda **reklam görülmedi**. Hesap yok. Altbilgide dil "Türkçe", X, Gizlilik Politikası, Kullanım Koşulları.
+- İncelenen görüntü: 3 (masaüstü ilk ekran ve tam sayfa, telefon).
+- İlk açılış / tanıtım / ödeme sayfası: yok. Çerez bandı görülmedi.
+- Ana ekran ve gezinme: **varsayılan koyu** (zemin `#121c22`, açık tema isteğinde de koyu). Masaüstünde solda sabit kenar menü (ince çizgi simgeli): Canlı Saat (camgöbeği `#00bbab` dikey çizgiyle seçili), Analog Saat, Dünya Saatleri, Saat Dilimi Çevirici, Kaçıncı Haftadayız?, 2026 Takvimi; ZAMANLAYICILAR (Online Alarm, Kronometre, Zamanlayıcı, Geri Sayım Sayacı); GERİ SAYIM SAYAÇLARI (Yeni Yıl, **15 Tatil Sayacı**, Ramazan); HESAPLAMA ARAÇLARI (Kaç Gün Kaldı?, Kaç Gün Oldu?, Yaş Hesaplama, Saat Farkı Hesaplama). Sağ üstte tam ekran ve paylaş simgeleri. Telefonda hamburger, "Canlı Saat" başlığı, paylaş.
+- Öne çıkan ekranlar:
+  - Ana sayfa: "Şu An Saat Kaç?" başlığı, ortada dev **kalın monospace** rakamlar (soluk mavi-gri), altında "📍 İstanbul  📅 3 Kasım 2026" monospace küçük.
+  - **"Ülke Saatleri" kartları:** bayrak + "Türkiye Saati", büyük monospace saat, "3 KASIM 2026" aralıklı büyük harf; kart zemini **gündüzse sarı-kahve, geceyse lacivert gradyan**, sağ üstte **sarı (gündüz) ya da beyaz (gece) nokta**. 16 px köşe.
+  - SEO: "Canlı Saat Nedir?", "Nasıl Kullanılır?", "Ne İşe Yarar?" (iç bağlantılarla).
+- Ayarlar: görülmedi.
+- Tasarım: koyu, Inter + monospace; yumuşak gradyan kartlar.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - **Dünya saati kartında gündüz/gece göstergesi** (renk gradyanı + nokta) — bizde kartta yok (`src/js/world.js`; gündüz/gece yalnız kürede, `src/js/globe.js`). Çaba K. Rakipte ücretsiz.
+  - Bayrak — yukarıda (saat-kac.tr).
+  - Sağ üstte **sayfayı paylaş** düğmesi — bizde saat sahnesinde paylaş yok (`build.mjs` 290–297. satırlar: 24/12, i, tam ekran, oklar). Çaba K.
+  - "15 Tatil Sayacı" (sıradaki tatillere tek sayfada geri sayım) — bizde kısmen: resmî tatiller sayfasında kalan gün var (`/resmi-tatiller/`, `src/js/zones.js` `[data-hol]`), takvim günler listesinde kalan gün (`data-left`). Var.
+
+## OnlineSaat (https://onlinesaat.web.tr; vClock'un Türkçe kopyası)
+- Ücret modeli: reklamlı ücretsiz (vClock ile aynı).
+- İncelenen görüntü: 2 (masaüstü, telefon).
+- Tasarım ve yapı vClock ile birebir aynı: mavi (`#0090dd`) bar, Tatiller, Araçlar ▾, Uygulamalar, tema ve dişli; solda Alarm, Zamanlayıcı, Kronometre, Saat kaç; LCD italik rakamlar "15:02:52", altında **Türkçe tarih normal yazıyla** "Salı – 3 Kasım 2026" (vClock'ta LCD), yeşil "Alarm Etkinleştir" düğmesi; kartın altında boş reklam kutusu. Telefonda başlık "Online Alarm Saati - Alarm K…" (**kesik başlık**, taşma).
+- Bizde olmayan ya da farklı olan: vClock bölümündekilerle aynı (saat boyutu +/−, LCD yazı tipi, paylaşım).
