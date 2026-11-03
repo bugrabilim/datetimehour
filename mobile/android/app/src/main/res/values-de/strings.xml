@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">Auf dem Uhrbildschirm</string>
     <string name="look_weatherTab">Im Wetter-Tab</string>
     <string name="look_weatherAnimNote">Der Bildschirm zeigt das Wetter am gewählten Ort: Bei Regen regnet es, bei Wind ziehen Wolken schneller und Blätter wirbeln, bei Schnee schneit es, bei Nebel ist es neblig, bei Gewitter blitzt es, an klaren Tagen strahlt die Sonne, nachts erscheinen Sterne. Die Stärke folgt den Messwerten (Niederschlag, Wind, Bewölkung). Mit „Bewegung reduzieren“ bleibt das Bild still.</string>
+    <string name="widget_style_clear">Transparent</string>
+    <string name="widget_style_glass">Halbtransparent</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

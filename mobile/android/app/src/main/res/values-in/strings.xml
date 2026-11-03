@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">Di layar jam</string>
     <string name="look_weatherTab">Di tab cuaca</string>
     <string name="look_weatherAnimNote">Layar menampilkan cuaca di tempat terpilih: hujan turun saat hujan, awan bergerak cepat dan daun beterbangan saat berangin, salju turun saat bersalju, kabut saat berkabut, kilat saat badai, matahari bersinar saat cerah, dan bintang muncul di malam hari. Intensitas mengikuti pengukuran (curah hujan, angin, tutupan awan). Jika Kurangi Gerakan aktif, gambar ditampilkan diam.</string>
+    <string name="widget_style_clear">Transparan</string>
+    <string name="widget_style_glass">Semi-transparan</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

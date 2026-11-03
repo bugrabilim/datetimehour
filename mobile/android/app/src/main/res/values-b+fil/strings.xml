@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">Sa screen ng orasan</string>
     <string name="look_weatherTab">Sa tab ng panahon</string>
     <string name="look_weatherAnimNote">Ipinapakita ng screen ang panahon sa napiling lugar: umuulan kapag umuulan, bumibilis ang ulap at lumilipad ang mga dahon kapag mahangin, umuulan ng niyebe, may hamog, kumikidlat sa bagyo, sumisikat ang araw kapag maaliwalas, at lumalabas ang mga bituin sa gabi. Sumusunod ang lakas sa mga sukat (ulan, hangin, ulap). Kapag naka-on ang Reduce Motion, hindi ito gumagalaw.</string>
+    <string name="widget_style_clear">Transparent</string>
+    <string name="widget_style_glass">Medyo transparent</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

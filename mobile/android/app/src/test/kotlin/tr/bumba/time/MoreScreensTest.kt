@@ -450,6 +450,10 @@ class MoreScreensTest {
             .putString("widget.style.13", "paper").putString("widget.city.13", "tokyo").commit()
         widget("widget-dijital-okyanus", 170, 80, DigitalClockWidget().views(c, 12))
         widget("widget-iki-saat", 260, 170, DualClockWidget().views(c, 13))
+        // Şeffaf ve yarı saydam (2. analiz #76): gri zemin ana ekran duvar kâğıdı yerine
+        Prefs.store.edit().putString("widget.style.14", "clear").putString("widget.style.15", "glass").putBoolean("widget.frame.15", true).commit()
+        widget("widget-analog-seffaf", 170, 170, AnalogClockWidget().views(c, 14))
+        widget("widget-saat-tarih-yari-saydam", 170, 170, ClockDateWidget().views(c, 15))
         // Dokunulabilen widget'lar: zikirmatik (uygulamadaki sayaç) ve kronometre (durmuş, 2:05)
         Prefs.store.edit().putInt("zikir.count", 21).putInt("zikir.target", 33).putLong("sw.start", 0L).putLong("sw.acc", 125_000L).commit()
         widget("widget-zikir", 170, 170, ZikirWidget().views(c, 10))

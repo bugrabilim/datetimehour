@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">時計画面</string>
     <string name="look_weatherTab">天気タブ</string>
     <string name="look_weatherAnimNote">選んだ場所の天気を画面に映します。雨なら雨が降り、風が強いと雲が速く流れ葉が舞い、雪なら雪、霧なら霧、嵐なら稲妻、晴れた昼は太陽が輝き、夜は星が出ます。強さは観測値（降水量、風、雲量）に応じて変わります。「視差効果を減らす」がオンなら静止画になります。</string>
+    <string name="widget_style_clear">透明</string>
+    <string name="widget_style_glass">半透明</string>
     <string name="app_name">時刻と日付</string>
 </resources>

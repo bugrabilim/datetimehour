@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">บนหน้าจอนาฬิกา</string>
     <string name="look_weatherTab">ในแท็บสภาพอากาศ</string>
     <string name="look_weatherAnimNote">หน้าจอแสดงสภาพอากาศของสถานที่ที่เลือก ฝนตกเมื่อฝนตก ลมแรงเมฆจะเคลื่อนเร็วและใบไม้ปลิว หิมะตกเมื่อหิมะตก มีหมอกเมื่อหมอกลง ฟ้าแลบเมื่อมีพายุ แดดส่องเมื่อฟ้าใส และดาวขึ้นในเวลากลางคืน ความแรงเปลี่ยนตามค่าที่วัดได้ (ฝน ลม เมฆ) หากเปิดลดการเคลื่อนไหวภาพจะนิ่ง</string>
+    <string name="widget_style_clear">โปร่งใส</string>
+    <string name="widget_style_glass">โปร่งแสง</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

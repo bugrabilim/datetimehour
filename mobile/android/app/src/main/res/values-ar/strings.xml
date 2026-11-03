@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">على شاشة الساعة</string>
     <string name="look_weatherTab">في تبويب الطقس</string>
     <string name="look_weatherAnimNote">تعرض الشاشة طقس المكان المختار: يهطل المطر عند هطوله، وتسرع السحب وتتطاير الأوراق مع الرياح، ويتساقط الثلج، ويظهر الضباب، ويلمع البرق في العواصف، وتسطع الشمس في الأيام الصافية، وتظهر النجوم ليلًا. تتغيّر الشدة حسب القياسات (الهطول والرياح ونسبة الغيوم). عند تفعيل «تقليل الحركة» تُرسم ثابتة.</string>
+    <string name="widget_style_clear">شفاف</string>
+    <string name="widget_style_glass">شبه شفاف</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

@@ -21691,5 +21691,39 @@
     "zh": "屏幕显示所选地点的天气：下雨时下雨，有风时云跑得更快、树叶飘舞，下雪时飘雪，起雾时有雾，雷暴时闪电，晴天白天阳光闪耀，夜晚星星出现。强度随实测数据变化（降水、风、云量）。开启“减弱动态效果”时画面静止。",
     "fil": "Ipinapakita ng screen ang panahon sa napiling lugar: umuulan kapag umuulan, bumibilis ang ulap at lumilipad ang mga dahon kapag mahangin, umuulan ng niyebe, may hamog, kumikidlat sa bagyo, sumisikat ang araw kapag maaliwalas, at lumalabas ang mga bituin sa gabi. Sumusunod ang lakas sa mga sukat (ulan, hangin, ulap). Kapag naka-on ang Reduce Motion, hindi ito gumagalaw.",
     "th": "หน้าจอแสดงสภาพอากาศของสถานที่ที่เลือก ฝนตกเมื่อฝนตก ลมแรงเมฆจะเคลื่อนเร็วและใบไม้ปลิว หิมะตกเมื่อหิมะตก มีหมอกเมื่อหมอกลง ฟ้าแลบเมื่อมีพายุ แดดส่องเมื่อฟ้าใส และดาวขึ้นในเวลากลางคืน ความแรงเปลี่ยนตามค่าที่วัดได้ (ฝน ลม เมฆ) หากเปิดลดการเคลื่อนไหวภาพจะนิ่ง"
+  },
+  "widget.style.clear": {
+    "tr": "Şeffaf",
+    "en": "Transparent",
+    "de": "Transparent",
+    "az": "Şəffaf",
+    "ar": "شفاف",
+    "id": "Transparan",
+    "ur": "شفاف",
+    "fa": "شفاف",
+    "fr": "Transparent",
+    "ru": "Прозрачный",
+    "ja": "透明",
+    "ko": "투명",
+    "zh": "透明",
+    "fil": "Transparent",
+    "th": "โปร่งใส"
+  },
+  "widget.style.glass": {
+    "tr": "Yarı saydam",
+    "en": "Translucent",
+    "de": "Halbtransparent",
+    "az": "Yarışəffaf",
+    "ar": "شبه شفاف",
+    "id": "Semi-transparan",
+    "ur": "نیم شفاف",
+    "fa": "نیمه‌شفاف",
+    "fr": "Translucide",
+    "ru": "Полупрозрачный",
+    "ja": "半透明",
+    "ko": "반투명",
+    "zh": "半透明",
+    "fil": "Medyo transparent",
+    "th": "โปร่งแสง"
   }
 }

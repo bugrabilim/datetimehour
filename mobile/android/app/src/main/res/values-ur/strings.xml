@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">گھڑی کی اسکرین پر</string>
     <string name="look_weatherTab">موسم کے ٹیب میں</string>
     <string name="look_weatherAnimNote">اسکرین منتخب جگہ کا موسم دکھاتی ہے: بارش میں بارش برستی ہے، ہوا میں بادل تیز چلتے اور پتے اڑتے ہیں، برف باری میں برف، دھند میں دھند، طوفان میں بجلی چمکتی ہے، صاف دن میں سورج چمکتا ہے اور رات کو ستارے نکلتے ہیں۔ شدت پیمائش کے مطابق بدلتی ہے (بارش، ہوا، بادل)۔ حرکت کم کریں آن ہو تو تصویر ساکن رہتی ہے۔</string>
+    <string name="widget_style_clear">شفاف</string>
+    <string name="widget_style_glass">نیم شفاف</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

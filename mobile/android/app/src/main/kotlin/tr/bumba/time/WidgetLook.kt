@@ -56,7 +56,11 @@ import kotlin.math.sin
  * seçim `widget.style.<id>`, `widget.frame.<id>`, iki saatte şehir `widget.city.<id>`. "app" sistemin açık/koyu
  * temasına uyan varsayılan renklerdir. Yazı tipi widget'ta seçilemez (RemoteViews yazı tipini değiştiremez).
  */
-enum class WidgetStyle(val id: String, val bg: Int, val text: Int, val muted: Int, val face: Int, val border: Int, val accent: Int, val second: Int) {
+enum class WidgetStyle(
+    val id: String, val bg: Int, val text: Int, val muted: Int, val face: Int, val border: Int, val accent: Int, val second: Int,
+    /** Zemin ve kadranın saydamlığı (0 tam saydam, 255 dolu); şeffaf widget 2. analiz #76 */
+    val bgAlpha: Int = 0xFF, val faceAlpha: Int = 0xFF,
+) {
     APP("app", 0, 0, 0, 0, 0, 0, 0),
     PAPER("paper", 0xF7F4EE, 0x1B1F27, 0x565C68, 0xEFEBE2, 0xD6CFBF, 0x9A3F00, 0x9A3F00),
     NIGHT("night", 0x000000, 0xEEF0F4, 0xA5ACB9, 0x15181E, 0x343B49, 0xF2A65A, 0xFF6B6B),
@@ -64,7 +68,11 @@ enum class WidgetStyle(val id: String, val bg: Int, val text: Int, val muted: In
     ROSE("rose", 0xFBE9EF, 0x3A1424, 0x7A4A5C, 0xF6D3DF, 0xE6A9BF, 0xAD1457, 0x8D6E63),
     OCEAN("ocean", 0x0B2540, 0xE6F1FF, 0x9FB8D6, 0x12345A, 0x2B5580, 0x5AA9FF, 0x4DD0E1),
     MONO("mono", 0xFFFFFF, 0x000000, 0x555555, 0xF2F2F2, 0x000000, 0x000000, 0x000000),
-    NEON("neon", 0x0A0A12, 0xF0F0FF, 0x9A9AC0, 0x15152A, 0x3A1F6E, 0x39FF14, 0xFF2BD6);
+    NEON("neon", 0x0A0A12, 0xF0F0FF, 0x9A9AC0, 0x15152A, 0x3A1F6E, 0x39FF14, 0xFF2BD6),
+    /** Şeffaf (2. analiz #76): zemin yok, ana ekran duvar kâğıdı görünür; yazılar beyaz */
+    CLEAR("clear", 0x000000, 0xFFFFFF, 0xEDEDED, 0x000000, 0xFFFFFF, 0xFFD43B, 0xFF8787, bgAlpha = 0x00, faceAlpha = 0x00),
+    /** Yarı saydam: duvar kâğıdı koyulaşmış görünür */
+    GLASS("glass", 0x000000, 0xFFFFFF, 0xD9D9D9, 0x000000, 0xFFFFFF, 0xF2A65A, 0xFF6B6B, bgAlpha = 0x66, faceAlpha = 0x40);
 
     val title: String get() = L("widget.style.$id")
 
@@ -82,7 +90,8 @@ object WidgetLook {
     fun colors(c: Context, s: WidgetStyle): IntArray = if (s == WidgetStyle.APP) intArrayOf(
         c.getColor(R.color.widget_bg), c.getColor(R.color.widget_text), c.getColor(R.color.widget_muted), c.getColor(R.color.widget_face),
         c.getColor(R.color.widget_border), c.getColor(R.color.widget_accent), c.getColor(R.color.widget_accent),
-    ) else intArrayOf(argb(s.bg), argb(s.text), argb(s.muted), argb(s.face), argb(s.border), argb(s.accent), argb(s.second))
+    ) else intArrayOf((s.bgAlpha shl 24) or s.bg, argb(s.text), argb(s.muted), (s.faceAlpha shl 24) or s.face,
+        argb(s.border), argb(s.accent), argb(s.second))
 
     /** Zemin (ve çerçeve) ile yazı renklerini uygular */
     fun apply(c: Context, v: RemoteViews, id: Int, root: Int, texts: List<Int> = emptyList(), muted: List<Int> = emptyList()) {
@@ -217,7 +226,11 @@ class WidgetStyleActivity : ComponentActivity() {
                             val k = WidgetLook.colors(this@WidgetStyleActivity, s)
                             Row(Modifier.fillMaxWidth().clickable { style = s }.padding(horizontal = 16.dp, vertical = 10.dp),
                                 verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-                                Box(Modifier.size(width = 64.dp, height = 40.dp).background(Color(k[0]), RoundedCornerShape(10.dp))
+                                // Saydam görünümlerde arkada örnek duvar kâğıdı (renk geçişi) görünür
+                                Box(Modifier.size(width = 64.dp, height = 40.dp)
+                                    .then(if (s.bgAlpha < 0xFF) Modifier.background(androidx.compose.ui.graphics.Brush.linearGradient(
+                                        listOf(Color(0xFF2F6FCB), Color(0xFFE8590C))), RoundedCornerShape(10.dp)) else Modifier)
+                                    .background(Color(k[0]), RoundedCornerShape(10.dp))
                                     .border(if (frame) 3.dp else 1.dp, Color(if (frame) k[5] else k[4]), RoundedCornerShape(10.dp)),
                                     contentAlignment = Alignment.Center) {
                                     Text("12:00", color = Color(k[1]), fontWeight = FontWeight.Bold, fontSize = 14.sp)

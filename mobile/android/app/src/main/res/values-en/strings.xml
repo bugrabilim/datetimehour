@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">On the clock screen</string>
     <string name="look_weatherTab">On the weather tab</string>
     <string name="look_weatherAnimNote">The screen shows the weather at the selected place: rain falls when it rains, clouds speed up and leaves blow in the wind, snow falls in snow, fog drifts in fog, lightning flashes in storms, the sun glows on clear days and stars come out at night. Intensity follows the measurements (precipitation, wind, cloud cover). With Reduce Motion on, it is drawn still.</string>
+    <string name="widget_style_clear">Transparent</string>
+    <string name="widget_style_glass">Translucent</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

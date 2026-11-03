@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">در صفحه ساعت</string>
     <string name="look_weatherTab">در زبانه هوا</string>
     <string name="look_weatherAnimNote">صفحه هوای مکان انتخاب‌شده را نشان می‌دهد: در باران باران می‌بارد، در باد ابرها تند می‌شوند و برگ‌ها می‌رقصند، در برف برف می‌بارد، در مه مه می‌آید، در توفان آذرخش می‌زند، در روز صاف خورشید می‌درخشد و شب ستاره‌ها پیدا می‌شوند. شدت بر اساس اندازه‌گیری‌ها تغییر می‌کند (بارش، باد، ابرناکی). اگر کاهش حرکت روشن باشد، ثابت کشیده می‌شود.</string>
+    <string name="widget_style_clear">شفاف</string>
+    <string name="widget_style_glass">نیمه‌شفاف</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

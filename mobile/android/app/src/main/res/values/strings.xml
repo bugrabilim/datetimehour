@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">Saat ekranında</string>
     <string name="look_weatherTab">Hava sekmesinde</string>
     <string name="look_weatherAnimNote">Ekran seçili yerin havasını gösterir: yağmurda yağmur yağar, rüzgârda bulutlar hızlanır ve yapraklar savrulur, karda kar, sisde sis, fırtınada şimşek, açık gündüz Güneş parlar, gece yıldızlar çıkar. Yoğunluk ölçüme göre değişir (yağış, rüzgâr, bulut oranı). Hareketi azalt açıksa durağan çizilir.</string>
+    <string name="widget_style_clear">Şeffaf</string>
+    <string name="widget_style_glass">Yarı saydam</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

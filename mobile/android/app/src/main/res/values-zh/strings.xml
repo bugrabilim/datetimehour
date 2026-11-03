@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">在时钟页面</string>
     <string name="look_weatherTab">在天气页面</string>
     <string name="look_weatherAnimNote">屏幕显示所选地点的天气：下雨时下雨，有风时云跑得更快、树叶飘舞，下雪时飘雪，起雾时有雾，雷暴时闪电，晴天白天阳光闪耀，夜晚星星出现。强度随实测数据变化（降水、风、云量）。开启“减弱动态效果”时画面静止。</string>
+    <string name="widget_style_clear">透明</string>
+    <string name="widget_style_glass">半透明</string>
     <string name="app_name">时间与日期</string>
 </resources>

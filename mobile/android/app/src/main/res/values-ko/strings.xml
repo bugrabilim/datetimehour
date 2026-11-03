@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">시계 화면에서</string>
     <string name="look_weatherTab">날씨 탭에서</string>
     <string name="look_weatherAnimNote">선택한 장소의 날씨를 화면에 보여 줍니다. 비가 오면 비가 내리고, 바람이 불면 구름이 빨라지고 나뭇잎이 날리며, 눈이 오면 눈, 안개가 끼면 안개, 폭풍에는 번개, 맑은 낮에는 해가 빛나고 밤에는 별이 뜹니다. 세기는 측정값(강수량, 바람, 구름 양)에 따라 달라집니다. 동작 줄이기가 켜져 있으면 멈춘 그림으로 표시됩니다.</string>
+    <string name="widget_style_clear">투명</string>
+    <string name="widget_style_glass">반투명</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

@@ -1836,5 +1836,7 @@
     <string name="look_weatherClock">На экране часов</string>
     <string name="look_weatherTab">На вкладке погоды</string>
     <string name="look_weatherAnimNote">Экран показывает погоду в выбранном месте: в дождь идёт дождь, при ветре облака несутся быстрее и кружатся листья, в снег идёт снег, в туман стелется туман, в грозу сверкают молнии, в ясный день светит солнце, ночью появляются звёзды. Интенсивность зависит от измерений (осадки, ветер, облачность). При включённом «Уменьшении движения» картинка неподвижна.</string>
+    <string name="widget_style_clear">Прозрачный</string>
+    <string name="widget_style_glass">Полупрозрачный</string>
     <string name="app_name">Время и дата</string>
 </resources>
