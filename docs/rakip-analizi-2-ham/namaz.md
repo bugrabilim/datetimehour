@@ -282,3 +282,27 @@ Yöntem: App Store TR (`itunes.apple.com/lookup?country=tr`) ekran görüntüler
   - Hafta sonu saatlerini işaretleme (ülkeye göre cuma-cumartesi) — yok (mesai/erken-geç/gece renkleri var) — `MeetingPlanner.kind` — K — ücretsiz
   - Şehir başına kendi saat biçimi ("Native"), konumu yeniden adlandırma — yok — `WorldScreen`/`world` — K — ücretsiz
   - Saat dilimi adıyla arama (GMT, IST…) — kısmen (sitede `/saat-dilimleri/`; uygulamada şehir listesi + IANA) — `cities.json` — K — ücretsiz
+
+## Ek denetimler ve kapsam (ajan, 3 Kasım 2026)
+- Cuma hatırlatması: bizde yok. `FeatureNotifier.swift` ve `NotificationsView.swift`'te Cuma/Friday kategorisi yok; "Özel günler" bildirimi yalnız takvimdeki günler için 09.00'da. Rakiplerde var: Vakit, Azan Time, Codeida, Temkinli (Cuma namazında bildirimleri durdurma).
+- İftar sayacı widget'ı: bizde yok. `mobile/ios/Widget/Sources/PrayerWidgets.swift`'te iftar/sahur geçmiyor. Live Activity'de var (`live.iftar`). Rakiplerde var: Ezan Vakti Pro (küçük widget "İftara Kalan Süre", kilit ekranı dairesel "İftar").
+- İncelenen 13 uygulama (id, iPhone + iPad görüntü sayısı):
+  - Vakit 6748356813 (10+6)
+  - Azan Time Pro 437447439 (10+7)
+  - Ezan Vakti Pro 1372054007 (6+9)
+  - e-Diyanet 6745179920 (10+6)
+  - Muslim Pro 388389451 (10+10)
+  - Pillars 1559086853 (10+4)
+  - Codeida Namaz Vakti 852500166 (10+9)
+  - Fazilet 1326757844 (10+10)
+  - Temkinli Vakitler 6752358485 (10+12)
+  - Türkiye Takvimi 6651851291 (7+0)
+  - Quran Widgets 6758387571 (10+12)
+  - Countdown Widget 917514700 (5+5)
+  - Time Buddy 719765848 (5+3)
+  - Bakılan iPad görüntüsü: Vakit, Azan Time, Ezan Vakti Pro, e-Diyanet, Muslim Pro (kısmen).
+- Okunamayanlar:
+  - IslamicFinder Athan TR App Store aramasında çıkmadı.
+  - Diyanet'in eski "Namaz Vakti" ve "Diyanet Takvimi" uygulamaları yerine e-Diyanet incelendi.
+  - Google Play görüntüleri bakılmadı.
+  - Uygulamaların içi (Premium sayfaları, ilk açılış) yalnız mağaza görselinde görüldüğü kadar biliniyor.
