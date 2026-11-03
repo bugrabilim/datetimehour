@@ -216,3 +216,122 @@ Yöntem: App Store TR ve US aramaları (`itunes.apple.com/search`), ayrıntı `i
   - Sivil / denizcilik / astronomik alacakaranlık saatleri ve 24 saatlik gün halkası — yok (yalnız altın/mavi saat ve doğuş/batış: `src/js/nature-calc.js` `sunAltTimes` −4°/−6°/+6°) — K — ücretsiz.
   - Takvimde "Ay / Meteor / Gökyüzü / Olaylar" sekmeli tek gökbilim takvimi — kısmen (Ay takvimi var) — `MoonView.swift`, `src/js/nature.js` — O — ücretsiz görünüyor.
 
+## Sun Seeker - Tracker & Compass (id330247123; US 4,83 / 12.980, TR 4,83 / 187; Ajnaware)
+- Ücret modeli: **ücretli uygulama** ₺399,99 (US $11.99), uygulama içi satın alma yok, reklam yok. Sürüm 8.2.1 (22 Ekim 2026), 5 dil, Türkçe yok.
+- İncelenen görüntü: 7 iPhone (beyaz zemin, kalın büyük harf siyah başlık "SUN'S PATH IN 3D AR"; ilk görselde WSJ ve HuffPost defne rozetleri, pastel mor/pembe hap etiketler "Planning Shoots & Videos", "Buying Real Estate").
+- Ana ekran (düz pusula): turuncu → mor dikey gradyan zemin (#C86A3A üst civarı, #6B4A8C alt), üstte iki turuncu dolgu düğme "Here" ve "Now", koordinat ve "Rose 6:47 / Sets 17:25", ortada (i). Büyük **yuvarlak pusula kadranı**: siyah gece ve gri gündüz yarıları, Güneş'in bugünkü yolu sarı yay, saat numaralı noktalar (10 11 12 13 14…), gündönümü yolları kırmızı (yaz) ve camgöbeği (kış), N/E/S/W büyük harf, sarı top Güneş; "334° (NW)" yön. Altta "Daytime" radyo, Azimuth 216.83°, Elevation +32°, **Shadow Ratio 1.59** (gölge oranı), büyüteçli tarih cetveli (Oct | Nov | Dec), alt düğmeler Settings / Details / Map / 3D View.
+- Öne çıkan ekranlar:
+  - **3D AR**: kamera görüntüsü (gökyüzü ve tarla) üstüne bugünün Güneş yolu sarı, 21 Aralık yolu kırmızı, 21 Mart yolu yeşil, saat noktaları ("9am", "8am Dec 22"), Güneş sarı halkalı daire; altta büyüteçli saat cetveli (7am 8am), kamera, ayarlar, Done.
+  - **Harita**: uydu görüntüsü (Google) üstünde her saat için Güneş yönü okları (6am…7pm), sarı çizgili gölge alanları, konum iğnesi; saat cetveli.
+  - **Sun Details**: krem tablo (#FFF8DC civarı): Rises 6:53, Culminates 12:09, Sets 17:24, Daylight Duration 10h31m, Max Elevation +40.15°; **Twilight Times** (Astronomical 5:30–5:59, Nautical 5:59–6:28, Civil 6:28–6:53 ve akşamları, renkli noktalarla); **Magic Hours** (Blue Hour 6:28–6:37, Golden Hour); Shadow Ratio 13.07, Path Length 13.11 (atmosfer kalınlığı).
+  - Set Date: tekerlek tarih seçici + kısayollar "Now ✓ / Summer Solstice / Winter Solstice / Spring Equinox / Fall Equinox / Animation".
+  - Annual Sun Details: "Data Tables" (Annual Rise/Set Times, Annual Elevations & Durations, Today's Solar Path, More Tables & Notifications), seçili gün ve "Solstice – 21 Jun 2018" bölümleri; serifli turuncu başlıklar.
+  - Metinde: Güneş olayı bildirimleri, günün Güneş yayı widget'ı, herhangi bir yer ve tarih.
+- Tasarım: turuncu-kahve-mor sıcak palet, kahverengi başlık çubuğu (#5A3418 civarı), turuncu (#F08A24) bölüm başlıkları, krem tablo; serif + sans karışık; eski iOS görünümü ("No SIM", iPhone 8).
+- Hatalar: görseller eski (2018).
+- Bizde olmayan ya da farklı olan:
+  - Güneş yolu pusula kadranı (bugün + gündönümü/ekinoks yolları, saat noktaları, azimut) — yok (Vakitler'de yalnız yükseklik yayı, yönsüz; sitede yok) — `mobile/ios/App/Sources/PrayerExtras.swift` SunMoonArc — O — ücretli uygulama.
+  - Sivil/denizcilik/astronomik alacakaranlık tablosu — yok (bkz. Sky Tonight) — K — ücretli.
+  - Gölge oranı ve uzunluğu (bir cismin gölgesi boyunun kaç katı) — yok — K — ücretli.
+  - Güneş yönü harita üstünde (saat okları) — yok — O (harita karosu: iOS MapKit, Android OSM) — ücretli.
+  - AR Güneş yolu — yok — B — ücretli.
+  - Yıllık gün doğumu/batımı ve yükseklik tabloları — kısmen (sitede yıl boyu gün uzunluğu grafiği; tablo yok; uygulamada yok) — `src/js/nature.js` — K — ücretli.
+  - Herhangi bir tarihe gitme kısayolları (gündönümü, ekinoks) ve canlandırma — kısmen (sitede ekinoks/gündönümü kartları; Güneş hesabı yalnız bugün) — K.
+
+## PhotoPills (id596026805; US 4,71 / 1.538, TR 4,58 / 38; PhotoPills S.L.) — yalnız Güneş/Ay planlayıcı ekranları
+- Ücret modeli: **ücretli uygulama** ₺599,99 (US $10.99), uygulama içi satın alma yok, reklam yok. Sürüm 2.13.27 (2 Eylül 2026), 9 dil, Türkçe yok. Yaş 17+.
+- İncelenen görüntü: 5 iPhone (sarı #FCD920 civarı mağaza zemini, kalın koyu gri başlık; görseller 2016).
+- Öne çıkan ekranlar (Güneş/Ay ile ilgili olanlar):
+  - **Planner**: üstte Güneş ve Ay satırları: doğuş saati@azimut ("7:21 AM@119.9°", "10:17 AM@288.7°") ve batış saati@azimut, renkli oklu simgeler (Güneş sarı/turuncu, Ay mavi); ortada uydu haritası üstünde kırmızı iğneden çıkan **Güneş ve Ay doğuş/batış yön çizgileri** (kalın turuncu ve mavi yelpazeler, saat yönü çizgisi), sayfa noktaları (7 panel); altta **günün Güneş ve Ay yükseklik grafiği** (−45°…+45°, sarı Güneş eğrisi ve beyaz Ay eğrisi, zemin mavi gece–camgöbeği alacakaranlık–açık gündüz renk bantları, sarı top imleç), "Saturday 8:06 AM (GMT-5) 12/17/16"; alt sekmeler Find, AR, Night AR, Load, Save, More.
+  - AR: kamera görüntüsünde Güneş yolu yayı ve saat noktaları ("4:00 PM", "5:00 PM"), yön rozeti "SW 225°".
+  - Night AR: Samanyolu'nun yolu ve saatleri (8:00 AM, 9:00), ufuk yön "E 90°".
+  - Araçlar (pozlama, alan derinliği, zaman atlamalı, yıldız izi) ve "Academy" makaleleri (kapsam dışı).
+- Tasarım: uygulama zemini koyu gri #2B2B2B civarı, sarı vurgu, camgöbeği değerler; mağaza sarısı marka rengi.
+- Bizde olmayan ya da farklı olan:
+  - Güneş ve Ay doğuş/batış **azimutu** (yön derecesi ve yön adı) — yok (sitede gezegen tablosunda "Yön" var, Güneş ve Ay için yok; uygulamada yok) — `src/js/nature.js`, `src/js/sky.js`, `MoonView.swift` — K — ücretli uygulama.
+  - Günün Güneş + Ay yükseklik grafiği, alacakaranlık renk bantlarıyla — yok (Vakitler yayı ayrı ayrı ve bantsız) — `PrayerExtras.swift` — O — ücretli.
+  - Harita üstünde doğuş/batış yön çizgileri — yok — O — ücretli.
+
+## Lumy (id908905093; US 4,81 / 2.451, TR 4,82 / 62; Raja Vijayaraman; App Store Award 2024 kazananı, Apple Design Award 2025 finalisti)
+- Ücret modeli: **ücretli uygulama** ₺309,99 (US $7.99), aile paylaşımı; uygulama içi yalnız **bahşiş**: A Little Light (Small Tip) ₺49,99, More Light (Medium Tip) ₺199,99, All the Light (Huge Tip) ₺499,99. Reklam yok. Metin: "Lumy calculates all sun and moon data entirely on-device. No tracking. No server calls. Only the weather needs internet." Sürüm 2026.2.4 (21 Ekim 2026), iPhone, iPad, Watch, Apple TV, HomePod; Türkçe yok.
+- İncelenen görüntü: 10 iPhone (siyah-lacivert zemin #00060E, neon sarı-yeşil (#D8F040 civarı) başlıklar, büyük harf geniş aralıklı "DAILY", "PHOTOGRAPHY").
+- Ana ekran: **gökyüzü penceresi**: ekranın üst yarısı günün saatine göre boyanmış gökyüzü (gündüz mavi #244379 → #406FA7, ufuk açık turkuaz, altında siyah yer), üstünde **Güneş'in günlük yolu noktalı sinüs eğrisi** ve üstünde beyaz top Güneş; üstte "Sunset IN 9 hours, 27 minutes" (ince, ortalı); sol üstte "Today" hap, sağ üstte paylaş. Altında yatay **çentikli zaman kaydırıcısı** (geçmiş saatler mavi çizgi). Altında koyu lacivert (#0B1C38) yuvarlak kartlar: "Sunset 7:10 PM" (turuncu), "Night Start 8:44 PM" (pembe), "Autumn" mevsim kartı (akçaağaç yaprağı). Fotoğraf modunda: "Golden Hour IN 52 minutes", ufukta parlayan batan Güneş, "Evening Golden Hour 6:35", "Evening Blue Hour 7:28" ve ışık şeridi (mavi-altın bant).
+- Öne çıkan ekranlar:
+  - **Modlar**: Daily / Photography / Meditation (profil başına görünen bilgiler).
+  - Ay: "Moon sets in 3 hr, 54 min" hap, fotoğraf dokulu Ay ufukta yarı görünür; "Crescent … 25 min, 6 sec".
+  - Sunset ayrıntısı: "Starts in 7 hours, 43 minutes" hap, **"Clear skies tonight mean excellent visibility for watching the sunset."** (Apple Intelligence rozetli cümle), 13°C Clear, Chance of Rain 0%, Cloud Cover 0%, Wind 3 km/h NW, Visibility 26 km, Humidity.
+  - **Notifications (tekrarlı, özelleştirilebilir)**: kartlar: "Daylight Summary — Daily at Sunrise — On Time", "Evening Run — Weekends — Sunset — Before 15 minutes", "Morning Golden Hour — Every Friday — Before 1 hour", "Study — Every Day — First Light — On Time" (ad, gün tekrarı, olay, önce süresi, konum).
+  - **Widget'lar**: küçük "Sunset in 2 hr, 1 min" (yay + Güneş), "Golden Hour ends in 30 min, 22 sec" (turuncu yay), orta boy **24 saatlik halka** (gündüz/alacakaranlık/gece renk dilimleri, kırmızı nokta şimdi) + Solar Noon 12:52, Golden Hour 6:32, Sunset 7:08, Last Light 7:36, büyük boy liste (her olayda zil simgesi, açık olan beyaz).
+  - **Kilit ekranı**: "Sunrise in 1 hr, 47 min" (yay), "First Light 5:36 / Golden 5:45 / Sunrise 5:56"; **Ay kilit ekranı widget'ları**: dairesel evre ve dikdörtgen "Waxing Gibbous / Moon Set 4:42 AM / Moon Rise 5:42 PM".
+  - **Live Activity / Dynamic Island**: "Sunrise in 1:18:36" (Güneş doğuş simgesi, durdur düğmesi); kilit ekranında "Sunrise in 1 hr, 18 min" yay.
+  - Apple Watch: kadranlar ve komplikasyonlar (Solar Noon, Golden Hour, Sunset; "Day ends in 8hr 52min" renkli gün şeridi; 24 saat halka; "Last Light in 4hr 2min").
+  - "Liquid Glass" (iOS 26 cam görünüm), "Glance" (telefon yan durunca masa saati gibi gün ışığı).
+- Tasarım: koyu lacivert-siyah, gökyüzü renkleri saate göre gerçekçi gradyan; kartlar #0B1C38 köşe ~20 px; saatler renkli (turuncu gün batımı, pembe gece başı, mavi mavi saat, sarı altın saat); ince sans; neon sarı-yeşil marka vurgusu.
+- Bizde olmayan ya da farklı olan:
+  - Güneş olayları için **Live Activity / Dynamic Island** ("Gün batımına 1:18:36") — yok (Live Activity türleri: zamanlayıcı, pomodoro, kronometre, sıradaki vakit: `mobile/ios/App/Sources/LiveActivityModel.swift`) — K — ücretli uygulama. Not: sıradaki vakit akşam = gün batımına yakın; ayrı Güneş/altın saat etkinliği yok.
+  - Gün doğumu/batımı, altın saat **widget'ları** ve kilit ekranı widget'ları — yok — mevcut #15'e ek ayrıntı (yay biçimi, "altın saat bitimine 30 dk", 24 saat halka).
+  - **Ay kilit ekranı widget'ı** (dairesel evre, dikdörtgen evre + doğuş/batış) — yok (Ay widget'ı yalnız ana ekran küçük: `MoonWidget.swift`) — K — ücretli uygulama.
+  - Güneş olayına bağlı **özelleştirilebilir tekrarlı hatırlatıcılar** (olay: ilk ışık, altın saat, gün batımı, son ışık; gün seçimi; önce süresi; ad) — kısmen (bizde tek anahtar "Gün doğumu ve batımı" her gün olay anında; altın saat bildirimi yok) — `app-strings.json` `notify.cat.sun.note`, `FeatureNotifier.swift`/`.kt` — K — ücretli.
+  - Saate göre boyanan gökyüzü penceresi + Güneş eğrisi + zaman kaydırıcısı (Mevsimler/Güneş ekranında) — kısmen (bizde tam ekran saat zemininde "Gökyüzü (günün saatine göre)" var: `AnimatedBackground.swift`/`.kt`; Mevsimler'de Güneş bilgisi düz metin kartları) — O — ücretli.
+  - İlk ışık / son ışık / gece başlangıcı (alacakaranlık sınırları) — yok (bkz. Sky Tonight) — K.
+  - Gün batımı izleme koşulu cümlesi (bulut, görüş) — yok — K (Open-Meteo bulut/görüş) — ücretli.
+  - Ücret modeli notu: ücretsiz/reklamsız/sunucusuz yaklaşımı bizimle aynı; bahşiş kademeleri mevcut #25'e ek ayrıntı.
+
+## Sunrise Sunset Time SolarWatch (id1191365122; US 4,70 / 6.061, TR 4,79 / 86; Fifteen Jugglers Software)
+- Ücret modeli: ücretsiz + "SolarWatch Gold" abonelik: Monthly ₺100,00, Annual ₺289,99 (birkaç kademe, biri "3 option yearly no family intro"), family share ₺129,99 / ₺359,99, Gold ₺59,99, Gold Lifetime ₺729,00, SolarWatch Lifetime ₺939,99. Hangi özelliğin Gold olduğu görsellerde yazmıyor (kilit görülmedi). Reklam görülmedi. Sürüm 2026.28.1 (25 Ekim 2026), iOS 26+, 13 dil, **Türkçe var**; "750K+ Downloads".
+- İncelenen görüntü: 9 iPhone (sarı → turuncu → pembe gün batımı gradyanı mağaza zemini #ECDF7F üst, dağ siluetleri; çok kalın siyah sola yaslı başlık "Track the Sun").
+- Ana ekran (karolar, "Your tiles. Your way."): mavi gökyüzü gradyanı (#29468A → #2B6AAD) üstünde **buzlu cam karolar** (Liquid Glass): üstte "9. Sep 2026" hap, zil, paylaş, "•••"; karo 1: **24 saatlik Güneş kadranı** (iç içe halkalar: sarı gündüz, turuncu alacakaranlık, lacivert gece; dış halkada her saatin Güneş yüksekliği derece olarak 37°, 30°, −13°…; ortada "Sunset 19:37 / In 2 hr. 14 min"); "TWILIGHTS" (Morning/Evening × Civil 5:56/20:11, Nautical 5:14/20:54, Astro 4:28/21:39); "MAGIC LIGHT" yatay şerit (Golden Hour 18:51–19:58 sarı, Blue Hour 19:58–20:25 camgöbeği, Sunset 19:37 ve Civil Dusk 20:11 işaretleri); "DAYLIGHT 13h 6m, −27m 57s in the last 7 days" (azalan çizgi grafiği); "SOLAR ECLIPSES — Total 106 % — 23. Sep 2090" (konumdan görülecek sıradaki tutulma); "SOLAR ALARMS — 4:25 — **Daily 5m before Fajr**"; "UV & VITAMIN D" (UV 0.6, IU/hr, gün içi eğri). Sol altta karo düzenleme düğmesi, sağ altta arama.
+- Öne çıkan ekranlar:
+  - **Sunrise alarm (Güneşe bağlı alarm)**: "Hey Siri, wake me up at sunrise." → "From SolarWatch: Created Sunrise. Sunrise 6:32 AM in 13 hr. Every Day · System Alarm" (iOS 26 AlarmKit/sistem alarmı; her gün doğuşa göre kayan alarm). Karoda "Daily 5m before Fajr" (sabah namazına göre alarm seçeneği).
+  - **Gün batımı kalite tahmini haritası**: "Sunset quality – Tomorrow", Poor → Excellent renk ölçeği, Avrupa haritasında turuncu-kırmızı alanlar, konumda "37%".
+  - **Gölge haritası**: Mapbox 3B binalar, Güneş yönü sarı çizgisi, "7:12 AM Golden Hour", gün/tarih seçimi ("Nov 22, 2026"), gölgeli alanlar.
+  - AR: kamera (Pisa Kulesi) üstünde Güneş yolu sarı eğri, saat noktaları, "Sunrise: 06:51", "Civil Dawn: 06:21", azimut/yükseklik.
+  - Widget'lar: küçük Güneş kadranı + doğuş/batış; Vitamin D/UV ("Go outside" düğmesi); "Afternoon until 20:11, Then Nighttime" (yarım kadran); **"14 days Equinox 23 Sep 2026"** (ekinoks geri sayımı); iki şehir satırı (Cupertino, Ledro: yerel saat + güneş saati "7:26 solar", doğuş/batış, gün uzunluğu).
+  - Apple Watch: Güneş kadranı, alacakaranlık tablosu, komplikasyonlar ("Noon 13:02, Sunset 19:23, Last Light 19:57"), birden çok şehir.
+- Tasarım: gökyüzü mavisi zemin, beyaz yarı saydam cam karolar köşe ~20 px, küçük büyük harf karo başlıkları (TWILIGHTS, MAGIC LIGHT), yuvarlak geometrik sans (DIN/Barlow benzeri) rakamlar; renk kodu: sarı altın saat, camgöbeği mavi saat, turuncu alacakaranlık.
+- Bizde olmayan ya da farklı olan:
+  - Güneşe bağlı kayan alarm (her gün gün doğumunda / batımında, önce-sonra süresi) — kısmen (vakitte gerçek alarm "Güneş" vaktini de kurabiliyor ama o Diyanet'in Güneş vakti = doğuş − ~7 dk; ayrı gün doğumu/batımı alarmı, süre ayarı, Siri ifadesi yok) — `mobile/ios/App/Sources/PrayerExtras.swift` PrayerAlarms (satır 150+), Android `PrayerExtras.kt` — K — ücretsiz görünüyor.
+  - Alacakaranlık tablosu (sivil/denizcilik/astronomik) — yok — K.
+  - "Son 7 günde gün 27 dk 57 sn kısaldı" — kısmen (sitede "Gün dünden 2 dk daha kısa"; uygulamada yok) — `src/js/nature.js` — K.
+  - Ekinoks/gündönümü geri sayım widget'ı — yok (Mevsimler'de var, widget yok) — K.
+  - Konumdan görülecek sıradaki tutulma (kaç yıl sonra olursa olsun, örtme yüzdesiyle) — kısmen (bizde sonraki 6 tutulma ve Ay tutulmasında "buradan izlenebilir mi"; Güneş tutulmasında konuma göre örtme yüzdesi yok) — `MoonView.swift`, `src/js/nature.js` drawEclipses — O.
+  - Gün batımı kalite tahmini, gölge haritası, UV ve D vitamini — yok — O/B — rakipte büyük olasılıkla Gold.
+  - Saat ekranı karolarını kullanıcının seçip sıralaması — var (bizde saat ekranı alanları düzenlenebilir: `HomeItems.swift`), ama Güneş için yalnız "Gün doğumu ve batımı" alanı.
+
+## Lumos: Sun and Moon Tracker (id725106192; US 4,72 / 3.732, TR 4,69 / 90; Luminous Labs)
+- Ücret modeli: ücretsiz + "Lumos Pro": ₺39,99 / ₺99,99 / ₺349,99 (aylık/yıllık kademeler), Lifetime ₺799,99. Pro'da kilitli (görsel başlıklarında açıkça "(Pro)"): Street View ile keşif, widget'lar ve uyarılar (rise/set, magic hours, moon phases). Reklam görülmedi. Sürüm 2.4.5 (2 Eylül 2026), yalnız İngilizce.
+- İncelenen görüntü: 8 iPhone (lacivert → mavi dikey gradyan mağaza zemini, beyaz kalın ortalı başlık).
+- Ana ekran (AR): kamera görüntüsünde **Güneş ve Ay yolları**: bugün (sarı), 21 Haziran (kırmızı), 20 Mart (yeşil), 21 Aralık; saat noktaları ("7am Jun 20", "5am Mar 20"), ufuk çizgisi mavi ve yön harfleri; büyük sarı Güneş topu. Üstte yer adı "Morganton / Pisgah National Forest" ve konum oku; altta takvim simgesi, "◀ 5/5/25 ▶ 6:29am", geçmiş simgesi, **saat cetveli** (9pm … 6pm), "Elev. −1.2°, Angle 68.7°, Rise 6:30am, Set 8:18pm" ve ortada Güneş/Ay değiştirme düğmesi.
+- Öne çıkan ekranlar:
+  - **Harita + canlı pusula**: Apple Maps üstünde yuvarlak pusula halkası (derece işaretli), saat noktalı yaylar: seçili tarih (sarı), Haziran gündönümü (kırmızı), Aralık gündönümü (mavi), ekinoks (yeşil); lejant kutusu; şimdiki Güneş yönü sarı çizgi, Ay yönü mavi çizgi.
+  - Street View (Pro): Stonehenge üstünde Ay yolu, saatlik Ay evre görselleri (10pm, 11pm, 12am…).
+  - **Güneş ayrıntısı** (6/8/24): Day Length 12h 5m; Dawn (Astronomical) 4:43am, Dawn (Nautical), Dawn (Civil), Blue Hour 5:27–5:44, Sunrise, Golden Hour, Solar Noon, Golden Hour (akşam), Sunset, Blue Hour, Dusk (Civil/Nautical/Astronomical); **her satırda zil** (açık mavi zil / üstü çizili zil: olay başına bildirim aç/kapa).
+  - **Ay ayrıntısı** (6/14/24): Phase Waxing Gibbous, Illumination 57.6%, Age 8.5 days, Distance 250,994 mi; Rise 12:30pm, Transit 6:39pm, Set 12:09am; **Perigee 6/27/24 at 5:46am 229,462 mi, Apogee 7/12/24 251,261 mi**; New / First Quarter / Full / Last Quarter tarih ve saatleri; her satırda zil; dipnot "phase, illumination, age and distance are given at the time…".
+  - **Gölge uzunluğu**: "Object Height: 10 ft" girişi, "Shadow Length: 7.2 ft", 3B ağaç ve gölgesi; saat cetveliyle değişir.
+  - **Yıl tablosu**: "◀ 2024 ▶", gün gün Ay doğuş/batış saatleri ve sağda **fotoğraf dokulu Ay evresi** küçük resmi, sağ kenarda ay harfleri (J F M A…) hızlı kaydırma.
+  - **Bildirim ayarı**: "Solar Notifications" açılır bölüm; olay "Golden Hour (PM)" Enabled anahtarı, "Nickname (optional)", "Alert me… 15 minutes before the event", "Every…" ve Pazar–Cumartesi gün kutuları. Bildirim örneği: "Golden Hour (PM) will begin at 7:57pm and last until 8:33pm".
+  - Widget'lar (Pro): "Cupertino Solar Noon @ 4:16pm 1 hr, 45 min", doğuş/batış saatleri ve kalan süre; Ay widget'ı "Waning Gibbous 89.3% 17.7 days", Ay doğuş/batış ve kalan süre, fotoğraf dokulu Ay.
+- Tasarım: üst çubuk koyu lacivert #0D1F35, tablo zemini #234465 (ölçülen), yıl tablosunda gri satırlar #A09EA1; mağaza gradyanı altta #2281EF; ayraçlar açık mavi; mavi (#3B82F6 civarı) simgeler; yazı SF; sade tablo.
+- Bizde olmayan ya da farklı olan:
+  - Olay başına bildirim zili (her Güneş/Ay olayı satırında aç/kapa) ve olay başına "X dk önce" + gün seçimi + takma ad — kısmen (bizde kategori düzeyinde: "Ay evreleri", "Gün doğumu ve batımı") — `NotificationsView.swift`, `NotificationsScreen.kt` — K — **rakipte Pro**.
+  - Ay perige/apoje uygulamada — yok (sitede var: `src/js/sky.js`) — K — ücretsiz.
+  - Dördünlerin (ilk/son dördün) tarih ve saati — kısmen (yalnız yeni ay ve dolunay) — `MoonView.swift` marks — K — ücretsiz.
+  - Yıl boyu Ay doğuş/batış tablosu — yok — K — ücretsiz görünüyor.
+  - Harita üstünde Güneş yolu yayları (gündönümü/ekinoks karşılaştırmalı) ve gölge uzunluğu hesabı — yok — O / K — ücretsiz (harita), Street View Pro.
+
+## Star Walk Kids: Astronomy Game (id907759227; US 4,25 / 436, TR 4,19 / 21; Vito Technology) — çocuklar için
+- Ücret modeli: ücretsiz + "Remove Ads" ₺49,99 (metinde "No ads or in-app purchases" yazıyor ama TR mağazasında reklam kaldırma satın alması var: metin ile mağaza çelişkili). Sürüm 2.0.10 (29 Eylül 2021; 5 yıldır güncellenmemiş), 11 dil, Türkçe yok.
+- İncelenen görüntü: 5 iPhone (yatay).
+- Ana ekran: düz çizim (flat vektör) gece manzarası: mor dağlar, roket rampası, gözlemevi kubbesi, "CINEMA" yazılı sinema binası; ortada uzay giysili **inek maskotu** elinde kumanda; sağ üstte dişli. Zemin lacivert-mor #0F114C (üst), ön plan #011339.
+- Öne çıkan ekranlar:
+  - Sinema: koltuk sıraları önünde kart ızgarası (SUN, MERCURY, VENUS, EARTH, MOON, COMET), her kartta oynat düğmeli **çizgi film** (eğitici kısa animasyonlar); el yazısı benzeri büyük harf sarı başlıklar.
+  - Bilgi yarışması: mavi #178CFF ızgaralı zemin, "EARTH / MOON — WHICH OBJECT IS LARGER?", sağ üstte yıldız "2/5" ilerleme; yandaki küre ve cetvel simgeleri.
+  - Güneş sistemi: koyu lacivert zeminde yörüngeler kesik çizgili, gezegenler düz çizim, asteroit taneleri, yakınlaştırma.
+  - Harita: gezegen kartları (EARTH, MOON, VENUS, COMETS, MARS, JUPITER, URANUS, SATURN) ortada "QUIZ" dairesi.
+  - Metinde: ilginç bilgileri dinleme (sesli), müzik, gezegenleri ziyaret.
+- Tasarım: düz vektör çizim, yuvarlak çizgi film karakteri, parlak sarı/mavi/turuncu; yatay ekran; büyük harf başlıklar.
+- Bizde olmayan ya da farklı olan:
+  - Çocuklar için Mevsimler'de etkileşim: soru-cevap (bilgi yarışması), sesli anlatım, kısa canlandırma — yok (bizde metin kartları, iki statik çizim ve "ilginç bilgiler" listesi) — `mobile/ios/App/Sources/WorldSeasons.swift` (`kids.*` kartları), `SeasonsScreen.kt`, `app-strings.json` `kids.fact1–5` — O — ücretsiz.
+  - Yörünge çiziminde Dünya'yı sürükleyerek mevsimi değiştirme (canlandırma) — yok (çizim durağan, `WorldSeasons.swift` Canvas) — K/O.
+  - Ay ve gezegenler için çocuk bölümü ("Ay neden şekil değiştirir?") — yok (çocuk anlatımı yalnız mevsimler) — K — ücretsiz.
+

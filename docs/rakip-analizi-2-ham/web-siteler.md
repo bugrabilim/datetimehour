@@ -114,3 +114,25 @@ Karşılaştırma için kendi canlı sitemizin görüntüleri: `rakip2/web/biz/`
   - Hazır saatleri kullanıcının düzenleyebilmesi — bizde hazır alarm sayfaları sabit (`ALARM_PRESETS`). Gerek düşük.
   - **Kendi anketinden özgün veri içeriği** ("Türkiye'nin uyku alışkanlıkları") — bizde yok; ankette sunucu ve kişisel veri işleme gerekir (statik site; sahibin kararı). Çaba O.
   - Yaş hesaplama ayrı araç — bizde tarih hesaplamada yaş var (`/tarih-hesaplama/`, `src/js/dates.js`). Var.
+
+## Online-Stopwatch (https://www.online-stopwatch.com; puan yok)
+- Ücret modeli: reklamlı ücretsiz + **Premium**: 1 aylık deneme erişimi $10 (tek seferlik), 12 aylık erişim $24/yıl ("günde $0.06", otomatik yenileme yok), Grup hesabı $96/yıl (30 hesap, kişi başı $3.20). Premium'un ilk özelliği "No Ads!". Premium için e-posta + parola hesabı ve çerez şart. Üstte "Log In!", sarı "Join Premium!" düğmesi; zamanlayıcı altında kırmızı "Go Ad Free!".
+- İncelenen görüntü: 5 (masaüstü ilk ekran ve tam sayfa, telefon ve tam sayfa, Exam Timers sayfası). Masaüstü görüntüsü Playwright'ın normal yolunda yazı tipi beklerken takıldı, CDP ile alındı.
+- İlk açılış / tanıtım / ödeme sayfası: ödeme sayfası metinden okundu (yukarıda); görsel alınmadı. Çerez bandı görülmedi.
+- Ana ekran ve gezinme: solda yeşil yukarı + kırmızı aşağı ok logosu, "Online-Stopwatch"; sağda Log In!, Join Premium!, Search, "Change Language" (İngiliz bayrağı). Altında **iki satır renkli hap kategori düğmesi** (her biri kalın koyu çerçeveli, solda beyaz daire içinde simge): Race Timers (kırmızı), Classroom Timers (yeşil), Holiday Timers (mor), Random Name Pickers (turuncu), Random Number Generators (gri), Sensory Timers (bordo), Clocks (turkuaz), Exam Timers (lacivert), Chance Games, Group Generators, Presentation Timers, Tally Counters. Altbilgide aynı kategoriler büyük renkli kutularla + "Dates".
+- Öne çıkan ekranlar:
+  - **Ana sayfa:** mavi bant içinde koyu hap kutuda tanıtım cümlesi; altında lacivert "www.online-stopwatch.com" çubuğu, iki büyük sütun: "Stopwatch" (dev yeşil yukarı ok) ve "Countdown" (dev kırmızı aşağı ok); altında üç hap düğme: **"Add to My Page!"** (yeşil, kendi sayfana ekle), **"Go Fullscreen!"** (mavi), "Go Ad Free!" (kırmızı).
+  - **Exam Timers:** "formal monochrome exam timers… easy to read at the back of a hall", sınav adı, merkez numarası ve tarih yazılabilen, **okuma süresi + sınav süresi** ayrı ayarlanan, "tarayıcı kapanırsa süreyi hatırlar" zamanlayıcılar; 4 tasarım: Basic (yalnız "Time left: 01:30:00" + bilgiler), Exam Timer With Clock (analog saat + bilgiler), With Visual (siyah **pasta dilimi** kalan süre), Exam Timer (okuma süresi + analog saat). Mavi çerçeveli kare kartlar.
+  - Classroom Timers şeridi: roket, robot, koşucular, ördek yarışı gibi **çizgi film temalı yarış zamanlayıcıları** (kaydırmalı karusel).
+  - Diğer kategoriler (bu turda açılmadı, adlarından): rakamsız duyusal/rahatlatıcı zamanlayıcılar ("No numbers. No Stress."), sunum/konuşma zamanlayıcıları, isim seçici, takım oluşturucu, sayaç (tally), şans oyunları, konuşan saatler.
+- Ayarlar: görülmedi.
+- Widget / kilit ekranı / saat: "Add to My Page!" (kendi sayfasına ekleme; hesap gerektirebilir, açılmadı).
+- Tasarım: beyaz zemin, doygun "oyuncak" renkler, kalın çerçeveli hap düğmeler, parlak 3B ok çizimleri; çocuk ve öğretmen kitlesine yönelik. Koyu tema görülmedi.
+- Reklam yerleri: üst menünün altında boş beyaz reklam alanı (~1280×140), tanıtım bandının altında ikinci boş alan, **ekranın altında yapışkan gri reklam şeridi** (telefonda da, "⌄" kapatma okuyla). Yoğunluk yüksek.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - **Sınav salonu zamanlayıcısı** (sınav adı, salon/merkez no, okuma süresi + sınav süresi, uzaktan okunur tek renkli düzen, kapanınca süreyi hatırlar) — bizde yok (sınav **tarihine** geri sayım var: `src/data/exams.json`, `/geri-sayim/yks/`; salon zamanlayıcısı yok). Türkiye'de ortak yazılı/deneme sınavları için uygun. Çaba K. Rakipte ücretsiz (reklamlı).
+  - **Sunum/konuşma zamanlayıcısı** (süre dolarken renk değişimi) — bizde yok (`build.mjs` `MORE_KEYS`: hicri, saat hesaplama, kaç gün kaldı, aralık, satranç, metronom, konuşan saat, burç). Çaba K.
+  - **Görsel (rakamsız) zamanlayıcılar**: pasta dilimi, kum saati, renkli çubuk; çocuklar ve sınıf için — bizde yok (geri sayım rakamla; `src/js/tools.js`). Çaba K.
+  - Sınıf araçları: isim seçici, rastgele sayı, takım oluşturucu, sayaç — bizde sitede yok (uygulamada zikirmatik sayaç var, sitede yok). İlk analiz tablosunda "yok" yazıyordu, 107'lik listeye alınmamış. Çaba K–O (zaman ürünü kapsamı sahibin kararı).
+  - Temalı (yarış, tatil) eğlenceli zamanlayıcılar — bizde yok. Çaba O.
