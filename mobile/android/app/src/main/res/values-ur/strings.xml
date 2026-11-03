@@ -468,7 +468,7 @@
     <string name="list_err">آپ کی رکنیت محفوظ نہیں ہو سکی۔ ای میل پتہ اور رضامندی کا خانہ چیک کریں، پھر کچھ دیر بعد دوبارہ کوشش کریں۔</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
     <string name="list_popupTitle">ای میل فہرست کا رازداری نوٹس</string>
-    <string name="list_popupText">آپ کا ای میل پتہ Bumba Teknoloji Limited Şirketi صرف آپ کو اس فہرست میں شامل کرنے کے لیے استعمال کرتی ہے۔ آپ کسی بھی وقت ایک کلک سے رکنیت ختم کر سکتے ہیں۔</string>
+    <string name="list_popupText">آپ کا ای میل پتہ Bumba Teknoloji Limited Şirketi صرف آپ کو اس فہرست میں شامل کرنے کے لیے پروسیس کرتی ہے۔ آپ کسی بھی وقت ایک کلک سے رکنیت ختم کر سکتے ہیں۔</string>
     <string name="list_readNote">رازداری نوٹس پڑھیں</string>
     <string name="list_consentText">میں نے رازداری نوٹس پڑھ لیا ہے اور ای میلز وصول کرنے پر رضامند ہوں۔</string>
     <string name="list_accept">میں متفق ہوں</string>
@@ -489,7 +489,7 @@
     <string name="nature_bluePm">شام کا نیلا وقت</string>
     <string name="nature_lightNote">سنہری وقت: سورج افق سے 6° اوپر اور 4° نیچے کے درمیان، نرم اور گرم روشنی کے ساتھ۔ نیلا وقت: سورج افق سے 4° سے 6° نیچے، نیلگوں جھٹپٹا۔ فوٹوگرافروں کے کام کا۔</string>
     <string name="zakat_fitreHeading">صدقۂ فطر (فطرانہ)</string>
-    <string name="zakat_fitreText">ترکی کی ریاستِ امورِ دینیہ (اعلیٰ مجلسِ امورِ دینیہ) نے %1$s کا فطرانہ فی کس %2$s لیرا مقرر کیا (%3$s)، جو رمضان %1$s سے اگلے رمضان تک معتبر ہے۔</string>
+    <string name="zakat_fitreText">ترکی کے ادارۂ امورِ دینیہ (اعلیٰ مجلسِ امورِ دینیہ) نے %1$s کا فطرانہ فی کس %2$s ترک لیرا مقرر کیا (%3$s)، جو رمضان %1$s سے اگلے رمضان تک لاگو ہے۔</string>
     <string name="zakat_fitrePeople">افراد کی تعداد (زیرِ کفالت افراد سمیت)</string>
     <string name="zakat_fitreTotal">کل فطرانہ</string>
     <string name="zakat_fitreNote">یہ رقم ترکی کے لیے ہے اور کم از کم ہے؛ جو استطاعت رکھتے ہیں زیادہ دیں (کھجور یا کشمش کے پیمانے سے)۔ فطرانہ عید کی نماز سے پہلے دیا جاتا ہے۔</string>

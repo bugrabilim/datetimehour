@@ -1213,7 +1213,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName}에서 오늘 날짜는"
+            "value": "${applicationName}에서 오늘 날짜 알려 줘"
           }
         },
         "zh-Hans": {
@@ -1308,7 +1308,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName}에서 히즈라력 날짜는"
+            "value": "${applicationName}에서 히즈라력 날짜 알려 줘"
           }
         },
         "zh-Hans": {

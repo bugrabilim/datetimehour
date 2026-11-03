@@ -468,7 +468,7 @@
     <string name="list_err">无法保存您的订阅。请检查电子邮箱和复选框，稍后再试。</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
     <string name="list_popupTitle">邮件列表隐私说明</string>
-    <string name="list_popupText">您的电子邮箱仅由 Bumba Teknoloji Limited Şirketi 用于为您订阅此列表。您可以随时一键退订。</string>
+    <string name="list_popupText">您的电子邮箱由 Bumba Teknoloji Limited Şirketi 处理，仅用于为您订阅此列表。您可以随时一键退订。</string>
     <string name="list_readNote">阅读隐私说明</string>
     <string name="list_consentText">我已阅读隐私说明，同意接收电子邮件。</string>
     <string name="list_accept">我同意</string>

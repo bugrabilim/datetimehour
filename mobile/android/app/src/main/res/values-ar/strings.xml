@@ -469,8 +469,8 @@
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
     <string name="list_popupTitle">إشعار الخصوصية للقائمة البريدية</string>
     <string name="list_popupText">تعالج شركة Bumba Teknoloji Limited Şirketi عنوان بريدك الإلكتروني فقط لاشتراكك في هذه القائمة. يمكنك إلغاء الاشتراك في أي وقت بنقرة واحدة.</string>
-    <string name="list_readNote">اقرأ نص الإشعار</string>
-    <string name="list_consentText">قرأت نص الإشعار وأوافق على استلام رسائل البريد الإلكتروني.</string>
+    <string name="list_readNote">اقرأ إشعار الخصوصية</string>
+    <string name="list_consentText">قرأت إشعار الخصوصية وأوافق على تلقي رسائل البريد الإلكتروني.</string>
     <string name="list_accept">أوافق</string>
     <string name="list_cancel">إلغاء</string>
     <string name="list_loading">جارٍ تحميل النص…</string>

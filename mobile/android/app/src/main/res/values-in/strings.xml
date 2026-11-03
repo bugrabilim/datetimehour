@@ -465,7 +465,7 @@
     <string name="list_emailLabel">Alamat email Anda</string>
     <string name="list_submit">Daftar</string>
     <string name="list_ok">Kami telah mengirim email konfirmasi; klik tautan di dalamnya untuk menyelesaikan pendaftaran.</string>
-    <string name="list_err">Pendaftaran Anda tidak dapat disimpan. Periksa alamat email dan kotak centang, lalu coba lagi sebentar lagi.</string>
+    <string name="list_err">Pendaftaran Anda tidak dapat disimpan. Periksa alamat email dan kotak centang, lalu coba lagi beberapa saat kemudian.</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
     <string name="list_popupTitle">Pemberitahuan privasi daftar email</string>
     <string name="list_popupText">Alamat email Anda diproses oleh Bumba Teknoloji Limited Şirketi hanya untuk mendaftarkan Anda ke daftar ini. Anda dapat berhenti berlangganan kapan saja dengan satu klik.</string>

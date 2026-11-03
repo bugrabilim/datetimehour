@@ -467,7 +467,7 @@
     <string name="list_ok">Мы отправили вам письмо с подтверждением; перейдите по ссылке в нём, чтобы завершить подписку.</string>
     <string name="list_err">Не удалось сохранить подписку. Проверьте адрес и отметку согласия и через минуту попробуйте снова.</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
-    <string name="list_popupTitle">Уведомление о рассылке</string>
+    <string name="list_popupTitle">Уведомление о конфиденциальности для рассылки</string>
     <string name="list_popupText">Ваш адрес электронной почты обрабатывает Bumba Teknoloji Limited Şirketi только для подписки на эту рассылку. Отписаться можно в любой момент одним нажатием.</string>
     <string name="list_readNote">Прочитать уведомление о конфиденциальности</string>
     <string name="list_consentText">Я прочитал(а) уведомление о конфиденциальности и согласен(на) получать письма.</string>

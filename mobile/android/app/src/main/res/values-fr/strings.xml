@@ -467,10 +467,10 @@
     <string name="list_ok">Nous vous avons envoyé un e-mail de confirmation ; cliquez sur le lien qu’il contient pour terminer votre inscription.</string>
     <string name="list_err">Votre inscription n’a pas pu être enregistrée. Vérifiez l’adresse e-mail et la case à cocher, puis réessayez dans un instant.</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
-    <string name="list_popupTitle">Information sur la liste de diffusion</string>
+    <string name="list_popupTitle">Notice d’information de la liste de diffusion</string>
     <string name="list_popupText">Votre adresse e-mail est traitée par Bumba Teknoloji Limited Şirketi uniquement pour vous inscrire à cette liste. Vous pouvez vous désinscrire à tout moment en un clic.</string>
-    <string name="list_readNote">Lire l’information sur la confidentialité</string>
-    <string name="list_consentText">J’ai lu l’information sur la confidentialité et j’accepte de recevoir des e-mails.</string>
+    <string name="list_readNote">Lire la notice d’information</string>
+    <string name="list_consentText">J’ai lu la notice d’information et j’accepte de recevoir des e-mails.</string>
     <string name="list_accept">J’accepte</string>
     <string name="list_cancel">Annuler</string>
     <string name="list_loading">Chargement du texte…</string>

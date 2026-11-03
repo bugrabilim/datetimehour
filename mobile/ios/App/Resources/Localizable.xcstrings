@@ -44105,7 +44105,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qeydiyyatınızı saxlaya bilmədik. E-poçt ünvanını və qeyd xanasını yoxlayın, sonra bir az sonra yenidən cəhd edin."
+            "value": "Qeydiyyatınızı saxlaya bilmədik. E-poçt ünvanını və qeyd xanasını yoxlayıb bir az sonra yenidən cəhd edin."
           }
         },
         "ar": {
@@ -44117,7 +44117,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pendaftaran Anda tidak dapat disimpan. Periksa alamat email dan kotak centang, lalu coba lagi sebentar lagi."
+            "value": "Pendaftaran Anda tidak dapat disimpan. Periksa alamat email dan kotak centang, lalu coba lagi beberapa saat kemudian."
           }
         },
         "ur": {
@@ -44325,13 +44325,13 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Information sur la liste de diffusion"
+            "value": "Notice d’information de la liste de diffusion"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Уведомление о рассылке"
+            "value": "Уведомление о конфиденциальности для рассылки"
           }
         },
         "ja": {
@@ -44384,13 +44384,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ihre E-Mail-Adresse wird von Bumba Teknoloji Limited Şirketi ausschließlich verarbeitet, um Sie in diese Liste einzutragen. Sie können sich jederzeit mit einem Klick abmelden."
+            "value": "Ihre E-Mail-Adresse wird von der Bumba Teknoloji Limited Şirketi ausschließlich verarbeitet, um Sie in diese Liste einzutragen. Sie können sich jederzeit mit einem Klick abmelden."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "E-poçt ünvanınız yalnız bu siyahıya abunə olmağınız üçün Bumba Teknoloji Limited Şirketi tərəfindən emal olunur. İstədiyiniz vaxt bir kliklə ayrıla bilərsiniz."
+            "value": "E-poçt ünvanınız yalnız bu siyahıya abunə olmağınız üçün Bumba Teknoloji Limited Şirketi tərəfindən emal olunur. İstənilən vaxt bir kliklə abunəlikdən çıxa bilərsiniz."
           }
         },
         "ar": {
@@ -44408,7 +44408,7 @@
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "آپ کا ای میل پتہ Bumba Teknoloji Limited Şirketi صرف آپ کو اس فہرست میں شامل کرنے کے لیے استعمال کرتی ہے۔ آپ کسی بھی وقت ایک کلک سے رکنیت ختم کر سکتے ہیں۔"
+            "value": "آپ کا ای میل پتہ Bumba Teknoloji Limited Şirketi صرف آپ کو اس فہرست میں شامل کرنے کے لیے پروسیس کرتی ہے۔ آپ کسی بھی وقت ایک کلک سے رکنیت ختم کر سکتے ہیں۔"
           }
         },
         "fa": {
@@ -44444,7 +44444,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "您的电子邮箱仅由 Bumba Teknoloji Limited Şirketi 用于为您订阅此列表。您可以随时一键退订。"
+            "value": "您的电子邮箱由 Bumba Teknoloji Limited Şirketi 处理，仅用于为您订阅此列表。您可以随时一键退订。"
           }
         },
         "fil": {
@@ -44491,7 +44491,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اقرأ نص الإشعار"
+            "value": "اقرأ إشعار الخصوصية"
           }
         },
         "id": {
@@ -44515,7 +44515,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lire l’information sur la confidentialité"
+            "value": "Lire la notice d’information"
           }
         },
         "ru": {
@@ -44586,7 +44586,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "قرأت نص الإشعار وأوافق على استلام رسائل البريد الإلكتروني."
+            "value": "قرأت إشعار الخصوصية وأوافق على تلقي رسائل البريد الإلكتروني."
           }
         },
         "id": {
@@ -44610,7 +44610,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "J’ai lu l’information sur la confidentialité et j’accepte de recevoir des e-mails."
+            "value": "J’ai lu la notice d’information et j’accepte de recevoir des e-mails."
           }
         },
         "ru": {
@@ -45008,7 +45008,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "글을 불러오지 못했습니다. 아래 링크에서 전문을 읽고 잠시 후 다시 시도해 주세요."
+            "value": "글을 불러오지 못했습니다. 아래 링크에서 전문을 읽거나 잠시 후 다시 시도해 주세요."
           }
         },
         "zh-Hans": {
@@ -45245,7 +45245,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qeydiyyat alınmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin."
+            "value": "Qeydiyyatınızı tamamlamaq mümkün olmadı. E-poçt ünvanınızı yoxlayıb bir az sonra yenidən cəhd edin."
           }
         },
         "ar": {
@@ -46403,7 +46403,7 @@
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "ترکی کی ریاستِ امورِ دینیہ (اعلیٰ مجلسِ امورِ دینیہ) نے %1$@ کا فطرانہ فی کس %2$@ لیرا مقرر کیا (%3$@)، جو رمضان %1$@ سے اگلے رمضان تک معتبر ہے۔"
+            "value": "ترکی کے ادارۂ امورِ دینیہ (اعلیٰ مجلسِ امورِ دینیہ) نے %1$@ کا فطرانہ فی کس %2$@ ترک لیرا مقرر کیا (%3$@)، جو رمضان %1$@ سے اگلے رمضان تک لاگو ہے۔"
           }
         },
         "fa": {
@@ -54318,7 +54318,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "하루의 여섯 시간 모두, 다음 시간을 강조."
+            "value": "하루 여섯 개의 시각 모두, 다음 시각은 강조 표시."
           }
         },
         "zh-Hans": {
@@ -58023,7 +58023,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@주 · 올해 %2$@번째 날"
+            "value": "%1$@주차 · 올해 %2$@번째 날"
           }
         },
         "zh-Hans": {
@@ -60968,7 +60968,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "주와 올해의 날"
+            "value": "주차와 올해 며칠째"
           }
         },
         "zh-Hans": {
@@ -66668,7 +66668,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "지구는 해마다 태양 둘레를 한 바퀴 돕니다. 그런데 똑바로 서 있지 않아요. 자전축이 늘 같은 쪽으로 23.4도 기울어져 있지요. 한 해의 절반은 북반구가 태양 쪽으로 기울어 여름이 되고, 나머지 절반은 반대로 기울어 겨울이 됩니다."
+            "value": "지구는 해마다 태양 둘레를 한 바퀴 돌아요. 그런데 똑바로 서 있지 않아요. 자전축이 늘 같은 쪽으로 23.4도 기울어져 있지요. 한 해의 절반은 북반구가 태양 쪽으로 기울어 여름이 되고, 나머지 절반은 반대로 기울어 겨울이 돼요."
           }
         },
         "zh-Hans": {
@@ -68663,7 +68663,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "다음 해"
+            "value": "앞으로 몇 년"
           }
         },
         "zh-Hans": {
@@ -73698,7 +73698,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "정각 알림을 빼고 모든 기능의 알림이 기본으로 켜져 있습니다. 원하지 않는 것은 여기서 끄고, 정각 알림은 여기서 켤 수 있습니다. 알림은 휴대폰에서 준비되며 날씨 요약만 날씨 서비스에 묻습니다."
+            "value": "정각 알림을 빼고 모든 기능의 알림이 기본으로 켜져 있습니다. 원하지 않는 것은 여기서 끄고, 정각 알림은 여기서 켤 수 있습니다. 알림은 휴대폰에서 준비되며 날씨 요약만 날씨 서비스에서 받아 옵니다."
           }
         },
         "zh-Hans": {
@@ -74173,7 +74173,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "공휴일, 전날, 종교일과 기념일, 학사 일정. 그날 아침 9:00에."
+            "value": "공휴일과 그 전날, 종교일과 기념일, 학사 일정. 그날 아침 9:00에."
           }
         },
         "zh-Hans": {
@@ -77973,7 +77973,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "튀르키예 공휴일(이드 포함)에는 울리지 않고, 반일 근무 전날에는 울립니다."
+            "value": "튀르키예 공휴일(이드 포함)에는 울리지 않고, 반일만 쉬는 전날에는 울립니다."
           }
         },
         "zh-Hans": {
@@ -78068,7 +78068,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "공휴일이라 다음은: %1$@"
+            "value": "공휴일 이후 다음 알람: %1$@"
           }
         },
         "zh-Hans": {
@@ -79018,7 +79018,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "달 달력과 식"
+            "value": "달 달력과 일식·월식"
           }
         },
         "zh-Hans": {
@@ -85763,7 +85763,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "하늘(하루 시간에 따라)"
+            "value": "하늘(시간대에 따라)"
           }
         },
         "zh-Hans": {
@@ -86238,7 +86238,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "시계는 항상 켜져 있습니다. 켠 기능은 아래 바에 나타나며, 모두 끄면 바가 숨겨지고 설정은 시계 화면의 톱니바퀴에서 엽니다."
+            "value": "시계는 항상 켜져 있습니다. 켠 기능은 하단 바에 나타나며, 모두 끄면 바가 숨겨지고 설정은 시계 화면의 톱니바퀴에서 엽니다."
           }
         },
         "zh-Hans": {
@@ -86713,7 +86713,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "계절, 태양, 달의 위상과 식"
+            "value": "계절, 태양, 달의 위상, 일식·월식"
           }
         },
         "zh-Hans": {
@@ -92128,7 +92128,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Siri에게 \"시간과 날짜에서 타이머 시작\", \"시간과 날짜에서 다음 기도 시간\", \"시간과 날짜에서 히즈라력 날짜\"라고 말하거나 단축어 앱에서 이 동작을 쓰세요. 충전 중에 시계를 보이려면: 단축어 › 자동화 › 충전기 › 연결됨 › \"전체 화면 시계 열기\"(야간 모드도 선택 가능)."
+            "value": "Siri에게 \"시간과 날짜에서 타이머 시작\", \"시간과 날짜에서 다음 기도 시간\", \"시간과 날짜에서 히즈라력 날짜 알려 줘\"라고 말하거나 단축어 앱에서 이 동작을 쓰세요. 충전 중에 시계를 보이려면: 단축어 › 자동화 › 충전기 › 연결됨 › \"전체 화면 시계 열기\"(야간 모드도 선택 가능)."
           }
         },
         "zh-Hans": {
@@ -96973,7 +96973,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "일어날 시간과 자고 싶은 시간으로 취침 시간을 계산하며, 자기 전에 알림을 받을 수 있습니다."
+            "value": "기상 시간과 원하는 수면 시간으로 취침 시간을 계산하며, 자기 전에 알림을 받을 수 있습니다."
           }
         },
         "zh-Hans": {
@@ -98683,7 +98683,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "끄기까지"
+            "value": "자동 끄기"
           }
         },
         "zh-Hans": {
@@ -100583,7 +100583,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "미션을 마칠 때까지 알람을 끌 수 없습니다(다시 알림은 됩니다). 센서나 카메라가 작동하지 않으면 \"다른 미션\"으로 어려운 수학으로 바뀝니다."
+            "value": "미션을 마칠 때까지 알람을 끌 수 없습니다(다시 알림은 됩니다). 센서나 카메라가 작동하지 않으면 \"다른 미션\"을 눌러 어려운 수학으로 바꿀 수 있습니다."
           }
         },
         "zh-Hans": {
@@ -100678,7 +100678,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "알람에서 정지를 누르면 앱이 열려 미션을 요청합니다. 마치지 않으면 1분 뒤 다시 울립니다(최대 10회). 센서나 카메라가 작동하지 않으면 \"다른 미션\"으로 어려운 수학으로 바뀝니다."
+            "value": "알람에서 정지를 누르면 앱이 열려 미션을 요청합니다. 마치지 않으면 1분 뒤 다시 울립니다(최대 10회). 센서나 카메라가 작동하지 않으면 \"다른 미션\"을 눌러 어려운 수학으로 바꿀 수 있습니다."
           }
         },
         "zh-Hans": {
@@ -101248,7 +101248,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "일어나야만 닿는 코드를 고르세요. 욕실에 있는 물건의 바코드나 문에 붙인 QR 코드 같은 것이요."
+            "value": "일어나야만 닿는 코드를 고르세요. 예를 들어 욕실에 있는 물건의 바코드나 문에 붙인 QR 코드가 좋습니다."
           }
         },
         "zh-Hans": {
@@ -104478,7 +104478,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@주즈"
+            "value": "주즈 %1$@"
           }
         },
         "zh-Hans": {
@@ -106663,7 +106663,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "예배 후 타스비흐(33 + 33 + 33)"
+            "value": "기도 후 타스비흐(33 + 33 + 33)"
           }
         },
         "zh-Hans": {
@@ -109133,7 +109133,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "이 기록은 이 기기에만 저장되며 어디에도 보내지 않고 배지도 없습니다."
+            "value": "이 기록은 이 기기에만 저장되며 어디에도 보내지 않고 배지도 주어지지 않습니다."
           }
         },
         "zh-Hans": {
@@ -111128,7 +111128,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "설정, 세계 시계, 카운트다운, 저장한 장소, 뽀모도로와 수면 기록, 신앙 기록이 같은 Apple 계정으로 로그인한 iPhone, iPad, Mac 사이에서 동기화됩니다. 데이터는 내 iCloud 계정에 머물며 저희에게 오지 않습니다. 위치, 알람, 실행 중인 타이머, 알림 설정, 배지, 사진은 기기마다 따로입니다."
+            "value": "설정, 세계 시계, 카운트다운, 저장한 장소, 뽀모도로와 수면 기록, 신앙 기록이 같은 Apple 계정으로 로그인한 iPhone, iPad, Mac 사이에서 동기화됩니다. 데이터는 내 iCloud 계정에 머물며 저희에게 오지 않습니다. 위치, 알람, 실행 중인 타이머, 알림 설정, 배지, 사진은 기기별로 따로 저장됩니다."
           }
         },
         "zh-Hans": {
@@ -113028,7 +113028,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "밝기 %1$@"
+            "value": "어둡게 %1$@"
           }
         },
         "zh-Hans": {
@@ -113978,7 +113978,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "곧 알람: %1$@"
+            "value": "곧 울릴 알람: %1$@"
           }
         },
         "zh-Hans": {
@@ -116068,7 +116068,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "예배 안내"
+            "value": "기도 방법 안내"
           }
         },
         "zh-Hans": {
@@ -116353,7 +116353,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "올해 %1$@번째 날 · %2$@주"
+            "value": "올해 %1$@번째 날 · %2$@주차"
           }
         },
         "zh-Hans": {
@@ -117303,7 +117303,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "튀르키예에서 공식 시간은 디야넷의 것입니다. 선택한 방법에 따라 시간, 알림, 알람, 월간 표가 바뀝니다. 홈 화면 위젯과 시계는 디야넷 방법을 유지합니다."
+            "value": "튀르키예에서 공식 시간은 디야넷의 것입니다. 선택한 방법에 따라 시간, 알림, 알람, 월간 표가 바뀝니다. 홈 화면 위젯과 워치는 디야넷 방법을 유지합니다."
           }
         },
         "zh-Hans": {
@@ -118158,7 +118158,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "시간"
+            "value": "지속 시간"
           }
         },
         "zh-Hans": {
@@ -118728,7 +118728,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "선택한 기도 시간 뒤 정한 시간 동안 휴대폰이 진동이나 방해 금지로 바뀌고, 그 뒤 이전 상태로 돌아갑니다. 방해 금지에는 한 번 권한이 필요합니다."
+            "value": "선택한 기도 시간 뒤 정한 시간 동안 휴대폰이 진동이나 방해 금지로 바뀌고, 그 뒤 이전 상태로 돌아갑니다. 방해 금지를 쓰려면 처음 한 번 권한을 허용해야 합니다."
           }
         },
         "zh-Hans": {
@@ -119868,7 +119868,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "타자"
+            "value": "타자 입력"
           }
         },
         "zh-Hans": {
@@ -120248,7 +120248,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "저장했습니다. 알람을 끄려면 같은 곳(예: 세면대나 커피 머신)을 찍습니다. 사진은 저장되지 않고 작은 특징값만 남습니다."
+            "value": "저장했습니다. 알람을 끄려면 같은 곳(예: 세면대나 커피 머신)을 찍습니다. 사진은 저장되지 않고 작은 요약 정보만 남습니다."
           }
         },
         "zh-Hans": {
@@ -124523,7 +124523,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "다른 스톱워치"
+            "value": "추가 스톱워치"
           }
         },
         "zh-Hans": {
@@ -126233,7 +126233,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "그 이전"
+            "value": "이전 기록"
           }
         },
         "zh-Hans": {
@@ -129083,7 +129083,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "시계가 PIP 창으로 다른 앱 위에 계속 떠 있습니다. 끌어서 옮기고 크기를 바꾸거나 옆으로 넣을 수 있습니다. 소리가 없고 인터넷도 필요 없습니다."
+            "value": "시계가 PIP 창으로 다른 앱 위에 계속 떠 있습니다. 끌어서 옮기고 크기를 바꾸거나 화면 가장자리로 숨길 수 있습니다. 소리가 없고 인터넷도 필요 없습니다."
           }
         },
         "zh-Hans": {
@@ -130413,7 +130413,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "이 곡은 보호되어 있거나(Apple Music) 휴대폰에 없습니다. 다른 곡이나 파일의 오디오 파일을 고르세요."
+            "value": "이 곡은 보호되어 있거나(Apple Music) 휴대폰에 없습니다. 다른 곡이나 파일 앱의 오디오 파일을 고르세요."
           }
         },
         "zh-Hans": {
@@ -130983,7 +130983,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "슬라이더로 곡의 어느 30초를 재생할지 고르세요. 점점 크게가 켜져 있으면 구간이 작게 시작합니다."
+            "value": "슬라이더로 곡의 어느 30초를 재생할지 고르세요. \"점점 크게\"가 켜져 있으면 구간이 작게 시작합니다."
           }
         },
         "zh-Hans": {
@@ -134023,7 +134023,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "일정은 휴대폰 달력에서 고릅니다. 시작하기 전 정한 시간에 한 번 울리는 알람을 맞춥니다(종일 일정은 그날 09:00). 달력 접근은 달력 탭에서 허용합니다."
+            "value": "일정은 휴대폰 달력에서 고릅니다. 시작 전 정한 시간만큼 앞서 한 번 울리는 알람을 맞춥니다(종일 일정은 그날 09:00). 달력 접근은 달력 탭에서 허용합니다."
           }
         },
         "zh-Hans": {
@@ -136493,7 +136493,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "시험"
+            "value": "테스트"
           }
         },
         "zh-Hans": {
@@ -137538,7 +137538,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "움직임이 감지된 분: %1$@"
+            "value": "움직임 감지: %1$@분"
           }
         },
         "zh-Hans": {
@@ -137823,7 +137823,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "휴대폰을 베개 옆 침대 위에 두고 충전기에 연결하세요. 동작 센서는 시간대 동안에만 읽습니다. 녹음은 하지 않으며 데이터는 휴대폰 메모리에만 있고 저장되지 않습니다. 움직임이 없으면 알람은 원래 시간에 울립니다."
+            "value": "휴대폰을 베개 옆 침대 위에 두고 충전기에 연결하세요. 동작 센서는 시간대 동안에만 읽습니다. 아무것도 기록하지 않으며 데이터는 휴대폰 메모리에만 있고 저장되지 않습니다. 움직임이 없으면 알람은 원래 시간에 울립니다."
           }
         },
         "zh-Hans": {

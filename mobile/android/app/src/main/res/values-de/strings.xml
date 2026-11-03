@@ -468,7 +468,7 @@
     <string name="list_err">Ihre Anmeldung konnte nicht gespeichert werden. Bitte prüfen Sie die E-Mail-Adresse und das Kontrollkästchen und versuchen Sie es gleich noch einmal.</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
     <string name="list_popupTitle">Datenschutzhinweis zur E-Mail-Liste</string>
-    <string name="list_popupText">Ihre E-Mail-Adresse wird von Bumba Teknoloji Limited Şirketi ausschließlich verarbeitet, um Sie in diese Liste einzutragen. Sie können sich jederzeit mit einem Klick abmelden.</string>
+    <string name="list_popupText">Ihre E-Mail-Adresse wird von der Bumba Teknoloji Limited Şirketi ausschließlich verarbeitet, um Sie in diese Liste einzutragen. Sie können sich jederzeit mit einem Klick abmelden.</string>
     <string name="list_readNote">Datenschutzhinweis lesen</string>
     <string name="list_consentText">Ich habe den Datenschutzhinweis gelesen und bin mit dem Erhalt von E-Mails einverstanden.</string>
     <string name="list_accept">Ich stimme zu</string>

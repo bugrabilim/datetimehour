@@ -352,7 +352,7 @@
     "fr": "Les six heures du jour, la prochaine mise en évidence.",
     "ru": "Все шесть времён намаза на сегодня; следующее выделено.",
     "ja": "1日の6つの時刻すべて。次の時刻を強調表示。",
-    "ko": "하루의 여섯 시간 모두, 다음 시간을 강조.",
+    "ko": "하루 여섯 개의 시각 모두, 다음 시각은 강조 표시.",
     "zh": "当天全部六个时间，突出显示下一个。",
     "fil": "Lahat ng anim na oras ng araw, naka-highlight ang susunod.",
     "th": "ครบทั้งหกเวลาของวัน เน้นเวลาถัดไป"
@@ -471,7 +471,7 @@
     "fr": "Pour afficher les heures de prière, la direction de la qibla, les mosquées proches et la météo de l’endroit où vous êtes. Les heures de prière et la qibla sont calculées sur votre téléphone ; pour la météo et la recherche de mosquées, seule une position approximative est envoyée aux services d’Apple. Pour les rappels de lieu, l’iPhone détecte lui-même votre arrivée ou votre départ.",
     "ru": "Чтобы показывать время намаза, направление киблы, мечети поблизости и погоду там, где вы находитесь. Время намаза и кибла рассчитываются на телефоне; для погоды и поиска мечетей в сервисы Apple отправляется только приблизительное местоположение. Для напоминаний по месту iPhone сам определяет, когда вы прибываете в выбранное место или покидаете его.",
     "ja": "現在地の礼拝時刻、キブラの方向、近くのモスク、天気を表示するためです。礼拝時刻とキブラはスマホ上で計算し、天気とモスク検索のためにおおよその位置だけをAppleのサービスに送ります。場所のリマインダーでは、到着や出発をiPhone自体が検知します。",
-    "ko": "현재 위치의 기도 시간, 키블라 방향, 가까운 모스크, 날씨를 보여 주기 위해서입니다. 기도 시간과 키블라는 휴대폰에서 계산하며, 날씨와 모스크 검색에는 대략적인 위치만 Apple 서비스로 보냅니다. 위치 미리 알림은 iPhone이 직접 장소 도착과 출발을 감지합니다.",
+    "ko": "현재 위치의 기도 시간, 키블라 방향, 가까운 모스크, 날씨를 보여 주기 위해서입니다. 기도 시간과 키블라는 휴대폰에서 계산하며, 날씨와 모스크 검색에는 대략적인 위치만 Apple 서비스로 보냅니다. 위치 미리 알림의 경우 장소 도착과 출발은 iPhone이 직접 감지합니다.",
     "zh": "用于显示您所在地的礼拜时间、朝向（基卜拉）、附近的清真寺和天气。礼拜时间和朝向在手机上计算；仅在查询天气和搜索清真寺时向Apple的服务发送大致位置。对于位置提醒，由iPhone本身检测您何时到达或离开某地。",
     "fil": "Para ipakita ang oras ng dasal, direksiyon ng qibla, kalapit na masjid at panahon kung nasaan ka. Sa telepono kinukuwenta ang oras ng dasal at ang qibla; para sa panahon at paghahanap ng masjid, tinatayang lokasyon lang ang ipinapadala sa mga serbisyo ng Apple. Para sa mga paalala ayon sa lokasyon, ang iPhone mismo ang nakakaalam kung dumating o umalis ka sa isang lugar.",
     "th": "เพื่อแสดงเวลาละหมาด ทิศกิบลัต มัสยิดใกล้เคียง และสภาพอากาศในที่ที่คุณอยู่ เวลาละหมาดและกิบลัตคำนวณบนโทรศัพท์ สำหรับสภาพอากาศและการค้นหามัสยิดจะส่งเพียงตำแหน่งโดยประมาณไปยังบริการของ Apple สำหรับการเตือนตามสถานที่ iPhone จะตรวจจับเองว่าคุณมาถึงหรือออกจากสถานที่"
@@ -1049,7 +1049,7 @@
     "fr": "Semaine {week} · jour {day} de l’année",
     "ru": "Неделя {week} · день года {day}",
     "ja": "第{week}週 · 年初から{day}日目",
-    "ko": "{week}주 · 올해 {day}번째 날",
+    "ko": "{week}주차 · 올해 {day}번째 날",
     "zh": "第{week}周 · 本年第{day}天",
     "fil": "Linggo {week} · ika-{day} na araw ng taon",
     "th": "สัปดาห์ที่ {week} · วันที่ {day} ของปี"
@@ -1593,7 +1593,7 @@
     "fr": "Semaine et jour de l’année",
     "ru": "Неделя и день года",
     "ja": "週番号と年初からの日数",
-    "ko": "주와 올해의 날",
+    "ko": "주차와 올해 며칠째",
     "zh": "周数和年内天数",
     "fil": "Linggo at araw ng taon",
     "th": "สัปดาห์และวันของปี"
@@ -2630,7 +2630,7 @@
     "fr": "La Terre fait le tour du Soleil une fois par an. Mais elle ne se tient pas droite : son axe est penché de 23,4 degrés, toujours dans le même sens. Pendant la moitié de l’année, la moitié nord penche vers le Soleil et c’est l’été ; le reste de l’année, elle penche du côté opposé et c’est l’hiver.",
     "ru": "Земля делает один оборот вокруг Солнца за год. Но она не стоит прямо: её ось наклонена на 23,4 градуса, всегда в одну сторону. Полгода северная половина Земли наклонена к Солнцу — тогда лето; другие полгода она отклонена от него — тогда зима.",
     "ja": "地球は1年に1回、太陽のまわりを回ります。でも、まっすぐ立ってはいません。地軸がいつも同じ向きに23.4度かたむいているのです。1年の半分は北半球が太陽のほうにかたむいて夏になり、残りの半分は太陽から遠ざかるようにかたむいて冬になります。",
-    "ko": "지구는 해마다 태양 둘레를 한 바퀴 돕니다. 그런데 똑바로 서 있지 않아요. 자전축이 늘 같은 쪽으로 23.4도 기울어져 있지요. 한 해의 절반은 북반구가 태양 쪽으로 기울어 여름이 되고, 나머지 절반은 반대로 기울어 겨울이 됩니다.",
+    "ko": "지구는 해마다 태양 둘레를 한 바퀴 돌아요. 그런데 똑바로 서 있지 않아요. 자전축이 늘 같은 쪽으로 23.4도 기울어져 있지요. 한 해의 절반은 북반구가 태양 쪽으로 기울어 여름이 되고, 나머지 절반은 반대로 기울어 겨울이 돼요.",
     "zh": "地球每年绕太阳转一圈。但它不是直直地站着：它的自转轴倾斜了23.4度，而且始终朝同一个方向。一年中有一半时间北半球倾向太阳，就是夏天；另一半时间背离太阳，就是冬天。",
     "fil": "Isang beses umiikot ang Daigdig sa Araw bawat taon. Pero hindi ito nakatayo nang tuwid: nakatagilid nang 23.4 digri ang axis nito, laging sa iisang direksiyon. Sa kalahati ng taon, nakahilig sa Araw ang hilagang bahagi at tag-araw doon; sa kabilang kalahati, nakahilig ito palayo at taglamig.",
     "th": "โลกโคจรรอบดวงอาทิตย์ปีละหนึ่งรอบ แต่โลกไม่ได้ตั้งตรง แกนของโลกเอียง 23.4 องศา และเอียงไปทางเดียวกันเสมอ ครึ่งปีซีกโลกเหนือเอียงเข้าหาดวงอาทิตย์จึงเป็นฤดูร้อน อีกครึ่งปีเอียงออกจึงเป็นฤดูหนาว"
@@ -2987,7 +2987,7 @@
     "fr": "Années suivantes",
     "ru": "Следующие годы",
     "ja": "この先の年",
-    "ko": "다음 해",
+    "ko": "앞으로 몇 년",
     "zh": "以后的年份",
     "fil": "Mga susunod na taon",
     "th": "ปีต่อ ๆ ไป"
@@ -3888,7 +3888,7 @@
     "fr": "Les notifications de toutes les fonctions, sauf « Chaque heure », sont activées par défaut ; désactivez ici celles que vous ne voulez pas, ou activez « Chaque heure ». Les notifications sont préparées sur votre téléphone ; seul le résumé météo interroge le service météo.",
     "ru": "Уведомления всех функций, кроме ежечасного, включены по умолчанию; здесь можно выключить ненужные или включить ежечасное. Уведомления готовятся на телефоне; только сводка погоды обращается к погодному сервису.",
     "ja": "正時の通知以外、すべての機能の通知が最初からオンです。不要なものはここでオフに、正時の通知はここでオンにできます。通知はスマホ上で準備され、天気のまとめだけが天気サービスに問い合わせます。",
-    "ko": "정각 알림을 빼고 모든 기능의 알림이 기본으로 켜져 있습니다. 원하지 않는 것은 여기서 끄고, 정각 알림은 여기서 켤 수 있습니다. 알림은 휴대폰에서 준비되며 날씨 요약만 날씨 서비스에 묻습니다.",
+    "ko": "정각 알림을 빼고 모든 기능의 알림이 기본으로 켜져 있습니다. 원하지 않는 것은 여기서 끄고, 정각 알림은 여기서 켤 수 있습니다. 알림은 휴대폰에서 준비되며 날씨 요약만 날씨 서비스에서 받아 옵니다.",
     "zh": "除整点报时外，所有功能的通知默认开启；您可以在这里关闭不需要的，或打开整点通知。通知在手机上生成，只有天气摘要会查询天气服务。",
     "fil": "Naka-on bilang default ang abiso ng bawat feature maliban sa abiso tuwing eksaktong oras; i-off dito ang mga ayaw mo, o i-on ang abiso tuwing eksaktong oras. Inihahanda sa iyong telepono ang mga abiso; ang buod ng panahon lang ang kumukuha ng datos mula sa weather service.",
     "th": "การแจ้งเตือนของทุกฟีเจอร์เปิดไว้เป็นค่าเริ่มต้น ยกเว้นการแจ้งเตือนทุกต้นชั่วโมง คุณปิดรายการที่ไม่ต้องการหรือเปิดการแจ้งเตือนทุกต้นชั่วโมงได้ที่นี่ การแจ้งเตือนจัดเตรียมบนโทรศัพท์ มีเพียงสรุปสภาพอากาศที่ต้องดึงข้อมูลจากบริการสภาพอากาศ"
@@ -3973,7 +3973,7 @@
     "fr": "Jours fériés, veilles, jours religieux et particuliers, dates scolaires ; à 9 h ce matin-là.",
     "ru": "Праздники, кануны, религиозные и особые дни, школьные даты; в 9:00 утром того дня.",
     "ja": "祝日、祝日の前日、宗教上の日と記念日、学校の日程。当日の朝9:00に。",
-    "ko": "공휴일, 전날, 종교일과 기념일, 학사 일정. 그날 아침 9:00에.",
+    "ko": "공휴일과 그 전날, 종교일과 기념일, 학사 일정. 그날 아침 9:00에.",
     "zh": "公共假日、节日前夕、宗教和特别日子、学校日期；当天早上9:00。",
     "fil": "Mga pampublikong holiday, bisperas, relihiyoso at espesyal na araw, petsa ng paaralan; 9:00 ng umagang iyon.",
     "th": "วันหยุดราชการ วันก่อนวันหยุด วันสำคัญทางศาสนาและวันพิเศษ กำหนดการของโรงเรียน แจ้งเวลา 9:00 ของเช้าวันนั้น"
@@ -4653,7 +4653,7 @@
     "fr": "Reste silencieuse les jours fériés turcs (y compris les Aïds) ; sonne quand même les veilles de fête (demi-journées).",
     "ru": "Молчит в государственные праздники Турции (включая байрамы); в сокращённые предпраздничные дни звонит.",
     "ja": "トルコの祝日（イードを含む）は鳴りません。半日休みとなる祝日前日は鳴ります。",
-    "ko": "튀르키예 공휴일(이드 포함)에는 울리지 않고, 반일 근무 전날에는 울립니다.",
+    "ko": "튀르키예 공휴일(이드 포함)에는 울리지 않고, 반일만 쉬는 전날에는 울립니다.",
     "zh": "土耳其公共假日（包括开斋节和宰牲节）不响；半天的节日前夕仍会响。",
     "fil": "Tahimik sa mga pampublikong holiday sa Türkiye (kasama ang mga Eid); tumutunog pa rin sa mga bisperas na kalahating araw.",
     "th": "ไม่ดังในวันหยุดราชการของตุรกี (รวมวันอีด) แต่ยังดังในวันก่อนวันหยุดที่หยุดครึ่งวัน"
@@ -4670,7 +4670,7 @@
     "fr": "Prochaine, après le jour férié : {date}",
     "ru": "Следующий, после праздника: {date}",
     "ja": "祝日のため次は：{date}",
-    "ko": "공휴일이라 다음은: {date}",
+    "ko": "공휴일 이후 다음 알람: {date}",
     "zh": "假日后下次响铃：{date}",
     "fil": "Susunod, pagkatapos ng holiday: {date}",
     "th": "ถัดไปหลังวันหยุด: {date}"
@@ -4840,7 +4840,7 @@
     "fr": "Calendrier lunaire et éclipses",
     "ru": "Лунный календарь и затмения",
     "ja": "月のカレンダーと日食・月食",
-    "ko": "달 달력과 식",
+    "ko": "달 달력과 일식·월식",
     "zh": "月历和日月食",
     "fil": "Kalendaryo ng Buwan at mga eklipse",
     "th": "ปฏิทินดวงจันทร์และอุปราคา"
@@ -6047,7 +6047,7 @@
     "fr": "Ciel (suit l’heure du jour)",
     "ru": "Небо (по времени суток)",
     "ja": "空（時間帯に合わせて変化）",
-    "ko": "하늘(하루 시간에 따라)",
+    "ko": "하늘(시간대에 따라)",
     "zh": "天空（随一天中的时间变化）",
     "fil": "Langit (sumusunod sa oras ng araw)",
     "th": "ท้องฟ้า (ตามช่วงเวลาของวัน)"
@@ -6132,7 +6132,7 @@
     "fr": "L’horloge est toujours active. Les fonctions que vous activez apparaissent dans la barre du bas ; si elles sont toutes désactivées, la barre est masquée et les réglages s’ouvrent avec la roue dentée de l’écran de l’horloge.",
     "ru": "Часы включены всегда. Включённые функции появляются в нижней панели; если все выключены, панель скрыта, а настройки открываются шестерёнкой на экране часов.",
     "ja": "時計は常にオンです。オンにした機能は下のバーに表示されます。すべてオフのときはバーが隠れ、設定は時計画面の歯車から開きます。",
-    "ko": "시계는 항상 켜져 있습니다. 켠 기능은 아래 바에 나타나며, 모두 끄면 바가 숨겨지고 설정은 시계 화면의 톱니바퀴에서 엽니다.",
+    "ko": "시계는 항상 켜져 있습니다. 켠 기능은 하단 바에 나타나며, 모두 끄면 바가 숨겨지고 설정은 시계 화면의 톱니바퀴에서 엽니다.",
     "zh": "时钟始终开启。您打开的功能会出现在底部栏；全部关闭时底部栏隐藏，设置从时钟界面的齿轮打开。",
     "fil": "Laging naka-on ang orasan. Lumalabas sa bottom bar ang mga feature na naka-on; kapag naka-off lahat, nakatago ang bar at bubukas ang settings mula sa gear sa screen ng orasan.",
     "th": "นาฬิกาเปิดอยู่เสมอ ฟีเจอร์ที่คุณเปิดจะแสดงในแถบด้านล่าง หากปิดทั้งหมด แถบจะซ่อนและเปิดการตั้งค่าได้จากรูปเฟืองบนหน้าจอนาฬิกา"
@@ -6217,7 +6217,7 @@
     "fr": "Saisons, Soleil, phases de la Lune et éclipses",
     "ru": "Сезоны, Солнце, фазы Луны и затмения",
     "ja": "季節、太陽、月の満ち欠け、日食・月食",
-    "ko": "계절, 태양, 달의 위상과 식",
+    "ko": "계절, 태양, 달의 위상, 일식·월식",
     "zh": "季节、太阳、月相和日月食",
     "fil": "Mga panahon, ang Araw, yugto ng Buwan at mga eklipse",
     "th": "ฤดูกาล ดวงอาทิตย์ ข้างขึ้นข้างแรม และอุปราคา"
@@ -7186,7 +7186,7 @@
     "fr": "Dites à Siri « Lance un minuteur dans Heure & Date », « Prochaine prière dans Heure & Date » ou « Quelle est la date hégirienne dans Heure & Date », ou utilisez ces actions dans l’app Raccourcis. Pour afficher l’horloge pendant la charge : Raccourcis › Automatisation › Chargeur › Est connecté › « Ouvrir l’horloge plein écran » (éventuellement en mode nuit).",
     "ru": "Скажите Siri «Запусти таймер в приложении Время и дата», «Следующий намаз в приложении Время и дата» или «Какая дата по хиджре в приложении Время и дата» либо используйте эти действия в приложении «Команды». Чтобы часы показывались при зарядке: Команды › Автоматизация › Зарядное устройство › Подключено › «Открыть полноэкранные часы» (можно с ночным режимом).",
     "ja": "Siriに「時刻と日付でタイマーを開始」「時刻と日付で次の礼拝」「時刻と日付でヒジュラ暦の日付は」と話しかけるか、ショートカットアプリでこれらのアクションを使えます。充電中に時計を表示するには：ショートカット › オートメーション › 充電器 › 接続されている › 「全画面時計を開く」（ナイトモードも選べます）。",
-    "ko": "Siri에게 \"시간과 날짜에서 타이머 시작\", \"시간과 날짜에서 다음 기도 시간\", \"시간과 날짜에서 히즈라력 날짜\"라고 말하거나 단축어 앱에서 이 동작을 쓰세요. 충전 중에 시계를 보이려면: 단축어 › 자동화 › 충전기 › 연결됨 › \"전체 화면 시계 열기\"(야간 모드도 선택 가능).",
+    "ko": "Siri에게 \"시간과 날짜에서 타이머 시작\", \"시간과 날짜에서 다음 기도 시간\", \"시간과 날짜에서 히즈라력 날짜 알려 줘\"라고 말하거나 단축어 앱에서 이 동작을 쓰세요. 충전 중에 시계를 보이려면: 단축어 › 자동화 › 충전기 › 연결됨 › \"전체 화면 시계 열기\"(야간 모드도 선택 가능).",
     "zh": "对Siri说“用时间与日期开始计时”“时间与日期下一次礼拜时间”或“时间与日期今天伊斯兰历几号”，或在“快捷指令”应用中使用这些操作。充电时显示时钟：快捷指令 › 自动化 › 充电器 › 已连接 › “打开全屏时钟”（可选夜间模式）。",
     "fil": "Sabihin kay Siri ang \"Magsimula ng timer sa Oras at Petsa\", \"Susunod na dasal sa Oras at Petsa\" o \"Ano ang petsang Hijri sa Oras at Petsa\", o gamitin ang mga action na ito sa Shortcuts app. Para ipakita ang orasan habang nagcha-charge: Shortcuts › Automation › Charger › Is Connected › \"Buksan ang Full-Screen na Orasan\" (puwedeng may night mode).",
     "th": "บอก Siri ว่า \"เริ่มตัวจับเวลาใน เวลาและวันที่\" \"เวลาละหมาดถัดไปใน เวลาและวันที่\" หรือ \"วันที่ฮิจเราะห์ใน เวลาและวันที่\" หรือใช้การทำงานเหล่านี้ในแอปคำสั่งลัด หากต้องการแสดงนาฬิกาขณะชาร์จ: คำสั่งลัด › อัตโนมัติ › ที่ชาร์จ › เชื่อมต่อแล้ว › \"เปิดนาฬิกาเต็มจอ\" (เลือกโหมดกลางคืนได้)"
@@ -7798,7 +7798,7 @@
     "fr": "Quelle est la date dans {app}",
     "ru": "Какое сегодня число в приложении {app}",
     "ja": "{app}で今日の日付は",
-    "ko": "{app}에서 오늘 날짜는",
+    "ko": "{app}에서 오늘 날짜 알려 줘",
     "zh": "{app}今天几号",
     "fil": "Ano ang petsa sa {app}",
     "th": "วันนี้วันที่เท่าไรใน {app}"
@@ -7815,7 +7815,7 @@
     "fr": "Quelle est la date hégirienne dans {app}",
     "ru": "Какая дата по хиджре в приложении {app}",
     "ja": "{app}でヒジュラ暦の日付は",
-    "ko": "{app}에서 히즈라력 날짜는",
+    "ko": "{app}에서 히즈라력 날짜 알려 줘",
     "zh": "{app}今天伊斯兰历几号",
     "fil": "Ano ang petsang Hijri sa {app}",
     "th": "วันที่ฮิจเราะห์ใน {app}"
@@ -8206,7 +8206,7 @@
     "fr": "L’heure du coucher est calculée d’après votre heure de réveil et la durée de sommeil voulue ; vous pouvez recevoir un rappel avant d’aller au lit.",
     "ru": "Время отхода ко сну считается по времени подъёма и желаемой длительности сна; перед сном может приходить напоминание.",
     "ja": "起きる時刻と眠りたい時間から就寝時刻を割り出し、寝る前に知らせを受け取れます。",
-    "ko": "일어날 시간과 자고 싶은 시간으로 취침 시간을 계산하며, 자기 전에 알림을 받을 수 있습니다.",
+    "ko": "기상 시간과 원하는 수면 시간으로 취침 시간을 계산하며, 자기 전에 알림을 받을 수 있습니다.",
     "zh": "根据起床时间和想睡的时长算出就寝时间；睡前可以收到提醒。",
     "fil": "Kinukuwenta ang oras ng pagtulog mula sa oras ng paggising at kung gaano katagal mo gustong matulog; maaari kang makatanggap ng paalala bago matulog.",
     "th": "คำนวณเวลานอนจากเวลาตื่นและระยะเวลาที่อยากนอน และรับการเตือนก่อนนอนได้"
@@ -8512,7 +8512,7 @@
     "fr": "Arrêter après",
     "ru": "Выключить через",
     "ja": "停止までの時間",
-    "ko": "끄기까지",
+    "ko": "자동 끄기",
     "zh": "定时关闭",
     "fil": "Patayin pagkalipas ng",
     "th": "ปิดหลังจาก"
@@ -8852,7 +8852,7 @@
     "fr": "L’alarme ne peut pas être arrêtée tant que la tâche n’est pas faite (la répétition reste possible). Si le capteur ou l’appareil photo ne fonctionne pas, « Autre tâche » passe au calcul difficile.",
     "ru": "Будильник нельзя выключить, пока задание не выполнено (отложить можно). Если датчик или камера не работают, «Другое задание» переключит на трудную математику.",
     "ja": "課題を終えるまでアラームは止められません（スヌーズはできます）。センサーやカメラが使えないときは「別の課題」で難しい計算に切り替わります。",
-    "ko": "미션을 마칠 때까지 알람을 끌 수 없습니다(다시 알림은 됩니다). 센서나 카메라가 작동하지 않으면 \"다른 미션\"으로 어려운 수학으로 바뀝니다.",
+    "ko": "미션을 마칠 때까지 알람을 끌 수 없습니다(다시 알림은 됩니다). 센서나 카메라가 작동하지 않으면 \"다른 미션\"을 눌러 어려운 수학으로 바꿀 수 있습니다.",
     "zh": "完成任务前无法关闭闹钟（仍可稍后提醒）。如果传感器或相机不能用，“换个任务”会切换到困难算术。",
     "fil": "Hindi mapapatay ang alarma hangga't hindi tapos ang gawain (puwede pa rin ang snooze). Kung hindi gumagana ang sensor o camera, lilipat sa mahirap na math ang \"Ibang gawain\".",
     "th": "ปิดนาฬิกาปลุกไม่ได้จนกว่าจะทำภารกิจเสร็จ (ยังเลื่อนปลุกได้) หากเซนเซอร์หรือกล้องใช้ไม่ได้ \"ภารกิจอื่น\" จะเปลี่ยนเป็นคณิตศาสตร์ระดับยาก"
@@ -8869,7 +8869,7 @@
     "fr": "Toucher Arrêter sur l’alarme ouvre l’app et demande la tâche ; si elle n’est pas faite, l’alarme sonne de nouveau une minute plus tard (jusqu’à 10 fois). Si le capteur ou l’appareil photo ne fonctionne pas, « Autre tâche » passe au calcul difficile.",
     "ru": "Нажатие «Стоп» на будильнике открывает приложение, где нужно выполнить задание; если оно не выполнено, будильник снова звонит через минуту (до 10 раз). Если датчик или камера не работают, «Другое задание» переключит на трудную математику.",
     "ja": "アラームの停止をタップするとアプリが開いて課題を求めます。課題を終えないと1分後にまた鳴ります（最大10回）。センサーやカメラが使えないときは「別の課題」で難しい計算に切り替わります。",
-    "ko": "알람에서 정지를 누르면 앱이 열려 미션을 요청합니다. 마치지 않으면 1분 뒤 다시 울립니다(최대 10회). 센서나 카메라가 작동하지 않으면 \"다른 미션\"으로 어려운 수학으로 바뀝니다.",
+    "ko": "알람에서 정지를 누르면 앱이 열려 미션을 요청합니다. 마치지 않으면 1분 뒤 다시 울립니다(최대 10회). 센서나 카메라가 작동하지 않으면 \"다른 미션\"을 눌러 어려운 수학으로 바꿀 수 있습니다.",
     "zh": "在闹钟上轻点“停止”会打开应用并要求完成任务；未完成的话，一分钟后闹钟再响（最多10次）。如果传感器或相机不能用，“换个任务”会切换到困难算术。",
     "fil": "Kapag in-tap mo ang Stop sa alarma, bubukas ang app at ipagagawa sa iyo ang gawain; kung hindi natapos, tutunog muli ang alarma pagkalipas ng isang minuto (hanggang 10 beses). Kung hindi gumagana ang sensor o camera, lilipat sa mahirap na math ang \"Ibang gawain\".",
     "th": "เมื่อแตะหยุดที่นาฬิกาปลุก แอปจะเปิดขึ้นและขอให้ทำภารกิจ หากไม่ทำ นาฬิกาปลุกจะดังอีกครั้งในหนึ่งนาที (สูงสุด 10 ครั้ง) หากเซนเซอร์หรือกล้องใช้ไม่ได้ \"ภารกิจอื่น\" จะเปลี่ยนเป็นคณิตศาสตร์ระดับยาก"
@@ -8971,7 +8971,7 @@
     "fr": "Choisissez un code que vous ne pouvez atteindre qu’une fois levé : un code-barres sur un objet de la salle de bains ou un QR code collé sur une porte.",
     "ru": "Выберите код, до которого можно дойти, только встав: штрихкод на чём-то в ванной или QR-код на двери.",
     "ja": "起き上がらないと届かないコードを選びましょう。洗面所にある物のバーコードや、ドアに貼ったQRコードなど。",
-    "ko": "일어나야만 닿는 코드를 고르세요. 욕실에 있는 물건의 바코드나 문에 붙인 QR 코드 같은 것이요.",
+    "ko": "일어나야만 닿는 코드를 고르세요. 예를 들어 욕실에 있는 물건의 바코드나 문에 붙인 QR 코드가 좋습니다.",
     "zh": "选一个只有起床后才能够到的码：浴室里某件物品上的条形码，或贴在门上的二维码。",
     "fil": "Pumili ng code na maaabot mo lang kapag bumangon ka: barcode sa isang bagay sa banyo, o QR code na nakadikit sa pinto.",
     "th": "เลือกโค้ดที่ต้องลุกจากเตียงจึงจะไปถึง เช่น บาร์โค้ดบนของในห้องน้ำ หรือ QR โค้ดที่ติดไว้ที่ประตู"
@@ -9566,7 +9566,7 @@
     "fr": "Juz {n}",
     "ru": "Джуз {n}",
     "ja": "第{n}ジュズ",
-    "ko": "{n}주즈",
+    "ko": "주즈 {n}",
     "zh": "第{n}卷",
     "fil": "Juz {n}",
     "th": "ญุซอ์ที่ {n}"
@@ -9957,7 +9957,7 @@
     "fr": "Tasbih après la prière (33 + 33 + 33)",
     "ru": "Тасбих после намаза (33 + 33 + 33)",
     "ja": "礼拝後のタスビーフ（33＋33＋33）",
-    "ko": "예배 후 타스비흐(33 + 33 + 33)",
+    "ko": "기도 후 타스비흐(33 + 33 + 33)",
     "zh": "礼拜后赞念（33 + 33 + 33）",
     "fil": "Tasbih pagkatapos ng dasal (33 + 33 + 33)",
     "th": "ตัสบีห์หลังละหมาด (33 + 33 + 33)"
@@ -10399,7 +10399,7 @@
     "fr": "Ces données restent uniquement sur cet appareil ; elles ne sont envoyées nulle part et ne donnent aucun badge.",
     "ru": "Это хранится только на этом устройстве, никуда не отправляется и значков не даёт.",
     "ja": "この記録はこの端末にだけ保存され、どこにも送られません。バッジの対象にもなりません。",
-    "ko": "이 기록은 이 기기에만 저장되며 어디에도 보내지 않고 배지도 없습니다.",
+    "ko": "이 기록은 이 기기에만 저장되며 어디에도 보내지 않고 배지도 주어지지 않습니다.",
     "zh": "这些记录只保存在此设备上，不会发送到任何地方，也不会获得徽章。",
     "fil": "Sa device na ito lang ito nakatago; hindi ipinapadala kahit saan at walang badge.",
     "th": "บันทึกนี้เก็บไว้ในอุปกรณ์นี้เท่านั้น ไม่ส่งไปที่ใด และไม่นำไปใช้รับเหรียญตรา"
@@ -10756,7 +10756,7 @@
     "fr": "Vos réglages, horloges mondiales, comptes à rebours, lieux enregistrés, données de pomodoro, de sommeil et de pratique religieuse sont synchronisés entre l’iPhone, l’iPad et le Mac connectés au même compte Apple. Les données restent dans votre compte iCloud et ne nous parviennent jamais. La position, les alarmes, les minuteurs en cours, les réglages de notification, les badges et les photos restent propres à chaque appareil.",
     "ru": "Настройки, мировые часы, обратные отсчёты, сохранённые места, записи помидора и сна, а также записи ибадата синхронизируются между iPhone, iPad и Mac с одним Аккаунтом Apple. Данные остаются в вашем iCloud и не попадают к нам. Местоположение, будильники, запущенные таймеры, настройки уведомлений, значки и фото на каждом устройстве свои.",
     "ja": "設定、世界時計、カウントダウン、保存した場所、ポモドーロと睡眠の記録、信仰の記録が、同じApple AccountでサインインしているiPhone、iPad、Macの間で同期されます。データはあなたのiCloudアカウントにとどまり、私たちには届きません。場所、アラーム、動作中のタイマー、通知の設定、バッジ、写真は端末ごとに別々です。",
-    "ko": "설정, 세계 시계, 카운트다운, 저장한 장소, 뽀모도로와 수면 기록, 신앙 기록이 같은 Apple 계정으로 로그인한 iPhone, iPad, Mac 사이에서 동기화됩니다. 데이터는 내 iCloud 계정에 머물며 저희에게 오지 않습니다. 위치, 알람, 실행 중인 타이머, 알림 설정, 배지, 사진은 기기마다 따로입니다.",
+    "ko": "설정, 세계 시계, 카운트다운, 저장한 장소, 뽀모도로와 수면 기록, 신앙 기록이 같은 Apple 계정으로 로그인한 iPhone, iPad, Mac 사이에서 동기화됩니다. 데이터는 내 iCloud 계정에 머물며 저희에게 오지 않습니다. 위치, 알람, 실행 중인 타이머, 알림 설정, 배지, 사진은 기기별로 따로 저장됩니다.",
     "zh": "您的设置、世界时钟、倒计时、已保存的地点、番茄钟和睡眠记录以及宗教功课记录，会在登录同一Apple账户的iPhone、iPad和Mac之间同步。数据保存在您的iCloud账户中，我们无法获取。位置、闹钟、正在运行的计时器、通知设置、徽章和照片在每台设备上各自独立。",
     "fil": "Sini-sync ang iyong settings, world clock, countdown, naka-save na lugar, tala ng pomodoro at tulog, at tala ng pagsamba sa iPhone, iPad at Mac na naka-sign in sa iisang Apple Account. Nananatili ang datos sa iyong iCloud account at hindi umaabot sa amin. Hiwalay sa bawat device ang lokasyon, alarma, tumatakbong timer, settings ng abiso, badge at larawan.",
     "th": "การตั้งค่า นาฬิกาโลก การนับถอยหลัง สถานที่ที่บันทึก บันทึกโพโมโดโรและการนอน และบันทึกอิบาดะฮ์ จะซิงค์ระหว่าง iPhone, iPad และ Mac ที่ลงชื่อเข้าใช้ด้วยบัญชี Apple เดียวกัน ข้อมูลอยู่ในบัญชี iCloud ของคุณและไม่ถูกส่งมาถึงเรา ตำแหน่ง นาฬิกาปลุก ตัวจับเวลาที่ทำงานอยู่ การตั้งค่าการแจ้งเตือน เหรียญตรา และรูปภาพจะแยกกันในแต่ละอุปกรณ์"
@@ -11096,7 +11096,7 @@
     "fr": "Atténuation {value}",
     "ru": "Приглушено {value}",
     "ja": "暗さ {value}",
-    "ko": "밝기 {value}",
+    "ko": "어둡게 {value}",
     "zh": "已调暗{value}",
     "fil": "Pinadilim nang {value}",
     "th": "หรี่ลง {value}"
@@ -11266,7 +11266,7 @@
     "fr": "Alarme à venir : {time}",
     "ru": "Скоро будильник: {time}",
     "ja": "まもなくアラーム：{time}",
-    "ko": "곧 알람: {time}",
+    "ko": "곧 울릴 알람: {time}",
     "zh": "即将响铃：{time}",
     "fil": "Paparating na alarma: {time}",
     "th": "นาฬิกาปลุกที่กำลังจะดัง: {time}"
@@ -11640,7 +11640,7 @@
     "fr": "Guide de la prière",
     "ru": "Руководство по намазу",
     "ja": "礼拝の手引き",
-    "ko": "예배 안내",
+    "ko": "기도 방법 안내",
     "zh": "礼拜指南",
     "fil": "Gabay sa dasal",
     "th": "คู่มือการละหมาด"
@@ -11691,7 +11691,7 @@
     "fr": "Jour {n} de l’année · semaine {w}",
     "ru": "День года {n} · неделя {w}",
     "ja": "年初から{n}日目 · 第{w}週",
-    "ko": "올해 {n}번째 날 · {w}주",
+    "ko": "올해 {n}번째 날 · {w}주차",
     "zh": "本年第{n}天 · 第{w}周",
     "fil": "Ika-{n} na araw ng taon · linggo {w}",
     "th": "วันที่ {n} ของปี · สัปดาห์ที่ {w}"
@@ -11861,7 +11861,7 @@
     "fr": "En Turquie, les heures officielles sont celles de la Diyanet. Votre choix modifie les heures, les notifications, les alarmes et le tableau mensuel ; les widgets de l’écran d’accueil et la montre gardent la méthode de la Diyanet.",
     "ru": "В Турции официальное время — по Diyanet. Ваш выбор меняет время, уведомления, будильники и месячную таблицу; виджеты на главном экране и смарт-часы по-прежнему используют метод Diyanet.",
     "ja": "トルコでは公式の時刻はディヤーネットのものです。選んだ方法で時刻、通知、アラーム、月間表が変わります。ホーム画面のウィジェットとウォッチはディヤーネットの方法のままです。",
-    "ko": "튀르키예에서 공식 시간은 디야넷의 것입니다. 선택한 방법에 따라 시간, 알림, 알람, 월간 표가 바뀝니다. 홈 화면 위젯과 시계는 디야넷 방법을 유지합니다.",
+    "ko": "튀르키예에서 공식 시간은 디야넷의 것입니다. 선택한 방법에 따라 시간, 알림, 알람, 월간 표가 바뀝니다. 홈 화면 위젯과 워치는 디야넷 방법을 유지합니다.",
     "zh": "在土耳其，官方时间以迪亚内特为准。您的选择会改变时间、通知、闹钟和每月时间表；主屏幕小组件和手表仍使用迪亚内特方法。",
     "fil": "Sa Türkiye, ang opisyal na oras ay sa Diyanet. Binabago ng pinili mo ang oras, abiso, alarma at buwanang talaan; nananatili sa paraan ng Diyanet ang mga widget sa home screen at ang relo.",
     "th": "ในตุรกี เวลาทางการเป็นของดียาเนต ตัวเลือกของคุณจะเปลี่ยนเวลา การแจ้งเตือน นาฬิกาปลุก และตารางรายเดือน วิดเจ็ตบนหน้าจอโฮมและนาฬิกาข้อมือยังใช้วิธีของดียาเนต"
@@ -12014,7 +12014,7 @@
     "fr": "Durée",
     "ru": "Длительность",
     "ja": "時間",
-    "ko": "시간",
+    "ko": "지속 시간",
     "zh": "时长",
     "fil": "Tagal",
     "th": "ระยะเวลา"
@@ -12116,7 +12116,7 @@
     "fr": "Après les heures de prière choisies, le téléphone passe en vibreur ou en Ne pas déranger pour la durée choisie, puis revient à son état précédent. Le mode Ne pas déranger nécessite une autorisation à accorder une seule fois.",
     "ru": "После выбранного времени намаза телефон переходит в режим вибрации или «Не беспокоить» на выбранное время, а затем возвращается в прежнее состояние. Для «Не беспокоить» нужно разовое разрешение.",
     "ja": "選んだ礼拝時刻の後、選んだ時間だけスマホがバイブまたはサイレントモードになり、その後元の状態に戻ります。サイレントモードには1回だけ許可が必要です。",
-    "ko": "선택한 기도 시간 뒤 정한 시간 동안 휴대폰이 진동이나 방해 금지로 바뀌고, 그 뒤 이전 상태로 돌아갑니다. 방해 금지에는 한 번 권한이 필요합니다.",
+    "ko": "선택한 기도 시간 뒤 정한 시간 동안 휴대폰이 진동이나 방해 금지로 바뀌고, 그 뒤 이전 상태로 돌아갑니다. 방해 금지를 쓰려면 처음 한 번 권한을 허용해야 합니다.",
     "zh": "在所选礼拜时间之后，手机会在选定时长内切换为振动或勿扰，然后恢复原来的状态。勿扰需要一次性授权。",
     "fil": "Pagkatapos ng mga napiling oras ng dasal, lilipat ang telepono sa vibrate o Huwag Istorbohin sa napiling tagal, saka babalik sa dati. Kailangan ng Huwag Istorbohin ng isang beses na pahintulot.",
     "th": "หลังเวลาละหมาดที่เลือก โทรศัพท์จะเปลี่ยนเป็นสั่นหรือห้ามรบกวนตามระยะเวลาที่เลือก แล้วกลับเป็นสถานะเดิม โหมดห้ามรบกวนต้องอนุญาตครั้งเดียว"
@@ -12320,7 +12320,7 @@
     "fr": "Saisie",
     "ru": "Набор текста",
     "ja": "入力",
-    "ko": "타자",
+    "ko": "타자 입력",
     "zh": "打字",
     "fil": "Pagta-type",
     "th": "พิมพ์"
@@ -12388,7 +12388,7 @@
     "fr": "Enregistré. Pour arrêter l’alarme, vous photographierez le même endroit (par ex. le lavabo ou la machine à café). La photo n’est pas conservée, seulement un petit résumé.",
     "ru": "Сохранено. Чтобы выключить будильник, нужно будет сфотографировать то же место (например, раковину или кофемашину). Само фото не хранится, только краткая сводка.",
     "ja": "保存しました。アラームを止めるには同じ場所（例：洗面台やコーヒーメーカー）を撮影します。写真は保存されず、小さな特徴データだけが残ります。",
-    "ko": "저장했습니다. 알람을 끄려면 같은 곳(예: 세면대나 커피 머신)을 찍습니다. 사진은 저장되지 않고 작은 특징값만 남습니다.",
+    "ko": "저장했습니다. 알람을 끄려면 같은 곳(예: 세면대나 커피 머신)을 찍습니다. 사진은 저장되지 않고 작은 요약 정보만 남습니다.",
     "zh": "已保存。关闭闹钟时需要拍下同一个地方（如洗手池或咖啡机）。照片不会保存，只保留一个很小的特征值。",
     "fil": "Na-save. Para patayin ang alarma, kukunan mo ng larawan ang parehong lugar (hal. lababo o coffee machine). Hindi itinatago ang larawan, maliit na buod lang nito.",
     "th": "บันทึกแล้ว หากต้องการปิดนาฬิกาปลุก คุณจะต้องถ่ายรูปจุดเดิม (เช่น อ่างล้างหน้าหรือเครื่องชงกาแฟ) ระบบไม่เก็บรูปไว้ เก็บเพียงข้อมูลลักษณะเฉพาะขนาดเล็กของภาพ"
@@ -13153,7 +13153,7 @@
     "fr": "Autres chronomètres",
     "ru": "Другие секундомеры",
     "ja": "その他のストップウォッチ",
-    "ko": "다른 스톱워치",
+    "ko": "추가 스톱워치",
     "zh": "更多秒表",
     "fil": "Iba pang stopwatch",
     "th": "นาฬิกาจับเวลาเพิ่มเติม"
@@ -13459,7 +13459,7 @@
     "fr": "Jours précédents",
     "ru": "Ранее",
     "ja": "それ以前",
-    "ko": "그 이전",
+    "ko": "이전 기록",
     "zh": "更早",
     "fil": "Mas naunang mga araw",
     "th": "วันก่อนหน้านั้น"
@@ -13986,7 +13986,7 @@
     "fr": "L’horloge reste au-dessus des autres apps dans une fenêtre d’image dans l’image ; faites-la glisser, redimensionnez-la ou rangez-la sur le côté. Elle ne joue aucun son et n’a pas besoin d’Internet.",
     "ru": "Часы остаются поверх других приложений в окне «картинка в картинке»; перетаскивайте, меняйте размер или убирайте к краю. Они не воспроизводят звук и не требуют интернета.",
     "ja": "時計はピクチャ・イン・ピクチャのウインドウで他のアプリの上に表示され続けます。ドラッグ、サイズ変更、端へしまうことができます。音は出ず、インターネットも不要です。",
-    "ko": "시계가 PIP 창으로 다른 앱 위에 계속 떠 있습니다. 끌어서 옮기고 크기를 바꾸거나 옆으로 넣을 수 있습니다. 소리가 없고 인터넷도 필요 없습니다.",
+    "ko": "시계가 PIP 창으로 다른 앱 위에 계속 떠 있습니다. 끌어서 옮기고 크기를 바꾸거나 화면 가장자리로 숨길 수 있습니다. 소리가 없고 인터넷도 필요 없습니다.",
     "zh": "时钟以画中画窗口停留在其他应用上方；可拖动、调整大小或收到边上。不播放声音，也无需联网。",
     "fil": "Nananatili ang orasan sa ibabaw ng ibang app sa isang picture-in-picture na window; hilahin, baguhin ang laki o itabi sa gilid. Walang tunog at hindi kailangan ng internet.",
     "th": "นาฬิกาอยู่เหนือแอปอื่นในหน้าต่างภาพซ้อนภาพ ลาก ปรับขนาด หรือซ่อนไว้ข้างจอได้ ไม่มีเสียงและไม่ต้องใช้อินเทอร์เน็ต"
@@ -14224,7 +14224,7 @@
     "fr": "Ce morceau est protégé (Apple Music) ou absent du téléphone ; choisissez-en un autre ou un fichier audio dans Fichiers.",
     "ru": "Эта песня защищена (Apple Music) или отсутствует на телефоне; выберите другую песню или аудиофайл в «Файлах».",
     "ja": "この曲は保護されているか（Apple Music）、スマホにありません。別の曲かファイルの音声ファイルを選んでください。",
-    "ko": "이 곡은 보호되어 있거나(Apple Music) 휴대폰에 없습니다. 다른 곡이나 파일의 오디오 파일을 고르세요.",
+    "ko": "이 곡은 보호되어 있거나(Apple Music) 휴대폰에 없습니다. 다른 곡이나 파일 앱의 오디오 파일을 고르세요.",
     "zh": "这首歌受保护（Apple Music）或不在手机上；请选择其他歌曲或“文件”中的音频文件。",
     "fil": "Protektado ang kantang ito (Apple Music) o wala sa telepono; pumili ng ibang kanta o audio file mula sa Files.",
     "th": "เพลงนี้ถูกป้องกัน (Apple Music) หรือไม่อยู่ในโทรศัพท์ โปรดเลือกเพลงอื่นหรือไฟล์เสียงจากไฟล์"
@@ -14326,7 +14326,7 @@
     "fr": "Avec le curseur, choisissez les 30 secondes du morceau à jouer. Si le volume progressif est activé, l’extrait commence doucement.",
     "ru": "Ползунком выберите, какие 30 секунд песни будут звучать. Если включена нарастающая громкость, отрывок начинается тихо.",
     "ja": "スライダーで曲のどの30秒を流すか選びます。「だんだん大きく」がオンなら、区間は小さな音から始まります。",
-    "ko": "슬라이더로 곡의 어느 30초를 재생할지 고르세요. 점점 크게가 켜져 있으면 구간이 작게 시작합니다.",
+    "ko": "슬라이더로 곡의 어느 30초를 재생할지 고르세요. \"점점 크게\"가 켜져 있으면 구간이 작게 시작합니다.",
     "zh": "用滑块选择播放歌曲中的哪30秒。如果开启了音量渐强，片段会从轻声开始。",
     "fil": "Gamitin ang slider para piliin kung aling 30 segundo ng kanta ang tutugtog. Kung naka-on ang unti-unting paglakas, mahina ang simula ng bahagi.",
     "th": "ใช้แถบเลื่อนเพื่อเลือกว่าจะเล่นช่วง 30 วินาทีใดของเพลง หากเปิด \"ค่อย ๆ ดังขึ้น\" ไว้ ช่วงนั้นจะเริ่มเบา ๆ"
@@ -14887,7 +14887,7 @@
     "fr": "L’événement est choisi dans les calendriers du téléphone ; une alarme unique est réglée pour sonner avec l’avance choisie avant son début (à 9 h ce jour-là pour les événements d’une journée entière). L’accès au calendrier s’accorde dans l’onglet Calendrier.",
     "ru": "Событие выбирается из календарей телефона; одноразовый будильник ставится за выбранное время до начала (для событий на весь день — в 9:00 того дня). Доступ к календарю даётся на вкладке «Календарь».",
     "ja": "予定はスマホのカレンダーから選びます。開始時刻の指定した時間前に1回だけのアラームを設定します（終日の予定はその日の09:00）。カレンダーへのアクセスはカレンダータブで許可します。",
-    "ko": "일정은 휴대폰 달력에서 고릅니다. 시작하기 전 정한 시간에 한 번 울리는 알람을 맞춥니다(종일 일정은 그날 09:00). 달력 접근은 달력 탭에서 허용합니다.",
+    "ko": "일정은 휴대폰 달력에서 고릅니다. 시작 전 정한 시간만큼 앞서 한 번 울리는 알람을 맞춥니다(종일 일정은 그날 09:00). 달력 접근은 달력 탭에서 허용합니다.",
     "zh": "从手机日历中选择日程；在开始前的设定时间设一次性闹钟（全天日程为当天09:00）。日历访问在日历标签页中授权。",
     "fil": "Pinipili ang event mula sa mga kalendaryo ng telepono; isang beses na alarma ang itinatakda sa piniling oras bago ito magsimula (09:00 ng araw na iyon para sa buong-araw na event). Ibinibigay ang access sa kalendaryo sa tab na Kalendaryo.",
     "th": "เลือกกิจกรรมจากปฏิทินในโทรศัพท์ แอปจะตั้งนาฬิกาปลุกครั้งเดียวก่อนกิจกรรมเริ่มตามเวลาที่เลือก (สำหรับกิจกรรมทั้งวันจะปลุกเวลา 09:00 ของวันนั้น) อนุญาตการเข้าถึงปฏิทินได้ในแท็บปฏิทิน"
@@ -15329,7 +15329,7 @@
     "fr": "Essayer",
     "ru": "Проверить",
     "ja": "試す",
-    "ko": "시험",
+    "ko": "테스트",
     "zh": "试一下",
     "fil": "Subukan",
     "th": "ลอง"
@@ -15516,7 +15516,7 @@
     "fr": "Minutes avec mouvement : {n}",
     "ru": "Минут с движением: {n}",
     "ja": "動きを検知した分数：{n}",
-    "ko": "움직임이 감지된 분: {n}",
+    "ko": "움직임 감지: {n}분",
     "zh": "检测到动作的分钟数：{n}",
     "fil": "Mga minutong may galaw: {n}",
     "th": "นาทีที่ตรวจพบการเคลื่อนไหว: {n}"
@@ -15567,7 +15567,7 @@
     "fr": "Posez le téléphone sur le lit près de votre oreiller et branchez-le. Le capteur de mouvement n’est lu que pendant la plage ; rien n’est enregistré, les données restent dans la mémoire du téléphone et ne sont pas conservées. Sans mouvement, l’alarme sonne à l’heure prévue.",
     "ru": "Положите телефон на кровать рядом с подушкой и поставьте на зарядку. Данные датчика движения считываются только в окне будильника; ничего не записывается, данные остаются в памяти телефона и не сохраняются. Если движения нет, будильник сработает в обычное время.",
     "ja": "スマホを枕のそばのベッドの上に置き、充電器につないでください。動きのセンサーは時間帯の間だけ読み取ります。録音はせず、データはスマホのメモリにだけあって保存されません。動きがなければアラームは通常の時刻に鳴ります。",
-    "ko": "휴대폰을 베개 옆 침대 위에 두고 충전기에 연결하세요. 동작 센서는 시간대 동안에만 읽습니다. 녹음은 하지 않으며 데이터는 휴대폰 메모리에만 있고 저장되지 않습니다. 움직임이 없으면 알람은 원래 시간에 울립니다.",
+    "ko": "휴대폰을 베개 옆 침대 위에 두고 충전기에 연결하세요. 동작 센서는 시간대 동안에만 읽습니다. 아무것도 기록하지 않으며 데이터는 휴대폰 메모리에만 있고 저장되지 않습니다. 움직임이 없으면 알람은 원래 시간에 울립니다.",
     "zh": "把手机放在床上枕头旁并接上充电器。只在时间窗口内读取运动传感器；不做任何记录，数据只在手机内存中，不会保存。若未检测到动作，闹钟会按原定时间响起。",
     "fil": "Ilagay ang telepono sa kama sa tabi ng unan at i-charge ito. Binabasa lang ang motion sensor sa loob ng window; walang nire-record, nananatili ang data sa memory ng telepono at hindi sine-save. Kung walang galaw, tutunog ang alarma sa karaniwang oras.",
     "th": "วางโทรศัพท์บนเตียงข้างหมอนและเสียบชาร์จ เซนเซอร์การเคลื่อนไหวจะอ่านเฉพาะในช่วงเวลานั้น ไม่มีการบันทึก ข้อมูลอยู่ในหน่วยความจำของโทรศัพท์และไม่ถูกเก็บ หากไม่พบการเคลื่อนไหว นาฬิกาปลุกจะดังตามเวลาปกติ"
