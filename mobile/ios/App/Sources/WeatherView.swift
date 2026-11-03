@@ -27,6 +27,10 @@ struct WeatherView: View {
                     // İşaret verinin hemen altında, kaydırmadan görünür (App Review 5.2.5)
                     AppleWeatherMark()
                     hourly(d)
+                    details(d)
+                    // Güneş yayı ve Ay (2. analiz #109)
+                    SunMoonArc(now: Date(), place: place)
+                    moonCard(place)
                     daily(d)
                 } else if failed {
                     Text(L("weather.error")).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
@@ -69,14 +73,19 @@ struct WeatherView: View {
                     .foregroundStyle(Theme.muted)
                     .environment(\.layoutDirection, .leftToRight)
             }
+            // Sözlü günlük özet (2. analiz #108)
+            let sum = WeatherSpeech.summary(d, zone: zone)
+            if !sum.isEmpty { Text(sum).font(.subheadline).multilineTextAlignment(.center).padding(.top, 2) }
+            let tc = c.temperature.converted(to: .celsius).value, fc = c.apparentTemperature.converted(to: .celsius).value
+            let wk = c.wind.speed.converted(to: .kilometersPerHour).value
             Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 8) {
                 GridRow {
-                    pill(L("weather.feelsLike"), temp(c.apparentTemperature))
-                    pill(L("weather.humidity"), Fmt.percent(Int((c.humidity * 100).rounded())))
+                    pill(L("weather.feelsLike"), temp(c.apparentTemperature), WeatherWords.feels(tc, fc).map { L($0) })
+                    pill(L("weather.humidity"), Fmt.percent(Int((c.humidity * 100).rounded())), L(WeatherWords.humidity(c.humidity * 100)))
                 }
                 GridRow {
-                    pill(L("weather.wind"), Units.wind(c.wind.speed))
-                    pill(L("weather.uv"), "\(c.uvIndex.value)")
+                    pill(L("weather.wind"), Units.wind(c.wind.speed), L(WeatherWords.wind(wk)))
+                    pill(L("weather.uv"), "\(c.uvIndex.value)", L(WeatherWords.uv(Double(c.uvIndex.value))))
                 }
                 GridRow {
                     pill(L("weather.rainChanceShort"), Fmt.percent(Int((rain * 100).rounded())))
@@ -89,12 +98,83 @@ struct WeatherView: View {
         .modifier(WeatherHero(scene: animate ? WeatherScene(c) : nil))
     }
 
-    private func pill(_ title: String, _ value: String) -> some View {
+    private func pill(_ title: String, _ value: String, _ note: String? = nil) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(title).font(.caption).foregroundStyle(Theme.muted)
             Text(value).font(.headline).environment(\.layoutDirection, .leftToRight)
+            if let note { Text(note).font(.caption).foregroundStyle(Theme.muted).lineLimit(2) }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    /// Ek ölçümler (2. analiz #106): rüzgâr yönü ve hamle, görüş, çiy noktası, bugünkü yağış, gün doğumu/batımı
+    private func details(_ d: Weather) -> some View {
+        let c = d.currentWeather
+        let today = d.dailyForecast.first
+        let dir = c.wind.direction.converted(to: .degrees).value
+        let rain = d.hourlyForecast.first(where: { $0.date >= Date().addingTimeInterval(-3600) })?.precipitationChance ?? 0
+        let compass = (0..<8).map { L("weather.compass.\($0)") }
+        return VStack(alignment: .leading, spacing: 10) {
+            SectionTitle(text: L("weather.details"))
+            Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 10) {
+                GridRow {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(L("weather.wind")).font(.caption).foregroundStyle(Theme.muted)
+                        HStack(spacing: 6) {
+                            // Ok rüzgârın gittiği yönü gösterir (gelen yön + 180°)
+                            Image(systemName: "location.north.fill").rotationEffect(.degrees(dir + 180)).foregroundStyle(Theme.accent)
+                            Text(Units.wind(c.wind.speed)).font(.headline).environment(\.layoutDirection, .leftToRight)
+                        }
+                        Text(T("weather.windFrom", compass[WeatherWords.compass8(dir)])).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    if let g = c.wind.gust { pill(L("weather.gusts"), Units.wind(g)) } else { Color.clear }
+                }
+                GridRow {
+                    pill(L("weather.visibility"), Units.distance(c.visibility), L(WeatherWords.visibility(c.visibility.converted(to: .meters).value)))
+                    pill(L("weather.dewPoint"), temp(c.dewPoint), L(WeatherWords.dew(c.dewPoint.converted(to: .celsius).value)))
+                }
+                GridRow {
+                    pill(L("weather.precipitation"), today.map { Units.precip($0.precipitationAmount) } ?? "–")
+                    pill(L("weather.rainChanceShort"), Fmt.percent(Int((rain * 100).rounded())))
+                }
+                GridRow {
+                    pill(L("weather.sunrise"), today?.sun.sunrise.map { Fmt.time($0, tz: zone) } ?? "–")
+                    pill(L("weather.sunset"), today?.sun.sunset.map { Fmt.time($0, tz: zone) } ?? "–")
+                }
+            }
+        }
+        .card()
+    }
+
+    /// Ay kartı (2. analiz #109): evre, aydınlık yüzde, yeni aya ve dolunaya kalan gün, doğuş/batış; dokununca Ay takvimi
+    private func moonCard(_ place: AppPlace) -> some View {
+        let now = Date()
+        let moon = Nature.moon(at: now)
+        let rs = place.moonRiseSet(CalendarDay(now, timeZone: place.zone))
+        func days(_ ms: Int64) -> Int { max(0, Int((Double(ms) / 1000 - now.timeIntervalSince1970) / 86_400 + 0.5)) }
+        return NavigationLink { MoonView() } label: {
+            VStack(alignment: .leading, spacing: 8) {
+                SectionTitle(text: L("nature.moonHeading"))
+                HStack(spacing: 12) {
+                    Text(moonPhaseEmoji[moon.phaseIndex]).font(.system(size: 40))
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(L("nature.phases.\(moonPhaseKeys[moon.phaseIndex])")).font(.headline)
+                        Text(T("nature.illumination", Int((moon.illumination * 100).rounded()))).font(.caption).foregroundStyle(Theme.muted)
+                        Text("↑ " + place.moonTime(rs.rise, none: "nature.moonNoRise") + "   ↓ " + place.moonTime(rs.set, none: "nature.moonNoSet"))
+                            .font(.caption).monospacedDigit()
+                    }
+                    Spacer()
+                    VStack(alignment: .trailing, spacing: 2) {
+                        Text("🌑 " + T("weather.moonDays", days(moon.nextNewMoon))).font(.caption).foregroundStyle(Theme.muted)
+                        Text("🌕 " + T("weather.moonDays", days(moon.nextFullMoon))).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                }
+            }
+            .foregroundStyle(Theme.ink)
+        }
+        .buttonStyle(.plain)
+        .card()
     }
 
     private func hourly(_ d: Weather) -> some View {
@@ -259,6 +339,40 @@ private struct WeatherHero: ViewModifier {
                 .environment(\.colorScheme, .dark)
         } else {
             content.card()
+        }
+    }
+}
+
+/// Hava durumunun sözlü özeti (2. analiz #108; kural SaatCore WeatherWords, Android ve sitedeki ile aynı)
+enum WeatherSpeech {
+    /// WeatherKit durumu → özet kuralının beklediği WMO kodu (fırtına 95, kar 73, yağmur 61, diğer 1)
+    static func code(_ c: WeatherCondition) -> Int {
+        switch SkyWeather(c) {
+        case .storm: return 95
+        case .snow: return 73
+        case .rain: return 61
+        default: return 1
+        }
+    }
+
+    static func summary(_ d: Weather, zone: TimeZone, now: Date = Date()) -> String {
+        guard let today = d.dailyForecast.first else { return "" }
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = zone
+        let next = d.hourlyForecast.filter { $0.date > now.addingTimeInterval(-3600) }.prefix(12).map {
+            WeatherWords.Hour(hour: cal.component(.hour, from: $0.date), code: code($0.condition),
+                              rain: Int(($0.precipitationChance * 100).rounded()), wind: $0.wind.speed.converted(to: .kilometersPerHour).value)
+        }
+        let tomorrow = d.dailyForecast.count > 1 ? d.dailyForecast[1].highTemperature.converted(to: .celsius).value : nil
+        let s = WeatherWords.summary(Array(next), todayMax: today.highTemperature.converted(to: .celsius).value, tomorrowMax: tomorrow)
+        switch s.key {
+        case "weather.sum.default":
+            return T(s.key, d.currentWeather.condition.description, Units.temp(today.highTemperature), Units.temp(today.lowTemperature))
+        case "weather.sum.colder", "weather.sum.warmer":
+            return T(s.key, Units.delta(s.n))
+        default:
+            let at = cal.date(bySettingHour: s.hour, minute: 0, second: 0, of: now) ?? now
+            return T(s.key, Fmt.time(at, tz: zone))
         }
     }
 }

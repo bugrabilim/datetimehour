@@ -15,6 +15,7 @@ struct NotificationsView: View {
     @AppStorage(NotifyFeature.bedtime.key) private var bedtime = true
     @AppStorage(NotifyFeature.habits.key) private var habits = true
     @AppStorage(NotifyFeature.weatherTimeKey) private var weatherTime = 450
+    @AppStorage("notify.weather.alerts") private var weatherAlerts = true
     @AppStorage(NotifyFeature.hourlyFromKey) private var hourlyFrom = 9
     @AppStorage(NotifyFeature.hourlyToKey) private var hourlyTo = 21
     @State private var showPrayer = false
@@ -53,6 +54,14 @@ struct NotificationsView: View {
                 row(.weather, $weather)
                 if weather {
                     DatePicker(L("notify.cat.weather.time"), selection: minutes($weatherTime), displayedComponents: .hourAndMinute)
+                    // Yarın belirgin soğuk/sıcak ve yağmur yaklaşıyor (2. analiz #110)
+                    Toggle(isOn: $weatherAlerts) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(L("notify.weatherAlerts"))
+                            Text(L("notify.weatherAlerts.note")).font(.caption).foregroundStyle(Theme.muted)
+                        }
+                    }
+                    .tint(Theme.accent)
                 }
             }
             Section {
@@ -77,6 +86,7 @@ struct NotificationsView: View {
         }
         .onChange(of: [prayer, calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits]) { reschedule() }
         .onChange(of: [weatherTime, hourlyFrom, hourlyTo]) { reschedule() }
+        .onChange(of: weatherAlerts) { reschedule() }
     }
 
     private func row(_ f: NotifyFeature, _ on: Binding<Bool>) -> some View {

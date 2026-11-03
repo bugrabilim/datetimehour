@@ -209,7 +209,31 @@ enum FeatureNotifier {
                          Units.temp(day.lowTemperature), day.precipitationChance.formatted(percent))
             return PlannedNotification(id: "\(featurePrefix)weather-\(d.iso)", fireAt: fire,
                                        title: T("notify.n.weather", place.name), body: body + "\n\u{F8FF} Weather")
+        } + (UserDefaults.standard.object(forKey: "notify.weather.alerts") as? Bool ?? true ? weatherAlerts(w, place: place, now: now) : [])
+    }
+
+    /// Hava uyarıları (2. analiz #110; Android'deki weatherAlerts ile aynı): akşam 19.00'da "yarın belirgin şekilde
+    /// soğuk/sıcak" (en yüksek 5° ve fazla fark) ve önümüzdeki 24 saatte yağış ihtimali %60'ı geçen ilk saatten 15 dk önce
+    private static func weatherAlerts(_ w: Weather, place: AppPlace, now: Date) -> [PlannedNotification] {
+        var out: [PlannedNotification] = []
+        let title = T("notify.n.weather", place.name)
+        let days = Array(w.dailyForecast.prefix(3))
+        if days.count > 1 {
+            for i in 0..<(days.count - 1) {
+                let a = days[i].highTemperature.converted(to: .celsius).value, b = days[i + 1].highTemperature.converted(to: .celsius).value
+                guard let s = WeatherWords.tomorrowAlert(todayMax: a, tomorrowMax: b) else { continue }
+                let d = CalendarDay(days[i].date, timeZone: place.zone)
+                let fire = d.noon(in: place.zone).addingTimeInterval(7 * 3600)
+                guard fire > now else { continue }
+                out.append(PlannedNotification(id: "\(featurePrefix)weather-alert-\(CalendarDay(days[i + 1].date, timeZone: place.zone).iso)", fireAt: fire,
+                                               title: title, body: T(s.key, Units.delta(s.n)) + "\n\u{F8FF} Weather"))
+            }
         }
+        if let h = w.hourlyForecast.first(where: { $0.date > now.addingTimeInterval(1800) && $0.date < now.addingTimeInterval(86_400) && $0.precipitationChance >= 0.6 }) {
+            out.append(PlannedNotification(id: "\(featurePrefix)weather-rain-\(Int(h.date.timeIntervalSince1970))", fireAt: h.date.addingTimeInterval(-900),
+                                           title: title, body: T("weather.alert.rainSoon", Fmt.time(h.date, tz: place.zone)) + "\n\u{F8FF} Weather"))
+        }
+        return out
     }
 
     /// Saat başı: her saat için günlük yinelenen tek bildirim (iOS sınırında az yer tutsun diye)

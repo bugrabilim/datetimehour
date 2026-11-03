@@ -8,6 +8,7 @@ struct SettingsView: View {
     @AppStorage("keepAwake") private var keepAwake = true
     @AppStorage("appearance") private var appearance = "system"
     @AppStorage("units") private var units = Units.systemDefault
+    @AppStorage("units.pressure") private var pressureUnit = "auto"
     /// Renk değişince bu sayfa da yeni renkle çizilir
     @AppStorage("accent") private var accent = AccentPalette.defaultID
     @AppStorage(Features.key) private var features = ""
@@ -34,6 +35,11 @@ struct SettingsView: View {
                 Picker(L("settings.units"), selection: $units) {
                     Text(L("settings.units.metric")).tag("metric")
                     Text(L("settings.units.imperial")).tag("imperial")
+                }
+                // Basınç birimi (2. analiz #106)
+                Picker(L("settings.pressureUnit"), selection: $pressureUnit) {
+                    Text(L("countdowns.unit.auto")).tag("auto")
+                    ForEach(["hPa", "mmHg", "inHg"], id: \.self) { Text($0).tag($0) }
                 }
             }
             Section {
