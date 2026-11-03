@@ -172,7 +172,7 @@
      "ko": "젖은 손가락으로 귀와 목덜미를 쓰다듬습니다.",
      "zh": "用湿手指抹耳朵和后颈。",
      "fil": "Ipahid ang basang daliri sa mga tainga at sa batok.",
-     "th": "ใช้นิ้วเปียกเช็ดหูและท้ายทอย"
+     "th": "ใช้นิ้วเปียกเช็ดหูและต้นคอ"
     },
     {
      "tr": "Önce sağ, sonra sol ayak topuklarla birlikte, parmak araları da yıkanarak üç kez yıkanır.",
@@ -351,21 +351,21 @@
     [
      "isha",
      {
-      "tr": "4 sünnet, 4 farz, 2 son sünnet, 3 vitir",
-      "en": "4 sunnah, 4 fard, 2 sunnah, 3 witr",
-      "de": "4 Sunna, 4 Fard, 2 Sunna, 3 Witr",
-      "az": "4 sünnət, 4 fərz, 2 son sünnət, 3 vitr",
-      "ar": "أربع سنة، أربع فرض، ركعتان سنة، ثلاث وتر",
-      "id": "4 sunah, 4 fardu, 2 sunah, 3 witir",
-      "ur": "4 سنت، 4 فرض، 2 سنت، 3 وتر",
-      "fa": "4 سنت، 4 فرض، 2 سنت، 3 وتر",
-      "fr": "4 sunna, 4 fard, 2 sunna, 3 witr",
-      "ru": "4 сунна, 4 фард, 2 сунна, 3 витр",
-      "ja": "スンナ4、ファルド4、スンナ2、ウィトル3",
-      "ko": "순나 4, 파르드 4, 순나 2, 위트르 3",
-      "zh": "圣行4拜，主命4拜，圣行2拜，威特尔3拜",
-      "fil": "4 sunnah, 4 fard, 2 sunnah, 3 witr",
-      "th": "ซุนนะฮ์ 4 ฟัรฎู 4 ซุนนะฮ์ 2 วิติร 3"
+      "tr": "4 sünnet, 4 farz, 2 son sünnet, 3 vitir (vacip)",
+      "en": "4 sunnah, 4 fard, 2 sunnah, 3 witr (wajib)",
+      "de": "4 Sunna, 4 Fard, 2 Sunna, 3 Witr (Wādschib)",
+      "az": "4 sünnət, 4 fərz, 2 son sünnət, 3 vitr (vacib)",
+      "ar": "أربع سنة، أربع فرض، ركعتان سنة، ثلاث وتر (واجب)",
+      "id": "4 sunah, 4 fardu, 2 sunah, 3 witir (wajib)",
+      "ur": "4 سنت، 4 فرض، 2 سنت، 3 وتر (واجب)",
+      "fa": "4 سنت، 4 فرض، 2 سنت، 3 وتر (واجب)",
+      "fr": "4 sunna, 4 fard, 2 sunna, 3 witr (wâjib)",
+      "ru": "4 сунна, 4 фард, 2 сунна, 3 витр (ваджиб)",
+      "ja": "スンナ4、ファルド4、スンナ2、ウィトル3（ワージブ）",
+      "ko": "순나 4, 파르드 4, 순나 2, 위트르 3(와집)",
+      "zh": "圣行4拜，主命4拜，圣行2拜，威特尔3拜（瓦直布）",
+      "fil": "4 sunnah, 4 fard, 2 sunnah, 3 witr (wajib)",
+      "th": "ซุนนะฮ์ 4 ฟัรฎู 4 ซุนนะฮ์ 2 วิติร 3 (วาญิบ)"
      }
     ]
    ]
@@ -439,7 +439,7 @@
      "ko": "두 손을 들고 \"알라후 아크바르\"(시작 타크비르)라고 말한 뒤 손을 모읍니다.",
      "zh": "抬起双手念“安拉乎艾克拜尔”（入拜大赞），然后抱手。",
      "fil": "Itaas ang mga kamay at sabihin ang \"Allahu akbar\" (pambungad na takbir), saka ipatong ang mga kamay.",
-     "th": "ยกมือขึ้นและกล่าว \"อัลลอฮุอักบัร\" (ตักบีรเริ่มต้น) แล้ววางมือ"
+     "th": "ยกมือขึ้นและกล่าว \"อัลลอฮุอักบัร\" (ตักบีรเริ่มต้น) แล้ววางมือขวาทับมือซ้าย"
     },
     {
      "tr": "Ayakta Sübhâneke, Eûzü ve Besmele okunur; sonra Fâtiha ve bir sure ya da en az üç kısa ayet okunur.",
@@ -493,8 +493,8 @@
      "th": "ลุกขึ้นพร้อมกล่าว \"สะมิอัลลอฮุ ลิมัน ฮะมิดะฮ์\" แล้วกล่าว \"ร็อบบะนา ละกัลฮัมด์\""
     },
     {
-     "tr": "\"Allâhu ekber\" diyerek secdeye varılır, üç kez \"Sübhâne rabbiye'l-a'lâ\" denir; oturulur ve ikinci secde yapılır.",
-     "en": "Say \"Allahu akbar\" and prostrate; say \"Subhana rabbiyal-a'la\" three times; sit up, then prostrate a second time.",
+     "tr": "\"Allâhu ekber\" diyerek secdeye varılır, üç kez \"Sübhâne rabbiye'l-a'lâ\" denir; tekbirle oturulur, sonra tekbirle ikinci secdeye varılır ve yine üç kez \"Sübhâne rabbiye'l-a'lâ\" denir.",
+     "en": "Say \"Allahu akbar\" and prostrate; say \"Subhana rabbiyal-a'la\" three times; sit up saying \"Allahu akbar\", then prostrate a second time with takbir and again say \"Subhana rabbiyal-a'la\" three times.",
      "de": "Mit „Allahu akbar\" niederwerfen und dreimal „Subhana rabbiyal-a'la\" sagen; aufsetzen, dann ein zweites Mal niederwerfen.",
      "az": "\"Allahu əkbər\" deyərək səcdəyə gedilir, üç dəfə \"Sübhanə rəbbiyəl-əla\" deyilir; oturulur və ikinci səcdə edilir.",
      "ar": "يكبر ويسجد ويقول: سبحان ربي الأعلى ثلاثًا، ثم يجلس ويسجد السجدة الثانية.",
@@ -507,7 +507,7 @@
      "ko": "\"알라후 아크바르\"라고 말하고 사즈다하며 \"수브하나 랍비얄 아을라\"를 세 번 말합니다. 앉았다가 두 번째 사즈다를 합니다.",
      "zh": "念“安拉乎艾克拜尔”叩头，念“苏布哈奈·兰比耶勒·艾阿拉”三次；坐起，然后第二次叩头。",
      "fil": "Sabihin ang \"Allahu akbar\" at magpatirapa; sabihin ang \"Subhana rabbiyal-a'la\" nang tatlong beses; umupo, saka magpatirapa sa ikalawang pagkakataon.",
-     "th": "กล่าว \"อัลลอฮุอักบัร\" แล้วสุญูด กล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" สามครั้ง นั่งขึ้น แล้วสุญูดครั้งที่สอง"
+     "th": "กล่าว \"อัลลอฮุอักบัร\" แล้วสุญูด กล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" สามครั้ง ลุกขึ้นนั่งพร้อมกล่าว \"อัลลอฮุอักบัร\" แล้วกล่าวตักบีรและสุญูดครั้งที่สอง และกล่าว \"ซุบฮานะ ร็อบบิยัลอะอ์ลา\" อีกสามครั้ง"
     },
     {
      "tr": "İkinci rekâta kalkılır; Besmele, Fâtiha ve bir sure okunur; rükû ve iki secde aynı şekilde yapılır.",
@@ -585,6 +585,6 @@
   "ko": "이 안내는 튀르키예 디야넷이 따르는 하나피 학파에 따른 짧은 요약입니다. 세부 사항은 학파마다 다릅니다. 더 알고 싶으면 자격 있는 학자나 지역 모스크에 문의하세요.",
   "zh": "本指南是依据土耳其迪亚内特所遵循的哈乃斐学派所作的简要总结。各学派的细节有所不同；如需了解更多，请咨询合格的学者或当地清真寺。",
   "fil": "Ang gabay na ito ay maikling buod ayon sa paaralang Hanafi na sinusunod ng Diyanet ng Türkiye. Nagkakaiba ang mga detalye sa bawat paaralan; para sa higit pa, kumonsulta sa isang kwalipikadong iskolar o sa inyong lokal na masjid.",
-  "th": "คู่มือนี้เป็นสรุปสั้น ๆ ตามมัซฮับฮะนะฟีที่ดียาเนตของตุรกียึดถือ รายละเอียดแตกต่างกันตามมัซฮับ หากต้องการทราบเพิ่มเติม โปรดปรึกษาผู้รู้ที่มีคุณสมบัติหรือมัสยิดในท้องถิ่น"
+  "th": "คู่มือนี้เป็นบทสรุปสั้น ๆ ตามมัซฮับฮะนะฟีที่ดียาเนตของตุรกียึดถือ รายละเอียดแตกต่างกันตามมัซฮับ หากต้องการทราบเพิ่มเติม โปรดปรึกษาผู้รู้ทางศาสนาหรือมัสยิดในท้องถิ่น"
  }
 }

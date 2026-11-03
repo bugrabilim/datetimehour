@@ -8,7 +8,8 @@
 //   duas.json                dualar (Kur'an'dan olanların Arapçası Tanzil metninden birebir alınır)
 //   esma.json                Esmaü'l-Hüsna (99 isim, anlamlar dört dilde)
 //   hadith.json              günün hadisi: çeviriler; Arapçası source/ara-nawawi.json'dan (Nevevî, Kırk Hadis;
-//                            fawazahmed0/hadith-api, Unlicense) birebir, yalnız <br> boşluğa çevrilir
+//                            fawazahmed0/hadith-api, Unlicense) birebir; <br> boşluğa çevrilir ve kaynaktaki üç
+//                            yazım kusuru (boş "[رقم:]", yinelenen köşeli kaynak, eşsiz tırnak) atılır (cleanHadithAr)
 //   guide.json               namaz rehberi (Hanefî; beş dil)
 //   sayings.json             günün sözü (her dilin atasözleri)
 // Türkçe meal yok: özgün ve kamu malı bir dijital meal bulunamadı (Tanzil'deki Elmalılı metni sonradan sadeleştirilmiş
@@ -95,12 +96,21 @@ const duas = duaSrc.items.map((d) => {
 const esma = JSON.parse(fs.readFileSync(path.join(SRC, "esma.json"), "utf8")).items;
 /* Satır: [Arapça, Türkçe okunuş, Latin okunuş, anlam tr, en, de, az, id, ur, fa, fr, ru, ja, ko, zh, fil, th] (ar arayüzünde yalnız Arapça ad) */
 if (esma.length !== 99 || esma.some((r) => r.length !== 17 || r.some((x) => !x))) throw new Error("esma.json: 99 satır, 17 alan olmalı");
+/* Kaynak metindeki üç yazım kusuru gösterimde temizlenir (3 Kasım 2026, dil denetimi): numarası boş kaynak
+   gösterimi "[رقم:]" atılır; tam kaynak gösteriminden sonra satır sonunda yinelenen köşeli "[رواه …] ، […]" atılır;
+   eşi olmayan tek tırnak işareti atılır. Hadis metninin kendisine dokunulmaz. */
+function cleanHadithAr(t) {
+  t = t.replace(/\s*\[رقم:\s*\]/g, "");
+  t = t.replace(/(\[رقم:\s*\d+\][^<]*)<br>\s*(\[[^\]]+\]\s*،?\s*)+$/, "$1");
+  if ((t.match(/"/g) || []).length % 2) { const i = t.lastIndexOf('"'); t = t.slice(0, i) + t.slice(i + 1); }
+  return t.replace(/<br>/g, " ").replace(/\s+/g, " ").trim();
+}
 const nawawi = JSON.parse(fs.readFileSync(path.join(SRC, "source/ara-nawawi.json"), "utf8")).hadiths;
 const hadith = JSON.parse(fs.readFileSync(path.join(SRC, "hadith.json"), "utf8")).items.map((h) => {
   const src = nawawi.find((x) => x.hadithnumber === h.n);
   if (!src) throw new Error(`Kırk Hadis ${h.n} yok`);
   for (const l of LANGS.filter((x) => x !== "ar")) if (!h.t[l]) throw new Error(`hadis ${h.n}: ${l} anlamı yok`);
-  return { n: h.n, ar: src.text.replace(/<br>/g, " ").replace(/\s+/g, " ").trim(), r: h.r, s: h.s, t: h.t };
+  return { n: h.n, ar: cleanHadithAr(src.text), r: h.r, s: h.s, t: h.t };
 });
 const guideSrc = JSON.parse(fs.readFileSync(path.join(SRC, "guide.json"), "utf8"));
 const guide = { sections: guideSrc.sections, note: guideSrc.note };

@@ -175,7 +175,7 @@
    "ko": "성목요일",
    "zh": "濯足节",
    "fil": "Huwebes Santo",
-   "th": "วันพฤหัสศักดิ์สิทธิ์"
+   "th": "วันพฤหัสบดีศักดิ์สิทธิ์"
   },
   "Labour Day": {
    "tr": "Emek ve Dayanışma Günü",
@@ -479,7 +479,7 @@
    "ko": "국경일",
    "zh": "国家节日",
    "fil": "Pambansang Pista Opisyal",
-   "th": "วันหยุดราชการ"
+   "th": "วันหยุดประจำชาติ"
   },
   "International Women's Day": {
    "tr": "Dünya Kadınlar Günü",
@@ -767,7 +767,7 @@
    "ko": "예언자 무함마드 탄신일 (잠정)",
    "zh": "先知穆罕默德诞辰（暂定日期）",
    "fil": "Kaarawan ni Propeta Muhammad (pansamantalang petsa)",
-   "th": "วันประสูติท่านนบีมุฮัมมัด (วันที่ชั่วคราว)"
+   "th": "วันประสูติท่านนบีมุฮัมมัด (วันที่ยังไม่แน่นอน)"
   },
   "Thanksgiving Day": {
    "tr": "Şükran Günü",
@@ -815,7 +815,7 @@
    "ko": "메모리얼 데이 (현충일)",
    "zh": "阵亡将士纪念日",
    "fil": "Memorial Day (Araw ng Paggunita)",
-   "th": "วันรำลึกทหารผ่านศึก"
+   "th": "วันรำลึกทหารผู้เสียชีวิต"
   },
   "Labor Day": {
    "tr": "İşçi Bayramı (ABD)",
@@ -831,7 +831,7 @@
    "ko": "노동절 (미국)",
    "zh": "劳动节（美国）",
    "fil": "Labor Day (Araw ng Manggagawa sa US)",
-   "th": "วันแรงงาน (สหรัฐอเมริกา)"
+   "th": "วันแรงงาน"
   },
   "Early May Bank Holiday": {
    "tr": "Mayıs başı resmî tatili",
@@ -1007,7 +1007,7 @@
    "ko": "노동절",
    "zh": "劳动节",
    "fil": "Araw ng Paggawa",
-   "th": "วันแรงงาน"
+   "th": "วันแรงงาน (ออร์โธดอกซ์)"
   },
   "Veterans Day": {
    "tr": "Gaziler Günü",
@@ -1199,7 +1199,7 @@
    "ko": "설날",
    "zh": "农历新年",
    "fil": "Lunar New Year",
-   "th": "วันตรุษจีน"
+   "th": "วันขึ้นปีใหม่ตามจันทรคติ"
   },
   "Chinese New Year (Spring Festival)": {
    "tr": "Çin Yeni Yılı (Bahar Bayramı)",

@@ -17,14 +17,14 @@
     <string name="prayer_prevMonth">이전 달</string>
     <string name="prayer_nextMonth">다음 달</string>
     <string name="prayer_useLocation">내 위치 사용</string>
-    <string name="prayer_imTitle">%1$s 라마단 시간표</string>
+    <string name="prayer_imTitle">%1$s년 라마단 시간표</string>
     <string name="prayer_imDay">라마단</string>
     <string name="prayer_imDate">날짜</string>
     <string name="prayer_imSahur">사후르</string>
     <string name="prayer_imIftar">이프타르</string>
     <string name="prayer_imNote">시간은 계산값입니다. 공식 시간은 튀르키예 종교청(디야넷)을 따르세요.</string>
     <string name="prayer_imFile">ramadan-timetable</string>
-    <string name="prayer_imAlt">%1$s의 %2$s 라마단 시간표</string>
+    <string name="prayer_imAlt">%1$s의 %2$s년 라마단 시간표</string>
     <string name="prayer_kerahatHeading">기도가 권장되지 않는 시간(대략)</string>
     <string name="prayer_kerahatNames_israk">해돋이(이슈라크)</string>
     <string name="prayer_kerahatNames_istiva">정오 전(이스티와)</string>

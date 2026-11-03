@@ -7,7 +7,7 @@
     <string name="prayer_asr">Аср</string>
     <string name="prayer_maghrib">Магриб</string>
     <string name="prayer_isha">Иша</string>
-    <string name="prayer_nextIn">До намаза %1$s осталось</string>
+    <string name="prayer_nextIn">%1$s через</string>
     <string name="prayer_today">Время на сегодня</string>
     <string name="prayer_province">Провинция</string>
     <string name="client_hourShort">ч</string>
@@ -59,7 +59,7 @@
     <string name="prayer_monthly">Месячное расписание намазов</string>
     <string name="hijri_title">Дата по хиджре</string>
     <string name="hijri_fmt">%1$s %2$s %3$s г. х.</string>
-    <string name="hijri_note">Дата по хиджре следует календарю Diyanet Турции; в других странах месяц может начаться на день раньше или позже. День сменяется в полночь, а не на закате.</string>
+    <string name="hijri_note">Дата по хиджре дана по календарю Diyanet (Турция); в других странах месяц может начаться на день раньше или позже. День сменяется в полночь, а не на закате.</string>
     <string name="widget_hijri_name">Дата по хиджре</string>
     <string name="widget_hijri_desc">Сегодняшняя дата по хиджре (календарь Diyanet) и григорианская дата.</string>
     <string name="hijri_month_1">Мухаррам</string>
@@ -81,11 +81,11 @@
     <string name="wear_phonePlace">Место с iPhone</string>
     <string name="wear_today">Сегодня</string>
     <string name="prayer_method_app">Метод расчёта</string>
-    <string name="prayer_method_appNote">В Турции официальное время — по Diyanet. Ваш выбор меняет время, уведомления, будильники и месячную таблицу; виджеты и часы на руке остаются на методе Diyanet.</string>
+    <string name="prayer_method_appNote">В Турции официальное время — по Diyanet. Ваш выбор меняет время, уведомления, будильники и месячную таблицу; виджеты на главном экране и смарт-часы по-прежнему используют метод Diyanet.</string>
     <string name="prayer_arc_title">Солнце и Луна</string>
     <string name="prayer_arc_day">До заката %1$s</string>
     <string name="prayer_arc_night">До восхода %1$s</string>
-    <string name="prayer_alarm_heading">Будильник в время намаза</string>
+    <string name="prayer_alarm_heading">Будильник на время намаза</string>
     <string name="prayer_alarm_note">В выбранное время намаза звонит настоящий будильник, даже в беззвучном режиме или режиме фокусирования. Будильники ставятся на ближайшие дни и обновляются при каждом открытии приложения.</string>
     <string name="prayer_alarm_unsupported">Будильникам намаза нужна iOS 26 или новее; в этой версии используются уведомления.</string>
     <string name="prayer_alarm_title">Время намаза: %1$s</string>

@@ -32,7 +32,7 @@
     "updated": "Zuletzt aktualisiert",
     "noscript": "Für die Live-Uhr muss JavaScript in Ihrem Browser aktiviert sein.",
     "copyright": "© 2026 Bumba Teknoloji Limited Şirketi",
-    "logoAlt": "Saat Tarih Startseite",
+    "logoAlt": "Startseite von Saat Tarih",
     "calendar": "Kalender",
     "tools": "Tools",
     "langMenu": "Sprache",
@@ -114,7 +114,7 @@
         "fünfzig"
       ],
       "join": "und",
-      "oh": "null",
+      "oh": "",
       "sentence": "Es ist {h} Uhr {m}",
       "oclock": "Es ist {h} Uhr",
       "unitFirst": true,
@@ -225,7 +225,7 @@
     "upcomingAll": "Zum Jahreskalender",
     "upcomingNone": "Keine bevorstehenden Tage gefunden.",
     "globeLabel": "Rotierender Globus mit Tag und Nacht, Zeitzonen-Meridianen und der Ortszeit großer Städte",
-    "globeCaption": "Die helle Seite ist Tag, die dunkle Nacht. Die Linien sind die 15°-Zeitzonenmeridiane (mit UTC-Versatz); die rote Linie ist der Nullpunkt, der Meridian von Greenwich (UTC). Bei jeder Stadt steht die Ortszeit. Ziehen Sie den Globus, um ihn zu drehen; zoomen Sie mit zwei Fingern, dem Mausrad oder den Tasten + und −. Beim Hineinzoomen erscheint auch die Ortszeit der Orte in diesem Gebiet. Noch weiter hinein wechselt die Ansicht zur OpenStreetMap-Karte (bis auf Straßenebene); Meridiane und Meridianabschnitte werden mit ihrer Länge beschriftet. Die Kartenkacheln werden dann von OpenStreetMap geladen (© OpenStreetMap-Mitwirkende); die Globustextur stammt von Natural Earth (gemeinfrei). Doppeltippen vergrößert.",
+    "globeCaption": "Die helle Seite ist Tag, die dunkle Nacht. Die Linien sind die 15°-Zeitzonenmeridiane (mit UTC-Versatz); die rote Linie ist der Nullpunkt, der Meridian von Greenwich (UTC). Bei jeder Stadt steht die Ortszeit. Ziehen Sie den Globus, um ihn zu drehen; zoomen Sie mit zwei Fingern, dem Mausrad oder den Tasten + und −. Beim Hineinzoomen erscheint auch die Ortszeit der Orte in diesem Gebiet. Bei noch stärkerem Zoom wechselt die Ansicht zur OpenStreetMap-Karte (bis auf Straßenebene); Meridiane und Meridianabschnitte werden mit ihrem Längengrad beschriftet. Die Kartenkacheln werden dann von OpenStreetMap geladen (© OpenStreetMap-Mitwirkende); die Globustextur stammt von Natural Earth (gemeinfrei). Doppeltippen vergrößert.",
     "globeTitle": "Weltkugel",
     "globeInfo": "Info zum Globus",
     "zoomIn": "Vergrößern",
@@ -332,7 +332,7 @@
           "**Kamera, Schlaf und Fokus:** Zum Lesen des QR-Codes oder Barcodes einer Wecker-Aufgabe öffnet sich die Kamera nur, während Sie den Code speichern und den Wecker ausschalten (die Berechtigung wird beim ersten Mal erfragt); das Bild wird auf dem Gerät verarbeitet, nicht gespeichert und nicht gesendet, nur der gelesene Wert bleibt mit dem Wecker auf dem Gerät. Die Aufgaben Schütteln und Gehen nutzen den Bewegungssensor nur bei geöffnetem Aufgabenbildschirm; Schritte werden nicht gespeichert. Pomodoro-Verlauf (Tag, Minuten, Aufgabe) und Schlafplan bleiben auf dem Gerät; Pomodoro-Rauschen und Schlafgeräusche werden auf dem Gerät erzeugt. Intelligenter Wecker: Wenn Sie im Bildschirm Schlaf eine Sitzung starten, wird im Zeitfenster des intelligenten Weckers der Bewegungssensor (Beschleunigungssensor) gelesen, und der Wecker klingelt früher, sobald Anzeichen für leichten Schlaf erkennbar sind; die Bewegungsdaten bleiben nur im Speicher und werden weder gespeichert noch gesendet. Es gibt keine Schlafaufzeichnung (Schlafphasen, Aufnahmen), das Mikrofon wird nicht verwendet.",
           "**Gottesdienst:** Ihr Koran-Lesezeichen, die Schriftgröße, Dhikr-Zählungen, das Gebets- und Fastenprotokoll (verrichtete Gebete, Nachholzahlen, Fastentage) und die Beträge im Zakat-Rechner bleiben nur auf dem Gerät; sie werden nirgendwohin gesendet und nicht für Statistiken oder Abzeichen verwendet. Koran-Text und Bittgebete sind in der App enthalten. Tippen Sie auf den Link zur Übersetzungsseite des Diyanet, öffnet sich diese im Browser. Den Goldpreis für die Zakat geben Sie selbst ein; die App ruft keine Preise ab.",
           "**iCloud-Synchronisierung:** Ist „Mit iCloud synchronisieren“ in den Einstellungen aktiv (Standard), werden Einstellungen, Weltuhren, Countdowns, gespeicherte Orte, Pomodoro- und Schlafdaten sowie Gottesdienst-Einträge über Apples iCloud-Schlüssel-Wert-Speicher mit iPhone, iPad und Mac desselben Apple-Accounts abgeglichen. Diese Daten liegen in Ihrem iCloud-Account und unterliegen Apples Bedingungen; wir haben keinen Zugriff, und sie erreichen unsere Server nie. Standort, Wecker, laufende Timer, Mitteilungseinstellungen, Abzeichen und Fotos werden nicht synchronisiert. Wird der Schalter ausgeschaltet, synchronisiert dieses Gerät nicht mehr.",
-          "**Health, Morgentagebuch, Weckerfoto und schwebende Uhr:** Wenn Sie „In Apple Health sichern“ einschalten, wird jedes beendete Intervalltraining als Training (Art, Beginn, Dauer) in Health eingetragen; die App liest Ihre Gesundheitsdaten nicht, und diese Daten gehen an keinen Server. Das Morgentagebuch (Stimmung, Schlaf, Vorsatz, Notiz) bleibt nur auf Ihren Geräten (bei aktivierter iCloud-Synchronisierung auf den Geräten Ihres Apple Accounts). Bei der Foto-Weckaufgabe wird das Foto nicht gespeichert; zum Vergleich wird nur ein sehr kleiner Fingerabdruck (72 Graustufen) auf dem Telefon behalten. Gewählte Berechnungsmethode, Gebetszeit-Wecker (iOS 26+) und Kontrollzentrum-Tasten bleiben auf dem Telefon. Die schwebende Uhr ist ein Bild-in-Bild-Fenster; sie spielt keinen Ton und sendet keine Daten.",
+          "**Health, Morgentagebuch, Weckerfoto und schwebende Uhr:** Wenn Sie „In Apple Health sichern“ einschalten, wird jedes beendete Intervalltraining als Training (Art, Beginn, Dauer) in Health eingetragen; die App liest Ihre Gesundheitsdaten nicht, und diese Daten gehen an keinen Server. Das Morgentagebuch (Stimmung, Schlaf, Vorsatz, Notiz) bleibt nur auf Ihren Geräten (bei aktivierter iCloud-Synchronisierung auf den Geräten Ihres Apple Accounts). Bei der Foto-Weckaufgabe wird das Foto nicht gespeichert; zum Vergleich wird nur eine sehr kleine Zusammenfassung (72 Grauwerte) auf dem Telefon behalten. Gewählte Berechnungsmethode, Gebetszeit-Wecker (iOS 26+) und Kontrollzentrum-Tasten bleiben auf dem Telefon. Die schwebende Uhr ist ein Bild-in-Bild-Fenster; sie spielt keinen Ton und sendet keine Daten.",
           "**Musikwecker, Orts- und Kalendererinnerungen, Fokussperre, Mac, Apple TV und Vision Pro:** Für einen Weckton wird ein 30-Sekunden-Ausschnitt des Titels, den Sie aus der Musikmediathek oder aus Dateien wählen, auf dem Telefon als Tondatei gespeichert; der Titel wird nirgendwohin gesendet (Zugriff auf die Mediathek wird nur bei der Auswahl erfragt). Bei Ortserinnerungen erkennt das iPhone selbst Ankunft und Verlassen; der Ort der Erinnerung bleibt auf dem Telefon, die Karte stammt von Apple. Beim Wecker für einen Kalendertermin werden nur Titel und Zeit dieses Termins verwendet. Die Fokussperre nutzt Apples Bildschirmzeit; die gewählten Apps und Websites sind verschlüsselte Apple-Token, die App sieht nicht, welche es sind. Die Apps für Mac, Apple TV und Vision Pro berechnen die Gebetszeiten auf dem Gerät; erlauben Sie den Standort, wird er nur auf dem Gerät verwendet, um die nächste Provinz zu finden."
         ]
       },
@@ -355,7 +355,7 @@
           "**Wear-OS-Uhr und Verknüpfungen:** Die Wear-OS-App berechnet die Gebetszeiten auf der Uhr; ist „Mein Standort“ gewählt, wird der ungefähre Standort nur auf der Uhr verwendet und nirgendwohin gesendet. Timer und Wecker, die Assistant oder andere Apps in Uhr & Datum stellen, werden nur auf dem Telefon gespeichert; Bildschirmschoner und Benachrichtigungen laufender Zähler entstehen auf dem Telefon.",
           "**Kamera, Schlaf und Fokus:** Den QR-Code oder Barcode einer Wecker-Aufgabe liest der Code-Scanner von Google (Google-Play-Dienste): Die App fragt nicht nach der Kameraberechtigung und sieht das Bild nicht; nur der gelesene Wert bleibt mit dem Wecker auf dem Telefon. Die Aufgaben Schütteln und Gehen nutzen den Beschleunigungssensor nur bei geöffnetem Weckerbildschirm; Schritte werden nicht gespeichert. Pomodoro-Verlauf (Tag, Minuten, Aufgabe) und Schlafplan bleiben auf dem Telefon; Pomodoro-Rauschen und Schlafgeräusche werden auf dem Telefon erzeugt (ein Vordergrunddienst lässt sie bei ausgeschaltetem Bildschirm weiterlaufen, mit \"Ton stoppen\" in der Mitteilung). Intelligenter Wecker: Wenn Sie im Bildschirm Schlaf eine Sitzung starten, wird im Zeitfenster des intelligenten Weckers der Bewegungssensor (Beschleunigungssensor) gelesen, und der Wecker klingelt früher, sobald Anzeichen für leichten Schlaf erkennbar sind; die Bewegungsdaten bleiben nur im Speicher und werden weder gespeichert noch gesendet. Es gibt keine Schlafaufzeichnung (Schlafphasen, Aufnahmen), das Mikrofon wird nicht verwendet. Die Sitzung läuft als Vordergrunddienst (mit „Beenden“ in der Mitteilung). Wenn Sie einem Wecker einen Spotify- oder YouTube-Link hinzufügen, öffnet sich der Link beim Klingeln in dieser App; die App öffnet nur den Link und hat keinen Zugriff auf die Musik.",
           "**Gottesdienst:** Ihr Koran-Lesezeichen, die Schriftgröße, Dhikr-Zählungen, das Gebets- und Fastenprotokoll (verrichtete Gebete, Nachholzahlen, Fastentage) und die Beträge im Zakat-Rechner bleiben nur auf dem Telefon; sie werden nirgendwohin gesendet und nicht für Statistiken oder Abzeichen verwendet. Koran-Text und Bittgebete sind in der App enthalten. Tippen Sie auf den Link zur Übersetzungsseite des Diyanet, öffnet sich diese im Browser. Den Goldpreis für die Zakat geben Sie selbst ein; die App ruft keine Preise ab.",
-          "**Health, Morgentagebuch, Weckerfoto, Stummschalten und schwebende Uhr:** Wenn Sie „In Health Connect sichern“ einschalten, wird nur die Berechtigung zum Schreiben von Training angefragt, und jedes beendete Intervalltraining wird als Trainingseinheit (Art, Beginn, Dauer) eingetragen; die App liest Ihre Gesundheitsdaten nicht. Das Morgentagebuch bleibt nur auf dem Telefon (und in seiner Google-Sicherung). Bei der Foto-Weckaufgabe wird das Foto mit der Kamera des Telefons aufgenommen (keine Kameraberechtigung) und nicht gespeichert; nur ein sehr kleiner Fingerabdruck bleibt. Der Zugriff auf „Bitte nicht stören“ für „Zur Gebetszeit stummschalten“ wird nur genutzt, wenn Sie es einschalten und in den Einstellungen erlauben. Die schwebende Uhr nutzt die Berechtigung „Über anderen Apps einblenden“; sie liest nichts vom Bildschirm und zeichnet nur die Uhr. Widgets und Schnelleinstellungen nutzen die eigenen Zähler der App.",
+          "**Health, Morgentagebuch, Weckerfoto, Stummschalten und schwebende Uhr:** Wenn Sie „In Health Connect sichern“ einschalten, wird nur die Berechtigung zum Schreiben von Training angefragt, und jedes beendete Intervalltraining wird als Trainingseinheit (Art, Beginn, Dauer) eingetragen; die App liest Ihre Gesundheitsdaten nicht. Das Morgentagebuch bleibt nur auf dem Telefon (und in seiner Google-Sicherung). Bei der Foto-Weckaufgabe wird das Foto mit der Kamera des Telefons aufgenommen (keine Kameraberechtigung) und nicht gespeichert; nur eine sehr kleine Zusammenfassung bleibt. Der Zugriff auf „Bitte nicht stören“ für „Zur Gebetszeit stummschalten“ wird nur genutzt, wenn Sie es einschalten und in den Einstellungen erlauben. Die schwebende Uhr nutzt die Berechtigung „Über anderen Apps einblenden“; sie liest nichts vom Bildschirm und zeichnet nur die Uhr. Widgets und Schnelleinstellungen nutzen die eigenen Zähler der App.",
           "**Orts- und Kalendererinnerungen, Fokussperre und Android TV:** Fügen Sie eine Ortserinnerung hinzu, werden genauer Standort und \"Immer zulassen\" erfragt; das Geofencing der Google-Play-Dienste erkennt Ankunft und Verlassen, der Ort der Erinnerung bleibt auf dem Telefon und die App sendet Ihren Standort nirgendwohin. Beim Wecker für einen Kalendertermin werden nur Titel und Zeit dieses Termins verwendet. Erteilen Sie für die Fokussperre den Nutzungszugriff, liest die App nur während der Pomodoro-Arbeitszeit einmal pro Sekunde auf dem Telefon den Namen der App im Vordergrund; das wird weder gespeichert noch gesendet. Der Android-TV-Bildschirm nutzt den in der App gewählten Ort."
         ]
       },
@@ -510,7 +510,7 @@
   },
   "notFound": {
     "title": "Seite nicht gefunden (404) | Saat Tarih",
-    "h1": "Diese Seite haben wir nicht gefunden",
+    "h1": "Wir konnten diese Seite nicht finden",
     "p": "Möglicherweise ist die Adresse falsch geschrieben oder die Seite wurde verschoben. Die aktuelle Uhrzeit finden Sie auf der Startseite.",
     "cta": "Zurück zur Startseite"
   },
@@ -671,7 +671,7 @@
       "newYear": "Neujahr",
       "apr23": "Tag der nationalen Souveränität und des Kindes",
       "may1": "Tag der Arbeit und der Solidarität",
-      "may19": "Gedenktag an Atatürk, Tag der Jugend und des Sports",
+      "may19": "Gedenken an Atatürk, Tag der Jugend und des Sports",
       "jul15": "Tag der Demokratie und der nationalen Einheit",
       "aug30": "Siegestag",
       "oct28": "Vorabend des Tags der Republik",
@@ -717,15 +717,15 @@
       "eyds2": "e-YDS 2026/12 (ÖSYM)",
       "kpssOrta": "KPSS Sekundarstufe (ÖSYM)",
       "kpssDhbt": "KPSS DHBT: Fachtest Religionsdienste (ÖSYM)",
-      "dus2": "DUS 2. Termin: Facharztprüfung Zahnmedizin (ÖSYM)",
-      "eus": "EUS: Facharztprüfung Pharmazie (ÖSYM)",
+      "dus2": "DUS 2. Termin: Zulassungsprüfung zur Fachzahnarztausbildung (ÖSYM)",
+      "eus": "EUS: Zulassungsprüfung zur Fachapothekerausbildung (ÖSYM)",
       "yds2": "YDS/2: Fremdsprachenprüfung (ÖSYM)",
-      "ales3": "ALES/3: Zulassungsprüfung Aufbaustudium (ÖSYM)",
-      "alesApply": "ALES/3 Anmeldezeitraum (ÖSYM)",
-      "kpssOnResult": "KPSS Ergebnisse Associate-Level (ÖSYM)",
-      "kpssOrtaResult": "KPSS Ergebnisse Sekundarstufe (ÖSYM)",
-      "ydsResult": "YDS/2 Ergebnisse (ÖSYM)",
-      "alesResult": "ALES/3 Ergebnisse (ÖSYM)",
+      "ales3": "ALES/3: Zulassungsprüfung für Master- und Promotionsstudium (ÖSYM)",
+      "alesApply": "ALES/3-Anmeldezeitraum (ÖSYM)",
+      "kpssOnResult": "KPSS-Ergebnisse für Absolventen zweijähriger Studiengänge (ÖSYM)",
+      "kpssOrtaResult": "KPSS-Ergebnisse Sekundarstufe (ÖSYM)",
+      "ydsResult": "YDS/2-Ergebnisse (ÖSYM)",
+      "alesResult": "ALES/3-Ergebnisse (ÖSYM)",
       "kpssTercih": "KPSS-2026/2 Platzierungswünsche (ÖSYM)",
       "common1": "Landesweite schriftliche Prüfungen, 1. Halbjahr, 1. Runde (MEB)",
       "common2": "Landesweite schriftliche Prüfungen, 1. Halbjahr, 2. Runde (MEB)",
@@ -743,7 +743,7 @@
     },
     "hubName": "Jahreskalender",
     "hubDesc": "Gesetzliche Feiertage, Bayram- und Vorabendtage, Kandil-Nächte und der Fastenmonat Ramadan.",
-    "projected": "Die religiösen Termine dieses Jahres folgen dem langfristigen Kalender der Diyanet und können sich bis dahin noch ändern.",
+    "projected": "Die religiösen Termine dieses Jahres folgen dem Langzeitkalender des Diyanet und können sich bis dahin noch ändern.",
     "fullFmt": "{weekday}, {day}. {month} {year}",
     "shortFmt": "{day}. {month}",
     "dateFmt": "{day}. {month} {year}",
@@ -761,9 +761,9 @@
     "icsDownload": "Herunterladen (.ics)",
     "icsSubscribe": "Abonnieren (iPhone, Mac, Outlook)",
     "icsGoogle": "Zu Google Kalender hinzufügen",
-    "icsNote": "Mit einem Abo übernimmt Ihr Kalender die Daten neuer Jahre von selbst; 2026–2031 sind enthalten. Religiöse Tage ab 2028 beruhen auf dem Langzeitkalender von Diyanet.",
+    "icsNote": "Mit einem Abo übernimmt Ihr Kalender die Termine neuer Jahre von selbst; 2026–2031 sind enthalten. Religiöse Tage ab 2028 beruhen auf dem Langzeitkalender von Diyanet.",
     "print": "Drucken / als PDF speichern",
-    "printNote": "Wählen Sie im Druckdialog \"Als PDF speichern\" als Ziel; der Kalender passt auf eine A4-Seite.",
+    "printNote": "Wählen Sie im Druckdialog „Als PDF speichern“ als Ziel; der Kalender passt auf eine A4-Seite.",
     "icsCalHolidays": "Feiertage in der Türkei (Saat Tarih)",
     "icsCalDays": "Religiöse und besondere Tage in der Türkei (Saat Tarih)",
     "icsHalf": "halber Tag",
@@ -812,7 +812,7 @@
         },
         "poll": {
           "name": "Terminumfrage",
-          "desc": "Terminvorschläge teilen, alle markieren, was passt."
+          "desc": "Terminvorschläge teilen und alle markieren lassen, was passt."
         },
         "diff": {
           "name": "Zeitverschiebung",
@@ -876,7 +876,7 @@
         },
         "chess": {
           "name": "Schachuhr",
-          "desc": "Spieluhr für zwei mit Inkrement."
+          "desc": "Bedenkzeituhr für zwei Spieler mit Inkrement."
         },
         "metronome": {
           "name": "Metronom",
@@ -924,7 +924,7 @@
       "title": "Online-Stoppuhr mit Rundenzeiten und Vollbild | Saat Tarih",
       "description": "Kostenlose Online-Stoppuhr: Rundenzeiten, schnellste und langsamste Runde, Vollbild und Tastenkürzel. Ihre Zeit bleibt auch beim Neuladen erhalten.",
       "h1": "Online-Stoppuhr",
-      "lead": "Die Stoppuhr misst auf die Hundertstelsekunde genau, erfasst Rundenzeiten und behält Ihre Zeit, auch wenn Sie die Seite neu laden oder schließen und wieder öffnen. Mit der Leertaste starten und stoppen Sie, mit L erfassen Sie eine Runde.",
+      "lead": "Die Stoppuhr misst auf die Hundertstelsekunde genau, erfasst Rundenzeiten und behält Ihre Zeit, auch wenn Sie die Seite neu laden oder schließen und wieder öffnen. Mit der Leertaste starten und stoppen Sie sie, mit L erfassen Sie eine Runde.",
       "start": "Start",
       "stop": "Stopp",
       "resume": "Fortsetzen",
@@ -957,7 +957,7 @@
       "csv": "Runden als CSV herunterladen"
     },
     "countdown": {
-      "title": "Countdown-Timer: nach Dauer oder bis zu einem Datum | Saat Tarih",
+      "title": "Countdown-Timer: nach Dauer oder Datum | Saat Tarih",
       "description": "Kostenloser Countdown: Minuten-Timer oder die Zeit bis zu einem Wunschdatum. Countdown bis Neujahr und zum Bayram, mit Tonsignal und Vollbild.",
       "h1": "Countdown",
       "lead": "Der Countdown funktioniert auf zwei Arten: als Timer, der Sie nach Ablauf der gewählten Dauer benachrichtigt, oder als Live-Anzeige der Tage, Stunden und Sekunden bis zu einem Datum Ihrer Wahl. Zählen Sie bis Neujahr, zu einem Bayram oder zu Ihrem eigenen Termin herunter.",
@@ -1009,8 +1009,8 @@
       "addMinute": "+1 Min."
     },
     "alarm": {
-      "title": "Online-Wecker mit Wiederholung und Schlummerfunktion | Saat Tarih",
-      "description": "Kostenloser Wecker im Browser: Uhrzeit, Bezeichnung, Wiederholung an gewählten Wochentagen, 5 Minuten Schlummern und Benachrichtigungen.",
+      "title": "Online-Wecker mit Wiederholung und Schlummern | Saat Tarih",
+      "description": "Kostenloser Browser-Wecker: Uhrzeit, Bezeichnung, Wiederholung an Wochentagen, 5 Min. Schlummern, Benachrichtigungen. Er klingelt bei geöffneter Seite.",
       "h1": "Online-Wecker",
       "lead": "Wählen Sie eine Weckzeit und die gewünschten Tage; zur eingestellten Zeit ertönt ein Ton und eine Benachrichtigung erscheint. Wecker werden auf diesem Gerät gespeichert. Wegen Einschränkungen des Browsers klingelt der Wecker nur, solange diese Seite (der Tab) geöffnet bleibt.",
       "timeLabel": "Weckzeit",
@@ -1055,10 +1055,10 @@
         },
         {
           "q": "Wie nutze ich die Schlummerfunktion?",
-          "a": "Drücken Sie während des Klingelns „5 Min. schlummern“; der Wecker klingelt dann fünf Minuten später erneut. Die Schaltfläche „Schließen“ schaltet ihn stumm; wiederholte Wecker klingeln am nächsten gewählten Tag wieder."
+          "a": "Drücken Sie während des Klingelns „5 Min. schlummern“; der Wecker klingelt dann fünf Minuten später erneut. Die Schaltfläche „Schließen“ schaltet ihn stumm; wiederkehrende Wecker klingeln am nächsten gewählten Tag wieder."
         }
       ],
-      "soundLabel": "Wecktonart",
+      "soundLabel": "Weckton",
       "sounds": {
         "chime": "Dreiklang",
         "bell": "Glocke",
@@ -1412,7 +1412,7 @@
     "addGoogle": "Zu Google Kalender hinzufügen",
     "pickHint": "Tippen Sie oben in der Tabelle auf eine Stunde, um die Besprechungszeit zu wählen; Link und Kalendereintrag enthalten sie.",
     "meeting": "Besprechung",
-    "picked": "Gewählte Zeit: {time} (Zeit in {city})"
+    "picked": "Gewählte Zeit: {time} (Ortszeit {city})"
   },
   "poll": {
     "title": "Terminumfrage: Gemeinsam die beste Zeit finden | Saat Tarih",
@@ -1446,12 +1446,12 @@
     "no": "Nein",
     "respond": "Meinen Antwortlink erstellen",
     "responseHint": "Senden Sie diesen Antwortlink an den Organisator (per Nachricht oder E-Mail).",
-    "ownSaved": "Ihre Antwort wurde zu den Ergebnissen in diesem Browser hinzugefügt. Auf einem anderen Gerät senden Sie sich diesen Link selbst.",
+    "ownSaved": "Ihre Antwort wurde zu den Ergebnissen in diesem Browser hinzugefügt. Wenn Sie ein anderes Gerät nutzen, senden Sie sich diesen Link selbst.",
     "needName": "Geben Sie Ihren Namen ein.",
     "resultsHeading": "Ergebnisse",
     "participant": "Teilnehmer",
     "total": "Summe",
-    "best": "Bester Termin: {slot} ({n} von {total} können)",
+    "best": "Bester Termin: {slot} ({n} von {total} haben Zeit)",
     "noAnswers": "Noch keine Antworten. Sie erscheinen hier, wenn Sie die Antwortlinks der Teilnehmer öffnen oder unten einfügen.",
     "pasteLabel": "Erhaltenen Antwortlink einfügen",
     "pasteBtn": "Hinzufügen",
@@ -1468,7 +1468,7 @@
     "faq": [
       {
         "q": "Wo werden die Umfragedaten gespeichert?",
-        "a": "Nicht auf einem Server. Titel, Terminvorschläge, Namen und Antworten stehen im Teil des Links nach dem #-Zeichen, den Browser nicht an den Server senden. Die Antworten, die der Organisator sieht, werden nur in seinem Browser gespeichert; wer den Link erhält, kann ihn sehen."
+        "a": "Nicht auf einem Server. Titel, Terminvorschläge, Namen und Antworten stehen im Teil des Links nach dem #-Zeichen, den Browser nicht an den Server senden. Die Antworten, die der Organisator sieht, werden nur in seinem Browser gespeichert; wer den Link erhält, kann diese Daten sehen."
       },
       {
         "q": "Wie senden mir die Teilnehmer ihre Antworten?",
@@ -1502,7 +1502,7 @@
     "faqWhenYears": "{name}: {list}.",
     "faqHow": "Wie funktioniert der Countdown?",
     "faqHowA": "Der Zähler vergleicht die serversynchronisierte Uhrzeit mit dem Beginn des Zieldatums (00:00 Uhr) und aktualisiert sich jede Sekunde. Das Zieldatum stammt aus den Daten unserer Kalenderseiten.",
-    "school": "Der Schulkalender folgt dem Arbeitskalender 2026-2027 des türkischen Bildungsministeriums (MEB); die Bildungsdirektionen der Provinzen können örtlich abweichen.",
+    "school": "Der Schulkalender folgt dem Arbeitskalender 2026–2027 des türkischen Bildungsministeriums (MEB); die Bildungsdirektionen der Provinzen können örtlich abweichen.",
     "targets": {
       "newYear": {
         "name": "Neujahr",
@@ -1553,7 +1553,7 @@
         "dat": "zur KPSS"
       },
       "ales": {
-        "name": "ALES (Zulassungsprüfung Aufbaustudium)",
+        "name": "ALES (Zulassungsprüfung für das Aufbaustudium)",
         "dat": "zur ALES"
       },
       "yds": {
@@ -1569,11 +1569,11 @@
         "dat": "zu den Zwischenferien"
       },
       "aof": {
-        "name": "AÖF-Prüfungen (Anadolu-Universität Fernstudium)",
+        "name": "AÖF-Prüfungen (Fernstudium der Anadolu-Universität)",
         "dat": "zu den AÖF-Prüfungen"
       },
       "aol": {
-        "name": "AÖL-Prüfung (offenes Gymnasium)",
+        "name": "AÖL-Prüfung (Fern-Gymnasium)",
         "dat": "zur AÖL-Prüfung"
       },
       "feb14": {
@@ -1674,7 +1674,7 @@
     "codeHeading": "Einbettungscode",
     "copy": "Code kopieren",
     "copied": "Code kopiert",
-    "note": "Unter dem Widget erscheinen ein Link zu Saat Tarih und die Bumba-Signatur; bitte lassen Sie beides bestehen.",
+    "note": "Unter dem Widget erscheinen ein Link zu Saat Tarih und die Bumba-Signatur; bitte lassen Sie beides stehen.",
     "previewTitle": "Vorschau des Widgets von Saat Tarih",
     "frameTitle": "Uhr-Widget von Saat Tarih",
     "faqHeading": "Häufige Fragen zum Uhr-Widget",
@@ -1714,7 +1714,7 @@
     "yourLocation": "Ihr Standort",
     "locationNote": "Ihr Standort wird nur auf Ihrem Gerät zur Berechnung verwendet und nicht an den Server gesendet.",
     "nextIn": "Restzeit bis {name}",
-    "todayHeading": "Die Zeiten von heute",
+    "todayHeading": "Heutige Zeiten",
     "colPrayer": "Gebet",
     "colTime": "Uhrzeit",
     "monthHeading": "Gebetszeiten {month} {year}",
@@ -1734,7 +1734,7 @@
     "provincesHeading": "Gebetszeiten nach Provinz",
     "provincesLead": "Wählen Sie eine Provinz.",
     "districtsHeading": "Bezirke",
-    "districtTitle": "{city} Gebetszeiten | Saat Tarih",
+    "districtTitle": "Gebetszeiten {city} | Saat Tarih",
     "provinceCentre": "{city} (Provinzzentrum)",
     "districtSource": "Die Bezirkskoordinaten stammen von GeoNames (CC BY 4.0); die Zeiten werden für das Bezirkszentrum berechnet. Diyanet veröffentlicht für die zentralen Bezirke der Großstadtprovinzen keine eigenen Zeiten und nutzt die Provinzzeit; maßgeblich ist das türkische Präsidium für Religionsangelegenheiten (Diyanet).",
     "noscript": "Zum Anzeigen der Gebetszeiten muss JavaScript im Browser aktiviert sein.",
@@ -1742,15 +1742,15 @@
     "faq": [
       {
         "q": "Wie werden Gebetszeiten berechnet?",
-        "a": "Aus Ihrem Breiten- und Längengrad wird der Sonnenstand im Tagesverlauf berechnet. Fadschr beginnt bei 18° unter dem Horizont, Ischa bei 17°, Asr, wenn ein Schatten so lang ist wie der Gegenstand. Die Berechnung läuft in Ihrem Browser."
+        "a": "Aus Ihrem Breiten- und Längengrad wird der Sonnenstand im Tagesverlauf berechnet. Fadschr beginnt, wenn die Sonne 18° unter dem Horizont steht, Ischa bei 17° unter dem Horizont und Asr, wenn der Schatten eines Gegenstands so lang ist wie der Gegenstand selbst. Die Berechnung läuft in Ihrem Browser."
       },
       {
         "q": "Wird mein Standort an den Server gesendet?",
         "a": "Nein. Wenn Sie den Standortzugriff erlauben, werden die Koordinaten nur auf Ihrem Gerät zur Berechnung verwendet; sie werden weder an den Server gesendet noch in Statistikereignissen erfasst. Ihre letzte Auswahl bleibt nur im lokalen Speicher Ihres Browsers."
       },
       {
-        "q": "Sind die Zeiten identisch mit denen der Diyanet?",
-        "a": "Die Berechnung ist auf die Zeiten der Diyanet abgestimmt und weicht in den Provinzzentren höchstens um 1 Minute ab. Offiziell sind dennoch die Zeiten, die das türkische Präsidium für Religionsangelegenheiten veröffentlicht."
+        "q": "Sind die Zeiten identisch mit denen des Diyanet?",
+        "a": "Die Berechnung ist auf die Zeiten des Diyanet abgestimmt und weicht in den Provinzzentren höchstens um 1 Minute ab. Offiziell sind dennoch die Zeiten, die das türkische Präsidium für Religionsangelegenheiten veröffentlicht."
       },
       {
         "q": "Wann sind Iftar und Sahur?",
@@ -1758,25 +1758,25 @@
       },
       {
         "q": "Kann ich die Seite im Ausland nutzen?",
-        "a": "Ja. Mit „Meinen Standort verwenden“ werden die Zeiten überall auf der Welt berechnet. In sehr hohen Breiten kann der Winkel für Fadschr oder Ischa ausbleiben; dann wird ein Näherungswert nach der Siebtel-der-Nacht-Regel angegeben."
+        "a": "Ja. Mit „Meinen Standort verwenden“ werden die Zeiten überall auf der Welt berechnet. In sehr hohen Breiten erreicht die Sonne den Winkel für Fadschr oder Ischa unter Umständen nicht; dann wird ein Näherungswert nach der Siebtel-der-Nacht-Regel angegeben."
       },
       {
         "q": "Was ist die hanafitische Asr-Zeit und warum weicht sie ab?",
-        "a": "Asr beginnt, wenn der Schatten eines Gegenstands so lang ist wie der Gegenstand selbst plus sein Mittagsschatten; Diyanet sowie die schafiitische, malikitische und hanbalitische Rechtsschule folgen dem. Die hanafitische Schule wartet, bis der Schatten doppelt so lang ist, daher beginnt Asr je nach Jahreszeit etwa 30 bis 80 Minuten später. Auf der Seite der Gebetszeiten können Sie unter \"Berechnungsmethode\" den hanafitischen Asr und Methoden anderer Länder wählen."
+        "a": "Asr beginnt, wenn der Schatten eines Gegenstands so lang ist wie der Gegenstand selbst plus sein Mittagsschatten; Diyanet sowie die schafiitische, malikitische und hanbalitische Rechtsschule folgen dem. Die hanafitische Schule wartet, bis der Schatten doppelt so lang ist, daher beginnt Asr je nach Jahreszeit etwa 30 bis 80 Minuten später. Auf der Seite der Gebetszeiten können Sie unter „Berechnungsmethode“ den hanafitischen Asr und Methoden anderer Länder wählen."
       }
     ],
     "search": "gebetszeiten gebetszeit gebetsruf adhan fadschr dhuhr asr maghrib ischa iftar sahur namaz vakitleri imsakiye ramadan zeitplan suhur iftar",
     "imHeading": "Ramadan-Imsakiye (Zeitplan)",
-    "imText": "Ein farbiger Ramadan-Zeitplan mit Suhur- (Fadschr) und Iftar-Zeiten (Maghrib) für den kommenden Ramadan, berechnet für Ihren Standort. Öffnen Sie ihn oder laden Sie ihn als Bild zum Teilen oder Drucken herunter.",
+    "imText": "Ein farbiger Ramadan-Zeitplan mit Sahur- (Fadschr) und Iftar-Zeiten (Maghrib) für den kommenden Ramadan, berechnet für Ihren Standort. Öffnen Sie ihn oder laden Sie ihn als Bild zum Teilen oder Drucken herunter.",
     "imOpen": "Zeitplan öffnen",
     "imDownload": "Als PNG herunterladen",
     "imTitle": "Ramadan-Imsakiye {year}",
     "imAlt": "Ramadan-Zeitplan {year} für {place}",
     "imDay": "Ramadan",
     "imDate": "Datum",
-    "imSahur": "Suhur",
+    "imSahur": "Sahur",
     "imIftar": "Iftar",
-    "imNote": "Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für religiöse Angelegenheiten (Diyanet).",
+    "imNote": "Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für Religionsangelegenheiten (Diyanet).",
     "imFile": "ramadan-imsakiye",
     "imBrand": "Bumba Group · Bumba Life",
     "kerahatHeading": "Makruh-Zeiten (ungefähr)",
@@ -1785,14 +1785,14 @@
       "istiva": "Vor Mittag (Istiwa)",
       "isfirar": "Sonnenuntergang (Isfirar)"
     },
-    "kerahatNote": "In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Der Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten).",
+    "kerahatNote": "In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten).",
     "method": {
       "heading": "Berechnungsmethode",
       "label": "Methode",
       "asrLabel": "Asr",
-      "asrStd": "Standard (Schafiitisch, Malikitisch, Hanbalitisch, Diyanet)",
+      "asrStd": "Standard (schafiitisch, malikitisch, hanbalitisch, Diyanet)",
       "asrHanafi": "Hanafitisch (doppelte Schattenlänge)",
-      "note": "In der Türkei gelten die Zeiten des Präsidiums für Religionsangelegenheiten (Diyanet). Wählen Sie eine andere Methode, werden die Zeiten, die Monatstabelle und der Ramadan-Kalender auf dieser Seite danach berechnet; die Auswahl wird nur in diesem Browser gespeichert.",
+      "note": "In der Türkei gelten offiziell die Zeiten des Präsidiums für Religionsangelegenheiten (Diyanet). Wählen Sie eine andere Methode, werden die Zeiten, die Monatstabelle und der Ramadan-Zeitplan auf dieser Seite danach berechnet; die Auswahl wird nur in diesem Browser gespeichert.",
       "active": "Methode: {name}",
       "hanafiShort": "Hanafitischer Asr",
       "names": {
@@ -1803,7 +1803,7 @@
         "makkah": "Umm al-Qura (Mekka)",
         "karachi": "Universität für Islamische Wissenschaften, Karatschi",
         "tehran": "Geophysikalisches Institut Teheran",
-        "jafari": "Schiitisch (Ghom)",
+        "jafari": "Zwölfer-Schia (Ghom)",
         "gulf": "Golfregion",
         "kuwait": "Kuwait",
         "qatar": "Katar",
@@ -1818,7 +1818,7 @@
     "description": "Jahreskreis (Sommer oben), Daten der Sonnenwenden und Tagundnachtgleichen, längster Tag, Sonnenauf- und -untergang, Mondphase und Tageslänge.",
     "h1": "Jahreszeiten",
     "lead": "Das Jahr dreht sich wie ein Rad: Welche Jahreszeit haben wir, wie viele Tage sind es bis zur nächsten, wann gehen Sonne auf und unter, und welche Phase hat der Mond? Alles auf einer Seite für Ihren Standort oder eine gewählte Provinz.",
-    "wheelLabel": "Jahreszeitenrad des Jahres",
+    "wheelLabel": "Jahreszeitenrad",
     "seasons": {
       "spring": "Frühling",
       "summer": "Sommer",
@@ -1827,8 +1827,8 @@
     },
     "current": "Es ist {season}",
     "dayOf": "Tag {n} (von {total})",
-    "nextIn": "Noch {days} Tage bis {season}",
-    "startsOn": "Beginn von {season}: {date}",
+    "nextIn": "Noch {days} Tage bis zum {season}",
+    "startsOn": "{season} beginnt am {date}",
     "sunHeading": "Die Sonne heute",
     "sunrise": "Sonnenaufgang",
     "sunset": "Sonnenuntergang",
@@ -1859,7 +1859,7 @@
     "moonCalHeading": "Mondkalender",
     "moonCalCaption": "{month}: Mondphase jeweils um 12 Uhr",
     "eclipseHeading": "Finsternisse",
-    "eclipseLead": "Kommende Sonnen- und Mondfinsternisse. Die Uhrzeit ist der Zeitpunkt der größten Verfinsterung ({place}).",
+    "eclipseLead": "Kommende Sonnen- und Mondfinsternisse. Die Uhrzeit ist der Zeitpunkt der größten Verfinsterung ({place}, Ortszeit).",
     "eclipseTypes": {
       "solarTotal": "Totale Sonnenfinsternis",
       "solarAnnular": "Ringförmige Sonnenfinsternis",
@@ -1882,7 +1882,7 @@
     "hoursShort": "Std.",
     "minutesShort": "Min.",
     "tableHeading": "Beginn der Jahreszeiten",
-    "tableLead": "Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten gelten in türkischer Zeit (UTC+3).",
+    "tableLead": "Astronomische Jahreszeiten, also die Zeitpunkte der Tagundnachtgleichen und Sonnenwenden. Die Zeiten sind in türkischer Zeit (UTC+3) angegeben.",
     "colYear": "Jahr",
     "meteoNote": "Meteorologische Jahreszeiten sind Dreimonatsblöcke: Der Frühling beginnt am 1. März, der Sommer am 1. Juni, der Herbst am 1. September und der Winter am 1. Dezember. Sie werden für Kalender und Statistiken verwendet.",
     "factsHeading": "Die Natur im Lauf der Jahreszeiten",
@@ -1956,7 +1956,7 @@
     "goldenPm": "Goldene Stunde abends",
     "blueAm": "Blaue Stunde morgens",
     "bluePm": "Blaue Stunde abends",
-    "lightNote": "Goldene Stunde: Sonne zwischen 6° über und 4° unter dem Horizont, weiches warmes Licht. Blaue Stunde: Sonne 4° bis 6° unter dem Horizont, blaue Dämmerung. Praktisch für Fotografen.",
+    "lightNote": "Goldene Stunde: Sonne zwischen 6° über und 4° unter dem Horizont, mit weichem, warmem Licht. Blaue Stunde: Sonne 4° bis 6° unter dem Horizont, blaue Dämmerung. Praktisch für Fotografen.",
     "moonIcsHeading": "Mondphasen und Finsternisse im Kalender",
     "moonIcsNote": "Neumonde, Vollmonde und Finsternisse (2026–2031, als UTC-Zeitpunkte; Ihr Kalender zeigt sie in Ihrer Zeit).",
     "crescentHeading": "Sichtbarkeit der Mondsichel",
@@ -1974,15 +1974,15 @@
     "crescentCats": {
       "A": "Mit bloßem Auge leicht sichtbar",
       "B": "Bei besten Bedingungen mit bloßem Auge sichtbar",
-      "C": "Erst mit Fernglas finden, dann mit bloßem Auge",
+      "C": "Evtl. erst mit Fernglas auffindbar, dann mit bloßem Auge sichtbar",
       "D": "Nur mit Fernglas oder Teleskop",
       "E": "Selbst mit Teleskop nicht sichtbar",
       "F": "Nicht sichtbar"
     },
-    "crescentNote": "Dies ist eine Vorhersage: Wolken, Horizont und Sehschärfe beeinflussen das Ergebnis. In der Türkei richten sich die Monatsanfänge nach dem Diyanet-Kalender, der vorab berechnet wird; Länder mit Sichtung können um einen Tag abweichen.",
+    "crescentNote": "Dies ist eine Vorhersage: Wolken, Horizont und Sehschärfe beeinflussen das Ergebnis. In der Türkei richten sich die Hidschri-Monate nach dem Diyanet-Kalender, der vorab berechnet wird; Länder, die auf die Mondsichtung setzen, können um einen Tag abweichen.",
     "eclMapHeading": "Finsterniskarte",
     "eclMapLabel": "Finsternis",
-    "eclMapSolar": "Orange: Gebiete mit partieller Finsternis (je dunkler, desto mehr der Sonne ist bedeckt). Dunkelrot: Totalitätszone; violett: Zone der ringförmigen Finsternis. Schwarzer Punkt: gewählter Ort.",
+    "eclMapSolar": "Orange: Gebiete mit partieller Finsternis (je dunkler, desto stärker ist die Sonne bedeckt). Dunkelrot: Totalitätszone; violett: Zone der ringförmigen Finsternis. Schwarzer Punkt: gewählter Ort.",
     "eclMapLunar": "Blau: Gebiete, in denen der Mond bei maximaler Finsternis über dem Horizont steht und die Finsternis sichtbar ist. Blauer Punkt: Mond im Zenit; schwarzer Punkt: gewählter Ort.",
     "eclMapNote": "Die Karte wird im Browser näherungsweise aus den Positionen von Sonne und Mond berechnet (Ränder können um einige Dutzend km abweichen). Küstenlinien: Natural Earth. Genaue Zonen und Zeiten auf den Finsternisseiten der NASA."
   },
@@ -2042,7 +2042,7 @@
     "faq": [
       {
         "q": "Woher stammen die Wetterdaten?",
-        "a": "Die Daten werden direkt in Ihren Browser von Open-Meteo geladen, einem offenen Wetterdienst. Es handelt sich um eine Modellvorhersage, die von lokalen Messungen um einige Grad und Stunden abweichen kann."
+        "a": "Die Daten werden direkt von Open-Meteo, einem offenen Wetterdienst, in Ihren Browser geladen. Es handelt sich um eine Modellvorhersage, die von lokalen Messungen um einige Grad und Stunden abweichen kann."
       },
       {
         "q": "Wird mein Standort weitergegeben?",
@@ -2096,7 +2096,7 @@
   },
   "qibla": {
     "title": "Qibla-Richtung: Kompass, Qibla-Winkel und Qibla-Zeit | Saat Tarih",
-    "description": "Die Richtung der Kaaba von Ihrem Ort: Live-Kompass, Qibla-Winkel ab Norden, Entfernung zur Kaaba, die heutige Qibla-Zeit und Moscheen in der Nähe.",
+    "description": "Die Richtung der Kaaba von Ihrem Ort aus: Live-Kompass, Qibla-Winkel ab Norden, Entfernung zur Kaaba, die heutige Qibla-Zeit und Moscheen in der Nähe.",
     "h1": "Qibla-Richtung",
     "lead": "Qibla-Winkel, Entfernung zur Kaaba und die heutige Qibla-Zeit für den gewählten Ort; Live-Richtung mit dem Kompass Ihres Telefons.",
     "search": "qibla kibla richtung kompass kaaba mekka qibla-zeit qibla-winkel moschee moscheen in der nähe",
@@ -2109,7 +2109,7 @@
     "start": "Kompass starten",
     "aligned": "Sie blicken zur Qibla",
     "turn": "Halten Sie das Telefon waagerecht und drehen Sie sich in Pfeilrichtung",
-    "waiting": "Warte auf Kompassdaten…",
+    "waiting": "Warten auf Kompassdaten …",
     "noCompass": "Dieses Gerät oder dieser Browser hat keinen Kompass. Messen Sie den Qibla-Winkel im Uhrzeigersinn von Norden oder blicken Sie zur Qibla-Zeit zur Sonne.",
     "denied": "Die Kompassberechtigung wurde nicht erteilt. Laden Sie die Seite neu, um es erneut zu versuchen.",
     "calibrate": "Der Kompass muss evtl. kalibriert werden: Bewegen Sie das Telefon einige Male in Form einer 8 und halten Sie Abstand zu Magneten, Metall und Elektronik.",
@@ -2118,7 +2118,7 @@
     "mosquesHeading": "Moscheen in der Nähe",
     "mosquesText": "Moscheen rund um den gewählten Ort (4 km) werden aus OpenStreetMap-Daten aufgelistet.",
     "mosquesShow": "Moscheen anzeigen",
-    "mosquesLoading": "Moscheen werden geladen…",
+    "mosquesLoading": "Moscheen werden geladen …",
     "mosquesNone": "Keine Moscheen in der Nähe gefunden.",
     "mosquesError": "Moscheen konnten nicht geladen werden. Bitte später erneut versuchen.",
     "mosquesAttribution": "Daten © OpenStreetMap-Mitwirkende (ODbL), über die Overpass API.",
@@ -2130,11 +2130,11 @@
     "faq": [
       {
         "q": "Wie finde ich die Qibla-Richtung?",
-        "a": "Die Qibla ist die Richtung des kürzesten Weges von Ihrem Ort zur Kaaba in Mekka. Diese Seite gibt den Qibla-Winkel für den gewählten Ort in Grad im Uhrzeigersinn von Norden an; tippen Sie auf dem Telefon auf \"Kompass starten\", zeigt der Pfeil direkt zur Qibla. Ohne Kompass können Sie zur Qibla-Zeit auch zur Sonne blicken."
+        "a": "Die Qibla ist die Richtung des kürzesten Weges von Ihrem Ort zur Kaaba in Mekka. Diese Seite gibt den Qibla-Winkel für den gewählten Ort in Grad im Uhrzeigersinn von Norden an; tippen Sie auf dem Telefon auf „Kompass starten“, zeigt der Pfeil direkt zur Qibla. Ohne Kompass können Sie zur Qibla-Zeit auch zur Sonne blicken."
       },
       {
         "q": "Was ist die Qibla-Zeit?",
-        "a": "Die Qibla-Zeit ist der Moment, in dem die Sonne genau in Qibla-Richtung steht; wer in dieser Minute zur Sonne blickt, blickt zur Qibla. Sie verschiebt sich täglich um einige Minuten und hängt vom Ort ab. An manchen Orten weit von der Kaaba erreicht die Sonne die Qibla-Richtung an einem Tag nie."
+        "a": "Die Qibla-Zeit ist der Moment, in dem die Sonne genau in Qibla-Richtung steht; wer in dieser Minute zur Sonne blickt, blickt zur Qibla. Sie verschiebt sich täglich um einige Minuten und hängt vom Ort ab. An einigen Orten weit entfernt von der Kaaba erreicht die Sonne die Qibla-Richtung an bestimmten Tagen gar nicht."
       },
       {
         "q": "In welcher Richtung liegt die Qibla von Berlin?",
@@ -2154,15 +2154,15 @@
     "lead": "An welchen Tagen sollten Sie Urlaub nehmen, um die Feiertage in der Türkei mit einem Wochenende zu verbinden? Für jeden Feiertag die längsten freien Zeiträume nach Zahl der Urlaubstage.",
     "search": "brückentage urlaub planer türkei feiertage langes wochenende bayram köprü tatil",
     "yearLabel": "Jahr",
-    "maxLabel": "Höchstens Urlaub",
+    "maxLabel": "Max. Urlaubstage",
     "maxAll": "Alle",
     "maxN": "{n} Tage",
     "colHoliday": "Feiertag",
-    "colDates": "Frei",
+    "colDates": "Freier Zeitraum",
     "colLeave": "Urlaub",
     "colTotal": "Gesamt",
     "colDays": "Urlaubstage",
-    "noLeave": "Keiner",
+    "noLeave": "Keine",
     "leaveN": "{n} Tage",
     "totalN": "{n} Tage",
     "halfNote": "{date} (halber Tag)",
@@ -2170,7 +2170,7 @@
     "best": "Am lohnendsten",
     "caption": "Brückentage {year}: längste freie Zeiträume nach Zahl der Urlaubstage",
     "groups": {
-      "rb": "Zuckerfest",
+      "rb": "Ramadanfest",
       "kb": "Opferfest"
     },
     "note": "Wochenenden und Feiertage brauchen keinen Urlaub; ein halber Vorabend an einem Werktag zählt als halber Urlaubstag. Vorabende sind im öffentlichen Dienst nachmittags frei; in der Privatwirtschaft gilt die Regel des Arbeitgebers. Verwaltungsurlaub und betriebliche Brückentage sind nicht enthalten.",
@@ -2183,7 +2183,7 @@
     ],
     "faqBest": {
       "q": "Welche Brückentage lohnen sich {year} am meisten?",
-      "a": "{year} lohnt sich am meisten: {name} – {days} Tage frei mit {leave} Urlaubstagen ({dates})."
+      "a": "Im Jahr {year} lohnt sich am meisten: {name} – {days} Tage frei mit {leave} Urlaubstagen ({dates})."
     }
   },
   "zones": {
@@ -2218,9 +2218,9 @@
     "hoursShort": "Std.",
     "minutesShort": "Min.",
     "ambiguous": {
-      "IST": "IST steht auch für Irische Normalzeit (UTC+1) und Israelische Normalzeit (UTC+2); diese Seite ist die Indische Normalzeit.",
-      "CST": "CST steht auch für Chinesische Normalzeit (UTC+8) und Kubanische Normalzeit (UTC−5); diese Seite ist die nordamerikanische Central Standard Time.",
-      "GST": "GST steht auch für Südgeorgien-Zeit (UTC−2); diese Seite ist die Golf-Zeit."
+      "IST": "IST steht auch für Irische Normalzeit (UTC+1) und Israelische Normalzeit (UTC+2); diese Seite behandelt die Indische Normalzeit.",
+      "CST": "CST steht auch für Chinesische Normalzeit (UTC+8) und Kubanische Normalzeit (UTC−5); diese Seite behandelt die nordamerikanische Central Standard Time.",
+      "GST": "GST steht auch für Südgeorgien-Zeit (UTC−2); diese Seite behandelt die Golf-Zeit."
     },
     "trtName": "Türkische Zeit",
     "faq": [
@@ -2284,7 +2284,7 @@
     "title": "Unix-Zeitstempel: Live-Unix-Zeit und Datumsumrechner | Saat Tarih",
     "description": "Aktuelle Unix-Zeit (Epoch) live in Sekunden und Millisekunden; Zeitstempel in Datum und Datum in Zeitstempel umrechnen, in UTC, Ortszeit und ISO 8601.",
     "h1": "Unix-Zeitstempel",
-    "lead": "Die Sekunden seit 1. Januar 1970 00:00:00 UTC: Live-Unix-Zeit und ein Umrechner in beide Richtungen.",
+    "lead": "Die Anzahl der Sekunden seit dem 1. Januar 1970, 00:00:00 UTC: Live-Unix-Zeit und ein Umrechner in beide Richtungen.",
     "search": "unix zeitstempel timestamp epoch unix zeit sekunden millisekunden umrechner 2038",
     "nowLabel": "Aktuelle Unix-Zeit",
     "seconds": "Sekunden",
@@ -2301,7 +2301,7 @@
     "resUtc": "UTC",
     "resLocal": "Ortszeit",
     "resIso": "ISO 8601",
-    "resRel": "Von jetzt",
+    "resRel": "Relativ zu jetzt",
     "resSec": "Sekunden",
     "resMs": "Millisekunden",
     "detectedMs": "Als Millisekunden gelesen",
@@ -2324,7 +2324,7 @@
     "faq": [
       {
         "q": "Was ist ein Unix-Zeitstempel?",
-        "a": "Ein Unix-Zeitstempel (Epoch-Zeit) ist die Zahl der Sekunden seit 1. Januar 1970 00:00:00 UTC. Er hängt nicht von der Zeitzone ab; Computersysteme speichern Datumsangaben als diese Zahl."
+        "a": "Ein Unix-Zeitstempel (Epoch-Zeit) ist die Zahl der Sekunden seit dem 1. Januar 1970, 00:00:00 UTC. Er hängt nicht von der Zeitzone ab; Computersysteme speichern Datumsangaben als diese Zahl."
       },
       {
         "q": "Ist ein Zeitstempel in Sekunden oder Millisekunden?",
@@ -2353,10 +2353,10 @@
     "colName": "Feiertag",
     "colLeft": "Noch",
     "summary": "{year}: {n} Feiertage, {w} an Werktagen.",
-    "regional": "Zusätzlich gibt es {year} {n} Feiertage, die nur in einzelnen Bundesländern oder Regionen gelten; sie werden hier nicht gezeigt.",
+    "regional": "Im Jahr {year} gibt es zusätzlich {n} Feiertage, die nur in einzelnen Bundesländern, Bundesstaaten oder Regionen gelten; sie werden hier nicht angezeigt.",
     "nextLabel": "Nächster Feiertag",
     "source": "Quelle: Nager.Date (date.nager.at, MIT-Lizenz), abgerufen am {date}. Nur landesweite Feiertage; Daten können sich ändern, maßgeblich ist die amtliche Mitteilung.",
-    "localName": "Landessprache: {name}",
+    "localName": "Name in der Landessprache: {name}",
     "inDays": "in {n} Tagen",
     "today": "Heute",
     "tomorrow": "Morgen",
@@ -2377,7 +2377,7 @@
     "intro": "Geben Sie Beträge in Ihrer Währung ein. Tragen Sie für den Nisab den Preis eines Gramms Gold ein; die Seite lädt keine Preise aus dem Internet.",
     "fields": {
       "cash": "Bargeld und Bank",
-      "goldGrams": "Gold (Gramm, 24 Karat)",
+      "goldGrams": "Gold (Gramm, umgerechnet auf 24 Karat)",
       "goldPrice": "Preis für 1 g Gold",
       "silverValue": "Silber (Wert)",
       "foreign": "Devisen und Aktien (Wert)",
@@ -2390,14 +2390,14 @@
     "nisab": "Nisab ({g} g Gold)",
     "needGold": "Geben Sie den Goldpreis pro Gramm ein, um den Nisab zu berechnen.",
     "due": "Ihr Vermögen erreicht den Nisab; Zakat ist fällig.",
-    "notDue": "Ihr Vermögen liegt unter dem Nisab; keine Zakat fällig.",
+    "notDue": "Ihr Vermögen liegt unter dem Nisab; es ist keine Zakat fällig.",
     "amount": "Zakat (1/40)",
     "privacy": "Die eingegebenen Beträge werden nur auf dieser Seite berechnet; sie werden weder gespeichert noch gesendet.",
-    "note": "Nach den Regeln des türkischen Präsidiums für Religionsangelegenheiten (Diyanet): Nisab 80,18 g Gold, Satz ein Vierzigstel; über dem Vermögen muss ein Mondjahr vergangen sein. Selbst genutzte Wohnung, Auto und Hausrat zählen nicht. Für Gewissheit fragen Sie einen Gelehrten.",
+    "note": "Nach den Regeln des türkischen Präsidiums für Religionsangelegenheiten (Diyanet): Nisab 80,18 g Gold, Satz ein Vierzigstel; das Vermögen muss sich ein Mondjahr lang im Besitz befunden haben. Selbst genutzte Wohnung, Auto und persönliche Gegenstände zählen nicht. Im Zweifel fragen Sie einen Gelehrten.",
     "faq": [
       {
         "q": "Wie hoch ist der Nisab für die Zakat?",
-        "a": "Nach dem türkischen Präsidium für Religionsangelegenheiten beträgt der Nisab 80,18 g Gold oder Geld und Güter gleichen Werts. Vermögen, das ihn nach Grundbedarf und Schulden erreicht und ein Mondjahr gehalten wurde, ist zakatpflichtig."
+        "a": "Nach Angaben des türkischen Präsidiums für Religionsangelegenheiten beträgt der Nisab 80,18 g Gold oder Geld und Güter gleichen Werts. Vermögen, das ihn nach Abzug von Grundbedarf und Schulden erreicht und sich ein Mondjahr lang im Besitz befunden hat, ist zakatpflichtig."
       },
       {
         "q": "Wie hoch ist der Zakat-Satz?",
@@ -2429,7 +2429,7 @@
     "colDesc": "Inhalt",
     "ep": {
       "index": "Liste der Endpunkte und Versionsangaben",
-      "holidays": "Feiertage, halbe Vortage, religiöse und besondere Tage eines Jahres (Namen in allen Sprachen der Website) und der Ramadan-Zeitraum",
+      "holidays": "Feiertage, halbe Vorabende, religiöse und besondere Tage eines Jahres (Namen in allen Sprachen der Website) und der Ramadan-Zeitraum",
       "prayer": "Gebetszeiten einer Provinz für ein Jahr (Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib, Ischa; türkische Zeit)",
       "provinces": "81 Provinzen: Kurzname, Name, Breite, Länge",
       "hijri": "Tabelle der Hidschri-Monatsanfänge (am Diyanet-Kalender ausgerichtet)",
@@ -2438,8 +2438,8 @@
     "yearsNote": "Feiertags- und Astronomiedateien gibt es für {from}–{to}, Gebetszeiten für {p1} und {p2}. Die Kurznamen der Provinzen stehen in provinces.json (z. B. istanbul, ankara, izmir).",
     "fieldsHeading": "Felder",
     "fields": [
-      "Datumsangaben im Format JJJJ-MM-TT, Uhrzeiten SS:MM (türkische Zeit, UTC+3); Zeitpunkte als ISO 8601 UTC.",
-      "Feiertagsarten: holiday (gesetzlicher Feiertag), half (halber Vortag), religious (religiöser Tag), special (besonderer Tag).",
+      "Datumsangaben im Format JJJJ-MM-TT, Uhrzeiten hh:mm (türkische Zeit, UTC+3); Zeitpunkte als ISO 8601 UTC.",
+      "Feiertagsarten: holiday (gesetzlicher Feiertag), half (halber Vorabend), religious (religiöser Tag), special (besonderer Tag).",
       "In einer Gebetszeiten-Datei ist jede Zeile des days-Arrays [Datum, Fadschr, Sonnenaufgang, Dhuhr, Asr, Maghrib, Ischa].",
       "In der Hidschri-Tabelle ist jede Zeile [gregorianisches Datum des Monatsanfangs, Hidschri-Jahr, Hidschri-Monat]; die letzte Zeile ist das Ende der Tabelle."
     ],
@@ -2455,10 +2455,10 @@
     ]
   },
   "hijriConv": {
-    "title": "Hidschri-Kalender-Umrechner: Hidschri und Gregorianisch | Saat Tarih",
+    "title": "Hidschri-Umrechner: islamisch ↔ gregorianisch | Saat Tarih",
     "description": "Gregorianische Daten in Hidschri-Daten umrechnen und umgekehrt. Heutiges Hidschri-Datum und Monatsanfänge des Hidschri-Jahres nach dem Diyanet-Kalender.",
     "h1": "Hidschri-Kalender-Umrechner",
-    "lead": "Das heutige Hidschri-Datum, Umrechnung in beide Richtungen und die Monatsanfänge dieses Hidschri-Jahres. Die Daten folgen dem Kalender des türkischen Diyanet.",
+    "lead": "Das heutige Hidschri-Datum, Umrechnung in beide Richtungen und die Monatsanfänge dieses Hidschri-Jahres. Die Daten folgen dem Kalender des türkischen Präsidiums für religiöse Angelegenheiten (Diyanet).",
     "search": "hidschri umrechner islamischer kalender hidschri gregorianisch heute hijri converter",
     "todayLabel": "Heutiges Hidschri-Datum",
     "toHijri": "Gregorianisch → Hidschri",
@@ -2482,7 +2482,7 @@
       "Dhu l-Qa'da",
       "Dhu l-Hiddscha"
     ],
-    "fmt": "{d}. {m} {y} AH",
+    "fmt": "{d}. {m} {y} n. H.",
     "outside": "Dieses Datum liegt außerhalb der Diyanet-Tabelle; es wurde mit dem Umm-al-Qura-Kalender berechnet und kann um einen Tag abweichen.",
     "dayMax": "Dieser Hidschri-Monat hat {n} Tage.",
     "invalid": "Geben Sie ein gültiges Datum ein.",
@@ -2494,15 +2494,15 @@
     "faq": [
       {
         "q": "Welches Datum ist heute im Hidschri-Kalender?",
-        "a": "Das heutige Hidschri-Datum steht oben auf der Seite, nach dem Diyanet-Kalender. Da der Hidschri-Tag mit dem Sonnenuntergang beginnt, beginnt das nächste Datum schon am Abend."
+        "a": "Das heutige Hidschri-Datum nach dem Diyanet-Kalender steht oben auf der Seite. Da der Hidschri-Tag mit dem Sonnenuntergang beginnt, wechselt das Datum bereits am Abend."
       },
       {
         "q": "Warum verschiebt sich der Hidschri-Kalender jedes Jahr um etwa 11 Tage?",
-        "a": "Der Hidschri-Kalender folgt den Mondphasen; 12 Mondmonate dauern etwa 354 Tage. Das sind rund 11 Tage weniger als ein gregorianisches Jahr, daher kommen Ramadan und die Feste jedes Jahr etwa 11 Tage früher."
+        "a": "Der Hidschri-Kalender folgt den Mondphasen; 12 Mondmonate dauern etwa 354 Tage. Das sind rund 11 Tage weniger als ein gregorianisches Jahr, daher fallen Ramadan, Ramadanfest und Opferfest jedes Jahr etwa 11 Tage früher."
       },
       {
-        "q": "Warum unterscheiden sich Hidschri-Daten zwischen Ländern?",
-        "a": "Manche Länder beginnen den Monat mit der Sichtung der Mondsichel, andere nach Berechnung. Die Türkei nutzt den berechneten Diyanet-Kalender, Saudi-Arabien den Umm-al-Qura-Kalender; sie können um einen Tag abweichen."
+        "q": "Warum unterscheiden sich Hidschri-Daten von Land zu Land?",
+        "a": "Manche Länder legen den Monatsbeginn nach der Sichtung der Mondsichel fest, andere per Berechnung. Die Türkei nutzt den berechneten Diyanet-Kalender, Saudi-Arabien den Umm-al-Qura-Kalender; beide können um einen Tag voneinander abweichen."
       }
     ]
   },
@@ -2568,9 +2568,9 @@
     "workdays": "{n} Arbeitstage (ohne Wochenenden und Feiertage)",
     "weekday": "Wochentag: {d}",
     "upcomingHeading": "Tage bis zu wichtigen Daten",
-    "colEvent": "Tag",
+    "colEvent": "Anlass",
     "colDate": "Datum",
-    "colLeft": "Noch",
+    "colLeft": "Verbleibend",
     "daysUnit": "{n} Tage",
     "daysUnit1": "1 Tag",
     "faq": [
@@ -2580,13 +2580,13 @@
       },
       {
         "q": "Wie werden Arbeitstage gezählt?",
-        "a": "Von den Tagen nach heute werden Samstage, Sonntage und ganztägige Feiertage in der Türkei abgezogen; Halbtage vor den Festen zählen halb. Die Feiertagsdaten umfassen 2026–2031."
+        "a": "Von den Tagen nach heute werden Samstage, Sonntage und ganztägige Feiertage in der Türkei abgezogen; die halben Feiertage am Vorabend von Ramadan- und Opferfest zählen halb. Die Feiertagsdaten umfassen 2026–2031."
       }
     ]
   },
   "interval": {
     "title": "Intervall-Timer: Online HIIT- und Tabata-Timer | Saat Tarih",
-    "description": "Runden mit Aufwärm-, Belastungs- und Pausenzeiten zählen: Signal und Sprachansage bei jedem Wechsel, die letzten drei Sekunden gezählt. Tabata, HIIT, Vollbild.",
+    "description": "Runden mit Aufwärm-, Belastungs- und Pausenzeiten zählen: Signal und Sprachansage bei jedem Wechsel, Countdown der letzten 3 Sekunden. Tabata, HIIT, Vollbild.",
     "h1": "Intervall-Timer",
     "lead": "Wählen Sie Aufwärm-, Belastungs- und Pausenzeit sowie die Rundenzahl. Bei jedem Wechsel ertönt ein Signal, auf Wunsch wird die Phase angesagt.",
     "search": "intervall timer hiit timer tabata timer trainings timer emom runden timer interval timer",
@@ -2600,7 +2600,7 @@
     "presetEmom": "EMOM 60 × 10",
     "phases": {
       "warmup": "Aufwärmen",
-      "work": "Los",
+      "work": "Belastung",
       "rest": "Pause",
       "done": "Fertig"
     },
@@ -2612,7 +2612,7 @@
     "resume": "Weiter",
     "reset": "Zurücksetzen",
     "voice": "Sprachansage",
-    "voiceNote": "Ansagen nutzen die Sprachausgabe Ihres Browsers auf dem Gerät; gibt es keine Gerätestimme für diese Sprache, ertönt nur das Signal.",
+    "voiceNote": "Die Ansagen nutzen die lokale Sprachausgabe Ihres Browsers; ist auf dem Gerät keine Stimme für diese Sprache installiert, ertönt nur das Signal.",
     "note": "Läuft, solange die Seite geöffnet ist; im Vollbild bleibt der Bildschirm an.",
     "faq": [
       {
@@ -2626,7 +2626,7 @@
     ]
   },
   "chess": {
-    "title": "Schachuhr: Online, mit Inkrement und im Vollbild | Saat Tarih",
+    "title": "Schachuhr: online, mit Inkrement und im Vollbild | Saat Tarih",
     "description": "Online-Schachuhr für zwei Spieler: Bedenkzeiten (1+0, 3+2, 5+0, 10+0, 15+10), Fischer-Inkrement, Zugzähler und Signal bei Zeitablauf. Vollbild auf dem Handy.",
     "h1": "Schachuhr",
     "lead": "Wählen Sie die Bedenkzeit und tippen Sie nach Ihrem Zug auf Ihre eigene Uhr. Fischer-Inkrement und Zugzähler werden unterstützt.",
@@ -2637,7 +2637,7 @@
     "increment": "Inkrement (s)",
     "white": "Weiß",
     "black": "Schwarz",
-    "hint": "Zum Start auf die Uhr von Schwarz tippen; die Zeit von Weiß beginnt zu laufen. Die Leertaste stoppt die Uhr des Spielers am Zug.",
+    "hint": "Tippen Sie zum Start auf die Uhr von Schwarz; dann beginnt die Zeit von Weiß zu laufen. Die Leertaste stoppt die Uhr des Spielers am Zug.",
     "pause": "Pause",
     "resume": "Weiter",
     "reset": "Zurücksetzen",
@@ -2680,7 +2680,7 @@
     "faq": [
       {
         "q": "Was bedeutet BPM?",
-        "a": "BPM (beats per minute) ist die Zahl der Schläge pro Minute. 60 BPM ist ein Schlag pro Sekunde, 120 BPM sind zwei."
+        "a": "BPM (beats per minute) ist die Zahl der Schläge pro Minute. 60 BPM entsprechen einem Schlag pro Sekunde, 120 BPM zwei Schlägen."
       },
       {
         "q": "Wie funktioniert Tap-Tempo?",
@@ -2692,7 +2692,7 @@
     "title": "Sprechende Uhr: Online-Uhr, die die Uhrzeit ansagt | Saat Tarih",
     "description": "Eine Online-Uhr, die die Uhrzeit ansagt: per Knopfdruck oder automatisch alle 1, 5, 15 oder 30 Minuten und zur vollen Stunde. Praktisch bei Sehschwäche.",
     "h1": "Sprechende Uhr",
-    "lead": "Drücken Sie die Schaltfläche, um die Uhrzeit zu hören; sie kann auch in festen Abständen von selbst ansagen. Funktioniert, solange die Seite geöffnet ist.",
+    "lead": "Drücken Sie die Schaltfläche, um die Uhrzeit zu hören; die Uhr kann sie auch in festen Abständen automatisch ansagen. Funktioniert, solange die Seite geöffnet ist.",
     "search": "sprechende uhr zeitansage uhrzeit ansagen audio uhr talking clock",
     "say": "Uhrzeit ansagen",
     "auto": "Automatisch ansagen",
@@ -2705,7 +2705,7 @@
       "60": "Zur vollen Stunde"
     },
     "chime": "Vorher ein Signal",
-    "noVoice": "In diesem Browser wurde keine Gerätestimme für diese Sprache gefunden; die Uhrzeit wird in Worten angezeigt.",
+    "noVoice": "In diesem Browser wurde keine auf dem Gerät installierte Stimme für diese Sprache gefunden; die Uhrzeit wird in Worten angezeigt.",
     "note": "Die Ansage läuft über die Sprachausgabe Ihres Browsers auf dem Gerät; der Text wird nirgendwohin gesendet. Funktioniert, solange die Seite geöffnet ist.",
     "faq": [
       {
@@ -2744,7 +2744,7 @@
     ],
     "noTime": "Ohne Geburtszeit wurde 12:00 Uhr mittags angenommen; der Mond wechselt etwa alle 2,5 Tage das Zeichen.",
     "cusp": "Die Sonne wechselt an diesem Tag das Zeichen; die Geburtszeit kann das Ergebnis ändern.",
-    "tzNote": "Die Uhrzeit wird in der Zeitzone dieses Geräts gelesen.",
+    "tzNote": "Die eingegebene Uhrzeit bezieht sich auf die Zeitzone dieses Geräts.",
     "tableHeading": "Zeiträume der Sternzeichen",
     "colSign": "Zeichen",
     "colDates": "Zeitraum (ungefähr)",
@@ -2756,7 +2756,7 @@
       },
       {
         "q": "Was ist das Mondzeichen?",
-        "a": "Das Zeichen, in dem der Mond im Moment der Geburt stand. Der Mond durchläuft ein Zeichen in etwa 2,5 Tagen, ohne Geburtszeit ist es daher nicht immer sicher."
+        "a": "Es ist das Zeichen, in dem der Mond im Moment der Geburt stand. Der Mond durchläuft ein Zeichen in etwa 2,5 Tagen; ohne Geburtszeit lässt es sich daher nicht immer sicher bestimmen."
       }
     ]
   },
@@ -2798,9 +2798,9 @@
     "moonNow": "Aktuelle Entfernung zur Erde",
     "perigee": "Nächstes Perigäum (erdnächster Punkt)",
     "apogee": "Nächstes Apogäum (erdfernster Punkt)",
-    "superMoon": "Der Vollmond am {date} liegt nahe am Perigäum: ein \"Supermond\" (der Mond wirkt etwas größer und heller).",
+    "superMoon": "Der Vollmond am {date} liegt nahe am Perigäum: ein „Supermond“ (der Mond wirkt etwas größer und heller).",
     "km": "{v} km",
-    "note": "Die Positionen werden im Browser berechnet: Planeten mit den genäherten Bahnelementen des JPL (Bogenminuten-Genauigkeit), Mond und Sonne nach Meeus. \"Sichtbar\" sind die Stunden, in denen die Sonne 6° unter und der Planet mindestens 5° über dem Horizont steht. Helligkeit in Größenklassen (kleiner ist heller); Saturns Ringe sind nicht berücksichtigt. Sterne an ihren J2000-Positionen.",
+    "note": "Die Positionen werden im Browser berechnet: Planeten mit den genäherten Bahnelementen des JPL (Bogenminuten-Genauigkeit), Mond und Sonne nach Meeus. „Sichtbar“ sind die Stunden, in denen die Sonne 6° unter und der Planet mindestens 5° über dem Horizont steht. Helligkeit in Größenklassen (kleiner ist heller); Saturns Ringe sind nicht berücksichtigt. Sterne werden an ihren J2000-Positionen dargestellt.",
     "faq": [
       {
         "q": "Welche Planeten sind heute Nacht sichtbar?",
@@ -2818,7 +2818,7 @@
   },
   "otd": {
     "title": "Heute in der Geschichte: Ereignisse und Geburtstage | Saat Tarih",
-    "description": "Was an diesem Tag geschah: wichtige Ereignisse, gegründete Staaten und Organisationen, berühmte Geburtstage und Todestage; beliebigen Tag wählen. Quelle Wikidata.",
+    "description": "Was an diesem Tag geschah: wichtige Ereignisse, gegründete Staaten und Organisationen, Geburts- und Todestage Berühmter; jeder Tag wählbar. Quelle: Wikidata.",
     "h1": "Heute in der Geschichte",
     "lead": "Wichtige Ereignisse, Gründungen, Geburten und Todesfälle der Geschichte für heute oder einen Tag Ihrer Wahl.",
     "search": "heute in der geschichte was geschah heute geboren gestorben jahrestag ereignisse geburtstage todestage",
@@ -2847,7 +2847,7 @@
   },
   "tzn": {
     "title": "Zeitzonen-Nachrichten: Sommerzeit-Änderungen | Saat Tarih",
-    "description": "Änderungen bei Zeitzonen und Sommerzeit weltweit: Länder mit dauerhafter Zeit, Orte ohne Zeitumstellung, neue Zeitzonen. Quelle: IANA-tz-Datenbank.",
+    "description": "Änderungen bei Zeitzonen und Sommerzeit weltweit: Abschaffung der Zeitumstellung, dauerhafte Sommerzeit, neue Zeitzonen. Quelle: IANA-tz-Datenbank.",
     "h1": "Zeitzonen-Nachrichten",
     "lead": "Entscheidungen der Länder zu Zeitzonen und Sommerzeit, die neueste zuerst. Jede Meldung zeigt, ab wann sie gilt, und die aktuelle Uhrzeit dort.",
     "search": "zeitzonen nachrichten sommerzeit änderung dauerhafte sommerzeit zeitzone geändert tzdata",

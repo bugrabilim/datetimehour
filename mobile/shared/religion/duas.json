@@ -9,7 +9,7 @@
       "okunus": "Sübhânekellâhümme ve bi hamdik, ve tebârakesmük, ve teâlâ ceddük, ve lâ ilâhe ğayruk.",
       "mean": {
         "tr": "Allah'ım! Sen eksik sıfatlardan uzaksın; seni daima böyle tenzih eder ve överim. Senin adın mübarektir, varlığın her şeyden üstündür. Senden başka ilah yoktur.",
-        "en": "Glory be to You, O Allah, and praise. Blessed is Your name and exalted is Your majesty; there is no god but You.",
+        "en": "Glory and praise be to You, O Allah. Blessed is Your name and exalted is Your majesty; there is no god but You.",
         "de": "Gepriesen seist Du, o Allah, und Dir gebührt das Lob. Gesegnet ist Dein Name und erhaben Deine Majestät; es gibt keinen Gott außer Dir.",
         "az": "Allahım! Sən hər cür nöqsandan uzaqsan; Səni həmişə belə təqdis edir və həmd edirəm. Adın mübarəkdir, varlığın hər şeydən ucadır. Səndən başqa ilah yoxdur.",
         "id": "Mahasuci Engkau ya Allah, dan dengan memuji-Mu. Mahaberkah nama-Mu dan Mahatinggi keagungan-Mu; tiada tuhan selain Engkau.",
@@ -21,7 +21,7 @@
         "ko": "알라여, 당신께 영광과 찬미를 드립니다. 당신의 이름은 복되시고 당신의 위엄은 높으십니다. 당신 외에 신은 없습니다.",
         "zh": "安拉啊，赞你清净，赞美你。你的名字吉祥，你的尊严崇高；除你之外，绝无神灵。",
         "fil": "Luwalhati sa Iyo, O Allah, at papuri. Pinagpala ang Iyong pangalan at dakila ang Iyong kamahalan; walang diyos maliban sa Iyo.",
-        "th": "มหาบริสุทธิ์แด่พระองค์ โอ้อัลลอฮ์ และการสรรเสริญเป็นของพระองค์ พระนามของพระองค์ทรงจำเริญ ความยิ่งใหญ่ของพระองค์ทรงสูงส่ง ไม่มีพระเจ้าอื่นใดนอกจากพระองค์"
+        "th": "มหาบริสุทธิ์และการสรรเสริญแด่พระองค์ โอ้อัลลอฮ์ พระนามของพระองค์ทรงจำเริญ ความยิ่งใหญ่ของพระองค์ทรงสูงส่ง ไม่มีพระเจ้าอื่นใดนอกจากพระองค์"
       }
     },
     {
@@ -50,7 +50,7 @@
     {
       "id": "salli",
       "title": {"tr": "Allâhümme Salli", "en": "Allahumma Salli", "de": "Allahumma Salli", "az": "Allahummə Salli", "ar": "اللهم صل", "id": "Allahumma Salli", "ur": "درود (اللھم صل)", "fa": "اللهم صلّ", "fr": "Allahumma Salli", "ru": "Аллахумма салли", "ja": "アッラーフンマ・サッリ", "ko": "알라훔마 살리", "zh": "赞圣词（安拉昏麦·沙里）", "fil": "Allahumma Salli", "th": "อัลลอฮุมมะ ศ็อลลิ"},
-      "when": {"tr": "Namazda, son oturuşta Ettehiyyâtü'den sonra", "en": "In prayer, in the last sitting after At-Tahiyyat", "de": "Im Gebet, im letzten Sitzen nach At-Tahiyyat", "az": "Namazda, son oturuşda Əttəhiyyatudan sonra", "ar": "في الصلاة في الجلوس الأخير بعد التحيات", "id": "Dalam salat, pada duduk terakhir setelah At-Tahiyyat", "ur": "نماز میں، آخری قعدے میں التحیات کے بعد", "fa": "در نماز، در نشستن آخر پس از التحیات", "fr": "Dans la prière, à la dernière position assise, après At-Tahiyyat", "ru": "В намазе, в последнем сидении после Ат-Тахият", "ja": "礼拝で、最後の座位にタヒーヤートの後", "ko": "예배에서, 마지막 앉음에 타히야트 뒤에", "zh": "礼拜中，最后跪坐时念完作证词之后", "fil": "Sa dasal, sa huling pag-upo pagkatapos ng At-Tahiyyat", "th": "ในละหมาด การนั่งครั้งสุดท้ายหลังอัตตะฮียาต"},
+      "when": {"tr": "Namazda, son oturuşta Ettehiyyâtü'den sonra", "en": "In prayer, in the last sitting after At-Tahiyyat", "de": "Im Gebet, im letzten Sitzen nach At-Tahiyyat", "az": "Namazda, son oturuşda Əttəhiyyatudan sonra", "ar": "في الصلاة في الجلوس الأخير بعد التحيات", "id": "Dalam salat, pada duduk terakhir setelah At-Tahiyyat", "ur": "نماز میں، آخری قعدے میں التحیات کے بعد", "fa": "در نماز، در نشستن آخر پس از التحیات", "fr": "Dans la prière, à la dernière position assise, après At-Tahiyyat", "ru": "В намазе, в последнем сидении после Ат-Тахият", "ja": "礼拝で、最後の座位にタヒーヤートの後", "ko": "예배에서, 마지막 앉음에 타히야트 뒤에", "zh": "礼拜中，最后跪坐时念完作证词之后", "fil": "Sa dasal, sa huling pag-upo pagkatapos ng At-Tahiyyat", "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังอัตตะฮียาต"},
       "ar": "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
       "okunus": "Allâhümme salli alâ Muhammedin ve alâ âli Muhammed, kemâ salleyte alâ İbrâhîme ve alâ âli İbrâhîm, inneke hamîdün mecîd.",
       "mean": {
@@ -73,7 +73,7 @@
     {
       "id": "barik",
       "title": {"tr": "Allâhümme Bârik", "en": "Allahumma Barik", "de": "Allahumma Barik", "az": "Allahummə Barik", "ar": "اللهم بارك", "id": "Allahumma Barik", "ur": "درود (اللھم بارک)", "fa": "اللهم بارک", "fr": "Allahumma Barik", "ru": "Аллахумма барик", "ja": "アッラーフンマ・バーリク", "ko": "알라훔마 바리크", "zh": "祈福词（安拉昏麦·巴里克）", "fil": "Allahumma Barik", "th": "อัลลอฮุมมะ บาริก"},
-      "when": {"tr": "Namazda, son oturuşta Salli'den sonra", "en": "In prayer, in the last sitting after Salli", "de": "Im Gebet, im letzten Sitzen nach Salli", "az": "Namazda, son oturuşda Sallidən sonra", "ar": "في الصلاة في الجلوس الأخير بعد اللهم صل", "id": "Dalam salat, pada duduk terakhir setelah Salli", "ur": "نماز میں، آخری قعدے میں اللھم صل کے بعد", "fa": "در نماز، در نشستن آخر پس از صلّ", "fr": "Dans la prière, à la dernière position assise, après Salli", "ru": "В намазе, в последнем сидении после Салли", "ja": "礼拝で、最後の座位にサッリの後", "ko": "예배에서, 마지막 앉음에 살리 뒤에", "zh": "礼拜中，最后跪坐时念完沙里之后", "fil": "Sa dasal, sa huling pag-upo pagkatapos ng Salli", "th": "ในละหมาด การนั่งครั้งสุดท้ายหลังศ็อลลิ"},
+      "when": {"tr": "Namazda, son oturuşta Salli'den sonra", "en": "In prayer, in the last sitting after Salli", "de": "Im Gebet, im letzten Sitzen nach Salli", "az": "Namazda, son oturuşda Sallidən sonra", "ar": "في الصلاة في الجلوس الأخير بعد اللهم صل", "id": "Dalam salat, pada duduk terakhir setelah Salli", "ur": "نماز میں، آخری قعدے میں اللھم صل کے بعد", "fa": "در نماز، در نشستن آخر پس از صلّ", "fr": "Dans la prière, à la dernière position assise, après Salli", "ru": "В намазе, в последнем сидении после Салли", "ja": "礼拝で、最後の座位にサッリの後", "ko": "예배에서, 마지막 앉음에 살리 뒤에", "zh": "礼拜中，最后跪坐时念完沙里之后", "fil": "Sa dasal, sa huling pag-upo pagkatapos ng Salli", "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังศ็อลลิ"},
       "ar": "اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
       "okunus": "Allâhümme bârik alâ Muhammedin ve alâ âli Muhammed, kemâ bârakte alâ İbrâhîme ve alâ âli İbrâhîm, inneke hamîdün mecîd.",
       "mean": {
@@ -96,9 +96,9 @@
     {
       "id": "rabbena",
       "title": {"tr": "Rabbenâ", "en": "Rabbana", "de": "Rabbana", "az": "Rabbəna", "ar": "ربنا", "id": "Rabbana", "ur": "ربنا", "fa": "ربّنا", "fr": "Rabbana", "ru": "Раббана", "ja": "ラッバナー", "ko": "랍바나", "zh": "热般纳", "fil": "Rabbana", "th": "ร็อบบะนา"},
-      "when": {"tr": "Namazda, son oturuşta Bârik'ten sonra (Bakara 201, İbrâhîm 41)", "en": "In prayer, in the last sitting after Barik (Quran 2:201, 14:41)", "de": "Im Gebet, im letzten Sitzen nach Barik (Koran 2:201, 14:41)", "az": "Namazda, son oturuşda Barikdən sonra (Bəqərə 201, İbrahim 41)", "ar": "في الصلاة في الجلوس الأخير (البقرة ٢٠١، إبراهيم ٤١)", "id": "Dalam salat, pada duduk terakhir setelah Barik (Al-Qur'an 2:201, 14:41)", "ur": "نماز میں، آخری قعدے میں اللھم بارک کے بعد (قرآن 2:201، 14:41)", "fa": "در نماز، در نشستن آخر پس از بارک (قرآن 2:201، 14:41)", "fr": "Dans la prière, à la dernière position assise, après Barik (Coran 2:201, 14:41)", "ru": "В намазе, в последнем сидении после Барик (Коран 2:201, 14:41)", "ja": "礼拝で、最後の座位にバーリクの後（クルアーン2:201、14:41）", "ko": "예배에서, 마지막 앉음에 바리크 뒤에(꾸란 2:201, 14:41)", "zh": "礼拜中，最后跪坐时念完巴里克之后（古兰经2:201、14:41）", "fil": "Sa dasal, sa huling pag-upo pagkatapos ng Barik (Quran 2:201, 14:41)", "th": "ในละหมาด การนั่งครั้งสุดท้ายหลังบาริก (อัลกุรอาน 2:201, 14:41)"},
+      "when": {"tr": "Namazda, son oturuşta Bârik'ten sonra (Bakara 201, İbrâhîm 41)", "en": "In prayer, in the last sitting after Barik (Quran 2:201, 14:41)", "de": "Im Gebet, im letzten Sitzen nach Barik (Koran 2:201, 14:41)", "az": "Namazda, son oturuşda Barikdən sonra (Bəqərə 201, İbrahim 41)", "ar": "في الصلاة في الجلوس الأخير (البقرة ٢٠١، إبراهيم ٤١)", "id": "Dalam salat, pada duduk terakhir setelah Barik (Al-Qur'an 2:201, 14:41)", "ur": "نماز میں، آخری قعدے میں اللھم بارک کے بعد (قرآن 2:201، 14:41)", "fa": "در نماز، در نشستن آخر پس از بارک (قرآن 2:201، 14:41)", "fr": "Dans la prière, à la dernière position assise, après Barik (Coran 2:201, 14:41)", "ru": "В намазе, в последнем сидении после Барик (Коран 2:201, 14:41)", "ja": "礼拝で、最後の座位にバーリクの後（クルアーン2:201、14:41）", "ko": "예배에서, 마지막 앉음에 바리크 뒤에(꾸란 2:201, 14:41)", "zh": "礼拜中，最后跪坐时念完巴里克之后（古兰经2:201、14:41）", "fil": "Sa dasal, sa huling pag-upo pagkatapos ng Barik (Quran 2:201, 14:41)", "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังบาริก (อัลกุรอาน 2:201, 14:41)"},
       "quran": [["2:201", 3], ["14:41", 0]],
-      "okunus": "Rabbenâ âtinâ fid-dünyâ haseneten ve fil-âhireti haseneten ve kınâ azâben-nâr. Rabbenağfirlî ve li-vâlideyye ve lil-mü'minîne yevme yekûmül-hısâb."
+      "okunus": "Rabbenâ âtinâ fid-dünyâ haseneten ve fil-âhireti haseneten ve kınâ azâben-nâr. Rabbenağfirlî ve li-vâlideyye ve lil-mü'minîne yevme yekûmül-hisâb."
     },
     {
       "id": "kunut1",
@@ -151,7 +151,7 @@
       "title": {"tr": "Âyetü'l-Kürsî", "en": "Ayat al-Kursi", "de": "Ayat al-Kursi", "az": "Ayətül-Kürsi", "ar": "آية الكرسي", "id": "Ayat Kursi", "ur": "آیت الکرسی", "fa": "آیت‌الکرسی", "fr": "Ayat al-Kursi (verset du Trône)", "ru": "Аят аль-Курси", "ja": "玉座の節（アーヤト・アル＝クルスィー）", "ko": "옥좌의 구절(아야트 알쿠르시)", "zh": "宝座经文", "fil": "Ayat al-Kursi", "th": "อายะตุลกุรซีย์"},
       "when": {"tr": "Bakara 255", "en": "Quran 2:255", "de": "Koran 2:255", "az": "Bəqərə 255", "ar": "البقرة ٢٥٥", "id": "Al-Qur'an 2:255", "ur": "قرآن 2:255", "fa": "قرآن 2:255", "fr": "Coran 2:255", "ru": "Коран 2:255", "ja": "クルアーン2:255", "ko": "꾸란 2:255", "zh": "古兰经2:255", "fil": "Quran 2:255", "th": "อัลกุรอาน 2:255"},
       "quran": [["2:255", 0]],
-      "okunus": "Allâhü lâ ilâhe illâ hüvel-hayyül-kayyûm. Lâ te'huzühû sinetün ve lâ nevm. Lehû mâ fis-semâvâti ve mâ fil-ard. Men zellezî yeşfeu indehû illâ bi-iznih. Ya'lemü mâ beyne eydîhim ve mâ halfehüm. Ve lâ yuhîtûne bi-şey'in min ilmihî illâ bimâ şâ'. Vesia kürsiyyühüs-semâvâti vel-ard. Ve lâ yeûdühû hıfzuhümâ ve hüvel-aliyyül-azîm."
+      "okunus": "Allâhü lâ ilâhe illâ hüvel-hayyül-kayyûm. Lâ te'huzühû sinetün ve lâ nevm. Lehû mâ fis-semâvâti ve mâ fil-ard. Men zellezî yeşfeu indehû illâ bi-iznih. Ya'lemü mâ beyne eydîhim ve mâ halfehüm. Ve lâ yuhîtûne bi-şey'in min ilmihî illâ bimâ şâ'. Vesia kürsiyyühüs-semâvâti vel-ard. Ve lâ yeûdühû hıfzuhumâ ve hüvel-aliyyül-azîm."
     },
     {
       "id": "amentu",
@@ -178,7 +178,7 @@
     },
     {
       "id": "iftar",
-      "title": {"tr": "İftar duası", "en": "Iftar prayer", "de": "Iftar-Bittgebet", "az": "İftar duası", "ar": "دعاء الإفطار", "id": "Doa berbuka puasa", "ur": "افطار کی دعا", "fa": "دعای افطار", "fr": "Invocation de l’iftar", "ru": "Дуа при ифтаре", "ja": "イフタールの祈り", "ko": "이프타르 기도", "zh": "开斋祈祷", "fil": "Panalangin sa iftar", "th": "ดุอาอ์ละศีลอด"},
+      "title": {"tr": "İftar duası", "en": "Iftar supplication", "de": "Iftar-Bittgebet", "az": "İftar duası", "ar": "دعاء الإفطار", "id": "Doa berbuka puasa", "ur": "افطار کی دعا", "fa": "دعای افطار", "fr": "Invocation de l’iftar", "ru": "Дуа при ифтаре", "ja": "イフタールの祈り", "ko": "이프타르 기도", "zh": "开斋祈祷", "fil": "Panalangin sa iftar", "th": "ดุอาอ์ละศีลอด"},
       "when": {"tr": "Orucu açarken", "en": "When breaking the fast", "de": "Beim Fastenbrechen", "az": "Orucu açarkən", "ar": "عند الإفطار", "id": "Saat berbuka puasa", "ur": "روزہ کھولتے وقت", "fa": "هنگام افطار", "fr": "À la rupture du jeûne", "ru": "При разговении", "ja": "断食を解くとき", "ko": "단식을 마칠 때", "zh": "开斋时", "fil": "Sa pagtatapos ng pag-aayuno", "th": "เมื่อละศีลอด"},
       "ar": "اللَّهُمَّ لَكَ صُمْتُ وَبِكَ آمَنْتُ وَعَلَيْكَ تَوَكَّلْتُ وَعَلَى رِزْقِكَ أَفْطَرْتُ",
       "okunus": "Allâhümme leke sumtü ve bike âmentü ve aleyke tevekkeltü ve alâ rızkıke eftartü.",
@@ -202,7 +202,7 @@
     {
       "id": "sehadet",
       "title": {"tr": "Kelime-i Şehâdet", "en": "Shahada", "de": "Schahada", "az": "Kəlmeyi-şəhadət", "ar": "الشهادة", "id": "Syahadat", "ur": "کلمۂ شہادت", "fa": "شهادتین", "fr": "Chahada", "ru": "Шахада", "ja": "シャハーダ", "ko": "샤하다", "zh": "清真言（作证言）", "fil": "Shahada", "th": "ชะฮาดะฮ์"},
-      "when": {"tr": "İmanın tanıklığı", "en": "The testimony of faith", "de": "Das Glaubensbekenntnis", "az": "İmanın şəhadəti", "ar": "شهادة الإيمان", "id": "Kesaksian iman", "ur": "ایمان کی گواہی", "fa": "گواهی ایمان", "fr": "L’attestation de foi", "ru": "Свидетельство веры", "ja": "信仰告白", "ko": "신앙 고백", "zh": "信仰的见证", "fil": "Ang pagsaksi ng pananampalataya", "th": "การปฏิญาณตนแห่งศรัทธา"},
+      "when": {"tr": "İmanın dil ile ikrarı", "en": "The testimony of faith", "de": "Das Glaubensbekenntnis", "az": "İmanın şəhadəti", "ar": "شهادة الإيمان", "id": "Kesaksian iman", "ur": "ایمان کی گواہی", "fa": "گواهی ایمان", "fr": "L’attestation de foi", "ru": "Свидетельство веры", "ja": "信仰告白", "ko": "신앙 고백", "zh": "信仰的见证", "fil": "Ang pagsaksi ng pananampalataya", "th": "การกล่าวปฏิญาณยืนยันศรัทธาด้วยวาจา"},
       "ar": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
       "mean": {

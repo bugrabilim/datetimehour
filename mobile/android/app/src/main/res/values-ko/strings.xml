@@ -34,14 +34,14 @@
     <string name="prayer_prevMonth">이전 달</string>
     <string name="prayer_nextMonth">다음 달</string>
     <string name="prayer_useLocation">내 위치 사용</string>
-    <string name="prayer_imTitle">%1$s 라마단 시간표</string>
+    <string name="prayer_imTitle">%1$s년 라마단 시간표</string>
     <string name="prayer_imDay">라마단</string>
     <string name="prayer_imDate">날짜</string>
     <string name="prayer_imSahur">사후르</string>
     <string name="prayer_imIftar">이프타르</string>
     <string name="prayer_imNote">시간은 계산값입니다. 공식 시간은 튀르키예 종교청(디야넷)을 따르세요.</string>
     <string name="prayer_imFile">ramadan-timetable</string>
-    <string name="prayer_imAlt">%1$s의 %2$s 라마단 시간표</string>
+    <string name="prayer_imAlt">%1$s의 %2$s년 라마단 시간표</string>
     <string name="calendar_months_0">1월</string>
     <string name="calendar_months_1">2월</string>
     <string name="calendar_months_2">3월</string>
@@ -85,7 +85,7 @@
     <string name="calendar_events_aug30">전승 기념일</string>
     <string name="calendar_events_oct28">공화국의 날 전날</string>
     <string name="calendar_events_oct29">공화국의 날</string>
-    <string name="calendar_events_ucAylar">세 성스러운 달의 시작</string>
+    <string name="calendar_events_ucAylar">성스러운 세 달의 시작</string>
     <string name="calendar_events_regaib">레가입 칸딜</string>
     <string name="calendar_events_mirac">미라즈 칸딜(승천의 밤)</string>
     <string name="calendar_events_berat">베라트 칸딜</string>
@@ -112,7 +112,7 @@
     <string name="calendar_events_schoolStart">개학(MEB)</string>
     <string name="calendar_events_midterm1">1학기 중간 방학 시작(MEB)</string>
     <string name="calendar_events_term1End">1학기 종료, 성적표 받는 날(MEB)</string>
-    <string name="calendar_events_semester">학년 중간 방학 시작(MEB)</string>
+    <string name="calendar_events_semester">학기 간 방학 시작(MEB)</string>
     <string name="calendar_events_term2Start">2학기 시작(MEB)</string>
     <string name="calendar_events_midterm2">2학기 중간 방학 시작(MEB)</string>
     <string name="calendar_events_schoolEnd">학년 종료, 성적표 받는 날(MEB)</string>
@@ -187,7 +187,7 @@
     <string name="tools_countdown_hours">시간</string>
     <string name="tools_countdown_minutes">분</string>
     <string name="tools_countdown_seconds">초</string>
-    <string name="tools_countdown_presetsLabel">빠른 시간</string>
+    <string name="tools_countdown_presetsLabel">자주 쓰는 시간</string>
     <string name="tools_countdown_presetMin">%1$s분</string>
     <string name="tools_countdown_start">시작</string>
     <string name="tools_countdown_pause">일시정지</string>
@@ -202,7 +202,7 @@
     <string name="tools_countdown_hoursShort">시간</string>
     <string name="tools_countdown_minutesShort">분</string>
     <string name="tools_countdown_secondsShort">초</string>
-    <string name="tools_countdown_finished">시간이 됐어요!</string>
+    <string name="tools_countdown_finished">시간이 다 됐습니다!</string>
     <string name="tools_countdown_finishedDate">목표 시간에 도달했습니다!</string>
     <string name="tools_countdown_invalid">올바른 시간이나 미래의 날짜를 입력하세요.</string>
     <string name="tools_countdown_panel">카운트다운</string>
@@ -237,14 +237,14 @@
     <string name="tools_alarm_nextNone">활성화된 알람 없음</string>
     <string name="tools_alarm_wake">화면 켜 두기</string>
     <string name="tools_alarm_wakeNote">화면이 꺼지면 브라우저가 탭을 잠재울 수 있습니다. 이 옵션은 알람이 설정된 동안 화면이 꺼지지 않게 합니다.</string>
-    <string name="tools_alarm_note">중요하게 일어나야 할 때는 휴대전화 자체 알람도 설정하세요. 브라우저 알람은 페이지를 닫으면 울리지 않습니다.</string>
+    <string name="tools_alarm_note">꼭 일어나야 할 때는 휴대전화 자체 알람도 함께 설정하세요. 브라우저 알람은 페이지를 닫으면 울리지 않습니다.</string>
     <string name="tools_alarm_panel">알람</string>
     <string name="tools_alarm_defaultLabel">알람</string>
     <string name="tools_alarm_soundLabel">알람 소리</string>
     <string name="tools_alarm_ytLabel">YouTube 음악(선택)</string>
-    <string name="tools_alarm_ytNote">알람이 울리면 이 동영상이 재생됩니다. 1분 안에 끄지 않으면 알람 소리도 함께 울립니다(브라우저가 동영상을 자동으로 재생하지 않을 때도). 동영상은 YouTube에서 불러오므로 외부 서비스를 허락해야 합니다.</string>
+    <string name="tools_alarm_ytNote">알람이 울리면 이 동영상이 재생됩니다. 1분 안에 끄지 않으면 알람 소리도 함께 울립니다(브라우저가 동영상을 자동으로 재생하지 않을 때도). 동영상은 YouTube에서 불러오므로 외부 서비스를 허용해야 합니다.</string>
     <string name="tools_alarm_ytInvalid">YouTube 링크가 아닙니다.</string>
-    <string name="tools_alarm_ytBlocked">YouTube 음악을 쓰려면 외부 서비스를 허락하세요. 허락하지 않으면 알람은 자체 소리로 울립니다.</string>
+    <string name="tools_alarm_ytBlocked">YouTube 음악을 쓰려면 외부 서비스를 허용하세요. 허용하지 않으면 알람은 자체 소리로 울립니다.</string>
     <string name="tools_alarm_spotifyNote">Spotify는 브라우저에서 자동으로 재생되지 않습니다. Android 앱에서는 Spotify를 알람 음악으로 쓸 수 있습니다.</string>
     <string name="tools_alarm_dayNames_0">월</string>
     <string name="tools_alarm_dayNames_1">화</string>
@@ -275,7 +275,7 @@
     <string name="tools_pomodoro_phaseDone">%1$s 끝</string>
     <string name="tools_pomodoro_panel">뽀모도로</string>
     <string name="tools_pomodoro_phaseLabel">현재 단계</string>
-    <string name="tools_pomodoro_taskLabel">무엇을 하고 있나요?(선택)</string>
+    <string name="tools_pomodoro_taskLabel">무엇을 하고 있나요? (선택)</string>
     <string name="tools_pomodoro_taskPlaceholder">예: 보고서 쓰기</string>
     <string name="tools_pomodoro_statsHeading">통계(이 기기에만)</string>
     <string name="tools_pomodoro_today">오늘</string>
@@ -317,7 +317,7 @@
     <string name="datecalc_diffWork">근무일(시작일 포함, 끝 날짜 제외): %1$s</string>
     <string name="datecalc_diffNote">근무일에서는 주말과 공휴일을 빼며, 바이람 전날 반일 휴무는 0.5일로 셉니다.</string>
     <string name="datecalc_addHeading">날짜에 더하기 또는 빼기</string>
-    <string name="datecalc_amountLabel">수</string>
+    <string name="datecalc_amountLabel">값</string>
     <string name="datecalc_unitLabel">단위</string>
     <string name="datecalc_addResult">결과: %1$s</string>
     <string name="datecalc_addHint">빼려면 음수를 입력하세요.</string>
@@ -326,7 +326,7 @@
     <string name="datecalc_ageResult">%1$s세 %2$s개월 %3$s일</string>
     <string name="datecalc_ageDays">살아온 총 일수: %1$s</string>
     <string name="datecalc_ageNext">다음 생일: %1$s(%2$s일 후)</string>
-    <string name="datecalc_ageToday">오늘은 당신의 생일입니다!</string>
+    <string name="datecalc_ageToday">오늘이 생일입니다!</string>
     <string name="datecalc_invalid">올바른 날짜를 입력하세요.</string>
     <string name="datecalc_pick">날짜를 고르세요.</string>
     <string name="datecalc_range">공휴일 데이터는 %1$s–%2$s 범위입니다. 그 밖에서는 주말만 뺍니다.</string>
@@ -445,7 +445,7 @@
     <string name="stage_models_wx_digital">디지털, 날짜, 날씨</string>
     <string name="stage_models_wx_stack">아날로그, 디지털, 날씨</string>
     <string name="stage_models_bigdate">큰 날짜</string>
-    <string name="stage_models_stack">아날로그와 아래 디지털</string>
+    <string name="stage_models_stack">아래에 디지털이 있는 아날로그</string>
     <string name="stage_models_wx_analog_date">아날로그, 날짜, 날씨</string>
     <string name="stage_models_wx_full">아날로그, 디지털, 날짜, 날씨</string>
     <string name="stage_models_h_classic">가로 배치 아날로그</string>
@@ -540,7 +540,7 @@
     <string name="prayer_method_names_singapore">싱가포르</string>
     <string name="prayer_method_names_france">프랑스(UOIF)</string>
     <string name="prayer_method_names_russia">러시아 무슬림 종무청</string>
-    <string name="nature_crescentHeading">초승달 보임</string>
+    <string name="nature_crescentHeading">초승달 가시성</string>
     <string name="nature_crescentLead">%2$s 삭 이후 저녁에 %1$s에서 초승달이 보이는지 Yallop(1997) 기준으로 계산했습니다.</string>
     <string name="nature_crescentAge">%1$s시간</string>
     <string name="nature_crescentLag">%1$s분 뒤</string>

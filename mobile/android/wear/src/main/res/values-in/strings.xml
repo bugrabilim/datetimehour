@@ -29,7 +29,7 @@
     <string name="prayer_kerahatNames_israk">Matahari terbit (isyraq)</string>
     <string name="prayer_kerahatNames_istiva">Menjelang tengah hari (istiwa)</string>
     <string name="prayer_kerahatNames_isfirar">Matahari terbenam (isfirar)</string>
-    <string name="prayer_kerahatNote">Salat sunah tidak dikerjakan pada waktu-waktu ini. Diyanet tidak menerbitkan menit yang pasti; dipakai kebiasaan kalender umum sekitar 45 menit (sumber menyebut 10–45 menit untuk waktu menjelang tengah hari).</string>
+    <string name="prayer_kerahatNote">Salat sunah tidak dikerjakan pada waktu-waktu ini. Diyanet tidak menerbitkan menit yang pasti; yang dipakai adalah kebiasaan umum kalender, yaitu sekitar 45 menit (sumber menyebut 10–45 menit untuk waktu menjelang tengah hari).</string>
     <string name="prayer_method_heading">Metode perhitungan</string>
     <string name="prayer_method_label">Metode</string>
     <string name="prayer_method_asrLabel">Asar</string>
@@ -81,7 +81,7 @@
     <string name="wear_phonePlace">Tempat dari iPhone</string>
     <string name="wear_today">Hari ini</string>
     <string name="prayer_method_app">Metode perhitungan</string>
-    <string name="prayer_method_appNote">Di Turki waktu resmi adalah milik Diyanet. Pilihan Anda mengubah waktu, notifikasi, alarm, dan tabel bulanan; widget layar utama dan jam tangan tetap memakai metode Diyanet.</string>
+    <string name="prayer_method_appNote">Di Turki, jadwal resmi adalah jadwal Diyanet. Pilihan Anda mengubah waktu, notifikasi, alarm, dan tabel bulanan; widget layar utama dan jam tangan tetap memakai metode Diyanet.</string>
     <string name="prayer_arc_title">Matahari dan Bulan</string>
     <string name="prayer_arc_day">%1$s lagi menuju matahari terbenam</string>
     <string name="prayer_arc_night">%1$s lagi menuju matahari terbit</string>

@@ -35,3 +35,12 @@ gösterilir; Arapça yazılı dillerde (ar, fa, ur) gösterilmez. Yeni dillerin 
 Tanzil metni güncellenirse (tanzil.net/updates) `source/` altındaki dosya değiştirilir ve `gen-religion.mjs`
 yeniden çalıştırılır. Betik ayet sayısını (6236), sure sırasını, sure başlarını ve 30 cüzü denetler; Kur'an'dan
 alınan duaların sözcük sırası metinde yoksa durur.
+
+## Dil denetimi (3 Kasım 2026)
+
+Ajanlarla gözden geçirme yapıldı (sahibin isteği). Türkçe/İngilizce kaynak: Esma anlamları (el-Muktedir İngilizcesi
+"The Omnipotent", el-Muhsî "The Enumerator", el-Bâri "The Maker", es-Samed Türkçesi), namaz rehberi (vitir vacip,
+secdeler arası tekbirler ve ikinci secdedeki tesbih), iki okunuş ve üç dua metni düzeltildi; hadislerin anlamı ve
+kaynağı doğru bulundu. Arapça hadis metnindeki üç yazım kusuru gösterimde temizlenir (`cleanHadithAr`). Dillerin
+denetimi kısmen tamamlandı: tamamlanmayan dillerin din içeriği (`esma`, `hadith`, `duas`, `guide`, `sayings`) ayrıca
+denetlenecek (ayrıntı CLAUDE.md, Kararlar › Dil denetimi).
