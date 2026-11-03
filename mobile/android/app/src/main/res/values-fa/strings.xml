@@ -496,6 +496,12 @@
     <string name="weather_compass_6">غرب</string>
     <string name="weather_compass_7">شمال غربی</string>
     <string name="weather_windFrom">از سمت %1$s</string>
+    <string name="sky_moonHeading">فاصله تا ماه</string>
+    <string name="sky_moonNow">فاصلهٔ کنونی از زمین</string>
+    <string name="sky_perigee">حضیض بعدی (نزدیک‌ترین)</string>
+    <string name="sky_apogee">اوج بعدی (دورترین)</string>
+    <string name="sky_km">%1$s کیلومتر</string>
+    <string name="sky_superMoon">ماه کامل %1$s نزدیک حضیض است: «ابرماه» (ماه کمی بزرگ‌تر و درخشان‌تر به نظر می‌رسد).</string>
     <string name="stage_models_classic">عقربه‌ای کلاسیک</string>
     <string name="stage_models_minimal">عقربه‌ای ساده</string>
     <string name="stage_models_analog_date">عقربه‌ای با تاریخ</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">شهر، کشور یا اختصار (EST، CET)</string>
     <string name="world_label">نام و ایموجی (اختیاری)</string>
     <string name="world_labelHint">مثلاً مادرم 👵</string>
+    <string name="moon_daysAfter">%1$s روز بعد</string>
+    <string name="moon_daysBefore">%1$s روز پیش</string>
+    <string name="moon_scrubHint">برای دیدن ماه در روز دیگر بلغزانید؛ لمس یک روز در تقویم هم آن را انتخاب می‌کند.</string>
+    <string name="moon_data">داده‌های ماه</string>
+    <string name="moon_transit">بالاترین نقطه (گذر)</string>
+    <string name="moon_firstQuarter">تربیع اول بعدی</string>
+    <string name="moon_lastQuarter">تربیع دوم بعدی</string>
+    <string name="moon_riseIn">طلوع ماه تا %1$s دیگر</string>
+    <string name="moon_setIn">غروب ماه تا %1$s دیگر</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

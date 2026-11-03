@@ -496,6 +496,12 @@
     <string name="weather_compass_6">西</string>
     <string name="weather_compass_7">北西</string>
     <string name="weather_windFrom">%1$sの風</string>
+    <string name="sky_moonHeading">月までの距離</string>
+    <string name="sky_moonNow">現在の地球からの距離</string>
+    <string name="sky_perigee">次の近地点（最も近い）</string>
+    <string name="sky_apogee">次の遠地点（最も遠い）</string>
+    <string name="sky_km">%1$s km</string>
+    <string name="sky_superMoon">%1$sの満月は近地点に近く、「スーパームーン」です（月が少し大きく明るく見えます）。</string>
     <string name="stage_models_classic">クラシックアナログ</string>
     <string name="stage_models_minimal">シンプルアナログ</string>
     <string name="stage_models_analog_date">日付付きアナログ</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">都市・国・略称（EST、CET）</string>
     <string name="world_label">名前と絵文字（任意）</string>
     <string name="world_labelHint">例：母 👵</string>
+    <string name="moon_daysAfter">%1$s日後</string>
+    <string name="moon_daysBefore">%1$s日前</string>
+    <string name="moon_scrubHint">スライドで別の日の月を表示。カレンダーの日付をタップしても選べます。</string>
+    <string name="moon_data">月のデータ</string>
+    <string name="moon_transit">南中</string>
+    <string name="moon_firstQuarter">次の上弦</string>
+    <string name="moon_lastQuarter">次の下弦</string>
+    <string name="moon_riseIn">月の出まで%1$s</string>
+    <string name="moon_setIn">月の入りまで%1$s</string>
     <string name="app_name">時刻と日付</string>
 </resources>

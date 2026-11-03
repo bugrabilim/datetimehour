@@ -496,6 +496,12 @@
     <string name="weather_compass_6">الغرب</string>
     <string name="weather_compass_7">الشمال الغربي</string>
     <string name="weather_windFrom">من جهة %1$s</string>
+    <string name="sky_moonHeading">بُعد القمر</string>
+    <string name="sky_moonNow">المسافة إلى الأرض الآن</string>
+    <string name="sky_perigee">الحضيض التالي (أقرب نقطة)</string>
+    <string name="sky_apogee">الأوج التالي (أبعد نقطة)</string>
+    <string name="sky_km">%1$s كم</string>
+    <string name="sky_superMoon">بدر %1$s قريب من الحضيض: «قمر عملاق» (يبدو القمر أكبر وألمع قليلًا).</string>
     <string name="stage_models_classic">تناظرية كلاسيكية</string>
     <string name="stage_models_minimal">تناظرية بسيطة</string>
     <string name="stage_models_analog_date">تناظرية مع التاريخ</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">مدينة أو بلد أو اختصار (EST، CET)</string>
     <string name="world_label">الاسم والرمز التعبيري (اختياري)</string>
     <string name="world_labelHint">مثل: أمي 👵</string>
+    <string name="moon_daysAfter">بعد %1$s يوم</string>
+    <string name="moon_daysBefore">قبل %1$s يوم</string>
+    <string name="moon_scrubHint">اسحب لرؤية القمر في يوم آخر؛ النقر على يوم في التقويم يختاره أيضًا.</string>
+    <string name="moon_data">بيانات القمر</string>
+    <string name="moon_transit">أعلى نقطة (العبور)</string>
+    <string name="moon_firstQuarter">التربيع الأول التالي</string>
+    <string name="moon_lastQuarter">التربيع الأخير التالي</string>
+    <string name="moon_riseIn">شروق القمر بعد %1$s</string>
+    <string name="moon_setIn">غروب القمر بعد %1$s</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

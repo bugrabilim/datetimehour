@@ -59,6 +59,8 @@ const SITE_PATHS = [
   // 2. analiz #106, #108, #110 (3 Kasım 2026): ölçüm açıklamaları, günlük özet, yarın uyarısı, yeni ölçümler
   "weather.wd.*", "weather.uvw.*", "weather.hw.*", "weather.vw.*", "weather.dw.*", "weather.fw.*", "weather.sum.*", "weather.alert.*",
   "weather.visibility", "weather.dewPoint", "weather.gusts", "weather.details", "weather.compass.*", "weather.windFrom",
+  // 2. analiz #147: Ay uzaklığı, yerberi/yeröte, süper Ay (sitedeki gece gökyüzü metinleri)
+  "sky.moonHeading", "sky.moonNow", "sky.perigee", "sky.apogee", "sky.km", "sky.superMoon",
   "stage.models.*", "stage.prev", "stage.next", "stage.dots", "list.*",
   // 9. tur (30 Ekim 2026): kerahat, altın/mavi saat, fitre, hicri çevirici, pomodoro etiketleri
   "prayer.kerahatHeading", "prayer.kerahatNames.*", "prayer.kerahatNote",

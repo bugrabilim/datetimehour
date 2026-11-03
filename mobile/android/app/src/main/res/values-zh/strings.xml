@@ -496,6 +496,12 @@
     <string name="weather_compass_6">西</string>
     <string name="weather_compass_7">西北</string>
     <string name="weather_windFrom">%1$s风</string>
+    <string name="sky_moonHeading">月球距离</string>
+    <string name="sky_moonNow">当前与地球的距离</string>
+    <string name="sky_perigee">下一次近地点（最近）</string>
+    <string name="sky_apogee">下一次远地点（最远）</string>
+    <string name="sky_km">%1$s公里</string>
+    <string name="sky_superMoon">%1$s的满月接近近地点，是一次“超级月亮”（月亮看起来稍大、稍亮）。</string>
     <string name="stage_models_classic">经典指针式</string>
     <string name="stage_models_minimal">极简指针式</string>
     <string name="stage_models_analog_date">带日期的指针式</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">城市、国家或缩写（EST、CET）</string>
     <string name="world_label">名称和表情（可选）</string>
     <string name="world_labelHint">例如：妈妈 👵</string>
+    <string name="moon_daysAfter">%1$s 天后</string>
+    <string name="moon_daysBefore">%1$s 天前</string>
+    <string name="moon_scrubHint">滑动查看其他日子的月亮；点按日历中的日期也可选择。</string>
+    <string name="moon_data">月亮数据</string>
+    <string name="moon_transit">中天（最高点）</string>
+    <string name="moon_firstQuarter">下一个上弦月</string>
+    <string name="moon_lastQuarter">下一个下弦月</string>
+    <string name="moon_riseIn">距月出 %1$s</string>
+    <string name="moon_setIn">距月落 %1$s</string>
     <string name="app_name">时间与日期</string>
 </resources>

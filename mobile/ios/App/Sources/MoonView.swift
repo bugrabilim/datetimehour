@@ -53,6 +53,8 @@ struct Eclipse: Decodable, Identifiable {
 /// Ay takvimi (her gün öğle saatinde evre; yeni ay ve dolunay günleri adıyla), bugün Ay doğuşu/batışı ve yaklaşan tutulmalar
 struct MoonView: View {
     @State private var month = CalendarDay(Date())
+    /// Tarih kaydırıcı (2. analiz #146): bugünden −60…+60 gün; takvimde güne dokunmak da seçer
+    @State private var offset = 0
 
     var body: some View {
         let place = PlaceModel.shared.place
@@ -60,6 +62,7 @@ struct MoonView: View {
         let today = CalendarDay(now, timeZone: place.zone)
         let rs = place.moonRiseSet(today)
         List {
+            Section { MoonScrubber(place: place, today: today, offset: $offset) }
             Section {
                 HStack {
                     Button { month = month.adding(months: -1) } label: { Image(systemName: "chevron.left") }
@@ -72,8 +75,11 @@ struct MoonView: View {
                 }
                 .buttonStyle(.borderless)
                 .environment(\.layoutDirection, .leftToRight)
-                MoonMonthGrid(year: month.year, month: month.month, place: place, today: today)
+                MoonMonthGrid(year: month.year, month: month.month, place: place, today: today) { d in
+                    offset = max(-60, min(60, d.dayNumber - today.dayNumber))
+                }
             }
+            MoonDataSection(place: place, now: now)
             Section {
                 LabeledContent(L("nature.moonrise"), value: place.moonTime(rs.rise, none: "nature.moonNoRise"))
                 LabeledContent(L("nature.moonset"), value: place.moonTime(rs.set, none: "nature.moonNoSet"))
@@ -125,6 +131,7 @@ private struct MoonMonthGrid: View {
     let month: Int
     let place: AppPlace
     let today: CalendarDay
+    var onPick: (CalendarDay) -> Void = { _ in }
 
     var body: some View {
         let first = CalendarDay(year, month, 1)
@@ -153,7 +160,10 @@ private struct MoonMonthGrid: View {
                     .frame(maxWidth: .infinity, minHeight: 58, alignment: .top)
                     .padding(.vertical, 3)
                     .background(d == today ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 8))
+                    .contentShape(Rectangle())
+                    .onTapGesture { onPick(d) }
                     .accessibilityElement(children: .combine)
+                    .accessibilityAddTraits(.isButton)
                     .accessibilityLabel("\(d.day) · \(L("nature.phases.\(moonPhaseKeys[m.phaseIndex])"))")
                 } else {
                     Color.clear.frame(height: 1)

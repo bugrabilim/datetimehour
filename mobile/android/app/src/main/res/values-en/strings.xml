@@ -496,6 +496,12 @@
     <string name="weather_compass_6">west</string>
     <string name="weather_compass_7">north-west</string>
     <string name="weather_windFrom">from the %1$s</string>
+    <string name="sky_moonHeading">Distance to the Moon</string>
+    <string name="sky_moonNow">Distance from Earth now</string>
+    <string name="sky_perigee">Next perigee (closest)</string>
+    <string name="sky_apogee">Next apogee (farthest)</string>
+    <string name="sky_km">%1$s km</string>
+    <string name="sky_superMoon">The full moon of %1$s is close to perigee: a \"supermoon\" (the Moon looks slightly larger and brighter).</string>
     <string name="stage_models_classic">Classic analogue</string>
     <string name="stage_models_minimal">Minimal analogue</string>
     <string name="stage_models_analog_date">Analogue with date</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">City, country or abbreviation (EST, CET)</string>
     <string name="world_label">Name and emoji (optional)</string>
     <string name="world_labelHint">e.g. Mum 👵</string>
+    <string name="moon_daysAfter">in %1$s days</string>
+    <string name="moon_daysBefore">%1$s days ago</string>
+    <string name="moon_scrubHint">Slide to see the Moon on another day; tapping a day in the calendar also selects it.</string>
+    <string name="moon_data">Moon data</string>
+    <string name="moon_transit">Highest point (transit)</string>
+    <string name="moon_firstQuarter">Next first quarter</string>
+    <string name="moon_lastQuarter">Next last quarter</string>
+    <string name="moon_riseIn">Moonrise in %1$s</string>
+    <string name="moon_setIn">Moonset in %1$s</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

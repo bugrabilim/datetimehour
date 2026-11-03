@@ -496,6 +496,12 @@
     <string name="weather_compass_6">barat</string>
     <string name="weather_compass_7">barat laut</string>
     <string name="weather_windFrom">dari arah %1$s</string>
+    <string name="sky_moonHeading">Jarak ke Bulan</string>
+    <string name="sky_moonNow">Jarak dari Bumi sekarang</string>
+    <string name="sky_perigee">Perige berikutnya (terdekat)</string>
+    <string name="sky_apogee">Apoge berikutnya (terjauh)</string>
+    <string name="sky_km">%1$s km</string>
+    <string name="sky_superMoon">Bulan purnama pada %1$s terjadi dekat perige: \"supermoon\" (Bulan tampak sedikit lebih besar dan lebih terang).</string>
     <string name="stage_models_classic">Analog klasik</string>
     <string name="stage_models_minimal">Analog minimalis</string>
     <string name="stage_models_analog_date">Analog dengan tanggal</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">Kota, negara, atau singkatan (EST, CET)</string>
     <string name="world_label">Nama dan emoji (opsional)</string>
     <string name="world_labelHint">mis. Ibu 👵</string>
+    <string name="moon_daysAfter">%1$s hari lagi</string>
+    <string name="moon_daysBefore">%1$s hari lalu</string>
+    <string name="moon_scrubHint">Geser untuk melihat Bulan di hari lain; mengetuk hari di kalender juga memilihnya.</string>
+    <string name="moon_data">Data Bulan</string>
+    <string name="moon_transit">Titik tertinggi (transit)</string>
+    <string name="moon_firstQuarter">Kuartal pertama berikutnya</string>
+    <string name="moon_lastQuarter">Kuartal terakhir berikutnya</string>
+    <string name="moon_riseIn">Bulan terbit dalam %1$s</string>
+    <string name="moon_setIn">Bulan terbenam dalam %1$s</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

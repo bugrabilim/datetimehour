@@ -496,6 +496,12 @@
     <string name="weather_compass_6">Batı</string>
     <string name="weather_compass_7">Kuzeybatı</string>
     <string name="weather_windFrom">%1$s yönünden</string>
+    <string name="sky_moonHeading">Ay\'ın uzaklığı</string>
+    <string name="sky_moonNow">Şu an Dünya\'ya uzaklığı</string>
+    <string name="sky_perigee">Sıradaki en yakın nokta (perige)</string>
+    <string name="sky_apogee">Sıradaki en uzak nokta (apoje)</string>
+    <string name="sky_km">%1$s km</string>
+    <string name="sky_superMoon">%1$s dolunayı en yakın noktaya yakın: \"süper ay\" (Ay biraz daha büyük ve parlak görünür).</string>
     <string name="stage_models_classic">Klasik analog</string>
     <string name="stage_models_minimal">Sade analog</string>
     <string name="stage_models_analog_date">Analog ve tarih</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">Şehir, ülke ya da kısaltma (EST, CET)</string>
     <string name="world_label">Ad ve emoji (isteğe bağlı)</string>
     <string name="world_labelHint">ör. Annem 👵</string>
+    <string name="moon_daysAfter">%1$s gün sonra</string>
+    <string name="moon_daysBefore">%1$s gün önce</string>
+    <string name="moon_scrubHint">Kaydırarak başka günün Ay\'ına bakın; takvimde bir güne dokunmak da o günü seçer.</string>
+    <string name="moon_data">Ay verileri</string>
+    <string name="moon_transit">En yüksekte (üst geçiş)</string>
+    <string name="moon_firstQuarter">Sıradaki ilk dördün</string>
+    <string name="moon_lastQuarter">Sıradaki son dördün</string>
+    <string name="moon_riseIn">Ay doğuşuna %1$s</string>
+    <string name="moon_setIn">Ay batışına %1$s</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

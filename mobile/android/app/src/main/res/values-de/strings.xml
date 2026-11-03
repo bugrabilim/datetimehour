@@ -496,6 +496,12 @@
     <string name="weather_compass_6">Westen</string>
     <string name="weather_compass_7">Nordwesten</string>
     <string name="weather_windFrom">aus %1$s</string>
+    <string name="sky_moonHeading">Entfernung des Mondes</string>
+    <string name="sky_moonNow">Aktuelle Entfernung zur Erde</string>
+    <string name="sky_perigee">Nächstes Perigäum (erdnächster Punkt)</string>
+    <string name="sky_apogee">Nächstes Apogäum (erdfernster Punkt)</string>
+    <string name="sky_km">%1$s km</string>
+    <string name="sky_superMoon">Der Vollmond am %1$s liegt nahe am Perigäum: ein „Supermond“ (der Mond wirkt etwas größer und heller).</string>
     <string name="stage_models_classic">Klassisch analog</string>
     <string name="stage_models_minimal">Schlicht analog</string>
     <string name="stage_models_analog_date">Analog mit Datum</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">Stadt, Land oder Kürzel (EST, CET)</string>
     <string name="world_label">Name und Emoji (optional)</string>
     <string name="world_labelHint">z. B. Mama 👵</string>
+    <string name="moon_daysAfter">in %1$s Tagen</string>
+    <string name="moon_daysBefore">vor %1$s Tagen</string>
+    <string name="moon_scrubHint">Schieben, um den Mond an einem anderen Tag zu sehen; Tippen auf einen Kalendertag wählt ihn ebenfalls.</string>
+    <string name="moon_data">Monddaten</string>
+    <string name="moon_transit">Höchststand (Kulmination)</string>
+    <string name="moon_firstQuarter">Nächstes erstes Viertel</string>
+    <string name="moon_lastQuarter">Nächstes letztes Viertel</string>
+    <string name="moon_riseIn">Mondaufgang in %1$s</string>
+    <string name="moon_setIn">Monduntergang in %1$s</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

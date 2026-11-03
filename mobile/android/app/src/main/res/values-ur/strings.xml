@@ -496,6 +496,12 @@
     <string name="weather_compass_6">مغرب</string>
     <string name="weather_compass_7">شمال مغرب</string>
     <string name="weather_windFrom">%1$s سے</string>
+    <string name="sky_moonHeading">چاند کا فاصلہ</string>
+    <string name="sky_moonNow">زمین سے موجودہ فاصلہ</string>
+    <string name="sky_perigee">اگلا حضیض (سب سے قریب)</string>
+    <string name="sky_apogee">اگلا اوج (سب سے دور)</string>
+    <string name="sky_km">%1$s کلومیٹر</string>
+    <string name="sky_superMoon">%1$s کا پورا چاند حضیض کے قریب ہے: «سپر مون» (چاند ذرا بڑا اور روشن دکھائی دیتا ہے)۔</string>
     <string name="stage_models_classic">کلاسیکی اینالاگ</string>
     <string name="stage_models_minimal">سادہ اینالاگ</string>
     <string name="stage_models_analog_date">اینالاگ مع تاریخ</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">شہر، ملک یا مخفف (EST، CET)</string>
     <string name="world_label">نام اور ایموجی (اختیاری)</string>
     <string name="world_labelHint">مثلاً امی 👵</string>
+    <string name="moon_daysAfter">%1$s دن بعد</string>
+    <string name="moon_daysBefore">%1$s دن پہلے</string>
+    <string name="moon_scrubHint">کسی اور دن کا چاند دیکھنے کے لیے سلائیڈ کریں؛ کیلنڈر میں دن پر ٹیپ کرنا بھی اسے منتخب کرتا ہے۔</string>
+    <string name="moon_data">چاند کی معلومات</string>
+    <string name="moon_transit">سب سے بلند مقام (عبور)</string>
+    <string name="moon_firstQuarter">اگلا پہلا چوتھائی</string>
+    <string name="moon_lastQuarter">اگلا آخری چوتھائی</string>
+    <string name="moon_riseIn">چاند نکلنے میں %1$s</string>
+    <string name="moon_setIn">چاند ڈوبنے میں %1$s</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

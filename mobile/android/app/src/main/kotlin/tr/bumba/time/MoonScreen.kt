@@ -34,6 +34,9 @@ import androidx.compose.ui.unit.sp
 import org.json.JSONArray
 import tr.bumba.time.core.Nature
 import java.time.Instant
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.foundation.clickable
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
@@ -86,7 +89,10 @@ fun MoonScreen() {
     val now = Instant.now()
     var month by rememberSaveable { mutableStateOf(YearMonth.from(place.today(now)).toString()) }
     val ym = YearMonth.parse(month)
+    // Tarih kaydırıcı (2. analiz #146): bugünden −60…+60 gün; takvimde güne dokunmak da seçer
+    var offset by rememberSaveable { mutableIntStateOf(0) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        MoonScrubber(place, place.today(now), offset) { offset = it.coerceIn(-60, 60) }
         AppCard {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = { month = ym.minusMonths(1).toString() }) {
@@ -98,8 +104,11 @@ fun MoonScreen() {
                     Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent)
                 }
             }
-            MoonMonth(ym, place, place.today(now))
+            MoonMonth(ym, place, place.today(now)) { d ->
+                offset = java.time.temporal.ChronoUnit.DAYS.between(place.today(now), d).toInt().coerceIn(-60, 60)
+            }
         }
+        MoonDataCard(place, now)
         val today = place.today(now)
         val rs = moonRiseSet(place, today)
         AppCard {
@@ -135,7 +144,7 @@ fun MoonScreen() {
 
 /** Ayın günleri: evre emojisi, gün, yeni ay ve dolunay adı (hesaplanan anın yerin saatiyle düştüğü gün) */
 @Composable
-private fun MoonMonth(ym: YearMonth, place: AppPlace, today: LocalDate) {
+private fun MoonMonth(ym: YearMonth, place: AppPlace, today: LocalDate, onPick: (LocalDate) -> Unit = {}) {
     val first = ym.atDay(1)
     val startMs = first.atStartOfDay(place.zone).toInstant().toEpochMilli()
     val marks = HashMap<LocalDate, String>()
@@ -165,7 +174,7 @@ private fun MoonMonth(ym: YearMonth, place: AppPlace, today: LocalDate) {
                                 Column(
                                     Modifier.fillMaxSize().then(
                                         if (d == today) Modifier.background(Theme.c.accentSoft, RoundedCornerShape(8.dp)) else Modifier,
-                                    ).padding(top = 3.dp),
+                                    ).clickable { onPick(d) }.padding(top = 3.dp),
                                     horizontalAlignment = Alignment.CenterHorizontally,
                                 ) {
                                     Text(MOON_PHASE_EMOJI[m.phaseIndex], fontSize = 20.sp)
@@ -224,5 +233,64 @@ private fun YearMoonsCard(place: AppPlace, now: Instant) {
             }
         }
         Text(L("nature.ym.namesNote"), color = Theme.c.muted, fontSize = 12.sp)
+    }
+}
+
+/** Seçili günün Ay'ı (2. analiz #146): büyük evre, aydınlık yüzde, doğuş/batış; çentikli kaydırıcı ve ‹ › ile gün gün */
+@Composable
+private fun MoonScrubber(place: AppPlace, today: LocalDate, offset: Int, onChange: (Int) -> Unit) {
+    val day = today.plusDays(offset.toLong())
+    val noon = day.atTime(if (offset == 0) java.time.LocalTime.now(place.zone).hour else 21, 0).atZone(place.zone).toInstant().toEpochMilli()
+    val m = Nature.moon(noon)
+    val rs = moonRiseSet(place, day)
+    AppCard {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconButton(onClick = { onChange(offset - 1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("prayer.prevMonth"), tint = Theme.c.accent) }
+            Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(MOON_PHASE_EMOJI[m.phaseIndex], fontSize = 64.sp)
+                Text(L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"), color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                Text(T("nature.illumination", Math.round(m.illumination * 100)), color = Theme.c.muted, fontSize = 13.sp)
+                Text(Fmt.longDate(day) + "  ·  " + when {
+                    offset == 0 -> L("client.today")
+                    offset > 0 -> T("moon.daysAfter", offset)
+                    else -> T("moon.daysBefore", -offset)
+                }, color = Theme.c.text, fontSize = 13.sp, textAlign = TextAlign.Center)
+                Text("↑ ${moonTime(rs.rise, place, "nature.moonNoRise")}   ↓ ${moonTime(rs.set, place, "nature.moonNoSet")}", color = Theme.c.text, fontSize = 13.sp)
+            }
+            IconButton(onClick = { onChange(offset + 1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent) }
+        }
+        androidx.compose.material3.Slider(offset.toFloat(), { onChange(Math.round(it)) }, valueRange = -60f..60f, steps = 119,
+            colors = androidx.compose.material3.SliderDefaults.colors(thumbColor = Theme.c.accent, activeTrackColor = Theme.c.accent))
+        Text(L("moon.scrubHint"), color = Theme.c.muted, fontSize = 12.sp)
+    }
+}
+
+/** Ay verileri (2. analiz #147): doğuş/batışa kalan, üst geçiş, uzaklık, yerberi/yeröte, süper Ay, dördünler */
+@Composable
+private fun MoonDataCard(place: AppPlace, now: Instant) {
+    val ms = now.toEpochMilli()
+    val data = remember(ms / 600_000, place.id) {
+        val (per, apo) = MoonDetails.perigeeApogee(ms)
+        Triple(per to apo, MoonDetails.superMoon(ms, per), MoonDetails.quarters(ms))
+    }
+    val today = place.today(now)
+    fun dt(t: Long) = Fmt.dayMonth(Instant.ofEpochMilli(t).atZone(place.zone).toLocalDate()) + " " + Fmt.hm(Instant.ofEpochMilli(t), place.zone)
+    fun km(v: Double) = T("sky.km", java.text.NumberFormat.getIntegerInstance(Strings.numberLocale).format(Math.round(v)))
+    AppCard {
+        SectionTitle(L("moon.data"))
+        // Doğuşa ya da batışa kalan süre (bugün ve yarın içinde ilk olan)
+        val events = listOf(today, today.plusDays(1)).flatMap { d -> val r = moonRiseSet(place, d); listOfNotNull(r.rise?.let { it to true }, r.set?.let { it to false }) }
+            .filter { it.first > ms }.sortedBy { it.first }
+        events.firstOrNull()?.let { (t, rise) ->
+            Text(T(if (rise) "moon.riseIn" else "moon.setIn", Fmt.hm(((t - ms) / 1000).toInt())), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+        }
+        val (tr, alt) = MoonDetails.transit(place, today)
+        Row2(L("moon.transit"), Fmt.hm(Instant.ofEpochMilli(tr), place.zone) + " · " + Math.round(alt) + "°")
+        Row2(L("sky.moonNow"), km(MoonDetails.distanceKm(ms)))
+        data.first.first?.let { Row2(L("sky.perigee"), dt(it.at) + " · " + km(it.km)) }
+        data.first.second?.let { Row2(L("sky.apogee"), dt(it.at) + " · " + km(it.km)) }
+        Row2(L("moon.firstQuarter"), dt(data.third.first))
+        Row2(L("moon.lastQuarter"), dt(data.third.second))
+        data.second?.let { Text("🌕 " + T("sky.superMoon", Fmt.longDate(Instant.ofEpochMilli(it).atZone(place.zone).toLocalDate())), color = Theme.c.accent, fontSize = 13.sp) }
     }
 }

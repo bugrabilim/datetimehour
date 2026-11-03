@@ -496,6 +496,12 @@
     <string name="weather_compass_6">ตะวันตก</string>
     <string name="weather_compass_7">ตะวันตกเฉียงเหนือ</string>
     <string name="weather_windFrom">จากทิศ%1$s</string>
+    <string name="sky_moonHeading">ระยะห่างถึงดวงจันทร์</string>
+    <string name="sky_moonNow">ระยะห่างจากโลกตอนนี้</string>
+    <string name="sky_perigee">จุดใกล้โลกครั้งถัดไป (ใกล้ที่สุด)</string>
+    <string name="sky_apogee">จุดไกลโลกครั้งถัดไป (ไกลที่สุด)</string>
+    <string name="sky_km">%1$s กม.</string>
+    <string name="sky_superMoon">จันทร์เต็มดวงวันที่ %1$s อยู่ใกล้จุดใกล้โลก: เป็น \"ซูเปอร์มูน\" (ดวงจันทร์ดูใหญ่และสว่างขึ้นเล็กน้อย)</string>
     <string name="stage_models_classic">นาฬิกาเข็มคลาสสิก</string>
     <string name="stage_models_minimal">นาฬิกาเข็มเรียบง่าย</string>
     <string name="stage_models_analog_date">นาฬิกาเข็มพร้อมวันที่</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">เมือง ประเทศ หรือตัวย่อ (EST, CET)</string>
     <string name="world_label">ชื่อและอีโมจิ (ไม่บังคับ)</string>
     <string name="world_labelHint">เช่น แม่ 👵</string>
+    <string name="moon_daysAfter">อีก %1$s วัน</string>
+    <string name="moon_daysBefore">%1$s วันก่อน</string>
+    <string name="moon_scrubHint">เลื่อนเพื่อดูดวงจันทร์ในวันอื่น แตะวันในปฏิทินก็เลือกได้เช่นกัน</string>
+    <string name="moon_data">ข้อมูลดวงจันทร์</string>
+    <string name="moon_transit">จุดสูงสุด (ผ่านเมริเดียน)</string>
+    <string name="moon_firstQuarter">ขึ้นแปดค่ำครั้งถัดไป</string>
+    <string name="moon_lastQuarter">แรมแปดค่ำครั้งถัดไป</string>
+    <string name="moon_riseIn">ดวงจันทร์ขึ้นในอีก %1$s</string>
+    <string name="moon_setIn">ดวงจันทร์ตกในอีก %1$s</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

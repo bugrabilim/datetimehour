@@ -910,6 +910,11 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .tl-name { font-weight: 600; color: var(--text); text-decoration: none; }
 a.tl-name:hover { text-decoration: underline; }
 .tl-time { font-size: 1.7rem; font-weight: 700; font-variant-numeric: tabular-nums; min-height: 1.3em; }
+/* Gök renkli saat (2. analiz #129): gündüz açık mavi, alacakaranlık kızıl, gece lacivert (yazı ≥4,5:1) */
+.tl-card .tl-time { border-radius: 0.5rem; padding: 0 0.35rem; }
+.tl-card.is-day .tl-time { background: #d5e8ff; color: #14233a; }
+.tl-card.is-dusk .tl-time { background: #a8473b; color: #fff; }
+.tl-card.is-night .tl-time { background: #1b2440; color: #e8ecf8; }
 .tl-off { color: var(--muted); font-size: 0.8rem; }
 .tl-diff { color: var(--muted); font-size: 0.8rem; min-height: 1.3em; }
 @media (min-width: 48rem) {

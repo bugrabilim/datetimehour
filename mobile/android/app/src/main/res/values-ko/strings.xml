@@ -496,6 +496,12 @@
     <string name="weather_compass_6">서</string>
     <string name="weather_compass_7">북서</string>
     <string name="weather_windFrom">%1$s풍</string>
+    <string name="sky_moonHeading">달까지의 거리</string>
+    <string name="sky_moonNow">지금 지구와의 거리</string>
+    <string name="sky_perigee">다음 근지점(가장 가까움)</string>
+    <string name="sky_apogee">다음 원지점(가장 멂)</string>
+    <string name="sky_km">%1$s km</string>
+    <string name="sky_superMoon">%1$s의 보름달은 근지점에 가까운 \"슈퍼문\"입니다(달이 조금 더 크고 밝아 보입니다).</string>
     <string name="stage_models_classic">클래식 아날로그</string>
     <string name="stage_models_minimal">미니멀 아날로그</string>
     <string name="stage_models_analog_date">날짜가 있는 아날로그</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">도시, 국가 또는 약어(EST, CET)</string>
     <string name="world_label">이름과 이모지(선택)</string>
     <string name="world_labelHint">예: 엄마 👵</string>
+    <string name="moon_daysAfter">%1$s일 후</string>
+    <string name="moon_daysBefore">%1$s일 전</string>
+    <string name="moon_scrubHint">밀어서 다른 날의 달을 보세요. 달력에서 날짜를 눌러도 선택됩니다.</string>
+    <string name="moon_data">달 정보</string>
+    <string name="moon_transit">남중</string>
+    <string name="moon_firstQuarter">다음 상현</string>
+    <string name="moon_lastQuarter">다음 하현</string>
+    <string name="moon_riseIn">월출까지 %1$s</string>
+    <string name="moon_setIn">월몰까지 %1$s</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

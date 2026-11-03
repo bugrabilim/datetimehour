@@ -496,6 +496,12 @@
     <string name="weather_compass_6">ouest</string>
     <string name="weather_compass_7">nord-ouest</string>
     <string name="weather_windFrom">secteur %1$s</string>
+    <string name="sky_moonHeading">Distance de la Lune</string>
+    <string name="sky_moonNow">Distance actuelle à la Terre</string>
+    <string name="sky_perigee">Prochain périgée (plus proche)</string>
+    <string name="sky_apogee">Prochain apogée (plus lointain)</string>
+    <string name="sky_km">%1$s km</string>
+    <string name="sky_superMoon">La pleine lune du %1$s est proche du périgée : une « super lune » (la Lune paraît un peu plus grande et plus brillante).</string>
     <string name="stage_models_classic">Analogique classique</string>
     <string name="stage_models_minimal">Analogique épurée</string>
     <string name="stage_models_analog_date">Analogique avec date</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">Ville, pays ou abréviation (EST, CET)</string>
     <string name="world_label">Nom et emoji (facultatif)</string>
     <string name="world_labelHint">ex. Maman 👵</string>
+    <string name="moon_daysAfter">dans %1$s jours</string>
+    <string name="moon_daysBefore">il y a %1$s jours</string>
+    <string name="moon_scrubHint">Faites glisser pour voir la Lune un autre jour ; toucher un jour du calendrier le sélectionne aussi.</string>
+    <string name="moon_data">Données lunaires</string>
+    <string name="moon_transit">Point culminant (transit)</string>
+    <string name="moon_firstQuarter">Prochain premier quartier</string>
+    <string name="moon_lastQuarter">Prochain dernier quartier</string>
+    <string name="moon_riseIn">Lever de la Lune dans %1$s</string>
+    <string name="moon_setIn">Coucher de la Lune dans %1$s</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

@@ -496,6 +496,12 @@
     <string name="weather_compass_6">kanluran</string>
     <string name="weather_compass_7">hilagang-kanluran</string>
     <string name="weather_windFrom">mula sa %1$s</string>
+    <string name="sky_moonHeading">Layo ng Buwan</string>
+    <string name="sky_moonNow">Layo mula sa Daigdig ngayon</string>
+    <string name="sky_perigee">Susunod na perigee (pinakamalapit)</string>
+    <string name="sky_apogee">Susunod na apogee (pinakamalayo)</string>
+    <string name="sky_km">%1$s km</string>
+    <string name="sky_superMoon">Malapit sa perigee ang kabilugan ng buwan sa %1$s: isang \"supermoon\" (mukhang bahagyang mas malaki at mas maliwanag ang Buwan).</string>
     <string name="stage_models_classic">Klasikong analog</string>
     <string name="stage_models_minimal">Simpleng analog</string>
     <string name="stage_models_analog_date">Analog na may petsa</string>
@@ -2147,5 +2153,14 @@
     <string name="world_searchHint">Lungsod, bansa o daglat (EST, CET)</string>
     <string name="world_label">Pangalan at emoji (opsiyonal)</string>
     <string name="world_labelHint">hal. Nanay 👵</string>
+    <string name="moon_daysAfter">makalipas ang %1$s araw</string>
+    <string name="moon_daysBefore">%1$s araw na ang nakalipas</string>
+    <string name="moon_scrubHint">I-slide para makita ang Buwan sa ibang araw; ang pag-tap sa araw sa kalendaryo ay pumipili rin nito.</string>
+    <string name="moon_data">Datos ng Buwan</string>
+    <string name="moon_transit">Pinakamataas na punto (transit)</string>
+    <string name="moon_firstQuarter">Susunod na unang kuwarto</string>
+    <string name="moon_lastQuarter">Susunod na huling kuwarto</string>
+    <string name="moon_riseIn">Pagsikat ng buwan sa loob ng %1$s</string>
+    <string name="moon_setIn">Paglubog ng buwan sa loob ng %1$s</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>
