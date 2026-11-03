@@ -7,62 +7,12 @@ import SaatCore
 struct ToolsTab: View {
     @State private var router = Router.shared
 
+    /// Araçlar sekmesi "Tümü" sayfasıdır (Seçenek B, 2. analiz #195): kategorili ızgara, arama, sık kullanılanlar
     var body: some View {
         NavigationStack(path: $router.toolsPath) {
-            List {
-                Section {
-                    row(.alarm, L("tools.hub.cards.alarm.name"), "alarm")
-                    row(.timer, L("tools.timer"), "timer")
-                    row(.stopwatch, L("tools.hub.cards.stopwatch.name"), "stopwatch")
-                    row(.pomodoro, L("tools.hub.cards.pomodoro.name"), "leaf")
-                    row(.study, L("study.title"), "graduationcap")
-                    row(.sleep, L("sleep.title"), "bed.double")
-                    row(.wakeGame, L("wakegame.title"), "bird")
-                    row(.journal, L("journal.title"), "sun.horizon")
-                    row(.breath, L("breath.title"), "wind")
-                    row(.planner, L("planner.h1"), "person.2.wave.2")
-                    row(.datecalc, L("tools.hub.cards.datecalc.name"), "calendar.badge.clock")
-                }
-                Section {
-                    // Rozetler: girişin yanında bir satırlık not (Bumba standardı madde 13)
-                    NavigationLink(value: ToolRoute.badges) {
-                        VStack(alignment: .leading, spacing: 3) {
-                            Label(L("badges.h1"), systemImage: "rosette")
-                            Text(L("badges.note")).font(.caption).foregroundStyle(Theme.muted)
-                        }
-                    }
-                }
-                Section {
-                    row(.settings, L("settings.title"), "gearshape")
-                    row(.about, L("settings.about"), "info.circle")
-                }
-            }
-            .themedBackground()
-            .navigationTitle(L("tab.tools"))
-            .navigationBarTitleDisplayMode(.large)
-            .navigationDestination(for: ToolRoute.self) { route in
-                switch route {
-                case .alarm: AlarmsView()
-                case .timer: TimerView()
-                case .stopwatch: StopwatchView()
-                case .pomodoro: PomodoroView()
-                case .study: StudyView()
-                case .wakeGame: WakeGameView()
-                case .sleep: SleepView()
-                case .journal: JournalView()
-                case .breath: BreathView()
-                case .planner: MeetingPlannerView()
-                case .datecalc: DateCalcView()
-                case .settings: SettingsView()
-                case .about: AboutView()
-                case .badges: BadgesView()
-                }
-            }
+            AllView()
+                .navigationDestination(for: ToolRoute.self) { route in route.view }
         }
-    }
-
-    private func row(_ route: ToolRoute, _ title: String, _ icon: String) -> some View {
-        NavigationLink(value: route) { BoxLabel(title, icon: icon) }
     }
 }
 
@@ -145,28 +95,11 @@ struct StopwatchView: View {
             VStack(spacing: 20) {
                 BigTime(text: format(t))
                     .padding(.top, 30)
-                HStack(spacing: 12) {
-                    if start > 0 {
-                        RoundButton(title: L("tools.stopwatch.lap")) { lapsRaw = (laps + [t]).map { String($0) }.joined(separator: ",") }
-                        RoundButton(title: L("tools.stopwatch.stop"), prominent: true) {
-                            acc = t
-                            start = 0
-                        }
-                    } else {
-                        RoundButton(title: L("tools.stopwatch.reset")) {
-                            acc = 0
-                            lapsRaw = ""
-                        }
-                        .disabled(t == 0)
-                        RoundButton(title: L(t > 0 ? "tools.stopwatch.resume" : "tools.stopwatch.start"), prominent: true) {
-                            start = Date().timeIntervalSinceReferenceDate
-                            BadgeStore.shared.hit(.kronometre)
-                        }
-                    }
-                }
                 lapList(current: t)
             }
             .padding(.horizontal, 20)
+            // Araç kalıbı (2. analiz #200): altta tur/sıfırla (soluk) ve başlat/durdur (tek dolu düğme)
+            .safeAreaInset(edge: .bottom) { controls(t) }
         }
         .background(AppBackdrop().ignoresSafeArea())
         // Kilit ekranı / Dynamic Island: çalışan kronometre
@@ -175,11 +108,48 @@ struct StopwatchView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button { full = true } label: { Image(systemName: "arrow.up.left.and.arrow.down.right") }
-                    .accessibilityLabel(L("clock.fullscreen"))
+                MoreMenu(items: menuItems)
             }
         }
         .fullScreenCover(isPresented: $full) { fullscreen }
+    }
+
+    /// "…": tam ekran ve turları kopyala (CSV paylaşımı tur listesinin başında)
+    private var menuItems: [MoreItem] {
+        var items = [MoreItem(title: L("clock.fullscreen"), icon: "arrow.up.left.and.arrow.down.right") { full = true }]
+        if !laps.isEmpty {
+            items.append(MoreItem(title: L("sw.copyLaps"), icon: "doc.on.doc") { copyLaps() })
+        }
+        return items
+    }
+
+    private func copyLaps() {
+        let totals = laps
+        let lapTimes = totals.enumerated().map { i, v in v - (i > 0 ? totals[i - 1] : 0) }
+        let no = L("tools.stopwatch.lapNo")
+        UIPasteboard.general.string = lapTimes.enumerated()
+            .map { "\(no) \($0.offset + 1)\t\(format($0.element))\t\(format(totals[$0.offset]))" }
+            .joined(separator: "\n")
+        copied = true
+    }
+
+    private func controls(_ t: Double) -> some View {
+        Group {
+            if start > 0 {
+                ToolPrimaryBar(primary: L("tools.stopwatch.stop"), secondary: L("tools.stopwatch.lap"),
+                               onSecondary: { lapsRaw = (laps + [t]).map { String($0) }.joined(separator: ",") }) {
+                    acc = t
+                    start = 0
+                }
+            } else {
+                ToolPrimaryBar(primary: L(t > 0 ? "tools.stopwatch.resume" : "tools.stopwatch.start"),
+                               secondary: t > 0 ? L("tools.stopwatch.reset") : nil,
+                               onSecondary: { acc = 0; lapsRaw = "" }) {
+                    start = Date().timeIntervalSinceReferenceDate
+                    BadgeStore.shared.hit(.kronometre)
+                }
+            }
+        }
     }
 
     /// Siyah zemin, genişliğe sığan dev rakamlar (yatayda ekranı doldurur), tur ve dur/başlat; ekran açık kalır
@@ -240,13 +210,8 @@ struct StopwatchView: View {
                     Label(L("csv.laps"), systemImage: "square.and.arrow.up")
                 }
                 .foregroundStyle(Theme.accent)
-                // Turları metin olarak kopyala (2. analiz #104)
-                Button {
-                    UIPasteboard.general.string = lapTimes.enumerated().map { "\(L("tools.stopwatch.lapNo")) \($0.offset + 1)\t\(format($0.element))\t\(format(totals[$0.offset]))" }
-                        .joined(separator: "\n")
-                    copied = true
-                } label: { Label(copied ? L("sw.copied") : L("sw.copyLaps"), systemImage: copied ? "checkmark" : "doc.on.doc") }
-                .foregroundStyle(Theme.accent)
+                // Turları metin olarak kopyalama "…" menüsünde (2. analiz #104, #200); kopyalanınca burada not
+                if copied { Label(L("sw.copied"), systemImage: "checkmark").foregroundStyle(Theme.ok) }
             }
             ForEach(Array(lapTimes.enumerated()).reversed(), id: \.offset) { i, lap in
                 HStack {
@@ -957,91 +922,66 @@ struct PomodoroView: View {
     private var phaseSeconds: Double { Double((phase == "work" ? workMin : phase == "short" ? shortMin : longMin) * 60) }
     private var running: Bool { end > 0 }
 
+    /// Araç kalıbı (2. analiz #200): Sayaç / İstatistik, altta tek ana düğme, ikincil işler "…" menüsünde,
+    /// görev ve ses ile süre ayarları alt sayfada
+    @State private var page = 0
+    @State private var sheet: PomoSheet?
+
+    enum PomoSheet: String, Identifiable {
+        case task, settings
+        var id: String { rawValue }
+    }
+
+    private var primaryTitle: String {
+        if running { return L("tools.pomodoro.pause") }
+        return L(left > 0 ? "tools.pomodoro.resume" : "tools.pomodoro.start")
+    }
+
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
             let remaining = running ? max(0, end - context.date.timeIntervalSinceReferenceDate) : (left > 0 ? left : phaseSeconds)
             ScrollView {
                 VStack(spacing: 18) {
-                    Text(L("tools.pomodoro.\(phase)"))
-                        .font(.title3.weight(.semibold))
-                        .foregroundStyle(phase == "work" ? Theme.accent : CalendarData.color("religious"))
-                        .padding(.top, 24)
-                    // Kalan süre halkası ve tur domatesleri (2. analiz #101)
-                    ProgressRing(progress: remaining / max(1, phaseSeconds), color: phase == "work" ? Theme.accent : CalendarData.color("religious")) {
-                        BigTime(text: clock(Int(remaining.rounded(.up))))
+                    Picker("", selection: $page) {
+                        Text(L("tool.tab.timer")).tag(0)
+                        Text(L("tool.tab.stats")).tag(1)
                     }
-                    .frame(maxWidth: 320)
-                    RoundDots(total: rounds, done: phase == "long" ? rounds : round - 1, current: phase == "work" ? round : 0,
-                              label: T("tools.pomodoro.round", round, rounds))
-                    HStack(spacing: 12) {
-                        RoundButton(title: L("tools.pomodoro.skip")) { advance() }
-                        if running {
-                            RoundButton(title: L("tools.pomodoro.pause"), prominent: true) {
-                                left = remaining
-                                end = 0
-                                cancelAlarm()
-                            }
-                        } else {
-                            RoundButton(title: L(left > 0 ? "tools.pomodoro.resume" : "tools.pomodoro.start"), prominent: true) {
-                                start(seconds: left > 0 ? left : phaseSeconds)
-                            }
-                        }
+                    .pickerStyle(.segmented)
+                    .padding(.top, 8)
+                    if page == 0 {
+                        timerPage(remaining: remaining, now: context.date)
+                    } else {
+                        statsPage
                     }
-                    Text(T("tools.pomodoro.completed", done)).font(.footnote).foregroundStyle(Theme.muted)
-                    let todayCount = log.filter { $0.d == BadgeStore.day(context.date) }.count
-                    Text(todayCount >= goal ? L("tools.pomodoro.goalDone") + " · " + T("tools.pomodoro.goalProgress", todayCount, goal)
-                         : T("tools.pomodoro.goalProgress", todayCount, goal))
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(todayCount >= goal ? Theme.accent : Theme.muted)
-                    Button(L("tools.pomodoro.reset")) {
-                        cancelAlarm()
-                        end = 0; left = 0; phase = "work"; round = 1; done = 0
-                    }
-                    .tint(Theme.accent)
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text(L("tools.pomodoro.taskLabel")).font(.subheadline).foregroundStyle(Theme.muted)
-                        TextField(L("tools.pomodoro.taskPlaceholder"), text: Binding(get: { task }, set: { task = String($0.prefix(60)) }))
-                            .textFieldStyle(.roundedBorder)
-                            .submitLabel(.done)
-                        Picker(L("tools.pomodoro.tagLabel"), selection: $tag) {
-                            ForEach(PomoLog.tags, id: \.self) { Text(L("tools.pomodoro.tags.\($0)")).tag($0) }
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                    PomoTodoCard(current: $task).id(log.count) // tur bitince sayaçlar yeniden okunur
-                    VStack(alignment: .leading, spacing: 8) {
-                        SectionTitle(text: L("tools.pomodoro.noise"))
-                        NoiseControls(kind: $noise, volume: $volume)
-                        Text(L("pomo.noiseNote")).font(.caption).foregroundStyle(Theme.muted)
-                    }
-                    .card()
-                    FocusBlockCard()
-                    FlipFocusCard()
-                    FocusStatsCard(log: log) {
-                        PomoLog.save([])
-                        log = []
-                    }
-                    FocusForest(log: log)
-                    Form {
-                        Section(L("tools.pomodoro.settings")) {
-                            Stepper("\(L("tools.pomodoro.workMin")): \(workMin)", value: $workMin, in: 5...90, step: 5)
-                            Stepper("\(L("tools.pomodoro.shortMin")): \(shortMin)", value: $shortMin, in: 1...30)
-                            Stepper("\(L("tools.pomodoro.longMin")): \(longMin)", value: $longMin, in: 5...60, step: 5)
-                            Stepper("\(L("tools.pomodoro.roundsLabel")): \(rounds)", value: $rounds, in: 2...8)
-                            Stepper("\(L("tools.pomodoro.goalLabel")): \(goal)", value: $goal, in: 1...24)
-                        }
-                    }
-                    .themedBackground()
-                    .frame(height: 330)
-                    .scrollDisabled(true)
                 }
                 .padding(.horizontal, 20)
+                .padding(.bottom, 12)
+            }
+            .safeAreaInset(edge: .bottom) {
+                ToolPrimaryBar(primary: primaryTitle) { toggle(remaining: remaining) }
             }
             .onChange(of: running && remaining <= 0) { _, finished in
                 if finished { advance(completed: true) }
             }
         }
         .background(AppBackdrop().ignoresSafeArea())
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                MoreMenu(items: [
+                    MoreItem(title: L("tools.pomodoro.skip"), icon: "forward.end") { advance() },
+                    MoreItem(title: L("tools.pomodoro.reset"), icon: "arrow.counterclockwise", destructive: true) { reset() },
+                    MoreItem(title: L("tools.pomodoro.settings"), icon: "slider.horizontal.3") { sheet = .settings },
+                ])
+            }
+        }
+        .sheet(item: $sheet) { s in
+            NavigationStack {
+                sheetContent(s)
+                    .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { sheet = nil } } }
+            }
+            .presentationDetents([.medium, .large])
+            .tint(Theme.accent)
+        }
         // Kilit ekranı / Dynamic Island: çalışan pomodoro aşaması; arka plan sesi çalışma süresince
         .onChange(of: end) { LiveActivities.sync(); PomoNoise.sync(); FocusBlock.sync() }
         .onChange(of: phase) { PomoNoise.sync(); FocusBlock.sync() }
@@ -1050,6 +990,123 @@ struct PomodoroView: View {
         .onAppear { log = PomoLog.load(); PomoNoise.sync() }
         .navigationTitle(L("tools.hub.cards.pomodoro.name"))
         .navigationBarTitleDisplayMode(.large)
+    }
+
+    private func toggle(remaining: Double) {
+        if running {
+            left = remaining
+            end = 0
+            cancelAlarm()
+        } else {
+            start(seconds: left > 0 ? left : phaseSeconds)
+        }
+    }
+
+    private func reset() {
+        cancelAlarm()
+        end = 0; left = 0; phase = "work"; round = 1; done = 0
+    }
+
+    private var phaseColor: Color { phase == "work" ? Theme.accent : CalendarData.color("religious") }
+
+    @ViewBuilder private func timerPage(remaining: Double, now: Date) -> some View {
+        Text(L("tools.pomodoro.\(phase)"))
+            .font(.title3.weight(.semibold))
+            .foregroundStyle(phaseColor)
+        // Kalan süre halkası ve tur domatesleri (2. analiz #101)
+        ProgressRing(progress: remaining / max(1, phaseSeconds), color: phaseColor) {
+            BigTime(text: clock(Int(remaining.rounded(.up))))
+        }
+        .frame(maxWidth: 320)
+        RoundDots(total: rounds, done: phase == "long" ? rounds : round - 1, current: phase == "work" ? round : 0,
+                  label: T("tools.pomodoro.round", round, rounds))
+        goalLine(now: now)
+        Text(T("tools.pomodoro.completed", done)).font(.footnote).foregroundStyle(Theme.muted)
+        // Görev ve ses tek satır: dokununca alt sayfa
+        Button { sheet = .task } label: {
+            HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(L("tool.taskSound")).font(.caption).foregroundStyle(Theme.muted)
+                    Text(taskSummary).foregroundStyle(Theme.text).lineLimit(1)
+                }
+                Spacer()
+                Image(systemName: "chevron.forward").foregroundStyle(Theme.muted)
+            }
+            .card()
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var taskSummary: String {
+        let name = task.isEmpty ? L("tools.pomodoro.noTask") : task
+        let sound = noiseName(noise)
+        let label = tag == "none" ? "" : " · " + L("tools.pomodoro.tags.\(tag)")
+        return name + " · " + sound + label
+    }
+
+    private func goalLine(now: Date) -> some View {
+        let todayCount = log.filter { $0.d == BadgeStore.day(now) }.count
+        let progress = T("tools.pomodoro.goalProgress", todayCount, goal)
+        let reached = todayCount >= goal
+        return Text(reached ? L("tools.pomodoro.goalDone") + " · " + progress : progress)
+            .font(.subheadline.weight(.semibold))
+            .foregroundStyle(reached ? Theme.accent : Theme.muted)
+    }
+
+    @ViewBuilder private var statsPage: some View {
+        FocusStatsCard(log: log) {
+            PomoLog.save([])
+            log = []
+        }
+        FocusForest(log: log)
+    }
+
+    @ViewBuilder private func sheetContent(_ s: PomoSheet) -> some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 14) {
+                switch s {
+                case .task: taskSheet
+                case .settings: settingsSheet
+                }
+            }
+            .padding(16)
+        }
+        .background(AppBackdrop().ignoresSafeArea())
+        .navigationTitle(s == .task ? L("tool.taskSound") : L("tools.pomodoro.settings"))
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    @ViewBuilder private var taskSheet: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(L("tools.pomodoro.taskLabel")).font(.subheadline).foregroundStyle(Theme.muted)
+            TextField(L("tools.pomodoro.taskPlaceholder"), text: Binding(get: { task }, set: { task = String($0.prefix(60)) }))
+                .textFieldStyle(.roundedBorder)
+                .submitLabel(.done)
+            Picker(L("tools.pomodoro.tagLabel"), selection: $tag) {
+                ForEach(PomoLog.tags, id: \.self) { Text(L("tools.pomodoro.tags.\($0)")).tag($0) }
+            }
+            .pickerStyle(.segmented)
+        }
+        PomoTodoCard(current: $task).id(log.count) // tur bitince sayaçlar yeniden okunur
+        VStack(alignment: .leading, spacing: 8) {
+            SectionTitle(text: L("tools.pomodoro.noise"))
+            NoiseControls(kind: $noise, volume: $volume)
+            Text(L("pomo.noiseNote")).font(.caption).foregroundStyle(Theme.muted)
+        }
+        .card()
+    }
+
+    @ViewBuilder private var settingsSheet: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Stepper("\(L("tools.pomodoro.workMin")): \(workMin)", value: $workMin, in: 5...90, step: 5)
+            Stepper("\(L("tools.pomodoro.shortMin")): \(shortMin)", value: $shortMin, in: 1...30)
+            Stepper("\(L("tools.pomodoro.longMin")): \(longMin)", value: $longMin, in: 5...60, step: 5)
+            Stepper("\(L("tools.pomodoro.roundsLabel")): \(rounds)", value: $rounds, in: 2...8)
+            Stepper("\(L("tools.pomodoro.goalLabel")): \(goal)", value: $goal, in: 1...24)
+        }
+        .card()
+        FocusBlockCard()
+        FlipFocusCard()
     }
 
     private func start(seconds: Double) { PomoEngine.start(seconds: seconds) }

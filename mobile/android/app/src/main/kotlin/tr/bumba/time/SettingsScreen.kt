@@ -218,11 +218,10 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
         // Destek: puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm (2. analiz #6, #81)
         if (shows(*support)) {
             SupportCard(onRoute)
-            if (!Features.isOn(Tab.TOOLS)) {
-                AppCard(padding = 4) {
-                    SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
-                    SettingsRow(Icons.Filled.Info, L("settings.about")) { onRoute("about") }
-                }
+            // Hakkında Ayarlar'dadır (Seçenek B); rozetler Tümü'nde, Tümü yokken (hiçbir özellik açık değil) burada
+            AppCard(padding = 4) {
+                if (Features.enabled.isEmpty()) SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
+                SettingsRow(Icons.Filled.Info, L("settings.about")) { onRoute("about") }
             }
         }
         if (!shows(*general, *look, *clock, *backup, *support)) {

@@ -34,6 +34,7 @@ import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Timer
+import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material.icons.outlined.CalendarMonth
 import androidx.compose.material.icons.outlined.Eco
@@ -43,6 +44,7 @@ import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.outlined.Timer
+import androidx.compose.material.icons.outlined.Apps
 import androidx.compose.material.icons.outlined.WbSunny
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -123,7 +125,7 @@ enum class Tab(val key: String, val on: ImageVector, val off: ImageVector) {
     WORLD("tab.world", Icons.Filled.Public, Icons.Outlined.Language),
     SEASONS("tab.seasons", Icons.Filled.Eco, Icons.Outlined.Eco),
     PRAYER("tab.prayer", Icons.Filled.DarkMode, Icons.Outlined.DarkMode),
-    TOOLS("tab.tools", Icons.Filled.Timer, Icons.Outlined.Timer),
+    TOOLS("tab.tools", Icons.Filled.Apps, Icons.Outlined.Apps),
 }
 
 /**
@@ -285,10 +287,10 @@ private fun TabBar(tabs: List<Tab>, selected: Tab, onSelect: (Tab) -> Unit) {
                             .background(if (on) Theme.c.accentSoft else Color.Transparent),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Icon(if (on) t.on else t.off, contentDescription = L(t.key), tint = color, modifier = Modifier.size(24.dp))
+                        Icon(if (on) t.on else t.off, contentDescription = Features.label(t), tint = color, modifier = Modifier.size(24.dp))
                     }
                     Text(
-                        L(t.key), color = color, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        Features.label(t), color = color, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
                         fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal,
                     )
                 }
@@ -301,11 +303,11 @@ private fun TabBar(tabs: List<Tab>, selected: Tab, onSelect: (Tab) -> Unit) {
 @Composable
 private fun BackRow(to: Tab, onBack: () -> Unit) {
     Row(
-        Modifier.fillMaxWidth().clickable(onClickLabel = L(to.key)) { onBack() }.padding(horizontal = 8.dp, vertical = 8.dp),
+        Modifier.fillMaxWidth().clickable(onClickLabel = Features.label(to)) { onBack() }.padding(horizontal = 8.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = Theme.c.accent, modifier = Modifier.size(22.dp))
         Spacer(Modifier.width(6.dp))
-        Text(L(to.key), color = Theme.c.accent, fontSize = 16.sp)
+        Text(Features.label(to), color = Theme.c.accent, fontSize = 16.sp)
     }
 }

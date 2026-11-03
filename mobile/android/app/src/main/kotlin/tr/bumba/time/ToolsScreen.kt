@@ -95,30 +95,22 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
             BackHandler { onRoute("notifications") }
             NotificationSettingsScreen { onRoute("notifications") }
         }
-        else -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-            PageTitle(L("tab.tools"))
-            AppCard(padding = 4) {
-                ToolRow(Icons.Filled.Alarm, L("tools.hub.cards.alarm.name")) { onRoute("alarm") }
-                ToolRow(Icons.Filled.HourglassBottom, L("tools.timer")) { onRoute("timer") }
-                ToolRow(Icons.Filled.Timer, L("tools.hub.cards.stopwatch.name")) { onRoute("stopwatch") }
-                ToolRow(Icons.Filled.Spa, L("tools.hub.cards.pomodoro.name")) { onRoute("pomodoro") }
-                ToolRow(Icons.Filled.School, L("study.title")) { onRoute("study") }
-                ToolRow(Icons.Filled.Bedtime, L("sleep.title")) { onRoute("sleep") }
-                ToolRow(Icons.Filled.EmojiNature, L("wakegame.title")) { onRoute("wakeGame") }
-                ToolRow(Icons.Filled.WbTwilight, L("journal.title")) { onRoute("journal") }
-                ToolRow(Icons.Filled.Air, L("breath.title")) { onRoute("breath") }
-                ToolRow(Icons.Filled.Groups, L("planner.h1")) { onRoute("planner") }
-                ToolRow(Icons.Filled.EditCalendar, L("tools.hub.cards.datecalc.name"), last = true) { onRoute("datecalc") }
-            }
-            // Rozetler: girişin yanında bir satırlık not (Bumba standardı madde 13)
-            AppCard(padding = 4) {
-                ToolRow(Icons.Filled.MilitaryTech, L("badges.h1"), last = true, note = L("badges.note")) { onRoute("badges") }
-            }
-            AppCard(padding = 4) {
-                ToolRow(Icons.Filled.Settings, L("settings.title")) { onRoute("settings") }
-                ToolRow(Icons.Filled.Info, L("settings.about"), last = true) { onRoute("about") }
-            }
-        }
+        // Tümü'nden açılan ibadet, Ay ve takvim yaprağı sayfaları (kendi geri düğmeleriyle)
+        "qibla" -> QiblaScreen { onRoute(null) }
+        "quran" -> QuranScreen { onRoute(null) }
+        "duas" -> DuasScreen { onRoute(null) }
+        "zikir" -> ZikirScreen { onRoute(null) }
+        "track" -> TrackerScreen { onRoute(null) }
+        "zakat" -> ZakatScreen { onRoute(null) }
+        "reldays" -> ReligiousDaysScreen { onRoute(null) }
+        "greet" -> GreetingScreen { onRoute(null) }
+        "esma" -> EsmaScreen { onRoute(null) }
+        "hadith" -> HadithScreen { onRoute(null) }
+        "guide" -> PrayerGuideScreen({ onRoute(null) }) { onRoute("duas") }
+        "leaf" -> CalendarLeafScreen { onRoute(null) }
+        "moon" -> Page(L("moon.calendarLink"), onRoute) { MoonScreen() }
+        else -> if (route?.startsWith("quran:") == true) QuranScreen(route.removePrefix("quran:").toIntOrNull()) { onRoute(null) }
+            else AllScreen(onRoute)
     }
 }
 
@@ -202,44 +194,48 @@ private fun Stopwatch() {
     if (full) StopwatchFullscreen({ fmt(total) }, running = start > 0, onLap = { save(start, acc, (laps + total).joinToString(",")) },
         onToggle = { if (start > 0) save(0, total, lapsRaw) else { now = System.currentTimeMillis(); save(now, acc, lapsRaw) } }) { full = false }
 
-    Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        Spacer(Modifier.height(8.dp))
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-            IconButton(onClick = { full = true }) { Icon(Icons.Filled.Fullscreen, L("clock.fullscreen"), tint = Theme.c.accent) }
-        }
-        BigTime(fmt(total))
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            if (start > 0) {
-                RoundButton(L("tools.stopwatch.lap"), false, Modifier.weight(1f)) { save(start, acc, (laps + total).joinToString(",")) }
-                RoundButton(L("tools.stopwatch.stop"), true, Modifier.weight(1f)) { save(0, total, lapsRaw) }
-            } else {
-                RoundButton(L("tools.stopwatch.reset"), false, Modifier.weight(1f)) { save(0, 0, "") }
-                RoundButton(L(if (total > 0) "tools.stopwatch.resume" else "tools.stopwatch.start"), true, Modifier.weight(1f)) {
-                    now = System.currentTimeMillis()
-                    save(now, acc, lapsRaw)
-                    BadgeStore.hit(Badge.KRONOMETRE)
-                }
-            }
-        }
-        val lapTimes = laps.mapIndexed { i, v -> v - (if (i > 0) laps[i - 1] else 0) }
-        val best = if (lapTimes.size > 1) lapTimes.min() else null
-        val worst = if (lapTimes.size > 1) lapTimes.max() else null
-        val context = androidx.compose.ui.platform.LocalContext.current
-        Column(Modifier.verticalScroll(rememberScrollState())) {
-            if (lapTimes.isEmpty()) Text(L("tools.stopwatch.empty"), color = Theme.c.muted)
+    // Araç kalıbı (2. analiz #200): altta tur/sıfırla (çerçeveli) ve başlat/durdur (tek dolu düğme); tam ekran, CSV ve kopyala "…" menüsünde
+    val lapTimes = laps.mapIndexed { i, v -> v - (if (i > 0) laps[i - 1] else 0) }
+    val best = if (lapTimes.size > 1) lapTimes.min() else null
+    val worst = if (lapTimes.size > 1) lapTimes.max() else null
+    // (context yukarıda)
+    val menu = buildList<Pair<String, () -> Unit>> {
+        add(L("clock.fullscreen") to { full = true })
+        if (lapTimes.isNotEmpty()) {
             // Turları CSV olarak paylaş (rakip analizi #28)
-            else androidx.compose.material3.TextButton(onClick = {
+            add(L("csv.laps") to {
                 Share.csv(context, "laps-${java.time.LocalDate.now()}.csv",
                     listOf(listOf(L("tools.stopwatch.lapNo"), L("tools.stopwatch.lapTime"), L("tools.stopwatch.total"))) +
                         lapTimes.indices.map { listOf("${it + 1}", fmt(lapTimes[it]), fmt(laps[it])) }, L("csv.laps"))
-            }) { Text(L("csv.laps"), color = Theme.c.accent) }
+            })
             // Turları metin olarak kopyala (2. analiz #104)
-            if (lapTimes.isNotEmpty()) androidx.compose.material3.TextButton(onClick = {
+            add(L("sw.copyLaps") to {
                 val text = lapTimes.indices.joinToString("\n") { "${L("tools.stopwatch.lapNo")} ${it + 1}\t${fmt(lapTimes[it])}\t${fmt(laps[it])}" }
                 (context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager)
                     .setPrimaryClip(android.content.ClipData.newPlainText(L("sw.copyLaps"), text))
                 android.widget.Toast.makeText(context, L("sw.copied"), android.widget.Toast.LENGTH_SHORT).show()
-            }) { Text(L("sw.copyLaps"), color = Theme.c.accent) }
+            })
+        }
+    }
+    val running = start > 0
+    ToolFrame(
+        primary = L(if (running) "tools.stopwatch.stop" else if (total > 0) "tools.stopwatch.resume" else "tools.stopwatch.start"),
+        onPrimary = {
+            if (running) save(0, total, lapsRaw)
+            else {
+                now = System.currentTimeMillis()
+                save(now, acc, lapsRaw)
+                BadgeStore.hit(Badge.KRONOMETRE)
+            }
+        },
+        secondary = if (running) L("tools.stopwatch.lap") else if (total > 0) L("tools.stopwatch.reset") else null,
+        onSecondary = { if (running) save(start, acc, (laps + total).joinToString(",")) else save(0, 0, "") },
+        menu = menu,
+    ) {
+        Spacer(Modifier.height(8.dp))
+        BigTime(fmt(total))
+        Column(Modifier.fillMaxWidth()) {
+            if (lapTimes.isEmpty()) Text(L("tools.stopwatch.empty"), color = Theme.c.muted)
             for (i in lapTimes.indices.reversed()) {
                 val lap = lapTimes[i]
                 Ltr {

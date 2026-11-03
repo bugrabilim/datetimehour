@@ -85,6 +85,11 @@ class ScreenshotTest {
     @Test fun seasons() = shot("tr-mevsimler", Tab.SEASONS)
     @Test fun prayer() = shot("tr-vakitler", Tab.PRAYER)
     @Test fun tools() = shot("tr-araclar", Tab.TOOLS)
+    // Seçenek B (2. analiz #195, #197): Tümü sayfasında sık kullanılanlar
+    @Test fun allFavorites() {
+        Prefs.store.edit().putString(AllPrefs.FAVS, "alarm,quran,weather,pomodoro").commit(); AllPrefs.reload()
+        try { shot("tr-tumu-sik", Tab.TOOLS, dark = true) } finally { Prefs.store.edit().remove(AllPrefs.FAVS).commit(); AllPrefs.reload() }
+    }
     @Test fun english() = shot("en-saat", Tab.CLOCK, "en")
     @Test fun arabic() = shot("ar-vakitler", Tab.PRAYER, "ar")
     // İlk dalga yeni diller (31 Ekim 2026): Endonezce (Android kaynak kodu "in"), Urduca ve Farsça (sağdan sola), Fransızca, Rusça

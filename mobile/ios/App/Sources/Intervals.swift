@@ -430,12 +430,17 @@ struct TimersView: View {
     @State private var history = TimerHistory.load()
     /// Görsel (rakamsız) zamanlayıcı tam ekranı (2. analiz #140)
     @State private var visualID: String?
+    /// Yeni zamanlayıcı alt sayfası (2. analiz #200)
+    @State private var newSheet = false
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 0.5)) { context in
             let now = Int64(context.date.timeIntervalSince1970 * 1000)
             ScrollView {
                 VStack(alignment: .leading, spacing: 16) {
+                    if items.isEmpty && removed == nil {
+                        EmptyState(icon: "hourglass", title: L("timers.heading"), text: L("timers.multiNote"))
+                    }
                     if !items.isEmpty {
                         Text(L("timers.heading")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
                         VStack(spacing: 0) {
@@ -484,42 +489,13 @@ struct TimersView: View {
                             }
                         }
                     }
-                    Text(L("timers.new")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
-                    TextField(L("timers.namePlaceholder"), text: $name)
-                        .textFieldStyle(.roundedBorder)
-                        .accessibilityLabel(L("timers.name"))
-                    Picker("", selection: $keypad) {
-                        Text(L("timers.input.wheel")).tag(false)
-                        Text(L("timers.input.keypad")).tag(true)
-                    }
-                    .pickerStyle(.segmented)
-                    if keypad {
-                        DurationKeypad(digits: $digits) { hh, mm, ss in h = hh; m = mm; s = ss }
-                    } else {
-                        HStack(spacing: 0) {
-                            wheel($h, 0..<24, L("tools.countdown.hoursShort"))
-                            wheel($m, 0..<60, L("tools.countdown.minutesShort"))
-                            wheel($s, 0..<60, L("tools.countdown.secondsShort"))
-                        }
-                        .frame(height: 150)
-                        .environment(\.layoutDirection, .leftToRight)
-                    }
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach([1, 3, 5, 10, 15, 25, 30, 45, 60], id: \.self) { n in
-                                Button(T("tools.countdown.presetMin", n)) { add(Int64(n) * 60_000) }
-                                    .buttonStyle(.bordered)
-                                    .tint(Theme.accent)
-                            }
-                        }
-                    }
-                    RoundButton(title: L("tools.countdown.start"), prominent: true) { add(Int64(h * 3600 + m * 60 + s) * 1000) }
-                        .disabled(h + m + s == 0)
-                    VoiceToggle()
-                    Text(L("timers.multiNote")).font(.footnote).foregroundStyle(Theme.muted)
                     Text(L(AlarmCenter.hasRealAlarms ? "alarm.realNote" : "alarm.fallbackNote")).font(.footnote).foregroundStyle(Theme.muted)
                 }
                 .padding(16)
+            }
+            // Araç kalıbı (2. analiz #200): yeni zamanlayıcı alt sayfada, altta tek ana düğme
+            .safeAreaInset(edge: .bottom) {
+                ToolPrimaryBar(primary: L("timers.new")) { newSheet = true }
             }
             .onChange(of: now / 500) {
                 // Ekran açıkken biten zamanlayıcı sesli duyurulur (bir kez)
@@ -537,6 +513,58 @@ struct TimersView: View {
         .fullScreenCover(isPresented: Binding(get: { visualID != nil }, set: { if !$0 { visualID = nil } })) {
             if let t = items.first(where: { $0.id == visualID }) { VisualTimerView(item: t) }
         }
+        .sheet(isPresented: $newSheet) {
+            NavigationStack {
+                newTimerForm
+                    .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L("common.cancel")) { newSheet = false } } }
+            }
+            .presentationDetents([.large])
+            .tint(Theme.accent)
+        }
+    }
+
+    /// Yeni zamanlayıcı: ad, tekerlek ya da tuş takımı, hazır süreler, başlat ve sesli duyuru
+    private var newTimerForm: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                Text(L("timers.new")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
+                TextField(L("timers.namePlaceholder"), text: $name)
+                    .textFieldStyle(.roundedBorder)
+                    .accessibilityLabel(L("timers.name"))
+                Picker("", selection: $keypad) {
+                    Text(L("timers.input.wheel")).tag(false)
+                    Text(L("timers.input.keypad")).tag(true)
+                }
+                .pickerStyle(.segmented)
+                if keypad {
+                    DurationKeypad(digits: $digits) { hh, mm, ss in h = hh; m = mm; s = ss }
+                } else {
+                    HStack(spacing: 0) {
+                        wheel($h, 0..<24, L("tools.countdown.hoursShort"))
+                        wheel($m, 0..<60, L("tools.countdown.minutesShort"))
+                        wheel($s, 0..<60, L("tools.countdown.secondsShort"))
+                    }
+                    .frame(height: 150)
+                    .environment(\.layoutDirection, .leftToRight)
+                }
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach([1, 3, 5, 10, 15, 25, 30, 45, 60], id: \.self) { n in
+                            Button(T("tools.countdown.presetMin", n)) { add(Int64(n) * 60_000); newSheet = false }
+                                .buttonStyle(.bordered)
+                                .tint(Theme.accent)
+                        }
+                    }
+                }
+                RoundButton(title: L("tools.countdown.start"), prominent: true) { add(Int64(h * 3600 + m * 60 + s) * 1000); newSheet = false }
+                    .disabled(h + m + s == 0)
+                VoiceToggle()
+            }
+            .padding(16)
+        }
+        .background(AppBackdrop().ignoresSafeArea())
+        .navigationTitle(L("timers.new"))
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func row(_ t: TimerItem, now: Int64) -> some View {

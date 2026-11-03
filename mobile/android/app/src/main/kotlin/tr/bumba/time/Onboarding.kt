@@ -131,6 +131,8 @@ private fun FeaturesPage() {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Text(L("onboard.features.title"), color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.Bold)
         Text(L("onboard.features.text"), color = Theme.c.muted, fontSize = 14.sp)
+        // Seçtikçe değişen alt çubuk (Seçenek B; ilk 3 özellik çubuğa girer, gerisi Tümü'nde)
+        BarPreview(Modifier.background(Theme.c.surface, RoundedCornerShape(14.dp)).padding(vertical = 10.dp))
         Features.OPTIONAL.forEach { t ->
             val on = Features.isOn(t)
             Row(

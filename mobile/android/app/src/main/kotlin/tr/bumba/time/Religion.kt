@@ -137,10 +137,11 @@ private fun RtlText(text: String, size: Int, modifier: Modifier = Modifier, colo
 
 /** Kur'an: sure listesi, cüz, kaldığım yerden devam */
 @Composable
-fun QuranScreen(onBack: () -> Unit) {
+fun QuranScreen(initial: Int? = null, onBack: () -> Unit) {
     val context = LocalContext.current
     remember { Quran.load(context) }
-    var open by remember { mutableStateOf<Pair<Int, Int>?>(null) }
+    // Tümü'ndeki aramadan bir sure seçildiyse doğrudan o sure açılır
+    var open by remember { mutableStateOf<Pair<Int, Int>?>(initial?.takeIf { it in 1..114 }?.let { it to 1 }) }
     open?.let { (s, a) ->
         BackHandler { open = null }
         SuraScreen(s, a) { open = null }

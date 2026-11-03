@@ -29,6 +29,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.HourglassBottom
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
@@ -434,10 +435,15 @@ fun TimersScreen() {
         if (preset == null) name = ""
     }
 
-    Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(14.dp),
+    // Araç kalıbı (2. analiz #200): süren sayaçlar ve geçmiş ekranda, yeni sayaç kurma alt sayfada (altta tek ana düğme)
+    var newSheet by rememberSaveable { mutableStateOf(false) }
+    ToolFrame(
+        primary = L("timers.new"), onPrimary = { newSheet = true },
+        menu = if (history.isNotEmpty()) listOf(L("timers.history.clear") to { TimerHistory.clear(); history = emptyList() }) else emptyList(),
     ) {
+        if (items.isEmpty() && removed == null) {
+            EmptyState(Icons.Filled.HourglassBottom, L("timers.heading"), L("timers.multiNote"))
+        }
         if (items.isNotEmpty()) {
             SectionTitle(L("timers.heading"))
             AppCard(padding = 4) {
@@ -526,11 +532,8 @@ fun TimersScreen() {
             }
         }
         if (history.isNotEmpty()) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.weight(1f)) { SectionTitle(L("timers.history.heading")) }
-                androidx.compose.material3.TextButton(onClick = { TimerHistory.clear(); history = emptyList() }) {
-                    Text(L("timers.history.clear"), color = Theme.c.accent, fontSize = 13.sp)
-                }
             }
             Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 for (e in history) {
@@ -545,37 +548,44 @@ fun TimersScreen() {
                 }
             }
         }
-        SectionTitle(L("timers.new"))
-        OutlinedTextField(name, { name = it.take(30) }, Modifier.fillMaxWidth(), singleLine = true,
-            label = { Text(L("timers.name")) }, placeholder = { Text(L("timers.namePlaceholder")) })
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            RoundButton(L("timers.input.wheel"), !keypad) { keypad = false; Prefs.store.edit().putBoolean("timers.keypad", false).apply() }
-            RoundButton(L("timers.input.keypad"), keypad) { keypad = true; Prefs.store.edit().putBoolean("timers.keypad", true).apply() }
-        }
-        if (keypad) DurationKeypad(digits, { digits = it }) { hh, mm, ss -> h = hh; m = mm; s = ss }
-        else Ltr {
-            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                NumberWheel(h, 0..23, L("tools.countdown.hoursShort")) { h = it }
-                NumberWheel(m, 0..59, L("tools.countdown.minutesShort")) { m = it }
-                NumberWheel(s, 0..59, L("tools.countdown.secondsShort")) { s = it }
-            }
-        }
-        Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            for (n in listOf(1, 3, 5, 10, 15, 25, 30, 45, 60)) {
-                Text(
-                    T("tools.countdown.presetMin", n),
-                    Modifier.border(1.dp, Theme.c.accent.copy(alpha = 0.5f), RoundedCornerShape(50))
-                        .clickable { add(n * 60_000L) }
-                        .padding(horizontal = 14.dp, vertical = 8.dp),
-                    color = Theme.c.accent, fontSize = 14.sp,
-                )
-            }
-        }
-        RoundButton(L("tools.countdown.start"), true, Modifier.fillMaxWidth()) { add((h * 3600L + m * 60L + s) * 1000) }
-        VoiceToggle()
-        Text(L("timers.multiNote"), color = Theme.c.muted, fontSize = 13.sp)
-        Text(L("alarm.realNote"), color = Theme.c.muted, fontSize = 13.sp)
+        Text(L("alarm.realNote"), color = Theme.c.muted, fontSize = 12.sp)
         Spacer(Modifier.height(8.dp))
+    }
+    if (newSheet) {
+        @OptIn(androidx.compose.material3.ExperimentalMaterial3Api::class)
+        androidx.compose.material3.ModalBottomSheet({ newSheet = false }, containerColor = Theme.c.bg) {
+            Column(Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 24.dp),
+                verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                SectionTitle(L("timers.new"))
+                OutlinedTextField(name, { name = it.take(30) }, Modifier.fillMaxWidth(), singleLine = true,
+                    label = { Text(L("timers.name")) }, placeholder = { Text(L("timers.namePlaceholder")) })
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    RoundButton(L("timers.input.wheel"), !keypad) { keypad = false; Prefs.store.edit().putBoolean("timers.keypad", false).apply() }
+                    RoundButton(L("timers.input.keypad"), keypad) { keypad = true; Prefs.store.edit().putBoolean("timers.keypad", true).apply() }
+                }
+                if (keypad) DurationKeypad(digits, { digits = it }) { hh, mm, ss -> h = hh; m = mm; s = ss }
+                else Ltr {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
+                        NumberWheel(h, 0..23, L("tools.countdown.hoursShort")) { h = it }
+                        NumberWheel(m, 0..59, L("tools.countdown.minutesShort")) { m = it }
+                        NumberWheel(s, 0..59, L("tools.countdown.secondsShort")) { s = it }
+                    }
+                }
+                Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    for (n in listOf(1, 3, 5, 10, 15, 25, 30, 45, 60)) {
+                        Text(
+                            T("tools.countdown.presetMin", n),
+                            Modifier.border(1.dp, Theme.c.accent.copy(alpha = 0.5f), RoundedCornerShape(50))
+                                .clickable { add(n * 60_000L); newSheet = false }
+                                .padding(horizontal = 14.dp, vertical = 8.dp),
+                            color = Theme.c.accent, fontSize = 14.sp,
+                        )
+                    }
+                }
+                RoundButton(L("tools.countdown.start"), true, Modifier.fillMaxWidth()) { add((h * 3600L + m * 60L + s) * 1000); newSheet = false }
+                VoiceToggle()
+            }
+        }
     }
     items.firstOrNull { it.id == visualId }?.let { t -> VisualTimerDialog(t, now) { visualId = null } }
 }

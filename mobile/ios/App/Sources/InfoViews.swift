@@ -125,12 +125,12 @@ struct SettingsView: View {
             // Puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm (2. analiz #6, #81)
             if support.contains(where: { shows($0) }) {
                 SupportSection()
-                // Araçlar kapalıyken rozetler ve hakkında buradadır (başka yoldan açılmazlar)
-                if !Features.parse(features).contains(.tools) {
-                    Section {
+                // Hakkında Ayarlar'dadır (Seçenek B); rozetler Tümü'nde, Tümü yokken (hiçbir özellik açık değil) burada
+                Section {
+                    if Features.parse(features).isEmpty {
                         NavigationLink { BadgesView() } label: { BoxLabel(L("badges.h1"), icon: "rosette") }
-                        NavigationLink { AboutView() } label: { BoxLabel(L("settings.about"), icon: "info.circle") }
                     }
+                    NavigationLink { AboutView() } label: { BoxLabel(L("settings.about"), icon: "info.circle") }
                 }
             }
             if ![general, look, clock, backup, support].joined().contains(where: { shows($0) }) {

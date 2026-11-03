@@ -18,7 +18,7 @@ enum CloudSync {
     static let keys: [String] = [
         // Görünüm ve saat
         "appearance", "accent", "h12", "units", "keepAwake", "clockModel", "clockFont", "secA", "secD", "homeItems",
-        Features.key, FullscreenBackground.key, NightMode.key, "fs.text", "fs.scale", FullscreenPhoto.slideEveryKey,
+        Features.key, Features.barKey, AllPrefs.favsKey, FullscreenBackground.key, NightMode.key, "fs.text", "fs.scale", FullscreenPhoto.slideEveryKey,
         // Kişisel listeler
         "world", SavedPlaces.key, "countdowns", "tools.voice", "hiit.cfg", "hiit.routine", "hiit.log", "world.labels", "hiit.cue.next", "hiit.cue.half", "hiit.cue.ten", "timers.visual", "timers.keypad", "routines", "timers.history", Journal.key, "meet.cities", PrayerMethod.methodKey, PrayerMethod.hanafiKey,
         // Pomodoro ve uyku

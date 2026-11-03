@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -29,6 +32,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 /*
  * Ortak görünüm parçaları (2. analiz #96, #98, #99; 3 Kasım 2026). iOS'taki Components.swift ile aynı ölçüler.
@@ -76,4 +81,61 @@ fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier 
 @Composable
 fun PageTitle(text: String, modifier: Modifier = Modifier) {
     Text(text, modifier, color = Theme.c.text, fontSize = 28.sp, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+}
+
+/**
+ * Araç ekranı kalıbı (2. analiz #200): üstte isteğe bağlı başlık satırı ve sağda "…" menüsü (ikincil işler), ortada kayan
+ * içerik, altta başparmak bölgesinde tam genişlikte tek ana düğme (isteğe bağlı solda ikincil, çerçeveli düğme).
+ */
+@Composable
+fun ToolFrame(
+    primary: String?, onPrimary: () -> Unit,
+    secondary: String? = null, onSecondary: () -> Unit = {},
+    menu: List<Pair<String, () -> Unit>> = emptyList(),
+    header: @Composable androidx.compose.foundation.layout.RowScope.() -> Unit = {},
+    scroll: Boolean = true,
+    center: Boolean = false,
+    content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit,
+) {
+    Column(Modifier.fillMaxSize()) {
+        androidx.compose.foundation.layout.Row(
+            Modifier.fillMaxWidth().padding(start = 16.dp, end = 4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            androidx.compose.foundation.layout.Row(Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) { header() }
+            if (menu.isNotEmpty()) MoreMenu(menu)
+        }
+        Column(
+            Modifier.weight(1f).fillMaxWidth()
+                .then(if (scroll) Modifier.verticalScroll(androidx.compose.foundation.rememberScrollState()) else Modifier)
+                .padding(horizontal = 16.dp),
+            horizontalAlignment = if (center) Alignment.CenterHorizontally else Alignment.Start,
+            verticalArrangement = Arrangement.spacedBy(14.dp),
+        ) { content() }
+        if (primary != null) {
+            androidx.compose.foundation.layout.Row(
+                Modifier.fillMaxWidth().background(Theme.c.bg.copy(alpha = 0.92f)).padding(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                if (secondary != null) RoundButton(secondary, false, Modifier.weight(1f), onSecondary)
+                RoundButton(primary, true, Modifier.weight(if (secondary != null) 1.4f else 1f), onPrimary)
+            }
+        }
+    }
+}
+
+/** "…" menüsü: ikincil işler (paylaş, dışa aktar, sıfırla, ayarlar) */
+@Composable
+fun MoreMenu(items: List<Pair<String, () -> Unit>>) {
+    var open by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+    androidx.compose.foundation.layout.Box {
+        androidx.compose.material3.IconButton(onClick = { open = true }) {
+            Icon(androidx.compose.material.icons.Icons.Filled.MoreVert, L("timers.more"), tint = Theme.c.accent)
+        }
+        androidx.compose.material3.DropdownMenu(open, { open = false }) {
+            for ((label, action) in items) {
+                androidx.compose.material3.DropdownMenuItem({ Text(label) }, { open = false; action() })
+            }
+        }
+    }
 }

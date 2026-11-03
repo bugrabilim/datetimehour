@@ -77,3 +77,51 @@ struct BoxLabel: View {
         Label { Text(title).foregroundStyle(Theme.text) } icon: { IconBox(icon: icon, tint: tint) }
     }
 }
+
+/// Araç ekranı kalıbı (2. analiz #200): altta başparmak bölgesinde tam genişlikte tek ana düğme (isteğe bağlı solda
+/// ikincil, soluk düğme); ikincil işler sağ üstte "…" menüsünde (MoreMenu)
+struct ToolPrimaryBar: View {
+    let primary: String
+    var secondary: String?
+    var onSecondary: () -> Void = {}
+    let onPrimary: () -> Void
+
+    var body: some View {
+        HStack(spacing: 12) {
+            if let secondary {
+                RoundButton(title: secondary, action: onSecondary)
+            }
+            RoundButton(title: primary, prominent: true, action: onPrimary)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(.bar)
+    }
+}
+
+/// "…" menüsündeki bir iş
+struct MoreItem: Identifiable {
+    let id = UUID()
+    let title: String
+    let icon: String
+    var destructive = false
+    let action: () -> Void
+}
+
+/// "…" menüsü: paylaş, dışa aktar, sıfırla, ayarlar gibi ikincil işler
+struct MoreMenu: View {
+    let items: [MoreItem]
+
+    var body: some View {
+        Menu {
+            ForEach(items) { item in
+                Button(role: item.destructive ? .destructive : nil, action: item.action) {
+                    Label(item.title, systemImage: item.icon)
+                }
+            }
+        } label: {
+            Image(systemName: "ellipsis.circle")
+        }
+        .accessibilityLabel(L("timers.more"))
+    }
+}

@@ -93,12 +93,13 @@ struct OnboardingView: View {
                 Text(L("onboard.features.title")).font(.title2.weight(.bold)).foregroundStyle(Theme.text)
                 Text(L("onboard.features.text")).font(.subheadline).foregroundStyle(Theme.muted)
                     .padding(.bottom, 4)
+                // Seçtikçe değişen alt çubuk (Seçenek B; ilk 3 özellik çubuğa girer, gerisi Tümü'nde)
+                BarPreview()
+                    .background(Theme.surface, in: RoundedRectangle(cornerRadius: 14))
                 ForEach(Features.optional, id: \.self) { tab in
                     let on = Features.parse(raw).contains(tab)
                     Button {
-                        var set = Features.parse(raw)
-                        if on { set.remove(tab) } else { set.insert(tab) }
-                        raw = Features.raw(set)
+                        Features.set(tab, on: !on)
                     } label: {
                         HStack(spacing: 14) {
                             Image(systemName: tab.icon).font(.title3).foregroundStyle(Theme.accent).frame(width: 32)

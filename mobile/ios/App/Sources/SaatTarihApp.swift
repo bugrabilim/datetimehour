@@ -92,14 +92,21 @@ enum AppTab: Int, CaseIterable {
         case .world: "globe.europe.africa"
         case .seasons: "leaf"
         case .prayer: "moon.stars"
-        case .tools: "timer"
+        case .tools: "square.grid.2x2"
         }
     }
+
+    /// Alt çubuktaki ad: Araçlar sekmesi "Tümü" olarak görünür (Seçenek B)
+    var barTitle: String { self == .tools ? L("tab.all") : title }
 }
 
 /// Araçlar sekmesindeki sayfalar
 enum ToolRoute: Hashable {
     case alarm, timer, stopwatch, pomodoro, study, wakeGame, sleep, journal, breath, planner, datecalc, settings, about, badges
+    // Tümü'nden açılan sayfalar (Seçenek B, 2. analiz #195): ibadet, Ay, takvim yaprağı ve ayar sayfaları
+    case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon
+    case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
+    case sura(Int)
 }
 
 /// Sekme ve Araçlar gezintisi; saat ekranındaki alanlar dokununca ilgili sayfayı açar.
@@ -178,6 +185,7 @@ struct RootView: View {
     @AppStorage(Atmosphere.key) private var atmo = ""
     /// Açık özellikler: alt barda yalnız bunlar (ve geçici olarak şu anki sekme); yalnız Saat kalırsa bar yok
     @AppStorage(Features.key) private var features = ""
+    @AppStorage(Features.barKey) private var bar = ""
     @State private var router = Router.shared
     /// Klavye açıkken alt bar gizlenir (sistemin sekme çubuğu gibi; klavyenin üstüne binmez)
     @State private var keyboard = false
@@ -186,6 +194,8 @@ struct RootView: View {
     @Environment(\.verticalSizeClass) private var vsc
     @Environment(\.horizontalSizeClass) private var hsc
     private var landscape: Bool { vsc == .compact }
+    /// iPad'de (geniş pencere) kenar çubuğu; telefonda alt çubuk
+    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad && hsc == .regular }
     /// iPad'de (geniş pencere) sayfalar okunur genişlikte ortalanır; kenarlar temanın zemin rengiyle dolar
     private var readable: CGFloat { UIDevice.current.userInterfaceIdiom == .pad && hsc == .regular ? 900 : .infinity }
     /// Alarm son iki saatte çaldıysa açılışta günaydın kartı (MorningCheck)
@@ -202,31 +212,47 @@ struct RootView: View {
     var body: some View {
         // Bar sayfanın altında ayrı bir satır: sayfanın son satırları barın altında kalmaz
         // (safeAreaInset NavigationStack içindeki listelere geçmiyordu; yazılar barın altına giriyordu)
-        let tabs = Features.barTabs(raw: features)
+        let tabs = Features.barTabs(raw: features, bar: bar)
         let offBar = !tabs.contains(router.tab)
-        VStack(spacing: 0) {
-            // Alt barda olmayan sayfa (kapalı özellik): üstte döneceği sekmenin adıyla geri düğmesi (2. analiz #203)
-            if offBar && !landscape {
-                Button { router.tab = backTab } label: {
-                    Label(backTab.title, systemImage: "chevron.backward")
-                        .font(.body)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 14).padding(.vertical, 8)
-                        .contentShape(Rectangle())
+        Group {
+            if isPad {
+                // iPad ve Mac'te kenar çubuğu (Seçenek B, 2. analiz #194): alt çubuk yerine bütün açık özellikler ve
+                // Tümü'nün kategorileri bölüm olarak
+                NavigationSplitView {
+                    Sidebar()
+                } detail: {
+                    content
+                        .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)-\(atmo)")
+                        .frame(maxWidth: readable, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity)
+                        .background(AppBackdrop().ignoresSafeArea())
                 }
-                .buttonStyle(.plain)
-                .foregroundStyle(Theme.accent)
-                .background(AppBackdrop().ignoresSafeArea())
+            } else {
+                VStack(spacing: 0) {
+                    // Alt barda olmayan sayfa (kapalı özellik): üstte döneceği sekmenin adıyla geri düğmesi (2. analiz #203)
+                    if offBar && !landscape {
+                        Button { router.tab = backTab } label: {
+                            Label(backTab.barTitle, systemImage: "chevron.backward")
+                                .font(.body)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 14).padding(.vertical, 8)
+                                .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .foregroundStyle(Theme.accent)
+                        .background(AppBackdrop().ignoresSafeArea())
+                    }
+                    content
+                        .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)-\(atmo)")
+                        .frame(maxWidth: readable, maxHeight: .infinity)
+                        .frame(maxWidth: .infinity)
+                        .background(AppBackdrop().ignoresSafeArea())
+                    if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
+                }
             }
-            content
-                .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)-\(atmo)")
-                .frame(maxWidth: readable, maxHeight: .infinity)
-                .frame(maxWidth: .infinity)
-                .background(AppBackdrop().ignoresSafeArea())
-            if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
         }
         .onChange(of: router.tab) { old, _ in
-            if Features.barTabs(raw: features).contains(old) { backTab = old }
+            if Features.barTabs(raw: features, bar: bar).contains(old) { backTab = old }
         }
         .statusBarHidden(landscape)
         .persistentSystemOverlays(landscape ? .hidden : .automatic)
@@ -318,6 +344,61 @@ struct RootView: View {
     @State private var screen = UserDefaults.standard.string(forKey: "openScreen").flatMap(DebugScreen.init(rawValue:))
 }
 
+/// iPad ve Mac kenar çubuğu (Seçenek B): Saat ve açık özellikler, sonra Tümü ve kategorileri, en sonda Ayarlar
+private struct Sidebar: View {
+    @State private var router = Router.shared
+    @AppStorage(Features.key) private var features = ""
+
+    var body: some View {
+        let on = Features.parse(features)
+        List {
+            Section {
+                ForEach([AppTab.clock] + Features.barOptions.filter(on.contains), id: \.self) { t in
+                    row(t.title, t.icon, selected: router.tab == t) { router.toolsPath = []; router.tab = t }
+                }
+                if !on.isEmpty {
+                    row(L("tab.all"), AppTab.tools.icon, selected: router.tab == .tools && router.toolsPath.isEmpty) {
+                        router.toolsPath = []; router.tab = .tools
+                    }
+                }
+            }
+            if !on.isEmpty {
+                ForEach(AllCat.allCases, id: \.self) { cat in
+                    let list = AllPrefs.entries.filter { $0.cat == cat && $0.route != nil && AllPrefs.visible($0) }
+                    if !list.isEmpty {
+                        Section(cat.title) {
+                            ForEach(list) { e in entryRow(e) }
+                        }
+                    }
+                }
+            }
+            Section {
+                row(L("settings.title"), "gearshape", selected: router.tab == .tools && router.toolsPath.first == .settings) {
+                    router.tab = .tools; router.toolsPath = [.settings]
+                }
+            }
+        }
+        .listStyle(.sidebar)
+        .navigationTitle(L("app.displayName"))
+    }
+
+    private func entryRow(_ e: AllEntry) -> some View {
+        row(e.title, e.icon, selected: router.tab == .tools && router.toolsPath.first == e.route) {
+            AllPrefs.used(e.id)
+            router.tab = .tools
+            if let r = e.route { router.toolsPath = [r] }
+        }
+    }
+
+    private func row(_ title: String, _ icon: String, selected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Label { Text(title).foregroundStyle(Theme.text) } icon: { Image(systemName: icon).foregroundStyle(Theme.accent) }
+        }
+        .listRowBackground(selected ? Theme.accentSoft : Color.clear)
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+}
+
 /// Alt bar: açık özelliklerin düğmeleri (simge + kısa ad; seçili olan uygulama renginde)
 private struct TabBar: View {
     let tabs: [AppTab]
@@ -339,7 +420,7 @@ private struct TabBar: View {
                             .font(.system(size: 19))
                             .frame(width: 56, height: 30)
                             .background(Capsule().fill(on ? Theme.accentSoft : Color.clear))
-                        Text(tab.title)
+                        Text(tab.barTitle)
                             .font(.system(size: 11, weight: on ? .semibold : .regular))
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
@@ -351,7 +432,7 @@ private struct TabBar: View {
                     .foregroundStyle(on ? Theme.accent : Theme.muted)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel(tab.title)
+                .accessibilityLabel(tab.barTitle)
                 .accessibilityAddTraits(on ? [.isSelected, .isButton] : .isButton)
             }
         }
