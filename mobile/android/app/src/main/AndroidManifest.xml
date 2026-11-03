@@ -381,6 +381,15 @@
             android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:taskAffinity="" />
+        <!-- Uyanma denetimi (2. analiz #45): "Uyanık mısınız?" geri sayım halkası -->
+        <activity
+            android:name=".WakeCheckActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:launchMode="singleInstance"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:taskAffinity="" />
         <service
             android:name=".HiitService"
             android:exported="false"

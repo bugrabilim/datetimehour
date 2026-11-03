@@ -35,6 +35,7 @@ class AlarmRingService : Service() {
     /** Saati sesli söyleme (rakip analizi #20): 20 sn'de bir, konuşurken zil kısılır */
     private var tts: android.speech.tts.TextToSpeech? = null
     private var rising = true
+    private var level = 1f
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -61,6 +62,8 @@ class AlarmRingService : Service() {
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
         soundUri = uri
         rising = item?.rise == true
+        // 2. analiz #40: alarm başına ses düzeyi (telefonun alarm ses düzeyine göre oran)
+        level = item?.volume?.takeIf { it in 1..99 }?.let { it / 100f } ?: 1f
         // Kulaklıkta çal (2. analiz #79): kulaklık bağlıysa medya akışında (yalnız kulaklık); bağlantı kesilirse
         // hoparlöre geçilir (ACTION_AUDIO_BECOMING_NOISY)
         val headset = item?.headset == true && Headset.connected(this)
@@ -71,7 +74,7 @@ class AlarmRingService : Service() {
                     val pos = player?.currentPosition ?: 0
                     val vol = if (rising) volumeAt(SystemClock.elapsedRealtime() - started) else 1f
                     player?.runCatching { stop(); release() }
-                    player = makePlayer(soundUri, headset = false, startNow = true)?.apply { seekTo(pos); setVolume(vol, vol) }
+                    player = makePlayer(soundUri, headset = false, startNow = true)?.apply { seekTo(pos); setVolume(vol * level, vol * level) }
                 }
             }
             androidx.core.content.ContextCompat.registerReceiver(this, noisy,
@@ -103,7 +106,7 @@ class AlarmRingService : Service() {
             setDataSource(this@AlarmRingService, uri!!)
             setWakeMode(this@AlarmRingService, PowerManager.PARTIAL_WAKE_LOCK)
             isLooping = true
-            setVolume(if (rising) MIN_VOLUME else 1f, if (rising) MIN_VOLUME else 1f)
+            setVolume((if (rising) MIN_VOLUME else 1f) * level, (if (rising) MIN_VOLUME else 1f) * level)
             prepare()
             if (startNow) start()
         }
@@ -113,7 +116,7 @@ class AlarmRingService : Service() {
         override fun run() {
             val elapsed = SystemClock.elapsedRealtime() - started
             val v = volumeAt(elapsed)
-            runCatching { player?.setVolume(v, v) }
+            runCatching { player?.setVolume(v * level, v * level) }
             if (elapsed < RISE_MS) handler.postDelayed(this, 250)
         }
     }
@@ -135,12 +138,12 @@ class AlarmRingService : Service() {
         override fun run() {
             val t = tts ?: return
             val now = java.time.ZonedDateTime.now()
-            runCatching { player?.setVolume(0.15f, 0.15f) }
+            runCatching { player?.setVolume(0.15f * level, 0.15f * level) }
             t.speak(T("alarm.speakText", Fmt.time(now)), android.speech.tts.TextToSpeech.QUEUE_FLUSH, null, "say")
             // Konuşma bitince zil eski düzeyine döner
             handler.postDelayed({
                 val v = if (rising) volumeAt(SystemClock.elapsedRealtime() - started) else 1f
-                runCatching { player?.setVolume(v, v) }
+                runCatching { player?.setVolume(v * level, v * level) }
             }, 3000)
             handler.postDelayed(this, 20_000)
         }

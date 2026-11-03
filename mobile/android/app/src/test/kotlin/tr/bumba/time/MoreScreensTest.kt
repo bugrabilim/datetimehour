@@ -197,6 +197,19 @@ class MoreScreensTest {
         }
     }
 
+    /** 2. analiz #34 görev zinciri (1/2), #45 uyanma denetimi halkası */
+    @Test fun wakeChainAndCheck() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        shot("tr-alarm-gorev-zinciri") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(24.dp)) {
+                WakeTaskPanel(AlarmItem(id = "c", hour = 7, minute = 0, task = "math", chain = listOf("typing"))) {}
+            }
+        }
+        shot("tr-uyanma-denetimi") {
+            WakeCheckScreen(System.currentTimeMillis() + 75_000L, {}, {})
+        }
+    }
+
     /** Gün doğumu ışığı: alarmdan 8 dk önce (30 dk pencere), tam ekran saat sıcak renkle aydınlanmış */
     @Test fun sunriseLight() {
         val at = java.time.LocalDateTime.now().plusMinutes(8)

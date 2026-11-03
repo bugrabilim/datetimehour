@@ -9,6 +9,8 @@ import kotlin.random.Random
  */
 object WakeTask {
     val KINDS = listOf("none", "math", "shake", "steps", "code", "memory", "typing", "photo")
+    /** Işık görevi (2. analiz #38; yalnız Android): en az bu kadar lüks (ve başlangıcın 3 katı) 3 sn boyunca */
+    const val LIGHT_LUX = 100f
     /** Matematik: üç işlem; sallama 30 kez; adım 20 */
     const val MATH_COUNT = 3
     const val SHAKES = 30

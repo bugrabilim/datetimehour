@@ -7,12 +7,15 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.app.PendingIntent
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.LinearProgressIndicator
@@ -66,11 +69,17 @@ object WakeCheck {
         AlarmScheduler.schedule(c, BACKUP + alarmId, ask + WakeTask.CHECK_GRACE_MIN * 60_000L, L("wake.checkAlarm"), "alarm")
     }
 
-    /** Soru bildirimi: "Uyanığım" ya da dokunmak yedek alarmı iptal eder */
+    /** Soru bildirimi: "Uyanığım" ya da dokunmak yedek alarmı iptal eder. Ekran kilitliyken ya da kapalıyken uygulama
+     *  içi geri sayım halkası (WakeCheckActivity, 2. analiz #45) tam ekran açılır. */
     fun ask(c: Context, id: String) {
         val alarmId = id.removePrefix(ASK)
         val awake = PendingIntent.getBroadcast(c, (ACTION_AWAKE + alarmId).hashCode(),
             Intent(c, AlarmReceiver::class.java).setAction(ACTION_AWAKE).putExtra(AlarmScheduler.EXTRA_ID, alarmId),
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+        val deadline = System.currentTimeMillis() + WakeTask.CHECK_GRACE_MIN * 60_000L
+        val screen = PendingIntent.getActivity(c, (ASK + alarmId).hashCode(),
+            Intent(c, WakeCheckActivity::class.java).putExtra(AlarmScheduler.EXTRA_ID, alarmId).putExtra(WakeCheckActivity.DEADLINE, deadline)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
             PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
         val n = NotificationCompat.Builder(c, AlarmScheduler.CHANNEL_TOOLS)
             .setSmallIcon(R.drawable.ic_stat_alarm)
@@ -79,7 +88,8 @@ object WakeCheck {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
-            .setContentIntent(awake)
+            .setContentIntent(screen)
+            .setFullScreenIntent(screen, true)
             .setAutoCancel(true)
             .addAction(0, L("wake.awake"), awake)
             .build()
@@ -93,23 +103,73 @@ object WakeCheck {
     }
 }
 
-/** Görev paneli (alarm ekranında Kapat'ın yerine); çözülünce [onSolved] */
+/** Görev paneli (alarm ekranında Kapat'ın yerine); görevler sırayla (2. analiz #34 zincir), hepsi çözülünce [onSolved].
+ *  [tasks] verilmezse alarmın zinciri (rastgele olanlar burada seçilir); ertele görevi ve önizleme kendi listesini verir. */
 @Composable
-fun WakeTaskPanel(item: AlarmItem, onSolved: () -> Unit) {
-    var kind by remember { mutableStateOf(item.effectiveTask) }
+fun WakeTaskPanel(item: AlarmItem, tasks: List<String>? = null, title: String = L("wake.title"), onSolved: () -> Unit) {
+    val list = remember(item.id) { (tasks ?: item.taskChain()).ifEmpty { listOf("math") } }
+    var step by remember { mutableIntStateOf(0) }
+    var other by remember { mutableStateOf<String?>(null) }
     var level by remember { mutableIntStateOf(item.taskLevel) }
-    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        Text(L("wake.title"), color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
-        when (kind) {
-            "math" -> MathTask(level, onSolved)
-            "shake", "steps" -> MotionTask(kind, onSolved)
-            "code" -> CodeTask(item.code, onSolved)
-            "memory" -> MemoryTask(level, onSolved)
-            "typing" -> TypingTask(onSolved)
-            "photo" -> PhotoTask(item.code, onSolved)
-        }
-        if (kind != "math") TextButton(onClick = { kind = "math"; level = 3 }) { Text(L("wake.other"), color = Theme.c.muted) }
+    val kind = other ?: list[step.coerceAtMost(list.size - 1)]
+    val next = {
+        if (step + 1 >= list.size) onSolved() else { step += 1; other = null; level = item.taskLevel }
     }
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        Text(title, color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
+        if (list.size > 1) Text(T("wake.step", step + 1, list.size), color = Theme.c.muted, fontSize = 14.sp)
+        androidx.compose.runtime.key(step, kind) {
+            when (kind) {
+                "math" -> MathTask(level, next)
+                "shake", "steps" -> MotionTask(kind, next)
+                "code" -> CodeTask(item.code, next)
+                "memory" -> MemoryTask(level, next)
+                "typing" -> TypingTask(next)
+                "photo" -> PhotoTask(item.code, next)
+                "light" -> LightTask(next) { other = "math"; level = 3 }
+                else -> MathTask(level, next)
+            }
+        }
+        if (kind != "math") TextButton(onClick = { other = "math"; level = 3 }) { Text(L("wake.other"), color = Theme.c.muted) }
+    }
+}
+
+/** Işık görevi (2. analiz #38; yalnız Android): ortam ışığı sensörü 3 sn boyunca aydınlık (≥ 100 lüks ve başlangıcın
+ *  3 katı) görmeli; sensör yoksa [onUnavailable] (zor matematik) */
+@Composable
+private fun LightTask(onSolved: () -> Unit, onUnavailable: () -> Unit) {
+    val c = LocalContext.current
+    val sm = remember { c.getSystemService(Context.SENSOR_SERVICE) as? SensorManager }
+    val sensor = remember { sm?.getDefaultSensor(Sensor.TYPE_LIGHT) }
+    if (sensor == null) {
+        androidx.compose.runtime.LaunchedEffect(Unit) { onUnavailable() }
+        return
+    }
+    var lux by remember { mutableStateOf(0f) }
+    var held by remember { mutableStateOf(0f) }
+    DisposableEffect(sensor) {
+        var base = -1f
+        var since = 0L
+        var done = false
+        val listener = object : SensorEventListener {
+            override fun onSensorChanged(e: SensorEvent) {
+                val v = e.values[0]
+                lux = v
+                if (base < 0) base = v
+                val need = maxOf(WakeTask.LIGHT_LUX, base * 3)
+                val now = android.os.SystemClock.elapsedRealtime()
+                if (v >= need) { if (since == 0L) since = now } else since = 0L
+                held = if (since == 0L) 0f else ((now - since) / 3000f).coerceIn(0f, 1f)
+                if (!done && held >= 1f) { done = true; onSolved() }
+            }
+            override fun onAccuracyChanged(s: Sensor?, a: Int) {}
+        }
+        sm?.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_UI)
+        onDispose { sm?.unregisterListener(listener) }
+    }
+    Text(L("wake.light"), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
+    Text("☀️ " + T("wake.lux", lux.toInt()), color = Theme.c.muted, fontSize = 15.sp)
+    LinearProgressIndicator(progress = { held }, modifier = Modifier.fillMaxWidth().widthIn(max = 320.dp), color = Theme.c.accent, trackColor = Theme.c.surface2)
 }
 
 @Composable
@@ -262,5 +322,63 @@ object CodeScan {
                 .addOnSuccessListener { b -> b.rawValue?.takeIf { it.isNotEmpty() }?.let(onCode) ?: onFail() }
                 .addOnFailureListener { onFail() }
         }.onFailure { onFail() }
+    }
+}
+
+/** Uyanma denetimi ekranı (2. analiz #45): yedek alarma kalan süre halka olarak azalır; "Uyanığım" denetimi bitirir.
+ *  Süre dolunca yedek alarm kendisi çalar (AlarmManager), bu ekran kapanır. */
+class WakeCheckActivity : androidx.activity.ComponentActivity() {
+    companion object { const val DEADLINE = "deadline" }
+
+    override fun onCreate(savedInstanceState: android.os.Bundle?) {
+        super.onCreate(savedInstanceState)
+        val alarmId = intent.getStringExtra(AlarmScheduler.EXTRA_ID) ?: run { finish(); return }
+        val deadline = intent.getLongExtra(DEADLINE, System.currentTimeMillis() + WakeTask.CHECK_GRACE_MIN * 60_000L)
+        if (android.os.Build.VERSION.SDK_INT >= 27) { setShowWhenLocked(true); setTurnScreenOn(true) }
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        setContent {
+            AppTheme {
+                WakeCheckScreen(deadline, onAwake = {
+                    WakeCheck.awake(this, alarmId)
+                    finish()
+                }, onTimeout = { finish() })
+            }
+        }
+    }
+}
+
+/** Geri sayım halkası + "Uyanığım" (önizleme ve testte de kullanılır) */
+@Composable
+fun WakeCheckScreen(deadline: Long, onAwake: () -> Unit, onTimeout: () -> Unit) {
+    val total = WakeTask.CHECK_GRACE_MIN * 60_000f
+    var left by remember { mutableStateOf((deadline - System.currentTimeMillis()).coerceAtLeast(0)) }
+    androidx.compose.runtime.LaunchedEffect(deadline) {
+        while (left > 0) {
+            kotlinx.coroutines.delay(200)
+            left = (deadline - System.currentTimeMillis()).coerceAtLeast(0)
+        }
+        onTimeout()
+    }
+    val accent = Theme.c.accent
+    val track = Theme.c.surface2
+    Column(
+        Modifier.fillMaxSize().background(Theme.c.bg).padding(24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically),
+    ) {
+        Text(L("wake.checkTitle"), color = Theme.c.text, fontSize = 26.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        androidx.compose.foundation.layout.Box(Modifier.size(220.dp), contentAlignment = Alignment.Center) {
+            androidx.compose.foundation.Canvas(Modifier.size(220.dp)) {
+                val stroke = androidx.compose.ui.graphics.drawscope.Stroke(width = 16.dp.toPx(), cap = androidx.compose.ui.graphics.StrokeCap.Round)
+                val inset = 8.dp.toPx()
+                val sz = androidx.compose.ui.geometry.Size(size.width - inset * 2, size.height - inset * 2)
+                val tl = androidx.compose.ui.geometry.Offset(inset, inset)
+                drawArc(track, 0f, 360f, false, tl, sz, style = stroke)
+                drawArc(accent, -90f, 360f * (left / total).coerceIn(0f, 1f), false, tl, sz, style = stroke)
+            }
+            val s = (left / 1000).toInt()
+            Ltr { Text("%d:%02d".format(java.util.Locale.ROOT, s / 60, s % 60), color = Theme.c.ink, fontSize = 44.sp, fontWeight = FontWeight.Bold, style = Tnum) }
+        }
+        Text(L("wake.checkRing"), color = Theme.c.muted, fontSize = 15.sp, textAlign = TextAlign.Center)
+        RoundButton(L("wake.awake"), true, Modifier.fillMaxWidth().widthIn(max = 360.dp), onAwake)
     }
 }

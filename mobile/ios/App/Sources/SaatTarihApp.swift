@@ -184,6 +184,8 @@ struct RootView: View {
     /// Alarm son iki saatte çaldıysa açılışta günaydın kartı (MorningCheck)
     @State private var morning = false
     /// Görevli alarm durduruldu: görev ekranı (çözülmeden kapanmaz; WakeTasks)
+    @State private var checking = false
+    @State private var checkUntil = Date()
     @State private var wakeTask: PendingWakeTask?
     /// Yeni kurulumda ilk açılış sihirbazı (Onboarding; 2. analiz #4)
     @State private var onboarding = Onboarding.pending
@@ -209,9 +211,21 @@ struct RootView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             if WakeTasks.onActive() {
                 wakeTask = WakeTasks.pending
+            } else if let end = WakeTasks.checkDeadline() {
+                // Uyanma denetimi halkası (2. analiz #45)
+                checkUntil = end
+                checking = true
             } else if MorningCheck.due() {
                 morning = true
             }
+        }
+        .fullScreenCover(isPresented: $checking) {
+            WakeCheckView(deadline: checkUntil, onAwake: {
+                WakeTasks.awake()
+                checking = false
+                if MorningCheck.due() { morning = true }
+            }, onTimeout: { checking = false })
+            .preferredColorScheme(scheme)
         }
         .sheet(isPresented: $morning) { MorningCard().preferredColorScheme(scheme) }
         .fullScreenCover(isPresented: $onboarding) {

@@ -398,6 +398,10 @@ struct AlarmsView: View {
                         Text(Self.taskIcon(item) + item.title + " · " + item.repeatText + (item.preAlarm > 0 ? " · 🌧" : ""))
                             .font(.subheadline)
                             .foregroundStyle(Theme.muted)
+                        // Şehir saatine ya da güneşe bağlı alarm (2. analiz #132, #153)
+                        if let anchor = item.anchorText {
+                            Text((item.sun.isEmpty ? "🌐 " : "☀️ ") + anchor).font(.footnote).foregroundStyle(Theme.accent)
+                        }
                         if item.sleepPlan { Text(L("alarm.sleepLinked")).font(.caption2).foregroundStyle(Theme.muted) }
                         if let skip = item.skipUntil, skip > Date(), let at = item.unskipped.next() {
                             Text(T("alarm.skipped", Fmt.longDate(at)))
@@ -424,17 +428,21 @@ struct AlarmsView: View {
     }
 
     static func taskIcon(_ item: AlarmItem) -> String {
+        let icon: String
         switch AlarmItem.effectiveTask(item.task, code: item.code) {
-        case "math": "🧮 "
-        case "shake": "📳 "
-        case "steps": "🚶 "
-        case "code": "🔳 "
-        case "memory": "🧠 "
-        case "typing": "⌨️ "
-        case "photo": "📷 "
-        default: ""
+        case "math": icon = "🧮 "
+        case "shake": icon = "📳 "
+        case "steps": icon = "🚶 "
+        case "code": icon = "🔳 "
+        case "memory": icon = "🧠 "
+        case "typing": icon = "⌨️ "
+        case "photo": icon = "📷 "
+        case "random": icon = "🎲 "
+        default: icon = ""
         }
+        return icon + (item.chain.isEmpty || item.task == "none" ? "" : "+\(item.chain.count) ")
     }
+
 }
 
 /// Alarm listesinin sayfaları (etkinlik seçici, düzenleyici) ve kaydetme
@@ -513,14 +521,54 @@ private struct AlarmEditor: View {
     @State private var time = Date()
     @State private var scanning = false
     @State private var shootingRef = false
+    @State private var tryTask = false
+    @State private var tried = false
+
+    /// Saat neye göre: telefon, başka şehir, gün doğumu, gün batımı (2. analiz #132, #153)
+    private var base: Binding<String> {
+        Binding(get: { !item.sun.isEmpty ? item.sun : (item.tz.isEmpty ? "phone" : "city") }, set: { b in
+            item.sun = (b == "rise" || b == "set") ? b : ""
+            if b == "city" {
+                if item.tz.isEmpty { item.tz = City.all.first { $0.tz != TimeZone.current.identifier }?.tz ?? "Europe/London" }
+            } else {
+                item.tz = ""
+            }
+        })
+    }
+
+    private var cities: [City] {
+        var seen = Set<String>()
+        return City.all.filter { seen.insert($0.tz).inserted }.sorted { $0.displayName < $1.displayName }
+    }
+
+    /// Son erteleme saati seçenekleri: alarmdan 15 dk – 2 sa sonrası
+    private var endChoices: [String] {
+        let c = Calendar.current.dateComponents([.hour, .minute], from: time)
+        let start = (c.hour ?? 0) * 60 + (c.minute ?? 0)
+        var list = [""] + [15, 30, 45, 60, 90, 120].map { m -> String in
+            let t = (start + m) % 1440
+            return String(format: "%02d:%02d", t / 60, t % 60)
+        }
+        if !list.contains(item.snoozeEnd) { list.append(item.snoozeEnd) }
+        return list
+    }
+
+    /// Önizleme için görev (2. analiz #35): alarmın görevi ve zinciri, uyanma denetimi yok
+    private var previewTask: PendingWakeTask {
+        PendingWakeTask(task: AlarmItem.effectiveTask(item.task, code: item.code), level: item.taskLevel, code: item.code, wakeCheck: false,
+                        title: item.title, rise: false, rings: 0, repeatID: nil, wall: item.wall.isEmpty ? nil : item.wall,
+                        chain: item.chain.isEmpty ? nil : item.chain)
+    }
 
     var body: some View {
         NavigationStack {
             Form {
-                DatePicker(L("tools.alarm.timeLabel"), selection: $time, displayedComponents: .hourAndMinute)
-                    .datePickerStyle(.wheel)
-                    .labelsHidden()
-                    .frame(maxWidth: .infinity)
+                if item.sun.isEmpty {
+                    DatePicker(L("tools.alarm.timeLabel"), selection: $time, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(.wheel)
+                        .labelsHidden()
+                        .frame(maxWidth: .infinity)
+                }
                 TextField(L("tools.alarm.labelPlaceholder"), text: $item.label)
                 Section(L("alarm.days")) {
                     // Pazartesiden pazara yedi düğme; hiçbiri seçili değilse bir kez çalar
@@ -565,6 +613,29 @@ private struct AlarmEditor: View {
                     }
                     Text(item.repeatText).font(.footnote).foregroundStyle(Theme.muted)
                 }
+                // Saat neye göre (2. analiz #132 şehir saati, #153 gün doğumu/batımı ± dk)
+                Section {
+                    Picker(L("alarm.base"), selection: base) {
+                        ForEach(["phone", "city", "rise", "set"], id: \.self) { b in Text(L("alarm.base.\(b)")).tag(b) }
+                    }
+                    if !item.tz.isEmpty && item.sun.isEmpty {
+                        Picker(L("alarm.city"), selection: $item.tz) {
+                            ForEach(cities) { c in Text(c.displayName).tag(c.tz) }
+                        }
+                    }
+                    if !item.sun.isEmpty {
+                        Picker(L("alarm.sunOffset"), selection: $item.sunOffset) {
+                            ForEach(AlarmItem.sunOffsets, id: \.self) { m in Text(AlarmItem.sunOffsetText(m)).tag(m) }
+                        }
+                    }
+                } footer: {
+                    if !item.sun.isEmpty {
+                        let next = item.next(after: Date())
+                        Text(T("alarm.sunNote", AppPlace.stored().name, next.map { Fmt.dayMonth($0) + " " + Fmt.time($0) } ?? "—"))
+                    } else if !item.tz.isEmpty {
+                        Text(L("alarm.tzNote"))
+                    }
+                }
                 Section {
                     Picker(L("alarm.snooze"), selection: $item.snooze) {
                         ForEach(AlarmItem.snoozeChoices, id: \.self) { m in
@@ -577,7 +648,14 @@ private struct AlarmEditor: View {
                                 Text(n == 0 ? L("alarm.snoozeMax.none") : T("alarm.snoozeMax.n", n)).tag(n)
                             }
                         }
+                        // 2. analiz #40: her ertelemede kısalan süre, belli saatten sonra erteleme yok
+                        Toggle(L("alarm.snoozeShrink"), isOn: $item.snoozeShrink).tint(Theme.accent)
+                        Picker(L("alarm.snoozeEnd"), selection: $item.snoozeEnd) {
+                            ForEach(endChoices, id: \.self) { e in Text(e.isEmpty ? L("alarm.snoozeEnd.none") : e).tag(e) }
+                        }
                     }
+                } footer: {
+                    if item.snooze > 0 && item.snoozeShrink { Text(L("alarm.snoozeShrinkNote")) }
                 }
                 AlarmMusicSection(item: $item)
                 AlarmWallSection(item: $item)
@@ -636,7 +714,21 @@ private struct AlarmEditor: View {
                 // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
                 Section {
                     Picker(L("alarm.task"), selection: $item.task) {
-                        ForEach(WakeTask.kinds, id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                        ForEach(WakeTask.kinds + ["random"], id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                    }
+                    // Görev zinciri (2. analiz #34): asıl görevden sonra en çok iki görev daha
+                    if item.task != "none" {
+                        ForEach(0..<min(2, item.chain.count + 1), id: \.self) { i in
+                            Picker(L("alarm.chain"), selection: Binding(get: { item.chain.indices.contains(i) ? item.chain[i] : "none" }, set: { v in
+                                var list = item.chain
+                                if list.indices.contains(i) { list[i] = v } else { list.append(v) }
+                                item.chain = Array(list.prefix(i + 1).filter { $0 != "none" }) + (v == "none" ? [] : Array(list.dropFirst(i + 1)))
+                            })) {
+                                ForEach(WakeTask.kinds + ["random"], id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                            }
+                        }
+                        // Önizleme (2. analiz #35): alarm çalmadan görevi dene
+                        Button { tried = false; tryTask = true } label: { Label(L("alarm.taskTry"), systemImage: "play.circle") }
                     }
                     if item.task == "math" || item.task == "memory" {
                         Picker(L("alarm.task.level"), selection: $item.taskLevel) {
@@ -664,7 +756,8 @@ private struct AlarmEditor: View {
                 } header: {
                     Text(L("alarm.task.heading"))
                 } footer: {
-                    Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note"))
+                    Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note")
+                         + (item.task != "none" ? " " + L("alarm.chainNote") : ""))
                 }
                 // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
                 if !item.days.isEmpty {
@@ -691,6 +784,20 @@ private struct AlarmEditor: View {
                 }
                 .ignoresSafeArea()
             }
+            .sheet(isPresented: $tryTask) {
+                NavigationStack {
+                    Group {
+                        if tried {
+                            Text(L("alarm.taskTryDone")).font(.title3).multilineTextAlignment(.center).padding(32)
+                        } else {
+                            WakeTaskView(task: previewTask, preview: true) { tried = true }
+                        }
+                    }
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) { Button(L(tried ? "common.done" : "alarm.cancel")) { tryTask = false } }
+                    }
+                }
+            }
             .navigationTitle(L("alarm.new"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -703,6 +810,7 @@ private struct AlarmEditor: View {
                         item.enabled = true
                         item.skipUntil = nil
                         if item.days.isEmpty { item.skipHolidays = false }
+                        if item.task == "none" { item.chain = [] }
                         onSave(item)
                         dismiss()
                     }
