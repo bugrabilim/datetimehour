@@ -140,9 +140,9 @@ struct GeoAlarmsView: View {
             Section {
                 if !permission.allowed {
                     Button(L("geo.allow")) { permission.request() }
-                    Text(L("geo.denied")).font(.footnote).foregroundStyle(.red)
+                    Text(L("geo.denied")).font(.footnote).foregroundStyle(Theme.err)
                 } else if !permission.precise {
-                    Text(L("geo.notPrecise")).font(.footnote).foregroundStyle(.red)
+                    Text(L("geo.notPrecise")).font(.footnote).foregroundStyle(Theme.err)
                 }
                 Text(L("geo.note")).font(.footnote).foregroundStyle(Theme.muted)
             }

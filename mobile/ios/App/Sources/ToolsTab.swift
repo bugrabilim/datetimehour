@@ -251,8 +251,8 @@ struct StopwatchView: View {
             ForEach(Array(lapTimes.enumerated()).reversed(), id: \.offset) { i, lap in
                 HStack {
                     Text(verbatim: "\(L("tools.stopwatch.lapNo")) \(i + 1)")
-                    if lap == best { Text(L("tools.stopwatch.best")).font(.caption).foregroundStyle(.green) }
-                    if lap == worst { Text(L("tools.stopwatch.worst")).font(.caption).foregroundStyle(.red) }
+                    if lap == best { Text(L("tools.stopwatch.best")).font(.caption).foregroundStyle(Theme.ok) }
+                    if lap == worst { Text(L("tools.stopwatch.worst")).font(.caption).foregroundStyle(Theme.err) }
                     Spacer()
                     Text(format(lap)).monospacedDigit()
                     Text(format(totals[i])).monospacedDigit().foregroundStyle(Theme.muted)
@@ -418,7 +418,7 @@ struct AlarmsView: View {
                 Task { await AlarmCenter.sync(items); await PrayerNotifier.reschedule() }
             }
             Section {
-                if denied { Text(L("alarm.denied")).foregroundStyle(.red) }
+                if denied { Text(L("alarm.denied")).foregroundStyle(Theme.err) }
                 AlarmNote()
             }
         }

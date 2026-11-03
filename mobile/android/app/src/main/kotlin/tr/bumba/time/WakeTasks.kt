@@ -193,7 +193,7 @@ private fun MathTask(level: Int, onSolved: () -> Unit) {
     OutlinedTextField(answer, { answer = it.filter(Char::isDigit).take(6) }, Modifier.widthIn(max = 220.dp), singleLine = true,
         label = { Text(L("wake.answer")) }, textStyle = TextStyle(fontSize = 24.sp, textAlign = TextAlign.Center),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
-    if (wrong) Text(L("wake.wrong"), color = Color(0xFFD32F2F), fontSize = 14.sp)
+    if (wrong) Text(L("wake.wrong"), color = Theme.c.err, fontSize = 14.sp)
     RoundButton(L("wake.check"), true, Modifier.fillMaxWidth()) { check() }
 }
 
@@ -236,7 +236,7 @@ private fun CodeTask(code: String, onSolved: () -> Unit) {
     RoundButton(L("wake.code.scan"), true, Modifier.fillMaxWidth()) {
         CodeScan.scan(context, onCode = { v -> if (v == code) onSolved() else wrong = true }, onFail = { failed = true })
     }
-    if (wrong) Text(L("wake.code.wrong"), color = Color(0xFFD32F2F), fontSize = 14.sp)
+    if (wrong) Text(L("wake.code.wrong"), color = Theme.c.err, fontSize = 14.sp)
     if (failed) Text(L("wake.noCamera"), color = Theme.c.muted, fontSize = 14.sp, textAlign = TextAlign.Center)
 }
 
@@ -272,7 +272,7 @@ private fun MemoryTask(level: Int, onSolved: () -> Unit) {
         }
     }
     Text(T("wake.progress", pos, seq.size), color = Theme.c.muted, fontSize = 14.sp)
-    if (wrong) Text(L("wake.memory.wrong"), color = Color(0xFFD32F2F), fontSize = 14.sp)
+    if (wrong) Text(L("wake.memory.wrong"), color = Theme.c.err, fontSize = 14.sp)
 }
 
 /** Yazma (#75): günün sözlerinden rastgele biri aynen yazılır (büyük/küçük harf ve noktalama sayılmaz) */
@@ -310,7 +310,7 @@ private fun PhotoTask(code: String, onSolved: () -> Unit) {
     }
     Text(L("wake.photo"), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
     RoundButton(L("wake.photo.take"), true, Modifier.fillMaxWidth()) { runCatching { take.launch(null) } }
-    if (wrong) Text(L("wake.photo.wrong"), color = Color(0xFFD32F2F), fontSize = 14.sp, textAlign = TextAlign.Center)
+    if (wrong) Text(L("wake.photo.wrong"), color = Theme.c.err, fontSize = 14.sp, textAlign = TextAlign.Center)
 }
 
 /** Google kod tarayıcı (Play hizmetleri): kamera izni istemez, yalnız okunan değer uygulamaya gelir */

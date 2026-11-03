@@ -390,7 +390,7 @@ private fun ListSignup() {
                 if (result == true) { email = ""; consent = false }
             }
         }
-        result?.let { Text(L(if (it) "list.ok" else "list.err"), color = if (it) Theme.c.accent else Color(0xFFD32F2F), fontSize = 13.sp) }
+        result?.let { Text(L(if (it) "list.ok" else "list.err"), color = if (it) Theme.c.ok else Theme.c.err, fontSize = 13.sp) }
         Text(L("list.popupText"), color = Theme.c.muted, fontSize = 11.sp)
     }
 }

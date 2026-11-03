@@ -352,7 +352,7 @@ struct ListSignupSection: View {
             .tint(Theme.accent)
             if let result {
                 Label(L(result ? "list.ok" : "list.err"), systemImage: result ? "checkmark.circle" : "exclamationmark.triangle")
-                    .foregroundStyle(result ? Theme.accent : .red)
+                    .foregroundStyle(result ? Theme.ok : Theme.err)
             }
         } header: {
             Text(L("list.heading"))

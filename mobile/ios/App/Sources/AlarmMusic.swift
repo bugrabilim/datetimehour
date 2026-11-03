@@ -150,7 +150,7 @@ struct AlarmMusicSection: View {
                     item.musicName = ""
                 }
             }
-            if let error { Text(error).font(.footnote).foregroundStyle(.red) }
+            if let error { Text(error).font(.footnote).foregroundStyle(Theme.err) }
         } footer: {
             Text(L("alarm.music.note"))
         }
@@ -238,7 +238,7 @@ private struct AlarmMusicTrimSheet: View {
                         }
                     }
                     Button(L(player == nil ? "alarm.music.listen" : "alarm.music.stop")) { toggle() }
-                    if let error { Text(error).font(.footnote).foregroundStyle(.red) }
+                    if let error { Text(error).font(.footnote).foregroundStyle(Theme.err) }
                 } footer: {
                     Text(L("alarm.music.trimNote"))
                 }

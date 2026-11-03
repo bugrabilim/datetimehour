@@ -401,7 +401,7 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
             text = { Text(e.title) },
             confirmButton = {
                 TextButton(onClick = { DeviceCalendar.remove(context, e); deleting = null }) {
-                    Text(L("calendar.delete"), color = Color(0xFFD32F2F))
+                    Text(L("calendar.delete"), color = Theme.c.err)
                 }
             },
             dismissButton = { TextButton(onClick = { deleting = null }) { Text(L("list.cancel")) } },

@@ -196,18 +196,37 @@ struct RootView: View {
     @State private var wakeTask: PendingWakeTask?
     /// Yeni kurulumda ilk açılış sihirbazı (Onboarding; 2. analiz #4)
     @State private var onboarding = Onboarding.pending
+    /// Alt barda olmayan bir sayfadan geri dönülecek sekme (2. analiz #203)
+    @State private var backTab: AppTab = .clock
 
     var body: some View {
         // Bar sayfanın altında ayrı bir satır: sayfanın son satırları barın altında kalmaz
         // (safeAreaInset NavigationStack içindeki listelere geçmiyordu; yazılar barın altına giriyordu)
+        let tabs = Features.barTabs(raw: features)
+        let offBar = !tabs.contains(router.tab)
         VStack(spacing: 0) {
+            // Alt barda olmayan sayfa (kapalı özellik): üstte döneceği sekmenin adıyla geri düğmesi (2. analiz #203)
+            if offBar && !landscape {
+                Button { router.tab = backTab } label: {
+                    Label(backTab.title, systemImage: "chevron.backward")
+                        .font(.body)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 14).padding(.vertical, 8)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(Theme.accent)
+                .background(AppBackdrop().ignoresSafeArea())
+            }
             content
                 .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)-\(atmo)")
                 .frame(maxWidth: readable, maxHeight: .infinity)
                 .frame(maxWidth: .infinity)
                 .background(AppBackdrop().ignoresSafeArea())
-            let tabs = Features.barTabs(raw: features, current: router.tab)
             if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
+        }
+        .onChange(of: router.tab) { old, _ in
+            if Features.barTabs(raw: features).contains(old) { backTab = old }
         }
         .statusBarHidden(landscape)
         .persistentSystemOverlays(landscape ? .hidden : .automatic)
@@ -314,17 +333,19 @@ private struct TabBar: View {
                     selection = tab
                 } label: {
                     VStack(spacing: 3) {
+                        // Seçili sekmede simgenin arkasında ana rengin açık tonunda hap (sitedeki .nav gibi; 2. analiz #95)
                         Image(systemName: tab.icon)
                             .symbolVariant(on ? .fill : .none)
                             .font(.system(size: 19))
-                            .frame(height: 24)
+                            .frame(width: 56, height: 30)
+                            .background(Capsule().fill(on ? Theme.accentSoft : Color.clear))
                         Text(tab.title)
-                            .font(.system(size: 10, weight: on ? .semibold : .regular))
+                            .font(.system(size: 11, weight: on ? .semibold : .regular))
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 7)
+                    .padding(.top, 5)
                     .padding(.bottom, 3)
                     .contentShape(Rectangle())
                     .foregroundStyle(on ? Theme.accent : Theme.muted)

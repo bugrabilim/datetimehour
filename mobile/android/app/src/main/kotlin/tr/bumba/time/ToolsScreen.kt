@@ -245,8 +245,8 @@ private fun Stopwatch() {
                 Ltr {
                     Row(Modifier.fillMaxWidth().padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
                         Text("${L("tools.stopwatch.lapNo")} ${i + 1}", color = Theme.c.text)
-                        if (lap == best) Text("  " + L("tools.stopwatch.best"), color = Color(0xFF2E7D32), fontSize = 12.sp)
-                        if (lap == worst) Text("  " + L("tools.stopwatch.worst"), color = Color(0xFFD32F2F), fontSize = 12.sp)
+                        if (lap == best) Text("  " + L("tools.stopwatch.best"), color = Theme.c.ok, fontSize = 12.sp)
+                        if (lap == worst) Text("  " + L("tools.stopwatch.worst"), color = Theme.c.err, fontSize = 12.sp)
                         Spacer(Modifier.weight(1f))
                         Text(fmt(lap), color = Theme.c.text, style = Tnum)
                         Text("   " + fmt(laps[i]), color = Theme.c.muted, style = Tnum)

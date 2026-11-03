@@ -351,6 +351,11 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
         onDispose { activity?.requestedOrientation = android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED }
     }
     var dimming by remember { mutableStateOf(false) }
+    // Düğmeler dokununca belirir, 4 sn sonra kaybolur (sitedeki tam ekran gibi; 2. analiz #204)
+    var shown by remember { mutableStateOf(true) }
+    var touched by remember { mutableLongStateOf(0L) }
+    LaunchedEffect(touched) { kotlinx.coroutines.delay(4000); shown = false }
+    val controlsAlpha by androidx.compose.animation.core.animateFloatAsState(if (shown) 1f else 0f, label = "fsControls")
     val colors = when {
         sunrise > 0.6 -> AccentPalette.find(Prefs.accent).colors(false)
         night || sunrise > 0 || photo != null || bg.animated -> AccentPalette.find(Prefs.accent).colors(true)
@@ -361,6 +366,14 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     BoxWithConstraints(
         Modifier.fillMaxSize().nightTint(night).then(if (sunrise > 0) Modifier.background(sunriseColor) else if (night) Modifier.background(Color.Black) else Modifier.appBackdrop(Theme.c))
             .pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) }
+            // Her dokunuşta düğmeler belirir (dokunuş tüketilmez; kaydırma ve sayfalama bozulmaz)
+            .pointerInput(Unit) {
+                awaitEachGesture {
+                    awaitFirstDown(requireUnconsumed = false, pass = PointerEventPass.Initial)
+                    shown = true
+                    touched = System.nanoTime()
+                }
+            }
             // İki parmakla saat boyutu (çocuklardan önce yakalanır; tek parmak kaydırma ve sayfalama bozulmaz)
             .pointerInput(Unit) {
                 awaitEachGesture {
@@ -425,7 +438,9 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
                     }
                 }
                 // Ekran koruyucuda (ClockDreamService) düğme yok: dokunuş ekran koruyucuyu kapatır
-                if (controls) Row {
+                if (controls) Row(Modifier.graphicsLayer { alpha = controlsAlpha }.then(
+                    if (shown) Modifier else Modifier.pointerInput(Unit) { awaitEachGesture { awaitFirstDown(pass = PointerEventPass.Initial).consume() } },
+                )) {
                     // Gece modu: açıkken kapatır, kapalıyken açar (otomatik seçim Ayarlar › Saat görünümü'nde)
                     TextButton(onClick = { Prefs.saveNightMode(NightMode.toggled(night)) }) {
                         Icon(Icons.Filled.DarkMode, null, tint = if (night) Theme.c.accent else Theme.c.muted, modifier = Modifier.size(18.dp))

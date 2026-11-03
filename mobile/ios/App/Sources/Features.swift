@@ -18,9 +18,11 @@ enum Features {
     }
 
     /// Alt bardaki sekmeler: Saat, açık özellikler ve kapalı olsa da şu an açık olan sekme (tek sekme kalırsa bar yok)
-    static func barTabs(raw: String, current: AppTab) -> [AppTab] {
+    /// Alt bardaki sekmeler: Saat ve açık özellikler. Kapalı bir özellik bildirimden, widget'tan ya da saat ekranındaki
+    /// alandan açılırsa bar değişmez; sayfa üstte geri düğmesiyle açılır (2. analiz #203)
+    static func barTabs(raw: String) -> [AppTab] {
         let on = parse(raw)
-        return AppTab.allCases.filter { $0 == .clock || on.contains($0) || $0 == current }
+        return AppTab.allCases.filter { $0 == .clock || on.contains($0) }
     }
 
     static func isOn(_ tab: AppTab) -> Bool {

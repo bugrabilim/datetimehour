@@ -99,7 +99,7 @@ struct FocusBlockCard: View {
                         picking = true
                     }
                 }
-                if denied { Text(L("focus.denied")).font(.caption).foregroundStyle(.red) }
+                if denied { Text(L("focus.denied")).font(.caption).foregroundStyle(Theme.err) }
                 // Zaman çizelgeli engel (2. analiz #27)
                 if on { FocusScheduleSection() }
                 Text(L("focus.noteIOS")).font(.caption).foregroundStyle(Theme.muted)

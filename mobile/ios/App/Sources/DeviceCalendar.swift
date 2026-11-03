@@ -161,7 +161,7 @@ struct GoogleCalendarGuide: View {
             Section {
                 if device.authorized {
                     Label(L("google.ready"), systemImage: "checkmark.circle.fill")
-                        .foregroundStyle(.green)
+                        .foregroundStyle(Theme.ok)
                 } else if device.canAsk {
                     Button {
                         Task { await device.requestAccess() }

@@ -177,7 +177,7 @@ fun JournalScreen() {
             }
         }
         Text(L("journal.privacyAndroid"), color = Theme.c.muted, fontSize = 13.sp)
-        if (list.isNotEmpty()) TextButton(onClick = { confirm = true }) { Text(L("journal.clear"), color = androidx.compose.ui.graphics.Color(0xFFD32F2F)) }
+        if (list.isNotEmpty()) TextButton(onClick = { confirm = true }) { Text(L("journal.clear"), color = Theme.c.err) }
     }
     if (confirm) AlertDialog(
         onDismissRequest = { confirm = false },
@@ -186,7 +186,7 @@ fun JournalScreen() {
             TextButton(onClick = {
                 Prefs.store.edit().remove(Journal.KEY).apply()
                 list = emptyList(); entry = JournalEntry(Journal.todayKey); confirm = false
-            }) { Text(L("journal.clear"), color = androidx.compose.ui.graphics.Color(0xFFD32F2F)) }
+            }) { Text(L("journal.clear"), color = Theme.c.err) }
         },
         dismissButton = { TextButton(onClick = { confirm = false }) { Text(L("alarm.cancel")) } },
     )

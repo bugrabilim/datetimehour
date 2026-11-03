@@ -40,6 +40,11 @@ data class AppColors(
     val atmo: Atmosphere? = null,
 ) {
     val accentSoft: Color get() = accent.copy(alpha = 0.16f)
+    /** Hata ve başarı renkleri: sitedeki --err/--ok token'ları (2. analiz #100; iki temada ≥4,5:1) */
+    val err: Color get() = if (dark) Color(0xFFFF9D9D) else Color(0xFFA31D1D)
+    val errBg: Color get() = if (dark) Color(0xFF3A1A1A) else Color(0xFFFBE7E7)
+    val ok: Color get() = if (dark) Color(0xFF7FD9A1) else Color(0xFF176B3A)
+    val okBg: Color get() = if (dark) Color(0xFF16301F) else Color(0xFFE2F3E8)
 }
 
 /**

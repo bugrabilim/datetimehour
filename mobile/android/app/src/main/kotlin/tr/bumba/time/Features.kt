@@ -66,8 +66,11 @@ object Features {
         Prefs.store.edit().putString(KEY, OPTIONAL.filter { it in v }.joinToString(",") { id(it) }).apply()
     }
 
-    /** Alt bardaki sekmeler: Saat, açık özellikler ve kapalı olsa da şu an açık olan sekme (tek sekme kalırsa bar yok) */
-    fun barTabs(current: Tab) = Tab.entries.filter { isOn(it) || it == current }
+    /**
+     * Alt bardaki sekmeler: Saat ve açık özellikler (tek sekme kalırsa bar yok). Kapalı bir özellik bildirimden,
+     * widget'tan ya da saat ekranındaki alandan açılırsa bar değişmez; sayfa üstte geri düğmesiyle açılır (2. analiz #203).
+     */
+    fun barTabs() = Tab.entries.filter { isOn(it) }
 }
 
 /** Ayarlar › Özellikler: Saat her zaman açık, diğerleri anahtarla */

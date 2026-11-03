@@ -207,9 +207,9 @@ fun GoogleCalendarGuide() {
         AppCard {
             if (DeviceCalendar.authorized) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(Icons.Filled.CheckCircle, null, tint = Color(0xFF2E7D32))
+                    Icon(Icons.Filled.CheckCircle, null, tint = Theme.c.ok)
                     Spacer(Modifier.width(8.dp))
-                    Text(L("google.ready"), color = Color(0xFF2E7D32))
+                    Text(L("google.ready"), color = Theme.c.ok)
                 }
             } else {
                 TextButton(onClick = ask) {

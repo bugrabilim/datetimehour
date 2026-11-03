@@ -20,9 +20,9 @@ class FeaturesTest {
         Features.load(sp)
         assertTrue(Features.enabled.isEmpty())
         assertEquals("", sp.getString(Features.KEY, null))
-        assertEquals(listOf(Tab.CLOCK), Features.barTabs(Tab.CLOCK))
-        // Kapalı bir sekme açılırsa (widget, bildirim, saat ekranındaki alan) geçici olarak barda
-        assertEquals(listOf(Tab.CLOCK, Tab.PRAYER), Features.barTabs(Tab.PRAYER))
+        assertEquals(listOf(Tab.CLOCK), Features.barTabs())
+        // Kapalı bir sekme açılırsa (widget, bildirim, saat ekranındaki alan) bar değişmez, geri düğmeli sayfa açılır (#203)
+        assertEquals(false, Features.isOn(Tab.PRAYER))
     }
 
     @Test fun existingUserKeepsAll() {
@@ -31,14 +31,14 @@ class FeaturesTest {
         Features.load(sp)
         assertEquals(Features.OPTIONAL.toSet(), Features.enabled)
         assertEquals("weather,calendar,world,seasons,prayer,tools", sp.getString(Features.KEY, null))
-        assertEquals(Tab.entries.toList(), Features.barTabs(Tab.CLOCK))
+        assertEquals(Tab.entries.toList(), Features.barTabs())
     }
 
     @Test fun saveKeepsOrder() {
         Features.save(setOf(Tab.TOOLS, Tab.WEATHER))
         assertEquals("weather,tools", Prefs.store.getString(Features.KEY, null))
         assertEquals(setOf(Tab.WEATHER, Tab.TOOLS), Features.parse("tools,weather,nope"))
-        assertEquals(listOf(Tab.CLOCK, Tab.WEATHER, Tab.TOOLS), Features.barTabs(Tab.CLOCK))
+        assertEquals(listOf(Tab.CLOCK, Tab.WEATHER, Tab.TOOLS), Features.barTabs())
         Features.set(Tab.WEATHER, false)
         assertEquals("tools", Prefs.store.getString(Features.KEY, null))
     }

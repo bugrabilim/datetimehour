@@ -358,7 +358,7 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
                     TextButton(onClick = { pickPhoto.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)) }) {
                         Text(L("look.photo.pick"), color = Theme.c.accent)
                     }
-                    if (photo != 0L) TextButton(onClick = { photo = 0 }) { Text(L("look.photo.remove"), color = Color(0xFFD32F2F)) }
+                    if (photo != 0L) TextButton(onClick = { photo = 0 }) { Text(L("look.photo.remove"), color = Theme.c.err) }
                 }
                 Text(L("countdowns.photoNote"), color = Theme.c.muted, fontSize = 12.sp)
             }

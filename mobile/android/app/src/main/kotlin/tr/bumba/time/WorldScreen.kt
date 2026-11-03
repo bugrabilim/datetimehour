@@ -128,7 +128,7 @@ fun WorldScreen() {
                     verticalAlignment = Alignment.CenterVertically) {
                     if (editing) {
                         IconButton(onClick = { save(keys.filter { it != city.key }) }) {
-                            Icon(Icons.Filled.RemoveCircle, L("world.remove"), tint = Color(0xFFD32F2F))
+                            Icon(Icons.Filled.RemoveCircle, L("world.remove"), tint = Theme.c.err)
                         }
                     }
                     Column(Modifier.weight(1f)) {

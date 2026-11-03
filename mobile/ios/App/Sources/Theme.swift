@@ -20,6 +20,11 @@ enum Theme {
     static var accent2: Color { AccentPalette.current.secondColor }
     /// Saat rakamları ve akrep: yazı rengi, temanın ana rengine doğru çekilmiş
     static var ink: Color { tinted(0x1B1F27, 0xEEF0F4, light: 0.45, dark: 0.30) }
+    /// Hata ve başarı renkleri: sitedeki --err/--ok token'ları (2. analiz #100; iki temada ≥4,5:1)
+    static let err = dynamic(light: 0xA31D1D, dark: 0xFF9D9D)
+    static let errBg = dynamic(light: 0xFBE7E7, dark: 0x3A1A1A)
+    static let ok = dynamic(light: 0x176B3A, dark: 0x7FD9A1)
+    static let okBg = dynamic(light: 0xE2F3E8, dark: 0x16301F)
 
     fileprivate static func dynamic(light: UInt32, dark: UInt32) -> Color {
         Color(UIColor { $0.userInterfaceStyle == .dark ? UIColor(rgb: dark) : UIColor(rgb: light) })

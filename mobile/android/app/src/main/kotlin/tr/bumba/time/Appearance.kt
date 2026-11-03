@@ -274,7 +274,7 @@ fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
                     FullscreenPhoto.remove(context)
                     if (bg == FullscreenBackground.PHOTO && FsLook.slides == 0) Prefs.saveFsBg(FullscreenBackground.PLAIN.id)
                 }) {
-                    Text(L("look.photo.remove"), color = Color(0xFFD32F2F))
+                    Text(L("look.photo.remove"), color = Theme.c.err)
                 }
             }
             Text(L("look.photo.note") + " " + L("look.bg.note") + " " + L("look.bg.weatherNote"), color = Theme.c.muted, fontSize = 12.sp)
@@ -333,7 +333,7 @@ fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
                 TextButton(onClick = {
                     FsLook.clearSlides(context)
                     if (FullscreenBackground.current == FullscreenBackground.PHOTO && Prefs.fsPhoto == 0L) Prefs.saveFsBg(FullscreenBackground.PLAIN.id)
-                }) { Text(L("look.slideClear"), color = Color(0xFFD32F2F)) }
+                }) { Text(L("look.slideClear"), color = Theme.c.err) }
             }
             Text(L("look.slideNote"), color = Theme.c.muted, fontSize = 12.sp)
         }

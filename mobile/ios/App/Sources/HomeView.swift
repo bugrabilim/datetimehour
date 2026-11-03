@@ -230,6 +230,19 @@ struct FullscreenClock: View {
     /// Gösterilen sayfa: saat modeli ya da iki yandaki araç sayfası (2. analiz #26: ilk saatten geriye pomodoro,
     /// son saatten sonra kronometre). Saat modeline geçilince seçim kaydedilir.
     @State private var page = UserDefaults.standard.string(forKey: "clockModel") ?? ClockModel.classic.rawValue
+    /// Düğmeler dokununca belirir, 4 sn sonra kaybolur (sitedeki tam ekran gibi; 2. analiz #204)
+    @State private var controlsShown = true
+    @State private var hideTask: Task<Void, Never>?
+
+    private func pokeControls() {
+        controlsShown = true
+        hideTask?.cancel()
+        hideTask = Task { @MainActor in
+            try? await Task.sleep(for: .seconds(4))
+            guard !Task.isCancelled else { return }
+            withAnimation(.easeOut(duration: 0.4)) { controlsShown = false }
+        }
+    }
 
     var body: some View {
         // Arka plan: fotoğraf (koyulaştırılmış; slayt varsa sırayla) ya da hareketli; ikisinde de yazılar açık renk
@@ -311,6 +324,9 @@ struct FullscreenClock: View {
                             }
                         }
                         .foregroundStyle(Theme.muted)
+                        .opacity(controlsShown ? 1 : 0)
+                        .allowsHitTesting(controlsShown)
+                        .accessibilityHidden(!controlsShown)
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
@@ -391,6 +407,10 @@ struct FullscreenClock: View {
             }
         }
         .onTapGesture(count: 2) { dismiss() }
+        .simultaneousGesture(TapGesture().onEnded { pokeControls() })
+        .simultaneousGesture(DragGesture(minimumDistance: 12).onEnded { _ in pokeControls() })
+        .onAppear { pokeControls() }
+        .onDisappear { hideTask?.cancel() }
         .onChange(of: vsc) { _, v in
             if v == .regular, closeOnPortrait { dismiss() }
         }

@@ -7,6 +7,12 @@ import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -31,7 +37,9 @@ import androidx.compose.material.icons.filled.Timer
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material.icons.outlined.CalendarMonth
 import androidx.compose.material.icons.outlined.Eco
-import androidx.compose.material.icons.outlined.NightsStay
+import androidx.compose.material.icons.outlined.DarkMode
+import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.outlined.Timer
@@ -111,9 +119,10 @@ enum class Tab(val key: String, val on: ImageVector, val off: ImageVector) {
     CLOCK("tab.clock", Icons.Filled.Schedule, Icons.Outlined.Schedule),
     WEATHER("tab.weather", Icons.Filled.WbSunny, Icons.Outlined.WbSunny),
     CALENDAR("tab.calendar", Icons.Filled.CalendarMonth, Icons.Outlined.CalendarMonth),
-    WORLD("tab.world", Icons.Filled.Public, Icons.Outlined.Public),
+    // Çizgi hâlleri dolu göründüğü için seçili değilken farklı çizgi simgeler (2. analiz #95)
+    WORLD("tab.world", Icons.Filled.Public, Icons.Outlined.Language),
     SEASONS("tab.seasons", Icons.Filled.Eco, Icons.Outlined.Eco),
-    PRAYER("tab.prayer", Icons.Filled.NightsStay, Icons.Outlined.NightsStay),
+    PRAYER("tab.prayer", Icons.Filled.DarkMode, Icons.Outlined.DarkMode),
     TOOLS("tab.tools", Icons.Filled.Timer, Icons.Outlined.Timer),
 }
 
@@ -213,8 +222,13 @@ fun Root(start: Int) {
         }
         return
     }
+    // Alt barda yalnız açık özellikler; kapalı bir özellik açılırsa bar değişmez, sayfa geri düğmesiyle açılır (2. analiz #203)
+    val tabs = Features.barTabs()
+    val offBar = tab !in tabs
+    var backTab by remember { mutableStateOf(Tab.CLOCK) }
+    LaunchedEffect(tab) { if (!offBar) backTab = tab }
     BackHandler(enabled = tab == Tab.TOOLS && toolsRoute != null) { Nav.toolsRoute = null }
-    BackHandler(enabled = tab != Tab.CLOCK && !(tab == Tab.TOOLS && toolsRoute != null)) { Nav.tab = Tab.CLOCK }
+    BackHandler(enabled = tab != Tab.CLOCK && !(tab == Tab.TOOLS && toolsRoute != null)) { Nav.tab = if (offBar) backTab else Tab.CLOCK }
 
     if (landscape) HideSystemBars()
     // Hava neyse ekran öyle (2. analiz #193): seçilirse saat ekranının zemini seçili yerin havası, yazılar koyu temanın renkleri
@@ -223,7 +237,9 @@ fun Root(start: Int) {
     if (clockWx) AnimatedBackground(FullscreenBackground.WEATHER, Modifier.fillMaxSize())
     CompositionLocalProvider(LocalColors provides if (clockWx) AccentPalette.find(Prefs.accent).colors(true) else Theme.c) {
     Column(Modifier.fillMaxSize().then(if (clockWx) Modifier else Modifier.appBackdrop(Theme.c))) {
-        Box(Modifier.weight(1f).fillMaxWidth().statusBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
+        Column(Modifier.weight(1f).fillMaxWidth().statusBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
+        if (offBar && !(tab == Tab.TOOLS && toolsRoute != null)) BackRow(backTab) { Nav.tab = backTab }
+        Box(Modifier.weight(1f).fillMaxWidth()) {
             when (tab) {
                 Tab.CLOCK -> ClockScreen(
                     onFullscreen = { fullscreen = true; BadgeStore.hit(Badge.TAM_EKRAN) }, onOpen = { Nav.tab = it },
@@ -237,8 +253,8 @@ fun Root(start: Int) {
                 Tab.TOOLS -> ToolsScreen(toolsRoute) { Nav.toolsRoute = it }
             }
         }
-        // Alt barda yalnız açık özellikler (ve geçici olarak şu anki sekme); yalnız Saat kalırsa bar yok
-        val tabs = Features.barTabs(tab)
+        }
+        // Yalnız Saat açıksa bar yok
         if (!landscape && tabs.size > 1) {
             TabBar(tabs, tab) { t ->
                 if (t == tab && t == Tab.TOOLS) Nav.toolsRoute = null
@@ -263,13 +279,33 @@ private fun TabBar(tabs: List<Tab>, selected: Tab, onSelect: (Tab) -> Unit) {
                     Modifier.weight(1f).clickable { onSelect(t) }.padding(vertical = 2.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    Icon(if (on) t.on else t.off, contentDescription = L(t.key), tint = color, modifier = Modifier.size(24.dp))
+                    // Seçili sekmede simgenin arkasında ana rengin açık tonunda hap (sitedeki .nav gibi; 2. analiz #95)
+                    Box(
+                        Modifier.size(width = 56.dp, height = 30.dp).clip(RoundedCornerShape(15.dp))
+                            .background(if (on) Theme.c.accentSoft else Color.Transparent),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(if (on) t.on else t.off, contentDescription = L(t.key), tint = color, modifier = Modifier.size(24.dp))
+                    }
                     Text(
-                        L(t.key), color = color, fontSize = 10.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                        L(t.key), color = color, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
                         fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal,
                     )
                 }
             }
         }
+    }
+}
+
+/** Alt barda olmayan bir sayfa açıldığında üstte geri düğmesi: döneceği sekmenin adıyla (2. analiz #203) */
+@Composable
+private fun BackRow(to: Tab, onBack: () -> Unit) {
+    Row(
+        Modifier.fillMaxWidth().clickable(onClickLabel = L(to.key)) { onBack() }.padding(horizontal = 8.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = Theme.c.accent, modifier = Modifier.size(22.dp))
+        Spacer(Modifier.width(6.dp))
+        Text(L(to.key), color = Theme.c.accent, fontSize = 16.sp)
     }
 }

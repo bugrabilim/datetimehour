@@ -214,7 +214,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                     else Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
                     runCatching { context.startActivity(intent) }
                 }.padding(4.dp),
-                color = Color(0xFFD32F2F), fontSize = 14.sp,
+                color = Theme.c.err, fontSize = 14.sp,
             )
         }
         Text(L("alarm.realNote"), Modifier.padding(horizontal = 4.dp), color = Theme.c.muted, fontSize = 13.sp)
@@ -446,7 +446,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     isError = linkNorm == null,
                     keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Uri))
                 Text(L(if (linkNorm == null) "alarm.link.invalid" else "alarm.link.note"),
-                    color = if (linkNorm == null) Color(0xFFD32F2F) else Theme.c.muted, fontSize = 12.sp)
+                    color = if (linkNorm == null) Theme.c.err else Theme.c.muted, fontSize = 12.sp)
                 if (!linkNorm.isNullOrEmpty()) TextButton(onClick = { MusicLink.open(context, linkNorm) }) {
                     Text("▶ " + L("alarm.link.try"), color = Theme.c.accent)
                 }
@@ -542,7 +542,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     }
                     Switch(skipHolidays, { skipHolidays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
-                if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Color(0xFFD32F2F)) }
+                if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Theme.c.err) }
             }
         },
         confirmButton = {

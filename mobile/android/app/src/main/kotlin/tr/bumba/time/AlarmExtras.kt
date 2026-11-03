@@ -253,7 +253,7 @@ fun SleepStatsCard() {
             }
             s.spread?.let { Text(T("sleepstats.spread", it), color = Theme.c.text, fontSize = 14.sp) }
             s.debt?.let { Text(if (it > 0) T("sleepstats.debt", Fmt.hm(it * 60)) else L("sleepstats.noDebt"), color = Theme.c.text, fontSize = 14.sp) }
-            TextButton(onClick = { SleepLog.clear(); log = emptyList() }) { Text(L("sleepstats.clear"), color = androidx.compose.ui.graphics.Color(0xFFD32F2F)) }
+            TextButton(onClick = { SleepLog.clear(); log = emptyList() }) { Text(L("sleepstats.clear"), color = Theme.c.err) }
         }
         Text(L("sleepstats.note"), color = Theme.c.muted, fontSize = 12.sp)
     }

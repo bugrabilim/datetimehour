@@ -257,7 +257,7 @@ struct WakeTaskView: View {
                 .multilineTextAlignment(.center)
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: 220)
-            if wrong { Text(L("wake.wrong")).foregroundStyle(.red).font(.subheadline) }
+            if wrong { Text(L("wake.wrong")).foregroundStyle(Theme.err).font(.subheadline) }
             RoundButton(title: L("wake.check"), prominent: true) { check() }
         }
     }
@@ -283,7 +283,7 @@ struct WakeTaskView: View {
             } else {
                 Text(L("wake.noCamera")).font(.subheadline).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
             }
-            if codeWrong { Text(L("wake.code.wrong")).foregroundStyle(.red).font(.subheadline) }
+            if codeWrong { Text(L("wake.code.wrong")).foregroundStyle(Theme.err).font(.subheadline) }
         }
     }
 
@@ -371,7 +371,7 @@ private struct MemoryTaskView: View {
             }
             .environment(\.layoutDirection, .leftToRight)
             Text(T("wake.progress", pos, seq.count)).font(.subheadline).foregroundStyle(Theme.muted)
-            if wrong { Text(L("wake.memory.wrong")).font(.subheadline).foregroundStyle(.red) }
+            if wrong { Text(L("wake.memory.wrong")).font(.subheadline).foregroundStyle(Theme.err) }
         }
         .task(id: round) {
             var rng = SystemRandomNumberGenerator()
@@ -467,7 +467,7 @@ private struct PhotoTaskView: View {
             } else {
                 Text(L("wake.noCamera")).font(.subheadline).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
             }
-            if wrong { Text(L("wake.photo.wrong")).font(.subheadline).foregroundStyle(.red).multilineTextAlignment(.center) }
+            if wrong { Text(L("wake.photo.wrong")).font(.subheadline).foregroundStyle(Theme.err).multilineTextAlignment(.center) }
         }
         .fullScreenCover(isPresented: $shooting) {
             CameraShot { img in
