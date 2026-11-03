@@ -67,7 +67,25 @@
       "red": "赤",
       "purple": "紫"
     },
-    "lookNote": "選択はこのブラウザにだけ保存されます。"
+    "lookNote": "選択はこのブラウザにだけ保存されます。",
+    "lookDateFmt": "日付の形式",
+    "lookDateFmts": {
+      "long": "長い形式",
+      "numeric": "数字",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "時刻の区切り",
+    "lookSeps": {
+      "colon": "コロン (14:30)",
+      "dot": "ドット (14.30)"
+    },
+    "lookWeekStart": "週の始まり",
+    "lookWeekStarts": {
+      "mon": "月曜日",
+      "sun": "日曜日",
+      "sat": "土曜日"
+    },
+    "lookMs": "ミリ秒"
   },
   "client": {
     "format24": "24時間",
@@ -141,7 +159,13 @@
     "formatLabel": "時刻の表示形式",
     "fsWeatherNeed": "天気を表示する場所を選んでください：",
     "fsWeatherLink": "場所を選ぶ",
-    "fsWeatherFail": "天気を取得できませんでした。"
+    "fsWeatherFail": "天気を取得できませんでした。",
+    "syncShortOk": "時計は正確です · ±{ms} ミリ秒",
+    "syncShortAhead": "時計が {s} 秒進んでいます",
+    "syncShortBehind": "時計が {s} 秒遅れています",
+    "weekN": "第{n}週",
+    "pillDst": "夏時間あり",
+    "pillNoDst": "夏時間なし"
   },
   "home": {
     "title": "今何時？ライブ時計と今日の日付 | Saat Tarih",
@@ -252,7 +276,12 @@
     "sunrise": "日の出",
     "sunset": "日の入り",
     "daylen": "昼の長さ",
-    "sunNote": "日の出・日の入りは今日の日付と都市の位置から計算したおおよその時刻です（数分ずれることがあります）。"
+    "sunNote": "日の出・日の入りは今日の日付と都市の位置から計算したおおよその時刻です（数分ずれることがあります）。",
+    "solarNoon": "南中時刻",
+    "solarAhead": "ここの時計は太陽時より {d} 進んでいます。",
+    "solarBehind": "ここの時計は太陽時より {d} 遅れています。",
+    "solarSame": "ここの時計は太陽時とほぼ同じです。",
+    "mapLink": "地図で見る (OpenStreetMap)"
   },
   "privacy": {
     "title": "プライバシーと Cookie ポリシー | Saat Tarih",
@@ -408,6 +437,11 @@
             [
               "sth-hiit",
               "インターバルタイマーの時間、ラウンド数、音声案内の設定を覚えます。",
+              "削除するまで"
+            ],
+            [
+              "sth-alarm-x",
+              "アラームの音量、最近使ったアラーム時刻、アラーム履歴（鳴った時刻、アラーム名、止め方。最大200件）をこの端末に保存します。",
               "削除するまで"
             ],
             [
@@ -570,7 +604,9 @@
     "info": "この時計の時刻の取得元について",
     "infoTitle": "この時刻はどこから取得していますか？",
     "infoClose": "閉じる",
-    "infoSeconds": "時計をタップすると秒の表示・非表示を切り替えられます。秒はデジタル時計では最初から表示、アナログ時計では非表示です。"
+    "infoSeconds": "時計をタップすると秒の表示・非表示を切り替えられます。秒はデジタル時計では最初から表示、アナログ時計では非表示です。",
+    "zoomIn": "時計を大きく",
+    "zoomOut": "時計を小さく"
   },
   "calendar": {
     "title": "{year}年カレンダー：トルコの祝日とラマダン | Saat Tarih",
@@ -1046,7 +1082,24 @@
       "ytNote": "アラームが鳴るとこの動画が再生されます。1分以内に止めないと、アラーム音も鳴ります（ブラウザが動画を自動再生しない場合も同じです）。動画は YouTube から読み込むため、外部サービスの許可が必要です。",
       "ytInvalid": "YouTube のリンクではありません。",
       "ytBlocked": "YouTube の音楽を使うには外部サービスを許可してください。許可しない場合は、標準のアラーム音が鳴ります。",
-      "spotifyNote": "Spotify はブラウザでは自動で再生されません。Android アプリでは Spotify をアラームの音楽に使えます。"
+      "spotifyNote": "Spotify はブラウザでは自動で再生されません。Android アプリでは Spotify をアラームの音楽に使えます。",
+      "snoozeLabel": "スヌーズ",
+      "snoozeMin": "{n} 分",
+      "volume": "音量",
+      "tryNow": "今すぐアラームを試す",
+      "tryTitle": "テストアラーム",
+      "remaining": "残り",
+      "recent": "最近使った時刻",
+      "history": "アラーム履歴",
+      "historyEmpty": "まだ鳴ったアラームはありません。",
+      "histStop": "停止",
+      "histSnooze": "スヌーズ",
+      "histMissed": "自動で停止",
+      "historyCsv": "履歴を CSV でダウンロード",
+      "historyClear": "履歴を消去",
+      "colTime": "時刻",
+      "colAlarm": "アラーム",
+      "colAction": "結果"
     },
     "pomodoro": {
       "title": "ポモドーロタイマー：25分作業、5分休憩 | Saat Tarih",

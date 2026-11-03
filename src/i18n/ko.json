@@ -67,7 +67,25 @@
       "red": "빨강",
       "purple": "보라"
     },
-    "lookNote": "선택은 이 브라우저에만 저장됩니다."
+    "lookNote": "선택은 이 브라우저에만 저장됩니다.",
+    "lookDateFmt": "날짜 형식",
+    "lookDateFmts": {
+      "long": "긴 형식",
+      "numeric": "숫자",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "시간 구분 기호",
+    "lookSeps": {
+      "colon": "콜론 (14:30)",
+      "dot": "점 (14.30)"
+    },
+    "lookWeekStart": "한 주의 시작",
+    "lookWeekStarts": {
+      "mon": "월요일",
+      "sun": "일요일",
+      "sat": "토요일"
+    },
+    "lookMs": "밀리초"
   },
   "client": {
     "format24": "24시간",
@@ -167,7 +185,13 @@
     "formatLabel": "시간 형식",
     "fsWeatherNeed": "날씨를 볼 위치를 선택하세요:",
     "fsWeatherLink": "위치 선택",
-    "fsWeatherFail": "날씨를 가져오지 못했습니다."
+    "fsWeatherFail": "날씨를 가져오지 못했습니다.",
+    "syncShortOk": "시계가 정확합니다 · ±{ms}ms",
+    "syncShortAhead": "시계가 {s}초 빠릅니다",
+    "syncShortBehind": "시계가 {s}초 느립니다",
+    "weekN": "{n}주차",
+    "pillDst": "서머타임 있음",
+    "pillNoDst": "서머타임 없음"
   },
   "home": {
     "title": "지금 몇 시? 실시간 시계와 오늘 날짜 | Saat Tarih",
@@ -278,7 +302,12 @@
     "sunrise": "일출",
     "sunset": "일몰",
     "daylen": "낮의 길이",
-    "sunNote": "일출과 일몰은 오늘 날짜와 도시의 위치로 계산한 대략적인 시간입니다(몇 분 차이가 날 수 있습니다)."
+    "sunNote": "일출과 일몰은 오늘 날짜와 도시의 위치로 계산한 대략적인 시간입니다(몇 분 차이가 날 수 있습니다).",
+    "solarNoon": "태양 남중",
+    "solarAhead": "이곳 시계는 태양시보다 {d} 빠릅니다.",
+    "solarBehind": "이곳 시계는 태양시보다 {d} 느립니다.",
+    "solarSame": "이곳 시계는 태양시와 거의 같습니다.",
+    "mapLink": "지도에서 보기 (OpenStreetMap)"
   },
   "privacy": {
     "title": "개인정보 및 쿠키 정책 | Saat Tarih",
@@ -434,6 +463,11 @@
             [
               "sth-hiit",
               "인터벌 타이머의 구간, 라운드 수, 음성 안내 설정을 기억합니다.",
+              "삭제할 때까지"
+            ],
+            [
+              "sth-alarm-x",
+              "알람 음량, 최근 사용한 알람 시간, 알람 기록(울린 시각, 알람 이름, 끈 방법; 최대 200건)을 이 기기에 저장합니다.",
               "삭제할 때까지"
             ],
             [
@@ -596,7 +630,9 @@
     "info": "이 시계의 시간 출처",
     "infoTitle": "이 시간은 어디에서 오나요?",
     "infoClose": "닫기",
-    "infoSeconds": "시계를 누르면 초를 보이거나 숨길 수 있습니다. 디지털 시계는 처음에 초가 보이고 아날로그 시계는 숨겨져 있습니다."
+    "infoSeconds": "시계를 누르면 초를 보이거나 숨길 수 있습니다. 디지털 시계는 처음에 초가 보이고 아날로그 시계는 숨겨져 있습니다.",
+    "zoomIn": "시계 크게",
+    "zoomOut": "시계 작게"
   },
   "calendar": {
     "title": "{year}년 달력: 튀르키예 공휴일과 라마단 | Saat Tarih",
@@ -1072,7 +1108,24 @@
       "ytNote": "알람이 울리면 이 동영상이 재생됩니다. 1분 안에 끄지 않으면 알람 소리도 함께 울립니다(브라우저가 동영상을 자동으로 재생하지 않을 때도). 동영상은 YouTube에서 불러오므로 외부 서비스를 허용해야 합니다.",
       "ytInvalid": "YouTube 링크가 아닙니다.",
       "ytBlocked": "YouTube 음악을 쓰려면 외부 서비스를 허용하세요. 허용하지 않으면 알람은 자체 소리로 울립니다.",
-      "spotifyNote": "Spotify는 브라우저에서 자동으로 재생되지 않습니다. Android 앱에서는 Spotify를 알람 음악으로 쓸 수 있습니다."
+      "spotifyNote": "Spotify는 브라우저에서 자동으로 재생되지 않습니다. Android 앱에서는 Spotify를 알람 음악으로 쓸 수 있습니다.",
+      "snoozeLabel": "다시 알림",
+      "snoozeMin": "{n}분",
+      "volume": "음량",
+      "tryNow": "지금 알람 시험",
+      "tryTitle": "시험 알람",
+      "remaining": "남음",
+      "recent": "최근 사용한 시간",
+      "history": "알람 기록",
+      "historyEmpty": "아직 울린 알람이 없습니다.",
+      "histStop": "끔",
+      "histSnooze": "다시 알림",
+      "histMissed": "자동으로 멈춤",
+      "historyCsv": "기록을 CSV로 다운로드",
+      "historyClear": "기록 지우기",
+      "colTime": "시간",
+      "colAlarm": "알람",
+      "colAction": "결과"
     },
     "pomodoro": {
       "title": "뽀모도로 타이머: 25분 집중, 5분 휴식 | Saat Tarih",

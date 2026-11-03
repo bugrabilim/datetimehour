@@ -67,7 +67,25 @@
       "red": "Pula",
       "purple": "Lila"
     },
-    "lookNote": "Sa browser na ito lang naka-save ang iyong pinili."
+    "lookNote": "Sa browser na ito lang naka-save ang iyong pinili.",
+    "lookDateFmt": "Format ng petsa",
+    "lookDateFmts": {
+      "long": "Mahaba",
+      "numeric": "Numero",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Panghiwalay ng oras",
+    "lookSeps": {
+      "colon": "Tutuldok (14:30)",
+      "dot": "Tuldok (14.30)"
+    },
+    "lookWeekStart": "Unang araw ng linggo",
+    "lookWeekStarts": {
+      "mon": "Lunes",
+      "sun": "Linggo",
+      "sat": "Sabado"
+    },
+    "lookMs": "Millisecond"
   },
   "client": {
     "format24": "24 oras",
@@ -207,7 +225,13 @@
     "formatLabel": "Format ng oras",
     "fsWeatherNeed": "Pumili ng lokasyon para sa lagay ng panahon:",
     "fsWeatherLink": "pumili ng lokasyon",
-    "fsWeatherFail": "Hindi makuha ang lagay ng panahon."
+    "fsWeatherFail": "Hindi makuha ang lagay ng panahon.",
+    "syncShortOk": "Tama ang orasan mo · ±{ms} ms",
+    "syncShortAhead": "Nauuna nang {s} s ang orasan mo",
+    "syncShortBehind": "Nahuhuli nang {s} s ang orasan mo",
+    "weekN": "Linggo {n}",
+    "pillDst": "May daylight saving time",
+    "pillNoDst": "Walang daylight saving time"
   },
   "home": {
     "title": "Anong Oras Na? Live na Orasan at Petsa Ngayon | Saat Tarih",
@@ -318,7 +342,12 @@
     "sunrise": "Pagsikat ng araw",
     "sunset": "Paglubog ng araw",
     "daylen": "Haba ng araw",
-    "sunNote": "Tantiya lang ang pagsikat at paglubog ng araw, batay sa petsa ngayon at lokasyon ng lungsod (puwedeng magkamali nang ilang minuto)."
+    "sunNote": "Tantiya lang ang pagsikat at paglubog ng araw, batay sa petsa ngayon at lokasyon ng lungsod (puwedeng magkamali nang ilang minuto).",
+    "solarNoon": "Tanghaling-araw ng araw",
+    "solarAhead": "Dito, nauuna nang {d} ang orasan sa oras ng araw.",
+    "solarBehind": "Dito, nahuhuli nang {d} ang orasan sa oras ng araw.",
+    "solarSame": "Dito, halos kapareho ng oras ng araw ang orasan.",
+    "mapLink": "Tingnan sa mapa (OpenStreetMap)"
   },
   "privacy": {
     "title": "Patakaran sa Privacy at Cookies | Saat Tarih",
@@ -474,6 +503,11 @@
             [
               "sth-hiit",
               "Tinatandaan ang mga yugto, bilang ng round at setting ng pasalitang hudyat ng interval timer.",
+              "Hanggang burahin mo"
+            ],
+            [
+              "sth-alarm-x",
+              "Itinatago sa device na ito ang lakas ng tunog ng alarm, mga kamakailang oras ng alarm at ang kasaysayan ng alarm (kailan tumunog, pangalan ng alarm, paano pinatay; hanggang 200 tala).",
               "Hanggang burahin mo"
             ],
             [
@@ -636,7 +670,9 @@
     "info": "Tungkol sa pinagmulan ng oras ng orasang ito",
     "infoTitle": "Saan galing ang oras na ito?",
     "infoClose": "Isara",
-    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital na orasan at nakasara sa analog."
+    "infoSeconds": "I-tap ang orasan para ipakita o itago ang segundo. Nakabukas ang segundo sa simula sa digital na orasan at nakasara sa analog.",
+    "zoomIn": "Palakihin ang orasan",
+    "zoomOut": "Paliitin ang orasan"
   },
   "calendar": {
     "title": "Kalendaryo {year}: Mga Pista Opisyal sa Türkiye at Ramadan | Saat Tarih",
@@ -1112,7 +1148,24 @@
       "ytNote": "Kapag tumunog ang alarma, tutugtog ang video na ito; kung hindi mo ito papatayin sa loob ng 1 minuto, tutunog din ang alarma (pati kung hindi kusang patugtugin ng browser ang video). Galing sa YouTube ang video, kaya kailangang payagan ang mga panlabas na serbisyo.",
       "ytInvalid": "Hindi ito link sa YouTube.",
       "ytBlocked": "Payagan ang mga panlabas na serbisyo para sa musika sa YouTube; kung walang pahintulot, tutunog ang alarma sa sarili nitong tunog.",
-      "spotifyNote": "Hindi kusang tumutugtog ang Spotify sa browser; magagamit mo ang Spotify bilang musika ng alarma sa Android app."
+      "spotifyNote": "Hindi kusang tumutugtog ang Spotify sa browser; magagamit mo ang Spotify bilang musika ng alarma sa Android app.",
+      "snoozeLabel": "Snooze",
+      "snoozeMin": "{n} min",
+      "volume": "Lakas ng tunog",
+      "tryNow": "Subukan ang alarm ngayon",
+      "tryTitle": "Pansubok na alarm",
+      "remaining": "natitira",
+      "recent": "Mga kamakailang oras",
+      "history": "Kasaysayan ng alarm",
+      "historyEmpty": "Wala pang tumunog na alarm.",
+      "histStop": "pinatay",
+      "histSnooze": "na-snooze",
+      "histMissed": "kusang tumigil",
+      "historyCsv": "I-download ang kasaysayan bilang CSV",
+      "historyClear": "Burahin ang kasaysayan",
+      "colTime": "Oras",
+      "colAlarm": "Alarm",
+      "colAction": "Resulta"
     },
     "pomodoro": {
       "title": "Pomodoro Timer: Trabaho 25 Minuto, Pahinga 5 | Saat Tarih",

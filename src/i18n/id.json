@@ -67,7 +67,25 @@
       "red": "Merah",
       "purple": "Ungu"
     },
-    "lookNote": "Pilihan Anda hanya disimpan di peramban ini."
+    "lookNote": "Pilihan Anda hanya disimpan di peramban ini.",
+    "lookDateFmt": "Format tanggal",
+    "lookDateFmts": {
+      "long": "Panjang",
+      "numeric": "Angka",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Pemisah waktu",
+    "lookSeps": {
+      "colon": "Titik dua (14:30)",
+      "dot": "Titik (14.30)"
+    },
+    "lookWeekStart": "Hari pertama minggu",
+    "lookWeekStarts": {
+      "mon": "Senin",
+      "sun": "Minggu",
+      "sat": "Sabtu"
+    },
+    "lookMs": "Milidetik"
   },
   "client": {
     "format24": "24 jam",
@@ -141,7 +159,13 @@
     "formatLabel": "Format waktu",
     "fsWeatherNeed": "Pilih lokasi untuk cuaca:",
     "fsWeatherLink": "pilih lokasi",
-    "fsWeatherFail": "Cuaca tidak dapat diambil."
+    "fsWeatherFail": "Cuaca tidak dapat diambil.",
+    "syncShortOk": "Jam Anda tepat · ±{ms} md",
+    "syncShortAhead": "Jam Anda lebih cepat {s} dtk",
+    "syncShortBehind": "Jam Anda lebih lambat {s} dtk",
+    "weekN": "Minggu ke-{n}",
+    "pillDst": "Ada waktu musim panas",
+    "pillNoDst": "Tanpa waktu musim panas"
   },
   "home": {
     "title": "Jam Berapa Sekarang? Jam Langsung dan Tanggal Hari Ini | Saat Tarih",
@@ -252,7 +276,12 @@
     "sunrise": "Matahari terbit",
     "sunset": "Matahari terbenam",
     "daylen": "Panjang siang",
-    "sunNote": "Waktu matahari terbit dan terbenam bersifat perkiraan, dihitung dari tanggal hari ini dan lokasi kota (dapat meleset beberapa menit)."
+    "sunNote": "Waktu matahari terbit dan terbenam bersifat perkiraan, dihitung dari tanggal hari ini dan lokasi kota (dapat meleset beberapa menit).",
+    "solarNoon": "Tengah hari matahari",
+    "solarAhead": "Jam di sini {d} lebih cepat dari waktu matahari.",
+    "solarBehind": "Jam di sini {d} lebih lambat dari waktu matahari.",
+    "solarSame": "Jam di sini hampir sama dengan waktu matahari.",
+    "mapLink": "Lihat di peta (OpenStreetMap)"
   },
   "privacy": {
     "title": "Kebijakan Privasi dan Cookie | Saat Tarih",
@@ -408,6 +437,11 @@
             [
               "sth-hiit",
               "Mengingat periode pengatur waktu interval, jumlah putaran, dan pengaturan aba-aba suara.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
+              "sth-alarm-x",
+              "Menyimpan volume alarm, waktu alarm yang terakhir dipakai, dan riwayat alarm (waktu berbunyi, nama alarm, cara dimatikan; paling banyak 200 entri) di perangkat ini.",
               "Sampai Anda menghapusnya"
             ],
             [
@@ -570,7 +604,9 @@
     "info": "Tentang sumber waktu jam ini",
     "infoTitle": "Dari mana waktu ini berasal?",
     "infoClose": "Tutup",
-    "infoSeconds": "Ketuk jam untuk menampilkan atau menyembunyikan detik. Detik awalnya tampil pada jam digital dan tersembunyi pada jam analog."
+    "infoSeconds": "Ketuk jam untuk menampilkan atau menyembunyikan detik. Detik awalnya tampil pada jam digital dan tersembunyi pada jam analog.",
+    "zoomIn": "Perbesar jam",
+    "zoomOut": "Perkecil jam"
   },
   "calendar": {
     "title": "Kalender {year}: Hari Libur Resmi Turki dan Ramadan | Saat Tarih",
@@ -1046,7 +1082,24 @@
       "ytNote": "Saat alarm berbunyi, video ini diputar; jika tidak Anda matikan dalam 1 menit, suara alarm juga berbunyi (juga bila peramban tidak memutar video dengan sendirinya). Video dimuat dari YouTube, jadi layanan eksternal harus diizinkan.",
       "ytInvalid": "Ini bukan tautan YouTube.",
       "ytBlocked": "Izinkan layanan eksternal untuk musik YouTube; tanpa izin, alarm berbunyi dengan suaranya sendiri.",
-      "spotifyNote": "Spotify tidak diputar dengan sendirinya di peramban; Anda dapat memakai Spotify sebagai musik alarm di aplikasi Android."
+      "spotifyNote": "Spotify tidak diputar dengan sendirinya di peramban; Anda dapat memakai Spotify sebagai musik alarm di aplikasi Android.",
+      "snoozeLabel": "Tunda",
+      "snoozeMin": "{n} mnt",
+      "volume": "Volume",
+      "tryNow": "Coba alarm sekarang",
+      "tryTitle": "Alarm uji",
+      "remaining": "lagi",
+      "recent": "Waktu terakhir dipakai",
+      "history": "Riwayat alarm",
+      "historyEmpty": "Belum ada alarm yang berbunyi.",
+      "histStop": "dimatikan",
+      "histSnooze": "ditunda",
+      "histMissed": "berhenti sendiri",
+      "historyCsv": "Unduh riwayat sebagai CSV",
+      "historyClear": "Hapus riwayat",
+      "colTime": "Waktu",
+      "colAlarm": "Alarm",
+      "colAction": "Hasil"
     },
     "pomodoro": {
       "title": "Pengatur Waktu Pomodoro: Kerja 25 Menit, Istirahat 5 | Saat Tarih",

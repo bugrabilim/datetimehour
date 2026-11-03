@@ -82,7 +82,7 @@ for (const f of htmlFiles) {
   if (!err && !embed && (name === "/index.html" || new RegExp(`^/(${LG})/index\\.html$`).test(name))) check(/id="today-q"/.test(h) && /class="sr-only" aria-labelledby="today-q"/.test(h), `${name}: gizli "bugün ayın kaçı" bölümü eksik`);
   if (!err && !embed) {
     check(!/class="crumbs"/.test(h), `${name}: görünür ekmek kırıntısı bağlantısı olmamalı`);
-    check(/class="top-date" data-live="date"/.test(h) && /data-place-open/.test(h) && /class="settings-menu"/.test(h) && /id="place-dialog"/.test(h), `${name}: üst bar (tarih, konum, ayarlar) eksik`);
+    check(/class="top-date"><span data-live="date"/.test(h) && /data-place-open/.test(h) && /class="settings-menu"/.test(h) && /id="place-dialog"/.test(h), `${name}: üst bar (tarih, konum, ayarlar) eksik`);
     check(!/<p class="lead"[^>]*>/.test(h.replace(/<p class="lead sr-only"/g, "")), `${name}: başlık altı açıklama görünür durmamalı`);
   }
   if (/\/(takvim|calendar)\/\d{4}\/index\.html$/.test(name)) {
@@ -582,6 +582,20 @@ for (const l of LANGS) {
     const wh = fs.readFileSync(path.join(DIST, "hava-durumu/index.html"), "utf8");
     check(/data-wx-fx/.test(wh) && /weather-fx\.js/.test(wh), "hava sayfasında canlandırma canvas'ı ve betiği olmalı");
     check(/cloud_cover/.test(fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8")), "hava isteğinde bulut oranı olmalı");
+  }
+  // K-1 site (2. analiz #174–#181, #184, #190): ilk ekran doğruluk satırı, başlıkta saat, görünüm seçenekleri, büyütme, haplar, hafta no
+  {
+    const h = fs.readFileSync(path.join(DIST, "index.html"), "utf8");
+    check(/data-sync-short/.test(h) && /data-tz-pills/.test(h) && /data-title-clock=""/.test(h), "ana sayfa: kısa doğruluk satırı, saat dilimi hapları, başlıkta saat");
+    check(/data-stage-zoom="-1"/.test(h) && /data-stage-zoom="1"/.test(h), "ana sayfa: saati büyütme/küçültme düğmeleri");
+    check(/data-look="dateFmt"/.test(h) && /data-look="sep"/.test(h) && /data-look="weekStart"/.test(h) && /data-look-bool="ms"/.test(h), "ayarlar: tarih biçimi, ayırıcı, hafta başı, milisaniye");
+    check(/class="top-week" data-live="weeklabel"/.test(h), "üst bar: hafta numarası");
+    const ch = fs.readFileSync(path.join(DIST, "dunya-saatleri/new-york/index.html"), "utf8");
+    check(/data-title-clock="America\/New_York"/.test(ch) && /data-live="solarnoon"/.test(ch) && /data-live="solaroff"/.test(ch) && /openstreetmap\.org\/\?mlat=/.test(ch) && !/data-tz-pills/.test(ch), "şehir sayfası: başlıkta saat, Güneş öğlesi, harita bağlantısı");
+    const dh = fs.readFileSync(path.join(DIST, "saat-farki/index.html"), "utf8");
+    check((dh.match(/data-live="diffbar"/g) || []).length === fs.readdirSync(path.join(DIST, "saat-farki")).filter((f) => f !== "index.html").length && /data-live="diffshort"/.test(dh), "saat farkı merkezi: kartlarda saat, fark ve çubuk");
+    const ah = fs.readFileSync(path.join(DIST, "alarm/index.html"), "utf8");
+    check(/data-al-snooze/.test(ah) && /data-al-vol/.test(ah) && /data-al-try/.test(ah) && /data-al-ring/.test(ah) && /data-al-history/.test(ah) && /data-al-recent/.test(ah), "alarm: erteleme süresi, ses düzeyi, şimdi dene, halka, geçmiş, son saatler");
   }
   check(/S\.pct\(/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8")) && !/\+ "%"/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8").replace(/toFixed\(1\) \+ "%"/g, "")), "hava sayfasında yüzde dile göre biçimlenmeli");
 }

@@ -67,7 +67,25 @@
       "red": "红色",
       "purple": "紫色"
     },
-    "lookNote": "您的选择只保存在此浏览器中。"
+    "lookNote": "您的选择只保存在此浏览器中。",
+    "lookDateFmt": "日期格式",
+    "lookDateFmts": {
+      "long": "长格式",
+      "numeric": "数字",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "时间分隔符",
+    "lookSeps": {
+      "colon": "冒号 (14:30)",
+      "dot": "句点 (14.30)"
+    },
+    "lookWeekStart": "每周第一天",
+    "lookWeekStarts": {
+      "mon": "星期一",
+      "sun": "星期日",
+      "sat": "星期六"
+    },
+    "lookMs": "毫秒"
   },
   "client": {
     "format24": "24 小时制",
@@ -167,7 +185,13 @@
     "formatLabel": "时间格式",
     "fsWeatherNeed": "请选择要显示天气的位置：",
     "fsWeatherLink": "选择位置",
-    "fsWeatherFail": "无法获取天气。"
+    "fsWeatherFail": "无法获取天气。",
+    "syncShortOk": "您的时钟准确 · ±{ms} 毫秒",
+    "syncShortAhead": "您的时钟快 {s} 秒",
+    "syncShortBehind": "您的时钟慢 {s} 秒",
+    "weekN": "第{n}周",
+    "pillDst": "实行夏令时",
+    "pillNoDst": "不实行夏令时"
   },
   "home": {
     "title": "现在几点？实时时钟和今天的日期 | Saat Tarih",
@@ -278,7 +302,12 @@
     "sunrise": "日出",
     "sunset": "日落",
     "daylen": "白昼长度",
-    "sunNote": "日出和日落时间是根据今天的日期和城市位置计算的近似值（可能相差几分钟）。"
+    "sunNote": "日出和日落时间是根据今天的日期和城市位置计算的近似值（可能相差几分钟）。",
+    "solarNoon": "太阳正午",
+    "solarAhead": "这里的钟表比太阳时快 {d}。",
+    "solarBehind": "这里的钟表比太阳时慢 {d}。",
+    "solarSame": "这里的钟表与太阳时几乎一致。",
+    "mapLink": "在地图上查看 (OpenStreetMap)"
   },
   "privacy": {
     "title": "隐私与 Cookie 政策 | Saat Tarih",
@@ -434,6 +463,11 @@
             [
               "sth-hiit",
               "记住间歇计时器的时段、轮数和语音提示设置。",
+              "直到您删除"
+            ],
+            [
+              "sth-alarm-x",
+              "在本设备上保存闹钟音量、最近使用的闹钟时间和闹钟记录（响铃时间、闹钟名称、关闭方式；最多 200 条）。",
               "直到您删除"
             ],
             [
@@ -596,7 +630,9 @@
     "info": "关于此时钟的时间来源",
     "infoTitle": "这个时间从哪里来？",
     "infoClose": "关闭",
-    "infoSeconds": "点按时钟可显示或隐藏秒。数字时钟默认显示秒，指针时钟默认隐藏。"
+    "infoSeconds": "点按时钟可显示或隐藏秒。数字时钟默认显示秒，指针时钟默认隐藏。",
+    "zoomIn": "放大时钟",
+    "zoomOut": "缩小时钟"
   },
   "calendar": {
     "title": "{year}年日历：土耳其公共假日和斋月 | Saat Tarih",
@@ -1072,7 +1108,24 @@
       "ytNote": "闹钟响起时会播放此视频；如果您在 1 分钟内没有关闭，闹钟铃声也会响起（浏览器没有自动播放视频时也是如此）。视频从 YouTube 加载，因此需要允许外部服务。",
       "ytInvalid": "这不是 YouTube 链接。",
       "ytBlocked": "请允许外部服务以使用 YouTube 音乐；未获允许时，闹钟将使用自带铃声。",
-      "spotifyNote": "Spotify 在浏览器中不会自动播放；您可以在 Android 应用中把 Spotify 用作闹钟音乐。"
+      "spotifyNote": "Spotify 在浏览器中不会自动播放；您可以在 Android 应用中把 Spotify 用作闹钟音乐。",
+      "snoozeLabel": "贪睡",
+      "snoozeMin": "{n} 分钟",
+      "volume": "音量",
+      "tryNow": "立即试响闹钟",
+      "tryTitle": "测试闹钟",
+      "remaining": "剩余",
+      "recent": "最近使用的时间",
+      "history": "闹钟记录",
+      "historyEmpty": "还没有响过的闹钟。",
+      "histStop": "已关闭",
+      "histSnooze": "已贪睡",
+      "histMissed": "自动停止",
+      "historyCsv": "将记录下载为 CSV",
+      "historyClear": "清除记录",
+      "colTime": "时间",
+      "colAlarm": "闹钟",
+      "colAction": "结果"
     },
     "pomodoro": {
       "title": "番茄钟：工作 25 分钟，休息 5 分钟 | Saat Tarih",

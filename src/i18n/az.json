@@ -67,7 +67,25 @@
       "red": "Qırmızı",
       "purple": "Bənövşəyi"
     },
-    "lookNote": "Seçim yalnız bu brauzerdə saxlanılır."
+    "lookNote": "Seçim yalnız bu brauzerdə saxlanılır.",
+    "lookDateFmt": "Tarix formatı",
+    "lookDateFmts": {
+      "long": "Uzun",
+      "numeric": "Rəqəmli",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Saat ayırıcısı",
+    "lookSeps": {
+      "colon": "İki nöqtə (14:30)",
+      "dot": "Nöqtə (14.30)"
+    },
+    "lookWeekStart": "Həftənin ilk günü",
+    "lookWeekStarts": {
+      "mon": "Bazar ertəsi",
+      "sun": "Bazar",
+      "sat": "Şənbə"
+    },
+    "lookMs": "Millisaniyə"
   },
   "client": {
     "format24": "24 saat",
@@ -141,7 +159,13 @@
     "formatLabel": "Saat formatı",
     "fsWeatherNeed": "Hava üçün məkan seçin:",
     "fsWeatherLink": "məkan seçin",
-    "fsWeatherFail": "Hava məlumatı alına bilmədi."
+    "fsWeatherFail": "Hava məlumatı alına bilmədi.",
+    "syncShortOk": "Saatınız dəqiqdir · ±{ms} ms",
+    "syncShortAhead": "Saatınız {s} san qabaqdadır",
+    "syncShortBehind": "Saatınız {s} san geridədir",
+    "weekN": "Həftə {n}",
+    "pillDst": "Yay vaxtı var",
+    "pillNoDst": "Yay vaxtı yoxdur"
   },
   "home": {
     "title": "Saat neçədir? Canlı saat və bugünkü tarix | Saat Tarih",
@@ -252,7 +276,12 @@
     "sunrise": "Günəşin doğuşu",
     "sunset": "Günəşin batışı",
     "daylen": "Gündüzün uzunluğu",
-    "sunNote": "Günəşin doğuş və batış vaxtları təxminidir: bugünkü tarixə və şəhərin coğrafi mövqeyinə əsasən hesablanır (bir neçə dəqiqə fərq ola bilər)."
+    "sunNote": "Günəşin doğuş və batış vaxtları təxminidir: bugünkü tarixə və şəhərin coğrafi mövqeyinə əsasən hesablanır (bir neçə dəqiqə fərq ola bilər).",
+    "solarNoon": "Günorta",
+    "solarAhead": "Saat burada günəş vaxtından {d} qabaqdadır.",
+    "solarBehind": "Saat burada günəş vaxtından {d} geridədir.",
+    "solarSame": "Saat burada günəş vaxtı ilə demək olar eynidir.",
+    "mapLink": "Xəritədə bax (OpenStreetMap)"
   },
   "privacy": {
     "title": "Məxfilik və kuki siyasəti | Saat Tarih",
@@ -408,6 +437,11 @@
             [
               "sth-hiit",
               "İnterval taymerinin müddətlərini, raund sayını və səsli elan seçimini yadda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
+              "sth-alarm-x",
+              "Zəngin səs səviyyəsini, son istifadə olunan zəng saatlarını və zəng tarixçəsini (çalma vaxtı, zəngin adı, necə söndürüldüyü; ən çox 200 qeyd) bu cihazda saxlayır.",
               "Siz silənədək"
             ],
             [
@@ -570,7 +604,9 @@
     "info": "Vaxt mənbəyi haqqında məlumat",
     "infoTitle": "Bu vaxt haradan gəlir?",
     "infoClose": "Bağla",
-    "infoSeconds": "Saniyələri göstərmək və ya gizlətmək üçün saata toxunun. Saniyələr rəqəmsal saatlarda ilkin olaraq göstərilir, analoq saatlarda isə gizlidir."
+    "infoSeconds": "Saniyələri göstərmək və ya gizlətmək üçün saata toxunun. Saniyələr rəqəmsal saatlarda ilkin olaraq göstərilir, analoq saatlarda isə gizlidir.",
+    "zoomIn": "Saatı böyüt",
+    "zoomOut": "Saatı kiçilt"
   },
   "calendar": {
     "title": "{year} təqvimi: Türkiyənin rəsmi bayramları və Ramazan | Saat Tarih",
@@ -1046,7 +1082,24 @@
       "ytNote": "Zəng çalanda bu video oynayır; 1 dəqiqə ərzində söndürməsəniz, zəng səsi də çalır (brauzer videonu özü başlatmasa da). Video YouTube-dan yükləndiyi üçün xarici xidmətlərə icazə lazımdır.",
       "ytInvalid": "Bu YouTube keçidi deyil.",
       "ytBlocked": "YouTube musiqisi üçün xarici xidmətlərə icazə verin; icazə yoxdursa, zəng öz səsi ilə çalır.",
-      "spotifyNote": "Spotify brauzerdə özü başlamır; Spotify-ı zəng musiqisi kimi Android tətbiqində istifadə edə bilərsiniz."
+      "spotifyNote": "Spotify brauzerdə özü başlamır; Spotify-ı zəng musiqisi kimi Android tətbiqində istifadə edə bilərsiniz.",
+      "snoozeLabel": "Təxirə salma",
+      "snoozeMin": "{n} dəq",
+      "volume": "Səs səviyyəsi",
+      "tryNow": "Zəngi indi sına",
+      "tryTitle": "Sınaq zəngi",
+      "remaining": "qaldı",
+      "recent": "Son istifadə olunan saatlar",
+      "history": "Zəng tarixçəsi",
+      "historyEmpty": "Hələ çalan zəng yoxdur.",
+      "histStop": "söndürüldü",
+      "histSnooze": "təxirə salındı",
+      "histMissed": "özü dayandı",
+      "historyCsv": "Tarixçəni CSV kimi yüklə",
+      "historyClear": "Tarixçəni sil",
+      "colTime": "Vaxt",
+      "colAlarm": "Zəng",
+      "colAction": "Nəticə"
     },
     "pomodoro": {
       "title": "Pomodoro taymeri: 25 dəqiqə iş, 5 dəqiqə fasilə | Saat Tarih",

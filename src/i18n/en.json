@@ -67,7 +67,25 @@
       "red": "Red",
       "purple": "Purple"
     },
-    "lookNote": "Your choice is stored in this browser only."
+    "lookNote": "Your choice is stored in this browser only.",
+    "lookDateFmt": "Date format",
+    "lookDateFmts": {
+      "long": "Long",
+      "numeric": "Numeric",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Time separator",
+    "lookSeps": {
+      "colon": "Colon (14:30)",
+      "dot": "Dot (14.30)"
+    },
+    "lookWeekStart": "First day of week",
+    "lookWeekStarts": {
+      "mon": "Monday",
+      "sun": "Sunday",
+      "sat": "Saturday"
+    },
+    "lookMs": "Milliseconds"
   },
   "client": {
     "format24": "24-hour",
@@ -141,7 +159,13 @@
     "formatLabel": "Time format",
     "fsWeatherNeed": "Choose a location for the weather:",
     "fsWeatherLink": "choose location",
-    "fsWeatherFail": "Could not get the weather."
+    "fsWeatherFail": "Could not get the weather.",
+    "syncShortOk": "Your clock is exact · ±{ms} ms",
+    "syncShortAhead": "Your clock is {s} s ahead",
+    "syncShortBehind": "Your clock is {s} s behind",
+    "weekN": "Week {n}",
+    "pillDst": "Daylight saving time",
+    "pillNoDst": "No daylight saving time"
   },
   "home": {
     "title": "What Time Is It? Live Clock and Today's Date | Saat Tarih",
@@ -252,7 +276,12 @@
     "sunrise": "Sunrise",
     "sunset": "Sunset",
     "daylen": "Day length",
-    "sunNote": "Sunrise and sunset are approximate, calculated from today's date and the city's location (they may be off by a few minutes)."
+    "sunNote": "Sunrise and sunset are approximate, calculated from today's date and the city's location (they may be off by a few minutes).",
+    "solarNoon": "Solar noon",
+    "solarAhead": "Clocks here run {d} ahead of solar time.",
+    "solarBehind": "Clocks here run {d} behind solar time.",
+    "solarSame": "Clocks here are almost on solar time.",
+    "mapLink": "View on map (OpenStreetMap)"
   },
   "privacy": {
     "title": "Privacy and Cookie Policy | Saat Tarih",
@@ -408,6 +437,11 @@
             [
               "sth-hiit",
               "Remembers the interval timer's periods, number of rounds and spoken-cue setting.",
+              "Until you delete it"
+            ],
+            [
+              "sth-alarm-x",
+              "Keeps the alarm volume, recently used alarm times and the alarm history (when it rang, the alarm's name, how it was stopped; at most 200 entries) on this device.",
               "Until you delete it"
             ],
             [
@@ -570,7 +604,9 @@
     "info": "About this clock's time source",
     "infoTitle": "Where does this time come from?",
     "infoClose": "Close",
-    "infoSeconds": "Tap the clock to show or hide the seconds. Seconds start on for digital clocks and off for analog clocks."
+    "infoSeconds": "Tap the clock to show or hide the seconds. Seconds start on for digital clocks and off for analog clocks.",
+    "zoomIn": "Larger clock",
+    "zoomOut": "Smaller clock"
   },
   "calendar": {
     "title": "{year} Calendar: Turkish Public Holidays and Ramadan | Saat Tarih",
@@ -1046,7 +1082,24 @@
       "ytNote": "When the alarm rings this video plays; if you don't turn it off within 1 minute, the alarm sound plays too (also if the browser doesn't start the video by itself). The video loads from YouTube, so external services must be allowed.",
       "ytInvalid": "This is not a YouTube link.",
       "ytBlocked": "Allow external services for YouTube music; without permission the alarm rings with its own sound.",
-      "spotifyNote": "Spotify doesn't start by itself in the browser; you can use Spotify as alarm music in the Android app."
+      "spotifyNote": "Spotify doesn't start by itself in the browser; you can use Spotify as alarm music in the Android app.",
+      "snoozeLabel": "Snooze",
+      "snoozeMin": "{n} min",
+      "volume": "Volume",
+      "tryNow": "Try the alarm now",
+      "tryTitle": "Test alarm",
+      "remaining": "left",
+      "recent": "Recently used times",
+      "history": "Alarm history",
+      "historyEmpty": "No alarms have rung yet.",
+      "histStop": "stopped",
+      "histSnooze": "snoozed",
+      "histMissed": "stopped by itself",
+      "historyCsv": "Download history as CSV",
+      "historyClear": "Clear history",
+      "colTime": "Time",
+      "colAlarm": "Alarm",
+      "colAction": "Result"
     },
     "pomodoro": {
       "title": "Pomodoro Timer: Work 25 Minutes, Break 5 | Saat Tarih",

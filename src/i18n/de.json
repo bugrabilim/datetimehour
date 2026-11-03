@@ -67,7 +67,25 @@
       "red": "Rot",
       "purple": "Lila"
     },
-    "lookNote": "Ihre Auswahl wird nur in diesem Browser gespeichert."
+    "lookNote": "Ihre Auswahl wird nur in diesem Browser gespeichert.",
+    "lookDateFmt": "Datumsformat",
+    "lookDateFmts": {
+      "long": "Lang",
+      "numeric": "Numerisch",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Zeittrenner",
+    "lookSeps": {
+      "colon": "Doppelpunkt (14:30)",
+      "dot": "Punkt (14.30)"
+    },
+    "lookWeekStart": "Erster Wochentag",
+    "lookWeekStarts": {
+      "mon": "Montag",
+      "sun": "Sonntag",
+      "sat": "Samstag"
+    },
+    "lookMs": "Millisekunden"
   },
   "client": {
     "format24": "24 Stunden",
@@ -168,7 +186,13 @@
     "formatLabel": "Zeitformat",
     "fsWeatherNeed": "Wählen Sie einen Standort für das Wetter:",
     "fsWeatherLink": "Standort wählen",
-    "fsWeatherFail": "Das Wetter konnte nicht abgerufen werden."
+    "fsWeatherFail": "Das Wetter konnte nicht abgerufen werden.",
+    "syncShortOk": "Ihre Uhr geht genau · ±{ms} ms",
+    "syncShortAhead": "Ihre Uhr geht {s} s vor",
+    "syncShortBehind": "Ihre Uhr geht {s} s nach",
+    "weekN": "KW {n}",
+    "pillDst": "Sommerzeit",
+    "pillNoDst": "Keine Sommerzeit"
   },
   "home": {
     "title": "Wie spät ist es? Live-Uhr und heutiges Datum | Saat Tarih",
@@ -279,7 +303,12 @@
     "sunrise": "Sonnenaufgang",
     "sunset": "Sonnenuntergang",
     "daylen": "Tageslänge",
-    "sunNote": "Sonnenauf- und -untergang sind Näherungswerte, berechnet aus dem heutigen Datum und der Lage der Stadt (sie können um einige Minuten abweichen)."
+    "sunNote": "Sonnenauf- und -untergang sind Näherungswerte, berechnet aus dem heutigen Datum und der Lage der Stadt (sie können um einige Minuten abweichen).",
+    "solarNoon": "Sonnenhöchststand",
+    "solarAhead": "Die Uhr geht hier {d} vor der Sonnenzeit.",
+    "solarBehind": "Die Uhr geht hier {d} hinter der Sonnenzeit.",
+    "solarSame": "Die Uhr entspricht hier fast der Sonnenzeit.",
+    "mapLink": "Auf der Karte ansehen (OpenStreetMap)"
   },
   "privacy": {
     "title": "Datenschutzerklärung und Cookie-Richtlinie | Saat Tarih",
@@ -435,6 +464,11 @@
             [
               "sth-hiit",
               "Speichert die Zeiten, die Rundenzahl und die Ansage-Einstellung des Intervall-Timers.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
+              "sth-alarm-x",
+              "Speichert Weckerlautstärke, zuletzt verwendete Weckzeiten und den Weckerverlauf (Zeitpunkt, Name des Weckers, wie er beendet wurde; höchstens 200 Einträge) auf diesem Gerät.",
               "Bis zur Löschung durch Sie"
             ],
             [
@@ -597,7 +631,9 @@
     "info": "Info zur Zeitquelle",
     "infoTitle": "Woher kommt diese Uhrzeit?",
     "infoClose": "Schließen",
-    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden. Bei digitalen Uhren sind die Sekunden zunächst an, bei analogen aus."
+    "infoSeconds": "Tippen Sie auf die Uhr, um die Sekunden ein- oder auszublenden. Bei digitalen Uhren sind die Sekunden zunächst an, bei analogen aus.",
+    "zoomIn": "Uhr vergrößern",
+    "zoomOut": "Uhr verkleinern"
   },
   "calendar": {
     "title": "Kalender {year}: Feiertage in der Türkei und Ramadan | Saat Tarih",
@@ -1073,7 +1109,24 @@
       "ytNote": "Beim Klingeln läuft dieses Video; schalten Sie den Wecker nicht innerhalb von 1 Minute aus, ertönt zusätzlich der Weckton (auch wenn der Browser das Video nicht von selbst startet). Das Video wird von YouTube geladen, daher müssen externe Dienste erlaubt sein.",
       "ytInvalid": "Das ist kein YouTube-Link.",
       "ytBlocked": "Erlauben Sie externe Dienste für YouTube-Musik; ohne Zustimmung klingelt der Wecker mit seinem eigenen Ton.",
-      "spotifyNote": "Spotify startet im Browser nicht von selbst; in der Android-App können Sie Spotify als Weckermusik verwenden."
+      "spotifyNote": "Spotify startet im Browser nicht von selbst; in der Android-App können Sie Spotify als Weckermusik verwenden.",
+      "snoozeLabel": "Schlummern",
+      "snoozeMin": "{n} Min.",
+      "volume": "Lautstärke",
+      "tryNow": "Wecker jetzt testen",
+      "tryTitle": "Testwecker",
+      "remaining": "verbleibend",
+      "recent": "Zuletzt verwendet",
+      "history": "Weckerverlauf",
+      "historyEmpty": "Noch kein Wecker hat geklingelt.",
+      "histStop": "beendet",
+      "histSnooze": "geschlummert",
+      "histMissed": "von selbst beendet",
+      "historyCsv": "Verlauf als CSV herunterladen",
+      "historyClear": "Verlauf löschen",
+      "colTime": "Zeit",
+      "colAlarm": "Wecker",
+      "colAction": "Ergebnis"
     },
     "pomodoro": {
       "title": "Pomodoro-Timer: 25 Minuten Arbeit, 5 Minuten Pause | Saat Tarih",

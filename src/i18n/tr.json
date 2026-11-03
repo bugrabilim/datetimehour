@@ -67,7 +67,25 @@
       "red": "Kırmızı",
       "purple": "Mor"
     },
-    "lookNote": "Seçim yalnız bu tarayıcıda saklanır."
+    "lookNote": "Seçim yalnız bu tarayıcıda saklanır.",
+    "lookDateFmt": "Tarih biçimi",
+    "lookDateFmts": {
+      "long": "Uzun",
+      "numeric": "Sayısal",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Saat ayırıcısı",
+    "lookSeps": {
+      "colon": "İki nokta (14:30)",
+      "dot": "Nokta (14.30)"
+    },
+    "lookWeekStart": "Haftanın ilk günü",
+    "lookWeekStarts": {
+      "mon": "Pazartesi",
+      "sun": "Pazar",
+      "sat": "Cumartesi"
+    },
+    "lookMs": "Milisaniye"
   },
   "client": {
     "format24": "24 saat",
@@ -141,7 +159,13 @@
     "formatLabel": "Saat biçimi",
     "fsWeatherNeed": "Hava durumu için bir konum seçin:",
     "fsWeatherLink": "konumu seçin",
-    "fsWeatherFail": "Hava durumu alınamadı."
+    "fsWeatherFail": "Hava durumu alınamadı.",
+    "syncShortOk": "Saatiniz doğru · fark ±{ms} ms",
+    "syncShortAhead": "Saatiniz {s} sn ileride",
+    "syncShortBehind": "Saatiniz {s} sn geride",
+    "weekN": "{n}. hafta",
+    "pillDst": "Yaz saati var",
+    "pillNoDst": "Yaz saati yok"
   },
   "home": {
     "title": "Saat Kaç? Canlı Saat ve Bugünün Tarihi | Saat Tarih",
@@ -252,7 +276,12 @@
     "sunrise": "Gün doğumu",
     "sunset": "Gün batımı",
     "daylen": "Gün uzunluğu",
-    "sunNote": "Gün doğumu ve batımı, bugünün tarihi ve şehrin konumuna göre yaklaşık hesaplanır (birkaç dakika sapabilir)."
+    "sunNote": "Gün doğumu ve batımı, bugünün tarihi ve şehrin konumuna göre yaklaşık hesaplanır (birkaç dakika sapabilir).",
+    "solarNoon": "Güneş öğlesi",
+    "solarAhead": "Saat, güneş saatinden {d} ileride.",
+    "solarBehind": "Saat, güneş saatinden {d} geride.",
+    "solarSame": "Saat, güneş saatiyle neredeyse aynı.",
+    "mapLink": "Haritada gör (OpenStreetMap)"
   },
   "privacy": {
     "title": "Gizlilik ve Çerez Politikası | Saat Tarih",
@@ -408,6 +437,11 @@
             [
               "sth-hiit",
               "Aralık zamanlayıcısının sürelerini, tur sayısını ve sesli duyuru tercihini hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
+              "sth-alarm-x",
+              "Alarm ses düzeyini, son kullanılan alarm saatlerini ve alarm geçmişini (çalma zamanı, alarm adı, nasıl kapandığı; en çok 200 kayıt) bu cihazda tutar.",
               "Siz silene kadar"
             ],
             [
@@ -570,7 +604,9 @@
     "info": "Saat kaynağı hakkında bilgi",
     "infoTitle": "Bu saat nereden geliyor?",
     "infoClose": "Kapat",
-    "infoSeconds": "Saniyeleri görmek ya da gizlemek için saate dokunun. Dijital saatlerde saniye açık, analog saatlerde kapalı başlar."
+    "infoSeconds": "Saniyeleri görmek ya da gizlemek için saate dokunun. Dijital saatlerde saniye açık, analog saatlerde kapalı başlar.",
+    "zoomIn": "Saati büyüt",
+    "zoomOut": "Saati küçült"
   },
   "calendar": {
     "title": "{year} Takvimi: Resmi Tatiller, Bayram ve Ramazan | Saat Tarih",
@@ -1046,7 +1082,24 @@
       "ytNote": "Alarm çalınca bu video oynar; 1 dakika içinde kapatmazsanız alarm sesi de çalar (tarayıcı videoyu kendiliğinden oynatmazsa da). Video YouTube'dan yüklendiği için dış hizmetlere izin gerekir.",
       "ytInvalid": "Bu bir YouTube bağlantısı değil.",
       "ytBlocked": "YouTube müziği için dış hizmetlere izin verin; izin yoksa alarm kendi sesiyle çalar.",
-      "spotifyNote": "Spotify tarayıcıda kendiliğinden çalmaz; Spotify'ı alarm müziği olarak Android uygulamasında kullanabilirsiniz."
+      "spotifyNote": "Spotify tarayıcıda kendiliğinden çalmaz; Spotify'ı alarm müziği olarak Android uygulamasında kullanabilirsiniz.",
+      "snoozeLabel": "Erteleme",
+      "snoozeMin": "{n} dk",
+      "volume": "Ses düzeyi",
+      "tryNow": "Alarmı şimdi dene",
+      "tryTitle": "Deneme alarmı",
+      "remaining": "kaldı",
+      "recent": "Son kullanılan saatler",
+      "history": "Alarm geçmişi",
+      "historyEmpty": "Henüz çalan alarm yok.",
+      "histStop": "kapatıldı",
+      "histSnooze": "ertelendi",
+      "histMissed": "kendiliğinden sustu",
+      "historyCsv": "Geçmişi CSV olarak indir",
+      "historyClear": "Geçmişi sil",
+      "colTime": "Zaman",
+      "colAlarm": "Alarm",
+      "colAction": "Durum"
     },
     "pomodoro": {
       "title": "Pomodoro Zamanlayıcı: 25 Dakika Çalış, 5 Dakika Mola | Saat Tarih",

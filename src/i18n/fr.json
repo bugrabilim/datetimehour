@@ -67,7 +67,25 @@
       "red": "Rouge",
       "purple": "Violet"
     },
-    "lookNote": "Votre choix est enregistré uniquement dans ce navigateur."
+    "lookNote": "Votre choix est enregistré uniquement dans ce navigateur.",
+    "lookDateFmt": "Format de date",
+    "lookDateFmts": {
+      "long": "Long",
+      "numeric": "Numérique",
+      "iso": "ISO 8601"
+    },
+    "lookSep": "Séparateur horaire",
+    "lookSeps": {
+      "colon": "Deux-points (14:30)",
+      "dot": "Point (14.30)"
+    },
+    "lookWeekStart": "Premier jour de la semaine",
+    "lookWeekStarts": {
+      "mon": "Lundi",
+      "sun": "Dimanche",
+      "sat": "Samedi"
+    },
+    "lookMs": "Millisecondes"
   },
   "client": {
     "format24": "24 heures",
@@ -168,7 +186,13 @@
     "formatLabel": "Format de l’heure",
     "fsWeatherNeed": "Choisissez un lieu pour la météo :",
     "fsWeatherLink": "choisir un lieu",
-    "fsWeatherFail": "Impossible d’obtenir la météo."
+    "fsWeatherFail": "Impossible d’obtenir la météo.",
+    "syncShortOk": "Votre horloge est exacte · ±{ms} ms",
+    "syncShortAhead": "Votre horloge avance de {s} s",
+    "syncShortBehind": "Votre horloge retarde de {s} s",
+    "weekN": "Semaine {n}",
+    "pillDst": "Heure d'été",
+    "pillNoDst": "Pas d'heure d'été"
   },
   "home": {
     "title": "Quelle heure est-il ? Horloge et date du jour | Saat Tarih",
@@ -279,7 +303,12 @@
     "sunrise": "Lever du soleil",
     "sunset": "Coucher du soleil",
     "daylen": "Durée du jour",
-    "sunNote": "Les heures de lever et de coucher du soleil sont approximatives, calculées d’après la date du jour et la position de la ville (écart possible de quelques minutes)."
+    "sunNote": "Les heures de lever et de coucher du soleil sont approximatives, calculées d’après la date du jour et la position de la ville (écart possible de quelques minutes).",
+    "solarNoon": "Midi solaire",
+    "solarAhead": "Ici, l'heure légale avance de {d} sur l'heure solaire.",
+    "solarBehind": "Ici, l'heure légale retarde de {d} sur l'heure solaire.",
+    "solarSame": "Ici, l'heure légale est presque l'heure solaire.",
+    "mapLink": "Voir sur la carte (OpenStreetMap)"
   },
   "privacy": {
     "title": "Politique de confidentialité et de cookies | Saat Tarih",
@@ -435,6 +464,11 @@
             [
               "sth-hiit",
               "Mémorise les périodes du minuteur fractionné, le nombre de tours et le réglage des annonces vocales.",
+              "Jusqu’à ce que vous le supprimiez"
+            ],
+            [
+              "sth-alarm-x",
+              "Conserve sur cet appareil le volume de l'alarme, les heures d'alarme récentes et l'historique des alarmes (heure de sonnerie, nom de l'alarme, manière dont elle a été arrêtée ; 200 entrées au maximum).",
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
@@ -597,7 +631,9 @@
     "info": "À propos de la source de l’heure",
     "infoTitle": "D’où vient cette heure ?",
     "infoClose": "Fermer",
-    "infoSeconds": "Touchez l’horloge pour afficher ou masquer les secondes. Les secondes sont affichées au départ sur les horloges numériques et masquées sur les horloges analogiques."
+    "infoSeconds": "Touchez l’horloge pour afficher ou masquer les secondes. Les secondes sont affichées au départ sur les horloges numériques et masquées sur les horloges analogiques.",
+    "zoomIn": "Agrandir l'horloge",
+    "zoomOut": "Réduire l'horloge"
   },
   "calendar": {
     "title": "Calendrier {year} : jours fériés turcs et Ramadan | Saat Tarih",
@@ -1087,7 +1123,24 @@
       "ytNote": "Quand l’alarme sonne, cette vidéo se lance ; si vous ne l’arrêtez pas dans la minute, le son de l’alarme retentit aussi (y compris si le navigateur ne lance pas la vidéo tout seul). La vidéo est chargée depuis YouTube : les services externes doivent être autorisés.",
       "ytInvalid": "Ce n’est pas un lien YouTube.",
       "ytBlocked": "Autorisez les services externes pour la musique YouTube ; sans autorisation, l’alarme utilise sa propre sonnerie.",
-      "spotifyNote": "Spotify ne démarre pas tout seul dans le navigateur ; vous pouvez utiliser Spotify comme musique de réveil dans l’application Android."
+      "spotifyNote": "Spotify ne démarre pas tout seul dans le navigateur ; vous pouvez utiliser Spotify comme musique de réveil dans l’application Android.",
+      "snoozeLabel": "Répétition",
+      "snoozeMin": "{n} min",
+      "volume": "Volume",
+      "tryNow": "Tester l'alarme maintenant",
+      "tryTitle": "Alarme de test",
+      "remaining": "restant",
+      "recent": "Heures récentes",
+      "history": "Historique des alarmes",
+      "historyEmpty": "Aucune alarme n'a encore sonné.",
+      "histStop": "arrêtée",
+      "histSnooze": "reportée",
+      "histMissed": "arrêtée d'elle-même",
+      "historyCsv": "Télécharger l'historique (CSV)",
+      "historyClear": "Effacer l'historique",
+      "colTime": "Heure",
+      "colAlarm": "Alarme",
+      "colAction": "Résultat"
     },
     "pomodoro": {
       "title": "Minuteur pomodoro : 25 min de travail, 5 de pause | Saat Tarih",

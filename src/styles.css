@@ -132,6 +132,8 @@ a:hover { text-decoration-thickness: 2px; }
 .icon-btn svg { width: 1.25rem; height: 1.25rem; }
 /* Üst bar: marka, sabit tarih, menü; sağda konum ve ayarlar. Dar ekranda menü açılır, tarih ikinci satırda */
 .top-date { margin: 0; color: var(--muted); font-size: 0.9rem; font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.top-week:not(:empty)::before { content: " · "; }
+@media (max-width: 40rem) { .top-week { display: none; } }
 .top-tools { display: flex; align-items: center; gap: 0.4rem; }
 .set-sub { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 400; line-height: 1.2; }
 .set-sub:empty { display: none; }
@@ -254,6 +256,18 @@ html.sec-off .hand-sec { display: none; }
 .sr-nav .icon-btn { min-width: 2.5rem; min-height: 2.5rem; border-color: transparent; background: none; }
 .stage-count { color: var(--muted); font-size: 1.05rem; font-weight: 600; font-variant-numeric: tabular-nums; }
 .stage-row > .icon-btn { min-width: 3.1rem; min-height: 3.1rem; }
+/* Saati büyütme/küçültme (2. analiz #177); telefonda gizli (parmakla yakınlaştırma var, satır sığsın) */
+.zoom-btns { display: flex; gap: 0.1rem; }
+.zoom-btns .icon-btn { min-width: 2.5rem; min-height: 2.5rem; border-color: transparent; background: none; }
+.zoom-btns .icon-btn:disabled { opacity: 0.35; cursor: default; }
+@media (max-width: 40rem) { .zoom-btns { display: none; } }
+.stage[style*="--stage-zoom"] .slide > * { zoom: var(--stage-zoom); }
+/* İlk ekranda kısa doğruluk satırı ve saat dilimi hapları (2. analiz #174, #184) */
+.stage-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.35rem 0.6rem; margin: 0 0 0.4rem; color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; min-height: 1.6em; }
+.stage-meta:not(:has(span:not(:empty))) { visibility: hidden; }
+.sync-short.is-off { color: var(--text); font-weight: 600; }
+.tz-pills { display: inline-flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center; }
+.tz-pills .pill { padding: 0.1rem 0.6rem; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 0.8rem; }
 .stage-row .icon-btn svg { width: 1.5rem; height: 1.5rem; }
 .fmt-btn { min-height: 3rem; padding: 0 0.8rem; border: 0; border-radius: 8px; background: none; color: var(--text); font: inherit; font-size: 1.25rem; font-weight: 700; cursor: pointer; }
 .fmt-btn:hover { background: var(--surface-2); }
@@ -1270,3 +1284,30 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .folk-date { color: var(--muted); }
 .folk-now { font-size: 0.8rem; font-weight: 700; color: var(--accent); }
 .folk-list li.is-now .folk-name { color: var(--accent); }
+
+/* Saat farkı merkezi: şimdiki saat, kısa fark ve fark çubuğu (2. analiz #179) */
+.pair-card .pair-now { display: flex; align-items: baseline; gap: 0.5rem; margin-top: 0.35rem; }
+.pair-card .city-time { font-size: 1.35rem; display: inline; min-height: 0; }
+.pair-card .pair-short { color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+.diff-bar { display: block; width: 100%; height: 0.6rem; margin-top: 0.45rem; }
+.diff-bar .db-track { fill: var(--border); }
+.diff-bar .db-fill { fill: var(--accent); }
+.diff-bar .db-fill.is-neg { fill: var(--muted); }
+.diff-bar .db-zero { fill: var(--text); }
+html[dir="rtl"] .diff-bar { transform: scaleX(-1); }
+
+/* Site alarmı ekleri (2. analiz #181): geri sayım halkası, yüzde çubuk, son saatler, ses düzeyi, geçmiş */
+.al-ring { position: relative; width: min(16rem, 70vw); margin: 0.5rem auto 0.25rem; }
+.al-ring svg { display: block; width: 100%; height: auto; }
+.al-ring .alr-track { fill: none; stroke: var(--border); stroke-width: 7; }
+.al-ring .alr-fill { fill: none; stroke: var(--accent); stroke-width: 7; stroke-linecap: round; transition: stroke-dasharray 0.6s linear; }
+.al-ring .alr-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0; text-align: center; padding: 0 1.5rem; }
+.al-ring .alr-text strong { font-size: clamp(1.8rem, 7vw, 2.6rem); font-variant-numeric: tabular-nums; line-height: 1.1; }
+.al-ring .alr-text span { color: var(--muted); font-size: 0.85rem; }
+.al-bar { display: block; width: min(16rem, 70vw); margin: 0 auto 0.5rem; accent-color: var(--accent); }
+.al-recent { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; margin: 0.25rem 0 0.75rem; }
+.al-vol { gap: 0.6rem; }
+.al-vol input[type=range] { width: 10rem; accent-color: var(--accent); }
+.al-history { margin: 1rem 0; }
+.al-history summary { cursor: pointer; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { .al-ring .alr-fill { transition: none; } }

@@ -35,12 +35,15 @@
     } catch (e) {}
     return audio;
   }
+  /* Alarm ses düzeyi (2. analiz #181): sth-alarm-x.vol 10–100, bütün araç seslerine çarpan */
+  var alx = (function () { try { var o = JSON.parse(store("sth-alarm-x") || "{}"); return o && typeof o === "object" ? o : {}; } catch (e) { return {}; } })();
+  function volMul() { var v = +alx.vol; return v >= 10 && v <= 100 ? v / 100 : 0.8; }
   function beep(freq, dur, when) {
     var c = ctx(); if (!c) return;
     var o = c.createOscillator(), g = c.createGain(), t = c.currentTime + when;
     o.type = "sine"; o.frequency.value = freq;
     g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(0.35, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(Math.max(0.0002, 0.35 * volMul() / 0.8), t + 0.02);
     g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
     o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + dur + 0.05);
   }
@@ -52,7 +55,7 @@
     var o = c.createOscillator(), g = c.createGain(), t = c.currentTime + when;
     o.type = type; o.frequency.value = freq;
     g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(vol, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(Math.max(0.0002, vol * volMul() / 0.8), t + 0.01);
     g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
     o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + dur + 0.05);
   }
@@ -120,20 +123,20 @@
     notify(title, baseTitle);
     clearInterval(ringTimer); clearInterval(flashTimer);
     if (!delay) chime(sound, n);
-    ringTimer = setInterval(function () { var t = performance.now(); if (t > ringUntil) stopRing(); else if (t >= start) chime(sound, delay ? n++ : ++n); }, 2200);
+    ringTimer = setInterval(function () { var t = performance.now(); if (t > ringUntil) stopRing("auto"); else if (t >= start) chime(sound, delay ? n++ : ++n); }, 2200);
     var on = false;
     flashTimer = setInterval(function () { on = !on; doc.title = on ? "🔔 " + title : baseTitle; }, 800);
   }
-  function stopRing() {
+  function stopRing(reason) {
     clearInterval(ringTimer); clearInterval(flashTimer); ringTimer = flashTimer = null;
     doc.title = baseTitle;
     if (banner) banner.hidden = true;
     if (media) { media.textContent = ""; media.hidden = true; }
-    var cb = ringOnStop; ringOnStop = null; if (cb) cb();
+    var cb = ringOnStop; ringOnStop = null; if (cb) cb(typeof reason === "string" ? reason : "stop");
   }
   if (banner) {
     var stopBtn = banner.querySelector("[data-ring-stop]");
-    if (stopBtn) stopBtn.addEventListener("click", stopRing);
+    if (stopBtn) stopBtn.addEventListener("click", function () { stopRing("stop"); });
   }
 
   S.makeFullscreen(root, q("[data-fs]"));
@@ -379,7 +382,63 @@
     var form = q("[data-alarm-form]"), list = q("[data-al-list]"), empty = q("[data-al-empty]"), nextEl = q("[data-al-next]");
     var wake = q("[data-wake]");
     var alarms = (function () { try { var a = JSON.parse(store("sth-alarms") || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } })();
-    var snoozeUntil = 0, ringing = null, lock = null, lastSound = "chime", lastYt = "";
+    var snoozeUntil = 0, ringing = null, lock = null, lastSound = "chime", lastYt = "", lastSnooze = 5, lastName = "";
+    var snoozeSel = q("[data-al-snooze]");
+    function saveX() { save("sth-alarm-x", alx); }
+    /* Son kullanılan saatler (2. analiz #181) */
+    var recentEl = q("[data-al-recent]");
+    function renderRecent() {
+      if (!recentEl) return;
+      var r = Array.isArray(alx.recent) ? alx.recent.filter(function (t) { return /^\d\d:\d\d$/.test(t); }) : [];
+      Array.prototype.slice.call(recentEl.querySelectorAll("button")).forEach(function (b) { b.remove(); });
+      r.forEach(function (t) {
+        var b = doc.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = t;
+        b.addEventListener("click", function () { var ti = q("[data-al-time]"); ti.value = t; ti.focus(); });
+        recentEl.appendChild(b);
+      });
+      recentEl.hidden = !r.length;
+    }
+    function rememberTime(t) {
+      var r = (Array.isArray(alx.recent) ? alx.recent : []).filter(function (x) { return x !== t; });
+      r.unshift(t); alx.recent = r.slice(0, 6); saveX(); renderRecent();
+    }
+    /* Alarm geçmişi + CSV (2. analiz #181): {t: Unix ms, n: ad · saat, r: stop|snooze|auto}, en çok 200 */
+    var histBody = q("[data-al-hist]");
+    function logRing(name, r) {
+      var lg = Array.isArray(alx.log) ? alx.log : [];
+      lg.unshift({ t: Math.round(S.nowMs()), n: name, r: r }); alx.log = lg.slice(0, 200); saveX(); renderHist();
+    }
+    function histWhen(ms) {
+      var d = new Date(ms);
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0") + " " + String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+    }
+    function histAct(r) { return r === "snooze" ? P.histSnooze : r === "auto" ? P.histMissed : P.histStop; }
+    function renderHist() {
+      if (!histBody) return;
+      var lg = Array.isArray(alx.log) ? alx.log : [];
+      histBody.textContent = "";
+      lg.slice(0, 30).forEach(function (e) {
+        var tr = doc.createElement("tr");
+        [histWhen(e.t), e.n, histAct(e.r)].forEach(function (v) { var td = doc.createElement("td"); td.textContent = v; tr.appendChild(td); });
+        histBody.appendChild(tr);
+      });
+      q("[data-al-hist-empty]").hidden = lg.length > 0;
+      q("[data-al-hist-wrap]").hidden = !lg.length;
+      q("[data-al-hist-actions]").hidden = !lg.length;
+    }
+    var hc = q("[data-al-hist-csv]"), hx = q("[data-al-hist-clear]");
+    if (hc) hc.addEventListener("click", function () {
+      csvDownload("alarm-gecmisi.csv", [[P.colTime, P.colAlarm, P.colAction]].concat((alx.log || []).map(function (e) { return [histWhen(e.t), e.n, histAct(e.r)]; })));
+    });
+    if (hx) hx.addEventListener("click", function () { if (window.confirm(P.historyClear + "?")) { alx.log = []; saveX(); renderHist(); } });
+    /* Ses düzeyi ve "şimdi dene" */
+    var volIn = q("[data-al-vol]");
+    if (volIn) {
+      volIn.value = String(Math.round(volMul() * 100));
+      volIn.addEventListener("change", function () { alx.vol = +volIn.value; saveX(); ctx(); chime(soundSel ? soundSel.value : "", 6); });
+    }
+    var tryBtn = q("[data-al-try]");
+    if (tryBtn) tryBtn.addEventListener("click", function () { ctx(); ring(P.tryTitle, null, soundSel ? soundSel.value : "chime", ""); });
     var soundSel = q("[data-al-sound]"), ytIn = q("[data-al-yt]"), ytNote = q("[data-al-yt-note]");
     /* YouTube bağlantısı: youtube.com/watch?v=, youtu.be/, music.youtube.com, /shorts/, /embed/, playlist?list= */
     function ytParse(u) {
@@ -430,10 +489,10 @@
         var li = doc.createElement("li"); li.className = "alarm-item";
         var cb = doc.createElement("input"); cb.type = "checkbox"; cb.checked = a.on; cb.id = "al-" + a.id;
         cb.setAttribute("aria-label", P.enable + ": " + a.time + " " + label(a));
-        cb.addEventListener("change", function () { a.on = cb.checked; if (a.on) ctx(); persist(); renderNext(); lockSync(); });
+        cb.addEventListener("change", function () { a.on = cb.checked; if (a.on) { ctx(); a.setAt = S.nowMs(); } persist(); renderNext(); lockSync(); });
         var info = doc.createElement("label"); info.setAttribute("for", cb.id); info.className = "al-info";
         var tm = doc.createElement("strong"); tm.textContent = a.time;
-        var tx = doc.createElement("span"); tx.textContent = label(a) + " · " + daysText(a) + (a.sound && a.sound !== "chime" && P.sounds ? " · " + P.sounds[a.sound] : "") + (a.yt ? " · ▶ YouTube" : "");
+        var tx = doc.createElement("span"); tx.textContent = label(a) + " · " + daysText(a) + (a.sound && a.sound !== "chime" && P.sounds ? " · " + P.sounds[a.sound] : "") + (a.snooze && a.snooze !== 5 ? " · ⏰ " + tpl(P.snoozeMin, { n: a.snooze }) : "") + (a.yt ? " · ▶ YouTube" : "");
         info.appendChild(tm); info.appendChild(tx);
         var del = doc.createElement("button"); del.type = "button"; del.className = "toggle"; del.textContent = P["delete"];
         del.setAttribute("aria-label", P["delete"] + ": " + a.time + " " + label(a));
@@ -446,9 +505,21 @@
     function renderNext() {
       var now = S.nowDate(), best = null;
       alarms.forEach(function (a) { if (!a.on) return; var d = nextFire(a, now); if (d && (!best || d < best.d)) best = { d: d, a: a }; });
-      if (!best) { nextEl.textContent = P.nextNone; return; }
+      var ringEl = q("[data-al-ring]"), bar = q("[data-al-bar]");
+      if (!best) { nextEl.textContent = P.nextNone; if (ringEl) ringEl.hidden = true; if (bar) bar.hidden = true; return; }
       var mins = Math.round((best.d - now) / 60000), h = Math.floor(mins / 60), m = mins % 60;
       nextEl.textContent = P.next + ": " + best.a.time + " (" + (h ? h + " " + S.T.hourShort + " " : "") + m + " " + S.T.minuteShort + ")";
+      /* Büyük geri sayım halkası + yüzde çubuk (2. analiz #181): kurulduğu ya da son çaldığı andan bu çalmaya */
+      if (ringEl) {
+        var left = best.d - now, total = Math.max(left, best.d - (best.a.setAt || (best.d - 864e5)));
+        var pct = total > 0 ? Math.max(0, Math.min(100, 100 * (1 - left / total))) : 0;
+        var ls = Math.max(0, Math.floor(left / 1000)), lh = Math.floor(ls / 3600), lm = Math.floor((ls % 3600) / 60), lsec = ls % 60;
+        q("[data-al-ring-fill]").setAttribute("stroke-dasharray", pct.toFixed(2) + " 100");
+        q("[data-al-ring-time]").textContent = (lh ? lh + ":" + String(lm).padStart(2, "0") : String(lm)) + ":" + String(lsec).padStart(2, "0");
+        q("[data-al-ring-left]").textContent = P.remaining + " · " + label(best.a) + " " + best.a.time;
+        ringEl.hidden = false;
+        if (bar) { bar.value = Math.round(pct); bar.textContent = Math.round(pct) + "%"; bar.hidden = false; }
+      }
     }
     function lockSync() {
       if (!wake || !navigator.wakeLock) { if (wake) wake.parentNode.hidden = true; return; }
@@ -473,7 +544,8 @@
       if (!/^\d\d:\d\d$/.test(time)) return;
       var yt = ytIn ? ytParse(ytIn.value) : null;
       if (yt === false || yt === "spotify") { ytHint(); ytIn.focus(); return; }
-      var item = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), time: time, label: q("[data-al-label]").value.trim().slice(0, 40), days: qa("[data-al-day]").filter(function (c) { return c.checked; }).map(function (c) { return +c.value; }), on: true, last: "", sound: soundSel ? soundSel.value : "chime" };
+      var item = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), time: time, label: q("[data-al-label]").value.trim().slice(0, 40), days: qa("[data-al-day]").filter(function (c) { return c.checked; }).map(function (c) { return +c.value; }), on: true, last: "", sound: soundSel ? soundSel.value : "chime", snooze: snoozeSel ? +snoozeSel.value : 5, setAt: S.nowMs() };
+      rememberTime(time);
       if (yt) item.yt = yt;
       alarms.push(item);
       q("[data-al-label]").value = ""; if (ytIn) { ytIn.value = ""; ytHint(); }
@@ -481,12 +553,13 @@
     });
     function fire(a, key) {
       ringing = a; a.last = key; if (!a.days.length) a.on = false; persist(); render();
-      lastSound = a.sound || "chime"; lastYt = a.yt || "";
-      ring(label(a) + " · " + a.time, function () { ringing = null; }, lastSound, lastYt);
+      lastSound = a.sound || "chime"; lastYt = a.yt || ""; lastSnooze = +a.snooze || 5; lastName = label(a) + " · " + a.time;
+      a.setAt = S.nowMs(); persist();
+      ring(lastName, function (why) { ringing = null; logRing(lastName, why); }, lastSound, lastYt);
     }
     function check() {
       var now = S.nowDate(), key = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate(), mod = now.getHours() * 60 + now.getMinutes();
-      if (snoozeUntil && S.nowMs() >= snoozeUntil && !ringing) { snoozeUntil = 0; ring(P.ringing, null, lastSound, lastYt); return; }
+      if (snoozeUntil && S.nowMs() >= snoozeUntil && !ringing) { snoozeUntil = 0; ring(lastName || P.ringing, function (why) { logRing(lastName || P.ringing, why); }, lastSound, lastYt); return; }
       alarms.forEach(function (a) {
         if (!a.on || ringing) return;
         var am = +a.time.slice(0, 2) * 60 + +a.time.slice(3, 5), diff = (mod - am + 1440) % 1440;
@@ -496,10 +569,9 @@
       });
     }
     var sn = banner && banner.querySelector("[data-ring-snooze]");
-    if (sn) sn.addEventListener("click", function () { snoozeUntil = S.nowMs() + 5 * 60000; stopRing(); });
-    setInterval(function () { check(); }, 1000);
-    setInterval(renderNext, 15000);
-    render(); lockSync();
+    if (sn) sn.addEventListener("click", function () { snoozeUntil = S.nowMs() + lastSnooze * 60000; stopRing("snooze"); });
+    setInterval(function () { check(); renderNext(); }, 1000);
+    render(); lockSync(); renderRecent(); renderHist();
   }
 
   /* ---------- Pomodoro ---------- */

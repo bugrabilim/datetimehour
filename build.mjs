@@ -260,6 +260,8 @@ const STAGE_ORDER = ["classic", "wx-digital-cal-week", "analog-date", "stack", "
 const MODELS = STAGE_ORDER.map((id) => M[id]);
 const EMBED_MODELS = Object.values(M).filter((m) => !m.wx);
 
+const ICON_MINUS = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 12h12"/></svg>`;
+const ICON_PLUS = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 12h12M12 6v12"/></svg>`;
 const ICON_CLOSE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
 const ICON_INFO = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r="0.6" fill="currentColor"/></svg>`;
 const ICON_GLOBE = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>`;
@@ -269,7 +271,7 @@ function prefControls(t) {
   return `<button type="button" class="fmt-btn" data-fmt-toggle aria-pressed="false" aria-label="${esc(t.client.formatLabel)}" title="${esc(t.client.formatLabel)}"><span data-fmt-part="24">24</span>/<span data-fmt-part="12">12</span></button>`;
 }
 
-function clockStage(lang, { tz = "", place = null } = {}) {
+function clockStage(lang, { tz = "", place = null, pills = false } = {}) {
   const t = I[lang];
   const s = t.stage;
   const total = MODELS.length;
@@ -282,7 +284,8 @@ function clockStage(lang, { tz = "", place = null } = {}) {
     (m, i) => `<button type="button" class="dot" data-dot="${i}" aria-label="${esc(s.models[m.id])}" title="${esc(s.models[m.id])}"${i ? "" : ' aria-current="true"'}></button>`
   ).join("");
   const wxAttr = place ? ` data-wx-name="${esc(place.name)}" data-wx-lat="${place.lat}" data-wx-lon="${place.lon}"` : "";
-  return `<section class="stage" data-carousel${wxAttr} aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
+  /* Sekme başlığında canlı saat (2. analiz #175): data-title-clock; şehir sayfasında o şehrin dilimi */
+  return `<section class="stage" data-carousel data-title-clock="${esc(tz)}"${wxAttr} aria-roledescription="${esc(s.carousel)}" aria-labelledby="clock-h">
   <h2 id="clock-h" class="sr-only">${esc(s.label)}</h2>
   <div class="stage-track" data-track tabindex="0" aria-label="${esc(s.hint)}">${slides}</div>
   <p class="sr-only" data-stage-name aria-live="polite">${esc(s.models[MODELS[0].id])}</p>
@@ -295,8 +298,10 @@ function clockStage(lang, { tz = "", place = null } = {}) {
       ${prefControls(t)}
       <button type="button" class="icon-btn info-btn" data-info-open="info-dialog" aria-haspopup="dialog" aria-label="${esc(s.info)}" title="${esc(s.info)}">${ICON_INFO}</button>
       <button type="button" class="icon-btn" data-fullscreen aria-pressed="false" aria-label="${esc(t.client.fullscreen)}" title="${esc(t.client.fullscreen)}">${ICON_FULL}</button>
+      <div class="zoom-btns" dir="ltr"><button type="button" class="icon-btn" data-stage-zoom="-1" aria-label="${esc(s.zoomOut)}" title="${esc(s.zoomOut)}">${ICON_MINUS}</button><button type="button" class="icon-btn" data-stage-zoom="1" aria-label="${esc(s.zoomIn)}" title="${esc(s.zoomIn)}">${ICON_PLUS}</button></div>
       <div class="sr-nav" dir="ltr"><button type="button" class="icon-btn" data-nav="-1" aria-label="${esc(s.prev)}" title="${esc(s.prev)}">${ICON_PREV}</button><label class="stage-count-wrap"><span class="stage-count" data-stage-count>1/${total}</span><select class="stage-jump" data-stage-select aria-label="${esc(s.dots)}">${jumpOpts}</select></label><button type="button" class="icon-btn" data-nav="1" aria-label="${esc(s.next)}" title="${esc(s.next)}">${ICON_NEXT}</button></div>
     </div>
+    <p class="stage-meta"><span class="sync-short" data-sync-short></span>${pills ? `<span class="tz-pills" data-tz-pills></span>` : ""}</p>
   </div>
   <noscript><p class="meta stage-note">${esc(t.ui.noscript)}</p></noscript>
 </section>
@@ -498,6 +503,10 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
           <label class="set-look-row"><span>${esc(u.lookFont)}</span><select class="set-select" data-look="font">${["standard", "rounded", "serif", "mono", "light"].map((k) => `<option value="${k}">${esc(u.lookFonts[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookColor)}</span><select class="set-select" data-look="color">${["default", "ink", "blue", "green", "red", "purple"].map((k) => `<option value="${k}">${esc(u.lookColors[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookSecSmall)}</span><input type="checkbox" class="set-check" data-look-bool="secSmall"></label>
+          <label class="set-look-row"><span>${esc(u.lookMs)}</span><input type="checkbox" class="set-check" data-look-bool="ms"></label>
+          <label class="set-look-row"><span>${esc(u.lookDateFmt)}</span><select class="set-select" data-look="dateFmt">${["long", "numeric", "iso"].map((k) => `<option value="${k}">${esc(u.lookDateFmts[k])}</option>`).join("")}</select></label>
+          <label class="set-look-row"><span>${esc(u.lookSep)}</span><select class="set-select" data-look="sep">${["colon", "dot"].map((k) => `<option value="${k}">${esc(u.lookSeps[k])}</option>`).join("")}</select></label>
+          <label class="set-look-row"><span>${esc(u.lookWeekStart)}</span><select class="set-select" data-look="weekStart">${["mon", "sun", "sat"].map((k) => `<option value="${k}">${esc(u.lookWeekStarts[k])}</option>`).join("")}</select></label>
           <span class="set-sub">${esc(u.lookNote)}</span></div>
         <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
         <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>
@@ -537,7 +546,7 @@ ${ld}
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="${ROUTES[lang].home}" aria-label="${esc(u.logoAlt)}">${LOGO}<span>${esc(cfg.name)}</span></a>
-    <p class="top-date" data-live="date">&nbsp;</p>
+    <p class="top-date"><span data-live="date">&nbsp;</span><span class="top-week" data-live="weeklabel"></span></p>
     <div class="menu" id="site-nav">
       <nav class="nav" aria-label="${esc(u.mainNav)}">${navLink("world", u.world)}${navLink("prayer", u.prayer)}${navLink("nature", u.nature)}${navLink("weather", u.weather)}${navLink("calendar", u.calendar)}${navLink("tools", u.tools)}<a class="nav-faq" href="${ROUTES[lang].faq}"${p.nav === "faq" ? ' aria-current="page"' : ""}>${esc(u.faq)}</a></nav>
       ${mobileSettings}
@@ -625,7 +634,7 @@ function buildHome(lang) {
   const body = `<section class="hero hero-clock">
   <div class="wrap">
     <h1 class="sr-only">${esc(h.h1)}</h1>
-    ${clockStage(lang)}
+    ${clockStage(lang, { pills: true })}
   </div>
 </section>
 <section class="sr-only" aria-labelledby="today-q">
@@ -739,9 +748,10 @@ function buildCity(lang, c) {
     <dl class="facts">
       <div class="fact"><dt>${esc(ct.liveOffset)}</dt><dd data-live="offset" data-tz="${c.tz}">UTC</dd></div>
       <div class="fact"><dt>${esc(ct.liveDiff)}</dt><dd data-live="diff" data-tz="${c.tz}">&nbsp;</dd></div>
-      ${["sunrise", "sunset", "daylen"].map((k) => `<div class="fact"><dt>${esc(ct[k])}</dt><dd data-live="${k}" data-tz="${c.tz}" data-lat="${c.lat}" data-lon="${c.lon}">–</dd></div>`).join("")}
+      ${["sunrise", "sunset", "daylen", "solarnoon"].map((k) => `<div class="fact"><dt>${esc(ct[k === "solarnoon" ? "solarNoon" : k])}</dt><dd data-live="${k}" data-tz="${c.tz}" data-lat="${c.lat}" data-lon="${c.lon}">–</dd></div>`).join("")}
     </dl>
-    <p class="meta">${esc(ct.sunNote)}</p>
+    <p class="meta"><span data-live="solaroff" data-tz="${c.tz}" data-lon="${c.lon}" data-ahead="${esc(ct.solarAhead)}" data-behind="${esc(ct.solarBehind)}" data-same="${esc(ct.solarSame)}"></span> ${esc(ct.sunNote)}</p>
+    <p class="meta"><a href="https://www.openstreetmap.org/?mlat=${c.lat}&amp;mlon=${c.lon}#map=11/${c.lat}/${c.lon}" target="_blank" rel="noopener">${esc(ct.mapLink)}</a></p>
   </div>
 </section>
 ${addFaq(lang, "world", t.ui.world, ROUTES[lang].world, faq.slice(1))}`;
@@ -1031,22 +1041,32 @@ ${ringBanner(tt, "countdown")}`;
     <div class="field"><label for="al-time">${esc(s.timeLabel)}</label><input id="al-time" type="time" value="${preset.time || "07:00"}" required data-al-time></div>
     <div class="field grow"><label for="al-label">${esc(s.labelLabel)}</label><input id="al-label" type="text" maxlength="40" placeholder="${esc(s.labelPlaceholder)}" data-al-label></div>
   </div>
+  <p class="al-recent" data-al-recent hidden><span class="meta">${esc(s.recent)}:</span></p>
   <fieldset class="days"><legend>${esc(s.repeatLabel)}</legend>
     ${s.dayNames.map((d, i) => `<label class="day"><input type="checkbox" value="${i}" data-al-day><span>${esc(d)}</span></label>`).join("")}
     <span class="presets">${btn("chip", 'data-al-preset="none"', s.once)}${btn("chip", 'data-al-preset="weekdays"', s.weekdays)}${btn("chip", 'data-al-preset="all"', s.every)}</span>
   </fieldset>
   <div class="inputs-row al-music">
     <div class="field"><label for="al-sound">${esc(s.soundLabel)}</label><select id="al-sound" data-al-sound>${ALARM_SOUNDS.map((k) => `<option value="${k}">${esc(s.sounds[k])}</option>`).join("")}</select></div>
+    <div class="field"><label for="al-snooze">${esc(s.snoozeLabel)}</label><select id="al-snooze" data-al-snooze>${[5, 10, 15, 20, 30].map((n) => `<option value="${n}">${esc(tpl(s.snoozeMin, { n }))}</option>`).join("")}</select></div>
     <div class="field grow"><label for="al-yt">${esc(s.ytLabel)}</label><input id="al-yt" type="url" inputmode="url" autocomplete="off" placeholder="https://www.youtube.com/watch?v=…" data-al-yt></div>
   </div>
   <p class="meta al-yt-note" data-al-yt-note>${esc(s.ytNote)}</p>
   <button class="btn" type="submit">${esc(s.add)}</button>
 </form>
 <h2 class="tool-h2">${esc(s.listHeading)}</h2>
+<div class="al-ring" data-al-ring hidden><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle class="alr-track" cx="60" cy="60" r="52"/><circle class="alr-fill" data-al-ring-fill cx="60" cy="60" r="52" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 60 60)"/></svg><p class="alr-text"><strong data-al-ring-time></strong><span data-al-ring-left></span></p></div>
+<progress class="al-bar" data-al-bar max="100" value="0" hidden></progress>
 <p class="meta" data-al-next>${esc(s.nextNone)}</p>
 <ul class="alarm-list" data-al-list></ul>
 <p class="meta" data-al-empty>${esc(s.none)}</p>
-<div class="tool-extra"><label class="check-inline"><input type="checkbox" data-wake> ${esc(s.wake)}</label><label class="check-inline"><input type="checkbox" data-sound checked> ${esc(tt.common.sound)}</label>${btn("toggle", "data-test-sound", tt.common.testSound)}${btn("toggle", "data-notify", tt.common.notify)}</div>
+<div class="tool-extra"><label class="check-inline"><input type="checkbox" data-wake> ${esc(s.wake)}</label><label class="check-inline"><input type="checkbox" data-sound checked> ${esc(tt.common.sound)}</label>${btn("toggle", "data-test-sound", tt.common.testSound)}${btn("toggle", "data-al-try", s.tryNow)}${btn("toggle", "data-notify", tt.common.notify)}</div>
+<div class="tool-extra"><label class="check-inline al-vol"><span>${esc(s.volume)}</span> <input type="range" min="10" max="100" step="10" value="80" data-al-vol aria-label="${esc(s.volume)}"></label></div>
+<details class="al-history" data-al-history><summary>${esc(s.history)}</summary>
+  <p class="meta" data-al-hist-empty>${esc(s.historyEmpty)}</p>
+  <div class="table-wrap" data-al-hist-wrap hidden><table class="events-table"><thead><tr><th scope="col">${esc(s.colTime)}</th><th scope="col">${esc(s.colAlarm)}</th><th scope="col">${esc(s.colAction)}</th></tr></thead><tbody data-al-hist></tbody></table></div>
+  <div class="tool-actions" data-al-hist-actions hidden>${btn("toggle", "data-al-hist-csv", s.historyCsv)}${btn("toggle", "data-al-hist-clear", s.historyClear)}</div>
+</details>
 <p class="meta">${esc(s.wakeNote)}</p>
 <p class="meta">${esc(s.note)}</p>
 ${ringBanner(tt, "alarm")}`;
@@ -1410,7 +1430,9 @@ function buildPairHub(lang) {
   const t = I[lang];
   const h = t.pairHub;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: h.h1, path: ROUTES[lang].diff }];
-  const list = PAIR_CITIES.map((c) => `<li class="city-card"><a href="${pairPath(lang, c)}"><span class="city-name">${esc(tpl(h.linkText, { a: HOME_CITY[lang].name, b: c[lang].name }))}</span><span class="city-diff">${esc(c[lang].country)}</span></a></li>`).join("");
+  /* Kartlarda şimdiki saat, kısa fark ve fark çubuğu (2. analiz #179); çubuk −14…+14 saat, 0 İstanbul */
+  const bar = (c) => `<svg class="diff-bar" viewBox="-14 0 28 4" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect class="db-track" x="-14" y="1.6" width="28" height="0.8"/><rect class="db-fill" data-live="diffbar" data-tz="${c.tz}" data-ref="${HOME_CITY.tz}" x="0" y="0.6" width="0" height="2.8"/><rect class="db-zero" x="-0.12" y="0" width="0.24" height="4"/></svg>`;
+  const list = PAIR_CITIES.map((c) => `<li class="city-card pair-card"><a href="${pairPath(lang, c)}"><span class="city-name">${esc(tpl(h.linkText, { a: HOME_CITY[lang].name, b: c[lang].name }))}</span><span class="city-diff">${esc(c[lang].country)}</span><span class="pair-now"><span class="city-time" data-live="time" data-tz="${c.tz}">--:--</span> <span class="pair-short" dir="ltr" data-live="diffshort" data-tz="${c.tz}" data-ref="${HOME_CITY.tz}"></span></span>${bar(c)}</a></li>`).join("");
   return simplePage(lang, "diff", { title: h.title, description: h.description, h1: h.h1, lead: h.lead, trail, bodyInner: { sections: `<section class="section" aria-labelledby="list-h"><div class="wrap"><h2 id="list-h">${esc(h.listHeading)}</h2><ul class="city-grid">${list}</ul></div></section>` }, nav: "world", searchK: "saat farkı time difference istanbul dünya şehirleri" });
 }
 
