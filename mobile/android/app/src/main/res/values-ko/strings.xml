@@ -1693,5 +1693,13 @@
     <string name="greet_style">디자인</string>
     <string name="greet_note">카드는 휴대전화에서 그려지며 공유할 때만 보내집니다.</string>
     <string name="quran_goalDone">오늘 목표 달성</string>
+    <string name="meet_rangeHint">시간을 누르고, 범위는 두 번째 시간을 누르세요. 도시 이름을 누르면 그 열이 12/24시간으로 바뀝니다.</string>
+    <string name="meet_weekend">주말</string>
+    <string name="meet_busy">내 캘린더 일정</string>
+    <string name="meet_calendarHint">내 일정을 여기에 보려면 캘린더에서 \'내 휴대전화 캘린더 표시\'를 켜세요.</string>
+    <string name="meet_exchanges">증권거래소 거래 시간</string>
+    <string name="meet_exchangesNote">정규 거래 시간(현지 시각, 평일, 타다울은 일~목요일)이며 공휴일은 반영하지 않습니다.</string>
+    <string name="meet_openAt">개장 중인 거래소: %1$s</string>
+    <string name="meet_noneOpen">이 시간에 개장한 거래소가 없습니다</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

@@ -1693,5 +1693,13 @@
     <string name="greet_style">ลวดลาย</string>
     <string name="greet_note">การ์ดวาดในโทรศัพท์ และส่งเมื่อคุณแชร์เท่านั้น</string>
     <string name="quran_goalDone">บรรลุเป้าหมายวันนี้แล้ว</string>
+    <string name="meet_rangeHint">แตะหนึ่งชั่วโมง แตะชั่วโมงที่สองเพื่อเลือกช่วง แตะชื่อเมืองเพื่อสลับคอลัมน์นั้นระหว่าง 12 และ 24 ชั่วโมง</string>
+    <string name="meet_weekend">สุดสัปดาห์</string>
+    <string name="meet_busy">มีกิจกรรมในปฏิทินของคุณ</string>
+    <string name="meet_calendarHint">หากต้องการเห็นกิจกรรมของคุณที่นี่ ให้เปิด \"แสดงปฏิทินในโทรศัพท์\" ในปฏิทิน</string>
+    <string name="meet_exchanges">เวลาทำการตลาดหลักทรัพย์</string>
+    <string name="meet_exchangesNote">เวลาซื้อขายปกติ (เวลาท้องถิ่น วันทำการ ตลาดทาดาวุลวันอาทิตย์–พฤหัสบดี) ไม่นับวันหยุดราชการ</string>
+    <string name="meet_openAt">ตลาดที่เปิดอยู่: %1$s</string>
+    <string name="meet_noneOpen">ไม่มีตลาดเปิดในเวลานี้</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

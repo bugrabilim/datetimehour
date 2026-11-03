@@ -1386,7 +1386,8 @@
     "addGoogle": "Google Təqvimə əlavə et",
     "pickHint": "Görüş vaxtını seçmək üçün cədvəlin yuxarısındakı saata toxunun; seçilmiş saat keçidə və təqvim qeydinə daxil edilir.",
     "meeting": "Görüş",
-    "picked": "Seçilmiş saat: {time} ({city} vaxtı ilə)"
+    "picked": "Seçilmiş saat: {time} ({city} vaxtı ilə)",
+    "legendWeekend": "Həftə sonu"
   },
   "poll": {
     "title": "Görüş səsverməsi: uyğun saatı birlikdə seçin | Saat Tarih",

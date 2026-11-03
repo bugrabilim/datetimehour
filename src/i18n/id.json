@@ -1386,7 +1386,8 @@
     "addGoogle": "Tambahkan ke Google Kalender",
     "pickHint": "Ketuk satu jam di bagian atas tabel untuk memilih waktu rapat; tautan dan entri kalender akan memuatnya.",
     "meeting": "Rapat",
-    "picked": "Waktu yang dipilih: {time} (waktu {city})"
+    "picked": "Waktu yang dipilih: {time} (waktu {city})",
+    "legendWeekend": "Akhir pekan"
   },
   "poll": {
     "title": "Polling Rapat: Pilih Waktu Terbaik Bersama | Saat Tarih",

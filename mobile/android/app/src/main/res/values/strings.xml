@@ -1693,5 +1693,13 @@
     <string name="greet_style">Desen</string>
     <string name="greet_note">Kart telefonda çizilir; yalnız siz paylaşınca gönderilir.</string>
     <string name="quran_goalDone">Bugünkü hedef tamam</string>
+    <string name="meet_rangeHint">Bir saate dokunun; aralık için ikinci bir saate dokunun. Şehir adına dokununca o sütun 12/24 saat olur.</string>
+    <string name="meet_weekend">Hafta sonu</string>
+    <string name="meet_busy">Takviminizde etkinlik</string>
+    <string name="meet_calendarHint">Kendi takviminizdeki etkinlikleri burada görmek için Takvim\'de \"Telefonumdaki takvimleri göster\"i açın.</string>
+    <string name="meet_exchanges">Borsa saatleri</string>
+    <string name="meet_exchangesNote">Olağan seans saatleri (yerel saatle, hafta içi; Tadawul pazar–perşembe); resmî tatiller hesaba katılmaz.</string>
+    <string name="meet_openAt">Açık borsalar: %1$s</string>
+    <string name="meet_noneOpen">Bu saatte açık borsa yok</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

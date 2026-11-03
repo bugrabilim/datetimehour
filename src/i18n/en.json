@@ -1386,7 +1386,8 @@
     "addGoogle": "Add to Google Calendar",
     "pickHint": "Tap an hour at the top of the table to pick the meeting time; the link and calendar entry include it.",
     "meeting": "Meeting",
-    "picked": "Picked time: {time} ({city} time)"
+    "picked": "Picked time: {time} ({city} time)",
+    "legendWeekend": "Weekend"
   },
   "poll": {
     "title": "Meeting Poll: Pick the Best Time Together | Saat Tarih",

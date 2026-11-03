@@ -1693,5 +1693,13 @@
     <string name="greet_style">Motif</string>
     <string name="greet_note">La carte est dessinée sur le téléphone et n’est envoyée que si vous la partagez.</string>
     <string name="quran_goalDone">Objectif du jour atteint</string>
+    <string name="meet_rangeHint">Touchez une heure ; touchez-en une seconde pour une plage. Touchez le nom d’une ville pour passer sa colonne en 12 ou 24 h.</string>
+    <string name="meet_weekend">Week-end</string>
+    <string name="meet_busy">Événement dans votre agenda</string>
+    <string name="meet_calendarHint">Pour voir vos événements ici, activez « Afficher les agendas du téléphone » dans Calendrier.</string>
+    <string name="meet_exchanges">Horaires des bourses</string>
+    <string name="meet_exchangesNote">Horaires de séance ordinaires (heure locale, jours ouvrés ; Tadawul du dimanche au jeudi) ; jours fériés non pris en compte.</string>
+    <string name="meet_openAt">Bourses ouvertes : %1$s</string>
+    <string name="meet_noneOpen">Aucune bourse ouverte à cette heure</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

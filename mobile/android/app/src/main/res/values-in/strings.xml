@@ -1693,5 +1693,13 @@
     <string name="greet_style">Desain</string>
     <string name="greet_note">Kartu digambar di ponsel dan hanya dikirim saat Anda membagikannya.</string>
     <string name="quran_goalDone">Target hari ini tercapai</string>
+    <string name="meet_rangeHint">Ketuk satu jam; ketuk jam kedua untuk rentang. Ketuk nama kota untuk mengganti kolom itu antara 12 dan 24 jam.</string>
+    <string name="meet_weekend">Akhir pekan</string>
+    <string name="meet_busy">Acara di kalender Anda</string>
+    <string name="meet_calendarHint">Untuk melihat acara Anda di sini, aktifkan \"Tampilkan kalender di ponsel saya\" di Kalender.</string>
+    <string name="meet_exchanges">Jam bursa saham</string>
+    <string name="meet_exchangesNote">Jam sesi reguler (waktu setempat, hari kerja; Tadawul Minggu–Kamis); hari libur tidak diperhitungkan.</string>
+    <string name="meet_openAt">Bursa yang buka: %1$s</string>
+    <string name="meet_noneOpen">Tidak ada bursa yang buka saat ini</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

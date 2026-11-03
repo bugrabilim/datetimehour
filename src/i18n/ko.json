@@ -1412,7 +1412,8 @@
     "addGoogle": "Google 캘린더에 추가",
     "pickHint": "표 위쪽의 시간을 누르면 회의 시간을 고를 수 있으며, 링크와 캘린더 일정에도 들어갑니다.",
     "meeting": "회의",
-    "picked": "고른 시간: {time}({city} 시간)"
+    "picked": "고른 시간: {time}({city} 시간)",
+    "legendWeekend": "주말"
   },
   "poll": {
     "title": "모임 시간 투표: 함께 가장 좋은 시간 정하기 | Saat Tarih",

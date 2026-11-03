@@ -665,6 +665,8 @@ fieldset.days legend { padding: 0 0.4rem; font-weight: 600; }
 .planner tbody th { text-align: start; padding-inline-start: 0.6rem; white-space: nowrap; background: none; font-size: 0.95rem; }
 .pl-work, .lg-work { background: var(--ok-bg); color: var(--ok); font-weight: 700; }
 .pl-edge, .lg-edge { background: var(--accent-soft); color: var(--text); }
+/* Hafta sonu (2. analiz #72): çizgili zemin, mesai rengini bastırır */
+.pl-weekend, .lg-weekend { background: repeating-linear-gradient(135deg, var(--surface-2, rgba(127, 127, 127, 0.15)) 0 4px, transparent 4px 8px); color: var(--muted); font-weight: 400; }
 .pl-night, .lg-night { background: var(--surface-2); color: var(--muted); }
 .planner sup { font-size: 0.6rem; margin-inline-start: 1px; }
 .pl-common { margin: 0; font-weight: 700; font-size: 1.15rem; text-align: center; }

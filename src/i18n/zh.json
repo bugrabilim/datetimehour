@@ -1412,7 +1412,8 @@
     "addGoogle": "添加到 Google 日历",
     "pickHint": "点按表格顶部的某个小时即可选择会议时间；链接和日历条目都会包含它。",
     "meeting": "会议",
-    "picked": "所选时间：{time}（{city}时间）"
+    "picked": "所选时间：{time}（{city}时间）",
+    "legendWeekend": "周末"
   },
   "poll": {
     "title": "会议投票：一起选出最合适的时间 | Saat Tarih",

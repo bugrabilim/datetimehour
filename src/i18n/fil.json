@@ -1452,7 +1452,8 @@
     "addGoogle": "Idagdag sa Google Calendar",
     "pickHint": "I-tap ang isang oras sa itaas ng talahanayan para piliin ang oras ng miting; kasama ito sa link at sa entry sa kalendaryo.",
     "meeting": "Miting",
-    "picked": "Napiling oras: {time} (oras ng {city})"
+    "picked": "Napiling oras: {time} (oras ng {city})",
+    "legendWeekend": "Weekend"
   },
   "poll": {
     "title": "Botohan sa Miting: Pumili ng Oras nang Sama-sama | Saat Tarih",

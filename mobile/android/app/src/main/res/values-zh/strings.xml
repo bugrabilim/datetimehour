@@ -1693,5 +1693,13 @@
     <string name="greet_style">图案</string>
     <string name="greet_note">贺卡在手机上绘制，仅在你分享时发送。</string>
     <string name="quran_goalDone">今日目标已完成</string>
+    <string name="meet_rangeHint">点按一个小时；选择时段再点按第二个小时。点按城市名可在12/24小时制之间切换该列。</string>
+    <string name="meet_weekend">周末</string>
+    <string name="meet_busy">日历中有活动</string>
+    <string name="meet_calendarHint">要在此查看你的活动，请在日历中打开“显示手机上的日历”。</string>
+    <string name="meet_exchanges">证券交易所交易时间</string>
+    <string name="meet_exchangesNote">常规交易时段（当地时间，工作日；沙特交易所为周日至周四）；不考虑法定节假日。</string>
+    <string name="meet_openAt">开市中的交易所：%1$s</string>
+    <string name="meet_noneOpen">此时没有交易所开市</string>
     <string name="app_name">时间与日期</string>
 </resources>

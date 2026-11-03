@@ -1453,7 +1453,7 @@ function buildPlanner(lang) {
       </div>
       <ul class="chips-list" data-pl-chips></ul>
       <div class="table-wrap"><table class="planner" data-pl-table><caption class="sr-only">${esc(s.tableLabel)}</caption></table></div>
-      <ul class="legend" aria-label="${esc(s.tableLabel)}"><li><span class="lg lg-work" aria-hidden="true"></span>${esc(s.legendWork)}</li><li><span class="lg lg-edge" aria-hidden="true"></span>${esc(s.legendEdge)}</li><li><span class="lg lg-night" aria-hidden="true"></span>${esc(s.legendNight)}</li></ul>
+      <ul class="legend" aria-label="${esc(s.tableLabel)}"><li><span class="lg lg-work" aria-hidden="true"></span>${esc(s.legendWork)}</li><li><span class="lg lg-edge" aria-hidden="true"></span>${esc(s.legendEdge)}</li><li><span class="lg lg-night" aria-hidden="true"></span>${esc(s.legendNight)}</li><li><span class="lg lg-weekend" aria-hidden="true"></span>${esc(s.legendWeekend)}</li></ul>
       <p class="pl-common" role="status" aria-live="polite" data-pl-common>&nbsp;</p>
       <p class="meta pl-hint" data-pl-picked>${esc(s.pickHint)}</p>
       ${shareRow(s)}

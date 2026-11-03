@@ -1693,5 +1693,13 @@
     <string name="greet_style">Disenyo</string>
     <string name="greet_note">Iginuguhit ang card sa telepono at ipinapadala lang kapag ibinahagi mo.</string>
     <string name="quran_goalDone">Naabot ang layunin ngayon</string>
+    <string name="meet_rangeHint">I-tap ang isang oras; i-tap ang pangalawa para sa saklaw. I-tap ang pangalan ng lungsod para palitan ang kolum sa 12 o 24 oras.</string>
+    <string name="meet_weekend">Weekend</string>
+    <string name="meet_busy">Event sa kalendaryo mo</string>
+    <string name="meet_calendarHint">Para makita rito ang mga event mo, i-on ang “Ipakita ang mga kalendaryo sa phone ko” sa Kalendaryo.</string>
+    <string name="meet_exchanges">Oras ng stock exchange</string>
+    <string name="meet_exchangesNote">Regular na oras ng sesyon (lokal na oras, araw ng trabaho; Tadawul Linggo–Huwebes); hindi isinasaalang-alang ang mga pista opisyal.</string>
+    <string name="meet_openAt">Bukas na exchange: %1$s</string>
+    <string name="meet_noneOpen">Walang bukas na exchange sa oras na ito</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

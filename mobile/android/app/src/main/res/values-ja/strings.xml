@@ -1693,5 +1693,13 @@
     <string name="greet_style">デザイン</string>
     <string name="greet_note">カードは端末で描かれ、共有したときだけ送られます。</string>
     <string name="quran_goalDone">今日の目標達成</string>
+    <string name="meet_rangeHint">時刻をタップし、範囲には2つ目の時刻をタップします。都市名をタップするとその列が12/24時間表示に切り替わります。</string>
+    <string name="meet_weekend">週末</string>
+    <string name="meet_busy">カレンダーに予定あり</string>
+    <string name="meet_calendarHint">自分の予定をここに表示するには、カレンダーで「端末のカレンダーを表示」をオンにします。</string>
+    <string name="meet_exchanges">証券取引所の取引時間</string>
+    <string name="meet_exchangesNote">通常の取引時間（現地時間、平日。タダウルは日〜木曜）。祝日は考慮しません。</string>
+    <string name="meet_openAt">取引中の市場：%1$s</string>
+    <string name="meet_noneOpen">この時間に開いている市場はありません</string>
     <string name="app_name">時刻と日付</string>
 </resources>

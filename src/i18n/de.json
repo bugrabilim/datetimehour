@@ -1413,7 +1413,8 @@
     "addGoogle": "Zu Google Kalender hinzufügen",
     "pickHint": "Tippen Sie oben in der Tabelle auf eine Stunde, um die Besprechungszeit zu wählen; Link und Kalendereintrag enthalten sie.",
     "meeting": "Besprechung",
-    "picked": "Gewählte Zeit: {time} (Ortszeit {city})"
+    "picked": "Gewählte Zeit: {time} (Ortszeit {city})",
+    "legendWeekend": "Wochenende"
   },
   "poll": {
     "title": "Terminumfrage: Gemeinsam die beste Zeit finden | Saat Tarih",

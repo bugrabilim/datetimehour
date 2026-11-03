@@ -1693,5 +1693,13 @@
     <string name="greet_style">التصميم</string>
     <string name="greet_note">تُرسم البطاقة على الهاتف ولا تُرسل إلا عند مشاركتك.</string>
     <string name="quran_goalDone">تحقق هدف اليوم</string>
+    <string name="meet_rangeHint">المس ساعة، ولتحديد فترة المس ساعة ثانية. المس اسم المدينة لتبديل العمود بين نظامي 12 و24 ساعة.</string>
+    <string name="meet_weekend">عطلة نهاية الأسبوع</string>
+    <string name="meet_busy">حدث في تقويمك</string>
+    <string name="meet_calendarHint">لرؤية أحداثك هنا، فعّل «عرض التقاويم على هاتفي» في التقويم.</string>
+    <string name="meet_exchanges">ساعات تداول البورصات</string>
+    <string name="meet_exchangesNote">ساعات الجلسة العادية (بالتوقيت المحلي، أيام العمل؛ تداول من الأحد إلى الخميس)؛ لا تُحتسب العطل الرسمية.</string>
+    <string name="meet_openAt">البورصات المفتوحة: %1$s</string>
+    <string name="meet_noneOpen">لا توجد بورصة مفتوحة في هذا الوقت</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

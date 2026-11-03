@@ -1693,5 +1693,13 @@
     <string name="greet_style">Узор</string>
     <string name="greet_note">Открытка рисуется на телефоне и отправляется, только когда вы ею поделитесь.</string>
     <string name="quran_goalDone">Цель на сегодня выполнена</string>
+    <string name="meet_rangeHint">Коснитесь часа; для интервала — второго часа. Коснитесь названия города, чтобы переключить столбец между 12 и 24 часами.</string>
+    <string name="meet_weekend">Выходные</string>
+    <string name="meet_busy">Событие в вашем календаре</string>
+    <string name="meet_calendarHint">Чтобы видеть здесь свои события, включите «Показать календари телефона» в Календаре.</string>
+    <string name="meet_exchanges">Часы работы бирж</string>
+    <string name="meet_exchangesNote">Обычные часы торгов (местное время, будни; Tadawul — воскресенье–четверг); праздники не учитываются.</string>
+    <string name="meet_openAt">Открытые биржи: %1$s</string>
+    <string name="meet_noneOpen">В это время ни одна биржа не работает</string>
     <string name="app_name">Время и дата</string>
 </resources>

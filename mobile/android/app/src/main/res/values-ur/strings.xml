@@ -1693,5 +1693,13 @@
     <string name="greet_style">ڈیزائن</string>
     <string name="greet_note">کارڈ فون پر بنتا ہے اور صرف آپ کے شیئر کرنے پر بھیجا جاتا ہے۔</string>
     <string name="quran_goalDone">آج کا ہدف پورا</string>
+    <string name="meet_rangeHint">ایک گھنٹے کو چھوئیں؛ دورانیے کے لیے دوسرا گھنٹہ چھوئیں۔ شہر کے نام کو چھونے سے وہ کالم 12/24 گھنٹے میں بدلتا ہے۔</string>
+    <string name="meet_weekend">ہفتے کا اختتام</string>
+    <string name="meet_busy">آپ کے کیلنڈر میں تقریب</string>
+    <string name="meet_calendarHint">اپنی تقریبات یہاں دیکھنے کے لیے کیلنڈر میں \"میرے فون کے کیلنڈر دکھائیں\" آن کریں۔</string>
+    <string name="meet_exchanges">اسٹاک ایکسچینج کے اوقات</string>
+    <string name="meet_exchangesNote">معمول کے اجلاس کے اوقات (مقامی وقت، کام کے دن؛ تداول اتوار تا جمعرات)؛ سرکاری تعطیلات شامل نہیں۔</string>
+    <string name="meet_openAt">کھلی ایکسچینجز: %1$s</string>
+    <string name="meet_noneOpen">اس وقت کوئی ایکسچینج کھلی نہیں</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

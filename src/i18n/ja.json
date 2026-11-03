@@ -1386,7 +1386,8 @@
     "addGoogle": "Google カレンダーに追加",
     "pickHint": "表の上部の時間をタップして会議の時刻を選ぶと、リンクとカレンダーの予定にも入ります。",
     "meeting": "会議",
-    "picked": "選んだ時刻：{time}（{city}時間）"
+    "picked": "選んだ時刻：{time}（{city}時間）",
+    "legendWeekend": "週末"
   },
   "poll": {
     "title": "日程調整：みんなで都合のよい時間を決める | Saat Tarih",

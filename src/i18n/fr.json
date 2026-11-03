@@ -1427,7 +1427,8 @@
     "addGoogle": "Ajouter à Google Agenda",
     "pickHint": "Touchez une heure en haut du tableau pour choisir l’heure de la réunion ; le lien et l’entrée de calendrier l’incluent.",
     "meeting": "Réunion",
-    "picked": "Heure choisie : {time} (heure de {city})"
+    "picked": "Heure choisie : {time} (heure de {city})",
+    "legendWeekend": "Week-end"
   },
   "poll": {
     "title": "Sondage de réunion : choisir le bon créneau ensemble | Saat Tarih",

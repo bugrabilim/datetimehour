@@ -322,9 +322,9 @@ class MoreScreensTest {
         shot("tr-sabah-gunlugu") { JournalScreen() }
         Prefs.store.edit().remove(Journal.KEY).commit()
         // Toplantı planlayıcı: Londra, New York, Tokyo
-        Prefs.store.edit().putString("meet.cities", "london,new-york,tokyo").commit()
+        Prefs.store.edit().putString("meet.cities", "london,new-york,tokyo").putBoolean("meet.exchanges", true).putString("meet.h12", "new-york").commit()
         shot("tr-toplanti-planlayici") { MeetingPlannerScreen() }
-        Prefs.store.edit().remove("meet.cities").commit()
+        Prefs.store.edit().remove("meet.cities").remove("meet.exchanges").remove("meet.h12").commit()
     }
     @Test fun badges() {
         // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri

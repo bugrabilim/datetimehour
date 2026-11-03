@@ -1693,5 +1693,13 @@
     <string name="greet_style">Design</string>
     <string name="greet_note">The card is drawn on the phone and sent only when you share it.</string>
     <string name="quran_goalDone">Today’s goal reached</string>
+    <string name="meet_rangeHint">Tap an hour; tap a second hour for a range. Tap a city name to switch that column between 12 and 24 hours.</string>
+    <string name="meet_weekend">Weekend</string>
+    <string name="meet_busy">Event in your calendar</string>
+    <string name="meet_calendarHint">To see your own events here, turn on “Show calendars on my phone” in Calendar.</string>
+    <string name="meet_exchanges">Stock exchange hours</string>
+    <string name="meet_exchangesNote">Regular session hours (local time, weekdays; Tadawul Sunday–Thursday); public holidays are not taken into account.</string>
+    <string name="meet_openAt">Open exchanges: %1$s</string>
+    <string name="meet_noneOpen">No exchange is open at this time</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

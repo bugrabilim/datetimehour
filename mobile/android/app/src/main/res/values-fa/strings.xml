@@ -1693,5 +1693,13 @@
     <string name="greet_style">طرح</string>
     <string name="greet_note">کارت روی گوشی کشیده می‌شود و فقط وقتی هم‌رسانی کنید فرستاده می‌شود.</string>
     <string name="quran_goalDone">هدف امروز انجام شد</string>
+    <string name="meet_rangeHint">یک ساعت را لمس کنید؛ برای بازه ساعت دوم را لمس کنید. با لمس نام شهر، آن ستون بین ۱۲ و ۲۴ ساعته عوض می‌شود.</string>
+    <string name="meet_weekend">آخر هفته</string>
+    <string name="meet_busy">رویداد در تقویم شما</string>
+    <string name="meet_calendarHint">برای دیدن رویدادهای خود اینجا، در تقویم «نمایش تقویم‌های گوشی من» را روشن کنید.</string>
+    <string name="meet_exchanges">ساعات کار بورس</string>
+    <string name="meet_exchangesNote">ساعات جلسه عادی (به وقت محلی، روزهای کاری؛ تداول یکشنبه تا پنجشنبه)؛ تعطیلات رسمی در نظر گرفته نمی‌شود.</string>
+    <string name="meet_openAt">بورس‌های باز: %1$s</string>
+    <string name="meet_noneOpen">در این ساعت هیچ بورسی باز نیست</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

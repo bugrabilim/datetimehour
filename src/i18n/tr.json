@@ -1386,7 +1386,8 @@
     "addGoogle": "Google Takvim'e ekle",
     "pickHint": "Toplantı saatini seçmek için tablonun üstündeki saate dokunun; bağlantı ve takvim seçili saati içerir.",
     "meeting": "Toplantı",
-    "picked": "Seçili saat: {time} ({city} saatiyle)"
+    "picked": "Seçili saat: {time} ({city} saatiyle)",
+    "legendWeekend": "Hafta sonu"
   },
   "poll": {
     "title": "Toplantı Oylaması: Uygun Saati Birlikte Seçin | Saat Tarih",

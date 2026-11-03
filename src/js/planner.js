@@ -174,6 +174,9 @@
         instants.forEach(function (inst, i) {
           var p = S.parts(new Date(inst), tz), td = doc.createElement("td");
           var cls = workOf(p.hour); td.className = "pl-" + cls; td.textContent = pad(p.hour);
+          // Hafta sonu (2. analiz #72): o şehirde cumartesi ya da pazar ise mesai sayılmaz
+          var wd = new Date(Date.UTC(p.year, p.month - 1, p.day)).getUTCDay();
+          if ((wd === 0 || wd === 6) && cls !== "night") { td.className += " pl-weekend"; allWork[i] = false; }
           if (cls !== "work") allWork[i] = false;
           var rp = S.parts(new Date(inst), tz);
           var shift = Date.UTC(rp.year, rp.month - 1, rp.day) - Date.UTC(+m[1], +m[2] - 1, +m[3]);
