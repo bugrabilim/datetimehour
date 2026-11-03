@@ -1054,7 +1054,9 @@
       "copied": "Tautan disalin",
       "shareNote": "Anda dapat membagikan tautan tanggal yang dipilih; hitung mundur dimulai sendiri saat tautan dibuka.",
       "addMinute": "+1 mnt",
-      "addToApp": "📲 Tambahkan ke aplikasi Saat Tarih"
+      "addToApp": "📲 Tambahkan ke aplikasi Saat Tarih",
+      "present": "Warna presentasi",
+      "presentNote": "Hijau; kuning pada 2 menit terakhir (seperlima terakhir untuk waktu singkat); merah saat waktu habis."
     },
     "alarm": {
       "title": "Alarm Daring: Berulang dan Tunda | Saat Tarih",
@@ -2200,7 +2202,61 @@
         "a": "Ya. Dalam layar penuh, tombol cuaca di bilah yang muncul saat Anda menyentuh layar menampilkan cuaca lokasi pilihan Anda di samping jam."
       }
     ],
-    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin cuaca prakiraan suhu hujan angin kelembapan besok minggu ini"
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin cuaca prakiraan suhu hujan angin kelembapan besok minggu ini",
+    "wd": {
+      "calm": "Tenang",
+      "light": "Angin sepoi-sepoi",
+      "breezy": "Berangin",
+      "strong": "Angin kencang",
+      "gale": "Badai"
+    },
+    "uvw": {
+      "low": "Rendah; tidak ada risiko terbakar matahari",
+      "moderate": "Sedang; lindungi diri di siang hari",
+      "high": "Tinggi; gunakan tabir surya",
+      "veryHigh": "Sangat tinggi; hindari matahari siang",
+      "extreme": "Ekstrem; hindari berada di luar"
+    },
+    "hw": {
+      "dry": "Kering",
+      "comfy": "Nyaman",
+      "humid": "Lembap",
+      "veryHumid": "Sangat lembap"
+    },
+    "vw": {
+      "fog": "Berkabut",
+      "haze": "Berkabut tipis",
+      "good": "Baik",
+      "clear": "Sangat baik"
+    },
+    "dw": {
+      "dry": "Udara kering",
+      "comfy": "Nyaman",
+      "muggy": "Agak gerah",
+      "oppressive": "Gerah"
+    },
+    "fw": {
+      "colder": "Terasa lebih dingin",
+      "warmer": "Terasa lebih panas"
+    },
+    "sum": {
+      "storm": "Badai petir diperkirakan sekitar pukul {time}.",
+      "rain": "Hujan diperkirakan sekitar pukul {time}.",
+      "snow": "Salju diperkirakan sekitar pukul {time}.",
+      "windyAfternoon": "Berangin pada sore hari.",
+      "colder": "Besok jauh lebih dingin: suhu tertinggi turun {n}°.",
+      "warmer": "Besok jauh lebih hangat: suhu tertinggi naik {n}°.",
+      "default": "{cond}; tertinggi {max}, terendah {min}."
+    },
+    "alert": {
+      "colder": "Besok jauh lebih dingin dari hari ini: suhu tertinggi turun {n}°.",
+      "warmer": "Besok jauh lebih hangat dari hari ini: suhu tertinggi naik {n}°.",
+      "rainSoon": "Hujan diperkirakan sekitar pukul {time}; jangan lupa payung."
+    },
+    "visibility": "Jarak pandang",
+    "dewPoint": "Titik embun",
+    "gusts": "Hembusan",
+    "details": "Rincian"
   },
   "faqPage": {
     "title": "Pertanyaan umum: waktu, kalender, salat | Saat Tarih",

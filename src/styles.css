@@ -9,6 +9,7 @@
   --muted: #565c68;
   --border: #d6cfbf;
   --accent: #9a3f00;
+  --present-go: #1e7a46; --present-warn: #8a5a00; --present-stop: #b3261e;
   --accent-ink: #ffffff;
   --accent-soft: #f6e5d6;
   --focus: #1a5fd0;
@@ -615,6 +616,11 @@ html.has-cookie-bar body { padding-bottom: 5.5rem; }
 .tool-title { margin: 0; font-size: 1.1rem; color: var(--muted); }
 .tool-h2 { font-size: 1.2rem; margin: 0.5rem 0 0; }
 .big-time { margin: 0; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; line-height: 1.1; font-size: clamp(2.4rem, 11vw, 6.5rem); overflow-wrap: anywhere; }
+/* Sunum renkleri (geri sayım; beyaz yazıyla ≥4,5:1) */
+.big-time[data-present] { color: #fff; border-radius: 1rem; padding: 0.15em 0.35em; transition: background-color 0.4s; }
+.big-time[data-present="go"] { background: var(--present-go); }
+.big-time[data-present="warn"] { background: var(--present-warn); }
+.big-time[data-present="stop"] { background: var(--present-stop); }
 .big-time.is-empty, .tool:fullscreen .big-time.is-empty, .tool.is-full .big-time.is-empty { font-size: clamp(1.15rem, 4vw, 1.75rem); font-weight: 600; letter-spacing: 0; line-height: 1.4; }
 .tool:fullscreen .big-time, .tool.is-full .big-time { font-size: clamp(3rem, 15vw, 13rem); }
 .tool-actions, .tool-extra, .presets, .inputs-row, .tabs { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; align-items: center; }
@@ -865,6 +871,11 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .wx-facts .fact { padding: 0.45rem 0.9rem; background: var(--surface); border: 1px solid var(--border); border-radius: 999px; display: flex; gap: 0.5rem; align-items: baseline; }
 .wx-facts dt { color: var(--muted); font-size: 0.85rem; }
 .wx-facts dd { margin: 0; font-weight: 700; }
+.wx-facts dd.fact-note { font-weight: 400; font-size: 0.85rem; color: var(--muted); }
+.wx-live .wx-facts dd.fact-note { color: rgba(255,255,255,0.86); }
+.wx-sum { margin: -0.5rem auto 1rem; max-width: 36rem; font-size: 1.05rem; padding: 0 1rem; }
+.wx-sum:empty { display: none; }
+.wx-live .wx-sum { text-shadow: 0 1px 6px rgba(0,0,0,0.35); }
 .wx-hourly { display: flex; gap: 0.5rem; overflow-x: auto; list-style: none; padding: 0 0 0.5rem; margin: 0; }
 .wx-hour { flex: 0 0 4.6rem; text-align: center; padding: 0.6rem 0.3rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: grid; gap: 0.15rem; }
 .wx-h-time { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }

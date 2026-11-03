@@ -1054,7 +1054,9 @@
       "copied": "Link copied",
       "shareNote": "You can share the link for the date you picked; the countdown starts by itself when the link is opened.",
       "addMinute": "+1 min",
-      "addToApp": "📲 Add to the Saat Tarih app"
+      "addToApp": "📲 Add to the Saat Tarih app",
+      "present": "Presenter colours",
+      "presentNote": "Green; amber in the last 2 minutes (the last fifth for short timers); red when time is up."
     },
     "alarm": {
       "title": "Online Alarm Clock: Repeating and Snooze | Saat Tarih",
@@ -2200,7 +2202,61 @@
         "a": "Yes. In full screen, the weather button in the bar that appears when you tap the screen shows the weather for your chosen location beside the clock."
       }
     ],
-    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin"
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin",
+    "wd": {
+      "calm": "Calm",
+      "light": "Light breeze",
+      "breezy": "Breezy",
+      "strong": "Strong wind",
+      "gale": "Gale"
+    },
+    "uvw": {
+      "low": "Low; no sunburn risk",
+      "moderate": "Moderate; protect yourself around midday",
+      "high": "High; use sunscreen",
+      "veryHigh": "Very high; avoid the midday sun",
+      "extreme": "Extreme; avoid staying outside"
+    },
+    "hw": {
+      "dry": "Dry",
+      "comfy": "Comfortable",
+      "humid": "Humid",
+      "veryHumid": "Very humid"
+    },
+    "vw": {
+      "fog": "Foggy",
+      "haze": "Hazy",
+      "good": "Good",
+      "clear": "Excellent"
+    },
+    "dw": {
+      "dry": "Dry air",
+      "comfy": "Comfortable",
+      "muggy": "A bit muggy",
+      "oppressive": "Oppressive"
+    },
+    "fw": {
+      "colder": "Feels colder than it is",
+      "warmer": "Feels warmer than it is"
+    },
+    "sum": {
+      "storm": "Thunderstorms expected around {time}.",
+      "rain": "Rain expected around {time}.",
+      "snow": "Snow expected around {time}.",
+      "windyAfternoon": "Windy in the afternoon.",
+      "colder": "Noticeably colder tomorrow: the high drops by {n}°.",
+      "warmer": "Noticeably warmer tomorrow: the high rises by {n}°.",
+      "default": "{cond}; high {max}, low {min}."
+    },
+    "alert": {
+      "colder": "Tomorrow will be noticeably colder than today: the high drops by {n}°.",
+      "warmer": "Tomorrow will be noticeably warmer than today: the high rises by {n}°.",
+      "rainSoon": "Rain expected around {time}; don't forget your umbrella."
+    },
+    "visibility": "Visibility",
+    "dewPoint": "Dew point",
+    "gusts": "Gusts",
+    "details": "Details"
   },
   "faqPage": {
     "title": "Frequently asked questions: time, calendar, prayer | Saat Tarih",

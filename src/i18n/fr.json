@@ -1095,7 +1095,9 @@
       "copied": "Lien copié",
       "shareNote": "Vous pouvez partager le lien de la date choisie ; le compte à rebours démarre tout seul à l’ouverture du lien.",
       "addMinute": "+1 min",
-      "addToApp": "📲 Ajouter à l'app Saat Tarih"
+      "addToApp": "📲 Ajouter à l'app Saat Tarih",
+      "present": "Couleurs de présentation",
+      "presentNote": "Vert ; orange pendant les 2 dernières minutes (le dernier cinquième pour les durées courtes) ; rouge à la fin."
     },
     "alarm": {
       "title": "Réveil en ligne : répétition et rappel | Saat Tarih",
@@ -2241,7 +2243,61 @@
         "a": "Oui. En plein écran, le bouton météo de la barre qui apparaît lorsque vous touchez l’écran affiche la météo du lieu choisi à côté de l’horloge."
       }
     ],
-    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin météo prévisions température pluie vent humidité demain cette semaine"
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin météo prévisions température pluie vent humidité demain cette semaine",
+    "wd": {
+      "calm": "Calme",
+      "light": "Brise légère",
+      "breezy": "Venteux",
+      "strong": "Vent fort",
+      "gale": "Tempête"
+    },
+    "uvw": {
+      "low": "Faible ; pas de risque de coup de soleil",
+      "moderate": "Modéré ; protégez-vous vers midi",
+      "high": "Élevé ; utilisez de la crème solaire",
+      "veryHigh": "Très élevé ; évitez le soleil de midi",
+      "extreme": "Extrême ; évitez de rester dehors"
+    },
+    "hw": {
+      "dry": "Sec",
+      "comfy": "Agréable",
+      "humid": "Humide",
+      "veryHumid": "Très humide"
+    },
+    "vw": {
+      "fog": "Brouillard",
+      "haze": "Brumeux",
+      "good": "Bonne",
+      "clear": "Excellente"
+    },
+    "dw": {
+      "dry": "Air sec",
+      "comfy": "Agréable",
+      "muggy": "Un peu lourd",
+      "oppressive": "Étouffant"
+    },
+    "fw": {
+      "colder": "Ressenti plus froid",
+      "warmer": "Ressenti plus chaud"
+    },
+    "sum": {
+      "storm": "Orages attendus vers {time}.",
+      "rain": "Pluie attendue vers {time}.",
+      "snow": "Neige attendue vers {time}.",
+      "windyAfternoon": "Venteux dans l'après-midi.",
+      "colder": "Nettement plus froid demain : maximale en baisse de {n}°.",
+      "warmer": "Nettement plus chaud demain : maximale en hausse de {n}°.",
+      "default": "{cond} ; max. {max}, min. {min}."
+    },
+    "alert": {
+      "colder": "Demain sera nettement plus froid qu'aujourd'hui : maximale en baisse de {n}°.",
+      "warmer": "Demain sera nettement plus chaud qu'aujourd'hui : maximale en hausse de {n}°.",
+      "rainSoon": "Pluie attendue vers {time} ; n'oubliez pas votre parapluie."
+    },
+    "visibility": "Visibilité",
+    "dewPoint": "Point de rosée",
+    "gusts": "Rafales",
+    "details": "Détails"
   },
   "faqPage": {
     "title": "Questions fréquentes : heure, calendrier, prière | Saat Tarih",

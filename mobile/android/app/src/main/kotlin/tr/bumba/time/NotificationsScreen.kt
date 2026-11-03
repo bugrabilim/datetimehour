@@ -125,6 +125,12 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
                     FeaturePrefs.weatherMinutes = it
                     changed()
                 }
+                RowDivider()
+                // Yarın belirgin soğuk/sıcak ve yağmur yaklaşıyor (2. analiz #110)
+                var alerts by remember { mutableStateOf(Prefs.store.getBoolean("notify.weather.alerts", true)) }
+                ToggleRow(Icons.Filled.WbSunny, L("notify.weatherAlerts"), L("notify.weatherAlerts.note"), alerts) {
+                    alerts = it; Prefs.store.edit().putBoolean("notify.weather.alerts", it).apply(); changed()
+                }
             }
         }
         AppCard(padding = 4) {

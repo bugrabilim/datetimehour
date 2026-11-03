@@ -288,7 +288,25 @@ object FeatureNotifier {
             val body = T("notify.n.weatherBody", L("weather.codes.${WeatherCode.of(day.code).key}"), Units.temp(day.max),
                 Units.temp(day.min), percent.format(day.rain / 100.0))
             Planned("weather-${day.date}", at, T("notify.n.weather", place.name), "$body\nOpen-Meteo.com", NotifyFeature.WEATHER.tab)
+        } + if (Prefs.store.getBoolean("notify.weather.alerts", true)) weatherAlerts(w, place, now) else emptyList()
+    }
+
+    /** Hava uyarıları (2. analiz #110): akşam 19.00'da "yarın belirgin şekilde soğuk/sıcak" (en yüksek 5° ve fazla fark) ve
+     *  önümüzdeki 24 saatte yağış ihtimali %60'ı geçen ilk saatten 15 dk önce "yağmur yaklaşıyor" (saatlik tahminden) */
+    internal fun weatherAlerts(w: WeatherData, place: AppPlace, now: Instant): List<Planned> {
+        val out = ArrayList<Planned>()
+        val title = T("notify.n.weather", place.name)
+        for (i in 0 until minOf(2, w.daily.size - 1)) {
+            val a = w.daily[i]; val b = w.daily[i + 1]
+            val s = tr.bumba.time.core.WeatherWords.tomorrowAlert(a.max, b.max) ?: continue
+            val at = a.date.atTime(19, 0).atZone(place.zone).toInstant()
+            if (at.isAfter(now)) out += Planned("weather-alert-${b.date}", at, title, T(s.key, Units.delta(s.n)) + "\nOpen-Meteo.com", NotifyFeature.WEATHER.tab)
         }
+        w.hourly.firstOrNull { it.at.isAfter(now.plusSeconds(1800)) && it.at.isBefore(now.plusSeconds(86_400)) && it.rain >= 60 }?.let { h ->
+            out += Planned("weather-rain-${h.at.epochSecond}", h.at.minusSeconds(900), title,
+                T("weather.alert.rainSoon", Fmt.hm(h.at, place.zone)) + "\nOpen-Meteo.com", NotifyFeature.WEATHER.tab)
+        }
+        return out
     }
 
     /** "30 Ekim 2026 Cuma · 14:25" (yerin saatiyle) */

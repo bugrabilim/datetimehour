@@ -33,11 +33,15 @@ data class WeatherData(
         val pressure: Double, val uv: Double, val code: Int, val isDay: Boolean, val precipitation: Double,
         /** Bulut oranı % (bilinmiyorsa −1; 2. analiz #193 hava canlandırması) */
         val cloud: Double = -1.0,
+        /** 2. analiz #106: hamle km/sa, görüş m (bilinmiyorsa −1), çiy noktası °C (bilinmiyorsa NaN) */
+        val gust: Double = -1.0, val visibility: Double = -1.0, val dew: Double = Double.NaN,
     )
-    data class Hour(val at: Instant, val temp: Double, val code: Int, val rain: Int, val isDay: Boolean)
+    data class Hour(val at: Instant, val temp: Double, val code: Int, val rain: Int, val isDay: Boolean, val wind: Double = 0.0)
     data class Day(
         val date: LocalDate, val code: Int, val max: Double, val min: Double, val rain: Int,
         val sunrise: Instant?, val sunset: Instant?, val uv: Double,
+        /** Günlük toplam yağış (mm) */
+        val precip: Double = 0.0,
     )
 
     val condition: WeatherCode get() = WeatherCode.of(current.code)
@@ -122,9 +126,9 @@ object WeatherCache {
         val (lat, lon) = key.split(",")
         val url = "$API?latitude=$lat&longitude=$lon" +
             "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m," +
-            "wind_direction_10m,pressure_msl,is_day,uv_index,cloud_cover" +
-            "&hourly=temperature_2m,precipitation_probability,weather_code,is_day" +
-            "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset,uv_index_max" +
+            "wind_direction_10m,pressure_msl,is_day,uv_index,cloud_cover,wind_gusts_10m,visibility,dew_point_2m" +
+            "&hourly=temperature_2m,precipitation_probability,weather_code,is_day,wind_speed_10m" +
+            "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset,uv_index_max,precipitation_sum" +
             "&timezone=auto&forecast_days=14"
         val c = URL(url).openConnection() as HttpURLConnection
         c.connectTimeout = 10_000
@@ -154,6 +158,9 @@ object WeatherCache {
             isDay = cu.optInt("is_day", 1) == 1,
             precipitation = cu.optDouble("precipitation", 0.0),
             cloud = cu.optDouble("cloud_cover", -1.0),
+            gust = cu.optDouble("wind_gusts_10m", -1.0),
+            visibility = cu.optDouble("visibility", -1.0),
+            dew = cu.optDouble("dew_point_2m", Double.NaN),
         )
         val h = o.getJSONObject("hourly")
         val ht = h.getJSONArray("time")
@@ -164,6 +171,7 @@ object WeatherCache {
                 h.getJSONArray("weather_code").optInt(i, 2),
                 h.getJSONArray("precipitation_probability").optInt(i, 0),
                 h.getJSONArray("is_day").optInt(i, 1) == 1,
+                h.optJSONArray("wind_speed_10m")?.optDouble(i, 0.0) ?: 0.0,
             )
         }
         val d = o.getJSONObject("daily")
@@ -178,6 +186,7 @@ object WeatherCache {
                 d.optJSONArray("precipitation_probability_max")?.optInt(i, 0) ?: 0,
                 sun("sunrise"), sun("sunset"),
                 d.optJSONArray("uv_index_max")?.optDouble(i, 0.0) ?: 0.0,
+                d.optJSONArray("precipitation_sum")?.optDouble(i, 0.0) ?: 0.0,
             )
         }
         return WeatherData(zone, current, hourly, daily)
@@ -206,6 +215,43 @@ object Units {
     fun wind(kmh: Double): String =
         if (imperial) "${Math.round(kmh / 1.609344)} mph" else T("weather.km", Math.round(kmh))
 
-    fun pressure(hpa: Double): String =
-        if (imperial) String.format(Locale.ROOT, "%.2f inHg", hpa * 0.0295299830714) else "${Math.round(hpa)} hPa"
+    /** Basınç birimi (2. analiz #106; Ayarlar › Birimler, `units.pressure`): auto (birime göre), hPa, mmHg, inHg */
+    val pressureUnit: String get() = Prefs.store.getString("units.pressure", "auto") ?: "auto"
+
+    fun pressure(hpa: Double): String = when (pressureUnit.takeIf { it != "auto" } ?: if (imperial) "inHg" else "hPa") {
+        "inHg" -> String.format(Locale.ROOT, "%.2f inHg", hpa * 0.0295299830714)
+        "mmHg" -> "${Math.round(hpa * 0.750061683)} mmHg"
+        else -> "${Math.round(hpa)} hPa"
+    }
+
+    /** Görüş: 10 km'den uzaksa tam sayı, yakınsa bir ondalık (Amerikan biriminde mil) */
+    fun distance(m: Double): String {
+        val v = if (imperial) m / 1609.344 else m / 1000
+        val s = if (v >= 10) Math.round(v).toString() else (Math.round(v * 10) / 10.0).toString().replace(".", Strings.decimalPoint)
+        return s + if (imperial) " mi" else " km"
+    }
+
+    /** Yağış miktarı (mm ya da inç) */
+    fun precip(mm: Double): String = if (imperial) String.format(Locale.ROOT, "%.2f in", mm / 25.4).replace(".", Strings.decimalPoint)
+        else (Math.round(mm * 10) / 10.0).toString().replace(".", Strings.decimalPoint) + " mm"
+
+    /** Derece farkı (yarın uyarısı; Amerikan biriminde °F farkı) */
+    fun delta(c: Int): Int = if (imperial) Math.round(c * 1.8).toInt() else c
+}
+
+/** Hava durumunun sözlü özeti ve açıklamaları (2. analiz #108; kural core/WeatherWords, sitedeki weather-core.js ile aynı) */
+object WeatherSpeech {
+    fun next(d: WeatherData, now: Instant = Instant.now()): List<tr.bumba.time.core.WeatherWords.Hour> =
+        d.hourly.filter { it.at.isAfter(now.minusSeconds(3600)) }.take(12)
+            .map { tr.bumba.time.core.WeatherWords.Hour(it.at.atZone(d.zone).hour, it.code, it.rain, it.wind) }
+
+    fun summary(d: WeatherData, now: Instant = Instant.now()): String {
+        val today = d.daily.firstOrNull() ?: return ""
+        val s = tr.bumba.time.core.WeatherWords.summary(next(d, now), today.max, d.daily.getOrNull(1)?.max)
+        return when (s.key) {
+            "weather.sum.default" -> T(s.key, d.condition.label, Units.temp(today.max), Units.temp(today.min))
+            "weather.sum.colder", "weather.sum.warmer" -> T(s.key, Units.delta(s.n))
+            else -> T(s.key, Fmt.hm(today.date.atTime(s.hour, 0).atZone(d.zone).toInstant(), d.zone))
+        }
+    }
 }

@@ -1120,7 +1120,9 @@
       "copied": "Nakopya ang link",
       "shareNote": "Maibabahagi mo ang link para sa petsang pinili mo; kusang magsisimula ang countdown kapag binuksan ang link.",
       "addMinute": "+1 min",
-      "addToApp": "📲 Idagdag sa Saat Tarih app"
+      "addToApp": "📲 Idagdag sa Saat Tarih app",
+      "present": "Kulay para sa presentasyon",
+      "presentNote": "Berde; dilaw sa huling 2 minuto (sa huling ikalima para sa maiikling timer); pula kapag tapos na ang oras."
     },
     "alarm": {
       "title": "Online Alarm Clock: Paulit-ulit at Snooze | Saat Tarih",
@@ -2266,7 +2268,61 @@
         "a": "Oo. Sa full screen, i-tap ang screen para lumabas ang bar; ipapakita ng button ng panahon doon ang panahon ng napili mong lokasyon sa tabi ng orasan."
       }
     ],
-    "search": "panahon forecast temperatura ulan hangin halumigmig uv bukas ngayong linggo weather hava durumu tahmin"
+    "search": "panahon forecast temperatura ulan hangin halumigmig uv bukas ngayong linggo weather hava durumu tahmin",
+    "wd": {
+      "calm": "Kalmado",
+      "light": "Mahinang simoy",
+      "breezy": "Mahangin",
+      "strong": "Malakas na hangin",
+      "gale": "Unos"
+    },
+    "uvw": {
+      "low": "Mababa; walang panganib ng sunburn",
+      "moderate": "Katamtaman; mag-ingat sa tanghali",
+      "high": "Mataas; gumamit ng sunscreen",
+      "veryHigh": "Napakataas; iwasan ang araw sa tanghali",
+      "extreme": "Matindi; iwasang manatili sa labas"
+    },
+    "hw": {
+      "dry": "Tuyo",
+      "comfy": "Komportable",
+      "humid": "Maalinsangan",
+      "veryHumid": "Napakaalinsangan"
+    },
+    "vw": {
+      "fog": "Mahamog",
+      "haze": "Malabo",
+      "good": "Maganda",
+      "clear": "Napakaganda"
+    },
+    "dw": {
+      "dry": "Tuyong hangin",
+      "comfy": "Komportable",
+      "muggy": "Medyo maalinsangan",
+      "oppressive": "Napakaalinsangan"
+    },
+    "fw": {
+      "colder": "Mas malamig ang pakiramdam",
+      "warmer": "Mas mainit ang pakiramdam"
+    },
+    "sum": {
+      "storm": "Inaasahan ang kulog at kidlat bandang {time}.",
+      "rain": "Inaasahan ang ulan bandang {time}.",
+      "snow": "Inaasahan ang niyebe bandang {time}.",
+      "windyAfternoon": "Mahangin sa hapon.",
+      "colder": "Mas malamig bukas: bababa nang {n}° ang pinakamataas.",
+      "warmer": "Mas mainit bukas: tataas nang {n}° ang pinakamataas.",
+      "default": "{cond}; pinakamataas {max}, pinakamababa {min}."
+    },
+    "alert": {
+      "colder": "Mas malamig bukas kaysa ngayon: bababa nang {n}° ang pinakamataas.",
+      "warmer": "Mas mainit bukas kaysa ngayon: tataas nang {n}° ang pinakamataas.",
+      "rainSoon": "Inaasahan ang ulan bandang {time}; huwag kalimutan ang payong."
+    },
+    "visibility": "Visibility",
+    "dewPoint": "Dew point",
+    "gusts": "Bugso",
+    "details": "Mga detalye"
   },
   "faqPage": {
     "title": "Mga madalas itanong: oras, kalendaryo, pagdarasal | Saat Tarih",

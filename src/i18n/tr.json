@@ -1054,7 +1054,9 @@
       "copied": "Bağlantı kopyalandı",
       "shareNote": "Seçtiğiniz tarihe ait bağlantıyı paylaşabilirsiniz; bağlantı açılınca sayım kendiliğinden başlar.",
       "addMinute": "+1 dk",
-      "addToApp": "📲 Saat Tarih uygulamasına ekle"
+      "addToApp": "📲 Saat Tarih uygulamasına ekle",
+      "present": "Sunum renkleri",
+      "presentNote": "Süre yeşil; son 2 dakikada (kısa sürelerde son beşte birde) sarı; bitince kırmızı."
     },
     "alarm": {
       "title": "Online Alarm Saati: Tekrarlı ve Ertelemeli | Saat Tarih",
@@ -2200,7 +2202,61 @@
         "a": "Evet. Tam ekranda ekrana dokunduğunuzda beliren çubuktaki hava durumu düğmesiyle seçili konumun hava durumu saatin yanında gösterilir."
       }
     ],
-    "search": "hava durumu tahmin sıcaklık yağmur rüzgar nem uv yarın bu hafta weather forecast temperature rain wind humidity"
+    "search": "hava durumu tahmin sıcaklık yağmur rüzgar nem uv yarın bu hafta weather forecast temperature rain wind humidity",
+    "wd": {
+      "calm": "Sakin",
+      "light": "Hafif esinti",
+      "breezy": "Rüzgârlı",
+      "strong": "Kuvvetli rüzgâr",
+      "gale": "Fırtına"
+    },
+    "uvw": {
+      "low": "Düşük; güneş yanığı riski yok",
+      "moderate": "Orta; öğle saatlerinde korunun",
+      "high": "Yüksek; güneş kremi kullanın",
+      "veryHigh": "Çok yüksek; öğle güneşinden kaçının",
+      "extreme": "Aşırı; dışarıda uzun kalmayın"
+    },
+    "hw": {
+      "dry": "Kuru",
+      "comfy": "Rahat",
+      "humid": "Nemli",
+      "veryHumid": "Çok nemli"
+    },
+    "vw": {
+      "fog": "Sisli",
+      "haze": "Puslu",
+      "good": "İyi",
+      "clear": "Çok iyi"
+    },
+    "dw": {
+      "dry": "Kuru hava",
+      "comfy": "Rahat",
+      "muggy": "Biraz bunaltıcı",
+      "oppressive": "Bunaltıcı"
+    },
+    "fw": {
+      "colder": "Olduğundan daha soğuk hissettiriyor",
+      "warmer": "Olduğundan daha sıcak hissettiriyor"
+    },
+    "sum": {
+      "storm": "Saat {time} civarı gök gürültülü sağanak bekleniyor.",
+      "rain": "Saat {time} civarı yağmur bekleniyor.",
+      "snow": "Saat {time} civarı kar bekleniyor.",
+      "windyAfternoon": "Öğleden sonra rüzgârlı.",
+      "colder": "Yarın belirgin şekilde daha soğuk: en yüksek sıcaklık {n}° düşüyor.",
+      "warmer": "Yarın belirgin şekilde daha sıcak: en yüksek sıcaklık {n}° artıyor.",
+      "default": "{cond}; en yüksek {max}, en düşük {min}."
+    },
+    "alert": {
+      "colder": "Yarın bugünden belirgin şekilde soğuk: en yüksek sıcaklık {n}° düşüyor.",
+      "warmer": "Yarın bugünden belirgin şekilde sıcak: en yüksek sıcaklık {n}° artıyor.",
+      "rainSoon": "Saat {time} civarı yağmur bekleniyor; şemsiyenizi unutmayın."
+    },
+    "visibility": "Görüş",
+    "dewPoint": "Çiy noktası",
+    "gusts": "Hamle",
+    "details": "Ayrıntılar"
   },
   "faqPage": {
     "title": "Sıkça sorulan sorular: saat, takvim, namaz vakitleri | Saat Tarih",

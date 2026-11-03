@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -50,6 +52,16 @@ import java.time.Instant
  */
 @Composable
 fun WeatherScreen() {
+    // Ay takvimi alt sayfası (Ay kartına dokununca; Mevsimler'deki gibi)
+    var moonPage by androidx.compose.runtime.saveable.rememberSaveable { mutableStateOf(false) }
+    if (moonPage) {
+        androidx.activity.compose.BackHandler { moonPage = false }
+        Column(Modifier.fillMaxSize()) {
+            SubBar(L("moon.calendarLink"), onBack = { moonPage = false })
+            MoonScreen()
+        }
+        return
+    }
     val place = AppPlace.current()
     var data by remember(place.lat, place.lon) { mutableStateOf(WeatherCache.cached(place.lat, place.lon)) }
     var failed by remember { mutableStateOf(false) }
@@ -72,6 +84,10 @@ fun WeatherScreen() {
             d != null -> {
                 Current(d)
                 Hourly(d)
+                Details(d)
+                // Güneş yayı ve Ay (2. analiz #109)
+                SunMoonArc(Instant.now(), place)
+                WeatherMoonCard(place) { moonPage = true }
                 Daily(d)
             }
             failed -> {
@@ -119,14 +135,18 @@ private fun Current(d: WeatherData) {
             Ltr { Text(Units.temp(c.temp), color = Theme.c.text, fontSize = 56.sp, fontWeight = FontWeight.SemiBold) }
             Text(d.condition.label, color = Theme.c.text, fontSize = 20.sp)
             d.today?.let { Ltr { Text("↑ ${Units.temp(it.max)}   ↓ ${Units.temp(it.min)}", color = Theme.c.muted) } }
+            // Sözlü günlük özet (2. analiz #108)
+            val sum = WeatherSpeech.summary(d)
+            if (sum.isNotEmpty()) Text(sum, color = Theme.c.text, fontSize = 15.sp, textAlign = TextAlign.Center, modifier = Modifier.padding(top = 4.dp))
         }
+        val W = tr.bumba.time.core.WeatherWords
         Row(Modifier.fillMaxWidth().padding(top = 8.dp)) {
-            Pill(L("weather.feelsLike"), Units.temp(c.feels), Modifier.weight(1f))
-            Pill(L("weather.humidity"), Fmt.percent(Math.round(c.humidity).toInt()), Modifier.weight(1f))
+            Pill(L("weather.feelsLike"), Units.temp(c.feels), Modifier.weight(1f), W.feels(c.temp, c.feels)?.let { L(it) })
+            Pill(L("weather.humidity"), Fmt.percent(Math.round(c.humidity).toInt()), Modifier.weight(1f), L(W.humidity(c.humidity)))
         }
         Row(Modifier.fillMaxWidth()) {
-            Pill(L("weather.wind"), Units.wind(c.wind), Modifier.weight(1f))
-            Pill(L("weather.uv"), "${Math.round(c.uv)}", Modifier.weight(1f))
+            Pill(L("weather.wind"), Units.wind(c.wind), Modifier.weight(1f), L(W.wind(c.wind)))
+            Pill(L("weather.uv"), "${Math.round(c.uv)}", Modifier.weight(1f), L(W.uv(c.uv)))
         }
         Row(Modifier.fillMaxWidth()) {
             Pill(L("weather.rainChanceShort"), Fmt.percent(d.rainNow), Modifier.weight(1f))
@@ -136,10 +156,75 @@ private fun Current(d: WeatherData) {
 }
 
 @Composable
-private fun Pill(title: String, value: String, modifier: Modifier) {
+private fun Pill(title: String, value: String, modifier: Modifier, note: String? = null) {
     Column(modifier) {
         Text(title, color = Theme.c.muted, fontSize = 12.sp)
         Ltr { Text(value, color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold) }
+        if (note != null) Text(note, color = Theme.c.muted, fontSize = 12.sp, maxLines = 2)
+    }
+}
+
+/** Ek ölçümler (2. analiz #106): rüzgâr yönü ve hamle, görüş, çiy noktası, bugünkü yağış, gün doğumu/batımı */
+@Composable
+private fun Details(d: WeatherData) {
+    val c = d.current
+    val W = tr.bumba.time.core.WeatherWords
+    val compass = (0..7).map { L("weather.compass.$it") }
+    AppCard {
+        SectionTitle(L("weather.details"))
+        Row(Modifier.fillMaxWidth()) {
+            Column(Modifier.weight(1f)) {
+                Text(L("weather.wind"), color = Theme.c.muted, fontSize = 12.sp)
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    // Ok rüzgârın gittiği yönü gösterir (gelen yön + 180°)
+                    Text("↑", Modifier.rotate((c.windDir + 180).toFloat()), color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    Spacer(Modifier.width(6.dp))
+                    Ltr { Text(Units.wind(c.wind), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold) }
+                }
+                Text(T("weather.windFrom", compass[W.compass8(c.windDir)]), color = Theme.c.muted, fontSize = 12.sp)
+            }
+            if (c.gust >= 0) Pill(L("weather.gusts"), Units.wind(c.gust), Modifier.weight(1f))
+        }
+        Row(Modifier.fillMaxWidth()) {
+            if (c.visibility >= 0) Pill(L("weather.visibility"), Units.distance(c.visibility), Modifier.weight(1f), L(W.visibility(c.visibility)))
+            if (!c.dew.isNaN()) Pill(L("weather.dewPoint"), Units.temp(c.dew), Modifier.weight(1f), L(W.dew(c.dew)))
+        }
+        Row(Modifier.fillMaxWidth()) {
+            Pill(L("weather.precipitation"), Units.precip(d.today?.precip ?: c.precipitation), Modifier.weight(1f))
+            Pill(L("weather.rainChanceShort"), Fmt.percent(d.rainNow), Modifier.weight(1f))
+        }
+        d.today?.let { t ->
+            Row(Modifier.fillMaxWidth()) {
+                Pill(L("weather.sunrise"), t.sunrise?.let { Fmt.hm(it, d.zone) } ?: "–", Modifier.weight(1f))
+                Pill(L("weather.sunset"), t.sunset?.let { Fmt.hm(it, d.zone) } ?: "–", Modifier.weight(1f))
+            }
+        }
+    }
+}
+
+/** Ay kartı (2. analiz #109): evre, aydınlık yüzde, yeni aya ve dolunaya kalan gün, doğuş/batış; dokununca Ay takvimi */
+@Composable
+private fun WeatherMoonCard(place: AppPlace, onOpen: () -> Unit) {
+    val now = Instant.now()
+    val moon = tr.bumba.time.core.Nature.moon(now.toEpochMilli())
+    val today = place.today(now)
+    val rs = moonRiseSet(place, today)
+    fun days(ms: Long) = Math.max(0, Math.round((ms - now.toEpochMilli()) / 86_400_000.0)).toInt()
+    AppCard(Modifier.clickable(onClick = onOpen)) {
+        SectionTitle(L("nature.moonHeading"))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(MOON_PHASE_EMOJI[moon.phaseIndex], fontSize = 40.sp)
+            Spacer(Modifier.width(12.dp))
+            Column(Modifier.weight(1f)) {
+                Text(L("nature.phases.${MOON_PHASE_KEYS[moon.phaseIndex]}"), color = Theme.c.text, fontSize = 16.sp, fontWeight = FontWeight.SemiBold)
+                Text(T("nature.illumination", Math.round(moon.illumination * 100)), color = Theme.c.muted, fontSize = 13.sp)
+                Text("↑ ${moonTime(rs.rise, place, "nature.moonNoRise")}   ↓ ${moonTime(rs.set, place, "nature.moonNoSet")}", color = Theme.c.text, fontSize = 13.sp)
+            }
+            Column(horizontalAlignment = Alignment.End) {
+                Text("🌑 " + T("weather.moonDays", days(moon.nextNewMoon)), color = Theme.c.muted, fontSize = 13.sp)
+                Text("🌕 " + T("weather.moonDays", days(moon.nextFullMoon)), color = Theme.c.muted, fontSize = 13.sp)
+            }
+        }
     }
 }
 

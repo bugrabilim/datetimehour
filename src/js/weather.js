@@ -11,7 +11,11 @@
   var stateEl = q("[data-wx-state]"), nowBox = q("[data-wx-now]"), retry = q("[data-wx-retry]");
   var current = null, seq = 0;
   function el(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-  function fact(dl, label, value) { var d = el("div", "fact"); d.appendChild(el("dt", null, label)); d.appendChild(el("dd", null, value)); dl.appendChild(d); }
+  function fact(dl, label, value, note) {
+    var d = el("div", "fact"); d.appendChild(el("dt", null, label)); d.appendChild(el("dd", null, value));
+    if (note) d.appendChild(el("dd", "fact-note", note));
+    dl.appendChild(d);
+  }
   var pad = function (n) { return String(n).padStart(2, "0"); };
 
   function render(place, d) {
@@ -26,12 +30,16 @@
     q("[data-wx-temp]").textContent = W.temp(c.temperature_2m);
     q("[data-wx-cond]").textContent = i.label;
     var dl = q("[data-wx-facts]"); dl.textContent = "";
-    fact(dl, X.feelsLike, W.temp(c.apparent_temperature));
-    fact(dl, X.humidity, S.pct(Math.round(c.relative_humidity_2m)));
-    fact(dl, X.wind, Math.round(c.wind_speed_10m) + " km/h · " + S.tpl(X.windFrom, { dir: W.compass(c.wind_direction_10m) }));
+    var Wd = W.words, sub = function (grp, k) { return k && X[grp] ? X[grp][k] || "" : ""; };
+    fact(dl, X.feelsLike, W.temp(c.apparent_temperature), sub("fw", Wd.feels(c.temperature_2m, c.apparent_temperature)));
+    fact(dl, X.humidity, S.pct(Math.round(c.relative_humidity_2m)), sub("hw", Wd.humidity(c.relative_humidity_2m)));
+    fact(dl, X.wind, Math.round(c.wind_speed_10m) + " km/h · " + S.tpl(X.windFrom, { dir: W.compass(c.wind_direction_10m) }), sub("wd", Wd.wind(c.wind_speed_10m)));
+    if (c.wind_gusts_10m != null) fact(dl, X.gusts, Math.round(c.wind_gusts_10m) + " km/h");
     fact(dl, X.precipitation, (Math.round(c.precipitation * 10) / 10) + " mm");
     fact(dl, X.pressure, Math.round(c.pressure_msl) + " hPa");
-    fact(dl, X.uv, String(Math.round(c.uv_index * 10) / 10));
+    fact(dl, X.uv, String(Math.round(c.uv_index * 10) / 10), sub("uvw", Wd.uv(c.uv_index)));
+    if (c.visibility != null) fact(dl, X.visibility, (c.visibility >= 10000 ? Math.round(c.visibility / 1000) : Math.round(c.visibility / 100) / 10) + " km", sub("vw", Wd.visibility(c.visibility)));
+    if (c.dew_point_2m != null) fact(dl, X.dewPoint, W.temp(c.dew_point_2m), sub("dw", Wd.dew(c.dew_point_2m)));
     nowBox.hidden = false;
     // saatlik: şu andan sonraki 24 saat
     var h = d.hourly, start = 0;
@@ -47,6 +55,12 @@
       ul.appendChild(li);
     }
     q("[data-wx-hourly-box]").hidden = false;
+    // Günlük özet cümlesi (2. analiz #108)
+    var nx = [];
+    for (var z = start; z < Math.min(start + 12, h.time.length); z++) nx.push({ hour: +h.time[z].slice(11, 13), code: h.weather_code[z], rain: h.precipitation_probability[z] || 0, wind: (h.wind_speed_10m || [])[z] || 0 });
+    var dd0 = d.daily, sm = W.summary(nx, dd0.temperature_2m_max[0], dd0.temperature_2m_max.length > 1 ? dd0.temperature_2m_max[1] : null);
+    var sumEl = q("[data-wx-sum]");
+    if (sumEl && X.sum) sumEl.textContent = S.tpl(X.sum[sm.key] || "", { time: pad(sm.hour) + ":00", n: sm.n, cond: i.label, max: W.temp(dd0.temperature_2m_max[0]), min: W.temp(dd0.temperature_2m_min[0]) });
     // günlük
     var dd = d.daily, du = q("[data-wx-daily]"); du.textContent = "";
     var lo = Math.min.apply(null, dd.temperature_2m_min), hi = Math.max.apply(null, dd.temperature_2m_max), span = Math.max(1, hi - lo);

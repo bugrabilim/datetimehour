@@ -132,6 +132,18 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                         }
                     }
                 }
+                // Basınç birimi (2. analiz #106)
+                Text(L("settings.pressureUnit"), color = Theme.c.muted, fontSize = 13.sp)
+                var pu by remember { mutableStateOf(Units.pressureUnit) }
+                val popts = listOf("auto", "hPa", "mmHg", "inHg")
+                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                    popts.forEachIndexed { i, o ->
+                        SegmentedButton(pu == o, { pu = o; Prefs.store.edit().putString("units.pressure", o).apply() },
+                            SegmentedButtonDefaults.itemShape(i, popts.size), colors = segColors()) {
+                            Text(if (o == "auto") L("countdowns.unit.auto") else o, fontSize = 12.sp, maxLines = 1)
+                        }
+                    }
+                }
             }
         }
         AppCard {

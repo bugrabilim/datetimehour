@@ -1054,7 +1054,9 @@
       "copied": "Keçid kopyalandı",
       "shareNote": "Seçdiyiniz tarixin keçidini paylaşa bilərsiniz; keçid açılanda geriyə sayım avtomatik başlayır.",
       "addMinute": "+1 dəq",
-      "addToApp": "📲 Saat Tarix tətbiqinə əlavə et"
+      "addToApp": "📲 Saat Tarix tətbiqinə əlavə et",
+      "present": "Təqdimat rəngləri",
+      "presentNote": "Yaşıl; son 2 dəqiqədə (qısa müddətlərdə son beşdə birdə) sarı; bitəndə qırmızı."
     },
     "alarm": {
       "title": "Onlayn zəngli saat: təkrar və təxirə salma | Saat Tarih",
@@ -2200,7 +2202,61 @@
         "a": "Bəli. Tam ekranda ekrana toxunduqda çıxan paneldəki hava düyməsi seçdiyiniz məkanın havasını saatın yanında göstərir."
       }
     ],
-    "search": "hava proqnoz temperatur yağış külək rütubət UB sabah bu həftə hava vəziyyəti weather forecast temperature rain wind humidity uv tomorrow this week"
+    "search": "hava proqnoz temperatur yağış külək rütubət UB sabah bu həftə hava vəziyyəti weather forecast temperature rain wind humidity uv tomorrow this week",
+    "wd": {
+      "calm": "Sakit",
+      "light": "Yüngül meh",
+      "breezy": "Küləkli",
+      "strong": "Güclü külək",
+      "gale": "Fırtına"
+    },
+    "uvw": {
+      "low": "Aşağı; günəş yanığı riski yoxdur",
+      "moderate": "Orta; günorta saatlarında qorunun",
+      "high": "Yüksək; günəş kremi istifadə edin",
+      "veryHigh": "Çox yüksək; günorta günəşindən qaçın",
+      "extreme": "Həddindən artıq; çöldə çox qalmayın"
+    },
+    "hw": {
+      "dry": "Quru",
+      "comfy": "Rahat",
+      "humid": "Rütubətli",
+      "veryHumid": "Çox rütubətli"
+    },
+    "vw": {
+      "fog": "Dumanlı",
+      "haze": "Dumanlı-tozlu",
+      "good": "Yaxşı",
+      "clear": "Çox yaxşı"
+    },
+    "dw": {
+      "dry": "Quru hava",
+      "comfy": "Rahat",
+      "muggy": "Bir az boğucu",
+      "oppressive": "Boğucu"
+    },
+    "fw": {
+      "colder": "Olduğundan soyuq hiss olunur",
+      "warmer": "Olduğundan isti hiss olunur"
+    },
+    "sum": {
+      "storm": "Saat {time} radələrində ildırımlı leysan gözlənilir.",
+      "rain": "Saat {time} radələrində yağış gözlənilir.",
+      "snow": "Saat {time} radələrində qar gözlənilir.",
+      "windyAfternoon": "Günortadan sonra küləkli.",
+      "colder": "Sabah nəzərəçarpacaq dərəcədə soyuq: ən yüksək temperatur {n}° düşür.",
+      "warmer": "Sabah nəzərəçarpacaq dərəcədə isti: ən yüksək temperatur {n}° artır.",
+      "default": "{cond}; ən yüksək {max}, ən aşağı {min}."
+    },
+    "alert": {
+      "colder": "Sabah bu gündən nəzərəçarpacaq dərəcədə soyuq olacaq: ən yüksək temperatur {n}° düşür.",
+      "warmer": "Sabah bu gündən nəzərəçarpacaq dərəcədə isti olacaq: ən yüksək temperatur {n}° artır.",
+      "rainSoon": "Saat {time} radələrində yağış gözlənilir; çətirinizi unutmayın."
+    },
+    "visibility": "Görmə məsafəsi",
+    "dewPoint": "Şeh nöqtəsi",
+    "gusts": "Külək zərbəsi",
+    "details": "Təfərrüatlar"
   },
   "faqPage": {
     "title": "Tez-tez verilən suallar: saat, təqvim, namaz | Saat Tarih",

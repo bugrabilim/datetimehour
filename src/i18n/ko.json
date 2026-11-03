@@ -1080,7 +1080,9 @@
       "copied": "링크를 복사했습니다",
       "shareNote": "고른 날짜의 링크를 공유할 수 있습니다. 링크를 열면 카운트다운이 자동으로 시작됩니다.",
       "addMinute": "+1분",
-      "addToApp": "📲 Saat Tarih 앱에 추가"
+      "addToApp": "📲 Saat Tarih 앱에 추가",
+      "present": "발표 색상",
+      "presentNote": "초록색, 마지막 2분(짧은 시간은 마지막 5분의 1)에는 노란색, 시간이 끝나면 빨간색."
     },
     "alarm": {
       "title": "온라인 알람 시계: 반복과 다시 알림 | Saat Tarih",
@@ -2226,7 +2228,61 @@
         "a": "네. 전체 화면에서 화면을 누르면 막대가 나타나며, 여기서 날씨 버튼을 누르면 고른 위치의 날씨가 시계 옆에 표시됩니다."
       }
     ],
-    "search": "날씨 예보 기온 비 바람 습도 자외선 내일 이번 주 weather forecast hava durumu tahmin"
+    "search": "날씨 예보 기온 비 바람 습도 자외선 내일 이번 주 weather forecast hava durumu tahmin",
+    "wd": {
+      "calm": "고요함",
+      "light": "약한 바람",
+      "breezy": "바람이 붊",
+      "strong": "강풍",
+      "gale": "폭풍"
+    },
+    "uvw": {
+      "low": "낮음: 햇볕 화상 위험 없음",
+      "moderate": "보통: 한낮에는 주의",
+      "high": "높음: 자외선 차단제 사용",
+      "veryHigh": "매우 높음: 한낮 햇볕 피하기",
+      "extreme": "위험: 야외 활동 자제"
+    },
+    "hw": {
+      "dry": "건조",
+      "comfy": "쾌적",
+      "humid": "습함",
+      "veryHumid": "매우 습함"
+    },
+    "vw": {
+      "fog": "안개",
+      "haze": "연무",
+      "good": "좋음",
+      "clear": "매우 좋음"
+    },
+    "dw": {
+      "dry": "건조한 공기",
+      "comfy": "쾌적",
+      "muggy": "약간 후텁지근",
+      "oppressive": "후텁지근"
+    },
+    "fw": {
+      "colder": "실제보다 춥게 느껴짐",
+      "warmer": "실제보다 덥게 느껴짐"
+    },
+    "sum": {
+      "storm": "{time}경 뇌우가 예상됩니다.",
+      "rain": "{time}경 비가 예상됩니다.",
+      "snow": "{time}경 눈이 예상됩니다.",
+      "windyAfternoon": "오후에 바람이 붑니다.",
+      "colder": "내일은 눈에 띄게 추워져 최고 기온이 {n}° 내려갑니다.",
+      "warmer": "내일은 눈에 띄게 따뜻해져 최고 기온이 {n}° 올라갑니다.",
+      "default": "{cond}, 최고 {max}, 최저 {min}."
+    },
+    "alert": {
+      "colder": "내일은 오늘보다 눈에 띄게 춥습니다. 최고 기온이 {n}° 내려갑니다.",
+      "warmer": "내일은 오늘보다 눈에 띄게 따뜻합니다. 최고 기온이 {n}° 올라갑니다.",
+      "rainSoon": "{time}경 비가 예상됩니다. 우산을 챙기세요."
+    },
+    "visibility": "가시거리",
+    "dewPoint": "이슬점",
+    "gusts": "돌풍",
+    "details": "세부 정보"
   },
   "faqPage": {
     "title": "자주 묻는 질문: 시간, 달력, 기도 | Saat Tarih",

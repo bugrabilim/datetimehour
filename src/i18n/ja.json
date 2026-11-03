@@ -1054,7 +1054,9 @@
       "copied": "リンクをコピーしました",
       "shareNote": "選んだ日付のリンクを共有できます。リンクを開くとカウントダウンが自動で始まります。",
       "addMinute": "+1分",
-      "addToApp": "📲 Saat Tarih アプリに追加"
+      "addToApp": "📲 Saat Tarih アプリに追加",
+      "present": "プレゼン用の色",
+      "presentNote": "緑。残り2分（短い時間では最後の5分の1）で黄色、時間切れで赤。"
     },
     "alarm": {
       "title": "オンライン目覚まし時計：繰り返しとスヌーズ | Saat Tarih",
@@ -2200,7 +2202,61 @@
         "a": "はい。全画面で画面をタップすると現れるバーの天気ボタンで、選んだ場所の天気を時計の横に表示できます。"
       }
     ],
-    "search": "天気 予報 気温 雨 風 湿度 紫外線 明日 今週 weather forecast hava durumu tahmin"
+    "search": "天気 予報 気温 雨 風 湿度 紫外線 明日 今週 weather forecast hava durumu tahmin",
+    "wd": {
+      "calm": "静穏",
+      "light": "そよ風",
+      "breezy": "やや風が強い",
+      "strong": "強風",
+      "gale": "暴風"
+    },
+    "uvw": {
+      "low": "弱い：日焼けの心配なし",
+      "moderate": "中程度：日中は対策を",
+      "high": "強い：日焼け止めを",
+      "veryHigh": "非常に強い：日中の外出を控えて",
+      "extreme": "極端に強い：屋外は避けて"
+    },
+    "hw": {
+      "dry": "乾燥",
+      "comfy": "快適",
+      "humid": "蒸し暑い",
+      "veryHumid": "とても蒸し暑い"
+    },
+    "vw": {
+      "fog": "霧",
+      "haze": "もや",
+      "good": "良好",
+      "clear": "非常に良い"
+    },
+    "dw": {
+      "dry": "乾いた空気",
+      "comfy": "快適",
+      "muggy": "やや蒸し暑い",
+      "oppressive": "蒸し暑い"
+    },
+    "fw": {
+      "colder": "実際より寒く感じる",
+      "warmer": "実際より暑く感じる"
+    },
+    "sum": {
+      "storm": "{time}ごろ雷雨の見込み。",
+      "rain": "{time}ごろ雨の見込み。",
+      "snow": "{time}ごろ雪の見込み。",
+      "windyAfternoon": "午後は風が強い。",
+      "colder": "明日はかなり寒く、最高気温が{n}°下がる。",
+      "warmer": "明日はかなり暖かく、最高気温が{n}°上がる。",
+      "default": "{cond}。最高{max}、最低{min}。"
+    },
+    "alert": {
+      "colder": "明日は今日よりかなり寒くなります。最高気温は{n}°低下。",
+      "warmer": "明日は今日よりかなり暖かくなります。最高気温は{n}°上昇。",
+      "rainSoon": "{time}ごろ雨の見込み。傘をお忘れなく。"
+    },
+    "visibility": "視程",
+    "dewPoint": "露点",
+    "gusts": "最大瞬間風速",
+    "details": "詳細"
   },
   "faqPage": {
     "title": "よくある質問：時刻、カレンダー、礼拝 | Saat Tarih",

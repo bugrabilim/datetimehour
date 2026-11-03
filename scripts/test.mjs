@@ -583,6 +583,31 @@ for (const l of LANGS) {
     check(/data-wx-fx/.test(wh) && /weather-fx\.js/.test(wh), "hava sayfasında canlandırma canvas'ı ve betiği olmalı");
     check(/cloud_cover/.test(fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8")), "hava isteğinde bulut oranı olmalı");
   }
+  // Hava açıklamaları ve günlük özet (2. analiz #108): eşikler Android WeatherWordsTest ve Swift WeatherWordsTests ile aynı girdiler
+  {
+    const win = { sth: { T: {} }, addEventListener() {} };
+    const docStub = { querySelectorAll: () => [], querySelector: () => null, createElement: () => ({}) };
+    new Function("window", "document", fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8"))(win, docStub);
+    const W = win.sthWeather, Wd = W.words;
+    check([3, 12, 25, 45, 80].map(Wd.wind).join() === "calm,light,breezy,strong,gale", "hava sözleri: rüzgâr");
+    check([1, 4, 7, 9.5, 12].map(Wd.uv).join() === "low,moderate,high,veryHigh,extreme", "hava sözleri: UV");
+    check([20, 45, 70, 90].map(Wd.humidity).join() === "dry,comfy,humid,veryHumid", "hava sözleri: nem");
+    check([500, 2500, 8000, 24000].map(Wd.visibility).join() === "fog,haze,good,clear", "hava sözleri: görüş");
+    check([5, 12, 18, 22].map(Wd.dew).join() === "dry,comfy,muggy,oppressive", "hava sözleri: çiy noktası");
+    check(Wd.feels(10, 6) === "colder" && Wd.feels(30, 34) === "warmer" && Wd.feels(20, 21) === null, "hava sözleri: hissedilen");
+    const hrs = (a, b, f) => Array.from({ length: b - a + 1 }, (_, i) => f({ hour: a + i, code: 1, rain: 10, wind: 10 }));
+    const calm = hrs(8, 19, (x) => x), J = (o) => JSON.stringify(o);
+    check(J(W.summary(calm, 20, 22)) === J({ key: "default" }) && J(W.summary(calm, 20, 13)) === J({ key: "colder", n: 7 }) && J(W.summary(calm, 20, 25.6)) === J({ key: "warmer", n: 6 }), "hava özeti: varsayılan, soğuk, sıcak");
+    const windy = hrs(8, 19, (x) => (x.hour === 15 ? { ...x, wind: 35 } : x));
+    const rain = windy.map((x) => (x.hour === 11 ? { ...x, code: 61, rain: 70 } : x));
+    const snow = rain.map((x) => (x.hour === 11 ? { ...x, code: 73 } : x));
+    const storm = snow.map((x) => (x.hour === 17 ? { ...x, code: 95 } : x));
+    check(W.summary(windy, 20, 13).key === "windyAfternoon" && J(W.summary(rain, 20, 13)) === J({ key: "rain", hour: 11 }) && J(W.summary(snow, 20, 13)) === J({ key: "snow", hour: 11 }) && J(W.summary(storm, 20, 13)) === J({ key: "storm", hour: 17 }), "hava özeti: öncelik");
+    const late = Array.from({ length: 16 }, (_, i) => ({ hour: 8 + i, code: 8 + i === 21 ? 95 : 1, rain: 0, wind: 0 }));
+    check(W.summary(late, 20, null).key === "default", "hava özeti: 12 saatten sonrası bakılmaz");
+    const wh = fs.readFileSync(path.join(DIST, "hava-durumu/index.html"), "utf8");
+    check(/data-wx-sum/.test(wh) && /visibility/.test(fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8")), "hava sayfası: özet satırı ve görüş isteği");
+  }
   // K-1 site (2. analiz #174–#181, #184, #190): ilk ekran doğruluk satırı, başlıkta saat, görünüm seçenekleri, büyütme, haplar, hafta no
   {
     const h = fs.readFileSync(path.join(DIST, "index.html"), "utf8");

@@ -227,7 +227,12 @@ fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
                                         Text(L("place.saved"), Modifier.padding(top = 10.dp), color = Theme.c.muted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                                         for (id in Prefs.savedPlaces) {
                                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                                Box(Modifier.weight(1f)) { PlaceRow("★ " + AppPlace.byId(id).name, id == place.id) { pick(id) } }
+                                                val sp = AppPlace.byId(id)
+                                                Box(Modifier.weight(1f)) { PlaceRow("★ " + sp.name, id == place.id) { pick(id) } }
+                                                // Anlık sıcaklık (2. analiz #115; aynı yer 15 dk önbellekte)
+                                                if (Features.isOn(Tab.WEATHER)) rememberWeather(sp.lat, sp.lon)?.let { w ->
+                                                    Text(WeatherCode.of(w.current.code).icon(w.current.isDay) + " " + Units.temp(w.current.temp), color = Theme.c.text, fontSize = 14.sp)
+                                                }
                                                 IconButton(onClick = { Prefs.saveSavedPlaces(Prefs.savedPlaces - id) }) {
                                                     Icon(Icons.Filled.Close, L("place.remove"), tint = Theme.c.muted, modifier = Modifier.size(18.dp))
                                                 }
@@ -303,8 +308,11 @@ fun SavedPlaceChips(modifier: Modifier = Modifier) {
     Row(modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         for (id in saved) {
             val on = id == current
+            val sp = AppPlace.byId(id)
+            // Anlık sıcaklık (2. analiz #115)
+            val wx = if (Features.isOn(Tab.WEATHER)) rememberWeather(sp.lat, sp.lon) else null
             Text(
-                AppPlace.byId(id).name,
+                sp.name + (wx?.let { "  " + Units.temp(it.current.temp) } ?: ""),
                 Modifier.clip(RoundedCornerShape(50)).background(if (on) Theme.c.accentSoft else Theme.c.surface2)
                     .clickable { Prefs.saveProvince(id) }.padding(horizontal = 14.dp, vertical = 8.dp),
                 color = if (on) Theme.c.accent else Theme.c.text, fontSize = 14.sp, fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal,

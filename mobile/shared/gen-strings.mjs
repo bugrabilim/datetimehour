@@ -56,6 +56,9 @@ const SITE_PATHS = [
   "weather.h1", "weather.now", "weather.feelsLike", "weather.humidity", "weather.wind", "weather.precipitation", "weather.uv",
   "weather.hourlyHeading", "weather.dailyHeading", "weather.loading", "weather.error", "weather.retry", "weather.pressure",
   "weather.codes.*", "weather.attribution", "weather.sunrise", "weather.sunset",
+  // 2. analiz #106, #108, #110 (3 Kasım 2026): ölçüm açıklamaları, günlük özet, yarın uyarısı, yeni ölçümler
+  "weather.wd.*", "weather.uvw.*", "weather.hw.*", "weather.vw.*", "weather.dw.*", "weather.fw.*", "weather.sum.*", "weather.alert.*",
+  "weather.visibility", "weather.dewPoint", "weather.gusts", "weather.details", "weather.compass.*", "weather.windFrom",
   "stage.models.*", "stage.prev", "stage.next", "stage.dots", "list.*",
   // 9. tur (30 Ekim 2026): kerahat, altın/mavi saat, fitre, hicri çevirici, pomodoro etiketleri
   "prayer.kerahatHeading", "prayer.kerahatNames.*", "prayer.kerahatNote",

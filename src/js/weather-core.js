@@ -37,8 +37,8 @@
     if (inflight[key]) return inflight[key]; // aynı konum için eşzamanlı istekler tek istekte birleşir
     if (failed[key] && now - failed[key] < 60000) return Promise.reject(new Error("backoff")); // hata sonrası 1 dk bekle (hız sınırına yüklenme)
     var url = API + "?latitude=" + lat + "&longitude=" + lon +
-      "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,is_day,uv_index,cloud_cover" +
-      "&hourly=temperature_2m,precipitation_probability,weather_code,is_day" +
+      "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,is_day,uv_index,cloud_cover,wind_gusts_10m,visibility,dew_point_2m" +
+      "&hourly=temperature_2m,precipitation_probability,weather_code,is_day,wind_speed_10m" +
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,sunrise,sunset,uv_index_max" +
       "&timezone=auto&forecast_days=14";
     inflight[key] = fetch(url, { credentials: "omit", referrerPolicy: "no-referrer" })
@@ -48,6 +48,29 @@
     return inflight[key];
   }
   var temp = function (t) { return Math.round(t) + "°"; };
+  /* Sözlü açıklamalar ve günlük özet (2. analiz #108): anahtar döner; eşikler uygulamalardaki WeatherWords ile aynı
+     (Android core/WeatherWords.kt, iOS SaatCore/WeatherWords.swift) */
+  var words = {
+    wind: function (k) { return k < 6 ? "calm" : k < 20 ? "light" : k < 39 ? "breezy" : k < 62 ? "strong" : "gale"; },
+    uv: function (u) { return u < 3 ? "low" : u < 6 ? "moderate" : u < 8 ? "high" : u < 11 ? "veryHigh" : "extreme"; },
+    humidity: function (h) { return h < 30 ? "dry" : h < 60 ? "comfy" : h < 80 ? "humid" : "veryHumid"; },
+    visibility: function (m) { return m < 1000 ? "fog" : m < 4000 ? "haze" : m < 10000 ? "good" : "clear"; },
+    dew: function (c) { return c < 10 ? "dry" : c < 16 ? "comfy" : c < 20 ? "muggy" : "oppressive"; },
+    feels: function (t, f) { return f <= t - 3 ? "colder" : f >= t + 3 ? "warmer" : null; }
+  };
+  /* next: [{hour, code, rain, wind}] şimdiki saatten başlayarak; ilk 12'si bakılır */
+  function summary(next, todayMax, tomorrowMax) {
+    var h = next.slice(0, 12), i;
+    for (i = 0; i < h.length; i++) if (h[i].code >= 95 && h[i].code <= 99) return { key: "storm", hour: h[i].hour };
+    for (i = 0; i < h.length; i++) if (h[i].rain >= 60) return { key: (h[i].code >= 71 && h[i].code <= 77) || h[i].code === 85 || h[i].code === 86 ? "snow" : "rain", hour: h[i].hour };
+    for (i = 0; i < h.length; i++) if (h[i].hour >= 12 && h[i].hour <= 18 && h[i].wind >= 30) return { key: "windyAfternoon" };
+    if (tomorrowMax != null) {
+      var d = tomorrowMax - todayMax;
+      if (d <= -5) return { key: "colder", n: Math.round(-d) };
+      if (d >= 5) return { key: "warmer", n: Math.round(d) };
+    }
+    return { key: "default" };
+  }
   /* İzin yokken gösterilen yer tutucu: kısa açıklama ve "İzin ver" düğmesi */
   function consentNote(box) {
     box.textContent = "";
@@ -57,7 +80,7 @@
     p.appendChild(b);
     box.appendChild(p);
   }
-  window.sthWeather = { load: load, info: info, compass: compass, temp: temp, allowed: allowed, consentNote: consentNote, clearFailures: function () { failed = {}; } };
+  window.sthWeather = { load: load, info: info, compass: compass, temp: temp, words: words, summary: summary, allowed: allowed, consentNote: consentNote, clearFailures: function () { failed = {}; } };
 
   /* Hava durumlu saat modelleri: yalnız model seçiliyken (görünürken) Open-Meteo'ya gidilir */
   function mk(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }

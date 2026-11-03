@@ -1081,7 +1081,9 @@
       "copied": "Link kopiert",
       "shareNote": "Sie können den Link zum gewählten Datum teilen; beim Öffnen des Links startet der Countdown automatisch.",
       "addMinute": "+1 Min.",
-      "addToApp": "📲 Zur Saat-Tarih-App hinzufügen"
+      "addToApp": "📲 Zur Saat-Tarih-App hinzufügen",
+      "present": "Vortragsfarben",
+      "presentNote": "Grün; in den letzten 2 Minuten (bei kurzen Zeiten im letzten Fünftel) gelb; rot, wenn die Zeit um ist."
     },
     "alarm": {
       "title": "Online-Wecker mit Wiederholung und Schlummern | Saat Tarih",
@@ -2227,7 +2229,61 @@
         "a": "Ja. Im Vollbild zeigt die Wetter-Schaltfläche in der Leiste, die beim Antippen des Bildschirms erscheint, das Wetter Ihres gewählten Standorts neben der Uhr an."
       }
     ],
-    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin wetter vorhersage temperatur regen wind luftfeuchtigkeit uv-index morgen diese woche wettervorhersage"
+    "search": "weather forecast temperature rain wind humidity uv tomorrow this week hava durumu tahmin wetter vorhersage temperatur regen wind luftfeuchtigkeit uv-index morgen diese woche wettervorhersage",
+    "wd": {
+      "calm": "Windstill",
+      "light": "Leichte Brise",
+      "breezy": "Windig",
+      "strong": "Starker Wind",
+      "gale": "Sturm"
+    },
+    "uvw": {
+      "low": "Niedrig; kein Sonnenbrandrisiko",
+      "moderate": "Mäßig; mittags schützen",
+      "high": "Hoch; Sonnencreme verwenden",
+      "veryHigh": "Sehr hoch; Mittagssonne meiden",
+      "extreme": "Extrem; nicht lange draußen bleiben"
+    },
+    "hw": {
+      "dry": "Trocken",
+      "comfy": "Angenehm",
+      "humid": "Feucht",
+      "veryHumid": "Sehr feucht"
+    },
+    "vw": {
+      "fog": "Neblig",
+      "haze": "Diesig",
+      "good": "Gut",
+      "clear": "Sehr gut"
+    },
+    "dw": {
+      "dry": "Trockene Luft",
+      "comfy": "Angenehm",
+      "muggy": "Etwas schwül",
+      "oppressive": "Schwül"
+    },
+    "fw": {
+      "colder": "Fühlt sich kälter an",
+      "warmer": "Fühlt sich wärmer an"
+    },
+    "sum": {
+      "storm": "Gewitter gegen {time} erwartet.",
+      "rain": "Regen gegen {time} erwartet.",
+      "snow": "Schnee gegen {time} erwartet.",
+      "windyAfternoon": "Am Nachmittag windig.",
+      "colder": "Morgen deutlich kälter: Höchstwert {n}° niedriger.",
+      "warmer": "Morgen deutlich wärmer: Höchstwert {n}° höher.",
+      "default": "{cond}; Höchstwert {max}, Tiefstwert {min}."
+    },
+    "alert": {
+      "colder": "Morgen deutlich kälter als heute: Höchstwert {n}° niedriger.",
+      "warmer": "Morgen deutlich wärmer als heute: Höchstwert {n}° höher.",
+      "rainSoon": "Regen gegen {time} erwartet; Schirm nicht vergessen."
+    },
+    "visibility": "Sicht",
+    "dewPoint": "Taupunkt",
+    "gusts": "Böen",
+    "details": "Details"
   },
   "faqPage": {
     "title": "Häufige Fragen: Uhrzeit, Kalender, Gebetszeiten | Saat Tarih",

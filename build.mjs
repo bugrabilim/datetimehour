@@ -1044,7 +1044,7 @@ function toolBody(lang, key, preset = {}) {
 <progress class="tool-progress" max="100" value="0" data-cd-progress aria-hidden="true"></progress>
 <p class="cd-message" role="status" data-cd-message hidden></p>
 ${preset.sec ? `<p class="meta" data-cd-endsat data-tpl="${esc(tt.presets.endsAt)}" data-tpl-run="${esc(tt.presets.endsAtRun)}">&nbsp;</p>` : ""}
-<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-add hidden", s.addMinute)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}<a class="toggle" data-cd-app hidden>${esc(s.addToApp)}</a></div>
+<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-add hidden", s.addMinute)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}${btn("toggle", `data-cd-present aria-pressed="false" title="${esc(s.presentNote)}"`, s.present)}<a class="toggle" data-cd-app hidden>${esc(s.addToApp)}</a></div>
 <p class="meta">${esc(s.shareNote)}</p>
 ${soundRow(tt)}
 ${ringBanner(tt, "countdown")}`;
@@ -1868,6 +1868,7 @@ function buildWeather(lang) {
         <p class="wx-icon" data-wx-icon aria-hidden="true"></p>
         <p class="wx-temp" data-wx-temp>–</p>
         <p class="wx-cond" data-wx-cond>&nbsp;</p>
+        <p class="wx-sum" data-wx-sum></p>
         <dl class="wx-facts" data-wx-facts></dl>
       </div>
       <button type="button" class="toggle" data-wx-retry hidden>${esc(w.retry)}</button>
@@ -1887,7 +1888,9 @@ function buildWeather(lang) {
     <p class="meta">${esc(w.locationNote)}</p>
   </div>
 </section>`;
-  const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry };
+  const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry,
+    // 2. analiz #106, #108: yeni ölçümler, açıklamalar ve günlük özet
+    visibility: w.visibility, dewPoint: w.dewPoint, gusts: w.gusts, wd: w.wd, uvw: w.uvw, hw: w.hw, vw: w.vw, dw: w.dw, fw: w.fw, sum: w.sum };
   return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather-fx.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "weather", searchK: w.search, needsPlace: true, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
 }
 

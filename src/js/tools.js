@@ -278,6 +278,9 @@
         if (endsEl.textContent !== line) endsEl.textContent = line;
       }
       show(text(Math.max(r, 0)));
+      // Sunum renkleri (2. analiz #140): yeşil; son 2 dakikada (kısa sürede son beşte birde) sarı; bitince kırmızı
+      var pv = st.present && mode() === "timer" ? (r <= 0 ? "stop" : r <= Math.min(120000, st.dur * 0.2) ? "warn" : "go") : "";
+      if ((disp.getAttribute("data-present") || "") !== pv) { if (pv) disp.setAttribute("data-present", pv); else disp.removeAttribute("data-present"); }
       if (mode() === "timer") prog.value = st.dur ? Math.max(0, (r / st.dur) * 100) : 0;
       setTitle(st.run ? text(r) : "");
       if (st.run && r <= 0) finish();
@@ -346,6 +349,11 @@
       }).catch(function () {});
     }
     bStart.addEventListener("click", start); bReset.addEventListener("click", reset);
+    var bPresent = q("[data-cd-present]");
+    if (bPresent) {
+      bPresent.setAttribute("aria-pressed", String(!!st.present));
+      bPresent.addEventListener("click", function () { st.present = !st.present; bPresent.setAttribute("aria-pressed", String(st.present)); persist(); loop(); });
+    }
     if (nameIn) nameIn.addEventListener("input", function () { st.name = nameIn.value.trim().slice(0, 40); persist(); showName(); });
     if (copyBtn) copyBtn.addEventListener("click", function () {
       if (!iT.value) { msgShow(P.invalid); return; }
