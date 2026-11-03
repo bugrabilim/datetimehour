@@ -76,6 +76,8 @@ enum Lume {
         return colors.contains { $0.id == v } ? v : "green"
     }
     static var current: Color { color(id) }
+    /// Seçicideki satır (0: ilk 7, 1: son 7)
+    static func ids(_ row: Int) -> [String] { Array(colors.map(\.id)[(row * 7)..<(row * 7 + 7)]) }
 }
 
 /// İbre rengi: "auto" kadranın kendi rengi

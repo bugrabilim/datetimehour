@@ -20,6 +20,28 @@ const strip = (s) => s
   .replace(/\/\/.*$/gm, "")
   .replace(/"(?:\\.|[^"\\\n])*"/g, '""');
 
+// "if … { } .padding()" gibi bir blok kapanışından sonra yeni satırda başlayan modifier: SwiftUI'de görünüme bağlanmaz,
+// derleyici "ifade çok karmaşık" hatasıyla uzun süre takılır (3 Kasım 2026, DialGallery.swift). Satır no ya da null.
+function danglingModifier(src) {
+  const lines = src.split("\n");
+  const stack = [];
+  for (let i = 0; i < lines.length; i++) {
+    const code = lines[i].replace(/"(?:\\.|[^"\\])*"/g, '""').replace(/\/\/.*$/, "");
+    for (const ch of code) {
+      if (ch === "{") stack.push(i);
+      else if (ch === "}" && stack.length) {
+        const open = stack.pop();
+        if (code.trim() !== "}") continue;
+        if (!/^(if |\} else|else|for |switch )/.test(lines[open].trim())) continue;
+        let j = i + 1;
+        while (j < lines.length && !lines[j].trim()) j++;
+        if (j < lines.length && lines[j].trim().startsWith(".")) return j + 1;
+      }
+    }
+  }
+  return null;
+}
+
 // Süslü parantez dengesi: yorumları (iç içe blok yorumlar dahil), metinleri ("…", """…""", #"…"#) ve metin içindeki
 // \( … ) aralığını doğru tanıyan küçük tarayıcı. Sorun yoksa null, varsa açıklama döner.
 function braces(src) {
@@ -86,8 +108,11 @@ for (const [target, dirs] of Object.entries(TARGETS)) {
     if (filesFor.size > 1 && list.some((x) => !x.priv)) problems.push(`${target}: '${name}' birden çok dosyada tanımlı: ${[...filesFor].join(", ")}`);
   }
   for (const [f, s] of texts) {
-    const bal = braces(readFileSync(f, "utf8"));
+    const raw = readFileSync(f, "utf8");
+    const bal = braces(raw);
     if (bal) problems.push(`${relative(ROOT, f)}: süslü parantez dengesiz (${bal})`);
+    const dangling = danglingModifier(raw);
+    if (dangling) problems.push(`${relative(ROOT, f)}:${dangling}: 'if/else/for/switch' bloğundan sonra başıboş '.modifier' (görünüme değil bloğa bağlanmış)`);
     if (/^\s*(@\w+\s+)?import\s+SaatCore\b/m.test(s)) continue;
     const used = [...core].filter((n) => !own.has(n) && new RegExp(`\\b${n}\\b`).test(s));
     if (used.length) problems.push(`${relative(ROOT, f)}: 'import SaatCore' yok ama ${used.slice(0, 4).join(", ")} kullanılıyor`);

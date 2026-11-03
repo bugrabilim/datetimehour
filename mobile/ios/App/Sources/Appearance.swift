@@ -155,6 +155,33 @@ struct AppearanceView: View {
     @AppStorage(FlipLook.hingeKey) private var flipHinge = true
     @AppStorage(FlipLook.cardKey) private var flipCard = "theme"
 
+    private func digitSwatch(_ id: String) -> some View {
+        let color: Color = ClockDigits.color(id)
+        return swatch(color, L("color." + id), digitColor == id) { digitColor = id }
+    }
+
+    private func cardSwatch(_ id: String) -> some View {
+        let color: Color = FlipLook.colors(id).bg
+        let label: String = id == "theme" ? L("wall.none") : L("color." + id)
+        return swatch(color, label, flipCard == id) { flipCard = id }
+    }
+
+    /// Gece yazı rengi: siyah zemin üstünde kısık renk
+    private func nightSwatch(_ id: String) -> some View {
+        let selected: Bool = id == nightColor
+        return Button { nightColor = id } label: {
+            ZStack {
+                Circle().fill(Color.black)
+                Circle().fill(NightMode.color(id)).padding(6)
+                Circle().stroke(Theme.text, lineWidth: selected ? 3 : 0)
+            }
+            .frame(width: 30, height: 30)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(L("color." + id))
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+
     /// Renk seçimi dairesi (seçiliyse kalın kenar)
     private func swatch(_ color: Color, _ label: String, _ selected: Bool, _ action: @escaping () -> Void) -> some View {
         Button(action: action) {
@@ -237,9 +264,7 @@ struct AppearanceView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
                             swatch(Theme.ink, L("wall.none"), digitColor == "theme") { digitColor = "theme" }
-                            ForEach(ClockDigits.colors, id: \.id) { c in
-                                swatch(Color(hex: c.rgb), L("color.\(c.id)"), digitColor == c.id) { digitColor = c.id }
-                            }
+                            ForEach(ClockDigits.colors.map(\.id), id: \.self) { id in digitSwatch(id) }
                         }
                         .padding(4)
                     }
@@ -254,9 +279,7 @@ struct AppearanceView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(L("flip.card")).font(.subheadline).foregroundStyle(Theme.muted)
                     HStack(spacing: 10) {
-                        ForEach(FlipLook.cards, id: \.id) { c in
-                            swatch(FlipLook.colors(c.id).bg, c.id == "theme" ? L("wall.none") : L("color.\(c.id)"), flipCard == c.id) { flipCard = c.id }
-                        }
+                        ForEach(FlipLook.cards.map(\.id), id: \.self) { id in cardSwatch(id) }
                     }
                     .padding(4)
                 }
@@ -382,16 +405,7 @@ struct AppearanceView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text(L("night.color")).font(.subheadline).foregroundStyle(Theme.muted)
                     HStack(spacing: 10) {
-                        ForEach(NightMode.colors, id: \.id) { c in
-                            Button { nightColor = c.id } label: {
-                                Circle().fill(Color.black).frame(width: 30, height: 30)
-                                    .overlay(Circle().fill(NightMode.color(c.id)).padding(6))
-                                    .overlay(Circle().stroke(Theme.text, lineWidth: c.id == nightColor ? 3 : 0).padding(-3))
-                            }
-                            .buttonStyle(.plain)
-                            .accessibilityLabel(L("color.\(c.id)"))
-                            .accessibilityAddTraits(c.id == nightColor ? .isSelected : [])
-                        }
+                        ForEach(NightMode.colors.map(\.id), id: \.self) { id in nightSwatch(id) }
                     }
                 }
             } header: {
