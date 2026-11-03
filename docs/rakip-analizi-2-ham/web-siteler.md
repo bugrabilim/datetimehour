@@ -6,7 +6,7 @@ Karşılaştırma için kendi canlı sitemizin görüntüleri: `rakip2/web/biz/`
 
 ## time.is (https://time.is, Türkçe arayüz; SaatKac.info.tr bunun Türkçe kopyası; puan yok, geliştirici Time.is)
 - Ücret modeli: reklamlı ücretsiz. Altbilgide "Time.is Ad-free" (reklamsız abonelik) ve "Reklam verin" bağlantıları; sağ üstte kişi simgesi (hesap: reklamsız abonelik, favori yerler). İlk analize göre reklamsız sürüm yeni abone almıyordu; bu turda abonelik sayfası açılmadı (görülmedi).
-- İncelenen görüntü: 13 (ana sayfa masaüstü açık/koyu/tam sayfa, telefon; İstanbul sayfası masaüstü tam sayfa + telefon; saat dilimi çevirici `/compare`; Kişiselleştir `/customize`; Widget `/widgets` tam sayfa; 2026 takvimi `/calendar` tam sayfa).
+- İncelenen görüntü: 11 (ana sayfa masaüstü ilk ekran ve açık/koyu tam sayfa, telefon ilk ekran ve tam sayfa; İstanbul sayfası masaüstü tam sayfa + telefon; saat dilimi çevirici `/compare`; Kişiselleştir `/customize`; Widget `/widgets` tam sayfa; 2026 takvimi `/calendar` tam sayfa).
 - İlk açılış / tanıtım / ödeme sayfası: tanıtım yok. Çerez bandı görülmedi (ABD IP'si).
 - Ana ekran ve gezinme: solda kırmızı kare logo "TİME.İS" (`#cc3355`, beyaz harf, aralıklı büyük harf), sağda yalnız üç gri simge: büyüteç (arama), kişi (hesap), hamburger. Menü bağlantılarının hepsi altbilgide 4 sütunda: Şu anki yerel saat, Saatleri Karşılaştır, Bulunduğun zaman dilimi, Zaman dilimleri, Yaz saati, "This day in history" (çevrilmemiş), Saat, Geri sayım, "Timer" (çevrilmemiş), Takvim, Kompakt takvim, Hafta numarası, Ses · Uygulamalar, Widget, Zaman dilimi haberleri, Bülten, Reklam verin, Kullanım şartları, Gizlilik · UTC, Unix saati, Unix saati dönüştürücüsü · Kişiselleştir, Time.is Ad-free, SSS, Nasıl kullanılır, Hakkında, İletişim. Altında "App Store'dan İndirin" rozeti ve 20 dilde "Saat kaç?" bağlantı satırı ("≫ more languages"; 58 dil).
 - Öne çıkan ekranlar:
@@ -139,7 +139,7 @@ Karşılaştırma için kendi canlı sitemizin görüntüleri: `rakip2/web/biz/`
 
 ## saat-kac.tr (https://saat-kac.tr, "Türkiye'nin Canlı Saat Sitesi · UTC+3"; puan yok)
 - Ücret modeli: reklamlı ücretsiz (Google). Hesap yok.
-- İncelenen görüntü: 6 (masaüstü ilk ekran ve tam sayfa, telefon, Matematik Temalı Saat, Hologram Temalı Saat).
+- İncelenen görüntü: 5 (masaüstü ilk ekran ve tam sayfa, telefon, Matematik Temalı Saat, Hologram Temalı Saat).
 - İlk açılış / tanıtım / ödeme sayfası: yok. Çerez bandı görülmedi.
 - Ana ekran ve gezinme: koyu lacivert (`#1e2130`) üst bar, solda altın çerçeveli analog saat logolu "saat-kaç.tr" görseli; telefonda hamburger. Masaüstünde **solda uzun kenar menü**: Şu An Saat Kaç? (turuncu vurgulu seçili), Dünya Saatleri, Saat Dilimi Çevirici, Kaçıncı Haftadayız?, 2026 Takvimi; TÜRKİYE İLLERİ (Tüm 81 İl →, İstanbul/Ankara/İzmir/Antalya/Bursa/Adana/Trabzon/Konya Saati); TAM EKRAN SAATLER (Analog, **Hologram Temalı**, **Matrix Temalı**, **Matematik Temalı**); ZAMANLAYICILAR (Online Alarm, Kronometre, Zamanlayıcı, Geri Sayım Sayacı); GERİ SAYIM SAYAÇLARI (LGS, Okul Kapanış, Ramazan Bayramı, Kurban Bayramı, Sevgililer Günü, Anneler Günü, Babalar Günü, Yeni Yıl, YKS); HESAPLAMA ARAÇLARI (Kaç Gün Kaldı?, Kaç Gün Oldu?, Uyku Hesaplama, Yaş Hesaplama, Burç Hesaplama Sayacı, Emeklilik Hesaplama).
 - Öne çıkan ekranlar:
