@@ -309,7 +309,7 @@ struct AlarmsView: View {
         List {
             // Sıradaki alarm (2. analiz #51)
             if items.contains(where: \.enabled) {
-                Section { NextAlarmCard(items: items) }
+                Section { AlarmListHeadCard(items: items) }
             }
             // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
             Section(L("alarm.quick")) {

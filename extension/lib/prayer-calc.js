@@ -148,6 +148,26 @@
     return { israk: [r.sunrise, r.sunrise + k], istiva: [r.dhuhr - k, r.dhuhr], isfirar: [r.maghrib - k, r.maghrib] };
   }
 
+  /* Bayram namazı (2. analiz #56): Diyanet'in yayımladığı bayram namazı saatleri güneş vaktinden 38 dakika sonradır
+     (İstanbul 30.3.2025 07:22 ve Bursa 20.3.2026 07:38 ile birebir). Resmî saat il müftülüğünün duyurusudur. */
+  var BAYRAM_MIN = 38;
+  function bayram(r) { return r.sunrise + BAYRAM_MIN / 60; }
+
+  /* Ek vakitler (2. analiz #59; Diyanet yayımlamaz, Türkiye Takvimi'nin tanımlarıyla yaklaşık): işrak ve isfirar Güneş
+     ufkun 5° üstündeyken, iştibak-ı nücûm 10° ve işâ-i sânî 19° altındayken; dahve-i kübrâ imsak ile akşamın ortası;
+     gece akşamdan imsaka kadar sayılır (ertesi günün imsakı yerine o günün imsakı, birkaç dakikalık fark): gece yarısı,
+     teheccüd (son üçte birin başı), seher (son altıda birin başı). Saatler 0–24 dışına taşabilir (gece yarısından sonra). */
+  var EXTRA = { israk: 5, istibak: -10, isaSani: -19 };
+  function extraTimes(y, m, d, lat, lon, tz, r) {
+    var up = sunAltTimes(y, m, d, lat, lon, tz, EXTRA.israk), st = sunAltTimes(y, m, d, lat, lon, tz, EXTRA.istibak),
+      is2 = sunAltTimes(y, m, d, lat, lon, tz, EXTRA.isaSani);
+    var night = r.fajr + 24 - r.maghrib;
+    return {
+      israk: up.rise, duha: (r.fajr + r.maghrib) / 2, isfirar: up.set, istibak: st.set, isaSani: is2.set,
+      midnight: r.maghrib + night / 2, tahajjud: r.maghrib + night * 2 / 3, seher: r.maghrib + night * 5 / 6
+    };
+  }
+
   /* Hesap yöntemleri (30 Ekim 2026): Diyanet varsayılandır ve Türkiye'de resmî vakit odur. Diğerleri yaygın
      kurumların açılarıdır (PrayTimes.org ve kurumların yayımladığı değerler): imsak ve yatsı açısı, yatsı için akşamdan
      sonra sabit dakika (ishaMin), akşam için açı (maghrib; Caferî yöntemleri). Diyanet dışındakilerde dakika düzeltmesi
@@ -180,7 +200,7 @@
     };
   }
 
-  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN };
+  var api = { times: times, PARAMS: PARAMS, METHODS: METHODS, METHOD_IDS: METHOD_IDS, methodParams: methodParams, julian: julian, sunPos: sunPos, qibla: qibla, qiblaTime: qiblaTime, sunAltAz: sunAltAz, KAABA: KAABA, sunAltTimes: sunAltTimes, lightHours: lightHours, LIGHT: LIGHT, kerahat: kerahat, KERAHAT_MIN: KERAHAT_MIN, bayram: bayram, BAYRAM_MIN: BAYRAM_MIN, extraTimes: extraTimes, EXTRA: EXTRA };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthPrayer = api;
 })(typeof window !== "undefined" ? window : globalThis);

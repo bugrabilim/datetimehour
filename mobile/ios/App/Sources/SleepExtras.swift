@@ -280,7 +280,7 @@ private struct EnergyEventEditor: UIViewControllerRepresentable {
 }
 
 /// Listede büyük "sıradaki alarm X sa Y dk sonra" kartı (2. analiz #51)
-struct NextAlarmCard: View {
+struct AlarmListHeadCard: View {
     let items: [AlarmItem]
 
     var body: some View {
