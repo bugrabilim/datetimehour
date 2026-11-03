@@ -113,3 +113,69 @@ Yöntem: App Store TR ve US aramaları (`itunes.apple.com/search`), ayrıntı `i
   - Ay sayfasında tarih gezgini (önceki/sonraki gün) ve yıldızlı fotoğraf başlık — yok (bkz. The Moon) — K.
   - Ay burcu, Ay boşluğu, gezegen saatleri, saç kesimi/epilasyon günleri — yok — astroloji; öneri: yapılmasın (sahibin kararı).
 
+## Sky Guide (id576588894; US 4,84 / 378.873, TR 4,80 / 1.282; Fifth Star Labs; Apple Design Award 2014 kazananı, 2024 finalisti)
+- Ücret modeli: ücretsiz + abonelik: PLUS ₺109,99 ve ₺869,99, PRO ₺214,99 ve ₺1.309,99 (aylık/yıllık oldukları fiyattan anlaşılıyor), PRO Lifetime ₺5.599,99, All Constellations ₺99,99 (eski tek seferlik). Reklam görülmedi. Sürüm 13.1.2 (24 Ekim 2026), 18 dil, Türkçe var. Görsellerde Pro kilidi görülmedi.
+- İncelenen görüntü: 10 iPhone (mor-lacivert bokeh zemin #261243 → altta deniz yeşili #005363; çok kalın beyaz başlıklar "Stargazing made easy").
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (gökyüzü haritası): telefonu göğe tutunca **AR/hareket sensörü** ile gökyüzü; takımyıldızlar ince beyaz çizgi + yarı saydam mavi cam gibi **figür çizimleri** (Büyükayı yarı saydam kristal ayı), takımyıldız adları büyük harf ve harf aralıklı, eğrisel yazı ("URSA MINOR", "DRACO", "LEO", yıldız adı "Regulus"). Altta yüzen yuvarlak buzlu cam düğmeler: ayarlar anahtarı, saat "3:52" (zaman kontrolü), pusula/AR, katmanlar, arama.
+- Öne çıkan ekranlar:
+  - Explore (alttan açılan sayfa, X kapatma): büyük kart "Tonight's Best" (göz/dürbün/uydu simgeli liste ikonu), "Featured" yatay kartlar (fotoğraflı: "Nova in Sagitta", "Blood Moon Rising"), "Calendar" yatay kartlar (tarih rozetli: Full moon, Saturn at opposition, Moon and Mars), arama çubuğu.
+  - **Tonight**: üstte bulutlu gece gökyüzünde fotoğraf gerçekliğinde hilal, "Partly cloudy all night / Moon rises at 1:22 PM" (hava durumu ile birleşik); "Visible Planets" grafiği: SUNSET 7:17 PM – SUNRISE 6:46 AM ekseni, her gezegen için ayrı şeritte **renkli yükseklik eğrisi** (Moon gri, Venus pembe, Mars kırmızı, Jupiter mavi, Saturn yeşil), alt eksende saatler 4 7 10 1 4 7.
+  - **Calendar (olay takvimi)**: koyu kartlar, üstte "THURSDAY, AUGUST 27" küçük büyük harf, altında kalın olay adı; sağda olayın fotoğraf gerçekliğinde görseli: "Partial lunar eclipse" (kızıl Ay), "Full moon", "Metis at opposition" (asteroit şekli), "Moon and Mars", "Moon and Jupiter" (alacakaranlık gökyüzünde ince hilal + nokta: **Ay–gezegen kavuşumu**). Metinde: konuma göre süzülmüş Güneş/Ay tutulmaları, meteor yağmurları.
+  - **ISS**: "TIME SENSITIVE / ISS Flyover / International Space Station peaks soon (5 minutes)!" bildirimi; ISS 3B modeli; "NEXT PASS: TONIGHT — APPEARS 9:27:59 PM (WSW), PEAKS 9:31:21 PM (NNW), DISAPPEARS 9:31:47 PM (NNE), APPARENT MAGNITUDE −3.7, PEAK ALTITUDE 70°".
+  - Zaman kontrolü: "2021 Aug 15 17:14:00 UTC" hap, altında çentikli tekerlek cetvel (15 16), geri al ve arama; Jüpiter yakın plan (Ganymede, Europa uyduları ve gölgeleri), Güneş tutulması tam evresinde korona (fotoğraf gerçekliği).
+  - Featured haberler ("December 2025", "NEWS Blast from the Past", "Martian Lightning"): sunucudan gelen astronomi haberleri.
+  - **Location / Dark Sky Finder**: Apple Maps üstünde **ışık kirliliği haritası** (mor-turuncu-sarı ısı), "Save Location", "Artificial Light Pollution 4" (Bortle benzeri ölçek rozeti), "Limiting magnitude now −6.4", "Darkest 9:15 PM – 4:55 AM" (astronomik gece aralığı).
+  - Derin yakınlaşma: Orion Bulutsusu fotoğrafı üstünde kesik çizgili daireler ve gök cismi adları (Trapezium Cluster, NGC 1980, HD 36999).
+- Ayarlar: görülmedi.
+- Widget / kilit ekranı: görüntüde yok (ISS bildirimi kilit ekranında).
+- Tasarım: uygulama zemini neredeyse siyah #0E0E10 – #0C101C; kartlar #2E3350 civarı koyu lacivert, köşe ~20 px; yüzen buzlu cam düğmeler; yazı SF Pro kalın başlık + küçük büyük harf etiketler; olay görselleri fotoğraf gerçekliğinde 3B render. Tek koyu tema.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Gece gökyüzü haritasında takımyıldız çizgileri ve adları (bizde 39 parlak yıldız nokta ve 4–5 ad, çizgi yok, Ay ve Samanyolu yok) — kısmen — `src/js/sky.js`, `src/js/sky-calc.js` (39 yıldız); canlı site görüntüsü: koyu lacivert disk üstünde seyrek beyaz noktalar, açık temada "Arcturus" adı disk kenarında kesiliyor — O — rakipte ücretsiz (takımyıldızların tamamı eski ₺99,99 eklenti).
+  - "Bu gece gezegenler" için **yükseklik eğrisi grafiği** (gün batımı–doğumu ekseni, gezegen başına renkli eğri); bizde dar ekranda 6 sütunlu tablo yatay taşıyor ve satırlar 6–8 satıra kırılıyor ("07:00–07:00 · Doğuş 06:30 · Batış 17:00") — kısmen — `src/js/sky.js`; canlı site 390 px görüntüsü — K/O — ücretsiz.
+  - Gökyüzü olay takvimi: Ay–gezegen kavuşumları, karşı konum (opposition), **meteor yağmurları** (tepe tarihi, saatlik sayı), tutulmalar tek listede — kısmen (tutulmalar ve dolunay/yeni ay var; kavuşum, karşı konum, meteor yağmuru yok: `grep -ri meteor src mobile` boş) — O — ücretsiz.
+  - ISS geçiş tahmini ve bildirimi — yok — B (yörünge öğeleri TLE her gün değişir; sunucusuz yapılamaz: ya her derlemede site için statik veri, ya uygulamanın CelesTrak'tan çekmesi gerekir; dış hizmet izni) — rakipte ücretsiz görünüyor.
+  - Gece en karanlık aralığı (astronomik alacakaranlık sonu–başı), "çıplak gözle sınır parlaklık" — kısmen (sitede altın/mavi saat var; astronomik alacakaranlık yok) — `src/js/nature-calc.js` `sunAltTimes` — K — ücretsiz.
+  - Işık kirliliği haritası — yok — B (veri lisansı: World Atlas/VIIRS; harita karosu) — rakipte ücretsiz görünüyor.
+  - AR (telefonu göğe tutma) — yok — B — ücretsiz.
+  - Bu geceki hava ile birleşik gözlem özeti ("Parçalı bulutlu, Ay 13:22'de doğuyor") — yok (hava ve gökyüzü ayrı) — K — ücretsiz.
+
+## Night Sky (id475772902; US 4,71 / 498.220, TR 4,70 / 25.909; iCandi Apps)
+- Ücret modeli: ücretsiz + abonelik "Night Sky +" ₺199,99 / ₺249,99 / ₺399,99 ve "Night Sky + Aura" (yapay zekâ) ₺449,99 / ₺899,99 / ₺2.999,99 (iki kez). Aura, Connected Stargazing (SharePlay) ve "+" özellikleri abonelikte. Reklam görülmedi. Sürüm 27.2 (2 Kasım 2026), 68 dil, Türkçe var; iPhone, iPad, Apple Watch, Vision.
+- İncelenen görüntü: 8 iPhone (zemin gerçek yıldızlı gökyüzü fotoğrafı + alt kısımda ağaç silueti, kalın beyaz ortalı başlık).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (gökyüzü): AR ile telefonu göğe tutma; takımyıldızlar **gümüş/kristal 3B heykel** figürler (kartal, Yılancı ve yılan, at), ince çizgiler, çok sayıda etiket (yıldız, Messier, NGC, uydu "EUTELSAT KA-SAT 9A", meteor yağmuru radyantı "METEOR PRIRODA"); ufukta ağaç silueti ve yeşil kuzey ışığı. Sol üstte iki küçük gösterge: "☁ 89%" (kırmızı çubuk, **bulutluluk**) ve "○ 35%" (sarı çubuk, Ay aydınlığı). Sağda dikey yuvarlak düğme sütunu (AR çerçeve, pusula, katmanlar, renk çarkı, Ay). Altta "Ask Aura or Search" arama çubuğu (hap).
+- Öne çıkan ekranlar:
+  - Night Sky Aura: sohbet (mor balon kullanıcı, koyu gri balon yanıt), "Start UK Night Sky Tour" düğmesi; yapay zekâ astronom (sunucu).
+  - Derin yakınlaşma: Samanyolu fotoğrafı (Yay bölgesi), yüzlerce NGC/IC/HIP etiketi.
+  - **Time Travel**: "23/08/2025, 21:34", geri sar / duraklat / ileri sar, hız "1x", yıl-ay-gün-saat-dakika satırı, saat cetveli (15…23) ve kırmızı imleç; "Sky Timestamps" kayıtlı anlar listesi (31/12/2032 01:26).
+  - Sky Tags: renkli etiket iğneleri (10 renk daire), kategori hapları (Favorite +, Memorials +, Sightings +, Observations), liste ("David's Favourite Star", "Aliens Home"); yıldızı birine anma olarak işaretleme.
+  - **Aurora Forecast**: Apple Maps koyu haritası, uzaklığa göre konum listesi ve mor yuvarlak yüzde rozetleri (Dawson City 16%, Fairbanks 16%…), bildirimli (metin).
+  - SharePlay ile uzaktan birlikte gözlem (FaceTime üst çubuğu, "Participants / Objects", "Add Objects", Neptune "Found/Searching").
+  - Metinde: AirPods ile uzamsal ses yönlendirme (cisim "cıvıldar"), tavanı AR ile açma, Apple Watch'ta gökyüzü.
+- Ayarlar: görülmedi.
+- Tasarım: panel zemini #191919, kartlar #363636 (iOS koyu gri), vurgu mor-mavi #5B5BF0 civarı, mavi + düğmesi; yazı SF; alttan açılan sayfalar (tutamaçlı). Mağaza zemini #051143.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Gece gökyüzünde zamanı oynatma (ileri/geri sarma, hız) ve herhangi bir tarihe gitme — kısmen (sitede yalnız o gecenin saat kaydırıcısı; tarih seçimi yok) — `src/js/sky.js` — K — ücretsiz görünüyor.
+  - Gökyüzü sayfasında bulutluluk ve Ay aydınlığı göstergesi (gözlem koşulu) — yok (hava ve gökyüzü ayrı sayfalar; hava Open-Meteo'da bulut verisi alınabilir) — K — ücretsiz.
+  - Takımyıldız figürleri (çizim) — yok — O/B (çizim lisansı) — ücretsiz.
+  - Kutup ışığı tahmini — yok — B (NOAA SWPC verisi, sunucusuz istemciden çekilebilir; Türkiye için nadiren anlamlı) — ücretsiz görünüyor.
+  - Yapay zekâ astronom, SharePlay, uzamsal ses — yok — rakipte abonelik; kapsam dışı (sunucu/hesap).
+
+## SkyView® Lite (id413936865; US 4,54 / 18.801, TR 4,55 / 1.587; Terminal Eleven)
+- Ücret modeli: ücretsiz (Lite) + tek seferlik eklentiler: Brightest Satellites & Sightings ₺49,99, **Stargazing Music Pack ₺49,99** (gözlem müziği). Ücretli tam sürüm ayrı uygulama (SkyView, US $2.99). Reklam görülmedi. Sürüm 3.8.11 (23 Eylül 2025), yalnız İngilizce.
+- İncelenen görüntü: 4 iPhone (2011–2012 ödül rozetleri; eski görseller).
+- Öne çıkan ekranlar:
+  - AR: telefonu göğe tutunca gündüz gökyüzü fotoğrafı üstünde Ay ve yıldızlar; alt bilgi kartı "ⓘ MOON — NATURAL SATELLITE OF THE EARTH, ABOVE HORIZON — The ocean tides on Earth are mostly due to the Moon's gravitational pull."
+  - Takımyıldız: Akrep figürü beyaz kontur çizim, mavi çizgiler, Samanyolu fotoğrafı zemin, parlak yıldızda ışın parlaması; kart "ⓘ SCORPIUS — CONSTELLATION, ABOVE HORIZON" + tek cümle bilgi.
+  - **Sightings (gözlem önerileri listesi)**: her satırda cismin yuvarlak görseli (Ay, Capella, Sirius, Jüpiter, Arcturus, ISS, Hubble, JB-3 2 uydusu), mavi başlık, bir cümle "Right now, if you look up towards the northeastern sky you might see Capella.", "Planet Jupiter will be rising above the horizon after midnight in the eastern sky.", sağda saat (9:41 PM, 12:11 AM, 4:46 AM) ve **takvime ekle** simgesi. Başlık "Set notifications for stargazing events!". Alt sekmeler Search / Favorites / Sightings.
+  - ISS 3B modeli ve yörünge izi (noktalı yol), Ay yakın plan.
+- Tasarım: zemin #1C1C1C civarı, mavi başlıklar (#4A90E2 civarı), **dar (condensed) yazı tipi** büyük harf başlıklar; yuvarlak cisim görselleri fotoğraf gerçekliğinde.
+- Hatalar: görselde "JB-3 2" adlı uydu açıklaması kesik.
+- Bizde olmayan ya da farklı olan:
+  - Gece gözlem önerileri listesi (cümleyle yön ve saat: "Jüpiter gece yarısından sonra doğuda yükselir") ve takvime ekleme — kısmen (sitede gezegen tablosu yön ve saat veriyor ama cümle/öneri ve takvime ekle yok; uygulamada hiç yok) — `src/js/sky.js` — K — ücretli eklenti (₺49,99).
+  - Gökyüzü cisimleri için kısa bilgi kartı ("Gelgitler çoğunlukla Ay'ın çekiminden") — yok (sitede SSS var, cisim kartı yok) — K — ücretsiz.
+  - Gözlem müziği — yok — rakipte ücretli; öneri: bizdeki uyku/odak sesleri (`FocusSounds`) yeterli.
+

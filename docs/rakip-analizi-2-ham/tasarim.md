@@ -444,7 +444,7 @@ Kaynak: App Store iPhone ekran görüntüleri (`rakip2/{alarm,kadran,namaz}/<uyg
 ### 2.5 Desk Clock - Analog Clock Face (id 1253066126; 4,40 / 4.462)
 - İncelenen: sahibin 1 görüntüsü (widget galerisi, 1.22) + mağaza 8 iPhone + 2 iPad görüntüsü.
 - Zemin: **orta-koyu gri #424242 / #373737** (saat ekranı; sayfa düz gri, siyah değil), bazı kadranlarda **#161616 / #1e1e1e**; ayarlar ve "Change skin" **#000000** + satır **#272727 / #303030**. Açık tema yok.
-- Vurgu: kadrana göre (kırmızı saniye, yeşil LED **#00e676 civarı** göz kararı, ölçülmedi); arayüz vurgusu yok (beyaz yazı).
+- Vurgu: kadrana göre (kırmızı saniye, yeşil LED **#05fb60** (ölçüldü, i6), zemin #010101); arayüz vurgusu yok (beyaz yazı).
 - Yazı tipi: SF Pro (sağ üst tarih/saat "Wed, Sep 2 / 10:09"), dijital kadranlarda LCD/bölütlü yazı tipleri.
 - Köşe: skin ızgarasında küçük köşe (~6 pt göz kararı; ölçülmedi).
 - Alt çubuk: **yok**; saat ekranında köşelerde küçük simgeler (sol üst gömlek "skin", sağ alt ayar kaydırıcıları, sol alt "🔔 OFF").
@@ -478,4 +478,64 @@ Kaynak: App Store iPhone ekran görüntüleri (`rakip2/{alarm,kadran,namaz}/<uyg
 - Simge: özel ince çizgi + SF Symbols karışık.
 - İlk açılış: "Yenilikler" kaydırmalı 10 sayfa (her sayfa bir kadran + "Devam Et"); ilk açılış mı güncelleme sonrası mı belli değil.
 - Pro sayfası: sheet; sol üst "Geri yükle" ("Onarmak"), sağ üst cam ×, başlık, kadran kolajı, çerçeveli tek fiyat kutusu ("50% Off", ₺399,99 ömür boyu, üstü çizili ₺79.998), beyaz "Devam et", altta gizlilik/koşullar. Deneme yok. Kapatma düğmesi ilk karede görünür (gecikme ölçülemedi).
+
+### 2.8 Muslim Pro (id 388389451, Bitsmedia; TR 4,63 / 10.401)
+- İncelenen: mağaza 10 iPhone görüntüsü.
+- Zemin: **koyu yeşil #062622 / #02342d / #00302a** (uygulama içi); Kur'an okuyucuda **kâğıt teması #fcf4dd** (krem; tema seçici "Modern / Paper / Dark" görünür, mağaza p02).
+- Yüzey: **#083231 / #164646 / #0c3c3c** (kart), ayrık vakit satırları hap biçimli.
+- Vurgu: **yeşil #0c9456 / #19a566** ("2/5 prayed" halkası, "Mark all as prayed", onay daireleri).
+- Yazı tipi: SF Pro; Arapça için ayrı nesih yazı tipi.
+- Köşe: kartlar ve satırlar ~14–20 pt (göz kararı; ölçülmedi).
+- Alt çubuk: 5 sekme simge + yazı (Today, Prayers, Quran, Videos, Ummah).
+- Kart/liste: kartlar (Now kartı + halka kartı), vakit satırları ayrı haplar.
+- Görsel zenginlik: yüksek: dua kategorilerinde fotoğraf kartları (yemek, gün batımı, manzara), 3B yeşil tespih boncukları, kıble pusulasında harita, video içerikler.
+- Simge: özel + emoji benzeri vakit simgeleri (güneş, hilal).
+- İlk açılış / Pro: görülmedi (ham notta Premium).
+
+### 2.9 Athan Pro (id 743843090, Quanticapps; ABD 4,64 / 81.872) — yeni indirildi
+- Ücret: ücretsiz + satın almalar (ABD fiyatı): Athan Pro Premium $9.99 / $44.99 / $59.99 / $99.99, Essential Pack $7.99, Full Premium $12.99, Prayer Times Athan – Weekly $3.99, Yearly Subscription Discount $59.99, Customization $6.99, Yearly Subscription for Family $79.99 (apps.apple.com/us/app/id743843090).
+- İncelenen: mağaza 9 iPhone görüntüsü (`rakip2/tasarim/apps/athanpro/p01–p09.jpg`).
+- Zemin: **gökyüzü gradyanı** (vakte göre: lacivert üst #244781 → leylak #8690c3 → pembe-turuncu ufuk, cami silueti); Kur'an'da gri-mavi **#576579**; tespihte mor-gri→pembe; günlük içerikte gün batımı turuncusu. Düz zemin yok.
+- Yüzey: **buzlu cam kartlar** (yarı saydam leylak #8e93bd / #afb4d4), vakit kartları 3×2 ızgara (her kart simge + ad + saat + ses durumu "Disabled/Silent/Beep/Athan/Full Ath…").
+- Vurgu: beyaz; seçili sekme mavi-beyaz cam kabarcık.
+- Yazı tipi: **başlıklar ve vakit adı serif** (New York benzeri: "Maghrib", "Quran", mağaza başlıkları), saat rakamları SF Pro Rounded/Light büyük ("11:39", "16:52").
+- Köşe: cam kartlar ~20–24 pt (göz kararı; ölçülmedi).
+- Alt çubuk: **yüzen cam hap, 5 sekme simge + yazı** (Prayer, Today, Quran, Discover, Profile) — iOS 26 Liquid Glass.
+- Kart/liste: vakit ızgarası (kart), Kur'an listesi (numaralı daire + Arapça + İngilizce ad), Azkar kartları.
+- Görsel zenginlik: **çok yüksek**: gökyüzü gradyanları, cami silueti, 3B Kâbe, fotoğraf kartları (Hadith of the Day), harita, cam tespih boncukları.
+- Simge: SF Symbols (vakit simgeleri güneş/bulut/hilal renkli).
+- İlk açılış / Pro: görülmedi.
+
+### 2.10 Namaz Vakti – Ezan Saati, Dua (Codeida; id 852500166; 4,71 / 6.083)
+- İncelenen: mağaza 10 iPhone görüntüsü.
+- Zemin: **açık tema beyaz #ffffff** (Vakitler tablosu, Dini Günler zemini #eaf1e8 açık yeşil-gri), ana ekran üstü **mavi #2f6fa5 / #286da8** kart (sayaç "03:38:52"), Kur'an ve dua ekranları **koyu (siyah)**.
+- Yüzey: beyaz kartlar, seçili vakit beyaz kutu içinde mavi yazı; bayram kartı mavi **#226aa4**.
+- Vurgu: **mavi #2b6daa** + **koyu yeşil #1f6401** (pazarlama başlıkları ve zikir halkası yeşili).
+- Yazı tipi: SF Pro (Bold başlık).
+- Alt çubuk: görülmedi (ana ekranda "Kıble Bul / Kuran-ı Kerim / Zikirmatik / Sure-Dua" dört kare kısayol).
+- Kart/liste: kartlar (bayram namazı kartı, sıradaki dini gün kartı "2 gün kaldı").
+- Görsel zenginlik: orta: **çizim karakterli namaz rehberi** (rükû eden adam, abdest alan çocuk), harita, saat ve Watch görselleri; zemin düz.
+- İlk açılış / Pro: görülmedi.
+
+### 2.11 Vakit: Prayer Times Widget (id 6748356813, Hakan Çelik; 4,80 / 537)
+- İncelenen: mağaza 10 iPhone görüntüsü.
+- Zemin: **koyu lacivert #242638 / #252736 / #27314a** (uygulama içi tek tema görülüyor); mağaza görselinin zemini kâğıt bej **#f9f6ef** (pazarlama).
+- Yüzey: **#2c314f / #2a3b54** (satır ve kartlar, zeminden biraz açık).
+- Vurgu: **turkuaz-yeşil #40b8a8** (ilerleme halkası "4/5 prayers", takvimde bugün dairesi, kıble halkası), ikincil sarı-turuncu (istatistik çubukları), mavi.
+- Yazı tipi: SF Pro; mağaza başlıkları kalın siyah grotesk ("Without unlocking.").
+- Alt çubuk: **yüzen hap, 5 yalnız simge** (saat, kıble harfi A, ızgara, arama, çubuk grafik), seçili simge dolu daire.
+- Kart/liste: liste ağırlıklı (araçlar listesi gruplu başlıklarla "QURAN, HADITH & SERMON", "ZIKIR & TASBIH", "PRAYER", "TOOLS"), Güneş yayı kartı.
+- Görsel zenginlik: orta: Güneş yayı (gökyüzü eğrisi), fotoğraflı abdest rehberi, halka ve ısı haritası grafikleri; illüstrasyon az.
+- İlk açılış / Pro: görülmedi.
+
+### 2.12 Pillars (id 1559086853; TR 4,58 / 130)
+- İncelenen: mağaza 10 iPhone görüntüsü.
+- Zemin: **lacivert #001d43 / #002349** (uygulama içi koyu), ana vakit ekranı **açık: beyaz-buz mavisi #faffff / #e8f6ff** + üstte turuncu güneş ışıması (vakte göre gökyüzü).
+- Yüzey: koyu temada **#2c4160** satırlar / #001a3f kart; açık temada beyaz.
+- Vurgu: **turuncu-şeftali #e3925d** (kıble ibresi, "Travel" çipi, Arapça "Allahu Akbar"), lacivert yazı.
+- Yazı tipi: **geometrik sans (Poppins benzeri, SF değil)**; mağaza başlıkları beyaz kutulu.
+- Alt çubuk: görülmedi; hafta halkaları (M T W T F S S) ekran altında.
+- Kart/liste: liste (vakit satırları, takip satırları onay daireli).
+- Görsel zenginlik: orta: Güneş yayı, gökyüzü ışıması, Watch kadranları. "No Ads" mağazada vurgulanıyor (reklamsız kimlik: bizimle aynı söylem).
+- İlk açılış / Pro: görülmedi.
 

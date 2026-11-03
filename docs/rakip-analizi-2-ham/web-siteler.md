@@ -90,3 +90,27 @@ Karşılaştırma için kendi canlı sitemizin görüntüleri: `rakip2/web/biz/`
   - Alarm sayfasında **hazır saat düğmeleri ızgarası** ve "son kullanılanlar" — bizde hazır alarm sayfaları var (`/alarm/07-00/`, `ALARM_PRESETS`, `build.mjs`) ama /alarm/ sayfasından bağlantı verilmiyor (CLAUDE.md: "sayfalar arası bağlantı yok"); son kullanılanlar yok (kayıtlı alarm listesi `sth-alarms` var). Farklı; sahibin kararıyla bağlantı yok.
   - Kartta paylaşım çubuğu (9 sosyal ağ) — bizde araç sayfalarında sosyal paylaşım yok (planlayıcıda bağlantı kopyala var). Gerek sahibin kararı. Çaba K.
   - Gece modu ayarı sitede — bizde sitede gece modu yok (uygulamalarda var; sitede koyu tema var). Çaba K.
+
+## Online Alarm Kur (https://onlinealarmkur.com, Türkçe kök adres; `/tr/` 404; puan yok)
+- Ücret modeli: ücretsiz; bu turda **reklam görülmedi** (masaüstü ve telefon, tam sayfa). Hesap yok. Altbilgide dil seçici "TR Türkçe" (ilk analize göre 32 dil), YouTube/X/Bluesky simgeleri.
+- İncelenen görüntü: 9 (masaüstü açık/koyu/tam sayfa, telefon, Menü, Ayarlar, ampul düğmesi, alarm kurulmuş hâl masaüstü + telefon).
+- İlk açılış / tanıtım / ödeme sayfası: yok. Çerez bandı görülmedi.
+- Ana ekran ve gezinme: solda hamburger + "Online Alarm Kur / Menü" iki satır, ortada kalın başlık, sağda dişli ve **ampul** simgeleri (alarm kurulunca bir de tam ekran simgesi). Menü **ortada açılan pencere**, üç sütun kart: ZAMANLAYICILAR (Online Alarm Kur, Online Zamanlayıcı, Geri Sayım Sayacı, Online Kronometre), ZAMAN (Online Saat, Dünya Saatleri, Saat Dilimleri, Hafta Numarası), HESAPLAYICILAR (Tarih Hesaplama, Saat Hesaplama, Yaş Hesaplama). Her kart: çerçeveli kare simge kutusu + kalın ad; seçili kart mavi çerçeveli ve mavi yazılı.
+- Öne çıkan ekranlar:
+  - **Alarm kurma:** üstte "Salı, 3 Kasım 2026", altında **çok büyük ince (light) sans saat** "14:55:46" (açık gri), "Alarm saatini ayarla" + "✎ Düzenle"; Saat/Dakika açılır listeleri; **8 hazır saat** (05:00…08:30, zil simgeli mavi bağlantılar; "Düzenle" ile değiştirilebilir); "Alarm sesi" (Çalar Saat…) + "▷ Sesi test et"; "Alarm başlığı"; tam genişlik açık mavi (`#3abdf8`) "Alarm Kur" düğmesi (siyah yazı, 6 px köşe).
+  - **Alarm kurulunca:** büyük **mavi halka** içinde "Alarm", kalan süre "16:02:51" (mavi, büyük), altında turuncu zil "07:00"; altında **yüzde ilerleme çubuğu "0%"**, pembe (`~#f87185`) "Durdur" düğmesi. Telefonda altında **"Alarm geçmişi" tablosu** (#, Başlık, Alarm, Başlangıç, Bitiş, ×), anahtar ile aç/kapa, **"CSV'ye Aktar"** (yeşil çerçeveli) ve "Temizle" (kırmızı çerçeveli) düğmeleri.
+  - **Ampul:** "dikkatiniz dağılmadan ekranı açık tutmaya yarayan tamamen karanlık ekran" (görüntüde ekran tümüyle siyah).
+  - Çalınca iki düğme: Durdur, "10 dakika ertele" (yardım metninden).
+  - **SEO metni:** "Online Alarm Kur Nedir?", adım adım kullanım (5 madde), "Alarm ayarları", SSS (Alarm sesi yüksek mi?, İnternet bağlantısına ihtiyacım var mı?, Sekmeyi kapatırsam alarm çalışır mı?, Bilgisayar uyku modundayken alarm çalışır mı?) ve **"Türkiye'nin Uyku Alışkanlıkları"**: kendi ziyaretçilerine yaptıkları iki anonim anketin sonuçları (en çok yatış 23:00–23:59, kalkış 07:00–07:59, uyku 7–8 saat; en az uyuyan il Mersin 6 sa 14 dk, en çok Konya 7 sa 25 dk). Özgün veri, alıntılanabilir içerik.
+- Ayarlar (ortada pencere, beyaz çerçeveli, 16 px köşe): Karanlık mod, **Alarmı tekrarla** ("kapatılana kadar çalmaya devam eder"), **Alarm saatini göster**, **İlerleme çubuğunu göster**, **Alarm geçmişi** ("kurduğunuz alarmları kaydeder"), **Alarm erteleme süresi** kaydırıcı 0–60 dk (10 dk), **Alarm ses seviyesi** kaydırıcı (50). Mavi yuvarlak onay işaretleri.
+- Widget / kilit ekranı / saat: görülmedi.
+- Tasarım: varsayılan **koyu** (açık tema isteğinde de koyu açıldı; zemin `#010104`, alanlar `#0e1118`), Inter benzeri yazı, saat ince kesim; kartlar ve alanlar 6–8 px köşe; vurgu açık mavi `#3abdf8`, ikincil turuncu (alarm saati) ve pembe (Durdur). Simgeler ince çizgi (Lucide benzeri).
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Alarm kurulunca **büyük geri sayım halkası + yüzde ilerleme çubuğu** — bizde yalnız tek satır "Sonraki alarm: 07:00 (16 sa 2 dk)" (`src/js/tools.js` 451. satır). **Mevcut 2. analiz #51'e ek ayrıntı** (listede büyük "X sa Y dk sonra çalacak" kartı; web'de de). Çaba K. Rakipte ücretsiz.
+  - **Alarm geçmişi tablosu ve CSV'ye aktarma** — bizde yok (alarm listesi `sth-alarms` var, geçmiş yok; CSV yalnız kronometre ve pomodoroda, `tools.js` 150. satır). İlk analizde "alarm geçmişi/CSV" kısmen sayılmıştı; hâlâ yok. Çaba K. Ücretsiz.
+  - **Erteleme süresi seçimi ve alarm ses düzeyi** sitede — bizde erteleme sabit 5 dk (`tools.js` 499. satır `5 * 60000`), ses düzeyi ayarı yok (sabit kazanç). Uygulamalarda erteleme seçimi var (CLAUDE.md "Alarm ayarları"). **Mevcut 2. analiz #40'a ek ayrıntı** (alarm başına ses düzeyi; web'de de). Çaba K.
+  - **Karartılmış "ışıkları kapat" ekranı** (ampul) — bizde sitede yok (tam ekran var, karartma/gece modu yok). Çaba K.
+  - Hazır saatleri kullanıcının düzenleyebilmesi — bizde hazır alarm sayfaları sabit (`ALARM_PRESETS`). Gerek düşük.
+  - **Kendi anketinden özgün veri içeriği** ("Türkiye'nin uyku alışkanlıkları") — bizde yok; ankette sunucu ve kişisel veri işleme gerekir (statik site; sahibin kararı). Çaba O.
+  - Yaş hesaplama ayrı araç — bizde tarih hesaplamada yaş var (`/tarih-hesaplama/`, `src/js/dates.js`). Var.
