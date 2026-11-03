@@ -11,6 +11,8 @@ struct WeatherView: View {
     @AppStorage("units") private var units = Units.systemDefault
     @State private var data: Weather?
     @State private var failed = false
+    /// Üst kartta hava canlandırması (2. analiz #193; Ayarlar › Saat görünümü)
+    @AppStorage(WeatherScene.tabKey) private var animate = true
 
     private var zone: TimeZone { PlaceModel.shared.place.zone }
 
@@ -84,7 +86,7 @@ struct WeatherView: View {
             .padding(.top, 8)
         }
         .frame(maxWidth: .infinity)
-        .card()
+        .modifier(WeatherHero(scene: animate ? WeatherScene(c) : nil))
     }
 
     private func pill(_ title: String, _ value: String) -> some View {
@@ -239,5 +241,23 @@ struct AppleWeatherMark: View {
             .foregroundStyle(dark ? Color.white : Color.black)
             .lineLimit(1)
             .fixedSize()
+    }
+}
+
+/// Hava sekmesinin üst kartı: canlandırma açıksa zemin havanın kendisi (yağmur, kar, rüzgâr…), yazılar açık renk
+private struct WeatherHero: ViewModifier {
+    let scene: WeatherScene?
+
+    func body(content: Content) -> some View {
+        if let scene {
+            content
+                .padding(14)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(AnimatedBackground(kind: .weather, scene: scene, showMark: false))
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .environment(\.colorScheme, .dark)
+        } else {
+            content.card()
+        }
     }
 }

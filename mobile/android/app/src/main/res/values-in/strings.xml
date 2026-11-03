@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">Hapus poin dan laporan bangun?</string>
     <string name="wakegame_privacy">Poin dan laporan hanya tersimpan di ponsel ini dan tidak dikirim ke mana pun.</string>
     <string name="wakegame_privacyIOS">Poin dan laporan tersimpan di perangkat ini dan, jika sinkronisasi iCloud aktif, di akun iCloud Anda sendiri. Di iPhone, waktu bangun dicatat saat Anda membuka aplikasi setelah mematikan alarm atau menyelesaikan tugas mematikan.</string>
+    <string name="look_weatherAnim">Animasi cuaca</string>
+    <string name="look_weatherClock">Di layar jam</string>
+    <string name="look_weatherTab">Di tab cuaca</string>
+    <string name="look_weatherAnimNote">Layar menampilkan cuaca di tempat terpilih: hujan turun saat hujan, awan bergerak cepat dan daun beterbangan saat berangin, salju turun saat bersalju, kabut saat berkabut, kilat saat badai, matahari bersinar saat cerah, dan bintang muncul di malam hari. Intensitas mengikuti pengukuran (curah hujan, angin, tutupan awan). Jika Kurangi Gerakan aktif, gambar ditampilkan diam.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">Delete points and wake-up report?</string>
     <string name="wakegame_privacy">Points and the report stay on this phone only and are never sent anywhere.</string>
     <string name="wakegame_privacyIOS">Points and the report stay on this device and, if iCloud sync is on, in your own iCloud account. On iPhone a wake-up is recorded when you open the app after dismissing the alarm or finish the dismiss task.</string>
+    <string name="look_weatherAnim">Live weather</string>
+    <string name="look_weatherClock">On the clock screen</string>
+    <string name="look_weatherTab">On the weather tab</string>
+    <string name="look_weatherAnimNote">The screen shows the weather at the selected place: rain falls when it rains, clouds speed up and leaves blow in the wind, snow falls in snow, fog drifts in fog, lightning flashes in storms, the sun glows on clear days and stars come out at night. Intensity follows the measurements (precipitation, wind, cloud cover). With Reduce Motion on, it is drawn still.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

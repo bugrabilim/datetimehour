@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">Xallar və oyanma hesabatı silinsin?</string>
     <string name="wakegame_privacy">Xallar və hesabat yalnız bu telefonda saxlanır, heç yerə göndərilmir.</string>
     <string name="wakegame_privacyIOS">Xallar və hesabat yalnız bu cihazda və iCloud sinxronizasiyası açıqdırsa, öz iCloud hesabınızda saxlanır. iPhone-da oyanış zəngi söndürdükdən sonra tətbiqi açanda və ya söndürmə tapşırığını bitirəndə qeyd olunur.</string>
+    <string name="look_weatherAnim">Hava animasiyası</string>
+    <string name="look_weatherClock">Saat ekranında</string>
+    <string name="look_weatherTab">Hava bölməsində</string>
+    <string name="look_weatherAnimNote">Ekran seçilmiş yerin havasını göstərir: yağışda yağış yağır, küləkdə buludlar sürətlənir və yarpaqlar sovrulur, qarda qar, dumanda duman, tufanda şimşək, açıq gündüz Günəş parlayır, gecə ulduzlar çıxır. İntensivlik ölçmələrə görə dəyişir (yağıntı, külək, buludluluq). Hərəkəti azalt açıqdırsa, sabit çəkilir.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

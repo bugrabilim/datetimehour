@@ -8,6 +8,8 @@ struct ClockTab: View {
     @AppStorage("homeItems") private var homeItems = HomeItem.defaultRaw
     @AppStorage(Features.key) private var features = ""
     @AppStorage("fs.text") private var personalText = ""
+    @AppStorage(WeatherScene.clockKey) private var weatherBg = false
+    @Environment(\.colorScheme) private var colorScheme
     @State private var fullscreen = false
     @State private var customizing = false
     /// Yan çevirince tam ekran açılır, dikeye dönünce kapanır (düğmeyle açılan tam ekran dikeyde de kalır)
@@ -75,7 +77,11 @@ struct ClockTab: View {
                     .frame(maxWidth: 640)
                     .frame(maxWidth: .infinity)
                 }
-                .background(AppBackdrop().ignoresSafeArea())
+                // Hava neyse ekran öyle (2. analiz #193): seçilirse zemin seçili yerin havası, yazılar koyu temanın renkleri
+                .background {
+                    if weatherBg { AnimatedBackground(kind: .weather) } else { AppBackdrop().ignoresSafeArea() }
+                }
+                .environment(\.colorScheme, weatherBg ? .dark : colorScheme)
                 // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
                 .onChange(of: Int(now.timeIntervalSince1970)) { _, s in TickSound.shared.tick(s) }
             }

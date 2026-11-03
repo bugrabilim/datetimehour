@@ -37,7 +37,7 @@
     if (inflight[key]) return inflight[key]; // aynı konum için eşzamanlı istekler tek istekte birleşir
     if (failed[key] && now - failed[key] < 60000) return Promise.reject(new Error("backoff")); // hata sonrası 1 dk bekle (hız sınırına yüklenme)
     var url = API + "?latitude=" + lat + "&longitude=" + lon +
-      "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,is_day,uv_index" +
+      "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,is_day,uv_index,cloud_cover" +
       "&hourly=temperature_2m,precipitation_probability,weather_code,is_day" +
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,sunrise,sunset,uv_index_max" +
       "&timezone=auto&forecast_days=14";

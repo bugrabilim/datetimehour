@@ -173945,6 +173945,386 @@
           }
         }
       }
+    },
+    "look.weatherAnim": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava canlandırması"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live weather"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wetteranimation"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava animasiyası"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "طقس متحرك"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Animasi cuaca"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسم کی اینیمیشن"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پویانمایی هوا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Météo animée"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Живая погода"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気アニメーション"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨 애니메이션"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "动态天气"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Animasyon ng panahon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สภาพอากาศเคลื่อนไหว"
+          }
+        }
+      }
+    },
+    "look.weatherClock": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ekranında"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On the clock screen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf dem Uhrbildschirm"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saat ekranında"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "على شاشة الساعة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di layar jam"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گھڑی کی اسکرین پر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در صفحه ساعت"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sur l'écran de l'horloge"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На экране часов"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "時計画面"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시계 화면에서"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在时钟页面"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa screen ng orasan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บนหน้าจอนาฬิกา"
+          }
+        }
+      }
+    },
+    "look.weatherTab": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava sekmesinde"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On the weather tab"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Wetter-Tab"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava bölməsində"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في تبويب الطقس"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Di tab cuaca"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسم کے ٹیب میں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "در زبانه هوا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dans l'onglet météo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На вкладке погоды"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気タブ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨 탭에서"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在天气页面"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa tab ng panahon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ในแท็บสภาพอากาศ"
+          }
+        }
+      }
+    },
+    "look.weatherAnimNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran seçili yerin havasını gösterir: yağmurda yağmur yağar, rüzgârda bulutlar hızlanır ve yapraklar savrulur, karda kar, sisde sis, fırtınada şimşek, açık gündüz Güneş parlar, gece yıldızlar çıkar. Yoğunluk ölçüme göre değişir (yağış, rüzgâr, bulut oranı). Hareketi azalt açıksa durağan çizilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The screen shows the weather at the selected place: rain falls when it rains, clouds speed up and leaves blow in the wind, snow falls in snow, fog drifts in fog, lightning flashes in storms, the sun glows on clear days and stars come out at night. Intensity follows the measurements (precipitation, wind, cloud cover). With Reduce Motion on, it is drawn still."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Bildschirm zeigt das Wetter am gewählten Ort: Bei Regen regnet es, bei Wind ziehen Wolken schneller und Blätter wirbeln, bei Schnee schneit es, bei Nebel ist es neblig, bei Gewitter blitzt es, an klaren Tagen strahlt die Sonne, nachts erscheinen Sterne. Die Stärke folgt den Messwerten (Niederschlag, Wind, Bewölkung). Mit „Bewegung reduzieren“ bleibt das Bild still."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran seçilmiş yerin havasını göstərir: yağışda yağış yağır, küləkdə buludlar sürətlənir və yarpaqlar sovrulur, qarda qar, dumanda duman, tufanda şimşək, açıq gündüz Günəş parlayır, gecə ulduzlar çıxır. İntensivlik ölçmələrə görə dəyişir (yağıntı, külək, buludluluq). Hərəkəti azalt açıqdırsa, sabit çəkilir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعرض الشاشة طقس المكان المختار: يهطل المطر عند هطوله، وتسرع السحب وتتطاير الأوراق مع الرياح، ويتساقط الثلج، ويظهر الضباب، ويلمع البرق في العواصف، وتسطع الشمس في الأيام الصافية، وتظهر النجوم ليلًا. تتغيّر الشدة حسب القياسات (الهطول والرياح ونسبة الغيوم). عند تفعيل «تقليل الحركة» تُرسم ثابتة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Layar menampilkan cuaca di tempat terpilih: hujan turun saat hujan, awan bergerak cepat dan daun beterbangan saat berangin, salju turun saat bersalju, kabut saat berkabut, kilat saat badai, matahari bersinar saat cerah, dan bintang muncul di malam hari. Intensitas mengikuti pengukuran (curah hujan, angin, tutupan awan). Jika Kurangi Gerakan aktif, gambar ditampilkan diam."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسکرین منتخب جگہ کا موسم دکھاتی ہے: بارش میں بارش برستی ہے، ہوا میں بادل تیز چلتے اور پتے اڑتے ہیں، برف باری میں برف، دھند میں دھند، طوفان میں بجلی چمکتی ہے، صاف دن میں سورج چمکتا ہے اور رات کو ستارے نکلتے ہیں۔ شدت پیمائش کے مطابق بدلتی ہے (بارش، ہوا، بادل)۔ حرکت کم کریں آن ہو تو تصویر ساکن رہتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صفحه هوای مکان انتخاب‌شده را نشان می‌دهد: در باران باران می‌بارد، در باد ابرها تند می‌شوند و برگ‌ها می‌رقصند، در برف برف می‌بارد، در مه مه می‌آید، در توفان آذرخش می‌زند، در روز صاف خورشید می‌درخشد و شب ستاره‌ها پیدا می‌شوند. شدت بر اساس اندازه‌گیری‌ها تغییر می‌کند (بارش، باد، ابرناکی). اگر کاهش حرکت روشن باشد، ثابت کشیده می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'écran montre la météo du lieu choisi : il pleut quand il pleut, les nuages accélèrent et les feuilles s'envolent avec le vent, la neige tombe, le brouillard s'installe, les éclairs jaillissent pendant les orages, le soleil brille par temps clair et les étoiles apparaissent la nuit. L'intensité suit les mesures (précipitations, vent, couverture nuageuse). Avec « Réduire les animations », l'image reste fixe."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Экран показывает погоду в выбранном месте: в дождь идёт дождь, при ветре облака несутся быстрее и кружатся листья, в снег идёт снег, в туман стелется туман, в грозу сверкают молнии, в ясный день светит солнце, ночью появляются звёзды. Интенсивность зависит от измерений (осадки, ветер, облачность). При включённом «Уменьшении движения» картинка неподвижна."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選んだ場所の天気を画面に映します。雨なら雨が降り、風が強いと雲が速く流れ葉が舞い、雪なら雪、霧なら霧、嵐なら稲妻、晴れた昼は太陽が輝き、夜は星が出ます。強さは観測値（降水量、風、雲量）に応じて変わります。「視差効果を減らす」がオンなら静止画になります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "선택한 장소의 날씨를 화면에 보여 줍니다. 비가 오면 비가 내리고, 바람이 불면 구름이 빨라지고 나뭇잎이 날리며, 눈이 오면 눈, 안개가 끼면 안개, 폭풍에는 번개, 맑은 낮에는 해가 빛나고 밤에는 별이 뜹니다. 세기는 측정값(강수량, 바람, 구름 양)에 따라 달라집니다. 동작 줄이기가 켜져 있으면 멈춘 그림으로 표시됩니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕显示所选地点的天气：下雨时下雨，有风时云跑得更快、树叶飘舞，下雪时飘雪，起雾时有雾，雷暴时闪电，晴天白天阳光闪耀，夜晚星星出现。强度随实测数据变化（降水、风、云量）。开启“减弱动态效果”时画面静止。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ipinapakita ng screen ang panahon sa napiling lugar: umuulan kapag umuulan, bumibilis ang ulap at lumilipad ang mga dahon kapag mahangin, umuulan ng niyebe, may hamog, kumikidlat sa bagyo, sumisikat ang araw kapag maaliwalas, at lumalabas ang mga bituin sa gabi. Sumusunod ang lakas sa mga sukat (ulan, hangin, ulap). Kapag naka-on ang Reduce Motion, hindi ito gumagalaw."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "หน้าจอแสดงสภาพอากาศของสถานที่ที่เลือก ฝนตกเมื่อฝนตก ลมแรงเมฆจะเคลื่อนเร็วและใบไม้ปลิว หิมะตกเมื่อหิมะตก มีหมอกเมื่อหมอกลง ฟ้าแลบเมื่อมีพายุ แดดส่องเมื่อฟ้าใส และดาวขึ้นในเวลากลางคืน ความแรงเปลี่ยนตามค่าที่วัดได้ (ฝน ลม เมฆ) หากเปิดลดการเคลื่อนไหวภาพจะนิ่ง"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

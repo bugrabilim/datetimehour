@@ -47,6 +47,9 @@ class MoreScreensTest {
         FontScale.save(fontScale)
         // Kurulum sihirbazı geçilmiş sayılır (yeni kurulum işareti sonraki testlere sızmasın)
         Onboarding.finish()
+        // Hareketli arka planlar durağan tek kare çizer (sonsuz kare döngüsü ekran görüntüsünü bekletmesin)
+        android.provider.Settings.Global.putFloat(RuntimeEnvironment.getApplication().contentResolver,
+            android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 0f)
         // Robolectric'te bölge ABD: birimler açıkça metrik
         if (!imperial) Prefs.saveUnits("metric")
         captureRoboImage("$dir/$name.png") {
@@ -72,7 +75,7 @@ class MoreScreensTest {
     }
 
     /** İstanbul için örnek hava durumu (Open-Meteo yanıtı biçiminde) */
-    private fun seedWeather(current: Int = 2) {
+    private fun seedWeather(current: Int = 2, wind: Double = 14.0, precip: Double = 0.0, cloud: Int = 60) {
         val now = LocalDateTime.now().truncatedTo(ChronoUnit.HOURS)
         val hours = (0 until 48).map { now.plusHours(it.toLong()) }
         val days = (0 until 7).map { LocalDate.now().plusDays(it.toLong()) }
@@ -80,8 +83,8 @@ class MoreScreensTest {
         val o = JSONObject()
             .put("timezone", "Europe/Istanbul")
             .put("current", JSONObject().put("temperature_2m", 18.4).put("apparent_temperature", 17.2)
-                .put("relative_humidity_2m", 64).put("wind_speed_10m", 14.0).put("wind_direction_10m", 40)
-                .put("pressure_msl", 1016.0).put("uv_index", 3.1).put("weather_code", current).put("is_day", 1).put("precipitation", 0))
+                .put("relative_humidity_2m", 64).put("wind_speed_10m", wind).put("wind_direction_10m", 40).put("cloud_cover", cloud)
+                .put("pressure_msl", 1016.0).put("uv_index", 3.1).put("weather_code", current).put("is_day", 1).put("precipitation", precip))
             .put("hourly", JSONObject()
                 .put("time", hours.map { it.toString() }.let { org.json.JSONArray(it) })
                 .put("temperature_2m", org.json.JSONArray(hours.indices.map { 14 + 5 * kotlin.math.sin(it / 4.0) }))
@@ -102,6 +105,17 @@ class MoreScreensTest {
         Prefs.saveProvince("istanbul")
         seedWeather()
         shot("tr-hava") { WeatherScreen() }
+    }
+
+    /** Hava neyse ekran öyle (2. analiz #193): rüzgârlı yağmur, karlı, rüzgârlı açık hava */
+    @Test fun liveWeather() {
+        Prefs.saveProvince("istanbul")
+        seedWeather(current = 63, wind = 48.0, precip = 6.0, cloud = 95)
+        shot("tr-hava-yagmur-ruzgar") { WeatherScreen() }
+        seedWeather(current = 73, wind = 12.0, precip = 2.0, cloud = 100)
+        shot("tr-hava-kar", dark = true) { WeatherScreen() }
+        seedWeather(current = 1, wind = 42.0, precip = 0.0, cloud = 10)
+        shot("tr-hava-ruzgar") { WeatherScreen() }
     }
 
     @Test fun weatherDarkImperial() {

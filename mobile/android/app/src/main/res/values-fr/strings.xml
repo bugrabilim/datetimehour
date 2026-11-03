@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">Supprimer les points et le rapport de réveil ?</string>
     <string name="wakegame_privacy">Les points et le rapport restent uniquement sur ce téléphone et ne sont envoyés nulle part.</string>
     <string name="wakegame_privacyIOS">Les points et le rapport restent sur cet appareil et, si la synchronisation iCloud est activée, dans votre propre compte iCloud. Sur iPhone, le réveil est enregistré quand vous ouvrez l\'app après avoir arrêté l\'alarme ou terminé la tâche d\'arrêt.</string>
+    <string name="look_weatherAnim">Météo animée</string>
+    <string name="look_weatherClock">Sur l\'écran de l\'horloge</string>
+    <string name="look_weatherTab">Dans l\'onglet météo</string>
+    <string name="look_weatherAnimNote">L\'écran montre la météo du lieu choisi : il pleut quand il pleut, les nuages accélèrent et les feuilles s\'envolent avec le vent, la neige tombe, le brouillard s\'installe, les éclairs jaillissent pendant les orages, le soleil brille par temps clair et les étoiles apparaissent la nuit. L\'intensité suit les mesures (précipitations, vent, couverture nuageuse). Avec « Réduire les animations », l\'image reste fixe.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

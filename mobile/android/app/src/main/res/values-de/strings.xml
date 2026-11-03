@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">Punkte und Aufwachbericht löschen?</string>
     <string name="wakegame_privacy">Punkte und Bericht bleiben nur auf diesem Telefon und werden nirgendwohin gesendet.</string>
     <string name="wakegame_privacyIOS">Punkte und Bericht bleiben auf diesem Gerät und, wenn die iCloud-Synchronisierung aktiv ist, in Ihrem eigenen iCloud-Konto. Auf dem iPhone wird das Aufwachen erfasst, wenn Sie nach dem Ausschalten die App öffnen oder die Weckaufgabe abschließen.</string>
+    <string name="look_weatherAnim">Wetteranimation</string>
+    <string name="look_weatherClock">Auf dem Uhrbildschirm</string>
+    <string name="look_weatherTab">Im Wetter-Tab</string>
+    <string name="look_weatherAnimNote">Der Bildschirm zeigt das Wetter am gewählten Ort: Bei Regen regnet es, bei Wind ziehen Wolken schneller und Blätter wirbeln, bei Schnee schneit es, bei Nebel ist es neblig, bei Gewitter blitzt es, an klaren Tagen strahlt die Sonne, nachts erscheinen Sterne. Die Stärke folgt den Messwerten (Niederschlag, Wind, Bewölkung). Mit „Bewegung reduzieren“ bleibt das Bild still.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">Burahin ang puntos at ulat sa paggising?</string>
     <string name="wakegame_privacy">Sa teleponong ito lang naiimbak ang puntos at ulat at hindi ipinapadala kahit saan.</string>
     <string name="wakegame_privacyIOS">Sa device na ito naiimbak ang puntos at ulat at, kung naka-on ang iCloud sync, sa sarili mong iCloud account. Sa iPhone, naitatala ang paggising kapag binuksan mo ang app matapos patayin ang alarm o tinapos ang gawain sa pagpatay.</string>
+    <string name="look_weatherAnim">Animasyon ng panahon</string>
+    <string name="look_weatherClock">Sa screen ng orasan</string>
+    <string name="look_weatherTab">Sa tab ng panahon</string>
+    <string name="look_weatherAnimNote">Ipinapakita ng screen ang panahon sa napiling lugar: umuulan kapag umuulan, bumibilis ang ulap at lumilipad ang mga dahon kapag mahangin, umuulan ng niyebe, may hamog, kumikidlat sa bagyo, sumisikat ang araw kapag maaliwalas, at lumalabas ang mga bituin sa gabi. Sumusunod ang lakas sa mga sukat (ulan, hangin, ulap). Kapag naka-on ang Reduce Motion, hindi ito gumagalaw.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">Puanlar ve uyanma raporu silinsin mi?</string>
     <string name="wakegame_privacy">Puanlar ve rapor yalnız bu telefonda tutulur, hiçbir yere gönderilmez.</string>
     <string name="wakegame_privacyIOS">Puanlar ve rapor yalnız bu cihazda ve iCloud eşitlemesi açıksa kendi iCloud hesabınızda tutulur. iPhone\'da kalkış, alarmı kapattıktan sonra uygulamayı açtığınızda ya da kapatma görevini bitirdiğinizde kaydedilir.</string>
+    <string name="look_weatherAnim">Hava canlandırması</string>
+    <string name="look_weatherClock">Saat ekranında</string>
+    <string name="look_weatherTab">Hava sekmesinde</string>
+    <string name="look_weatherAnimNote">Ekran seçili yerin havasını gösterir: yağmurda yağmur yağar, rüzgârda bulutlar hızlanır ve yapraklar savrulur, karda kar, sisde sis, fırtınada şimşek, açık gündüz Güneş parlar, gece yıldızlar çıkar. Yoğunluk ölçüme göre değişir (yağış, rüzgâr, bulut oranı). Hareketi azalt açıksa durağan çizilir.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

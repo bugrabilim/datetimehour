@@ -832,6 +832,14 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .wx-place { margin: 0; font-size: 1.15rem; color: var(--muted); }
 .wx-clear { --wx-tint: #f3b233; } .wx-cloud { --wx-tint: #8fa3b8; } .wx-fog { --wx-tint: #a9b2bb; } .wx-rain { --wx-tint: #4f8fc9; } .wx-snow { --wx-tint: #8cc4ec; } .wx-storm { --wx-tint: #7a62b8; }
 .wx-hero.is-night { --wx-tint: #2c3d7a; }
+/* Hava canlandırması (2. analiz #193): canvas kartın zemininde, yazılar beyaz (canvas üstte koyulaştırır) */
+.wx-hero { position: relative; overflow: hidden; isolation: isolate; }
+.wx-fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; display: none; pointer-events: none; }
+.wx-hero.wx-live { background: #1b2350; color: #fff; padding-inline: 1rem; }
+.wx-hero.wx-live .wx-fx { display: block; }
+.wx-live .wx-place, .wx-live .wx-facts dt, .wx-live .meta { color: rgba(255,255,255,0.86); }
+.wx-live .wx-facts .fact { background: rgba(0,0,0,0.38); border-color: rgba(255,255,255,0.22); }
+.wx-live .wx-temp, .wx-live .wx-cond { text-shadow: 0 1px 6px rgba(0,0,0,0.35); }
 .wx-now { text-align: center; margin: 0.5rem 0; }
 .wx-now[hidden], [data-wx-hourly-box][hidden], [data-wx-daily-box][hidden] { display: none; }
 .wx-icon { font-size: clamp(4rem, 16vw, 6.5rem); margin: 0; line-height: 1; }

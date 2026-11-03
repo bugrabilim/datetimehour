@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">포인트와 기상 리포트를 삭제할까요?</string>
     <string name="wakegame_privacy">포인트와 리포트는 이 휴대폰에만 남고 어디에도 전송되지 않습니다.</string>
     <string name="wakegame_privacyIOS">포인트와 리포트는 이 기기와, iCloud 동기화가 켜져 있으면 본인 iCloud 계정에만 남습니다. iPhone에서는 알람을 끈 뒤 앱을 열거나 끄기 과제를 마치면 기상이 기록됩니다.</string>
+    <string name="look_weatherAnim">날씨 애니메이션</string>
+    <string name="look_weatherClock">시계 화면에서</string>
+    <string name="look_weatherTab">날씨 탭에서</string>
+    <string name="look_weatherAnimNote">선택한 장소의 날씨를 화면에 보여 줍니다. 비가 오면 비가 내리고, 바람이 불면 구름이 빨라지고 나뭇잎이 날리며, 눈이 오면 눈, 안개가 끼면 안개, 폭풍에는 번개, 맑은 낮에는 해가 빛나고 밤에는 별이 뜹니다. 세기는 측정값(강수량, 바람, 구름 양)에 따라 달라집니다. 동작 줄이기가 켜져 있으면 멈춘 그림으로 표시됩니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

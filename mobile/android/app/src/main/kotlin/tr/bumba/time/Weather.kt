@@ -31,6 +31,8 @@ data class WeatherData(
     data class Current(
         val temp: Double, val feels: Double, val humidity: Double, val wind: Double, val windDir: Double,
         val pressure: Double, val uv: Double, val code: Int, val isDay: Boolean, val precipitation: Double,
+        /** Bulut oranı % (bilinmiyorsa −1; 2. analiz #193 hava canlandırması) */
+        val cloud: Double = -1.0,
     )
     data class Hour(val at: Instant, val temp: Double, val code: Int, val rain: Int, val isDay: Boolean)
     data class Day(
@@ -120,7 +122,7 @@ object WeatherCache {
         val (lat, lon) = key.split(",")
         val url = "$API?latitude=$lat&longitude=$lon" +
             "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m," +
-            "wind_direction_10m,pressure_msl,is_day,uv_index" +
+            "wind_direction_10m,pressure_msl,is_day,uv_index,cloud_cover" +
             "&hourly=temperature_2m,precipitation_probability,weather_code,is_day" +
             "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset,uv_index_max" +
             "&timezone=auto&forecast_days=14"
@@ -151,6 +153,7 @@ object WeatherCache {
             code = cu.optInt("weather_code", 2),
             isDay = cu.optInt("is_day", 1) == 1,
             precipitation = cu.optDouble("precipitation", 0.0),
+            cloud = cu.optDouble("cloud_cover", -1.0),
         )
         val h = o.getJSONObject("hourly")
         val ht = h.getJSONArray("time")

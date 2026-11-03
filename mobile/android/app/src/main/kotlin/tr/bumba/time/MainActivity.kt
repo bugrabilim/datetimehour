@@ -40,6 +40,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
@@ -208,8 +209,12 @@ fun Root(start: Int) {
     BackHandler(enabled = tab != Tab.CLOCK && !(tab == Tab.TOOLS && toolsRoute != null)) { Nav.tab = Tab.CLOCK }
 
     if (landscape) HideSystemBars()
+    // Hava neyse ekran öyle (2. analiz #193): seçilirse saat ekranının zemini seçili yerin havası, yazılar koyu temanın renkleri
+    val clockWx = tab == Tab.CLOCK && Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)
     Box(Modifier.fillMaxSize()) {
-    Column(Modifier.fillMaxSize().appBackdrop(Theme.c)) {
+    if (clockWx) AnimatedBackground(FullscreenBackground.WEATHER, Modifier.fillMaxSize())
+    CompositionLocalProvider(LocalColors provides if (clockWx) AccentPalette.find(Prefs.accent).colors(true) else Theme.c) {
+    Column(Modifier.fillMaxSize().then(if (clockWx) Modifier else Modifier.appBackdrop(Theme.c))) {
         Box(Modifier.weight(1f).fillMaxWidth().statusBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
             when (tab) {
                 Tab.CLOCK -> ClockScreen(
@@ -232,6 +237,7 @@ fun Root(start: Int) {
                 Nav.tab = t
             }
         }
+    }
     }
     BadgeToast(Modifier.align(Alignment.TopCenter).statusBarsPadding())
     }

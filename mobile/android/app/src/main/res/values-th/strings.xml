@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">ลบคะแนนและรายงานการตื่นหรือไม่</string>
     <string name="wakegame_privacy">คะแนนและรายงานอยู่ในโทรศัพท์เครื่องนี้เท่านั้นและไม่ถูกส่งไปที่ใด</string>
     <string name="wakegame_privacyIOS">คะแนนและรายงานอยู่ในอุปกรณ์นี้ และหากเปิดการซิงค์ iCloud จะอยู่ในบัญชี iCloud ของคุณเอง บน iPhone การตื่นจะถูกบันทึกเมื่อคุณเปิดแอปหลังปิดนาฬิกาปลุกหรือทำภารกิจปิดปลุกเสร็จ</string>
+    <string name="look_weatherAnim">สภาพอากาศเคลื่อนไหว</string>
+    <string name="look_weatherClock">บนหน้าจอนาฬิกา</string>
+    <string name="look_weatherTab">ในแท็บสภาพอากาศ</string>
+    <string name="look_weatherAnimNote">หน้าจอแสดงสภาพอากาศของสถานที่ที่เลือก ฝนตกเมื่อฝนตก ลมแรงเมฆจะเคลื่อนเร็วและใบไม้ปลิว หิมะตกเมื่อหิมะตก มีหมอกเมื่อหมอกลง ฟ้าแลบเมื่อมีพายุ แดดส่องเมื่อฟ้าใส และดาวขึ้นในเวลากลางคืน ความแรงเปลี่ยนตามค่าที่วัดได้ (ฝน ลม เมฆ) หากเปิดลดการเคลื่อนไหวภาพจะนิ่ง</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

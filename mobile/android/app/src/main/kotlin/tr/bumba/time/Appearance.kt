@@ -332,6 +332,15 @@ fun AppearanceScreen() {
             }
             Text(L("look.fsNote") + " " + L("fs.toolsNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
+        // Hava neyse ekran öyle (2. analiz #193): saat ekranının zemini ve hava sekmesinin üst kartı
+        AppCard {
+            SectionTitle(L("look.weatherAnim"))
+            var clockWx by remember { mutableStateOf(Prefs.store.getBoolean(WeatherScene.CLOCK_KEY, false)) }
+            var tabWx by remember { mutableStateOf(Prefs.store.getBoolean(WeatherScene.TAB_KEY, true)) }
+            LookSwitch(L("look.weatherClock"), clockWx) { clockWx = it; Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, it).apply() }
+            LookSwitch(L("look.weatherTab"), tabWx) { tabWx = it; Prefs.store.edit().putBoolean(WeatherScene.TAB_KEY, it).apply() }
+            Text(L("look.weatherAnimNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
         // Gece / yatak başı modu (tam ekran saat)
         AppCard {
             SectionTitle(L("night.title"))

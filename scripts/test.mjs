@@ -568,6 +568,21 @@ for (const l of LANGS) {
     check(!/class="tool-title"/.test(h) && /<h2 id="tool-h" class="sr-only">/.test(h), `başlık tekrarı: /${f}/`);
   }
   // #88 yüzde: site ortak yardımcıyı kullanır
+  // Hava neyse ekran öyle (2. analiz #193): sahne kuralları uygulamalardakiyle aynı (WeatherSceneTest değerleri)
+  {
+    const m = { exports: {} };
+    new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/weather-fx.js"), "utf8"))(m, undefined);
+    const F = m.exports, sc = F.scene;
+    check(sc("clear", 0, 30).kind === "windy" && sc("cloudy", 0, 29).kind === "cloudy" && sc("rain", 0, 60).kind === "rain", "hava sahnesi: rüzgârlı türü 30 km/sa");
+    check(sc("rain").drops === 90 && sc("rain", 1).drops === 70 && sc("rain", 50).drops === 240 && sc("storm").drops === 140, "hava sahnesi: damla sayısı");
+    check(Math.abs(sc("rain").slant - 0.08) < 1e-9 && Math.abs(sc("rain", 0, 200).slant - 0.9) < 1e-9, "hava sahnesi: eğim");
+    check(sc("cloudy", 0, 0, 1).clouds === 6 && sc("clear").clouds === 0 && sc("cloudy").clouds === 4, "hava sahnesi: bulut sayısı");
+    check(sc("snow", 2).flakes === 140 && sc("clear", 0, 42).leaves === 12 && sc("rain", 0, 40).leaves === 10 && sc("rain", 0, 10).leaves === 0, "hava sahnesi: kar ve yaprak");
+    check(F.kindOf(63) === "rain" && F.kindOf(73) === "snow" && F.kindOf(95) === "storm" && F.kindOf(45) === "fog" && F.kindOf(3) === "cloudy", "hava sahnesi: WMO kodu");
+    const wh = fs.readFileSync(path.join(DIST, "hava-durumu/index.html"), "utf8");
+    check(/data-wx-fx/.test(wh) && /weather-fx\.js/.test(wh), "hava sayfasında canlandırma canvas'ı ve betiği olmalı");
+    check(/cloud_cover/.test(fs.readFileSync(path.join(ROOT, "src/js/weather-core.js"), "utf8")), "hava isteğinde bulut oranı olmalı");
+  }
   check(/S\.pct\(/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8")) && !/\+ "%"/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8").replace(/toFixed\(1\) \+ "%"/g, "")), "hava sayfasında yüzde dile göre biçimlenmeli");
 }
 

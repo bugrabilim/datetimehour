@@ -31,6 +31,9 @@ class ScreenshotTest {
         Prefs.store.edit().putBoolean("notify.asked", true).commit()
         // Kurulum sihirbazı (yeni kurulumda açılır) bu görüntülerde geçilmiş sayılır
         Onboarding.finish()
+        // Hareketli arka planlar durağan tek kare (hava canlandırması sonsuz kare döngüsüyle beklemesin)
+        android.provider.Settings.Global.putFloat(RuntimeEnvironment.getApplication().contentResolver,
+            android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 0f)
         // Sekme görüntüleri bütün özellikler açıkken (yeni kurulumda yalnız Saat açıktır; firstLaunch görüntüsü)
         Features.save(features)
         Prefs.saveAppearance(if (dark) "dark" else "light")
@@ -191,6 +194,16 @@ class ScreenshotTest {
 
     @Test fun kidsColor() = shot("tr-saat-renk", Tab.CLOCK, accent = "kid-purple")
     @Test fun clockWeather() = shot("tr-saat-hava", Tab.CLOCK, weather = true)
+
+    /** Hava neyse ekran öyle (2. analiz #193): saat ekranının zemini seçili yerin havası (örnek: rüzgârlı yağmur) */
+    @Test fun clockLiveWeather() {
+        val place = AppPlace.current()
+        val base = sampleWeather()
+        WeatherCache.seed(place.lat, place.lon, base.copy(current = base.current.copy(code = 63, wind = 45.0, precipitation = 5.0, cloud = 90.0)))
+        Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, true).commit()
+        shot("tr-saat-canli-hava", Tab.CLOCK)
+        Prefs.store.edit().remove(WeatherScene.CLOCK_KEY).commit()
+    }
     @Test fun clockClassic() = shot("tr-saat-analog", Tab.CLOCK, model = 1)
     @Test fun clockHorizontal() = shot("tr-saat-yatay", Tab.CLOCK, model = 14, weather = true, dark = true)
     @Test fun clockWxCard() = shot("tr-saat-hava-kart", Tab.CLOCK, model = 5, weather = true)

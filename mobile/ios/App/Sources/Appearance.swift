@@ -160,6 +160,8 @@ struct AppearanceView: View {
     @AppStorage(TickSound.key) private var tickSound = false
     @AppStorage("fs.banner") private var banner = false
     @AppStorage(DualZone.key) private var dualCity = ""
+    @AppStorage(WeatherScene.clockKey) private var weatherClock = false
+    @AppStorage(WeatherScene.tabKey) private var weatherTab = true
 
     private var background: FullscreenBackground { FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain) }
 
@@ -273,6 +275,15 @@ struct AppearanceView: View {
                 Text(L("look.size"))
             } footer: {
                 Text(L("look.fsNote") + " " + L("fs.toolsNote"))
+            }
+            // Hava neyse ekran öyle (2. analiz #193): saat ekranının zemini ve hava sekmesinin üst kartı
+            Section {
+                Toggle(L("look.weatherClock"), isOn: $weatherClock)
+                Toggle(L("look.weatherTab"), isOn: $weatherTab)
+            } header: {
+                Text(L("look.weatherAnim"))
+            } footer: {
+                Text(L("look.weatherAnimNote"))
             }
             // Gece / yatak başı modu (tam ekran saat)
             Section {

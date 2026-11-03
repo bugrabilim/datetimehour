@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">پوائنٹس اور جاگنے کی رپورٹ حذف کریں؟</string>
     <string name="wakegame_privacy">پوائنٹس اور رپورٹ صرف اسی فون پر رہتے ہیں اور کہیں نہیں بھیجے جاتے۔</string>
     <string name="wakegame_privacyIOS">پوائنٹس اور رپورٹ اسی آلے پر اور اگر iCloud ہم آہنگی آن ہو تو آپ کے اپنے iCloud اکاؤنٹ میں رہتے ہیں۔ آئی فون پر جاگنا اس وقت درج ہوتا ہے جب آپ الارم بند کرنے کے بعد ایپ کھولیں یا بند کرنے کا کام مکمل کریں۔</string>
+    <string name="look_weatherAnim">موسم کی اینیمیشن</string>
+    <string name="look_weatherClock">گھڑی کی اسکرین پر</string>
+    <string name="look_weatherTab">موسم کے ٹیب میں</string>
+    <string name="look_weatherAnimNote">اسکرین منتخب جگہ کا موسم دکھاتی ہے: بارش میں بارش برستی ہے، ہوا میں بادل تیز چلتے اور پتے اڑتے ہیں، برف باری میں برف، دھند میں دھند، طوفان میں بجلی چمکتی ہے، صاف دن میں سورج چمکتا ہے اور رات کو ستارے نکلتے ہیں۔ شدت پیمائش کے مطابق بدلتی ہے (بارش، ہوا، بادل)۔ حرکت کم کریں آن ہو تو تصویر ساکن رہتی ہے۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

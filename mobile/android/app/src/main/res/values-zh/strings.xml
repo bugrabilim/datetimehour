@@ -1832,5 +1832,9 @@
     <string name="wakegame_resetConfirm">删除积分和起床报告？</string>
     <string name="wakegame_privacy">积分和报告只保存在这部手机上，不会发送到任何地方。</string>
     <string name="wakegame_privacyIOS">积分和报告保存在此设备上；如开启 iCloud 同步，也会保存在你自己的 iCloud 账户中。在 iPhone 上，关闭闹钟后打开应用或完成关闭任务时会记录起床。</string>
+    <string name="look_weatherAnim">动态天气</string>
+    <string name="look_weatherClock">在时钟页面</string>
+    <string name="look_weatherTab">在天气页面</string>
+    <string name="look_weatherAnimNote">屏幕显示所选地点的天气：下雨时下雨，有风时云跑得更快、树叶飘舞，下雪时飘雪，起雾时有雾，雷暴时闪电，晴天白天阳光闪耀，夜晚星星出现。强度随实测数据变化（降水、风、云量）。开启“减弱动态效果”时画面静止。</string>
     <string name="app_name">时间与日期</string>
 </resources>

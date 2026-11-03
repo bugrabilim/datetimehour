@@ -108,6 +108,7 @@ for (const [name, from] of [
   ["nature-calc.js", "js/nature-calc.js"],
   ["nature.js", "js/nature.js"],
   ["weather-core.js", "js/weather-core.js"],
+  ["weather-fx.js", "js/weather-fx.js"],
   ["weather.js", "js/weather.js"],
   ["globe.js", "js/globe.js"],
 ]) {
@@ -1802,6 +1803,7 @@ function buildWeather(lang) {
   const w = t.weather;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: w.h1, path: ROUTES[lang].weather }];
   const hero = `<section class="wx-hero" data-weather aria-labelledby="wx-h">
+      <canvas class="wx-fx" data-wx-fx aria-hidden="true"></canvas>
       <h2 id="wx-h" class="wx-place" data-wx-place>&nbsp;</h2>
       <p class="meta" data-wx-state role="status">${esc(w.loading)}</p>
       <div class="wx-now" data-wx-now hidden>
@@ -1828,7 +1830,7 @@ function buildWeather(lang) {
   </div>
 </section>`;
   const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry };
-  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "weather", searchK: w.search, needsPlace: true, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
+  return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather-fx.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "weather", searchK: w.search, needsPlace: true, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
 }
 
 /* ---------- Namaz vakitleri: konuma göre hub + 81 il sayfası (hesap tarayıcıda, prayer-calc.js) ---------- */

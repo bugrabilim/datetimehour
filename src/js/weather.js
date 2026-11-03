@@ -19,6 +19,9 @@
     q("[data-wx-place]").textContent = place.name;
     var theme = /^(clear|mostlyClear)$/.test(i.key) ? "clear" : /^(partly|overcast)$/.test(i.key) ? "cloud" : i.key === "fog" ? "fog" : /snow/i.test(i.key) ? "snow" : /thunder/.test(i.key) ? "storm" : "rain";
     root.className = "wx-hero wx-" + theme + (c.is_day === 0 ? " is-night" : "");
+    // Hava neyse ekran öyle (2. analiz #193): kartın zemininde seçili yerin havası canlanır
+    var FX = window.sthWeatherFx, cv = q("[data-wx-fx]");
+    if (FX && cv && cv.getContext) { root.classList.add("wx-live"); FX.set(cv, FX.fromCurrent(c), c.is_day !== 0); }
     q("[data-wx-icon]").textContent = i.icon;
     q("[data-wx-temp]").textContent = W.temp(c.temperature_2m);
     q("[data-wx-cond]").textContent = i.label;

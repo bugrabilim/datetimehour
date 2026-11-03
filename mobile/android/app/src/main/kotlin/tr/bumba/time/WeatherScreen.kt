@@ -31,6 +31,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -97,10 +98,22 @@ fun WeatherAttribution(modifier: Modifier = Modifier) {
     )
 }
 
+/** Üst kart: canlandırma açıksa (2. analiz #193) zemin havanın kendisi, yazılar koyu temanın açık renkleri */
+@Composable
+private fun WeatherHero(scene: WeatherScene?, content: @Composable androidx.compose.foundation.layout.ColumnScope.() -> Unit) {
+    if (scene == null) { AppCard(content = content); return }
+    Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp))) {
+        AnimatedBackground(FullscreenBackground.WEATHER, Modifier.matchParentSize(), scene = scene, attribution = false)
+        androidx.compose.runtime.CompositionLocalProvider(LocalColors provides AccentPalette.find(Prefs.accent).colors(true)) {
+            Column(Modifier.fillMaxWidth().padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp), content = content)
+        }
+    }
+}
+
 @Composable
 private fun Current(d: WeatherData) {
     val c = d.current
-    AppCard {
+    WeatherHero(if (Prefs.store.getBoolean(WeatherScene.TAB_KEY, true)) WeatherScene.of(c) else null) {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(d.condition.icon(c.isDay), fontSize = 56.sp)
             Ltr { Text(Units.temp(c.temp), color = Theme.c.text, fontSize = 56.sp, fontWeight = FontWeight.SemiBold) }
