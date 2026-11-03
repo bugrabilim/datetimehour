@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">اجازه دادن</string>
     <string name="prayer_silent_channel">بی‌صدا در وقت نماز</string>
     <string name="prayer_silent_active">گوشی تا %1$s بی‌صداست</string>
+    <string name="prayer_inWords">%2$s %1$s دیگر</string>
+    <string name="prayer_wordsHM">%1$s ساعت و %2$s دقیقه</string>
+    <string name="prayer_wordsM">%1$s دقیقه</string>
+    <string name="prayer_wordsHint">برای جابه‌جایی بین نوشتار و ساعت لمس کنید.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

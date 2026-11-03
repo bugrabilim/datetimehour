@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">허용</string>
     <string name="prayer_silent_channel">기도 시간 무음</string>
     <string name="prayer_silent_active">%1$s까지 무음</string>
+    <string name="prayer_inWords">%2$s까지 %1$s</string>
+    <string name="prayer_wordsHM">%1$s시간 %2$s분</string>
+    <string name="prayer_wordsM">%1$s분</string>
+    <string name="prayer_wordsHint">누르면 글자와 시계 표시가 바뀝니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">Autoriser</string>
     <string name="prayer_silent_channel">Silencieux à l’heure de la prière</string>
     <string name="prayer_silent_active">Téléphone en silencieux jusqu’à %1$s</string>
+    <string name="prayer_inWords">%2$s dans %1$s</string>
+    <string name="prayer_wordsHM">%1$s h %2$s min</string>
+    <string name="prayer_wordsM">%1$s min</string>
+    <string name="prayer_wordsHint">Touchez pour passer des mots à l’horloge.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

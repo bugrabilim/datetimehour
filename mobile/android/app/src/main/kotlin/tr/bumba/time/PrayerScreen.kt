@@ -36,6 +36,10 @@ import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.Event
+import androidx.compose.material.icons.filled.Celebration
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -77,6 +81,8 @@ fun PrayerScreen() {
         "zikir" -> { BackHandler { page = null }; ZikirScreen { page = null }; return }
         "track" -> { BackHandler { page = null }; TrackerScreen { page = null }; return }
         "zakat" -> { BackHandler { page = null }; ZakatScreen { page = null }; return }
+        "reldays" -> { BackHandler { page = null }; ReligiousDaysScreen { page = null }; return }
+        "greet" -> { BackHandler { page = null }; GreetingScreen { page = null }; return }
         "esma" -> { BackHandler { page = null }; EsmaScreen { page = null }; return }
         "hadith" -> { BackHandler { page = null }; HadithScreen { page = null }; return }
         "guide" -> { BackHandler { page = null }; PrayerGuideScreen({ page = null }) { page = "duas" }; return }
@@ -114,13 +120,10 @@ fun PrayerScreen() {
             SavedPlaceChips()
             // Bugünün miladi ve hicri tarihi (Diyanet takvimi)
             Hijri.date(today)?.let { Text(Fmt.longDate(today) + " · " + it.text, color = Theme.c.muted, fontSize = 13.sp) }
-            if (next != null) {
-                Text(T("prayer.nextIn", next.prayer.title), color = Theme.c.muted, fontSize = 15.sp)
-                Text(
-                    Fmt.countdown(next.at.epochSecond - now.epochSecond),
-                    color = Theme.c.accent, fontSize = 52.sp, fontWeight = FontWeight.Bold, style = Tnum,
-                )
-            }
+            UpcomingReligiousLine(today) { page = "reldays" }
+            if (next != null) SkyCountdown(entries, next, now)
+            var trackV by remember { androidx.compose.runtime.mutableIntStateOf(0) }
+            val inline = TrackX.inline
             AppCard {
                 SectionTitle(L("prayer.today"))
                 for (e in entries) {
@@ -128,14 +131,19 @@ fun PrayerScreen() {
                     Row(
                         Modifier.fillMaxWidth()
                             .background(if (on) Theme.c.accentSoft else androidx.compose.ui.graphics.Color.Transparent, RoundedCornerShape(10.dp))
-                            .padding(horizontal = 10.dp, vertical = 9.dp),
+                            .padding(start = 10.dp, end = if (inline) 0.dp else 10.dp, top = 5.dp, bottom = 5.dp)
+                            .heightIn(min = 34.dp),
+                        verticalAlignment = Alignment.CenterVertically,
                     ) {
+                        Icon(prayerIcon(e.prayer), null, tint = if (on) Theme.c.accent else Theme.c.muted, modifier = Modifier.padding(end = 10.dp).size(20.dp))
                         Text(e.prayer.title, Modifier.weight(1f), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp)
                         Text(Fmt.hm(e.at, place.zone), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp, style = Tnum)
+                        if (inline) PrayedMark(today, e, now, trackV) { trackV++ }
                     }
                 }
+                if (inline) PrayedSummary(today, entries, now, trackV) { trackV++ }
             }
-            SunMoonArc(now, place)
+            PrayerVisual(now, place, entries)
             BayramRow(today, now, place)
             KerahatCard(entries, place)
             ExtraTimesCard(today, place)
@@ -165,6 +173,8 @@ fun PrayerScreen() {
             LinkCard(Icons.Filled.SelfImprovement, L("guide.title")) { page = "guide" }
             LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { page = "zikir" }
             LinkCard(Icons.Filled.TaskAlt, L("track.title")) { page = "track" }
+            LinkCard(Icons.Filled.Event, L("relday.title")) { page = "reldays" }
+            LinkCard(Icons.Filled.Celebration, L("greet.title")) { page = "greet" }
             LinkCard(Icons.Filled.Calculate, L("zakat.title")) { page = "zakat" }
         }
     }

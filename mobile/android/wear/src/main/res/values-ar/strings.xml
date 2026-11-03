@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">السماح</string>
     <string name="prayer_silent_channel">الصامت عند وقت الصلاة</string>
     <string name="prayer_silent_active">الهاتف صامت حتى %1$s</string>
+    <string name="prayer_inWords">%2$s بعد %1$s</string>
+    <string name="prayer_wordsHM">%1$s س %2$s د</string>
+    <string name="prayer_wordsM">%1$s د</string>
+    <string name="prayer_wordsHint">المس للتبديل بين الكلمات والساعة.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

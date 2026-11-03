@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">允许</string>
     <string name="prayer_silent_channel">礼拜时间静音</string>
     <string name="prayer_silent_active">静音至%1$s</string>
+    <string name="prayer_inWords">%1$s后%2$s</string>
+    <string name="prayer_wordsHM">%1$s小时%2$s分钟</string>
+    <string name="prayer_wordsM">%1$s分钟</string>
+    <string name="prayer_wordsHint">点按可在文字和时钟显示之间切换。</string>
     <string name="app_name">时间与日期</string>
 </resources>

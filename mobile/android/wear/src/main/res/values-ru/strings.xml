@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">Разрешить</string>
     <string name="prayer_silent_channel">Беззвучно во время намаза</string>
     <string name="prayer_silent_active">Телефон без звука до %1$s</string>
+    <string name="prayer_inWords">%2$s через %1$s</string>
+    <string name="prayer_wordsHM">%1$s ч %2$s мин</string>
+    <string name="prayer_wordsM">%1$s мин</string>
+    <string name="prayer_wordsHint">Коснитесь, чтобы переключить слова и часы.</string>
     <string name="app_name">Время и дата</string>
 </resources>

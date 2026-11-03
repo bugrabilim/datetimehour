@@ -251,6 +251,35 @@ class MoreScreensTest {
         shot("tr-zekat") { ZakatScreen {} }
         Zakat.save(emptyMap())
     }
+    /** 2. analiz 1. dalga D: dini günler, tebrik kartı, ibadet istatistiği, tesbih görünümü, hatim, Kur'an zemini, 24 saat kadranı */
+    @Test fun worshipExtras() {
+        shot("tr-dini-gunler") { ReligiousDaysScreen {} }
+        shot("tr-tebrik") { GreetingScreen {} }
+        Tracker.clear()
+        val today = LocalDate.now()
+        val masks = listOf(0b11111, 0b01111, 0b10111, 0b11111, 0b00011, 0b11101, 0)
+        for (i in 0..200) Tracker.setDayMask(today.minusDays(i.toLong()), masks[i % masks.size])
+        for (i in 1..10) { TrackX.recordWhen(today.minusDays(i.toLong()), 0, 10 + i); TrackX.recordWhen(today.minusDays(i.toLong()), 1, 30 + i * 2) }
+        for (k in Tracker.KAZA) Tracker.setKaza(k, 900)
+        Tracker.setKaza("fast.illness", 2); Tracker.setKaza("fast.travel", 1)
+        repeat(60) { TrackX.logKazaPrayed(today.minusDays((it % 20).toLong())) }
+        shot("tr-ibadet-istatistik") { TrackerScreen {} }
+        Tracker.clear()
+        Prefs.store.edit().putBoolean("zikir.beads", true).putBoolean("zikir.tesbihat", false).putString("zikir.kind", "elhamdulillah")
+            .putInt("zikir.target", 33).putInt("zikir.count", 21).commit()
+        shot("tr-zikir-tesbih") { ZikirScreen {} }
+        Prefs.store.edit().remove("zikir.beads").remove("zikir.count").commit()
+        Quran.bookmark = 36 to 1
+        Prefs.store.edit().putString("quran.theme", "sepia").putInt("quran.goal", 20)
+            .putString("quran.hatim", org.json.JSONObject().put("s", today.minusDays(40).toString()).put("i", 0).put("n", 2).toString()).commit()
+        shot("tr-kuran-hatim") { QuranScreen {} }
+        shot("tr-kuran-sepya") { SuraScreen(36, 1) {} }
+        Quran.bookmark = null
+        Prefs.store.edit().remove("quran.theme").remove("quran.goal").remove("quran.hatim").commit()
+        Prefs.store.edit().putString("prayer.visual", "dial").putBoolean("prayer.words", true).commit()
+        shot("tr-vakitler-kadran") { PrayerScreen() }
+        Prefs.store.edit().remove("prayer.visual").remove("prayer.words").commit()
+    }
     @Test fun prayerExtras() {
         Prefs.store.edit().putString(PrayerMethod.METHOD, "mwl").putBoolean(PrayerMethod.HANAFI, true)
             .putInt(PrayerSilent.MINUTES, 30).putString(PrayerAlarms.KEY, "fajr,maghrib").commit()

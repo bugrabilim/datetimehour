@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">اجازت دیں</string>
     <string name="prayer_silent_channel">نماز کے وقت خاموش</string>
     <string name="prayer_silent_active">فون %1$s تک خاموش ہے</string>
+    <string name="prayer_inWords">%2$s %1$s بعد</string>
+    <string name="prayer_wordsHM">%1$s گھنٹے %2$s منٹ</string>
+    <string name="prayer_wordsM">%1$s منٹ</string>
+    <string name="prayer_wordsHint">الفاظ اور گھڑی کے درمیان بدلنے کے لیے چھوئیں۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

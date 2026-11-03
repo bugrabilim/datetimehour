@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">อนุญาต</string>
     <string name="prayer_silent_channel">ปิดเสียงในเวลาละหมาด</string>
     <string name="prayer_silent_active">ปิดเสียงจนถึง %1$s</string>
+    <string name="prayer_inWords">อีก %1$s ถึง%2$s</string>
+    <string name="prayer_wordsHM">%1$s ชม. %2$s นาที</string>
+    <string name="prayer_wordsM">%1$s นาที</string>
+    <string name="prayer_wordsHint">แตะเพื่อสลับระหว่างข้อความกับนาฬิกา</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

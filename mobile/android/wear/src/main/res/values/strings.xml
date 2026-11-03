@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">İzin ver</string>
     <string name="prayer_silent_channel">Vakitte sessiz</string>
     <string name="prayer_silent_active">Telefon %1$s saatine kadar sessizde</string>
+    <string name="prayer_inWords">%1$s sonra %2$s</string>
+    <string name="prayer_wordsHM">%1$s sa %2$s dk</string>
+    <string name="prayer_wordsM">%1$s dk</string>
+    <string name="prayer_wordsHint">Dokununca kalan süre sözle ya da saat olarak gösterilir.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

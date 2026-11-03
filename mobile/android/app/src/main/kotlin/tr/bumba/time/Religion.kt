@@ -9,6 +9,9 @@ import android.os.Vibrator
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -36,6 +39,8 @@ import androidx.compose.material.icons.automirrored.filled.OpenInNew
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.StarBorder
 import androidx.compose.material.icons.filled.TextDecrease
 import androidx.compose.material.icons.filled.TextIncrease
 import androidx.compose.material3.AlertDialog
@@ -125,8 +130,8 @@ private fun openUrl(c: Context, url: String) {
 }
 
 @Composable
-private fun RtlText(text: String, size: Int, modifier: Modifier = Modifier) {
-    Text(text, modifier.fillMaxWidth(), color = Theme.c.ink, fontSize = size.sp, lineHeight = (size * 1.9).sp,
+private fun RtlText(text: String, size: Int, modifier: Modifier = Modifier, color: Color = Theme.c.ink) {
+    Text(text, modifier.fillMaxWidth(), color = color, fontSize = size.sp, lineHeight = (size * 1.9).sp,
         textAlign = TextAlign.Right, style = androidx.compose.ui.text.TextStyle(textDirection = TextDirection.Rtl))
 }
 
@@ -146,6 +151,8 @@ fun QuranScreen(onBack: () -> Unit) {
         SubBar(L("quran.title"), onBack = onBack)
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             item {
+                HatimCard()
+                Spacer(Modifier.height(6.dp))
                 Quran.bookmark?.let { (s, a) ->
                     AppCard(Modifier.clickable { open = s to a }) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -204,9 +211,11 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
     var size by remember { mutableIntStateOf(Prefs.store.getInt("quran.size", 24)) }
     var showEn by remember { mutableStateOf(Prefs.store.getBoolean("quran.en", Strings.lang == "en" || Strings.lang == "de")) }
     var mark by remember { mutableStateOf(Quran.bookmark) }
+    var themeId by remember { mutableStateOf(QuranPlan.theme) }
+    val pal = QuranPlan.palette(themeId)
     val state = rememberLazyListState()
     LaunchedEffect(sura) { if (startAya > 1) state.scrollToItem(startAya) }
-    Column(Modifier.fillMaxSize()) {
+    Column(Modifier.fillMaxSize().background(pal.bg)) {
         SubBar("${s.no}. ${s.title}", onBack = onBack, actions = {
             IconButton(onClick = { size = (size - 2).coerceAtLeast(16); Prefs.store.edit().putInt("quran.size", size).apply() }) {
                 Icon(Icons.Filled.TextDecrease, L("quran.smaller"), tint = Theme.c.accent)
@@ -217,8 +226,9 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
         })
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp), state = state, verticalArrangement = Arrangement.spacedBy(10.dp)) {
             item {
+                QuranReadingOptions { themeId = it }
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(L("quran.showEn"), Modifier.weight(1f), color = Theme.c.text, fontSize = 14.sp)
+                    Text(L("quran.showEn"), Modifier.weight(1f), color = pal.ink, fontSize = 14.sp)
                     Switch(showEn, { showEn = it; Prefs.store.edit().putBoolean("quran.en", it).apply() },
                         colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
@@ -234,8 +244,8 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
                 val marked = mark == (sura to a)
                 Column(
                     Modifier.fillMaxWidth()
-                        .background(if (marked) Theme.c.accentSoft else Theme.c.surface, RoundedCornerShape(12.dp))
-                        .clickable { Quran.bookmark = sura to a; mark = sura to a }
+                        .background(if (marked) pal.accentSoft else pal.card, RoundedCornerShape(12.dp))
+                        .clickable { QuranPlan.setBookmark(sura, a); mark = sura to a }
                         .padding(12.dp),
                     verticalArrangement = Arrangement.spacedBy(6.dp),
                 ) {
@@ -247,8 +257,8 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
                             Text(L("quran.meal"), Modifier.clickable { openUrl(context, Quran.diyanetUrl(sura, a)) }, color = Theme.c.accent, fontSize = 12.sp)
                         }
                     }
-                    RtlText(Quran.ar(sura, a), size)
-                    if (showEn) Text(Quran.en(sura, a), color = Theme.c.muted, fontSize = 14.sp)
+                    RtlText(Quran.ar(sura, a), size, color = pal.ink)
+                    if (showEn) Text(Quran.en(sura, a), color = pal.muted, fontSize = 14.sp)
                 }
             }
             item { QuranCredits() }
@@ -258,7 +268,13 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
 
 /** Dualar (Kur'an'dan olanlar Tanzil metninden) */
 object Duas {
-    class Dua(val id: String, val title: String, val whenText: String, val ar: String, val okunus: String, val mean: String?, val refs: List<String>)
+    class Dua(val id: String, val title: String, val whenText: String, val ar: String, val okunus: String, val mean: String?, val refs: List<String>, val cats: List<String> = emptyList())
+    val CATS = listOf("prayer", "faith", "quran", "family", "forgiveness", "daily", "ramadan")
+
+    /** Favoriler (`dua.favs`, virgülle) */
+    var favs: Set<String>
+        get() = Prefs.store.getString("dua.favs", "")!!.split(",").filter { it.isNotBlank() }.toSet()
+        set(v) = Prefs.store.edit().putString("dua.favs", v.joinToString(",")).apply()
 
     fun load(c: Context): List<Dua> = runCatching {
         val a = JSONArray(c.assets.open("duas.json").bufferedReader().use { it.readText() })
@@ -273,8 +289,9 @@ object Duas {
                 refs.isNotEmpty() -> if (lang !in listOf("tr", "az", "ar", "fa", "ur")) mean.optString("en") else null
                 else -> mean.optString(lang).ifEmpty { mean.optString("en") }
             }
+            val cats = o.optJSONArray("cat")?.let { r -> (0 until r.length()).map { r.getString(it) } } ?: emptyList()
             Dua(o.getString("id"), o.getJSONObject("title").getString(lang), o.getJSONObject("when").getString(lang),
-                o.getString("ar"), o.optString("okunus"), m, refs)
+                o.getString("ar"), o.optString("okunus"), m, refs, cats)
         }
     }.getOrDefault(emptyList())
 }
@@ -283,11 +300,47 @@ object Duas {
 fun DuasScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val duas = remember { Duas.load(context) }
+    var query by remember { mutableStateOf("") }
+    var cat by remember { mutableStateOf("all") }
+    var favs by remember { mutableStateOf(Duas.favs) }
+    val today = LocalDate.now()
+    // Ramazan'da günün duası: Kur'an'daki dualardan sırayla (2. analiz #69)
+    val ramadanDay = AppData.ramadans.firstOrNull { today in it }?.let { java.time.temporal.ChronoUnit.DAYS.between(it.start, today).toInt() + 1 }
+    val quranDuas = duas.filter { it.refs.isNotEmpty() }
     Column(Modifier.fillMaxSize()) {
         SubBar(L("dua.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            for (d in duas) AppCard {
-                Text(d.title, color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
+            OutlinedTextField(query, { query = it }, Modifier.fillMaxWidth(), singleLine = true, placeholder = { Text(L("dua.search")) })
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (c in listOf("all", "fav") + Duas.CATS) {
+                    val on = c == cat
+                    Text(L("dua.cat.$c"), Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, RoundedCornerShape(50))
+                        .clickable { cat = c }.padding(horizontal = 12.dp, vertical = 7.dp), color = if (on) Color.White else Theme.c.text, fontSize = 14.sp)
+                }
+            }
+            if (ramadanDay != null && quranDuas.isNotEmpty() && query.isBlank() && cat == "all") {
+                val d = quranDuas[(ramadanDay - 1) % quranDuas.size]
+                AppCard(background = Theme.c.accentSoft) {
+                    SectionTitle(T("dua.ramadanDay", ramadanDay))
+                    Text(d.title, color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+                    RtlText(d.ar, 22)
+                    Text(L("dua.ramadanNote"), color = Theme.c.muted, fontSize = 12.sp)
+                }
+            }
+            val q = query.trim().lowercase()
+            val list = duas.filter { d ->
+                (cat == "all" || (cat == "fav" && d.id in favs) || cat in d.cats) &&
+                    (q.isEmpty() || listOf(d.title, d.whenText, d.okunus, d.mean ?: "", d.ar).any { it.lowercase().contains(q) })
+            }
+            if (list.isEmpty()) Text(L("dua.empty"), color = Theme.c.muted, fontSize = 14.sp)
+            for (d in list) AppCard {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(d.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
+                    val fav = d.id in favs
+                    IconButton(onClick = { favs = if (fav) favs - d.id else favs + d.id; Duas.favs = favs }) {
+                        Icon(if (fav) Icons.Filled.Star else Icons.Filled.StarBorder, L(if (fav) "dua.unfav" else "dua.fav"), tint = Theme.c.accent)
+                    }
+                }
                 Text(d.whenText, color = Theme.c.muted, fontSize = 12.sp)
                 RtlText(d.ar, 22)
                 if (Strings.lang == "tr" || Strings.lang == "az") Text(d.okunus, color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.Medium)
@@ -323,21 +376,39 @@ object Zikir {
         TESBIHAT[minOf(count / 33, 2)] to (count >= 99)
 }
 
+/** Kendi zikirleri (`zikir.custom`: [{id, n, a}], en çok 20; 2. analiz #70) */
+object ZikirCustom {
+    data class Item(val id: String, val name: String, val ar: String)
+    fun load(): List<Item> = runCatching {
+        val a = JSONArray(Prefs.store.getString("zikir.custom", "[]"))
+        (0 until a.length()).map { a.getJSONObject(it).let { o -> Item(o.getString("id"), o.getString("n"), o.optString("a")) } }
+    }.getOrDefault(emptyList())
+    fun save(l: List<Item>) = Prefs.store.edit().putString("zikir.custom",
+        JSONArray(l.takeLast(20).map { JSONObject().put("id", it.id).put("n", it.name).put("a", it.ar) }).toString()).apply()
+}
+
+@OptIn(androidx.compose.foundation.ExperimentalFoundationApi::class)
 @Composable
 fun ZikirScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val sp = Prefs.store
+    var custom by remember { mutableStateOf(ZikirCustom.load()) }
     var kind by remember { mutableStateOf(sp.getString("zikir.kind", "subhanallah") ?: "subhanallah") }
     var target by remember { mutableIntStateOf(sp.getInt("zikir.target", 33)) }
     var tesbihat by remember { mutableStateOf(sp.getBoolean("zikir.tesbihat", false)) }
     var count by remember { mutableIntStateOf(sp.getInt("zikir.count", 0)) }
     var total by remember { mutableIntStateOf(sp.getInt("zikir.total", 0)) }
+    var beads by remember { mutableStateOf(sp.getBoolean("zikir.beads", false)) }
+    var shakeUndo by remember { mutableStateOf(sp.getBoolean("zikir.shake", false)) }
     val today = LocalDate.now().toString()
     var todayCount by remember { mutableIntStateOf(sp.getString("zikir.today", "")?.split("|")?.takeIf { it.size == 2 && it[0] == today }?.get(1)?.toIntOrNull() ?: 0) }
     var confirm by remember { mutableStateOf(false) }
+    var adding by remember { mutableStateOf(false) }
+    var deleting by remember { mutableStateOf<String?>(null) }
     fun save() {
         sp.edit().putString("zikir.kind", kind).putInt("zikir.target", target).putBoolean("zikir.tesbihat", tesbihat)
-            .putInt("zikir.count", count).putInt("zikir.total", total).putString("zikir.today", "$today|$todayCount").apply()
+            .putInt("zikir.count", count).putInt("zikir.total", total).putString("zikir.today", "$today|$todayCount")
+            .putBoolean("zikir.beads", beads).putBoolean("zikir.shake", shakeUndo).apply()
     }
     val vibrator = remember { context.getSystemService(Vibrator::class.java) }
     fun buzz(strong: Boolean) {
@@ -345,8 +416,32 @@ fun ZikirScreen(onBack: () -> Unit) {
             vibrator?.vibrate(VibrationEffect.createPredefined(if (strong) VibrationEffect.EFFECT_HEAVY_CLICK else VibrationEffect.EFFECT_TICK))
         }
     }
+    fun undo() { if (count > 0) { count--; total = maxOf(0, total - 1); todayCount = maxOf(0, todayCount - 1); buzz(false); save() } }
+    // Sallayınca bir geri al (isteğe bağlı; ivmeölçer 2,3 g üstü, 1 sn bekleme)
+    if (shakeUndo) androidx.compose.runtime.DisposableEffect(Unit) {
+        val sm = context.getSystemService(android.hardware.SensorManager::class.java)
+        var last = 0L
+        val l = object : android.hardware.SensorEventListener {
+            override fun onSensorChanged(e: android.hardware.SensorEvent) {
+                val g = kotlin.math.sqrt(e.values[0] * e.values[0] + e.values[1] * e.values[1] + e.values[2] * e.values[2]) / 9.81f
+                val t = System.currentTimeMillis()
+                if (g > 2.3f && t - last > 1000) { last = t; undo() }
+            }
+            override fun onAccuracyChanged(s: android.hardware.Sensor?, a: Int) {}
+        }
+        sm?.getDefaultSensor(android.hardware.Sensor.TYPE_ACCELEROMETER)?.let { sm.registerListener(l, it, android.hardware.SensorManager.SENSOR_DELAY_UI) }
+        onDispose { sm?.unregisterListener(l) }
+    }
+    val kinds: List<Pair<String, String>> = Zikir.KINDS.map { it.id to it.ar } + custom.map { it.id to it.ar }
+    fun nameOf(id: String) = custom.firstOrNull { it.id == id }?.name ?: Zikir.name(id)
+    if (kinds.none { it.first == kind }) kind = "subhanallah"
     val (stepKind, done) = if (tesbihat) Zikir.tesbihatStep(count) else kind to (target > 0 && count >= target)
-    val shown = Zikir.KINDS.first { it.id == stepKind }
+    val shownAr = kinds.firstOrNull { it.first == stepKind }?.second.orEmpty()
+    fun switchKind(dir: Int) {
+        if (tesbihat) return
+        val i = kinds.indexOfFirst { it.first == kind }
+        kind = kinds[(i + dir + kinds.size) % kinds.size].first; count = 0; save()
+    }
     Column(Modifier.fillMaxSize()) {
         SubBar(L("zikir.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
@@ -357,44 +452,78 @@ fun ZikirScreen(onBack: () -> Unit) {
             }
             if (!tesbihat) {
                 Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    for (k in Zikir.KINDS) {
-                        val on = k.id == kind
-                        Text(Zikir.name(k.id),
+                    for ((id, _) in kinds) {
+                        val on = id == kind
+                        Text(nameOf(id),
                             Modifier.background(if (on) Theme.c.accent.copy(alpha = 0.22f) else Theme.c.surface2, RoundedCornerShape(50))
-                                .clickable { kind = k.id; count = 0; save() }.padding(horizontal = 12.dp, vertical = 7.dp),
+                                .combinedClickable(onClick = { kind = id; count = 0; save() },
+                                    onLongClick = { if (custom.any { it.id == id }) deleting = id })
+                                .padding(horizontal = 12.dp, vertical = 7.dp),
                             color = if (on) Theme.c.accent else Theme.c.text, fontSize = 14.sp)
                     }
+                    Text("+ " + L("zikir.add"), Modifier.background(Theme.c.surface2, RoundedCornerShape(50)).clickable { adding = true }
+                        .padding(horizontal = 12.dp, vertical = 7.dp), color = Theme.c.accent, fontSize = 14.sp)
                 }
                 ChoiceRow(L("zikir.target"), if (target == 0) L("zikir.noTarget") else "$target",
                     Zikir.TARGETS.map { it to (if (it == 0) L("zikir.noTarget") else "$it") }) { target = it; save() }
             }
-            if (shown.ar.isNotEmpty()) Text(shown.ar, color = Theme.c.ink, fontSize = 30.sp, textAlign = TextAlign.Center)
-            Text(Zikir.name(shown.id), color = Theme.c.muted, fontSize = 15.sp)
-            // Büyük dokunma alanı
+            if (shownAr.isNotEmpty()) Text(shownAr, color = Theme.c.ink, fontSize = 30.sp, textAlign = TextAlign.Center)
+            Text(nameOf(stepKind), color = Theme.c.muted, fontSize = 15.sp)
+            // Büyük dokunma alanı: dokun = say, uzun bas = geri al, sağa/sola kaydır = zikir değiştir
+            var drag by remember { mutableStateOf(0f) }
+            val beadAccent = Theme.c.accent; val beadIdle = Theme.c.surface2
             Box(
-                Modifier.size(240.dp).background(if (done) Theme.c.accent else Theme.c.accentSoft, CircleShape)
-                    .clickable {
+                Modifier.size(260.dp)
+                    .pointerInput(tesbihat, kinds.size) {
+                        detectHorizontalDragGestures(onDragEnd = {
+                            if (kotlin.math.abs(drag) > 80.dp.toPx()) switchKind(if (drag < 0) 1 else -1)
+                            drag = 0f
+                        }) { _, d -> drag += d }
+                    }
+                    .background(if (beads) Color.Transparent else if (done) Theme.c.accent else Theme.c.accentSoft, CircleShape)
+                    .combinedClickable(onClick = {
                         count++; total++; todayCount++
                         val (_, finished) = if (tesbihat) Zikir.tesbihatStep(count) else kind to (target > 0 && count >= target)
                         val stepEnd = tesbihat && count % 33 == 0
                         buzz(finished || stepEnd)
                         save()
-                    }
+                    }, onLongClick = { undo() })
                     .semantics { contentDescription = L("zikir.tap") },
                 contentAlignment = Alignment.Center,
             ) {
+                if (beads) androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
+                    // 33 boncuklu tesbih: çekilen boncuklar dolu, sıradaki büyük
+                    val n = 33; val r = size.minDimension / 2 * 0.86f
+                    val c = androidx.compose.ui.geometry.Offset(size.width / 2, size.height / 2)
+                    val k = count % n
+                    for (i in 0 until n) {
+                        val a = Math.toRadians(-90.0 + i * 360.0 / n)
+                        val p = androidx.compose.ui.geometry.Offset(c.x + (r * kotlin.math.cos(a)).toFloat(), c.y + (r * kotlin.math.sin(a)).toFloat())
+                        drawCircle(if (i < k || (done && k == 0 && count > 0)) beadAccent else beadIdle, if (i == k) 13.dp.toPx() else 9.dp.toPx(), p)
+                    }
+                    drawCircle(beadAccent.copy(alpha = 0.8f), 7.dp.toPx(), androidx.compose.ui.geometry.Offset(c.x, c.y - r - 16.dp.toPx()))
+                }
                 Ltr {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("$count", color = if (done) Color.White else Theme.c.ink, fontSize = 64.sp, fontWeight = FontWeight.Bold, style = Tnum)
+                        Text("$count", color = if (done && !beads) Color.White else Theme.c.ink, fontSize = 64.sp, fontWeight = FontWeight.Bold, style = Tnum)
                         val goal = if (tesbihat) 99 else target
-                        if (goal > 0) Text("/ $goal", color = if (done) Color.White else Theme.c.muted, fontSize = 16.sp, style = Tnum)
+                        if (goal > 0) Text("/ $goal", color = if (done && !beads) Color.White else Theme.c.muted, fontSize = 16.sp, style = Tnum)
                     }
                 }
             }
             if (done) Text(L("zikir.done"), color = Theme.c.accent, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
             Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                RoundButton("−1", false, Modifier.width(110.dp)) { if (count > 0) { count--; total = maxOf(0, total - 1); todayCount = maxOf(0, todayCount - 1); save() } }
+                RoundButton(L("zikir.undo"), false, Modifier.width(130.dp)) { undo() }
                 RoundButton(L("zikir.reset"), false, Modifier.width(140.dp)) { confirm = true }
+            }
+            Text(L("zikir.undoHint"), color = Theme.c.muted, fontSize = 12.sp, textAlign = TextAlign.Center)
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(L("zikir.beads"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                Switch(beads, { beads = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+            }
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(L("zikir.shakeUndo"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                Switch(shakeUndo, { shakeUndo = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             Row2(L("zikir.today"), "$todayCount")
             Row2(L("zikir.total"), "$total")
@@ -407,6 +536,37 @@ fun ZikirScreen(onBack: () -> Unit) {
         confirmButton = { TextButton(onClick = { count = 0; save(); confirm = false }) { Text(L("zikir.reset"), color = DangerRed) } },
         dismissButton = { TextButton(onClick = { confirm = false }) { Text(L("badges.deleteNo")) } },
     )
+    deleting?.let { id ->
+        AlertDialog(
+            onDismissRequest = { deleting = null },
+            text = { Text(nameOf(id)) },
+            confirmButton = { TextButton(onClick = {
+                custom = custom.filterNot { it.id == id }; ZikirCustom.save(custom); if (kind == id) { kind = "subhanallah"; count = 0 }; save(); deleting = null
+            }) { Text(L("zikir.delete"), color = DangerRed) } },
+            dismissButton = { TextButton(onClick = { deleting = null }) { Text(L("badges.deleteNo")) } },
+        )
+    }
+    if (adding) {
+        var name by remember { mutableStateOf("") }
+        var ar by remember { mutableStateOf("") }
+        AlertDialog(
+            onDismissRequest = { adding = false },
+            title = { Text(L("zikir.add")) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedTextField(name, { name = it.take(60) }, label = { Text(L("zikir.name")) }, singleLine = true)
+                    OutlinedTextField(ar, { ar = it.take(120) }, label = { Text(L("zikir.arabic")) }, singleLine = true)
+                }
+            },
+            confirmButton = {
+                TextButton(enabled = name.isNotBlank(), onClick = {
+                    val item = ZikirCustom.Item("c" + System.currentTimeMillis(), name.trim(), ar.trim())
+                    custom = custom + item; ZikirCustom.save(custom); kind = item.id; count = 0; save(); adding = false
+                }) { Text(L("zikir.add"), color = Theme.c.accent) }
+            },
+            dismissButton = { TextButton(onClick = { adding = false }) { Text(L("badges.deleteNo")) } },
+        )
+    }
 }
 
 /** Namaz ve oruç takibi: kılınan vakitler (gün gün), kaza sayaçları, Ramazan orucu */
@@ -439,7 +599,7 @@ object Tracker {
     /** Son 7 günde kılınan vakit sayısı */
     fun weekCount(today: LocalDate) = (0..6).sumOf { Integer.bitCount(dayMask(today.minusDays(it.toLong()))) }
 
-    fun clear() = Prefs.store.edit().remove("track.prayer").remove("track.kaza").remove("track.fast").apply()
+    fun clear() { Prefs.store.edit().remove("track.prayer").remove("track.kaza").remove("track.fast").apply(); TrackX.clearExtras() }
 }
 
 @Composable
@@ -450,6 +610,7 @@ fun TrackerScreen(onBack: () -> Unit) {
     var version by remember { mutableIntStateOf(0) }
     var confirm by remember { mutableStateOf(false) }
     val ramadan = remember { AppData.ramadans.firstOrNull { today in it } ?: AppData.ramadans.lastOrNull { it.endInclusive < today } ?: AppData.ramadans.firstOrNull() }
+    remember { TrackX.migrate(); 0 }
     Column(Modifier.fillMaxSize()) {
         SubBar(L("track.title"), onBack = onBack)
         Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
@@ -473,17 +634,26 @@ fun TrackerScreen(onBack: () -> Unit) {
                         }
                     }
                     Text(T("track.week", Tracker.weekCount(today)), color = Theme.c.muted, fontSize = 13.sp)
+                    PauseRow { version++ }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(L("track.inline"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                        Switch(TrackX.inline, { TrackX.inline = it; version++ }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    }
+                    Text(L("track.inlineNote"), color = Theme.c.muted, fontSize = 12.sp)
                 }
+                TrackerStatsCard(today, version)
                 AppCard {
                     SectionTitle(L("track.kaza"))
                     for (k in Tracker.KAZA) Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(L("track.prayer.$k"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                        IconButton(onClick = { Tracker.setKaza(k, Tracker.kaza(k) - 1); version++ }) { Icon(Icons.Filled.Remove, L("track.kazaPrayed"), tint = Theme.c.accent) }
+                        IconButton(onClick = { if (Tracker.kaza(k) > 0) { Tracker.setKaza(k, Tracker.kaza(k) - 1); TrackX.logKazaPrayed() }; version++ }) { Icon(Icons.Filled.Remove, L("track.kazaPrayed"), tint = Theme.c.accent) }
                         Ltr { Text("${Tracker.kaza(k)}", Modifier.width(44.dp), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center, style = Tnum) }
                         IconButton(onClick = { Tracker.setKaza(k, Tracker.kaza(k) + 1); version++ }) { Icon(Icons.Filled.Add, L("track.kazaAdd"), tint = Theme.c.accent) }
                     }
+                    KazaPace()
                     Text(L("track.kazaNote"), color = Theme.c.muted, fontSize = 12.sp)
                 }
+                LifetimeKazaCard { version++ }
                 AppCard {
                     SectionTitle(L("track.fast"))
                     if (ramadan != null) {
@@ -506,12 +676,7 @@ fun TrackerScreen(onBack: () -> Unit) {
                             }
                         }
                     }
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(L("track.kazaFast"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                        IconButton(onClick = { Tracker.setKaza("fast", Tracker.kaza("fast") - 1); version++ }) { Icon(Icons.Filled.Remove, null, tint = Theme.c.accent) }
-                        Ltr { Text("${Tracker.kaza("fast")}", Modifier.width(44.dp), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center, style = Tnum) }
-                        IconButton(onClick = { Tracker.setKaza("fast", Tracker.kaza("fast") + 1); version++ }) { Icon(Icons.Filled.Add, null, tint = Theme.c.accent) }
-                    }
+                    FastKazaRows { version++ }
                 }
             }
             Text(L("track.privacy"), color = Theme.c.muted, fontSize = 12.sp)

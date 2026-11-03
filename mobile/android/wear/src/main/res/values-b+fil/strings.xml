@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">Payagan</string>
     <string name="prayer_silent_channel">Silent sa oras ng dasal</string>
     <string name="prayer_silent_active">Naka-silent hanggang %1$s</string>
+    <string name="prayer_inWords">%2$s sa loob ng %1$s</string>
+    <string name="prayer_wordsHM">%1$s oras %2$s min</string>
+    <string name="prayer_wordsM">%1$s min</string>
+    <string name="prayer_wordsHint">I-tap para lumipat sa salita o orasan.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">Allow</string>
     <string name="prayer_silent_channel">Silent at prayer time</string>
     <string name="prayer_silent_active">Phone silenced until %1$s</string>
+    <string name="prayer_inWords">%2$s in %1$s</string>
+    <string name="prayer_wordsHM">%1$s h %2$s min</string>
+    <string name="prayer_wordsM">%1$s min</string>
+    <string name="prayer_wordsHint">Tap to switch between words and a clock.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

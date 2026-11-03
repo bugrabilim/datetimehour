@@ -114,5 +114,9 @@
     <string name="prayer_silent_grant">Izinkan</string>
     <string name="prayer_silent_channel">Senyap saat waktu salat</string>
     <string name="prayer_silent_active">Ponsel senyap sampai %1$s</string>
+    <string name="prayer_inWords">%2$s dalam %1$s</string>
+    <string name="prayer_wordsHM">%1$s jam %2$s mnt</string>
+    <string name="prayer_wordsM">%1$s mnt</string>
+    <string name="prayer_wordsHint">Ketuk untuk beralih antara kata dan jam.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

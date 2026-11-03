@@ -73,7 +73,7 @@ const verse = (ref) => {
 const LANGS = ["tr", "en", "de", "az", "ar", "id", "ur", "fa", "fr", "ru", "ja", "ko", "zh", "fil", "th"];
 const duaSrc = JSON.parse(fs.readFileSync(path.join(SRC, "duas.json"), "utf8"));
 const duas = duaSrc.items.map((d) => {
-  const out = { id: d.id, title: d.title, when: d.when, okunus: d.okunus };
+  const out = { id: d.id, title: d.title, when: d.when, okunus: d.okunus, cat: d.cat || [] };
   if (d.quran) {
     const parts = d.quran.map(([ref, word]) => {
       const v = verse(ref);
