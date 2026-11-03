@@ -2001,7 +2001,19 @@
     "eclMapLabel": "Finsternis",
     "eclMapSolar": "Orange: Gebiete mit partieller Finsternis (je dunkler, desto stärker ist die Sonne bedeckt). Dunkelrot: Totalitätszone; violett: Zone der ringförmigen Finsternis. Schwarzer Punkt: gewählter Ort.",
     "eclMapLunar": "Blau: Gebiete, in denen der Mond bei maximaler Finsternis über dem Horizont steht und die Finsternis sichtbar ist. Blauer Punkt: Mond im Zenit; schwarzer Punkt: gewählter Ort.",
-    "eclMapNote": "Die Karte wird im Browser näherungsweise aus den Positionen von Sonne und Mond berechnet (Ränder können um einige Dutzend km abweichen). Küstenlinien: Natural Earth. Genaue Zonen und Zeiten auf den Finsternisseiten der NASA."
+    "eclMapNote": "Die Karte wird im Browser näherungsweise aus den Positionen von Sonne und Mond berechnet (Ränder können um einige Dutzend km abweichen). Küstenlinien: Natural Earth. Genaue Zonen und Zeiten auf den Finsternisseiten der NASA.",
+    "folkHeading": "Traditioneller Volkskalender",
+    "folkNote": "Traditionelle Daten des türkischen Volkskalenders (nach dem alten Rumi-Kalender); keine Wettervorhersage, Quellen weichen um einige Tage ab.",
+    "folkNow": "Jetzt",
+    "folkNames": {
+      "erbain": "Erbain (die 40 kältesten Wintertage)",
+      "hamsin": "Hamsin (die 50-tägige zweite Winterhälfte)",
+      "cemre1": "Erste Cemre (in die Luft)",
+      "cemre2": "Zweite Cemre (ins Wasser)",
+      "cemre3": "Dritte Cemre (in die Erde)",
+      "berdulacuz": "Berd al-adschus („Altweiberkälte“)",
+      "eyyamibahur": "Eyyam-ı bahur (die heißesten Sommertage)"
+    }
   },
   "weather": {
     "title": "Wetter: aktuell, stündlich und 14-Tage-Vorhersage | Saat Tarih",

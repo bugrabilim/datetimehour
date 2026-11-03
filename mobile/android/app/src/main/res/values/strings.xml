@@ -497,6 +497,16 @@
     <string name="prayer_bayram">Bayram namazı</string>
     <string name="prayer_bayramTomorrow">Yarın bayram namazı: %1$s</string>
     <string name="prayer_bayramNote">Diyanet\'in yayımladığı saatlerle aynı kural (güneş vaktinden 38 dk sonra); kesin saat il müftülüğünün duyurusudur.</string>
+    <string name="nature_folkHeading">Halk takvimi</string>
+    <string name="nature_folkNote">Halk takvimindeki geleneksel tarihlerdir (eski Rumi takvimden); hava tahmini değildir ve kaynaklara göre birkaç gün değişebilir.</string>
+    <string name="nature_folkNow">Şu an</string>
+    <string name="nature_folkNames_erbain">Erbain (zemheri; kışın en soğuk 40 günü)</string>
+    <string name="nature_folkNames_hamsin">Hamsin (kışın 50 günlük ikinci yarısı)</string>
+    <string name="nature_folkNames_cemre1">Birinci cemre (havaya)</string>
+    <string name="nature_folkNames_cemre2">İkinci cemre (suya)</string>
+    <string name="nature_folkNames_cemre3">Üçüncü cemre (toprağa)</string>
+    <string name="nature_folkNames_berdulacuz">Berdü\'l-acûz (kocakarı soğukları)</string>
+    <string name="nature_folkNames_eyyamibahur">Eyyâm-ı bahûr (yazın en sıcak günleri)</string>
     <string name="nature_goldenAm">Sabah altın saat</string>
     <string name="nature_goldenPm">Akşam altın saat</string>
     <string name="nature_blueAm">Sabah mavi saat</string>

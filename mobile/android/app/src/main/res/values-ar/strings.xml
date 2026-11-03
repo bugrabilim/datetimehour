@@ -497,6 +497,16 @@
     <string name="prayer_bayram">صلاة العيد</string>
     <string name="prayer_bayramTomorrow">صلاة العيد غدًا: %1$s</string>
     <string name="prayer_bayramNote">القاعدة نفسها في مواقيت رئاسة الشؤون الدينية (بعد الشروق بـ 38 دقيقة)؛ والمعتمد إعلان مفتي الولاية.</string>
+    <string name="nature_folkHeading">التقويم الشعبي</string>
+    <string name="nature_folkNote">تواريخ تقليدية من التقويم الشعبي التركي (من التقويم الرومي القديم)؛ ليست توقعًا للطقس وقد تختلف المصادر ببضعة أيام.</string>
+    <string name="nature_folkNow">الآن</string>
+    <string name="nature_folkNames_erbain">الأربعينية (أشد أربعين يومًا بردًا)</string>
+    <string name="nature_folkNames_hamsin">الخمسينية (النصف الثاني من الشتاء، 50 يومًا)</string>
+    <string name="nature_folkNames_cemre1">الجمرة الأولى (في الهواء)</string>
+    <string name="nature_folkNames_cemre2">الجمرة الثانية (في الماء)</string>
+    <string name="nature_folkNames_cemre3">الجمرة الثالثة (في التراب)</string>
+    <string name="nature_folkNames_berdulacuz">برد العجوز</string>
+    <string name="nature_folkNames_eyyamibahur">أيام البحور (أشد أيام الصيف حرًا)</string>
     <string name="nature_goldenAm">الساعة الذهبية صباحًا</string>
     <string name="nature_goldenPm">الساعة الذهبية مساءً</string>
     <string name="nature_blueAm">الساعة الزرقاء صباحًا</string>

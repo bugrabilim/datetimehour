@@ -497,6 +497,16 @@
     <string name="prayer_bayram">Prière de l’Aïd</string>
     <string name="prayer_bayramTomorrow">Prière de l’Aïd demain : %1$s</string>
     <string name="prayer_bayramNote">Même règle que les horaires publiés par la Diyanet (38 min après le lever du soleil) ; l’annonce du mufti provincial fait foi.</string>
+    <string name="nature_folkHeading">Calendrier populaire</string>
+    <string name="nature_folkNote">Dates traditionnelles du calendrier populaire turc (ancien calendrier roumi) ; ce n’est pas une prévision météo et les sources varient de quelques jours.</string>
+    <string name="nature_folkNow">En ce moment</string>
+    <string name="nature_folkNames_erbain">Erbaïn (les 40 jours les plus froids de l’hiver)</string>
+    <string name="nature_folkNames_hamsin">Hamsin (seconde moitié de l’hiver, 50 jours)</string>
+    <string name="nature_folkNames_cemre1">Première cemre (dans l’air)</string>
+    <string name="nature_folkNames_cemre2">Deuxième cemre (dans l’eau)</string>
+    <string name="nature_folkNames_cemre3">Troisième cemre (dans la terre)</string>
+    <string name="nature_folkNames_berdulacuz">Berd el-ajouz (« froid de la vieille »)</string>
+    <string name="nature_folkNames_eyyamibahur">Eyyam-ı bahur (les jours les plus chauds de l’été)</string>
     <string name="nature_goldenAm">Heure dorée du matin</string>
     <string name="nature_goldenPm">Heure dorée du soir</string>
     <string name="nature_blueAm">Heure bleue du matin</string>

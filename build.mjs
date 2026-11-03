@@ -1672,6 +1672,9 @@ function trDateTime(lang, ms) { // Türkiye saatiyle (UTC+3) "20 Mart 14:46"
   return `${d.getUTCDate()} ${I[lang].calendar.months[d.getUTCMonth()]} ${String(d.getUTCHours()).padStart(2, "0")}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
 }
 
+// Halk takvimi (2. analiz #60): geleneksel tarihler, kaynaklar dosyanın "_" alanında
+const FOLK = JSON.parse(fs.readFileSync(path.join(SRC, "data/folk-calendar.json"), "utf8")).items;
+
 function buildNature(lang) {
   const t = I[lang];
   const n = t.nature;
@@ -1754,6 +1757,16 @@ function buildNature(lang) {
     <h3>${esc(n.moonIcsHeading)}</h3>
     <p class="share-row">${(() => { const u = ICS_URL(lang, "moon"), cal = t.calendar; return `<a class="toggle" href="${u}" download>${esc(cal.icsDownload)}</a><a class="toggle" href="${ORIGIN.replace(/^https?:/, "webcal:")}${u}">${esc(cal.icsSubscribe)}</a><a class="toggle" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(ORIGIN.replace(/^https?:/, "webcal:") + u)}" target="_blank" rel="noopener">${esc(cal.icsGoogle)}</a>`; })()}</p>
     <p class="meta">${esc(n.moonIcsNote)}</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-folk-h">
+  <div class="wrap">
+    <h2 id="n-folk-h">${esc(n.folkHeading)}</h2>
+    <ul class="folk-list">${FOLK.map((f) => {
+      const md = (s) => { const [m, d] = s.split("-").map(Number); return tpl(t.calendar.shortFmt, { day: d, month: t.calendar.months[m - 1] }); };
+      return `<li data-folk-from="${f.from}" data-folk-to="${f.to}"><span class="folk-name">${esc(n.folkNames[f.key])}</span> <span class="folk-date">${esc(md(f.from) + " – " + md(f.to))}</span> <span class="folk-now" hidden>${esc(n.folkNow)}</span></li>`;
+    }).join("")}</ul>
+    <p class="meta">${esc(n.folkNote)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="n-chart-h">

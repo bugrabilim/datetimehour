@@ -173,4 +173,32 @@ private fun SunMoon(place: AppPlace, now: Instant, openMoon: () -> Unit) {
         }
         Text(L("nature.lightNote"), color = Theme.c.muted, fontSize = 12.sp)
     }
+    FolkCalendarCard(day)
+}
+
+/** Halk takvimi (2. analiz #60): src/data/folk-calendar.json ile aynı geleneksel tarihler (ay, gün) */
+internal val FOLK_CALENDAR = listOf(
+    Triple("erbain", 12 to 22, 1 to 30), Triple("hamsin", 1 to 31, 3 to 21), Triple("cemre1", 2 to 19, 2 to 20),
+    Triple("cemre2", 2 to 26, 2 to 27), Triple("cemre3", 3 to 5, 3 to 6), Triple("berdulacuz", 3 to 11, 3 to 17),
+    Triple("eyyamibahur", 7 to 31, 8 to 7),
+)
+
+@Composable
+private fun FolkCalendarCard(day: java.time.LocalDate) {
+    val md = day.monthValue * 100 + day.dayOfMonth
+    AppCard {
+        SectionTitle(L("nature.folkHeading"))
+        for ((key, from, to) in FOLK_CALENDAR) {
+            val a = from.first * 100 + from.second; val b = to.first * 100 + to.second
+            val now = if (a <= b) md in a..b else md >= a || md <= b
+            Row(Modifier.fillMaxWidth().padding(vertical = 3.dp)) {
+                Column(Modifier.weight(1f)) {
+                    Text(L("nature.folkNames.$key"), color = if (now) Theme.c.accent else Theme.c.text, fontSize = 15.sp, fontWeight = if (now) FontWeight.SemiBold else FontWeight.Normal)
+                    if (now) Text(L("nature.folkNow"), color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                }
+                Text("${from.second} ${Fmt.month(from.first)} – ${to.second} ${Fmt.month(to.first)}", color = Theme.c.muted, fontSize = 13.sp)
+            }
+        }
+        Text(L("nature.folkNote"), color = Theme.c.muted, fontSize = 12.sp)
+    }
 }

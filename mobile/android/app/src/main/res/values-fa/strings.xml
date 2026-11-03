@@ -497,6 +497,16 @@
     <string name="prayer_bayram">نماز عید</string>
     <string name="prayer_bayramTomorrow">نماز عید فردا: %1$s</string>
     <string name="prayer_bayramNote">همان قاعده اوقات منتشرشده دیانت (۳۸ دقیقه پس از طلوع)؛ ساعت دقیق اعلام مفتی استان است.</string>
+    <string name="nature_folkHeading">تقویم عامیانه</string>
+    <string name="nature_folkNote">تاریخ‌های سنتی تقویم عامیانه ترکیه (برگرفته از تقویم رومی قدیم)؛ پیش‌بینی هوا نیست و منابع ممکن است چند روز تفاوت داشته باشند.</string>
+    <string name="nature_folkNow">اکنون</string>
+    <string name="nature_folkNames_erbain">چله (۴۰ روز سردترین زمستان)</string>
+    <string name="nature_folkNames_hamsin">خمسین (نیمه دوم ۵۰ روزه زمستان)</string>
+    <string name="nature_folkNames_cemre1">جمره نخست (در هوا)</string>
+    <string name="nature_folkNames_cemre2">جمره دوم (در آب)</string>
+    <string name="nature_folkNames_cemre3">جمره سوم (در خاک)</string>
+    <string name="nature_folkNames_berdulacuz">برد العجوز (سرمای پیرزن)</string>
+    <string name="nature_folkNames_eyyamibahur">ایام بحور (گرم‌ترین روزهای تابستان)</string>
     <string name="nature_goldenAm">ساعت طلایی صبح</string>
     <string name="nature_goldenPm">ساعت طلایی عصر</string>
     <string name="nature_blueAm">ساعت آبی صبح</string>

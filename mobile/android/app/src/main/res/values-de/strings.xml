@@ -497,6 +497,16 @@
     <string name="prayer_bayram">Festgebet</string>
     <string name="prayer_bayramTomorrow">Festgebet morgen: %1$s</string>
     <string name="prayer_bayramNote">Gleiche Regel wie die von Diyanet veröffentlichten Zeiten (38 Min. nach Sonnenaufgang); maßgeblich ist die Bekanntgabe des Provinzmuftis.</string>
+    <string name="nature_folkHeading">Traditioneller Volkskalender</string>
+    <string name="nature_folkNote">Traditionelle Daten des türkischen Volkskalenders (nach dem alten Rumi-Kalender); keine Wettervorhersage, Quellen weichen um einige Tage ab.</string>
+    <string name="nature_folkNow">Jetzt</string>
+    <string name="nature_folkNames_erbain">Erbain (die 40 kältesten Wintertage)</string>
+    <string name="nature_folkNames_hamsin">Hamsin (die 50-tägige zweite Winterhälfte)</string>
+    <string name="nature_folkNames_cemre1">Erste Cemre (in die Luft)</string>
+    <string name="nature_folkNames_cemre2">Zweite Cemre (ins Wasser)</string>
+    <string name="nature_folkNames_cemre3">Dritte Cemre (in die Erde)</string>
+    <string name="nature_folkNames_berdulacuz">Berd al-adschus („Altweiberkälte“)</string>
+    <string name="nature_folkNames_eyyamibahur">Eyyam-ı bahur (die heißesten Sommertage)</string>
     <string name="nature_goldenAm">Goldene Stunde morgens</string>
     <string name="nature_goldenPm">Goldene Stunde abends</string>
     <string name="nature_blueAm">Blaue Stunde morgens</string>

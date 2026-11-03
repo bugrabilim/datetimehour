@@ -426,6 +426,7 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   }
   const ns = rd("mevsimler", "index.html");
   check(["blueAm", "goldenAm", "goldenPm", "bluePm"].every((k) => ns.includes(`data-n-light="${k}"`)) && ns.includes("/ics/tr-moon.ics"), "mevsimler: altın/mavi saat ya da Ay takvimi aboneliği yok");
+  check(ns.includes('data-folk-from="03-11"') && ns.includes('data-folk-from="12-22"') && /Berdü'l-acûz|Berdü&#39;l-acûz/.test(ns), "mevsimler: halk takvimi (2. analiz #60) yok");
   const mi = rd("ics", "tr-moon.ics");
   check(/^BEGIN:VCALENDAR\r\n/.test(mi) && (mi.match(/BEGIN:VEVENT/g) || []).length > 100 && /DTSTART:\d{8}T\d{6}Z/.test(mi) && /Dolunay/.test(mi), "tr-moon.ics yapısı bozuk");
   const cd = rd("geri-sayim", "index.html"), sw = rd("kronometre", "index.html"), po = rd("pomodoro", "index.html"), al = rd("alarm", "index.html");

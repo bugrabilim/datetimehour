@@ -497,6 +497,16 @@
     <string name="prayer_bayram">Eid prayer</string>
     <string name="prayer_bayramTomorrow">Eid prayer tomorrow: %1$s</string>
     <string name="prayer_bayramNote">Same rule as Diyanet’s published times (38 min after sunrise); the provincial mufti’s announcement is authoritative.</string>
+    <string name="nature_folkHeading">Traditional folk calendar</string>
+    <string name="nature_folkNote">Traditional dates from the Turkish folk calendar (based on the old Rumi calendar); not a weather forecast, and sources may differ by a few days.</string>
+    <string name="nature_folkNow">Now</string>
+    <string name="nature_folkNames_erbain">Erbain (the 40 coldest days of winter)</string>
+    <string name="nature_folkNames_hamsin">Hamsin (the 50-day second half of winter)</string>
+    <string name="nature_folkNames_cemre1">First cemre (into the air)</string>
+    <string name="nature_folkNames_cemre2">Second cemre (into the water)</string>
+    <string name="nature_folkNames_cemre3">Third cemre (into the soil)</string>
+    <string name="nature_folkNames_berdulacuz">Berd al-ajuz (the “old woman’s cold”)</string>
+    <string name="nature_folkNames_eyyamibahur">Eyyam-ı bahur (the hottest days of summer)</string>
     <string name="nature_goldenAm">Morning golden hour</string>
     <string name="nature_goldenPm">Evening golden hour</string>
     <string name="nature_blueAm">Morning blue hour</string>

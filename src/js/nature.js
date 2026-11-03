@@ -37,6 +37,16 @@
   function shortDate(m, d) { return S.tpl(CAL.shortFmt || "{day} {month}", { day: d, month: (CAL.months || [])[m - 1] }); }
 
   var ICONS = { summer: "🏖️", autumn: "🍂", winter: "⛄", spring: "🌸" };
+  /* Halk takvimi (2. analiz #60): bugünün düştüğü dönemi işaretle (yılı aşan erbain dahil) */
+  function markFolk(nowMs) {
+    var p = S.parts(new Date(nowMs), place.tz), md = pad(p.month) + "-" + pad(p.day);
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-folk-from]"), function (li) {
+      var a = li.getAttribute("data-folk-from"), b = li.getAttribute("data-folk-to");
+      var on = a <= b ? (md >= a && md <= b) : (md >= a || md <= b);
+      li.classList.toggle("is-now", on);
+      var badge = li.querySelector(".folk-now"); if (badge) badge.hidden = !on;
+    });
+  }
   function drawWheel(nowMs) {
     var el = doc.querySelector("[data-wheel]"); el.textContent = "";
     var p = S.parts(new Date(nowMs), place.tz), Y = p.year, south = place.lat < 0;
@@ -289,7 +299,7 @@
 
   function renderAll() {
     var now = S.nowMs();
-    drawWheel(now); drawSun(now); drawMoon(now); drawChart(now); drawMoonCal(now); drawCrescent(now); drawEclipses(now);
+    drawWheel(now); drawSun(now); drawMoon(now); drawChart(now); drawMoonCal(now); drawCrescent(now); drawEclipses(now); markFolk(now);
   }
   window.sthPlace.attach(root, function (p) { place = p; renderAll(); });
   setInterval(function () { if (place && !doc.hidden) { var n = S.nowMs(); drawSun(n); drawMoon(n); } }, 60000);

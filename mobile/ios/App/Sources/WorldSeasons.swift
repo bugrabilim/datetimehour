@@ -216,6 +216,7 @@ struct SeasonsView: View {
                 }
                 sunAndMoon(place: place, now: now)
                 lightHours(place: place, now: now)
+                FolkCalendarCard(day: CalendarDay(now, timeZone: place.zone))
                 startsTable(year: year, tz: tr)
             }
             .padding(16)
@@ -611,5 +612,43 @@ private struct HemispheresDiagram: View {
         }
         .frame(maxWidth: .infinity)
         .accessibilityElement(children: .combine)
+    }
+}
+
+/// Halk takvimi (2. analiz #60): src/data/folk-calendar.json ile aynı geleneksel tarihler (ay, gün)
+struct FolkCalendarCard: View {
+    let day: CalendarDay
+    struct Item: Identifiable { let id: String; let fm: Int, fd: Int, tm: Int, td: Int }
+    static let items: [Item] = [
+        Item(id: "erbain", fm: 12, fd: 22, tm: 1, td: 30), Item(id: "hamsin", fm: 1, fd: 31, tm: 3, td: 21),
+        Item(id: "cemre1", fm: 2, fd: 19, tm: 2, td: 20), Item(id: "cemre2", fm: 2, fd: 26, tm: 2, td: 27),
+        Item(id: "cemre3", fm: 3, fd: 5, tm: 3, td: 6), Item(id: "berdulacuz", fm: 3, fd: 11, tm: 3, td: 17),
+        Item(id: "eyyamibahur", fm: 7, fd: 31, tm: 8, td: 7),
+    ]
+
+    var body: some View {
+        let md = day.month * 100 + day.day
+        VStack(alignment: .leading, spacing: 8) {
+            Text(L("nature.folkHeading")).font(.headline)
+            ForEach(Self.items) { it in
+                let a = it.fm * 100 + it.fd, b = it.tm * 100 + it.td
+                let now = a <= b ? (a...b).contains(md) : (md >= a || md <= b)
+                HStack(alignment: .firstTextBaseline) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(L("nature.folkNames.\(it.id)")).fontWeight(now ? .semibold : .regular)
+                            .foregroundStyle(now ? Theme.accent : Theme.text)
+                        if now { Text(L("nature.folkNow")).font(.caption.weight(.bold)).foregroundStyle(Theme.accent) }
+                    }
+                    Spacer()
+                    Text("\(it.fd) \(L("calendar.months.\(it.fm - 1)")) – \(it.td) \(L("calendar.months.\(it.tm - 1)"))")
+                        .font(.footnote).foregroundStyle(Theme.muted).multilineTextAlignment(.trailing)
+                }
+            }
+            Text(L("nature.folkNote")).font(.caption).foregroundStyle(Theme.muted)
+        }
+        .foregroundStyle(Theme.text)
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
     }
 }

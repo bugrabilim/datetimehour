@@ -497,6 +497,16 @@
     <string name="prayer_bayram">نمازِ عید</string>
     <string name="prayer_bayramTomorrow">کل نمازِ عید: %1$s</string>
     <string name="prayer_bayramNote">دیانت کے شائع کردہ اوقات والا اصول (طلوعِ آفتاب کے 38 منٹ بعد)؛ حتمی وقت صوبائی مفتی کا اعلان ہے۔</string>
+    <string name="nature_folkHeading">عوامی تقویم</string>
+    <string name="nature_folkNote">ترکی کی عوامی تقویم کی روایتی تاریخیں (پرانی رومی تقویم سے)؛ یہ موسم کی پیش گوئی نہیں اور ذرائع میں چند دن کا فرق ہو سکتا ہے۔</string>
+    <string name="nature_folkNow">ابھی</string>
+    <string name="nature_folkNames_erbain">اربعین (سردیوں کے سب سے ٹھنڈے 40 دن)</string>
+    <string name="nature_folkNames_hamsin">خمسین (سردیوں کا 50 روزہ دوسرا حصہ)</string>
+    <string name="nature_folkNames_cemre1">پہلا جمرہ (ہوا میں)</string>
+    <string name="nature_folkNames_cemre2">دوسرا جمرہ (پانی میں)</string>
+    <string name="nature_folkNames_cemre3">تیسرا جمرہ (مٹی میں)</string>
+    <string name="nature_folkNames_berdulacuz">بردالعجوز (بڑھیا کی سردی)</string>
+    <string name="nature_folkNames_eyyamibahur">ایامِ بحور (گرمیوں کے سب سے گرم دن)</string>
     <string name="nature_goldenAm">صبح کا سنہری وقت</string>
     <string name="nature_goldenPm">شام کا سنہری وقت</string>
     <string name="nature_blueAm">صبح کا نیلا وقت</string>

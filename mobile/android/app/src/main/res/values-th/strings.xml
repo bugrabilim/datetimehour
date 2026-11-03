@@ -497,6 +497,16 @@
     <string name="prayer_bayram">ละหมาดอีด</string>
     <string name="prayer_bayramTomorrow">ละหมาดอีดพรุ่งนี้: %1$s</string>
     <string name="prayer_bayramNote">ใช้กฎเดียวกับเวลาที่ดียาเนตประกาศ (หลังดวงอาทิตย์ขึ้น 38 นาที) เวลาที่แน่นอนให้ยึดประกาศของมุฟตีประจำจังหวัด</string>
+    <string name="nature_folkHeading">ปฏิทินพื้นบ้าน</string>
+    <string name="nature_folkNote">วันที่ตามธรรมเนียมจากปฏิทินพื้นบ้านตุรกี (อิงปฏิทินรูมีเดิม) ไม่ใช่การพยากรณ์อากาศ และแหล่งข้อมูลอาจต่างกันไม่กี่วัน</string>
+    <string name="nature_folkNow">ขณะนี้</string>
+    <string name="nature_folkNames_erbain">เอร์บาอิน (40 วันที่หนาวที่สุดของฤดูหนาว)</string>
+    <string name="nature_folkNames_hamsin">ฮัมซิน (ครึ่งหลังของฤดูหนาว 50 วัน)</string>
+    <string name="nature_folkNames_cemre1">เจมเรครั้งที่หนึ่ง (สู่อากาศ)</string>
+    <string name="nature_folkNames_cemre2">เจมเรครั้งที่สอง (สู่น้ำ)</string>
+    <string name="nature_folkNames_cemre3">เจมเรครั้งที่สาม (สู่ดิน)</string>
+    <string name="nature_folkNames_berdulacuz">แบร์ดุลอะญูซ (หนาวหญิงชรา)</string>
+    <string name="nature_folkNames_eyyamibahur">เอยยามึบะฮูร (วันที่ร้อนที่สุดของฤดูร้อน)</string>
     <string name="nature_goldenAm">ช่วงแสงทองยามเช้า</string>
     <string name="nature_goldenPm">ช่วงแสงทองยามเย็น</string>
     <string name="nature_blueAm">ช่วงแสงสีฟ้ายามเช้า</string>

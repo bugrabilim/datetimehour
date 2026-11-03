@@ -1252,3 +1252,11 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 
 /* Bayram namazı satırı (2. analiz #56) */
 .pr-bayram { margin: 0.6rem 0 0; font-weight: 700; color: var(--accent); }
+
+/* Halk takvimi (2. analiz #60) */
+.folk-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+.folk-list li { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; padding: 0.45rem 0; border-bottom: 1px solid var(--line, rgba(0, 0, 0, 0.08)); }
+.folk-name { font-weight: 600; flex: 1 1 16rem; }
+.folk-date { color: var(--muted); }
+.folk-now { font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+.folk-list li.is-now .folk-name { color: var(--accent); }

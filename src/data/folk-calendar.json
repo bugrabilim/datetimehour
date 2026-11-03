@@ -1,0 +1,12 @@
+{
+  "_": "Halk takvimi (2. analiz #60, 3 Kasım 2026): geleneksel Rumi takvim tarihlerinin miladi karşılıkları (Rumi = Jülyen, 13 gün fark). Kaynaklar: TDV İslâm Ansiklopedisi \"Berdü'l-acûz\" (Rumi 26 Şubat'ta başlayan 7 gün = 11–17 Mart); cemreler 19–20 Şubat (havaya), 26–27 Şubat (suya), 5–6 Mart (toprağa) ve erbain 22 Aralık–30 Ocak, hamsin 31 Ocak–21 Mart birden çok basın kaynağında aynı (Habertürk, NTV, Karar, A Haber); eyyâm-ı bahûr için kaynaklar 31 Temmuz–7 Ağustos ile 1–8 Ağustos arasında değişir, ilki alındı. Hava tahmini değildir; kaynaklara göre birkaç gün oynayabilir. Fırtına takvimi (MGM'nin resmî bir listesi bulunamadı) bilerek yok.",
+  "items": [
+    { "key": "erbain", "from": "12-22", "to": "01-30" },
+    { "key": "hamsin", "from": "01-31", "to": "03-21" },
+    { "key": "cemre1", "from": "02-19", "to": "02-20" },
+    { "key": "cemre2", "from": "02-26", "to": "02-27" },
+    { "key": "cemre3", "from": "03-05", "to": "03-06" },
+    { "key": "berdulacuz", "from": "03-11", "to": "03-17" },
+    { "key": "eyyamibahur", "from": "07-31", "to": "08-07" }
+  ]
+}

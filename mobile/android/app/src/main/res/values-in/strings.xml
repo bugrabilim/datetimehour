@@ -497,6 +497,16 @@
     <string name="prayer_bayram">Salat Id</string>
     <string name="prayer_bayramTomorrow">Salat Id besok: %1$s</string>
     <string name="prayer_bayramNote">Aturan yang sama dengan waktu terbitan Diyanet (38 menit setelah matahari terbit); yang resmi adalah pengumuman mufti provinsi.</string>
+    <string name="nature_folkHeading">Kalender rakyat</string>
+    <string name="nature_folkNote">Tanggal tradisional dari kalender rakyat Turki (berdasarkan kalender Rumi lama); bukan prakiraan cuaca dan sumber bisa berbeda beberapa hari.</string>
+    <string name="nature_folkNow">Sekarang</string>
+    <string name="nature_folkNames_erbain">Erbain (40 hari terdingin musim dingin)</string>
+    <string name="nature_folkNames_hamsin">Hamsin (paruh kedua musim dingin, 50 hari)</string>
+    <string name="nature_folkNames_cemre1">Cemre pertama (ke udara)</string>
+    <string name="nature_folkNames_cemre2">Cemre kedua (ke air)</string>
+    <string name="nature_folkNames_cemre3">Cemre ketiga (ke tanah)</string>
+    <string name="nature_folkNames_berdulacuz">Berd al-ajuz (“dingin nenek tua”)</string>
+    <string name="nature_folkNames_eyyamibahur">Eyyam-ı bahur (hari terpanas musim panas)</string>
     <string name="nature_goldenAm">Jam emas pagi</string>
     <string name="nature_goldenPm">Jam emas sore</string>
     <string name="nature_blueAm">Jam biru pagi</string>

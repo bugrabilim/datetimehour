@@ -497,6 +497,16 @@
     <string name="prayer_bayram">イード礼拝</string>
     <string name="prayer_bayramTomorrow">明日のイード礼拝：%1$s</string>
     <string name="prayer_bayramNote">ディヤーネットの公表時刻と同じ規則（日の出の38分後）。正式な時刻は県ムフティー庁の発表です。</string>
+    <string name="nature_folkHeading">民間暦</string>
+    <string name="nature_folkNote">トルコの民間暦の伝統的な日付（旧ルーミー暦による）。天気予報ではなく、資料により数日異なることがあります。</string>
+    <string name="nature_folkNow">現在</string>
+    <string name="nature_folkNames_erbain">エルバイン（冬の最も寒い40日間）</string>
+    <string name="nature_folkNames_hamsin">ハムシン（冬の後半50日間）</string>
+    <string name="nature_folkNames_cemre1">第一のジェムレ（空気へ）</string>
+    <string name="nature_folkNames_cemre2">第二のジェムレ（水へ）</string>
+    <string name="nature_folkNames_cemre3">第三のジェムレ（土へ）</string>
+    <string name="nature_folkNames_berdulacuz">ベルデュル・アジューズ（老婆の寒さ）</string>
+    <string name="nature_folkNames_eyyamibahur">エイヤーム・バフール（夏の最も暑い日々）</string>
     <string name="nature_goldenAm">朝のゴールデンアワー</string>
     <string name="nature_goldenPm">夕方のゴールデンアワー</string>
     <string name="nature_blueAm">朝のブルーアワー</string>

@@ -1974,7 +1974,19 @@
     "eclMapLabel": "Eclipse",
     "eclMapSolar": "Orange: where the eclipse is seen as partial (darker means more of the Sun is covered). Dark red: path of totality; purple: path of the annular eclipse. Black dot: selected place.",
     "eclMapLunar": "Blue: where the Moon is above the horizon at greatest eclipse, so the eclipse can be seen. Blue dot: where the Moon is overhead; black dot: selected place.",
-    "eclMapNote": "The map is calculated approximately in your browser from the positions of the Sun and Moon (path edges may be off by a few tens of km). Coastlines: Natural Earth. For exact paths and times see NASA's eclipse pages."
+    "eclMapNote": "The map is calculated approximately in your browser from the positions of the Sun and Moon (path edges may be off by a few tens of km). Coastlines: Natural Earth. For exact paths and times see NASA's eclipse pages.",
+    "folkHeading": "Traditional folk calendar",
+    "folkNote": "Traditional dates from the Turkish folk calendar (based on the old Rumi calendar); not a weather forecast, and sources may differ by a few days.",
+    "folkNow": "Now",
+    "folkNames": {
+      "erbain": "Erbain (the 40 coldest days of winter)",
+      "hamsin": "Hamsin (the 50-day second half of winter)",
+      "cemre1": "First cemre (into the air)",
+      "cemre2": "Second cemre (into the water)",
+      "cemre3": "Third cemre (into the soil)",
+      "berdulacuz": "Berd al-ajuz (the “old woman’s cold”)",
+      "eyyamibahur": "Eyyam-ı bahur (the hottest days of summer)"
+    }
   },
   "weather": {
     "title": "Weather: Current, Hourly and 14-Day Forecast | Saat Tarih",

@@ -1974,7 +1974,19 @@
     "eclMapLabel": "Tutulma",
     "eclMapSolar": "Turuncu: tutulmanın parçalı görüldüğü yerler (koyulaştıkça Güneş'in daha çok kısmı örtülür). Koyu kırmızı: tam tutulma yolu; mor: halkalı tutulma yolu. Siyah nokta: seçili yer.",
     "eclMapLunar": "Mavi: tutulmanın en büyük anında Ay'ın ufkun üstünde olduğu, yani tutulmanın görülebildiği yerler. Mavi nokta: Ay'ın tam tepede olduğu yer; siyah nokta: seçili yer.",
-    "eclMapNote": "Harita tarayıcıda Güneş ve Ay'ın konumlarından yaklaşık olarak hesaplanır (yol kenarlarında birkaç on km sapabilir). Kara sınırları: Natural Earth. Kesin yol ve saatler için NASA'nın tutulma sayfalarına bakın."
+    "eclMapNote": "Harita tarayıcıda Güneş ve Ay'ın konumlarından yaklaşık olarak hesaplanır (yol kenarlarında birkaç on km sapabilir). Kara sınırları: Natural Earth. Kesin yol ve saatler için NASA'nın tutulma sayfalarına bakın.",
+    "folkHeading": "Halk takvimi",
+    "folkNote": "Halk takvimindeki geleneksel tarihlerdir (eski Rumi takvimden); hava tahmini değildir ve kaynaklara göre birkaç gün değişebilir.",
+    "folkNow": "Şu an",
+    "folkNames": {
+      "erbain": "Erbain (zemheri; kışın en soğuk 40 günü)",
+      "hamsin": "Hamsin (kışın 50 günlük ikinci yarısı)",
+      "cemre1": "Birinci cemre (havaya)",
+      "cemre2": "İkinci cemre (suya)",
+      "cemre3": "Üçüncü cemre (toprağa)",
+      "berdulacuz": "Berdü'l-acûz (kocakarı soğukları)",
+      "eyyamibahur": "Eyyâm-ı bahûr (yazın en sıcak günleri)"
+    }
   },
   "weather": {
     "title": "Hava Durumu: Güncel, Saatlik ve 14 Günlük Tahmin | Saat Tarih",

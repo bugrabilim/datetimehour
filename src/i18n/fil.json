@@ -2040,7 +2040,19 @@
     "eclMapLabel": "Eklipse",
     "eclMapSolar": "Kahel: kung saan bahagyang makikita ang eklipse (mas madilim, mas maraming natatakpan sa Araw). Madilim na pula: landas ng ganap na eklipse; lila: landas ng annular na eklipse. Itim na tuldok: napiling lugar.",
     "eclMapLunar": "Asul: kung saan nasa itaas ng horizon ang Buwan sa pinakamalaking eklipse, kaya makikita ito. Asul na tuldok: kung saan nasa itaas mismo ang Buwan; itim na tuldok: napiling lugar.",
-    "eclMapNote": "Tantiyang kinakalkula sa iyong browser ang mapa mula sa posisyon ng Araw at Buwan (puwedeng malihis nang ilang sampu-sampung km ang gilid ng landas). Mga baybayin: Natural Earth. Para sa eksaktong landas at oras, tingnan ang mga pahina ng eklipse ng NASA."
+    "eclMapNote": "Tantiyang kinakalkula sa iyong browser ang mapa mula sa posisyon ng Araw at Buwan (puwedeng malihis nang ilang sampu-sampung km ang gilid ng landas). Mga baybayin: Natural Earth. Para sa eksaktong landas at oras, tingnan ang mga pahina ng eklipse ng NASA.",
+    "folkHeading": "Kalendaryong bayan",
+    "folkNote": "Tradisyonal na petsa mula sa kalendaryong bayan ng Turkey (batay sa lumang kalendaryong Rumi); hindi ito ulat-panahon at maaaring magkaiba nang ilang araw ang mga sanggunian.",
+    "folkNow": "Ngayon",
+    "folkNames": {
+      "erbain": "Erbain (40 pinakamalamig na araw ng taglamig)",
+      "hamsin": "Hamsin (ikalawang bahagi ng taglamig, 50 araw)",
+      "cemre1": "Unang cemre (sa hangin)",
+      "cemre2": "Ikalawang cemre (sa tubig)",
+      "cemre3": "Ikatlong cemre (sa lupa)",
+      "berdulacuz": "Berd al-ajuz (“lamig ng matandang babae”)",
+      "eyyamibahur": "Eyyam-ı bahur (pinakamainit na araw ng tag-init)"
+    }
   },
   "weather": {
     "title": "Panahon: Ngayon, Bawat Oras at 14 na Araw | Saat Tarih",

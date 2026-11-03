@@ -1974,7 +1974,19 @@
     "eclMapLabel": "Tutulma",
     "eclMapSolar": "Narıncı: tutulmanın qismən göründüyü yerlər (tündləşdikcə Günəşin daha çox hissəsi örtülür). Tünd qırmızı: tam tutulma zolağı; bənövşəyi: həlqəvi tutulma zolağı. Qara nöqtə: seçilmiş yer.",
     "eclMapLunar": "Mavi: tutulmanın ən böyük anında Ayın üfüqdən yuxarıda olduğu, yəni tutulmanın göründüyü yerlər. Mavi nöqtə: Ayın başın üstündə olduğu yer; qara nöqtə: seçilmiş yer.",
-    "eclMapNote": "Xəritə brauzerdə Günəş və Ayın mövqelərindən təxmini hesablanır (zolağın kənarları bir neçə on km sürüşə bilər). Sahil xətləri: Natural Earth. Dəqiq zolaq və saatlar üçün NASA-nın tutulma səhifələrinə baxın."
+    "eclMapNote": "Xəritə brauzerdə Günəş və Ayın mövqelərindən təxmini hesablanır (zolağın kənarları bir neçə on km sürüşə bilər). Sahil xətləri: Natural Earth. Dəqiq zolaq və saatlar üçün NASA-nın tutulma səhifələrinə baxın.",
+    "folkHeading": "Xalq təqvimi",
+    "folkNote": "Xalq təqvimindəki ənənəvi tarixlərdir (köhnə Rumi təqvimindən); hava proqnozu deyil və mənbələrə görə bir neçə gün dəyişə bilər.",
+    "folkNow": "İndi",
+    "folkNames": {
+      "erbain": "Erbain (zəmheri; qışın ən soyuq 40 günü)",
+      "hamsin": "Həmsin (qışın 50 günlük ikinci yarısı)",
+      "cemre1": "Birinci cəmrə (havaya)",
+      "cemre2": "İkinci cəmrə (suya)",
+      "cemre3": "Üçüncü cəmrə (torpağa)",
+      "berdulacuz": "Bərdül-əcuz (qarı soyuqları)",
+      "eyyamibahur": "Əyyami-bəhur (yayın ən isti günləri)"
+    }
   },
   "weather": {
     "title": "Hava: Hazırkı, saatlıq və 14 günlük proqnoz | Saat Tarih",

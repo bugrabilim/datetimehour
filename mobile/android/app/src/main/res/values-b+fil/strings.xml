@@ -497,6 +497,16 @@
     <string name="prayer_bayram">Salat al-Eid</string>
     <string name="prayer_bayramTomorrow">Salat al-Eid bukas: %1$s</string>
     <string name="prayer_bayramNote">Kaparehong panuntunan ng mga oras ng Diyanet (38 minuto pagkatapos sumikat ang araw); ang anunsyo ng mufti ng lalawigan ang opisyal.</string>
+    <string name="nature_folkHeading">Kalendaryong bayan</string>
+    <string name="nature_folkNote">Tradisyonal na petsa mula sa kalendaryong bayan ng Turkey (batay sa lumang kalendaryong Rumi); hindi ito ulat-panahon at maaaring magkaiba nang ilang araw ang mga sanggunian.</string>
+    <string name="nature_folkNow">Ngayon</string>
+    <string name="nature_folkNames_erbain">Erbain (40 pinakamalamig na araw ng taglamig)</string>
+    <string name="nature_folkNames_hamsin">Hamsin (ikalawang bahagi ng taglamig, 50 araw)</string>
+    <string name="nature_folkNames_cemre1">Unang cemre (sa hangin)</string>
+    <string name="nature_folkNames_cemre2">Ikalawang cemre (sa tubig)</string>
+    <string name="nature_folkNames_cemre3">Ikatlong cemre (sa lupa)</string>
+    <string name="nature_folkNames_berdulacuz">Berd al-ajuz (“lamig ng matandang babae”)</string>
+    <string name="nature_folkNames_eyyamibahur">Eyyam-ı bahur (pinakamainit na araw ng tag-init)</string>
     <string name="nature_goldenAm">Golden hour sa umaga</string>
     <string name="nature_goldenPm">Golden hour sa hapon</string>
     <string name="nature_blueAm">Blue hour sa umaga</string>

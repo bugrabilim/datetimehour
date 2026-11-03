@@ -497,6 +497,16 @@
     <string name="prayer_bayram">이드 예배</string>
     <string name="prayer_bayramTomorrow">내일 이드 예배: %1$s</string>
     <string name="prayer_bayramNote">디야넷이 발표하는 시각과 같은 규칙(일출 38분 뒤)이며, 정확한 시각은 주 무프티청의 공지를 따릅니다.</string>
+    <string name="nature_folkHeading">민간 달력</string>
+    <string name="nature_folkNote">튀르키예 민간 달력의 전통 날짜입니다(옛 루미 달력 기준). 일기 예보가 아니며 자료에 따라 며칠 차이가 날 수 있습니다.</string>
+    <string name="nature_folkNow">지금</string>
+    <string name="nature_folkNames_erbain">에르바인(겨울의 가장 추운 40일)</string>
+    <string name="nature_folkNames_hamsin">함신(겨울 후반 50일)</string>
+    <string name="nature_folkNames_cemre1">첫째 제므레(공기로)</string>
+    <string name="nature_folkNames_cemre2">둘째 제므레(물로)</string>
+    <string name="nature_folkNames_cemre3">셋째 제므레(흙으로)</string>
+    <string name="nature_folkNames_berdulacuz">베르뒬 아쥐즈(\'노파의 추위\')</string>
+    <string name="nature_folkNames_eyyamibahur">에야므 바후르(여름의 가장 더운 날들)</string>
     <string name="nature_goldenAm">아침 골든아워</string>
     <string name="nature_goldenPm">저녁 골든아워</string>
     <string name="nature_blueAm">아침 블루아워</string>

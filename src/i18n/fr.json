@@ -2015,7 +2015,19 @@
     "eclMapLabel": "Éclipse",
     "eclMapSolar": "Orange : là où l’éclipse est partielle (plus c’est foncé, plus le Soleil est couvert). Rouge foncé : bande de totalité ; violet : bande de l’éclipse annulaire. Point noir : lieu choisi.",
     "eclMapLunar": "Bleu : là où la Lune est au-dessus de l’horizon au maximum, donc où l’éclipse est visible. Point bleu : là où la Lune est au zénith ; point noir : lieu choisi.",
-    "eclMapNote": "La carte est calculée approximativement dans votre navigateur d’après les positions du Soleil et de la Lune (les limites de la bande peuvent différer de quelques dizaines de km). Côtes : Natural Earth. Pour les bandes et heures exactes, voir les pages de la NASA."
+    "eclMapNote": "La carte est calculée approximativement dans votre navigateur d’après les positions du Soleil et de la Lune (les limites de la bande peuvent différer de quelques dizaines de km). Côtes : Natural Earth. Pour les bandes et heures exactes, voir les pages de la NASA.",
+    "folkHeading": "Calendrier populaire",
+    "folkNote": "Dates traditionnelles du calendrier populaire turc (ancien calendrier roumi) ; ce n’est pas une prévision météo et les sources varient de quelques jours.",
+    "folkNow": "En ce moment",
+    "folkNames": {
+      "erbain": "Erbaïn (les 40 jours les plus froids de l’hiver)",
+      "hamsin": "Hamsin (seconde moitié de l’hiver, 50 jours)",
+      "cemre1": "Première cemre (dans l’air)",
+      "cemre2": "Deuxième cemre (dans l’eau)",
+      "cemre3": "Troisième cemre (dans la terre)",
+      "berdulacuz": "Berd el-ajouz (« froid de la vieille »)",
+      "eyyamibahur": "Eyyam-ı bahur (les jours les plus chauds de l’été)"
+    }
   },
   "weather": {
     "title": "Météo : actuelle, heure par heure et à 14 jours | Saat Tarih",

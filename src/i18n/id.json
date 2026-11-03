@@ -1974,7 +1974,19 @@
     "eclMapLabel": "Gerhana",
     "eclMapSolar": "Oranye: tempat gerhana terlihat sebagian (makin gelap, makin banyak Matahari tertutup). Merah tua: jalur total; ungu: jalur gerhana cincin. Titik hitam: tempat terpilih.",
     "eclMapLunar": "Biru: tempat Bulan berada di atas ufuk saat puncak gerhana, sehingga gerhana dapat dilihat. Titik biru: tempat Bulan di zenit; titik hitam: tempat terpilih.",
-    "eclMapNote": "Peta dihitung secara perkiraan di peramban dari posisi Matahari dan Bulan (tepi jalur dapat meleset beberapa puluh km). Garis pantai: Natural Earth. Untuk jalur dan waktu yang tepat lihat halaman gerhana NASA."
+    "eclMapNote": "Peta dihitung secara perkiraan di peramban dari posisi Matahari dan Bulan (tepi jalur dapat meleset beberapa puluh km). Garis pantai: Natural Earth. Untuk jalur dan waktu yang tepat lihat halaman gerhana NASA.",
+    "folkHeading": "Kalender rakyat",
+    "folkNote": "Tanggal tradisional dari kalender rakyat Turki (berdasarkan kalender Rumi lama); bukan prakiraan cuaca dan sumber bisa berbeda beberapa hari.",
+    "folkNow": "Sekarang",
+    "folkNames": {
+      "erbain": "Erbain (40 hari terdingin musim dingin)",
+      "hamsin": "Hamsin (paruh kedua musim dingin, 50 hari)",
+      "cemre1": "Cemre pertama (ke udara)",
+      "cemre2": "Cemre kedua (ke air)",
+      "cemre3": "Cemre ketiga (ke tanah)",
+      "berdulacuz": "Berd al-ajuz (“dingin nenek tua”)",
+      "eyyamibahur": "Eyyam-ı bahur (hari terpanas musim panas)"
+    }
   },
   "weather": {
     "title": "Cuaca: Saat Ini, Per Jam, dan Prakiraan 14 Hari | Saat Tarih",

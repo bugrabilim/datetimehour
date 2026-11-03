@@ -497,6 +497,16 @@
     <string name="prayer_bayram">Праздничный намаз</string>
     <string name="prayer_bayramTomorrow">Праздничный намаз завтра: %1$s</string>
     <string name="prayer_bayramNote">То же правило, что у опубликованных Диянетом времён (через 38 мин после восхода); точное время объявляет муфтият провинции.</string>
+    <string name="nature_folkHeading">Народный календарь</string>
+    <string name="nature_folkNote">Традиционные даты турецкого народного календаря (по старому календарю руми); это не прогноз погоды, источники расходятся на несколько дней.</string>
+    <string name="nature_folkNow">Сейчас</string>
+    <string name="nature_folkNames_erbain">Эрбаин (40 самых холодных дней зимы)</string>
+    <string name="nature_folkNames_hamsin">Хамсин (вторая половина зимы, 50 дней)</string>
+    <string name="nature_folkNames_cemre1">Первая джемре (в воздух)</string>
+    <string name="nature_folkNames_cemre2">Вторая джемре (в воду)</string>
+    <string name="nature_folkNames_cemre3">Третья джемре (в землю)</string>
+    <string name="nature_folkNames_berdulacuz">Бердюль-аджуз («холода старухи»)</string>
+    <string name="nature_folkNames_eyyamibahur">Эйям-ы бахур (самые жаркие дни лета)</string>
     <string name="nature_goldenAm">Утренний золотой час</string>
     <string name="nature_goldenPm">Вечерний золотой час</string>
     <string name="nature_blueAm">Утренний синий час</string>
