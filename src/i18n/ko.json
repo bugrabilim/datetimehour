@@ -815,7 +815,25 @@
     "icsCalDays": "튀르키예의 종교적인 날과 특별한 날(Saat Tarih)",
     "icsHalf": "반일",
     "icsProjected": "디야넷 장기 달력 기준(예상)",
-    "icsCalMoon": "달의 위상과 일식·월식(Saat Tarih)"
+    "icsCalMoon": "달의 위상과 일식·월식(Saat Tarih)",
+    "monthOrigin": {
+      "heading": "달 이름의 유래",
+      "source": "출처: 라틴어 사전, Online Etymology Dictionary.",
+      "items": [
+        "1월(January)의 서양 이름은 로마의 문과 시작의 신 야누스에서 왔습니다.",
+        "2월(February)은 로마의 정화 축제 페브루아에서 왔습니다.",
+        "3월(March)은 로마의 전쟁 신 마르스의 이름입니다.",
+        "4월(April)은 '열다'를 뜻하는 라틴어 aperire에서 온 것으로 보입니다. 봄에 꽃봉오리가 열립니다.",
+        "5월(May)은 로마의 성장의 여신 마이아의 이름입니다.",
+        "6월(June)은 로마 신들의 여왕 유노의 이름입니다.",
+        "7월(July)은 율리우스 카이사르의 이름입니다.",
+        "8월(August)은 로마 황제 아우구스투스의 이름입니다.",
+        "9월(September)은 라틴어 septem(7)에서 왔습니다. 옛 로마력의 일곱째 달이었습니다.",
+        "10월(October)은 라틴어 octo(8)에서 왔습니다.",
+        "11월(November)은 라틴어 novem(9)에서 왔습니다.",
+        "12월(December)은 라틴어 decem(10)에서 왔습니다."
+      ]
+    }
   },
   "tools": {
     "hub": {

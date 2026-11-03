@@ -816,7 +816,25 @@
     "icsCalDays": "Religiöse und besondere Tage in der Türkei (Saat Tarih)",
     "icsHalf": "halber Tag",
     "icsProjected": "nach dem Langzeitkalender von Diyanet (Hochrechnung)",
-    "icsCalMoon": "Mondphasen und Finsternisse (Saat Tarih)"
+    "icsCalMoon": "Mondphasen und Finsternisse (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Woher kommen die Monatsnamen?",
+      "source": "Quelle: Duden, Herkunftswörterbuch.",
+      "items": [
+        "Januar: nach Janus, dem römischen Gott der Türen und des Anfangs.",
+        "Februar: nach Februa, einem römischen Reinigungsfest.",
+        "März: nach Mars, dem römischen Kriegsgott.",
+        "April: vermutlich von lateinisch aperire, „öffnen“ – die Knospen öffnen sich.",
+        "Mai: nach Maia, einer römischen Göttin des Wachstums.",
+        "Juni: nach Juno, der Königin der römischen Götter.",
+        "Juli: nach Julius Caesar.",
+        "August: nach dem römischen Kaiser Augustus.",
+        "September: von lateinisch septem, „sieben“ – der siebte Monat des alten römischen Kalenders.",
+        "Oktober: von lateinisch octo, „acht“.",
+        "November: von lateinisch novem, „neun“.",
+        "Dezember: von lateinisch decem, „zehn“."
+      ]
+    }
   },
   "tools": {
     "hub": {

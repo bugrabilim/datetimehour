@@ -53961,6 +53961,1526 @@
         }
       }
     },
+    "otd.h1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarihte bugün"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On this day"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute in der Geschichte"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tarixdə bu gün"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في مثل هذا اليوم"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hari ini dalam sejarah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تاریخ میں آج"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امروز در تاریخ"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce jour-là"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Этот день в истории"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今日は何の日"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오늘의 역사"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "历史上的今天"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sa araw na ito"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วันนี้ในอดีต"
+          }
+        }
+      }
+    },
+    "otd.foundedFmt": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ kuruldu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ founded"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gründung: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ quruldu"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تأسيس %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Berdirinya %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قیام: %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بنیان‌گذاری %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fondation : %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Основание: %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@設立"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 설립"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@成立"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Itinatag ang %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ก่อตั้ง%1$@"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.heading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayların adları nereden geliyor?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Where do the month names come from?"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Woher kommen die Monatsnamen?"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ayların adları haradan gəlir?"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "من أين جاءت أسماء الشهور؟"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dari mana nama-nama bulan berasal?"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مہینوں کے نام کہاں سے آئے؟"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نام ماه‌ها از کجا آمده است؟"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "D'où viennent les noms des mois ?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Откуда названия месяцев?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月の名前の由来"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "달 이름의 유래"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "月份名称的由来"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saan nagmula ang mga pangalan ng buwan?"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ที่มาของชื่อเดือน"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.source": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaynak: Nişanyan Sözlük. Ocak, Ekim, Kasım ve Aralık adları 1945'te kanunla benimsendi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source: Online Etymology Dictionary."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelle: Duden, Herkunftswörterbuch."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mənbə: latın dili lüğətləri, Online Etymology Dictionary."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المصدر: معاجم اللاتينية، Online Etymology Dictionary."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sumber: kamus bahasa Latin, Online Etymology Dictionary."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماخذ: لاطینی لغات، Online Etymology Dictionary۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "منبع: فرهنگ‌های لاتین، Online Etymology Dictionary."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source : Le Robert, dictionnaire historique."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Источник: этимологические словари (Фасмер)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "由来には諸説あります（日本国語大辞典など）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "출처: 라틴어 사전, Online Etymology Dictionary."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "来源：拉丁语词典、Online Etymology Dictionary。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pinagmulan: mga diksiyonaryong Latin, Online Etymology Dictionary."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ชื่อเดือนแบบนี้เริ่มใช้ในปี พ.ศ. 2432 (ค.ศ. 1889) ตามคติโหราศาสตร์"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.0": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocak: \"ocak\" (sıcak tutulan ev ocağı) sözünden; kışın ortası. 1945'e kadar Kânûn-ı sânî denirdi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "January is named after Janus, the Roman god of doors and beginnings."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Januar: nach Janus, dem römischen Gott der Türen und des Anfangs."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yanvar adını Roma qapılar və başlanğıclar tanrısı Yanusdan alır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يناير: نسبةً إلى يانوس، إله الأبواب والبدايات عند الرومان."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Januari dinamai dari Janus, dewa pintu dan permulaan bangsa Romawi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جنوری کا نام رومی دیوتا یانوس سے ہے، جو دروازوں اور آغاز کا دیوتا تھا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ژانویه از نام ژانوس، خدای درها و آغازها در روم باستان است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Janvier vient de Janus, dieu romain des portes et des commencements."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Январь назван в честь Януса, римского бога дверей и начал."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "睦月（むつき）：正月に親族が集まり睦み合う月とされます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1월(January)의 서양 이름은 로마의 문과 시작의 신 야누스에서 왔습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "一月的西方名称 January 源自罗马门与开端之神雅努斯。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Enero ay mula kay Janus, ang Romanong diyos ng mga pinto at simula."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "มกราคม: มกร (ราศีมังกร) + อาคม (การมาถึง) คือเดือนที่ดวงอาทิตย์เข้าราศีมังกร"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.1": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şubat: Süryanice Şəḇāṭ ay adından."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "February comes from Februa, a Roman festival of purification."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Februar: nach Februa, einem römischen Reinigungsfest."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fevral Roma təmizlənmə bayramı Februa-dan gəlir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فبراير: من «فبروا»، عيد روماني للتطهير."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Februari berasal dari Februa, perayaan penyucian bangsa Romawi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فروری رومی تہوار فیبروا سے ہے، جو پاکیزگی کا تہوار تھا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فوریه از فبروا، جشن پاک‌سازی رومی‌ها می‌آید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Février vient de Februa, fête romaine de purification."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Февраль — от римского праздника очищения Februa."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "如月（きさらぎ）：寒さで衣を更に重ねて着る「衣更着」からとされます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2월(February)은 로마의 정화 축제 페브루아에서 왔습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "二月 February 源自罗马的净化节日 Februa。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Pebrero ay mula sa Februa, isang Romanong pista ng paglilinis."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กุมภาพันธ์: กุมภ์ (ราศีกุมภ์) + พันธ์ (เกี่ยวเนื่อง) ใช้กับเดือนที่มี 28 หรือ 29 วัน"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.2": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mart: Latince Martius, Roma savaş tanrısı Mars'ın ayı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "March is named after Mars, the Roman god of war."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "März: nach Mars, dem römischen Kriegsgott."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mart Roma müharibə tanrısı Marsın adını daşıyır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مارس: نسبةً إلى مارس، إله الحرب عند الرومان."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maret dinamai dari Mars, dewa perang Romawi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مارچ کا نام رومی جنگی دیوتا مارس سے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مارس از نام مارس، خدای جنگ رومی است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mars porte le nom de Mars, dieu romain de la guerre."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Март назван в честь Марса, римского бога войны."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "弥生（やよい）：草木がいよいよ生い茂る「いやおい」から。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3월(March)은 로마의 전쟁 신 마르스의 이름입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "三月 March 以罗马战神玛尔斯命名。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Marso ay ipinangalan kay Mars, ang Romanong diyos ng digmaan."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "มีนาคม: มีน (ราศีมีน) + อาคม"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.3": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nisan: Süryanice ve Aramice Nīsān, eski Babil takviminin ilk ayı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "April probably comes from Latin aperire, “to open”, as buds open in spring."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "April: vermutlich von lateinisch aperire, „öffnen“ – die Knospen öffnen sich."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aprel ehtimal ki, latınca aperire, “açmaq” sözündəndir: yazda tumurcuqlar açılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أبريل: يُرجَّح أنه من اللاتينية aperire «يفتح»، إذ تتفتح البراعم في الربيع."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "April mungkin berasal dari bahasa Latin aperire, “membuka”, saat kuncup bunga mekar."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اپریل غالباً لاطینی aperire یعنی “کھولنا” سے ہے، کیونکہ بہار میں کلیاں کھلتی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آوریل احتمالاً از واژهٔ لاتین aperire به معنای «گشودن» است، چون غنچه‌ها در بهار باز می‌شوند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avril viendrait du latin aperire, « ouvrir » : les bourgeons s'ouvrent au printemps."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Апрель, вероятно, от латинского aperire — «открывать»: весной раскрываются почки."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "卯月（うづき）：卯の花が咲く月とされます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "4월(April)은 '열다'를 뜻하는 라틴어 aperire에서 온 것으로 보입니다. 봄에 꽃봉오리가 열립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "四月 April 可能源自拉丁语 aperire（“打开”），春天花蕾绽放。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Abril ay malamang mula sa Latin na aperire, “magbukas”, dahil bumubuka ang mga usbong sa tagsibol."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมษายน: เมษ (ราศีเมษ) + อายน (การมาถึง) ใช้กับเดือนที่มี 30 วัน"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.4": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mayıs: Latince Maius, büyüme tanrıçası Maia'nın ayı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May is named after Maia, a Roman goddess of growth."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mai: nach Maia, einer römischen Göttin des Wachstums."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May Roma böyümə ilahəsi Mayanın adını daşıyır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مايو: نسبةً إلى مايا، إلهة النماء عند الرومان."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mei dinamai dari Maia, dewi pertumbuhan Romawi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مئی کا نام رومی دیوی مایا سے ہے، جو نشوونما کی دیوی تھی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مه از نام مایا، الههٔ رویش در روم است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mai vient de Maia, déesse romaine de la croissance."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Май назван в честь Майи, римской богини роста."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "皐月（さつき）：早苗を植える「早苗月」から。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5월(May)은 로마의 성장의 여신 마이아의 이름입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "五月 May 以罗马生长女神玛亚命名。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Mayo ay ipinangalan kay Maia, Romanong diyosa ng paglago."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พฤษภาคม: พฤษภ (ราศีพฤษภ) + อาคม"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.5": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haziran: Süryanice Ḥzīrān ay adından."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "June is named after Juno, queen of the Roman gods."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Juni: nach Juno, der Königin der römischen Götter."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyun Roma tanrılarının kraliçası Yunonanın adını daşıyır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يونيو: نسبةً إلى جونو، ملكة الآلهة عند الرومان."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Juni dinamai dari Juno, ratu para dewa Romawi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جون کا نام رومی دیویوں کی ملکہ جونو سے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ژوئن از نام ژونو، ملکهٔ خدایان رومی است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Juin vient de Junon, reine des dieux romains."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Июнь назван в честь Юноны, царицы римских богов."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "水無月（みなづき）：「無」は「の」の意で、田に水を張る「水の月」とされます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "6월(June)은 로마 신들의 여왕 유노의 이름입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "六月 June 以罗马众神之后朱诺命名。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Hunyo ay ipinangalan kay Juno, reyna ng mga Romanong diyos."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "มิถุนายน: มิถุน (ราศีเมถุน) + อายน"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.6": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temmuz: Süryanice Tammūz; Babil'deki Tammuz (Dumuzi) adından."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "July is named after Julius Caesar."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Juli: nach Julius Caesar."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İyul Yuli Sezarın adını daşıyır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يوليو: نسبةً إلى يوليوس قيصر."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Juli dinamai dari Julius Caesar."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جولائی کا نام جولیس سیزر سے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ژوئیه از نام ژولیوس سزار است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Juillet porte le nom de Jules César."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Июль назван в честь Юлия Цезаря."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文月（ふみづき・ふづき）：七夕に詩歌を献じる「文披月」からとされます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7월(July)은 율리우스 카이사르의 이름입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "七月 July 以尤利乌斯·恺撒命名。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Hulyo ay ipinangalan kay Julius Caesar."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กรกฎาคม: กรกฎ (ราศีกรกฎ) + อาคม"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.7": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ağustos: Latince Augustus, Roma imparatoru Augustus'un adı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "August is named after the Roman emperor Augustus."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "August: nach dem römischen Kaiser Augustus."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avqust Roma imperatoru Avqustun adını daşıyır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أغسطس: نسبةً إلى الإمبراطور الروماني أغسطس."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agustus dinamai dari Kaisar Romawi Augustus."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اگست کا نام رومی شہنشاہ آگسٹس سے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوت از نام آگوستوس، امپراتور روم است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Août vient de l'empereur romain Auguste."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Август назван в честь римского императора Августа."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "葉月（はづき）：木の葉が落ち始める「葉落ち月」とされます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "8월(August)은 로마 황제 아우구스투스의 이름입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "八月 August 以罗马皇帝奥古斯都命名。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Agosto ay ipinangalan kay Emperador Augustus ng Roma."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สิงหาคม: สิงห์ (ราศีสิงห์) + อาคม"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.8": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eylül: Süryanice ve İbranice Elūl ay adından."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "September comes from Latin septem, “seven”: it was the seventh month of the old Roman calendar."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "September: von lateinisch septem, „sieben“ – der siebte Monat des alten römischen Kalenders."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sentyabr latınca septem, “yeddi” sözündəndir: köhnə Roma təqviminin yeddinci ayı idi."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سبتمبر: من اللاتينية septem «سبعة»، فقد كان الشهر السابع في التقويم الروماني القديم."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "September berasal dari bahasa Latin septem, “tujuh”: bulan ketujuh kalender Romawi kuno."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ستمبر لاطینی septem یعنی “سات” سے ہے: یہ قدیم رومی تقویم کا ساتواں مہینہ تھا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سپتامبر از واژهٔ لاتین septem به معنای «هفت» است؛ هفتمین ماه تقویم کهن روم بود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Septembre vient du latin septem, « sept » : c'était le septième mois de l'ancien calendrier romain."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сентябрь — от латинского septem, «семь»: седьмой месяц древнего римского календаря."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "長月（ながつき）：夜がだんだん長くなる「夜長月」から。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "9월(September)은 라틴어 septem(7)에서 왔습니다. 옛 로마력의 일곱째 달이었습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "九月 September 源自拉丁语 septem（“七”），曾是古罗马历的第七个月。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Setyembre ay mula sa Latin na septem, “pito”: ikapitong buwan ng lumang kalendaryong Romano."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กันยายน: กันย์ (ราศีกันย์) + อายน"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.9": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekim: \"ekin\" sözünden; ekim zamanı. 1945'e kadar Teşrîn-i evvel denirdi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "October comes from Latin octo, “eight”."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oktober: von lateinisch octo, „acht“."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oktyabr latınca octo, “səkkiz” sözündəndir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أكتوبر: من اللاتينية octo «ثمانية»."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oktober berasal dari bahasa Latin octo, “delapan”."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اکتوبر لاطینی octo یعنی “آٹھ” سے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اکتبر از واژهٔ لاتین octo به معنای «هشت» است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Octobre vient du latin octo, « huit »."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Октябрь — от латинского octo, «восемь»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "神無月（かんなづき）：「無」は「の」で「神の月」。神々が出雲に集まるという俗説もあります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10월(October)은 라틴어 octo(8)에서 왔습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "十月 October 源自拉丁语 octo（“八”）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Oktubre ay mula sa Latin na octo, “walo”."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตุลาคม: ตุล (ราศีตุล) + อาคม"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.10": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kasım: Arapça qāsim, \"bölen\"; yılı yaz ve kış yarısına ayıran Kasım günü (8 Kasım). 1945'e kadar Teşrîn-i sânî."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "November comes from Latin novem, “nine”."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "November: von lateinisch novem, „neun“."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noyabr latınca novem, “doqquz” sözündəndir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نوفمبر: من اللاتينية novem «تسعة»."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "November berasal dari bahasa Latin novem, “sembilan”."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نومبر لاطینی novem یعنی “نو” سے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نوامبر از واژهٔ لاتین novem به معنای «نه» است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novembre vient du latin novem, « neuf »."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ноябрь — от латинского novem, «девять»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "霜月（しもつき）：霜が降りる「霜降り月」から。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "11월(November)은 라틴어 novem(9)에서 왔습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "十一月 November 源自拉丁语 novem（“九”）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Nobyembre ay mula sa Latin na novem, “siyam”."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พฤศจิกายน: พฤศจิก (ราศีพิจิก) + อายน"
+          }
+        }
+      }
+    },
+    "calendar.monthOrigin.items.11": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aralık: \"ara\" sözünden; iki yıl arasındaki ay. 1945'e kadar Kânûn-ı evvel denirdi."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "December comes from Latin decem, “ten”."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dezember: von lateinisch decem, „zehn“."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dekabr latınca decem, “on” sözündəndir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ديسمبر: من اللاتينية decem «عشرة»."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desember berasal dari bahasa Latin decem, “sepuluh”."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دسمبر لاطینی decem یعنی “دس” سے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دسامبر از واژهٔ لاتین decem به معنای «ده» است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Décembre vient du latin decem, « dix »."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Декабрь — от латинского decem, «десять»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "師走（しわす）：年末に僧（師）が忙しく走り回る月とされます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12월(December)은 라틴어 decem(10)에서 왔습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "十二月 December 源自拉丁语 decem（“十”）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang Disyembre ay mula sa Latin na decem, “sampu”."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ธันวาคม: ธนู (ราศีธนู) + อาคม"
+          }
+        }
+      }
+    },
     "zakat.fitreHeading": {
       "extractionState": "manual",
       "localizations": {

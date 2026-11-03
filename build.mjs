@@ -1,4 +1,5 @@
 // Saat Tarih statik site derleyicisi. Bağımlılık yok: `node build.mjs` → dist/
+import { otdDay as otdDaySel } from "./lib/otd.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -980,6 +981,13 @@ function buildCalendarYear(lang, year, { index = false } = {}) {
     <p class="meta">${esc(cal.icsNote)}</p>
     <p><button type="button" class="btn" data-print>${esc(cal.print)}</button></p>
     <p class="meta">${esc(cal.printNote)}</p>
+  </div>
+</section>
+<section class="section month-origin" aria-labelledby="morigin-h">
+  <div class="wrap">
+    <h2 id="morigin-h">${esc(cal.monthOrigin.heading)}</h2>
+    <ol class="month-origin-list">${cal.monthOrigin.items.map((x) => `<li>${esc(x)}</li>`).join("")}</ol>
+    <p class="meta">${esc(cal.monthOrigin.source)}</p>
   </div>
 </section>
 ${addFaq(lang, "calendar", t.faqPage.calendar, yearPath(lang, BUILD_YEAR), faq)}`;
@@ -2706,19 +2714,8 @@ function buildSky(lang) {
 const OTD_SRC = fs.existsSync(path.join(SRC, "data", "on-this-day.json")) ? readJson("src/data/on-this-day.json") : { days: {} };
 const OTD_LIMIT = { e: 8, f: 2, b: 5, d: 5 };
 const OTD_URL = {};
-/* Filipincede Wikidata etiketleri azdır (kayıtların ~%30'u); Filipinler'de yaygın olan İngilizce ad ve açıklama kullanılır */
-const OTD_FALLBACK = { fil: "en" };
-function otdDay(lang, md) {
-  const out = { e: [], f: [], b: [], d: [] }, seen = new Set(), fb = OTD_FALLBACK[lang];
-  for (const it of OTD_SRC.days[md] || []) {
-    const own = it.l && it.l[lang], name = own || (fb && it.l && it.l[fb]);
-    // Aynı öğe (ör. hem olay hem kuruluş olarak kayıtlı bir anlaşma) bir kez
-    if (!name || out[it.k].length >= OTD_LIMIT[it.k] || seen.has(it.q)) continue;
-    seen.add(it.q);
-    out[it.k].push([it.y, it.k, name, (it.s && (own ? it.s[lang] : it.s[fb])) || "", it.q]);
-  }
-  return [...out.e.sort((a, b) => a[0] - b[0]), ...out.f.sort((a, b) => a[0] - b[0]), ...out.b.sort((a, b) => a[0] - b[0]), ...out.d.sort((a, b) => a[0] - b[0])];
-}
+/* Seçim kuralı lib/otd.mjs'te (uygulamalar da kullanır); Filipincede İngilizce ada düşülür */
+const otdDay = (lang, md) => otdDaySel(OTD_SRC, lang, md, OTD_LIMIT);
 for (const lang of LANGS) {
   OTD_URL[lang] = {};
   for (let m = 1; m <= 12; m++) {

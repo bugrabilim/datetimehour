@@ -10,6 +10,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeYear } from "../../lib/events.mjs";
 import { hijriTable } from "../../lib/hijri.mjs";
+import { otdDay } from "../../lib/otd.mjs";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, "../..");
@@ -67,6 +68,10 @@ const SITE_PATHS = [
   "nature.tw.*", "nature.ym.*", "nature.ym.names.*",
   // 2. analiz #121, #120: ezani saat, Rumi tarih
   "prayer.ezani", "prayer.ezaniNote", "hijriConv.rumi", "hijriConv.rumiNote",
+  // 2. analiz #124: takvim yaprağında tarihte bugün
+  "otd.h1", "otd.foundedFmt",
+  // 2. analiz #125: ay adlarının kökeni (takvim yaprağı)
+  "calendar.monthOrigin.heading", "calendar.monthOrigin.source", "calendar.monthOrigin.items.*",
   "zakat.fitreHeading", "zakat.fitreText", "zakat.fitrePeople", "zakat.fitreTotal", "zakat.fitreNote",
   "hijriConv.h1", "hijriConv.toHijri", "hijriConv.toGreg", "hijriConv.gregLabel", "hijriConv.yearLabel", "hijriConv.monthLabel",
   "hijriConv.dayLabel", "hijriConv.dayMax",
@@ -225,7 +230,18 @@ const districtsJson = JSON.stringify(JSON.parse(fs.readFileSync(path.join(ROOT, 
 const eclSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/eclipses.json"), "utf8"));
 const eclipsesJson = JSON.stringify(["solar", "lunar"].flatMap((kind) => eclSrc[kind].map((e) => ({ kind, ut: Date.parse(e.td) - 69000, type: e.type, regions: e.regions, path: e.path || [] }))).sort((a, b) => a.ut - b.ut)) + "\n";
 
+/* Tarihte bugün (2. analiz #124; Wikidata CC0, src/data/on-this-day.json; sitedeki seçim kuralı lib/otd.mjs): uygulamada
+   takvim yaprağında gösterilir; boyut için gün başına olay 5, kuruluş 1, doğum 3, ölüm 2; {"AA-GG": [[yıl, tür, ad, açıklama]]} */
+const otdSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/on-this-day.json"), "utf8"));
+const otdJson = (lang) => JSON.stringify(Object.fromEntries(Object.keys(otdSrc.days).sort()
+  .map((md) => [md, otdDay(otdSrc, lang, md, { e: 5, f: 1, b: 3, d: 2 }).map((r) => r.slice(0, 4))]))) + "\n";
+const otdFiles = Object.fromEntries(LANGS.flatMap((l) => {
+  const j = otdJson(l);
+  return [[`mobile/ios/App/Resources/otd-${l}.json`, j], [`mobile/android/app/src/main/assets/otd-${l}.json`, j]];
+}));
+
 const files = {
+  ...otdFiles,
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
   "mobile/ios/App/Resources/AppShortcuts.xcstrings": catalog(shortcutStrings, "en"),

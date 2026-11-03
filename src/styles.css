@@ -1389,3 +1389,5 @@ html[data-theme="dark"] .mt-ex.is-warn5 .big-time, html[data-theme="dark"] .mt-e
 .ymw-c { fill: var(--text); font-size: 22px; font-weight: 700; text-anchor: middle; }
 tr.is-past td { color: var(--muted); }
 tr.is-next td { font-weight: 700; }
+/* Ay adlarının kökeni (2. analiz #125) */
+.month-origin-list { margin: 0.5rem 0; padding-inline-start: 1.4rem; display: grid; gap: 0.35rem; }

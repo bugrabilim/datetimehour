@@ -855,7 +855,25 @@
     "icsCalDays": "Mga panrelihiyon at espesyal na araw sa Türkiye (Saat Tarih)",
     "icsHalf": "kalahating araw",
     "icsProjected": "batay sa pangmatagalang kalendaryo ng Diyanet (projection)",
-    "icsCalMoon": "Mga yugto ng Buwan at eklipse (Saat Tarih)"
+    "icsCalMoon": "Mga yugto ng Buwan at eklipse (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Saan nagmula ang mga pangalan ng buwan?",
+      "source": "Pinagmulan: mga diksiyonaryong Latin, Online Etymology Dictionary.",
+      "items": [
+        "Ang Enero ay mula kay Janus, ang Romanong diyos ng mga pinto at simula.",
+        "Ang Pebrero ay mula sa Februa, isang Romanong pista ng paglilinis.",
+        "Ang Marso ay ipinangalan kay Mars, ang Romanong diyos ng digmaan.",
+        "Ang Abril ay malamang mula sa Latin na aperire, “magbukas”, dahil bumubuka ang mga usbong sa tagsibol.",
+        "Ang Mayo ay ipinangalan kay Maia, Romanong diyosa ng paglago.",
+        "Ang Hunyo ay ipinangalan kay Juno, reyna ng mga Romanong diyos.",
+        "Ang Hulyo ay ipinangalan kay Julius Caesar.",
+        "Ang Agosto ay ipinangalan kay Emperador Augustus ng Roma.",
+        "Ang Setyembre ay mula sa Latin na septem, “pito”: ikapitong buwan ng lumang kalendaryong Romano.",
+        "Ang Oktubre ay mula sa Latin na octo, “walo”.",
+        "Ang Nobyembre ay mula sa Latin na novem, “siyam”.",
+        "Ang Disyembre ay mula sa Latin na decem, “sampu”."
+      ]
+    }
   },
   "tools": {
     "hub": {

@@ -275,6 +275,30 @@ struct CalendarLeafView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading).card()
                 }
+                if Features.isOn(.prayer), let h = Hadiths.today(day) {
+                    Text(L("hadith.today")).font(.headline).foregroundStyle(Theme.text).frame(maxWidth: .infinity, alignment: .leading)
+                    HadithCard(h: h)
+                }
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(L("calendar.monthOrigin.heading")).font(.headline).foregroundStyle(Theme.text)
+                    Text(L("calendar.monthOrigin.items.\(day.month - 1)")).foregroundStyle(Theme.text)
+                    Text(L("calendar.monthOrigin.source")).font(.caption2).foregroundStyle(Theme.muted)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading).card()
+                let otd = OnThisDay.items(day)
+                if !otd.isEmpty {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(L("otd.h1")).font(.headline).foregroundStyle(Theme.text)
+                        ForEach(otd, id: \.self) { it in
+                            VStack(alignment: .leading, spacing: 1) {
+                                Text(it.icon + " " + String(it.year) + " · " + it.title).foregroundStyle(Theme.text)
+                                if !it.desc.isEmpty { Text(it.desc).font(.caption).foregroundStyle(Theme.muted) }
+                            }
+                        }
+                        Text("Wikidata (CC0)").font(.caption2).foregroundStyle(Theme.muted)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading).card()
+                }
                 HStack {
                     Button { day = day.adding(days: -1) } label: { Label(L("leaf.prev"), systemImage: "chevron.backward") }
                     Spacer()
@@ -324,5 +348,39 @@ enum Rumi {
     static func text(_ d: CalendarDay) -> String {
         let r = parts(d)
         return T("hijriConv.rumi", "\(r.day) \(months[r.month - 1]) \(r.year)")
+    }
+}
+
+/// Tarihte bugün (2. analiz #124): Wikidata (CC0) kayıtları, dile göre otd-<dil>.json (gen-strings.mjs, sitedeki seçim kuralı)
+enum OnThisDay {
+    struct Item: Hashable {
+        let year: Int
+        let kind: String
+        let name: String
+        let desc: String
+        var icon: String { ["e": "📜", "f": "🏛️", "b": "🎂", "d": "🕯️"][kind] ?? "📜" }
+        var title: String { kind == "f" ? T("otd.foundedFmt", name) : name }
+    }
+
+    @MainActor private static var cache: (lang: String, days: [String: [Item]])?
+
+    @MainActor static func items(_ d: CalendarDay) -> [Item] {
+        let lang = AppLocale.code
+        if cache?.lang != lang { cache = (lang, load(lang)) }
+        return cache?.days[String(format: "%02d-%02d", d.month, d.day)] ?? []
+    }
+
+    private static func load(_ lang: String) -> [String: [Item]] {
+        guard let url = Bundle.main.url(forResource: "otd-\(lang)", withExtension: "json") ?? Bundle.main.url(forResource: "otd-en", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let obj = try? JSONSerialization.jsonObject(with: data) as? [String: [[Any]]] else { return [:] }
+        var out: [String: [Item]] = [:]
+        for (md, rows) in obj {
+            out[md] = rows.compactMap { r in
+                guard r.count >= 4, let y = r[0] as? Int, let k = r[1] as? String, let n = r[2] as? String else { return nil }
+                return Item(year: y, kind: k, name: n, desc: r[3] as? String ?? "")
+            }
+        }
+        return out
     }
 }

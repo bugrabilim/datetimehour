@@ -815,7 +815,25 @@
     "icsCalDays": "土耳其宗教节日和特殊日子（Saat Tarih）",
     "icsHalf": "半天",
     "icsProjected": "依据迪亚内特的长期日历（预测）",
-    "icsCalMoon": "月相和日月食（Saat Tarih）"
+    "icsCalMoon": "月相和日月食（Saat Tarih）",
+    "monthOrigin": {
+      "heading": "月份名称的由来",
+      "source": "来源：拉丁语词典、Online Etymology Dictionary。",
+      "items": [
+        "一月的西方名称 January 源自罗马门与开端之神雅努斯。",
+        "二月 February 源自罗马的净化节日 Februa。",
+        "三月 March 以罗马战神玛尔斯命名。",
+        "四月 April 可能源自拉丁语 aperire（“打开”），春天花蕾绽放。",
+        "五月 May 以罗马生长女神玛亚命名。",
+        "六月 June 以罗马众神之后朱诺命名。",
+        "七月 July 以尤利乌斯·恺撒命名。",
+        "八月 August 以罗马皇帝奥古斯都命名。",
+        "九月 September 源自拉丁语 septem（“七”），曾是古罗马历的第七个月。",
+        "十月 October 源自拉丁语 octo（“八”）。",
+        "十一月 November 源自拉丁语 novem（“九”）。",
+        "十二月 December 源自拉丁语 decem（“十”）。"
+      ]
+    }
   },
   "tools": {
     "hub": {

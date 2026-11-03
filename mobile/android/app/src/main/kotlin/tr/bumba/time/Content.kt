@@ -283,6 +283,27 @@ fun CalendarLeafScreen(onBack: () -> Unit) {
                     Text("“$s”", color = Theme.c.text, fontSize = 19.sp, fontStyle = FontStyle.Italic)
                 }
             }
+            // Günün hadisi (2. analiz #124; İbadet içeriği, Vakitler açıkken)
+            if (Features.isOn(Tab.PRAYER)) Hadiths.today(context, day)?.let { h ->
+                SectionTitle(L("hadith.today"))
+                HadithCard(h)
+            }
+            // Ayın adının kökeni (2. analiz #125)
+            AppCard {
+                SectionTitle(L("calendar.monthOrigin.heading"))
+                Text(L("calendar.monthOrigin.items.${day.monthValue - 1}"), color = Theme.c.text, fontSize = 15.sp)
+                Text(L("calendar.monthOrigin.source"), color = Theme.c.muted, fontSize = 11.sp)
+            }
+            // Tarihte bugün (2. analiz #124): Wikidata (CC0)
+            val otd = OnThisDay.items(context, day)
+            if (otd.isNotEmpty()) AppCard {
+                SectionTitle(L("otd.h1"))
+                for (it in otd) {
+                    Text("${it.icon} ${it.year} · ${it.title}", color = Theme.c.text, fontSize = 15.sp)
+                    if (it.desc.isNotEmpty()) Text(it.desc, color = Theme.c.muted, fontSize = 12.sp)
+                }
+                Text("Wikidata (CC0)", color = Theme.c.muted, fontSize = 11.sp)
+            }
             Row(Modifier.fillMaxWidth()) {
                 TextButton(onClick = { iso = day.minusDays(1).toString() }) {
                     Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, null, tint = Theme.c.accent); Text(L("leaf.prev"), color = Theme.c.accent)
@@ -315,4 +336,28 @@ object Rumi {
     }
 
     fun text(d: LocalDate): String { val (dy, m, y) = parts(d); return T("hijriConv.rumi", "$dy ${months[m - 1]} $y") }
+}
+
+/** Tarihte bugün (2. analiz #124): Wikidata (CC0) kayıtları, dile göre assets/otd-<dil>.json (gen-strings.mjs) */
+object OnThisDay {
+    data class Item(val year: Int, val kind: String, val name: String, val desc: String) {
+        val icon: String get() = when (kind) { "f" -> "🏛️"; "b" -> "🎂"; "d" -> "🕯️"; else -> "📜" }
+        val title: String get() = if (kind == "f") T("otd.foundedFmt", name) else name
+    }
+    private var cache: Pair<String, Map<String, List<Item>>>? = null
+
+    fun items(c: Context, d: LocalDate): List<Item> {
+        val lang = Strings.lang
+        if (cache?.first != lang) cache = lang to load(c, lang)
+        return cache?.second?.get("%02d-%02d".format(java.util.Locale.ROOT, d.monthValue, d.dayOfMonth)).orEmpty()
+    }
+
+    private fun load(c: Context, lang: String): Map<String, List<Item>> = runCatching {
+        val text = runCatching { c.assets.open("otd-$lang.json") }.getOrElse { c.assets.open("otd-en.json") }.bufferedReader().use { it.readText() }
+        val o = org.json.JSONObject(text)
+        o.keys().asSequence().associateWith { md ->
+            val a = o.getJSONArray(md)
+            (0 until a.length()).map { i -> val r = a.getJSONArray(i); Item(r.getInt(0), r.getString(1), r.getString(2), r.optString(3)) }
+        }
+    }.getOrDefault(emptyMap())
 }

@@ -608,6 +608,8 @@ for (const l of LANGS) {
     check(/data-n-ring/.test(nh) && /data-n-tw="civil"/.test(nh) && /data-n-tw="astro"/.test(nh) && /data-n-ym\b/.test(nh) && /data-n-ymwheel/.test(nh), "mevsimler: alacakaranlık, ışık halkası, yılın dolunayları");
     check(/data-pr-ezani/.test(fs.readFileSync(path.join(DIST, "namaz-vakitleri/istanbul/index.html"), "utf8")), "namaz il sayfası: ezani saat");
     check(/data-hj-rumi\b/.test(fs.readFileSync(path.join(DIST, "hicri-takvim-cevirici/index.html"), "utf8")), "hicri çevirici: Rumi tarih");
+    check(/month-origin-list/.test(fs.readFileSync(path.join(DIST, "takvim/2027/index.html"), "utf8")), "takvim: ay adlarının kökeni");
+    for (const l of LANGS) check(fs.existsSync(path.join(ROOT, `mobile/android/app/src/main/assets/otd-${l}.json`)), `uygulama: tarihte bugün verisi (${l})`);
     const ah = fs.readFileSync(path.join(DIST, "alarm/index.html"), "utf8");
     check(/data-al-snooze/.test(ah) && /data-al-vol/.test(ah) && /data-al-try/.test(ah) && /data-al-ring/.test(ah) && /data-al-history/.test(ah) && /data-al-recent/.test(ah), "alarm: erteleme süresi, ses düzeyi, şimdi dene, halka, geçmiş, son saatler");
   }

@@ -789,7 +789,25 @@
     "icsCalDays": "Türkiyənin dini və xüsusi günləri (Saat Tarih)",
     "icsHalf": "yarım gün",
     "icsProjected": "Diyanətin uzunmüddətli təqviminə görə (proqnoz)",
-    "icsCalMoon": "Ay fazaları və tutulmalar (Saat Tarih)"
+    "icsCalMoon": "Ay fazaları və tutulmalar (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Ayların adları haradan gəlir?",
+      "source": "Mənbə: latın dili lüğətləri, Online Etymology Dictionary.",
+      "items": [
+        "Yanvar adını Roma qapılar və başlanğıclar tanrısı Yanusdan alır.",
+        "Fevral Roma təmizlənmə bayramı Februa-dan gəlir.",
+        "Mart Roma müharibə tanrısı Marsın adını daşıyır.",
+        "Aprel ehtimal ki, latınca aperire, “açmaq” sözündəndir: yazda tumurcuqlar açılır.",
+        "May Roma böyümə ilahəsi Mayanın adını daşıyır.",
+        "İyun Roma tanrılarının kraliçası Yunonanın adını daşıyır.",
+        "İyul Yuli Sezarın adını daşıyır.",
+        "Avqust Roma imperatoru Avqustun adını daşıyır.",
+        "Sentyabr latınca septem, “yeddi” sözündəndir: köhnə Roma təqviminin yeddinci ayı idi.",
+        "Oktyabr latınca octo, “səkkiz” sözündəndir.",
+        "Noyabr latınca novem, “doqquz” sözündəndir.",
+        "Dekabr latınca decem, “on” sözündəndir."
+      ]
+    }
   },
   "tools": {
     "hub": {

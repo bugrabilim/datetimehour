@@ -830,7 +830,25 @@
       "Octobre",
       "Novembre",
       "Décembre"
-    ]
+    ],
+    "monthOrigin": {
+      "heading": "D'où viennent les noms des mois ?",
+      "source": "Source : Le Robert, dictionnaire historique.",
+      "items": [
+        "Janvier vient de Janus, dieu romain des portes et des commencements.",
+        "Février vient de Februa, fête romaine de purification.",
+        "Mars porte le nom de Mars, dieu romain de la guerre.",
+        "Avril viendrait du latin aperire, « ouvrir » : les bourgeons s'ouvrent au printemps.",
+        "Mai vient de Maia, déesse romaine de la croissance.",
+        "Juin vient de Junon, reine des dieux romains.",
+        "Juillet porte le nom de Jules César.",
+        "Août vient de l'empereur romain Auguste.",
+        "Septembre vient du latin septem, « sept » : c'était le septième mois de l'ancien calendrier romain.",
+        "Octobre vient du latin octo, « huit ».",
+        "Novembre vient du latin novem, « neuf ».",
+        "Décembre vient du latin decem, « dix »."
+      ]
+    }
   },
   "tools": {
     "hub": {

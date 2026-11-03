@@ -789,7 +789,25 @@
     "icsCalDays": "Türkiye dini ve özel günler (Saat Tarih)",
     "icsHalf": "yarım gün",
     "icsProjected": "Diyanet'in uzun vadeli takvimine göre (projeksiyon)",
-    "icsCalMoon": "Ay evreleri ve tutulmalar (Saat Tarih)"
+    "icsCalMoon": "Ay evreleri ve tutulmalar (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Ayların adları nereden geliyor?",
+      "source": "Kaynak: Nişanyan Sözlük. Ocak, Ekim, Kasım ve Aralık adları 1945'te kanunla benimsendi.",
+      "items": [
+        "Ocak: \"ocak\" (sıcak tutulan ev ocağı) sözünden; kışın ortası. 1945'e kadar Kânûn-ı sânî denirdi.",
+        "Şubat: Süryanice Şəḇāṭ ay adından.",
+        "Mart: Latince Martius, Roma savaş tanrısı Mars'ın ayı.",
+        "Nisan: Süryanice ve Aramice Nīsān, eski Babil takviminin ilk ayı.",
+        "Mayıs: Latince Maius, büyüme tanrıçası Maia'nın ayı.",
+        "Haziran: Süryanice Ḥzīrān ay adından.",
+        "Temmuz: Süryanice Tammūz; Babil'deki Tammuz (Dumuzi) adından.",
+        "Ağustos: Latince Augustus, Roma imparatoru Augustus'un adı.",
+        "Eylül: Süryanice ve İbranice Elūl ay adından.",
+        "Ekim: \"ekin\" sözünden; ekim zamanı. 1945'e kadar Teşrîn-i evvel denirdi.",
+        "Kasım: Arapça qāsim, \"bölen\"; yılı yaz ve kış yarısına ayıran Kasım günü (8 Kasım). 1945'e kadar Teşrîn-i sânî.",
+        "Aralık: \"ara\" sözünden; iki yıl arasındaki ay. 1945'e kadar Kânûn-ı evvel denirdi."
+      ]
+    }
   },
   "tools": {
     "hub": {

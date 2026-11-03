@@ -789,7 +789,25 @@
     "icsCalDays": "Religious and special days in Turkey (Saat Tarih)",
     "icsHalf": "half day",
     "icsProjected": "based on Diyanet's long-range calendar (projection)",
-    "icsCalMoon": "Moon phases and eclipses (Saat Tarih)"
+    "icsCalMoon": "Moon phases and eclipses (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Where do the month names come from?",
+      "source": "Source: Online Etymology Dictionary.",
+      "items": [
+        "January is named after Janus, the Roman god of doors and beginnings.",
+        "February comes from Februa, a Roman festival of purification.",
+        "March is named after Mars, the Roman god of war.",
+        "April probably comes from Latin aperire, “to open”, as buds open in spring.",
+        "May is named after Maia, a Roman goddess of growth.",
+        "June is named after Juno, queen of the Roman gods.",
+        "July is named after Julius Caesar.",
+        "August is named after the Roman emperor Augustus.",
+        "September comes from Latin septem, “seven”: it was the seventh month of the old Roman calendar.",
+        "October comes from Latin octo, “eight”.",
+        "November comes from Latin novem, “nine”.",
+        "December comes from Latin decem, “ten”."
+      ]
+    }
   },
   "tools": {
     "hub": {

@@ -789,7 +789,25 @@
     "icsCalDays": "Hari keagamaan dan hari istimewa di Turki (Saat Tarih)",
     "icsHalf": "setengah hari",
     "icsProjected": "berdasarkan kalender jangka panjang Diyanet (proyeksi)",
-    "icsCalMoon": "Fase Bulan dan gerhana (Saat Tarih)"
+    "icsCalMoon": "Fase Bulan dan gerhana (Saat Tarih)",
+    "monthOrigin": {
+      "heading": "Dari mana nama-nama bulan berasal?",
+      "source": "Sumber: kamus bahasa Latin, Online Etymology Dictionary.",
+      "items": [
+        "Januari dinamai dari Janus, dewa pintu dan permulaan bangsa Romawi.",
+        "Februari berasal dari Februa, perayaan penyucian bangsa Romawi.",
+        "Maret dinamai dari Mars, dewa perang Romawi.",
+        "April mungkin berasal dari bahasa Latin aperire, “membuka”, saat kuncup bunga mekar.",
+        "Mei dinamai dari Maia, dewi pertumbuhan Romawi.",
+        "Juni dinamai dari Juno, ratu para dewa Romawi.",
+        "Juli dinamai dari Julius Caesar.",
+        "Agustus dinamai dari Kaisar Romawi Augustus.",
+        "September berasal dari bahasa Latin septem, “tujuh”: bulan ketujuh kalender Romawi kuno.",
+        "Oktober berasal dari bahasa Latin octo, “delapan”.",
+        "November berasal dari bahasa Latin novem, “sembilan”.",
+        "Desember berasal dari bahasa Latin decem, “sepuluh”."
+      ]
+    }
   },
   "tools": {
     "hub": {
