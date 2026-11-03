@@ -17,6 +17,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -73,6 +79,9 @@ data class TimerItem(
     val end: Long = 0,
     /** Duraklatılmışken kalan (ms) */
     val left: Long = 0,
+    /** 2. analiz #133: renk (0 = yok; geri sayım kartlarıyla aynı palet) ve bitince kendiliğinden yeniden başlama */
+    val color: Int = 0,
+    val repeats: Boolean = false,
 ) {
     val running: Boolean get() = end > 0
     fun remaining(now: Long): Long = if (running) maxOf(0, end - now) else left
@@ -80,6 +89,7 @@ data class TimerItem(
     val doneTitle: String get() = if (name.isBlank()) L("tools.countdown.finished") else T("timers.doneNamed", name)
 
     fun toJson(): JSONObject = JSONObject().put("id", id).put("name", name).put("total", total).put("end", end).put("left", left)
+        .put("color", color).put("repeats", repeats)
 
     companion object {
         private const val KEY = "timers"
@@ -95,7 +105,8 @@ data class TimerItem(
                 val a = JSONArray(sp.getString(KEY, "[]"))
                 (0 until a.length()).map { i ->
                     val o = a.getJSONObject(i)
-                    TimerItem(o.getString("id"), o.optString("name"), o.getLong("total"), o.optLong("end"), o.optLong("left"))
+                    TimerItem(o.getString("id"), o.optString("name"), o.getLong("total"), o.optLong("end"), o.optLong("left"),
+                        o.optInt("color", 0), o.optBoolean("repeats", false))
                 }
             }.getOrDefault(emptyList())
             if (oldEnd > 0 || oldLeft > 0) {
@@ -338,21 +349,36 @@ fun TimersScreen() {
     var s by rememberSaveable { mutableIntStateOf(0) }
     var name by rememberSaveable { mutableStateOf("") }
     var history by remember { mutableStateOf(TimerHistory.load()) }
-    // Ekran açıkken biten zamanlayıcı sesli duyurulur (bir kez)
-    val announced = remember { HashSet<String>() }
-    LaunchedEffect(Unit) {
-        while (true) {
-            now = System.currentTimeMillis()
-            for (t in items) if (t.running && t.end <= now && announced.add(t.id + t.end)) Speaker.say(t.doneTitle)
-            delay(250)
-        }
-    }
-
+    // Kaldırılanı geri almak için (2. analiz #133); süre girişi tekerlek ya da tuş takımı (#134)
+    var removed by remember { mutableStateOf<TimerItem?>(null) }
+    var keypad by remember { mutableStateOf(Prefs.store.getBoolean("timers.keypad", false)) }
+    var digits by rememberSaveable { mutableStateOf("") }
     fun update(list: List<TimerItem>) { items = list; TimerItem.save(list); LiveNotifications.sync(context) }
     fun start(t: TimerItem, ms: Long): TimerItem {
         val e = System.currentTimeMillis() + ms
         AlarmScheduler.schedule(context, t.alarmId, e, t.doneTitle, AlarmScheduler.TIMER)
         return t.copy(end = e, left = 0)
+    }
+    // Ekran açıkken biten zamanlayıcı sesli duyurulur (bir kez); "tekrarla" seçiliyse yeniden başlar (uygulama açıkken)
+    val announced = remember { HashSet<String>() }
+    LaunchedEffect(Unit) {
+        while (true) {
+            now = System.currentTimeMillis()
+            for (t in items) if (t.running && t.end <= now && announced.add(t.id + t.end)) {
+                Speaker.say(t.doneTitle)
+                if (t.repeats) update(items.map { if (it.id == t.id) start(it, it.total) else it })
+            }
+            delay(250)
+        }
+    }
+    /** Süreyi uzatır ya da kısaltır (sayarken bitiş, duraklatılmışken kalan; en az 1 sn) */
+    fun adjust(t: TimerItem, rem: Long, delta: Long) {
+        update(items.map {
+            if (it.id != t.id) it
+            else if (it.running && rem > 0) start(it.copy(total = maxOf(1000L, it.total + delta)), maxOf(1000L, rem + delta))
+            else if (!it.running) it.copy(total = maxOf(1000L, it.total + delta), left = maxOf(1000L, it.left + delta))
+            else it
+        })
     }
     fun add(ms: Long, preset: String? = null) {
         if (ms <= 0) return
@@ -375,12 +401,46 @@ fun TimersScreen() {
                 items.forEachIndexed { i, t ->
                     val rem = t.remaining(now)
                     val done = t.running && rem <= 0
+                    val tint = if (t.color in 1 until CountdownItem.PALETTE.size) CountdownItem.PALETTE[t.color] else Theme.c.accent
+                    var menu by remember { mutableStateOf(false) }
                     Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                        // Kalan süre halkası (2. analiz #101)
+                        Box(Modifier.size(40.dp), contentAlignment = Alignment.Center) {
+                            androidx.compose.material3.CircularProgressIndicator(
+                                progress = { if (t.total > 0) (rem.toFloat() / t.total).coerceIn(0f, 1f) else 0f },
+                                modifier = Modifier.size(40.dp), color = tint, trackColor = Theme.c.surface2, strokeWidth = 5.dp,
+                            )
+                            if (t.repeats) Text("↻", color = tint, fontSize = 12.sp)
+                        }
+                        Spacer(Modifier.width(10.dp))
                         Column(Modifier.weight(1f)) {
                             Text(t.name.ifBlank { clock(t.total / 1000) }, color = Theme.c.muted, fontSize = 13.sp, maxLines = 1)
                             Ltr {
                                 Text(if (done) L("tools.countdown.finished") else clock((rem + 999) / 1000),
-                                    color = if (done) Theme.c.accent else Theme.c.text, fontSize = 32.sp, fontWeight = FontWeight.Light, style = Tnum)
+                                    color = if (done) tint else Theme.c.text, fontSize = 32.sp, fontWeight = FontWeight.Light, style = Tnum)
+                            }
+                            // Bitiş saati (2. analiz #133)
+                            if (t.running && !done) Text("🕓 " + Fmt.time(java.time.Instant.ofEpochMilli(t.end).atZone(java.time.ZoneId.systemDefault())),
+                                color = Theme.c.muted, fontSize = 12.sp)
+                        }
+                        // ±10 dk, +1 sa, tekrar, renk (2. analiz #133)
+                        Box {
+                            IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, L("timers.more"), tint = Theme.c.accent) }
+                            androidx.compose.material3.DropdownMenu(menu, { menu = false }) {
+                                for ((label, d) in listOf("+10 " + L("tools.countdown.minutesShort") to 600_000L, "+1 " + L("tools.countdown.hoursShort") to 3_600_000L,
+                                    "−1 " + L("tools.countdown.minutesShort") to -60_000L, "−10 " + L("tools.countdown.minutesShort") to -600_000L)) {
+                                    androidx.compose.material3.DropdownMenuItem({ Text(label) }, { menu = false; adjust(t, rem, d) })
+                                }
+                                androidx.compose.material3.DropdownMenuItem({ Text((if (t.repeats) "✓ " else "") + L("timers.repeat")) }, {
+                                    menu = false; update(items.map { if (it.id == t.id) it.copy(repeats = !it.repeats) else it })
+                                })
+                                Row(Modifier.padding(horizontal = 12.dp, vertical = 6.dp), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                    for (ci in CountdownItem.PALETTE.indices) {
+                                        Box(Modifier.size(24.dp).clip(CircleShape).background(if (ci == 0) Theme.c.surface2 else CountdownItem.PALETTE[ci])
+                                            .then(if (ci == t.color) Modifier.border(2.dp, Theme.c.ink, CircleShape) else Modifier)
+                                            .clickable { menu = false; update(items.map { if (it.id == t.id) it.copy(color = ci) else it }) })
+                                    }
+                                }
                             }
                         }
                         when {
@@ -404,12 +464,21 @@ fun TimersScreen() {
                                 else it.copy(total = it.total + 60_000L, left = it.left + 60_000L)
                             })
                         }) { Text(L("tools.countdown.addMinute"), color = Theme.c.accent, fontSize = 14.sp, fontWeight = FontWeight.SemiBold) }
-                        IconButton(onClick = { AlarmScheduler.cancel(context, t.alarmId); update(items.filter { it.id != t.id }) }) {
+                        IconButton(onClick = { AlarmScheduler.cancel(context, t.alarmId); update(items.filter { it.id != t.id }); removed = t }) {
                             Icon(Icons.Filled.Close, L("timers.remove"), tint = Theme.c.muted)
                         }
                     }
                     if (i < items.lastIndex) RowLine()
                 }
+            }
+        }
+        removed?.let { r ->
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(T("timers.removed", r.name.ifBlank { clock(r.total / 1000) }), Modifier.weight(1f), color = Theme.c.muted, fontSize = 13.sp)
+                androidx.compose.material3.TextButton(onClick = {
+                    if (r.running && r.end > System.currentTimeMillis()) AlarmScheduler.schedule(context, r.alarmId, r.end, r.doneTitle, AlarmScheduler.TIMER)
+                    update(items + r); removed = null
+                }) { Text(L("timers.undo"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold) }
             }
         }
         if (history.isNotEmpty()) {
@@ -435,7 +504,12 @@ fun TimersScreen() {
         SectionTitle(L("timers.new"))
         OutlinedTextField(name, { name = it.take(30) }, Modifier.fillMaxWidth(), singleLine = true,
             label = { Text(L("timers.name")) }, placeholder = { Text(L("timers.namePlaceholder")) })
-        Ltr {
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            RoundButton(L("timers.input.wheel"), !keypad) { keypad = false; Prefs.store.edit().putBoolean("timers.keypad", false).apply() }
+            RoundButton(L("timers.input.keypad"), keypad) { keypad = true; Prefs.store.edit().putBoolean("timers.keypad", true).apply() }
+        }
+        if (keypad) DurationKeypad(digits, { digits = it }) { hh, mm, ss -> h = hh; m = mm; s = ss }
+        else Ltr {
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
                 NumberWheel(h, 0..23, L("tools.countdown.hoursShort")) { h = it }
                 NumberWheel(m, 0..59, L("tools.countdown.minutesShort")) { m = it }
@@ -463,6 +537,40 @@ fun TimersScreen() {
 
 @Composable
 private fun RowLine() = Box(Modifier.fillMaxWidth().height(1.dp).background(Theme.c.border.copy(alpha = 0.5f)))
+
+/** Süre girişi tuş takımı (2. analiz #134): rakamlar sağdan dolar (SS:DD:ss), ⌫ siler, 00 iki sıfır ekler */
+@Composable
+fun DurationKeypad(digits: String, onDigits: (String) -> Unit, onChange: (Int, Int, Int) -> Unit) {
+    fun parts(d: String): Triple<Int, Int, Int> {
+        val p = d.takeLast(6).padStart(6, '0')
+        return Triple(p.substring(0, 2).toInt(), p.substring(2, 4).toInt(), p.substring(4, 6).toInt())
+    }
+    val p = parts(digits)
+    Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Ltr { Text("%02d:%02d:%02d".format(java.util.Locale.ROOT, p.first, p.second, p.third),
+            color = if (digits.isEmpty()) Theme.c.muted else Theme.c.text, fontSize = 44.sp, fontWeight = FontWeight.Light, style = Tnum) }
+        Ltr {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                for (row in listOf(listOf("1", "2", "3"), listOf("4", "5", "6"), listOf("7", "8", "9"), listOf("00", "0", "⌫"))) {
+                    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                        for (k in row) {
+                            Box(Modifier.weight(1f).height(48.dp).clip(RoundedCornerShape(12.dp)).background(Theme.c.surface2).clickable {
+                                val d = if (k == "⌫") digits.dropLast(1) else if (digits.length < 6) (digits + k).trimStart('0').take(6) else digits
+                                onDigits(d)
+                                val q = parts(d)
+                                // Dakika ve saniye 59'u aşarsa taşar (90 sn → 1:30)
+                                val total = minOf(23 * 3600 + 59 * 60 + 59, q.first * 3600 + q.second * 60 + q.third)
+                                onChange(total / 3600, total % 3600 / 60, total % 60)
+                            }.semantics { contentDescription = if (k == "⌫") L("timers.input.delete") else k }, contentAlignment = Alignment.Center) {
+                                Text(k, color = Theme.c.text, fontSize = 22.sp, fontWeight = FontWeight.Medium)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 /** Aralık (HIIT) antrenmanı: ayarlar (ısınma, çalışma, dinlenme, tur) ya da sürerken evre, kalan, tur ve ilerleme */
 @Composable

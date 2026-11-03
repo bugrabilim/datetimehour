@@ -358,6 +358,9 @@
     var qs = new URLSearchParams(location.search), shared = qs.get("t");
     if (shared && /^\d{4}-\d\d-\d\dT\d\d:\d\d$/.test(shared)) {
       st.mode = "date"; st.run = false; st.target = shared; st.name = (qs.get("n") || "").slice(0, 40);
+      // Uygulamaya ekle (2. analiz #138): Saat Tarih uygulaması yüklüyse geri sayım listesine eklenir
+      var appLink = q("[data-cd-app]");
+      if (appLink) { appLink.href = "saattarih://countdown?t=" + encodeURIComponent(shared) + "&n=" + encodeURIComponent(st.name); appLink.hidden = false; }
       setTimeout(function () { setMode("date"); iT.value = shared; if (nameIn) nameIn.value = st.name; var tg = targetMs(); if (tg > S.nowMs()) { st.run = true; st.wallEnd = tg; persist(); buttons(); run(); } else { msgShow(P.invalid); } }, 0);
     }
 

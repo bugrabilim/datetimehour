@@ -1094,7 +1094,8 @@
       "copyLink": "Copier le lien",
       "copied": "Lien copié",
       "shareNote": "Vous pouvez partager le lien de la date choisie ; le compte à rebours démarre tout seul à l’ouverture du lien.",
-      "addMinute": "+1 min"
+      "addMinute": "+1 min",
+      "addToApp": "📲 Ajouter à l'app Saat Tarih"
     },
     "alarm": {
       "title": "Réveil en ligne : répétition et rappel | Saat Tarih",

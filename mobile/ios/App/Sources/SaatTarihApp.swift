@@ -131,6 +131,9 @@ final class Router {
         case "clock": tab = .clock
         case "calendar": tab = .calendar
         case "world": tab = .world
+        // Sitedeki "Uygulamaya ekle" ya da paylaşılan geri sayım (2. analiz #138)
+        case "countdown":
+            if CountdownItem.importURL(url) { tab = .tools; toolsPath = [.timer] }
         default: break
         }
     }

@@ -1053,7 +1053,8 @@
       "copyLink": "リンクをコピー",
       "copied": "リンクをコピーしました",
       "shareNote": "選んだ日付のリンクを共有できます。リンクを開くとカウントダウンが自動で始まります。",
-      "addMinute": "+1分"
+      "addMinute": "+1分",
+      "addToApp": "📲 Saat Tarih アプリに追加"
     },
     "alarm": {
       "title": "オンライン目覚まし時計：繰り返しとスヌーズ | Saat Tarih",

@@ -1053,7 +1053,8 @@
       "copyLink": "Keçidi kopyala",
       "copied": "Keçid kopyalandı",
       "shareNote": "Seçdiyiniz tarixin keçidini paylaşa bilərsiniz; keçid açılanda geriyə sayım avtomatik başlayır.",
-      "addMinute": "+1 dəq"
+      "addMinute": "+1 dəq",
+      "addToApp": "📲 Saat Tarix tətbiqinə əlavə et"
     },
     "alarm": {
       "title": "Onlayn zəngli saat: təkrar və təxirə salma | Saat Tarih",

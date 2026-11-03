@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -84,6 +85,12 @@ data class CountdownItem(
     val remind: Boolean = true,
     /** Fotoğrafın sürümü (0 = yok); dosya "cd-<id>.jpg" (yalnız telefonda) */
     val photo: Long = 0,
+    /** 2. analiz #73, #139: gösterim birimi, kart rengi (0 = yok), arşiv, etiket, yalnız iş günü (iOS ile aynı alanlar) */
+    val unit: String = "auto",
+    val color: Int = 0,
+    val archived: Boolean = false,
+    val tag: String = "",
+    val workdays: Boolean = false,
 ) {
     val photoName: String get() = "cd-$id.jpg"
 
@@ -98,6 +105,7 @@ data class CountdownItem(
 
     fun toJson(): JSONObject = JSONObject().put("id", id).put("title", title).put("emoji", emoji).put("target", target)
         .put("yearly", yearly).put("remind", remind).put("photo", photo)
+        .put("unit", unit).put("color", color).put("archived", archived).put("tag", tag).put("workdays", workdays)
 
     companion object {
         private const val KEY = "countdowns"
@@ -112,7 +120,9 @@ data class CountdownItem(
                 (0 until a.length()).map { i ->
                     val o = a.getJSONObject(i)
                     CountdownItem(o.getString("id"), o.optString("title"), o.optString("emoji", "⏳"), o.getLong("target"),
-                        o.optBoolean("yearly"), o.optBoolean("remind", true), o.optLong("photo", 0))
+                        o.optBoolean("yearly"), o.optBoolean("remind", true), o.optLong("photo", 0),
+                        unit = o.optString("unit", "auto"), color = o.optInt("color", 0), archived = o.optBoolean("archived", false),
+                        tag = o.optString("tag", ""), workdays = o.optBoolean("workdays", false))
                 }
             }.getOrDefault(emptyList())
             val old = sp.getLong("cd.target", 0L)
@@ -168,6 +178,10 @@ fun CountdownsScreen() {
     val context = LocalContext.current
     var items by remember { mutableStateOf(CountdownItem.load()) }
     var editing by remember { mutableStateOf<CountdownItem?>(null) }
+    var detail by remember { mutableStateOf<CountdownItem?>(null) }
+    var tagFilter by remember { mutableStateOf("") }
+    var showArchive by remember { mutableStateOf(false) }
+    androidx.compose.runtime.LaunchedEffect(CountdownImport.version) { items = CountdownItem.load() }
     val now = rememberNow()
     val today = LocalDate.now()
     fun update(list: List<CountdownItem>) {
@@ -178,7 +192,8 @@ fun CountdownsScreen() {
         WidgetUpdater.updateAll(context)
         PrayerNotifier.reschedule(context) // hatırlatmalar özellik bildirimleriyle birlikte kurulur
     }
-    val sorted = items.sortedBy { it.effective(now) }
+    val sorted = items.filter { it.archived == showArchive && (tagFilter.isEmpty() || it.tag == tagFilter) }.sortedBy { it.effective(now) }
+    val tags = items.map { it.tag.trim() }.filter { it.isNotEmpty() }.distinct().sorted()
 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -188,7 +203,12 @@ fun CountdownsScreen() {
                 editing = CountdownItem(title = "", target = d)
             }) { Icon(Icons.Filled.Add, L("countdowns.add"), tint = Theme.c.accent) }
         }
-        if (sorted.isEmpty()) Text(L("countdowns.empty"), color = Theme.c.muted, fontSize = 14.sp)
+        if (items.isEmpty()) Text(L("countdowns.empty"), color = Theme.c.muted, fontSize = 14.sp)
+        // Etiketle süzme (2. analiz #139)
+        if (tags.isNotEmpty()) Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            RoundButton(L("countdowns.all"), tagFilter.isEmpty()) { tagFilter = "" }
+            for (t in tags) RoundButton("#$t", tagFilter == t) { tagFilter = t }
+        }
         for (c in sorted) {
             val at = c.effective(now)
             // Fotoğraflı kart: fotoğraf koyulaştırılır, yazılar koyu temanın açık renklerine geçer
@@ -197,18 +217,19 @@ fun CountdownsScreen() {
             CompositionLocalProvider(LocalColors provides colors) {
             Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(16.dp))) {
             if (photo != null) PhotoBackground(photo, Modifier.matchParentSize())
-            AppCard(Modifier.clickable { editing = c }.then(if (photo != null) Modifier.heightIn(min = 120.dp) else Modifier),
-                background = if (photo != null) Color.Transparent else Theme.c.surface) {
+            AppCard(Modifier.clickable { detail = c }.then(if (photo != null) Modifier.heightIn(min = 120.dp) else Modifier),
+                background = if (photo != null) Color.Transparent else c.tint?.copy(alpha = 0.16f)?.compositeOver(Theme.c.surface) ?: Theme.c.surface) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(c.emoji, fontSize = 34.sp)
                     Spacer(Modifier.width(12.dp))
                     Column(Modifier.weight(1f)) {
                         Text(c.title.ifBlank { L("tools.hub.cards.countdown.name") }, color = Theme.c.text, fontSize = 16.sp,
                             fontWeight = FontWeight.SemiBold, maxLines = 1)
-                        Ltr { Text(countdownText(at, now), color = Theme.c.accent, fontSize = 22.sp, fontWeight = FontWeight.Bold, style = Tnum) }
+                        Ltr { Text(countdownDisplay(c, at, now), color = c.tint ?: Theme.c.accent, fontSize = 22.sp, fontWeight = FontWeight.Bold, style = Tnum) }
                         val local = at.atZone(ZoneId.systemDefault())
                         Text(Fmt.longDate(local.toLocalDate()) + (if (local.hour + local.minute > 0) " " + Fmt.time(local) else "") +
-                            if (c.yearly) " · ↻" else "", color = Theme.c.muted, fontSize = 12.sp)
+                            (if (c.yearly) " · ↻" else "") + c.ordinalText(at) + (if (c.tag.isNotEmpty()) " · #${c.tag}" else ""),
+                            color = Theme.c.muted, fontSize = 12.sp)
                     }
                     // Görsel kart olarak paylaş (rakip analizi #29)
                     IconButton(onClick = { Share.image(context, ShareCards.countdown(c, Instant.now()), "geri-sayim.png", c.label) }) {
@@ -221,6 +242,11 @@ fun CountdownsScreen() {
             }
             }
             }
+        }
+        // Arşiv (2. analiz #73)
+        val archivedCount = items.count { it.archived }
+        if (archivedCount > 0 || showArchive) TextButton(onClick = { showArchive = !showArchive }) {
+            Text(if (showArchive) "‹ " + L("countdowns.heading") else "🗄 " + T("countdowns.archiveCount", archivedCount), color = Theme.c.accent)
         }
         SectionTitle(L("tools.countdown.quickHeading"))
         AppCard(padding = 4) {
@@ -241,6 +267,12 @@ fun CountdownsScreen() {
         Spacer(Modifier.height(8.dp))
     }
 
+    detail?.let { item ->
+        CountdownDetail(item, onDismiss = { detail = null }, onEdit = { detail = null; editing = item }, onArchive = {
+            detail = null
+            update(items.filter { it.id != item.id } + item.copy(archived = !item.archived))
+        })
+    }
     editing?.let { item ->
         CountdownEditor(item, isNew = items.none { it.id == item.id }, onDismiss = { editing = null }) { saved ->
             update(items.filter { it.id != saved.id } + saved)
@@ -260,6 +292,10 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
     var yearly by remember { mutableStateOf(item.yearly) }
     var remind by remember { mutableStateOf(item.remind) }
     var photo by remember { mutableLongStateOf(item.photo) }
+    var unit by remember { mutableStateOf(item.unit) }
+    var color by remember { mutableIntStateOf(item.color) }
+    var tag by remember { mutableStateOf(item.tag) }
+    var workdays by remember { mutableStateOf(item.workdays) }
     var picking by remember { mutableIntStateOf(0) } // 1 tarih, 2 saat, 3 takvim
     // Fotoğraf: Android'in fotoğraf seçicisi (izin istemez), küçültülmüş kopya uygulama dosyalarına
     val pickPhoto = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
@@ -299,6 +335,21 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
                     Text(L("countdowns.remind"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     Switch(remind, { remind = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
+                // Gösterim birimi, renk, etiket, iş günü (2. analiz #73, #139)
+                ChoiceRow(L("countdowns.unit"), L("countdowns.unit.$unit"), CountdownItem.UNITS.indices.map { it to L("countdowns.unit.${CountdownItem.UNITS[it]}") }) { unit = CountdownItem.UNITS[it] }
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("countdowns.workdays"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Switch(workdays, { workdays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
+                OutlinedTextField(tag, { tag = it.take(20) }, Modifier.fillMaxWidth(), singleLine = true, label = { Text(L("countdowns.tag")) })
+                Text(L("countdowns.look"), color = Theme.c.muted, fontSize = 13.sp)
+                Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    for (i in CountdownItem.PALETTE.indices) {
+                        Box(Modifier.size(32.dp).clip(CircleShape).background(if (i == 0) Theme.c.surface2 else CountdownItem.PALETTE[i])
+                            .then(if (i == color) Modifier.border(2.dp, Theme.c.ink, CircleShape) else Modifier).clickable { color = i },
+                            contentAlignment = Alignment.Center) { if (i == 0) Text("∅", color = Theme.c.muted) }
+                    }
+                }
                 Text(L("countdowns.photo"), color = Theme.c.muted, fontSize = 13.sp)
                 PhotoFile.image(context, item.photoName, photo)?.let {
                     PhotoBackground(it, Modifier.fillMaxWidth().height(110.dp).clip(RoundedCornerShape(12.dp)))
@@ -315,7 +366,7 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
         confirmButton = {
             TextButton(onClick = {
                 onSave(item.copy(title = title.trim(), emoji = emoji, target = at.atZone(zone).toInstant().toEpochMilli(), yearly = yearly,
-                    remind = remind, photo = photo))
+                    remind = remind, photo = photo, unit = unit, color = color, tag = tag.trim(), workdays = workdays))
             }) { Text(L("alarm.save"), color = Theme.c.accent) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(L("alarm.cancel"), color = Theme.c.muted) } },

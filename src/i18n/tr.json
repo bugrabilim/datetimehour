@@ -1053,7 +1053,8 @@
       "copyLink": "Bağlantıyı kopyala",
       "copied": "Bağlantı kopyalandı",
       "shareNote": "Seçtiğiniz tarihe ait bağlantıyı paylaşabilirsiniz; bağlantı açılınca sayım kendiliğinden başlar.",
-      "addMinute": "+1 dk"
+      "addMinute": "+1 dk",
+      "addToApp": "📲 Saat Tarih uygulamasına ekle"
     },
     "alarm": {
       "title": "Online Alarm Saati: Tekrarlı ve Ertelemeli | Saat Tarih",

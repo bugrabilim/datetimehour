@@ -44,4 +44,34 @@ class CountdownTest {
         assertTrue(r.any { it.at.toEpochMilli() == ms("2026-11-05T10:00") })
         Prefs.store.edit().remove("countdowns").commit()
     }
+
+    /** 2. analiz #73, #138: gösterim birimleri, tarih geçince ileri sayım, kaçıncı yıl, paylaşım bağlantısı ve geri ekleme */
+    @Test fun unitsShareImport() {
+        val now = Instant.ofEpochMilli(ms("2026-11-03T12:00"))
+        val at = Instant.ofEpochMilli(ms("2026-11-20T18:30"))
+        val base = CountdownItem(title = "Tatil", target = at.toEpochMilli())
+        assertEquals(T("client.daysLeft", 17L), countdownDisplay(base.copy(unit = "days"), at, now))
+        assertEquals(T("countdowns.weeksLeft", 2L, 3L), countdownDisplay(base.copy(unit = "weeks"), at, now))
+        assertEquals(T("countdowns.hoursLeft", 414L), countdownDisplay(base.copy(unit = "hours"), at, now))
+        // Geçmiş tek seferlik hedef ileri sayar
+        val past = CountdownItem(title = "x", target = ms("2026-10-22T09:00"))
+        assertEquals(T("countdowns.since", 12L), countdownDisplay(past, Instant.ofEpochMilli(past.target), now))
+        // Yıllık: kaçıncı yıl
+        val wed = CountdownItem(title = "Evlilik", target = ms("1990-05-01T00:00"), yearly = true)
+        assertEquals(" · " + T("countdowns.ordinal", 37), wed.ordinalText(wed.effective(now)))
+        // Paylaşım bağlantısı sitedeki ?t=&n= biçiminde ve uygulamaya geri eklenebilir
+        val url = base.shareUrl(now)
+        assertTrue(url, url.contains("t=2026-11-20T18:30") && url.contains("n=Tatil"))
+        Prefs.store.edit().remove("countdowns").commit()
+        val intent = android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("saattarih://countdown?t=2026-12-31T23:59&n=Y%C4%B1lba%C5%9F%C4%B1"))
+        assertTrue(CountdownImport.handle(intent))
+        assertTrue(CountdownImport.handle(intent))
+        val list = CountdownItem.load()
+        assertEquals(1, list.size)
+        assertEquals("Yılbaşı", list[0].title)
+        assertEquals(ms("2026-12-31T23:59"), list[0].target)
+        // Başka adresler alınmaz
+        assertTrue(!CountdownImport.handle(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse("https://example.com/?t=2026-12-31"))))
+        Prefs.store.edit().remove("countdowns").commit()
+    }
 }

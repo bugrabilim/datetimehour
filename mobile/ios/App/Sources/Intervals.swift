@@ -16,6 +16,9 @@ struct TimerItem: Codable, Identifiable, Equatable {
     var end: Int64 = 0
     /// Duraklatılmışken kalan (ms)
     var left: Int64 = 0
+    /// 2. analiz #133: renk (0 = yok; geri sayım kartlarıyla aynı palet) ve bitince kendiliğinden yeniden başlama
+    var color: Int?
+    var repeats: Bool?
 
     var running: Bool { end > 0 }
     func remaining(_ now: Int64) -> Int64 { running ? max(0, end - now) : left }
@@ -367,6 +370,11 @@ private struct VoiceToggle: View {
 struct TimersView: View {
     @State private var items = TimerItem.load()
     @State private var announced = Set<String>()
+    /// Kaldırılanı geri almak için (2. analiz #133)
+    @State private var removed: TimerItem?
+    /// Süre girişi: tekerlek ya da tuş takımı (2. analiz #134)
+    @AppStorage("timers.keypad") private var keypad = false
+    @State private var digits = ""
     @State private var h = 0
     @State private var m = 5
     @State private var s = 0
@@ -388,6 +396,22 @@ struct TimersView: View {
                         }
                         .padding(.horizontal, 12)
                         .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+                    }
+                    if let r = removed {
+                        HStack {
+                            Text(T("timers.removed", r.name.isEmpty ? clock(Int(r.total / 1000)) : r.name)).font(.footnote).foregroundStyle(Theme.muted)
+                            Spacer()
+                            Button(L("timers.undo")) {
+                                items.append(r)
+                                TimerItem.save(items)
+                                if r.running, let id = UUID(uuidString: r.id) {
+                                    let at = Date(timeIntervalSince1970: Double(r.end) / 1000), title = r.doneTitle
+                                    Task { await AlarmCenter.schedule(id: id, at: at, title: title) }
+                                }
+                                removed = nil
+                            }
+                            .font(.footnote.weight(.semibold))
+                        }
                     }
                     if !history.isEmpty {
                         HStack {
@@ -414,13 +438,22 @@ struct TimersView: View {
                     TextField(L("timers.namePlaceholder"), text: $name)
                         .textFieldStyle(.roundedBorder)
                         .accessibilityLabel(L("timers.name"))
-                    HStack(spacing: 0) {
-                        wheel($h, 0..<24, L("tools.countdown.hoursShort"))
-                        wheel($m, 0..<60, L("tools.countdown.minutesShort"))
-                        wheel($s, 0..<60, L("tools.countdown.secondsShort"))
+                    Picker("", selection: $keypad) {
+                        Text(L("timers.input.wheel")).tag(false)
+                        Text(L("timers.input.keypad")).tag(true)
                     }
-                    .frame(height: 150)
-                    .environment(\.layoutDirection, .leftToRight)
+                    .pickerStyle(.segmented)
+                    if keypad {
+                        DurationKeypad(digits: $digits) { hh, mm, ss in h = hh; m = mm; s = ss }
+                    } else {
+                        HStack(spacing: 0) {
+                            wheel($h, 0..<24, L("tools.countdown.hoursShort"))
+                            wheel($m, 0..<60, L("tools.countdown.minutesShort"))
+                            wheel($s, 0..<60, L("tools.countdown.secondsShort"))
+                        }
+                        .frame(height: 150)
+                        .environment(\.layoutDirection, .leftToRight)
+                    }
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach([1, 3, 5, 10, 15, 25, 30, 45, 60], id: \.self) { n in
@@ -443,6 +476,8 @@ struct TimersView: View {
                 for t in items where t.running && t.end <= now && !announced.contains(t.id + "\(t.end)") {
                     announced.insert(t.id + "\(t.end)")
                     Speaker.say(t.doneTitle)
+                    // Kendiliğinden tekrar (2. analiz #133; uygulama açıkken)
+                    if t.repeats == true { update(t.id) { start($0, $0.total) } }
                 }
             }
         }
@@ -454,16 +489,46 @@ struct TimersView: View {
     private func row(_ t: TimerItem, now: Int64) -> some View {
         let rem = t.remaining(now)
         let done = t.running && rem <= 0
+        let tint = (t.color ?? 0) > 0 && (t.color ?? 0) < CountdownItem.palette.count ? CountdownItem.palette[t.color ?? 0] : Theme.accent
         return HStack {
+            // Kalan süre halkası (2. analiz #101)
+            ZStack {
+                Circle().stroke(Theme.surface2, lineWidth: 5)
+                Circle().trim(from: 0, to: t.total > 0 ? CGFloat(Double(rem) / Double(t.total)) : 0)
+                    .stroke(tint, style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+                if t.repeats == true { Image(systemName: "repeat").font(.caption2).foregroundStyle(tint) }
+            }
+            .frame(width: 40, height: 40)
+            .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 0) {
                 Text(t.name.isEmpty ? clock(Int(t.total / 1000)) : t.name).font(.footnote).foregroundStyle(Theme.muted).lineLimit(1)
                 Text(done ? L("tools.countdown.finished") : clock(Int((rem + 999) / 1000)))
                     .font(.system(size: 32, weight: .light, design: .rounded))
                     .monospacedDigit()
-                    .foregroundStyle(done ? Theme.accent : Theme.text)
+                    .foregroundStyle(done ? tint : Theme.text)
                     .environment(\.layoutDirection, .leftToRight)
+                // Bitiş saati (2. analiz #133)
+                if t.running && !done {
+                    Text("🕓 " + Fmt.time(Date(timeIntervalSince1970: Double(t.end) / 1000))).font(.caption).foregroundStyle(Theme.muted)
+                }
             }
             Spacer()
+            // ±10 dk, +1 sa, tekrar, renk (2. analiz #133)
+            Menu {
+                Button("+10 " + L("tools.countdown.minutesShort")) { adjust(t, rem, 600_000) }
+                Button("+1 " + L("tools.countdown.hoursShort")) { adjust(t, rem, 3_600_000) }
+                Button("−1 " + L("tools.countdown.minutesShort")) { adjust(t, rem, -60_000) }
+                Button("−10 " + L("tools.countdown.minutesShort")) { adjust(t, rem, -600_000) }
+                Toggle(L("timers.repeat"), isOn: Binding(get: { t.repeats ?? false }, set: { v in update(t.id) { var x = $0; x.repeats = v; return x } }))
+                Picker(L("countdowns.color"), selection: Binding(get: { t.color ?? 0 }, set: { v in update(t.id) { var x = $0; x.color = v; return x } })) {
+                    ForEach(0..<CountdownItem.palette.count, id: \.self) { i in
+                        Label("\(i)", systemImage: i == 0 ? "circle.slash" : "circle.fill").tag(i)
+                    }
+                }
+            } label: { Image(systemName: "ellipsis.circle") }
+                .foregroundStyle(Theme.accent)
+                .accessibilityLabel(L("timers.more"))
             Group {
                 if done {
                     Button { update(t.id) { start($0, $0.total) } } label: { Image(systemName: "arrow.clockwise") }
@@ -501,6 +566,7 @@ struct TimersView: View {
                 cancel(t)
                 items.removeAll { $0.id == t.id }
                 TimerItem.save(items)
+                removed = t
             } label: { Image(systemName: "xmark") }
                 .buttonStyle(.borderless)
                 .foregroundStyle(Theme.muted)
@@ -536,6 +602,16 @@ struct TimersView: View {
 
     private func cancel(_ t: TimerItem) {
         if let id = UUID(uuidString: t.id) { AlarmCenter.cancel(id: id) }
+    }
+
+    /// Süreyi uzatır ya da kısaltır (sayarken bitiş, duraklatılmışken kalan; en az 1 sn)
+    private func adjust(_ t: TimerItem, _ rem: Int64, _ delta: Int64) {
+        if t.running && rem > 0 {
+            cancel(t)
+            update(t.id) { var x = $0; x.total = max(1000, x.total + delta); return start(x, max(1000, rem + delta)) }
+        } else if !t.running {
+            update(t.id) { var x = $0; x.total = max(1000, x.total + delta); x.left = max(1000, x.left + delta); return x }
+        }
     }
 
     private func add(_ ms: Int64, name preset: String? = nil) {
@@ -783,5 +859,50 @@ struct RoutineEditor: View {
                 }
             }
         }
+    }
+}
+
+/// Süre girişi tuş takımı (2. analiz #134): rakamlar sağdan dolar (SS:DD:ss), ⌫ siler, 00 iki sıfır ekler
+struct DurationKeypad: View {
+    @Binding var digits: String
+    let onChange: (Int, Int, Int) -> Void
+
+    private var parts: (Int, Int, Int) {
+        let d = String(repeating: "0", count: max(0, 6 - digits.count)) + digits.suffix(6)
+        let a = Array(d)
+        return (Int(String(a[0...1])) ?? 0, Int(String(a[2...3])) ?? 0, Int(String(a[4...5])) ?? 0)
+    }
+
+    var body: some View {
+        let p = parts
+        VStack(spacing: 10) {
+            Text(String(format: "%02d:%02d:%02d", p.0, p.1, p.2))
+                .font(.system(size: 44, weight: .light, design: .rounded)).monospacedDigit()
+                .foregroundStyle(digits.isEmpty ? Theme.muted : Theme.text)
+                .environment(\.layoutDirection, .leftToRight)
+            Grid(horizontalSpacing: 10, verticalSpacing: 10) {
+                ForEach([["1", "2", "3"], ["4", "5", "6"], ["7", "8", "9"], ["00", "0", "⌫"]], id: \.self) { row in
+                    GridRow {
+                        ForEach(row, id: \.self) { k in
+                            Button { press(k) } label: {
+                                Text(k).font(.title2.weight(.medium)).frame(maxWidth: .infinity, minHeight: 48)
+                                    .background(Theme.surface2, in: RoundedRectangle(cornerRadius: 12))
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel(k == "⌫" ? L("timers.input.delete") : k)
+                        }
+                    }
+                }
+            }
+            .environment(\.layoutDirection, .leftToRight)
+        }
+    }
+
+    private func press(_ k: String) {
+        if k == "⌫" { if !digits.isEmpty { digits.removeLast() } } else if digits.count < 6 { digits = String((digits + k).drop(while: { $0 == "0" }).prefix(6)) }
+        let p = parts
+        // Dakika ve saniye 59'u aşarsa taşar (90 sn → 1:30)
+        let total = min(23 * 3600 + 59 * 60 + 59, p.0 * 3600 + p.1 * 60 + p.2)
+        onChange(total / 3600, total % 3600 / 60, total % 60)
     }
 }

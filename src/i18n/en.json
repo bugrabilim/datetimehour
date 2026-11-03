@@ -1053,7 +1053,8 @@
       "copyLink": "Copy link",
       "copied": "Link copied",
       "shareNote": "You can share the link for the date you picked; the countdown starts by itself when the link is opened.",
-      "addMinute": "+1 min"
+      "addMinute": "+1 min",
+      "addToApp": "📲 Add to the Saat Tarih app"
     },
     "alarm": {
       "title": "Online Alarm Clock: Repeating and Snooze | Saat Tarih",

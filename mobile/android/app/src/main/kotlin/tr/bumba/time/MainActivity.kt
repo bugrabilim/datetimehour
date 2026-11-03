@@ -136,6 +136,8 @@ object Nav {
      * "night" doğruysa gece modu açılır (şarj otomasyonu gibi).
      */
     fun handleShortcut(intent: android.content.Intent?) {
+        // Paylaşılan geri sayım bağlantısı (2. analiz #138): listeye eklenir, geri sayımlar açılır
+        if (CountdownImport.handle(intent)) { overlay = null; tool("timer"); return }
         if (intent?.getBooleanExtra("night", false) == true) Prefs.saveNightMode("on")
         when (intent?.getStringExtra("shortcut")) {
             "fullscreen" -> { overlay = null; tab = Tab.CLOCK; openFullscreen = true }

@@ -1080,7 +1080,8 @@
       "copyLink": "Link kopieren",
       "copied": "Link kopiert",
       "shareNote": "Sie können den Link zum gewählten Datum teilen; beim Öffnen des Links startet der Countdown automatisch.",
-      "addMinute": "+1 Min."
+      "addMinute": "+1 Min.",
+      "addToApp": "📲 Zur Saat-Tarih-App hinzufügen"
     },
     "alarm": {
       "title": "Online-Wecker mit Wiederholung und Schlummern | Saat Tarih",

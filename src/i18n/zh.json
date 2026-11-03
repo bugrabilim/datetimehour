@@ -1079,7 +1079,8 @@
       "copyLink": "复制链接",
       "copied": "链接已复制",
       "shareNote": "您可以分享所选日期的链接；打开链接时倒计时会自动开始。",
-      "addMinute": "+1 分钟"
+      "addMinute": "+1 分钟",
+      "addToApp": "📲 添加到 Saat Tarih 应用"
     },
     "alarm": {
       "title": "在线闹钟：重复和稍后提醒 | Saat Tarih",

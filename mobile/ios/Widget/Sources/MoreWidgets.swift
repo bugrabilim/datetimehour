@@ -224,31 +224,55 @@ struct CountdownProvider: AppIntentTimelineProvider {
 struct CountdownWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: "countdown", intent: CountdownIntent.self, provider: CountdownProvider()) { entry in
-            VStack(spacing: 6) {
-                Text(entry.title).font(.subheadline.weight(.bold)).foregroundStyle(Theme.accent).lineLimit(1)
-                if entry.target.timeIntervalSince(entry.date) < 86400 {
-                    // Son 24 saat: saniyeli geri sayım
-                    Text(entry.target, style: .timer)
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .monospacedDigit()
-                        .multilineTextAlignment(.center)
-                        .environment(\.layoutDirection, .leftToRight)
-                } else {
-                    let days = Calendar.current.dateComponents([.day], from: Calendar.current.startOfDay(for: entry.date),
-                                                               to: Calendar.current.startOfDay(for: entry.target)).day ?? 0
-                    Text(String(format: L("client.daysLeft"), "\(days)"))
-                        .font(.system(size: 26, weight: .bold, design: .rounded))
-                        .multilineTextAlignment(.center)
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(2)
-                }
-                Text(longDate(entry.target)).font(.caption2).foregroundStyle(Theme.muted).multilineTextAlignment(.center).lineLimit(2)
-            }
-            .foregroundStyle(Theme.text)
-            .containerBackground(for: .widget) { Theme.bg }
+            CountdownWidgetView(entry: entry)
         }
         .configurationDisplayName(L("tools.hub.cards.countdown.name"))
         .description(L("widget.countdown.descIOS"))
-        .supportedFamilies([.systemSmall])
+        // Kilit ekranında kalan gün halkası (2. analiz #73)
+        .supportedFamilies([.systemSmall, .accessoryCircular])
+    }
+}
+
+struct CountdownWidgetView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: CountdownEntry
+
+    var body: some View {
+        if family == .accessoryCircular {
+            let days = Calendar.current.dateComponents([.day], from: Calendar.current.startOfDay(for: entry.date),
+                                                       to: Calendar.current.startOfDay(for: entry.target)).day ?? 0
+            // Son 30 gün halka olarak dolar (daha uzaksa boş)
+            Gauge(value: Double(max(0, 30 - min(days, 30))), in: 0...30) {
+                Text(entry.title)
+            } currentValueLabel: {
+                Text(verbatim: "\(max(days, 0))").font(.system(size: 18, weight: .bold, design: .rounded))
+            }
+            .gaugeStyle(.accessoryCircular)
+            .widgetAccentable()
+            .containerBackground(for: .widget) { Color.clear }
+        } else {
+                VStack(spacing: 6) {
+                    Text(entry.title).font(.subheadline.weight(.bold)).foregroundStyle(Theme.accent).lineLimit(1)
+                    if entry.target.timeIntervalSince(entry.date) < 86400 {
+                        // Son 24 saat: saniyeli geri sayım
+                        Text(entry.target, style: .timer)
+                            .font(.system(size: 30, weight: .bold, design: .rounded))
+                            .monospacedDigit()
+                            .multilineTextAlignment(.center)
+                            .environment(\.layoutDirection, .leftToRight)
+                    } else {
+                        let days = Calendar.current.dateComponents([.day], from: Calendar.current.startOfDay(for: entry.date),
+                                                                   to: Calendar.current.startOfDay(for: entry.target)).day ?? 0
+                        Text(String(format: L("client.daysLeft"), "\(days)"))
+                            .font(.system(size: 26, weight: .bold, design: .rounded))
+                            .multilineTextAlignment(.center)
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(2)
+                    }
+                    Text(longDate(entry.target)).font(.caption2).foregroundStyle(Theme.muted).multilineTextAlignment(.center).lineLimit(2)
+                }
+                .foregroundStyle(Theme.text)
+                .containerBackground(for: .widget) { Theme.bg }
+        }
     }
 }

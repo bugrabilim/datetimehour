@@ -1044,7 +1044,7 @@ function toolBody(lang, key, preset = {}) {
 <progress class="tool-progress" max="100" value="0" data-cd-progress aria-hidden="true"></progress>
 <p class="cd-message" role="status" data-cd-message hidden></p>
 ${preset.sec ? `<p class="meta" data-cd-endsat data-tpl="${esc(tt.presets.endsAt)}" data-tpl-run="${esc(tt.presets.endsAtRun)}">&nbsp;</p>` : ""}
-<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-add hidden", s.addMinute)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}</div>
+<div class="tool-actions">${btn("btn", "data-cd-start", s.start)}${btn("toggle", "data-cd-add hidden", s.addMinute)}${btn("toggle", "data-cd-reset", s.reset)}${btn("toggle", "data-cd-copy", s.copyLink)}<a class="toggle" data-cd-app hidden>${esc(s.addToApp)}</a></div>
 <p class="meta">${esc(s.shareNote)}</p>
 ${soundRow(tt)}
 ${ringBanner(tt, "countdown")}`;

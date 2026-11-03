@@ -1053,7 +1053,8 @@
       "copyLink": "Salin tautan",
       "copied": "Tautan disalin",
       "shareNote": "Anda dapat membagikan tautan tanggal yang dipilih; hitung mundur dimulai sendiri saat tautan dibuka.",
-      "addMinute": "+1 mnt"
+      "addMinute": "+1 mnt",
+      "addToApp": "📲 Tambahkan ke aplikasi Saat Tarih"
     },
     "alarm": {
       "title": "Alarm Daring: Berulang dan Tunda | Saat Tarih",
