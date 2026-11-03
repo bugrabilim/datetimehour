@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">Jours de l\'hégire</string>
     <string name="cal_names">Noms des événements</string>
     <string name="cal_weather">Météo : %1$s</string>
+    <string name="prayer_ramadanLeft">Avant %1$s : %2$s</string>
+    <string name="notify_cat_friday">Rappel du vendredi</string>
+    <string name="notify_cat_friday_note">Le vendredi, 45 minutes avant la prière de midi.</string>
+    <string name="notify_n_friday">Prière du vendredi</string>
+    <string name="notify_n_fridayBody">Prière du vendredi vers %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">Silencieux pendant la prière du vendredi (60 min)</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

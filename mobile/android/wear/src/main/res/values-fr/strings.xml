@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s h %2$s min</string>
     <string name="prayer_wordsM">%1$s min</string>
     <string name="prayer_wordsHint">Touchez pour passer des mots à l’horloge.</string>
+    <string name="prayer_ramadanLeft">Avant %1$s : %2$s</string>
+    <string name="prayer_silent_friday">Silencieux pendant la prière du vendredi (60 min)</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

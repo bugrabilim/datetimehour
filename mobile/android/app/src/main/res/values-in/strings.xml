@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">Hari Hijriah</string>
     <string name="cal_names">Nama acara</string>
     <string name="cal_weather">Cuaca: %1$s</string>
+    <string name="prayer_ramadanLeft">Menuju %1$s: %2$s</string>
+    <string name="notify_cat_friday">Pengingat Jumat</string>
+    <string name="notify_cat_friday_note">Hari Jumat, 45 menit sebelum zuhur.</string>
+    <string name="notify_n_friday">Salat Jumat</string>
+    <string name="notify_n_fridayBody">Salat Jumat sekitar pukul %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">Senyap saat salat Jumat (60 mnt)</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

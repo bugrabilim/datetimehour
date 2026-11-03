@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s saat %2$s dəq</string>
     <string name="prayer_wordsM">%1$s dəq</string>
     <string name="prayer_wordsHint">Toxunanda qalan vaxt sözlə ya da saat kimi göstərilir.</string>
+    <string name="prayer_ramadanLeft">%1$s vaxtına qalan: %2$s</string>
+    <string name="prayer_silent_friday">Cümə namazında səssizə al (60 dəq)</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

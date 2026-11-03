@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">Mga araw sa Hijri</string>
     <string name="cal_names">Mga pangalan ng kaganapan</string>
     <string name="cal_weather">Panahon: %1$s</string>
+    <string name="prayer_ramadanLeft">Bago ang %1$s: %2$s</string>
+    <string name="notify_cat_friday">Paalala sa Biyernes</string>
+    <string name="notify_cat_friday_note">Tuwing Biyernes, 45 minuto bago ang dasal sa tanghali.</string>
+    <string name="notify_n_friday">Dasal sa Biyernes</string>
+    <string name="notify_n_fridayBody">Dasal sa Biyernes bandang %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">I-silent sa dasal sa Biyernes (60 min)</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

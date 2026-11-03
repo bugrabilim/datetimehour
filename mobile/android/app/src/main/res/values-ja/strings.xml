@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">ヒジュラ暦の日</string>
     <string name="cal_names">予定の名前</string>
     <string name="cal_weather">天気：%1$s</string>
+    <string name="prayer_ramadanLeft">%1$sまで：%2$s</string>
+    <string name="notify_cat_friday">金曜日のリマインダー</string>
+    <string name="notify_cat_friday_note">金曜日、正午の礼拝の45分前。</string>
+    <string name="notify_n_friday">金曜礼拝</string>
+    <string name="notify_n_fridayBody">金曜礼拝は%1$sごろ（%2$s）。</string>
+    <string name="prayer_silent_friday">金曜礼拝中は消音（60分）</string>
     <string name="app_name">時刻と日付</string>
 </resources>

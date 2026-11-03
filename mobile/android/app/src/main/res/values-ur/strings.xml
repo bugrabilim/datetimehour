@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">ہجری دن</string>
     <string name="cal_names">تقریبات کے نام</string>
     <string name="cal_weather">موسم: %1$s</string>
+    <string name="prayer_ramadanLeft">%1$s تک باقی: %2$s</string>
+    <string name="notify_cat_friday">جمعہ کی یاد دہانی</string>
+    <string name="notify_cat_friday_note">جمعہ کو ظہر سے 45 منٹ پہلے۔</string>
+    <string name="notify_n_friday">جمعہ مبارک</string>
+    <string name="notify_n_fridayBody">نماز جمعہ تقریباً %1$s (%2$s)۔</string>
+    <string name="prayer_silent_friday">نماز جمعہ میں خاموش (60 منٹ)</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

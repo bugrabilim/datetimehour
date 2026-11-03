@@ -9,7 +9,7 @@ import SaatCore
 /// kurulur; yalnız hava özeti için hava servisine (WeatherKit) sorulur. iOS en çok 64 bekleyen bildirim tuttuğu için
 /// liste PrayerNotifier'da vakitlerle birlikte zamana göre sıralanıp kesilir; arka plan yenilemesi listeyi ileri taşır.
 enum NotifyFeature: String, CaseIterable, Identifiable {
-    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits
+    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday
 
     var id: String { rawValue }
     var key: String { "notify.\(rawValue)" }
@@ -27,6 +27,7 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         case .dst: "clock.arrow.2.circlepath"
         case .bedtime: "bed.double"
         case .habits: "cup.and.saucer"
+        case .friday: "building.columns"
         }
     }
 
@@ -77,7 +78,21 @@ enum FeatureNotifier {
         out += AlarmItem.preNotifications(now: now) // yaklaşan alarm (her alarm kendi ayarıyla)
         out += AlarmItem.preAlarms(now: now) // sakin ön alarm (2. analiz #42)
         if NotifyFeature.habits.isOn { out += SleepPlan.habits(now: now, days: min(days, 7)) } // uyku alışkanlıkları (#49)
+        if NotifyFeature.friday.isOn { out += friday(place: place, now: now, days: days) } // Cuma hatırlatması (#58)
         return out.filter { $0.fireAt > now }
+    }
+
+    /// Cuma hatırlatması (2. analiz #58): Cuma günü öğle vaktinden 45 dakika önce
+    private static func friday(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = place.zone
+        return (0..<days).compactMap { i in
+            let d = now.addingTimeInterval(Double(i) * 86_400)
+            guard cal.component(.weekday, from: d) == 6,
+                  let dh = place.schedule.entries(on: d).first(where: { $0.prayer == .dhuhr }) else { return nil }
+            return PlannedNotification(id: "\(featurePrefix)fri-\(Int(dh.at.timeIntervalSince1970 / 60))", fireAt: dh.at.addingTimeInterval(-45 * 60),
+                                       title: L("notify.n.friday"), body: T("notify.n.fridayBody", place.hm(dh.at), place.name))
+        }
     }
 
     /// Özel günler: o gün sabah 09.00'da (telefonun saatiyle), günün bütün olayları tek bildirimde

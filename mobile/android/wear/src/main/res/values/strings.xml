@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s sa %2$s dk</string>
     <string name="prayer_wordsM">%1$s dk</string>
     <string name="prayer_wordsHint">Dokununca kalan süre sözle ya da saat olarak gösterilir.</string>
+    <string name="prayer_ramadanLeft">%1$s vaktine kalan: %2$s</string>
+    <string name="prayer_silent_friday">Cuma namazında sessize al (60 dk)</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -56,6 +56,14 @@ final class DeviceCalendar {
         return out
     }
 
+    /// Bir günün etkinlikleri (2. analiz #144: günaydın kartı); izin yoksa boş
+    func events(on day: CalendarDay) -> [EKEvent] {
+        guard authorized else { return [] }
+        let start = day.noon(in: .current).addingTimeInterval(-12 * 3600)
+        let found = store.events(matching: store.predicateForEvents(withStart: start, end: start.addingTimeInterval(86400), calendars: nil))
+        return found.sorted { ($0.isAllDay ? 0 : 1, $0.startDate) < ($1.isAllDay ? 0 : 1, $1.startDate) }
+    }
+
     func remove(_ event: EKEvent) {
         try? store.remove(event, span: .thisEvent, commit: true)
         reload()

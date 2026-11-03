@@ -36,4 +36,10 @@ extension PrayerSchedule {
 
 extension Prayer {
     var localizedName: String { L("prayer." + rawValue) }
+
+    /// Ramazan'da (Diyanet hicri takvimine göre 9. ay) akşam "İftar", imsak "Sahur (imsak)" (2. analiz #55)
+    func ramadanName(at date: Date, zone: TimeZone) -> String {
+        guard self == .maghrib || self == .fajr, Hijri.date(date, timeZone: zone)?.month == 9 else { return localizedName }
+        return L(self == .maghrib ? "live.iftar" : "live.sahur")
+    }
 }

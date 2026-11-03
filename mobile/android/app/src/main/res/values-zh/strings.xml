@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">伊斯兰历日期</string>
     <string name="cal_names">事件名称</string>
     <string name="cal_weather">天气：%1$s</string>
+    <string name="prayer_ramadanLeft">距%1$s：%2$s</string>
+    <string name="notify_cat_friday">周五提醒</string>
+    <string name="notify_cat_friday_note">周五晌礼前 45 分钟。</string>
+    <string name="notify_n_friday">主麻日聚礼</string>
+    <string name="notify_n_fridayBody">主麻聚礼约在 %1$s（%2$s）。</string>
+    <string name="prayer_silent_friday">主麻聚礼时静音（60 分钟）</string>
     <string name="app_name">时间与日期</string>
 </resources>

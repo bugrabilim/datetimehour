@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">Hidschri-Tage</string>
     <string name="cal_names">Terminnamen</string>
     <string name="cal_weather">Wetter: %1$s</string>
+    <string name="prayer_ramadanLeft">Bis %1$s: %2$s</string>
+    <string name="notify_cat_friday">Freitagserinnerung</string>
+    <string name="notify_cat_friday_note">Freitags 45 Minuten vor dem Mittagsgebet.</string>
+    <string name="notify_n_friday">Freitagsgebet</string>
+    <string name="notify_n_fridayBody">Freitagsgebet gegen %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">Beim Freitagsgebet stummschalten (60 Min.)</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

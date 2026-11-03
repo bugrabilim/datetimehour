@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s ชม. %2$s นาที</string>
     <string name="prayer_wordsM">%1$s นาที</string>
     <string name="prayer_wordsHint">แตะเพื่อสลับระหว่างข้อความกับนาฬิกา</string>
+    <string name="prayer_ramadanLeft">อีก %2$s ถึง%1$s</string>
+    <string name="prayer_silent_friday">ปิดเสียงช่วงละหมาดวันศุกร์ (60 นาที)</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

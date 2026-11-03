@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s jam %2$s mnt</string>
     <string name="prayer_wordsM">%1$s mnt</string>
     <string name="prayer_wordsHint">Ketuk untuk beralih antara kata dan jam.</string>
+    <string name="prayer_ramadanLeft">Menuju %1$s: %2$s</string>
+    <string name="prayer_silent_friday">Senyap saat salat Jumat (60 mnt)</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

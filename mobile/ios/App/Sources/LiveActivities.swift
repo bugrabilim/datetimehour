@@ -79,8 +79,12 @@ enum LiveActivities {
         let ramadan = CalendarData.shared.isRamadan(CalendarDay(next.at, timeZone: place.zone))
         let name = ramadan && next.prayer == .maghrib ? L("live.iftar")
             : ramadan && next.prayer == .fajr ? L("live.sahur") : next.prayer.localizedName
+        // Sıradaki 3 vakit (2. analiz #86): ilki başlıkta ve sayaçta, sonraki ikisi alt satırda
+        let tomorrow = now.addingTimeInterval(86_400)
+        let after = (place.schedule.entries(on: now) + place.schedule.entries(on: tomorrow)).filter { $0.at > next.at }.prefix(2)
+        let more = after.map { "\($0.prayer.localizedName) \(place.hm($0.at))" }
         return (SaatActivityAttributes(kind: "prayer", id: "prayer"),
-                .init(date: next.at, start: prev, title: "\(name) \(place.hm(next.at))", subtitle: place.name),
+                .init(date: next.at, start: prev, title: "\(name) \(place.hm(next.at))", subtitle: ([place.name] + more).joined(separator: " · ")),
                 next.at.addingTimeInterval(60))
     }
 }

@@ -217,7 +217,12 @@ object PrayerSilent {
     private const val CHANNEL = "prayer-silent"
     private const val NOTE_ID = 7_331
 
+    const val FRIDAY = "prayer.silent.friday"
     val minutes: Int get() = Prefs.store.getInt(MINUTES, 0)
+    /** Cuma namazında sessize al (2. analiz #58): Cuma öğle vaktinde, en az 60 dakika */
+    val friday: Boolean get() = Prefs.store.getBoolean(FRIDAY, false)
+    private fun isFridayDhuhr(e: AppPlace.Entry, zone: java.time.ZoneId) =
+        e.prayer == Prayer.DHUHR && e.at.atZone(zone).dayOfWeek == java.time.DayOfWeek.FRIDAY
     val dnd: Boolean get() = Prefs.store.getString(MODE, "vibrate") == "dnd"
     var prayers: Set<Prayer>
         get() = (Prefs.store.getString(PRAYERS, "fajr,dhuhr,asr,maghrib,isha") ?: "").split(",").mapNotNull { k -> Prayer.entries.firstOrNull { it.key == k } }.toSet()
@@ -239,10 +244,11 @@ object PrayerSilent {
     /** Sıradaki seçili vaktin başlangıcını kurar (bitiş başlangıçta kurulur) */
     fun sync(c: Context, now: Instant = Instant.now()) {
         pi(c, ACTION_START, PendingIntent.FLAG_NO_CREATE)?.let { c.getSystemService(AlarmManager::class.java).cancel(it) }
-        if (minutes <= 0) return
-        val sel = prayers
+        if (minutes <= 0 && !friday) return
+        val sel = if (minutes > 0) prayers else emptySet()
         val place = AppPlace.current()
-        val next = (0..2L).flatMap { place.entries(place.today(now).plusDays(it)) }.firstOrNull { it.prayer in sel && it.at.isAfter(now) } ?: return
+        val next = (0..7L).flatMap { place.entries(place.today(now).plusDays(it)) }
+            .firstOrNull { (it.prayer in sel || (friday && isFridayDhuhr(it, place.zone))) && it.at.isAfter(now) } ?: return
         setAt(c, next.at.toEpochMilli(), pi(c, ACTION_START, PendingIntent.FLAG_UPDATE_CURRENT)!!)
     }
 
@@ -257,7 +263,9 @@ object PrayerSilent {
             if (dnd && hasPolicy(c)) nm.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY)
             else if (am.ringerMode == AudioManager.RINGER_MODE_NORMAL) am.ringerMode = AudioManager.RINGER_MODE_VIBRATE
         }
-        val end = System.currentTimeMillis() + minutes * 60_000L
+        val nowZ = java.time.ZonedDateTime.now(AppPlace.current().zone)
+        val fri = friday && nowZ.dayOfWeek == java.time.DayOfWeek.FRIDAY && nowZ.hour in 10..15
+        val end = System.currentTimeMillis() + (if (fri) maxOf(minutes, 60) else minutes) * 60_000L
         setAt(c, end, pi(c, ACTION_END, PendingIntent.FLAG_UPDATE_CURRENT)!!)
         note(c, end)
         sync(c, Instant.ofEpochMilli(end))
@@ -344,6 +352,12 @@ fun PrayerSilentCard() {
             }
             if (dnd && !PrayerSilent.hasPolicy(context)) TextButton(onClick = { runCatching { context.startActivity(PrayerSilent.policyIntent().addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) } }) {
                 Text(L("prayer.silent.grant"), color = Theme.c.accent)
+            }
+            var fri by remember { mutableStateOf(PrayerSilent.friday) }
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(L("prayer.silent.friday"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                Switch(fri, { on -> fri = on; Prefs.store.edit().putBoolean(PrayerSilent.FRIDAY, on).apply(); changed() },
+                    colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             for (p in Prayer.entries.filter { it != Prayer.SUNRISE }) Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(p.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)

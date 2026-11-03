@@ -146,6 +146,7 @@ fun PrayerScreen() {
             PrayerVisual(now, place, entries)
             BayramRow(today, now, place)
             EzaniRow(today, now, place)
+            RamadanCountdown(now, place)
             KerahatCard(entries, place)
             ExtraTimesCard(today, place)
             // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
@@ -217,6 +218,19 @@ internal fun ezaniText(today: java.time.LocalDate, now: java.time.Instant, place
     val m = maxOf(0L, java.time.Duration.between(ref, now).toMinutes())
     val h = (m / 60) % 12
     return T("prayer.ezani", "%02d:%02d".format(java.util.Locale.ROOT, if (h == 0L) 12L else h, m % 60))
+}
+
+/** Ramazan'da ikinci sayaç (2. analiz #55): iftara ya da sahura (imsak) kalan süre */
+@Composable
+private fun RamadanCountdown(now: java.time.Instant, place: AppPlace) {
+    val today = place.today(now)
+    val next = (place.entries(today) + place.entries(today.plusDays(1)))
+        .firstOrNull { (it.prayer == Prayer.MAGHRIB || it.prayer == Prayer.FAJR) && it.at.isAfter(now) } ?: return
+    if (Hijri.date(next.at.atZone(place.zone).toLocalDate())?.month != 9) return
+    AppCard {
+        Text(T("prayer.ramadanLeft", next.prayer.ramadanTitle(next.at, place.zone), Fmt.countdown(java.time.Duration.between(now, next.at).seconds)),
+            color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.Bold, style = Tnum)
+    }
 }
 
 @Composable

@@ -1,4 +1,5 @@
 import SwiftUI
+import EventKit
 import WeatherKit
 import SaatCore
 
@@ -65,9 +66,19 @@ struct MorningCard: View {
                         Text("\(next.prayer.localizedName) \(place.hm(next.at))").font(.headline)
                     }
                 }
-                if !today.isEmpty {
+                // Bugünün özel günleri ve telefondaki takvimlerin etkinlikleri (2. analiz #144)
+                let mine = DeviceCalendar.shared.events(on: CalendarDay(now))
+                if !today.isEmpty || !mine.isEmpty {
                     Section(L("morning.today")) {
                         ForEach(today, id: \.self) { Text($0) }
+                        ForEach(mine, id: \.eventIdentifier) { e in
+                            HStack {
+                                Circle().fill(Color(cgColor: e.calendar.cgColor)).frame(width: 8, height: 8)
+                                Text(e.title ?? "")
+                                Spacer()
+                                Text(e.isAllDay ? L("calendar.allDay") : Fmt.time(e.startDate)).foregroundStyle(Theme.muted).monospacedDigit()
+                            }
+                        }
                     }
                 }
                 WakeGameMorningSection()

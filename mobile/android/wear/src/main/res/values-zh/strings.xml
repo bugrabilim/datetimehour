@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s小时%2$s分钟</string>
     <string name="prayer_wordsM">%1$s分钟</string>
     <string name="prayer_wordsHint">点按可在文字和时钟显示之间切换。</string>
+    <string name="prayer_ramadanLeft">距%1$s：%2$s</string>
+    <string name="prayer_silent_friday">主麻聚礼时静音（60 分钟）</string>
     <string name="app_name">时间与日期</string>
 </resources>

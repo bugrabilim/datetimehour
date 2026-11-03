@@ -81,7 +81,7 @@ class NextPrayerWidget : BaseWidget() {
         val v = RemoteViews(c.packageName, R.layout.widget_next)
         v.setTextViewText(R.id.place, "📍 " + place.name)
         place.next(now)?.let { n ->
-            v.setTextViewText(R.id.name, n.prayer.title)
+            v.setTextViewText(R.id.name, n.prayer.ramadanTitle(n.at, place.zone))
             v.setTextViewText(R.id.time, Fmt.hm(n.at, place.zone))
             WidgetUpdater.countdown(v, R.id.left, n.at, now)
         }

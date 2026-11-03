@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s h %2$s min</string>
     <string name="prayer_wordsM">%1$s min</string>
     <string name="prayer_wordsHint">Tap to switch between words and a clock.</string>
+    <string name="prayer_ramadanLeft">Time to %1$s: %2$s</string>
+    <string name="prayer_silent_friday">Silence during Friday prayer (60 min)</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

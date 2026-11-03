@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s時間%2$s分</string>
     <string name="prayer_wordsM">%1$s分</string>
     <string name="prayer_wordsHint">タップで文章と時計表示を切り替えます。</string>
+    <string name="prayer_ramadanLeft">%1$sまで：%2$s</string>
+    <string name="prayer_silent_friday">金曜礼拝中は消音（60分）</string>
     <string name="app_name">時刻と日付</string>
 </resources>

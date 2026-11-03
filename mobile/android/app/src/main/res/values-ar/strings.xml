@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">الأيام الهجرية</string>
     <string name="cal_names">أسماء المناسبات</string>
     <string name="cal_weather">الطقس: %1$s</string>
+    <string name="prayer_ramadanLeft">المتبقي حتى %1$s: %2$s</string>
+    <string name="notify_cat_friday">تذكير الجمعة</string>
+    <string name="notify_cat_friday_note">يوم الجمعة قبل الظهر بـ 45 دقيقة.</string>
+    <string name="notify_n_friday">جمعة مباركة</string>
+    <string name="notify_n_fridayBody">صلاة الجمعة نحو %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">كتم الصوت أثناء صلاة الجمعة (60 د)</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

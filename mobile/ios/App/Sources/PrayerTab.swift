@@ -157,6 +157,7 @@ struct PrayerPanel: View {
             }
             BayramRow(place: place, now: now)
             EzaniRow(place: place, now: now)
+            RamadanCountdown(place: place)
             KerahatBox(entries: schedule.entries(on: now), place: place)
             ExtraTimesBox(place: place, day: place.today)
         }
@@ -204,6 +205,30 @@ func localInstant(_ d: CalendarDay, _ hours: Double, _ zone: TimeZone) -> Date {
     cal.timeZone = zone
     let start = cal.date(from: DateComponents(year: d.year, month: d.month, day: d.day)) ?? Date()
     return start.addingTimeInterval((hours * 60).rounded() * 60)
+}
+
+/// Ramazan'da ikinci sayaç (2. analiz #55): iftara ya da sahura (imsak) kalan süre, saniyede bir
+struct RamadanCountdown: View {
+    let place: AppPlace
+
+    private func target(_ now: Date) -> (String, Date)? {
+        let entries = place.schedule.entries(on: now) + place.schedule.entries(on: now.addingTimeInterval(86_400))
+        guard let next = entries.first(where: { ($0.prayer == .maghrib || $0.prayer == .fajr) && $0.at > now }),
+              Hijri.date(next.at, timeZone: place.zone)?.month == 9 else { return nil }
+        return (next.prayer.ramadanName(at: next.at, zone: place.zone), next.at)
+    }
+
+    var body: some View {
+        TimelineView(.periodic(from: .now, by: 1)) { ctx in
+            if let t = target(ctx.date) {
+                Text(T("prayer.ramadanLeft", t.0, Fmt.countdown(Int(t.1.timeIntervalSince(ctx.date)))))
+                    .font(.headline.monospacedDigit())
+                    .foregroundStyle(Theme.accent)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .card()
+            }
+        }
+    }
 }
 
 /// Ezani (alaturka) saat (2. analiz #121): son akşam vakti 12.00 sayılır (sitedeki namaz sayfasıyla aynı)

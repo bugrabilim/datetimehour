@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s시간 %2$s분</string>
     <string name="prayer_wordsM">%1$s분</string>
     <string name="prayer_wordsHint">누르면 글자와 시계 표시가 바뀝니다.</string>
+    <string name="prayer_ramadanLeft">%1$s까지: %2$s</string>
+    <string name="prayer_silent_friday">금요 예배 중 무음(60분)</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">วันตามปฏิทินฮิจเราะห์</string>
     <string name="cal_names">ชื่อกิจกรรม</string>
     <string name="cal_weather">อากาศ: %1$s</string>
+    <string name="prayer_ramadanLeft">อีก %2$s ถึง%1$s</string>
+    <string name="notify_cat_friday">แจ้งเตือนวันศุกร์</string>
+    <string name="notify_cat_friday_note">วันศุกร์ ก่อนละหมาดเที่ยง 45 นาที</string>
+    <string name="notify_n_friday">ละหมาดวันศุกร์</string>
+    <string name="notify_n_fridayBody">ละหมาดวันศุกร์ประมาณ %1$s (%2$s)</string>
+    <string name="prayer_silent_friday">ปิดเสียงช่วงละหมาดวันศุกร์ (60 นาที)</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

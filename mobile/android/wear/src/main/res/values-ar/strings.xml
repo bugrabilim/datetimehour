@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s س %2$s د</string>
     <string name="prayer_wordsM">%1$s د</string>
     <string name="prayer_wordsHint">المس للتبديل بين الكلمات والساعة.</string>
+    <string name="prayer_ramadanLeft">المتبقي حتى %1$s: %2$s</string>
+    <string name="prayer_silent_friday">كتم الصوت أثناء صلاة الجمعة (60 د)</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

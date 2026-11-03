@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">히즈라력 날짜</string>
     <string name="cal_names">일정 이름</string>
     <string name="cal_weather">날씨: %1$s</string>
+    <string name="prayer_ramadanLeft">%1$s까지: %2$s</string>
+    <string name="notify_cat_friday">금요일 알림</string>
+    <string name="notify_cat_friday_note">금요일 정오 예배 45분 전.</string>
+    <string name="notify_n_friday">금요 예배</string>
+    <string name="notify_n_fridayBody">금요 예배는 %1$s쯤 (%2$s).</string>
+    <string name="prayer_silent_friday">금요 예배 중 무음(60분)</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

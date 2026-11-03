@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">Дни по хиджре</string>
     <string name="cal_names">Названия событий</string>
     <string name="cal_weather">Погода: %1$s</string>
+    <string name="prayer_ramadanLeft">До %1$s: %2$s</string>
+    <string name="notify_cat_friday">Напоминание о пятнице</string>
+    <string name="notify_cat_friday_note">По пятницам за 45 минут до полуденной молитвы.</string>
+    <string name="notify_n_friday">Пятничная молитва</string>
+    <string name="notify_n_fridayBody">Пятничная молитва около %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">Без звука на пятничной молитве (60 мин)</string>
     <string name="app_name">Время и дата</string>
 </resources>

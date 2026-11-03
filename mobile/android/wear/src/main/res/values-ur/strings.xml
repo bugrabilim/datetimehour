@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s گھنٹے %2$s منٹ</string>
     <string name="prayer_wordsM">%1$s منٹ</string>
     <string name="prayer_wordsHint">الفاظ اور گھڑی کے درمیان بدلنے کے لیے چھوئیں۔</string>
+    <string name="prayer_ramadanLeft">%1$s تک باقی: %2$s</string>
+    <string name="prayer_silent_friday">نماز جمعہ میں خاموش (60 منٹ)</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

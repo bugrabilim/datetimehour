@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">روزهای قمری</string>
     <string name="cal_names">نام رویدادها</string>
     <string name="cal_weather">هوا: %1$s</string>
+    <string name="prayer_ramadanLeft">مانده تا %1$s: %2$s</string>
+    <string name="notify_cat_friday">یادآوری جمعه</string>
+    <string name="notify_cat_friday_note">روز جمعه، 45 دقیقه پیش از ظهر.</string>
+    <string name="notify_n_friday">جمعه مبارک</string>
+    <string name="notify_n_fridayBody">نماز جمعه حدود %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">بی‌صدا در نماز جمعه (60 دقیقه)</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

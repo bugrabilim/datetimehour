@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">Hicri günlər</string>
     <string name="cal_names">Tədbir adları</string>
     <string name="cal_weather">Hava: %1$s</string>
+    <string name="prayer_ramadanLeft">%1$s vaxtına qalan: %2$s</string>
+    <string name="notify_cat_friday">Cümə xatırlatması</string>
+    <string name="notify_cat_friday_note">Cümə günü günorta namazından 45 dəqiqə əvvəl.</string>
+    <string name="notify_n_friday">Mübarək Cümə</string>
+    <string name="notify_n_fridayBody">Cümə namazı təxminən %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">Cümə namazında səssizə al (60 dəq)</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

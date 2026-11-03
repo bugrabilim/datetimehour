@@ -1949,5 +1949,11 @@
     <string name="cal_hijriDays">Hijri days</string>
     <string name="cal_names">Event names</string>
     <string name="cal_weather">Weather: %1$s</string>
+    <string name="prayer_ramadanLeft">Time to %1$s: %2$s</string>
+    <string name="notify_cat_friday">Friday reminder</string>
+    <string name="notify_cat_friday_note">On Fridays, 45 minutes before the noon prayer.</string>
+    <string name="notify_n_friday">Friday prayer</string>
+    <string name="notify_n_fridayBody">Friday prayer is around %1$s (%2$s).</string>
+    <string name="prayer_silent_friday">Silence during Friday prayer (60 min)</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

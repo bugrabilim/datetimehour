@@ -61,11 +61,11 @@ struct NextPrayerView: View {
             if let next = entry.next {
                 switch family {
                 case .accessoryInline:
-                    Text(verbatim: "\(next.prayer.localizedName) \(entry.schedule.clock(next.at))")
+                    Text(verbatim: "\(next.prayer.ramadanName(at: next.at, zone: entry.schedule.timeZone)) \(entry.schedule.clock(next.at))")
                 case .accessoryRectangular:
                     VStack(alignment: .leading, spacing: 1) {
                         Text(entry.placeName).font(.caption2).foregroundStyle(.secondary)
-                        Text(verbatim: "\(next.prayer.localizedName) \(entry.schedule.clock(next.at))").font(.headline)
+                        Text(verbatim: "\(next.prayer.ramadanName(at: next.at, zone: entry.schedule.timeZone)) \(entry.schedule.clock(next.at))").font(.headline)
                         Text(next.at, style: .timer).font(.body.monospacedDigit())
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -86,7 +86,7 @@ struct NextPrayerView: View {
                 .foregroundStyle(Theme.accent)
                 .lineLimit(1)
             Spacer(minLength: 0)
-            Text(next.prayer.localizedName)
+            Text(next.prayer.ramadanName(at: next.at, zone: entry.schedule.timeZone))
                 .font(.headline)
                 .foregroundStyle(Theme.text)
             Text(entry.schedule.clock(next.at))

@@ -39,7 +39,9 @@ enum class NotifyFeature(val id: String, val tab: Tab) {
     DST("dst", Tab.WORLD),
     BEDTIME("bedtime", Tab.TOOLS),
     /** Uyku alışkanlıkları (2. analiz #49): kafein, ekran, akşam rutini; yalnız uyku planı açıkken */
-    HABITS("habits", Tab.TOOLS);
+    HABITS("habits", Tab.TOOLS),
+    /** Cuma hatırlatması (2. analiz #58): Cuma öğleden 45 dk önce */
+    FRIDAY("friday", Tab.PRAYER);
 
     val key: String get() = "notify.$id"
     /** Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı) */
@@ -137,6 +139,7 @@ object FeatureNotifier {
         out += CountdownItem.reminders(now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
         if (FeaturePrefs.isOn(NotifyFeature.BEDTIME)) out += SleepPlan.reminders(now, days) // uyku planı kuruluysa
         if (FeaturePrefs.isOn(NotifyFeature.HABITS)) out += SleepPlan.habits(now, days)
+        if (FeaturePrefs.isOn(NotifyFeature.FRIDAY)) out += friday(place, now, days)
         return out.filter { it.at.isAfter(now) }
     }
 
@@ -186,6 +189,18 @@ object FeatureNotifier {
     }
 
     /** Her gün Güneş doğarken ve batarken (vakit düzeltmeleri olmadan; Mevsimler'deki saatler) */
+    /** Cuma hatırlatması (2. analiz #58): Cuma günü öğle vaktinden 45 dakika önce */
+    private fun friday(place: AppPlace, now: Instant, days: Int): List<Planned> {
+        val today = place.today(now)
+        return (0 until days).mapNotNull { i ->
+            val day = today.plusDays(i.toLong())
+            if (day.dayOfWeek != java.time.DayOfWeek.FRIDAY) return@mapNotNull null
+            val dh = place.entries(day).firstOrNull { it.prayer == tr.bumba.time.core.Prayer.DHUHR } ?: return@mapNotNull null
+            Planned("fri-${dh.at.epochSecond / 60}", dh.at.minusSeconds(45 * 60), L("notify.n.friday"),
+                T("notify.n.fridayBody", Fmt.hm(dh.at, place.zone), place.name), NotifyFeature.FRIDAY.tab)
+        }
+    }
+
     private fun sun(place: AppPlace, now: Instant, days: Int): List<Planned> {
         val p = PrayerTimes.Parameters(adjustments = PrayerTimes.Adjustments(sunrise = 0.0, dhuhr = 0.0, maghrib = 0.0))
         val today = place.today(now)

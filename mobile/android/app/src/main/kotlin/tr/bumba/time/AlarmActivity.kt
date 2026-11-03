@@ -30,6 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -239,10 +240,18 @@ fun MorningCard(onDone: () -> Unit) {
                 Text("${next.prayer.title} ${Fmt.hm(next.at, place.zone)}", color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
             }
         }
-        if (events.isNotEmpty()) {
+        // Bugünün özel günleri ve telefondaki takvimlerin etkinlikleri (2. analiz #144)
+        val ctx = androidx.compose.ui.platform.LocalContext.current
+        val mine = remember { DeviceCalendar.reload(ctx); DeviceCalendar.events(ctx, java.time.YearMonth.now())[LocalDate.now()].orEmpty() }
+        if (events.isNotEmpty() || mine.isNotEmpty()) {
             AppCard {
                 Text(L("morning.today"), color = Theme.c.accent, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                 for (e in events) Text(e, color = Theme.c.text, fontSize = 16.sp)
+                for (e in mine) Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(Modifier.size(8.dp).background(e.color, CircleShape))
+                    Text("  " + e.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                    Text(if (e.allDay) L("calendar.allDay") else Fmt.hm(e.begin, java.time.ZoneId.systemDefault()), color = Theme.c.muted, fontSize = 14.sp)
+                }
             }
         }
         WakeGameMorningCard()

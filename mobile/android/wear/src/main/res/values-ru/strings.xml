@@ -120,5 +120,7 @@
     <string name="prayer_wordsHM">%1$s ч %2$s мин</string>
     <string name="prayer_wordsM">%1$s мин</string>
     <string name="prayer_wordsHint">Коснитесь, чтобы переключить слова и часы.</string>
+    <string name="prayer_ramadanLeft">До %1$s: %2$s</string>
+    <string name="prayer_silent_friday">Без звука на пятничной молитве (60 мин)</string>
     <string name="app_name">Время и дата</string>
 </resources>
