@@ -63,6 +63,7 @@ object SmartSleep {
     /** Oturumu başlatır; akıllı alarm yoksa false */
     fun start(c: Context): Boolean {
         val (item, at) = next() ?: return false
+        SleepLog.markBed() // uyku düzeni (2. analiz #47): yatış anı
         session = Session(item.id, at, item.smart)
         movingMinutes = 0
         watching = false

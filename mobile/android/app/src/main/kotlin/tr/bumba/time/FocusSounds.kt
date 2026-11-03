@@ -248,7 +248,7 @@ class SoundService : Service() {
             channel(c)
             val sp = Prefs.store
             val title = if (source == "pomo") L("tools.pomodoro.${sp.getString("pomo.phase", "work")}") + " · " + noiseName(kind)
-            else L("sleep.sounds") + " · " + noiseName(kind)
+            else if (source == "prealarm") L("alarm.preAlarm") else L("sleep.sounds") + " · " + noiseName(kind)
             val text = if (source == "pomo") T("tools.pomodoro.round", sp.getInt("pomo.round", 1), sp.getInt("pomo.rounds", 4)) else ""
             val tool = if (source == "pomo") "pomodoro" else "sleep"
             val stop = PendingIntent.getService(c, NID, Intent(c, SoundService::class.java).setAction(ACTION_STOP),

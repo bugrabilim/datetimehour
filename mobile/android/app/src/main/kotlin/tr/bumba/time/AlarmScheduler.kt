@@ -67,6 +67,12 @@ data class AlarmItem(
     /** Akıllı alarm (31 Ekim 2026; iOS ile aynı alan): alarmdan önceki bu kadar dakikada uyku oturumu hafif uyku (hareket)
      *  algılarsa erken çalar; 0 = kapalı (SmartSleep) */
     val smart: Int = 0,
+    /** 2. analiz #41: çalarken sallayınca ertele; #42: sakin ön alarm (dk; 0 = kapalı); #43: kapanınca açılacak uygulama
+     *  (paket adı; yalnız Android); #52: uyku planının kalkış alarmı (plan değişince güncellenir, listede ayrı başlıkta) */
+    val shakeSnooze: Boolean = false,
+    val preAlarm: Int = 0,
+    val openApp: String = "",
+    val sleepPlan: Boolean = false,
 ) {
     /** Kapatırken istenecek görev (kod kaydedilmediyse matematik); yoksa "none" */
     val effectiveTask: String get() = when {
@@ -138,11 +144,14 @@ data class AlarmItem(
     /** Sıradaki çalma (atlanan çalma ve istenirse resmî tatiller hariç) */
     fun nextAt(nowMs: Long = System.currentTimeMillis()): Long {
         var t = occurrenceAfter(maxOf(nowMs, skipUntil))
-        if (!skipHolidays || days.isEmpty()) return t
+        val paused = days.isNotEmpty() && AlarmPause.range() != null
+        if ((!skipHolidays || days.isEmpty()) && !paused) return t
         val zone = ZoneId.systemDefault()
-        // Bayram en çok 4,5 gün sürer; 60 deneme her durumda yeter (bütün günler tatilse ilk çalma kalır)
-        repeat(60) {
-            if (t == NEVER || !isHoliday(java.time.Instant.ofEpochMilli(t).atZone(zone).toLocalDate())) return t
+        // Bayram en çok 4,5 gün sürer; tatil modu (2. analiz #44) uzun olabilir: 120 deneme (bütün günler kapalıysa ilk çalma kalır)
+        repeat(120) {
+            if (t == NEVER) return t
+            val d = java.time.Instant.ofEpochMilli(t).atZone(zone).toLocalDate()
+            if (!(skipHolidays && days.isNotEmpty() && isHoliday(d)) && !(paused && AlarmPause.contains(d))) return t
             t = occurrenceAfter(t)
         }
         return occurrenceAfter(maxOf(nowMs, skipUntil))
@@ -159,7 +168,8 @@ data class AlarmItem(
         .put("sound", sound).put("vibrate", vibrate).put("snoozeMax", snoozeMax).put("rise", rise).put("skipHolidays", skipHolidays)
         .put("sunrise", sunrise).put("task", task).put("taskLevel", taskLevel).put("code", code).put("wakeCheck", wakeCheck)
         .put("preNotify", preNotify).put("speak", speak).put("date", date).put("every", every).put("anchor", anchor).put("until", until)
-        .put("link", link).put("smart", smart)
+        .put("link", link).put("smart", smart).put("shakeSnooze", shakeSnooze).put("preAlarm", preAlarm).put("openApp", openApp)
+        .put("sleepPlan", sleepPlan)
 
     companion object {
         private const val KEY = "alarms"
@@ -172,6 +182,7 @@ data class AlarmItem(
         val SUNRISE_CHOICES = listOf(0, 10, 20, 30)
         val PRE_NOTIFY_CHOICES = listOf(0, 15, 30, 60)
         val SMART_CHOICES = listOf(0, 10, 20, 30)
+        val PRE_ALARM_CHOICES = listOf(0, 10, 20, 30)
 
         /** Gün doğumu ışığı seçili sıradaki alarm (tam ekran saat için): an ve pencere (dakika). Alarmdan 15 dk sonrasına
          *  kadar ışık yanık kaldığı için biraz geriden bakılır. */
@@ -200,6 +211,8 @@ data class AlarmItem(
                 o.optInt("preNotify", 0), o.optBoolean("speak", false),
                 o.optString("date", ""), o.optInt("every", 1), o.optString("anchor", ""), o.optString("until", ""),
                 link = o.optString("link", ""), smart = o.optInt("smart", 0),
+                shakeSnooze = o.optBoolean("shakeSnooze", false), preAlarm = o.optInt("preAlarm", 0), openApp = o.optString("openApp", ""),
+                sleepPlan = o.optBoolean("sleepPlan", false),
             )
         }
 
@@ -348,6 +361,7 @@ object AlarmScheduler {
         }
         Prefs.store.edit().putStringSet("alarms.scheduled", items.filter { it.enabled }.map { it.id }.toSet()).apply()
         AlarmPre.sync(c, items, known)
+        PreAlarm.sync(c, items, known)
     }
 
     /** Tek seferlik çalma (zamanlayıcı, pomodoro, erteleme) */

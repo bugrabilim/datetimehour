@@ -75,8 +75,20 @@ struct JournalView: View {
     @State private var entry = Journal.today()
     @State private var list = Journal.load()
     @State private var confirm = false
+    /// Etiket süzgeci (2. analiz #50)
+    @State private var tagFilter: String?
 
     var body: some View { bodyContent.screenshotWarning() }
+
+    private func tagChip(_ tag: String?, _ text: String) -> some View {
+        Button { tagFilter = tag } label: {
+            Text(text).font(.subheadline)
+                .padding(.horizontal, 12).padding(.vertical, 6)
+                .background(tagFilter == tag ? Theme.accent : Theme.surface2, in: Capsule())
+                .foregroundStyle(tagFilter == tag ? Color.white : Theme.text)
+        }
+        .buttonStyle(.plain)
+    }
 
     @ViewBuilder private var bodyContent: some View {
         List {
@@ -95,8 +107,26 @@ struct JournalView: View {
             Section(L("journal.recent")) {
                 recentStrip
             }
+            // Etiketler (2. analiz #50): son 30 gün sayılır; dokununca o günler süzülür
+            Section {
+                let since = CalendarDay(Date()).adding(days: -30).iso
+                let counts = Dictionary(list.filter { $0.d >= since }.flatMap { JournalTags.parse($0.n) }.map { ($0, 1) }, uniquingKeysWith: +)
+                    .sorted { $0.value > $1.value }.prefix(12)
+                if !counts.isEmpty {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 8) {
+                            tagChip(nil, L("journal.allTags"))
+                            ForEach(Array(counts), id: \.key) { k, v in tagChip(k, "#\(k) (\(v))") }
+                        }
+                    }
+                }
+            } header: {
+                Text(L("journal.tags"))
+            } footer: {
+                Text(L("journal.tagsNote"))
+            }
             Section(L("journal.history")) {
-                let older = list.filter { $0.d != Journal.todayKey }
+                let older = list.filter { e in e.d != Journal.todayKey && (tagFilter.map { t in JournalTags.parse(e.n).contains(t) } ?? true) }
                 if older.isEmpty { Text(L("journal.empty")).foregroundStyle(Theme.muted) }
                 ForEach(older.prefix(60), id: \.d) { e in
                     HStack(alignment: .top, spacing: 10) {

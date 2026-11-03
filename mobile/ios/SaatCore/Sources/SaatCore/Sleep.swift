@@ -112,3 +112,69 @@ public struct SmartWake {
         windowMin > 0 && nowMs >= alarmMs - Int64(windowMin) * 60_000 && nowMs < alarmMs && movingEpochs(nowMs: nowMs) >= need
     }
 }
+
+/// Uyku düzeni (2. analiz #47; uyku takibi olmadan): Android'deki SleepStats ile aynı kayıt ve kurallar
+/// (`sleep.log`: [{d, w, b}], en çok 120).
+public enum SleepStats {
+    public struct Entry: Codable, Equatable, Sendable {
+        public var d: String
+        public var w: Int
+        public var b: Int
+        public init(d: String, w: Int, b: Int = -1) { self.d = d; self.w = w; self.b = b }
+    }
+
+    public struct Summary: Equatable, Sendable {
+        public let weekWake: Int?, prevWake: Int?, spread: Int?, debt: Int?, nights: Int
+    }
+
+    public static let max = 120
+
+    public static func record(_ log: [Entry], _ e: Entry) -> [Entry] {
+        let old = log.first { $0.d == e.d }
+        let merged = old.map { Entry(d: e.d, w: Swift.min($0.w, e.w), b: $0.b >= 0 ? $0.b : e.b) } ?? e
+        return Array((log.filter { $0.d != e.d } + [merged]).sorted { $0.d < $1.d }.suffix(max))
+    }
+
+    public static func duration(_ e: Entry) -> Int? { e.b < 0 ? nil : ((e.w - e.b) % 1440 + 1440) % 1440 }
+
+    public static func summary(_ log: [Entry], today: String, goal: Int) -> Summary {
+        guard let t = CalendarDay(iso: today) else { return Summary(weekWake: nil, prevWake: nil, spread: nil, debt: nil, nights: 0) }
+        let w0 = t.adding(days: -7).iso, w1 = t.adding(days: -14).iso
+        let week = log.filter { $0.d > w0 && $0.d <= today }
+        let prev = log.filter { $0.d > w1 && $0.d <= w0 }
+        func avg(_ l: [Entry]) -> Int? { l.isEmpty ? nil : Int((Double(l.map(\.w).reduce(0, +)) / Double(l.count)).rounded()) }
+        let recent = log.filter { $0.d > w1 && $0.d <= today }
+        var spread: Int? = nil
+        if recent.count >= 3 {
+            let m = Double(recent.map(\.w).reduce(0, +)) / Double(recent.count)
+            spread = Int((recent.map { (Double($0.w) - m) * (Double($0.w) - m) }.reduce(0, +) / Double(recent.count)).squareRoot().rounded())
+        }
+        let durs = week.compactMap(duration)
+        let debt = durs.isEmpty ? nil : durs.map { Swift.max(0, goal - $0) }.reduce(0, +)
+        return Summary(weekWake: avg(week), prevWake: avg(prev), spread: spread, debt: debt, nights: week.count)
+    }
+}
+
+/// Kronotip tahmini (2. analiz #48; Android'deki Chronotype ile aynı): MCTQ'daki düzeltilmiş serbest gün uyku ortası fikri
+public enum Chronotype {
+    private static func dur(_ bed: Int, _ wake: Int) -> Int { ((wake - bed) % 1440 + 1440) % 1440 }
+
+    public static func msfsc(workBed: Int, workWake: Int, freeBed: Int, freeWake: Int, workDays: Int = 5) -> Int {
+        let sdw = dur(workBed, workWake), sdf = dur(freeBed, freeWake)
+        let msf = Double(freeBed) + Double(sdf) / 2
+        let week = Double(sdw * workDays + sdf * (7 - workDays)) / 7
+        let m = sdf > sdw ? msf - (Double(sdf) - week) / 2 : msf
+        let r = ((Int(m.rounded()) % 1440) + 1440) % 1440
+        return r >= 720 ? r - 1440 : r
+    }
+
+    public static func category(_ msfsc: Int) -> Int {
+        switch msfsc {
+        case ..<150: 0
+        case ..<210: 1
+        case ..<270: 2
+        case ..<330: 3
+        default: 4
+        }
+    }
+}

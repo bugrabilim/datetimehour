@@ -39,6 +39,7 @@ class AlarmRingService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        SoundService.stop(this, "prealarm") // sakin ön alarm (2. analiz #42) asıl alarm çalınca susar
         val id = intent?.getStringExtra(AlarmScheduler.EXTRA_ID)
         if (id == null) {
             stopSelf()

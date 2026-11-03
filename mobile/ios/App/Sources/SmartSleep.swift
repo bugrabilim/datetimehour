@@ -38,6 +38,7 @@ final class SmartSleep: ObservableObject {
     /// Oturumu başlatır; akıllı alarm yoksa false
     @discardableResult
     func start() -> Bool {
+        SleepLogStore.markBed() // uyku düzeni (2. analiz #47)
         guard let n = Self.next() else { return false }
         session = Session(id: n.item.id, at: n.at, window: n.item.smart, title: n.item.title)
         detector = SmartWake()

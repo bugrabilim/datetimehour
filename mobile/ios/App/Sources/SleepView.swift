@@ -68,6 +68,7 @@ enum SleepSounds {
 
     @MainActor
     static func play() {
+        SleepLogStore.markBed() // uyku düzeni (2. analiz #47): yatış anı
         let d = UserDefaults.standard
         let kind = d.string(forKey: kindKey) ?? "rain"
         let vol = d.object(forKey: volumeKey) as? Int ?? 35
@@ -180,6 +181,14 @@ struct SleepView: View {
                 Text(L("alarm.sunrise"))
             }
 
+            // Uyku düzeni, enerji blokları ve kronotip (2. analiz #47, #49, #48)
+            Section {
+                SleepStatsCard().listRowInsets(EdgeInsets())
+                if on { EnergyBlocksCard().listRowInsets(EdgeInsets()) }
+                ChronotypeCard().listRowInsets(EdgeInsets())
+            }
+            .listRowBackground(Color.clear)
+
             Section {
                 Text(L("sleep.privacy")).font(.footnote).foregroundStyle(Theme.muted)
             }
@@ -234,19 +243,15 @@ struct SleepView: View {
         }
     }
 
+    /// Uyku planının kalkış alarmı: tek, plana bağlı alarm (2. analiz #52)
     private func addAlarm() {
-        var item = AlarmItem(hour: wake / 60, minute: wake % 60)
-        item.label = L("sleep.alarmLabel")
-        item.days = SleepPlan.parse(daysRaw)
-        var items = AlarmItem.load()
-        items.append(item)
-        AlarmItem.save(items)
         alarmAdded = true
-        Task { await AlarmCenter.sync(items) }
+        Task { await SleepPlanAlarm.set(wake: wake, days: SleepPlan.parse(daysRaw)) }
     }
 
     private func reschedule() {
         Task {
+            await SleepPlanAlarm.update(wake: wake, days: SleepPlan.parse(daysRaw))
             if on, bedtimeNotify, await PrayerNotifier.authorizationStatus() == .notDetermined {
                 _ = await PrayerNotifier.requestAuthorization()
             }

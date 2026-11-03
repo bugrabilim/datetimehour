@@ -454,6 +454,8 @@
         <receiver android:name=".FeatureAlarmReceiver" android:exported="false" />
         <!-- Zaman çizelgeli odak engeli (2. analiz #27): başlangıç/bitişte engeli yeniden değerlendirir -->
         <receiver android:name=".FocusScheduleReceiver" android:exported="false" />
+        <!-- Sakin ön alarm (2. analiz #42) -->
+        <receiver android:name=".PreAlarmReceiver" android:exported="false" />
         <receiver android:name=".PrayerRescheduleReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

@@ -117,6 +117,25 @@ object SleepPlan {
     }
 }
 
+/**
+ * Uyku alışkanlıkları (2. analiz #49; iOS'taki SleepPlan.habits ile aynı): yatmadan 8 sa önce kafein, 1 sa önce ekran,
+ * 30 dk önce akşam rutini. Yalnız uyku planı açıkken; günler kalkış günleri.
+ */
+fun SleepPlan.habits(now: Instant, count: Int, zone: ZoneId = ZoneId.systemDefault()): List<FeatureNotifier.Planned> {
+    if (!on || days.isEmpty()) return emptyList()
+    val today = now.atZone(zone).toLocalDate()
+    val w = wake; val d = duration
+    return (0..count).flatMap { i ->
+        val day = today.plusDays(i.toLong())
+        if (day.dayOfWeek.value !in days) return@flatMap emptyList()
+        val bed = day.atTime(w / 60, w % 60).atZone(zone).toInstant().minusSeconds(d * 60L)
+        listOf(Triple("caf", 8 * 60, "habit.caffeine"), Triple("scr", 60, "habit.screen"), Triple("rou", 30, "habit.routine")).mapNotNull { (k, before, key) ->
+            val at = bed.minusSeconds(before * 60L)
+            if (at.isAfter(now)) FeatureNotifier.Planned("habits-$k-$day", at, L(key), L("notify.cat.habits"), Tab.TOOLS) else null
+        }
+    }
+}
+
 /** Uyku sesleri: tür, ses düzeyi, kapanma süresi (sleep.noise, sleep.vol, sleep.timer) */
 object SleepSounds {
     val TIMER_CHOICES = listOf(15, 30, 45, 60, 90, 0)
@@ -129,6 +148,7 @@ object SleepSounds {
         val sp = Prefs.store
         val minutes = sp.getInt("sleep.timer", 30)
         until = if (minutes > 0) System.currentTimeMillis() + minutes * 60_000L else 0L
+        SleepLog.markBed() // uyku düzeni (2. analiz #47): yatış anı
         SoundService.play(c, sp.getString("sleep.noise", "rain") ?: "rain", sp.getInt("sleep.vol", 35), until, "sleep", fade = true)
     }
 
@@ -152,7 +172,10 @@ fun SleepScreen() {
     var picking by remember { mutableStateOf(false) }
     var alarmAdded by remember { mutableStateOf(false) }
     val ask = rememberNotifyAsk()
-    fun changed() = FeatureNotifier.reschedule(context)
+    fun changed() {
+        FeatureNotifier.reschedule(context)
+        SleepPlanAlarm.update(context, wake, days) // bağlı kalkış alarmı plana uyar (2. analiz #52)
+    }
 
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
@@ -201,7 +224,7 @@ fun SleepScreen() {
                     }
                 }
                 TextButton(onClick = {
-                    AlarmItem.addNew(context, AlarmItem(hour = wake / 60, minute = wake % 60, label = L("sleep.alarmLabel"), days = days))
+                    SleepPlanAlarm.set(context, wake, days)
                     alarmAdded = true
                 }) { Text(L("sleep.addAlarm"), color = Theme.c.accent) }
                 if (alarmAdded) Text(L("sleep.alarmAdded"), color = Theme.c.muted, fontSize = 13.sp)
@@ -219,6 +242,11 @@ fun SleepScreen() {
             for ((n, m) in Sleep.bedtimes(wake)) CycleRow(SleepPlan.hm(m), n)
             Text(L("sleep.cycles.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
+
+        // Uyku düzeni, enerji blokları ve kronotip (2. analiz #47, #49, #48)
+        SleepStatsCard()
+        if (on) EnergyBlocksCard()
+        ChronotypeCard()
 
         // Akıllı alarm (SmartSleep): pencereli sıradaki alarm için uyku oturumu
         SectionTitle(L("alarm.smart"))

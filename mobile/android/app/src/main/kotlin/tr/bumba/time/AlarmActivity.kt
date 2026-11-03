@@ -82,6 +82,24 @@ class AlarmActivity : ComponentActivity() {
                     return@AppTheme
                 }
                 val now = rememberNow()
+                val alarm = remember { if (kind == "alarm") AlarmItem.find(id) else null }
+                // Kapatınca: uyku düzeni kaydı (2. analiz #47), seçilen uygulama (#43) ya da günaydın kartı
+                fun dismissed() {
+                    SoundService.stop(this@AlarmActivity, "prealarm")
+                    Torch.set(this@AlarmActivity, false)
+                    if (kind != "alarm") { finish(); return }
+                    SleepLog.recordWake()
+                    if (alarm != null && launchApp(this@AlarmActivity, alarm.openApp)) finish() else morning = true
+                }
+                var torch by remember { mutableStateOf(false) }
+                androidx.compose.runtime.DisposableEffect(Unit) { onDispose { Torch.set(this@AlarmActivity, false) } }
+                val snoozeMin = AlarmScheduler.snoozeMinutes(id, kind)
+                // Sallayınca ertele (2. analiz #41)
+                ShakeToSnooze(alarm?.shakeSnooze == true && snoozeMin > 0) {
+                    Torch.set(this@AlarmActivity, false)
+                    AlarmScheduler.snooze(this@AlarmActivity, id, title)
+                    finish()
+                }
                 Column(
                     Modifier.fillMaxSize().background(Theme.c.bg).verticalScroll(rememberScrollState()).padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -99,24 +117,32 @@ class AlarmActivity : ComponentActivity() {
                         Spacer(Modifier.height(16.dp))
                         RoundButton("▶ " + L("alarm.link.open"), false, Modifier.fillMaxWidth()) { MusicLink.open(this@AlarmActivity, music) }
                     }
+                    // El feneri (2. analiz #41)
+                    if (Torch.available(this@AlarmActivity)) {
+                        Spacer(Modifier.height(12.dp))
+                        RoundButton((if (torch) "🔦 ✓ " else "🔦 ") + L("alarm.torch"), torch, Modifier.fillMaxWidth()) {
+                            torch = !torch
+                            Torch.set(this@AlarmActivity, torch)
+                        }
+                    }
                     Spacer(Modifier.height(40.dp))
                     // Kapatma görevi (rakip analizi #13): görev yapılınca alarm susar
-                    val item = remember { if (kind == "alarm") AlarmItem.find(id) else null }
+                    val item = alarm
                     if (item != null && item.effectiveTask != "none") {
                         WakeTaskPanel(item) {
                             BadgeStore.hit(Badge.UYANIK)
                             AlarmScheduler.stop(this@AlarmActivity, id)
-                            morning = true
+                            dismissed()
                         }
                     } else {
                         // Kaydırarak durdur (rakip analizi #18): yanlışlıkla dokunuşla kapanmaz
                         SwipeToStop(L("alarm.swipe")) {
                             AlarmScheduler.stop(this@AlarmActivity, id)
-                            if (kind == "alarm") morning = true else finish()
+                            dismissed()
                         }
                     }
                     // Erteleme kapalıysa ya da sınır dolduysa düğme yok
-                    val snooze = AlarmScheduler.snoozeMinutes(id, kind)
+                    val snooze = snoozeMin
                     if (snooze > 0) {
                         Spacer(Modifier.height(12.dp))
                         RoundButton(T("alarm.snoozeFor", snooze), false, Modifier.fillMaxWidth()) {

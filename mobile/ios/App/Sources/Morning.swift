@@ -14,6 +14,7 @@ enum MorningCheck {
         let shown = UserDefaults.standard.double(forKey: shownKey)
         guard last.timeIntervalSince1970 > shown else { return false }
         UserDefaults.standard.set(now.timeIntervalSince1970, forKey: shownKey)
+        SleepLogStore.recordWake(last) // uyku düzeni (2. analiz #47): iPhone'da kalkış = alarmın çaldığı an
         return true
     }
 

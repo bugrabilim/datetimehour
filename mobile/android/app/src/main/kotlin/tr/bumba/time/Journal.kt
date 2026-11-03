@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -47,6 +48,10 @@ data class JournalEntry(val d: String, val m: Int = 0, val s: Int = 0, val i: St
 
 object Journal {
     const val KEY = "journal"
+
+    /** Nottaki etiketler (2. analiz #50): "#kahve", "#spor" (harf ve rakam; küçük harfe çevrilir) */
+    fun tags(note: String): Set<String> =
+        Regex("#([\\p{L}\\p{N}_]{1,30})").findAll(note).map { it.groupValues[1].lowercase(Strings.locale) }.toSet()
     val moods = listOf("😞", "🙁", "😐", "🙂", "😄")
 
     fun load(): List<JournalEntry> = runCatching {
@@ -133,8 +138,28 @@ fun JournalScreen() {
                 }
             }
         }
+        // Etiketler (2. analiz #50): son 30 gün sayılır; dokununca o günler süzülür
+        var tagFilter by remember { mutableStateOf<String?>(null) }
+        val since = LocalDate.now().minusDays(30).toString()
+        val tagCounts = list.filter { it.d >= since }.flatMap { Journal.tags(it.n) }.groupingBy { it }.eachCount()
+            .entries.sortedByDescending { it.value }.take(12)
+        SectionTitle(L("journal.tags"))
+        AppCard {
+            if (tagCounts.isNotEmpty()) {
+                Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    val chips = listOf<Pair<String?, String>>(null to L("journal.allTags")) + tagCounts.map { it.key to "#${it.key} (${it.value})" }
+                    for ((tag, text) in chips) {
+                        val sel = tagFilter == tag
+                        Text(text, Modifier.background(if (sel) Theme.c.accent else Theme.c.surface2, androidx.compose.foundation.shape.RoundedCornerShape(50))
+                            .clickable { tagFilter = tag }.padding(horizontal = 12.dp, vertical = 6.dp),
+                            color = if (sel) Theme.c.bg else Theme.c.text, fontSize = 14.sp)
+                    }
+                }
+            }
+            Text(L("journal.tagsNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
         SectionTitle(L("journal.history"))
-        val older = list.filter { it.d != Journal.todayKey }
+        val older = list.filter { it.d != Journal.todayKey && (tagFilter == null || tagFilter in Journal.tags(it.n)) }
         AppCard {
             if (older.isEmpty()) Text(L("journal.empty"), color = Theme.c.muted)
             older.take(60).forEachIndexed { idx, e ->

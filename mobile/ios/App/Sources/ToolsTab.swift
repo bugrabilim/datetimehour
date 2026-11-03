@@ -307,6 +307,10 @@ struct AlarmsView: View {
 
     var body: some View {
         List {
+            // Sıradaki alarm (2. analiz #51)
+            if items.contains(where: \.enabled) {
+                Section { NextAlarmCard(items: items) }
+            }
             // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
             Section(L("alarm.quick")) {
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -339,40 +343,25 @@ struct AlarmsView: View {
             if items.isEmpty {
                 Text(L("tools.alarm.none")).foregroundStyle(Theme.muted)
             }
-            ForEach($items) { $item in
-                HStack {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(item.timeText)
-                            .font(.system(size: 40, weight: .light, design: .rounded))
-                            .monospacedDigit()
-                            .environment(\.layoutDirection, .leftToRight)
-                        Text(item.title + " · " + item.repeatText)
-                            .font(.subheadline)
-                            .foregroundStyle(Theme.muted)
-                        if let skip = item.skipUntil, skip > Date(), let at = item.unskipped.next() {
-                            Text(T("alarm.skipped", Fmt.longDate(at)))
-                                .font(.caption)
-                                .foregroundStyle(Theme.accent)
-                        }
-                        if item.enabled, item.holidayShifted(), let at = item.next() {
-                            Text(T("alarm.holidayNext", Fmt.longDate(at)))
-                                .font(.caption)
-                                .foregroundStyle(Theme.muted)
-                        }
+            // Uyku planının kalkış alarmı ayrı başlıkta (2. analiz #52)
+            if items.contains(where: \.sleepPlan) {
+                Section(L("alarm.sleepSection")) {
+                    ForEach($items) { $item in
+                        if item.sleepPlan { alarmRow($item) }
                     }
-                    Spacer()
-                    Toggle(L("tools.alarm.enable"), isOn: $item.enabled).labelsHidden()
-                }
-                .contentShape(Rectangle())
-                .onTapGesture { editing = item }
-                .swipeActions(edge: .leading) {
-                    if item.enabled { skipButton($item) }
-                }
-                .contextMenu {
-                    if item.enabled { skipButton($item) }
+                    .onDelete { items.remove(atOffsets: $0) }
                 }
             }
+            Section {
+            ForEach($items) { $item in
+                if !item.sleepPlan { alarmRow($item) }
+            }
             .onDelete { items.remove(atOffsets: $0) }
+            }
+            // Tatil modu (2. analiz #44)
+            VacationSection {
+                Task { await AlarmCenter.sync(items); await PrayerNotifier.reschedule() }
+            }
             Section {
                 if denied { Text(L("alarm.denied")).foregroundStyle(.red) }
                 AlarmNote()
@@ -390,6 +379,71 @@ struct AlarmsView: View {
                 .accessibilityLabel(L("tools.alarm.add"))
             }
         }
+        .modifier(AlarmSheets(items: $items, editing: $editing, pickingEvent: $pickingEvent, quickMsg: $quickMsg, calLead: calLead, denied: $denied))
+    }
+
+    @ViewBuilder private func alarmRow(_ binding: Binding<AlarmItem>) -> some View {
+        let item = binding.wrappedValue
+                HStack {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(item.timeText)
+                            .font(.system(size: 40, weight: .light, design: .rounded))
+                            .monospacedDigit()
+                            .environment(\.layoutDirection, .leftToRight)
+                        // Görev simgesi (2. analiz #51)
+                        Text(Self.taskIcon(item) + item.title + " · " + item.repeatText + (item.preAlarm > 0 ? " · 🌧" : ""))
+                            .font(.subheadline)
+                            .foregroundStyle(Theme.muted)
+                        if item.sleepPlan { Text(L("alarm.sleepLinked")).font(.caption2).foregroundStyle(Theme.muted) }
+                        if let skip = item.skipUntil, skip > Date(), let at = item.unskipped.next() {
+                            Text(T("alarm.skipped", Fmt.longDate(at)))
+                                .font(.caption)
+                                .foregroundStyle(Theme.accent)
+                        }
+                        if item.enabled, item.holidayShifted(), let at = item.next() {
+                            Text(T("alarm.holidayNext", Fmt.longDate(at)))
+                                .font(.caption)
+                                .foregroundStyle(Theme.muted)
+                        }
+                    }
+                    Spacer()
+                    Toggle(L("tools.alarm.enable"), isOn: binding.enabled).labelsHidden()
+                }
+                .contentShape(Rectangle())
+                .onTapGesture { editing = item }
+                .swipeActions(edge: .leading) {
+                    if item.enabled { skipButton(binding) }
+                }
+                .contextMenu {
+                    if item.enabled { skipButton(binding) }
+                }
+    }
+
+    static func taskIcon(_ item: AlarmItem) -> String {
+        switch AlarmItem.effectiveTask(item.task, code: item.code) {
+        case "math": "🧮 "
+        case "shake": "📳 "
+        case "steps": "🚶 "
+        case "code": "🔳 "
+        case "memory": "🧠 "
+        case "typing": "⌨️ "
+        case "photo": "📷 "
+        default: ""
+        }
+    }
+}
+
+/// Alarm listesinin sayfaları (etkinlik seçici, düzenleyici) ve kaydetme
+private struct AlarmSheets: ViewModifier {
+    @Binding var items: [AlarmItem]
+    @Binding var editing: AlarmItem?
+    @Binding var pickingEvent: Bool
+    @Binding var quickMsg: String
+    let calLead: Int
+    @Binding var denied: Bool
+
+    func body(content: Content) -> some View {
+        content
         .sheet(isPresented: $pickingEvent) {
             CalendarEventPicker { title, start, allDay in
                 if let item = CalendarAlarm.item(title: title, start: start, allDay: allDay, lead: calLead) {
@@ -419,8 +473,10 @@ struct AlarmsView: View {
             }
         }
     }
+}
 
-    private func quick(_ minutes: Int) {
+extension AlarmsView {
+    fileprivate func quick(_ minutes: Int) {
         let at = Date().addingTimeInterval(Double(minutes * 60))
         let c = Calendar.current.dateComponents([.hour, .minute], from: at)
         var item = AlarmItem(hour: c.hour ?? 0, minute: c.minute ?? 0)
@@ -541,6 +597,16 @@ private struct AlarmEditor: View {
                     }
                 } footer: {
                     Text(L("alarm.preNote"))
+                }
+                // Sakin ön alarm (2. analiz #42): kısık yağmur ve çan sesli bildirim
+                Section {
+                    Picker(L("alarm.preAlarm"), selection: $item.preAlarm) {
+                        ForEach(AlarmItem.preAlarmChoices, id: \.self) { m in
+                            Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                        }
+                    }
+                } footer: {
+                    Text(L("alarm.preAlarmNote"))
                 }
                 // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
                 Section {

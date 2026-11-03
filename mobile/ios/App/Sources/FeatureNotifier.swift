@@ -9,7 +9,7 @@ import SaatCore
 /// kurulur; yalnız hava özeti için hava servisine (WeatherKit) sorulur. iOS en çok 64 bekleyen bildirim tuttuğu için
 /// liste PrayerNotifier'da vakitlerle birlikte zamana göre sıralanıp kesilir; arka plan yenilemesi listeyi ileri taşır.
 enum NotifyFeature: String, CaseIterable, Identifiable {
-    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime
+    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits
 
     var id: String { rawValue }
     var key: String { "notify.\(rawValue)" }
@@ -26,6 +26,7 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         case .hourly: "clock"
         case .dst: "clock.arrow.2.circlepath"
         case .bedtime: "bed.double"
+        case .habits: "cup.and.saucer"
         }
     }
 
@@ -74,6 +75,8 @@ enum FeatureNotifier {
         out += CountdownItem.reminders(now: now) // kişisel geri sayımların hatırlatmaları (her biri kendi ayarıyla)
         if NotifyFeature.bedtime.isOn { out += SleepPlan.reminders(now: now, days: days) } // uyku planı kuruluysa
         out += AlarmItem.preNotifications(now: now) // yaklaşan alarm (her alarm kendi ayarıyla)
+        out += AlarmItem.preAlarms(now: now) // sakin ön alarm (2. analiz #42)
+        if NotifyFeature.habits.isOn { out += SleepPlan.habits(now: now, days: min(days, 7)) } // uyku alışkanlıkları (#49)
         return out.filter { $0.fireAt > now }
     }
 

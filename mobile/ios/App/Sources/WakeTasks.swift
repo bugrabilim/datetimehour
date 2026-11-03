@@ -120,6 +120,8 @@ struct WakeTaskView: View {
 
     var body: some View {
         VStack(spacing: 22) {
+            // El feneri (2. analiz #41)
+            TorchButton()
             Spacer(minLength: 12)
             Image(systemName: "alarm.waves.left.and.right").font(.system(size: 52)).foregroundStyle(Theme.accent)
             Text(L("wake.title")).font(.title2.weight(.semibold)).foregroundStyle(Theme.text).multilineTextAlignment(.center)
@@ -235,6 +237,8 @@ struct WakeTaskView: View {
 
     private func finish() {
         motion.stop()
+        Torch.set(false)
+        SleepLogStore.recordWake()
         BadgeStore.shared.hit(.uyanik)
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         onDone()

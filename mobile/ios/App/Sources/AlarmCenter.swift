@@ -54,7 +54,12 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     /// Akıllı alarm (31 Ekim 2026; Android ile aynı alan): alarmdan önceki bu kadar dakikada uyku oturumu hafif uyku
     /// (hareket) algılarsa erken çalar; 0 = kapalı (SmartSleep)
     var smart = 0
+    /// Sakin ön alarm (2. analiz #42): alarmdan bu kadar dakika önce kısık yağmur ve çan (bildirim sesi prealarm.caf; 0 = kapalı)
+    var preAlarm = 0
+    /// Uyku planının kalkış alarmı (2. analiz #52): plan değişince güncellenir, listede ayrı başlıkta
+    var sleepPlan = false
 
+    static let preAlarmChoices = [0, 10, 20, 30]
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
     static let snoozeMaxChoices = [0, 1, 2, 3, 5]
     static let sunriseChoices = [0, 10, 20, 30]
@@ -68,7 +73,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until, music, musicName, smart }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until, music, musicName, smart, preAlarm, sleepPlan }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -97,6 +102,8 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         music = try c.decodeIfPresent(String.self, forKey: .music) ?? ""
         musicName = try c.decodeIfPresent(String.self, forKey: .musicName) ?? ""
         smart = try c.decodeIfPresent(Int.self, forKey: .smart) ?? 0
+        preAlarm = try c.decodeIfPresent(Int.self, forKey: .preAlarm) ?? 0
+        sleepPlan = try c.decodeIfPresent(Bool.self, forKey: .sleepPlan) ?? false
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -203,13 +210,15 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     /// Bu çalma atlanır mı: "sonraki alarmı atla" ya da (tekrarlayan alarmda) resmî tatil
     func blocked(_ t: Date, now: Date) -> Bool {
         if let s = skipUntil, s > now, t < s { return true }
+        // Tatil modu (2. analiz #44): tekrarlayan alarmlar duraklatılan günlerde çalmaz
+        if !days.isEmpty, AlarmPause.contains(t) { return true }
         return skipHolidays && !days.isEmpty && Self.isHoliday(t)
     }
 
     /// Sıradaki çalma (atlanan çalma ve tatiller geçilir)
     func next(after now: Date = Date()) -> Date? {
         var t = occurrence(after: now)
-        for _ in 0..<60 {
+        for _ in 0..<120 {
             guard let c = t else { return nil }
             if !blocked(c, now: now) { return c }
             t = occurrence(after: c)
@@ -276,6 +285,26 @@ struct AlarmItem: Codable, Identifiable, Hashable {
                         fireAt: fire, title: T("alarm.preTitle", Fmt.time(at)), body: item.title + " · " + L("alarm.preBody"),
                         thread: "alarm", sound: nil, category: AlarmPreNotify.category,
                         passive: true, info: ["alarm": item.id.uuidString, "at": String(at.timeIntervalSince1970)]))
+                }
+                t = item.next(after: at.addingTimeInterval(60))
+            }
+            return out
+        }
+    }
+
+    /// Sakin ön alarmlar (2. analiz #42): her alarmın sıradaki üç çalmasından `preAlarm` dk önce, yumuşak yağmur ve çan sesli
+    /// bildirim (prealarm.caf, 28 sn); özellik bildirimleriyle aynı listede kurulur
+    @MainActor static func preAlarms(now: Date) -> [PlannedNotification] {
+        load().filter { $0.enabled && $0.preAlarm > 0 }.flatMap { item -> [PlannedNotification] in
+            var out: [PlannedNotification] = []
+            var t = item.next(after: now)
+            while let at = t, out.count < 3 {
+                let fire = at.addingTimeInterval(-Double(item.preAlarm * 60))
+                if fire > now {
+                    out.append(PlannedNotification(
+                        id: "\(FeatureNotifier.featurePrefix)prealarm-\(item.id.uuidString)-\(Int(at.timeIntervalSince1970) / 60)",
+                        fireAt: fire, title: L("alarm.preAlarmTitle"), body: T("alarm.preAlarmBody", Fmt.time(at)),
+                        thread: "alarm", sound: UNNotificationSound(named: UNNotificationSoundName("prealarm.caf"))))
                 }
                 t = item.next(after: at.addingTimeInterval(60))
             }
@@ -402,7 +431,7 @@ enum AlarmCenter {
     static func refreshSkips(now: Date = Date()) async {
         var items = AlarmItem.load()
         let today = CalendarDay(now).iso
-        let holidayPlan = items.contains { $0.enabled && (($0.skipHolidays && !$0.days.isEmpty) || $0.needsPlan) }
+        let holidayPlan = items.contains { $0.enabled && (($0.skipHolidays && !$0.days.isEmpty) || $0.needsPlan || (!$0.days.isEmpty && AlarmPause.range != nil)) }
             && UserDefaults.standard.string(forKey: "alarm.planDay") != today
         guard holidayPlan || items.contains(where: { ($0.skipUntil ?? .distantFuture) <= now }) else { return }
         for i in items.indices where (items[i].skipUntil ?? .distantFuture) <= now { items[i].skipUntil = nil }
