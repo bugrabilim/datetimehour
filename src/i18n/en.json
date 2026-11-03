@@ -58,6 +58,7 @@
       "light": "Light"
     },
     "lookColor": "Clock colour",
+    "lookSecSmall": "Small seconds on the digital clock",
     "lookColors": {
       "default": "Site colour",
       "ink": "Ink",

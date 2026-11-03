@@ -168,7 +168,15 @@
     Array.prototype.forEach.call(doc.querySelectorAll("[data-look]"), function (sel) {
       var k = sel.getAttribute("data-look"); sel.value = LOOK[k].indexOf(prefs[k]) > 0 ? prefs[k] : LOOK[k][0];
     });
+    Array.prototype.forEach.call(doc.querySelectorAll("[data-look-bool]"), function (cb) { cb.checked = !!prefs[cb.getAttribute("data-look-bool")]; });
   }
+  // Dijital saatte saniye küçük ve tabana hizalı (2. analiz #21): sth-prefs.secSmall
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-look-bool]"), function (cb) {
+    cb.addEventListener("change", function () {
+      prefs[cb.getAttribute("data-look-bool")] = cb.checked;
+      store("sth-prefs", JSON.stringify(prefs)); applyLook();
+    });
+  });
   Array.prototype.forEach.call(doc.querySelectorAll("[data-look]"), function (sel) {
     sel.addEventListener("change", function () {
       prefs[sel.getAttribute("data-look")] = sel.value;
@@ -273,6 +281,24 @@
     var o = { hour: "2-digit", minute: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" };
     if (withSec) o.second = "2-digit";
     return fmt("time" + (prefs.h12 ? 12 : 24) + (withSec ? "s" : ""), tz, o).format(date);
+  }
+  /* Saniye küçük: saniye (ve önündeki ayırıcı) <small class="sec-small"> içinde; metin değişmedikçe dokunulmaz */
+  function smallSecTime(el, date, tz) {
+    var o = { hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: prefs.h12 ? "h12" : "h23" };
+    var ps = fmt("time" + (prefs.h12 ? 12 : 24) + "s", tz, o).formatToParts(date);
+    var full = ps.map(function (x) { return x.value; }).join("");
+    if (el.__small === full) return;
+    el.__small = full;
+    var si = -1;
+    for (var i = 0; i < ps.length; i++) if (ps[i].type === "second") si = i;
+    var from = si > 0 && ps[si - 1].type === "literal" ? si - 1 : si;
+    el.textContent = "";
+    el.appendChild(doc.createTextNode(ps.slice(0, from).map(function (x) { return x.value; }).join("")));
+    var sm = doc.createElement("small");
+    sm.className = "sec-small";
+    sm.textContent = ps.slice(from, si + 1).map(function (x) { return x.value; }).join("");
+    el.appendChild(sm);
+    el.appendChild(doc.createTextNode(ps.slice(si + 1).map(function (x) { return x.value; }).join("")));
   }
   function dayPeriod(date, tz) {
     var f = fmt("dp", tz, { hour: "numeric", hour12: true }).formatToParts(date);
@@ -398,7 +424,10 @@ function sunTimes(y, m, d, lat, lon) {
       var tz = el.getAttribute("data-tz") || localTz;
       var out = "", p;
       switch (kind) {
-        case "time": out = timeText(now, tz, el.hasAttribute("data-sec") ? prefs.secD : false); break;
+        case "time":
+          var ws = el.hasAttribute("data-sec") ? prefs.secD : false;
+          if (ws && prefs.secSmall && !window.__sthPrefs) { smallSecTime(el, now, tz); return; }
+          out = timeText(now, tz, ws); break;
         case "date": out = useOwn ? ownDate(parts(now, tz)) : fmt("date", tz, { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now); break;
         case "day": out = String(parts(now, tz).day); break;
         case "dateiso": p = parts(now, tz); out = p.year + "-" + String(p.month).padStart(2, "0") + "-" + String(p.day).padStart(2, "0"); break;
@@ -464,7 +493,7 @@ function sunTimes(y, m, d, lat, lon) {
           });
           return;
       }
-      if (el.textContent !== out) el.textContent = out;
+      if (el.textContent !== out) { el.textContent = out; el.__small = ""; }
     });
     analogs.forEach(function (svg) {
       var ap = parts(now, svg.getAttribute("data-tz") || localTz);

@@ -58,6 +58,7 @@
       "light": "İncə"
     },
     "lookColor": "Saatın rəngi",
+    "lookSecSmall": "Rəqəmsal saatda saniyə kiçik",
     "lookColors": {
       "default": "Saytın rəngi",
       "ink": "Mürəkkəb",

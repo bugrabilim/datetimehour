@@ -58,6 +58,7 @@
       "light": "细体"
     },
     "lookColor": "时钟颜色",
+    "lookSecSmall": "数字时钟的秒显示为小字",
     "lookColors": {
       "default": "网站颜色",
       "ink": "墨色",

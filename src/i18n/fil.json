@@ -58,6 +58,7 @@
       "light": "Manipis"
     },
     "lookColor": "Kulay ng orasan",
+    "lookSecSmall": "Maliit na segundo sa digital na orasan",
     "lookColors": {
       "default": "Kulay ng site",
       "ink": "Tinta",

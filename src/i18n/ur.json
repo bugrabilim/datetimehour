@@ -58,6 +58,7 @@
       "light": "باریک"
     },
     "lookColor": "گھڑی کا رنگ",
+    "lookSecSmall": "ڈیجیٹل گھڑی میں چھوٹے سیکنڈ",
     "lookColors": {
       "default": "سائٹ کا رنگ",
       "ink": "روشنائی",

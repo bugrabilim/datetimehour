@@ -1245,3 +1245,7 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .ring-media { max-width: 32rem; margin: 0.6rem auto; }
 .ring-media iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 10px; background: #000; }
 .ring-media[hidden] { display: none; }
+
+/* Dijital saatte küçük saniye (2. analiz #21; ayarlar › saat görünümü) */
+.sec-small { font-size: 0.45em; font-weight: inherit; }
+.set-check { inline-size: 1.15rem; block-size: 1.15rem; accent-color: var(--accent); }

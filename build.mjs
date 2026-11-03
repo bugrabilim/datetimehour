@@ -496,6 +496,7 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
         <div class="set-item set-look" role="group" aria-label="${esc(u.look)}"><span class="set-look-h">${esc(u.look)}</span>
           <label class="set-look-row"><span>${esc(u.lookFont)}</span><select class="set-select" data-look="font">${["standard", "rounded", "serif", "mono", "light"].map((k) => `<option value="${k}">${esc(u.lookFonts[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookColor)}</span><select class="set-select" data-look="color">${["default", "ink", "blue", "green", "red", "purple"].map((k) => `<option value="${k}">${esc(u.lookColors[k])}</option>`).join("")}</select></label>
+          <label class="set-look-row"><span>${esc(u.lookSecSmall)}</span><input type="checkbox" class="set-check" data-look-bool="secSmall"></label>
           <span class="set-sub">${esc(u.lookNote)}</span></div>
         <a class="set-item" href="${ROUTES[lang].privacy}">${ICON_LOCK}<span>${esc(t.consent.privacy)}</span></a>
         <button type="button" class="set-item" data-consent-open aria-haspopup="dialog">${ICON_COOKIE}<span>${esc(t.consent.footerLink)}</span></button>

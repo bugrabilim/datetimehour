@@ -58,6 +58,7 @@
       "light": "Légère"
     },
     "lookColor": "Couleur de l’horloge",
+    "lookSecSmall": "Petites secondes sur l’horloge numérique",
     "lookColors": {
       "default": "Couleur du site",
       "ink": "Encre",

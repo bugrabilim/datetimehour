@@ -58,6 +58,7 @@
       "light": "細字"
     },
     "lookColor": "時計の色",
+    "lookSecSmall": "デジタル時計の秒を小さく",
     "lookColors": {
       "default": "サイトの色",
       "ink": "墨色",

@@ -58,6 +58,7 @@
       "light": "Leicht"
     },
     "lookColor": "Uhrfarbe",
+    "lookSecSmall": "Kleine Sekunden bei der Digitaluhr",
     "lookColors": {
       "default": "Seitenfarbe",
       "ink": "Tinte",

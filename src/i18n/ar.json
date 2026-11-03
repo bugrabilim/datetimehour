@@ -58,6 +58,7 @@
       "light": "رفيع"
     },
     "lookColor": "لون الساعة",
+    "lookSecSmall": "ثوانٍ صغيرة في الساعة الرقمية",
     "lookColors": {
       "default": "لون الموقع",
       "ink": "حبر",

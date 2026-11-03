@@ -58,6 +58,7 @@
       "light": "نازک"
     },
     "lookColor": "رنگ ساعت",
+    "lookSecSmall": "ثانیه کوچک در ساعت دیجیتال",
     "lookColors": {
       "default": "رنگ سایت",
       "ink": "جوهری",

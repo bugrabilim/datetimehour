@@ -58,6 +58,7 @@
       "light": "Tipis"
     },
     "lookColor": "Warna jam",
+    "lookSecSmall": "Detik kecil pada jam digital",
     "lookColors": {
       "default": "Warna situs",
       "ink": "Tinta",

@@ -58,6 +58,7 @@
       "light": "İnce"
     },
     "lookColor": "Saat rengi",
+    "lookSecSmall": "Dijital saatte saniye küçük",
     "lookColors": {
       "default": "Sitenin rengi",
       "ink": "Mürekkep",

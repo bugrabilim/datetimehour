@@ -58,6 +58,7 @@
       "light": "가는 글꼴"
     },
     "lookColor": "시계 색",
+    "lookSecSmall": "디지털 시계에서 초를 작게",
     "lookColors": {
       "default": "사이트 색",
       "ink": "먹색",
