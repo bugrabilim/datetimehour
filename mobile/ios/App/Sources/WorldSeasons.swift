@@ -46,6 +46,8 @@ struct WorldClockView: View {
     @State private var shift = false
     @State private var when = Date()
     @State private var editMode = EditMode.inactive
+    /// iPad ve geniş pencerede şehirler iki sütunda (2. analiz #145; düzenlerken tek sütun)
+    @Environment(\.horizontalSizeClass) private var hsc
     /// Şehre dokununca ayrıntı (2. analiz #129); arama metni (#128)
     @State private var detail: WorldEntry?
     @State private var query = ""
@@ -71,6 +73,23 @@ struct WorldClockView: View {
                     }
                 }
                 Section {
+                    if hsc == .regular && !editMode.isEditing {
+                        ForEach(Array(stride(from: 0, to: cities.count, by: 2)), id: \.self) { i in
+                            HStack(alignment: .center, spacing: 16) {
+                                Button { detail = cities[i] } label: { row(cities[i], at: at) }
+                                    .buttonStyle(.plain)
+                                    .frame(maxWidth: .infinity)
+                                Divider()
+                                if i + 1 < cities.count {
+                                    Button { detail = cities[i + 1] } label: { row(cities[i + 1], at: at) }
+                                        .buttonStyle(.plain)
+                                        .frame(maxWidth: .infinity)
+                                } else {
+                                    Color.clear.frame(maxWidth: .infinity)
+                                }
+                            }
+                        }
+                    } else {
                     ForEach(cities) { city in
                         Button { detail = city } label: { row(city, at: at) }
                             .buttonStyle(.plain)
@@ -84,6 +103,7 @@ struct WorldClockView: View {
                         var list = cities.map(\.key)
                         list.move(fromOffsets: from, toOffset: to)
                         keysRaw = list.joined(separator: ",")
+                    }
                     }
                 } header: {
                     // Düzenle ve + şehir listesinin başında (18 Ekim 2026, sahibin isteği)

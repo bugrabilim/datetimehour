@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -73,6 +75,68 @@ fun WorldScreen() {
 
     fun save(list: List<String>) = Prefs.saveWorld(list.joinToString(","))
 
+    // Şehir satırı (tek sütunda ya da tablette iki sütunda; 2. analiz #145)
+    @Composable
+    fun cityRow(city: WorldEntry) {
+        labelsVersion
+        val t = now.atZone(city.zone)
+        val diff = city.zone.rules.getOffset(now).totalSeconds - here.rules.getOffset(now).totalSeconds
+        // Şehirde gün farklıysa ertesi/önceki gün işareti ve haftanın günü
+        val dayShift = java.time.temporal.ChronoUnit.DAYS.between(now.atZone(here).toLocalDate(), t.toLocalDate())
+        val dayNote = if (dayShift != 0L) (if (dayShift > 0) "+1 " else "−1 ") + Fmt.weekdayShort(t.toLocalDate()) else ""
+        Column(Modifier.padding(horizontal = 16.dp)) {
+            Row(Modifier.fillMaxWidth().heightIn(min = 64.dp).clickable(enabled = !editing) { detail = city }.padding(vertical = 6.dp),
+                verticalAlignment = Alignment.CenterVertically) {
+                if (editing) {
+                    IconButton(onClick = { save(keys.filter { it != city.key }) }) {
+                        Icon(Icons.Filled.RemoveCircle, L("world.remove"), tint = Theme.c.err)
+                    }
+                }
+                Column(Modifier.weight(1f)) {
+                    city.label?.let { Text(it, color = Theme.c.accent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, maxLines = 1) }
+                    Text((if (city.flag.isNotEmpty()) city.flag + " " else "") + city.name, color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+                    Text(
+                        when {
+                            diff == 0 -> L("client.diffSame")
+                            diff > 0 -> T("client.diffAhead", Fmt.hm(diff))
+                            else -> T("client.diffBehind", Fmt.hm(diff))
+                        } + " · " + city.abbr(now),
+                        color = Theme.c.muted, fontSize = 13.sp,
+                    )
+                    // Yaz saati uyarısı (rakip analizi #30): şehirde 7 gün içinde saat değişiyorsa
+                    city.dstNote(now)?.let { Text("⟳ $it", color = Theme.c.accent, fontSize = 12.sp) }
+                }
+                if (editing) {
+                    val i = keys.indexOf(city.key)
+                    IconButton(onClick = { if (i > 0) save(keys.toMutableList().apply { add(i - 1, removeAt(i)) }) }, enabled = i > 0) {
+                        Icon(Icons.Filled.KeyboardArrowUp, null, tint = if (i > 0) Theme.c.accent else Theme.c.muted)
+                    }
+                    IconButton(onClick = { if (i < keys.size - 1) save(keys.toMutableList().apply { add(i + 1, removeAt(i)) }) }, enabled = i < keys.size - 1) {
+                        Icon(Icons.Filled.KeyboardArrowDown, null, tint = if (i < keys.size - 1) Theme.c.accent else Theme.c.muted)
+                    }
+                } else {
+                    // Gök renkli saat kutusu: gündüz açık mavi, alacakaranlık kızıl, gece lacivert (2. analiz #129)
+                    val light = city.light(now)
+                    val (bg, fg) = when (light) {
+                        "day" -> Color(0xFFD5E8FF) to Color(0xFF14233A)
+                        "dusk" -> Color(0xFFBE5446) to Color.White
+                        else -> Color(0xFF1B2440) to Color(0xFFE8ECF8)
+                    }
+                    Column(Modifier.clip(RoundedCornerShape(12.dp)).background(bg).padding(horizontal = 10.dp, vertical = 4.dp),
+                        horizontalAlignment = Alignment.End) {
+                        Ltr {
+                            Text((if (light == "day") "☀ " else if (light == "dusk") "◐ " else "☾ ") + Fmt.time(t) + (Fmt.ampm(t).let { if (it.isEmpty()) "" else " $it" }),
+                                color = fg, fontSize = 26.sp, fontWeight = FontWeight.Light, style = Tnum)
+                        }
+                        if (dayNote.isNotEmpty()) Text(dayNote, color = fg, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                    }
+                }
+            }
+            HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
+        }
+    }
+    // Tablet ve katlanırda iki sütun (düzenlerken tek sütun)
+    val wide = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp >= 600 && !editing
     LazyColumn(Modifier.fillMaxSize()) {
         item {
             GlobeView(Modifier.fillMaxWidth().height(340.dp))
@@ -116,64 +180,12 @@ fun WorldScreen() {
                 IconButton(onClick = { adding = true }) { Icon(Icons.Filled.Add, L("world.addCity"), tint = Theme.c.accent) }
             }
         }
-        items(cities, key = { it.key }) { city ->
-            labelsVersion
-            val t = now.atZone(city.zone)
-            val diff = city.zone.rules.getOffset(now).totalSeconds - here.rules.getOffset(now).totalSeconds
-            // Şehirde gün farklıysa ertesi/önceki gün işareti ve haftanın günü
-            val dayShift = java.time.temporal.ChronoUnit.DAYS.between(now.atZone(here).toLocalDate(), t.toLocalDate())
-            val dayNote = if (dayShift != 0L) (if (dayShift > 0) "+1 " else "−1 ") + Fmt.weekdayShort(t.toLocalDate()) else ""
-            Column(Modifier.padding(horizontal = 16.dp)) {
-                Row(Modifier.fillMaxWidth().heightIn(min = 64.dp).clickable(enabled = !editing) { detail = city }.padding(vertical = 6.dp),
-                    verticalAlignment = Alignment.CenterVertically) {
-                    if (editing) {
-                        IconButton(onClick = { save(keys.filter { it != city.key }) }) {
-                            Icon(Icons.Filled.RemoveCircle, L("world.remove"), tint = Theme.c.err)
-                        }
-                    }
-                    Column(Modifier.weight(1f)) {
-                        city.label?.let { Text(it, color = Theme.c.accent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, maxLines = 1) }
-                        Text((if (city.flag.isNotEmpty()) city.flag + " " else "") + city.name, color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
-                        Text(
-                            when {
-                                diff == 0 -> L("client.diffSame")
-                                diff > 0 -> T("client.diffAhead", Fmt.hm(diff))
-                                else -> T("client.diffBehind", Fmt.hm(diff))
-                            } + " · " + city.abbr(now),
-                            color = Theme.c.muted, fontSize = 13.sp,
-                        )
-                        // Yaz saati uyarısı (rakip analizi #30): şehirde 7 gün içinde saat değişiyorsa
-                        city.dstNote(now)?.let { Text("⟳ $it", color = Theme.c.accent, fontSize = 12.sp) }
-                    }
-                    if (editing) {
-                        val i = keys.indexOf(city.key)
-                        IconButton(onClick = { if (i > 0) save(keys.toMutableList().apply { add(i - 1, removeAt(i)) }) }, enabled = i > 0) {
-                            Icon(Icons.Filled.KeyboardArrowUp, null, tint = if (i > 0) Theme.c.accent else Theme.c.muted)
-                        }
-                        IconButton(onClick = { if (i < keys.size - 1) save(keys.toMutableList().apply { add(i + 1, removeAt(i)) }) }, enabled = i < keys.size - 1) {
-                            Icon(Icons.Filled.KeyboardArrowDown, null, tint = if (i < keys.size - 1) Theme.c.accent else Theme.c.muted)
-                        }
-                    } else {
-                        // Gök renkli saat kutusu: gündüz açık mavi, alacakaranlık kızıl, gece lacivert (2. analiz #129)
-                        val light = city.light(now)
-                        val (bg, fg) = when (light) {
-                            "day" -> Color(0xFFD5E8FF) to Color(0xFF14233A)
-                            "dusk" -> Color(0xFFBE5446) to Color.White
-                            else -> Color(0xFF1B2440) to Color(0xFFE8ECF8)
-                        }
-                        Column(Modifier.clip(RoundedCornerShape(12.dp)).background(bg).padding(horizontal = 10.dp, vertical = 4.dp),
-                            horizontalAlignment = Alignment.End) {
-                            Ltr {
-                                Text((if (light == "day") "☀ " else if (light == "dusk") "◐ " else "☾ ") + Fmt.time(t) + (Fmt.ampm(t).let { if (it.isEmpty()) "" else " $it" }),
-                                    color = fg, fontSize = 26.sp, fontWeight = FontWeight.Light, style = Tnum)
-                            }
-                            if (dayNote.isNotEmpty()) Text(dayNote, color = fg, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
-                        }
-                    }
-                }
-                HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
+        if (wide) items(cities.chunked(2), key = { it.first().key }) { pair ->
+            Row(Modifier.fillMaxWidth()) {
+                for (c in pair) Box(Modifier.weight(1f)) { cityRow(c) }
+                if (pair.size == 1) Spacer(Modifier.weight(1f))
             }
-        }
+        } else items(cities, key = { it.key }) { city -> cityRow(city) }
         item {
             TextButton(onClick = { Prefs.saveWorld(City.DEFAULT_KEYS) }, modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)) {
                 Text(L("world.reset"), color = Theme.c.accent, fontSize = 13.sp)

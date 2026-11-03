@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.ExpandLess
 import androidx.compose.material.icons.outlined.Alarm
@@ -162,50 +163,58 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                 Icons.Outlined.Alarm, L("tools.alarm.none").trimEnd('.', '。', '۔'), L("empty.alarm.text"),
                 action = L("tools.alarm.add"),
             ) { val now = LocalTime.now(); editing = AlarmItem(hour = now.hour, minute = now.minute) }
-            group.forEachIndexed { i, item ->
-                Row(
-                    Modifier.fillMaxWidth().clickable { editing = item }.padding(horizontal = 12.dp, vertical = 8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Column(Modifier.weight(1f)) {
-                        Ltr {
-                            Text(item.timeText, color = if (item.enabled) Theme.c.text else Theme.c.muted, fontSize = 40.sp,
-                                fontWeight = FontWeight.Light, style = Tnum)
-                        }
-                        // Görev simgesi (2. analiz #51)
-                        val icon = when (item.effectiveTask) {
-                            "math" -> "🧮 "; "shake" -> "📳 "; "steps" -> "🚶 "; "code" -> "🔳 "; "memory" -> "🧠 "; "typing" -> "⌨️ "; "photo" -> "📷 "
-                            "light" -> "💡 "; "random" -> "🎲 "
-                            else -> ""
-                        } + (if (item.chain.isNotEmpty()) "+${item.chain.size} " else "")
-                        // Şehir saatine ya da güneşe bağlı alarm (2. analiz #132, #153)
-                        item.anchorText?.let { Text((if (item.sun.isNotEmpty()) "☀️ " else "🌐 ") + it, color = Theme.c.accent, fontSize = 13.sp) }
-                        Text(icon + item.title + " · " + item.repeatText + (if (item.link.isNotEmpty()) " · ▶ " + (if (MusicLink.kind(item.link) == "spotify") "Spotify" else "YouTube") else "") +
-                            (if (item.smart > 0) " · " + L("alarm.smart") else "") + (if (item.preAlarm > 0) " · 🌧" else ""), color = Theme.c.muted, fontSize = 14.sp)
-                        if (item.sleepPlan) Text(L("alarm.sleepLinked"), color = Theme.c.muted, fontSize = 12.sp)
-                        // Sonraki alarm atlanacaksa hangi gün; dokununca geri alınır, değilse "atla"
-                        if (item.enabled) {
-                            val skipped = item.skipping
-                            val now = System.currentTimeMillis()
-                            fun day(ms: Long) = Fmt.longDate(java.time.Instant.ofEpochMilli(ms).atZone(java.time.ZoneId.systemDefault()).toLocalDate())
-                            // Atlanacak çalma: tatiller hesaba katılmış, elle atlama hariç sıradaki
-                            val base = item.copy(skipUntil = 0).nextAt(now)
-                            if (item.holidaySkipped(now)) Text(T("alarm.holidayNext", day(item.nextAt(now))), color = Theme.c.muted, fontSize = 13.sp)
-                            Text(
-                                if (skipped) T("alarm.skipped", day(base)) + " · " + L("alarm.unskip")
-                                else L("alarm.skip"),
-                                Modifier.clickable {
-                                    val skip = if (skipped) 0L else base + 60_000L
-                                    update(items.map { if (it.id == item.id) it.copy(skipUntil = skip) else it })
-                                }.padding(vertical = 4.dp),
-                                color = if (skipped) Theme.c.muted else Theme.c.accent, fontSize = 13.sp,
-                            )
+            // Tablet ve katlanırda iki sütun (2. analiz #145)
+            val wide = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp >= 600
+            val rows = if (wide) group.chunked(2) else group.map { listOf(it) }
+            rows.forEachIndexed { i, pair ->
+                Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
+                    for (item in pair) Box(Modifier.weight(1f)) {
+                        Row(
+                            Modifier.fillMaxWidth().clickable { editing = item }.padding(horizontal = 12.dp, vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Column(Modifier.weight(1f)) {
+                                Ltr {
+                                    Text(item.timeText, color = if (item.enabled) Theme.c.text else Theme.c.muted, fontSize = 40.sp,
+                                        fontWeight = FontWeight.Light, style = Tnum)
+                                }
+                                // Görev simgesi (2. analiz #51)
+                                val icon = when (item.effectiveTask) {
+                                    "math" -> "🧮 "; "shake" -> "📳 "; "steps" -> "🚶 "; "code" -> "🔳 "; "memory" -> "🧠 "; "typing" -> "⌨️ "; "photo" -> "📷 "
+                                    "light" -> "💡 "; "random" -> "🎲 "
+                                    else -> ""
+                                } + (if (item.chain.isNotEmpty()) "+${item.chain.size} " else "")
+                                // Şehir saatine ya da güneşe bağlı alarm (2. analiz #132, #153)
+                                item.anchorText?.let { Text((if (item.sun.isNotEmpty()) "☀️ " else "🌐 ") + it, color = Theme.c.accent, fontSize = 13.sp) }
+                                Text(icon + item.title + " · " + item.repeatText + (if (item.link.isNotEmpty()) " · ▶ " + (if (MusicLink.kind(item.link) == "spotify") "Spotify" else "YouTube") else "") +
+                                    (if (item.smart > 0) " · " + L("alarm.smart") else "") + (if (item.preAlarm > 0) " · 🌧" else ""), color = Theme.c.muted, fontSize = 14.sp)
+                                if (item.sleepPlan) Text(L("alarm.sleepLinked"), color = Theme.c.muted, fontSize = 12.sp)
+                                // Sonraki alarm atlanacaksa hangi gün; dokununca geri alınır, değilse "atla"
+                                if (item.enabled) {
+                                    val skipped = item.skipping
+                                    val now = System.currentTimeMillis()
+                                    fun day(ms: Long) = Fmt.longDate(java.time.Instant.ofEpochMilli(ms).atZone(java.time.ZoneId.systemDefault()).toLocalDate())
+                                    // Atlanacak çalma: tatiller hesaba katılmış, elle atlama hariç sıradaki
+                                    val base = item.copy(skipUntil = 0).nextAt(now)
+                                    if (item.holidaySkipped(now)) Text(T("alarm.holidayNext", day(item.nextAt(now))), color = Theme.c.muted, fontSize = 13.sp)
+                                    Text(
+                                        if (skipped) T("alarm.skipped", day(base)) + " · " + L("alarm.unskip")
+                                        else L("alarm.skip"),
+                                        Modifier.clickable {
+                                            val skip = if (skipped) 0L else base + 60_000L
+                                            update(items.map { if (it.id == item.id) it.copy(skipUntil = skip) else it })
+                                        }.padding(vertical = 4.dp),
+                                        color = if (skipped) Theme.c.muted else Theme.c.accent, fontSize = 13.sp,
+                                    )
+                                }
+                            }
+                            Switch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
+                                colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                         }
                     }
-                    Switch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
-                        colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    if (wide && pair.size == 1) Spacer(Modifier.weight(1f))
                 }
-                if (i < group.lastIndex) HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
+                if (i < rows.lastIndex) HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
             }
         }
         }

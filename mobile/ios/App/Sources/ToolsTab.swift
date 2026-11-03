@@ -354,6 +354,8 @@ struct TimerView: View {
 
 struct AlarmsView: View {
     @State private var items = AlarmItem.load()
+    /// iPad ve geniş pencerede alarmlar iki sütunda (2. analiz #145)
+    @Environment(\.horizontalSizeClass) private var hsc
     @State private var editing: AlarmItem?
     @State private var denied = false
     @State private var quickMsg = ""
@@ -414,10 +416,25 @@ struct AlarmsView: View {
                 }
             }
             Section {
-            ForEach($items) { $item in
-                if !item.sleepPlan { alarmRow($item) }
-            }
-            .onDelete { items.remove(atOffsets: $0) }
+                if hsc == .regular {
+                    let idx = items.indices.filter { !items[$0].sleepPlan }
+                    ForEach(Array(stride(from: 0, to: idx.count, by: 2)), id: \.self) { k in
+                        HStack(alignment: .top, spacing: 16) {
+                            alarmRow($items[idx[k]]).frame(maxWidth: .infinity)
+                            Divider()
+                            if k + 1 < idx.count {
+                                alarmRow($items[idx[k + 1]]).frame(maxWidth: .infinity)
+                            } else {
+                                Color.clear.frame(maxWidth: .infinity)
+                            }
+                        }
+                    }
+                } else {
+                    ForEach($items) { $item in
+                        if !item.sleepPlan { alarmRow($item) }
+                    }
+                    .onDelete { items.remove(atOffsets: $0) }
+                }
             }
             // Tatil modu (2. analiz #44)
             VacationSection {
