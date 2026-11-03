@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.runtime.CompositionLocalProvider
 import android.app.Activity
@@ -110,20 +111,29 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
     DisposableEffect(Unit) { onDispose { TickSound.stop() } }
 
     BoxWithConstraints(Modifier.fillMaxSize()) {
-        val viewport = maxHeight
+        // Düğme satırı alt çubuğun hemen üstünde, başparmak bölgesinde (2. analiz #202)
+        val actionBar = 56.dp
+        val viewport = maxHeight - actionBar
         val globeHeight = rememberGlobeHeight()
+        // Saat ekranında yalnız saat varsa (30 Ekim kararı) saat ve denetim satırı dikeyde ortalanır, saat genişliğe büyür
+        // (2. analiz #94)
+        val onlyClock = items.isEmpty() && FsLook.text.isEmpty()
+        val stage = if (onlyClock) min((viewport - 150.dp).value, (minOf(maxWidth, 640.dp) * 0.95f).value).dp.coerceAtLeast(280.dp)
+            else stageHeight(viewport)
+        Column(Modifier.fillMaxSize()) {
         Column(
-            Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
+            Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Column(
                 Modifier.widthIn(max = 640.dp).fillMaxWidth().padding(horizontal = 16.dp, vertical = 10.dp)
+                    .then(if (onlyClock) Modifier.heightIn(min = viewport - 20.dp) else Modifier)
                     .fitGlobe(viewport, globeHeight, HomeItem.GLOBE in items),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = if (onlyClock) Arrangement.spacedBy(16.dp, Alignment.CenterVertically) else Arrangement.spacedBy(16.dp),
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    HorizontalPager(pager, Modifier.fillMaxWidth().height(stageHeight(viewport))) { page ->
+                    HorizontalPager(pager, Modifier.fillMaxWidth().height(stage)) { page ->
                         ClockModelPage(page, now, place, Modifier.padding(horizontal = 2.dp))
                     }
                     StageControls(pager)
@@ -133,20 +143,6 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                 for (item in items) {
                     HomeItemView(item, now, place, globeHeight.value) { onOpen(it.open()) }
-                }
-                Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
-                    TextButton(onClick = onFullscreen) {
-                        Icon(Icons.Filled.Fullscreen, null, tint = Theme.c.accent)
-                        Text(" " + L("clock.fullscreen"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
-                    }
-                    TextButton(onClick = { customizing = true }) {
-                        Icon(Icons.Filled.Tune, null, tint = Theme.c.accent)
-                        Text(" " + L("home.edit"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
-                    }
-                    // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
-                    IconButton(onClick = { onSettings("settings") }) {
-                        Icon(Icons.Filled.Settings, L("settings.title"), tint = Theme.c.accent)
-                    }
                 }
                 // Yenilikler: yeni kadranlar bir kez tanıtılır (2. analiz #1)
                 Box(Modifier.padding(horizontal = 16.dp)) { DialNewsCard { onSettings("dials") } }
@@ -158,6 +154,22 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                     }
                 }
             }
+        }
+        Row(Modifier.fillMaxWidth().height(actionBar), horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
+            verticalAlignment = Alignment.CenterVertically) {
+            TextButton(onClick = onFullscreen) {
+                Icon(Icons.Filled.Fullscreen, null, tint = Theme.c.accent)
+                Text(" " + L("clock.fullscreen"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+            }
+            TextButton(onClick = { customizing = true }) {
+                Icon(Icons.Filled.Tune, null, tint = Theme.c.accent)
+                Text(" " + L("home.edit"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+            }
+            // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
+            IconButton(onClick = { onSettings("settings") }) {
+                Icon(Icons.Filled.Settings, L("settings.title"), tint = Theme.c.accent)
+            }
+        }
         }
     }
 
@@ -234,10 +246,12 @@ private fun StageControls(pager: PagerState, tint: androidx.compose.ui.graphics.
                 Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("stage.prev"), tint = tint)
             }
             Box {
+                // Model adı ve sırası (2. analiz #202): "Klasik analog · 1/20"; dokununca liste
                 Text(
-                    "${pager.currentPage + 1}/$n",
-                    Modifier.clickable { menu = true }.padding(horizontal = 12.dp, vertical = 6.dp),
-                    color = tint, fontWeight = FontWeight.SemiBold, fontSize = 17.sp, style = Tnum,
+                    ClockModel.at(pager.currentPage).title + " · ${pager.currentPage + 1}/$n",
+                    Modifier.widthIn(max = 260.dp).clickable { menu = true }.padding(horizontal = 8.dp, vertical = 6.dp),
+                    color = tint, fontWeight = FontWeight.SemiBold, fontSize = 15.sp, style = Tnum, maxLines = 1,
+                    overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis,
                 )
                 DropdownMenu(menu, { menu = false }) {
                     for (m in ClockModel.entries) {

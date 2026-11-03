@@ -18,6 +18,8 @@ struct ClockTab: View {
 
     /// Dönen dünyanın yüksekliği: varsayılan düzende sayfa ekrana tam otursun diye kalan boşluğu doldurur
     @State private var globeHeight: CGFloat = 260
+    /// Alttaki düğme satırının yüksekliği (2. analiz #202)
+    static let actionBar: CGFloat = 52
 
     var body: some View {
         GeometryReader { geo in
@@ -25,37 +27,22 @@ struct ClockTab: View {
                 let now = context.date
                 let place = PlaceModel.shared.place
                 let items = HomeLayout(raw: homeItems).visible
+                // Düğme satırı alt çubuğun hemen üstünde, başparmak bölgesinde (2. analiz #202)
+                let viewport = geo.size.height - Self.actionBar
+                // Saat ekranında yalnız saat varsa (30 Ekim kararı) saat ve denetim satırı dikeyde ortalanır, saat genişliğe
+                // büyür (2. analiz #94)
+                let onlyClock = items.isEmpty && personalText.isEmpty
+                let stage = onlyClock ? max(280, min(viewport - 150, min(geo.size.width, 640) * 0.95)) : Self.stageHeight(viewport)
+                VStack(spacing: 0) {
                 ScrollView {
                     VStack(spacing: 16) {
-                        ClockStage(now: now, place: place, height: Self.stageHeight(geo.size.height))
+                        ClockStage(now: now, place: place, height: stage)
                         if !personalText.isEmpty {
                             Text(personalText).font(.title3.weight(.semibold)).multilineTextAlignment(.center).foregroundStyle(Theme.text)
                         }
                         ForEach(items) { item in
                             HomeItemView(item: item, now: now, place: place, globeHeight: globeHeight)
                         }
-                        HStack(spacing: 28) {
-                            Button {
-                                fullscreen = true
-                                BadgeStore.shared.hit(.tamEkran)
-                            } label: {
-                                Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
-                            }
-                            Button {
-                                customizing = true
-                            } label: {
-                                Label(L("home.edit"), systemImage: "slider.horizontal.3")
-                            }
-                            // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
-                            Button {
-                                Router.shared.sheet = .settings
-                            } label: {
-                                Image(systemName: "gearshape")
-                            }
-                            .accessibilityLabel(L("settings.title"))
-                        }
-                        .font(.headline)
-                        .foregroundStyle(Theme.accent)
                         // Yenilikler: yeni kadranlar bir kez tanıtılır (2. analiz #1)
                         DialNewsCard()
                         // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
@@ -72,12 +59,38 @@ struct ClockTab: View {
                     }
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
+                    .frame(minHeight: onlyClock ? viewport - 20 : nil)
                     .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { h in
-                        globeHeight = Self.fitGlobe(contentHeight: h, viewport: geo.size.height, globe: globeHeight,
+                        globeHeight = Self.fitGlobe(contentHeight: h, viewport: viewport, globe: globeHeight,
                                                     hasGlobe: items.contains(.globe))
                     }
                     .frame(maxWidth: 640)
                     .frame(maxWidth: .infinity)
+                }
+                HStack(spacing: 28) {
+                    Button {
+                        fullscreen = true
+                        BadgeStore.shared.hit(.tamEkran)
+                    } label: {
+                        Label(L("clock.fullscreen"), systemImage: "arrow.up.left.and.arrow.down.right")
+                    }
+                    Button {
+                        customizing = true
+                    } label: {
+                        Label(L("home.edit"), systemImage: "slider.horizontal.3")
+                    }
+                    // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
+                    Button {
+                        Router.shared.sheet = .settings
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                    .accessibilityLabel(L("settings.title"))
+                }
+                .font(.headline)
+                .foregroundStyle(Theme.accent)
+                .frame(height: Self.actionBar)
+                .frame(maxWidth: .infinity)
                 }
                 // Hava neyse ekran öyle (2. analiz #193): seçilirse zemin seçili yerin havası, yazılar koyu temanın renkleri
                 .background {
@@ -173,9 +186,12 @@ struct ClockStage: View {
                         }
                     }
                 } label: {
-                    Text("\(model.number)/\(ClockModel.allCases.count)")
-                        .font(.headline.monospacedDigit())
-                        .frame(minWidth: 60)
+                    // Model adı ve sırası (2. analiz #202): "Klasik analog · 1/20"; dokununca liste
+                    Text("\(model.name) · \(model.number)/\(ClockModel.allCases.count)")
+                        .font(.subheadline.weight(.semibold).monospacedDigit())
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                        .frame(minWidth: 60, maxWidth: 260)
                 }
                 .accessibilityLabel(model.name)
                 Button { step(1) } label: { Image(systemName: "chevron.forward") }
