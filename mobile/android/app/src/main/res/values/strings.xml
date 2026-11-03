@@ -891,7 +891,7 @@
     <string name="badges_deleteNo">Vazgeç</string>
     <string name="badges_deleted">Rozetlerin silindi.</string>
     <string name="badges_toast">Yeni rozet: %1$s</string>
-    <string name="badges_note">Rozetlerin ve ilerlemen yalnız bu cihazda, sen silene kadar saklanır.</string>
+    <string name="badges_note">Rozetleriniz ve ilerlemeniz yalnız bu cihazda, siz silene kadar saklanır.</string>
     <string name="badges_deleteText">Bu cihazdaki bütün rozetlerin ve ilerlemen (gördüğün saat modelleri, kullanım serin) silinir. Geri alınamaz.</string>
     <string name="badges_items_renk_name">Renk ustası</string>
     <string name="badges_items_renk_how">Ayarlar\'dan uygulama rengini değiştir.</string>
@@ -1062,7 +1062,7 @@
     <string name="look_bg_stars">Yıldızlar</string>
     <string name="look_bg_note">Gökyüzü seçili konumda Güneş\'in yüksekliğine göre gündüz, gün doğumu/batımı ya da gece olur. Telefonda \"hareketi azalt\" açıksa hareketli arka planlar durağan görünür.</string>
     <string name="features_title">Özellikler</string>
-    <string name="features_note">Saat her zaman açık. Açtığın özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır.</string>
+    <string name="features_note">Saat her zaman açık. Açtığınız özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır.</string>
     <string name="features_clock_note">Her zaman açık: 20 saat modeli, tam ekran, saat ekranı alanları</string>
     <string name="features_weather_note">Anlık hava, saatlik ve 7 günlük tahmin</string>
     <string name="features_calendar_note">Resmî tatiller, dini ve özel günler, telefonundaki takvimler</string>

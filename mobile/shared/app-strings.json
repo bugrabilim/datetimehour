@@ -3231,10 +3231,10 @@
     "th": "เหรียญตราใหม่: {name}"
   },
   "badges.note": {
-    "tr": "Rozetlerin ve ilerlemen yalnız bu cihazda, sen silene kadar saklanır.",
+    "tr": "Rozetleriniz ve ilerlemeniz yalnız bu cihazda, siz silene kadar saklanır.",
     "en": "Your badges and progress are stored only on this device until you delete them.",
     "de": "Ihre Abzeichen und Ihr Fortschritt werden nur auf diesem Gerät gespeichert, bis Sie sie löschen.",
-    "az": "Nişanların və irəliləyişin yalnız bu cihazda, sən silənə qədər saxlanılır.",
+    "az": "Nişanlarınız və irəliləyişiniz yalnız bu cihazda, siz silənə qədər saxlanılır.",
     "ar": "تُحفظ شاراتك وتقدّمك على هذا الجهاز فقط إلى أن تحذفها.",
     "id": "Lencana dan kemajuan Anda hanya disimpan di perangkat ini sampai Anda menghapusnya.",
     "ur": "آپ کے بیجز اور پیش رفت حذف کرنے تک صرف اسی آلے پر محفوظ رہتی ہے۔",
@@ -6138,7 +6138,7 @@
     "th": "ฟีเจอร์"
   },
   "features.note": {
-    "tr": "Saat her zaman açık. Açtığın özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır.",
+    "tr": "Saat her zaman açık. Açtığınız özellikler alt çubukta görünür; hepsi kapalıysa alt çubuk gizlenir, ayarlar saat ekranındaki dişliden açılır.",
     "en": "The clock is always on. Features you turn on appear in the bottom bar; with all of them off the bar is hidden and settings open from the gear on the clock screen.",
     "de": "Die Uhr ist immer an. Eingeschaltete Funktionen erscheinen in der unteren Leiste; sind alle aus, wird die Leiste ausgeblendet und die Einstellungen öffnen sich über das Zahnrad auf dem Uhrbildschirm.",
     "az": "Saat həmişə açıqdır. Açdığınız xüsusiyyətlər alt zolaqda görünür; hamısı bağlı olduqda alt zolaq gizlənir, parametrlər saat ekranındakı dişli ilə açılır.",

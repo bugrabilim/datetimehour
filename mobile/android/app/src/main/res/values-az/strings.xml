@@ -891,7 +891,7 @@
     <string name="badges_deleteNo">İmtina</string>
     <string name="badges_deleted">Nişanların silindi.</string>
     <string name="badges_toast">Yeni nişan: %1$s</string>
-    <string name="badges_note">Nişanların və irəliləyişin yalnız bu cihazda, sən silənə qədər saxlanılır.</string>
+    <string name="badges_note">Nişanlarınız və irəliləyişiniz yalnız bu cihazda, siz silənə qədər saxlanılır.</string>
     <string name="badges_deleteText">Bu cihazdakı bütün nişanların və irəliləyişin (gördüyün saat modelləri, istifadə seriyan) silinəcək. Geri qaytarmaq olmur.</string>
     <string name="badges_items_renk_name">Rəng ustası</string>
     <string name="badges_items_renk_how">Parametrlərdən tətbiqin rəngini dəyiş.</string>
