@@ -36,7 +36,9 @@ struct WorldEntry: Identifiable, Hashable {
         let sec = zone.secondsFromGMT(for: now)
         if sec == 0 { return "UTC" }
         let h = abs(sec) / 3600, m = abs(sec) % 3600 / 60
-        return "UTC" + (sec > 0 ? "+" : "−") + "\(h)" + (m > 0 ? String(format: ":%02d", m) : "")
+        let sign: String = sec > 0 ? "+" : "−"
+        let mins: String = m > 0 ? String(format: ":%02d", m) : ""
+        return "UTC" + sign + String(h) + mins
     }
 
     /// Gündüz (Güneş ufkun üstünde), alacakaranlık (0…−6°), gece; konumu bilinmeyen dilimde saate göre

@@ -41,6 +41,13 @@ struct City: Decodable, Identifiable, Hashable {
 }
 
 struct WorldClockView: View {
+    /// Gök simgesi + saat (+ ÖÖ/ÖS); tür denetimi için parçalı
+    static func clockText(light: String, date: Date, zone: TimeZone) -> String {
+        let icon: String = light == "day" ? "☀ " : (light == "dusk" ? "◐ " : "☾ ")
+        let ampm: String = Fmt.ampm(date, tz: zone)
+        return icon + Fmt.time(date, tz: zone) + (ampm.isEmpty ? "" : " " + ampm)
+    }
+
     @AppStorage("world") private var keysRaw = City.defaultKeys
     @State private var adding = false
     @State private var shift = false
@@ -185,7 +192,7 @@ struct WorldClockView: View {
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 2) {
-                Text((light == "day" ? "☀ " : light == "dusk" ? "◐ " : "☾ ") + Fmt.time(date, tz: city.zone) + (Fmt.ampm(date, tz: city.zone).isEmpty ? "" : " " + Fmt.ampm(date, tz: city.zone)))
+                Text(Self.clockText(light: light, date: date, zone: city.zone))
                     .font(.system(size: 24, weight: .light, design: .rounded))
                     .monospacedDigit()
                     .environment(\.layoutDirection, .leftToRight)

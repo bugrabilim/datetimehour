@@ -106,6 +106,19 @@ func quickTargets(_ today: CalendarDay) -> [(String, CalendarDay)] {
 
 /// Geri sayımlarım: liste, + ile yeni, dokununca düzenle; altta hazır özel günler
 struct CountdownsView: View {
+    /// Alt satır: tarih, saat (gece yarısı değilse), yıllık işareti, kaçıncı yıl ve etiket (ifade tür denetimi için parçalı)
+    static func subtitle(_ c: CountdownItem, at: Date) -> String {
+        let cal = Calendar.current
+        let hasTime = cal.component(.hour, from: at) + cal.component(.minute, from: at) > 0
+        var s: String = Fmt.longDate(at)
+        if hasTime { s += " " + Fmt.time(at) }
+        if c.yearly { s += " · ↻" }
+        s += c.ordinalText(at: at)
+        let tag: String = c.tag ?? ""
+        if !tag.isEmpty { s += " · #" + tag }
+        return s
+    }
+
     @State private var items = CountdownItem.load()
     @State private var editing: CountdownItem?
     @State private var sharing: CountdownItem?
@@ -159,7 +172,7 @@ struct CountdownsView: View {
                                     .font(.title3.weight(.bold)).monospacedDigit()
                                     .foregroundStyle(c.tint ?? Theme.accent)
                                     .environment(\.layoutDirection, .leftToRight)
-                                Text(Fmt.longDate(at) + (Calendar.current.component(.hour, from: at) + Calendar.current.component(.minute, from: at) > 0 ? " " + Fmt.time(at) : "") + (c.yearly ? " · ↻" : "") + c.ordinalText(at: at) + ((c.tag ?? "").isEmpty ? "" : " · #" + (c.tag ?? "")))
+                                Text(Self.subtitle(c, at: at))
                                     .font(.caption).foregroundStyle(Theme.muted)
                             }
                             Spacer()
