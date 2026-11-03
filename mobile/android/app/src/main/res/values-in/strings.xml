@@ -1838,5 +1838,10 @@
     <string name="look_weatherAnimNote">Layar menampilkan cuaca di tempat terpilih: hujan turun saat hujan, awan bergerak cepat dan daun beterbangan saat berangin, salju turun saat bersalju, kabut saat berkabut, kilat saat badai, matahari bersinar saat cerah, dan bintang muncul di malam hari. Intensitas mengikuti pengukuran (curah hujan, angin, tutupan awan). Jika Kurangi Gerakan aktif, gambar ditampilkan diam.</string>
     <string name="widget_style_clear">Transparan</string>
     <string name="widget_style_glass">Semi-transparan</string>
+    <string name="lang_title">Bahasa</string>
+    <string name="lang_system">Bahasa sistem</string>
+    <string name="lang_note">Bahasa aplikasi dapat berbeda dari bahasa ponsel. Widget dan notifikasi juga memakai bahasa yang dipilih.</string>
+    <string name="lang_noteIOS">Bahasa aplikasi dapat berbeda dari bahasa ponsel; bahasa baru dipakai setelah aplikasi ditutup lalu dibuka lagi. Widget tetap memakai bahasa ponsel (bisa juga diubah di Pengaturan iPhone › Jam &amp; Tanggal › Bahasa).</string>
+    <string name="lang_restart">Tutup lalu buka lagi aplikasinya</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

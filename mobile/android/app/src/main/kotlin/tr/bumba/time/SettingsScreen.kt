@@ -154,6 +154,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                 }
             }
         }
+        // Dil (2. analiz #5): telefonun ayarlarına gitmeden
+        LanguageSettingsRow { onRoute("language") }
         // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
         FontScaleCard()
         AppCard(padding = 4) {

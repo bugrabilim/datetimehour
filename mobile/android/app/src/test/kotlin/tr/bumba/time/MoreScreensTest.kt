@@ -398,6 +398,7 @@ class MoreScreensTest {
         shot("tr-atmosfer-koyu", atmo = "ocean", dark = true) { SettingsScreen {} }
         shot("tr-yazi-boyutu-130", fontScale = 130) { SettingsScreen {} }
         shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
+        page("tr-dil", "Dil") { LanguageScreen() }
         shot("tr-kurulum") { OnboardingScreen {} }
         Onboarding.finish()
     }

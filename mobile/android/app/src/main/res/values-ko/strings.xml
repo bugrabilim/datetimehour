@@ -1838,5 +1838,10 @@
     <string name="look_weatherAnimNote">선택한 장소의 날씨를 화면에 보여 줍니다. 비가 오면 비가 내리고, 바람이 불면 구름이 빨라지고 나뭇잎이 날리며, 눈이 오면 눈, 안개가 끼면 안개, 폭풍에는 번개, 맑은 낮에는 해가 빛나고 밤에는 별이 뜹니다. 세기는 측정값(강수량, 바람, 구름 양)에 따라 달라집니다. 동작 줄이기가 켜져 있으면 멈춘 그림으로 표시됩니다.</string>
     <string name="widget_style_clear">투명</string>
     <string name="widget_style_glass">반투명</string>
+    <string name="lang_title">언어</string>
+    <string name="lang_system">시스템 언어</string>
+    <string name="lang_note">앱 언어는 휴대폰 언어와 따로 선택할 수 있습니다. 위젯과 알림도 선택한 언어를 사용합니다.</string>
+    <string name="lang_noteIOS">앱 언어는 휴대폰 언어와 따로 선택할 수 있으며, 앱을 닫았다가 다시 열면 새 언어가 적용됩니다. 위젯은 휴대폰 언어로 유지됩니다(iPhone 설정 › 시간과 날짜 › 언어에서도 변경 가능).</string>
+    <string name="lang_restart">앱을 닫았다가 다시 여세요</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

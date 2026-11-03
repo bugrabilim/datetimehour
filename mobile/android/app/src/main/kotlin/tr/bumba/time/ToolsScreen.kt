@@ -82,6 +82,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "features" -> Page(L("features.title"), { onRoute("settings") }) { FeaturesScreen() }
         "about" -> Page(L("settings.about"), onRoute) { AboutScreen() }
         "shareQr" -> Page(L("support.qr"), { onRoute("settings") }) { ShareQrScreen() }
+        "language" -> Page(L("lang.title"), { onRoute("settings") }) { LanguageScreen() }
         "badges" -> Page(L("badges.h1"), onRoute) { BadgesScreen() }
         "notifications" -> Page(L("settings.notifications"), { onRoute("settings") }) { NotificationsScreen(onRoute) }
         "prayerNotify" -> {

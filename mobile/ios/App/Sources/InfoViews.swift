@@ -49,6 +49,8 @@ struct SettingsView: View {
                 }
                 NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
             }
+            // Dil (2. analiz #5): telefonun ayarlarına gitmeden
+            Section { LanguageRow() }
             // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
             Section { FontScaleRow() }
             // Sunucusuz eşitleme (CloudSync.swift): aynı Apple hesabındaki cihazlar arasında, iCloud anahtar-değer deposu

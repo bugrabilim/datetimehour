@@ -59,6 +59,11 @@ import androidx.compose.ui.unit.sp
 import java.time.LocalDate
 
 class MainActivity : ComponentActivity() {
+    /** Android 13 öncesinde uygulama içi dil (AppLanguage); sonrasında sistemin uygulama dili */
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(AppLanguage.wrap(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

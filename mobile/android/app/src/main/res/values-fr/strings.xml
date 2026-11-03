@@ -1838,5 +1838,10 @@
     <string name="look_weatherAnimNote">L\'écran montre la météo du lieu choisi : il pleut quand il pleut, les nuages accélèrent et les feuilles s\'envolent avec le vent, la neige tombe, le brouillard s\'installe, les éclairs jaillissent pendant les orages, le soleil brille par temps clair et les étoiles apparaissent la nuit. L\'intensité suit les mesures (précipitations, vent, couverture nuageuse). Avec « Réduire les animations », l\'image reste fixe.</string>
     <string name="widget_style_clear">Transparent</string>
     <string name="widget_style_glass">Translucide</string>
+    <string name="lang_title">Langue</string>
+    <string name="lang_system">Langue du système</string>
+    <string name="lang_note">La langue de l\'app peut différer de celle du téléphone. Les widgets et les notifications utilisent aussi la langue choisie.</string>
+    <string name="lang_noteIOS">La langue de l\'app peut différer de celle du téléphone ; la nouvelle langue s\'applique après avoir fermé puis rouvert l\'app. Les widgets restent dans la langue du téléphone (modifiable aussi dans Réglages de l\'iPhone › Heure &amp; Date › Langue).</string>
+    <string name="lang_restart">Fermez puis rouvrez l\'app</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

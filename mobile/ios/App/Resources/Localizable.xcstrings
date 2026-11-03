@@ -174515,6 +174515,481 @@
           }
         }
       }
+    },
+    "lang.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprache"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dil"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اللغة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bahasa"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زبان"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زبان"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Langue"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Язык"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "言語"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "언어"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "语言"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wika"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ภาษา"
+          }
+        }
+      }
+    },
+    "lang.system": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem dili"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System language"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Systemsprache"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sistem dili"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لغة النظام"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bahasa sistem"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سسٹم کی زبان"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زبان سیستم"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Langue du système"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Язык системы"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "システムの言語"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시스템 언어"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "系统语言"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wika ng system"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ภาษาของระบบ"
+          }
+        }
+      }
+    },
+    "lang.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamanın dili telefonun dilinden ayrı seçilebilir. Widget'lar ve bildirimler de seçilen dili kullanır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app's language can differ from the phone's. Widgets and notifications use the chosen language too."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die App-Sprache kann von der Telefonsprache abweichen. Widgets und Mitteilungen verwenden ebenfalls die gewählte Sprache."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqin dili telefonun dilindən fərqli seçilə bilər. Vidcetlər və bildirişlər də seçilmiş dildən istifadə edir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يمكن اختيار لغة التطبيق بمعزل عن لغة الهاتف. تستخدم الأدوات والإشعارات اللغة المختارة أيضًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bahasa aplikasi dapat berbeda dari bahasa ponsel. Widget dan notifikasi juga memakai bahasa yang dipilih."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایپ کی زبان فون کی زبان سے الگ چنی جا سکتی ہے۔ ویجیٹ اور اطلاعات بھی منتخب زبان استعمال کرتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زبان برنامه را می‌توان جدا از زبان گوشی انتخاب کرد. ابزارک‌ها و اعلان‌ها هم زبان انتخاب‌شده را به کار می‌برند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La langue de l'app peut différer de celle du téléphone. Les widgets et les notifications utilisent aussi la langue choisie."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Язык приложения можно выбрать отдельно от языка телефона. Виджеты и уведомления тоже используют выбранный язык."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリの言語は端末の言語とは別に選べます。ウィジェットと通知も選んだ言語になります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앱 언어는 휴대폰 언어와 따로 선택할 수 있습니다. 위젯과 알림도 선택한 언어를 사용합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用语言可以与手机语言不同。小组件和通知也会使用所选语言。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maaaring iba ang wika ng app sa wika ng telepono. Ginagamit din ng mga widget at notification ang napiling wika."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ภาษาของแอปเลือกแยกจากภาษาของโทรศัพท์ได้ วิดเจ็ตและการแจ้งเตือนก็ใช้ภาษาที่เลือกด้วย"
+          }
+        }
+      }
+    },
+    "lang.noteIOS": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamanın dili telefonun dilinden ayrı seçilebilir; yeni dil uygulamayı kapatıp yeniden açınca kullanılır. Widget'lar telefonun dilinde kalır (iPhone Ayarlar › Saat Tarih › Dil ile de değiştirilebilir)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app's language can differ from the phone's; the new language is used after you close and reopen the app. Widgets stay in the phone's language (you can also change it in iPhone Settings › Time & Date › Language)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die App-Sprache kann von der Telefonsprache abweichen; die neue Sprache gilt, nachdem Sie die App geschlossen und wieder geöffnet haben. Widgets bleiben in der Telefonsprache (auch änderbar unter iPhone-Einstellungen › Uhr & Datum › Sprache)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqin dili telefonun dilindən fərqli seçilə bilər; yeni dil tətbiqi bağlayıb yenidən açanda istifadə olunur. Vidcetlər telefonun dilində qalır (iPhone Ayarlar › Saat Tarix › Dil ilə də dəyişmək olar)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يمكن اختيار لغة التطبيق بمعزل عن لغة الهاتف؛ تُستخدم اللغة الجديدة بعد إغلاق التطبيق وإعادة فتحه. تبقى الأدوات بلغة الهاتف (ويمكن تغييرها أيضًا من إعدادات iPhone › الوقت والتاريخ › اللغة)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bahasa aplikasi dapat berbeda dari bahasa ponsel; bahasa baru dipakai setelah aplikasi ditutup lalu dibuka lagi. Widget tetap memakai bahasa ponsel (bisa juga diubah di Pengaturan iPhone › Jam & Tanggal › Bahasa)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایپ کی زبان فون کی زبان سے الگ چنی جا سکتی ہے؛ نئی زبان ایپ بند کر کے دوبارہ کھولنے پر لاگو ہوتی ہے۔ ویجیٹ فون کی زبان میں رہتے ہیں (آئی فون کی ترتیبات › وقت اور تاریخ › زبان سے بھی بدلی جا سکتی ہے)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "زبان برنامه را می‌توان جدا از زبان گوشی انتخاب کرد؛ زبان تازه پس از بستن و باز کردن دوباره برنامه به کار می‌رود. ابزارک‌ها به زبان گوشی می‌مانند (از تنظیمات آیفون › ساعت و تاریخ › زبان هم می‌توان تغییر داد)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La langue de l'app peut différer de celle du téléphone ; la nouvelle langue s'applique après avoir fermé puis rouvert l'app. Les widgets restent dans la langue du téléphone (modifiable aussi dans Réglages de l'iPhone › Heure & Date › Langue)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Язык приложения можно выбрать отдельно от языка телефона; новый язык включится после закрытия и повторного открытия приложения. Виджеты остаются на языке телефона (также можно изменить в Настройках iPhone › Время и дата › Язык)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリの言語は端末の言語とは別に選べます。新しい言語はアプリを閉じて開き直すと使われます。ウィジェットは端末の言語のままです（iPhoneの設定 › 時刻と日付 › 言語 でも変更できます）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앱 언어는 휴대폰 언어와 따로 선택할 수 있으며, 앱을 닫았다가 다시 열면 새 언어가 적용됩니다. 위젯은 휴대폰 언어로 유지됩니다(iPhone 설정 › 시간과 날짜 › 언어에서도 변경 가능)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "应用语言可以与手机语言不同；关闭并重新打开应用后使用新语言。小组件保持手机语言（也可在 iPhone 设置 › 时间与日期 › 语言中更改）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maaaring iba ang wika ng app sa wika ng telepono; magagamit ang bagong wika matapos isara at muling buksan ang app. Mananatili sa wika ng telepono ang mga widget (mapapalitan din sa Settings ng iPhone › Oras at Petsa › Wika)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ภาษาของแอปเลือกแยกจากภาษาของโทรศัพท์ได้ ภาษาใหม่จะใช้หลังปิดแล้วเปิดแอปอีกครั้ง วิดเจ็ตยังคงใช้ภาษาของโทรศัพท์ (เปลี่ยนได้ที่การตั้งค่า iPhone › เวลาและวันที่ › ภาษา ด้วย)"
+          }
+        }
+      }
+    },
+    "lang.restart": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamayı kapatıp yeniden açın"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close and reopen the app"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schließen Sie die App und öffnen Sie sie erneut"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqi bağlayıb yenidən açın"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أغلق التطبيق ثم افتحه من جديد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutup lalu buka lagi aplikasinya"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایپ بند کر کے دوبارہ کھولیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برنامه را ببندید و دوباره باز کنید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fermez puis rouvrez l'app"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закройте и снова откройте приложение"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリを閉じて開き直してください"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앱을 닫았다가 다시 여세요"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请关闭并重新打开应用"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isara at muling buksan ang app"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปิดแล้วเปิดแอปอีกครั้ง"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

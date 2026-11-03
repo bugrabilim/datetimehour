@@ -1838,5 +1838,10 @@
     <string name="look_weatherAnimNote">The screen shows the weather at the selected place: rain falls when it rains, clouds speed up and leaves blow in the wind, snow falls in snow, fog drifts in fog, lightning flashes in storms, the sun glows on clear days and stars come out at night. Intensity follows the measurements (precipitation, wind, cloud cover). With Reduce Motion on, it is drawn still.</string>
     <string name="widget_style_clear">Transparent</string>
     <string name="widget_style_glass">Translucent</string>
+    <string name="lang_title">Language</string>
+    <string name="lang_system">System language</string>
+    <string name="lang_note">The app\'s language can differ from the phone\'s. Widgets and notifications use the chosen language too.</string>
+    <string name="lang_noteIOS">The app\'s language can differ from the phone\'s; the new language is used after you close and reopen the app. Widgets stay in the phone\'s language (you can also change it in iPhone Settings › Time &amp; Date › Language).</string>
+    <string name="lang_restart">Close and reopen the app</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

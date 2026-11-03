@@ -14,7 +14,9 @@ object Strings {
     private val cache = HashMap<String, Int>()
 
     fun init(c: Context) {
-        context = c.applicationContext
+        // Android 13 öncesinde uygulama içi dil seçimi bağlamın dilini değiştirir (AppLanguage, 2. analiz #5)
+        context = AppLanguage.wrap(c.applicationContext)
+        cache.clear()
     }
 
     /** Uygulamanın dilleri (gen-strings.mjs ile aynı); sağdan sola yazılanlar */

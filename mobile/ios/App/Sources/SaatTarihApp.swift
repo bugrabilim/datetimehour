@@ -323,7 +323,7 @@ enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
-         qr, colors, wall, study, wakegame
+         qr, colors, wall, study, wakegame, language
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -350,6 +350,7 @@ enum DebugScreen: String, Identifiable {
         case .breath: BreathView()
         case .study: StudyView()
         case .wakegame: WakeGameView()
+        case .language: LanguageView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()
         case .weather: WeatherView()

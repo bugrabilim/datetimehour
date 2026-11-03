@@ -1838,5 +1838,10 @@
     <string name="look_weatherAnimNote">Ipinapakita ng screen ang panahon sa napiling lugar: umuulan kapag umuulan, bumibilis ang ulap at lumilipad ang mga dahon kapag mahangin, umuulan ng niyebe, may hamog, kumikidlat sa bagyo, sumisikat ang araw kapag maaliwalas, at lumalabas ang mga bituin sa gabi. Sumusunod ang lakas sa mga sukat (ulan, hangin, ulap). Kapag naka-on ang Reduce Motion, hindi ito gumagalaw.</string>
     <string name="widget_style_clear">Transparent</string>
     <string name="widget_style_glass">Medyo transparent</string>
+    <string name="lang_title">Wika</string>
+    <string name="lang_system">Wika ng system</string>
+    <string name="lang_note">Maaaring iba ang wika ng app sa wika ng telepono. Ginagamit din ng mga widget at notification ang napiling wika.</string>
+    <string name="lang_noteIOS">Maaaring iba ang wika ng app sa wika ng telepono; magagamit ang bagong wika matapos isara at muling buksan ang app. Mananatili sa wika ng telepono ang mga widget (mapapalitan din sa Settings ng iPhone › Oras at Petsa › Wika).</string>
+    <string name="lang_restart">Isara at muling buksan ang app</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

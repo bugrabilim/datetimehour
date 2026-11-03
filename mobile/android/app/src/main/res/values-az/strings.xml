@@ -1838,5 +1838,10 @@
     <string name="look_weatherAnimNote">Ekran seçilmiş yerin havasını göstərir: yağışda yağış yağır, küləkdə buludlar sürətlənir və yarpaqlar sovrulur, qarda qar, dumanda duman, tufanda şimşək, açıq gündüz Günəş parlayır, gecə ulduzlar çıxır. İntensivlik ölçmələrə görə dəyişir (yağıntı, külək, buludluluq). Hərəkəti azalt açıqdırsa, sabit çəkilir.</string>
     <string name="widget_style_clear">Şəffaf</string>
     <string name="widget_style_glass">Yarışəffaf</string>
+    <string name="lang_title">Dil</string>
+    <string name="lang_system">Sistem dili</string>
+    <string name="lang_note">Tətbiqin dili telefonun dilindən fərqli seçilə bilər. Vidcetlər və bildirişlər də seçilmiş dildən istifadə edir.</string>
+    <string name="lang_noteIOS">Tətbiqin dili telefonun dilindən fərqli seçilə bilər; yeni dil tətbiqi bağlayıb yenidən açanda istifadə olunur. Vidcetlər telefonun dilində qalır (iPhone Ayarlar › Saat Tarix › Dil ilə də dəyişmək olar).</string>
+    <string name="lang_restart">Tətbiqi bağlayıb yenidən açın</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

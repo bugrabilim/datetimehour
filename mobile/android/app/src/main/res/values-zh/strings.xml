@@ -1838,5 +1838,10 @@
     <string name="look_weatherAnimNote">屏幕显示所选地点的天气：下雨时下雨，有风时云跑得更快、树叶飘舞，下雪时飘雪，起雾时有雾，雷暴时闪电，晴天白天阳光闪耀，夜晚星星出现。强度随实测数据变化（降水、风、云量）。开启“减弱动态效果”时画面静止。</string>
     <string name="widget_style_clear">透明</string>
     <string name="widget_style_glass">半透明</string>
+    <string name="lang_title">语言</string>
+    <string name="lang_system">系统语言</string>
+    <string name="lang_note">应用语言可以与手机语言不同。小组件和通知也会使用所选语言。</string>
+    <string name="lang_noteIOS">应用语言可以与手机语言不同；关闭并重新打开应用后使用新语言。小组件保持手机语言（也可在 iPhone 设置 › 时间与日期 › 语言中更改）。</string>
+    <string name="lang_restart">请关闭并重新打开应用</string>
     <string name="app_name">时间与日期</string>
 </resources>

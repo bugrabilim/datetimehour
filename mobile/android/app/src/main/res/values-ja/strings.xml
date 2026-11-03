@@ -1838,5 +1838,10 @@
     <string name="look_weatherAnimNote">選んだ場所の天気を画面に映します。雨なら雨が降り、風が強いと雲が速く流れ葉が舞い、雪なら雪、霧なら霧、嵐なら稲妻、晴れた昼は太陽が輝き、夜は星が出ます。強さは観測値（降水量、風、雲量）に応じて変わります。「視差効果を減らす」がオンなら静止画になります。</string>
     <string name="widget_style_clear">透明</string>
     <string name="widget_style_glass">半透明</string>
+    <string name="lang_title">言語</string>
+    <string name="lang_system">システムの言語</string>
+    <string name="lang_note">アプリの言語は端末の言語とは別に選べます。ウィジェットと通知も選んだ言語になります。</string>
+    <string name="lang_noteIOS">アプリの言語は端末の言語とは別に選べます。新しい言語はアプリを閉じて開き直すと使われます。ウィジェットは端末の言語のままです（iPhoneの設定 › 時刻と日付 › 言語 でも変更できます）。</string>
+    <string name="lang_restart">アプリを閉じて開き直してください</string>
     <string name="app_name">時刻と日付</string>
 </resources>
