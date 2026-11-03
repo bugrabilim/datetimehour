@@ -1760,6 +1760,22 @@
       "isfirar": "Günəş batarkən (isfirar)"
     },
     "kerahatNote": "Bu vaxtlarda nafilə namaz qılınmır. Diyanət dəqiq dəqiqə açıqlamır; təqvimlərdə geniş yayılmış təxminən 45 dəqiqəlik müddət götürülüb (günorta öncəsi üçün mənbələr 10–45 dəqiqə göstərir).",
+    "extraHeading": "Əlavə vaxtlar (təxmini)",
+    "extraNames": {
+      "israk": "İşraq",
+      "duha": "Dəhvə-i kübra",
+      "asrSani": "Əsr-i sani (Hənəfi)",
+      "isfirar": "İsfirar (günəşin saralması)",
+      "istibak": "İştibak-i nücum",
+      "isaSani": "İşa-i sani",
+      "midnight": "Gecə yarısı",
+      "tahajjud": "Təhəccüd (gecənin son üçdə biri)",
+      "seher": "Səhər"
+    },
+    "extraNote": "Diyanət bu vaxtları dərc etmir. Türkiye Takvimi tərifləri ilə hesablanır: işraq və isfirar Günəş üfüqdən 5° yuxarıda, iştibak 10°, işa-i sani 19° aşağıda olanda; dəhvə-i kübra imsak ilə axşamın ortası; gecə axşamdan imsaka qədər sayılır.",
+    "bayram": "Bayram namazı",
+    "bayramTomorrow": "Sabah bayram namazı: {t}",
+    "bayramNote": "Diyanətin dərc etdiyi saatlarla eyni qayda (günəşdən 38 dəq sonra); dəqiq saat il müftiliyinin elanıdır.",
     "method": {
       "heading": "Hesablama üsulu",
       "label": "Üsul",

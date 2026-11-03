@@ -1787,6 +1787,22 @@
       "isfirar": "Sonnenuntergang (Isfirar)"
     },
     "kerahatNote": "In diesen Zeiten werden keine freiwilligen Gebete verrichtet. Diyanet nennt keine genauen Minuten; verwendet wird der in Kalendern übliche Wert von etwa 45 Minuten (für die Zeit vor Mittag nennen Quellen 10–45 Minuten).",
+    "extraHeading": "Weitere Zeiten (ungefähr)",
+    "extraNames": {
+      "israk": "Ischrak",
+      "duha": "Dahwa al-kubra",
+      "asrSani": "Zweites Asr (hanafitisch)",
+      "isfirar": "Isfirar (Vergilben der Sonne)",
+      "istibak": "Ischtibak (Sterne erscheinen)",
+      "isaSani": "Zweites Ischa",
+      "midnight": "Mitte der Nacht",
+      "tahajjud": "Tahadschud (letztes Nachtdrittel)",
+      "seher": "Sahar (letztes Nachtsechstel)"
+    },
+    "extraNote": "Diyanet veröffentlicht diese Zeiten nicht. Sie folgen den Definitionen des Türkiye Takvimi: Ischrak und Isfirar bei 5° Sonnenhöhe, Ischtibak bei 10° und zweites Ischa bei 19° unter dem Horizont; Dahwa al-kubra in der Mitte zwischen Imsak und Maghrib; die Nacht reicht von Maghrib bis Imsak.",
+    "bayram": "Festgebet",
+    "bayramTomorrow": "Festgebet morgen: {t}",
+    "bayramNote": "Gleiche Regel wie die von Diyanet veröffentlichten Zeiten (38 Min. nach Sonnenaufgang); maßgeblich ist die Bekanntgabe des Provinzmuftis.",
     "method": {
       "heading": "Berechnungsmethode",
       "label": "Methode",

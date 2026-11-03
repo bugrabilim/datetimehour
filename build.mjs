@@ -1843,7 +1843,9 @@ function prayerBody(lang, prov, extra = "") {
       <div class="pr-right">
         <h3>${esc(s.todayHeading)}</h3>
         <table class="events-table pr-today"><thead class="sr-only"><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table>
+        <p class="pr-bayram" data-pr-bayram hidden></p>
         <details class="pr-kerahat"><summary>${esc(s.kerahatHeading)}</summary><ul>${["israk", "istiva", "isfirar"].map((k) => `<li>${esc(s.kerahatNames[k])}: <span data-pr-kr="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.kerahatNote)}</p></details>
+        <details class="pr-kerahat pr-extra"><summary>${esc(s.extraHeading)}</summary><ul>${Object.keys(s.extraNames).map((k) => `<li>${esc(s.extraNames[k])}: <span data-pr-ex="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.extraNote)}</p></details>
         <details class="pr-kerahat pr-method"><summary>${esc(s.method.heading)}</summary>
           <p class="meta" data-pr-method-active hidden></p>
           <label class="field-label" for="pr-method">${esc(s.method.label)}</label>
@@ -1912,7 +1914,9 @@ function districtList(prov, current) {
 }
 const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDenied, locationUnsupported: s.locationUnsupported, yourLocation: s.yourLocation });
 const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
-const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
+// Bayramın ilk günleri (Ramazan ve Kurban; bayram namazı satırı için, 2. analiz #56)
+const BAYRAM_DAYS = HOL_YEARS.flatMap((y) => YEAR_DATA[y].events.filter((e) => e.key === "rb1" || e.key === "kb1").map((e) => e.date));
+const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort, bayram: s.bayram, bayramTomorrow: s.bayramTomorrow, bayramNote: s.bayramNote, bayramDays: BAYRAM_DAYS }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
 /* ---------- Saat dilimi kısaltmaları, yaz saati değişimleri, Unix zamanı (30 Ekim 2026, rakip analizi #25) ----------

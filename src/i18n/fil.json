@@ -1826,6 +1826,22 @@
       "isfirar": "Paglubog ng araw (isfirar)"
     },
     "kerahatNote": "Hindi isinasagawa ang mga boluntaryong dasal sa mga oras na ito. Walang inilalathalang eksaktong minuto ang Diyanet; ginagamit ang karaniwang kumbensyon ng kalendaryo na mga 45 minuto (10–45 minuto ang ibinibigay ng mga sanggunian para sa oras bago magtanghali).",
+    "extraHeading": "Karagdagang oras (tantiya)",
+    "extraNames": {
+      "israk": "Ishraq",
+      "duha": "Dahwa al-kubra",
+      "asrSani": "Ikalawang asr (Hanafi)",
+      "isfirar": "Isfirar (paninilaw ng araw)",
+      "istibak": "Ishtibak (paglitaw ng mga bituin)",
+      "isaSani": "Ikalawang isha",
+      "midnight": "Kalagitnaan ng gabi",
+      "tahajjud": "Tahajjud (huling ikatlo ng gabi)",
+      "seher": "Sahar (huling ikaanim ng gabi)"
+    },
+    "extraNote": "Hindi inilalathala ng Diyanet ang mga oras na ito. Ayon sa mga kahulugan ng Türkiye Takvimi: ishraq at isfirar kapag ang araw ay 5° sa itaas ng abot-tanaw, ishtibak sa 10° at ikalawang isha sa 19° sa ibaba nito; dahwa al-kubra sa gitna ng imsak at maghrib; ang gabi ay mula maghrib hanggang imsak.",
+    "bayram": "Salat al-Eid",
+    "bayramTomorrow": "Salat al-Eid bukas: {t}",
+    "bayramNote": "Kaparehong panuntunan ng mga oras ng Diyanet (38 minuto pagkatapos sumikat ang araw); ang anunsyo ng mufti ng lalawigan ang opisyal.",
     "method": {
       "heading": "Paraan ng pagkalkula",
       "label": "Paraan",

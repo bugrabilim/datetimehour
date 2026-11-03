@@ -51,4 +51,21 @@ class SunAltitudeTest {
         assertEquals(0.75, k.israk!!.second - day.sunrise!!, 1e-12)
         assertEquals(0.75, day.maghrib!! - k.isfirar!!.first, 1e-12)
     }
+
+    /** Bayram namazı ve ek vakitler (2. analiz #56, #59): sitedeki prayer-calc.js değerleri, İstanbul 3 Kasım 2026 */
+    @Test
+    fun extraAndBayram() {
+        val day = PrayerTimes.times(2026, 11, 3, 41.0082, 28.9784, 3.0)
+        val e = PrayerTimes.extraTimes(2026, 11, 3, 41.0082, 28.9784, 3.0, day)
+        val want = listOf(
+            e.israk to 8.17432610524963, e.duha to 12.07736148348695, e.isfirar to 17.405376001886776,
+            e.istibak to 18.80257678714269, e.isaSani to 19.60495212576094, e.midnight to 24.07736148348695,
+            e.tahajjud to 26.07218865697815, e.seher to 28.067015830469348,
+        )
+        want.forEach { (got, exp) -> assertEquals(exp, got!!, 1e-6) }
+        assertEquals(8.13187983833751, PrayerTimes.bayram(day)!!, 1e-6)
+        // Bursa 20 Mart 2026 (Ramazan Bayramı): Diyanet 07.38
+        val bursa = PrayerTimes.times(2026, 3, 20, 40.1826, 29.0665, 3.0)
+        assertEquals(7 * 60 + 38, (PrayerTimes.bayram(bursa)!! * 60).roundToInt())
+    }
 }

@@ -95,6 +95,30 @@
       var el = doc.querySelector('[data-pr-kr="' + k + '"]');
       if (el) el.textContent = kr[k][0] == null || isNaN(kr[k][0]) ? "–" : fmt(kr[k][0]) + "–" + fmt(kr[k][1]);
     });
+    // Ek vakitler (2. analiz #59; Türkiye Takvimi tanımlarıyla yaklaşık) ve asr-ı sânî (Hanefî ikindi)
+    if (P.extraTimes) {
+      var raw = P.times(p.year, p.month, p.day, state.lat, state.lon, t.off, P.PARAMS);
+      var ex = P.extraTimes(p.year, p.month, p.day, state.lat, state.lon, t.off, raw);
+      ex.asrSani = P.times(p.year, p.month, p.day, state.lat, state.lon, t.off, P.methodParams("diyanet", true)).asr;
+      Array.prototype.forEach.call(doc.querySelectorAll("[data-pr-ex]"), function (el) {
+        var v = ex[el.getAttribute("data-pr-ex")];
+        el.textContent = v == null || !isFinite(v) ? "–" : fmt(Math.round(v * 60));
+      });
+    }
+    // Bayram namazı (2. analiz #56): bayramın ilk günü öğleye kadar, arefe günü "yarın"
+    var bEl = doc.querySelector("[data-pr-bayram]");
+    if (bEl && P.bayram && T.bayramDays) {
+      var iso = function (q) { return q.y + "-" + pad(q.m) + "-" + pad(q.d); };
+      var tod = { y: p.year, m: p.month, d: p.day }, tom = addDay(p.year, p.month, p.day, 1), txt = "";
+      if (T.bayramDays.indexOf(iso(tod)) >= 0 && t.dhuhr != null && p.hour * 60 + p.minute < t.dhuhr) {
+        txt = T.bayram + ": " + fmt(Math.round(P.bayram(P.times(tod.y, tod.m, tod.d, state.lat, state.lon, t.off, P.PARAMS)) * 60));
+      } else if (T.bayramDays.indexOf(iso(tom)) >= 0) {
+        var to = offHours(tom.y, tom.m, tom.d);
+        txt = S.tpl(T.bayramTomorrow, { t: fmt(Math.round(P.bayram(P.times(tom.y, tom.m, tom.d, state.lat, state.lon, to, P.PARAMS)) * 60)) });
+      }
+      bEl.hidden = !txt;
+      if (txt) { bEl.textContent = txt; bEl.title = T.bayramNote; }
+    }
     pickNext(now);
   }
   function pickNext(now) {

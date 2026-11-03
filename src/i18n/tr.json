@@ -1760,6 +1760,22 @@
       "isfirar": "Güneş batarken (isfirar)"
     },
     "kerahatNote": "Bu sürelerde nafile namaz kılınmaz. Diyanet'in yayımladığı bir dakika ölçüsü yok; takvimlerde yaygın olan yaklaşık 45 dakika kullanıldı (öğle öncesi kerahat süresi kaynaklarda 10–45 dakika arasında değişir).",
+    "extraHeading": "Ek vakitler (yaklaşık)",
+    "extraNames": {
+      "israk": "İşrak",
+      "duha": "Dahve-i kübrâ",
+      "asrSani": "Asr-ı sânî (Hanefî ikindi)",
+      "isfirar": "İsfirar (güneşin sararması)",
+      "istibak": "İştibâk-ı nücûm",
+      "isaSani": "İşâ-i sânî",
+      "midnight": "Gece yarısı",
+      "tahajjud": "Teheccüd (gecenin son üçte biri)",
+      "seher": "Seher"
+    },
+    "extraNote": "Diyanet bu vakitleri yayımlamaz. Türkiye Takvimi'nin tanımlarıyla hesaplanır: işrak ve isfirar Güneş ufkun 5° üstündeyken, iştibak 10°, işâ-i sânî 19° altındayken; dahve-i kübrâ imsak ile akşamın ortası; gece akşamdan imsaka sayılır.",
+    "bayram": "Bayram namazı",
+    "bayramTomorrow": "Yarın bayram namazı: {t}",
+    "bayramNote": "Diyanet'in yayımladığı saatlerle aynı kural (güneş vaktinden 38 dk sonra); kesin saat il müftülüğünün duyurusudur.",
     "method": {
       "heading": "Hesap yöntemi",
       "label": "Yöntem",

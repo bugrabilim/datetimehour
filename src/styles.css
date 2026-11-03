@@ -1249,3 +1249,6 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 /* Dijital saatte küçük saniye (2. analiz #21; ayarlar › saat görünümü) */
 .sec-small { font-size: 0.45em; font-weight: inherit; }
 .set-check { inline-size: 1.15rem; block-size: 1.15rem; accent-color: var(--accent); }
+
+/* Bayram namazı satırı (2. analiz #56) */
+.pr-bayram { margin: 0.6rem 0 0; font-weight: 700; color: var(--accent); }

@@ -1760,6 +1760,22 @@
       "isfirar": "Sunset (isfirar)"
     },
     "kerahatNote": "Voluntary prayers are not performed in these windows. The Diyanet publishes no exact minutes; the common calendar convention of about 45 minutes is used (sources give 10–45 minutes for the window before noon).",
+    "extraHeading": "Additional times (approximate)",
+    "extraNames": {
+      "israk": "Ishraq",
+      "duha": "Dahwa al-kubra",
+      "asrSani": "Second asr (Hanafi)",
+      "isfirar": "Isfirar (yellowing of the sun)",
+      "istibak": "Ishtibak (stars appear)",
+      "isaSani": "Second isha",
+      "midnight": "Middle of the night",
+      "tahajjud": "Tahajjud (last third of the night)",
+      "seher": "Sahar (last sixth of the night)"
+    },
+    "extraNote": "Diyanet does not publish these times. They follow the Türkiye Takvimi definitions: ishraq and isfirar with the sun 5° above the horizon, ishtibak 10° and second isha 19° below it; dahwa al-kubra halfway between imsak and maghrib; the night runs from maghrib to imsak.",
+    "bayram": "Eid prayer",
+    "bayramTomorrow": "Eid prayer tomorrow: {t}",
+    "bayramNote": "Same rule as Diyanet’s published times (38 min after sunrise); the provincial mufti’s announcement is authoritative.",
     "method": {
       "heading": "Calculation method",
       "label": "Method",

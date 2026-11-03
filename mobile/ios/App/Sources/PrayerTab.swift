@@ -150,7 +150,9 @@ struct PrayerPanel: View {
                     .background(isNext ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 10))
                 }
             }
+            BayramRow(place: place, now: now)
             KerahatBox(entries: schedule.entries(on: now), place: place)
+            ExtraTimesBox(place: place, day: place.today)
         }
     }
 }
@@ -187,6 +189,94 @@ struct KerahatBox: View {
             .tint(Theme.accent)
             .card()
         }
+    }
+}
+
+/// Yerel gün + ondalık saat (gece yarısından) → an
+private func localInstant(_ d: CalendarDay, _ hours: Double, _ zone: TimeZone) -> Date {
+    var cal = Calendar(identifier: .gregorian)
+    cal.timeZone = zone
+    let start = cal.date(from: DateComponents(year: d.year, month: d.month, day: d.day)) ?? Date()
+    return start.addingTimeInterval((hours * 60).rounded() * 60)
+}
+
+/// Bayram namazı (2. analiz #56): bayramın ilk günü öğleye kadar, arefe günü "yarın"; Diyanet kuralı güneş + 38 dk
+struct BayramRow: View {
+    let place: AppPlace
+    let now: Date
+
+    private func isBayram(_ d: CalendarDay) -> Bool {
+        CalendarData.shared.events(on: d).contains { $0.key == "rb1" || $0.key == "kb1" }
+    }
+    private func day(_ d: CalendarDay) -> PrayerDay {
+        PrayerTimes.times(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon, timeZone: place.zone)
+    }
+    private var text: String? {
+        let today = CalendarDay(now, timeZone: place.zone)
+        if isBayram(today) {
+            let pd = day(today)
+            guard let dh = pd.dhuhr, now < localInstant(today, dh, place.zone), let b = PrayerTimes.bayram(pd) else { return nil }
+            return L("prayer.bayram") + ": " + place.hm(localInstant(today, b, place.zone))
+        }
+        let tom = today.adding(days: 1)
+        if isBayram(tom), let b = PrayerTimes.bayram(day(tom)) {
+            return T("prayer.bayramTomorrow", place.hm(localInstant(tom, b, place.zone)))
+        }
+        return nil
+    }
+
+    var body: some View {
+        if let text {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(text).font(.headline).foregroundStyle(Theme.accent)
+                Text(L("prayer.bayramNote")).font(.footnote).foregroundStyle(Theme.muted)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .card()
+        }
+    }
+}
+
+/// Ek vakitler (2. analiz #59; Türkiye Takvimi tanımlarıyla yaklaşık, sitedeki namaz sayfasıyla aynı): açılır kutu
+struct ExtraTimesBox: View {
+    let place: AppPlace
+    let day: CalendarDay
+    @State private var open = false
+
+    var body: some View {
+        DisclosureGroup(isExpanded: $open) {
+            VStack(alignment: .leading, spacing: 8) {
+                ForEach(rows, id: \.0) { row in
+                    HStack {
+                        Text(L("prayer.extraNames." + row.0))
+                        Spacer()
+                        Text(row.1.map { place.hm(localInstant(day, $0, place.zone)) } ?? "–")
+                            .monospacedDigit()
+                            .environment(\.layoutDirection, .leftToRight)
+                    }
+                }
+                Text(L("prayer.extraNote")).font(.footnote).foregroundStyle(Theme.muted)
+            }
+            .padding(.top, 8)
+        } label: {
+            Text(L("prayer.extraHeading")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.text)
+        }
+        .tint(Theme.accent)
+        .card()
+    }
+
+    private var rows: [(String, Double?)] {
+        guard open else { return [] }
+        var utc = Calendar(identifier: .gregorian)
+        utc.timeZone = TimeZone(secondsFromGMT: 0)!
+        let noon = utc.date(from: DateComponents(year: day.year, month: day.month, day: day.day, hour: 12)) ?? Date()
+        let off = Double(place.zone.secondsFromGMT(for: noon)) / 3600
+        let pd = PrayerTimes.times(year: day.year, month: day.month, day: day.day, latitude: place.lat, longitude: place.lon, utcOffset: off)
+        let e = PrayerTimes.extraTimes(year: day.year, month: day.month, day: day.day, latitude: place.lat, longitude: place.lon, utcOffset: off, times: pd)
+        let asr2 = PrayerTimes.times(year: day.year, month: day.month, day: day.day, latitude: place.lat, longitude: place.lon,
+                                     utcOffset: off, parameters: .method("diyanet", hanafi: true)).asr
+        return [("israk", e.israk), ("duha", e.duha), ("asrSani", asr2), ("isfirar", e.isfirar), ("istibak", e.istibak),
+                ("isaSani", e.isaSani), ("midnight", e.midnight), ("tahajjud", e.tahajjud), ("seher", e.seher)]
     }
 }
 

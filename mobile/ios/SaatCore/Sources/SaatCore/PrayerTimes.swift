@@ -219,6 +219,33 @@ public enum PrayerTimes {
                        isfirar: day.maghrib.map { ($0 - k)...$0 })
     }
 
+    /// Bayram namazı vakti (Diyanet: güneş vaktinden 38 dk sonra; 2. analiz #56). Sitedeki `bayram` ile aynı.
+    public static let bayramMinutes = 38
+    public static func bayram(_ day: PrayerDay) -> Double? { day.sunrise.map { $0 + Double(bayramMinutes) / 60 } }
+
+    /// Ek vakitler (Türkiye Takvimi tanımlarıyla yaklaşık; 2. analiz #59): işrak ve isfirar Güneş +5°, iştibak −10°,
+    /// işa-i sani −19°, dahve-i kübra imsak ile akşamın ortası; gece akşamdan imsaka: gece yarısı ½, teheccüd ⅔, seher ⅚.
+    /// Sitedeki `extraTimes` ile birebir; `day` Diyanet parametreleriyle hesaplanmış gün olmalı.
+    public struct ExtraTimes: Sendable, Equatable {
+        public var israk: Double?, duha: Double?, isfirar: Double?, istibak: Double?, isaSani: Double?
+        public var midnight: Double?, tahajjud: Double?, seher: Double?
+    }
+
+    public static func extraTimes(year: Int, month: Int, day: Int, latitude: Double, longitude: Double,
+                                  utcOffset: Double, times: PrayerDay) -> ExtraTimes {
+        func t(_ a: Double) -> AltitudeTimes {
+            sunAltitudeTimes(year: year, month: month, day: day, latitude: latitude, longitude: longitude, utcOffset: utcOffset, altitude: a)
+        }
+        let up = t(5), st = t(-10), is2 = t(-19)
+        var duha: Double?, mid: Double?, tah: Double?, seh: Double?
+        if let f = times.fajr, let m = times.maghrib {
+            let night = f + 24 - m
+            duha = (f + m) / 2; mid = m + night / 2; tah = m + night * 2 / 3; seh = m + night * 5 / 6
+        }
+        return ExtraTimes(israk: up.rise, duha: duha, isfirar: up.set, istibak: st.set, isaSani: is2.set,
+                          midnight: mid, tahajjud: tah, seher: seh)
+    }
+
     // MARK: Güneş konumu (PrayTimes tarzı düşük duyarlıklı formüller)
 
     static func julian(_ year: Int, _ month: Int, _ day: Int) -> Double {

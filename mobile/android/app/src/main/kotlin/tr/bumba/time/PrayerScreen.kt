@@ -136,7 +136,9 @@ fun PrayerScreen() {
                 }
             }
             SunMoonArc(now, place)
+            BayramRow(today, now, place)
             KerahatCard(entries, place)
+            ExtraTimesCard(today, place)
             // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
             val context = androidx.compose.ui.platform.LocalContext.current
             var liveOn by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.PRAYER_KEY, false)) }
@@ -190,6 +192,62 @@ private fun KerahatCard(entries: List<AppPlace.Entry>, place: AppPlace) {
                 }
             }
             Text(L("prayer.kerahatNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+    }
+}
+
+/** Bayram namazı (2. analiz #56): bayramın ilk günü öğleye kadar, arefe günü "yarın"; Diyanet kuralı güneş + 38 dk */
+@Composable
+private fun BayramRow(today: java.time.LocalDate, now: java.time.Instant, place: AppPlace) {
+    fun isBayram(d: java.time.LocalDate) = AppData.events[d].orEmpty().any { (it.key == "rb1" || it.key == "kb1") && it.date == d }
+    fun at(d: java.time.LocalDate): java.time.Instant? {
+        val day = tr.bumba.time.core.PrayerTimes.times(d, place.lat, place.lon, place.zone)
+        val h = tr.bumba.time.core.PrayerTimes.bayram(day) ?: return null
+        return d.atStartOfDay(place.zone).toInstant().plusSeconds((h * 3600).toLong())
+    }
+    val text = when {
+        isBayram(today) -> {
+            val dh = tr.bumba.time.core.PrayerTimes.times(today, place.lat, place.lon, place.zone).dhuhr
+            val noon = dh?.let { today.atStartOfDay(place.zone).toInstant().plusSeconds((it * 3600).toLong()) }
+            if (noon != null && now.isBefore(noon)) at(today)?.let { L("prayer.bayram") + ": " + Fmt.hm(it, place.zone) } else null
+        }
+        isBayram(today.plusDays(1)) -> at(today.plusDays(1))?.let { T("prayer.bayramTomorrow", Fmt.hm(it, place.zone)) }
+        else -> null
+    } ?: return
+    AppCard {
+        Text(text, color = Theme.c.accent, fontWeight = FontWeight.Bold, fontSize = 17.sp)
+        Text(L("prayer.bayramNote"), color = Theme.c.muted, fontSize = 12.sp)
+    }
+}
+
+/** Ek vakitler (2. analiz #59; Türkiye Takvimi tanımlarıyla yaklaşık, sitedeki namaz sayfasıyla aynı): açılır kart */
+@Composable
+private fun ExtraTimesCard(today: java.time.LocalDate, place: AppPlace) {
+    var open by remember { mutableStateOf(false) }
+    AppCard(Modifier.clickable { open = !open }) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(L("prayer.extraHeading"), Modifier.weight(1f), color = Theme.c.text, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
+            Icon(if (open) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown, null, tint = Theme.c.muted)
+        }
+        if (open) {
+            val pt = tr.bumba.time.core.PrayerTimes
+            val noon = today.atTime(java.time.LocalTime.NOON).toInstant(java.time.ZoneOffset.UTC)
+            val off = place.zone.rules.getOffset(noon).totalSeconds / 3600.0
+            val day = pt.times(today.year, today.monthValue, today.dayOfMonth, place.lat, place.lon, off)
+            val e = pt.extraTimes(today.year, today.monthValue, today.dayOfMonth, place.lat, place.lon, off, day)
+            val asr2 = pt.times(today.year, today.monthValue, today.dayOfMonth, place.lat, place.lon, off, tr.bumba.time.core.PrayerTimes.Parameters.method("diyanet", true)).asr
+            val rows = listOf(
+                "israk" to e.israk, "duha" to e.duha, "asrSani" to asr2, "isfirar" to e.isfirar, "istibak" to e.istibak,
+                "isaSani" to e.isaSani, "midnight" to e.midnight, "tahajjud" to e.tahajjud, "seher" to e.seher,
+            )
+            val start = today.atStartOfDay(place.zone).toInstant()
+            for ((key, h) in rows) {
+                Row(Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+                    Text(L("prayer.extraNames.$key"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Text(h?.let { Fmt.hm(start.plusSeconds(Math.round(it * 60) * 60), place.zone) } ?: "–", color = Theme.c.text, fontSize = 15.sp, style = Tnum)
+                }
+            }
+            Text(L("prayer.extraNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
 }

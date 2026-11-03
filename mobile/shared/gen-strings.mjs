@@ -58,6 +58,8 @@ const SITE_PATHS = [
   "stage.models.*", "stage.prev", "stage.next", "stage.dots", "list.*",
   // 9. tur (30 Ekim 2026): kerahat, altın/mavi saat, fitre, hicri çevirici, pomodoro etiketleri
   "prayer.kerahatHeading", "prayer.kerahatNames.*", "prayer.kerahatNote",
+  // 2. analiz #56, #59 (3 Kasım 2026): bayram namazı, ek vakitler
+  "prayer.extraHeading", "prayer.extraNames.*", "prayer.extraNote", "prayer.bayram", "prayer.bayramTomorrow", "prayer.bayramNote",
   "nature.goldenAm", "nature.goldenPm", "nature.blueAm", "nature.bluePm", "nature.lightNote",
   "zakat.fitreHeading", "zakat.fitreText", "zakat.fitrePeople", "zakat.fitreTotal", "zakat.fitreNote",
   "hijriConv.h1", "hijriConv.toHijri", "hijriConv.toGreg", "hijriConv.gregLabel", "hijriConv.yearLabel", "hijriConv.monthLabel",

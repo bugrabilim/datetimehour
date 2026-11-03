@@ -1760,6 +1760,22 @@
       "isfirar": "Matahari terbenam (isfirar)"
     },
     "kerahatNote": "Salat sunah tidak dikerjakan pada waktu-waktu ini. Diyanet tidak menerbitkan menit yang pasti; yang dipakai adalah kebiasaan umum kalender, yaitu sekitar 45 menit (sumber menyebut 10–45 menit untuk waktu menjelang tengah hari).",
+    "extraHeading": "Waktu tambahan (perkiraan)",
+    "extraNames": {
+      "israk": "Isyraq",
+      "duha": "Dhahwah kubra",
+      "asrSani": "Asar kedua (Hanafi)",
+      "isfirar": "Isfirar (matahari menguning)",
+      "istibak": "Isytibak (bintang muncul)",
+      "isaSani": "Isya kedua",
+      "midnight": "Tengah malam",
+      "tahajjud": "Tahajud (sepertiga malam terakhir)",
+      "seher": "Sahar (seperenam akhir malam)"
+    },
+    "extraNote": "Diyanet tidak menerbitkan waktu-waktu ini. Dihitung menurut definisi Türkiye Takvimi: isyraq dan isfirar saat matahari 5° di atas ufuk, isytibak 10° dan isya kedua 19° di bawahnya; dhahwah kubra di tengah antara imsak dan magrib; malam dihitung dari magrib sampai imsak.",
+    "bayram": "Salat Id",
+    "bayramTomorrow": "Salat Id besok: {t}",
+    "bayramNote": "Aturan yang sama dengan waktu terbitan Diyanet (38 menit setelah matahari terbit); yang resmi adalah pengumuman mufti provinsi.",
     "method": {
       "heading": "Metode perhitungan",
       "label": "Metode",

@@ -45791,6 +45791,1336 @@
         }
       }
     },
+    "prayer.extraHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ek vakitler (yaklaşık)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional times (approximate)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weitere Zeiten (ungefähr)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əlavə vaxtlar (təxmini)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أوقات إضافية (تقريبية)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Waktu tambahan (perkiraan)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اضافی اوقات (تقریبی)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوقات بیشتر (تقریبی)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autres horaires (approximatifs)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дополнительное время (приблизительно)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "その他の時刻（目安）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "추가 시각(대략)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "其他时刻（近似）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karagdagang oras (tantiya)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เวลาเพิ่มเติม (โดยประมาณ)"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.israk": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşrak"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ishraq"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ischrak"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşraq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإشراق"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isyraq"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اشراق"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اشراق"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ishraq"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ишрак"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "イシュラーク"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이슈라크"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "伊什拉格"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ishraq"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อิชร็อก"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.duha": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dahve-i kübrâ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dahwa al-kubra"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dahwa al-kubra"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dəhvə-i kübra"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الضحوة الكبرى"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dhahwah kubra"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضحوۂ کبریٰ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضحوه کبری"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dahwa al-kubra"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Дахва аль-кубра"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ダフワ・クブラー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다흐와 쿠브라"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大上午（达赫瓦）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dahwa al-kubra"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดะห์วะฮ์ อัลกุบรอ"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.asrSani": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asr-ı sânî (Hanefî ikindi)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Second asr (Hanafi)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zweites Asr (hanafitisch)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Əsr-i sani (Hənəfi)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العصر الثاني (الحنفي)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asar kedua (Hanafi)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عصرِ ثانی (حنفی)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عصر دوم (حنفی)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Second asr (hanafite)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Второй аср (ханафитский)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第二アスル（ハナフィー派）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "두 번째 아스르(하나피)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第二晡礼（哈乃斐）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ikalawang asr (Hanafi)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อัศร์ที่สอง (ฮะนะฟี)"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.isfirar": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsfirar (güneşin sararması)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isfirar (yellowing of the sun)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isfirar (Vergilben der Sonne)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İsfirar (günəşin saralması)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الاصفرار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isfirar (matahari menguning)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اصفرار"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اصفرار"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isfirar (jaunissement du soleil)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Исфирар (пожелтение солнца)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "イスフィラール（太陽の黄変）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이스피라르(태양이 노래짐)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日色变黄（伊斯菲拉尔）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isfirar (paninilaw ng araw)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อิสฟิรอร (ดวงอาทิตย์เหลือง)"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.istibak": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İştibâk-ı nücûm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ishtibak (stars appear)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ischtibak (Sterne erscheinen)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İştibak-i nücum"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اشتباك النجوم"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isytibak (bintang muncul)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اشتباکِ نجوم"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اشتباک نجوم"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ishtibak (apparition des étoiles)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Иштибак (появление звёзд)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "イシュティバーク（星の出現）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이슈티바크(별이 보임)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "群星交错（伊什提巴克）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ishtibak (paglitaw ng mga bituin)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อิชติบาก (ดาวปรากฏ)"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.isaSani": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşâ-i sânî"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Second isha"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zweites Ischa"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İşa-i sani"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العشاء الثاني"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Isya kedua"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عشاءِ ثانی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عشای دوم"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Second isha"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Второй иша"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第二イシャー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "두 번째 이샤"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第二宵礼"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ikalawang isha"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อิชาอ์ที่สอง"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.midnight": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gece yarısı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Middle of the night"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitte der Nacht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gecə yarısı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "منتصف الليل"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tengah malam"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آدھی رات"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیمه‌شب شرعی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Milieu de la nuit"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Середина ночи"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜の中間"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "한밤중"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜半"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kalagitnaan ng gabi"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "กึ่งกลางคืน"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.tahajjud": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Teheccüd (gecenin son üçte biri)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahajjud (last third of the night)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahadschud (letztes Nachtdrittel)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Təhəccüd (gecənin son üçdə biri)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التهجد (الثلث الأخير من الليل)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahajud (sepertiga malam terakhir)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تہجد (رات کا آخری تہائی)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تهجد (یک‌سوم پایانی شب)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahajjud (dernier tiers de la nuit)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тахаджуд (последняя треть ночи)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "タハッジュド（夜の最後の三分の一）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "타핫주드(밤의 마지막 3분의 1)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜间礼拜（最后三分之一夜）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahajjud (huling ikatlo ng gabi)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตะฮัจญุด (หนึ่งในสามสุดท้ายของคืน)"
+          }
+        }
+      }
+    },
+    "prayer.extraNames.seher": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seher"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahar (last sixth of the night)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahar (letztes Nachtsechstel)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السحر"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahar (seperenam akhir malam)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سحر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سحر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahar (dernier sixième de la nuit)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сахар (последняя шестая ночи)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サハル（夜の最後の六分の一）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사하르(밤의 마지막 6분의 1)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黎明前（最后六分之一夜）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sahar (huling ikaanim ng gabi)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สะฮัร (หนึ่งในหกสุดท้ายของคืน)"
+          }
+        }
+      }
+    },
+    "prayer.extraNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet bu vakitleri yayımlamaz. Türkiye Takvimi'nin tanımlarıyla hesaplanır: işrak ve isfirar Güneş ufkun 5° üstündeyken, iştibak 10°, işâ-i sânî 19° altındayken; dahve-i kübrâ imsak ile akşamın ortası; gece akşamdan imsaka sayılır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet does not publish these times. They follow the Türkiye Takvimi definitions: ishraq and isfirar with the sun 5° above the horizon, ishtibak 10° and second isha 19° below it; dahwa al-kubra halfway between imsak and maghrib; the night runs from maghrib to imsak."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet veröffentlicht diese Zeiten nicht. Sie folgen den Definitionen des Türkiye Takvimi: Ischrak und Isfirar bei 5° Sonnenhöhe, Ischtibak bei 10° und zweites Ischa bei 19° unter dem Horizont; Dahwa al-kubra in der Mitte zwischen Imsak und Maghrib; die Nacht reicht von Maghrib bis Imsak."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanət bu vaxtları dərc etmir. Türkiye Takvimi tərifləri ilə hesablanır: işraq və isfirar Günəş üfüqdən 5° yuxarıda, iştibak 10°, işa-i sani 19° aşağıda olanda; dəhvə-i kübra imsak ilə axşamın ortası; gecə axşamdan imsaka qədər sayılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا تنشر رئاسة الشؤون الدينية هذه الأوقات. تُحسب وفق تعريفات تقويم تركيا: الإشراق والاصفرار والشمس على ارتفاع 5° فوق الأفق، واشتباك النجوم عند 10° والعشاء الثاني عند 19° تحته؛ والضحوة الكبرى منتصف ما بين الإمساك والمغرب؛ والليل من المغرب إلى الإمساك."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet tidak menerbitkan waktu-waktu ini. Dihitung menurut definisi Türkiye Takvimi: isyraq dan isfirar saat matahari 5° di atas ufuk, isytibak 10° dan isya kedua 19° di bawahnya; dhahwah kubra di tengah antara imsak dan magrib; malam dihitung dari magrib sampai imsak."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دیانت یہ اوقات شائع نہیں کرتا۔ ترکیہ تقویم کی تعریفوں سے حساب: اشراق اور اصفرار جب سورج افق سے 5° اوپر، اشتباکِ نجوم 10° اور عشاءِ ثانی 19° نیچے؛ ضحوۂ کبریٰ امساک اور مغرب کا درمیان؛ رات مغرب سے امساک تک۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دیانت این اوقات را منتشر نمی‌کند. با تعریف‌های تقویم ترکیه محاسبه می‌شود: اشراق و اصفرار وقتی خورشید ۵ درجه بالای افق است، اشتباک نجوم ۱۰ و عشای دوم ۱۹ درجه زیر آن؛ ضحوه کبری میانه امساک و مغرب؛ شب از مغرب تا امساک."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La Diyanet ne publie pas ces horaires. Ils suivent les définitions du Türkiye Takvimi : ishraq et isfirar avec le soleil à 5° au-dessus de l’horizon, ishtibak à 10° et second isha à 19° en dessous ; dahwa al-kubra à mi-chemin entre imsak et maghrib ; la nuit va du maghrib à l’imsak."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Диянет эти времена не публикует. Они рассчитаны по определениям Türkiye Takvimi: ишрак и исфирар при высоте солнца 5° над горизонтом, иштибак при 10° и второй иша при 19° под ним; дахва аль-кубра — середина между имсаком и магрибом; ночь — от магриба до имсака."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ディヤーネットはこれらの時刻を公表していません。トルコ暦の定義で計算：イシュラークとイスフィラールは太陽高度+5°、イシュティバークは−10°、第二イシャーは−19°。ダフワ・クブラーはイムサークとマグリブの中間。夜はマグリブからイムサークまで。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "디야넷은 이 시각들을 발표하지 않습니다. 튀르키예 달력의 정의로 계산합니다. 이슈라크와 이스피라르는 태양 고도 +5°, 이슈티바크는 −10°, 두 번째 이샤는 −19°일 때이며, 다흐와 쿠브라는 임사크와 마그립의 중간, 밤은 마그립부터 임사크까지입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "迪亚内特不公布这些时刻。按土耳其历的定义计算：伊什拉格与日色变黄为太阳高出地平线 5°，伊什提巴克为低于 10°，第二宵礼为低于 19°；大上午为封斋与昏礼之间的中点；夜晚从昏礼算到封斋。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi inilalathala ng Diyanet ang mga oras na ito. Ayon sa mga kahulugan ng Türkiye Takvimi: ishraq at isfirar kapag ang araw ay 5° sa itaas ng abot-tanaw, ishtibak sa 10° at ikalawang isha sa 19° sa ibaba nito; dahwa al-kubra sa gitna ng imsak at maghrib; ang gabi ay mula maghrib hanggang imsak."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ดียาเนตไม่ได้ประกาศเวลาเหล่านี้ คำนวณตามนิยามของปฏิทินตุรกี: อิชร็อกและอิสฟิรอรเมื่อดวงอาทิตย์สูง 5° เหนือขอบฟ้า อิชติบากเมื่อต่ำ 10° และอิชาอ์ที่สองเมื่อต่ำ 19° ดะห์วะฮ์ อัลกุบรอคือกึ่งกลางระหว่างอิมซากกับมัฆริบ ส่วนกลางคืนนับจากมัฆริบถึงอิมซาก"
+          }
+        }
+      }
+    },
+    "prayer.bayram": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bayram namazı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eid prayer"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Festgebet"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bayram namazı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صلاة العيد"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salat Id"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نمازِ عید"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نماز عید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prière de l’Aïd"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Праздничный намаз"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "イード礼拝"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이드 예배"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "会礼"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salat al-Eid"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ละหมาดอีด"
+          }
+        }
+      }
+    },
+    "prayer.bayramTomorrow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yarın bayram namazı: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eid prayer tomorrow: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Festgebet morgen: %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sabah bayram namazı: %1$@"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صلاة العيد غدًا: %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salat Id besok: %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کل نمازِ عید: %1$@"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نماز عید فردا: %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prière de l’Aïd demain : %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Праздничный намаз завтра: %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明日のイード礼拝：%1$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "내일 이드 예배: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明日会礼：%1$@"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salat al-Eid bukas: %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ละหมาดอีดพรุ่งนี้: %1$@"
+          }
+        }
+      }
+    },
+    "prayer.bayramNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanet'in yayımladığı saatlerle aynı kural (güneş vaktinden 38 dk sonra); kesin saat il müftülüğünün duyurusudur."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Same rule as Diyanet’s published times (38 min after sunrise); the provincial mufti’s announcement is authoritative."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gleiche Regel wie die von Diyanet veröffentlichten Zeiten (38 Min. nach Sonnenaufgang); maßgeblich ist die Bekanntgabe des Provinzmuftis."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diyanətin dərc etdiyi saatlarla eyni qayda (günəşdən 38 dəq sonra); dəqiq saat il müftiliyinin elanıdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "القاعدة نفسها في مواقيت رئاسة الشؤون الدينية (بعد الشروق بـ 38 دقيقة)؛ والمعتمد إعلان مفتي الولاية."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aturan yang sama dengan waktu terbitan Diyanet (38 menit setelah matahari terbit); yang resmi adalah pengumuman mufti provinsi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دیانت کے شائع کردہ اوقات والا اصول (طلوعِ آفتاب کے 38 منٹ بعد)؛ حتمی وقت صوبائی مفتی کا اعلان ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "همان قاعده اوقات منتشرشده دیانت (۳۸ دقیقه پس از طلوع)؛ ساعت دقیق اعلام مفتی استان است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Même règle que les horaires publiés par la Diyanet (38 min après le lever du soleil) ; l’annonce du mufti provincial fait foi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "То же правило, что у опубликованных Диянетом времён (через 38 мин после восхода); точное время объявляет муфтият провинции."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ディヤーネットの公表時刻と同じ規則（日の出の38分後）。正式な時刻は県ムフティー庁の発表です。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "디야넷이 발표하는 시각과 같은 규칙(일출 38분 뒤)이며, 정확한 시각은 주 무프티청의 공지를 따릅니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "与迪亚内特公布时间相同的规则（日出后 38 分钟）；准确时间以省穆夫提办公室公告为准。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaparehong panuntunan ng mga oras ng Diyanet (38 minuto pagkatapos sumikat ang araw); ang anunsyo ng mufti ng lalawigan ang opisyal."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ใช้กฎเดียวกับเวลาที่ดียาเนตประกาศ (หลังดวงอาทิตย์ขึ้น 38 นาที) เวลาที่แน่นอนให้ยึดประกาศของมุฟตีประจำจังหวัด"
+          }
+        }
+      }
+    },
     "nature.goldenAm": {
       "extractionState": "manual",
       "localizations": {

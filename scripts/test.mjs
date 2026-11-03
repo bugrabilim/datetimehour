@@ -412,6 +412,15 @@ check(/data-print/.test(fs.readFileSync(path.join(DIST, "takvim", "2027", "index
   new Function("module", "window", fs.readFileSync(path.join(ROOT, "src/js/prayer-calc.js"), "utf8"))(pm, undefined);
   const P = pm.exports;
   {
+    // Bayram namazı (2. analiz #56): Diyanet = güneş + 38 dk; ek vakitler (#59)
+    const hm = (h) => Math.round(h * 60), bay = (y, m, d, lat, lon) => hm(P.bayram(P.times(y, m, d, lat, lon, 3)));
+    check(Math.abs(bay(2025, 3, 30, 41.0082, 28.9784) - (7 * 60 + 22)) <= 1 && Math.abs(bay(2026, 3, 20, 40.1826, 29.0665) - (7 * 60 + 38)) <= 1, "bayram namazı vakti (İstanbul 30.3.2025 07:22, Bursa 20.3.2026 07:38) beklenen değil");
+    const r = P.times(2026, 11, 3, 41.0082, 28.9784, 3), ex = P.extraTimes(2026, 11, 3, 41.0082, 28.9784, 3, r);
+    const want = { israk: 490, duha: 725, isfirar: 1044, istibak: 1128, isaSani: 1176, midnight: 1445, tahajjud: 1564, seher: 1684 };
+    check(Object.keys(want).every((k) => Math.abs(hm(ex[k]) - want[k]) <= 1), "ek vakitler İstanbul 3.11.2026 beklenen değil");
+    check(pr.includes('data-pr-ex="isaSani"') && pr.includes("data-pr-bayram") && /"bayramDays":\["\d{4}-\d\d-\d\d"/.test(pr), "namaz il sayfasında ek vakitler ya da bayram namazı yok");
+  }
+  {
     const lh = P.lightHours(2026, 10, 30, 41.0082, 28.9784, 3), hm = (h) => Math.round(h * 60);
     check(Math.abs(hm(lh.goldenAm[1]) - (8 * 60 + 11)) <= 1 && Math.abs(hm(lh.bluePm[1]) - (18 * 60 + 31)) <= 1, "altın/mavi saat İstanbul 30.10.2026 beklenen değil");
   }
