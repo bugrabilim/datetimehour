@@ -171,3 +171,34 @@ Bizim taraf için kanıt: tek analog kadran çizimi `mobile/ios/App/Sources/Anal
   - Güneş/Ay izleyici widget'ı — kısmen (Ay evresi widget'ı var `MoonWidget.swift`; gün doğumu/batımı widget'ı yok) — K.
   - Widget'tan Kısayol/uygulama başlatma, Denetim Merkezi düğmeleri — kısmen (Denetim Merkezi düğmelerimiz var: tam ekran saat, zamanlayıcı, vakitler; CLAUDE.md #77) — —.
   - Duvar kâğıdı kitaplığı — bizde yok (2. analiz #2 ile benzer, ama burada ana ekran duvar kâğıdı) — O.
+
+## Clocks - A fun standby mode (id6742508073; TR 4,37, 30 puan; Daniel Destefanis)
+- Ücret modeli: **reklamsız**, ücretsiz; tek seferlik **Clocks Pro Pack — ₺199,99**. Ücretsiz: **3 saat + 3 zemin**; Pro: kalanlar (açıklama: 28+ hareketli zemin, 15+ saat) + **macOS için aynı ekran koruyucuları indirme**. Geliştirici: yeni paketlerin bazıları ücretsiz, bazıları "uygun fiyatlı" ücretli olacak. Sürüm 1.54: "Three new clocks for Pro users!".
+- İncelenen görüntü: 8 iPhone (yatay, 1200 px) + 7 iPad (iPhone'larla aynı, açılmadı).
+- İlk açılış / tanıtım: görülmedi. Ayarlarda **"şarja takınca açılma" Kısayollar rehberi** var (açıklama).
+- Ana ekran (i1 sağdaki dikey telefon): beyaz zemin, sol üstte hap biçimli "● Clocks" başlığı (renkli halka simgesi), sağ üstte gri hap **"Pro"** ve dişli; altında **kart listesi**: her kart saatin canlı küçük önizlemesi (yuvarlak köşeli ~%6), dikey kaydırma.
+- Kadran / saat görünümü (saat × zemin **ayrı ayrı seçilip eşleştirilir**; görülenler):
+  1. Kırmızı-turuncu-pembe **katmanlı soyut şekiller** üstünde tek satır "Sunday, April 13th at 12:49pm" (ince SF).
+  2. Kırmızı gradyan üstünde **beyaz yarı saydam çevirmeli kartlar** "12 51".
+  3. **Grenli (noise) lacivert-mor gradyan**, ortada çok küçük tarih-saat satırı.
+  4. Gümüş-gökkuşağı **sıvı metal/holografik** zemin, sağ altta "12:51"; aynı zeminde ortada **cam (frosted glass) kart** içinde "12:49", sol üstte "04.13.25", sağ üstte "59°", sol altta "Chicago" (monospace küçük yazılar).
+  5. **Nokta matris dünya haritası** (siyah zemin, beyaz noktalar) + sağda yarı saydam gri kart (59°, "Sunday April 13th", büyük "12:49").
+  6. **Topografik eş yükselti çizgileri** (siyah zemin, ince gri çizgiler) + gri yarı saydam çevirmeli kartlar "01 39", yanında "PM", "SUN APR 13" (monospace).
+  7. **Pembe-mor bulanık bulut** zemin, altta tek satır dört bilgi: "SUN — APR 13", "CHICAGO", "59°", "1:40PM".
+  8. **Lacivert grenli zemin + yuvarlanan dakikalar**: "12 50" büyük beyaz, dakikanın üstünde soluk "49", altında soluk "51" (sayaç/odometre şeridi gibi), sağda "SUNDAY APR — 13".
+  9. Krem zemin üstünde **gökkuşağı renkli dalga şeridi**, sağ altta gri "01:54 PM", üstte küçük "59° APR 13 SUNDAY".
+  10. Mor-pembe soyut zemin + pembe cam kart "01".
+  Yazı tipi ve yazı rengi seçenekleri "some" (açıklama).
+- Ayarlar: görülmedi.
+- Widget / kilit ekranı / StandBy / saat: sürüm 1.52 "Widget support" (görüntü yok). Mac uygulaması ve ekran koruyucusu Pro ile.
+- Pro sayfası: görülmedi.
+- Tasarım: tanıtım görüntüleri beyaz zemin, siyah kalın sol yaslı başlık ("A fun standby clock", "Looks stunning in your home or office", "Over 10+ clocks and 20+ backgrounds", "Shortcuts support to open automatically when charging"); **gerçek ortam fotoğrafları** (MagSafe standında telefon, rafta, kırmızı örgü standda); Kısayollar ve "⚡" simgeleri. Genel dil: üretken sanat (generative) zeminler + küçük monospace bilgi yazıları.
+- Hatalar: görülmedi.
+- Bizde olmayan / farklı:
+  - Tam ekran saat zemini ile saat düzenini ayrı seçip eşleştirme — **var** (model `ClockModel` × zemin `fsBg`: düz, fotoğraf, gökyüzü, renk akışı, yıldızlar, hava; `AnimatedBackground.swift`) — —; ama zemin sayısı **6'ya karşı 28+** — kısmen — O — rakipte 3'ü ücretsiz, kalanı Pro ₺199,99.
+  - Üretken sanat zeminleri (katmanlı soyut şekil, topografik çizgi, nokta matris dünya haritası, grenli gradyan, sıvı metal, gökkuşağı dalga) — bizde yok — O (her biri Canvas çizimi) — Pro.
+  - Cam (frosted glass) kart içinde saat, yarı saydam çevirmeli kartlar — bizde yok — K — kısmen ücretsiz.
+  - Yuvarlanan (odometre) dakika şeridi: önceki/sonraki dakika soluk üstte/altta — bizde yok — K — muhtemelen Pro.
+  - Alt kenarda tek satır dört bilgi (tarih, şehir, sıcaklık, saat) ya da köşelerde küçük monospace bilgiler — kısmen (bizim alanlar saatin altında liste; `HomeItems.swift`) — K.
+  - Şarja takınca açılma için uygulama içi Kısayollar rehberi — kısmen (Kısayol eylemi var `OpenFullscreenClockIntent`, Ayarlar'da "Siri ve Kısayollar" bağlantısı var; adım adım rehber yok) — `AppIntents.swift` — K — ücretsiz.
+  - Mac ekran koruyucusu (.saver) — bizde yok (Mac menü çubuğu uygulaması var `mobile/ios/Mac`) — O — Pro.

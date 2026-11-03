@@ -187,3 +187,22 @@ Yöntem: App Store TR (`itunes.apple.com/lookup?country=tr`) ekran görüntüler
   - Zekâtta güncel altın ve döviz kuru (internetten) — yok (kullanıcı gram fiyatını yazar; bilinçli: dış veri yok) — `src/js/zakat.js`, `zakat.values` — K — ücretsiz
   - Yeni telefona karekodla veri taşıma — kısmen (iCloud eşitleme ve Android yedeği; karekod yok) — `CloudSync.swift`, `backup_rules.xml` — O — ücretsiz
   - Aylık çizelgede iki satırlı sıkışık tablo, bugün vurgusu, yapışkan başlık — kısmen (bizde aylık tablo var; görünüm doğrulanmadı) — `PrayerTab.swift` MonthlyPrayerView — K — ücretsiz
+
+## Fazilet Calendar: Salāh Times (id1326757844, 4,55, 4.938 puan, Çamlıca Basım Yayın)
+- Ücret modeli: reklamsız; abonelik "Annual Subscription" ₺55,00. Ayrıca **hediye paketleri**: "Arkadaşım Paketi" ₺55,00, "Ailem Paketi" ₺259,00, "Komşum Paketi" ₺1.019,99 (başkasına abonelik hediye etme/çoklu lisans olarak görünüyor; içerik doğrulanmadı). Aboneliğin neyi açtığı görsellerde yok (ilk analizde "Fazilet yıllık ₺55" not edilmişti). Sürüm 3.7.1 (19 Ekim 2026), 19 dil. 1973'ten beri basılı takvim markası.
+- İncelenen görüntü: 10 iPhone + 10 iPad (iPhone'dan 10'una bakıldı; iPad'e bakılmadı). Görseller 2022 tarihli, İngilizce.
+- Ana ekran: beyaz zemin, sol üstte zarf (mesaj) simgesi, ortada hap "İstanbul ⌄", sağda ince çizgili menü; büyük ince rakam "01" + "January 2022 / Saturday" + dış bağlantı simgesi; "Hijri: 28 Jumādā al-Awwal 1443"; "Remaining Time (Asr): 01:11:18"; **günün hadisi/ayeti** (tam ekran, paylaş, kaydet simgeleri; takvim yaprağının arka yüzü); altta üç vakit (önceki, şimdiki **altın-kahve dolu kare** #A08A64, sonraki). 
+- Vakit listesi (pencere): **"Sahur Ends 06:35", "Fajr 06:55", Sunrise, "Ishrāq 09:16", Zuhr (seçili bej satır), Asr 15:39, "Asr al-Thānī 16:11"**, Maghrib, Isha; her satırda ince çizgi gök simgesi (hilal+ufuk, doğan güneş, güneş, yıldızlı hilal).
+- Kıble: beyaz zemin, ekranı çapraz kesen ince altın çizgi (yön), ok, **ayak izi simgesi**, "Qiblah Angle 152.11°", "İstanbul", ⓘ.
+- İçerik: "Āyah al-Karīmah / Hadīth al-Sharīf" listesi, "All / Saved" bölümlü düğme, her gün tarihli kayıt, altta altın hap "2022" yıl seçici; günlük ayet/hadis ekranında Arapça + İngilizce. Kütüphane (Ilm al-Hāl kitap kapağı, "1 / 274" sayfa). Videolar ("Mekke-i Mükerreme (1880) 3D Sanal Turu"). "Tarihte Bugün", temalar, içerik kaydetme (metin).
+- Takvim / dini günler: hicri + miladi, mübarek gün ve gecelere geri sayım, o gün için önerilen ibadetler bildirimi (metin).
+- Widget / saat: kilit ekranı + ana ekran widget'ları (görsel: hicri tarih, "Remaining Time 1:32:53 (Asr)", 3 vakit listesi, günün hadisi geniş widget'ta). "Onlarca widget", iPad, Mac, Apple Watch eşitleme (metin).
+- Ayarlar: "APPEARANCE" (Light/Dark/System telefon çizimli radyo seçimi), "Time Notifications" anahtarı, "Automatic Location", "FONT: Font Size (System), **Font Type (Nunito)**". Konum: Apple haritası + "Automatic Location" + kayıtlı şehirler listesi, açıklama metni (güç tasarrufu notu).
+- Tasarım: beyaz/krem (#F7F5F0) zemin, altın-kahve vurgu (#A08A64), ince ağırlıklı geometrik yazı (Nunito), çok ince çizgi simgeler; süs yok, sade "kâğıt takvim" havası.
+- Hatalar: görülmedi (görseller eski: iOS "Carrier" durum çubuğu, 2022).
+- Bizde olmayan / farklı:
+  - Vakit listesinde "Sahur bitiş", "İşrak", "Asr-ı sânî" (ikinci ikindi) satırları birlikte — kısmen (Hanefî ikindi seçeneği birini diğerinin yerine koyar; İşrak ve ayrı sahur satırı yok) — `PrayerSchedule.parameters` (SaatCore), `prayer.hanafi` — K — ücretsiz
+  - Günün ayet/hadis arşivi (tarihli liste, "Kaydedilenler", yıl seçici) — kısmen (takvim yaprağı ve günün sözü; arşiv ve kaydetme yok) — `Content.swift` CalendarLeafView (satır 222) — K — ücretsiz
+  - Uygulama içi yazı tipi seçimi (genel metin için) — kısmen (saat yazı tipi `clockFont` var; genel metin yok) — `Appearance.swift` — K — ücretsiz
+  - Abonelik hediye etme paketleri — yok — — — rakipte ücretli
+  - Birden çok kayıtlı şehir — var (kayıtlı yerler, en çok 8) — `Places.swift` (`places.saved`) — — —
