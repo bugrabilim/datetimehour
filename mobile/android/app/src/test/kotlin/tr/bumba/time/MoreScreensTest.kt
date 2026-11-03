@@ -361,6 +361,20 @@ class MoreScreensTest {
         Prefs.store.edit().remove("study.acc").remove("study.q").remove(Study.SUBJECT).commit()
     }
 
+    /** Uyanma oyunu (2. analiz #7): civciv uyuyor / uyandı, rapor */
+    @Test fun wakeGame() {
+        val today = LocalDate.now()
+        val log = (12 downTo 1).map { WakeGame.Event(today.minusDays(it.toLong()).toString(), 7 * 60 + it % 4 * 5, 7 * 60, if (it % 5 == 0) 1 else 0, it % 3 == 0) }
+        WakeGame.save(log)
+        page("tr-uyanma-oyunu-uyuyor", "Uyanma oyunu") { WakeGameScreen() }
+        WakeGame.save(log + WakeGame.Event(today.toString(), 6 * 60 + 58, 7 * 60, 0, true))
+        page("tr-uyanma-oyunu", "Uyanma oyunu", dark = true) { WakeGameScreen() }
+        page("tr-uyanma-raporu", "Uyanma oyunu") { WakeGameScreen("report") }
+        page("tr-uyanma-puanlar", "Uyanma oyunu") { WakeGameScreen("points") }
+        shot("tr-gunaydin-civciv") { Column(Modifier.padding(16.dp)) { WakeGameMorningCard() } }
+        WakeGame.clear()
+    }
+
     @Test fun ownerScreens() {
         shot("tr-destek") {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) { FontScaleCard(); SupportCard {} }

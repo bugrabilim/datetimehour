@@ -622,6 +622,7 @@ struct SnoozeAlarmIntent: LiveActivityIntent {
     }
 
     func perform() async throws -> some IntentResult {
+        WakeGame.noteSnooze() // uyanma oyunu (2. analiz #7): erteleme sayısı
         let left = remaining < 0 ? -1 : max(0, remaining - 1)
         var options = KitAlarms.Options(snooze: minutes, remaining: left, rise: rise)
         options.wake = try? JSONDecoder().decode(PendingWakeTask.self, from: Data(wake.utf8))

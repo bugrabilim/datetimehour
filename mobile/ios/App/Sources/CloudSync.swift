@@ -22,7 +22,7 @@ enum CloudSync {
         // Kişisel listeler
         "world", SavedPlaces.key, "countdowns", "tools.voice", "hiit.cfg", "hiit.routine", "routines", "timers.history", Journal.key, "meet.cities", PrayerMethod.methodKey, PrayerMethod.hanafiKey,
         // Pomodoro ve uyku
-        PomoLog.key, PomoTodo.key, Study.logKey, Study.subjectsKey, "pomo.task", "pomo.goal", "pomo.tag", "pomo.noise", "pomo.vol", "pomo.work", "pomo.short", "pomo.long", "pomo.rounds",
+        PomoLog.key, PomoTodo.key, Study.logKey, Study.subjectsKey, WakeGame.key, "pomo.task", "pomo.goal", "pomo.tag", "pomo.noise", "pomo.vol", "pomo.work", "pomo.short", "pomo.long", "pomo.rounds",
         SleepPlan.onKey, SleepPlan.wakeKey, SleepPlan.durationKey, SleepPlan.daysKey, SleepPlan.remindKey,
         SleepSounds.kindKey, SleepSounds.volumeKey, SleepSounds.timerKey,
         // İbadet

@@ -246,6 +246,7 @@ struct WakeTaskView: View {
         motion.stop()
         Torch.set(false)
         SleepLogStore.recordWake()
+        WakeGame.record(wake: Date(), alarm: nil, task: true) // uyanma oyunu (2. analiz #7)
         BadgeStore.shared.hit(.uyanik)
         UINotificationFeedbackGenerator().notificationOccurred(.success)
         onDone()

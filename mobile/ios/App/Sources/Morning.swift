@@ -15,6 +15,7 @@ enum MorningCheck {
         guard last.timeIntervalSince1970 > shown else { return false }
         UserDefaults.standard.set(now.timeIntervalSince1970, forKey: shownKey)
         SleepLogStore.recordWake(last) // uyku düzeni (2. analiz #47): iPhone'da kalkış = alarmın çaldığı an
+        WakeGame.record(wake: last, alarm: last, task: false) // uyanma oyunu (2. analiz #7)
         return true
     }
 
@@ -69,6 +70,7 @@ struct MorningCard: View {
                         ForEach(today, id: \.self) { Text($0) }
                     }
                 }
+                WakeGameMorningSection()
                 JournalMorningSection()
             }
             // Alarm duvar kâğıdı (2. analiz #2): son çalan alarmınki

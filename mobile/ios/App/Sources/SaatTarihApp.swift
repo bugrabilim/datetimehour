@@ -99,7 +99,7 @@ enum AppTab: Int, CaseIterable {
 
 /// Araçlar sekmesindeki sayfalar
 enum ToolRoute: Hashable {
-    case alarm, timer, stopwatch, pomodoro, study, sleep, journal, breath, planner, datecalc, settings, about, badges
+    case alarm, timer, stopwatch, pomodoro, study, wakeGame, sleep, journal, breath, planner, datecalc, settings, about, badges
 }
 
 /// Sekme ve Araçlar gezintisi; saat ekranındaki alanlar dokununca ilgili sayfayı açar.
@@ -323,7 +323,7 @@ enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
-         qr, colors, wall, study
+         qr, colors, wall, study, wakegame
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -349,6 +349,7 @@ enum DebugScreen: String, Identifiable {
         case .journal: JournalView()
         case .breath: BreathView()
         case .study: StudyView()
+        case .wakegame: WakeGameView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()
         case .weather: WeatherView()

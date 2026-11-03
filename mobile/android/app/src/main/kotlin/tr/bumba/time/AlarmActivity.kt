@@ -91,6 +91,12 @@ class AlarmActivity : ComponentActivity() {
                     Torch.set(this@AlarmActivity, false)
                     if (kind != "alarm") { finish(); return }
                     SleepLog.recordWake()
+                    // Uyanma oyunu (2. analiz #7): kalkış, alarm saati, erteleme sayısı, görev
+                    val base = AlarmItem.find(id.removePrefix(AlarmScheduler.SNOOZE))
+                    val t = java.time.LocalDateTime.now()
+                    WakeGame.record(t.toLocalDate(), t.hour * 60 + t.minute, base?.let { it.hour * 60 + it.minute } ?: -1,
+                        Prefs.store.getInt("alarm.snoozed." + id.removePrefix(AlarmScheduler.SNOOZE), 0),
+                        base != null && base.effectiveTask != "none")
                     if (alarm != null && launchApp(this@AlarmActivity, alarm.openApp)) finish() else morning = true
                 }
                 var torch by remember { mutableStateOf(false) }
@@ -239,6 +245,7 @@ fun MorningCard(onDone: () -> Unit) {
                 for (e in events) Text(e, color = Theme.c.text, fontSize = 16.sp)
             }
         }
+        WakeGameMorningCard()
         JournalMorningCard()
         Spacer(Modifier.height(8.dp))
         RoundButton(L("common.done"), true, Modifier.fillMaxWidth(), onDone)

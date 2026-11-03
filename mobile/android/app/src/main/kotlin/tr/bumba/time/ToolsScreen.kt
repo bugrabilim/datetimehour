@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Bedtime
 import androidx.compose.material.icons.filled.EditCalendar
+import androidx.compose.material.icons.filled.EmojiNature
 import androidx.compose.material.icons.filled.HourglassBottom
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MilitaryTech
@@ -71,6 +72,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "journal" -> Page(L("journal.title"), onRoute) { JournalScreen() }
         "breath" -> Page(L("breath.title"), onRoute) { BreathScreen() }
         "study" -> Page(L("study.title"), onRoute) { StudyScreen() }
+        "wakeGame" -> Page(L("wakegame.title"), onRoute) { WakeGameScreen() }
         "planner" -> Page(L("planner.h1"), onRoute) { MeetingPlannerScreen() }
         "datecalc" -> Page(L("tools.hub.cards.datecalc.name"), onRoute) { DateCalcScreen() }
         "settings" -> Page(L("settings.title"), onRoute) { SettingsScreen(onRoute) }
@@ -95,6 +97,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
                 ToolRow(Icons.Filled.Spa, L("tools.hub.cards.pomodoro.name")) { onRoute("pomodoro") }
                 ToolRow(Icons.Filled.School, L("study.title")) { onRoute("study") }
                 ToolRow(Icons.Filled.Bedtime, L("sleep.title")) { onRoute("sleep") }
+                ToolRow(Icons.Filled.EmojiNature, L("wakegame.title")) { onRoute("wakeGame") }
                 ToolRow(Icons.Filled.WbTwilight, L("journal.title")) { onRoute("journal") }
                 ToolRow(Icons.Filled.Air, L("breath.title")) { onRoute("breath") }
                 ToolRow(Icons.Filled.Groups, L("planner.h1")) { onRoute("planner") }
