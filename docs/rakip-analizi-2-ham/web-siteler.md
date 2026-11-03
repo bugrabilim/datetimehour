@@ -231,3 +231,20 @@ Karşılaştırma için kendi canlı sitemizin görüntüleri: `rakip2/web/biz/`
   - Satırda saat dilimi kısaltması ve bayrak — bizde dünya saatleri kartında yok (`src/js/world.js`: ad, saat, "Sizden X sa ileride"). Çaba K.
   - **Ertesi/önceki gün işareti** ("Wed") — bizde yok: kartta yalnız saat, ofset ve "Sizden X sa ileride" var (`src/js/world.js` 83–85. satırlar; `main.js` `diff` türü gün yazmıyor). Çaba K.
   - Gizlilik cümlesi araç üstünde görünür ("listeniz bu tarayıcıda") — bizde aynı davranış var, cümle gizlilik sayfasında. Çaba K (yalnız metin).
+
+## Bizim site (https://time.bumba.tr) aynı tür sayfalarda, yan yana notlar
+Görüntüler `rakip2/web/biz/`: ana sayfa (masaüstü/telefon, açık/koyu, tam sayfa), `/dunya-saatleri/`, `/takvim/2026/`, `/geri-sayim/`, `/alarm/`, `/saat-farki/`, `/toplanti-planlayici/`, `/mevsimler/`.
+- **Ana sayfa:** ilk ekranda yalnız rakamlı analog saat (kadran `#efebe2`, zemin `#f7f4ee`; koyuda `#11141a`), altında 24/12 · i · tam ekran · ‹ 1/20 › satırı, sonra dönen dünya ve altbilgi. Ekranda **dijital saat, tarih (üst bardaki dışında), saat dilimi, doğruluk satırı ve hiçbir açıklama yok**; rakiplerin hepsi (time.is, saat-kac.tr, canlisaat, onlinealarmkur, vClock) ilk ekranda büyük dijital saat + tarih + konum gösteriyor. Doğruluk ölçümü yalnız "i" penceresinde (`build.mjs` 306. satır). Rakiplerde olmayan: reklamsızlık, sade düzen, dönen dünya.
+- **Çerez bandı:** bizde ilk ekranın altını (~115 px masaüstü, ~210 px telefon) kaplıyor; incelenen rakiplerin hiçbirinde (ABD IP'siyle) çerez bandı görülmedi. Bant metni uzun (4 satır) ama düğmeler eşit; standart madde 14 gereği.
+- **Dünya saatleri:** UTC zaman çizgisi üstünde kartlar (rakiplerde yok, özgün); kartta bayrak, saat dilimi kısaltması, gündüz/gece ve gün farkı yok (savvytime, canlisaat, everytimezone'da var).
+- **Takvim:** renkli lejant, Ramazan gölgesi, yıl düğmeleri — time.is'ten zengin; hafta numarası sütunu ve yaz saati günü işareti yok, yalnız Türkiye.
+- **Saat farkı merkezi (`/saat-farki/`):** "İstanbul – Londra / Birleşik Krallık" kartları yalnız ad gösteriyor; **kartta şimdiki saat ve fark yok** (time.is şehir sayfasındaki çubuk grafik ve savvytime satırları farkı ilk bakışta veriyor). Çaba K.
+- **Toplantı planlayıcı:** mesai/erken-geç/gece renkleri ve "Ortak mesai saatleri" cümlesi worldtimebuddy'den daha açıklayıcı; H1 "Toplantı planlayıcı" ile kart başlığı "Toplantı planlayıcı" alt alta yineleniyor (masaüstü ve telefon). Telefonda tablo ilk ekranda görünmüyor (şehir ekleme + lejant önce).
+- **Alarm:** gün seçimi, ses, YouTube — vClock/onlinealarmkur'dan zengin; kurulunca büyük geri sayım yok, geçmiş yok, erteleme sabit 5 dk.
+- **Geri sayım:** hazır süre hapları (1–60 dk), büyük rakam, ilerleme çubuğu — rakiplerle eşit.
+
+## Bu turda bakılamayanlar / atlananlar
+- timeanddate.com: Cloudflare doğrulama kutusu (403); hiçbir sayfası görülmedi (yukarıda).
+- Görev listesindeki ezanvakti web sitesi, "saatli maarif takvimi" web sürümü, saatkac.info.tr (time.is'in Türkçe kopyası olduğu time.is altbilgisinde yazıyor), timeanddate tarih hesaplayıcısı ile `/tarih-hesaplama/` karşılaştırması: süre nedeniyle atlandı.
+- 24timezones ve savvytime yalnız masaüstü ilk ekran; telefon ve koyu tema alınmadı.
+- Çerez bantları: bağlantı ABD çıkışlı olduğu için AB/TR ziyaretçisine gösterilen bantlar görülmedi.
