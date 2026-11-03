@@ -39,11 +39,16 @@ class ReligionTest {
 
     @Test fun duas() {
         val d = Duas.load(c)
-        assertEquals(12, d.size)
+        assertEquals(22, d.size)
         val kursi = d.first { it.id == "ayetelkursi" }
         Quran.load(c)
         assertEquals(Quran.ar(2, 255), kursi.ar)
         assertEquals(listOf("2:255"), kursi.refs)
+        // 2. analiz #69: her duanın kategorisi var; yeni Kur'an duaları ayetin ilgili sözcüğünden sonuna kadar birebir
+        assertTrue(d.all { it.cats.isNotEmpty() && it.cats.all { c -> c in Duas.CATS } })
+        val parents = d.first { it.id == "parents" }
+        assertEquals(Quran.ar(17, 24).split(" ").drop(7).joinToString(" "), parents.ar)
+        assertEquals(listOf("17:24"), parents.refs)
     }
 
     @Test fun tesbihat() {
