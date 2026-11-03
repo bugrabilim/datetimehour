@@ -246,6 +246,35 @@ fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
                     Text(c.title, color = Theme.c.text, fontSize = 16.sp, fontFamily = c.family, fontWeight = c.weight)
                 }
             }
+            // Rakam rengi ve dış hatlı rakamlar (2. analiz #24): dijital saatlerde
+            Text(L("look.digitColor"), color = Theme.c.muted, fontSize = 13.sp)
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                Swatch(ClockLook.digitColor == "theme", Theme.c.ink, L("wall.none")) { ClockLook.saveDigitColor("theme") }
+                for ((id, rgb) in ClockLook.DIGIT_COLORS) Swatch(ClockLook.digitColor == id, androidx.compose.ui.graphics.Color(0xFF000000 or rgb), L("color.$id")) {
+                    ClockLook.saveDigitColor(id)
+                }
+            }
+            LookSwitch(L("look.outline"), ClockLook.outline) { ClockLook.saveOutline(it) }
+        }
+        // Çevirmeli saat (2. analiz #20): iki rakam tek kart, köşede küçük saniye, kart çizgisi, kart rengi
+        AppCard {
+            SectionTitle(L("stage.models.flip"))
+            var pair by remember { mutableStateOf(FlipLook.pair) }
+            var small by remember { mutableStateOf(FlipLook.smallSec) }
+            var hinge by remember { mutableStateOf(FlipLook.hinge) }
+            var card by remember { mutableStateOf(FlipLook.card) }
+            LookSwitch(L("flip.pair"), pair) { pair = it; Prefs.store.edit().putBoolean(FlipLook.PAIR_KEY, it).apply() }
+            LookSwitch(L("flip.smallSec"), small) { small = it; Prefs.store.edit().putBoolean(FlipLook.SMALL_SEC_KEY, it).apply() }
+            LookSwitch(L("flip.hinge"), hinge) { hinge = it; Prefs.store.edit().putBoolean(FlipLook.HINGE_KEY, it).apply() }
+            Text(L("flip.card"), color = Theme.c.muted, fontSize = 13.sp)
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                for (id in FlipLook.CARDS.keys) {
+                    val (bgc, _) = FlipLook.colors(id, Theme.c)
+                    Swatch(card == id, bgc, if (id == "theme") L("wall.none") else L("color.$id")) {
+                        card = id; Prefs.store.edit().putString(FlipLook.CARD_KEY, id).apply()
+                    }
+                }
+            }
         }
         AppCard {
             SectionTitle(L("look.photo"))
@@ -399,6 +428,15 @@ fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
             Text(L("night.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
+}
+
+/** Renk seçimi dairesi (seçiliyse kalın kenar) */
+@Composable
+private fun Swatch(selected: Boolean, color: androidx.compose.ui.graphics.Color, label: String, onClick: () -> Unit) {
+    Box(
+        Modifier.size(34.dp).border(if (selected) 3.dp else 1.dp, if (selected) Theme.c.text else Theme.c.border, CircleShape).padding(5.dp)
+            .background(color, CircleShape).clickable(onClickLabel = label, onClick = onClick),
+    )
 }
 
 @Composable

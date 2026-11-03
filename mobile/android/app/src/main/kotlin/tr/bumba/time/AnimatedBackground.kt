@@ -37,7 +37,9 @@ import kotlin.math.sin
  * yüksekliğine göre gündüz, alacakaranlık ya da gece olur. iOS'taki AnimatedBackground ile aynı renkler ve hareket.
  */
 enum class FullscreenBackground(val id: String) {
-    PLAIN("plain"), PHOTO("photo"), SKY("sky"), FLOW("flow"), STARS("stars"), WEATHER("weather");
+    PLAIN("plain"), PHOTO("photo"), SKY("sky"), FLOW("flow"), STARS("stars"), WEATHER("weather"),
+    /** Ahşap doku (2. analiz #24): durağan, telefonda çizilir */
+    WOOD("wood");
 
     val title: String get() = L("look.bg.$id")
     val animated: Boolean get() = this != PLAIN && this != PHOTO
@@ -155,6 +157,7 @@ fun AnimatedBackground(kind: FullscreenBackground, modifier: Modifier = Modifier
                 FullscreenBackground.SKY -> sky(t, SkyMath.sunAltitude(place.lat, place.lon, System.currentTimeMillis()))
                 FullscreenBackground.WEATHER -> weather(t, SkyMath.sunAltitude(place.lat, place.lon, System.currentTimeMillis()), sky ?: WeatherScene(SkyWeather.CLEAR))
                 FullscreenBackground.FLOW -> flow(t, listOf(accent, accent2, Color(0xFF6C4AB6)))
+                FullscreenBackground.WOOD -> wood()
                 else -> stars(t, listOf(Color(0xFF05070F), Color(0xFF111A3A)), 1f)
             }
         }
@@ -303,4 +306,38 @@ private fun DrawScope.stars(t: Double, base: List<Color>?, alpha: Float) {
         val a = ((0.35 + 0.65 * (0.5 + 0.5 * sin(t * speed + phase))) * alpha).toFloat()
         drawCircle(Color.White.copy(alpha = a.coerceIn(0f, 1f)), s / 2, Offset(x, y))
     }
+}
+
+/**
+ * Ahşap doku (2. analiz #24): ceviz tonlarında dikey geçiş ve sabit tohumla çizilmiş dalgalı damarlar (dosya yok,
+ * her cihazda aynı). iOS'taki wood() ile aynı renkler.
+ */
+private fun androidx.compose.ui.graphics.drawscope.DrawScope.wood() {
+    drawRect(androidx.compose.ui.graphics.Brush.horizontalGradient(listOf(Color(0xFF4A2C17), Color(0xFF6B4226), Color(0xFF55331C), Color(0xFF6E4527))))
+    var seed = 0x5EED_1234L
+    fun rnd(): Float { seed = seed * 6364136223846793005L + 1442695040888963407L; return ((seed ushr 11).toDouble() / (1L shl 53).toDouble()).toFloat() }
+    val lines = 70
+    for (i in 0 until lines) {
+        val x0 = size.width * (i + rnd() * 0.8f) / lines
+        val amp = size.width * (0.004f + rnd() * 0.012f)
+        val freq = 2f + rnd() * 4f
+        val phase = rnd() * 6.28f
+        val p = androidx.compose.ui.graphics.Path()
+        var y = 0f
+        p.moveTo(x0, 0f)
+        while (y <= size.height) {
+            p.lineTo(x0 + amp * kotlin.math.sin(y / size.height * freq * 6.28f + phase), y)
+            y += 12f
+        }
+        val dark = rnd() < 0.5f
+        drawPath(p, (if (dark) Color(0xFF2E1A0C) else Color(0xFF8A5A36)).copy(alpha = 0.10f + rnd() * 0.18f),
+            style = androidx.compose.ui.graphics.drawscope.Stroke(1f + rnd() * 3f))
+    }
+    // Budak: iki halkalı koyu leke
+    val cx = size.width * 0.68f
+    val cy = size.height * 0.36f
+    for (k in 0 until 4) drawOval(Color(0xFF2E1A0C).copy(alpha = 0.18f - k * 0.03f),
+        topLeft = Offset(cx - size.width * (0.04f + k * 0.03f), cy - size.width * (0.02f + k * 0.015f)),
+        size = androidx.compose.ui.geometry.Size(size.width * (0.08f + k * 0.06f), size.width * (0.04f + k * 0.03f)),
+        style = androidx.compose.ui.graphics.drawscope.Stroke(2f))
 }

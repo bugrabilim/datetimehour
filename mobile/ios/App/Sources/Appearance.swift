@@ -148,6 +148,23 @@ struct AppearanceView: View {
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @AppStorage(FullscreenBackground.key) private var bgRaw = ""
     @AppStorage(NightMode.key) private var nightRaw = "off"
+    @AppStorage(ClockDigits.colorKey) private var digitColor = "theme"
+    @AppStorage(ClockDigits.outlineKey) private var digitOutline = false
+    @AppStorage(FlipLook.pairKey) private var flipPair = false
+    @AppStorage(FlipLook.smallSecKey) private var flipSmallSec = false
+    @AppStorage(FlipLook.hingeKey) private var flipHinge = true
+    @AppStorage(FlipLook.cardKey) private var flipCard = "theme"
+
+    /// Renk seçimi dairesi (seçiliyse kalın kenar)
+    private func swatch(_ color: Color, _ label: String, _ selected: Bool, _ action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Circle().fill(color).frame(width: 28, height: 28)
+                .overlay(Circle().stroke(selected ? Theme.text : Theme.border, lineWidth: selected ? 3 : 1).padding(-4))
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(label)
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
     @AppStorage(NightMode.colorKey) private var nightColor = "red"
     @AppStorage(NightMode.fromKey) private var nightFrom = 22 * 60
     @AppStorage(NightMode.toKey) private var nightTo = 7 * 60
@@ -214,6 +231,35 @@ struct AppearanceView: View {
                 }
                 .pickerStyle(.inline)
                 .labelsHidden()
+                // Rakam rengi ve dış hatlı rakamlar (2. analiz #24): dijital saatlerde
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(L("look.digitColor")).font(.subheadline).foregroundStyle(Theme.muted)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            swatch(Theme.ink, L("wall.none"), digitColor == "theme") { digitColor = "theme" }
+                            ForEach(ClockDigits.colors, id: \.id) { c in
+                                swatch(Color(hex: c.rgb), L("color.\(c.id)"), digitColor == c.id) { digitColor = c.id }
+                            }
+                        }
+                        .padding(4)
+                    }
+                }
+                Toggle(L("look.outline"), isOn: $digitOutline)
+            }
+            // Çevirmeli saat (2. analiz #20): iki rakam tek kart, köşede küçük saniye, kart çizgisi, kart rengi
+            Section(L("stage.models.flip")) {
+                Toggle(L("flip.pair"), isOn: $flipPair)
+                Toggle(L("flip.smallSec"), isOn: $flipSmallSec)
+                Toggle(L("flip.hinge"), isOn: $flipHinge)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(L("flip.card")).font(.subheadline).foregroundStyle(Theme.muted)
+                    HStack(spacing: 10) {
+                        ForEach(FlipLook.cards, id: \.id) { c in
+                            swatch(FlipLook.colors(c.id).bg, c.id == "theme" ? L("wall.none") : L("color.\(c.id)"), flipCard == c.id) { flipCard = c.id }
+                        }
+                    }
+                    .padding(4)
+                }
             }
             Section {
                 TimelineView(.animation(minimumInterval: (SecondsMotion(rawValue: motionRaw) ?? .tick).interval)) { context in

@@ -7,6 +7,8 @@ import WeatherKit
 /// gündüz, alacakaranlık ya da gece olur. Android'deki AnimatedBackground ile aynı renkler ve hareket.
 enum FullscreenBackground: String, CaseIterable, Identifiable {
     case plain, photo, sky, flow, stars, weather
+    /// Ahşap doku (2. analiz #24): durağan, telefonda çizilir
+    case wood
 
     static let key = "fsBg"
     var id: String { rawValue }
@@ -122,6 +124,7 @@ struct AnimatedBackground: View {
                     case .weather: Self.weather(&ctx, size, t: t, alt: Self.sunAltitude(place: place, at: context.date),
                                                 scene: scene ?? weather ?? WeatherScene(kind: .clear))
                     case .flow: Self.flow(&ctx, size, t: t)
+                    case .wood: Self.wood(&ctx, size)
                     default: Self.stars(&ctx, size, t: t, base: [Color(hex: 0x05070F), Color(hex: 0x111A3A)], alpha: 1)
                     }
                 }
@@ -266,6 +269,42 @@ struct AnimatedBackground: View {
     }
 
     /// Koyu zemin üstünde dönerek kayan üç renk lekesi (uygulama renginden)
+    /// Ahşap doku (2. analiz #24): ceviz tonlarında geçiş ve sabit tohumla dalgalı damarlar (Android'deki wood() ile aynı renkler)
+    static func wood(_ ctx: inout GraphicsContext, _ size: CGSize) {
+        let rect = CGRect(origin: .zero, size: size)
+        ctx.fill(Path(rect), with: .linearGradient(
+            Gradient(colors: [Color(hex: 0x4A2C17), Color(hex: 0x6B4226), Color(hex: 0x55331C), Color(hex: 0x6E4527)]),
+            startPoint: .zero, endPoint: CGPoint(x: size.width, y: 0)))
+        var seed: UInt64 = 0x5EED_1234
+        func rnd() -> CGFloat {
+            seed = seed &* 6364136223846793005 &+ 1442695040888963407
+            return CGFloat(Double(seed >> 11) / Double(UInt64(1) << 53))
+        }
+        let lines = 70
+        for i in 0..<lines {
+            let x0 = size.width * (CGFloat(i) + rnd() * 0.8) / CGFloat(lines)
+            let amp = size.width * (0.004 + rnd() * 0.012)
+            let freq = 2 + rnd() * 4
+            let phase = rnd() * 6.28
+            var p = Path()
+            p.move(to: CGPoint(x: x0, y: 0))
+            var y: CGFloat = 0
+            while y <= size.height {
+                p.addLine(to: CGPoint(x: x0 + amp * sin(y / size.height * freq * 6.28 + phase), y: y))
+                y += 12
+            }
+            let dark = rnd() < 0.5
+            ctx.stroke(p, with: .color((dark ? Color(hex: 0x2E1A0C) : Color(hex: 0x8A5A36)).opacity(0.10 + rnd() * 0.18)),
+                       lineWidth: 1 + rnd() * 3)
+        }
+        let cx = size.width * 0.68, cy = size.height * 0.36
+        for k in 0..<4 {
+            let w = size.width * (0.08 + CGFloat(k) * 0.06), h = size.width * (0.04 + CGFloat(k) * 0.03)
+            ctx.stroke(Path(ellipseIn: CGRect(x: cx - w / 2, y: cy - h / 2, width: w, height: h)),
+                       with: .color(Color(hex: 0x2E1A0C).opacity(0.18 - Double(k) * 0.03)), lineWidth: 2)
+        }
+    }
+
     static func flow(_ ctx: inout GraphicsContext, _ size: CGSize, t: Double) {
         gradient(&ctx, size, [Color(hex: 0x0B1020), Color(hex: 0x141A33)])
         let colors = [Theme.accent, Theme.accent2, Color(hex: 0x6C4AB6)]

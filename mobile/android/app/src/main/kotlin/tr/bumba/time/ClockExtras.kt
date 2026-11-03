@@ -61,6 +61,18 @@ object ClockLook {
     var tickSound by mutableStateOf(false); private set
     var banner by mutableStateOf(false); private set
     var dualCity by mutableStateOf(""); private set
+    /** Rakam rengi (2. analiz #24): "theme" ya da renk kimliği (color.<id>); dış hatlı rakamlar */
+    var digitColor by mutableStateOf("theme"); private set
+    var outline by mutableStateOf(false); private set
+    /** Büyük rakam için iki temada da okunur orta tonlar */
+    val DIGIT_COLORS = linkedMapOf(
+        "red" to 0xE03131L, "orange" to 0xF76707L, "amber" to 0xF59F00L, "green" to 0x2F9E44L,
+        "aqua" to 0x1098ADL, "blue" to 0x1C7ED6L, "violet" to 0x7048E8L, "pink" to 0xD6336CL,
+    )
+    fun digitInk(c: AppColors): androidx.compose.ui.graphics.Color =
+        DIGIT_COLORS[digitColor]?.let { androidx.compose.ui.graphics.Color(0xFF000000 or it) } ?: c.ink
+    fun saveDigitColor(v: String) { digitColor = v; Prefs.store.edit().putString("look.digitColor", v).apply() }
+    fun saveOutline(v: Boolean) { outline = v; Prefs.store.edit().putBoolean("look.outline", v).apply() }
 
     fun load() {
         val s = Prefs.store
@@ -69,6 +81,8 @@ object ClockLook {
         tickSound = s.getBoolean("tickSound", false)
         banner = s.getBoolean("fs.banner", false)
         dualCity = s.getString("dualCity", "")!!
+        digitColor = s.getString("look.digitColor", "theme")!!
+        outline = s.getBoolean("look.outline", false)
     }
 
     fun saveMotion(v: String) { motion = v; Prefs.store.edit().putString("secMotion", v).apply() }
