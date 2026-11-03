@@ -76,7 +76,9 @@ struct JournalView: View {
     @State private var list = Journal.load()
     @State private var confirm = false
 
-    var body: some View {
+    var body: some View { bodyContent.screenshotWarning() }
+
+    @ViewBuilder private var bodyContent: some View {
         List {
             Section {
                 JournalQuick(entry: $entry)

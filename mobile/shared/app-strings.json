@@ -15588,5 +15588,22 @@
     "zh": "在iPhone上，应用保持打开（屏幕会变暗）或正在播放助眠声音时会话才会持续；离开应用后，闹钟会按原定时间响起。",
     "fil": "Sa iPhone, tumatakbo ang session habang bukas ang app (dumidilim ang screen) o habang tumutugtog ang tunog pampatulog; kung aalis ka sa app, tutunog ang alarma sa karaniwang oras.",
     "th": "บน iPhone เซสชันจะทำงานขณะเปิดแอปอยู่ (หน้าจอจะหรี่ลง) หรือขณะเล่นเสียงช่วยนอน หากออกจากแอป นาฬิกาปลุกจะดังตามเวลาปกติ"
+  },
+  "screenshot.warn": {
+    "tr": "Ekran görüntüsü alındı. İçinde kişisel kayıtlarınız olabilir; paylaşırken dikkat edin.",
+    "en": "Screenshot taken. It may contain your personal records; be careful when sharing it.",
+    "de": "Bildschirmfoto aufgenommen. Es kann Ihre persönlichen Einträge enthalten; seien Sie beim Teilen vorsichtig.",
+    "az": "Ekran şəkli çəkildi. Orada şəxsi qeydləriniz ola bilər; paylaşarkən diqqətli olun.",
+    "ar": "تم التقاط لقطة شاشة. قد تحتوي على سجلاتك الشخصية؛ انتبه عند مشاركتها.",
+    "id": "Tangkapan layar diambil. Mungkin berisi catatan pribadi Anda; berhati-hatilah saat membagikannya.",
+    "ur": "اسکرین شاٹ لیا گیا۔ اس میں آپ کے ذاتی ریکارڈ ہو سکتے ہیں؛ شیئر کرتے وقت احتیاط کریں۔",
+    "fa": "از صفحه عکس گرفته شد. ممکن است سوابق شخصی شما در آن باشد؛ هنگام هم‌رسانی مراقب باشید.",
+    "fr": "Capture d’écran effectuée. Elle peut contenir vos données personnelles ; soyez prudent en la partageant.",
+    "ru": "Сделан снимок экрана. На нём могут быть ваши личные записи; будьте осторожны, когда делитесь им.",
+    "ja": "スクリーンショットを撮りました。個人的な記録が含まれている可能性があります。共有するときはご注意ください。",
+    "ko": "스크린샷을 찍었습니다. 개인 기록이 포함되어 있을 수 있으니 공유할 때 주의하세요.",
+    "zh": "已截屏。其中可能包含您的个人记录，分享时请注意。",
+    "fil": "May kinuhang screenshot. Maaaring may laman itong personal mong talaan; mag-ingat sa pagbabahagi.",
+    "th": "บันทึกภาพหน้าจอแล้ว ภาพนี้อาจมีบันทึกส่วนตัวของคุณ โปรดระวังเมื่อแชร์"
   }
 }

@@ -137940,6 +137940,101 @@
           }
         }
       }
+    },
+    "screenshot.warn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran görüntüsü alındı. İçinde kişisel kayıtlarınız olabilir; paylaşırken dikkat edin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshot taken. It may contain your personal records; be careful when sharing it."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildschirmfoto aufgenommen. Es kann Ihre persönlichen Einträge enthalten; seien Sie beim Teilen vorsichtig."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran şəkli çəkildi. Orada şəxsi qeydləriniz ola bilər; paylaşarkən diqqətli olun."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم التقاط لقطة شاشة. قد تحتوي على سجلاتك الشخصية؛ انتبه عند مشاركتها."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tangkapan layar diambil. Mungkin berisi catatan pribadi Anda; berhati-hatilah saat membagikannya."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسکرین شاٹ لیا گیا۔ اس میں آپ کے ذاتی ریکارڈ ہو سکتے ہیں؛ شیئر کرتے وقت احتیاط کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "از صفحه عکس گرفته شد. ممکن است سوابق شخصی شما در آن باشد؛ هنگام هم‌رسانی مراقب باشید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Capture d’écran effectuée. Elle peut contenir vos données personnelles ; soyez prudent en la partageant."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сделан снимок экрана. На нём могут быть ваши личные записи; будьте осторожны, когда делитесь им."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スクリーンショットを撮りました。個人的な記録が含まれている可能性があります。共有するときはご注意ください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스크린샷을 찍었습니다. 개인 기록이 포함되어 있을 수 있으니 공유할 때 주의하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已截屏。其中可能包含您的个人记录，分享时请注意。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "May kinuhang screenshot. Maaaring may laman itong personal mong talaan; mag-ingat sa pagbabahagi."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บันทึกภาพหน้าจอแล้ว ภาพนี้อาจมีบันทึกส่วนตัวของคุณ โปรดระวังเมื่อแชร์"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

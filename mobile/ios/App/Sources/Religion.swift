@@ -531,7 +531,9 @@ struct TrackerView: View {
     @State private var confirm = false
     private let today = CalendarDay(Date())
 
-    var body: some View {
+    var body: some View { bodyContent.screenshotWarning() }
+
+    @ViewBuilder private var bodyContent: some View {
         let ramadans = CalendarData.shared.ramadans
         let ramadan = ramadans.first { $0.from <= today && today <= $0.to }
             ?? ramadans.last { $0.to < today } ?? ramadans.first
@@ -710,7 +712,9 @@ struct ZakatView: View {
         v == v.rounded() ? String(Int64(v)) : String(v)
     }
 
-    var body: some View {
+    var body: some View { bodyContent.screenshotWarning() }
+
+    @ViewBuilder private var bodyContent: some View {
         let values = texts.compactMapValues(Zakat.parse)
         let r = Zakat.calc(values)
         Form {

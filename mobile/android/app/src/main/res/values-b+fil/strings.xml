@@ -1453,5 +1453,6 @@
     <string name="smart_none">Walang alarmang may window ng matalinong alarma. Pumili ng window na \"Matalinong alarma\" sa editor ng alarma.</string>
     <string name="smart_how">Ilagay ang telepono sa kama sa tabi ng unan at i-charge ito. Binabasa lang ang motion sensor sa loob ng window; walang nire-record, nananatili ang data sa memory ng telepono at hindi sine-save. Kung walang galaw, tutunog ang alarma sa karaniwang oras.</string>
     <string name="smart_howIOS">Sa iPhone, tumatakbo ang session habang bukas ang app (dumidilim ang screen) o habang tumutugtog ang tunog pampatulog; kung aalis ka sa app, tutunog ang alarma sa karaniwang oras.</string>
+    <string name="screenshot_warn">May kinuhang screenshot. Maaaring may laman itong personal mong talaan; mag-ingat sa pagbabahagi.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

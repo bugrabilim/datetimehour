@@ -22,7 +22,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
   - **—**: yapılmayacak.
 - Temel işler her zaman ücretsiz kalır: saat, alarm, vakitler, takvim. Bu analiz yalnız ileride neyin ücretli olabileceğini not eder; bugün ücretli hiçbir şey yok.
 
-**Durum (3 Kasım 2026):** 81 iş: 79 açık, 2 sahibin kararına kalıyor (#53 ve #75; sunucu ya da hesap gerektirir). 1–8 ve 76–81 sahibin ekran görüntülerinden, 9–75 ajan taramasından.
+**Durum (3 Kasım 2026):** 86 iş: 1 yapıldı (#82), 83 açık, 2 ücretli sistemle birlikte gelecek (#53 ve #75; sunucu ve hesap gerektirir, sahibin kararıyla şimdi yapılmayacak). 1–8, 76–84 sahibin ekran görüntülerinden, 9–75 ajan taramasından; 85–86 ilk analizde "bitti" sayılıp eksik kalan kısımlardır.
 
 **Numaralar:** İlk analizden ayrıdır, "2. analiz #N" diye anılır. Numara sabittir. İş bitince yalnız "Durum" değişir, yeni iş sona eklenir. 1–8 numaralı işler 3 Kasım 2026'da ilk analizin 108–115 numaralarından buraya taşındı.
 
@@ -38,56 +38,56 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 6 | Ayarlarda puanla (mağaza değerlendirme penceresi; rakipte uygulama içi "Uygulamamızı seviyor musunuz?" kartı), uygulamayı paylaş, geri bildirim (e-posta), kullanım koşulları, sürüm numarası | Uygulama | K | açık | ücretsiz | ücretsiz | sahibin ekran görüntüleri (alarm uygulaması, Analog Clock Pro) |
 | 7 | Uyanma oyunlaştırması: uyandırılan evcil hayvan ("Beni uyandır"), puanlar ("Puanlarım"), uyanma raporu (Rapor sekmesi) | Uygulama | O | açık | Alarmy: taramada | ücretsiz | sahibin ekran görüntüleri (Alarmy) |
 | 8 | Havaya göre hareketli zemin ana ekranda (rakipte yağmur damlalı cam); bizde yalnız tam ekran saatte | Uygulama | K | açık | Alarmy: ücretsiz görünüyor | ücretsiz | sahibin ekran görüntüleri (Alarmy) |
-| 9 | Dijital kadran koleksiyonu: yedi bölütlü LED (sönük bölütler de görünür), LCD taklidi, kabartma bölüt, nokta matris, silindir tekerlek, ahşap kasalı mekanik flip, dikey 3 satır | Uygulama (+ site) | O | açık | ₺49,99/kadran; ayda ₺49,99 ya da ömür boyu ₺449,99 | ücretsiz (birkaçı); ileride Pro adayı (çoğu) | Digital Clock Bedside, Zen Flip, Desk Clock |
+| 9 | Dijital kadran koleksiyonu: yedi bölütlü LED (sönük bölütler de görünür), LCD taklidi, kabartma bölüt, nokta matris, silindir tekerlek, ahşap kasalı mekanik flip, dikey 3 satır | Uygulama (+ site) | O | açık (birinci araştırmadan kalan, ilk analiz #58) | ₺49,99/kadran; ayda ₺49,99 ya da ömür boyu ₺449,99 | ücretsiz (birkaçı); ileride Pro adayı (çoğu) | Digital Clock Bedside, Zen Flip, Desk Clock |
 | 10 | Saniye hareketi seçimi (tık, mekanik akış, kayma) ve uygulamada saniye tık sesi (sitede var, uygulamada yok) | Uygulama | K | açık | ücretli | ücretsiz | Bauhaus Clock, Analog Clock ("Ses Açık") |
-| 11 | Lüm gece kadranı: siyah kadranda işaretler seçilen renkte (14 renk) ışır; gece/gündüz geçişi için saat çizelgesi (bizde yalnız Güneş'e göre) | Uygulama | K | açık | ₺799,99 (ücretli uygulama) | ücretsiz | Bauhaus Clock |
+| 11 | Lüm gece kadranı: siyah kadranda işaretler seçilen renkte (14 renk) ışır; gece/gündüz geçişi için saat çizelgesi (bizde yalnız Güneş'e göre) | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #1) | ₺799,99 (ücretli uygulama) | ücretsiz | Bauhaus Clock |
 | 12 | İkili saat dilimi analog kadranı (iki kadran, köşede şehir kodu ve fark) ve aynısının widget'ı | Uygulama | O | açık | ücretli | ücretsiz | Bauhaus Clock |
 | 13 | Alternatif uygulama simgeleri (kadranla eşleşen) | Uygulama (iOS) | K | açık | Premium (Pillars, Bauhaus) | ileride Pro adayı | Bauhaus Clock, Pillars |
-| 14 | iPhone kilit ekranında dairesel widget'lar (saat, sıradaki vakit, pomodoro, kronometre; bizde yalnız satır ve dikdörtgen) | Uygulama (iOS) | K | açık | ücretsiz | ücretsiz | Zen Flip, Widgetsmith |
-| 15 | Hava, takvim etkinliği, fotoğraf ve gün doğumu/batımı widget'ları | Uygulama | K–O | açık | ücretsiz / Premium | ücretsiz | Widgetsmith, Desk Clock |
-| 16 | Günün ayeti, Esma, hadis ve sözü widget'ları; günlük söz bildirimi | Uygulama | K | açık | Quran Widgets'ta Premium | ücretsiz | Vakit, Quran Widgets, Fazilet |
+| 14 | iPhone kilit ekranında dairesel widget'lar (saat, sıradaki vakit, pomodoro, kronometre; bizde yalnız satır ve dikdörtgen) | Uygulama (iOS) | K | açık (birinci araştırmadan kalan, ilk analiz #77) | ücretsiz | ücretsiz | Zen Flip, Widgetsmith |
+| 15 | Hava, takvim etkinliği, fotoğraf ve gün doğumu/batımı widget'ları | Uygulama | K–O | açık (birinci araştırmadan kalan, ilk analiz #77) | ücretsiz / Premium | ücretsiz | Widgetsmith, Desk Clock |
+| 16 | Günün ayeti, Esma, hadis ve sözü widget'ları; günlük söz bildirimi | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #72) | Quran Widgets'ta Premium | ücretsiz | Vakit, Quran Widgets, Fazilet |
 | 17 | Widget görünüm düzenleyici (renk, yazı tipi, çerçeve, hazır galeri) | Uygulama | B | açık | Premium | ileride Pro adayı | Widgetsmith, Zen Flip, Quran Widgets ("Create") |
-| 18 | iOS'ta saniyeli analog ve saniyeli çevirmeli widget (bizde saniyeli widget yalnız düz metin) | Uygulama (iOS) | O | açık | ücretsiz | ücretsiz | Desk Clock, Flip Clock |
-| 19 | Dynamic Island'da canlı saat (Apple'ın 8 saat sınırı var) | Uygulama (iOS) | K/O | açık | ücretsiz | ücretsiz | Desk Clock, Clock Face, Digital Clock |
-| 20 | Çevirmeli saat ayrıntıları: iki rakam tek kart, dikeyde kartlar alt alta, kartın köşesinde küçük saniye, "PM" etiketi, rakam/kart renk temaları, kapakları gizleme | Uygulama (+ site) | K | açık | VIP ₺49,99/kadran | ücretsiz; renk temaları ileride Pro adayı | Flip Clock, Fliqlo, Zen Flip |
+| 18 | iOS'ta saniyeli analog ve saniyeli çevirmeli widget (bizde saniyeli widget yalnız düz metin) | Uygulama (iOS) | O | açık (birinci araştırmadan kalan, ilk analiz #48) | ücretsiz | ücretsiz | Desk Clock, Flip Clock |
+| 19 | Dynamic Island'da canlı saat (Apple'ın 8 saat sınırı var) | Uygulama (iOS) | K/O | açık (birinci araştırmadan kalan, ilk analiz #48) | ücretsiz | ücretsiz | Desk Clock, Clock Face, Digital Clock |
+| 20 | Çevirmeli saat ayrıntıları: iki rakam tek kart, dikeyde kartlar alt alta, kartın köşesinde küçük saniye, "PM" etiketi, rakam/kart renk temaları, kapakları gizleme | Uygulama (+ site) | K | açık (birinci araştırmadan kalan, ilk analiz #44) | VIP ₺49,99/kadran | ücretsiz; renk temaları ileride Pro adayı | Flip Clock, Fliqlo, Zen Flip |
 | 21 | Dijitalde saniye küçük ve tabana hizalı seçeneği (bizde saatle aynı boyda) | Uygulama (+ site) | K | açık | ücretsiz | ücretsiz | Digital Clock, Desk Clock |
 | 22 | Dev metin/tabela modu ("İYİ Kİ DOĞDUN") ve saat boyutu %130'a kadar (bizde fs.text küçük satır, fs.scale 0,5–1) | Uygulama | K | açık | VIP ₺149,99 | ücretsiz | Fullscreen Clock |
-| 23 | Üretken sanat zeminleri (topografik çizgiler, nokta matris dünya haritası, grenli gradyan, sıvı metal), cam kart, odometre gibi dönen dakika (bizde 6 zemin, rakipte 28+) | Uygulama | O | açık | 3 zemin ücretsiz, Pro ₺199,99 | ileride Pro adayı | Clocks - A fun standby mode |
-| 24 | Rakam rengini ayrı seçme, dış hatlı rakam, ahşap doku zemin | Uygulama | K | açık | Premium ₺69,99/ay | ücretsiz | ClockZ, Digital Clock |
+| 23 | Üretken sanat zeminleri (topografik çizgiler, nokta matris dünya haritası, grenli gradyan, sıvı metal), cam kart, odometre gibi dönen dakika (bizde 6 zemin, rakipte 28+) | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #58) | 3 zemin ücretsiz, Pro ₺199,99 | ileride Pro adayı | Clocks - A fun standby mode |
+| 24 | Rakam rengini ayrı seçme, dış hatlı rakam, ahşap doku zemin | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #58) | Premium ₺69,99/ay | ücretsiz | ClockZ, Digital Clock |
 | 25 | Bağış (bahşiş) satın alması: özellik açmaz, destek içindir | Uygulama | K | açık | ClockZ ₺49,99–499,99 (5 kademe); Vakit ₺10–500 tek seferlik, ₺1.000–10.000 aylık | bağış (isteğe bağlı; karar sahibin) | ClockZ, Vakit, Countdown Widget |
 | 26 | Tam ekran saatte kaydırarak araç değiştirme (sola pomodoro, sağa sayaç) | Uygulama | K | açık | ücretsiz | ücretsiz | Zen Flip |
 | 27 | Zaman çizelgeli uygulama engeli (ör. hafta içi 08–17; bizde yalnız pomodoro sırasında) | Uygulama | O | açık | abonelik ₺579/yıl | ücretsiz | Forest |
 | 28 | Nefes egzersizi | Uygulama | K | açık | ücretsiz | ücretsiz | Forest |
 | 29 | Telefon yüzüstüyken işleyen odak sayacı ("Flip Phone" / Strict Mode) | Uygulama | K | açık | Premium | ücretsiz | Focus To-Do |
-| 30 | Doğa ve ortam sesleri kitaplığı (tik-tak, cırcır, dere, kafe, şömine, kütüphane…) ve uyku sesi karışımı (birden çok ses, ayrı ses düzeyi, fotoğraflı kartlar, kategoriler, mini oynatıcı); bizde 5 üretilmiş gürültü | Uygulama | O | açık | temel sesler ücretsiz, çoğu Premium | ücretsiz (temel); ileride Pro adayı (ek paketler) | Focus To-Do, Flip Clock, ShutEye, Alarmy, Sleep as Android, SuperAlarm |
+| 30 | Doğa ve ortam sesleri kitaplığı (tik-tak, cırcır, dere, kafe, şömine, kütüphane…) ve uyku sesi karışımı (birden çok ses, ayrı ses düzeyi, fotoğraflı kartlar, kategoriler, mini oynatıcı); bizde 5 üretilmiş gürültü | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #52, #53) | temel sesler ücretsiz, çoğu Premium | ücretsiz (temel); ileride Pro adayı (ek paketler) | Focus To-Do, Flip Clock, ShutEye, Alarmy, Sleep as Android, SuperAlarm |
 | 31 | Odak istatistiğinde ay/yıl görünümü; çalıştıkça büyüyen fidan/orman koleksiyonu | Uygulama (+ site) | K/O | açık | Pro | ücretsiz | Forest, Focus To-Do |
-| 32 | Wear OS kadranında renk seçimi (WFF UserConfigurations) ve daha çok saat kadranı | Wear OS | K | açık | karışık | ücretsiz | Facer |
+| 32 | Wear OS kadranında renk seçimi (WFF UserConfigurations) ve daha çok saat kadranı | Wear OS | K | açık (birinci araştırmadan kalan, ilk analiz #78) | karışık | ücretsiz | Facer |
 | 33 | Mağaza görüntülerinde gerçek ortam fotoğrafı (masa, komodin, MagSafe standı); bizim görüntülerimiz simülatörden | Mağaza | K | açık | — | — (mağaza görseli) | Fliqlo, Clocks, Bauhaus |
-| 34 | Tek alarmda birden çok görev (zincir) ve rastgele görev | Uygulama | K | açık | bilinmiyor / abonelik | ücretsiz | Alarmy (26.42.0), Wayk |
-| 35 | Kapatma görevini alarm çalmadan önizleme ("Önizleme" düğmesi) | Uygulama | K | açık | ücretsiz | ücretsiz | Wayk, Alarm Clock Xtreme |
-| 36 | Kamerayla nesne ya da sahne görevi (bardak, diş fırçası, gökyüzü, toplanmış yatak), squat/şınav; cihaz içinde (Vision, ML Kit). Bizdeki fotoğraf görevi yalnız aynı yeri eşleştirir | Uygulama | O/B | açık | büyük olasılıkla Premium | ücretsiz | Alarmy, Wayk, SuperAlarm |
-| 37 | Sesli okuma görevi (bir sözü yüksek sesle oku; dua/ayet seçeneği sahibin kararına kalır) | Uygulama | O | açık | abonelik | ücretsiz | Wayk |
-| 38 | Işık sensörü görevi ("ışığı aç") | Uygulama (Android) | K | açık | bilinmiyor | ücretsiz | Sleep as Android |
-| 39 | Ertele ve kapat için ayrı görev; ses tuşu, güç tuşu ve sallamayla ne olacağını seçme | Uygulama (Android) | K | açık | ücretsiz | ücretsiz | Alarm Clock Xtreme |
-| 40 | Her ertelemede kısalan aralık, belli saatten sonra erteleme kapalı, alarm başına ses düzeyi | Uygulama | K | açık | ücretsiz | ücretsiz | Alarm Clock Xtreme, Loud Alarm |
+| 34 | Tek alarmda birden çok görev (zincir) ve rastgele görev | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | bilinmiyor / abonelik | ücretsiz | Alarmy (26.42.0), Wayk |
+| 35 | Kapatma görevini alarm çalmadan önizleme ("Önizleme" düğmesi) | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | ücretsiz | ücretsiz | Wayk, Alarm Clock Xtreme |
+| 36 | Kamerayla nesne ya da sahne görevi (bardak, diş fırçası, gökyüzü, toplanmış yatak), squat/şınav; cihaz içinde (Vision, ML Kit). Bizdeki fotoğraf görevi yalnız aynı yeri eşleştirir | Uygulama | O/B | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | büyük olasılıkla Premium | ücretsiz | Alarmy, Wayk, SuperAlarm |
+| 37 | Sesli okuma görevi (bir sözü yüksek sesle oku; dua/ayet seçeneği sahibin kararına kalır) | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | abonelik | ücretsiz | Wayk |
+| 38 | Işık sensörü görevi ("ışığı aç") | Uygulama (Android) | K | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | bilinmiyor | ücretsiz | Sleep as Android |
+| 39 | Ertele ve kapat için ayrı görev; ses tuşu, güç tuşu ve sallamayla ne olacağını seçme | Uygulama (Android) | K | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | ücretsiz | ücretsiz | Alarm Clock Xtreme |
+| 40 | Her ertelemede kısalan aralık, belli saatten sonra erteleme kapalı, alarm başına ses düzeyi | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #43) | ücretsiz | ücretsiz | Alarm Clock Xtreme, Loud Alarm |
 | 41 | Sallayarak erteleme; alarm ekranında el feneri | Uygulama | K | açık | ücretsiz | ücretsiz | Alarm Clock for Me, Loud Alarm |
 | 42 | Sakin ön alarm: asıl alarmdan 30 dk önce kısık doğa sesi | Uygulama | K | açık | ücretsiz | ücretsiz | Alarm Clock Xtreme |
 | 43 | Alarm kapanınca seçilen uygulamayı açma | Uygulama (Android) | K | açık | ücretsiz | ücretsiz | Alarm Clock Xtreme |
 | 44 | Alarmları tarih aralığında duraklatma (tatil): iç alan skipUntil var, ekranı yok | Uygulama | K | açık | ücretsiz | ücretsiz | Google Saat |
-| 45 | Uyanma denetimi uygulama içinde geri sayım halkasıyla (bizde bildirim + 2 dk sonra yedek alarm) | Uygulama | K | açık | ücretsiz | ücretsiz | Alarmy, SuperAlarm |
-| 46 | iOS'ta alarm çalarken uygulama silme engeli (Ekran Süresi onayından sonra denyAppRemoval) | Uygulama (iOS) | K | açık | bilinmiyor | ücretsiz | SuperAlarm |
+| 45 | Uyanma denetimi uygulama içinde geri sayım halkasıyla (bizde bildirim + 2 dk sonra yedek alarm) | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #50) | ücretsiz | ücretsiz | Alarmy, SuperAlarm |
+| 46 | iOS'ta alarm çalarken uygulama silme engeli (Ekran Süresi onayından sonra denyAppRemoval) | Uygulama (iOS) | K | açık (birinci araştırmadan kalan, ilk analiz #21) | bilinmiyor | ücretsiz | SuperAlarm |
 | 47 | Uyku düzenliliği, uyku borcu, uyanma saati eğilimi, haftalık eğilim cümleleri (uyku takibi olmadan, alarm kapatma ve yatma anlarından) | Uygulama | O | açık | çoğu abonelik | ücretsiz | Sleep Cycle, Rise, ShutEye, Pillow, Wayk, Sleep as Android |
 | 48 | Kronotip testi (anketin lisansı denetlenmeli) | Uygulama | K | açık | ücretsiz | ücretsiz | Pillow, Sleep as Android |
 | 49 | Uyku planına bağlı alışkanlık hatırlatmaları (kafein, mavi ışık, akşam rutini) ve enerji bloklarını takvime yazma | Uygulama | K | açık | abonelik | ücretsiz | Rise |
 | 50 | Günlük notunda etiketler (#kahve, #spor) | Uygulama | K | açık | — | ücretsiz | Sleep as Android |
 | 51 | Alarm satırında görev simgesi; listede büyük "X sa Y dk sonra çalacak" kartı | Uygulama | K | açık | — | ücretsiz | Wayk, Alarm Clock Xtreme |
 | 52 | Uyku planının kalkış alarmı alarm listesinde planla bağlı ve ayrı başlıklı | Uygulama | K | açık | ücretsiz | ücretsiz | Apple Saat |
-| 53 | Arkadaşlarla uyanma grupları, sanal para | Uygulama | — | karar sahibin (sunucu ya da hesap gerekir) | abonelik / jeton | — | Wayk, SleepTown |
-| 54 | Vakit başına ayrı ezan sesi, ayrı "önce" süresi ve gün seçimi; vakit satırında ses düğmesi | Uygulama | O | açık | ücretsiz | ücretsiz | Ezan Vakti Pro, Vakit (14 ses), Muslim Pro, Codeida, Temkinli |
-| 55 | Ramazan'da Vakitler ekranında ikinci sayaç (iftar/sahur) ve iftar widget'ı (bizde yalnız Live Activity'de) | Uygulama | K | açık | ücretsiz | ücretsiz | Ezan Vakti Pro, Pillars, Quran Widgets |
+| 53 | Arkadaşlarla uyanma grupları, sanal para | Uygulama | — | ücretli sistemle birlikte (3 Kasım 2026, sahibin kararı: şimdi yapılmayacak) | abonelik / jeton | — | Wayk, SleepTown |
+| 54 | Vakit başına ayrı ezan sesi, ayrı "önce" süresi ve gün seçimi; vakit satırında ses düğmesi | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #92) | ücretsiz | ücretsiz | Ezan Vakti Pro, Vakit (14 ses), Muslim Pro, Codeida, Temkinli |
+| 55 | Ramazan'da Vakitler ekranında ikinci sayaç (iftar/sahur) ve iftar widget'ı (bizde yalnız Live Activity'de) | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz satır 150) | ücretsiz | ücretsiz | Ezan Vakti Pro, Pillars, Quran Widgets |
 | 56 | Bayram namazı vakti (ana ekran kartı ve dini günler listesi; Diyanet kuralı doğrulanmalı) | Uygulama + site | K | açık | ücretsiz | ücretsiz | Codeida |
 | 57 | Dini günler listesi (yıl seçici, sıradaki kartı, kalan gün) ve vakit ekranında yaklaşan dini gün satırı ("Arefe: 3 gün sonra"), üç aylara kalan süre | Uygulama | K | açık | ücretsiz | ücretsiz | Codeida, Azan Time, Fazilet, Ezan Vakti Pro, Vakit |
-| 58 | Cuma hatırlatması; Cuma namazı sırasında bildirimleri susturma (Android) | Uygulama | K | açık | ücretsiz | ücretsiz | Vakit, Azan Time, Codeida, Temkinli |
+| 58 | Cuma hatırlatması; Cuma namazı sırasında bildirimleri susturma (Android) | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz satır 149) | ücretsiz | ücretsiz | Vakit, Azan Time, Codeida, Temkinli |
 | 59 | Ek vakit satırları: İşrak, Duha, Asr-ı sânî, İsfirar, İştibak, İşa-i sânî, gecenin üçte biri, gece yarısı, teheccüd, seher (temkin kuralları doğrulanmalı) | Uygulama + site | K | açık | ücretsiz | ücretsiz | Temkinli, Türkiye Takvimi, Fazilet, Vakit |
 | 60 | Halk takvimi: Eyyâm-ı bahûr, Erbain, Zemheri, Hamsin, cemreler, kocakarı fırtınaları (kaynak doğrulanmalı) | Uygulama + site | K | açık | ücretsiz | ücretsiz | Türkiye Takvimi, Temkinli |
 | 61 | İbadet istatistikleri: ne zaman kılındığı, yıllık ısı haritası, aylık grafik, haftalık 7 halka (seri ve rozet yok) | Uygulama | O | açık | ücretsiz | ücretsiz | Vakit, Pillars, Muslim Pro |
@@ -96,21 +96,26 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 64 | Vakit satırından "kıldım" işareti, "2/5" halkası, "hepsini işaretle" | Uygulama | K | açık | ücretsiz | ücretsiz | Muslim Pro, Vakit |
 | 65 | Vakitler ekranı görselleri: vakit simgeleri, yarım daire gösterge, analog ya da 24 saat kadranı, vakte göre gökyüzü teması, cami fotoğrafı zemin | Uygulama | O | açık | Pillars'ta ek temalar Premium | ücretsiz (temel); ileride Pro adayı (ek temalar) | Temkinli, Azan Time, Pillars, Ezan Vakti Pro, Muslim Pro |
 | 66 | Kalan süreyi sözle yazma ("1 sa 42 dk sonra ikindi") | Uygulama | K | açık | ücretsiz | ücretsiz | Pillars, Türkiye Takvimi |
-| 67 | Kıble: harita üstünde Kâbe'ye çizgi, kamera görünümü, pusula görünümü seçimi (5 tasarım), favori camiler | Uygulama | O | açık | ücretsiz | ücretsiz; pusula tasarımları ileride Pro adayı | Muslim Pro, Codeida, Temkinli, e-Diyanet |
-| 68 | Resimli, erkek/kadın ayrımlı, adım adım (1/12) namaz ve abdest rehberi; gusül, teyemmüm, rekât kartları (bizde düz metin) | Uygulama | B | açık | ücretsiz | ücretsiz | Vakit (fotoğraf), Codeida (çizim) |
+| 67 | Kıble: harita üstünde Kâbe'ye çizgi, kamera görünümü, pusula görünümü seçimi (5 tasarım), favori camiler | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #46) | ücretsiz | ücretsiz; pusula tasarımları ileride Pro adayı | Muslim Pro, Codeida, Temkinli, e-Diyanet |
+| 68 | Resimli, erkek/kadın ayrımlı, adım adım (1/12) namaz ve abdest rehberi; gusül, teyemmüm, rekât kartları (bizde düz metin) | Uygulama | B | açık (birinci araştırmadan kalan, ilk analiz #71) | ücretsiz | ücretsiz | Vakit (fotoğraf), Codeida (çizim) |
 | 69 | Dua kategorileri (Hısnu'l-Müslim tarzı), dua arama, favori, Ramazan gün duası (içerik lisansı denetlenmeli) | Uygulama | O | açık | ücretsiz | ücretsiz | Muslim Pro, Azan Time, Codeida, Ezan Vakti Pro |
 | 70 | Zikirmatik: kişisel zikir ekleme, kaydırarak geçiş, sallayınca ya da uzun basınca geri alma, tespih boncuğu görünümü | Uygulama | K | açık | ücretsiz | ücretsiz; boncuk tasarımları ileride Pro adayı | Vakit, Azan Time, Temkinli, Pillars |
 | 71 | Kur'an okuyucuda tema (Kâğıt/Koyu, 6 zemin rengi) ve günlük okuma hedefi | Uygulama | K | açık | ücretsiz | ücretsiz | Muslim Pro, Temkinli |
 | 72 | Toplantı planlayıcıda saat aralığı seçimi, takvim etkinlikleri ve borsa saatleri, hafta sonu işareti, şehir başına saat biçimi | Uygulama (+ site) | K/O | açık | tek seferlik ₺149,99 | ücretsiz | Time Buddy |
-| 73 | Geri sayımda birim seçimi, gün/saat/dakika/saniye sütunları, "38. doğum günü", renk, arşiv, kilit ekranında ilerleme halkası, tarih geçince ileri sayım (bizde "bitti" yazıyor) | Uygulama | K | açık | kısmen Premium | ücretsiz; widget tasarlayıcı ileride Pro adayı | Countdown Widget |
+| 73 | Geri sayımda birim seçimi, gün/saat/dakika/saniye sütunları, "38. doğum günü", renk, arşiv, kilit ekranında ilerleme halkası, tarih geçince ileri sayım (bizde "bitti" yazıyor) | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #51) | kısmen Premium | ücretsiz; widget tasarlayıcı ileride Pro adayı | Countdown Widget |
 | 74 | Cuma, bayram ve kandil tebrik görselleri; iMessage çıkartma paketi | Uygulama | O | açık | ücretsiz | ücretsiz | Ezan Vakti Pro, Azan Time |
-| 75 | Sunucu gerektirenler: ortak zikir/hatim, topluluk, radyo, fetva araması (yalnız "ALO 190" arama düğmesi K) | Uygulama | B | karar sahibin (sunucu ya da hesap gerekir) | ücretsiz | — (hesap ve sunucu yok kararı) | Codeida, Azan Time, Muslim Pro, e-Diyanet |
+| 75 | Sunucu gerektirenler: ortak zikir/hatim, topluluk, radyo, fetva araması (yalnız "ALO 190" arama düğmesi K) | Uygulama | B | ücretli sistemle birlikte (3 Kasım 2026, sahibin kararı: şimdi yapılmayacak) | ücretsiz | — (hesap ve sunucu yok kararı) | Codeida, Azan Time, Muslim Pro, e-Diyanet |
 | 76 | Şeffaf widget: zemini ana ekran duvar kâğıdından kesilmiş gibi görünen (isteğe bağlı bulanık) saat widget'ı; kullanıcı duvar kâğıdının ekran görüntüsünü uygulamaya bir kez yükler. Dokulu (deniz) kadranlı analog widget | Uygulama (iOS) | O | açık | ücretsiz görünüyor | ücretsiz | Desk Clock (sahibin ekran görüntüsü) |
 | 77 | Uygulama içi yazı boyutu ayarı (%85–%145, kaydırıcı ve canlı "örnek metin" önizlemesi); bizde yalnız saat boyutu var, uygulamanın yazıları sistem ayarına bağlı | Uygulama | K | açık | ücretsiz | ücretsiz | Alarm/saat uygulaması (sahibin ekran görüntüsü, sürüm 52) |
 | 78 | Adlı atmosfer temaları: uygulamanın bütün zemini gradyanla boyanır ("Lavanta Rüyası", "Mars Tozu", "Siber Kireç"); yana kaydırmalı büyük kart seçici, seçili kart tema renginde ışır ve köşesinde onay işareti; bizde 24 tema var ama adsız renk daireleri ve düz ton | Uygulama | K/O | açık | ücretsiz görünüyor | ücretsiz (temel); ileride Pro adayı (ek atmosferler) | Alarm/saat uygulaması (sahibin ekran görüntüsü) |
 | 79 | Alarmı bağlı kulaklıkta ya da Bluetooth hoparlörde çalma; bağlantı kesilirse telefonda çalar (iOS'ta AlarmKit'le yapılabilir mi doğrulanmalı) | Uygulama | O | açık | Alarmy: Pro deneme döneminde görüldü | ücretsiz | Alarmy (sahibin ekran görüntüsü) |
 | 80 | İzin istemeden önce açıklama penceresi ("Seni tam zamanında uyandırabilmemiz için alarm iznine ihtiyacımız var" · Şimdi değil / İzin ver); bizde sistem izin penceresi doğrudan açılıyor | Uygulama | K | açık | ücretsiz | ücretsiz | Alarmy (sahibin ekran görüntüsü) |
 | 81 | Uygulamayı QR kodla paylaşma ekranı (QR + "Paylaş" + "Değerlendir"); ayarlarda "Diğer uygulamalar" satırı (bizde Bumba'nın öbür ürünleri) ve sürüm numarası | Uygulama | K | açık | ücretsiz | ücretsiz | Fullscreen Clock, alarm/saat uygulaması (sahibin ekran görüntüleri) |
+| 82 | Ekran görüntüsü uyarısı: kişisel kayıt içeren ekranlarda (namaz ve oruç takibi, zekât, sabah günlüğü) ekran görüntüsü alınınca üstte 5 sn'lik uyarı; iOS her sürümde, Android 14+ | Uygulama | K | yapıldı (3 Kasım 2026; sıradaki sürümde) | ücretsiz | ücretsiz | Varlık Saati (sahibin ekran görüntüsü) |
+| 83 | Açılış ekranı: bekletmeden, sistemin açılış ekranında uygulama simgesi ve tema zemini (bugün iPhone'da boş ekran, Android'de düz renk). Markalı bekletmeli açılış önerilmez | Uygulama | K | açık (sahibin kararı) | ücretsiz | ücretsiz | Varlık Saati (sahibin ekran görüntüsü) |
+| 84 | Ders çalışma sayacı: ders/konu seçimi ("Genel"), çözülen soru sayacı ("Soru"), not, istatistik; sayaç ve pomodoro yan yana; yedi bölütlü sarı LED rakamlar (sönük bölütler görünür) | Uygulama | O | açık | bilinmiyor | ücretsiz | adı görünmeyen bir çalışma sayacı (sahibin ekran görüntüsü) |
+| 85 | Esmaü'l-Hüsna'da hat görseli ve sesli okuma (ses kaydı lisansı gerekir) | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #69) | ücretsiz | ücretsiz | Muslim Pro, Pillars |
+| 86 | Live Activity'de sıradaki 3 vakit (bizde 1) | Uygulama (iOS) | K | açık (birinci araştırmadan kalan, ilk analiz #42) | ücretsiz | ücretsiz | Vakit |
 
 ## Sahibin ekran görüntüleri (3 Kasım 2026)
 
@@ -284,6 +289,52 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 - "Remove Ads" (Fullscreen Clock).
 - "PRO Free Trial" (Alarmy).
 - Bizde reklam, izleme (ATT) ve abonelik yok. Bu sayfalar yalnız fiyat ve düzen fikri için not edildi.
+
+### Sahibin üçüncü gönderimi ve gözlemleri (3 Kasım 2026)
+
+**Varlık Saati (başka konuda bir uygulama; 2 görüntü):**
+- **Ekran görüntüsü uyarısı.** Üstte krem zeminli, yuvarlak köşeli kart: göz simgesi ve "Ekran görüntüsü alındı. İçinde tutarlarınız olabilir; paylaşırken dikkat edin.". Bizde #82 olarak yapıldı.
+  - Uyarı bütün uygulamada değil, yalnız kişisel kayıt içeren üç ekranda çıkar: namaz ve oruç takibi, zekât, sabah günlüğü. Saat ekranının görüntüsünü almak olağan bir şey; orada uyarı çıkması rahatsız eder.
+  - Görüntü uygulamaya gelmez, engellenmez, hiçbir şey kaydedilmez.
+  - Android'de yalnız 14 ve üstünde çıkar; daha eski sürümlerde güvenilir bir yol yok.
+- **Açılış ekranı.**
+  - Görülen: lacivert-siyah zemin, büyük, altın işaretli, fırçalanmış metal görünümlü kadran fotoğrafı. Ortada logo, "Varlık Saati" yazısı (ikinci sözcük turkuaz) ve ince gri "O gün verdiğiniz kararın bugünkü karşılığı".
+  - Değerlendirme (#83): Saat uygulaması açılır açılmaz saati göstermeli; markalı, bekletmeli bir açılış ekranı her açılışta 1–2 sn kaybettirir. Apple da açılış ekranının ilk ekrana benzemesini öneriyor.
+  - Önerilen: sistem açılış ekranına yalnız uygulama simgesini ve tema zeminini koymak (iPhone `UILaunchScreen`, Android 12+ `SplashScreen`). Bekleme eklemez, yalnız boş ekranın yerini alır.
+  - Markayı ve tanıtımı anlatma yeri ilk açılış sihirbazıdır (#4); orada bir kez gösterilir.
+  - Görseldeki kadran fotoğrafı ise kadran koleksiyonu (#1) için iyi bir örnek: fırçalanmış metal, altın üçgen işaretler, ince dakika çizgileri.
+- **Üye ol ekranı.** "Ücretsiz üye ol · Kart bilgisi istenmez", turkuaz tam genişlikte düğme, altın renkli seçili haplar (yıl: 2010–2022; yer: Altın, Dolar, Euro). Bizde üyelik yok, not olarak kaldı.
+
+**Bir çalışma sayacı (yatay, adı görünmüyor):**
+- Siyah zemin, yedi bölütlü sarı LED rakamlar (#FFB300 civarı, ışımalı), sönük bölütler de görünüyor ("00:00:00").
+- Üstte "Genel" ders/konu seçici, yan yana "Sayaç" ve "Pomodoro" (seçili olan kahverengi-altın zeminli), sağda not, istatistik, ızgara ve ayarlar simgeleri.
+- Altta "Sıfırla", sarı dolu "Başlat", "Not", "Soru" (çözülen soru sayacı).
+- → #84 (ders çalışma sayacı). LED görünümü #9'a ek ayrıntı.
+
+**Sahibin Fullscreen Clock gözlemleri (telefonda kullanarak):**
+- Saniyede tik-tak sesi var. Bizde sitede var, uygulamada yok → #10.
+- Parmakla yukarı-aşağı kaydırınca ekran ışığı artıyor ya da azalıyor. Bizde var: tam ekranda kenardan kaydırarak karartma (`fs.dim`).
+- Widget'ta saniye sorunsuz işliyor. Bizde iOS'ta yalnız düz metin → #18.
+- Kilit ekranı widget'ı ayrı. Bizde kilit ekranında dairesel widget yok → #14.
+- Ekrana yazı yazma var. Bizde yalnız küçük bir satır → #22.
+
+## Ücretli sistemle birlikte gelecekler (3 Kasım 2026, sahibin kararı)
+Sunucu ve hesap gerektiren işler; şimdi yapılmayacak, ücretli bölüm açılınca yeniden ele alınır:
+- **#53** Arkadaşlarla uyanma grupları, sanal para (Wayk, SleepTown).
+- **#75** Ortak zikir ve hatim, topluluk, radyo, fetva araması (Codeida, Azan Time, Muslim Pro, e-Diyanet). "ALO 190" arama düğmesi sunucu istemez; ayrı yapılabilir.
+
+## Kapsam sınırı (3 Kasım 2026)
+Ajan taraması üç alana baktı: kadran/masa saati (ikinci öncelik odak ve zamanlayıcı), alarm/uyku, namaz (ikinci öncelik takvim, dünya saati, geri sayım). **Bakılmayanlar:**
+- saat siteleri (time.is, timeanddate, saat-kac.tr: web tarafı hiç taranmadı),
+- hava durumu uygulamaları,
+- takvim uygulamaları,
+- dünya saati uygulamaları (yalnız Time Buddy),
+- kronometre ve çoklu zamanlayıcı uygulamaları,
+- Ay, gökyüzü ve astronomi uygulamaları,
+- Android/Google Play tarafı (birkaç uygulama dışında),
+- Apple Watch ve Wear OS kadranları (yalnız Facer).
+
+Bu alanlar için ikinci bir ajan dalgası sahibin onayını bekliyor.
 
 ## Ajan taraması (3 Kasım 2026)
 

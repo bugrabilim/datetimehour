@@ -1453,5 +1453,6 @@
     <string name="smart_none">没有设置智能闹钟时间窗口的闹钟。请在编辑闹钟时选择“智能闹钟”时间窗口。</string>
     <string name="smart_how">把手机放在床上枕头旁并接上充电器。只在时间窗口内读取运动传感器；不做任何记录，数据只在手机内存中，不会保存。若未检测到动作，闹钟会按原定时间响起。</string>
     <string name="smart_howIOS">在iPhone上，应用保持打开（屏幕会变暗）或正在播放助眠声音时会话才会持续；离开应用后，闹钟会按原定时间响起。</string>
+    <string name="screenshot_warn">已截屏。其中可能包含您的个人记录，分享时请注意。</string>
     <string name="app_name">时间与日期</string>
 </resources>

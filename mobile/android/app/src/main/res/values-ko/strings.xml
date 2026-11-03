@@ -1453,5 +1453,6 @@
     <string name="smart_none">스마트 알람 시간대가 설정된 알람이 없습니다. 알람 편집에서 \"스마트 알람\" 시간대를 고르세요.</string>
     <string name="smart_how">휴대폰을 베개 옆 침대 위에 두고 충전기에 연결하세요. 동작 센서는 시간대 동안에만 읽습니다. 아무것도 기록하지 않으며 데이터는 휴대폰 메모리에만 있고 저장되지 않습니다. 움직임이 없으면 알람은 원래 시간에 울립니다.</string>
     <string name="smart_howIOS">iPhone에서는 앱이 열려 있는 동안(화면이 어두워짐) 또는 수면 소리가 재생되는 동안 세션이 이어집니다. 앱을 나가면 알람은 원래 시간에 울립니다.</string>
+    <string name="screenshot_warn">스크린샷을 찍었습니다. 개인 기록이 포함되어 있을 수 있으니 공유할 때 주의하세요.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

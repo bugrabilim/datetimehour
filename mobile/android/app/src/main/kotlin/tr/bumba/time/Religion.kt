@@ -444,6 +444,7 @@ object Tracker {
 
 @Composable
 fun TrackerScreen(onBack: () -> Unit) {
+    ScreenshotWarning()
     val today = LocalDate.now()
     var day by remember { mutableStateOf(today) }
     var version by remember { mutableIntStateOf(0) }
@@ -556,6 +557,7 @@ object Zakat {
 
 @Composable
 fun ZakatScreen(onBack: () -> Unit) {
+    ScreenshotWarning()
     var values by remember { mutableStateOf(Zakat.load()) }
     val texts = remember { mutableStateOf(values.mapValues { fmtNum(it.value) }) }
     val r = Zakat.calc(values)

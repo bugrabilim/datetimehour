@@ -1453,5 +1453,6 @@
     <string name="smart_none">Akıllı alarm süresi seçilmiş bir alarm yok. Alarm düzenleyicisinde \"Akıllı alarm\" süresini seçin.</string>
     <string name="smart_how">Telefonu yastığınızın yanına, yatağın üstüne koyun ve şarja takın. Hareket algılayıcısı yalnız pencerede okunur; ses kaydı yok, veri telefonda bellekte kalır ve kaydedilmez. Hareket algılanmazsa alarm normal saatinde çalar.</string>
     <string name="smart_howIOS">iPhone\'da oturum, uygulama açıkken (ekran kararır) ya da uyku sesi çalarken sürer; uygulamadan çıkarsanız alarm normal saatinde çalar.</string>
+    <string name="screenshot_warn">Ekran görüntüsü alındı. İçinde kişisel kayıtlarınız olabilir; paylaşırken dikkat edin.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -1453,5 +1453,6 @@
     <string name="smart_none">No alarm has a smart alarm window. Choose a \"Smart alarm\" window in the alarm editor.</string>
     <string name="smart_how">Put the phone on the bed next to your pillow and plug it in. The motion sensor is read only during the window; nothing is recorded, the data stays in the phone\'s memory and is not saved. If no movement is detected, the alarm rings at its normal time.</string>
     <string name="smart_howIOS">On iPhone the session runs while the app is open (the screen dims) or while a sleep sound plays; if you leave the app, the alarm rings at its normal time.</string>
+    <string name="screenshot_warn">Screenshot taken. It may contain your personal records; be careful when sharing it.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

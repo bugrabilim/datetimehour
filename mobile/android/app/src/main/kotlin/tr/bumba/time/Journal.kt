@@ -103,6 +103,7 @@ fun JournalQuick(entry: JournalEntry, showSleep: Boolean = true, onChange: (Jour
 
 @Composable
 fun JournalScreen() {
+    ScreenshotWarning()
     var entry by remember { mutableStateOf(Journal.today()) }
     var list by remember { mutableStateOf(Journal.load()) }
     var confirm by remember { mutableStateOf(false) }

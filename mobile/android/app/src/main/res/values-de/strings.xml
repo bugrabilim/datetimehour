@@ -1453,5 +1453,6 @@
     <string name="smart_none">Kein Wecker hat ein Zeitfenster für den intelligenten Wecker. Legen Sie im Weckereditor unter „Intelligenter Wecker“ ein Zeitfenster fest.</string>
     <string name="smart_how">Legen Sie das Telefon neben das Kopfkissen aufs Bett und schließen Sie es ans Ladegerät an. Der Bewegungssensor wird nur im Zeitfenster gelesen; es wird nichts aufgezeichnet, die Daten bleiben nur im Arbeitsspeicher des Telefons und werden nicht gesichert. Ohne Bewegung klingelt der Wecker zur normalen Zeit.</string>
     <string name="smart_howIOS">Auf dem iPhone läuft die Sitzung, solange die App geöffnet ist (der Bildschirm wird abgedunkelt) oder ein Schlafgeräusch läuft; verlassen Sie die App, klingelt der Wecker zur normalen Zeit.</string>
+    <string name="screenshot_warn">Bildschirmfoto aufgenommen. Es kann Ihre persönlichen Einträge enthalten; seien Sie beim Teilen vorsichtig.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

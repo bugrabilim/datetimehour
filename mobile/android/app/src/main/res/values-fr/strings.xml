@@ -1453,5 +1453,6 @@
     <string name="smart_none">Aucune alarme n’a de plage de réveil intelligent. Choisissez une plage « Réveil intelligent » dans l’éditeur d’alarme.</string>
     <string name="smart_how">Posez le téléphone sur le lit près de votre oreiller et branchez-le. Le capteur de mouvement n’est lu que pendant la plage ; rien n’est enregistré, les données restent dans la mémoire du téléphone et ne sont pas conservées. Sans mouvement, l’alarme sonne à l’heure prévue.</string>
     <string name="smart_howIOS">Sur iPhone, la session dure tant que l’application est ouverte (l’écran s’assombrit) ou qu’un son de sommeil joue ; si vous quittez l’application, l’alarme sonne à l’heure prévue.</string>
+    <string name="screenshot_warn">Capture d’écran effectuée. Elle peut contenir vos données personnelles ; soyez prudent en la partageant.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

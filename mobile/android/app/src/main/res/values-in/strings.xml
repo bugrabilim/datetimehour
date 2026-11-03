@@ -1453,5 +1453,6 @@
     <string name="smart_none">Belum ada alarm dengan jendela alarm pintar. Pilih jendela \"Alarm pintar\" di penyunting alarm.</string>
     <string name="smart_how">Taruh ponsel di kasur di samping bantal dan sambungkan ke pengisi daya. Sensor gerak hanya dibaca selama jendela waktu; tidak ada yang direkam, data tetap di memori ponsel dan tidak disimpan. Jika tidak ada gerakan, alarm berbunyi pada waktu biasa.</string>
     <string name="smart_howIOS">Di iPhone, sesi berjalan selama aplikasi terbuka (layar meredup) atau selama suara tidur diputar; jika Anda keluar dari aplikasi, alarm berbunyi pada waktu biasa.</string>
+    <string name="screenshot_warn">Tangkapan layar diambil. Mungkin berisi catatan pribadi Anda; berhati-hatilah saat membagikannya.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>
