@@ -345,6 +345,22 @@ class MoreScreensTest {
         Prefs.store.edit().remove("meet.cities").remove("meet.exchanges").remove("meet.h12").commit()
     }
     /** Sahibin ekran görüntülerinden (2. analiz #6, #77, #78, #81) */
+    /** Ders çalışma sayacı (2. analiz #84): LED süre ve soru sayacı, istatistik */
+    @Test fun study() {
+        val today = LocalDate.now()
+        var log = Study.record(emptyList(), today.minusDays(2), "Fizik", 50 * 60_000L, 24, "Optik")!!
+        log = Study.record(log, today, "Matematik", 40 * 60_000L, 35, "Türev tekrarı")!!
+        log = Study.record(log, today, "", 25 * 60_000L, 12, "")!!
+        Study.save(log)
+        Study.saveSubjects(listOf("Matematik", "Fizik", "Kimya"))
+        Prefs.store.edit().putString(Study.SUBJECT, "Matematik").putString("study.mode", "timer")
+            .putLong("study.start", 0).putLong("study.acc", (1 * 3600 + 12 * 60 + 5) * 1000L).putInt("study.q", 27).commit()
+        page("tr-ders-sayaci", "Ders çalışma") { StudyScreen() }
+        page("tr-ders-sayaci-koyu", "Ders çalışma", dark = true) { StudyScreen() }
+        Study.clear(); Study.saveSubjects(emptyList())
+        Prefs.store.edit().remove("study.acc").remove("study.q").remove(Study.SUBJECT).commit()
+    }
+
     @Test fun ownerScreens() {
         shot("tr-destek") {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) { FontScaleCard(); SupportCard {} }
