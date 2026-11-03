@@ -709,9 +709,9 @@
     <string name="notify_heading">Уведомления о времени намаза</string>
     <string name="notify_enable">Уведомлять о времени намаза</string>
     <string name="notify_prayers">Какие намазы</string>
-    <string name="notify_lead">Когда</string>
+    <string name="notify_lead">Уведомлять заранее</string>
     <string name="notify_lead_zero">В момент намаза</string>
-    <string name="notify_lead_minutes">За %1$s мин</string>
+    <string name="notify_lead_minutes">за %1$s мин</string>
     <string name="notify_title_now">Наступило время: %1$s</string>
     <string name="notify_title_before">%1$s через %2$s мин</string>
     <string name="notify_reopen">Откройте приложение, чтобы уведомления о времени намаза продолжали приходить.</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">Следующая последняя четверть</string>
     <string name="moon_riseIn">Восход Луны через %1$s</string>
     <string name="moon_setIn">Заход Луны через %1$s</string>
+    <string name="share_focus">Сегодня в фокусе: %1$s</string>
+    <string name="notify_lead_now">Вовремя</string>
+    <string name="notify_lead_hours">за %1$s ч</string>
+    <string name="notify_lead_days">за %1$s дн.</string>
+    <string name="moon_ev_quarters">Четверти</string>
+    <string name="moon_ev_super">Суперлуние</string>
+    <string name="moon_ev_eclipse">Затмения</string>
+    <string name="live_sun_toggle">Отсчёт до восхода/заката на экране блокировки</string>
+    <string name="live_sun_note">Показывает время до ближайшего восхода или заката на экране блокировки.</string>
+    <string name="widget_sun_turnIn">До начала сезона «%1$s»: %2$s дн.</string>
     <string name="app_name">Время и дата</string>
 </resources>

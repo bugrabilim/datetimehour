@@ -172,7 +172,6 @@ struct WakeCheckView: View {
         }
     }
 }
-}
 
 /// Görev ekranı: çözülmeden kapanmaz. Sensör ya da kamera yoksa "Başka görev" zor matematiğe geçer.
 struct WakeTaskView: View {

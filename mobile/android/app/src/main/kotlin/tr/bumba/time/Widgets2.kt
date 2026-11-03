@@ -102,6 +102,8 @@ class SunWidget : BaseWidget() {
         v.setTextViewText(R.id.set, hm(set))
         val len = if (rise != null && set != null && set > rise) T("seasons.dayLengthValue", (set - rise) / 60, (set - rise) % 60) else "—"
         v.setTextViewText(R.id.length, L("nature.dayLength") + ": " + len)
+        // Sıradaki ekinoks ya da gündönümüne kalan gün (2. analiz #150)
+        v.setTextViewText(R.id.turn, SeasonTurn.next(place.lat, Instant.now()).let { (season, days) -> T("widget.sun.turnIn", L("nature.seasons.$season"), days) })
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.SEASONS, id))
         return v
     }
@@ -343,3 +345,20 @@ fun WidgetGalleryScreen() {
 
 /** Önizlemede kullanılan widget kimliği (gerçek widget'larla karışmaz) */
 private const val PREVIEW_ID = Int.MAX_VALUE - 1
+
+/** Sıradaki mevsim başlangıcı (ekinoks ya da gündönümü): mevsim anahtarı ve kalan gün; güney yarımkürede adlar yer değiştirir */
+object SeasonTurn {
+    fun next(lat: Double, now: Instant): Pair<String, Long> {
+        val y = now.atZone(java.time.ZoneOffset.UTC).year
+        val north = listOf("spring", "summer", "autumn", "winter")
+        val names = if (lat < 0) listOf("autumn", "winter", "spring", "summer") else north
+        for (yy in y..y + 1) {
+            val s = tr.bumba.time.core.Nature.seasons(yy)
+            listOf(s.march, s.june, s.september, s.december).forEachIndexed { i, ms ->
+                if (ms > now.toEpochMilli()) return names[i] to Math.ceil((ms - now.toEpochMilli()) / 86_400_000.0).toLong()
+            }
+        }
+        return names[0] to 0L
+    }
+}
+

@@ -709,7 +709,7 @@
     <string name="notify_heading">اوقاتِ نماز کی اطلاعات</string>
     <string name="notify_enable">نماز کے وقت مجھے اطلاع دیں</string>
     <string name="notify_prayers">کون سی نمازیں</string>
-    <string name="notify_lead">کب</string>
+    <string name="notify_lead">پہلے سے مطلع کریں</string>
     <string name="notify_lead_zero">نماز کے وقت</string>
     <string name="notify_lead_minutes">%1$s منٹ پہلے</string>
     <string name="notify_title_now">%1$s کا وقت</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">اگلا آخری چوتھائی</string>
     <string name="moon_riseIn">چاند نکلنے میں %1$s</string>
     <string name="moon_setIn">چاند ڈوبنے میں %1$s</string>
+    <string name="share_focus">آج میں نے %1$s توجہ سے کام کیا</string>
+    <string name="notify_lead_now">عین وقت پر</string>
+    <string name="notify_lead_hours">%1$s گھنٹے پہلے</string>
+    <string name="notify_lead_days">%1$s دن پہلے</string>
+    <string name="moon_ev_quarters">چوتھائیاں</string>
+    <string name="moon_ev_super">سپر مون</string>
+    <string name="moon_ev_eclipse">گرہن</string>
+    <string name="live_sun_toggle">لاک اسکرین پر سورج کا کاؤنٹ ڈاؤن</string>
+    <string name="live_sun_note">اگلے طلوع یا غروب آفتاب تک باقی وقت لاک اسکرین پر دکھاتا ہے۔</string>
+    <string name="widget_sun_turnIn">%1$s کے آغاز میں %2$s دن</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

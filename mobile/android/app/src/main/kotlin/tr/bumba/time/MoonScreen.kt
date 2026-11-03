@@ -262,6 +262,11 @@ private fun MoonScrubber(place: AppPlace, today: LocalDate, offset: Int, onChang
         androidx.compose.material3.Slider(offset.toFloat(), { onChange(Math.round(it)) }, valueRange = -60f..60f, steps = 119,
             colors = androidx.compose.material3.SliderDefaults.colors(thumbColor = Theme.c.accent, activeTrackColor = Theme.c.accent))
         Text(L("moon.scrubHint"), color = Theme.c.muted, fontSize = 12.sp)
+        // Paylaşım kartı (2. analiz #105)
+        val ctx = androidx.compose.ui.platform.LocalContext.current
+        androidx.compose.material3.TextButton(onClick = { Share.image(ctx, ShareCards.moon(place, day), "ay.png", L("share.card")) }) {
+            Text("📤 " + L("share.card"), color = Theme.c.accent)
+        }
     }
 }
 

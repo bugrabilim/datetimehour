@@ -709,7 +709,7 @@
     <string name="notify_heading">Benachrichtigungen zu Gebetszeiten</string>
     <string name="notify_enable">Bei Gebetszeiten benachrichtigen</string>
     <string name="notify_prayers">Welche Gebete</string>
-    <string name="notify_lead">Zeitpunkt</string>
+    <string name="notify_lead">Vorab benachrichtigen</string>
     <string name="notify_lead_zero">Zur Gebetszeit</string>
     <string name="notify_lead_minutes">%1$s Min. vorher</string>
     <string name="notify_title_now">Zeit für %1$s</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">Nächstes letztes Viertel</string>
     <string name="moon_riseIn">Mondaufgang in %1$s</string>
     <string name="moon_setIn">Monduntergang in %1$s</string>
+    <string name="share_focus">Heute %1$s konzentriert</string>
+    <string name="notify_lead_now">Pünktlich</string>
+    <string name="notify_lead_hours">%1$s Std. vorher</string>
+    <string name="notify_lead_days">%1$s Tag vorher</string>
+    <string name="moon_ev_quarters">Viertel</string>
+    <string name="moon_ev_super">Supermond</string>
+    <string name="moon_ev_eclipse">Finsternisse</string>
+    <string name="live_sun_toggle">Sonnen-Countdown auf dem Sperrbildschirm</string>
+    <string name="live_sun_note">Zeigt die Zeit bis zum nächsten Sonnenauf- oder -untergang auf dem Sperrbildschirm.</string>
+    <string name="widget_sun_turnIn">Noch %2$s Tage bis %1$s</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

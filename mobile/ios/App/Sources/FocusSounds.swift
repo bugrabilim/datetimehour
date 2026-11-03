@@ -253,6 +253,7 @@ struct FocusStatsCard: View {
     let log: [FocusLog.Entry]
     let onClear: () -> Void
     @State private var confirm = false
+    @State private var sharing = false
 
     var body: some View {
         let days = PomoLog.lastDays()
@@ -269,6 +270,14 @@ struct FocusStatsCard: View {
                 Text(L("tools.pomodoro.empty")).font(.subheadline).foregroundStyle(Theme.muted)
             } else {
                 stat(L("tools.pomodoro.today"), s.today)
+                // Bugünün odak kartı (2. analiz #105)
+                if s.today.m > 0 {
+                    Button { sharing = true } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
+                        .font(.subheadline).tint(Theme.accent)
+                        .sheet(isPresented: $sharing) {
+                            ShareCardSheet(title: L("share.card")) { FocusShareCard(minutes: s.today.m, sessions: s.today.n, streak: streak, task: s.top.first?.0) }
+                        }
+                }
                 stat(L("tools.pomodoro.week"), s.week)
                 stat(L("tools.pomodoro.total"), s.total)
                 // 7 gün / 30 gün / 12 ay (2. analiz #31)

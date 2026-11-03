@@ -338,6 +338,10 @@ fun FocusStatsCard(log: List<FocusLog.Entry>, onClear: () -> Unit) {
             Text(L("tools.pomodoro.empty"), color = Theme.c.muted, fontSize = 14.sp)
         } else {
             Row2(L("tools.pomodoro.today"), T("tools.pomodoro.statLine", s.today.n, s.today.m))
+            // Bugünün odak kartı (2. analiz #105)
+            if (s.today.m > 0) androidx.compose.material3.TextButton(onClick = {
+                Share.image(context, ShareCards.focus(s.today.m, s.today.n, streak, s.top.firstOrNull()?.first), "odak.png", L("share.card"))
+            }) { Text("📤 " + L("share.card"), color = Theme.c.accent) }
             Row2(L("tools.pomodoro.week"), T("tools.pomodoro.statLine", s.week.n, s.week.m))
             Row2(L("tools.pomodoro.total"), T("tools.pomodoro.statLine", s.total.n, s.total.m))
             // 7 gün / 30 gün / 12 ay (2. analiz #31)

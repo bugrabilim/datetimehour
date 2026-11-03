@@ -13,6 +13,8 @@ struct WeatherView: View {
     @State private var failed = false
     /// Üst kartta hava canlandırması (2. analiz #193; Ayarlar › Saat görünümü)
     @AppStorage(WeatherScene.tabKey) private var animate = true
+    /// Paylaşım kartı (2. analiz #105)
+    @State private var sharing = false
 
     private var zone: TimeZone { PlaceModel.shared.place.zone }
 
@@ -26,6 +28,8 @@ struct WeatherView: View {
                     current(d)
                     // İşaret verinin hemen altında, kaydırmadan görünür (App Review 5.2.5)
                     AppleWeatherMark()
+                    Button { sharing = true } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
+                        .tint(Theme.accent)
                     hourly(d)
                     details(d)
                     // Güneş yayı ve Ay (2. analiz #109)
@@ -47,6 +51,9 @@ struct WeatherView: View {
         .navigationTitle(L("weather.h1"))
         .navigationBarTitleDisplayMode(.inline)
         .task(id: place.key) { await load(place) }
+        .sheet(isPresented: $sharing) {
+            if let d = data { ShareCardSheet(title: L("share.card")) { WeatherShareCard(place: place, weather: d) } }
+        }
         .refreshable { await load(place) }
     }
 

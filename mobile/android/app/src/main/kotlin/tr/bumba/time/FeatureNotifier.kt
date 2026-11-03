@@ -133,7 +133,7 @@ object FeatureNotifier {
         val out = ArrayList<Planned>()
         if (FeaturePrefs.isOn(NotifyFeature.CALENDAR)) out += calendar(now, days)
         if (FeaturePrefs.isOn(NotifyFeature.SEASONS)) out += seasons(place, now)
-        if (FeaturePrefs.isOn(NotifyFeature.MOON)) out += moon(place, now)
+        if (FeaturePrefs.isOn(NotifyFeature.MOON)) out += moon(context, place, now)
         if (FeaturePrefs.isOn(NotifyFeature.SUN)) out += sun(place, now, days)
         if (FeaturePrefs.isOn(NotifyFeature.DST)) out += dst(now) + worldDst(now)
         if (FeaturePrefs.isOn(NotifyFeature.HOURLY)) out += hourly(now)
@@ -174,19 +174,37 @@ object FeatureNotifier {
     }
 
     /** Dolunay ve yeni ay anında (yaklaşık iki ay ileri) */
-    private fun moon(place: AppPlace, now: Instant): List<Planned> {
+    /** Ay olayları (2. analiz #152; `SunMoonPrefs`): seçilen olaylar (yeni ay, dolunay, dördünler, süper Ay, tutulmalar),
+     *  istenirse olaydan önce (dk) */
+    private fun moon(context: Context, place: AppPlace, now: Instant): List<Planned> {
+        val ev = SunMoonPrefs.moonEvents
+        val lead = SunMoonPrefs.moonLead * 60L
         val out = ArrayList<Planned>()
+        fun add(id: String, ms: Long, title: String) {
+            val at = Instant.ofEpochMilli(ms).minusSeconds(lead)
+            if (at.isAfter(now) && out.none { it.id == id }) out += Planned(id, at, title, whenText(Instant.ofEpochMilli(ms), place), NotifyFeature.MOON.tab)
+        }
         var t = now.toEpochMilli()
         repeat(3) {
             val m = Nature.moon(t)
             for ((ms, key) in listOf(m.nextNewMoon to "new", m.nextFullMoon to "full")) {
-                val id = "moon-$key-${ms / 60000}"
-                if (out.none { it.id == id }) {
-                    val at = Instant.ofEpochMilli(ms)
-                    out += Planned(id, at, L("nature.phases.$key"), whenText(at, place), NotifyFeature.MOON.tab)
-                }
+                if (key in ev) add("moon-$key-${ms / 60000}", ms, L("nature.phases.$key"))
             }
             t = minOf(m.nextNewMoon, m.nextFullMoon) + 3_600_000
+        }
+        if ("quarter" in ev) {
+            val (fq, lq) = MoonDetails.quarters(now.toEpochMilli())
+            add("moon-fq-${fq / 60000}", fq, L("nature.phases.firstQuarter"))
+            add("moon-lq-${lq / 60000}", lq, L("nature.phases.lastQuarter"))
+        }
+        if ("super" in ev) {
+            val ms = now.toEpochMilli()
+            MoonDetails.superMoon(ms, MoonDetails.perigeeApogee(ms).first)?.let { add("moon-super-${it / 60000}", it, L("moon.ev.super")) }
+        }
+        if ("eclipse" in ev) {
+            for (e in Eclipse.all(context).filter { it.ut > now.toEpochMilli() && it.ut < now.toEpochMilli() + 60L * 86_400_000 }) {
+                add("moon-ecl-${e.ut / 60000}", e.ut, e.title)
+            }
         }
         return out
     }
@@ -218,18 +236,28 @@ object FeatureNotifier {
     private fun sun(place: AppPlace, now: Instant, days: Int): List<Planned> {
         val p = PrayerTimes.Parameters(adjustments = PrayerTimes.Adjustments(sunrise = 0.0, dhuhr = 0.0, maghrib = 0.0))
         val today = place.today(now)
+        val ev = SunMoonPrefs.sunEvents
+        val lead = SunMoonPrefs.sunLead * 60L
+        val dayset = SunMoonPrefs.sunDays
         return (0 until days).flatMap { i ->
             val day = today.plusDays(i.toLong())
+            if (day.dayOfWeek.value !in dayset) return@flatMap emptyList()
             val t = PrayerTimes.times(day, place.lat, place.lon, place.zone, p)
             val start = day.atStartOfDay(place.zone).toInstant()
+            fun at(h: Double?) = h?.let { start.plusSeconds((it * 3600).toLong()) }
+            val off = place.zone.rules.getOffset(day.atTime(12, 0).atZone(place.zone).toInstant()).totalSeconds / 3600.0
+            val light = if ("goldenAm" in ev || "goldenPm" in ev) PrayerTimes.lightHours(day.year, day.monthValue, day.dayOfMonth, place.lat, place.lon, off) else null
             listOfNotNull(
-                t.sunrise?.let { h -> start.plusSeconds((h * 3600).toLong()) }?.let { at ->
-                    Planned("sunrise-${at.epochSecond / 60}", at, L("nature.sunrise"), "${place.name} · ${Fmt.hm(at, place.zone)}", NotifyFeature.SUN.tab)
-                },
-                t.maghrib?.let { h -> start.plusSeconds((h * 3600).toLong()) }?.let { at ->
-                    Planned("sunset-${at.epochSecond / 60}", at, L("nature.sunset"), "${place.name} · ${Fmt.hm(at, place.zone)}", NotifyFeature.SUN.tab)
-                },
-            )
+                if ("sunrise" in ev) at(t.sunrise)?.let { Triple("sunrise", it, L("nature.sunrise")) } else null,
+                if ("sunset" in ev) at(t.maghrib)?.let { Triple("sunset", it, L("nature.sunset")) } else null,
+                // Altın saat başlangıcı: sabah Güneş −4°'den çıkarken, akşam +6°'ye inerken
+                if ("goldenAm" in ev) at(light?.goldenAm?.first)?.let { Triple("goldenam", it, L("nature.goldenAm")) } else null,
+                if ("goldenPm" in ev) at(light?.goldenPm?.first)?.let { Triple("goldenpm", it, L("nature.goldenPm")) } else null,
+            ).mapNotNull { (key, ev0, title) ->
+                val fire = ev0.minusSeconds(lead)
+                if (!fire.isAfter(now)) null
+                else Planned("$key-${ev0.epochSecond / 60}", fire, title, "${place.name} · ${Fmt.hm(ev0, place.zone)}", NotifyFeature.SUN.tab)
+            }
         }
     }
 
@@ -360,3 +388,38 @@ class FeatureAlarmReceiver : BroadcastReceiver() {
         FeatureNotifier.reschedule(context) { finish() }
     }
 }
+
+/** Güneş ve Ay bildirimlerinin ayrıntısı (2. analiz #152; iOS'taki SunMoonPrefs ile aynı anahtarlar) */
+object SunMoonPrefs {
+    val MOON_EVENTS = listOf("new", "full", "quarter", "super", "eclipse")
+    val SUN_EVENTS = listOf("sunrise", "sunset", "goldenAm", "goldenPm")
+    val MOON_LEADS = listOf(0, 60, 180, 1440)
+    val SUN_LEADS = listOf(0, 5, 10, 15, 30, 60)
+
+    private fun set(key: String, def: String) = (Prefs.store.getString(key, def) ?: def).split(",").filter { it.isNotEmpty() }.toSet()
+
+    var moonEvents: Set<String>
+        get() = set("notify.moon.events", "new,full")
+        set(v) = Prefs.store.edit().putString("notify.moon.events", MOON_EVENTS.filter { it in v }.joinToString(",")).apply()
+    var sunEvents: Set<String>
+        get() = set("notify.sun.events", "sunrise,sunset")
+        set(v) = Prefs.store.edit().putString("notify.sun.events", SUN_EVENTS.filter { it in v }.joinToString(",")).apply()
+    var moonLead: Int
+        get() = Prefs.store.getInt("notify.moon.lead", 0)
+        set(v) = Prefs.store.edit().putInt("notify.moon.lead", v).apply()
+    var sunLead: Int
+        get() = Prefs.store.getInt("notify.sun.lead", 0)
+        set(v) = Prefs.store.edit().putInt("notify.sun.lead", v).apply()
+    /** ISO hafta günleri (1 pazartesi … 7 pazar) */
+    var sunDays: Set<Int>
+        get() = set("notify.sun.days", "1,2,3,4,5,6,7").mapNotNull { it.toIntOrNull() }.toSet()
+        set(v) = Prefs.store.edit().putString("notify.sun.days", (1..7).filter { it in v }.joinToString(",")).apply()
+
+    fun leadLabel(min: Int): String = when {
+        min == 0 -> L("notify.lead.now")
+        min % 1440 == 0 -> T("notify.lead.days", min / 1440)
+        min % 60 == 0 -> T("notify.lead.hours", min / 60)
+        else -> T("notify.lead.minutes", min)
+    }
+}
+

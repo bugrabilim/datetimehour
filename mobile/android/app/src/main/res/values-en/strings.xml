@@ -709,7 +709,7 @@
     <string name="notify_heading">Prayer time notifications</string>
     <string name="notify_enable">Notify me at prayer times</string>
     <string name="notify_prayers">Which prayers</string>
-    <string name="notify_lead">When</string>
+    <string name="notify_lead">Notify in advance</string>
     <string name="notify_lead_zero">At prayer time</string>
     <string name="notify_lead_minutes">%1$s min before</string>
     <string name="notify_title_now">Time for %1$s</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">Next last quarter</string>
     <string name="moon_riseIn">Moonrise in %1$s</string>
     <string name="moon_setIn">Moonset in %1$s</string>
+    <string name="share_focus">I focused for %1$s today</string>
+    <string name="notify_lead_now">On time</string>
+    <string name="notify_lead_hours">%1$s h before</string>
+    <string name="notify_lead_days">%1$s day before</string>
+    <string name="moon_ev_quarters">Quarters</string>
+    <string name="moon_ev_super">Supermoon</string>
+    <string name="moon_ev_eclipse">Eclipses</string>
+    <string name="live_sun_toggle">Sun countdown on the Lock Screen</string>
+    <string name="live_sun_note">Shows the time left until the next sunrise or sunset on the Lock Screen.</string>
+    <string name="widget_sun_turnIn">%2$s days to the start of %1$s</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

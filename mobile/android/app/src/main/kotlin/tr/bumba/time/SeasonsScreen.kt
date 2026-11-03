@@ -1,6 +1,7 @@
 package tr.bumba.time
 
 import androidx.compose.foundation.background
+import androidx.compose.runtime.remember
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -78,6 +79,22 @@ fun SeasonsScreen() {
             for (i in 1..5) Text("• " + L("kids.fact$i"), color = Theme.c.text, fontSize = 15.sp)
         }
         SunMoon(place, now) { moonPage = true }
+        // Kilit ekranında Güneş sayacı (2. analiz #150): sıradaki gün doğumu ya da batımına kalan süre
+        val ctx = androidx.compose.ui.platform.LocalContext.current
+        var liveSun by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.SUN_KEY, false)) }
+        AppCard {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Column(Modifier.weight(1f)) {
+                    Text(L("live.sun.toggle"), color = Theme.c.text, fontSize = 15.sp)
+                    Text(L("live.sun.note"), color = Theme.c.muted, fontSize = 12.sp)
+                }
+                androidx.compose.material3.Switch(liveSun, {
+                    liveSun = it
+                    Prefs.store.edit().putBoolean(LiveNotifications.SUN_KEY, it).apply()
+                    LiveNotifications.sync(ctx)
+                }, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+            }
+        }
         AppCard {
             SectionTitle(L("nature.tableHeading"))
             for ((i, at) in instants(year)) {

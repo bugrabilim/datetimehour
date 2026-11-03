@@ -197,6 +197,26 @@ struct SunEntry: TimelineEntry {
     let rise: Date?
     let set: Date?
     let zone: TimeZone
+    var latitude: Double = 41
+}
+
+/// Sıradaki mevsim başlangıcı (ekinoks ya da gündönümü; 2. analiz #150): mevsim anahtarı ve kalan gün; güney yarımkürede
+/// adlar yer değiştirir (Android'deki SeasonTurn ile aynı)
+enum SeasonTurn {
+    static func next(lat: Double, now: Date) -> (String, Int) {
+        let ms = Int64(now.timeIntervalSince1970 * 1000)
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(identifier: "UTC")!
+        let y = cal.component(.year, from: now)
+        let names = lat < 0 ? ["autumn", "winter", "spring", "summer"] : ["spring", "summer", "autumn", "winter"]
+        for yy in y...(y + 1) {
+            let s = Nature.seasons(year: yy)
+            for (i, t) in [s.march, s.june, s.september, s.december].enumerated() where t > ms {
+                return (names[i], Int((Double(t - ms) / 86_400_000).rounded(.up)))
+            }
+        }
+        return (names[0], 0)
+    }
 }
 
 struct SunProvider: AppIntentTimelineProvider {
@@ -224,7 +244,7 @@ struct SunProvider: AppIntentTimelineProvider {
         return SunEntry(date: date, placeName: place.name,
                         rise: t.sunrise.flatMap { $0.isFinite ? midnight.addingTimeInterval($0 * 3600) : nil },
                         set: t.maghrib.flatMap { $0.isFinite ? midnight.addingTimeInterval($0 * 3600) : nil },
-                        zone: s.timeZone)
+                        zone: s.timeZone, latitude: s.latitude)
     }
 }
 
@@ -274,6 +294,9 @@ struct SunWidgetView: View {
                     sunRow("sunrise", L("nature.sunrise"), hm(entry.rise))
                     sunRow("sunset", L("nature.sunset"), hm(entry.set))
                     Text(L("nature.dayLength") + ": " + len).font(.caption2).foregroundStyle(Theme.muted).lineLimit(1).minimumScaleFactor(0.7)
+                    let turn = SeasonTurn.next(lat: entry.latitude, now: entry.date)
+                    Text(String(format: L("widget.sun.turnIn"), L("nature.seasons.\(turn.0)"), "\(turn.1)"))
+                        .font(.caption2.weight(.semibold)).foregroundStyle(Theme.accent).lineLimit(1).minimumScaleFactor(0.7)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }

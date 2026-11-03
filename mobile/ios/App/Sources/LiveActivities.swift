@@ -11,13 +11,15 @@ enum LiveActivities {
     static let prayerKey = "live.prayer"
     /// Dynamic Island'da canlı saat (2. analiz #19; Apple etkinliği en çok 8 saat açık tutar)
     static let clockKey = "live.clock"
+    /// Güneş sayacı (2. analiz #150): sıradaki gün doğumu ya da batımına kalan süre
+    static let sunKey = "live.sun"
 
     private typealias Want = (attributes: SaatActivityAttributes, state: SaatActivityAttributes.ContentState, stale: Date?)
 
     static func sync(now: Date = Date()) {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
         var wanted: [String: Want] = [:]
-        for w in timers(now) + [stopwatch(), pomodoro(now), prayer(now), clock(now)].compactMap({ $0 }) { wanted[w.attributes.id] = w }
+        for w in timers(now) + [stopwatch(), pomodoro(now), prayer(now), clock(now), sun(now)].compactMap({ $0 }) { wanted[w.attributes.id] = w }
         for a in Activity<SaatActivityAttributes>.activities where a.activityState == .active || a.activityState == .stale {
             if let w = wanted.removeValue(forKey: a.attributes.id), w.attributes.kind == a.attributes.kind {
                 if a.content.state != w.state || a.activityState == .stale {
@@ -78,6 +80,19 @@ enum LiveActivities {
                 .init(date: at, start: at.addingTimeInterval(-Double(minutes * 60)), title: L("tools.pomodoro.\(phase)"),
                       subtitle: T("tools.pomodoro.round", val("pomo.round", 1), val("pomo.rounds", 4))),
                 at)
+    }
+
+    /// Sıradaki gün doğumu ya da batımı (bugün ve yarın; vakit düzeltmesi olmadan)
+    private static func sun(_ now: Date) -> Want? {
+        guard UserDefaults.standard.bool(forKey: sunKey) else { return nil }
+        let place = AppPlace.stored()
+        let days = [now, now.addingTimeInterval(86_400)].compactMap { SeasonsView.sun(place: place, now: $0) }
+        let events = days.flatMap { [($0.rise, true), ($0.set, false)] }.filter { $0.0 > now }.sorted { $0.0 < $1.0 }
+        guard let next = events.first else { return nil }
+        let prev = days.flatMap { [$0.rise, $0.set] }.filter { $0 <= now }.max() ?? now.addingTimeInterval(-3600)
+        return (SaatActivityAttributes(kind: "sun", id: "sun"),
+                .init(date: next.0, start: prev, title: L(next.1 ? "nature.sunrise" : "nature.sunset") + " " + place.hm(next.0), subtitle: place.name),
+                next.0.addingTimeInterval(60))
     }
 
     /// Sıradaki vakit (Ayarlar: Vakitler › "Kilit ekranında sıradaki vakit"); Ramazan'da akşam iftar, imsak sahur

@@ -48,7 +48,10 @@ struct NotificationsView: View {
             Section {
                 row(.seasons, $seasons)
                 row(.moon, $moon)
+                // Olay seçimi ve önceden haber verme (2. analiz #152)
+                if moon { SunMoonOptionsView(moon: true) { reschedule() } }
                 row(.sun, $sun)
+                if sun { SunMoonOptionsView(moon: false) { reschedule() } }
             }
             Section {
                 row(.weather, $weather)

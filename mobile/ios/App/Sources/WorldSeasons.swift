@@ -188,6 +188,7 @@ struct WorldClockView: View {
 /// "kış 1 Aralık'ta mı 21 Aralık'ta mı" (gökbilim ve meteoroloji şeridi), güney yarımküre, ilginç bilgiler;
 /// en altta bugünün Güneşi, Ay ve mevsim başlangıçları.
 struct SeasonsView: View {
+    @AppStorage(LiveActivities.sunKey) private var liveSun = false
 
     static let seasonKeys = ["spring", "summer", "autumn", "winter"]
     static let seasonEmoji = ["🌸", "☀️", "🍂", "⛄"]
@@ -236,6 +237,17 @@ struct SeasonsView: View {
                     }
                 }
                 sunAndMoon(place: place, now: now)
+                // Kilit ekranında Güneş sayacı (2. analiz #150): sıradaki gün doğumu ya da batımına kalan süre
+                Toggle(isOn: $liveSun) {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(L("live.sun.toggle"))
+                        Text(L("live.sun.note")).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                }
+                .tint(Theme.accent)
+                .padding(14)
+                .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+                .onChange(of: liveSun) { LiveActivities.sync() }
                 lightHours(place: place, now: now)
                 FolkCalendarCard(day: CalendarDay(now, timeZone: place.zone))
                 startsTable(year: year, tz: tr)

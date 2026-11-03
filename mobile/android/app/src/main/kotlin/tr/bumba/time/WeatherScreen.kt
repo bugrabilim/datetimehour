@@ -83,6 +83,11 @@ fun WeatherScreen() {
         when {
             d != null -> {
                 Current(d)
+                // Paylaşım kartı (2. analiz #105)
+                val ctx = LocalContext.current
+                TextButton(onClick = { Share.image(ctx, ShareCards.weather(place, d), "hava.png", L("share.card")) }) {
+                    Text("📤 " + L("share.card"), color = Theme.c.accent)
+                }
                 Hourly(d)
                 Details(d)
                 // Güneş yayı ve Ay (2. analiz #109)

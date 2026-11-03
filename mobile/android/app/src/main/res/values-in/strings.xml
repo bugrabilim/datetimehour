@@ -709,7 +709,7 @@
     <string name="notify_heading">Notifikasi waktu salat</string>
     <string name="notify_enable">Beri tahu saya saat waktu salat</string>
     <string name="notify_prayers">Salat yang mana</string>
-    <string name="notify_lead">Kapan</string>
+    <string name="notify_lead">Beri tahu lebih awal</string>
     <string name="notify_lead_zero">Tepat waktu salat</string>
     <string name="notify_lead_minutes">%1$s mnt sebelumnya</string>
     <string name="notify_title_now">Waktunya %1$s</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">Kuartal terakhir berikutnya</string>
     <string name="moon_riseIn">Bulan terbit dalam %1$s</string>
     <string name="moon_setIn">Bulan terbenam dalam %1$s</string>
+    <string name="share_focus">Hari ini fokus selama %1$s</string>
+    <string name="notify_lead_now">Tepat waktu</string>
+    <string name="notify_lead_hours">%1$s jam sebelumnya</string>
+    <string name="notify_lead_days">%1$s hari sebelumnya</string>
+    <string name="moon_ev_quarters">Kuartal</string>
+    <string name="moon_ev_super">Bulan super</string>
+    <string name="moon_ev_eclipse">Gerhana</string>
+    <string name="live_sun_toggle">Hitung mundur Matahari di layar kunci</string>
+    <string name="live_sun_note">Menampilkan sisa waktu hingga matahari terbit atau terbenam berikutnya di layar kunci.</string>
+    <string name="widget_sun_turnIn">%2$s hari menuju awal %1$s</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

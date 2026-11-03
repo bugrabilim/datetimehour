@@ -1,3 +1,4 @@
+import SwiftUI
 import Foundation
 import BackgroundTasks
 import UserNotifications
@@ -135,33 +136,70 @@ enum FeatureNotifier {
     }
 
     /// Dolunay ve yeni ay anında (yaklaşık iki ay ileri)
+    /// Ay olayları (2. analiz #152; `SunMoonPrefs`): seçilen olaylar (yeni ay, dolunay, dördünler, süper Ay, tutulmalar),
+    /// istenirse olaydan önce
     private static func moon(place: AppPlace, now: Date) -> [PlannedNotification] {
+        let ev = SunMoonPrefs.moonEvents
+        let lead = Double(SunMoonPrefs.moonLead * 60)
         var out: [PlannedNotification] = []
+        func add(_ key: String, _ ms: Int64, _ title: String) {
+            let at = Date(unixMilliseconds: ms)
+            let fire = at.addingTimeInterval(-lead)
+            let id = "\(featurePrefix)moon-\(key)-\(ms / 60000)"
+            guard fire > now, !out.contains(where: { $0.id == id }) else { return }
+            out.append(PlannedNotification(id: id, fireAt: fire, title: title, body: when(at, place)))
+        }
         var t = now
         for _ in 0..<3 {
             let m = Nature.moon(at: t)
-            for (ms, key) in [(m.nextNewMoon, "new"), (m.nextFullMoon, "full")] {
-                let at = Date(unixMilliseconds: ms)
-                let id = "\(featurePrefix)moon-\(key)-\(ms / 60000)"
-                guard !out.contains(where: { $0.id == id }) else { continue }
-                out.append(PlannedNotification(id: id, fireAt: at, title: L("nature.phases.\(key)"), body: when(at, place)))
+            for (ms, key) in [(m.nextNewMoon, "new"), (m.nextFullMoon, "full")] where ev.contains(key) {
+                add(key, ms, L("nature.phases.\(key)"))
             }
             t = Date(unixMilliseconds: min(m.nextNewMoon, m.nextFullMoon)).addingTimeInterval(3600)
+        }
+        let nowMs = now.timeIntervalSince1970 * 1000
+        if ev.contains("quarter") {
+            let q = MoonDetails.quarters(nowMs)
+            add("fq", Int64(q.0), L("nature.phases.firstQuarter"))
+            add("lq", Int64(q.1), L("nature.phases.lastQuarter"))
+        }
+        if ev.contains("super"), let sup = MoonDetails.superMoon(nowMs, perigee: MoonDetails.perigeeApogee(nowMs).0) {
+            add("super", Int64(sup), L("moon.ev.super"))
+        }
+        if ev.contains("eclipse") {
+            for e in Eclipse.all where e.date > now && e.date < now.addingTimeInterval(60 * 86400) { add("ecl", e.ut, e.title) }
         }
         return out
     }
 
-    /// Her gün Güneş doğarken ve batarken (vakit düzeltmeleri olmadan; Mevsimler'deki saatler)
+    /// Güneş (2. analiz #152): seçilen olaylar (doğuş, batış, sabah ve akşam altın saat başlangıcı), seçilen günler,
+    /// istenirse olaydan önce (vakit düzeltmeleri olmadan; Mevsimler'deki saatler)
     private static func sun(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
-        (0..<days).flatMap { i -> [PlannedNotification] in
+        let ev = SunMoonPrefs.sunEvents
+        let lead = Double(SunMoonPrefs.sunLead * 60)
+        let dayset = SunMoonPrefs.sunDays
+        return (0..<days).flatMap { i -> [PlannedNotification] in
             let date = now.addingTimeInterval(Double(i) * 86400)
-            guard let s = SeasonsView.sun(place: place, now: date) else { return [] }
-            return [
-                PlannedNotification(id: "\(featurePrefix)sunrise-\(Int(s.rise.timeIntervalSince1970) / 60)", fireAt: s.rise,
-                                    title: L("nature.sunrise"), body: "\(place.name) · \(place.hm(s.rise))"),
-                PlannedNotification(id: "\(featurePrefix)sunset-\(Int(s.set.timeIntervalSince1970) / 60)", fireAt: s.set,
-                                    title: L("nature.sunset"), body: "\(place.name) · \(place.hm(s.set))"),
-            ]
+            let d = CalendarDay(date, timeZone: place.zone)
+            guard dayset.contains(d.weekday + 1) else { return [] }
+            var items: [(String, Date, String)] = []
+            if let s = SeasonsView.sun(place: place, now: date) {
+                if ev.contains("sunrise") { items.append(("sunrise", s.rise, L("nature.sunrise"))) }
+                if ev.contains("sunset") { items.append(("sunset", s.set, L("nature.sunset"))) }
+            }
+            if ev.contains("goldenAm") || ev.contains("goldenPm") {
+                let off = Double(place.zone.secondsFromGMT(for: d.noon(in: place.zone))) / 3600
+                let l = PrayerTimes.lightHours(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon, utcOffset: off)
+                let start = place.startOfDay(d)
+                if ev.contains("goldenAm"), let h = l.goldenAm.0 { items.append(("goldenam", start.addingTimeInterval(h * 3600), L("nature.goldenAm"))) }
+                if ev.contains("goldenPm"), let h = l.goldenPm.0 { items.append(("goldenpm", start.addingTimeInterval(h * 3600), L("nature.goldenPm"))) }
+            }
+            return items.compactMap { key, at, title in
+                let fire = at.addingTimeInterval(-lead)
+                guard fire > now else { return nil }
+                return PlannedNotification(id: "\(featurePrefix)\(key)-\(Int(at.timeIntervalSince1970) / 60)", fireAt: fire,
+                                           title: title, body: "\(place.name) · \(place.hm(at))")
+            }
         }
     }
 
@@ -281,3 +319,101 @@ enum BackgroundRefresh {
         }
     }
 }
+
+/// Güneş ve Ay bildirimlerinin ayrıntısı (2. analiz #152; Android'deki SunMoonPrefs ile aynı anahtarlar)
+enum SunMoonPrefs {
+    static let moonEventsAll = ["new", "full", "quarter", "super", "eclipse"]
+    static let sunEventsAll = ["sunrise", "sunset", "goldenAm", "goldenPm"]
+    static let moonLeads = [0, 60, 180, 1440]
+    static let sunLeads = [0, 5, 10, 15, 30, 60]
+
+    private static func set(_ key: String, _ def: String) -> Set<String> {
+        Set((UserDefaults.standard.string(forKey: key) ?? def).split(separator: ",").map(String.init))
+    }
+
+    static var moonEvents: Set<String> {
+        get { set("notify.moon.events", "new,full") }
+        set { UserDefaults.standard.set(moonEventsAll.filter { newValue.contains($0) }.joined(separator: ","), forKey: "notify.moon.events") }
+    }
+    static var sunEvents: Set<String> {
+        get { set("notify.sun.events", "sunrise,sunset") }
+        set { UserDefaults.standard.set(sunEventsAll.filter { newValue.contains($0) }.joined(separator: ","), forKey: "notify.sun.events") }
+    }
+    static var moonLead: Int { UserDefaults.standard.integer(forKey: "notify.moon.lead") }
+    static var sunLead: Int { UserDefaults.standard.integer(forKey: "notify.sun.lead") }
+    /// ISO hafta günleri (1 pazartesi … 7 pazar)
+    static var sunDays: Set<Int> {
+        get { Set(set("notify.sun.days", "1,2,3,4,5,6,7").compactMap { Int($0) }) }
+        set { UserDefaults.standard.set((1...7).filter { newValue.contains($0) }.map(String.init).joined(separator: ","), forKey: "notify.sun.days") }
+    }
+
+    static func leadLabel(_ m: Int) -> String {
+        m == 0 ? L("notify.lead.now") : m % 1440 == 0 ? T("notify.lead.days", m / 1440) : m % 60 == 0 ? T("notify.lead.hours", m / 60) : T("notify.lead.minutes", m)
+    }
+
+    static func label(_ e: String) -> String {
+        switch e {
+        case "new", "full": return L("nature.phases.\(e)")
+        case "quarter": return L("moon.ev.quarters")
+        case "super": return L("moon.ev.super")
+        case "eclipse": return L("moon.ev.eclipse")
+        case "sunrise": return L("nature.sunrise")
+        case "sunset": return L("nature.sunset")
+        case "goldenAm": return L("nature.goldenAm")
+        default: return L("nature.goldenPm")
+        }
+    }
+}
+
+/// Güneş/Ay bildirimi ayrıntısı (olaylar, önceden haber verme, Güneş için günler)
+struct SunMoonOptionsView: View {
+    let moon: Bool
+    let changed: () -> Void
+    @State private var events: Set<String> = []
+    @State private var days: Set<Int> = []
+    @AppStorage("notify.moon.lead") private var moonLead = 0
+    @AppStorage("notify.sun.lead") private var sunLead = 0
+
+    var body: some View {
+        let all = moon ? SunMoonPrefs.moonEventsAll : SunMoonPrefs.sunEventsAll
+        Group {
+            ForEach(all, id: \.self) { e in
+                Toggle(SunMoonPrefs.label(e), isOn: Binding(get: { events.contains(e) }, set: { on in
+                    if on { events.insert(e) } else { events.remove(e) }
+                    if moon { SunMoonPrefs.moonEvents = events } else { SunMoonPrefs.sunEvents = events }
+                    changed()
+                }))
+                .padding(.leading, 12)
+            }
+            Picker(L("notify.lead"), selection: moon ? $moonLead : $sunLead) {
+                ForEach(moon ? SunMoonPrefs.moonLeads : SunMoonPrefs.sunLeads, id: \.self) { Text(SunMoonPrefs.leadLabel($0)).tag($0) }
+            }
+            .padding(.leading, 12)
+            .onChange(of: moon ? moonLead : sunLead) { changed() }
+            if !moon {
+                HStack(spacing: 4) {
+                    ForEach(1...7, id: \.self) { d in
+                        let on = days.contains(d)
+                        Button {
+                            if on { days.remove(d) } else { days.insert(d) }
+                            SunMoonPrefs.sunDays = days
+                            changed()
+                        } label: {
+                            Text(L("tools.alarm.dayNames.\(d - 1)")).font(.caption.weight(.semibold))
+                                .frame(maxWidth: .infinity, minHeight: 30)
+                                .background(on ? Theme.accent : Theme.surface2, in: Capsule())
+                                .foregroundStyle(on ? Color.white : Theme.text)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.leading, 12)
+            }
+        }
+        .onAppear {
+            events = moon ? SunMoonPrefs.moonEvents : SunMoonPrefs.sunEvents
+            days = SunMoonPrefs.sunDays
+        }
+    }
+}
+

@@ -709,7 +709,7 @@
     <string name="notify_heading">Abiso sa oras ng dasal</string>
     <string name="notify_enable">Abisuhan ako sa oras ng dasal</string>
     <string name="notify_prayers">Aling mga dasal</string>
-    <string name="notify_lead">Kailan</string>
+    <string name="notify_lead">Paalalahanan nang maaga</string>
     <string name="notify_lead_zero">Sa oras ng dasal</string>
     <string name="notify_lead_minutes">%1$s min bago</string>
     <string name="notify_title_now">Oras na ng %1$s</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">Susunod na huling kuwarto</string>
     <string name="moon_riseIn">Pagsikat ng buwan sa loob ng %1$s</string>
     <string name="moon_setIn">Paglubog ng buwan sa loob ng %1$s</string>
+    <string name="share_focus">Nakapag-focus ako ngayon nang %1$s</string>
+    <string name="notify_lead_now">Sa oras</string>
+    <string name="notify_lead_hours">%1$s oras bago</string>
+    <string name="notify_lead_days">%1$s araw bago</string>
+    <string name="moon_ev_quarters">Mga kuwarto</string>
+    <string name="moon_ev_super">Supermoon</string>
+    <string name="moon_ev_eclipse">Mga eklipse</string>
+    <string name="live_sun_toggle">Countdown ng Araw sa Lock Screen</string>
+    <string name="live_sun_note">Ipinapakita sa Lock Screen ang natitirang oras bago ang susunod na pagsikat o paglubog ng araw.</string>
+    <string name="widget_sun_turnIn">%2$s araw bago magsimula ang %1$s</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

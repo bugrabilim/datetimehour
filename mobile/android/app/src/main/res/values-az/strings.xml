@@ -709,7 +709,7 @@
     <string name="notify_heading">Vaxt bildirişləri</string>
     <string name="notify_enable">Namaz vaxtlarında bildiriş al</string>
     <string name="notify_prayers">Hansı vaxtlar</string>
-    <string name="notify_lead">Bildiriş vaxtı</string>
+    <string name="notify_lead">Əvvəlcədən xəbər ver</string>
     <string name="notify_lead_zero">Vaxtında</string>
     <string name="notify_lead_minutes">%1$s dəq əvvəl</string>
     <string name="notify_title_now">%1$s vaxtı</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">Növbəti son dördəbir</string>
     <string name="moon_riseIn">Ayın doğuşuna %1$s</string>
     <string name="moon_setIn">Ayın batışına %1$s</string>
+    <string name="share_focus">Bu gün %1$s diqqət etdim</string>
+    <string name="notify_lead_now">Vaxtında</string>
+    <string name="notify_lead_hours">%1$s saat əvvəl</string>
+    <string name="notify_lead_days">%1$s gün əvvəl</string>
+    <string name="moon_ev_quarters">Dördəbirlər</string>
+    <string name="moon_ev_super">Super Ay</string>
+    <string name="moon_ev_eclipse">Tutulmalar</string>
+    <string name="live_sun_toggle">Kilid ekranında Günəş sayğacı</string>
+    <string name="live_sun_note">Növbəti gün çıxana və ya batana qədər qalan vaxt kilid ekranında görünür.</string>
+    <string name="widget_sun_turnIn">%1$s başlanğıcına %2$s gün</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

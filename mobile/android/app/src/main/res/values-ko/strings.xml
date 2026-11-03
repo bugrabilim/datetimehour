@@ -709,7 +709,7 @@
     <string name="notify_heading">기도 시간 알림</string>
     <string name="notify_enable">기도 시간에 알림 받기</string>
     <string name="notify_prayers">알릴 기도</string>
-    <string name="notify_lead">알림 시점</string>
+    <string name="notify_lead">미리 알림</string>
     <string name="notify_lead_zero">기도 시간에</string>
     <string name="notify_lead_minutes">%1$s분 전</string>
     <string name="notify_title_now">%1$s 시간입니다</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">다음 하현</string>
     <string name="moon_riseIn">월출까지 %1$s</string>
     <string name="moon_setIn">월몰까지 %1$s</string>
+    <string name="share_focus">오늘 %1$s 집중했어요</string>
+    <string name="notify_lead_now">정시에</string>
+    <string name="notify_lead_hours">%1$s시간 전</string>
+    <string name="notify_lead_days">%1$s일 전</string>
+    <string name="moon_ev_quarters">상현·하현</string>
+    <string name="moon_ev_super">슈퍼문</string>
+    <string name="moon_ev_eclipse">일식·월식</string>
+    <string name="live_sun_toggle">잠금 화면에 해 카운트다운</string>
+    <string name="live_sun_note">다음 일출 또는 일몰까지 남은 시간을 잠금 화면에 표시합니다.</string>
+    <string name="widget_sun_turnIn">%1$s 시작까지 %2$s일</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

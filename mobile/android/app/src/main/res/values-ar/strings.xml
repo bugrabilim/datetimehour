@@ -709,9 +709,9 @@
     <string name="notify_heading">إشعارات أوقات الصلاة</string>
     <string name="notify_enable">أعلمني عند أوقات الصلاة</string>
     <string name="notify_prayers">أي الصلوات</string>
-    <string name="notify_lead">وقت الإشعار</string>
+    <string name="notify_lead">التنبيه مسبقًا</string>
     <string name="notify_lead_zero">عند دخول الوقت</string>
-    <string name="notify_lead_minutes">قبل %1$s دقيقة</string>
+    <string name="notify_lead_minutes">قبل %1$s د</string>
     <string name="notify_title_now">حان وقت %1$s</string>
     <string name="notify_title_before">%1$s بعد %2$s دقيقة</string>
     <string name="notify_reopen">افتح التطبيق لتستمر إشعارات أوقات الصلاة.</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">التربيع الأخير التالي</string>
     <string name="moon_riseIn">شروق القمر بعد %1$s</string>
     <string name="moon_setIn">غروب القمر بعد %1$s</string>
+    <string name="share_focus">ركّزت اليوم لمدة %1$s</string>
+    <string name="notify_lead_now">في الوقت</string>
+    <string name="notify_lead_hours">قبل %1$s س</string>
+    <string name="notify_lead_days">قبل %1$s يوم</string>
+    <string name="moon_ev_quarters">التربيعان</string>
+    <string name="moon_ev_super">القمر العملاق</string>
+    <string name="moon_ev_eclipse">الكسوف والخسوف</string>
+    <string name="live_sun_toggle">عدّاد الشمس على شاشة القفل</string>
+    <string name="live_sun_note">يظهر الوقت المتبقي حتى الشروق أو الغروب التالي على شاشة القفل.</string>
+    <string name="widget_sun_turnIn">%2$s يوم حتى بداية %1$s</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

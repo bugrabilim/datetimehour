@@ -709,7 +709,7 @@
     <string name="notify_heading">礼拝時刻の通知</string>
     <string name="notify_enable">礼拝時刻に通知する</string>
     <string name="notify_prayers">対象の礼拝</string>
-    <string name="notify_lead">タイミング</string>
+    <string name="notify_lead">事前に通知</string>
     <string name="notify_lead_zero">礼拝時刻ちょうど</string>
     <string name="notify_lead_minutes">%1$s分前</string>
     <string name="notify_title_now">%1$sの時刻です</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">次の下弦</string>
     <string name="moon_riseIn">月の出まで%1$s</string>
     <string name="moon_setIn">月の入りまで%1$s</string>
+    <string name="share_focus">今日は%1$s集中しました</string>
+    <string name="notify_lead_now">時間ちょうど</string>
+    <string name="notify_lead_hours">%1$s時間前</string>
+    <string name="notify_lead_days">%1$s日前</string>
+    <string name="moon_ev_quarters">上弦・下弦</string>
+    <string name="moon_ev_super">スーパームーン</string>
+    <string name="moon_ev_eclipse">日食・月食</string>
+    <string name="live_sun_toggle">ロック画面に日の出・日の入りまでの時間</string>
+    <string name="live_sun_note">次の日の出または日の入りまでの時間をロック画面に表示します。</string>
+    <string name="widget_sun_turnIn">%1$sの始まりまで%2$s日</string>
     <string name="app_name">時刻と日付</string>
 </resources>

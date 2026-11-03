@@ -709,7 +709,7 @@
     <string name="notify_heading">Notifications des heures de prière</string>
     <string name="notify_enable">M’avertir aux heures de prière</string>
     <string name="notify_prayers">Quelles prières</string>
-    <string name="notify_lead">Quand</string>
+    <string name="notify_lead">Prévenir à l\'avance</string>
     <string name="notify_lead_zero">À l’heure de la prière</string>
     <string name="notify_lead_minutes">%1$s min avant</string>
     <string name="notify_title_now">%1$s : c’est l’heure</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">Prochain dernier quartier</string>
     <string name="moon_riseIn">Lever de la Lune dans %1$s</string>
     <string name="moon_setIn">Coucher de la Lune dans %1$s</string>
+    <string name="share_focus">Aujourd\'hui, %1$s de concentration</string>
+    <string name="notify_lead_now">À l\'heure</string>
+    <string name="notify_lead_hours">%1$s h avant</string>
+    <string name="notify_lead_days">%1$s jour avant</string>
+    <string name="moon_ev_quarters">Quartiers</string>
+    <string name="moon_ev_super">Super Lune</string>
+    <string name="moon_ev_eclipse">Éclipses</string>
+    <string name="live_sun_toggle">Compte à rebours du Soleil sur l\'écran verrouillé</string>
+    <string name="live_sun_note">Affiche le temps restant avant le prochain lever ou coucher du Soleil sur l\'écran verrouillé.</string>
+    <string name="widget_sun_turnIn">%2$s jours avant le début de %1$s</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

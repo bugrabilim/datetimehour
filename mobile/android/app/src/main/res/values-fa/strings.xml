@@ -709,9 +709,9 @@
     <string name="notify_heading">اعلان‌های اوقات شرعی</string>
     <string name="notify_enable">اعلان در وقت نماز</string>
     <string name="notify_prayers">کدام نمازها</string>
-    <string name="notify_lead">کی</string>
+    <string name="notify_lead">پیشاپیش خبر بده</string>
     <string name="notify_lead_zero">سر وقت نماز</string>
-    <string name="notify_lead_minutes">%1$s دقیقه پیش از آن</string>
+    <string name="notify_lead_minutes">%1$s دقیقه قبل</string>
     <string name="notify_title_now">وقت %1$s</string>
     <string name="notify_title_before">%1$s تا %2$s دقیقهٔ دیگر</string>
     <string name="notify_reopen">برای ادامهٔ اعلان‌های اوقات شرعی، برنامه را باز کنید.</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">تربیع دوم بعدی</string>
     <string name="moon_riseIn">طلوع ماه تا %1$s دیگر</string>
     <string name="moon_setIn">غروب ماه تا %1$s دیگر</string>
+    <string name="share_focus">امروز %1$s تمرکز کردم</string>
+    <string name="notify_lead_now">سر وقت</string>
+    <string name="notify_lead_hours">%1$s ساعت قبل</string>
+    <string name="notify_lead_days">%1$s روز قبل</string>
+    <string name="moon_ev_quarters">تربیع‌ها</string>
+    <string name="moon_ev_super">ابرماه</string>
+    <string name="moon_ev_eclipse">گرفت‌ها</string>
+    <string name="live_sun_toggle">شمارش معکوس خورشید روی صفحه قفل</string>
+    <string name="live_sun_note">زمان باقی تا طلوع یا غروب بعدی خورشید روی صفحه قفل نمایش داده می‌شود.</string>
+    <string name="widget_sun_turnIn">%2$s روز تا آغاز %1$s</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

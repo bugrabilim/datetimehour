@@ -124,4 +124,39 @@ object ShareCards {
             p.block(Fmt.longDate(at.atZone(ZoneId.systemDefault()).toLocalDate()), paint(40f, alpha = 220))
         }
     }
+
+    /** Hava (2. analiz #105): yer, simge ve sıcaklık, durum, en yüksek/en düşük, sözlü özet; Open-Meteo atfı */
+    fun weather(place: AppPlace, d: WeatherData): Bitmap = render(980) { p ->
+        p.block(place.name, paint(64f, bold = true), 8f)
+        p.block(Fmt.longDate(java.time.LocalDate.now(d.zone)), paint(40f, alpha = 220), 24f)
+        p.block(d.condition.icon(d.current.isDay) + "  " + Units.temp(d.current.temp), paint(128f, bold = true, color = GOLD), 12f)
+        p.block(d.condition.label, paint(52f, bold = true), 8f)
+        d.today?.let { p.block("↑ ${Units.temp(it.max)}   ↓ ${Units.temp(it.min)}", paint(44f, alpha = 230), 20f) }
+        val sum = WeatherSpeech.summary(d)
+        if (sum.isNotEmpty()) p.block(sum, paint(40f), 20f)
+        p.block("Open-Meteo.com", paint(28f, alpha = 170), 8f)
+    }
+
+    /** Ay (2. analiz #105): evre simgesi ve adı, aydınlık yüzde, tarih, doğuş/batış */
+    fun moon(place: AppPlace, day: java.time.LocalDate): Bitmap {
+        val m = tr.bumba.time.core.Nature.moon(day.atTime(21, 0).atZone(place.zone).toInstant().toEpochMilli())
+        val rs = moonRiseSet(place, day)
+        return render(900) { p ->
+            p.block(MOON_PHASE_EMOJI[m.phaseIndex], paint(160f), 12f)
+            p.block(L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"), paint(64f, bold = true, color = GOLD), 12f)
+            p.block(T("nature.illumination", Math.round(m.illumination * 100)), paint(44f), 12f)
+            p.block(Fmt.longDate(day) + " · " + place.name, paint(40f, alpha = 220), 12f)
+            p.block("↑ ${moonTime(rs.rise, place, "nature.moonNoRise")}   ↓ ${moonTime(rs.set, place, "nature.moonNoSet")}", paint(40f, alpha = 220))
+        }
+    }
+
+    /** Odak (2. analiz #105): "Bugün 3 sa 58 dk odaklandım", tur sayısı, seri, en çok çalışılan görev */
+    fun focus(minutes: Int, sessions: Int, streak: Int, task: String?): Bitmap = render(860) { p ->
+        p.block("🍅", paint(120f), 12f)
+        p.block(T("share.focus", Fmt.hm(minutes * 60)), paint(68f, bold = true, color = GOLD), 16f)
+        p.block(T("tools.pomodoro.statLine", sessions, minutes), paint(44f), 12f)
+        if (streak >= 2) p.block("🔥 " + T("tools.pomodoro.streak", streak), paint(44f), 12f)
+        if (!task.isNullOrBlank()) p.block("✦ $task", paint(40f, alpha = 220))
+    }
 }
+

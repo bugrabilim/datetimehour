@@ -14,7 +14,7 @@ struct SaatActivityAttributes: ActivityAttributes {
         var subtitle: String
     }
 
-    /// "timer", "pomodoro", "stopwatch", "prayer", "clock"
+    /// "timer", "pomodoro", "stopwatch", "prayer", "clock", "sun"
     var kind: String
     /// Etkinliğin kimliği (zamanlayıcıda zamanlayıcının kimliği, diğerlerinde tür adı)
     var id: String
@@ -28,6 +28,7 @@ struct SaatActivityAttributes: ActivityAttributes {
         case "stopwatch": return "stopwatch"
         case "prayer": return "moon.stars"
         case "clock": return "clock"
+        case "sun": return "sun.horizon"
         default: return "timer"
         }
     }

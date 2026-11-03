@@ -709,7 +709,7 @@
     <string name="notify_heading">การแจ้งเตือนเวลาละหมาด</string>
     <string name="notify_enable">แจ้งเตือนเมื่อถึงเวลาละหมาด</string>
     <string name="notify_prayers">ละหมาดเวลาใด</string>
-    <string name="notify_lead">เมื่อไร</string>
+    <string name="notify_lead">แจ้งล่วงหน้า</string>
     <string name="notify_lead_zero">เมื่อถึงเวลา</string>
     <string name="notify_lead_minutes">ก่อน %1$s นาที</string>
     <string name="notify_title_now">ถึงเวลา%1$sแล้ว</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">แรมแปดค่ำครั้งถัดไป</string>
     <string name="moon_riseIn">ดวงจันทร์ขึ้นในอีก %1$s</string>
     <string name="moon_setIn">ดวงจันทร์ตกในอีก %1$s</string>
+    <string name="share_focus">วันนี้โฟกัสได้ %1$s</string>
+    <string name="notify_lead_now">ตรงเวลา</string>
+    <string name="notify_lead_hours">ก่อน %1$s ชม.</string>
+    <string name="notify_lead_days">ก่อน %1$s วัน</string>
+    <string name="moon_ev_quarters">ขึ้น/แรมแปดค่ำ</string>
+    <string name="moon_ev_super">ซูเปอร์มูน</string>
+    <string name="moon_ev_eclipse">สุริยุปราคา/จันทรุปราคา</string>
+    <string name="live_sun_toggle">นับถอยหลังดวงอาทิตย์บนหน้าจอล็อก</string>
+    <string name="live_sun_note">แสดงเวลาที่เหลือจนถึงพระอาทิตย์ขึ้นหรือตกครั้งถัดไปบนหน้าจอล็อก</string>
+    <string name="widget_sun_turnIn">อีก %2$s วันจะเริ่ม%1$s</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

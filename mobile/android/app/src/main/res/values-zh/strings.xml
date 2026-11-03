@@ -709,9 +709,9 @@
     <string name="notify_heading">礼拜时间通知</string>
     <string name="notify_enable">礼拜时间提醒我</string>
     <string name="notify_prayers">哪些礼拜</string>
-    <string name="notify_lead">时间</string>
+    <string name="notify_lead">提前提醒</string>
     <string name="notify_lead_zero">礼拜时间到时</string>
-    <string name="notify_lead_minutes">提前%1$s分钟</string>
+    <string name="notify_lead_minutes">提前 %1$s 分钟</string>
     <string name="notify_title_now">%1$s时间到了</string>
     <string name="notify_title_before">%2$s分钟后%1$s</string>
     <string name="notify_reopen">请打开应用，以继续接收礼拜时间通知。</string>
@@ -2162,5 +2162,15 @@
     <string name="moon_lastQuarter">下一个下弦月</string>
     <string name="moon_riseIn">距月出 %1$s</string>
     <string name="moon_setIn">距月落 %1$s</string>
+    <string name="share_focus">今天专注了 %1$s</string>
+    <string name="notify_lead_now">准时</string>
+    <string name="notify_lead_hours">提前 %1$s 小时</string>
+    <string name="notify_lead_days">提前 %1$s 天</string>
+    <string name="moon_ev_quarters">上弦和下弦</string>
+    <string name="moon_ev_super">超级月亮</string>
+    <string name="moon_ev_eclipse">日食和月食</string>
+    <string name="live_sun_toggle">锁屏上的日出日落倒计时</string>
+    <string name="live_sun_note">在锁屏上显示距下一次日出或日落的剩余时间。</string>
+    <string name="widget_sun_turnIn">距%1$s开始还有 %2$s 天</string>
     <string name="app_name">时间与日期</string>
 </resources>

@@ -95,6 +95,7 @@ struct MoonScrubber: View {
     let place: AppPlace
     let today: CalendarDay
     @Binding var offset: Int
+    @State private var sharing = false
 
     var body: some View {
         let day = today.adding(days: offset)
@@ -121,7 +122,11 @@ struct MoonScrubber: View {
             .environment(\.layoutDirection, .leftToRight)
             Slider(value: Binding(get: { Double(offset) }, set: { offset = Int($0.rounded()) }), in: -60...60, step: 1).tint(Theme.accent)
             Text(L("moon.scrubHint")).font(.caption).foregroundStyle(Theme.muted)
+            // Paylaşım kartı (2. analiz #105)
+            Button { sharing = true } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
+                .buttonStyle(.borderless).tint(Theme.accent)
         }
+        .sheet(isPresented: $sharing) { ShareCardSheet(title: L("share.card")) { MoonShareCard(place: place, day: today.adding(days: offset)) } }
     }
 }
 

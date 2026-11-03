@@ -9,6 +9,9 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.background
+import androidx.compose.ui.draw.clip
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -112,9 +115,12 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
         AppCard(padding = 4) {
             FeatureToggle(NotifyFeature.SEASONS, Icons.Filled.Eco, ::changed)
             RowDivider()
-            FeatureToggle(NotifyFeature.MOON, Icons.Filled.DarkMode, ::changed)
+            val moonOn = FeatureToggle(NotifyFeature.MOON, Icons.Filled.DarkMode, ::changed)
+            // Olay seçimi ve önceden haber verme (2. analiz #152)
+            if (moonOn) SunMoonOptions(moon = true, ::changed)
             RowDivider()
-            FeatureToggle(NotifyFeature.SUN, Icons.Filled.WbTwilight, ::changed)
+            val sunOn = FeatureToggle(NotifyFeature.SUN, Icons.Filled.WbTwilight, ::changed)
+            if (sunOn) SunMoonOptions(moon = false, ::changed)
         }
         AppCard(padding = 4) {
             val on = FeatureToggle(NotifyFeature.WEATHER, Icons.Filled.WbSunny, ::changed)
@@ -235,3 +241,49 @@ fun AskNotificationsOnce() {
         runCatching { launcher.launch(Manifest.permission.POST_NOTIFICATIONS) }
     }, onNotNow = { primer = false })
 }
+
+/** Güneş/Ay bildirimi ayrıntısı (2. analiz #152): olaylar, önceden haber verme, (Güneş için) günler */
+@Composable
+private fun SunMoonOptions(moon: Boolean, changed: () -> Unit) {
+    var events by remember { mutableStateOf(if (moon) SunMoonPrefs.moonEvents else SunMoonPrefs.sunEvents) }
+    var lead by remember { mutableIntStateOf(if (moon) SunMoonPrefs.moonLead else SunMoonPrefs.sunLead) }
+    var days by remember { mutableStateOf(SunMoonPrefs.sunDays) }
+    val all = if (moon) SunMoonPrefs.MOON_EVENTS else SunMoonPrefs.SUN_EVENTS
+    fun label(e: String) = when (e) {
+        "new", "full" -> L("nature.phases.$e"); "quarter" -> L("moon.ev.quarters"); "super" -> L("moon.ev.super"); "eclipse" -> L("moon.ev.eclipse")
+        "sunrise" -> L("nature.sunrise"); "sunset" -> L("nature.sunset"); "goldenAm" -> L("nature.goldenAm"); else -> L("nature.goldenPm")
+    }
+    @Composable
+    fun chip(text: String, on: Boolean, onClick: () -> Unit) {
+        Text(text, Modifier.clip(androidx.compose.foundation.shape.RoundedCornerShape(50))
+            .background(if (on) Theme.c.accent else Theme.c.surface2).clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 6.dp), color = if (on) Color.White else Theme.c.text, fontSize = 13.sp)
+    }
+    Column(Modifier.fillMaxWidth().padding(start = 50.dp, end = 12.dp, bottom = 10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        androidx.compose.foundation.layout.FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            for (e in all) chip(label(e), e in events) {
+                events = if (e in events) events - e else events + e
+                if (moon) SunMoonPrefs.moonEvents = events else SunMoonPrefs.sunEvents = events
+                changed()
+            }
+        }
+        Text(L("notify.lead"), color = Theme.c.muted, fontSize = 12.sp)
+        androidx.compose.foundation.layout.FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            for (m in if (moon) SunMoonPrefs.MOON_LEADS else SunMoonPrefs.SUN_LEADS) chip(SunMoonPrefs.leadLabel(m), m == lead) {
+                lead = m
+                if (moon) SunMoonPrefs.moonLead = m else SunMoonPrefs.sunLead = m
+                changed()
+            }
+        }
+        if (!moon) {
+            androidx.compose.foundation.layout.FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                for (d in 1..7) chip(L("tools.alarm.dayNames.${d - 1}"), d in days) {
+                    days = if (d in days) days - d else days + d
+                    SunMoonPrefs.sunDays = days
+                    changed()
+                }
+            }
+        }
+    }
+}
+
