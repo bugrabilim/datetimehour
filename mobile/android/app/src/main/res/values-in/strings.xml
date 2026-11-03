@@ -638,6 +638,7 @@
     <string name="more_sections">Bagian</string>
     <string name="weather_legal">Informasi hukum dan sumber data</string>
     <string name="weather_rainChanceShort">Peluang hujan</string>
+    <string name="weather_dailyHeading10">Prakiraan 10 hari</string>
     <string name="home_customize">Layar jam</string>
     <string name="home_customizeNote">Pilih apa yang tampil di bawah jam; seret pegangan di kanan untuk mengubah urutan.</string>
     <string name="home_edit">Ubah</string>

@@ -81,7 +81,7 @@
     if (kind === "card") {
       var hl = d.daily ? temp(d.daily.temperature_2m_max[0]) + " / " + temp(d.daily.temperature_2m_min[0]) : "";
       box.appendChild(mk("p", "wxc-more", x.feelsLike + " " + temp(c.apparent_temperature) + (hl ? " · " + hl : "")));
-      box.appendChild(mk("p", "wxc-more", x.humidity + " " + Math.round(c.relative_humidity_2m) + "% · " + x.wind + " " + Math.round(c.wind_speed_10m) + " km/h"));
+      box.appendChild(mk("p", "wxc-more", x.humidity + " " + S.pct(Math.round(c.relative_humidity_2m)) + " · " + x.wind + " " + Math.round(c.wind_speed_10m) + " km/h"));
     } else if (kind === "week" && d.daily) {
       var days = mk("ul", "wxc-days");
       for (var k = 1; k < d.daily.time.length && k <= 6; k++) {

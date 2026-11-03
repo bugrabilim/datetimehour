@@ -638,6 +638,7 @@
     <string name="more_sections">بخش‌ها</string>
     <string name="weather_legal">اطلاعات حقوقی و منابع داده</string>
     <string name="weather_rainChanceShort">احتمال باران</string>
+    <string name="weather_dailyHeading10">پیش‌بینی 10 روزه</string>
     <string name="home_customize">صفحهٔ ساعت</string>
     <string name="home_customizeNote">انتخاب کنید زیر ساعت چه نمایش داده شود؛ برای تغییر ترتیب، دستگیرهٔ کنار هر مورد را بکشید.</string>
     <string name="home_edit">ویرایش</string>

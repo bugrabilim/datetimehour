@@ -638,6 +638,7 @@
     <string name="more_sections">الأقسام</string>
     <string name="weather_legal">المعلومات القانونية ومصادر البيانات</string>
     <string name="weather_rainChanceShort">احتمال المطر</string>
+    <string name="weather_dailyHeading10">توقعات 10 أيام</string>
     <string name="home_customize">شاشة الساعة</string>
     <string name="home_customizeNote">اختر ما يظهر أسفل الساعة، واسحب المقبض على اليمين لتغيير الترتيب.</string>
     <string name="home_edit">تعديل</string>

@@ -638,6 +638,7 @@
     <string name="more_sections">セクション</string>
     <string name="weather_legal">法的情報とデータソース</string>
     <string name="weather_rainChanceShort">降水確率</string>
+    <string name="weather_dailyHeading10">10日間の予報</string>
     <string name="home_customize">時計の画面</string>
     <string name="home_customizeNote">時計の下に表示するものを選び、右のハンドルをドラッグして並べ替えます。</string>
     <string name="home_edit">編集</string>

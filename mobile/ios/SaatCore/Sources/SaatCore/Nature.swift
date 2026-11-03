@@ -108,7 +108,9 @@ public enum Nature {
         }
         let len = Double(nextNew - prevNew), frac = Double(ms - prevNew) / len
         let illum = (1 - cos(2 * Double.pi * frac)) / 2
-        let idx = Int(floor(frac * 8 + 0.5)) % 8
+        // Ana evreler (yeni ay, dördünler, dolunay) yalnız o anın ±12 saati içinde; arada hilal ya da şişkin ay (nature-calc.js ile aynı)
+        let q = frac * 4, p = floor(q + 0.5)
+        let idx = abs(q - p) / 4 < (dayMs / 2) / len ? (2 * Int(p)) % 8 : 2 * Int(floor(q)) + 1
         var kk = Self.k(for: ms) - 1
         var nextFull: Int64 = 0
         for _ in 0..<4 {

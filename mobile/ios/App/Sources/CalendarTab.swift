@@ -154,7 +154,7 @@ struct CalendarTab: View {
                     RoundedRectangle(cornerRadius: 2).fill(e.color).frame(width: 4, height: 34)
                     VStack(alignment: .leading, spacing: 2) {
                         Text(e.name).foregroundStyle(Theme.text)
-                        Text(L("calendar.types.\(e.type)")).font(.caption).foregroundStyle(Theme.muted)
+                        Text(calendarTypeLabel(e.type)).font(.caption).foregroundStyle(Theme.muted)
                     }
                     Spacer()
                     Text(L("calendar.allDay")).font(.caption).foregroundStyle(Theme.muted)
@@ -245,7 +245,7 @@ struct CalendarTab: View {
         return FlowRow(items: types) { t in
             HStack(spacing: 4) {
                 Circle().fill(CalendarData.color(t)).frame(width: 8, height: 8)
-                Text(L("calendar.types.\(t)")).font(.caption2).foregroundStyle(Theme.muted)
+                Text(calendarTypeLabel(t)).font(.caption2).foregroundStyle(Theme.muted)
             }
         }
     }
@@ -409,4 +409,13 @@ struct FlowLayout: Layout {
             rowH = max(rowH, size.height)
         }
     }
+}
+
+/// Takvim türünün adı. Türkçe dışındaki arayüzde resmî tatil, arife ve okul türlerine ülke adı eklenir
+/// ("Public holiday · Türkiye"): takvimdeki tatiller Türkiye'nindir (2. analiz #92).
+func calendarTypeLabel(_ t: String) -> String {
+    let base = L("calendar.types.\(t)")
+    guard AppLocale.code != "tr", ["holiday", "half", "school"].contains(t),
+          let country = AppLocale.locale.localizedString(forRegionCode: "TR") else { return base }
+    return base + " · " + country
 }

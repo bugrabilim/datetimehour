@@ -59,15 +59,16 @@
 
   function renderTable() {
     var body = q("[data-sky-planets]"); body.textContent = "";
+    var heads = Array.prototype.map.call(body.parentNode.querySelectorAll("thead th"), function (h) { return h.textContent; });
     var now = S.nowMs();
     K.PLANETS.forEach(function (name) {
       var p = K.planet(name, now), v = visibility(name), tr = doc.createElement("tr");
       var when, dir = "–", hi = "–";
       if (v.first === null) when = p.elong < 15 ? X.tooClose : X.below;
-      else { when = S.tpl(X.window, { from: hm(v.first), to: hm(v.last) }); dir = dirName(v.firstAz); hi = S.tpl(X.altFmt, { deg: Math.round(v.best.alt), time: hm(v.best.t) }); }
+      else { when = S.tpl(X.window, { from: hm(v.first), to: hm(v.last > v.first ? v.last : v.first + 10 * MIN) }); dir = dirName(v.firstAz); hi = S.tpl(X.altFmt, { deg: Math.round(v.best.alt), time: hm(v.best.t) }); }
       var rs = S.tpl(X.riseSet, { rise: v.rise ? hm(v.rise) : "–", set: v.set ? hm(v.set) : "–" });
       var cells = [(X.planets || {})[name] || name, when + " · " + rs, dir, hi, (p.mag < 0 ? "−" : "") + nf(1).format(Math.abs(p.mag)), S.tpl(X.mkm, { v: nf(0).format(Math.round(p.dist * 149.5978707)) })];
-      cells.forEach(function (c, i) { var td = doc.createElement(i ? "td" : "th"); if (!i) td.scope = "row"; td.textContent = c; if (i && i !== 1) td.dir = "ltr"; tr.appendChild(td); });
+      cells.forEach(function (c, i) { var td = doc.createElement(i ? "td" : "th"); if (!i) td.scope = "row"; td.textContent = c; if (heads[i]) td.setAttribute("data-l", heads[i]); if (i && i !== 1) td.dir = "ltr"; tr.appendChild(td); });
       body.appendChild(tr);
     });
   }
@@ -87,11 +88,11 @@
       var a = N.altAz(ms, st[1], st[2], place.lat, place.lon); if (a.alt <= 0) return;
       var p = proj(a), r = Math.max(0.8, 3.2 - st[3] * 0.9);
       el("circle", { cx: p.x.toFixed(1), cy: p.y.toFixed(1), r: r.toFixed(1), class: "sky-star" }, chart);
-      if (st[3] < 0.9) { var tx = el("text", { x: (p.x + r + 2).toFixed(1), y: (p.y + 3).toFixed(1), class: "sky-sname" }, chart); tx.textContent = st[0]; }
+      if (st[3] < 0.9) { var left = p.x > 110, tx = el("text", { x: (left ? p.x - r - 2 : p.x + r + 2).toFixed(1), y: (p.y + 3).toFixed(1), class: "sky-sname", "text-anchor": left ? "end" : "start" }, chart); tx.textContent = st[0]; }
     });
     // Ay ve Güneş
     var ma = moonAA(ms);
-    if (ma.alt > -0.5) { var mp = proj(ma), m = N.moon(ms); el("circle", { cx: mp.x.toFixed(1), cy: mp.y.toFixed(1), r: 7, class: "sky-moon" }, chart); var mt = el("text", { x: (mp.x + 10).toFixed(1), y: (mp.y + 4).toFixed(1), class: "sky-pname" }, chart); mt.textContent = X.moon + " " + Math.round(m.illum * 100) + "%"; }
+    if (ma.alt > -0.5) { var mp = proj(ma), m = N.moon(ms); el("circle", { cx: mp.x.toFixed(1), cy: mp.y.toFixed(1), r: 7, class: "sky-moon" }, chart); var mt = el("text", { x: (mp.x + 10).toFixed(1), y: (mp.y + 4).toFixed(1), class: "sky-pname" }, chart); mt.textContent = X.moon + " " + S.pct(Math.round(m.illum * 100)); }
     if (sa.alt > -0.833) { var sp = proj(sa); el("circle", { cx: sp.x.toFixed(1), cy: sp.y.toFixed(1), r: 8, class: "sky-sun" }, chart); var stx = el("text", { x: (sp.x + 11).toFixed(1), y: (sp.y + 4).toFixed(1), class: "sky-pname" }, chart); stx.textContent = X.sun; }
     // Gezegenler
     K.PLANETS.forEach(function (name) {

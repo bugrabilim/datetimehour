@@ -638,6 +638,7 @@
     <string name="more_sections">หมวด</string>
     <string name="weather_legal">ข้อมูลทางกฎหมายและแหล่งข้อมูล</string>
     <string name="weather_rainChanceShort">โอกาสฝนตก</string>
+    <string name="weather_dailyHeading10">พยากรณ์ 10 วัน</string>
     <string name="home_customize">หน้าจอนาฬิกา</string>
     <string name="home_customizeNote">เลือกสิ่งที่จะแสดงใต้นาฬิกา ลากที่จับทางขวาเพื่อจัดลำดับ</string>
     <string name="home_edit">แก้ไข</string>

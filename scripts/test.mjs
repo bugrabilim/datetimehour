@@ -528,6 +528,37 @@ for (const l of LANGS) {
   check(/sth-polls/.test(pv) && /youtube-nocookie\.com/.test(pv) && /tile\.openstreetmap\.org/.test(pv), `gizlilik: sth-polls, YouTube ya da OSM maddesi eksik (${l})`);
 }
 
+// 2. analiz hataları (3 Kasım 2026): #87–#93, #186
+{
+  const ld = (rel) => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(ROOT, rel), "utf8"))(m, undefined); return m.exports; };
+  // #89 Ay evresi adı: ana evreler yalnız o anın ±12 saati içinde; dördün adı yarım Ay'dan uzakta çıkmamalı
+  const N = ld("src/js/nature-calc.js");
+  let bad = 0;
+  for (let d = 0; d < 730; d++) { const x = N.moon(Date.UTC(2026, 0, 1, 12) + d * 86400000), i = Math.round(x.illum * 100); if ((x.idx === 2 || x.idx === 6) && (i < 44 || i > 56)) bad++; if (x.idx === 4 && i < 97) bad++; if (x.idx === 0 && i > 3) bad++; }
+  check(bad === 0, `Ay evresi adı yüzdeyle çelişiyor (${bad} gün)`);
+  check(N.moon(Date.UTC(2026, 10, 17, 12)).idx === 3 && N.moon(Date.UTC(2026, 10, 16, 12)).idx === 2, "Ay evresi: 16 Kasım 2026 ilk dördün, 17 Kasım şişkin olmalı");
+  // #186 manyetik sapma: WMM2025 resmî test değerlerinden örnekler (±0,01°)
+  const W = ld("src/js/wmm.js");
+  for (const [y, alt, la, lo, dec] of [[2025, 28, 89, -121, -99.77], [2025, 0 + 51, -33, 109, -5.49], [2026.5, 43, 17, 52, 1.19], [2028.5, 11, 34, 0, 1.57], [2029.5, 33, 17, 5, 0.89]])
+    check(Math.abs(W.declination(la, lo, alt, y) - dec) < 0.01, `WMM2025 sapması tutmuyor: ${la},${lo} ${y}`);
+  for (const f of ["kible", "en/qibla", "ar/qibla"]) {
+    const h = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
+    check(/wmm\.[0-9a-f]*\.?js|wmm\.js/.test(h) && h.search(/wmm[.\w]*\.js/) < h.search(/qibla[.\w]*\.js/), `kıble sayfasında wmm.js qibla.js'ten önce yüklenmeli: /${f}/`);
+  }
+  // #90 tutulma bölge adları derlemede yazılır (sayısal kod kalmamalı)
+  for (const f of ["mevsimler", "en/seasons", "ja/seasons"]) {
+    const h = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8"), m = h.match(/"regionNames":(\{[^}]*\})/);
+    check(m && !/"\d{3}":"\d{3}"/.test(m[1]) && /"005":"[^"\d]/.test(m[1]), `tutulma bölge adları eksik: /${f}/`);
+  }
+  // #93 araç sayfalarında başlık iki kez görünmez
+  for (const f of ["toplanti-planlayici", "saat-cevirici", "toplanti-oylamasi", "gomme"]) {
+    const h = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
+    check(!/class="tool-title"/.test(h) && /<h2 id="tool-h" class="sr-only">/.test(h), `başlık tekrarı: /${f}/`);
+  }
+  // #88 yüzde: site ortak yardımcıyı kullanır
+  check(/S\.pct\(/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8")) && !/\+ "%"/.test(fs.readFileSync(path.join(ROOT, "src/js/weather.js"), "utf8").replace(/toFixed\(1\) \+ "%"/g, "")), "hava sayfasında yüzde dile göre biçimlenmeli");
+}
+
 if (fails.length) {
   console.error(`${fails.length} sorun:\n- ` + fails.join("\n- "));
   process.exit(1);

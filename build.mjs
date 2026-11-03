@@ -91,6 +91,7 @@ for (const [name, from] of [
   ["embed.js", "js/embed.js"],
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
+  ["wmm.js", "js/wmm.js"],
   ["qibla.js", "js/qibla.js"],
   ["sky-calc.js", "js/sky-calc.js"],
   ["sky.js", "js/sky.js"],
@@ -800,6 +801,9 @@ const HOL_YEARS = Object.keys(HOL.years).map(Number).sort((a, b) => a - b);
 /* Tutulmalar (NASA tablosu): en büyük tutulma anı TD → UT (ΔT 69 sn, nature-calc.js ile aynı). Mevsimler sayfası ve uygulamalar. */
 const ECLIPSES_SRC = JSON.parse(fs.readFileSync(path.join(SRC, "data", "eclipses.json"), "utf8"));
 const ECLIPSES = ["solar", "lunar"].flatMap((kind) => ECLIPSES_SRC[kind].map((e) => ({ kind, ut: Date.parse(e.td) - 69000, type: e.type, regions: e.regions, path: e.path || [] }))).sort((a, b) => a.ut - b.ut);
+/* Tutulma bölge adları derlemede (Node'un tam ICU'su): bazı tarayıcılar UN M49 sayısal kodlarına ("005") ad vermiyor (2. analiz #90). */
+const ECLIPSE_REGIONS = [...new Set(ECLIPSES.flatMap((e) => e.regions))];
+const eclipseRegionNames = (locale) => { const dn = new Intl.DisplayNames([locale], { type: "region" }); return Object.fromEntries(ECLIPSE_REGIONS.map((c) => [c, dn.of(c) || c])); };
 const BUILD_YEAR = Math.min(Math.max(new Date().getFullYear(), HOL_YEARS[0]), HOL_YEARS[HOL_YEARS.length - 1]);
 const TYPE_LABEL_KEY = { holiday: "holiday", half: "half", religious: "religious", special: "special", school: "school", exam: "exam" };
 const yearPath = (lang, y) => `${ROUTES[lang].calendar}${y}/`;
@@ -1415,7 +1419,7 @@ function buildConverter(lang) {
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].converter }];
   const inner = {
     hero: `<section class="tool" data-converter aria-labelledby="tool-h">
-      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <h2 id="tool-h" class="sr-only">${esc(s.h1)}</h2>
       <div class="inputs-row">
         <div class="field"><label for="cv-from">${esc(s.fromLabel)}</label><select id="cv-from" data-cv-from>${cityOptions(lang, true)}</select></div>
         <button type="button" class="icon-btn" data-cv-swap aria-label="${esc(s.swap)}" title="${esc(s.swap)}">⇄</button>
@@ -1440,15 +1444,15 @@ function buildPlanner(lang) {
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: t.ui.tools, path: ROUTES[lang].tools }, { name: s.h1, path: ROUTES[lang].planner }];
   const inner = {
     hero: `<section class="tool" data-planner aria-labelledby="tool-h">
-      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <h2 id="tool-h" class="sr-only">${esc(s.h1)}</h2>
       <div class="inputs-row">
         <div class="field"><label for="pl-city">${esc(s.addLabel)}</label><select id="pl-city" data-pl-city>${cityOptions(lang, false)}</select></div>
         <button type="button" class="toggle" data-pl-add>${esc(s.addBtn)}</button>
         <div class="field"><label for="pl-date">${esc(s.dateLabel)}</label><input id="pl-date" type="date" data-pl-date></div>
       </div>
       <ul class="chips-list" data-pl-chips></ul>
-      <ul class="legend" aria-label="${esc(s.tableLabel)}"><li><span class="lg lg-work" aria-hidden="true"></span>${esc(s.legendWork)}</li><li><span class="lg lg-edge" aria-hidden="true"></span>${esc(s.legendEdge)}</li><li><span class="lg lg-night" aria-hidden="true"></span>${esc(s.legendNight)}</li></ul>
       <div class="table-wrap"><table class="planner" data-pl-table><caption class="sr-only">${esc(s.tableLabel)}</caption></table></div>
+      <ul class="legend" aria-label="${esc(s.tableLabel)}"><li><span class="lg lg-work" aria-hidden="true"></span>${esc(s.legendWork)}</li><li><span class="lg lg-edge" aria-hidden="true"></span>${esc(s.legendEdge)}</li><li><span class="lg lg-night" aria-hidden="true"></span>${esc(s.legendNight)}</li></ul>
       <p class="pl-common" role="status" aria-live="polite" data-pl-common>&nbsp;</p>
       <p class="meta pl-hint" data-pl-picked>${esc(s.pickHint)}</p>
       ${shareRow(s)}
@@ -1470,7 +1474,7 @@ function buildPoll(lang) {
   const durOpts = [15, 30, 45, 60, 90, 120, 180].map((m) => `<option value="${m}"${m === 60 ? " selected" : ""}>${esc(durTxt(lang, m))}</option>`).join("");
   const inner = {
     hero: `<section class="tool poll" data-poll aria-labelledby="tool-h">
-      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <h2 id="tool-h" class="sr-only">${esc(s.h1)}</h2>
       <div data-poll-create>
         <div class="inputs-row">
           <div class="field grow"><label for="po-title">${esc(s.titleLabel)}</label><input id="po-title" type="text" maxlength="80" placeholder="${esc(t.planner.meeting)}" data-po-title></div>
@@ -1632,7 +1636,7 @@ function buildEmbedGen(lang) {
   const cityOpts = `<option value="">${esc(s.cityLocal)}</option>${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
   const inner = {
     hero: `<section class="tool" data-embedgen aria-labelledby="tool-h">
-      <div class="tool-head"><h2 id="tool-h" class="tool-title">${esc(s.h1)}</h2></div>
+      <h2 id="tool-h" class="sr-only">${esc(s.h1)}</h2>
       <div class="inputs-row">
         <div class="field"><label for="eg-m">${esc(s.modelLabel)}</label><select id="eg-m" data-eg-model>${modelOpts}</select></div>
         <div class="field"><label for="eg-c">${esc(s.cityLabel)}</label><select id="eg-c" data-eg-city>${cityOpts}</select></div>
@@ -1776,7 +1780,7 @@ function buildNature(lang) {
     <p class="meta">${esc(n.methodNote)}</p>
   </div>
 </section>`;
-  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js", "eclipse-map.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js", "eclipse-map.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats, regionNames: eclipseRegionNames(t.locale) } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
 }
 
 function buildWeather(lang) {
@@ -2550,7 +2554,7 @@ function buildQibla(lang) {
   </div>
 </section>`;
   const qb = { timeNote: s.timeNote, noTime: s.noTime, aligned: s.aligned, turn: s.turn, waiting: s.waiting, noCompass: s.noCompass, denied: s.denied, atKaaba: s.atKaaba, mosquesLoading: s.mosquesLoading, mosquesNone: s.mosquesNone, mosquesError: s.mosquesError, mosqueUnnamed: s.mosqueUnnamed, mapsQuery: s.mapsQuery, km: s.km, m: s.m, blocked: t.consent.mqBlocked, allow: t.consent.allow };
-  return simplePage(lang, "qibla", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "qibla", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "qibla.js"], clientExtra: { t: { pl: placeClient(t.prayer), qb } }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].qibla, s.description)] });
+  return simplePage(lang, "qibla", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "qibla", title: s.h1 }, scripts: ["place.js", "prayer-calc.js", "wmm.js", "qibla.js"], clientExtra: { t: { pl: placeClient(t.prayer), qb } }, nav: "prayer", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].qibla, s.description)] });
 }
 
 /* Gece gökyüzü (30 Ekim 2026, rakip analizi listesi #87): bu gece görünen gezegenler (sky-calc.js, JPL yaklaşık

@@ -1513,6 +1513,23 @@
     "fil": "Tsansa ng ulan",
     "th": "โอกาสฝนตก"
   },
+  "weather.dailyHeading10": {
+    "tr": "10 günlük tahmin",
+    "en": "10-day forecast",
+    "de": "10-Tage-Vorhersage",
+    "az": "10 günlük proqnoz",
+    "ar": "توقعات 10 أيام",
+    "id": "Prakiraan 10 hari",
+    "ur": "10 دن کی پیش گوئی",
+    "fa": "پیش‌بینی 10 روزه",
+    "fr": "Prévisions à 10 jours",
+    "ru": "Прогноз на 10 дней",
+    "ja": "10日間の予報",
+    "ko": "10일 예보",
+    "zh": "10天预报",
+    "fil": "Forecast sa 10 araw",
+    "th": "พยากรณ์ 10 วัน"
+  },
   "home.customize": {
     "tr": "Saat ekranı",
     "en": "Clock screen",

@@ -59,7 +59,9 @@
   function phaseMs(k, full) { return Math.round(jdToMs(phaseJDE(k + (full ? 0.5 : 0), full)) - DELTA_T * 1000); }
   function kFor(ms) { return Math.floor(((ms / 86400000 + UNIX_JD - 2451550.09766) / 29.530588861)); }
 
-  /** ms anı için Ay: { age (gün), frac (0..1 döngü), illum (0..1), idx (0..7: yeni ay, hilal…), nextNew, nextFull } */
+  /** ms anı için Ay: { age (gün), frac (0..1 döngü), illum (0..1), idx (0..7: yeni ay, hilal…), nextNew, nextFull }.
+      idx: yeni ay, ilk dördün, dolunay ve son dördün (0, 2, 4, 6) yalnız o anın ±12 saati içinde (o ana düşen gün); arada hilal ya da şişkin ay
+      (1, 3, 5, 7). Döngüyü 8 eşit dilime bölmek "Son dördün · yüzde 63" gibi çelişkili adlar veriyordu (2. analiz #89). */
   function moon(ms) {
     var k = kFor(ms) - 1, prevNew = 0, nextNew = 0;
     for (var i = 0; i < 4; i++, k++) {
@@ -68,7 +70,8 @@
     }
     var len = nextNew - prevNew, frac = (ms - prevNew) / len;
     var illum = (1 - Math.cos(2 * Math.PI * frac)) / 2;
-    var idx = Math.floor(frac * 8 + 0.5) % 8;
+    var d = frac * 4, p = Math.floor(d + 0.5);
+    var idx = Math.abs(d - p) / 4 < 43200000 / len ? (2 * p) % 8 : 2 * Math.floor(d) + 1;
     // sonraki dolunay
     var kk = kFor(ms) - 1, nextFull = 0;
     for (var j = 0; j < 4; j++, kk++) { var f = phaseMs(kk, true); if (f > ms) { nextFull = f; break; } }

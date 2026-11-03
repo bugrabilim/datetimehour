@@ -638,6 +638,7 @@
     <string name="more_sections">Rubriques</string>
     <string name="weather_legal">Mentions légales et sources des données</string>
     <string name="weather_rainChanceShort">Risque de pluie</string>
+    <string name="weather_dailyHeading10">Prévisions à 10 jours</string>
     <string name="home_customize">Écran de l’horloge</string>
     <string name="home_customizeNote">Choisissez ce qui s’affiche sous l’horloge ; faites glisser la poignée à droite pour réordonner.</string>
     <string name="home_edit">Modifier</string>

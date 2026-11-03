@@ -70,14 +70,14 @@ struct WeatherView: View {
             Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 8) {
                 GridRow {
                     pill(L("weather.feelsLike"), temp(c.apparentTemperature))
-                    pill(L("weather.humidity"), "%\(Int((c.humidity * 100).rounded()))")
+                    pill(L("weather.humidity"), Fmt.percent(Int((c.humidity * 100).rounded())))
                 }
                 GridRow {
                     pill(L("weather.wind"), Units.wind(c.wind.speed))
                     pill(L("weather.uv"), "\(c.uvIndex.value)")
                 }
                 GridRow {
-                    pill(L("weather.rainChanceShort"), "%\(Int((rain * 100).rounded()))")
+                    pill(L("weather.rainChanceShort"), Fmt.percent(Int((rain * 100).rounded())))
                     pill(L("weather.pressure"), Units.pressure(c.pressure))
                 }
             }
@@ -108,7 +108,7 @@ struct WeatherView: View {
                             icon(h.symbolName, size: 22)
                             Text(temp(h.temperature)).font(.subheadline.weight(.semibold))
                             if h.precipitationChance >= 0.1 {
-                                Text("%\(Int((h.precipitationChance * 100).rounded()))").font(.caption2).foregroundStyle(.blue)
+                                Text(Fmt.percent(Int((h.precipitationChance * 100).rounded()))).font(.caption2).foregroundStyle(.blue)
                             }
                         }
                         .environment(\.layoutDirection, .leftToRight)
@@ -120,11 +120,11 @@ struct WeatherView: View {
     }
 
     private func daily(_ d: Weather) -> some View {
-        let days = Array(d.dailyForecast.prefix(7))
+        let days = Array(d.dailyForecast.prefix(10))
         let lo = days.map { $0.lowTemperature.converted(to: .celsius).value }.min() ?? 0
         let hi = days.map { $0.highTemperature.converted(to: .celsius).value }.max() ?? 1
         return VStack(alignment: .leading, spacing: 10) {
-            SectionTitle(text: L("weather.dailyHeading"))
+            SectionTitle(text: L("weather.dailyHeading10"))
             ForEach(Array(days.enumerated()), id: \.offset) { i, day in
                 let low = day.lowTemperature.converted(to: .celsius).value
                 let high = day.highTemperature.converted(to: .celsius).value

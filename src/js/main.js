@@ -436,7 +436,7 @@ function sunTimes(y, m, d, lat, lon) {
           var q = parts(now, tz);
           var pct = Math.min(100, Math.max(0, (dayOfYear(q) / daysInYear(q.year)) * 100));
           el.value = pct;
-          el.textContent = Math.floor(pct) + "%";
+          el.textContent = pctText(Math.floor(pct));
           var note = el.parentNode.querySelector("[data-progress-note]");
           if (note) note.textContent = tpl(T.yearDone, { p: Math.floor(pct) });
           return;
@@ -784,6 +784,12 @@ function sunTimes(y, m, d, lat, lon) {
   function longDate(p) {
     return useOwn ? ownDate(p) : fmt("ld", "UTC", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(new Date(Date.UTC(p.year, p.month - 1, p.day, 12)));
   }
+  /* Yüzde: dilin kendi yazımıyla (Türkçede "%64", Almanca/Fransızca/Rusçada "64 %", diğerlerinde "64%"); rakamlar Latin. */
+  var pctFmt = null;
+  function pctText(n) {
+    try { if (!pctFmt) pctFmt = new Intl.NumberFormat(locale, { style: "percent", numberingSystem: "latn", maximumFractionDigits: 0 }); return pctFmt.format(n / 100); }
+    catch (e) { return n + "%"; }
+  }
   function refreshLive() {
     liveEls = Array.prototype.slice.call(doc.querySelectorAll("[data-live]"));
     analogs = Array.prototype.slice.call(doc.querySelectorAll("[data-analog]"));
@@ -794,6 +800,6 @@ function sunTimes(y, m, d, lat, lon) {
     T: T, cfg: cfg, lang: lang, locale: locale, store: store, track: track, tpl: tpl, norm: norm,
     nowMs: nowMs, nowDate: nowDate, mono: mono, prefs: prefs, makeFullscreen: makeFullscreen,
     parts: parts, offsetMin: offsetMin, fmt: fmt, localTz: localTz, durLabel: durLabel,
-    syncState: function () { return sync; }, wordsText: wordsText,
+    syncState: function () { return sync; }, wordsText: wordsText, pct: pctText,
   };
 })();

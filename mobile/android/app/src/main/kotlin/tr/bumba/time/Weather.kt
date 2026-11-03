@@ -123,7 +123,7 @@ object WeatherCache {
             "wind_direction_10m,pressure_msl,is_day,uv_index" +
             "&hourly=temperature_2m,precipitation_probability,weather_code,is_day" +
             "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset,uv_index_max" +
-            "&timezone=auto&forecast_days=7"
+            "&timezone=auto&forecast_days=14"
         val c = URL(url).openConnection() as HttpURLConnection
         c.connectTimeout = 10_000
         c.readTimeout = 15_000

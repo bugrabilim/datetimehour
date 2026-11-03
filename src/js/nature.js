@@ -123,6 +123,7 @@
     // sağ yarım disk + terminatör elips
     var d = "M " + c + " " + (c - r) + " A " + r + " " + r + " 0 0 1 " + c + " " + (c + r) + " A " + rx.toFixed(2) + " " + r + " 0 0 " + (k > 0 ? 0 : 1) + " " + c + " " + (c - r) + " Z";
     svg("path", { d: d, class: "moon-lit" }, g);
+    svg("circle", { cx: c, cy: c, r: r, class: "moon-ring" }, el);
     setText("[data-n-phase]", T.phases[PHASES[m.idx]]);
     setText("[data-n-illum]", S.tpl(T.illumination, { p: Math.round(m.illum * 100) }));
     setText("[data-n-age]", S.tpl(T.age, { d: new Intl.NumberFormat(S.locale, { maximumFractionDigits: 1, minimumFractionDigits: 1 }).format(m.age) }));
@@ -150,6 +151,7 @@
     var rx = Math.abs(k) * r, flip = (frac < 0.5 ? 1 : -1) * (place.lat < 0 ? -1 : 1);
     var g = svg("g", { transform: flip === 1 ? "" : "translate(" + size + " 0) scale(-1 1)" }, el);
     svg("path", { d: "M " + c + " " + (c - r) + " A " + r + " " + r + " 0 0 1 " + c + " " + (c + r) + " A " + rx.toFixed(2) + " " + r + " 0 0 " + (k > 0 ? 0 : 1) + " " + c + " " + (c - r) + " Z", class: "moon-lit" }, g);
+    svg("circle", { cx: c, cy: c, r: r, class: "moon-ring" }, el);
     return el;
   }
 
@@ -191,9 +193,10 @@
     var box = doc.querySelector("[data-n-eclipses]"); if (!box) return;
     box.textContent = "";
     setText("[data-n-ecllead]", S.tpl(T.eclipseLead, { place: place.name }));
-    var names = null;
+    var RN = T.regionNames || {}, names = null;
     try { names = new Intl.DisplayNames([S.locale], { type: "region" }); } catch (e) {}
-    var list = function (codes) { return codes.map(function (c) { try { return names ? names.of(c) : c; } catch (e) { return c; } }).join(", "); };
+    // Ad derlemede yazılır (bazı tarayıcılar "005" gibi sayısal bölge kodlarına ad vermiyor); yoksa tarayıcıya sorulur
+    var list = function (codes) { return codes.map(function (c) { if (RN[c]) return RN[c]; try { var n = names ? names.of(c) : c; return n && n !== c ? n : c; } catch (e) { return c; } }).join(", "); };
     var f = S.fmt("ecl", place.tz, { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
     (S.cfg.eclipses || []).filter(function (e) { return e.ut > ms - 6 * 3600000; }).slice(0, 6).forEach(function (e) {
       var li = doc.createElement("li"); li.className = "eclipse eclipse-" + e.kind;

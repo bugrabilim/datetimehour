@@ -638,6 +638,7 @@
     <string name="more_sections">Разделы</string>
     <string name="weather_legal">Правовая информация и источники данных</string>
     <string name="weather_rainChanceShort">Вероятность дождя</string>
+    <string name="weather_dailyHeading10">Прогноз на 10 дней</string>
     <string name="home_customize">Экран часов</string>
     <string name="home_customizeNote">Выберите, что показывать под часами; перетащите маркер справа, чтобы изменить порядок.</string>
     <string name="home_edit">Изменить</string>

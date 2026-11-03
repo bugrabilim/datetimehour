@@ -638,6 +638,7 @@
     <string name="more_sections">Sections</string>
     <string name="weather_legal">Legal information and data sources</string>
     <string name="weather_rainChanceShort">Chance of rain</string>
+    <string name="weather_dailyHeading10">10-day forecast</string>
     <string name="home_customize">Clock screen</string>
     <string name="home_customizeNote">Choose what appears under the clock; drag the handle on the right to reorder.</string>
     <string name="home_edit">Edit</string>

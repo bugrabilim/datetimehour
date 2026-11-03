@@ -105,7 +105,7 @@
     cv.hidden = false;
   }
   function init() {
-    var now = S.nowMs(), f = S.fmt("eclmap", "UTC", { day: "numeric", month: "long", year: "numeric" });
+    var now = S.nowMs(), tz = (place && place.tz) || S.localTz(), f = S.fmt("eclmap-" + tz, tz, { day: "numeric", month: "long", year: "numeric" });
     list = (S.cfg.eclipses || []).filter(function (e) { return e.ut > now - 6 * 3600000; });
     sel.textContent = "";
     list.forEach(function (e, i) { var o = doc.createElement("option"); o.value = i; o.textContent = f.format(new Date(e.ut)) + " · " + ((T.eclipseTypes || {})[e.kind + e.type.charAt(0).toUpperCase() + e.type.slice(1)] || e.type); sel.appendChild(o); });

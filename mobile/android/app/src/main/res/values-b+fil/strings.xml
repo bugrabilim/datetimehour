@@ -638,6 +638,7 @@
     <string name="more_sections">Mga seksiyon</string>
     <string name="weather_legal">Legal na impormasyon at pinagmulan ng datos</string>
     <string name="weather_rainChanceShort">Tsansa ng ulan</string>
+    <string name="weather_dailyHeading10">Forecast sa 10 araw</string>
     <string name="home_customize">Screen ng orasan</string>
     <string name="home_customizeNote">Piliin ang lalabas sa ilalim ng orasan; hilahin ang hawakan sa kanan para baguhin ang pagkakasunod-sunod.</string>
     <string name="home_edit">I-edit</string>

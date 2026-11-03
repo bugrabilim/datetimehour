@@ -638,6 +638,7 @@
     <string name="more_sections">栏目</string>
     <string name="weather_legal">法律信息和数据来源</string>
     <string name="weather_rainChanceShort">降水概率</string>
+    <string name="weather_dailyHeading10">10天预报</string>
     <string name="home_customize">时钟界面</string>
     <string name="home_customizeNote">选择时钟下方显示的内容；拖动右侧手柄调整顺序。</string>
     <string name="home_edit">编辑</string>

@@ -241,7 +241,7 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
                 Spacer(Modifier.width(10.dp))
                 Column(Modifier.weight(1f)) {
                     Text(e.name, color = Theme.c.text, fontSize = 15.sp)
-                    Text(L("calendar.types.${e.type}"), color = Theme.c.muted, fontSize = 12.sp)
+                    Text(calendarTypeLabel(e.type), color = Theme.c.muted, fontSize = 12.sp)
                 }
                 // Özel günü telefonun takvimine ekle (tüm gün)
                 IconButton(onClick = { DeviceCalendar.add(context, d, e.name) }) {
@@ -319,8 +319,19 @@ private fun Legend() {
         for (t in listOf("holiday", "half", "religious", "special", "school")) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(8.dp).background(AppData.color(t), CircleShape))
-                Text(" " + L("calendar.types.$t"), color = Theme.c.muted, fontSize = 12.sp)
+                Text(" " + calendarTypeLabel(t), color = Theme.c.muted, fontSize = 12.sp)
             }
         }
     }
+}
+
+/**
+ * Takvim türünün adı. Türkçe dışındaki arayüzde resmî tatil, arife ve okul türlerine ülke adı eklenir
+ * ("Public holiday · Türkiye"): takvimdeki tatiller Türkiye'nindir (2. analiz #92).
+ */
+fun calendarTypeLabel(t: String): String {
+    val base = L("calendar.types.$t")
+    if (Strings.lang == "tr" || t !in setOf("holiday", "half", "school")) return base
+    val country = java.util.Locale.Builder().setRegion("TR").build().getDisplayCountry(Strings.locale)
+    return if (country.isBlank()) base else "$base · $country"
 }

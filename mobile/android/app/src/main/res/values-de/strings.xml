@@ -638,6 +638,7 @@
     <string name="more_sections">Bereiche</string>
     <string name="weather_legal">Rechtliche Hinweise und Datenquellen</string>
     <string name="weather_rainChanceShort">Regenwahrscheinlichkeit</string>
+    <string name="weather_dailyHeading10">10-Tage-Vorhersage</string>
     <string name="home_customize">Uhrbildschirm</string>
     <string name="home_customizeNote">Wählen Sie, was unter der Uhr erscheint; ziehen Sie den Griff rechts, um die Reihenfolge zu ändern.</string>
     <string name="home_edit">Bearbeiten</string>

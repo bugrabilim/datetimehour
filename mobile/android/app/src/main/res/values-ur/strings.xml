@@ -638,6 +638,7 @@
     <string name="more_sections">حصے</string>
     <string name="weather_legal">قانونی معلومات اور ڈیٹا کے ذرائع</string>
     <string name="weather_rainChanceShort">بارش کا امکان</string>
+    <string name="weather_dailyHeading10">10 دن کی پیش گوئی</string>
     <string name="home_customize">گھڑی کی اسکرین</string>
     <string name="home_customizeNote">منتخب کریں کہ گھڑی کے نیچے کیا دکھے؛ ترتیب بدلنے کے لیے دائیں طرف کا ہینڈل گھسیٹیں۔</string>
     <string name="home_edit">ترمیم</string>

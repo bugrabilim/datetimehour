@@ -77,8 +77,14 @@ enum Fmt {
 
     static func day(_ d: CalendarDay) -> String { longDate(d.noon(in: .current)) }
 
-    /// Yüzde: Türkçe ve Azericede "%40", diğerlerinde "40%"
-    static func percent(_ n: Int) -> String { ["tr", "az"].contains(AppLocale.code) ? "%\(n)" : "\(n)%" }
+    /// Yüzde, dilin kendi yazımıyla (CLDR): Türkçede "%40"; Almanca, Fransızca, Rusçada "40 %"; diğerlerinde "40%". Rakamlar Latin.
+    static func percent(_ n: Int) -> String {
+        switch AppLocale.code {
+        case "tr": return "%\(n)"
+        case "de", "fr", "ru": return "\(n)\u{00A0}%"
+        default: return "\(n)%"
+        }
+    }
 
     /// Süre: "2 sa 30 dk"
     static func hm(seconds: Int) -> String {

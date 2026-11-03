@@ -799,6 +799,8 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .moon { width: 6.5rem; height: 6.5rem; flex: none; }
 .moon-dark { fill: #1c2230; stroke: var(--border); stroke-width: 1; }
 .moon-lit { fill: #f2edd6; }
+/* Dış çizgi: açık temada dolunay kâğıt zeminde kaybolmasın (2. analiz #89) */
+.moon-ring { fill: none; stroke: var(--muted); stroke-opacity: 0.55; stroke-width: 1; }
 /* Ay takvimi ve tutulmalar (Mevsimler) */
 .moon-cal { max-width: 34rem; }
 .mc-row, .mc-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.25rem; }
@@ -1150,7 +1152,7 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .sky-ring { fill: none; stroke: rgba(255, 255, 255, 0.18); stroke-dasharray: 3 4; }
 .sky-card { fill: var(--muted); font-size: 13px; font-weight: 700; }
 .sky-star { fill: #fff; opacity: 0.9; }
-.sky-sname { fill: rgba(255, 255, 255, 0.65); font-size: 9px; }
+.sky-sname { fill: rgba(255, 255, 255, 0.75); font-size: 9px; paint-order: stroke; stroke: rgba(8, 14, 32, 0.85); stroke-width: 2px; }
 .sky-pname { fill: #fff; font-size: 11px; font-weight: 600; paint-order: stroke; stroke: rgba(0, 0, 0, 0.55); stroke-width: 2px; }
 .sky-moon { fill: #e9edf2; }
 .sky-sun { fill: #ffd34d; }
@@ -1159,6 +1161,17 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .sky-time input { width: min(16rem, 60vw); }
 .sky-time output { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 3.5rem; }
 .sky-table td, .sky-table th { white-space: normal; }
+/* Telefonda gezegen tablosu kartlara döner (2. analiz #91) */
+@media (max-width: 40rem) {
+  .sky-table, .sky-table tbody, .sky-table tr, .sky-table th, .sky-table td { display: block; width: 100%; }
+  .sky-table { min-width: 0; }
+  .sky-table td { overflow-wrap: anywhere; }
+  .sky-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .sky-table tr { padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+  .sky-table th, .sky-table td { border: 0; padding: 0.15rem 0.9rem; text-align: start; }
+  .sky-table th { font-size: 1.05rem; }
+  .sky-table td[data-l]::before { content: attr(data-l) ": "; color: var(--muted); font-size: 0.85rem; }
+}
 /* Tutulma haritası (30 Ekim 2026) */
 .ecl-map { margin-top: 1rem; }
 .ecl-map canvas { display: block; width: 100%; height: auto; margin-top: 0.6rem; border-radius: 6px; --ecl-sea: #d9e6f2; --ecl-land: #f3efe4; --ecl-coast: #9aa6b2; }

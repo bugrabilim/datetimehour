@@ -638,6 +638,7 @@
     <string name="more_sections">Bölmələr</string>
     <string name="weather_legal">Hüquqi məlumat və mənbələr</string>
     <string name="weather_rainChanceShort">Yağış ehtimalı</string>
+    <string name="weather_dailyHeading10">10 günlük proqnoz</string>
     <string name="home_customize">Saat ekranı</string>
     <string name="home_customizeNote">Saatın altında görünəcək sahələri seçin; sağdakı tutacaqla sürükləyərək sıralayın.</string>
     <string name="home_edit">Redaktə et</string>

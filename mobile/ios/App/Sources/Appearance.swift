@@ -235,7 +235,7 @@ struct AppearanceView: View {
             }
             Section {
                 Slider(value: $scale, in: 0.5...1.0, step: 0.05) { Text(L("look.size")) }
-                Text("\(Int((scale * 100).rounded()))%").monospacedDigit().foregroundStyle(Theme.muted)
+                Text(Fmt.percent(Int((scale * 100).rounded()))).monospacedDigit().foregroundStyle(Theme.muted)
             } header: {
                 Text(L("look.size"))
             } footer: {

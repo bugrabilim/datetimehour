@@ -317,7 +317,7 @@ private fun WeatherPart(kind: WxKind, place: AppPlace, size: Dp, start: Boolean 
             val today = d.today
             Text(L("weather.feelsLike") + " " + Units.temp(c.feels) + (today?.let { " · " + Units.temp(it.max) + " / " + Units.temp(it.min) } ?: ""),
                 color = Theme.c.muted, fontSize = f * 0.9f, maxLines = 1)
-            Text(L("weather.humidity") + " %${Math.round(c.humidity)} · " + L("weather.wind") + " " + Units.wind(c.wind),
+            Text(L("weather.humidity") + " " + Fmt.percent(Math.round(c.humidity).toInt()) + " · " + L("weather.wind") + " " + Units.wind(c.wind),
                 color = Theme.c.muted, fontSize = f * 0.9f, maxLines = 1)
         }
         if (kind == WxKind.WEEK) {

@@ -15,6 +15,16 @@
   var cards = Array.prototype.slice.call(doc.querySelectorAll(".qb-card"));
   var statusEl = q("[data-qb-status]"), startBtn = q("[data-qb-start]"), calib = q("[data-qb-calib]");
   var place = null, bearing = 0, heading = null, aligned = false, listening = false, gotAbsolute = false;
+  /* Telefon pusulası manyetik kuzeyi verir (iPhone webkitCompassHeading; Android'de mutlak yön de dönme vektörüyle manyetik kuzey).
+     Kıble açısı gerçek kuzeye göre olduğu için seçili yerin manyetik sapması eklenir (WMM2025, wmm.js; 2. analiz #186). */
+  var decl = 0;
+  function updateDecl(pl) {
+    var W = window.sthWmm; decl = 0;
+    if (!W || !pl) return;
+    var year = 1970 + S.nowMs() / 31556952000;
+    if (year > W.validUntil + 1) return; // model eskidiyse düzeltme yapılmaz
+    try { var d = W.declination(pl.lat, pl.lon, 0, year); if (isFinite(d)) decl = d; } catch (e) {}
+  }
   var nf = function (frac) {
     var loc = /^(ar|fa|ur)$/.test(S.lang) ? "en-US" : S.locale;
     return new Intl.NumberFormat(loc, { minimumFractionDigits: frac, maximumFractionDigits: frac });
@@ -46,6 +56,7 @@
 
   function render(pl) {
     place = pl;
+    updateDecl(pl);
     q("[data-qb-place]").textContent = pl.name || " ";
     var r = P.qibla(pl.lat, pl.lon);
     bearing = r.bearing;
@@ -80,12 +91,12 @@
   function onOrient(e, absolute) {
     var h = null;
     if (typeof e.webkitCompassHeading === "number" && !isNaN(e.webkitCompassHeading)) {
-      h = e.webkitCompassHeading; // iPhone: manyetik kuzeyden saat yönünde
+      h = (e.webkitCompassHeading + decl + 360) % 360; // iPhone: manyetik kuzeyden saat yönünde → gerçek kuzey
       if (calib) calib.hidden = !(e.webkitCompassAccuracy < 0 || e.webkitCompassAccuracy > 20);
     } else if (e.alpha != null && (absolute || e.absolute)) {
       h = 360 - e.alpha; // alpha saat yönünün tersine; ekran yönü düzeltmesi
       var so = (screen.orientation && screen.orientation.angle) || window.orientation || 0;
-      h = (h + so + 360) % 360;
+      h = (h + so + decl + 720) % 360; // manyetik → gerçek kuzey
     }
     if (h == null) return;
     if (absolute) gotAbsolute = true;

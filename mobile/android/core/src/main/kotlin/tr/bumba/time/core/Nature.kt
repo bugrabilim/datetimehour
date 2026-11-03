@@ -1,6 +1,7 @@
 package tr.bumba.time.core
 
 import kotlin.math.PI
+import kotlin.math.abs
 import kotlin.math.floor
 
 /**
@@ -116,7 +117,10 @@ object Nature {
         val len = (nextNew - prevNew).toDouble()
         val frac = (ms - prevNew).toDouble() / len
         val illum = (1 - StrictMath.cos(2 * PI * frac)) / 2
-        val idx = floor(frac * 8 + 0.5).toInt() % 8
+        // Ana evreler (yeni ay, dördünler, dolunay) yalnız o anın ±12 saati içinde; arada hilal ya da şişkin ay (nature-calc.js ile aynı)
+        val q = frac * 4
+        val p = floor(q + 0.5)
+        val idx = if (abs(q - p) / 4 < (DAY_MS / 2) / len) (2 * p.toInt()) % 8 else 2 * floor(q).toInt() + 1
         var kk = kFor(ms) - 1
         var nextFull = 0L
         for (j in 0 until 4) {

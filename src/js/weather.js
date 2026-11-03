@@ -24,7 +24,7 @@
     q("[data-wx-cond]").textContent = i.label;
     var dl = q("[data-wx-facts]"); dl.textContent = "";
     fact(dl, X.feelsLike, W.temp(c.apparent_temperature));
-    fact(dl, X.humidity, Math.round(c.relative_humidity_2m) + "%");
+    fact(dl, X.humidity, S.pct(Math.round(c.relative_humidity_2m)));
     fact(dl, X.wind, Math.round(c.wind_speed_10m) + " km/h · " + S.tpl(X.windFrom, { dir: W.compass(c.wind_direction_10m) }));
     fact(dl, X.precipitation, (Math.round(c.precipitation * 10) / 10) + " mm");
     fact(dl, X.pressure, Math.round(c.pressure_msl) + " hPa");
@@ -40,7 +40,7 @@
       var ic = el("span", "wx-h-icon", hi.icon); ic.setAttribute("aria-hidden", "true"); ic.title = hi.label; li.appendChild(ic);
       li.appendChild(el("span", "wx-h-temp", W.temp(h.temperature_2m[n])));
       var pp = h.precipitation_probability[n];
-      li.appendChild(el("span", "wx-h-rain", pp != null && pp >= 10 ? pp + "%" : " "));
+      li.appendChild(el("span", "wx-h-rain", pp != null && pp >= 10 ? S.pct(pp) : " "));
       ul.appendChild(li);
     }
     q("[data-wx-hourly-box]").hidden = false;
@@ -54,7 +54,7 @@
       var di2 = el("span", "wx-d-icon", di.icon); di2.setAttribute("aria-hidden", "true"); row.appendChild(di2);
       row.appendChild(el("span", "wx-d-cond", di.label));
       var pr = dd.precipitation_probability_max[j];
-      row.appendChild(el("span", "wx-d-rain", pr != null && pr >= 10 ? pr + "% · " + (Math.round(dd.precipitation_sum[j] * 10) / 10) + " mm" : " "));
+      row.appendChild(el("span", "wx-d-rain", pr != null && pr >= 10 ? S.pct(pr) + " · " + (Math.round(dd.precipitation_sum[j] * 10) / 10) + " mm" : " "));
       var bar = el("span", "wx-d-bar"), fill = el("i");
       fill.style.setProperty("--lo", ((dd.temperature_2m_min[j] - lo) / span * 100).toFixed(1) + "%");
       fill.style.setProperty("--hi", ((dd.temperature_2m_max[j] - lo) / span * 100).toFixed(1) + "%");

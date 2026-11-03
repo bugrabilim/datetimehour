@@ -109,14 +109,14 @@ private fun Current(d: WeatherData) {
         }
         Row(Modifier.fillMaxWidth().padding(top = 8.dp)) {
             Pill(L("weather.feelsLike"), Units.temp(c.feels), Modifier.weight(1f))
-            Pill(L("weather.humidity"), "%${Math.round(c.humidity)}", Modifier.weight(1f))
+            Pill(L("weather.humidity"), Fmt.percent(Math.round(c.humidity).toInt()), Modifier.weight(1f))
         }
         Row(Modifier.fillMaxWidth()) {
             Pill(L("weather.wind"), Units.wind(c.wind), Modifier.weight(1f))
             Pill(L("weather.uv"), "${Math.round(c.uv)}", Modifier.weight(1f))
         }
         Row(Modifier.fillMaxWidth()) {
-            Pill(L("weather.rainChanceShort"), "%${d.rainNow}", Modifier.weight(1f))
+            Pill(L("weather.rainChanceShort"), Fmt.percent(d.rainNow), Modifier.weight(1f))
             Pill(L("weather.pressure"), Units.pressure(c.pressure), Modifier.weight(1f))
         }
     }
@@ -143,7 +143,7 @@ private fun Hourly(d: WeatherData) {
                         Text(Fmt.time(h.at, d.zone), color = Theme.c.muted, fontSize = 12.sp)
                         Text(WeatherCode.of(h.code).icon(h.isDay), fontSize = 20.sp)
                         Text(Units.temp(h.temp), color = Theme.c.text, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
-                        if (h.rain >= 10) Text("%${h.rain}", color = Color(0xFF1E88E5), fontSize = 11.sp)
+                        if (h.rain >= 10) Text(Fmt.percent(h.rain), color = Color(0xFF1E88E5), fontSize = 11.sp)
                     }
                 }
             }
@@ -153,7 +153,7 @@ private fun Hourly(d: WeatherData) {
 
 @Composable
 private fun Daily(d: WeatherData) {
-    val days = d.daily.take(7)
+    val days = d.daily.take(14)
     val lo = days.minOfOrNull { it.min } ?: 0.0
     val hi = days.maxOfOrNull { it.max } ?: 1.0
     AppCard {
