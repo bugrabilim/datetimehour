@@ -441,3 +441,41 @@ Kaynak: App Store iPhone ekran görüntüleri (`rakip2/{alarm,kadran,namaz}/<uyg
 - Premium işaretleri: mor hap "PREMIUM" etiketi her ücretli özelliğin yanında (mağaza p04, p05, p06, p07, p09).
 - İlk açılış / Pro: görülmedi.
 
+### 2.5 Desk Clock - Analog Clock Face (id 1253066126; 4,40 / 4.462)
+- İncelenen: sahibin 1 görüntüsü (widget galerisi, 1.22) + mağaza 8 iPhone + 2 iPad görüntüsü.
+- Zemin: **orta-koyu gri #424242 / #373737** (saat ekranı; sayfa düz gri, siyah değil), bazı kadranlarda **#161616 / #1e1e1e**; ayarlar ve "Change skin" **#000000** + satır **#272727 / #303030**. Açık tema yok.
+- Vurgu: kadrana göre (kırmızı saniye, yeşil LED **#00e676 civarı** göz kararı, ölçülmedi); arayüz vurgusu yok (beyaz yazı).
+- Yazı tipi: SF Pro (sağ üst tarih/saat "Wed, Sep 2 / 10:09"), dijital kadranlarda LCD/bölütlü yazı tipleri.
+- Köşe: skin ızgarasında küçük köşe (~6 pt göz kararı; ölçülmedi).
+- Alt çubuk: **yok**; saat ekranında köşelerde küçük simgeler (sol üst gömlek "skin", sağ alt ayar kaydırıcıları, sol alt "🔔 OFF").
+- Kart/liste: ayarlar düz iOS listesi (koyu), skin seçimi 3 sütunlu ızgara.
+- Görsel zenginlik: kadranlarda yüksek (koi balıklı kâse, balerin, ahşap, Roma rakamlı altın), arayüzde çok düşük.
+- Simge: SF Symbols.
+- İlk açılış: görülmedi. Pro: "All clock styles" satın alması (ham notlar), sayfa görülmedi.
+
+### 2.6 Fullscreen Clock: Flip & Focus (id 1403700342; 4,64 / 268)
+- İncelenen: sahibin 4 görüntüsü (1.28, 1.31–1.33) + mağaza 8 iPhone (yatay) görüntüsü.
+- Zemin: **#000000**; açık zemin yalnız mağaza görselinde (açık mavi pazarlama zemini).
+- Yüzey: **#2a282b** (yuvarlak köşeli düğmeler), şerit çerçevesi **#555555**, kadran karo zemini **#607d8a** (Material Blue Grey).
+- Vurgu: yok denecek kadar az; düzenle düğmesi mavi **#4384f3**; "Share/Review" #607d8a.
+- Yazı tipi: **SF Pro Regular/Light, çok büyük** (rakam ekran yüksekliğinin ~%40'ı, renk **#cccccc** ya da beyaz); bir kadranda el yazısı rakamlar.
+- Köşe: düğmeler ~10–12 pt, karolar köşesiz.
+- Alt çubuk: **yok**; yatay alt şerit (mod/kadran seçici karolar).
+- Kart/liste: karo şeridi.
+- Görsel zenginlik: düşük: düz siyah, düz metin; çizgi illüstrasyon (domates, renkli karolar) yalnız karo küçük resimlerinde.
+- İlk açılış: görülmedi (ATT izni penceresi ilk açılışta çıkıyor, 1.28). Pro: "No Ads", "1 day vip (view ad)"; Pro sayfası görülmedi.
+
+### 2.7 Analog Clock (Draunt; id 6785887940; puan yok)
+- İncelenen: sahibin 8 görüntüsü (1.1–1.8) + mağaza 10 görüntüsü (600×800, iPad oranı; yalnız kadranlar).
+- Zemin: **#000000** (galeri), saat ekranında **kadran fotoğrafının bulanığı** (#242f34 civarı), Pro sayfasında bulanık orman fotoğrafı (#22281c), Yenilikler'de **#06070b**. Mağaza kadranları kendi zeminleriyle: lacivert #060a16, kâğıt bej #d4d0c4 / #e6e2d9, beyaz #ffffff, yosun yeşili #0b100a, mor-siyah #1f1a20, gece #06070c.
+- Yüzey: **#101010** kart, **#292929** hap düğme (kenar #585858), cam öğeler.
+- Vurgu: kadrana göre; arayüzde **beyaz** (birincil düğme beyaz zemin siyah yazı), kırmızı **#eb524d** indirim etiketi, **#dcc5a2** bej sayfa noktası.
+- Yazı tipi: SF Pro (Display Bold başlıklar).
+- Köşe: kart ~24 pt, önizleme kuyusu ~28 pt, küçük resim ~17 pt, düğme 8–10 pt ya da tam hap (tutarsız).
+- Alt çubuk: **yok**; saat ekranında üstte cam araç çubuğu hapı (6 simge) + sağda galeri düğmesi.
+- Kart/liste: büyük kartlar (her kadran bir kart, canlı önizleme + renk daireleri).
+- Görsel zenginlik: **çok yüksek** (fotoğraf dokulu ve üretken sanat kadranlar, metal/altın).
+- Simge: özel ince çizgi + SF Symbols karışık.
+- İlk açılış: "Yenilikler" kaydırmalı 10 sayfa (her sayfa bir kadran + "Devam Et"); ilk açılış mı güncelleme sonrası mı belli değil.
+- Pro sayfası: sheet; sol üst "Geri yükle" ("Onarmak"), sağ üst cam ×, başlık, kadran kolajı, çerçeveli tek fiyat kutusu ("50% Off", ₺399,99 ömür boyu, üstü çizili ₺79.998), beyaz "Devam et", altta gizlilik/koşullar. Deneme yok. Kapatma düğmesi ilk karede görünür (gecikme ölçülemedi).
+

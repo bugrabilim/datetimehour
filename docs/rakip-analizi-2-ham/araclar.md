@@ -6,7 +6,7 @@ Görüntüler: `scratchpad/rakip2/araclar/<uygulama>/iN.jpg` (App Store TR vitri
 
 Bizim karşılaştırdığımız ekranlar (Android, 31 Ekim 2026, `mobile/android/app/build/screens/`): `tr-araclar`, `tr-zamanlayici`, `tr-hiit`, `tr-rutinler`, `tr-geri-sayimlar`, `tr-paylas-geri-sayim`, `tr-pomodoro`, `tr-pomodoro-istatistik`, `tr-kronometreler`, `tr-dunya`, `tr-toplanti-planlayici`, `tr-tarih-hesaplama`, `widget-geri-sayim`, `widget-dunya`, `widget-kronometre`.
 
-**Bizim ekranlarımızın kısa tarifi (kıyas için):** krem zemin (#F6F3EC civarı), beyaz 16–20 px köşeli kartlar, kiremit vurgusu (#9C3F00 civarı), Roboto. Zamanlayıcı listesi beyaz kartta satır satır "03:05" ince büyük rakam + ‖ / ▶ / "+1 dk" / ×; görsel ilerleme (halka, çubuk) yok. Yeni zamanlayıcı üç sütunlu ok düğmeli seçici ("00 05 00") + hap biçimli hazır süreler. Pomodoro: ortada "Çalışma" + "25:00" düz metin, altında "Tur 1 / 4"; halka ya da görsel yok. Aralık (HIIT): koyu zemin (#11141B civarı), evre adı yeşil, "00:05", ince yeşil ilerleme çubuğu. Kronometre: "01:35.40" büyük kalın, tur listesi ("En iyi" yeşil, "En yavaş" kırmızı). Geri sayımlarım: emoji + başlık + kiremit renkli "23 gün kaldı" + tarih; fotoğraflı kart koyu gradyan. Geri sayım widget'ı: krem zemin, "Yılbaşı" kiremit başlık, "62 gün kaldı" kalın, tarih. Dünya saatleri widget'ı: dört satır ad + fark + saat.
+**Bizim ekranlarımızın kısa tarifi (kıyas için):** krem zemin (#F7F4EE, ölçüldü), beyaz 16–20 px köşeli kartlar, kiremit vurgusu (#9A3F00, ölçüldü), Roboto. Zamanlayıcı listesi beyaz kartta satır satır "03:05" ince büyük rakam + ‖ / ▶ / "+1 dk" / ×; görsel ilerleme (halka, çubuk) yok. Yeni zamanlayıcı üç sütunlu ok düğmeli seçici ("00 05 00") + hap biçimli hazır süreler. Pomodoro: ortada "Çalışma" + "25:00" düz metin, altında "Tur 1 / 4"; halka ya da görsel yok. Aralık (HIIT): koyu zemin (#11141A, ölçüldü), evre adı yeşil, "00:05", ince yeşil ilerleme çubuğu. Kronometre: "01:35.40" büyük kalın, tur listesi ("En iyi" yeşil, "En yavaş" kırmızı). Geri sayımlarım: emoji + başlık + kiremit renkli "23 gün kaldı" + tarih; fotoğraflı kart koyu gradyan. Geri sayım widget'ı: krem zemin, "Yılbaşı" kiremit başlık, "62 gün kaldı" kalın, tarih. Dünya saatleri widget'ı: dört satır ad + fark + saat.
 
 ## Countdown Star (App Store 576177593; ABD 4,77 / 216.589 puan; TR 4,69 / 42; Joseph Merrill; sürüm 3.0.12, 27 Ekim 2026)
 - Ücret modeli: ücretsiz + reklamlı; tek satın alma **Remove Ads ₺99,99**; ayrıca reklamsız ücretli sürümü var (açıklamada yazıyor). Abonelik yok.
@@ -371,3 +371,35 @@ Bizim karşılaştırdığımız ekranlar (Android, 31 Ekim 2026, `mobile/androi
   - **Mac menü çubuğunda pomodoro** — kısmen: Mac menü çubuğu uygulamamız yalnız saat ve vakit (`mobile/ios/Mac`, CLAUDE.md #95) — O.
   - Apple Watch'ta pomodoro — Focus Keeper maddesiyle aynı iş.
 
+## Sahibin paylaştığı çalışma sayacı (adı görünmüyor; `bdd312d2-image.png`, 2556×1179 yatay) — 2. analiz #84'ün doğrulaması
+- Görüntü yeniden açıldı ve ölçüldü. Belgedeki not doğru: siyah zemin (#000), **yedi bölütlü sarı LED rakamlar #FFB300** (ışıma/hale var), **sönük bölütler çok koyu kahverengi #140E00 civarı** (yalnız ortadaki yatay bölütler sönük, "00:00:00"), rakamlar ince gri çerçeveli (#1F1F1F civarı) yuvarlak köşeli kutu içinde, iki nokta üst üste yuvarlak.
+- Üstte ince koyu gri ilerleme çizgisi (#141414; dolu kısmı görünmüyor, sayaç sıfırda). Solda "📖 Genel ⌄" hapı (ders seçici), ortada bölütlü seçici "✓ Sayaç" (seçili, kahverengi-altın zemin) | "⏲ Pomodoro"; sağda dört çizgi simge: pano/liste (not ya da kayıtlar), çubuk grafik, 3×3 ızgara, dişli.
+- Altta hap düğmeler: "⟳ Sıfırla" (çerçeveli), **"▶ Başlat" dolu açık altın #F0BE6D**, "≡✎ Not", "⍰ Soru".
+- Ek ayrıntı (önceki notta yok): rakamlar saat:dakika:saniye üç çift, çerçeveli kutu ekranın neredeyse tamamını kaplıyor (yatay kullanım için tasarlanmış).
+
+## Ek kod denetimi (bizde ilerleme görseli)
+- iOS: `mobile/ios/App/Sources/Intervals.swift` satır 645 yalnız HIIT'te düz `ProgressView` (çubuk); zamanlayıcı, pomodoro ve geri sayımda halka/çubuk yok (`grep "trim(from\|ProgressView\|Gauge" Intervals.swift ToolsTab.swift FocusSounds.swift Countdowns.swift` → tek sonuç satır 645).
+- Android: aynı (`PomodoroScreen.kt`, `Intervals.kt`, `TimerScreen.kt`, `Countdowns.kt`'de `drawArc`/`CircularProgress` yok).
+- Saatlerde (Apple Watch, Wear OS) zaman aracı yok: `mobile/ios/Watch/Sources/WatchApp.swift` ve `mobile/android/wear/.../WearActivity.kt` yalnız vakitler, tarih, hicri tarih.
+- Uygulamada dünya saatlerine eklenebilen şehir sayısı 31 (`mobile/android/app/src/main/assets/cities.json` 31 kayıt; `WorldScreen.kt` satır 173, `WorldSeasons.swift` satır 112 `City.all`).
+
+## İncelenen uygulamalar (özet)
+| Uygulama | App Store id | iPhone görüntü | Not |
+|---|---|---|---|
+| Countdown Star | 576177593 | 7 | geri sayım |
+| Countdown (Find Appiness) | 1403367428 | 10 | geri sayım |
+| Days • Countdown & Widgets | 939368917 | 8 | geri sayım |
+| Timer+ | 391564049 | 10 | çoklu zamanlayıcı, rutin |
+| MultiTimer | 973421278 | 10 | çoklu zamanlayıcı, pano |
+| Interval Timer □ HIIT Timer | 1124297113 | 5 | aralık |
+| Seconds Interval Timer | 475816966 | 6 | aralık, Apple Watch |
+| Timeglass | 1138584627 | 6 | çoklu zamanlayıcı |
+| Visual Countdown Timer | 541364004 | 7 | çocuklar için görsel zamanlayıcı |
+| Stopwatch‰ | 505889167 | 2 | kronometre |
+| World Clock Time Zone Widget (Lasmit) | 912698955 | 10 | dünya saati |
+| World Clock Time Zone Widgets (Overdesigned) | 956377119 | 10 | dünya saati |
+| World Clock Pro | 969635117 | 4 | 24 saat kadranı |
+| Flora | 1225155794 | 10 | odak |
+| Focus Keeper | 867374917 | 8 | pomodoro |
+| Be Focused | 973130201 | 6 | pomodoro |
+Toplam 16 uygulama, 119 iPhone görüntüsü (hepsi açıldı) + sahibin 1 görüntüsü. iPad ve Google Play görüntülerine bakılmadı. Bulunamayan: Dreamdays ve "Time Until" aramada çıkmadı (TR ve ABD); "Tide" aramasında yalnız gelgit uygulamaları çıktı; Timeglass TR mağazasında 10 puanlı (ABD'de 1.450).
