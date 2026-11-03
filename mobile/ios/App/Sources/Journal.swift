@@ -1,4 +1,5 @@
 import SwiftUI
+import SaatCore
 
 /// Sabah günlüğü (rakip analizi listesi #76): her gün için ruh hâli, uyku, günün niyeti ve not.
 /// Kayıt `journal` (JSON [{d, m, s, i, n}], en yeni üstte, en çok 366 gün; Android'le aynı); yalnız cihazda (iCloud eşitlemesi açıksa

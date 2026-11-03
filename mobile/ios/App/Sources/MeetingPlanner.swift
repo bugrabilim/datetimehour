@@ -1,4 +1,5 @@
 import SwiftUI
+import SaatCore
 import EventKit
 
 /// Toplantı planlayıcı (rakip analizi listesi #85; sitedeki /toplanti-planlayici/ ile aynı kural): bulunduğunuz saat dilimi ve
