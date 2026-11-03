@@ -977,10 +977,49 @@ struct ZakatView: View {
 }
 
 /// Vakitler sekmesindeki "İbadet" bölümü
-struct WorshipLinks: View {
+/// Vakitler'deki ibadet satırı (2. analiz #199): dört kare (Kıble, Kur'an, Zikirmatik, Takip) ve "Tümü"
+struct WorshipRow: View {
+    let showAll: () -> Void
+
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Text(L("worship.title")).font(.headline).foregroundStyle(Theme.text).padding(.top, 4)
+            HStack {
+                Text(L("worship.title")).font(.headline).foregroundStyle(Theme.text)
+                Spacer()
+                Button(L("countdowns.all") + " ›", action: showAll).foregroundStyle(Theme.accent)
+            }
+            HStack(spacing: 10) {
+                tile(L("qibla.title"), "location.north.circle") { QiblaView() }
+                tile(L("quran.title"), "book") { QuranView() }
+                tile(L("zikir.title"), "hand.tap") { ZikirView() }
+                tile(L("track.title"), "checklist") { TrackerView() }
+            }
+        }
+    }
+
+    private func tile<D: View>(_ title: String, _ icon: String, @ViewBuilder _ dest: @escaping () -> D) -> some View {
+        NavigationLink { dest() } label: {
+            VStack(spacing: 6) {
+                IconBox(icon: icon)
+                Text(title).font(.caption).foregroundStyle(Theme.text).lineLimit(2).multilineTextAlignment(.center)
+                    .minimumScaleFactor(0.8)
+            }
+            .padding(6)
+            .frame(maxWidth: .infinity)
+            .aspectRatio(1, contentMode: .fit)
+            .background(RoundedRectangle(cornerRadius: 16).fill(Theme.surface))
+            .overlay(RoundedRectangle(cornerRadius: 16).stroke(Theme.border.opacity(0.5)))
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+/// İbadet sayfası: bütün ibadet bölümleri (Vakitler › İbadet › Tümü)
+struct WorshipLinks: View {
+    var body: some View {
+        ScrollView {
+        VStack(alignment: .leading, spacing: 10) {
+            link(L("qibla.link"), "location.north.circle") { QiblaView() }
             link(L("quran.title"), "book") { QuranView() }
             link(L("dua.title"), "hands.sparkles") { DuasView() }
             link(L("esma.title"), "sparkles") { EsmaView() }
@@ -992,6 +1031,12 @@ struct WorshipLinks: View {
             link(L("greet.title"), "gift") { GreetingView() }
             link(L("zakat.title"), "percent") { ZakatView() }
         }
+        .padding(.vertical, 12)
+        .padding(.horizontal, 20)
+        .frame(maxWidth: 560)
+        .frame(maxWidth: .infinity)
+        }
+        .background(AppBackdrop().ignoresSafeArea())
     }
 
     private func link<D: View>(_ title: String, _ icon: String, @ViewBuilder _ dest: @escaping () -> D) -> some View {
@@ -999,7 +1044,7 @@ struct WorshipLinks: View {
             dest()
         } label: {
             HStack {
-                Label(title, systemImage: icon).foregroundStyle(Theme.text)
+                BoxLabel(title, icon: icon)
                 Spacer()
                 Image(systemName: "chevron.forward").font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
             }

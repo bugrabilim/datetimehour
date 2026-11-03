@@ -4,11 +4,13 @@ import SaatCore
 /// Vakitler sekmesi: il, sıradaki vakte kalan süre, bugünün vakitleri, aylık çizelge, imsakiye, bildirimler.
 struct PrayerTab: View {
     @AppStorage(NotificationPrefs.enabledKey) private var notifyOn = true
-    /// Kilit ekranında / Dynamic Island'da sıradaki vakit (Live Activity)
-    @AppStorage(LiveActivities.prayerKey) private var liveOn = false
     /// Ekran görüntüsü için: -openNotifications ile ayar penceresi açık başlar
     @State private var showNotify = ProcessInfo.processInfo.arguments.contains("-openNotifications")
     @State private var sharing = false
+    /// "…" menüsünden açılan sayfalar (2. analiz #199)
+    @State private var route: PrayerRoute?
+
+    enum PrayerRoute: Hashable { case monthly, method, imsakiye, worship }
 
     var body: some View {
         NavigationStack {
@@ -18,43 +20,11 @@ struct PrayerTab: View {
                     VStack(spacing: 24) {
                         PrayerPanel(now: context.date, place: place)
                         PrayerVisual(now: context.date, place: place)
-                        VStack(alignment: .leading, spacing: 6) {
-                            Toggle(isOn: $liveOn) {
-                                Label(L("live.prayer.toggle"), systemImage: "lock.iphone")
-                            }
-                            .tint(Theme.accent)
-                            Text(L("live.prayer.note")).font(.footnote).foregroundStyle(Theme.muted)
-                        }
-                        .card()
-                        .onChange(of: liveOn) { LiveActivities.sync() }
-                        // Yer değişince ya da vakit girince kilit ekranındaki sayaç ileri taşınır
-                        .onChange(of: place.name) { LiveActivities.sync() }
-                        .onChange(of: place.schedule.next(after: context.date)?.at) { LiveActivities.sync() }
-                        VStack(spacing: 10) {
-                            NavigationLink {
-                                MonthlyPrayerView(place: place)
-                            } label: {
-                                linkRow(L("prayer.monthly"), "tablecells")
-                            }
-                            NavigationLink {
-                                PrayerMethodView()
-                            } label: {
-                                linkRow(L("prayer.method.app") + (PrayerMethod.isCustom ? " · " + PrayerMethod.name(PrayerMethod.id) : ""), "slider.horizontal.3")
-                            }
-                            NavigationLink {
-                                QiblaView()
-                            } label: {
-                                linkRow(L("qibla.link"), "location.north.circle")
-                            }
-                            if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(context.date)) {
-                                NavigationLink {
-                                    ImsakiyeView(place: place, ramadan: ramadan)
-                                } label: {
-                                    linkRow(T("imsakiye.title", ramadan.from.year), "moon.haze")
-                                }
-                            }
-                        }
-                        WorshipLinks()
+                            // Yer değişince ya da vakit girince kilit ekranındaki sayaç ileri taşınır
+                            .onChange(of: place.name) { LiveActivities.sync() }
+                            .onChange(of: place.schedule.next(after: context.date)?.at) { LiveActivities.sync() }
+                        // İbadet satırı (2. analiz #199): dört kare, hepsi "İbadet" sayfasında
+                        WorshipRow { route = .worship }
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 20)
@@ -65,17 +35,39 @@ struct PrayerTab: View {
             }
             .navigationTitle(L("tab.prayer"))
             .navigationBarTitleDisplayMode(.large)
-            .toolbar {
-                // Bugünün vakitlerini görsel kart olarak paylaş (rakip analizi #16)
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { sharing = true } label: { Image(systemName: "square.and.arrow.up") }
-                        .accessibilityLabel(L("share.prayer"))
+            .navigationDestination(item: $route) { r in
+                let place = PlaceModel.shared.place
+                switch r {
+                case .monthly: MonthlyPrayerView(place: place)
+                case .method: PrayerMethodView()
+                case .worship: WorshipLinks().navigationTitle(L("worship.title"))
+                case .imsakiye:
+                    if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(Date())) {
+                        ImsakiyeView(place: place, ramadan: ramadan)
+                    }
                 }
+            }
+            .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { showNotify = true } label: {
                         Image(systemName: notifyOn ? "bell.fill" : "bell")
                     }
                     .accessibilityLabel(L("notify.heading"))
+                }
+                // Seyrek kullanılanlar "…" menüsünde (2. analiz #199): paylaş, aylık çizelge, hesap yöntemi, imsakiye
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Button { sharing = true } label: { Label(L("share.prayer"), systemImage: "square.and.arrow.up") }
+                        Button { route = .monthly } label: { Label(L("prayer.monthly"), systemImage: "tablecells") }
+                        Button { route = .method } label: {
+                            Label(L("prayer.method.app") + (PrayerMethod.isCustom ? " · " + PrayerMethod.name(PrayerMethod.id) : ""),
+                                  systemImage: "slider.horizontal.3")
+                        }
+                        if let ramadan = CalendarData.shared.nextRamadan(from: CalendarDay(Date())) {
+                            Button { route = .imsakiye } label: { Label(T("imsakiye.title", ramadan.from.year), systemImage: "moon.haze") }
+                        }
+                    } label: { Image(systemName: "ellipsis.circle") }
+                    .accessibilityLabel(L("common.more"))
                 }
             }
             .sheet(isPresented: $showNotify) { NotificationSettingsView() }
@@ -84,18 +76,6 @@ struct PrayerTab: View {
                 ShareCardSheet(title: L("share.prayer")) { PrayerShareCard(place: place, now: now) }
             }
         }
-    }
-
-    private func linkRow(_ title: String, _ icon: String) -> some View {
-        HStack {
-            Label(title, systemImage: icon)
-                .foregroundStyle(Theme.text)
-            Spacer()
-            Image(systemName: "chevron.forward")
-                .font(.footnote.weight(.semibold))
-                .foregroundStyle(Theme.muted)
-        }
-        .card()
     }
 }
 

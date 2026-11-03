@@ -12,6 +12,8 @@ struct NotificationSettingsView: View {
     @AppStorage(SoundMode.key) private var sound = SoundMode.voice.rawValue
     @AppStorage(AdhanVoice.key) private var adhanVoice = AdhanVoice.azeez.rawValue
     @State private var denied = false
+    /// Kilit ekranında / Dynamic Island'da sıradaki vakit (Live Activity; 2. analiz #199 ile Vakitler'den buraya)
+    @AppStorage(LiveActivities.prayerKey) private var liveOn = false
 
     var body: some View {
         NavigationStack {
@@ -20,6 +22,12 @@ struct NotificationSettingsView: View {
                     Toggle(L("notify.enable"), isOn: Binding(get: { enabled }, set: setEnabled))
                 } footer: {
                     Text(L("notify.note"))
+                }
+                Section {
+                    Toggle(isOn: $liveOn) { Label(L("live.prayer.toggle"), systemImage: "lock.iphone") }
+                        .onChange(of: liveOn) { LiveActivities.sync() }
+                } footer: {
+                    Text(L("live.prayer.note"))
                 }
                 if denied {
                     Section {

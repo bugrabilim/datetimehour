@@ -109,6 +109,19 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                 }
                 Text(L("notify.note"), color = Theme.c.muted, fontSize = 13.sp)
             }
+            // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı; 2. analiz #199 ile Vakitler'den buraya)
+            var liveOn by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.PRAYER_KEY, false)) }
+            AppCard {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("live.prayer.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                    Switch(liveOn, { on ->
+                        liveOn = on
+                        Prefs.store.edit().putBoolean(LiveNotifications.PRAYER_KEY, on).apply()
+                        LiveNotifications.sync(context)
+                    }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
+                Text(L("live.prayer.noteAndroid"), color = Theme.c.muted, fontSize = 13.sp)
+            }
             PrayerAlarmCard()
             PrayerSilentCard()
             if (denied) {

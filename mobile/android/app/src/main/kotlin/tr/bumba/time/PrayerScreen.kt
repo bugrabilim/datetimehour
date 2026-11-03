@@ -1,5 +1,13 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.TextButton
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.border
+import androidx.compose.ui.draw.clip
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -86,6 +94,8 @@ fun PrayerScreen() {
         "esma" -> { BackHandler { page = null }; EsmaScreen { page = null }; return }
         "hadith" -> { BackHandler { page = null }; HadithScreen { page = null }; return }
         "guide" -> { BackHandler { page = null }; PrayerGuideScreen({ page = null }) { page = "duas" }; return }
+        // İbadet sayfası (2. analiz #199): bütün ibadet bölümleri tek listede
+        "worship" -> { BackHandler { page = null }; WorshipHub({ page = null }) { page = it }; return }
         "imsakiye" -> if (ramadan != null) {
             BackHandler { page = null }
             ImsakiyeScreen(place, ramadan) { page = null }
@@ -100,15 +110,37 @@ fun PrayerScreen() {
     Column(Modifier.fillMaxSize()) {
         val shareCtx = androidx.compose.ui.platform.LocalContext.current
         SubBar(L("tab.prayer"), actions = {
-            // Bugünün vakitlerini görsel kart olarak paylaş (rakip analizi #16)
-            IconButton(onClick = {
-                Share.image(shareCtx, ShareCards.prayer(place, java.time.Instant.now()), "vakitler-${place.today(now)}.png", L("share.prayer"))
-            }) { Icon(Icons.Filled.Share, L("share.prayer"), tint = Theme.c.accent) }
             IconButton(onClick = { page = "notify" }) {
                 Icon(
                     if (NotifyPrefs.enabled) Icons.Filled.Notifications else Icons.Outlined.Notifications,
                     L("notify.heading"), tint = Theme.c.accent,
                 )
+            }
+            // Seyrek kullanılanlar "…" menüsünde (2. analiz #199): paylaş, aylık çizelge, hesap yöntemi, imsakiye
+            Box {
+                var menu by remember { mutableStateOf(false) }
+                IconButton(onClick = { menu = true }) { Icon(Icons.Filled.MoreVert, L("common.more"), tint = Theme.c.accent) }
+                androidx.compose.material3.DropdownMenu(menu, { menu = false }) {
+                    androidx.compose.material3.DropdownMenuItem(
+                        text = { Text(L("share.prayer")) }, leadingIcon = { Icon(Icons.Filled.Share, null) },
+                        onClick = {
+                            menu = false
+                            Share.image(shareCtx, ShareCards.prayer(place, java.time.Instant.now()), "vakitler-${place.today(now)}.png", L("share.prayer"))
+                        },
+                    )
+                    androidx.compose.material3.DropdownMenuItem(
+                        text = { Text(L("prayer.monthly")) }, leadingIcon = { Icon(Icons.Filled.TableChart, null) },
+                        onClick = { menu = false; page = "monthly" },
+                    )
+                    androidx.compose.material3.DropdownMenuItem(
+                        text = { Text(L("prayer.method.app") + if (PrayerMethod.isCustom) " · " + PrayerMethod.name(PrayerMethod.id) else "") },
+                        leadingIcon = { Icon(Icons.Filled.Tune, null) }, onClick = { menu = false; page = "method" },
+                    )
+                    if (ramadan != null) androidx.compose.material3.DropdownMenuItem(
+                        text = { Text(T("imsakiye.title", ramadan.start.year)) }, leadingIcon = { Icon(Icons.Filled.NightsStay, null) },
+                        onClick = { menu = false; page = "imsakiye" },
+                    )
+                }
             }
         })
         Column(
@@ -149,35 +181,55 @@ fun PrayerScreen() {
             RamadanCountdown(now, place)
             KerahatCard(entries, place)
             ExtraTimesCard(today, place)
-            // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
-            val context = androidx.compose.ui.platform.LocalContext.current
-            var liveOn by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.PRAYER_KEY, false)) }
-            AppCard {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(L("live.prayer.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    androidx.compose.material3.Switch(liveOn, { on ->
-                        liveOn = on
-                        Prefs.store.edit().putBoolean(LiveNotifications.PRAYER_KEY, on).apply()
-                        LiveNotifications.sync(context)
-                    }, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-                }
-                Text(L("live.prayer.noteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
+            // İbadet satırı (2. analiz #199): dört kare, hepsi "İbadet" sayfasında; kilit ekranı anahtarı Bildirimler'de
+            Row(Modifier.fillMaxWidth().padding(top = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text(L("worship.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+                TextButton(onClick = { page = "worship" }) { Text(L("countdowns.all") + " ›", color = Theme.c.accent) }
             }
-            LinkCard(Icons.Filled.TableChart, L("prayer.monthly")) { page = "monthly" }
-            LinkCard(Icons.Filled.Tune, L("prayer.method.app") + if (PrayerMethod.isCustom) " · " + PrayerMethod.name(PrayerMethod.id) else "") { page = "method" }
-            LinkCard(Icons.Filled.Explore, L("qibla.link")) { page = "qibla" }
-            if (ramadan != null) LinkCard(Icons.Filled.NightsStay, T("imsakiye.title", ramadan.start.year)) { page = "imsakiye" }
-            Text(L("worship.title"), Modifier.fillMaxWidth().padding(top = 6.dp), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
-            LinkCard(Icons.AutoMirrored.Filled.MenuBook, L("quran.title")) { page = "quran" }
-            LinkCard(Icons.Filled.VolunteerActivism, L("dua.title")) { page = "duas" }
-            LinkCard(Icons.Filled.AutoAwesome, L("esma.title")) { page = "esma" }
-            LinkCard(Icons.Filled.FormatQuote, L("hadith.title")) { page = "hadith" }
-            LinkCard(Icons.Filled.SelfImprovement, L("guide.title")) { page = "guide" }
-            LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { page = "zikir" }
-            LinkCard(Icons.Filled.TaskAlt, L("track.title")) { page = "track" }
-            LinkCard(Icons.Filled.Event, L("relday.title")) { page = "reldays" }
-            LinkCard(Icons.Filled.Celebration, L("greet.title")) { page = "greet" }
-            LinkCard(Icons.Filled.Calculate, L("zakat.title")) { page = "zakat" }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                WorshipTile(Icons.Filled.Explore, L("qibla.title"), Modifier.weight(1f)) { page = "qibla" }
+                WorshipTile(Icons.AutoMirrored.Filled.MenuBook, L("quran.title"), Modifier.weight(1f)) { page = "quran" }
+                WorshipTile(Icons.Filled.TouchApp, L("zikir.title"), Modifier.weight(1f)) { page = "zikir" }
+                WorshipTile(Icons.Filled.TaskAlt, L("track.title"), Modifier.weight(1f)) { page = "track" }
+            }
+        }
+    }
+}
+
+/** İbadet satırındaki kare: simge kutusu ve kısa ad */
+@Composable
+private fun WorshipTile(icon: ImageVector, title: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
+    Column(
+        modifier.aspectRatio(1f).clip(RoundedCornerShape(16.dp)).background(Theme.c.surface)
+            .border(1.dp, Theme.c.border.copy(alpha = 0.5f), RoundedCornerShape(16.dp)).clickable(onClick = onClick).padding(6.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        IconBox(icon)
+        Spacer(Modifier.height(6.dp))
+        Text(title, color = Theme.c.text, fontSize = 12.sp, maxLines = 2, textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+            lineHeight = 14.sp, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+    }
+}
+
+/** İbadet sayfası (2. analiz #199): Vakitler'deki dört karenin "Tümü"sü */
+@Composable
+private fun WorshipHub(onBack: () -> Unit, open: (String) -> Unit) {
+    Column(Modifier.fillMaxSize()) {
+        SubBar(L("worship.title"), onBack)
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 16.dp).padding(bottom = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            LinkCard(Icons.Filled.Explore, L("qibla.link")) { open("qibla") }
+            LinkCard(Icons.AutoMirrored.Filled.MenuBook, L("quran.title")) { open("quran") }
+            LinkCard(Icons.Filled.VolunteerActivism, L("dua.title")) { open("duas") }
+            LinkCard(Icons.Filled.AutoAwesome, L("esma.title")) { open("esma") }
+            LinkCard(Icons.Filled.FormatQuote, L("hadith.title")) { open("hadith") }
+            LinkCard(Icons.Filled.SelfImprovement, L("guide.title")) { open("guide") }
+            LinkCard(Icons.Filled.TouchApp, L("zikir.title")) { open("zikir") }
+            LinkCard(Icons.Filled.TaskAlt, L("track.title")) { open("track") }
+            LinkCard(Icons.Filled.Event, L("relday.title")) { open("reldays") }
+            LinkCard(Icons.Filled.Celebration, L("greet.title")) { open("greet") }
+            LinkCard(Icons.Filled.Calculate, L("zakat.title")) { open("zakat") }
         }
     }
 }
