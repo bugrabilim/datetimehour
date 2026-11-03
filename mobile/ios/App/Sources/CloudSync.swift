@@ -28,6 +28,10 @@ enum CloudSync {
         // İbadet
         Quran.bookmarkKey, "quran.size", "quran.en", "zikir.kind", "zikir.target", "zikir.tesbihat", "zikir.total",
         "track.prayer", "track.kaza", "track.fast", "zakat.values",
+        // 2. analiz 1. dalga D (3 Kasım 2026): takip ekleri, hatim, Kur'an zemini/hedefi, dua favorileri, kendi zikirleri, vakit görünümü
+        "track.when", "track.pauses", "track.pausedFrom", "track.kazaLog", "track.life", TrackX.inlineKey,
+        "quran.hatim", QuranPlan.goalKey, "quran.read", QuranPlan.themeKey, Duas.favsKey, ZikirCustom.key, "zikir.beads", "zikir.shake",
+        "prayer.visual", "prayer.words",
     ]
 
     private static let store = NSUbiquitousKeyValueStore.default

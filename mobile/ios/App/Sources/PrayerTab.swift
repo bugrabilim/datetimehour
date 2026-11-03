@@ -17,7 +17,7 @@ struct PrayerTab: View {
                 ScrollView {
                     VStack(spacing: 24) {
                         PrayerPanel(now: context.date, place: place)
-                        SunMoonArc(now: context.date, place: place)
+                        PrayerVisual(now: context.date, place: place)
                         VStack(alignment: .leading, spacing: 6) {
                             Toggle(isOn: $liveOn) {
                                 Label(L("live.prayer.toggle"), systemImage: "lock.iphone")
@@ -103,6 +103,8 @@ struct PrayerTab: View {
 struct PrayerPanel: View {
     let now: Date
     let place: AppPlace
+    @State private var trackVersion = 0
+    @AppStorage(TrackX.inlineKey) private var inline = true
 
     var body: some View {
         let schedule = place.schedule
@@ -118,17 +120,9 @@ struct PrayerPanel: View {
                     .multilineTextAlignment(.center)
             }
 
+            UpcomingReligiousLine(today: CalendarDay(now, timeZone: place.zone))
             if let next {
-                VStack(spacing: 4) {
-                    Text(String(format: String(localized: "prayer.nextIn"), next.prayer.localizedName))
-                        .font(.subheadline)
-                        .foregroundStyle(Theme.muted)
-                    Text(Fmt.countdown(Int(next.at.timeIntervalSince(now).rounded(.up))))
-                        .font(.system(size: 40, weight: .semibold, design: .rounded))
-                        .monospacedDigit()
-                        .foregroundStyle(Theme.accent)
-                        .environment(\.layoutDirection, .leftToRight)
-                }
+                SkyCountdown(entries: schedule.entries(on: now), next: next, now: now)
             }
 
             VStack(spacing: 0) {
@@ -136,18 +130,29 @@ struct PrayerPanel: View {
                     .padding(.bottom, 8)
                 ForEach(schedule.entries(on: now)) { entry in
                     let isNext = entry.at == next?.at
-                    HStack {
+                    HStack(spacing: 10) {
+                        Image(systemName: prayerSymbol(entry.prayer))
+                            .foregroundStyle(isNext ? Theme.accent : Theme.muted)
+                            .frame(width: 22)
+                            .accessibilityHidden(true)
                         Text(entry.prayer.localizedName)
                         Spacer()
                         Text(place.hm(entry.at))
                             .monospacedDigit()
                             .environment(\.layoutDirection, .leftToRight)
+                        if inline {
+                            PrayedMark(day: CalendarDay(now, timeZone: place.zone), entry: entry, now: now, version: $trackVersion)
+                        }
                     }
                     .font(.body.weight(isNext ? .bold : .regular))
                     .foregroundStyle(Theme.text)
-                    .padding(.vertical, 12)
+                    .padding(.vertical, inline ? 7 : 12)
                     .padding(.horizontal, 14)
                     .background(isNext ? Theme.accentSoft : .clear, in: RoundedRectangle(cornerRadius: 10))
+                }
+                if inline {
+                    PrayedSummary(day: CalendarDay(now, timeZone: place.zone), entries: schedule.entries(on: now), now: now, version: $trackVersion)
+                        .padding(.horizontal, 14)
                 }
             }
             BayramRow(place: place, now: now)
@@ -193,7 +198,7 @@ struct KerahatBox: View {
 }
 
 /// Yerel gün + ondalık saat (gece yarısından) → an
-private func localInstant(_ d: CalendarDay, _ hours: Double, _ zone: TimeZone) -> Date {
+func localInstant(_ d: CalendarDay, _ hours: Double, _ zone: TimeZone) -> Date {
     var cal = Calendar(identifier: .gregorian)
     cal.timeZone = zone
     let start = cal.date(from: DateComponents(year: d.year, month: d.month, day: d.day)) ?? Date()

@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import CoreMotion
 import SaatCore
 
 /*
@@ -102,11 +103,12 @@ enum Quran {
 private struct ArabicText: View {
     let text: String
     let size: CGFloat
+    var color: Color = Theme.ink
     var body: some View {
         Text(text)
             .font(.system(size: size))
             .lineSpacing(size * 0.5)
-            .foregroundStyle(Theme.ink)
+            .foregroundStyle(color)
             .multilineTextAlignment(.leading)
             .frame(maxWidth: .infinity, alignment: .leading)
             .environment(\.layoutDirection, .rightToLeft)
@@ -139,6 +141,7 @@ struct QuranView: View {
         }
         ScrollView {
             LazyVStack(spacing: 6) {
+                HatimCard().padding(.bottom, 4)
                 if let mark = Quran.parse(bookmark), mark.0 >= 1, mark.0 <= data.suras.count {
                     NavigationLink {
                         SuraView(sura: mark.0, start: mark.1)
@@ -204,13 +207,16 @@ struct SuraView: View {
     @AppStorage(Quran.bookmarkKey) private var bookmark = ""
     @AppStorage("quran.size") private var size = 24
     @AppStorage("quran.en") private var showEn = AppLocale.code == "en" || AppLocale.code == "de"
+    @AppStorage(QuranPlan.themeKey) private var theme = "app"
 
     var body: some View {
         let s = Quran.data.suras[max(0, min(sura, Quran.data.suras.count) - 1)]
+        let pal = QuranPlan.palette(theme)
         ScrollViewReader { proxy in
             ScrollView {
                 LazyVStack(spacing: 10) {
-                    Toggle(L("quran.showEn"), isOn: $showEn).tint(Theme.accent).font(.subheadline)
+                    QuranReadingOptions()
+                    Toggle(L("quran.showEn"), isOn: $showEn).tint(Theme.accent).font(.subheadline).foregroundStyle(pal.ink)
                     if turkic {
                         Link(destination: Quran.diyanetURL(sura, 1)) {
                             Label(L("quran.diyanet"), systemImage: "arrow.up.right.square")
@@ -233,16 +239,16 @@ struct SuraView: View {
                                     Link(L("quran.meal"), destination: Quran.diyanetURL(sura, a)).font(.caption).tint(Theme.accent)
                                 }
                             }
-                            ArabicText(text: Quran.ar(sura, a), size: CGFloat(size))
+                            ArabicText(text: Quran.ar(sura, a), size: CGFloat(size), color: pal.ink)
                             if showEn {
-                                Text(Quran.en(sura, a)).font(.subheadline).foregroundStyle(Theme.muted)
+                                Text(Quran.en(sura, a)).font(.subheadline).foregroundStyle(pal.muted)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
                         .padding(12)
-                        .background(marked ? Theme.accentSoft : Theme.surface, in: RoundedRectangle(cornerRadius: 12))
+                        .background(marked ? pal.soft : pal.card, in: RoundedRectangle(cornerRadius: 12))
                         .contentShape(Rectangle())
-                        .onTapGesture { bookmark = "\(sura):\(a)" }
+                        .onTapGesture { QuranPlan.setBookmark(sura, a) }
                         .id(a)
                     }
                     QuranCredits()
@@ -252,7 +258,7 @@ struct SuraView: View {
             }
             .onAppear { if start > 1 { proxy.scrollTo(start, anchor: .top) } }
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(pal.bg.ignoresSafeArea())
         .navigationTitle("\(s.no). \(s.title)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -270,6 +276,7 @@ struct SuraView: View {
 
 struct Dua: Identifiable, Sendable {
     let id: String, title: String, when: String, ar: String, okunus: String, mean: String?, refs: [String]
+    var cats: [String] = []
 }
 
 enum Duas {
@@ -282,6 +289,7 @@ enum Duas {
             let okunus: String?
             let mean: [String: String]
             let refs: [String]?
+            let cat: [String]?
         }
         let raw = Bundle.main.url(forResource: "duas", withExtension: "json")
             .flatMap { try? Data(contentsOf: $0) }
@@ -294,18 +302,73 @@ enum Duas {
                 else if !refs.isEmpty { !["tr", "az", "ar", "fa", "ur"].contains(lang) ? r.mean["en"] : nil }
                 else { r.mean[lang] ?? r.mean["en"] }
             return Dua(id: r.id, title: r.title[lang] ?? r.title["en"] ?? r.id, when: r.when[lang] ?? r.when["en"] ?? "",
-                       ar: r.ar, okunus: r.okunus ?? "", mean: mean, refs: refs)
+                       ar: r.ar, okunus: r.okunus ?? "", mean: mean, refs: refs, cats: r.cat ?? [])
         }
     }()
+
+    static let cats = ["prayer", "faith", "quran", "family", "forgiveness", "daily", "ramadan"]
+    static let favsKey = "dua.favs"
 }
 
 struct DuasView: View {
+    @AppStorage(Duas.favsKey) private var favsRaw = ""
+    @State private var query = ""
+    @State private var cat = "all"
+
+    private var favs: Set<String> { Set(favsRaw.split(separator: ",").map(String.init)) }
+
     var body: some View {
+        let today = CalendarDay(Date())
+        // Ramazan'da günün duası: Kur'an'daki dualardan sırayla (2. analiz #69)
+        let ramadanDay = CalendarData.shared.ramadans.first { $0.from <= today && today <= $0.to }.map { today.dayNumber - $0.from.dayNumber + 1 }
+        let quranDuas = Duas.all.filter { !$0.refs.isEmpty }
+        let q = query.trimmingCharacters(in: .whitespaces).lowercased()
+        let list = Duas.all.filter { d in
+            (cat == "all" || (cat == "fav" && favs.contains(d.id)) || d.cats.contains(cat)) &&
+                (q.isEmpty || [d.title, d.when, d.okunus, d.mean ?? "", d.ar].contains { $0.lowercased().contains(q) })
+        }
         ScrollView {
             VStack(spacing: 12) {
-                ForEach(Duas.all) { d in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(["all", "fav"] + Duas.cats, id: \.self) { c in
+                            Button { cat = c } label: {
+                                Text(L("dua.cat.\(c)")).font(.subheadline)
+                                    .foregroundStyle(c == cat ? Color.white : Theme.text)
+                                    .padding(.horizontal, 12).padding(.vertical, 7)
+                                    .background(c == cat ? Theme.accent : Theme.surface2, in: Capsule())
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityAddTraits(c == cat ? .isSelected : [])
+                        }
+                    }
+                }
+                if let n = ramadanDay, !quranDuas.isEmpty, q.isEmpty, cat == "all" {
+                    let d = quranDuas[(n - 1) % quranDuas.count]
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(d.title).font(.title3.weight(.semibold)).foregroundStyle(Theme.text)
+                        Text(T("dua.ramadanDay", n)).font(.footnote.weight(.semibold)).foregroundStyle(Theme.muted)
+                        Text(d.title).font(.headline).foregroundStyle(Theme.text)
+                        ArabicText(text: d.ar, size: 22)
+                        Text(L("dua.ramadanNote")).font(.caption).foregroundStyle(Theme.muted)
+                    }
+                    .padding(14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(Theme.accentSoft, in: RoundedRectangle(cornerRadius: 14))
+                }
+                if list.isEmpty {
+                    Text(L("dua.empty")).foregroundStyle(Theme.muted).frame(maxWidth: .infinity, alignment: .leading)
+                }
+                ForEach(list) { d in
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack(alignment: .top) {
+                            Text(d.title).font(.title3.weight(.semibold)).foregroundStyle(Theme.text)
+                            Spacer()
+                            let fav = favs.contains(d.id)
+                            Button { toggleFav(d.id) } label: {
+                                Image(systemName: fav ? "star.fill" : "star").foregroundStyle(Theme.accent)
+                            }
+                            .accessibilityLabel(L(fav ? "dua.unfav" : "dua.fav"))
+                        }
                         Text(d.when).font(.caption).foregroundStyle(Theme.muted)
                         ArabicText(text: d.ar, size: 22)
                         if turkic, !d.okunus.isEmpty {
@@ -327,9 +390,16 @@ struct DuasView: View {
             }
             .padding(16)
         }
+        .searchable(text: $query, prompt: L("dua.search"))
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle(L("dua.title"))
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func toggleFav(_ id: String) {
+        var f = favs
+        if f.contains(id) { f.remove(id) } else { f.insert(id) }
+        favsRaw = f.sorted().joined(separator: ",")
     }
 }
 
@@ -355,28 +425,71 @@ enum Zikir {
     }
 }
 
+/// Kendi zikirleri (`zikir.custom`: [{id, n, a}], en çok 20; 2. analiz #70)
+enum ZikirCustom {
+    struct Item: Codable, Identifiable, Hashable { let id: String; let n: String; let a: String }
+    static let key = "zikir.custom"
+    static func load(_ raw: String) -> [Item] { raw.data(using: .utf8).flatMap { try? JSONDecoder().decode([Item].self, from: $0) } ?? [] }
+    static func encode(_ l: [Item]) -> String {
+        (try? JSONEncoder().encode(Array(l.suffix(20)))).map { String(decoding: $0, as: UTF8.self) } ?? "[]"
+    }
+}
+
+/// Sallayınca bir geri al (ivmeölçer 2,3 g üstü, 1 sn bekleme)
+@MainActor
+final class ShakeWatcher: ObservableObject {
+    private let motion = CMMotionManager()
+    private var last = Date.distantPast
+    private var onShake: (() -> Void)?
+    func start(_ onShake: @escaping () -> Void) {
+        self.onShake = onShake
+        guard motion.isAccelerometerAvailable, !motion.isAccelerometerActive else { return }
+        motion.accelerometerUpdateInterval = 0.05
+        motion.startAccelerometerUpdates(to: .main) { [weak self] data, _ in
+            guard let self, let a = data?.acceleration else { return }
+            let g = (a.x * a.x + a.y * a.y + a.z * a.z).squareRoot()
+            MainActor.assumeIsolated { self.hit(g) }
+        }
+    }
+    private func hit(_ g: Double) {
+        if g > 2.3, Date().timeIntervalSince(last) > 1 { last = Date(); onShake?() }
+    }
+    func stop() { motion.stopAccelerometerUpdates() }
+}
+
 struct ZikirView: View {
     @AppStorage("zikir.kind") private var kind = "subhanallah"
     @AppStorage("zikir.target") private var target = 33
     @AppStorage("zikir.tesbihat") private var tesbihat = false
     @AppStorage("zikir.count") private var count = 0
     @AppStorage("zikir.total") private var total = 0
+    @AppStorage("zikir.beads") private var beads = false
+    @AppStorage("zikir.shake") private var shakeUndo = false
+    @AppStorage(ZikirCustom.key) private var customRaw = "[]"
     /// "yyyy-MM-dd|sayı"
     @AppStorage("zikir.today") private var todayRaw = ""
     @State private var confirm = false
+    @State private var adding = false
+    @State private var newName = ""
+    @State private var newAr = ""
+    @State private var deleting: ZikirCustom.Item?
+    @StateObject private var shake = ShakeWatcher()
 
     private var todayKey: String { CalendarDay(Date()).iso }
     private var todayCount: Int {
         let p = todayRaw.split(separator: "|")
         return p.count == 2 && p[0] == todayKey ? Int(p[1]) ?? 0 : 0
     }
+    private var custom: [ZikirCustom.Item] { ZikirCustom.load(customRaw) }
+    private var kinds: [Zikir.Kind] { Zikir.kinds + custom.map { Zikir.Kind(id: $0.id, ar: $0.a) } }
+    private func nameOf(_ id: String) -> String { custom.first { $0.id == id }?.n ?? Zikir.name(id) }
 
     private var step: (kind: String, done: Bool) {
         tesbihat ? Zikir.tesbihatStep(count) : (kind: kind, done: target > 0 && count >= target)
     }
 
     var body: some View {
-        let shown = Zikir.kinds.first { $0.id == step.kind } ?? Zikir.kinds[0]
+        let shownAr = kinds.first { $0.id == step.kind }?.ar ?? ""
         let done = step.done
         ScrollView {
             VStack(spacing: 14) {
@@ -385,14 +498,24 @@ struct ZikirView: View {
                 if !tesbihat {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 8) {
-                            ForEach(Zikir.kinds) { k in
+                            ForEach(kinds) { k in
                                 Button { kind = k.id; count = 0 } label: {
-                                    Text(Zikir.name(k.id))
+                                    Text(nameOf(k.id))
                                         .font(.subheadline)
                                         .foregroundStyle(k.id == kind ? Theme.accent : Theme.text)
                                         .padding(.horizontal, 12).padding(.vertical, 7)
                                         .background(k.id == kind ? Theme.accentSoft : Theme.surface2, in: Capsule())
                                 }
+                                .contextMenu {
+                                    if let item = custom.first(where: { $0.id == k.id }) {
+                                        Button(L("zikir.delete"), role: .destructive) { deleting = item }
+                                    }
+                                }
+                            }
+                            Button { newName = ""; newAr = ""; adding = true } label: {
+                                Text("+ " + L("zikir.add")).font(.subheadline).foregroundStyle(Theme.accent)
+                                    .padding(.horizontal, 12).padding(.vertical, 7)
+                                    .background(Theme.surface2, in: Capsule())
                             }
                         }
                     }
@@ -405,37 +528,62 @@ struct ZikirView: View {
                     .tint(Theme.accent)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                if !shown.ar.isEmpty {
-                    Text(shown.ar).font(.system(size: 30)).foregroundStyle(Theme.ink).multilineTextAlignment(.center)
+                if !shownAr.isEmpty {
+                    Text(shownAr).font(.system(size: 30)).foregroundStyle(Theme.ink).multilineTextAlignment(.center)
                 }
-                Text(Zikir.name(shown.id)).foregroundStyle(Theme.muted)
-                // Büyük dokunma alanı
-                Button(action: tap) {
+                Text(nameOf(step.kind)).foregroundStyle(Theme.muted)
+                // Büyük dokunma alanı: dokun = say, uzun bas = geri al, sağa/sola kaydır = zikir değiştir
+                ZStack {
+                    if beads {
+                        Canvas { ctx, size in
+                            let n = 33, r = min(size.width, size.height) / 2 * 0.86
+                            let c = CGPoint(x: size.width / 2, y: size.height / 2)
+                            let k = count % n
+                            for i in 0..<n {
+                                let a = (-90 + Double(i) * 360 / Double(n)) * .pi / 180
+                                let p = CGPoint(x: c.x + r * CGFloat(cos(a)), y: c.y + r * CGFloat(sin(a)))
+                                let br: CGFloat = i == k ? 13 : 9
+                                let on = i < k || (done && k == 0 && count > 0)
+                                ctx.fill(Path(ellipseIn: CGRect(x: p.x - br, y: p.y - br, width: 2 * br, height: 2 * br)),
+                                         with: .color(on ? Theme.accent : Theme.surface2))
+                            }
+                            ctx.fill(Path(ellipseIn: CGRect(x: c.x - 7, y: c.y - r - 23, width: 14, height: 14)), with: .color(Theme.accent.opacity(0.8)))
+                        }
+                    } else {
+                        Circle().fill(done ? Theme.accent : Theme.accentSoft)
+                    }
                     VStack(spacing: 4) {
                         Text("\(count)").font(.system(size: 64, weight: .bold)).monospacedDigit()
-                            .foregroundStyle(done ? Color.white : Theme.ink)
+                            .foregroundStyle(done && !beads ? Color.white : Theme.ink)
                         let goal = tesbihat ? 99 : target
                         if goal > 0 {
-                            Text("/ \(goal)").monospacedDigit().foregroundStyle(done ? Color.white : Theme.muted)
+                            Text("/ \(goal)").monospacedDigit().foregroundStyle(done && !beads ? Color.white : Theme.muted)
                         }
                     }
                     .environment(\.layoutDirection, .leftToRight)
-                    .frame(width: 240, height: 240)
-                    .background(done ? Theme.accent : Theme.accentSoft, in: Circle())
                 }
-                .buttonStyle(.plain)
+                .frame(width: 260, height: 260)
+                .contentShape(Circle())
+                .onTapGesture(perform: tap)
+                .onLongPressGesture(perform: undo)
+                .gesture(DragGesture(minimumDistance: 30).onEnded { v in
+                    if abs(v.translation.width) > 80 { switchKind(v.translation.width < 0 ? 1 : -1) }
+                })
+                .accessibilityElement(children: .ignore)
+                .accessibilityAddTraits(.isButton)
                 .accessibilityLabel(L("zikir.tap"))
                 .accessibilityValue("\(count)")
+                .accessibilityAction { tap() }
+                .accessibilityAction(named: L("zikir.undo")) { undo() }
                 if done { Text(L("zikir.done")).fontWeight(.semibold).foregroundStyle(Theme.accent) }
                 HStack(spacing: 12) {
-                    Button("−1") {
-                        guard count > 0 else { return }
-                        count -= 1; total = max(0, total - 1); setToday(max(0, todayCount - 1))
-                    }
-                    .buttonStyle(.bordered)
+                    Button(L("zikir.undo"), action: undo).buttonStyle(.bordered)
                     Button(L("zikir.reset")) { confirm = true }.buttonStyle(.bordered)
                 }
                 .tint(Theme.accent)
+                Text(L("zikir.undoHint")).font(.caption).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
+                Toggle(L("zikir.beads"), isOn: $beads).tint(Theme.accent)
+                Toggle(L("zikir.shakeUndo"), isOn: $shakeUndo).tint(Theme.accent)
                 VStack(spacing: 8) {
                     row(L("zikir.today"), todayCount)
                     row(L("zikir.total"), total)
@@ -449,8 +597,33 @@ struct ZikirView: View {
         .background(Theme.bg.ignoresSafeArea())
         .navigationTitle(L("zikir.title"))
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear { if shakeUndo { shake.start(undo) } }
+        .onDisappear { shake.stop() }
+        .onChange(of: shakeUndo) { if shakeUndo { shake.start(undo) } else { shake.stop() } }
         .confirmationDialog(L("zikir.resetConfirm"), isPresented: $confirm, titleVisibility: .visible) {
             Button(L("zikir.reset"), role: .destructive) { count = 0 }
+        }
+        .confirmationDialog(deleting?.n ?? "", isPresented: Binding(get: { deleting != nil }, set: { if !$0 { deleting = nil } }), titleVisibility: .visible) {
+            Button(L("zikir.delete"), role: .destructive) {
+                if let d = deleting {
+                    customRaw = ZikirCustom.encode(custom.filter { $0.id != d.id })
+                    if kind == d.id { kind = "subhanallah"; count = 0 }
+                }
+                deleting = nil
+            }
+        }
+        .alert(L("zikir.add"), isPresented: $adding) {
+            TextField(L("zikir.name"), text: $newName)
+            TextField(L("zikir.arabic"), text: $newAr)
+            Button(L("zikir.add")) {
+                let name = newName.trimmingCharacters(in: .whitespaces)
+                guard !name.isEmpty else { return }
+                let item = ZikirCustom.Item(id: "c\(Int(Date().timeIntervalSince1970 * 1000))", n: String(name.prefix(60)),
+                                            a: String(newAr.trimmingCharacters(in: .whitespaces).prefix(120)))
+                customRaw = ZikirCustom.encode(custom + [item])
+                kind = item.id; count = 0
+            }
+            Button(L("badges.deleteNo"), role: .cancel) {}
         }
     }
 
@@ -463,6 +636,20 @@ struct ZikirView: View {
     }
 
     private func setToday(_ n: Int) { todayRaw = "\(todayKey)|\(n)" }
+
+    private func switchKind(_ dir: Int) {
+        guard !tesbihat else { return }
+        let ids = kinds.map(\.id)
+        let i = ids.firstIndex(of: kind) ?? 0
+        kind = ids[(i + dir + ids.count) % ids.count]; count = 0
+        UISelectionFeedbackGenerator().selectionChanged()
+    }
+
+    private func undo() {
+        guard count > 0 else { return }
+        count -= 1; total = max(0, total - 1); setToday(max(0, todayCount - 1))
+        UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+    }
 
     private func tap() {
         count += 1; total += 1; setToday(todayCount + 1)
@@ -522,10 +709,12 @@ enum Tracker {
 
     static func clear() {
         for k in ["track.prayer", "track.kaza", "track.fast"] { UserDefaults.standard.removeObject(forKey: k) }
+        TrackX.clearExtras()
     }
 }
 
 struct TrackerView: View {
+    @AppStorage(TrackX.inlineKey) private var inline = true
     @State private var day = CalendarDay(Date())
     @State private var version = 0
     @State private var confirm = false
@@ -570,16 +759,22 @@ struct TrackerView: View {
                         .accessibilityAddTraits(on ? .isSelected : [])
                     }
                     Text(T("track.week", Tracker.weekCount(today))).font(.footnote).foregroundStyle(Theme.muted)
+                    PauseRow(version: $version).padding(.top, 6)
+                    Toggle(L("track.inline"), isOn: $inline).tint(Theme.accent)
+                    Text(L("track.inlineNote")).font(.caption).foregroundStyle(Theme.muted)
                 }
                 .card()
+                TrackerStatsCard(today: today, version: version)
                 VStack(alignment: .leading, spacing: 8) {
                     Text(L("track.kaza")).font(.headline).foregroundStyle(Theme.text)
                     ForEach(Tracker.kaza, id: \.self) { k in
                         counter(L("track.prayer.\(k)"), id: k)
                     }
+                    KazaPace()
                     Text(L("track.kazaNote")).font(.caption).foregroundStyle(Theme.muted)
                 }
                 .card()
+                LifetimeKazaCard { version += 1 }
                 VStack(alignment: .leading, spacing: 8) {
                     Text(L("track.fast")).font(.headline).foregroundStyle(Theme.text)
                     if let ramadan {
@@ -607,7 +802,7 @@ struct TrackerView: View {
                             .environment(\.layoutDirection, .leftToRight)
                         }
                     }
-                    counter(L("track.kazaFast"), id: "fast")
+                    FastKazaRows(version: $version)
                 }
                 .card()
                 Text(L("track.privacy")).font(.caption).foregroundStyle(Theme.muted)
@@ -618,6 +813,7 @@ struct TrackerView: View {
             .id(version)
         }
         .background(Theme.bg.ignoresSafeArea())
+        .onAppear { TrackX.migrate(); version += 1 }
         .navigationTitle(L("track.title"))
         .navigationBarTitleDisplayMode(.inline)
         .confirmationDialog(L("track.clearConfirm"), isPresented: $confirm, titleVisibility: .visible) {
@@ -629,7 +825,10 @@ struct TrackerView: View {
         HStack {
             Text(title).foregroundStyle(Theme.text)
             Spacer()
-            Button { Tracker.setKaza(id, Tracker.kaza(id) - 1); version += 1 } label: { Image(systemName: "minus.circle") }
+            Button {
+                if Tracker.kaza(id) > 0 { Tracker.setKaza(id, Tracker.kaza(id) - 1); TrackX.logKazaPrayed() }
+                version += 1
+            } label: { Image(systemName: "minus.circle") }
                 .accessibilityLabel(L("track.kazaPrayed"))
             Text("\(Tracker.kaza(id))").font(.body.weight(.semibold)).monospacedDigit().frame(minWidth: 44)
                 .foregroundStyle(Theme.text)
@@ -789,6 +988,8 @@ struct WorshipLinks: View {
             link(L("guide.title"), "figure.mind.and.body") { PrayerGuideView() }
             link(L("zikir.title"), "hand.tap") { ZikirView() }
             link(L("track.title"), "checklist") { TrackerView() }
+            link(L("relday.title"), "calendar.badge.clock") { ReligiousDaysView() }
+            link(L("greet.title"), "gift") { GreetingView() }
             link(L("zakat.title"), "percent") { ZakatView() }
         }
     }

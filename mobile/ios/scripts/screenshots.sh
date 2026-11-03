@@ -73,11 +73,15 @@ shoot tr tr_TR light ekran-look-renk-akisi -openScreen look -fsBg flow
 shoot en en_US light ekran-world-en -openScreen world
 shoot ar ar_SA dark ekran-qibla-ar -openScreen qibla
 # İbadet: Kur'an (liste, Yâsîn; İngilizce meal açık, Arapça koyu), dualar, zikirmatik, takip, zekât
-for S in sura duas track zakat esma hadith guide leaf method journal planner; do
+for S in sura duas track zakat esma hadith guide leaf method journal planner reldays greet; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
 shoot tr tr_TR light ekran-quran -openScreen quran -quran.bookmark "<string>18:10</string>"
 shoot tr tr_TR light ekran-zikir -openScreen zikir -zikir.tesbihat "<true/>" -zikir.count "<integer>41</integer>" -zikir.total "<integer>1250</integer>"
+# 1. dalga D: tesbih görünümü, Kur'an zemini (sepya) ve hatim, vakitlerde 24 saat kadranı ve sözle kalan süre
+shoot tr tr_TR light ekran-zikir-tesbih -openScreen zikir -zikir.beads "<true/>" -zikir.count "<integer>21</integer>"
+shoot tr tr_TR light ekran-sura-sepya -openScreen sura -quran.theme "<string>sepia</string>" -quran.goal "<integer>20</integer>"
+shoot tr tr_TR light tr-vakitler-kadran -startTab 5 -prayer.visual "<string>dial</string>" -prayer.words "<true/>"
 shoot en en_US light ekran-sura-en -openScreen sura
 shoot ar ar_SA dark ekran-sura-ar -openScreen sura
 shoot en en_US dark ekran-hadith-en -openScreen hadith
