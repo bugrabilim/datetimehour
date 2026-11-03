@@ -46789,7 +46789,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "دیانت این اوقات را منتشر نمی‌کند. با تعریف‌های تقویم ترکیه محاسبه می‌شود: اشراق و اصفرار وقتی خورشید ۵ درجه بالای افق است، اشتباک نجوم ۱۰ و عشای دوم ۱۹ درجه زیر آن؛ ضحوه کبری میانه امساک و مغرب؛ شب از مغرب تا امساک."
+            "value": "دیانت این اوقات را منتشر نمی‌کند. با تعریف‌های تقویم ترکیه محاسبه می‌شود: اشراق و اصفرار وقتی خورشید 5 درجه بالای افق است، اشتباک نجوم 10 و عشای دوم 19 درجه زیر آن؛ ضحوه کبری میانه امساک و مغرب؛ شب از مغرب تا امساک."
           }
         },
         "fr": {
@@ -47074,7 +47074,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "همان قاعده اوقات منتشرشده دیانت (۳۸ دقیقه پس از طلوع)؛ ساعت دقیق اعلام مفتی استان است."
+            "value": "همان قاعده اوقات منتشرشده دیانت (38 دقیقه پس از طلوع)؛ ساعت دقیق اعلام مفتی استان است."
           }
         },
         "fr": {
@@ -47454,7 +47454,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "چله (۴۰ روز سردترین زمستان)"
+            "value": "چله (40 روز سردترین زمستان)"
           }
         },
         "fr": {
@@ -47549,7 +47549,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "خمسین (نیمه دوم ۵۰ روزه زمستان)"
+            "value": "خمسین (نیمه دوم 50 روزه زمستان)"
           }
         },
         "fr": {
@@ -140744,7 +140744,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "مکانیکی (۸ گام در ثانیه)"
+            "value": "مکانیکی (8 گام در ثانیه)"
           }
         },
         "fr": {
@@ -141694,7 +141694,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "مدل ساعت ۲۱ دو صفحه دارد: چپ اینجا، راست این شهر. با لمس نام شهر هم می‌توانید آن را عوض کنید."
+            "value": "مدل ساعت 21 دو صفحه دارد: چپ اینجا، راست این شهر. با لمس نام شهر هم می‌توانید آن را عوض کنید."
           }
         },
         "fr": {
@@ -144639,7 +144639,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "۴-۷-۸ (آرامش)"
+            "value": "4-7-8 (آرامش)"
           }
         },
         "fr": {
@@ -144734,7 +144734,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "تنفس جعبه‌ای (۴-۴-۴-۴)"
+            "value": "تنفس جعبه‌ای (4-4-4-4)"
           }
         },
         "fr": {
@@ -144829,7 +144829,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "آرام (۴-۶)"
+            "value": "آرام (4-6)"
           }
         },
         "fr": {
@@ -144924,7 +144924,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "متعادل (۵٫۵-۵٫۵)"
+            "value": "متعادل (5.5-5.5)"
           }
         },
         "fr": {
@@ -145874,7 +145874,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "۷ روز"
+            "value": "7 روز"
           }
         },
         "fr": {
@@ -145969,7 +145969,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "۳۰ روز"
+            "value": "30 روز"
           }
         },
         "fr": {
@@ -146064,7 +146064,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "۱۲ ماه"
+            "value": "12 ماه"
           }
         },
         "fr": {
@@ -146349,7 +146349,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "هر نوبت کاری کامل یک درخت می‌کارد: کمتر از ۲۵ دقیقه نهال، تا ۵۰ دقیقه درخت و بیشتر از آن درخت تنومند."
+            "value": "هر نوبت کاری کامل یک درخت می‌کارد: کمتر از 25 دقیقه نهال، تا 50 دقیقه درخت و بیشتر از آن درخت تنومند."
           }
         },
         "fr": {
@@ -148534,7 +148534,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "کمبود خواب ۷ روز اخیر: %1$@"
+            "value": "کمبود خواب 7 روز اخیر: %1$@"
           }
         },
         "fr": {
@@ -148629,7 +148629,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "در ۷ روز اخیر کمبود خواب نیست"
+            "value": "در 7 روز اخیر کمبود خواب نیست"
           }
         },
         "fr": {
@@ -150244,7 +150244,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "با برنامه خواب: یادآوری کافئین ۸ ساعت، صفحه‌نمایش ۱ ساعت و روال شبانه ۳۰ دقیقه پیش از خواب."
+            "value": "با برنامه خواب: یادآوری کافئین 8 ساعت، صفحه‌نمایش 1 ساعت و روال شبانه 30 دقیقه پیش از خواب."
           }
         },
         "fr": {
@@ -151289,7 +151289,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "در یادداشت برچسب‌هایی مثل #قهوه یا #ورزش بنویسید؛ ۳۰ روز اخیر اینجا شمرده می‌شود و با لمس فیلتر می‌شود."
+            "value": "در یادداشت برچسب‌هایی مثل #قهوه یا #ورزش بنویسید؛ 30 روز اخیر اینجا شمرده می‌شود و با لمس فیلتر می‌شود."
           }
         },
         "fr": {
@@ -153664,7 +153664,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "برآوردی تقریبی است: روزهای میان سن بلوغ (در مذهب حنفی حداکثر ۱۵) و سال آغاز نماز مرتب، با وتر، شمرده می‌شود. در صورت تردید از عالم دینی بپرسید."
+            "value": "برآوردی تقریبی است: روزهای میان سن بلوغ (در مذهب حنفی حداکثر 15) و سال آغاز نماز مرتب، با وتر، شمرده می‌شود. در صورت تردید از عالم دینی بپرسید."
           }
         },
         "fr": {
@@ -153854,7 +153854,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "با روزی ۵ قضا حدود %1$@ طول می‌کشد"
+            "value": "با روزی 5 قضا حدود %1$@ طول می‌کشد"
           }
         },
         "fr": {
@@ -154994,7 +154994,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "۷ روز اخیر"
+            "value": "7 روز اخیر"
           }
         },
         "fr": {
@@ -155089,7 +155089,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "۱۲ ماه اخیر"
+            "value": "12 ماه اخیر"
           }
         },
         "fr": {
@@ -160789,7 +160789,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "یک ساعت را لمس کنید؛ برای بازه ساعت دوم را لمس کنید. با لمس نام شهر، آن ستون بین ۱۲ و ۲۴ ساعته عوض می‌شود."
+            "value": "یک ساعت را لمس کنید؛ برای بازه ساعت دوم را لمس کنید. با لمس نام شهر، آن ستون بین 12 و 24 ساعته عوض می‌شود."
           }
         },
         "fr": {
@@ -161497,6 +161497,3141 @@
           "stringUnit": {
             "state": "translated",
             "value": "ไม่มีตลาดเปิดในเวลานี้"
+          }
+        }
+      }
+    },
+    "support.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destek ve paylaşım"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Support and sharing"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Support und Teilen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dəstək və paylaşma"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الدعم والمشاركة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dukungan dan berbagi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "معاونت اور شیئرنگ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پشتیبانی و اشتراک‌گذاری"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assistance et partage"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поддержка и общий доступ"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サポートと共有"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지원 및 공유"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持与分享"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suporta at pagbabahagi"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การสนับสนุนและการแชร์"
+          }
+        }
+      }
+    },
+    "support.rate": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamayı puanla"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rate the app"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App bewerten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqi qiymətləndir"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قيّم التطبيق"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beri nilai aplikasi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایپ کی درجہ بندی کریں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "به برنامه امتیاز دهید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noter l'application"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оценить приложение"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリを評価"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앱 평가하기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "为应用评分"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I-rate ang app"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ให้คะแนนแอป"
+          }
+        }
+      }
+    },
+    "support.share": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arkadaşlarınla paylaş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share with friends"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit Freunden teilen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dostlarınla paylaş"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شاركه مع أصدقائك"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bagikan ke teman"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دوستوں کے ساتھ شیئر کریں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "با دوستانتان به اشتراک بگذارید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partager avec des amis"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поделиться с друзьями"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "友だちに共有"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "친구에게 공유"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分享给朋友"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ibahagi sa mga kaibigan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แชร์ให้เพื่อน"
+          }
+        }
+      }
+    },
+    "support.shareText": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: saat, takvim, namaz vakitleri ve araçlar; reklamsız ve ücretsiz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: clock, calendar, prayer times and tools; free with no ads."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: Uhr, Kalender, Gebetszeiten und Werkzeuge – kostenlos und ohne Werbung."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: saat, təqvim, namaz vaxtları və alətlər; reklamsız və pulsuz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: الساعة والتقويم ومواقيت الصلاة والأدوات؛ مجاني وبلا إعلانات."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: jam, kalender, waktu salat, dan alat; gratis tanpa iklan."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: گھڑی، کیلنڈر، نماز کے اوقات اور ٹولز؛ مفت اور اشتہارات کے بغیر۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: ساعت، تقویم، اوقات نماز و ابزارها؛ رایگان و بدون تبلیغ."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ : horloge, calendrier, heures de prière et outils ; gratuit et sans publicité."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: часы, календарь, время намаза и инструменты; бесплатно и без рекламы."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@：時計、カレンダー、礼拝時刻、ツール。無料で広告なし。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: 시계, 캘린더, 기도 시간, 도구. 무료이며 광고 없음."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@：时钟、日历、礼拜时间和工具，免费且无广告。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: orasan, kalendaryo, oras ng pagdarasal at mga tool; libre at walang ad."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@: นาฬิกา ปฏิทิน เวลาละหมาด และเครื่องมือ ฟรีและไม่มีโฆษณา"
+          }
+        }
+      }
+    },
+    "support.qr": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR kodla paylaş"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share with a QR code"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Per QR-Code teilen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR kodla paylaş"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شارك برمز QR"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bagikan dengan kode QR"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR کوڈ سے شیئر کریں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اشتراک با کد QR"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Partager avec un code QR"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Поделиться QR-кодом"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QRコードで共有"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "QR 코드로 공유"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用二维码分享"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ibahagi gamit ang QR code"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แชร์ด้วยคิวอาร์โค้ด"
+          }
+        }
+      }
+    },
+    "support.qrNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonun kamerasıyla okutunca time.bumba.tr açılır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan it with a phone camera to open time.bumba.tr."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mit der Handykamera scannen, um time.bumba.tr zu öffnen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonun kamerası ilə oxudanda time.bumba.tr açılır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "امسحه بكاميرا الهاتف لفتح time.bumba.tr."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pindai dengan kamera ponsel untuk membuka time.bumba.tr."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فون کے کیمرے سے اسکین کریں تو time.bumba.tr کھل جائے گا۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "با دوربین گوشی اسکن کنید تا time.bumba.tr باز شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scannez-le avec l'appareil photo d'un téléphone pour ouvrir time.bumba.tr."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отсканируйте камерой телефона, чтобы открыть time.bumba.tr."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スマホのカメラで読み取ると time.bumba.tr が開きます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰 카메라로 스캔하면 time.bumba.tr이 열립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用手机相机扫描即可打开 time.bumba.tr。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I-scan gamit ang camera ng telepono para buksan ang time.bumba.tr."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สแกนด้วยกล้องโทรศัพท์เพื่อเปิด time.bumba.tr"
+          }
+        }
+      }
+    },
+    "support.feedback": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geri bildirim gönder"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send feedback"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feedback senden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rəy göndər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أرسل ملاحظاتك"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kirim masukan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رائے بھیجیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ارسال بازخورد"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Envoyer un commentaire"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отправить отзыв"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "フィードバックを送る"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "의견 보내기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "发送反馈"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magpadala ng feedback"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ส่งความคิดเห็น"
+          }
+        }
+      }
+    },
+    "support.feedbackSubject": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ geri bildirimi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ feedback"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feedback zu %1$@"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ rəyi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ملاحظات حول %1$@"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Masukan %1$@"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ کے بارے میں رائے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بازخورد %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Commentaire sur %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отзыв о приложении %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@へのフィードバック"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 의견"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$@ 反馈"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feedback sa %1$@"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ความคิดเห็นเกี่ยวกับ %1$@"
+          }
+        }
+      }
+    },
+    "support.feedbackNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-posta uygulamanız açılır. İletiye yalnız uygulama sürümü ve sistem sürümü eklenir; göndermeden önce görürsünüz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your email app opens. Only the app version and system version are added to the message, and you see them before sending."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ihre E-Mail-App öffnet sich. Der Nachricht werden nur App- und Systemversion hinzugefügt; Sie sehen sie vor dem Senden."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "E-poçt tətbiqiniz açılır. Məktuba yalnız tətbiq və sistem versiyası əlavə olunur; göndərməzdən əvvəl görürsünüz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يُفتح تطبيق البريد لديك. لا يُضاف إلى الرسالة إلا إصدار التطبيق وإصدار النظام، وتراهما قبل الإرسال."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aplikasi email Anda akan terbuka. Hanya versi aplikasi dan versi sistem yang ditambahkan ke pesan, dan Anda melihatnya sebelum mengirim."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کی ای میل ایپ کھلے گی۔ پیغام میں صرف ایپ اور سسٹم کا ورژن شامل ہوتا ہے، اور آپ بھیجنے سے پہلے اسے دیکھتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برنامه ایمیل شما باز می‌شود. فقط نسخه برنامه و نسخه سیستم به پیام افزوده می‌شود و پیش از ارسال آن را می‌بینید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre application de messagerie s'ouvre. Seules les versions de l'application et du système sont ajoutées au message ; vous les voyez avant l'envoi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Откроется почтовое приложение. В письмо добавляются только версия приложения и версия системы; вы увидите их перед отправкой."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メールアプリが開きます。メッセージに追加されるのはアプリとシステムのバージョンだけで、送信前に確認できます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이메일 앱이 열립니다. 메시지에는 앱 버전과 시스템 버전만 추가되며, 보내기 전에 확인할 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "将打开您的邮件应用。邮件中只附加应用版本和系统版本，发送前您可以看到。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Magbubukas ang email app mo. Bersyon lang ng app at ng system ang idinadagdag sa mensahe, at makikita mo ito bago ipadala."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แอปอีเมลจะเปิดขึ้น ข้อความจะมีเพียงเวอร์ชันแอปและเวอร์ชันระบบ ซึ่งคุณเห็นได้ก่อนส่ง"
+          }
+        }
+      }
+    },
+    "support.moreApps": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bumba'nın diğer ürünleri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "More from Bumba"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mehr von Bumba"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bumba-nın digər məhsulları"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "منتجات أخرى من Bumba"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Produk Bumba lainnya"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bumba کی دیگر مصنوعات"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "محصولات دیگر Bumba"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autres produits Bumba"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Другие продукты Bumba"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bumbaのほかの製品"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bumba의 다른 제품"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bumba 的其他产品"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Iba pang produkto ng Bumba"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผลิตภัณฑ์อื่นของ Bumba"
+          }
+        }
+      }
+    },
+    "support.version": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sürüm"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versiya"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الإصدار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ورژن"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نسخه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Версия"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バージョン"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "버전"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "版本"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bersyon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เวอร์ชัน"
+          }
+        }
+      }
+    },
+    "fontScale.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazı boyutu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text size"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Textgröße"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazı ölçüsü"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حجم النص"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ukuran teks"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متن کا سائز"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اندازه متن"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taille du texte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Размер текста"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文字サイズ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "글자 크기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文字大小"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laki ng teksto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขนาดตัวอักษร"
+          }
+        }
+      }
+    },
+    "fontScale.sample": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Örnek metin: öğle vaktine 1 saat 12 dakika kaldı."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sample text: 1 hour 12 minutes until Dhuhr."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Beispieltext: noch 1 Stunde 12 Minuten bis Dhuhr."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nümunə mətn: günorta namazına 1 saat 12 dəqiqə qaldı."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نص تجريبي: بقيت ساعة و12 دقيقة على الظهر."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contoh teks: 1 jam 12 menit lagi menuju Zuhur."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نمونہ متن: ظہر میں 1 گھنٹہ 12 منٹ باقی ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متن نمونه: 1 ساعت و 12 دقیقه تا ظهر مانده است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Texte d'exemple : 1 heure 12 minutes avant Dhuhr."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пример текста: до зухра 1 час 12 минут."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サンプル：ズフルまであと1時間12分。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "예시 문장: 주흐르까지 1시간 12분 남았습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "示例文字：距晌礼还有 1 小时 12 分钟。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halimbawang teksto: 1 oras at 12 minuto pa bago ang Dhuhr."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ข้อความตัวอย่าง: อีก 1 ชั่วโมง 12 นาทีถึงเวลาซุฮริ"
+          }
+        }
+      }
+    },
+    "fontScale.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uygulamadaki yazıları büyütür ya da küçültür. %%100 telefonun kendi ayarıdır."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Makes the app's text larger or smaller. 100%% is your phone's own setting."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vergrößert oder verkleinert die Texte der App. 100 %% ist die Einstellung Ihres Telefons."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tətbiqdəki yazıları böyüdür və ya kiçildir. 100%% telefonun öz ayarıdır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يكبّر نصوص التطبيق أو يصغّرها. 100%% هو إعداد هاتفك نفسه."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Memperbesar atau memperkecil teks aplikasi. 100%% adalah pengaturan ponsel Anda."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ایپ کے متن کو بڑا یا چھوٹا کرتا ہے۔ 100%% آپ کے فون کی اپنی ترتیب ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "متن‌های برنامه را بزرگ یا کوچک می‌کند. 100%% تنظیم خود گوشی شماست."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Agrandit ou réduit les textes de l'application. 100 %% correspond au réglage de votre téléphone."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Увеличивает или уменьшает текст в приложении. 100 %% — собственная настройка телефона."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリの文字を大きく、または小さくします。100%%は端末の設定どおりです。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앱의 글자를 크게 또는 작게 합니다. 100%%는 휴대폰 자체 설정입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "放大或缩小应用中的文字。100%% 为手机本身的设置。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pinalalaki o pinaliliit ang teksto ng app. Ang 100%% ay ang sariling setting ng telepono mo."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขยายหรือย่อตัวอักษรในแอป 100%% คือการตั้งค่าของโทรศัพท์เอง"
+          }
+        }
+      }
+    },
+    "perm.notNow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şimdi değil"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not now"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht jetzt"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İndi yox"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ليس الآن"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nanti saja"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابھی نہیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الان نه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pas maintenant"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не сейчас"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "今はしない"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나중에"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "以后再说"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi muna"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ไม่ใช่ตอนนี้"
+          }
+        }
+      }
+    },
+    "perm.allow": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İzin ver"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlauben"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İcazə ver"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "السماح"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izinkan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجازت دیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجازه دادن"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autoriser"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешить"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "許可する"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "허용"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "允许"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payagan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อนุญาต"
+          }
+        }
+      }
+    },
+    "perm.notify.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirimlere izin verin"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Allow notifications"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen erlauben"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirişlərə icazə verin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسمح بالإشعارات"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izinkan notifikasi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اطلاعات کی اجازت دیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجازه اعلان‌ها را بدهید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisez les notifications"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешите уведомления"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "通知を許可してください"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알림을 허용하세요"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "请允许通知"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payagan ang mga notification"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อนุญาตการแจ้งเตือน"
+          }
+        }
+      }
+    },
+    "perm.notify.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namaz vakitlerini, alarmları ve hatırlatmaları zamanında haber verebilmemiz için bildirim izni gerekir. İstemediğiniz bildirimi Ayarlar › Bildirimler'den kapatabilirsiniz."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We need notification permission to tell you about prayer times, alarms and reminders on time. You can turn off any notification you don't want in Settings › Notifications."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Damit wir Sie rechtzeitig an Gebetszeiten, Wecker und Erinnerungen erinnern können, brauchen wir die Mitteilungsberechtigung. Unerwünschte Mitteilungen schalten Sie unter Einstellungen › Mitteilungen aus."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Namaz vaxtlarını, zəngli saatları və xatırlatmaları vaxtında bildirə bilməyimiz üçün bildiriş icazəsi lazımdır. İstəmədiyiniz bildirişi Ayarlar › Bildirişlər bölməsindən söndürə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نحتاج إذن الإشعارات لننبهك إلى مواقيت الصلاة والمنبهات والتذكيرات في وقتها. يمكنك إيقاف أي إشعار لا تريده من الإعدادات › الإشعارات."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kami memerlukan izin notifikasi agar dapat memberi tahu waktu salat, alarm, dan pengingat tepat waktu. Notifikasi yang tidak Anda inginkan dapat dimatikan di Pengaturan › Notifikasi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نماز کے اوقات، الارم اور یاد دہانیاں وقت پر بتانے کے لیے ہمیں اطلاعات کی اجازت درکار ہے۔ جو اطلاع آپ نہ چاہیں اسے ترتیبات › اطلاعات سے بند کر سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای اینکه اوقات نماز، زنگ‌ها و یادآوری‌ها را به‌موقع خبر دهیم، به اجازه اعلان نیاز داریم. هر اعلانی را که نمی‌خواهید از تنظیمات › اعلان‌ها خاموش کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nous avons besoin de l'autorisation des notifications pour vous prévenir à temps des heures de prière, des alarmes et des rappels. Vous pouvez désactiver celles que vous ne voulez pas dans Réglages › Notifications."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешение на уведомления нужно, чтобы вовремя сообщать о времени намаза, будильниках и напоминаниях. Ненужные уведомления можно отключить в разделе «Настройки › Уведомления»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "礼拝時刻やアラーム、リマインダーを時間どおりにお知らせするには通知の許可が必要です。不要な通知は 設定 › 通知 でオフにできます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기도 시간, 알람, 알림을 제때 알려 드리려면 알림 권한이 필요합니다. 원하지 않는 알림은 설정 › 알림에서 끌 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我们需要通知权限，以便按时提醒您礼拜时间、闹钟和提醒事项。不需要的通知可以在“设置 › 通知”中关闭。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kailangan namin ng pahintulot sa notification para maipaalam sa oras ang mga oras ng pagdarasal, alarm at paalala. Mapapatay mo ang ayaw mong notification sa Mga Setting › Mga Notification."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เราต้องการสิทธิ์การแจ้งเตือนเพื่อแจ้งเวลาละหมาด นาฬิกาปลุก และการเตือนความจำได้ตรงเวลา คุณปิดการแจ้งเตือนที่ไม่ต้องการได้ที่ การตั้งค่า › การแจ้งเตือน"
+          }
+        }
+      }
+    },
+    "perm.alarm.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm izni"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm permission"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weckerberechtigung"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat icazəsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إذن المنبّه"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izin alarm"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم کی اجازت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجازه زنگ هشدار"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisation des alarmes"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешение на будильник"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラームの許可"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알람 권한"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "闹钟权限"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pahintulot sa alarm"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สิทธิ์นาฬิกาปลุก"
+          }
+        }
+      }
+    },
+    "perm.alarm.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sizi tam zamanında uyandırabilmemiz için alarm izni gerekir. Alarm, telefon sessizdeyken ve uygulama kapalıyken de çalar."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "We need alarm permission to wake you exactly on time. The alarm rings even when the phone is silent and the app is closed."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Damit wir Sie pünktlich wecken können, brauchen wir die Weckerberechtigung. Der Wecker klingelt auch im Stumm-Modus und bei geschlossener App."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sizi tam vaxtında oyada bilməyimiz üçün zəngli saat icazəsi lazımdır. Zəng telefon səssizdə olanda və tətbiq bağlı olanda da çalır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نحتاج إذن المنبّه لإيقاظك في الوقت المحدد تمامًا. يرنّ المنبّه حتى إن كان الهاتف صامتًا والتطبيق مغلقًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kami memerlukan izin alarm agar dapat membangunkan Anda tepat waktu. Alarm tetap berbunyi saat ponsel dalam mode senyap dan aplikasi tertutup."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کو بالکل وقت پر جگانے کے لیے ہمیں الارم کی اجازت درکار ہے۔ الارم فون کے خاموش ہونے اور ایپ کے بند ہونے پر بھی بجتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای اینکه شما را درست به‌موقع بیدار کنیم، به اجازه زنگ هشدار نیاز داریم. زنگ حتی وقتی گوشی بی‌صداست و برنامه بسته است هم به صدا درمی‌آید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nous avons besoin de l'autorisation des alarmes pour vous réveiller à l'heure exacte. L'alarme sonne même en mode silencieux et application fermée."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешение нужно, чтобы разбудить вас точно вовремя. Будильник звонит, даже если телефон на беззвучном и приложение закрыто."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "時間どおりに起こすにはアラームの許可が必要です。消音モードでもアプリを閉じていても鳴ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "제시간에 깨워 드리려면 알람 권한이 필요합니다. 휴대폰이 무음이고 앱이 닫혀 있어도 알람이 울립니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "我们需要闹钟权限才能准时叫醒您。即使手机静音、应用已关闭，闹钟也会响。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kailangan namin ng pahintulot sa alarm para magising ka nang eksakto sa oras. Tutunog ang alarm kahit naka-silent ang telepono at nakasara ang app."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เราต้องการสิทธิ์นาฬิกาปลุกเพื่อปลุกคุณให้ตรงเวลา นาฬิกาปลุกจะดังแม้โทรศัพท์ปิดเสียงและแอปปิดอยู่"
+          }
+        }
+      }
+    },
+    "perm.location.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konum izni"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location permission"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standortberechtigung"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Məkan icazəsi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إذن الموقع"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izin lokasi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مقام کی اجازت"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجازه موقعیت مکانی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autorisation de localisation"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Разрешение на геолокацию"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "位置情報の許可"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위치 권한"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "位置权限"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pahintulot sa lokasyon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สิทธิ์ตำแหน่ง"
+          }
+        }
+      }
+    },
+    "perm.location.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vakitleri, kıbleyi ve havayı bulunduğunuz yere göre göstermek için. Konumunuz saklanmaz; hava için yalnız yaklaşık konum hava servisine gider."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To show prayer times, the Qibla and the weather for where you are. Your location isn't stored; only an approximate location goes to the weather service."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um Gebetszeiten, Qibla und Wetter für Ihren Ort anzuzeigen. Ihr Standort wird nicht gespeichert; nur ein ungefährer Standort geht an den Wetterdienst."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaxtları, qibləni və havanı olduğunuz yerə görə göstərmək üçün. Məkanınız saxlanmır; hava üçün yalnız təxmini məkan hava xidmətinə gedir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لعرض مواقيت الصلاة والقبلة والطقس حسب مكانك. لا يُحفظ موقعك؛ ولا يُرسَل إلى خدمة الطقس إلا موقع تقريبي."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk menampilkan waktu salat, kiblat, dan cuaca sesuai tempat Anda. Lokasi Anda tidak disimpan; hanya lokasi perkiraan yang dikirim ke layanan cuaca."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آپ کی جگہ کے مطابق نماز کے اوقات، قبلہ اور موسم دکھانے کے لیے۔ آپ کا مقام محفوظ نہیں کیا جاتا؛ موسم کے لیے صرف تخمینی مقام موسم کی سروس کو جاتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای نمایش اوقات نماز، قبله و هوا بر اساس محل شما. موقعیت شما ذخیره نمی‌شود؛ فقط موقعیت تقریبی به سرویس هوا می‌رود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour afficher les heures de prière, la qibla et la météo selon l'endroit où vous êtes. Votre position n'est pas enregistrée ; seule une position approximative est envoyée au service météo."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы показывать время намаза, киблу и погоду для вашего места. Местоположение не сохраняется; в службу погоды уходит только приблизительное местоположение."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在地に合わせて礼拝時刻、キブラ、天気を表示するためです。位置情報は保存されず、天気サービスにはおおよその位置だけが送られます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "현재 위치에 맞춰 기도 시간, 키블라, 날씨를 보여 주기 위해서입니다. 위치는 저장되지 않으며 날씨 서비스에는 대략적인 위치만 전송됩니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用于按您所在地点显示礼拜时间、朝拜方向和天气。不会保存您的位置；只有大致位置会发送给天气服务。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para maipakita ang oras ng pagdarasal, Qibla at panahon ayon sa kinaroroonan mo. Hindi iniimbak ang lokasyon mo; tinatayang lokasyon lang ang napupunta sa serbisyo ng panahon."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อแสดงเวลาละหมาด ทิศกิบลัต และสภาพอากาศตามที่ที่คุณอยู่ ตำแหน่งของคุณไม่ถูกเก็บไว้ มีเพียงตำแหน่งโดยประมาณที่ส่งไปยังบริการสภาพอากาศ"
+          }
+        }
+      }
+    },
+    "atmo.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atmosfer"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atmosphere"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atmosphäre"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atmosfer"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأجواء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suasana"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ماحول"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حال‌وهوا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ambiance"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Атмосфера"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "雰囲気"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "분위기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "氛围"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atmospera"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "บรรยากาศ"
+          }
+        }
+      }
+    },
+    "atmo.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Düz"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plain"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schlicht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sadə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عادي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Polos"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سادہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ساده"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uni"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без фона"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "なし"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기본"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "纯色"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Payak"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เรียบ"
+          }
+        }
+      }
+    },
+    "atmo.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bütün uygulamanın zemini renk geçişiyle boyanır; düğme ve vurgu rengi aşağıdaki uygulama renginden gelir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paints the background of the whole app with a gradient; buttons and highlights keep the app color chosen below."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Färbt den Hintergrund der ganzen App mit einem Verlauf; Schaltflächen und Akzente behalten die unten gewählte App-Farbe."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bütün tətbiqin fonu rəng keçidi ilə boyanır; düymələr və vurğular aşağıda seçilən tətbiq rəngini saxlayır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يلوّن خلفية التطبيق كله بتدرّج لوني، وتبقى الأزرار والإبرازات بلون التطبيق المختار أدناه."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mewarnai latar seluruh aplikasi dengan gradasi; tombol dan sorotan tetap memakai warna aplikasi yang dipilih di bawah."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پوری ایپ کا پس منظر رنگوں کی ملاوٹ سے رنگ دیتا ہے؛ بٹن اور نمایاں حصے نیچے منتخب ایپ کا رنگ رکھتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پس‌زمینه کل برنامه را با یک طیف رنگی رنگ می‌کند؛ دکمه‌ها و تأکیدها رنگ برنامه‌ای را که پایین‌تر انتخاب می‌کنید نگه می‌دارند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colore le fond de toute l'application d'un dégradé ; les boutons et les accents gardent la couleur de l'application choisie plus bas."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Окрашивает фон всего приложения градиентом; кнопки и акценты сохраняют цвет приложения, выбранный ниже."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリ全体の背景をグラデーションで彩ります。ボタンや強調色は下で選ぶアプリカラーのままです。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "앱 전체 배경을 그라데이션으로 칠합니다. 버튼과 강조색은 아래에서 고른 앱 색상을 따릅니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用渐变色铺满整个应用的背景；按钮和强调色仍使用下方选择的应用颜色。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kinukulayan ng gradient ang background ng buong app; nananatili sa kulay ng app na pipiliin sa ibaba ang mga button at highlight."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ระบายพื้นหลังของทั้งแอปด้วยไล่สี ส่วนปุ่มและสีเน้นยังใช้สีแอปที่เลือกด้านล่าง"
+          }
+        }
+      }
+    },
+    "atmo.dawn": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şafak"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dawn"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgengrauen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəfəq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الفجر"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fajar"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فجر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سپیده‌دم"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aube"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Рассвет"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夜明け"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "새벽"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "黎明"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bukang-liwayway"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "รุ่งอรุณ"
+          }
+        }
+      }
+    },
+    "atmo.lavender": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavanta"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavender"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavendel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavanda"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الخزامى"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavender"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لیونڈر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسطوخودوس"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavande"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лаванда"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ラベンダー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "라벤더"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "薰衣草"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lavender"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลาเวนเดอร์"
+          }
+        }
+      }
+    },
+    "atmo.ocean": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okyanus"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocean"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ozean"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okean"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المحيط"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Samudra"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سمندر"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اقیانوس"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Océan"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Океан"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "海"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "바다"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "海洋"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Karagatan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "มหาสมุทร"
+          }
+        }
+      }
+    },
+    "atmo.forest": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orman"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forest"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wald"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meşə"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الغابة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hutan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جنگل"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جنگل"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forêt"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лес"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "森"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "숲"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "森林"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kagubatan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ป่า"
+          }
+        }
+      }
+    },
+    "atmo.desert": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çöl"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Desert"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wüste"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Səhra"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الصحراء"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gurun"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صحرا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کویر"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Désert"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Пустыня"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "砂漠"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사막"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "沙漠"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disyerto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ทะเลทราย"
+          }
+        }
+      }
+    },
+    "atmo.aurora": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kutup ışığı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aurora"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Polarlicht"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Qütb parıltısı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الشفق القطبي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aurora"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "قطبی روشنی"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شفق قطبی"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aurore boréale"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Северное сияние"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オーロラ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오로라"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "极光"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aurora"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสงเหนือ"
+          }
+        }
+      }
+    },
+    "atmo.sunset": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün batımı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sunset"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sonnenuntergang"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gün batımı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الغروب"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Senja"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غروب آفتاب"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "غروب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coucher de soleil"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Закат"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "夕焼け"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "노을"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "日落"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paglubog ng araw"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พระอาทิตย์ตก"
+          }
+        }
+      }
+    },
+    "atmo.night": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gece mavisi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Midnight blue"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitternachtsblau"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gecə mavisi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أزرق الليل"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Biru malam"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رات کا نیلا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آبی شب"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bleu nuit"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Полуночный синий"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ミッドナイトブルー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "한밤의 파랑"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "午夜蓝"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asul ng hatinggabi"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สีน้ำเงินยามค่ำ"
           }
         }
       }

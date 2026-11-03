@@ -223,7 +223,7 @@ struct SeasonsView: View {
             .frame(maxWidth: 640)
             .frame(maxWidth: .infinity)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("nature.h1"))
         .navigationBarTitleDisplayMode(.inline)
     }

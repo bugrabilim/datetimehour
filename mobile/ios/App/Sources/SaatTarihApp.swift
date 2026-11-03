@@ -167,6 +167,8 @@ struct RootView: View {
     @AppStorage("appearance") private var appearance = "system"
     /// Uygulama rengi (Ayarlar); değişince sekmeler yeni renkle yeniden çizilir
     @AppStorage("accent") private var accent = AccentPalette.defaultID
+    /// Atmosfer (renk geçişli zemin; 2. analiz #78): değişince sekmeler yeniden çizilir
+    @AppStorage(Atmosphere.key) private var atmo = ""
     /// Açık özellikler: alt barda yalnız bunlar (ve geçici olarak şu anki sekme); yalnız Saat kalırsa bar yok
     @AppStorage(Features.key) private var features = ""
     @State private var router = Router.shared
@@ -189,10 +191,10 @@ struct RootView: View {
         // (safeAreaInset NavigationStack içindeki listelere geçmiyordu; yazılar barın altına giriyordu)
         VStack(spacing: 0) {
             content
-                .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)")
+                .id(router.tab == .tools ? "tools" : "\(router.tab.rawValue)-\(accent)-\(atmo)")
                 .frame(maxWidth: readable, maxHeight: .infinity)
                 .frame(maxWidth: .infinity)
-                .background(Theme.bg.ignoresSafeArea())
+                .background(AppBackdrop().ignoresSafeArea())
             let tabs = Features.barTabs(raw: features, current: router.tab)
             if !keyboard && !landscape && tabs.count > 1 { TabBar(tabs: tabs, selection: $router.tab) }
         }
@@ -222,6 +224,8 @@ struct RootView: View {
         }
         .tint(Theme.accent)
         .preferredColorScheme(scheme)
+        // Uygulama içi yazı boyutu (Ayarlar; 2. analiz #77)
+        .appFontScale()
         .task {
             // CI ekran görüntüsü: -landscape ile uygulama yatay açılır
             guard ProcessInfo.processInfo.arguments.contains("-landscape"),

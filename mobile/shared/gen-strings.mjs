@@ -148,6 +148,8 @@ for (const [key, get] of Object.entries(KEYS)) {
   for (const l of LANGS) {
     const v = get(I[l], l);
     if (typeof v !== "string" || !v) throw new Error(`${l}: ${key} metni yok`);
+    // Rakamlar her dilde Latin (CLAUDE.md › Diller); Farsça/Urduca/Arapça rakam yazılmaz
+    if (/[\u0660-\u0669\u06F0-\u06F9]/.test(v)) throw new Error(`${l}: ${key} Latin olmayan rakam içeriyor`);
     if (names(v).sort().join() !== [...order].sort().join()) throw new Error(`${l}: ${key} yer tutucuları Türkçeyle aynı değil`);
     localizations[IOS_CODE(l)] = { stringUnit: { state: "translated", value: toIOS(v, order) } };
   }

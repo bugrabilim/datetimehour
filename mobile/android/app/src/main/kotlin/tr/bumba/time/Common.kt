@@ -156,6 +156,11 @@ fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
     val permission = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { ok ->
         if (ok) locate() else failed = true
     }
+    var locPrimer by remember { mutableStateOf(false) }
+    if (locPrimer) PermissionPrimer(PermissionKind.LOCATION, onAllow = {
+        locPrimer = false
+        permission.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+    }, onNotNow = { locPrimer = false })
 
     Row(
         modifier.clickable { open = true }.padding(vertical = 6.dp),
@@ -207,7 +212,8 @@ fun PlacePicker(modifier: Modifier = Modifier, size: TextUnit = 17.sp) {
                                             open = false
                                             val granted = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) ==
                                                 PackageManager.PERMISSION_GRANTED
-                                            if (granted) locate() else permission.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
+                                            // İlk kez soruluyorsa önce kısa açıklama (2. analiz #80)
+                                            if (granted) locate() else locPrimer = true
                                         }.padding(vertical = 12.dp),
                                         verticalAlignment = Alignment.CenterVertically,
                                     ) {

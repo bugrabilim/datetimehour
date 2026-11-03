@@ -126,7 +126,7 @@ struct HadithView: View {
             }
             .padding(16)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("hadith.title"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -192,7 +192,7 @@ struct PrayerGuideView: View {
             }
             .padding(16)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("guide.title"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -286,7 +286,7 @@ struct CalendarLeafView: View {
         .gesture(DragGesture(minimumDistance: 30).onEnded { v in
             if abs(v.translation.width) > abs(v.translation.height) { day = day.adding(days: v.translation.width < 0 ? 1 : -1) }
         })
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("leaf.title"))
         .navigationBarTitleDisplayMode(.inline)
     }

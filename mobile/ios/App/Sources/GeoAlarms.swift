@@ -249,7 +249,8 @@ private struct GeoAlarmEditor: View {
     private func locate() {
         locating = true
         Task {
-            if let loc = await OneShotLocation(accuracy: kCLLocationAccuracyNearestTenMeters).fetch(requestPermission: true) {
+            if await PermissionPrimer.location(),
+               let loc = await OneShotLocation(accuracy: kCLLocationAccuracyNearestTenMeters).fetch(requestPermission: true) {
                 alarm.lat = loc.coordinate.latitude
                 alarm.lon = loc.coordinate.longitude
                 center()

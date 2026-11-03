@@ -142,7 +142,7 @@ struct WakeTaskView: View {
         .padding(24)
         .frame(maxWidth: 520)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .interactiveDismissDisabled()
         .onAppear {
             kind = AlarmItem.effectiveTask(task.task, code: task.code)

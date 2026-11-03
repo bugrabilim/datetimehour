@@ -75,7 +75,7 @@ struct ClockTab: View {
                     .frame(maxWidth: 640)
                     .frame(maxWidth: .infinity)
                 }
-                .background(Theme.bg.ignoresSafeArea())
+                .background(AppBackdrop().ignoresSafeArea())
                 // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
                 .onChange(of: Int(now.timeIntervalSince1970)) { _, s in TickSound.shared.tick(s) }
             }
@@ -332,7 +332,7 @@ struct FullscreenClock: View {
                     } else if bg.animated {
                         AnimatedBackground(kind: bg)
                     } else {
-                        Theme.bg.ignoresSafeArea()
+                        AppBackdrop().ignoresSafeArea()
                     }
                 }
                 // Kırmızıya çevirme: siyah zemin üstünde çarpım (beyaz → kısık kırmızı, siyah siyah kalır)

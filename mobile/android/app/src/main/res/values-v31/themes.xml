@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+ sistem açılış ekranı (2. analiz #83): tema zemini (açık/koyu) ve uygulama simgesi; bekletme yok -->
+    <style name="Theme.SaatTarih" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/splash</item>
+        <item name="android:windowSplashScreenBackground">@color/splash</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#1C1F27</item>
+    </style>
+</resources>

@@ -375,7 +375,7 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     val sunriseColor = Color(0xFF000000 or tr.bumba.time.core.SunriseLight.color(sunrise).toLong())
     CompositionLocalProvider(LocalColors provides colors) {
     BoxWithConstraints(
-        Modifier.fillMaxSize().nightTint(night).background(if (sunrise > 0) sunriseColor else if (night) Color.Black else Theme.c.bg)
+        Modifier.fillMaxSize().nightTint(night).then(if (sunrise > 0) Modifier.background(sunriseColor) else if (night) Modifier.background(Color.Black) else Modifier.appBackdrop(Theme.c))
             .pointerInput(Unit) { detectTapGestures(onDoubleTap = { onExit() }) }
             // İki parmakla saat boyutu (çocuklardan önce yakalanır; tek parmak kaydırma ve sayfalama bozulmaz)
             .pointerInput(Unit) {

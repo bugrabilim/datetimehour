@@ -213,10 +213,16 @@ fun AskNotificationsOnce() {
     if (Build.VERSION.SDK_INT < 33 || LocalActivityResultRegistryOwner.current == null) return
     val context = LocalContext.current
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { PrayerNotifier.reschedule(context) }
+    // Önce kısa açıklama (2. analiz #80); "Şimdi değil"de sistem penceresi açılmaz, Ayarlar › Bildirimler'den istenir
+    var primer by remember { mutableStateOf(false) }
     LaunchedEffect(Unit) {
         val sp = Prefs.store
         if (sp.getBoolean("notify.asked", false)) return@LaunchedEffect
         sp.edit().putBoolean("notify.asked", true).apply()
-        if (!PrayerNotifier.notificationsAllowed(context)) runCatching { launcher.launch(Manifest.permission.POST_NOTIFICATIONS) }
+        if (!PrayerNotifier.notificationsAllowed(context)) primer = true
     }
+    if (primer) PermissionPrimer(PermissionKind.NOTIFY, onAllow = {
+        primer = false
+        runCatching { launcher.launch(Manifest.permission.POST_NOTIFICATIONS) }
+    }, onNotNow = { primer = false })
 }

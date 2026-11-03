@@ -40,10 +40,10 @@
     <string name="prayer_extraNames_midnight">نیمه‌شب شرعی</string>
     <string name="prayer_extraNames_tahajjud">تهجد (یک‌سوم پایانی شب)</string>
     <string name="prayer_extraNames_seher">سحر</string>
-    <string name="prayer_extraNote">دیانت این اوقات را منتشر نمی‌کند. با تعریف‌های تقویم ترکیه محاسبه می‌شود: اشراق و اصفرار وقتی خورشید ۵ درجه بالای افق است، اشتباک نجوم ۱۰ و عشای دوم ۱۹ درجه زیر آن؛ ضحوه کبری میانه امساک و مغرب؛ شب از مغرب تا امساک.</string>
+    <string name="prayer_extraNote">دیانت این اوقات را منتشر نمی‌کند. با تعریف‌های تقویم ترکیه محاسبه می‌شود: اشراق و اصفرار وقتی خورشید 5 درجه بالای افق است، اشتباک نجوم 10 و عشای دوم 19 درجه زیر آن؛ ضحوه کبری میانه امساک و مغرب؛ شب از مغرب تا امساک.</string>
     <string name="prayer_bayram">نماز عید</string>
     <string name="prayer_bayramTomorrow">نماز عید فردا: %1$s</string>
-    <string name="prayer_bayramNote">همان قاعده اوقات منتشرشده دیانت (۳۸ دقیقه پس از طلوع)؛ ساعت دقیق اعلام مفتی استان است.</string>
+    <string name="prayer_bayramNote">همان قاعده اوقات منتشرشده دیانت (38 دقیقه پس از طلوع)؛ ساعت دقیق اعلام مفتی استان است.</string>
     <string name="prayer_method_heading">روش محاسبه</string>
     <string name="prayer_method_label">روش</string>
     <string name="prayer_method_asrLabel">عصر</string>

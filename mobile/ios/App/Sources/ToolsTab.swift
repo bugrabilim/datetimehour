@@ -161,7 +161,7 @@ struct StopwatchView: View {
             }
             .padding(.horizontal, 20)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         // Kilit ekranı / Dynamic Island: çalışan kronometre
         .onChange(of: start) { LiveActivities.sync() }
         .navigationTitle(L("tools.hub.cards.stopwatch.name"))
@@ -289,7 +289,7 @@ struct TimerView: View {
             }
             Spacer(minLength: 0)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("tools.timer"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -827,7 +827,7 @@ struct PomodoroView: View {
                 if finished { advance(completed: true) }
             }
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         // Kilit ekranı / Dynamic Island: çalışan pomodoro aşaması; arka plan sesi çalışma süresince
         .onChange(of: end) { LiveActivities.sync(); PomoNoise.sync(); FocusBlock.sync() }
         .onChange(of: phase) { PomoNoise.sync(); FocusBlock.sync() }

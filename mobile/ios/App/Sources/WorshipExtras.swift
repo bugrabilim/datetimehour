@@ -131,7 +131,7 @@ struct ReligiousDaysView: View {
             }
             .padding(16)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("relday.title"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {

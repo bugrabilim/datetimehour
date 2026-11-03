@@ -109,7 +109,7 @@ struct QiblaView: View {
             .frame(maxWidth: 560)
             .frame(maxWidth: .infinity)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("qibla.title"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { compass.start() }
@@ -314,7 +314,7 @@ struct NearbyMosquesView: View {
         loading = true
         failed = false
         var coord = CLLocationCoordinate2D(latitude: place.lat, longitude: place.lon)
-        if let loc = await OneShotLocation().fetch(requestPermission: true) {
+        if await PermissionPrimer.location(), let loc = await OneShotLocation().fetch(requestPermission: true) {
             coord = loc.coordinate
             usedPlace = false
         } else {

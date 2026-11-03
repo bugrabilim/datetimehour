@@ -210,6 +210,8 @@ for (const l of LANGS.filter((x) => x !== "tr")) {
     if (Array.isArray(a) && Array.isArray(b)) check(a.length === b.length || (k === "client.words.units" && b.length === 60), `${l}.json: dizi uzunluğu farklı: ${k}`);
   }
   for (const k of dict[l].keys()) check(dict.tr.has(k) || /^(client\.words\.(hours|one|oneJoin)|calendar\.monthsTitle)$/.test(k), `tr.json'da yok: ${k} (${l})`);
+  // Rakamlar her dilde Latin (CLAUDE.md › Diller): Farsça/Urduca/Arapça rakam yazılmaz
+  for (const [k, v] of dict[l]) check(!/[\u0660-\u0669\u06F0-\u06F9]/.test(JSON.stringify(v)), `${l}.json: Latin olmayan rakam: ${k}`);
 }
 for (const l of LANGS) {
   const evs = JSON.parse(fs.readFileSync(path.join(DIST, "assets", `events-${l}.json`), "utf8"));

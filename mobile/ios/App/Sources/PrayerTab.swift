@@ -61,7 +61,7 @@ struct PrayerTab: View {
                     .frame(maxWidth: 560)
                     .frame(maxWidth: .infinity)
                 }
-                .background(Theme.bg.ignoresSafeArea())
+                .background(AppBackdrop().ignoresSafeArea())
             }
             .navigationTitle(L("tab.prayer"))
             .navigationBarTitleDisplayMode(.inline)
@@ -339,7 +339,7 @@ struct MonthlyPrayerView: View {
             }
             .padding(16)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("prayer.monthly"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -367,7 +367,7 @@ struct ImsakiyeView: View {
             }
             .padding(16)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(T("imsakiye.title", ramadan.from.year))
         .navigationBarTitleDisplayMode(.inline)
         .task {

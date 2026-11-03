@@ -49,6 +49,8 @@ struct SettingsView: View {
                 }
                 NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
             }
+            // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
+            Section { FontScaleRow() }
             // Sunucusuz eşitleme (CloudSync.swift): aynı Apple hesabındaki cihazlar arasında, iCloud anahtar-değer deposu
             Section {
                 Toggle(isOn: Binding(get: { syncOn }, set: { syncOn = $0; CloudSync.setEnabled($0) })) {
@@ -66,6 +68,8 @@ struct SettingsView: View {
             } footer: {
                 Text(L("siri.note"))
             }
+            // Puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm (2. analiz #6, #81)
+            SupportSection()
             // Araçlar kapalıyken rozetler ve hakkında buradadır (başka yoldan açılmazlar)
             if !Features.parse(features).contains(.tools) {
                 Section {
@@ -84,9 +88,26 @@ struct SettingsView: View {
 /// Uygulama rengi: dört grupta 24 renk (genel, çocuklar, zarif, iş); seçim `accent` anahtarında
 struct AccentPickerView: View {
     @AppStorage("accent") private var accent = AccentPalette.defaultID
+    @AppStorage(Atmosphere.key) private var atmo = ""
 
     var body: some View {
         List {
+            // Adlı atmosferler (2. analiz #78): yana kaydırmalı büyük kartlar; seçili kart ışır, köşesinde onay
+            Section {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 12) {
+                        atmoCard(nil)
+                        ForEach(Atmosphere.all) { atmoCard($0) }
+                    }
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 4)
+                }
+                .listRowInsets(EdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12))
+            } header: {
+                Text(L("atmo.title"))
+            } footer: {
+                Text(L("atmo.note"))
+            }
             ForEach(AccentPalette.Group.allCases, id: \.self) { group in
                 Section(L("settings.color.\(group.rawValue)")) {
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 12), count: 6), spacing: 12) {
@@ -118,6 +139,39 @@ struct AccentPickerView: View {
         .tint(Theme.accent)
         .navigationTitle(L("settings.color"))
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func atmoCard(_ a: Atmosphere?) -> some View {
+        let on = (a?.id ?? "") == atmo
+        let name = a.map { L("atmo.\($0.id)") } ?? L("atmo.none")
+        return Button { atmo = a?.id ?? "" } label: {
+            ZStack(alignment: .bottomLeading) {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(a.map { LinearGradient(colors: [$0.top, $0.bottom], startPoint: .top, endPoint: .bottom) }
+                          ?? LinearGradient(colors: [Theme.bg, Theme.bg], startPoint: .top, endPoint: .bottom))
+                // Örnek kart ve vurgu rengi: zeminin üstünde nasıl görüneceği
+                VStack(alignment: .leading, spacing: 6) {
+                    RoundedRectangle(cornerRadius: 6).fill(Theme.surface).frame(width: 70, height: 26)
+                    Capsule().fill(Theme.accent).frame(width: 40, height: 8)
+                    Spacer()
+                    Text(name).font(.footnote.weight(on ? .bold : .semibold)).foregroundStyle(Theme.text).lineLimit(2)
+                }
+                .padding(10)
+                if on {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.title3)
+                        .foregroundStyle(.white, Theme.accent)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                        .padding(8)
+                }
+            }
+            .frame(width: 112, height: 150)
+            .overlay(RoundedRectangle(cornerRadius: 16).stroke(on ? Theme.accent : Theme.border, lineWidth: on ? 2 : 1))
+            .shadow(color: on ? Theme.accent.opacity(0.45) : .clear, radius: 10)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(name)
+        .accessibilityAddTraits(on ? .isSelected : [])
     }
 
     private func swatch(_ p: AccentPalette, label: String) -> some View {

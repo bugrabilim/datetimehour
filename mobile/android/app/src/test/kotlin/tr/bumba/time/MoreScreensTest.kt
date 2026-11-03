@@ -7,6 +7,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -34,16 +35,23 @@ import java.time.temporal.ChronoUnit
 class MoreScreensTest {
     private val dir = System.getProperty("screens.dir") ?: "build/screens"
 
-    private fun shot(name: String, qualifiers: String = "tr", dark: Boolean = false, imperial: Boolean = false, content: @Composable () -> Unit) {
+    private fun shot(
+        name: String, qualifiers: String = "tr", dark: Boolean = false, imperial: Boolean = false,
+        atmo: String = "", fontScale: Int = 100, content: @Composable () -> Unit,
+    ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
         Prefs.store.edit().putBoolean("notify.asked", true).commit()
         Prefs.saveAppearance(if (dark) "dark" else "light")
         Prefs.saveAccent("amber")
+        Atmosphere.save(atmo)
+        FontScale.save(fontScale)
         // Robolectric'te bölge ABD: birimler açıkça metrik
         if (!imperial) Prefs.saveUnits("metric")
         captureRoboImage("$dir/$name.png") {
-            AppTheme { Column(Modifier.fillMaxSize().background(Theme.c.bg)) { content() } }
+            AppTheme { Column(Modifier.fillMaxSize().appBackdrop(Theme.c)) { content() } }
         }
+        Atmosphere.save("")
+        FontScale.save(100)
     }
 
     private fun page(name: String, title: String, dark: Boolean = false, content: @Composable () -> Unit) =
@@ -326,6 +334,18 @@ class MoreScreensTest {
         shot("tr-toplanti-planlayici") { MeetingPlannerScreen() }
         Prefs.store.edit().remove("meet.cities").remove("meet.exchanges").remove("meet.h12").commit()
     }
+    /** Sahibin ekran görüntülerinden (2. analiz #6, #77, #78, #81) */
+    @Test fun ownerScreens() {
+        shot("tr-destek") {
+            Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) { FontScaleCard(); SupportCard {} }
+        }
+        shot("tr-qr-paylas") { ShareQrScreen() }
+        shot("tr-atmosfer", atmo = "lavender") { ColorScreen() }
+        shot("tr-atmosfer-koyu", atmo = "ocean", dark = true) { SettingsScreen {} }
+        shot("tr-yazi-boyutu-130", fontScale = 130) { SettingsScreen {} }
+        shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
+    }
+
     @Test fun badges() {
         // Örnek ilerleme: birkaç rozet kazanılmış, 6 model görülmüş, 2 gün seri
         BadgeStore.deleteAll()

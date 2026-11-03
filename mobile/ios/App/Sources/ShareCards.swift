@@ -49,7 +49,7 @@ struct ShareCardSheet<Card: View>: View {
                 .padding(20)
                 .frame(maxWidth: .infinity)
             }
-            .background(Theme.bg.ignoresSafeArea())
+            .background(AppBackdrop().ignoresSafeArea())
             .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { Button(L("common.done")) { dismiss() } }

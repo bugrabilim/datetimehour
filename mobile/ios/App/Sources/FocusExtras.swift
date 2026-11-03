@@ -143,7 +143,7 @@ struct BreathView: View {
             }
             .padding(20)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
         .navigationTitle(L("breath.title"))
         .navigationBarTitleDisplayMode(.inline)

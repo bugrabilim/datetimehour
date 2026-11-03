@@ -52,7 +52,8 @@ enum PrayerNotifier {
         let d = UserDefaults.standard
         guard !d.bool(forKey: "notify.asked") else { return }
         d.set(true, forKey: "notify.asked")
-        if await authorizationStatus() == .notDetermined { _ = await requestAuthorization() }
+        // Önce kısa açıklama (2. analiz #80); "Şimdi değil"de sistem penceresi açılmaz, Ayarlar › Bildirimler'den istenir
+        if await authorizationStatus() == .notDetermined, await PermissionPrimer.ask(.notify) { _ = await requestAuthorization() }
     }
 
     /// Bu planın kurduğu bildirimler (alarm ve zamanlayıcı bildirimleri ayrı, onlara dokunulmaz)

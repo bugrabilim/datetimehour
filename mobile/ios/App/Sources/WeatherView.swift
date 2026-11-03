@@ -37,7 +37,7 @@ struct WeatherView: View {
             .frame(maxWidth: 560)
             .frame(maxWidth: .infinity)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("weather.h1"))
         .navigationBarTitleDisplayMode(.inline)
         .task(id: place.key) { await load(place) }

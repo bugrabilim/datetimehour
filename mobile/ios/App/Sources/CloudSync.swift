@@ -32,6 +32,8 @@ enum CloudSync {
         "track.when", "track.pauses", "track.pausedFrom", "track.kazaLog", "track.life", TrackX.inlineKey,
         "quran.hatim", QuranPlan.goalKey, "quran.read", QuranPlan.themeKey, Duas.favsKey, ZikirCustom.key, "zikir.beads", "zikir.shake",
         "prayer.visual", "prayer.words", "meet.h12", "meet.exchanges",
+        // Sahibin ekran görüntüleri (3 Kasım 2026): yazı boyutu
+        FontScale.key, Atmosphere.key,
     ]
 
     private static let store = NSUbiquitousKeyValueStore.default

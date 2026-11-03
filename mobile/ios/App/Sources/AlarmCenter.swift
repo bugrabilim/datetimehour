@@ -373,6 +373,7 @@ enum AlarmCenter {
     /// İzin: AlarmKit ya da bildirim
     static func requestAccess() async -> Bool {
         if #available(iOS 26.0, *) { return await KitAlarms.requestAccess() }
+        if await PrayerNotifier.authorizationStatus() == .notDetermined, !(await PermissionPrimer.ask(.alarm)) { return false }
         return (try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound])) ?? false
     }
 
@@ -474,7 +475,10 @@ enum KitAlarms {
         switch manager.authorizationState {
         case .authorized: return true
         case .denied: return false
-        default: return ((try? await manager.requestAuthorization()) ?? .denied) == .authorized
+        default:
+            // Önce kısa açıklama (2. analiz #80)
+            guard await PermissionPrimer.ask(.alarm) else { return false }
+            return ((try? await manager.requestAuthorization()) ?? .denied) == .authorized
         }
     }
 

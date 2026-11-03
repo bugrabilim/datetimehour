@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Ekranlar Compose ile çizilir; bu tema yalnız açılıştaki zemin ve sistem çubukları için -->
+    <!-- Ekranlar Compose ile çizilir; bu tema yalnız açılıştaki zemin ve sistem çubukları için.
+         Açılış ekranı (2. analiz #83): tema zemini + uygulama simgesi, bekletme yok. -->
     <style name="Theme.SaatTarih" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:windowBackground">@color/splash</item>
+        <item name="android:windowBackground">@drawable/splash_window</item>
     </style>
 </resources>

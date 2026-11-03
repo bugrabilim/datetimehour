@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.code.scanner)
     implementation(libs.play.location)
     implementation(libs.health.connect)
+    implementation(libs.zxing.core)
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
     testImplementation(platform(libs.compose.bom))

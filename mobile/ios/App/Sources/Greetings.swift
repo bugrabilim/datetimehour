@@ -153,7 +153,7 @@ struct GreetingView: View {
             }
             .padding(16)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("greet.title"))
         .navigationBarTitleDisplayMode(.inline)
         .task(id: occasion + style) {

@@ -109,6 +109,8 @@ final class PlaceModel {
 
     /// "Konumumu kullan": izin ister, konumu bulur, Otomatik'e geçer
     func useLocation() async {
+        // Konum izni ilk kez soruluyorsa önce kısa açıklama (2. analiz #80)
+        guard await PermissionPrimer.location() else { return }
         locating = true
         defer { locating = false }
         guard let loc = await OneShotLocation().fetch(requestPermission: true) else {

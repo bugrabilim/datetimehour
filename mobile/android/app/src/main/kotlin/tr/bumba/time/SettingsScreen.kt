@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.MilitaryTech
 import androidx.compose.material.icons.filled.Notifications
@@ -54,6 +56,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -150,6 +154,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                 }
             }
         }
+        // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
+        FontScaleCard()
         AppCard(padding = 4) {
             Row(
                 Modifier.fillMaxWidth().clickable { onRoute("homeItems") }.padding(horizontal = 12.dp, vertical = 14.dp),
@@ -171,6 +177,8 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             SectionTitle(L("android.shortcuts.title"))
             Text(L("android.shortcuts.note"), color = Theme.c.muted, fontSize = 13.sp)
         }
+        // Puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm (2. analiz #6, #81)
+        SupportCard(onRoute)
         if (!Features.isOn(Tab.TOOLS)) {
             AppCard(padding = 4) {
                 SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
@@ -198,6 +206,15 @@ private fun SettingsRow(icon: androidx.compose.ui.graphics.vector.ImageVector, t
 @Composable
 fun ColorScreen() {
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        // Adlı atmosferler (2. analiz #78): yana kaydırmalı büyük kartlar; seçili kart ışır, köşesinde onay
+        AppCard {
+            SectionTitle(L("atmo.title"))
+            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                AtmosphereCard(null)
+                Atmosphere.ALL.forEach { AtmosphereCard(it) }
+            }
+            Text(L("atmo.note"), color = Theme.c.muted, fontSize = 12.sp)
+        }
         for (g in AccentPalette.GROUPS) {
             AppCard {
                 SectionTitle(L("settings.color.$g"))
@@ -220,6 +237,32 @@ fun ColorScreen() {
             }
         }
         TextButton(onClick = { Prefs.saveAccent(AccentPalette.DEFAULT_ID) }) { Text(L("world.reset"), color = Theme.c.accent) }
+    }
+}
+
+@Composable
+private fun AtmosphereCard(a: Atmosphere?) {
+    val c = Theme.c
+    val on = (a?.id ?: "") == Atmosphere.selected
+    val name = a?.let { L("atmo.${it.id}") } ?: L("atmo.none")
+    val shape = RoundedCornerShape(16.dp)
+    Box(
+        Modifier.size(112.dp, 150.dp)
+            .shadow(if (on) 10.dp else 0.dp, shape, ambientColor = c.accent, spotColor = c.accent)
+            .clip(shape)
+            .then(if (a != null) Modifier.background(Brush.verticalGradient(listOf(a.top(c.dark), a.bottom(c.dark)))) else Modifier.background(AccentPalette.find(Prefs.accent).colors(c.dark).bg))
+            .border(if (on) 2.dp else 1.dp, if (on) c.accent else c.border, shape)
+            .clickable { Atmosphere.save(a?.id ?: "") }
+            .semantics { contentDescription = name }
+            .padding(10.dp),
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Box(Modifier.size(70.dp, 26.dp).background(c.surface, RoundedCornerShape(6.dp)))
+            Box(Modifier.size(40.dp, 8.dp).background(c.accent, RoundedCornerShape(50)))
+        }
+        Text(name, Modifier.align(Alignment.BottomStart), color = c.text, fontSize = 13.sp,
+            fontWeight = if (on) FontWeight.Bold else FontWeight.SemiBold, maxLines = 2)
+        if (on) Icon(Icons.Filled.CheckCircle, null, tint = c.accent, modifier = Modifier.align(Alignment.TopEnd).size(22.dp))
     }
 }
 

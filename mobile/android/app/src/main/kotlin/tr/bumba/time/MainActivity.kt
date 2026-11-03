@@ -192,7 +192,7 @@ fun Root(start: Int) {
     Nav.overlay?.let { route ->
         val back: (String?) -> Unit = { r -> Nav.overlay = r ?: if (route == "settings" || route == "features") null else "settings" }
         BackHandler { back(null) }
-        Box(Modifier.fillMaxSize().background(Theme.c.bg).statusBarsPadding().navigationBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
+        Box(Modifier.fillMaxSize().appBackdrop(Theme.c).statusBarsPadding().navigationBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
             ToolsScreen(route, back)
             BadgeToast(Modifier.align(Alignment.TopCenter))
         }
@@ -203,7 +203,7 @@ fun Root(start: Int) {
 
     if (landscape) HideSystemBars()
     Box(Modifier.fillMaxSize()) {
-    Column(Modifier.fillMaxSize().background(Theme.c.bg)) {
+    Column(Modifier.fillMaxSize().appBackdrop(Theme.c)) {
         Box(Modifier.weight(1f).fillMaxWidth().statusBarsPadding().windowInsetsPadding(WindowInsets.displayCutout)) {
             when (tab) {
                 Tab.CLOCK -> ClockScreen(

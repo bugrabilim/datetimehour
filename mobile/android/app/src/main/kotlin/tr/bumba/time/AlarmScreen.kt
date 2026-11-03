@@ -75,14 +75,21 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
         onPauseOrDispose { }
     }
     val askNotify = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { notify = it }
+    // İzin öncesi kısa açıklama (2. analiz #80): bu ekranda bir kez
+    var primer by remember { mutableStateOf(false) }
+    var primed by remember { mutableStateOf(false) }
 
     fun update(list: List<AlarmItem>) {
         items = list.sortedWith(compareBy({ it.hour }, { it.minute }))
         AlarmItem.save(items)
         AlarmScheduler.sync(context, items)
         // Bildirim izni ilk alarm eklenirken istenir (Android 13+)
-        if (!notify && Build.VERSION.SDK_INT >= 33 && items.any { it.enabled }) askNotify.launch(Manifest.permission.POST_NOTIFICATIONS)
+        if (!notify && !primed && Build.VERSION.SDK_INT >= 33 && items.any { it.enabled }) { primed = true; primer = true }
     }
+    if (primer) PermissionPrimer(PermissionKind.ALARM, onAllow = {
+        primer = false
+        askNotify.launch(Manifest.permission.POST_NOTIFICATIONS)
+    }, onNotNow = { primer = false })
 
     var quickMsg by remember { mutableStateOf("") }
     val nowMs = rememberNow().toEpochMilli()

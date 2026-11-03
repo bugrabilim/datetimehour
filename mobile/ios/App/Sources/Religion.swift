@@ -194,7 +194,7 @@ struct QuranView: View {
             .padding(.vertical, 12)
         }
         .searchable(text: $query, prompt: L("quran.search"))
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("quran.title"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -391,7 +391,7 @@ struct DuasView: View {
             .padding(16)
         }
         .searchable(text: $query, prompt: L("dua.search"))
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("dua.title"))
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -594,7 +594,7 @@ struct ZikirView: View {
             }
             .padding(16)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("zikir.title"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear { if shakeUndo { shake.start(undo) } }
@@ -812,7 +812,7 @@ struct TrackerView: View {
             .padding(16)
             .id(version)
         }
-        .background(Theme.bg.ignoresSafeArea())
+        .background(AppBackdrop().ignoresSafeArea())
         .onAppear { TrackX.migrate(); version += 1 }
         .navigationTitle(L("track.title"))
         .navigationBarTitleDisplayMode(.inline)
