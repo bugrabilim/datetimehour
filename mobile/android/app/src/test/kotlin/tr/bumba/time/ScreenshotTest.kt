@@ -80,6 +80,20 @@ class ScreenshotTest {
         CalView.load(); CalView.hijri = true; CalView.names = true
         try { shot("tr-takvim-gorunum", Tab.CALENDAR) } finally { CalView.hijri = false; CalView.names = false }
     }
+    // 2. analiz #116, #119, #122, #126, #127: hafta, gün, ajanda, yıl (yoğunluk), hicri ay, Almanya tatilleri, bayram kartı
+    @Test fun calendarModes() {
+        CalView.load()
+        try {
+            for ((m, n) in listOf("week" to "tr-takvim-hafta", "day" to "tr-takvim-gun", "agenda" to "tr-takvim-ajanda", "year" to "tr-takvim-yil")) {
+                CalView.mode = m; CalView.save(); shot(n, Tab.CALENDAR)
+            }
+            CalView.mode = "month"; CalView.hijriNav = true; CalView.save(); shot("tr-takvim-hicri", Tab.CALENDAR)
+            CalView.hijriNav = false; CalView.country = "DE"; CalView.save(); shot("de-takvim-almanya", Tab.CALENDAR, "de")
+        } finally {
+            CalView.mode = "month"; CalView.hijriNav = false; CalView.country = "TR"; CalView.save()
+        }
+        capture("tr-bayram-karti") { BayramCard("Ramazan Bayramı 1. gün") }
+    }
     @Test fun world() = shot("tr-dunya", Tab.WORLD)
     @Test fun worldDark() = shot("tr-dunya-koyu", Tab.WORLD, dark = true)
     @Test fun seasons() = shot("tr-mevsimler", Tab.SEASONS)

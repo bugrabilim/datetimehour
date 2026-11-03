@@ -21,6 +21,12 @@ struct CalendarTab: View {
     @AppStorage("cal.dst") private var showDst = true
     @AppStorage("cal.hijri") private var showHijri = false
     @AppStorage("cal.names") private var showNames = false
+    /// 2. analiz #116, #119, #122: görünüm, hicri aylarla gezme, ülke
+    @AppStorage(CalPrefs.modeKey) private var mode = "month"
+    @AppStorage(CalPrefs.hijriNavKey) private var hijriNav = false
+    @AppStorage(CalPrefs.countryKey) private var country = "TR"
+    @AppStorage(CalPrefs.hiddenKey) private var hiddenRaw = ""
+    @State private var countrySheet = false
 
     /// Yeni etkinlik: boş (seçili gün 09:00) ya da bir özel günden (tüm gün)
     struct AddRequest: Identifiable {
@@ -35,14 +41,15 @@ struct CalendarTab: View {
         NavigationStack {
             List {
                 Section {
-                    MonthGrid(month: month, today: today, selected: selected, deviceEvents: deviceEvents) {
-                        selected = $0
-                        BadgeStore.shared.hit(.takvim)
-                    }
+                    // Görünüm: ay, hafta, gün, ajanda, yıl (2. analiz #116)
+                    CalModeBar()
+                        .listRowInsets(EdgeInsets(top: 0, leading: 8, bottom: 4, trailing: 8))
+                        .listRowSeparator(.hidden)
+                    modeContent(today: today, deviceEvents: deviceEvents)
                         .gesture(DragGesture(minimumDistance: 30).onEnded { v in
                             if abs(v.translation.width) > abs(v.translation.height) {
                                 let forward = (v.translation.width < 0) != AppLocale.isRTL
-                                move(forward ? 1 : -1)
+                                step(forward ? 1 : -1)
                             }
                         })
                         .listRowInsets(EdgeInsets(top: 4, leading: 8, bottom: 8, trailing: 8))
@@ -50,7 +57,7 @@ struct CalendarTab: View {
                 } header: {
                     header
                 }
-                dayList(today: today, deviceEvents: deviceEvents[selected.dayNumber] ?? [])
+                if mode == "month" { dayList(today: today, deviceEvents: deviceEvents[selected.dayNumber] ?? []) }
             }
             .themedBackground()
             .listStyle(.plain)
@@ -70,6 +77,8 @@ struct CalendarTab: View {
                         Toggle(L("cal.dst"), isOn: $showDst)
                         Toggle(L("cal.hijriDays"), isOn: $showHijri)
                         Toggle(L("cal.names"), isOn: $showNames)
+                        Toggle(L("cal.hijriNav"), isOn: $hijriNav)
+                        Button(L("cal.country") + ": " + WorldHol.countryName(country)) { countrySheet = true }
                     } label: { Image(systemName: "slider.horizontal.3") }
                         .accessibilityLabel(L("cal.view"))
                 }
@@ -110,6 +119,7 @@ struct CalendarTab: View {
                     deleting = nil
                 }
             }
+            .sheet(isPresented: $countrySheet) { CalCountrySheet() }
             .sheet(isPresented: $googleGuide) {
                 NavigationStack { GoogleCalendarGuide() }
                     .onDisappear { device.reload() }
@@ -133,10 +143,10 @@ struct CalendarTab: View {
                 .font(.title2.weight(.semibold))
                 .foregroundStyle(Theme.accent)
             Spacer()
-            Button { move(-1) } label: { Image(systemName: "chevron.backward") }
+            Button { step(-1) } label: { Image(systemName: "chevron.backward") }
                 .accessibilityLabel(L("prayer.prevMonth"))
                 .padding(.trailing, 14)
-            Button { move(1) } label: { Image(systemName: "chevron.forward") }
+            Button { step(1) } label: { Image(systemName: "chevron.forward") }
                 .accessibilityLabel(L("prayer.nextMonth"))
         }
         .font(.title3.weight(.semibold))
@@ -154,6 +164,74 @@ struct CalendarTab: View {
         }
     }
 
+    /// Önceki/sonraki: görünüme göre gün, hafta, ay (hicri ay), yıl
+    private func step(_ d: Int) {
+        switch mode {
+        case "week": go(to: selected.adding(days: 7 * d))
+        case "day": go(to: selected.adding(days: d))
+        case "year": go(to: selected.adding(months: 12 * d))
+        default:
+            if hijriNav { moveHijri(d) } else { move(d) }
+        }
+    }
+
+    /// Hicri aylarla gezme (2. analiz #119)
+    private func moveHijri(_ d: Int) {
+        guard let h = Hijri.date(year: selected.year, month: selected.month, day: selected.day) else { return }
+        var y = h.year, m = h.month + d
+        if m < 1 { m = 12; y -= 1 } else if m > 12 { m = 1; y += 1 }
+        guard let first = Hijri.month(year: y, month: m)?.first else { return }
+        go(to: CalendarDay(first.0, first.1, first.2))
+    }
+
+    private func pick(_ d: CalendarDay) {
+        selected = d
+        month = d.firstOfMonth
+        BadgeStore.shared.hit(.takvim)
+    }
+
+    @ViewBuilder
+    private func modeContent(today: CalendarDay, deviceEvents: [Int: [EKEvent]]) -> some View {
+        switch mode {
+        case "week":
+            WeekListView(selected: selected, today: today) { pick($0); mode = "day" }
+        case "day":
+            VStack(alignment: .leading, spacing: 8) {
+                Text(Fmt.day(selected)).font(.headline)
+                DayTimelineView(day: selected)
+            }
+        case "agenda":
+            AgendaListView(from: selected) { pick($0); mode = "day" }
+        case "year":
+            YearHeatmapView(year: selected.year, today: today, deviceCounts: yearCounts(selected.year)) { m in
+                pick(m)
+                mode = "month"
+            }
+        default:
+            monthContent(today: today, deviceEvents: deviceEvents)
+        }
+    }
+
+    @ViewBuilder
+    private func monthContent(today: CalendarDay, deviceEvents: [Int: [EKEvent]]) -> some View {
+        if hijriNav, let h = Hijri.date(year: selected.year, month: selected.month, day: selected.day) {
+            VStack(alignment: .leading, spacing: 6) {
+                Text(h.monthName + " " + String(h.year)).font(.headline).foregroundStyle(Theme.accent)
+                HijriMonthGridView(year: h.year, month: h.month, today: today, selected: selected) { pick($0) }
+            }
+        } else {
+            MonthGrid(month: month, today: today, selected: selected, deviceEvents: deviceEvents) { pick($0) }
+        }
+    }
+
+    private func yearCounts(_ y: Int) -> [Int: Int] {
+        var out: [Int: Int] = [:]
+        for m in 1...12 {
+            for (k, v) in device.events(month: CalendarDay(y, m, 1)) { out[k] = v.count }
+        }
+        return out
+    }
+
     private func go(to day: CalendarDay) {
         withAnimation {
             month = day.firstOfMonth
@@ -163,7 +241,7 @@ struct CalendarTab: View {
 
     @ViewBuilder
     private func dayList(today: CalendarDay, deviceEvents: [EKEvent]) -> some View {
-        let special = data.events(on: selected)
+        let special = calEvents(selected)
         Section {
             if Features.isOn(.weather) { DayWeatherRow(day: selected) }
             ForEach(special, id: \.self) { e in
@@ -192,7 +270,7 @@ struct CalendarTab: View {
                 Label(L("calendar.types.ramadan"), systemImage: "moon.stars")
                     .foregroundStyle(CalendarData.color("religious"))
             }
-            if data.isSchoolBreak(selected) && !special.contains(where: { $0.type == "school" }) {
+            if CalPrefs.country == "TR" && !CalPrefs.hidden.contains("school") && data.isSchoolBreak(selected) && !special.contains(where: { $0.type == "school" }) {
                 Label(L("calendar.types.school"), systemImage: "graduationcap")
                     .foregroundStyle(CalendarData.color("school"))
             }
@@ -397,12 +475,12 @@ struct MonthGrid: View {
     }
 
     private func cell(_ d: CalendarDay, moon: String?, dst: Bool) -> some View {
-        let events = data.events(on: d)
+        let events = calEvents(d)
         let isHoliday = events.contains { $0.type == "holiday" }
         let isToday = d == today
         let isSelected = d == selected
         var types: [String] = Array(Set(events.map(\.type))).sorted()
-        if data.isSchoolBreak(d) && !types.contains("school") { types.append("school") }
+        if CalPrefs.country == "TR" && !CalPrefs.hidden.contains("school") && data.isSchoolBreak(d) && !types.contains("school") { types.append("school") }
         let colors: [Color] = types.map { CalendarData.color($0) }
         let mine = deviceEvents[d.dayNumber]?.count ?? 0
         return VStack(spacing: 4) {
@@ -493,8 +571,10 @@ struct FlowLayout: Layout {
 /// ("Public holiday · Türkiye"): takvimdeki tatiller Türkiye'nindir (2. analiz #92).
 func calendarTypeLabel(_ t: String) -> String {
     let base = L("calendar.types.\(t)")
-    guard AppLocale.code != "tr", ["holiday", "half", "school"].contains(t),
-          let country = AppLocale.locale.localizedString(forRegionCode: "TR") else { return base }
+    // Takvimde başka ülke seçiliyse (2. analiz #122) resmî tatil o ülkenindir
+    let cc = t == "holiday" && CalPrefs.country != "TR" ? CalPrefs.country : "TR"
+    guard !(AppLocale.code == "tr" && cc == "TR"), ["holiday", "half", "school"].contains(t),
+          let country = AppLocale.locale.localizedString(forRegionCode: cc) else { return base }
     return base + " · " + country
 }
 

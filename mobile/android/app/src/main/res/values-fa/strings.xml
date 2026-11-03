@@ -2279,5 +2279,17 @@
     <string name="pollen_none">اکنون گرده‌ای نیست یا برای این مکان پیش‌بینی گرده وجود ندارد (فقط اروپا).</string>
     <string name="aqi_source">کیفیت هوا و گرده: Open-Meteo (CAMS، Copernicus)</string>
     <string name="wx_alerts">هشدارهای رسمی</string>
+    <string name="cal_mode_month">ماه</string>
+    <string name="cal_mode_week">هفته</string>
+    <string name="cal_mode_day">روز</string>
+    <string name="cal_mode_agenda">فهرست</string>
+    <string name="cal_mode_year">سال</string>
+    <string name="cal_hijriNav">مرور با ماه‌های قمری</string>
+    <string name="cal_country">کشور</string>
+    <string name="cal_shownTypes">روزهای نمایش‌داده‌شده</string>
+    <string name="cal_countryNote">تعطیلات رسمی ملی کشور انتخاب‌شده (Nager.Date، MIT)؛ روزهای مذهبی طبق تقویم دیانت. داده‌ها 2024–2032.</string>
+    <string name="cal_agendaEmpty">در 60 روز آینده چیزی برای نمایش نیست.</string>
+    <string name="cal_density">هرچه رنگ تیره‌تر، روزهای ویژه و رویدادها بیشتر.</string>
+    <string name="cal_bayram">عید مبارک</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

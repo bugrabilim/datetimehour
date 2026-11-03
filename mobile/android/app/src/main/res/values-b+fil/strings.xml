@@ -2279,5 +2279,17 @@
     <string name="pollen_none">Walang polen ngayon o walang taya para sa lugar na ito (Europa lamang).</string>
     <string name="aqi_source">Kalidad ng hangin at polen: Open-Meteo (CAMS, Copernicus)</string>
     <string name="wx_alerts">Opisyal na babala</string>
+    <string name="cal_mode_month">Buwan</string>
+    <string name="cal_mode_week">Linggo</string>
+    <string name="cal_mode_day">Araw</string>
+    <string name="cal_mode_agenda">Agenda</string>
+    <string name="cal_mode_year">Taon</string>
+    <string name="cal_hijriNav">Mag-browse ayon sa buwang Hijri</string>
+    <string name="cal_country">Bansa</string>
+    <string name="cal_shownTypes">Ipinapakitang araw</string>
+    <string name="cal_countryNote">Mga pambansang pista opisyal ng napiling bansa (Nager.Date, MIT); ang mga araw na panrelihiyon ay ayon sa kalendaryo ng Diyanet. Datos 2024–2032.</string>
+    <string name="cal_agendaEmpty">Walang maipapakita sa susunod na 60 araw.</string>
+    <string name="cal_density">Kung mas madilim ang kulay, mas maraming espesyal na araw at kaganapan.</string>
+    <string name="cal_bayram">Eid Mubarak</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

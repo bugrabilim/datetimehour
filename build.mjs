@@ -872,8 +872,8 @@ for (const lang of LANGS) {
   }
 }
 
-function monthTable(lang, year, month, cy, ev) {
-  const cal = I[lang].calendar;
+function monthTable(lang, year, month, cy, ev, calOverride, interactive = true) {
+  const cal = calOverride || I[lang].calendar;
   const days = daysInMonth(year, month);
   const lead = dowOf(iso(year, month, 1));
   const head = cal.weekdaysShort.map((w) => `<th scope="col">${esc(w)}</th>`).join("");
@@ -890,7 +890,9 @@ function monthTable(lang, year, month, cy, ev) {
       const cls = [rank && `d-${rank}`, !rank && school && "d-school", inRange(date, cy.ramadans) && "d-ramadan", c >= 5 && "d-weekend"].filter(Boolean).join(" ");
       const label = es.length ? `<span class="sr-only">, ${esc(es.map((e) => `${cal.events[e.key]} (${cal.types[TYPE_LABEL_KEY[e.type]]})`).join("; "))}</span>` : "";
       const title = es.length ? ` title="${esc(es.map((e) => cal.events[e.key]).join("; "))}"` : "";
-      tr += `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`;
+      tr += interactive
+        ? `<td${cls ? ` class="${cls}"` : ""} data-d="${date}"${title}${es.length ? "" : ` title="${esc(cal.dayNone)}"`} tabindex="0" role="button">${d}${label}</td>`
+        : `<td${cls ? ` class="${cls}"` : ""}${title}>${d}${label}</td>`;
     }
     rows += `<tr>${tr}</tr>`;
   }
@@ -2279,23 +2281,39 @@ const EN_THE = ["GB", "US", "NL"]; // "Public holidays in the United Kingdom"
 function buildWorldHol(lang, cc) {
   const t = I[lang], s = t.worldHol, cal = t.calendar, F = makeFmt(cal);
   const country = (lang === "en" && EN_THE.includes(cc) ? "the " : "") + regionName(lang, cc);
-  const years = WHOL.years;
-  const y = BUILD_YEAR + 1 <= years[years.length - 1] ? BUILD_YEAR + 1 : years[0];
+  // Verisi eksik yıllar (scripts/fetch-world-holidays.mjs "incomplete") ülkede yoktur
+  const years = WHOL.years.filter((yy) => WHOL.countries[cc][yy]);
+  const y = years.includes(BUILD_YEAR + 1) ? BUILD_YEAR + 1 : years[years.length - 1];
   const dy = WHOL.countries[cc][y].days;
   const v = { country, from: years[0], to: years[years.length - 1], year: y, n: dy.length, w: dy.filter((h) => dowOf(h.d) < 5).length };
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.hubH1, path: ROUTES[lang].worldHol }, { name: tpl(s.pageH1, v), path: worldHolPath(lang, cc) }];
-  const sections = years.map((yy) => {
+  // Ay ızgaralı yıl takvimi (2. analiz #178): derleme yılı (yoksa ilk yıl), tatiller işaretli; diğer yıllar katlanır
+  const gy = years.includes(BUILD_YEAR) ? BUILD_YEAR : y;
+  const gEv = { byDate: {} };
+  for (const h of (WHOL.countries[cc][gy] || { days: [] }).days) (gEv.byDate[h.d] ||= []).push({ key: h.d, type: "holiday", name: holName(lang, cc, h).main });
+  const gridCal = { ...cal, events: Object.fromEntries(Object.values(gEv.byDate).flat().map((e) => [e.key, e.name])) };
+  const months = Array.from({ length: 12 }, (_, i) => `<div class="ymonth-wrap">${monthTable(lang, gy, i + 1, { schoolRanges: [], ramadans: [] }, gEv, gridCal, false)}</div>`).join("");
+  const grid = `<section class="section" aria-labelledby="wh-grid"><div class="wrap">
+    <h2 id="wh-grid">${esc(tpl(s.caption, { country, year: gy }))}</h2>
+    <div class="year-grid wh-grid">${months}</div>
+  </div></section>`;
+  const sections = grid + years.map((yy) => {
     const d = WHOL.countries[cc][yy] || { days: [], regional: 0 };
     const rows = d.days.map((h) => {
       const nm = holName(lang, cc, h);
       return `<tr data-d="${h.d}"><th scope="row">${esc(F.short(h.d))}</th><td>${esc(cal.weekdays[dowOf(h.d)])}</td><td>${esc(nm.main)}${nm.local ? `<br><span class="meta" lang="">${esc(tpl(s.localName, { name: nm.local }))}</span>` : ""}</td><td data-left></td></tr>`;
     }).join("");
     const sum = tpl(s.summary, { year: yy, n: d.days.length, w: d.days.filter((h) => dowOf(h.d) < 5).length });
-    return `<section class="section" aria-labelledby="wh-${yy}"><div class="wrap">
+    const table = `<p class="meta">${esc(sum)}${d.regional ? " " + esc(tpl(s.regional, { year: yy, n: d.regional })) : ""}</p>
+    <div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><caption class="sr-only">${esc(tpl(s.caption, { country, year: yy }))}</caption><thead><tr><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colName)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    // Derleme yılı ve ertesi yıl açık, diğer yıllar (geçmiş ve uzak yıllar) katlanır
+    if (yy === BUILD_YEAR || yy === BUILD_YEAR + 1) return `<section class="section" aria-labelledby="wh-${yy}"><div class="wrap">
     <h2 id="wh-${yy}">${yy}</h2>
-    <p class="meta">${esc(sum)}${d.regional ? " " + esc(tpl(s.regional, { year: yy, n: d.regional })) : ""}</p>
-    <div class="table-wrap"><table class="events-table" ${holLeftAttrs(s)}><caption class="sr-only">${esc(tpl(s.caption, { country, year: yy }))}</caption><thead><tr><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colDay)}</th><th scope="col">${esc(s.colName)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
+    ${table}
   </div></section>`;
+    return `<section class="section"><div class="wrap"><details class="wh-year"><summary><h2 id="wh-${yy}">${yy}</h2></summary>
+    ${table}
+  </details></div></section>`;
   }).join("\n");
   const hero = `<p class="info-sub" data-hol-next data-label="${esc(s.nextLabel)}">&nbsp;</p>`;
   const tail = `<section class="section"><div class="wrap"><p class="meta">${esc(tpl(s.source, { date: WHOL.fetched }))}</p></div></section>`;

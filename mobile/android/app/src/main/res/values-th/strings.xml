@@ -2279,5 +2279,17 @@
     <string name="pollen_none">ขณะนี้ไม่มีละอองเกสรหรือไม่มีการพยากรณ์สำหรับที่นี่ (เฉพาะยุโรป)</string>
     <string name="aqi_source">คุณภาพอากาศและละอองเกสร: Open-Meteo (CAMS, Copernicus)</string>
     <string name="wx_alerts">ประกาศเตือนภัยทางการ</string>
+    <string name="cal_mode_month">เดือน</string>
+    <string name="cal_mode_week">สัปดาห์</string>
+    <string name="cal_mode_day">วัน</string>
+    <string name="cal_mode_agenda">กำหนดการ</string>
+    <string name="cal_mode_year">ปี</string>
+    <string name="cal_hijriNav">ดูตามเดือนฮิจเราะห์</string>
+    <string name="cal_country">ประเทศ</string>
+    <string name="cal_shownTypes">วันที่แสดง</string>
+    <string name="cal_countryNote">วันหยุดราชการของประเทศที่เลือก (Nager.Date, MIT) วันทางศาสนาตามปฏิทินดียาเนต ข้อมูล 2024–2032</string>
+    <string name="cal_agendaEmpty">ไม่มีรายการใน 60 วันข้างหน้า</string>
+    <string name="cal_density">สียิ่งเข้ม ยิ่งมีวันสำคัญและกิจกรรมมาก</string>
+    <string name="cal_bayram">อีดมูบาร็อก</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

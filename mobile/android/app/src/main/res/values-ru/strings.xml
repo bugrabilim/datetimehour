@@ -2279,5 +2279,17 @@
     <string name="pollen_none">Сейчас пыльцы нет или для этого места нет прогноза (только Европа).</string>
     <string name="aqi_source">Качество воздуха и пыльца: Open-Meteo (CAMS, Copernicus)</string>
     <string name="wx_alerts">Официальные предупреждения</string>
+    <string name="cal_mode_month">Месяц</string>
+    <string name="cal_mode_week">Неделя</string>
+    <string name="cal_mode_day">День</string>
+    <string name="cal_mode_agenda">Список</string>
+    <string name="cal_mode_year">Год</string>
+    <string name="cal_hijriNav">Листать по месяцам хиджры</string>
+    <string name="cal_country">Страна</string>
+    <string name="cal_shownTypes">Показываемые дни</string>
+    <string name="cal_countryNote">Государственные праздники выбранной страны (Nager.Date, MIT); религиозные дни по календарю Диянета. Данные 2024–2032.</string>
+    <string name="cal_agendaEmpty">В ближайшие 60 дней показывать нечего.</string>
+    <string name="cal_density">Чем темнее цвет, тем больше особых дней и событий.</string>
+    <string name="cal_bayram">С праздником Курбан/Ураза-байрам</string>
     <string name="app_name">Время и дата</string>
 </resources>

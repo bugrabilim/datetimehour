@@ -588,6 +588,7 @@ html.has-cookie-bar body { padding-bottom: 5.5rem; }
 .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; list-style: none; margin: 0 0 1rem; padding: 0; font-size: 0.95rem; }
 .legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
 .lg { display: inline-block; width: 1.1rem; height: 1.1rem; border-radius: 4px; border: 1px solid var(--border); background: var(--surface); }
+.wh-year > summary { cursor: pointer; } .wh-year > summary h2 { display: inline; }
 .year-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); }
 .ymonth { width: 100%; min-width: 0; border-collapse: separate; border-spacing: 2px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.4rem 0.5rem 0.6rem; }
 .ymonth caption { padding: 0.4rem 0.25rem; font-weight: 700; text-align: start; color: var(--text); }

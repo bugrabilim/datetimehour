@@ -10,9 +10,11 @@ final class CalendarData {
         let date: String
         let key: String
         let type: String
+        /// Dünya tatillerinde (2. analiz #122) ad hazır gelir
+        var label: String?
 
         var day: CalendarDay? { CalendarDay(iso: date) }
-        var name: String { L("calendar.events.\(key)") }
+        var name: String { label ?? L("calendar.events.\(key)") }
         var color: Color { CalendarData.color(type) }
     }
 

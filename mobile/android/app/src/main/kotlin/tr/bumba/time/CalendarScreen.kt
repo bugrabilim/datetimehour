@@ -83,12 +83,31 @@ fun CalendarScreen() {
         ym = m.toString()
         sel = (if (YearMonth.from(today) == m) today else m.atDay(1)).toString()
     }
+    /** Hicri aylarla gezme (2. analiz #119): seçili günün hicri ayından bir önceki/sonraki ayın ilk günü */
+    fun moveHijri(d: Int) {
+        val h = Hijri.date(selected) ?: return
+        var y = h.year
+        var m = h.month + d
+        if (m < 1) { m = 12; y-- } else if (m > 12) { m = 1; y++ }
+        val first = Hijri.month(y, m)?.first ?: return
+        go(if (Hijri.date(today)?.let { it.year == y && it.month == m } == true) today else first)
+    }
+    /** Önceki/sonraki: görünüme göre gün, hafta, ay (hicri ay), yıl */
+    fun step(d: Int) {
+        when (CalView.mode) {
+            "week" -> go(selected.plusWeeks(d.toLong()))
+            "day" -> go(selected.plusDays(d.toLong()))
+            "year" -> go(selected.plusYears(d.toLong()))
+            else -> if (CalView.hijriNav && CalView.mode == "month") moveHijri(d) else move(d.toLong())
+        }
+    }
     // Saat ekranından istenen gün
     LaunchedEffect(Nav.calendarDay) {
         Nav.calendarDay?.let { go(it); Nav.calendarDay = null }
     }
     LaunchedEffect(Unit) { DeviceCalendar.reload(context) }
     CalView.load()
+    remember { WorldHol.load(context) }
     if (leaf) {
         BackHandler { leaf = false }
         CalendarLeafScreen { leaf = false }
@@ -113,24 +132,54 @@ fun CalendarScreen() {
                 Text("${month.year}", color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
             }
             IconButton(onClick = { go(today) }) { Icon(Icons.Filled.Today, L("client.today"), tint = Theme.c.accent) }
-            IconButton(onClick = { move(-1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("prayer.prevMonth"), tint = Theme.c.accent) }
-            IconButton(onClick = { move(1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent) }
+            IconButton(onClick = { step(-1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("prayer.prevMonth"), tint = Theme.c.accent) }
+            IconButton(onClick = { step(1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent) }
             IconButton(onClick = { leaf = true }) { Icon(Icons.Filled.Article, L("leaf.title"), tint = Theme.c.accent) }
             CalViewMenu()
             IconButton(onClick = { DeviceCalendar.add(context, selected) }) { Icon(Icons.Filled.Add, L("calendar.add"), tint = Theme.c.accent) }
         }
-        MonthGrid(month, today, selected, device, Modifier.pointerInput(ym) {
+        // Görünüm: ay, hafta, gün, ajanda, yıl (2. analiz #116)
+        CalModeBar()
+        val swipe = Modifier.pointerInput(ym, CalView.mode, CalView.hijriNav) {
             var total = 0f
             detectHorizontalDragGestures(onDragEnd = {
-                if (total < -60) move(if (Strings.isRtl) -1 else 1) else if (total > 60) move(if (Strings.isRtl) 1 else -1)
+                val dir = if (total < -60) 1 else if (total > 60) -1 else 0
+                if (dir != 0) when {
+                    CalView.mode == "week" -> go(selected.plusWeeks(dir.toLong() * if (Strings.isRtl) -1 else 1))
+                    CalView.mode == "day" -> go(selected.plusDays(dir.toLong() * if (Strings.isRtl) -1 else 1))
+                    CalView.mode == "year" -> go(selected.plusYears(dir.toLong() * if (Strings.isRtl) -1 else 1))
+                    CalView.mode == "month" && CalView.hijriNav -> moveHijri(dir * if (Strings.isRtl) -1 else 1)
+                    else -> move((dir * if (Strings.isRtl) -1 else 1).toLong())
+                }
                 total = 0f
             }) { _, d -> total += d }
-        }) {
-            sel = it.toString()
-            BadgeStore.hit(Badge.TAKVIM)
+        }
+        val pick: (LocalDate) -> Unit = { sel = it.toString(); ym = YearMonth.from(it).toString(); BadgeStore.hit(Badge.TAKVIM) }
+        when (CalView.mode) {
+            "week" -> Box(swipe) { WeekView(selected, today, DeviceCalendar.events(context, YearMonth.from(selected)) + DeviceCalendar.events(context, YearMonth.from(selected.plusDays(6)))) { pick(it); CalView.mode = "day"; CalView.save() } }
+            "day" -> {
+                Text(Fmt.longDate(selected), color = Theme.c.text, fontWeight = FontWeight.SemiBold, fontSize = 17.sp, modifier = Modifier.padding(vertical = 6.dp))
+                Box(swipe) { DayTimeline(selected, device[selected].orEmpty()) }
+            }
+            "agenda" -> AgendaView(selected, { d -> DeviceCalendar.events(context, YearMonth.from(d))[d].orEmpty() }) { pick(it); CalView.mode = "day"; CalView.save() }
+            "year" -> Box(swipe) {
+                val counts = remember(selected.year, DeviceCalendar.version, DeviceCalendar.authorized) {
+                    (1..12).flatMap { DeviceCalendar.events(context, YearMonth.of(selected.year, it)).entries }.associate { it.key to it.value.size }
+                }
+                YearView(selected.year, today, { counts[it] ?: 0 }) { m -> ym = m.toString(); sel = m.atDay(1).toString(); CalView.mode = "month"; CalView.save() }
+            }
+            else -> {
+                if (CalView.hijriNav) {
+                    val h = Hijri.date(selected)
+                    if (h != null) {
+                        Text(h.monthName + " " + h.year, color = Theme.c.accent, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(bottom = 4.dp))
+                        Box(swipe) { HijriMonthGrid(h.year, h.month, today, selected, pick) }
+                    } else Text(L("hijri.note"), color = Theme.c.muted)
+                } else MonthGrid(month, today, selected, device, swipe) { pick(it) }
+            }
         }
         Spacer(Modifier.height(12.dp))
-        DayDetail(selected, today, device[selected].orEmpty())
+        if (CalView.mode == "month") DayDetail(selected, today, device[selected].orEmpty())
         Spacer(Modifier.height(12.dp))
         Legend()
         TextButton(onClick = { guide = true }) {
@@ -185,7 +234,7 @@ private fun MonthGrid(
 
 @Composable
 private fun DayCell(d: LocalDate, isToday: Boolean, isSelected: Boolean, mine: Boolean, moon: String?, dst: Boolean, onClick: () -> Unit) {
-    val ev = AppData.events[d].orEmpty()
+    val ev = calEvents(d)
     val holiday = ev.any { it.type == "holiday" }
     val ramadan = AppData.isRamadan(d)
     Column(
@@ -246,6 +295,11 @@ object CalView {
     var dst by androidx.compose.runtime.mutableStateOf(true)
     var hijri by androidx.compose.runtime.mutableStateOf(false)
     var names by androidx.compose.runtime.mutableStateOf(false)
+    /** 2. analiz #116, #119, #122: görünüm, hicri aylarla gezme, ülke, gizli türler */
+    var mode by androidx.compose.runtime.mutableStateOf("month")
+    var hijriNav by androidx.compose.runtime.mutableStateOf(false)
+    var country by androidx.compose.runtime.mutableStateOf("TR")
+    var hidden by androidx.compose.runtime.mutableStateOf(emptySet<String>())
     private var loaded = false
 
     fun load() {
@@ -254,11 +308,16 @@ object CalView {
         val sp = Prefs.store
         week = sp.getBoolean("cal.weekNo", true); moon = sp.getBoolean("cal.moon", true); dst = sp.getBoolean("cal.dst", true)
         hijri = sp.getBoolean("cal.hijri", false); names = sp.getBoolean("cal.names", false)
+        mode = sp.getString("cal.mode", "month") ?: "month"; hijriNav = sp.getBoolean("cal.hijriNav", false)
+        country = sp.getString("cal.country", "TR") ?: "TR"
+        hidden = (sp.getString("cal.hidden", "") ?: "").split(",").filter { it.isNotEmpty() }.toSet()
     }
 
     fun save() {
         Prefs.store.edit().putBoolean("cal.weekNo", week).putBoolean("cal.moon", moon).putBoolean("cal.dst", dst)
-            .putBoolean("cal.hijri", hijri).putBoolean("cal.names", names).apply()
+            .putBoolean("cal.hijri", hijri).putBoolean("cal.names", names)
+            .putString("cal.mode", mode).putBoolean("cal.hijriNav", hijriNav).putString("cal.country", country)
+            .putString("cal.hidden", hidden.joinToString(",")).apply()
     }
 
     /** Ayın yeni ay ve dolunay günleri (telefonun saat diliminde): gün → emoji */
@@ -294,6 +353,7 @@ object CalView {
 @Composable
 private fun CalViewMenu() {
     var open by remember { mutableStateOf(false) }
+    var countryOpen by remember { mutableStateOf(false) }
     androidx.compose.foundation.layout.Box {
         IconButton(onClick = { open = true }) { Icon(androidx.compose.material.icons.Icons.Filled.MoreVert, L("cal.view"), tint = Theme.c.accent) }
         androidx.compose.material3.DropdownMenu(expanded = open, onDismissRequest = { open = false }) {
@@ -308,15 +368,17 @@ private fun CalViewMenu() {
             item("cal.dst", CalView.dst) { CalView.dst = it }
             item("cal.hijriDays", CalView.hijri) { CalView.hijri = it }
             item("cal.names", CalView.names) { CalView.names = it }
+            CalExtraMenuItems { open = false; countryOpen = true }
         }
     }
+    if (countryOpen) CalCountryDialog { countryOpen = false }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalendar.Event>) {
     val context = LocalContext.current
-    val ev = AppData.events[d].orEmpty()
+    val ev = calEvents(d)
     var deleting by remember { mutableStateOf<DeviceCalendar.Event?>(null) }
     val ask = rememberCalendarPermission()
     AppCard {
@@ -356,7 +418,7 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
             }
         }
         if (AppData.isRamadan(d)) TypeRow("religious", L("calendar.types.ramadan"))
-        if (AppData.isSchoolBreak(d) && ev.none { it.type == "school" }) TypeRow("school", L("calendar.types.school"))
+        if (CalView.country == "TR" && "school" !in CalView.hidden && AppData.isSchoolBreak(d) && ev.none { it.type == "school" }) TypeRow("school", L("calendar.types.school"))
         for (e in device) {
             Row(
                 Modifier.fillMaxWidth().combinedClickable(
@@ -422,7 +484,7 @@ private fun TypeRow(type: String, text: String) {
 @Composable
 private fun Legend() {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        for (t in listOf("holiday", "half", "religious", "special", "school")) {
+        for (t in (if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")).filter { it !in CalView.hidden }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.size(8.dp).background(AppData.color(t), CircleShape))
                 Text(" " + calendarTypeLabel(t), color = Theme.c.muted, fontSize = 12.sp)
@@ -437,7 +499,9 @@ private fun Legend() {
  */
 fun calendarTypeLabel(t: String): String {
     val base = L("calendar.types.$t")
-    if (Strings.lang == "tr" || t !in setOf("holiday", "half", "school")) return base
-    val country = java.util.Locale.Builder().setRegion("TR").build().getDisplayCountry(Strings.locale)
+    // Takvimde başka ülke seçiliyse (2. analiz #122) resmî tatil o ülkenindir
+    val cc = if (t == "holiday" && CalView.country != "TR") CalView.country else "TR"
+    if ((Strings.lang == "tr" && cc == "TR") || t !in setOf("holiday", "half", "school")) return base
+    val country = java.util.Locale.Builder().setRegion(cc).build().getDisplayCountry(Strings.locale)
     return if (country.isBlank()) base else "$base · $country"
 }

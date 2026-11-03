@@ -2279,5 +2279,17 @@
     <string name="pollen_none">目前无花粉，或此地无花粉预报（仅限欧洲）。</string>
     <string name="aqi_source">空气质量和花粉：Open-Meteo（CAMS，哥白尼）</string>
     <string name="wx_alerts">官方预警</string>
+    <string name="cal_mode_month">月</string>
+    <string name="cal_mode_week">周</string>
+    <string name="cal_mode_day">日</string>
+    <string name="cal_mode_agenda">日程</string>
+    <string name="cal_mode_year">年</string>
+    <string name="cal_hijriNav">按伊斯兰历月份浏览</string>
+    <string name="cal_country">国家</string>
+    <string name="cal_shownTypes">显示的日子</string>
+    <string name="cal_countryNote">所选国家的全国法定假日（Nager.Date，MIT）；宗教节日依据迪亚内特历法。数据 2024–2032。</string>
+    <string name="cal_agendaEmpty">未来 60 天没有要显示的内容。</string>
+    <string name="cal_density">颜色越深，节日和日程越多。</string>
+    <string name="cal_bayram">开斋节/古尔邦节快乐</string>
     <string name="app_name">时间与日期</string>
 </resources>

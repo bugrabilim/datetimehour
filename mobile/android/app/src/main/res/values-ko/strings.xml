@@ -2279,5 +2279,17 @@
     <string name="pollen_none">지금은 꽃가루가 없거나 이 장소의 예보가 없습니다(유럽만).</string>
     <string name="aqi_source">대기질과 꽃가루: Open-Meteo(CAMS, Copernicus)</string>
     <string name="wx_alerts">공식 기상 특보</string>
+    <string name="cal_mode_month">월</string>
+    <string name="cal_mode_week">주</string>
+    <string name="cal_mode_day">일</string>
+    <string name="cal_mode_agenda">일정 목록</string>
+    <string name="cal_mode_year">연</string>
+    <string name="cal_hijriNav">히즈라력 월로 보기</string>
+    <string name="cal_country">국가</string>
+    <string name="cal_shownTypes">표시할 날</string>
+    <string name="cal_countryNote">선택한 국가의 공휴일(Nager.Date, MIT)이며 종교 기념일은 디야넷 달력 기준입니다. 데이터 2024–2032.</string>
+    <string name="cal_agendaEmpty">앞으로 60일 동안 표시할 일정이 없습니다.</string>
+    <string name="cal_density">색이 진할수록 특별한 날과 일정이 많습니다.</string>
+    <string name="cal_bayram">이드 무바라크</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

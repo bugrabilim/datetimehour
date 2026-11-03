@@ -2279,5 +2279,17 @@
     <string name="pollen_none">لا حبوب لقاح الآن أو لا توجد توقعات لهذا المكان (أوروبا فقط).</string>
     <string name="aqi_source">جودة الهواء وحبوب اللقاح: Open-Meteo (CAMS، Copernicus)</string>
     <string name="wx_alerts">التحذيرات الرسمية</string>
+    <string name="cal_mode_month">شهر</string>
+    <string name="cal_mode_week">أسبوع</string>
+    <string name="cal_mode_day">يوم</string>
+    <string name="cal_mode_agenda">جدول</string>
+    <string name="cal_mode_year">سنة</string>
+    <string name="cal_hijriNav">التصفح بالأشهر الهجرية</string>
+    <string name="cal_country">الدولة</string>
+    <string name="cal_shownTypes">الأيام المعروضة</string>
+    <string name="cal_countryNote">العطلات الرسمية الوطنية للدولة المختارة (Nager.Date، MIT)؛ والأيام الدينية وفق تقويم رئاسة الشؤون الدينية. البيانات 2024–2032.</string>
+    <string name="cal_agendaEmpty">لا شيء لعرضه خلال الأيام الستين القادمة.</string>
+    <string name="cal_density">كلما كان اللون أغمق كثرت المناسبات والأحداث.</string>
+    <string name="cal_bayram">عيد مبارك</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

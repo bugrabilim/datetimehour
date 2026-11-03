@@ -79,8 +79,9 @@ data class City(
 }
 
 /** Takvim olayı: resmî tatil, arife, dini gün, özel gün, okul (sitedeki lib/events.mjs çıktısı) */
-data class CalEvent(val date: LocalDate, val key: String, val type: String, val end: LocalDate?) {
-    val name: String get() = L("calendar.events.$key")
+data class CalEvent(val date: LocalDate, val key: String, val type: String, val end: LocalDate?, val label: String? = null) {
+    /** Dünya tatillerinde (2. analiz #122) ad hazır gelir (`label`), diğerlerinde sitedeki etkinlik adı */
+    val name: String get() = label ?: L("calendar.events.$key")
 }
 
 object AppData {

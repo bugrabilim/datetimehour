@@ -2279,5 +2279,17 @@
     <string name="pollen_none">Hazırda tozcuq yoxdur və ya bu yer üçün tozcuq proqnozu yoxdur (yalnız Avropa).</string>
     <string name="aqi_source">Havanın keyfiyyəti və tozcuq: Open-Meteo (CAMS, Copernicus)</string>
     <string name="wx_alerts">Rəsmi xəbərdarlıqlar</string>
+    <string name="cal_mode_month">Ay</string>
+    <string name="cal_mode_week">Həftə</string>
+    <string name="cal_mode_day">Gün</string>
+    <string name="cal_mode_agenda">Gündəlik</string>
+    <string name="cal_mode_year">İl</string>
+    <string name="cal_hijriNav">Hicri aylarla gəz</string>
+    <string name="cal_country">Ölkə</string>
+    <string name="cal_shownTypes">Göstərilən günlər</string>
+    <string name="cal_countryNote">Seçilmiş ölkənin milli rəsmi bayramları (Nager.Date, MIT); dini günlər Diyanət təqviminə görə. Məlumat 2024–2032.</string>
+    <string name="cal_agendaEmpty">Növbəti 60 gündə göstəriləcək gün yoxdur.</string>
+    <string name="cal_density">Rəng nə qədər tünd olsa, o gün bir o qədər çox xüsusi gün və tədbir var.</string>
+    <string name="cal_bayram">Bayramınız mübarək</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

@@ -2279,5 +2279,17 @@
     <string name="pollen_none">No pollen now, or no pollen forecast for this place (Europe only).</string>
     <string name="aqi_source">Air quality and pollen: Open-Meteo (CAMS, Copernicus)</string>
     <string name="wx_alerts">Official alerts</string>
+    <string name="cal_mode_month">Month</string>
+    <string name="cal_mode_week">Week</string>
+    <string name="cal_mode_day">Day</string>
+    <string name="cal_mode_agenda">Agenda</string>
+    <string name="cal_mode_year">Year</string>
+    <string name="cal_hijriNav">Browse by Hijri months</string>
+    <string name="cal_country">Country</string>
+    <string name="cal_shownTypes">Shown days</string>
+    <string name="cal_countryNote">National public holidays of the selected country (Nager.Date, MIT); religious days follow the Diyanet calendar. Data 2024–2032.</string>
+    <string name="cal_agendaEmpty">Nothing to show in the next 60 days.</string>
+    <string name="cal_density">The darker the colour, the more special days and events.</string>
+    <string name="cal_bayram">Eid Mubarak</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

@@ -245,8 +245,28 @@ const otdFiles = Object.fromEntries(LANGS.flatMap((l) => {
   return [[`mobile/ios/App/Resources/otd-${l}.json`, j], [`mobile/android/app/src/main/assets/otd-${l}.json`, j]];
 }));
 
+/* Dünya resmî tatilleri (2. analiz #122; src/data/world-holidays.json, Nager.Date MIT): takvimde ülke seçimi. Ad tablosu
+   bir kez: "s" [ad], ülke → yıl → [[tarih, İngilizce ad sırası, yerel ad sırası]]; "tx" İngilizce ad sırası → {dil: çeviri}
+   (src/data/holiday-names.json); "native" sitedeki NATIVE_CC (o dilde yerel ad gösterilir) */
+const wholSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/world-holidays.json"), "utf8"));
+const holNamesSrc = JSON.parse(fs.readFileSync(path.join(ROOT, "src/data/holiday-names.json"), "utf8")).names;
+const wholJson = (() => {
+  const strs = [], idx = new Map();
+  const id = (t) => { if (!idx.has(t)) { idx.set(t, strs.length); strs.push(t); } return idx.get(t); };
+  const countries = {};
+  for (const [cc, years] of Object.entries(wholSrc.countries)) {
+    countries[cc] = {};
+    for (const [y, v] of Object.entries(years)) countries[cc][y] = v.days.map((h) => [h.d, id(h.n), id(h.l || h.n)]);
+  }
+  const tx = {};
+  for (const [en, tr] of Object.entries(holNamesSrc)) if (idx.has(en)) tx[idx.get(en)] = tr;
+  return JSON.stringify({ s: strs, countries, tx, native: { de: ["DE", "AT", "CH"], ar: ["EG"], fr: ["FR"], ru: ["RU"], ja: ["JP"], zh: ["CN"] } }) + "\n";
+})();
+
 const files = {
   ...otdFiles,
+  "mobile/ios/App/Resources/world-holidays.json": wholJson,
+  "mobile/android/app/src/main/assets/world-holidays.json": wholJson,
   "mobile/ios/App/Resources/Localizable.xcstrings": xcstrings,
   "mobile/ios/App/Resources/InfoPlist.xcstrings": catalog(plistStrings),
   "mobile/ios/App/Resources/AppShortcuts.xcstrings": catalog(shortcutStrings, "en"),

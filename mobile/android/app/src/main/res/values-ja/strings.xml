@@ -2279,5 +2279,17 @@
     <string name="pollen_none">現在花粉はないか、この地点の花粉予報はありません（欧州のみ）。</string>
     <string name="aqi_source">大気質と花粉：Open-Meteo（CAMS、Copernicus）</string>
     <string name="wx_alerts">公式の警報・注意報</string>
+    <string name="cal_mode_month">月</string>
+    <string name="cal_mode_week">週</string>
+    <string name="cal_mode_day">日</string>
+    <string name="cal_mode_agenda">予定リスト</string>
+    <string name="cal_mode_year">年</string>
+    <string name="cal_hijriNav">ヒジュラ暦の月で表示</string>
+    <string name="cal_country">国</string>
+    <string name="cal_shownTypes">表示する日</string>
+    <string name="cal_countryNote">選んだ国の祝日（Nager.Date、MIT）。宗教上の日はディヤーネットの暦に基づきます。データは2024〜2032年。</string>
+    <string name="cal_agendaEmpty">今後60日間に表示する予定はありません。</string>
+    <string name="cal_density">色が濃いほど記念日や予定が多い日です。</string>
+    <string name="cal_bayram">イードおめでとうございます</string>
     <string name="app_name">時刻と日付</string>
 </resources>

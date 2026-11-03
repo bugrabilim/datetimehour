@@ -2279,5 +2279,17 @@
     <string name="pollen_none">Şu an polen yok ya da bu konum için polen tahmini yok (yalnız Avrupa).</string>
     <string name="aqi_source">Hava kalitesi ve polen: Open-Meteo (CAMS, Copernicus)</string>
     <string name="wx_alerts">Resmî uyarılar</string>
+    <string name="cal_mode_month">Ay</string>
+    <string name="cal_mode_week">Hafta</string>
+    <string name="cal_mode_day">Gün</string>
+    <string name="cal_mode_agenda">Ajanda</string>
+    <string name="cal_mode_year">Yıl</string>
+    <string name="cal_hijriNav">Hicri aylarla gez</string>
+    <string name="cal_country">Ülke</string>
+    <string name="cal_shownTypes">Gösterilen günler</string>
+    <string name="cal_countryNote">Seçili ülkenin ulusal resmî tatilleri (Nager.Date, MIT); dini günler Diyanet takvimine göre. Veri 2024–2032.</string>
+    <string name="cal_agendaEmpty">Önümüzdeki 60 günde gösterilecek gün yok.</string>
+    <string name="cal_density">Renk ne kadar koyuysa o gün o kadar çok özel gün ve etkinlik var.</string>
+    <string name="cal_bayram">Bayramınız mübarek olsun</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

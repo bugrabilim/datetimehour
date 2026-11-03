@@ -2279,5 +2279,17 @@
     <string name="pollen_none">Derzeit kein Pollenflug oder keine Pollenvorhersage für diesen Ort (nur Europa).</string>
     <string name="aqi_source">Luftqualität und Pollen: Open-Meteo (CAMS, Copernicus)</string>
     <string name="wx_alerts">Amtliche Warnungen</string>
+    <string name="cal_mode_month">Monat</string>
+    <string name="cal_mode_week">Woche</string>
+    <string name="cal_mode_day">Tag</string>
+    <string name="cal_mode_agenda">Liste</string>
+    <string name="cal_mode_year">Jahr</string>
+    <string name="cal_hijriNav">Nach Hidschra-Monaten blättern</string>
+    <string name="cal_country">Land</string>
+    <string name="cal_shownTypes">Angezeigte Tage</string>
+    <string name="cal_countryNote">Gesetzliche Feiertage des gewählten Landes (Nager.Date, MIT); religiöse Tage nach dem Diyanet-Kalender. Daten 2024–2032.</string>
+    <string name="cal_agendaEmpty">In den nächsten 60 Tagen nichts anzuzeigen.</string>
+    <string name="cal_density">Je dunkler die Farbe, desto mehr besondere Tage und Termine.</string>
+    <string name="cal_bayram">Gesegnetes Fest</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

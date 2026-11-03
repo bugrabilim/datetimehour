@@ -2279,5 +2279,17 @@
     <string name="pollen_none">اس وقت پولن نہیں یا اس جگہ کے لیے پیش گوئی نہیں (صرف یورپ)۔</string>
     <string name="aqi_source">ہوا کا معیار اور پولن: Open-Meteo (CAMS، Copernicus)</string>
     <string name="wx_alerts">سرکاری انتباہات</string>
+    <string name="cal_mode_month">مہینہ</string>
+    <string name="cal_mode_week">ہفتہ</string>
+    <string name="cal_mode_day">دن</string>
+    <string name="cal_mode_agenda">ایجنڈا</string>
+    <string name="cal_mode_year">سال</string>
+    <string name="cal_hijriNav">ہجری مہینوں سے دیکھیں</string>
+    <string name="cal_country">ملک</string>
+    <string name="cal_shownTypes">دکھائے گئے دن</string>
+    <string name="cal_countryNote">منتخب ملک کی قومی سرکاری تعطیلات (Nager.Date، MIT)؛ مذہبی دن دیانت کیلنڈر کے مطابق۔ ڈیٹا 2024–2032۔</string>
+    <string name="cal_agendaEmpty">اگلے 60 دنوں میں دکھانے کو کچھ نہیں۔</string>
+    <string name="cal_density">رنگ جتنا گہرا ہو، اس دن اتنے زیادہ خاص دن اور واقعات۔</string>
+    <string name="cal_bayram">عید مبارک</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

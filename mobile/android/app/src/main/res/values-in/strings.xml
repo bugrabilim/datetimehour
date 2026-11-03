@@ -2279,5 +2279,17 @@
     <string name="pollen_none">Saat ini tidak ada serbuk sari atau tidak ada prakiraan untuk tempat ini (hanya Eropa).</string>
     <string name="aqi_source">Kualitas udara dan serbuk sari: Open-Meteo (CAMS, Copernicus)</string>
     <string name="wx_alerts">Peringatan resmi</string>
+    <string name="cal_mode_month">Bulan</string>
+    <string name="cal_mode_week">Minggu</string>
+    <string name="cal_mode_day">Hari</string>
+    <string name="cal_mode_agenda">Agenda</string>
+    <string name="cal_mode_year">Tahun</string>
+    <string name="cal_hijriNav">Jelajahi per bulan Hijriah</string>
+    <string name="cal_country">Negara</string>
+    <string name="cal_shownTypes">Hari yang ditampilkan</string>
+    <string name="cal_countryNote">Hari libur nasional negara terpilih (Nager.Date, MIT); hari keagamaan mengikuti kalender Diyanet. Data 2024–2032.</string>
+    <string name="cal_agendaEmpty">Tidak ada yang ditampilkan dalam 60 hari ke depan.</string>
+    <string name="cal_density">Makin gelap warnanya, makin banyak hari khusus dan acara.</string>
+    <string name="cal_bayram">Selamat Idul Fitri dan Idul Adha</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>
