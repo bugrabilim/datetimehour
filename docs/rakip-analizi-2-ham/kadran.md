@@ -202,3 +202,124 @@ Bizim taraf için kanıt: tek analog kadran çizimi `mobile/ios/App/Sources/Anal
   - Alt kenarda tek satır dört bilgi (tarih, şehir, sıcaklık, saat) ya da köşelerde küçük monospace bilgiler — kısmen (bizim alanlar saatin altında liste; `HomeItems.swift`) — K.
   - Şarja takınca açılma için uygulama içi Kısayollar rehberi — kısmen (Kısayol eylemi var `OpenFullscreenClockIntent`, Ayarlar'da "Siri ve Kısayollar" bağlantısı var; adım adım rehber yok) — `AppIntents.swift` — K — ücretsiz.
   - Mac ekran koruyucusu (.saver) — bizde yok (Mac menü çubuğu uygulaması var `mobile/ios/Mac`) — O — Pro.
+
+## Clock Face - desktop alarm (id1435058152; TR 4,34, 681 puan; 化媚 席 — aynı Çinli yayıncı ailesi)
+- Ücret modeli: ücretsiz + reklamlı; **Pro Version — ₺149,99** (tek seferlik). Deneme görülmedi.
+- İncelenen görüntü: 8 iPhone + 7 iPad (iPhone'lar açıldı).
+- İlk açılış / tanıtım: görülmedi.
+- Ana ekran (i2, i3, i4, i6): zemin kadranla takım (siyah, koyu gri #2?2?2?, gece mavisi #0?1?2?, lacivert #0?1?3?); sol üstte daire içinde **dört kare (galeri) simgesi**, sağ üstte **dişli**; altta solda **çalar saat simgesi + "Today at 9:45 AM"** (sıradaki alarm) ya da "OFF", sağda "Thu, Sep 6" tarih (beyaz, orta kalınlık SF). Kadranlar **sola-sağa kaydırarak** değişir.
+- Kadran / saat görünümü (görülen 10; galeri "Clock Types" iki sütun, seçili olanda sağ altta yeşil daire içinde beyaz onay):
+  1. **Dakika halkalı (i2)**: açık gri kadran, gri metal kalın bezel, **radyal döndürülmüş kalın saat rakamları** (12 dik, 3 yan yatık…), içte kırmızı noktalı **dakika rakamları 5…60** ikinci halka, siyah ibreler, kırmızı saniye.
+  2. **Balerin (i3)**: Desk Clock'takiyle aynı (siyah, siluet ibreler).
+  3. **Uzay/galaksi (i4)**: kadran yerine **yıldızlı galaksi fotoğrafı**, iki parlak küre (ibre yerine gezegen/ay: saat ve dakika muhtemelen kürelerin konumu; görüntüde ibre yok).
+  4. **Serif koyu (i5)**: siyah zemin, koyu gri gradyan kadran (ışık sağ alttan), **serif Arap rakamları**, beyaz **ok uçlu (spade/arrow)** ibreler, kırmızı saniye.
+  5. **Radyal Roma (i6)**: beyaz kadran, lacivert zemin, **radyal yönlü Roma rakamları** (VIII baş aşağı), iç ince halka, siyah ibreler, kırmızı saniye + kırmızı halkalı göbek.
+  6. Galeri (i7): beyaz klasik rakamlı (gri zemin), **lacivert Roma rakamlı ince ibreli** (dışta dakika izi), **İsviçre demiryolu** (kırmızı diskli saniye), **açık gri yalnız 12-2-4-6-8-10 rakamlı ince serif**, siyah ok uçlu.
+- Ayarlar: görülmedi. Alarm (i8): siyah zemin, "Cancel"/"Save", "Alarm Clock@ 09:46" başlığı, tekerlek (saat, dakika), satırlar: **Repeat (No Repeat)**, **Sounds (Morning ›)**, **Snooze (5 Min)**, **Title** (boş satır).
+- Widget / kilit ekranı / StandBy / saat (i1): ana ekranda **büyük kare analog widget'lar** (balerin siyah, dakika halkalı beyaz, **galaksi**), "Clock Face" etiketi. Açıklama: saniyeli dijital saat kilit ekranında, **Dynamic Island**'da, ana ekranda ve StandBy'da; saat başı sesli saat söyleme; müzikli alarm.
+- Pro sayfası: görülmedi.
+- Tasarım: düz koyu zeminler, kadranlar ekran genişliğinin ~%90'ı, bezel gri metal gradyan; galeri karoları kare, aralıksız ızgara. Görüntüler eski (iOS 14 dönemi, "Carrier").
+- Hatalar: açıklamada Çince tam genişlik nokta "on time。"; görüntülerde "Carrier".
+- Bizde olmayan / farklı:
+  - Radyal (döndürülmüş) rakamlar, dakika rakamı halkası (5…60), ok uçlu ibreler, serif rakamlar — bizde yok (rakamlar hep dik, tek yazı; `AnalogClock.swift`) — K (her biri birkaç satır) — rakipte Pro ₺149,99'un içinde olabilir — 2. analiz #1'e ek: kadran parçaları (rakam türü × ibre biçimi × bezel) bileşen olarak düşünülürse az işle çok kadran üretilir.
+  - Fotoğraf/galaksi dokulu kadran içi — kısmen (bizde fotoğraf yalnız tam ekran zemini; kadranın içi değil) — `Appearance.swift` — K.
+  - Ana ekranda sıradaki alarm göstergesi ("Today at 9:45 AM") — kısmen (saat ekranı alanı `HomeItem.alarm` var, varsayılan kapalı; `HomeItems.swift`) — —.
+  - Kaydırarak kadran değiştirme + galeri düğmesi — kısmen (bizde kaydırma ve "1/20" sayacı ile liste var) — —.
+
+## Digital Clock - Bedside Alarm (id1287009111; TR 4,54, 1.773 puan; 俊杰 阮 — Desk Clock/Flip Clock ile aynı yayıncı ailesi, aynı simge dili)
+- Ücret modeli: ücretsiz + reklamlı; **Pro Version ₺149,99**, **Remove Ads ₺49,99**, **All clock styles ₺49,99** (tek seferlik). Deneme görülmedi.
+- İncelenen görüntü: 6 iPhone (yatay, 1200 px) + 7 iPad (iPhone'larla aynı, açılmadı).
+- Sürüm notları: "Fixed an issue with automatic screen timeout" (5.15), Pro etkinleştirme hatası (5.14).
+- Ana ekran (Li2): siyah zemin, **yeşil yedi bölütlü LED** (#1?F?6? civarı) "22:17" büyük + ":30" saniye küçük ve alta hizalı; üstte solda "WED", sağda "2017-12-20" aynı LED yazıyla. Dört köşede küçük ince LED renginde simgeler: sol üst **kronometre/zamanlayıcı**, sağ üst **dişli**, sol alt **zil + "OFF"**, sağ alt **tişört** (skin).
+- Kadran / saat görünümü ("Change skin", 2 sütun karolar, beyaz kalın çerçeveli, koyu lacivert-gri #4?5?6? başlık şeridi, sol üstte aşağı ok): **yeşil, mavi, camgöbeği (lacivert zemin), turkuaz (gri gradyan zemin)**, **beyaz (siyah-gri gradyan zemin; Li3)**, **koyu ahşap + yeşil LED** (Li4), **kızıl ahşap + beyaz**, **siyah + krem**, **açık ahşap (meşe) + beyaz**. Ayrıca saniyesiz düzen (Li3: yalnız "05:20").
+- Ayarlar: görülmedi. Açıklama: 12/24, hafta ve tarihi gizleme, müzik kitaplığından alarm, **saat başı sesli saat söyleme**, pomodoro, kronometre, geri sayım, **hedef tarihe/olaya geri sayım**.
+- Widget / kilit ekranı / StandBy / saat (Li1): orta boy LED widget "17:57" + "06" saniye + "THU, OCT 8" (siyah, yeşil); küçük LED widget. Açıklama: saniye Dynamic Island, StandBy, kilit ve ana ekranda.
+- Pro sayfası: görülmedi.
+- Tasarım: tanıtım zemini düz yeşil (#4?8?1?); tüm metinler yedi bölüt yazı tipinde; görüntüler 2017 tarihli.
+- Hatalar: görüntülerde tarih 2017; iPhone kasası eski.
+- Bizde olmayan / farklı:
+  - **Yedi bölütlü LED yazı tipi** (rakam + gün adı + tarih aynı yazıyla) — bizde yok (`ClockFont`: rounded, standard, serif, mono, light; `Appearance.swift`) — K (açık lisanslı yedi bölüt yazı tipi gömmek ya da şekille çizmek) — rakipte "All clock styles" ₺49,99.
+  - LED rengi seçimi (yeşil, mavi, camgöbeği, krem, beyaz) — kısmen (rakam rengi tema ana renginden; ayrı seçim yok) — `Theme.swift` — K.
+  - Ahşap dokulu zemin — bizde yok (`fsBg` seçenekleri arasında doku yok; `AnimatedBackground.swift`) — K (görsel) — ücretli kadranlarda.
+  - Saniyenin küçük ve alta hizalı gösterimi (saat:dakika büyük, saniye ~%40 boy) — bizde yok (saniye saatle aynı boyda tek metin: `Text(Fmt.time(now, seconds:))`, `DigitalPart` `ClockModels.swift`) — K — ücretsiz.
+
+## Fullscreen Clock: Flip & Focus (id1403700342; TR 4,64, 268 puan; Shenzhen Gude Aipu Technology)
+- Ücret modeli: ücretsiz + reklamlı; tek uygulama içi satın alma **VIP — ₺149,99** (süresi yazmıyor; tek kalem). Deneme görülmedi.
+- İncelenen görüntü: 5 iPhone (yatay) + 8 iPad (2'si açıldı).
+- Sürüm notları: "**percentage-based font size control** … up to 130%" (7.4), "floating clock … on iOS 27" düzeltmesi (7.5), widget kararlılığı (7.6).
+- Ana ekran / görünümler: (1) siyah zemin, beyaz **ince/normal SF** dev "23:36" (ekranın ~%90 genişliği), saniyeli hâli "12:36:59"; (2) **"HAPPY BIRTHDAY" dev metin** (iki satır, beyaz, ince SF): saatin yerine kullanıcı yazısı gösteren **yazı/tabela modu**; (3) gri-mavi #5?7?8? zeminde beyaz kadranlı analog, siyah kalın çerçeve, kalın rakamlar, **kadranın içinde "AM/PM"** yazısı, kırmızı saniye ve kırmızı göbek; (4) üç gri çevirmeli kart "11 34 16" (siyah zemin).
+- Widget / kilit ekranı / StandBy / saat (iPad p6): ana ekranda siyah küçük widget'lar "10:29", **saniyeli "22:29:06"**, dikey "10 / 29"; sağ üstte **yüzen saat penceresi "22:29:06.7"** (iPadOS; onda bir saniyeli). iPad tanıtım görüntüleri açık mavi zemin, ortalı başlık "Various clocks / Large digital clock", "Clock widgets / Widgets and floating clock".
+- Ayarlar: görülmedi (açıklama: tema, boyut, **kendi fotoğrafını zemin yapma**).
+- Pro sayfası: görülmedi.
+- Tasarım: yalın siyah-beyaz; ince yazı; tanıtım görüntüleri yazısız (tam ekran saat görüntüsü), iPad'de açık mavi kartlar.
+- Hatalar: açıklamada "Gong-stagram" (Korece "공스타그램" = ders çalışma Instagram'ı) yerelleştirilmemiş.
+- Bizde olmayan / farklı:
+  - **Dev metin/tabela modu** (saat yerine kullanıcının yazdığı mesaj: "HAPPY BIRTHDAY") — bizde yok (kişisel metin `fs.text` yalnız saatin altında küçük satır; `Appearance.swift`) — K — muhtemelen ücretsiz.
+  - Yazı boyutunu yüzdeyle ayarlama (%130'a kadar) — kısmen (`fs.scale` 0,5–1, büyütme yok; `Appearance.swift`) — K — ücretsiz.
+  - Analog kadranda AM/PM yazısı — bizde yok — K.
+  - Yüzen saat (onda bir saniyeli) — **var** (`FloatingClock.swift`, iOS resim içinde resim; Android pencere) — —.
+
+## Bauhaus Clock - Analog Clock (id6755106534; TR 5,0, 3 puan; Atilla Taşkıran — Türk geliştirici)
+- Ücret modeli: **ücretli uygulama ₺799,99**, uygulama içi satın alma yok, reklamsız. Sürüm 1.2. Mağaza metninde tanınmış kişilerden alıntılar (Chris Messina, John Gruber, Josh Ginter) — sosyal kanıt.
+- İncelenen görüntü: 7 iPhone + 7 iPad (iPhone'lar açıldı).
+- İlk açılış / tanıtım: görülmedi.
+- Kadran / saat görünümü: **tek kadran tasarımı, çok ince işçilik**: dış halkada 5'er dakika rakamları (05…60, küçük, radyal), dakika çizgileri, saat başlarında **kabartmalı/gölgeli çubuk indeksler** (lüm dolgulu gibi açık renk iç, koyu kenar), orta halkada **yuvarlak geometrik (Bauhaus/Futura benzeri) rakamlar**, ince uzun **kılıç (sword) ibreler** (açık dolgu + ince koyu kenar), çok ince uzun saniye, metal göbek. Zemin ve kadran **aynı renk** (kadran sayfaya gömülü), ince **kumlu/kâğıt dokusu**. Görüntülerde: hardal sarı #F?C?0?, zümrüt yeşil, gök mavisi, fıstık yeşili (yakın çekim "Nothing accidental").
+  - **18 gündüz kadran rengi** (adlı: Pistachio, Lavender, Rose, Sky Blue, Cream…, yeni Agave ve Burgundy; seçicide 4×4 ızgarada her rengin "10" çevresi yakın çekim örneği), **her kadran renginin eşleşen uygulama simgesi** (alternatif simge).
+  - **14 gece "lume" rengi**: gece modunda kadran siyah, indeksler ve rakamlar **gerçek saat lümü gibi parlar** (camgöbeği, yeşil; hafif ışıma); "Glows in the dark like real watch lume."
+  - **3 mekanizma**: Quartz (saniyede bir **tık**), **Mechanical sweep** (28.800 titreşim/saat, 4 Hz akıcı ilerleme), Digital glide; **tık sesi** (Quartz ve Mechanical için, ayardan).
+  - **İkili saat dilimi**: iki kadran alt alta (yeşil üstte "BER", mavi altta "−9 SF": şehir kodu ve saat farkı köşede küçük); yalnız **yan çevirince** ikinci saati gösterme seçeneği; iPad'de tam ekran iki saat.
+  - **Dial Shuffle**: her açılışta rastgele kadran + lüm eşleşmesi.
+  - **Gündüz/gece otomatik**: sistem görünümü, **gerçek gün batımı–doğumu**, ya da saat çizelgesi.
+- Ayarlar (i7, alt sayfa): pembe zemin üstünde beyaz yarı saydam sayfa; üstte üç küçük resimli seçim **Day / Night / System** (seçili olan siyah çerçeve), sağ üstte hap "Done"; **"Clock Dial"** yatay kaydırmalı yuvarlak örnekler (ad altında, seçili olan siyah halkalı ve kalın ad); siyah kart içinde **"Lume Color"** renk daireleri (kırmızı, turuncu, lila, pembe, nane, camgöbeği…; seçili beyaz halkalı, adı altında "Rose"); **"Dual Time"** anahtarı (solda "2" simgesi); **"Movement · Mechanical sweep"** üç küçük resim (Quartz, Mechanical, Digital: saniye ibresinin iz bırakan hareket çizimi); "PREFERENCES" başlığı. Yazı tipi yuvarlak geometrik (Outfit/Futura benzeri), satırlar çok yuvarlak köşeli (~24 pt) beyaz kartlar.
+- Widget / kilit ekranı / StandBy / saat (i6): **ikili saat widget'ı** (orta: lavanta ve pembe iki kadran, "BER", "−9 SF"), küçük siyah lüm kadran (camgöbeği), küçük sarı kadran; her widget ayrı özelleştirilir ya da uygulamayla eşitlenir; büyük boy widget'lar; **StandBy'da gece modu kendiliğinden**, widget için "Silver Hands" ya da lüm rengi.
+- Pro sayfası: yok (ücretli uygulama).
+- Tasarım: her tanıtım görüntüsü kadran rengine uyan düz zemin (sarı, açık nane, açık gri, fıstık, siyah, gri-mavi, pembe), ortalı iki satırlık geometrik sans başlık, koyu metin rengi zeminin koyu tonu (sarıda kahverengi, pembede bordo). Alıntı kartında beş yıldız ve defne dalı.
+- Hatalar: görülmedi.
+- Bizde olmayan / farklı:
+  - **Saniye hareket türü** (tık tık / mekanik akıcı / dijital kayma) ve **tık sesi** — bizde yok (saniye her saniye atlar; uygulamada tık sesi yok; sitede eski `sth-prefs.tick` kapalı) — K — rakipte ücretli uygulamanın içinde.
+  - **Lüm gece modu** (kadran siyah, işaretler seçilen renkte parlar) — kısmen (bizde gece modu kırmızı çarpım renk + parlaklık %5; `NightMode.swift`; lüm rengi seçimi ve ışıma yok) — K — ücretli.
+  - Gündüz/gece kadranının gün batımına ya da çizelgeye göre değişmesi — kısmen (`nightMode = auto` Güneş −0,833°'de; çizelge seçeneği yok) — K.
+  - **İkili saat dilimi kadranı** (iki analog, şehir kodu + fark) ve ikili widget — kısmen (dünya saatleri widget'ı dijital; tam ekranda ikinci saat yok; `MoreWidgets.swift` `WorldClockWidget`) — O — ücretli.
+  - Kadranla eşleşen **alternatif uygulama simgeleri** — bizde yok (`setAlternateIconName` yok) — K — ücretli uygulamada.
+  - Kadran rengi adlarıyla seçici (yuvarlak örnek + ad), "Dial Shuffle" — kısmen (tema seçicide üç renkli daireler var, `Theme.swift`/`Appearance.swift`; karıştırma yok) — K.
+  - Kadran işçiliği (kabartma indeks, kılıç ibre, dış 5'li dakika halkası, kâğıt dokusu) — bizde yok (`AnalogClock.swift` düz kapsül ibreler) — O — 2. analiz #1'e ek: **tek ama çok iyi işlenmiş kadran** da bir yoldur; Türk geliştirici ₺799,99'a satıyor.
+  - StandBy'da otomatik gece görünümü (widget `widgetRenderingMode` / `isLuminanceReduced`) — bizde yok — K — ücretli.
+
+## Watch Faces by Facer (id1057071179; TR 4,57, 3.274 puan; Little Labs, Inc.) — saat kadranı pazar yeri (Apple Watch; Wear OS'ta da var)
+- Ücret modeli: ücretsiz + reklamlı; abonelik **Facer Premium** (₺33,99, ₺35,99, ₺194,99, ₺194,99, ₺269,99 kademeleri), **Facer Plus ₺249,99**; **lisanslı marka kanalları** tek tek: Betty Boop, Popeye, Garfield, "Constellations Watch Face Channel" — her biri **₺49,99**. Mağaza vitrininde tek kadranlar **$1.99** ya da "Premium Access".
+- İncelenen görüntü: 7 iPhone (hepsi açıldı); iPad yok.
+- Ana ekran (i6): beyaz zemin, ortada "FACER" logolu üst çubuk (sol ☰, sağ kişi simgesi), büyük **tanıtım afişi** ("WORK HARD CROSSFIT"), kişisel selam "Happy Friday, Roy! / The latest from your favorite designers", yatay kadran rafları (ad + fiyat "$1.99" / "Premium Access"), **"Find your favorite brands"** yuvarlak marka logoları (Fallout, Şirinler, Temel Reis, MTV, Barbie), "Spotlight"; alt çubuk 5 sekme: **Home, Explore, Top Charts, Favorites, Premium** (yıldız simgeli).
+- Kadran / saat görünümü: "500,000+ Watch Faces", "Top Independent Designers" (tasarımcı logoları), "New Watch Faces Daily". Kadranlar komplikasyon yoğun (nabız, adım, kalori, hava, UV, nem, pil), lisanslı karakterler (Fallout Vault Boy, Doom, Star Trek, Tetris, futbolcu, MTV), "10:09/10:10" vitrin saati.
+- Özelleştirme (i5): **"Color Themes"** renk daireleri (camgöbeği, turuncu, sarı-turuncu, yeşil, açık yeşil, pembe, kırmızı [seçili], orkide, mor), **"Customizable Complications"** (konum/mesafe, Etkinlik halkaları, Stand göstergesi, tarih "THU 26").
+- **Facer Creator** (i7, Mac/web): kadran düzenleyici; sol panelde komplikasyon yerleri (Top Left, Center, Bottom Left/Center/Right), "Powerful Scripting Tools", "Color themes", "Weather Complications", hava/Ay evresi simgeleri, zaman makinesi (önizlemede saati ileri sarma).
+- Pro sayfası: görülmedi.
+- Tasarım: siyah-beyaz diyagonal bölünmüş tanıtım zemini, **camgöbeği→yeşil gradyan** başlık yazıları, defne dallı "World's #1 Watch Face App".
+- Hatalar: görülmedi.
+- Bizde olmayan / farklı:
+  - Kadran mağazası/pazar yeri, tasarımcı içerikleri, lisanslı markalar — bizde yok, yapılmamalı (sunucu, lisans, ticari) — B — ücretli — **—** (bizim ölçeğe uymaz).
+  - Saat kadranında renk teması seçimi (Wear OS kadranımızda) — bizde yok (Wear OS kadranımız tek renk WFF; `mobile/android/watchface`; WFF `UserConfigurations` ile renk seçeneği eklenebilir) — K — rakipte ücretsiz/Premium karışık.
+  - Kadranda komplikasyon yerleri — **var** (Wear OS kadranında iki komplikasyon yeri; CLAUDE.md #78) — —.
+
+## Forest: Focus for Productivity (id866450515; TR 4,71, 9.440 puan; SEEKRTECH) — ikinci öncelik: odak
+- Ücret modeli: ücretsiz + reklamlı; abonelik **Annual (Early Bird) ₺579,00 / ₺639,99**, **Monthly (Early Bird) ₺105,00**; oyun içi para: **Sunshine Elixir** (₺49,99 şişe, ₺99,99 kutu), **Crystal** (₺49,99 kürek, ₺249,99 küçük saksı). "Early Bird" adı indirimli abonelik gösterimi.
+- İncelenen görüntü: 8 iPhone (hepsi açıldı) + 8 iPad (açılmadı).
+- Görülenler: ana ekran (i1) nane-yeşil #3?A?8? zemin, ortada **toprak kâse içinde büyüyen fidan** (sayaç süresince büyür), üstte hap biçimli "⏳ | 🔥" (sayaç/kronometre modu) ve para "+"; "Stay focused, or I'll wither!" konuşma balonu, izometrik **orman ızgarası** (her odak oturumu bir ağaç; yıllık "Overview 2025" orman görünümü), **Block List** (Instagram, TikTok, Threads, WhatsApp… "8 Apps"; **Schedule From 8:00 To 17:00**, gün düğmeleri S M T W T F S, "All the time" kutusu, "Pause"), **"Breathe in"** nefes egzersizi (yeşil maskot), istatistik "Overview" (**Day / Week / Month / Year** sekmeleri, "Focused Time Distribution" çubuk grafik, "Total focused time: 25h 30m", balon "360m", altta "Tag Distribution"), **arkadaşlarla birlikte odak** (dört profil fotoğrafı, "Let's Stay Focused!", "Group Project"), **gerçek ağaç dikme** ("Real Forest": 5 by you / 52 by friends / 1954554 by everyone; Trees for the Future fotoğrafı).
+- Tasarım: yumuşak yeşil gradyan, yuvarlak kalın başlık yazısı (koyu yeşil #2?6?5?), izometrik 3B çizimler, maskot; laurel çerçeveli "trusted by 50m users".
+- Bizde olmayan / farklı:
+  - Odak sırasında **büyüyen görsel** (fidan/ağaç) ve toplanan **koleksiyon** (orman) — bizde yok (pomodoro sayaç + istatistik; `FocusSounds.swift` `FocusStatsCard`, rozetler var) — O — ücretsiz temel, Pro ağaç türleri.
+  - **Zaman çizelgeli uygulama engelleme** (8:00–17:00, gün seçimi; pomodoro dışında da) — kısmen (bizde engel yalnız pomodoro çalışma süresinde; Android `FocusBlock.kt`, iOS `FocusBlock.swift` FamilyControls onayı bekliyor) — O — Pro.
+  - **Nefes egzersizi** — bizde yok (`grep breath/nefes` boş) — K — ücretsiz.
+  - İstatistikte **Ay ve Yıl** görünümü — kısmen (bizde bugün / 7 gün / toplam + etiket toplamı; `FocusLog`) — K — Pro.
+  - Arkadaşlarla odak, gerçek ağaç — bizde yok (sunucu gerekir) — B — **—**.
+
+## Focus To-Do: Focus Timer & Tasks (id966057213; TR 4,65, 16.277 puan; Shenzhen Tomato Software) — ikinci öncelik: pomodoro + görev
+- Ücret modeli: **reklamsız**; **Focus To-Do Premium ₺99,99**, **3 Months ₺199,99**, **Lifetime ₺599,99**. Sürüm notları: "**app blocking feature during timing periods**", "**always-on display for the Apple Watch app**", "New full-screen timer interface", "extend time during the timer", ses düzeyi ayarı.
+- İncelenen görüntü: 10 iPhone (hepsi açıldı) + 10 iPad (açılmadı).
+- Görülenler: sayaç ekranı (i1) **gece dağ manzaralı fotoğraf zemin** (Fuji silueti, yıldızlı gök), ortada ince beyaz halka içinde ince "25:00", üstte beyaz kart içinde görev "Reading" (3 kırmızı pomodoro noktası), beyaz hap "▶ Start to Focus"; alt çubukta dört simge: **Strict Mode**, **Timer Mode**, **Fullscreen**, **White Noise**. **Strict Mode** penceresi: Off / **Flip Phone** (telefonu yüzüstü çevirince sayar) / **Prohibit to Exit**, "Cancel" gri hap + "Confirm" kırmızı-mercan hap (#F?5?5?). Görev listesi "Today": üstte dört sayaç (Estimated Time 03:45, Tasks to be Completed 6, Elapsed Time 03:10, Completed Tasks 5; kırmızı ince rakamlar), "+ Add a task…", gruplar (Work, Study), etiketler (#Important, #Home), alt görevler (Chapter 1/2), kırmızı yüzen "25" düğmesi. **Raporlar**: proje süresi çubukları, odak hedefi takvimi (daire içinde gün), proje dağılımı halka grafik, pomodoro kayıtları zaman ızgarası, günlük/haftalık/aylık rapor. **Events** takvim görünümü (planlanan/tamamlanan iki sütun, saat çizelgesi). **White Noise** listesi: **Tic-tac**, Countdown, Wind With Crickets, Class Room, Wilderness, Stream, Ocean Shore, Rain, Cafe, Bonfire, Library, Wind… **Themes**: sayaç ekranı için 10+ fotoğraf/renk zemin (mercan gradyan, palmiye, gece gölü, kumsal, karlı tepe, çöl, sonbahar ormanı; ortada saat "20:23", dairesel ilerleme noktaları). **Forest/Sunlight** oyunlaştırma (güneş ışığı toplama, "Daily login 30g sunlight", seviye LV.4). Çok cihaz eşitleme (Mac, iPad, iPhone, Apple Watch).
+- Tasarım: beyaz tanıtım zemini, mercan-kırmızı #F?4?5? başlıklar, gri alt yazı; uygulama içi iOS standart listeler; görüntüler eski ("Network Provider", 2021).
+- Bizde olmayan / farklı:
+  - **Strict Mode / Flip Phone** (telefon yüzüstü dururken sayaç işler, kaldırınca durur ya da uyarır) — bizde yok — K (ivmeölçer; `MotionCounter` altyapısı var) — Premium olabilir.
+  - Pomodoro tam ekranında **tema/fotoğraf zemin** ve dairesel ilerleme — kısmen (tam ekran saat zeminleri var, pomodoro ekranında yok; `ToolsTab.swift`) — K.
+  - Doğa sesleri kitaplığı (tik-tak, cırcır böceği, dere, sınıf, kafe, şömine, kütüphane…) — kısmen (bizde beyaz, pembe, kahverengi gürültü, yağmur, dalga: 5 ses; `NoiseGen` `Focus.swift`) — O (telifsiz kayıt ya da sentez) — rakipte bir kısmı Premium.
+  - Görev başına tahmini pomodoro, proje/etiket raporları, takvim görünümü — kısmen (yapılacaklar listesi + etiket toplamı var; `PomoTodo`) — O — Premium.
+  - Sayaç sürerken süre uzatma — kısmen (zamanlayıcıda +1 dk var; pomodoroda doğrulanmadı) — K.

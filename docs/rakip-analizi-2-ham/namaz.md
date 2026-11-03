@@ -206,3 +206,79 @@ Yöntem: App Store TR (`itunes.apple.com/lookup?country=tr`) ekran görüntüler
   - Uygulama içi yazı tipi seçimi (genel metin için) — kısmen (saat yazı tipi `clockFont` var; genel metin yok) — `Appearance.swift` — K — ücretsiz
   - Abonelik hediye etme paketleri — yok — — — rakipte ücretli
   - Birden çok kayıtlı şehir — var (kayıtlı yerler, en çok 8) — `Places.swift` (`places.saved`) — — —
+
+## Namaz Vakti: Temkinli Vakitler (id6752358485, 4,91, 215 puan, Erkan Kurtkadıoğlu)
+- Ücret modeli: ücretsiz, reklam görülmedi, uygulama içi satın alma yok. Sürüm 2.4.5 (19 Ekim 2026), 8 dil. Türkiye Takvimi / Hakikat Kitabevi çizgisinde (temkinli vakit, Hüseyin Hilmi Işık kitapları).
+- İncelenen görüntü: 10 iPhone + 12 iPad (iPhone'dan 10'una bakıldı; iPad'e bakılmadı).
+- Ana ekran: **bulanık petrol-gri degrade zemin** (#5E8C93 civarı, "gradient arka plan"), büyük kalın "Vakitler" başlık + sağda alarm saati simgesi. Üst blok: "‹ 26 Mart 2026 Perşembe ›" hap, "7 Şevvâl 1447" hap, "📍 Güncelle | 🔍" hap; sağda **yarım daire gösterge**: yeşil yay (geçen süre), "01:17:31 İkindiye Kalan", altta "Öğle 13:22 / İkindi 16:53". Ortada "İstanbul / Beylikdüzü, Kavaklı" (**mahalle düzeyinde**), solda takvim, sağda menü daire düğmeleri. Vakit listesi **iki sütun büyük hap**: solda adlar, sağda saatler, sıradaki koyu petrol kalın. Altta **günün notu**: "Suriye'de Afrin Harekâtı sona erdi (2018) (Edirne) Balkan Şehitlerini Anma Günü - **Çaylak Fırtınası**" (tarihte bugün + anma günü + halk takvimindeki fırtına). Alt çubuk 5 simge: kronometre (zikir), pusula (kıble), saat (vakitler, ortada büyük hap), kitap, "…".
+- Günlük vakitler (alt pencere): "Günlük Vakitler / Aylık Vakitler" düğmesi; **19 vakit**: İmsak, Sabah, Güneş, İşrak, Dahve-i Kübra, Kerâhat, Öğle, İkindi, Asr-ı Sani, İsfirar-ı Şems, Akşam, İştibak-ı Nücum, Yatsı, İşa-i Sani, Gecenin 3'te 1'i, Gece Yarısı, Teheccüd, Seher, Kıble (kıble saati 11:54).
+- Bildirimler: hap kartlar: "Bildirimleri Etkinleştir", "**Arka Plan Konum Takibi**" (konum değişince vakit ve alarmlar güncellenir), "**Cuma Namazında Bildirim**" (Cuma namazı sırasında kurulu bildirimler durdurulur); kırmızı "Tümünü Kapat", "Tümünü Sil"; "⊕ Yeni Alarm Ekle"; liste "İmsak - Vaktinde", "Sabah - Vaktinde"… her biri yeşil nokta + anahtar + açılır ayrıntı (vakit başına alarm, birden çok alarm).
+- Kıble: "Kıble Pusulası", OSM haritası üstünde konumdan kırmızı çizgi, "🕌 En Yakın Cami" hapı, harita/pusula düğmeleri, yenile, kırmızı kilit; "Pusula / Harita" sekme; kartlar "İhlas Marmara Evleri II. Kısım / İstanbul", "Hedef: 150.85° / 0.00°".
+- Zikir: "Besmele ⇄" seçici, "Zikir Sayısı 250", sıfırla ve titreşim düğmeleri, büyük dokunma alanı "162", "Dokun: say • Uzun bas: geri al".
+- Kitaplar: "Sesli Yayınları Dinle (Eshab-ı Kiram, Evliyalar, İlahiler, Mehter Marşları…)", gerçekçi kitap kapakları (Kur'an, Tam İlmihal, Mektubat, İslam Ahlâkı, Kıyamet ve Âhiret, Namaz Kitabı…), okuma ilerleme çubuğu; okuyucu: yazı boyu kaydırıcı, **6 arka plan rengi** (beyaz, bej, açık yeşil, açık mavi, lacivert, kahve), sesli okuma çubuğu (00:09 / −06:54, 1.0x); **kitaplarda tam metin arama** (sesle arama, sonuç sayfa numaralı, vurgulu).
+- Widget: küçük (yarım daire gösterge + "Beylikdüzü, Kavaklı / İstanbul"), orta (gösterge + 7 vakit), büyük (gösterge + tarih + 18 vakit iki sütun, sıradaki mavi).
+- Ayarlar: hap kartlar: "Dil Türkçe", tema üçlü düğme (sistem/koyu/açık), "**Düzen: Yuvarlak**" (köşe biçimi), "Ekranı Açık Tut", "**Tema Rengi**" (renk paleti), "**Ayarları Yedekle ve Geri Yükle**" (yükle/geri al düğmeleri).
+- Tasarım: Material 3 benzeri büyük yuvarlak hap kartlar (köşe ~28 pt), yumuşak gölge, petrol mavisi (#1E6A7A) vurgu, bulanık degrade arka plan; kitap kapakları gerçekçi 3B.
+- Hatalar: görülmedi.
+- Bizde olmayan / farklı:
+  - Gece vakitleri: gecenin üçte biri, gece yarısı (şer'î), teheccüd, seher; İşrak, Dahve-i kübra, Asr-ı sani, İsfirar, İştibak-ı nücum, İşa-i sani satırları — yok (kerahat kartı hariç) — `grep teheccüd|lastThird` boş; `PrayerTab.swift` KerahatBox — K (hesap basit; temkin kuralları Türkiye Takvimi'ne göre farklı olabilir, doğrulanmalı) — ücretsiz
+  - Yarım daire gösterge (önceki vakitten sıradakine geçen süre) uygulamada ve widget'ta — kısmen (Güneş/Ay yayı kartı; widget'ta gösterge yok) — `PrayerExtras.swift`, `mobile/ios/Widget/Sources/PrayerWidgets.swift` — K — ücretsiz
+  - Cuma namazı sırasında bildirimleri durdurma — yok — `NotificationSettingsView.swift` — K — ücretsiz
+  - Vakit ekranında günün notu: tarihte bugün, anma günü, halk takvimindeki fırtınalar (kocakarı fırtınaları) — kısmen (sitede "Tarihte bugün" sayfası, uygulamada takvim yaprağı; fırtına takvimi yok) — `src/data/on-this-day.json`, `Content.swift` — K (fırtına listesi: kaynak doğrulanmalı) — ücretsiz
+  - Mahalle düzeyinde konum adı — kısmen (ilçe; mahalle yok) — `District.swift` — K — ücretsiz
+  - Zikirde "uzun bas: geri al" — doğrulanmadı (bizde sıfırla var) — `Religion.swift` — K — ücretsiz
+  - Ayarları dosyaya yedekle / geri yükle — kısmen (iCloud ve Android yedeği; elle dışa aktarma yok) — `CloudSync.swift` — K — ücretsiz
+  - Kitap okuyucu, sesli kitaplar, tam metin arama — yok (içerik lisansı gerekir) — — B — ücretsiz
+
+## Türkiye Takvimi Vakitleri (id6651851291, 4,47, 40 puan, İhlas Gazetecilik)
+- Ücret modeli: ücretsiz, reklam ve satın alma görülmedi. "Only for iPhone". Sürüm 22 (14 Ocak 2026). Basılı Türkiye Takvimi'nin (43. yıl) uygulaması.
+- İncelenen görüntü: 7 iPhone (hepsine bakıldı) + 0 iPad.
+- Ana ekran: beyaz zemin, üst ve alt kenarda **açık pembe geometrik İslami desen bordür**; sol üstte bordo hap menü, sağ üstte bordo hap konum "📍 Cumhuriy…" (kesik). "13 SAFER 1447" geniş harf aralıklı; ortada bordo hap içinde büyük "7", "Ağustos 2025 Perşembe"; iki yanda **bordo çalar saat çizimi** (analog, canlı ibreli). Vakit listesi: bordo (#8B3A3A) hap satırlar, solda beyaz daire içinde renkli vakit simgesi (turuncu hilal, doğan güneş, güneş, bulut, koyu hilal, mor hilal), ad ve saat beyaz; **sıradaki vakit açık pembe** (#E8A0A0). Altında çiçek motifli bordo ayraç süsü; "İkindiye kalan / **9 Dakika 35 Saniye**" (sözle). En altta "Türkiye Takvimi" logosu.
+- Menü (sol kayan panel, bordo→şeffaf degrade): Günün sözü, Arka yaprak, Diğer vakitler, Vakitlerle ilgili açıklama, Kıble pusulası, Renk seç.
+- Arka yaprak: "MENKIBE….. ZEYD BİN HÂRİSE" başlıklı uzun metin (bordo yazı), sağ altta takvim düğmesi.
+- Günün sözü penceresi: hadis ("Her kim Perşembe ve Pazartesi günleri oruç tutsa…") + süs ayracı + **"Tarihin en kalabalık mitingi… Yenikapı'da (2016)" (tarihte bugün)** + "**Eyyâm-ı Bahûr'un (En sıcak günlerin) sonu**" (halk takvimi).
+- Diğer vakitler: Gece yarısı, Teheccüd, Seher, İşrak, Dahve, Kıble (kıble saati), Kerâhet, Asr-ı Sânî, İsfirar, İştibâk, İşa-i Sânî, Gecenin 3'te biri (ok işaretli liste).
+- Renk seç: "Rengi seçiniz" 19 renk dairesi, "Opaklık seçiniz" 10 ton, renk çarkı, "Tamam".
+- Widget: kırmızı dikdörtgen içinde 6 vakit (emoji simgeler 🌙☀🌤🌇🌌☾), widget çerçevesini doldurmuyor (beyaz kenar). Ana ekranda **iki ayrı "TürkiyeTakvim…" simgesi** görünüyor.
+- Tasarım: bordo + pembe, süslü (desen bordür, çiçek ayraç, çalar saat çizimleri), kalın yuvarlak yazı; geleneksel basılı takvim havası.
+- Hatalar: konum adı kesik ("Cumhuriy…"), widget kırmızı kutusu çerçeveye oturmuyor, iki uygulama simgesi.
+- Bizde olmayan / farklı:
+  - **Halk takvimi günleri** (Eyyâm-ı bahûr, Erbain, Zemheri, Hamsin, cemreler, kocakarı/rüzgâr fırtınaları) takvimde ve günün notunda — yok — `grep erbain|zemheri|bahur|cemre` boş (`lib/events.mjs`, `src/data/`) — K (tarih listesi; kaynak: Türkiye Takvimi/Diyanet takvimi; doğrulanmalı) — ücretsiz
+  - Takvim yaprağının "arka yaprak" metni (menkıbe, uzun yazı) — kısmen (takvim yaprağında günün sözü) — `Content.swift` CalendarLeafView — O (içerik telifi; kendi metnimiz gerekir) — ücretsiz
+  - Kalan sürenin sözle yazılması ("9 dakika 35 saniye") — yok (hh:mm:ss) — `PrayerTab.swift` — K — ücretsiz
+  - Vakitler ekranında geleneksel desen bordür, süs ayraçları (İslami geometrik desen) — yok (sade tasarım; tema rengi var) — `Theme.swift` — O — ücretsiz / ileride Pro adayı (tema paketi)
+
+## Quran Widgets: Verses & Duas (id6758387571, 4,59, 20.135 puan, Cloud Studios Teknoloji)
+- Ücret modeli: abonelik; "Quran Widgets Premium" aylık ₺49,99 / ₺59,99 / ₺64,99, yıllık ₺99,99 – ₺309,99 arası 7 kademe (fiyat denemesi). Sürüm 1.2.0 (19 Ekim 2026), 18 dil. Görsellerde "NEW" etiketli temalar; kilit etiketi görülmedi.
+- İncelenen görüntü: 10 iPhone + 12 iPad (iPhone'dan 6'sına bakıldı).
+- Ekranlar: kilit ekranı (cami gece fotoğrafı zemin): saatin altında sol widget "Ash-Sharh 94:1 Have We not uplifted your heart for you?", sağ widget "☀ Sunrise 08:17 / Dhuhr in 02:07"; bildirim "A believer is not stung from the same hole twice. Prophet Muhammad (p.b.u.h)". Tam ekran söz kartı (Mescid-i Nebevî kubbesi fotoğrafı, büyük ince beyaz yazı, paylaş + kalp). Fotoğraflı ana ekran widget'ları (ayet, dua sözü, "Isha 7:33 PM / Fajr 6:26 AM in 9 hr, 14 min", 6 vakit ızgarası fotoğraf zeminli). "Explore topics": **"Your streak" haftalık 7 daire (Fr ✓)**, "Edit Topics You Follow", Favorites, Collections, My Quotes, Recent quotes, "Most Popular: Dua, Qudsi Hadith, 99 Names of Allah", "Faith and Belief: Faith, Reliance on God". **Themes**: "+ Create", fotoğraf/ebru/video temaları ızgarası, "NEW" ve 🎥 (hareketli) etiketleri. Prayer Times: koyu yeşil (#14271F), "Dhuhr / Next: Asr / **01:03:45** (yeşil eşaralıklı rakam)", "Chicago, United States", "Sunrise (Shuruq, not a prayer)" açıklaması, "Now" etiketi, "Calculation Method ISNA".
+- Hatalar: **Prayer Times görselinde Chicago vakitleri yanlış saat diliminde** (Fajr 2:45 PM, Dhuhr 9:05 PM, Maghrib 2:03 AM; yaklaşık 9 saat kaymış); "Ash-Sharh" yazımı.
+- Bizde olmayan / farklı:
+  - Ayet/dua/söz widget'ları (kilit ve ana ekran), fotoğraf/hareketli tema seçimi, kendi temasını oluşturma — yok — `mobile/ios/Widget/Sources/` (söz widget'ı yok) — O — rakipte Premium (temalar); bizde ücretsiz temel, ileride Pro adayı (tema paketleri)
+  - Gün içinde söz/ayet bildirimi — kısmen (bildirim kategorileri var; günlük söz bildirimi yok) — `FeatureNotifier.swift` — K — ücretsiz
+  - Konu takibi, favoriler, koleksiyonlar, "kendi sözlerim" — yok — — O — ücretsiz
+
+## Countdown Widget: Days Since (id917514700, 4,65, 11.162 puan, Shayes Apps)
+- Ücret modeli: "Premium" ₺39,99 ve ₺299,99, "Lifetime Unlock" ₺999,99, bahşiş "Small Tip" ₺49,99, "Medium Tip" ₺249,99, "Large Tip" ₺499,99; Aile Paylaşımı. Sürüm 12.3.0 (27 Ekim 2026): **kendi widget'ını tasarlama** (düzen, yazı tipi, renk, fotoğraf). Sürüm notunda "beğendiyseniz yorum bırakın".
+- İncelenen görüntü: 5 iPhone (hepsi) + 5 iPad (bakılmadı).
+- Ekranlar: "Countdowns" listesi, beyaz gruplu kartlar: emoji + başlık ("🎉 Birthday **#38**" = kaçıncı yıl), altında **4 sütun gün/saat/dakika/saniye** (78 Days 6 Hours 52 Minutes 36 Seconds); sağ üstte yuvarlak "+"; alt yüzen hap çubuk (Countdowns, Settings, More). Kilit ekranı: satır widget'ı (🎓 Graduation 1/2/27 4:07 PM 115 days, 20 hours), dairesel "♥ 913d", **ilerleme halkası "78%"**; ana ekran: renkli dolu kartlar (yeşil, mor), liste widget'ı (camgöbeği). "Edit Countdown": Title, All-day, tarih, **Repeat (Every year), End repeat, "Show next occurrence number"**, Icon, **Colours**, **Units** (Years/Months/Weeks/Days/Hours/Minutes/Seconds tek tek seçilir), "Round up smallest unit", takvimden ekleme simgesi. Settings: Sort Order (Manual), Add New Items At Top, Notifications, **Direction Indicators** (geri/ileri ok), Require Delete Confirmation, **Compact Mode, Show Dates, Lists, Archive**, Appearance, Colours, Defaults, iCloud Sync.
+- Tasarım: tam doygun düz renk mağaza zeminleri (mavi, mor, petrol, kırmızı) + büyük beyaz büyük harf başlık; uygulama sistem görünümü (#F2F2F7), renkli kare simgeli ayar satırları.
+- Bizde olmayan / farklı:
+  - **Geçen olayda ileri sayım ("X gün oldu", "Days since")** — yok: tarih geçince "bitti" yazar — `mobile/ios/App/Sources/Countdowns.swift` satır 77–84 (`countdownText`: `left <= 0` → `tools.countdown.finishedDate`) — K — ücretsiz (ilk analiz satırı "olay geçince ileri sayım" #51'e dahil sayılmıştı)
+  - Geri sayımda birim seçimi (yıl/ay/hafta/gün/saat/dakika/saniye) ve gün-saat-dakika-saniye sütunları — kısmen (son 24 saatte hh:mm:ss, öncesinde yalnız "N gün kaldı") — aynı dosya — K — ücretsiz
+  - Yıllık tekrarda "kaçıncı" (#38. doğum günü) — yok — `CountdownItem` (`yearly` var, sayı yok) — K — ücretsiz
+  - Geri sayım başına renk, kilit ekranında ilerleme halkası (%), liste/arşiv, sıralama — kısmen (emoji + fotoğraf var; renk, arşiv, ilerleme yok) — `Countdowns.swift`, `MoreWidgets.swift` CountdownWidget — K/O — rakipte Premium; bizde ücretsiz (renk), ileride Pro adayı (widget tasarlayıcı)
+  - Kendi widget'ını tasarlama (düzen, yazı tipi, renk, fotoğraf) — yok — — B — rakipte Premium; ileride Pro adayı
+  - Bahşiş (tip) satın almaları — yok — — K — bağış modeli olarak not
+
+## Time Buddy - Easy Time Zones (id719765848, 4,83, 125 puan, Helloka / World Time Buddy)
+- Ücret modeli: ücretsiz + "Upgrade" ₺149,99 (tek seferlik). Sürüm 1.28 (26 Kasım 2020; güncellenmiyor), 4 dil.
+- İncelenen görüntü: 5 iPhone (hepsi) + 3 iPad (bakılmadı).
+- Ekranlar: **yatay telefon**; üstte gün sekmeleri (SUN 4, MON Aug 5 seçili kutu, TUE 6, WED 7) ve takvim simgesi, "+" ve "Edit"; **piyasa saatleri yeşil çubuklar** (Sydney FX, Tokyo FX, London FX, New York FX; "Calendars: Forex" ayarı) ve telefon takvimi etkinlikleri aynı zaman ekseninde; her şehir satırı: ev simgesi (bulunduğum yer), ad + kısaltma üst simge ("London BST", "New York EDT"), UTC farkı ("-5"), sağda şimdiki saat; altında 24 saatlik **saat kutucuk şeridi** (gece koyu mavi, mesai açık, gün değişiminde "AUG 5" kutusu); şimdiki sütun dikey çerçeve. **Aralık seçimi**: yeşil tutamaklı sütun (3–4 pm), sağda her şehirde "3:00pm - 5:00pm", "Cancel" ve paylaş (takvime ekle, e-posta, panoya kopyala). Arama: "gmt" → "GMT / IST, GMT / Irish Standard Time", "GMT-1…" (20.000+ yer ve saat dilimi adıyla arama). Settings: Hour Format (am/pm | 24 | **Native**: her şehir kendi biçiminde), Timezone Names On/Off, **Mark Weekend Hours** (cumartesi-pazar dışı hafta sonları da), Calendars (Forex), FEEDBACK: Report Problems, "Like the app? Rate it!".
+- Tasarım: mavi-gri degrade mağaza zemini, eski iPhone kasası; uygulama beyaz, mavi tonlu saat kutuları, yeşil seçim.
+- Bizde olmayan / farklı:
+  - Toplantı planlayıcıda **saat aralığı seçimi** (sürükleyerek başlangıç-bitiş) — kısmen (tek saat seçimi) — `mobile/ios/App/Sources/MeetingPlanner.swift` satır 61 (`picked = h`) — K — ücretsiz
+  - Planlayıcıda telefon takvimi etkinliklerini ve piyasa (Forex/borsa) saatlerini aynı eksende gösterme — yok — aynı dosya — O — rakipte Upgrade olabilir; bizde ücretsiz
+  - Hafta sonu saatlerini işaretleme (ülkeye göre cuma-cumartesi) — yok (mesai/erken-geç/gece renkleri var) — `MeetingPlanner.kind` — K — ücretsiz
+  - Şehir başına kendi saat biçimi ("Native"), konumu yeniden adlandırma — yok — `WorldScreen`/`world` — K — ücretsiz
+  - Saat dilimi adıyla arama (GMT, IST…) — kısmen (sitede `/saat-dilimleri/`; uygulamada şehir listesi + IANA) — `cities.json` — K — ücretsiz
