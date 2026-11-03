@@ -2129,7 +2129,23 @@
         "Kunduz Ayı",
         "Soğuk Ay"
       ]
-    }
+    },
+    "eclLocal": "{place}: Güneş'in {obsc} kadarı örtülür; {c1}–{c4}, en çok {max}.",
+    "eclLocalTotal": "{place}: tam tutulma; {c1}–{c4}, tam evre {max} civarında.",
+    "eclLocalAnnular": "{place}: halkalı tutulma; {c1}–{c4}, halka {max} civarında.",
+    "eclLocalNone": "{place}: bu tutulma buradan görülmez.",
+    "eclLocalLow": "{place}: tutulma sırasında Güneş ufkun altında.",
+    "eclContacts": {
+      "p1": "Yarı gölgeye giriş",
+      "u1": "Gölgeye giriş",
+      "u2": "Tam evre başlar",
+      "max": "En büyük an",
+      "u3": "Tam evre biter",
+      "u4": "Gölgeden çıkış",
+      "p4": "Yarı gölgeden çıkış"
+    },
+    "eclMag": "Gölge büyüklüğü {v}",
+    "eclApprox": "Saatler yaklaşıktır (birkaç dakika); bu yerden görülmeyen anlar soluk yazılır."
   },
   "weather": {
     "title": "Hava Durumu: Güncel, Saatlik ve 14 Günlük Tahmin | Saat Tarih",
@@ -3045,7 +3061,59 @@
         "q": "Süper ay nedir?",
         "a": "Dolunayın, Ay'ın Dünya'ya en yakın olduğu noktanın (perige) çevresine denk gelmesine halk arasında süper ay denir. Ay en uzak noktadaki dolunaya göre yaklaşık %14 daha büyük ve %30 daha parlak görünür; fark çıplak gözle zor seçilir."
       }
-    ]
+    ],
+    "eventsHeading": "Gökyüzü olayları",
+    "eventsLead": "Meteor yağmuru zirveleri, gezegenlerin ve Ay'ın yakınlaşmaları, karşı konumlar ve en büyük uzanımlar; saatler seçili yerin saatiyle.",
+    "showers": {
+      "qua": "Kuadrantidler",
+      "lyr": "Liridler",
+      "eta": "Eta Akuaridler",
+      "sda": "Güney Delta Akuaridler",
+      "per": "Perseidler",
+      "dra": "Drakonidler",
+      "ori": "Orionidler",
+      "leo": "Leonidler",
+      "gem": "Geminidler",
+      "urs": "Ursidler"
+    },
+    "evShower": "{name} meteor yağmuru zirvede",
+    "showerRate": "Karanlık gökte saatte ~{zhr} meteor",
+    "showerVar": "Meteor sayısı yıldan yıla değişir",
+    "moonLight": "Ay {moon} aydınlık",
+    "evOpp": "{p} karşı konumda: bütün gece görülür, yılın en parlak hâlinde",
+    "evElongE": "{p} akşam gökyüzünde Güneş'ten en uzak ({deg}°)",
+    "evElongW": "{p} sabah gökyüzünde Güneş'ten en uzak ({deg}°)",
+    "evConj": "{a} ile {b} yakın görünüyor ({sep}° arayla)",
+    "evMoon": "Ay ile {p} yakın görünüyor ({sep}° arayla)",
+    "evMore": "Daha fazla olay",
+    "eventsNote": "Meteor yağmuru zirveleri Uluslararası Meteor Örgütü'nün (IMO) Güneş boylamı değerlerinden hesaplanır; gerçek zirve birkaç saat oynayabilir. Yakınlaşma açıları Dünya'nın merkezinden; bulunduğunuz yerden bir derece kadar farklı görünebilir.",
+    "icsName": "Saat Tarih: Gökyüzü olayları",
+    "tonightHeading": "Bu gece",
+    "darkLabel": "Tam karanlık",
+    "darkNone": "Bu gece tam karanlık olmuyor (Güneş ufkun 18° altına inmiyor).",
+    "moonUpDark": "{illum} aydınlık; karanlıkta {from}–{to} arası gökte",
+    "moonDownDark": "{illum} aydınlık; karanlık saatlerde ufkun altında",
+    "planetsLabel": "Görülebilen gezegenler",
+    "planetsNone": "Yok",
+    "cloudLabel": "Bulutluluk",
+    "score": {
+      "good": "Gözlem için iyi bir gece",
+      "fair": "Gözlem için orta",
+      "poor": "Gözlem için zayıf"
+    },
+    "tipMoon": "Ay parlak: sönük yıldızlar ve meteorlar zor görülür.",
+    "tipDark": "Ay karanlıkta gökte değil: sönük yıldızlar için iyi.",
+    "tipCloudy": "Bulutlar gözlemi engelleyebilir.",
+    "tipBest": "{p} en yüksek {time} civarında ({deg}°).",
+    "graphHeading": "Bu gece gezegenlerin yüksekliği",
+    "graphCaption": "Yatay eksen saat, dikey eksen ufuktan yükseklik; koyu bölge tam karanlık.",
+    "cloudNote": "Bulutluluk Open-Meteo'dan gelir; yalnız dış hizmetlere izin verdiyseniz gösterilir.",
+    "constellations": "Takımyıldızlar",
+    "play": "Oynat",
+    "pause": "Durdur",
+    "dateLabel": "Tarih",
+    "red": "Kırmızı ışık",
+    "conSource": "Takımyıldız çizgileri ve adları: d3-celestial (© 2015 Olaf Frohn, BSD-3 lisansı)."
   },
   "otd": {
     "title": "Tarihte Bugün: Bugün Neler Oldu, Kimler Doğdu | Saat Tarih",

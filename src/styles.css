@@ -1227,6 +1227,45 @@ html[data-ccolor] .analog .num { fill: var(--clock-ink); }
 .sky-time input { width: min(16rem, 60vw); }
 .sky-time output { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 3.5rem; }
 .sky-table td, .sky-table th { white-space: normal; }
+/* Gece gökyüzü: takımyıldızlar, bu gece, olaylar, kırmızı ışık (3 Kasım 2026, 2. analiz #154–#156) */
+.sky-cline { fill: none; stroke: rgba(150, 190, 255, 0.38); stroke-width: 1; }
+.sky-cname { fill: rgba(170, 200, 255, 0.6); font-size: 8px; letter-spacing: 0.04em; }
+.sky-opt { display: inline-flex; align-items: center; gap: 0.3rem; }
+.sky-opt input { width: auto; min-height: 0; margin: 0; }
+.sky-time input[type="date"] { width: auto; }
+.sky-score { font-size: 1.15rem; font-weight: 700; margin: 0 0 0.5rem; }
+.sky-score-good { color: var(--ok); }
+.sky-score-poor { color: var(--err); }
+.sky-tips { margin: 0.5rem 0 1rem; padding-inline-start: 1.2rem; }
+.sky-graph { margin: 0; }
+.sky-graph svg { width: 100%; height: auto; }
+.skg-bg { fill: var(--surface-2); }
+.skg-dark { fill: rgba(13, 23, 48, 0.18); }
+.skg-grid { stroke: var(--border); stroke-dasharray: 3 4; }
+.skg-lab { fill: var(--muted); font-size: 11px; }
+.skg-line { fill: none; stroke-width: 2.2; }
+.skg-name { font-size: 11px; font-weight: 700; paint-order: stroke; stroke: var(--bg); stroke-width: 3px; }
+.sky-events { list-style: none; margin: 0.5rem 0; padding: 0; display: grid; gap: 0.5rem; }
+.sky-ev { display: grid; gap: 0.1rem; padding: 0.55rem 0.8rem; border: 1px solid var(--border); border-radius: 0.6rem; }
+.sky-ev time { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.sky-ev small { color: var(--muted); }
+.sky-ev-shower { border-inline-start: 4px solid #7aa7ff; }
+.sky-ev-opp, .sky-ev-elong { border-inline-start: 4px solid #e9c48f; }
+.sky-ev-conj, .sky-ev-moon { border-inline-start: 4px solid #c9d1db; }
+.moon-tex { pointer-events: none; }
+.ecl-diagram { width: min(100%, 14rem); height: auto; display: block; margin: 0.4rem 0; }
+.ecl-pen { fill: rgba(120, 120, 140, 0.18); stroke: var(--border); }
+.ecl-umb { fill: rgba(150, 40, 30, 0.35); stroke: rgba(150, 40, 30, 0.6); }
+.ecl-track { fill: none; stroke: var(--muted); stroke-dasharray: 3 3; }
+.ecl-moon { fill: rgba(233, 237, 242, 0.55); stroke: var(--muted); }
+.ecl-moon-max { fill: rgba(190, 70, 40, 0.75); }
+.ecl-times { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0.2rem 0.8rem; margin: 0.3rem 0; }
+.ecl-times dt { color: var(--muted); font-size: 0.85rem; }
+.ecl-times dd { margin: 0; font-variant-numeric: tabular-nums; font-weight: 600; }
+.ecl-below { opacity: 0.45; }
+/* Kırmızı ışık: göz karanlığa uyumunu korumak için sayfa koyu kırmızıya döner */
+html.red-mode { background: #000; }
+html.red-mode body { filter: grayscale(1) sepia(1) saturate(6) hue-rotate(-45deg) brightness(0.55) contrast(1.15); background: #000; }
 /* Telefonda gezegen tablosu kartlara döner (2. analiz #91) */
 @media (max-width: 40rem) {
   .sky-table, .sky-table tbody, .sky-table tr, .sky-table th, .sky-table td { display: block; width: 100%; }

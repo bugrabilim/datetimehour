@@ -243,7 +243,71 @@
     return list;
   }
 
-  var api = { seasons: seasons, moon: moon, phaseMs: phaseMs, moonPos: moonPos, moonRiseSet: moonRiseSet, moonAltitude: moonAlt, sunPos: sunPos, altAz: altAz, crescent: crescent, YALLOP: YALLOP };
+  /* Tutulma ayrıntısı (3 Kasım 2026, 2. analiz #159). Yer merkezli vektörler (km); eclipse-map.js ile aynı geometri. */
+  var AU_KM = 149597870.7, R_EARTH = 6378.14;
+  function vec3(ra, dec, r) { var a = ra * D2R, b = dec * D2R; return [r * Math.cos(b) * Math.cos(a), r * Math.cos(b) * Math.sin(a), r * Math.sin(b)]; }
+  function gmstDeg(ms) { var d = ms / 86400000 + UNIX_JD - 2451545, t = d / 36525; return 280.46061837 + 360.98564736629 * d + 0.000387933 * t * t; }
+  /** Bir yerden Güneş ile Ay diskleri: { d (merkezler arası, derece), rs, rm (yarıçaplar, derece), alt (Güneş yüksekliği) } */
+  function solarDisks(ms, lat, lon) {
+    var m = moonPos(ms), sp = sunPos(ms), M = vec3(m.ra, m.dec, m.dist), Sv = vec3(sp.ra, sp.dec, sp.dist * AU_KM);
+    var th = (gmstDeg(ms) + lon) * D2R, cl = Math.cos(lat * D2R), o = [R_EARTH * cl * Math.cos(th), R_EARTH * cl * Math.sin(th), R_EARTH * Math.sin(lat * D2R)];
+    var sx = Sv[0] - o[0], sy = Sv[1] - o[1], sz = Sv[2] - o[2], mx = M[0] - o[0], my = M[1] - o[1], mz = M[2] - o[2];
+    var ds = Math.sqrt(sx * sx + sy * sy + sz * sz), dm = Math.sqrt(mx * mx + my * my + mz * mz);
+    var c = (sx * mx + sy * my + sz * mz) / (ds * dm);
+    return { d: Math.acos(Math.max(-1, Math.min(1, c))) / D2R, rs: Math.asin(696000 / ds) / D2R, rm: Math.asin(1737.4 / dm) / D2R, alt: altAz(ms, sp.ra, sp.dec, lat, lon).alt };
+  }
+  /* İki dairenin kesişim alanı / küçük olmayan (Güneş) dairenin alanı */
+  function overlapFrac(d, rs, rm) {
+    if (d >= rs + rm) return 0;
+    if (d <= Math.abs(rs - rm)) return rm >= rs ? 1 : (rm * rm) / (rs * rs);
+    var a1 = Math.acos((d * d + rs * rs - rm * rm) / (2 * d * rs)), a2 = Math.acos((d * d + rm * rm - rs * rs) / (2 * d * rm));
+    var area = rs * rs * (a1 - Math.sin(2 * a1) / 2) + rm * rm * (a2 - Math.sin(2 * a2) / 2);
+    return area / (Math.PI * rs * rs);
+  }
+  /** Güneş tutulmasının bir yerden görünüşü (ut: en büyük tutulma anı, UT ms): { c1, max, c4 (ms; yoksa null), mag (çap
+      oranı), obsc (örtülen alan 0..1), central ("total"/"annular"/""), altMax (en büyük anda Güneş yüksekliği) }; tutulma
+      o yerden hiç görülmezse null. 1 dk adım + ikiye bölme; yaklaşık (birkaç dakika, birkaç yüzde). */
+  function solarLocal(ut, lat, lon) {
+    var f = function (t) { var x = solarDisks(t, lat, lon); return x.d - x.rs - x.rm; };
+    var t0 = ut - 4 * 3600000, best = null, bt = 0;
+    for (var t = t0; t <= ut + 4 * 3600000; t += 60000) { var x = solarDisks(t, lat, lon), g = x.d - x.rs - x.rm; if (best === null || g < best) { best = g; bt = t; } }
+    if (best >= 0) return null;
+    var a = bt - 60000, b = bt + 60000; // en küçük ayrılık: altın oran
+    for (var i = 0; i < 30; i++) { var m1 = a + (b - a) * 0.382, m2 = a + (b - a) * 0.618; if (solarDisks(m1, lat, lon).d < solarDisks(m2, lat, lon).d) b = m2; else a = m1; }
+    var tm = (a + b) / 2, X = solarDisks(tm, lat, lon);
+    var edge = function (from, dir) { var lo = from, hi = from + dir * 4 * 3600000, k; if (f(hi) < 0) return null; for (k = 0; k < 40; k++) { var mid = (lo + hi) / 2; if (f(mid) < 0) lo = mid; else hi = mid; } return Math.round((lo + hi) / 2); };
+    var central = X.d < Math.abs(X.rm - X.rs) ? (X.rm > X.rs ? "total" : "annular") : "";
+    return { c1: edge(tm, -1), max: Math.round(tm), c4: edge(tm, 1), mag: (X.rs + X.rm - X.d) / (2 * X.rs), obsc: overlapFrac(X.d, X.rs, X.rm), central: central, altMax: X.alt };
+  }
+  /** Ay tutulması temas anları (ut: en büyük an): Danjon kuralıyla gölge yarıçapları (Dünya yarıçapı 1/85 büyütülür).
+      { p1, u1, u2, max, u3, u4, p4 (ms; o evre yoksa null), umag, pmag, rU, rP, rM (derece), path: [{t, x, y}] (gölge
+      merkezine göre Ay merkezi, derece; x doğu+) } */
+  function lunarContacts(ut) {
+    var geo = function (t) {
+      var m = moonPos(t), s = sunPos(t), ra0 = s.ra + 180, dec0 = -s.dec;
+      var x = ((m.ra - ra0 + 540) % 360 - 180) * Math.cos(dec0 * D2R), y = m.dec - dec0;
+      var pm = m.par, ps = 8.794 / 3600 / s.dist, ss = 0.2666 / s.dist, rm = 0.2725 * pm;
+      return { x: x, y: y, d: Math.sqrt(x * x + y * y), rU: 1.0118 * pm + ps - ss, rP: 1.0118 * pm + ps + ss, rM: rm };
+    };
+    var a = ut - 3 * 3600000, b = ut + 3 * 3600000;
+    for (var i = 0; i < 40; i++) { var m1 = a + (b - a) * 0.382, m2 = a + (b - a) * 0.618; if (geo(m1).d < geo(m2).d) b = m2; else a = m1; }
+    var tm = (a + b) / 2, G = geo(tm);
+    var cross = function (lim, dir) {
+      var g = function (t) { var q = geo(t); return q.d - lim(q); };
+      if (g(tm) >= 0) return null;
+      var lo = tm, hi = tm + dir * 4 * 3600000;
+      for (var k = 0; k < 40; k++) { var mid = (lo + hi) / 2; if (g(mid) < 0) lo = mid; else hi = mid; }
+      return Math.round((lo + hi) / 2);
+    };
+    var P = function (q) { return q.rP + q.rM; }, U = function (q) { return q.rU + q.rM; }, T = function (q) { return q.rU - q.rM; };
+    var out = { p1: cross(P, -1), u1: cross(U, -1), u2: cross(T, -1), max: Math.round(tm), u3: cross(T, 1), u4: cross(U, 1), p4: cross(P, 1),
+      umag: (G.rU + G.rM - G.d) / (2 * G.rM), pmag: (G.rP + G.rM - G.d) / (2 * G.rM), rU: G.rU, rP: G.rP, rM: G.rM, path: [] };
+    var from = out.p1 || tm - 3 * 3600000, to = out.p4 || tm + 3 * 3600000;
+    for (var t = from - 1800000; t <= to + 1800000; t += 600000) { var q = geo(t); out.path.push({ t: t, x: q.x, y: q.y }); }
+    return out;
+  }
+
+  var api = { seasons: seasons, solarLocal: solarLocal, lunarContacts: lunarContacts, solarDisks: solarDisks, moon: moon, phaseMs: phaseMs, moonPos: moonPos, moonRiseSet: moonRiseSet, moonAltitude: moonAlt, sunPos: sunPos, altAz: altAz, crescent: crescent, YALLOP: YALLOP };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.sthNature = api;
 })(typeof window !== "undefined" ? window : globalThis);

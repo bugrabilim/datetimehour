@@ -2129,7 +2129,23 @@
         "Bulan Berang-berang",
         "Bulan Dingin"
       ]
-    }
+    },
+    "eclLocal": "{place}: {obsc} Matahari tertutup; {c1}–{c4}, puncak {max}.",
+    "eclLocalTotal": "{place}: gerhana total; {c1}–{c4}, totalitas sekitar {max}.",
+    "eclLocalAnnular": "{place}: gerhana cincin; {c1}–{c4}, cincin sekitar {max}.",
+    "eclLocalNone": "{place}: gerhana ini tidak terlihat dari sini.",
+    "eclLocalLow": "{place}: Matahari di bawah cakrawala saat gerhana.",
+    "eclContacts": {
+      "p1": "Penumbra mulai",
+      "u1": "Umbra mulai",
+      "u2": "Totalitas mulai",
+      "max": "Puncak",
+      "u3": "Totalitas berakhir",
+      "u4": "Umbra berakhir",
+      "p4": "Penumbra berakhir"
+    },
+    "eclMag": "Magnitudo umbra {v}",
+    "eclApprox": "Waktu bersifat perkiraan (beberapa menit); saat yang tidak terlihat dari tempat ini dibuat pudar."
   },
   "weather": {
     "title": "Cuaca: Saat Ini, Per Jam, dan Prakiraan 14 Hari | Saat Tarih",
@@ -3045,7 +3061,59 @@
         "q": "Apa itu supermoon?",
         "a": "Supermoon adalah sebutan populer untuk bulan purnama yang terjadi dekat perige, titik orbit Bulan yang terdekat dengan Bumi. Bulan tampak sekitar 14% lebih besar dan 30% lebih terang dibanding purnama di apoge; perbedaannya sulit terlihat dengan mata telanjang."
       }
-    ]
+    ],
+    "eventsHeading": "Peristiwa langit",
+    "eventsLead": "Puncak hujan meteor, pendekatan planet dan Bulan, oposisi, dan elongasi terbesar; waktu menurut lokasi yang dipilih.",
+    "showers": {
+      "qua": "Quadrantid",
+      "lyr": "Lyrid",
+      "eta": "Eta Aquariid",
+      "sda": "Delta Aquariid Selatan",
+      "per": "Perseid",
+      "dra": "Draconid",
+      "ori": "Orionid",
+      "leo": "Leonid",
+      "gem": "Geminid",
+      "urs": "Ursid"
+    },
+    "evShower": "Puncak hujan meteor {name}",
+    "showerRate": "Hingga ~{zhr} meteor per jam di langit gelap",
+    "showerVar": "Jumlahnya berubah dari tahun ke tahun",
+    "moonLight": "Bulan {moon} terang",
+    "evOpp": "{p} beroposisi: terlihat sepanjang malam, paling terang tahun ini",
+    "evElongE": "{p} terjauh dari Matahari di langit senja ({deg}°)",
+    "evElongW": "{p} terjauh dari Matahari di langit pagi ({deg}°)",
+    "evConj": "{a} dan {b} tampak berdekatan (berjarak {sep}°)",
+    "evMoon": "Bulan dan {p} tampak berdekatan (berjarak {sep}°)",
+    "evMore": "Peristiwa lainnya",
+    "eventsNote": "Puncak hujan meteor dihitung dari bujur Matahari yang diterbitkan International Meteor Organization (IMO); puncak sebenarnya bisa bergeser beberapa jam. Jarak sudut dihitung dari pusat Bumi; dari lokasi Anda bisa berbeda sekitar satu derajat.",
+    "icsName": "Saat Tarih: Peristiwa langit",
+    "tonightHeading": "Malam ini",
+    "darkLabel": "Gelap penuh",
+    "darkNone": "Malam ini tidak gelap penuh (Matahari tidak turun 18° di bawah cakrawala).",
+    "moonUpDark": "{illum} terang; di langit saat gelap pukul {from}–{to}",
+    "moonDownDark": "{illum} terang; di bawah cakrawala saat gelap",
+    "planetsLabel": "Planet yang terlihat",
+    "planetsNone": "Tidak ada",
+    "cloudLabel": "Tutupan awan",
+    "score": {
+      "good": "Malam yang baik untuk mengamati",
+      "fair": "Cukup untuk mengamati",
+      "poor": "Kurang baik untuk mengamati"
+    },
+    "tipMoon": "Bulan terang: bintang redup dan meteor sulit terlihat.",
+    "tipDark": "Bulan tidak di langit saat gelap: baik untuk bintang redup.",
+    "tipCloudy": "Awan dapat menghalangi pandangan.",
+    "tipBest": "{p} paling tinggi sekitar {time} ({deg}°).",
+    "graphHeading": "Ketinggian planet malam ini",
+    "graphCaption": "Sumbu mendatar waktu, sumbu tegak ketinggian di atas cakrawala; pita gelap adalah gelap penuh.",
+    "cloudNote": "Tutupan awan dari Open-Meteo, hanya ditampilkan jika Anda mengizinkan layanan eksternal.",
+    "constellations": "Rasi bintang",
+    "play": "Putar",
+    "pause": "Jeda",
+    "dateLabel": "Tanggal",
+    "red": "Cahaya merah",
+    "conSource": "Garis dan nama rasi bintang: d3-celestial (© 2015 Olaf Frohn, lisensi BSD-3)."
   },
   "otd": {
     "title": "Hari Ini dalam Sejarah: Peristiwa dan Tokoh | Saat Tarih",

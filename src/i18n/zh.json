@@ -2155,7 +2155,23 @@
         "河狸月",
         "寒月"
       ]
-    }
+    },
+    "eclLocal": "{place}：太阳被遮住{obsc}；{c1}至{c4}，食甚{max}。",
+    "eclLocalTotal": "{place}：日全食；{c1}至{c4}，全食约在{max}。",
+    "eclLocalAnnular": "{place}：日环食；{c1}至{c4}，环食约在{max}。",
+    "eclLocalNone": "{place}：此地看不到这次日食。",
+    "eclLocalLow": "{place}：日食期间太阳在地平线下。",
+    "eclContacts": {
+      "p1": "半影食始",
+      "u1": "初亏",
+      "u2": "食既",
+      "max": "食甚",
+      "u3": "生光",
+      "u4": "复圆",
+      "p4": "半影食终"
+    },
+    "eclMag": "本影食分 {v}",
+    "eclApprox": "时间为近似值（数分钟）；此地看不到的时刻以浅色显示。"
   },
   "weather": {
     "title": "天气：当前、逐小时和14天预报 | Saat Tarih",
@@ -3071,7 +3087,59 @@
         "q": "什么是超级月亮？",
         "a": "超级月亮是对在近地点（月球离地球最近的位置）附近出现的满月的俗称。它看起来比远地点的满月约大14%、亮30%；用肉眼很难察觉差别。"
       }
-    ]
+    ],
+    "eventsHeading": "天象",
+    "eventsLead": "流星雨极大、行星与月亮的相合、冲日和大距；时间为所选地点的当地时间。",
+    "showers": {
+      "qua": "象限仪座流星雨",
+      "lyr": "天琴座流星雨",
+      "eta": "宝瓶座η流星雨",
+      "sda": "宝瓶座δ南流星雨",
+      "per": "英仙座流星雨",
+      "dra": "天龙座流星雨",
+      "ori": "猎户座流星雨",
+      "leo": "狮子座流星雨",
+      "gem": "双子座流星雨",
+      "urs": "小熊座流星雨"
+    },
+    "evShower": "{name}极大",
+    "showerRate": "在黑暗天空下每小时最多约{zhr}颗",
+    "showerVar": "流量每年不同",
+    "moonLight": "月面照亮{moon}",
+    "evOpp": "{p}冲日：整夜可见，为全年最亮",
+    "evElongE": "{p}东大距（黄昏天空，距太阳{deg}°）",
+    "evElongW": "{p}西大距（黎明天空，距太阳{deg}°）",
+    "evConj": "{a}与{b}相近（相距{sep}°）",
+    "evMoon": "月亮与{p}相近（相距{sep}°）",
+    "evMore": "更多天象",
+    "eventsNote": "流星雨极大时刻根据国际流星组织（IMO）公布的太阳黄经计算，实际极大可能相差数小时。角距离为地心值，从您所在地点看可能相差约1°。",
+    "icsName": "Saat Tarih：天象",
+    "tonightHeading": "今晚",
+    "darkLabel": "完全黑暗",
+    "darkNone": "今晚不会完全黑暗（太阳未降到地平线下18°）。",
+    "moonUpDark": "照亮{illum}；黑暗时段{from}至{to}在天空中",
+    "moonDownDark": "照亮{illum}；黑暗时段在地平线下",
+    "planetsLabel": "可见行星",
+    "planetsNone": "无",
+    "cloudLabel": "云量",
+    "score": {
+      "good": "适合观测的夜晚",
+      "fair": "观测条件一般",
+      "poor": "观测条件较差"
+    },
+    "tipMoon": "月光明亮：暗星和流星不易看到。",
+    "tipDark": "黑暗时段月亮不在天空：适合观测暗星。",
+    "tipCloudy": "云层可能遮挡视线。",
+    "tipBest": "{p}约在{time}最高（{deg}°）。",
+    "graphHeading": "今晚行星高度",
+    "graphCaption": "横轴为时间，纵轴为地平线以上高度；深色带为完全黑暗时段。",
+    "cloudNote": "云量数据来自Open-Meteo，仅在您允许外部服务时显示。",
+    "constellations": "星座",
+    "play": "播放",
+    "pause": "暂停",
+    "dateLabel": "日期",
+    "red": "红光",
+    "conSource": "星座连线和名称：d3-celestial（© 2015 Olaf Frohn，BSD-3许可）。"
   },
   "otd": {
     "title": "历史上的今天：大事、出生与逝世 | Saat Tarih",

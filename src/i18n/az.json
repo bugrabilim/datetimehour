@@ -2129,7 +2129,23 @@
         "Qunduz Ayı",
         "Soyuq Ay"
       ]
-    }
+    },
+    "eclLocal": "{place}: Günəşin {obsc} hissəsi örtülür; {c1}–{c4}, ən çox {max}.",
+    "eclLocalTotal": "{place}: tam tutulma; {c1}–{c4}, tam faza {max} radələrində.",
+    "eclLocalAnnular": "{place}: halqavari tutulma; {c1}–{c4}, halqa {max} radələrində.",
+    "eclLocalNone": "{place}: bu tutulma buradan görünmür.",
+    "eclLocalLow": "{place}: tutulma zamanı Günəş üfüqün altındadır.",
+    "eclContacts": {
+      "p1": "Yarımkölgəyə giriş",
+      "u1": "Kölgəyə giriş",
+      "u2": "Tam faza başlayır",
+      "max": "Ən böyük an",
+      "u3": "Tam faza bitir",
+      "u4": "Kölgədən çıxış",
+      "p4": "Yarımkölgədən çıxış"
+    },
+    "eclMag": "Kölgə böyüklüyü {v}",
+    "eclApprox": "Vaxtlar təxminidir (bir neçə dəqiqə); bu yerdən görünməyən anlar solğun yazılır."
   },
   "weather": {
     "title": "Hava: Hazırkı, saatlıq və 14 günlük proqnoz | Saat Tarih",
@@ -3045,7 +3061,59 @@
         "q": "Super ay nədir?",
         "a": "Bədirlənmənin Ayın Yerə ən yaxın nöqtəsi (perigey) ətrafına düşməsinə super ay deyilir. Ay apogeydəki bədirlənməyə görə təxminən 14% daha böyük və 30% daha parlaq görünür; fərqi çılpaq gözlə seçmək çətindir."
       }
-    ]
+    ],
+    "eventsHeading": "Səma hadisələri",
+    "eventsLead": "Meteor yağışlarının zirvələri, planetlərin və Ayın yaxınlaşmaları, qarşıdurmalar və ən böyük uzanmalar; vaxtlar seçilmiş yerin saatı ilə.",
+    "showers": {
+      "qua": "Kvadrantidlər",
+      "lyr": "Liridlər",
+      "eta": "Eta Akvaridlər",
+      "sda": "Cənubi Delta Akvaridlər",
+      "per": "Perseidlər",
+      "dra": "Drakonidlər",
+      "ori": "Orionidlər",
+      "leo": "Leonidlər",
+      "gem": "Geminidlər",
+      "urs": "Ursidlər"
+    },
+    "evShower": "{name} meteor yağışı zirvədə",
+    "showerRate": "Qaranlıq səmada saatda ~{zhr} meteor",
+    "showerVar": "Meteor sayı ildən-ilə dəyişir",
+    "moonLight": "Ay {moon} işıqlı",
+    "evOpp": "{p} qarşıdurmada: bütün gecə görünür, ilin ən parlaq vaxtında",
+    "evElongE": "{p} axşam səmasında Günəşdən ən uzaqda ({deg}°)",
+    "evElongW": "{p} səhər səmasında Günəşdən ən uzaqda ({deg}°)",
+    "evConj": "{a} və {b} yaxın görünür ({sep}° aralı)",
+    "evMoon": "Ay və {p} yaxın görünür ({sep}° aralı)",
+    "evMore": "Daha çox hadisə",
+    "eventsNote": "Meteor yağışlarının zirvələri Beynəlxalq Meteor Təşkilatının (IMO) Günəş uzunluğu dəyərlərindən hesablanır; həqiqi zirvə bir neçə saat sürüşə bilər. Yaxınlaşma bucaqları Yerin mərkəzindəndir; olduğunuz yerdən bir dərəcə qədər fərqli görünə bilər.",
+    "icsName": "Saat Tarih: Səma hadisələri",
+    "tonightHeading": "Bu gecə",
+    "darkLabel": "Tam qaranlıq",
+    "darkNone": "Bu gecə tam qaranlıq olmur (Günəş üfüqdən 18° aşağı enmir).",
+    "moonUpDark": "{illum} işıqlı; qaranlıqda {from}–{to} arası səmada",
+    "moonDownDark": "{illum} işıqlı; qaranlıq saatlarda üfüqün altında",
+    "planetsLabel": "Görünən planetlər",
+    "planetsNone": "Yoxdur",
+    "cloudLabel": "Buludluluq",
+    "score": {
+      "good": "Müşahidə üçün yaxşı gecə",
+      "fair": "Müşahidə üçün orta",
+      "poor": "Müşahidə üçün zəif"
+    },
+    "tipMoon": "Ay parlaqdır: sönük ulduzlar və meteorlar çətin görünür.",
+    "tipDark": "Ay qaranlıqda səmada deyil: sönük ulduzlar üçün yaxşıdır.",
+    "tipCloudy": "Buludlar müşahidəyə mane ola bilər.",
+    "tipBest": "{p} ən yüksəkdə {time} radələrində ({deg}°).",
+    "graphHeading": "Bu gecə planetlərin hündürlüyü",
+    "graphCaption": "Üfüqi ox saat, şaquli ox üfüqdən hündürlük; tünd zolaq tam qaranlıqdır.",
+    "cloudNote": "Buludluluq Open-Meteo-dan gəlir; yalnız xarici xidmətlərə icazə vermisinizsə göstərilir.",
+    "constellations": "Bürclər",
+    "play": "Oynat",
+    "pause": "Dayandır",
+    "dateLabel": "Tarix",
+    "red": "Qırmızı işıq",
+    "conSource": "Bürc xətləri və adları: d3-celestial (© 2015 Olaf Frohn, BSD-3 lisenziyası)."
   },
   "otd": {
     "title": "Tarixdə bu gün: hadisələr, doğumlar, ölümlər | Saat Tarih",

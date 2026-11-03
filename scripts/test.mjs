@@ -310,6 +310,25 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
   }
 }
 
+// Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri IMO 2026 ve 2027 takvimindeki günlerle (Table 5) aynı;
+// bilinen karşı konumlar; Ay tutulması temas anları ve Güneş tutulması yerel görünüş (2. analiz #159)
+{
+  const { skyEvents } = await import("../lib/sky-events.mjs");
+  const ev = skyEvents(ROOT, 2026, 2027), day = (e) => new Date(e.t).toISOString().slice(0, 10);
+  const IMO = { 2026: { qua: "01-03", lyr: "04-22", eta: "05-06", sda: "07-31", per: "08-13", dra: "10-09", ori: "10-21", leo: "11-17", gem: "12-14", urs: "12-22" }, 2027: { qua: "01-04", lyr: "04-23", eta: "05-06", sda: "07-31", per: "08-13", dra: "10-09", ori: "10-22", leo: "11-18", gem: "12-14", urs: "12-23" } };
+  for (const y of [2026, 2027]) for (const [id, md] of Object.entries(IMO[y])) check(ev.some((e) => e.k === "shower" && e.id === id && day(e) === `${y}-${md}`), `gökyüzü olayları: ${id} ${y} IMO günü ${md} değil`);
+  for (const [p, d] of [["jupiter", "2026-01-10"], ["saturn", "2026-10-04"], ["mars", "2027-02-19"], ["jupiter", "2027-02-11"]]) check(ev.some((e) => e.k === "opp" && e.p === p && day(e) === d), `gökyüzü olayları: ${p} karşı konumu ${d}`);
+  check(ev.some((e) => e.k === "conj" && e.a === "venus" && e.b === "jupiter" && day(e) === "2026-06-09"), "gökyüzü olayları: Venüs–Jüpiter 9 Haziran 2026");
+  for (const l of LANGS) for (const k of ["evShower", "evOpp", "evConj", "evMoon", "showers.per", "tonightHeading", "nature.eclContacts.u2"].map((k) => k.startsWith("nature.") ? k : "sky." + k)) check(dict[l].has(k), `${l}: ${k} eksik`);
+  const ld2 = (rel) => { const m = { exports: {} }; new Function("module", "window", fs.readFileSync(path.join(ROOT, rel), "utf8"))(m, undefined); return m.exports; };
+  const N2 = ld2("src/js/nature-calc.js");
+  // NASA: 26 Haziran 2029 tam Ay tutulması, gölge büyüklüğü 1,8436 (±0,02)
+  const L = N2.lunarContacts(Date.parse("2029-06-26T03:23:22Z") - 69000);
+  check(Math.abs(L.umag - 1.8436) < 0.02 && L.u2 && L.u3 && L.u3 - L.u2 > 90 * 60000, `Ay tutulması 2029: gölge büyüklüğü ${L.umag}`);
+  const S2 = N2.solarLocal(Date.parse("2027-08-02T10:07:49Z") - 69000, 25.6872, 32.6396);
+  check(S2 && S2.central === "total" && S2.obsc > 0.99, "Güneş tutulması 2027: Luksor'dan tam görülmeli");
+}
+
 // kontrast (WCAG AA)
 const css = fs.readFileSync(path.join(ROOT, "src/styles.css"), "utf8");
 const block = (re) => Object.fromEntries([...css.match(re)[1].matchAll(/--([\w-]+):\s*(#[0-9a-f]{6})/g)].map((m) => [m[1], m[2]]));

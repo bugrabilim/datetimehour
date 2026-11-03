@@ -2129,7 +2129,23 @@
         "Beaver Moon",
         "Cold Moon"
       ]
-    }
+    },
+    "eclLocal": "{place}: {obsc} of the Sun is covered; {c1}–{c4}, maximum {max}.",
+    "eclLocalTotal": "{place}: total eclipse; {c1}–{c4}, totality around {max}.",
+    "eclLocalAnnular": "{place}: annular eclipse; {c1}–{c4}, ring around {max}.",
+    "eclLocalNone": "{place}: this eclipse is not visible from here.",
+    "eclLocalLow": "{place}: the Sun is below the horizon during the eclipse.",
+    "eclContacts": {
+      "p1": "Penumbra begins",
+      "u1": "Partial begins",
+      "u2": "Totality begins",
+      "max": "Maximum",
+      "u3": "Totality ends",
+      "u4": "Partial ends",
+      "p4": "Penumbra ends"
+    },
+    "eclMag": "Umbral magnitude {v}",
+    "eclApprox": "Times are approximate (a few minutes); moments not visible from this place are dimmed."
   },
   "weather": {
     "title": "Weather: Current, Hourly and 14-Day Forecast | Saat Tarih",
@@ -3045,7 +3061,59 @@
         "q": "What is a supermoon?",
         "a": "A supermoon is the popular name for a full moon that falls near perigee, the Moon's closest point to Earth. It looks about 14% larger and 30% brighter than a full moon at apogee; the difference is hard to notice with the naked eye."
       }
-    ]
+    ],
+    "eventsHeading": "Sky events",
+    "eventsLead": "Meteor shower peaks, close approaches of the planets and the Moon, oppositions and greatest elongations; times in the selected place's time.",
+    "showers": {
+      "qua": "Quadrantids",
+      "lyr": "Lyrids",
+      "eta": "Eta Aquariids",
+      "sda": "Southern Delta Aquariids",
+      "per": "Perseids",
+      "dra": "Draconids",
+      "ori": "Orionids",
+      "leo": "Leonids",
+      "gem": "Geminids",
+      "urs": "Ursids"
+    },
+    "evShower": "{name} meteor shower peaks",
+    "showerRate": "Up to ~{zhr} meteors an hour under dark skies",
+    "showerVar": "Rates vary from year to year",
+    "moonLight": "Moon {moon} lit",
+    "evOpp": "{p} at opposition: visible all night, at its brightest of the year",
+    "evElongE": "{p} farthest from the Sun in the evening sky ({deg}°)",
+    "evElongW": "{p} farthest from the Sun in the morning sky ({deg}°)",
+    "evConj": "{a} and {b} appear close ({sep}° apart)",
+    "evMoon": "The Moon and {p} appear close ({sep}° apart)",
+    "evMore": "More events",
+    "eventsNote": "Meteor shower peaks are calculated from the solar longitudes published by the International Meteor Organization (IMO); the actual peak may shift by a few hours. Separations are geocentric; from your location they may differ by about a degree.",
+    "icsName": "Saat Tarih: Sky events",
+    "tonightHeading": "Tonight",
+    "darkLabel": "Full darkness",
+    "darkNone": "No full darkness tonight (the Sun does not sink 18° below the horizon).",
+    "moonUpDark": "{illum} lit; up during darkness from {from} to {to}",
+    "moonDownDark": "{illum} lit; below the horizon during darkness",
+    "planetsLabel": "Visible planets",
+    "planetsNone": "None",
+    "cloudLabel": "Cloud cover",
+    "score": {
+      "good": "A good night for stargazing",
+      "fair": "Fair for stargazing",
+      "poor": "Poor for stargazing"
+    },
+    "tipMoon": "Bright Moon: faint stars and meteors are hard to see.",
+    "tipDark": "The Moon is down during darkness: good for faint stars.",
+    "tipCloudy": "Clouds may block the view.",
+    "tipBest": "{p} is highest around {time} ({deg}°).",
+    "graphHeading": "Planet altitudes tonight",
+    "graphCaption": "Horizontal axis: time; vertical axis: height above the horizon; the dark band is full darkness.",
+    "cloudNote": "Cloud cover comes from Open-Meteo and is shown only if you allowed external services.",
+    "constellations": "Constellations",
+    "play": "Play",
+    "pause": "Pause",
+    "dateLabel": "Date",
+    "red": "Red light",
+    "conSource": "Constellation lines and names: d3-celestial (© 2015 Olaf Frohn, BSD-3 licence)."
   },
   "otd": {
     "title": "On This Day in History: Events, Births and Deaths | Saat Tarih",

@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { computeYear, holidayCounts, makeFmt, dowOf, daysInMonth, iso, inRange, addDays, isoWeek1Monday, isoWeeksInYear } from "./lib/events.mjs";
 import { bridges } from "./lib/bridges.mjs";
 import { hijriTable } from "./lib/hijri.mjs";
+import { skyEvents } from "./lib/sky-events.mjs";
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const SRC = path.join(ROOT, "src");
@@ -96,6 +97,7 @@ for (const [name, from] of [
   ["qibla.js", "js/qibla.js"],
   ["sky-calc.js", "js/sky-calc.js"],
   ["sky.js", "js/sky.js"],
+  ["moon-render.js", "js/moon-render.js"],
   ["eclipse-map.js", "js/eclipse-map.js"],
   ["otd.js", "js/otd.js"],
   ["retire.js", "js/retire.js"],
@@ -131,6 +133,16 @@ const PLACES_URL = `/assets/places.json?v=${hash(PLACES_JSON)}`;
 const LAND_JSON = JSON.stringify({ rings: JSON.parse(fs.readFileSync(path.join(SRC, "data", "land-110m.json"), "utf8")).rings });
 write("assets/land.json", LAND_JSON);
 const LAND_URL = `/assets/land.json?v=${hash(LAND_JSON)}`;
+/* Gece gökyüzü (3 Kasım 2026, 2. analiz #156): takımyıldız çizgileri ve adları (d3-celestial, BSD-3; scripts/fetch-constellations.mjs) */
+const CON_SRC = readJson("src/data/constellations.json");
+const CON_JSON = JSON.stringify(CON_SRC.con);
+write("assets/constellations.json", CON_JSON);
+const CON_URL = `/assets/constellations.json?v=${hash(CON_JSON)}`;
+/* Fotoğraf dokulu Ay (2. analiz #103): NASA SVS CGI Moon Kit (svs.gsfc.nasa.gov/4720, lroc_color_2k.jpg, kamu malı;
+   1024×512'ye küçültüldü). Her evre tarayıcıda dokudan çizilir (moon-render.js). */
+const MOON_BUF = fs.readFileSync(path.join(SRC, "assets/moon.jpg"));
+write("assets/moon.jpg", MOON_BUF);
+const MOON_URL = `/assets/moon.jpg?v=${hash(MOON_BUF)}`;
 const PLACE_NAMES_URL = {};
 for (const l of LANGS) {
   const j = JSON.stringify(PLACES_SRC.names[l] || PLACES_SRC.names.en);
@@ -467,6 +479,8 @@ function layout(p) {
     ...(p.clientExtra && p.clientExtra.cities ? { cities: p.clientExtra.cities } : {}),
     ...(p.clientExtra && p.clientExtra.globe ? { globe: p.clientExtra.globe } : {}),
     ...(p.clientExtra && p.clientExtra.eclipses ? { eclipses: p.clientExtra.eclipses } : {}),
+    ...(p.clientExtra && p.clientExtra.moonTex ? { moonTex: p.clientExtra.moonTex } : {}),
+    ...(p.clientExtra && p.clientExtra.skyEvents ? { skyEvents: p.clientExtra.skyEvents } : {}),
     placeData: { places: PLACES_URL, names: PLACE_NAMES_URL[lang] },
     ...(UMAMI_ID ? { umami: { id: UMAMI_ID, host: HOST } } : {}), // betiği consent.js istatistik izniyle ekler
     searchIndex: `/assets/search-${lang}.json?v=${p.searchVersion}`,
@@ -816,6 +830,8 @@ const HOL = readJson("src/data/holidays.json");
 HOL.school = readJson("src/data/school.json");
 HOL.exams = readJson("src/data/exams.json");
 const HOL_YEARS = Object.keys(HOL.years).map(Number).sort((a, b) => a - b);
+/* Gökyüzü olayları (2. analiz #154): meteor yağmuru zirveleri (IMO λ⊙), kavuşumlar, Ay–gezegen, karşı konum, uzanım; 2026–2031 */
+const SKY_EVENTS = skyEvents(ROOT, HOL_YEARS[0], HOL_YEARS[HOL_YEARS.length - 1]);
 /* Tutulmalar (NASA tablosu): en büyük tutulma anı TD → UT (ΔT 69 sn, nature-calc.js ile aynı). Mevsimler sayfası ve uygulamalar. */
 const ECLIPSES_SRC = JSON.parse(fs.readFileSync(path.join(SRC, "data", "eclipses.json"), "utf8"));
 const ECLIPSES = ["solar", "lunar"].flatMap((kind) => ECLIPSES_SRC[kind].map((e) => ({ kind, ut: Date.parse(e.td) - 69000, type: e.type, regions: e.regions, path: e.path || [] }))).sort((a, b) => a.ut - b.ut);
@@ -1813,6 +1829,7 @@ function buildNature(lang) {
       <p class="meta" data-ecl-legend></p>
       <p class="meta">${esc(n.eclMapNote)}</p>
     </div>
+    <p class="meta">${esc(n.eclApprox)}</p>
     <p class="meta"><strong>${esc(n.eclipseSafety)}</strong></p>
     <p class="meta">${esc(n.eclipseSource)}</p>
     <h3>${esc(n.moonIcsHeading)}</h3>
@@ -1855,7 +1872,7 @@ function buildNature(lang) {
     <p class="meta">${esc(n.methodNote)}</p>
   </div>
 </section>`;
-  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js", "eclipse-map.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats, tw: n.tw, ym: n.ym, regionNames: eclipseRegionNames(t.locale) } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "moon-render.js", "nature.js", "eclipse-map.js"], clientExtra: { moonTex: MOON_URL, t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats, eclLocal: n.eclLocal, eclLocalTotal: n.eclLocalTotal, eclLocalAnnular: n.eclLocalAnnular, eclLocalNone: n.eclLocalNone, eclLocalLow: n.eclLocalLow, eclContacts: n.eclContacts, eclMag: n.eclMag, tw: n.tw, ym: n.ym, regionNames: eclipseRegionNames(t.locale) } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
 }
 
 function buildWeather(lang) {
@@ -2717,16 +2734,40 @@ function buildSky(lang) {
   const t = I[lang];
   const s = t.sky;
   const trail = [{ name: t.ui.home, path: ROUTES[lang].home }, { name: s.h1, path: ROUTES[lang].sky }];
-  const hero = `<section class="sky" data-sky aria-labelledby="sky-h">
+  const hero = `<section class="sky" data-sky aria-labelledby="sky-h" data-con="${CON_URL}">
       <h2 id="sky-h" class="qb-place" data-sky-place>&nbsp;</h2>
       <figure class="sky-chart"><svg data-sky-chart viewBox="-200 -200 400 400" role="img" aria-labelledby="sky-cap"></svg><figcaption id="sky-cap" class="meta" data-sky-cap>&nbsp;</figcaption></figure>
-      <p class="sky-time"><label for="sky-t">${esc(s.timeLabel)}</label> <input id="sky-t" type="range" min="0" max="96" step="1" value="0" data-sky-time> <output data-sky-time-out dir="ltr">–</output> <button type="button" class="toggle" data-sky-now>${esc(s.now)}</button></p>
+      <p class="sky-time"><label for="sky-t">${esc(s.timeLabel)}</label> <input id="sky-t" type="range" min="0" max="96" step="1" value="0" data-sky-time> <output data-sky-time-out dir="ltr">–</output> <button type="button" class="toggle" data-sky-play aria-pressed="false" data-play="${esc(s.play)}" data-pause="${esc(s.pause)}">${esc(s.play)}</button> <button type="button" class="toggle" data-sky-now>${esc(s.now)}</button></p>
+      <p class="sky-time"><label for="sky-d">${esc(s.dateLabel)}</label> <input id="sky-d" type="date" data-sky-date min="${HOL_YEARS[0]}-01-01" max="${HOL_YEARS[HOL_YEARS.length - 1]}-12-31"> <label class="sky-opt"><input type="checkbox" data-sky-con checked> ${esc(s.constellations)}</label> <button type="button" class="toggle" data-sky-red aria-pressed="false">${esc(s.red)}</button></p>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
-  const sections = `<section class="section" aria-labelledby="sky-pl-h">
+  const icsU = ICS_URL(lang, "sky"), cal = t.calendar;
+  const icsRow = `<a class="toggle" href="${icsU}" download>${esc(cal.icsDownload)}</a><a class="toggle" href="${ORIGIN.replace(/^https?:/, "webcal:")}${icsU}">${esc(cal.icsSubscribe)}</a><a class="toggle" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(ORIGIN.replace(/^https?:/, "webcal:") + icsU)}" target="_blank" rel="noopener">${esc(cal.icsGoogle)}</a>`;
+  const sections = `<section class="section" aria-labelledby="sky-tn-h">
+  <div class="wrap">
+    <h2 id="sky-tn-h">${esc(s.tonightHeading)}</h2>
+    <p class="sky-score" data-sky-score>&nbsp;</p>
+    <dl class="facts"><div class="fact"><dt>${esc(s.darkLabel)}</dt><dd data-sky-dark>–</dd></div><div class="fact"><dt>${esc(s.moon)}</dt><dd data-sky-tmoon>–</dd></div><div class="fact"><dt>${esc(s.planetsLabel)}</dt><dd data-sky-tpl>–</dd></div><div class="fact" data-sky-cloud-row hidden><dt>${esc(s.cloudLabel)}</dt><dd data-sky-cloud>–</dd></div></dl>
+    <ul class="sky-tips" data-sky-tips></ul>
+    <h3>${esc(s.graphHeading)}</h3>
+    <figure class="sky-graph"><svg data-sky-graph viewBox="0 0 640 240" role="img" aria-labelledby="sky-g-cap"></svg><figcaption id="sky-g-cap" class="meta">${esc(s.graphCaption)}</figcaption></figure>
+    <p class="meta">${esc(s.cloudNote)}</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="sky-pl-h">
   <div class="wrap">
     <h2 id="sky-pl-h">${esc(s.tableHeading)}</h2>
     <div class="table-wrap"><table class="events-table sky-table"><thead><tr>${s.cols.map((c) => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody data-sky-planets></tbody></table></div>
+  </div>
+</section>
+<section class="section" aria-labelledby="sky-ev-h">
+  <div class="wrap">
+    <h2 id="sky-ev-h">${esc(s.eventsHeading)}</h2>
+    <p class="meta">${esc(s.eventsLead)}</p>
+    <ul class="sky-events" data-sky-events></ul>
+    <p><button type="button" class="toggle" data-sky-more>${esc(s.evMore)}</button></p>
+    <p class="share-row">${icsRow}</p>
+    <p class="meta">${esc(s.eventsNote)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="sky-moon-h">
@@ -2735,10 +2776,13 @@ function buildSky(lang) {
     <dl class="facts"><div class="fact"><dt>${esc(s.moonNow)}</dt><dd data-sky-mdist>–</dd></div><div class="fact"><dt>${esc(s.perigee)}</dt><dd data-sky-perigee>–</dd></div><div class="fact"><dt>${esc(s.apogee)}</dt><dd data-sky-apogee>–</dd></div></dl>
     <p class="meta" data-sky-super hidden></p>
     <p class="meta">${esc(s.note)}</p>
+    <p class="meta">${esc(s.conSource)}</p>
   </div>
 </section>`;
-  const sk = { planets: s.planets, moon: s.moon, sun: s.sun, chartCaption: s.chartCaption, window: s.window, tooClose: s.tooClose, below: s.below, riseSet: s.riseSet, altFmt: s.altFmt, mkm: s.mkm, km: s.km, superMoon: s.superMoon, compass: t.weather.compass, cardinals: t.qibla.cardinals };
-  return simplePage(lang, "sky", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "sky", title: s.h1 }, scripts: ["place.js", "nature-calc.js", "sky-calc.js", "sky.js"], clientExtra: { t: { pl: placeClient(t.prayer), sk } }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].sky, s.description)] });
+  const sk = { planets: s.planets, moon: s.moon, sun: s.sun, chartCaption: s.chartCaption, window: s.window, tooClose: s.tooClose, below: s.below, riseSet: s.riseSet, altFmt: s.altFmt, mkm: s.mkm, km: s.km, superMoon: s.superMoon, compass: t.weather.compass, cardinals: t.qibla.cardinals,
+    showers: s.showers, evShower: s.evShower, showerRate: s.showerRate, showerVar: s.showerVar, moonLight: s.moonLight, evOpp: s.evOpp, evElongE: s.evElongE, evElongW: s.evElongW, evConj: s.evConj, evMoon: s.evMoon,
+    darkNone: s.darkNone, moonUpDark: s.moonUpDark, moonDownDark: s.moonDownDark, planetsNone: s.planetsNone, score: s.score, tipMoon: s.tipMoon, tipDark: s.tipDark, tipCloudy: s.tipCloudy, tipBest: s.tipBest, window2: s.window };
+  return simplePage(lang, "sky", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: { hero, sections }, faq: s.faq, faqGroup: { id: "sky", title: s.h1 }, scripts: ["place.js", "nature-calc.js", "sky-calc.js", "weather-core.js", "moon-render.js", "sky.js"], clientExtra: { moonTex: MOON_URL, t: { pl: placeClient(t.prayer), sk }, skyEvents: SKY_EVENTS.filter((e) => e.t >= Date.UTC(BUILD_YEAR, 0, 1)).map((e) => ({ ...e })) }, nav: "tools", searchK: s.search, needsPlace: true, extraLd: [webAppLd(lang, s.h1, ROUTES[lang].sky, s.description)] });
 }
 
 /* Tarihte bugün (30 Ekim 2026, rakip analizi listesi #89): Wikidata (CC0) verisi, scripts/fetch-on-this-day.mjs ile elle
@@ -3035,6 +3079,24 @@ for (const lang of LANGS) {
   for (const e of ev) lines.push("BEGIN:VEVENT", `UID:${ut(e.at)}-${e.kind}-${lang}@time.bumba.tr`, `DTSTAMP:${stamp}`, `DTSTART:${ut(e.at)}`, `SUMMARY:${icsEsc((e.kind === "new" ? "🌑 " : e.kind === "full" ? "🌕 " : "") + e.title)}`, `URL:${abs(ROUTES[lang].nature)}`, "TRANSP:TRANSPARENT", "END:VEVENT");
   lines.push("END:VCALENDAR");
   write(ICS_URL(lang, "moon").slice(1), lines.map(icsFold).join("\r\n") + "\r\n");
+}
+
+/* Gökyüzü olayları takvimi (3 Kasım 2026, 2. analiz #154): /ics/<dil>-sky.ics, meteor yağmuru zirveleri, kavuşumlar,
+   Ay–gezegen yakınlaşmaları, karşı konum ve uzanımlar 2026–2031 (lib/sky-events.mjs); UTC anıyla zamanlı etkinlik. */
+for (const lang of LANGS) {
+  const s = I[lang].sky, P = s.planets;
+  const stamp = cfg.updated.replace(/-/g, "") + "T000000Z";
+  const ut = (ms) => new Date(ms).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}Z$/, "Z");
+  const nf1 = new Intl.NumberFormat(RTL.includes(lang) ? "en" : I[lang].locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const title = (e) => e.k === "shower" ? tpl(s.evShower, { name: s.showers[e.id] }) : e.k === "opp" ? tpl(s.evOpp, { p: P[e.p] }) : e.k === "elong" ? tpl(e.ev ? s.evElongE : s.evElongW, { p: P[e.p], deg: nf1.format(e.deg) }) : e.k === "conj" ? tpl(s.evConj, { a: P[e.a], b: P[e.b], sep: nf1.format(e.sep) }) : tpl(s.evMoon, { p: P[e.p], sep: nf1.format(e.sep) });
+  const lines = ["BEGIN:VCALENDAR", "VERSION:2.0", `PRODID:-//Bumba//Saat Tarih Sky//${lang.toUpperCase()}`, "CALSCALE:GREGORIAN", "METHOD:PUBLISH", `X-WR-CALNAME:${icsEsc(s.icsName)}`, "REFRESH-INTERVAL;VALUE=DURATION:P30D", "X-PUBLISHED-TTL:P30D"];
+  for (const e of SKY_EVENTS) {
+    const id = e.k + "-" + (e.id || e.p || e.a + "-" + e.b);
+    const desc = e.k === "shower" ? (e.zhr ? tpl(s.showerRate, { zhr: e.zhr }) : s.showerVar) : "";
+    lines.push("BEGIN:VEVENT", `UID:${ut(e.t)}-${id}-${lang}@time.bumba.tr`, `DTSTAMP:${stamp}`, `DTSTART:${ut(e.t)}`, `SUMMARY:${icsEsc(title(e))}`, ...(desc ? [`DESCRIPTION:${icsEsc(desc)}`] : []), `URL:${abs(ROUTES[lang].sky)}`, "TRANSP:TRANSPARENT", "END:VEVENT");
+  }
+  lines.push("END:VCALENDAR");
+  write(ICS_URL(lang, "sky").slice(1), lines.map(icsFold).join("\r\n") + "\r\n");
 }
 
 /* ---------- sitemap, robots, llms.txt, manifest ---------- */

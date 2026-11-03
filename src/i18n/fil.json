@@ -2195,7 +2195,23 @@
         "Beaver Moon",
         "Cold Moon"
       ]
-    }
+    },
+    "eclLocal": "{place}: natatakpan ang {obsc} ng Araw; {c1}–{c4}, pinakamarami {max}.",
+    "eclLocalTotal": "{place}: kabuuang eklipse; {c1}–{c4}, totality bandang {max}.",
+    "eclLocalAnnular": "{place}: annular na eklipse; {c1}–{c4}, singsing bandang {max}.",
+    "eclLocalNone": "{place}: hindi makikita mula rito ang eklipseng ito.",
+    "eclLocalLow": "{place}: nasa ilalim ng abot-tanaw ang Araw habang may eklipse.",
+    "eclContacts": {
+      "p1": "Simula ng penumbra",
+      "u1": "Simula ng anino",
+      "u2": "Simula ng totality",
+      "max": "Pinakamarami",
+      "u3": "Wakas ng totality",
+      "u4": "Wakas ng anino",
+      "p4": "Wakas ng penumbra"
+    },
+    "eclMag": "Laki ng anino {v}",
+    "eclApprox": "Tinatayang oras (ilang minuto); malabo ang mga sandaling hindi makikita mula rito."
   },
   "weather": {
     "title": "Panahon: Ngayon, Bawat Oras at 14 na Araw | Saat Tarih",
@@ -3111,7 +3127,59 @@
         "q": "Ano ang supermoon?",
         "a": "Ang supermoon ay popular na tawag sa kabilugan ng buwan na malapit sa perigee, ang pinakamalapit na punto ng Buwan sa Daigdig. Mukha itong mga 14% na mas malaki at 30% na mas maliwanag kaysa sa kabilugan sa apogee; mahirap mapansin ang pagkakaiba sa mata lang."
       }
-    ]
+    ],
+    "eventsHeading": "Mga pangyayari sa langit",
+    "eventsLead": "Rurok ng mga meteor shower, paglapit ng mga planeta at ng Buwan, oposisyon at pinakamalaking elongasyon; oras ayon sa napiling lugar.",
+    "showers": {
+      "qua": "Quadrantids",
+      "lyr": "Lyrids",
+      "eta": "Eta Aquariids",
+      "sda": "Southern Delta Aquariids",
+      "per": "Perseids",
+      "dra": "Draconids",
+      "ori": "Orionids",
+      "leo": "Leonids",
+      "gem": "Geminids",
+      "urs": "Ursids"
+    },
+    "evShower": "Rurok ng meteor shower na {name}",
+    "showerRate": "Hanggang ~{zhr} meteor bawat oras sa madilim na langit",
+    "showerVar": "Nag-iiba ang dami taon-taon",
+    "moonLight": "Buwan {moon} maliwanag",
+    "evOpp": "{p} nasa oposisyon: kita buong gabi, pinakamaliwanag ngayong taon",
+    "evElongE": "{p} pinakamalayo sa Araw sa langit ng gabi ({deg}°)",
+    "evElongW": "{p} pinakamalayo sa Araw sa langit ng umaga ({deg}°)",
+    "evConj": "Magkalapit ang {a} at {b} ({sep}° ang layo)",
+    "evMoon": "Magkalapit ang Buwan at {p} ({sep}° ang layo)",
+    "evMore": "Higit pang pangyayari",
+    "eventsNote": "Kinukuwenta ang rurok ng mga meteor shower mula sa solar longitude na inilathala ng International Meteor Organization (IMO); maaaring maiba ng ilang oras ang tunay na rurok. Geocentric ang mga anggulo; mula sa lugar mo, maaaring maiba nang mga isang digri.",
+    "icsName": "Saat Tarih: Mga pangyayari sa langit",
+    "tonightHeading": "Ngayong gabi",
+    "darkLabel": "Ganap na dilim",
+    "darkNone": "Walang ganap na dilim ngayong gabi (hindi bumababa ang Araw nang 18° sa ilalim ng abot-tanaw).",
+    "moonUpDark": "{illum} maliwanag; nasa langit sa dilim mula {from} hanggang {to}",
+    "moonDownDark": "{illum} maliwanag; nasa ilalim ng abot-tanaw sa oras ng dilim",
+    "planetsLabel": "Mga planetang makikita",
+    "planetsNone": "Wala",
+    "cloudLabel": "Ulap",
+    "score": {
+      "good": "Magandang gabi para magmasid",
+      "fair": "Katamtaman para magmasid",
+      "poor": "Mahina para magmasid"
+    },
+    "tipMoon": "Maliwanag ang Buwan: mahirap makita ang malalabong bituin at meteor.",
+    "tipDark": "Wala ang Buwan sa langit sa dilim: maganda para sa malalabong bituin.",
+    "tipCloudy": "Maaaring takpan ng ulap ang tanawin.",
+    "tipBest": "Pinakamataas ang {p} bandang {time} ({deg}°).",
+    "graphHeading": "Taas ng mga planeta ngayong gabi",
+    "graphCaption": "Pahalang na aksis ang oras, patayo ang taas mula sa abot-tanaw; ang madilim na guhit ay ganap na dilim.",
+    "cloudNote": "Galing sa Open-Meteo ang ulap at ipinapakita lang kung pinayagan mo ang mga panlabas na serbisyo.",
+    "constellations": "Mga konstelasyon",
+    "play": "I-play",
+    "pause": "I-pause",
+    "dateLabel": "Petsa",
+    "red": "Pulang ilaw",
+    "conSource": "Mga linya at pangalan ng konstelasyon: d3-celestial (© 2015 Olaf Frohn, lisensiyang BSD-3)."
   },
   "otd": {
     "title": "Sa araw na ito sa kasaysayan | Saat Tarih",

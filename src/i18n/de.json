@@ -2156,7 +2156,23 @@
         "Bibermond",
         "Kalter Mond"
       ]
-    }
+    },
+    "eclLocal": "{place}: {obsc} der Sonne werden bedeckt; {c1}–{c4}, Maximum {max}.",
+    "eclLocalTotal": "{place}: totale Finsternis; {c1}–{c4}, Totalität gegen {max}.",
+    "eclLocalAnnular": "{place}: ringförmige Finsternis; {c1}–{c4}, Ring gegen {max}.",
+    "eclLocalNone": "{place}: Diese Finsternis ist von hier nicht sichtbar.",
+    "eclLocalLow": "{place}: Die Sonne steht während der Finsternis unter dem Horizont.",
+    "eclContacts": {
+      "p1": "Halbschatten beginnt",
+      "u1": "Kernschatten beginnt",
+      "u2": "Totalität beginnt",
+      "max": "Maximum",
+      "u3": "Totalität endet",
+      "u4": "Kernschatten endet",
+      "p4": "Halbschatten endet"
+    },
+    "eclMag": "Kernschattengröße {v}",
+    "eclApprox": "Zeiten sind ungefähr (einige Minuten); von hier nicht sichtbare Momente sind blass."
   },
   "weather": {
     "title": "Wetter: aktuell, stündlich und 14-Tage-Vorhersage | Saat Tarih",
@@ -3072,7 +3088,59 @@
         "q": "Was ist ein Supermond?",
         "a": "Als Supermond bezeichnet man einen Vollmond nahe dem Perigäum, dem erdnächsten Punkt der Mondbahn. Er wirkt etwa 14 % größer und 30 % heller als ein Vollmond im Apogäum; mit bloßem Auge ist der Unterschied kaum zu erkennen."
       }
-    ]
+    ],
+    "eventsHeading": "Himmelsereignisse",
+    "eventsLead": "Maxima von Meteorströmen, Begegnungen von Planeten und Mond, Oppositionen und größte Elongationen; Zeiten in der Zeit des gewählten Ortes.",
+    "showers": {
+      "qua": "Quadrantiden",
+      "lyr": "Lyriden",
+      "eta": "Eta-Aquariiden",
+      "sda": "Südliche Delta-Aquariiden",
+      "per": "Perseiden",
+      "dra": "Draconiden",
+      "ori": "Orioniden",
+      "leo": "Leoniden",
+      "gem": "Geminiden",
+      "urs": "Ursiden"
+    },
+    "evShower": "Maximum der {name}",
+    "showerRate": "Bei dunklem Himmel bis zu ~{zhr} Meteore pro Stunde",
+    "showerVar": "Die Rate schwankt von Jahr zu Jahr",
+    "moonLight": "Mond zu {moon} beleuchtet",
+    "evOpp": "{p} in Opposition: die ganze Nacht sichtbar, so hell wie sonst nie im Jahr",
+    "evElongE": "{p} am Abendhimmel am weitesten von der Sonne entfernt ({deg}°)",
+    "evElongW": "{p} am Morgenhimmel am weitesten von der Sonne entfernt ({deg}°)",
+    "evConj": "{a} und {b} stehen dicht beieinander ({sep}° Abstand)",
+    "evMoon": "Mond und {p} stehen dicht beieinander ({sep}° Abstand)",
+    "evMore": "Weitere Ereignisse",
+    "eventsNote": "Die Maxima der Meteorströme werden aus den Sonnenlängen der International Meteor Organization (IMO) berechnet; das tatsächliche Maximum kann einige Stunden abweichen. Abstände sind geozentrisch; von Ihrem Standort aus können sie um etwa ein Grad abweichen.",
+    "icsName": "Saat Tarih: Himmelsereignisse",
+    "tonightHeading": "Heute Nacht",
+    "darkLabel": "Volle Dunkelheit",
+    "darkNone": "Heute Nacht wird es nicht ganz dunkel (die Sonne sinkt nicht 18° unter den Horizont).",
+    "moonUpDark": "zu {illum} beleuchtet; bei Dunkelheit von {from} bis {to} am Himmel",
+    "moonDownDark": "zu {illum} beleuchtet; bei Dunkelheit unter dem Horizont",
+    "planetsLabel": "Sichtbare Planeten",
+    "planetsNone": "Keine",
+    "cloudLabel": "Bewölkung",
+    "score": {
+      "good": "Eine gute Nacht zum Beobachten",
+      "fair": "Mäßig zum Beobachten",
+      "poor": "Schlecht zum Beobachten"
+    },
+    "tipMoon": "Heller Mond: schwache Sterne und Meteore sind schwer zu sehen.",
+    "tipDark": "Der Mond steht bei Dunkelheit nicht am Himmel: gut für schwache Sterne.",
+    "tipCloudy": "Wolken können die Sicht verdecken.",
+    "tipBest": "{p} steht gegen {time} am höchsten ({deg}°).",
+    "graphHeading": "Planetenhöhen heute Nacht",
+    "graphCaption": "Waagerecht die Uhrzeit, senkrecht die Höhe über dem Horizont; der dunkle Bereich ist volle Dunkelheit.",
+    "cloudNote": "Die Bewölkung stammt von Open-Meteo und wird nur angezeigt, wenn Sie externe Dienste erlaubt haben.",
+    "constellations": "Sternbilder",
+    "play": "Abspielen",
+    "pause": "Anhalten",
+    "dateLabel": "Datum",
+    "red": "Rotlicht",
+    "conSource": "Sternbildlinien und -namen: d3-celestial (© 2015 Olaf Frohn, BSD-3-Lizenz)."
   },
   "otd": {
     "title": "Heute in der Geschichte: Ereignisse und Geburtstage | Saat Tarih",

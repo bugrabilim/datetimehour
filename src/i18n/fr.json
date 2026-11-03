@@ -2170,7 +2170,23 @@
         "Lune du castor",
         "Lune froide"
       ]
-    }
+    },
+    "eclLocal": "{place} : {obsc} du Soleil est masqué ; {c1}–{c4}, maximum à {max}.",
+    "eclLocalTotal": "{place} : éclipse totale ; {c1}–{c4}, totalité vers {max}.",
+    "eclLocalAnnular": "{place} : éclipse annulaire ; {c1}–{c4}, anneau vers {max}.",
+    "eclLocalNone": "{place} : cette éclipse n'est pas visible d'ici.",
+    "eclLocalLow": "{place} : le Soleil est sous l'horizon pendant l'éclipse.",
+    "eclContacts": {
+      "p1": "Entrée dans la pénombre",
+      "u1": "Entrée dans l'ombre",
+      "u2": "Début de la totalité",
+      "max": "Maximum",
+      "u3": "Fin de la totalité",
+      "u4": "Sortie de l'ombre",
+      "p4": "Sortie de la pénombre"
+    },
+    "eclMag": "Magnitude ombrale {v}",
+    "eclApprox": "Heures approximatives (quelques minutes) ; les instants non visibles depuis ce lieu sont estompés."
   },
   "weather": {
     "title": "Météo : actuelle, heure par heure et à 14 jours | Saat Tarih",
@@ -3086,7 +3102,59 @@
         "q": "Qu’est-ce qu’une super lune ?",
         "a": "« Super lune » est le nom populaire d’une pleine lune proche du périgée, le point de l’orbite le plus proche de la Terre. Elle paraît environ 14 % plus grande et 30 % plus brillante qu’une pleine lune à l’apogée ; la différence est difficile à remarquer à l’œil nu."
       }
-    ]
+    ],
+    "eventsHeading": "Événements célestes",
+    "eventsLead": "Pics des pluies de météores, rapprochements des planètes et de la Lune, oppositions et plus grandes élongations ; heures du lieu choisi.",
+    "showers": {
+      "qua": "Quadrantides",
+      "lyr": "Lyrides",
+      "eta": "Êta Aquarides",
+      "sda": "Delta Aquarides du Sud",
+      "per": "Perséides",
+      "dra": "Draconides",
+      "ori": "Orionides",
+      "leo": "Léonides",
+      "gem": "Géminides",
+      "urs": "Ursides"
+    },
+    "evShower": "Pic de la pluie des {name}",
+    "showerRate": "Jusqu'à ~{zhr} météores par heure sous un ciel noir",
+    "showerVar": "Le taux varie d'une année à l'autre",
+    "moonLight": "Lune éclairée à {moon}",
+    "evOpp": "{p} à l'opposition : visible toute la nuit, au plus brillant de l'année",
+    "evElongE": "{p} au plus loin du Soleil dans le ciel du soir ({deg}°)",
+    "evElongW": "{p} au plus loin du Soleil dans le ciel du matin ({deg}°)",
+    "evConj": "{a} et {b} paraissent proches ({sep}° d'écart)",
+    "evMoon": "La Lune et {p} paraissent proches ({sep}° d'écart)",
+    "evMore": "Plus d'événements",
+    "eventsNote": "Les pics des pluies de météores sont calculés à partir des longitudes solaires publiées par l'International Meteor Organization (IMO) ; le pic réel peut varier de quelques heures. Les écarts sont géocentriques ; depuis votre lieu, ils peuvent différer d'environ un degré.",
+    "icsName": "Saat Tarih : événements célestes",
+    "tonightHeading": "Cette nuit",
+    "darkLabel": "Nuit noire",
+    "darkNone": "Pas de nuit noire cette nuit (le Soleil ne descend pas à 18° sous l'horizon).",
+    "moonUpDark": "éclairée à {illum} ; dans le ciel de nuit de {from} à {to}",
+    "moonDownDark": "éclairée à {illum} ; sous l'horizon pendant la nuit noire",
+    "planetsLabel": "Planètes visibles",
+    "planetsNone": "Aucune",
+    "cloudLabel": "Nébulosité",
+    "score": {
+      "good": "Une bonne nuit pour observer",
+      "fair": "Moyenne pour observer",
+      "poor": "Médiocre pour observer"
+    },
+    "tipMoon": "Lune brillante : les étoiles faibles et les météores sont difficiles à voir.",
+    "tipDark": "La Lune est couchée pendant la nuit noire : idéal pour les étoiles faibles.",
+    "tipCloudy": "Les nuages peuvent gêner l'observation.",
+    "tipBest": "{p} est au plus haut vers {time} ({deg}°).",
+    "graphHeading": "Hauteur des planètes cette nuit",
+    "graphCaption": "Axe horizontal : l'heure ; axe vertical : la hauteur au-dessus de l'horizon ; la bande sombre est la nuit noire.",
+    "cloudNote": "La nébulosité vient d'Open-Meteo et ne s'affiche que si vous avez autorisé les services externes.",
+    "constellations": "Constellations",
+    "play": "Lecture",
+    "pause": "Pause",
+    "dateLabel": "Date",
+    "red": "Lumière rouge",
+    "conSource": "Lignes et noms des constellations : d3-celestial (© 2015 Olaf Frohn, licence BSD-3)."
   },
   "otd": {
     "title": "Éphéméride : ce jour-là dans l’histoire | Saat Tarih",

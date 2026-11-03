@@ -134,6 +134,7 @@
     var d = "M " + c + " " + (c - r) + " A " + r + " " + r + " 0 0 1 " + c + " " + (c + r) + " A " + rx.toFixed(2) + " " + r + " 0 0 " + (k > 0 ? 0 : 1) + " " + c + " " + (c - r) + " Z";
     svg("path", { d: d, class: "moon-lit" }, g);
     svg("circle", { cx: c, cy: c, r: r, class: "moon-ring" }, el);
+    texImage(el, m.frac, 4, 72, 160);
     setText("[data-n-phase]", T.phases[PHASES[m.idx]]);
     setText("[data-n-illum]", S.tpl(T.illumination, { p: Math.round(m.illum * 100) }));
     setText("[data-n-age]", S.tpl(T.age, { d: new Intl.NumberFormat(S.locale, { maximumFractionDigits: 1, minimumFractionDigits: 1 }).format(m.age) }));
@@ -162,7 +163,15 @@
     var g = svg("g", { transform: flip === 1 ? "" : "translate(" + size + " 0) scale(-1 1)" }, el);
     svg("path", { d: "M " + c + " " + (c - r) + " A " + r + " " + r + " 0 0 1 " + c + " " + (c + r) + " A " + rx.toFixed(2) + " " + r + " 0 0 " + (k > 0 ? 0 : 1) + " " + c + " " + (c - r) + " Z", class: "moon-lit" }, g);
     svg("circle", { cx: c, cy: c, r: r, class: "moon-ring" }, el);
+    texImage(el, frac, 1, size - 2, size * 2);
     return el;
+  }
+  /* Fotoğraf dokulu Ay (2. analiz #103): doku yüklüyse çizimin üstüne konur (moon-render.js) */
+  function texImage(el, frac, at, w, px) {
+    var R = window.sthMoonTex;
+    if (!R || !R.ready()) return;
+    var u = R.dataUrl(frac, place.lat < 0, px); if (!u) return;
+    svg("image", { href: u, x: at, y: at, width: w, height: w, class: "moon-tex" }, el);
   }
 
   /* Ay takvimi: bu ayın her günü öğle saatinde evre; yeni ay ve dolunay (hesaplanan anın düştüğü gün) adıyla */
@@ -208,6 +217,37 @@
     // Ad derlemede yazılır (bazı tarayıcılar "005" gibi sayısal bölge kodlarına ad vermiyor); yoksa tarayıcıya sorulur
     var list = function (codes) { return codes.map(function (c) { if (RN[c]) return RN[c]; try { var n = names ? names.of(c) : c; return n && n !== c ? n : c; } catch (e) { return c; } }).join(", "); };
     var f = S.fmt("ecl", place.tz, { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    var hmF = S.fmt("ecl-hm", place.tz, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+    /* Ay tutulması: temas anları ve gölge çizimi (2. analiz #159); Ay'ın ufkun altında olduğu anlar soluk */
+    function lunarDetail(li, e) {
+      var C = N.lunarContacts(e.ut), NS = "http://www.w3.org/2000/svg";
+      var t0 = C.p1 || C.max - 3 * 3600000, t1 = C.p4 || C.max + 3 * 3600000;
+      C.path = C.path.filter(function (q) { return q.t >= t0 - 600000 && q.t <= t1 + 600000; });
+      var ext = C.rP; C.path.forEach(function (q) { ext = Math.max(ext, Math.abs(q.x) + C.rM, Math.abs(q.y) + C.rM); });
+      var sc = 150 / ext, svgE = doc.createElementNS(NS, "svg");
+      svgE.setAttribute("viewBox", "-155 -155 310 310"); svgE.setAttribute("class", "ecl-diagram"); svgE.setAttribute("aria-hidden", "true");
+      var mk = function (tag, a) { var x = doc.createElementNS(NS, tag); for (var k in a) x.setAttribute(k, a[k]); svgE.appendChild(x); return x; };
+      mk("circle", { cx: 0, cy: 0, r: (C.rP * sc).toFixed(1), class: "ecl-pen" });
+      mk("circle", { cx: 0, cy: 0, r: (C.rU * sc).toFixed(1), class: "ecl-umb" });
+      var d = C.path.map(function (q, i) { return (i ? "L" : "M") + (-q.x * sc).toFixed(1) + " " + (-q.y * sc).toFixed(1); }).join("");
+      mk("path", { d: d, class: "ecl-track" });
+      ["p1", "u1", "max", "u4", "p4"].forEach(function (k) {
+        if (!C[k]) return;
+        var q = null; C.path.forEach(function (p) { if (!q || Math.abs(p.t - C[k]) < Math.abs(q.t - C[k])) q = p; });
+        mk("circle", { cx: (-q.x * sc).toFixed(1), cy: (-q.y * sc).toFixed(1), r: (C.rM * sc).toFixed(1), class: k === "max" ? "ecl-moon ecl-moon-max" : "ecl-moon" });
+      });
+      li.appendChild(svgE);
+      var dl = doc.createElement("dl"); dl.className = "ecl-times";
+      ["p1", "u1", "u2", "max", "u3", "u4", "p4"].forEach(function (k) {
+        if (!C[k]) return;
+        var row = doc.createElement("div"); if (N.moonAltitude(C[k], place.lat, place.lon) < 0) row.className = "ecl-below";
+        var dt = doc.createElement("dt"); dt.textContent = (T.eclContacts || {})[k] || k; row.appendChild(dt);
+        var dd = doc.createElement("dd"); dd.textContent = hmF.format(new Date(roundMin(C[k]))); dd.dir = "ltr"; row.appendChild(dd);
+        dl.appendChild(row);
+      });
+      li.appendChild(dl);
+      if (C.umag > 0) { var mg = doc.createElement("p"); mg.className = "meta"; mg.textContent = S.tpl(T.eclMag, { v: new Intl.NumberFormat(/^(ar|fa|ur)$/.test(S.lang) ? "en" : S.locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(C.umag) }); li.appendChild(mg); }
+    }
     (S.cfg.eclipses || []).filter(function (e) { return e.ut > ms - 6 * 3600000; }).slice(0, 6).forEach(function (e) {
       var li = doc.createElement("li"); li.className = "eclipse eclipse-" + e.kind;
       var key = e.kind + e.type.charAt(0).toUpperCase() + e.type.slice(1);
@@ -218,6 +258,17 @@
       if (e.kind === "lunar") {
         var up = N.moonAltitude(e.ut, place.lat, place.lon) > 0;
         var hp = doc.createElement("p"); hp.className = up ? "ecl-here" : "meta"; hp.textContent = S.tpl(up ? T.eclipseHere : T.eclipseNotHere, { place: place.name }); li.appendChild(hp);
+        if (N.lunarContacts) lunarDetail(li, e);
+      } else if (N.solarLocal) {
+        var L = N.solarLocal(e.ut, place.lat, place.lon), sp = doc.createElement("p");
+        if (!L) { sp.className = "meta"; sp.textContent = S.tpl(T.eclLocalNone, { place: place.name }); }
+        else if (L.altMax < 0) { sp.className = "meta"; sp.textContent = S.tpl(T.eclLocalLow, { place: place.name }); }
+        else {
+          var hm2 = function (t) { return t ? hmF.format(new Date(roundMin(t))) : "–"; };
+          sp.className = "ecl-here";
+          sp.textContent = S.tpl(L.central === "total" ? T.eclLocalTotal : L.central === "annular" ? T.eclLocalAnnular : T.eclLocal, { place: place.name, obsc: S.pct(Math.round(L.obsc * 100)), c1: hm2(L.c1), c4: hm2(L.c4), max: hm2(L.max) });
+        }
+        li.appendChild(sp);
       }
       box.appendChild(li);
     });
@@ -388,5 +439,6 @@
     drawWheel(now); drawSun(now); drawMoon(now); drawChart(now); drawMoonCal(now); drawYearMoons(now); drawCrescent(now); drawEclipses(now); markFolk(now);
   }
   window.sthPlace.attach(root, function (p) { place = p; renderAll(); });
+  if (window.sthMoonTex && S.cfg.moonTex) window.sthMoonTex.load(S.cfg.moonTex, function (ok) { if (ok && place) { var n = S.nowMs(); drawMoon(n); drawMoonCal(n); } });
   setInterval(function () { if (place && !doc.hidden) { var n = S.nowMs(); drawSun(n); drawMoon(n); } }, 60000);
 })();
