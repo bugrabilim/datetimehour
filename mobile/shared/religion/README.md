@@ -41,6 +41,5 @@ alınan duaların sözcük sırası metinde yoksa durur.
 Ajanlarla gözden geçirme yapıldı (sahibin isteği). Türkçe/İngilizce kaynak: Esma anlamları (el-Muktedir İngilizcesi
 "The Omnipotent", el-Muhsî "The Enumerator", el-Bâri "The Maker", es-Samed Türkçesi), namaz rehberi (vitir vacip,
 secdeler arası tekbirler ve ikinci secdedeki tesbih), iki okunuş ve üç dua metni düzeltildi; hadislerin anlamı ve
-kaynağı doğru bulundu. Arapça hadis metnindeki üç yazım kusuru gösterimde temizlenir (`cleanHadithAr`). Dillerin
-denetimi kısmen tamamlandı: tamamlanmayan dillerin din içeriği (`esma`, `hadith`, `duas`, `guide`, `sayings`) ayrıca
-denetlenecek (ayrıntı CLAUDE.md, Kararlar › Dil denetimi).
+kaynağı doğru bulundu. Arapça hadis metnindeki üç yazım kusuru gösterimde temizlenir (`cleanHadithAr`). Bütün dillerin din
+içeriği (`esma`, `hadith`, `duas`, `guide`, `sayings`) de denetlendi (3 Kasım 2026; ayrıntı `docs/dil-denetimi-2026-11.md`).

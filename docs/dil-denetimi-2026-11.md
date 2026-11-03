@@ -8,31 +8,20 @@ Latin rakamı, yön işaretleri ve uzunluk sınırları denetlendi, denetimi ge�
 
 ## Durum
 
-| Dil | Hukuk (gizlilik, çerez, liste) | Site | Uygulama | Din içeriği ve veriler | Uygulanan düzeltme (kritik / orta / küçük) |
-|---|---|---|---|---|---|
-| Almanca | Bekliyor | Denetlendi | Denetlendi | Bekliyor | 192 (0 / 61 / 131) |
-| Azerice | Bekliyor | 2/3 parça | Bekliyor | Bekliyor | 159 (0 / 39 / 120) |
-| Arapça | Bekliyor | 2/3 parça | Denetlendi | Bekliyor | 151 (0 / 26 / 125) |
-| Endonezce | Bekliyor | 2/3 parça | Denetlendi | Bekliyor | 119 (0 / 24 / 95) |
-| Urduca | Bekliyor | 2/3 parça | Denetlendi | Bekliyor | 127 (1 / 32 / 94) |
-| Farsça | Bekliyor | 2/3 parça | Denetlendi | Bekliyor | 135 (1 / 31 / 103) |
-| Fransızca | Bekliyor | 2/3 parça | Denetlendi | Bekliyor | 144 (0 / 25 / 119) |
-| Rusça | Bekliyor | 2/3 parça | Denetlendi | Bekliyor | 154 (0 / 36 / 118) |
-| Japonca | Denetlendi | 2/3 parça | Denetlendi | Bekliyor | 144 (3 / 20 / 121) |
-| Korece | Bekliyor | 2/3 parça | Bekliyor | Bekliyor | 106 (0 / 19 / 87) |
-| Çince | Bekliyor | 2/3 parça | Denetlendi | Bekliyor | 136 (0 / 26 / 110) |
-| Filipince | Denetlendi | 2/3 parça | Denetlendi | Bekliyor | 156 (2 / 59 / 95) |
-| Tayca | Denetlendi | Denetlendi | Denetlendi | Denetlendi | 261 (4 / 51 / 206) |
+**Tamamlandı (3 Kasım 2026).** 13 dilin 78 parçası ve Türkçe/İngilizce din kaynağının 3 parçası, yani 81 parçanın
+hepsi denetlendi. İlk tur (31 Ekim – 3 Kasım) 47 parçada yaklaşık 2.000 düzeltme getirdi; haftalık kullanım sınırına
+takılan 34 parça ve boş dönen Korece uygulama parçası ikinci turda (3 Kasım) çalıştırıldı ve 928 düzeltme daha
+uygulandı (20 kritik, 260 orta, 648 küçük). Toplam yaklaşık 2.925 düzeltme.
 
-Kaynak (Türkçe/İngilizce) din içeriği: Esmaü'l-Hüsna, hadisler, dualar ve namaz rehberi denetlendi (13 düzeltme).
+İkinci turda ajanlar metinlerin düzeltilmiş hâlini gördü; talimata Diyanet adının her dilin kendi yazımıyla kalması,
+"parmak izi" yasağı ve açıklama uzunluğu eklendi. Uygulama betiği bu üçünü ayrıca denetledi. Biten parçalar
+birkaç dakikada bir dala kaydedildi (kullanım sınırına takılırsa iş kaybolmasın diye).
 
-**Yarıda kalan 35 parça:** 34 parça haftalık kullanım sınırı dolduğu için çalışmadı; Korece uygulama parçası bulduğu
-hataları yazdığı hâlde düzeltme listesini boş döndürdü, yeniden çalıştırılmalı. Bekleyenler: Almanca, Azerice, Arapça,
-Endonezce, Urduca, Farsça, Fransızca, Rusça, Korece ve Çincenin hukuk metinleri; Tayca dışındaki bütün dillerin din
-içeriği ve verileri (Esma, hadis, dua, rehber, atasözü, saat dilimi haberleri, tatil ve şehir adları, mağaza ve eklenti
-metinleri); Tayca ve Almanca dışındaki dillerin sitedeki son parçası (Hicri çevirici, saat hesaplama, kaç gün kaldı,
-aralık zamanlayıcı, satranç saati, metronom, konuşan saat, burç, gece gökyüzü, tarihte bugün, saat dilimi haberleri);
-Azerice ve Korece uygulama metinleri.
+İkinci turun kritik düzeltmeleri: namaz rehberindeki secde adımı (tekbirler ve tesbih) 11 dilde düzeltilmiş kaynağa
+göre güncellendi; Almancada namazda elleri "kavuşturmak" Hristiyan duruşunu anlatıyordu; Filipincede el-Afüv
+"özür dileyen", el-Cebbâr "zalim" anlamındaydı; Azericede sahur "sabah" yazıyordu; Japonca açık veri belgesinde
+yarım gün arife "arifeden önceki gün" diye yazıyordu; Arapça gizlilik metninde "yurt dışı" belirsizdi; Almanca
+gizlilik metninde Saat Tarih adı çevrilmişti.
 
 ## Önemli düzeltmeler
 

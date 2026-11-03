@@ -96,13 +96,13 @@
     {
       "id": "rabbena",
       "title": {"tr": "Rabbenâ", "en": "Rabbana", "de": "Rabbana", "az": "Rəbbəna", "ar": "ربنا", "id": "Rabbana", "ur": "ربنا", "fa": "ربّنا", "fr": "Rabbana", "ru": "Раббана", "ja": "ラッバナー", "ko": "랍바나", "zh": "热般纳", "fil": "Rabbana", "th": "ร็อบบะนา"},
-      "when": {"tr": "Namazda, son oturuşta Bârik'ten sonra (Bakara 201, İbrâhîm 41)", "en": "In prayer, in the last sitting after Barik (Quran 2:201, 14:41)", "de": "Im Gebet, beim letzten Sitzen nach Barik (Koran 2:201, 14:41)", "az": "Namazda, son oturuşda Barikdən sonra (Bəqərə 201, İbrahim 41)", "ar": "في الصلاة في الجلوس الأخير (البقرة ٢٠١، إبراهيم ٤١)", "id": "Dalam salat, pada duduk terakhir setelah Barik (Al-Qur'an 2:201, 14:41)", "ur": "نماز میں، آخری قعدے میں اللھم بارک کے بعد (قرآن 2:201، 14:41)", "fa": "در نماز، در نشست آخر پس از اللهم بارک (قرآن 2:201، 14:41)", "fr": "Dans la prière, à la dernière position assise, après Barik (Coran 2:201, 14:41)", "ru": "В намазе, в последнем сидении после Барик (Коран 2:201, 14:41)", "ja": "礼拝で、最後の座位のとき、バーリクの後（クルアーン2:201、14:41）", "ko": "예배에서, 마지막 앉음에 바리크 뒤에(꾸란 2:201, 14:41)", "zh": "礼拜中，最后跪坐时念完祈福词之后（古兰经2:201、14:41）", "fil": "Sa dasal, sa huling pag-upo pagkatapos ng Barik (Quran 2:201, 14:41)", "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังบาริก (อัลกุรอาน 2:201, 14:41)"},
+      "when": {"tr": "Namazda, son oturuşta Bârik'ten sonra (Bakara 201, İbrâhîm 41)", "en": "In prayer, in the last sitting after Barik (Quran 2:201, 14:41)", "de": "Im Gebet, beim letzten Sitzen nach Barik (Koran 2:201, 14:41)", "az": "Namazda, son oturuşda Barikdən sonra (Bəqərə 201, İbrahim 41)", "ar": "في الصلاة في الجلوس الأخير بعد اللهم بارك (البقرة 201، إبراهيم 41)", "id": "Dalam salat, pada duduk terakhir setelah Barik (Al-Qur'an 2:201, 14:41)", "ur": "نماز میں، آخری قعدے میں اللھم بارک کے بعد (قرآن 2:201، 14:41)", "fa": "در نماز، در نشست آخر پس از اللهم بارک (قرآن 2:201، 14:41)", "fr": "Dans la prière, à la dernière position assise, après Barik (Coran 2:201, 14:41)", "ru": "В намазе, в последнем сидении после Барик (Коран 2:201, 14:41)", "ja": "礼拝で、最後の座位のとき、バーリクの後（クルアーン2:201、14:41）", "ko": "예배에서, 마지막 앉음에 바리크 뒤에(꾸란 2:201, 14:41)", "zh": "礼拜中，最后跪坐时念完祈福词之后（古兰经2:201、14:41）", "fil": "Sa dasal, sa huling pag-upo pagkatapos ng Barik (Quran 2:201, 14:41)", "th": "ในละหมาด ขณะนั่งครั้งสุดท้าย หลังบาริก (อัลกุรอาน 2:201, 14:41)"},
       "quran": [["2:201", 3], ["14:41", 0]],
       "okunus": "Rabbenâ âtinâ fid-dünyâ haseneten ve fil-âhireti haseneten ve kınâ azâben-nâr. Rabbenağfirlî ve li-vâlideyye ve lil-mü'minîne yevme yekûmül-hisâb."
     },
     {
       "id": "kunut1",
-      "title": {"tr": "Kunut duası (1)", "en": "Qunut (1)", "de": "Qunut (1)", "az": "Qunut duası (1)", "ar": "دعاء القنوت (١)", "id": "Qunut (1)", "ur": "دعائے قنوت (1)", "fa": "قنوت (1)", "fr": "Qunut (1)", "ru": "Кунут (1)", "ja": "クヌート（1）", "ko": "쿠누트(1)", "zh": "古努特（一）", "fil": "Qunut (1)", "th": "กุนูต (1)"},
+      "title": {"tr": "Kunut duası (1)", "en": "Qunut (1)", "de": "Qunut (1)", "az": "Qunut duası (1)", "ar": "دعاء القنوت (1)", "id": "Qunut (1)", "ur": "دعائے قنوت (1)", "fa": "قنوت (1)", "fr": "Qunut (1)", "ru": "Кунут (1)", "ja": "クヌート（1）", "ko": "쿠누트(1)", "zh": "古努特（一）", "fil": "Qunut (1)", "th": "กุนูต (1)"},
       "when": {"tr": "Vitir namazının üçüncü rekâtında", "en": "In the third unit of the witr prayer", "de": "In der dritten Einheit des Witr-Gebets", "az": "Vitr namazının üçüncü rükətində", "ar": "في الركعة الثالثة من صلاة الوتر", "id": "Pada rakaat ketiga salat witir", "ur": "نمازِ وتر کی تیسری رکعت میں", "fa": "در رکعت سوم نماز وتر", "fr": "À la troisième unité de la prière du witr", "ru": "В третьем ракаате намаза витр", "ja": "ウィトル礼拝の第3ラクアで", "ko": "위트르 예배의 셋째 라카트에서", "zh": "威特尔拜的第三拜中", "fil": "Sa ikatlong yunit ng dasal na witr", "th": "ในร็อกอะฮ์ที่สามของละหมาดวิติร"},
       "ar": "اللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنَسْتَهْدِيكَ وَنُؤْمِنُ بِكَ وَنَتُوبُ إِلَيْكَ وَنَتَوَكَّلُ عَلَيْكَ وَنُثْنِي عَلَيْكَ الْخَيْرَ كُلَّهُ نَشْكُرُكَ وَلَا نَكْفُرُكَ وَنَخْلَعُ وَنَتْرُكُ مَنْ يَفْجُرُكَ",
       "okunus": "Allâhümme innâ nesteînüke ve nestağfirüke ve nestehdîk. Ve nü'minü bike ve netûbü ileyk. Ve netevekkelü aleyke ve nüsnî aleykel-hayra külleh. Neşkürüke ve lâ nekfürük. Ve nahleu ve netrükü men yefcürük.",
@@ -125,7 +125,7 @@
     },
     {
       "id": "kunut2",
-      "title": {"tr": "Kunut duası (2)", "en": "Qunut (2)", "de": "Qunut (2)", "az": "Qunut duası (2)", "ar": "دعاء القنوت (٢)", "id": "Qunut (2)", "ur": "دعائے قنوت (2)", "fa": "قنوت (2)", "fr": "Qunut (2)", "ru": "Кунут (2)", "ja": "クヌート（2）", "ko": "쿠누트(2)", "zh": "古努特（二）", "fil": "Qunut (2)", "th": "กุนูต (2)"},
+      "title": {"tr": "Kunut duası (2)", "en": "Qunut (2)", "de": "Qunut (2)", "az": "Qunut duası (2)", "ar": "دعاء القنوت (2)", "id": "Qunut (2)", "ur": "دعائے قنوت (2)", "fa": "قنوت (2)", "fr": "Qunut (2)", "ru": "Кунут (2)", "ja": "クヌート（2）", "ko": "쿠누트(2)", "zh": "古努特（二）", "fil": "Qunut (2)", "th": "กุนูต (2)"},
       "when": {"tr": "Vitir namazında birinci Kunut'tan sonra", "en": "In the witr prayer, after the first Qunut", "de": "Im Witr-Gebet nach dem ersten Qunut", "az": "Vitr namazında birinci Qunutdan sonra", "ar": "في صلاة الوتر بعد القنوت الأول", "id": "Dalam salat witir, setelah Qunut pertama", "ur": "نمازِ وتر میں، پہلی دعائے قنوت کے بعد", "fa": "در نماز وتر، پس از قنوت نخست", "fr": "Dans la prière du witr, après le premier Qunut", "ru": "В намазе витр, после первого Кунута", "ja": "ウィトル礼拝で、最初のクヌートの後", "ko": "위트르 예배에서, 첫 쿠누트 뒤에", "zh": "威特尔拜中，第一段古努特之后", "fil": "Sa dasal na witr, pagkatapos ng unang Qunut", "th": "ในละหมาดวิติร หลังกุนูตแรก"},
       "ar": "اللَّهُمَّ إِيَّاكَ نَعْبُدُ وَلَكَ نُصَلِّي وَنَسْجُدُ وَإِلَيْكَ نَسْعَى وَنَحْفِدُ نَرْجُو رَحْمَتَكَ وَنَخْشَى عَذَابَكَ إِنَّ عَذَابَكَ بِالْكُفَّارِ مُلْحِقٌ",
       "okunus": "Allâhümme iyyâke na'büdü ve leke nüsallî ve nescüdü ve ileyke nes'â ve nahfidü. Nercû rahmeteke ve nahşâ azâbeke, inne azâbeke bil-küffâri mülhık.",
@@ -149,7 +149,7 @@
     {
       "id": "ayetelkursi",
       "title": {"tr": "Âyetü'l-Kürsî", "en": "Ayat al-Kursi", "de": "Ayat al-Kursi", "az": "Ayətül-Kürsi", "ar": "آية الكرسي", "id": "Ayat Kursi", "ur": "آیت الکرسی", "fa": "آیت‌الکرسی", "fr": "Ayat al-Kursi (verset du Trône)", "ru": "Аят аль-Курси", "ja": "玉座の節（アーヤト・アル＝クルスィー）", "ko": "옥좌의 구절(아야트 알쿠르시)", "zh": "宝座经文", "fil": "Ayat al-Kursi", "th": "อายะตุลกุรซีย์"},
-      "when": {"tr": "Bakara 255", "en": "Quran 2:255", "de": "Koran 2:255", "az": "Bəqərə 255", "ar": "البقرة ٢٥٥", "id": "Al-Qur'an 2:255", "ur": "قرآن 2:255", "fa": "قرآن 2:255", "fr": "Coran 2:255", "ru": "Коран 2:255", "ja": "クルアーン2:255", "ko": "꾸란 2:255", "zh": "古兰经2:255", "fil": "Quran 2:255", "th": "อัลกุรอาน 2:255"},
+      "when": {"tr": "Bakara 255", "en": "Quran 2:255", "de": "Koran 2:255", "az": "Bəqərə 255", "ar": "البقرة 255", "id": "Al-Qur'an 2:255", "ur": "قرآن 2:255", "fa": "قرآن 2:255", "fr": "Coran 2:255", "ru": "Коран 2:255", "ja": "クルアーン2:255", "ko": "꾸란 2:255", "zh": "古兰经2:255", "fil": "Quran 2:255", "th": "อัลกุรอาน 2:255"},
       "quran": [["2:255", 0]],
       "okunus": "Allâhü lâ ilâhe illâ hüvel-hayyül-kayyûm. Lâ te'huzühû sinetün ve lâ nevm. Lehû mâ fis-semâvâti ve mâ fil-ard. Men zellezî yeşfeu indehû illâ bi-iznih. Ya'lemü mâ beyne eydîhim ve mâ halfehüm. Ve lâ yuhîtûne bi-şey'in min ilmihî illâ bimâ şâ'. Vesia kürsiyyühüs-semâvâti vel-ard. Ve lâ yeûdühû hıfzuhumâ ve hüvel-aliyyül-azîm."
     },
@@ -201,8 +201,8 @@
     },
     {
       "id": "sehadet",
-      "title": {"tr": "Kelime-i Şehâdet", "en": "Shahada", "de": "Schahada", "az": "Kəlmeyi-şəhadət", "ar": "الشهادة", "id": "Syahadat", "ur": "کلمۂ شہادت", "fa": "شهادتین", "fr": "Chahada", "ru": "Шахада", "ja": "シャハーダ", "ko": "샤하다", "zh": "清真言（作证言）", "fil": "Shahada", "th": "ชะฮาดะฮ์"},
-      "when": {"tr": "İmanın dil ile ikrarı", "en": "The testimony of faith", "de": "Das mündliche Glaubensbekenntnis", "az": "İmanın dil ilə iqrarı", "ar": "شهادة الإيمان", "id": "Ikrar iman dengan lisan", "ur": "زبان سے ایمان کا اقرار", "fa": "اقرار زبانی به ایمان", "fr": "La déclaration verbale de la foi", "ru": "Устное признание веры", "ja": "信仰告白", "ko": "신앙 고백", "zh": "以言语表白信仰", "fil": "Ang pagpapahayag ng pananampalataya sa pamamagitan ng salita", "th": "การกล่าวปฏิญาณยืนยันศรัทธาด้วยวาจา"},
+      "title": {"tr": "Kelime-i Şehâdet", "en": "Shahada", "de": "Schahada", "az": "Kəlmeyi-şəhadət", "ar": "الشهادتان", "id": "Syahadat", "ur": "کلمۂ شہادت", "fa": "شهادتین", "fr": "Chahada", "ru": "Шахада", "ja": "シャハーダ", "ko": "샤하다", "zh": "清真言（作证言）", "fil": "Shahada", "th": "ชะฮาดะฮ์"},
+      "when": {"tr": "İmanın dil ile ikrarı", "en": "The testimony of faith", "de": "Das mündliche Glaubensbekenntnis", "az": "İmanın dil ilə iqrarı", "ar": "الإقرار بالإيمان باللسان", "id": "Ikrar iman dengan lisan", "ur": "زبان سے ایمان کا اقرار", "fa": "اقرار زبانی به ایمان", "fr": "La déclaration verbale de la foi", "ru": "Устное признание веры", "ja": "信仰告白", "ko": "신앙 고백", "zh": "以言语表白信仰", "fil": "Ang pagpapahayag ng pananampalataya sa pamamagitan ng salita", "th": "การกล่าวปฏิญาณยืนยันศรัทธาด้วยวาจา"},
       "ar": "أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
       "okunus": "Eşhedü en lâ ilâhe illallâh ve eşhedü enne Muhammeden abdühû ve rasûlüh.",
       "mean": {
@@ -224,8 +224,8 @@
     },
     {
       "id": "ilim",
-      "title": {"tr": "Rabbi zidnî ilmâ", "en": "Rabbi zidni ilma", "de": "Rabbi zidni ilma", "az": "Rəbbi zidni ilma", "ar": "رب زدني علما", "id": "Rabbi zidni ilma", "ur": "رب زدنی علما", "fa": "ربّ زدنی علماً", "fr": "Rabbi zidni ilma", "ru": "Рабби зидни ильма", "ja": "ラッビ・ズィドニー・イルマー", "ko": "랍비 지드니 일마", "zh": "主啊，求你增加我的知识", "fil": "Rabbi zidni ilma", "th": "ร็อบบี ซิดนี อิลมา"},
-      "when": {"tr": "Tâhâ 114", "en": "Quran 20:114", "de": "Koran 20:114", "az": "Taha 114", "ar": "طه ١١٤", "id": "Al-Qur'an 20:114", "ur": "قرآن 20:114", "fa": "قرآن 20:114", "fr": "Coran 20:114", "ru": "Коран 20:114", "ja": "クルアーン20:114", "ko": "꾸란 20:114", "zh": "古兰经20:114", "fil": "Quran 20:114", "th": "อัลกุรอาน 20:114"},
+      "title": {"tr": "Rabbi zidnî ilmâ", "en": "Rabbi zidni ilma", "de": "Rabbi zidni ilma", "az": "Rəbbi zidni ilma", "ar": "رب زدني علمًا", "id": "Rabbi zidni ilma", "ur": "رب زدنی علما", "fa": "ربّ زدنی علماً", "fr": "Rabbi zidni ilma", "ru": "Рабби зидни ильма", "ja": "ラッビ・ズィドニー・イルマー", "ko": "랍비 지드니 일마", "zh": "主啊，求你增加我的知识", "fil": "Rabbi zidni ilma", "th": "ร็อบบี ซิดนี อิลมา"},
+      "when": {"tr": "Tâhâ 114", "en": "Quran 20:114", "de": "Koran 20:114", "az": "Taha 114", "ar": "طه 114", "id": "Al-Qur'an 20:114", "ur": "قرآن 20:114", "fa": "قرآن 20:114", "fr": "Coran 20:114", "ru": "Коран 20:114", "ja": "クルアーン20:114", "ko": "꾸란 20:114", "zh": "古兰经20:114", "fil": "Quran 20:114", "th": "อัลกุรอาน 20:114"},
       "quran": [["20:114", 14]],
       "okunus": "Rabbi zidnî ilmâ."
     }
