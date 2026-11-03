@@ -89,6 +89,9 @@ struct WatchHome: View {
                             Text(L("wear.place")).font(.caption2).foregroundStyle(.secondary)
                         }
                     }
+                    // Hava komplikasyonunun atfı (Open-Meteo, CC BY 4.0; 2. analiz #115)
+                    Text(L("weather.attribution")).font(.system(size: 10)).foregroundStyle(.secondary)
+                        .listRowBackground(Color.clear)
                 }
             }
         }

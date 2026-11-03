@@ -330,7 +330,7 @@
         "ul": [
           "**Heure et date :** l’heure et le fuseau horaire de votre appareil sont lus et calculés uniquement dans votre navigateur. Ils ne sont ni envoyés à un serveur ni conservés.",
           "**Lieu (heures de prière) :** si vous appuyez sur « Utiliser ma position » sur la page des heures de prière, votre navigateur utilise votre position uniquement sur votre appareil pour calculer les heures. Les coordonnées ne sont ni envoyées au serveur ni incluses dans les statistiques ; votre dernier choix reste dans le stockage local de votre navigateur.",
-          "**Météo (service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies, la page météo et les styles d’horloge avec météo envoient les coordonnées approximatives de la province ou du lieu choisi (à environ 1 km près) directement depuis votre navigateur à Open-Meteo (api.open-meteo.com), qui fournit les données ; votre adresse IP parvient aussi à Open-Meteo. Sans autorisation, aucune requête n’est faite et une courte note s’affiche à la place. Le serveur de Saat Tarih ne voit ni ne conserve ces coordonnées ; les conditions de confidentialité d’Open-Meteo s’appliquent.",
+          "**Météo (service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies, la page météo et les styles d’horloge avec météo envoient les coordonnées approximatives de la province ou du lieu choisi (à environ 1 km près) directement depuis votre navigateur à Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), qui fournit les données ; votre adresse IP parvient aussi à Open-Meteo. Sans autorisation, aucune requête n’est faite et une courte note s’affiche à la place. Le serveur de Saat Tarih ne voit ni ne conserve ces coordonnées ; les conditions de confidentialité d’Open-Meteo s’appliquent.",
           "**Carte (globe, service externe, avec autorisation) :** si vous avez autorisé les services externes dans les préférences de cookies et que vous zoomez sur le globe de la page d’accueil au-delà d’un certain niveau, les tuiles de la carte sont téléchargées directement dans votre navigateur depuis le serveur d’OpenStreetMap (tile.openstreetmap.org) ; votre adresse IP et les adresses des tuiles de la zone que vous regardez parviennent alors à la Fondation OpenStreetMap. Sans autorisation, ou tant que le globe est dézoomé, cette requête n’est pas faite. Le serveur de Saat Tarih ne les voit pas ; les conditions de confidentialité d’OpenStreetMap s’appliquent.",
           "**Qibla et mosquées proches :** la direction de la qibla, la distance et l’heure de la qibla sont calculées dans votre navigateur. Pour la boussole, le capteur d’orientation de votre téléphone est lu uniquement dans le navigateur (l’iPhone demande l’autorisation) et n’est jamais transmis. Si vous appuyez sur « Afficher les mosquées » et avez autorisé les services externes, les coordonnées du lieu choisi arrondies à deux décimales (environ 1 km) sont envoyées depuis votre navigateur au service Overpass (overpass-api.de), qui fournit les données OpenStreetMap ; votre adresse IP parvient aussi à ce service. Le serveur de Saat Tarih ne voit pas ces coordonnées.",
           "**Musique de réveil (YouTube, service externe, avec autorisation) :** si vous ajoutez un lien YouTube à une alarme dans l’outil de réveil et avez autorisé les services externes, la vidéo est chargée dans votre navigateur quand l’alarme sonne, avec le lecteur en mode confidentialité renforcée de YouTube (youtube-nocookie.com) ; votre adresse IP et l’identifiant de la vidéo parviennent alors à Google (YouTube), et le lecteur peut enregistrer ses propres données dans votre navigateur. Le lien reste uniquement dans ce navigateur, avec votre alarme. Sans autorisation, le lecteur n’est pas chargé et l’alarme sonne avec son propre son. Le serveur de Saat Tarih ne voit pas ces données ; les conditions de confidentialité de YouTube (Google) s’appliquent.",
@@ -349,7 +349,7 @@
         ],
         "ul": [
           "**Lieu :** si vous touchez « Utiliser ma position », votre position sert sur votre téléphone à calculer les heures de prière et à trouver la province la plus proche ; une position approximative (environ 1 km) est conservée uniquement sur votre téléphone. L’option « Automatique » des widgets utilise elle aussi votre position uniquement sur le téléphone.",
-          "**Météo :** la météo de l’application provient d’Apple Météo (WeatherKit) ; pour cela, les coordonnées approximatives de la province choisie ou de votre position sont envoyées à Apple. Nous ne voyons jamais ces données ; les conditions de confidentialité d’Apple s’appliquent.",
+          "**Météo :** la météo de l’application provient d’Apple Météo (WeatherKit) ; pour cela, les coordonnées approximatives de la province choisie ou de votre position sont envoyées à Apple. Nous ne voyons jamais ces données ; les conditions de confidentialité d’Apple s’appliquent. La qualité de l'air, le pollen, la comparaison des modèles et la complication météo de l'Apple Watch proviennent d'Open-Meteo (open-meteo.com) ; pour cela, des coordonnées arrondies à deux décimales sont envoyées.",
           "**Carte :** le globe de l’horloge mondiale est affiché avec Apple Plans ; les images de carte sont téléchargées depuis Apple.",
           "**Calendrier :** uniquement si vous l’autorisez, les événements des calendriers de votre téléphone s’affichent dans l’application ; ils sont lus sur le téléphone et ne sont jamais transmis. L’ajout et la suppression d’événements passent par l’écran de calendrier de l’iPhone et uniquement avec votre confirmation.",
           "**Notifications et alarmes :** les notifications des heures de prière ; les notifications de jours particuliers, de début de saison, de phase de la Lune, de lever et coucher du soleil, de résumé météo du matin, d’heure pile et de changement d’heure (toutes activées par défaut sauf l’heure pile ; modifiables dans Réglages › Notifications) ; les alarmes et minuteurs sont programmés sur votre téléphone sans aucun serveur. Seul le résumé météo interroge le service météo (voir ci-dessus). La liste est tenue à jour grâce à l’actualisation en arrière-plan d’iOS ; les annonces vocales sont produites sur votre téléphone.",
@@ -2297,7 +2297,37 @@
     "visibility": "Visibilité",
     "dewPoint": "Point de rosée",
     "gusts": "Rafales",
-    "details": "Détails"
+    "details": "Détails",
+    "chartTemp": "Température",
+    "dayPart": "Jour",
+    "nightPart": "Nuit",
+    "tapHint": "Touchez une heure sur le graphique ou un jour dans la liste pour plus de détails.",
+    "aqiTitle": "Qualité de l'air",
+    "aqiIndex": "Indice européen de la qualité de l'air (EAQI)",
+    "aqiLevels": [
+      "Bon",
+      "Moyen",
+      "Dégradé",
+      "Mauvais",
+      "Très mauvais",
+      "Extrêmement mauvais"
+    ],
+    "pollen": "Pollen",
+    "pollenNames": {
+      "alder": "Aulne",
+      "birch": "Bouleau",
+      "grass": "Graminées",
+      "mugwort": "Armoise",
+      "olive": "Olivier",
+      "ragweed": "Ambroisie"
+    },
+    "pollenLevels": [
+      "Faible",
+      "Moyen",
+      "Élevé"
+    ],
+    "pollenNone": "Pas de pollen pour l'instant ou pas de prévision pour ce lieu (Europe uniquement).",
+    "aqiSource": "Qualité de l'air et pollen : Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Questions fréquentes : heure, calendrier, prière | Saat Tarih",
@@ -2325,7 +2355,7 @@
     "stats": "Statistiques",
     "statsText": "Umami compte les visites de pages et quelques actions (navigateur, appareil, langue, ainsi que le pays et la ville déduits de l’adresse IP ; l’IP n’est pas conservée). Aucun cookie n’est utilisé. Désactivé par défaut.",
     "ext": "Services externes",
-    "extText": "La météo est chargée depuis Open-Meteo (api.open-meteo.com), la carte du globe zoomé depuis OpenStreetMap (tile.openstreetmap.org), les mosquées proches depuis le service Overpass d’OpenStreetMap (overpass-api.de) et la musique YouTube ajoutée à une alarme depuis YouTube (youtube-nocookie.com) ; votre adresse IP parvient à ces services. Désactivé par défaut.",
+    "extText": "La météo est chargée depuis Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), la carte du globe zoomé depuis OpenStreetMap (tile.openstreetmap.org), les mosquées proches depuis le service Overpass d’OpenStreetMap (overpass-api.de) et la musique YouTube ajoutée à une alarme depuis YouTube (youtube-nocookie.com) ; votre adresse IP parvient à ces services. Désactivé par défaut.",
     "save": "Enregistrer le choix",
     "footerLink": "Préférences de cookies",
     "privacy": "Confidentialité",

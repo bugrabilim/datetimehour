@@ -15,6 +15,8 @@ struct WeatherView: View {
     @AppStorage(WeatherScene.tabKey) private var animate = true
     /// Paylaşım kartı (2. analiz #105)
     @State private var sharing = false
+    /// Gün ayrıntısı (2. analiz #107)
+    @State private var openDay: Int?
 
     private var zone: TimeZone { PlaceModel.shared.place.zone }
 
@@ -30,12 +32,23 @@ struct WeatherView: View {
                     AppleWeatherMark()
                     Button { sharing = true } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
                         .tint(Theme.accent)
+                    // Resmî uyarılar (2. analiz #112; WeatherKit, kaynak varsa)
+                    WeatherAlertsCard(alerts: d.weatherAlerts ?? [])
+                    // Saatlik eğri (2. analiz #107)
+                    HourlyChartCard(weather: d, zone: zone)
                     hourly(d)
+                    // Dışarıdaki işlere uygunluk (2. analiz #113)
+                    ActivitiesCard(weather: d, zone: zone)
                     details(d)
+                    // Hava kalitesi ve polen (2. analiz #111; Open-Meteo)
+                    AirCard(place: place)
                     // Güneş yayı ve Ay (2. analiz #109)
                     SunMoonArc(now: Date(), place: place)
                     moonCard(place)
                     daily(d)
+                    // Meteogram (WeatherKit) ve model karşılaştırma (Open-Meteo; 2. analiz #114)
+                    MeteogramCard(weather: d, zone: zone)
+                    ModelsCard(place: place)
                 } else if failed {
                     Text(L("weather.error")).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
                     Button(L("weather.retry")) { Task { await load(place) } }.tint(Theme.accent)
@@ -51,6 +64,11 @@ struct WeatherView: View {
         .navigationTitle(L("weather.h1"))
         .navigationBarTitleDisplayMode(.large)
         .task(id: place.key) { await load(place) }
+        .sheet(isPresented: Binding(get: { openDay != nil }, set: { if !$0 { openDay = nil } })) {
+            if let d = data, let i = openDay, i < d.dailyForecast.count {
+                DayDetailSheet(weather: d, day: d.dailyForecast[i], zone: zone)
+            }
+        }
         .sheet(isPresented: $sharing) {
             if let d = data { ShareCardSheet(title: L("share.card")) { WeatherShareCard(place: place, weather: d) } }
         }
@@ -239,6 +257,8 @@ struct WeatherView: View {
                     Text(temp(day.highTemperature)).frame(width: 40)
                 }
                 .environment(\.layoutDirection, .leftToRight)
+                .contentShape(Rectangle())
+                .onTapGesture { openDay = i }
             }
         }
         .card()

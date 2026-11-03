@@ -25,6 +25,22 @@
     <string name="prayer_imNote">اوقات حساب کیے گئے ہیں؛ سرکاری اوقات کے لیے ادارۂ امورِ دینیہ (دیانت) سے رجوع کریں۔</string>
     <string name="prayer_imFile">ramadan-auqat-nama</string>
     <string name="prayer_imAlt">%1$s کے لیے رمضان %2$s کا اوقات نامہ</string>
+    <string name="weather_codes_clear">صاف</string>
+    <string name="weather_codes_mostlyClear">زیادہ تر صاف</string>
+    <string name="weather_codes_partly">جزوی ابر آلود</string>
+    <string name="weather_codes_overcast">مکمل ابر آلود</string>
+    <string name="weather_codes_fog">دھند</string>
+    <string name="weather_codes_drizzle">بوندا باندی</string>
+    <string name="weather_codes_freezingDrizzle">جمنے والی بوندا باندی</string>
+    <string name="weather_codes_rain">بارش</string>
+    <string name="weather_codes_freezingRain">جمنے والی بارش</string>
+    <string name="weather_codes_snow">برف باری</string>
+    <string name="weather_codes_snowGrains">برف کے دانے</string>
+    <string name="weather_codes_showers">بوچھاڑ</string>
+    <string name="weather_codes_snowShowers">برف کی بوچھاڑ</string>
+    <string name="weather_codes_thunder">گرج چمک کے ساتھ طوفان</string>
+    <string name="weather_codes_thunderHail">گرج چمک اور ژالہ باری کے ساتھ طوفان</string>
+    <string name="weather_attribution">موسمی ڈیٹا: Open-Meteo.com (CC BY 4.0)</string>
     <string name="prayer_kerahatHeading">نماز کے مکروہ اوقات (تخمینی)</string>
     <string name="prayer_kerahatNames_israk">طلوعِ آفتاب (اشراق)</string>
     <string name="prayer_kerahatNames_istiva">زوال سے پہلے (استواء)</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">الفاظ اور گھڑی کے درمیان بدلنے کے لیے چھوئیں۔</string>
     <string name="prayer_ramadanLeft">%1$s تک باقی: %2$s</string>
     <string name="prayer_silent_friday">نماز جمعہ میں خاموش (60 منٹ)</string>
+    <string name="widget_weather_name">موسم</string>
+    <string name="widget_weather_desc">ایپ میں مقرر جگہ کا موجودہ موسم اور آج کا زیادہ/کم درجہ حرارت۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

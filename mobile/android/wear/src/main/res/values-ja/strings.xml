@@ -25,6 +25,22 @@
     <string name="prayer_imNote">時刻は計算によるものです。正式な時刻はトルコ宗務庁（ディヤーネット）に従ってください。</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">%1$sの%2$s年ラマダン時刻表</string>
+    <string name="weather_codes_clear">快晴</string>
+    <string name="weather_codes_mostlyClear">晴れ</string>
+    <string name="weather_codes_partly">晴れ時々曇り</string>
+    <string name="weather_codes_overcast">曇り</string>
+    <string name="weather_codes_fog">霧</string>
+    <string name="weather_codes_drizzle">霧雨</string>
+    <string name="weather_codes_freezingDrizzle">着氷性の霧雨</string>
+    <string name="weather_codes_rain">雨</string>
+    <string name="weather_codes_freezingRain">着氷性の雨</string>
+    <string name="weather_codes_snow">雪</string>
+    <string name="weather_codes_snowGrains">霧雪</string>
+    <string name="weather_codes_showers">にわか雨</string>
+    <string name="weather_codes_snowShowers">にわか雪</string>
+    <string name="weather_codes_thunder">雷雨</string>
+    <string name="weather_codes_thunderHail">ひょうを伴う雷雨</string>
+    <string name="weather_attribution">天気データ：Open-Meteo.com（CC BY 4.0）</string>
     <string name="prayer_kerahatHeading">礼拝が好ましくない時間（目安）</string>
     <string name="prayer_kerahatNames_israk">日の出（イシュラーク）</string>
     <string name="prayer_kerahatNames_istiva">正午前（イスティワー）</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">タップで文章と時計表示を切り替えます。</string>
     <string name="prayer_ramadanLeft">%1$sまで：%2$s</string>
     <string name="prayer_silent_friday">金曜礼拝中は消音（60分）</string>
+    <string name="widget_weather_name">天気</string>
+    <string name="widget_weather_desc">アプリで設定した場所の現在の天気と今日の最高・最低気温。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

@@ -127,6 +127,8 @@ private fun MainScreen(now: Instant, onPlace: () -> Unit) {
                     modifier = Modifier.fillMaxWidth().padding(top = 8.dp),
                 )
             }
+            // Hava komplikasyonunun atfı (Open-Meteo, CC BY 4.0; 2. analiz #115)
+            item { Text(Wear.text("weather.attribution"), color = WColors.muted, fontSize = 10.sp, textAlign = TextAlign.Center) }
         }
     }
 }

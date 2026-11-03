@@ -25,6 +25,22 @@
     <string name="prayer_imNote">เวลาเป็นค่าที่คำนวณ สำหรับเวลาอย่างเป็นทางการ ให้ยึดสำนักงานกิจการศาสนา (ดียาเนต)</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">ตารางเวลารอมฎอน %2$s ของ%1$s</string>
+    <string name="weather_codes_clear">ท้องฟ้าแจ่มใส</string>
+    <string name="weather_codes_mostlyClear">ท้องฟ้าโปร่งเป็นส่วนใหญ่</string>
+    <string name="weather_codes_partly">มีเมฆบางส่วน</string>
+    <string name="weather_codes_overcast">เมฆครึ้ม</string>
+    <string name="weather_codes_fog">หมอก</string>
+    <string name="weather_codes_drizzle">ฝนปรอย</string>
+    <string name="weather_codes_freezingDrizzle">ฝนปรอยเยือกแข็ง</string>
+    <string name="weather_codes_rain">ฝน</string>
+    <string name="weather_codes_freezingRain">ฝนเยือกแข็ง</string>
+    <string name="weather_codes_snow">หิมะ</string>
+    <string name="weather_codes_snowGrains">หิมะเม็ดเล็ก</string>
+    <string name="weather_codes_showers">ฝนซู่</string>
+    <string name="weather_codes_snowShowers">หิมะตกเป็นช่วง</string>
+    <string name="weather_codes_thunder">พายุฝนฟ้าคะนอง</string>
+    <string name="weather_codes_thunderHail">พายุฝนฟ้าคะนองพร้อมลูกเห็บ</string>
+    <string name="weather_attribution">ข้อมูลสภาพอากาศ: Open-Meteo.com (CC BY 4.0)</string>
     <string name="prayer_kerahatHeading">ช่วงเวลาที่ไม่ควรละหมาด (โดยประมาณ)</string>
     <string name="prayer_kerahatNames_israk">ดวงอาทิตย์ขึ้น (อิชร็อก)</string>
     <string name="prayer_kerahatNames_istiva">ก่อนเที่ยง (อิสติวาอ์)</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">แตะเพื่อสลับระหว่างข้อความกับนาฬิกา</string>
     <string name="prayer_ramadanLeft">อีก %2$s ถึง%1$s</string>
     <string name="prayer_silent_friday">ปิดเสียงช่วงละหมาดวันศุกร์ (60 นาที)</string>
+    <string name="widget_weather_name">สภาพอากาศ</string>
+    <string name="widget_weather_desc">สภาพอากาศปัจจุบันและอุณหภูมิสูงสุด/ต่ำสุดวันนี้ของสถานที่ในแอป</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

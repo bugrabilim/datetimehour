@@ -369,7 +369,7 @@
         "ul": [
           "**Oras at petsa:** Ang oras at time zone ng iyong device ay binabasa at kinakalkula lang sa iyong browser. Hindi ito ipinapadala sa server o sine-save.",
           "**Lokasyon (oras ng pagdarasal):** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\" sa pahina ng oras ng pagdarasal, ginagamit ng browser ang iyong lokasyon sa device mo lang para kalkulahin ang mga oras. Hindi ipinapadala sa server ang coordinates at hindi isinasama sa statistics; nananatili ang huli mong pinili sa local storage ng browser.",
-          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang ginagawang request at isang maikling paalala ang ipinapakita sa halip. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling mga tuntunin sa privacy ng Open-Meteo ang umiiral.",
+          "**Lagay ng panahon (panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences, ipinapadala ng pahina ng panahon at ng mga istilo ng orasan na may panahon ang tantiyang coordinates ng napili mong lalawigan o lokasyon (mga 1 km) nang direkta mula sa browser papunta sa Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), na nagbibigay ng datos; nakakarating din sa Open-Meteo ang iyong IP address. Kung walang pahintulot, walang ginagawang request at isang maikling paalala ang ipinapakita sa halip. Hindi nakikita o sine-save ng server ng Saat Tarih ang coordinates na ito; ang sariling mga tuntunin sa privacy ng Open-Meteo ang umiiral.",
           "**Mapa (globo, panlabas na serbisyo, may pahintulot):** Kung pinayagan mo ang mga panlabas na serbisyo sa cookie preferences at nag-zoom ka sa globo sa home page lampas sa isang antas, direktang dina-download sa iyong browser ang mga tile ng mapa mula sa server ng OpenStreetMap (tile.openstreetmap.org); kasabay nito, nakakarating sa OpenStreetMap Foundation ang iyong IP address at ang mga address ng tile ng lugar na tinitingnan mo. Kung walang pahintulot, o habang naka-zoom out ang globo, hindi ginagawa ang request na ito. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng OpenStreetMap ang umiiral.",
           "**Qibla at kalapit na mga masjid:** Kinakalkula sa iyong browser ang direksyon ng qibla, layo at oras ng qibla. Para sa compass, binabasa lang sa browser ang orientation sensor ng telepono (humihingi ng pahintulot ang iPhone) at hindi ito ipinapadala kahit saan. Kung pipindutin mo ang \"Ipakita ang mga masjid\" at pinayagan mo ang mga panlabas na serbisyo, ang coordinates ng napiling lugar na ni-round sa dalawang decimal (mga 1 km) ay ipinapadala mula sa browser sa serbisyong Overpass (overpass-api.de), na naghahatid ng datos ng OpenStreetMap; nakakarating din dito ang iyong IP address. Hindi nakikita ng server ng Saat Tarih ang coordinates na ito.",
           "**Musika ng alarma (YouTube, panlabas na serbisyo, may pahintulot):** Kung nagdagdag ka ng link sa YouTube sa isang alarma sa tool ng alarma at pinayagan mo ang mga panlabas na serbisyo, kapag tumunog ang alarma, ilo-load sa iyong browser ang video gamit ang player ng YouTube sa privacy-enhanced mode (youtube-nocookie.com); kasabay nito, nakakarating sa Google (YouTube) ang iyong IP address at ang ID ng video, at maaaring mag-imbak ang player ng sarili nitong datos sa iyong browser. Nananatili lang ang link sa browser na ito, kasama ng iyong alarma. Kung walang pahintulot, hindi ilo-load ang player at tutunog ang alarma sa sarili nitong tunog. Hindi ito nakikita ng server ng Saat Tarih; ang sariling mga tuntunin sa privacy ng YouTube (Google) ang umiiral.",
@@ -388,7 +388,7 @@
         ],
         "ul": [
           "**Lokasyon:** Kung pipindutin mo ang \"Gamitin ang aking lokasyon\", ginagamit ang iyong lokasyon sa telepono para kalkulahin ang oras ng pagdarasal at hanapin ang pinakamalapit na lalawigan; ang tantiyang lokasyon (mga 1 km) ay sa telepono mo lang naka-save. Ang opsyong \"Awtomatiko\" sa widgets ay gumagamit din ng lokasyon sa telepono lang.",
-          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang mga tuntunin sa privacy ng Apple ang umiiral.",
+          "**Lagay ng panahon:** Galing sa Apple Weather (WeatherKit) ang panahon sa app; para rito, ipinapadala sa Apple ang tantiyang coordinates ng napiling lalawigan o ng iyong lokasyon. Hindi namin nakikita ang datos na ito; ang mga tuntunin sa privacy ng Apple ang umiiral. Ang kalidad ng hangin, polen, paghahambing ng modelo at weather complication ng Apple Watch ay mula sa Open-Meteo (open-meteo.com); para rito, ipinapadala ang mga coordinate na ni-round sa dalawang decimal.",
           "**Mapa:** Ipinapakita gamit ang Apple Maps ang globo sa orasan ng mundo; dina-download mula sa Apple ang mga larawan ng mapa.",
           "**Kalendaryo:** Ipinapakita lang sa app ang mga event mula sa mga kalendaryo sa iyong telepono kung papayagan mo ito; binabasa ang mga ito sa telepono at hindi ipinapadala kahit saan. Ang pagdagdag at pagbura ng event ay ginagawa sa sariling screen ng kalendaryo ng iPhone at kapag kinumpirma mo lang.",
           "**Mga notification at alarma:** Mga notification sa oras ng pagdarasal; mga notification para sa espesyal na araw, simula ng panahon, yugto ng buwan, pagsikat at paglubog ng araw, buod ng panahon sa umaga, bawat oras at daylight saving (bawat isa ay naka-on bilang default maliban sa bawat oras; mababago sa Settings › Notifications); ang mga alarma at timer ay ini-iskedyul sa iyong telepono nang walang server. Para sa buod ng panahon, ang serbisyo ng panahon lang ang kinokontak (tingnan ang item tungkol sa panahon sa itaas). Pinananatiling updated ang listahan gamit ang background refresh ng iOS; ginagawa sa telepono ang mga pasalitang anunsyo.",
@@ -2322,7 +2322,37 @@
     "visibility": "Visibility",
     "dewPoint": "Dew point",
     "gusts": "Bugso",
-    "details": "Mga detalye"
+    "details": "Mga detalye",
+    "chartTemp": "Temperatura",
+    "dayPart": "Araw",
+    "nightPart": "Gabi",
+    "tapHint": "I-tap ang isang oras sa chart o isang araw sa listahan para sa detalye.",
+    "aqiTitle": "Kalidad ng hangin",
+    "aqiIndex": "European Air Quality Index (EAQI)",
+    "aqiLevels": [
+      "Mabuti",
+      "Katamtaman",
+      "Medyo",
+      "Masama",
+      "Napakasama",
+      "Lubhang masama"
+    ],
+    "pollen": "Polen",
+    "pollenNames": {
+      "alder": "Alder",
+      "birch": "Birch",
+      "grass": "Damo",
+      "mugwort": "Mugwort",
+      "olive": "Oliba",
+      "ragweed": "Ragweed"
+    },
+    "pollenLevels": [
+      "Mababa",
+      "Katamtaman",
+      "Mataas"
+    ],
+    "pollenNone": "Walang polen ngayon o walang taya para sa lugar na ito (Europa lamang).",
+    "aqiSource": "Kalidad ng hangin at polen: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Mga madalas itanong: oras, kalendaryo, pagdarasal | Saat Tarih",
@@ -2350,7 +2380,7 @@
     "stats": "Statistics",
     "statsText": "Binibilang ng Umami ang mga pagbisita sa pahina at ilang aksyon (browser, device, wika, at ang bansa at lungsod mula sa IP address; hindi sine-save ang IP). Walang cookies na ginagamit. Naka-off bilang default.",
     "ext": "Mga panlabas na serbisyo",
-    "extText": "Ilo-load ang panahon mula sa Open-Meteo (api.open-meteo.com), ang mapa ng naka-zoom na globo mula sa OpenStreetMap (tile.openstreetmap.org), kalapit na mga masjid mula sa serbisyong Overpass ng OpenStreetMap (overpass-api.de), at ang musika sa YouTube na idinagdag mo sa alarma mula sa YouTube (youtube-nocookie.com); nakakarating sa mga serbisyong ito ang iyong IP address. Naka-off bilang default.",
+    "extText": "Ilo-load ang panahon mula sa Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), ang mapa ng naka-zoom na globo mula sa OpenStreetMap (tile.openstreetmap.org), kalapit na mga masjid mula sa serbisyong Overpass ng OpenStreetMap (overpass-api.de), at ang musika sa YouTube na idinagdag mo sa alarma mula sa YouTube (youtube-nocookie.com); nakakarating sa mga serbisyong ito ang iyong IP address. Naka-off bilang default.",
     "save": "I-save ang pinili",
     "footerLink": "Cookie preferences",
     "privacy": "Privacy",

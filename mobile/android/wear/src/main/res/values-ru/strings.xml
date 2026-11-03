@@ -25,6 +25,22 @@
     <string name="prayer_imNote">Время рассчитано; официальное время публикует Управление по делам религии (Diyanet).</string>
     <string name="prayer_imFile">ramadan-raspisanie</string>
     <string name="prayer_imAlt">Расписание Рамадана %2$s: %1$s</string>
+    <string name="weather_codes_clear">Ясно</string>
+    <string name="weather_codes_mostlyClear">Преимущественно ясно</string>
+    <string name="weather_codes_partly">Переменная облачность</string>
+    <string name="weather_codes_overcast">Пасмурно</string>
+    <string name="weather_codes_fog">Туман</string>
+    <string name="weather_codes_drizzle">Морось</string>
+    <string name="weather_codes_freezingDrizzle">Ледяная морось</string>
+    <string name="weather_codes_rain">Дождь</string>
+    <string name="weather_codes_freezingRain">Ледяной дождь</string>
+    <string name="weather_codes_snow">Снег</string>
+    <string name="weather_codes_snowGrains">Снежные зёрна</string>
+    <string name="weather_codes_showers">Ливни</string>
+    <string name="weather_codes_snowShowers">Снегопады</string>
+    <string name="weather_codes_thunder">Гроза</string>
+    <string name="weather_codes_thunderHail">Гроза с градом</string>
+    <string name="weather_attribution">Данные о погоде: Open-Meteo.com (CC BY 4.0)</string>
     <string name="prayer_kerahatHeading">Нежелательное время для намаза (приблиз.)</string>
     <string name="prayer_kerahatNames_israk">Восход (ишрак)</string>
     <string name="prayer_kerahatNames_istiva">Перед полуднем (истива)</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">Коснитесь, чтобы переключить слова и часы.</string>
     <string name="prayer_ramadanLeft">До %1$s: %2$s</string>
     <string name="prayer_silent_friday">Без звука на пятничной молитве (60 мин)</string>
+    <string name="widget_weather_name">Погода</string>
+    <string name="widget_weather_desc">Текущая погода и максимум/минимум на сегодня для места в приложении.</string>
     <string name="app_name">Время и дата</string>
 </resources>

@@ -25,6 +25,22 @@
     <string name="prayer_imNote">Heures calculées ; pour les heures officielles, suivez la Présidence des affaires religieuses (Diyanet).</string>
     <string name="prayer_imFile">calendrier-ramadan</string>
     <string name="prayer_imAlt">Calendrier du Ramadan %2$s pour %1$s</string>
+    <string name="weather_codes_clear">Ciel dégagé</string>
+    <string name="weather_codes_mostlyClear">Plutôt dégagé</string>
+    <string name="weather_codes_partly">Partiellement nuageux</string>
+    <string name="weather_codes_overcast">Couvert</string>
+    <string name="weather_codes_fog">Brouillard</string>
+    <string name="weather_codes_drizzle">Bruine</string>
+    <string name="weather_codes_freezingDrizzle">Bruine verglaçante</string>
+    <string name="weather_codes_rain">Pluie</string>
+    <string name="weather_codes_freezingRain">Pluie verglaçante</string>
+    <string name="weather_codes_snow">Neige</string>
+    <string name="weather_codes_snowGrains">Neige en grains</string>
+    <string name="weather_codes_showers">Averses</string>
+    <string name="weather_codes_snowShowers">Averses de neige</string>
+    <string name="weather_codes_thunder">Orage</string>
+    <string name="weather_codes_thunderHail">Orage avec grêle</string>
+    <string name="weather_attribution">Données météo : Open-Meteo.com (CC BY 4.0)</string>
     <string name="prayer_kerahatHeading">Moments où la prière est déconseillée (approx.)</string>
     <string name="prayer_kerahatNames_israk">Lever du soleil (ishraq)</string>
     <string name="prayer_kerahatNames_istiva">Avant midi (istiwa)</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">Touchez pour passer des mots à l’horloge.</string>
     <string name="prayer_ramadanLeft">Avant %1$s : %2$s</string>
     <string name="prayer_silent_friday">Silencieux pendant la prière du vendredi (60 min)</string>
+    <string name="widget_weather_name">Météo</string>
+    <string name="widget_weather_desc">Météo actuelle et maximales/minimales du jour pour le lieu choisi dans l\'app.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

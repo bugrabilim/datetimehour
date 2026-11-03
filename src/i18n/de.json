@@ -330,7 +330,7 @@
         "ul": [
           "**Uhrzeit und Datum:** Uhrzeit und Zeitzone Ihres Geräts werden ausschließlich in Ihrem Browser gelesen und verarbeitet. Sie werden weder an einen Server gesendet noch gespeichert.",
           "**Standort (Gebetszeiten):** Wenn Sie auf der Seite der Gebetszeiten „Meinen Standort verwenden“ wählen, nutzt Ihr Browser Ihren Standort nur auf Ihrem Gerät zur Berechnung. Die Koordinaten werden weder an den Server gesendet noch in Statistiken erfasst; Ihre letzte Auswahl bleibt im lokalen Speicher Ihres Browsers.",
-          "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo.",
+          "**Wetter (externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben, senden die Wetterseite und die Uhrstile mit Wetter die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts (auf etwa 1 km genau) direkt aus Ihrem Browser an Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), das die Daten liefert; dabei erreicht auch Ihre IP-Adresse Open-Meteo. Ohne Zustimmung wird keine Anfrage gestellt, stattdessen erscheint ein Hinweis. Der Server von Saat Tarih sieht und speichert diese Koordinaten nicht; es gelten die Datenschutzbedingungen von Open-Meteo.",
           "**Karte (Globus, externer Dienst, mit Zustimmung):** Wenn Sie in den Cookie-Einstellungen externe Dienste erlaubt haben und den Globus auf der Startseite über eine bestimmte Stufe hinaus vergrößern, werden Kartenkacheln direkt vom Server von OpenStreetMap (tile.openstreetmap.org) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kacheladressen des betrachteten Gebiets die OpenStreetMap Foundation. Ohne Zustimmung oder bei verkleinertem Globus wird diese Anfrage nicht gestellt. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbedingungen von OpenStreetMap.",
           "**Qibla und Moscheen in der Nähe:** Qibla-Richtung, Entfernung und Qibla-Zeit werden in Ihrem Browser berechnet. Für den Kompass wird der Lagesensor Ihres Telefons nur im Browser gelesen (das iPhone fragt nach Erlaubnis) und nirgendwohin gesendet. Wenn Sie auf „Moscheen anzeigen“ tippen und externe Dienste erlaubt haben, werden die auf zwei Dezimalstellen gerundeten Koordinaten des gewählten Ortes (etwa 1 km) von Ihrem Browser an den Overpass-Dienst (overpass-api.de) gesendet, der OpenStreetMap-Daten bereitstellt; dabei erreicht auch Ihre IP-Adresse diesen Dienst. Der Server von Saat Tarih sieht diese Koordinaten nicht.",
           "**Weckermusik (YouTube, externer Dienst, mit Zustimmung):** Wenn Sie im Wecker-Werkzeug einem Wecker einen YouTube-Link hinzufügen und externe Dienste erlaubt haben, wird das Video beim Klingeln mit dem Player im erweiterten Datenschutzmodus von YouTube (youtube-nocookie.com) in Ihren Browser geladen; dabei erreichen Ihre IP-Adresse und die Kennung des Videos Google (YouTube), und der Player kann eigene Daten in Ihrem Browser speichern. Der Link bleibt nur in diesem Browser, zusammen mit Ihrem Wecker. Ohne Zustimmung wird der Player nicht geladen und der Wecker klingelt mit seinem eigenen Ton. Der Server von Saat Tarih sieht diese Daten nicht; es gelten die Datenschutzbestimmungen von YouTube (Google).",
@@ -349,7 +349,7 @@
         ],
         "ul": [
           "**Standort:** Wenn Sie „Meinen Standort verwenden“ wählen, wird Ihr Standort auf dem Telefon zur Berechnung der Gebetszeiten und zum Finden der nächsten Provinz verwendet; ein ungefährer Standort (etwa 1 km) wird nur auf dem Telefon gespeichert. Auch die Option „Automatisch“ in Widgets nutzt den Standort nur auf dem Telefon.",
-          "**Wetter:** Das Wetter in der App stammt von Apple Wetter (WeatherKit); dafür werden die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts an Apple gesendet. Wir sehen diese Daten nicht; es gelten die Datenschutzbedingungen von Apple.",
+          "**Wetter:** Das Wetter in der App stammt von Apple Wetter (WeatherKit); dafür werden die ungefähren Koordinaten der gewählten Provinz oder Ihres Standorts an Apple gesendet. Wir sehen diese Daten nicht; es gelten die Datenschutzbedingungen von Apple. Luftqualität, Pollen, der Modellvergleich und die Wetter-Komplikation der Apple Watch stammen von Open-Meteo (open-meteo.com); dafür werden auf zwei Nachkommastellen gerundete Koordinaten gesendet.",
           "**Karte:** Der Globus in der Weltuhr wird mit Apple Karten angezeigt; Kartenbilder werden von Apple geladen.",
           "**Kalender:** Nur mit Ihrer Erlaubnis werden Termine aus den Kalendern auf Ihrem Telefon in der App angezeigt; sie werden auf dem Telefon gelesen und nirgendwohin gesendet. Hinzufügen und Löschen erfolgt über den Kalenderbildschirm des iPhones und nur mit Ihrer Bestätigung.",
           "**Mitteilungen und Wecker:** Gebetszeit-Mitteilungen; Mitteilungen zu besonderen Tagen, Jahreszeitenbeginn, Mondphasen, Sonnenauf- und -untergang, morgendlicher Wetterübersicht, voller Stunde und Zeitumstellung (außer der vollen Stunde jeweils standardmäßig an; änderbar unter Einstellungen › Mitteilungen); Wecker und Timer werden auf dem Telefon ohne Server eingerichtet. Nur für die Wetterübersicht wird der Wetterdienst abgefragt (siehe Punkt Wetter oben). Die Liste wird per iOS-Hintergrundaktualisierung aktuell gehalten; Sprachansagen werden auf dem Telefon erzeugt.",
@@ -2283,7 +2283,37 @@
     "visibility": "Sicht",
     "dewPoint": "Taupunkt",
     "gusts": "Böen",
-    "details": "Details"
+    "details": "Details",
+    "chartTemp": "Temperatur",
+    "dayPart": "Tag",
+    "nightPart": "Nacht",
+    "tapHint": "Tippen Sie für Details auf eine Stunde im Diagramm oder einen Tag in der Liste.",
+    "aqiTitle": "Luftqualität",
+    "aqiIndex": "Europäischer Luftqualitätsindex (EAQI)",
+    "aqiLevels": [
+      "Gut",
+      "Mäßig",
+      "Mittel",
+      "Schlecht",
+      "Sehr schlecht",
+      "Extrem schlecht"
+    ],
+    "pollen": "Pollen",
+    "pollenNames": {
+      "alder": "Erle",
+      "birch": "Birke",
+      "grass": "Gräser",
+      "mugwort": "Beifuß",
+      "olive": "Olive",
+      "ragweed": "Ambrosia"
+    },
+    "pollenLevels": [
+      "Niedrig",
+      "Mittel",
+      "Hoch"
+    ],
+    "pollenNone": "Derzeit kein Pollenflug oder keine Pollenvorhersage für diesen Ort (nur Europa).",
+    "aqiSource": "Luftqualität und Pollen: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Häufige Fragen: Uhrzeit, Kalender, Gebetszeiten | Saat Tarih",
@@ -2311,7 +2341,7 @@
     "stats": "Statistik",
     "statsText": "Umami zählt Seitenaufrufe und einige Aktionen (Browser, Gerät, Sprache sowie aus der IP-Adresse abgeleitetes Land und Stadt; die IP wird nicht gespeichert). Es werden keine Cookies verwendet. Standardmäßig aus.",
     "ext": "Externe Dienste",
-    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com), die Karte des vergrößerten Globus von OpenStreetMap (tile.openstreetmap.org), Moscheen in der Nähe vom Overpass-Dienst von OpenStreetMap (overpass-api.de) und YouTube-Musik, die Sie einem Wecker hinzufügen, von YouTube (youtube-nocookie.com) geladen; dabei erreicht Ihre IP-Adresse diese Dienste. Standardmäßig aus.",
+    "extText": "Das Wetter wird von Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), die Karte des vergrößerten Globus von OpenStreetMap (tile.openstreetmap.org), Moscheen in der Nähe vom Overpass-Dienst von OpenStreetMap (overpass-api.de) und YouTube-Musik, die Sie einem Wecker hinzufügen, von YouTube (youtube-nocookie.com) geladen; dabei erreicht Ihre IP-Adresse diese Dienste. Standardmäßig aus.",
     "save": "Auswahl speichern",
     "footerLink": "Cookie-Einstellungen",
     "privacy": "Datenschutz",

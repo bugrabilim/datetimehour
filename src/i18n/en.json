@@ -303,7 +303,7 @@
         "ul": [
           "**Time and date:** Your device's time and time zone are read and calculated only in your browser. They are not sent to a server or stored.",
           "**Location (prayer times):** If you press \"Use my location\" on the prayer times page, your browser uses your location only on your device to calculate the times. The coordinates are not sent to the server or included in statistics; your last choice stays in your browser's local storage.",
-          "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
+          "**Weather (external service, with permission):** If you have allowed external services in the cookie preferences, the weather page and the clock styles with weather send the approximate coordinates of the province or location you chose (to about 1 km) straight from your browser to Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), which provides the data; your IP address also reaches Open-Meteo. Without permission no request is made and a short note is shown instead. The Saat Tarih server does not see or store these coordinates; Open-Meteo's own privacy terms apply.",
           "**Map (globe, external service, with permission):** If you have allowed external services in the cookie preferences and you zoom the globe on the home page beyond a certain level, map tiles are downloaded straight to your browser from OpenStreetMap's server (tile.openstreetmap.org); your IP address and the tile addresses of the area you are looking at then reach the OpenStreetMap Foundation. Without permission, or while the globe is zoomed out, this request is not made. The Saat Tarih server does not see them; OpenStreetMap's own privacy terms apply.",
           "**Qibla and nearby mosques:** The qibla direction, distance and qibla time are calculated in your browser. For the compass, your phone's orientation sensor is read only in the browser (iPhone asks for permission) and is never sent anywhere. If you tap \"Show mosques\" and have allowed external services, the selected place's coordinates rounded to two decimals (about 1 km) are sent from your browser to the Overpass service (overpass-api.de), which serves OpenStreetMap data; your IP address also reaches this service. The Saat Tarih server does not see these coordinates.",
           "**Alarm music (YouTube, external service, with permission):** If you add a YouTube link to an alarm in the alarm tool and have allowed external services, when the alarm rings the video is loaded into your browser with YouTube's privacy-enhanced player (youtube-nocookie.com); your IP address and the video's ID then reach Google (YouTube), and the player may store its own data in your browser. The link stays only in this browser, with your alarm. Without permission the player is not loaded and the alarm rings with its own sound. The Saat Tarih server does not see these; YouTube's (Google's) own privacy terms apply.",
@@ -322,7 +322,7 @@
         ],
         "ul": [
           "**Location:** If you tap \"Use my location\", your location is used on your phone to calculate prayer times and find the nearest province; an approximate location (about 1 km) is stored only on your phone. The \"Automatic\" option in widgets also uses your location only on your phone.",
-          "**Weather:** Weather in the app comes from Apple Weather (WeatherKit); for this, the approximate coordinates of the selected province or your location are sent to Apple. We never see this data; Apple's privacy terms apply.",
+          "**Weather:** Weather in the app comes from Apple Weather (WeatherKit); for this, the approximate coordinates of the selected province or your location are sent to Apple. We never see this data; Apple's privacy terms apply. Air quality, pollen, the model comparison and the Apple Watch weather complication come from Open-Meteo (open-meteo.com); for these, coordinates rounded to two decimals are sent.",
           "**Map:** The globe in the world clock is shown with Apple Maps; map imagery is downloaded from Apple.",
           "**Calendar:** Only if you allow it, events from the calendars on your phone are shown in the app; they are read on your phone and never sent anywhere. Adding and deleting events happens through the iPhone's own calendar screen and only with your confirmation.",
           "**Notifications and alarms:** Prayer time notifications; special day, start of season, moon phase, sunrise and sunset, morning weather summary, on-the-hour and daylight saving notifications (each on by default except on-the-hour; can be changed in Settings › Notifications); alarms and timers are scheduled on your phone without any server. Only the weather summary asks the weather service (see the weather item above). The list is kept current with iOS background refresh; spoken announcements are generated on your phone.",
@@ -2256,7 +2256,37 @@
     "visibility": "Visibility",
     "dewPoint": "Dew point",
     "gusts": "Gusts",
-    "details": "Details"
+    "details": "Details",
+    "chartTemp": "Temperature",
+    "dayPart": "Day",
+    "nightPart": "Night",
+    "tapHint": "Tap an hour on the chart or a day in the list for details.",
+    "aqiTitle": "Air quality",
+    "aqiIndex": "European Air Quality Index (EAQI)",
+    "aqiLevels": [
+      "Good",
+      "Fair",
+      "Moderate",
+      "Poor",
+      "Very poor",
+      "Extremely poor"
+    ],
+    "pollen": "Pollen",
+    "pollenNames": {
+      "alder": "Alder",
+      "birch": "Birch",
+      "grass": "Grass",
+      "mugwort": "Mugwort",
+      "olive": "Olive",
+      "ragweed": "Ragweed"
+    },
+    "pollenLevels": [
+      "Low",
+      "Moderate",
+      "High"
+    ],
+    "pollenNone": "No pollen now, or no pollen forecast for this place (Europe only).",
+    "aqiSource": "Air quality and pollen: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Frequently asked questions: time, calendar, prayer | Saat Tarih",
@@ -2284,7 +2314,7 @@
     "stats": "Statistics",
     "statsText": "Umami counts page visits and a few actions (browser, device, language, and the country and city derived from the IP address; the IP is not stored). No cookies are used. Off by default.",
     "ext": "External services",
-    "extText": "The weather is loaded from Open-Meteo (api.open-meteo.com), the map on the zoomed globe from OpenStreetMap (tile.openstreetmap.org), nearby mosques from OpenStreetMap's Overpass service (overpass-api.de) and YouTube music you add to an alarm from YouTube (youtube-nocookie.com); your IP address reaches these services. Off by default.",
+    "extText": "The weather is loaded from Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), the map on the zoomed globe from OpenStreetMap (tile.openstreetmap.org), nearby mosques from OpenStreetMap's Overpass service (overpass-api.de) and YouTube music you add to an alarm from YouTube (youtube-nocookie.com); your IP address reaches these services. Off by default.",
     "save": "Save choice",
     "footerLink": "Cookie preferences",
     "privacy": "Privacy",

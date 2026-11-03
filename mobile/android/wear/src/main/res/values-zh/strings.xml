@@ -25,6 +25,22 @@
     <string name="prayer_imNote">时间为计算值；官方时间请以土耳其宗教事务局（迪亚内特）为准。</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">%1$s %2$s年斋月时间表</string>
+    <string name="weather_codes_clear">晴</string>
+    <string name="weather_codes_mostlyClear">大部晴朗</string>
+    <string name="weather_codes_partly">局部多云</string>
+    <string name="weather_codes_overcast">阴</string>
+    <string name="weather_codes_fog">雾</string>
+    <string name="weather_codes_drizzle">毛毛雨</string>
+    <string name="weather_codes_freezingDrizzle">冻毛毛雨</string>
+    <string name="weather_codes_rain">雨</string>
+    <string name="weather_codes_freezingRain">冻雨</string>
+    <string name="weather_codes_snow">雪</string>
+    <string name="weather_codes_snowGrains">米雪</string>
+    <string name="weather_codes_showers">阵雨</string>
+    <string name="weather_codes_snowShowers">阵雪</string>
+    <string name="weather_codes_thunder">雷暴</string>
+    <string name="weather_codes_thunderHail">雷暴伴有冰雹</string>
+    <string name="weather_attribution">天气数据：Open-Meteo.com（CC BY 4.0）</string>
     <string name="prayer_kerahatHeading">不宜礼拜的时间（约）</string>
     <string name="prayer_kerahatNames_israk">日出时（ishraq）</string>
     <string name="prayer_kerahatNames_istiva">正午前（istiwa）</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">点按可在文字和时钟显示之间切换。</string>
     <string name="prayer_ramadanLeft">距%1$s：%2$s</string>
     <string name="prayer_silent_friday">主麻聚礼时静音（60 分钟）</string>
+    <string name="widget_weather_name">天气</string>
+    <string name="widget_weather_desc">应用中所选地点的当前天气和今天最高/最低气温。</string>
     <string name="app_name">时间与日期</string>
 </resources>

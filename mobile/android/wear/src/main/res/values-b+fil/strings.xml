@@ -25,6 +25,22 @@
     <string name="prayer_imNote">Kinakalkula ang mga oras; para sa opisyal na oras, sundin ang Presidency of Religious Affairs (Diyanet).</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">Iskedyul ng Ramadan %2$s para sa %1$s</string>
+    <string name="weather_codes_clear">Maaliwalas</string>
+    <string name="weather_codes_mostlyClear">Halos maaliwalas</string>
+    <string name="weather_codes_partly">Bahagyang maulap</string>
+    <string name="weather_codes_overcast">Makulimlim</string>
+    <string name="weather_codes_fog">Hamog</string>
+    <string name="weather_codes_drizzle">Ambon</string>
+    <string name="weather_codes_freezingDrizzle">Nagyeyelong ambon</string>
+    <string name="weather_codes_rain">Ulan</string>
+    <string name="weather_codes_freezingRain">Nagyeyelong ulan</string>
+    <string name="weather_codes_snow">Niyebe</string>
+    <string name="weather_codes_snowGrains">Butil ng niyebe</string>
+    <string name="weather_codes_showers">Pabugsu-bugsong ulan</string>
+    <string name="weather_codes_snowShowers">Pag-ulan ng niyebe</string>
+    <string name="weather_codes_thunder">Pagkulog at pagkidlat</string>
+    <string name="weather_codes_thunderHail">Pagkulog at pagkidlat na may ulang yelo</string>
+    <string name="weather_attribution">Datos ng panahon: Open-Meteo.com (CC BY 4.0)</string>
     <string name="prayer_kerahatHeading">Mga oras na hindi kanais-nais ang pagdarasal (tantiya)</string>
     <string name="prayer_kerahatNames_israk">Pagsikat ng araw (ishraq)</string>
     <string name="prayer_kerahatNames_istiva">Bago magtanghali (istiwa)</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">I-tap para lumipat sa salita o orasan.</string>
     <string name="prayer_ramadanLeft">Bago ang %1$s: %2$s</string>
     <string name="prayer_silent_friday">I-silent sa dasal sa Biyernes (60 min)</string>
+    <string name="widget_weather_name">Panahon</string>
+    <string name="widget_weather_desc">Kasalukuyang panahon at pinakamataas/pinakamababang temperatura ngayon sa lugar sa app.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

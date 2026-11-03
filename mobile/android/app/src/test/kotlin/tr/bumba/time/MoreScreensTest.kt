@@ -92,7 +92,13 @@ class MoreScreensTest {
                 .put("weather_code", org.json.JSONArray(hours.indices.map { codes[it % codes.size] }))
                 .put("precipitation_probability", org.json.JSONArray(hours.indices.map { (it * 7) % 60 }))
                 .put("is_day", org.json.JSONArray(hours.map { if (it.hour in 7..18) 1 else 0 }))
-                .put("wind_speed_10m", org.json.JSONArray(hours.map { wind })))
+                .put("wind_speed_10m", org.json.JSONArray(hours.indices.map { wind + (it % 5) * 2 }))
+                .put("apparent_temperature", org.json.JSONArray(hours.indices.map { 13 + 5 * kotlin.math.sin(it / 4.0) }))
+                .put("precipitation", org.json.JSONArray(hours.indices.map { if (it % 7 == 4) 1.4 else 0.0 }))
+                .put("wind_gusts_10m", org.json.JSONArray(hours.indices.map { wind * 1.8 + it % 4 }))
+                .put("wind_direction_10m", org.json.JSONArray(hours.indices.map { (it * 25) % 360 }))
+                .put("relative_humidity_2m", org.json.JSONArray(hours.indices.map { 55 + (it % 6) * 5 }))
+                .put("uv_index", org.json.JSONArray(hours.map { if (it.hour in 10..15) 5 else 0 })))
             .put("daily", JSONObject()
                 .put("time", org.json.JSONArray(days.map { it.toString() }))
                 .put("weather_code", org.json.JSONArray(codes))
@@ -108,6 +114,35 @@ class MoreScreensTest {
         Prefs.saveProvince("istanbul")
         seedWeather()
         shot("tr-hava") { WeatherScreen() }
+    }
+
+    /** 2. analiz #107, #111, #113, #114: saatlik eğri, etkinlik uygunluğu, hava kalitesi ve polen, meteogram, modeller */
+    @Test fun weatherExtras() {
+        Prefs.saveProvince("istanbul")
+        seedWeather()
+        val place = AppPlace.current()
+        AirCache.seed(place.lat, place.lon, AirData(34.0, 12.4, 21.0, 61.0, 18.0, mapOf("grass" to 32.0, "olive" to 8.0, "birch" to 0.0)))
+        val days = (0 until 7).map { LocalDate.now().plusDays(it.toLong()) }
+        ModelCache.seed(place.lat, place.lon, mapOf(
+            "ECMWF" to days.mapIndexed { i, d -> ModelDay(d, 20.0 + i % 3, 12.0, if (i == 3) 4.2 else 0.0) },
+            "GFS" to days.mapIndexed { i, d -> ModelDay(d, 21.0 + i % 2, 11.0, if (i == 3) 7.5 else 0.2) },
+            "ICON" to days.mapIndexed { i, d -> ModelDay(d, 19.0 + i % 4, 12.0, 0.0) },
+        ))
+        shot("tr-hava-grafik-uygunluk") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(16.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)) {
+                val d = WeatherCache.cached(place.lat, place.lon)!!
+                HourlyChart(d)
+                ActivitiesCard(d)
+                AirCard(place)
+            }
+        }
+        shot("tr-hava-meteogram") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(16.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(12.dp)) {
+                val d = WeatherCache.cached(place.lat, place.lon)!!
+                ModelsCard(place)
+                MeteogramCard(d)
+            }
+        }
     }
 
     /** Hava neyse ekran öyle (2. analiz #193): rüzgârlı yağmur, karlı, rüzgârlı açık hava */

@@ -88,12 +88,20 @@ fun WeatherScreen() {
                 TextButton(onClick = { Share.image(ctx, ShareCards.weather(place, d), "hava.png", L("share.card")) }) {
                     Text("📤 " + L("share.card"), color = Theme.c.accent)
                 }
+                HourlyChart(d)
                 Hourly(d)
+                // Dışarıdaki işlere uygunluk (2. analiz #113)
+                ActivitiesCard(d)
                 Details(d)
+                // Hava kalitesi ve polen (2. analiz #111)
+                AirCard(place)
                 // Güneş yayı ve Ay (2. analiz #109)
                 SunMoonArc(Instant.now(), place)
                 WeatherMoonCard(place) { moonPage = true }
                 Daily(d)
+                // Meteogram ve model karşılaştırma (2. analiz #114)
+                MeteogramCard(d)
+                ModelsCard(place)
             }
             failed -> {
                 Text(L("weather.error"), color = Theme.c.muted, textAlign = TextAlign.Center)
@@ -257,13 +265,16 @@ private fun Hourly(d: WeatherData) {
 @Composable
 private fun Daily(d: WeatherData) {
     val days = d.daily.take(14)
+    // Güne dokununca ayrıntı (2. analiz #107)
+    var open by remember { mutableStateOf<WeatherData.Day?>(null) }
+    open?.let { DayDetailDialog(d, it) { open = null } }
     val lo = days.minOfOrNull { it.min } ?: 0.0
     val hi = days.maxOfOrNull { it.max } ?: 1.0
     AppCard {
         SectionTitle(L("weather.dailyHeading"))
         days.forEachIndexed { i, day ->
             Ltr {
-                Row(Modifier.fillMaxWidth().height(32.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.fillMaxWidth().height(36.dp).clickable { open = day }, verticalAlignment = Alignment.CenterVertically) {
                     Text(if (i == 0) L("client.today") else Fmt.weekdayShort(day.date), Modifier.width(56.dp), color = Theme.c.text)
                     Text(WeatherCode.of(day.code).icon(), Modifier.width(32.dp), fontSize = 18.sp)
                     Text(Units.temp(day.min), Modifier.width(42.dp), color = Theme.c.muted, textAlign = TextAlign.Center)

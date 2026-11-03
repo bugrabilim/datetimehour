@@ -329,7 +329,7 @@
         "ul": [
           "**时间和日期：** 设备的时间和时区只在您的浏览器中读取和计算，不会发送到服务器，也不会保存。",
           "**位置（礼拜时间）：** 如果您在礼拜时间页面点击“使用我的位置”，浏览器只在您的设备上使用位置来计算时间。坐标不会发送到服务器，也不计入统计；您最后的选择保存在浏览器的本地存储中。",
-          "**天气（外部服务，需许可）：** 如果您在 Cookie 偏好设置中允许了外部服务，天气页面和带天气的时钟样式会把您所选省份或位置的大致坐标（精确到约 1 公里）直接从浏览器发送给数据提供方 Open-Meteo（api.open-meteo.com）；您的 IP 地址也会到达 Open-Meteo。未经许可不会发出请求，而是显示一条简短说明。Saat Tarih 服务器看不到也不保存这些坐标；适用 Open-Meteo 自己的隐私条款。",
+          "**天气（外部服务，需许可）：** 如果您在 Cookie 偏好设置中允许了外部服务，天气页面和带天气的时钟样式会把您所选省份或位置的大致坐标（精确到约 1 公里）直接从浏览器发送给数据提供方 Open-Meteo（api.open-meteo.com、air-quality-api.open-meteo.com）；您的 IP 地址也会到达 Open-Meteo。未经许可不会发出请求，而是显示一条简短说明。Saat Tarih 服务器看不到也不保存这些坐标；适用 Open-Meteo 自己的隐私条款。",
           "**地图（地球仪，外部服务，需许可）：** 如果您在 Cookie 偏好设置中允许了外部服务，并把主页上的地球仪放大到一定程度以上，地图图块会从 OpenStreetMap 的服务器（tile.openstreetmap.org）直接下载到您的浏览器；此时您的 IP 地址和您所看区域的图块地址会到达 OpenStreetMap 基金会。没有许可或地球仪处于缩小状态时，不会发出此请求。Saat Tarih 服务器看不到这些；适用 OpenStreetMap 自己的隐私条款。",
           "**朝向和附近的清真寺：** 礼拜朝向、距离和朝向时间在您的浏览器中计算。指南针所用的手机方向传感器只在浏览器中读取（iPhone 会请求许可），不会发送到任何地方。如果您点击“显示清真寺”并已允许外部服务，所选地点的坐标会四舍五入到小数点后两位（约 1 公里），从浏览器发送给提供 OpenStreetMap 数据的 Overpass 服务（overpass-api.de）；您的 IP 地址也会到达该服务。Saat Tarih 服务器看不到这些坐标。",
           "**闹钟音乐（YouTube，外部服务，需许可）：** 如果您在闹钟工具中为闹钟添加了 YouTube 链接并允许了外部服务，闹钟响起时视频会通过 YouTube 的增强隐私模式播放器（youtube-nocookie.com）加载到您的浏览器；此时您的 IP 地址和视频 ID 会到达 Google（YouTube），播放器也可能在您的浏览器中保存其自己的数据。链接只与您的闹钟一起保存在此浏览器中。没有许可时不会加载播放器，闹钟以自身的铃声响起。Saat Tarih 服务器看不到这些；适用 YouTube（Google）自己的隐私条款。",
@@ -348,7 +348,7 @@
         ],
         "ul": [
           "**位置：** 如果您点击“使用我的位置”，位置会在手机上用于计算礼拜时间和查找最近的省份；大致位置（约 1 公里）只保存在您的手机上。小组件中的“自动”选项也只在手机上使用位置。",
-          "**天气：** 应用中的天气来自 Apple 天气（WeatherKit）；为此，所选省份或您所在位置的大致坐标会发送给 Apple。我们看不到这些数据；适用 Apple 的隐私条款。",
+          "**天气：** 应用中的天气来自 Apple 天气（WeatherKit）；为此，所选省份或您所在位置的大致坐标会发送给 Apple。我们看不到这些数据；适用 Apple 的隐私条款。 空气质量、花粉、模型比较和 Apple Watch 天气复杂功能来自 Open-Meteo（open-meteo.com），为此会发送四舍五入到两位小数的坐标。",
           "**地图：** 世界时钟中的地球仪用 Apple 地图显示；地图图像从 Apple 下载。",
           "**日历：** 只有在您允许后，应用才会显示手机日历中的日程；日程在手机上读取，不会发送到任何地方。添加和删除日程通过 iPhone 自带的日历界面完成，且只在您确认后进行。",
           "**通知和闹钟：** 礼拜时间通知；特殊日子、季节开始、月相、日出日落、早间天气摘要、整点和夏令时通知（除整点外默认开启，可在“设置 › 通知”中更改）；闹钟和计时器都在手机上安排，无需任何服务器。只有天气摘要会查询天气服务（见上面的天气条目）。列表通过 iOS 后台刷新保持最新；语音播报在手机上生成。",
@@ -2282,7 +2282,37 @@
     "visibility": "能见度",
     "dewPoint": "露点",
     "gusts": "阵风",
-    "details": "详细信息"
+    "details": "详细信息",
+    "chartTemp": "气温",
+    "dayPart": "白天",
+    "nightPart": "夜间",
+    "tapHint": "点按图表中的某个小时或列表中的某一天查看详情。",
+    "aqiTitle": "空气质量",
+    "aqiIndex": "欧洲空气质量指数（EAQI）",
+    "aqiLevels": [
+      "优",
+      "良",
+      "轻度污染",
+      "中度污染",
+      "重度污染",
+      "严重污染"
+    ],
+    "pollen": "花粉",
+    "pollenNames": {
+      "alder": "桤木",
+      "birch": "桦树",
+      "grass": "禾草",
+      "mugwort": "艾草",
+      "olive": "橄榄",
+      "ragweed": "豚草"
+    },
+    "pollenLevels": [
+      "低",
+      "中",
+      "高"
+    ],
+    "pollenNone": "目前无花粉，或此地无花粉预报（仅限欧洲）。",
+    "aqiSource": "空气质量和花粉：Open-Meteo（CAMS，哥白尼）"
   },
   "faqPage": {
     "title": "常见问题：时间、日历、礼拜 | Saat Tarih",
@@ -2310,7 +2340,7 @@
     "stats": "统计",
     "statsText": "Umami 统计页面访问和少数操作（浏览器、设备、语言，以及根据 IP 地址推算的国家和城市；不保存 IP）。不使用 Cookie。默认关闭。",
     "ext": "外部服务",
-    "extText": "天气从 Open-Meteo（api.open-meteo.com）加载，放大地球仪上的地图从 OpenStreetMap（tile.openstreetmap.org）加载，附近的清真寺从 OpenStreetMap 的 Overpass 服务（overpass-api.de）加载，您添加到闹钟的 YouTube 音乐从 YouTube（youtube-nocookie.com）加载；您的 IP 地址会到达这些服务。默认关闭。",
+    "extText": "天气从 Open-Meteo（api.open-meteo.com、air-quality-api.open-meteo.com）加载，放大地球仪上的地图从 OpenStreetMap（tile.openstreetmap.org）加载，附近的清真寺从 OpenStreetMap 的 Overpass 服务（overpass-api.de）加载，您添加到闹钟的 YouTube 音乐从 YouTube（youtube-nocookie.com）加载；您的 IP 地址会到达这些服务。默认关闭。",
     "save": "保存选择",
     "footerLink": "Cookie 偏好设置",
     "privacy": "隐私",

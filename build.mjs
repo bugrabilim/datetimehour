@@ -145,7 +145,7 @@ for (const f of ["favicon.svg", "favicon.ico", "icon-192.png", "icon-512.png", "
 const CSP = [
   "default-src 'self'",
   "script-src 'self' https://istatistik.bumba.tr",
-  "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com https://overpass-api.de",
+  "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com https://air-quality-api.open-meteo.com https://overpass-api.de",
   "img-src 'self' data: https://bumbagroup.com https://tile.openstreetmap.org",
   "frame-src https://www.youtube-nocookie.com", // alarm müziği (YouTube gelişmiş gizlilik modu; dış hizmet izniyle, 31 Ekim 2026)
   "style-src 'self'",
@@ -1877,7 +1877,17 @@ function buildWeather(lang) {
   const sections = `<section class="section" aria-labelledby="wx-hourly-h" data-wx-hourly-box hidden>
   <div class="wrap">
     <h2 id="wx-hourly-h">${esc(w.hourlyHeading)}</h2>
+    <div class="wx-chips" role="group" data-wx-chips></div>
+    <div class="wx-chart" data-wx-chart></div>
+    <p class="wx-chart-detail" data-wx-detail aria-live="polite"></p>
     <ul class="wx-hourly" data-wx-hourly></ul>
+  </div>
+</section>
+<section class="section" aria-labelledby="wx-aqi-h" data-wx-aqi-box hidden>
+  <div class="wrap">
+    <h2 id="wx-aqi-h">${esc(w.aqiTitle)}</h2>
+    <div class="wx-aqi" data-wx-aqi></div>
+    <p class="meta">${esc(w.aqiSource)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="wx-daily-h" data-wx-daily-box hidden>
@@ -1890,7 +1900,10 @@ function buildWeather(lang) {
 </section>`;
   const wx = { ...weatherClient(t), now: w.now, pressure: w.pressure, precipitation: w.precipitation, uv: w.uv, sunrise: w.sunrise, sunset: w.sunset, updated: w.updated, retry: w.retry,
     // 2. analiz #106, #108: yeni ölçümler, açıklamalar ve günlük özet
-    visibility: w.visibility, dewPoint: w.dewPoint, gusts: w.gusts, wd: w.wd, uvw: w.uvw, hw: w.hw, vw: w.vw, dw: w.dw, fw: w.fw, sum: w.sum };
+    visibility: w.visibility, dewPoint: w.dewPoint, gusts: w.gusts, wd: w.wd, uvw: w.uvw, hw: w.hw, vw: w.vw, dw: w.dw, fw: w.fw, sum: w.sum,
+    // 2. analiz #107, #111: saatlik eğri ve hava kalitesi/polen
+    chartTemp: w.chartTemp, dayPart: w.dayPart, nightPart: w.nightPart, tapHint: w.tapHint, aqiIndex: w.aqiIndex, aqiLevels: w.aqiLevels,
+    pollen: w.pollen, pollenNames: w.pollenNames, pollenLevels: w.pollenLevels, pollenNone: w.pollenNone };
   return simplePage(lang, "weather", { title: w.title, description: w.description, h1: w.h1, lead: w.lead, trail, bodyInner: { hero, sections }, faq: w.faq, faqGroup: { id: "weather", title: t.ui.weather }, scripts: ["place.js", "weather-core.js", "weather-fx.js", "weather.js"], clientExtra: { t: { pl: placeClient(t.prayer), wx } }, nav: "weather", searchK: w.search, needsPlace: true, extraLd: [webAppLd(lang, w.h1, ROUTES[lang].weather, w.description)] });
 }
 

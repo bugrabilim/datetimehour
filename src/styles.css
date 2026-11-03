@@ -877,6 +877,29 @@ html[dir="rtl"] .num, html[dir="rtl"] td, html[dir="rtl"] th { unicode-bidi: pla
 .wx-sum:empty { display: none; }
 .wx-live .wx-sum { text-shadow: 0 1px 6px rgba(0,0,0,0.35); }
 .wx-hourly { display: flex; gap: 0.5rem; overflow-x: auto; list-style: none; padding: 0 0 0.5rem; margin: 0; }
+/* Saatlik eğri ve çipler (2. analiz #107) */
+.wx-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.6rem; }
+.wx-chip { font: inherit; font-size: 0.9rem; padding: 0.35rem 0.85rem; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: inherit; cursor: pointer; }
+.wx-chip[aria-pressed="true"] { background: var(--accent-soft, var(--surface-2)); color: var(--accent); border-color: var(--accent); font-weight: 600; }
+.wx-chart { direction: ltr; }
+.wx-svg { width: 100%; height: auto; display: block; cursor: crosshair; touch-action: pan-y; }
+.wx-svg .wx-line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.wx-svg .wx-area { fill: var(--accent); opacity: 0.12; }
+.wx-svg.m3 .wx-line { stroke: var(--muted); }
+.wx-svg.m3 .wx-area { fill: var(--muted); }
+.wx-svg .wx-bar { fill: #1e88e5; opacity: 0.6; }
+.wx-svg .wx-rule { stroke: var(--border); stroke-width: 1.5; }
+.wx-svg .wx-dot { fill: var(--accent); }
+.wx-axis { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.8rem; font-variant-numeric: tabular-nums; margin: 0.2rem 0 0.4rem; }
+.wx-chart-detail { min-height: 1.5em; font-size: 0.95rem; margin: 0 0 0.8rem; }
+/* Hava kalitesi ve polen (2. analiz #111; renkler Avrupa Çevre Ajansı ölçeği) */
+.wx-aqi-head { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
+.wx-aqi-badge { display: inline-grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 50%; font-weight: 700; font-size: 1.15rem; color: #1a1a1a; }
+.wx-aqi-badge.l0 { background: #50f0e6; } .wx-aqi-badge.l1 { background: #50ccaa; } .wx-aqi-badge.l2 { background: #f0e641; }
+.wx-aqi-badge.l3 { background: #ff5050; } .wx-aqi-badge.l4 { background: #960032; color: #fff; } .wx-aqi-badge.l5 { background: #7d2181; color: #fff; }
+.wx-pollen { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.wx-pollen li { padding: 0.3rem 0.8rem; border-radius: 999px; background: var(--surface-2); }
+.wx-pollen li.p1 { background: rgba(80, 204, 170, 0.35); } .wx-pollen li.p2 { background: rgba(240, 230, 65, 0.4); } .wx-pollen li.p3 { background: rgba(255, 80, 80, 0.35); }
 .wx-hour { flex: 0 0 4.6rem; text-align: center; padding: 0.6rem 0.3rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); display: grid; gap: 0.15rem; }
 .wx-h-time { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 .wx-h-icon { font-size: 1.6rem; }

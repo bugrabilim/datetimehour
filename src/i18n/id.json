@@ -303,7 +303,7 @@
         "ul": [
           "**Waktu dan tanggal:** Waktu dan zona waktu perangkat Anda dibaca dan dihitung hanya di peramban Anda. Data ini tidak dikirim ke server dan tidak disimpan.",
           "**Lokasi (jadwal salat):** Jika Anda menekan \"Gunakan lokasi saya\" di halaman jadwal salat, peramban memakai lokasi Anda hanya di perangkat untuk menghitung waktu. Koordinat tidak dikirim ke server dan tidak masuk statistik; pilihan terakhir Anda tetap di penyimpanan lokal peramban.",
-          "**Cuaca (layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie, halaman cuaca dan gaya jam dengan cuaca mengirim perkiraan koordinat provinsi atau lokasi pilihan Anda (dengan ketelitian sekitar 1 km) langsung dari peramban ke Open-Meteo (api.open-meteo.com), penyedia datanya; alamat IP Anda juga sampai ke Open-Meteo. Tanpa izin tidak ada permintaan yang dibuat dan catatan singkat ditampilkan sebagai gantinya. Server Saat Tarih tidak melihat atau menyimpan koordinat ini; ketentuan privasi Open-Meteo sendiri yang berlaku.",
+          "**Cuaca (layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie, halaman cuaca dan gaya jam dengan cuaca mengirim perkiraan koordinat provinsi atau lokasi pilihan Anda (dengan ketelitian sekitar 1 km) langsung dari peramban ke Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), penyedia datanya; alamat IP Anda juga sampai ke Open-Meteo. Tanpa izin tidak ada permintaan yang dibuat dan catatan singkat ditampilkan sebagai gantinya. Server Saat Tarih tidak melihat atau menyimpan koordinat ini; ketentuan privasi Open-Meteo sendiri yang berlaku.",
           "**Peta (bola dunia, layanan eksternal, dengan izin):** Jika Anda mengizinkan layanan eksternal di preferensi cookie dan memperbesar bola dunia di beranda melewati tingkat tertentu, ubin peta diunduh langsung ke peramban Anda dari server OpenStreetMap (tile.openstreetmap.org); alamat IP Anda dan alamat ubin wilayah yang Anda lihat sampai ke OpenStreetMap Foundation. Tanpa izin, atau selama bola dunia diperkecil, permintaan ini tidak dibuat. Server Saat Tarih tidak melihatnya; ketentuan privasi OpenStreetMap sendiri yang berlaku.",
           "**Kiblat dan masjid terdekat:** Arah kiblat, jarak, dan waktu kiblat dihitung di peramban Anda. Untuk kompas, sensor orientasi ponsel dibaca hanya di peramban (iPhone meminta izin) dan tidak pernah dikirim ke mana pun. Jika Anda menekan \"Tampilkan masjid\" dan telah mengizinkan layanan eksternal, koordinat tempat terpilih yang dibulatkan ke dua desimal (sekitar 1 km) dikirim dari peramban ke layanan Overpass (overpass-api.de) yang menyediakan data OpenStreetMap; alamat IP Anda juga sampai ke layanan ini. Server Saat Tarih tidak melihat koordinat ini.",
           "**Musik alarm (YouTube, layanan eksternal, dengan izin):** Jika Anda menambahkan tautan YouTube ke alarm di alat alarm dan mengizinkan layanan eksternal, saat alarm berbunyi video dimuat ke peramban Anda dengan pemutar mode privasi yang ditingkatkan dari YouTube (youtube-nocookie.com); alamat IP Anda dan ID video sampai ke Google (YouTube), dan pemutar dapat menyimpan datanya sendiri di peramban Anda. Tautan hanya tersimpan di peramban ini, bersama alarm Anda. Tanpa izin, pemutar tidak dimuat dan alarm berbunyi dengan suaranya sendiri. Server Saat Tarih tidak melihatnya; ketentuan privasi YouTube (Google) sendiri yang berlaku.",
@@ -322,7 +322,7 @@
         ],
         "ul": [
           "**Lokasi:** Jika Anda mengetuk \"Gunakan lokasi saya\", lokasi Anda dipakai di ponsel untuk menghitung jadwal salat dan mencari provinsi terdekat; lokasi perkiraan (sekitar 1 km) disimpan hanya di ponsel. Opsi \"Otomatis\" pada widget juga memakai lokasi Anda hanya di ponsel.",
-          "**Cuaca:** Cuaca di aplikasi berasal dari Apple Cuaca (WeatherKit); untuk itu koordinat perkiraan provinsi terpilih atau lokasi Anda dikirim ke Apple. Kami tidak pernah melihat data ini; ketentuan privasi Apple berlaku.",
+          "**Cuaca:** Cuaca di aplikasi berasal dari Apple Cuaca (WeatherKit); untuk itu koordinat perkiraan provinsi terpilih atau lokasi Anda dikirim ke Apple. Kami tidak pernah melihat data ini; ketentuan privasi Apple berlaku. Kualitas udara, serbuk sari, perbandingan model, dan komplikasi cuaca Apple Watch berasal dari Open-Meteo (open-meteo.com); untuk itu koordinat yang dibulatkan ke dua desimal dikirim.",
           "**Peta:** Bola dunia di jam dunia ditampilkan dengan Apple Peta; citra peta diunduh dari Apple.",
           "**Kalender:** Hanya jika Anda mengizinkannya, acara dari kalender di ponsel ditampilkan di aplikasi; acara dibaca di ponsel dan tidak pernah dikirim. Penambahan dan penghapusan acara dilakukan lewat layar kalender iPhone sendiri dan hanya dengan konfirmasi Anda.",
           "**Notifikasi dan alarm:** Notifikasi waktu salat; notifikasi hari istimewa, awal musim, fase Bulan, matahari terbit dan terbenam, ringkasan cuaca pagi, setiap jam, dan perubahan waktu musim panas (semuanya aktif secara bawaan kecuali setiap jam; dapat diubah di Pengaturan › Notifikasi); alarm dan pengatur waktu dijadwalkan di ponsel tanpa server. Hanya ringkasan cuaca yang menghubungi layanan cuaca (lihat poin cuaca di atas). Daftar tetap mutakhir berkat penyegaran latar belakang iOS; pengumuman suara dibuat di ponsel Anda.",
@@ -2256,7 +2256,37 @@
     "visibility": "Jarak pandang",
     "dewPoint": "Titik embun",
     "gusts": "Hembusan",
-    "details": "Rincian"
+    "details": "Rincian",
+    "chartTemp": "Suhu",
+    "dayPart": "Siang",
+    "nightPart": "Malam",
+    "tapHint": "Ketuk satu jam di grafik atau satu hari di daftar untuk detail.",
+    "aqiTitle": "Kualitas udara",
+    "aqiIndex": "Indeks Kualitas Udara Eropa (EAQI)",
+    "aqiLevels": [
+      "Baik",
+      "Cukup",
+      "Sedang",
+      "Buruk",
+      "Sangat buruk",
+      "Sangat buruk sekali"
+    ],
+    "pollen": "Serbuk sari",
+    "pollenNames": {
+      "alder": "Alder",
+      "birch": "Birch",
+      "grass": "Rumput",
+      "mugwort": "Mugwort",
+      "olive": "Zaitun",
+      "ragweed": "Ragweed"
+    },
+    "pollenLevels": [
+      "Rendah",
+      "Sedang",
+      "Tinggi"
+    ],
+    "pollenNone": "Saat ini tidak ada serbuk sari atau tidak ada prakiraan untuk tempat ini (hanya Eropa).",
+    "aqiSource": "Kualitas udara dan serbuk sari: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Pertanyaan umum: waktu, kalender, salat | Saat Tarih",
@@ -2284,7 +2314,7 @@
     "stats": "Statistik",
     "statsText": "Umami menghitung kunjungan halaman dan beberapa tindakan (peramban, perangkat, bahasa, serta negara dan kota yang diturunkan dari alamat IP; IP tidak disimpan). Tidak ada cookie yang dipakai. Nonaktif secara bawaan.",
     "ext": "Layanan eksternal",
-    "extText": "Cuaca dimuat dari Open-Meteo (api.open-meteo.com), peta pada bola dunia yang diperbesar dari OpenStreetMap (tile.openstreetmap.org), masjid terdekat dari layanan Overpass OpenStreetMap (overpass-api.de), dan musik YouTube yang Anda tambahkan ke alarm dari YouTube (youtube-nocookie.com); alamat IP Anda sampai ke layanan ini. Nonaktif secara bawaan.",
+    "extText": "Cuaca dimuat dari Open-Meteo (api.open-meteo.com, air-quality-api.open-meteo.com), peta pada bola dunia yang diperbesar dari OpenStreetMap (tile.openstreetmap.org), masjid terdekat dari layanan Overpass OpenStreetMap (overpass-api.de), dan musik YouTube yang Anda tambahkan ke alarm dari YouTube (youtube-nocookie.com); alamat IP Anda sampai ke layanan ini. Nonaktif secara bawaan.",
     "save": "Simpan pilihan",
     "footerLink": "Preferensi cookie",
     "privacy": "Privasi",

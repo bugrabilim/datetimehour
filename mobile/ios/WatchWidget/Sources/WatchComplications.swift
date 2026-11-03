@@ -11,6 +11,7 @@ struct SaatTarihWatchWidgets: WidgetBundle {
         WatchNextPrayerWidget()
         WatchTodayPrayersWidget()
         WatchHijriWidget()
+        WatchWeatherWidget()
     }
 }
 
@@ -235,6 +236,139 @@ struct WatchHijriView: View {
                 }
             } else {
                 Text(verbatim: "☾")
+            }
+        }
+        .containerBackground(for: .widget) { Color.clear }
+    }
+}
+
+
+// MARK: Hava (2. analiz #115)
+
+/// Seçili yerin anlık sıcaklığı ve durumu: Open-Meteo (anahtarsız; koordinat 2 ondalık). Saat uzantısı App Group
+/// olmadan iPhone'daki WeatherKit verisini okuyamadığı için kendisi sorar; 30 dk'da bir yenilenir. Atıf saat uygulamasında.
+struct WatchWeatherEntry: TimelineEntry {
+    let date: Date
+    let name: String
+    let temp: Int?
+    let code: Int
+}
+
+enum WatchWeather {
+    static func fetch(lat: Double, lon: Double) async -> (Int, Int)? {
+        let url = String(format: "https://api.open-meteo.com/v1/forecast?latitude=%.2f&longitude=%.2f&current=temperature_2m,weather_code&timezone=auto", lat, lon)
+        guard let u = URL(string: url), let (data, _) = try? await URLSession.shared.data(from: u),
+              let o = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+              let c = o["current"] as? [String: Any], let t = c["temperature_2m"] as? Double else { return nil }
+        return (Int(t.rounded()), (c["weather_code"] as? Int) ?? 2)
+    }
+
+    /// WMO kodu → SF Symbol
+    static func symbol(_ c: Int) -> String {
+        switch c {
+        case 0: return "sun.max.fill"
+        case 1, 2: return "cloud.sun.fill"
+        case 3: return "cloud.fill"
+        case 45, 48: return "cloud.fog.fill"
+        case 51...67, 80...82: return "cloud.rain.fill"
+        case 71...77, 85, 86: return "cloud.snow.fill"
+        case 95...99: return "cloud.bolt.rain.fill"
+        default: return "cloud.sun.fill"
+        }
+    }
+
+    static func key(_ c: Int) -> String {
+        switch c {
+        case 0: return "clear"
+        case 1: return "mostlyClear"
+        case 2: return "partly"
+        case 3: return "overcast"
+        case 45, 48: return "fog"
+        case 51...55: return "drizzle"
+        case 56, 57: return "freezingDrizzle"
+        case 61...65: return "rain"
+        case 66, 67: return "freezingRain"
+        case 71...75: return "snow"
+        case 77: return "snowGrains"
+        case 80...82: return "showers"
+        case 85, 86: return "snowShowers"
+        case 95: return "thunder"
+        case 96, 99: return "thunderHail"
+        default: return "partly"
+        }
+    }
+}
+
+struct WatchWeatherProvider: AppIntentTimelineProvider {
+    func placeholder(in context: Context) -> WatchWeatherEntry {
+        WatchWeatherEntry(date: Date(), name: Province.find("istanbul").displayName, temp: 18, code: 2)
+    }
+
+    func snapshot(for configuration: ProvinceIntent, in context: Context) async -> WatchWeatherEntry {
+        await entry(configuration)
+    }
+
+    func timeline(for configuration: ProvinceIntent, in context: Context) async -> Timeline<WatchWeatherEntry> {
+        let e = await entry(configuration)
+        return Timeline(entries: [e], policy: .after(Date().addingTimeInterval(1800)))
+    }
+
+    private func entry(_ configuration: ProvinceIntent) async -> WatchWeatherEntry {
+        let place = await configuration.resolvePlace()
+        let w = await WatchWeather.fetch(lat: place.schedule.latitude, lon: place.schedule.longitude)
+        return WatchWeatherEntry(date: Date(), name: place.name, temp: w?.0, code: w?.1 ?? 2)
+    }
+
+    func recommendations() -> [AppIntentRecommendation<ProvinceIntent>] {
+        ProvinceEntity.all.map { e in
+            var i = ProvinceIntent()
+            i.province = e
+            return AppIntentRecommendation(intent: i, description: e.name)
+        }
+    }
+}
+
+struct WatchWeatherWidget: Widget {
+    var body: some WidgetConfiguration {
+        AppIntentConfiguration(kind: "watch-weather", intent: ProvinceIntent.self, provider: WatchWeatherProvider()) { entry in
+            WatchWeatherView(entry: entry)
+        }
+        .configurationDisplayName(L("widget.weather.name"))
+        .description(L("widget.weather.desc"))
+        .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryCorner, .accessoryRectangular])
+    }
+}
+
+struct WatchWeatherView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: WatchWeatherEntry
+
+    var body: some View {
+        let temp = entry.temp.map { "\($0)°" } ?? "–"
+        let label = L("weather.codes.\(WatchWeather.key(entry.code))")
+        Group {
+            switch family {
+            case .accessoryInline:
+                Label(temp + " " + label, systemImage: WatchWeather.symbol(entry.code))
+            case .accessoryCircular:
+                VStack(spacing: 0) {
+                    Image(systemName: WatchWeather.symbol(entry.code)).font(.system(size: 14))
+                    Text(temp).font(.system(size: 16, weight: .bold, design: .rounded))
+                }
+                .widgetAccentable()
+            case .accessoryCorner:
+                Image(systemName: WatchWeather.symbol(entry.code)).font(.system(size: 18))
+                    .widgetLabel { Text(temp) }
+            default:
+                HStack(spacing: 6) {
+                    Image(systemName: WatchWeather.symbol(entry.code)).font(.title3)
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(entry.name).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
+                        Text(temp).font(.headline)
+                        Text(label).font(.caption2).lineLimit(1)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         .containerBackground(for: .widget) { Color.clear }

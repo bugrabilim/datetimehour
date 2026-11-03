@@ -55,6 +55,7 @@
       ul.appendChild(li);
     }
     q("[data-wx-hourly-box]").hidden = false;
+    chart(d, start);
     // Günlük özet cümlesi (2. analiz #108)
     var nx = [];
     for (var z = start; z < Math.min(start + 12, h.time.length); z++) nx.push({ hour: +h.time[z].slice(11, 13), code: h.weather_code[z], rain: h.precipitation_probability[z] || 0, wind: (h.wind_speed_10m || [])[z] || 0 });
@@ -84,8 +85,106 @@
     stateEl.textContent = " ";
     retry.hidden = true;
   }
+  /* Saatlik eğri (2. analiz #107): çiplerle sıcaklık, hissedilen, yağış ihtimali, rüzgâr; dokununca/üzerine gelince ayrıntı */
+  var metric = 0, chartData = null;
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function svg(tag, attrs) { var e = doc.createElementNS(SVGNS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); return e; }
+  function chart(d, start) {
+    var h = d.hourly, n = Math.min(24, h.time.length - start);
+    if (n < 2) return;
+    chartData = { d: d, start: start, n: n, sel: 0 };
+    var chips = q("[data-wx-chips]");
+    if (chips && !chips.childNodes.length) {
+      [X.chartTemp, X.feelsLike, X.precipitation, X.wind].forEach(function (label, i) {
+        var b = el("button", "wx-chip", label); b.type = "button";
+        b.setAttribute("aria-pressed", i === metric ? "true" : "false");
+        b.addEventListener("click", function () {
+          metric = i;
+          Array.prototype.forEach.call(chips.children, function (c, j) { c.setAttribute("aria-pressed", j === i ? "true" : "false"); });
+          drawChart();
+        });
+        chips.appendChild(b);
+      });
+    }
+    drawChart();
+  }
+  function series() {
+    var h = chartData.d.hourly, out = [];
+    var key = ["temperature_2m", "apparent_temperature", "precipitation_probability", "wind_speed_10m"][metric];
+    for (var i = 0; i < chartData.n; i++) { var v = (h[key] || [])[chartData.start + i]; out.push(v == null ? 0 : v); }
+    return out;
+  }
+  function drawChart() {
+    var box = q("[data-wx-chart]"); if (!box || !chartData) return;
+    var vals = series(), n = vals.length, W0 = 600, H0 = 140, P = 6;
+    var lo = metric === 2 ? 0 : Math.min.apply(null, vals) - 1, hi = metric === 2 ? 100 : Math.max.apply(null, vals) + 1;
+    var x = function (i) { return P + (W0 - 2 * P) * i / (n - 1); }, y = function (v) { return P + (H0 - 2 * P) * (1 - (v - lo) / (hi - lo || 1)); };
+    var s = svg("svg", { viewBox: "0 0 " + W0 + " " + H0, class: "wx-svg m" + metric, role: "img", "aria-label": q("#wx-hourly-h").textContent });
+    if (metric === 2) {
+      var bw = (W0 - 2 * P) / n * 0.7;
+      vals.forEach(function (v, i) { s.appendChild(svg("rect", { x: (x(i) - bw / 2).toFixed(1), y: y(v).toFixed(1), width: bw.toFixed(1), height: (H0 - P - y(v)).toFixed(1), class: "wx-bar" })); });
+    } else {
+      var pts = vals.map(function (v, i) { return x(i).toFixed(1) + "," + y(v).toFixed(1); });
+      s.appendChild(svg("polygon", { points: P + "," + (H0 - P) + " " + pts.join(" ") + " " + (W0 - P) + "," + (H0 - P), class: "wx-area" }));
+      s.appendChild(svg("polyline", { points: pts.join(" "), class: "wx-line" }));
+    }
+    var sel = chartData.sel;
+    s.appendChild(svg("line", { x1: x(sel), x2: x(sel), y1: 0, y2: H0, class: "wx-rule" }));
+    s.appendChild(svg("circle", { cx: x(sel), cy: y(vals[sel]), r: 5, class: "wx-dot" }));
+    function pick(ev) {
+      var r = s.getBoundingClientRect(), px = ((ev.touches ? ev.touches[0].clientX : ev.clientX) - r.left) / r.width * W0;
+      var i = Math.max(0, Math.min(n - 1, Math.round((px - P) / (W0 - 2 * P) * (n - 1))));
+      if (i !== chartData.sel) { chartData.sel = i; drawChart(); }
+    }
+    s.addEventListener("click", pick); s.addEventListener("mousemove", pick);
+    box.textContent = ""; box.appendChild(s);
+    // eksen saatleri
+    var ax = el("div", "wx-axis");
+    for (var i = 0; i < n; i += 6) ax.appendChild(el("span", null, chartData.d.hourly.time[chartData.start + i].slice(11, 16)));
+    box.appendChild(ax);
+    // seçili saat
+    var h = chartData.d.hourly, k = chartData.start + sel, info = W.info(h.weather_code[k], h.is_day[k]);
+    var parts = [h.time[k].slice(11, 16) + " " + info.icon + " " + info.label + " · " + (h.is_day[k] ? X.dayPart : X.nightPart),
+      W.temp(h.temperature_2m[k]) + (h.apparent_temperature ? " (" + X.feelsLike + " " + W.temp(h.apparent_temperature[k]) + ")" : ""),
+      S.pct(h.precipitation_probability[k] || 0) + (h.precipitation && h.precipitation[k] > 0 ? " · " + (Math.round(h.precipitation[k] * 10) / 10) + " mm" : ""),
+      X.wind + " " + Math.round(h.wind_speed_10m[k]) + " km/h" + (h.wind_direction_10m ? " · " + S.tpl(X.windFrom, { dir: W.compass(h.wind_direction_10m[k]) }) : "") +
+        (h.relative_humidity_2m ? " · " + X.humidity + " " + S.pct(Math.round(h.relative_humidity_2m[k])) : "")];
+    q("[data-wx-detail]").textContent = parts.join(" · ");
+  }
+  /* Hava kalitesi ve polen (2. analiz #111) */
+  function airRender(place) {
+    var box = q("[data-wx-aqi]"), sec = q("[data-wx-aqi-box]");
+    if (!box || !W.air) return;
+    W.air(place.lat, place.lon).then(function (a) {
+      var c = a && a.current;
+      if (!c || c.european_aqi == null) { sec.hidden = true; return; }
+      var lv = W.aqiLevel(c.european_aqi);
+      box.textContent = "";
+      var head = el("div", "wx-aqi-head");
+      var badge = el("span", "wx-aqi-badge l" + lv, String(Math.round(c.european_aqi)));
+      head.appendChild(badge);
+      var t = el("div"); t.appendChild(el("strong", null, (X.aqiLevels || [])[lv] || "")); t.appendChild(el("span", "meta", " " + (X.aqiIndex || "")));
+      head.appendChild(t); box.appendChild(head);
+      var dl = el("dl", "wx-facts");
+      [["PM2.5", c.pm2_5], ["PM10", c.pm10], ["O₃", c.ozone], ["NO₂", c.nitrogen_dioxide]].forEach(function (p) {
+        if (p[1] != null) fact(dl, p[0], Math.round(p[1]) + " µg/m³");
+      });
+      box.appendChild(dl);
+      box.appendChild(el("h3", null, X.pollen || ""));
+      var pl = el("ul", "wx-pollen"), any = false;
+      ["alder", "birch", "grass", "mugwort", "olive", "ragweed"].forEach(function (k) {
+        var g = c[k + "_pollen"]; if (g == null) return;
+        var lvl = W.pollenLevel(g); if (!lvl) return;
+        any = true;
+        pl.appendChild(el("li", "p" + lvl, ((X.pollenNames || {})[k] || k) + " · " + (X.pollenLevels || [])[lvl - 1]));
+      });
+      box.appendChild(any ? pl : el("p", "meta", X.pollenNone || ""));
+      sec.hidden = false;
+    }).catch(function () { sec.hidden = true; });
+  }
   function go(place) {
     current = place; var my = ++seq;
+    airRender(place);
     stateEl.textContent = X.loading; retry.hidden = true;
     q("[data-wx-place]").textContent = place.name;
     W.load(place.lat, place.lon).then(function (d) { if (my === seq) render(place, d); })

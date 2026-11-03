@@ -38,7 +38,7 @@
     if (failed[key] && now - failed[key] < 60000) return Promise.reject(new Error("backoff")); // hata sonrası 1 dk bekle (hız sınırına yüklenme)
     var url = API + "?latitude=" + lat + "&longitude=" + lon +
       "&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,pressure_msl,is_day,uv_index,cloud_cover,wind_gusts_10m,visibility,dew_point_2m" +
-      "&hourly=temperature_2m,precipitation_probability,weather_code,is_day,wind_speed_10m" +
+      "&hourly=temperature_2m,precipitation_probability,weather_code,is_day,wind_speed_10m,apparent_temperature,precipitation,wind_gusts_10m,wind_direction_10m,relative_humidity_2m" +
       "&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,sunrise,sunset,uv_index_max" +
       "&timezone=auto&forecast_days=14";
     inflight[key] = fetch(url, { credentials: "omit", referrerPolicy: "no-referrer" })
@@ -47,6 +47,22 @@
       .catch(function (e) { failed[key] = Date.now(); delete inflight[key]; throw e; });
     return inflight[key];
   }
+  /* Hava kalitesi ve polen (2. analiz #111): Open-Meteo Air Quality API (CAMS), aynı izin; 30 dk önbellek */
+  var airCache = {};
+  function air(lat, lon) {
+    if (!allowed()) { var ce = new Error("consent"); ce.consent = true; return Promise.reject(ce); }
+    lat = round2(lat); lon = round2(lon);
+    var key = lat + "," + lon, now = Date.now();
+    if (airCache[key] && now - airCache[key].at < 1800000) return Promise.resolve(airCache[key].data);
+    var url = "https://air-quality-api.open-meteo.com/v1/air-quality?latitude=" + lat + "&longitude=" + lon + "&timezone=auto" +
+      "&current=european_aqi,pm2_5,pm10,ozone,nitrogen_dioxide,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen";
+    return fetch(url, { credentials: "omit", referrerPolicy: "no-referrer" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) { airCache[key] = { at: now, data: d }; return d; });
+  }
+  /* Düzeyler: uygulamalardaki Outdoor.aqiLevel / pollenLevel ile aynı eşikler */
+  function aqiLevel(v) { return v < 20 ? 0 : v < 40 ? 1 : v < 60 ? 2 : v < 80 ? 3 : v < 100 ? 4 : 5; }
+  function pollenLevel(g) { return g < 1 ? 0 : g < 20 ? 1 : g < 100 ? 2 : 3; }
   var temp = function (t) { return Math.round(t) + "°"; };
   /* Sözlü açıklamalar ve günlük özet (2. analiz #108): anahtar döner; eşikler uygulamalardaki WeatherWords ile aynı
      (Android core/WeatherWords.kt, iOS SaatCore/WeatherWords.swift) */
@@ -80,7 +96,7 @@
     p.appendChild(b);
     box.appendChild(p);
   }
-  window.sthWeather = { load: load, info: info, compass: compass, temp: temp, words: words, summary: summary, allowed: allowed, consentNote: consentNote, clearFailures: function () { failed = {}; } };
+  window.sthWeather = { load: load, air: air, aqiLevel: aqiLevel, pollenLevel: pollenLevel, info: info, compass: compass, temp: temp, words: words, summary: summary, allowed: allowed, consentNote: consentNote, clearFailures: function () { failed = {}; } };
 
   /* Hava durumlu saat modelleri: yalnız model seçiliyken (görünürken) Open-Meteo'ya gidilir */
   function mk(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }

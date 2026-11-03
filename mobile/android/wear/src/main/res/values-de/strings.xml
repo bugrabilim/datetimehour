@@ -25,6 +25,22 @@
     <string name="prayer_imNote">Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für Religionsangelegenheiten (Diyanet).</string>
     <string name="prayer_imFile">ramadan-imsakiye</string>
     <string name="prayer_imAlt">Ramadan-Zeitplan %2$s für %1$s</string>
+    <string name="weather_codes_clear">Klar</string>
+    <string name="weather_codes_mostlyClear">Überwiegend klar</string>
+    <string name="weather_codes_partly">Teilweise bewölkt</string>
+    <string name="weather_codes_overcast">Bedeckt</string>
+    <string name="weather_codes_fog">Nebel</string>
+    <string name="weather_codes_drizzle">Nieselregen</string>
+    <string name="weather_codes_freezingDrizzle">Gefrierender Nieselregen</string>
+    <string name="weather_codes_rain">Regen</string>
+    <string name="weather_codes_freezingRain">Gefrierender Regen</string>
+    <string name="weather_codes_snow">Schnee</string>
+    <string name="weather_codes_snowGrains">Schneegriesel</string>
+    <string name="weather_codes_showers">Schauer</string>
+    <string name="weather_codes_snowShowers">Schneeschauer</string>
+    <string name="weather_codes_thunder">Gewitter</string>
+    <string name="weather_codes_thunderHail">Gewitter mit Hagel</string>
+    <string name="weather_attribution">Wetterdaten: Open-Meteo.com (CC BY 4.0)</string>
     <string name="prayer_kerahatHeading">Makruh-Zeiten (ungefähr)</string>
     <string name="prayer_kerahatNames_israk">Sonnenaufgang (Ischraq)</string>
     <string name="prayer_kerahatNames_istiva">Vor Mittag (Istiwa)</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">Tippen, um zwischen Worten und Uhr zu wechseln.</string>
     <string name="prayer_ramadanLeft">Bis %1$s: %2$s</string>
     <string name="prayer_silent_friday">Beim Freitagsgebet stummschalten (60 Min.)</string>
+    <string name="widget_weather_name">Wetter</string>
+    <string name="widget_weather_desc">Aktuelles Wetter und heutige Höchst-/Tiefstwerte für den Ort in der App.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

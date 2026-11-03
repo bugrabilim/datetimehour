@@ -25,6 +25,22 @@
     <string name="prayer_imNote">Vaxtlar hesablanmışdır; rəsmi vaxt üçün Diyanət İşləri Başqanlığının məlumatı əsasdır.</string>
     <string name="prayer_imFile">ramazan-imsakiyyesi</string>
     <string name="prayer_imAlt">%1$s üçün %2$s Ramazan imsakiyyəsi</string>
+    <string name="weather_codes_clear">Aydın</string>
+    <string name="weather_codes_mostlyClear">Əsasən aydın</string>
+    <string name="weather_codes_partly">Qismən buludlu</string>
+    <string name="weather_codes_overcast">Tutqun</string>
+    <string name="weather_codes_fog">Duman</string>
+    <string name="weather_codes_drizzle">Çiskin</string>
+    <string name="weather_codes_freezingDrizzle">Dondurucu çiskin</string>
+    <string name="weather_codes_rain">Yağış</string>
+    <string name="weather_codes_freezingRain">Dondurucu yağış</string>
+    <string name="weather_codes_snow">Qar</string>
+    <string name="weather_codes_snowGrains">Qar dənəcikləri</string>
+    <string name="weather_codes_showers">Leysan</string>
+    <string name="weather_codes_snowShowers">Qarlı leysan</string>
+    <string name="weather_codes_thunder">İldırımlı leysan</string>
+    <string name="weather_codes_thunderHail">Dolulu ildırımlı leysan</string>
+    <string name="weather_attribution">Hava məlumatları: Open-Meteo.com (CC BY 4.0)</string>
     <string name="prayer_kerahatHeading">Kərahət vaxtları (təxmini)</string>
     <string name="prayer_kerahatNames_israk">Günəş doğarkən (işraq)</string>
     <string name="prayer_kerahatNames_istiva">Günorta öncəsi (istiva)</string>
@@ -122,5 +138,7 @@
     <string name="prayer_wordsHint">Toxunanda qalan vaxt sözlə ya da saat kimi göstərilir.</string>
     <string name="prayer_ramadanLeft">%1$s vaxtına qalan: %2$s</string>
     <string name="prayer_silent_friday">Cümə namazında səssizə al (60 dəq)</string>
+    <string name="widget_weather_name">Hava</string>
+    <string name="widget_weather_desc">Tətbiqdəki yerin cari havası və bu günün ən yüksək/ən aşağı temperaturu.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

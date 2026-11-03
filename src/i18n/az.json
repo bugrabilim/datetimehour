@@ -303,7 +303,7 @@
         "ul": [
           "**Saat və tarix:** Cihazınızın saatı və saat qurşağı yalnız brauzerinizdə oxunur və hesablanır. Bu məlumatlar serverə göndərilmir və saxlanılmır.",
           "**Məkan (namaz vaxtları):** Namaz vaxtları səhifəsində “Məkanımı istifadə et” seçsəniz, brauzeriniz məkanınızı yalnız cihazınızda vaxtların hesablanması üçün istifadə edir. Koordinatlar serverə göndərilmir və statistikaya düşmür; son seçiminiz brauzerinizin yerli yaddaşında qalır.",
-          "**Hava proqnozu (xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə, hava proqnozu səhifəsi və hava proqnozlu saat modelləri seçdiyiniz vilayətin və ya yerinizin təxmini koordinatlarını (təxminən 1 km dəqiqliklə) brauzerinizdən birbaşa məlumatı təqdim edən Open-Meteo-ya (api.open-meteo.com) göndərir; bu zaman IP ünvanınız da Open-Meteo-ya çatır. İcazə yoxdursa sorğu edilmir, əvəzində qısa izah göstərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur.",
+          "**Hava proqnozu (xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə, hava proqnozu səhifəsi və hava proqnozlu saat modelləri seçdiyiniz vilayətin və ya yerinizin təxmini koordinatlarını (təxminən 1 km dəqiqliklə) brauzerinizdən birbaşa məlumatı təqdim edən Open-Meteo-ya (api.open-meteo.com, air-quality-api.open-meteo.com) göndərir; bu zaman IP ünvanınız da Open-Meteo-ya çatır. İcazə yoxdursa sorğu edilmir, əvəzində qısa izah göstərilir. Saat Tarih serveri bu koordinatları görmür və saxlamır; Open-Meteo-nun öz məxfilik şərtləri tətbiq olunur.",
           "**Xəritə (kürə, xarici xidmət, icazə ilə):** Kuki seçimlərində xarici xidmətlərə icazə vermisinizsə və ana səhifədəki kürəni müəyyən səviyyədən çox yaxınlaşdırırsınızsa, xəritə kafelləri OpenStreetMap serverindən (tile.openstreetmap.org) birbaşa brauzerinizə yüklənir; bu zaman IP ünvanınız və baxdığınız ərazinin kafel ünvanları OpenStreetMap Fonduna çatır. İcazə yoxdursa və ya kürə uzaqdadırsa bu sorğu edilmir. Saat Tarih serveri bunları görmür; OpenStreetMap-in öz məxfilik şərtləri tətbiq olunur.",
           "**Qiblə və yaxınlıqdakı məscidlər:** Qiblə istiqaməti, məsafə və qiblə saatı brauzerinizdə hesablanır. Kompas üçün telefonunuzun istiqamət sensoru yalnız brauzerdə oxunur (iPhone icazə soruşur) və heç yerə göndərilmir. \"Məscidləri göstər\" desəniz və xarici xidmətlərə icazə vermisinizsə, seçilmiş yerin iki onluq rəqəmə qədər yuvarlaqlaşdırılmış koordinatları (təxminən 1 km) brauzerinizdən OpenStreetMap məlumatını təqdim edən Overpass xidmətinə (overpass-api.de) göndərilir; bu zaman IP ünvanınız da bu xidmətə çatır. Saat Tarih serveri bu koordinatları görmür.",
           "**Zəng musiqisi (YouTube, xarici xidmət, icazə ilə):** Zəngli saat alətində bir zəngə YouTube keçidi əlavə etmisinizsə və xarici xidmətlərə icazə vermisinizsə, zəng çalanda video YouTube-un genişləndirilmiş məxfilik rejimli pleyeri ilə (youtube-nocookie.com) brauzerinizə yüklənir; bu zaman IP ünvanınız və videonun identifikatoru Google-a (YouTube) çatır, pleyer də brauzerinizdə öz məlumatlarını saxlaya bilər. Keçid yalnız bu brauzerdə, zənginizlə birlikdə qalır. İcazə yoxdursa, pleyer yüklənmir və zəng öz səsi ilə çalır. Saat Tarih serveri bunları görmür; YouTube-un (Google) öz məxfilik şərtləri tətbiq olunur.",
@@ -322,7 +322,7 @@
         ],
         "ul": [
           "**Məkan:** \"Məkanımı istifadə et\" seçsəniz, məkanınız telefonda namaz vaxtlarını hesablamaq və ən yaxın vilayəti tapmaq üçün istifadə olunur; təxmini məkan (təxminən 1 km) yalnız telefonda saxlanılır. Vidcetlərdəki \"Avtomatik\" seçimi də məkanı yalnız telefonda istifadə edir.",
-          "**Hava:** Tətbiqdəki hava Apple Hava (WeatherKit) xidmətindən gəlir; bunun üçün seçilmiş vilayətin və ya məkanınızın təxmini koordinatları Apple-a göndərilir. Bu məlumatları biz görmürük; Apple-ın məxfilik şərtləri tətbiq olunur.",
+          "**Hava:** Tətbiqdəki hava Apple Hava (WeatherKit) xidmətindən gəlir; bunun üçün seçilmiş vilayətin və ya məkanınızın təxmini koordinatları Apple-a göndərilir. Bu məlumatları biz görmürük; Apple-ın məxfilik şərtləri tətbiq olunur. Havanın keyfiyyəti, tozcuq, model müqayisəsi və Apple Watch-dakı hava komplikasiyası isə Open-Meteo-dan (open-meteo.com) gəlir; bunun üçün koordinatlar iki onluq rəqəmə yuvarlaqlaşdırılaraq göndərilir.",
           "**Xəritə:** Dünya saatlarındakı kürə Apple Xəritələr ilə göstərilir; xəritə şəkilləri Apple-dan yüklənir.",
           "**Təqvim:** Yalnız icazə versəniz, telefonunuzdakı təqvim tədbirləri tətbiqdə göstərilir; tədbirlər telefonda oxunur, heç yerə göndərilmir. Tədbir əlavə etmək və silmək iPhone-un öz təqvim ekranı ilə və sizin təsdiqinizlə edilir.",
           "**Bildirişlər və zəngli saatlar:** Namaz vaxtı bildirişləri; xüsusi gün, fəslin başlanğıcı, Ay fazası, gün doğuşu və batışı, səhər hava xülasəsi, saat başı və yay vaxtı bildirişləri (saat başından başqa hər biri standart olaraq açıqdır; Ayarlar › Bildirişlər bölməsindən dəyişdirilə bilər); zəngli saatlar və taymerlər serversiz, telefonda qurulur. Yalnız hava xülasəsi üçün hava xidmətinə müraciət olunur (yuxarıdakı hava bəndi). Siyahı iOS-un arxa plan yeniləməsi ilə aktual saxlanılır; səsli elan telefonda yaradılır.",
@@ -2256,7 +2256,37 @@
     "visibility": "Görmə məsafəsi",
     "dewPoint": "Şeh nöqtəsi",
     "gusts": "Külək zərbəsi",
-    "details": "Təfərrüatlar"
+    "details": "Təfərrüatlar",
+    "chartTemp": "Temperatur",
+    "dayPart": "Gündüz",
+    "nightPart": "Gecə",
+    "tapHint": "Ətraflı məlumat üçün qrafikdə bir saata və ya siyahıda bir günə toxunun.",
+    "aqiTitle": "Havanın keyfiyyəti",
+    "aqiIndex": "Avropa havanın keyfiyyəti indeksi (EAQI)",
+    "aqiLevels": [
+      "Yaxşı",
+      "Qənaətbəxş",
+      "Orta",
+      "Pis",
+      "Çox pis",
+      "Son dərəcə pis"
+    ],
+    "pollen": "Tozcuq",
+    "pollenNames": {
+      "alder": "Qızılağac",
+      "birch": "Ağcaqayın",
+      "grass": "Ot",
+      "mugwort": "Yovşan",
+      "olive": "Zeytun",
+      "ragweed": "Ambroziya"
+    },
+    "pollenLevels": [
+      "Aşağı",
+      "Orta",
+      "Yüksək"
+    ],
+    "pollenNone": "Hazırda tozcuq yoxdur və ya bu yer üçün tozcuq proqnozu yoxdur (yalnız Avropa).",
+    "aqiSource": "Havanın keyfiyyəti və tozcuq: Open-Meteo (CAMS, Copernicus)"
   },
   "faqPage": {
     "title": "Tez-tez verilən suallar: saat, təqvim, namaz | Saat Tarih",
@@ -2284,7 +2314,7 @@
     "stats": "Statistika",
     "statsText": "Umami səhifə baxışlarını və bir neçə əməliyyatı sayır (brauzer, cihaz, dil və IP ünvanından çıxarılan ölkə və şəhər; IP saxlanılmır). Kuki istifadə olunmur. Standart olaraq bağlıdır.",
     "ext": "Xarici xidmətlər",
-    "extText": "Hava Open-Meteo-dan (api.open-meteo.com), böyüdülmüş kürədəki xəritə OpenStreetMap-dən (tile.openstreetmap.org), yaxınlıqdakı məscidlər OpenStreetMap-in Overpass xidmətindən (overpass-api.de), zəngə əlavə etdiyiniz YouTube musiqisi YouTube-dan (youtube-nocookie.com) yüklənir; bu zaman IP ünvanınız bu xidmətlərə çatır. Standart olaraq bağlıdır.",
+    "extText": "Hava Open-Meteo-dan (api.open-meteo.com, air-quality-api.open-meteo.com), böyüdülmüş kürədəki xəritə OpenStreetMap-dən (tile.openstreetmap.org), yaxınlıqdakı məscidlər OpenStreetMap-in Overpass xidmətindən (overpass-api.de), zəngə əlavə etdiyiniz YouTube musiqisi YouTube-dan (youtube-nocookie.com) yüklənir; bu zaman IP ünvanınız bu xidmətlərə çatır. Standart olaraq bağlıdır.",
     "save": "Seçimi saxla",
     "footerLink": "Kuki seçimləri",
     "privacy": "Məxfilik",

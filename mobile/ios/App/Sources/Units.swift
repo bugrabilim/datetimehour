@@ -45,6 +45,19 @@ enum Units {
         return decimal(m.converted(to: .millimeters).value) + " mm"
     }
 
+    /// Yağış miktarı mm olarak verilince
+    static func precip(_ mm: Double) -> String { precip(Measurement(value: mm, unit: UnitLength.millimeters)) }
+
+    /// Santigrat derece sayısından (Open-Meteo model karşılaştırması)
+    static func temp(celsius c: Double) -> String { temp(Measurement(value: c, unit: UnitTemperature.celsius)) }
+
+    /// Yalnız sayı (grafik ve tablolar; birim başlıkta)
+    static func tempValue(_ t: Measurement<UnitTemperature>) -> Int { Int(t.converted(to: imperial ? .fahrenheit : .celsius).value.rounded()) }
+    static func windValue(_ s: Measurement<UnitSpeed>) -> Int {
+        Int(s.converted(to: imperial ? .milesPerHour : .kilometersPerHour).value.rounded())
+    }
+    static var windUnit: String { imperial ? "mph" : T("weather.km", "").trimmingCharacters(in: .whitespaces) }
+
     /// Derece farkı (yarın uyarısı; Amerikan biriminde °F farkı)
     static func delta(_ c: Int) -> Int { imperial ? Int((Double(c) * 1.8).rounded()) : c }
 }
