@@ -20,9 +20,10 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
   - **ücretsiz**: herkese açık kalır.
   - **ileride Pro adayı**: ücretli bölüm açılırsa oraya konabilir; o güne kadar ücretsiz.
   - **—**: yapılmayacak.
+  - #25 (bağış) bu üç değerin dışındadır: bağış özellik açmaz, karar sahibindir.
 - Temel işler her zaman ücretsiz kalır: saat, alarm, vakitler, takvim. Bu analiz yalnız ileride neyin ücretli olabileceğini not eder; bugün ücretli hiçbir şey yok.
 
-**Durum (3 Kasım 2026):** 188 iş: 1 yapıldı (#82), 185 açık (7'si bizde hata: #87–#93), 2 ücretli sistemle birlikte gelecek (#53 ve #75; sunucu ve hesap gerektirir, sahibin kararıyla şimdi yapılmayacak). Kaynaklar: 1–8 ve 76–84 sahibin ekran görüntüleri; 9–75 birinci ajan dalgası; 85–86 ilk analizde "bitti" sayılıp eksik kalan kısımlar; 87–188 ikinci ajan dalgası (saat siteleri, hava ve takvim, zaman araçları, Ay ve gökyüzü, Google Play/widget/saat kadranları, tasarım).
+**Durum (3 Kasım 2026):** 192 iş: 1 yapıldı (#82), 189 açık (8'i bizde hata: #87–#93 ve #186), 2 ücretli sistemle birlikte gelecek (#53 ve #75; sunucu ve hesap gerektirir, sahibin kararıyla şimdi yapılmayacak). Kaynaklar: 1–8 ve 76–84 sahibin ekran görüntüleri; 9–75 birinci ajan dalgası; 85–86 ilk analizde "bitti" sayılıp eksik kalan kısımlar; 87–192 ikinci ajan dalgası (saat siteleri, hava ve takvim, zaman araçları, Ay ve gökyüzü, Google Play/widget/saat kadranları, tasarım; 189–192 doğrulamadan sonra eklendi).
 
 **Numaralar:** İlk analizden ayrıdır, "2. analiz #N" diye anılır. Numara sabittir. İş bitince yalnız "Durum" değişir, yeni iş sona eklenir. 1–8 numaralı işler 3 Kasım 2026'da ilk analizin 108–115 numaralarından buraya taşındı.
 
@@ -62,7 +63,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 30 | Doğa ve ortam sesleri kitaplığı (tik-tak, cırcır, dere, kafe, şömine, kütüphane…) ve uyku sesi karışımı (birden çok ses, ayrı ses düzeyi, fotoğraflı kartlar, kategoriler, mini oynatıcı); bizde 5 üretilmiş gürültü | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #52, #53) | temel sesler ücretsiz, çoğu Premium | ücretsiz (temel); ileride Pro adayı (ek paketler) | Focus To-Do, Flip Clock, ShutEye, Alarmy, Sleep as Android, SuperAlarm |
 | 31 | Odak istatistiğinde ay/yıl görünümü; çalıştıkça büyüyen fidan/orman koleksiyonu | Uygulama (+ site) | K/O | açık | Pro | ücretsiz | Forest, Focus To-Do |
 | 32 | Wear OS kadranında renk seçimi (WFF UserConfigurations) ve daha çok saat kadranı | Wear OS | K | açık (birinci araştırmadan kalan, ilk analiz #78) | karışık | ücretsiz | Facer |
-| 33 | Mağaza görüntülerinde gerçek ortam fotoğrafı (masa, komodin, MagSafe standı); bizim görüntülerimiz simülatörden | Mağaza | K | açık | — | — (mağaza görseli) | Fliqlo, Clocks, Bauhaus |
+| 33 | Mağaza görüntülerinde gerçek ortam fotoğrafı (masa, komodin, MagSafe standı); bizim görüntülerimiz simülatörden | Mağaza | K | açık | — | ücretsiz (ürün özelliği değil, mağaza görseli) | Fliqlo, Clocks, Bauhaus |
 | 34 | Tek alarmda birden çok görev (zincir) ve rastgele görev | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | bilinmiyor / abonelik | ücretsiz | Alarmy (26.42.0), Wayk |
 | 35 | Kapatma görevini alarm çalmadan önizleme ("Önizleme" düğmesi) | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | ücretsiz | ücretsiz | Wayk, Alarm Clock Xtreme |
 | 36 | Kamerayla nesne ya da sahne görevi (bardak, diş fırçası, gökyüzü, toplanmış yatak), squat/şınav; cihaz içinde (Vision, ML Kit). Bizdeki fotoğraf görevi yalnız aynı yeri eşleştirir | Uygulama | O/B | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | büyük olasılıkla Premium | ücretsiz | Alarmy, Wayk, SuperAlarm |
@@ -119,21 +120,21 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 87 | **Hata:** Hava sekmesinde başlık "14 günlük tahmin", ekranda 7 gün (iOS `WeatherView.swift:123` `prefix(7)`; Android `Weather.kt:126` `forecast_days=7`, `WeatherScreen.kt:156` `take(7)`). Android 14 güne çıkar; iOS'ta WeatherKit'in günlük tahmini 10 gün olduğu için başlık iOS'ta "10 günlük" olmalı (15 dilde yeni metin; WeatherKit sınırı doğrulanmalı) | Uygulama | K | açık (hata; kodda doğrulandı) | — | ücretsiz | 2. dalga ajan: hava-takvim (ham: `hava-takvim.md`); görüntü `tr-hava.png` |
 | 88 | **Hata:** Yüzde işareti her dilde aynı yerde: uygulamalarda başta ("Humidity %64"; iOS `WeatherView.swift:73, 80, 111`, Android `WeatherScreen.kt:112, 119, 146`), sitede sonda (`src/js/weather.js:57`). Türkçede başta ("%64"), İngilizcede sonda ("64%") olmalı; dile göre biçimlenmeli (`NumberFormatter` / `Intl.NumberFormat` yüzde biçimi) | Uygulama + site | K | açık (hata; kodda doğrulandı) | — | ücretsiz | 2. dalga ajan: hava-takvim; görüntü `en-hava-koyu.png` |
 | 89 | **Hata:** Ay evresi adı yüzdeyle çelişiyor: ad döngünün 8 eşit diliminden seçiliyor (`src/js/nature-calc.js:71` `floor(frac*8+0.5)`; uygulamalar aynı kuralı taşıyor), ekranda "Son dördün · yüzde 63" (widget) ve "Son dördün · yüzde 33" (site). Dördün adı yalnız yarım Ay'a yakın günlerde kullanılmalı. Açık temada dolunay zeminden ayırt edilemiyor (Ay #F2EDD6, zemin #F7F4EE, karşıtlık ~1,06:1) | Uygulama + site | K | açık (hata; kodda doğrulandı) | — | ücretsiz | 2. dalga ajan: gökyüzü (ham: `gokyuzu.md`); görüntü `widget-ay.png` |
-| 90 | **Hata:** Sitede tutulma bölgeleri ad yerine kodla yazıyor ("005, 011, 018"): `nature.js:195` tarayıcının `Intl.DisplayNames`'ine güveniyor, Chromium sayısal bölge kodlarına (UN M49) ad vermiyor; bölge adları 15 dilde çeviri dosyasına alınmalı. Tutulma haritasının seçicisi UTC tarihini gösteriyor ("20 Şubat"; üstteki listede "21 Şubat 02:13"; `eclipse-map.js:108`). Uygulamalardaki bölge adları ekranda doğrulanmadı | Site | K | açık (hata) | — | ücretsiz | 2. dalga ajan: gökyüzü |
+| 90 | **Hata:** Sitede tutulma bölgeleri ad yerine kodla yazıyor ("005, 011, 018"): `nature.js:195` tarayıcının `Intl.DisplayNames`'ine güveniyor, denetimdeki headless Chromium 141 sayısal bölge kodlarına (UN M49) ad vermedi (Node 22 "005 → Güney Amerika" veriyor; gerçek Chrome, Safari ve Firefox'ta denenmeli); bölge adları 15 dilde çeviri dosyasına alınmalı. Tutulma haritasının seçicisi UTC tarihini gösteriyor ("20 Şubat"; üstteki listede "21 Şubat 02:13"; `eclipse-map.js:108`). Uygulamalardaki bölge adları ekranda doğrulanmadı | Site | K | açık (hata) | — | ücretsiz | 2. dalga ajan: gökyüzü |
 | 91 | **Hata:** Gece gökyüzü sayfası: açık temada yıldız adı lacivert diskin dışına taşıyor ve beyaz yazı kayboluyor ("Arcturus"); Venüs için başı sonu aynı aralık ("07:00–07:00"); telefonda (390 px) gezegen tablosu taşıyor | Site | K | açık (hata) | — | ücretsiz | 2. dalga ajan: gökyüzü |
 | 92 | **Hata:** Uygulama takviminde yabancı dillerde Türkiye tatilleri ülke adı olmadan görünüyor (Rusçada "Государственный праздник", `ru-takvim.png`); en azından "Türkiye" etiketi gerekir (ülke seçimi ayrı iş) | Uygulama | K | açık (hata) | — | ücretsiz | 2. dalga ajan: hava-takvim |
 | 93 | **Hata:** Toplantı planlayıcı sayfasında H1 ile kart başlığı aynı metinle alt alta yineleniyor; telefonda tablo ilk ekranda görünmüyor | Site | K | açık (hata) | — | ücretsiz | 2. dalga ajan: web (ham: `web-siteler.md`) |
 | 94 | Saat ekranı dengesi: ekranın ~%58'i boş zemin; saat ve denetim satırı dikeyde ortalanır, saat tam genişliğe büyür (30 Ekim "saat ekranında yalnız saat" kararına dokunmaz) | Uygulama | K | açık | — | ücretsiz | 2. dalga ajan: tasarım (ham: `tasarim.md`, T2); `tr-saat.png`, `tr-ilk-acilis.png`; Fullscreen Clock (rakam ekranın ~%40'ı) |
-| 95 | Alt çubuk: seçili sekmede ana rengin açık tonunda hap (#f6e5d6 / koyu #3a2b1d, sitedeki `.nav` ile aynı), dolu/çizgi simge çifti (bugün yarısı dolu yarısı çizgi, `MainActivity.kt:235`), yazı 10 → 11 sp | Uygulama | K | açık | — | ücretsiz | tasarım T5; Alarmy, Athan Pro, Vakit (yüzen hap) |
+| 95 | Alt çubuk: seçili sekmede ana rengin açık tonunda hap (#f6e5d6 / koyu #3a2b1d, sitedeki `.nav` ile aynı), yazı 10 → 11 sp. Dolu/çizgi simge çifti zaten var (Android `MainActivity.kt:103–110`, iOS `SaatTarihApp.swift:282`), ama Android'de `Outlined.Public` ve `Outlined.NightsStay` çizimleri dolu göründüğü için iki sekme seçili gibi duruyor: bu iki glif değiştirilmeli | Uygulama | K | açık | — | ücretsiz | tasarım T5 (doğrulamada düzeltildi); Alarmy, Athan Pro, Vakit (yüzen hap) |
 | 96 | Boş durumlar için ortak bileşen: 64 pt çizgi simge (ana renk %60) + 17 pt başlık + soluk açıklama + hap eylem düğmesi (bugün tek gri satır: `Countdowns.swift:122`, `Journal.swift:100`, `ToolsTab.swift:183`) | Uygulama | K | açık | — | ücretsiz | tasarım T6; Rise, Alarmy |
-| 97 | Kendi çizgi illüstrasyon ve simge takımı (~24 vektör, ana renk + ikinci renk, 2 pt çizgi, temaya göre renk değişir; fotoğraf yok): emojilerin yerine (Mevsimler 🍂🌍🔦, hava, duygu yüzleri) ve namaz rehberi (#68) için. Bugün Android'de emoji, iOS'ta SF Symbols; iki platform farklı görünüyor | Uygulama (+ site) | O/B | açık | — | ücretsiz | tasarım T7; ajan hava-takvim; Alarmy (beyin çizimi), Codeida (karakter) |
-| 98 | Başlık hiyerarşisi: sayfa başlıkları ~20 sp → iOS `.largeTitle` 34 pt, Android `headlineMedium` 28 sp; bölüm başlığı 13 pt; büyük harf yalnız yerel ayarla | Uygulama | K | açık | — | ücretsiz | tasarım T8; Analog Clock (38–44 pt), Varlık Saati (44 pt) |
-| 99 | Liste satırlarında renkli simge kutuları (36 pt, köşe 10 pt, zemin ana rengin açık tonu): Araçlar, alarm görevleri, ayarlar (bugün düz satırlar, `WakeTasks.kt`, `tr-araclar.png`) | Uygulama | K | açık | — | ücretsiz | tasarım T10; Alarmy görevleri (#223c45 + #4dcff0) |
+| 97 | Kendi çizgi illüstrasyon ve simge takımı (~24 vektör, ana renk + ikinci renk, 2 pt çizgi, temaya göre renk değişir; fotoğraf yok): emojilerin yerine (Mevsimler 🍂🌍🔦, hava, duygu yüzleri) ve namaz rehberi (#68) için. Bugün hava simgeleri Android'de emoji, iOS'ta SF Symbols (iki platform farklı görünüyor); Mevsimler'de iki platformda da emoji (`WorldSeasons.swift:172, 188`) | Uygulama (+ site) | O/B | açık | — | ücretsiz | tasarım T7; ajan hava-takvim; Alarmy (beyin çizimi), Codeida (karakter) |
+| 98 | Başlık hiyerarşisini tutarlı yapmak: kimi sayfa başlıkları ~20 sp (Ayarlar, `tr-ayarlar.png`), kimileri 26–28 sp (Takvim, Araçlar, Mevsimler); hepsi iOS `.largeTitle` 34 pt, Android `headlineMedium` 28 sp; bölüm başlığı 13 pt (Android'de var, `Common.kt:96`); büyük harf yalnız yerel ayarla | Uygulama | K | açık | — | ücretsiz | tasarım T8 (doğrulamada düzeltildi); Analog Clock (38–44 pt), Varlık Saati (44 pt) |
+| 99 | Liste satırlarında renkli simge kutuları (36 pt, köşe 10 pt, zemin ana rengin açık tonu): Araçlar, alarm görevleri, ayarlar (Araçlar satırlarında renkli simge var, kutu yok; alarm görevlerinde düz satır, `WakeTasks.kt`, `tr-araclar.png`) | Uygulama | K | açık | — | ücretsiz | tasarım T10; Alarmy görevleri (#223c45 + #4dcff0) |
 | 100 | Hata ve başarı renkleri uygulamada site belirteçlerinden (`--err` #a31d1d / koyu #ff9d9d, `--ok` #176b3a / #7fd9a1); Android alarm uyarısı bugün Material kırmızısı #d32f2f | Uygulama | K | açık | — | ücretsiz | tasarım T12; `tr-alarm.png` |
-| 101 | Zamanlayıcı, pomodoro ve aralık ekranlarında ilerleme görseli: kalan süre halkası, evre rengiyle dolan tam ekran (çalış yeşil, dinlen kırmızı), tur noktaları ya da domatesler, ince dev rakam, çalışan zamanlayıcı satırı belirgin. Bugün düz kart ve düz sayı (`tr-zamanlayici.png`, `tr-pomodoro.png`, `tr-hiit.png`; Android'de halka çizimi yok; iOS'ta yalnız HIIT'te çubuk, `Intervals.swift:645`). Rakiplerin hepsinde var; en zayıf ekranlarımız | Uygulama | K/O | açık | ücretsiz | ücretsiz | 2. dalga ajan: araçlar (ham: `araclar.md`); MultiTimer, Interval Timer (#56D495), Seconds (#8AFF34 / #FF4538), Focus Keeper (#FF5C5D), Be Focused, Timeglass, Timer+ |
+| 101 | Zamanlayıcı, pomodoro ve aralık ekranlarında ilerleme görseli: kalan süre halkası, evre rengiyle dolan tam ekran (çalış yeşil, dinlen kırmızı), tur noktaları ya da domatesler, ince dev rakam, çalışan zamanlayıcı satırı belirgin. Bugün düz kart ve düz sayı (`tr-zamanlayici.png`, `tr-pomodoro.png`, `tr-hiit.png`); halka çizimi yok; yalnız aralık ekranında iki platformda ince çubuk var (`Intervals.swift:645`, `Intervals.kt:544–548`). Rakiplerin hepsinde var; en zayıf ekranlarımız | Uygulama | K/O | açık | ücretsiz | ücretsiz | 2. dalga ajan: araçlar (ham: `araclar.md`); MultiTimer, Interval Timer (#56D495), Seconds (#8AFF34 / #FF4538), Focus Keeper (#FF5C5D), Be Focused, Timeglass, Timer+ |
 | 102 | Geri sayım görselleri: fotoğraflı tam ekran ayrıntı (cam kutuda yıl…saniye sütunları), hazır zemin kitaplığı, sıfıra inince konfeti ya da havai fişek (listede renkli kart ve birim gösterimi #73'te) | Uygulama | K/O | açık | ücretsiz (Days'te filigran kaldırma büyük olasılıkla Pro) | ücretsiz | Countdown (Find Appiness), Countdown Star, Days |
 | 103 | Fotoğraf dokulu Ay: NASA SVS "CGI Moon Kit" dokusuyla (svs.gsfc.nasa.gov/4720, `lroc_color_2k.jpg` 2048×1024, 447 KB; SVS "public domain unless otherwise noted", atıf "NASA's Scientific Visualization Studio") her evre cihazda çizilir: sürekli evre, yeryüzü ışığı, güney yarımkürede ters. Bugün uygulamalarda 8 emoji (`MoonView.swift:5`, `MoonScreen.kt:44`, `MoonWidget.swift`, `Widgets.kt:220`; Android'de sarı çizgi film, iPhone'da gri; takvimde 3–4 gün aynı görünüyor), sitede düz iki renkli SVG (`nature.js` moonIcon) | Uygulama + site + widget | O | açık | ücretsiz | ücretsiz | 2. dalga ajan: gökyüzü; The Moon, MOON, Deluxe Moon, Moon Phases, Lumos, Lumy, Sky Guide |
-| 104 | Kronometre: tam ekran ve yatay dev rakam; en hızlı (↑) ve en yavaş (↓) tur işareti; turu kopyalama (bugün turlar yalnız CSV'de) | Uygulama | K | açık | ücretsiz | ücretsiz | Stopwatch‰, Seconds, Samsung Saat |
+| 104 | Kronometre: tam ekran ve yatay dev rakam; turu kopyalama. (En hızlı ve en yavaş tur işareti bizde var: iOS `ToolsTab.swift:197–198`, Android `ToolsScreen.kt:216–217`, site `tools.js:175–176`; doğrulamada düzeltildi) | Uygulama | K | açık | ücretsiz | ücretsiz | Stopwatch‰, Seconds |
 | 105 | Paylaşım kartları: hava, Ay ve odak ilerlemesi ("Ders: 3 sa 58 dk") için görsel kart (bugün yalnız vakit ve geri sayım, `ShareCards`) | Uygulama | K | açık | ücretsiz | ücretsiz | MGM, MOON, Focus Keeper, Days |
 | 106 | Hava ek ölçümleri: rüzgâr yönü, hamle, görüş, çiy noktası, yağış mm, gün doğumu/batımı, basınç birimi seçimi. Bugün 6 değer; Android rüzgâr yönünü ve doğuş/batışı çekiyor ama göstermiyor (`Weather.kt` `windDir`, `Day.sunrise`); sitede yön ve günlük mm var | Uygulama | K | açık | ücretsiz | ücretsiz | Weather Live, MGM, The Weather Channel, Yahoo, AccuWeather |
 | 107 | Saatlik sıcaklık eğrisi; grafik türünü çiplerle değiştirme (hissedilen, yağış, rüzgâr); saate ya da güne dokununca ayrıntı (gündüz/gece, nem aralığı, yön). Bugün simge şeridi ve dokunulamayan satırlar | Uygulama (+ site) | O | açık | ücretsiz | ücretsiz | CARROT, The Weather Channel, Weather Live, MGM, AccuWeather |
@@ -158,30 +159,30 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 126 | Seçili günü zaman çizelgesi olarak gösterme; bayramlara çizimli kart | Uygulama | O | açık | ücretsiz | ücretsiz | Structured, Google Calendar |
 | 127 | Yıl görünümünde etkinlik yoğunluğu ısı haritası (düşük öncelik) | Uygulama | O | açık | ücretsiz | ücretsiz | Fantastical |
 | 128 | Dünya saatlerinde şehir arama: uygulamada yalnız 31 şehir eklenebiliyor (`cities.json`; `WorldScreen.kt:173`, `WorldSeasons.swift:112`), oysa `places.json` (1960 yer) uygulamada zaten var; kısaltmayla arama (EST, CET) | Uygulama | K | açık (birinci araştırmadan kalan: ilk analizin ajan tablosunda "kısmen (31 şehir)" diye kalmış, numara almamış) | ücretsiz | ücretsiz | World Clock Widgets (Overdesigned, 10.000+ şehir), World Clock Widget (Lasmit), Time Buddy |
-| 129 | Dünya saati satırı ve kartı: kişi adı ve emoji ("Annem"), bayrak, saat dilimi kısaltması, gündüz/gece rengi (gök renkli saat kutusu: gündüz #D5E8FF, akşam #BE5446, gece lacivert), ertesi gün işareti, gün doğumu, şehir başına hava; şehre dokununca ayrıntı sayfası (harita, GMT farkı, Güneş, Ay). Bugün saat, fark ve ofset (`WorldScreen.kt` 126–136, site `world.js` 83–85); hava yalnız kürede | Uygulama + site | K | açık | ücretsiz | ücretsiz | Lasmit, Overdesigned, Samsung Saat, canlisaat, savvytime, everytimezone, saat-kac.tr |
+| 129 | Dünya saati satırı ve kartı: kişi adı ve emoji ("Annem"), bayrak, saat dilimi kısaltması, gündüz/gece rengi (gök renkli saat kutusu: gündüz #D5E8FF, akşam #BE5446, gece lacivert), ertesi gün işareti, gün doğumu, şehir başına hava; uygulamada şehre dokununca ayrıntı sayfası (harita, GMT farkı, Güneş, Ay; sitede şehir sayfaları zaten var). Bugün satırda saat, fark ve ofset (`WorldScreen.kt` 126–136, site `world.js` 83–85); hava yalnız kürede (kayıtlı yerlerde hava #115 ile birlikte yapılır) | Uygulama + site | K | açık | ücretsiz | ücretsiz | Lasmit, Overdesigned, Samsung Saat, canlisaat, savvytime, everytimezone, saat-kac.tr |
 | 130 | Dünya saati widget'ları: saat çakışma ızgarası (Time Overlap), gece gölgeli dünya haritası, sözle saat, 8 şehir, şehir kodu (LAX). Bugün küçükte 2, ortada 4 şehir (`MoreWidgets.swift:142`). Kilit ekranı #14'e, Dynamic Island'da iki şehir #19'a ek | Uygulama | O | açık | kısmen Premium | ücretsiz (temel); ileride Pro adayı (harita, ızgara) | Lasmit, Overdesigned |
-| 131 | 24 saatlik çok ibreli dünya kadranı: üst yarı gündüz, alt yarı gece; her şehir bir ibre; ibreyi sürükleyerek saat çevirme (saat modeli olarak da) | Uygulama + site | O | açık | World Clock Pro: abonelik ₺79,99/ay | ileride Pro adayı | World Clock Pro |
+| 131 | 24 saatlik çok ibreli dünya kadranı: üst yarı gündüz, alt yarı gece; her şehir bir ibre; ibreyi sürükleyerek saat çevirme (saat modeli olarak da) | Uygulama + site | O | açık | World Clock Pro: abonelik ₺79,99/ay | sitede ücretsiz; uygulamada ileride Pro adayı | World Clock Pro |
 | 132 | Uzak şehrin saatine bağlı alarm (telefon başka dilime geçse de o şehrin saatinde çalar) | Uygulama | K | açık | Pro olabilir | ücretsiz | World Clock Widgets (Overdesigned) |
 | 133 | Zamanlayıcı ayrıntıları: renk, simge, bitiş saati ("🕓 16:43"; sitede var `data-cd-endsat`, uygulamada yok), ±1 sa / ±10 dk, belirli saatte başlat ya da bitir, kendiliğinden tekrar, bitince ileri say, iptali geri al, klasör (bugün yalnız "+1 dk", `Intervals.kt:398`; `TimerItem`'da renk ve simge alanı yok) | Uygulama | K | açık | ücretsiz | ücretsiz | Timer+, MultiTimer, Timeglass, Samsung Saat |
 | 134 | Süre girişi: hesap makinesi tuş takımı (gün/sa/dk/sn tuşları) ya da cetvel kaydırıcı (bugün ok düğmeleri ve `Stepper`, `Intervals.kt` 521–524) | Uygulama | K | açık | ücretsiz | ücretsiz | MultiTimer, Interval Timer, Focus Keeper |
-| 135 | Rutin ve aralık ekranı: "Sıradaki" bloğu, sıradaki adımlar ve bitiş saatleri, ⏪/⏩ ile adım atlama, duyuru seçenekleri ("sıradaki: …", "yarısı", "10 sn kaldı"), ekran kilidi, bitiş özeti (seri, toplam süre, "yarın hatırlat"), antrenman geçmişi (bugün duyuruda evre adı ve son 3 sn, `HiitConfig.cue`) | Uygulama | K | açık | ücretsiz | ücretsiz | Timer+, Seconds, Interval Timer |
+| 135 | Rutin ve aralık ekranı: sıradaki adımların listesi ve bitiş saatleri ("Sıradaki: {ad}" satırı var: `Intervals.swift:644`, `Intervals.kt:541–543`), ⏪/⏩ ile adım atlama, duyuru seçenekleri ("sıradaki: …", "yarısı", "10 sn kaldı"), ekran kilidi, bitiş özeti (seri, toplam süre, "yarın hatırlat"), antrenman geçmişi (bugün duyuruda evre adı ve son 3 sn, `HiitConfig.cue`) | Uygulama | K | açık | ücretsiz | ücretsiz | Timer+, Seconds, Interval Timer |
 | 136 | Zamanlayıcı ve pomodoro widget'ları: etkileşimli, etkin zamanlayıcılar listesi, "bugün 12 sa 45 dk odak", hazır zamanlayıcıyı ana ekrandan başlatma (bugün yalnız kronometre ve zikir widget'ı, `ToolWidgets.swift`) | Uygulama | O | açık | ücretsiz ya da Premium | ücretsiz | Timer+, MultiTimer, Focus Keeper, Flora, Visual Countdown Timer |
-| 137 | Apple Watch ve Wear OS'ta zaman araçları: alarm listesi, zamanlayıcı (hazır süreler 5/10/15/20/30), kronometre, pomodoro, aralık (nabızla), geri sayım, dünya saati, "sıradaki alarm" kutucuğu; çalan alarmı saatten erteleme ya da kapatma. Bugün saat uygulamaları yalnız saat ve vakit gösteriyor (`Watch/Sources/WatchApp.swift`, `wear/.../WearActivity.kt`; tek kutucuk `PrayerTileService`) | Apple Watch, Wear OS | O/B | açık (ilk analiz #90 bitti sayılmıştı, bu kısım eksik) | Google ve Samsung ücretsiz; diğerlerinde çoğu ücretli sürümde | ücretsiz | Google Saat (Wear), Samsung Saat, Seconds, Focus Keeper, Be Focused, MultiTimer, Countdown, Lasmit |
+| 137 | Apple Watch ve Wear OS'ta zaman araçları: alarm listesi, zamanlayıcı (hazır süreler 5/10/15/20/30), kronometre, pomodoro, aralık (nabızla), geri sayım, dünya saati, zikirmatik, "sıradaki alarm" kutucuğu; çalan alarmı saatten erteleme ya da kapatma. Bugün saat uygulamaları yalnız saat ve vakit gösteriyor (`Watch/Sources/WatchApp.swift`, `wear/.../WearActivity.kt`; tek kutucuk `PrayerTileService`) | Apple Watch, Wear OS | O/B | açık (ilk analiz #90 bitti sayılmıştı, bu kısım eksik) | Google ve Samsung ücretsiz; diğerlerinde çoğu ücretli sürümde | ücretsiz | Google Saat (Wear), Samsung Saat, Seconds, Focus Keeper, Be Focused, MultiTimer, Countdown, Lasmit |
 | 138 | Geri sayımı bağlantıyla paylaşma; alan kişi kendi uygulamasına ekleyebilir (sitedeki `?t=&n=` biçimi kullanılabilir; bugün yalnız görsel kart) | Uygulama + site | K | açık | ücretsiz | ücretsiz | Countdown, Days, Timer+, MultiTimer |
 | 139 | Geri sayımda etiket ve etiketle süzme, kişilerden doğum günü alma, takvimden otomatik içe aktarma, yalnız iş günü sayma, esnek tekrar, etkinlik başına saat dilimi, geri sayıma alarm (bugün yalnız yıllık tekrar) | Uygulama | K–O | açık | otomatik içe aktarma ve alarm Premium | ücretsiz | Countdown, Countdown Star |
 | 140 | Görsel zamanlayıcılar: rakamsız pasta zamanlayıcı ("Time Timer" tarzı; geçen süreyle resim açılır), çocuk modu (sayarken düğmeler gizli), kum saati; sitede renk değiştiren sunum zamanlayıcısı | Uygulama + site | K/O | açık | Visual Countdown Timer resim paketi ₺49,99 | ücretsiz | Visual Countdown Timer, online-stopwatch |
 | 141 | Sınav salonu zamanlayıcısı: sınav adı, salon no, okuma süresi + sınav süresi, tam ekran (ortak yazılı ve deneme sınavları için) | Site (+ uygulama) | K | açık | online-stopwatch: ücretsiz (reklamlı), Premium $24/yıl | ücretsiz | online-stopwatch |
 | 142 | Sınıf araçları: isim seçici, takım oluşturucu, sayaç (kapsam sahibin kararı) | Site | K–O | açık (birinci araştırmadan kalan: ilk analiz tablosunda vardı, 107'lik listeye alınmamış) | ücretsiz | ücretsiz | online-stopwatch |
 | 143 | Mac menü çubuğunda pomodoro (Mac uygulamamız yalnız saat ve vakit gösteriyor) | Mac | O | açık | Be Focused Pro | ücretsiz | Be Focused |
-| 144 | Günaydın kartında telefon takviminden bugünün etkinlikleri (bugün yalnız özel günler: `Morning.swift`, `AlarmActivity.kt`) | Uygulama | K | açık | ücretsiz | ücretsiz | Alarm Clock Xtreme ("Günüm") |
+| 144 | Günaydın kartında telefon takviminden bugünün etkinlikleri (bugün yalnız özel günler: `Morning.swift`, `AlarmActivity.kt`) | Uygulama | K | açık | ücretsiz | ücretsiz | Alarm Clock Xtreme |
 | 145 | Tablet ve katlanırda iki sütunlu alarm ve dünya saati ızgarası (bugün iPad'de sayfa 900 pt ortalanır; Android'de tablet düzeni yok) | Uygulama | K | açık | ücretsiz | ücretsiz | Samsung Saat |
 | 146 | Ay ve gökyüzünde tarih/saat kaydırma (çentikli zaman cetveli); Ay takviminde güne dokununca o günün Ay'ı | Uygulama | K/O | açık | ücretsiz | ücretsiz | Moon Phases, The Moon, Lumos, Deluxe Moon |
-| 147 | Uygulamada Ay verileri: doğuşa/batışa kalan süre, üst geçiş, dolunaya kalan gün, dördün tarihleri, uzaklık, yerberi/yeröte, süper Ay ve mavi Ay (bugün uzaklık ve süper Ay yalnız sitede, `sky.js`) | Uygulama | K | açık | ücretsiz | ücretsiz | Moon Phases, Lumos, MOON, Deluxe Moon |
+| 147 | Uygulamada Ay verileri: doğuşa/batışa kalan süre, üst geçiş, dördün tarihleri, uzaklık, yerberi/yeröte, süper Ay ve mavi Ay (bugün uzaklık ve süper Ay yalnız sitede, `sky.js`; sıradaki dolunay ve yeni ay tarihi Ay widget'ında var) | Uygulama | K | açık | ücretsiz | ücretsiz | Moon Phases, Lumos, MOON, Deluxe Moon |
 | 148 | Yıl evre çarkı ve evre tablosu ("13 dolunay, 1 mavi Ay") | Uygulama + site | K | açık | ücretsiz | ücretsiz | Deluxe Moon |
 | 149 | Ay widget'ları orta ve büyük boy (sıradaki 4 evre, evreli ay takvimi, Ay yükseklik eğrisi) ve saat komplikasyonu (bugün yalnız küçük, `MoonWidget.swift` `.systemSmall`; kilit ekranı #14'e ek) | Uygulama + saatler | O | açık | çoğu ücretsiz, Lumos'ta Pro | ücretsiz | Moon Phases, Deluxe Moon, Lumy, MOON |
 | 150 | Güneş için Live Activity ("gün batımına 1:18:36"); Güneş widget'ları (yay, 24 saatlik halka, ekinoks geri sayımı; widget kısmı #15'e ek) | Uygulama | K/O | açık | Lumy ücretli uygulama, SolarWatch Gold | ücretsiz | Lumy, SolarWatch |
 | 151 | Sivil, denizcilik ve astronomik alacakaranlık; ilk ve son ışık; 24 saatlik ışık halkası (bugün yalnız altın ve mavi saat, `sunAltTimes`) | Uygulama + site | K | açık | çoğu ücretsiz | ücretsiz | Sun Seeker, SolarWatch, Lumos, Sky Tonight, Lumy |
-| 152 | Özelleştirilebilir Güneş ve Ay bildirimleri: olay seçimi (tutulma, dördün, süper Ay, altın saat), kaç dk önce, günler (bugün iki sabit anahtar `notify.cat.moon`, `notify.cat.sun`) | Uygulama | K | açık | **ücretli**: Moon Phases ₺49,99, Lumos ve Lumy'de Pro | ücretsiz | Moon Phases, Lumos, Lumy, Daily Life with Moon Calendar |
+| 152 | Özelleştirilebilir Güneş ve Ay bildirimleri: olay seçimi (tutulma, dördün, süper Ay, altın saat), kaç dk önce, günler (bugün iki sabit anahtar: `notify.moon`, `notify.sun`) | Uygulama | K | açık | **ücretli**: Moon Phases ₺49,99, Lumos ve Lumy'de Pro | ücretsiz | Moon Phases, Lumos, Lumy, Daily Life with Moon Calendar |
 | 153 | Güneşe bağlı kayan alarm: doğuş/batış ± dk (bugün vakit alarmı "Güneş" vaktini kurabiliyor, ama o doğuştan ~7 dk önce ve süre ayarı yok) | Uygulama | K | açık | ücretsiz görünüyor | ücretsiz | SolarWatch |
 | 154 | Gökyüzü olay takvimi: kavuşum, karşı konum, meteor yağmurları, tutulmalar; bildirim ve .ics (bugün tutulma, dolunay ve yeni ay var; meteor yok; tarihler IMO'dan doğrulanmalı) | Site + uygulama | O | açık | ücretsiz | ücretsiz | Sky Guide, Sky Tonight, SkyView, Star Walk 2 |
 | 155 | "Bu gece" özeti: gezegen yükseklik grafiği, gözlem uygunluğu (bulut + Ay + karanlık süre), öneri cümleleri (bugün sitede yalnız tablo) | Site + uygulama | O | açık | ücretsiz (SkyView eklentisi ₺49,99) | ücretsiz | Sky Guide, Sky Tonight, SkyView, Night Sky |
@@ -191,7 +192,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 159 | Tutulma ayrıntısı: Ay tutulması çizimi (temas anları), uygulamada tutulma haritası (bugün yalnız sitede), konuma göre Güneş tutulması örtme yüzdesi; haritanın 2°'lik basamaklı kenarları | Uygulama + site | O | açık | ücretsiz | ücretsiz | Star Walk 2, SolarWatch |
 | 160 | Çocuklar için "Ay neden şekil değiştirir?", etkileşimli yörünge, bilgi yarışması (bugün `kids.*` metin kartları ve durağan çizimler) | Uygulama | O | açık | Star Walk Kids: ücretsiz + reklam | ücretsiz | Star Walk Kids |
 | 161 | Dolunay adları (Türkçe karşılıkları doğrulanmalı) | Uygulama + site | K | açık | ücretsiz | ücretsiz | Star Walk 2 |
-| 162 | Komplikasyonda ve küçük vakit widget'ında sıradaki vakte kalan süre halkası (iOS Gauge, Wear `RANGED_VALUE`); saatte kenar boyunca ilerleme yayı ve kavisli yazı (bugün yalnız metin: `WatchComplications.swift` 78–81; Wear `SHORT_TEXT, LONG_TEXT`) | iOS, watchOS, Wear OS | K | açık | ücretsiz | ücretsiz | Pray Watch, Google Saat (Wear), Ezan Vakti Pro (Play), Facer |
+| 162 | Komplikasyonda ve küçük vakit widget'ında sıradaki vakte kalan süre halkası (iOS Gauge, Wear `RANGED_VALUE`); saatte kenar boyunca ilerleme yayı ve kavisli yazı (bugün yalnız metin: `WatchComplications.swift` 78–81; Wear `SHORT_TEXT, LONG_TEXT`). Kilit ekranı dairesel widget'ı (#14) ile birlikte yapılır | iOS, watchOS, Wear OS | K | açık | ücretsiz | ücretsiz | Pray Watch, Google Saat (Wear), Ezan Vakti Pro (Play), Facer |
 | 163 | Vakit widget'ında gün ilerleme çubuğu: beş vakit yan yana, çizgi ve işaret sıradaki vakte doğru dolar (bugün `widget_today.xml` yalnız sıradaki vakti vurgular) | Uygulama (widget) | K | açık | ücretsiz (reklamlı uygulama) | ücretsiz | Ezan360 (Play) |
 | 164 | Vakit bildiriminde "Ertele" ve uzun basınca zengin içerik (kıble pusulası + geri sayım; iOS Notification Content Extension) | Uygulama (iOS) | O | açık | ücretsiz | ücretsiz | Pray Watch |
 | 165 | Yıl ilerlemesi widget'ı ("203/365", 365 nokta) | Uygulama (widget) | K | açık | ücretsiz görünüyor | ücretsiz | Color Widgets |
@@ -203,21 +204,25 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 171 | iOS 18 koyu ve renklendirilmiş uygulama simgesi; renklendirilmiş widget'larda `widgetAccentable` (bugün uygulama simgesi tek görsel) | Uygulama (iOS) | K | açık | — (sistem özelliği) | ücretsiz | 2. dalga ajan: android-widget-saat |
 | 172 | Yazıyla tarih ve saat gösteren tipografik widget ("Monday / twenty two / JUNE"; düşük öncelik) | Uygulama (widget) | K | açık | ücretsiz şablon | ücretsiz | KWGT |
 | 173 | Apple Watch büyük dikdörtgen komplikasyonda bugünün vakitleri listesi (bugün 3 satır: ad, sıradaki vakit, sayaç) | watchOS | K | açık | Clockology: abonelik | ücretsiz | Clockology |
-| 174 | Saat doğruluğu satırı ilk ekranda ("Saatiniz tam! fark +0,08 sn ±0,12"): ölçüm var ama yalnız "i" penceresinde (`build.mjs:306`) | Site | K | açık | ücretsiz | ücretsiz | time.is |
-| 175 | Sekme başlığında canlı saat | Site | K | açık | ücretsiz | ücretsiz | time.is |
+| 174 | Saat doğruluğu satırı ilk ekranda ("Saatiniz tam! fark +0,08 sn ±0,12"): ana sayfa ve şehir sayfalarında ölçüm yalnız "i" penceresinde (`build.mjs:306`); araç sayfalarında satır görünür | Site | K | açık | ücretsiz | ücretsiz | time.is |
+| 175 | Ana sayfa ve şehir sayfalarında sekme başlığında canlı saat (araçlarda sayaç zaten başlıkta: `tools.js:27` `setTitle`) | Site | K | açık | ücretsiz | ücretsiz | time.is |
 | 176 | Saat görünüm seçenekleri: saate tıklayınca milisaniye, haftanın ilk günü, tarih biçimi, saat ayırıcısı (bugün `sth-prefs` 24/12, saniye, yazı tipi, renk) | Site | K | açık | ücretsiz | ücretsiz | time.is /customize |
 | 177 | Sitede saati büyütme ve küçültme (+/−); uygulamada `fs.scale` var | Site | K | açık | ücretsiz | ücretsiz | vClock, onlinesaat.web.tr |
 | 178 | Ülke başına ay ızgaralı takvim ve geçmiş yıllar (2024–2032); bugün ülke tatilleri tablo, ızgara yalnız Türkiye, yıllar 2026–2031 | Site | O | açık | ücretsiz | ücretsiz | time.is |
 | 179 | Saat farkı: çubuk grafik; merkez sayfadaki kartlarda şimdiki saat ve fark (bugün ad ve ülke) | Site | K | açık | ücretsiz | ücretsiz | time.is, savvytime |
 | 180 | Şehir sayfasında Güneş öğlesi ve "yerel saat güneş saatinden X dk ileride"; nüfus ve harita | Site | K | açık | ücretsiz | ücretsiz | time.is |
-| 181 | Sitede alarm: kurulunca büyük geri sayım halkası + yüzde çubuk (bugün tek satır, `tools.js:451`; #51'e ek), erteleme süresi seçimi (bugün sabit 5 dk, `tools.js:499`) ve ses düzeyi (#40'a ek), sesi tekrarlama ve "şimdi dene", alarm geçmişi + CSV | Site | K | açık | ücretsiz | ücretsiz | onlinealarmkur.com, vClock |
+| 181 | Sitede alarm: kurulunca büyük geri sayım halkası + yüzde çubuk (bugün tek satır, `tools.js:451`; #51'e ek), erteleme süresi seçimi (bugün sabit 5 dk, `tools.js:499`) ve ses düzeyi (#40'a ek), sesi tekrarlama ve "şimdi dene", alarm geçmişi + CSV, "son kullanılan saatler" | Site | K | açık | ücretsiz | ücretsiz | onlinealarmkur.com, vClock |
 | 182 | Sitede gece ve karartma modu ("ışıkları kapat"; uygulamalarda var) | Site | K | açık | ücretsiz | ücretsiz | onlinealarmkur.com, vClock |
-| 183 | Temalı tam ekran saatler (Hologram, Matrix, matematik ifadeli); LCD yazı tipi #9'a ek | Site + uygulama | K | açık | ücretsiz | ileride Pro adayı | vClock, saat-kac.tr |
-| 184 | Ana sayfada bilgi hapları (UTC+3, "Yaz saati yok", Europe/Istanbul) ve tek dokunuşla Dijital/Analog anahtarı | Site | K | açık | ücretsiz | ücretsiz | saat-kac.tr |
+| 183 | Temalı tam ekran saatler (Hologram, Matrix, matematik ifadeli); #9 ve #23'e ek | Site + uygulama | K | açık | ücretsiz | sitede ücretsiz; uygulamada ileride Pro adayı | vClock, saat-kac.tr |
+| 184 | Ana sayfada bilgi hapları (UTC+3, "Yaz saati yok", Europe/Istanbul); bugün bu bilgiler `/turkiye-saat-dilimi/` sayfasında. (Rakipteki tek dokunuşla Dijital/Analog anahtarı bizde 20 modelle karşılanıyor; farklı, eksik değil) | Site | K | açık | ücretsiz | ücretsiz | saat-kac.tr |
 | 185 | Toplantı planlayıcıdan dışa aktarma: Outlook web, Gmail, panoya metin (bugün bağlantı, .ics ve Google var) | Site | K | açık | ücretsiz | ücretsiz | worldtimebuddy |
-| 186 | Sitede kıble açısını manyetik sapmayla (pusula kuzeyine göre) de verme; Kâbe'ye çizgi #67'ye ek | Site | K | açık | ücretsiz | ücretsiz | namazvakti.com |
+| 186 | **Hata:** Sitedeki kıble pusulası iPhone'da manyetik kuzeye göre dönüyor: iğne `bearing - h` ile çiziliyor (`qibla.js:33`); `bearing` gerçek kuzeye göre, `h` ise iPhone'da `webkitCompassHeading` (manyetik kuzey, `qibla.js:83`); sapma düzeltmesi yok. Türkiye'de iğne ~5–6° kayık ve ±3°'lik "hizalandı" işareti yanlış yerde yanıyor. Uygulamalarda düzeltme var (Android `GeomagneticField`). Düzeltme: manyetik sapma modeli (WMM katsayıları, NOAA/BGS; lisansı doğrulanmalı) ya da sapma tablosu; Android'de `deviceorientationabsolute`'un kuzeyi de doğrulanmalı. Kâbe'ye çizgi #67'ye ek | Site | K | açık (hata; kodda doğrulandı) | — | ücretsiz | 2. dalga ajan: web (namazvakti.com manyetik sapmalı açı veriyor); doğrulama ajanı |
 | 187 | Metin satırı olarak gömülen widget (script + span; gün doğumu/batımı seçeneği); bugün yalnız iframe | Site | O | açık | ücretsiz (geri bağlantı şartıyla) | ücretsiz | time.is |
 | 188 | Saat sahnesinde paylaş düğmesi | Site | K | açık (sahibin kararı) | ücretsiz | ücretsiz | canlisaat.com, vClock |
+| 189 | Gece modunda yazı rengi seçimi (7 renk) ve Android'de ışık sensörüyle otomatik gece modu; bugün kırmızı sabit #B82016 (`NightMode.kt`, `NightMode.swift`), otomatik mod yalnız Güneş'e göre (#11 lüm kadranından ayrı iş) | Uygulama | K | açık | ücretsiz görünüyor | ücretsiz | StandBy Mode (Android); 2. dalga ajan: android-widget-saat; doğrulamadan sonra ayrı iş yapıldı |
+| 190 | Üst bardaki tarihte hafta numarası ("3 Kasım 2026 Salı · 45. hafta"); bugün hafta ayrı sayfada (`/hafta-numarasi/`) | Site (+ uygulama) | K | açık | ücretsiz | ücretsiz | time.is; doğrulamada atlanan bulgu olarak eklendi |
+| 191 | Uyku hesaplama sayfası (yatma ya da kalkış saatine göre 90 dk döngüleri); bugün öneriler yalnız hazır alarm sayfalarında (`ALARM_PRESETS`) ve uygulamanın Uyku ekranında | Site | K | açık (kısmen var) | ücretsiz | ücretsiz | saat-kac.tr; doğrulamada atlanan bulgu olarak eklendi |
+| 192 | Çerez bandı telefonda ilk ekranın ~210 px'ini (masaüstünde ~115 px) kaplıyor, metin 4 satır; standart madde 14'ü (eşit düğmeler, politika bağlantısı) bozmadan daha kısa metin ve ince bant | Site | K | açık | — | ücretsiz | 2. dalga ajan: web (`web-siteler.md:238`; rakiplerde ABD IP'siyle bant görülmedi); doğrulamada atlanan bulgu olarak eklendi |
 
 ## Sahibin ekran görüntüleri (3 Kasım 2026)
 
@@ -285,7 +290,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 **Dil seçimi:**
 - Beyaz zemin, "Choose Language" başlığı, "Done" düğmesi.
 - Her satırda yuvarlak bayrak, dilin İngilizce adı ve kendi adı.
-- Diller: English, Chinese, Korean, India (Hintçe), Spanish, French, Russian, Portuguese. Düzeltme (tasarım incelemesi): listede dil adı yerine kimi yerde ülke adı var (India, France, Russia); yerel adlar da yanlış (中国 = Çin, 한국인 = Koreli, इंडिया = Hindistan, "Española"). Bizim dil seçicimizde (#5) dilin kendi adı yazılmalı.
+- Satırlar ekranda yazıldığı gibi: English/English, Chinese/中国, Korean/한국인, India/इंडिया, Spanish/Española, France/français, Russia/Русский, Portuguese/Português. Düzeltme (tasarım incelemesi): kimi satırda dil yerine ülke adı var (India, France, Russia); yerel adlar da yanlış (中国 = Çin, 한국인 = Koreli, इंडिया = Hindistan, "Española" dişil sıfat). Bizim dil seçicimizde (#5) dilin kendi adı yazılmalı.
 - Seçili satır gri hap biçiminde.
 - Altta reklam şeridi.
 
@@ -578,14 +583,16 @@ Sahibin isteğiyle ilk dalganın bakmadığı alanlar tarandı. Beş tarama ajan
 - Renkler piksel ölçülerek (PIL) yazıldı, tahmin edilmedi.
 - "Bizde var" ya da "kısmen" yalnız kodda dosya yolu kanıtıyla yazıldı.
 
-Sonuç: 102 yeni iş (#87–#188). Bunların 7'si bizde hata (#87–#93); en önemlileri hava ve yüzde hatalarıdır (#87, #88). Hataları, ilk analizin numaralarını ve en önemli "bizde yok" iddialarını kodda yeniden denetledim:
+Sonuç: 106 yeni iş (#87–#192; 189–192 doğrulamadan sonra eklendi). Bunların 8'i bizde hata (#87–#93 ve #186); en önemlileri hava, yüzde ve sitedeki kıble pusulası hatalarıdır (#87, #88, #186). Hataları, ilk analizin numaralarını ve en önemli "bizde yok" iddialarını kodda yeniden denetledim:
 - `prefix(7)`, `forecast_days=7`, `"%\(…)"`;
 - `nature-calc.js` evre dilimi;
 - `MoonView.swift` emoji;
 - `cities.json` 31 kayıt;
 - `Theme.kt`'de dinamik renk olmaması;
 - widget boyutları;
-- sitede erteleme 5 dk, `document.title` yok, senkron satırı `#info-dialog` içinde.
+- sitede erteleme 5 dk; saat sayfalarında sekme başlığı canlı değil (araçlarda `setTitle` ile sayaç başlıkta, `tools.js:27`); ana sayfa ve şehir sayfalarında senkron satırı yalnız `#info-dialog` içinde (araç sayfalarında görünür).
+
+Sonra bağımsız bir doğrulama ajanı raporu denetledi (aşağıda "Doğrulama").
 
 | Alan | Ham not | İncelenenler |
 |---|---|---|
@@ -620,7 +627,7 @@ Tasarım ajanı sahibin 36 görüntüsünü piksel ölçerek yeniden inceledi. A
   - "thusday" yazım hatası.
   - "Ömür Boyu…" satırı kutudan taşıyor.
   - Yüzen cam öğeler içeriği örtüyor ("Önizlem…").
-  - 6 klasik kadranın 2'si ücretsiz.
+  - Görünen 6 klasik kadranın 2'si ücretsiz (galeri yana kayıyor, 3. sütun kesik).
   - Puanlama kartı saat ekranındaki tarihi örtüyor.
   - Aynı uygulamada iki ayrı düğme biçimi var.
 - **Alarmy:**
@@ -702,7 +709,7 @@ Diğer alanlardaki zemin kalıpları:
   - Widget'larda yedi bölütlü LCD (sönük bölütlerle), nixie, neon ve çevirmeli saat (Clock Widget with Seconds Live, ömür boyu ₺499,99).
   - Sitede LCD yazı tipi (vClock).
 - **#10 Tik-tak sesi:** Çocuk zamanlayıcısında da var (Visual Countdown Timer).
-- **#11 Gece kadranı:** Gece modunda yazı rengi seçimi (7 renk) ve Android'de ışık sensörüyle otomatik gece modu (StandBy Mode). Bizde kırmızı sabit (#B82016); otomatik mod yalnız Güneş'e göre.
+- **#11 Gece kadranı:** gece modu rengi ve ışık sensörü ayrı iş oldu (#189).
 - **#13 Alternatif simge:** Fantastical'da 6 alternatif simge (Premium). iOS 18 koyu ve renklendirilmiş simge ayrı iş (#171).
 - **#14 Kilit ekranı:** Ay ve dünya saati kilit ekranı widget'ları; kilit ekranı satırında gün doğumu/batımı (Color Widgets).
 - **#15 Widget'lar:**
@@ -710,6 +717,7 @@ Diğer alanlardaki zemin kalıpları:
   - Saatlik hava şeridi, 8 sütun (Color Widgets).
   - Güneş widget'ları: yay, 24 saatlik halka, ekinoks geri sayımı.
   - Takvim: ay ızgarası ve yaklaşan özel günler widget'ı (Readdle, Fantastical).
+  - Color Widgets'ın sürüm notunda "iOS 27 XL widget" boyutu geçiyor (yalnız sürüm notundan; doğrulanmadı).
 - **#16 Günün içeriği widget'ları:** Takvim yaprağı widget'ı. `CalendarLeafView` ve `CalendarLeafScreen` var ama widget'ları yok.
 - **#17 Widget düzenleyici:**
   - Renk daireleri, yazı tipi çipleri, boyut kaydırıcısı, fotoğraf zemini ve tam genişlik "Set Widget" düğmesi (Color Widgets).
@@ -745,7 +753,7 @@ Diğer alanlardaki zemin kalıpları:
   - Süre seçimi: sürüklenen 30 dk'lık cetvel. Bizde takvim kaydı sabit 1 saat (`planner.js` `calLinks`).
   - Hafta sonu işareti, 7 günlük tarih şeridi.
   - Satır sıralama, ev konumu, kısaltma rozeti.
-  - Sürüklenebilir "şimdi" çizgisi (everytimezone).
+  - Sürüklenebilir "şimdi" çizgisi (everytimezone); fareyle gezdikçe canlı sütun (worldtimebuddy; bizde tıklayınca seçim).
 - **#73 Geri sayım:**
   - Renkli dolu kart, sağda koyu tonlu "7 gün" bölmesi (Countdown).
   - "… gündür" sayacı: sigarayı bırakalı 228 gün (MultiTimer), "Being together 365 days" (WidgetClub).
@@ -763,9 +771,9 @@ Diğer alanlardaki zemin kalıpları:
 | #3 Hicri tarih | Takvim ızgarasında yok, yalnız seçili günün başlığında | 119 |
 | #15 Altın ve mavi saat | Bildirimi, widget'ı ve alacakaranlık türleri yok | 151, 152, 15 |
 | #33 14 günlük hava | Sitede bitti; uygulamalarda 7 gün gösteriliyor (hata) | 87 |
-| #35 Sitede alarm sesi | Alarm geçmişi ve CSV, erteleme süresi, ses düzeyi yok | 181 |
+| #35 Sitede alarm sesi | Alarm geçmişi ve CSV, erteleme süresi, ses düzeyi yok (ilk işin kapsamı dışında; yeni kapsam) | 181 |
 | #40 Sitede saat görünümü | Boyut (+/−) ve LCD yazı tipi yok | 177, 9 |
-| #42 Live Activity | Dünya saati Live Activity'si yok | 19 |
+| #42 Live Activity | Dünya saati Live Activity'si yok (ilk işin kapsamı dışında; yeni kapsam) | 19 |
 | #47 Ay | Uygulamada Ay emoji ve 8 kalıp; Ay widget'ı yalnız küçük, kilit ekranında yok; dördün tarihleri yok; dördün ve süper Ay bildirimi yok (ilk analiz tablosu satır 326); sitede bölge kodları ve evre adı hatası | 89, 90, 103, 147, 149, 152, 14 |
 | #48 Saniyeli, dünya, geri sayım widget'ları | iOS geri sayım widget'ı yalnız küçük boy ve tek etkinlik, kilit ekranında yok; dünya saati en çok 4 şehir. Android'de 12 widget tek görünümde; saydamlık, renk, dinamik renk ve kilit ekranı kategorisi yok | 130, 167, 14, 17, 76 |
 | #49 Zamanlayıcılar | İlerleme görseli, renk ve bitiş saati yok; duyuru yalnız evre adı ve son 3 sn | 101, 133, 135 |
@@ -785,7 +793,38 @@ Diğer alanlardaki zemin kalıpları:
 | Android eşitleme turu (18 Ekim 2026) | Sitedeki rüzgâr yönü ve günlük mm uygulamaya gelmemiş; Android'in çektiği yön ve doğuş/batış ekranda kullanılmıyor | 106 |
 | İlk analizin ajan tablosu, "geniş şehir veritabanı" | Uygulamada hâlâ 31 şehir | 128 |
 | İlk analizin ajan tablosu, "sınıf araçları" | 107'lik listeye alınmamış | 142 |
-| Sunucu senkronu (CLAUDE.md'de "sahne altında canlı satır") | Satır yalnız "i" penceresinde; CLAUDE.md düzeltildi | 174 |
+| Sunucu senkronu (CLAUDE.md'de "sahne altında canlı satır") | Ana sayfa ve şehir sayfalarında satır yalnız "i" penceresinde (araç sayfalarında görünür); CLAUDE.md düzeltildi | 174 |
+
+### Doğrulama (bağımsız denetim ajanı)
+Birleştirilmiş raporu yazmayan bir denetim ajanı denetledi. Ham notlarla, kodla ve sahibin görüntüleriyle karşılaştırdı. Ayrıntısı oturum dosyalarında kaldı, depoya girmedi. Bulduklarını kodda yeniden denetledim; hepsi doğru çıktı ve belgeye işlendi.
+- **Kod denetimi:** 64 satır denetlendi (7 hata satırı ve her alandan 57 satır). 50'si tam doğru, 13'ü kısmen doğru, 1'i yanlış çıktı.
+  - **Yanlış olan #104:** en hızlı/en yavaş tur işareti üç platformda da varmış. Satırdan çıkarıldı.
+  - **Kısmen doğru olan 13 satır düzeltildi:**
+    - #95: simge çifti var; yalnız iki glif dolu görünüyor.
+    - #135: "Sıradaki" satırı var.
+    - #101: aralık ekranında çubuk var.
+    - #97: Mevsimler'de iOS da emoji kullanıyor.
+    - #98: kimi başlıklar zaten 26–28 sp.
+    - #99: Araçlar satırlarında renkli simge var, kutu yok.
+    - #129: sitede şehir sayfaları var.
+    - #147: Ay widget'ı sıradaki dolunay/yeni ay tarihini gösteriyor.
+    - #152: anahtar adları düzeltildi.
+    - #174 ve #175: araç sayfalarında senkron satırı ve sekme başlığı var.
+    - #90: tarayıcı iddiası daraltıldı.
+    - #184: Dijital/Analog anahtarı "farklı, eksik değil".
+- **Yeni hata:** #186 (sitedeki kıble pusulası iPhone'da manyetik kuzeye göre) eksik özellik değil, hata olarak işaretlendi.
+- **Yanlış genel cümle:** "hazır süre düğmeleri araç sayfasında yok" yalnız alarm için doğruydu; düzeltildi.
+- **Atlanan bulgular:** dört yeni iş eklendi (#189–#192). Bir bulgu #72'ye, biri #15'e, biri #181'e ek ayrıntı oldu.
+- **Doğru çıkanlar:**
+  - 1–192 numaraları eksiksiz ve tekrarsız; çapraz başvuruların hepsi doğru.
+  - İlk analiz numaralarının 22'si de tutuyor.
+  - 27 fiyat ve renk değeri ham notlarla aynı.
+  - Sahibin görüntülerindeki 6 düzeltme görüntü açılıp ölçülerek doğrulandı.
+- **Ücret sütunu:**
+  - Sitede üyelik olmayacağı için #131 ve #183'ün site kısmı ücretsiz yapıldı.
+  - #33'teki "—" düzeltildi.
+  - #25 (bağış) tanıma eklendi.
+- **Kalan uyarı:** "Bizde yok" ve "bugün yalnız X" ifadelerinin ~%20'si dar arama yüzünden abartılı ya da kısmen yanlış çıktı (düzeltildi). Bir iş yapılmaya seçilince o satır kodda bir kez daha aranmalı.
 
 ### Önerilmeyenler ve yapılamayanlar (numara almadı)
 - **Veri kaynağı yok:**
@@ -816,7 +855,7 @@ Diğer alanlardaki zemin kalıpları:
   - Türk siteleri solda uzun kenar menü kullanıyor.
   - Uzun SEO metni ve SSS sayfanın içinde duruyor; biz bilerek gizliyoruz.
   - Senkron yöntemi açıkça anlatılıyor.
-  - Hazır süre düğmeleri araç sayfasının içinde. Bizde bunlar ayrı sayfalar ve araç sayfasından bağlantı yok.
+  - Hazır süre ve saat düğmeleri araç sayfasının içinde. Bizde geri sayımda 1–60 dk hapları var (`build.mjs:1005`); alarm sayfasında hazır saat düğmesi yok ve hazır alarm sayfalarına (`/alarm/07-00/`) araç sayfasından bağlantı verilmiyor.
   - Gizlilik vaadi aracın üstünde yazıyor ("listeniz bu tarayıcıda kalır").
 - **Hava uygulamaları:**
   - Zemin koşula göre değişiyor.
@@ -872,5 +911,5 @@ Diğer alanlardaki zemin kalıpları:
   - Pujie tek seferlik; Clockology abonelik.
 - **Siteler:** time.is reklamsız abonelik; online-stopwatch Premium $24/yıl; everytimezone Pro.
 - **Bizim için:**
-  - "İleride Pro adayı" yalnız görünüm ve uzman araçlarında işaretlendi: dünya kadranı (#131), dünya haritalı widget'lar (#130), meteogram (#114), Güneş yolu pusulası (#158), temalı tam ekran saatler (#183).
+  - "İleride Pro adayı" yalnız görünüm ve uzman araçlarında işaretlendi: dünya kadranı (#131), dünya haritalı widget'lar (#130), meteogram (#114), Güneş yolu pusulası (#158), temalı tam ekran saatler (#183). Sitede hepsi ücretsiz (sitede üyelik olmayacak).
   - Rakiplerin para aldığı özelleştirilebilir Güneş/Ay bildirimleri (#152) ve hava widget'ları bizde ücretsiz kalır.
