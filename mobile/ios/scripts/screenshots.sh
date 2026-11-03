@@ -73,9 +73,13 @@ shoot tr tr_TR light ekran-look-renk-akisi -openScreen look -fsBg flow
 shoot en en_US light ekran-world-en -openScreen world
 shoot ar ar_SA dark ekran-qibla-ar -openScreen qibla
 # İbadet: Kur'an (liste, Yâsîn; İngilizce meal açık, Arapça koyu), dualar, zikirmatik, takip, zekât
-for S in sura duas track zakat esma hadith guide leaf method journal planner reldays greet; do
+for S in sura duas track zakat esma hadith guide leaf method journal planner reldays greet qr; do
   shoot tr tr_TR light "ekran-$S" -openScreen "$S"
 done
+# Sahibin ekran görüntülerinden: atmosfer (renk seçici ve saat ekranı), yazı boyutu %130, ayarlar (destek bölümü)
+shoot tr tr_TR light ekran-atmosfer -openScreen colors -atmo "<string>lavender</string>"
+shoot tr tr_TR dark tr-saat-atmosfer-koyu -startTab 0 -atmo "<string>ocean</string>"
+shoot tr tr_TR light ekran-yazi-boyutu -openScreen settings -fontScale "<integer>130</integer>"
 shoot tr tr_TR light ekran-quran -openScreen quran -quran.bookmark "<string>18:10</string>"
 shoot tr tr_TR light ekran-zikir -openScreen zikir -zikir.tesbihat "<true/>" -zikir.count "<integer>41</integer>" -zikir.total "<integer>1250</integer>"
 # 1. dalga D: tesbih görünümü, Kur'an zemini (sepya) ve hatim, vakitlerde 24 saat kadranı ve sözle kalan süre

@@ -311,7 +311,8 @@ private struct TabBar: View {
 enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
-         wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet
+         wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
+         qr, colors
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -362,6 +363,8 @@ enum DebugScreen: String, Identifiable {
         case .zakat: ZakatView()
         case .reldays: ReligiousDaysView()
         case .greet: GreetingView()
+        case .qr: ShareQRView()
+        case .colors: AccentPickerView()
         case .mosques: NearbyMosquesView(place: place)
         case .night: FullscreenClock() // -nightMode on ile gece modu
         case .globe:
