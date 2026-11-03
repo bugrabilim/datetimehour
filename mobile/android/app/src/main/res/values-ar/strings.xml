@@ -490,9 +490,9 @@
     <string name="nature_lightNote">الساعة الذهبية: الشمس بين 6° فوق الأفق و4° تحته، بضوء دافئ ناعم. الساعة الزرقاء: الشمس بين 4° و6° تحت الأفق، شفق أزرق. مفيدة للمصورين.</string>
     <string name="zakat_fitreHeading">زكاة الفطر</string>
     <string name="zakat_fitreText">حددت الهيئة العليا للشؤون الدينية في رئاسة الشؤون الدينية التركية زكاة الفطر لعام %1$s بمبلغ %2$s ليرة للشخص (%3$s)، وتسري من رمضان %1$s حتى رمضان التالي.</string>
-    <string name="zakat_fitrePeople">عدد الأشخاص (بمن تعولهم)</string>
+    <string name="zakat_fitrePeople">عدد الأشخاص (بمن فيهم من تعولهم)</string>
     <string name="zakat_fitreTotal">إجمالي زكاة الفطر</string>
-    <string name="zakat_fitreNote">المبلغ خاص بتركيا وهو الحد الأدنى؛ ومن استطاع أن يعطي أكثر (بمقدار التمر أو الزبيب) فله ذلك. تُخرج قبل صلاة العيد.</string>
+    <string name="zakat_fitreNote">المبلغ خاص بتركيا وهو الحد الأدنى؛ ومن استطاع أن يعطي أكثر (بمقدار التمر أو الزبيب) فله ذلك. تُخرج زكاة الفطر قبل صلاة العيد.</string>
     <string name="hijriConv_h1">محول التاريخ الهجري</string>
     <string name="hijriConv_toHijri">من الميلادي إلى الهجري</string>
     <string name="hijriConv_toGreg">من الهجري إلى الميلادي</string>

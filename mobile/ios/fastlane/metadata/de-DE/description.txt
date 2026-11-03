@@ -19,7 +19,7 @@ WETTER
 • Aktuell, stündlich und 7 Tage – von Apple Wetter
 
 WERKZEUGE
-• Wecker (klingelt auch im Stumm-Modus), Timer, Countdown
+• Wecker (klingelt auch im Stummmodus), Timer, Countdown
 • Stoppuhr, Pomodoro, Datumsrechner (mit Arbeitstagen)
 • Weltuhren mit drehendem Globus
 • Jahreszeiten, Tagundnachtgleichen und Sonnenwenden, Mondphasen
@@ -29,6 +29,6 @@ WIDGETS
 
 In fünfzehn Sprachen: Deutsch, Türkisch, Englisch, Aserbaidschanisch, Arabisch, Indonesisch, Urdu, Persisch, Französisch, Russisch, Japanisch, Koreanisch, Chinesisch, Filipino und Thailändisch.
 
-Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird ein ungefährer Ort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen.
+Ihr Standort wird auf dem Telefon für die Gebetszeiten verwendet; nur für das Wetter wird ein ungefährer Standort an den Wetterdienst von Apple gesendet. Ihre Kalender werden nur mit Ihrer Erlaubnis und nur auf dem Telefon gelesen.
 
 Uhr & Datum ist ein Produkt von Bumba Life. Web: time.bumba.tr

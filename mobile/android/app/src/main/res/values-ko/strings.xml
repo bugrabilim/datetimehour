@@ -497,10 +497,10 @@
     <string name="hijriConv_toHijri">양력 → 히즈라력</string>
     <string name="hijriConv_toGreg">히즈라력 → 양력</string>
     <string name="hijriConv_gregLabel">양력 날짜</string>
-    <string name="hijriConv_yearLabel">히즈라 연도</string>
+    <string name="hijriConv_yearLabel">히즈라력 연도</string>
     <string name="hijriConv_monthLabel">월</string>
     <string name="hijriConv_dayLabel">일</string>
-    <string name="hijriConv_dayMax">이 히즈라력 달은 %1$s일입니다.</string>
+    <string name="hijriConv_dayMax">이 히즈라력 달은 %1$s일까지 있습니다.</string>
     <string name="tools_pomodoro_tags_none">태그 없음</string>
     <string name="tools_pomodoro_tags_work">업무</string>
     <string name="tools_pomodoro_tags_study">공부</string>

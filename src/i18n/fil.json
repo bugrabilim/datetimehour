@@ -2459,7 +2459,7 @@
   },
   "api": {
     "title": "Open data (API): holiday, oras ng dasal, Hijri | Saat Tarih",
-    "description": "Mga holiday at relihiyosong araw ng Türkiye, oras ng dasal sa 81 lalawigan, kalendaryong Hijri ayon sa Diyanet at datos ng astronomiya: libreng JSON, walang key, CORS.",
+    "description": "Holiday at relihiyosong araw ng Türkiye, oras ng dasal sa 81 lalawigan, Hijri ayon sa Diyanet, astronomiya: libreng JSON, walang key, bukas ang CORS.",
     "h1": "Open data (API)",
     "lead": "Ang datos na kinukuwenta ng Saat Tarih, bilang pampublikong JSON file; walang sign-up o API key.",
     "search": "api open data json public holidays api türkiye prayer times api hijri calendar api developer açık veri",
@@ -2474,7 +2474,7 @@
       "hijri": "Talaan ng simula ng mga buwan ng Hijri (tugma sa kalendaryo ng Diyanet)",
       "astronomy": "Mga sandali ng equinox at solstice ng isang taon, bagong buwan at kabilugan, mga eklipse (UTC)"
     },
-    "yearsNote": "Saklaw ng mga file ng holiday at astronomiya ang {from}–{to}; ang oras ng dasal ay {p1} at {p2}. Nasa provinces.json ang mga slug ng lalawigan (hal. istanbul, ankara, izmir).",
+    "yearsNote": "Saklaw ng mga file ng holiday at astronomiya ang {from}–{to}; saklaw naman ng oras ng dasal ang {p1} at {p2}. Nasa provinces.json ang mga slug ng lalawigan (hal. istanbul, ankara, izmir).",
     "fieldsHeading": "Mga field",
     "fields": [
       "Ang petsa ay YYYY-MM-DD at ang oras ay HH:MM (oras ng Türkiye, UTC+3); ang mga sandali ay ISO 8601 UTC.",
@@ -2486,7 +2486,7 @@
     "exampleNote": "Mga oras ngayong araw sa Istanbul gamit ang JavaScript:",
     "termsHeading": "Mga tuntunin ng paggamit",
     "terms": [
-      "Maaaring gamitin ang datos sa ilalim ng lisensiyang Creative Commons Attribution 4.0 (CC BY 4.0); ilagay ang \"Saat Tarih (time.bumba.tr)\" kung saan mo ito ginagamit.",
+      "Maaaring gamitin ang datos sa ilalim ng lisensiyang Creative Commons Attribution 4.0 (CC BY 4.0); banggitin ang \"Saat Tarih (time.bumba.tr)\" bilang pinagmulan kung saan mo ito ginagamit.",
       "Kinukuwenta ang oras ng dasal sa paraan ng Diyanet at maaaring magkaiba ng 1–2 minuto sa opisyal na oras; ang oras ng Diyanet ang masusunod.",
       "Ang mga relihiyosong araw mula 2028 ay pagtataya batay sa pangmatagalang kalendaryo ng Diyanet.",
       "Walang key o sign-up; static at maaaring i-cache ang mga file. Humiling sa makatwirang dalas (sapat na ang isang beses bawat araw).",
@@ -2495,7 +2495,7 @@
   },
   "hijriConv": {
     "title": "Hijri date converter: Hijri at Gregorian | Saat Tarih",
-    "description": "I-convert ang petsang Gregorian sa Hijri at ang Hijri sa Gregorian. Petsang Hijri ngayon at simula ng mga buwan ngayong taon, ayon sa kalendaryo ng Diyanet.",
+    "description": "I-convert ang Gregorian sa Hijri at ang Hijri sa Gregorian. Petsang Hijri ngayon at simula ng mga buwan ngayong taong Hijri, ayon sa kalendaryo ng Diyanet.",
     "h1": "Hijri date converter",
     "lead": "Ang petsang Hijri ngayon, conversion sa dalawang direksiyon at ang simula ng mga buwan ngayong taong Hijri. Sumusunod ang mga petsa sa kalendaryo ng Presidency of Religious Affairs ng Türkiye (Diyanet).",
     "search": "hijri converter kalendaryong islamiko hijri gregorian petsang hijri ngayon hicri",
@@ -2537,19 +2537,19 @@
       },
       {
         "q": "Bakit umuusog nang mga 11 araw bawat taon ang kalendaryong Hijri?",
-        "a": "Sumusunod ang kalendaryong Hijri sa yugto ng buwan; mga 354 araw ang 12 buwang lunar. Mga 11 araw itong mas maikli sa taong Gregorian, kaya mga 11 araw na mas maaga bawat taon ang Ramadan at ang mga Eid."
+        "a": "Sumusunod ang kalendaryong Hijri sa mga yugto ng Buwan; mga 354 araw ang 12 buwang lunar. Mga 11 araw itong mas maikli sa taong Gregorian, kaya mga 11 araw na mas maaga bawat taon ang Ramadan at ang mga Eid."
       },
       {
         "q": "Bakit magkakaiba ang petsang Hijri sa iba't ibang bansa?",
-        "a": "May mga bansang nagsisimula ng buwan sa pagkakita ng bagong buwan, at may mga ayon sa kuwenta. Kalendaryong kinuwenta ng Diyanet ang gamit ng Türkiye at Umm al-Qura ang sa Saudi Arabia; maaari silang magkaiba ng isang araw."
+        "a": "May mga bansang nagsisimula ng buwan sa pagkakita ng gasuklay na buwan, at ang iba ay ayon sa kuwenta. Kalendaryong kinuwenta ng Diyanet ang gamit ng Türkiye at kalendaryong Umm al-Qura naman ang sa Saudi Arabia; maaari silang magkaiba ng isang araw."
       }
     ]
   },
   "timeCalc": {
     "title": "Time calculator: magdagdag, magbawas at oras sa pagitan | Saat Tarih",
-    "description": "Tagal sa pagitan ng dalawang oras, pagdagdag o pagbawas ng oras at minuto, at pagsama ng mga tagal. Kasama ang shift na lampas hatinggabi at decimal na oras.",
+    "description": "Tagal sa pagitan ng dalawang oras, pagdagdag o pagbawas ng oras at minuto, at pagsama ng mga tagal. Kasama ang overnight shift at decimal na oras.",
     "h1": "Time calculator",
-    "lead": "Tagal sa pagitan ng dalawang oras, pagdagdag o pagbawas ng oras, at pagsama ng mga tagal. Ipinapakita rin ang lampas hatinggabi at decimal na oras.",
+    "lead": "Tagal sa pagitan ng dalawang oras, pagdagdag o pagbawas ng oras, at pagsama ng mga tagal. Ipinapakita rin ang tagal na lampas hatinggabi at decimal na oras.",
     "search": "time calculator oras sa pagitan magdagdag ng oras magbawas ng minuto shift kabuuang tagal decimal saat hesaplama",
     "betweenHeading": "Tagal sa pagitan ng dalawang oras",
     "startLabel": "Simula",
@@ -2577,7 +2577,7 @@
     "sumBad": "Hindi mabasang linya: {n}",
     "faq": [
       {
-        "q": "Paano kuwentahin ang oras sa pagitan ng dalawang oras?",
+        "q": "Paano kuwentahin ang tagal sa pagitan ng dalawang oras?",
         "a": "Ibawas ang simula sa katapusan. Kung mukhang mas maaga ang katapusan (halimbawa 22:00–06:00), lumampas ito sa hatinggabi: magdagdag ng 24 na oras at 8 oras ang tagal."
       },
       {
@@ -2592,7 +2592,7 @@
   },
   "daysUntil": {
     "title": "Ilang araw pa: ilang araw bago o mula sa isang petsa | Saat Tarih",
-    "description": "Ilang araw pa bago ang isang petsa o ilang araw na ang lumipas, sa linggo, buwan at araw ng trabaho. May listahan din ng araw bago ang holiday at mahahalagang petsa.",
+    "description": "Ilang araw pa bago ang isang petsa o ilang araw na ang lumipas, sa linggo, buwan at araw ng trabaho. Pati araw bago ang holiday at mahahalagang petsa.",
     "h1": "Ilang araw pa bago…?",
     "lead": "Pumili ng petsa para makita kung ilang araw pa o ilang araw na ang lumipas, pati sa linggo at araw ng trabaho. Nasa ibaba ang mga araw bago ang holiday at mahahalagang petsa.",
     "search": "ilang araw pa days until ilang araw na ang lumipas countdown bilang ng araw petsa kaç gün kaldı",
@@ -2619,18 +2619,18 @@
       },
       {
         "q": "Paano binibilang ang araw ng trabaho?",
-        "a": "Inaalis sa mga araw pagkatapos ngayon ang Sabado, Linggo at buong-araw na holiday sa Türkiye; kalahati ang bilang ng kalahating araw bago ang Eid. Saklaw ng datos ng holiday ang 2026–2031."
+        "a": "Sa mga araw pagkatapos ngayon, hindi binibilang ang Sabado, Linggo at buong-araw na pampublikong holiday sa Türkiye; kalahati ang bilang ng kalahating araw bago ang mga Eid. Saklaw ng datos ng holiday ang 2026–2031."
       }
     ]
   },
   "interval": {
     "title": "Interval timer: online na HIIT at Tabata timer | Saat Tarih",
-    "description": "Bilangin ang mga round ng warm-up, trabaho at pahinga: tunog at sinasabing cue sa bawat palit, bilang ng huling 3 segundo. May preset na Tabata at HIIT, full screen.",
+    "description": "Mga round ng warm-up, ehersisyo at pahinga: tunog at voice cue sa bawat palit, countdown ng huling 3 segundo. May preset na Tabata at HIIT, full screen.",
     "h1": "Interval timer",
-    "lead": "Piliin ang tagal ng warm-up, trabaho at pahinga at ang bilang ng round. May tunog sa bawat palit at maaaring sabihin nang malakas ang yugto.",
+    "lead": "Piliin ang tagal ng warm-up, ehersisyo at pahinga at ang bilang ng round. May tunog sa bawat palit at maaaring sabihin nang malakas ang yugto.",
     "search": "interval timer hiit timer tabata timer workout timer emom round timer aralık zamanlayıcı",
     "warmup": "Warm-up (s)",
-    "work": "Trabaho (s)",
+    "work": "Ehersisyo (s)",
     "rest": "Pahinga (s)",
     "rounds": "Mga round",
     "presets": "Mga preset",
@@ -2639,7 +2639,7 @@
     "presetEmom": "EMOM 60 × 10",
     "phases": {
       "warmup": "Warm-up",
-      "work": "Trabaho",
+      "work": "Ehersisyo",
       "rest": "Pahinga",
       "done": "Tapos na"
     },
@@ -2650,7 +2650,7 @@
     "pause": "I-pause",
     "resume": "Ituloy",
     "reset": "I-reset",
-    "voice": "Sinasabing cue",
+    "voice": "Voice cue",
     "voiceNote": "Ginagamit ng mga cue ang speech engine ng iyong browser sa device; kung walang boses sa device para sa wikang ito, tunog lang ang maririnig.",
     "note": "Gumagana habang bukas ang pahina; sa full screen, nananatiling bukas ang screen.",
     "faq": [
@@ -2660,13 +2660,13 @@
       },
       {
         "q": "May pahinga ba pagkatapos ng huling round?",
-        "a": "Wala. Natatapos ang workout pagkatapos ng huling yugto ng trabaho; sa pagitan lang ng mga round binibilang ang pahinga."
+        "a": "Wala. Natatapos ang workout pagkatapos ng huling yugto ng ehersisyo; sa pagitan lang ng mga round binibilang ang pahinga."
       }
     ]
   },
   "chess": {
     "title": "Chess clock: online, may increment at full screen | Saat Tarih",
-    "description": "Online na chess clock para sa dalawa: time control (1+0, 3+2, 5+0, 10+0, 15+10), Fischer increment, bilang ng tira at tunog kapag ubos ang oras. Full screen sa telepono.",
+    "description": "Chess clock para sa dalawa: time control (1+0, 3+2, 5+0, 10+0, 15+10), Fischer increment, bilang ng tira, tunog kapag ubos ang oras. Full screen sa phone.",
     "h1": "Chess clock",
     "lead": "Pumili ng time control at i-tap ang sarili mong orasan pagkatapos ng bawat tira. Suportado ang Fischer increment at bilang ng tira.",
     "search": "chess clock online chess timer blitz bullet fischer increment game clock satranç saati",
@@ -2729,7 +2729,7 @@
   },
   "talking": {
     "title": "Talking clock: online na orasang nagsasabi ng oras | Saat Tarih",
-    "description": "Orasang nagsasabi ng oras: sa pagpindot ng button o kusa bawat 1, 5, 15 o 30 minuto at tuwing eksaktong oras. Para sa malabong paningin o habang nagtatrabaho.",
+    "description": "Orasang nagsasabi ng oras: sa pagpindot ng button o awtomatiko bawat 1, 5, 15 o 30 minuto at bawat oras. Para sa malabong paningin o habang nagtatrabaho.",
     "h1": "Talking clock",
     "lead": "Pindutin ang button para marinig ang oras; maaari rin itong kusang magsalita sa itinakdang pagitan. Gumagana habang bukas ang pahina.",
     "search": "talking clock orasang nagsasalita sabihin ang oras audio clock anong oras na konuşan saat",
@@ -2759,7 +2759,7 @@
   },
   "zodiac": {
     "title": "Zodiac sign calculator: Sun at Moon sign ayon sa kaarawan | Saat Tarih",
-    "description": "Alamin ang iyong Sun sign at Moon sign mula sa petsa at oras ng kapanganakan sa pamamagitan ng kuwentang astronomiko. May talaan din ng mga petsa ng bawat sign.",
+    "description": "Alamin ang iyong Sun sign at Moon sign mula sa petsa at oras ng kapanganakan gamit ang kuwentang astronomiko. May talaan din ng mga petsa ng bawat sign.",
     "h1": "Zodiac sign calculator",
     "lead": "Ilagay ang petsa at oras ng iyong kapanganakan; kinukuwenta kung saang sign naroon ang Araw at Buwan sa sandaling iyon. Para sa kasiyahan lang ang astrolohiya.",
     "search": "zodiac sign calculator ano ang zodiac sign ko moon sign sun sign kaarawan star sign burç",
@@ -2801,7 +2801,7 @@
   },
   "sky": {
     "title": "Kalangitan ngayong gabi: mga planeta at layo ng Buwan | Saat Tarih",
-    "description": "Aling mga planeta ang makikita ngayong gabi mula sa kinaroroonan mo, kailan at saan; sky chart na may maliliwanag na bituin, layo ng Buwan, susunod na perigee at apogee.",
+    "description": "Aling planeta ang makikita ngayong gabi sa lugar mo, kailan at saan; sky chart na may maliliwanag na bituin, layo ng Buwan, susunod na perigee at apogee.",
     "h1": "Kalangitan sa gabi",
     "lead": "Kailan makikita ngayong gabi mula sa napiling lugar ang Mercury, Venus, Mars, Jupiter at Saturn, saan titingin at gaano kaliwanag; ang layo ng Buwan sa Daigdig.",
     "search": "kalangitan ngayong gabi planeta nakikita venus jupiter mars saturn mercury bituin buwan layo supermoon perigee apogee",
@@ -2857,7 +2857,7 @@
   },
   "otd": {
     "title": "Sa araw na ito sa kasaysayan | Saat Tarih",
-    "description": "Ano ang nangyari sa araw na ito sa kasaysayan: mahahalagang pangyayari, pagkakatatag, kapanganakan at pagpanaw ng kilalang tao; pumili ng anumang araw. Mula sa Wikidata.",
+    "description": "Nangyari sa araw na ito sa kasaysayan: mahahalagang pangyayari, pagkakatatag, kapanganakan at pagpanaw ng kilalang tao. Pumili ng araw. Mula sa Wikidata.",
     "h1": "Sa araw na ito",
     "lead": "Mahahalagang pangyayari, pagkakatatag, kapanganakan at pagpanaw sa kasaysayan para sa araw na ito o anumang araw na pipiliin mo.",
     "search": "sa araw na ito kasaysayan ngayong araw ano ang nangyari ipinanganak ngayon namatay ngayon anibersaryo on this day",
@@ -2880,13 +2880,13 @@
       },
       {
         "q": "Puwede ko bang tingnan ang ibang araw?",
-        "a": "Oo. Gamitin ang tagapili ng araw sa pahinang Sa araw na ito para pumili ng anumang araw ng taon, o lumipat gamit ang mga button na nakaraan at susunod na araw; ipinapakita ng link sa address bar ang araw na iyon."
+        "a": "Oo. Gamitin ang tagapili ng araw sa pahinang Sa araw na ito para pumili ng anumang araw ng taon, o lumipat gamit ang mga button na Nakaraang araw at Susunod na araw; ipinapakita ng link sa address bar ang araw na iyon."
       }
     ]
   },
   "tzn": {
     "title": "Balita sa time zone at daylight saving time | Saat Tarih",
-    "description": "Mga pagbabago sa time zone at daylight saving time: mga bansang lumilipat sa permanenteng oras, mga lugar na hindi na nag-uusog ng orasan, bagong time zone. Mula sa IANA.",
+    "description": "Pagbabago sa time zone at DST: mga bansang lumilipat sa permanenteng oras, mga lugar na hindi na nag-aatras ng orasan, bagong time zone. Mula sa IANA.",
     "h1": "Balita sa time zone",
     "lead": "Mga desisyon ng mga bansa sa time zone at daylight saving time, pinakabago muna. Ipinapakita ng bawat isa kung kailan magkakabisa at ang kasalukuyang oras doon.",
     "search": "balita time zone daylight saving time pagbabago permanenteng daylight time binago ang time zone tzdata",

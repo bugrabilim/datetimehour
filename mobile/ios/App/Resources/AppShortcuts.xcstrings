@@ -785,7 +785,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName} saatı göstər"
+            "value": "${applicationName} ilə saatı göstər"
           }
         },
         "ar": {
@@ -880,7 +880,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName} tam ekran saatı aç"
+            "value": "${applicationName} ilə tam ekran saatı aç"
           }
         },
         "ar": {
@@ -975,7 +975,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName} növbəti vaxt nə vaxtdır"
+            "value": "${applicationName}, növbəti namaz nə vaxtdır"
           }
         },
         "ar": {

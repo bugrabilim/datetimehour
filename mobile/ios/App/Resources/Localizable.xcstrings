@@ -44129,7 +44129,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "عضویت شما ثبت نشد. نشانی ایمیل و گزینهٔ تأیید را بررسی کنید و کمی بعد دوباره امتحان کنید."
+            "value": "عضویت شما ثبت نشد. نشانی ایمیل و کادر تأیید را بررسی کنید و کمی بعد دوباره امتحان کنید."
           }
         },
         "fr": {
@@ -46486,7 +46486,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "عدد الأشخاص (بمن تعولهم)"
+            "value": "عدد الأشخاص (بمن فيهم من تعولهم)"
           }
         },
         "id": {
@@ -46611,7 +46611,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Всего фитр"
+            "value": "Сумма фитра"
           }
         },
         "ja": {
@@ -46676,7 +46676,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "المبلغ خاص بتركيا وهو الحد الأدنى؛ ومن استطاع أن يعطي أكثر (بمقدار التمر أو الزبيب) فله ذلك. تُخرج قبل صلاة العيد."
+            "value": "المبلغ خاص بتركيا وهو الحد الأدنى؛ ومن استطاع أن يعطي أكثر (بمقدار التمر أو الزبيب) فله ذلك. تُخرج زكاة الفطر قبل صلاة العيد."
           }
         },
         "id": {
@@ -46694,7 +46694,7 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "این مبلغ برای ترکیه و کمینه است؛ هر که بتواند بیشتر می‌دهد (به اندازهٔ خرما یا کشمش). فطریه پیش از نماز عید پرداخت می‌شود."
+            "value": "این مبلغ برای ترکیه و حداقل است؛ کسانی که توانایی دارند می‌توانند بیشتر بدهند (بر پایهٔ بهای خرما یا کشمش). فطریه پیش از نماز عید پرداخت می‌شود."
           }
         },
         "fr": {
@@ -46706,7 +46706,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сумма указана для Турции и является минимальной; кто может, даёт больше (по мере фиников или изюма). Фитр отдают до праздничного намаза."
+            "value": "Сумма указана для Турции и является минимальной; кто может, даёт больше (исходя из стоимости фиников или изюма). Фитр отдают до праздничного намаза."
           }
         },
         "ja": {
@@ -47193,7 +47193,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "히즈라 연도"
+            "value": "히즈라력 연도"
           }
         },
         "zh-Hans": {
@@ -47478,7 +47478,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "이 히즈라력 달은 %1$@일입니다."
+            "value": "이 히즈라력 달은 %1$@일까지 있습니다."
           }
         },
         "zh-Hans": {
@@ -55315,7 +55315,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vaxtında azanın ilk cümləsi (\"Allahu Əkbər, Allahu Əkbər\") səslənir; vaxtdan əvvəlki bildirişlərdə və Günəşdə səsli elan səslənir."
+            "value": "Vaxtında azanın ilk cümləsi (\"Allahu Əkbər, Allahu Əkbər\") səslənir; vaxtdan əvvəlki bildirişlərdə və Günəş vaxtında səsli elan səslənir."
           }
         },
         "ar": {
@@ -57310,7 +57310,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat ekranında ekranı açıq saxla"
+            "value": "Saat ekranında ekran sönməsin"
           }
         },
         "ar": {
@@ -57785,7 +57785,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hesab, reklam və izləmə yoxdur. Məkanınız telefonda vaxt hesabı üçün istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimlərinizə yalnız icazə versəniz, telefonda müraciət olunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır. İbadət qeydləri (Quranda qaldığınız yer, zikr, namaz və oruc izləmə, zəkat məbləğləri) yalnız telefonda qalır. \"iCloud ilə sinxronlaşdır\" açıqdırsa, ayarlar və şəxsi qeydlər iCloud hesabınız vasitəsilə yalnız öz cihazlarınızla sinxronlaşdırılır."
+            "value": "Hesab, reklam və izləmə yoxdur. Məkanınız namaz vaxtlarını hesablamaq üçün telefonda istifadə olunur; yalnız hava üçün seçilmiş yerin təxmini məkanı Apple-ın hava xidmətinə göndərilir. Təqvimləriniz yalnız icazə versəniz və yalnız telefonda oxunur. E-poçt siyahısına qoşulsanız, ünvanınız yalnız bu məqsədlə ortaq Bumba siyahısına göndərilir. Nişanlar və irəliləyişiniz yalnız telefonda saxlanılır; onları Alətlər › Nişanlar bölməsindən silə bilərsiniz. Seçdiyiniz fotolar (tam ekran saat, geri sayımlar) yalnız telefonda saxlanılır. İbadət qeydləri (Quranda qaldığınız yer, zikr, namaz və oruc izləmə, zəkat məbləğləri) yalnız telefonda qalır. \"iCloud ilə sinxronlaşdır\" açıqdırsa, ayarlar və şəxsi qeydlər iCloud hesabınız vasitəsilə yalnız öz cihazlarınızla sinxronlaşdırılır."
           }
         },
         "ar": {
@@ -61870,7 +61870,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Məkan alınmadı. Məkan icazəsini telefonun Ayarlarından aça bilərsiniz."
+            "value": "Məkan alınmadı. Məkan icazəsini telefonun Parametrlərindən aça bilərsiniz."
           }
         },
         "ar": {
@@ -61965,7 +61965,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ayarları aç"
+            "value": "Parametrləri aç"
           }
         },
         "ar": {
@@ -66715,7 +66715,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Səhv bilinən: fəsillər Günəşə yaxınlaşıb-uzaqlaşdığımız üçün olmur. Yer Günəşə ən çox yanvarın əvvəlində yaxınlaşır – o vaxt bizdə qışdır!"
+            "value": "Yayğın yanlış fikir: fəsillər Günəşə yaxınlaşıb-uzaqlaşdığımız üçün olmur. Yer Günəşə ən çox yanvarın əvvəlində yaxınlaşır – o vaxt bizdə qışdır!"
           }
         },
         "ar": {
@@ -68235,7 +68235,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mart və sentyabrdakı gecə-gündüz bərabərliyində gecə ilə gündüz demək olar ki, bərabərdir."
+            "value": "Mart və sentyabrdakı gecə-gündüz bərabərliyi günlərində gecə ilə gündüz təxminən eyni uzunluqda olur."
           }
         },
         "ar": {
@@ -71085,7 +71085,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gün maraqlısı"
+            "value": "Gün araşdırıcısı"
           }
         },
         "ar": {
@@ -74505,7 +74505,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bədirlənmə və yeni ay anında."
+            "value": "Tam ay və yeni ay anında."
           }
         },
         "ar": {
@@ -77925,7 +77925,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Türkiyədəki rəsmi bayramlarda (bayramlar daxil) çalmır; yarımgünlük bayram ərəfələrində çalır."
+            "value": "Türkiyədəki rəsmi qeyri-iş günlərində (dini bayramlar daxil) çalmır; yarımgünlük bayram ərəfələrində çalır."
           }
         },
         "ar": {
@@ -79160,7 +79160,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ayın bu günkü fazası, işıqlı hissəsi və növbəti bədirlənmə ya da təzə ay."
+            "value": "Ayın bugünkü fazası, işıqlı hissəsi və növbəti tam ay ya da yeni ay."
           }
         },
         "ar": {
@@ -79350,7 +79350,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saniyələri ilə rəqəmsal saat və bu günün tarixi."
+            "value": "Saniyəli rəqəmsal saat və bugünkü tarix."
           }
         },
         "ar": {
@@ -79445,7 +79445,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dünya saatləri siyahınızdakı ilk dörd şəhər."
+            "value": "Dünya saatları siyahınızdakı ilk dörd şəhər."
           }
         },
         "ar": {
@@ -79540,7 +79540,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vidjet ayarında seçdiyiniz dörd şəhərin saatı."
+            "value": "Vidcet ayarlarında seçdiyiniz dörd şəhərin saatı."
           }
         },
         "ar": {
@@ -79825,7 +79825,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vidjet ayarından başlıq və tarix seçin; susmaya görə Yeni il."
+            "value": "Vidcet ayarlarından başlıq və tarix seçin; susmaya görə Yeni il."
           }
         },
         "ar": {
@@ -83910,7 +83910,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ (il mərkəzi)"
+            "value": "%1$@ (vilayət mərkəzi)"
           }
         },
         "ar": {
@@ -84290,7 +84290,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "İl və ya rayon axtar"
+            "value": "Vilayət və ya rayon axtar"
           }
         },
         "ar": {
@@ -86190,7 +86190,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saat həmişə açıqdır. Açdığın xüsusiyyətlər alt zolaqda görünür; hamısı bağlı olduqda alt zolaq gizlənir, ayarlar saat ekranındakı dişli ilə açılır."
+            "value": "Saat həmişə açıqdır. Açdığınız xüsusiyyətlər alt zolaqda görünür; hamısı bağlı olduqda alt zolaq gizlənir, parametrlər saat ekranındakı dişli ilə açılır."
           }
         },
         "ar": {
@@ -86475,7 +86475,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rəsmi bayramlar, dini və xüsusi günlər, telefonundakı təqvimlər"
+            "value": "Rəsmi bayramlar, dini və xüsusi günlər, telefonunuzdakı təqvimlər"
           }
         },
         "ar": {
@@ -92080,7 +92080,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Siri-yə \"Saat Tarix ilə taymer qur\" kimi əmrlər verə və ya bu əməliyyatları Qısayollar tətbiqində istifadə edə bilərsiniz. Şarja qoşulanda saatın açılması üçün: Qısayollar › Avtomatlaşdırma › Şarj cihazı › Qoşulduqda › \"Tam ekran saatı aç\" (istəsəniz gecə rejimi ilə)."
+            "value": "Siri-yə \"Saat Tarix ilə taymer qur\", \"Saat Tarix növbəti namaz vaxtı\" və ya \"Saat Tarix hicri tarix\" deyə və ya bu əməliyyatları Qısayollar tətbiqində istifadə edə bilərsiniz. Şarja qoşulanda saatın açılması üçün: Qısayollar › Avtomatlaşdırma › Şarj cihazı › Qoşulduqda › \"Tam ekran saatı aç\" (istəsəniz gecə rejimi ilə)."
           }
         },
         "ar": {
@@ -92270,7 +92270,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tətbiq ikonuna uzun basanda: tam ekran saat, taymer, zəngli saat və vaxtlar. Şarjda saatın görünməsi üçün: telefon Ayarları › Ekran › Ekran qoruyucu › Saat Tarix. Assistent və başqa tətbiqlər Saat Tarix-də taymer və zəngli saat qura bilər."
+            "value": "Tətbiq ikonuna uzun basanda: tam ekran saat, taymer, zəngli saat və vaxtlar. Şarjda saatın görünməsi üçün: telefonun Parametrləri › Ekran › Ekran qoruyucu › Saat Tarix. Assistent və başqa tətbiqlər Saat Tarix-də taymer və zəngli saat qura bilər (standart saat tətbiqi telefonun parametrlərində seçilir)."
           }
         },
         "ar": {
@@ -94930,7 +94930,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kilid ekranında və Dynamic Island-da növbəti vaxta qalan müddət görünür (Ramazanda iftar və səhər). Vaxt girəndən sonra tətbiq açılanda və ya arxa fonda yenilənir. İşləyən taymer, pomodoro və saniyəölçən də kilid ekranında görünür."
+            "value": "Kilid ekranında və Dynamic Island-da növbəti vaxta qalan müddət görünür (Ramazanda iftar və sahur). Vaxt girəndən sonra tətbiq açılanda və ya arxa fonda yenilənir. İşləyən taymer, pomodoro və saniyəölçən də kilid ekranında görünür."
           }
         },
         "ar": {
@@ -95025,7 +95025,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bildiriş sahəsində və kilid ekranında növbəti vaxta qalan müddət (Ramazanda iftar və səhər); hər vaxtda özü yenilənir. İşləyən taymer, pomodoro və saniyəölçən də bildiriş sahəsində görünür."
+            "value": "Bildiriş sahəsində və kilid ekranında növbəti vaxta qalan müddət (Ramazanda iftar və sahur); hər vaxtda özü yenilənir. İşləyən taymer, pomodoro və saniyəölçən də bildiriş sahəsində görünür."
           }
         },
         "ar": {
@@ -95215,7 +95215,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Səhər (imsak)"
+            "value": "Sahur (imsak)"
           }
         },
         "ar": {
@@ -98445,7 +98445,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yuxu təxminən 90 dəqiqəlik dövrlərlə gedir; yuxuya getmək üçün 15 dəqiqə əlavə olunur. Dövrün sonunda oyanmaq daha asan ola bilər. Bu tövsiyədir, tibbi məlumat deyil."
+            "value": "Yuxu təxminən 90 dəqiqəlik dövrlərlə gedir; yuxuya getmək üçün 15 dəqiqə əlavə olunur. Dövrün sonunda oyanmaq daha asan ola bilər. Bu, tövsiyədir, tibbi məsləhət deyil."
           }
         },
         "ar": {
@@ -100630,7 +100630,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngdə Dayandır'a basanda tətbiq açılır və tapşırıq istənir; yerinə yetirilməsə, zəng 1 dəqiqə sonra yenidən çalır (ən çox 10 dəfə). Sensor ya da kamera işləməsə, \"Başqa tapşırıq\" çətin riyaziyyata keçir."
+            "value": "Zəngdə \"Dayandır\" düyməsinə basanda tətbiq açılır və tapşırıq istənir; yerinə yetirilməsə, zəng 1 dəqiqə sonra yenidən çalır (ən çox 10 dəfə). Sensor ya da kamera işləməsə, \"Başqa tapşırıq\" çətin riyaziyyata keçir."
           }
         },
         "ar": {
@@ -107470,7 +107470,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hər toxunuşda yüngül titrəyir, hədəfdə və təsbihatın hər 33-də güclü titrəyir. Saylar yalnız bu cihazda."
+            "value": "Hər toxunuşda yüngül titrəyir, hədəfdə və təsbihatın hər 33-də güclü titrəyir. Saylar yalnız bu cihazda saxlanılır."
           }
         },
         "ar": {
@@ -109655,7 +109655,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qızıl (qram, 24 əyar)"
+            "value": "Qızıl (qram, 24 əyar ekvivalenti)"
           }
         },
         "ar": {
@@ -110130,7 +110130,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alınması umulan alacaqlar"
+            "value": "Qaytarılması gözlənilən alacaqlar"
           }
         },
         "ar": {
@@ -111270,7 +111270,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Telefonun Google ehtiyat nüsxəsi açıqdırsa, ayarlarınız və qeydləriniz (dünya saatları, geri sayımlar, zəngli saatlar, pomodoro, yuxu və ibadət qeydləri, fotolar) Google hesabınızdakı ehtiyat nüsxəyə düşür və yeni telefona keçəndə ya tətbiqi yenidən quranda bərpa olunur. Bu ehtiyat nüsxəni Google idarə edir; bizə heç nə gəlmir. Telefon Ayarları › Google › Ehtiyat nüsxə."
+            "value": "Telefonun Google ehtiyat nüsxəsi açıqdırsa, ayarlarınız və qeydləriniz (dünya saatları, geri sayımlar, zəngli saatlar, pomodoro, yuxu və ibadət qeydləri, fotolar) Google hesabınızdakı ehtiyat nüsxəyə düşür və yeni telefona keçəndə ya tətbiqi yenidən quranda bərpa olunur. Bu ehtiyat nüsxəni Google idarə edir; bizə heç nə gəlmir. Telefonun Parametrləri › Google › Ehtiyat nüsxə."
           }
         },
         "ar": {
@@ -113265,7 +113265,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tez zəngli saat"
+            "value": "Sürətli zəngli saat"
           }
         },
         "ar": {
@@ -114025,7 +114025,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tez oyandınızsa bu çalmanı keçə bilərsiniz."
+            "value": "Tez oyandınızsa, bu zəngi keçə bilərsiniz."
           }
         },
         "ar": {
@@ -114500,7 +114500,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngli saatın səsi vaxtı deyən qısa bir yazı ilə əvəz olunur (telefonda yaradılır)."
+            "value": "Zəngli saatın səsi vaxtı deyən qısa bir səs yazısı ilə əvəz olunur (telefonda yaradılır)."
           }
         },
         "ar": {
@@ -116305,7 +116305,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "İlin %1$@-ci günü · %2$@-ci həftə"
+            "value": "İlin %1$@. günü · %2$@. həftə"
           }
         },
         "ar": {
@@ -116780,7 +116780,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Xıdır günləri: %1$@-ci gün"
+            "value": "Xıdır günləri: %1$@. gün"
           }
         },
         "ar": {
@@ -116875,7 +116875,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qasım günləri: %1$@-ci gün"
+            "value": "Qasım günləri: %1$@. gün"
           }
         },
         "ar": {
@@ -117255,7 +117255,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Türkiyədə rəsmi vaxtlar Diyanətindir. Seçim vaxtları, bildirişləri, siqnalları və aylıq cədvəli dəyişir; vidcetlər və saat Diyanət üsulu ilə qalır."
+            "value": "Türkiyədə rəsmi vaxtlar Diyanətindir. Seçiminiz vaxtları, bildirişləri, siqnalları və aylıq cədvəli dəyişir; ana ekran vidcetləri və qol saatı Diyanət üsulunu saxlayır."
           }
         },
         "ar": {
@@ -117445,7 +117445,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gün batımına %1$@"
+            "value": "Günəşin batmasına %1$@"
           }
         },
         "ar": {
@@ -117540,7 +117540,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gün doğumuna %1$@"
+            "value": "Günəşin çıxmasına %1$@"
           }
         },
         "ar": {
@@ -117635,7 +117635,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vaxtda siqnal"
+            "value": "Namaz vaxtında siqnal"
           }
         },
         "ar": {
@@ -118015,7 +118015,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vaxtda telefonu səssizə al"
+            "value": "Namaz vaxtı telefonu səssizə al"
           }
         },
         "ar": {
@@ -118205,7 +118205,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Söndürülüb"
+            "value": "Bağlı"
           }
         },
         "ar": {
@@ -118870,7 +118870,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vaxtda səssiz"
+            "value": "Namaz vaxtı səssiz"
           }
         },
         "ar": {
@@ -121720,7 +121720,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sadə aralığa qayıt"
+            "value": "Sadə intervala qayıt"
           }
         },
         "ar": {
@@ -122765,7 +122765,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mekik"
+            "value": "Qarın presi (crunch)"
           }
         },
         "ar": {
@@ -127230,7 +127230,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bitən aralıq məşqi və rutin Sağlamlıq tətbiqinə məşq kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur."
+            "value": "Bitən interval məşqi və rutin Sağlamlıq tətbiqinə məşq kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur."
           }
         },
         "ar": {
@@ -127325,7 +127325,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bitən aralıq məşqi və rutin Health Connect-ə məşq sessiyası kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur."
+            "value": "Bitən interval məşqi və rutin Health Connect-ə məşq sessiyası kimi yazılır (növ, başlanğıc və müddət). Tətbiq sağlamlıq məlumatlarınızı oxumur."
           }
         },
         "ar": {
@@ -130935,7 +130935,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sürüşdürücü ilə mahnının hansı 30 saniyəsinin səslənəcəyini seçin. Tədricən səs açıqdırsa, hissə zəif başlayır."
+            "value": "Sürüşdürücü ilə mahnının hansı 30 saniyəsinin səslənəcəyini seçin. \"Tədricən yüksələn səs\" açıqdırsa, hissə zəif başlayır."
           }
         },
         "ar": {
@@ -133120,7 +133120,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "\"Həmişə icazə ver\"i seç"
+            "value": "\"Həmişə icazə ver\" seçin"
           }
         },
         "ar": {
@@ -133310,7 +133310,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "\"Dəqiq məkan\" bağlıdır: iPhone yer xatırladıcılarını yalnız dəqiq məkanla işlədir (Ayarlar › Saat Tarix › Məkan)."
+            "value": "\"Dəqiq məkan\" bağlıdır: iPhone yer xatırladıcılarını yalnız dəqiq məkanla işlədir (Parametrlər › Saat Tarix › Məkan)."
           }
         },
         "ar": {
@@ -133975,7 +133975,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tədbir telefondakı təqvimlərdən seçilir; başlanğıcından seçilən müddət əvvəl birdəfəlik zəng qurulur (bütün günlük tədbirdə həmin gün 09:00). Təqvim icazəsi Təqvim bölməsindən verilir."
+            "value": "Tədbir telefondakı təqvimlərdən seçilir; başlanğıcından seçilən müddət əvvəl birdəfəlik zəng qurulur (günboyu tədbirlərdə həmin gün 09:00-da). Təqvim icazəsi Təqvim bölməsindən verilir."
           }
         },
         "ar": {

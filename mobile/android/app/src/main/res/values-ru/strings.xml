@@ -491,8 +491,8 @@
     <string name="zakat_fitreHeading">Фитр (закят аль-фитр)</string>
     <string name="zakat_fitreText">Управление по делам религии Турции (Высший совет по делам религии) установило фитр на %1$s год в размере %2$s TL с человека (%3$s); он действует с Рамадана %1$s года до следующего Рамадана.</string>
     <string name="zakat_fitrePeople">Число человек (включая иждивенцев)</string>
-    <string name="zakat_fitreTotal">Всего фитр</string>
-    <string name="zakat_fitreNote">Сумма указана для Турции и является минимальной; кто может, даёт больше (по мере фиников или изюма). Фитр отдают до праздничного намаза.</string>
+    <string name="zakat_fitreTotal">Сумма фитра</string>
+    <string name="zakat_fitreNote">Сумма указана для Турции и является минимальной; кто может, даёт больше (исходя из стоимости фиников или изюма). Фитр отдают до праздничного намаза.</string>
     <string name="hijriConv_h1">Конвертер дат хиджры</string>
     <string name="hijriConv_toHijri">Григорианская → хиджра</string>
     <string name="hijriConv_toGreg">Хиджра → григорианская</string>

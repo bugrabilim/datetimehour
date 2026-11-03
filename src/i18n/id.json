@@ -2489,7 +2489,7 @@
     "startLabel": "Mulai",
     "endLabel": "Selesai",
     "overnight": "Waktu selesai lebih awal dari waktu mulai, jadi rentangnya dihitung melewati tengah malam.",
-    "duration": "{h} j {m} mnt",
+    "duration": "{h} jam {m} mnt",
     "decimal": "Desimal: {x} jam",
     "minutesTotal": "{n} menit",
     "addHeading": "Tambah atau kurangi waktu",
@@ -2511,7 +2511,7 @@
     "sumBad": "Baris tidak terbaca: {n}",
     "faq": [
       {
-        "q": "Bagaimana menghitung waktu antara dua jam?",
+        "q": "Bagaimana menghitung durasi antara dua waktu?",
         "a": "Kurangi waktu selesai dengan waktu mulai. Jika waktu selesai tampak lebih awal (misalnya 22.00–06.00), tengah malam telah lewat: tambahkan 24 jam dan durasinya 8 jam."
       },
       {
@@ -2526,7 +2526,7 @@
   },
   "daysUntil": {
     "title": "Berapa Hari Lagi: Hari Menuju atau Sejak Suatu Tanggal | Saat Tarih",
-    "description": "Berapa hari lagi menuju suatu tanggal atau sudah berapa hari sejak itu, dalam minggu, bulan, dan hari kerja, plus sisa hari menuju hari libur dan tanggal penting.",
+    "description": "Berapa hari lagi menuju suatu tanggal atau sejak tanggal itu, dalam minggu, bulan, dan hari kerja; plus sisa hari menuju hari libur dan tanggal penting.",
     "h1": "Berapa hari lagi menuju…?",
     "lead": "Pilih tanggal untuk melihat berapa hari lagi atau sudah berapa hari berlalu, juga dalam minggu dan hari kerja. Sisa hari menuju hari libur dan tanggal penting tercantum di bawah.",
     "search": "days until how many days until days since countdown days date counter kaç gün kaldı berapa hari lagi hitung hari menuju tanggal",
@@ -2553,15 +2553,15 @@
       },
       {
         "q": "Bagaimana hari kerja dihitung?",
-        "a": "Sabtu, Minggu, dan hari libur resmi penuh di Turki tidak dihitung dari hari-hari setelah hari ini; setengah hari menjelang hari raya dihitung setengah. Data hari libur mencakup 2026–2031."
+        "a": "Dari hari-hari setelah hari ini, Sabtu, Minggu, dan hari libur resmi sehari penuh di Turki tidak dihitung; setengah hari menjelang hari raya dihitung setengah. Data hari libur mencakup 2026–2031."
       }
     ]
   },
   "interval": {
-    "title": "Pengatur Waktu Interval: Pengatur HIIT dan Tabata Daring | Saat Tarih",
-    "description": "Ronde dengan pemanasan, kerja, dan istirahat: lonceng dan aba-aba suara di setiap pergantian serta hitungan tiga detik terakhir. Preset Tabata dan HIIT, layar penuh.",
+    "title": "Pengatur Waktu Interval: HIIT dan Tabata Daring | Saat Tarih",
+    "description": "Ronde pemanasan, kerja, dan istirahat; lonceng dan aba-aba suara tiap pergantian serta hitung mundur 3 detik terakhir. Preset Tabata dan HIIT, layar penuh.",
     "h1": "Pengatur waktu interval",
-    "lead": "Atur pemanasan, kerja, istirahat, dan jumlah ronde. Lonceng berbunyi di setiap pergantian dan fasenya dapat diucapkan.",
+    "lead": "Atur durasi pemanasan, kerja, dan istirahat serta jumlah ronde. Lonceng berbunyi di setiap pergantian dan nama fase dapat diucapkan.",
     "search": "interval timer hiit timer tabata timer workout timer emom round timer aralık zamanlayıcı pengatur waktu interval tabata hiit latihan",
     "warmup": "Pemanasan (dtk)",
     "work": "Kerja (dtk)",
@@ -2586,7 +2586,7 @@
     "reset": "Atur ulang",
     "voice": "Aba-aba suara",
     "voiceNote": "Aba-aba memakai mesin suara di perangkat Anda; jika tidak ada suara bawaan untuk bahasa ini, hanya lonceng yang berbunyi.",
-    "note": "Bekerja selama halaman terbuka; dalam layar penuh, layar tetap menyala.",
+    "note": "Bekerja selama halaman terbuka; dalam mode layar penuh, tampilan tetap menyala.",
     "faq": [
       {
         "q": "Apa itu Tabata?",
@@ -2600,7 +2600,7 @@
   },
   "chess": {
     "title": "Jam Catur Daring dengan Penambahan Waktu | Saat Tarih",
-    "description": "Jam catur daring dua pemain dengan kontrol waktu (1+0, 3+2, 5+0, 10+0, 15+10), penambahan Fischer, hitungan langkah, dan bunyi saat waktu habis. Layar penuh di ponsel.",
+    "description": "Jam catur daring 2 pemain: kontrol waktu (1+0, 3+2, 5+0, 10+0, 15+10), penambahan Fischer, hitungan langkah, bunyi saat waktu habis. Layar penuh di ponsel.",
     "h1": "Jam catur",
     "lead": "Pilih kontrol waktu dan ketuk jam Anda sendiri setelah setiap langkah. Penambahan Fischer dan hitungan langkah didukung.",
     "search": "chess clock online chess timer blitz bullet fischer increment game clock satranç saati jam catur online blitz",
@@ -2610,7 +2610,7 @@
     "increment": "Penambahan (dtk)",
     "white": "Putih",
     "black": "Hitam",
-    "hint": "Untuk memulai, ketuk jam Hitam; waktu Putih mulai berjalan. Tombol spasi menghentikan jam pemain yang sedang melangkah.",
+    "hint": "Untuk memulai, ketuk jam Hitam; waktu Putih mulai berjalan. Tombol spasi menghentikan jam pemain yang sedang mendapat giliran.",
     "pause": "Jeda",
     "resume": "Lanjutkan",
     "reset": "Atur ulang",
@@ -2619,7 +2619,7 @@
     "faq": [
       {
         "q": "Apa arti 3+2 dalam catur?",
-        "a": "Setiap pemain memiliki 3 menit dan 2 detik ditambahkan setelah setiap langkahnya (penambahan Fischer)."
+        "a": "Setiap pemain memiliki waktu 3 menit, dan 2 detik ditambahkan setelah setiap langkah yang ia jalankan (penambahan Fischer)."
       },
       {
         "q": "Siapa yang memulai jam catur?",
@@ -2649,7 +2649,7 @@
     "slower": "Lebih lambat",
     "faster": "Lebih cepat",
     "volume": "Volume",
-    "tempoNote": "Nama tempo Italia adalah rentang perkiraan.",
+    "tempoNote": "Nama tempo dalam bahasa Italia menunjukkan rentang perkiraan.",
     "faq": [
       {
         "q": "Apa arti BPM?",
@@ -2663,7 +2663,7 @@
   },
   "talking": {
     "title": "Jam Berbicara: Jam Daring yang Mengucapkan Waktu | Saat Tarih",
-    "description": "Jam daring yang mengucapkan waktu: dengan tombol atau otomatis setiap 1, 5, 15, atau 30 menit dan setiap jam tepat. Berguna bagi yang penglihatannya terbatas.",
+    "description": "Jam daring yang menyebutkan waktu lewat tombol atau otomatis tiap 1, 5, 15, 30 menit dan tiap jam tepat. Cocok bagi penglihatan terbatas atau saat bekerja.",
     "h1": "Jam berbicara",
     "lead": "Tekan tombol untuk mendengar waktu; jam juga dapat mengucapkannya sendiri pada selang tertentu. Bekerja selama halaman terbuka.",
     "search": "talking clock speaking clock say the time audio clock what time is it spoken konuşan saat jam berbicara jam bersuara jam berapa sekarang",
@@ -2725,7 +2725,7 @@
     "faq": [
       {
         "q": "Mengapa batas zodiak sedikit bergeser setiap tahun?",
-        "a": "Saat Matahari masuk ke zodiak baru bergeser beberapa jam setiap tahun, sehingga hari pergantiannya berkisar antara tanggal 19 dan 23. Pada hari-hari itu jam lahir juga berpengaruh."
+        "a": "Waktu masuknya Matahari ke zodiak baru bergeser beberapa jam setiap tahun, sehingga hari pergantiannya berkisar antara tanggal 19 dan 23. Pada hari-hari itu jam lahir juga berpengaruh."
       },
       {
         "q": "Apa itu zodiak Bulan?",
@@ -2735,7 +2735,7 @@
   },
   "sky": {
     "title": "Langit Malam Ini: Planet yang Terlihat dan Jarak Bulan | Saat Tarih",
-    "description": "Planet mana yang dapat dilihat malam ini dari tempat Anda, kapan, dan ke arah mana; peta langit dengan bintang terang, jarak Bulan, serta perige dan apoge berikutnya.",
+    "description": "Planet yang terlihat malam ini dari tempat Anda, kapan, dan ke arah mana; peta langit dengan bintang terang, jarak Bulan, perige dan apoge berikutnya.",
     "h1": "Langit malam",
     "lead": "Kapan Merkurius, Venus, Mars, Yupiter, dan Saturnus dapat dilihat malam ini dari tempat pilihan, ke mana melihat, dan seberapa terang; jarak Bulan dari Bumi.",
     "search": "night sky tonight planets visible venus jupiter mars saturn mercury stars moon distance supermoon perigee apogee langit malam ini planet terlihat jarak bulan supermoon",
@@ -2763,7 +2763,7 @@
     ],
     "window": "{from}–{to}",
     "tooClose": "Terlalu dekat dengan Matahari untuk dilihat",
-    "below": "Tidak di atas cakrawala saat gelap malam ini",
+    "below": "Tidak berada di atas cakrawala saat langit gelap malam ini",
     "riseSet": "Terbit {rise} · Terbenam {set}",
     "altFmt": "{deg}° ({time})",
     "mkm": "{v} juta km",
@@ -2771,7 +2771,7 @@
     "moonNow": "Jarak dari Bumi sekarang",
     "perigee": "Perige berikutnya (terdekat)",
     "apogee": "Apoge berikutnya (terjauh)",
-    "superMoon": "Bulan purnama {date} dekat dengan perige: \"supermoon\" (Bulan tampak sedikit lebih besar dan lebih terang).",
+    "superMoon": "Bulan purnama pada {date} terjadi dekat perige: \"supermoon\" (Bulan tampak sedikit lebih besar dan lebih terang).",
     "km": "{v} km",
     "note": "Posisi dihitung di peramban Anda: planet dengan elemen orbit perkiraan JPL (ketelitian sekitar menit busur), Bulan dan Matahari dengan rumus Meeus. \"Kapan terlihat\" berarti jam-jam saat Matahari 6° di bawah cakrawala dan planet setidaknya 5° di atasnya. Kecerlangan dalam magnitudo (lebih kecil berarti lebih terang); cincin Saturnus tidak dihitung. Bintang digambar pada posisi J2000.",
     "faq": [
@@ -2791,7 +2791,7 @@
   },
   "otd": {
     "title": "Hari Ini dalam Sejarah: Peristiwa dan Tokoh | Saat Tarih",
-    "description": "Apa yang terjadi pada hari ini dalam sejarah: peristiwa besar, pendirian negara dan organisasi, kelahiran dan kematian tokoh; pilih hari apa saja. Sumber: Wikidata.",
+    "description": "Peristiwa besar, berdirinya negara dan organisasi, serta kelahiran dan wafatnya tokoh pada hari ini dalam sejarah; pilih hari mana pun. Sumber: Wikidata.",
     "h1": "Hari ini dalam sejarah",
     "lead": "Peristiwa penting, pendirian, kelahiran, dan kematian dalam sejarah untuk hari ini atau hari pilihan Anda.",
     "search": "on this day today in history what happened today born today died today anniversary events births deaths hari ini dalam sejarah peristiwa hari ini lahir hari ini",
@@ -2805,7 +2805,7 @@
     "next": "Hari berikutnya",
     "today": "Hari ini",
     "heading": "{date}",
-    "empty": "Tidak ada catatan untuk hari ini.",
+    "empty": "Tidak ada catatan untuk tanggal ini.",
     "source": "Sumber: Wikidata (CC0). Untuk setiap hari, catatan paling terkenal dipilih menurut jumlah artikel Wikipedia; nama sesuai Wikidata. Tanggal dalam kalender Masehi (Gregorius); untuk tanggal sebelum 1582 sumber mungkin memakai kalender Julian.",
     "faq": [
       {
@@ -2820,7 +2820,7 @@
   },
   "tzn": {
     "title": "Berita Zona Waktu: Waktu Musim Panas dan Perubahan Zona | Saat Tarih",
-    "description": "Perubahan zona waktu dan waktu musim panas di dunia: negara yang beralih ke waktu tetap, yang tidak lagi memundurkan jam, dan zona baru. Sumber: basis data tz IANA.",
+    "description": "Perubahan zona waktu dan waktu musim panas di dunia: negara yang beralih ke waktu tetap atau berhenti memundurkan jam, dan zona baru. Sumber: tzdata IANA.",
     "h1": "Berita zona waktu",
     "lead": "Keputusan negara-negara tentang zona waktu dan waktu musim panas, yang terbaru di atas. Setiap berita menunjukkan kapan berlaku dan waktu saat ini di sana.",
     "search": "time zone news daylight saving time change permanent daylight time time zone changed tzdata berita zona waktu perubahan jam waktu musim panas",

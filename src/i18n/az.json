@@ -2481,14 +2481,14 @@
   },
   "timeCalc": {
     "title": "Saat Hesablama: Toplama, Çıxma və İki Saat Arası Müddət | Saat Tarih",
-    "description": "İki saat arasındakı müddəti tapın, saata müddət əlavə edib çıxın, müddətləri toplayın. Gecə yarısını keçən növbələr və onluq saat da hesablanır.",
+    "description": "İki saat arasındakı müddəti tapın, saata müddət əlavə edin və ya çıxın, müddətləri toplayın. Gecə yarısını keçən növbələr və onluq saat da hesablanır.",
     "h1": "Saat hesablama",
     "lead": "İki saat arası müddət, saata müddət əlavə etmə və çıxma, müddət toplama. Gecə yarısını keçən müddətlər və onluq saat da göstərilir.",
     "search": "saat hesablama saat toplama çıxma iki saat arası müddət iş saatı hesablama time calculator",
     "betweenHeading": "İki saat arasındakı müddət",
     "startLabel": "Başlanğıc",
     "endLabel": "Son",
-    "overnight": "Son başlanğıcdan əvvəl olduğu üçün gecə yarısı keçilmiş sayıldı.",
+    "overnight": "Son saat başlanğıcdan tez olduğu üçün müddət gecə yarısından keçməklə hesablandı.",
     "duration": "{h} saat {m} dəqiqə",
     "decimal": "Onluq: {x} saat",
     "minutesTotal": "{n} dəqiqə",
@@ -2508,7 +2508,7 @@
     "sumLabel": "Müddətlər (hər sətirdə biri)",
     "sumHint": "1:30 (bir yarım saat), 45 (dəqiqə), 2:15:30 (saat:dəqiqə:saniyə) kimi yazın; çıxmaq üçün qabağına − qoyun.",
     "sumResult": "Cəmi: {t}",
-    "sumBad": "Oxunmayan sətir: {n}",
+    "sumBad": "Tanınmayan sətir: {n}",
     "faq": [
       {
         "q": "İki saat arasındakı müddət necə hesablanır?",
@@ -2519,7 +2519,7 @@
         "a": "Dəqiqə 60-a bölünür: 30 dəqiqə 0,5 saat, 45 dəqiqə 0,75 saatdır. 7 saat 45 dəqiqə 7,75 saat edir."
       },
       {
-        "q": "Saatlar necə toplanır?",
+        "q": "Saat və dəqiqələr necə toplanır?",
         "a": "Əvvəlcə dəqiqələr toplanır və hər 60 dəqiqə bir saata çevrilir. Məsələn 1:40 + 2:35 = 3 saat 75 dəqiqə = 4 saat 15 dəqiqə."
       }
     ]
@@ -2528,7 +2528,7 @@
     "title": "Neçə Gün Qaldı? Tarixə Qalan və Keçən Günlər | Saat Tarih",
     "description": "Bir tarixə neçə gün qaldığını və ya ondan neçə gün keçdiyini həftə, ay və iş günü ilə öyrənin. Bayramlara və mühüm günlərə qalan günlər də var.",
     "h1": "Neçə gün qaldı?",
-    "lead": "Bir tarix seçin; neçə gün qaldığı və ya keçdiyi həftə və iş günü ilə yazılır. Aşağıda bayramlara və mühüm günlərə qalan günlər var.",
+    "lead": "Bir tarix seçin; neçə gün qaldığı və ya keçdiyi, həmçinin həftə və iş günü ilə göstərilir. Aşağıda bayramlara və mühüm günlərə qalan günlər var.",
     "search": "neçə gün qaldı neçə gün keçdi tarixə qalan gün gün sayğacı days until",
     "dateLabel": "Tarix",
     "left": "{n} gün qaldı",
@@ -2585,7 +2585,7 @@
     "resume": "Davam et",
     "reset": "Sıfırla",
     "voice": "Səsli elan",
-    "voiceNote": "Elanlar brauzerin cihazdakı nitq mühərriki ilə edilir; bu dildə cihaz səsi yoxdursa, yalnız zəng çalır.",
+    "voiceNote": "Elanlar brauzerin cihazdakı nitq mühərriki ilə səsləndirilir; bu dil üçün cihazda səs yoxdursa, yalnız zəng çalır.",
     "note": "Səhifə açıq qaldıqca işləyir; tam ekranda ekran sönmür.",
     "faq": [
       {
@@ -2610,7 +2610,7 @@
     "increment": "Əlavə (san)",
     "white": "Ağ",
     "black": "Qara",
-    "hint": "Başlamaq üçün qaranın saatına toxunun; ağın vaxtı işləməyə başlayır. Boşluq düyməsi növbəsi olan oyunçunun saatını dayandırır.",
+    "hint": "Başlamaq üçün qaraların saatına toxunun; ağların vaxtı işləməyə başlayır. Boşluq düyməsi növbəsi olan oyunçunun saatını dayandırır.",
     "pause": "Dayandır",
     "resume": "Davam et",
     "reset": "Sıfırla",
@@ -2623,7 +2623,7 @@
       },
       {
         "q": "Şahmat saatını kim başladır?",
-        "a": "Qaydalara görə qara fiqurlarla oynayan oyunçu saatı başladır; beləliklə ağın vaxtı işləməyə başlayır."
+        "a": "Qaydalara görə qara fiqurlarla oynayan oyunçu saatı başladır; beləliklə ağların vaxtı işləməyə başlayır."
       }
     ]
   },
@@ -2643,7 +2643,7 @@
       "4": "Dördlü (on altılıq)"
     },
     "accent": "İlk vuruşu vurğula",
-    "tap": "Tempə toxun",
+    "tap": "Toxunaraq temp",
     "start": "Başlat",
     "stop": "Dayandır",
     "slower": "Yavaşlat",
@@ -2656,14 +2656,14 @@
         "a": "BPM (beats per minute) dəqiqədəki vuruş sayıdır. 60 BPM saniyədə bir, 120 BPM saniyədə iki vuruşdur."
       },
       {
-        "q": "Tempə toxunmaq necə işləyir?",
+        "q": "Toxunaraq temp təyini necə işləyir?",
         "a": "Düyməyə musiqinin vuruşu ilə birlikdə ən azı iki dəfə toxunun; son toxunuşlar arasındakı orta müddət BPM-ə çevrilir."
       }
     ]
   },
   "talking": {
     "title": "Danışan Saat: Vaxtı Səsli Deyən Onlayn Saat | Saat Tarih",
-    "description": "Vaxtı səsli deyən onlayn saat: düymə ilə və ya hər 1, 5, 15, 30 dəqiqədən bir və saat başı avtomatik. Görmə çətinliyi olanlar və işləyərkən vaxtı eşitmək üçün.",
+    "description": "Vaxtı səsli deyən onlayn saat: düymə ilə və ya hər 1, 5, 15, 30 dəqiqədən bir və saat başı avtomatik. Zəif görənlər üçün və iş zamanı əlverişlidir.",
     "h1": "Danışan saat",
     "lead": "Düyməyə basanda vaxt səsli deyilir; istəsəniz müəyyən aralıqlarla özü deyir. Səhifə açıq qaldıqca işləyir.",
     "search": "danışan saat səsli saat vaxtı de saat neçədir səsli talking clock",
@@ -2679,11 +2679,11 @@
     },
     "chime": "Əvvəlcə zəng çalsın",
     "noVoice": "Bu brauzerdə bu dil üçün cihaz səsi tapılmadı; vaxt yazı ilə göstərilir.",
-    "note": "Nitq brauzerin cihazdakı mühərriki ilə edilir; mətn heç yerə göndərilmir. Səhifə açıq qaldıqca işləyir.",
+    "note": "Səsləndirmə brauzerin cihazdakı nitq mühərriki ilə aparılır; mətn heç yerə göndərilmir. Səhifə açıq qaldıqca işləyir.",
     "faq": [
       {
         "q": "Danışan saat telefon kilidli olanda işləyirmi?",
-        "a": "Xeyr. Brauzerlər arxa plandakı səhifələrin səsini məhdudlaşdırır; avtomatik demə yalnız səhifə açıq və ekran yanılı olanda işləyir."
+        "a": "Xeyr. Brauzerlər arxa plandakı səhifələrin səsini məhdudlaşdırır; avtomatik səsləndirmə yalnız səhifə açıq olanda və ekran sönmədikdə işləyir."
       },
       {
         "q": "Niyə səs gəlmir?",
@@ -2716,7 +2716,7 @@
       "Balıqlar"
     ],
     "noTime": "Doğum saatı yazılmadığı üçün günorta 12:00 qəbul edildi; Ay təxminən 2,5 gündən bir bürc dəyişir.",
-    "cusp": "Günəş bu gün bürc dəyişir; doğum saatı nəticəni dəyişə bilər.",
+    "cusp": "Günəş bu tarixdə bürcünü dəyişir; doğum saatı nəticəni dəyişə bilər.",
     "tzNote": "Saat bu cihazın saat qurşağına görə oxunur.",
     "tableHeading": "Bürclərin tarix aralıqları",
     "colSign": "Bürc",
@@ -2725,7 +2725,7 @@
     "faq": [
       {
         "q": "Bürc sərhədləri niyə hər il bir az dəyişir?",
-        "a": "Günəşin yeni bürcə keçdiyi an hər il bir neçə saat sürüşür; buna görə dəyişmə günləri ayın 19-u ilə 23-ü arasında olur. Bu günlərdə doğum saatı da önəmlidir."
+        "a": "Günəşin yeni bürcə keçdiyi an hər il bir neçə saat sürüşür; buna görə dəyişmə günləri ayın 19-u ilə 23-ü arasında olur. Bu günlərdə doğum saatı da vacibdir."
       },
       {
         "q": "Ay bürcü nədir?",
@@ -2735,7 +2735,7 @@
   },
   "sky": {
     "title": "Gecə səması: bu gecə görünən planetlər və Ayın məsafəsi | Saat Tarih",
-    "description": "Olduğunuz yerdən bu gecə hansı planetlər, nə vaxt və hansı istiqamətdə görünür; parlaq ulduzlarla səma xəritəsi, Ayın məsafəsi, ən yaxın və ən uzaq nöqtəsi.",
+    "description": "Olduğunuz yerdən bu gecə hansı planetlər, nə vaxt və hansı istiqamətdə görünür; parlaq ulduzlarla səma xəritəsi, Ayın məsafəsi, növbəti perigey və apogey.",
     "h1": "Gecə səması",
     "lead": "Seçilmiş yerdə bu gecə Merkuri, Venera, Mars, Yupiter və Saturnun görünə biləcəyi saatlar, istiqamətləri və parlaqlıqları; Ayın Yerə məsafəsi.",
     "search": "gecə səması planetlər bu gecə venera yupiter mars saturn merkuri ulduz ayın məsafəsi super ay perigey apogey",
@@ -2757,7 +2757,7 @@
       "Planet",
       "Nə vaxt görünür",
       "İstiqamət",
-      "Ən hündür",
+      "Ən yüksək",
       "Parlaqlıq",
       "Məsafə"
     ],
@@ -2771,7 +2771,7 @@
     "moonNow": "İndiki məsafə",
     "perigee": "Növbəti ən yaxın nöqtə (perigey)",
     "apogee": "Növbəti ən uzaq nöqtə (apogey)",
-    "superMoon": "{date} bədirlənməsi ən yaxın nöqtəyə yaxındır: \"super ay\" (Ay bir az böyük və parlaq görünür).",
+    "superMoon": "{date} tarixli bədirlənmə perigeyə yaxındır: \"super ay\" (Ay bir az daha böyük və parlaq görünür).",
     "km": "{v} km",
     "note": "Mövqelər brauzerdə hesablanır: planetlər JPL-in təxmini orbit elementləri ilə (qövs dəqiqəsi dəqiqliyi), Ay və Günəş Meeus düsturları ilə. \"Nə vaxt görünür\": Günəş üfüqdən 6° aşağıda, planet ən azı 5° yuxarıda olduğu saatlar. Parlaqlıq ulduz ölçüsü ilə (kiçik rəqəm daha parlaq); Saturnda halqaların təsiri nəzərə alınmır. Ulduzlar J2000 mövqeləri ilə çəkilir.",
     "faq": [
@@ -2785,15 +2785,15 @@
       },
       {
         "q": "Super ay nədir?",
-        "a": "Bədirlənmənin Ayın Yerə ən yaxın nöqtəsi (perigey) ətrafına düşməsinə super ay deyilir. Ay apogeydəki bədirlənməyə görə təxminən 14% böyük və 30% parlaq görünür; fərqi çılpaq gözlə seçmək çətindir."
+        "a": "Bədirlənmənin Ayın Yerə ən yaxın nöqtəsi (perigey) ətrafına düşməsinə super ay deyilir. Ay apogeydəki bədirlənməyə görə təxminən 14% daha böyük və 30% daha parlaq görünür; fərqi çılpaq gözlə seçmək çətindir."
       }
     ]
   },
   "otd": {
     "title": "Tarixdə bu gün: hadisələr, doğumlar, ölümlər | Saat Tarih",
-    "description": "Tarixdə bu gün baş verən mühüm hadisələr, qurulan dövlətlər və təşkilatlar, doğulan və vəfat edən məşhurlar; istədiyiniz günü seçin. Mənbə Wikidata.",
+    "description": "Tarixdə bu gün baş verən mühüm hadisələr, qurulan dövlətlər və təşkilatlar, doğulan və vəfat edən məşhurlar; istədiyiniz günü seçin. Mənbə: Wikidata.",
     "h1": "Tarixdə bu gün",
-    "lead": "Bu günün və seçdiyiniz günün tarixdəki mühüm hadisələri, qurulmaları, doğumları və ölümləri.",
+    "lead": "Bu gün və ya seçdiyiniz istənilən gün tarixdə baş vermiş mühüm hadisələr, qurulmalar, doğumlar və ölümlər.",
     "search": "tarixdə bu gün bu gün nə oldu bu gün kim doğulub hadisələr doğumlar ölümlər ildönümü",
     "events": "Hadisələr",
     "founded": "Qurulmalar",

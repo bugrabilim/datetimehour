@@ -2434,9 +2434,9 @@
   },
   "api": {
     "title": "API ouverte : jours fériés, heures de prière, hégire | Saat Tarih",
-    "description": "Jours fériés et religieux de Turquie, heures de prière de 81 provinces, calendrier hégirien de la Diyanet et astronomie : JSON gratuit, sans clé, CORS ouvert.",
+    "description": "Jours fériés et religieux turcs, heures de prière de 81 provinces, calendrier hégirien de la Diyanet, astronomie : JSON gratuit, sans clé, CORS ouvert.",
     "h1": "Données ouvertes (API)",
-    "lead": "Les données calculées par Saat Tarih, en fichiers JSON publics ; ni inscription ni clé d’API.",
+    "lead": "Les données calculées par Saat Tarih, en fichiers JSON publics, sans inscription ni clé d’API.",
     "search": "api open data json public holidays api turkey prayer times api hijri calendar api developer açık veri données ouvertes api jours fériés",
     "endpointsHeading": "Points d’accès",
     "colPath": "Chemin",
@@ -2470,7 +2470,7 @@
   },
   "hijriConv": {
     "title": "Convertisseur de date hégirienne : hégire ↔ grégorien | Saat Tarih",
-    "description": "Convertissez les dates grégoriennes en hégiriennes et inversement ; date hégirienne du jour et débuts de mois de l’année, selon le calendrier de la Diyanet.",
+    "description": "Convertissez une date grégorienne en hégirienne et inversement ; date hégirienne du jour et débuts de mois de l’année, selon le calendrier de la Diyanet.",
     "h1": "Convertisseur de date hégirienne",
     "lead": "La date hégirienne du jour, la conversion dans les deux sens et les débuts de mois de cette année hégirienne. Les dates suivent le calendrier de la Présidence des affaires religieuses de Turquie (Diyanet).",
     "search": "hijri converter islamic calendar hijri to gregorian gregorian to hijri today hijri date hicri convertisseur hégirien calendrier musulman date hégirienne",
@@ -2504,7 +2504,7 @@
     "colMonth": "Mois",
     "colStart": "Début (grégorien)",
     "colDays": "Jours",
-    "note": "Le jour hégirien commence au coucher du soleil ; sur cette page, la date change à minuit. Les débuts de mois peuvent différer d’un jour selon les pays. 2026–2031 suivent les dates publiées par la Diyanet ; les autres années utilisent le calcul Umm al-Qura.",
+    "note": "Le jour hégirien commence au coucher du soleil ; sur cette page, la date change à minuit. Les débuts de mois peuvent différer d’un jour selon les pays. Les années 2026–2031 suivent les dates publiées par la Diyanet ; les autres années utilisent le calcul Umm al-Qura.",
     "faq": [
       {
         "q": "Quelle est la date d’aujourd’hui dans le calendrier hégirien ?",
@@ -2522,14 +2522,14 @@
   },
   "timeCalc": {
     "title": "Calcul d’heures : addition, soustraction, durée | Saat Tarih",
-    "description": "Trouvez la durée entre deux heures, ajoutez ou retirez des heures et des minutes, additionnez des durées. Les horaires de nuit et les heures décimales sont gérés.",
+    "description": "Calculez la durée entre deux heures, ajoutez ou retirez des heures et minutes, additionnez des durées. Gère les horaires de nuit et les heures décimales.",
     "h1": "Calcul d’heures",
     "lead": "Durée entre deux heures, ajout ou retrait de temps et somme de durées. Les plages qui passent minuit et les heures décimales sont aussi affichées.",
     "search": "time calculator hours between two times add hours subtract minutes shift hours sum durations decimal hours saat hesaplama calcul d’heures durée heures décimales",
     "betweenHeading": "Durée entre deux heures",
     "startLabel": "Début",
     "endLabel": "Fin",
-    "overnight": "La fin est plus tôt que le début : la durée a été comptée en passant minuit.",
+    "overnight": "L’heure de fin est antérieure à l’heure de début : la durée a été calculée en passant minuit.",
     "duration": "{h} h {m} min",
     "decimal": "En décimal : {x} heures",
     "minutesTotal": "{n} minutes",
@@ -2594,14 +2594,14 @@
       },
       {
         "q": "Comment les jours ouvrés sont-ils comptés ?",
-        "a": "Les samedis, dimanches et jours fériés complets en Turquie sont exclus des jours suivant aujourd’hui ; les demi-journées avant les Aïds comptent pour moitié. Les données couvrent 2026–2031."
+        "a": "Les samedis, dimanches et jours fériés complets en Turquie sont exclus du décompte, qui commence demain ; les demi-journées précédant les Aïds comptent pour moitié. Les données des jours fériés couvrent 2026–2031."
       }
     ]
   },
   "interval": {
-    "title": "Minuteur fractionné : minuteur HIIT et Tabata en ligne | Saat Tarih",
+    "title": "Minuteur d’intervalles : HIIT et Tabata en ligne | Saat Tarih",
     "description": "Séries avec échauffement, effort et repos : carillon et annonce vocale à chaque phase, décompte final. Préréglages Tabata et HIIT, plein écran.",
-    "h1": "Minuteur fractionné",
+    "h1": "Minuteur d’intervalles",
     "lead": "Choisissez l’échauffement, l’effort, le repos et le nombre de séries. Un carillon sonne à chaque changement et la phase peut être annoncée à voix haute.",
     "search": "interval timer hiit timer tabata timer workout timer emom round timer aralık zamanlayıcı minuteur fractionné minuteur hiit tabata",
     "warmup": "Échauffement (s)",
@@ -2670,7 +2670,7 @@
   },
   "metronome": {
     "title": "Métronome en ligne : BPM, mesure et tempo au tapotement | Saat Tarih",
-    "description": "Un métronome dans votre navigateur : 30–250 BPM, temps par mesure, premier temps accentué, subdivisions et tempo au tapotement. Le son est produit sur votre appareil.",
+    "description": "Métronome dans votre navigateur : 30–250 BPM, temps par mesure, premier temps accentué, subdivisions, tempo au tapotement. Son généré sur votre appareil.",
     "h1": "Métronome",
     "lead": "Réglez le tempo ou tapotez-le, puis choisissez les temps par mesure et la subdivision. Les sons sont produits dans le navigateur.",
     "search": "metronome online metronome bpm tempo time signature tap tempo click track metronom métronome en ligne",
@@ -2694,7 +2694,7 @@
     "faq": [
       {
         "q": "Que signifie BPM ?",
-        "a": "BPM (battements par minute) est le nombre de temps par minute. 60 BPM, c’est un temps par seconde, et 120 BPM, deux."
+        "a": "Le BPM (battements par minute) correspond au nombre de temps par minute. 60 BPM, c’est un temps par seconde, et 120 BPM, deux."
       },
       {
         "q": "Comment fonctionne le tempo au tapotement ?",
@@ -2704,9 +2704,9 @@
   },
   "talking": {
     "title": "Horloge parlante en ligne qui annonce l’heure | Saat Tarih",
-    "description": "Une horloge qui annonce l’heure à voix haute : sur un bouton ou automatiquement toutes les 1, 5, 15 ou 30 minutes et à chaque heure. Pratique pour les malvoyants.",
+    "description": "Horloge qui annonce l’heure : d’une pression ou automatiquement chaque minute, toutes les 5, 15 ou 30 min ou à l’heure pile. Pratique pour les malvoyants.",
     "h1": "Horloge parlante",
-    "lead": "Appuyez sur le bouton pour entendre l’heure ; elle peut aussi l’annoncer seule à intervalles réguliers. Fonctionne tant que la page est ouverte.",
+    "lead": "Appuyez sur le bouton pour entendre l’heure ; l’horloge peut aussi l’annoncer d’elle-même à intervalles réguliers. Fonctionne tant que la page est ouverte.",
     "search": "talking clock speaking clock say the time audio clock what time is it spoken konuşan saat horloge parlante heure à voix haute quelle heure est-il",
     "say": "Annoncer l’heure",
     "auto": "Annonce automatique",
@@ -2723,7 +2723,7 @@
     "note": "La synthèse vocale utilise le moteur local de votre navigateur ; le texte n’est envoyé nulle part. Fonctionne tant que la page est ouverte.",
     "faq": [
       {
-        "q": "L’horloge parlante fonctionne-t-elle téléphone verrouillé ?",
+        "q": "L’horloge parlante fonctionne-t-elle lorsque le téléphone est verrouillé ?",
         "a": "Non. Les navigateurs limitent le son des pages en arrière-plan ; l’annonce automatique ne fonctionne que si la page est ouverte et l’écran allumé."
       },
       {
@@ -2734,7 +2734,7 @@
   },
   "zodiac": {
     "title": "Calcul du signe astrologique : signe solaire et lunaire | Saat Tarih",
-    "description": "Trouvez votre signe solaire et votre signe lunaire à partir de votre date et heure de naissance, par un calcul astronomique. Avec un tableau des dates des signes.",
+    "description": "Trouvez votre signe solaire et lunaire à partir de votre date et heure de naissance, par un calcul astronomique. Avec un tableau des dates des signes.",
     "h1": "Calcul du signe astrologique",
     "lead": "Saisissez votre date et votre heure de naissance ; les signes où se trouvaient le Soleil et la Lune à cet instant sont calculés. L’astrologie est un divertissement.",
     "search": "zodiac sign calculator what is my sign moon sign calculator sun sign birth date star sign burç signe astrologique signe lunaire quel est mon signe",
@@ -2798,7 +2798,7 @@
       "Planète",
       "Visible",
       "Direction",
-      "Plus haute",
+      "Hauteur max.",
       "Brillance",
       "Distance"
     ],
@@ -2832,7 +2832,7 @@
   },
   "otd": {
     "title": "Éphéméride : ce jour-là dans l’histoire | Saat Tarih",
-    "description": "Ce qui s’est passé ce jour-là dans l’histoire : grands événements, fondations, naissances et décès célèbres ; choisissez n’importe quel jour. Source : Wikidata.",
+    "description": "Ce qui s’est passé ce jour-là : grands événements, fondations, naissances et décès célèbres ; choisissez n’importe quel jour. Source : Wikidata.",
     "h1": "Ce jour-là",
     "lead": "Les événements marquants, fondations, naissances et décès de l’histoire pour aujourd’hui ou le jour de votre choix.",
     "search": "on this day today in history what happened today born today died today anniversary events births deaths éphéméride ce jour-là dans l’histoire nés aujourd’hui",
@@ -2855,7 +2855,7 @@
       },
       {
         "q": "Puis-je consulter un autre jour ?",
-        "a": "Oui. Utilisez le sélecteur de jour de la page « Ce jour-là » pour choisir n’importe quel jour de l’année, ou avancez avec les boutons jour précédent et jour suivant ; le lien dans la barre d’adresse indique ce jour."
+        "a": "Oui. Utilisez le sélecteur de jour de la page « Ce jour-là » pour choisir n’importe quel jour de l’année, ou naviguez avec les boutons « Jour précédent » et « Jour suivant » ; le lien dans la barre d’adresse indique ce jour."
       }
     ]
   },

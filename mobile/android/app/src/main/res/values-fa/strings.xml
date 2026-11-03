@@ -465,7 +465,7 @@
     <string name="list_emailLabel">نشانی ایمیل شما</string>
     <string name="list_submit">عضویت</string>
     <string name="list_ok">ایمیل تأیید برایتان فرستادیم؛ برای کامل شدن عضویت روی پیوند داخل آن کلیک کنید.</string>
-    <string name="list_err">عضویت شما ثبت نشد. نشانی ایمیل و گزینهٔ تأیید را بررسی کنید و کمی بعد دوباره امتحان کنید.</string>
+    <string name="list_err">عضویت شما ثبت نشد. نشانی ایمیل و کادر تأیید را بررسی کنید و کمی بعد دوباره امتحان کنید.</string>
     <string name="list_noteLink">https://bumbagroup.com/liste/aydinlatma?dil=en</string>
     <string name="list_popupTitle">اطلاعیهٔ حریم خصوصی فهرست ایمیل</string>
     <string name="list_popupText">نشانی ایمیل شما را Bumba Teknoloji Limited Şirketi فقط برای عضویت شما در این فهرست پردازش می‌کند. هر زمان بخواهید با یک کلیک می‌توانید لغو اشتراک کنید.</string>
@@ -492,7 +492,7 @@
     <string name="zakat_fitreText">ریاست امور دینی ترکیه (شورای عالی امور دینی) فطریهٔ %1$s را %2$s لیر برای هر نفر تعیین کرد (%3$s)؛ از رمضان %1$s تا رمضان بعدی معتبر است.</string>
     <string name="zakat_fitrePeople">شمار افراد (با افراد تحت تکفل)</string>
     <string name="zakat_fitreTotal">کل فطریه</string>
-    <string name="zakat_fitreNote">این مبلغ برای ترکیه و کمینه است؛ هر که بتواند بیشتر می‌دهد (به اندازهٔ خرما یا کشمش). فطریه پیش از نماز عید پرداخت می‌شود.</string>
+    <string name="zakat_fitreNote">این مبلغ برای ترکیه و حداقل است؛ کسانی که توانایی دارند می‌توانند بیشتر بدهند (بر پایهٔ بهای خرما یا کشمش). فطریه پیش از نماز عید پرداخت می‌شود.</string>
     <string name="hijriConv_h1">مبدل تاریخ هجری قمری</string>
     <string name="hijriConv_toHijri">میلادی به قمری</string>
     <string name="hijriConv_toGreg">قمری به میلادی</string>
