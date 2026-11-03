@@ -175,7 +175,10 @@ fun PomodoroScreen() {
             Text(L("pomo.noiseNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         FocusBlockCard()
+        // Telefon yüzüstüyken odak (2. analiz #29)
+        FlipFocusCard { end = ToolState.long("pomo.end"); left = ToolState.long("pomo.left"); now = System.currentTimeMillis() }
         FocusStatsCard(log) { PomoLog.save(emptyList()); log = emptyList() }
+        FocusForest(log)
         AppCard {
             SectionTitle(L("tools.pomodoro.settings"))
             Stepper(L("tools.pomodoro.workMin"), workMin, 5..90, 5) { workMin = it; ToolState.putInt("pomo.work", it) }

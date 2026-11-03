@@ -16,6 +16,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Air
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Pause
@@ -67,6 +68,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "pomodoro" -> Page(L("tools.hub.cards.pomodoro.name"), onRoute) { PomodoroScreen() }
         "sleep" -> Page(L("sleep.title"), onRoute) { SleepScreen() }
         "journal" -> Page(L("journal.title"), onRoute) { JournalScreen() }
+        "breath" -> Page(L("breath.title"), onRoute) { BreathScreen() }
         "planner" -> Page(L("planner.h1"), onRoute) { MeetingPlannerScreen() }
         "datecalc" -> Page(L("tools.hub.cards.datecalc.name"), onRoute) { DateCalcScreen() }
         "settings" -> Page(L("settings.title"), onRoute) { SettingsScreen(onRoute) }
@@ -90,6 +92,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
                 ToolRow(Icons.Filled.Spa, L("tools.hub.cards.pomodoro.name")) { onRoute("pomodoro") }
                 ToolRow(Icons.Filled.Bedtime, L("sleep.title")) { onRoute("sleep") }
                 ToolRow(Icons.Filled.WbTwilight, L("journal.title")) { onRoute("journal") }
+                ToolRow(Icons.Filled.Air, L("breath.title")) { onRoute("breath") }
                 ToolRow(Icons.Filled.Groups, L("planner.h1")) { onRoute("planner") }
                 ToolRow(Icons.Filled.EditCalendar, L("tools.hub.cards.datecalc.name"), last = true) { onRoute("datecalc") }
             }

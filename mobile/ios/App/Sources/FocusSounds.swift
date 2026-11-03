@@ -271,8 +271,8 @@ struct FocusStatsCard: View {
                 stat(L("tools.pomodoro.today"), s.today)
                 stat(L("tools.pomodoro.week"), s.week)
                 stat(L("tools.pomodoro.total"), s.total)
-                Text(L("tools.pomodoro.chartCaption")).font(.caption).foregroundStyle(Theme.muted)
-                bars(days, s.perDay)
+                // 7 gün / 30 gün / 12 ay (2. analiz #31)
+                FocusRangeChart(log: log)
                 if !s.top.isEmpty {
                     Text(L("tools.pomodoro.topTasks")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.text)
                     ForEach(Array(s.top.enumerated()), id: \.offset) { _, t in

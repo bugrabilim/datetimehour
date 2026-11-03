@@ -220,6 +220,9 @@ enum BackgroundRefresh {
         await PrayerNotifier.reschedule()
         await AlarmCenter.refreshSkips()
         await PrayerAlarms.sync()
-        await MainActor.run { LiveActivities.sync() }
+        await MainActor.run {
+            LiveActivities.sync()
+            FocusBlock.sync() // zaman çizelgeli odak engeli (2. analiz #27)
+        }
     }
 }

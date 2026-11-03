@@ -340,21 +340,8 @@ fun FocusStatsCard(log: List<FocusLog.Entry>, onClear: () -> Unit) {
             Row2(L("tools.pomodoro.today"), T("tools.pomodoro.statLine", s.today.n, s.today.m))
             Row2(L("tools.pomodoro.week"), T("tools.pomodoro.statLine", s.week.n, s.week.m))
             Row2(L("tools.pomodoro.total"), T("tools.pomodoro.statLine", s.total.n, s.total.m))
-            Text(L("tools.pomodoro.chartCaption"), color = Theme.c.muted, fontSize = 12.sp)
-            val top = maxOf(1, s.perDay.max())
-            Row(Modifier.fillMaxWidth().height(112.dp), horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.Bottom) {
-                days.forEachIndexed { i, d ->
-                    val label = L("calendar.weekdaysShort.${LocalDate.parse(d).dayOfWeek.value - 1}")
-                    Column(Modifier.weight(1f).fillMaxHeight().clearAndSetSemantics { contentDescription = "$label: ${s.perDay[i]} ${L("tools.pomodoro.minUnit")}" },
-                        horizontalAlignment = Alignment.CenterHorizontally) {
-                        Spacer(Modifier.weight(1f))
-                        Box(Modifier.fillMaxWidth().height(maxOf(3f, 90f * s.perDay[i] / top).dp)
-                            .background(if (i == 6) Theme.c.accent else Theme.c.accent.copy(alpha = 0.55f), RoundedCornerShape(4.dp)))
-                        Spacer(Modifier.height(4.dp))
-                        Text(label, color = Theme.c.muted, fontSize = 11.sp)
-                    }
-                }
-            }
+            // 7 gün / 30 gün / 12 ay (2. analiz #31)
+            FocusRangeChart(log)
             if (s.top.isNotEmpty()) {
                 Text(L("tools.pomodoro.topTasks"), color = Theme.c.text, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
                 for ((name, m) in s.top) Row2(name, "$m ${L("tools.pomodoro.minUnit")}")

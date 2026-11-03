@@ -363,6 +363,7 @@ object AlarmScheduler {
     /** Uygulama ya da telefon yeniden başlayınca: alarmlar ve süren zamanlayıcı/pomodoro yeniden kurulur */
     fun restoreAll(c: Context) {
         sync(c)
+        FocusBlock.sync(c)
         GeoAlarms.sync(c)
         LiveNotifications.sync(c)
         val now = System.currentTimeMillis()

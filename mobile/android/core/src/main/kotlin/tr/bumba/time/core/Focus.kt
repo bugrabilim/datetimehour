@@ -141,3 +141,62 @@ object NoiseGen {
     /** Ses düzeyi (0–100) → kazanç */
     fun gain(volume: Int) = max(0, min(100, volume)) / 100f
 }
+
+/**
+ * Odak engelinin zaman çizelgesi (2. analiz #27; iOS'taki FocusSchedule ile aynı kural): gün ISO 1–7 (pazartesi 1),
+ * dakika gece yarısından. [from, to) arası; from > to ise gece yarısını aşar ve başladığı günün seçimine bakılır.
+ */
+object FocusSchedule {
+    fun active(days: Set<Int>, from: Int, to: Int, weekday: Int, minute: Int): Boolean {
+        if (from == to) return false
+        if (from < to) return weekday in days && minute >= from && minute < to
+        val prev = (weekday + 5) % 7 + 1
+        return (weekday in days && minute >= from) || (prev in days && minute < to)
+    }
+
+    /** Sıradaki sınıra (başlangıç ya da bitiş) kalan dakika: 1..1440 */
+    fun minutesToNextBoundary(from: Int, to: Int, minute: Int): Int {
+        fun ahead(t: Int) = ((t - minute) % 1440 + 1440) % 1440
+        val a = ahead(from).let { if (it == 0) 1440 else it }
+        val b = ahead(to).let { if (it == 0) 1440 else it }
+        return minOf(a, b)
+    }
+}
+
+/**
+ * Nefes egzersizi (2. analiz #28; iOS'taki Breath ile aynı): kalıp saniyeleri sırayla nefes al, tut, ver, tut;
+ * 0 saniyelik adımlar atlanır. `phase` geçen süreye göre adım (0 al, 1 tut, 2 ver, 3 tut), adımın ilerlemesi (0–1)
+ * ve tamamlanan tur sayısı.
+ */
+object Breath {
+    val PATTERNS = linkedMapOf(
+        "478" to doubleArrayOf(4.0, 7.0, 8.0, 0.0),
+        "box" to doubleArrayOf(4.0, 4.0, 4.0, 4.0),
+        "calm" to doubleArrayOf(4.0, 0.0, 6.0, 0.0),
+        "even" to doubleArrayOf(5.5, 0.0, 5.5, 0.0),
+    )
+
+    data class Phase(val step: Int, val progress: Double, val left: Double, val cycle: Int)
+
+    fun cycleSeconds(p: DoubleArray) = p.sum()
+
+    fun phase(p: DoubleArray, elapsed: Double): Phase {
+        val total = cycleSeconds(p)
+        val cycle = (elapsed / total).toInt()
+        var t = elapsed - cycle * total
+        for (i in p.indices) {
+            if (p[i] <= 0.0) continue
+            if (t < p[i]) return Phase(i, t / p[i], p[i] - t, cycle)
+            t -= p[i]
+        }
+        return Phase(0, 0.0, p[0], cycle + 1)
+    }
+
+    /** Çemberin büyüklüğü (0 küçük, 1 büyük): alırken büyür, verirken küçülür, tutarken kalır */
+    fun scale(ph: Phase): Double = when (ph.step) {
+        0 -> ph.progress
+        1 -> 1.0
+        2 -> 1.0 - ph.progress
+        else -> 0.0
+    }
+}

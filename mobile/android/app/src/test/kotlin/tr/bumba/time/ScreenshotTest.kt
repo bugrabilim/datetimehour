@@ -163,6 +163,7 @@ class ScreenshotTest {
         }
     }
     @Test fun dateCalc() = tool("tr-tarih-hesaplama", "datecalc")
+    @Test fun breath() = tool("tr-nefes", "breath") // 2. analiz #28
     /** Vakit bildirimleri ayarı (açık hâlde: vakitler, zaman, ses) */
     @Test fun notifySettings() {
         RuntimeEnvironment.setQualifiers("+tr")

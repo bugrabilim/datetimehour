@@ -47,7 +47,7 @@ enum FocusBlock {
     static func sync() {
         guard available else { return }
         let d = UserDefaults.standard
-        guard d.bool(forKey: onKey), working, AuthorizationCenter.shared.authorizationStatus == .approved, !isEmpty else {
+        guard d.bool(forKey: onKey), working || FocusScheduleStore.active(), AuthorizationCenter.shared.authorizationStatus == .approved, !isEmpty else {
             store.clearAllSettings()
             return
         }
@@ -100,6 +100,8 @@ struct FocusBlockCard: View {
                     }
                 }
                 if denied { Text(L("focus.denied")).font(.caption).foregroundStyle(.red) }
+                // Zaman çizelgeli engel (2. analiz #27)
+                if on { FocusScheduleSection() }
                 Text(L("focus.noteIOS")).font(.caption).foregroundStyle(Theme.muted)
             }
             .card()

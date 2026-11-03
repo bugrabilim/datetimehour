@@ -174,3 +174,59 @@ public enum NoiseGen {
     /// Ses düzeyi (0–100) → kazanç
     public static func gain(_ volume: Int) -> Float { Float(Swift.max(0, Swift.min(100, volume))) / 100 }
 }
+
+/// Odak engelinin zaman çizelgesi (2. analiz #27; Android'deki FocusSchedule ile aynı kural): gün ISO 1–7 (pazartesi 1),
+/// dakika gece yarısından. [from, to) arası; from > to ise gece yarısını aşar ve başladığı günün seçimine bakılır.
+public enum FocusSchedule {
+    public static func active(days: Set<Int>, from: Int, to: Int, weekday: Int, minute: Int) -> Bool {
+        if from == to { return false }
+        if from < to { return days.contains(weekday) && minute >= from && minute < to }
+        let prev = (weekday + 5) % 7 + 1
+        return (days.contains(weekday) && minute >= from) || (days.contains(prev) && minute < to)
+    }
+
+    /// Sıradaki sınıra (başlangıç ya da bitiş) kalan dakika: 1...1440
+    public static func minutesToNextBoundary(from: Int, to: Int, minute: Int) -> Int {
+        func ahead(_ t: Int) -> Int { let a = ((t - minute) % 1440 + 1440) % 1440; return a == 0 ? 1440 : a }
+        return Swift.min(ahead(from), ahead(to))
+    }
+}
+
+/// Nefes egzersizi (2. analiz #28; Android'deki Breath ile aynı): kalıp saniyeleri sırayla nefes al, tut, ver, tut;
+/// 0 saniyelik adımlar atlanır.
+public enum Breath {
+    public static let order = ["478", "box", "calm", "even"]
+    public static let patterns: [String: [Double]] = [
+        "478": [4, 7, 8, 0], "box": [4, 4, 4, 4], "calm": [4, 0, 6, 0], "even": [5.5, 0, 5.5, 0],
+    ]
+
+    public struct Phase: Equatable, Sendable {
+        public let step: Int
+        public let progress: Double
+        public let left: Double
+        public let cycle: Int
+    }
+
+    public static func cycleSeconds(_ p: [Double]) -> Double { p.reduce(0, +) }
+
+    public static func phase(_ p: [Double], elapsed: Double) -> Phase {
+        let total = cycleSeconds(p)
+        let cycle = Int(elapsed / total)
+        var t = elapsed - Double(cycle) * total
+        for i in p.indices where p[i] > 0 {
+            if t < p[i] { return Phase(step: i, progress: t / p[i], left: p[i] - t, cycle: cycle) }
+            t -= p[i]
+        }
+        return Phase(step: 0, progress: 0, left: p[0], cycle: cycle + 1)
+    }
+
+    /// Çemberin büyüklüğü (0 küçük, 1 büyük): alırken büyür, verirken küçülür, tutarken kalır
+    public static func scale(_ ph: Phase) -> Double {
+        switch ph.step {
+        case 0: return ph.progress
+        case 1: return 1
+        case 2: return 1 - ph.progress
+        default: return 0
+        }
+    }
+}
