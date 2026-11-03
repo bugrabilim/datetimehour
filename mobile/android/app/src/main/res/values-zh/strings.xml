@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">蓝色</string>
     <string name="dial_color_green">绿色</string>
     <string name="dial_color_gold">金色</string>
+    <string name="cal_view">视图</string>
+    <string name="cal_weekNo">周数</string>
+    <string name="cal_wk">周</string>
+    <string name="cal_moon">月相（新月、满月）</string>
+    <string name="cal_dst">调时日</string>
+    <string name="cal_dstDay">今天调整时钟（夏令时）</string>
+    <string name="cal_hijriDays">伊斯兰历日期</string>
+    <string name="cal_names">事件名称</string>
+    <string name="cal_weather">天气：%1$s</string>
     <string name="app_name">时间与日期</string>
 </resources>

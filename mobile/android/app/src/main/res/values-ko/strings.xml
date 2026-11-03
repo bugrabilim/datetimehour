@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">파랑</string>
     <string name="dial_color_green">초록</string>
     <string name="dial_color_gold">골드</string>
+    <string name="cal_view">보기</string>
+    <string name="cal_weekNo">주 번호</string>
+    <string name="cal_wk">주</string>
+    <string name="cal_moon">달의 위상(신월, 보름)</string>
+    <string name="cal_dst">시간 변경일</string>
+    <string name="cal_dstDay">오늘 시간이 바뀝니다(서머타임)</string>
+    <string name="cal_hijriDays">히즈라력 날짜</string>
+    <string name="cal_names">일정 이름</string>
+    <string name="cal_weather">날씨: %1$s</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

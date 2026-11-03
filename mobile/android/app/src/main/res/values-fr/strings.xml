@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">Bleu</string>
     <string name="dial_color_green">Vert</string>
     <string name="dial_color_gold">Or</string>
+    <string name="cal_view">Affichage</string>
+    <string name="cal_weekNo">Numéros de semaine</string>
+    <string name="cal_wk">Sem</string>
+    <string name="cal_moon">Phases de la Lune (nouvelle, pleine)</string>
+    <string name="cal_dst">Jours de changement d\'heure</string>
+    <string name="cal_dstDay">Changement d\'heure aujourd\'hui</string>
+    <string name="cal_hijriDays">Jours de l\'hégire</string>
+    <string name="cal_names">Noms des événements</string>
+    <string name="cal_weather">Météo : %1$s</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

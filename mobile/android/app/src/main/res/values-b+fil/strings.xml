@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">Asul</string>
     <string name="dial_color_green">Berde</string>
     <string name="dial_color_gold">Ginto</string>
+    <string name="cal_view">View</string>
+    <string name="cal_weekNo">Numero ng linggo</string>
+    <string name="cal_wk">Lg</string>
+    <string name="cal_moon">Yugto ng buwan (bago, kabilugan)</string>
+    <string name="cal_dst">Mga araw ng pagpalit ng oras</string>
+    <string name="cal_dstDay">Magpapalit ng oras ngayon (daylight saving)</string>
+    <string name="cal_hijriDays">Mga araw sa Hijri</string>
+    <string name="cal_names">Mga pangalan ng kaganapan</string>
+    <string name="cal_weather">Panahon: %1$s</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

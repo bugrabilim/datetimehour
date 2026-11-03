@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">Biru</string>
     <string name="dial_color_green">Hijau</string>
     <string name="dial_color_gold">Emas</string>
+    <string name="cal_view">Tampilan</string>
+    <string name="cal_weekNo">Nomor minggu</string>
+    <string name="cal_wk">Mg</string>
+    <string name="cal_moon">Fase bulan (bulan baru, purnama)</string>
+    <string name="cal_dst">Hari perubahan jam</string>
+    <string name="cal_dstDay">Jam berubah hari ini (waktu musim panas)</string>
+    <string name="cal_hijriDays">Hari Hijriah</string>
+    <string name="cal_names">Nama acara</string>
+    <string name="cal_weather">Cuaca: %1$s</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

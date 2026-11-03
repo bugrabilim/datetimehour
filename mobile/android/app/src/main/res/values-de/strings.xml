@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">Blau</string>
     <string name="dial_color_green">Grün</string>
     <string name="dial_color_gold">Gold</string>
+    <string name="cal_view">Ansicht</string>
+    <string name="cal_weekNo">Kalenderwochen</string>
+    <string name="cal_wk">KW</string>
+    <string name="cal_moon">Mondphasen (Neu-, Vollmond)</string>
+    <string name="cal_dst">Tage der Zeitumstellung</string>
+    <string name="cal_dstDay">Heute wird die Uhr umgestellt (Sommerzeit)</string>
+    <string name="cal_hijriDays">Hidschri-Tage</string>
+    <string name="cal_names">Terminnamen</string>
+    <string name="cal_weather">Wetter: %1$s</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

@@ -1,5 +1,6 @@
 import SwiftUI
 import EventKit
+import WeatherKit
 import SaatCore
 
 /// Takvim sekmesi (Apple Takvim'e benzer): ay ızgarası, seçili günün özel günleri (resmî tatil, arife, dini ve
@@ -15,6 +16,11 @@ struct CalendarTab: View {
     @State private var router = Router.shared
     @State private var device = DeviceCalendar.shared
     private let data = CalendarData.shared
+    @AppStorage("cal.weekNo") private var showWeek = true
+    @AppStorage("cal.moon") private var showMoon = true
+    @AppStorage("cal.dst") private var showDst = true
+    @AppStorage("cal.hijri") private var showHijri = false
+    @AppStorage("cal.names") private var showNames = false
 
     /// Yeni etkinlik: boş (seçili gün 09:00) ya da bir özel günden (tüm gün)
     struct AddRequest: Identifiable {
@@ -56,6 +62,16 @@ struct CalendarTab: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink { CalendarLeafView() } label: { Image(systemName: "doc.text.image") }
                         .accessibilityLabel(L("leaf.title"))
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Toggle(L("cal.weekNo"), isOn: $showWeek)
+                        Toggle(L("cal.moon"), isOn: $showMoon)
+                        Toggle(L("cal.dst"), isOn: $showDst)
+                        Toggle(L("cal.hijriDays"), isOn: $showHijri)
+                        Toggle(L("cal.names"), isOn: $showNames)
+                    } label: { Image(systemName: "slider.horizontal.3") }
+                        .accessibilityLabel(L("cal.view"))
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { adding = AddRequest(day: selected) } label: { Image(systemName: "plus") }
@@ -149,6 +165,7 @@ struct CalendarTab: View {
     private func dayList(today: CalendarDay, deviceEvents: [EKEvent]) -> some View {
         let special = data.events(on: selected)
         Section {
+            if Features.isOn(.weather) { DayWeatherRow(day: selected) }
             ForEach(special, id: \.self) { e in
                 HStack(spacing: 10) {
                     RoundedRectangle(cornerRadius: 2).fill(e.color).frame(width: 4, height: 34)
@@ -305,14 +322,53 @@ struct MonthGrid: View {
     var deviceEvents: [Int: [EKEvent]] = [:]
     let onSelect: (CalendarDay) -> Void
     private let data = CalendarData.shared
+    // Görünüm seçenekleri (2. analiz #123, #119, #117): Takvim › Görünüm menüsü
+    @AppStorage("cal.weekNo") private var showWeek = true
+    @AppStorage("cal.moon") private var showMoon = true
+    @AppStorage("cal.dst") private var showDst = true
+    @AppStorage("cal.hijri") private var showHijri = false
+    @AppStorage("cal.names") private var showNames = false
+
+    /// Bu ayın yeni ay ve dolunay günleri (telefonun saat diliminde): gün numarası → emoji
+    private var moonMarks: [Int: String] {
+        guard showMoon else { return [:] }
+        let start = month.firstOfMonth.noon(in: .current).timeIntervalSince1970 * 1000
+        let k0 = Int((start / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861) - 1
+        var out: [Int: String] = [:]
+        for k in k0...(k0 + 3) {
+            for full in [false, true] {
+                let d = CalendarDay(Date(timeIntervalSince1970: Double(Nature.phaseMilliseconds(k: k, full: full)) / 1000))
+                if d.year == month.year && d.month == month.month { out[d.dayNumber] = full ? "🌕" : "🌑" }
+            }
+        }
+        return out
+    }
+    /// Telefonun saat diliminde yaz saati değişimi olan günler
+    private var dstDays: Set<Int> {
+        guard showDst else { return [] }
+        let start = month.firstOfMonth.noon(in: .current).addingTimeInterval(-13 * 3600)
+        let end = start.addingTimeInterval(Double(CalendarDay.daysIn(month.year, month.month)) * 86400)
+        var out = Set<Int>()
+        var t = start
+        while let n = TimeZone.current.nextDaylightSavingTimeTransition(after: t), n < end {
+            out.insert(CalendarDay(n).dayNumber)
+            t = n
+        }
+        return out
+    }
 
     var body: some View {
         let first = month.firstOfMonth
         let count = CalendarDay.daysIn(month.year, month.month)
         let cells: [CalendarDay?] = Array(repeating: nil, count: first.weekday) + (0..<count).map { first.adding(days: $0) }
         let weeks = stride(from: 0, to: cells.count, by: 7).map { Array(cells[$0..<min($0 + 7, cells.count)]) }
+        let moons = moonMarks
+        let dst = dstDays
         VStack(spacing: 0) {
             HStack(spacing: 0) {
+                if showWeek {
+                    Text(L("cal.wk")).font(.caption2.weight(.semibold)).foregroundStyle(Theme.muted.opacity(0.7)).frame(width: 26)
+                }
                 ForEach(0..<7, id: \.self) { i in
                     Text(L("calendar.weekdaysShort.\(i)"))
                         .font(.caption2.weight(.semibold))
@@ -324,9 +380,13 @@ struct MonthGrid: View {
             ForEach(Array(weeks.enumerated()), id: \.offset) { _, week in
                 Divider()
                 HStack(spacing: 0) {
+                    if showWeek {
+                        Text(week.compactMap { $0 }.first.map { String($0.isoWeek.week) } ?? "")
+                            .font(.caption2).monospacedDigit().foregroundStyle(Theme.muted.opacity(0.8)).frame(width: 26)
+                    }
                     ForEach(0..<7, id: \.self) { i in
                         if i < week.count, let d = week[i] {
-                            cell(d).onTapGesture { onSelect(d) }
+                            cell(d, moon: moons[d.dayNumber], dst: dst.contains(d.dayNumber)).onTapGesture { onSelect(d) }
                         } else {
                             Color.clear.frame(maxWidth: .infinity, minHeight: 52)
                         }
@@ -336,7 +396,7 @@ struct MonthGrid: View {
         }
     }
 
-    private func cell(_ d: CalendarDay) -> some View {
+    private func cell(_ d: CalendarDay, moon: String?, dst: Bool) -> some View {
         let events = data.events(on: d)
         let isHoliday = events.contains { $0.type == "holiday" }
         let isToday = d == today
@@ -354,11 +414,29 @@ struct MonthGrid: View {
                 .background {
                     if isToday { Circle().fill(Theme.accent) } else if isSelected { Circle().fill(Theme.text) }
                 }
-            HStack(spacing: 3) {
-                ForEach(Array(colors.prefix(3).enumerated()), id: \.offset) { _, c in Circle().fill(c).frame(width: 5, height: 5) }
-                if mine > 0 { Circle().fill(Theme.muted).frame(width: 5, height: 5) }
+            if showHijri, let h = Hijri.date(year: d.year, month: d.month, day: d.day) {
+                Text(String(h.day)).font(.system(size: 9)).monospacedDigit().foregroundStyle(Theme.muted)
             }
-            .frame(height: 5)
+            if showNames, let e = events.first {
+                // Etkinlik adı; aynı rengin art arda günleri boşluksuz şerit gibi birleşir (bayram tatili gibi)
+                Text(e.name).font(.system(size: 8.5, weight: .medium)).lineLimit(1).minimumScaleFactor(0.8)
+                    .foregroundStyle(Theme.text)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 1)
+                    .background(e.color.opacity(0.22))
+            } else {
+                HStack(spacing: 3) {
+                    ForEach(Array(colors.prefix(3).enumerated()), id: \.offset) { _, c in Circle().fill(c).frame(width: 5, height: 5) }
+                    if mine > 0 { Circle().fill(Theme.muted).frame(width: 5, height: 5) }
+                }
+                .frame(height: 5)
+            }
+        }
+        .overlay(alignment: .topTrailing) {
+            if let moon { Text(moon).font(.system(size: 9)).padding(.trailing, 1) }
+        }
+        .overlay(alignment: .topLeading) {
+            if dst { Text("⏱").font(.system(size: 9)).padding(.leading, 1) }
         }
         .padding(.vertical, 5)
         .frame(maxWidth: .infinity)
@@ -418,4 +496,41 @@ func calendarTypeLabel(_ t: String) -> String {
     guard AppLocale.code != "tr", ["holiday", "half", "school"].contains(t),
           let country = AppLocale.locale.localizedString(forRegionCode: "TR") else { return base }
     return base + " · " + country
+}
+
+/// Seçili günün havası (2. analiz #118): WeatherKit günlük tahmininde (10 gün) varsa en yüksek/en düşük ve simge;
+/// Apple Hava Durumu işaretiyle (App Review 5.2.5). Yalnız Hava özelliği açıkken sorulur.
+private struct DayWeatherRow: View {
+    let day: CalendarDay
+    @State private var text: String?
+    @State private var symbol: String?
+
+    var body: some View {
+        Group {
+            if let text {
+                HStack(spacing: 8) {
+                    if let symbol { Image(systemName: symbol).symbolRenderingMode(.multicolor) }
+                    Text(T("cal.weather", text)).foregroundStyle(Theme.text)
+                    Spacer()
+                    AppleWeatherMark(compact: true)
+                }
+            }
+        }
+        .task(id: day) { await load() }
+    }
+
+    @MainActor private func load() async {
+        let place = PlaceModel.shared.place
+        guard let w = try? await WeatherCache.weather(lat: place.lat, lon: place.lon) else { text = nil; return }
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = place.zone
+        let target = day.noon(in: place.zone)
+        if let f = w.dailyForecast.forecast.first(where: { cal.isDate($0.date, inSameDayAs: target) }) {
+            text = Units.temp(f.highTemperature) + " / " + Units.temp(f.lowTemperature)
+            symbol = f.symbolName
+        } else {
+            text = nil
+            symbol = nil
+        }
+    }
 }

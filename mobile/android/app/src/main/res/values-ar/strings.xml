@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">أزرق</string>
     <string name="dial_color_green">أخضر</string>
     <string name="dial_color_gold">ذهبي</string>
+    <string name="cal_view">العرض</string>
+    <string name="cal_weekNo">أرقام الأسابيع</string>
+    <string name="cal_wk">أسب</string>
+    <string name="cal_moon">أطوار القمر (محاق، بدر)</string>
+    <string name="cal_dst">أيام تغيير الساعة</string>
+    <string name="cal_dstDay">تتغير الساعة اليوم (التوقيت الصيفي)</string>
+    <string name="cal_hijriDays">الأيام الهجرية</string>
+    <string name="cal_names">أسماء المناسبات</string>
+    <string name="cal_weather">الطقس: %1$s</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

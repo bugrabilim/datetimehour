@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">آبی</string>
     <string name="dial_color_green">سبز</string>
     <string name="dial_color_gold">طلایی</string>
+    <string name="cal_view">نما</string>
+    <string name="cal_weekNo">شماره هفته‌ها</string>
+    <string name="cal_wk">هفته</string>
+    <string name="cal_moon">اهله ماه (ماه نو، ماه کامل)</string>
+    <string name="cal_dst">روزهای تغییر ساعت</string>
+    <string name="cal_dstDay">امروز ساعت عوض می‌شود (ساعت تابستانی)</string>
+    <string name="cal_hijriDays">روزهای قمری</string>
+    <string name="cal_names">نام رویدادها</string>
+    <string name="cal_weather">هوا: %1$s</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

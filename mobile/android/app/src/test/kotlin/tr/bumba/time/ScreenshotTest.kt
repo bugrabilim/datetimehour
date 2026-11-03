@@ -75,6 +75,11 @@ class ScreenshotTest {
     @Test fun clock() = shot("tr-saat", Tab.CLOCK)
     @Test fun clockDark() = shot("tr-saat-koyu", Tab.CLOCK, dark = true)
     @Test fun calendar() = shot("tr-takvim", Tab.CALENDAR)
+    // 2. analiz #117, #119, #123: hicri günler ve etkinlik adları açık (hafta no, Ay evreleri, saat değişimi varsayılan açık)
+    @Test fun calendarView() {
+        CalView.load(); CalView.hijri = true; CalView.names = true
+        try { shot("tr-takvim-gorunum", Tab.CALENDAR) } finally { CalView.hijri = false; CalView.names = false }
+    }
     @Test fun world() = shot("tr-dunya", Tab.WORLD)
     @Test fun worldDark() = shot("tr-dunya-koyu", Tab.WORLD, dark = true)
     @Test fun seasons() = shot("tr-mevsimler", Tab.SEASONS)

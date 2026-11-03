@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">น้ำเงิน</string>
     <string name="dial_color_green">เขียว</string>
     <string name="dial_color_gold">ทอง</string>
+    <string name="cal_view">มุมมอง</string>
+    <string name="cal_weekNo">หมายเลขสัปดาห์</string>
+    <string name="cal_wk">สป.</string>
+    <string name="cal_moon">ข้างขึ้นข้างแรม (เดือนดับ, เดือนเพ็ญ)</string>
+    <string name="cal_dst">วันเปลี่ยนเวลา</string>
+    <string name="cal_dstDay">วันนี้เปลี่ยนเวลา (เวลาออมแสง)</string>
+    <string name="cal_hijriDays">วันตามปฏิทินฮิจเราะห์</string>
+    <string name="cal_names">ชื่อกิจกรรม</string>
+    <string name="cal_weather">อากาศ: %1$s</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

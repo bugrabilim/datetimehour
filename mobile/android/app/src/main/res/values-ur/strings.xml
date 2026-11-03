@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">نیلا</string>
     <string name="dial_color_green">سبز</string>
     <string name="dial_color_gold">سنہرا</string>
+    <string name="cal_view">منظر</string>
+    <string name="cal_weekNo">ہفتوں کے نمبر</string>
+    <string name="cal_wk">ہفتہ</string>
+    <string name="cal_moon">چاند کے مراحل (نیا، پورا)</string>
+    <string name="cal_dst">گھڑی بدلنے کے دن</string>
+    <string name="cal_dstDay">آج گھڑی بدلتی ہے (ڈے لائٹ سیونگ)</string>
+    <string name="cal_hijriDays">ہجری دن</string>
+    <string name="cal_names">تقریبات کے نام</string>
+    <string name="cal_weather">موسم: %1$s</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

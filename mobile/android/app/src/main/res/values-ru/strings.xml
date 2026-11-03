@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">Синий</string>
     <string name="dial_color_green">Зелёный</string>
     <string name="dial_color_gold">Золотой</string>
+    <string name="cal_view">Вид</string>
+    <string name="cal_weekNo">Номера недель</string>
+    <string name="cal_wk">Нед</string>
+    <string name="cal_moon">Фазы Луны (новолуние, полнолуние)</string>
+    <string name="cal_dst">Дни перевода часов</string>
+    <string name="cal_dstDay">Сегодня перевод часов</string>
+    <string name="cal_hijriDays">Дни по хиджре</string>
+    <string name="cal_names">Названия событий</string>
+    <string name="cal_weather">Погода: %1$s</string>
     <string name="app_name">Время и дата</string>
 </resources>

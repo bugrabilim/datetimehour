@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">青</string>
     <string name="dial_color_green">緑</string>
     <string name="dial_color_gold">ゴールド</string>
+    <string name="cal_view">表示</string>
+    <string name="cal_weekNo">週番号</string>
+    <string name="cal_wk">週</string>
+    <string name="cal_moon">月相（新月・満月）</string>
+    <string name="cal_dst">時刻変更日</string>
+    <string name="cal_dstDay">今日は時刻が変わります（夏時間）</string>
+    <string name="cal_hijriDays">ヒジュラ暦の日</string>
+    <string name="cal_names">予定の名前</string>
+    <string name="cal_weather">天気：%1$s</string>
     <string name="app_name">時刻と日付</string>
 </resources>

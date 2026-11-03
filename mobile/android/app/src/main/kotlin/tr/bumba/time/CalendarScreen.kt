@@ -4,6 +4,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Article
 import androidx.compose.material.icons.filled.Today
 import androidx.compose.material.icons.filled.EditCalendar
@@ -87,6 +88,7 @@ fun CalendarScreen() {
         Nav.calendarDay?.let { go(it); Nav.calendarDay = null }
     }
     LaunchedEffect(Unit) { DeviceCalendar.reload(context) }
+    CalView.load()
     if (leaf) {
         BackHandler { leaf = false }
         CalendarLeafScreen { leaf = false }
@@ -114,6 +116,7 @@ fun CalendarScreen() {
             IconButton(onClick = { move(-1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowLeft, L("prayer.prevMonth"), tint = Theme.c.accent) }
             IconButton(onClick = { move(1) }) { Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, L("prayer.nextMonth"), tint = Theme.c.accent) }
             IconButton(onClick = { leaf = true }) { Icon(Icons.Filled.Article, L("leaf.title"), tint = Theme.c.accent) }
+            CalViewMenu()
             IconButton(onClick = { DeviceCalendar.add(context, selected) }) { Icon(Icons.Filled.Add, L("calendar.add"), tint = Theme.c.accent) }
         }
         MonthGrid(month, today, selected, device, Modifier.pointerInput(ym) {
@@ -149,21 +152,29 @@ private fun MonthGrid(
     val first = month.atDay(1)
     val lead = first.dayOfWeek.value - 1 // Pazartesi başlar
     val cells = lead + month.lengthOfMonth()
+    val moons = remember(month, CalView.moon) { if (CalView.moon) CalView.moonMarks(month) else emptyMap() }
+    val dst = remember(month, CalView.dst) { if (CalView.dst) CalView.dstDays(month) else emptySet() }
     Column(modifier.fillMaxWidth()) {
         Row(Modifier.fillMaxWidth()) {
+            if (CalView.week) Text(L("cal.wk"), Modifier.width(26.dp), textAlign = TextAlign.Center, fontSize = 11.sp, color = Theme.c.muted)
             for (i in 0..6) {
                 Text(L("calendar.weekdaysShort.$i"), Modifier.weight(1f), textAlign = TextAlign.Center, fontSize = 12.sp,
                     color = if (i >= 5) Theme.c.accent else Theme.c.muted)
             }
         }
         for (row in 0 until (cells + 6) / 7) {
-            Row(Modifier.fillMaxWidth()) {
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                if (CalView.week) {
+                    // Satırın herhangi bir günü aynı ISO haftasındadır (pazartesi başlar)
+                    val any = month.atDay(maxOf(1, minOf(month.lengthOfMonth(), row * 7 - lead + 1)))
+                    Text(Fmt.isoWeek(any).toString(), Modifier.width(26.dp), textAlign = TextAlign.Center, fontSize = 11.sp, color = Theme.c.muted, style = Tnum)
+                }
                 for (col in 0..6) {
                     val n = row * 7 + col - lead + 1
-                    Box(Modifier.weight(1f).aspectRatio(1f), contentAlignment = Alignment.Center) {
+                    Box(Modifier.weight(1f).then(if (CalView.names) Modifier.height(80.dp) else Modifier.aspectRatio(1f)), contentAlignment = Alignment.Center) {
                         if (n in 1..month.lengthOfMonth()) {
                             val d = month.atDay(n)
-                            DayCell(d, d == today, d == selected, device[d].orEmpty().isNotEmpty()) { onPick(d) }
+                            DayCell(d, d == today, d == selected, device[d].orEmpty().isNotEmpty(), moons[n], n in dst) { onPick(d) }
                         }
                     }
                 }
@@ -173,7 +184,7 @@ private fun MonthGrid(
 }
 
 @Composable
-private fun DayCell(d: LocalDate, isToday: Boolean, isSelected: Boolean, mine: Boolean, onClick: () -> Unit) {
+private fun DayCell(d: LocalDate, isToday: Boolean, isSelected: Boolean, mine: Boolean, moon: String?, dst: Boolean, onClick: () -> Unit) {
     val ev = AppData.events[d].orEmpty()
     val holiday = ev.any { it.type == "holiday" }
     val ramadan = AppData.isRamadan(d)
@@ -205,12 +216,98 @@ private fun DayCell(d: LocalDate, isToday: Boolean, isSelected: Boolean, mine: B
                 fontWeight = if (isToday || isSelected) FontWeight.Bold else FontWeight.Normal,
             )
         }
-        Row(Modifier.height(6.dp), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
-            for (t in ev.map { it.type }.distinct().take(3)) {
-                Box(Modifier.size(5.dp).background(AppData.color(t), CircleShape))
+        if (CalView.hijri) Hijri.date(d)?.let { Text(it.day.toString(), fontSize = 9.sp, color = Theme.c.muted, style = Tnum) }
+        val first = ev.firstOrNull()
+        if (CalView.names && first != null) {
+            // Etkinlik adı; aynı rengin art arda günleri boşluksuz şerit gibi birleşir (bayram tatili gibi)
+            Text(first.name, Modifier.fillMaxWidth().background(AppData.color(first.type).copy(alpha = 0.22f)).padding(vertical = 1.dp),
+                fontSize = 8.sp, maxLines = 1, color = Theme.c.text, textAlign = TextAlign.Center,
+                overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+        } else {
+            Row(Modifier.height(6.dp), horizontalArrangement = Arrangement.spacedBy(2.dp)) {
+                for (t in ev.map { it.type }.distinct().take(3)) {
+                    Box(Modifier.size(5.dp).background(AppData.color(t), CircleShape))
+                }
+                // Telefondaki etkinlikler gri nokta
+                if (mine) Box(Modifier.size(5.dp).background(Theme.c.muted, CircleShape))
             }
-            // Telefondaki etkinlikler gri nokta
-            if (mine) Box(Modifier.size(5.dp).background(Theme.c.muted, CircleShape))
+        }
+    }
+    // Ay evresi ve saat değişimi işareti sağ üst köşede (hücrenin yüksekliğini değiştirmez)
+    if (moon != null || dst) Box(Modifier.fillMaxSize().padding(2.dp), contentAlignment = Alignment.TopEnd) {
+        Text(listOfNotNull(if (dst) "⏱" else null, moon).joinToString(""), fontSize = 10.sp)
+    }
+}
+
+/** Takvim görünüm seçenekleri (2. analiz #123, #119, #117): hafta no, Ay evreleri, saat değişimi, hicri gün, etkinlik adları */
+object CalView {
+    var week by androidx.compose.runtime.mutableStateOf(true)
+    var moon by androidx.compose.runtime.mutableStateOf(true)
+    var dst by androidx.compose.runtime.mutableStateOf(true)
+    var hijri by androidx.compose.runtime.mutableStateOf(false)
+    var names by androidx.compose.runtime.mutableStateOf(false)
+    private var loaded = false
+
+    fun load() {
+        if (loaded) return
+        loaded = true
+        val sp = Prefs.store
+        week = sp.getBoolean("cal.weekNo", true); moon = sp.getBoolean("cal.moon", true); dst = sp.getBoolean("cal.dst", true)
+        hijri = sp.getBoolean("cal.hijri", false); names = sp.getBoolean("cal.names", false)
+    }
+
+    fun save() {
+        Prefs.store.edit().putBoolean("cal.weekNo", week).putBoolean("cal.moon", moon).putBoolean("cal.dst", dst)
+            .putBoolean("cal.hijri", hijri).putBoolean("cal.names", names).apply()
+    }
+
+    /** Ayın yeni ay ve dolunay günleri (telefonun saat diliminde): gün → emoji */
+    fun moonMarks(month: YearMonth): Map<Int, String> {
+        val zone = java.time.ZoneId.systemDefault()
+        val start = month.atDay(1).atStartOfDay(zone).toInstant().toEpochMilli().toDouble()
+        val k0 = Math.floor((start / 86_400_000.0 + 2440587.5 - 2451550.09766) / 29.530588861).toInt() - 1
+        val out = HashMap<Int, String>()
+        for (k in k0..k0 + 3) for (full in listOf(false, true)) {
+            val d = java.time.Instant.ofEpochMilli(tr.bumba.time.core.Nature.phaseMillis(k, full)).atZone(zone).toLocalDate()
+            if (YearMonth.from(d) == month) out[d.dayOfMonth] = if (full) "🌕" else "🌑"
+        }
+        return out
+    }
+
+    /** Telefonun saat diliminde saat değişimi (yaz saati) olan günler */
+    fun dstDays(month: YearMonth): Set<Int> {
+        val zone = java.time.ZoneId.systemDefault()
+        val rules = zone.rules
+        var t = month.atDay(1).atStartOfDay(zone).toInstant().minusSeconds(1)
+        val end = month.atEndOfMonth().plusDays(1).atStartOfDay(zone).toInstant()
+        val out = HashSet<Int>()
+        while (true) {
+            val tr = rules.nextTransition(t) ?: break
+            if (!tr.instant.isBefore(end)) break
+            out.add(tr.instant.atZone(zone).toLocalDate().dayOfMonth)
+            t = tr.instant
+        }
+        return out
+    }
+}
+
+@Composable
+private fun CalViewMenu() {
+    var open by remember { mutableStateOf(false) }
+    androidx.compose.foundation.layout.Box {
+        IconButton(onClick = { open = true }) { Icon(androidx.compose.material.icons.Icons.Filled.MoreVert, L("cal.view"), tint = Theme.c.accent) }
+        androidx.compose.material3.DropdownMenu(expanded = open, onDismissRequest = { open = false }) {
+            @Composable
+            fun item(key: String, on: Boolean, set: (Boolean) -> Unit) = androidx.compose.material3.DropdownMenuItem(
+                text = { Text(L(key)) },
+                trailingIcon = { androidx.compose.material3.Checkbox(checked = on, onCheckedChange = null) },
+                onClick = { set(!on); CalView.save() },
+            )
+            item("cal.weekNo", CalView.week) { CalView.week = it }
+            item("cal.moon", CalView.moon) { CalView.moon = it }
+            item("cal.dst", CalView.dst) { CalView.dst = it }
+            item("cal.hijriDays", CalView.hijri) { CalView.hijri = it }
+            item("cal.names", CalView.names) { CalView.names = it }
         }
     }
 }
@@ -235,6 +332,15 @@ private fun DayDetail(d: LocalDate, today: LocalDate, device: List<DeviceCalenda
             color = Theme.c.muted, fontSize = 13.sp)
         // Hicri tarih (Diyanet takvimi)
         Hijri.date(d)?.let { Text("☾ " + it.text, color = Theme.c.accent, fontSize = 13.sp) }
+        // O günün havası (2. analiz #118): Open-Meteo günlük tahmininde varsa; yalnız Hava özelliği açıkken
+        if (Features.isOn(Tab.WEATHER)) {
+            val place = AppPlace.current()
+            val w = rememberWeather(place.lat, place.lon)
+            w?.daily?.firstOrNull { it.date == d }?.let { day ->
+                Text(T("cal.weather", WeatherCode.of(day.code).icon() + " " + Units.temp(day.max) + " / " + Units.temp(day.min)) + " · " + L("weather.attribution"),
+                    color = Theme.c.text, fontSize = 13.sp)
+            }
+        }
         for (e in ev.distinctBy { it.key }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(Modifier.width(4.dp).height(34.dp).background(AppData.color(e.type), RoundedCornerShape(2.dp)))

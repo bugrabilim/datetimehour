@@ -1924,5 +1924,14 @@
     <string name="dial_color_blue">Mavi</string>
     <string name="dial_color_green">Yeşil</string>
     <string name="dial_color_gold">Altın</string>
+    <string name="cal_view">Görünüm</string>
+    <string name="cal_weekNo">Hafta numaraları</string>
+    <string name="cal_wk">Hf</string>
+    <string name="cal_moon">Ay evreleri (yeni ay, dolunay)</string>
+    <string name="cal_dst">Saat değişimi günleri</string>
+    <string name="cal_dstDay">Bugün saat değişiyor (yaz saati)</string>
+    <string name="cal_hijriDays">Hicri günler</string>
+    <string name="cal_names">Etkinlik adları</string>
+    <string name="cal_weather">Hava: %1$s</string>
     <string name="app_name">Saat Tarih</string>
 </resources>
