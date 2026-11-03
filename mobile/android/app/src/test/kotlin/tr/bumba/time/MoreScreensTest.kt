@@ -40,7 +40,7 @@ class MoreScreensTest {
         atmo: String = "", fontScale: Int = 100, content: @Composable () -> Unit,
     ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
-        Prefs.store.edit().putBoolean("notify.asked", true).commit()
+        Prefs.store.edit().putBoolean("notify.asked", true).putBoolean(DialFace.SEEN_KEY, true).commit()
         Prefs.saveAppearance(if (dark) "dark" else "light")
         Prefs.saveAccent("amber")
         Atmosphere.save(atmo)
@@ -387,6 +387,16 @@ class MoreScreensTest {
         page("tr-uyanma-puanlar", "Uyanma oyunu") { WakeGameScreen("points") }
         shot("tr-gunaydin-civciv") { Column(Modifier.padding(16.dp)) { WakeGameMorningCard() } }
         WakeGame.clear()
+    }
+
+    /** Kadran koleksiyonu (2. analiz #1): galeri ve kadranlar büyük */
+    @Test fun dials() {
+        Prefs.store.edit().putBoolean(DialFace.SEEN_KEY, false).commit()
+        val t = java.time.ZonedDateTime.of(2026, 11, 3, 10, 9, 36, 0, java.time.ZoneId.of("Europe/Istanbul"))
+        shot("tr-kadranlar") { DialGalleryScreen() }
+        shot("tr-kadranlar-koyu", dark = true) { DialGalleryScreen() }
+        listOf(DialFace.CHRONO to DialColor.AUTO, DialFace.RADAR to DialColor.AUTO, DialFace.MARBLE to DialColor.BLUE, DialFace.ROMAN to DialColor.GOLD)
+            .forEach { (f, c) -> shot("kadran-${f.id}") { AnalogClock(t, Modifier.padding(24.dp), face = f, dialColor = c, tap = false) } }
     }
 
     @Test fun ownerScreens() {

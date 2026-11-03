@@ -79,6 +79,7 @@ targets:
       - path: App/Sources/Theme.swift
       - path: App/Sources/Schedule.swift
       - path: App/Sources/AnalogClock.swift
+      - path: App/Sources/Dials.swift
       - path: App/Sources/Location.swift
       - path: App/Sources/Hijri.swift
       - path: App/Sources/LiveActivityModel.swift

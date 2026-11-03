@@ -148,6 +148,8 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
                         Icon(Icons.Filled.Settings, L("settings.title"), tint = Theme.c.accent)
                     }
                 }
+                // Yenilikler: yeni kadranlar bir kez tanıtılır (2. analiz #1)
+                Box(Modifier.padding(horizontal = 16.dp)) { DialNewsCard { onSettings("dials") } }
                 // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
                 if (Features.enabled.isEmpty()) {
                     TextButton(onClick = { onSettings("features") }) {
@@ -261,8 +263,14 @@ private fun StageControls(pager: PagerState, tint: androidx.compose.ui.graphics.
 
 /** Rakamlı analog saat (sitedeki analogSvg ölçüleri, 200 birimlik kare); dokununca saniye */
 @Composable
-fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier, caption: String? = null) {
+fun AnalogClock(
+    t: java.time.ZonedDateTime, modifier: Modifier = Modifier, caption: String? = null,
+    /** Kadran (2. analiz #1): verilmezse seçili kadran ve renk; galeride dokunuş saniyeyi açıp kapatmaz */
+    face: DialFace? = null, dialColor: DialColor? = null, tap: Boolean = true,
+) {
     val c = Theme.c
+    val f = face ?: DialFace.current
+    val k = (dialColor ?: DialColor.current).apply(f.colors(c))
     val measurer = rememberTextMeasurer()
     // Saniye ibresinin hareketi (2. analiz #10): mekanik ve kayan saniyede ibre ekran karesiyle çizilir
     val motion = ClockLook.motion
@@ -273,37 +281,13 @@ fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier, capti
     val hour = (tt.hour % 12) + min / 60
     Canvas(
         modifier.aspectRatio(1f).widthIn(max = 520.dp)
-            .clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecA(!Prefs.secA); BadgeStore.hit(Badge.SANIYE) },
+            .then(if (tap) Modifier.clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecA(!Prefs.secA); BadgeStore.hit(Badge.SANIYE) } else Modifier),
     ) {
         val u = min(size.width, size.height) / 200f
         val center = Offset(size.width / 2, size.height / 2)
-        drawCircle(c.surface2, 94 * u, center)
-        drawCircle(c.border, 94 * u, center, style = Stroke(2 * u))
-        for (i in 0 until 60) {
-            val major = i % 5 == 0
-            rotate(i * 6f, center) {
-                drawLine(
-                    if (major) c.text else c.muted,
-                    Offset(center.x, center.y - (if (major) 88 else 86) * u),
-                    Offset(center.x, center.y - (if (major) 76 else 81) * u),
-                    (if (major) 3f else 1.4f) * u, StrokeCap.Round,
-                )
-            }
-        }
-        val style = TextStyle(color = c.ink, fontSize = (15 * u / density / fontScale).sp, fontWeight = FontWeight.SemiBold)
-        for (n in 1..12) {
-            val a = n * 30 * Math.PI / 180
-            val layout = measurer.measure(n.toString(), style)
-            drawText(
-                layout,
-                topLeft = Offset(
-                    center.x + 66 * u * sin(a).toFloat() - layout.size.width / 2f,
-                    center.y - 66 * u * cos(a).toFloat() - layout.size.height / 2f,
-                ),
-            )
-        }
+        drawDial(f, k, measurer, tt.hour + min / 60, min, sec, fontScale)
         if (caption != null) {
-            val cap = measurer.measure(caption, TextStyle(color = c.muted, fontSize = (13 * u / density / fontScale).sp, fontWeight = FontWeight.Bold))
+            val cap = measurer.measure(caption, TextStyle(color = k.minor, fontSize = (13 * u / density / fontScale).sp, fontWeight = FontWeight.Bold))
             drawText(cap, topLeft = Offset(center.x - cap.size.width / 2f, center.y + 34 * u - cap.size.height / 2f))
         }
         fun hand(angle: Double, from: Float, to: Float, width: Float, color: androidx.compose.ui.graphics.Color) {
@@ -312,10 +296,10 @@ fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier, capti
             }
         }
         // Akrep yazı renginde, yelkovan temanın ana renginde, saniye ve orta temanın ikinci renginde
-        hand(hour * 30, 4f, 44f, 6f, c.ink)
-        hand(min * 6, 6f, 66f, 4.5f, c.accent)
-        if (Prefs.secA) hand(sec * 6, 16f, 76f, 2f, c.accent2)
-        drawCircle(c.accent2, 5 * u, center)
+        hand(hour * 30, 4f, 44f, 6f, k.ink)
+        hand(min * 6, 6f, 66f, 4.5f, k.hand)
+        if (Prefs.secA || !tap) hand(sec * 6, 16f, 76f, 2f, k.second)
+        drawCircle(k.second, 5 * u, center)
     }
 }
 

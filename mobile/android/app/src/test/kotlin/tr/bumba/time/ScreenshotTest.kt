@@ -28,7 +28,7 @@ class ScreenshotTest {
         model: Int = 0, items: String = HomeItem.DEFAULT_RAW, weather: Boolean = false, features: Set<Tab> = Features.OPTIONAL.toSet(),
     ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
-        Prefs.store.edit().putBoolean("notify.asked", true).commit()
+        Prefs.store.edit().putBoolean("notify.asked", true).putBoolean(DialFace.SEEN_KEY, true).commit()
         // Kurulum sihirbazı (yeni kurulumda açılır) bu görüntülerde geçilmiş sayılır
         Onboarding.finish()
         // Hareketli arka planlar durağan tek kare (hava canlandırması sonsuz kare döngüsüyle beklemesin)

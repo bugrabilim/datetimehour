@@ -36,6 +36,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.material3.Icon
+import androidx.compose.material.icons.filled.Schedule
+import androidx.compose.material.icons.Icons
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
@@ -197,7 +202,7 @@ fun PhotoBackground(img: ImageBitmap, modifier: Modifier = Modifier) {
 
 /** Ayarlar › Saat görünümü: yazı tipi (canlı örnek) ve tam ekran fotoğrafı */
 @Composable
-fun AppearanceScreen() {
+fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
     val context = LocalContext.current
     val pick = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         if (uri != null && FullscreenPhoto.save(context, uri)) Prefs.saveFsBg(FullscreenBackground.PHOTO.id)
@@ -207,6 +212,15 @@ fun AppearanceScreen() {
     }
     val now = rememberNow()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+        // Kadran koleksiyonu (2. analiz #1)
+        AppCard(padding = 4) {
+            Row(Modifier.fillMaxWidth().clickable { onRoute("dials") }.padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Filled.Schedule, null, tint = Theme.c.accent)
+                Spacer(Modifier.width(14.dp))
+                Text(L("dial.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                Text(DialFace.current.title, color = Theme.c.muted, fontSize = 14.sp)
+            }
+        }
         AppCard {
             SectionTitle(L("look.font"))
             val f = ClockFont.current

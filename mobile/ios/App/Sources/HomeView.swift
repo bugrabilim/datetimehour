@@ -56,6 +56,8 @@ struct ClockTab: View {
                         }
                         .font(.headline)
                         .foregroundStyle(Theme.accent)
+                        // Yenilikler: yeni kadranlar bir kez tanıtılır (2. analiz #1)
+                        DialNewsCard()
                         // Hiçbir özellik açık değilse (ilk açılış) özellikleri açmaya çağıran tek satır
                         if Features.parse(features).isEmpty {
                             Button {

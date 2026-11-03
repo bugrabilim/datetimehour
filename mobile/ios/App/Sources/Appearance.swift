@@ -167,6 +167,16 @@ struct AppearanceView: View {
 
     var body: some View {
         Form {
+            // Kadran koleksiyonu (2. analiz #1)
+            Section {
+                NavigationLink { DialGalleryView() } label: {
+                    LabeledContent {
+                        Text(DialFace.current.title)
+                    } label: {
+                        Label(L("dial.title"), systemImage: "clock")
+                    }
+                }
+            }
             Section(L("look.font")) {
                 TimelineView(.periodic(from: .now, by: 1)) { context in
                     Text(Fmt.time(context.date, seconds: true))

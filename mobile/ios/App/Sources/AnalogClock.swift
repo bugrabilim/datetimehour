@@ -53,34 +53,23 @@ struct AnalogClock: View {
     var colors: ClockColors? = nil
     /// Kadranın içinde, altta küçük yazı (ikili saat dilimi kadranında şehir kodu ve fark)
     var caption: String? = nil
+    /// Kadran (2. analiz #1): verilmezse seçili kadran; renk verilen widget görünümlerinde klasik
+    var face: DialFace? = nil
+    /// İbre rengi; verilmezse seçili renk
+    var dialColor: DialColor? = nil
 
     var body: some View {
         GeometryReader { g in
             let u = min(g.size.width, g.size.height) / 200
-            let k = colors ?? .theme
+            let f = face ?? (colors == nil ? DialFace.current : .classic)
+            let k = colors ?? (dialColor ?? .current).apply(f.colors(theme: .theme))
             let c = calendar.dateComponents([.hour, .minute, .second], from: date)
             let sec = motion.seconds(date, second: c.second ?? 0)
             let min = Double(c.minute ?? 0) + sec / 60
             let hour = Double((c.hour ?? 0) % 12) + min / 60
             ZStack {
-                Circle().fill(k.face)
-                    .overlay(Circle().stroke(k.border, lineWidth: 2 * u))
-                    .frame(width: 188 * u, height: 188 * u)
-                ForEach(0..<60, id: \.self) { i in
-                    let major = i % 5 == 0
-                    Capsule()
-                        .fill(major ? k.tick : k.minorTick)
-                        .frame(width: (major ? 3 : 1.4) * u, height: (major ? 12 : 5) * u)
-                        .offset(y: -(major ? 82 : 83.5) * u)
-                        .rotationEffect(.degrees(Double(i) * 6))
-                }
-                ForEach(1...12, id: \.self) { n in
-                    let a = Double(n) * 30 * .pi / 180
-                    Text(verbatim: String(n))
-                        .font(.system(size: 15 * u, weight: .semibold))
-                        .foregroundStyle(k.ink)
-                        .offset(x: 66 * u * sin(a), y: -66 * u * cos(a))
-                }
+                DialFill(face: f, k: k, u: u, seconds: sec)
+                DialMarks(face: f, k: k, u: u, hour: Double(c.hour ?? 0) + min / 60, minute: min, seconds: sec)
                 if let caption {
                     Text(verbatim: caption)
                         .font(.system(size: 13 * u, weight: .bold, design: .rounded))
