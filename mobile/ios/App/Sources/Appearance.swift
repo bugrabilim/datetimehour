@@ -154,6 +154,12 @@ struct AppearanceView: View {
     @AppStorage(FullscreenPhoto.slideEveryKey) private var slideEvery = 30
     @State private var item: PhotosPickerItem?
     @State private var slideItems: [PhotosPickerItem] = []
+    // Saniye hareketi, küçük saniye, tık sesi, tabela, ikinci saat dilimi (2. analiz #10, #21, #22, #12)
+    @AppStorage(SecondsMotion.key) private var motionRaw = SecondsMotion.tick.rawValue
+    @AppStorage("secSmall") private var secSmall = false
+    @AppStorage(TickSound.key) private var tickSound = false
+    @AppStorage("fs.banner") private var banner = false
+    @AppStorage(DualZone.key) private var dualCity = ""
 
     private var background: FullscreenBackground { FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain) }
 
@@ -176,6 +182,32 @@ struct AppearanceView: View {
                 .pickerStyle(.inline)
                 .labelsHidden()
             }
+            Section {
+                TimelineView(.animation(minimumInterval: (SecondsMotion(rawValue: motionRaw) ?? .tick).interval)) { context in
+                    AnalogClock(date: context.date, showSeconds: true, motion: SecondsMotion(rawValue: motionRaw) ?? .tick)
+                        .frame(height: 120)
+                        .frame(maxWidth: .infinity)
+                }
+                Picker(L("look.motion"), selection: $motionRaw) {
+                    ForEach(SecondsMotion.allCases) { m in Text(L("look.motion.\(m.rawValue)")).tag(m.rawValue) }
+                }
+                Toggle(L("look.secSmall"), isOn: $secSmall)
+                Toggle(L("look.tickSound"), isOn: $tickSound)
+            } header: {
+                Text(L("look.seconds"))
+            } footer: {
+                Text(L("look.secondsNote"))
+            }
+            Section {
+                Picker(L("dual.city"), selection: Binding(get: { DualZone.city(dualCity)?.key ?? "" }, set: { dualCity = $0 })) {
+                    ForEach(City.all) { c in Text(c.displayName).tag(c.key) }
+                }
+            } header: {
+                Text(L("dual.model"))
+            } footer: {
+                Text(L("dual.note"))
+            }
+            AppIconSection()
             Section {
                 // Canlı örnek: seçili arka plan ve saat
                 preview
@@ -228,18 +260,19 @@ struct AppearanceView: View {
             // Saatin altındaki kişisel metin ve tam ekranda saat boyutu (rakip analizi #25, #22)
             Section {
                 TextField(L("look.textPlaceholder"), text: Binding(get: { personalText }, set: { personalText = String($0.prefix(60)) }))
+                Toggle(L("look.banner"), isOn: $banner)
             } header: {
                 Text(L("look.text"))
             } footer: {
-                Text(L("look.textNote"))
+                Text(L("look.textNote") + " " + L("look.bannerNote"))
             }
             Section {
-                Slider(value: $scale, in: 0.5...1.0, step: 0.05) { Text(L("look.size")) }
+                Slider(value: $scale, in: 0.5...1.3, step: 0.05) { Text(L("look.size")) }
                 Text(Fmt.percent(Int((scale * 100).rounded()))).monospacedDigit().foregroundStyle(Theme.muted)
             } header: {
                 Text(L("look.size"))
             } footer: {
-                Text(L("look.fsNote"))
+                Text(L("look.fsNote") + " " + L("fs.toolsNote"))
             }
             // Gece / yatak başı modu (tam ekran saat)
             Section {
@@ -305,5 +338,50 @@ struct AppearanceView: View {
         .frame(maxWidth: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .environment(\.colorScheme, bg == .plain || (bg == .photo && photoVersion == 0) ? colorScheme : .dark)
+    }
+}
+
+/// Alternatif uygulama simgeleri (2. analiz #13): ana ekrandaki simge seçilir (iOS onay mesajı gösterir).
+/// Simgeler `Assets.xcassets/AppIcon-<ad>` (üretici `mobile/ios/scripts/gen-alt-icons.py`).
+struct AppIconSection: View {
+    static let names = ["night", "paper", "flip", "mint"]
+    @State private var current = UIApplication.shared.alternateIconName
+
+    var body: some View {
+        if UIApplication.shared.supportsAlternateIcons {
+            Section {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 14) {
+                        option(nil, title: L("icon.default"), preview: "AppIconPreview")
+                        ForEach(Self.names, id: \.self) { n in
+                            option("AppIcon-\(n)", title: L("icon.\(n)"), preview: "AppIconPreview-\(n)")
+                        }
+                    }
+                    .padding(.vertical, 6)
+                }
+            } header: {
+                Text(L("icon.title"))
+            } footer: {
+                Text(L("icon.note"))
+            }
+        }
+    }
+
+    private func option(_ name: String?, title: String, preview: String) -> some View {
+        Button {
+            UIApplication.shared.setAlternateIconName(name) { error in
+                if error == nil { current = name }
+            }
+        } label: {
+            VStack(spacing: 6) {
+                Image(preview).resizable().frame(width: 60, height: 60)
+                    .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 13, style: .continuous)
+                        .stroke(current == name ? Theme.accent : Theme.border, lineWidth: current == name ? 3 : 1))
+                Text(title).font(.caption).foregroundStyle(current == name ? Theme.accent : Theme.text)
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(current == name ? .isSelected : [])
     }
 }

@@ -216,6 +216,21 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_clock_date_info" />
         </receiver>
+        <!-- İki saat (2. analiz #12) -->
+        <receiver
+            android:name=".DualClockWidget"
+            android:exported="false"
+            android:label="@string/widget_dual_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_dual_info" />
+        </receiver>
         <!-- Dokunulabilen widget'lar ve Hızlı Ayarlar kutucukları (ToolWidgets.kt) -->
         <receiver
             android:name=".ZikirWidget"
@@ -338,6 +353,16 @@
         <receiver
             android:name=".WidgetRefreshReceiver"
             android:exported="false" />
+        <!-- Saat widget'larının görünüm seçimi (2. analiz #17): eklerken ve "Widget'ı düzenle" ile -->
+        <activity
+            android:name=".WidgetStyleActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".WidgetConfigActivity"
             android:exported="true"

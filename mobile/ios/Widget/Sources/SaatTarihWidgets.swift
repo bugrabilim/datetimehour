@@ -10,6 +10,7 @@ struct SaatTarihWidgets: WidgetBundle {
         AnalogClockWidget()
         DigitalClockWidget()
         ClockDateWidget()
+        DualClockWidget()
         MoonWidget()
         SecondsClockWidget()
         WorldClockWidget()

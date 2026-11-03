@@ -768,40 +768,86 @@ struct PomodoroView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    private func start(seconds: Double) {
-        let id = UUID()
-        alarmID = id.uuidString
-        end = Date().timeIntervalSinceReferenceDate + seconds
-        left = 0
-        let title = T("tools.pomodoro.phaseDone", L("tools.pomodoro.\(phase)"))
-        let at = Date(timeIntervalSinceReferenceDate: end)
-        Task { await AlarmCenter.schedule(id: id, at: at, title: title) }
-    }
+    private func start(seconds: Double) { PomoEngine.start(seconds: seconds) }
 
-    private func cancelAlarm() {
-        if let id = UUID(uuidString: alarmID) { AlarmCenter.cancel(id: id) }
-        alarmID = ""
-    }
+    private func cancelAlarm() { PomoEngine.cancelAlarm() }
 
     /// Sonraki aşamaya geçer (duraklatılmış başlar)
     private func advance(completed: Bool = false) {
+        PomoEngine.advance(completed: completed)
+        if completed { log = PomoLog.load() }
+    }
+}
+
+/// Pomodoro durumunu değiştiren ortak işlemler: araç sayfası ve tam ekrandaki pomodoro sayfası (2. analiz #26)
+/// aynı kayıtları (`pomo.*`) kullanır
+@MainActor
+enum PomoEngine {
+    private static var d: UserDefaults { .standard }
+    private static func int(_ key: String, _ def: Int) -> Int { (d.object(forKey: key) as? Int) ?? def }
+    static var phase: String { d.string(forKey: "pomo.phase") ?? "work" }
+    static var phaseSeconds: Double {
+        let p = phase
+        return Double((p == "work" ? int("pomo.work", 25) : p == "short" ? int("pomo.short", 5) : int("pomo.long", 15)) * 60)
+    }
+
+    static func remaining(at now: Date) -> Double {
+        let end = d.double(forKey: "pomo.end"), left = d.double(forKey: "pomo.left")
+        return end > 0 ? max(0, end - now.timeIntervalSinceReferenceDate) : (left > 0 ? left : phaseSeconds)
+    }
+
+    static func start(seconds: Double) {
+        let id = UUID()
+        d.set(id.uuidString, forKey: "pomo.id")
+        let end = Date().timeIntervalSinceReferenceDate + seconds
+        d.set(end, forKey: "pomo.end")
+        d.set(0.0, forKey: "pomo.left")
+        let title = T("tools.pomodoro.phaseDone", L("tools.pomodoro.\(phase)"))
+        Task { await AlarmCenter.schedule(id: id, at: Date(timeIntervalSinceReferenceDate: end), title: title) }
+        sync()
+    }
+
+    static func pause(at now: Date) {
+        d.set(remaining(at: now), forKey: "pomo.left")
+        d.set(0.0, forKey: "pomo.end")
+        cancelAlarm()
+        sync()
+    }
+
+    static func cancelAlarm() {
+        if let id = UUID(uuidString: d.string(forKey: "pomo.id") ?? "") { AlarmCenter.cancel(id: id) }
+        d.set("", forKey: "pomo.id")
+    }
+
+    /// Sonraki aşamaya geçer (duraklatılmış başlar); tamamlanan çalışma turu geçmişe yazılır (atlanan sayılmaz)
+    static func advance(completed: Bool = false) {
         if !completed { cancelAlarm() }
+        let end = d.double(forKey: "pomo.end")
+        var round = int("pomo.round", 1)
         if phase == "work" {
             if completed {
-                done += 1
+                d.set(d.integer(forKey: "pomo.done") + 1, forKey: "pomo.done")
                 BadgeStore.shared.hit(.pomodoro) // çalışma süresi sonuna kadar tamamlandı
-                // Odak geçmişi: atlanan tur sayılmaz (sitedeki gibi)
-                PomoLog.record(minutes: workMin, task: task, tag: tag, at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
+                let task = d.string(forKey: "pomo.task") ?? ""
+                PomoLog.record(minutes: int("pomo.work", 25), task: task, tag: d.string(forKey: "pomo.tag") ?? "none",
+                               at: end > 0 ? Date(timeIntervalSinceReferenceDate: end) : Date())
                 PomoTodo.save(PomoTodo.credit(PomoTodo.load(), task: task))
-                log = PomoLog.load()
             }
-            phase = round >= rounds ? "long" : "short"
+            d.set(round >= int("pomo.rounds", 4) ? "long" : "short", forKey: "pomo.phase")
         } else {
             if phase == "long" { round = 1 } else { round += 1 }
-            phase = "work"
+            d.set(round, forKey: "pomo.round")
+            d.set("work", forKey: "pomo.phase")
         }
-        end = 0
-        left = 0
+        d.set(0.0, forKey: "pomo.end")
+        d.set(0.0, forKey: "pomo.left")
+        sync()
+    }
+
+    private static func sync() {
+        LiveActivities.sync()
+        PomoNoise.sync()
+        FocusBlock.sync()
     }
 }
 

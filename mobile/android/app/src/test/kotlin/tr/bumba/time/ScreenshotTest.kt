@@ -205,4 +205,15 @@ class ScreenshotTest {
     @Test fun featuresPage() = tool("tr-ozellikler", "features")
     @Test fun homeItemsEditor() = capture("tr-saat-duzenle") { HomeItemsEditor() }
     @Test fun fullscreen() = capture("tr-saat-tam-ekran") { FullscreenClock {} }
+    // 2. analiz #12, #21, #22: ikili saat dilimi, küçük saniye, tabela
+    @Test fun clockDual() = shot("tr-saat-ikili", Tab.CLOCK, model = ClockModel.DUAL.ordinal)
+    @Test fun clockSmallSeconds() {
+        ClockLook.saveSecSmall(true)
+        try { shot("tr-saat-kucuk-saniye", Tab.CLOCK, model = ClockModel.DIGITAL.ordinal) } finally { ClockLook.saveSecSmall(false) }
+    }
+    @Test fun fullscreenBanner() {
+        FsLook.saveText("İYİ Kİ DOĞDUN")
+        ClockLook.saveBanner(true)
+        try { capture("tr-tam-ekran-tabela") { FullscreenClock {} } } finally { ClockLook.saveBanner(false); FsLook.saveText("") }
+    }
 }

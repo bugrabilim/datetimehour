@@ -107,7 +107,7 @@ object FsLook {
     }
 
     fun saveText(v: String) { text = v.take(60); Prefs.store.edit().putString("fs.text", text).apply() }
-    fun saveScale(v: Float) { scale = v.coerceIn(0.5f, 1f); Prefs.store.edit().putFloat("fs.scale", scale).apply() }
+    fun saveScale(v: Float) { scale = v.coerceIn(0.5f, 1.3f); Prefs.store.edit().putFloat("fs.scale", scale).apply() }
     fun saveDim(v: Float) { dim = v.coerceIn(0f, 1f); Prefs.store.edit().putFloat("fs.dim", dim).apply() }
     fun saveLock(v: Boolean) { lock = v; Prefs.store.edit().putBoolean("fs.lock", v).apply() }
     fun saveEvery(v: Int) { slideEvery = v; Prefs.store.edit().putInt("fsSlideEvery", v).apply() }
@@ -258,6 +258,38 @@ fun AppearanceScreen() {
             Text(L("look.photo.note") + " " + L("look.bg.note") + " " + L("look.bg.weatherNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         FloatingClockCard()
+        // Saniye: ibrenin hareketi, dijitalde küçük saniye, tık sesi (2. analiz #10, #21)
+        AppCard {
+            SectionTitle(L("look.seconds"))
+            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                AnalogClock(now.atZone(java.time.ZoneId.systemDefault()), Modifier.height(120.dp))
+            }
+            for (m in ClockLook.MOTIONS) {
+                Row(Modifier.fillMaxWidth().clickable { ClockLook.saveMotion(m) }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                    RadioButton(ClockLook.motion == m, { ClockLook.saveMotion(m) }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
+                    Text(L("look.motion.$m"), color = Theme.c.text, fontSize = 15.sp)
+                }
+            }
+            LookSwitch(L("look.secSmall"), ClockLook.secSmall) { ClockLook.saveSecSmall(it) }
+            LookSwitch(L("look.tickSound"), ClockLook.tickSound) { ClockLook.saveTickSound(it) }
+            Text(L("look.secondsNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
+        // İkili saat dilimi (21. model) için ikinci şehir (2. analiz #12)
+        AppCard {
+            SectionTitle(L("dual.model"))
+            var open by remember { mutableStateOf(false) }
+            Box {
+                TextButton(onClick = { open = true }) {
+                    Text(L("dual.city") + ": " + (ClockLook.dual()?.displayName ?: ""), color = Theme.c.accent)
+                }
+                androidx.compose.material3.DropdownMenu(open, { open = false }) {
+                    for (c in City.all) androidx.compose.material3.DropdownMenuItem(text = { Text(c.displayName) }, onClick = {
+                        ClockLook.saveDualCity(c.key); open = false
+                    })
+                }
+            }
+            Text(L("dual.note"), color = Theme.c.muted, fontSize = 12.sp)
+        }
         // Fotoğraf slaytı: ana fotoğrafa ek en çok 10 fotoğraf sırayla
         AppCard {
             SectionTitle(L("look.slideshow"))
@@ -288,16 +320,17 @@ fun AppearanceScreen() {
             SectionTitle(L("look.text"))
             androidx.compose.material3.OutlinedTextField(FsLook.text, { FsLook.saveText(it) }, Modifier.fillMaxWidth(), singleLine = true,
                 placeholder = { Text(L("look.textPlaceholder")) })
-            Text(L("look.textNote"), color = Theme.c.muted, fontSize = 12.sp)
+            LookSwitch(L("look.banner"), ClockLook.banner) { ClockLook.saveBanner(it) }
+            Text(L("look.textNote") + " " + L("look.bannerNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         AppCard {
             SectionTitle(L("look.size"))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                androidx.compose.material3.Slider(FsLook.scale, { FsLook.saveScale(it) }, Modifier.weight(1f), valueRange = 0.5f..1f, steps = 9,
+                androidx.compose.material3.Slider(FsLook.scale, { FsLook.saveScale(it) }, Modifier.weight(1f), valueRange = 0.5f..1.3f, steps = 15,
                     colors = androidx.compose.material3.SliderDefaults.colors(thumbColor = Theme.c.accent, activeTrackColor = Theme.c.accent))
                 Text(" " + Fmt.percent(Math.round(FsLook.scale * 100)), color = Theme.c.muted, style = Tnum)
             }
-            Text(L("look.fsNote"), color = Theme.c.muted, fontSize = 12.sp)
+            Text(L("look.fsNote") + " " + L("fs.toolsNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
         // Gece / yatak başı modu (tam ekran saat)
         AppCard {
@@ -310,5 +343,13 @@ fun AppearanceScreen() {
             }
             Text(L("night.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
+    }
+}
+
+@Composable
+private fun LookSwitch(title: String, on: Boolean, onChange: (Boolean) -> Unit) {
+    Row(Modifier.fillMaxWidth().clickable { onChange(!on) }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
+        Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+        androidx.compose.material3.Switch(on, onChange, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }

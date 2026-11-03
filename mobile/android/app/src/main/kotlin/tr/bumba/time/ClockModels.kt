@@ -62,9 +62,10 @@ enum class ClockModel(val id: String) {
     H_CLASSIC("h-classic"), H_ANALOG_DATE("h-analog-date"), H_STACK("h-stack"),
     H_WX_ANALOG("h-wx-analog"), H_WX_STACK("h-wx-stack"), H_WX_ANALOG_DATE("h-wx-analog-date"), H_WX_FULL("h-wx-full"),
     DIGITAL("digital"), DIGITAL_DATE("digital-date"), WX_DIGITAL("wx-digital"), WX_DIGITAL_CAL("wx-digital-cal"),
-    FLIP("flip"); // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5)
+    FLIP("flip"), // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5)
+    DUAL("dual"); // 21: ikili saat dilimi (2. analiz #12; yalnız uygulamalarda, sitede yok; sona eklendi, sıra numarası bozulmaz)
 
-    val title: String get() = L("stage.models.$id")
+    val title: String get() = if (this == DUAL) L("dual.model") else L("stage.models.$id")
     val number: Int get() = ordinal + 1
     val horizontal: Boolean get() = id.startsWith("h-")
 
@@ -92,6 +93,7 @@ fun ClockModelView(model: ClockModel, now: Instant, place: AppPlace, modifier: M
         val center = Arrangement.spacedBy(s * 0.03f, Alignment.CenterVertically)
         when (model) {
             ClockModel.CLASSIC -> AnalogPart(t, s * 0.95f)
+            ClockModel.DUAL -> DualClockPart(now, place, w, h)
             ClockModel.ANALOG_DATE -> Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(s * 0.04f)) {
                 AnalogPart(t, s * 0.78f)
                 DatePart(t, s * 0.065f)
@@ -211,8 +213,15 @@ private fun DigitalPart(t: ZonedDateTime, size: Dp, maxWidth: Dp) {
             Modifier.widthIn(max = maxWidth).clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!Prefs.secD); BadgeStore.hit(Badge.SANIYE) },
             verticalAlignment = Alignment.Bottom,
         ) {
+            // Saniye küçük ve tabana hizalı (2. analiz #21): tek metin, saniye kısmı küçük yazı
+            val text = if (Prefs.secD && ClockLook.secSmall) androidx.compose.ui.text.buildAnnotatedString {
+                append(Fmt.time(t))
+                pushStyle(androidx.compose.ui.text.SpanStyle(fontSize = androidx.compose.ui.unit.TextUnit(0.45f, androidx.compose.ui.unit.TextUnitType.Em)))
+                append(":%02d".format(t.second))
+                pop()
+            } else androidx.compose.ui.text.AnnotatedString(Fmt.time(t, Prefs.secD))
             Text(
-                Fmt.time(t, Prefs.secD), Modifier.weight(1f, fill = false), color = Theme.c.ink,
+                text, Modifier.weight(1f, fill = false), color = Theme.c.ink,
                 fontFamily = ClockFont.current.family, fontWeight = ClockFont.current.weight,
                 style = Tnum, maxLines = 1, softWrap = false,
                 autoSize = TextAutoSize.StepBased(minFontSize = (max.value * 0.3f).sp, maxFontSize = max, stepSize = 1.sp),

@@ -104,6 +104,10 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
     val items = HomeItems.layout.visible
     var customizing by remember { mutableStateOf(false) }
     val pager = rememberClockPager()
+    // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
+    val ctx = LocalContext.current
+    LaunchedEffect(now.epochSecond) { TickSound.tick(ctx, now.epochSecond) }
+    DisposableEffect(Unit) { onDispose { TickSound.stop() } }
 
     BoxWithConstraints(Modifier.fillMaxSize()) {
         val viewport = maxHeight
@@ -183,6 +187,21 @@ private fun rememberClockPager(): PagerState {
     return pager
 }
 
+/** Tam ekran: saat modelleri + iki yanda araç sayfaları; saat sayfasına geçilince model kaydedilir */
+@Composable
+private fun rememberFullscreenPager(): PagerState {
+    val pager = rememberPagerState(initialPage = Prefs.clockModel.coerceIn(0, ClockModel.count - 1) + 1) { ClockModel.count + 2 }
+    LaunchedEffect(pager.currentPage) {
+        val m = pager.currentPage - 1
+        if (m in 0 until ClockModel.count) {
+            if (m != Prefs.clockModel) BadgeStore.hit(Badge.ILK_MODEL)
+            Prefs.saveClockModel(m)
+            BadgeStore.sawModel(m, ClockModel.count)
+        }
+    }
+    return pager
+}
+
 @Composable
 private fun rememberGlobeHeight() = remember { mutableStateOf(260.dp) }
 
@@ -242,12 +261,16 @@ private fun StageControls(pager: PagerState, tint: androidx.compose.ui.graphics.
 
 /** Rakamlı analog saat (sitedeki analogSvg ölçüleri, 200 birimlik kare); dokununca saniye */
 @Composable
-fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier) {
+fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier, caption: String? = null) {
     val c = Theme.c
     val measurer = rememberTextMeasurer()
-    val sec = t.second.toDouble()
-    val min = t.minute + sec / 60
-    val hour = (t.hour % 12) + min / 60
+    // Saniye ibresinin hareketi (2. analiz #10): mekanik ve kayan saniyede ibre ekran karesiyle çizilir
+    val motion = ClockLook.motion
+    val frame = rememberFrameMillis(Prefs.secA && motion != "tick", ClockLook.frameMs(motion))
+    val tt = frame?.let { java.time.Instant.ofEpochMilli(it).atZone(t.zone) } ?: t
+    val sec = if (frame != null) ClockLook.seconds(frame, motion) else tt.second.toDouble()
+    val min = tt.minute + sec / 60
+    val hour = (tt.hour % 12) + min / 60
     Canvas(
         modifier.aspectRatio(1f).widthIn(max = 520.dp)
             .clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecA(!Prefs.secA); BadgeStore.hit(Badge.SANIYE) },
@@ -279,6 +302,10 @@ fun AnalogClock(t: java.time.ZonedDateTime, modifier: Modifier = Modifier) {
                 ),
             )
         }
+        if (caption != null) {
+            val cap = measurer.measure(caption, TextStyle(color = c.muted, fontSize = (13 * u / density / fontScale).sp, fontWeight = FontWeight.Bold))
+            drawText(cap, topLeft = Offset(center.x - cap.size.width / 2f, center.y + 34 * u - cap.size.height / 2f))
+        }
         fun hand(angle: Double, from: Float, to: Float, width: Float, color: androidx.compose.ui.graphics.Color) {
             rotate(angle.toFloat(), center) {
                 drawLine(color, Offset(center.x, center.y + from * u), Offset(center.x, center.y - to * u), width * u, StrokeCap.Round)
@@ -301,7 +328,8 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     val now = rememberNow()
     val place = AppPlace.current()
     val items = HomeItems.layout.visible
-    val pager = rememberClockPager()
+    // Saat modellerinin iki yanında araç sayfaları (2. analiz #26): 0 = pomodoro, son = kronometre
+    val pager = rememberFullscreenPager()
     HideSystemBars()
     // Arka plan: fotoğraf (koyulaştırılmış) ya da hareketli; ikisinde de yazılar koyu temanın açık renklerine geçer
     // Gece modunda siyah zemin, kırmızı ve kısık yazı, düşük parlaklık; arka plan fotoğrafı ve hareket yok
@@ -313,6 +341,7 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     val context = LocalContext.current
     var sleepUntil by remember { mutableLongStateOf(Prefs.store.getLong(SleepTimer.KEY, 0L)) }
     val asleep = sleepUntil > 0 && now.toEpochMilli() >= sleepUntil
+    LaunchedEffect(now.epochSecond) { if (!asleep) TickSound.tick(context, now.epochSecond) }
     val view = LocalView.current
     SideEffect { if (asleep) view.keepScreenOn = false }
     LaunchedEffect(asleep) { if (asleep) SleepSounds.stop(context) }
@@ -370,6 +399,7 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
         val viewport = maxHeight
         // Yatayda saat ekranı doldurur, alanlar kaydırınca görünür
         val landscape = maxWidth > maxHeight
+        val bannerAspect = (maxWidth.value - 32) / (maxHeight.value * 0.5)
         val globeHeight = rememberGlobeHeight()
         Column(
             Modifier.fillMaxSize().verticalScroll(rememberScrollState()),
@@ -381,15 +411,28 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
+                // Tabela (2. analiz #22): metin ekranın üst yarısını doldurur, saat altında küçülür
+                val banner = ClockLook.banner && FsLook.text.isNotEmpty()
+                if (banner) Box(Modifier.fillMaxWidth().height(viewport * 0.5f), contentAlignment = Alignment.Center) {
+                    Text(bannerLines(FsLook.text, bannerAspect.toDouble()), Modifier.fillMaxWidth(),
+                    color = Theme.c.text, fontWeight = FontWeight.Black, textAlign = TextAlign.Center, maxLines = 3, softWrap = false,
+                    style = androidx.compose.ui.text.TextStyle(lineHeight = androidx.compose.ui.unit.TextUnit(1.05f, androidx.compose.ui.unit.TextUnitType.Em)),
+                    autoSize = androidx.compose.foundation.text.TextAutoSize.StepBased(minFontSize = 12.sp, maxFontSize = 400.sp, stepSize = 2.sp))
+                }
                 val stage = when {
+                    banner -> maxOf(180.dp, viewport * 0.4f)
                     landscape -> maxOf(220.dp, viewport - 48.dp)
                     items.isEmpty() -> maxOf(300.dp, viewport - 60.dp)
                     else -> stageHeight(viewport * 1.08f)
                 }
                 HorizontalPager(pager, Modifier.fillMaxWidth().height(stage)) { page ->
-                    ClockModelPage(page, now, place, Modifier.padding(horizontal = 8.dp).graphicsLayer(scaleX = FsLook.scale, scaleY = FsLook.scale))
+                    when (page) {
+                        0 -> FullscreenToolPage(FullscreenTool.POMODORO)
+                        ClockModel.count + 1 -> FullscreenToolPage(FullscreenTool.STOPWATCH)
+                        else -> ClockModelPage(page - 1, now, place, Modifier.padding(horizontal = 8.dp).graphicsLayer(scaleX = FsLook.scale, scaleY = FsLook.scale))
+                    }
                 }
-                if (FsLook.text.isNotEmpty()) Text(FsLook.text, color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.SemiBold,
+                if (FsLook.text.isNotEmpty() && !banner) Text(FsLook.text, color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.SemiBold,
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                 for (item in items) {
                     HomeItemView(item, now, place, globeHeight.value) {

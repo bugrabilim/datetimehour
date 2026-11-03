@@ -13,9 +13,10 @@ enum ClockModel: String, CaseIterable, Identifiable {
     case hWxAnalog = "h-wx-analog", hWxStack = "h-wx-stack", hWxAnalogDate = "h-wx-analog-date", hWxFull = "h-wx-full"
     case digital, digitalDate = "digital-date", wxDigital = "wx-digital", wxDigitalCal = "wx-digital-cal"
     case flip // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5)
+    case dual // 21: ikili saat dilimi (2. analiz #12; yalnız uygulamalarda, sitede yok)
 
     var id: String { rawValue }
-    var name: String { L("stage.models.\(rawValue)") }
+    var name: String { self == .dual ? L("dual.model") : L("stage.models.\(rawValue)") }
     var number: Int { (Self.allCases.firstIndex(of: self) ?? 0) + 1 }
 }
 
@@ -34,6 +35,8 @@ struct ClockModelView: View {
                 switch model {
                 case .classic:
                     AnalogPart(now: now, size: s * 0.95)
+                case .dual:
+                    DualClockPart(now: now, width: w, height: h)
                 case .analogDate:
                     VStack(spacing: s * 0.04) {
                         AnalogPart(now: now, size: s * 0.78)
@@ -167,9 +170,20 @@ private struct AnalogPart: View {
     let now: Date
     let size: CGFloat
     @AppStorage("secA") private var seconds = true // varsayılan: analogda saniye açık (30 Ekim 2026)
+    @AppStorage(SecondsMotion.key) private var motionRaw = SecondsMotion.tick.rawValue
 
     var body: some View {
-        AnalogClock(date: now, showSeconds: seconds)
+        let motion = SecondsMotion(rawValue: motionRaw) ?? .tick
+        Group {
+            // Mekanik ve kayan saniyede ibre saniyede birden sık çizilir (2. analiz #10)
+            if seconds && motion != .tick {
+                TimelineView(.animation(minimumInterval: motion.interval)) { ctx in
+                    AnalogClock(date: ctx.date, showSeconds: true, motion: motion)
+                }
+            } else {
+                AnalogClock(date: now, showSeconds: seconds)
+            }
+        }
             .frame(width: size, height: size)
             .contentShape(Circle())
             .onTapGesture {
@@ -187,12 +201,25 @@ private struct DigitalPart: View {
     @AppStorage("h12") private var h12 = false
     @AppStorage("clockFont") private var clockFont = ClockFont.rounded.rawValue
 
+    /// Saniye küçük ve tabana hizalı (2. analiz #21)
+    @AppStorage("secSmall") private var small = false
+
     var body: some View {
+        let font = ClockFont(rawValue: clockFont) ?? .rounded
         HStack(alignment: .firstTextBaseline, spacing: size * 0.08) {
-            Text(Fmt.time(now, seconds: seconds))
-                .font((ClockFont(rawValue: clockFont) ?? .rounded).font(size))
+            if seconds && small {
+                HStack(alignment: .firstTextBaseline, spacing: 0) {
+                    Text(Fmt.time(now)).font(font.font(size))
+                    Text(String(format: ":%02d", Calendar.current.component(.second, from: now))).font(font.font(size * 0.45))
+                }
                 .monospacedDigit()
                 .foregroundStyle(Theme.ink)
+            } else {
+                Text(Fmt.time(now, seconds: seconds))
+                    .font(font.font(size))
+                    .monospacedDigit()
+                    .foregroundStyle(Theme.ink)
+            }
             if h12 {
                 Text(Fmt.ampm(now)).font(.system(size: size * 0.3, weight: .semibold))
             }

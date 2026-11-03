@@ -69,7 +69,7 @@ abstract class BaseWidget : AppWidgetProvider() {
 
     override fun onDeleted(c: Context, ids: IntArray) {
         val e = Prefs.store.edit()
-        for (id in ids) e.remove(WidgetUpdater.placeKey(id))
+        for (id in ids) { e.remove(WidgetUpdater.placeKey(id)); WidgetLook.forget(e, id) }
         e.apply()
     }
 }
@@ -122,8 +122,9 @@ class TodayPrayersWidget : BaseWidget() {
 class AnalogClockWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_analog)
-        // Android 12+: uygulamadaki gibi rakamlı kadran (daha eskide rakamsız vektör kadran)
-        if (Build.VERSION.SDK_INT >= 31) v.setIcon(R.id.analog, "setDial", Icon.createWithBitmap(WidgetUpdater.dial(c)))
+        // Android 12+: uygulamadaki gibi rakamlı kadran (daha eskide rakamsız vektör kadran); renkler seçilen görünümden
+        WidgetLook.analog(c, v, R.id.analog, id)
+        WidgetLook.apply(c, v, id, R.id.root)
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
         return v
     }
@@ -132,6 +133,7 @@ class AnalogClockWidget : BaseWidget() {
 class DigitalClockWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_digital)
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time))
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
         return v
     }
@@ -143,6 +145,7 @@ class ClockDateWidget : BaseWidget() {
         val today = LocalDate.now()
         v.setTextViewText(R.id.date, today.dayOfMonth.toString() + " " + Fmt.month(today.monthValue) + " " + today.year)
         v.setTextViewText(R.id.weekday, L("calendar.weekdays.${today.dayOfWeek.value - 1}"))
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time, R.id.date), muted = listOf(R.id.weekday))
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
         return v
     }
@@ -253,6 +256,7 @@ object WidgetUpdater {
         NextPrayerWidget::class.java, TodayPrayersWidget::class.java, AnalogClockWidget::class.java,
         DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java,
         SecondsClockWidget::class.java, WorldClockWidget::class.java, CountdownWidget::class.java, HijriWidget::class.java,
+        DualClockWidget::class.java,
     )
 
     fun placeKey(id: Int) = "widget.place.$id"

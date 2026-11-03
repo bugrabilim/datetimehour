@@ -76,10 +76,15 @@ struct ClockTab: View {
                     .frame(maxWidth: .infinity)
                 }
                 .background(Theme.bg.ignoresSafeArea())
+                // Saniye tık sesi (2. analiz #10; Ayarlar › Saat görünümü)
+                .onChange(of: Int(now.timeIntervalSince1970)) { _, s in TickSound.shared.tick(s) }
             }
         }
         .onAppear { UIApplication.shared.isIdleTimerDisabled = keepAwake }
-        .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
+        .onDisappear {
+            UIApplication.shared.isIdleTimerDisabled = false
+            TickSound.shared.stop()
+        }
         .onChange(of: keepAwake) { UIApplication.shared.isIdleTimerDisabled = keepAwake }
         .onChange(of: vsc, initial: true) { _, v in
             if v == .compact, !fullscreen {
@@ -212,6 +217,11 @@ struct FullscreenClock: View {
     @State private var dimStart: Double?
     @State private var scaleStart: Double?
     @State private var globeHeight: CGFloat = 260
+    /// Metni tabela gibi büyük gösterme (2. analiz #22)
+    @AppStorage("fs.banner") private var banner = false
+    /// Gösterilen sayfa: saat modeli ya da iki yandaki araç sayfası (2. analiz #26: ilk saatten geriye pomodoro,
+    /// son saatten sonra kronometre). Saat modeline geçilince seçim kaydedilir.
+    @State private var page = UserDefaults.standard.string(forKey: "clockModel") ?? ClockModel.classic.rawValue
 
     var body: some View {
         // Arka plan: fotoğraf (koyulaştırılmış; slayt varsa sırayla) ya da hareketli; ikisinde de yazılar açık renk
@@ -229,19 +239,33 @@ struct FullscreenClock: View {
                 let night = sunrise == 0 && NightMode.active(nightRaw, place: place, at: now)
                 // Uyku zamanlayıcısı doldu: ekran kararır, telefon kendini kilitleyebilir, uyku sesleri durur
                 let asleep = sleepUntil > 0 && now.timeIntervalSince1970 >= sleepUntil
+                let showBanner = banner && !personalText.isEmpty
+                let stage = Self.stageHeight(geo.size, hasItems: !items.isEmpty)
                 ScrollView {
                     VStack(spacing: 16) {
-                        TabView(selection: $modelID) {
+                        // Tabela: metin ekranın üst yarısını doldurur, saat altında küçülür
+                        if showBanner {
+                            Text(bannerLines(personalText, aspect: Double((geo.size.width - 32) / (geo.size.height * 0.5))))
+                                .font(.system(size: 400, weight: .heavy, design: .rounded))
+                                .minimumScaleFactor(0.02)
+                                .lineLimit(3)
+                                .multilineTextAlignment(.center)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: geo.size.height * 0.5)
+                        }
+                        TabView(selection: $page) {
+                            FullscreenToolPage(tool: .pomodoro).tag(FullscreenTool.pomodoro.rawValue)
                             ForEach(ClockModel.allCases) { m in
                                 ClockModelView(model: m, now: now, place: place)
                                     .scaleEffect(scale)
                                     .padding(.horizontal, 8)
                                     .tag(m.rawValue)
                             }
+                            FullscreenToolPage(tool: .stopwatch).tag(FullscreenTool.stopwatch.rawValue)
                         }
                         .tabViewStyle(.page(indexDisplayMode: .never))
-                        .frame(height: Self.stageHeight(geo.size, hasItems: !items.isEmpty))
-                        if !personalText.isEmpty {
+                        .frame(height: showBanner ? max(180, geo.size.height * 0.4) : stage)
+                        if !personalText.isEmpty && !showBanner {
                             Text(personalText).font(.title2.weight(.semibold)).multilineTextAlignment(.center)
                         }
                         ForEach(items) { item in
@@ -339,13 +363,16 @@ struct FullscreenClock: View {
                 .simultaneousGesture(MagnifyGesture().onChanged { v in
                     let start = scaleStart ?? scale
                     scaleStart = start
-                    scale = min(1, max(0.5, start * Double(v.magnification)))
+                    scale = min(1.3, max(0.5, start * Double(v.magnification)))
                 }.onEnded { _ in scaleStart = nil })
                 .overlay {
                     // Dokununca saat geri gelir
                     if asleep {
                         Color.black.ignoresSafeArea().onTapGesture { sleepUntil = 0 }
                     }
+                }
+                .onChange(of: Int(now.timeIntervalSince1970)) { _, s in
+                    if !asleep { TickSound.shared.tick(s) }
                 }
                 .onChange(of: asleep) { _, a in
                     UIApplication.shared.isIdleTimerDisabled = !a
@@ -360,6 +387,10 @@ struct FullscreenClock: View {
             if v == .regular, closeOnPortrait { dismiss() }
         }
         .overlay(alignment: .top) { BadgeToast() }
+        .onChange(of: page) { _, new in
+            guard ClockModel(rawValue: new) != nil, new != modelID else { return }
+            modelID = new
+        }
         .onChange(of: modelID) { _, new in
             if let i = ClockModel.allCases.firstIndex(where: { $0.rawValue == new }) {
                 BadgeStore.shared.sawModel(i, of: ClockModel.allCases.count)
