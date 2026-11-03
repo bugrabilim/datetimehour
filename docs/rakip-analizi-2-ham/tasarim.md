@@ -317,3 +317,127 @@ Yöntem: Her görüntü Read ile açıldı, renkler PIL ile piksel düzeyinde ö
 - Önceki not doğru. Eksik: pencerenin sistem uyarısını taklit ettiği; FAB; **gün harfleri dizisi "P P S Ç P C C" hafta Pazar'la başlıyor** (Pazar, Pazartesi, Salı, Çarşamba, Perşembe, Cuma, Cumartesi). Pazartesi başlasaydı "P S Ç P C C P" olurdu; Türkiye'de hafta Pazartesi başlar → **yerelleştirme hatası** (önceki not dizinin doğru okunuşunu vermiş ama hatayı yazmamış).
 - Bizde: izin öncesi açıklama yok (mevcut #80). Alarm satırında "X sa Y dk sonra" (mevcut #51).
 
+### 1.31 `2d089e4d` — Fullscreen Clock, yatay kadran galerisi (kronograf)
+- Ad bu görüntüde görünmüyor; 1.28 ve 1.32 ile aynı uygulama (aynı karo şeridi, "No Ads").
+- **Durum çubuğu gizli** (yatay tam ekran).
+- Zemin saf siyah **#000000**.
+- Sol üstte parlaklık düğmesi: koyu gri yuvarlak kare (**#2a282b**, ~39 pt, köşe ~10 pt), beyaz güneş simgesi (SF Symbols "sun.max.fill").
+- Kadran (üst yarısı görünüyor, şerit altını örtüyor): siyah kronograf, beyaz dakika çizgileri, **el yazısı/keçeli kalem karakterli** beyaz rakamlar (12, 1, 2, 3, 9, 10, 11; düz yazı tipi değil, Chalkboard/marker benzeri), iç alt kadranlar, **turuncu içi boş** akrep (kenar #783c00 civarı, çizgi turuncu), kırmızı saniye ibresi, mavi kronograf ibresi + mavi göbek halkası.
+- "1 day vip (view ad)" hapı: dolgu **#2a282b**, beyaz Regular, köşe ~12 pt (yuvarlak köşeli dikdörtgen, tam hap değil). "No Ads" hapı: siyah dolgu, ince gri kenar, tam hap.
+- **Alt şerit:** gri çerçeve **#555555** (~4 pt), içinde kare karolar (~110 pt, **köşesiz**, aralarında gri çizgi): 1) paylaş simgesi (beyaz, siyah zemin), 2) beyaz klasik kadran "PM" yazılı, karo zemini gri-mavi **#607d8a**, 3) siyah kronograf, 4) "Your Photo" yarı saydam yazılı gri-mavi kadran, 5) üstü çizili "AD" (reklam kaldır).
+- Seçili karo işareti görülmedi (hangisinin seçili olduğu belli değil): tasarım kusuru.
+- Önceki not doğru (alt şeritte kare küçük resimler, parlaklık düğmesi, "1 day vip (view ad)", "No Ads", turuncu çerçeveli akrep, kırmızı saniye, mavi alt kadran ibresi). **Eksik:** el yazısı karakterli rakamlar, köşesiz kare karolar ve gri çerçeve (eski iOS görünümü), seçili karo belirtisi olmaması, #607d8a renk.
+
+### 1.32 `a842a482` — Fullscreen Clock, QR ile paylaşma ekranı
+- Zemin **#000000**. Solda beyaz kutu içinde QR kodu (~157 pt), altında "Download Fullscreen Clock" (beyaz Regular ~22 pt, çevrilmemiş).
+- Sağda iki hap düğme "Share" ve "Review": dolgu **#607d8a** (Material "Blue Grey 500" #607d8b ile birebir), beyaz Regular ~30 pt yazı, ~157×39 pt, tam hap.
+- Altta 8 uygulama simgesi (geliştiricinin öbür uygulamaları, adsız): beyin + "MATH", renkli karolar üstünde "0:00", 3B labirent, aile ağacı, renkli çerçeveli saat, siyah zeminde turuncu ibre (Fullscreen Clock olabilir), altın bloklar, mavi dairesel labirent.
+- Önceki not doğru ("gri-mavi hap biçimli 'Share' ve 'Review'"). Eksik: kapatma düğmesi görülmedi (bu ekrandan nasıl çıkıldığı belli değil); metinler çevrilmemiş.
+- Bizde: paylaşma ekranı yok (mevcut #81).
+
+### 1.33 `ed7cd2b6` — Fullscreen Clock, dev metin modu ("KEK VAR")
+- "KEK VAR": beyaz **SF Pro Regular** büyük harf, ekran yüksekliğinin ~%22'si (cap height ~255 px ≈ 85 pt), siyah zemin.
+- Sağında mavi yuvarlak kalem düğmesi (dolgu **#4384f3**, ~40 pt, beyaz kalem simgesi): metni düzenle.
+- Şerit (aynı gri çerçeve): 1) domates-saat çizimi (krem zemin **#f0ebde**; pomodoro), 2) renkli karolar üstünde "0:00" (zamanlayıcı; pembe zemin), 3) **"MVP"** (siyah zemin beyaz yazı: metin modu karosu, bu karo seçili olmalı ama işaret yok), 4) paylaş, 5) beyaz klasik kadran, 6) kronograf (kesik). Yani şerit **mod seçici**: saat kadranları + metin + zamanlayıcı + pomodoro + paylaş + reklam kaldır hepsi aynı şeritte.
+- "MVP" karosu ile ekrandaki "KEK VAR" farklı: karo örnek metin, kullanıcı kendi metnini yazmış.
+- Önceki not doğru. Eksik: şeridin mod seçici olduğu (saat dışı araçlar da aynı şeritte), kalem düğmesi rengi.
+- Bizde: `fs.text` küçük satır (iOS `FullscreenClock`, Android `FullscreenClock`), dev metin modu yok → mevcut #22. Tam ekranda araç değiştirme yok → mevcut #26.
+
+### 1.34 `4246720f` — Varlık Saati, açılış ekranı
+- Ad görünüyor: "Varlık Saati" (Varlık beyaz-krem, **Saati turkuaz #3fbfae**, geometrik grotesk Bold ~42 pt; SF değil, Manrope/Plus Jakarta benzeri; kesin ad ölçülemedi). Logo: lacivert-yeşil ikiye bölünmüş daire içinde saat ibreleri + "$/S" kıvrımı.
+- Alt yazı "O gün verdiğiniz kararın bugünkü karşılığı" (gri **#9ba1ac**, Regular ~17 pt, sıkı harf aralığı).
+- Zemin: tam ekran **fırçalanmış metal lacivert kadran fotoğrafı/üretimi**, altın üçgen 12 ve 6 işaretleri (**#ebca9c** ölçülen altın vurgu), ince altın dakika çizgileri; ortada sıcak (kahve-altın) ışıma (#221f1c), kenarlar **#01030e / #000002**.
+- Durum çubuğu ve ana ekran çizgisi görünüyor; ilerleme göstergesi yok.
+- Önceki not doğru. (Bu görüntü bir **açılış (splash) ekranı**; önceki notta #83 olarak değerlendirildi.)
+
+### 1.35 `119e238f` — Varlık Saati, ekran görüntüsü uyarısı + kayıt ekranı
+- **Uyarı bandı:** üstte, kenarlardan 12 pt içeride; dolgu krem **#f8eeda**, 1 pt altın kenar, köşe ~16 pt; solda altın göz simgesi (**#9e6712**), metin "Ekran görüntüsü alındı. İçinde tutarlarınız olabilir; paylaşırken dikkat edin." (koyu **#1b1e24**, Regular ~17 pt). Koyu sayfa üstünde açık renkli bant: dikkat çekici ama sakin. Bizim #82 uygulamamızla karşılaştırma: Bölüm 3.
+- **Not:** uyarı, henüz kişisel veri girilmemiş bir tanıtım/kayıt ekranında çıkmış (örnek veri). Yani uyarı her ekranda; bizim seçtiğimiz "yalnız kişisel kayıt ekranları" yaklaşımı daha doğru.
+- Sayfa: logo + "Varlık Saati" (ortalı); dev başlık "O gün verdiğiniz / karar, bugün ne / ediyor?" (beyaz/krem **#ece7df**, ExtraBold ~44 pt, sola hizalı, sıkı satır aralığı); alt yazı "Tahminle değil, gerçek fiyat verileriyle. Bir tarih ve bir tutar yeter." (gri **#a9b0bc**).
+- Kart (dolgu **#111722**, ince altın-kahve kenar, köşe ~24 pt): "● KENDİNİZ DENEYİN" (altın **#d9ae52**, geniş aralıklı büyük harf, **Türkçe "İ" doğru**), "100.000 ₺, o gün başka bir yerde dursaydı?" (beyaz Bold ~26 pt), "HANGİ YIL?" (gri büyük harf, İ doğru), yıl hapları 2010, 2014, **2018** (seçili: altın dolgu #d9ae52, koyu yazı), 2020, 2022 (seçili olmayan: dolgu #1c1f24, ince kenar); "NEREDE DURSAYDI?"; **Altın** (seçili, altın, veritabanı simgesi), Dolar, Euro (para simgeli), alt satır kesik.
+- Alt sabit alan: CTA "Ücretsiz üye ol ›": dolgu turkuaz **#3fbfae**, **koyu yeşil yazı #062622** (beyaz değil: yüksek karşıtlık), ~335×52 pt, köşe ~24 pt (tam hap); altında "Kayıt ücretsizdir · Kart bilgisi istenmez" (gri **#8790a0**).
+- Zemin **#070c16 / #070d18** (lacivert-siyah, düz).
+- Tasarım dersi: **iki vurgu rengi rolle ayrılmış**: altın = seçim/etiket, turkuaz = eylem. Bizde tek "accent" + "accent2" var (Bölüm 3).
+- Önceki not doğru. Eksik: CTA yazısının koyu olması, iki vurgu rengi kuralı, Türkçe büyük harflerin doğru olması (1.23–1.26'daki hatayla karşıtlık), uyarının örnek veri ekranında da çıkması.
+
+### 1.36 `bdd312d2` — Adı görünmeyen çalışma sayacı (yatay)
+- Ad görünmüyor. Durum çubuğu gizli. Zemin saf siyah **#000000**.
+- En üstte tam genişlikte ince gri çizgi/ilerleme izi (**#141414**, ~3 pt; dolu kısmı görülmedi).
+- Üst satır: "📖 Genel ⌄" açılır seçici (koyu hap, ince gri kenar); **bölünmüş denetim** "✓ Sayaç | ⏱ Pomodoro": seçili yarı **#564529** (kahve-altın) dolgu + ✓, diğeri siyah, ince kenar, tam hap; sağda 4 gri çizgi simge (#ccccca / #b3b3b2): pano (not listesi), çubuk grafik (istatistik), 3×3 ızgara, dişli.
+- Gösterge kutusu: siyah dolgu, ~1 pt **#1f1f1f** kenar, köşe ~24 pt. Rakamlar **yedi bölütlü LED**: yanan bölütler **#ffb300** (amber; önceki nottaki "#FFB300 civarı" doğru, ölçüm birebir #ffb300) + çevresinde amber ışıma (#1e1500–#332400 halesi); **yanmayan bölütler çok sönük kahve #140e00–#181100** (görünür ama zor seçilir). "00:00:00", iki nokta yuvarlak.
+- Alt satır: "↻ Sıfırla" (siyah, ince gri kenar, tam hap), **"▶ Başlat"** (dolu **#f0be6d** açık amber, koyu kahve yazı **#432c00**, daha büyük hap), "≡✎ Not", "[?] Soru" (kenarlı haplar).
+- Önceki not doğru. Eksik: üstteki ilerleme izi, Başlat'ın yazısının koyu kahve olması, seçili bölümün kahve-altın tonu, sağdaki dört simgenin işlevleri (tahmin: pano/istatistik/ızgara/ayar).
+- Bizde: pomodoro var (iOS `ToolsTab.swift` / Android `PomodoroScreen.kt`), LED kadran yok (mevcut #9), "soru" sayacı ve ders seçimi yok (mevcut #84).
+
+### 1.37 Önceki notlarla karşılaştırma (özet)
+Karşılaştırılan: `docs/rakip-analizi-2-2026-11.md` › "Sahibin ekran görüntüleri", "Sahibin ikinci gönderimi", "Sahibin üçüncü gönderimi ve gözlemleri".
+
+**Yanlış ya da yanıltıcı notlar:**
+1. Analog Clock "Üstte 'Ses Açık' yazan siyah hap. Bu muhtemelen saniye tık sesi." → Hap iOS'un Dynamic Island zil göstergesi (sistem), uygulamanın öğesi değil (1.4). Tık sesi kanıtı bu görüntüde yok.
+2. Saat/alarm uygulaması (sürüm 52): "SENİN MODUN", "UYGULAMA BİLGİSİ", "DİL" diye yazılmış; ekranda **"SENIN", "BILGISI", "DIL"** (noktasız I): Türkçe büyük harf hatası, not düzeltilmiş hâlini yazmış (1.23, 1.25, 1.26).
+3. "Yenilikler" sırası: not Mercury–Radar–Yeşim diyor; saat ve nokta konumuna göre **Yeşim (1) → Radar (2) → Mercury (3)** (1.6–1.8).
+4. Analog Clock "Kadran: … büyük eğik rakamlar": rakamlar eğik değil, **kadran çevresinde radyal döndürülmüş**; kartın asıl adı "PRO" hapının arkasında kalmış olabilir, "Kadran" kesin değil (1.3).
+5. Alarmy sihirbazı: "ilerleme çubuğu '2/4': duvar kâğıdı → ses → görev" → duvar kâğıdı **2/4**, ses **3/4**, görev **4/4**; **1/4 hiç görülmedi** (1.14, 1.17, 1.19).
+6. Sürüm 52 destek listesi "ince çizgili turuncu simge" → ölçülen **#70463d** (koyu kiremit), mavi temada da aynı: simgeler temaya uymuyor (1.25).
+7. Dil listesi "India (Hintçe)" → ekranda dil değil **ülke adları** (India, France, Russia) ve yanlış yerel adlar (中国 = Çin, 한국인 = Koreli, इंडिया = Hindistan, Española) (1.9).
+8. Alarmy düğmesi "#FF2D55'e yakın" → ölçülen **#fc314c**; önizlemedeki "Seç" düğmesi **#e84652** (aynı akışta iki ayrı kırmızı) (1.11, 1.15).
+9. Alarmy tanıtım düğmesi "'Başla'/'Sonraki'" → **1. sayfada "Başla", son sayfada "Sonraki"**: sözcükler ters (1.13).
+10. Alarmy gün harfleri "P P S Ç P C C" → doğru okunmuş ama **hafta Pazar'la başlıyor** (Türkiye'de Pazartesi): yerelleştirme hatası (1.30).
+
+**Atlanmış ayrıntılar (her biri ilgili bölümde):** "thusday" yazım hatası ve kutudan taşan satır (1.1); yüzen cam öğelerin içeriği örtmesi ("Önizlem…" kesik) (1.3); Klasik Kadranlar'da 6 kadranın 2'sinin ücretsiz olması (1.4); puanlama kartının saat ekranındaki tarihi örtmesi (1.5); "Yenilikler"de her kadran açıklamasının başlıkla aynı cümle olması, ad çevirisi tutarsızlığı, aynı uygulamada iki düğme biçimi ve durum çubuğunun bazı ekranlarda gizli bazılarında açık olması (1.6–1.8); "Setting"/"Settings" (1.10); Alarmy tanıtımında çevrilmemiş İngilizce iddialar (1.11–1.13); ses listesinde yapışkan, kaydırmayı izleyen çip satırı ve "MEOVV Facetime" (1.17–1.18); görev adımında "Sonraki" düğmesi olmaması ve renk ailesi kuralı (1.19); Sabah ekranında açılır panel tutamağı, "Evcil Ha…" kesilmesi, 30 sn'lik video reklam (1.20); Premium sayfasındaki İspanyolca yorumda dilbilgisi hatası ve iki ayrı yıldız çizimi (1.21); Desk Clock açıklamasındaki dilbilgisi hataları ve üç ibre (1.22); "Siber Kireç" kartının lacivert, sayfanın zeytin olması, beyaz üstünde limon ✓ (~1,1:1) ve seçili olmayan sekme simgelerinin ~1,9:1 karşıtlığı (1.23–1.27); destek listesinde "sen"/"siz" karışması ve "Versiyon" (1.25); ATT gerekçe metninin yarıda kesilmesi (1.28); Fullscreen Clock kadranında el yazısı rakamlar, seçili karo işaretinin olmaması, şeridin araçları da içeren mod seçici olması (1.31, 1.33); Varlık Saati CTA'sında koyu yazı, altın/turkuaz rol ayrımı, uyarının örnek veri ekranında da çıkması (1.35); çalışma sayacında üst ilerleme izi ve koyu yazılı Başlat (1.36).
+
+**Doğru bulunan notlar:** Pro fiyatı ve üstü çizili fiyat, "Onarmak" çevirisi, "Derecele/ndirin" taşması, kadran galerisi yapısı, 5 taçlı renk, Alarmy kategori adları ve kartları, haftalık ₺399,99 ve "Rattings", şeffaf widget açıklaması, sürüm 52'nin 13 duraklı yazı boyutu kaydırıcısı, ATT penceresinin varlığı, QR paylaşma ekranı, "KEK VAR", Varlık Saati uyarı metni, LED rakamların sönük bölütleri ve rengi.
+
+## Bölüm 2: Rakiplerin genel mobil tasarımı (tasarım kimliği)
+
+Kaynak: App Store iPhone ekran görüntüleri (`rakip2/{alarm,kadran,namaz}/<uygulama>/p*.jpg`, 600 px genişlik; ilk dalga ajanlarının indirdikleri, bu iş için yeniden açıldı ve ölçüldü) + Athan Pro yeni indirildi (`rakip2/tasarim/apps/athanpro/`). Renkler mağaza görsellerindeki **telefon ekranının içinden** ölçüldü; mağaza görselinin kendi zemini (pazarlama) ayrıca belirtildi. Uyarı: mağaza görselleri JPEG ve bazen eski sürüm; sahibin görüntüsü olan uygulamalarda (Alarmy, Analog Clock, Fullscreen Clock, Desk Clock) gerçek ekran ölçümü esas alındı. İlk açılış ve Pro sayfası mağaza görsellerinde çoğu zaman yok: görülmeyen "görülmedi" yazıldı.
+
+### 2.1 Alarmy (id 1163786766, Delight Room; TR 4,72 / 14.391)
+- İncelenen: sahibin 12 görüntüsü + mağaza 8 iPhone görüntüsü.
+- Zemin koyu: **#09090b** (sahip, gerçek; mağaza görselinde daha eski **#1c1f26**: mağaza görselleri güncel uygulamayla aynı değil); açık tema: Wake Up Check kartında beyaz **#ffffff** kart görülüyor (mağaza p05), uygulama genel açık tema görülmedi.
+- Yüzey: **#18181b / #1b1b1d** (sahip); kart köşesi ~17–20 pt.
+- Vurgu: kırmızı **#fc314c** (birincil düğme), ikinci vurgu turkuaz **#2dbde0** (seçim, anahtar, "İzin Ver"); mağazada kırmızı #e03442 / #df3542.
+- Yazı tipi: SF Pro'dan ayırt edilemedi (Bold başlıklar); saatler ince.
+- Alt çubuk: **yüzen cam hap, 5 sekme, simge + yazı** (Alarm, Uyku, Sabah, Rapor, Ayar), seçili sekme koyu hap içinde, kırmızı rozet noktaları.
+- Kart/liste: ikisi de: ayarlarda gruplu liste, görev seçiminde ayrı kartlar, Sabah'ta pastel kare kartlar.
+- Görsel zenginlik: **yüksek**: fotoğraf/video duvar kâğıtları, havaya göre yağmurlu cam zemin, çizgi illüstrasyon (beyin), maskot (yumurta yaratık), emoji.
+- Simge takımı: özel dolgulu yuvarlak simgeler + emoji; alt çubukta SF Symbols benzeri.
+- İlk açılış: **3 tanıtım + 4 adımlı kurulum (1/4 görülmedi, 2/4 duvar kâğıdı, 3/4 ses, 4/4 görev) = en az 7 ekran**, atla düğmesi görülmedi.
+- Pro sayfası: görülmedi (yalnız "PRO Free Trial" hapı ve 1.20'deki reklamlar).
+- Boş durum: görülmedi.
+
+### 2.2 Sleep Cycle (id 320606217; TR 4,61 / 1.227)
+- İncelenen: mağaza 10 iPhone görüntüsü.
+- Zemin: **#000000** (uygulama içi, %64), mağaza görselinde gökyüzü/bulut fotoğrafı. Açık tema görülmedi.
+- Yüzey: **#0c0b10** ve ~#1c1c1e kartlar, cam (bulanık) kart kenarları ince açık çizgili.
+- Vurgu: **turuncu** (uygulama simgesi **#fe8204**; uyku puanı halkası turuncu gradyan), uyku evrelerinde mor-pembe.
+- Yazı tipi: uygulama içi SF Pro; **pazarlama başlıkları serif** (mağaza görsellerinde "Sleep Better Tonight").
+- Köşe: kartlar ~16–20 pt (göz kararı; ölçülmedi).
+- Alt çubuk: 5 sekme simge + yazı (Sleep, Luma, Journal, Statistics, Profile; p02'de okunuyor).
+- Kart/liste: kartlar (Duration/Quality/Sleep Debt üçlü hap kartları), dairesel puan göstergesi (88, "Very Good").
+- Görsel zenginlik: orta-yüksek: bulut fotoğrafı zemin (mağaza), parlayan pembe maskot ("AI Sleep Coach"), halka gösterge, dalga grafikler.
+- Simge: SF Symbols benzeri.
+- İlk açılış / Pro: mağaza görsellerinde görülmedi.
+
+### 2.3 Rise (id 1453884781; TR 4,57 / 659)
+- İncelenen: mağaza 8 iPhone görüntüsü.
+- Zemin: **#090909 / #000000**; mağaza görselinin zemini mor→turuncu gün batımı gradyanı (#200a4a alt, #a642a2 orta, #fed432 güneş).
+- Yüzey: **#232329 / #25242b** (kartlar, satırlar).
+- Vurgu: **mor #701afe** ("Peak"/"Dip" baloncukları, enerji eğrisi); enerji eğrisi turuncu-mor gradyan.
+- Yazı tipi: SF Pro (Bold başlık, Regular metin).
+- Alt çubuk: 5 sekme simge + yazı (Sleep, Energy, Tools, Progress, Learn), seçili mor.
+- Kart/liste: alışkanlık listesi (satır + zil simgesi + ›), "Learn" listesinde her satırda **renkli kare illüstrasyon** (mor/pembe/turuncu, ince çizgi).
+- Görsel zenginlik: orta: enerji eğrisi grafiği, illüstrasyon kareleri, widget'lar.
+- İlk açılış / Pro: görülmedi (mağazada "Trusted by 5 million" defne dalı rozet).
+
+### 2.4 Pillow (id 878691772; TR 4,38 / 838)
+- İncelenen: mağaza 10 iPhone görüntüsü.
+- Zemin: **#000000**; yüzey **#1c1c1e / #1b1b25 / #1d1b26** (mor tonlu koyu gri).
+- Vurgu: **mor #9f40ff** (seçili çip "All", halkalar), ikincil turuncu **#ff8c45** ("In Progress" etiketi, yay grafiği).
+- Yazı tipi: SF Pro; büyük başlıklar ince-orta ("Discover", "Trends").
+- Alt çubuk: simge satırı (5 simge; mağaza görselinde soluk).
+- Kart/liste: kartlar (Trends'te her ölçüm kart + mini çubuk grafik), çip satırı (All/Saved/Tips/Insights).
+- Görsel zenginlik: yüksek: uyku sesi ekranında tam ekran manzara fotoğrafı ("Meditative State"), renkli uyku evresi grafikleri, halka göstergeler, "PREMIUM" mor etiketleri.
+- Premium işaretleri: mor hap "PREMIUM" etiketi her ücretli özelliğin yanında (mağaza p04, p05, p06, p07, p09).
+- İlk açılış / Pro: görülmedi.
+

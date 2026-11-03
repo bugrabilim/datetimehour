@@ -257,3 +257,101 @@ Ajan notları. Görüntüler App Store lookup (country=tr) `screenshotUrls` / `i
   - Hafta şeridinde gün başına etkinlik simgeleri/renk kümeleri — bizde ay ızgarasında en çok 3 nokta — K — ücretsiz.
   - Gün planlayıcı, görev, yapay zekâ — kapsam dışı.
 
+## Google Calendar: Get Organised (App Store id909319292, TR 4,38 / 1.489 puan; US 4,53 / 132.582; Google LLC; sürüm 26.41.0)
+- Ücret modeli: ücretsiz, reklamsız; satın almalar yalnız Google One depolama ve "Google AI Plus" (100 GB ₺84,99 … AI Plus 2 TB ₺3.649,99); takvim özelliği kilitli değil (Workspace randevu sayfaları ücretli hesapta).
+- İncelenen görüntü: 8 iPhone (iPad'e bakılmadı).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: üstte hamburger, "January ▾" (dokununca ay açılır), arama, bugünün tarihli küçük takvim simgesi ("20", bugüne döner), profil fotoğrafı. Sağ altta beyaz yuvarlak, renkli "+" (Google renkleri). Yan menü (p7): **Schedule / Day / 3 days / Week / Month** görünümleri, hesap başına Events / Tasks onay kutuları, **Birthdays** ve **Holidays** takvimleri ayrı ayrı açılıp kapanıyor.
+- Öne çıkan ekranlar:
+  - Schedule (p1): solda gün adı + tarih (bugün mavi daire "MON 20"), sağda **dolu renkli etkinlik kartları** (ölçülen yeşil #39ad7c, mavi #039be6, lacivert #4150b5; ~8 pt köşe), görevler ✓ simgeli, "şimdi" çizgisi siyah nokta + çizgi; anahtar kelimeye göre **resimli kartlar** ("Dinner with Gloria" yemek çizimi, "Flight to Barcelona" uçak çizimi).
+  - Gün (p2): üstte tüm gün etkinlikleri ("Out of office" açık pembe, "Zurich design days"), saat ızgarası, sürükleyerek yeni etkinlik aralığı seçme (mavi çerçeve + tutamaklar), altta yarım sayfa yeni etkinlik (başlık, tarih-saat, katılımcı hapları, "Add room").
+  - Etkinlik ayrıntısı (p3, p4): renk karesi, başlık, "Repeats weekly on Wednesdays", oda, Meet bağlantısı, telefonla katılma, "10 minutes before", 6 misafir "3 yes, 1 no, 2 maybe", alt çubukta Yes ▾ / No / Maybe hap düğmeleri; Gmail'den gelen uçuş kartı (çizimli başlık, havayolu, kapı, onay kodu).
+  - Ay (p5): hücrelerde **dolu renkli etkinlik adları** (kesik), çok günlük "Out of office" şeridi açık mavi, "•••" taşma işareti, bugün mavi daire.
+  - Koyu tema (p6): saat ızgarası zemini #303032 civarı, aynı renkli bloklar.
+- Ayarlar: görülmedi.
+- Widget (p8): orta boy: solda "MON 20", sağda tüm gün hapı (yeşil nokta) ve renkli etkinlik kartları (video simgesiyle).
+- Tasarım: beyaz zemin, Google Sans/Roboto, Material renkleri, düz renkli bloklar; koyu tema var.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Görünüm seçimi (Schedule/ajanda, Gün, 3 gün, Hafta, Ay) — Fantastical bölümündeki iş — O.
+  - Ay hücresinde etkinlik adları ve çok günlük şerit — Readdle bölümündeki iş — K/O.
+  - Özel gün türlerini takvimde ayrı ayrı açıp kapama (Google'da Birthdays/Holidays; bizde resmî tatil, arife, dini, özel, okul hep birlikte, yalnız lejant var: `CalendarTab.swift` `legend`, `CalendarScreen.kt` `Legend()`) — bizde yok — K — ücretsiz.
+  - Etkinlik türüne göre çizimli kartlar — bizde yok — O (dini günler/bayramlar için kendi çizimlerimiz olabilir: Ramazan, Kurban, kandil, Cumhuriyet Bayramı) — ücretsiz.
+  - Sürükleyerek etkinlik aralığı seçme, katılımcı yanıtı — kapsam dışı (sistem düzenleyicisi kullanılıyor).
+
+## Türk Takvimi - Bayram 2024 (App Store id1548913298, TR 4,53 / 889 puan; Teferi Aleme; sürüm 6.6.72, son güncelleme 14 Mayıs 2024)
+- Ücret modeli: ücretsiz; App Store sayfasında satın alma yok; reklam görüntülerde görülmedi. 2,5 yıldır güncellenmiyor.
+- İncelenen görüntü: 10 iPhone (iPad'e bakılmadı). Görüntüler 2021 tarihli.
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: kırmızı üst çubuk (ölçülen #e22017; zemin #fafafa) "Türk Takvimi 🇹🇷", sağda ızgara (araçlar) ve paylaş; ay başlığı kırmızı kutu düğme "Ekim 2021" ve iki yanda oklar; Cmt/Paz kırmızı; seçili gün kırmızı daire. Altında seçili tarih ("Cuma Ekim 29 2021") ve dört kırmızı köşeli düğme: Bayram (şemsiye), Hatırlatma (zil), Alarm, Dünya Saati. Ayrı pencereler: Doğum günü, Hesap makinesi, Yapılacaklar listesi.
+- Öne çıkan ekranlar:
+  - Ay ızgarası (p1): tatil gününe dokununca ızgaranın üstünde yarı saydam kırmızı balon "Türkiye Cumhuriyet Bayramı" (tostla gösterim).
+  - Bayram penceresi (p2): ayın özel günleri ("Haz 15 - Demokrasi ve Milli Birlik Günü", "Haz 21 - Yaz sezonu") ve açılır "Okul tatilleri" (yarıyıl, kış, ikinci yarıyıl, yaz tatilleri tarih aralıklarıyla); sağ üstte kırmızı "Haziran hakkında".
+  - **Ay adının kökeni** (p7): "Ekim – Türk kökenli 'dikim' anlamına gelen ekim veya çiftçiliği ifade eder." başlıkta "Menşe Kelime - Ekim".
+  - Dünya saati (p5): bayraklı şehir listesi, saat kalın, yıldızla favori; İstanbul satırı kırmızı vurgulu büyük.
+  - Hatırlatma, Alarm, Doğum Günü Hatırlatıcıları (p4, p8, p9): basit pencere formları (Hakkında, Tarih, Zaman; isim, tarih seç), X ve ✓.
+  - Yapılacaklar (p6), Hesap makinesi (p10, kırmızı tuşlar).
+- Ayarlar: görülmedi.
+- Widget: görülmedi.
+- Tasarım: bayrak kırmızısı + beyaz, Roboto (Flutter/Material izlenimi), köşeli kırmızı düğmeler, 20 pt köşeli beyaz pencereler.
+- Hatalar: "WBirinci Yarıyıl Tatilleri" yazım hatası (p2); "Cuma Ekim 29 2021" İngilizce tarih sırası (Türkçede "29 Ekim 2021 Cuma"); "Haziran 29" (p4); dünya saatinde ülke adları İngilizce ("Turkey, Istanbul", "United States, New York"); "Ayarlanan zaman…" yer tutucu (p4, p9); Türkçe arayüzde ondalık nokta (p10). Ad "Bayram 2024" ama uygulama 2024'ten beri güncellenmiyor.
+- Bizde olmayan ya da farklı olan:
+  - Ay adının kökeni / ay hakkında kısa bilgi — bizde yok — K (15 dilde içerik; kaynak gösterilmeli) — ücretsiz.
+  - Doğum günü hatırlatıcıları — bizde geri sayımlarda "her yıl tekrarla" + hatırlatma var (`Countdowns.swift`, `Countdowns.kt`) — var.
+  - Okul tatilleri — bizde var (`school.json`, takvimde "okul" türü).
+  - Takvimde özel güne dokununca kısa balon — bizde seçili günün listesi var — var.
+
+## Serhend Takvimi (App Store id6502964220, TR 4,75 / 6.528 puan; Dehlevi Yayınları; sürüm 1.10)
+- Ücret modeli: ücretsiz; satın alma yok; reklam görülmedi. (Basılı takvim yayınevinin uygulaması.)
+- İncelenen görüntü: 4 iPhone (iPad yok).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: koyu yeşil zemin (ölçülen üst #072a23, alta doğru #1c6051 tonuna açılan gradyan; alt sayfalar düz #0e9b79), ortada serifli "Serhend" logosu, solda kubbe simgesi, sağda dişli. "İstanbul / Sultanbeyli ⌄" (ilçe), sağda zeytin yeşili yuvarlak takvim düğmesi. Altında **7 günlük tarih şeridi** (zeytin/haki zemin, ölçülen #a39d6b; "27 May … 02 Haz", seçili gün koyu kutu).
+- Öne çıkan ekranlar:
+  - Ana ekran (p1): "02 Haziran 2024 Pazar", açık nane kartta "İkindi Vaktine Kalan 01:06:23" (kalın, büyük), vakit satırları (geçmiş vakitler gri-yeşil, şu anki vakit koyu yeşil zeminli ve kalın beyaz, gelecek beyaz), ince çizgi vakit simgeleri; en altta çerçeveli kutu: **"Hicri: 25 Zilkade 1445 · Rumi: 20 Mayıs 1440"**.
+  - Dini Gün ve Geceler (p2): ay başlıkları büyük kalın beyaz ("Ocak", "Şubat"), kartta solda gün sayısı + ay + gün adı, dikey çizgi, sağda koyu yeşil kalın ad ("Regaib Kandili", "Üç Ayların Başlangıcı", "Miraç Kandili") ve hicri tarihi ("29 C.ahir 1445").
+  - Bildirim ayarları (p3): "VAKİTLERDE" (İmsak Vakti, Sabah/Öğle/İkindi/Akşam/Yatsı Ezanı; satır başına ses simgesi ve anahtar), "VAKİTLERDEN ÖNCE" (İmsaktan Önce **60 dk**, Güneşten Önce 30 dk, Öğleden Önce 45 dk…; her vakit için ayrı dakika hapı).
+  - Ayarlar (p4): Vakit Bildirim Ayarları, Dini Gün ve Geceler, Hakkımızda, Bizi Değerlendirin; "Namaz vakitleri Diyanet İşleri Başkanlığı'ndan alınmıştır."
+- Açıklamada: günün ayeti, hadisi, duası; haftalık çizelge ve yıllık takvim.
+- Widget: görülmedi.
+- Tasarım: yeşil tonlar, Poppins benzeri kalın geometrik yazı, ~12 pt köşeli kartlar, ince kenarlı yarı saydam kartlar, yeşil iOS anahtarları.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - **Rumi (Osmanlı mali) tarih** — bizde yok (kodda "rumi" geçmiyor; takvim yaprağında yalnız hicri ve Hızır/Kasım: `Content.swift` `hizirKasim`) — K (Jülyen takvim − 584 yıl, 1 Mart yılbaşı kuralı doğrulanmalı) — ücretsiz.
+  - Vakit başına ayrı "önce" süresi — mevcut #54'e ek ayrıntı (Serhend: her vakit ayrı dk hapı).
+  - Dini gün ve geceler listesi (ay başlıklı, hicri tarihli) — mevcut #57'ye ek ayrıntı.
+  - Ana ekranda 7 günlük tarih şeridi ile güne göre vakitler — bizde aylık çizelge var — K — ücretsiz.
+
+## Saatli Maarif Takvimi (App Store id1501840430, TR 3,23 / 48 puan; Arden Olgundemir; sürüm 1.2.0)
+- Ücret modeli: ücretsiz; satın alma yok; reklam görülmedi.
+- İncelenen görüntü: 3 iPhone (iPad yok). Görüntüler 2020 tarihli.
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: üst yarı cami fotoğrafı (Sultanahmet) üzerine koyu yeşil örtü; solda **takvim yaprağı düzeni**: "Mart", dev "24", "Salı", altında dört küçük sütun YIL 2020 / AY 03 / GÜN 24 / **HIZIR 24**; sağda altı vakit (İmsak … Yatsı) ve çerçeveli "Şehir Seç" düğmesi. Beyaz alt yarıda "istanbul,istanbul", sıradaki vakit adı ve dev kalın "16:43", "Vaktin Çıkmasına 02:14:54" (gri) ve kırmızı zil simgesi; altında "Hadis" başlığı ve gri hadis metni (kaynaklı: "Ebû Dâvûd, Zekât, 45"). Yan menü (p2, koyu yeşil #00221c): Alarm Kur, Haftalık Ezânî Vakitler, Aylık Ezânî Vakitler, **Tarihte Bugün**.
+- Öne çıkan ekranlar: Haftalık vakitler (p3): gün başına kart "24 Mart 2020 , Salı", 3×2 ızgarada vakitler.
+- Açıklamada: halk takvimi (hıdırellez, cemre), ansiklopedi niteliğinde bilgiler.
+- Widget: görülmedi.
+- Tasarım: koyu yeşil + beyaz, Montserrat benzeri kalın yazı, ince kenarlı yuvarlak köşeli kartlar.
+- Hatalar: "istanbul,istanbul" küçük harf ve boşluksuz virgül (p1); "24 Mart 2020 , Salı" virgülden önce boşluk (p3); menü "Ezânî Vakitler" diyor ama tabloda vasati (ezani olmayan) saatler var (p3, 13:15 öğle); puan düşük (3,23).
+- Bizde olmayan ya da farklı olan:
+  - Ezani (alaturka, gün batımından sayılan) saat — bizde yok (kodda "ezani" geçmiyor) — K (hesap: akşam vakti 12:00 kabul edilir; Türkiye takvim yapraklarında geleneksel) — ücretsiz.
+  - Takvim yaprağında hadis ve "tarihte bugün" — bizde takvim yaprağında günün sözü var (`Content.swift` `CalendarLeafView`), hadis ayrı ekranda (`Religion.swift`), tarihte bugün sitede (`/tarihte-bugun/`) — uygulamada tarihte bugün yok — K (veri sitede hazır: `src/data/on-this-day.json`) — ücretsiz.
+  - Hızır günü sayacı — bizde var (`Content.swift` `hizirKasim`; ekranda "Hızır günleri: 179. gün").
+
+## Osmanlı Takvimi - Hicri Takvim (App Store id6751004781, TR 4,79 / 70 puan; Mücahit Ramazan Saroğlu; sürüm 3.1.1)
+- Ücret modeli: ücretsiz + tek satın alma "Osmanlı Takvimi" ₺99,99 (neyi açtığı görüntüde yazmıyor; reklam kaldırma olabilir, doğrulanmadı). Reklam görüntülerde görülmedi.
+- İncelenen görüntü: 7 iPhone (6 iPad görüntüsüne bakılmadı).
+- İlk açılış (p1): altın-kahve zemin, üstte üç sayfa noktası (sarı uzun hap = seçili), yuvarlak çerçevede Osmanlı İstanbul'u resmi, serif başlık "Ho[ş geldiniz]" — tanıtım sayfaları.
+- Ana ekran ve gezinme: başlıkta altın besmele hattı, "Osmanlı Takvimi" serif başlık, kartta büyük "5 Rebiülahir 1447", "Pazar", iki kutu Miladi "28 Eylül 2025" / Rumi "28 Eylül 1441"; "Bugünün İsim Önerisi – Emel & Seyfettin"; "Osmanlı'da Bugün Ne Oldu?" (p7).
+- Öne çıkan ekranlar:
+  - **Hicri ay ızgarası** (p2, p3): başlık "‹ Rebiülahir 1447 ›", hücrelerde hicri gün numaraları, seçili gün koyu kahve daire, altında üç nokta (not var). Altında kart: Pazar — **Hicri 5 Rebiülahir 1447 (çerçeveli, seçili) / Rumi 28 Eylül 1441 / Miladi 28 Eylül 2025** üç sütun; altında kişisel notlar ("kitap", "deneme" + zil) — "Kolayca Hatırlatıcı Ekle".
+  - Osmanlı'da Bugün (p4, p6): "Tarihi olaylarda ara…" arama kutusu, açılır "Bugün Osmanlı'da Ne Oldu?" kartı (Hicri/Miladi tarih, "Tarihi Olay"), altında "Osmanlı Arşivi" etiketli günlük olay kartları ("1 Ocak", "2 Ocak"…).
+  - Bilgi yarışması (p5): "Soru 7/10", süre hapı "18", ilerleme çubuğu, kategori "Eğitim", A–D şıklar.
+- Açıklamada: namaz vakitleri, kıble pusulası, saat/tarih/vakit widget'ı, özel gün ve bayram bildirimleri.
+- Tasarım: kahve-altın "ebru/rumi desenli" kâğıt dokusu zemin (mağaza zemini #fedead; uygulama zemini ölçülen #cba751; not kartları #f5f5dd), serif yazı (Playfair benzeri) + Poppins, krem yarı saydam kartlar ~16 pt köşe, kahve vurgu. Tek tema.
+- Hatalar: hicri ızgarada "30, 1, 1, 2, 3, 4, 5" — **"1" iki kez** (p2, p3; miladi ay geçişi mi karıştırılmış belli değil); "Osmanlı'da Bugün" kartında "Miladi Takvim 28 Eylül 1441" (p6; bu Rumi tarih, miladi değil); Rumi tarih miladiyle aynı gün ve ay gösteriliyor ("28 Eylül 1441"), Serhend ise 13 gün geri gösteriyor ("02 Haziran 2024 → Rumi 20 Mayıs 1440") — iki rakip farklı kural kullanıyor, hangisinin doğru olduğu doğrulanmalı (1917 sonrası Rumi takvimde gün/ay miladiyle eşitlendi; yıl başı 1 Mart idi).
+- Bizde olmayan ya da farklı olan:
+  - **Takvimi hicri aylarla gezme** (hicri ay ızgarası; hücrede hicri gün) — bizde takvim miladi, hicri yalnız seçili gün başlığında (`CalendarTab.swift` dayList başlığı, `CalendarScreen.kt` `DayDetail`) ve Tarih hesaplamada çevirici (`Hijri.convert`); sitede hicri çevirici sayfasında bu hicri yılın ay başları — K/O (tablo hazır: `lib/hijri.mjs`, uygulamalarda `Hijri.swift`/`Hijri.kt`) — rakipte ücretsiz.
+  - **Miladi ay ızgarasında her hücrede küçük hicri gün numarası** — bizde yok — K — ücretsiz (Osmanlı Takvimi'nde değil, ama hicri takvim uygulamalarının ortak kalıbı; burada üçlü tarih kartı var).
+  - Hicri / Rumi / Miladi üç tarih yan yana — bizde hicri + miladi var, Rumi yok — K (Serhend bölümündeki iş) — ücretsiz.
+  - Takvim gününe kişisel not ve hatırlatma — bizde telefon takvimine etkinlik ekleme var (`DeviceCalendar.swift`, `.kt`) — var (farklı yoldan).
+  - Günün isim önerisi, tarih yarışması — önerilmez (kapsam dışı).
+

@@ -241,3 +241,133 @@ Bizim karşılaştırdığımız ekranlar (Android, 31 Ekim 2026, `mobile/androi
   - **Geçmiş/Gelecek hap seçici** — mevcut #73 (ileri sayım, arşiv).
   - Bağlantıyla paylaşıp alıcıda güncellenme — Countdown (Find Appiness) maddesiyle aynı iş.
 
+## World Clock Time Zone Widget / "World Time Widget" (App Store 912698955; ABD 4,70 / 30.873 puan; TR 4,65 / 242; Lasmit TLB Ltd; sürüm 2026.15, 28 Ekim 2026; 4 dil, Türkçe yok)
+- Ücret modeli: reklamsız ("No ads, no sign up"); **"Premium Club" aboneliği**: Monthly ₺99,99 / ₺299,99, Annual ₺449,99 / ₺899,99 / ₺1.299,99, Lifetime ₺2.499,99 / ₺2.999,99 / ₺4.999,99, "Pro Club - Family Sharing" ₺1.299,99. Ayarlarda "Premium Club — Member" satırı (i6). Ücretsizde ne kilitli: görselde yazmıyor.
+- İncelenen görüntü: 10 iPhone (hepsi açıldı). Mağaza zemini düz mavi (#0F6FE6 civarı) + koyu mavi dünya haritası silueti, beyaz kalın yuvarlak başlık (Rubik benzeri).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (i3, i4): "World Clock" başlıklı liste (koyu #121212 ya da açık). Her satır: **sol kenarda renkli dikey çizgi** (yeşil/turuncu/mor: gündüz, akşam, gece durumu), **kişi adı + emoji** ("🏠 Me", " Tim", "🎨 Frida", "🏃 Forrest", "🗽 Liberty", "🇬🇲 Kunta", "🇫🇷 Amélie"; şehir adı yerine kişi), altında küçük gri "PDT -9 hrs, Mon, ☀︎↑ 6:45" (kısaltma, fark, gün, **gün doğumu saati**), sağda dev ince saat "10:36" + üst simge küçük saniye "38" ve "AM". Açık temada saat yerine **dünya haritası desenli analog kadran** (gri harita, siyah akrep/yelkovan, kırmızı saniye). Altta yüzen "⏰" ve "⟳ Calculator" hapları, dişli.
+- Öne çıkan ekranlar:
+  - **Saat dilimi hesaplayıcı (i5):** liste aynı, seçili saat dilimiyle aynı olanlar vurgulu satır (koyu yeşil); altta cam panel: ×, takvime ekle, hatırlatma ekle, paylaş, "+02:35 ⟲" (şimdiden fark), "CENTRAL EUROPEAN TIME", "10:30 PM" ve "Sep 7, 2026" hapları, − / +; en altta **saat şeridi "12 • 1 • 2 … 11 PM"** üzerinde sürüklenen seçici (scrubber).
+  - **Ayarlar (i6):** üstte canlı örnek satır (New York EDT -6 hrs…, "1:37 07 PM"); Premium Club; Design: Clock Style, Clock Themes & Icons; **Desktop StandBy Mode**; Help: What's New, Help & Support.
+  - **Tema ayarı (i7):** Light | Dark; "Use Colors: Urban" 18 renk karosu (zemin + nokta rengi çifti), "Your themes": Aurora, Dunes, Harbour (gradyan) ve **"From a photo"**; Font Weight kaydırıcısı (Regular).
+  - **Fotoğraftan tema (i8):** "Choose a photo and we'll make a theme from its colours. Your wallpaper, a holiday snap…" — Choose a photo / Paste; önizleme; Night / Save theme.
+- Widget'lar (i1, i2, i9): **Liquid Glass** cam widget'lar; dev üst üste "2 / 14 PM" + dikey "LIBERTY"; **gün yayı** (kesikli yarım daire üstünde Güneş noktası, "↑7:16am ↓8:21pm", "8:14 PM"); **sözle saat** "HIRO — It's quarter past three · 3:14 am · tomorrow"; 4 kişilik liste; **"TIME OVERLAP" ızgarası** (EDT/CEST/JST satırları, 24 saat kutucuk: gündüz, mesai, gece, yeni gün çizgisi; "NOW · +12H · +24H"); 3'lü analog (gün + AM/PM etiketli); 4 sütun "MONDAY 11:14 · Tim" (altında renkli gün/gece noktası); büyük **dünya haritası widget'ı** (gece gölgesi, kişiler harita üstünde); kilit ekranı / masaüstü **saniyeli** "7:37:23 GMT+2 MONDAY September 7". En çok 8 saat dilimi tek widget'ta.
+- Sürüm notu: saat dilimi kısaltmasıyla ekleme (EST, CET, Pacific; Almanca MEZ), **saat başına 12/24 saat ayarı**, Siri ve Kısayollar, Spotlight. Açıklama: Apple Watch uygulaması ve komplikasyonlar, Mac, iCloud eşitleme, toplantı planlayıcı (sürükleyerek).
+- Tasarım: koyu zemin #121212, ince büyük rakam + üst simge saniye; gündüz/gece durumu renkli kenar çizgisiyle; kişi odaklı ("Mum in Sydney").
+- Hatalar: mağaza başlığı "World Time Clock **Convertor**" (yazım: "Converter").
+- Bizde olmayan / farklı:
+  - **Şehir seçimi yalnız 31 şehir** — bizde uygulamada dünya saatlerine yalnız `cities.json`'daki 31 şehir eklenebilir (`mobile/ios/App/Sources/WorldSeasons.swift` satır 8 "sitedeki 31 şehir", satır 112 `City.all`; Android `WorldScreen.kt` satır 173 `City.all`; `assets/cities.json` 31 kayıt). Sitede istenen IANA dilimi eklenebiliyor (`world.js` `tz:`), uygulamada küre için 1960 yerlik `places.json` zaten var. Rakiplerde arama ile binlerce şehir ve kısaltma (EST, CET). **ilk analiz satırı "dünya saatleri" bitti sayılmış ama eksik** — K (places.json'dan arama) — ücretsiz.
+  - **Saate kişi adı ve emoji verme** ("Annem — Sidney") — yok (satırda yalnız `city.displayName`: `WorldScreen.kt` satır 126) — K — rakipte ücretsiz.
+  - **Gündüz/gece durumu** (renkli kenar çizgisi ya da nokta) ve **satırda gün doğumu saati** — yok (satırda fark ve yaz saati notu var: `WorldScreen.kt` satır 127–136) — K — ücretsiz.
+  - **Saat dilimi hesaplayıcıda saat şeridi kaydırıcısı** — kısmen: bizde "Başka bir zamana bak" anahtarı + tarih/saat seçici (`WorldScreen.kt` satır 80–95), sürüklenir şerit yok — mevcut #72'ye ek ayrıntı — K.
+  - **"Time overlap" (çakışma ızgarası) widget'ı** — yok (toplantı planlayıcı yalnız uygulamada: `MeetingPlanner.swift`) — O — ücretsiz.
+  - **Gün yayı widget'ı** (Güneş'in gökteki yeri) — kısmen: uygulamada Vakitler'de Güneş/Ay yayı var (`SunMoonArc`), widget'ı yok — mevcut #15'e ek ayrıntı (gün doğumu/batımı widget'ı) — K.
+  - **Sözle saat widget'ı** ("üçü çeyrek geçiyor") — kısmen: sitede "yazıyla saat" ve konuşan saat var (`client.words`, `/konusan-saat/`), uygulamada widget yok — K — ücretsiz.
+  - **Dünya haritası widget'ı** (gece gölgesi ve kişiler) — yok (küre yalnız uygulamada: `GlobeView.swift`) — O — ücretsiz.
+  - **Dünya saatleri widget'ında 8 şehir, kilit ekranı dünya saati** — kısmen: iOS widget'ı küçük 2 / orta 4 şehir (`MoreWidgets.swift` satır 135–142), kilit ekranı yok — K.
+  - **Saat başına 12/24 biçimi** — mevcut #72 (Time Buddy "Native").
+  - **Fotoğraftan tema** (renkleri fotoğraftan çıkarma) — yok (24 hazır tema: `AccentPalette`) — mevcut #78'e ek ayrıntı — K — rakipte büyük olasılıkla Premium.
+  - **Apple Watch'ta dünya saatleri ve komplikasyonları** — yok (`mobile/ios/Watch/Sources/WatchApp.swift`) — O.
+
+## World Clock Time Zone Widgets (App Store 956377119; ABD 4,71 / 22.672 puan; TR 4,71 / 213; Overdesigned, LLC; sürüm 1.27.2, 13 Ekim 2026; 12 dil, Türkçe yok)
+- Ücret modeli: ücretsiz + reklamlı; **tek seferlik "World Clock Pro" ₺249,99** (reklamları kaldırır, ek özellik açar; "One-time purchase — no subscriptions!").
+- İncelenen görüntü: 10 iPhone (hepsi açıldı). Mağaza zemini koyu gri (#2C2C2C), beyaz kalın başlık; "2,000,000+ DOWNLOADS" camgöbeği defne dalı (i8).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (i4, i7, i10): "World Clock" büyük gri başlık; satırda ad (kalın) + gri "Thursday, August 8, -3:00" (gün, tarih, fark), sağda **gök renginde dolu saat kutusu**: gündüz açık mavi gradyan (#D5E8FF → mavi), akşam turuncu-mor (Cairo #BE5446), gece lacivert (#1A2C55 civarı); içinde ince beyaz dev saat "6:41 AM". **"Grandma's House"** (yeniden adlandırılmış), "Local ➤" (GPS'le konum). Altta yüzen hap "⟲ Convert". Analog seçenekte **dünya haritası desenli mavi kadran** (gece koyu lacivert).
+- Öne çıkan ekranlar:
+  - **Çevirici (i5):** mavi cam panel "SET DATE & TIME": ×, paylaş, "+4:18 ⟲"; "2:00 PM", "Aug 8, 2024", − / +; **iki satır saat şeridi** "12•1•2…11 AM" ve "12•1•[2]•…11 PM" (seçili beyaz kare). Altında üç sütun saat tablosu LAX / GMT / TYO, gün değişiminde "Fri" etiketi, gece saatleri koyu mavi blok.
+  - **Konum ayrıntısı (i6):** LOCATION harita kartı (Apple Haritalar), TIME ZONE: "Eastern Daylight Time EDT", Offset from GMT -4:00, Offset from local +3:00; SUN: Sunrise 6:01 AM, Solar noon 1:02 PM, Sunset 8:04 PM, Day length 14h 3m ve **24 saatlik daire kadranda Güneş yayı** (gündüz mavi yay, gece noktalı, Güneş simgesi, "Morning"); MOON bölümü (kesik).
+  - **Uzak saatte alarm (i9):** "Alarms": solda "11:00 AM August 8" (yerel), sağda gri "2:00 PM EDT August 8" (uzak); başlık "Alarms that stick, even if you move" — alarm uzak şehrin saatine bağlı kalır, telefon başka dilime geçse de.
+- Widget / kilit ekranı / Dynamic Island (i1, i2, i3): 4 şehir kodlu liste (LAX, NYC, LON, TYO; açık mavi), **gün eğrisi widget'ı** (Cairo, sinüs eğrisi üstünde Güneş, "☀︎↓ 2M", turuncu-mor gün batımı gradyanı), 2×2 kutular (gece kutusu lacivert), **dünya haritası widget'ı** (gece gölgesi, şehir kodları ve saatleri, sarı/mavi gündüz/gece noktaları), dev saniyeli "06:41:33 Grandma's House -3:00", tek uygulama simgesi boyutunda analog; kilit ekranında 2×2 kod listesi, "Thursday New York 12:41 PM", **"Thu 8 🌐 NYC 12:41:11 PM"** satırı, kodlu üçlü liste; **Dynamic Island'da iki şehir saati** ("12:41P NYC · 5:41P LON"), Live Activity Apple Watch'ta da görünür.
+- Tasarım: iOS sistem açık/koyu, saat kutuları göğün rengini (gün saati) taşıyor; ince yazı tipi; şehir kodları (IATA) kısa ad.
+- Hatalar: görülmedi.
+- Bizde olmayan / farklı:
+  - **Saat kutusunun gök rengiyle boyanması** (gündüz mavi, akşam turuncu, gece lacivert) — yok: bizim satırda düz metin saat (`tr-dunya.png`) — K — rakipte ücretsiz. (Kürede gece gölgesi var; listede yok.)
+  - **10.000+ şehir araması, GPS'le "Yerel"** — bizde 31 şehir (bkz. Lasmit maddesi) — K.
+  - **Şehri yeniden adlandırma** ("Büyükannemin evi") — Lasmit maddesiyle aynı iş.
+  - **Dynamic Island / Live Activity'de dünya saati** — yok (Live Activity türleri: timer/pomodoro/stopwatch/prayer: `LiveActivityModel.swift`) — mevcut #19'a ek ayrıntı (iki şehir saati) — K.
+  - **Şehir ayrıntı sayfası** (harita, saat dilimi adı, GMT farkı, gün doğumu/öğle/batımı, gün uzunluğu, 24 saat kadranında Güneş, Ay evresi) — yok: dünya satırına dokununca ayrıntı açılmıyor (`WorldScreen.kt`); sitede şehir sayfalarında gün doğumu/batımı var (`/dunya-saatleri/<şehir>/`) — K — ücretsiz.
+  - **Uzak şehrin saatine bağlı alarm** — yok (alarmlar telefonun saat dilimiyle: `AlarmItem`) — K — ücretsiz.
+  - **Şehir kodu (IATA: LAX, NYC) kısa gösterim** widget'ta — yok (widget'ta tam ad: `widget-dunya.png`) — K.
+  - Saniyeli dünya saati widget'ı — kısmen (saniyeli widget yalnız yerel saat: `SecondsClockWidget`) — K.
+  - Dünya haritası widget'ı, gün eğrisi widget'ı — Lasmit maddesiyle aynı iş.
+
+## World Clock Pro: Convert Time (App Store 969635117; ABD 4,78 / 1.354 puan; TR 5,0 / 8; Alex Komarov Inc.; sürüm 1.6.4, 22 Eylül 2025; yalnız İngilizce)
+- Ücret modeli: reklamsız; **abonelik**: 1 month ₺79,99 / ₺99,99, 1 year ₺399,99 / ₺499,99 / ₺799,99. Ücretsizde ne kilitli: görselde yazmıyor.
+- İncelenen görüntü: 4 iPhone (hepsi açıldı; eski iPhone 8 çerçevesi, görseller 2018 tarihli).
+- Ana ekran (i1): siyah zemin; üstte mavi ince dev "9:41 AM", "➤ San Francisco, GMT-7", sayfa noktaları; ortada **24 saatlik çok ibreli kadran**: **üst yarı beyaz (gündüz, ☀︎), alt yarı siyah (gece, ☾)**, kenarda 12–1…11–12 iki kez (öğle üstte, gece yarısı altta), **her şehir bir ibre** ve ibrenin üstünde dar büyük harfle şehir adı (NEW YORK, LONDON, MOSCOW, BEIJING, SYDNEY; seçili şehir mavi "SAN FRANCISCO"). Altında koyu gri dünya haritası, şehir noktaları; sağ altta mavi paylaş düğmesi.
+- Öne çıkan ekranlar:
+  - **İbreyi sürükleyerek çevirme (i2):** mavi ibre sürüklenince kenarda mavi yay (geçen süre), altta "+4h 19m Friday, October 26, 2018", ⟲ sıfırla, mavi "Add Event" hapı.
+  - **Paylaşma (i3):** beyaz alt sayfa "Times & locations to share": "Select all", şehir başına mavi ✓ daireler, sağda saat + gün ("☾ 10:00 PM Friday, Oct 26"; gece saatlerinde ay simgesi), mavi tam genişlik "Share".
+  - **Bugün widget'ı (i4):** 4 sütun "Today 2:00 PM San Francisco… Tomorrow 8:00 AM Sydney", seçili sütun koyu, altta "− +3 HOURS +" (widget içinden saati kaydırma).
+- Tasarım: siyah zemin, iOS mavisi vurgu, beyaz/siyah ikiye bölünmüş kadran; dar büyük harf şehir etiketleri (DIN Condensed benzeri).
+- Hatalar: görülmedi (görseller eski).
+- Bizde olmayan / farklı:
+  - **24 saatlik çok ibreli dünya kadranı** (gündüz/gece yarıları, her şehir bir ibre, ibreyi sürükleyerek saat çevirme) — yok: dünya saatlerimiz liste + küre (`tr-dunya.png`, `GlobeView.kt`); 2. analiz #12 yalnız ikili analog kadran — O — rakipte abonelik. Saat modellerine de eklenebilir (site + uygulama).
+  - **Çeviricide gece saatine ☾ işareti** ve paylaşılacak şehirleri seçme — kısmen: sitede toplantı planlayıcı paylaşımı var (`planner.js` `shareRow`), uygulamada toplantı planlayıcıda "paylaş" var (CLAUDE.md #85) — K.
+
+## Flora - Green Focus (App Store 1225155794; ABD 4,76 / 82.944 puan; TR 4,77 / 536; AppFinca Inc.; sürüm 3.7.43, 30 Ekim 2026; 3 dil, Türkçe yok)
+- Ücret modeli: **ücretsiz, reklamsız**; satın almalar "ağaç turu" paketleri: Amazon Rainforest Tour ₺49,99 / ₺99,99, Drylands' Marvels Tour ₺99,99 (yeni ağaç türleri). Ayrıca "Price/Care" ile **gerçek ağaç diktirme** (i8–i9; bağış benzeri).
+- İncelenen görüntü: 10 iPhone (hepsi açıldı). Mağaza zemini turkuaz (#00ACC2), beyaz başlık, çizgi film karakterleri (gözlüklü papyonlu, kravatlı iki yuvarlak kafalı figür, yelkenli gemi).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (i1, i4): **açık sarı zemin** (#FCF7B7), üstte turuncu başlık "Kally & Jason's Tree", ince turuncu dev "25:00", ortada **filiz** (iki yapraklı, yeşil), altında **lacivert-mavi dünya küresi** tepe gibi, yeşil köşeli "Start" düğmesi (birlikte odakta "Invite" / "Join").
+- Öne çıkan ekranlar:
+  - **Ağaç öldü (i5):** mercan pembe zemin (#E57373 civarı), "Oops!", açık pembe daire içinde **kurumuş çıplak gövde**, turuncu "See Who Killed the Tree" (arkadaşlarla odakta kimin telefona baktığı).
+  - **Bahçe (i3, i8):** koyu lacivert gök, "Your Garden", avatar; altta düz çizimli ağaçlar (baobab, yeşil yuvarlak, pembe kiraz, sarı çam, lavanta, elma, kavun, incir); altında tarih çizgisi. **Alışkanlık takvimi:** "To-Dos | Habits" sekmeleri, "Read books" ay takviminde art arda günler koyu kahverengi dairelerle **zincir** (10–11–12, 14–15).
+  - **Ağaç koleksiyonu haritası (i6):** "Grand Tour": dünya haritası etrafında sarı dairelerde açılacak ağaçlar (çiçek, çam, lavanta, kiraz, orkide, çilek, kavun, baobab).
+  - **Yapılacaklara süre ekleme (i7):** "Read books" turuncu ilerleme çubuğu, "+1 h" etiketi ağaca bağlanıyor; renkli "+" daireleri (5 renk) ile yeni yapılacak.
+- Widget (i2): orta-büyük widget: "27 h 40 m This Week", ağaç sırası, "UPCOMING 10:00 AM, Wed: Complete the work" (pasta ilerleme), iki sütun renkli kenar çizgili yapılacaklar (her birinde küçük pasta ilerleme).
+- Tasarım: düz (flat) çizim, pastel sarı + turkuaz + mercan; yuvarlak sans; maskot figürler.
+- Hatalar: görülmedi.
+- Bizde olmayan / farklı:
+  - **Büyüyen bitki ve "ağaç öldü" (uygulamadan çıkınca)** — yok: 2. analiz #31 (fidan/orman koleksiyonu) — mevcut #31'e ek ayrıntı: Flora'da ölüm ekranı ve keşif haritası ("Grand Tour") var; inanç verisi değil, Bumba madde 13'e uygun tasarlanabilir — O.
+  - **Arkadaşla birlikte odak** — sunucu gerekir — mevcut #53/#75 kapsamında (ücretli sistemle birlikte) — —.
+  - **Alışkanlık takvimi (art arda günler zinciri)** — kısmen: pomodoroda seri var ("🔥 Seri: 4 gün", `tr-pomodoro-istatistik.png`), takvim görünümü yok — mevcut #31'e ek ayrıntı (ay/yıl görünümü) — K.
+  - **Yapılacak başına toplam süre ve ilerleme çubuğu** — kısmen: `PomoTodo` her biten turu görevin sayacına yazar (`n`), ilerleme çubuğu ve hedef saat yok — K.
+  - **Yapılacaklar / odak widget'ı** ("bu hafta 27 sa 40 dk") — yok (pomodoro widget'ı yok; `mobile/ios/Widget/Sources/` ve Android `ToolWidgets.kt`'de yalnız kronometre ve zikir) — K.
+
+## Focus Keeper - Pomodoro Timer (App Store 867374917; ABD 4,79 / 31.740 puan; TR 4,73 / 1.795; PIXO Incorporation; sürüm 4.2.21, 27 Ekim 2026; 12 dil, Türkçe yok)
+- Ücret modeli: reklamsız; **Focus Keeper Pro abonelik**: 1 Month ₺149,99 / ₺699,99, 1 Year ₺1.299,99 / ₺2.499,99 / ₺3.999,99, ömür boyu "Focus Keeper Pro" ₺4.999,99 (bu alandaki en pahalı ömür boyu fiyat). Pro'da ne kilitli: görselde yazmıyor.
+- İncelenen görüntü: 8 iPhone (hepsi açıldı). Mağaza zemini açık gri (#F7F7F8), siyah kalın başlık, "Working from Home — Featured", "Perfect for Classroom — Featured" defne rozetleri.
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (i1): **bütün ekran mercan kırmızı** (#FD5D5D civarı), sol üstte kronometre simgesi + görev "Reading"; ortada yarı saydam hap "FOCUS 🍅🍅🍅🍅" (tur sayısı küçük domatesler, ilki dolu); **çok ince (hairline) beyaz dev rakam "24:59"**; altında **yatay kayan cetvel** (5, 10, 15 dakika çentikleri, sağa doğru incelen; süre bu cetveli kaydırarak ayarlanıyor gibi); büyük yarı saydam halka içinde ‖; altta hap biçimli 3 sekme (liste / kronometre seçili siyah / grafik).
+- Öne çıkan ekranlar:
+  - **Görevler (i2):** mercan başlıkta haftalık şerit (M 16 … S 22, bugün beyaz daire "19", altında nokta); beyaz kartlarda renkli kare simgeli görevler: "Reading — Every day" (büyük), "Morning Workout — Mon Wed Fri" (sayaç kırmızı "02:03:02"), "Work at Home — Weekdays" ("START"), "08:04:02" — görevler **tekrar günleriyle** (her gün, pzt-çar-cum, hafta içi) ve görev başına toplam süre.
+  - **Günlük yapılacaklar (i3):** "Today" onay kutulu kartlar, tarih (kırmızı "Feb 4"), bayrak, alt görev, etiket, kronometre simgeleri; "Completed 2" katlanır bölüm; kırmızı yüzen "+".
+  - **Grafikler (i5):** "Daily | Weekly | Monthly", "< Today >", "DAILY OVERVIEW" kartı "Focus 7h 36m · 18 Sessions · 9h 56m Total · 2h 20m Break", paylaş simgesi; "Focus | Total | Sessions" sekmeleri; açık pembe çubuklar, seçili gün dolu kırmızı; "⟲ Timeline" hapı.
+  - **Zaman çizelgesi (i6):** gün başlığı "Thu, Jun 10"; dikey çizgide kırmızı kronometre simgeleri: "Completed Reading — 1h 15m Focus · 20m Break · 1h 35m Total · Task completed at 14:05"; altında oturumlar "13:40 - 14:05 Focused 25m Ended at…".
+  - **İlerleme paylaşım kartı (i7):** beyaz kart, ortada renkli yuvarlak kare simge (mor şimşekli kronometre, yeşil kitap, kırmızı kalp), "Focused on Study **3h 58m**", "12 Sessions · 5h 28m Total · 1h 30m Break", tarih, sol altta "🍅 FOCUS KEEPER" logosu.
+  - **Hatırlatmalar (i8):** "It's time. Let's get some work done!", "Focus session has finished. Let's take a short break.", "Short break has ended. Get back to work!".
+- Widget (i4): büyük "Today" görev listesi (renkli simgeler + ▶ başlat), küçük kırmızı "Focus time today 12h 45m / Sessions 12 · Total 8h 45m · Break 45m", küçük "🍅 Focus 2/4 3:03 Reading ▶". Apple Watch (i2): siyah zeminde kırmızı ilerleme halkası "24:59 Reading".
+- Tasarım: tek güçlü vurgu mercan kırmızı; rakamlar çok ince (ultralight); hap biçimli siyah seçili sekme.
+- Hatalar: i3 ve i4'te "Complete the pitch deck", "Focus time", "Coding" satırlarının üstünde silik beyaz Çince karakter filigranı (görüntü işleme kalıntısı) görünüyor.
+- Bizde olmayan / farklı:
+  - **Odak ekranının tamamen vurgu rengiyle dolması ve ince dev rakam, tur domatesleri** — yok: bizim pomodoro ekranı krem zemin, kalın "25:00", altında "Tur 1 / 4" metni (`tr-pomodoro.png`) → görsel iş (rapor) — K.
+  - **Kaydırılabilir süre cetveli** — yok (bizde ayarlarda süreler) — K.
+  - **Görev başına tekrar günü ve görev listesi tarih şeridi** — kısmen: `PomoTodo` tek liste, tekrar yok — K.
+  - **Gün/hafta/ay grafik sekmeleri, odak/mola/oturum ayrımı, zaman çizelgesi (her oturum başlangıç–bitiş)** — kısmen: bizde bugün/7 gün/toplam ve 7 günlük çubuk (`FocusStatsCard`, `tr-pomodoro-istatistik.png`); mola süresi ve oturum saatleri kayıtta yok (`pomo.log` `{d,m,t,g}`) — mevcut #31'e ek ayrıntı — K.
+  - **Odak ilerleme paylaşım kartı** ("Ders: 3 sa 58 dk") — yok (paylaşım kartları vakit ve geri sayım için: `ShareCards.swift`; pomodoroda yalnız CSV) — K — ücretsiz.
+  - **Pomodoro widget'ları** (bugünkü odak süresi, süren tur, görev listesinden başlat) — yok — K.
+  - **Apple Watch'ta pomodoro** — yok — O.
+  - Aşama sonu bildirimleri — **var** (pomodoro aşama bitince bildirim: `PomodoroScreen.kt` satır 43).
+
+## Be Focused – Pomodoro Timer (App Store 973130201; ABD 4,71 / 4.323 puan; TR 4,74 / 1.361; Denys Ievenko; sürüm 2.7.1, 19 Ekim 2026; yalnız İngilizce)
+- Ücret modeli: ücretsiz + reklamlı; **Pro**: Monthly ₺29,99, Yearly ₺199,99, Lifetime ₺499,99.
+- İncelenen görüntü: 6 iPhone (hepsi açıldı). Mağaza zemini şeftaliden mercana gradyan, beyaz başlık, "5+ Million Users Worldwide" defne.
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (i1): beyaz zemin; üstte **yana kaydırmalı görev şeridi** ("…phic design · **Project Plan 3/7** · Implementa…", seçili ortada mercan), ortada **ince çizgili büyük halka**: geçen kısım açık gri, kalan kısım somon/mercan (#F7958C civarı), halkanın ucunda içi beyaz küçük tutamak dairesi; halkanın içinde ince somon "15:45" ve ince çizgi ‖; sağ üstte daire içinde × ; altta "Today 3/10" (günlük hedef). Alt sekme çubuğu (görevler, sayaç seçili gri hap, grafik, ayarlar, bilgi) ince çizgi simgeler.
+- Öne çıkan ekranlar:
+  - **Görevler (i2):** "To Do | Done" hap seçici, gün başlıklı liste, sağda "6/7" (yapılan/tahmini aralık; aşınca "4/3").
+  - **Görev ayrıntısı (i3):** "Details | Intervals"; Activity type Work, Estimated intervals 5, Completed intervals 6, Due Date + tarih, All day task, etiket "Work".
+  - **İlerleme (i4):** "Yesterday · **This week** · Previous week" kaydırmalı; Start/End date, Task, Tags, Units (Intervals) filtreleri (yeşil değerler); grafik türü: çubuk / pasta / liste; nane yeşili çubuklar (#9BE0C9), **kesikli kırmızı hedef çizgisi** (günlük 10 aralık).
+  - **Eşitleme (i5):** iPhone, iPad, Mac menü çubuğu penceresi, Apple Watch (siyah, kırmızı halka "15:45 Today 3/10").
+  - **Focus Matrix (i6):** aynı geliştiricinin Eisenhower matrisi uygulamasıyla görev eşitleme (Urgent/Important dörtlü).
+- Tasarım: beyaz zemin, tek vurgu somon/mercan, her şey ince çizgi (yazı, halka, simgeler); yumuşak gölgeli hap sekme çubuğu.
+- Hatalar: görülmedi.
+- Bizde olmayan / farklı:
+  - **İnce halkalı pomodoro sayacı** (kalan yay + tutamak) ve **"Bugün 3/10" hedefin halka altında görünmesi** — kısmen: günlük hedef var ("Bugün 0/4 tur": `tr-pomodoro.png`, `pomo.goal`), halka yok → görsel iş — K.
+  - **Görev şeridinde kaydırarak görev seçme** ve görev başına tahmini/tamamlanan tur ("6/7") — kısmen: `PomoTodo` sayacı (`n`) var, tahmin yok — K.
+  - **Grafikte hedef çizgisi, tarih aralığı/görev/etiket süzgeci, pasta grafik** — kısmen: 7 günlük çubuk + etiket toplamı (`FocusLog.tags`) — mevcut #31'e ek ayrıntı — K.
+  - **Mac menü çubuğunda pomodoro** — kısmen: Mac menü çubuğu uygulamamız yalnız saat ve vakit (`mobile/ios/Mac`, CLAUDE.md #95) — O.
+  - Apple Watch'ta pomodoro — Focus Keeper maddesiyle aynı iş.
+
