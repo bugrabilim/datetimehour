@@ -34,6 +34,8 @@ enum CloudSync {
         "prayer.visual", "prayer.words", "meet.h12", "meet.exchanges",
         // Sahibin ekran görüntüleri (3 Kasım 2026): yazı boyutu
         FontScale.key, Atmosphere.key,
+        // 2. analiz K-6 (3 Kasım 2026): gece yazı rengi ve saatleri, lüm rengi
+        NightMode.colorKey, NightMode.fromKey, NightMode.toKey, Lume.key,
     ]
 
     private static let store = NSUbiquitousKeyValueStore.default

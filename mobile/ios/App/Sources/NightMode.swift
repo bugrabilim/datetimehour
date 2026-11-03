@@ -6,13 +6,42 @@ import UIKit
 /// Seçim `nightMode`: "off" (varsayılan), "on", "auto" (seçili yerde Güneş ufkun altındayken). Android'deki NightMode ile aynı.
 enum NightMode {
     static let key = "nightMode"
-    static let choices = ["off", "on", "auto"]
-    /// Çarpım rengi: beyaz → kısık kırmızı, siyah → siyah (Android 0xB82016)
-    static let tint = Color(red: 0xB8 / 255.0, green: 0x20 / 255.0, blue: 0x16 / 255.0)
+    static let colorKey = "night.color"
+    static let fromKey = "night.from"
+    static let toKey = "night.to"
+    /// Seçenekler: kapalı, açık, Güneş batınca, belirli saatlerde (2. analiz #11). Ortam ışığına göre seçenek yalnız
+    /// Android'de (iOS ışık sensörünü uygulamalara açmaz).
+    static let choices = ["off", "on", "auto", "schedule"]
+
+    /// Gece yazı rengi (2. analiz #189): çarpım rengi, beyaz → kısık renk, siyah → siyah. Android'deki COLORS ile aynı.
+    static let colors: [(id: String, rgb: UInt32)] = [
+        ("red", 0xB82016), ("amber", 0xB87A16), ("orange", 0xB85016), ("green", 0x2E8B3A),
+        ("aqua", 0x1E8C8C), ("blue", 0x2A5BB8), ("white", 0x8A8A8A),
+    ]
+    static func color(_ id: String) -> Color {
+        let v = colors.first { $0.id == id }?.rgb ?? 0xB82016
+        return Color(red: Double((v >> 16) & 0xFF) / 255, green: Double((v >> 8) & 0xFF) / 255, blue: Double(v & 0xFF) / 255)
+    }
+    static var tint: Color { color(UserDefaults.standard.string(forKey: colorKey) ?? "red") }
+
+    /// Belirli saatler (gece yarısından dakika): varsayılan 22.00 → 07.00
+    static var from: Int { UserDefaults.standard.object(forKey: fromKey) as? Int ?? 22 * 60 }
+    static var to: Int { UserDefaults.standard.object(forKey: toKey) as? Int ?? 7 * 60 }
+    static func inSchedule(_ minute: Int, from: Int, to: Int) -> Bool {
+        if from == to { return false }
+        return from < to ? (minute >= from && minute < to) : (minute >= from || minute < to)
+    }
 
     /// Gün doğumu/batımı eşiği (kırılma + Güneş yarıçapı)
     static func active(_ raw: String, place: AppPlace, at date: Date) -> Bool {
-        raw == "on" || (raw == "auto" && AnimatedBackground.sunAltitude(place: place, at: date) < -0.833)
+        switch raw {
+        case "on": return true
+        case "auto": return AnimatedBackground.sunAltitude(place: place, at: date) < -0.833
+        case "schedule":
+            let c = Calendar.current.dateComponents([.hour, .minute], from: date)
+            return inSchedule((c.hour ?? 0) * 60 + (c.minute ?? 0), from: from, to: to)
+        default: return false
+        }
     }
 
     /// Dakikaya göre kayma (pt): her biri −6…6, iki platformda aynı

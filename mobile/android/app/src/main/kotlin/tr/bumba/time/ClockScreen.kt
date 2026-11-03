@@ -334,7 +334,8 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
     // Gün doğumu ışığı (rakip analizi #17): alarmdan önce zemin siyahtan sıcak beyaza döner, parlaklık artar
     val sunrise = AlarmItem.nextSunrise(now.toEpochMilli())
         ?.let { (at, window) -> tr.bumba.time.core.SunriseLight.level(now.toEpochMilli(), at, window) } ?: 0.0
-    val night = sunrise == 0.0 && NightMode.active(Prefs.nightMode, place.lat, place.lon, now.toEpochMilli())
+    val ambientDark = rememberAmbientDark(Prefs.nightMode == "light")
+    val night = sunrise == 0.0 && NightMode.active(Prefs.nightMode, place.lat, place.lon, now.toEpochMilli(), ambientDark)
     // Uyku zamanlayıcısı (rakip analizi #1): süre dolunca ekran kararır, telefon kendini kilitleyebilir, uyku sesleri durur
     val context = LocalContext.current
     var sleepUntil by remember { mutableLongStateOf(Prefs.store.getLong(SleepTimer.KEY, 0L)) }

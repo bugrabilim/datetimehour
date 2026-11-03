@@ -148,6 +148,14 @@ struct AppearanceView: View {
     @AppStorage(FullscreenPhoto.versionKey) private var photoVersion = 0.0
     @AppStorage(FullscreenBackground.key) private var bgRaw = ""
     @AppStorage(NightMode.key) private var nightRaw = "off"
+    @AppStorage(NightMode.colorKey) private var nightColor = "red"
+    @AppStorage(NightMode.fromKey) private var nightFrom = 22 * 60
+    @AppStorage(NightMode.toKey) private var nightTo = 7 * 60
+
+    /// Gece yarısından dakika → "22:00" (telefonun 12/24 ayarıyla)
+    static func hm(_ m: Int) -> String {
+        Fmt.time(Calendar.current.date(bySettingHour: m / 60, minute: m % 60, second: 0, of: Date()) ?? Date())
+    }
     @AppStorage("fs.text") private var personalText = ""
     @AppStorage("fs.scale") private var scale = 1.0
     @AppStorage(FullscreenPhoto.slidesKey) private var slideCount = 0
@@ -315,6 +323,31 @@ struct AppearanceView: View {
                 }
                 .pickerStyle(.inline)
                 .labelsHidden()
+                // Belirli saatler (2. analiz #11): başlangıç ve bitiş, yarım saatlik adımlarla
+                if nightRaw == "schedule" {
+                    Picker(L("night.from"), selection: $nightFrom) {
+                        ForEach(0..<48, id: \.self) { i in Text(Self.hm(i * 30)).tag(i * 30) }
+                    }
+                    Picker(L("night.to"), selection: $nightTo) {
+                        ForEach(0..<48, id: \.self) { i in Text(Self.hm(i * 30)).tag(i * 30) }
+                    }
+                }
+                // Gece yazı rengi (2. analiz #189): 7 renk, siyah zemin üstünde kısık
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(L("night.color")).font(.subheadline).foregroundStyle(Theme.muted)
+                    HStack(spacing: 10) {
+                        ForEach(NightMode.colors, id: \.id) { c in
+                            Button { nightColor = c.id } label: {
+                                Circle().fill(Color.black).frame(width: 30, height: 30)
+                                    .overlay(Circle().fill(NightMode.color(c.id)).padding(6))
+                                    .overlay(Circle().stroke(Theme.text, lineWidth: c.id == nightColor ? 3 : 0).padding(-3))
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel(L("color.\(c.id)"))
+                            .accessibilityAddTraits(c.id == nightColor ? .isSelected : [])
+                        }
+                    }
+                }
             } header: {
                 Text(L("night.title"))
             } footer: {

@@ -56,6 +56,7 @@ struct DialPreview: View {
     @AppStorage(DialFace.colorKey) private var colorRaw = DialColor.auto.rawValue
     @Environment(\.dismiss) private var dismiss
     @State private var color: DialColor = .auto
+    @AppStorage(Lume.key) private var lume = "green"
 
     var body: some View {
         NavigationStack {
@@ -63,7 +64,27 @@ struct DialPreview: View {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
                     AnalogClock(date: ctx.date, showSeconds: true, face: face, dialColor: color)
                 }
+                .id(lume)
                 .frame(maxWidth: 340)
+                // Lüm kadranında ışıma rengi (14 renk)
+                if face == .lume {
+                    VStack(spacing: 10) {
+                        Text(L("dial.lumeColor")).font(.footnote).foregroundStyle(Theme.muted)
+                        ForEach(0..<2, id: \.self) { row in
+                            HStack(spacing: 10) {
+                                ForEach(Lume.colors[(row * 7)..<(row * 7 + 7)], id: \.id) { g in
+                                    Button { lume = g.id } label: {
+                                        Circle().fill(Color.black).frame(width: 30, height: 30)
+                                            .overlay(Circle().fill(Lume.color(g.id)).padding(6))
+                                            .overlay(Circle().stroke(Theme.text, lineWidth: g.id == lume ? 3 : 0).padding(-3))
+                                    }
+                                    .accessibilityLabel(L("color.\(g.id)"))
+                                    .accessibilityAddTraits(g.id == lume ? .isSelected : [])
+                                }
+                            }
+                        }
+                    }
+                }
                 .padding(.horizontal, 24)
                 HStack(spacing: 16) {
                     ForEach(DialColor.allCases) { c in

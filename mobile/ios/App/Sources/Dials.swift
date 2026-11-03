@@ -9,6 +9,8 @@ import SwiftUI
  */
 enum DialFace: String, CaseIterable, Identifiable {
     case classic, roman, minimal, dots, chrono, double, metal, radar, chinese, ocean, leaf, marble
+    /// Lüm (2. analiz #11): siyah kadranda işaretler ve ibreler seçilen renkte ışır (14 renk, `dial.lume`)
+    case lume
 
     static let key = "dial.face"
     static let colorKey = "dial.color"
@@ -24,7 +26,7 @@ enum DialFace: String, CaseIterable, Identifiable {
 
     var numerals: Numerals {
         switch self {
-        case .classic, .chrono, .double, .ocean, .marble: .arabic
+        case .classic, .chrono, .double, .ocean, .marble, .lume: .arabic
         case .roman: .roman
         case .chinese: .chinese
         default: .none
@@ -33,7 +35,7 @@ enum DialFace: String, CaseIterable, Identifiable {
 
     var ticks: Ticks {
         switch self {
-        case .minimal, .metal, .leaf: .hours
+        case .minimal, .metal, .leaf, .lume: .hours
         case .dots: .dots
         default: .full
         }
@@ -49,12 +51,31 @@ enum DialFace: String, CaseIterable, Identifiable {
         case .leaf: return ClockColors(face: c(0x1E6B34), border: c(0x8CE99A), tick: .white, minorTick: c(0xB2F2BB), ink: .white, hand: c(0xFFD43B), second: c(0xFF8787))
         case .marble: return ClockColors(face: c(0xF1EEE9), border: c(0xBDB5A6), tick: c(0x343A40), minorTick: c(0x868E96), ink: c(0x212529), hand: c(0x9A3F00), second: c(0xC92A2A))
         case .chinese: var k = theme; k.second = c(0xC92A2A); return k
+        case .lume:
+            let g = Lume.current
+            return ClockColors(face: c(0x07080B), border: g.opacity(0.45), tick: g, minorTick: g.opacity(0.55), ink: g, hand: g, second: c(0xFF6B6B))
         default: return theme
         }
     }
 
     static let romanNumerals = ["XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"]
     static let chineseNumerals = ["十二", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一"]
+}
+
+/// Lüm kadranının ışıma renkleri (2. analiz #11): siyah üstünde parlak tonlar; adları `color.<id>` (Android'deki Lume ile aynı)
+enum Lume {
+    static let key = "dial.lume"
+    static let colors: [(id: String, rgb: UInt32)] = [
+        ("green", 0x7CFC8A), ("mint", 0x98F5C9), ("aqua", 0x5CE1E6), ("blue", 0x6FA8FF), ("ice", 0xCDEBFF), ("white", 0xF2F2F2),
+        ("lemon", 0xF5F57A), ("yellow", 0xFFD54F), ("orange", 0xFFA94D), ("amber", 0xFFBF47), ("red", 0xFF6B6B), ("pink", 0xFF8FC7),
+        ("violet", 0xB48CFF), ("lilac", 0xD9B8FF),
+    ]
+    static func color(_ id: String) -> Color { dc(colors.first { $0.id == id }?.rgb ?? 0x7CFC8A) }
+    static var id: String {
+        let v = UserDefaults.standard.string(forKey: key) ?? "green"
+        return colors.contains { $0.id == v } ? v : "green"
+    }
+    static var current: Color { color(id) }
 }
 
 /// İbre rengi: "auto" kadranın kendi rengi

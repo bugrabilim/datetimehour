@@ -4,6 +4,8 @@ import android.app.Activity
 import android.view.WindowManager
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.BlendMode
@@ -19,13 +21,37 @@ import androidx.compose.ui.platform.LocalView
  */
 object NightMode {
     const val KEY = "nightMode"
-    val CHOICES = listOf("off", "on", "auto")
-    /** Çarpım rengi: beyaz → kısık kırmızı, siyah → siyah (zemin tam siyah kalsın diye kısıklık saydamlıkla değil renkle) */
-    val TINT = Color(0xFFB82016)
+    const val COLOR_KEY = "night.color"
+    const val FROM_KEY = "night.from"
+    const val TO_KEY = "night.to"
+    /** Seçenekler: kapalı, açık, Güneş batınca, belirli saatlerde (2. analiz #11); ışık sensörü varsa ortam karanlıkken (#189) */
+    fun choices(hasLight: Boolean) = listOf("off", "on", "auto", "schedule") + if (hasLight) listOf("light") else emptyList()
 
-    /** Gün doğumu/batımı eşiği (kırılma + Güneş yarıçapı) */
-    fun active(raw: String, lat: Double, lon: Double, ms: Long): Boolean =
-        raw == "on" || (raw == "auto" && SkyMath.sunAltitude(lat, lon, ms) < -0.833)
+    /**
+     * Gece yazı rengi (2. analiz #189): çarpım rengi, beyaz → kısık renk, siyah → siyah (zemin tam siyah kalsın diye
+     * kısıklık saydamlıkla değil renkle). Varsayılan kırmızı (gece görüşünü en az bozan). iOS'taki NightMode ile aynı.
+     */
+    val COLORS = linkedMapOf(
+        "red" to 0xB82016L, "amber" to 0xB87A16L, "orange" to 0xB85016L, "green" to 0x2E8B3AL,
+        "aqua" to 0x1E8C8CL, "blue" to 0x2A5BB8L, "white" to 0x8A8A8AL,
+    )
+    val colorId: String get() = Prefs.store.getString(COLOR_KEY, "red")?.takeIf { it in COLORS } ?: "red"
+    val TINT: Color get() = Color(0xFF000000 or COLORS.getValue(colorId))
+
+    /** Belirli saatler (gece yarısından dakika): varsayılan 22.00 → 07.00 */
+    val from: Int get() = Prefs.store.getInt(FROM_KEY, 22 * 60)
+    val to: Int get() = Prefs.store.getInt(TO_KEY, 7 * 60)
+    fun inSchedule(minute: Int, from: Int, to: Int): Boolean =
+        if (from == to) false else if (from < to) minute in from until to else minute >= from || minute < to
+
+    /** Gün doğumu/batımı eşiği (kırılma + Güneş yarıçapı); "light" modunda ortam ışığı (dark) belirler */
+    fun active(raw: String, lat: Double, lon: Double, ms: Long, dark: Boolean = false): Boolean = when (raw) {
+        "on" -> true
+        "auto" -> SkyMath.sunAltitude(lat, lon, ms) < -0.833
+        "schedule" -> java.time.Instant.ofEpochMilli(ms).atZone(java.time.ZoneId.systemDefault()).let { inSchedule(it.hour * 60 + it.minute, from, to) }
+        "light" -> dark
+        else -> false
+    }
 
     /** Dakikaya göre kayma (dp): her biri −6…6, iki platformda aynı */
     fun shift(ms: Long): Pair<Int, Int> {
@@ -68,3 +94,30 @@ object SleepTimer {
     const val KEY = "night.sleepUntil"
     val CHOICES = listOf(0, 15, 30, 60, 90)
 }
+
+/**
+ * Ortam ışığı (2. analiz #189): ışık sensörü 5 lux'un altına inince karanlık, 15 lux'u geçince aydınlık sayılır
+ * (gidip gelmesin diye iki eşik). Yalnız "light" seçiliyken ve tam ekran açıkken dinlenir.
+ */
+@Composable
+fun rememberAmbientDark(enabled: Boolean): Boolean {
+    val ctx = androidx.compose.ui.platform.LocalContext.current
+    var dark by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+    DisposableEffect(enabled) {
+        val sm = ctx.getSystemService(android.hardware.SensorManager::class.java)
+        val sensor = sm?.getDefaultSensor(android.hardware.Sensor.TYPE_LIGHT)
+        val listener = object : android.hardware.SensorEventListener {
+            override fun onSensorChanged(e: android.hardware.SensorEvent) {
+                val lux = e.values.firstOrNull() ?: return
+                dark = if (dark) lux < 15f else lux < 5f
+            }
+            override fun onAccuracyChanged(s: android.hardware.Sensor?, a: Int) {}
+        }
+        if (enabled && sensor != null) sm.registerListener(listener, sensor, android.hardware.SensorManager.SENSOR_DELAY_NORMAL)
+        onDispose { sm?.unregisterListener(listener) }
+    }
+    return dark
+}
+
+fun hasLightSensor(ctx: android.content.Context): Boolean =
+    ctx.getSystemService(android.hardware.SensorManager::class.java)?.getDefaultSensor(android.hardware.Sensor.TYPE_LIGHT) != null

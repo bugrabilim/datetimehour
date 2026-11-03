@@ -1,5 +1,8 @@
 package tr.bumba.time
 
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.border
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -366,11 +369,32 @@ fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
         // Gece / yatak başı modu (tam ekran saat)
         AppCard {
             SectionTitle(L("night.title"))
-            for (m in NightMode.CHOICES) {
+            val ctx = androidx.compose.ui.platform.LocalContext.current
+            for (m in NightMode.choices(remember { hasLightSensor(ctx) })) {
                 Row(Modifier.fillMaxWidth().clickable { Prefs.saveNightMode(m) }.padding(vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
                     RadioButton(Prefs.nightMode == m, { Prefs.saveNightMode(m) }, colors = RadioButtonDefaults.colors(selectedColor = Theme.c.accent))
                     Text(L("night.$m"), color = Theme.c.text, fontSize = 15.sp)
                 }
+            }
+            // Belirli saatler (2. analiz #11): başlangıç ve bitiş, yarım saatlik adımlarla
+            if (Prefs.nightMode == "schedule") {
+                var from by remember { mutableStateOf(NightMode.from) }
+                var to by remember { mutableStateOf(NightMode.to) }
+                val halfHours = (0 until 48).map { it * 30 }
+                fun hm(m: Int) = Fmt.time(java.time.LocalDate.now().atTime(m / 60, m % 60).atZone(java.time.ZoneId.systemDefault()))
+                ChoiceRow(L("night.from"), hm(from), halfHours.map { it to hm(it) }) { from = it; Prefs.store.edit().putInt(NightMode.FROM_KEY, it).apply() }
+                ChoiceRow(L("night.to"), hm(to), halfHours.map { it to hm(it) }) { to = it; Prefs.store.edit().putInt(NightMode.TO_KEY, it).apply() }
+            }
+            // Gece yazı rengi (2. analiz #189): 7 renk, siyah zemin üstünde kısık
+            Text(L("night.color"), color = Theme.c.muted, fontSize = 13.sp)
+            var nc by remember { mutableStateOf(NightMode.colorId) }
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                for ((id, rgb) in NightMode.COLORS) Box(
+                    Modifier.size(34.dp).border(if (id == nc) 3.dp else 0.dp, Theme.c.text, CircleShape).padding(4.dp)
+                        .background(androidx.compose.ui.graphics.Color.Black, CircleShape).padding(5.dp)
+                        .background(androidx.compose.ui.graphics.Color(0xFF000000 or rgb), CircleShape)
+                        .clickable(onClickLabel = L("color.$id")) { nc = id; Prefs.store.edit().putString(NightMode.COLOR_KEY, id).apply() },
+                )
             }
             Text(L("night.note"), color = Theme.c.muted, fontSize = 12.sp)
         }

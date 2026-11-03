@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.runtime.key
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -64,7 +65,9 @@ import kotlin.math.sin
  */
 enum class DialFace(val id: String) {
     CLASSIC("classic"), ROMAN("roman"), MINIMAL("minimal"), DOTS("dots"), CHRONO("chrono"), DOUBLE("double"),
-    METAL("metal"), RADAR("radar"), CHINESE("chinese"), OCEAN("ocean"), LEAF("leaf"), MARBLE("marble");
+    METAL("metal"), RADAR("radar"), CHINESE("chinese"), OCEAN("ocean"), LEAF("leaf"), MARBLE("marble"),
+    /** Lüm (2. analiz #11): siyah kadranda işaretler ve ibreler seçilen renkte ışır (14 renk, `dial.lume`) */
+    LUME("lume");
 
     val title: String get() = L("dial.$id")
 
@@ -72,14 +75,14 @@ enum class DialFace(val id: String) {
     enum class Ticks { FULL, HOURS, DOTS }
 
     val numerals: Numerals get() = when (this) {
-        CLASSIC, CHRONO, DOUBLE, OCEAN, MARBLE -> Numerals.ARABIC
+        CLASSIC, CHRONO, DOUBLE, OCEAN, MARBLE, LUME -> Numerals.ARABIC
         ROMAN -> Numerals.ROMAN
         CHINESE -> Numerals.CHINESE
         else -> Numerals.NONE
     }
 
     val ticks: Ticks get() = when (this) {
-        MINIMAL, METAL, LEAF -> Ticks.HOURS
+        MINIMAL, METAL, LEAF, LUME -> Ticks.HOURS
         DOTS -> Ticks.DOTS
         else -> Ticks.FULL
     }
@@ -96,6 +99,7 @@ enum class DialFace(val id: String) {
             LEAF -> Colors(k(0x1E6B34), k(0x8CE99A), Color.White, k(0xB2F2BB), Color.White, k(0xFFD43B), k(0xFF8787))
             MARBLE -> Colors(k(0xF1EEE9), k(0xBDB5A6), k(0x343A40), k(0x868E96), k(0x212529), k(0x9A3F00), k(0xC92A2A))
             CHINESE -> Colors(c.surface2, c.border, c.text, c.muted, c.ink, c.accent, k(0xC92A2A))
+            LUME -> Lume.current.let { g -> Colors(k(0x07080B), g.copy(alpha = 0.45f), g, g.copy(alpha = 0.55f), g, g, k(0xFF6B6B)) }
             else -> Colors(c.surface2, c.border, c.text, c.muted, c.ink, c.accent, c.accent2)
         }
     }
@@ -110,6 +114,19 @@ enum class DialFace(val id: String) {
         fun of(id: String?): DialFace = entries.firstOrNull { it.id == id } ?: CLASSIC
         val current: DialFace get() = of(Prefs.store.getString(KEY, null))
     }
+}
+
+/** Lüm kadranının ışıma renkleri (2. analiz #11): siyah üstünde parlak tonlar; adları `color.<id>` */
+object Lume {
+    const val KEY = "dial.lume"
+    val COLORS = linkedMapOf(
+        "green" to 0x7CFC8AL, "mint" to 0x98F5C9L, "aqua" to 0x5CE1E6L, "blue" to 0x6FA8FFL, "ice" to 0xCDEBFFL, "white" to 0xF2F2F2L,
+        "lemon" to 0xF5F57AL, "yellow" to 0xFFD54FL, "orange" to 0xFFA94DL, "amber" to 0xFFBF47L, "red" to 0xFF6B6BL, "pink" to 0xFF8FC7L,
+        "violet" to 0xB48CFFL, "lilac" to 0xD9B8FFL,
+    )
+    fun color(id: String?): Color = Color(0xFF000000 or (COLORS[id] ?: COLORS.getValue("green")))
+    val id: String get() = Prefs.store.getString(KEY, "green")?.takeIf { it in COLORS } ?: "green"
+    val current: Color get() = color(id)
 }
 
 /** İbre rengi: "auto" kadranın kendi rengi */
@@ -313,7 +330,20 @@ fun DialGalleryScreen() {
                     Text(f.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.Bold)
                     IconButton(onClick = { preview = null }) { Icon(Icons.Filled.Close, L("common.close"), tint = Theme.c.text) }
                 }
-                AnalogClock(now, Modifier.widthIn(max = 340.dp).fillMaxWidth(), face = f, dialColor = pick, tap = false)
+                var lume by remember { mutableStateOf(Lume.id) }
+                key(lume) { AnalogClock(now, Modifier.widthIn(max = 340.dp).fillMaxWidth(), face = f, dialColor = pick, tap = false) }
+                // Lüm kadranında ışıma rengi (14 renk)
+                if (f == DialFace.LUME) Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text(L("dial.lumeColor"), color = Theme.c.muted, fontSize = 13.sp)
+                    for (row in Lume.COLORS.keys.chunked(7)) Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                        for (id in row) Box(
+                            Modifier.size(34.dp).border(if (id == lume) 3.dp else 0.dp, Theme.c.text, CircleShape).padding(4.dp)
+                                .background(androidx.compose.ui.graphics.Color.Black, CircleShape).padding(3.dp)
+                                .background(Lume.color(id), CircleShape)
+                                .clickable(onClickLabel = L("color.$id")) { lume = id; Prefs.store.edit().putString(Lume.KEY, id).apply() },
+                        )
+                    }
+                }
                 Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                     DialColor.entries.forEach { c ->
                         Box(Modifier.size(38.dp).border(if (c == pick) 3.dp else 0.dp, Theme.c.text, CircleShape).padding(4.dp)
