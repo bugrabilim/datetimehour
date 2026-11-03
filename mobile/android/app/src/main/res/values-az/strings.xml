@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">Təkər</string>
     <string name="timers_input_keypad">Düymələr</string>
     <string name="timers_input_delete">Sil</string>
+    <string name="hiit_say_half">Yarısı</string>
+    <string name="hiit_say_ten">10 saniyə</string>
+    <string name="hiit_cues">Elanlar</string>
+    <string name="hiit_cue_nextLabel">İstirahətdə növbəti addımı de</string>
+    <string name="hiit_cue_halfLabel">Mərhələnin yarısını de</string>
+    <string name="hiit_cue_tenLabel">Son 10 saniyəni de</string>
+    <string name="hiit_upcoming">Növbətilər</string>
+    <string name="hiit_prev">Əvvəlki addım</string>
+    <string name="hiit_skip">Növbəti addım</string>
+    <string name="hiit_roundCount">%1$s dövrə</string>
+    <string name="hiit_remindTomorrow">Sabah eyni vaxtda xatırlat</string>
+    <string name="hiit_history">Tarixçə</string>
+    <string name="hiit_historyClear">Tarixçəni sil</string>
+    <string name="hiit_week">Bu həftə: %1$s məşq</string>
+    <string name="tools_lock">Ekranı kilidlə</string>
+    <string name="tools_holdToUnlock">Kilidi açmaq üçün basıb saxlayın</string>
+    <string name="timers_visual">Vizual taymer</string>
+    <string name="timers_style_pie">Dairə</string>
+    <string name="timers_style_sand">Qum saatı</string>
+    <string name="timers_kids">Uşaq rejimi</string>
+    <string name="sw_copyLaps">Dövrələri kopyala</string>
+    <string name="sw_copied">Kopyalandı</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

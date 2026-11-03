@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">Rad</string>
     <string name="timers_input_keypad">Tastenfeld</string>
     <string name="timers_input_delete">Löschen</string>
+    <string name="hiit_say_half">Halbzeit</string>
+    <string name="hiit_say_ten">10 Sekunden</string>
+    <string name="hiit_cues">Ansagen</string>
+    <string name="hiit_cue_nextLabel">In der Pause die nächste Übung ansagen</string>
+    <string name="hiit_cue_halfLabel">Halbzeit ansagen</string>
+    <string name="hiit_cue_tenLabel">Letzte 10 Sekunden ansagen</string>
+    <string name="hiit_upcoming">Als Nächstes</string>
+    <string name="hiit_prev">Vorheriger Schritt</string>
+    <string name="hiit_skip">Nächster Schritt</string>
+    <string name="hiit_roundCount">%1$s Runden</string>
+    <string name="hiit_remindTomorrow">Morgen zur gleichen Zeit erinnern</string>
+    <string name="hiit_history">Verlauf</string>
+    <string name="hiit_historyClear">Verlauf löschen</string>
+    <string name="hiit_week">Diese Woche: %1$s Trainings</string>
+    <string name="tools_lock">Bildschirm sperren</string>
+    <string name="tools_holdToUnlock">Zum Entsperren gedrückt halten</string>
+    <string name="timers_visual">Visueller Timer</string>
+    <string name="timers_style_pie">Kreis</string>
+    <string name="timers_style_sand">Sanduhr</string>
+    <string name="timers_kids">Kindermodus</string>
+    <string name="sw_copyLaps">Runden kopieren</string>
+    <string name="sw_copied">Kopiert</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

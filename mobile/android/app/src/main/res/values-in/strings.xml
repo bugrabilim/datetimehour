@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">Roda</string>
     <string name="timers_input_keypad">Papan angka</string>
     <string name="timers_input_delete">Hapus</string>
+    <string name="hiit_say_half">Setengah jalan</string>
+    <string name="hiit_say_ten">10 detik</string>
+    <string name="hiit_cues">Pengumuman</string>
+    <string name="hiit_cue_nextLabel">Sebutkan langkah berikutnya saat istirahat</string>
+    <string name="hiit_cue_halfLabel">Umumkan setengah jalan</string>
+    <string name="hiit_cue_tenLabel">Umumkan 10 detik terakhir</string>
+    <string name="hiit_upcoming">Berikutnya</string>
+    <string name="hiit_prev">Langkah sebelumnya</string>
+    <string name="hiit_skip">Langkah berikutnya</string>
+    <string name="hiit_roundCount">%1$s ronde</string>
+    <string name="hiit_remindTomorrow">Ingatkan besok di jam yang sama</string>
+    <string name="hiit_history">Riwayat</string>
+    <string name="hiit_historyClear">Hapus riwayat</string>
+    <string name="hiit_week">Minggu ini: %1$s latihan</string>
+    <string name="tools_lock">Kunci layar</string>
+    <string name="tools_holdToUnlock">Tekan lama untuk membuka</string>
+    <string name="timers_visual">Pengatur waktu visual</string>
+    <string name="timers_style_pie">Lingkaran</string>
+    <string name="timers_style_sand">Jam pasir</string>
+    <string name="timers_kids">Mode anak</string>
+    <string name="sw_copyLaps">Salin putaran</string>
+    <string name="sw_copied">Disalin</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

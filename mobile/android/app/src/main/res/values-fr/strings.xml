@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">Roue</string>
     <string name="timers_input_keypad">Pavé</string>
     <string name="timers_input_delete">Effacer</string>
+    <string name="hiit_say_half">Mi-parcours</string>
+    <string name="hiit_say_ten">10 secondes</string>
+    <string name="hiit_cues">Annonces</string>
+    <string name="hiit_cue_nextLabel">Annoncer l\'étape suivante pendant la pause</string>
+    <string name="hiit_cue_halfLabel">Annoncer la mi-parcours</string>
+    <string name="hiit_cue_tenLabel">Annoncer les 10 dernières secondes</string>
+    <string name="hiit_upcoming">À suivre</string>
+    <string name="hiit_prev">Étape précédente</string>
+    <string name="hiit_skip">Étape suivante</string>
+    <string name="hiit_roundCount">%1$s tours</string>
+    <string name="hiit_remindTomorrow">Me le rappeler demain à la même heure</string>
+    <string name="hiit_history">Historique</string>
+    <string name="hiit_historyClear">Effacer l\'historique</string>
+    <string name="hiit_week">Cette semaine : %1$s séances</string>
+    <string name="tools_lock">Verrouiller l\'écran</string>
+    <string name="tools_holdToUnlock">Maintenez appuyé pour déverrouiller</string>
+    <string name="timers_visual">Minuteur visuel</string>
+    <string name="timers_style_pie">Disque</string>
+    <string name="timers_style_sand">Sablier</string>
+    <string name="timers_kids">Mode enfant</string>
+    <string name="sw_copyLaps">Copier les tours</string>
+    <string name="sw_copied">Copié</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

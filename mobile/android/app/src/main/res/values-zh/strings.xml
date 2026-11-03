@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">滚轮</string>
     <string name="timers_input_keypad">键盘</string>
     <string name="timers_input_delete">删除</string>
+    <string name="hiit_say_half">一半</string>
+    <string name="hiit_say_ten">10秒</string>
+    <string name="hiit_cues">语音提示</string>
+    <string name="hiit_cue_nextLabel">休息时播报下一步</string>
+    <string name="hiit_cue_halfLabel">播报一半</string>
+    <string name="hiit_cue_tenLabel">播报最后10秒</string>
+    <string name="hiit_upcoming">接下来</string>
+    <string name="hiit_prev">上一步</string>
+    <string name="hiit_skip">下一步</string>
+    <string name="hiit_roundCount">%1$s 轮</string>
+    <string name="hiit_remindTomorrow">明天同一时间提醒我</string>
+    <string name="hiit_history">历史记录</string>
+    <string name="hiit_historyClear">清除历史记录</string>
+    <string name="hiit_week">本周：%1$s 次训练</string>
+    <string name="tools_lock">锁定屏幕</string>
+    <string name="tools_holdToUnlock">长按解锁</string>
+    <string name="timers_visual">可视计时器</string>
+    <string name="timers_style_pie">饼图</string>
+    <string name="timers_style_sand">沙漏</string>
+    <string name="timers_kids">儿童模式</string>
+    <string name="sw_copyLaps">复制计次</string>
+    <string name="sw_copied">已复制</string>
     <string name="app_name">时间与日期</string>
 </resources>

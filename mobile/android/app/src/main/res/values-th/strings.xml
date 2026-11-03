@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">วงล้อ</string>
     <string name="timers_input_keypad">แป้นตัวเลข</string>
     <string name="timers_input_delete">ลบ</string>
+    <string name="hiit_say_half">ครึ่งทาง</string>
+    <string name="hiit_say_ten">10 วินาที</string>
+    <string name="hiit_cues">การประกาศ</string>
+    <string name="hiit_cue_nextLabel">บอกขั้นถัดไประหว่างพัก</string>
+    <string name="hiit_cue_halfLabel">ประกาศเมื่อถึงครึ่งทาง</string>
+    <string name="hiit_cue_tenLabel">ประกาศ 10 วินาทีสุดท้าย</string>
+    <string name="hiit_upcoming">ถัดไป</string>
+    <string name="hiit_prev">ขั้นก่อนหน้า</string>
+    <string name="hiit_skip">ขั้นถัดไป</string>
+    <string name="hiit_roundCount">%1$s รอบ</string>
+    <string name="hiit_remindTomorrow">เตือนพรุ่งนี้เวลาเดิม</string>
+    <string name="hiit_history">ประวัติ</string>
+    <string name="hiit_historyClear">ล้างประวัติ</string>
+    <string name="hiit_week">สัปดาห์นี้: %1$s ครั้ง</string>
+    <string name="tools_lock">ล็อกหน้าจอ</string>
+    <string name="tools_holdToUnlock">กดค้างเพื่อปลดล็อก</string>
+    <string name="timers_visual">ตัวจับเวลาแบบภาพ</string>
+    <string name="timers_style_pie">วงกลม</string>
+    <string name="timers_style_sand">นาฬิกาทราย</string>
+    <string name="timers_kids">โหมดเด็ก</string>
+    <string name="sw_copyLaps">คัดลอกรอบ</string>
+    <string name="sw_copied">คัดลอกแล้ว</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

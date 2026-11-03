@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">휠</string>
     <string name="timers_input_keypad">키패드</string>
     <string name="timers_input_delete">삭제</string>
+    <string name="hiit_say_half">절반</string>
+    <string name="hiit_say_ten">10초</string>
+    <string name="hiit_cues">음성 안내</string>
+    <string name="hiit_cue_nextLabel">휴식 중 다음 단계 안내</string>
+    <string name="hiit_cue_halfLabel">절반 지점 안내</string>
+    <string name="hiit_cue_tenLabel">마지막 10초 안내</string>
+    <string name="hiit_upcoming">다음 단계</string>
+    <string name="hiit_prev">이전 단계</string>
+    <string name="hiit_skip">다음 단계로</string>
+    <string name="hiit_roundCount">%1$s라운드</string>
+    <string name="hiit_remindTomorrow">내일 같은 시간에 알림</string>
+    <string name="hiit_history">기록</string>
+    <string name="hiit_historyClear">기록 삭제</string>
+    <string name="hiit_week">이번 주: %1$s회</string>
+    <string name="tools_lock">화면 잠금</string>
+    <string name="tools_holdToUnlock">길게 눌러 잠금 해제</string>
+    <string name="timers_visual">시각 타이머</string>
+    <string name="timers_style_pie">원형</string>
+    <string name="timers_style_sand">모래시계</string>
+    <string name="timers_kids">어린이 모드</string>
+    <string name="sw_copyLaps">랩 복사</string>
+    <string name="sw_copied">복사됨</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

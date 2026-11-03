@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">Gulong</string>
     <string name="timers_input_keypad">Keypad</string>
     <string name="timers_input_delete">Burahin</string>
+    <string name="hiit_say_half">Kalahati na</string>
+    <string name="hiit_say_ten">10 segundo</string>
+    <string name="hiit_cues">Mga anunsiyo</string>
+    <string name="hiit_cue_nextLabel">Sabihin ang susunod na hakbang habang nagpapahinga</string>
+    <string name="hiit_cue_halfLabel">Ianunsyo ang kalahati</string>
+    <string name="hiit_cue_tenLabel">Ianunsyo ang huling 10 segundo</string>
+    <string name="hiit_upcoming">Susunod</string>
+    <string name="hiit_prev">Nakaraang hakbang</string>
+    <string name="hiit_skip">Susunod na hakbang</string>
+    <string name="hiit_roundCount">%1$s round</string>
+    <string name="hiit_remindTomorrow">Paalalahanan bukas sa parehong oras</string>
+    <string name="hiit_history">Kasaysayan</string>
+    <string name="hiit_historyClear">Burahin ang kasaysayan</string>
+    <string name="hiit_week">Ngayong linggo: %1$s ehersisyo</string>
+    <string name="tools_lock">I-lock ang screen</string>
+    <string name="tools_holdToUnlock">Pindutin nang matagal para i-unlock</string>
+    <string name="timers_visual">Biswal na timer</string>
+    <string name="timers_style_pie">Bilog</string>
+    <string name="timers_style_sand">Orasang buhangin</string>
+    <string name="timers_kids">Kids mode</string>
+    <string name="sw_copyLaps">Kopyahin ang mga lap</string>
+    <string name="sw_copied">Nakopya</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

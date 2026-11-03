@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">Wheel</string>
     <string name="timers_input_keypad">Keypad</string>
     <string name="timers_input_delete">Delete</string>
+    <string name="hiit_say_half">Halfway</string>
+    <string name="hiit_say_ten">10 seconds</string>
+    <string name="hiit_cues">Announcements</string>
+    <string name="hiit_cue_nextLabel">Say the next step during rest</string>
+    <string name="hiit_cue_halfLabel">Announce halfway</string>
+    <string name="hiit_cue_tenLabel">Announce the last 10 seconds</string>
+    <string name="hiit_upcoming">Up next</string>
+    <string name="hiit_prev">Previous step</string>
+    <string name="hiit_skip">Next step</string>
+    <string name="hiit_roundCount">%1$s rounds</string>
+    <string name="hiit_remindTomorrow">Remind me tomorrow at the same time</string>
+    <string name="hiit_history">History</string>
+    <string name="hiit_historyClear">Clear history</string>
+    <string name="hiit_week">This week: %1$s workouts</string>
+    <string name="tools_lock">Lock screen</string>
+    <string name="tools_holdToUnlock">Press and hold to unlock</string>
+    <string name="timers_visual">Visual timer</string>
+    <string name="timers_style_pie">Pie</string>
+    <string name="timers_style_sand">Hourglass</string>
+    <string name="timers_kids">Kids mode</string>
+    <string name="sw_copyLaps">Copy laps</string>
+    <string name="sw_copied">Copied</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

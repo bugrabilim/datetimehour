@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">پہیہ</string>
     <string name="timers_input_keypad">کی پیڈ</string>
     <string name="timers_input_delete">مٹائیں</string>
+    <string name="hiit_say_half">آدھا وقت</string>
+    <string name="hiit_say_ten">10 سیکنڈ</string>
+    <string name="hiit_cues">اعلانات</string>
+    <string name="hiit_cue_nextLabel">آرام کے دوران اگلا مرحلہ بتائیں</string>
+    <string name="hiit_cue_halfLabel">مرحلے کا آدھا بتائیں</string>
+    <string name="hiit_cue_tenLabel">آخری 10 سیکنڈ بتائیں</string>
+    <string name="hiit_upcoming">اگلے مراحل</string>
+    <string name="hiit_prev">پچھلا مرحلہ</string>
+    <string name="hiit_skip">اگلا مرحلہ</string>
+    <string name="hiit_roundCount">%1$s راؤنڈ</string>
+    <string name="hiit_remindTomorrow">کل اسی وقت یاد دلائیں</string>
+    <string name="hiit_history">تاریخچہ</string>
+    <string name="hiit_historyClear">تاریخچہ صاف کریں</string>
+    <string name="hiit_week">اس ہفتے: %1$s ورزشیں</string>
+    <string name="tools_lock">اسکرین لاک کریں</string>
+    <string name="tools_holdToUnlock">کھولنے کے لیے دبائے رکھیں</string>
+    <string name="timers_visual">تصویری ٹائمر</string>
+    <string name="timers_style_pie">دائرہ</string>
+    <string name="timers_style_sand">ریت گھڑی</string>
+    <string name="timers_kids">بچوں کا موڈ</string>
+    <string name="sw_copyLaps">لیپس کاپی کریں</string>
+    <string name="sw_copied">کاپی ہو گیا</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

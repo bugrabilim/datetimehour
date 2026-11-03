@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">Колесо</string>
     <string name="timers_input_keypad">Клавиатура</string>
     <string name="timers_input_delete">Удалить</string>
+    <string name="hiit_say_half">Половина</string>
+    <string name="hiit_say_ten">10 секунд</string>
+    <string name="hiit_cues">Подсказки</string>
+    <string name="hiit_cue_nextLabel">Называть следующий шаг во время отдыха</string>
+    <string name="hiit_cue_halfLabel">Объявлять половину</string>
+    <string name="hiit_cue_tenLabel">Объявлять последние 10 секунд</string>
+    <string name="hiit_upcoming">Далее</string>
+    <string name="hiit_prev">Предыдущий шаг</string>
+    <string name="hiit_skip">Следующий шаг</string>
+    <string name="hiit_roundCount">раундов: %1$s</string>
+    <string name="hiit_remindTomorrow">Напомнить завтра в это же время</string>
+    <string name="hiit_history">История</string>
+    <string name="hiit_historyClear">Очистить историю</string>
+    <string name="hiit_week">На этой неделе: %1$s тренировок</string>
+    <string name="tools_lock">Заблокировать экран</string>
+    <string name="tools_holdToUnlock">Нажмите и удерживайте, чтобы разблокировать</string>
+    <string name="timers_visual">Наглядный таймер</string>
+    <string name="timers_style_pie">Круг</string>
+    <string name="timers_style_sand">Песочные часы</string>
+    <string name="timers_kids">Детский режим</string>
+    <string name="sw_copyLaps">Копировать круги</string>
+    <string name="sw_copied">Скопировано</string>
     <string name="app_name">Время и дата</string>
 </resources>

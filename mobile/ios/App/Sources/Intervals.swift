@@ -1,5 +1,6 @@
 import AVFoundation
 import SwiftUI
+import SaatCore
 import UIKit
 
 /* Birden çok adlı zamanlayıcı ve aralık (HIIT) antrenmanı (30 Ekim 2026, rakip analizi #12); Android'deki Intervals.kt ile
@@ -112,10 +113,57 @@ struct HiitConfig: Equatable {
         return Phase(kind: "done", round: rounds, left: 0, index: rounds * 2 + 1)
     }
 
-    /// Söylenecek: evre değişince (ya da ilk bakışta) evrenin adı, evre içinde son 3 saniyede sayı; yoksa nil
-    func cue(last: Phase?, _ p: Phase) -> String? {
-        guard let last, p.index == last.index else { return word(p) }
-        if p.kind != "done", (1...3).contains(p.left), p.left != last.left { return "\(p.left)" }
+    /// Evrenin toplam süresi (sn)
+    func duration(_ p: Phase) -> Int {
+        if p.kind == "done" { return 0 }
+        if isRoutine { return steps[p.index % steps.count].s }
+        switch p.kind {
+        case "warmup": return warmup
+        case "work": return work
+        default: return rest
+        }
+    }
+
+    /// Antrenmanın bölümleri (süresi 0 olanlar yok): başlangıç (sn) ve süre; sıradakiler listesi ve adım atlama için
+    struct Seg: Equatable { let phase: Phase; let start: Int; let dur: Int }
+
+    func segments() -> [Seg] {
+        var out: [Seg] = []
+        var t = 0
+        while t < totalSeconds {
+            let p = phase(t)
+            if p.kind == "done" || p.left <= 0 { break }
+            out.append(Seg(phase: p, start: t, dur: p.left))
+            t += p.left
+        }
+        return out
+    }
+
+    /// İsteğe bağlı duyurular (2. analiz #135): dinlenmede sıradaki adım, evrenin yarısı, son 10 saniye
+    struct Cues {
+        var next = false, half = false, ten = false
+        static func load() -> Cues {
+            let d = UserDefaults.standard
+            return Cues(next: d.object(forKey: "hiit.cue.next") as? Bool ?? true, half: d.bool(forKey: "hiit.cue.half"), ten: d.bool(forKey: "hiit.cue.ten"))
+        }
+    }
+
+    /// Söylenecek: evre değişince (ya da ilk bakışta) evrenin adı (dinlenme ve ısınmada istenirse sıradaki adım), evre içinde
+    /// son 3 saniyede sayı, istenirse son 10 saniye ve evrenin yarısı (yalnız 20 sn ve uzun evrelerde); yoksa nil.
+    /// Android'deki HiitConfig.cue ile aynı kural.
+    func cue(last: Phase?, _ p: Phase, cues: Cues = Cues()) -> String? {
+        guard let last, p.index == last.index else {
+            var w = word(p)
+            if cues.next, p.kind == "rest" || p.kind == "warmup", let nx = segments().first(where: { $0.phase.index > p.index }) {
+                w += ". " + T("routine.next", title(nx.phase))
+            }
+            return w
+        }
+        if p.kind == "done" { return nil }
+        if (1...3).contains(p.left), p.left != last.left { return "\(p.left)" }
+        let d = duration(p)
+        if cues.ten, d >= 20, last.left > 10, p.left <= 10 { return L("hiit.say.ten") }
+        if cues.half, d >= 20, last.left > d / 2, p.left <= d / 2 { return L("hiit.say.half") }
         return nil
     }
 
@@ -296,7 +344,7 @@ final class HiitRunner {
         guard start > 0, paused == 0 else { end(); return }
         let cfg = HiitConfig.load()
         let p = cfg.phase(elapsed)
-        if let text = cfg.cue(last: last, p) { say(text) }
+        if let text = cfg.cue(last: last, p, cues: .load()) { say(text) }
         last = p
         guard p.kind == "done" else { return }
         HealthLog.recordHiitIfDone()
@@ -380,6 +428,8 @@ struct TimersView: View {
     @State private var s = 0
     @State private var name = ""
     @State private var history = TimerHistory.load()
+    /// Görsel (rakamsız) zamanlayıcı tam ekranı (2. analiz #140)
+    @State private var visualID: String?
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 0.5)) { context in
@@ -484,6 +534,9 @@ struct TimersView: View {
         .onAppear { items = TimerItem.load() }
         // Kilit ekranı / Dynamic Island: süren zamanlayıcılar
         .onChange(of: items) { LiveActivities.sync() }
+        .fullScreenCover(isPresented: Binding(get: { visualID != nil }, set: { if !$0 { visualID = nil } })) {
+            if let t = items.first(where: { $0.id == visualID }) { VisualTimerView(item: t) }
+        }
     }
 
     private func row(_ t: TimerItem, now: Int64) -> some View {
@@ -520,6 +573,7 @@ struct TimersView: View {
                 Button("+1 " + L("tools.countdown.hoursShort")) { adjust(t, rem, 3_600_000) }
                 Button("−1 " + L("tools.countdown.minutesShort")) { adjust(t, rem, -60_000) }
                 Button("−10 " + L("tools.countdown.minutesShort")) { adjust(t, rem, -600_000) }
+                Button(L("timers.visual")) { visualID = t.id }
                 Toggle(L("timers.repeat"), isOn: Binding(get: { t.repeats ?? false }, set: { v in update(t.id) { var x = $0; x.repeats = v; return x } }))
                 Picker(L("countdowns.color"), selection: Binding(get: { t.color ?? 0 }, set: { v in update(t.id) { var x = $0; x.color = v; return x } })) {
                     ForEach(0..<CountdownItem.palette.count, id: \.self) { i in
@@ -634,6 +688,8 @@ struct HiitView: View {
     @AppStorage("hiit.start") private var start = 0.0
     @AppStorage("hiit.paused") private var paused = 0.0
     @AppStorage("hiit.alarm") private var alarmID = ""
+    @State private var locked = false
+    @State private var reminded = ""
 
     private var active: Bool { start > 0 }
 
@@ -644,7 +700,8 @@ struct HiitView: View {
             let phase = cfg.phase(elapsed)
             ScrollView {
                 VStack(spacing: 16) {
-                    if !active { settings } else { running(phase, elapsed: elapsed) }
+                    if !active { settings; HiitHistoryCard() } else { running(phase, elapsed: elapsed, now: now) }
+                    HiitCueOptions()
                     VoiceToggle()
                     HealthToggle()
                     Text(L("hiit.note")).font(.footnote).foregroundStyle(Theme.muted)
@@ -709,37 +766,128 @@ struct HiitView: View {
         }
     }
 
-    @ViewBuilder private func running(_ phase: HiitConfig.Phase, elapsed: Int) -> some View {
-        let color: Color = phase.kind == "work" ? Theme.accent : phase.kind == "rest" ? .green : Theme.muted
-        Text(cfg.title(phase))
-            .font(.largeTitle.bold())
-            .foregroundStyle(color)
-            .padding(.top, 10)
-        if phase.kind != "done" { BigTime(text: clock(phase.left)) }
-        if (phase.kind == "work" || phase.kind == "rest") && cfg.rounds > 1 { Text(T("hiit.round", phase.round, cfg.rounds)).font(.headline) }
-        if let next = cfg.next(phase) { Text(T("routine.next", next)).font(.subheadline).foregroundStyle(Theme.muted) }
-        ProgressView(value: min(1, Double(elapsed) / Double(max(1, cfg.totalSeconds)))).tint(color)
-        HStack(spacing: 12) {
-            RoundButton(title: L("tools.countdown.reset")) {
+    @ViewBuilder private func running(_ phase: HiitConfig.Phase, elapsed: Int, now: Double) -> some View {
+        if phase.kind == "done" {
+            // Bitiş özeti (2. analiz #135)
+            PhasePanel(kind: "done", progress: 1, height: 220) {
+                VStack(spacing: 6) {
+                    Text("🏁").font(.system(size: 44))
+                    Text(L("hiit.done")).font(.title.bold())
+                    if cfg.isRoutine { Text(cfg.name) }
+                    Text(T("hiit.total", clock(cfg.totalSeconds)) + " · " + T("hiit.roundCount", cfg.rounds)).font(.subheadline)
+                }
+                .padding(.horizontal, 16)
+            }
+            if reminded.isEmpty {
+                RoundButton(title: L("hiit.remindTomorrow")) { Task { await remindTomorrow() } }
+            } else {
+                Text(reminded).font(.subheadline).foregroundStyle(Theme.muted)
+            }
+            RoundButton(title: L("tools.countdown.reset"), prominent: true) {
                 cancelEnd()
                 start = 0
                 paused = 0
+                reminded = ""
             }
-            if phase.kind != "done" {
-                if paused > 0 {
-                    RoundButton(title: L("tools.countdown.resume"), prominent: true) {
-                        start += Date().timeIntervalSince1970 * 1000 - paused
-                        paused = 0
-                        scheduleEnd()
+        } else {
+            // Evre renkli pano: zemin evrenin rengi, alttan evrenin ilerlemesiyle dolar (2. analiz #101)
+            let dur = max(1, cfg.duration(phase))
+            let segs = cfg.segments()
+            PhasePanel(kind: phase.kind, progress: 1 - Double(phase.left) / Double(dur)) {
+                VStack(spacing: 4) {
+                    Text(cfg.title(phase)).font(.largeTitle.bold()).lineLimit(1).minimumScaleFactor(0.5)
+                    Text(clock(phase.left))
+                        .font(.system(size: 84, weight: .light, design: .rounded)).monospacedDigit()
+                        .lineLimit(1).minimumScaleFactor(0.5)
+                        .environment(\.layoutDirection, .leftToRight)
+                    if (phase.kind == "work" || phase.kind == "rest") && cfg.rounds > 1 { Text(T("hiit.round", phase.round, cfg.rounds)).font(.headline) }
+                }
+                .padding(.horizontal, 16)
+            }
+            ProgressView(value: min(1, Double(elapsed) / Double(max(1, cfg.totalSeconds)))).tint(PhaseColors.of(phase.kind))
+            if locked {
+                HoldToUnlock { locked = false }
+            } else {
+                // Adım atlama: ⏮ evrenin başına (ilk 3 sn içindeyse bir öncekine), ⏭ sıradakine
+                let cur = segs.firstIndex { $0.phase.index == phase.index }
+                HStack(spacing: 12) {
+                    Button {
+                        if let cur { jump(elapsed - segs[cur].start >= 3 || cur == 0 ? segs[cur].start : segs[cur - 1].start) }
+                    } label: { Image(systemName: "backward.end.fill").font(.title2) }
+                    .accessibilityLabel(L("hiit.prev"))
+                    if paused > 0 {
+                        RoundButton(title: L("tools.countdown.resume"), prominent: true) {
+                            start += Date().timeIntervalSince1970 * 1000 - paused
+                            paused = 0
+                            scheduleEnd()
+                        }
+                    } else {
+                        RoundButton(title: L("tools.countdown.pause"), prominent: true) {
+                            cancelEnd()
+                            paused = Date().timeIntervalSince1970 * 1000
+                        }
                     }
-                } else {
-                    RoundButton(title: L("tools.countdown.pause"), prominent: true) {
+                    Button {
+                        let nx = cur.flatMap { segs.indices.contains($0 + 1) ? segs[$0 + 1].start : nil }
+                        jump(nx ?? cfg.totalSeconds)
+                    } label: { Image(systemName: "forward.end.fill").font(.title2) }
+                    .accessibilityLabel(L("hiit.skip"))
+                }
+                HStack(spacing: 12) {
+                    RoundButton(title: L("tools.countdown.reset")) {
                         cancelEnd()
-                        paused = Date().timeIntervalSince1970 * 1000
+                        start = 0
+                        paused = 0
                     }
+                    RoundButton(title: "🔒 " + L("tools.lock")) { locked = true }
                 }
             }
+            // Sıradakiler ve bitiş saatleri (2. analiz #135)
+            let upcoming = Array(segs.filter { $0.phase.index > phase.index }.prefix(4))
+            if !upcoming.isEmpty {
+                let ref = paused > 0 ? paused : now
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(L("hiit.upcoming")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
+                    ForEach(upcoming, id: \.phase.index) { sg in
+                        HStack(spacing: 8) {
+                            Circle().fill(PhaseColors.of(sg.phase.kind)).frame(width: 10, height: 10)
+                            Text(cfg.title(sg.phase)).lineLimit(1)
+                            Spacer()
+                            Text(clock(sg.dur)).monospacedDigit().foregroundStyle(Theme.muted)
+                                .environment(\.layoutDirection, .leftToRight)
+                            Text("🕓 " + Fmt.time(Date(timeIntervalSince1970: (ref + Double(sg.start + sg.dur - elapsed) * 1000) / 1000)))
+                                .font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        .font(.subheadline)
+                    }
+                }
+                .padding(16)
+                .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+            }
         }
+    }
+
+    /// Belirli saniyeye atlar (başlangıç anı kaydırılır; sürüyorsa bitiş alarmı yeniden kurulur)
+    private func jump(_ sec: Int) {
+        let ref = paused > 0 ? paused : Date().timeIntervalSince1970 * 1000
+        cancelEnd()
+        start = ref - Double(sec) * 1000
+        if paused == 0 { scheduleEnd() }
+    }
+
+    /// Yarın aynı saatte bir kezlik alarm (antrenmanın adıyla)
+    private func remindTomorrow() async {
+        let begin = Date(timeIntervalSince1970: start / 1000)
+        let at = Calendar.current.date(byAdding: .day, value: 1, to: begin) ?? begin.addingTimeInterval(86_400)
+        let c = Calendar.current.dateComponents([.hour, .minute], from: at)
+        var a = AlarmItem(hour: c.hour ?? 9, minute: c.minute ?? 0)
+        a.label = String((cfg.isRoutine ? cfg.name : L("hiit.tab")).prefix(40))
+        a.date = CalendarDay(at).iso
+        var items = AlarmItem.load()
+        items.append(a)
+        AlarmItem.save(items)
+        await AlarmCenter.sync(items)
+        reminded = T("alarm.quickSet", Fmt.time(at))
     }
 
     private func stepper(_ title: String, _ value: Binding<Int>, _ range: ClosedRange<Int>, _ step: Int, seconds: Bool) -> some View {
@@ -765,6 +913,129 @@ struct HiitView: View {
     private func cancelEnd() {
         if let id = UUID(uuidString: alarmID) { AlarmCenter.cancel(id: id) }
         alarmID = ""
+    }
+}
+
+/// Görsel zamanlayıcı (2. analiz #140): rakamsız pasta ya da kum saati; çocuk modunda düğmeler gizli, basılı tutunca açılır
+struct VisualTimerView: View {
+    @Environment(\.dismiss) private var dismiss
+    let item: TimerItem
+    @AppStorage("timers.visual") private var style = "pie"
+    @State private var kids = false
+
+    var body: some View {
+        TimelineView(.periodic(from: .now, by: 0.5)) { ctx in
+            let rem = item.remaining(Int64(ctx.date.timeIntervalSince1970 * 1000))
+            let f = item.total > 0 ? Double(rem) / Double(item.total) : 0
+            VStack(spacing: 20) {
+                Text(item.name.isEmpty ? clock(Int(item.total / 1000)) : item.name)
+                    .font(.title2.weight(.semibold)).foregroundStyle(Color(white: 0.13))
+                Spacer()
+                if style == "sand" { Hourglass(left: f).frame(maxWidth: 260) } else { PieTimer(left: f).padding(.horizontal, 8) }
+                Spacer()
+                if kids {
+                    HoldToUnlock { kids = false }
+                } else {
+                    Picker("", selection: $style) {
+                        Text(L("timers.style.pie")).tag("pie")
+                        Text(L("timers.style.sand")).tag("sand")
+                    }
+                    .pickerStyle(.segmented)
+                    HStack {
+                        Button("🧒 " + L("timers.kids")) { kids = true }
+                        Spacer()
+                        Button(L("common.done")) { dismiss() }
+                    }
+                    .foregroundStyle(Color(white: 0.13))
+                }
+            }
+            .padding(24)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.white)
+            .environment(\.colorScheme, .light)
+        }
+        .interactiveDismissDisabled(kids)
+        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+        .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
+    }
+}
+
+/// Biten antrenmanlar (2. analiz #135): `hiit.log` [{d: yerel gün, n: ad, s: süre sn, r: tur}], en çok 200; yalnız cihazda
+/// (Android'deki HiitLog ile aynı biçim)
+enum HiitLog {
+    struct Entry: Codable, Equatable { let d: String; let n: String; let s: Int; let r: Int }
+    static let key = "hiit.log"
+
+    static func load() -> [Entry] {
+        guard let data = UserDefaults.standard.string(forKey: key)?.data(using: .utf8) else { return [] }
+        return (try? JSONDecoder().decode([Entry].self, from: data)) ?? []
+    }
+
+    static func add(_ cfg: HiitConfig, start: Double) {
+        let d = CalendarDay(Date(timeIntervalSince1970: start / 1000)).iso
+        let list = Array(([Entry(d: d, n: cfg.isRoutine ? cfg.name : "", s: cfg.totalSeconds, r: cfg.rounds)] + load()).prefix(200))
+        if let data = try? JSONEncoder().encode(list) { UserDefaults.standard.set(String(decoding: data, as: UTF8.self), forKey: key) }
+    }
+
+    static func clear() { UserDefaults.standard.removeObject(forKey: key) }
+
+    /// Bu hafta (pazartesiden) biten antrenman sayısı
+    static func thisWeek(_ today: Date = Date()) -> Int {
+        let cal = Calendar(identifier: .gregorian)
+        let back = (cal.component(.weekday, from: today) + 5) % 7
+        let mon = CalendarDay(cal.date(byAdding: .day, value: -back, to: today) ?? today).iso
+        return load().filter { $0.d >= mon }.count
+    }
+}
+
+private struct HiitHistoryCard: View {
+    @State private var log = HiitLog.load()
+    @State private var confirm = false
+
+    var body: some View {
+        if !log.isEmpty {
+            VStack(alignment: .leading, spacing: 6) {
+                HStack {
+                    Text(L("hiit.history")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
+                    Spacer()
+                    Button(L("hiit.historyClear")) { confirm = true }.font(.footnote)
+                }
+                Text(T("hiit.week", HiitLog.thisWeek()))
+                ForEach(Array(log.prefix(6).enumerated()), id: \.offset) { _, e in
+                    HStack {
+                        Text(CalendarDay(iso: e.d).map { Fmt.dayMonth($0.noon(in: .current)) } ?? e.d).foregroundStyle(Theme.muted).frame(width: 96, alignment: .leading)
+                        Text(e.n.isEmpty ? L("hiit.tab") : e.n).lineLimit(1)
+                        Spacer()
+                        Text(clock(e.s)).monospacedDigit().foregroundStyle(Theme.muted).environment(\.layoutDirection, .leftToRight)
+                    }
+                    .font(.subheadline)
+                }
+            }
+            .padding(16)
+            .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+            .confirmationDialog(L("hiit.historyClear"), isPresented: $confirm, titleVisibility: .visible) {
+                Button(L("hiit.historyClear"), role: .destructive) { HiitLog.clear(); log = [] }
+            }
+        }
+    }
+}
+
+/// Duyuru seçenekleri (2. analiz #135)
+private struct HiitCueOptions: View {
+    @AppStorage("hiit.cue.next") private var next = true
+    @AppStorage("hiit.cue.half") private var half = false
+    @AppStorage("hiit.cue.ten") private var ten = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(L("hiit.cues")).font(.subheadline.weight(.semibold)).foregroundStyle(Theme.muted)
+            Toggle(L("hiit.cue.nextLabel"), isOn: $next)
+            Toggle(L("hiit.cue.halfLabel"), isOn: $half)
+            Toggle(L("hiit.cue.tenLabel"), isOn: $ten)
+        }
+        .tint(Theme.accent)
+        .padding(16)
+        .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
     }
 }
 

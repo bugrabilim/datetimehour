@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">عجلة</string>
     <string name="timers_input_keypad">لوحة أرقام</string>
     <string name="timers_input_delete">حذف</string>
+    <string name="hiit_say_half">منتصف الوقت</string>
+    <string name="hiit_say_ten">10 ثوانٍ</string>
+    <string name="hiit_cues">الإعلانات</string>
+    <string name="hiit_cue_nextLabel">أعلن الخطوة التالية أثناء الراحة</string>
+    <string name="hiit_cue_halfLabel">أعلن منتصف المرحلة</string>
+    <string name="hiit_cue_tenLabel">أعلن آخر 10 ثوانٍ</string>
+    <string name="hiit_upcoming">التالي</string>
+    <string name="hiit_prev">الخطوة السابقة</string>
+    <string name="hiit_skip">الخطوة التالية</string>
+    <string name="hiit_roundCount">%1$s جولات</string>
+    <string name="hiit_remindTomorrow">ذكّرني غدًا في الوقت نفسه</string>
+    <string name="hiit_history">السجل</string>
+    <string name="hiit_historyClear">مسح السجل</string>
+    <string name="hiit_week">هذا الأسبوع: %1$s تمرين</string>
+    <string name="tools_lock">قفل الشاشة</string>
+    <string name="tools_holdToUnlock">اضغط مطولًا لفتح القفل</string>
+    <string name="timers_visual">مؤقت مرئي</string>
+    <string name="timers_style_pie">دائرة</string>
+    <string name="timers_style_sand">ساعة رملية</string>
+    <string name="timers_kids">وضع الأطفال</string>
+    <string name="sw_copyLaps">نسخ اللفات</string>
+    <string name="sw_copied">تم النسخ</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

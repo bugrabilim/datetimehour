@@ -74,7 +74,7 @@ class HiitService : Service() {
             }
             val cfg = HiitConfig.load()
             val p = cfg.phase(elapsed(start))
-            cfg.cue(last, p)?.let { say(it) }
+            cfg.cue(last, p, HiitConfig.Cues.load())?.let { say(it) }
             if (last?.index != p.index) {
                 getSystemService(NotificationManager::class.java)?.notify(ID, notification(cfg, p, start))
             }

@@ -124,8 +124,12 @@ fun PomodoroScreen() {
         Spacer(Modifier.height(16.dp))
         Text(L("tools.pomodoro.$phase"), color = if (phase == "work") Theme.c.accent else AppData.color("religious"),
             fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
-        BigTime(clock((remaining + 999) / 1000))
-        Text(T("tools.pomodoro.round", round, rounds), color = Theme.c.muted)
+        // Kalan süre halkası ve tur domatesleri (2. analiz #101)
+        val pColor = if (phase == "work") Theme.c.accent else AppData.color("religious")
+        ProgressRing(remaining.toFloat() / phaseMs().coerceAtLeast(1L), pColor, Modifier.fillMaxWidth(0.8f), stroke = 12.dp) {
+            BigTime(clock((remaining + 999) / 1000))
+        }
+        RoundDots(rounds, if (phase == "long") rounds else round - 1, if (phase == "work") round else 0, T("tools.pomodoro.round", round, rounds))
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             RoundButton(L("tools.pomodoro.skip"), false, Modifier.weight(1f)) { advance(completed = false) }
             if (running) {

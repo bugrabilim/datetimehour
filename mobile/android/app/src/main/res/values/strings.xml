@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">Tekerlek</string>
     <string name="timers_input_keypad">Tuş takımı</string>
     <string name="timers_input_delete">Sil</string>
+    <string name="hiit_say_half">Yarısı</string>
+    <string name="hiit_say_ten">10 saniye</string>
+    <string name="hiit_cues">Duyurular</string>
+    <string name="hiit_cue_nextLabel">Dinlenmede sıradaki adımı söyle</string>
+    <string name="hiit_cue_halfLabel">Evrenin yarısını söyle</string>
+    <string name="hiit_cue_tenLabel">Son 10 saniyeyi söyle</string>
+    <string name="hiit_upcoming">Sıradakiler</string>
+    <string name="hiit_prev">Önceki adım</string>
+    <string name="hiit_skip">Sonraki adım</string>
+    <string name="hiit_roundCount">%1$s tur</string>
+    <string name="hiit_remindTomorrow">Yarın aynı saatte hatırlat</string>
+    <string name="hiit_history">Geçmiş</string>
+    <string name="hiit_historyClear">Geçmişi sil</string>
+    <string name="hiit_week">Bu hafta: %1$s antrenman</string>
+    <string name="tools_lock">Ekranı kilitle</string>
+    <string name="tools_holdToUnlock">Kilidi açmak için basılı tutun</string>
+    <string name="timers_visual">Görsel zamanlayıcı</string>
+    <string name="timers_style_pie">Pasta</string>
+    <string name="timers_style_sand">Kum saati</string>
+    <string name="timers_kids">Çocuk modu</string>
+    <string name="sw_copyLaps">Turları kopyala</string>
+    <string name="sw_copied">Kopyalandı</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

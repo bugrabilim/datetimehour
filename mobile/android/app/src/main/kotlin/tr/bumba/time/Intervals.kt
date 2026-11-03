@@ -33,6 +33,8 @@ import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material.icons.filled.SkipNext
+import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -192,11 +194,50 @@ data class HiitConfig(
         return Phase("done", rounds, 0, rounds * 2 + 1)
     }
 
-    /** Söylenecek: evre değişince (ya da ilk bakışta) evrenin adı, evre içinde son 3 saniyede sayı; yoksa null */
-    fun cue(last: Phase?, p: Phase): String? = when {
-        last == null || p.index != last.index -> word(p)
-        p.kind != "done" && p.left in 1..3 && p.left != last.left -> p.left.toString()
-        else -> null
+    /** Evrenin toplam süresi (sn) */
+    fun duration(p: Phase): Int = when {
+        p.kind == "done" -> 0
+        isRoutine -> steps[p.index % steps.size].s
+        p.kind == "warmup" -> warmup
+        p.kind == "work" -> work
+        else -> rest
+    }
+
+    /** Antrenmanın bölümleri (süresi 0 olanlar yok): başlangıç (sn) ve süre; sıradakiler listesi ve adım atlama için */
+    data class Seg(val phase: Phase, val start: Int, val dur: Int)
+
+    fun segments(): List<Seg> {
+        val out = ArrayList<Seg>()
+        var t = 0
+        while (t < totalSeconds) {
+            val p = phase(t)
+            if (p.kind == "done") break
+            out.add(Seg(p, t, p.left))
+            t += p.left
+        }
+        return out
+    }
+
+    /** İsteğe bağlı duyurular (2. analiz #135): dinlenmede sıradaki adım, evrenin yarısı, son 10 saniye */
+    data class Cues(val next: Boolean = false, val half: Boolean = false, val ten: Boolean = false) {
+        companion object {
+            fun load() = Cues(Prefs.store.getBoolean("hiit.cue.next", true), Prefs.store.getBoolean("hiit.cue.half", false), Prefs.store.getBoolean("hiit.cue.ten", false))
+        }
+    }
+
+    /** Söylenecek: evre değişince (ya da ilk bakışta) evrenin adı (dinlenme ve ısınmada istenirse sıradaki adım), evre içinde
+     *  son 3 saniyede sayı, istenirse son 10 saniye ve evrenin yarısı (yalnız 20 sn ve uzun evrelerde); yoksa null */
+    fun cue(last: Phase?, p: Phase, cues: Cues = Cues()): String? {
+        if (last == null || p.index != last.index) {
+            val nx = if (cues.next && (p.kind == "rest" || p.kind == "warmup")) segments().firstOrNull { it.phase.index > p.index } else null
+            return word(p) + (nx?.let { ". " + T("routine.next", title(it.phase)) } ?: "")
+        }
+        if (p.kind == "done") return null
+        if (p.left in 1..3 && p.left != last.left) return p.left.toString()
+        val d = duration(p)
+        if (cues.ten && d >= 20 && last.left > 10 && p.left <= 10) return L("hiit.say.ten")
+        if (cues.half && d >= 20 && last.left > d / 2 && p.left <= d / 2) return L("hiit.say.half")
+        return null
     }
 
     /** Evrenin sesli adı: "Isın", "Çalış" (son turda "Son tur. Çalış"), "Dinlen", "Bitti"; rutinde adımın adı */
@@ -353,6 +394,8 @@ fun TimersScreen() {
     var removed by remember { mutableStateOf<TimerItem?>(null) }
     var keypad by remember { mutableStateOf(Prefs.store.getBoolean("timers.keypad", false)) }
     var digits by rememberSaveable { mutableStateOf("") }
+    // Görsel (rakamsız) zamanlayıcı tam ekranı (2. analiz #140)
+    var visualId by remember { mutableStateOf<String?>(null) }
     fun update(list: List<TimerItem>) { items = list; TimerItem.save(list); LiveNotifications.sync(context) }
     fun start(t: TimerItem, ms: Long): TimerItem {
         val e = System.currentTimeMillis() + ms
@@ -431,6 +474,7 @@ fun TimersScreen() {
                                     "−1 " + L("tools.countdown.minutesShort") to -60_000L, "−10 " + L("tools.countdown.minutesShort") to -600_000L)) {
                                     androidx.compose.material3.DropdownMenuItem({ Text(label) }, { menu = false; adjust(t, rem, d) })
                                 }
+                                androidx.compose.material3.DropdownMenuItem({ Text(L("timers.visual")) }, { menu = false; visualId = t.id })
                                 androidx.compose.material3.DropdownMenuItem({ Text((if (t.repeats) "✓ " else "") + L("timers.repeat")) }, {
                                     menu = false; update(items.map { if (it.id == t.id) it.copy(repeats = !it.repeats) else it })
                                 })
@@ -532,6 +576,37 @@ fun TimersScreen() {
         Text(L("timers.multiNote"), color = Theme.c.muted, fontSize = 13.sp)
         Text(L("alarm.realNote"), color = Theme.c.muted, fontSize = 13.sp)
         Spacer(Modifier.height(8.dp))
+    }
+    items.firstOrNull { it.id == visualId }?.let { t -> VisualTimerDialog(t, now) { visualId = null } }
+}
+
+/** Görsel zamanlayıcı (2. analiz #140): rakamsız pasta ya da kum saati; çocuk modunda düğmeler gizli, basılı tutunca açılır */
+@Composable
+private fun VisualTimerDialog(t: TimerItem, now: Long, onClose: () -> Unit) {
+    var style by remember { mutableStateOf(Prefs.store.getString("timers.visual", "pie") ?: "pie") }
+    var kids by remember { mutableStateOf(false) }
+    androidx.compose.ui.window.Dialog(onClose, androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false, dismissOnBackPress = !kids, dismissOnClickOutside = false)) {
+        val rem = t.remaining(now)
+        Column(Modifier.fillMaxSize().background(Color.White).padding(20.dp), horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween) {
+            Text(t.name.ifBlank { clock(t.total / 1000) }, color = Color(0xFF222222), fontSize = 24.sp, fontWeight = FontWeight.SemiBold)
+            VisualTimerContent(if (t.running) rem else t.left, t.total, style)
+            if (kids) HoldToUnlock({ kids = false })
+            else Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    for (st in listOf("pie", "sand")) {
+                        val on = st == style
+                        Text(L("timers.style.$st"), Modifier.background(if (on) Color(0xFF222222) else Color(0xFFEEEEEE), RoundedCornerShape(50))
+                            .clickable { style = st; Prefs.store.edit().putString("timers.visual", st).apply() }
+                            .padding(horizontal = 16.dp, vertical = 8.dp), color = if (on) Color.White else Color(0xFF222222))
+                    }
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    androidx.compose.material3.TextButton(onClick = { kids = true }) { Text("🧒 " + L("timers.kids"), color = Color(0xFF222222)) }
+                    androidx.compose.material3.TextButton(onClick = onClose) { Text(L("common.done"), color = Color(0xFF222222)) }
+                }
+            }
+        }
     }
 }
 
@@ -640,26 +715,57 @@ fun HiitScreen() {
                 saveState(s, 0)
                 scheduleEnd(s)
             }
+        } else if (phase.kind == "done") {
+            // Bitiş özeti (2. analiz #135)
+            PhasePanel("done", 1f, Modifier.height(220.dp)) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Text("🏁", fontSize = 44.sp)
+                    Text(L("hiit.done"), color = Color.White, fontSize = 26.sp, fontWeight = FontWeight.Bold)
+                    if (cfg.isRoutine) Text(cfg.name, color = Color.White, fontSize = 16.sp)
+                    Text(T("hiit.total", clock(cfg.totalSeconds.toLong())) + " · " + T("hiit.roundCount", cfg.rounds), color = Color.White, fontSize = 15.sp)
+                }
+            }
+            var reminded by remember { mutableStateOf("") }
+            if (reminded.isEmpty()) RoundButton(L("hiit.remindTomorrow"), false, Modifier.fillMaxWidth()) {
+                val at = java.time.Instant.ofEpochMilli(start).atZone(java.time.ZoneId.systemDefault()).plusDays(1)
+                AlarmItem.addNew(context, AlarmItem(hour = at.hour, minute = at.minute, label = (if (cfg.isRoutine) cfg.name else L("hiit.tab")).take(40), date = at.toLocalDate().toString()))
+                reminded = T("alarm.quickSet", Fmt.time(at))
+            } else Text(reminded, color = Theme.c.muted, fontSize = 14.sp)
+            RoundButton(L("tools.countdown.reset"), true, Modifier.fillMaxWidth()) {
+                AlarmScheduler.cancel(context, "hiit")
+                saveState(0, 0)
+            }
         } else {
-            val color = when (phase.kind) { "work" -> Theme.c.accent; "rest" -> Color(0xFF2E7D32); else -> Theme.c.muted }
-            Spacer(Modifier.height(10.dp))
-            Text(cfg.title(phase), color = color, fontSize = 28.sp, fontWeight = FontWeight.Bold)
-            if (phase.kind != "done") BigTime(clock(phase.left.toLong()))
-            if ((phase.kind == "work" || phase.kind == "rest") && cfg.rounds > 1) Text(T("hiit.round", phase.round, cfg.rounds), color = Theme.c.text, fontSize = 17.sp)
-            if (cfg.isRoutine && phase.kind != "done") cfg.steps.getOrNull((phase.index + 1) % cfg.steps.size)?.takeIf { phase.index + 1 < cfg.rounds * cfg.steps.size }?.let {
-                Text(T("routine.next", it.n), color = Theme.c.muted, fontSize = 15.sp)
+            // Evre renkli pano: zemin evrenin rengi, alttan evrenin ilerlemesiyle dolar (2. analiz #101)
+            val dur = cfg.duration(phase).coerceAtLeast(1)
+            val segs = remember(cfg) { cfg.segments() }
+            PhasePanel(phase.kind, 1f - phase.left.toFloat() / dur, Modifier.height(300.dp)) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(cfg.title(phase), color = Color.White, fontSize = 28.sp, fontWeight = FontWeight.Bold, maxLines = 1)
+                    Ltr { Text(clock(phase.left.toLong()), color = Color.White, fontSize = 84.sp, fontWeight = FontWeight.Light, style = Tnum) }
+                    if ((phase.kind == "work" || phase.kind == "rest") && cfg.rounds > 1) Text(T("hiit.round", phase.round, cfg.rounds), color = Color.White, fontSize = 17.sp)
+                }
             }
             // Antrenmanın ilerlemesi
             val frac = (elapsed.toFloat() / cfg.totalSeconds).coerceIn(0f, 1f)
-            Box(Modifier.fillMaxWidth().height(10.dp).background(Theme.c.surface2, RoundedCornerShape(5.dp))) {
-                Box(Modifier.fillMaxHeight().fillMaxWidth(frac).background(color, RoundedCornerShape(5.dp)))
+            Box(Modifier.fillMaxWidth().height(8.dp).background(Theme.c.surface2, RoundedCornerShape(4.dp))) {
+                Box(Modifier.fillMaxHeight().fillMaxWidth(frac).background(PhaseColors.of(phase.kind), RoundedCornerShape(4.dp)))
             }
-            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                RoundButton(L("tools.countdown.reset"), false, Modifier.weight(1f)) {
-                    AlarmScheduler.cancel(context, "hiit")
-                    saveState(0, 0)
+            var locked by remember { mutableStateOf(false) }
+            if (locked) HoldToUnlock({ locked = false })
+            else {
+                // Adım atlama: ⏮ evrenin başına (ilk 3 sn içindeyse bir öncekine), ⏭ sıradakine
+                fun jump(toSec: Int) {
+                    val ref = if (paused > 0) paused else System.currentTimeMillis()
+                    val s = ref - toSec * 1000L
+                    saveState(s, paused)
+                    if (paused == 0L) scheduleEnd(s)
                 }
-                if (phase.kind != "done") {
+                val cur = segs.indexOfFirst { it.phase.index == phase.index }
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp), verticalAlignment = Alignment.CenterVertically) {
+                    IconButton(onClick = {
+                        if (cur >= 0) jump(if (elapsed - segs[cur].start >= 3 || cur == 0) segs[cur].start else segs[cur - 1].start)
+                    }) { Icon(Icons.Filled.SkipPrevious, L("hiit.prev"), tint = Theme.c.accent) }
                     if (paused > 0) RoundButton(L("tools.countdown.resume"), true, Modifier.weight(1f)) {
                         val s = start + (System.currentTimeMillis() - paused)
                         saveState(s, 0)
@@ -668,13 +774,108 @@ fun HiitScreen() {
                         AlarmScheduler.cancel(context, "hiit")
                         saveState(start, System.currentTimeMillis())
                     }
+                    IconButton(onClick = { jump(segs.getOrNull(cur + 1)?.start ?: cfg.totalSeconds) }) {
+                        Icon(Icons.Filled.SkipNext, L("hiit.skip"), tint = Theme.c.accent)
+                    }
+                }
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    RoundButton(L("tools.countdown.reset"), false, Modifier.weight(1f)) {
+                        AlarmScheduler.cancel(context, "hiit")
+                        saveState(0, 0)
+                    }
+                    RoundButton("🔒 " + L("tools.lock"), false, Modifier.weight(1f)) { locked = true }
+                }
+            }
+            // Sıradakiler ve bitiş saatleri (2. analiz #135)
+            val upcoming = segs.filter { it.phase.index > phase.index }.take(4)
+            if (upcoming.isNotEmpty()) AppCard {
+                SectionTitle(L("hiit.upcoming"))
+                val ref = if (paused > 0) paused else now
+                for (sg in upcoming) Row(Modifier.fillMaxWidth().padding(vertical = 3.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Box(Modifier.size(10.dp).clip(CircleShape).background(PhaseColors.of(sg.phase.kind)))
+                    Spacer(Modifier.width(8.dp))
+                    Text(cfg.title(sg.phase), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp, maxLines = 1)
+                    Text(clock(sg.dur.toLong()), color = Theme.c.muted, fontSize = 14.sp, style = Tnum)
+                    Spacer(Modifier.width(10.dp))
+                    val endAt = java.time.Instant.ofEpochMilli(ref + (sg.start + sg.dur - elapsed) * 1000L).atZone(java.time.ZoneId.systemDefault())
+                    Text("🕓 " + Fmt.time(endAt), color = Theme.c.muted, fontSize = 13.sp)
                 }
             }
         }
+        if (!active) HiitHistoryCard()
+        HiitCueOptions()
         VoiceToggle()
         HealthToggle()
         Text(L("hiit.note"), color = Theme.c.muted, fontSize = 13.sp)
         Spacer(Modifier.height(8.dp))
+    }
+}
+
+/** Biten antrenmanlar (2. analiz #135): `hiit.log` [{d: yerel gün, n: ad, s: süre sn, r: tur}], en çok 200; yalnız cihazda */
+object HiitLog {
+    data class Entry(val d: String, val n: String, val s: Int, val r: Int)
+    private const val KEY = "hiit.log"
+
+    fun load(): List<Entry> = runCatching {
+        val a = org.json.JSONArray(Prefs.store.getString(KEY, "[]"))
+        (0 until a.length()).map { a.getJSONObject(it).let { o -> Entry(o.getString("d"), o.optString("n"), o.optInt("s"), o.optInt("r", 1)) } }
+    }.getOrDefault(emptyList())
+
+    fun add(cfg: HiitConfig, startMs: Long) {
+        val d = java.time.Instant.ofEpochMilli(startMs).atZone(java.time.ZoneId.systemDefault()).toLocalDate().toString()
+        val list = (listOf(Entry(d, if (cfg.isRoutine) cfg.name else "", cfg.totalSeconds, cfg.rounds)) + load()).take(200)
+        Prefs.store.edit().putString(KEY, org.json.JSONArray(list.map {
+            org.json.JSONObject().put("d", it.d).put("n", it.n).put("s", it.s).put("r", it.r)
+        }).toString()).apply()
+    }
+
+    fun clear() = Prefs.store.edit().remove(KEY).apply()
+
+    /** Bu hafta (pazartesiden) biten antrenman sayısı */
+    fun thisWeek(today: java.time.LocalDate = java.time.LocalDate.now()): Int {
+        val mon = today.minusDays((today.dayOfWeek.value - 1).toLong()).toString()
+        return load().count { it.d >= mon }
+    }
+}
+
+@Composable
+private fun HiitHistoryCard() {
+    var log by remember { mutableStateOf(HiitLog.load()) }
+    if (log.isEmpty()) return
+    var confirm by remember { mutableStateOf(false) }
+    AppCard {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            SectionTitle(L("hiit.history"), Modifier.weight(1f))
+            androidx.compose.material3.TextButton(onClick = { confirm = true }) { Text(L("hiit.historyClear"), color = Theme.c.accent, fontSize = 13.sp) }
+        }
+        Text(T("hiit.week", HiitLog.thisWeek()), color = Theme.c.text, fontSize = 15.sp)
+        for (e in log.take(6)) Row(Modifier.fillMaxWidth().padding(vertical = 2.dp)) {
+            Text(Fmt.shortDate(java.time.LocalDate.parse(e.d)), color = Theme.c.muted, fontSize = 13.sp, modifier = Modifier.width(96.dp))
+            Text(e.n.ifEmpty { L("hiit.tab") }, Modifier.weight(1f), color = Theme.c.text, fontSize = 14.sp, maxLines = 1)
+            Text(clock(e.s.toLong()), color = Theme.c.muted, fontSize = 13.sp, style = Tnum)
+        }
+    }
+    if (confirm) androidx.compose.material3.AlertDialog(
+        onDismissRequest = { confirm = false },
+        title = { Text(L("hiit.historyClear")) },
+        confirmButton = { androidx.compose.material3.TextButton(onClick = { HiitLog.clear(); log = emptyList(); confirm = false }) { Text(L("hiit.historyClear")) } },
+        dismissButton = { androidx.compose.material3.TextButton(onClick = { confirm = false }) { Text(L("alarm.cancel")) } },
+    )
+}
+
+/** Duyuru seçenekleri (2. analiz #135) */
+@Composable
+private fun HiitCueOptions() {
+    AppCard {
+        SectionTitle(L("hiit.cues"))
+        for ((key, label, def) in listOf(Triple("hiit.cue.next", "hiit.cue.nextLabel", true), Triple("hiit.cue.half", "hiit.cue.halfLabel", false),
+            Triple("hiit.cue.ten", "hiit.cue.tenLabel", false))) {
+            var on by remember { mutableStateOf(Prefs.store.getBoolean(key, def)) }
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                Text(L(label), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                Switch(on, { on = it; Prefs.store.edit().putBoolean(key, it).apply() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+            }
+        }
     }
 }
 

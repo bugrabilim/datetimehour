@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">چرخ</string>
     <string name="timers_input_keypad">صفحه‌کلید</string>
     <string name="timers_input_delete">پاک کردن</string>
+    <string name="hiit_say_half">نیمه راه</string>
+    <string name="hiit_say_ten">10 ثانیه</string>
+    <string name="hiit_cues">اعلان‌ها</string>
+    <string name="hiit_cue_nextLabel">در استراحت مرحله بعد را بگو</string>
+    <string name="hiit_cue_halfLabel">نیمه مرحله را بگو</string>
+    <string name="hiit_cue_tenLabel">10 ثانیه آخر را بگو</string>
+    <string name="hiit_upcoming">مراحل بعد</string>
+    <string name="hiit_prev">مرحله قبل</string>
+    <string name="hiit_skip">مرحله بعد</string>
+    <string name="hiit_roundCount">%1$s دور</string>
+    <string name="hiit_remindTomorrow">فردا همین ساعت یادآوری کن</string>
+    <string name="hiit_history">تاریخچه</string>
+    <string name="hiit_historyClear">پاک کردن تاریخچه</string>
+    <string name="hiit_week">این هفته: %1$s تمرین</string>
+    <string name="tools_lock">قفل صفحه</string>
+    <string name="tools_holdToUnlock">برای باز کردن نگه دارید</string>
+    <string name="timers_visual">زمان‌سنج تصویری</string>
+    <string name="timers_style_pie">دایره</string>
+    <string name="timers_style_sand">ساعت شنی</string>
+    <string name="timers_kids">حالت کودک</string>
+    <string name="sw_copyLaps">کپی دورها</string>
+    <string name="sw_copied">کپی شد</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

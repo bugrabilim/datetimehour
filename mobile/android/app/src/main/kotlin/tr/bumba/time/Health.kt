@@ -63,6 +63,7 @@ object HealthLog {
         val elapsed = ((System.currentTimeMillis() - start) / 1000).toInt()
         if (cfg.phase(elapsed).kind != "done" || Prefs.store.getLong("hiit.healthSaved", 0L) == start) return
         Prefs.store.edit().putLong("hiit.healthSaved", start).apply()
+        HiitLog.add(cfg, start)
         if (!enabled || !available(c)) return
         val app = c.applicationContext
         val begin = Instant.ofEpochMilli(start)

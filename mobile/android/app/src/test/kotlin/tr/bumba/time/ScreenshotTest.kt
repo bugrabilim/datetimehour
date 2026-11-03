@@ -145,6 +145,26 @@ class ScreenshotTest {
         Prefs.store.edit().remove("hiit.start").remove("hiit.paused").commit()
         Prefs.saveAppearance("light")
     }
+    /** Aralık antrenmanı bitti: özet, yarın hatırlat; ardından geçmiş kartı (2. analiz #135) */
+    @Test fun hiitDone() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        HiitLog.clear()
+        val cfg = HiitConfig(10, 30, 15, 8)
+        Prefs.store.edit().putString("hiit.cfg", cfg.toString()).remove("hiit.routine")
+            .putLong("hiit.start", System.currentTimeMillis() - (cfg.totalSeconds + 5) * 1000L).putLong("hiit.paused", 0L).commit()
+        captureRoboImage("$dir/tr-hiit-bitti.png") { AppTheme { Box(Modifier.background(Theme.c.bg)) { HiitScreen() } } }
+        HiitLog.add(cfg, System.currentTimeMillis() - 86_400_000L)
+        Prefs.store.edit().remove("hiit.start").remove("hiit.paused").commit()
+        captureRoboImage("$dir/tr-hiit-gecmis.png") { AppTheme { Box(Modifier.background(Theme.c.bg)) { HiitScreen() } } }
+        HiitLog.clear()
+    }
+    /** Görsel zamanlayıcı: pasta ve kum saati (2. analiz #140) */
+    @Test fun visualTimer() = capture("tr-gorsel-zamanlayici") {
+        androidx.compose.foundation.layout.Row(Modifier.padding(16.dp)) {
+            VisualTimerContent(20 * 60_000L, 60 * 60_000L, "pie", Modifier.weight(1f))
+            VisualTimerContent(20 * 60_000L, 60 * 60_000L, "sand", Modifier.weight(1f))
+        }
+    }
     @Test fun routine() {
         RuntimeEnvironment.setQualifiers("+tr")
         // 7 dakika antrenmanı, 75. saniye: üçüncü hareket (şınav)

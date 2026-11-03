@@ -4,6 +4,8 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.background
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +21,8 @@ import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.Air
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Fullscreen
+import androidx.compose.material.icons.filled.FullscreenExit
 import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Refresh
@@ -193,8 +197,16 @@ private fun Stopwatch() {
     }
     fun fmt(ms: Long) = clock(ms / 1000) + ".%02d".format((ms / 10) % 100)
 
+    // Tam ekran ve yatayda dev rakamlar (2. analiz #104)
+    var full by remember { mutableStateOf(false) }
+    if (full) StopwatchFullscreen({ fmt(total) }, running = start > 0, onLap = { save(start, acc, (laps + total).joinToString(",")) },
+        onToggle = { if (start > 0) save(0, total, lapsRaw) else { now = System.currentTimeMillis(); save(now, acc, lapsRaw) } }) { full = false }
+
     Column(Modifier.fillMaxSize().padding(16.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        Spacer(Modifier.height(24.dp))
+        Spacer(Modifier.height(8.dp))
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+            IconButton(onClick = { full = true }) { Icon(Icons.Filled.Fullscreen, L("clock.fullscreen"), tint = Theme.c.accent) }
+        }
         BigTime(fmt(total))
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             if (start > 0) {
@@ -221,6 +233,13 @@ private fun Stopwatch() {
                     listOf(listOf(L("tools.stopwatch.lapNo"), L("tools.stopwatch.lapTime"), L("tools.stopwatch.total"))) +
                         lapTimes.indices.map { listOf("${it + 1}", fmt(lapTimes[it]), fmt(laps[it])) }, L("csv.laps"))
             }) { Text(L("csv.laps"), color = Theme.c.accent) }
+            // Turları metin olarak kopyala (2. analiz #104)
+            if (lapTimes.isNotEmpty()) androidx.compose.material3.TextButton(onClick = {
+                val text = lapTimes.indices.joinToString("\n") { "${L("tools.stopwatch.lapNo")} ${it + 1}\t${fmt(lapTimes[it])}\t${fmt(laps[it])}" }
+                (context.getSystemService(android.content.Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager)
+                    .setPrimaryClip(android.content.ClipData.newPlainText(L("sw.copyLaps"), text))
+                android.widget.Toast.makeText(context, L("sw.copied"), android.widget.Toast.LENGTH_SHORT).show()
+            }) { Text(L("sw.copyLaps"), color = Theme.c.accent) }
             for (i in lapTimes.indices.reversed()) {
                 val lap = lapTimes[i]
                 Ltr {
@@ -268,6 +287,31 @@ private fun Stopwatch() {
             }) { Text("+ " + L("sw.multi.add"), color = Theme.c.accent) }
             Text(L("sw.multi.note"), color = Theme.c.muted, fontSize = 13.sp)
             Spacer(Modifier.height(16.dp))
+        }
+    }
+}
+
+/** Kronometre tam ekranı: siyah zemin, genişliğe sığan dev rakamlar (yatayda ekranı doldurur), tur ve dur/başlat; ekran açık kalır */
+@Composable
+private fun StopwatchFullscreen(text: () -> String, running: Boolean, onLap: () -> Unit, onToggle: () -> Unit, onClose: () -> Unit) {
+    val view = androidx.compose.ui.platform.LocalView.current
+    DisposableEffect(Unit) { view.keepScreenOn = true; onDispose { view.keepScreenOn = false } }
+    androidx.compose.ui.window.Dialog(onClose, androidx.compose.ui.window.DialogProperties(usePlatformDefaultWidth = false, decorFitsSystemWindows = false)) {
+        Column(Modifier.fillMaxSize().background(Color.Black).padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                IconButton(onClick = onClose) { Icon(Icons.Filled.FullscreenExit, L("common.done"), tint = Color.White) }
+            }
+            Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Ltr {
+                    androidx.compose.foundation.text.BasicText(text(), maxLines = 1,
+                        style = Tnum.copy(color = Color.White, fontWeight = FontWeight.Light, textAlign = androidx.compose.ui.text.style.TextAlign.Center),
+                        autoSize = androidx.compose.foundation.text.TextAutoSize.StepBased(minFontSize = 24.sp, maxFontSize = 400.sp))
+                }
+            }
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                if (running) RoundButton(L("tools.stopwatch.lap"), false, Modifier.weight(1f), onLap)
+                RoundButton(L(if (running) "tools.stopwatch.stop" else "tools.stopwatch.resume"), true, Modifier.weight(1f), onToggle)
+            }
         }
     }
 }

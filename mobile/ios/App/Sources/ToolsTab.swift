@@ -132,6 +132,9 @@ struct StopwatchView: View {
     @AppStorage("sw.acc") private var acc = 0.0
     @AppStorage("sw.laps") private var lapsRaw = ""
     @State private var extra = StopwatchItem.load()
+    /// Tam ekran ve yatayda dev rakamlar (2. analiz #104)
+    @State private var full = false
+    @State private var copied = false
 
     private var laps: [Double] { lapsRaw.split(separator: ",").compactMap { Double($0) } }
     private func elapsed(_ now: Date) -> Double { acc + (start > 0 ? now.timeIntervalSinceReferenceDate - start : 0) }
@@ -170,6 +173,47 @@ struct StopwatchView: View {
         .onChange(of: start) { LiveActivities.sync() }
         .navigationTitle(L("tools.hub.cards.stopwatch.name"))
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button { full = true } label: { Image(systemName: "arrow.up.left.and.arrow.down.right") }
+                    .accessibilityLabel(L("clock.fullscreen"))
+            }
+        }
+        .fullScreenCover(isPresented: $full) { fullscreen }
+    }
+
+    /// Siyah zemin, genişliğe sığan dev rakamlar (yatayda ekranı doldurur), tur ve dur/başlat; ekran açık kalır
+    private var fullscreen: some View {
+        TimelineView(.animation(minimumInterval: 0.05)) { context in
+            let t = elapsed(context.date)
+            VStack(spacing: 16) {
+                HStack {
+                    Spacer()
+                    Button { full = false } label: { Image(systemName: "arrow.down.right.and.arrow.up.left").font(.title2) }
+                        .accessibilityLabel(L("common.done"))
+                }
+                Spacer()
+                Text(format(t))
+                    .font(.system(size: 400, weight: .light, design: .rounded)).monospacedDigit()
+                    .minimumScaleFactor(0.05).lineLimit(1)
+                    .environment(\.layoutDirection, .leftToRight)
+                Spacer()
+                HStack(spacing: 16) {
+                    if start > 0 {
+                        RoundButton(title: L("tools.stopwatch.lap")) { lapsRaw = (laps + [t]).map { String($0) }.joined(separator: ",") }
+                        RoundButton(title: L("tools.stopwatch.stop"), prominent: true) { acc = t; start = 0 }
+                    } else {
+                        RoundButton(title: L("tools.stopwatch.resume"), prominent: true) { start = Date().timeIntervalSinceReferenceDate }
+                    }
+                }
+            }
+            .padding(20)
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.black.ignoresSafeArea())
+        }
+        .onAppear { UIApplication.shared.isIdleTimerDisabled = true }
+        .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
     }
 
     private func format(_ t: Double) -> String {
@@ -195,6 +239,13 @@ struct StopwatchView: View {
                           preview: SharePreview("laps.csv")) {
                     Label(L("csv.laps"), systemImage: "square.and.arrow.up")
                 }
+                .foregroundStyle(Theme.accent)
+                // Turları metin olarak kopyala (2. analiz #104)
+                Button {
+                    UIPasteboard.general.string = lapTimes.enumerated().map { "\(L("tools.stopwatch.lapNo")) \($0.offset + 1)\t\(format($0.element))\t\(format(totals[$0.offset]))" }
+                        .joined(separator: "\n")
+                    copied = true
+                } label: { Label(copied ? L("sw.copied") : L("sw.copyLaps"), systemImage: copied ? "checkmark" : "doc.on.doc") }
                 .foregroundStyle(Theme.accent)
             }
             ForEach(Array(lapTimes.enumerated()).reversed(), id: \.offset) { i, lap in
@@ -870,8 +921,13 @@ struct PomodoroView: View {
                         .font(.title3.weight(.semibold))
                         .foregroundStyle(phase == "work" ? Theme.accent : CalendarData.color("religious"))
                         .padding(.top, 24)
-                    BigTime(text: clock(Int(remaining.rounded(.up))))
-                    Text(T("tools.pomodoro.round", round, rounds)).foregroundStyle(Theme.muted)
+                    // Kalan süre halkası ve tur domatesleri (2. analiz #101)
+                    ProgressRing(progress: remaining / max(1, phaseSeconds), color: phase == "work" ? Theme.accent : CalendarData.color("religious")) {
+                        BigTime(text: clock(Int(remaining.rounded(.up))))
+                    }
+                    .frame(maxWidth: 320)
+                    RoundDots(total: rounds, done: phase == "long" ? rounds : round - 1, current: phase == "work" ? round : 0,
+                              label: T("tools.pomodoro.round", round, rounds))
                     HStack(spacing: 12) {
                         RoundButton(title: L("tools.pomodoro.skip")) { advance() }
                         if running {

@@ -2069,5 +2069,27 @@
     <string name="timers_input_wheel">ホイール</string>
     <string name="timers_input_keypad">キーパッド</string>
     <string name="timers_input_delete">削除</string>
+    <string name="hiit_say_half">半分</string>
+    <string name="hiit_say_ten">あと10秒</string>
+    <string name="hiit_cues">読み上げ</string>
+    <string name="hiit_cue_nextLabel">休憩中に次のステップを読み上げる</string>
+    <string name="hiit_cue_halfLabel">半分で知らせる</string>
+    <string name="hiit_cue_tenLabel">残り10秒で知らせる</string>
+    <string name="hiit_upcoming">この後</string>
+    <string name="hiit_prev">前のステップ</string>
+    <string name="hiit_skip">次のステップ</string>
+    <string name="hiit_roundCount">%1$sラウンド</string>
+    <string name="hiit_remindTomorrow">明日の同じ時刻に知らせる</string>
+    <string name="hiit_history">履歴</string>
+    <string name="hiit_historyClear">履歴を消去</string>
+    <string name="hiit_week">今週：%1$s回</string>
+    <string name="tools_lock">画面をロック</string>
+    <string name="tools_holdToUnlock">長押しで解除</string>
+    <string name="timers_visual">ビジュアルタイマー</string>
+    <string name="timers_style_pie">円</string>
+    <string name="timers_style_sand">砂時計</string>
+    <string name="timers_kids">キッズモード</string>
+    <string name="sw_copyLaps">ラップをコピー</string>
+    <string name="sw_copied">コピーしました</string>
     <string name="app_name">時刻と日付</string>
 </resources>
