@@ -1,6 +1,7 @@
 #!/bin/bash
 # App Store ekran görüntüleri: 6,9" iPhone (1320×2868) ve 13" iPad (2064×2752) simülatörlerinde, on bir mağaza dilinde.
-# fastlane deliver bu klasörü olduğu gibi yükler: <çıktı>/<mağaza dili>/NN-ad.png
+# Çıktı ham görüntülerdir (<çıktı>/<mağaza dili>/NN-ad.png); frame-screenshots.mjs bunları çerçeveleyip fastlane/screenshots'a yazar,
+# fastlane deliver o klasörü olduğu gibi yükler.
 # Kullanım: store-screenshots.sh <SaatTarih.app yolu> <çıktı klasörü>
 set -euo pipefail
 APP="$1"; OUT="$2"; BUNDLE=tr.bumba.time
@@ -41,6 +42,8 @@ for L in $STORE_LANGS; do
   shoot $1 $2 $3 04-dunya 15 -openScreen world
   shoot $1 $2 $3 05-araclar 6 -startTab 6
   shoot $1 $2 $3 06-imsakiye 6 -openScreen imsakiye
+  # Gece modu (frame-screenshots.mjs bunu komodin sahnesine koyar; 2. analiz #33)
+  shoot $1 $2 $3 07-gece 6 -openScreen night -nightMode on
 done
 # iPad (rakip analizi #18; uygulama iPad'i de destekleyince App Store 13" iPad görüntüsü ister). deliver cihazı
 # çözünürlükten tanır; dosya adları iPhone'unkilerle karışmasın diye "ipad-" ile başlar.

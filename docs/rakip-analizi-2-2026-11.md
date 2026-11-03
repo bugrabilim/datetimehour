@@ -23,7 +23,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
   - #25 (bağış) bu üç değerin dışındadır: bağış özellik açmaz, karar sahibindir.
 - Temel işler her zaman ücretsiz kalır: saat, alarm, vakitler, takvim. Bu analiz yalnız ileride neyin ücretli olabileceğini not eder; bugün ücretli hiçbir şey yok.
 
-**Durum (3 Kasım 2026):** 206 iş: 45 yapıldı (#82, bizdeki 8 hata: #87–#93, #186, ve 1. ajan dalgasının 36 işi: #10, #12, #13, #17, #21, #22, #26–#29, #31, #41–#44, #47–#52, #56, #57, #59–#66, #69–#72, #74; sahibin isteğiyle ajansız), 159 açık (#25 bağış ve #33 mağaza ortam fotoğrafı sahibin kararını bekliyor) (13'ü kullanıcı dostu düzen işi: #194–#206, sahip Seçenek B'yi seçti; notlar `docs/kullanici-dostu/`), 2 ücretli sistemle birlikte gelecek (#53 ve #75; sunucu ve hesap gerektirir, sahibin kararıyla şimdi yapılmayacak). Kaynaklar: 1–8 ve 76–84 sahibin ekran görüntüleri; 9–75 birinci ajan dalgası; 85–86 ilk analizde "bitti" sayılıp eksik kalan kısımlar; 87–192 ikinci ajan dalgası (saat siteleri, hava ve takvim, zaman araçları, Ay ve gökyüzü, Google Play/widget/saat kadranları, tasarım; 189–192 doğrulamadan sonra eklendi); 193 sahibin isteği; 194–206 kullanıcı dostu düzen (Seçenek B, sahibin kararı; notlar ve görsel sunum `docs/kullanici-dostu/`).
+**Durum (3 Kasım 2026):** 206 iş: 46 yapıldı (#82, bizdeki 8 hata: #87–#93, #186, 1. ajan dalgasının 36 işi: #10, #12, #13, #17, #21, #22, #26–#29, #31, #41–#44, #47–#52, #56, #57, #59–#66, #69–#72, #74; sahibin isteğiyle ajansız; ve #33 mağaza görselleri), 157 açık (13'ü kullanıcı dostu düzen işi: #194–#206, sahip Seçenek B'yi seçti; notlar `docs/kullanici-dostu/`), 3 ücretli sistemle birlikte gelecek (#53 ve #75 sunucu ve hesap gerektirir; #25 bağış ödeme yöntemleriyle birlikte; sahibin kararıyla şimdi yapılmayacak). Kaynaklar: 1–8 ve 76–84 sahibin ekran görüntüleri; 9–75 birinci ajan dalgası; 85–86 ilk analizde "bitti" sayılıp eksik kalan kısımlar; 87–192 ikinci ajan dalgası (saat siteleri, hava ve takvim, zaman araçları, Ay ve gökyüzü, Google Play/widget/saat kadranları, tasarım; 189–192 doğrulamadan sonra eklendi); 193 sahibin isteği; 194–206 kullanıcı dostu düzen (Seçenek B, sahibin kararı; notlar ve görsel sunum `docs/kullanici-dostu/`).
 
 **Numaralar:** İlk analizden ayrıdır, "2. analiz #N" diye anılır. Numara sabittir. İş bitince yalnız "Durum" değişir, yeni iş sona eklenir. 1–8 numaralı işler 3 Kasım 2026'da ilk analizin 108–115 numaralarından buraya taşındı.
 
@@ -55,7 +55,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 22 | Dev metin/tabela modu ("İYİ Kİ DOĞDUN") ve saat boyutu %130'a kadar (bizde fs.text küçük satır, fs.scale 0,5–1) | Uygulama | K | yapıldı (3 Kasım 2026) | VIP ₺149,99 | ücretsiz | Fullscreen Clock |
 | 23 | Üretken sanat zeminleri (topografik çizgiler, nokta matris dünya haritası, grenli gradyan, sıvı metal), cam kart, odometre gibi dönen dakika (bizde 6 zemin, rakipte 28+) | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #58) | 3 zemin ücretsiz, Pro ₺199,99 | ileride Pro adayı | Clocks - A fun standby mode |
 | 24 | Rakam rengini ayrı seçme, dış hatlı rakam, ahşap doku zemin | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #58) | Premium ₺69,99/ay | ücretsiz | ClockZ, Digital Clock |
-| 25 | Bağış (bahşiş) satın alması: özellik açmaz, destek içindir | Uygulama | K | açık (sahibin kararı bekleniyor) | ClockZ ₺49,99–499,99 (5 kademe); Vakit ₺10–500 tek seferlik, ₺1.000–10.000 aylık | bağış (isteğe bağlı; karar sahibin) | ClockZ, Vakit, Countdown Widget |
+| 25 | Bağış (bahşiş) satın alması: özellik açmaz, destek içindir | Uygulama | K | ücretli sistemle birlikte (3 Kasım 2026, sahibin kararı: ödeme yöntemleri eklenince) | ClockZ ₺49,99–499,99 (5 kademe); Vakit ₺10–500 tek seferlik, ₺1.000–10.000 aylık | bağış (isteğe bağlı; karar sahibin) | ClockZ, Vakit, Countdown Widget |
 | 26 | Tam ekran saatte kaydırarak araç değiştirme (sola pomodoro, sağa sayaç) | Uygulama | K | yapıldı (3 Kasım 2026) | ücretsiz | ücretsiz | Zen Flip |
 | 27 | Zaman çizelgeli uygulama engeli (ör. hafta içi 08–17; bizde yalnız pomodoro sırasında) | Uygulama | O | yapıldı (3 Kasım 2026) | abonelik ₺579/yıl | ücretsiz | Forest |
 | 28 | Nefes egzersizi | Uygulama | K | yapıldı (3 Kasım 2026) | ücretsiz | ücretsiz | Forest |
@@ -63,7 +63,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 30 | Doğa ve ortam sesleri kitaplığı (tik-tak, cırcır, dere, kafe, şömine, kütüphane…) ve uyku sesi karışımı (birden çok ses, ayrı ses düzeyi, fotoğraflı kartlar, kategoriler, mini oynatıcı); bizde 5 üretilmiş gürültü | Uygulama | O | açık (birinci araştırmadan kalan, ilk analiz #52, #53) | temel sesler ücretsiz, çoğu Premium | ücretsiz (temel); ileride Pro adayı (ek paketler) | Focus To-Do, Flip Clock, ShutEye, Alarmy, Sleep as Android, SuperAlarm |
 | 31 | Odak istatistiğinde ay/yıl görünümü; çalıştıkça büyüyen fidan/orman koleksiyonu | Uygulama (+ site) | K/O | yapıldı (3 Kasım 2026) | Pro | ücretsiz | Forest, Focus To-Do |
 | 32 | Wear OS kadranında renk seçimi (WFF UserConfigurations) ve daha çok saat kadranı | Wear OS | K | açık (birinci araştırmadan kalan, ilk analiz #78) | karışık | ücretsiz | Facer |
-| 33 | Mağaza görüntülerinde gerçek ortam fotoğrafı (masa, komodin, MagSafe standı); bizim görüntülerimiz simülatörden | Mağaza | K | açık (sahibin kararı bekleniyor) | — | ücretsiz (ürün özelliği değil, mağaza görseli) | Fliqlo, Clocks, Bauhaus |
+| 33 | Mağaza görüntülerinde gerçek ortam fotoğrafı (masa, komodin, MagSafe standı); bizim görüntülerimiz simülatörden | Mağaza | K | yapıldı (3 Kasım 2026, sahip "sen hallet" dedi: fotoğraf yerine çizim; simülatör görüntüleri telefon/iPad çerçevesinde, kâğıt zeminde kısa başlıkla, gece görseli komodin sahnesinde; `mobile/ios/scripts/frame-screenshots.mjs`, başlıklar `fastlane/captions.json` 11 dilde) | — | ücretsiz (ürün özelliği değil, mağaza görseli) | Fliqlo, Clocks, Bauhaus |
 | 34 | Tek alarmda birden çok görev (zincir) ve rastgele görev | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | bilinmiyor / abonelik | ücretsiz | Alarmy (26.42.0), Wayk |
 | 35 | Kapatma görevini alarm çalmadan önizleme ("Önizleme" düğmesi) | Uygulama | K | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | ücretsiz | ücretsiz | Wayk, Alarm Clock Xtreme |
 | 36 | Kamerayla nesne ya da sahne görevi (bardak, diş fırçası, gökyüzü, toplanmış yatak), squat/şınav; cihaz içinde (Vision, ML Kit). Bizdeki fotoğraf görevi yalnız aynı yeri eşleştirir | Uygulama | O/B | açık (birinci araştırmadan kalan, ilk analiz #50, #75) | büyük olasılıkla Premium | ücretsiz | Alarmy, Wayk, SuperAlarm |
@@ -440,9 +440,10 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 - Ekrana yazı yazma var. Bizde yalnız küçük bir satır → #22.
 
 ## Ücretli sistemle birlikte gelecekler (3 Kasım 2026, sahibin kararı)
-Sunucu ve hesap gerektiren işler; şimdi yapılmayacak, ücretli bölüm açılınca yeniden ele alınır:
+Sunucu, hesap ya da ödeme gerektiren işler; şimdi yapılmayacak, ücretli bölüm ve ödeme yöntemleri açılınca yeniden ele alınır:
 - **#53** Arkadaşlarla uyanma grupları, sanal para (Wayk, SleepTown).
 - **#75** Ortak zikir ve hatim, topluluk, radyo, fetva araması (Codeida, Azan Time, Muslim Pro, e-Diyanet). "ALO 190" arama düğmesi sunucu istemez; ayrı yapılabilir.
+- **#25** Bağış (bahşiş) satın alması (ClockZ, Vakit): uygulama içi satın alma ve ödeme yöntemleriyle birlikte ele alınır (3 Kasım 2026, sahibin kararı).
 
 ## Kapsam sınırı (3 Kasım 2026)
 Birinci ajan dalgası üç alana baktı: kadran/masa saati (ikinci öncelik odak ve zamanlayıcı), alarm/uyku, namaz (ikinci öncelik takvim, dünya saati, geri sayım). **Bakılmayanlar:**

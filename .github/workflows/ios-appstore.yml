@@ -50,11 +50,21 @@ jobs:
             -destination 'generic/platform=iOS Simulator' -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO -quiet build
       - name: Ekran görüntüleri
-        run: mobile/ios/scripts/store-screenshots.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app mobile/ios/fastlane/screenshots
+        run: mobile/ios/scripts/store-screenshots.sh build/Build/Products/Debug-iphonesimulator/SaatTarih.app store-raw
+      # Mağaza görselleri (2. analiz #33): çerçeve, kısa başlık (fastlane/captions.json), gece görselinde komodin sahnesi.
+      # Sistemdeki Google Chrome'u playwright-core ile kullanır; çıktı deliver'ın yüklediği klasöre gider.
+      - name: Mağaza görselleri
+        run: |
+          npm install --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/pw" playwright-core@1.56.1
+          PW_DIR="$RUNNER_TEMP/pw" node mobile/ios/scripts/frame-screenshots.mjs store-raw mobile/ios/fastlane/screenshots
       - uses: actions/upload-artifact@v4
         with:
           name: app-store-ekran-goruntuleri
           path: mobile/ios/fastlane/screenshots
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-store-ekran-goruntuleri-ham
+          path: store-raw
       # Önizleme videosu (dönen dünya) App Store Connect'e elle sürüklenir: sürüm sayfası › iPhone 6,9" önizleme
       - name: Önizleme videosu
         if: inputs.preview

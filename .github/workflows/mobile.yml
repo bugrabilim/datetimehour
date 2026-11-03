@@ -22,6 +22,12 @@ on:
       - "src/i18n/**"
       - ".github/workflows/mobile.yml"
 
+# Aynı PR'a (ya da dala) yeni commit gelince eski çalışma iptal edilir: üst üste gönderimlerde eski commit'lerin
+# sonuçları gereksiz "Run failed" bildirimi göndermesin (3 Kasım 2026).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test-data:
     name: Ortak test verisi güncel
@@ -34,6 +40,7 @@ jobs:
       - run: node mobile/shared/gen-vectors.mjs --check
       - run: node mobile/shared/gen-strings.mjs --check
       - run: node mobile/shared/gen-religion.mjs --check
+      - run: node mobile/ios/scripts/check-swift.mjs
 
   swift-linux:
     name: Swift çekirdek (Linux)
