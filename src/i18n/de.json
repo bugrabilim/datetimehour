@@ -85,7 +85,8 @@
       "sun": "Sonntag",
       "sat": "Samstag"
     },
-    "lookMs": "Millisekunden"
+    "lookMs": "Millisekunden",
+    "lookNight": "Nachtmodus (Licht aus)"
   },
   "client": {
     "format24": "24 Stunden",
@@ -472,6 +473,11 @@
               "Bis zur Löschung durch Sie"
             ],
             [
+              "sth-exam",
+              "Speichert im Prüfungstimer Prüfungsname, Raum, Zeiten und den Start einer laufenden Prüfung.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
               "sth-metro",
               "Speichert Tempo, Schläge pro Takt und Klangeinstellungen des Metronoms.",
               "Bis zur Löschung durch Sie"
@@ -625,7 +631,10 @@
       "h-wx-analog-date": "Analog, Datum und Wetter nebeneinander",
       "h-wx-full": "Analog, digital, Datum und Wetter nebeneinander",
       "wx-digital-cal": "Digital, Datum, Wetter und Monatskalender",
-      "wx-digital-cal-week": "Digital, Datum, Wetter, Monatskalender und Wochenwetter"
+      "wx-digital-cal-week": "Digital, Datum, Wetter, Monatskalender und Wochenwetter",
+      "holo": "Hologramm",
+      "matrix": "Matrix",
+      "math": "Mathe-Uhr"
     },
     "source": "Diese Uhr ist unabhängig von Ihrem Gerät: Sie wird von der per NTP synchronisierten Uhr des Saat-Tarih-Servers abgelesen und alle 15 Minuten neu gemessen.",
     "info": "Info zur Zeitquelle",
@@ -940,6 +949,14 @@
         "tzn": {
           "name": "Zeitzonen-Nachrichten",
           "desc": "Entscheidungen der Länder zu Zeitzonen und Sommerzeit."
+        },
+        "sleepCalc": {
+          "name": "Schlafrechner",
+          "desc": "Schlafens- und Weckzeiten nach Schlafzyklen."
+        },
+        "examTimer": {
+          "name": "Prüfungstimer",
+          "desc": "Vollbild-Countdown für den Prüfungsraum."
         }
       },
       "infoHeading": "Infoseiten"
@@ -1429,7 +1446,11 @@
     "shareLink": "Link kopieren",
     "linkCopied": "Link kopiert",
     "addIcs": "Zum Kalender hinzufügen (.ics)",
-    "addGoogle": "Zu Google Kalender hinzufügen"
+    "addGoogle": "Zu Google Kalender hinzufügen",
+    "addOutlook": "Zu Outlook hinzufügen",
+    "mailGmail": "Mit Gmail senden",
+    "copyText": "Als Text kopieren",
+    "textCopied": "Text kopiert."
   },
   "planner": {
     "title": "Meeting-Planer: gemeinsame Arbeitszeiten finden | Saat Tarih",
@@ -1469,7 +1490,11 @@
     "pickHint": "Tippen Sie oben in der Tabelle auf eine Stunde, um die Besprechungszeit zu wählen; Link und Kalendereintrag enthalten sie.",
     "meeting": "Besprechung",
     "picked": "Gewählte Zeit: {time} (Ortszeit {city})",
-    "legendWeekend": "Wochenende"
+    "legendWeekend": "Wochenende",
+    "addOutlook": "Zu Outlook hinzufügen",
+    "mailGmail": "Mit Gmail senden",
+    "copyText": "Als Text kopieren",
+    "textCopied": "Text kopiert."
   },
   "poll": {
     "title": "Terminumfrage: Gemeinsam die beste Zeit finden | Saat Tarih",
@@ -2157,7 +2182,7 @@
   },
   "consent": {
     "barLabel": "Cookie-Auswahl",
-    "barText": "Wir speichern Ihre Einstellungen (Sprache, Design, Uhr- und Werkzeugeinstellungen) nur in diesem Browser. Wenn Sie zustimmen, werden Besuche mit Umami gezählt, und das Wetter (Open-Meteo), die Detailkarte des Globus und Moscheen in der Nähe (OpenStreetMap) sowie Weckermusik (YouTube) werden von externen Diensten geladen.",
+    "barText": "Ihre Einstellungen bleiben in diesem Browser. Mit Ihrer Zustimmung zählt Umami Besuche; Wetter, Karten und Musik kommen von externen Diensten.",
     "accept": "Akzeptieren",
     "reject": "Ablehnen",
     "prefs": "Einstellungen",
@@ -2952,6 +2977,65 @@
       {
         "q": "Wie erfährt mein Gerät, dass ein Land seine Uhrzeit ändert?",
         "a": "Apple, Google und Microsoft liefern neue Versionen der tz-Datenbank mit Betriebssystem-Updates aus. Halten Sie Ihr Gerät aktuell, stimmt die Uhrzeit von selbst."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Schlafrechner: Wann ins Bett, wann aufstehen? | Saat Tarih",
+    "description": "Berechnen Sie Schlafens- oder Aufstehzeiten nach 90-minütigen Schlafzyklen: wann ins Bett für eine Weckzeit, oder wann aufstehen, wenn Sie jetzt schlafen gehen.",
+    "h1": "Schlafrechner",
+    "lead": "Finden Sie Schlafenszeiten zu einer Weckzeit oder Weckzeiten zu einer Schlafenszeit, in 90-Minuten-Zyklen. Für das Einschlafen werden 15 Minuten addiert.",
+    "search": "schlafrechner wann ins bett schlafzyklus 90 minuten aufwachen sleep calculator",
+    "wakeHeading": "Nach Weckzeit: wann ins Bett?",
+    "wakeLabel": "Weckzeit",
+    "bedHeading": "Nach Schlafenszeit: wann aufstehen?",
+    "bedLabel": "Schlafenszeit",
+    "nowBtn": "Wenn ich jetzt schlafen gehe",
+    "cycles": "{n} Zyklen · {d} Schlaf",
+    "best": "empfohlen",
+    "note": "Schlafzyklen sind individuell verschieden (etwa 70–120 Minuten); die Zeiten sind ein grober Richtwert, keine medizinische Empfehlung. Erwachsenen werden meist 7–9 Stunden Schlaf empfohlen.",
+    "faq": [
+      {
+        "q": "Wie lang ist ein Schlafzyklus?",
+        "a": "Ein Schlafzyklus dauert im Schnitt etwa 90 Minuten (je nach Person etwa 70–120). Am Ende eines Zyklus, im leichten Schlaf, wacht man meist leichter auf; deshalb schlägt der Rechner Zeiten im 90-Minuten-Takt vor."
+      },
+      {
+        "q": "Wie viele Zyklen sollte ich schlafen?",
+        "a": "Erwachsenen werden meist 7–9 Stunden Schlaf empfohlen, also 5 oder 6 Zyklen. Der Rechner hebt 6 und 5 Zyklen hervor und zeigt auch kürzere Möglichkeiten."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Prüfungstimer: Vollbild-Countdown für den Prüfungsraum | Saat Tarih",
+    "description": "Vollbild-Prüfungstimer mit Prüfungsname, Raum, Lesezeit und Dauer: Restzeit, Endzeit und Warnungen in den letzten Minuten. Für Klassenarbeiten und Probeprüfungen.",
+    "h1": "Prüfungstimer",
+    "lead": "Geben Sie Prüfungsname, Raum, Lesezeit und Dauer ein; der Vollbild-Timer für den Beamer zeigt Restzeit und Endzeit.",
+    "search": "prüfungstimer klassenarbeit countdown vollbild beamer exam timer",
+    "nameLabel": "Prüfung",
+    "namePh": "z. B. Mathe-Klassenarbeit",
+    "roomLabel": "Raum / Klasse",
+    "roomPh": "z. B. 9a",
+    "readLabel": "Lesezeit (Min.)",
+    "durLabel": "Prüfungsdauer (Min.)",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Fortsetzen",
+    "reset": "Zurücksetzen",
+    "phaseRead": "Lesezeit",
+    "phaseExam": "Prüfung läuft",
+    "phaseDone": "Die Zeit ist um",
+    "endsAt": "Ende: {time}",
+    "warn15": "Letzte 15 Minuten",
+    "warn5": "Letzte 5 Minuten",
+    "note": "Läuft, solange die Seite offen ist; der Start wird in diesem Browser gespeichert, beim erneuten Öffnen läuft der Timer weiter. Gemessen wird mit der Serverzeit; im Vollbild bleibt der Bildschirm an.",
+    "faq": [
+      {
+        "q": "Wie benutze ich den Prüfungstimer?",
+        "a": "Prüfungsname, Raum, Lesezeit (sonst 0) und Dauer eingeben und Start drücken; mit der Vollbild-Taste an die Wand projizieren. Nach der Lesezeit beginnt die Prüfungszeit automatisch; in den letzten 15 und 5 Minuten ändert sich die Farbe."
+      },
+      {
+        "q": "Stoppt der Timer, wenn ich die Seite schließe?",
+        "a": "Nein. Die Startzeit wird in diesem Browser gespeichert; beim erneuten Öffnen läuft der Timer weiter. Auch eine Pause wird gespeichert."
       }
     ]
   }

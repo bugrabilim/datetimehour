@@ -172,6 +172,8 @@
       var k = sel.getAttribute("data-look"); sel.value = LOOK[k].indexOf(prefs[k]) > 0 ? prefs[k] : LOOK[k][0];
     });
     Array.prototype.forEach.call(doc.querySelectorAll("[data-look-bool]"), function (cb) { cb.checked = !!prefs[cb.getAttribute("data-look-bool")]; });
+    // Gece modu (2. analiz #182): saatli sayfalarda siyah zemin, kırmızı yazı; theme.js de sayfa çizilmeden uygular
+    if (prefs.night && !window.__sthPrefs) h.setAttribute("data-cnight", ""); else h.removeAttribute("data-cnight");
   }
   // Dijital saatte saniye küçük ve tabana hizalı (2. analiz #21): sth-prefs.secSmall
   Array.prototype.forEach.call(doc.querySelectorAll("[data-look-bool]"), function (cb) {
@@ -396,6 +398,22 @@ function sunTimes(y, m, d, lat, lon) {
     return tpl(W.sentence, { h: hourWords(h), m: m });
   }
 
+  /* Matematik saati (2. analiz #183): her sayı dakikada bir değişen bir işlemle yazılır (dakika içinde sabit) */
+  function mathExpr(n, seed) {
+    var r = function () { seed = (seed * 1103515245 + 12345) % 2147483648; return seed / 2147483648; };
+    var sup = function (k) { return String(k).split("").map(function (c) { return "⁰¹²³⁴⁵⁶⁷⁸⁹"[+c]; }).join(""); };
+    var opts = [];
+    if (n > 1) { var a = 1 + Math.floor(r() * (n - 1)); opts.push(a + " + " + (n - a)); }
+    var k = 1 + Math.floor(r() * 9); opts.push((n + k) + " − " + k);
+    opts.push("√" + n * n);
+    var dv = 2 + Math.floor(r() * 4); opts.push(n * dv + " ÷ " + dv);
+    for (var f = 2; f * f <= n; f++) if (n % f === 0 && n / f > 1) opts.push(f + " × " + n / f);
+    if (n >= 4) { var b = Math.floor(Math.sqrt(n)); if (b > 1) opts.push(b + "² + " + (n - b * b)); }
+    if (n > 1 && (n & (n - 1)) === 0) opts.push("2" + sup(Math.log2(n)));
+    if (n === 6 || n === 24) opts.push(n === 6 ? "3!" : "4!");
+    if (n === 0) opts.push("0 × " + k);
+    return opts[Math.floor(r() * opts.length)];
+  }
   var calCache = new WeakMap();
   function renderCalendar(el, p, tz) {
     var wsOff = { mon: 0, sun: 6, sat: 5 }[lookOf("weekStart")]; // pazartesiden başlayan dizide ilk günün yeri
@@ -550,6 +568,13 @@ function sunTimes(y, m, d, lat, lon) {
           if (note) note.textContent = tpl(T.yearDone, { p: Math.floor(pct) });
           return;
         case "calendar": renderCalendar(el, parts(now, tz), tz); return;
+        case "math":
+          p = parts(now, tz);
+          var mh = prefs.h12 ? (p.hour % 12 || 12) : p.hour, mk = p.year * 1e6 + p.month * 1e4 + p.day * 100 + p.minute + mh * 60;
+          if (el.__mk === mk) return;
+          el.__mk = mk;
+          out = mathExpr(mh, mk * 7 + 1) + "  :  " + mathExpr(p.minute, mk * 13 + 5);
+          break;
         case "flip":
           p = parts(now, tz);
           var hh = prefs.h12 ? (p.hour % 12 || 12) : p.hour;
@@ -638,6 +663,36 @@ function sunTimes(y, m, d, lat, lon) {
   if (tickBtns.length) doc.addEventListener("pointerdown", function () { if (prefs.tick && (!audio || audio.state !== "running")) ensureAudio(); }, { passive: true });
   syncButtons();
   if (liveEls.length) schedule();
+
+  /* Matrix saati (2. analiz #183): yalnız model görünürken, sekme açıkken ve hareket azaltma tercihi yokken yağar */
+  var mxCanvases = Array.prototype.slice.call(doc.querySelectorAll("[data-matrix]"));
+  if (mxCanvases.length) {
+    var mxReduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches, mxLast = 0;
+    var mxChars = "アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789:+-*=<>".split("");
+    var mxFrame = function (t) {
+      requestAnimationFrame(mxFrame);
+      if (doc.hidden || t - mxLast < 60) return;
+      mxLast = t;
+      mxCanvases.forEach(function (cv) {
+        var sl = cv.closest(".slide");
+        if (sl && sl.getAttribute("aria-hidden") === "true") return;
+        var w = cv.clientWidth, h = cv.clientHeight, dpr = Math.min(2, window.devicePixelRatio || 1), fs = 16;
+        if (!w || !h) return;
+        if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); cv.__drops = null; }
+        var g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var cols = Math.ceil(w / fs);
+        if (!cv.__drops || cv.__drops.length !== cols) { cv.__drops = []; for (var i = 0; i < cols; i++) cv.__drops.push(Math.random() * h / fs); g.fillStyle = "#000"; g.fillRect(0, 0, w, h); }
+        g.fillStyle = "rgba(0,0,0,0.08)"; g.fillRect(0, 0, w, h);
+        g.font = fs + "px monospace";
+        cv.__drops.forEach(function (y, i) {
+          g.fillStyle = Math.random() < 0.06 ? "#c8ffd8" : "#00c853";
+          g.fillText(mxChars[Math.floor(Math.random() * mxChars.length)], i * fs, y * fs);
+          cv.__drops[i] = y * fs > h && Math.random() > 0.97 ? 0 : y + (mxReduce ? 0 : 1);
+        });
+      });
+    };
+    if (!mxReduce) requestAnimationFrame(mxFrame);
+  }
 
   /* Milisaniye (2. analiz #176): yalnız görünen, saniyeli dijital saatler ekran karesiyle güncellenir */
   var msEls = liveEls.filter(function (el) { return el.getAttribute("data-live") === "time" && el.hasAttribute("data-sec"); });

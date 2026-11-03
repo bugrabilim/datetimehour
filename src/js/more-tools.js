@@ -517,5 +517,85 @@
     run();
   }
 
-  ({ hijri: hijri, timecalc: timecalc, days: days, interval: interval, chess: chess, metronome: metronome, talking: talking, zodiac: zodiac }[kind] || function () {})();
+  /* ---------- Uyku hesaplama (2. analiz #191): 90 dk döngü, uykuya dalmak için 15 dk ---------- */
+  function sleep() {
+    var wIn = q("[data-sl-wake]"), bIn = q("[data-sl-bed]"), beds = q("[data-sl-beds]"), wakes = q("[data-sl-wakes]");
+    function toMin(v) { var m = /^(\d\d):(\d\d)/.exec(v || ""); return m ? +m[1] * 60 + +m[2] : null; }
+    function durTxt(min) { var h = Math.floor(min / 60), m = min % 60; return h + " " + S.T.hourShort + (m ? " " + m + " " + S.T.minuteShort : ""); }
+    function fill(list, base, sign, order) {
+      list.textContent = "";
+      if (base == null) return;
+      order.forEach(function (n) {
+        var li = doc.createElement("li"); li.className = "sl-row" + (n >= 5 ? " is-best" : "");
+        var tm = doc.createElement("strong"); tm.textContent = clockText(base + sign * (15 + 90 * n));
+        var tx = doc.createElement("span"); tx.className = "meta"; tx.textContent = tpl(M.cycles, { n: n, d: durTxt(90 * n) });
+        li.appendChild(tm); li.appendChild(tx);
+        if (n >= 5) { var b = doc.createElement("span"); b.className = "sl-best"; b.textContent = M.best; li.appendChild(b); }
+        list.appendChild(li);
+      });
+    }
+    function run() { fill(beds, toMin(wIn.value), -1, [6, 5, 4, 3]); fill(wakes, toMin(bIn.value), 1, [3, 4, 5, 6]); }
+    wIn.addEventListener("input", function () { used1(); run(); });
+    bIn.addEventListener("input", function () { used1(); run(); });
+    q("[data-sl-now]").addEventListener("click", function () { used1(); var d = S.nowDate(); bIn.value = pad(d.getHours()) + ":" + pad(d.getMinutes()); run(); });
+    run();
+  }
+
+  /* ---------- Sınav salonu zamanlayıcısı (2. analiz #141): okuma + sınav süresi; sth-exam (başlangıç sunucu saatiyle) ---------- */
+  function exam() {
+    var st = load("sth-exam", { name: "", room: "", read: 10, dur: 40, start: 0, pauseAt: 0 });
+    var left = q("[data-ex-left]"), phase = q("[data-ex-phase]"), ends = q("[data-ex-ends]"), warn = q("[data-ex-warn]"), prog = q("[data-ex-progress]");
+    var nameEl = q("[data-ex-name]"), roomEl = q("[data-ex-room]"), bStart = q("[data-ex-start]"), bPause = q("[data-ex-pause]"), bReset = q("[data-ex-reset]");
+    var lastPhase = "", timer = null, baseTitle = doc.title;
+    qa("[data-ex-cfg]").forEach(function (el) {
+      var k = el.getAttribute("data-ex-cfg");
+      if (st[k] != null && st[k] !== "") el.value = st[k];
+      el.addEventListener("input", function () {
+        st[k] = el.type === "number" ? Math.max(+el.min || 0, Math.min(+el.max || 600, Math.round(+el.value || 0))) : el.value.slice(0, 60);
+        save("sth-exam", st); render();
+      });
+    });
+    function mmss(ms) {
+      var s = Math.max(0, Math.ceil(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+      return (h ? h + ":" + pad(m) : String(m).padStart(2, "0")) + ":" + pad(s % 60);
+    }
+    function elapsed() { return !st.start ? 0 : (st.pauseAt || S.nowMs()) - st.start; }
+    function render() {
+      setText(nameEl, st.name || ""); nameEl.hidden = !st.name;
+      setText(roomEl, st.room || ""); roomEl.hidden = !st.room;
+      var R = (+st.read || 0) * 60000, D = Math.max(1, +st.dur || 1) * 60000, e = elapsed(), ph, rem, frac;
+      if (!st.start) { ph = ""; rem = R + D; frac = 0; }
+      else if (e < R) { ph = "read"; rem = R - e; frac = e / R; }
+      else if (e < R + D) { ph = "exam"; rem = R + D - e; frac = (e - R) / D; }
+      else { ph = "done"; rem = 0; frac = 1; }
+      setText(left, mmss(st.start ? rem : D));
+      setText(phase, ph === "read" ? M.phaseRead : ph === "exam" ? M.phaseExam : ph === "done" ? M.phaseDone : (R ? M.phaseRead : M.phaseExam));
+      prog.value = Math.round(frac * 100);
+      var w = ph === "exam" && rem <= 5 * 60000 ? 5 : ph === "exam" && rem <= 15 * 60000 ? 15 : 0;
+      root.classList.toggle("is-warn15", w === 15); root.classList.toggle("is-warn5", w === 5); root.classList.toggle("is-done", ph === "done");
+      setText(warn, w ? M["warn" + w] : "");
+      var endD = new Date(st.start + R + D);
+      setText(ends, st.start && !st.pauseAt && ph !== "done" ? tpl(M.endsAt, { time: clockText(endD.getHours() * 60 + endD.getMinutes()) }) : " ");
+      if (st.start && ph !== lastPhase && lastPhase && ph) chime();
+      lastPhase = ph;
+      bStart.textContent = st.start ? (st.pauseAt ? M.resume : M.start) : M.start;
+      bStart.hidden = !!st.start && !st.pauseAt;
+      bPause.hidden = !st.start || !!st.pauseAt || ph === "done";
+      keepAwake(!!st.start && !st.pauseAt && ph !== "done");
+      var tt = st.start && !st.pauseAt && ph !== "done" ? mmss(rem) + " · " + baseTitle : baseTitle;
+      if (doc.title !== tt) doc.title = tt;
+    }
+    function loop() { clearInterval(timer); timer = setInterval(render, 250); render(); }
+    bStart.addEventListener("click", function () {
+      used1(); ctx();
+      if (st.start && st.pauseAt) { st.start += S.nowMs() - st.pauseAt; st.pauseAt = 0; }
+      else if (!st.start) { st.start = S.nowMs(); st.pauseAt = 0; lastPhase = ""; }
+      save("sth-exam", st); loop();
+    });
+    bPause.addEventListener("click", function () { st.pauseAt = S.nowMs(); save("sth-exam", st); render(); });
+    bReset.addEventListener("click", function () { st.start = 0; st.pauseAt = 0; lastPhase = ""; save("sth-exam", st); render(); });
+    loop();
+  }
+
+  ({ hijri: hijri, timecalc: timecalc, days: days, interval: interval, chess: chess, metronome: metronome, talking: talking, zodiac: zodiac, sleep: sleep, exam: exam }[kind] || function () {})();
 })();

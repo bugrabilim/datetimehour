@@ -85,7 +85,8 @@
       "sun": "Pazar",
       "sat": "Cumartesi"
     },
-    "lookMs": "Milisaniye"
+    "lookMs": "Milisaniye",
+    "lookNight": "Gece modu (ışıkları kapat)"
   },
   "client": {
     "format24": "24 saat",
@@ -445,6 +446,11 @@
               "Siz silene kadar"
             ],
             [
+              "sth-exam",
+              "Sınav zamanlayıcısındaki sınav adını, salonu, süreleri ve süren sınavın başlangıç zamanını hatırlar.",
+              "Siz silene kadar"
+            ],
+            [
               "sth-metro",
               "Metronomun temposunu, ölçüsünü ve ses tercihlerini hatırlar.",
               "Siz silene kadar"
@@ -598,7 +604,10 @@
       "h-wx-analog-date": "Yatay analog, tarih ve hava durumu",
       "h-wx-full": "Yatay analog, dijital, tarih ve hava durumu",
       "wx-digital-cal": "Dijital, tarih, hava durumu ve aylık takvim",
-      "wx-digital-cal-week": "Dijital, tarih, hava durumu, aylık takvim ve haftalık hava"
+      "wx-digital-cal-week": "Dijital, tarih, hava durumu, aylık takvim ve haftalık hava",
+      "holo": "Hologram",
+      "matrix": "Matrix",
+      "math": "Matematik saati"
     },
     "source": "Bu saat cihazınızın saatinden bağımsızdır: Saat Tarih sunucusunun NTP ile senkronize edilen saatinden alınır ve 15 dakikada bir yeniden ölçülür.",
     "info": "Saat kaynağı hakkında bilgi",
@@ -913,6 +922,14 @@
         "tzn": {
           "name": "Saat dilimi haberleri",
           "desc": "Ülkelerin saat dilimi ve yaz saati kararları."
+        },
+        "sleepCalc": {
+          "name": "Uyku hesaplama",
+          "desc": "Uyku döngülerine göre yatma ve kalkış saatleri."
+        },
+        "examTimer": {
+          "name": "Sınav zamanlayıcısı",
+          "desc": "Salon için tam ekran sınav sayacı."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -1402,7 +1419,11 @@
     "shareLink": "Bağlantıyı kopyala",
     "linkCopied": "Bağlantı kopyalandı",
     "addIcs": "Takvime ekle (.ics)",
-    "addGoogle": "Google Takvim'e ekle"
+    "addGoogle": "Google Takvim'e ekle",
+    "addOutlook": "Outlook'a ekle",
+    "mailGmail": "Gmail ile gönder",
+    "copyText": "Metni kopyala",
+    "textCopied": "Metin kopyalandı."
   },
   "planner": {
     "title": "Toplantı Planlayıcı: Ortak Mesai Saatlerini Bulun | Saat Tarih",
@@ -1442,7 +1463,11 @@
     "pickHint": "Toplantı saatini seçmek için tablonun üstündeki saate dokunun; bağlantı ve takvim seçili saati içerir.",
     "meeting": "Toplantı",
     "picked": "Seçili saat: {time} ({city} saatiyle)",
-    "legendWeekend": "Hafta sonu"
+    "legendWeekend": "Hafta sonu",
+    "addOutlook": "Outlook'a ekle",
+    "mailGmail": "Gmail ile gönder",
+    "copyText": "Metni kopyala",
+    "textCopied": "Metin kopyalandı."
   },
   "poll": {
     "title": "Toplantı Oylaması: Uygun Saati Birlikte Seçin | Saat Tarih",
@@ -2130,7 +2155,7 @@
   },
   "consent": {
     "barLabel": "Çerez tercihi",
-    "barText": "Tercihlerinizi (dil, tema, saat ve araç ayarları) yalnız bu tarayıcıda tutarız. İzin verirseniz ziyaretler Umami ile sayılır; hava durumu (Open-Meteo), küredeki yakın harita ve yakındaki camiler (OpenStreetMap) ve alarm müziği (YouTube) dış hizmetlerden yüklenir.",
+    "barText": "Ayarlarınız yalnız bu tarayıcıda kalır. İzninizle ziyaretler Umami ile sayılır; hava, harita ve müzik dış hizmetlerden yüklenir.",
     "accept": "Kabul et",
     "reject": "Reddet",
     "prefs": "Tercihler",
@@ -2925,6 +2950,65 @@
       {
         "q": "Bir ülke saatini değiştirince cihazım nasıl haberdar olur?",
         "a": "Apple, Google ve Microsoft tz veritabanının yeni sürümünü işletim sistemi güncellemeleriyle dağıtır. Cihazınızı güncel tutarsanız saat kendiliğinden doğru olur."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Uyku Hesaplama: Kaçta Yatmalı, Kaçta Kalkmalı? | Saat Tarih",
+    "description": "90 dakikalık uyku döngülerine göre yatma ya da kalkış saatini hesaplayın: kalkış saatine göre ne zaman yatacağınızı, şimdi yatarsanız ne zaman kalkacağınızı görün.",
+    "h1": "Uyku hesaplama",
+    "lead": "Kalkış saatine göre yatma saatlerini ya da yatış saatine göre kalkış saatlerini 90 dakikalık uyku döngüleriyle bulun. Uykuya dalmak için 15 dakika eklenir.",
+    "search": "uyku hesaplama kaçta yatmalıyım kaçta kalkmalıyım uyku döngüsü 90 dakika sleep calculator bedtime",
+    "wakeHeading": "Kalkış saatine göre: kaçta yatmalı?",
+    "wakeLabel": "Kalkış saati",
+    "bedHeading": "Yatış saatine göre: kaçta kalkmalı?",
+    "bedLabel": "Yatış saati",
+    "nowBtn": "Şimdi yatarsam",
+    "cycles": "{n} döngü · {d} uyku",
+    "best": "önerilen",
+    "note": "Uyku döngüsü kişiden kişiye yaklaşık 70–120 dakika arasında değişir; bu saatler yaklaşık bir rehberdir, tıbbi öneri değildir. Yetişkinler için genellikle 7–9 saat uyku önerilir.",
+    "faq": [
+      {
+        "q": "Uyku döngüsü kaç dakikadır?",
+        "a": "Bir uyku döngüsü ortalama 90 dakika sürer (kişiden kişiye yaklaşık 70–120 dakika). Döngünün sonunda, hafif uykudayken uyanmak genellikle daha kolaydır; hesaplayıcı bu yüzden saatleri 90 dakikanın katlarıyla önerir."
+      },
+      {
+        "q": "Kaç döngü uyumalıyım?",
+        "a": "Yetişkinler için genellikle 7–9 saat uyku önerilir; bu 5 ya da 6 döngüye denk gelir. Hesaplayıcı 6 ve 5 döngüyü öne çıkarır, daha kısa seçenekleri de gösterir."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Sınav Zamanlayıcısı: Salon İçin Tam Ekran Süre Sayacı | Saat Tarih",
+    "description": "Sınav adı, salon numarası, okuma ve sınav süresiyle tam ekran sınav zamanlayıcısı: kalan süre, bitiş saati ve son dakika uyarıları. Ortak yazılı ve deneme sınavları için.",
+    "h1": "Sınav zamanlayıcısı",
+    "lead": "Sınavın adını, salonu, okuma süresini ve sınav süresini girin; tahtaya yansıtılacak tam ekran sayaç kalan süreyi ve bitiş saatini gösterir.",
+    "search": "sınav zamanlayıcısı sınav sayacı kalan süre tahta tam ekran deneme sınavı ortak yazılı exam timer",
+    "nameLabel": "Sınav adı",
+    "namePh": "Örn. Matematik 1. yazılı",
+    "roomLabel": "Salon / sınıf",
+    "roomPh": "Örn. 9-A",
+    "readLabel": "Okuma süresi (dk)",
+    "durLabel": "Sınav süresi (dk)",
+    "start": "Başlat",
+    "pause": "Duraklat",
+    "resume": "Sürdür",
+    "reset": "Sıfırla",
+    "phaseRead": "Okuma süresi",
+    "phaseExam": "Sınav sürüyor",
+    "phaseDone": "Süre doldu",
+    "endsAt": "Bitiş: {time}",
+    "warn15": "Son 15 dakika",
+    "warn5": "Son 5 dakika",
+    "note": "Sayfa açık kaldığı sürece çalışır; başlangıç bu tarayıcıda saklanır, sayfayı yeniden açınca sayaç kaldığı yerden sürer. Süre sunucu saatiyle ölçülür; tam ekranda ekranın kararması engellenir.",
+    "faq": [
+      {
+        "q": "Sınav zamanlayıcısı nasıl kullanılır?",
+        "a": "Sınav adını, salonu, okuma süresini (yoksa 0) ve sınav süresini yazıp Başlat'a basın; tam ekran düğmesiyle sayacı tahtaya yansıtın. Okuma süresi bitince sınav süresi kendiliğinden başlar; son 15 ve son 5 dakikada renk değişir."
+      },
+      {
+        "q": "Sayfayı kapatırsam süre durur mu?",
+        "a": "Hayır. Başlangıç zamanı bu tarayıcıda saklanır; sayfayı yeniden açtığınızda sayaç kaldığı yerden devam eder. Duraklatma da kaydedilir."
       }
     ]
   }

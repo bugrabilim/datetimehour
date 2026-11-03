@@ -594,6 +594,16 @@ for (const l of LANGS) {
     check(/data-title-clock="America\/New_York"/.test(ch) && /data-live="solarnoon"/.test(ch) && /data-live="solaroff"/.test(ch) && /openstreetmap\.org\/\?mlat=/.test(ch) && !/data-tz-pills/.test(ch), "şehir sayfası: başlıkta saat, Güneş öğlesi, harita bağlantısı");
     const dh = fs.readFileSync(path.join(DIST, "saat-farki/index.html"), "utf8");
     check((dh.match(/data-live="diffbar"/g) || []).length === fs.readdirSync(path.join(DIST, "saat-farki")).filter((f) => f !== "index.html").length && /data-live="diffshort"/.test(dh), "saat farkı merkezi: kartlarda saat, fark ve çubuk");
+    check(/id="model-holo"/.test(h) && /id="model-matrix"/.test(h) && /data-matrix/.test(h) && /data-live="math"/.test(h) && /data-look-bool="night"/.test(h), "ana sayfa: temalı saatler (hologram, Matrix, matematik) ve gece modu seçeneği");
+    for (const [f, mt] of [["uyku-hesaplama", "sleep"], ["en/sleep-calculator", "sleep"], ["sinav-zamanlayicisi", "exam"], ["en/exam-timer", "exam"]]) {
+      const ph = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
+      check(new RegExp(`data-mt="${mt}"`).test(ph) && /more-tools\.js/.test(ph), `yeni araç sayfası: /${f}/`);
+    }
+    const th = fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8");
+    check(/href="\/uyku-hesaplama\/"/.test(th) && /href="\/sinav-zamanlayicisi\/"/.test(th), "araçlar merkezi: uyku hesaplama ve sınav zamanlayıcısı kartları");
+    const ph2 = fs.readFileSync(path.join(DIST, "toplanti-planlayici/index.html"), "utf8");
+    check(/data-outlook/.test(ph2) && /data-gmail/.test(ph2) && /data-copytext/.test(ph2), "toplantı planlayıcı: Outlook, Gmail ve metin kopyalama");
+    for (const l of LANGS) check(dict[l].get("consent.barText").length <= 170, `çerez bandı metni kısa olmalı (${l})`);
     const ah = fs.readFileSync(path.join(DIST, "alarm/index.html"), "utf8");
     check(/data-al-snooze/.test(ah) && /data-al-vol/.test(ah) && /data-al-try/.test(ah) && /data-al-ring/.test(ah) && /data-al-history/.test(ah) && /data-al-recent/.test(ah), "alarm: erteleme süresi, ses düzeyi, şimdi dene, halka, geçmiş, son saatler");
   }

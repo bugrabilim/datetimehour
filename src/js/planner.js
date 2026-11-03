@@ -61,6 +61,11 @@
   }
   function shareSetup(box, T) {
     var st = box.querySelector("[data-share-status]");
+    var ct = box.querySelector("[data-copytext]");
+    if (ct) ct.addEventListener("click", function () {
+      var txt = box.__text || "", done = function () { st.textContent = T.textCopied; setTimeout(function () { st.textContent = ""; }, 2500); };
+      try { navigator.clipboard.writeText(txt).then(done, function () { window.prompt(T.copyText, txt); }); } catch (e) { window.prompt(T.copyText, txt); }
+    });
     box.querySelector("[data-share]").addEventListener("click", function () {
       var url = location.href, done = function () { st.textContent = T.linkCopied; setTimeout(function () { st.textContent = ""; }, 2500); };
       try { navigator.clipboard.writeText(url).then(done, function () { window.prompt(T.shareLink, url); }); } catch (e) { window.prompt(T.shareLink, url); }
@@ -68,8 +73,15 @@
   }
   function calLinks(box, ms, title, desc) {
     var ics = box.querySelector("[data-ics]"), g = box.querySelector("[data-gcal]");
+    var ol = box.querySelector("[data-outlook]"), gm = box.querySelector("[data-gmail]"), ct = box.querySelector("[data-copytext]");
     ics.hidden = g.hidden = ms == null;
+    [ol, gm, ct].forEach(function (x) { if (x) x.hidden = ms == null; });
+    box.__text = ms == null ? "" : title + "\n" + desc + "\n" + location.href;
     if (ms == null) return;
+    var iso = function (t) { return new Date(t).toISOString().replace(/\.\d{3}Z$/, "Z"); };
+    if (ol) ol.href = "https://outlook.live.com/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&subject=" + encodeURIComponent(title) +
+      "&startdt=" + encodeURIComponent(iso(ms)) + "&enddt=" + encodeURIComponent(iso(ms + 3600000)) + "&body=" + encodeURIComponent(desc + "\n" + location.href);
+    if (gm) gm.href = "https://mail.google.com/mail/?view=cm&fs=1&su=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(box.__text);
     var end = ms + 3600000, details = desc + "\n" + location.href;
     var file = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Saat Tarih//time.bumba.tr//TR", "BEGIN:VEVENT", "UID:" + ms + "@time.bumba.tr",
       "DTSTAMP:" + icsDate(Date.now()), "DTSTART:" + icsDate(ms), "DTEND:" + icsDate(end), "SUMMARY:" + icsText(title),

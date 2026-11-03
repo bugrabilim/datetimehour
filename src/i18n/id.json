@@ -85,7 +85,8 @@
       "sun": "Minggu",
       "sat": "Sabtu"
     },
-    "lookMs": "Milidetik"
+    "lookMs": "Milidetik",
+    "lookNight": "Mode malam (matikan lampu)"
   },
   "client": {
     "format24": "24 jam",
@@ -445,6 +446,11 @@
               "Sampai Anda menghapusnya"
             ],
             [
+              "sth-exam",
+              "Mengingat nama ujian, ruang, durasi, dan waktu mulai ujian yang sedang berlangsung di timer ujian.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
               "sth-metro",
               "Mengingat tempo metronom, ketukan per birama, dan pengaturan suara.",
               "Sampai Anda menghapusnya"
@@ -598,7 +604,10 @@
       "h-wx-analog-date": "Analog, tanggal, dan cuaca berdampingan",
       "h-wx-full": "Analog, digital, tanggal, dan cuaca berdampingan",
       "wx-digital-cal": "Digital, tanggal, cuaca, dan kalender bulanan",
-      "wx-digital-cal-week": "Digital, tanggal, cuaca, kalender bulanan, dan prakiraan mingguan"
+      "wx-digital-cal-week": "Digital, tanggal, cuaca, kalender bulanan, dan prakiraan mingguan",
+      "holo": "Hologram",
+      "matrix": "Matrix",
+      "math": "Jam matematika"
     },
     "source": "Jam ini tidak bergantung pada perangkat Anda: waktunya dibaca dari jam server Saat Tarih yang disinkronkan dengan NTP dan diukur ulang setiap 15 menit.",
     "info": "Tentang sumber waktu jam ini",
@@ -913,6 +922,14 @@
         "tzn": {
           "name": "Berita zona waktu",
           "desc": "Keputusan negara-negara tentang zona waktu dan waktu musim panas."
+        },
+        "sleepCalc": {
+          "name": "Kalkulator tidur",
+          "desc": "Jam tidur dan bangun berdasarkan siklus tidur."
+        },
+        "examTimer": {
+          "name": "Timer ujian",
+          "desc": "Hitung mundur layar penuh untuk ruang ujian."
         }
       },
       "infoHeading": "Halaman informasi"
@@ -1402,7 +1419,11 @@
     "shareLink": "Salin tautan",
     "linkCopied": "Tautan disalin",
     "addIcs": "Tambahkan ke kalender (.ics)",
-    "addGoogle": "Tambahkan ke Google Kalender"
+    "addGoogle": "Tambahkan ke Google Kalender",
+    "addOutlook": "Tambahkan ke Outlook",
+    "mailGmail": "Kirim lewat Gmail",
+    "copyText": "Salin sebagai teks",
+    "textCopied": "Teks disalin."
   },
   "planner": {
     "title": "Perencana Rapat: Temukan Jam Kerja yang Bertepatan | Saat Tarih",
@@ -1442,7 +1463,11 @@
     "pickHint": "Ketuk satu jam di bagian atas tabel untuk memilih waktu rapat; tautan dan entri kalender akan memuatnya.",
     "meeting": "Rapat",
     "picked": "Waktu yang dipilih: {time} (waktu {city})",
-    "legendWeekend": "Akhir pekan"
+    "legendWeekend": "Akhir pekan",
+    "addOutlook": "Tambahkan ke Outlook",
+    "mailGmail": "Kirim lewat Gmail",
+    "copyText": "Salin sebagai teks",
+    "textCopied": "Teks disalin."
   },
   "poll": {
     "title": "Polling Rapat: Pilih Waktu Terbaik Bersama | Saat Tarih",
@@ -2130,7 +2155,7 @@
   },
   "consent": {
     "barLabel": "Pilihan cookie",
-    "barText": "Kami menyimpan preferensi Anda (bahasa, tema, pengaturan jam dan alat) hanya di peramban ini. Jika Anda mengizinkan, kunjungan dihitung dengan Umami, serta cuaca (Open-Meteo), peta jarak dekat pada bola dunia dan masjid terdekat (OpenStreetMap), dan musik alarm (YouTube) dimuat dari layanan eksternal.",
+    "barText": "Pengaturan Anda hanya tersimpan di peramban ini. Dengan izin Anda, kunjungan dihitung dengan Umami; cuaca, peta, dan musik dimuat dari layanan luar.",
     "accept": "Terima",
     "reject": "Tolak",
     "prefs": "Preferensi",
@@ -2925,6 +2950,65 @@
       {
         "q": "Bagaimana perangkat saya tahu bahwa suatu negara mengubah jamnya?",
         "a": "Apple, Google, dan Microsoft mengirimkan rilis baru basis data tz bersama pembaruan sistem operasi. Jika perangkat Anda selalu diperbarui, waktunya akan benar dengan sendirinya."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Kalkulator Tidur: Kapan Tidur dan Bangun? | Saat Tarih",
+    "description": "Hitung jam tidur atau bangun berdasarkan siklus tidur 90 menit: kapan tidur untuk jam bangun tertentu, atau kapan bangun jika tidur sekarang.",
+    "h1": "Kalkulator tidur",
+    "lead": "Temukan jam tidur untuk jam bangun, atau jam bangun untuk jam tidur, dengan siklus 90 menit. Ditambahkan 15 menit untuk terlelap.",
+    "search": "kalkulator tidur jam tidur siklus tidur 90 menit kapan bangun sleep calculator",
+    "wakeHeading": "Menurut jam bangun: kapan tidur?",
+    "wakeLabel": "Jam bangun",
+    "bedHeading": "Menurut jam tidur: kapan bangun?",
+    "bedLabel": "Jam tidur",
+    "nowBtn": "Jika tidur sekarang",
+    "cycles": "{n} siklus · tidur {d}",
+    "best": "disarankan",
+    "note": "Siklus tidur berbeda tiap orang (sekitar 70–120 menit); waktu ini hanya panduan perkiraan, bukan saran medis. Orang dewasa umumnya disarankan tidur 7–9 jam.",
+    "faq": [
+      {
+        "q": "Berapa lama satu siklus tidur?",
+        "a": "Satu siklus tidur rata-rata sekitar 90 menit (sekitar 70–120 menit, tergantung orangnya). Bangun di akhir siklus, saat tidur ringan, biasanya lebih mudah, jadi kalkulator menyarankan waktu dalam kelipatan 90 menit."
+      },
+      {
+        "q": "Berapa siklus sebaiknya saya tidur?",
+        "a": "Orang dewasa umumnya disarankan tidur 7–9 jam, yaitu 5 atau 6 siklus. Kalkulator menonjolkan 6 dan 5 siklus serta menampilkan pilihan yang lebih pendek."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Timer Ujian: Hitung Mundur Layar Penuh untuk Ruang Ujian | Saat Tarih",
+    "description": "Timer ujian layar penuh dengan nama ujian, ruang, waktu membaca, dan durasi: sisa waktu, jam selesai, dan peringatan menit terakhir.",
+    "h1": "Timer ujian",
+    "lead": "Masukkan nama ujian, ruang, waktu membaca, dan durasi ujian; timer layar penuh untuk proyektor menampilkan sisa waktu dan jam selesai.",
+    "search": "timer ujian hitung mundur ruang ujian layar penuh exam timer",
+    "nameLabel": "Nama ujian",
+    "namePh": "Mis. Ujian Matematika",
+    "roomLabel": "Ruang / kelas",
+    "roomPh": "Mis. 9A",
+    "readLabel": "Waktu membaca (mnt)",
+    "durLabel": "Durasi ujian (mnt)",
+    "start": "Mulai",
+    "pause": "Jeda",
+    "resume": "Lanjutkan",
+    "reset": "Atur ulang",
+    "phaseRead": "Waktu membaca",
+    "phaseExam": "Ujian berlangsung",
+    "phaseDone": "Waktu habis",
+    "endsAt": "Selesai: {time}",
+    "warn15": "15 menit terakhir",
+    "warn5": "5 menit terakhir",
+    "note": "Berjalan selama halaman terbuka; waktu mulai disimpan di peramban ini, jadi timer berlanjut jika halaman dibuka lagi. Waktu diukur dengan jam server; di layar penuh layar tetap menyala.",
+    "faq": [
+      {
+        "q": "Bagaimana cara memakai timer ujian?",
+        "a": "Masukkan nama ujian, ruang, waktu membaca (0 jika tidak ada), dan durasi ujian, lalu tekan Mulai; tampilkan ke proyektor dengan tombol layar penuh. Setelah waktu membaca habis, waktu ujian mulai otomatis; warna berubah pada 15 dan 5 menit terakhir."
+      },
+      {
+        "q": "Apakah timer berhenti jika halaman ditutup?",
+        "a": "Tidak. Waktu mulai disimpan di peramban ini; saat halaman dibuka lagi, timer berlanjut. Jeda juga disimpan."
       }
     ]
   }

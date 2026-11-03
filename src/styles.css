@@ -542,12 +542,14 @@ dialog.search::backdrop { background: rgb(10 12 16 / 0.55); }
 .rozet img { height: 28px; width: auto; }
 
 /* Çerez bandı ve tercihler (standart madde 14): içeriği kapatmaz, odağı tutmaz */
-.cookie-bar { position: fixed; inset-inline: 0; bottom: 0; z-index: 60; background: var(--surface); color: var(--text); border-top: 1px solid var(--border); box-shadow: var(--shadow); padding-block: 0.7rem; }
-.cookie-row { display: flex; flex-wrap: wrap; gap: 0.6rem 1.25rem; align-items: center; justify-content: space-between; }
-.cookie-row p { margin: 0; flex: 1 1 22rem; font-size: 0.9rem; }
-.cookie-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; flex: 0 1 26rem; }
-.cookie-btns .btn { min-height: 2.5rem; padding: 0 0.8rem; font-size: 0.9rem; }
-html.has-cookie-bar body { padding-bottom: 7rem; }
+/* Çerez bandı (2. analiz #192, 3 Kasım 2026): kısa metin, ince bant; eşit düğmeler ve politika bağlantısı korunur (standart madde 14) */
+.cookie-bar { position: fixed; inset-inline: 0; bottom: 0; z-index: 60; background: var(--surface); color: var(--text); border-top: 1px solid var(--border); box-shadow: var(--shadow); padding-block: 0.45rem; }
+.cookie-row { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; justify-content: space-between; }
+.cookie-row p { margin: 0; flex: 1 1 22rem; font-size: 0.82rem; line-height: 1.35; }
+.cookie-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; flex: 0 1 22rem; }
+.cookie-btns .btn { min-height: 2.25rem; padding: 0 0.6rem; font-size: 0.85rem; }
+html.has-cookie-bar body { padding-bottom: 5.5rem; }
+@media (max-width: 40rem) { .cookie-row p { flex-basis: 100%; } .cookie-btns { flex-basis: 100%; } }
 .cookie-dialog { width: min(34rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; }
 .cg { border-top: 1px solid var(--border); padding-top: 0.7rem; margin-top: 0.7rem; }
 .cg-head { display: flex; align-items: center; gap: 0.6rem; }
@@ -1311,3 +1313,46 @@ html[dir="rtl"] .diff-bar { transform: scaleX(-1); }
 .al-history { margin: 1rem 0; }
 .al-history summary { cursor: pointer; font-weight: 600; }
 @media (prefers-reduced-motion: reduce) { .al-ring .alr-fill { transition: none; } }
+
+/* Gece modu / ışıkları kapat (2. analiz #182): saat sahnesi olan sayfalarda siyah zemin, kısık kırmızı (uygulamalardaki gece moduyla aynı ton) */
+html[data-cnight] body:has([data-carousel]) {
+  --bg: #000; --surface: #000; --surface-2: #0b0202; --text: #e0301e; --muted: #b82016; --border: #2c0906;
+  --accent: #b82016; --accent-ink: #000; --accent-soft: #1a0503; --focus: #e0301e; --clock-ink: #e0301e;
+  background: #000; color: var(--text); color-scheme: dark;
+}
+html[data-cnight] body:has([data-carousel]) img, html[data-cnight] body:has([data-carousel]) .globe { filter: grayscale(1) brightness(0.35) sepia(1) hue-rotate(-30deg) saturate(4); }
+
+/* Uyku hesaplama (2. analiz #191) */
+.sl-list { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; gap: 0.5rem; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); }
+.sl-row { display: grid; gap: 0.1rem; padding: 0.7rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.sl-row strong { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.sl-row.is-best { border-color: var(--accent); }
+.sl-best { justify-self: start; font-size: 0.75rem; font-weight: 700; color: var(--accent); }
+.field-gap { display: block; }
+/* Sınav salonu zamanlayıcısı (2. analiz #141) */
+.mt-ex .ex-name { margin: 0; font-size: clamp(1.4rem, 4vw, 2.6rem); font-weight: 700; text-align: center; }
+.mt-ex .ex-room { margin: 0; text-align: center; font-size: 1.1rem; }
+.mt-ex .ex-ends, .mt-ex .ex-clock { margin: 0.2rem 0; text-align: center; font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+.mt-ex .ex-clock { color: var(--muted); }
+.mt-ex .ex-warn { margin: 0.2rem 0; min-height: 1.4em; text-align: center; font-weight: 700; }
+.mt-ex.is-warn15 .big-time, .mt-ex.is-warn15 .ex-warn { color: #b06a00; }
+.mt-ex.is-warn5 .big-time, .mt-ex.is-warn5 .ex-warn, .mt-ex.is-done .big-time { color: #c0261c; }
+@media (prefers-color-scheme: dark) { html:not([data-theme="light"]) .mt-ex.is-warn15 .big-time, html:not([data-theme="light"]) .mt-ex.is-warn15 .ex-warn { color: #ffb44d; } html:not([data-theme="light"]) .mt-ex.is-warn5 .big-time, html:not([data-theme="light"]) .mt-ex.is-warn5 .ex-warn, html:not([data-theme="light"]) .mt-ex.is-done .big-time { color: #ff7a6e; } }
+html[data-theme="dark"] .mt-ex.is-warn15 .big-time, html[data-theme="dark"] .mt-ex.is-warn15 .ex-warn { color: #ffb44d; }
+html[data-theme="dark"] .mt-ex.is-warn5 .big-time, html[data-theme="dark"] .mt-ex.is-warn5 .ex-warn, html[data-theme="dark"] .mt-ex.is-done .big-time { color: #ff7a6e; }
+.mt-ex [hidden] { display: none !important; }
+
+/* Temalı saatler (2. analiz #183): hologram, Matrix, matematik */
+.s-holo { background: radial-gradient(ellipse at center, #062a3a 0%, #020b12 70%); }
+.s-holo .holo-frame { position: relative; padding: 1.2rem 2rem; border: 1px solid rgba(64, 224, 255, 0.45); border-radius: 14px; box-shadow: 0 0 24px rgba(64, 224, 255, 0.25), inset 0 0 24px rgba(64, 224, 255, 0.15); overflow: hidden; }
+.s-holo .holo-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(64, 224, 255, 0.08) 0 2px, transparent 2px 5px); animation: holo-scan 6s linear infinite; }
+.s-holo .clock, .s-holo .date { color: #6ff0ff; text-shadow: 0 0 6px #22d3ff, 0 0 18px rgba(34, 211, 255, 0.7); }
+.s-holo .clock { animation: holo-flicker 4s infinite; }
+@keyframes holo-scan { from { background-position: 0 0; } to { background-position: 0 100px; } }
+@keyframes holo-flicker { 0%, 92%, 100% { opacity: 1; } 93% { opacity: 0.75; } 95% { opacity: 0.95; } 97% { opacity: 0.8; } }
+.s-matrix { position: relative; background: #000; }
+.s-matrix .matrix-rain { position: absolute; inset: 0; width: 100%; height: 100%; }
+.s-matrix .clock, .s-matrix .date { position: relative; color: #39ff7a; text-shadow: 0 0 8px #00c853, 0 0 2px #000; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.s-matrix .clock { background: rgba(0, 0, 0, 0.55); padding: 0 0.4em; border-radius: 8px; }
+.s-math .math-time { margin: 0; font-size: clamp(2rem, 8vw, 5.5rem); font-weight: 700; font-variant-numeric: tabular-nums; white-space: pre; color: var(--clock-ink, var(--text)); }
+@media (prefers-reduced-motion: reduce) { .s-holo .holo-frame::after, .s-holo .clock { animation: none; } }

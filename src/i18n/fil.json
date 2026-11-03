@@ -85,7 +85,8 @@
       "sun": "Linggo",
       "sat": "Sabado"
     },
-    "lookMs": "Millisecond"
+    "lookMs": "Millisecond",
+    "lookNight": "Night mode (patayin ang ilaw)"
   },
   "client": {
     "format24": "24 oras",
@@ -511,6 +512,11 @@
               "Hanggang burahin mo"
             ],
             [
+              "sth-exam",
+              "Inaalala ang pangalan ng pagsusulit, silid, mga tagal at oras ng simula ng kasalukuyang pagsusulit sa exam timer.",
+              "Hanggang burahin mo"
+            ],
+            [
               "sth-metro",
               "Tinatandaan ang tempo, beats bawat bar at setting ng tunog ng metronome.",
               "Hanggang burahin mo"
@@ -664,7 +670,10 @@
       "h-wx-analog-date": "Magkatabing analog, petsa at panahon",
       "h-wx-full": "Magkatabing analog, digital, petsa at panahon",
       "wx-digital-cal": "Digital, petsa, panahon at buwanang kalendaryo",
-      "wx-digital-cal-week": "Digital, petsa, panahon, buwanang kalendaryo at lingguhang forecast"
+      "wx-digital-cal-week": "Digital, petsa, panahon, buwanang kalendaryo at lingguhang forecast",
+      "holo": "Hologram",
+      "matrix": "Matrix",
+      "math": "Orasang math"
     },
     "source": "Hindi nakadepende sa iyong device ang orasang ito: binabasa ito mula sa orasan ng server ng Saat Tarih na naka-sync sa NTP at sinusukat muli bawat 15 minuto.",
     "info": "Tungkol sa pinagmulan ng oras ng orasang ito",
@@ -979,6 +988,14 @@
         "tzn": {
           "name": "Balita sa time zone",
           "desc": "Mga desisyon ng mga bansa sa time zone at daylight saving."
+        },
+        "sleepCalc": {
+          "name": "Sleep calculator",
+          "desc": "Oras ng tulog at gising batay sa sleep cycle."
+        },
+        "examTimer": {
+          "name": "Exam timer",
+          "desc": "Full-screen na countdown para sa silid."
         }
       },
       "infoHeading": "Mga pahina ng impormasyon"
@@ -1468,7 +1485,11 @@
     "shareLink": "Kopyahin ang link",
     "linkCopied": "Nakopya ang link",
     "addIcs": "Idagdag sa kalendaryo (.ics)",
-    "addGoogle": "Idagdag sa Google Calendar"
+    "addGoogle": "Idagdag sa Google Calendar",
+    "addOutlook": "Idagdag sa Outlook",
+    "mailGmail": "Ipadala gamit ang Gmail",
+    "copyText": "Kopyahin bilang teksto",
+    "textCopied": "Nakopya ang teksto."
   },
   "planner": {
     "title": "Meeting Planner: Hanapin ang Sabayang Oras ng Trabaho | Saat Tarih",
@@ -1508,7 +1529,11 @@
     "pickHint": "I-tap ang isang oras sa itaas ng talahanayan para piliin ang oras ng miting; kasama ito sa link at sa entry sa kalendaryo.",
     "meeting": "Miting",
     "picked": "Napiling oras: {time} (oras ng {city})",
-    "legendWeekend": "Weekend"
+    "legendWeekend": "Weekend",
+    "addOutlook": "Idagdag sa Outlook",
+    "mailGmail": "Ipadala gamit ang Gmail",
+    "copyText": "Kopyahin bilang teksto",
+    "textCopied": "Nakopya ang teksto."
   },
   "poll": {
     "title": "Botohan sa Miting: Pumili ng Oras nang Sama-sama | Saat Tarih",
@@ -2196,7 +2221,7 @@
   },
   "consent": {
     "barLabel": "Pagpili sa cookies",
-    "barText": "Sa browser na ito lang namin itinatago ang iyong mga kagustuhan (wika, tema, setting ng orasan at tool). Kung papayagan mo, bibilangin ang mga pagbisita gamit ang Umami, at ilo-load ang panahon (Open-Meteo), ang malapitang mapa ng globo at kalapit na mga masjid (OpenStreetMap), at ang musika ng alarma (YouTube) mula sa mga panlabas na serbisyo.",
+    "barText": "Nananatili sa browser na ito ang mga setting mo. Kung papayag ka, binibilang ng Umami ang pagbisita, at mula sa panlabas na serbisyo ang panahon, mapa at musika.",
     "accept": "Tanggapin",
     "reject": "Tanggihan",
     "prefs": "Mga kagustuhan",
@@ -2991,6 +3016,65 @@
       {
         "q": "Paano nalalaman ng device ko na binago ng isang bansa ang orasan nito?",
         "a": "Nagpapadala ang Apple, Google at Microsoft ng bagong release ng tz database kasama ng update ng operating system. Kung updated ang iyong device, kusang magiging tama ang oras."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Sleep Calculator: Kailan Matulog at Gumising | Saat Tarih",
+    "description": "Kalkulahin ang oras ng pagtulog o paggising batay sa 90-minutong sleep cycle: kailan matulog para sa isang oras ng paggising, o kailan gumising kung matutulog ngayon.",
+    "h1": "Sleep calculator",
+    "lead": "Hanapin ang oras ng pagtulog para sa oras ng paggising, o ang oras ng paggising para sa oras ng pagtulog, gamit ang 90-minutong cycle. May dagdag na 15 minuto para makatulog.",
+    "search": "sleep calculator oras ng tulog sleep cycle 90 minuto gising",
+    "wakeHeading": "Ayon sa oras ng paggising: kailan matulog?",
+    "wakeLabel": "Oras ng paggising",
+    "bedHeading": "Ayon sa oras ng pagtulog: kailan gumising?",
+    "bedLabel": "Oras ng pagtulog",
+    "nowBtn": "Kung matutulog ngayon",
+    "cycles": "{n} cycle · {d} na tulog",
+    "best": "inirerekomenda",
+    "note": "Iba-iba ang haba ng sleep cycle sa bawat tao (mga 70–120 minuto); gabay lamang ang mga oras na ito, hindi payong medikal. Karaniwang inirerekomenda ang 7–9 oras na tulog para sa matatanda.",
+    "faq": [
+      {
+        "q": "Gaano katagal ang isang sleep cycle?",
+        "a": "Mga 90 minuto ang karaniwang haba ng isang sleep cycle (mga 70–120 minuto, depende sa tao). Mas madaling gumising sa dulo ng cycle, habang mababaw ang tulog, kaya nagmumungkahi ang calculator ng mga oras na multiple ng 90 minuto."
+      },
+      {
+        "q": "Ilang cycle ang dapat kong itulog?",
+        "a": "Karaniwang inirerekomenda sa matatanda ang 7–9 oras na tulog, o 5 hanggang 6 na cycle. Itinatampok ng calculator ang 6 at 5 cycle at ipinapakita rin ang mas maiikling opsiyon."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Exam Timer: Full-Screen na Countdown para sa Silid | Saat Tarih",
+    "description": "Full-screen na exam timer na may pangalan ng pagsusulit, silid, oras ng pagbasa at tagal: natitirang oras, oras ng pagtatapos at babala sa huling mga minuto.",
+    "h1": "Exam timer",
+    "lead": "Ilagay ang pangalan ng pagsusulit, silid, oras ng pagbasa at tagal; ipinapakita ng full-screen na timer para sa projector ang natitirang oras at oras ng pagtatapos.",
+    "search": "exam timer countdown silid-pagsusulit full screen",
+    "nameLabel": "Pangalan ng pagsusulit",
+    "namePh": "hal. Pagsusulit sa Math",
+    "roomLabel": "Silid / klase",
+    "roomPh": "hal. 9-A",
+    "readLabel": "Oras ng pagbasa (min)",
+    "durLabel": "Tagal ng pagsusulit (min)",
+    "start": "Simulan",
+    "pause": "I-pause",
+    "resume": "Ituloy",
+    "reset": "I-reset",
+    "phaseRead": "Oras ng pagbasa",
+    "phaseExam": "Kasalukuyang pagsusulit",
+    "phaseDone": "Tapos na ang oras",
+    "endsAt": "Matatapos: {time}",
+    "warn15": "Huling 15 minuto",
+    "warn5": "Huling 5 minuto",
+    "note": "Gumagana habang bukas ang pahina; naka-save ang simula sa browser na ito, kaya magpapatuloy ang timer kapag binuksan muli. Sinusukat ang oras ayon sa orasan ng server; sa full screen, hindi namamatay ang screen.",
+    "faq": [
+      {
+        "q": "Paano gamitin ang exam timer?",
+        "a": "Ilagay ang pangalan, silid, oras ng pagbasa (0 kung wala) at tagal, saka pindutin ang Simulan; i-project gamit ang full-screen na button. Pagkatapos ng oras ng pagbasa, kusang magsisimula ang pagsusulit; nagbabago ang kulay sa huling 15 at 5 minuto."
+      },
+      {
+        "q": "Hihinto ba ang timer kapag isinara ang pahina?",
+        "a": "Hindi. Naka-save sa browser na ito ang oras ng simula; magpapatuloy ang timer kapag binuksan muli ang pahina. Naka-save din ang pag-pause."
       }
     ]
   }

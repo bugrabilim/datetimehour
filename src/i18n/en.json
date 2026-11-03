@@ -85,7 +85,8 @@
       "sun": "Sunday",
       "sat": "Saturday"
     },
-    "lookMs": "Milliseconds"
+    "lookMs": "Milliseconds",
+    "lookNight": "Night mode (lights off)"
   },
   "client": {
     "format24": "24-hour",
@@ -445,6 +446,11 @@
               "Until you delete it"
             ],
             [
+              "sth-exam",
+              "Remembers the exam name, room, durations and the start time of a running exam in the exam timer.",
+              "Until you delete it"
+            ],
+            [
               "sth-metro",
               "Remembers the metronome's tempo, beats per bar and sound settings.",
               "Until you delete it"
@@ -598,7 +604,10 @@
       "h-wx-analog-date": "Side-by-side analog, date and weather",
       "h-wx-full": "Side-by-side analog, digital, date and weather",
       "wx-digital-cal": "Digital, date, weather and monthly calendar",
-      "wx-digital-cal-week": "Digital, date, weather, monthly calendar and weekly forecast"
+      "wx-digital-cal-week": "Digital, date, weather, monthly calendar and weekly forecast",
+      "holo": "Hologram",
+      "matrix": "Matrix",
+      "math": "Maths clock"
     },
     "source": "This clock does not depend on your device: it is read from the Saat Tarih server's NTP-synchronised clock and measured again every 15 minutes.",
     "info": "About this clock's time source",
@@ -913,6 +922,14 @@
         "tzn": {
           "name": "Time zone news",
           "desc": "Countries' time zone and daylight saving decisions."
+        },
+        "sleepCalc": {
+          "name": "Sleep calculator",
+          "desc": "Bedtimes and wake-up times from sleep cycles."
+        },
+        "examTimer": {
+          "name": "Exam timer",
+          "desc": "Full-screen countdown for the exam room."
         }
       },
       "infoHeading": "Information pages"
@@ -1402,7 +1419,11 @@
     "shareLink": "Copy link",
     "linkCopied": "Link copied",
     "addIcs": "Add to calendar (.ics)",
-    "addGoogle": "Add to Google Calendar"
+    "addGoogle": "Add to Google Calendar",
+    "addOutlook": "Add to Outlook",
+    "mailGmail": "Send with Gmail",
+    "copyText": "Copy as text",
+    "textCopied": "Text copied."
   },
   "planner": {
     "title": "Meeting Planner: Find Overlapping Working Hours | Saat Tarih",
@@ -1442,7 +1463,11 @@
     "pickHint": "Tap an hour at the top of the table to pick the meeting time; the link and calendar entry include it.",
     "meeting": "Meeting",
     "picked": "Picked time: {time} ({city} time)",
-    "legendWeekend": "Weekend"
+    "legendWeekend": "Weekend",
+    "addOutlook": "Add to Outlook",
+    "mailGmail": "Send with Gmail",
+    "copyText": "Copy as text",
+    "textCopied": "Text copied."
   },
   "poll": {
     "title": "Meeting Poll: Pick the Best Time Together | Saat Tarih",
@@ -2130,7 +2155,7 @@
   },
   "consent": {
     "barLabel": "Cookie choice",
-    "barText": "We keep your preferences (language, theme, clock and tool settings) only in this browser. If you allow it, visits are counted with Umami, and the weather (Open-Meteo), the close-up globe map and nearby mosques (OpenStreetMap) and alarm music (YouTube) are loaded from external services.",
+    "barText": "Your settings stay in this browser. With your consent, visits are counted with Umami, and weather, maps and music load from external services.",
     "accept": "Accept",
     "reject": "Reject",
     "prefs": "Preferences",
@@ -2925,6 +2950,65 @@
       {
         "q": "How does my device learn that a country changed its clocks?",
         "a": "Apple, Google and Microsoft ship new tz database releases with operating system updates. If you keep your device up to date, the time will be correct on its own."
+      }
+    ]
+  },
+  "sleepCalc": {
+    "title": "Sleep Calculator: When to Go to Bed and Wake Up | Saat Tarih",
+    "description": "Work out bedtimes or wake-up times from 90-minute sleep cycles: see when to go to bed for a given wake-up time, or when to wake up if you go to bed now.",
+    "h1": "Sleep calculator",
+    "lead": "Find bedtimes for a wake-up time, or wake-up times for a bedtime, using 90-minute sleep cycles. 15 minutes are added for falling asleep.",
+    "search": "sleep calculator bedtime wake up time sleep cycle 90 minutes when should I go to bed",
+    "wakeHeading": "By wake-up time: when to go to bed?",
+    "wakeLabel": "Wake-up time",
+    "bedHeading": "By bedtime: when to wake up?",
+    "bedLabel": "Bedtime",
+    "nowBtn": "If I go to bed now",
+    "cycles": "{n} cycles · {d} of sleep",
+    "best": "recommended",
+    "note": "Sleep cycles vary from person to person (roughly 70–120 minutes); these times are an approximate guide, not medical advice. Adults are generally advised to sleep 7–9 hours.",
+    "faq": [
+      {
+        "q": "How long is a sleep cycle?",
+        "a": "A sleep cycle lasts about 90 minutes on average (roughly 70–120 minutes, depending on the person). Waking at the end of a cycle, in light sleep, is usually easier, so the calculator suggests times in multiples of 90 minutes."
+      },
+      {
+        "q": "How many cycles should I sleep?",
+        "a": "Adults are generally advised to sleep 7–9 hours, which is 5 or 6 cycles. The calculator highlights 6 and 5 cycles and also shows shorter options."
+      }
+    ]
+  },
+  "examTimer": {
+    "title": "Exam Timer: Full-Screen Countdown for the Exam Room | Saat Tarih",
+    "description": "A full-screen exam timer with exam name, room, reading time and exam duration: time left, finish time and last-minute warnings. For school exams and mock tests.",
+    "h1": "Exam timer",
+    "lead": "Enter the exam name, room, reading time and exam duration; the full-screen timer for the projector shows the time left and the finish time.",
+    "search": "exam timer classroom countdown full screen test timer projector mock exam",
+    "nameLabel": "Exam name",
+    "namePh": "e.g. Maths mid-term",
+    "roomLabel": "Room / class",
+    "roomPh": "e.g. 9A",
+    "readLabel": "Reading time (min)",
+    "durLabel": "Exam duration (min)",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Reset",
+    "phaseRead": "Reading time",
+    "phaseExam": "Exam in progress",
+    "phaseDone": "Time is up",
+    "endsAt": "Ends at {time}",
+    "warn15": "Last 15 minutes",
+    "warn5": "Last 5 minutes",
+    "note": "It runs while the page is open; the start is saved in this browser, so the timer continues if you reopen the page. Time is measured against the server clock; in full screen the display is kept awake.",
+    "faq": [
+      {
+        "q": "How do I use the exam timer?",
+        "a": "Enter the exam name, room, reading time (0 if none) and exam duration, then press Start; use the full-screen button to project it. When reading time ends the exam time starts automatically, and the colour changes in the last 15 and 5 minutes."
+      },
+      {
+        "q": "Does the timer stop if I close the page?",
+        "a": "No. The start time is saved in this browser; when you reopen the page the timer carries on. Pausing is saved too."
       }
     ]
   }

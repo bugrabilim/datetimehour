@@ -247,6 +247,10 @@ addModel("wx-digital-cal", "s-cal s-wx", (tz) => `<div class="cal-side">${pDigit
 addModel("wx-digital-cal-week", "s-cal2 s-wx", (tz) => `<div class="cal2-top">${pDigital(tz, " clock-xl")}</div><div class="cal2-body"><div class="cal-side">${pDate(tz)}${wxBlock("week")}</div>${calendarHtml(tz)}</div>`, true);
 // 20: çevirmeli saat (30 Ekim 2026, rakip analizi #5; önceden yalnız gömme widget'ındaydı)
 addModel("flip", "s-flip", (tz) => flipHtml(tz) + pDate(tz));
+// 21-23: temalı saatler (2. analiz #183, 3 Kasım 2026): hologram (CSS), Matrix (canvas yağmuru main.js'te), matematik ifadeli
+addModel("holo", "s-digital s-holo", (tz) => `<div class="holo-frame">${pDigital(tz, " clock-holo")}${pDate(tz)}</div>`);
+addModel("matrix", "s-digital s-matrix", (tz) => `<canvas class="matrix-rain" data-matrix aria-hidden="true"></canvas>${pDigital(tz, " clock-matrix")}${pDate(tz)}`);
+addModel("math", "s-digital s-math", (tz) => `<p class="math-time" aria-hidden="true" data-live="math"${tzA(tz)}>&nbsp;</p>${srTime(tz)}${pDate(tz)}`);
 // Yalnız gömme widget'ında (sahnede yok)
 addModel("minimal", "s-analog", (tz) => analogSvg({ tz, size: "lg", numerals: false, minimal: true }) + srTime(tz));
 addModel("duo", "s-duo", (tz) => analogSvg({ tz, size: "sm" }) + `<div class="duo-text">${pDigital(tz)}</div>`);
@@ -256,7 +260,7 @@ addModel("calendar-analog", "s-cal", (tz) => analogSvg({ tz, size: "xs", numeral
 addModel("words", "s-words", (tz) => `<p class="words" role="timer" data-live="words"${tzA(tz)}>&nbsp;</p>` + pDate(tz));
 addModel("rings", "s-rings", (tz) => ringsHtml(tz) + pDate(tz));
 addModel("bigdate", "s-bigdate", (tz) => `<p class="bigdate-day" data-live="day"${tzA(tz)}>–</p><p class="bigdate-month" data-live="monthyear"${tzA(tz)}>&nbsp;</p><p class="bigdate-week" data-live="weekday"${tzA(tz)}>&nbsp;</p>${pDigital(tz, " clock-sm")}`);
-const STAGE_ORDER = ["classic", "wx-digital-cal-week", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal", "flip"];
+const STAGE_ORDER = ["classic", "wx-digital-cal-week", "analog-date", "stack", "wx-analog", "wx-stack", "wx-analog-date", "wx-full", "h-classic", "h-analog-date", "h-stack", "h-wx-analog", "h-wx-stack", "h-wx-analog-date", "h-wx-full", "digital", "digital-date", "wx-digital", "wx-digital-cal", "flip", "holo", "matrix", "math"];
 const MODELS = STAGE_ORDER.map((id) => M[id]);
 const EMBED_MODELS = Object.values(M).filter((m) => !m.wx);
 
@@ -328,7 +332,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -504,6 +508,7 @@ ${(alt ? altLangs : LANGS).filter((l) => l !== lang).map((l) => `<meta property=
           <label class="set-look-row"><span>${esc(u.lookColor)}</span><select class="set-select" data-look="color">${["default", "ink", "blue", "green", "red", "purple"].map((k) => `<option value="${k}">${esc(u.lookColors[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookSecSmall)}</span><input type="checkbox" class="set-check" data-look-bool="secSmall"></label>
           <label class="set-look-row"><span>${esc(u.lookMs)}</span><input type="checkbox" class="set-check" data-look-bool="ms"></label>
+          <label class="set-look-row"><span>${esc(u.lookNight)}</span><input type="checkbox" class="set-check" data-look-bool="night"></label>
           <label class="set-look-row"><span>${esc(u.lookDateFmt)}</span><select class="set-select" data-look="dateFmt">${["long", "numeric", "iso"].map((k) => `<option value="${k}">${esc(u.lookDateFmts[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookSep)}</span><select class="set-select" data-look="sep">${["colon", "dot"].map((k) => `<option value="${k}">${esc(u.lookSeps[k])}</option>`).join("")}</select></label>
           <label class="set-look-row"><span>${esc(u.lookWeekStart)}</span><select class="set-select" data-look="weekStart">${["mon", "sun", "sat"].map((k) => `<option value="${k}">${esc(u.lookWeekStarts[k])}</option>`).join("")}</select></label>
@@ -1213,6 +1218,8 @@ const TOOL_ART = {
   sky: svgArt('<circle cx="48" cy="34" r="25" class="af"/><circle cx="40" cy="28" r="6"/><path d="M34 28h12"/><circle cx="60" cy="42" r="2"/><circle cx="56" cy="20" r="1.5"/><circle cx="34" cy="46" r="1.5"/>'),
   retire: svgArt('<circle cx="48" cy="30" r="20" class="af"/><path d="M48 18v12l8 6M30 62h36M36 56h24"/>'),
   otd: svgArt('<rect x="24" y="12" width="48" height="44" rx="4" class="af"/><path d="M24 24h48M36 8v8M60 8v8M34 34h28M34 42h20"/>'),
+  sleepCalc: svgArt('<path d="M58 14a20 20 0 1 0 18 28 16 16 0 0 1-18-28z" class="af"/><path d="M14 54h68M20 54V40h26v14M24 40v-4h8"/>'),
+  examTimer: svgArt('<rect x="10" y="10" width="76" height="46" rx="5" class="af"/><path d="M22 24h24M22 32h18M22 40h22"/><circle cx="66" cy="33" r="12"/><path d="M66 27v6l4 3"/>'),
   zodiac: svgArt('<circle cx="48" cy="32" r="23" class="af"/><path d="M48 17l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/>'),
 };
 
@@ -1226,7 +1233,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "chess", "metronome", "talking", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "interval", "examTimer", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1350,6 +1357,8 @@ extendRoutes({ tr: { prayer: "/namaz-vakitleri/", nature: "/mevsimler/", weather
 extendRoutes({ tr: { sky: "/gece-gokyuzu/", otd: "/tarihte-bugun/" }, en: { sky: "/en/night-sky/", otd: "/en/on-this-day/" } });
 extendRoutes({ tr: { tzn: "/saat-dilimi-haberleri/" }, en: { tzn: "/en/time-zone-news/" } });
 extendRoutes({ tr: { poll: "/toplanti-oylamasi/" }, en: { poll: "/en/meeting-poll/" } });
+// 2. analiz #191 (uyku hesaplama), #141 (sınav salonu zamanlayıcısı)
+extendRoutes({ tr: { sleepCalc: "/uyku-hesaplama/", examTimer: "/sinav-zamanlayicisi/" }, en: { sleepCalc: "/en/sleep-calculator/", examTimer: "/en/exam-timer/" } });
 ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -1358,7 +1367,8 @@ const pairPath = (lang, c) => `${ROUTES[lang].diff}${HOME_CITY[lang].slug}-${c[l
 const durTxt = (lang, min) => { const t = I[lang].client; const a = Math.abs(min), h = Math.floor(a / 60), m = a % 60; return [h && `${h} ${t.hourShort}`, m && `${m} ${t.minuteShort}`].filter(Boolean).join(" "); };
 const hh = (n) => String(((n % 24) + 24) % 24).padStart(2, "0");
 /* Paylaşılabilir bağlantı ve takvime ekle (30 Ekim 2026; .ics veri adresi, Google Takvim bağlantısı) */
-const shareRow = (s) => `<div class="share-row"><button type="button" class="toggle" data-share>${esc(s.shareLink)}</button><a class="toggle" data-ics hidden download="saat-tarih.ics">${esc(s.addIcs)}</a><a class="toggle" data-gcal hidden target="_blank" rel="noopener">${esc(s.addGoogle)}</a><span class="meta" role="status" aria-live="polite" data-share-status></span></div>`;
+/* Dışa aktarma ekleri (2. analiz #185): Outlook web, Gmail taslağı, panoya metin */
+const shareRow = (s) => `<div class="share-row"><button type="button" class="toggle" data-share>${esc(s.shareLink)}</button><a class="toggle" data-ics hidden download="saat-tarih.ics">${esc(s.addIcs)}</a><a class="toggle" data-gcal hidden target="_blank" rel="noopener">${esc(s.addGoogle)}</a><a class="toggle" data-outlook hidden target="_blank" rel="noopener">${esc(s.addOutlook)}</a><a class="toggle" data-gmail hidden target="_blank" rel="noopener">${esc(s.mailGmail)}</a><button type="button" class="toggle" data-copytext hidden>${esc(s.copyText)}</button><span class="meta" role="status" aria-live="polite" data-share-status></span></div>`;
 const cityOptions = (lang, withMine) => `${withMine ? `<option value="">${esc(I[lang].converter.mine)}</option>` : ""}${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
 const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country }));
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
@@ -2351,7 +2361,7 @@ function buildZakat(lang) {
 /* ---------- Ek araçlar (30 Ekim 2026, rakip analizi K maddeleri 13, 31, 32, 36–39, 41) ----------
    Hicri takvim çevirici, saat hesaplama, kaç gün kaldı, aralık zamanlayıcı, satranç saati, metronom, konuşan saat,
    burç hesaplama. Hepsi tarayıcıda çalışır (more-tools.js), dış istek yok; ses Web Audio ve cihazdaki konuşma motoru. */
-const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac"];
+const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer"];
 const HIJRI_TABLE = hijriTable(HOL, readJson("src/data/hijri.json"));
 const DU_KEYS = ["newYear", "ramadanStart", "rb1", "apr23", "may1", "may19", "kb1", "jul15", "aug30", "oct29", "hijri", "ashura", "mawlid", "regaib", "mirac", "berat", "kadir", "feb14", "mothers", "fathers"];
 // Burçların yaklaşık başlangıç günleri (tropikal zodyak; Koç'tan başlayarak [ay, gün])
@@ -2428,6 +2438,45 @@ function moreBody(lang, key) {
       <div class="table-wrap"><table class="events-table"><caption id="du-u">${esc(s.upcomingHeading)}</caption><thead><tr><th scope="col">${esc(s.colEvent)}</th><th scope="col">${esc(s.colDate)}</th><th scope="col">${esc(s.colLeft)}</th></tr></thead><tbody>${rows}</tbody></table></div>
     </div></section>`;
     return { hero, sections, client: { left: s.left, left1: s.left1, passed: s.passed, passed1: s.passed1, today: s.today, weeks: s.weeks, months: s.months, workdays: s.workdays, weekday: s.weekday, daysUnit: s.daysUnit, daysUnit1: s.daysUnit1 } };
+  }
+  if (key === "sleepCalc") {
+    /* Uyku hesaplama (2. analiz #191): 90 dk döngü + 15 dk uykuya dalma; sitedeki hazır alarm sayfalarıyla aynı kural */
+    const hero = `<section class="mt" data-mt="sleep" aria-labelledby="sl-a">
+      <h2 id="sl-a">${esc(s.wakeHeading)}</h2>
+      <div class="inputs-row">${mtField("sl-w", s.wakeLabel, '<input id="sl-w" type="time" value="07:00" data-sl-wake>')}</div>
+      <ol class="sl-list" data-sl-beds aria-live="polite"></ol>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section" aria-labelledby="sl-b"><div class="wrap">
+      <h2 id="sl-b">${esc(s.bedHeading)}</h2>
+      <div class="inputs-row">${mtField("sl-t", s.bedLabel, '<input id="sl-t" type="time" value="23:00" data-sl-bed>')}<div class="field"><span class="field-gap" aria-hidden="true">&nbsp;</span><button type="button" class="toggle" data-sl-now>${esc(s.nowBtn)}</button></div></div>
+      <ol class="sl-list" data-sl-wakes aria-live="polite"></ol>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: { cycles: s.cycles, best: s.best } };
+  }
+  if (key === "examTimer") {
+    /* Sınav salonu zamanlayıcısı (2. analiz #141): okuma + sınav süresi, tam ekran, son 15/5 dk uyarısı; sth-exam */
+    const hero = `<section class="tool mt mt-ex" data-mt="exam" aria-labelledby="ex-h">
+      <h2 id="ex-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="mt-tools-row">${mtFsBtn(t)}</div>
+      <p class="ex-name" data-ex-name hidden></p>
+      <p class="meta ex-room" data-ex-room hidden></p>
+      <p class="phase" data-ex-phase aria-live="polite">&nbsp;</p>
+      <p class="big-time" role="timer" data-ex-left>--:--</p>
+      <progress class="tool-progress" max="100" value="0" data-ex-progress aria-hidden="true"></progress>
+      <p class="ex-ends" data-ex-ends>&nbsp;</p>
+      <p class="ex-clock"><span data-live="time" data-sec>--:--:--</span></p>
+      <p class="ex-warn" data-ex-warn aria-live="assertive"></p>
+      <div class="tool-actions"><button type="button" class="btn" data-ex-start>${esc(s.start)}</button><button type="button" class="toggle" data-ex-pause hidden>${esc(s.pause)}</button><button type="button" class="toggle" data-ex-reset>${esc(s.reset)}</button></div>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section"><div class="wrap">
+      <div class="inputs-row">${mtField("ex-n", s.nameLabel, `<input id="ex-n" type="text" maxlength="60" placeholder="${esc(s.namePh)}" data-ex-cfg="name">`)}${mtField("ex-r", s.roomLabel, `<input id="ex-r" type="text" maxlength="20" placeholder="${esc(s.roomPh)}" data-ex-cfg="room">`)}</div>
+      <div class="inputs-row">${mtNum("ex-rd", s.readLabel, 'min="0" max="60" value="10" data-ex-cfg="read"')}${mtNum("ex-d", s.durLabel, 'min="1" max="600" value="40" data-ex-cfg="dur"')}</div>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: { pause: s.pause, resume: s.resume, start: s.start, phaseRead: s.phaseRead, phaseExam: s.phaseExam, phaseDone: s.phaseDone, endsAt: s.endsAt, warn15: s.warn15, warn5: s.warn5 } };
   }
   if (key === "interval") {
     const hero = `<section class="tool mt mt-iv" data-mt="interval" aria-labelledby="iv-h">

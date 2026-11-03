@@ -9,6 +9,7 @@ document.documentElement.classList.add("js");
       var p = JSON.parse(localStorage.getItem("sth-prefs") || "{}");
       if (/^(rounded|serif|mono|light)$/.test(p.font)) document.documentElement.setAttribute("data-cfont", p.font);
       if (/^(ink|blue|green|red|purple)$/.test(p.color)) document.documentElement.setAttribute("data-ccolor", p.color);
+      if (p.night === true) document.documentElement.setAttribute("data-cnight", "");
     }
   } catch (e) {}
 })();
