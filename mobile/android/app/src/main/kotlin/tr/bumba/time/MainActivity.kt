@@ -167,6 +167,12 @@ fun Root(start: Int) {
             autoFull = false
         }
     }
+    // Yeni kurulumda ilk açılış sihirbazı (2. analiz #4); bitince ana ekran
+    if (Onboarding.pending) {
+        BackHandler { Onboarding.finish() }
+        OnboardingScreen { Onboarding.finish() }
+        return
+    }
     RefreshAutoPlace()
     AskNotificationsOnce()
     // Simge kısayolundan "Tam ekran saat"

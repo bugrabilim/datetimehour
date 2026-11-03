@@ -267,6 +267,8 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var shakeSnooze by remember { mutableStateOf(item.shakeSnooze) }
     var preAlarm by remember { mutableStateOf(item.preAlarm) }
     var openApp by remember { mutableStateOf(item.openApp) }
+    var wall by remember { mutableStateOf(item.wall) }
+    var headset by remember { mutableStateOf(item.headset) }
     val linkNorm = MusicLink.normalize(link)
     // Zil sesi seçici (sistem penceresi); "Sessiz" seçilirse varsayılana dönülür
     val pickSound = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { r ->
@@ -344,6 +346,28 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                 ) {
                     Text(L("alarm.sound"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     Text(AlarmScheduler.soundTitle(context, sound), color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                }
+                // Uygulamanın ses kitaplığı (2. analiz #3): telifsiz, kategorili sesler
+                var toneLibrary by remember { mutableStateOf(false) }
+                Row(Modifier.fillMaxWidth().clickable { toneLibrary = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("tone.library"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Text(AlarmTones.id(sound)?.let { L("tone.$it") } ?: "›", color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                }
+                if (toneLibrary) AlarmToneDialog(sound, { sound = it; toneLibrary = false }, { toneLibrary = false })
+                // Alarm ekranı duvar kâğıdı (2. analiz #2)
+                var wallPicker by remember { mutableStateOf(false) }
+                Row(Modifier.fillMaxWidth().clickable { wallPicker = true }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(L("wall.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                    Text(AlarmWalls.title(wall), color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
+                }
+                if (wallPicker) AlarmWallDialog(wall, time.hour, time.minute, { wall = it; wallPicker = false }, { wallPicker = false })
+                // Kulaklıkta çal (2. analiz #79): bağlantı kesilirse telefonda çalar
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Column(Modifier.weight(1f)) {
+                        Text(L("alarm.headset"), color = Theme.c.text, fontSize = 15.sp)
+                        Text(L("alarm.headsetNote"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    Switch(headset, { headset = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("alarm.vibrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
@@ -438,7 +462,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
         confirmButton = {
             TextButton(enabled = linkNorm != null, onClick = {
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
-                    link = linkNorm ?: "", smart = smart, shakeSnooze = shakeSnooze, preAlarm = preAlarm, openApp = openApp,
+                    link = linkNorm ?: "", smart = smart, shakeSnooze = shakeSnooze, preAlarm = preAlarm, openApp = openApp, wall = wall, headset = headset,
                     snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
                     skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise, task = task, taskLevel = taskLevel,
                     code = code, wakeCheck = wakeCheck, preNotify = preNotify, speak = speak,

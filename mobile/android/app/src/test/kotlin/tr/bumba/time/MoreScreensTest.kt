@@ -45,6 +45,8 @@ class MoreScreensTest {
         Prefs.saveAccent("amber")
         Atmosphere.save(atmo)
         FontScale.save(fontScale)
+        // Kurulum sihirbazı geçilmiş sayılır (yeni kurulum işareti sonraki testlere sızmasın)
+        Onboarding.finish()
         // Robolectric'te bölge ABD: birimler açıkça metrik
         if (!imperial) Prefs.saveUnits("metric")
         captureRoboImage("$dir/$name.png") {
@@ -169,6 +171,14 @@ class MoreScreensTest {
         shot("tr-alarm-gorevi-sallama") {
             androidx.compose.foundation.layout.Column(Modifier.padding(24.dp)) {
                 WakeTaskPanel(AlarmItem(id = "s", hour = 7, minute = 0, task = "shake")) {}
+            }
+        }
+        // Alarm duvar kâğıdı (2. analiz #2): gün batımı zemini, yazılar koyu temanın açık renkleri
+        shot("tr-alarm-gorevi-duvar") {
+            AlarmWallScreen("sunset") {
+                androidx.compose.foundation.layout.Column(Modifier.padding(24.dp)) {
+                    WakeTaskPanel(AlarmItem(id = "w", hour = 7, minute = 0, task = "math", wall = "sunset")) {}
+                }
             }
         }
     }
@@ -344,6 +354,8 @@ class MoreScreensTest {
         shot("tr-atmosfer-koyu", atmo = "ocean", dark = true) { SettingsScreen {} }
         shot("tr-yazi-boyutu-130", fontScale = 130) { SettingsScreen {} }
         shot("ar-atmosfer-gun-batimi", qualifiers = "ar", atmo = "sunset") { PrayerScreen() }
+        shot("tr-kurulum") { OnboardingScreen {} }
+        Onboarding.finish()
     }
 
     @Test fun badges() {

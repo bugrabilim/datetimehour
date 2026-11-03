@@ -36,6 +36,8 @@ shoot ar ar_SA light ar-acik
 # İlk açılış: yalnız Saat (alt bar yok; dişli ve "özellikleri aç" satırı); iki özellik açıkken bar
 FEAT="" shoot tr tr_TR light tr-ilk-acilis
 FEAT="prayer,weather" shoot tr tr_TR light tr-iki-ozellik -startTab 5
+# İlk kurulum sihirbazı (2. analiz #4): yalnız yeni kurulumda açılır, burada açıkça istenir
+FEAT="" shoot tr tr_TR light tr-kurulum -onboard.pending "<true/>"
 # Saat modelleri (sitedeki 20 model; -clockModel kimlik)
 for M in classic stack wx-full h-classic h-stack h-wx-full digital digital-date wx-digital-cal flip; do
   shoot tr tr_TR light "model-$M" -clockModel "$M"
@@ -96,6 +98,7 @@ shoot tr tr_TR light ekran-zakat-ornek -openScreen zakat \
 shoot tr tr_TR light ekran-uyku -openScreen sleep -sleep.on "<true/>"
 # Alarm kapatma görevi (matematik)
 shoot tr tr_TR dark ekran-alarm-gorevi -openScreen wake
+shoot tr tr_TR light ekran-alarm-duvar -openScreen wall
 # Gece modu: siyah zemin, kısık kırmızı saat (yıldızlı arka plan seçili olsa da düz siyah)
 shoot tr tr_TR dark ekran-gece-modu -openScreen night -nightMode on -fsBg stars
 # Yatay (yan çevrilmiş): saat sekmesi tam ekran açılır, diğerlerinde alt bar gizli. Sona konur ki sonraki

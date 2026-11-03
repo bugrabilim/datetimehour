@@ -29,6 +29,8 @@ class ScreenshotTest {
     ) {
         RuntimeEnvironment.setQualifiers("+$qualifiers")
         Prefs.store.edit().putBoolean("notify.asked", true).commit()
+        // Kurulum sihirbazı (yeni kurulumda açılır) bu görüntülerde geçilmiş sayılır
+        Onboarding.finish()
         // Sekme görüntüleri bütün özellikler açıkken (yeni kurulumda yalnız Saat açıktır; firstLaunch görüntüsü)
         Features.save(features)
         Prefs.saveAppearance(if (dark) "dark" else "light")

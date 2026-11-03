@@ -133,12 +133,15 @@ struct AlarmMusicSection: View {
     @State private var pickingFile = false
     @State private var source: AlarmMusicSource?
     @State private var error: String?
+    /// Uygulamanın ses kitaplığı (AlarmTones; 2. analiz #3)
+    @State private var library = false
 
     var body: some View {
         Section {
             LabeledContent(L("alarm.music")) {
                 Text(item.music.isEmpty ? L("alarm.music.none") : item.musicName).lineLimit(1)
             }
+            Button(L("tone.library")) { library = true }
             Button(L("alarm.music.library")) { pickingLibrary = true }
             Button(L("alarm.music.files")) { pickingFile = true }
             if !item.music.isEmpty {
@@ -151,6 +154,7 @@ struct AlarmMusicSection: View {
         } footer: {
             Text(L("alarm.music.note"))
         }
+        .sheet(isPresented: $library) { AlarmToneLibrary(item: $item) }
         .sheet(isPresented: $pickingLibrary) {
             MusicLibraryPicker { picked in
                 pickingLibrary = false

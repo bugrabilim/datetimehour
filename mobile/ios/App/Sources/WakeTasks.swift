@@ -19,6 +19,8 @@ struct PendingWakeTask: Codable, Equatable, Identifiable {
     var rise: Bool
     var rings: Int
     var repeatID: String?
+    /// Alarmın duvar kâğıdı (AlarmWalls; 2. analiz #2); eski kayıtlarda yok
+    var wall: String?
 }
 
 @MainActor
@@ -117,6 +119,7 @@ struct WakeTaskView: View {
     @State private var scanning = false
     @State private var codeWrong = false
     @State private var motion = MotionReader()
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         VStack(spacing: 22) {
@@ -142,7 +145,11 @@ struct WakeTaskView: View {
         .padding(24)
         .frame(maxWidth: 520)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(AppBackdrop().ignoresSafeArea())
+        // Duvar kâğıdı seçiliyse zemin o, yazılar koyu temanın açık renkleri (2. analiz #2)
+        .background {
+            if let w = task.wall, !w.isEmpty { AlarmWall(id: w).ignoresSafeArea() } else { AppBackdrop().ignoresSafeArea() }
+        }
+        .environment(\.colorScheme, (task.wall ?? "").isEmpty ? colorScheme : .dark)
         .interactiveDismissDisabled()
         .onAppear {
             kind = AlarmItem.effectiveTask(task.task, code: task.code)

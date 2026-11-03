@@ -58,6 +58,9 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var preAlarm = 0
     /// Uyku planının kalkış alarmı (2. analiz #52): plan değişince güncellenir, listede ayrı başlıkta
     var sleepPlan = false
+    /// 2. analiz #2: duvar kâğıdı (AlarmWalls; boş = tema rengi). iPhone'da alarm Apple'ın ekranında çalar; zemin
+    /// kapatma görevi ekranında ve günaydın kartında görünür
+    var wall = ""
 
     static let preAlarmChoices = [0, 10, 20, 30]
     static let snoozeChoices = [0, 5, 10, 15, 20, 30]
@@ -73,7 +76,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         self.minute = minute
     }
 
-    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until, music, musicName, smart, preAlarm, sleepPlan }
+    private enum CodingKeys: String, CodingKey { case id, hour, minute, label, days, enabled, snooze, skipUntil, snoozeMax, rise, skipHolidays, sunrise, task, taskLevel, code, wakeCheck, preNotify, speak, date, every, anchor, until, music, musicName, smart, preAlarm, sleepPlan, wall }
     private enum LegacyKeys: String, CodingKey { case repeats }
 
     init(from decoder: Decoder) throws {
@@ -104,6 +107,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
         smart = try c.decodeIfPresent(Int.self, forKey: .smart) ?? 0
         preAlarm = try c.decodeIfPresent(Int.self, forKey: .preAlarm) ?? 0
         sleepPlan = try c.decodeIfPresent(Bool.self, forKey: .sleepPlan) ?? false
+        wall = try c.decodeIfPresent(String.self, forKey: .wall) ?? ""
         if let d = try c.decodeIfPresent([Int].self, forKey: .days) {
             days = d
         } else {
@@ -129,7 +133,8 @@ struct AlarmItem: Codable, Identifiable, Hashable {
     var wakeTask: PendingWakeTask? {
         guard task != "none" || wakeCheck else { return nil }
         let t = Self.effectiveTask(task, code: code)
-        return PendingWakeTask(task: t, level: taskLevel, code: code, wakeCheck: wakeCheck, title: title, rise: rise, rings: 0, repeatID: nil)
+        return PendingWakeTask(task: t, level: taskLevel, code: code, wakeCheck: wakeCheck, title: title, rise: rise, rings: 0, repeatID: nil,
+                               wall: wall.isEmpty ? nil : wall)
     }
     var timeText: String {
         var c = DateComponents()

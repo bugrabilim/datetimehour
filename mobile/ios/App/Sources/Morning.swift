@@ -32,6 +32,7 @@ struct MorningCard: View {
     @Environment(\.dismiss) private var dismiss
     @State private var weather: Weather?
     private let now = Date()
+    private let wall = AlarmWalls.recent()
 
     var body: some View {
         let place = PlaceModel.shared.place
@@ -70,7 +71,8 @@ struct MorningCard: View {
                 }
                 JournalMorningSection()
             }
-            .themedBackground()
+            // Alarm duvar kâğıdı (2. analiz #2): son çalan alarmınki
+            .alarmWall(wall)
             .toolbar { Button(L("common.done")) { dismiss() } }
         }
         .task { weather = try? await WeatherCache.weather(lat: place.lat, lon: place.lon) }

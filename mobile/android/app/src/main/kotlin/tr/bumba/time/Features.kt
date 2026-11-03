@@ -46,11 +46,15 @@ object Features {
 
     /** Prefs.init'in başında, başka bir şey yazılmadan: dosyada anahtar varsa uygulama daha önce kullanılmıştır */
     fun load(sp: SharedPreferences) {
+        var fresh = false
         if (!sp.contains(KEY)) {
             val existing = sp.all.isNotEmpty()
+            fresh = !existing
             sp.edit().putString(KEY, if (existing) OPTIONAL.joinToString(",") { id(it) } else "").apply()
         }
         enabled = parse(sp.getString(KEY, "")!!)
+        // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4)
+        Onboarding.load(fresh)
     }
 
     fun isOn(t: Tab) = t == Tab.CLOCK || t in enabled

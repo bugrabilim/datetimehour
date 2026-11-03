@@ -185,6 +185,8 @@ struct RootView: View {
     @State private var morning = false
     /// Görevli alarm durduruldu: görev ekranı (çözülmeden kapanmaz; WakeTasks)
     @State private var wakeTask: PendingWakeTask?
+    /// Yeni kurulumda ilk açılış sihirbazı (Onboarding; 2. analiz #4)
+    @State private var onboarding = Onboarding.pending
 
     var body: some View {
         // Bar sayfanın altında ayrı bir satır: sayfanın son satırları barın altında kalmaz
@@ -212,6 +214,15 @@ struct RootView: View {
             }
         }
         .sheet(isPresented: $morning) { MorningCard().preferredColorScheme(scheme) }
+        .fullScreenCover(isPresented: $onboarding) {
+            OnboardingView {
+                Onboarding.finish()
+                onboarding = false
+                Task { await PrayerNotifier.reschedule() }
+            }
+            .preferredColorScheme(scheme)
+            .appFontScale()
+        }
         .fullScreenCover(item: $wakeTask) { t in
             WakeTaskView(task: t) {
                 Task {
@@ -312,7 +323,7 @@ enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
-         qr, colors
+         qr, colors, wall
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -330,6 +341,10 @@ enum DebugScreen: String, Identifiable {
             // Görev ekranı örneği (CI ekran görüntüsü): orta zorlukta matematik
             WakeTaskView(task: PendingWakeTask(task: "math", level: 2, code: "", wakeCheck: true, title: L("sleep.alarmLabel"),
                                                rise: false, rings: 0, repeatID: nil)) {}
+        case .wall:
+            // Alarm duvar kâğıdıyla görev ekranı (2. analiz #2): gün batımı zemini
+            WakeTaskView(task: PendingWakeTask(task: "math", level: 1, code: "", wakeCheck: false, title: L("sleep.alarmLabel"),
+                                               rise: false, rings: 0, repeatID: nil, wall: "sunset")) {}
         case .datecalc: DateCalcView()
         case .journal: JournalView()
         case .breath: BreathView()

@@ -78,7 +78,9 @@ class AlarmActivity : ComponentActivity() {
             AppTheme {
                 var morning by remember { mutableStateOf(false) }
                 if (morning) {
-                    MorningCard { finish() }
+                    // Günaydın kartı da alarmın duvar kâğıdıyla (2. analiz #2)
+                    val wall = remember { if (kind == "alarm") AlarmItem.find(id)?.wall.orEmpty() else "" }
+                    AlarmWallScreen(wall) { MorningCard { finish() } }
                     return@AppTheme
                 }
                 val now = rememberNow()
@@ -100,8 +102,10 @@ class AlarmActivity : ComponentActivity() {
                     AlarmScheduler.snooze(this@AlarmActivity, id, title)
                     finish()
                 }
+                // Duvar kâğıdı (2. analiz #2): seçiliyse zemin ve koyu temanın açık yazıları
+                AlarmWallScreen(alarm?.wall ?: "") {
                 Column(
-                    Modifier.fillMaxSize().background(Theme.c.bg).verticalScroll(rememberScrollState()).padding(24.dp),
+                    Modifier.fillMaxSize().wallBackground().verticalScroll(rememberScrollState()).padding(24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center,
                 ) {
@@ -150,6 +154,7 @@ class AlarmActivity : ComponentActivity() {
                             finish()
                         }
                     }
+                }
                 }
             }
         }
@@ -201,7 +206,7 @@ fun MorningCard(onDone: () -> Unit) {
     LaunchedEffect(place.id) { weather = runCatching { WeatherCache.weather(place.lat, place.lon) }.getOrNull() ?: weather }
     val events = AppData.events[LocalDate.now()].orEmpty().map { it.name }.distinct()
     Column(
-        Modifier.fillMaxSize().background(Theme.c.bg).verticalScroll(rememberScrollState()).padding(24.dp),
+        Modifier.fillMaxSize().wallBackground().verticalScroll(rememberScrollState()).padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
         Spacer(Modifier.height(24.dp))

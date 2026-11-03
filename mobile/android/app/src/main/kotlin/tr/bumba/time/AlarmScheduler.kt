@@ -73,6 +73,9 @@ data class AlarmItem(
     val preAlarm: Int = 0,
     val openApp: String = "",
     val sleepPlan: Boolean = false,
+    /** 2. analiz #2: çalma ekranının duvar kâğıdı (AlarmWalls; boş = tema rengi); #79: kulaklık bağlıysa yalnız kulaklıkta */
+    val wall: String = "",
+    val headset: Boolean = false,
 ) {
     /** Kapatırken istenecek görev (kod kaydedilmediyse matematik); yoksa "none" */
     val effectiveTask: String get() = when {
@@ -169,7 +172,7 @@ data class AlarmItem(
         .put("sunrise", sunrise).put("task", task).put("taskLevel", taskLevel).put("code", code).put("wakeCheck", wakeCheck)
         .put("preNotify", preNotify).put("speak", speak).put("date", date).put("every", every).put("anchor", anchor).put("until", until)
         .put("link", link).put("smart", smart).put("shakeSnooze", shakeSnooze).put("preAlarm", preAlarm).put("openApp", openApp)
-        .put("sleepPlan", sleepPlan)
+        .put("sleepPlan", sleepPlan).put("wall", wall).put("headset", headset)
 
     companion object {
         private const val KEY = "alarms"
@@ -212,7 +215,7 @@ data class AlarmItem(
                 o.optString("date", ""), o.optInt("every", 1), o.optString("anchor", ""), o.optString("until", ""),
                 link = o.optString("link", ""), smart = o.optInt("smart", 0),
                 shakeSnooze = o.optBoolean("shakeSnooze", false), preAlarm = o.optInt("preAlarm", 0), openApp = o.optString("openApp", ""),
-                sleepPlan = o.optBoolean("sleepPlan", false),
+                sleepPlan = o.optBoolean("sleepPlan", false), wall = o.optString("wall", ""), headset = o.optBoolean("headset", false),
             )
         }
 
@@ -323,6 +326,7 @@ object AlarmScheduler {
     /** Zil sesinin adı (boşsa "Varsayılan alarm sesi") */
     fun soundTitle(c: Context, sound: String): String =
         if (sound.isEmpty()) L("alarm.soundDefault")
+        else if (AlarmTones.id(sound) != null) L("tone.${AlarmTones.id(sound)}")
         else runCatching { RingtoneManager.getRingtone(c, android.net.Uri.parse(sound))?.getTitle(c) }.getOrNull() ?: L("alarm.soundDefault")
 
     private fun pending(c: Context, id: String, title: String, kind: String, flags: Int): PendingIntent? =
@@ -411,7 +415,9 @@ object AlarmScheduler {
         if (kind == WakeCheck.KIND) { WakeCheck.ask(c, id); return }
         val item = if (kind == "alarm") AlarmItem.find(id) else null
         // Kademeli ses, saati sesli söyleme ya da müzik bağlantısı: ses hizmette çalar
-        if ((item?.rise == true || item?.speak == true || item?.link?.isNotEmpty() == true) && AlarmRingService.start(c, id, title, kind)) return
+        // Kulaklıkta çal (2. analiz #79): kulaklık bağlıysa ses hizmette, medya akışında çalar
+        val headset = item?.headset == true && Headset.connected(c)
+        if ((item?.rise == true || item?.speak == true || item?.link?.isNotEmpty() == true || headset) && AlarmRingService.start(c, id, title, kind)) return
         runCatching { NotificationManagerCompat.from(c).notify(id.hashCode(), notification(c, id, title, kind, silent = false)) }
     }
 

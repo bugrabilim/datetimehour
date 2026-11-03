@@ -50,7 +50,8 @@ enum PrayerNotifier {
     /// İlk açılışta bildirim izni bir kez sorulur (bildirimler varsayılan açık); sonra yalnız Ayarlar'dan
     static func askOnce() async {
         let d = UserDefaults.standard
-        guard !d.bool(forKey: "notify.asked") else { return }
+        // Kurulum sihirbazı sürerken sorulmaz (izin orada istenir; Onboarding)
+        guard !d.bool(forKey: "notify.asked"), !Onboarding.pending else { return }
         d.set(true, forKey: "notify.asked")
         // Önce kısa açıklama (2. analiz #80); "Şimdi değil"de sistem penceresi açılmaz, Ayarlar › Bildirimler'den istenir
         if await authorizationStatus() == .notDetermined, await PermissionPrimer.ask(.notify) { _ = await requestAuthorization() }

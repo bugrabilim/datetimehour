@@ -36,6 +36,8 @@ enum Features {
         let system = ["Apple", "NS", "com.apple", "UI", "WebKit", "AK", "PK"]
         let existing = own.keys.contains { k in !system.contains { k.hasPrefix($0) } }
         defaults.set(existing ? raw(Set(optional)) : "", forKey: key)
+        // Yeni kurulum: ilk açılışta kurulum sihirbazı (Onboarding; 2. analiz #4)
+        if !existing { defaults.set(true, forKey: Onboarding.key) }
     }
 }
 
