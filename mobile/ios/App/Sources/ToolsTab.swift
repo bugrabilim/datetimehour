@@ -617,6 +617,9 @@ private struct AlarmEditor: View {
                         chain: item.chain.isEmpty ? nil : item.chain)
     }
 
+    /// Gelişmiş bölüm (2. analiz #201): kapalı gelir
+    @State private var advanced = false
+
     var body: some View {
         NavigationStack {
             Form {
@@ -670,27 +673,13 @@ private struct AlarmEditor: View {
                     }
                     Text(item.repeatText).font(.footnote).foregroundStyle(Theme.muted)
                 }
-                // Saat neye göre (2. analiz #132 şehir saati, #153 gün doğumu/batımı ± dk)
-                Section {
-                    Picker(L("alarm.base"), selection: base) {
-                        ForEach(["phone", "city", "rise", "set"], id: \.self) { b in Text(L("alarm.base.\(b)")).tag(b) }
-                    }
-                    if !item.tz.isEmpty && item.sun.isEmpty {
-                        Picker(L("alarm.city"), selection: $item.tz) {
-                            ForEach(cities) { c in Text(c.displayName).tag(c.tz) }
-                        }
-                    }
-                    if !item.sun.isEmpty {
-                        Picker(L("alarm.sunOffset"), selection: $item.sunOffset) {
-                            ForEach(AlarmItem.sunOffsets, id: \.self) { m in Text(AlarmItem.sunOffsetText(m)).tag(m) }
-                        }
-                    }
-                } footer: {
-                    if !item.sun.isEmpty {
-                        let next = item.next(after: Date())
-                        Text(T("alarm.sunNote", AppPlace.stored().name, next.map { Fmt.dayMonth($0) + " " + Fmt.time($0) } ?? "—"))
-                    } else if !item.tz.isEmpty {
-                        Text(L("alarm.tzNote"))
+                // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
+                if !item.days.isEmpty {
+                    Section {
+                        Toggle(L("alarm.skipHolidays"), isOn: $item.skipHolidays)
+                            .tint(Theme.accent)
+                    } footer: {
+                        Text(L("alarm.skipHolidaysNote"))
                     }
                 }
                 Section {
@@ -699,130 +688,163 @@ private struct AlarmEditor: View {
                             Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.snoozeMin", m)).tag(m)
                         }
                     }
-                    if item.snooze > 0 {
-                        Picker(L("alarm.snoozeMax"), selection: $item.snoozeMax) {
-                            ForEach(AlarmItem.snoozeMaxChoices, id: \.self) { n in
-                                Text(n == 0 ? L("alarm.snoozeMax.none") : T("alarm.snoozeMax.n", n)).tag(n)
-                            }
-                        }
-                        // 2. analiz #40: her ertelemede kısalan süre, belli saatten sonra erteleme yok
-                        Toggle(L("alarm.snoozeShrink"), isOn: $item.snoozeShrink).tint(Theme.accent)
-                        Picker(L("alarm.snoozeEnd"), selection: $item.snoozeEnd) {
-                            ForEach(endChoices, id: \.self) { e in Text(e.isEmpty ? L("alarm.snoozeEnd.none") : e).tag(e) }
-                        }
-                    }
-                } footer: {
-                    if item.snooze > 0 && item.snoozeShrink { Text(L("alarm.snoozeShrinkNote")) }
                 }
                 AlarmMusicSection(item: $item)
-                AlarmWallSection(item: $item)
+                // Gelişmiş (2. analiz #201): kapalı gelir; saat, günler, ses ve erteleme üstte kalır
                 Section {
-                    Toggle(L("alarm.rise"), isOn: $item.rise)
-                        .tint(Theme.accent)
-                } footer: {
-                    Text(L("alarm.riseNoteIOS"))
-                }
-                // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
-                Section {
-                    Toggle(L("alarm.speak"), isOn: $item.speak)
-                        .tint(Theme.accent)
-                } footer: {
-                    Text(L("alarm.speakNoteIOS"))
-                }
-                Section {
-                    Picker(L("alarm.pre"), selection: $item.preNotify) {
-                        ForEach(AlarmItem.preNotifyChoices, id: \.self) { m in
-                            Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                    Button { withAnimation { advanced.toggle() } } label: {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text(L("alarm.advanced")).font(.body.weight(.semibold)).foregroundStyle(Theme.text)
+                                if !advanced { Text(L("alarm.advanced.note")).font(.caption).foregroundStyle(Theme.muted) }
+                            }
+                            Spacer()
+                            Image(systemName: advanced ? "chevron.up" : "chevron.down").foregroundStyle(Theme.muted)
                         }
+                        .contentShape(Rectangle())
                     }
-                } footer: {
-                    Text(L("alarm.preNote"))
+                    .buttonStyle(.plain)
                 }
-                // Sakin ön alarm (2. analiz #42): kısık yağmur ve çan sesli bildirim
-                Section {
-                    Picker(L("alarm.preAlarm"), selection: $item.preAlarm) {
-                        ForEach(AlarmItem.preAlarmChoices, id: \.self) { m in
-                            Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                if advanced {
+                    // Saat neye göre (2. analiz #132 şehir saati, #153 gün doğumu/batımı ± dk)
+                    Section {
+                        Picker(L("alarm.base"), selection: base) {
+                            ForEach(["phone", "city", "rise", "set"], id: \.self) { b in Text(L("alarm.base.\(b)")).tag(b) }
                         }
-                    }
-                } footer: {
-                    Text(L("alarm.preAlarmNote"))
-                }
-                // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
-                Section {
-                    Picker(L("alarm.smart"), selection: $item.smart) {
-                        ForEach(AlarmItem.smartChoices, id: \.self) { m in
-                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.smartMin", m)).tag(m)
-                        }
-                    }
-                } footer: {
-                    Text(L("alarm.smart.note"))
-                }
-                // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
-                Section {
-                    Picker(L("alarm.sunrise"), selection: $item.sunrise) {
-                        ForEach(AlarmItem.sunriseChoices, id: \.self) { m in
-                            Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.sunriseMin", m)).tag(m)
-                        }
-                    }
-                } footer: {
-                    Text(L("alarm.sunriseNote"))
-                }
-                // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
-                Section {
-                    Picker(L("alarm.task"), selection: $item.task) {
-                        ForEach(WakeTask.kinds + ["random"], id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
-                    }
-                    // Görev zinciri (2. analiz #34): asıl görevden sonra en çok iki görev daha
-                    if item.task != "none" {
-                        ForEach(0..<min(2, item.chain.count + 1), id: \.self) { i in
-                            Picker(L("alarm.chain"), selection: Binding(get: { item.chain.indices.contains(i) ? item.chain[i] : "none" }, set: { v in
-                                var list = item.chain
-                                if list.indices.contains(i) { list[i] = v } else { list.append(v) }
-                                item.chain = Array(list.prefix(i + 1).filter { $0 != "none" }) + (v == "none" ? [] : Array(list.dropFirst(i + 1)))
-                            })) {
-                                ForEach(WakeTask.kinds + ["random"], id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                        if !item.tz.isEmpty && item.sun.isEmpty {
+                            Picker(L("alarm.city"), selection: $item.tz) {
+                                ForEach(cities) { c in Text(c.displayName).tag(c.tz) }
                             }
                         }
-                        // Önizleme (2. analiz #35): alarm çalmadan görevi dene
-                        Button { tried = false; tryTask = true } label: { Label(L("alarm.taskTry"), systemImage: "play.circle") }
-                    }
-                    if item.task == "math" || item.task == "memory" {
-                        Picker(L("alarm.task.level"), selection: $item.taskLevel) {
-                            ForEach(1...3, id: \.self) { n in Text(L("alarm.task.level.\(n)")).tag(n) }
+                        if !item.sun.isEmpty {
+                            Picker(L("alarm.sunOffset"), selection: $item.sunOffset) {
+                                ForEach(AlarmItem.sunOffsets, id: \.self) { m in Text(AlarmItem.sunOffsetText(m)).tag(m) }
+                            }
+                        }
+                    } footer: {
+                        if !item.sun.isEmpty {
+                            let next = item.next(after: Date())
+                            Text(T("alarm.sunNote", AppPlace.stored().name, next.map { Fmt.dayMonth($0) + " " + Fmt.time($0) } ?? "—"))
+                        } else if !item.tz.isEmpty {
+                            Text(L("alarm.tzNote"))
                         }
                     }
-                    if item.task == "code" {
-                        if CodeScannerView.available {
-                            Button(L(item.code.isEmpty ? "alarm.code.save" : "alarm.code.change")) { scanning = true }
-                        } else {
-                            Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                    if item.snooze > 0 {
+                        Section {
+                            Picker(L("alarm.snoozeMax"), selection: $item.snoozeMax) {
+                                ForEach(AlarmItem.snoozeMaxChoices, id: \.self) { n in
+                                    Text(n == 0 ? L("alarm.snoozeMax.none") : T("alarm.snoozeMax.n", n)).tag(n)
+                                }
+                            }
+                            // 2. analiz #40: her ertelemede kısalan süre, belli saatten sonra erteleme yok
+                            Toggle(L("alarm.snoozeShrink"), isOn: $item.snoozeShrink).tint(Theme.accent)
+                            Picker(L("alarm.snoozeEnd"), selection: $item.snoozeEnd) {
+                                ForEach(endChoices, id: \.self) { e in Text(e.isEmpty ? L("alarm.snoozeEnd.none") : e).tag(e) }
+                            }
+                        } footer: {
+                            if item.snoozeShrink { Text(L("alarm.snoozeShrinkNote")) }
                         }
-                        Text(L(item.code.isEmpty ? "alarm.code.missing" : "alarm.code.saved")).font(.footnote).foregroundStyle(Theme.muted)
-                        Text(L("alarm.code.hint")).font(.footnote).foregroundStyle(Theme.muted)
                     }
-                    if item.task == "photo" {
-                        if CameraShot.available {
-                            Button(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.change" : "alarm.photo.save")) { shootingRef = true }
-                        } else {
-                            Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
-                        }
-                        Text(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.saved" : "alarm.photo.missing")).font(.footnote).foregroundStyle(Theme.muted)
-                    }
-                    Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
-                } header: {
-                    Text(L("alarm.task.heading"))
-                } footer: {
-                    Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note")
-                         + (item.task != "none" ? " " + L("alarm.chainNote") : ""))
-                }
-                // Yalnız tekrarlayan alarmda: Türkiye'deki tam gün resmî tatillerde çalmaz
-                if !item.days.isEmpty {
+                    AlarmWallSection(item: $item)
                     Section {
-                        Toggle(L("alarm.skipHolidays"), isOn: $item.skipHolidays)
+                        Toggle(L("alarm.rise"), isOn: $item.rise)
                             .tint(Theme.accent)
                     } footer: {
-                        Text(L("alarm.skipHolidaysNote"))
+                        Text(L("alarm.riseNoteIOS"))
+                    }
+                    // Saati sesli söyleme (rakip analizi #20) ve yaklaşan alarm bildirimi (#19)
+                    Section {
+                        Toggle(L("alarm.speak"), isOn: $item.speak)
+                            .tint(Theme.accent)
+                    } footer: {
+                        Text(L("alarm.speakNoteIOS"))
+                    }
+                    Section {
+                        Picker(L("alarm.pre"), selection: $item.preNotify) {
+                            ForEach(AlarmItem.preNotifyChoices, id: \.self) { m in
+                                Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                            }
+                        }
+                    } footer: {
+                        Text(L("alarm.preNote"))
+                    }
+                    // Sakin ön alarm (2. analiz #42): kısık yağmur ve çan sesli bildirim
+                    Section {
+                        Picker(L("alarm.preAlarm"), selection: $item.preAlarm) {
+                            ForEach(AlarmItem.preAlarmChoices, id: \.self) { m in
+                                Text(m == 0 ? L("alarm.preOff") : T("alarm.preMin", m)).tag(m)
+                            }
+                        }
+                    } footer: {
+                        Text(L("alarm.preAlarmNote"))
+                    }
+                    // Akıllı alarm (SmartSleep): Uyku ekranındaki oturum açıkken pencerede hafif uyku algılanırsa erken çalar
+                    Section {
+                        Picker(L("alarm.smart"), selection: $item.smart) {
+                            ForEach(AlarmItem.smartChoices, id: \.self) { m in
+                                Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.smartMin", m)).tag(m)
+                            }
+                        }
+                    } footer: {
+                        Text(L("alarm.smart.note"))
+                    }
+                    // Gün doğumu ışığı (rakip analizi #17): tam ekran saat açıkken alarmdan önce ekran yavaşça aydınlanır
+                    Section {
+                        Picker(L("alarm.sunrise"), selection: $item.sunrise) {
+                            ForEach(AlarmItem.sunriseChoices, id: \.self) { m in
+                                Text(m == 0 ? L("alarm.snoozeOff") : T("alarm.sunriseMin", m)).tag(m)
+                            }
+                        }
+                    } footer: {
+                        Text(L("alarm.sunriseNote"))
+                    }
+                    // Kapatma görevi ve uyanma denetimi (rakip analizi #13)
+                    Section {
+                        Picker(L("alarm.task"), selection: $item.task) {
+                            ForEach(WakeTask.kinds + ["random"], id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                        }
+                        // Görev zinciri (2. analiz #34): asıl görevden sonra en çok iki görev daha
+                        if item.task != "none" {
+                            ForEach(0..<min(2, item.chain.count + 1), id: \.self) { i in
+                                Picker(L("alarm.chain"), selection: Binding(get: { item.chain.indices.contains(i) ? item.chain[i] : "none" }, set: { v in
+                                    var list = item.chain
+                                    if list.indices.contains(i) { list[i] = v } else { list.append(v) }
+                                    item.chain = Array(list.prefix(i + 1).filter { $0 != "none" }) + (v == "none" ? [] : Array(list.dropFirst(i + 1)))
+                                })) {
+                                    ForEach(WakeTask.kinds + ["random"], id: \.self) { k in Text(L("alarm.task.\(k)")).tag(k) }
+                                }
+                            }
+                            // Önizleme (2. analiz #35): alarm çalmadan görevi dene
+                            Button { tried = false; tryTask = true } label: { Label(L("alarm.taskTry"), systemImage: "play.circle") }
+                        }
+                        if item.task == "math" || item.task == "memory" {
+                            Picker(L("alarm.task.level"), selection: $item.taskLevel) {
+                                ForEach(1...3, id: \.self) { n in Text(L("alarm.task.level.\(n)")).tag(n) }
+                            }
+                        }
+                        if item.task == "code" {
+                            if CodeScannerView.available {
+                                Button(L(item.code.isEmpty ? "alarm.code.save" : "alarm.code.change")) { scanning = true }
+                            } else {
+                                Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                            }
+                            Text(L(item.code.isEmpty ? "alarm.code.missing" : "alarm.code.saved")).font(.footnote).foregroundStyle(Theme.muted)
+                            Text(L("alarm.code.hint")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        if item.task == "photo" {
+                            if CameraShot.available {
+                                Button(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.change" : "alarm.photo.save")) { shootingRef = true }
+                            } else {
+                                Text(L("wake.noCamera")).font(.footnote).foregroundStyle(Theme.muted)
+                            }
+                            Text(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.saved" : "alarm.photo.missing")).font(.footnote).foregroundStyle(Theme.muted)
+                        }
+                        Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
+                    } header: {
+                        Text(L("alarm.task.heading"))
+                    } footer: {
+                        Text(L(AlarmCenter.hasRealAlarms ? "alarm.task.noteIOS" : "alarm.task.oldIOS") + " " + L("alarm.wakeCheck.note")
+                             + (item.task != "none" ? " " + L("alarm.chainNote") : ""))
                     }
                 }
             }
