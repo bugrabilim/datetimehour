@@ -89,3 +89,128 @@ Yöntem: Her görüntü Read ile açıldı, renkler PIL ile piksel düzeyinde ö
 - Reklam yok; kapatma düğmesi yok (yalnız "Devam Et"); bu sayfa bir tanıtım akışı.
 - Bizde: "Yenilikler" ya da ilk açılış tanıtımı yok (mevcut #4). Kadranlar yok (mevcut #1).
 
+### 1.9 `0409601c` — Alarm uygulaması (sürüm 2.2, ad görünmüyor), "Choose Language"
+- Ad görünmüyor (yalnız 1.10'da "About App 2.2"). Durum çubuğu 08:14, 5G, pil 34.
+- Gezinme çubuğu: sol "‹" (geri, siyah), orta "Choose Language" (siyah Bold ~22 pt), sağ "Done" (sistem mavisi **#007aff**, ölçüldü). Altında ince ayraç.
+- Liste (her satır ~55 pt): yuvarlak bayrak (çap ~28 pt), üstte İngilizce ad (siyah Semibold ~20 pt), altta "kendi adı" (gri **#8e8e93**). Seçili satır: **#e5e5ea** dolgulu tam hap (253 pt'den geniş, köşe ~28 pt ≈ yükseklik yarısı), onay işareti yok.
+- Satırlar birebir: English/English · Chinese/中国 · Korean/한국인 · India/इंडिया · Spanish/Española · France/français · Russia/Русский · Portuguese/Português · (9. satırın bayrağının üst kenarı reklamın arkasında görünüyor; liste reklamın altına giriyor).
+- **Çeviri hataları (önceki notta yok; not "Diller: … India (Hintçe) …" diye düzeltilmiş yazmış):**
+  - Dil yerine ülke adı: "India", "France", "Russia" (Hindi, French, Russian olmalı).
+  - "中国" = Çin (ülke); dil adı "中文" olmalı. "한국인" = Koreli (kişi); "한국어" olmalı. "इंडिया" = Hindistan (ülke); "हिन्दी" olmalı. "Española" (dişil sıfat); "Español" olmalı.
+  - Hindistan bayrağı Hintçe için, İngiltere bayrağı İngilizce için: bayrakla dil eşlemek bilinen bir kötü uygulama.
+- Reklam (alt, ~90 pt yükseklik, zemin #f2f2f7): "Weather Live Radar - NOAA", mavi "Ad" etiketi, "Weather Live Radar, çevrenizdeki hava durumunu takip etmenin ve günü…", mavi tam hap "Yükleyin" (#068dc7 civarı görselde; düğme ölçülmedi). Sağ üstte ⓘ.
+- Yazı tipi: SF Pro değil gibi; yuvarlak hatlı geometrik sans (Rubik benzeri). Kesin ad ölçülemedi.
+- Zemin **#ffffff** (%76), seçili hap #e5e5ea, ikincil yazı #8e8e93 (iOS sistem grileri birebir).
+- Bizde: uygulama içi dil seçimi yok (iOS'ta sistem ayarı; Android 13+ `locales_config.xml` ile sistem) → mevcut #5. Biz dili kendi adıyla yazmalıyız, bayraksız.
+
+### 1.10 `8e4ee86f` — Aynı alarm uygulaması, "Setting" (ayarlar)
+- Başlık **"Setting"** (tekil; alt çubukta "Settings"): yazım tutarsızlığı (önceki notta yok).
+- Liste kaydırılmış: ilk grubun üst kenarı başlığın altına girmiş, grubun başlığı görünmüyor.
+- Gruplar (beyaz kartlar **#ffffff**, köşe ~12 pt, kenar boşluğu 16 pt; zemin **#f2f2f6** ≈ iOS systemGroupedBackground; grup başlıkları "Other", "About" gri #8e8e92, büyük harfsiz):
+  1. (başlıksız) "文A Languages" … sağda gri "English ▾" (açılır seçici); "↗ Fade Effect" + kapalı anahtar (gri). Kapalı anahtar iOS'un yeni (iOS 26) geniş anahtarı.
+  2. Other: ✉ Feedback · 👍 Rate App · ⟨ Share App.
+  3. About: 🛡✓ Terms & Conditions · 🔒 Privacy Policy · ⓘ About App … "2.2".
+- Simgeler: siyah çizgi simgeler (SF Symbols değil gibi; başparmak ve paylaş simgeleri farklı çizim), satır başı 24 pt.
+- Ayraçlar simgeden sonra başlıyor (iOS düzeni).
+- Reklam: "Ad Xena - Grup Sesli Chat Partisi / Xena – En İyi Sosyal Oyun Alanınız!" + mavi "Yükleyin" (köşeli, #377eec civarı), ⓘ. Alt çubuğun hemen üstünde, ~55 pt.
+- Alt çubuk: 3 sekme, simge + yazı: Alarm (zil saati), Clock (saat), Settings (mavi altıgen dişli). **Seçili sekme gri yuvarlak cam kabarcık içinde** (#e2e2e4; iOS 26 sekme çubuğu biçimi), seçili renk mavi **#377eec**, seçili olmayan siyah.
+- Önceki not doğru (Languages, Fade Effect, Other, About, 3 sekme). Eksik: "Setting" yazımı, iOS 26 cam sekme kabarcığı, satır sırası, gri gruplu zemin değerleri.
+- Bizde: ayarlarda puanla/paylaş/geri bildirim yok (mevcut #6). Bizim ayarlar sayfası: `mobile/ios/App/Sources/InfoViews.swift` / `ToolsTab.swift` (aşağıda Bölüm 3'te ölçüldü).
+
+### 1.11 `065d645c` — Alarmy, tanıtım sayfası 1/3
+- Ad bu sayfada görünmüyor; 1.12'deki "Alarmy" yazısından ve 1.13+ akışından Alarmy (Delight Room) olduğu kesin. Durum çubuğu 10:06, 5G, pil 70.
+- Zemin **#09090b** (düz, %90), üzerine dağınık küçük beyaz yıldız noktaları (~12 nokta, 1–2 pt).
+- Yukarıdan aşağıya: 🏆 Apple emojisi (~34 pt); başlık "Dünyanın / en güvenilir alarmı" (beyaz, Bold ~40 pt, iki satır ortalı); üç ödül satırı, her biri iki yanda **gümüş-gri gradyan defne dalı** çizimi: "#1 Alarm App" (Bold ~36 pt) + "in 97 countries" (Semibold ~15 pt); "4.8★" + "Rating"; "100M+" + "Downloads". Bu altı yazı **İngilizce kalmış** (başlık Türkçe): yarım çeviri (önceki not alıntılamış ama çevrilmemiş olduğunu yazmamış).
+- 3 sayfa noktası: seçili **#fafafa**, diğerleri **#52525b**.
+- Birincil düğme "Başla": dolgu **#fc314c** (ölçüldü; önceki nottaki "#FF2D55'e yakın" yaklaşık doğru, gerçek değer #fc314c), beyaz Semibold ~18 pt yazı, 344×52 pt, köşe ~9–12 pt (köşegen ölçümü 27 px). Kenarlara 24 pt.
+- Atla/kapat düğmesi **yok**.
+- Yazı tipi: SF Pro'dan ayırt edilemedi (Bold/Semibold).
+
+### 1.12 `766e782c` — Alarmy, tanıtım sayfası 2/3
+- Başlık "Artık erteleme yok / Günün kontrolü sende" (beyaz Bold ~30 pt, ortalı).
+- Karşılaştırma çizimi: iki telefon ekranı kesiti (üst köşeleri ~40 pt yuvarlak, gri kenar #2f2f31 civarı, iç **#161618–#1a1a1c**).
+  - Sol "Other Apps" (gri **#aeaeb2**): 6:55, 7:10, 7:20, 7:30 dört alarm, iOS yeşili anahtarlar (**#39bf39**), alttaki soluk (aşağı doğru kararan geçiş).
+  - Sağ "Alarmy" (pembe-kırmızı **#fd6d80**): tek 7:00 alarmı, kırmızı anahtar **#fc314c**.
+  - Saat rakamları ince (SF Pro Light ~44 pt), iOS Saat uygulamasını taklit ediyor.
+- "Other Apps" İngilizce (çevrilmemiş).
+- Noktalar: 2. seçili. Düğme "Sonraki", 1.11 ile aynı.
+- Bizde: tanıtım sayfası yok (mevcut #4).
+
+### 1.13 `c4b7078f` — Alarmy, tanıtım sayfası 3/3
+- Başlık "Tıbbi yayınlarda / adı geçen tek alarm" (beyaz Bold ~30 pt).
+- Üç gri (silik) üniversite amblemi: "University" (baykuşlu), "HANYANG UNIVERSITY 1939 한양", "State College 1983". Adı belirsiz "University" ve "State College" amblemleri: iddianın kaynağı gösterilmiyor.
+- Ortada **çizgi çizim beyin**: devre kartı gibi çizgiler, turuncu-sarıdan pembeye gradyan (ölçülen tonlar #ffd39e → #ffac93 → #ff8b8a → #ff6780), iki beyaz ışıklı nokta; arkada kesik çizgili insan başı silüeti (gri).
+- İki gri daire (dolgu **#282a2c**): "Morning Productivity / 2x", "Goal Achievement / +15%" (İngilizce, çevrilmemiş).
+- Noktalar: 3. seçili. **Düğme son sayfada "Sonraki", ilk sayfada "Başla"**: sözcükler ters yerde (önceki not "Başla"/"Sonraki" diye geçmiş, sırayı yazmamış). Atla düğmesi yok.
+- Bu ekran görselinin anlamı: Alarmy tanıtımı sosyal kanıt + "bilimsel" iddia + rakip karşılaştırması üçlüsü. Bizim kimliğimize uymaz (sayı iddiası yok), ama **çizgi illüstrasyon + gradyan** üslubu (tek renk ailesi, ince çizgi) bizim için uyarlanabilir.
+
+### 1.14 `15fdb6a4` — Alarmy, kurulum sihirbazı adım 2/4: "Alarm duvar kağıdını seç"
+- Durum çubuğu 10:07. **İlerleme çubuğu:** 160 pt genişlik, ~4 pt kalınlık, dolu kısım beyaz **#fafafa** (yarısı), iz **#27272a**, yanında "2/4" (2 beyaz, "/4" gri). Geri düğmesi görülmedi.
+- Başlık "Alarm duvar kağıdını seç" (beyaz Bold ~30 pt). TDK yazımı "kâğıdını" olurdu (küçük hata).
+- Bölümler: emoji + başlık (Bold ~22 pt): 🪩 "KPOP Trend", 💖 "Popüler", 🔥 "Günlük motivasyon" (alt kısmı ekrandan çıkıyor).
+- Her bölüm yatay kaydırmalı dikey kart şeridi; kart 114×203 pt (**9:16**, telefon ekranı oranı), köşe ~15–20 pt; soldaki ve sağdaki kartlar kesik (kaydırma ipucu). Kartın altında, görselin üstüne beyaz gölgeli yazıyla "♪ Ad" (tek satır, "…" ile kesilmiş): "Morning is…", "GO HARD S…", "Siren ver. G…", "Tiny Cat", "Cat Alarm", "Screaming…".
+- **Seçili kart:** 2 pt beyaz **#fafafa** çerçeve + ortada büyük beyaz ✓ (karartma yok).
+- İçerik: gerçek K-pop grubu fotoğrafı ve Korece "아침이 왔다잖아 / Morning is here" yazısı (lisanslı içerik), kedi "meme" görselleri (dans eden/bağıran kediler), havai fişek; kartlar büyük olasılıkla hareketli (video): kedi görselleri GIF/video karesi gibi bulanık ve pikselli.
+- Zemin #09090b.
+- Önceki notla karşılaştırma: "Earth, Night of Earth, On Earth, Black, Early morning, Daylight" adları bu görüntüde değil, aynı adımın aşağı kaydırılmış hâlinde (`b49c98ab`, 1.16). "Kartın altında ♪ işaretli ad (ör. 'GO HARD S…'): zemin ve ses birlikte" doğru, ama **yalnız bu bölümlerdeki kartlarda ♪ var**; "Uzaya doğru" ve "Basit" kartlarında ♪ yok (yalnız görsel). Seçili kartta "ortasında onay işareti" doğru. Tam ekran önizleme `2f1fbc44`'te (1.15).
+- Bizde: alarm duvar kâğıdı yok (mevcut #2). Bizim alarm ekranı Android `AlarmActivity.kt` tema zeminli.
+
+### 1.15 `2f1fbc44` — Alarmy, duvar kâğıdı tam ekran önizlemesi ("Earth")
+- Durum çubuğu 10:07. Zemin: tam ekran Dünya fotoğrafı (uzaydan, sol yarı karanlık, saf siyah **#000000** %62).
+- Sol üstte beyaz "‹" (geri). Ortada "3 Kas Sal" (gri **#c8c8c8**, Semibold ~20 pt; Türkçe kısa tarih, gün adı sonda), altında **"07:00"** dev beyaz (**#fafafa**), SF Pro Bold/Semibold ~95 pt (rakamlar eşit genişlikte, SF'nin tabular rakamları), alarm çalarken görünecek ekranın taklidi.
+- Altta "Seç" düğmesi: dolgu **#e84652** (ölçüldü). **Tanıtımdaki kırmızıdan (#fc314c) farklı ton**: aynı akışta iki ayrı kırmızı. 344×52 pt, köşe ~12 pt.
+- Önceki not ("Tam ekran önizlemede '3 Kas Sal' ve büyük '07:00', altta 'Seç' düğmesi") doğru; eksik: iki farklı kırmızı, tarih biçimi.
+- Bizde: alarm ekranında zemin seçimi yok (mevcut #2). Bizim alarm çalma ekranı Android `mobile/android/app/src/main/kotlin/tr/bumba/time/AlarmActivity.kt`; iPhone'da AlarmKit sistem ekranı.
+
+### 1.16 `b49c98ab` — Alarmy, adım 2/4 aşağı kaydırılmış
+- Aynı ilerleme çubuğu "2/4". Bölümler: 🪐 "Uzaya doğru" (kartlar: **Earth** [seçili: 2 pt beyaz çerçeve + ✓], **Night of Earth** [şehir ışıkları], **On Earth** [yıldızlı ufuk], 4. kart "S…" kesik), 🩶 "Basit duvar kâğıtları" (**Black** [#0f0f0f düz], **Early morning** [mavi-gri → amber gradyan], **Daylight** [şeftali → turuncu gradyan], 4. "L…" kesik), 💥 "Gürültülü uyanış" (siyah kart, kırmızı ışıklı siren/hoparlör fotoğrafı, alarm ışığı; adlar ekran dışında).
+- Kart adları İngilizce (çevrilmemiş), ♪ yok (yalnız görsel, ses ayrı).
+- **Yazım tutarsızlığı:** bölüm başlığı "Basit duvar **kâğıtları**" (şapkalı), sayfa başlığı "Alarm duvar **kağıdını** seç" (şapkasız).
+- Kart etiketi rengi: beyaz üstüne gri gölge, Semibold ~18 pt (#b7b7b7 civarı yarı saydam görünüm).
+- Basit gradyan kartlar (Early morning, Daylight) **telifsiz, kendi üretebileceğimiz** zemin örnekleri: ölçülen (kart ortası, üst/orta/alt): Early morning **#a8b9ca → #b69b76 → #ba8833**; Daylight **#efd0a3 → #e6a255 → #d15d33**.
+
+### 1.17 `8260230e` — Alarmy, kurulum adım **3/4**: "Alarm sesini seç"
+- Durum çubuğu 10:08. İlerleme çubuğu dolu kısmı ~%75, "3/4". **Not:** önceki not sihirbazı "2/4: duvar kâğıdı → ses → görev" diye anlatıyor; görüntülerde duvar kâğıdı **2/4**, ses **3/4**; 1/4 adımı sahibin görüntülerinde **yok** (görülmedi; ne olduğu bilinmiyor), görev adımı da görülmedi (1.18'de ilerleme yok).
+- Başlık "Alarm sesini seç" (beyaz Bold ~30 pt).
+- Çip satırı (yatay kaydırmalı, yükseklik ~33 pt, tam hap): seçili çip **#fafafa** zemin + siyah Bold yazı; diğerleri **#27272a** zemin + beyaz yazı; her çipte emoji: 🪩 KPOP Trend, 💖 Popüler, 🔔 Varsayılan (4. çip ekran dışında).
+- Bölüm başlığı (emoji + Regular ~18 pt): "🪩 KPOP Trend".
+- Gruplu liste kartı: dolgu **#1b1b1d**, köşe ~19 pt (köşegen ölçümü 58 px), ayraç **#3f3f46** (radyodan sonra başlıyor), satır ~56 pt. Her satır: boş daire (2 pt beyaz kenar) + ad (beyaz Regular ~20 pt). **Seçili/çalan satır:** daire turkuaz **#2dbde0** dolu + beyaz iç nokta, ad Bold'a geçiyor, sağda beyaz ses dalgası simgesi (dinleniyor).
+  - Satırlar: GET YOUR BUTT UP! (seçili), GO HARD Alarm, MEOVV Facetime, Go HARD Siren ver.; "💖 Popüler": Cat Alarm, Kâbus Alarmı…
+- "Sonraki" düğmesi (#fc314c) listenin üstünde sabit, altında ve üstünde zemine kararan geçiş (liste düğmenin arkasından kayıyor).
+- "MEOVV Facetime" gibi adlar: K-pop grubu (MEOVV) lisanslı ses. Önceki not "Örnek sesler: GET YOUR BUTT UP!, GO HARD Alarm, Cat Alarm, Kâbus Alarmı…" doğru; **"MEOVV Facetime" ve "Go HARD Siren ver." eksik**.
+- Bizde: uygulamanın kendi ses kitaplığı yok (mevcut #3). Bizim alarm sesi: iOS'ta tek sentez melodi `mobile/ios/App/Resources/alarm-rise.caf` + müzik dosyası, Android'de sistem zil sesi seçicisi (`AlarmScreen.kt`).
+
+### 1.18 `0ca45771` — Alarmy, adım 3/4 aşağı kaydırılmış
+- Başlık yukarı kaymış, **çip satırı üstte yapışkan** ve kaydırma konumuna göre seçili çip değişiyor (şimdi "💖 Popüler" seçili, beyaz): kaydırma izleyen sekme (scroll-spy). Önceki notta yok.
+- Popüler: Cat Alarm, Kâbus Alarmı, Alarm Halüsinasyonu, Wake up you lazy kid, **Gooooood Morningggggg** (seçili, turkuaz, ses dalgası). "🔔 Varsayılan": Orkney, Çalar Saat, Dijital Alarm, Güneş ışını.
+- Önceki notta "Gooood Morninggg" diye kısaltılmış; görüntüde "Gooooood Morningggggg" (7 "o", 6 "g").
+- Ses adlarının bir kısmı çevrilmiş (Kâbus Alarmı, Alarm Halüsinasyonu, Çalar Saat, Dijital Alarm, Güneş ışını), bir kısmı İngilizce (Cat Alarm, Wake up you lazy kid, Orkney): karışık.
+- Zemin #09090b, liste #1b1b1d, düğme #fc314c (ölçüldü; bu ekranda tanıtımdaki kırmızı).
+
+### 1.19 `c48ca2d5` — Alarmy, kurulum adım 4/4: "Bir uyanma görevi seç"
+- İlerleme çubuğu tamamen dolu, "4/4". Başlık "Bir uyanma görevi seç" (beyaz Bold ~30 pt).
+- **Gruplu liste değil, her seçenek ayrı kart** (adım 3'teki gruplu listeden farklı): kart dolgu **#18181b**, ~57 pt yükseklik, köşe ~17 pt, aralarında ~13 pt boşluk, kenarlara 24 pt.
+- Her kartta solda yuvarlak kare simge kutusu (~42×37 pt, köşe ~10 pt) ve beyaz Regular ~20 pt ad:
+  - "Matematik problemleri": kutu **#223c45** (koyu camgöbeği), simge **#4dcff0** (+ ve × işaretli kare).
+  - "Yazma": aynı camgöbeği, klavye simgesi.
+  - "Renkli Karoları Bul": aynı camgöbeği, 2×2 karo (biri taralı).
+  - "Sallama": kutu **#382e48** (koyu mor), simge **#ba85ff** (sallanan telefon).
+  - "Kapalı": kutusuz, beyaz × simgesi.
+- **"Sonraki" düğmesi yok**: karta dokunmak seçimi ve geçişi birlikte yapıyor (görülen: düğme yok; davranış görülmedi).
+- Simgeler: dolgulu, yuvarlak köşeli özel simgeler (SF Symbols'e benzemiyor).
+- Kart rengini simge rengine göre boyama: aynı türden görevler aynı renk ailesi (camgöbeği = zihin/el, mor = hareket).
+- Önceki not doğru ("koyu kartlar, renkli yuvarlak kare simgeler"); eksik: düğmesiz seçim, renk ailesi kuralı, Kapalı'nın kutusuz olması.
+- Bizde: kapatma görevi seçimi var ama alarm düzenleyicide bir seçim listesi (Android `WakeTasks.kt`, iOS `WakeTasks.swift`); renkli simge kutuları yok.
+
+### 1.20 `088c5832` — Alarmy, "Sabah" sekmesi (ana ekran)
+- Durum çubuğu 10:09. **Zemin: yağmur damlalı cam fotoğrafı/animasyonu** (havaya göre; bulanık yeşil-gri doğa arkada, damlalar keskin). Ölçülen: üst #676b6d, orta #313a24; altta lacivert panel.
+- Hava bloğu (doğrudan zemin üstünde, kartsız): "Ankara ›" (beyaz Regular ~22 pt), **"11°"** (beyaz, SF Pro Light/Regular ~64 pt), sağda "Yağmur 🌧" ve "en yüksek 17° | en düşük 10°" (beyaz Semibold ~20 pt); 9 saatlik şerit 10…18: saat (beyaz %70 opak), düz beyaz bulut simgeleri (11'de güneşli bulut, 13'te yağmurlu bulut, damlalar mavi), sıcaklık 13°, 15°, 16°, 16°, 16°, 17°, 17°, 16°, 15°.
+- Dört kare kart (~52×52 pt, köşe ~14 pt, **pastel gradyan** dolgular, ölçülen): "Evcil Ha…" (açık mavi **#d3e3fb**; yumurtadan çıkan pembe yaratık, üstünde "Beni uyandır" konuşma balonu, mavi yazı), "Sabah hissi" (sarı **#fceda5 → #fdf5cf**, gülen yüz emojisi), "Namaz vakti" (lavanta **#ccb4f9 → #e2e1f9**, mor hilal + yıldız), "Puanlarım" (açık mavi **#a3cdfa → #c9e5f8**, mavi "0"). Kart adları beyaz Semibold ~20 pt, kart altında.
+  - **Yazı taşması/kesilmesi:** "Evcil Ha…" ("Evcil Hayvan" sığmamış), "Namaz / vakti" iki satıra kırılmış: aynı satırdaki etiketler hizasız (önceki notta yok).
+- Video reklam kartı (~290 pt yükseklik, köşe ~20 pt, koyu): sol üstte ⓘ, sağ üstte sessiz düğmesi ve beyaz daire içinde × (**#fafafa**), video 0:04 / 0:30 ilerleme çubuğu, pembe-kırmızı "LEARN MORE" (**#c14664**, İngilizce).
+- Altta **açılır panel tutamağı**: lacivert (**#151833**) yuvarlak üst köşeli panel, ortasında beyaz "︿" ok (yukarı çekilince bir şey açılıyor; içeriği görülmedi). Önceki notta yok.
+- Alt çubuk: yüzen cam hap (dolgu #303553 / #313353 civarı, lacivert), 5 sekme simge + yazı: Alarm, Uyku, Sabah (seçili: daha koyu hap **#161d3e** içinde, beyaz güneş simgesi), Rapor, Ayar. Rapor ve Ayar üstünde **kırmızı bildirim noktası** (#7c3851 ölçülen kenar, nokta küçük).
+- En altta banner reklam: "AD | Enpara | Ayrıntıları göster ›" ve sağda reklam rozeti.
+- **Önceki notla karşılaştırma:** "Yağmur damlalı cam zemin", "Ankara >", "11°", "Yağmur", en yüksek/en düşük, 9 saatlik şerit, dört kare kart, video reklam, 5 sekme, kırmızı noktalar, banka reklamı: hepsi doğru. **Eksik:** açılır panel tutamağı; etiket taşmaları; reklamın 30 sn'lik video olduğu ve sessize alma/kapatma düğmeleri; kartların pastel gradyan renkleri; sıcaklığın büyük ince yazı tipi.
+- Bizde: Saat ekranı hava alanı var (iOS `HomeItems.swift` `weather`), havaya göre zemin yalnız tam ekranda (`fsBg = weather`) → mevcut #8. Sabah sekmesi bizde yok; "Günaydın kartı" alarmdan sonra bir kez (iOS `Morning.swift`).
+
