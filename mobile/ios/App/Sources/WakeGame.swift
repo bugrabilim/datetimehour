@@ -150,13 +150,14 @@ struct WakePet: View {
         ctx.fill(Path(roundedRect: CGRect(x: cx + r * 0.2, y: cy + r * 0.85, width: r * 0.25, height: r * 0.3), cornerRadius: r * 0.1), with: .color(petOrange))
         ctx.fill(circle(cx, cy, r), with: .color(petYellow))
         if stage >= 2 {
-            for dx: CGFloat in [-0.22, 0, 0.22] { ctx.fill(circle(cx + r * dx, cy - r * 1.02, r * 0.16), with: .color(petRed)) }
+            for dx in [-0.22, 0, 0.22] as [CGFloat] { ctx.fill(circle(cx + r * dx, cy - r * 1.02, r * 0.16), with: .color(petRed)) }
         }
         if stage >= 4 {
             let top = cy - r * 1.05
             var crown = Path()
             crown.move(to: CGPoint(x: cx - r * 0.45, y: top))
-            for p: (CGFloat, CGFloat) in [(-0.45, -0.38), (-0.22, -0.18), (0, -0.45), (0.22, -0.18), (0.45, -0.38), (0.45, 0)] {
+            let crownPts: [(CGFloat, CGFloat)] = [(-0.45, -0.38), (-0.22, -0.18), (0, -0.45), (0.22, -0.18), (0.45, -0.38), (0.45, 0)]
+            for p in crownPts {
                 crown.addLine(to: CGPoint(x: cx + r * p.0, y: top + r * p.1))
             }
             crown.closeSubpath()
@@ -194,7 +195,8 @@ struct WakePet: View {
     }
 
     private func zzz(_ ctx: inout GraphicsContext, _ w: CGFloat, _ h: CGFloat) {
-        for (x, y, s): (CGFloat, CGFloat, CGFloat) in [(0.74, 0.3, 0.07), (0.82, 0.2, 0.055), (0.88, 0.12, 0.04)] {
+        let marks: [(CGFloat, CGFloat, CGFloat)] = [(0.74, 0.3, 0.07), (0.82, 0.2, 0.055), (0.88, 0.12, 0.04)]
+        for (x, y, s) in marks {
             var p = Path()
             p.move(to: CGPoint(x: w * x, y: h * y)); p.addLine(to: CGPoint(x: w * (x + s), y: h * y))
             p.addLine(to: CGPoint(x: w * x, y: h * y + w * s)); p.addLine(to: CGPoint(x: w * (x + s), y: h * y + w * s))

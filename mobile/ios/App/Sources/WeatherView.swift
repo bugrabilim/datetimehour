@@ -248,6 +248,7 @@ struct AppleWeatherMark: View {
 private struct WeatherHero: ViewModifier {
     let scene: WeatherScene?
 
+    @ViewBuilder
     func body(content: Content) -> some View {
         if let scene {
             content

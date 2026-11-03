@@ -53,8 +53,8 @@ enum DialFace: String, CaseIterable, Identifiable {
         }
     }
 
-    static let roman = ["XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"]
-    static let chinese = ["十二", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一"]
+    static let romanNumerals = ["XII", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI"]
+    static let chineseNumerals = ["十二", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一"]
 }
 
 /// İbre rengi: "auto" kadranın kendi rengi
@@ -220,7 +220,8 @@ struct DialMarks: View {
             }
             if face == .chrono {
                 ForEach([(-40.0, 0.0), (40.0, 0.0), (0.0, 40.0)], id: \.0) { p in
-                    let x = p.0, y = p.1
+                    let x = p.0
+                    let y = p.1
                     ZStack {
                         Circle().stroke(k.minorTick, lineWidth: 1 * u)
                         ForEach(0..<12, id: \.self) { i in
@@ -242,7 +243,7 @@ struct DialMarks: View {
                 ForEach(0..<12, id: \.self) { i in
                     let n = i == 0 ? 12 : i
                     let a = Double(n) * 30 * .pi / 180
-                    let text = face.numerals == .roman ? DialFace.roman[i] : face.numerals == .chinese ? DialFace.chinese[i] : String(n)
+                    let text = face.numerals == .roman ? DialFace.romanNumerals[i] : face.numerals == .chinese ? DialFace.chineseNumerals[i] : String(n)
                     // Kronografta alt kadranların üstüne düşen rakamlar (3, 6, 9) yazılmaz
                     if !(face == .chrono && [3, 6, 9].contains(n)) {
                         Text(verbatim: text)
