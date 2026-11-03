@@ -22,7 +22,7 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
   - **—**: yapılmayacak.
 - Temel işler her zaman ücretsiz kalır: saat, alarm, vakitler, takvim. Bu analiz yalnız ileride neyin ücretli olabileceğini not eder; bugün ücretli hiçbir şey yok.
 
-**Durum (3 Kasım 2026):** 75 iş: 73 açık, 2 sahibin kararına kalıyor (#53 ve #75; sunucu ya da hesap gerektirir). 1–8 sahibin ekran görüntülerinden, 9–75 ajan taramasından.
+**Durum (3 Kasım 2026):** 81 iş: 79 açık, 2 sahibin kararına kalıyor (#53 ve #75; sunucu ya da hesap gerektirir). 1–8 ve 76–81 sahibin ekran görüntülerinden, 9–75 ajan taramasından.
 
 **Numaralar:** İlk analizden ayrıdır, "2. analiz #N" diye anılır. Numara sabittir. İş bitince yalnız "Durum" değişir, yeni iş sona eklenir. 1–8 numaralı işler 3 Kasım 2026'da ilk analizin 108–115 numaralarından buraya taşındı.
 
@@ -105,6 +105,12 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 | 73 | Geri sayımda birim seçimi, gün/saat/dakika/saniye sütunları, "38. doğum günü", renk, arşiv, kilit ekranında ilerleme halkası, tarih geçince ileri sayım (bizde "bitti" yazıyor) | Uygulama | K | açık | kısmen Premium | ücretsiz; widget tasarlayıcı ileride Pro adayı | Countdown Widget |
 | 74 | Cuma, bayram ve kandil tebrik görselleri; iMessage çıkartma paketi | Uygulama | O | açık | ücretsiz | ücretsiz | Ezan Vakti Pro, Azan Time |
 | 75 | Sunucu gerektirenler: ortak zikir/hatim, topluluk, radyo, fetva araması (yalnız "ALO 190" arama düğmesi K) | Uygulama | B | karar sahibin (sunucu ya da hesap gerekir) | ücretsiz | — (hesap ve sunucu yok kararı) | Codeida, Azan Time, Muslim Pro, e-Diyanet |
+| 76 | Şeffaf widget: zemini ana ekran duvar kâğıdından kesilmiş gibi görünen (isteğe bağlı bulanık) saat widget'ı; kullanıcı duvar kâğıdının ekran görüntüsünü uygulamaya bir kez yükler. Dokulu (deniz) kadranlı analog widget | Uygulama (iOS) | O | açık | ücretsiz görünüyor | ücretsiz | Desk Clock (sahibin ekran görüntüsü) |
+| 77 | Uygulama içi yazı boyutu ayarı (%85–%145, kaydırıcı ve canlı "örnek metin" önizlemesi); bizde yalnız saat boyutu var, uygulamanın yazıları sistem ayarına bağlı | Uygulama | K | açık | ücretsiz | ücretsiz | Alarm/saat uygulaması (sahibin ekran görüntüsü, sürüm 52) |
+| 78 | Adlı atmosfer temaları: uygulamanın bütün zemini gradyanla boyanır ("Lavanta Rüyası", "Mars Tozu", "Siber Kireç"); yana kaydırmalı büyük kart seçici, seçili kart tema renginde ışır ve köşesinde onay işareti; bizde 24 tema var ama adsız renk daireleri ve düz ton | Uygulama | K/O | açık | ücretsiz görünüyor | ücretsiz (temel); ileride Pro adayı (ek atmosferler) | Alarm/saat uygulaması (sahibin ekran görüntüsü) |
+| 79 | Alarmı bağlı kulaklıkta ya da Bluetooth hoparlörde çalma; bağlantı kesilirse telefonda çalar (iOS'ta AlarmKit'le yapılabilir mi doğrulanmalı) | Uygulama | O | açık | Alarmy: Pro deneme döneminde görüldü | ücretsiz | Alarmy (sahibin ekran görüntüsü) |
+| 80 | İzin istemeden önce açıklama penceresi ("Seni tam zamanında uyandırabilmemiz için alarm iznine ihtiyacımız var" · Şimdi değil / İzin ver); bizde sistem izin penceresi doğrudan açılıyor | Uygulama | K | açık | ücretsiz | ücretsiz | Alarmy (sahibin ekran görüntüsü) |
+| 81 | Uygulamayı QR kodla paylaşma ekranı (QR + "Paylaş" + "Değerlendir"); ayarlarda "Diğer uygulamalar" satırı (bizde Bumba'nın öbür ürünleri) ve sürüm numarası | Uygulama | K | açık | ücretsiz | ücretsiz | Fullscreen Clock, alarm/saat uygulaması (sahibin ekran görüntüleri) |
 
 ## Sahibin ekran görüntüleri (3 Kasım 2026)
 
@@ -220,6 +226,64 @@ Bu analiz ekranın kendisine bakar: ekran görüntüleri, tanıtım videoları v
 - Video reklam.
 - 5 sekmeli koyu lacivert alt çubuk: Alarm, Uyku, Sabah, Rapor, Ayar. Seçili sekme koyu hap biçiminde, kırmızı bildirim noktaları var.
 - Altta banka reklamı.
+
+### Sahibin ikinci gönderimi (3 Kasım 2026, 13 görüntü)
+
+**Bir alarm uygulamasının Premium sayfası (adı görünmüyor):**
+- Beyaz zemin, sağ üstte ince gri ×.
+- Kalın siyah başlık "Upgrade to Premium", altında "₺399,99 billed weekly, cancel anytime". Haftalık ₺399,99; şimdiye kadar gördüğümüz en pahalı plan.
+- Defne dallı "1K+ Rattings" (yazım hatası) ve beş yıldızlı "4.6 STAR RATING".
+- Açık gri kartlarda kayan kullanıcı yorumları. İlk kart İspanyolca: "Tiene unos buenos sonido de alarma…".
+- "Auto renew. Secure with App Store" satırı, kalkan simgesiyle.
+- Mavi tam genişlikte "Continue" düğmesi, altı çizili "View All Plans", en altta "Terms | Restore | Privacy".
+
+**Desk Clock widget galerisi:**
+- iOS widget ekleme penceresi: "Desk Clock Widget" başlığı.
+- Gri açıklama: "After adding to homescreen, long press to edit. (Transparent Widget and Blur works only for iPhone after adding Home screen wallpaper in App)".
+- Deniz dokulu analog kadran: ince beyaz rakamlar, açık mavi saniye ibresi.
+- 4 sayfa noktası, mavi "Araç Takımını Ekle" düğmesi (iOS'un kendi çevirisi). → yeni iş 76.
+
+**Bir alarm/saat uygulaması (reklamlı, sürüm 52, 6 sekmeli alt çubuk):**
+- Ayarlar:
+  - "SENİN MODUN": yana kaydırmalı büyük tema kartları ("Lavanta Rüyası", "Mars Tozu", "Siber Kireç").
+  - Bütün ekranın zemini seçilen temanın gradyanına boyanıyor: mor, bordo-kırmızı, zeytin-sarı, lacivert.
+  - Seçili kart ince beyaz çerçeveli, tema renginde ışıyor, köşesinde beyaz daire içinde onay işareti var.
+- "SAAT GÖRÜNÜMÜ": Dijital / Analog / Minimal. Seçili satır tema renginde çerçeveli, sağında dolu onay.
+- "DİL" satırı.
+- "YAZI BOYUTU": A− ile A+ arasında 13 adımlı kaydırıcı (%85, %100, %145) ve "Örnek metin önizlemesi". → yeni iş 77.
+- "DESTEK VE TOPLULUK": Uygulamayı Puanla, Arkadaşlarınla Paylaş, Geri Bildirim Gönder, Gizlilik Politikası, Diğer Uygulamalar. Her satırda ince çizgili turuncu simge ve iki satırlık açıklama. → #6 ve yeni iş 81.
+- "UYGULAMA BİLGİSİ": Versiyon 52.
+- Bölüm başlıkları geniş harf aralıklı büyük harf, gri.
+- Alt çubuk: yalnız simgeler (alarm, dünya, kum saati, kronometre, ay, ayarlar); yalnız seçili sekmede yazı var, tema renginde.
+- En altta banner reklam ("Note Together").
+
+**Fullscreen Clock (4 görüntü):**
+- Uygulama izleme (ATT) izni penceresi: "…diğer şirketlerin uygulamalarındaki ve web sitelerindeki eylemlerinizi takip etsin mi?". Gerekçe metni İngilizce ve çevrilmemiş. Bizde reklam ve izleme yok; bu pencere bizde hiç çıkmamalı.
+- Yatay tam ekran kadran galerisi:
+  - Alt şeritte kare küçük resimler: beyaz klasik kadran (PM etiketli), iki alt kadranlı siyah kronograf, "Your Photo" (kendi fotoğrafın kadran zemini), reklam kaldırma kutusu, paylaş kutusu.
+  - Sol üstte parlaklık düğmesi.
+  - "1 day vip (view ad)": reklam izleyerek 1 günlük VIP.
+  - "No Ads" düğmesi.
+  - Kronograf: turuncu çerçeveli akrep, kırmızı saniye ibresi, mavi alt kadran ibresi.
+- Paylaşma ekranı: siyah zemin, "Download Fullscreen Clock" QR kodu, gri-mavi hap biçimli "Share" ve "Review" düğmeleri, altta geliştiricinin öbür uygulamalarının simgeleri. → yeni iş 81.
+- Dev metin modu: beyaz büyük harflerle "KEK VAR", yanında mavi yuvarlak kalem düğmesi; şeritte "MVP" metin karosu ve pomodoro/zamanlayıcı küçük resimleri. → mevcut #22.
+
+**Alarmy (2 görüntü):**
+- Ana ekran:
+  - Üstte "PRO Free Trial" hapı (kırmızı-turuncu gradyan çerçeve, şimşek simgesi).
+  - "TWS: Wake Up to TWS' Calls / Set TWS Alarms NOW" kartı: ünlü bir K-pop grubunun sesli alarm paketi. Lisanslı içerik; bizde yapılmaz, ses kitaplığı (#3) için örnek.
+  - "17 sa. 38 dk. sonra çalacak >" satırı (#51).
+  - Alarm kartında haftanın günleri harfle (P P S Ç P C C) ve turkuaz anahtar.
+  - Sağ altta kırmızı yuvarlak "+" düğmesi.
+- "Alarm bağlı cihazda çalsın mı? Bağlantı kesilirse alarm mevcut cihazda çalar": koyu alt sayfa, iç içe mavi halkalar ortasında kulaklık simgesi, kırmızı "Ayara gidin" ve gri "Hayır, teşekkürler". → yeni iş 79.
+- "Alarm iznini ver" açıklama penceresi: koyu cam görünümü, "Şimdi değil" ve turkuaz "İzin Ver" düğmeleri. → yeni iş 80.
+
+**Ücret notları (bu gönderimden):**
+- Haftalık ₺399,99 abonelik.
+- "Reklam izle, 1 gün VIP ol" (Fullscreen Clock).
+- "Remove Ads" (Fullscreen Clock).
+- "PRO Free Trial" (Alarmy).
+- Bizde reklam, izleme (ATT) ve abonelik yok. Bu sayfalar yalnız fiyat ve düzen fikri için not edildi.
 
 ## Ajan taraması (3 Kasım 2026)
 
