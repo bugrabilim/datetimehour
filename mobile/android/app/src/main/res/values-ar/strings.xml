@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">وحدة الضغط</string>
     <string name="notify_weatherAlerts">تنبيهات الطقس</string>
     <string name="notify_weatherAlerts_note">في السابعة مساءً إذا كان الغد أبرد أو أدفأ بوضوح؛ وقبل المطر بربع ساعة (من التوقعات بالساعة).</string>
+    <string name="world_searchHint">مدينة أو بلد أو اختصار (EST، CET)</string>
+    <string name="world_label">الاسم والرمز التعبيري (اختياري)</string>
+    <string name="world_labelHint">مثل: أمي 👵</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

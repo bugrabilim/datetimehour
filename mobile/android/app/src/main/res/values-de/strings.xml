@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">Druckeinheit</string>
     <string name="notify_weatherAlerts">Wetterhinweise</string>
     <string name="notify_weatherAlerts_note">Um 19 Uhr, wenn es morgen deutlich kälter oder wärmer wird; 15 Minuten vor Regen (laut Stundenprognose).</string>
+    <string name="world_searchHint">Stadt, Land oder Kürzel (EST, CET)</string>
+    <string name="world_label">Name und Emoji (optional)</string>
+    <string name="world_labelHint">z. B. Mama 👵</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

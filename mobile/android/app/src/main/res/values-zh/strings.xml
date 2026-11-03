@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">气压单位</string>
     <string name="notify_weatherAlerts">天气提醒</string>
     <string name="notify_weatherAlerts_note">明天明显变冷或变暖时晚上 7 点提醒；下雨前 15 分钟提醒（依据逐小时预报）。</string>
+    <string name="world_searchHint">城市、国家或缩写（EST、CET）</string>
+    <string name="world_label">名称和表情（可选）</string>
+    <string name="world_labelHint">例如：妈妈 👵</string>
     <string name="app_name">时间与日期</string>
 </resources>

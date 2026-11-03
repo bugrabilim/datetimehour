@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">気圧の単位</string>
     <string name="notify_weatherAlerts">天気の注意</string>
     <string name="notify_weatherAlerts_note">明日が大きく寒く・暖かくなる日は19時に、雨の15分前にも（1時間ごとの予報から）。</string>
+    <string name="world_searchHint">都市・国・略称（EST、CET）</string>
+    <string name="world_label">名前と絵文字（任意）</string>
+    <string name="world_labelHint">例：母 👵</string>
     <string name="app_name">時刻と日付</string>
 </resources>

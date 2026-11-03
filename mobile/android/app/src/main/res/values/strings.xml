@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">Basınç birimi</string>
     <string name="notify_weatherAlerts">Hava uyarıları</string>
     <string name="notify_weatherAlerts_note">Yarın belirgin şekilde soğuk ya da sıcaksa akşam 19.00\'da; yağmur yaklaşınca 15 dakika önce (saatlik tahminden).</string>
+    <string name="world_searchHint">Şehir, ülke ya da kısaltma (EST, CET)</string>
+    <string name="world_label">Ad ve emoji (isteğe bağlı)</string>
+    <string name="world_labelHint">ör. Annem 👵</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

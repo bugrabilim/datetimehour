@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">واحد فشار</string>
     <string name="notify_weatherAlerts">هشدارهای هوا</string>
     <string name="notify_weatherAlerts_note">اگر فردا به‌طور محسوسی سردتر یا گرم‌تر باشد ساعت 19؛ و 15 دقیقه پیش از باران (از پیش‌بینی ساعتی).</string>
+    <string name="world_searchHint">شهر، کشور یا اختصار (EST، CET)</string>
+    <string name="world_label">نام و ایموجی (اختیاری)</string>
+    <string name="world_labelHint">مثلاً مادرم 👵</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

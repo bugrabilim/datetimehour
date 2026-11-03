@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">Təzyiq vahidi</string>
     <string name="notify_weatherAlerts">Hava xəbərdarlıqları</string>
     <string name="notify_weatherAlerts_note">Sabah nəzərəçarpacaq soyuq və ya isti olacaqsa axşam 19:00-da; yağışdan 15 dəqiqə əvvəl (saatlıq proqnozdan).</string>
+    <string name="world_searchHint">Şəhər, ölkə və ya qısaltma (EST, CET)</string>
+    <string name="world_label">Ad və emoji (istəyə bağlı)</string>
+    <string name="world_labelHint">məs. Anam 👵</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

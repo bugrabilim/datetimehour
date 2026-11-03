@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">Unité de pression</string>
     <string name="notify_weatherAlerts">Alertes météo</string>
     <string name="notify_weatherAlerts_note">À 19 h si demain est nettement plus froid ou plus chaud ; 15 minutes avant la pluie (prévision horaire).</string>
+    <string name="world_searchHint">Ville, pays ou abréviation (EST, CET)</string>
+    <string name="world_label">Nom et emoji (facultatif)</string>
+    <string name="world_labelHint">ex. Maman 👵</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

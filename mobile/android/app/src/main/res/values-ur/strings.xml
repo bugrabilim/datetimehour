@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">دباؤ کی اکائی</string>
     <string name="notify_weatherAlerts">موسمی انتباہات</string>
     <string name="notify_weatherAlerts_note">اگر کل واضح طور پر ٹھنڈا یا گرم ہو تو شام 7 بجے؛ بارش سے 15 منٹ پہلے (گھنٹہ وار پیش گوئی سے)۔</string>
+    <string name="world_searchHint">شہر، ملک یا مخفف (EST، CET)</string>
+    <string name="world_label">نام اور ایموجی (اختیاری)</string>
+    <string name="world_labelHint">مثلاً امی 👵</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

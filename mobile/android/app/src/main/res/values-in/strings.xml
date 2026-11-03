@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">Satuan tekanan</string>
     <string name="notify_weatherAlerts">Peringatan cuaca</string>
     <string name="notify_weatherAlerts_note">Pukul 19.00 jika besok jauh lebih dingin atau panas; 15 menit sebelum hujan (dari prakiraan per jam).</string>
+    <string name="world_searchHint">Kota, negara, atau singkatan (EST, CET)</string>
+    <string name="world_label">Nama dan emoji (opsional)</string>
+    <string name="world_labelHint">mis. Ibu 👵</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

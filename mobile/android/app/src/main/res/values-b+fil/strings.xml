@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">Yunit ng presyon</string>
     <string name="notify_weatherAlerts">Mga babala sa panahon</string>
     <string name="notify_weatherAlerts_note">Alas-7 ng gabi kung mas malamig o mas mainit bukas; 15 minuto bago umulan (mula sa oras-oras na forecast).</string>
+    <string name="world_searchHint">Lungsod, bansa o daglat (EST, CET)</string>
+    <string name="world_label">Pangalan at emoji (opsiyonal)</string>
+    <string name="world_labelHint">hal. Nanay 👵</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

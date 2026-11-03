@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">기압 단위</string>
     <string name="notify_weatherAlerts">날씨 알림</string>
     <string name="notify_weatherAlerts_note">내일 눈에 띄게 춥거나 더우면 오후 7시에, 비 오기 15분 전에(시간별 예보 기준) 알려 드립니다.</string>
+    <string name="world_searchHint">도시, 국가 또는 약어(EST, CET)</string>
+    <string name="world_label">이름과 이모지(선택)</string>
+    <string name="world_labelHint">예: 엄마 👵</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

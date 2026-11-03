@@ -46,10 +46,12 @@ struct WorldClockView: View {
     @State private var shift = false
     @State private var when = Date()
     @State private var editMode = EditMode.inactive
+    /// Şehre dokununca ayrıntı (2. analiz #129); arama metni (#128)
+    @State private var detail: WorldEntry?
+    @State private var query = ""
+    @AppStorage(WorldLabels.key) private var labelsRaw = ""
 
-    private var cities: [City] {
-        keysRaw.split(separator: ",").compactMap { k in City.all.first { $0.key == k } }
-    }
+    private var cities: [WorldEntry] { WorldEntry.list(keysRaw) }
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
@@ -70,7 +72,8 @@ struct WorldClockView: View {
                 }
                 Section {
                     ForEach(cities) { city in
-                        row(city, at: at)
+                        Button { detail = city } label: { row(city, at: at) }
+                            .buttonStyle(.plain)
                     }
                     .onDelete { offsets in
                         var list = cities.map(\.key)
@@ -107,20 +110,28 @@ struct WorldClockView: View {
         }
         .navigationTitle(L("world.h1"))
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(item: $detail) { WorldDetailView(entry: $0) }
         .sheet(isPresented: $adding) {
             NavigationStack {
-                List(City.all.filter { c in !cities.contains(c) }) { c in
+                // Şehir arama (2. analiz #128): 31 şehir, 1960 yer (places.json) ve kısaltmalar (EST, CET…)
+                List(WorldEntry.search(query, exclude: Set(cities.map(\.key)))) { c in
                     Button {
                         keysRaw = (cities.map(\.key) + [c.key]).joined(separator: ",")
                         adding = false
+                        query = ""
                         BadgeStore.shared.hit(.dunya)
                     } label: {
-                        VStack(alignment: .leading) {
-                            Text(c.displayName).foregroundStyle(Theme.text)
-                            Text(c.displayCountry).font(.caption).foregroundStyle(Theme.muted)
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text((c.flag.isEmpty ? "" : c.flag + " ") + c.name).foregroundStyle(Theme.text)
+                                if !c.country.isEmpty { Text(c.country).font(.caption).foregroundStyle(Theme.muted) }
+                            }
+                            Spacer()
+                            Text(Fmt.time(Date(), tz: c.zone)).font(.footnote).monospacedDigit().foregroundStyle(Theme.muted)
                         }
                     }
                 }
+                .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: L("world.searchHint"))
                 .themedBackground()
                 .navigationTitle(L("world.addCity"))
                 .navigationBarTitleDisplayMode(.inline)
@@ -129,16 +140,22 @@ struct WorldClockView: View {
         }
     }
 
-    private func row(_ city: City, at date: Date) -> some View {
+    private func row(_ city: WorldEntry, at date: Date) -> some View {
+        _ = labelsRaw
         let diff = city.zone.secondsFromGMT(for: date) - TimeZone.current.secondsFromGMT(for: date)
         let cityDay = CalendarDay(date, timeZone: city.zone)
         let myDay = CalendarDay(date)
-        // Şehirde gün farklıysa haftanın günü gösterilir
-        let dayNote = cityDay == myDay ? "" : L("calendar.weekdaysShort.\(cityDay.weekday)")
+        // Şehirde gün farklıysa ertesi/önceki gün işareti ve haftanın günü
+        let dayNote = cityDay == myDay ? "" : (cityDay > myDay ? "+1 " : "−1 ") + L("calendar.weekdaysShort.\(cityDay.weekday)")
+        let light = city.light(date)
+        // Gök renkli saat kutusu: gündüz açık mavi, alacakaranlık kızıl, gece lacivert (2. analiz #129)
+        let bg: Color = light == "day" ? Color(red: 0.835, green: 0.91, blue: 1) : light == "dusk" ? Color(red: 0.745, green: 0.33, blue: 0.275) : Color(red: 0.106, green: 0.141, blue: 0.251)
+        let fg: Color = light == "day" ? Color(red: 0.08, green: 0.14, blue: 0.23) : .white
         return HStack {
             VStack(alignment: .leading, spacing: 2) {
-                Text(city.displayName).font(.headline)
-                Text(diff == 0 ? L("client.diffSame") : T(diff > 0 ? "client.diffAhead" : "client.diffBehind", Fmt.hm(seconds: diff)))
+                if let label = city.label { Text(label).font(.caption.weight(.semibold)).foregroundStyle(Theme.accent).lineLimit(1) }
+                Text((city.flag.isEmpty ? "" : city.flag + " ") + city.name).font(.headline).lineLimit(1)
+                Text((diff == 0 ? L("client.diffSame") : T(diff > 0 ? "client.diffAhead" : "client.diffBehind", Fmt.hm(seconds: diff))) + " · " + city.abbr(date))
                     .font(.caption)
                     .foregroundStyle(Theme.muted)
                 // Yaz saati uyarısı (rakip analizi #30): şehirde 7 gün içinde saat değişiyorsa
@@ -148,15 +165,19 @@ struct WorldClockView: View {
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 2) {
-                Text(Fmt.time(date, tz: city.zone) + (Fmt.ampm(date, tz: city.zone).isEmpty ? "" : " " + Fmt.ampm(date, tz: city.zone)))
-                    .font(.system(size: 28, weight: .light, design: .rounded))
+                Text((light == "day" ? "☀ " : light == "dusk" ? "◐ " : "☾ ") + Fmt.time(date, tz: city.zone) + (Fmt.ampm(date, tz: city.zone).isEmpty ? "" : " " + Fmt.ampm(date, tz: city.zone)))
+                    .font(.system(size: 24, weight: .light, design: .rounded))
                     .monospacedDigit()
                     .environment(\.layoutDirection, .leftToRight)
                 if !dayNote.isEmpty {
-                    Text(dayNote).font(.caption2).foregroundStyle(Theme.accent)
+                    Text(dayNote).font(.caption2.weight(.semibold))
                 }
             }
+            .foregroundStyle(fg)
+            .padding(.horizontal, 10).padding(.vertical, 4)
+            .background(bg, in: RoundedRectangle(cornerRadius: 12))
         }
+        .contentShape(Rectangle())
     }
 }
 

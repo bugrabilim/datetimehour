@@ -254,7 +254,7 @@ object FeatureNotifier {
         val zone = ZoneId.systemDefault()
         val mine = zone.rules.nextTransition(now)?.instant
         val keys = Prefs.world.split(",")
-        return keys.mapNotNull { k -> AppData.cities.firstOrNull { it.key == k } }.mapNotNull { city ->
+        return keys.mapNotNull { k -> WorldEntry.of(k) }.mapNotNull { city ->
             val (at, _) = city.nextDst(now, 30) ?: return@mapNotNull null
             if (at == mine) return@mapNotNull null
             val fire = at.atZone(zone).toLocalDate().minusDays(1).atTime(20, 0).atZone(zone).toInstant()

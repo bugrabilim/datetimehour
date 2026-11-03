@@ -186,7 +186,7 @@ enum FeatureNotifier {
         let keys = (UserDefaults.standard.string(forKey: "world") ?? City.defaultKeys).split(separator: ",").map(String.init)
         let mine = TimeZone.current.nextDaylightSavingTimeTransition(after: now)
         let cal = Calendar.current
-        return keys.compactMap { k in City.all.first { $0.key == k } }.compactMap { city in
+        return keys.compactMap { WorldEntry.of($0) }.compactMap { city in
             guard let d = city.nextDST(after: now, days: 30), d.at != mine,
                   let dayBefore = cal.date(byAdding: .day, value: -1, to: d.at),
                   let fire = cal.date(bySettingHour: 20, minute: 0, second: 0, of: dayBefore) else { return nil }

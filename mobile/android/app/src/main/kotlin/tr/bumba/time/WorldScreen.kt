@@ -43,6 +43,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import java.time.Instant
+import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZoneOffset
@@ -57,7 +60,10 @@ fun WorldScreen() {
     val live = rememberNow()
     val here = ZoneId.systemDefault()
     val keys = Prefs.world.split(",").filter { it.isNotEmpty() }
-    val cities = keys.mapNotNull { k -> City.all.firstOrNull { it.key == k } }
+    val cities = keys.mapNotNull { k -> WorldEntry.of(k) }
+    // Şehre dokununca ayrıntı (2. analiz #129)
+    var detail by remember { mutableStateOf<WorldEntry?>(null) }
+    var labelsVersion by remember { mutableStateOf(0) }
     var editing by remember { mutableStateOf(false) }
     var adding by remember { mutableStateOf(false) }
     var shift by rememberSaveable { mutableStateOf(false) }
@@ -111,25 +117,29 @@ fun WorldScreen() {
             }
         }
         items(cities, key = { it.key }) { city ->
+            labelsVersion
             val t = now.atZone(city.zone)
             val diff = city.zone.rules.getOffset(now).totalSeconds - here.rules.getOffset(now).totalSeconds
-            // Şehirde gün farklıysa haftanın günü gösterilir
-            val dayNote = if (t.toLocalDate() != now.atZone(here).toLocalDate()) Fmt.weekdayShort(t.toLocalDate()) else ""
+            // Şehirde gün farklıysa ertesi/önceki gün işareti ve haftanın günü
+            val dayShift = java.time.temporal.ChronoUnit.DAYS.between(now.atZone(here).toLocalDate(), t.toLocalDate())
+            val dayNote = if (dayShift != 0L) (if (dayShift > 0) "+1 " else "−1 ") + Fmt.weekdayShort(t.toLocalDate()) else ""
             Column(Modifier.padding(horizontal = 16.dp)) {
-                Row(Modifier.fillMaxWidth().heightIn(min = 64.dp).padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
+                Row(Modifier.fillMaxWidth().heightIn(min = 64.dp).clickable(enabled = !editing) { detail = city }.padding(vertical = 6.dp),
+                    verticalAlignment = Alignment.CenterVertically) {
                     if (editing) {
                         IconButton(onClick = { save(keys.filter { it != city.key }) }) {
                             Icon(Icons.Filled.RemoveCircle, L("world.remove"), tint = Color(0xFFD32F2F))
                         }
                     }
                     Column(Modifier.weight(1f)) {
-                        Text(city.displayName, color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
+                        city.label?.let { Text(it, color = Theme.c.accent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, maxLines = 1) }
+                        Text((if (city.flag.isNotEmpty()) city.flag + " " else "") + city.name, color = Theme.c.text, fontSize = 18.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
                         Text(
                             when {
                                 diff == 0 -> L("client.diffSame")
                                 diff > 0 -> T("client.diffAhead", Fmt.hm(diff))
                                 else -> T("client.diffBehind", Fmt.hm(diff))
-                            },
+                            } + " · " + city.abbr(now),
                             color = Theme.c.muted, fontSize = 13.sp,
                         )
                         // Yaz saati uyarısı (rakip analizi #30): şehirde 7 gün içinde saat değişiyorsa
@@ -144,12 +154,20 @@ fun WorldScreen() {
                             Icon(Icons.Filled.KeyboardArrowDown, null, tint = if (i < keys.size - 1) Theme.c.accent else Theme.c.muted)
                         }
                     } else {
-                        Column(horizontalAlignment = Alignment.End) {
+                        // Gök renkli saat kutusu: gündüz açık mavi, alacakaranlık kızıl, gece lacivert (2. analiz #129)
+                        val light = city.light(now)
+                        val (bg, fg) = when (light) {
+                            "day" -> Color(0xFFD5E8FF) to Color(0xFF14233A)
+                            "dusk" -> Color(0xFFBE5446) to Color.White
+                            else -> Color(0xFF1B2440) to Color(0xFFE8ECF8)
+                        }
+                        Column(Modifier.clip(RoundedCornerShape(12.dp)).background(bg).padding(horizontal = 10.dp, vertical = 4.dp),
+                            horizontalAlignment = Alignment.End) {
                             Ltr {
-                                Text(Fmt.time(t) + (Fmt.ampm(t).let { if (it.isEmpty()) "" else " $it" }),
-                                    color = Theme.c.text, fontSize = 30.sp, fontWeight = FontWeight.Light, style = Tnum)
+                                Text((if (light == "day") "☀ " else if (light == "dusk") "◐ " else "☾ ") + Fmt.time(t) + (Fmt.ampm(t).let { if (it.isEmpty()) "" else " $it" }),
+                                    color = fg, fontSize = 26.sp, fontWeight = FontWeight.Light, style = Tnum)
                             }
-                            if (dayNote.isNotEmpty()) Text(dayNote, color = Theme.c.accent, fontSize = 12.sp)
+                            if (dayNote.isNotEmpty()) Text(dayNote, color = fg, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
                         }
                     }
                 }
@@ -164,26 +182,38 @@ fun WorldScreen() {
     }
 
     if (adding) {
+        // Şehir arama (2. analiz #128): 31 şehir, 1960 yer (places.json) ve kısaltmalar (EST, CET…)
+        var q by remember { mutableStateOf("") }
+        val results = remember(q, keys) { WorldEntry.search(q, keys.toSet()) }
         AlertDialog(
             onDismissRequest = { adding = false },
             confirmButton = { TextButton(onClick = { adding = false }) { Text(L("world.done")) } },
             title = { Text(L("world.addCity")) },
             text = {
-                LazyColumn(Modifier.heightIn(max = 460.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                    items(City.all.filter { it.key !in keys }) { c ->
-                        Column(Modifier.fillMaxWidth().clickable {
-                            save(keys + c.key)
-                            BadgeStore.hit(Badge.DUNYA)
-                            adding = false
-                        }.padding(vertical = 8.dp)) {
-                            Text(c.displayName, color = Theme.c.text)
-                            Text(c.displayCountry, color = Theme.c.muted, fontSize = 12.sp)
+                Column {
+                    androidx.compose.material3.OutlinedTextField(q, { q = it.take(40) }, Modifier.fillMaxWidth(), singleLine = true,
+                        placeholder = { Text(L("world.searchHint")) })
+                    LazyColumn(Modifier.heightIn(max = 420.dp).padding(top = 6.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                        items(results, key = { it.key }) { c ->
+                            Row(Modifier.fillMaxWidth().clickable {
+                                save(keys + c.key)
+                                BadgeStore.hit(Badge.DUNYA)
+                                adding = false
+                            }.padding(vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                                Column(Modifier.weight(1f)) {
+                                    Text((if (c.flag.isNotEmpty()) c.flag + " " else "") + c.name, color = Theme.c.text)
+                                    if (c.country.isNotEmpty()) Text(c.country, color = Theme.c.muted, fontSize = 12.sp)
+                                }
+                                Ltr { Text(Fmt.time(Instant.now().atZone(c.zone)), color = Theme.c.muted, fontSize = 13.sp, style = Tnum) }
+                            }
                         }
                     }
                 }
             },
         )
     }
+
+    detail?.let { c -> WorldDetailDialog(c, now, onClose = { detail = null; labelsVersion++ }) }
 
     // Tarih ve saat seçimi ("başka bir zamana bak"): cihazın saat diliminde
     when (picking) {
@@ -220,4 +250,41 @@ fun WorldScreen() {
             )
         }
     }
+}
+
+/** Şehir ayrıntısı (2. analiz #129): yerel saat ve tarih, saat dilimi, UTC farkı, kısaltma, gün doğumu/batımı ve gün
+ *  uzunluğu, Ay evresi, sıradaki saat değişimi; kişisel ad ve emoji ("Annem 👵") */
+@Composable
+private fun WorldDetailDialog(c: WorldEntry, now: Instant, onClose: () -> Unit) {
+    var label by remember { mutableStateOf(c.label ?: "") }
+    val t = now.atZone(c.zone)
+    AlertDialog(
+        onDismissRequest = { WorldLabels.set(c.key, label); onClose() },
+        confirmButton = { TextButton(onClick = { WorldLabels.set(c.key, label); onClose() }) { Text(L("world.done")) } },
+        title = { Text((if (c.flag.isNotEmpty()) c.flag + " " else "") + c.name) },
+        text = {
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                if (c.country.isNotEmpty()) Text(c.country, color = Theme.c.muted)
+                Ltr { Text(Fmt.time(t) + (Fmt.ampm(t).let { if (it.isEmpty()) "" else " $it" }), color = Theme.c.text, fontSize = 40.sp, fontWeight = FontWeight.Light, style = Tnum) }
+                Text(Fmt.longDate(t.toLocalDate()), color = Theme.c.text)
+                Text(c.zone.id + " · " + c.abbr(now) + " · " + c.utcOffset(now), color = Theme.c.muted, fontSize = 13.sp)
+                if (c.lat != null && c.lon != null) {
+                    val d = t.toLocalDate()
+                    val off = c.zone.rules.getOffset(d.atTime(12, 0).atZone(c.zone).toInstant()).totalSeconds / 3600.0
+                    val sun = tr.bumba.time.core.PrayerTimes.sunAltitudeTimes(d.year, d.monthValue, d.dayOfMonth, c.lat, c.lon, off, -0.833)
+                    fun hm(h: Double?) = h?.let { val m = Math.round(it * 60).toInt(); "%02d:%02d".format(java.util.Locale.ROOT, (m / 60 + 24) % 24, m % 60) } ?: "–"
+                    Text("☀ ↑ ${hm(sun.rise)}   ↓ ${hm(sun.set)}", color = Theme.c.text, style = Tnum)
+                    if (sun.rise != null && sun.set != null) {
+                        val len = Math.round((sun.set!! - sun.rise!!) * 60).toInt()
+                        Text(T("seasons.dayLengthValue", len / 60, len % 60), color = Theme.c.muted, fontSize = 13.sp)
+                    }
+                }
+                val moon = tr.bumba.time.core.Nature.moon(now.toEpochMilli())
+                Text(MOON_PHASE_EMOJI[moon.phaseIndex] + " " + L("nature.phases.${MOON_PHASE_KEYS[moon.phaseIndex]}"), color = Theme.c.text)
+                c.dstNote(now, 60)?.let { Text("⟳ $it", color = Theme.c.accent, fontSize = 13.sp) }
+                androidx.compose.material3.OutlinedTextField(label, { label = it.take(30) }, Modifier.fillMaxWidth(), singleLine = true,
+                    label = { Text(L("world.label")) }, placeholder = { Text(L("world.labelHint")) })
+            }
+        },
+    )
 }

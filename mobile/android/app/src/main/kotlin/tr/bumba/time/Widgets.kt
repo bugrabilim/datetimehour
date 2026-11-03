@@ -187,7 +187,7 @@ class SecondsClockWidget : BaseWidget() {
 class WorldClockWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_world)
-        val cities = Prefs.world.split(",").mapNotNull { k -> City.all.firstOrNull { it.key == k } }.take(4)
+        val cities = WorldEntry.list().take(4)
         val rows = listOf(R.id.row1, R.id.row2, R.id.row3, R.id.row4)
         val names = listOf(R.id.n1, R.id.n2, R.id.n3, R.id.n4)
         val diffs = listOf(R.id.d1, R.id.d2, R.id.d3, R.id.d4)
@@ -199,7 +199,7 @@ class WorldClockWidget : BaseWidget() {
             v.setViewVisibility(rows[i], if (city == null) android.view.View.GONE else android.view.View.VISIBLE)
             if (city == null) continue
             v.setTextViewText(names[i], city.displayName)
-            v.setString(times[i], "setTimeZone", city.tz)
+            v.setString(times[i], "setTimeZone", city.zone.id)
             // Fark gece yarısı ve saat/dilim değişince yenilenir (yaz saati geçişinde en geç ertesi gece)
             val diff = city.zone.rules.getOffset(now).totalSeconds - here
             v.setTextViewText(diffs[i], if (diff == 0) "" else (if (diff > 0) "+" else "−") + Fmt.hm(diff))

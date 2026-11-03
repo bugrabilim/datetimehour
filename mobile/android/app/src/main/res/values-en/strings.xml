@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">Pressure unit</string>
     <string name="notify_weatherAlerts">Weather alerts</string>
     <string name="notify_weatherAlerts_note">At 7 pm if tomorrow is noticeably colder or warmer; 15 minutes before rain (from the hourly forecast).</string>
+    <string name="world_searchHint">City, country or abbreviation (EST, CET)</string>
+    <string name="world_label">Name and emoji (optional)</string>
+    <string name="world_labelHint">e.g. Mum 👵</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

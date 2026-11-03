@@ -13,6 +13,9 @@ object Strings {
     private lateinit var context: Context
     private val cache = HashMap<String, Int>()
 
+    /** Uygulama bağlamı (varlık dosyalarını okumak için; dünya saatleri yer araması) */
+    val appContext: Context get() = context
+
     fun init(c: Context) {
         // Android 13 öncesinde uygulama içi dil seçimi bağlamın dilini değiştirir (AppLanguage, 2. analiz #5)
         context = AppLanguage.wrap(c.applicationContext)

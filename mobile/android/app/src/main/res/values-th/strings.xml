@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">หน่วยความกดอากาศ</string>
     <string name="notify_weatherAlerts">การแจ้งเตือนสภาพอากาศ</string>
     <string name="notify_weatherAlerts_note">เวลา 19:00 หากพรุ่งนี้หนาวหรือร้อนขึ้นชัดเจน และ 15 นาทีก่อนฝนตก (จากพยากรณ์รายชั่วโมง)</string>
+    <string name="world_searchHint">เมือง ประเทศ หรือตัวย่อ (EST, CET)</string>
+    <string name="world_label">ชื่อและอีโมจิ (ไม่บังคับ)</string>
+    <string name="world_labelHint">เช่น แม่ 👵</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

@@ -2144,5 +2144,8 @@
     <string name="settings_pressureUnit">Единица давления</string>
     <string name="notify_weatherAlerts">Погодные предупреждения</string>
     <string name="notify_weatherAlerts_note">В 19:00, если завтра будет заметно холоднее или теплее; за 15 минут до дождя (по почасовому прогнозу).</string>
+    <string name="world_searchHint">Город, страна или сокращение (EST, CET)</string>
+    <string name="world_label">Имя и эмодзи (необязательно)</string>
+    <string name="world_labelHint">напр. Мама 👵</string>
     <string name="app_name">Время и дата</string>
 </resources>
