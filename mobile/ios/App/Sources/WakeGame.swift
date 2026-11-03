@@ -271,7 +271,7 @@ struct WakeGameView: View {
         }
         .themedBackground()
         .navigationTitle(L("wakegame.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear { if tab.isEmpty { tab = initialTab }; log = WakeGame.load() }
         .confirmationDialog(L("wakegame.resetConfirm"), isPresented: $confirm, titleVisibility: .visible) {
             Button(L("wakegame.reset"), role: .destructive) { WakeGame.clear(); log = [] }

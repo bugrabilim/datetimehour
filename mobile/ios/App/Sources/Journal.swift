@@ -128,7 +128,10 @@ struct JournalView: View {
             }
             Section(L("journal.history")) {
                 let older = list.filter { e in e.d != Journal.todayKey && (tagFilter.map { t in JournalTags.parse(e.n).contains(t) } ?? true) }
-                if older.isEmpty { Text(L("journal.empty")).foregroundStyle(Theme.muted) }
+                if older.isEmpty {
+                    EmptyState(icon: "square.and.pencil", title: L("journal.empty").trimmingCharacters(in: CharacterSet(charactersIn: ".。۔")),
+                               text: L("empty.journal.text"))
+                }
                 ForEach(older.prefix(60), id: \.d) { e in
                     HStack(alignment: .top, spacing: 10) {
                         Text(e.m > 0 ? Journal.moods[e.m - 1] : "·").font(.title2)
@@ -150,7 +153,7 @@ struct JournalView: View {
         }
         .themedBackground()
         .navigationTitle(L("journal.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onChange(of: entry) {
             Journal.put(entry)
             list = Journal.load()

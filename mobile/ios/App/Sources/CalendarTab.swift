@@ -54,7 +54,7 @@ struct CalendarTab: View {
             }
             .themedBackground()
             .listStyle(.plain)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button(L("client.today")) { go(to: today) }

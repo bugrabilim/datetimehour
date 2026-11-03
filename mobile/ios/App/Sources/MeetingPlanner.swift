@@ -114,7 +114,7 @@ struct MeetingPlannerView: View {
         }
         .themedBackground()
         .navigationTitle(L("planner.h1"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar { EditButton() }
         .onAppear { device.reload() }
         .sheet(isPresented: $adding) {
@@ -132,7 +132,7 @@ struct MeetingPlannerView: View {
                 }
                 .themedBackground()
                 .navigationTitle(L("planner.addLabel"))
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.large)
                 .toolbar { Button(L("alarm.cancel")) { adding = false } }
             }
         }

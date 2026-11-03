@@ -111,7 +111,7 @@ struct QiblaView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("qibla.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear { compass.start() }
         .onDisappear { compass.stop() }
         .onChange(of: compass.heading) { _, h in
@@ -306,7 +306,7 @@ struct NearbyMosquesView: View {
         }
         .themedBackground()
         .navigationTitle(L("qibla.mosques"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .task { await load() }
     }
 

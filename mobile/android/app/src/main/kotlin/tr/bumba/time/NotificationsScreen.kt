@@ -177,7 +177,7 @@ private fun ToggleRow(icon: ImageVector, title: String, note: String, on: Boolea
         Modifier.fillMaxWidth().clickable { onChange(!on) }.padding(horizontal = 12.dp, vertical = 12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(icon, null, tint = Theme.c.accent)
+        IconBox(icon)
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
             Text(title, color = Theme.c.text, fontSize = 16.sp)

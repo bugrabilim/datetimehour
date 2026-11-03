@@ -235,7 +235,7 @@ private struct PlaceSheet: View {
             .themedBackground()
             .tint(Theme.accent)
             .navigationTitle(L("settings.location"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { dismiss() } } }
         }
     }
@@ -282,7 +282,7 @@ private struct DistrictList: View {
         }
         .themedBackground()
         .navigationTitle(province.displayName)
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

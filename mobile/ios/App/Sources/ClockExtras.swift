@@ -134,7 +134,7 @@ struct DualClockPart: View {
                 }
                 .themedBackground()
                 .navigationTitle(L("dual.city"))
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.large)
                 .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { picking = false } } }
             }
         }

@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.material.icons.outlined.HourglassEmpty
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -203,7 +204,14 @@ fun CountdownsScreen() {
                 editing = CountdownItem(title = "", target = d)
             }) { Icon(Icons.Filled.Add, L("countdowns.add"), tint = Theme.c.accent) }
         }
-        if (items.isEmpty()) Text(L("countdowns.empty"), color = Theme.c.muted, fontSize = 14.sp)
+        // Boş durum (2. analiz #96)
+        if (items.isEmpty()) EmptyState(
+            Icons.Outlined.HourglassEmpty, L("empty.countdown.title"), L("empty.countdown.text"),
+            action = L("countdowns.add"),
+        ) {
+            val d = LocalDate.now().plusDays(7).atTime(9, 0).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+            editing = CountdownItem(title = "", target = d)
+        }
         // Etiketle süzme (2. analiz #139)
         if (tags.isNotEmpty()) Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
             RoundButton(L("countdowns.all"), tagFilter.isEmpty()) { tagFilter = "" }

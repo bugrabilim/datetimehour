@@ -225,7 +225,7 @@ struct StudyView: View {
         }
         .themedBackground()
         .navigationTitle(L("study.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear { if mode == "pomo" { pomoTask = Study.name(subject) } }
         .onChange(of: mode) { _, m in if m == "pomo" { pomoTask = Study.name(subject) } }
         .alert(L("study.addSubject"), isPresented: $adding) {

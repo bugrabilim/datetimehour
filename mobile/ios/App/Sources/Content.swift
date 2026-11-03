@@ -73,7 +73,7 @@ struct EsmaView: View {
         .searchable(text: $query, prompt: L("esma.search"))
         .themedBackground()
         .navigationTitle(L("esma.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -128,7 +128,7 @@ struct HadithView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("hadith.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -194,7 +194,7 @@ struct PrayerGuideView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("guide.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -313,7 +313,7 @@ struct CalendarLeafView: View {
         })
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("leaf.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private func monthYear(_ d: Date) -> String {

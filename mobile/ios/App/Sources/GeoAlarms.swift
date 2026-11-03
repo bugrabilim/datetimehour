@@ -121,7 +121,7 @@ struct GeoAlarmsView: View {
 
     var body: some View {
         List {
-            if list.isEmpty { Text(L("geo.none")).foregroundStyle(Theme.muted) }
+            if list.isEmpty { EmptyState(icon: "mappin.and.ellipse", text: L("geo.none")).listRowBackground(Color.clear) }
             ForEach($list) { $g in
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
@@ -149,7 +149,7 @@ struct GeoAlarmsView: View {
         }
         .themedBackground()
         .navigationTitle(L("geo.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -228,7 +228,7 @@ private struct GeoAlarmEditor: View {
             }
             .themedBackground()
             .navigationTitle(L("geo.title"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {

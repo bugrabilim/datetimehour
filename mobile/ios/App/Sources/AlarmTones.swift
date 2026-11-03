@@ -76,7 +76,7 @@ struct AlarmToneLibrary: View {
             .themedBackground()
             .tint(Theme.accent)
             .navigationTitle(L("tone.library"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { dismiss() } }
             }

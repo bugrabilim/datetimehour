@@ -129,7 +129,14 @@ struct CountdownsView: View {
                             .accessibilityLabel(L("countdowns.add"))
                             .foregroundStyle(Theme.accent)
                     }
-                    if items.isEmpty { Text(L("countdowns.empty")).font(.subheadline).foregroundStyle(Theme.muted) }
+                    // Boş durum (2. analiz #96)
+                    if items.isEmpty {
+                        EmptyState(icon: "hourglass", title: L("empty.countdown.title"), text: L("empty.countdown.text"),
+                                   action: L("countdowns.add")) {
+                            let d = Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date().addingTimeInterval(7 * 86400)) ?? Date()
+                            editing = CountdownItem(target: Int64(d.timeIntervalSince1970 * 1000))
+                        }
+                    }
                     // Etiketle süzme (2. analiz #139)
                     let tags = Array(Set(items.compactMap { $0.tag?.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty })).sorted()
                     if !tags.isEmpty {
@@ -329,7 +336,7 @@ private struct CountdownEditor: View {
             .tint(Theme.accent)
             .themedBackground()
             .navigationTitle(L(isNew ? "countdowns.add" : "countdowns.edit"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
@@ -385,7 +392,7 @@ struct CalendarEventPicker: View {
             }
             .themedBackground()
             .navigationTitle(L("countdowns.fromCalendar"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } } }
         }
     }

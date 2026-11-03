@@ -155,7 +155,7 @@ struct GreetingView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("greet.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .task(id: occasion + style) {
             let r = ImageRenderer(content: GreetingArt(occasion: occasion, style: style, today: today).frame(width: 360, height: 360))
             r.scale = 3

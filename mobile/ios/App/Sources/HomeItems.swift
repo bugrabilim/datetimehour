@@ -98,7 +98,7 @@ struct HomeItemsView: View {
         .themedBackground()
         .environment(\.editMode, .constant(.active))
         .navigationTitle(L("home.customize"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

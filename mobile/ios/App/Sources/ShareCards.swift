@@ -52,7 +52,7 @@ struct ShareCardSheet<Card: View>: View {
             }
             .background(AppBackdrop().ignoresSafeArea())
             .navigationTitle(title)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar { Button(L("common.done")) { dismiss() } }
         }
         .task {

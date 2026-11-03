@@ -102,7 +102,7 @@ struct ShareQRView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("support.qr"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

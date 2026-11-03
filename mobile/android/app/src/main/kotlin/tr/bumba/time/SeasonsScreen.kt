@@ -119,7 +119,7 @@ private fun Hero(current: Pair<Int, Instant>, next: Pair<Int, Instant>, now: Ins
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         Text(SEASON_EMOJI[current.first], fontSize = 64.sp)
-        Text(T("nature.current", L("nature.seasons.${SEASON_KEYS[current.first]}")), color = Theme.c.text, fontSize = 26.sp,
+        Text(T("nature.current", L("nature.seasons.${SEASON_KEYS[current.first]}")), color = Theme.c.text, fontSize = 28.sp,
             fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
         Text(L("kids.progress"), color = Theme.c.muted, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
         Box(Modifier.fillMaxWidth().height(20.dp).background(Theme.c.surface2, RoundedCornerShape(10.dp))) {

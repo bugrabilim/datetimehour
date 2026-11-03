@@ -96,7 +96,7 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
             NotificationSettingsScreen { onRoute("notifications") }
         }
         else -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-            Text(L("tab.tools"), color = Theme.c.text, fontSize = 26.sp, fontWeight = FontWeight.Bold)
+            PageTitle(L("tab.tools"))
             AppCard(padding = 4) {
                 ToolRow(Icons.Filled.Alarm, L("tools.hub.cards.alarm.name")) { onRoute("alarm") }
                 ToolRow(Icons.Filled.HourglassBottom, L("tools.timer")) { onRoute("timer") }
@@ -133,7 +133,7 @@ private fun Page(title: String, onRoute: (String?) -> Unit, content: @Composable
 @Composable
 private fun ToolRow(icon: ImageVector, title: String, last: Boolean = false, note: String? = null, onClick: () -> Unit) {
     Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
-        Icon(icon, null, tint = Theme.c.accent)
+        IconBox(icon)
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
             Text(title, color = Theme.c.text, fontSize = 16.sp)
@@ -141,7 +141,7 @@ private fun ToolRow(icon: ImageVector, title: String, last: Boolean = false, not
         }
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
     }
-    if (!last) HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
+    if (!last) HorizontalDivider(Modifier.padding(start = 62.dp), color = Theme.c.border.copy(alpha = 0.5f))
 }
 
 @Composable

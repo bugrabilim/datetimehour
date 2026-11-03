@@ -109,7 +109,7 @@ struct WorldClockView: View {
             .environment(\.editMode, $editMode)
         }
         .navigationTitle(L("world.h1"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .sheet(item: $detail) { WorldDetailView(entry: $0) }
         .sheet(isPresented: $adding) {
             NavigationStack {
@@ -134,7 +134,7 @@ struct WorldClockView: View {
                 .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: L("world.searchHint"))
                 .themedBackground()
                 .navigationTitle(L("world.addCity"))
-                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.large)
                 .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("world.done")) { adding = false } } }
             }
         }
@@ -258,7 +258,7 @@ struct SeasonsView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("nature.h1"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     // MARK: Bölümler

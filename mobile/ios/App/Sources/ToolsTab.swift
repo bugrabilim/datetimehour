@@ -39,7 +39,7 @@ struct ToolsTab: View {
             }
             .themedBackground()
             .navigationTitle(L("tab.tools"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .navigationDestination(for: ToolRoute.self) { route in
                 switch route {
                 case .alarm: AlarmsView()
@@ -62,7 +62,7 @@ struct ToolsTab: View {
     }
 
     private func row(_ route: ToolRoute, _ title: String, _ icon: String) -> some View {
-        NavigationLink(value: route) { Label(title, systemImage: icon) }
+        NavigationLink(value: route) { BoxLabel(title, icon: icon) }
     }
 }
 
@@ -172,7 +172,7 @@ struct StopwatchView: View {
         // Kilit ekranı / Dynamic Island: çalışan kronometre
         .onChange(of: start) { LiveActivities.sync() }
         .navigationTitle(L("tools.hub.cards.stopwatch.name"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button { full = true } label: { Image(systemName: "arrow.up.left.and.arrow.down.right") }
@@ -346,7 +346,7 @@ struct TimerView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("tools.timer"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -396,7 +396,13 @@ struct AlarmsView: View {
                 Text(L("alarm.fromCalendarNote"))
             }
             if items.isEmpty {
-                Text(L("tools.alarm.none")).foregroundStyle(Theme.muted)
+                // Boş durum (2. analiz #96)
+                EmptyState(icon: "alarm", title: L("tools.alarm.none").trimmingCharacters(in: CharacterSet(charactersIn: ".。۔")),
+                           text: L("empty.alarm.text"), action: L("tools.alarm.add")) {
+                    let now = Calendar.current.dateComponents([.hour, .minute], from: Date())
+                    editing = AlarmItem(hour: now.hour ?? 7, minute: now.minute ?? 0)
+                }
+                .listRowBackground(Color.clear)
             }
             // Uyku planının kalkış alarmı ayrı başlıkta (2. analiz #52)
             if items.contains(where: \.sleepPlan) {
@@ -424,7 +430,7 @@ struct AlarmsView: View {
         }
         .themedBackground()
         .navigationTitle(L("tools.hub.cards.alarm.name"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -850,7 +856,7 @@ private struct AlarmEditor: View {
                 }
             }
             .navigationTitle(L("alarm.new"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
@@ -1004,7 +1010,7 @@ struct PomodoroView: View {
         .onChange(of: volume) { if NoisePlayer.shared.source == "pomo" { NoisePlayer.shared.setVolume(volume) } }
         .onAppear { log = PomoLog.load(); PomoNoise.sync() }
         .navigationTitle(L("tools.hub.cards.pomodoro.name"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private func start(seconds: Double) { PomoEngine.start(seconds: seconds) }
@@ -1175,7 +1181,7 @@ struct DateCalcView: View {
         }
         .themedBackground()
         .navigationTitle(L("tools.hub.cards.datecalc.name"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         // Rozet: kullanıcı bir hesap girdisini değiştirince
         .onChange(of: [start, finish, base, birth]) { BadgeStore.shared.hit(.tarihHesap) }
         .onChange(of: amount) { BadgeStore.shared.hit(.tarihHesap) }

@@ -196,7 +196,7 @@ struct QuranView: View {
         .searchable(text: $query, prompt: L("quran.search"))
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("quran.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -260,7 +260,7 @@ struct SuraView: View {
         }
         .background(pal.bg.ignoresSafeArea())
         .navigationTitle("\(s.no). \(s.title)")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 Button { size = max(16, size - 2) } label: { Image(systemName: "textformat.size.smaller") }
@@ -393,7 +393,7 @@ struct DuasView: View {
         .searchable(text: $query, prompt: L("dua.search"))
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("dua.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private func toggleFav(_ id: String) {
@@ -596,7 +596,7 @@ struct ZikirView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("zikir.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear { if shakeUndo { shake.start(undo) } }
         .onDisappear { shake.stop() }
         .onChange(of: shakeUndo) { if shakeUndo { shake.start(undo) } else { shake.stop() } }
@@ -815,7 +815,7 @@ struct TrackerView: View {
         .background(AppBackdrop().ignoresSafeArea())
         .onAppear { TrackX.migrate(); version += 1 }
         .navigationTitle(L("track.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .confirmationDialog(L("track.clearConfirm"), isPresented: $confirm, titleVisibility: .visible) {
             Button(L("track.clear"), role: .destructive) { Tracker.clear(); version += 1 }
         }
@@ -962,7 +962,7 @@ struct ZakatView: View {
         }
         .themedBackground()
         .navigationTitle(L("zakat.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private func binding(_ f: String) -> Binding<String> {

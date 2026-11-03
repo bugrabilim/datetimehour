@@ -69,7 +69,7 @@ struct FeaturesView: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("features.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private func row(_ tab: AppTab, isOn: Binding<Bool>) -> some View {

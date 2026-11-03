@@ -195,7 +195,7 @@ struct SleepView: View {
         }
         .themedBackground()
         .navigationTitle(L("sleep.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onChange(of: [on, bedtimeNotify]) { reschedule() }
         .onChange(of: [wake, duration, remind]) { reschedule() }
         .onChange(of: daysRaw) { reschedule() }

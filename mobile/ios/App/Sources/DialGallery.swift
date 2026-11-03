@@ -43,7 +43,7 @@ struct DialGalleryView: View {
         }
         .themedBackground()
         .navigationTitle(L("dial.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear { seen = true }
         .sheet(item: $preview) { f in DialPreview(face: f) }
     }
@@ -93,7 +93,7 @@ struct DialPreview: View {
             .padding(.top, 20)
             .themedBackground()
             .navigationTitle(face.title)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { dismiss() } } }
         }
         .onAppear { if faceRaw == face.rawValue { color = DialColor(rawValue: colorRaw) ?? .auto } }

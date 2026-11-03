@@ -47,7 +47,7 @@ struct PrayerMethodView: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("prayer.method.app"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onChange(of: method) { refresh() }
         .onChange(of: hanafi) { refresh() }
     }

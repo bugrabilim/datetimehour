@@ -178,7 +178,7 @@ struct GoogleCalendarGuide: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("google.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("common.done")) { dismiss() } } }
         .onAppear { device.reload() }
     }

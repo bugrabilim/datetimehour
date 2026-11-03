@@ -1119,7 +1119,7 @@ struct RoutineEditor: View {
             }
             .themedBackground()
             .navigationTitle(L("routine.new"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("alarm.cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {

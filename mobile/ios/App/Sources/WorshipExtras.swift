@@ -133,7 +133,7 @@ struct ReligiousDaysView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("relday.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onAppear {
             let ys = RelDays.years
             if let f = ys.first, let l = ys.last { year = min(max(year, f), l) }

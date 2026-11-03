@@ -116,20 +116,22 @@ fun Row2(title: String, value: String, modifier: Modifier = Modifier, bold: Bool
     }
 }
 
-/** Alt sayfa başlığı: geri oku ve başlık */
-@OptIn(ExperimentalMaterial3Api::class)
+/**
+ * Alt sayfa başlığı: üstte geri oku ve eylemler, altında büyük başlık (28 sp; bütün sayfalarda aynı hiyerarşi,
+ * 2. analiz #98). Zemin saydam: atmosfer temasında renk geçişi bozulmaz.
+ */
 @Composable
 fun SubBar(title: String, onBack: (() -> Unit)? = null, actions: @Composable () -> Unit = {}) {
-    TopAppBar(
-        title = { Text(title, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, maxLines = 1, overflow = TextOverflow.Ellipsis) },
-        navigationIcon = {
+    Column(Modifier.fillMaxWidth()) {
+        Row(Modifier.fillMaxWidth().heightIn(min = 48.dp), verticalAlignment = Alignment.CenterVertically) {
             if (onBack != null) IconButton(onClick = onBack) {
-                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
-            }
-        },
-        actions = { actions() },
-        colors = TopAppBarDefaults.topAppBarColors(containerColor = Theme.c.bg, titleContentColor = Theme.c.text),
-    )
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null, tint = Theme.c.accent)
+            } else Spacer(Modifier.width(4.dp))
+            Spacer(Modifier.weight(1f))
+            actions()
+        }
+        PageTitle(title, Modifier.padding(start = 16.dp, end = 16.dp, bottom = 6.dp))
+    }
 }
 
 /**

@@ -121,7 +121,7 @@ struct MoonView: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("moon.calendarLink"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 

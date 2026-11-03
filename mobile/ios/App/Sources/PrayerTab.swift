@@ -64,7 +64,7 @@ struct PrayerTab: View {
                 .background(AppBackdrop().ignoresSafeArea())
             }
             .navigationTitle(L("tab.prayer"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 // Bugünün vakitlerini görsel kart olarak paylaş (rakip analizi #16)
                 ToolbarItem(placement: .topBarLeading) {
@@ -397,7 +397,7 @@ struct MonthlyPrayerView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("prayer.monthly"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -425,7 +425,7 @@ struct ImsakiyeView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(T("imsakiye.title", ramadan.from.year))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .task {
             let renderer = ImageRenderer(content: ImsakiyeCard(place: place, ramadan: ramadan).frame(width: 390))
             renderer.scale = max(displayScale, 2)

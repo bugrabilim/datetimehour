@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.EditNote
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -161,7 +163,7 @@ fun JournalScreen() {
         SectionTitle(L("journal.history"))
         val older = list.filter { it.d != Journal.todayKey && (tagFilter == null || tagFilter in Journal.tags(it.n)) }
         AppCard {
-            if (older.isEmpty()) Text(L("journal.empty"), color = Theme.c.muted)
+            if (older.isEmpty()) EmptyState(Icons.Outlined.EditNote, L("journal.empty").trimEnd('.', '。', '۔'), L("empty.journal.text"))
             older.take(60).forEachIndexed { idx, e ->
                 Row(Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
                     Text(if (e.m > 0) Journal.moods[e.m - 1] else "·", fontSize = 24.sp)

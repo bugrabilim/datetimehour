@@ -90,7 +90,7 @@ struct AlarmWallPicker: View {
             .themedBackground()
             .tint(Theme.accent)
             .navigationTitle(L("wall.title"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(L("wall.none")) { item.wall = ""; dismiss() }

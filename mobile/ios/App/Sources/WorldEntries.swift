@@ -212,7 +212,7 @@ struct WorldDetailView: View {
                 .themedBackground()
             }
             .navigationTitle((entry.flag.isEmpty ? "" : entry.flag + " ") + entry.name)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button(L("world.done")) { WorldLabels.set(entry.key, label); dismiss() }

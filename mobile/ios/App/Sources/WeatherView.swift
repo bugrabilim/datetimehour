@@ -49,7 +49,7 @@ struct WeatherView: View {
         }
         .background(AppBackdrop().ignoresSafeArea())
         .navigationTitle(L("weather.h1"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .task(id: place.key) { await load(place) }
         .sheet(isPresented: $sharing) {
             if let d = data { ShareCardSheet(title: L("share.card")) { WeatherShareCard(place: place, weather: d) } }

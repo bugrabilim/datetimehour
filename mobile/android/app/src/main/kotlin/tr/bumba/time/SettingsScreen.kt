@@ -1,5 +1,13 @@
 package tr.bumba.time
 
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material.icons.filled.Shortcut
+import androidx.compose.material.icons.filled.Backup
+import androidx.compose.material.icons.filled.LightMode
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.Image
@@ -81,135 +89,164 @@ import java.net.URLEncoder
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SettingsScreen(onRoute: (String) -> Unit) {
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        AppCard(padding = 4) { SettingsRow(Icons.Filled.Apps, L("features.title")) { onRoute("features") } }
-        AppCard {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(L("settings.location"), Modifier.weight(1f), color = Theme.c.text)
-                PlacePicker(size = 16.sp)
+    // Beş başlık (2. analiz #198): Genel, Renk ve görünüm, Saat, Yedek ve kısayollar, Destek; satırda şimdiki değer,
+    // uzun açıklamalar alt sayfada (penceresinde), en üstte arama
+    var query by rememberSaveable { mutableStateOf("") }
+    var note by remember { mutableStateOf<Pair<String, String>?>(null) }
+    fun shows(vararg keys: String): Boolean {
+        val q = District.fold(query.trim())
+        return q.isEmpty() || keys.any { District.fold(L(it)).contains(q) }
+    }
+    val general = arrayOf("features.title", "settings.location", "settings.notifications", "lang.title", "settings.units",
+        "settings.pressureUnit", "client.formatLabel", "settings.keepAwake")
+    val look = arrayOf("settings.color", "settings.appearance", "fontScale.title")
+    val clock = arrayOf("look.title", "home.customize", "dial.title", "night.title")
+    val backup = arrayOf("sync.androidTitle", "android.shortcuts.title")
+    val support = arrayOf("support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
+        "support.version", "badges.h1", "settings.about")
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        OutlinedTextField(
+            query, { query = it }, Modifier.fillMaxWidth(), singleLine = true,
+            placeholder = { Text(L("settings.search")) },
+            leadingIcon = { Icon(Icons.Filled.Search, null, tint = Theme.c.muted) },
+            trailingIcon = { if (query.isNotEmpty()) IconButton(onClick = { query = "" }) { Icon(Icons.Filled.Close, L("common.done"), tint = Theme.c.muted) } },
+            shape = RoundedCornerShape(14.dp),
+        )
+        // Genel
+        if (shows(*general)) {
+            SectionTitle(L("settings.color.general"), Modifier.padding(top = 6.dp))
+            AppCard(padding = 4) {
+                if (shows("features.title")) SettingsRow(Icons.Filled.Apps, L("features.title")) { onRoute("features") }
+                if (shows("settings.location")) Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    IconBox(Icons.Filled.LocationOn)
+                    Spacer(Modifier.width(14.dp))
+                    Text(L("settings.location"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                    PlacePicker(size = 15.sp)
+                }
+                if (shows("settings.notifications")) SettingsRow(Icons.Filled.Notifications, L("settings.notifications")) { onRoute("notifications") }
+                if (shows("settings.keepAwake")) Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                    IconBox(Icons.Filled.LightMode)
+                    Spacer(Modifier.width(14.dp))
+                    Text(L("settings.keepAwake"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                    Switch(Prefs.keepAwake, Prefs::saveKeepAwake, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                }
             }
-        }
-        AppCard(padding = 4) {
-            Row(
-                Modifier.fillMaxWidth().clickable { onRoute("notifications") }.padding(horizontal = 12.dp, vertical = 14.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(Icons.Filled.Notifications, null, tint = Theme.c.accent)
-                Spacer(Modifier.width(14.dp))
-                Text(L("settings.notifications"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
-            }
-        }
-        AppCard(padding = 4) {
-            Row(
-                Modifier.fillMaxWidth().clickable { onRoute("color") }.padding(horizontal = 12.dp, vertical = 14.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(Icons.Filled.Palette, null, tint = Theme.c.accent)
-                Spacer(Modifier.width(14.dp))
-                Text(L("settings.color"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                Box(Modifier.size(18.dp).background(Theme.c.accent, CircleShape))
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
-            }
-            HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
-            Row(
-                Modifier.fillMaxWidth().clickable { onRoute("appearance") }.padding(horizontal = 12.dp, vertical = 14.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(Icons.Filled.TextFields, null, tint = Theme.c.accent)
-                Spacer(Modifier.width(14.dp))
-                Text(L("look.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
-            }
-            HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
-            Column(Modifier.padding(horizontal = 12.dp, vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                SectionTitle(L("settings.units"))
-                val opts = listOf("metric", "imperial")
-                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                    opts.forEachIndexed { i, o ->
-                        SegmentedButton(Prefs.units == o, { Prefs.saveUnits(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
-                            Text(L("settings.units.$o"), fontSize = 13.sp, maxLines = 1)
+            // Dil (2. analiz #5): telefonun ayarlarına gitmeden
+            if (shows("lang.title")) LanguageSettingsRow { onRoute("language") }
+            if (shows("settings.units", "settings.pressureUnit", "client.formatLabel")) AppCard {
+                if (shows("client.formatLabel")) {
+                    SectionTitle(L("client.formatLabel"))
+                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                        SegmentedButton(!Prefs.h12, { Prefs.saveH12(false) }, SegmentedButtonDefaults.itemShape(0, 2), colors = segColors()) { Text(L("client.format24")) }
+                        SegmentedButton(Prefs.h12, { Prefs.saveH12(true) }, SegmentedButtonDefaults.itemShape(1, 2), colors = segColors()) { Text(L("client.format12")) }
+                    }
+                }
+                if (shows("settings.units")) {
+                    SectionTitle(L("settings.units"))
+                    val opts = listOf("metric", "imperial")
+                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                        opts.forEachIndexed { i, o ->
+                            SegmentedButton(Prefs.units == o, { Prefs.saveUnits(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
+                                Text(L("settings.units.$o"), fontSize = 13.sp, maxLines = 1)
+                            }
                         }
                     }
                 }
                 // Basınç birimi (2. analiz #106)
-                Text(L("settings.pressureUnit"), color = Theme.c.muted, fontSize = 13.sp)
-                var pu by remember { mutableStateOf(Units.pressureUnit) }
-                val popts = listOf("auto", "hPa", "mmHg", "inHg")
-                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                    popts.forEachIndexed { i, o ->
-                        SegmentedButton(pu == o, { pu = o; Prefs.store.edit().putString("units.pressure", o).apply() },
-                            SegmentedButtonDefaults.itemShape(i, popts.size), colors = segColors()) {
-                            Text(if (o == "auto") L("countdowns.unit.auto") else o, fontSize = 12.sp, maxLines = 1)
+                if (shows("settings.pressureUnit")) {
+                    SectionTitle(L("settings.pressureUnit"))
+                    var pu by remember { mutableStateOf(Units.pressureUnit) }
+                    val popts = listOf("auto", "hPa", "mmHg", "inHg")
+                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                        popts.forEachIndexed { i, o ->
+                            SegmentedButton(pu == o, { pu = o; Prefs.store.edit().putString("units.pressure", o).apply() },
+                                SegmentedButtonDefaults.itemShape(i, popts.size), colors = segColors()) {
+                                Text(if (o == "auto") L("countdowns.unit.auto") else o, fontSize = 12.sp, maxLines = 1)
+                            }
                         }
                     }
                 }
             }
         }
-        AppCard {
-            SectionTitle(L("client.formatLabel"))
-            SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                SegmentedButton(!Prefs.h12, { Prefs.saveH12(false) }, SegmentedButtonDefaults.itemShape(0, 2), colors = segColors()) { Text(L("client.format24")) }
-                SegmentedButton(Prefs.h12, { Prefs.saveH12(true) }, SegmentedButtonDefaults.itemShape(1, 2), colors = segColors()) { Text(L("client.format12")) }
+        // Renk ve görünüm
+        if (shows(*look)) {
+            SectionTitle(L("settings.group.look"), Modifier.padding(top = 6.dp))
+            if (shows("settings.color")) AppCard(padding = 4) {
+                Row(
+                    Modifier.fillMaxWidth().clickable { onRoute("color") }.padding(horizontal = 12.dp, vertical = 10.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    IconBox(Icons.Filled.Palette)
+                    Spacer(Modifier.width(14.dp))
+                    Text(L("settings.color"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                    Box(Modifier.size(18.dp).background(Theme.c.accent, CircleShape))
+                    Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
+                }
             }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(L("settings.keepAwake"), Modifier.weight(1f), color = Theme.c.text)
-                Switch(Prefs.keepAwake, Prefs::saveKeepAwake, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-            }
-            SectionTitle(L("settings.appearance"))
-            val opts = listOf("system", "light", "dark")
-            SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                opts.forEachIndexed { i, o ->
-                    SegmentedButton(Prefs.appearance == o, { Prefs.saveAppearance(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
-                        Text(L("settings.$o"))
+            if (shows("settings.appearance")) AppCard {
+                SectionTitle(L("settings.appearance"))
+                val opts = listOf("system", "light", "dark")
+                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                    opts.forEachIndexed { i, o ->
+                        SegmentedButton(Prefs.appearance == o, { Prefs.saveAppearance(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
+                            Text(L("settings.$o"))
+                        }
                     }
                 }
             }
+            // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
+            if (shows("fontScale.title")) FontScaleCard()
         }
-        // Dil (2. analiz #5): telefonun ayarlarına gitmeden
-        LanguageSettingsRow { onRoute("language") }
-        // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
-        FontScaleCard()
-        AppCard(padding = 4) {
-            Row(
-                Modifier.fillMaxWidth().clickable { onRoute("homeItems") }.padding(horizontal = 12.dp, vertical = 14.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Icon(Icons.Filled.Tune, null, tint = Theme.c.accent)
-                Spacer(Modifier.width(14.dp))
-                Text(L("home.customize"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
-            }
-        }
-        // Sunucusuz yedek: telefonun Google yedeği (res/xml/data_extraction_rules.xml); hesap ve sunucu yok
-        AppCard {
-            SectionTitle(L("sync.androidTitle"))
-            Text(L("sync.androidNote"), color = Theme.c.muted, fontSize = 13.sp)
-        }
-        // Simge kısayolları, asistan/uygulamalardan zamanlayıcı-alarm, şarjda ekran koruyucu (rakip analizi #7)
-        AppCard {
-            SectionTitle(L("android.shortcuts.title"))
-            Text(L("android.shortcuts.note"), color = Theme.c.muted, fontSize = 13.sp)
-        }
-        // Puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm (2. analiz #6, #81)
-        SupportCard(onRoute)
-        if (!Features.isOn(Tab.TOOLS)) {
+        // Saat
+        if (shows(*clock)) {
+            SectionTitle(L("tab.clock"), Modifier.padding(top = 6.dp))
             AppCard(padding = 4) {
-                SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
-                HorizontalDivider(Modifier.padding(start = 50.dp), color = Theme.c.border.copy(alpha = 0.5f))
-                SettingsRow(Icons.Filled.Info, L("settings.about")) { onRoute("about") }
+                if (shows("look.title", "dial.title", "night.title")) SettingsRow(Icons.Filled.TextFields, L("look.title")) { onRoute("appearance") }
+                if (shows("home.customize")) SettingsRow(Icons.Filled.Tune, L("home.customize")) { onRoute("homeItems") }
             }
         }
+        // Yedek ve kısayollar: açıklamalar pencerede
+        if (shows(*backup)) {
+            SectionTitle(L("settings.group.backup"), Modifier.padding(top = 6.dp))
+            AppCard(padding = 4) {
+                // Sunucusuz yedek: telefonun Google yedeği (res/xml/data_extraction_rules.xml); hesap ve sunucu yok
+                if (shows("sync.androidTitle")) SettingsRow(Icons.Filled.Backup, L("sync.androidTitle")) { note = L("sync.androidTitle") to L("sync.androidNote") }
+                // Simge kısayolları, asistan/uygulamalardan zamanlayıcı-alarm, şarjda ekran koruyucu (rakip analizi #7)
+                if (shows("android.shortcuts.title")) SettingsRow(Icons.Filled.Shortcut, L("android.shortcuts.title")) { note = L("android.shortcuts.title") to L("android.shortcuts.note") }
+            }
+        }
+        // Destek: puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm (2. analiz #6, #81)
+        if (shows(*support)) {
+            SupportCard(onRoute)
+            if (!Features.isOn(Tab.TOOLS)) {
+                AppCard(padding = 4) {
+                    SettingsRow(Icons.Filled.MilitaryTech, L("badges.h1")) { onRoute("badges") }
+                    SettingsRow(Icons.Filled.Info, L("settings.about")) { onRoute("about") }
+                }
+            }
+        }
+        if (!shows(*general, *look, *clock, *backup, *support)) {
+            EmptyState(Icons.Filled.Search, L("settings.noResult"), null)
+        }
+    }
+    note?.let { (title, text) ->
+        AlertDialog(
+            onDismissRequest = { note = null },
+            title = { Text(title) },
+            text = { Text(text) },
+            confirmButton = { TextButton(onClick = { note = null }) { Text(L("common.done")) } },
+            containerColor = Theme.c.surface,
+        )
     }
 }
 
 @Composable
 private fun SettingsRow(icon: androidx.compose.ui.graphics.vector.ImageVector, title: String, onClick: () -> Unit) {
     Row(
-        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 14.dp),
+        Modifier.fillMaxWidth().clickable(onClick = onClick).padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(icon, null, tint = Theme.c.accent)
+        IconBox(icon)
         Spacer(Modifier.width(14.dp))
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
         Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)

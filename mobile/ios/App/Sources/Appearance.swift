@@ -324,7 +324,7 @@ struct AppearanceView: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("look.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .onChange(of: slideItems) { _, new in
             guard !new.isEmpty else { return }
             Task {

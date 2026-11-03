@@ -299,8 +299,8 @@ private fun ExtraTimesCard(today: java.time.LocalDate, place: AppPlace) {
 private fun LinkCard(icon: ImageVector, title: String, onClick: () -> Unit) {
     AppCard(Modifier.clickable(onClick = onClick)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(icon, null, tint = Theme.c.accent)
-            Text("  $title", Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+            IconBox(icon)
+            Text("   $title", Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
             Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null, tint = Theme.c.muted)
         }
     }

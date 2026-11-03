@@ -81,7 +81,7 @@ struct NotificationsView: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("settings.notifications"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .sheet(isPresented: $showPrayer) { NotificationSettingsView() }
         .task { await refresh() }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
@@ -99,7 +99,7 @@ struct NotificationsView: View {
     private func row(_ title: String, _ note: String, _ icon: String, _ on: Binding<Bool>) -> some View {
         Toggle(isOn: on) {
             VStack(alignment: .leading, spacing: 2) {
-                Label(title, systemImage: icon)
+                BoxLabel(title, icon: icon)
                 Text(note).font(.caption).foregroundStyle(Theme.muted)
             }
         }

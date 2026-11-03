@@ -14,86 +14,159 @@ struct SettingsView: View {
     @AppStorage(Features.key) private var features = ""
     @State private var syncOn = CloudSync.enabled
 
+    /// Ayarlarda arama (2. analiz #198): satır başlıklarında geçen sözcükler
+    @State private var query = ""
+
+    private func shows(_ keys: String...) -> Bool {
+        let q = query.trimmingCharacters(in: .whitespaces)
+        return q.isEmpty || keys.contains { L($0).localizedStandardContains(q) }
+    }
+
     var body: some View {
+        // Beş başlık (2. analiz #198): Genel, Renk ve görünüm, Saat, Yedek ve kısayollar, Destek; satırda şimdiki değer,
+        // uzun açıklamalar alt sayfada, en üstte arama
+        let general = ["features.title", "settings.location", "settings.notifications", "lang.title", "settings.units",
+                       "settings.pressureUnit", "client.formatLabel", "settings.keepAwake"]
+        let look = ["settings.color", "settings.appearance", "fontScale.title"]
+        let clock = ["look.title", "home.customize", "dial.title", "night.title"]
+        let backup = ["sync.title", "siri.title"]
+        let support = ["support.title", "support.rate", "support.share", "support.qr", "support.feedback", "support.moreApps",
+                       "support.version", "badges.h1", "settings.about"]
         Form {
-            Section {
-                NavigationLink { FeaturesView() } label: { Label(L("features.title"), systemImage: "square.grid.2x2") }
-            }
-            Section {
-                LabeledContent(L("settings.location")) { PlacePicker(font: .body) }
-                NavigationLink { NotificationsView() } label: { Label(L("settings.notifications"), systemImage: "bell") }
-            }
-            Section {
-                NavigationLink { AccentPickerView() } label: {
-                    HStack {
-                        Label(L("settings.color"), systemImage: "paintpalette")
-                        Spacer()
-                        Circle().fill(Theme.accent).frame(width: 18, height: 18)
+            if general.contains(where: { shows($0) }) {
+                Section(L("settings.color.general")) {
+                    if shows("features.title") {
+                        NavigationLink { FeaturesView() } label: { BoxLabel(L("features.title"), icon: "square.grid.2x2") }
+                    }
+                    if shows("settings.location") {
+                        LabeledContent { PlacePicker(font: .body) } label: { BoxLabel(L("settings.location"), icon: "location") }
+                    }
+                    if shows("settings.notifications") {
+                        NavigationLink { NotificationsView() } label: { BoxLabel(L("settings.notifications"), icon: "bell") }
+                    }
+                    if shows("lang.title") { LanguageRow() }
+                    if shows("settings.units") {
+                        Picker(selection: $units) {
+                            Text(L("settings.units.metric")).tag("metric")
+                            Text(L("settings.units.imperial")).tag("imperial")
+                        } label: { BoxLabel(L("settings.units"), icon: "ruler") }
+                    }
+                    // Basınç birimi (2. analiz #106)
+                    if shows("settings.pressureUnit") {
+                        Picker(selection: $pressureUnit) {
+                            Text(L("countdowns.unit.auto")).tag("auto")
+                            ForEach(["hPa", "mmHg", "inHg"], id: \.self) { Text($0).tag($0) }
+                        } label: { BoxLabel(L("settings.pressureUnit"), icon: "gauge") }
+                    }
+                    if shows("client.formatLabel") {
+                        Picker(selection: $h12) {
+                            Text(L("client.format24")).tag(false)
+                            Text(L("client.format12")).tag(true)
+                        } label: { BoxLabel(L("client.formatLabel"), icon: "clock") }
+                    }
+                    if shows("settings.keepAwake") {
+                        Toggle(isOn: $keepAwake) { BoxLabel(L("settings.keepAwake"), icon: "sun.max") }
                     }
                 }
-                NavigationLink { AppearanceView() } label: { Label(L("look.title"), systemImage: "textformat.size") }
-                Picker(L("settings.units"), selection: $units) {
-                    Text(L("settings.units.metric")).tag("metric")
-                    Text(L("settings.units.imperial")).tag("imperial")
-                }
-                // Basınç birimi (2. analiz #106)
-                Picker(L("settings.pressureUnit"), selection: $pressureUnit) {
-                    Text(L("countdowns.unit.auto")).tag("auto")
-                    ForEach(["hPa", "mmHg", "inHg"], id: \.self) { Text($0).tag($0) }
+            }
+            if look.contains(where: { shows($0) }) {
+                Section(L("settings.group.look")) {
+                    if shows("settings.color") {
+                        NavigationLink { AccentPickerView() } label: {
+                            HStack {
+                                BoxLabel(L("settings.color"), icon: "paintpalette")
+                                Spacer()
+                                Circle().fill(Theme.accent).frame(width: 18, height: 18)
+                            }
+                        }
+                    }
+                    if shows("settings.appearance") {
+                        Picker(selection: $appearance) {
+                            Text(L("settings.system")).tag("system")
+                            Text(L("settings.light")).tag("light")
+                            Text(L("settings.dark")).tag("dark")
+                        } label: { BoxLabel(L("settings.appearance"), icon: "circle.lefthalf.filled") }
+                    }
+                    // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
+                    if shows("fontScale.title") { FontScaleRow() }
                 }
             }
-            Section {
-                Picker(L("client.formatLabel"), selection: $h12) {
-                    Text(L("client.format24")).tag(false)
-                    Text(L("client.format12")).tag(true)
+            if clock.contains(where: { shows($0) }) {
+                Section(L("tab.clock")) {
+                    if shows("look.title", "dial.title", "night.title") {
+                        NavigationLink { AppearanceView() } label: { BoxLabel(L("look.title"), icon: "textformat.size") }
+                    }
+                    if shows("home.customize") {
+                        NavigationLink { HomeItemsView() } label: { BoxLabel(L("home.customize"), icon: "slider.horizontal.3") }
+                    }
                 }
-                Toggle(L("settings.keepAwake"), isOn: $keepAwake)
-                Picker(L("settings.appearance"), selection: $appearance) {
-                    Text(L("settings.system")).tag("system")
-                    Text(L("settings.light")).tag("light")
-                    Text(L("settings.dark")).tag("dark")
-                }
-                NavigationLink { HomeItemsView() } label: { Label(L("home.customize"), systemImage: "slider.horizontal.3") }
             }
-            // Dil (2. analiz #5): telefonun ayarlarına gitmeden
-            Section { LanguageRow() }
-            // Yazı boyutu (2. analiz #77): uygulamanın bütün yazıları, %100 telefonun ayarı
-            Section { FontScaleRow() }
-            // Sunucusuz eşitleme (CloudSync.swift): aynı Apple hesabındaki cihazlar arasında, iCloud anahtar-değer deposu
-            Section {
-                Toggle(isOn: Binding(get: { syncOn }, set: { syncOn = $0; CloudSync.setEnabled($0) })) {
-                    Label(L("sync.title"), systemImage: "icloud")
+            if backup.contains(where: { shows($0) }) {
+                Section(L("settings.group.backup")) {
+                    // Sunucusuz eşitleme (CloudSync.swift): aynı Apple hesabındaki cihazlar arasında, iCloud anahtar-değer deposu
+                    if shows("sync.title") {
+                        Toggle(isOn: Binding(get: { syncOn }, set: { syncOn = $0; CloudSync.setEnabled($0) })) {
+                            BoxLabel(L("sync.title"), icon: "icloud")
+                        }
+                        NavigationLink { SettingsNoteView(title: L("sync.title"), text: L("sync.note")) } label: {
+                            Text(L("settings.details")).foregroundStyle(Theme.muted)
+                        }
+                    }
+                    // Siri ve Kısayollar (AppIntents.swift): Kısayollar uygulamasındaki eylemlere bağlantı ve şarj otomasyonu notu
+                    if shows("siri.title") {
+                        NavigationLink {
+                            SettingsNoteView(title: L("siri.title"), text: L("siri.note")) {
+                                ShortcutsLink().shortcutsLinkStyle(.automaticOutline)
+                            }
+                        } label: { BoxLabel(L("siri.title"), icon: "wand.and.stars") }
+                    }
                 }
-            } footer: {
-                Text(L("sync.note"))
-            }
-            // Siri ve Kısayollar (AppIntents.swift): Kısayollar uygulamasındaki eylemlere bağlantı ve şarj otomasyonu notu
-            Section {
-                ShortcutsLink()
-                    .shortcutsLinkStyle(.automaticOutline)
-            } header: {
-                Text(L("siri.title"))
-            } footer: {
-                Text(L("siri.note"))
             }
             // Puanla, paylaş, QR kod, geri bildirim, Bumba'nın diğer ürünleri, sürüm (2. analiz #6, #81)
-            SupportSection()
-            // Araçlar kapalıyken rozetler ve hakkında buradadır (başka yoldan açılmazlar)
-            if !Features.parse(features).contains(.tools) {
-                Section {
-                    NavigationLink { BadgesView() } label: { Label(L("badges.h1"), systemImage: "rosette") }
-                    NavigationLink { AboutView() } label: { Label(L("settings.about"), systemImage: "info.circle") }
+            if support.contains(where: { shows($0) }) {
+                SupportSection()
+                // Araçlar kapalıyken rozetler ve hakkında buradadır (başka yoldan açılmazlar)
+                if !Features.parse(features).contains(.tools) {
+                    Section {
+                        NavigationLink { BadgesView() } label: { BoxLabel(L("badges.h1"), icon: "rosette") }
+                        NavigationLink { AboutView() } label: { BoxLabel(L("settings.about"), icon: "info.circle") }
+                    }
                 }
             }
+            if ![general, look, clock, backup, support].joined().contains(where: { shows($0) }) {
+                ContentUnavailableView.search(text: query)
+            }
         }
+        .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: L("settings.search"))
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("settings.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
 /// Uygulama rengi: dört grupta 24 renk (genel, çocuklar, zarif, iş); seçim `accent` anahtarında
+/// Ayarlardaki uzun açıklamalar için alt sayfa (2. analiz #198)
+struct SettingsNoteView<Extra: View>: View {
+    let title: String
+    let text: String
+    @ViewBuilder var extra: () -> Extra
+
+    var body: some View {
+        Form {
+            Section { extra() } footer: { Text(text) }
+        }
+        .themedBackground()
+        .navigationTitle(title)
+    }
+}
+
+extension SettingsNoteView where Extra == EmptyView {
+    init(title: String, text: String) {
+        self.init(title: title, text: text) { EmptyView() }
+    }
+}
+
 struct AccentPickerView: View {
     @AppStorage("accent") private var accent = AccentPalette.defaultID
     @AppStorage(Atmosphere.key) private var atmo = ""
@@ -146,7 +219,7 @@ struct AccentPickerView: View {
         .themedBackground()
         .tint(Theme.accent)
         .navigationTitle(L("settings.color"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private func atmoCard(_ a: Atmosphere?) -> some View {
@@ -229,7 +302,7 @@ struct PrivacyView: View {
         }
         .themedBackground()
         .navigationTitle(L("settings.privacy"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
@@ -284,7 +357,7 @@ struct AboutView: View {
         }
         .themedBackground()
         .navigationTitle(L("settings.about"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private static var version: String {
@@ -312,7 +385,7 @@ struct ListSignupView: View {
         Form { ListSignupSection() }
             .themedBackground()
             .navigationTitle(L("list.heading"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
     }
 }
 

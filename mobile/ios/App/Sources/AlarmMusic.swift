@@ -245,7 +245,7 @@ private struct AlarmMusicTrimSheet: View {
             }
             .themedBackground()
             .navigationTitle(L("alarm.music"))
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(L("alarm.cancel")) { stop(); done(nil) }

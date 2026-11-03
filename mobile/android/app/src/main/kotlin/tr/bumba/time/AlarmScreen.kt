@@ -1,5 +1,6 @@
 package tr.bumba.time
 
+import androidx.compose.material.icons.outlined.Alarm
 import android.Manifest
 import android.content.Intent
 import android.net.Uri
@@ -154,7 +155,11 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
         if (heading.isNotEmpty() && group.isEmpty()) continue
         if (heading.isNotEmpty()) Text(heading, color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
         AppCard(padding = 4) {
-            if (group.isEmpty()) Text(L("tools.alarm.none"), Modifier.padding(12.dp), color = Theme.c.muted)
+            // Boş durum (2. analiz #96)
+            if (group.isEmpty()) EmptyState(
+                Icons.Outlined.Alarm, L("tools.alarm.none").trimEnd('.', '。', '۔'), L("empty.alarm.text"),
+                action = L("tools.alarm.add"),
+            ) { val now = LocalTime.now(); editing = AlarmItem(hour = now.hour, minute = now.minute) }
             group.forEachIndexed { i, item ->
                 Row(
                     Modifier.fillMaxWidth().clickable { editing = item }.padding(horizontal = 12.dp, vertical = 8.dp),

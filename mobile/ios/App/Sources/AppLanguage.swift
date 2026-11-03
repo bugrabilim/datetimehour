@@ -57,7 +57,7 @@ struct LanguageView: View {
         }
         .themedBackground()
         .navigationTitle(L("lang.title"))
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 
     private func pick(_ code: String) {
