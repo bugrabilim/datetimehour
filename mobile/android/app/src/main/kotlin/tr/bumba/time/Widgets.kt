@@ -62,7 +62,8 @@ abstract class BaseWidget : AppWidgetProvider() {
     override fun onReceive(c: Context, intent: Intent) {
         super.onReceive(c, intent)
         // Saat, saat dilimi ya da dil değişince (manifestte kayıtlı; bu yayınlar arka planda da gelir)
-        if (intent.action in setOf(Intent.ACTION_TIME_CHANGED, Intent.ACTION_TIMEZONE_CHANGED, Intent.ACTION_LOCALE_CHANGED)) {
+        if (intent.action in setOf(Intent.ACTION_TIME_CHANGED, Intent.ACTION_TIMEZONE_CHANGED, Intent.ACTION_LOCALE_CHANGED,
+                android.app.AlarmManager.ACTION_NEXT_ALARM_CLOCK_CHANGED)) {
             WidgetUpdater.updateAll(c)
         }
     }
@@ -84,6 +85,10 @@ class NextPrayerWidget : BaseWidget() {
             v.setTextViewText(R.id.name, n.prayer.ramadanTitle(n.at, place.zone))
             v.setTextViewText(R.id.time, Fmt.hm(n.at, place.zone))
             WidgetUpdater.countdown(v, R.id.left, n.at, now)
+            // Önceki vakitten sıradakine geçen süre (2. analiz #162); widget yarım saatte bir de yenilenir
+            val prev = (place.entries(place.today(now).minusDays(1)) + place.entries(place.today(now))).lastOrNull { !it.at.isAfter(now) }?.at
+            val frac = if (prev != null && n.at.isAfter(prev)) (now.toEpochMilli() - prev.toEpochMilli()).toDouble() / (n.at.toEpochMilli() - prev.toEpochMilli()) else 0.0
+            v.setProgressBar(R.id.progress, 1000, (frac.coerceIn(0.0, 1.0) * 1000).toInt(), false)
         }
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.PRAYER, id))
         return v
@@ -114,6 +119,19 @@ class TodayPrayersWidget : BaseWidget() {
             v.setTextViewText(times[i], Fmt.hm(e.at, place.zone))
             v.setInt(cols[i], "setBackgroundResource", if (isNext) R.drawable.widget_soft else 0)
         }
+        // Gün ilerlemesi (2. analiz #163): imsaktan yatsıya; vakitler arası eşit parça, içinde bulunulan parça süreyle dolar
+        if (entries.size >= 2) {
+            val k = entries.indexOfLast { !it.at.isAfter(now) }
+            val frac = when {
+                k < 0 -> 0.0
+                k >= entries.lastIndex -> 1.0
+                else -> {
+                    val a = entries[k].at.toEpochMilli(); val b = entries[k + 1].at.toEpochMilli()
+                    (k + (now.toEpochMilli() - a).toDouble() / (b - a)) / entries.lastIndex
+                }
+            }
+            v.setProgressBar(R.id.progress, 1000, (frac.coerceIn(0.0, 1.0) * 1000).toInt(), false)
+        }
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.PRAYER, id))
         return v
     }
@@ -125,7 +143,7 @@ class AnalogClockWidget : BaseWidget() {
         // Android 12+: uygulamadaki gibi rakamlı kadran (daha eskide rakamsız vektör kadran); renkler seçilen görünümden
         WidgetLook.analog(c, v, R.id.analog, id)
         WidgetLook.apply(c, v, id, R.id.root)
-        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
+        v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
 }
@@ -133,8 +151,9 @@ class AnalogClockWidget : BaseWidget() {
 class DigitalClockWidget : BaseWidget() {
     override fun views(c: Context, id: Int): RemoteViews {
         val v = RemoteViews(c.packageName, R.layout.widget_digital)
-        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time))
-        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
+        WidgetLook.nextAlarm(c, v, R.id.alarm, id)
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time), muted = listOf(R.id.alarm))
+        v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
 }
@@ -145,8 +164,9 @@ class ClockDateWidget : BaseWidget() {
         val today = LocalDate.now()
         v.setTextViewText(R.id.date, today.dayOfMonth.toString() + " " + Fmt.month(today.monthValue) + " " + today.year)
         v.setTextViewText(R.id.weekday, L("calendar.weekdays.${today.dayOfWeek.value - 1}"))
-        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time, R.id.date), muted = listOf(R.id.weekday))
-        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.CLOCK, id))
+        WidgetLook.nextAlarm(c, v, R.id.alarm, id)
+        WidgetLook.apply(c, v, id, R.id.root, texts = listOf(R.id.time, R.id.date), muted = listOf(R.id.weekday, R.id.alarm))
+        v.setOnClickPendingIntent(R.id.root, WidgetLook.open(c, id))
         return v
     }
 }
@@ -256,7 +276,8 @@ object WidgetUpdater {
         NextPrayerWidget::class.java, TodayPrayersWidget::class.java, AnalogClockWidget::class.java,
         DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java,
         SecondsClockWidget::class.java, WorldClockWidget::class.java, CountdownWidget::class.java, HijriWidget::class.java,
-        DualClockWidget::class.java,
+        DualClockWidget::class.java, YearWidget::class.java, WordsWidget::class.java, SunWidget::class.java,
+        DailyWidget::class.java, PhotoWidget::class.java, EventsWidget::class.java, WeatherWidget::class.java,
     )
 
     fun placeKey(id: Int) = "widget.place.$id"

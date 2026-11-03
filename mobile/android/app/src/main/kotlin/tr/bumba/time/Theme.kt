@@ -15,6 +15,7 @@ import androidx.compose.foundation.background
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 
 /**
  * Sitedeki renk token'ları (src/styles.css): açık "kâğıt" ve koyu "gece" paleti. iOS'taki Theme.swift ile aynı:
@@ -117,7 +118,21 @@ data class AccentPalette(
             AccentPalette("forest", "business", 0x2F5233, 0x8FC79A, 0x8A6D00, 0xE6C35C, 0.6),
         )
 
-        fun find(id: String?): AccentPalette = ALL.firstOrNull { it.id == id } ?: ALL[0]
+        /** Duvar kâğıdı renkleri (Material You; Android 12+, 2. analiz #167): sistemin dinamik paletinden */
+        const val DYNAMIC_ID = "dynamic"
+        private var dynamic: AccentPalette? = null
+
+        fun initDynamic(c: android.content.Context) {
+            if (android.os.Build.VERSION.SDK_INT < 31) return
+            val l = androidx.compose.material3.dynamicLightColorScheme(c)
+            val d = androidx.compose.material3.dynamicDarkColorScheme(c)
+            fun v(x: Color) = (x.toArgb().toLong() and 0xFFFFFF)
+            dynamic = AccentPalette(DYNAMIC_ID, "general", v(l.primary), v(d.primary), v(l.tertiary), v(d.tertiary), 0.8)
+        }
+
+        val hasDynamic: Boolean get() = dynamic != null
+
+        fun find(id: String?): AccentPalette = if (id == DYNAMIC_ID) dynamic ?: ALL[0] else ALL.firstOrNull { it.id == id } ?: ALL[0]
     }
 
     fun colors(dark: Boolean): AppColors {

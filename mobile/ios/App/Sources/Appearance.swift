@@ -162,6 +162,7 @@ struct AppearanceView: View {
     @AppStorage(DualZone.key) private var dualCity = ""
     @AppStorage(WeatherScene.clockKey) private var weatherClock = false
     @AppStorage(WeatherScene.tabKey) private var weatherTab = true
+    @AppStorage(LiveActivities.clockKey) private var liveClock = false
 
     private var background: FullscreenBackground { FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain) }
 
@@ -176,6 +177,18 @@ struct AppearanceView: View {
                         Label(L("dial.title"), systemImage: "clock")
                     }
                 }
+                // Widget galerisi (2. analiz #166)
+                NavigationLink { WidgetGalleryView() } label: {
+                    Label(L("widgets.gallery"), systemImage: "square.grid.2x2")
+                }
+            }
+            // Dynamic Island'da canlı saat (2. analiz #19)
+            Section {
+                Toggle(L("live.clock"), isOn: $liveClock)
+                    .tint(Theme.accent)
+                    .onChange(of: liveClock) { _, _ in LiveActivities.sync() }
+            } footer: {
+                Text(L("live.clockNote"))
             }
             Section(L("look.font")) {
                 TimelineView(.periodic(from: .now, by: 1)) { context in

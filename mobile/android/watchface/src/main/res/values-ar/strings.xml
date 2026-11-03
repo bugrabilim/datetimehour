@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="watch_face_name">الوقت والتاريخ</string>
+    <string name="wf_accent">لون التمييز</string>
+    <string name="wf_color_amber">كهرماني</string>
+    <string name="wf_color_blue">أزرق</string>
+    <string name="wf_color_green">أخضر</string>
+    <string name="wf_color_rose">وردي</string>
+    <string name="wf_color_white">أبيض</string>
+    <string name="wf_style">النمط</string>
+    <string name="wf_style_analog">عقارب</string>
+    <string name="wf_style_digital">رقمي</string>
 </resources>

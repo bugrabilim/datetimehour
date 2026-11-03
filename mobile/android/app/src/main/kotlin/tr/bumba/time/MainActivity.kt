@@ -87,6 +87,7 @@ class MainActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         BadgeStore.appOpened()
+        AccentPalette.initDynamic(this) // duvar kâğıdı değişmiş olabilir (Material You)
         // Aralık antrenmanı sürüyorsa sesli duyuru hizmeti çalışsın (uygulama zorla kapatılmış olabilir)
         HiitService.sync(this)
         // Biten antrenman Health Connect'e (açıksa ve daha önce yazılmadıysa)

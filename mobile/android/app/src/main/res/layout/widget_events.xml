@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Takvim etkinlikleri (2. analiz #15): bugün ve yarının özel günleri ve telefon takvimi -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:orientation="vertical"
+    android:padding="12dp">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:textColor="@color/widget_accent"
+        android:textSize="13sp" android:textStyle="bold" android:maxLines="1" />
+    <TextView
+        android:id="@+id/e0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:textColor="@color/widget_text"
+        android:textSize="13sp" android:maxLines="1" android:layout_marginTop="3dp" />
+    <TextView
+        android:id="@+id/e1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:textColor="@color/widget_text"
+        android:textSize="13sp" android:maxLines="1" android:layout_marginTop="3dp" />
+    <TextView
+        android:id="@+id/e2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:textColor="@color/widget_text"
+        android:textSize="13sp" android:maxLines="1" android:layout_marginTop="3dp" />
+    <TextView
+        android:id="@+id/e3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:textColor="@color/widget_text"
+        android:textSize="13sp" android:maxLines="1" android:layout_marginTop="3dp" />
+    <TextView
+        android:id="@+id/e4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:textColor="@color/widget_text"
+        android:textSize="13sp" android:maxLines="1" android:layout_marginTop="3dp" />
+    <TextView
+        android:id="@+id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:textColor="@color/widget_muted"
+        android:textSize="12sp" android:layout_marginTop="6dp" android:maxLines="3" />
+</LinearLayout>

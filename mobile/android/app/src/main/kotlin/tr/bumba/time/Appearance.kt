@@ -40,6 +40,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.filled.Schedule
+import androidx.compose.material.icons.filled.Widgets
 import androidx.compose.material.icons.Icons
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -219,6 +220,13 @@ fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
                 Spacer(Modifier.width(14.dp))
                 Text(L("dial.title"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                 Text(DialFace.current.title, color = Theme.c.muted, fontSize = 14.sp)
+            }
+            // Widget galerisi (2. analiz #166)
+            Row(Modifier.fillMaxWidth().clickable { onRoute("widgets") }.padding(horizontal = 12.dp, vertical = 14.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Filled.Widgets, null, tint = Theme.c.accent)
+                Spacer(Modifier.width(14.dp))
+                Text(L("widgets.gallery"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                Text("›", color = Theme.c.muted, fontSize = 18.sp)
             }
         }
         AppCard {

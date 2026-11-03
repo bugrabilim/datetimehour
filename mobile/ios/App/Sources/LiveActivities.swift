@@ -9,13 +9,15 @@ import SaatCore
 @MainActor
 enum LiveActivities {
     static let prayerKey = "live.prayer"
+    /// Dynamic Island'da canlı saat (2. analiz #19; Apple etkinliği en çok 8 saat açık tutar)
+    static let clockKey = "live.clock"
 
     private typealias Want = (attributes: SaatActivityAttributes, state: SaatActivityAttributes.ContentState, stale: Date?)
 
     static func sync(now: Date = Date()) {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
         var wanted: [String: Want] = [:]
-        for w in timers(now) + [stopwatch(), pomodoro(now), prayer(now)].compactMap({ $0 }) { wanted[w.attributes.id] = w }
+        for w in timers(now) + [stopwatch(), pomodoro(now), prayer(now), clock(now)].compactMap({ $0 }) { wanted[w.attributes.id] = w }
         for a in Activity<SaatActivityAttributes>.activities where a.activityState == .active || a.activityState == .stale {
             if let w = wanted.removeValue(forKey: a.attributes.id), w.attributes.kind == a.attributes.kind {
                 if a.content.state != w.state || a.activityState == .stale {
@@ -41,6 +43,16 @@ enum LiveActivities {
                           title: name.isEmpty ? L("tools.timer") : name, subtitle: Fmt.hm(seconds: Int(t.total / 1000))),
                     end)
         }
+    }
+
+    /// Canlı saat: gece yarısından geçen süre sistemin sayacıyla akar (saat:dakika:saniye); gece yarısında eskir,
+    /// uygulama açılınca yeni gün için yenilenir
+    private static func clock(_ now: Date) -> Want? {
+        guard UserDefaults.standard.bool(forKey: clockKey) else { return nil }
+        let midnight = Calendar.current.startOfDay(for: now)
+        return (SaatActivityAttributes(kind: "clock", id: "clock"),
+                .init(date: midnight, start: midnight, title: L("tab.clock"), subtitle: Fmt.longDate(now)),
+                midnight.addingTimeInterval(86_400))
     }
 
     /// Çalışan kronometre (duraklatılınca kapanır)

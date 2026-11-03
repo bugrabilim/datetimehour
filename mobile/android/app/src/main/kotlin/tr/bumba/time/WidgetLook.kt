@@ -27,6 +27,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -72,7 +74,9 @@ enum class WidgetStyle(
     /** Şeffaf (2. analiz #76): zemin yok, ana ekran duvar kâğıdı görünür; yazılar beyaz */
     CLEAR("clear", 0x000000, 0xFFFFFF, 0xEDEDED, 0x000000, 0xFFFFFF, 0xFFD43B, 0xFF8787, bgAlpha = 0x00, faceAlpha = 0x00),
     /** Yarı saydam: duvar kâğıdı koyulaşmış görünür */
-    GLASS("glass", 0x000000, 0xFFFFFF, 0xD9D9D9, 0x000000, 0xFFFFFF, 0xF2A65A, 0xFF6B6B, bgAlpha = 0x66, faceAlpha = 0x40);
+    GLASS("glass", 0x000000, 0xFFFFFF, 0xD9D9D9, 0x000000, 0xFFFFFF, 0xF2A65A, 0xFF6B6B, bgAlpha = 0x66, faceAlpha = 0x40),
+    /** Duvar kâğıdı renkleri (Material You; Android 12+, 2. analiz #167): renkler sistemin dinamik renklerinden */
+    YOU("you", 0, 0, 0, 0, 0, 0, 0);
 
     val title: String get() = L("widget.style.$id")
 
@@ -87,11 +91,26 @@ object WidgetLook {
     fun frame(id: Int) = Prefs.store.getBoolean("widget.frame.$id", false)
 
     /** Seçilen görünümün rengi: "app" ise sistemin teması (kaynaklardaki widget_* renkleri) */
-    fun colors(c: Context, s: WidgetStyle): IntArray = if (s == WidgetStyle.APP) intArrayOf(
+    fun colors(c: Context, s: WidgetStyle): IntArray = if (s == WidgetStyle.YOU && Build.VERSION.SDK_INT >= 31) dynamic(c) else if (s == WidgetStyle.APP || s == WidgetStyle.YOU) intArrayOf(
         c.getColor(R.color.widget_bg), c.getColor(R.color.widget_text), c.getColor(R.color.widget_muted), c.getColor(R.color.widget_face),
         c.getColor(R.color.widget_border), c.getColor(R.color.widget_accent), c.getColor(R.color.widget_accent),
     ) else intArrayOf((s.bgAlpha shl 24) or s.bg, argb(s.text), argb(s.muted), (s.faceAlpha shl 24) or s.face,
         argb(s.border), argb(s.accent), argb(s.second))
+
+    /** Material You renkleri (sistem paleti; açık/koyu temaya göre) */
+    private fun dynamic(c: Context): IntArray {
+        val night = (c.resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
+        fun k(light: Int, dark: Int) = c.getColor(if (night) dark else light)
+        return intArrayOf(
+            k(android.R.color.system_neutral1_50, android.R.color.system_neutral1_900),
+            k(android.R.color.system_neutral1_900, android.R.color.system_neutral1_50),
+            k(android.R.color.system_neutral2_600, android.R.color.system_neutral2_300),
+            k(android.R.color.system_accent2_100, android.R.color.system_accent2_800),
+            k(android.R.color.system_neutral2_300, android.R.color.system_neutral2_600),
+            k(android.R.color.system_accent1_600, android.R.color.system_accent1_200),
+            k(android.R.color.system_accent3_600, android.R.color.system_accent3_200),
+        )
+    }
 
     /** Zemin (ve çerçeve) ile yazı renklerini uygular */
     fun apply(c: Context, v: RemoteViews, id: Int, root: Int, texts: List<Int> = emptyList(), muted: List<Int> = emptyList()) {
@@ -162,7 +181,43 @@ object WidgetLook {
     fun city(id: Int): City? = Prefs.store.getString("widget.city.$id", null)?.let { k -> City.all.firstOrNull { it.key == k } } ?: ClockLook.dual()
 
     fun forget(e: android.content.SharedPreferences.Editor, id: Int) {
-        e.remove("widget.style.$id").remove("widget.frame.$id").remove("widget.city.$id")
+        e.remove("widget.style.$id").remove("widget.frame.$id").remove("widget.city.$id").remove("widget.tap.$id").remove("widget.alarm.$id")
+    }
+
+    /** Dokununca açılacak ekran (2. analiz #168): clock, calendar, prayer, world, alarm, stopwatch */
+    val TAPS = listOf("clock", "calendar", "prayer", "world", "alarm", "stopwatch")
+    fun tap(id: Int): String = Prefs.store.getString("widget.tap.$id", "clock") ?: "clock"
+    fun tapTitle(t: String): String = when (t) {
+        "alarm" -> L("tools.hub.cards.alarm.name")
+        "stopwatch" -> L("tools.hub.cards.stopwatch.name")
+        else -> L("tab.$t")
+    }
+
+    fun open(c: Context, id: Int): android.app.PendingIntent {
+        val t = tap(id)
+        val i = Intent(c, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        when (t) {
+            "alarm", "stopwatch" -> i.putExtra("shortcut", t)
+            "calendar" -> i.putExtra("startTab", Tab.CALENDAR.ordinal)
+            "prayer" -> i.putExtra("startTab", Tab.PRAYER.ordinal)
+            "world" -> i.putExtra("startTab", Tab.WORLD.ordinal)
+            else -> i.putExtra("startTab", Tab.CLOCK.ordinal)
+        }
+        return android.app.PendingIntent.getActivity(c, 5000 + id, i,
+            android.app.PendingIntent.FLAG_UPDATE_CURRENT or android.app.PendingIntent.FLAG_IMMUTABLE)
+    }
+
+    /** Sıradaki alarm satırı (2. analiz #168): telefonun sıradaki alarmı (bu uygulamanınki dahil; varsayılan açık) */
+    fun showAlarm(id: Int) = Prefs.store.getBoolean("widget.alarm.$id", true)
+
+    fun nextAlarm(c: Context, v: RemoteViews, viewId: Int, id: Int) {
+        val at = c.getSystemService(android.app.AlarmManager::class.java)?.nextAlarmClock?.triggerTime
+        if (!showAlarm(id) || at == null || at - System.currentTimeMillis() > 24 * 3_600_000L) {
+            v.setViewVisibility(viewId, View.GONE)
+            return
+        }
+        v.setTextViewText(viewId, "⏰ " + Fmt.time(Instant.ofEpochMilli(at).atZone(ZoneId.systemDefault())))
+        v.setViewVisibility(viewId, View.VISIBLE)
     }
 }
 
@@ -212,8 +267,11 @@ class WidgetStyleActivity : ComponentActivity() {
                 var style by remember { mutableStateOf(WidgetStyle.of(id)) }
                 var frame by remember { mutableStateOf(WidgetLook.frame(id)) }
                 var city by remember { mutableStateOf(WidgetLook.city(id)?.key ?: "") }
+                var tap by remember { mutableStateOf(WidgetLook.tap(id)) }
+                var alarm by remember { mutableStateOf(WidgetLook.showAlarm(id)) }
                 fun save() {
                     Prefs.store.edit().putString("widget.style.$id", style.id).putBoolean("widget.frame.$id", frame)
+                        .putString("widget.tap.$id", tap).putBoolean("widget.alarm.$id", alarm)
                         .apply { if (dual && city.isNotEmpty()) putString("widget.city.$id", city) }.apply()
                 }
                 Column(Modifier.fillMaxSize().background(Theme.c.bg).statusBarsPadding()) {
@@ -222,7 +280,7 @@ class WidgetStyleActivity : ComponentActivity() {
                         TextButton(onClick = { save(); done() }) { Text(L("common.done"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold) }
                     }
                     LazyColumn(Modifier.fillMaxSize(), contentPadding = androidx.compose.foundation.layout.PaddingValues(bottom = 24.dp)) {
-                        items(WidgetStyle.entries) { s ->
+                        items(WidgetStyle.entries.filter { it != WidgetStyle.YOU || Build.VERSION.SDK_INT >= 31 }) { s ->
                             val k = WidgetLook.colors(this@WidgetStyleActivity, s)
                             Row(Modifier.fillMaxWidth().clickable { style = s }.padding(horizontal = 16.dp, vertical = 10.dp),
                                 verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp)) {
@@ -244,6 +302,17 @@ class WidgetStyleActivity : ComponentActivity() {
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Text(L("widget.frame"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
                                 Switch(frame, { frame = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                            }
+                            // Sıradaki alarm satırı ve dokununca açılacak ekran (2. analiz #168)
+                            Row(Modifier.fillMaxWidth().clickable { alarm = !alarm }.padding(horizontal = 16.dp, vertical = 10.dp),
+                                verticalAlignment = Alignment.CenterVertically) {
+                                Text(L("widget.nextAlarm"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
+                                Switch(alarm, { alarm = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                            }
+                            Text(L("widget.tap"), Modifier.padding(start = 16.dp, top = 8.dp), color = Theme.c.muted, fontSize = 14.sp)
+                            Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp).horizontalScroll(rememberScrollState()),
+                                horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                                for (t in WidgetLook.TAPS) RoundButton(WidgetLook.tapTitle(t), t == tap) { tap = t }
                             }
                             HorizontalDivider(color = Theme.c.border.copy(alpha = 0.4f))
                             if (dual) Text(L("widget.city"), Modifier.padding(16.dp), color = Theme.c.muted, fontSize = 14.sp)

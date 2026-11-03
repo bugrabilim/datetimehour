@@ -41,7 +41,9 @@ enum class NotifyFeature(val id: String, val tab: Tab) {
     /** Uyku alışkanlıkları (2. analiz #49): kafein, ekran, akşam rutini; yalnız uyku planı açıkken */
     HABITS("habits", Tab.TOOLS),
     /** Cuma hatırlatması (2. analiz #58): Cuma öğleden 45 dk önce */
-    FRIDAY("friday", Tab.PRAYER);
+    FRIDAY("friday", Tab.PRAYER),
+    /** Günün sözü (2. analiz #16): her sabah 08.00'de takvim yaprağındaki söz */
+    DAILY("daily", Tab.CALENDAR);
 
     val key: String get() = "notify.$id"
     /** Varsayılan: saat başı kapalı, diğerleri açık (30 Ekim 2026, sahibin kararı) */
@@ -140,6 +142,7 @@ object FeatureNotifier {
         if (FeaturePrefs.isOn(NotifyFeature.BEDTIME)) out += SleepPlan.reminders(now, days) // uyku planı kuruluysa
         if (FeaturePrefs.isOn(NotifyFeature.HABITS)) out += SleepPlan.habits(now, days)
         if (FeaturePrefs.isOn(NotifyFeature.FRIDAY)) out += friday(place, now, days)
+        if (FeaturePrefs.isOn(NotifyFeature.DAILY)) out += daily(context, now, minOf(days, 7))
         return out.filter { it.at.isAfter(now) }
     }
 
@@ -189,6 +192,17 @@ object FeatureNotifier {
     }
 
     /** Her gün Güneş doğarken ve batarken (vakit düzeltmeleri olmadan; Mevsimler'deki saatler) */
+    /** Günün sözü (2. analiz #16): her gün 08.00'de (telefonun saatiyle) takvim yaprağındaki söz */
+    private fun daily(context: Context, now: Instant, days: Int): List<Planned> {
+        val zone = java.time.ZoneId.systemDefault()
+        val today = now.atZone(zone).toLocalDate()
+        return (0 until days).mapNotNull { i ->
+            val day = today.plusDays(i.toLong())
+            val text = Sayings.today(context, day) ?: return@mapNotNull null
+            Planned("daily-$day", day.atTime(8, 0).atZone(zone).toInstant(), L("notify.n.daily"), text, NotifyFeature.DAILY.tab)
+        }
+    }
+
     /** Cuma hatırlatması (2. analiz #58): Cuma günü öğle vaktinden 45 dakika önce */
     private fun friday(place: AppPlace, now: Instant, days: Int): List<Planned> {
         val today = place.today(now)

@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.LocalCafe
 import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Eco
+import androidx.compose.material.icons.filled.FormatQuote
 import androidx.compose.material.icons.filled.NightsStay
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Update
@@ -102,6 +103,8 @@ fun NotificationsScreen(onRoute: (String) -> Unit) {
         }
         AppCard(padding = 4) {
             FeatureToggle(NotifyFeature.CALENDAR, Icons.Filled.CalendarMonth, ::changed)
+            RowDivider()
+            FeatureToggle(NotifyFeature.DAILY, Icons.Filled.FormatQuote, ::changed)
             RowDivider()
             FeatureToggle(NotifyFeature.BEDTIME, Icons.Filled.Bed, ::changed)
             FeatureToggle(NotifyFeature.HABITS, Icons.Filled.LocalCafe, ::changed)

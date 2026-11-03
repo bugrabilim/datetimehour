@@ -9,6 +9,7 @@ import WidgetKit
 struct SaatTarihWatchWidgets: WidgetBundle {
     var body: some Widget {
         WatchNextPrayerWidget()
+        WatchTodayPrayersWidget()
         WatchHijriWidget()
     }
 }
@@ -76,13 +77,31 @@ struct WatchNextPrayerView: View {
                 case .accessoryInline:
                     Text(verbatim: "\(name) \(time)")
                 case .accessoryCircular:
-                    VStack(spacing: 0) {
-                        Text(name).font(.system(size: 10, weight: .semibold)).lineLimit(1).minimumScaleFactor(0.6)
-                        Text(time).font(.system(size: 15, weight: .bold, design: .rounded)).minimumScaleFactor(0.7)
+                    // Sıradaki vakte kalan süre halkası (2. analiz #162): önceki vakitten kendiliğinden dolar
+                    if let prev = previous(s), prev < next.at {
+                        ProgressView(timerInterval: prev...next.at, countsDown: false) {
+                            Text(name)
+                        } currentValueLabel: {
+                            Text(time).font(.system(size: 13, weight: .bold, design: .rounded)).minimumScaleFactor(0.6)
+                        }
+                        .progressViewStyle(.circular)
+                        .widgetAccentable()
+                    } else {
+                        VStack(spacing: 0) {
+                            Text(name).font(.system(size: 10, weight: .semibold)).lineLimit(1).minimumScaleFactor(0.6)
+                            Text(time).font(.system(size: 15, weight: .bold, design: .rounded)).minimumScaleFactor(0.7)
+                        }
                     }
                 case .accessoryCorner:
+                    // Köşede kenar boyunca ilerleme yayı ve kavisli yazı (2. analiz #162)
                     Text(time).font(.system(size: 16, weight: .semibold, design: .rounded))
-                        .widgetLabel { Text(name) }
+                        .widgetLabel {
+                            if let prev = previous(s), prev < next.at {
+                                ProgressView(timerInterval: prev...next.at, countsDown: false) { Text(name) } currentValueLabel: { Text(name) }
+                            } else {
+                                Text(name)
+                            }
+                        }
                 default:
                     VStack(alignment: .leading, spacing: 1) {
                         Text(entry.name).font(.caption2).foregroundStyle(.secondary).lineLimit(1)
@@ -98,12 +117,62 @@ struct WatchNextPrayerView: View {
         .containerBackground(for: .widget) { Color.clear }
     }
 
+    /// Önceki vakit (dün akşamdan bugüne)
+    private func previous(_ s: PrayerSchedule) -> Date? {
+        (s.entries(on: entry.date.addingTimeInterval(-86_400)) + s.entries(on: entry.date)).last { $0.at <= entry.date }?.at
+    }
+
     /// Ramazan'da akşam "İftar", imsak "Sahur"
     private func label(_ e: PrayerSchedule.Entry, zone: TimeZone) -> String {
         let ramadan = Hijri.date(e.at, timeZone: zone)?.month == 9
         if ramadan && e.prayer == .maghrib { return L("live.iftar") }
         if ramadan && e.prayer == .fajr { return L("live.sahur") }
         return e.prayer.localizedName
+    }
+}
+
+// MARK: Bugünün vakitleri (büyük dikdörtgen; 2. analiz #173)
+
+struct WatchTodayPrayersWidget: Widget {
+    var body: some WidgetConfiguration {
+        AppIntentConfiguration(kind: "watch-today-prayers", intent: ProvinceIntent.self, provider: WatchPrayerProvider()) { entry in
+            WatchTodayPrayersView(entry: entry)
+        }
+        .configurationDisplayName(L("prayer.today"))
+        .description(L("widget.today.desc"))
+        .supportedFamilies([.accessoryRectangular])
+    }
+}
+
+/// Altı vakit üç satırda iki sütun; sıradaki vakit kalın
+struct WatchTodayPrayersView: View {
+    let entry: WatchPrayerEntry
+
+    var body: some View {
+        let s = entry.schedule
+        let today = s.entries(on: entry.date)
+        let next = s.next(after: entry.date)?.at
+        Grid(alignment: .leading, horizontalSpacing: 8, verticalSpacing: 0) {
+            ForEach(0..<3, id: \.self) { row in
+                GridRow {
+                    ForEach(0..<2, id: \.self) { col in
+                        let i = row * 2 + col
+                        if i < today.count {
+                            let e = today[i]
+                            HStack(spacing: 3) {
+                                Text(e.prayer.localizedName).lineLimit(1).minimumScaleFactor(0.6)
+                                Spacer(minLength: 2)
+                                Text(s.clock(e.at)).monospacedDigit()
+                            }
+                            .font(.system(size: 13, weight: e.at == next ? .bold : .regular))
+                            .widgetAccentable(e.at == next)
+                        }
+                    }
+                }
+            }
+        }
+        .environment(\.layoutDirection, .leftToRight)
+        .containerBackground(for: .widget) { Color.clear }
     }
 }
 

@@ -490,4 +490,30 @@ class MoreScreensTest {
         assertEquals(0L, ToolActions.swElapsed())
         Prefs.store.edit().remove("zikir.count").remove("zikir.target").commit()
     }
+
+    /** 2. analiz K-4: yıl ilerlemesi, yazıyla tarih, gün doğumu, günün içeriği (dokununca tür değişir), takvim, hava,
+     *  fotoğraf; Material You görünümü ve vakit widget'larındaki ilerleme çubuğu */
+    @Test fun widgetsK4() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveProvince("istanbul")
+        val c = RuntimeEnvironment.getApplication()
+        widget("widget-yil", 170, 170, YearWidget().views(c, 31))
+        widget("widget-yaziyla", 170, 170, WordsWidget().views(c, 32))
+        widget("widget-gunes", 170, 170, SunWidget().views(c, 33))
+        widget("widget-gunun-sozu", 260, 170, DailyWidget().views(c, 34))
+        Prefs.store.edit().putString(DailyWidget.key(35), "esma").putString(DailyWidget.key(36), "verse").commit()
+        widget("widget-esma", 260, 170, DailyWidget().views(c, 35))
+        widget("widget-ayet", 260, 170, DailyWidget().views(c, 36))
+        widget("widget-takvim", 260, 170, EventsWidget().views(c, 37))
+        widget("widget-hava", 170, 170, WeatherWidget().views(c, 38))
+        widget("widget-fotograf", 170, 170, PhotoWidget().views(c, 39))
+        Prefs.store.edit().putString("widget.style.40", "you").commit()
+        widget("widget-saat-tarih-you", 170, 170, ClockDateWidget().views(c, 40))
+        // Dokununca sıradaki tür
+        DailyWidget().onReceive(c, android.content.Intent(c, DailyWidget::class.java).setAction(DailyWidget.ACTION_NEXT)
+            .putExtra(android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_ID, 34))
+        assertEquals("verse", DailyWidget.kind(34))
+        // Yazıyla sayı (ICU)
+        assertEquals("yirmi iki", WordsWidget.spell(22).lowercase())
+    }
 }

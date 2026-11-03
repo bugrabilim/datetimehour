@@ -87,6 +87,13 @@ targets:
       - path: App/Resources/provinces.json
       - path: App/Resources/cities.json
       - path: App/Resources/hijri.json
+      # Günün içeriği widget'ı (2. analiz #16)
+      - path: App/Resources/sayings.json
+      - path: App/Resources/esma.json
+      - path: App/Resources/hadith.json
+      - path: App/Resources/quran-meta.json
+      - path: App/Resources/quran-ar.txt
+      - path: App/Resources/quran-en.txt
     dependencies:
       - package: SaatCore
       - sdk: WidgetKit.framework

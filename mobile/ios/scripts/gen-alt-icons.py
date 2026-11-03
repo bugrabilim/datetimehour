@@ -20,7 +20,7 @@ N = 1024
 
 def clock(bg, ring, hands, dot):
     W = N * SS
-    img = Image.new("RGB", (W, W), bg)
+    img = Image.new("RGBA" if len(bg) == 4 else "RGB", (W, W), bg)
     d = ImageDraw.Draw(img)
     c, r, stroke = W / 2, 349 * SS, 58 * SS
     d.ellipse([c - r, c - r, c + r, c + r], fill=ring)
@@ -86,4 +86,21 @@ for key, make in ICONS.items():
     preview(f"AppIconPreview-{key}", img)
 
 preview("AppIconPreview", Image.open(os.path.join(ROOT, "AppIcon.appiconset", "AppIcon.png")).convert("RGB"))
-print("tamam:", ", ".join(ICONS))
+
+# iOS 18 koyu ve renklendirilmiş simge (2. analiz #171): zemin saydam (sistem koyu zemini ya da renk tonunu koyar);
+# koyu simgede varsayılan renkler, renklendirilmişte gri tonlar (sistem kullanıcının rengiyle boyar)
+dark = clock((0, 0, 0, 0), (0xF2, 0xA6, 0x5A, 255), (0xEE, 0xF0, 0xF4, 255), (0xF2, 0xA6, 0x5A, 255))
+tinted = clock((0, 0, 0, 0), (0xC8, 0xC8, 0xC8, 255), (0xFF, 0xFF, 0xFF, 255), (0xC8, 0xC8, 0xC8, 255))
+base = os.path.join(ROOT, "AppIcon.appiconset")
+dark.save(os.path.join(base, "AppIcon-dark.png"))
+tinted.save(os.path.join(base, "AppIcon-tinted.png"))
+with open(os.path.join(base, "Contents.json"), "w") as f:
+    json.dump({"images": [
+        {"filename": "AppIcon.png", "idiom": "universal", "platform": "ios", "size": "1024x1024"},
+        {"appearances": [{"appearance": "luminosity", "value": "dark"}], "filename": "AppIcon-dark.png",
+         "idiom": "universal", "platform": "ios", "size": "1024x1024"},
+        {"appearances": [{"appearance": "luminosity", "value": "tinted"}], "filename": "AppIcon-tinted.png",
+         "idiom": "universal", "platform": "ios", "size": "1024x1024"},
+    ], "info": INFO}, f, indent=2)
+    f.write("\n")
+print("tamam:", ", ".join(ICONS), "+ koyu ve renklendirilmiş simge")

@@ -18,6 +18,7 @@ import androidx.wear.watchface.complications.data.ComplicationType
 import androidx.wear.watchface.complications.data.CountDownTimeReference
 import androidx.wear.watchface.complications.data.LongTextComplicationData
 import androidx.wear.watchface.complications.data.PlainComplicationText
+import androidx.wear.watchface.complications.data.RangedValueComplicationData
 import androidx.wear.watchface.complications.data.ShortTextComplicationData
 import androidx.wear.watchface.complications.data.TimeDifferenceComplicationText
 import androidx.wear.watchface.complications.data.TimeDifferenceStyle
@@ -103,11 +104,21 @@ class NextPrayerComplicationService : SuspendingComplicationDataSourceService() 
 
     override suspend fun onComplicationRequest(request: ComplicationRequest): ComplicationData? {
         val place = Wear.place()
-        val next = place.next(Instant.now()) ?: return null
-        return data(request.complicationType, Wear.label(next, place.zone), place.hm(next.at), next.at)
+        val now = Instant.now()
+        val next = place.next(now) ?: return null
+        // Önceki vakitten sıradakine geçen süre (2. analiz #162): halka; komplikasyon 5 dakikada bir yenilenir
+        val day = java.time.LocalDate.now(place.zone)
+        val prev = (place.entries(day.minusDays(1)) + place.entries(day)).lastOrNull { !it.at.isAfter(now) }?.at
+        val frac = if (prev != null && next.at.isAfter(prev)) ((now.toEpochMilli() - prev.toEpochMilli()).toFloat() / (next.at.toEpochMilli() - prev.toEpochMilli())).coerceIn(0f, 1f) else 0f
+        return data(request.complicationType, Wear.label(next, place.zone), place.hm(next.at), next.at, frac)
     }
 
-    private fun data(type: ComplicationType, name: String, time: String, at: Instant?): ComplicationData? = when (type) {
+    private fun data(type: ComplicationType, name: String, time: String, at: Instant?, frac: Float = 0.6f): ComplicationData? = when (type) {
+        ComplicationType.RANGED_VALUE -> RangedValueComplicationData.Builder(frac, 0f, 1f, plain("$name $time"))
+            .setText(plain(time))
+            .setTitle(plain(name))
+            .setTapAction(ComplicationDataSourceTap(this))
+            .build()
         ComplicationType.SHORT_TEXT -> ShortTextComplicationData.Builder(plain(time), plain("$name $time"))
             .setTitle(plain(name))
             .setTapAction(ComplicationDataSourceTap(this))

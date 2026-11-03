@@ -217,6 +217,19 @@ fun ColorScreen() {
             }
             Text(L("atmo.note"), color = Theme.c.muted, fontSize = 12.sp)
         }
+        // Duvar kâğıdı renkleri (Material You; Android 12+, 2. analiz #167)
+        if (AccentPalette.hasDynamic) AppCard {
+            val on = Prefs.accent == AccentPalette.DYNAMIC_ID
+            Row(Modifier.fillMaxWidth().clickable { Prefs.saveAccent(AccentPalette.DYNAMIC_ID) }.padding(vertical = 6.dp),
+                verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                Swatch(AccentPalette.find(AccentPalette.DYNAMIC_ID), L("theme.dynamic"))
+                Column(Modifier.weight(1f)) {
+                    Text(L("theme.dynamic"), color = if (on) Theme.c.accent else Theme.c.text, fontSize = 16.sp,
+                        fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal)
+                    Text(L("theme.dynamicNote"), color = Theme.c.muted, fontSize = 12.sp)
+                }
+            }
+        }
         for (g in AccentPalette.GROUPS) {
             AppCard {
                 SectionTitle(L("settings.color.$g"))

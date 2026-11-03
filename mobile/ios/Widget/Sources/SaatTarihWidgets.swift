@@ -18,6 +18,11 @@ struct SaatTarihWidgets: WidgetBundle {
         HijriWidget()
         ZikirWidget()
         StopwatchWidget()
+        // 2. analiz K-4: yıl ilerlemesi, yazıyla tarih, gün doğumu/batımı, günün içeriği
+        YearProgressWidget()
+        WordsDateWidget()
+        SunWidget()
+        DailyContentWidget()
         SaatLiveActivity()
         // Denetim Merkezi düğmeleri (iOS 18+)
         if #available(iOSApplicationExtension 18.0, *) {

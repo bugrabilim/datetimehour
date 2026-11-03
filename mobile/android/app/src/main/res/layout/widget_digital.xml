@@ -22,4 +22,15 @@
         android:maxLines="1"
         android:textColor="@color/widget_text"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layoutDirection="ltr"
+        android:maxLines="1"
+        android:textColor="@color/widget_muted"
+        android:textSize="12sp"
+        android:visibility="gone" />
 </FrameLayout>

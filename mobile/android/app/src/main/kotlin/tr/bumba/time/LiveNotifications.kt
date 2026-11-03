@@ -105,6 +105,9 @@ object LiveNotifications {
         .setSilent(true)
         .setCategory(if (it.key == "prayer") NotificationCompat.CATEGORY_REMINDER else NotificationCompat.CATEGORY_STOPWATCH)
         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+        // Android 16 canlı güncelleme (2. analiz #170): durum çubuğunda çip olarak öne çıkar; vakitte çipte vaktin adı
+        .setRequestPromotedOngoing(true)
+        .apply { if (it.key == "prayer") setShortCriticalText(it.title.take(12)) }
         .setContentIntent(PendingIntent.getActivity(c, nid(it.key),
             Intent(c, MainActivity::class.java).putExtra("startTab", it.tab.ordinal).apply { it.tool?.let { t -> putExtra("tool", t) } }
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP),

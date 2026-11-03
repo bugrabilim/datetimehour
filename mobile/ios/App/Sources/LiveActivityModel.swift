@@ -14,18 +14,20 @@ struct SaatActivityAttributes: ActivityAttributes {
         var subtitle: String
     }
 
-    /// "timer", "pomodoro", "stopwatch", "prayer"
+    /// "timer", "pomodoro", "stopwatch", "prayer", "clock"
     var kind: String
     /// Etkinliğin kimliği (zamanlayıcıda zamanlayıcının kimliği, diğerlerinde tür adı)
     var id: String
 
-    var countsUp: Bool { kind == "stopwatch" }
+    /// Kronometre ve canlı saat ileri sayar (canlı saatte gece yarısından geçen süre = saat; 2. analiz #19)
+    var countsUp: Bool { kind == "stopwatch" || kind == "clock" }
 
     var symbol: String {
         switch kind {
         case "pomodoro": return "brain.head.profile"
         case "stopwatch": return "stopwatch"
         case "prayer": return "moon.stars"
+        case "clock": return "clock"
         default: return "timer"
         }
     }

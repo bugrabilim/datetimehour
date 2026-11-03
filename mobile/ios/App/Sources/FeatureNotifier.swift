@@ -9,7 +9,7 @@ import SaatCore
 /// kurulur; yalnız hava özeti için hava servisine (WeatherKit) sorulur. iOS en çok 64 bekleyen bildirim tuttuğu için
 /// liste PrayerNotifier'da vakitlerle birlikte zamana göre sıralanıp kesilir; arka plan yenilemesi listeyi ileri taşır.
 enum NotifyFeature: String, CaseIterable, Identifiable {
-    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday
+    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday, daily
 
     var id: String { rawValue }
     var key: String { "notify.\(rawValue)" }
@@ -28,6 +28,7 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         case .bedtime: "bed.double"
         case .habits: "cup.and.saucer"
         case .friday: "building.columns"
+        case .daily: "quote.bubble"
         }
     }
 
@@ -79,7 +80,19 @@ enum FeatureNotifier {
         out += AlarmItem.preAlarms(now: now) // sakin ön alarm (2. analiz #42)
         if NotifyFeature.habits.isOn { out += SleepPlan.habits(now: now, days: min(days, 7)) } // uyku alışkanlıkları (#49)
         if NotifyFeature.friday.isOn { out += friday(place: place, now: now, days: days) } // Cuma hatırlatması (#58)
+        if NotifyFeature.daily.isOn { out += daily(now: now, days: min(days, 7)) } // günün sözü (#16)
         return out.filter { $0.fireAt > now }
+    }
+
+    /// Günün sözü (2. analiz #16): her gün 08.00'de (telefonun saatiyle) takvim yaprağındaki söz
+    private static func daily(now: Date, days: Int) -> [PlannedNotification] {
+        (0..<days).compactMap { i in
+            let day = CalendarDay(now).adding(days: i)
+            guard let text = Sayings.today(day) else { return nil }
+            let at = day.noon(in: .current).addingTimeInterval(-4 * 3600)
+            return PlannedNotification(id: "\(featurePrefix)daily-\(day.iso)", fireAt: at, title: L("notify.n.daily"), body: text,
+                                       sound: nil, passive: true)
+        }
     }
 
     /// Cuma hatırlatması (2. analiz #58): Cuma günü öğle vaktinden 45 dakika önce

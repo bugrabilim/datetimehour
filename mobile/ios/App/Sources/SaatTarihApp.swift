@@ -127,6 +127,10 @@ final class Router {
         case "stopwatch": tab = .tools; toolsPath = [.stopwatch]
         case "alarm": tab = .tools; toolsPath = [.alarm]
         case "prayer": tab = .prayer
+        // Widget'a dokununca açılacak ekran (2. analiz #168)
+        case "clock": tab = .clock
+        case "calendar": tab = .calendar
+        case "world": tab = .world
         default: break
         }
     }

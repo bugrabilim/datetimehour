@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="watch_face_name">Saat Tarix</string>
+    <string name="wf_accent">Vurğu rəngi</string>
+    <string name="wf_color_amber">Narıncı</string>
+    <string name="wf_color_blue">Mavi</string>
+    <string name="wf_color_green">Yaşıl</string>
+    <string name="wf_color_rose">Qızılgül</string>
+    <string name="wf_color_white">Ağ</string>
+    <string name="wf_style">Görünüş</string>
+    <string name="wf_style_analog">Analoq</string>
+    <string name="wf_style_digital">Rəqəmsal</string>
 </resources>

@@ -42,13 +42,12 @@ private let hourMinute: DateFormatter = {
 struct AnalogClockWidget: Widget {
     var body: some WidgetConfiguration {
         AppIntentConfiguration(kind: "analog-clock", intent: ClockStyleIntent.self, provider: StyledClockProvider()) { entry in
-            AnalogClock(date: entry.date, colors: entry.style.clockColors)
-                .padding(4)
-                .styledWidget(entry)
+            AnalogWidgetView(entry: entry)
         }
         .configurationDisplayName(L("widget.analog.name"))
         .description(L("widget.analog.desc"))
-        .supportedFamilies([.systemSmall, .systemLarge])
+        // Kilit ekranında dairesel analog saat (2. analiz #14)
+        .supportedFamilies([.systemSmall, .systemLarge, .accessoryCircular])
     }
 }
 
@@ -94,5 +93,27 @@ struct ClockDateWidget: Widget {
         .configurationDisplayName(L("widget.clockDate.name"))
         .description(L("widget.clockDate.desc"))
         .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+struct AnalogWidgetView: View {
+    @Environment(\.widgetFamily) private var family
+    let entry: StyledEntry
+
+    var body: some View {
+        if family == .accessoryCircular {
+            ZStack {
+                AccessoryWidgetBackground()
+                AnalogClock(date: entry.date, colors: entry.style.clockColors)
+                    .padding(2)
+                    .widgetAccentable()
+            }
+            .widgetURL(entry.tap.url)
+            .containerBackground(for: .widget) { Color.clear }
+        } else {
+            AnalogClock(date: entry.date, colors: entry.style.clockColors)
+                .padding(4)
+                .styledWidget(entry)
+        }
     }
 }

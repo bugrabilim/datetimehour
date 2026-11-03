@@ -61,6 +61,19 @@ enum WidgetFont: String, AppEnum {
     }
 }
 
+/// Widget'a dokununca açılacak ekran (2. analiz #168); uygulama saattarih:// bağlantısını açar (Router.handle)
+enum WidgetTap: String, AppEnum {
+    case clock, calendar, prayer, world, alarm, stopwatch
+
+    static let typeDisplayRepresentation: TypeDisplayRepresentation = "widget.tap"
+    static let caseDisplayRepresentations: [WidgetTap: DisplayRepresentation] = [
+        .clock: "tab.clock", .calendar: "tab.calendar", .prayer: "tab.prayer", .world: "tab.world",
+        .alarm: "tools.hub.cards.alarm.name", .stopwatch: "tools.hub.cards.stopwatch.name",
+    ]
+
+    var url: URL { URL(string: "saattarih://\(rawValue)")! }
+}
+
 struct ClockStyleIntent: WidgetConfigurationIntent {
     static var title: LocalizedStringResource = "widget.style"
     static var description = IntentDescription("widget.styleNote")
@@ -68,6 +81,7 @@ struct ClockStyleIntent: WidgetConfigurationIntent {
     @Parameter(title: "widget.style", default: .app) var style: WidgetStyle
     @Parameter(title: "look.font", default: .rounded) var font: WidgetFont
     @Parameter(title: "widget.frame", default: false) var frame: Bool
+    @Parameter(title: "widget.tap", default: .clock) var tap: WidgetTap
 }
 
 struct StyledEntry: TimelineEntry {
@@ -76,19 +90,20 @@ struct StyledEntry: TimelineEntry {
     var font: WidgetFont = .rounded
     var frame = false
     var city: CityEntity? = nil
+    var tap: WidgetTap = .clock
 }
 
 /// Her dakikaya bir kayıt (2 saat); bitince yeniden kurulur
 struct StyledClockProvider: AppIntentTimelineProvider {
     func placeholder(in context: Context) -> StyledEntry { StyledEntry(date: Date()) }
     func snapshot(for c: ClockStyleIntent, in context: Context) async -> StyledEntry {
-        StyledEntry(date: Date(), style: c.style, font: c.font, frame: c.frame)
+        StyledEntry(date: Date(), style: c.style, font: c.font, frame: c.frame, tap: c.tap)
     }
     func timeline(for c: ClockStyleIntent, in context: Context) async -> Timeline<StyledEntry> {
         let now = Date()
         let start = Calendar.current.dateInterval(of: .minute, for: now)?.start ?? now
         return Timeline(entries: (0..<120).map {
-            StyledEntry(date: start.addingTimeInterval(Double($0) * 60), style: c.style, font: c.font, frame: c.frame)
+            StyledEntry(date: start.addingTimeInterval(Double($0) * 60), style: c.style, font: c.font, frame: c.frame, tap: c.tap)
         }, policy: .atEnd)
     }
 }
@@ -98,6 +113,7 @@ extension View {
     func styledWidget(_ e: StyledEntry) -> some View {
         let p = e.style.palette
         return foregroundStyle(p?.text ?? Theme.text)
+            .widgetURL(e.tap.url)
             .containerBackground(for: .widget) {
                 ZStack {
                     p?.bg ?? Theme.bg
