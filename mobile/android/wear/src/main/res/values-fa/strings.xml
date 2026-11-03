@@ -44,6 +44,8 @@
     <string name="prayer_bayram">نماز عید</string>
     <string name="prayer_bayramTomorrow">نماز عید فردا: %1$s</string>
     <string name="prayer_bayramNote">همان قاعده اوقات منتشرشده دیانت (38 دقیقه پس از طلوع)؛ ساعت دقیق اعلام مفتی استان است.</string>
+    <string name="prayer_ezani">ساعت اذانی (غروبی): %1$s</string>
+    <string name="prayer_ezaniNote">در ساعت اذانی (غروبی) وقت مغرب ساعت 12:00 به شمار می‌آید و ساعت‌ها از آن شمرده می‌شوند.</string>
     <string name="prayer_method_heading">روش محاسبه</string>
     <string name="prayer_method_label">روش</string>
     <string name="prayer_method_asrLabel">عصر</string>

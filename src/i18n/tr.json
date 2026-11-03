@@ -1882,7 +1882,9 @@
         "france": "Fransa (UOIF)",
         "russia": "Rusya Müslümanları Dinî İdaresi"
       }
-    }
+    },
+    "ezani": "Ezani saat: {t}",
+    "ezaniNote": "Ezani (alaturka) saatte akşam vakti 12.00 kabul edilir; saat oradan sayılır."
   },
   "nature": {
     "title": "Mevsimler: Mevsim Çarkı, Ekinoks ve Gündönümü | Saat Tarih",
@@ -2067,6 +2069,45 @@
       "cemre3": "Üçüncü cemre (toprağa)",
       "berdulacuz": "Berdü'l-acûz (kocakarı soğukları)",
       "eyyamibahur": "Eyyâm-ı bahûr (yazın en sıcak günleri)"
+    },
+    "tw": {
+      "heading": "Alacakaranlık ve ışık",
+      "civil": "Sivil alacakaranlık",
+      "nautical": "Denizcilik alacakaranlığı",
+      "astro": "Astronomik alacakaranlık",
+      "firstLight": "İlk ışık",
+      "lastLight": "Son ışık",
+      "ring": "24 saatlik ışık halkası",
+      "day": "Gündüz",
+      "night": "Gece",
+      "now": "Şimdi",
+      "note": "Sabah ve akşam aralıkları: Güneş ufkun 0°–6° (sivil), 6°–12° (denizcilik) ve 12°–18° (astronomik) altındayken. İlk ışık astronomik şafağın başladığı, son ışık astronomik alacakaranlığın bittiği andır. Yaklaşık hesaptır."
+    },
+    "ym": {
+      "heading": "{y} yılının dolunayları",
+      "count": "{y} yılında {n} dolunay var.",
+      "blue": "Mavi Ay: {date} (aynı takvim ayındaki ikinci dolunay).",
+      "noBlue": "Bu yıl Mavi Ay yok.",
+      "colDate": "Tarih ve saat",
+      "colName": "Geleneksel adı",
+      "namesNote": "Adlar Kuzey Amerika geleneğinden (Old Farmer's Almanac); karşılıklar çeviridir, yerleşik bir Türk geleneği değildir. Hasat Ayı, sonbahar ekinoksuna en yakın dolunaydır.",
+      "harvest": "Hasat Ayı",
+      "blueName": "Mavi Ay",
+      "wheel": "Yılın dolunay çarkı",
+      "names": [
+        "Kurt Ayı",
+        "Kar Ayı",
+        "Solucan Ayı",
+        "Pembe Ay",
+        "Çiçek Ayı",
+        "Çilek Ayı",
+        "Geyik Ayı",
+        "Mersin Balığı Ayı",
+        "Mısır Ayı",
+        "Avcı Ayı",
+        "Kunduz Ayı",
+        "Soğuk Ay"
+      ]
     }
   },
   "weather": {
@@ -2587,7 +2628,9 @@
         "q": "Hicri tarih ülkeden ülkeye neden değişir?",
         "a": "Bazı ülkeler ay başını hilalin görülmesiyle, bazıları hesapla belirler. Türkiye Diyanet'in hesaba dayalı takvimini, Suudi Arabistan Ümmü'l-Kurâ takvimini kullanır; aralarında bir gün fark olabilir."
       }
-    ]
+    ],
+    "rumi": "Rumi: {date}",
+    "rumiNote": "Rumi tarih Jülyen takvimiyle (miladiden 13 gün geri) ve 1 Mart yılbaşıyla yazılır; Türkiye Takvimi geleneği."
   },
   "timeCalc": {
     "title": "Saat Hesaplama: Toplama, Çıkarma, İki Saat Arası Süre | Saat Tarih",

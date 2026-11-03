@@ -1882,7 +1882,9 @@
         "france": "Prancis (UOIF)",
         "russia": "Dewan Spiritual Muslim Rusia"
       }
-    }
+    },
+    "ezani": "Waktu ezani (alaturka): {t}",
+    "ezaniNote": "Pada waktu ezani (alaturka), waktu magrib dianggap pukul 12.00 dan jam dihitung dari sana."
   },
   "nature": {
     "title": "Roda Musim: Ekuinoks dan Titik Balik Matahari | Saat Tarih",
@@ -2067,6 +2069,45 @@
       "cemre3": "Cemre ketiga (ke tanah)",
       "berdulacuz": "Berd al-ajuz (“dingin nenek tua”)",
       "eyyamibahur": "Eyyam-ı bahur (hari terpanas musim panas)"
+    },
+    "tw": {
+      "heading": "Senja dan cahaya",
+      "civil": "Senja sipil",
+      "nautical": "Senja nautika",
+      "astro": "Senja astronomis",
+      "firstLight": "Cahaya pertama",
+      "lastLight": "Cahaya terakhir",
+      "ring": "Cincin cahaya 24 jam",
+      "day": "Siang",
+      "night": "Malam",
+      "now": "Sekarang",
+      "note": "Rentang pagi dan sore: Matahari 0°–6° (sipil), 6°–12° (nautika), dan 12°–18° (astronomis) di bawah cakrawala. Cahaya pertama adalah awal fajar astronomis, cahaya terakhir akhir senja astronomis. Perkiraan."
+    },
+    "ym": {
+      "heading": "Bulan purnama tahun {y}",
+      "count": "Ada {n} bulan purnama pada {y}.",
+      "blue": "Bulan Biru: {date} (purnama kedua dalam satu bulan kalender).",
+      "noBlue": "Tidak ada Bulan Biru tahun ini.",
+      "colDate": "Tanggal dan jam",
+      "colName": "Nama tradisional",
+      "namesNote": "Nama mengikuti tradisi Amerika Utara (Old Farmer's Almanac); padanannya adalah terjemahan. Bulan Panen adalah purnama yang paling dekat dengan ekuinoks September.",
+      "harvest": "Bulan Panen",
+      "blueName": "Bulan Biru",
+      "wheel": "Roda purnama tahun ini",
+      "names": [
+        "Bulan Serigala",
+        "Bulan Salju",
+        "Bulan Cacing",
+        "Bulan Merah Muda",
+        "Bulan Bunga",
+        "Bulan Stroberi",
+        "Bulan Rusa",
+        "Bulan Sturgeon",
+        "Bulan Jagung",
+        "Bulan Pemburu",
+        "Bulan Berang-berang",
+        "Bulan Dingin"
+      ]
     }
   },
   "weather": {
@@ -2587,7 +2628,9 @@
         "q": "Mengapa tanggal Hijriah berbeda antarnegara?",
         "a": "Sebagian negara memulai bulan dengan rukyat hilal, sebagian lagi dengan hisab. Turki memakai kalender hisab Diyanet dan Arab Saudi kalender Umm al-Qura; keduanya dapat berbeda satu hari."
       }
-    ]
+    ],
+    "rumi": "Rumi (Utsmaniyah): {date}",
+    "rumiNote": "Tanggal Rumi memakai kalender Julian (13 hari lebih awal) dengan tahun baru 1 Maret, seperti almanak Turki tradisional."
   },
   "timeCalc": {
     "title": "Kalkulator Jam: Tambah, Kurang, dan Selisih Dua Waktu | Saat Tarih",

@@ -44,6 +44,8 @@
     <string name="prayer_bayram">صلاة العيد</string>
     <string name="prayer_bayramTomorrow">صلاة العيد غدًا: %1$s</string>
     <string name="prayer_bayramNote">القاعدة نفسها في مواقيت رئاسة الشؤون الدينية (بعد الشروق بـ 38 دقيقة)؛ والمعتمد إعلان مفتي الولاية.</string>
+    <string name="prayer_ezani">التوقيت الغروبي (الأذاني): %1$s</string>
+    <string name="prayer_ezaniNote">في التوقيت الغروبي يُعدّ وقت المغرب الساعة 12:00 وتُحسب الساعات منه.</string>
     <string name="prayer_method_heading">طريقة الحساب</string>
     <string name="prayer_method_label">الطريقة</string>
     <string name="prayer_method_asrLabel">العصر</string>

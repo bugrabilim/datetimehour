@@ -1923,7 +1923,9 @@
         "france": "France (UOIF)",
         "russia": "Direction spirituelle des musulmans de Russie"
       }
-    }
+    },
+    "ezani": "Heure ezani (alla turca) : {t}",
+    "ezaniNote": "Dans l'heure ezani (alla turca), la prière du soir (coucher du soleil) vaut 12 h 00 ; on compte à partir de là."
   },
   "nature": {
     "title": "Saisons : roue des saisons, équinoxes et solstices | Saat Tarih",
@@ -2108,6 +2110,45 @@
       "cemre3": "Troisième cemre (dans la terre)",
       "berdulacuz": "Berd el-ajouz (« froid de la vieille »)",
       "eyyamibahur": "Eyyam-ı bahur (les jours les plus chauds de l’été)"
+    },
+    "tw": {
+      "heading": "Crépuscule et lumière du jour",
+      "civil": "Crépuscule civil",
+      "nautical": "Crépuscule nautique",
+      "astro": "Crépuscule astronomique",
+      "firstLight": "Première lueur",
+      "lastLight": "Dernière lueur",
+      "ring": "Anneau de lumière sur 24 heures",
+      "day": "Jour",
+      "night": "Nuit",
+      "now": "Maintenant",
+      "note": "Le matin et le soir : le Soleil est de 0° à 6° (civil), de 6° à 12° (nautique) et de 12° à 18° (astronomique) sous l'horizon. La première lueur marque le début de l'aube astronomique, la dernière la fin du crépuscule astronomique. Valeurs approchées."
+    },
+    "ym": {
+      "heading": "Pleines lunes de {y}",
+      "count": "{y} compte {n} pleines lunes.",
+      "blue": "Lune bleue : {date} (deuxième pleine lune d'un même mois).",
+      "noBlue": "Pas de lune bleue cette année.",
+      "colDate": "Date et heure",
+      "colName": "Nom traditionnel",
+      "namesNote": "Les noms suivent la tradition nord-américaine (Old Farmer's Almanac) ; les formes françaises sont des traductions. La Lune des moissons est la pleine lune la plus proche de l'équinoxe de septembre.",
+      "harvest": "Lune des moissons",
+      "blueName": "Lune bleue",
+      "wheel": "Roue des pleines lunes de l'année",
+      "names": [
+        "Lune du loup",
+        "Lune de neige",
+        "Lune des vers",
+        "Lune rose",
+        "Lune des fleurs",
+        "Lune des fraises",
+        "Lune du cerf",
+        "Lune de l'esturgeon",
+        "Lune du maïs",
+        "Lune du chasseur",
+        "Lune du castor",
+        "Lune froide"
+      ]
     }
   },
   "weather": {
@@ -2628,7 +2669,9 @@
         "q": "Pourquoi les dates hégiriennes diffèrent-elles d’un pays à l’autre ?",
         "a": "Certains pays commencent le mois à l’observation du croissant, d’autres par le calcul. La Turquie utilise le calendrier calculé de la Diyanet et l’Arabie saoudite le calendrier Umm al-Qura ; ils peuvent différer d’un jour."
       }
-    ]
+    ],
+    "rumi": "Rumi (ottoman) : {date}",
+    "rumiNote": "La date rumi suit le calendrier julien (13 jours de retard) avec une année commençant le 1er mars, comme dans les almanachs turcs traditionnels."
   },
   "timeCalc": {
     "title": "Calcul d’heures : addition, soustraction, durée | Saat Tarih",

@@ -63,6 +63,10 @@ const SITE_PATHS = [
   // 2. analiz #60: halk takvimi
   "nature.folkHeading", "nature.folkNote", "nature.folkNow", "nature.folkNames.*",
   "nature.goldenAm", "nature.goldenPm", "nature.blueAm", "nature.bluePm", "nature.lightNote",
+  // 2. analiz #151, #148, #161 (3 Kasım 2026): alacakaranlık, yılın dolunayları ve adları
+  "nature.tw.*", "nature.ym.*", "nature.ym.names.*",
+  // 2. analiz #121, #120: ezani saat, Rumi tarih
+  "prayer.ezani", "prayer.ezaniNote", "hijriConv.rumi", "hijriConv.rumiNote",
   "zakat.fitreHeading", "zakat.fitreText", "zakat.fitrePeople", "zakat.fitreTotal", "zakat.fitreNote",
   "hijriConv.h1", "hijriConv.toHijri", "hijriConv.toGreg", "hijriConv.gregLabel", "hijriConv.yearLabel", "hijriConv.monthLabel",
   "hijriConv.dayLabel", "hijriConv.dayMax",

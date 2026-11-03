@@ -44,6 +44,8 @@
     <string name="prayer_bayram">이드 예배</string>
     <string name="prayer_bayramTomorrow">내일 이드 예배: %1$s</string>
     <string name="prayer_bayramNote">디야넷이 발표하는 시각과 같은 규칙(일출 38분 뒤)이며, 정확한 시각은 주 무프티청의 공지를 따릅니다.</string>
+    <string name="prayer_ezani">에자니(알라투르카) 시각: %1$s</string>
+    <string name="prayer_ezaniNote">에자니(알라투르카) 시각에서는 일몰 예배 시각을 12:00으로 보고 거기서부터 셉니다.</string>
     <string name="prayer_method_heading">계산 방법</string>
     <string name="prayer_method_label">방법</string>
     <string name="prayer_method_asrLabel">아스르</string>

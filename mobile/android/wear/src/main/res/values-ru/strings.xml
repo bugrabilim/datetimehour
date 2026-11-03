@@ -44,6 +44,8 @@
     <string name="prayer_bayram">Праздничный намаз</string>
     <string name="prayer_bayramTomorrow">Праздничный намаз завтра: %1$s</string>
     <string name="prayer_bayramNote">То же правило, что у опубликованных Диянетом времён (через 38 мин после восхода); точное время объявляет муфтият провинции.</string>
+    <string name="prayer_ezani">Эзани (алатурка): %1$s</string>
+    <string name="prayer_ezaniNote">В эзани (алатурка) время вечерней молитвы (закат) считается 12:00, отсчёт идёт от него.</string>
     <string name="prayer_method_heading">Метод расчёта</string>
     <string name="prayer_method_label">Метод</string>
     <string name="prayer_method_asrLabel">Аср</string>

@@ -44,6 +44,8 @@
     <string name="prayer_bayram">ละหมาดอีด</string>
     <string name="prayer_bayramTomorrow">ละหมาดอีดพรุ่งนี้: %1$s</string>
     <string name="prayer_bayramNote">ใช้กฎเดียวกับเวลาที่ดียาเนตประกาศ (หลังดวงอาทิตย์ขึ้น 38 นาที) เวลาที่แน่นอนให้ยึดประกาศของมุฟตีประจำจังหวัด</string>
+    <string name="prayer_ezani">เวลาเอซานี (อาลาตูร์กา): %1$s</string>
+    <string name="prayer_ezaniNote">ในเวลาเอซานี (อาลาตูร์กา) เวลาละหมาดตอนพระอาทิตย์ตกถือเป็น 12:00 แล้วนับต่อจากนั้น</string>
     <string name="prayer_method_heading">วิธีคำนวณ</string>
     <string name="prayer_method_label">วิธี</string>
     <string name="prayer_method_asrLabel">อัสริ</string>

@@ -44,6 +44,8 @@
     <string name="prayer_bayram">نمازِ عید</string>
     <string name="prayer_bayramTomorrow">کل نمازِ عید: %1$s</string>
     <string name="prayer_bayramNote">دیانت کے شائع کردہ اوقات والا اصول (طلوعِ آفتاب کے 38 منٹ بعد)؛ حتمی وقت صوبائی مفتی کا اعلان ہے۔</string>
+    <string name="prayer_ezani">اذانی (الاترکا) وقت: %1$s</string>
+    <string name="prayer_ezaniNote">اذانی (الاترکا) وقت میں مغرب کو 12:00 مانا جاتا ہے اور وہیں سے گھنٹے گنے جاتے ہیں۔</string>
     <string name="prayer_method_heading">حساب کا طریقہ</string>
     <string name="prayer_method_label">طریقہ</string>
     <string name="prayer_method_asrLabel">عصر</string>

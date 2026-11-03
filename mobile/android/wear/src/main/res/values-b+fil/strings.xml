@@ -44,6 +44,8 @@
     <string name="prayer_bayram">Salat al-Eid</string>
     <string name="prayer_bayramTomorrow">Salat al-Eid bukas: %1$s</string>
     <string name="prayer_bayramNote">Kaparehong panuntunan ng mga oras ng Diyanet (38 minuto pagkatapos sumikat ang araw); ang anunsyo ng mufti ng lalawigan ang opisyal.</string>
+    <string name="prayer_ezani">Oras na ezani (alaturka): %1$s</string>
+    <string name="prayer_ezaniNote">Sa oras na ezani (alaturka), 12:00 ang oras ng dasal sa paglubog ng araw at doon nagsisimula ang bilang.</string>
     <string name="prayer_method_heading">Paraan ng pagkalkula</string>
     <string name="prayer_method_label">Paraan</string>
     <string name="prayer_method_asrLabel">Asr</string>

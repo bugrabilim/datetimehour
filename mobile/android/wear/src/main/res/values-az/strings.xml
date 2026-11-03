@@ -44,6 +44,8 @@
     <string name="prayer_bayram">Bayram namazı</string>
     <string name="prayer_bayramTomorrow">Sabah bayram namazı: %1$s</string>
     <string name="prayer_bayramNote">Diyanətin dərc etdiyi saatlarla eyni qayda (günəşdən 38 dəq sonra); dəqiq saat il müftiliyinin elanıdır.</string>
+    <string name="prayer_ezani">Əzani saat: %1$s</string>
+    <string name="prayer_ezaniNote">Əzani (alaturka) saatda axşam vaxtı 12:00 sayılır; saat oradan hesablanır.</string>
     <string name="prayer_method_heading">Hesablama üsulu</string>
     <string name="prayer_method_label">Üsul</string>
     <string name="prayer_method_asrLabel">Əsr</string>

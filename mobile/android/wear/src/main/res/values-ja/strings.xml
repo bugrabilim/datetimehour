@@ -44,6 +44,8 @@
     <string name="prayer_bayram">イード礼拝</string>
     <string name="prayer_bayramTomorrow">明日のイード礼拝：%1$s</string>
     <string name="prayer_bayramNote">ディヤーネットの公表時刻と同じ規則（日の出の38分後）。正式な時刻は県ムフティー庁の発表です。</string>
+    <string name="prayer_ezani">エザーニ時刻（アラトゥルカ）：%1$s</string>
+    <string name="prayer_ezaniNote">エザーニ（アラトゥルカ）時刻では日没の礼拝時刻を12:00とし、そこから数えます。</string>
     <string name="prayer_method_heading">計算方法</string>
     <string name="prayer_method_label">方法</string>
     <string name="prayer_method_asrLabel">アスル</string>

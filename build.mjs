@@ -1740,6 +1740,13 @@ function buildNature(lang) {
     <p class="meta" data-n-left>&nbsp;</p>
     <dl class="facts light-hours">${["blueAm", "goldenAm", "goldenPm", "bluePm"].map((k) => cell(n[k], `data-n-light="${k}" dir="ltr"`)).join("")}</dl>
     <p class="meta">${esc(n.lightNote)}</p>
+    <h3>${esc(n.tw.heading)}</h3>
+    <div class="tw-row">
+      <figure class="light-ring"><svg viewBox="0 0 200 200" data-n-ring role="img" aria-label="${esc(n.tw.ring)}"></svg><figcaption class="meta">${esc(n.tw.ring)}</figcaption></figure>
+      <dl class="facts tw-facts">${cell(n.tw.firstLight, 'data-n-tw="first" dir="ltr"')}${cell(n.tw.lastLight, 'data-n-tw="last" dir="ltr"')}${["civil", "nautical", "astro"].map((k) => cell(n.tw[k], `data-n-tw="${k}" dir="ltr"`)).join("")}</dl>
+    </div>
+    <p class="tw-legend meta">${[["day", n.tw.day], ["civil", n.tw.civil], ["nautical", n.tw.nautical], ["astro", n.tw.astro], ["night", n.tw.night]].map(([k, v]) => `<span><i class="lr-${k}"></i>${esc(v)}</span>`).join("")}</p>
+    <p class="meta">${esc(n.tw.note)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="n-moon-h">
@@ -1763,6 +1770,17 @@ function buildNature(lang) {
     <h2 id="n-mcal-h">${esc(n.moonCalHeading)}</h2>
     <div class="moon-cal" data-n-mooncal></div>
     <p class="meta" data-n-mooncalcap>&nbsp;</p>
+  </div>
+</section>
+<section class="section" aria-labelledby="n-ym-h">
+  <div class="wrap">
+    <h2 id="n-ym-h" data-n-ymh>${esc(tpl(n.ym.heading, { y: cfg.updated.slice(0, 4) }))}</h2>
+    <p data-n-ymcount>&nbsp;</p>
+    <div class="ym-row">
+      <figure class="ym-wheel"><svg viewBox="0 0 220 220" data-n-ymwheel role="img" aria-label="${esc(n.ym.wheel)}"></svg></figure>
+      <div class="table-wrap"><table class="events-table"><thead><tr><th scope="col">${esc(n.ym.colDate)}</th><th scope="col">${esc(n.ym.colName)}</th></tr></thead><tbody data-n-ym></tbody></table></div>
+    </div>
+    <p class="meta">${esc(n.ym.namesNote)}</p>
   </div>
 </section>
 <section class="section" aria-labelledby="n-cres-h">
@@ -1827,7 +1845,7 @@ function buildNature(lang) {
     <p class="meta">${esc(n.methodNote)}</p>
   </div>
 </section>`;
-  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js", "eclipse-map.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats, regionNames: eclipseRegionNames(t.locale) } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
+  return simplePage(lang, "nature", { title: n.title, description: n.description, h1: n.h1, lead: n.lead, trail, bodyInner: { hero: `${wheel}<noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>`, sections }, faq: n.faq, faqGroup: { id: "nature", title: t.ui.nature }, scripts: ["place.js", "prayer-calc.js", "nature-calc.js", "nature.js", "eclipse-map.js"], clientExtra: { t: { pl: placeClient(t.prayer), nt: { eclMapSolar: n.eclMapSolar, eclMapLunar: n.eclMapLunar, seasons: n.seasons, current: n.current, dayOf: n.dayOf, nextIn: n.nextIn, startsOn: n.startsOn, phases: n.phases, illumination: n.illumination, age: n.age, dayLonger: n.dayLonger, dayShorter: n.dayShorter, dayLeft: n.dayLeft, chartCaption: n.chartCaption, longest: n.longest, shortest: n.shortest, hoursShort: n.hoursShort, minutesShort: n.minutesShort, turnNames: n.turnNames, turnNotes: n.turnNotes, turnIn: n.turnIn, turnAgo: n.turnAgo, turnToday: n.turnToday, moonNoRise: n.moonNoRise, moonNoSet: n.moonNoSet, moonCalCaption: n.moonCalCaption, eclipseLead: n.eclipseLead, eclipseTypes: n.eclipseTypes, eclipseRegions: n.eclipseRegions, eclipsePath: n.eclipsePath, eclipseHere: n.eclipseHere, eclipseNotHere: n.eclipseNotHere, crescentLead: n.crescentLead, crescentAge: n.crescentAge, crescentLag: n.crescentLag, crescentBefore: n.crescentBefore, crescentCats: n.crescentCats, tw: n.tw, ym: n.ym, regionNames: eclipseRegionNames(t.locale) } }, eclipses: ECLIPSES }, nav: "nature", searchK: n.search, needsPlace: true });
 }
 
 function buildWeather(lang) {
@@ -1891,6 +1909,7 @@ function prayerBody(lang, prov, extra = "") {
         <h3>${esc(s.todayHeading)}</h3>
         <table class="events-table pr-today"><thead class="sr-only"><tr><th scope="col">${esc(s.colPrayer)}</th><th scope="col">${esc(s.colTime)}</th></tr></thead><tbody>${rows}</tbody></table>
         <p class="pr-bayram" data-pr-bayram hidden></p>
+        <p class="meta pr-ezani" data-pr-ezani title="${esc(s.ezaniNote)}"></p>
         <details class="pr-kerahat"><summary>${esc(s.kerahatHeading)}</summary><ul>${["israk", "istiva", "isfirar"].map((k) => `<li>${esc(s.kerahatNames[k])}: <span data-pr-kr="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.kerahatNote)}</p></details>
         <details class="pr-kerahat pr-extra"><summary>${esc(s.extraHeading)}</summary><ul>${Object.keys(s.extraNames).map((k) => `<li>${esc(s.extraNames[k])}: <span data-pr-ex="${k}" dir="ltr">–</span></li>`).join("")}</ul><p class="meta">${esc(s.extraNote)}</p></details>
         <details class="pr-kerahat pr-method"><summary>${esc(s.method.heading)}</summary>
@@ -1963,7 +1982,7 @@ const placeClient = (s) => ({ locating: s.locating, locationDenied: s.locationDe
 const RAMADANS = readJson("src/data/holidays.json").ramadans.filter((r) => r.to);
 // Bayramın ilk günleri (Ramazan ve Kurban; bayram namazı satırı için, 2. analiz #56)
 const BAYRAM_DAYS = HOL_YEARS.flatMap((y) => YEAR_DATA[y].events.filter((e) => e.key === "rb1" || e.key === "kb1").map((e) => e.date));
-const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort, bayram: s.bayram, bayramTomorrow: s.bayramTomorrow, bayramNote: s.bayramNote, bayramDays: BAYRAM_DAYS }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
+const prayerClient = (s) => ({ pl: placeClient(s), pr: { nextIn: s.nextIn, monthHeading: s.monthHeading, tableCaption: s.tableCaption, names: s.names, mActive: s.method.active, mNames: s.method.names, hanafi: s.method.hanafiShort, bayram: s.bayram, bayramTomorrow: s.bayramTomorrow, bayramNote: s.bayramNote, bayramDays: BAYRAM_DAYS, ezani: s.ezani }, im: { ramadans: RAMADANS, heading: s.imHeading, title: s.imTitle, alt: s.imAlt, day: s.imDay, date: s.imDate, sahur: s.imSahur, iftar: s.imIftar, note: s.imNote, brand: s.imBrand, file: s.imFile, names: s.names } });
 const weatherClient = (t) => { const w = t.weather; return { feelsLike: w.feelsLike, humidity: w.humidity, wind: w.wind, windFrom: w.windFrom, rainChance: w.rainChance, loading: w.loading, error: w.error, codes: w.codes, compass: w.compass, fsNeed: t.client.fsWeatherNeed, fsLink: t.client.fsWeatherLink, fsFail: t.client.fsWeatherFail, consent: t.consent.wxBlocked, allow: t.consent.allow }; };
 
 /* ---------- Saat dilimi kısaltmaları, yaz saati değişimleri, Unix zamanı (30 Ekim 2026, rakip analizi #25) ----------
@@ -2383,12 +2402,13 @@ function moreBody(lang, key) {
       <p class="meta">${esc(s.todayLabel)}</p>
       <p class="big-time mt-big" data-hj-today>–</p>
       <p class="meta" data-hj-today-greg>&nbsp;</p>
+      <p class="meta" data-hj-rumi title="${esc(s.rumiNote)}">&nbsp;</p>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`;
     const sections = `<section class="section" aria-labelledby="hj-a"><div class="wrap">
       <h2 id="hj-a">${esc(s.toHijri)}</h2>
       <div class="inputs-row">${mtField("hj-g", s.gregLabel, '<input id="hj-g" type="date" min="1900-01-01" max="2100-12-31" data-hj-g>')}</div>
-      <p class="mt-result" data-hj-r1 role="status" aria-live="polite">&nbsp;</p><p class="meta" data-hj-n1 hidden></p>
+      <p class="mt-result" data-hj-r1 role="status" aria-live="polite">&nbsp;</p><p class="meta" data-hj-rumi1>&nbsp;</p><p class="meta" data-hj-n1 hidden></p>
     </div></section>
     <section class="section" aria-labelledby="hj-b"><div class="wrap">
       <h2 id="hj-b">${esc(s.toGreg)}</h2>
@@ -2398,8 +2418,9 @@ function moreBody(lang, key) {
     <section class="section" aria-labelledby="hj-c"><div class="wrap">
       <div class="table-wrap"><table class="events-table" data-hj-table><caption id="hj-c">${esc(tpl(s.yearHeading, { y: hy }))}</caption><thead><tr><th scope="col">${esc(s.colMonth)}</th><th scope="col">${esc(s.colStart)}</th><th scope="col">${esc(s.colDays)}</th></tr></thead><tbody data-hj-tbody>${rows}</tbody></table></div>
       <p class="meta">${esc(s.note)}</p>
+      <p class="meta">${esc(s.rumiNote)}</p>
     </div></section>`;
-    return { hero, sections, client: { months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE } };
+    return { hero, sections, client: { rumi: s.rumi, months: s.months, fmt: s.fmt, outside: s.outside, dayMax: s.dayMax, invalid: s.invalid, yearHeading: s.yearHeading, table: HIJRI_TABLE } };
   }
   if (key === "timeCalc") {
     const hero = `<section class="mt" data-mt="timecalc" aria-labelledby="tc-a">

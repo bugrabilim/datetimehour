@@ -119,7 +119,19 @@
       bEl.hidden = !txt;
       if (txt) { bEl.textContent = txt; bEl.title = T.bayramNote; }
     }
+    // Ezani (alaturka) saat (2. analiz #121): son akşam vakti 12.00 sayılır
+    var yd = addDay(p.year, p.month, p.day, -1), ty = dayTimes(yd.y, yd.m, yd.d);
+    ezRef = { today: t.maghrib == null ? null : instant(p.year, p.month, p.day, t.maghrib, t.off), yday: ty.maghrib == null ? null : instant(yd.y, yd.m, yd.d, ty.maghrib, ty.off) };
     pickNext(now);
+  }
+  var ezRef = null, ezEl = doc.querySelector("[data-pr-ezani]");
+  function renderEzani(now) {
+    if (!ezEl || !ezRef || !T.ezani) return;
+    var ref = ezRef.today != null && now >= ezRef.today ? ezRef.today : ezRef.yday;
+    if (ref == null) { ezEl.textContent = ""; return; }
+    var m = Math.floor((now - ref) / 60000), h = Math.floor(m / 60) % 12;
+    var txt = S.tpl(T.ezani, { t: pad(h || 12) + ":" + pad(m % 60) });
+    if (ezEl.textContent !== txt) ezEl.textContent = txt;
   }
   function pickNext(now) {
     var nx = findNext(now);
@@ -134,6 +146,7 @@
     var now = S.nowMs(), p = S.parts(new Date(now), state.tz);
     if (lastDay !== p.year + "-" + p.month + "-" + p.day) { renderToday(); renderMonth(); return; }
     if (!nextAt || now >= nextAt) { pickNext(now); }
+    renderEzani(now);
     if (nextAt) {
       var s = Math.max(0, Math.floor((nextAt - now) / 1000));
       cdEl.textContent = pad(Math.floor(s / 3600)) + ":" + pad(Math.floor((s % 3600) / 60)) + ":" + pad(s % 60);

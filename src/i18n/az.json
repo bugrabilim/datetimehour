@@ -1882,7 +1882,9 @@
         "france": "Fransa (UOIF)",
         "russia": "Rusiya Müsəlmanları Dini İdarəsi"
       }
-    }
+    },
+    "ezani": "Əzani saat: {t}",
+    "ezaniNote": "Əzani (alaturka) saatda axşam vaxtı 12:00 sayılır; saat oradan hesablanır."
   },
   "nature": {
     "title": "Fəsillər: fəsil çarxı, bərabərgünlük və gündönümü | Saat Tarih",
@@ -2067,6 +2069,45 @@
       "cemre3": "Üçüncü cəmrə (torpağa)",
       "berdulacuz": "Bərdül-əcuz (qarı soyuqları)",
       "eyyamibahur": "Əyyami-bəhur (yayın ən isti günləri)"
+    },
+    "tw": {
+      "heading": "Alaqaranlıq və işıq",
+      "civil": "Mülki alaqaranlıq",
+      "nautical": "Dənizçilik alaqaranlığı",
+      "astro": "Astronomik alaqaranlıq",
+      "firstLight": "İlk işıq",
+      "lastLight": "Son işıq",
+      "ring": "24 saatlıq işıq halqası",
+      "day": "Gündüz",
+      "night": "Gecə",
+      "now": "İndi",
+      "note": "Səhər və axşam aralıqları: Günəş üfüqdən 0°–6° (mülki), 6°–12° (dənizçilik) və 12°–18° (astronomik) aşağıdadır. İlk işıq astronomik şəfəqin başladığı, son işıq astronomik alaqaranlığın bitdiyi andır. Təxminidir."
+    },
+    "ym": {
+      "heading": "{y} ilinin bədirləri",
+      "count": "{y} ilində {n} bədir var.",
+      "blue": "Mavi Ay: {date} (eyni təqvim ayında ikinci bədir).",
+      "noBlue": "Bu il Mavi Ay yoxdur.",
+      "colDate": "Tarix və saat",
+      "colName": "Ənənəvi adı",
+      "namesNote": "Adlar Şimali Amerika ənənəsindəndir (Old Farmer's Almanac); qarşılıqları tərcümədir. Məhsul Ayı payız bərabərliyinə ən yaxın bədirdir.",
+      "harvest": "Məhsul Ayı",
+      "blueName": "Mavi Ay",
+      "wheel": "İlin bədir çarxı",
+      "names": [
+        "Canavar Ayı",
+        "Qar Ayı",
+        "Soxulcan Ayı",
+        "Çəhrayı Ay",
+        "Çiçək Ayı",
+        "Çiyələk Ayı",
+        "Maral Ayı",
+        "Nərə Balığı Ayı",
+        "Qarğıdalı Ayı",
+        "Ovçu Ayı",
+        "Qunduz Ayı",
+        "Soyuq Ay"
+      ]
     }
   },
   "weather": {
@@ -2587,7 +2628,9 @@
         "q": "Hicri tarix niyə ölkədən ölkəyə dəyişir?",
         "a": "Bəzi ölkələr ayın başlanğıcını hilalı görməklə, bəziləri hesabla müəyyən edir. Türkiyə Diyanətin hesablanmış təqvimini, Səudiyyə Ərəbistanı Ümmül-Qura təqvimini işlədir; aralarında bir gün fərq ola bilər."
       }
-    ]
+    ],
+    "rumi": "Rumi: {date}",
+    "rumiNote": "Rumi tarix Yulian təqvimi ilə (13 gün geri) və 1 mart il başı ilə yazılır; ənənəvi təqvimlərdəki kimi."
   },
   "timeCalc": {
     "title": "Saat Hesablama: Toplama, Çıxma və İki Saat Arası Müddət | Saat Tarih",

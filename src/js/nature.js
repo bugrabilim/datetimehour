@@ -258,11 +258,97 @@
         if (e) e.textContent = isFinite(lh[k][0]) && isFinite(lh[k][1]) ? hhmm(lh[k][0]) + "–" + hhmm(lh[k][1]) : "–";
       });
     }
+    drawTwilight(p, t);
     var dm = Math.round((t.len - y.len) * 60);
     setText("[data-n-delta]", dm === 0 ? "" : S.tpl(dm > 0 ? T.dayLonger : T.dayShorter, { m: Math.abs(dm) }));
     var nowH = (p.hour * 60 + p.minute) / 60 + p.second / 3600;
     if (isFinite(t.rise) && isFinite(t.set) && nowH >= t.rise && nowH < t.set) setText("[data-n-left]", S.tpl(T.dayLeft, { t: dur(t.set - nowH) }));
     else setText("[data-n-left]", "");
+  }
+
+  /* Alacakaranlık (2. analiz #151): sivil −6°, denizcilik −12°, astronomik −18°; ilk ışık / son ışık; 24 saatlik ışık halkası */
+  function drawTwilight(p, t) {
+    var tz = offH(p.year, p.month, p.day);
+    var at = function (a) { return P.sunAltTimes(p.year, p.month, p.day, place.lat, place.lon, tz, a); };
+    var c6 = at(-6), c12 = at(-12), c18 = at(-18);
+    var rng = function (a, b) { return isFinite(a) && isFinite(b) ? hhmm(a) + "–" + hhmm(b) : "–"; };
+    var set = function (k, v) { var e = doc.querySelector('[data-n-tw="' + k + '"]'); if (e) e.textContent = v; };
+    set("civil", rng(c6.rise, t.rise) + " · " + rng(t.set, c6.set));
+    set("nautical", rng(c12.rise, c6.rise) + " · " + rng(c6.set, c12.set));
+    set("astro", rng(c18.rise, c12.rise) + " · " + rng(c12.set, c18.set));
+    set("first", hhmm(c18.rise)); set("last", hhmm(c18.set));
+    drawRing(p, tz);
+  }
+  function drawRing(p, tz) {
+    var el = doc.querySelector("[data-n-ring]"); if (!el) return;
+    el.textContent = "";
+    var band = function (alt) { return alt > -0.833 ? "day" : alt > -6 ? "civil" : alt > -12 ? "nautical" : alt > -18 ? "astro" : "night"; };
+    var pt = function (h, r) { var a = h / 24 * 2 * Math.PI; return [100 - r * Math.sin(a), 100 + r * Math.cos(a)]; };
+    var STEP = 0.1, R = 78, segs = [], cur = null;
+    for (var h = 0; h < 24 + 1e-9; h += STEP) {
+      var b = band(P.sunAltAz(p.year, p.month, p.day, h - tz, place.lat, place.lon).alt);
+      if (!cur || cur.b !== b) { cur = { b: b, a: h, z: h }; segs.push(cur); } else cur.z = h;
+    }
+    segs.forEach(function (sg, i) {
+      var a = sg.a, z = i < segs.length - 1 ? segs[i + 1].a : 24;
+      if (z - a >= 23.99) { svg("circle", { cx: 100, cy: 100, r: R, "class": "lr lr-" + sg.b }, el); return; }
+      var s0 = pt(a, R), s1 = pt(z, R), large = z - a > 12 ? 1 : 0;
+      svg("path", { d: "M" + s0[0].toFixed(2) + " " + s0[1].toFixed(2) + " A" + R + " " + R + " 0 " + large + " 1 " + s1[0].toFixed(2) + " " + s1[1].toFixed(2), "class": "lr lr-" + sg.b }, el);
+    });
+    [0, 6, 12, 18].forEach(function (h) { var q = pt(h, 54); var tx = svg("text", { x: q[0].toFixed(1), y: (q[1] + 4).toFixed(1), "class": "lr-tick" }, el); tx.textContent = pad(h); });
+    var nowH = p.hour + p.minute / 60, n0 = pt(nowH, R - 16), n1 = pt(nowH, R + 16);
+    svg("line", { x1: n0[0].toFixed(1), y1: n0[1].toFixed(1), x2: n1[0].toFixed(1), y2: n1[1].toFixed(1), "class": "lr-now" }, el);
+    var c = svg("text", { x: 100, y: 104, "class": "lr-center" }, el); c.textContent = hhmm(nowH);
+  }
+
+  /* Yılın dolunayları (2. analiz #148, #161): sayı, Mavi Ay (aynı takvim ayında ikinci dolunay), Kuzey Amerika adları, çark */
+  function drawYearMoons(ms) {
+    var tb = doc.querySelector("[data-n-ym]"); if (!tb || !T.ym) return;
+    var Y = S.parts(new Date(ms), place.tz).year, YM = T.ym;
+    var k0 = Math.floor((Date.UTC(Y, 0, 1) / 86400000 + 2440587.5 - 2451550.09766) / 29.530588861) - 2, list = [];
+    for (var k = k0; k <= k0 + 16; k++) {
+      var t = N.phaseMs(k, true), q = S.parts(new Date(t), place.tz);
+      if (q.year === Y) list.push({ t: t, m: q.month, d: q.day });
+    }
+    var eq = N.seasons(Y).sept, hv = 0;
+    list.forEach(function (x, i) { if (Math.abs(x.t - eq) < Math.abs(list[hv].t - eq)) hv = i; });
+    var blue = null;
+    list.forEach(function (x, i) {
+      x.name = YM.names[x.m - 1];
+      if (i > 0 && list[i - 1].m === x.m) { x.blue = true; blue = x; x.name = YM.blueName; }
+    });
+    if (list[hv]) { list[hv].name = YM.harvest; if (list[hv].m === 10 && list[hv + 1]) list[hv + 1].name = YM.names[9]; }
+    var f = S.fmt("ymf", place.tz, { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", hourCycle: S.prefs && S.prefs.h12 ? "h12" : "h23" });
+    var df = S.fmt("ymd", place.tz, { day: "numeric", month: "long" });
+    setText("[data-n-ymh]", S.tpl(YM.heading, { y: Y }));
+    setText("[data-n-ymcount]", S.tpl(YM.count, { y: Y, n: list.length }) + " " + (blue ? S.tpl(YM.blue, { date: df.format(new Date(blue.t)) }) : YM.noBlue));
+    tb.textContent = "";
+    var nextDone = false;
+    list.forEach(function (x) {
+      var tr = doc.createElement("tr"), a = doc.createElement("td"), b = doc.createElement("td");
+      a.textContent = f.format(new Date(x.t)); b.textContent = (x.blue ? "🔵 " : "🌕 ") + x.name;
+      if (x.t < ms) tr.className = "is-past"; else if (!nextDone) { tr.className = "is-next"; nextDone = true; }
+      tr.appendChild(a); tr.appendChild(b); tb.appendChild(tr);
+    });
+    var w = doc.querySelector("[data-n-ymwheel]"); if (!w) return;
+    w.textContent = "";
+    var jan1 = Date.UTC(Y, 0, 1), L = (Date.UTC(Y + 1, 0, 1) - jan1);
+    var ang = function (t) { return (t - jan1) / L * 2 * Math.PI; };
+    var at2 = function (a, r) { return [110 + r * Math.sin(a), 110 - r * Math.cos(a)]; };
+    svg("circle", { cx: 110, cy: 110, r: 86, "class": "ymw-ring" }, w);
+    for (var mth = 0; mth < 12; mth++) {
+      var a0 = ang(Date.UTC(Y, mth, 1)), p0 = at2(a0, 76), p1 = at2(a0, 96);
+      svg("line", { x1: p0[0].toFixed(1), y1: p0[1].toFixed(1), x2: p1[0].toFixed(1), y2: p1[1].toFixed(1), "class": "ymw-tick" }, w);
+      var mid = at2(ang(Date.UTC(Y, mth, 15)), 104), lab = svg("text", { x: mid[0].toFixed(1), y: (mid[1] + 3.5).toFixed(1), "class": "ymw-m" }, w);
+      lab.textContent = String(mth + 1);
+    }
+    list.forEach(function (x) {
+      var q = at2(ang(x.t), 86);
+      svg("circle", { cx: q[0].toFixed(1), cy: q[1].toFixed(1), r: 6.5, "class": "ymw-moon" + (x.blue ? " is-blue" : "") + (x.t < ms ? " is-past" : "") }, w);
+    });
+    var nq0 = at2(ang(ms), 28), nq = at2(ang(ms), 68);
+    svg("line", { x1: nq0[0].toFixed(1), y1: nq0[1].toFixed(1), x2: nq[0].toFixed(1), y2: nq[1].toFixed(1), "class": "ymw-now" }, w);
+    var ct = svg("text", { x: 110, y: 116, "class": "ymw-c" }, w); ct.textContent = String(list.length);
   }
 
   function drawChart(nowMs) {
@@ -299,7 +385,7 @@
 
   function renderAll() {
     var now = S.nowMs();
-    drawWheel(now); drawSun(now); drawMoon(now); drawChart(now); drawMoonCal(now); drawCrescent(now); drawEclipses(now); markFolk(now);
+    drawWheel(now); drawSun(now); drawMoon(now); drawChart(now); drawMoonCal(now); drawYearMoons(now); drawCrescent(now); drawEclipses(now); markFolk(now);
   }
   window.sthPlace.attach(root, function (p) { place = p; renderAll(); });
   setInterval(function () { if (place && !doc.hidden) { var n = S.nowMs(); drawSun(n); drawMoon(n); } }, 60000);

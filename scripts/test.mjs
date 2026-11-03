@@ -604,6 +604,10 @@ for (const l of LANGS) {
     const ph2 = fs.readFileSync(path.join(DIST, "toplanti-planlayici/index.html"), "utf8");
     check(/data-outlook/.test(ph2) && /data-gmail/.test(ph2) && /data-copytext/.test(ph2), "toplantı planlayıcı: Outlook, Gmail ve metin kopyalama");
     for (const l of LANGS) check(dict[l].get("consent.barText").length <= 170, `çerez bandı metni kısa olmalı (${l})`);
+    const nh = fs.readFileSync(path.join(DIST, "mevsimler/index.html"), "utf8");
+    check(/data-n-ring/.test(nh) && /data-n-tw="civil"/.test(nh) && /data-n-tw="astro"/.test(nh) && /data-n-ym\b/.test(nh) && /data-n-ymwheel/.test(nh), "mevsimler: alacakaranlık, ışık halkası, yılın dolunayları");
+    check(/data-pr-ezani/.test(fs.readFileSync(path.join(DIST, "namaz-vakitleri/istanbul/index.html"), "utf8")), "namaz il sayfası: ezani saat");
+    check(/data-hj-rumi\b/.test(fs.readFileSync(path.join(DIST, "hicri-takvim-cevirici/index.html"), "utf8")), "hicri çevirici: Rumi tarih");
     const ah = fs.readFileSync(path.join(DIST, "alarm/index.html"), "utf8");
     check(/data-al-snooze/.test(ah) && /data-al-vol/.test(ah) && /data-al-try/.test(ah) && /data-al-ring/.test(ah) && /data-al-history/.test(ah) && /data-al-recent/.test(ah), "alarm: erteleme süresi, ses düzeyi, şimdi dene, halka, geçmiş, son saatler");
   }

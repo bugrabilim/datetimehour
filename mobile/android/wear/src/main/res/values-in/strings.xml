@@ -44,6 +44,8 @@
     <string name="prayer_bayram">Salat Id</string>
     <string name="prayer_bayramTomorrow">Salat Id besok: %1$s</string>
     <string name="prayer_bayramNote">Aturan yang sama dengan waktu terbitan Diyanet (38 menit setelah matahari terbit); yang resmi adalah pengumuman mufti provinsi.</string>
+    <string name="prayer_ezani">Waktu ezani (alaturka): %1$s</string>
+    <string name="prayer_ezaniNote">Pada waktu ezani (alaturka), waktu magrib dianggap pukul 12.00 dan jam dihitung dari sana.</string>
     <string name="prayer_method_heading">Metode perhitungan</string>
     <string name="prayer_method_label">Metode</string>
     <string name="prayer_method_asrLabel">Asar</string>

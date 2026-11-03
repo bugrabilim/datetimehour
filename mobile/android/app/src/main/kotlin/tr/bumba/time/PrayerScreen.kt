@@ -145,6 +145,7 @@ fun PrayerScreen() {
             }
             PrayerVisual(now, place, entries)
             BayramRow(today, now, place)
+            EzaniRow(today, now, place)
             KerahatCard(entries, place)
             ExtraTimesCard(today, place)
             // Bildirim alanında ve kilit ekranında sıradaki vakit (iOS'taki Live Activity karşılığı)
@@ -204,6 +205,24 @@ private fun KerahatCard(entries: List<AppPlace.Entry>, place: AppPlace) {
             Text(L("prayer.kerahatNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
     }
+}
+
+/** Ezani (alaturka) saat (2. analiz #121): son akşam vakti 12.00 sayılır (sitedeki namaz sayfasıyla aynı) */
+internal fun ezaniText(today: java.time.LocalDate, now: java.time.Instant, place: AppPlace): String? {
+    fun maghrib(d: java.time.LocalDate): java.time.Instant? =
+        tr.bumba.time.core.PrayerTimes.times(d, place.lat, place.lon, place.zone).maghrib?.let { d.atStartOfDay(place.zone).toInstant().plusSeconds(Math.round(it * 60) * 60) }
+    var ref = maghrib(today)
+    if (ref != null && now.isBefore(ref)) ref = maghrib(today.minusDays(1))
+    ref ?: return null
+    val m = maxOf(0L, java.time.Duration.between(ref, now).toMinutes())
+    val h = (m / 60) % 12
+    return T("prayer.ezani", "%02d:%02d".format(java.util.Locale.ROOT, if (h == 0L) 12L else h, m % 60))
+}
+
+@Composable
+private fun EzaniRow(today: java.time.LocalDate, now: java.time.Instant, place: AppPlace) {
+    val text = ezaniText(today, now, place) ?: return
+    Text(text, color = Theme.c.muted, fontSize = 13.sp)
 }
 
 /** Bayram namazı (2. analiz #56): bayramın ilk günü öğleye kadar, arefe günü "yarın"; Diyanet kuralı güneş + 38 dk */

@@ -44,6 +44,8 @@
     <string name="prayer_bayram">Eid prayer</string>
     <string name="prayer_bayramTomorrow">Eid prayer tomorrow: %1$s</string>
     <string name="prayer_bayramNote">Same rule as Diyanet’s published times (38 min after sunrise); the provincial mufti’s announcement is authoritative.</string>
+    <string name="prayer_ezani">Ezani (alaturka) time: %1$s</string>
+    <string name="prayer_ezaniNote">In Ezani (alla turca) time, the evening prayer (sunset) is 12:00 and hours are counted from there.</string>
     <string name="prayer_method_heading">Calculation method</string>
     <string name="prayer_method_label">Method</string>
     <string name="prayer_method_asrLabel">Asr</string>

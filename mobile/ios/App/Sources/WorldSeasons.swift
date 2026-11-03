@@ -379,8 +379,19 @@ struct SeasonsView: View {
             guard let a = r.0, let b = r.1 else { return "–" }
             return place.hm(midnight.addingTimeInterval(a * 3600)) + "–" + place.hm(midnight.addingTimeInterval(b * 3600))
         }
+        // Alacakaranlık (2. analiz #151): sivil −6°, denizcilik −12°, astronomik −18°; ilk ve son ışık
+        func alt(_ a: Double) -> PrayerTimes.AltitudeTimes {
+            PrayerTimes.sunAltitudeTimes(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon, utcOffset: off, altitude: a)
+        }
+        let s0 = alt(-0.833), c6 = alt(-6), c12 = alt(-12), c18 = alt(-18)
+        func one(_ h: Double?) -> String { guard let h else { return "–" }; return place.hm(midnight.addingTimeInterval(h * 3600)) }
+        func two(_ a: (Double?, Double?), _ b: (Double?, Double?)) -> String { span(a) + " · " + span(b) }
         let rows: [(String, String, String)] = [("nature.blueAm", "🔵", span(l.blueAm)), ("nature.goldenAm", "🟠", span(l.goldenAm)),
-                                                ("nature.goldenPm", "🟠", span(l.goldenPm)), ("nature.bluePm", "🔵", span(l.bluePm))]
+                                                ("nature.goldenPm", "🟠", span(l.goldenPm)), ("nature.bluePm", "🔵", span(l.bluePm)),
+                                                ("nature.tw.firstLight", "🌌", one(c18.rise)), ("nature.tw.lastLight", "🌌", one(c18.set)),
+                                                ("nature.tw.civil", "🌆", two((c6.rise, s0.rise), (s0.set, c6.set))),
+                                                ("nature.tw.nautical", "⚓", two((c12.rise, c6.rise), (c6.set, c12.set))),
+                                                ("nature.tw.astro", "🔭", two((c18.rise, c12.rise), (c12.set, c18.set)))]
         return VStack(alignment: .leading, spacing: 8) {
             ForEach(Array(rows.enumerated()), id: \.offset) { _, row in
                 HStack {
@@ -390,6 +401,7 @@ struct SeasonsView: View {
                 }
             }
             Text(L("nature.lightNote")).font(.caption).foregroundStyle(Theme.muted)
+            Text(L("nature.tw.note")).font(.caption).foregroundStyle(Theme.muted)
         }
         .foregroundStyle(Theme.text)
         .padding(14)

@@ -256,6 +256,7 @@ fun CalendarLeafScreen(onBack: () -> Unit) {
                 Text("${day.dayOfMonth}", color = Color.White, fontSize = 104.sp, fontWeight = FontWeight.Bold, style = Tnum)
                 Text(day.dayOfWeek.getDisplayName(TextStyle.FULL, locale).replaceFirstChar { it.titlecase(locale) }, color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
                 Hijri.date(day)?.let { Text("☾ " + it.text, color = Color.White.copy(alpha = 0.9f), fontSize = 14.sp) }
+                Text(Rumi.text(day), color = Color.White.copy(alpha = 0.85f), fontSize = 13.sp)
             }
             Text(T("leaf.dayOfYear", day.dayOfYear.toString(), day.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR).toString()), color = Theme.c.muted, fontSize = 14.sp)
             if (turkic) {
@@ -293,4 +294,25 @@ fun CalendarLeafScreen(onBack: () -> Unit) {
             }
         }
     }
+}
+
+/** Rumi tarih (2. analiz #120): Jülyen takvimi, yılbaşı 1 Mart, yıl = Jülyen yıl − 584 (Mart–Aralık) ya da − 585 */
+object Rumi {
+    val months = listOf("Kânûn-ı sânî", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül",
+        "Teşrîn-i evvel", "Teşrîn-i sânî", "Kânûn-ı evvel")
+
+    /** (gün, ay, Rumi yıl) */
+    fun parts(d: LocalDate): Triple<Int, Int, Int> {
+        val jdn = d.toEpochDay() + 2440588
+        val c = jdn + 32082
+        val dd = (4 * c + 3) / 1461
+        val e = c - 1461 * dd / 4
+        val mm = (5 * e + 2) / 153
+        val day = (e - (153 * mm + 2) / 5 + 1).toInt()
+        val month = (mm + 3 - 12 * (mm / 10)).toInt()
+        val year = (dd - 4800 + mm / 10).toInt()
+        return Triple(day, month, year - if (month >= 3) 584 else 585)
+    }
+
+    fun text(d: LocalDate): String { val (dy, m, y) = parts(d); return T("hijriConv.rumi", "$dy ${months[m - 1]} $y") }
 }

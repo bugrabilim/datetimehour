@@ -163,15 +163,25 @@ private fun SunMoon(place: AppPlace, now: Instant, openMoon: () -> Unit) {
     val light = PrayerTimes.lightHours(day.year, day.monthValue, day.dayOfMonth, place.lat, place.lon, off)
     fun hm(h: Double?): String = h?.let { val m = Math.round(it * 60).toInt(); "%02d:%02d".format(java.util.Locale.ROOT, (m / 60 + 24) % 24, m % 60) } ?: "–"
     fun span(r: Pair<Double?, Double?>) = if (r.first == null || r.second == null) "–" else hm(r.first) + "–" + hm(r.second)
+    // Alacakaranlık (2. analiz #151): sivil −6°, denizcilik −12°, astronomik −18°; ilk ve son ışık
+    fun alt(a: Double) = PrayerTimes.sunAltitudeTimes(day.year, day.monthValue, day.dayOfMonth, place.lat, place.lon, off, a)
+    val s0 = alt(-0.833); val c6 = alt(-6.0); val c12 = alt(-12.0); val c18 = alt(-18.0)
+    fun two(a: Pair<Double?, Double?>, b: Pair<Double?, Double?>) = span(a) + " · " + span(b)
+    val rows = listOf(Triple("nature.blueAm", "🔵", span(light.blueAm)), Triple("nature.goldenAm", "🟠", span(light.goldenAm)),
+        Triple("nature.goldenPm", "🟠", span(light.goldenPm)), Triple("nature.bluePm", "🔵", span(light.bluePm)),
+        Triple("nature.tw.firstLight", "🌌", hm(c18.rise)), Triple("nature.tw.lastLight", "🌌", hm(c18.set)),
+        Triple("nature.tw.civil", "🌆", two(c6.rise to s0.rise, s0.set to c6.set)),
+        Triple("nature.tw.nautical", "⚓", two(c12.rise to c6.rise, c6.set to c12.set)),
+        Triple("nature.tw.astro", "🔭", two(c18.rise to c12.rise, c12.set to c18.set)))
     AppCard {
-        for ((key, icon, r) in listOf(Triple("nature.blueAm", "🔵", light.blueAm), Triple("nature.goldenAm", "🟠", light.goldenAm),
-                Triple("nature.goldenPm", "🟠", light.goldenPm), Triple("nature.bluePm", "🔵", light.bluePm))) {
+        for ((key, icon, v) in rows) {
             Row(Modifier.fillMaxWidth()) {
                 Text("$icon ${L(key)}", Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Text(span(r), color = Theme.c.text, fontSize = 15.sp, style = Tnum)
+                Text(v, color = Theme.c.text, fontSize = 15.sp, style = Tnum)
             }
         }
         Text(L("nature.lightNote"), color = Theme.c.muted, fontSize = 12.sp)
+        Text(L("nature.tw.note"), color = Theme.c.muted, fontSize = 12.sp)
     }
     FolkCalendarCard(day)
 }

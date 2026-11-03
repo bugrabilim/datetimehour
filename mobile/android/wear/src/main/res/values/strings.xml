@@ -44,6 +44,8 @@
     <string name="prayer_bayram">Bayram namazı</string>
     <string name="prayer_bayramTomorrow">Yarın bayram namazı: %1$s</string>
     <string name="prayer_bayramNote">Diyanet\'in yayımladığı saatlerle aynı kural (güneş vaktinden 38 dk sonra); kesin saat il müftülüğünün duyurusudur.</string>
+    <string name="prayer_ezani">Ezani saat: %1$s</string>
+    <string name="prayer_ezaniNote">Ezani (alaturka) saatte akşam vakti 12.00 kabul edilir; saat oradan sayılır.</string>
     <string name="prayer_method_heading">Hesap yöntemi</string>
     <string name="prayer_method_label">Yöntem</string>
     <string name="prayer_method_asrLabel">İkindi</string>

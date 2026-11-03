@@ -236,6 +236,7 @@ struct CalendarLeafView: View {
                     if let h = Hijri.date(year: day.year, month: day.month, day: day.day) {
                         Text("☾ " + h.text).font(.subheadline).foregroundStyle(.white.opacity(0.9))
                     }
+                    Text(Rumi.text(day)).font(.footnote).foregroundStyle(.white.opacity(0.85))
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 22)
@@ -302,5 +303,26 @@ struct CalendarLeafView: View {
         s.timeZone = place.zone
         s.calendar = AppLocale.gregorian
         return d.formatted(s)
+    }
+}
+
+/// Rumi tarih (2. analiz #120): Jülyen takvimi, yılbaşı 1 Mart, yıl = Jülyen yıl − 584 (Mart–Aralık) ya da − 585;
+/// Türkiye Takvimi geleneği (sitedeki hicri çeviriciyle aynı hesap)
+enum Rumi {
+    static let months = ["Kânûn-ı sânî", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül",
+                         "Teşrîn-i evvel", "Teşrîn-i sânî", "Kânûn-ı evvel"]
+
+    static func parts(_ d: CalendarDay) -> (day: Int, month: Int, year: Int) {
+        // Miladi → Jülyen gün numarası → Jülyen takvimi
+        let a = (14 - d.month) / 12, y = d.year + 4800 - a, m = d.month + 12 * a - 3
+        let jdn = d.day + (153 * m + 2) / 5 + 365 * y + y / 4 - y / 100 + y / 400 - 32045
+        let c = jdn + 32082, dd = (4 * c + 3) / 1461, e = c - 1461 * dd / 4, mm = (5 * e + 2) / 153
+        let day = e - (153 * mm + 2) / 5 + 1, month = mm + 3 - 12 * (mm / 10), year = dd - 4800 + mm / 10
+        return (day, month, year - (month >= 3 ? 584 : 585))
+    }
+
+    static func text(_ d: CalendarDay) -> String {
+        let r = parts(d)
+        return T("hijriConv.rumi", "\(r.day) \(months[r.month - 1]) \(r.year)")
     }
 }

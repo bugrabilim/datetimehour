@@ -130,15 +130,25 @@
       return null;
     }
     function hText(h) { return tpl(M.fmt, { d: h.d, m: M.months[h.m - 1], y: h.y }); }
+    /* Rumi tarih (2. analiz #120): Jülyen takvimi, yılbaşı 1 Mart, yıl = Jülyen yıl − 584 (Mart–Aralık) ya da − 585;
+       Türkiye Takvimi geleneği (Kasım günleri: Rumi 26 Teşrîn-i evvel = miladi 8 Kasım) */
+    var RUMI = ["Kânûn-ı sânî", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Teşrîn-i evvel", "Teşrîn-i sânî", "Kânûn-ı evvel"];
+    function rumiText(iso) {
+      var c = dnum(iso) + 2440588 + 32082, d4 = Math.floor((4 * c + 3) / 1461), e = c - Math.floor(1461 * d4 / 4), mm = Math.floor((5 * e + 2) / 153);
+      var day = e - Math.floor((153 * mm + 2) / 5) + 1, mon = mm + 3 - 12 * Math.floor(mm / 10), yr = d4 - 4800 + Math.floor(mm / 10);
+      return tpl(M.rumi, { date: day + " " + RUMI[mon - 1] + " " + (yr - (mon >= 3 ? 584 : 585)) });
+    }
     // Bugün
     var today = todayIso(), th = toH(today);
     setText(q("[data-hj-today]"), th ? hText(th) : "–");
     setText(q("[data-hj-today-greg]"), longText(today));
+    setText(q("[data-hj-rumi]"), rumiText(today));
     // Miladi → hicri
     var gIn = q("[data-hj-g]"), r1 = q("[data-hj-r1]"), n1 = q("[data-hj-n1]");
     function run1() {
       var v = gIn.value, h = /^\d{4}-\d\d-\d\d$/.test(v) ? toH(v) : null;
       setText(r1, h ? hText(h) : M.invalid);
+      setText(q("[data-hj-rumi1]"), h ? rumiText(v) : " ");
       n1.hidden = !(h && h.out); n1.textContent = M.outside;
     }
     gIn.value = today; gIn.addEventListener("input", function () { used1(); run1(); }); run1();

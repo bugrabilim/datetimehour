@@ -44,6 +44,8 @@
     <string name="prayer_bayram">Festgebet</string>
     <string name="prayer_bayramTomorrow">Festgebet morgen: %1$s</string>
     <string name="prayer_bayramNote">Gleiche Regel wie die von Diyanet veröffentlichten Zeiten (38 Min. nach Sonnenaufgang); maßgeblich ist die Bekanntgabe des Provinzmuftis.</string>
+    <string name="prayer_ezani">Ezani-Zeit (alla turca): %1$s</string>
+    <string name="prayer_ezaniNote">In der Ezani-Zeit (alla turca) gilt das Abendgebet (Sonnenuntergang) als 12:00; von dort wird gezählt.</string>
     <string name="prayer_method_heading">Berechnungsmethode</string>
     <string name="prayer_method_label">Methode</string>
     <string name="prayer_method_asrLabel">Asr</string>

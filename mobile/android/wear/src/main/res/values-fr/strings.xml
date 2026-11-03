@@ -44,6 +44,8 @@
     <string name="prayer_bayram">Prière de l’Aïd</string>
     <string name="prayer_bayramTomorrow">Prière de l’Aïd demain : %1$s</string>
     <string name="prayer_bayramNote">Même règle que les horaires publiés par la Diyanet (38 min après le lever du soleil) ; l’annonce du mufti provincial fait foi.</string>
+    <string name="prayer_ezani">Heure ezani (alla turca) : %1$s</string>
+    <string name="prayer_ezaniNote">Dans l\'heure ezani (alla turca), la prière du soir (coucher du soleil) vaut 12 h 00 ; on compte à partir de là.</string>
     <string name="prayer_method_heading">Méthode de calcul</string>
     <string name="prayer_method_label">Méthode</string>
     <string name="prayer_method_asrLabel">Asr</string>

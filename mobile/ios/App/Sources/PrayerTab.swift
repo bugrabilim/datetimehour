@@ -156,6 +156,7 @@ struct PrayerPanel: View {
                 }
             }
             BayramRow(place: place, now: now)
+            EzaniRow(place: place, now: now)
             KerahatBox(entries: schedule.entries(on: now), place: place)
             ExtraTimesBox(place: place, day: place.today)
         }
@@ -203,6 +204,36 @@ func localInstant(_ d: CalendarDay, _ hours: Double, _ zone: TimeZone) -> Date {
     cal.timeZone = zone
     let start = cal.date(from: DateComponents(year: d.year, month: d.month, day: d.day)) ?? Date()
     return start.addingTimeInterval((hours * 60).rounded() * 60)
+}
+
+/// Ezani (alaturka) saat (2. analiz #121): son akşam vakti 12.00 sayılır (sitedeki namaz sayfasıyla aynı)
+struct EzaniRow: View {
+    let place: AppPlace
+    let now: Date
+
+    private func maghrib(_ d: CalendarDay) -> Date? {
+        guard let m = PrayerTimes.times(year: d.year, month: d.month, day: d.day, latitude: place.lat, longitude: place.lon, timeZone: place.zone).maghrib else { return nil }
+        return localInstant(d, m, place.zone)
+    }
+    private var text: String? {
+        let today = CalendarDay(now, timeZone: place.zone)
+        var ref = maghrib(today)
+        if let r = ref, now < r { ref = maghrib(today.adding(days: -1)) }
+        guard let start = ref else { return nil }
+        let m = max(0, Int(now.timeIntervalSince(start) / 60))
+        let h = (m / 60) % 12
+        return T("prayer.ezani", String(format: "%02d:%02d", h == 0 ? 12 : h, m % 60))
+    }
+
+    var body: some View {
+        if let text {
+            Text(text)
+                .font(.footnote)
+                .foregroundStyle(Theme.muted)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .accessibilityHint(L("prayer.ezaniNote"))
+        }
+    }
 }
 
 /// Bayram namazı (2. analiz #56): bayramın ilk günü öğleye kadar, arefe günü "yarın"; Diyanet kuralı güneş + 38 dk

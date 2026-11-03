@@ -1882,7 +1882,9 @@
         "france": "France (UOIF)",
         "russia": "Spiritual Administration of Muslims of Russia"
       }
-    }
+    },
+    "ezani": "Ezani (alaturka) time: {t}",
+    "ezaniNote": "In Ezani (alla turca) time, the evening prayer (sunset) is 12:00 and hours are counted from there."
   },
   "nature": {
     "title": "Seasons: Seasons Wheel, Equinoxes and Solstices | Saat Tarih",
@@ -2067,6 +2069,45 @@
       "cemre3": "Third cemre (into the soil)",
       "berdulacuz": "Berd al-ajuz (the “old woman’s cold”)",
       "eyyamibahur": "Eyyam-ı bahur (the hottest days of summer)"
+    },
+    "tw": {
+      "heading": "Twilight and daylight",
+      "civil": "Civil twilight",
+      "nautical": "Nautical twilight",
+      "astro": "Astronomical twilight",
+      "firstLight": "First light",
+      "lastLight": "Last light",
+      "ring": "24-hour light ring",
+      "day": "Daylight",
+      "night": "Night",
+      "now": "Now",
+      "note": "Morning and evening ranges: the Sun is 0°–6° (civil), 6°–12° (nautical) and 12°–18° (astronomical) below the horizon. First light is when astronomical dawn begins, last light when astronomical dusk ends. Approximate."
+    },
+    "ym": {
+      "heading": "Full moons of {y}",
+      "count": "There are {n} full moons in {y}.",
+      "blue": "Blue Moon: {date} (the second full moon in a calendar month).",
+      "noBlue": "No Blue Moon this year.",
+      "colDate": "Date and time",
+      "colName": "Traditional name",
+      "namesNote": "Names follow the North American tradition (Old Farmer's Almanac). The Harvest Moon is the full moon closest to the September equinox.",
+      "harvest": "Harvest Moon",
+      "blueName": "Blue Moon",
+      "wheel": "Full moon wheel of the year",
+      "names": [
+        "Wolf Moon",
+        "Snow Moon",
+        "Worm Moon",
+        "Pink Moon",
+        "Flower Moon",
+        "Strawberry Moon",
+        "Buck Moon",
+        "Sturgeon Moon",
+        "Corn Moon",
+        "Hunter's Moon",
+        "Beaver Moon",
+        "Cold Moon"
+      ]
     }
   },
   "weather": {
@@ -2587,7 +2628,9 @@
         "q": "Why do Hijri dates differ between countries?",
         "a": "Some countries start a month by sighting the crescent, others by calculation. Turkey uses Diyanet's calculated calendar and Saudi Arabia the Umm al-Qura calendar; they can differ by a day."
       }
-    ]
+    ],
+    "rumi": "Rumi (Ottoman): {date}",
+    "rumiNote": "The Rumi date uses the Julian calendar (13 days behind) with the year starting on 1 March, as in traditional Turkish almanacs."
   },
   "timeCalc": {
     "title": "Time Calculator: Add, Subtract and Hours Between Times | Saat Tarih",

@@ -44,6 +44,8 @@
     <string name="prayer_bayram">会礼</string>
     <string name="prayer_bayramTomorrow">明日会礼：%1$s</string>
     <string name="prayer_bayramNote">与迪亚内特公布时间相同的规则（日出后 38 分钟）；准确时间以省穆夫提办公室公告为准。</string>
+    <string name="prayer_ezani">埃扎尼（日落）时间：%1$s</string>
+    <string name="prayer_ezaniNote">在埃扎尼（日落）计时中，昏礼（日落）时刻记为 12:00，并由此计时。</string>
     <string name="prayer_method_heading">计算方法</string>
     <string name="prayer_method_label">方法</string>
     <string name="prayer_method_asrLabel">晡礼</string>

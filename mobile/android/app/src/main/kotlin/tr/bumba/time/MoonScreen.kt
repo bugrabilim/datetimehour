@@ -108,6 +108,7 @@ fun MoonScreen() {
             Text(place.name, color = Theme.c.muted, fontSize = 12.sp)
         }
         CrescentCard(place, now)
+        YearMoonsCard(place, now)
         SectionTitle(L("nature.eclipseHeading"))
         Text(T("nature.eclipseLead", place.name), color = Theme.c.muted, fontSize = 13.sp)
         val f = DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(Strings.locale)
@@ -182,4 +183,46 @@ private fun MoonMonth(ym: YearMonth, place: AppPlace, today: LocalDate) {
         }
     }
     Spacer(Modifier.padding(2.dp))
+}
+
+/** Yılın dolunayları (2. analiz #148, #161): sayı, Mavi Ay, Kuzey Amerika adları; Hasat Ayı ekinoksa en yakın dolunay */
+object YearMoons {
+    data class Item(val ms: Long, val name: String, val blue: Boolean)
+
+    fun list(year: Int, zone: java.time.ZoneId): List<Item> {
+        val jan1 = java.time.LocalDate.of(year, 1, 1).atStartOfDay(zone).toInstant().toEpochMilli().toDouble()
+        val k0 = Math.floor((jan1 / 86_400_000.0 + 2440587.5 - 2451550.09766) / 29.530588861).toInt() - 2
+        val raw = (k0..k0 + 16).map { Nature.phaseMillis(it, true) }
+            .map { it to Instant.ofEpochMilli(it).atZone(zone) }
+            .filter { it.second.year == year }
+        if (raw.isEmpty()) return emptyList()
+        val eq = Nature.seasons(year).september
+        val hv = raw.indices.minBy { Math.abs(raw[it].first - eq) }
+        val names = raw.map { L("nature.ym.names.${it.second.monthValue - 1}") }.toMutableList()
+        val blue = BooleanArray(raw.size)
+        for (i in 1 until raw.size) if (raw[i - 1].second.monthValue == raw[i].second.monthValue) { blue[i] = true; names[i] = L("nature.ym.blueName") }
+        names[hv] = L("nature.ym.harvest")
+        if (raw[hv].second.monthValue == 10 && hv + 1 < raw.size) names[hv + 1] = L("nature.ym.names.9")
+        return raw.indices.map { Item(raw[it].first, names[it], blue[it]) }
+    }
+}
+
+@Composable
+private fun YearMoonsCard(place: AppPlace, now: Instant) {
+    val year = place.today(now).year
+    val list = YearMoons.list(year, place.zone)
+    val blue = list.firstOrNull { it.blue }
+    SectionTitle(T("nature.ym.heading", year.toString()))
+    AppCard {
+        Text(T("nature.ym.count", year.toString(), list.size.toString()) + " " +
+            (blue?.let { T("nature.ym.blue", Fmt.dayMonth(Instant.ofEpochMilli(it.ms).atZone(place.zone).toLocalDate())) } ?: L("nature.ym.noBlue")),
+            color = Theme.c.text, fontSize = 14.sp)
+        for (m in list) {
+            Row(Modifier.fillMaxWidth().padding(vertical = 2.dp)) {
+                Text((if (m.blue) "🔵 " else "🌕 ") + m.name, Modifier.weight(1f), color = if (m.ms < now.toEpochMilli()) Theme.c.muted else Theme.c.text, fontSize = 15.sp)
+                Text(Fmt.shortDateTime(Instant.ofEpochMilli(m.ms), place.zone), color = Theme.c.muted, fontSize = 14.sp, style = Tnum)
+            }
+        }
+        Text(L("nature.ym.namesNote"), color = Theme.c.muted, fontSize = 12.sp)
+    }
 }

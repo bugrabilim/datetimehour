@@ -1909,7 +1909,9 @@
         "france": "Frankreich (UOIF)",
         "russia": "Geistliche Verwaltung der Muslime Russlands"
       }
-    }
+    },
+    "ezani": "Ezani-Zeit (alla turca): {t}",
+    "ezaniNote": "In der Ezani-Zeit (alla turca) gilt das Abendgebet (Sonnenuntergang) als 12:00; von dort wird gezählt."
   },
   "nature": {
     "title": "Jahreszeiten: Jahreskreis und Sonnenwenden | Saat Tarih",
@@ -2094,6 +2096,45 @@
       "cemre3": "Dritte Cemre (in die Erde)",
       "berdulacuz": "Berd al-adschus („Altweiberkälte“)",
       "eyyamibahur": "Eyyam-ı bahur (die heißesten Sommertage)"
+    },
+    "tw": {
+      "heading": "Dämmerung und Tageslicht",
+      "civil": "Bürgerliche Dämmerung",
+      "nautical": "Nautische Dämmerung",
+      "astro": "Astronomische Dämmerung",
+      "firstLight": "Erstes Licht",
+      "lastLight": "Letztes Licht",
+      "ring": "24-Stunden-Lichtring",
+      "day": "Tag",
+      "night": "Nacht",
+      "now": "Jetzt",
+      "note": "Morgens und abends: Die Sonne steht 0°–6° (bürgerlich), 6°–12° (nautisch) und 12°–18° (astronomisch) unter dem Horizont. Erstes Licht ist der Beginn der astronomischen Morgendämmerung, letztes Licht das Ende der astronomischen Abenddämmerung. Näherungswerte."
+    },
+    "ym": {
+      "heading": "Vollmonde {y}",
+      "count": "{y} gibt es {n} Vollmonde.",
+      "blue": "Blauer Mond: {date} (zweiter Vollmond in einem Kalendermonat).",
+      "noBlue": "In diesem Jahr gibt es keinen Blauen Mond.",
+      "colDate": "Datum und Uhrzeit",
+      "colName": "Traditioneller Name",
+      "namesNote": "Die Namen folgen der nordamerikanischen Tradition (Old Farmer's Almanac); die deutschen Formen sind Übersetzungen. Der Erntemond ist der Vollmond, der der Herbst-Tagundnachtgleiche am nächsten liegt.",
+      "harvest": "Erntemond",
+      "blueName": "Blauer Mond",
+      "wheel": "Vollmondrad des Jahres",
+      "names": [
+        "Wolfsmond",
+        "Schneemond",
+        "Wurmmond",
+        "Rosa Mond",
+        "Blumenmond",
+        "Erdbeermond",
+        "Hirschmond",
+        "Störmond",
+        "Maismond",
+        "Jägermond",
+        "Bibermond",
+        "Kalter Mond"
+      ]
     }
   },
   "weather": {
@@ -2614,7 +2655,9 @@
         "q": "Warum unterscheiden sich Hidschri-Daten von Land zu Land?",
         "a": "Manche Länder legen den Monatsbeginn nach der Sichtung der Mondsichel fest, andere per Berechnung. Die Türkei nutzt den berechneten Diyanet-Kalender, Saudi-Arabien den Umm-al-Qura-Kalender; beide können um einen Tag voneinander abweichen."
       }
-    ]
+    ],
+    "rumi": "Rumi (osmanisch): {date}",
+    "rumiNote": "Das Rumi-Datum folgt dem julianischen Kalender (13 Tage zurück), Jahresbeginn 1. März, wie in traditionellen türkischen Almanachen."
   },
   "timeCalc": {
     "title": "Zeitrechner: Stunden addieren und Zeitdauer berechnen | Saat Tarih",

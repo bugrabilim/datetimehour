@@ -1948,7 +1948,9 @@
         "france": "France (UOIF)",
         "russia": "Spiritual Administration of Muslims of Russia"
       }
-    }
+    },
+    "ezani": "Oras na ezani (alaturka): {t}",
+    "ezaniNote": "Sa oras na ezani (alaturka), 12:00 ang oras ng dasal sa paglubog ng araw at doon nagsisimula ang bilang."
   },
   "nature": {
     "title": "Mga Panahon: Gulong ng Panahon, Equinox at Solstice | Saat Tarih",
@@ -2133,6 +2135,45 @@
       "cemre3": "Ikatlong cemre (sa lupa)",
       "berdulacuz": "Berd al-ajuz (“lamig ng matandang babae”)",
       "eyyamibahur": "Eyyam-ı bahur (pinakamainit na araw ng tag-init)"
+    },
+    "tw": {
+      "heading": "Takipsilim at liwanag",
+      "civil": "Civil twilight",
+      "nautical": "Nautical twilight",
+      "astro": "Astronomical twilight",
+      "firstLight": "Unang liwanag",
+      "lastLight": "Huling liwanag",
+      "ring": "24-oras na singsing ng liwanag",
+      "day": "Araw",
+      "night": "Gabi",
+      "now": "Ngayon",
+      "note": "Mga saklaw sa umaga at gabi: ang Araw ay 0°–6° (civil), 6°–12° (nautical) at 12°–18° (astronomical) sa ilalim ng abot-tanaw. Ang unang liwanag ay simula ng astronomical dawn, ang huling liwanag ay pagtatapos ng astronomical dusk. Tantiya lamang."
+    },
+    "ym": {
+      "heading": "Mga kabilugan ng buwan sa {y}",
+      "count": "May {n} kabilugan ng buwan sa {y}.",
+      "blue": "Blue Moon: {date} (ikalawang kabilugan sa isang buwan ng kalendaryo).",
+      "noBlue": "Walang Blue Moon ngayong taon.",
+      "colDate": "Petsa at oras",
+      "colName": "Tradisyonal na pangalan",
+      "namesNote": "Ang mga pangalan ay mula sa tradisyong Hilagang Amerikano (Old Farmer's Almanac). Ang Harvest Moon ang kabilugang pinakamalapit sa equinox ng Setyembre.",
+      "harvest": "Harvest Moon",
+      "blueName": "Blue Moon",
+      "wheel": "Gulong ng kabilugan ng taon",
+      "names": [
+        "Wolf Moon",
+        "Snow Moon",
+        "Worm Moon",
+        "Pink Moon",
+        "Flower Moon",
+        "Strawberry Moon",
+        "Buck Moon",
+        "Sturgeon Moon",
+        "Corn Moon",
+        "Hunter's Moon",
+        "Beaver Moon",
+        "Cold Moon"
+      ]
     }
   },
   "weather": {
@@ -2653,7 +2694,9 @@
         "q": "Bakit magkakaiba ang petsang Hijri sa iba't ibang bansa?",
         "a": "May mga bansang nagsisimula ng buwan sa pagkakita ng gasuklay na buwan, at ang iba ay ayon sa kuwenta. Kalendaryong kinuwenta ng Diyanet ang gamit ng Türkiye at kalendaryong Umm al-Qura naman ang sa Saudi Arabia; maaari silang magkaiba ng isang araw."
       }
-    ]
+    ],
+    "rumi": "Rumi (Ottoman): {date}",
+    "rumiNote": "Ang petsang Rumi ay sumusunod sa kalendaryong Julian (13 araw na huli) at nagsisimula ang taon sa 1 Marso, gaya ng mga tradisyonal na almanakeng Turko."
   },
   "timeCalc": {
     "title": "Time calculator: magdagdag, magbawas at oras sa pagitan | Saat Tarih",
