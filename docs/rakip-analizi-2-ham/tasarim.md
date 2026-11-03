@@ -214,3 +214,106 @@ Yöntem: Her görüntü Read ile açıldı, renkler PIL ile piksel düzeyinde ö
 - **Önceki notla karşılaştırma:** "Yağmur damlalı cam zemin", "Ankara >", "11°", "Yağmur", en yüksek/en düşük, 9 saatlik şerit, dört kare kart, video reklam, 5 sekme, kırmızı noktalar, banka reklamı: hepsi doğru. **Eksik:** açılır panel tutamağı; etiket taşmaları; reklamın 30 sn'lik video olduğu ve sessize alma/kapatma düğmeleri; kartların pastel gradyan renkleri; sıcaklığın büyük ince yazı tipi.
 - Bizde: Saat ekranı hava alanı var (iOS `HomeItems.swift` `weather`), havaya göre zemin yalnız tam ekranda (`fsBg = weather`) → mevcut #8. Sabah sekmesi bizde yok; "Günaydın kartı" alarmdan sonra bir kez (iOS `Morning.swift`).
 
+### 1.21 `cb653e11` — Adı görünmeyen alarm uygulaması, Premium (abonelik) sayfası
+- Ad görünmüyor. **Büyük olasılıkla 1.9/1.10'daki sürüm 2.2 uygulamasıyla aynı:** aynı yuvarlak hatlı geometrik yazı tipi (SF değil), aynı sistem mavisi (#007aff), aynı İngilizce arayüz, alarm sesi övgüsü. Kesin değil.
+- Durum çubuğu 13:15, pil 84. Zemin **#ffffff** (%80).
+- Yukarıdan aşağıya: sağ üstte ince gri **×** (#8e8e93, ~20 pt; ilk karede görünür, gecikme ölçülemedi); başlık "Upgrade to Premium" (siyah Black/Heavy ~34 pt); "₺399,99 billed weekly, cancel anytime" (siyah Regular ~20 pt); sol blok gri defne dalları içinde "1K+" + "**Rattings**" (yazım hatası, önceki notta var); sağ blok "4.6 STAR RATING" (Bold büyük harf) + 5 **emoji yıldız** ⭐ (3B Apple emojisi); yorum kartları yatay kaydırmalı (dolgu **#f8f8fb**, ~270×190 pt; köşe ölçülemedi, kart rengi zemine çok yakın): 5 düz sarı yıldız (emoji değil, başka çizim) + yorum metni ortalı. 1. kart İspanyolca "Tiene unos buenos sonido de alarma para despertar de buen ánimo." (**dilbilgisi hatası: "unos buenos sonido" → "sonidos"**; Türk kullanıcıya İspanyolca yorum gösteriliyor), 2. kart "Absolutel… custom…" (İngilizce, kesik).
+- Büyük boş beyaz alan (~100 pt) yorumlarla alt blok arasında.
+- Alt blok: kalkan+✓ simgesi "Auto renew. Secure with App Store" (koyu gri **#4a4a4a**); birincil düğme **"Continue"**: **#007aff** (iOS sistem mavisi birebir), beyaz Semibold ~22 pt, ~345×49 pt, **tam hap**; "View All Plans" (gri #8e8e93, Semibold, altı çizili); "Terms | Restore | Privacy" (gri, dikey çizgi ayraçlı).
+- İki farklı yıldız çizimi (emoji ve düz) aynı sayfada: tutarsız (önceki notta yok).
+- Önceki not doğru: beyaz zemin, ince gri ×, başlık, haftalık ₺399,99, "1K+ Rattings", "4.6 STAR RATING", İspanyolca yorum, kalkan satırı, mavi "Continue", "View All Plans", "Terms | Restore | Privacy". **Eksik:** İspanyolca yorumdaki dilbilgisi hatası, iki yıldız türü, büyük boşluk, düğmenin tam olarak sistem mavisi olması.
+
+### 1.22 `f7fa806f` — Desk Clock, iOS widget ekleme sayfası (sistem ekranı)
+- Ad görünüyor: sol üstte uygulama simgesi (beyaz kadran, kırmızı saniye) + "**Desk Clock**". Bu sayfa iOS'un kendi widget galerisi sayfası (sistem arayüzü; uygulama yalnız başlık, açıklama ve önizlemeyi verir).
+- Arkada ana ekran: mavi-gri duvar kâğıdı ve "📍 İstanbul" yazan iki widget kenarı (başka bir uygulamanın/uygulamanın widget'ları; kimin olduğu görülmedi).
+- Sayfa: zemin **#f6f6f6** (iOS açık sayfa), üstte tutamak çizgisi, sağ üstte siyah ×.
+- Başlık "Desk Clock Widget" (siyah Bold ~30 pt); açıklama (gri **#b6b7b6**, Regular ~19 pt, ortalı, 4 satır): "After adding to homescreen, long press to edit. (Transparent Widget and Blur works  Only for iPhone after adding Home screen wallpaper in App)". **Hatalar (önceki notta yok):** "works" (work olmalı), iki boşluk, cümle ortasında büyük "Only", "homescreen"/"Home screen" tutarsız yazım, çevrilmemiş.
+- Önizleme: iOS 26'nın eğik (perspektifli) widget önizlemesi; büyük kare widget, zemini kadranın deniz fotoğrafının bulanığı (#70838c / #263a45 ölçüldü), içinde **deniz dokulu analog kadran**: beyaz ince dış halka, beyaz ince çizgiler, beyaz **SF Pro Light** rakamlar (1–12), beyaz kalın akrep (1'e), **açık mavi** uzun ibre (8'e; ölçüm noktası ibreye denk gelmedi, renk 1.5'teki #88d3fb ile aynı görünüyor: ölçülmedi), ince beyaz ibre (4'e). Önceki not "ince beyaz rakamlar, açık mavi saniye ibresi" diyor; bu görüntüde açık mavi ibre en uzun ibre ve üç ibre var: hangi ibrenin saniye olduğu tek kareden kesin değil.
+- 4 sayfa noktası (3. seçili, siyah), mavi **"⊕ Araç Takımını Ekle"** (dolgu **#3a84f4**, iOS'un kendi düğmesi, tam hap ~345×52 pt). "Araç Takımı" = iOS Türkçesinde "Widget".
+- Bu görüntüden: şeffaf/bulanık widget (mevcut #76) ve fotoğraf dokulu analog widget (mevcut #76). Bizde widget önizleme açıklaması (`description`) var mı: iOS `Widget/Sources/*.swift` `.description(...)` ile veriliyor (bkz. Bölüm 3).
+
+### 1.23 `5bfb27a0` — Adı görünmeyen saat/alarm uygulaması (reklamlı, sürüm 52), Ayarlar: "Lavanta Rüyası" teması
+- Ad görünmüyor (sürüm 52 1.25'te). Durum çubuğu 13:20, pil 82.
+- **Bütün sayfa zemini temanın renginde dikey gradyan:** üst **#2f263d / #342b46** (mor-gri) → orta **#2b223c** → alt **#100f11** (siyaha yakın). Kartın arkasında tema renginde yumuşak ışıma (glow).
+- Yukarıdan aşağıya:
+  1. "Ayarlar": beyaz, **ince (Light) ~30 pt**, ortalı; büyük başlık değil, ortalı ince başlık.
+  2. Bölüm başlığı **"SENIN MODUN"**: gri **#a5a0af**, büyük harf, geniş harf aralığı (~0,2 em), Semibold ~16 pt. **Türkçe büyük harf hatası: "SENİN" olmalı; noktasız "I" basılmış** (kırpılıp büyütülerek doğrulandı; uygulama büyük harfe çevirirken Türkçe yerel ayarı kullanmıyor). **Önceki not bunu "SENİN MODUN" diye düzeltilmiş yazmış; hata kaçmış.**
+  3. "Farklı bir atmosfer için yana kaydırın" (gri #9c98a3, Regular ~18 pt, hafif harf aralıklı).
+  4. Tema kartı karuseli: ortadaki kart ~229×163 pt (ekran genişliğinin %58'i), **2 pt beyaz çerçeve**, köşe ~19 pt (ölçüldü), dolgu çapraz gradyan sol üst **#321e8e** → sağ alt **#866cc2**; ortada "Lavanta Rüyası" (beyaz Bold ~28 pt, hafif gölgeli); sağ üstte beyaz daire içinde mor ✓. Solda yeşil (#4faf6d) kart kenarı, sağda koyu bordo (#26021b) kart kenarı görünüyor (yana kaydırma ipucu).
+  5. "SAAT GÖRÜNÜMÜ" (aynı bölüm başlığı biçimi, burada "Ü"ler doğru).
+  6. Seçenek satırları (ayrı kartlar, ~276×45 pt, köşe ~16 pt): **seçili "Dijital"**: dolgu **#3e3948**, 1 pt kenar **#7763a1** (tema rengi), solda tema renginde kronometre simgesi (**#ac89f8**), beyaz Bold yazı, sağda tema renginde dolu daire ✓ (#ac89f8). Seçili olmayan "Analog": dolgu #1c1922, kenar gri, gri simge ve gri Regular yazı. 3. satır ("Minimal") alt çubuğun arkasında kesik.
+- Alt çubuk: dolgu **#010101** (siyah), 6 sekme, **yalnız simge**; seçili olmayan simgeler gri **#3e3d3e** (çok düşük karşıtlık: siyah üstünde ~1,9:1, ölçülen renklerden hesap), seçili "Ayarlar" tema renginde **#ac89f8** simge + altında yazı. Simgeler: çalar saat, küre, kum saati, kronometre, hilal, dişli (SF Symbols'e benziyor: "alarm", "globe", "hourglass", "stopwatch.fill", "moon.fill", "gearshape.fill").
+- Reklam: alt çubuğun altında beyaz banner "Note Together / App Store" + mavi "İndir" (#68a2f6 ölçülen yazı çevresi), solda ⓘ ve üç nokta.
+- Yazı tipi: başlık ince, bölüm başlıkları geniş aralıklı büyük harf; SF Pro ile uyumlu görünüyor ama harf aralığı özel. Kesin ad ölçülemedi.
+
+### 1.24 `2c3d52a6` — Aynı uygulama, Ayarlar: "Mars Tozu" teması
+- 1.23 ile aynı sayfa, tema değişince **bütün zemin, kart ışıması, seçili satır kenarı, simge ve alt çubuk seçili rengi değişiyor**.
+- Ölçülen: zemin üst **#3b1d1d / #43201f** (bordo-kahve) → orta #391817 → alt **#110e0e**; kart gradyanı **#1f011c** (sol üst, mürdüm-siyah) → **#5e0e08** (sağ alt, koyu kırmızı); seçili satır dolgu **#463332**; vurgu (simge, ✓, sekme) **#ec5f59** (mercan kırmızı). Solda önceki tema kartı (mor #8164bf), sağda sonraki (lacivert #171437) görünüyor.
+- Gri metinler de temaya göre ısınmış: bölüm başlığı **#ac9a99** (Lavanta'da #a5a0af) → nötr gri değil, tema tonlu gri. Önceki notta yok.
+- Önceki not doğru (zemin gradyanı, ışıyan kart, beyaz daire ✓, seçili satır tema renginde çerçeveli). Eksik: tema tonlu griler, alt çubuğun düz siyah olması (gradyana katılmıyor), seçili olmayan sekme simgelerinin çok sönük (#3e3d3e) olması, "SENIN" hatası.
+- Bizde: 24 renk teması var, zemin ve kartlar ana renge doğru karışıyor (`mobile/ios/App/Sources/Theme.swift`, `AccentPalette`; Android `Theme.kt`), ama **ad yok, gradyan yok, büyük önizleme kartı yok**: seçim renk daireleriyle (mevcut #78). Bkz. Bölüm 3–4.
+
+### 1.25 `8576466c` — Aynı uygulama (sürüm 52), Ayarlar alt kısmı: "DESTEK VE TOPLULUK"
+- Bu görüntüde tema **mavi/lacivert** (zemin üst **#243d4d / #274354** → alt **#081116 / #010305**); vurgu (seçili sekme) **#68c1f9** (açık gök mavisi). Bu tema 1.23–1.24'ten ayrı bir "SENİN MODUN" seçeneği; adı bu görüntüde görünmüyor (önceki nottaki "Siber Kireç" zeytin-sarı tema, bu değil).
+- **Üstte iOS bildirimi (uygulamanın değil):** Google Fotoğraflar simgesi, "🎬 Geçen yıl 3 Kasım tarihinde", "şimdi", küçük fotoğraf; cam bildirim kartı başlığı ("Ayarlar") örtüyor. Önceki notta yok (önemsiz ama ayırt edilmeli).
+- Bölüm başlığı "DESTEK VE TOPLULUK" (gri, geniş harf aralıklı büyük harf).
+- Satırlar (kartsız, doğrudan zemin üstünde; satır yüksekliği ~55–75 pt; sağda gri ›):
+  - ☆ **Uygulamayı Puanla** — "Uygulamamızı beğendiyseniz, lütfen mağazada puanlayın"
+  - ⟨ **Arkadaşlarınla Paylaş** — "Arkadaşlarına bu harika çalar saatten bahset"
+  - ⚠︎(konuşma balonu) **Geri Bildirim Gönder** — "Düşüncelerinizi paylaşarak gelişmemize yardımcı olun"
+  - 🛡ⓘ **Gizlilik Politikası**
+  - ⠿ (3×3 nokta) **Diğer Uygulamalar**
+  - Başlıklar beyaz Bold ~22 pt + **geniş harf aralığı** (~0,05 em); açıklamalar gri-mavi **#9ba9b1** Regular ~17 pt.
+  - **Simgeler kiremit/kahve-kırmızı** (ölçülen **#70463d**), ince çizgi: tema mavi olduğu hâlde simgeler tema rengine uymuyor (sabit renk). Önceki not "turuncu simge" diyor: ölçüm **#70463d** (koyu kiremit, mavi zeminde düşük karşıtlık).
+  - **Hitap tutarsızlığı:** "Arkadaşlarınla Paylaş / Arkadaşlarına … bahset" (sen) ile "beğendiyseniz, lütfen … puanlayın / yardımcı olun" (siz) aynı listede. Önceki notta yok.
+- "**UYGULAMA BILGISI**": yine Türkçe büyük harf hatası ("BİLGİSİ" olmalı, iki noktasız I). Önceki not "UYGULAMA BİLGİSİ" diye düzeltilmiş yazmış.
+- "Versiyon" (beyaz Regular ~22 pt) / "52" (gri): "Sürüm" yerine "Versiyon".
+- Alt çubuk ve banner reklam 1.23 ile aynı; seçili sekme **#68c1f9**.
+
+### 1.26 `9981f8f6` — Aynı uygulama, Ayarlar: saat görünümü, dil, yazı boyutu (mavi tema)
+- "Ayarlar" ince ortalı başlık; başlık alanı zeminden biraz açık bir şerit (**#294557**, altında çizgi yok).
+- "Dijital" (seçili: dolgu **#465f6e**, 1 pt kenar **#5590b3**, mavi kronometre simgesi ve dolu ✓), "Analog" (saat simgesi, gri yazı), "•••  Minimal" (üç nokta simgesi). Satır kartları ~276×45 pt, köşe ~16 pt, seçili olmayan dolgu **#324e5f** + ince açık kenar.
+- **"DIL"** bölüm başlığı: **Türkçe büyük harf hatası** ("DİL" olmalı). Önceki not '"DİL" satırı' diye düzeltilmiş yazmış. Altında tek satırlık kart "🌐 Dil ›" (bölüm başlığıyla satır aynı sözcük: gereksiz tekrar).
+- "YAZI BOYUTU" kartı (dolgu **#161f24–#182227**, köşe ~20 pt): "Uygulamadaki tüm yazıların büyüklüğünü ayarlayın" (gri), "A−" … kaydırıcı … "A+"; kaydırıcı **13 durak** (her biri küçük mavi nokta; 85'ten 145'e %5 adım; sayıldı), dolu kısım ve başparmak **#68c1f9** (başparmak ~16 pt daire), "%85" (gri), **"%100"** (mavi **#68c1f9**, Bold), "%145" (gri); "Örnek metin önizlemesi" (beyaz Regular ~22 pt; kaydırıcıya göre büyüyüp küçülen örnek).
+- Yüzde işareti Türkçe kurala uygun önde ("%85"): doğru yerelleştirme.
+- Önceki not doğru (13 adım, %85/%100/%145, örnek metin). Eksik: "DIL" hatası, kartın tema tonlu zemin rengi, seçili satır kenarı.
+- Bizde: uygulama içi yazı boyutu yok (mevcut #77). iOS'ta Dynamic Type'a uyum var mı: Bölüm 3'te denetlendi.
+
+### 1.27 `9f873471` — Aynı uygulama, Ayarlar: "Siber Kireç" teması
+- Zemin: **zeytin** üst **#3d3f1e / #454721** → orta #3b3e19 → alt **#11120d**; kartın çevresinde **limon-sarı ışıma**.
+- **Tema kartının kendisi lacivert-mor** (ölçülen dolgu #2d295d / #2a2754 / #1e1b44, sol üst #100e2c): sayfa zeytin, kart lacivert, vurgu limon (**#f1fe67**: seçili sekme, ✓ dairesi, kronometre simgesi, kart çerçevesindeki ışıma). Yani kart temanın "önizlemesi" değil, ayrı bir renk; **kart ile uygulanan zemin uyumsuz** (önceki not "zeytin-sarı" zemini yazmış, kartın lacivert olduğunu yazmamış).
+- ✓ dairesi beyaz, içindeki işaret limon (#f1fe67 beyaz üstünde: düşük karşıtlık, ölçülen renklerden ~1,1:1, işaret neredeyse görünmüyor).
+- Seçili "Dijital" satırı dolgu **#484a32**, kenar limon tonlu.
+- Komşu kartlar: solda kırmızı (#590d0a, Mars Tozu), sağda **açık** (#dee7f8, açık mavi-beyaz): açık renkli tema da var gibi (görülmedi).
+- "SENIN MODUN" hatası bu temada da var.
+- Gözlem (dört tema birlikte): uygulama **her temada vurgu rengini, zemin gradyanını, kart ışımasını ve gri tonlarını birlikte değiştiriyor**; alt çubuk ve reklam her zaman siyah/beyaz kalıyor.
+
+### 1.28 `c81f28cc` — Fullscreen Clock, uygulama izleme (ATT) izni penceresi (yatay)
+- Ad görünüyor: "“Fullscreen Clock”, diğer şirketlerin uygulamalarındaki ve web sitelerindeki eylemlerinizi takip etsin mi?" (iOS'un kendi metni, siyah Bold).
+- Pencere iOS 26 cam görünümlü sistem uyarısı; sol üstte turuncu uygulama simgesi (beyaz takip yolu çizgisi) + mavi el simgesi (ATT simgesi).
+- Uygulamanın gerekçe metni (gri): "Your permission helps us show more relevant ads and support the" → **cümle yarıda kesilmiş** (yatay ekranda pencere yüksekliği yetmemiş; metin kaydırılabilir olabilir ama görünmüyor) ve **çevrilmemiş**. Önceki not yalnız "İngilizce ve çevrilmemiş" diyor; **kesik olduğu eksik**.
+- İki eşit düğme: "Uygulama Beni Takip Etmesin" (açık cam) ve "İzin Ver" (koyu gri #696969 cam): Apple'ın düzeni.
+- Arkada saat ekranı: saf siyah **#000000** zemin, dev açık gri **#cccccc** rakamlar ("1?:?4", ince/Light, SF Pro Light'a benzer, ekran yüksekliğinin ~%40'ı). Yani Fullscreen Clock'un varsayılan görünümü siyah zemin + #cccccc ince rakam (saf beyaz değil, göz yormasın diye gri).
+- Bizde: reklam ve izleme yok; ATT penceresi çıkmaz (iOS `App/Info.plist`'te `NSUserTrackingUsageDescription` yok: Bölüm 3'te denetlendi).
+
+### 1.29 `24ce60b6` — Alarmy, "Alarm bağlı cihazda çalsın mı?" alt sayfası
+- Durum çubuğu 13:21, pil 81. Arkada (karartılmış) alarm listesi: "PRO Free Trial" hapı, "TWS:" kartı, "17 sa. 38 dk. sonra çalacak ›".
+- Alt sayfa: dolgu **#18181b**, üst köşeler ~23 pt (ölçüldü), tutamak yok, ekranın ~%66'sı.
+  - Başlık "Alarm bağlı cihazda / çalsın mı?" (beyaz Bold ~30 pt, ortalı, iki satır).
+  - Alt yazı "Bağlantı kesilirse alarm mevcut cihazda çalar" (gri **#71717a**).
+  - Çizim: üç iç içe daire, dıştan içe **#252b5c → #2c3480 civarı → #3340a3** (lacivertten çivit maviye), ortada lavanta rengi kulaklık simgesi (dolgulu, yuvarlak köşeli). İnce animasyon (dalga yayılması) olabilir; tek kareden görülmedi.
+  - "Ayara gidin" (dolgu **#fc314c**, beyaz yazı, 344×52 pt); altında düğmesiz gri yazı "Hayır, teşekkürler" (#71717a, Semibold).
+- "Ayara gidin": doğal Türkçe "Ayarlara git" olurdu (önceki notta yok).
+- Önceki not doğru. Eksik: renk değerleri, daire renk sıralaması.
+
+### 1.30 `4375fd62` — Alarmy, alarm listesi + "Alarm iznini ver" açıklama penceresi
+- Arkadaki ekran (karartma altında ölçüldü, gerçek renkler daha açık): zemin siyaha yakın (#040405 karartılmış; karartmasız değer ölçülemedi), üstte **"PRO Free Trial"** hapı (sol: kırmızı yıldız rozetli şimşek simgesi, italik kalın "PRO", "Free Trial"; çerçeve kırmızıdan altına gradyan, içi koyu kırmızı-siyah gradyan), sağ üstte "•••".
+- "TWS:" kartı (koyu gri kart, köşe ~20 pt): mavi daire içinde "TWS:", "Wake Up to TWS' Calls 💙" (gri) / "Set TWS Alarms NOW" (beyaz Semibold), sağda ›.
+- "**17 sa. 38 dk. sonra çalacak ›**" (gri Bold ~26 pt): bir sonraki alarma kalan süre, kart değil düz metin.
+- Alarm kartı: haftanın günleri **"P P S Ç P C C"** (gri, geniş aralıklı; Pazar ile başlıyor, aşağıda), dev ince "07:00" (pencerenin arkasında), sağda turkuaz anahtar (karartılmış #165c6d).
+- Sağ altta kırmızı yuvarlak **"+"** yüzen düğme (FAB, ~44 pt çap; karartılmış #831927).
+- Alt çubuk: yüzen koyu cam hap, 5 sekme simge+yazı (Alarm seçili: daha koyu hap), Ayar üstünde kırmızı nokta. Altında "AD | Moovit | Ayrıntıları göster ›".
+- **Açıklama penceresi (uygulamanın kendi penceresi, sistemin değil):** iOS 26 uyarısına benzeyen koyu cam kutu (dolgu ~#232324), köşe ~30 pt; başlık "Alarm iznini ver" (beyaz Bold, sola hizalı), metin "Seni tam zamanında uyandırabilmemiz için alarm iznine ihtiyacımız var" (gri); iki eşit hap düğme dolgu **#3f3f40**: "Şimdi değil" (beyaz) ve "İzin Ver" (**turkuaz #2dbde0** yazı). Kanıt: sistem uyarısı sistem mavisi kullanır, burada uygulamanın turkuazı var ve metin uygulamanın sesiyle ("Seni").
+- Önceki not doğru. Eksik: pencerenin sistem uyarısını taklit ettiği; FAB; **gün harfleri dizisi "P P S Ç P C C" hafta Pazar'la başlıyor** (Pazar, Pazartesi, Salı, Çarşamba, Perşembe, Cuma, Cumartesi). Pazartesi başlasaydı "P S Ç P C C P" olurdu; Türkiye'de hafta Pazartesi başlar → **yerelleştirme hatası** (önceki not dizinin doğru okunuşunu vermiş ama hatayı yazmamış).
+- Bizde: izin öncesi açıklama yok (mevcut #80). Alarm satırında "X sa Y dk sonra" (mevcut #51).
+

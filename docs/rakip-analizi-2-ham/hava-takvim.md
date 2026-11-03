@@ -138,3 +138,122 @@ Ajan notları. Görüntüler App Store lookup (country=tr) `screenshotUrls` / `i
   - Yağış miktarı (mm) — bizde yok — K — ücretsiz.
   - Radar, uydu, yıldırım, deniz suyu sıcaklığı, kar kalınlığı haritaları — bizde yok — B (veri kaynağı yok; Open-Meteo Marine API dalga ve deniz suyu sıcaklığı verir, kar derinliği hourly `snow_depth` var) — ücretsiz.
 
+## Windy.com (App Store id1161387262, TR 4,79 / 15.624 puan; US 4,82 / 80.391; Windyty SE; sürüm 51.030231)
+- Ücret modeli: ücretsiz + Windy Premium (TR: ₺19,99 / ₺309,90 / ₺469,90 kademeleri) + bağış satın almaları ("Donate approx 5 EUR/USD" ₺249,99, 10 EUR ₺499,99, 20 EUR ₺999,99, 100 EUR ₺4.999,99; aylık 3 EUR ₺16,99, 6 EUR ₺34,99). Haritada "Premium" etiketli yuvarlak avatar düğmesi (p2, p5). Premium'da ne kilitli görüntüde yazmıyor (genelde 1 saatlik adım ve daha uzun tahmin; doğrulanmadı). Reklam görülmedi.
+- İncelenen görüntü: 10 iPhone (iPad'e bakılmadı).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: tam ekran hareketli harita (rüzgâr parçacıkları beyaz çizgiler halinde akıyor), üstte arama ("Bristol") ve kalp (favori), sağ altta ev / arama / iğne düğmeleri ve kırmızı yuvarlak hamburger menü, altta oynat düğmesi + gün/saat kaydırıcısı (turuncu "11:00" baloncuğu) ve renk ölçeği. Dokunulan noktada "Forecast for this location / Distance & planning / Sounding" üç düğme.
+- Öne çıkan ekranlar:
+  - Yer tahmini (p6): harita üstte, altta 14 günlük şerit (gün, tarih, simge, sıcaklık; altında yağış rengi çubuğu ve damla sayıları), en altta **meteogram tablosu**: 3 saatlik sütunlar, satırlar: simge, °C (sıcaklığa göre pembe/mavi zemin eğrisi), mm (yağış), kt rüzgâr (renkli hücreler: mavi→yeşil→sarı), kt hamle (turuncu), yön okları; seçili sütun kırmızı çerçeve. Alt çubuk koyu kırmızı (ölçülen #9d0301): "forecast 3 hours", "Display as: Basic ⌄" (Basic / Wave&Tide / Meteogram / Wind), "Fcst model: ECMWF ⌄", paylaş.
+  - Dalga ve gelgit (p7), meteogram (p8: bulut katmanları, basınç mmHg, yağış türü, donma seviyesi m), model karşılaştırma (p9: ECMWF, GFS, MBLUE, ICON-EU, AROME-HD, UKV satır satır rüzgâr).
+  - Radar, uydu, yağış/gök gürültüsü haritası (p1, p2, p5), canlı kameralar (p10: harita üzerinde kamera küçük resimleri, 24 saatlik zaman atlamalı oynatma).
+- Ayarlar: görülmedi.
+- Widget / kilit ekranı / saat (p3, p4): ana ekranda radar haritası widget'ı, istasyon (WMO, "74 min ago", 18°C, DP 16°C, 1004 hPa, 9 km görüş, 1.0 mm, 23 kt), şehir (Edinburgh, 24°/14°, 0.0 mm, 10 kt), saatlik tablo widget'ı (simge + sıcaklık + renkli rüzgâr/hamle satırları). Kilit ekranında **4 günlük sıcaklık çizgi grafiği** (yağış damlalarıyla) ve iki dairesel gün widget'ı (güneş simgesi, 29°/26°, rüzgâr 9 kt). Apple Watch: kadranda 5 günlük eğri komplikasyonu, istasyon kartları (renkli kutular: Temperature sarı, Wind yeşil, Pressure mavi, Visibility pembe), rüzgâr pusulası, radar.
+- Tasarım: koyu gri arayüz (mağaza zemini #30353b, üst çubuk #4d4d4d), harita renk ölçekleri; tablo beyaz zeminde renkli hücreler; kırmızı marka rengi. Yalnız koyu tema görüldü.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Saatlik/3 saatlik tablo (meteogram): satır satır sıcaklık, yağış mm, rüzgâr, hamle, yön; yana kaydırmalı 14 gün — bizde yok (yalnız 24 saatlik simge şeridi) — O — rakipte ücretsiz (1 saatlik adım Premium olabilir, doğrulanmadı).
+  - Model karşılaştırma (ECMWF, GFS, ICON…) — bizde yok — O (yalnız Open-Meteo ile mümkün, `models=` parametresi; WeatherKit tek kaynak) — rakipte ücretsiz.
+  - Kilit ekranında 4 günlük sıcaklık eğrisi widget'ı ve dairesel günlük hava widget'ı — mevcut #14 ve #15'e ek ayrıntı — Premium olabilir.
+  - Dalga, deniz suyu sıcaklığı, kar — bizde yok — O (Open-Meteo Marine API; WeatherKit'te yok) — ücretsiz.
+  - Radar/uydu/kamera haritaları — kapsam dışı (veri yok).
+
+## Yahoo Weather (App Store id628677149, TR 4,59 / 4.018 puan; Yahoo Inc.; sürüm 3.2.6)
+- Ücret modeli: ücretsiz; App Store sayfasında satın alma yok; reklam görüntülerde görülmedi. Veri "Powered by AccuWeather" (p7), hava kalitesi "AQI source: Google" (p6).
+- İncelenen görüntü: 9 iPhone (iPad'e bakılmadı).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: tek sayfa; üst yarıda şehrin **Flickr fotoğrafı** (sağ kenarda dikey "Photo by … on Flickr" atfı), üstünde büyük kalın şehir adı + bölge, altta "Cloudy", büyük "52°", "RealFeel® 55°". Altta koyu kartlar dikey kayar. Alt çubukta solda ayar simgesi, ortada sayfa noktaları (şehirler arası), sağda arama (p6). Favori yerler tam ekran koyu listede (p9): simge, şehir + bölge, sıcaklık; altta "Add place" arama kutusu, sağ üstte kalem (düzenle).
+- Öne çıkan ekranlar:
+  - "NEXT HOUR MINUTECAST®" kartı (p2): "Rain starting in 53 min", Heavy/Moderate/Light ızgarasında mavi sütunlar, "Now … 9:25 AM".
+  - "TODAY – Breezy this afternoon" / "Not as warm with a t-storm" (p2, p4): **günün sözlü özeti**, altında düşük/yüksek ve sağda gün batımı saati (ufuk simgesi "8:27 PM"); saatlik kutucuklar (yağış % mavi, simge, sıcaklık, saat) yuvarlak köşeli koyu kutularda.
+  - Uyarı hapı (p4): beyaz tam genişlik hap "⚠ Coastal Flood Advisory →".
+  - "COMING UP – Breezy this afternoon" + 10 günlük liste (p3): satır başında açılır ok "⌄", simge, düşük–yüksek, sıcaklığa göre yeşil→sarı aralık çubuğu.
+  - Hava kalitesi ve polen (p6): "Good air quality – For most people, the air feels fresh and clean.", yeşil ilerleme çubuğu "82/100", "Local AQI: 51 AQI (US)", "AQI source: Google". Pollen: üç halka (ot, ağaç, çimen simgeleri; halkalar dolulukla renkli), Weed/Tree/Grass segment, "Ragweed – Out of season" yeşil etiket.
+  - **Açıklamalı ölçüm kartları** (p6, p7): iki sütun kare kartlar; başlık durumu sözle ("CALM", "HUMID", "LOW UV", "AVERAGE VISIBILITY"), değer ("3 mph SW", "83% humidity", "UV 2", "8 mi"), altta bir cümle ("Barely a breeze.", "Cool air keeps it comfortable.", "No sunburn risk right now.", "Distant views are limited but close range is clear."); sağ üstte küçük simge (yön oku, damla, güneş, göz).
+  - Ay kartı (p7): "Waning Gibbous – 12 days until next new moon", Moonrise 11:36 PM, Moonset 9:19 AM, Illumination 89%, sağda gerçekçi Ay fotoğrafı.
+  - Radar (p8): koyu küre görünümlü harita (Mapbox © OpenStreetMap), altta "Radar now" mor kaydırıcı.
+- Ayarlar: görülmedi.
+- Widget (p5): orta boy widget, zemini şehrin fotoğrafı, "Seattle ➤", L 52° H 68°, "56°", "Rain soon", sağ üstte beyaz hap "⚠ Flood Watch", 3 saatlik sütun (yağış %, simge, sıcaklık).
+- Tasarım: mağaza zemini açık mavi #dff2f9; uygulama koyu kartlar (#222222, ~16 pt köşe), kalın geometrik başlık yazısı (mağazada Yahoo Sans), sarı dolgulu güneş + beyaz bulut simgeleri, mor vurgu (radar kaydırıcısı). Açıklamada açık ve koyu tema var; görüntülerde yalnız koyu.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Ölçüm kartlarında değer + durum adı + bir cümlelik açıklama ("Hafif esinti", "Güneş yanığı riski yok") — bizde yok (yalnız başlık + değer: `WeatherView.swift` `pill()`, `WeatherScreen.kt` `Pill()`) — K (15 dilde metin gerekir) — ücretsiz.
+  - Hava sekmesinde Ay kartı (evre, yeni aya kalan gün, doğuş/batış, aydınlanma) — bizde Mevsimler/Ay ekranında var (`MoonView.swift`, `MoonScreen.kt`), hava sekmesinde yok — K — ücretsiz.
+  - Günün sözlü özeti ve uyarı hapı — TWC bölümündeki notlar.
+  - Şehir fotoğrafı zemin (Flickr) — bizde yok — önerilmez (lisans ve sunucu gerektirir).
+  - Kayıtlı yerler listesinde her yerin anlık sıcaklığı — bizde kayıtlı yerler var (`Places.swift`, `places.saved`) ama sıcaklık yok — K (her yer için ayrı çağrı; WeatherKit kotası) — ücretsiz.
+  - Hava kalitesi, polen — AccuWeather bölümündeki notlar.
+
+## Fantastical Calendar (App Store id718043190, TR 3,05 / 157 puan; US 4,22 / 24.817; Flexibits Inc.; sürüm 4.2.4)
+- Ücret modeli: ücretsiz temel + **Flexibits Premium** abonelik (₺179,99 aylık, ₺1.299,99 yıllık olduğu anlaşılıyor; aile ₺249,99 / ₺1.999,99; 2020 yükseltme kademeleri aynı fiyatlarla). 14 günlük ücretsiz deneme. Premium'da: Openings (uygunluğa göre randevu), Proposals (toplantı anketi), Zoom/Meet/Teams, 10 günlük hava (RealFeel, MinuteCast; AccuWeather), **ilginç takvimler aboneliği** (spor, TV, tatil; SchedJoules), takvim setleri (konuma göre), şablonlar, Apple Watch, saat dilimi, seyahat süresi, özel etkinlik renkleri, **özel uygulama simgeleri**, özel uyarı sesleri. Ücretsizde 3 günlük hava. Reklam yok.
+- İncelenen görüntü: 10 iPhone (iPad'e bakılmadı).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: üstte büyük "September" (siyah) + "2025" (kırmızı #e00 civarı) başlık; altında **DayTicker** (yana kayan gün şeridi: gün adı, tarih, altında renkli etkinlik çubukları/noktaları; bugün mavi daire #47a8f5), aşağı çekince tam ay ızgarasına açılıyor (gri tutamak). Altında **ajanda listesi**: "TODAY 9/15/25" (mavi), sağda o günün **hava durumu** "74°/60°" + simge; tüm gün etkinlikleri renkli dolgulu hap ("Book delivery" kahverengi), saatli etkinlikler renkli nokta + saat + başlık + konum (gri), görevler kare onay kutusu, görüntülü toplantıda mavi "Join" hap düğmesi. En altta yüzen çubuk: menü, "My Calendar Set" hapı, arama, "+".
+- Öne çıkan ekranlar:
+  - Görünümler (p3): ay + ajanda (koyu), **hafta** (saat ızgarası, günlerin altında hava simgeleri, şimdi çizgisi kırmızı "9:41"), **ay ızgarasında etkinlik adları** (her hücrede renkli noktalı kısa adlar, "2 more…"), **yıl görünümü** ısı haritası gibi (günler etkinlik yoğunluğuna göre koyu sarı/turuncu kutular, bugün mavi). Açıklamada ayrıca gün ve çeyrek görünümü.
+  - Doğal dille ekleme (p4): "Status meeting with Michael every Tuesday at 2pm." konuşma baloncuğu → mor etkinlik kartı "2:00 PM Status meeting · Google Meet", katılımcı onay rozetleri. Gün görünümünde "MONDAY 73°/60°" hava.
+  - İlginç takvimler (p6): "Popular" listesi: NYT Astronomy and Space Calendar, **Moon Phases** (+ Subscribe mavi hap, "Preview" kaydırmalı örnek etkinlik "New Moon"), **Name Days**, **Week Numbers**, **Day Numbers**; altta kategori simgeleri (genel, spor, sağlık, TV, finans).
+  - Hava (p7): "Mon, Sep 15 – Weather": 73°, ↑73° ↓60°, "Now in New York, NY", "Rain starting in 11 min" (mavi), **gün doğumu–batımı yayı** (6:36 AM – 7:05 PM, turuncu yay üzerinde güneş), "View Full Forecast on AccuWeather ›", 5 günlük sütunlar (simge, yüksek/düşük, doğuş/batış saatleri).
+  - Özelleştirme (p8): alternatif uygulama simgeleri (6 tasarım: klasik, yüz, çiçekli, koyu, …).
+  - Toplantı (p9): Google Meet, Zoom, Teams, RingCentral, Skype bağlantıları ve "Join".
+- Ayarlar: görülmedi.
+- Widget (p10): açık ve koyu sürümler: "JULY Thursday 17" büyük tarih + hava "75°/65°"; ay ızgarası + hava; **büyük widget: tarih + yoğunluk ısı haritalı ay** (günler etkinlik sayısına göre açık sarı→turuncu→kırmızı, bugün mavi); sıradaki etkinlikler listesi ("Join" düğmeli); "THU JUL 17" + turuncu tüm gün hapı.
+- Tasarım: açık temada beyaz/kırık beyaz (#f7f6fb mağaza, #fffbef hücre), koyu temada #101010; kalın SF Pro başlıklar (ay adı siyah, yıl kırmızı), küçük büyük harfli gün adları, renkli etkinlik noktaları, hap biçimli tüm gün etkinlikleri, mavi hap düğmeler.
+- Hatalar: görülmedi. TR puanı düşük (3,05; abonelik tepkisi olduğu sanılıyor, doğrulanmadı).
+- Bizde olmayan ya da farklı olan:
+  - Takvimde **hafta, gün, yıl (ve ajanda)** görünümleri — bizde yalnız ay ızgarası + seçili günün listesi (`CalendarTab.swift` `MonthGrid`, `CalendarScreen.kt` `MonthGrid`); sitede yıl sayfası var (`/takvim/<yıl>/`) — O — rakipte ücretsiz.
+  - Ay ızgarası hücresinde etkinlik adları (bizde yalnız renkli noktalar, en çok 3 + telefon etkinliği gri nokta) — K — ücretsiz.
+  - Yana kayan hafta şeridi (DayTicker) ile ay ızgarası arasında aşağı çekerek geçiş — bizde yok — O — ücretsiz.
+  - Ajanda/gün başlığında hava ("74°/60°" + simge) ve hafta görünümünde gün başına hava simgesi — bizde takvimde hava yok — K (WeatherKit 10 gün, Open-Meteo 16 gün) — rakipte 3 gün ücretsiz, 10 gün Premium.
+  - Doğal dille etkinlik ekleme ("Salı 14'te toplantı") — bizde yok (sistem düzenleyicisi: `CalendarTab.swift` `EventEditor`; Android sistem takvim uygulaması) — B (15 dil ayrıştırıcı) — ücretsiz.
+  - **Abone olunabilir takvimler**: Ay evreleri, hafta numaraları, yılın günü, isim günleri — bizde sitede Ay .ics ve tatil .ics var (`/ics/<dil>-moon.ics`, `/ics/<dil>-holidays.ics`, `-days.ics`), uygulama takviminde hafta numarası ve yılın günü seçili gün başlığında yazıyor ama ızgarada hafta numarası sütunu yok, Ay evresi takvim ızgarasında yok — K (ızgarada hafta no sütunu, Ay evresi simgesi; uygulamada .ics aboneliğine bağlantı) — Premium.
+  - Yıl görünümü ısı haritası (etkinlik yoğunluğu) — bizde yok — O — ücretsiz.
+  - Takvim widget'ları (büyük tarih + hava, ay ızgarası, yaklaşan etkinlikler) — mevcut #15'e ek ayrıntı (ayrıca ay ızgarası widget'ı ve "tarih + hava" widget'ı) — ücretsiz.
+  - Alternatif uygulama simgeleri — mevcut #13'e ek ayrıntı — Premium.
+
+## Calendars・Daily Planner, To do (Readdle) (App Store id608834326, TR 4,67 / 528 puan; US 4,72 / 122.557; Readdle Technologies; sürüm 5.41.2)
+- Ücret modeli: ücretsiz + Calendars PRO abonelik (1 Month ₺42,99; 1 Year ₺144,99 / ₺559,99 / ₺799,99) ve eski tek seferlik satın almalar ("Calendars: Schedule Planner" ₺399,99, "Full Pack" ₺699,99, "Recurring Events" ₺1.799,99, "Smart Input Upgrade" ₺99,99, "Interesting Calendars" ₺11,99). Yani doğal dil girişi ("Smart Input") ve ilginç takvimler ayrıca ücretli olmuş. Deneme süresi sayfada görülmedi. Reklam görülmedi.
+- İncelenen görüntü: 10 iPhone (iPad'e bakılmadı).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: lacivert-mor gradyan üst çubuk; hamburger menü + görünüm sekmeleri **List / Day / Week / Month | Planner** (seçili sekme yarı saydam hap). Ajandada alt çubukta takvim, arama, şimşek (hızlı ekleme), "+".
+- Öne çıkan ekranlar:
+  - Month (p2): hücre içinde **etkinlik adları** renk şeritli kısa satırlar (sol kenarı koyu renkli çizgi, zemini açık ton), çok günlük etkinlik ("Trip to Japan") hücreler boyunca tek şerit, bugün mavi dolgulu tarih "6", geçmiş haftalar gri; görevler onay kutulu.
+  - Day (p3, p4): "Wednesday, 23 Oct" + sağda **"H: 55° L: 34°" ve hava simgesi**, "all-day" satırı, saat ızgarası, şimdi çizgisi koyu etiket "10:30", etkinlik blokları pastel (pembe, şeftali, açık mavi, mor), altta yatay gün seçici (bugün mavi kapsül "Wed 23 Oct").
+  - Week (p3): günler satır satır (Tue 22, Wed 23…), her günün etkinlikleri yan yana kartlar (başlık, saat, süre "1h").
+  - Planner (p4, p5): gün görünümünün altında açılan "Today 4" görev sayfası; To Do listesinde Overdue / Today grupları, renkli onay kutuları, liste etiketleri (Inbox, Home, Work, Groceries).
+  - Agenda / List (p6): "Today, 24 Oct" mavi + sağda "H: 55° L: 34°" güneş; solda dikey zaman çizgisi ve renkli noktalar (tamamlanan yeşil onay), beyaz kartlarda saat + kalın başlık + kişi/konum; "Tomorrow, 25 Oct H: 42° L: 28°" kar simgesi.
+  - Video toplantı (p8): Yeni etkinlikte "Add Video Call" (Google Meet, Zoom, GoToMeeting), altta Location / Rooms / Attendees / Video call / Note düğmeleri.
+  - Hatırlatma (p9): "Marketing Team meeting starts in 10 minutes".
+  - Renk kodlama (p10): "Set Event Color" yatay renk kareleri (yuvarlak köşeli kare), **renge özel ad verme** ("Set custom color name: Family"), adlı renk paleti (Deep Violet, Purple Raspberry, Amethyst, Lavender, Pale Pink, Vivid Purple, Berry Pink, Pink, Light Rose).
+- Ayarlar: görülmedi.
+- Widget (p7): "October" hafta şeridi widget'ı, günlerin etrafında **doluluk halkaları** (renkli yay: günün dolu saatleri), "+" düğmesi; "Thursday October 24" başlıklı etkinlik listesi; **yırtmalı takvim yaprağı** widget'ı ("24 THU • OCT", üstte mavi spiralli şerit); büyük widget: "24 October Today, Thursday", 7 günlük şerit, etkinlikler, "1 more event".
+- Tasarım: mağaza zemini pembe #fbdbdc; uygulama açık tema, ajanda zemini #f2f3f5, kartlar beyaz ~12 pt köşe, üst çubuk lacivert-mor gradyan; SF Pro, kalın başlıklar; pastel etkinlik blokları.
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Liste (ajanda), gün, hafta görünümleri — Fantastical bölümündeki iş — O.
+  - Gün/ajanda başlığında hava (en yüksek/düşük + simge) — Fantastical bölümündeki iş — K.
+  - Ay hücresinde etkinlik adları ve çok günlük etkinlik şeridi (resmî tatil ve bayram dönemleri de şerit olabilir: "Kurban Bayramı" 4 gün) — bizde yok — K/O — ücretsiz.
+  - Takvim yaprağı widget'ı (spiralli büyük gün) — bizde takvim yaprağı ekranı var (`Content.swift` `CalendarLeafView`, Android `CalendarLeafScreen`, `tr-takvim-yapragi.png`) ama widget'ı yok; Hicri widget'ı ve saat-tarih widget'ı var (`HijriWidget.swift`, `ClockWidgets.swift`) — K — ücretsiz.
+  - Hafta şeridi widget'ı + gün doluluk halkaları / yaklaşan etkinlikler widget'ı — mevcut #15'e ek ayrıntı — ücretsiz.
+  - Etkinlik renk seçimi ve renge ad verme — bizde etkinlik sistem düzenleyicisinde, takvim rengi telefonun — önerilmez (bizim takvimimiz sistem takvimini gösterir).
+  - Görev listesi, video toplantı — kapsam dışı (bizde pomodoro yapılacaklar listesi var: `FocusSounds.swift` `PomoTodo`).
+
+## Structured: Daily Planner Todo (App Store id1499198946, TR 4,81 / 5.056 puan; US 4,79 / 168.367; unorderly GmbH; sürüm 4.6.7)
+- Ücret modeli: ücretsiz + Structured Pro: aylık ₺66,99 / ₺69,99, yıllık ₺199,99 / ₺249,99, ömür boyu ₺669,99. Pro'da: **takvimleri ve Anımsatıcılar'ı bağlama**, yinelenen görevler ve rutinler, yapay zekâ gün planlama, kaçırılanları yeniden planlama, özel bildirimler. Deneme görülmedi. Reklam yok.
+- İncelenen görüntü: 8 iPhone (iPad'e bakılmadı; p6'da iPad ve Watch görünüyor).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: alt yüzen çubuk Timeline / AI / Settings (+ Inbox), sağda mercan rengi yuvarlak "+" (ölçülen #ff9794).
+- Öne çıkan ekranlar:
+  - Zaman çizelgesi (p2): üstte "13. May 2026 ›" (gün kalın siyah, yıl mercan), hafta şeridi: her günün altında o günün etkinlik **simgelerinin küçük renkli daire kümesi**; bugün mercan daire. Altında tüm gün öğeleri yuvarlak gri dairelerde simgeyle ("Stay Hydrated" bardak, "Anniversary" kalp, "Dad" pasta). Dikey çizgiyle birbirine bağlı **renkli kapsül simgeler** (süreye göre uzayan kapsül: Wake Up alarm, Yoga, Take a Shower, Bike to Office, Coffee), yanında "7:00–7:15 AM (15 min)" ve kalın başlık, sağda boş tamamlama halkası.
+  - Hafta görünümü (p3): 7 sütun, her gün dikey kapsüller dizisi (geçmiş renkli, gelecek gri); tekrar seçici Once / Daily / Weekly / Monthly (seçili mercan hap), "Every week − +", gün daireleri Mon … Sun.
+  - AI (p4): "Hi there! What do you need to schedule?", metin kutusu, mikrofon, "✦ Generate".
+  - Widget ve bildirim (p5): küçük widget "in 15 min – Designing" (kapsül simge + halka); bildirim "Create Product Roadmap – Starts in 5 min | 12:00 - 13:00 (1 hr)".
+  - Bağlantılar (p7): telefon, Anımsatıcılar, Sağlık (?) ve Takvim simgeleri çizelgede.
+- Ayarlar: görülmedi.
+- Tasarım: mağaza zemini açık pembe #fae4e6; uygulama açık gri-beyaz, mercan vurgu, büyük kalın Inter/SF başlıklar ("13. May" Alman tarih biçimi noktalı), kapsül ve daire biçimli simgeler, bol boşluk. Erişilebilirlik: disleksi dostu yazı tipi (açıklama).
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Seçili günün etkinlikleri (özel günler + telefon takvimi) zaman çizelgesi biçiminde, tüm gün öğeleri simgeli — bizde düz liste (`CalendarTab.swift` `dayList`) — O — ücretsiz.
+  - Hafta şeridinde gün başına etkinlik simgeleri/renk kümeleri — bizde ay ızgarasında en çok 3 nokta — K — ücretsiz.
+  - Gün planlayıcı, görev, yapay zekâ — kapsam dışı.
+

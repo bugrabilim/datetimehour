@@ -38,3 +38,55 @@ Karşılaştırma için kendi canlı sitemizin görüntüleri: `rakip2/web/biz/`
   - Metin satırı olarak gömülen widget (script + span, sitenin kendi CSS'i; gün doğumu/batımı, gün uzunluğu seçeneği) — bizde farklı: iframe gömme (`/gomme/`, `src/js/embed.js`), gün doğumu/batımı seçeneği yok. Çaba O.
   - Şehir bulutu (nüfusa göre büyüyen ad listesi) — tasarım kalıbı; bizde dünya saatleri kart listesi. Gerek değil.
   - Hesapla favori ve "ana lokasyon" — **hesap gerektirir**, bizde hesapsız `sth-world`/`sth-place` ile var.
+
+## timeanddate.com (https://www.timeanddate.com) — OKUNAMADI
+- Ana sayfa ve `/worldclock/` Playwright'ta 403 ve Cloudflare "Just a moment… Gerçek kişi olduğunuzu doğrulayın" kutusu verdi (20 sn beklemede de geçmedi; görüntü `rakip2/web/timeanddate/home2-dl.png`, zemin mavi). curl da 403. Wayback Machine 429 verdi. Doğrulama kutusu aşılmaya çalışılmadı. `/calendar/`, `/moon/`, `/sun/`, `/countdown/`, `/time/zones/` bu yüzden görülmedi. İlk analizde de 403 dönmüştü; timeanddate karşılaştırması ancak sahibin tarayıcısından alınacak ekran görüntüleriyle yapılabilir.
+
+## World Time Buddy (https://www.worldtimebuddy.com, Helloka LLC, © 2011–26; puan yok)
+- Ücret modeli: reklamlı ücretsiz; "Sign In" (ücretsiz hesap: "Sign in to save settings — it's free!"); takvim bağlama (Settings › Calendars…) hesap ister gibi görünüyor (açılmadı). Pro/ücretli katman bu turda görülmedi. Mobil uygulama tanıtımı üst menüde ("Mobile App").
+- İncelenen görüntü: 5 (masaüstü açık ve koyu, telefon, saat karesine tıklama, Settings menüsü).
+- İlk açılış / tanıtım / ödeme sayfası: yok; sağda "Getting Started" 4 adımlı liste (1 ADD LOCATIONS, 2 MOUSE OVER HOURS TO CONVERT TIME, 3 CLICK HOUR TILES TO SCHEDULE AND SHARE, + SIGN IN TO SAVE SETTINGS), pembe numaralar. Çerez bandı görülmedi (ABD IP'si).
+- Ana ekran ve gezinme: logo + Features, Widgets, Mobile App, sosyal simgeler (Facebook, Pinterest, Twitter, Google+ — eski), sağda Sign In ve **üçlü saat biçimi anahtarı "am/pm | 24 | MX"** (MX = karışık). Sağ kenarda dikey mavi "Feedback" sekmesi.
+- Öne çıkan ekranlar:
+  - **Çevirici/planlayıcı tablosu** (tek ekran): solda "+ Place or timezone" arama kutusu ve ▲▼ sıralama okları; üstte tarih şeridi (takvim simgesi + 2, **Nov 3** sekmesi, 4, 5, 6, 7, 8 — hafta sonu günleri kırmızı). Her satır: × (kaldır), ev simgesi (ana konum) ya da ana konuma göre fark "+2", "+5"; kalın şehir adı + gri **saat dilimi rozeti** (EST, GMT-3, GMT), altında ülke/eyalet; sağda kalın şimdiki saat "6:47a" ve "Tue, Nov 3"; sonra 24 saatlik kare şeridi (her kare saat + am/pm; gece koyu mavi `#8ba3c9`, sabah/akşam açık mavi, gündüz açık sarı `#fffff3`; gün geçişinde "NOV 4 / WED" kutusu). Şimdiki saat siyah çerçeveli dikey sütun. Fare gezdikçe sütun hareket eder (anında çeviri).
+  - **Saat karesine tıklayınca:** yeşil çerçeveli sütun seçilir, sol üstte **sürüklenebilir süre cetveli "|——30 minutes——|"**, satırlarda "10:00a – 10:30a" aralığı; üst çubukta **Outlook / iCal, Google Calendar, Clipboard, Gmail**, "Event" ve **"LINK TO THIS SELECTION"**.
+  - **Settings** açılır menü: Show Timezones, **Mark Weekends**, **Calendars…** (takvim bağlama).
+  - Alt bölüm: "About this World Clock / Converter" uzun SEO metni (3 paragraf), ortada kesik çizgili boş reklam kutusu (~300×250), sağda Getting Started.
+- Ayarlar: yukarıdaki Settings menüsü + saat biçimi anahtarı.
+- Widget / kilit ekranı / saat: üst menüde "Widgets" (gömme) ve "Mobile App" (açılmadı).
+- Tasarım: zemin dokulu açık gri-bej `#e8e6e3` (ince çapraz desen), panel `#f0f0f0` gölgeli, köşeler hafif yuvarlak (~3 px), yazı Helvetica/Arial benzeri küçük (11–14 px), soluk mavi tonlar, pembe vurgu. Koyu tema yok (`colorScheme: dark` aynı). **Telefonda duyarlı tasarım yok**: 390 px'de masaüstü düzeni küçültülmüş, yazılar okunamayacak kadar küçük (`home-ml.png`).
+- Hatalar: altbilgide "Annoucements" (yazım hatası). Google+ simgesi (kapanmış hizmet).
+- Bizde olmayan ya da farklı olan:
+  - Toplantı süresi seçimi (sürüklenebilir 30 dk… cetvel) ve saat aralığı — bizde yok: planlayıcı tek saat seçer, takvim kaydı sabit 1 saat (`src/js/planner.js` `calLinks`: `end = ms + 3600000`). **Mevcut 2. analiz #72'ye ek ayrıntı** (saat aralığı seçimi). Çaba K. Rakipte ücretsiz.
+  - Hafta sonu işareti (tarih şeridinde kırmızı, Settings › Mark Weekends) — bizde yok. **Mevcut #72'ye ek ayrıntı.**
+  - Outlook (web), Gmail ile davet, panoya metin olarak kopyalama — bizde kısmen: bağlantı kopyalama, .ics ve Google Takvim var (`planner.js` `shareSetup`, `calLinks`), Outlook web bağlantısı ve "saatleri metin olarak kopyala" yok. Çaba K.
+  - Tarih şeridi (bugünden 7 gün sekme) — bizde tarih kutusu var (`<input type=date>`), şerit yok. Çaba K.
+  - Satır başında saat dilimi kısaltması rozeti (EST, GMT-3) ve ana konuma göre fark (+2) — bizde satırda yalnız şehir adı (`toplanti-dl.png`); kısaltmalar ayrı sayfada (`/saat-dilimleri/`). Çaba K.
+  - Satırları sıralama (▲▼) ve ana konum (ev simgesi) seçimi — bizde planlayıcıda yok (İstanbul/ilk şehir referans). Çaba K.
+  - Fareyle gezdikçe canlı sütun (hover ile çeviri) — bizde tıklayınca seçim; hover yok. Çaba K.
+  - "MX" karışık saat biçimi — bizde yok; gerek düşük.
+  - Takvim bağlama (Calendars…) — **hesap gerektirir**, sitede yapılmayacak.
+
+## vClock (https://vclock.com, Comfort Software Group; puan yok)
+- Ücret modeli: reklamlı ücretsiz; hesap yok. "Apps" menüsü (masaüstü/mobil uygulamaları). Yalnız İngilizce (`/tr/` 404, sayfada hreflang yok; Türkçe benzeri onlinesaat.web.tr, aşağıda).
+- İncelenen görüntü: 9 (masaüstü açık/koyu/tam sayfa, telefon, "Set Alarm" penceresi, Settings çekmecesi, Tools menüsü, paylaşım çubuğu).
+- İlk açılış / tanıtım / ödeme sayfası: yok. Çerez bandı görülmedi (ABD IP'si).
+- Ana ekran ve gezinme: mavi (`#0090dd`) üst bar, beyaz yuvarlak hatlı "vClock" logosu; sağda Holidays, Tools ▾ (Alarm Clock, Timer, Stopwatch, Clock), Apps, **yarım daire tema düğmesi** (açık/koyu), dişli. Masaüstünde solda koyu (`#3d3c3c`) dikey simgeli araç çubuğu (Alarm Clock, Timer, Stopwatch, Time; ince çizgi simgeler, seçili açık gri). Telefonda hamburger + "Online Alarm Clock - vClock" başlığı + dişli, altında açılır ok.
+- Öne çıkan ekranlar:
+  - **Saat kartı:** beyaz kart (`#ffffff`, zemin `#f0f0f0`, köşesiz) ortada **LCD/yedi bölütlü italik yazı tipiyle** saat "2:49:31 PM" (gri `#5a5a5a`), altında aynı yazıyla "TUE - NOV 3, 2026", yeşil (`#4aae71`) kare "Set Alarm" düğmesi. Kartın sağ üstünde dört ince simge: **paylaş, küçült (−), büyüt (+), tam ekran**. Koyu temada zemin siyah `#000000`, rakamlar **turuncu LCD**.
+  - **Set Alarm penceresi ("Edit Alarm"):** mavi başlık bandı; Hours (‹ 2 PM ›), Minutes (‹ 50 ›) — açılır liste ve iki yanda ok düğmeleri; **Sound** listesi (Bells…) + ▶ dinle + "…" (daha çok: özel ses/YouTube), **"Repeat sound"** onay kutusu; **Title**; altta **"Test"** (alarmı şimdi dene), Cancel, yeşil Start.
+  - Kartın altında iki kutu: "Set the alarm for the specified time" (4:00 AM–2:00 PM arası 22 hazır saat, mavi kare düğmeler) ve **"Recently used"** (son kullanılan alarm saatleri bağlantı listesi + düzenle simgesi).
+  - "How to use the online alarm clock" uzun yardım metni (alarm sesi testi, görünüm ayarlarının saklanması, tarayıcı kapanınca çalmaz, internetsiz çalışır, sık kullanılanlara eklenen bağlantı alarmı kurar).
+  - Paylaşım kutusu: sayfa adresi kutusu + Facebook, X, WhatsApp, Blogger, Reddit, Tumblr, Pinterest, LinkedIn, e-posta simgeleri ve mavi **"Embed"** düğmesi.
+- Ayarlar (sağdan kayan koyu çekmece): **Digital Font** (LCD yazı tipi aç/kapa), 12 hours (am/pm), Show Date, Show Seconds, **Night Mode**, Colors (beyaz, turuncu, kırmızı, yeşil, mavi daireler), mavi OK. Yeşil ON/OFF anahtarlar.
+- Widget / kilit ekranı / saat: Apps sayfası (açılmadı).
+- Tasarım: düz (flat) Microsoft benzeri; Open Sans; köşesiz kartlar ve kare düğmeler; ince çizgi simgeler. Açık/koyu tema düğmesi var.
+- Reklam yerleri: saat kartının hemen altında 728×90 yatay afiş (NBC/Peacock NBA reklamı), koyu temada beyaz boş afiş kutusu. Yoğunluk düşük-orta (ilk ekranda bir afiş).
+- Hatalar: görülmedi.
+- Bizde olmayan ya da farklı olan:
+  - Sayfadaki saati **büyütme/küçültme (+/−)** — bizde sitede yok (`src/js/main.js`'te ölçek yok; uygulamalarda `fs.scale` var). Çaba K. Ücretsiz.
+  - **LCD yedi bölütlü yazı tipi** ve koyu temada turuncu/renkli LCD — bizde yok (sitedeki yazı tipi seçenekleri `sth-prefs.font`; LCD yok). **Mevcut 2. analiz #9'a ek ayrıntı** (dijital kadran koleksiyonu; web'de de). Çaba K.
+  - Alarm sesini "tekrarla" seçeneği ve alarmı **şimdi deneme ("Test")** — bizde ses dinleme düğmesi var (`src/js/tools.js` 69. satır `testBtn` → `chime`), tam alarm önizlemesi (çalma şeridi + bildirim) yok. Çaba K.
+  - Alarm sayfasında **hazır saat düğmeleri ızgarası** ve "son kullanılanlar" — bizde hazır alarm sayfaları var (`/alarm/07-00/`, `ALARM_PRESETS`, `build.mjs`) ama /alarm/ sayfasından bağlantı verilmiyor (CLAUDE.md: "sayfalar arası bağlantı yok"); son kullanılanlar yok (kayıtlı alarm listesi `sth-alarms` var). Farklı; sahibin kararıyla bağlantı yok.
+  - Kartta paylaşım çubuğu (9 sosyal ağ) — bizde araç sayfalarında sosyal paylaşım yok (planlayıcıda bağlantı kopyala var). Gerek sahibin kararı. Çaba K.
+  - Gece modu ayarı sitede — bizde sitede gece modu yok (uygulamalarda var; sitede koyu tema var). Çaba K.

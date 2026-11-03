@@ -128,3 +128,116 @@ Bizim karşılaştırdığımız ekranlar (Android, 31 Ekim 2026, `mobile/androi
   - Pomodoro'da çalışma sonu ve mola sonu için ayrı alarm sesi — kısmen: uzun mola bizde var (`PomodoroScreen.kt` satır 52 `pomo.long`, satır 98), aşama başına ses seçimi yok — K.
   - Not: pomodoro, zamanlayıcı ve geri sayım ekranlarımızın hiçbirinde halka ya da ilerleme çizimi yok (`grep drawArc\|CircularProgress\|LinearProgress PomodoroScreen.kt Intervals.kt TimerScreen.kt Countdowns.kt` boş; HIIT'te yalnız ince çubuk).
 
+## Interval Timer □ HIIT Timer (App Store 1124297113; ABD 4,84 / 87.414 puan; TR 4,82 / 273; Float Tech, LLC; sürüm 26.3.0, 26 Mart 2026; 22 dil, Türkçe var)
+- Ücret modeli: reklamsız; **Premium Pass** aylık abonelik (₺12,99 ve ₺69,99 kademeleri; ücretsiz deneme ile başlar), **Lifetime Pass** ₺799,99 / ₺999,99, "Premium Forever Promo" ₺1.499,99. Pro'da ne kilitli: görselde yazmıyor.
+- İncelenen görüntü: 5 iPhone (hepsi açıldı; eski iPhone çerçevesi, "No SIM").
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (i1): üst yarı **turuncudan kırmızıya gradyan** (#FC5A55 → #F32152), ortada beyaz kalın "04:50" (toplam süre), **beyaz zeminde ortadan çıkıntı yapan yuvarlak ▶ düğmesi** (beyaz daire, kırmızı üçgen). Alt yarı beyaz; beş ayar satırı **her biri kendi açık tonunda dolu hap** (~14 px köşe): Work 00:20 (açık yeşil #E7FBF0, yeşil yazı), Rest 00:10 (açık pembe, kırmızı), Exercises 5 (gri), Rounds 2X (açık mavi, mavi), Round Reset 00:10 (açık sarı, sarı); solda ince çizgi simge (▶, ‖, şimşek, döngü, saat).
+- Öne çıkan ekranlar:
+  - **Dikey cetvel seçici (i2):** ayara dokununca o rengin tam ekran zemini (Rounds mavi #657CEC, Rest kırmızı, Work yeşil); üstte "2X ✎", ortada dikey ince çizgili **cetvel**, solda ölçek (1X, 5X, … 25X; 0–60 sn), beyaz hap tutamak sürüklenir. Sayfalar yana kaydırılarak (Rest → Rounds → Work) geçiliyor.
+  - **Çalışma ekranı (i3):** bütün ekran evrenin rengi (Work yeşil #56D495, Rest kırmızı, Get Ready sarı-turuncu); üstte iki ince çerçeveli satır "Exercise ●○" ve "Round ●" (ilerleme noktaları); ortada **büyük ince beyaz halka**, kalan kısım parlak beyaz yay, içinde "00:07" ve "WORK"; altta beyaz yuvarlak ‖ düğmesi, solda ses düğmesi; en altta "🕓 Time Remaining: 00:37".
+  - **Bitiş ekranı (i5):** kırmızı gradyan üst yarı, **konfeti deseni**, ortada iç içe saydam halkalı beyaz daire içinde kırmızı ✓, "Congratulations!" ve "Workout Complete"; altta üç istatistik (yeşil şimşek "1 Workout streak", kırmızı kalp "1 Total workouts completed", mavi kronometre "00:01 Total workout time"); "Remind me to workout at the same time tomorrow" anahtarı; "Show History" (açık pembe) ve "Done" (kırmızı dolu) düğmeleri.
+  - **Geçmiş (i4):** kırmızı başlık çubuğu "History", beyaz gölgeli kart "📅 Today 50 s"; Work 20 s · Rest 10 s · Exercises 2 · Rounds 1 (kırmızı rakamlar).
+- Açıklamada: müziği kesmeden sesli ya da bip rehber, uygulamadan çıkınca da duyuru, geçmişten antrenmanı yeniden başlatma.
+- Tasarım: evre başına tam ekran doygun renk (yeşil çalış, kırmızı dinlen, sarı hazırlan), beyaz kalın yuvarlak sans (SF), büyük beyaz yuvarlak düğmeler, pastel hap ayar satırları.
+- Hatalar: açıklamada "Premium Pass beings with" (yazım hatası, "begins").
+- Bizde olmayan / farklı:
+  - **Evre rengiyle dolan tam ekran ve büyük ilerleme halkası** — kısmen: bizim HIIT ekranı koyu zemin (#11141A), evre adı yeşil yazı, ince yeşil çubuk (`tr-hiit.png`); halka ve evreye göre zemin rengi yok — K — rakipte ücretsiz. → görsel iş (rapor).
+  - **Egzersiz/tur ilerleme noktaları** — yok (bizde "Tur 1/8" metni) — K.
+  - **Bitiş kutlama ekranı** (konfeti, seri, toplam antrenman, toplam süre) — yok: bizde bitişte alarm çalar (`HiitService`) ve Sağlık'a yazar; özet ekranı yok — K — ücretsiz. (Seri: bizde pomodoroda var, antrenmanda yok.)
+  - **"Yarın aynı saatte hatırlat"** — yok — K — ücretsiz.
+  - **Antrenman geçmişi ve istatistik** (gün başına çalışma/dinlenme/egzersiz/tur toplamı, geçmişten yeniden başlatma) — yok (yalnız `hiit.healthSaved` ve Sağlık'a kayıt; `Health.kt`) — K — ücretsiz.
+  - **Cetvel/kaydırıcıyla süre seçimi** — yok (bizde − / + adım düğmeleri: `Intervals.kt` satır 521–524 `Stepper`) — K.
+  - Müzikle birlikte sesli duyuru, uygulama dışında da sürme — **var** (`HiitService`, iOS `HiitRunner`; CLAUDE.md "Zamanlayıcılar ve aralık antrenmanı").
+
+## Seconds Interval Timer (App Store 475816966; ABD 4,68 / 23.795 puan; TR 4,33 / 55; Runloop Ltd; sürüm 26.1, 29 Ekim 2026; 10 dil, Türkçe yok)
+- Ücret modeli: reklamsız; tek satın alma **"Advanced Version" ₺399,99** (Seconds Pro). Ücretsizde ne kilitli: görselde yazmıyor.
+- İncelenen görüntü: 6 iPhone (hepsi açıldı; görseller eski: "Carrier", ana düğmeli iPhone; sürüm 26.0 notunda "uygulamanın çoğu yeniden yapıldı, artık hep koyu, turuncu vurgu" deniyor, yani mağaza görselleri güncel değil).
+- İlk açılış / ödeme: görülmedi (sürüm notu yeni "welcome screens" diyor).
+- Ana ekran ve gezinme: alt sekme çubuğu: Intervals / Countdown / Stopwatch (kırmızı seçili simge). "My Timers" (i6) koyu liste: kırmızı yuvarlak simgeler (klasör "Sample Timers Items: 6", "Seconds Demo Custom Timer (0:39)", "7 Minute Workout Circuit Timer (7:50)", "Tabata Timer (13:30)"), kırmızı kalem; altta "Play All".
+- Öne çıkan ekranlar:
+  - **Çalışan aralık (i1, i2):** ekranın üst üçte ikisi **neon yeşil** (#8AFF34), alt üçte biri **kırmızı-turuncu** (#FF4538): üstte dev ince siyah "00:28", altında üç sütun ELAPSED / INTERVAL 1/6 / REMAINING 15:28, "CURRENT INTERVAL High Intensity 0:30"; alt blokta **"UP NEXT Low Intensity 1:30"**. Salonun öbür ucundan okunacak kadar büyük; dikey ve yatay.
+  - **Hızlı geri sayım (i3):** koyu (#1A1A1A), üstte dev "00:28", altında 2×3 gri kare düğmeler (#343434): 00:30, 01:00, 01:30, 02:00, 02:30 ve kırmızı Reset.
+  - **Kronometre (i4):** "01:51.51", tur satırları hap: en yavaş tur kırmızı dolu (Lap 4), en hızlı neon yeşil dolu (Lap 1), diğerleri gri; altta Reset / yeşil Start büyük kare düğmeler.
+  - **Devre (circuit) düzenleyici (i5):** başlıkta zamanlayıcının **renkli kesikli şerit önizlemesi** (her aralık rengiyle, "Tabata Timer (13:30)"); Name, Number of Sets 8, **APPLE HEALTH Activity: Not Set**, EXERCISES: Squats (camgöbeği hap 0:20), Push-Ups (yeşil hap 0:20), Sit-Ups; "+ Add Exercise", Cut/Copy.
+- Apple Watch (i2–i6): saatte bağımsız çalışır; yeşil/kırmızı iki blok "0:28 High Intensity / 1:30 Low Intensity", altında "♥60 • 1/6 • 15:28" (nabız); saatte hızlı geri sayım düğmeleri, kronometre, şablon seçici (renkli yay "STYLE Tabata Total Time 5:50").
+- Açıklamada: aralık başına müzik (çalma listesi), duyurular müziği kısıp geri açar, birden çok zamanlayıcıyı zincirleme (ısınma → ana set → soğuma), **kilit düğmesi** (yanlışlıkla dokunmayı engeller), nabız monitörüyle kalori tahmini, Sağlık'a antrenman + farkındalık kaydı, paylaşma.
+- Tasarım: koyu gri zemin, kırmızı vurgu (yeni sürümde turuncu); çalışırken tam doygun neon renk blokları; ince sistem rakamları.
+- Hatalar: mağaza görselleri eski sürümden (uygulama artık hep koyu ve turuncu; görseller kırmızı).
+- Bizde olmayan / farklı:
+  - **"Sıradaki" evrenin ekranda gösterilmesi** (UP NEXT bloğu, adıyla ve süresiyle) — yok: bizde yalnız şu anki evre (`tr-hiit.png`) — K — ücretsiz.
+  - **Evre renginde dev tam ekran** (uzaktan okunur) ve aralık başına renk — yok (bizde koyu zemin, küçük renkli evre adı) — mevcut görsel işe ek (Interval Timer'la aynı) — K.
+  - **Ekran kilidi düğmesi** (antrenmanda yanlış dokunmayı engeller) — yok — K — ücretsiz.
+  - **Saatte aralık antrenmanı** (Apple Watch'ta bağımsız, nabızla) — yok: saat uygulamamız yalnız vakitler (`mobile/ios/Watch/Sources/WatchApp.swift`; Wear `WearActivity.kt`) — B — rakipte ücretli sürümde.
+  - **Hızlı süre ızgarası** (tek dokunuşla 30 sn…2:30) — kısmen: bizde hap biçimli hazır süreler var (1, 3, 5, 10, 15, 25 dk: `tr-zamanlayici.png`) ama hemen başlatmıyor, önce "Başlat" — K.
+  - **Kronometrede en hızlı/en yavaş turu dolu renkle** — kısmen: bizde "En iyi"/"En yavaş" yeşil/kırmızı yazı etiketi (`tr-kronometreler.png`) — var sayılır (küçük görsel fark).
+  - **Aralık başına müzik** — yok — O — rakipte ücretli.
+  - Sağlık'a kayıt — **var** (`Health.kt`, `Health.swift`; CLAUDE.md #84).
+
+## Timer & stopwatch - Timeglass (App Store 1138584627; ABD 4,69 / 1.450 puan; TR 4,70 / 10; COSMIC TEAPOT PTY. LTD.; sürüm 1.2.1, 2 Temmuz 2020; güncellenmiyor; yalnız İngilizce)
+- Ücret modeli: reklamsız; tek satın alma **"Upgrade Timeglass" ₺149,99**. Ücretsizde ne kilitli: görselde yazmıyor.
+- İncelenen görüntü: 6 iPhone (hepsi açıldı). Apple "Apps We Love — Best of 2016" defne dallı rozet (i2).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: "All Timers" (i1, i2): **eğik açılı (izometrik) yüzen kartlar**, gölgeli; her kartta **çizgi simge** (diş "Brush & floss", fırın "Roast beef", şınav "Workout", kronometre "Stopwatch"), ince harfli ad, süre "1h 30m 00s" (rakam büyük, birim küçük harf, ince yazı tipi: Avenir Next Ultra Light benzeri), sağ altta yarı saydam beyaz daire içinde ▶. Zemin mavi-camgöbeği gradyan (#4B7CD4 civarı); "Edit", "+".
+- Öne çıkan ekranlar:
+  - **Etkin zamanlayıcılar (i3):** yeşil gradyan zemin (#5A9E38 → #2E9C60), beyaz kartlar (~14 px köşe): "'7 Minute' workout 6m 52s", altında **adım ilerleme noktaları** (10 nokta, ilki dolu yeşil), şu anki adım "Jumping jacks 22s" ve sağda **yeşil kalın ilerleme halkası** (kalan yay); "Roast beef 1h 24m 04s" yanında küçük halka + açık yeşil yuvarlak ‖ düğmesi.
+  - **Adımlı zamanlayıcı düzenleyici (i4):** mor gradyan tam ekran (#A62FD1 civarı) form: "Morning exercises", "Four steps": 1. Star jumps 1m 00s, 2. Push ups 45s, 3. Crunches, 4. Leg raises; "Add a step" / "Copy steps" çerçeveli düğmeler; Icon, "Speak step names Off".
+  - **Adım adlarını söyle (i5):** turuncu sayfa: "At step start" ✓, "At step end"; not: "Replaces tones with spoken step names. Available for timers of three hours or less."
+  - **Simge seçici (i6):** kategorili beyaz çizgi simgeler: Exercise & fitness (yürüyüş, koşu, bisiklet, ağırlık, şınav…), Cooking & food (buzdolabı, fırın, ocak, alev, kar tanesi, kahve, çatal-bıçak, kek, pasta, kurabiye, yumurta, et), Home & routine (ev, ekmek, duş, diş, çamaşır, süpürge, temizlik, damla, sulama kabı, pati, köpek kulübesi), Hobbies & study; seçili simge yarı saydam kare içinde. Her zamanlayıcı kendi **renk temasıyla** (yeşil, mavi, mor, turuncu gradyan).
+- Tasarım: tam ekran doygun gradyanlar (tema başına), ince ve geniş harf aralıklı yazı (Avenir Next Ultra Light), beyaz çizgi simgeler; kartlar gölgeli ve hafif kalın kenarlı.
+- Hatalar: görülmedi (uygulama 2020'den beri güncellenmiyor).
+- Bizde olmayan / farklı:
+  - **Zamanlayıcıya simge** (kategorili çizgi simge kitaplığı: mutfak, ev, spor, ders) — yok (bizde zamanlayıcıda yalnız ad; geri sayımlarda 16 emoji: `CountdownItem.emojis`) — K — rakipte ücretsiz.
+  - **Zamanlayıcı başına renk teması** (gradyan) — yok — mevcut "zamanlayıcı rengi" işi (Timer+) ile aynı — K.
+  - **Kartta küçük ilerleme halkası** ve adım ilerleme noktaları — yok (bkz. görsel iş) — K.
+  - **Adımlı zamanlayıcı genel amaçlı** (sabah egzersizi, diş fırçalama) ve "adımın başında/sonunda adını söyle" ayrı anahtarlar — kısmen: rutinler + sesli duyuru var (`Intervals.kt` rutinler, `HiitConfig.cue`) — K.
+
+## Visual Countdown Timer (App Store 541364004; ABD 4,56 / 41.383 puan; TR 5,0 / 4; Fehners Software LLP; sürüm 4.6.2, 4 Temmuz 2026; 3 dil, Türkçe yok) — çocuklar için görsel zamanlayıcı
+- Ücret modeli: ücretsiz + reklamlı; **Remove Ads ₺99,99**, **Premium Upgrade ₺199,99**, resim paketleri ₺49,99'ar (Cartoon, Animal, Transport, Ocean Pack), **Mask Maker ₺49,99**. Tek seferlik.
+- İncelenen görüntü: 7 iPhone (hepsi açıldı; eski iPhone 8 çerçevesi).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran (i1): gökyüzü fotoğrafı zemin (mavi, bulutlu); ortada **açık gri plastik oyuncak gövdeli zamanlayıcı** (yuvarlak köşeli dikey gövde, üstte büyük daire pencere); dairede **kalan süre yeşil pasta dilimi** (#47B804 civarı), geçen süre kadar **altındaki resim açılıyor** (sarı lastik ördek). Altta sarı yuvarlak "↺10" düğmeleri (−10 / +10 sn ya da dk), ortada **mavi büyük yarım daire ikili düğme ‖ | ■**, sağ altta pembe dişli.
+- Öne çıkan ekranlar:
+  - **Resim kitaplığı (i2, i7):** "Choose Picture": Picture Packs | Custom | Masks sekmeleri; yuvarlak resimler: Random ??, ördek (seçili, mavi ✓), eski araba, davul, helikopter, denizanası, robot, telefon, kamyon, balık, sevimli canavarlar. Dilim rengi resme göre (canavarda kırmızı-turuncu, pandada kırmızı).
+  - **Maske (i3):** çocuğun yüz fotoğrafı yarış pilotu kaskının içine yerleşiyor (dama bayrak, kupa).
+  - **Temalar (i5):** şeker (pembe-gökkuşağı, donut "Start" düğmesi, kiraz "10" düğmeleri), uzay (gezegen "Start", mor), korsan gemisi (pirinç lombar çerçeve, dümen "Start", ahşap zemin), orman (yapraklar, leopar, kahverengi "Start"). Süre seçici dairenin içinde iOS tekerleği "1 mins 20 secs".
+  - **Ayarlar (i7):** Picture To Reveal, Theme (Day), **Child Mode** ("Hide buttons when the timer is running"), **Slowly Reveal Picture**, **Play Ticking Noise**, **Sneaky Pause** (duraklatınca tik-tak sürer), "Hey Siri, Start Countdown Timer" (Add to Siri), Preset Timers.
+  - **Ana ekran widget'ı (i6):** üç yuvarlak resimli hazır zamanlayıcı: "15mins Read book", "5mins Time Out", "3mins Brush Teeth"; dokununca başlar.
+  - Tanıtım (i4): "Great for Motivating: Getting dressed, Brushing teeth, Getting shoes on, Sharing toys, Tidying up, Homework time".
+- Tasarım: el yazısı benzeri yuvarlak çocuk yazı tipi (mağaza), plastik oyuncak görünümü (gölgeli, kabartmalı), doygun ana renkler.
+- Hatalar: görülmedi.
+- Bizde olmayan / farklı:
+  - **Görsel pasta zamanlayıcı ("Time Timer" tarzı: kalan süre renkli dilim, sayı okumayı bilmeyen çocuk ve dikkat güçlüğü olanlar için)** — yok (zamanlayıcı yalnız rakam: `tr-zamanlayici.png`; `grep drawArc` boş) — K/O — rakipte ücretsiz (resim paketleri ücretli). Bizde "Mevsimler"in çocuk bölümü var (CLAUDE.md "Mevsimler çocuklara yönelik"); araçlarda çocuk modu yok.
+  - **Çocuk modu** (sayarken düğmeleri gizle) — yok — K.
+  - **Tik-tak sesi** — mevcut #10 (uygulamada saniye tık sesi yok); zamanlayıcıda da yok — K.
+  - **Hazır adlı zamanlayıcıları ana ekrandan başlatan widget** — yok (zamanlayıcı widget'ı yok; "Son kullanılanlar" yalnız uygulama içinde: `TimerHistory`) — K.
+  - Resim açılması, maske, tema paketleri — yok — O — rakipte ücretli; bizde ileride Pro adayı (temalar).
+
+## Stopwatch‰ (App Store 505889167; ABD 4,87 / 32.033 puan; TR 4,62 / 1.132; Tim O's Studios, LLC; sürüm 6.1, 12 Eylül 2026)
+- Ücret modeli: ücretsiz + reklamlı ("Contains Advertising"); uygulama içi satın alma yok.
+- İncelenen görüntü: 2 iPhone (hepsi açıldı; iPad görüntülerine bakılmadı).
+- Ana ekran (i1, i2): tek ekran. Koyu **fırçalanmış/dokulu antrasit zemin** (#201F1D civarı, çapraz ince çizgiler); ortada **dev beyaz rakam "0.0" / "3.5"** (ekran genişliğini dolduran, yalnız saniye ve onda bir); altta iki büyük hap düğme: sol **yeşil parlak gradyanlı "Start"** (çalışınca **kırmızı "Stop"**), sağ gri "Reset"; düğme yazıları küçük büyük harf (small caps, Copperplate benzeri serif), kabartma gölge (eski iOS skeuomorfik).
+- Tasarım: tek amaç, iki düğme; tur yok, ayar yok (görüntüde).
+- Bizde olmayan / farklı: kronometremizde rakam büyük ve kalın ("01:35.40"), Sıfırla/Devam hap düğmeleri ve turlar var (`tr-kronometreler.png`). Bu rakibin tek farkı **onda bir saniyeye kadar ekranı dolduran dev rakam** ve yalnız iki düğme. Yeni iş değil; ancak bizde kronometre için **tam ekran / yatay dev rakam görünümü** yok (tam ekran yalnız saat sekmesinde: CLAUDE.md "Yatay ekran") — K — ücretsiz.
+
+## Days • Countdown & Widgets (App Store 939368917; ABD 4,76 / 12.745 puan; TR 4,57 / 53; MD Apps LTD; sürüm 3.40, 15 Eylül 2026; 10 dil, Türkçe yok)
+- Ücret modeli: reklamsız; **abonelik**: Monthly Plan ₺7,49 / ₺79,99, Yearly Plan ₺50,99 / ₺99,99 / ₺229,99 (kademeler), **Lifetime Pro** ₺699,99 / ₺799,99. Pro'da ne kilitli: görselde yazmıyor.
+- İncelenen görüntü: 8 iPhone (hepsi açıldı). Mağaza: beyaz zemin, siyah büyük başlık, "App of the day — Featured on the App store" defne dallı (i2).
+- İlk açılış / ödeme: görülmedi.
+- Ana ekran ve gezinme: **büyük fotoğraf kartları dikey liste** ("All events" hapı ortada, ☰ solda, + sağda; i2, i8). Kartta tam fotoğraf, altta karartma; üstte geniş harf aralıklı küçük büyük harf **"IN 2 WEEKS, 2 DAYS"**, altında **dar, kalın, sıkışık başlık** (Anton/Bebas benzeri) "Kate's birthday". Altta yüzen hap seçici **"Previous | Upcoming"** (geçmiş ve gelecek etkinlikler).
+- Öne çıkan ekranlar:
+  - **Tam ekran etkinlik (i4):** bütün ekran fotoğraf, "IN 16 DAYS", dev sıkışık başlık, ince çerçeveli hap içinde "JULY 2, 2024"; üstte × / beyaz "Share" hapı / "…". Etkinlikler arası yana kaydırma (açıklama).
+  - **Etkinlik oluştur (i5, i7):** başlık "Vacation" yazınca altta **Unsplash'tan konuya uygun fotoğraf ızgarası** (3 sütun dikey dikdörtgen: kumsal, mavi deniz, kıyı yolu, palmiye, cankurtaran kulübesi, flamingo simit) ya da kamera. Tarih tekerleği, All day, Start/End time, Repeats anahtarı; siyah tam genişlik "Continue".
+  - **Paylaşma (i6):** "Share event with your friends" (beş Memoji avatar), siyah hap **"Share link on event"**; altında **kaydırmalı paylaşım kartı şablonları** (8 sayfa noktası; fotoğraf üstünde "2 hours 10 minutes"), "Watermark" anahtarı (filigranı kaldırma — muhtemelen Pro).
+  - **Gece modu (i8):** siyah zemin, aynı kartlar.
+- Widget (i3): küçük ve orta boy **tam fotoğraflı** widget: "IN 24 DAYS Moving day", "IN 3 DAYS, 12 HOURS Beach gateaway".
+- Sürüm notu (3.40): paylaşılan etkinlik yeniden açılınca alıcıdaki kopya güncellenir (tarih ve görsel değişiklikleri gelir).
+- Tasarım: beyaz/siyah sade çerçeve, içerik tamamen fotoğraf; tipografi iki katmanlı (küçük geniş aralıklı büyük harf + dar kalın başlık).
+- Hatalar: widget görselinde "Beach **gateaway**" (yazım hatası, "getaway").
+- Bizde olmayan / farklı:
+  - **Konuya göre hazır fotoğraf önerisi** (başlıktan Unsplash araması) — yok (yalnız kendi fotoğrafın: `PhotoFile`) — K/O; Unsplash ağ isteği ve API anahtarı ister (bizde hesap/sunucu yok; Unsplash API anahtarı uygulamaya gömülmeli) — rakipte ücretsiz. Countdown Star'daki hazır kitaplık daha uygun (ağ istemez).
+  - **Fotoğraflı widget** — yok: iOS geri sayım widget'ı düz zemin (`MoreWidgets.swift` CountdownWidget), Android `widget-geri-sayim.png` krem kart — K — rakipte ücretsiz (görselde).
+  - **Paylaşım kartı şablonları** (birkaç düzen arasında kaydırma, filigran aç/kapa) — kısmen: bizde tek düzen kart, "Saat Tarih · time.bumba.tr" imzası sabit (`tr-paylas-geri-sayim.png`, `ShareCards.kt`) — K — rakipte filigran kaldırma büyük olasılıkla Pro.
+  - **Geçmiş/Gelecek hap seçici** — mevcut #73 (ileri sayım, arşiv).
+  - Bağlantıyla paylaşıp alıcıda güncellenme — Countdown (Find Appiness) maddesiyle aynı iş.
+
