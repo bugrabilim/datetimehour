@@ -29,7 +29,7 @@
     <string name="prayer_kerahatNames_israk">日出时（ishraq）</string>
     <string name="prayer_kerahatNames_istiva">正午前（istiwa）</string>
     <string name="prayer_kerahatNames_isfirar">日落前（isfirar）</string>
-    <string name="prayer_kerahatNote">在这些时段不做副功拜。迪亚内特未公布确切分钟数；采用常见日历惯例的约 45 分钟（正午前的时段各资料给出 10–45 分钟）。</string>
+    <string name="prayer_kerahatNote">这些时段内不做副功拜。迪亚内特未公布确切分钟数；此处采用日历中常见的约 45 分钟（正午前的时段各资料给出 10–45 分钟）。</string>
     <string name="prayer_method_heading">计算方法</string>
     <string name="prayer_method_label">方法</string>
     <string name="prayer_method_asrLabel">晡礼</string>
@@ -81,12 +81,12 @@
     <string name="wear_phonePlace">iPhone上的地点</string>
     <string name="wear_today">今天</string>
     <string name="prayer_method_app">计算方法</string>
-    <string name="prayer_method_appNote">在土耳其，官方时间以迪亚内特为准。您的选择会改变时间、通知、闹钟和月表；主屏幕小组件和手表仍使用迪亚内特方法。</string>
+    <string name="prayer_method_appNote">在土耳其，官方时间以迪亚内特为准。您的选择会改变时间、通知、闹钟和每月时间表；主屏幕小组件和手表仍使用迪亚内特方法。</string>
     <string name="prayer_arc_title">太阳和月亮</string>
     <string name="prayer_arc_day">距日落%1$s</string>
     <string name="prayer_arc_night">距日出%1$s</string>
     <string name="prayer_alarm_heading">礼拜时间闹钟</string>
-    <string name="prayer_alarm_note">在所选礼拜时间，即使手机静音或处于专注模式，也会响起真正的闹钟。闹钟会设定未来几天，每次打开应用时更新。</string>
+    <string name="prayer_alarm_note">在所选礼拜时间，即使手机静音或处于专注模式，也会响起真正的闹钟。闹钟会提前为接下来几天设好，并在每次打开应用时更新。</string>
     <string name="prayer_alarm_unsupported">礼拜闹钟需要iOS 26或更高版本；此版本使用通知。</string>
     <string name="prayer_alarm_title">%1$s时间</string>
     <string name="prayer_silent_heading">礼拜时间手机静音</string>

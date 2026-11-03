@@ -16,7 +16,7 @@ KALENDER
 • Tambah dan hapus acara; tambahkan hari istimewa ke kalender Anda
 
 CUACA
-• Cuaca saat ini, prakiraan per jam dan 7 hari dari Apple Cuaca
+• Cuaca saat ini, prakiraan per jam dan 7 hari dari layanan cuaca Apple
 
 ALAT
 • Alarm (berbunyi meski dalam mode senyap), pengatur waktu, hitung mundur ke suatu tanggal

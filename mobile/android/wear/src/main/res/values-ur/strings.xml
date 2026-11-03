@@ -22,7 +22,7 @@
     <string name="prayer_imDate">تاریخ</string>
     <string name="prayer_imSahur">سحری</string>
     <string name="prayer_imIftar">افطار</string>
-    <string name="prayer_imNote">اوقات حساب کیے گئے ہیں؛ سرکاری اوقات کے لیے ریاستِ امورِ دینیہ (دیانت) سے رجوع کریں۔</string>
+    <string name="prayer_imNote">اوقات حساب کیے گئے ہیں؛ سرکاری اوقات کے لیے ادارۂ امورِ دینیہ (دیانت) سے رجوع کریں۔</string>
     <string name="prayer_imFile">ramadan-auqat-nama</string>
     <string name="prayer_imAlt">%1$s کے لیے رمضان %2$s کا اوقات نامہ</string>
     <string name="prayer_kerahatHeading">نماز کے مکروہ اوقات (تخمینی)</string>
@@ -33,9 +33,9 @@
     <string name="prayer_method_heading">حساب کا طریقہ</string>
     <string name="prayer_method_label">طریقہ</string>
     <string name="prayer_method_asrLabel">عصر</string>
-    <string name="prayer_method_asrStd">عام (شافعی، مالکی، حنبلی، دیانت)</string>
+    <string name="prayer_method_asrStd">معیاری (شافعی، مالکی، حنبلی، دیانت)</string>
     <string name="prayer_method_asrHanafi">حنفی (سایہ دوگنا)</string>
-    <string name="prayer_method_note">ترکی میں سرکاری اوقات ریاستِ امورِ دینیہ (دیانت) کے ہیں۔ اگر آپ کوئی اور طریقہ منتخب کریں تو اس صفحے کے اوقات، ماہانہ جدول اور رمضان کا اوقات نامہ اسی سے حساب ہوں گے؛ آپ کا انتخاب صرف اسی براؤزر میں محفوظ ہوتا ہے۔</string>
+    <string name="prayer_method_note">ترکی میں سرکاری اوقات ادارۂ امورِ دینیہ (دیانت) کے ہیں۔ اگر آپ کوئی اور طریقہ منتخب کریں تو اس صفحے کے اوقات، ماہانہ جدول اور رمضان کا اوقات نامہ اسی سے حساب ہوں گے؛ آپ کا انتخاب صرف اسی براؤزر میں محفوظ ہوتا ہے۔</string>
     <string name="prayer_method_active">طریقہ: %1$s</string>
     <string name="prayer_method_hanafiShort">حنفی عصر</string>
     <string name="prayer_method_names_diyanet">دیانت (ترکی)</string>
@@ -43,7 +43,7 @@
     <string name="prayer_method_names_isna">اسلامک سوسائٹی آف نارتھ امریکہ (ISNA)</string>
     <string name="prayer_method_names_egypt">مصری جنرل سروے اتھارٹی</string>
     <string name="prayer_method_names_makkah">ام القریٰ (مکہ)</string>
-    <string name="prayer_method_names_karachi">جامعہ علومِ اسلامیہ، کراچی</string>
+    <string name="prayer_method_names_karachi">جامعۃ العلوم الاسلامیہ، کراچی</string>
     <string name="prayer_method_names_tehran">انسٹی ٹیوٹ آف جیو فزکس، تہران</string>
     <string name="prayer_method_names_jafari">شیعہ اثنا عشری (قم)</string>
     <string name="prayer_method_names_gulf">خلیجی خطہ</string>
@@ -83,8 +83,8 @@
     <string name="prayer_method_app">حساب کا طریقہ</string>
     <string name="prayer_method_appNote">ترکی میں سرکاری اوقات دیانت کے ہیں۔ آپ کا انتخاب اوقات، اطلاعات، الارم اور ماہانہ جدول بدلتا ہے؛ ہوم اسکرین ویجیٹس اور گھڑی دیانت کا طریقہ برقرار رکھتے ہیں۔</string>
     <string name="prayer_arc_title">سورج اور چاند</string>
-    <string name="prayer_arc_day">غروب میں %1$s</string>
-    <string name="prayer_arc_night">طلوع میں %1$s</string>
+    <string name="prayer_arc_day">غروب میں %1$s باقی</string>
+    <string name="prayer_arc_night">طلوع میں %1$s باقی</string>
     <string name="prayer_alarm_heading">نماز کے وقت الارم</string>
     <string name="prayer_alarm_note">منتخب اوقاتِ نماز پر اصل الارم بجتا ہے، فون خاموش یا فوکس موڈ میں ہو تب بھی۔ الارم آنے والے دنوں کے لیے لگتے ہیں اور ہر بار ایپ کھولنے پر تازہ ہوتے ہیں۔</string>
     <string name="prayer_alarm_unsupported">نماز کے الارم کے لیے iOS 26 یا بعد کا ورژن چاہیے؛ یہ ورژن اطلاعات استعمال کرتا ہے۔</string>

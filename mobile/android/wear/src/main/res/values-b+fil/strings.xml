@@ -10,7 +10,7 @@
     <string name="prayer_nextIn">Natitirang oras bago ang %1$s</string>
     <string name="prayer_today">Mga oras ngayon</string>
     <string name="prayer_province">Lalawigan</string>
-    <string name="client_hourShort">o</string>
+    <string name="client_hourShort">oras</string>
     <string name="client_minuteShort">min</string>
     <string name="prayer_monthHeading">Oras ng pagdarasal sa %1$s %2$s</string>
     <string name="prayer_colDay">Araw</string>
@@ -25,7 +25,7 @@
     <string name="prayer_imNote">Kinakalkula ang mga oras; para sa opisyal na oras, sundin ang Presidency of Religious Affairs (Diyanet).</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">Iskedyul ng Ramadan %2$s para sa %1$s</string>
-    <string name="prayer_kerahatHeading">Mga oras na hindi kanais-nais magdasal (tantiya)</string>
+    <string name="prayer_kerahatHeading">Mga oras na hindi kanais-nais ang pagdarasal (tantiya)</string>
     <string name="prayer_kerahatNames_israk">Pagsikat ng araw (ishraq)</string>
     <string name="prayer_kerahatNames_istiva">Bago magtanghali (istiwa)</string>
     <string name="prayer_kerahatNames_isfirar">Paglubog ng araw (isfirar)</string>
@@ -86,7 +86,7 @@
     <string name="prayer_arc_day">%1$s bago lumubog ang araw</string>
     <string name="prayer_arc_night">%1$s bago sumikat ang araw</string>
     <string name="prayer_alarm_heading">Alarma sa oras ng dasal</string>
-    <string name="prayer_alarm_note">Tumutunog ang tunay na alarma sa mga napiling oras ng dasal, kahit naka-silent o nasa Focus ang telepono. Itinatakda ang mga alarma para sa mga susunod na araw at nire-renew tuwing bubuksan mo ang app.</string>
+    <string name="prayer_alarm_note">Tumutunog ang tunay na alarma sa mga napiling oras ng dasal, kahit naka-silent o nasa Focus ang telepono. Itinatakda ang mga alarma para sa mga susunod na araw at nire-refresh tuwing bubuksan mo ang app.</string>
     <string name="prayer_alarm_unsupported">Kailangan ng iOS 26 o mas bago para sa alarma ng dasal; abiso ang gamit ng bersiyong ito.</string>
     <string name="prayer_alarm_title">Oras ng %1$s</string>
     <string name="prayer_silent_heading">I-silent ang telepono sa oras ng dasal</string>

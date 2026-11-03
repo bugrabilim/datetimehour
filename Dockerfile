@@ -1,5 +1,5 @@
 # Derleme yalnız repodakiyle çalışır; bağımlılık indirilmez.
-FROM node:22-alpine AS build
+FROM node:22.23.4-alpine AS build
 WORKDIR /app
 COPY . .
 ARG SITE_ORIGIN

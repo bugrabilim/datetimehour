@@ -536,7 +536,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Запусти таймер в ${applicationName}"
+            "value": "Запусти таймер в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -589,7 +589,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Stelle einen ${applicationName} Timer"
+            "value": "Stelle einen Timer mit ${applicationName}"
           }
         },
         "az": {
@@ -619,19 +619,19 @@
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "تایمر ${applicationName} را تنظیم کن"
+            "value": "در ${applicationName} یک تایمر تنظیم کن"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Règle un minuteur ${applicationName}"
+            "value": "Règle un minuteur avec ${applicationName}"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Поставь таймер ${applicationName}"
+            "value": "Поставь таймер в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -661,7 +661,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "ตั้งตัวจับเวลา ${applicationName}"
+            "value": "ตั้งตัวจับเวลาด้วย ${applicationName}"
           }
         }
       }
@@ -726,7 +726,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Поставь будильник в ${applicationName}"
+            "value": "Поставь будильник в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -785,7 +785,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName} saatı göstər"
+            "value": "${applicationName} ilə saatı göstər"
           }
         },
         "ar": {
@@ -821,7 +821,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Покажи часы в ${applicationName}"
+            "value": "Покажи часы в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -880,7 +880,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName} tam ekran saatı aç"
+            "value": "${applicationName} ilə tam ekran saatı aç"
           }
         },
         "ar": {
@@ -916,7 +916,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Открой полноэкранные часы в ${applicationName}"
+            "value": "Открой полноэкранные часы в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -975,7 +975,7 @@
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName} növbəti vaxt nə vaxtdır"
+            "value": "${applicationName}, növbəti namaz nə vaxtdır"
           }
         },
         "ar": {
@@ -1005,13 +1005,13 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Quand est la prochaine prière dans ${applicationName}"
+            "value": "À quelle heure est la prochaine prière dans ${applicationName}"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Когда следующий намаз в ${applicationName}"
+            "value": "Когда следующий намаз в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -1106,7 +1106,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Следующий намаз в ${applicationName}"
+            "value": "Следующий намаз в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -1201,7 +1201,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Какое сегодня число в ${applicationName}"
+            "value": "Какое сегодня число в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -1213,7 +1213,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName}에서 오늘 날짜는"
+            "value": "${applicationName}에서 오늘 날짜 알려 줘"
           }
         },
         "zh-Hans": {
@@ -1254,7 +1254,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Welches Hidschri-Datum ist in ${applicationName}"
+            "value": "Welches Hidschri-Datum ist heute in ${applicationName}"
           }
         },
         "az": {
@@ -1296,7 +1296,7 @@
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Какая дата по хиджре в ${applicationName}"
+            "value": "Какая дата по хиджре в приложении ${applicationName}"
           }
         },
         "ja": {
@@ -1308,7 +1308,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "${applicationName}에서 히즈라력 날짜는"
+            "value": "${applicationName}에서 히즈라력 날짜 알려 줘"
           }
         },
         "zh-Hans": {

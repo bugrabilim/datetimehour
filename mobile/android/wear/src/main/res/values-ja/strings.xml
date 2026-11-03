@@ -29,7 +29,7 @@
     <string name="prayer_kerahatNames_israk">日の出（イシュラーク）</string>
     <string name="prayer_kerahatNames_istiva">正午前（イスティワー）</string>
     <string name="prayer_kerahatNames_isfirar">日没前（イスフィラール）</string>
-    <string name="prayer_kerahatNote">この時間帯には任意の礼拝を行いません。ディヤーネットは正確な分数を出していないため、一般的なカレンダーの慣習である約45分を使っています（正午前の時間帯は資料により10〜45分）。</string>
+    <string name="prayer_kerahatNote">この時間帯には任意の礼拝は行いません。ディヤーネットは正確な分数を示していないため、カレンダーで一般的な約45分を使っています（正午前の時間帯は資料により10〜45分）。</string>
     <string name="prayer_method_heading">計算方法</string>
     <string name="prayer_method_label">方法</string>
     <string name="prayer_method_asrLabel">アスル</string>
@@ -78,10 +78,10 @@
     <string name="live_sahur">スフール（イムサーク）</string>
     <string name="wear_place">場所</string>
     <string name="wear_noLocation">現在地を取得できないため、イスタンブールを表示しています。</string>
-    <string name="wear_phonePlace">iPhoneの場所</string>
+    <string name="wear_phonePlace">iPhoneで選んだ場所</string>
     <string name="wear_today">今日</string>
     <string name="prayer_method_app">計算方法</string>
-    <string name="prayer_method_appNote">トルコでは公式の時刻はディヤーネットのものです。選んだ方法で時刻、通知、アラーム、月間表が変わります。ホーム画面のウィジェットと時計はディヤーネットの方法のままです。</string>
+    <string name="prayer_method_appNote">トルコでは公式の時刻はディヤーネットのものです。選んだ方法で時刻、通知、アラーム、月間表が変わります。ホーム画面のウィジェットとウォッチはディヤーネットの方法のままです。</string>
     <string name="prayer_arc_title">太陽と月</string>
     <string name="prayer_arc_day">日の入りまで%1$s</string>
     <string name="prayer_arc_night">日の出まで%1$s</string>

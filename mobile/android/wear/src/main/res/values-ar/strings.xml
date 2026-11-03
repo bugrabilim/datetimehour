@@ -22,9 +22,9 @@
     <string name="prayer_imDate">التاريخ</string>
     <string name="prayer_imSahur">سحور</string>
     <string name="prayer_imIftar">إفطار</string>
-    <string name="prayer_imNote">الأوقات محسوبة؛ والمعتمد هو ما تنشره رئاسة الشؤون الدينية (ديانت).</string>
+    <string name="prayer_imNote">الأوقات محسوبة؛ والمعتمد هو ما تنشره رئاسة الشؤون الدينية.</string>
     <string name="prayer_imFile">imsakiyah</string>
-    <string name="prayer_imAlt">إمساكية رمضان %2$s لمدينة %1$s</string>
+    <string name="prayer_imAlt">إمساكية رمضان %2$s في %1$s</string>
     <string name="prayer_kerahatHeading">أوقات الكراهة (تقريبية)</string>
     <string name="prayer_kerahatNames_israk">عند الشروق (الإشراق)</string>
     <string name="prayer_kerahatNames_istiva">قبل الظهر (الاستواء)</string>
@@ -35,12 +35,12 @@
     <string name="prayer_method_asrLabel">العصر</string>
     <string name="prayer_method_asrStd">الجمهور (الشافعي والمالكي والحنبلي، ديانت)</string>
     <string name="prayer_method_asrHanafi">الحنفي (ظل الشيء مثليه)</string>
-    <string name="prayer_method_note">المواقيت الرسمية في تركيا هي مواقيت رئاسة الشؤون الدينية (ديانت). إذا اخترت طريقة أخرى تُحسب المواقيت والجدول الشهري وإمساكية رمضان في هذه الصفحة بها؛ ويُحفظ اختيارك في هذا المتصفح فقط.</string>
+    <string name="prayer_method_note">المواقيت الرسمية في تركيا هي مواقيت رئاسة الشؤون الدينية. إذا اخترت طريقة أخرى فستُحسب بها المواقيت والجدول الشهري وإمساكية رمضان في هذه الصفحة؛ ويُحفظ اختيارك في هذا المتصفح فقط.</string>
     <string name="prayer_method_active">الطريقة: %1$s</string>
     <string name="prayer_method_hanafiShort">العصر الحنفي</string>
     <string name="prayer_method_names_diyanet">ديانت (تركيا)</string>
     <string name="prayer_method_names_mwl">رابطة العالم الإسلامي</string>
-    <string name="prayer_method_names_isna">الجمعية الإسلامية لأمريكا الشمالية</string>
+    <string name="prayer_method_names_isna">الجمعية الإسلامية لأمريكا الشمالية (ISNA)</string>
     <string name="prayer_method_names_egypt">الهيئة المصرية العامة للمساحة</string>
     <string name="prayer_method_names_makkah">أم القرى (مكة المكرمة)</string>
     <string name="prayer_method_names_karachi">جامعة العلوم الإسلامية بكراتشي</string>
@@ -81,12 +81,12 @@
     <string name="wear_phonePlace">المكان من iPhone</string>
     <string name="wear_today">اليوم</string>
     <string name="prayer_method_app">طريقة الحساب</string>
-    <string name="prayer_method_appNote">المواقيت الرسمية في تركيا هي مواقيت ديانت. يغيّر اختيارك المواقيت والإشعارات والمنبهات والجدول الشهري؛ وتبقى الأدوات والساعة على طريقة ديانت.</string>
+    <string name="prayer_method_appNote">المواقيت الرسمية في تركيا هي مواقيت رئاسة الشؤون الدينية. يغيّر اختيارك المواقيت والإشعارات والمنبهات والجدول الشهري؛ أما أدوات الشاشة الرئيسية والساعة الذكية فتبقى على طريقة ديانت.</string>
     <string name="prayer_arc_title">الشمس والقمر</string>
     <string name="prayer_arc_day">%1$s حتى الغروب</string>
     <string name="prayer_arc_night">%1$s حتى الشروق</string>
     <string name="prayer_alarm_heading">منبه عند الوقت</string>
-    <string name="prayer_alarm_note">يرنّ منبه حقيقي عند المواقيت المختارة حتى لو كان الهاتف صامتًا. تُضبط المنبهات للأيام القادمة وتُجدَّد كلما فتحت التطبيق.</string>
+    <string name="prayer_alarm_note">يرنّ منبه حقيقي عند المواقيت المختارة حتى لو كان الهاتف صامتًا أو في وضع التركيز. تُضبط المنبهات للأيام القادمة وتُجدَّد كلما فتحت التطبيق.</string>
     <string name="prayer_alarm_unsupported">يتطلب منبه المواقيت iOS 26 أو أحدث؛ يُستخدم الإشعار في هذا الإصدار.</string>
     <string name="prayer_alarm_title">وقت %1$s</string>
     <string name="prayer_silent_heading">كتم الهاتف عند الوقت</string>
@@ -96,9 +96,9 @@
     <string name="prayer_silent_mode">الوضع</string>
     <string name="prayer_silent_vibrate">اهتزاز</string>
     <string name="prayer_silent_silent">عدم الإزعاج</string>
-    <string name="prayer_silent_note">بعد المواقيت المختارة ينتقل الهاتف إلى الاهتزاز أو عدم الإزعاج للمدة المختارة ثم يعود. يتطلب عدم الإزعاج إذنًا لمرة واحدة.</string>
-    <string name="prayer_silent_grant">سماح</string>
-    <string name="prayer_silent_channel">صامت عند الوقت</string>
+    <string name="prayer_silent_note">بعد المواقيت المختارة ينتقل الهاتف إلى الاهتزاز أو عدم الإزعاج للمدة المختارة ثم يعود إلى وضعه السابق. يتطلب عدم الإزعاج إذنًا لمرة واحدة.</string>
+    <string name="prayer_silent_grant">السماح</string>
+    <string name="prayer_silent_channel">الصامت عند وقت الصلاة</string>
     <string name="prayer_silent_active">الهاتف صامت حتى %1$s</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

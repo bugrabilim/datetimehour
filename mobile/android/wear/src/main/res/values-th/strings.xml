@@ -43,7 +43,7 @@
     <string name="prayer_method_names_isna">สมาคมอิสลามแห่งอเมริกาเหนือ (ISNA)</string>
     <string name="prayer_method_names_egypt">องค์การสำรวจทั่วไปแห่งอียิปต์</string>
     <string name="prayer_method_names_makkah">อุมมุลกุรอ (มักกะฮ์)</string>
-    <string name="prayer_method_names_karachi">มหาวิทยาลัยวิทยาศาสตร์อิสลาม การาจี</string>
+    <string name="prayer_method_names_karachi">มหาวิทยาลัยอิสลามศึกษา การาจี</string>
     <string name="prayer_method_names_tehran">สถาบันธรณีฟิสิกส์ เตหะราน</string>
     <string name="prayer_method_names_jafari">ชีอะฮ์อิษนาอะชะรี (กุม)</string>
     <string name="prayer_method_names_gulf">ภูมิภาคอ่าว</string>
@@ -51,7 +51,7 @@
     <string name="prayer_method_names_qatar">กาตาร์</string>
     <string name="prayer_method_names_singapore">สิงคโปร์</string>
     <string name="prayer_method_names_france">ฝรั่งเศส (UOIF)</string>
-    <string name="prayer_method_names_russia">สำนักบริหารจิตวิญญาณมุสลิมแห่งรัสเซีย</string>
+    <string name="prayer_method_names_russia">สำนักบริหารกิจการศาสนาของชาวมุสลิมแห่งรัสเซีย</string>
     <string name="place_myLocation">ตำแหน่งของฉัน</string>
     <string name="widget_province_auto">อัตโนมัติ (ตำแหน่งของฉัน)</string>
     <string name="widget_next_name">ละหมาดถัดไป</string>
@@ -86,7 +86,7 @@
     <string name="prayer_arc_day">อีก %1$s ถึงดวงอาทิตย์ตก</string>
     <string name="prayer_arc_night">อีก %1$s ถึงดวงอาทิตย์ขึ้น</string>
     <string name="prayer_alarm_heading">นาฬิกาปลุกเวลาละหมาด</string>
-    <string name="prayer_alarm_note">นาฬิกาปลุกจริงจะดังในเวลาละหมาดที่เลือก แม้โทรศัพท์ปิดเสียงหรืออยู่ในโหมดโฟกัส ตั้งไว้สำหรับวันข้างหน้าและต่ออายุทุกครั้งที่เปิดแอป</string>
+    <string name="prayer_alarm_note">นาฬิกาปลุกจริงจะดังในเวลาละหมาดที่เลือก แม้โทรศัพท์ปิดเสียงหรืออยู่ในโหมดโฟกัส นาฬิกาปลุกตั้งไว้สำหรับวันข้างหน้าและจะอัปเดตทุกครั้งที่เปิดแอป</string>
     <string name="prayer_alarm_unsupported">นาฬิกาปลุกเวลาละหมาดต้องใช้ iOS 26 ขึ้นไป เวอร์ชันนี้ใช้การแจ้งเตือน</string>
     <string name="prayer_alarm_title">เวลา%1$s</string>
     <string name="prayer_silent_heading">ปิดเสียงโทรศัพท์ในเวลาละหมาด</string>
