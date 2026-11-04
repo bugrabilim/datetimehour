@@ -319,7 +319,7 @@ fun PrayerAlarmCard() {
         SectionTitle(L("prayer.alarm.heading"))
         for (p in Prayer.entries) Row(verticalAlignment = Alignment.CenterVertically) {
             Text(p.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-            Switch(p in sel, { on ->
+            SoftSwitch(p in sel, { on ->
                 sel = if (on) sel + p else sel - p
                 PrayerAlarms.selected = sel
                 PrayerAlarms.sync(context)
@@ -356,12 +356,12 @@ fun PrayerSilentCard() {
             var fri by remember { mutableStateOf(PrayerSilent.friday) }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("prayer.silent.friday"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(fri, { on -> fri = on; Prefs.store.edit().putBoolean(PrayerSilent.FRIDAY, on).apply(); changed() },
+                SoftSwitch(fri, { on -> fri = on; Prefs.store.edit().putBoolean(PrayerSilent.FRIDAY, on).apply(); changed() },
                     colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             for (p in Prayer.entries.filter { it != Prayer.SUNRISE }) Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(p.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(p in sel, { on -> sel = if (on) sel + p else sel - p; PrayerSilent.prayers = sel; changed() },
+                SoftSwitch(p in sel, { on -> sel = if (on) sel + p else sel - p; PrayerSilent.prayers = sel; changed() },
                     colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
         }

@@ -141,7 +141,7 @@ fun FeaturesScreen() {
     var full by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         // Canlı alt çubuk önizlemesi ve sıra
-        Text(L("features.barTitle"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(horizontal = 4.dp))
+        Text(L("features.barTitle"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium, modifier = Modifier.padding(horizontal = 4.dp))
         AppCard {
             BarPreview()
             for ((i, t) in Features.bar.withIndex()) {
@@ -191,7 +191,7 @@ private fun FeatureRow(t: Tab, checked: Boolean, enabled: Boolean = true, onBar:
                 )
             }
         }
-        Switch(checked, onChange, enabled = enabled, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+        SoftSwitch(checked, onChange, enabled = enabled, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }
 

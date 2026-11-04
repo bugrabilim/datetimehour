@@ -101,8 +101,8 @@ fun HealthToggle() {
     Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(2.dp)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(L("health.saveAndroid"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-            Switch(on, { v ->
-                if (!v) { on = false; HealthLog.setEnabled(false); return@Switch }
+            SoftSwitch(on, { v ->
+                if (!v) { on = false; HealthLog.setEnabled(false); return@SoftSwitch }
                 scope.launch {
                     if (HealthLog.granted(context)) { on = true; denied = false; HealthLog.setEnabled(true) }
                     else runCatching { launcher.launch(HealthLog.PERMS) }.onFailure { denied = true }

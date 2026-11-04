@@ -99,3 +99,57 @@ struct LineIcon: View {
         .frame(width: size, height: size)
     }
 }
+
+/// SF Symbol'den kendi çizgi simgemize eşleme (doğal tasarım madde 4, 4 Kasım 2026): IconBox ve alt çubuk önce buraya
+/// bakar, karşılığı yoksa SF Symbol çizilir. Android'deki LineIconMap ile aynı simgeler.
+enum LineIconMap {
+    private static let bySymbol: [String: String] = [
+        "alarm": "alarm", "timer": "hourglass", "stopwatch": "stopwatch", "graduationcap": "cap", "bed.double": "bed",
+        "bird": "chick", "wind": "wind", "checkerboard.rectangle": "knight", "metronome": "metronome", "speaker.wave.2": "speaker",
+        "pencil.and.list.clipboard": "paper", "person.3": "people", "person.2.wave.2": "people", "clock.badge.questionmark": "calc",
+        "calendar": "calendar", "calendar.badge.clock": "calendar", "calendar.badge.exclamationmark": "calendar", "doc.text": "leafcal",
+        "sun.horizon": "sunrise", "beach.umbrella": "beach", "cloud.sun": "sun", "sun.max": "sun", "globe.europe.africa": "globe",
+        "globe": "globe", "leaf": "leaf", "moon": "moon", "moon.stars": "night", "sparkles": "star", "rosette": "star", "gift": "heart",
+        "location.north.line": "compass", "book": "book", "hand.tap": "beads", "checkmark.circle": "checklist", "hands.sparkles": "hands",
+        "figure.mind.and.body": "mosque", "percent": "coin", "gearshape": "gear", "bell": "bell", "location": "pin",
+        "paintpalette": "palette", "textformat.size": "textsize", "info.circle": "info", "qrcode": "qr", "slider.horizontal.3": "sliders",
+        "icloud": "cloud", "square.grid.3x3": "grid", "square.grid.2x2": "grid", "clock": "clock", "magnifyingglass": "search",
+        "envelope": "mail", "square.and.arrow.up": "share", "star": "star", "heart": "heart",
+        "arrow.up.left.and.arrow.down.right": "fullscreen", "thermometer.medium": "thermometer",
+    ]
+
+    static func of(_ symbol: String) -> String? {
+        guard let n = bySymbol[symbol], LineIcons.all[n] != nil else { return nil }
+        return n
+    }
+
+    /// Alt çubuktaki sekmeler
+    static func tab(_ t: AppTab) -> String {
+        switch t {
+        case .clock: "clock"
+        case .weather: "sun"
+        case .calendar: "calendar"
+        case .world: "globe"
+        case .seasons: "leaf"
+        case .prayer: "mosque"
+        case .tools: "grid"
+        }
+    }
+
+    /// Tümü girişleri (aynı SF Symbol'ü paylaşan girişler ayrışsın diye kimliğe göre)
+    static func entry(_ id: String) -> String? {
+        let m: [String: String] = [
+            "alarm": "alarm", "timer": "hourglass", "stopwatch": "stopwatch", "pomodoro": "tomato", "study": "book",
+            "sleep": "bed", "wakeGame": "chick", "breath": "wind", "chess": "knight", "metronome": "metronome",
+            "talking": "speaker", "exam": "paper", "classroom": "people", "timecalc": "calc", "calendar": "calendar",
+            "leaf": "leafcal", "datecalc": "calc", "planner": "people", "journal": "sunrise", "bridge": "bridge",
+            "retire": "beach", "weather": "sun", "world": "globe", "seasons": "leaf", "moon": "moon", "sky": "star",
+            "sunpath": "sunset", "zodiac": "star", "prayer": "mosque", "qibla": "compass", "quran": "book",
+            "zikir": "beads", "track": "checklist", "duas": "hands", "esma": "star", "hadith": "book", "guide": "mosque",
+            "reldays": "calendar", "greet": "heart", "zakat": "coin", "settings": "gear", "badges": "star",
+        ]
+        let key = id.hasPrefix("s:") ? String(id.dropFirst(2)) : id
+        guard let n = m[key], LineIcons.all[n] != nil else { return nil }
+        return n
+    }
+}

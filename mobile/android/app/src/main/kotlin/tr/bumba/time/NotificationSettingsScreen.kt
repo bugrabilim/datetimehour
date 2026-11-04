@@ -105,7 +105,7 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
             AppCard {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("notify.enable"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                    Switch(enabled, ::setEnabled, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(enabled, ::setEnabled, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 Text(L("notify.note"), color = Theme.c.muted, fontSize = 13.sp)
             }
@@ -114,7 +114,7 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
             AppCard {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("live.prayer.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                    Switch(liveOn, { on ->
+                    SoftSwitch(liveOn, { on ->
                         liveOn = on
                         Prefs.store.edit().putBoolean(LiveNotifications.PRAYER_KEY, on).apply()
                         LiveNotifications.sync(context)
@@ -151,7 +151,7 @@ fun NotificationSettingsScreen(onBack: () -> Unit) {
                     for (p in Prayer.entries) {
                         Row(Modifier.fillMaxWidth().heightIn(min = 44.dp), verticalAlignment = Alignment.CenterVertically) {
                             Text(p.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                            Switch(p in selected, { on ->
+                            SoftSwitch(p in selected, { on ->
                                 NotifyPrefs.savePrayers(if (on) selected + p else selected - p)
                                 changed()
                             }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))

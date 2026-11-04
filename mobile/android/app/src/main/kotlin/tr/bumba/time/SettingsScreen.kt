@@ -129,7 +129,7 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                     IconBox(Icons.Filled.LightMode)
                     Spacer(Modifier.width(14.dp))
                     Text(L("settings.keepAwake"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                    Switch(Prefs.keepAwake, Prefs::saveKeepAwake, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(Prefs.keepAwake, Prefs::saveKeepAwake, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
             }
             // Dil (2. analiz #5): telefonun ayarlarına gitmeden
@@ -137,17 +137,17 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             if (shows("settings.units", "settings.pressureUnit", "client.formatLabel")) AppCard {
                 if (shows("client.formatLabel")) {
                     SectionTitle(L("client.formatLabel"))
-                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-                        SegmentedButton(!Prefs.h12, { Prefs.saveH12(false) }, SegmentedButtonDefaults.itemShape(0, 2), colors = segColors()) { Text(L("client.format24")) }
-                        SegmentedButton(Prefs.h12, { Prefs.saveH12(true) }, SegmentedButtonDefaults.itemShape(1, 2), colors = segColors()) { Text(L("client.format12")) }
+                    SoftSegmentedRow(Modifier.fillMaxWidth()) {
+                        SoftSegment(!Prefs.h12, { Prefs.saveH12(false) }) { Text(L("client.format24")) }
+                        SoftSegment(Prefs.h12, { Prefs.saveH12(true) }) { Text(L("client.format12")) }
                     }
                 }
                 if (shows("settings.units")) {
                     SectionTitle(L("settings.units"))
                     val opts = listOf("metric", "imperial")
-                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                    SoftSegmentedRow(Modifier.fillMaxWidth()) {
                         opts.forEachIndexed { i, o ->
-                            SegmentedButton(Prefs.units == o, { Prefs.saveUnits(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
+                            SoftSegment(Prefs.units == o, { Prefs.saveUnits(o) }) {
                                 Text(L("settings.units.$o"), fontSize = 13.sp, maxLines = 1)
                             }
                         }
@@ -158,10 +158,9 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
                     SectionTitle(L("settings.pressureUnit"))
                     var pu by remember { mutableStateOf(Units.pressureUnit) }
                     val popts = listOf("auto", "hPa", "mmHg", "inHg")
-                    SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                    SoftSegmentedRow(Modifier.fillMaxWidth()) {
                         popts.forEachIndexed { i, o ->
-                            SegmentedButton(pu == o, { pu = o; Prefs.store.edit().putString("units.pressure", o).apply() },
-                                SegmentedButtonDefaults.itemShape(i, popts.size), colors = segColors()) {
+                            SoftSegment(pu == o, { pu = o; Prefs.store.edit().putString("units.pressure", o).apply() }) {
                                 Text(if (o == "auto") L("countdowns.unit.auto") else o, fontSize = 12.sp, maxLines = 1)
                             }
                         }
@@ -187,9 +186,9 @@ fun SettingsScreen(onRoute: (String) -> Unit) {
             if (shows("settings.appearance")) AppCard {
                 SectionTitle(L("settings.appearance"))
                 val opts = listOf("system", "light", "dark")
-                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                SoftSegmentedRow(Modifier.fillMaxWidth()) {
                     opts.forEachIndexed { i, o ->
-                        SegmentedButton(Prefs.appearance == o, { Prefs.saveAppearance(o) }, SegmentedButtonDefaults.itemShape(i, opts.size), colors = segColors()) {
+                        SoftSegment(Prefs.appearance == o, { Prefs.saveAppearance(o) }) {
                             Text(L("settings.$o"))
                         }
                     }
@@ -415,7 +414,7 @@ private fun ListSignup() {
             singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email))
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(L("list.consentText"), Modifier.weight(1f), color = Theme.c.text, fontSize = 13.sp)
-            Switch(consent, { consent = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+            SoftSwitch(consent, { consent = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
         }
         Text(L("list.readNote"), Modifier.clickable {
             context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://bumbagroup.com/liste/aydinlatma" + if (lang == "tr") "" else "?dil=en")))

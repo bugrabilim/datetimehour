@@ -1,5 +1,8 @@
 package tr.bumba.time
 
+import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.draw.shadow
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -69,14 +72,25 @@ fun EmptyState(
     }
 }
 
-/** Liste satırlarındaki renkli simge kutusu (#99): 36 dp, köşe 10 dp, zemin ana rengin açık tonu */
+/**
+ * Liste satırlarındaki renkli simge kutusu (#99; doğal tasarım madde 4, 4 Kasım 2026): "çakıl taşı" biçimi (köşeler
+ * hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde kendi çizgi simgemiz (karşılığı yoksa Material simgesi).
+ * [line] verilirse o çizgi simge çizilir.
+ */
 @Composable
-fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier = Modifier) {
+fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier = Modifier, line: String? = null) {
+    val name = line ?: LineIconMap.of(icon.name)
     Box(
-        modifier.size(36.dp).clip(RoundedCornerShape(10.dp)).background(tint.copy(alpha = if (Theme.c.dark) 0.22f else 0.14f)),
+        modifier.size(36.dp).clip(PebbleShape).background(tint.copy(alpha = if (Theme.c.dark) 0.20f else 0.13f)),
         contentAlignment = Alignment.Center,
-    ) { Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp)) }
+    ) {
+        if (name != null) LineIcon(name, 21.dp, c1 = tint, c2 = tint.copy(alpha = 0.72f))
+        else Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp))
+    }
 }
+
+/** Çakıl taşı biçimi (doğal tasarım bölüm 3.3) */
+val PebbleShape = RoundedCornerShape(topStartPercent = 44, topEndPercent = 50, bottomEndPercent = 46, bottomStartPercent = 48)
 
 /**
  * Sekme sayfalarının büyük başlığı (#98; doğal tasarım 4 Kasım 2026): Literata 30/36, 600 (Latin ve Kiril dillerinde),
@@ -147,4 +161,63 @@ fun MoreMenu(items: List<Pair<String, () -> Unit>>) {
             }
         }
     }
+}
+
+/**
+ * Yumuşak bölmeli seçici (doğal tasarım madde 5, 4 Kasım 2026): onay işareti ve kenarlık yok; iz `surface2` hap, seçili
+ * parça açık temada `surface` + hafif gölge, koyu temada izden biraz açık. Material SegmentedButton yerine.
+ */
+@Composable
+fun SoftSegmentedRow(modifier: Modifier = Modifier, content: @Composable androidx.compose.foundation.layout.RowScope.() -> Unit) {
+    androidx.compose.foundation.layout.Row(
+        modifier.heightIn(min = 44.dp).clip(RoundedCornerShape(50)).background(Theme.c.surface2).padding(3.dp),
+        verticalAlignment = Alignment.CenterVertically, content = content,
+    )
+}
+
+@Composable
+fun androidx.compose.foundation.layout.RowScope.SoftSegment(selected: Boolean, onClick: () -> Unit, content: @Composable () -> Unit) {
+    val c = Theme.c
+    val shape = RoundedCornerShape(50)
+    val selBg = if (c.dark) Color.White.copy(alpha = 0.10f).compositeOver(c.surface2) else c.surface
+    Box(
+        Modifier.weight(1f).heightIn(min = 38.dp)
+            .then(
+                if (!selected) Modifier
+                else if (c.dark) Modifier.background(selBg, shape)
+                else Modifier.shadow(2.dp, shape, ambientColor = Color(0x334A341E), spotColor = Color(0x224A341E)).background(selBg, shape),
+            )
+            .clip(shape)
+            .selectable(selected, onClick = onClick, role = androidx.compose.ui.semantics.Role.Tab)
+            .padding(horizontal = 8.dp, vertical = 6.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        androidx.compose.runtime.CompositionLocalProvider(
+            androidx.compose.material3.LocalContentColor provides if (selected) c.text else c.muted,
+            androidx.compose.material3.LocalTextStyle provides androidx.compose.material3.LocalTextStyle.current.copy(
+                fontSize = 14.sp, fontWeight = if (selected) FontWeight.Medium else FontWeight.Normal,
+            ),
+        ) { content() }
+    }
+}
+
+/**
+ * Yumuşak anahtar (doğal tasarım madde 5): kenarlıksız iz; açıkken ana renk, kapalıyken `surface2` iz ve soluk düğme.
+ * Eski çağrılardaki `colors` yok sayılır (her yerde aynı görünüm).
+ */
+@Composable
+fun SoftSwitch(
+    checked: Boolean, onCheckedChange: ((Boolean) -> Unit)?, modifier: Modifier = Modifier, enabled: Boolean = true,
+    @Suppress("UNUSED_PARAMETER") colors: androidx.compose.material3.SwitchColors? = null,
+) {
+    val c = Theme.c
+    androidx.compose.material3.Switch(
+        checked, onCheckedChange, modifier, enabled = enabled,
+        colors = androidx.compose.material3.SwitchDefaults.colors(
+            checkedTrackColor = c.accent, checkedThumbColor = c.onAccent, checkedBorderColor = Color.Transparent,
+            uncheckedTrackColor = c.surface2, uncheckedThumbColor = c.muted, uncheckedBorderColor = Color.Transparent,
+            disabledCheckedTrackColor = c.accent.copy(alpha = 0.4f), disabledUncheckedTrackColor = c.surface2.copy(alpha = 0.6f),
+            disabledUncheckedBorderColor = Color.Transparent, disabledCheckedBorderColor = Color.Transparent,
+        ),
+    )
 }

@@ -177,7 +177,7 @@ fun HomeItemsEditor() {
                 Icon(Icons.Filled.Umbrella, null, tint = Theme.c.accent)
                 Spacer(Modifier.width(14.dp))
                 Text(L("look.weatherClock"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                Switch(weatherBg, { weatherBg = it; Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, it).apply() },
+                SoftSwitch(weatherBg, { weatherBg = it; Prefs.store.edit().putBoolean(WeatherScene.CLOCK_KEY, it).apply() },
                     colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
         }
@@ -196,7 +196,7 @@ fun HomeItemsEditor() {
                         Icon(item.icon, null, tint = Theme.c.accent)
                         Spacer(Modifier.width(14.dp))
                         Text(item.title, Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                        Switch(
+                        SoftSwitch(
                             item in layout.enabled,
                             { on ->
                                 val l = HomeItems.layout

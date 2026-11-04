@@ -264,7 +264,7 @@ fun FocusBlockCard() {
         SectionTitle(L("focus.title"))
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(L("focus.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-            Switch(on, { v ->
+            SoftSwitch(on, { v ->
                 on = v
                 Prefs.store.edit().putBoolean(FocusBlock.ON, v).apply()
                 if (v && apps.isEmpty()) picking = true

@@ -496,7 +496,7 @@ fun LifetimeKazaCard(onApplied: () -> Unit) {
                 label = { Text(L("track.life.start")) }, singleLine = true, keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number))
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("track.life.female"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(female, { female = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(female, { female = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             if (female) ChoiceRow(L("track.life.period"), "$period", (3..10).map { it to "$it" }) { period = it; save() }
             val b = birth.toIntOrNull(); val s = start.toIntOrNull()
@@ -557,7 +557,7 @@ fun PauseRow(onChange: () -> Unit) {
     val from = TrackX.pausedFrom
     Row(verticalAlignment = Alignment.CenterVertically) {
         Text(L("track.pause"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-        Switch(from != null, { TrackX.pausedFrom = if (it) LocalDate.now() else null; onChange() },
+        SoftSwitch(from != null, { TrackX.pausedFrom = if (it) LocalDate.now() else null; onChange() },
             colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
     from?.let { Text(T("track.pausedSince", Fmt.longDate(it)), color = Theme.c.muted, fontSize = 12.sp) }
@@ -609,7 +609,7 @@ fun SkyCountdown(entries: List<AppPlace.Entry>, next: AppPlace.Entry, now: Insta
             .semantics { contentDescription = countdownWords(left, next.prayer.title) + ". " + L("prayer.wordsHint") },
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Icon(prayerIcon(next.prayer), null, tint = sky.text, modifier = Modifier.size(28.dp))
+        LineIcon(LineIconMap.prayer(next.prayer), 30.dp, c1 = sky.text, c2 = sky.text)
         if (words) {
             Text(countdownWords(left, next.prayer.title), color = sky.text, fontSize = 30.sp, fontFamily = AppFonts.heading,
                 fontWeight = FontWeight.Medium, textAlign = TextAlign.Center)

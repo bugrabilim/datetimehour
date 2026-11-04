@@ -161,7 +161,7 @@ fun WorldScreen() {
                 HorizontalDivider(color = Theme.c.border.copy(alpha = 0.5f))
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("world.changeTime"), Modifier.weight(1f), color = Theme.c.text)
-                    Switch(shift, {
+                    SoftSwitch(shift, {
                         shift = it
                         if (it) whenMs = System.currentTimeMillis()
                     }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))

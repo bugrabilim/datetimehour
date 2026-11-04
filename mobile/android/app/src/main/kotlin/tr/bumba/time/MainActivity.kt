@@ -293,11 +293,12 @@ private fun TabBar(tabs: List<Tab>, selected: Tab, onSelect: (Tab) -> Unit) {
                             .background(if (on) Theme.c.accentSoft else Color.Transparent),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Icon(if (on) t.on else t.off, contentDescription = Features.label(t), tint = color, modifier = Modifier.size(24.dp))
+                        // Kendi çizgi simgelerimiz (doğal tasarım madde 4)
+                        LineIcon(LineIconMap.tab(t), 24.dp, c1 = color, c2 = color, label = Features.label(t))
                     }
                     Text(
                         Features.label(t), color = color, fontSize = 11.sp, maxLines = 1, overflow = TextOverflow.Ellipsis,
-                        fontWeight = if (on) FontWeight.SemiBold else FontWeight.Normal,
+                        fontWeight = if (on) FontWeight.Medium else FontWeight.Normal,
                     )
                 }
             }

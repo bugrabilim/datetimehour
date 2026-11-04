@@ -187,7 +187,7 @@ private fun ToggleRow(icon: ImageVector, title: String, note: String, on: Boolea
             Text(note, color = Theme.c.muted, fontSize = 12.sp)
         }
         Spacer(Modifier.width(8.dp))
-        Switch(on, onChange, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+        SoftSwitch(on, onChange, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }
 

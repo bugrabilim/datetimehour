@@ -89,7 +89,7 @@ fun SeasonsScreen() {
                     Text(L("live.sun.toggle"), color = Theme.c.text, fontSize = 15.sp)
                     Text(L("live.sun.note"), color = Theme.c.muted, fontSize = 12.sp)
                 }
-                androidx.compose.material3.Switch(liveSun, {
+                SoftSwitch(liveSun, {
                     liveSun = it
                     Prefs.store.edit().putBoolean(LiveNotifications.SUN_KEY, it).apply()
                     LiveNotifications.sync(ctx)

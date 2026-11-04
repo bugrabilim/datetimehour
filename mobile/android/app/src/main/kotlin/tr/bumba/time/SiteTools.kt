@@ -539,7 +539,7 @@ fun MetronomeScreen() {
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("metronome.accent"), Modifier.weight(1f), color = Theme.c.text)
-                Switch(accent, { accent = it; persist() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(accent, { accent = it; persist() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             SectionTitle(L("metronome.volume"))
             Slider(vol.toFloat(), { vol = it.toInt(); persist() }, valueRange = 0f..100f,
@@ -594,7 +594,7 @@ fun TalkingClockScreen() {
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("talking.chime"), Modifier.weight(1f), color = Theme.c.text)
-                Switch(chime, { chime = it; Prefs.store.edit().putBoolean("talking.chime", it).apply() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(chime, { chime = it; Prefs.store.edit().putBoolean("talking.chime", it).apply() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
         }
         Note(L("talking.appNote"))
@@ -919,7 +919,7 @@ fun ClassroomScreen() {
             "picker" -> {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("classroom.removePicked"), Modifier.weight(1f), color = Theme.c.text)
-                    Switch(remove, { remove = it; pool = null; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(remove, { remove = it; pool = null; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 AppCard(background = Theme.c.surface2) {
                     SectionTitle(L("classroom.picked"))

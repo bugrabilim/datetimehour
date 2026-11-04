@@ -285,7 +285,7 @@ fun SleepScreen() {
             var mix by remember { mutableStateOf(NoiseGen.parseMix(Prefs.store.getString("sleep.mix", "") ?: "").toMap()) }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("sleep.mixOn"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                androidx.compose.material3.Switch(mixOn, {
+                SoftSwitch(mixOn, {
                     mixOn = it; Prefs.store.edit().putBoolean("sleep.mixOn", it).apply()
                     if (SleepSounds.playing) SleepSounds.play(context)
                 }, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
@@ -353,7 +353,7 @@ fun SleepScreen() {
 private fun SwitchRow(title: String, on: Boolean, onChange: (Boolean) -> Unit) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-        Switch(on, onChange, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+        SoftSwitch(on, onChange, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }
 

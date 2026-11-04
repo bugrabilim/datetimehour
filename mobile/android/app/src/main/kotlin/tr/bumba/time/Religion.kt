@@ -232,7 +232,7 @@ fun SuraScreen(sura: Int, startAya: Int, onBack: () -> Unit) {
                 QuranReadingOptions { themeId = it }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("quran.showEn"), Modifier.weight(1f), color = pal.ink, fontSize = 14.sp)
-                    Switch(showEn, { showEn = it; Prefs.store.edit().putBoolean("quran.en", it).apply() },
+                    SoftSwitch(showEn, { showEn = it; Prefs.store.edit().putBoolean("quran.en", it).apply() },
                         colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 if (Strings.lang == "tr" || Strings.lang == "az") {
@@ -491,7 +491,7 @@ fun ZikirScreen(onBack: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(14.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("zikir.tesbihat"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(tesbihat, { tesbihat = it; count = 0; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(tesbihat, { tesbihat = it; count = 0; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             if (!tesbihat) {
                 Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -562,11 +562,11 @@ fun ZikirScreen(onBack: () -> Unit) {
             Text(L("zikir.undoHint"), color = Theme.c.muted, fontSize = 12.sp, textAlign = TextAlign.Center)
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("zikir.beads"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(beads, { beads = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(beads, { beads = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(L("zikir.shakeUndo"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(shakeUndo, { shakeUndo = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(shakeUndo, { shakeUndo = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
             Row2(L("zikir.today"), "$todayCount")
             Row2(L("zikir.total"), "$total")
@@ -680,7 +680,7 @@ fun TrackerScreen(onBack: () -> Unit) {
                     PauseRow { version++ }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(L("track.inline"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                        Switch(TrackX.inline, { TrackX.inline = it; version++ }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(TrackX.inline, { TrackX.inline = it; version++ }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                     Text(L("track.inlineNote"), color = Theme.c.muted, fontSize = 12.sp)
                 }

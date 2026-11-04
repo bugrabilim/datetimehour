@@ -297,6 +297,19 @@ struct PrayedRing: View {
 }
 
 /// Vakit simgesi (#65)
+/// Vakit satırlarındaki çizgi simge (doğal tasarım madde 4): imsak şafak, güneş doğuş, öğle tepe, ikindi alçak güneş,
+/// akşam batış, yatsı gece. Android'deki LineIconMap.prayer ile aynı.
+func prayerLineIcon(_ p: Prayer) -> String {
+    switch p {
+    case .fajr: "dawn"
+    case .sunrise: "sunrise"
+    case .dhuhr: "noon"
+    case .asr: "afternoon"
+    case .maghrib: "sunset"
+    case .isha: "night"
+    }
+}
+
 func prayerSymbol(_ p: Prayer) -> String {
     switch p {
     case .fajr: "sun.horizon"
@@ -350,7 +363,7 @@ struct SkyCountdown: View {
         let sky = skyColors(entries, now, dark: scheme == .dark)
         Button { words.toggle() } label: {
             VStack(spacing: 6) {
-                Image(systemName: prayerSymbol(next.prayer)).font(.title2)
+                LineIcon(name: prayerLineIcon(next.prayer), size: 30, c1: sky.text, c2: sky.text)
                 if words {
                     Text(countdownWords(left, next.prayer.localizedName))
                         .font(AppFonts.serif ? .custom("Literata-Medium", size: 28, relativeTo: .title) : .system(size: 28, weight: .semibold))

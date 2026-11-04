@@ -301,13 +301,13 @@ class WidgetStyleActivity : ComponentActivity() {
                             Row(Modifier.fillMaxWidth().clickable { frame = !frame }.padding(horizontal = 16.dp, vertical = 10.dp),
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Text(L("widget.frame"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                                Switch(frame, { frame = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                                SoftSwitch(frame, { frame = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                             }
                             // Sıradaki alarm satırı ve dokununca açılacak ekran (2. analiz #168)
                             Row(Modifier.fillMaxWidth().clickable { alarm = !alarm }.padding(horizontal = 16.dp, vertical = 10.dp),
                                 verticalAlignment = Alignment.CenterVertically) {
                                 Text(L("widget.nextAlarm"), Modifier.weight(1f), color = Theme.c.text, fontSize = 16.sp)
-                                Switch(alarm, { alarm = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                                SoftSwitch(alarm, { alarm = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                             }
                             Text(L("widget.tap"), Modifier.padding(start = 16.dp, top = 8.dp), color = Theme.c.muted, fontSize = 14.sp)
                             Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp, vertical = 6.dp).horizontalScroll(rememberScrollState()),

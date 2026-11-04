@@ -109,7 +109,7 @@ fun FocusScheduleSection(onChange: () -> Unit) {
     }
     Row(verticalAlignment = Alignment.CenterVertically) {
         Text(L("focus.sched"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-        Switch(on, { on = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+        SoftSwitch(on, { on = it; save() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
     if (!on) return
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -246,7 +246,7 @@ fun FlipFocusCard(onChange: () -> Unit) {
     AppCard {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(L("flip.toggle"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-            Switch(on, { on = it; Prefs.store.edit().putBoolean("pomo.flip", it).apply() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+            SoftSwitch(on, { on = it; Prefs.store.edit().putBoolean("pomo.flip", it).apply() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
         }
         if (on && !running) Text(if (paused) "⚠️ " + L("flip.paused") else "📱 " + L("flip.waiting"),
             color = if (paused) androidx.compose.ui.graphics.Color(0xFFE65100) else Theme.c.accent, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)

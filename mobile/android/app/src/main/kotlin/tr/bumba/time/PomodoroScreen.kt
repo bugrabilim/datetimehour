@@ -145,10 +145,9 @@ fun PomodoroScreen() {
         center = true,
         header = {
             val tabs = listOf(L("tool.tab.timer"), L("tool.tab.stats"))
-            androidx.compose.material3.SingleChoiceSegmentedButtonRow(Modifier.weight(1f)) {
+            SoftSegmentedRow(Modifier.weight(1f)) {
                 tabs.forEachIndexed { i, t ->
-                    SegmentedButton(view == i, { view = i },
-                        androidx.compose.material3.SegmentedButtonDefaults.itemShape(i, tabs.size), colors = segColors()) { Text(t, maxLines = 1) }
+                    SoftSegment(view == i, { view = i }) { Text(t, maxLines = 1) }
                 }
             }
         },

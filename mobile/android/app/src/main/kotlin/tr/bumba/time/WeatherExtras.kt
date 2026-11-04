@@ -329,7 +329,7 @@ fun AirCard(place: AppPlace) {
             }
         }
         val pol = a.pollen.filterValues { Outdoor.pollenLevel(it) > 0 }
-        Text(L("aqi.pollen"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        Text(L("aqi.pollen"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
         if (pol.isEmpty()) Text(L("pollen.none"), color = Theme.c.muted, fontSize = 12.sp)
         else Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             for ((k, v) in pol) {

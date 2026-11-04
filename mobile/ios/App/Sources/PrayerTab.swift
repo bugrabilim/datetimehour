@@ -111,9 +111,8 @@ struct PrayerPanel: View {
                 ForEach(schedule.entries(on: now)) { entry in
                     let isNext = entry.at == next?.at
                     HStack(spacing: 10) {
-                        Image(systemName: prayerSymbol(entry.prayer))
-                            .foregroundStyle(isNext ? Theme.accent : Theme.muted)
-                            .frame(width: 22)
+                        LineIcon(name: prayerLineIcon(entry.prayer), size: 22,
+                                 c1: isNext ? Theme.accent : Theme.muted, c2: isNext ? Theme.accent : Theme.muted)
                             .accessibilityHidden(true)
                         Text(entry.prayer.localizedName)
                         Spacer()

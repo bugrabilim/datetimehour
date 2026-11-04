@@ -40,4 +40,16 @@ enum AppFonts {
         bar.largeTitleTextAttributes[.font] = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: large)
         bar.titleTextAttributes[.font] = UIFontMetrics(forTextStyle: .headline).scaledFont(for: inline)
     }
+
+    /// Yumuşak bölmeli seçici (doğal tasarım madde 5): kenarlıksız `surface2` iz, seçili parça `surface`, ayraç çizgisi
+    /// yok, seçili yazı orta kalın. SwiftUI'nin `.pickerStyle(.segmented)` seçicilerinin hepsi bu görünümü alır.
+    static func applySegmentedControls() {
+        let seg = UISegmentedControl.appearance()
+        seg.selectedSegmentTintColor = UIColor(Theme.surface)
+        seg.backgroundColor = UIColor(Theme.surface2)
+        seg.setDividerImage(UIImage(), forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+        seg.setTitleTextAttributes([.foregroundColor: UIColor(Theme.muted), .font: UIFont.systemFont(ofSize: 14)], for: .normal)
+        seg.setTitleTextAttributes([.foregroundColor: UIColor(Theme.text),
+                                    .font: UIFont.systemFont(ofSize: 14, weight: .medium)], for: .selected)
+    }
 }

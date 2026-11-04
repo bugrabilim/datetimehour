@@ -337,17 +337,17 @@ private fun CountdownEditor(item: CountdownItem, isNew: Boolean, onDismiss: () -
                 TextButton(onClick = { DeviceCalendar.reload(context); picking = 3 }) { Text("📅 " + L("countdowns.fromCalendar"), color = Theme.c.accent) }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("countdowns.yearly"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Switch(yearly, { yearly = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(yearly, { yearly = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("countdowns.remind"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Switch(remind, { remind = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(remind, { remind = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 // Gösterim birimi, renk, etiket, iş günü (2. analiz #73, #139)
                 ChoiceRow(L("countdowns.unit"), L("countdowns.unit.$unit"), CountdownItem.UNITS.indices.map { it to L("countdowns.unit.${CountdownItem.UNITS[it]}") }) { unit = CountdownItem.UNITS[it] }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("countdowns.workdays"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Switch(workdays, { workdays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(workdays, { workdays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 OutlinedTextField(tag, { tag = it.take(20) }, Modifier.fillMaxWidth(), singleLine = true, label = { Text(L("countdowns.tag")) })
                 Text(L("countdowns.look"), color = Theme.c.muted, fontSize = 13.sp)

@@ -167,7 +167,10 @@ fun PrayerScreen() {
                             .heightIn(min = 34.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        Icon(prayerIcon(e.prayer), null, tint = if (on) Theme.c.accent else Theme.c.muted, modifier = Modifier.padding(end = 10.dp).size(20.dp))
+                        Box(Modifier.padding(end = 10.dp)) {
+                            val ic = if (on) Theme.c.accent else Theme.c.muted
+                            LineIcon(LineIconMap.prayer(e.prayer), 22.dp, c1 = ic, c2 = ic)
+                        }
                         Text(e.prayer.title, Modifier.weight(1f), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp)
                         Text(Fmt.hm(e.at, place.zone), color = Theme.c.text, fontWeight = if (on) FontWeight.Bold else FontWeight.Normal, fontSize = 17.sp, style = Tnum)
                         if (inline) PrayedMark(today, e, now, trackV) { trackV++ }

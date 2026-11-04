@@ -101,7 +101,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
         // Sıradaki alarm (2. analiz #51)
         NextAlarmCard(items, nowMs)
         // Hızlı alarm (rakip analizi #17): şu andan X dakika sonrasına bir kezlik alarm
-        Text(L("alarm.quick"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        Text(L("alarm.quick"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             for (m in listOf(5, 10, 15, 20, 30, 45, 60)) {
                 Box(
@@ -145,7 +145,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
             }
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(L("tools.alarm.listHeading"), Modifier.weight(1f), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+            Text(L("tools.alarm.listHeading"), Modifier.weight(1f), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
             IconButton(onClick = {
                 val now = LocalTime.now()
                 editing = AlarmItem(hour = now.hour, minute = now.minute)
@@ -156,7 +156,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
         val list = items.filter { !it.sleepPlan }
         for ((heading, group) in listOf(L("alarm.sleepSection") to sleepItems, "" to list)) {
         if (heading.isNotEmpty() && group.isEmpty()) continue
-        if (heading.isNotEmpty()) Text(heading, color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+        if (heading.isNotEmpty()) Text(heading, color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
         AppCard(padding = 4) {
             // Boş durum (2. analiz #96)
             if (group.isEmpty()) EmptyState(
@@ -208,7 +208,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                                     )
                                 }
                             }
-                            Switch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
+                            SoftSwitch(item.enabled, { on -> update(items.map { if (it.id == item.id) it.copy(enabled = on) else it }) },
                                 colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                         }
                     }
@@ -362,7 +362,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                         Text(L("alarm.skipHolidays"), color = Theme.c.text, fontSize = 15.sp)
                         Text(L("alarm.skipHolidaysNote"), color = Theme.c.muted, fontSize = 12.sp)
                     }
-                    Switch(skipHolidays, { skipHolidays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(skipHolidays, { skipHolidays = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 ChoiceRow(L("alarm.snooze"), if (snooze == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", snooze),
                     AlarmItem.SNOOZE_CHOICES.map { it to (if (it == 0) L("alarm.snoozeOff") else T("alarm.snoozeMin", it)) }) { snooze = it }
@@ -402,7 +402,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                 if (wallPicker) AlarmWallDialog(wall, time.hour, time.minute, { wall = it; wallPicker = false }, { wallPicker = false })
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("alarm.vibrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                    Switch(vibrate, { vibrate = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                    SoftSwitch(vibrate, { vibrate = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                 }
                 // Gelişmiş (2. analiz #201): kapalı gelir; saat, günler, ses ve erteleme üstte kalır
                 Row(
@@ -447,7 +447,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                                 Text(L("alarm.snoozeShrink"), color = Theme.c.text, fontSize = 15.sp)
                                 Text(L("alarm.snoozeShrinkNote"), color = Theme.c.muted, fontSize = 12.sp)
                             }
-                            Switch(snoozeShrink, { snoozeShrink = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                            SoftSwitch(snoozeShrink, { snoozeShrink = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                         }
                         val ends = remember(time.hour, time.minute) {
                             listOf("") + listOf(15, 30, 45, 60, 90, 120).map {
@@ -466,7 +466,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                             Text(L("alarm.rise"), color = Theme.c.text, fontSize = 15.sp)
                             Text(L("alarm.riseNote"), color = Theme.c.muted, fontSize = 12.sp)
                         }
-                        Switch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(rise, { rise = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                     // Müzik bağlantısı: çalınca Spotify ya da YouTube'da açılır, alarm sesi 1 dk sonra (MusicLink)
                     OutlinedTextField(link, { link = it.take(300) }, Modifier.fillMaxWidth(), singleLine = true,
@@ -488,7 +488,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                             Text(L("alarm.speak"), color = Theme.c.text, fontSize = 15.sp)
                             Text(L("alarm.speakNote"), color = Theme.c.muted, fontSize = 12.sp)
                         }
-                        Switch(speak, { speak = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(speak, { speak = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                     fun preText(m: Int) = if (m == 0) L("alarm.preOff") else T("alarm.preMin", m)
                     ChoiceRow(L("alarm.pre"), preText(preNotify), AlarmItem.PRE_NOTIFY_CHOICES.map { it to preText(it) }) { preNotify = it }
@@ -498,7 +498,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     Text(L("alarm.preAlarmNote"), color = Theme.c.muted, fontSize = 12.sp)
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(L("alarm.shakeSnooze"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                        Switch(shakeSnooze, { shakeSnooze = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(shakeSnooze, { shakeSnooze = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                     // Ses tuşu ve güç tuşu (2. analiz #39)
                     val keyNames = AlarmItem.KEY_ACTIONS
@@ -568,7 +568,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                             Text(L("alarm.wakeCheck"), color = Theme.c.text, fontSize = 15.sp)
                             Text(L("alarm.wakeCheck.note"), color = Theme.c.muted, fontSize = 12.sp)
                         }
-                        Switch(wakeCheck, { wakeCheck = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                        SoftSwitch(wakeCheck, { wakeCheck = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                 }
                 if (!isNew) TextButton(onClick = onDelete) { Text(L("tools.alarm.delete"), color = Theme.c.err) }
@@ -645,6 +645,6 @@ private fun FlexRow(title: String, on: Boolean, value: String?, onPick: (() -> U
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
         if (on && value != null && onPick != null) TextButton(onClick = onPick) { Text(value, color = Theme.c.accent, fontSize = 15.sp) }
-        androidx.compose.material3.Switch(on, onToggle, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+        SoftSwitch(on, onToggle, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }

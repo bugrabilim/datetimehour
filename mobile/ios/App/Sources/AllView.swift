@@ -7,6 +7,17 @@ import SwiftUI
 enum AllCat: CaseIterable {
     case time, plan, sky, faith, more
 
+    /// Kategori rengi (doğal tasarım madde 4): zaman kiremit, plan adaçayı, gök mavi, ibadet altın, diğer akşam moru
+    var color: Color {
+        switch self {
+        case .time: Theme.terra
+        case .plan: Theme.sage
+        case .sky: Theme.sky
+        case .faith: Theme.gold
+        case .more: Theme.dusk
+        }
+    }
+
     var title: String {
         switch self {
         case .time: L("all.cat.time")
@@ -239,7 +250,7 @@ struct AllView: View {
         let isSura: Bool = { if case .sura = e.route { return true } else { return false } }()
         return Button { open(e) } label: {
             HStack(spacing: 12) {
-                IconBox(icon: e.icon)
+                IconBox(icon: e.icon, tint: e.cat.color, line: LineIconMap.entry(e.id))
                 VStack(alignment: .leading, spacing: 2) {
                     Text(isSura ? sub : e.title).foregroundStyle(Theme.text)
                     Text(isSura ? e.title : sub).font(.caption).foregroundStyle(Theme.muted)
@@ -267,7 +278,7 @@ struct AllView: View {
         let isFav = AllPrefs.list(favsRaw).contains(e.id)
         return Button { open(e) } label: {
             VStack(spacing: 6) {
-                IconBox(icon: e.icon)
+                IconBox(icon: e.icon, tint: e.cat.color, line: LineIconMap.entry(e.id))
                     .overlay(alignment: .topTrailing) {
                         if fav { Image(systemName: "star.fill").font(.system(size: 9)).foregroundStyle(Theme.accent).offset(x: 4, y: -4) }
                     }

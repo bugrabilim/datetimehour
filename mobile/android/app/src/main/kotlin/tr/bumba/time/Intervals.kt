@@ -366,7 +366,7 @@ private fun VoiceToggle() {
             Text(L("tools.voice"), color = Theme.c.text, fontSize = 15.sp)
             Text(L("tools.voiceNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
-        Switch(on, { on = it; Prefs.store.edit().putBoolean("tools.voice", it).apply() },
+        SoftSwitch(on, { on = it; Prefs.store.edit().putBoolean("tools.voice", it).apply() },
             colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }
@@ -886,7 +886,7 @@ private fun HiitCueOptions() {
             var on by remember { mutableStateOf(Prefs.store.getBoolean(key, def)) }
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Text(L(label), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-                Switch(on, { on = it; Prefs.store.edit().putBoolean(key, it).apply() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+                SoftSwitch(on, { on = it; Prefs.store.edit().putBoolean(key, it).apply() }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
             }
         }
     }
@@ -939,7 +939,7 @@ private fun RoutineEditor(onDismiss: () -> Unit, onSave: (HiitConfig) -> Unit) {
                     Stepper(L("routine.seconds"), st.s, 5..1800, 5, true) { v -> steps = steps.toMutableList().also { it[i] = st.copy(s = v) } }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(L("hiit.rest"), Modifier.weight(1f), color = Theme.c.text, fontSize = 14.sp)
-                        androidx.compose.material3.Switch(st.r, { v -> steps = steps.toMutableList().also { it[i] = st.copy(r = v) } },
+                        SoftSwitch(st.r, { v -> steps = steps.toMutableList().also { it[i] = st.copy(r = v) } },
                             colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
                     }
                 }

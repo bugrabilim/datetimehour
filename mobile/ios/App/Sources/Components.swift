@@ -46,18 +46,37 @@ struct EmptyState: View {
     }
 }
 
-/// Liste satırlarındaki renkli simge kutusu (#99): 36 pt, köşe 10 pt, zemin ana rengin açık tonu
+/// Liste satırlarındaki renkli simge kutusu (#99; doğal tasarım madde 4, 4 Kasım 2026): "çakıl taşı" biçimi (köşeler
+/// hafif farklı yuvarlak), zemin simge renginin açık tonu, içinde kendi çizgi simgemiz (karşılığı yoksa SF Symbol).
+/// `line` verilirse o çizgi simge çizilir.
 struct IconBox: View {
     let icon: String
     var tint: Color = Theme.accent
+    var line: String?
+    @Environment(\.colorScheme) private var scheme
 
     var body: some View {
-        Image(systemName: icon)
-            .font(.system(size: 17, weight: .medium))
-            .foregroundStyle(tint)
-            .frame(width: 36, height: 36)
-            .background(RoundedRectangle(cornerRadius: 10, style: .continuous).fill(tint.opacity(0.15)))
-            .accessibilityHidden(true)
+        Group {
+            if let name = line ?? LineIconMap.of(icon) {
+                LineIcon(name: name, size: 21, c1: tint, c2: tint.opacity(0.72))
+            } else {
+                Image(systemName: icon)
+                    .font(.system(size: 17, weight: .medium))
+                    .foregroundStyle(tint)
+            }
+        }
+        .frame(width: 36, height: 36)
+        .background(PebbleShape().fill(tint.opacity(scheme == .dark ? 0.20 : 0.13)))
+        .accessibilityHidden(true)
+    }
+}
+
+/// Çakıl taşı biçimi (doğal tasarım bölüm 3.3)
+struct PebbleShape: Shape {
+    func path(in r: CGRect) -> Path {
+        let w = r.width
+        return UnevenRoundedRectangle(topLeadingRadius: w * 0.44, bottomLeadingRadius: w * 0.48,
+                                      bottomTrailingRadius: w * 0.46, topTrailingRadius: w * 0.5, style: .continuous).path(in: r)
     }
 }
 

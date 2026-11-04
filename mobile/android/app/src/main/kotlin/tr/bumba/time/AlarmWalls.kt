@@ -112,9 +112,9 @@ fun AlarmWallDialog(current: String, hour: Int, minute: Int, onPick: (String) ->
         title = { Text(L("wall.title")) },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+                SoftSegmentedRow(Modifier.fillMaxWidth()) {
                     AlarmWalls.CATEGORIES.forEachIndexed { i, c ->
-                        SegmentedButton(category == c, { category = c }, SegmentedButtonDefaults.itemShape(i, AlarmWalls.CATEGORIES.size), colors = segColors()) {
+                        SoftSegment(category == c, { category = c }) {
                             Text(L("wall.cat.$c"), fontSize = 13.sp, maxLines = 1)
                         }
                     }

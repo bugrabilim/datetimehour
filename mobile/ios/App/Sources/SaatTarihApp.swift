@@ -12,6 +12,7 @@ struct SaatTarihApp: App {
         Features.migrate()
         // Başlıklarda Literata (doğal tasarım; Latin ve Kiril dillerinde)
         AppFonts.applyNavigationBar()
+        AppFonts.applySegmentedControls()
         // Apple Watch'a seçili yer (WatchConnectivity)
         WatchSync.shared.start()
         // iPhone, iPad ve Mac arasında ayarlar (iCloud anahtar-değer deposu; sunucu yok)
@@ -435,13 +436,13 @@ private struct TabBar: View {
                 } label: {
                     VStack(spacing: 3) {
                         // Seçili sekmede simgenin arkasında ana rengin açık tonunda hap (sitedeki .nav gibi; 2. analiz #95)
-                        Image(systemName: tab.icon)
-                            .symbolVariant(on ? .fill : .none)
-                            .font(.system(size: 19))
+                        // Kendi çizgi simgelerimiz (doğal tasarım madde 4)
+                        LineIcon(name: LineIconMap.tab(tab), size: 24, c1: on ? Theme.accent : Theme.muted,
+                                 c2: on ? Theme.accent : Theme.muted)
                             .frame(width: 56, height: 30)
                             .background(Capsule().fill(on ? Theme.accentSoft : Color.clear))
                         Text(tab.barTitle)
-                            .font(.system(size: 11, weight: on ? .semibold : .regular))
+                            .font(.system(size: 11, weight: on ? .medium : .regular))
                             .lineLimit(1)
                             .minimumScaleFactor(0.7)
                     }

@@ -149,7 +149,7 @@ fun CalCountryDialog(onClose: () -> Unit) {
         title = { Text(L("cal.country")) },
         text = {
             Column(Modifier.heightIn(max = 460.dp).verticalScroll(rememberScrollState())) {
-                Text(L("cal.shownTypes"), color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold)
+                Text(L("cal.shownTypes"), color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium)
                 val types = if (CalView.country == "TR") listOf("holiday", "half", "religious", "special", "school") else listOf("holiday", "religious")
                 for (t in types) {
                     Row(Modifier.fillMaxWidth().clickable {

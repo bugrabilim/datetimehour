@@ -79,6 +79,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -103,7 +104,15 @@ import androidx.compose.ui.unit.sp
  * sonra kategoriler (Süre ve alarm, Gün ve plan, Gök ve dünya, İbadet), sonda Rozetler. Ayarlar sağ üstteki dişliden.
  * Yalnız açık özelliklerin girişleri görünür. Kayıt: `all.favs`, `all.recent` (virgülle kimlik).
  */
-enum class AllCat(val key: String) { TIME("all.cat.time"), PLAN("all.cat.plan"), SKY("all.cat.sky"), FAITH("worship.title"), MORE("tab.more") }
+enum class AllCat(val key: String) {
+    TIME("all.cat.time"), PLAN("all.cat.plan"), SKY("all.cat.sky"), FAITH("worship.title"), MORE("tab.more");
+
+    /** Kategori rengi (doğal tasarım madde 4): zaman kiremit, plan adaçayı, gök mavi, ibadet altın, diğer akşam moru */
+    @Composable
+    fun color(): Color = when (this) {
+        TIME -> Theme.c.terra; PLAN -> Theme.c.sage; SKY -> Theme.c.sky; FAITH -> Theme.c.gold; MORE -> Theme.c.dusk
+    }
+}
 
 /**
  * Bir giriş: [tab] doluysa o özellik sekmesi açılır (çubukta değilse geri düğmeli sayfa), değilse Araçlar yolu [route].
@@ -168,6 +177,18 @@ object AllPrefs {
             words = "settings.color lang.title settings.notifications"),
         AllEntry("badges", "badges.h1", Icons.Filled.MilitaryTech, AllCat.MORE, null, route = "badges"),
     )
+
+    /** Girişin çizgi simgesi (aynı Material simgesini paylaşan girişler ayrışsın diye kimliğe göre) */
+    fun line(id: String): String? = mapOf(
+        "alarm" to "alarm", "timer" to "hourglass", "stopwatch" to "stopwatch", "pomodoro" to "tomato", "study" to "book",
+        "sleep" to "bed", "wakeGame" to "chick", "breath" to "wind", "chess" to "knight", "metronome" to "metronome",
+        "talking" to "speaker", "exam" to "paper", "classroom" to "people", "timecalc" to "calc", "calendar" to "calendar",
+        "leaf" to "leafcal", "datecalc" to "calc", "planner" to "people", "journal" to "sunrise", "bridge" to "bridge",
+        "retire" to "beach", "weather" to "sun", "world" to "globe", "seasons" to "leaf", "moon" to "moon", "sky" to "star",
+        "sunpath" to "sunset", "zodiac" to "star", "prayer" to "mosque", "qibla" to "compass", "quran" to "book",
+        "zikir" to "beads", "track" to "checklist", "duas" to "hands", "esma" to "star", "hadith" to "book", "guide" to "mosque",
+        "reldays" to "calendar", "greet" to "heart", "zakat" to "coin", "settings" to "gear", "badges" to "star",
+    )[id.removePrefix("s:")]?.takeIf { LineIcons.get(it).isNotEmpty() }
 
     /** Aramada ayar sayfaları da çıkar (Ayarlar'ın alt sayfaları) */
     val settings: List<AllEntry> = listOf(
@@ -282,7 +303,7 @@ fun AllScreen(onRoute: (String?) -> Unit) {
                                 .padding(horizontal = 12.dp, vertical = 10.dp),
                             verticalAlignment = Alignment.CenterVertically,
                         ) {
-                            IconBox(e.icon)
+                            IconBox(e.icon, tint = e.cat.color(), line = AllPrefs.line(e.id))
                             Spacer(Modifier.width(12.dp))
                             Column(Modifier.weight(1f)) {
                                 Text(if (e.route?.startsWith("quran:") == true) sub else e.title, color = Theme.c.text, fontSize = 16.sp)
@@ -330,7 +351,7 @@ fun AllScreen(onRoute: (String?) -> Unit) {
 
 @Composable
 private fun SectionTitle(text: String) {
-    Text(text, color = Theme.c.muted, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
+    Text(text, color = Theme.c.text, fontSize = if (AppFonts.serif) 19.sp else 18.sp, fontFamily = AppFonts.heading, fontWeight = FontWeight.Medium, modifier = Modifier.padding(top = 8.dp, bottom = 8.dp))
 }
 
 /** Kategorideki kareler: simge kutusu + ad; uzun basınca sık kullanılanlara eklenir/çıkar */
@@ -351,7 +372,7 @@ private fun TileGrid(list: List<AllEntry>, columns: Int, fav: Boolean, onOpen: (
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {
                             Box {
-                                IconBox(e.icon)
+                                IconBox(e.icon, tint = e.cat.color(), line = AllPrefs.line(e.id))
                                 if (fav) Icon(Icons.Filled.Star, null, tint = Theme.c.accent, modifier = Modifier.size(12.dp).align(Alignment.TopEnd))
                             }
                             Spacer(Modifier.height(6.dp))

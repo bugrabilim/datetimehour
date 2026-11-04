@@ -17,6 +17,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import org.json.JSONObject
+import tr.bumba.time.core.Prayer
 
 /**
  * Saat Tarih'in kendi çizgi simgeleri (2. analiz #97; 4 Kasım 2026): 24 simge, 24×24 alan, 2 pt çizgi, ana renk +
@@ -75,6 +76,45 @@ fun LineIcon(name: String, size: Dp = 28.dp, c1: Color = Theme.c.accent, c2: Col
                 for ((cx, cy, r) in circles) drawCircle(color, r, Offset(cx, cy), style = style)
             }
         }
+    }
+}
+
+/**
+ * Material simgesinden kendi çizgi simgemize eşleme (doğal tasarım madde 4, 4 Kasım 2026): IconBox ve alt çubuk önce
+ * buraya bakar, karşılığı yoksa Material simgesini çizer. Anahtar ImageVector.name ("Filled.Alarm" gibi).
+ */
+object LineIconMap {
+    private val byVector = mapOf(
+        "Filled.Alarm" to "alarm", "Filled.HourglassBottom" to "hourglass", "Filled.Timer" to "stopwatch", "Filled.Spa" to "tomato",
+        "Filled.School" to "cap", "Filled.Bedtime" to "bed", "Filled.EmojiNature" to "chick", "Filled.Air" to "wind",
+        "Filled.Games" to "knight", "Filled.MusicNote" to "metronome", "Filled.RecordVoiceOver" to "speaker", "Filled.Quiz" to "paper",
+        "Filled.EmojiPeople" to "people", "Filled.Groups" to "people", "Filled.MoreTime" to "calc", "Filled.Calculate" to "calc",
+        "Filled.CalendarMonth" to "calendar", "Filled.Event" to "calendar", "Filled.EditCalendar" to "calendar", "Filled.Article" to "leafcal",
+        "Filled.WbTwilight" to "sunrise", "Filled.BeachAccess" to "beach", "Filled.Elderly" to "beach", "Filled.WbSunny" to "sun",
+        "Filled.LightMode" to "sun", "Filled.Public" to "globe", "Filled.Language" to "globe", "Filled.Eco" to "leaf",
+        "Filled.Brightness3" to "moon", "Filled.DarkMode" to "night", "Filled.NightsStay" to "night", "Filled.AutoAwesome" to "star",
+        "Filled.Stars" to "star", "Filled.Celebration" to "star", "Filled.MilitaryTech" to "star", "Filled.Star" to "star",
+        "Filled.Explore" to "compass", "AutoMirrored.Filled.MenuBook" to "book", "Filled.MenuBook" to "book", "Filled.TouchApp" to "beads",
+        "Filled.TaskAlt" to "checklist", "Filled.VolunteerActivism" to "hands", "Filled.SelfImprovement" to "mosque",
+        "Filled.Settings" to "gear", "Filled.Notifications" to "bell", "Filled.NotificationsActive" to "bell", "Outlined.Notifications" to "bell",
+        "Filled.LocationOn" to "pin", "Filled.Palette" to "palette", "Filled.ColorLens" to "palette", "Filled.TextFields" to "textsize",
+        "Filled.Tune" to "sliders", "Filled.Info" to "info", "Filled.Share" to "share", "Filled.QrCode" to "qr", "Filled.Email" to "mail",
+        "Filled.Search" to "search", "Filled.Apps" to "grid", "Filled.Widgets" to "grid", "Filled.Watch" to "clock", "Filled.Schedule" to "clock",
+        "Filled.Fullscreen" to "fullscreen", "Filled.Backup" to "cloud", "Filled.Thermostat" to "thermometer", "Filled.Favorite" to "heart",
+    )
+
+    fun of(vectorName: String): String? = byVector[vectorName]?.takeIf { LineIcons.get(it).isNotEmpty() }
+
+    /** Alt çubuktaki sekmeler */
+    fun tab(t: Tab): String = when (t) {
+        Tab.CLOCK -> "clock"; Tab.WEATHER -> "sun"; Tab.CALENDAR -> "calendar"; Tab.WORLD -> "globe"
+        Tab.SEASONS -> "leaf"; Tab.PRAYER -> "mosque"; Tab.TOOLS -> "grid"
+    }
+
+    /** Vakit satırları: imsak şafak, güneş doğuş, öğle tepe, ikindi alçak güneş, akşam batış, yatsı gece */
+    fun prayer(p: Prayer): String = when (p) {
+        Prayer.FAJR -> "dawn"; Prayer.SUNRISE -> "sunrise"; Prayer.DHUHR -> "noon"
+        Prayer.ASR -> "afternoon"; Prayer.MAGHRIB -> "sunset"; Prayer.ISHA -> "night"
     }
 }
 

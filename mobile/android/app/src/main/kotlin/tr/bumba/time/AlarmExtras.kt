@@ -205,7 +205,7 @@ fun VacationCard() {
     AppCard {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(L("alarm.pause"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-            androidx.compose.material3.Switch(on, { v ->
+            SoftSwitch(on, { v ->
                 on = v
                 if (v) {
                     val a = LocalDate.now()

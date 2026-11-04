@@ -481,6 +481,6 @@ private fun Swatch(selected: Boolean, color: androidx.compose.ui.graphics.Color,
 private fun LookSwitch(title: String, on: Boolean, onChange: (Boolean) -> Unit) {
     Row(Modifier.fillMaxWidth().clickable { onChange(!on) }.padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
-        androidx.compose.material3.Switch(on, onChange, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+        SoftSwitch(on, onChange, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
     }
 }

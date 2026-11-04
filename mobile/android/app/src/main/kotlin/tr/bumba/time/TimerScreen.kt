@@ -66,9 +66,9 @@ fun TimerScreen() {
     var mode by rememberSaveable { mutableIntStateOf(if (ToolState.long("hiit.start") > 0) 1 else 0) }
     Column(Modifier.fillMaxSize()) {
         val tabs = listOf(L("tools.countdown.tabTimer"), L("hiit.tab"), L("tools.countdown.tabDate"))
-        SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth().padding(16.dp)) {
+        SoftSegmentedRow(Modifier.fillMaxWidth().padding(16.dp)) {
             tabs.forEachIndexed { i, t ->
-                SegmentedButton(mode == i, { mode = i }, SegmentedButtonDefaults.itemShape(i, tabs.size), colors = segColors()) { Text(t, maxLines = 1) }
+                SoftSegment(mode == i, { mode = i }) { Text(t, maxLines = 1) }
             }
         }
         when (mode) {
