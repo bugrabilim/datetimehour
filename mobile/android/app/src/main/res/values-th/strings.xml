@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">เวลาละหมาด</string>
     <string name="fs_duo_weather">สภาพอากาศ</string>
     <string name="fs_duoNote">เมื่อวางโทรศัพท์แนวนอน ส่วนที่เลือกจะอยู่ทางขวาของนาฬิกาเต็มจอ</string>
+    <string name="noise_stream">ลำธาร</string>
+    <string name="noise_wind">ลม</string>
+    <string name="noise_fire">เตาผิง</string>
+    <string name="noise_crickets">จิ้งหรีด</string>
+    <string name="noise_tick">เสียงนาฬิกา</string>
+    <string name="noise_mix">ผสม</string>
+    <string name="sleep_mixOn">ผสมหลายเสียง</string>
+    <string name="sleep_mixNote">ตั้งระดับเสียงแต่ละเสียงแยกกัน 0 คือปิด เสียงสร้างบนโทรศัพท์ ไม่ต้องใช้ไฟล์หรืออินเทอร์เน็ต</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

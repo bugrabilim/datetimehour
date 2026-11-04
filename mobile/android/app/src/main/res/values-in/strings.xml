@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">Waktu salat</string>
     <string name="fs_duo_weather">Cuaca</string>
     <string name="fs_duoNote">Saat ponsel dimiringkan, area pilihan Anda tampil di kanan jam layar penuh.</string>
+    <string name="noise_stream">Sungai kecil</string>
+    <string name="noise_wind">Angin</string>
+    <string name="noise_fire">Perapian</string>
+    <string name="noise_crickets">Jangkrik</string>
+    <string name="noise_tick">Detak jam</string>
+    <string name="noise_mix">Campuran</string>
+    <string name="sleep_mixOn">Campur beberapa suara</string>
+    <string name="sleep_mixNote">Atur tingkat tiap suara terpisah; 0 berarti mati. Suara dibuat di ponsel, tanpa file atau internet.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

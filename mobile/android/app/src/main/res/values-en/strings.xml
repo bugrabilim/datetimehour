@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">Prayer times</string>
     <string name="fs_duo_weather">Weather</string>
     <string name="fs_duoNote">When the phone is turned sideways, the area you choose sits to the right of the full-screen clock.</string>
+    <string name="noise_stream">Stream</string>
+    <string name="noise_wind">Wind</string>
+    <string name="noise_fire">Fireplace</string>
+    <string name="noise_crickets">Crickets</string>
+    <string name="noise_tick">Ticking clock</string>
+    <string name="noise_mix">Mix</string>
+    <string name="sleep_mixOn">Mix several sounds</string>
+    <string name="sleep_mixNote">Set each sound\'s level separately; 0 is off. Sounds are generated on the phone, with no files or internet.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

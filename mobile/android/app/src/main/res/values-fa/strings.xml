@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">اوقات نماز</string>
     <string name="fs_duo_weather">آب‌وهوا</string>
     <string name="fs_duoNote">وقتی گوشی افقی شود، بخشی که انتخاب کرده‌اید سمت راست ساعت تمام‌صفحه قرار می‌گیرد.</string>
+    <string name="noise_stream">جویبار</string>
+    <string name="noise_wind">باد</string>
+    <string name="noise_fire">شومینه</string>
+    <string name="noise_crickets">جیرجیرک</string>
+    <string name="noise_tick">تیک‌تاک</string>
+    <string name="noise_mix">ترکیب</string>
+    <string name="sleep_mixOn">ترکیب چند صدا</string>
+    <string name="sleep_mixNote">سطح هر صدا را جداگانه تنظیم کنید؛ 0 یعنی خاموش. صداها روی گوشی ساخته می‌شوند و فایل یا اینترنت لازم نیست.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

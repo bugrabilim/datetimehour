@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.width
+import tr.bumba.time.core.NoiseGen
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -149,7 +151,10 @@ object SleepSounds {
         val minutes = sp.getInt("sleep.timer", 30)
         until = if (minutes > 0) System.currentTimeMillis() + minutes * 60_000L else 0L
         SleepLog.markBed() // uyku düzeni (2. analiz #47): yatış anı
-        SoundService.play(c, sp.getString("sleep.noise", "rain") ?: "rain", sp.getInt("sleep.vol", 35), until, "sleep", fade = true)
+        // Karışım açıksa ve en az bir ses seçiliyse (2. analiz #30)
+        val mix = sp.getString("sleep.mix", "") ?: ""
+        val kind = if (sp.getBoolean("sleep.mixOn", false) && NoiseGen.parseMix(mix).isNotEmpty()) "mix:$mix" else sp.getString("sleep.noise", "rain") ?: "rain"
+        SoundService.play(c, kind, sp.getInt("sleep.vol", 35), until, "sleep", fade = true)
     }
 
     fun stop(c: android.content.Context) = SoundService.stop(c, "sleep")
@@ -275,6 +280,32 @@ fun SleepScreen() {
                     if (SleepSounds.playing) SleepSounds.play(context)
                 },
                 onVolume = { volume = it; Prefs.store.edit().putInt("sleep.vol", it).apply() })
+            // Birden çok sesi karıştırma (2. analiz #30): her ses ayrı düzeyde; kayıt "sleep.mix" ("rain=60;fire=30")
+            var mixOn by remember { mutableStateOf(Prefs.store.getBoolean("sleep.mixOn", false)) }
+            var mix by remember { mutableStateOf(NoiseGen.parseMix(Prefs.store.getString("sleep.mix", "") ?: "").toMap()) }
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(L("sleep.mixOn"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
+                androidx.compose.material3.Switch(mixOn, {
+                    mixOn = it; Prefs.store.edit().putBoolean("sleep.mixOn", it).apply()
+                    if (SleepSounds.playing) SleepSounds.play(context)
+                }, colors = androidx.compose.material3.SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
+            }
+            if (mixOn) {
+                for (k in NoiseGen.KINDS) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(noiseName(k), Modifier.width(110.dp), color = Theme.c.text, fontSize = 14.sp, maxLines = 1)
+                        androidx.compose.material3.Slider((mix[k] ?: 0).toFloat(), { v ->
+                            mix = mix + (k to v.toInt())
+                        }, Modifier.weight(1f), valueRange = 0f..100f,
+                            onValueChangeFinished = {
+                                Prefs.store.edit().putString("sleep.mix", mix.filter { it.value > 0 }.entries.joinToString(";") { "${it.key}=${it.value}" }).apply()
+                                if (SleepSounds.playing) SleepSounds.play(context)
+                            },
+                            colors = androidx.compose.material3.SliderDefaults.colors(thumbColor = Theme.c.accent, activeTrackColor = Theme.c.accent))
+                    }
+                }
+                Text(L("sleep.mixNote"), color = Theme.c.muted, fontSize = 12.sp)
+            }
             fun timerText(m: Int) = if (m == 0) L("sleep.timerOff") else T("alarm.snoozeMin", m)
             ChoiceRow(L("sleep.timer"), timerText(timer), SleepSounds.TIMER_CHOICES.map { it to timerText(it) }) {
                 timer = it; Prefs.store.edit().putInt("sleep.timer", it).apply()

@@ -95,33 +95,30 @@ public enum FocusLog {
 /// geçiren), dalga (pembe gürültü, 10 sn'lik yavaş kabarma). Arabellek döngüde çalınır; ucu başına yarım saniyede
 /// karıştırıldığı için döngü yerinde tık sesi olmaz. Ses düzeyi türler arasında eşit (RMS 0,2). Android'deki NoiseGen'in aynısı.
 public enum NoiseGen {
-    public static let kinds = ["white", "pink", "brown", "rain", "waves"]
+    /// Gürültüler ve doğa sesleri (2. analiz #30: dere, rüzgâr, şömine, cırcır böceği, tik-tak); Kotlin ile aynı
+    public static let kinds = ["white", "pink", "brown", "rain", "waves", "stream", "wind", "fire", "crickets", "tick"]
     public static let rate = 44100
     static let rms = 0.2
 
     public static func seconds(_ kind: String) -> Int { kind == "waves" ? 10 : 8 }
 
-    public static func samples(_ kind: String, rate: Int = NoiseGen.rate, seed: UInt32 = 0x5A17) -> [Float] {
-        let n = seconds(kind) * rate
+    public static func samples(_ kind: String, rate: Int = NoiseGen.rate, seed: UInt32 = 0x5A17, secs: Int? = nil) -> [Float] {
+        let n = (secs ?? seconds(kind)) * rate
         let fade = rate / 2
         var raw = [Double](repeating: 0, count: n + fade)
         var s: UInt32 = seed == 0 ? 1 : seed
         var b0 = 0.0, b1 = 0.0, b2 = 0.0, b3 = 0.0, b4 = 0.0, b5 = 0.0, b6 = 0.0, last = 0.0
+        let brownKind = kind == "brown" || kind == "wind" || kind == "fire"
         for i in raw.indices {
             // xorshift32: tekrarlanabilir
             s ^= s << 13; s ^= s >> 17; s ^= s << 5
             let w = Double(s) / 4294967296.0 * 2 - 1
-            switch kind {
-            case "white": raw[i] = w * 0.5
-            case "brown":
-                last = (last + 0.02 * w) / 1.02
-                raw[i] = last * 3.5
-            default:
-                b0 = 0.99886 * b0 + w * 0.0555179; b1 = 0.99332 * b1 + w * 0.0750759; b2 = 0.969 * b2 + w * 0.153852
-                b3 = 0.8665 * b3 + w * 0.3104856; b4 = 0.55 * b4 + w * 0.5329522; b5 = -0.7616 * b5 - w * 0.016898
-                raw[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11
-                b6 = w * 0.115926
-            }
+            last = (last + 0.02 * w) / 1.02
+            b0 = 0.99886 * b0 + w * 0.0555179; b1 = 0.99332 * b1 + w * 0.0750759; b2 = 0.969 * b2 + w * 0.153852
+            b3 = 0.8665 * b3 + w * 0.3104856; b4 = 0.55 * b4 + w * 0.5329522; b5 = -0.7616 * b5 - w * 0.016898
+            let p = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11
+            b6 = w * 0.115926
+            if kind == "white" { raw[i] = w * 0.5 } else if brownKind { raw[i] = last * 3.5 } else { raw[i] = p }
         }
         switch kind {
         case "rain":
@@ -129,6 +126,13 @@ public enum NoiseGen {
             biquad(&raw, rate: rate, f: 7000, high: false)
         case "waves":
             biquad(&raw, rate: rate, f: 1200, high: false)
+        case "stream":
+            biquad(&raw, rate: rate, f: 300, high: true)
+            biquad(&raw, rate: rate, f: 2500, high: false)
+        case "wind":
+            biquad(&raw, rate: rate, f: 500, high: false)
+        case "fire":
+            biquad(&raw, rate: rate, f: 700, high: false)
         default: break
         }
         // Döngü yeri: sondaki yarım saniye baştakiyle karıştırılır
@@ -141,15 +145,91 @@ public enum NoiseGen {
                 out[i] = raw[i]
             }
         }
-        if kind == "waves" {
+        let dn = Double(n), dr = Double(rate)
+        switch kind {
+        case "waves":
             for i in 0..<n {
-                let e = 0.5 - 0.5 * cos(2 * Double.pi * Double(i) / Double(n))
+                let e = 0.5 - 0.5 * cos(2 * Double.pi * Double(i) / dn)
                 out[i] *= 0.25 + 0.75 * pow(e, 1.5)
             }
+        case "stream":
+            for i in 0..<n {
+                let a = sin(2 * Double.pi * 3 * Double(i) / dn) * sin(2 * Double.pi * 5 * Double(i) / dn)
+                out[i] *= 0.8 + 0.2 * a
+            }
+        case "wind":
+            for i in 0..<n {
+                let e = 0.5 - 0.5 * cos(2 * Double.pi * 2 * Double(i) / dn)
+                out[i] *= 0.3 + 0.7 * pow(e, 1.2)
+            }
+        case "fire":
+            var r: UInt32 = (seed ^ 0x2F1D) == 0 ? 1 : (seed ^ 0x2F1D)
+            func rnd() -> Double {
+                r ^= r << 13; r ^= r >> 17; r ^= r << 5
+                return Double(r) / 4294967296.0
+            }
+            let sq0 = out.reduce(0) { $0 + $1 * $1 }
+            let base = Swift.max(1e-9, (sq0 / dn).squareRoot())
+            var amp = 0.0
+            let decay = exp(-1.0 / (0.004 * dr))
+            for i in 0..<n {
+                if rnd() < 0.00035 { amp = base * (3 + 6 * rnd()) }
+                out[i] = out[i] * 0.7 + amp * (rnd() * 2 - 1)
+                amp *= decay
+            }
+        case "crickets":
+            for i in 0..<n {
+                let t = Double(i % rate) / dr
+                var c = 0.0
+                for k in 0..<3 {
+                    let u = (t - Double(k) * 0.06) / 0.035
+                    if u >= 0 && u <= 1 { c += sin(Double.pi * u) * sin(2 * Double.pi * 4400 * Double(i) / dr) }
+                }
+                out[i] = out[i] * 0.05 + c
+            }
+        case "tick":
+            for i in 0..<n {
+                let sec = i / rate
+                let t = Double(i % rate) / dr
+                let f = sec % 2 == 0 ? 2500.0 : 2000.0
+                out[i] = t < 0.03 ? exp(-t / 0.006) * sin(2 * Double.pi * f * t) : 0
+            }
+        default: break
         }
-        let sq = out.reduce(0) { $0 + $1 * $1 }
-        let g = rms / Swift.max(1e-9, (sq / Double(n)).squareRoot())
+        let g: Double
+        if kind == "crickets" || kind == "tick" {
+            let peak = out.reduce(0) { Swift.max($0, abs($1)) }
+            g = 0.7 / Swift.max(1e-9, peak)
+        } else {
+            let sq = out.reduce(0) { $0 + $1 * $1 }
+            g = rms / Swift.max(1e-9, (sq / dn).squareRoot())
+        }
         return out.map { Float(Swift.max(-1, Swift.min(1, $0 * g))) }
+    }
+
+    /// Karışım tanımı ("rain=60;fire=30") → (tür, ses düzeyi)
+    public static func parseMix(_ spec: String) -> [(kind: String, volume: Int)] {
+        spec.split(separator: ";").compactMap { part in
+            let kv = part.split(separator: "=")
+            guard kv.count == 2, let v = Int(kv[1]) else { return nil }
+            let k = String(kv[0]).trimmingCharacters(in: .whitespaces)
+            return kinds.contains(k) && v > 0 ? (kind: k, volume: Swift.min(100, v)) : nil
+        }
+    }
+
+    /// Birden çok sesin karışımı (2. analiz #30): her ses 8 sn'lik döngü, kendi ses düzeyiyle; tepe 0,95'i geçmez
+    public static func mix(_ spec: String, rate: Int = NoiseGen.rate) -> [Float] {
+        let parts = parseMix(spec)
+        let n = 8 * rate
+        var sum = [Double](repeating: 0, count: n)
+        for (idx, p) in parts.enumerated() {
+            let x = samples(p.kind, rate: rate, seed: 0x5A17 &+ UInt32(idx) &* 7919, secs: 8)
+            let v = Double(p.volume) / 100
+            for i in 0..<n { sum[i] += Double(x[i]) * v }
+        }
+        let peak = sum.reduce(0) { Swift.max($0, abs($1)) }
+        let g = peak > 0.95 ? 0.95 / peak : 1
+        return sum.map { Float($0 * g) }
     }
 
     /// RBJ ikinci derece süzgeç (Q = 0,7071), yerinde

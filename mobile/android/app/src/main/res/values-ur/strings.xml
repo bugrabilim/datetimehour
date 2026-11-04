@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">نماز کے اوقات</string>
     <string name="fs_duo_weather">موسم</string>
     <string name="fs_duoNote">فون ترچھا کرنے پر آپ کا منتخب حصہ فل اسکرین گھڑی کے دائیں جانب آتا ہے۔</string>
+    <string name="noise_stream">ندی</string>
+    <string name="noise_wind">ہوا</string>
+    <string name="noise_fire">آتش دان</string>
+    <string name="noise_crickets">جھینگر</string>
+    <string name="noise_tick">ٹک ٹک</string>
+    <string name="noise_mix">آمیزہ</string>
+    <string name="sleep_mixOn">کئی آوازیں ملائیں</string>
+    <string name="sleep_mixNote">ہر آواز کی سطح الگ مقرر کریں؛ 0 بند ہے۔ آوازیں فون پر بنتی ہیں، فائل یا انٹرنیٹ کی ضرورت نہیں۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

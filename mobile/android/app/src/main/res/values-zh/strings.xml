@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">礼拜时间</string>
     <string name="fs_duo_weather">天气</string>
     <string name="fs_duoNote">手机横放时，所选内容显示在全屏时钟右侧。</string>
+    <string name="noise_stream">溪流</string>
+    <string name="noise_wind">风声</string>
+    <string name="noise_fire">壁炉</string>
+    <string name="noise_crickets">蟋蟀</string>
+    <string name="noise_tick">钟表滴答</string>
+    <string name="noise_mix">混合</string>
+    <string name="sleep_mixOn">混合多种声音</string>
+    <string name="sleep_mixNote">分别设置每种声音的音量，0 表示关闭。声音在手机上生成，无需文件或网络。</string>
     <string name="app_name">时间与日期</string>
 </resources>

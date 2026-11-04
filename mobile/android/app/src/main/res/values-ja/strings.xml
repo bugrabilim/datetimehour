@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">礼拝時刻</string>
     <string name="fs_duo_weather">天気</string>
     <string name="fs_duoNote">横向きにすると、選んだ項目が全画面時計の右側に表示されます。</string>
+    <string name="noise_stream">小川</string>
+    <string name="noise_wind">風</string>
+    <string name="noise_fire">暖炉</string>
+    <string name="noise_crickets">コオロギ</string>
+    <string name="noise_tick">時計の音</string>
+    <string name="noise_mix">ミックス</string>
+    <string name="sleep_mixOn">複数の音を混ぜる</string>
+    <string name="sleep_mixNote">音ごとに音量を設定します（0はオフ）。音は端末内で生成され、ファイルもインターネットも不要です。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

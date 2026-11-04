@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">Время намаза</string>
     <string name="fs_duo_weather">Погода</string>
     <string name="fs_duoNote">В горизонтальном положении выбранный блок появляется справа от полноэкранных часов.</string>
+    <string name="noise_stream">Ручей</string>
+    <string name="noise_wind">Ветер</string>
+    <string name="noise_fire">Камин</string>
+    <string name="noise_crickets">Сверчки</string>
+    <string name="noise_tick">Тиканье</string>
+    <string name="noise_mix">Микс</string>
+    <string name="sleep_mixOn">Смешать несколько звуков</string>
+    <string name="sleep_mixNote">Настройте громкость каждого звука отдельно; 0 — выключено. Звуки создаются на телефоне, без файлов и интернета.</string>
     <string name="app_name">Время и дата</string>
 </resources>

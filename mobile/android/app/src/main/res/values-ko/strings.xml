@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">기도 시간</string>
     <string name="fs_duo_weather">날씨</string>
     <string name="fs_duoNote">가로로 돌리면 선택한 항목이 전체 화면 시계 오른쪽에 표시됩니다.</string>
+    <string name="noise_stream">시냇물</string>
+    <string name="noise_wind">바람</string>
+    <string name="noise_fire">벽난로</string>
+    <string name="noise_crickets">귀뚜라미</string>
+    <string name="noise_tick">째깍째깍</string>
+    <string name="noise_mix">믹스</string>
+    <string name="sleep_mixOn">여러 소리 섞기</string>
+    <string name="sleep_mixNote">소리마다 크기를 따로 정하세요. 0은 꺼짐입니다. 소리는 휴대폰에서 만들어지며 파일이나 인터넷이 필요 없습니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

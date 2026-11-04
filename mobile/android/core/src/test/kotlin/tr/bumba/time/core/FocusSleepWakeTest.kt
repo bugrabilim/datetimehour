@@ -74,9 +74,16 @@ class FocusSleepWakeTest {
             val s = NoiseGen.samples(kind, rate = 8000)
             assertEquals(NoiseGen.seconds(kind) * 8000, s.size, kind)
             val rms = sqrt(s.sumOf { it.toDouble() * it } / s.size)
-            assertTrue(rms in 0.17..0.21, "$kind rms $rms")
+            // Darbeli sesler (cırcır, tik-tak) tepeye göre, diğerleri RMS'e göre ayarlanır
+            if (kind == "crickets" || kind == "tick") assertTrue(abs(s.maxOf { abs(it) } - 0.7f) < 0.01f, "$kind peak")
+            else assertTrue(rms in 0.17..0.21, "$kind rms $rms")
             assertTrue(s.all { it in -1f..1f }, kind)
         }
+        // Karışım (2. analiz #30): 8 sn, tepe 0,95'i geçmez, bilinmeyen tür ve 0 düzey atlanır
+        val m = NoiseGen.mix("rain=80;fire=60;crickets=40;tick=0;foo=50", rate = 8000)
+        assertEquals(8 * 8000, m.size)
+        assertTrue(m.maxOf { abs(it) } <= 0.951f)
+        assertEquals(listOf("rain" to 80, "fire" to 60, "crickets" to 40), NoiseGen.parseMix("rain=80;fire=60;crickets=40;tick=0;foo=50"))
         // Kahverengi gürültü yavaş değişir: döngü yerinde sıçrama olmamalı
         val b = NoiseGen.samples("brown", rate = 8000)
         assertTrue(abs(b.last() - b.first()) < 0.05f, "brown seam ${b.last()} ${b.first()}")

@@ -103,7 +103,8 @@ fun noiseName(kind: String) = when (kind) {
     "brown" -> L("tools.pomodoro.noiseBrown")
     "rain" -> L("tools.pomodoro.noiseRain")
     "waves" -> L("noise.waves")
-    else -> L("tools.pomodoro.noiseOff")
+    "stream", "wind", "fire", "crickets", "tick" -> L("noise.$kind")
+    else -> if (kind.startsWith("mix:")) L("noise.mix") else L("tools.pomodoro.noiseOff")
 }
 
 /**
@@ -131,7 +132,7 @@ class SoundService : Service() {
         until = intent.getLongExtra(EXTRA_UNTIL, 0L)
         fade = intent.getBooleanExtra(EXTRA_FADE, false)
         gain = NoiseGen.gain(intent.getIntExtra(EXTRA_VOLUME, 40))
-        if (k !in NoiseGen.KINDS || (until in 1..System.currentTimeMillis())) {
+        if ((k !in NoiseGen.KINDS && !k.startsWith("mix:")) || (until in 1..System.currentTimeMillis())) {
             finish()
             return START_NOT_STICKY
         }
@@ -153,7 +154,8 @@ class SoundService : Service() {
         kind = k
         // Arabellek (8–10 sn) arka planda üretilir, sonra ana iş parçacığında çalınır
         Thread {
-            val samples = NoiseGen.samples(k)
+            // Karışım (2. analiz #30): "mix:rain=60;fire=30"
+            val samples = if (k.startsWith("mix:")) NoiseGen.mix(k.removePrefix("mix:")) else NoiseGen.samples(k)
             val pcm = ShortArray(samples.size) { (samples[it] * 32767).toInt().toShort() }
             handler.post { if (kind == k && track == null && source.isNotEmpty()) start(pcm) }
         }.start()

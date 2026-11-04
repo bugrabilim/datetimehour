@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">Oras ng pagdarasal</string>
     <string name="fs_duo_weather">Panahon</string>
     <string name="fs_duoNote">Kapag pahiga ang telepono, nasa kanan ng full-screen na orasan ang napiling bahagi.</string>
+    <string name="noise_stream">Batis</string>
+    <string name="noise_wind">Hangin</string>
+    <string name="noise_fire">Fireplace</string>
+    <string name="noise_crickets">Kuliglig</string>
+    <string name="noise_tick">Tik-tak</string>
+    <string name="noise_mix">Halo</string>
+    <string name="sleep_mixOn">Paghaluin ang ilang tunog</string>
+    <string name="sleep_mixNote">Itakda nang hiwalay ang lakas ng bawat tunog; 0 ay patay. Ginagawa ang mga tunog sa telepono, walang file o internet.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

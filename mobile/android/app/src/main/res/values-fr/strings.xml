@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">Heures de prière</string>
     <string name="fs_duo_weather">Météo</string>
     <string name="fs_duoNote">En mode paysage, la zone choisie s\'affiche à droite de l\'horloge plein écran.</string>
+    <string name="noise_stream">Ruisseau</string>
+    <string name="noise_wind">Vent</string>
+    <string name="noise_fire">Feu de cheminée</string>
+    <string name="noise_crickets">Grillons</string>
+    <string name="noise_tick">Tic-tac</string>
+    <string name="noise_mix">Mélange</string>
+    <string name="sleep_mixOn">Mélanger plusieurs sons</string>
+    <string name="sleep_mixNote">Réglez le niveau de chaque son séparément ; 0 = coupé. Les sons sont générés sur le téléphone, sans fichiers ni Internet.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

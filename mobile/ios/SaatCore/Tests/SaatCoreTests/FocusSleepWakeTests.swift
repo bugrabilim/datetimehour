@@ -67,9 +67,19 @@ final class FocusSleepWakeTests: XCTestCase {
             let s = NoiseGen.samples(kind, rate: 8000)
             XCTAssertEqual(s.count, NoiseGen.seconds(kind) * 8000, kind)
             let rms = (s.reduce(0.0) { $0 + Double($1) * Double($1) } / Double(s.count)).squareRoot()
-            XCTAssert((0.17...0.21).contains(rms), "\(kind) rms \(rms)")
+            if kind == "crickets" || kind == "tick" {
+                let peak = s.reduce(Float(0)) { Swift.max($0, abs($1)) }
+                XCTAssertLessThan(abs(peak - 0.7), 0.01, kind)
+            } else {
+                XCTAssert((0.17...0.21).contains(rms), "\(kind) rms \(rms)")
+            }
             XCTAssert(s.allSatisfy { (-1...1).contains($0) }, kind)
         }
+        // Karışım (2. analiz #30)
+        let m = NoiseGen.mix("rain=80;fire=60;crickets=40;tick=0;foo=50", rate: 8000)
+        XCTAssertEqual(m.count, 8 * 8000)
+        XCTAssertLessThanOrEqual(m.reduce(Float(0)) { Swift.max($0, abs($1)) }, 0.951)
+        XCTAssertEqual(NoiseGen.parseMix("rain=80;fire=60;crickets=40;tick=0;foo=50").map { $0.kind }, ["rain", "fire", "crickets"])
         let b = NoiseGen.samples("brown", rate: 8000)
         XCTAssertLessThan(abs(b.last! - b.first!), 0.05)
         XCTAssertEqual(NoiseGen.samples("pink", rate: 8000), NoiseGen.samples("pink", rate: 8000))

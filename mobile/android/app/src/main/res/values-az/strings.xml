@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">Namaz vaxtları</string>
     <string name="fs_duo_weather">Hava</string>
     <string name="fs_duoNote">Telefon yan çevriləndə seçdiyiniz sahə tam ekran saatın sağında durur.</string>
+    <string name="noise_stream">Çay</string>
+    <string name="noise_wind">Külək</string>
+    <string name="noise_fire">Kamin</string>
+    <string name="noise_crickets">Cırcırama</string>
+    <string name="noise_tick">Tik-tak</string>
+    <string name="noise_mix">Qarışıq</string>
+    <string name="sleep_mixOn">Bir neçə səsi qarışdırın</string>
+    <string name="sleep_mixNote">Hər səsin səviyyəsini ayrıca tənzimləyin; 0 sönülüdür. Səslər telefonda yaradılır, fayl və ya internet lazım deyil.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

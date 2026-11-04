@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">Gebetszeiten</string>
     <string name="fs_duo_weather">Wetter</string>
     <string name="fs_duoNote">Im Querformat steht der gewählte Bereich rechts neben der Vollbilduhr.</string>
+    <string name="noise_stream">Bach</string>
+    <string name="noise_wind">Wind</string>
+    <string name="noise_fire">Kaminfeuer</string>
+    <string name="noise_crickets">Grillen</string>
+    <string name="noise_tick">Ticken</string>
+    <string name="noise_mix">Mischung</string>
+    <string name="sleep_mixOn">Mehrere Klänge mischen</string>
+    <string name="sleep_mixNote">Stellen Sie jeden Klang einzeln ein; 0 ist aus. Die Klänge entstehen auf dem Telefon, ohne Dateien oder Internet.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

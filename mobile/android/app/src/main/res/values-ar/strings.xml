@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">أوقات الصلاة</string>
     <string name="fs_duo_weather">الطقس</string>
     <string name="fs_duoNote">عند تدوير الهاتف أفقيًا يظهر القسم الذي تختاره يمين الساعة بملء الشاشة.</string>
+    <string name="noise_stream">جدول ماء</string>
+    <string name="noise_wind">الرياح</string>
+    <string name="noise_fire">المدفأة</string>
+    <string name="noise_crickets">صراصير الليل</string>
+    <string name="noise_tick">تكتكة الساعة</string>
+    <string name="noise_mix">مزيج</string>
+    <string name="sleep_mixOn">امزج عدة أصوات</string>
+    <string name="sleep_mixNote">اضبط مستوى كل صوت على حدة؛ 0 يعني إيقافه. تُولَّد الأصوات على الهاتف دون ملفات أو إنترنت.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

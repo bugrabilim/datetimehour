@@ -2459,5 +2459,13 @@
     <string name="fs_duo_prayer">Vakitler</string>
     <string name="fs_duo_weather">Hava durumu</string>
     <string name="fs_duoNote">Telefon yan çevrilince tam ekran saatin sağında seçtiğiniz alan durur.</string>
+    <string name="noise_stream">Dere</string>
+    <string name="noise_wind">Rüzgâr</string>
+    <string name="noise_fire">Şömine</string>
+    <string name="noise_crickets">Cırcır böceği</string>
+    <string name="noise_tick">Tik-tak</string>
+    <string name="noise_mix">Karışım</string>
+    <string name="sleep_mixOn">Birden çok sesi karıştır</string>
+    <string name="sleep_mixNote">Her sesin düzeyini ayrı ayarlayın; 0 kapalıdır. Sesler telefonda üretilir, dosya ya da internet gerekmez.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>
