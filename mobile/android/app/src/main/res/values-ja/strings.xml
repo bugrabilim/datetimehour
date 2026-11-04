@@ -2467,5 +2467,9 @@
     <string name="noise_mix">ミックス</string>
     <string name="sleep_mixOn">複数の音を混ぜる</string>
     <string name="sleep_mixNote">音ごとに音量を設定します（0はオフ）。音は端末内で生成され、ファイルもインターネットも不要です。</string>
+    <string name="look_bg_topo">等高線</string>
+    <string name="look_bg_dots">ドットの世界地図</string>
+    <string name="look_bg_grain">粒状グラデーション</string>
+    <string name="look_bg_liquid">液体金属</string>
     <string name="app_name">時刻と日付</string>
 </resources>

@@ -2467,5 +2467,9 @@
     <string name="noise_mix">مزيج</string>
     <string name="sleep_mixOn">امزج عدة أصوات</string>
     <string name="sleep_mixNote">اضبط مستوى كل صوت على حدة؛ 0 يعني إيقافه. تُولَّد الأصوات على الهاتف دون ملفات أو إنترنت.</string>
+    <string name="look_bg_topo">خطوط كنتورية</string>
+    <string name="look_bg_dots">عالم منقط</string>
+    <string name="look_bg_grain">تدرج محبب</string>
+    <string name="look_bg_liquid">معدن سائل</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

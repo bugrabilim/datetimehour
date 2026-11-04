@@ -2467,5 +2467,9 @@
     <string name="noise_mix">Mélange</string>
     <string name="sleep_mixOn">Mélanger plusieurs sons</string>
     <string name="sleep_mixNote">Réglez le niveau de chaque son séparément ; 0 = coupé. Les sons sont générés sur le téléphone, sans fichiers ni Internet.</string>
+    <string name="look_bg_topo">Topographique</string>
+    <string name="look_bg_dots">Monde en points</string>
+    <string name="look_bg_grain">Dégradé granuleux</string>
+    <string name="look_bg_liquid">Métal liquide</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

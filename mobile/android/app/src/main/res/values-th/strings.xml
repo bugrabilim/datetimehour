@@ -2467,5 +2467,9 @@
     <string name="noise_mix">ผสม</string>
     <string name="sleep_mixOn">ผสมหลายเสียง</string>
     <string name="sleep_mixNote">ตั้งระดับเสียงแต่ละเสียงแยกกัน 0 คือปิด เสียงสร้างบนโทรศัพท์ ไม่ต้องใช้ไฟล์หรืออินเทอร์เน็ต</string>
+    <string name="look_bg_topo">เส้นชั้นความสูง</string>
+    <string name="look_bg_dots">โลกจุด</string>
+    <string name="look_bg_grain">ไล่สีเม็ดหยาบ</string>
+    <string name="look_bg_liquid">โลหะเหลว</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

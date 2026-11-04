@@ -2467,5 +2467,9 @@
     <string name="noise_mix">Qarışıq</string>
     <string name="sleep_mixOn">Bir neçə səsi qarışdırın</string>
     <string name="sleep_mixNote">Hər səsin səviyyəsini ayrıca tənzimləyin; 0 sönülüdür. Səslər telefonda yaradılır, fayl və ya internet lazım deyil.</string>
+    <string name="look_bg_topo">Topoqrafik</string>
+    <string name="look_bg_dots">Nöqtəli dünya</string>
+    <string name="look_bg_grain">Dənəli keçid</string>
+    <string name="look_bg_liquid">Maye metal</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

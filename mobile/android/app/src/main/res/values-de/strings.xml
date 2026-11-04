@@ -2467,5 +2467,9 @@
     <string name="noise_mix">Mischung</string>
     <string name="sleep_mixOn">Mehrere Klänge mischen</string>
     <string name="sleep_mixNote">Stellen Sie jeden Klang einzeln ein; 0 ist aus. Die Klänge entstehen auf dem Telefon, ohne Dateien oder Internet.</string>
+    <string name="look_bg_topo">Höhenlinien</string>
+    <string name="look_bg_dots">Punktwelt</string>
+    <string name="look_bg_grain">Körniger Verlauf</string>
+    <string name="look_bg_liquid">Flüssiges Metall</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

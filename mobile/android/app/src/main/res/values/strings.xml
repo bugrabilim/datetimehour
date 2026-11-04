@@ -2467,5 +2467,9 @@
     <string name="noise_mix">Karışım</string>
     <string name="sleep_mixOn">Birden çok sesi karıştır</string>
     <string name="sleep_mixNote">Her sesin düzeyini ayrı ayarlayın; 0 kapalıdır. Sesler telefonda üretilir, dosya ya da internet gerekmez.</string>
+    <string name="look_bg_topo">Eş yükselti</string>
+    <string name="look_bg_dots">Noktalı dünya</string>
+    <string name="look_bg_grain">Grenli geçiş</string>
+    <string name="look_bg_liquid">Sıvı metal</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

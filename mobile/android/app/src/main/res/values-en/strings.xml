@@ -2467,5 +2467,9 @@
     <string name="noise_mix">Mix</string>
     <string name="sleep_mixOn">Mix several sounds</string>
     <string name="sleep_mixNote">Set each sound\'s level separately; 0 is off. Sounds are generated on the phone, with no files or internet.</string>
+    <string name="look_bg_topo">Topographic</string>
+    <string name="look_bg_dots">Dotted world</string>
+    <string name="look_bg_grain">Grainy gradient</string>
+    <string name="look_bg_liquid">Liquid metal</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

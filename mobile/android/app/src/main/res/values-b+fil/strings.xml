@@ -2467,5 +2467,9 @@
     <string name="noise_mix">Halo</string>
     <string name="sleep_mixOn">Paghaluin ang ilang tunog</string>
     <string name="sleep_mixNote">Itakda nang hiwalay ang lakas ng bawat tunog; 0 ay patay. Ginagawa ang mga tunog sa telepono, walang file o internet.</string>
+    <string name="look_bg_topo">Topograpiko</string>
+    <string name="look_bg_dots">Mundong tuldok</string>
+    <string name="look_bg_grain">Butil-butil na gradient</string>
+    <string name="look_bg_liquid">Likidong metal</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

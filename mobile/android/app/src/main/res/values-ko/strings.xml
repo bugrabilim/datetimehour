@@ -2467,5 +2467,9 @@
     <string name="noise_mix">믹스</string>
     <string name="sleep_mixOn">여러 소리 섞기</string>
     <string name="sleep_mixNote">소리마다 크기를 따로 정하세요. 0은 꺼짐입니다. 소리는 휴대폰에서 만들어지며 파일이나 인터넷이 필요 없습니다.</string>
+    <string name="look_bg_topo">등고선</string>
+    <string name="look_bg_dots">점 세계 지도</string>
+    <string name="look_bg_grain">거친 그라데이션</string>
+    <string name="look_bg_liquid">액체 금속</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

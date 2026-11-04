@@ -2467,5 +2467,9 @@
     <string name="noise_mix">Campuran</string>
     <string name="sleep_mixOn">Campur beberapa suara</string>
     <string name="sleep_mixNote">Atur tingkat tiap suara terpisah; 0 berarti mati. Suara dibuat di ponsel, tanpa file atau internet.</string>
+    <string name="look_bg_topo">Topografi</string>
+    <string name="look_bg_dots">Dunia titik</string>
+    <string name="look_bg_grain">Gradasi berbutir</string>
+    <string name="look_bg_liquid">Logam cair</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

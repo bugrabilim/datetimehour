@@ -2467,5 +2467,9 @@
     <string name="noise_mix">Микс</string>
     <string name="sleep_mixOn">Смешать несколько звуков</string>
     <string name="sleep_mixNote">Настройте громкость каждого звука отдельно; 0 — выключено. Звуки создаются на телефоне, без файлов и интернета.</string>
+    <string name="look_bg_topo">Топография</string>
+    <string name="look_bg_dots">Мир из точек</string>
+    <string name="look_bg_grain">Зернистый градиент</string>
+    <string name="look_bg_liquid">Жидкий металл</string>
     <string name="app_name">Время и дата</string>
 </resources>

@@ -286,6 +286,14 @@ class MoreScreensTest {
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }
     }
     /** Gece gökyüzü (#155–#157), Güneş yolu (#158), çocuklar için Ay (#160) */
+    /** Üretken zeminler (2. analiz #23) */
+    @Test fun generativeBackgrounds() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        for (b in listOf(FullscreenBackground.TOPO, FullscreenBackground.DOTS, FullscreenBackground.GRAIN, FullscreenBackground.LIQUID)) {
+            shot("tr-zemin-${b.id}") { AnimatedBackground(b, androidx.compose.ui.Modifier.fillMaxSize()) }
+        }
+    }
+
     /** Dijital rakam görünümleri (2. analiz #9) */
     @Test fun digitalStyles() {
         RuntimeEnvironment.setQualifiers("+tr")

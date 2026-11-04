@@ -2467,5 +2467,9 @@
     <string name="noise_mix">混合</string>
     <string name="sleep_mixOn">混合多种声音</string>
     <string name="sleep_mixNote">分别设置每种声音的音量，0 表示关闭。声音在手机上生成，无需文件或网络。</string>
+    <string name="look_bg_topo">等高线</string>
+    <string name="look_bg_dots">点阵世界</string>
+    <string name="look_bg_grain">颗粒渐变</string>
+    <string name="look_bg_liquid">液态金属</string>
     <string name="app_name">时间与日期</string>
 </resources>

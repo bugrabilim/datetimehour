@@ -39,7 +39,9 @@ import kotlin.math.sin
 enum class FullscreenBackground(val id: String) {
     PLAIN("plain"), PHOTO("photo"), SKY("sky"), FLOW("flow"), STARS("stars"), WEATHER("weather"),
     /** Ahşap doku (2. analiz #24): durağan, telefonda çizilir */
-    WOOD("wood");
+    WOOD("wood"),
+    /** Üretken zeminler (2. analiz #23) */
+    TOPO("topo"), DOTS("dots"), GRAIN("grain"), LIQUID("liquid");
 
     val title: String get() = L("look.bg.$id")
     val animated: Boolean get() = this != PLAIN && this != PHOTO
@@ -140,6 +142,7 @@ fun AnimatedBackground(kind: FullscreenBackground, modifier: Modifier = Modifier
         while (true) withInfiniteAnimationFrameMillis { t = (it - start) / 1000.0 }
     }
     val place = AppPlace.current()
+    val landMask = if (kind == FullscreenBackground.DOTS) remember { GenArt.landMask(context) } else null
     val accent = Theme.c.accent
     val accent2 = Theme.c.accent2
     // Hava durumu arka planı: seçili yerin güncel havası (Open-Meteo, 15 dk önbellek)
@@ -158,6 +161,10 @@ fun AnimatedBackground(kind: FullscreenBackground, modifier: Modifier = Modifier
                 FullscreenBackground.WEATHER -> weather(t, SkyMath.sunAltitude(place.lat, place.lon, System.currentTimeMillis()), sky ?: WeatherScene(SkyWeather.CLEAR))
                 FullscreenBackground.FLOW -> flow(t, listOf(accent, accent2, Color(0xFF6C4AB6)))
                 FullscreenBackground.WOOD -> wood()
+                FullscreenBackground.TOPO -> topo(t, accent)
+                FullscreenBackground.DOTS -> dotMap(t, landMask, accent)
+                FullscreenBackground.GRAIN -> grain(accent, accent2)
+                FullscreenBackground.LIQUID -> liquid(t)
                 else -> stars(t, listOf(Color(0xFF05070F), Color(0xFF111A3A)), 1f)
             }
         }

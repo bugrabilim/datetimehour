@@ -9,6 +9,8 @@ enum FullscreenBackground: String, CaseIterable, Identifiable {
     case plain, photo, sky, flow, stars, weather
     /// Ahşap doku (2. analiz #24): durağan, telefonda çizilir
     case wood
+    /// Üretken zeminler (2. analiz #23): eş yükselti, noktalı dünya, grenli geçiş, sıvı metal
+    case topo, dots, grain, liquid
 
     static let key = "fsBg"
     var id: String { rawValue }
@@ -125,6 +127,10 @@ struct AnimatedBackground: View {
                                                 scene: scene ?? weather ?? WeatherScene(kind: .clear))
                     case .flow: Self.flow(&ctx, size, t: t)
                     case .wood: Self.wood(&ctx, size)
+                    case .topo: GenArt.topo(&ctx, size, t: t)
+                    case .dots: GenArt.dots(&ctx, size, date: context.date)
+                    case .grain: GenArt.grain(&ctx, size)
+                    case .liquid: GenArt.liquid(&ctx, size, t: t)
                     default: Self.stars(&ctx, size, t: t, base: [Color(hex: 0x05070F), Color(hex: 0x111A3A)], alpha: 1)
                     }
                 }
