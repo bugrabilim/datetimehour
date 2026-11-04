@@ -455,6 +455,11 @@
               "Siz silənədək"
             ],
             [
+              "sth-class",
+              "Sinif alətlərindəki adları, seçim siyahısını, komandaları və sayğacları bu cihazda saxlayır.",
+              "Siz silənədək"
+            ],
+            [
               "sth-metro",
               "Metronomun tempini, ölçüsünü və səs seçimlərini yadda saxlayır.",
               "Siz silənədək"
@@ -952,6 +957,10 @@
         "examTimer": {
           "name": "İmtahan taymeri",
           "desc": "Zal üçün tam ekran imtahan sayğacı."
+        },
+        "classroom": {
+          "name": "Sinif alətləri",
+          "desc": "Təsadüfi ad, komanda və sayğac."
         }
       },
       "infoHeading": "Məlumat səhifələri"
@@ -3239,6 +3248,43 @@
       {
         "q": "Səhifəni bağlasam vaxt dayanırmı?",
         "a": "Xeyr. Başlanğıc vaxtı bu brauzerdə saxlanır; səhifəni yenidən açanda sayğac qaldığı yerdən davam edir. Dayandırma da yadda saxlanır."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Sinif alətləri: təsadüfi ad, komanda, sayğac | Saat Tarih",
+    "description": "Sinif üçün pulsuz alətlər: təsadüfi şagird seçin, adları bərabər komandalara bölün, xalları sayğacla saxlayın. Adlar yalnız brauzerinizdə qalır.",
+    "h1": "Sinif alətləri",
+    "lead": "Şagirdlərin adlarını bir dəfə yazın; təsadüfi ad seçin, sinfi komandalara bölün və ya xalları sayğaclarla saxlayın. Lövhəyə əks etdirmək üçün tam ekran düyməsi var.",
+    "search": "sinif alətləri təsadüfi ad seçici püşk atma komanda qurucu qruplara bölmə xal sayğacı müəllim",
+    "tabPicker": "Ad seçici",
+    "tabTeams": "Komanda qurucu",
+    "tabCounter": "Sayğac",
+    "namesLabel": "Adlar (hər sətirdə bir ad və ya vergüllə)",
+    "namesPh": "Aysel, Murad, Nigar…",
+    "pick": "Təsadüfi seçin",
+    "removePicked": "Seçilən adı siyahıdan çıxarın",
+    "picked": "Seçilən",
+    "left": "Siyahıda qalan: {n}",
+    "restore": "Siyahını qaytarın",
+    "empty": "Əvvəlcə ad yazın.",
+    "teamCount": "Komanda sayı",
+    "makeTeams": "Komandaları qurun",
+    "team": "Komanda {n}",
+    "counterName": "Sayğacın adı",
+    "addCounter": "Sayğac əlavə edin",
+    "counterDefault": "Xal",
+    "reset": "Sıfırlayın",
+    "remove": "Silin",
+    "note": "Adlar və sayğaclar yalnız bu brauzerdə saxlanılır, heç yerə göndərilmir. Seçim brauzerin təhlükəsiz təsadüfi ədəd generatoru ilə edilir.",
+    "faq": [
+      {
+        "q": "Təsadüfi ad seçici necə işləyir?",
+        "a": "Adları hər sətirdə bir ad və ya vergüllə ayıraraq yazın və «Təsadüfi seçin» düyməsinə basın. «Seçilən adı siyahıdan çıxarın» açıqdırsa, eyni ad siyahı bitənə qədər yenidən çıxmır; «Siyahını qaytarın» ilə yenidən başlayırsınız. Seçim brauzerin təhlükəsiz təsadüfi ədəd generatoru ilə edilir."
+      },
+      {
+        "q": "Şagird adları haraya isə göndərilir?",
+        "a": "Xeyr. Adlar, komandalar və sayğaclar yalnız bu brauzerdə saxlanılır; serverə göndərilmir, statistikaya düşmür."
       }
     ]
   }

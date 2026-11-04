@@ -482,6 +482,11 @@
               "Bis zur Löschung durch Sie"
             ],
             [
+              "sth-class",
+              "Speichert die Namen, die Ziehungsliste, die Teams und die Zähler der Klassenzimmer-Tools auf diesem Gerät.",
+              "Bis zur Löschung durch Sie"
+            ],
+            [
               "sth-metro",
               "Speichert Tempo, Schläge pro Takt und Klangeinstellungen des Metronoms.",
               "Bis zur Löschung durch Sie"
@@ -979,6 +984,10 @@
         "examTimer": {
           "name": "Prüfungstimer",
           "desc": "Vollbild-Countdown für den Prüfungsraum."
+        },
+        "classroom": {
+          "name": "Klassenzimmer-Tools",
+          "desc": "Zufallsnamen, Teams und Zähler."
         }
       },
       "infoHeading": "Infoseiten"
@@ -3266,6 +3275,43 @@
       {
         "q": "Stoppt der Timer, wenn ich die Seite schließe?",
         "a": "Nein. Die Startzeit wird in diesem Browser gespeichert; beim erneuten Öffnen läuft der Timer weiter. Auch eine Pause wird gespeichert."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Klassenzimmer-Tools: Zufallsnamen, Teams, Zähler | Saat Tarih",
+    "description": "Kostenlose Unterrichtstools: Namen zufällig ziehen, die Klasse in gleich große Teams teilen, Punkte mit Zählern festhalten. Namen bleiben in Ihrem Browser.",
+    "h1": "Klassenzimmer-Tools",
+    "lead": "Geben Sie die Namen Ihrer Schülerinnen und Schüler einmal ein und ziehen Sie dann einen Zufallsnamen, teilen Sie die Klasse in Teams auf oder zählen Sie Punkte. Über die Vollbildtaste lässt sich alles an die Tafel projizieren.",
+    "search": "Klassenzimmer Tools Zufallsname Namen ziehen Losziehung Teamgenerator Gruppen einteilen Punktezähler Lehrer",
+    "tabPicker": "Namensauswahl",
+    "tabTeams": "Teams bilden",
+    "tabCounter": "Zähler",
+    "namesLabel": "Namen (einer pro Zeile oder durch Kommas getrennt)",
+    "namesPh": "Anna, Ben, Clara…",
+    "pick": "Zufällig ziehen",
+    "removePicked": "Gezogenen Namen aus der Liste entfernen",
+    "picked": "Gezogen",
+    "left": "Noch in der Liste: {n}",
+    "restore": "Liste wiederherstellen",
+    "empty": "Geben Sie zuerst Namen ein.",
+    "teamCount": "Anzahl der Teams",
+    "makeTeams": "Teams bilden",
+    "team": "Team {n}",
+    "counterName": "Name des Zählers",
+    "addCounter": "Zähler hinzufügen",
+    "counterDefault": "Punkte",
+    "reset": "Zurücksetzen",
+    "remove": "Entfernen",
+    "note": "Namen und Zähler werden nur in diesem Browser gespeichert und nirgendwohin gesendet. Die Auswahl nutzt den sicheren Zufallszahlengenerator des Browsers.",
+    "faq": [
+      {
+        "q": "Wie funktioniert die zufällige Namensauswahl?",
+        "a": "Geben Sie die Namen zeilenweise oder durch Kommas getrennt ein und tippen Sie auf „Zufällig ziehen“. Ist „Gezogenen Namen aus der Liste entfernen“ aktiv, kommt ein Name erst wieder, wenn die Liste leer ist; „Liste wiederherstellen“ beginnt von vorn. Die Auswahl nutzt den sicheren Zufallszahlengenerator des Browsers."
+      },
+      {
+        "q": "Werden die Namen irgendwohin gesendet?",
+        "a": "Nein. Namen, Teams und Zähler werden nur in diesem Browser gespeichert; sie gehen an keinen Server und nicht in die Statistik ein."
       }
     ]
   }

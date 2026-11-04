@@ -648,12 +648,14 @@ for (const l of LANGS) {
     const dh = fs.readFileSync(path.join(DIST, "saat-farki/index.html"), "utf8");
     check((dh.match(/data-live="diffbar"/g) || []).length === fs.readdirSync(path.join(DIST, "saat-farki")).filter((f) => f !== "index.html").length && /data-live="diffshort"/.test(dh), "saat farkı merkezi: kartlarda saat, fark ve çubuk");
     check(/id="model-holo"/.test(h) && /id="model-matrix"/.test(h) && /data-matrix/.test(h) && /data-live="math"/.test(h) && /data-look-bool="night"/.test(h), "ana sayfa: temalı saatler (hologram, Matrix, matematik) ve gece modu seçeneği");
-    for (const [f, mt] of [["uyku-hesaplama", "sleep"], ["en/sleep-calculator", "sleep"], ["sinav-zamanlayicisi", "exam"], ["en/exam-timer", "exam"]]) {
+    for (const [f, mt] of [["uyku-hesaplama", "sleep"], ["en/sleep-calculator", "sleep"], ["sinav-zamanlayicisi", "exam"], ["en/exam-timer", "exam"], ["sinif-araclari", "classroom"], ["en/classroom-tools", "classroom"], ["ja/classroom-tools", "classroom"]]) {
       const ph = fs.readFileSync(path.join(DIST, f, "index.html"), "utf8");
       check(new RegExp(`data-mt="${mt}"`).test(ph) && /more-tools\.js/.test(ph), `yeni araç sayfası: /${f}/`);
     }
     const th = fs.readFileSync(path.join(DIST, "araclar/index.html"), "utf8");
-    check(/href="\/uyku-hesaplama\/"/.test(th) && /href="\/sinav-zamanlayicisi\/"/.test(th), "araçlar merkezi: uyku hesaplama ve sınav zamanlayıcısı kartları");
+    check(/href="\/uyku-hesaplama\/"/.test(th) && /href="\/sinav-zamanlayicisi\/"/.test(th) && /href="\/sinif-araclari\/"/.test(th), "araçlar merkezi: uyku hesaplama, sınav zamanlayıcısı ve sınıf araçları kartları");
+    const clh = fs.readFileSync(path.join(DIST, "sinif-araclari/index.html"), "utf8");
+    check(/data-cl-tab="picker"/.test(clh) && /data-cl-tab="teams"/.test(clh) && /data-cl-tab="counter"/.test(clh) && /data-cl-names/.test(clh) && /role="tablist"/.test(clh), "sınıf araçları: ad seçici, takım kurucu, sayaç sekmeleri");
     const ph2 = fs.readFileSync(path.join(DIST, "toplanti-planlayici/index.html"), "utf8");
     check(/data-outlook/.test(ph2) && /data-gmail/.test(ph2) && /data-copytext/.test(ph2), "toplantı planlayıcı: Outlook, Gmail ve metin kopyalama");
     for (const l of LANGS) check(dict[l].get("consent.barText").length <= 170, `çerez bandı metni kısa olmalı (${l})`);

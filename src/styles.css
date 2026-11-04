@@ -1409,6 +1409,26 @@ html[data-cnight] body:has([data-carousel]) img, html[data-cnight] body:has([dat
 .sl-best { justify-self: start; font-size: 0.75rem; font-weight: 700; color: var(--accent); }
 .field-gap { display: block; }
 /* Sınav salonu zamanlayıcısı (2. analiz #141) */
+/* Sınıf araçları (2. analiz #142) */
+.cl-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 0 0 1rem; }
+.cl-panel { display: grid; gap: 0.6rem; }
+.cl-panel[hidden] { display: none; }
+.mt-cl .cl-label { margin: 0; text-align: center; }
+.cl-picked { margin: 0; text-align: center; font-weight: 800; font-size: clamp(2.2rem, 9vw, 6rem); line-height: 1.1; overflow-wrap: anywhere; min-height: 1.2em; }
+.cl-picked.is-rolling { color: var(--muted); }
+.tool:fullscreen .cl-picked, .tool.is-full .cl-picked { font-size: clamp(3rem, 14vw, 12rem); }
+.cl-teams { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.75rem; }
+.cl-team { border: 1px solid var(--border); border-radius: 0.9rem; padding: 0.75rem 1rem; background: var(--surface); }
+.cl-team h3 { margin: 0 0 0.4rem; font-size: 1.05rem; color: var(--accent); }
+.cl-team ol { margin: 0; padding-inline-start: 1.3rem; }
+.tool:fullscreen .cl-team, .tool.is-full .cl-team { font-size: 1.35rem; }
+.cl-counters { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem; }
+.cl-counter { border: 1px solid var(--border); border-radius: 0.9rem; padding: 0.6rem 0.8rem; background: var(--surface); display: grid; gap: 0.4rem; text-align: center; }
+.cl-counter .cl-cname { font-weight: 700; overflow-wrap: anywhere; }
+.cl-counter .cl-val { font-size: clamp(2.2rem, 8vw, 4rem); font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; }
+.cl-counter .cl-btns { display: flex; justify-content: center; gap: 0.5rem; }
+.cl-counter .cl-btns button { min-width: 3rem; min-height: 3rem; font-size: 1.4rem; }
+.cl-names textarea { width: 100%; min-height: 8rem; font: inherit; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: 0.6rem; background: var(--bg); color: var(--text); resize: vertical; }
 .mt-ex .ex-name { margin: 0; font-size: clamp(1.4rem, 4vw, 2.6rem); font-weight: 700; text-align: center; }
 .mt-ex .ex-room { margin: 0; text-align: center; font-size: 1.1rem; }
 .mt-ex .ex-ends, .mt-ex .ex-clock { margin: 0.2rem 0; text-align: center; font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; }

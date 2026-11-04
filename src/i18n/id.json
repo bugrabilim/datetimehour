@@ -455,6 +455,11 @@
               "Sampai Anda menghapusnya"
             ],
             [
+              "sth-class",
+              "Menyimpan nama, daftar undian, tim, dan penghitung alat kelas di perangkat ini.",
+              "Sampai Anda menghapusnya"
+            ],
+            [
               "sth-metro",
               "Mengingat tempo metronom, ketukan per birama, dan pengaturan suara.",
               "Sampai Anda menghapusnya"
@@ -952,6 +957,10 @@
         "examTimer": {
           "name": "Timer ujian",
           "desc": "Hitung mundur layar penuh untuk ruang ujian."
+        },
+        "classroom": {
+          "name": "Alat kelas",
+          "desc": "Nama acak, tim, dan penghitung."
         }
       },
       "infoHeading": "Halaman informasi"
@@ -3239,6 +3248,43 @@
       {
         "q": "Apakah timer berhenti jika halaman ditutup?",
         "a": "Tidak. Waktu mulai disimpan di peramban ini; saat halaman dibuka lagi, timer berlanjut. Jeda juga disimpan."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Alat Kelas: Pemilih Nama Acak, Pembuat Tim, Penghitung | Saat Tarih",
+    "description": "Alat kelas gratis: pilih siswa secara acak, bagi kelas menjadi tim seimbang, dan catat skor dengan penghitung. Nama hanya tersimpan di peramban Anda.",
+    "h1": "Alat kelas",
+    "lead": "Ketik nama siswa sekali, lalu pilih nama secara acak, bagi kelas menjadi tim, atau catat skor dengan penghitung. Tombol layar penuh memudahkan menampilkannya di papan.",
+    "search": "alat kelas pemilih nama acak undian nama pembuat tim bagi kelompok penghitung skor guru",
+    "tabPicker": "Pemilih nama",
+    "tabTeams": "Pembuat tim",
+    "tabCounter": "Penghitung",
+    "namesLabel": "Nama (satu per baris atau dipisah koma)",
+    "namesPh": "Budi, Siti, Rina…",
+    "pick": "Pilih acak",
+    "removePicked": "Hapus nama terpilih dari daftar",
+    "picked": "Terpilih",
+    "left": "Sisa di daftar: {n}",
+    "restore": "Pulihkan daftar",
+    "empty": "Ketik beberapa nama terlebih dahulu.",
+    "teamCount": "Jumlah tim",
+    "makeTeams": "Buat tim",
+    "team": "Tim {n}",
+    "counterName": "Nama penghitung",
+    "addCounter": "Tambah penghitung",
+    "counterDefault": "Skor",
+    "reset": "Atur ulang",
+    "remove": "Hapus",
+    "note": "Nama dan penghitung hanya disimpan di peramban ini dan tidak dikirim ke mana pun. Pemilihan memakai pembangkit angka acak aman milik peramban.",
+    "faq": [
+      {
+        "q": "Bagaimana cara kerja pemilih nama acak?",
+        "a": "Ketik nama satu per baris atau dipisahkan koma, lalu tekan Pilih acak. Jika \"Hapus nama terpilih dari daftar\" aktif, nama yang sama tidak muncul lagi sampai daftar habis; Pulihkan daftar untuk mulai dari awal. Pemilihan memakai pembangkit angka acak aman milik peramban."
+      },
+      {
+        "q": "Apakah nama siswa dikirim ke suatu tempat?",
+        "a": "Tidak. Nama, tim, dan penghitung hanya disimpan di peramban ini; tidak dikirim ke server dan tidak masuk statistik."
       }
     ]
   }

@@ -350,7 +350,7 @@ function faqHtml(items, headingId) {
 }
 
 /* SSS: bütün sayfaların soruları tek sayfada (/sss/) toplanır; sayfalarda yalnız oraya bağlantı kalır */
-const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
+const FAQ_ORDER = ["general", "world", "diff", "converter", "planner", "poll", "calendar", "bridge", "countdowns", "stopwatch", "countdown", "alarm", "pomodoro", "week", "tz", "zones", "dst", "tzn", "unix", "worldHol", "datecalc", "timeCalc", "daysUntil", "hijriConv", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom", "embed", "prayer", "qibla", "zakat", "retire", "nature", "sky", "otd", "weather"];
 const FAQ_GROUPS = {};
 function addFaq(lang, id, title, href, items) {
   const m = (FAQ_GROUPS[lang] ||= new Map());
@@ -1251,6 +1251,7 @@ const TOOL_ART = {
   retire: svgArt('<circle cx="48" cy="30" r="20" class="af"/><path d="M48 18v12l8 6M30 62h36M36 56h24"/>'),
   otd: svgArt('<rect x="24" y="12" width="48" height="44" rx="4" class="af"/><path d="M24 24h48M36 8v8M60 8v8M34 34h28M34 42h20"/>'),
   sleepCalc: svgArt('<path d="M58 14a20 20 0 1 0 18 28 16 16 0 0 1-18-28z" class="af"/><path d="M14 54h68M20 54V40h26v14M24 40v-4h8"/>'),
+  classroom: svgArt('<rect x="12" y="10" width="72" height="40" rx="4" class="af"/><path d="M22 22h20M22 30h28M22 38h14"/><circle cx="66" cy="28" r="7"/><path d="M28 62a8 8 0 0 1 16 0M52 62a8 8 0 0 1 16 0"/><circle cx="36" cy="52" r="0.5"/><circle cx="60" cy="52" r="0.5"/>'),
   examTimer: svgArt('<rect x="10" y="10" width="76" height="46" rx="5" class="af"/><path d="M22 24h24M22 32h18M22 40h22"/><circle cx="66" cy="33" r="12"/><path d="M66 27v6l4 3"/>'),
   zodiac: svgArt('<circle cx="48" cy="32" r="23" class="af"/><path d="M48 17l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/>'),
 };
@@ -1265,7 +1266,7 @@ function buildToolsHub(lang) {
   ];
   /* Kart: görsel + araç adı; kartın tamamı bağlantıdır. Menüde bağlantısı olan sayfalar (takvim, dünya saatleri) burada yok. */
   const card = (k) => `<li class="tool-card"><a href="${ROUTES[lang][k]}"><span class="tool-art" aria-hidden="true">${TOOL_ART[k]}</span><span class="tool-name">${esc(k === "retire" ? RETIRE.cardName : h.cards[k].name)}</span></a></li>`;
-  const cards = [...TOOL_KEYS, "interval", "examTimer", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
+  const cards = [...TOOL_KEYS, "interval", "examTimer", "classroom", "chess", "metronome", "talking", "sleepCalc", "converter", "planner", "poll", "datecalc", "timeCalc", "daysUntil", "hijriConv", "diff", "zones", "dst", "tzn", "unix", "bridge", "worldHol", "qibla", "zakat", ...(lang === "tr" ? ["retire"] : []), "sky", "otd", "zodiac", "embed", "api", ...INFO_KEYS].map(card).join("");
   const body = `<section class="hero">
   <div class="wrap">
     <h1>${esc(h.h1)}</h1>
@@ -1390,7 +1391,7 @@ extendRoutes({ tr: { sky: "/gece-gokyuzu/", otd: "/tarihte-bugun/" }, en: { sky:
 extendRoutes({ tr: { tzn: "/saat-dilimi-haberleri/" }, en: { tzn: "/en/time-zone-news/" } });
 extendRoutes({ tr: { poll: "/toplanti-oylamasi/" }, en: { poll: "/en/meeting-poll/" } });
 // 2. analiz #191 (uyku hesaplama), #141 (sınav salonu zamanlayıcısı)
-extendRoutes({ tr: { sleepCalc: "/uyku-hesaplama/", examTimer: "/sinav-zamanlayicisi/" }, en: { sleepCalc: "/en/sleep-calculator/", examTimer: "/en/exam-timer/" } });
+extendRoutes({ tr: { sleepCalc: "/uyku-hesaplama/", examTimer: "/sinav-zamanlayicisi/", classroom: "/sinif-araclari/" }, en: { sleepCalc: "/en/sleep-calculator/", examTimer: "/en/exam-timer/", classroom: "/en/classroom-tools/" } });
 ROUTES.tr.retire = "/emeklilik-hesaplama/"; // yalnız Türkçe (SGK kuralları)
 const stdMin = (c) => { const m = c.std.match(/([+-])(\d\d):(\d\d)/); return (m[1] === "-" ? -1 : 1) * (+m[2] * 60 + +m[3]); };
 const HOME_CITY = CITIES.find((c) => c.key === "istanbul");
@@ -2454,7 +2455,7 @@ function buildZakat(lang) {
 /* ---------- Ek araçlar (30 Ekim 2026, rakip analizi K maddeleri 13, 31, 32, 36–39, 41) ----------
    Hicri takvim çevirici, saat hesaplama, kaç gün kaldı, aralık zamanlayıcı, satranç saati, metronom, konuşan saat,
    burç hesaplama. Hepsi tarayıcıda çalışır (more-tools.js), dış istek yok; ses Web Audio ve cihazdaki konuşma motoru. */
-const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer"];
+const MORE_KEYS = ["hijriConv", "timeCalc", "daysUntil", "interval", "chess", "metronome", "talking", "zodiac", "sleepCalc", "examTimer", "classroom"];
 const HIJRI_TABLE = hijriTable(HOL, readJson("src/data/hijri.json"));
 const DU_KEYS = ["newYear", "ramadanStart", "rb1", "apr23", "may1", "may19", "kb1", "jul15", "aug30", "oct29", "hijri", "ashura", "mawlid", "regaib", "mirac", "berat", "kadir", "feb14", "mothers", "fathers"];
 // Burçların yaklaşık başlangıç günleri (tropikal zodyak; Koç'tan başlayarak [ay, gün])
@@ -2549,6 +2550,39 @@ function moreBody(lang, key) {
       <p class="meta">${esc(s.note)}</p>
     </div></section>`;
     return { hero, sections, client: { cycles: s.cycles, best: s.best } };
+  }
+  if (key === "classroom") {
+    /* Sınıf araçları (2. analiz #142): rastgele ad seçici, takım kurucu, sayaç; sth-class (yalnız bu tarayıcı) */
+    const tab = (k, label, on) => `<button type="button" role="tab" id="cl-t-${k}" aria-controls="cl-p-${k}" aria-selected="${on}" data-cl-tab="${k}">${esc(label)}</button>`;
+    const hero = `<section class="tool mt mt-cl" data-mt="classroom" aria-labelledby="cl-h">
+      <h2 id="cl-h" class="sr-only">${esc(s.h1)}</h2>
+      <div class="mt-tools-row">${mtFsBtn(t)}</div>
+      <div class="tabs cl-tabs" role="tablist" aria-label="${esc(s.h1)}">${tab("picker", s.tabPicker, true)}${tab("teams", s.tabTeams, false)}${tab("counter", s.tabCounter, false)}</div>
+      <div class="cl-panel" role="tabpanel" id="cl-p-picker" aria-labelledby="cl-t-picker" data-cl-panel="picker">
+        <p class="meta cl-label">${esc(s.picked)}</p>
+        <p class="cl-picked" data-cl-picked aria-live="polite">–</p>
+        <p class="meta" data-cl-left>&nbsp;</p>
+        <div class="tool-actions"><button type="button" class="btn" data-cl-pick>${esc(s.pick)}</button><button type="button" class="toggle" data-cl-restore>${esc(s.restore)}</button></div>
+      </div>
+      <div class="cl-panel" role="tabpanel" id="cl-p-teams" aria-labelledby="cl-t-teams" data-cl-panel="teams" hidden>
+        <div class="inputs-row">${mtNum("cl-tn", s.teamCount, 'min="2" max="12" value="2" data-cl-teamn')}</div>
+        <div class="tool-actions"><button type="button" class="btn" data-cl-make>${esc(s.makeTeams)}</button></div>
+        <div class="cl-teams" data-cl-teams aria-live="polite"></div>
+      </div>
+      <div class="cl-panel" role="tabpanel" id="cl-p-counter" aria-labelledby="cl-t-counter" data-cl-panel="counter" hidden>
+        <ul class="cl-counters" data-cl-counters></ul>
+        <div class="inputs-row">${mtField("cl-cn", s.counterName, `<input id="cl-cn" type="text" maxlength="30" placeholder="${esc(s.counterDefault)}" data-cl-cname>`)}</div>
+        <div class="tool-actions"><button type="button" class="btn" data-cl-add>${esc(s.addCounter)}</button><button type="button" class="toggle" data-cl-zero>${esc(s.reset)}</button></div>
+      </div>
+      <p class="meta" data-cl-empty hidden>${esc(s.empty)}</p>
+      <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
+    </section>`;
+    const sections = `<section class="section"><div class="wrap">
+      <div class="field cl-names"><label for="cl-names">${esc(s.namesLabel)}</label><textarea id="cl-names" rows="6" maxlength="4000" placeholder="${esc(s.namesPh)}" data-cl-names></textarea></div>
+      <div class="tool-extra"><label class="check-inline"><input type="checkbox" data-cl-remove checked> ${esc(s.removePicked)}</label></div>
+      <p class="meta">${esc(s.note)}</p>
+    </div></section>`;
+    return { hero, sections, client: { left: s.left, team: s.team, counterDefault: s.counterDefault, remove: s.remove, empty: s.empty } };
   }
   if (key === "examTimer") {
     /* Sınav salonu zamanlayıcısı (2. analiz #141): okuma + sınav süresi, tam ekran, son 15/5 dk uyarısı; sth-exam */

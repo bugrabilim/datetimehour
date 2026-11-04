@@ -521,6 +521,11 @@
               "Hanggang burahin mo"
             ],
             [
+              "sth-class",
+              "Iniimbak sa device na ito ang mga pangalan, listahan ng bunutan, grupo at counter ng mga kasangkapan sa klase.",
+              "Hanggang burahin mo"
+            ],
+            [
               "sth-metro",
               "Tinatandaan ang tempo, beats bawat bar at setting ng tunog ng metronome.",
               "Hanggang burahin mo"
@@ -1018,6 +1023,10 @@
         "examTimer": {
           "name": "Exam timer",
           "desc": "Full-screen na countdown para sa silid."
+        },
+        "classroom": {
+          "name": "Mga kasangkapan sa klase",
+          "desc": "Random na pangalan, grupo at counter."
         }
       },
       "infoHeading": "Mga pahina ng impormasyon"
@@ -3305,6 +3314,43 @@
       {
         "q": "Hihinto ba ang timer kapag isinara ang pahina?",
         "a": "Hindi. Naka-save sa browser na ito ang oras ng simula; magpapatuloy ang timer kapag binuksan muli ang pahina. Naka-save din ang pag-pause."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Kasangkapan sa Klase: Pangalan, Grupo, Counter | Saat Tarih",
+    "description": "Libreng kasangkapan sa klase: random na pagpili ng estudyante, pantay na grupo at counter ng puntos. Nasa browser mo lang ang mga pangalan.",
+    "h1": "Mga kasangkapan sa klase",
+    "lead": "I-type nang isang beses ang mga pangalan ng estudyante, saka pumili ng random na pangalan, hatiin ang klase sa mga grupo, o magbilang ng puntos gamit ang mga counter. May button na full screen para maipakita sa pisara.",
+    "search": "kasangkapan sa klase random na pangalan bunutan gumawa ng grupo hatiin sa grupo counter ng puntos guro",
+    "tabPicker": "Pumili ng pangalan",
+    "tabTeams": "Gumawa ng grupo",
+    "tabCounter": "Counter",
+    "namesLabel": "Mga pangalan (isa bawat linya o hinati ng kuwit)",
+    "namesPh": "Juan, Maria, Jose…",
+    "pick": "Pumili nang random",
+    "removePicked": "Alisin sa listahan ang napili",
+    "picked": "Napili",
+    "left": "Natitira sa listahan: {n}",
+    "restore": "Ibalik ang listahan",
+    "empty": "Mag-type muna ng mga pangalan.",
+    "teamCount": "Bilang ng grupo",
+    "makeTeams": "Gumawa ng mga grupo",
+    "team": "Grupo {n}",
+    "counterName": "Pangalan ng counter",
+    "addCounter": "Magdagdag ng counter",
+    "counterDefault": "Puntos",
+    "reset": "I-reset",
+    "remove": "Alisin",
+    "note": "Ang mga pangalan at counter ay nakaimbak lang sa browser na ito at hindi ipinapadala kahit saan. Ginagamit ng pagpili ang ligtas na random number generator ng browser.",
+    "faq": [
+      {
+        "q": "Paano gumagana ang random na pagpili ng pangalan?",
+        "a": "I-type ang mga pangalan, isa bawat linya o hinati ng kuwit, at pindutin ang \"Pumili nang random\". Kapag naka-on ang \"Alisin sa listahan ang napili\", hindi na lalabas muli ang pangalan hangga't hindi naubos ang listahan; gamitin ang \"Ibalik ang listahan\" para magsimula ulit. Ginagamit ng pagpili ang ligtas na random number generator ng browser."
+      },
+      {
+        "q": "Ipinapadala ba kahit saan ang mga pangalan ng estudyante?",
+        "a": "Hindi. Ang mga pangalan, grupo at counter ay nakaimbak lang sa browser na ito; hindi ipinapadala sa server at hindi kasama sa istatistika."
       }
     ]
   }

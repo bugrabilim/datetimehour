@@ -482,6 +482,11 @@
               "Jusqu’à ce que vous le supprimiez"
             ],
             [
+              "sth-class",
+              "Conserve sur cet appareil les noms, la liste de tirage, les équipes et les compteurs des outils de classe.",
+              "Jusqu’à ce que vous le supprimiez"
+            ],
+            [
               "sth-metro",
               "Mémorise le tempo du métronome, les temps par mesure et les réglages du son.",
               "Jusqu’à ce que vous le supprimiez"
@@ -993,6 +998,10 @@
         "examTimer": {
           "name": "Minuteur d'examen",
           "desc": "Compte à rebours plein écran pour la salle."
+        },
+        "classroom": {
+          "name": "Outils de classe",
+          "desc": "Noms au hasard, équipes et compteurs."
         }
       },
       "infoHeading": "Pages d’information"
@@ -3280,6 +3289,43 @@
       {
         "q": "Le minuteur s'arrête-t-il si je ferme la page ?",
         "a": "Non. L'heure de départ est enregistrée dans ce navigateur ; en rouvrant la page, le minuteur continue. La pause est aussi enregistrée."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Outils de classe : tirage de noms, équipes, compteur | Saat Tarih",
+    "description": "Outils gratuits pour la classe : tirez un élève au hasard, formez des équipes équilibrées, comptez les points. Les noms restent dans votre navigateur.",
+    "h1": "Outils de classe",
+    "lead": "Saisissez une fois les noms des élèves, puis tirez un nom au hasard, répartissez la classe en équipes ou comptez les points avec des compteurs. Le bouton plein écran permet de l'afficher au tableau.",
+    "search": "outils de classe tirage au sort nom aléatoire générateur d'équipes former des groupes compteur de points enseignant",
+    "tabPicker": "Tirage de nom",
+    "tabTeams": "Équipes",
+    "tabCounter": "Compteur",
+    "namesLabel": "Noms (un par ligne ou séparés par des virgules)",
+    "namesPh": "Alice, Hugo, Léa…",
+    "pick": "Tirer au sort",
+    "removePicked": "Retirer le nom tiré de la liste",
+    "picked": "Nom tiré",
+    "left": "Restant dans la liste : {n}",
+    "restore": "Rétablir la liste",
+    "empty": "Saisissez d'abord des noms.",
+    "teamCount": "Nombre d'équipes",
+    "makeTeams": "Former les équipes",
+    "team": "Équipe {n}",
+    "counterName": "Nom du compteur",
+    "addCounter": "Ajouter un compteur",
+    "counterDefault": "Points",
+    "reset": "Réinitialiser",
+    "remove": "Supprimer",
+    "note": "Les noms et les compteurs sont enregistrés uniquement dans ce navigateur et ne sont envoyés nulle part. Le tirage utilise le générateur de nombres aléatoires sécurisé du navigateur.",
+    "faq": [
+      {
+        "q": "Comment fonctionne le tirage au sort de noms ?",
+        "a": "Saisissez les noms, un par ligne ou séparés par des virgules, puis appuyez sur « Tirer au sort ». Si « Retirer le nom tiré de la liste » est activé, un nom ne revient pas avant que la liste soit épuisée ; « Rétablir la liste » recommence depuis le début. Le tirage utilise le générateur de nombres aléatoires sécurisé du navigateur."
+      },
+      {
+        "q": "Les noms des élèves sont-ils envoyés quelque part ?",
+        "a": "Non. Les noms, équipes et compteurs sont enregistrés uniquement dans ce navigateur ; ils ne sont envoyés à aucun serveur et n'entrent pas dans les statistiques."
       }
     ]
   }

@@ -455,6 +455,11 @@
               "Siz silene kadar"
             ],
             [
+              "sth-class",
+              "Sınıf araçlarındaki adları, seçim listesini, takımları ve sayaçları bu cihazda tutar.",
+              "Siz silene kadar"
+            ],
+            [
               "sth-metro",
               "Metronomun temposunu, ölçüsünü ve ses tercihlerini hatırlar.",
               "Siz silene kadar"
@@ -952,6 +957,10 @@
         "examTimer": {
           "name": "Sınav zamanlayıcısı",
           "desc": "Salon için tam ekran sınav sayacı."
+        },
+        "classroom": {
+          "name": "Sınıf araçları",
+          "desc": "Rastgele ad, takım ve sayaç."
         }
       },
       "infoHeading": "Bilgi sayfaları"
@@ -3239,6 +3248,43 @@
       {
         "q": "Sayfayı kapatırsam süre durur mu?",
         "a": "Hayır. Başlangıç zamanı bu tarayıcıda saklanır; sayfayı yeniden açtığınızda sayaç kaldığı yerden devam eder. Duraklatma da kaydedilir."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Sınıf Araçları: Rastgele Ad Seçici, Takım Kurucu, Sayaç | Saat Tarih",
+    "description": "Sınıf için ücretsiz araçlar: listeden rastgele öğrenci seçin, adları eşit takımlara bölün, takım puanlarını sayaçla tutun. Kayıt yok, adlar yalnız tarayıcınızda kalır.",
+    "h1": "Sınıf araçları",
+    "lead": "Öğrenci adlarını bir kez yazın; rastgele bir ad seçin, sınıfı takımlara bölün ya da puanları sayaçlarla tutun. Tahtaya yansıtmak için tam ekran düğmesi var.",
+    "search": "sınıf araçları rastgele ad seçici kura çekme isim çekme takım oluşturucu grup bölme puan sayacı öğretmen",
+    "tabPicker": "Ad seçici",
+    "tabTeams": "Takım kurucu",
+    "tabCounter": "Sayaç",
+    "namesLabel": "Adlar (her satıra bir ad ya da virgülle)",
+    "namesPh": "Ayşe, Mehmet, Zeynep…",
+    "pick": "Rastgele seç",
+    "removePicked": "Seçileni listeden çıkar",
+    "picked": "Seçilen",
+    "left": "Listede kalan: {n}",
+    "restore": "Listeyi geri getir",
+    "empty": "Önce ad yazın.",
+    "teamCount": "Takım sayısı",
+    "makeTeams": "Takımları kur",
+    "team": "Takım {n}",
+    "counterName": "Sayaç adı",
+    "addCounter": "Sayaç ekle",
+    "counterDefault": "Puan",
+    "reset": "Sıfırla",
+    "remove": "Kaldır",
+    "note": "Adlar ve sayaçlar yalnız bu tarayıcıda saklanır, hiçbir yere gönderilmez. Seçim tarayıcının güvenli rastgele sayı üreticisiyle yapılır.",
+    "faq": [
+      {
+        "q": "Rastgele ad seçici nasıl çalışır?",
+        "a": "Adları her satıra bir ad ya da virgülle ayırarak yazın ve Rastgele seç'e basın. \"Seçileni listeden çıkar\" açıksa aynı ad liste bitene kadar yeniden çıkmaz; Listeyi geri getir ile baştan başlarsınız. Seçim tarayıcının güvenli rastgele sayı üreticisiyle yapılır."
+      },
+      {
+        "q": "Öğrenci adları bir yere gönderiliyor mu?",
+        "a": "Hayır. Adlar, takımlar ve sayaçlar yalnız bu tarayıcıda saklanır; sunucuya gönderilmez, istatistiğe girmez."
       }
     ]
   }

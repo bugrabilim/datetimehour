@@ -455,6 +455,11 @@
               "Until you delete it"
             ],
             [
+              "sth-class",
+              "Keeps the names, pick list, teams and counters of the classroom tools on this device.",
+              "Until you delete it"
+            ],
+            [
               "sth-metro",
               "Remembers the metronome's tempo, beats per bar and sound settings.",
               "Until you delete it"
@@ -952,6 +957,10 @@
         "examTimer": {
           "name": "Exam timer",
           "desc": "Full-screen countdown for the exam room."
+        },
+        "classroom": {
+          "name": "Classroom tools",
+          "desc": "Random names, teams and counters."
         }
       },
       "infoHeading": "Information pages"
@@ -3239,6 +3248,43 @@
       {
         "q": "Does the timer stop if I close the page?",
         "a": "No. The start time is saved in this browser; when you reopen the page the timer carries on. Pausing is saved too."
+      }
+    ]
+  },
+  "classroom": {
+    "title": "Classroom Tools: Random Name Picker, Team Maker, Counter | Saat Tarih",
+    "description": "Free classroom tools: pick a random student from a list, split names into even teams and keep team scores with counters. No sign-up; names stay in your browser.",
+    "h1": "Classroom tools",
+    "lead": "Type your students' names once, then pick a random name, split the class into teams or keep score with counters. A full-screen button lets you project it on the board.",
+    "search": "classroom tools random name picker name generator team maker group generator score counter teacher",
+    "tabPicker": "Name picker",
+    "tabTeams": "Team maker",
+    "tabCounter": "Counter",
+    "namesLabel": "Names (one per line or comma-separated)",
+    "namesPh": "Alice, Ben, Chloe…",
+    "pick": "Pick at random",
+    "removePicked": "Remove picked name from the list",
+    "picked": "Picked",
+    "left": "Left in list: {n}",
+    "restore": "Restore list",
+    "empty": "Type some names first.",
+    "teamCount": "Number of teams",
+    "makeTeams": "Make teams",
+    "team": "Team {n}",
+    "counterName": "Counter name",
+    "addCounter": "Add counter",
+    "counterDefault": "Score",
+    "reset": "Reset",
+    "remove": "Remove",
+    "note": "Names and counters are stored only in this browser and are never sent anywhere. Picks use the browser's secure random number generator.",
+    "faq": [
+      {
+        "q": "How does the random name picker work?",
+        "a": "Type names one per line or separated by commas and press Pick at random. With \"Remove picked name from the list\" on, a name will not come up again until the list runs out; Restore list starts over. Picks use the browser's secure random number generator."
+      },
+      {
+        "q": "Are student names sent anywhere?",
+        "a": "No. Names, teams and counters are stored only in this browser; they are not sent to a server or included in statistics."
       }
     ]
   }
