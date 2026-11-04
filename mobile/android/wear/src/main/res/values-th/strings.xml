@@ -25,6 +25,14 @@
     <string name="prayer_imNote">เวลาเป็นค่าที่คำนวณ สำหรับเวลาอย่างเป็นทางการ ให้ยึดสำนักงานกิจการศาสนา (ดียาเนต)</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">ตารางเวลารอมฎอน %2$s ของ%1$s</string>
+    <string name="nature_phases_new">จันทร์ดับ</string>
+    <string name="nature_phases_waxingCrescent">จันทร์เสี้ยวข้างขึ้น</string>
+    <string name="nature_phases_firstQuarter">ข้างขึ้นครึ่งดวง</string>
+    <string name="nature_phases_waxingGibbous">ข้างขึ้นค่อนดวง</string>
+    <string name="nature_phases_full">จันทร์เต็มดวง</string>
+    <string name="nature_phases_waningGibbous">ข้างแรมค่อนดวง</string>
+    <string name="nature_phases_lastQuarter">ข้างแรมครึ่งดวง</string>
+    <string name="nature_phases_waningCrescent">จันทร์เสี้ยวข้างแรม</string>
     <string name="weather_codes_clear">ท้องฟ้าแจ่มใส</string>
     <string name="weather_codes_mostlyClear">ท้องฟ้าโปร่งเป็นส่วนใหญ่</string>
     <string name="weather_codes_partly">มีเมฆบางส่วน</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">ละหมาดถัดไป</string>
     <string name="widget_next_desc">ละหมาดถัดไป เวลา และเวลาที่เหลือ</string>
     <string name="prayer_monthly">ตารางเวลาละหมาดรายเดือน</string>
+    <string name="widget_moon_name">ข้างขึ้นข้างแรม</string>
+    <string name="widget_moon_desc">ข้างของดวงจันทร์วันนี้ ความสว่าง และจันทร์เต็มดวงหรือจันทร์ดับครั้งถัดไป</string>
     <string name="hijri_title">วันที่ฮิจเราะห์</string>
     <string name="hijri_fmt">%1$s %2$s %3$s ฮ.ศ.</string>
     <string name="hijri_note">วันที่ฮิจเราะห์เป็นไปตามปฏิทินดียาเนตของตุรกี ในประเทศอื่นเดือนอาจเริ่มเร็วหรือช้ากว่าหนึ่งวัน วันที่เปลี่ยนตอนเที่ยงคืน ไม่ใช่ตอนดวงอาทิตย์ตก</string>

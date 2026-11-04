@@ -25,6 +25,14 @@
     <string name="prayer_imNote">Waktu merupakan hasil perhitungan; untuk waktu resmi ikuti Kepresidenan Urusan Agama (Diyanet).</string>
     <string name="prayer_imFile">jadwal-ramadan</string>
     <string name="prayer_imAlt">Jadwal Ramadan %2$s untuk %1$s</string>
+    <string name="nature_phases_new">Bulan baru</string>
+    <string name="nature_phases_waxingCrescent">Sabit awal</string>
+    <string name="nature_phases_firstQuarter">Kuartir pertama</string>
+    <string name="nature_phases_waxingGibbous">Cembung awal</string>
+    <string name="nature_phases_full">Bulan purnama</string>
+    <string name="nature_phases_waningGibbous">Cembung akhir</string>
+    <string name="nature_phases_lastQuarter">Kuartir akhir</string>
+    <string name="nature_phases_waningCrescent">Sabit akhir</string>
     <string name="weather_codes_clear">Cerah</string>
     <string name="weather_codes_mostlyClear">Sebagian besar cerah</string>
     <string name="weather_codes_partly">Berawan sebagian</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">Salat berikutnya</string>
     <string name="widget_next_desc">Salat berikutnya, waktunya, dan sisa waktunya.</string>
     <string name="prayer_monthly">Jadwal salat bulanan</string>
+    <string name="widget_moon_name">Fase Bulan</string>
+    <string name="widget_moon_desc">Fase Bulan hari ini, persentase terang, dan bulan purnama atau bulan baru berikutnya.</string>
     <string name="hijri_title">Tanggal Hijriah</string>
     <string name="hijri_fmt">%1$s %2$s %3$s H</string>
     <string name="hijri_note">Tanggal Hijriah mengikuti kalender Diyanet Turki; di negara lain awal bulan bisa sehari lebih awal atau lebih lambat. Hari berganti pada tengah malam, bukan saat matahari terbenam.</string>

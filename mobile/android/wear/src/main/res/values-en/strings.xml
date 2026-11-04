@@ -25,6 +25,14 @@
     <string name="prayer_imNote">Times are calculated; for official times follow the Presidency of Religious Affairs (Diyanet).</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">Ramadan %2$s timetable for %1$s</string>
+    <string name="nature_phases_new">New moon</string>
+    <string name="nature_phases_waxingCrescent">Waxing crescent</string>
+    <string name="nature_phases_firstQuarter">First quarter</string>
+    <string name="nature_phases_waxingGibbous">Waxing gibbous</string>
+    <string name="nature_phases_full">Full moon</string>
+    <string name="nature_phases_waningGibbous">Waning gibbous</string>
+    <string name="nature_phases_lastQuarter">Last quarter</string>
+    <string name="nature_phases_waningCrescent">Waning crescent</string>
     <string name="weather_codes_clear">Clear</string>
     <string name="weather_codes_mostlyClear">Mostly clear</string>
     <string name="weather_codes_partly">Partly cloudy</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">Next prayer</string>
     <string name="widget_next_desc">The next prayer, its time and the time left.</string>
     <string name="prayer_monthly">Monthly prayer timetable</string>
+    <string name="widget_moon_name">Moon phase</string>
+    <string name="widget_moon_desc">Today\'s Moon phase, illumination and the next full or new moon.</string>
     <string name="hijri_title">Hijri date</string>
     <string name="hijri_fmt">%1$s %2$s %3$s AH</string>
     <string name="hijri_note">The Hijri date follows Türkiye\'s Diyanet calendar; in other countries a month may start a day earlier or later. The day changes at midnight, not at sunset.</string>

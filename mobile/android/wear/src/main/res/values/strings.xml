@@ -25,6 +25,14 @@
     <string name="prayer_imNote">Vakitler hesaplanmıştır; resmî vakit için Diyanet İşleri Başkanlığı esas alınır.</string>
     <string name="prayer_imFile">ramazan-imsakiyesi</string>
     <string name="prayer_imAlt">%1$s için %2$s Ramazan imsakiyesi</string>
+    <string name="nature_phases_new">Yeni ay</string>
+    <string name="nature_phases_waxingCrescent">Hilal (büyüyen)</string>
+    <string name="nature_phases_firstQuarter">İlk dördün</string>
+    <string name="nature_phases_waxingGibbous">Şişkin ay (büyüyen)</string>
+    <string name="nature_phases_full">Dolunay</string>
+    <string name="nature_phases_waningGibbous">Şişkin ay (küçülen)</string>
+    <string name="nature_phases_lastQuarter">Son dördün</string>
+    <string name="nature_phases_waningCrescent">Hilal (küçülen)</string>
     <string name="weather_codes_clear">Açık</string>
     <string name="weather_codes_mostlyClear">Çoğunlukla açık</string>
     <string name="weather_codes_partly">Parçalı bulutlu</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">Sıradaki vakit</string>
     <string name="widget_next_desc">Sıradaki vakit, saati ve kalan süre.</string>
     <string name="prayer_monthly">Aylık vakit çizelgesi</string>
+    <string name="widget_moon_name">Ay evresi</string>
+    <string name="widget_moon_desc">Ay\'ın bugünkü evresi, aydınlık yüzdesi ve sıradaki dolunay ya da yeni ay.</string>
     <string name="hijri_title">Hicri tarih</string>
     <string name="hijri_fmt">%1$s %2$s %3$s</string>
     <string name="hijri_note">Hicri tarih Diyanet takvimine göredir; başka ülkelerde ay başı bir gün farklı olabilir. Gün, akşam değil gece yarısı değişir.</string>

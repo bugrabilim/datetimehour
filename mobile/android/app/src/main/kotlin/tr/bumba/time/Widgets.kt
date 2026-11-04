@@ -240,7 +240,7 @@ class MoonWidget : BaseWidget() {
         val v = RemoteViews(c.packageName, R.layout.widget_moon)
         val now = Instant.now()
         val m = Nature.moon(now.toEpochMilli())
-        v.setTextViewText(R.id.icon, MOON_PHASE_EMOJI[m.phaseIndex])
+        MoonTexture.bitmap(c, m.fraction, AppPlace.current().lat < 0, 160)?.let { v.setImageViewBitmap(R.id.icon, it) }
         v.setTextViewText(R.id.name, L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"))
         v.setTextViewText(R.id.illum, T("nature.illumination", Math.round(m.illumination * 100)))
         val full = m.nextFullMoon < m.nextNewMoon
@@ -248,6 +248,48 @@ class MoonWidget : BaseWidget() {
         v.setTextViewText(R.id.next, (if (full) "🌕 " else "🌑 ") + Fmt.shortDate(at))
         v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.SEASONS, id))
         return v
+    }
+}
+
+/** Ay takvimi (2. analiz #149): bugünkü dokulu Ay ve sıradaki dört ana evre (yeni ay, ilk dördün, dolunay, son dördün) */
+class MoonCalWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_moon_cal)
+        val now = System.currentTimeMillis()
+        val m = Nature.moon(now)
+        val south = AppPlace.current().lat < 0
+        MoonTexture.bitmap(c, m.fraction, south, 192)?.let { v.setImageViewBitmap(R.id.icon, it) }
+        v.setTextViewText(R.id.name, L("nature.phases.${MOON_PHASE_KEYS[m.phaseIndex]}"))
+        v.setTextViewText(R.id.illum, T("nature.illumination", Math.round(m.illumination * 100)))
+        val ids = listOf(Triple(R.id.p0img, R.id.p0name, R.id.p0date), Triple(R.id.p1img, R.id.p1name, R.id.p1date),
+            Triple(R.id.p2img, R.id.p2name, R.id.p2date), Triple(R.id.p3img, R.id.p3name, R.id.p3date))
+        MoonPhaseTimes.next(now, 4).forEachIndexed { i, (key, frac, at) ->
+            val (img, name, date) = ids[i]
+            MoonTexture.bitmap(c, frac, south, 54)?.let { v.setImageViewBitmap(img, it) }
+            v.setTextViewText(name, L("nature.phases.$key"))
+            v.setTextViewText(date, Fmt.shortDate(Instant.ofEpochMilli(at).atZone(ZoneId.systemDefault()).toLocalDate()))
+        }
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.SEASONS, id))
+        return v
+    }
+}
+
+/** Sıradaki ana evreler: evre kesrinin 0; 0,25; 0,5; 0,75'i geçtiği anlar (saatlik tarama) */
+object MoonPhaseTimes {
+    fun next(from: Long, count: Int): List<Triple<String, Double, Long>> {
+        val keys = listOf("new" to 0.0, "firstQuarter" to 0.25, "full" to 0.5, "lastQuarter" to 0.75)
+        val out = ArrayList<Triple<String, Double, Long>>()
+        var t = from; var prev = Nature.moon(t).fraction; var n = 0
+        while (out.size < count && n < 24 * 60) {
+            n++
+            val t2 = t + 3_600_000; val f = Nature.moon(t2).fraction
+            for ((k, q) in keys) {
+                val crossed = if (q == 0.0) f < prev else prev < q && f >= q
+                if (crossed) out.add(Triple(k, q, t2))
+            }
+            prev = f; t = t2
+        }
+        return out.take(count)
     }
 }
 
@@ -274,7 +316,7 @@ class WidgetRefreshReceiver : android.content.BroadcastReceiver() {
 object WidgetUpdater {
     private val providers = listOf(
         NextPrayerWidget::class.java, TodayPrayersWidget::class.java, AnalogClockWidget::class.java,
-        DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java,
+        DigitalClockWidget::class.java, ClockDateWidget::class.java, MoonWidget::class.java, MoonCalWidget::class.java,
         SecondsClockWidget::class.java, WorldClockWidget::class.java, CountdownWidget::class.java, HijriWidget::class.java,
         DualClockWidget::class.java, YearWidget::class.java, WordsWidget::class.java, SunWidget::class.java,
         DailyWidget::class.java, PhotoWidget::class.java, EventsWidget::class.java, WeatherWidget::class.java,

@@ -25,6 +25,14 @@
     <string name="prayer_imNote">Die Zeiten sind berechnet; maßgeblich sind die Angaben des Präsidiums für Religionsangelegenheiten (Diyanet).</string>
     <string name="prayer_imFile">ramadan-imsakiye</string>
     <string name="prayer_imAlt">Ramadan-Zeitplan %2$s für %1$s</string>
+    <string name="nature_phases_new">Neumond</string>
+    <string name="nature_phases_waxingCrescent">Zunehmende Sichel</string>
+    <string name="nature_phases_firstQuarter">Erstes Viertel</string>
+    <string name="nature_phases_waxingGibbous">Zunehmender Mond</string>
+    <string name="nature_phases_full">Vollmond</string>
+    <string name="nature_phases_waningGibbous">Abnehmender Mond</string>
+    <string name="nature_phases_lastQuarter">Letztes Viertel</string>
+    <string name="nature_phases_waningCrescent">Abnehmende Sichel</string>
     <string name="weather_codes_clear">Klar</string>
     <string name="weather_codes_mostlyClear">Überwiegend klar</string>
     <string name="weather_codes_partly">Teilweise bewölkt</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">Nächstes Gebet</string>
     <string name="widget_next_desc">Das nächste Gebet, seine Uhrzeit und die verbleibende Zeit.</string>
     <string name="prayer_monthly">Monatliche Gebetszeiten</string>
+    <string name="widget_moon_name">Mondphase</string>
+    <string name="widget_moon_desc">Heutige Mondphase, Beleuchtungsgrad und der nächste Voll- oder Neumond.</string>
     <string name="hijri_title">Hidschri-Datum</string>
     <string name="hijri_fmt">%1$s. %2$s %3$s n. H.</string>
     <string name="hijri_note">Das Hidschri-Datum folgt dem Kalender des türkischen Diyanet; in anderen Ländern kann ein Monat einen Tag früher oder später beginnen. Der Tag wechselt um Mitternacht, nicht bei Sonnenuntergang.</string>

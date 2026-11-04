@@ -104,7 +104,7 @@ enum AppTab: Int, CaseIterable {
 enum ToolRoute: Hashable {
     case alarm, timer, stopwatch, pomodoro, study, wakeGame, sleep, journal, breath, planner, datecalc, settings, about, badges
     // Tümü'nden açılan sayfalar (Seçenek B, 2. analiz #195): ibadet, Ay, takvim yaprağı ve ayar sayfaları
-    case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon
+    case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon, sky, sunpath
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
     case sura(Int)
 }

@@ -12,6 +12,74 @@ struct SaatTarihWatchWidgets: WidgetBundle {
         WatchTodayPrayersWidget()
         WatchHijriWidget()
         WatchWeatherWidget()
+        WatchMoonWidget()
+    }
+}
+
+// MARK: Ay evresi (2. analiz #149)
+
+struct WatchMoonEntry: TimelineEntry {
+    let date: Date
+}
+
+struct WatchMoonProvider: TimelineProvider {
+    func placeholder(in context: Context) -> WatchMoonEntry { WatchMoonEntry(date: Date()) }
+    func getSnapshot(in context: Context, completion: @escaping (WatchMoonEntry) -> Void) { completion(WatchMoonEntry(date: Date())) }
+    func getTimeline(in context: Context, completion: @escaping (Timeline<WatchMoonEntry>) -> Void) {
+        let now = Date()
+        completion(Timeline(entries: (0..<8).map { WatchMoonEntry(date: now.addingTimeInterval(Double($0) * 6 * 3600)) }, policy: .atEnd))
+    }
+}
+
+/// Evre simgesi (SF Symbols moonphase), aydınlık yüzdesi; dikdörtgende evre adı ve sıradaki dolunay/yeni ay
+struct WatchMoonWidget: Widget {
+    private static let symbols = ["moonphase.new.moon", "moonphase.waxing.crescent", "moonphase.first.quarter", "moonphase.waxing.gibbous",
+                                  "moonphase.full.moon", "moonphase.waning.gibbous", "moonphase.last.quarter", "moonphase.waning.crescent"]
+    private static let keys = ["new", "waxingCrescent", "firstQuarter", "waxingGibbous", "full", "waningGibbous", "lastQuarter", "waningCrescent"]
+
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "watch-moon", provider: WatchMoonProvider()) { entry in
+            WatchMoonView(entry: entry, symbols: Self.symbols, keys: Self.keys)
+                .containerBackground(.clear, for: .widget)
+        }
+        .configurationDisplayName(L("widget.moon.name"))
+        .description(L("widget.moon.desc"))
+        .supportedFamilies([.accessoryCircular, .accessoryRectangular, .accessoryInline, .accessoryCorner])
+    }
+}
+
+private struct WatchMoonView: View {
+    let entry: WatchMoonEntry
+    let symbols: [String]
+    let keys: [String]
+    @Environment(\.widgetFamily) private var family
+
+    var body: some View {
+        let m = Nature.moon(at: entry.date)
+        let pct: Int = Int((m.illumination * 100).rounded())
+        let name: String = L("nature.phases.\(keys[m.phaseIndex])")
+        switch family {
+        case .accessoryRectangular:
+            let full = m.nextFullMoon < m.nextNewMoon
+            let next = Date(unixMilliseconds: full ? m.nextFullMoon : m.nextNewMoon)
+            HStack {
+                Image(systemName: symbols[m.phaseIndex]).font(.title2)
+                VStack(alignment: .leading) {
+                    Text(name).font(.headline).lineLimit(1).minimumScaleFactor(0.7)
+                    Text("\(pct)%").font(.caption)
+                    Text((full ? "🌕 " : "🌑 ") + next.formatted(.dateTime.day().month(.abbreviated))).font(.caption2)
+                }
+            }
+        case .accessoryInline:
+            Text(Image(systemName: symbols[m.phaseIndex])) + Text(" \(name)")
+        case .accessoryCorner:
+            Image(systemName: symbols[m.phaseIndex]).font(.title3).widgetLabel("\(pct)%")
+        default:
+            VStack(spacing: 0) {
+                Image(systemName: symbols[m.phaseIndex]).font(.title3)
+                Text("\(pct)").font(.caption2)
+            }
+        }
     }
 }
 

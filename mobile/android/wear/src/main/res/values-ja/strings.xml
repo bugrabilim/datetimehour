@@ -25,6 +25,14 @@
     <string name="prayer_imNote">時刻は計算によるものです。正式な時刻はトルコ宗務庁（ディヤーネット）に従ってください。</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">%1$sの%2$s年ラマダン時刻表</string>
+    <string name="nature_phases_new">新月</string>
+    <string name="nature_phases_waxingCrescent">三日月</string>
+    <string name="nature_phases_firstQuarter">上弦の月</string>
+    <string name="nature_phases_waxingGibbous">十三夜月</string>
+    <string name="nature_phases_full">満月</string>
+    <string name="nature_phases_waningGibbous">寝待月</string>
+    <string name="nature_phases_lastQuarter">下弦の月</string>
+    <string name="nature_phases_waningCrescent">有明月</string>
     <string name="weather_codes_clear">快晴</string>
     <string name="weather_codes_mostlyClear">晴れ</string>
     <string name="weather_codes_partly">晴れ時々曇り</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">次の礼拝</string>
     <string name="widget_next_desc">次の礼拝とその時刻、残り時間。</string>
     <string name="prayer_monthly">月間の礼拝時刻表</string>
+    <string name="widget_moon_name">月の満ち欠け</string>
+    <string name="widget_moon_desc">今日の月の形、輝面比と次の満月・新月。</string>
     <string name="hijri_title">ヒジュラ暦の日付</string>
     <string name="hijri_fmt">ヒジュラ暦%3$s年 %2$s %1$s日</string>
     <string name="hijri_note">ヒジュラ暦の日付はトルコのディヤーネットの暦に従います。他の国では月の始まりが1日前後することがあります。日付は日没ではなく午前0時に変わります。</string>

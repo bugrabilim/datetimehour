@@ -25,6 +25,14 @@
     <string name="prayer_imNote">시간은 계산값입니다. 공식 시간은 튀르키예 종교청(디야넷)을 따르세요.</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">%1$s의 %2$s년 라마단 시간표</string>
+    <string name="nature_phases_new">삭</string>
+    <string name="nature_phases_waxingCrescent">초승달</string>
+    <string name="nature_phases_firstQuarter">상현달</string>
+    <string name="nature_phases_waxingGibbous">차가는 달</string>
+    <string name="nature_phases_full">보름달</string>
+    <string name="nature_phases_waningGibbous">기우는 달</string>
+    <string name="nature_phases_lastQuarter">하현달</string>
+    <string name="nature_phases_waningCrescent">그믐달</string>
     <string name="weather_codes_clear">맑음</string>
     <string name="weather_codes_mostlyClear">대체로 맑음</string>
     <string name="weather_codes_partly">구름 조금</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">다음 기도</string>
     <string name="widget_next_desc">다음 기도와 그 시각, 남은 시간.</string>
     <string name="prayer_monthly">월간 기도 시간표</string>
+    <string name="widget_moon_name">달의 위상</string>
+    <string name="widget_moon_desc">오늘 달의 위상, 밝은 부분의 비율과 다음 보름달 또는 신월.</string>
     <string name="hijri_title">히즈라력 날짜</string>
     <string name="hijri_fmt">히즈라력 %3$s년 %2$s %1$s일</string>
     <string name="hijri_note">히즈라력 날짜는 튀르키예 디야넷 달력을 따릅니다. 다른 나라에서는 달의 시작이 하루 이르거나 늦을 수 있습니다. 날짜는 해 질 녘이 아니라 자정에 바뀝니다.</string>

@@ -56,6 +56,8 @@ enum AllPrefs {
         AllEntry(id: "world", titleKey: "tab.world", icon: "globe.europe.africa", cat: .sky, feature: .world, tab: .world),
         AllEntry(id: "seasons", titleKey: "tab.seasons", icon: "leaf", cat: .sky, feature: .seasons, tab: .seasons),
         AllEntry(id: "moon", titleKey: "moon.calendarLink", icon: "moon", cat: .sky, feature: .seasons, route: .moon),
+        AllEntry(id: "sky", titleKey: "sky.h1", icon: "sparkles", cat: .sky, feature: .seasons, route: .sky),
+        AllEntry(id: "sunpath", titleKey: "sunpath.title", icon: "sun.horizon", cat: .sky, feature: .seasons, route: .sunpath),
         AllEntry(id: "prayer", titleKey: "tab.prayer", icon: "moon.stars", cat: .faith, feature: .prayer, tab: .prayer),
         AllEntry(id: "qibla", titleKey: "qibla.title", icon: "location.north.line", cat: .faith, feature: .prayer, route: .qibla),
         AllEntry(id: "quran", titleKey: "quran.title", icon: "book", cat: .faith, feature: .prayer, route: .quran),
@@ -325,6 +327,8 @@ extension ToolRoute {
         case .guide: PrayerGuideView()
         case .leaf: CalendarLeafView()
         case .moon: MoonView()
+        case .sky: SkyView()
+        case .sunpath: SunPathView()
         case .appearance: AppearanceView()
         case .color: AccentPickerView()
         case .dials: DialGalleryView()

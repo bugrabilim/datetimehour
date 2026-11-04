@@ -25,6 +25,14 @@
     <string name="prayer_imNote">الأوقات محسوبة؛ والمعتمد هو ما تنشره رئاسة الشؤون الدينية.</string>
     <string name="prayer_imFile">imsakiyah</string>
     <string name="prayer_imAlt">إمساكية رمضان %2$s في %1$s</string>
+    <string name="nature_phases_new">قمر جديد</string>
+    <string name="nature_phases_waxingCrescent">هلال متزايد</string>
+    <string name="nature_phases_firstQuarter">التربيع الأول</string>
+    <string name="nature_phases_waxingGibbous">أحدب متزايد</string>
+    <string name="nature_phases_full">بدر</string>
+    <string name="nature_phases_waningGibbous">أحدب متناقص</string>
+    <string name="nature_phases_lastQuarter">التربيع الأخير</string>
+    <string name="nature_phases_waningCrescent">هلال متناقص</string>
     <string name="weather_codes_clear">صافٍ</string>
     <string name="weather_codes_mostlyClear">صافٍ في الغالب</string>
     <string name="weather_codes_partly">غائم جزئيًا</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">الصلاة التالية</string>
     <string name="widget_next_desc">الصلاة التالية ووقتها والوقت المتبقي.</string>
     <string name="prayer_monthly">جدول أوقات الصلاة الشهري</string>
+    <string name="widget_moon_name">طور القمر</string>
+    <string name="widget_moon_desc">طور القمر اليوم ونسبة الإضاءة والبدر أو المحاق التالي.</string>
     <string name="hijri_title">التاريخ الهجري</string>
     <string name="hijri_fmt">%1$s %2$s %3$s هـ</string>
     <string name="hijri_note">التاريخ الهجري وفق تقويم رئاسة الشؤون الدينية التركية؛ وقد يبدأ الشهر في بلدان أخرى قبل يوم أو بعده. يتغير اليوم عند منتصف الليل لا عند الغروب.</string>

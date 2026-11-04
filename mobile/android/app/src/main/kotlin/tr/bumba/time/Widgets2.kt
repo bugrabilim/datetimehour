@@ -297,6 +297,7 @@ object WidgetCatalog {
         Item(PhotoWidget::class.java, L("widget.photo.name"), L("widget.photo.desc")),
         Item(DailyWidget::class.java, L("widget.daily.name"), L("widget.daily.desc")),
         Item(MoonWidget::class.java, L("widget.moon.name"), L("widget.moon.desc")),
+        Item(MoonCalWidget::class.java, L("widget.moonCal.name"), L("widget.moonCal.desc")),
         Item(HijriWidget::class.java, L("widget.hijri.name"), L("widget.hijri.desc")),
         Item(CountdownWidget::class.java, L("tools.hub.cards.countdown.name"), L("widget.countdown.desc")),
     )

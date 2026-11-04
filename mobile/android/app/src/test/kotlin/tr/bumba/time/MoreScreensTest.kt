@@ -285,6 +285,13 @@ class MoreScreensTest {
         Prefs.saveProvince("istanbul")
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }
     }
+    /** Gece gökyüzü (#155–#157), Güneş yolu (#158), çocuklar için Ay (#160) */
+    @Test fun sky() {
+        Prefs.saveProvince("istanbul")
+        page("tr-gece-gokyuzu", "Gece gökyüzü") { SkyScreen() }
+        page("tr-gunes-yolu", "Güneş yolu") { SunPathScreen() }
+        shot("tr-cocuklar-ay") { androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp)) { KidsMoonCard() } }
+    }
     /** Kıble (Robolectric'te pusula sensörü yok: kuzey yukarıda sabit kadran) ve örnek verili yakındaki camiler */
     /** Android TV (#95): televizyon ekranı (yatay, 1080p oranı) */
     @Test fun tv() {
@@ -503,6 +510,7 @@ class MoreScreensTest {
         widget("widget-dijital", 170, 80, DigitalClockWidget().views(c, 4))
         widget("widget-saat-tarih", 170, 170, ClockDateWidget().views(c, 5))
         widget("widget-ay", 170, 170, MoonWidget().views(c, 6))
+        widget("widget-ay-takvimi", 340, 170, MoonCalWidget().views(c, 6))
         widget("widget-hicri", 170, 170, HijriWidget().views(c, 7))
         widget("widget-saniyeli", 170, 170, SecondsClockWidget().views(c, 7))
         widget("widget-dunya", 360, 170, WorldClockWidget().views(c, 8))

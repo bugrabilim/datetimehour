@@ -228,3 +228,31 @@ object WearWeather {
         "snow", "snowGrains", "snowShowers" -> "❄"; "thunder", "thunderHail" -> "⛈"; else -> "☔"
     }
 }
+
+/**
+ * Komplikasyon: Ay evresi (2. analiz #149). Evre adı ve aydınlık yüzdesi; kısa metinde evre simgesi (emoji) ve yüzde,
+ * aralıkta (RANGED_VALUE) aydınlık oranı. Hesap telefondakiyle aynı (`:core` Nature), konumsuz.
+ */
+class MoonComplicationService : SuspendingComplicationDataSourceService() {
+    private val emoji = listOf("🌑", "🌒", "🌓", "🌔", "🌕", "🌖", "🌗", "🌘")
+    private val keys = listOf("new", "waxingCrescent", "firstQuarter", "waxingGibbous", "full", "waningGibbous", "lastQuarter", "waningCrescent")
+
+    override fun getPreviewData(type: ComplicationType): ComplicationData? = data(type, System.currentTimeMillis())
+    override suspend fun onComplicationRequest(request: ComplicationRequest): ComplicationData? = data(request.complicationType, System.currentTimeMillis())
+
+    private fun data(type: ComplicationType, ms: Long): ComplicationData? {
+        val m = tr.bumba.time.core.Nature.moon(ms)
+        val pct = Math.round(m.illumination * 100).toInt()
+        val name = Wear.text("nature.phases.${keys[m.phaseIndex]}")
+        return when (type) {
+            ComplicationType.SHORT_TEXT -> ShortTextComplicationData.Builder(plain("${emoji[m.phaseIndex]}$pct"), plain(name))
+                .setTapAction(ComplicationDataSourceTap(this)).build()
+            ComplicationType.LONG_TEXT -> LongTextComplicationData.Builder(plain("${emoji[m.phaseIndex]} $name · $pct%"), plain(name))
+                .setTitle(plain(Wear.text("widget.moon.name"))).setTapAction(ComplicationDataSourceTap(this)).build()
+            ComplicationType.RANGED_VALUE -> androidx.wear.watchface.complications.data.RangedValueComplicationData.Builder(pct.toFloat(), 0f, 100f, plain(name))
+                .setText(plain(emoji[m.phaseIndex])).setTapAction(ComplicationDataSourceTap(this)).build()
+            else -> null
+        }
+    }
+}
+

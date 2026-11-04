@@ -99,6 +99,9 @@ struct MoonView: View {
                         if !e.path.isEmpty {
                             Text(T("nature.eclipsePath", Eclipse.names(e.path))).font(.caption).foregroundStyle(Theme.muted)
                         }
+                        // Ayrıntı (2. analiz #159): Ay tutulmasında temas anları ve çizim; Güneş tutulmasında yerel örtülme ve harita
+                        DisclosureGroup(L("moon.detail")) { EclipseDetail(e: e, place: place) }
+                            .font(.footnote)
                         if e.kind == "lunar" {
                             // Ay o anda yerin ufkunun üstündeyse tutulma buradan izlenebilir
                             let up = Nature.moonAltitude(Double(e.ut), lat: place.lat, lon: place.lon) > 0
@@ -117,6 +120,8 @@ struct MoonView: View {
                     Text(L("nature.eclipseSource"))
                 }
             }
+            KidsMoonSection()
+            Section { } footer: { Text("NASA's Scientific Visualization Studio (CGI Moon Kit)") }
         }
         .themedBackground()
         .tint(Theme.accent)
@@ -148,7 +153,7 @@ private struct MoonMonthGrid: View {
                     let noon = place.startOfDay(d).addingTimeInterval(12 * 3600)
                     let m = Nature.moon(at: noon)
                     VStack(spacing: 1) {
-                        Text(moonPhaseEmoji[m.phaseIndex]).font(.system(size: 20))
+                        MoonImage(fraction: m.fraction, size: 24, south: place.lat < 0)
                         Text("\(d.day)").font(.caption.weight(.semibold)).monospacedDigit()
                         Text(marks[d].map { L("nature.phases.\($0)") } ?? " ")
                             .font(.system(size: 8))

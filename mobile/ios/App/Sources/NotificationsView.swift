@@ -14,6 +14,7 @@ struct NotificationsView: View {
     @AppStorage(NotifyFeature.dst.key) private var dst = true
     @AppStorage(NotifyFeature.bedtime.key) private var bedtime = true
     @AppStorage(NotifyFeature.habits.key) private var habits = true
+    @AppStorage(NotifyFeature.sky.key) private var sky = true
     @AppStorage(NotifyFeature.weatherTimeKey) private var weatherTime = 450
     @AppStorage("notify.weather.alerts") private var weatherAlerts = true
     @AppStorage(NotifyFeature.hourlyFromKey) private var hourlyFrom = 9
@@ -52,6 +53,7 @@ struct NotificationsView: View {
                 if moon { SunMoonOptionsView(moon: true) { reschedule() } }
                 row(.sun, $sun)
                 if sun { SunMoonOptionsView(moon: false) { reschedule() } }
+                row(.sky, $sky)
             }
             Section {
                 row(.weather, $weather)
@@ -87,7 +89,7 @@ struct NotificationsView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             Task { await refresh() }
         }
-        .onChange(of: [prayer, calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits]) { reschedule() }
+        .onChange(of: [prayer, calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, sky]) { reschedule() }
         .onChange(of: [weatherTime, hourlyFrom, hourlyTo]) { reschedule() }
         .onChange(of: weatherAlerts) { reschedule() }
     }

@@ -25,6 +25,14 @@
     <string name="prayer_imNote">Heures calculées ; pour les heures officielles, suivez la Présidence des affaires religieuses (Diyanet).</string>
     <string name="prayer_imFile">calendrier-ramadan</string>
     <string name="prayer_imAlt">Calendrier du Ramadan %2$s pour %1$s</string>
+    <string name="nature_phases_new">Nouvelle lune</string>
+    <string name="nature_phases_waxingCrescent">Premier croissant</string>
+    <string name="nature_phases_firstQuarter">Premier quartier</string>
+    <string name="nature_phases_waxingGibbous">Gibbeuse croissante</string>
+    <string name="nature_phases_full">Pleine lune</string>
+    <string name="nature_phases_waningGibbous">Gibbeuse décroissante</string>
+    <string name="nature_phases_lastQuarter">Dernier quartier</string>
+    <string name="nature_phases_waningCrescent">Dernier croissant</string>
     <string name="weather_codes_clear">Ciel dégagé</string>
     <string name="weather_codes_mostlyClear">Plutôt dégagé</string>
     <string name="weather_codes_partly">Partiellement nuageux</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">Prochaine prière</string>
     <string name="widget_next_desc">La prochaine prière, son heure et le temps restant.</string>
     <string name="prayer_monthly">Calendrier mensuel des prières</string>
+    <string name="widget_moon_name">Phase de la Lune</string>
+    <string name="widget_moon_desc">La phase de la Lune du jour, son illumination et la prochaine pleine ou nouvelle lune.</string>
     <string name="hijri_title">Date hégirienne</string>
     <string name="hijri_fmt">%1$s %2$s %3$s H</string>
     <string name="hijri_note">La date hégirienne suit le calendrier de la Diyanet de Turquie ; dans d’autres pays, un mois peut commencer un jour plus tôt ou plus tard. Le jour change à minuit, pas au coucher du soleil.</string>

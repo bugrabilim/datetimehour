@@ -203,7 +203,8 @@ public enum Sky {
         let U: (Geo) -> Double = { $0.rU + $0.rM }
         let T: (Geo) -> Double = { $0.rU - $0.rM }
         let p1 = cross(P, -1), p4 = cross(P, 1)
-        let from = p1.map(Double.init) ?? (tm - 3 * 3600000), to = p4.map(Double.init) ?? (tm + 3 * 3600000)
+        let from: Double = p1.map { Double($0) } ?? (tm - 3 * 3600000)
+        let to: Double = p4.map { Double($0) } ?? (tm + 3 * 3600000)
         var path: [PathPoint] = []
         var t = from - 1800000
         while t <= to + 1800000 { let q = geo(t); path.append(PathPoint(t: t, x: q.x, y: q.y)); t += 600000 }

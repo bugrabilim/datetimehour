@@ -10,7 +10,7 @@ import SaatCore
 /// kurulur; yalnız hava özeti için hava servisine (WeatherKit) sorulur. iOS en çok 64 bekleyen bildirim tuttuğu için
 /// liste PrayerNotifier'da vakitlerle birlikte zamana göre sıralanıp kesilir; arka plan yenilemesi listeyi ileri taşır.
 enum NotifyFeature: String, CaseIterable, Identifiable {
-    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday, daily
+    case calendar, seasons, moon, sun, weather, hourly, dst, bedtime, habits, friday, daily, sky
 
     var id: String { rawValue }
     var key: String { "notify.\(rawValue)" }
@@ -30,6 +30,7 @@ enum NotifyFeature: String, CaseIterable, Identifiable {
         case .habits: "cup.and.saucer"
         case .friday: "building.columns"
         case .daily: "quote.bubble"
+        case .sky: "sparkles"
         }
     }
 
@@ -82,7 +83,22 @@ enum FeatureNotifier {
         if NotifyFeature.habits.isOn { out += SleepPlan.habits(now: now, days: min(days, 7)) } // uyku alışkanlıkları (#49)
         if NotifyFeature.friday.isOn { out += friday(place: place, now: now, days: days) } // Cuma hatırlatması (#58)
         if NotifyFeature.daily.isOn { out += daily(now: now, days: min(days, 7)) } // günün sözü (#16)
+        if NotifyFeature.sky.isOn { out += sky(place: place, now: now, days: days) } // gökyüzü olayları (#154)
         return out.filter { $0.fireAt > now }
+    }
+
+    /// Gökyüzü olayları (2. analiz #154): o gecenin akşamı 20.00'de (yerel öğleden önceki olay bir önceki akşama düşer)
+    private static func sky(place: AppPlace, now: Date, days: Int) -> [PlannedNotification] {
+        let lo = now.addingTimeInterval(-86_400), hi = now.addingTimeInterval(Double(days + 1) * 86_400)
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = place.zone
+        return SkyEvent.all.filter { $0.date > lo && $0.date < hi }.compactMap { e in
+            let hour = cal.component(.hour, from: e.date)
+            let dayStart = cal.startOfDay(for: e.date)
+            let evening = cal.date(byAdding: .hour, value: hour < 12 ? -4 : 20, to: dayStart) ?? e.date
+            let body: String = e.detail ?? Fmt.shortDateTime(e.date, tz: place.zone)
+            return PlannedNotification(id: "\(featurePrefix)sky-\(e.t)-\(e.k)", fireAt: evening, title: e.title, body: body, sound: nil, passive: true)
+        }
     }
 
     /// Günün sözü (2. analiz #16): her gün 08.00'de (telefonun saatiyle) takvim yaprağındaki söz

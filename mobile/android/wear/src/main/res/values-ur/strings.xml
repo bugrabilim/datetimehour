@@ -25,6 +25,14 @@
     <string name="prayer_imNote">اوقات حساب کیے گئے ہیں؛ سرکاری اوقات کے لیے ادارۂ امورِ دینیہ (دیانت) سے رجوع کریں۔</string>
     <string name="prayer_imFile">ramadan-auqat-nama</string>
     <string name="prayer_imAlt">%1$s کے لیے رمضان %2$s کا اوقات نامہ</string>
+    <string name="nature_phases_new">نیا چاند</string>
+    <string name="nature_phases_waxingCrescent">بڑھتا ہلال</string>
+    <string name="nature_phases_firstQuarter">پہلی چوتھائی</string>
+    <string name="nature_phases_waxingGibbous">بڑھتا چاند</string>
+    <string name="nature_phases_full">پورا چاند</string>
+    <string name="nature_phases_waningGibbous">گھٹتا چاند</string>
+    <string name="nature_phases_lastQuarter">آخری چوتھائی</string>
+    <string name="nature_phases_waningCrescent">گھٹتا ہلال</string>
     <string name="weather_codes_clear">صاف</string>
     <string name="weather_codes_mostlyClear">زیادہ تر صاف</string>
     <string name="weather_codes_partly">جزوی ابر آلود</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">اگلی نماز</string>
     <string name="widget_next_desc">اگلی نماز، اس کا وقت اور باقی وقت۔</string>
     <string name="prayer_monthly">ماہانہ اوقاتِ نماز</string>
+    <string name="widget_moon_name">چاند کا مرحلہ</string>
+    <string name="widget_moon_desc">آج چاند کا مرحلہ، روشنی کا تناسب اور اگلا پورا یا نیا چاند۔</string>
     <string name="hijri_title">ہجری تاریخ</string>
     <string name="hijri_fmt">%1$s %2$s %3$s ہجری</string>
     <string name="hijri_note">ہجری تاریخ ترکی کی دیانت کے کیلنڈر کے مطابق ہے؛ دوسرے ممالک میں مہینہ ایک دن پہلے یا بعد شروع ہو سکتا ہے۔ دن آدھی رات کو بدلتا ہے، غروب پر نہیں۔</string>

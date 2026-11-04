@@ -25,6 +25,14 @@
     <string name="prayer_imNote">Kinakalkula ang mga oras; para sa opisyal na oras, sundin ang Presidency of Religious Affairs (Diyanet).</string>
     <string name="prayer_imFile">ramadan-timetable</string>
     <string name="prayer_imAlt">Iskedyul ng Ramadan %2$s para sa %1$s</string>
+    <string name="nature_phases_new">Bagong buwan</string>
+    <string name="nature_phases_waxingCrescent">Lumalaking gasuklay</string>
+    <string name="nature_phases_firstQuarter">Unang kapat</string>
+    <string name="nature_phases_waxingGibbous">Lumalaking umbok</string>
+    <string name="nature_phases_full">Kabilugan ng buwan</string>
+    <string name="nature_phases_waningGibbous">Lumiliit na umbok</string>
+    <string name="nature_phases_lastQuarter">Huling kapat</string>
+    <string name="nature_phases_waningCrescent">Lumiliit na gasuklay</string>
     <string name="weather_codes_clear">Maaliwalas</string>
     <string name="weather_codes_mostlyClear">Halos maaliwalas</string>
     <string name="weather_codes_partly">Bahagyang maulap</string>
@@ -89,6 +97,8 @@
     <string name="widget_next_name">Susunod na dasal</string>
     <string name="widget_next_desc">Ang susunod na dasal, ang oras nito at ang natitirang oras.</string>
     <string name="prayer_monthly">Buwanang talaan ng oras ng dasal</string>
+    <string name="widget_moon_name">Yugto ng Buwan</string>
+    <string name="widget_moon_desc">Ang yugto ng Buwan ngayon, liwanag at ang susunod na kabilugan o bagong buwan.</string>
     <string name="hijri_title">Petsang Hijri</string>
     <string name="hijri_fmt">%1$s %2$s %3$s AH</string>
     <string name="hijri_note">Sumusunod ang petsang Hijri sa kalendaryo ng Diyanet ng Türkiye; sa ibang bansa, maaaring magsimula ang buwan nang isang araw na mas maaga o mas huli. Nagbabago ang araw sa hatinggabi, hindi sa paglubog ng araw.</string>

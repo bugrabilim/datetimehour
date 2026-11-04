@@ -107,7 +107,7 @@ struct MoonScrubber: View {
                 Button { offset = max(-60, offset - 1) } label: { Image(systemName: "chevron.left") }.accessibilityLabel(L("prayer.prevMonth"))
                 Spacer()
                 VStack(spacing: 4) {
-                    Text(moonPhaseEmoji[m.phaseIndex]).font(.system(size: 64))
+                    MoonImage(fraction: m.fraction, size: 96, south: place.lat < 0)
                     Text(L("nature.phases.\(moonPhaseKeys[m.phaseIndex])")).font(.headline)
                     Text(T("nature.illumination", Int((m.illumination * 100).rounded()))).font(.caption).foregroundStyle(Theme.muted)
                     Text(Fmt.day(day) + "  ·  " + (offset == 0 ? L("client.today") : offset > 0 ? T("moon.daysAfter", offset) : T("moon.daysBefore", -offset)))
