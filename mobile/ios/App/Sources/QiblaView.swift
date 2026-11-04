@@ -295,7 +295,7 @@ struct NearbyMosquesView: View {
     var body: some View {
         List {
             if !favs.isEmpty {
-                Section(L("qibla.favs")) {
+                Section {
                     ForEach(favs, id: \.self) { f in
                         HStack {
                             Button { QiblaFavs.open(f) } label: {
@@ -324,6 +324,8 @@ struct NearbyMosquesView: View {
                             starButton(name: f.n, lat: f.lat, lon: f.lon)
                         }
                     }
+                } header: {
+                    Text(L("qibla.favs"))
                 } footer: {
                     Text(L("qibla.noteNote"))
                 }
