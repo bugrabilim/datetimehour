@@ -87,9 +87,14 @@ enum WorldMath {
     }
 
     /// İbre renkleri (Android'deki 24 saat kadranıyla aynı)
-    static let handColors: [Color] = [0xE4572E, 0x2E86AB, 0x3BB273, 0xF4B400, 0x8E44AD, 0xE91E63, 0x00ACC1, 0x795548].map { v in
-        Color(red: Double((v >> 16) & 0xFF) / 255, green: Double((v >> 8) & 0xFF) / 255, blue: Double(v & 0xFF) / 255)
+    private static func rgb(_ v: Int) -> Color {
+        let r = Double((v >> 16) & 0xFF) / 255
+        let g = Double((v >> 8) & 0xFF) / 255
+        let b = Double(v & 0xFF) / 255
+        return Color(red: r, green: g, blue: b)
     }
+    private static let handHex: [Int] = [0xE4572E, 0x2E86AB, 0x3BB273, 0xF4B400, 0x8E44AD, 0xE91E63, 0x00ACC1, 0x795548]
+    static let handColors: [Color] = handHex.map { rgb($0) }
 }
 
 /// Haritada gösterilecek yer (uygulamada WorldEntry, widget'ta CityEntity'den)
