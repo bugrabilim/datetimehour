@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">فلز مایع</string>
     <string name="widget_flipSeconds_name">ساعت ورقی با ثانیه</string>
     <string name="widget_flipSeconds_desc">کارت‌های ساعت و دقیقه با ثانیهٔ در حال حرکت.</string>
+    <string name="esma_listen">گوش دهید</string>
+    <string name="esma_noVoice">صدای عربی روی گوشی نیست؛ می‌توانید از تنظیمات گوشی (دسترس‌پذیری › محتوای گفتاری یا تبدیل متن به گفتار) آن را دانلود کنید.</string>
+    <string name="esma_voiceNote">خواننده صدای عربی خود گوشی است، نه ضبط‌شده؛ تلفظ ممکن است کامل نباشد.</string>
+    <string name="notify_snooze">5 دقیقه بعد یادآوری</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

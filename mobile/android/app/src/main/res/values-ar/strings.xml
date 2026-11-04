@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">معدن سائل</string>
     <string name="widget_flipSeconds_name">ساعة قلابة بالثواني</string>
     <string name="widget_flipSeconds_desc">بطاقات للساعات والدقائق مع ثوانٍ جارية.</string>
+    <string name="esma_listen">استمع</string>
+    <string name="esma_noVoice">لا يوجد صوت عربي للنطق على الهاتف؛ يمكنك تنزيله من إعدادات الهاتف (تسهيلات الاستخدام › المحتوى المنطوق أو تحويل النص إلى كلام).</string>
+    <string name="esma_voiceNote">القارئ هو صوت الهاتف العربي وليس تسجيلًا؛ قد لا يكون النطق دقيقًا.</string>
+    <string name="notify_snooze">ذكّرني بعد 5 د</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

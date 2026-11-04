@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">Logam cair</string>
     <string name="widget_flipSeconds_name">Jam lipat dengan detik</string>
     <string name="widget_flipSeconds_desc">Kartu jam dan menit dengan detik berjalan.</string>
+    <string name="esma_listen">Dengarkan</string>
+    <string name="esma_noVoice">Tidak ada suara bahasa Arab di ponsel; Anda dapat mengunduhnya di pengaturan ponsel (Aksesibilitas › Konten lisan atau Teks ke ucapan).</string>
+    <string name="esma_voiceNote">Pembacanya suara bahasa Arab bawaan ponsel, bukan rekaman; pelafalan bisa kurang tepat.</string>
+    <string name="notify_snooze">Ingatkan 5 mnt lagi</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

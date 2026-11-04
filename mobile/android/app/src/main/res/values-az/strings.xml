@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">Maye metal</string>
     <string name="widget_flipSeconds_name">Saniyəli çevrilən saat</string>
     <string name="widget_flipSeconds_desc">Saat və dəqiqə kartları; saniyələr axır.</string>
+    <string name="esma_listen">Dinləyin</string>
+    <string name="esma_noVoice">Telefonda ərəb danışıq səsi yoxdur; telefonun ayarlarından (Əlçatanlıq › Səsləndirmə və ya Mətni oxuma) yükləyə bilərsiniz.</string>
+    <string name="esma_voiceNote">Oxuyan telefonun öz ərəb danışıq səsidir, yazı deyil; tələffüz qüsurlu ola bilər.</string>
+    <string name="notify_snooze">5 dəq sonra xatırlat</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

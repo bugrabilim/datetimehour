@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">مائع دھات</string>
     <string name="widget_flipSeconds_name">سیکنڈ والی فلپ گھڑی</string>
     <string name="widget_flipSeconds_desc">گھنٹے اور منٹ کے کارڈ، چلتے سیکنڈ کے ساتھ۔</string>
+    <string name="esma_listen">سنیں</string>
+    <string name="esma_noVoice">فون میں عربی آواز نہیں؛ فون کی ترتیبات (رسائی › بولا گیا مواد یا متن سے تقریر) سے ڈاؤن لوڈ کر سکتے ہیں۔</string>
+    <string name="esma_voiceNote">پڑھنے والی آواز فون کی اپنی عربی آواز ہے، ریکارڈنگ نہیں؛ تلفظ میں خامی ہو سکتی ہے۔</string>
+    <string name="notify_snooze">5 منٹ بعد یاد دلائیں</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

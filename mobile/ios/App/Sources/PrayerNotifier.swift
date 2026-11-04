@@ -93,7 +93,8 @@ enum PrayerNotifier {
                     title: settings.leadMinutes > 0
                         ? String(format: L("notify.title.before"), name, String(settings.leadMinutes))
                         : String(format: L("notify.title.now"), name),
-                    body: "\(place.name) · \(place.hm(a.prayerAt))", thread: "prayer", sound: sounds[a.prayer] ?? .default)
+                    body: "\(place.name) · \(place.hm(a.prayerAt))", thread: "prayer", sound: sounds[a.prayer] ?? .default,
+                    category: PrayerSnooze.category)
             }
         }
         planned += await FeatureNotifier.planned(place: place, now: now)
@@ -142,7 +143,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         UNUserNotificationCenter.current().delegate = self
-        MainActor.assumeIsolated { UNUserNotificationCenter.current().setNotificationCategories(AlarmPreNotify.categories) }
+        MainActor.assumeIsolated { UNUserNotificationCenter.current().setNotificationCategories(AlarmPreNotify.categories.union(PrayerSnooze.categories)) }
         return true
     }
 
@@ -150,6 +151,12 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         let info = response.notification.request.content.userInfo
+        // Vakit bildiriminde "5 dk sonra hatırlat" (2. analiz #164)
+        if response.actionIdentifier == PrayerSnooze.action {
+            PrayerSnooze.snooze(response.notification.request.content)
+            completionHandler()
+            return
+        }
         if response.actionIdentifier == AlarmPreNotify.skipAction, let id = info["alarm"] as? String,
            let at = (info["at"] as? String).flatMap(TimeInterval.init) {
             Task { @MainActor in
@@ -169,5 +176,24 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner, .list, .sound])
+    }
+}
+
+/// Vakit bildiriminde "5 dk sonra hatırlat" (2. analiz #164): aynı bildirim 5 dakika sonra yeniden gelir
+enum PrayerSnooze {
+    static let category = "prayer"
+    static let action = "prayer-snooze"
+
+    static var categories: Set<UNNotificationCategory> {
+        [UNNotificationCategory(identifier: category,
+                                actions: [UNNotificationAction(identifier: action, title: L("notify.snooze"), options: [])],
+                                intentIdentifiers: [])]
+    }
+
+    static func snooze(_ content: UNNotificationContent) {
+        guard let copy = content.mutableCopy() as? UNMutableNotificationContent else { return }
+        let request = UNNotificationRequest(identifier: "prayer-snooze-\(Int(Date().timeIntervalSince1970))", content: copy,
+                                            trigger: UNTimeIntervalNotificationTrigger(timeInterval: 300, repeats: false))
+        UNUserNotificationCenter.current().add(request)
     }
 }

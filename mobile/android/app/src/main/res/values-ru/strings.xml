@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">Жидкий металл</string>
     <string name="widget_flipSeconds_name">Перекидные часы с секундами</string>
     <string name="widget_flipSeconds_desc">Карточки часов и минут с бегущими секундами.</string>
+    <string name="esma_listen">Слушать</string>
+    <string name="esma_noVoice">На телефоне нет арабского голоса; его можно скачать в настройках (Универсальный доступ › Устная речь или Синтез речи).</string>
+    <string name="esma_voiceNote">Читает встроенный арабский голос телефона, а не запись; произношение может быть неточным.</string>
+    <string name="notify_snooze">Напомнить через 5 мин</string>
     <string name="app_name">Время и дата</string>
 </resources>

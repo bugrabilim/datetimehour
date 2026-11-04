@@ -3,6 +3,7 @@ package tr.bumba.time
 import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -88,13 +89,16 @@ fun EsmaScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val all = remember { Esma.load(context) }
     var q by rememberSaveable { mutableStateOf("") }
+    // Dokununca hat kartı ve sesli okuma (2. analiz #85)
+    var detail by remember { mutableStateOf<Esma.Name?>(null) }
     val list = q.trim().lowercase().let { s -> if (s.isEmpty()) all else all.filter { it.read.lowercase().contains(s) || it.meaning.lowercase().contains(s) || it.ar.contains(s) } }
+    detail?.let { n -> EsmaCard(n) { detail = null } }
     Column(Modifier.fillMaxSize()) {
         SubBar(L("esma.title"), onBack = onBack)
         OutlinedTextField(q, { q = it }, Modifier.fillMaxWidth().padding(horizontal = 16.dp), placeholder = { Text(L("esma.search")) }, singleLine = true)
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp)) {
             items(list, key = { it.no }) { n ->
-                Row(Modifier.fillMaxWidth().padding(vertical = 10.dp), verticalAlignment = Alignment.Top) {
+                Row(Modifier.fillMaxWidth().clickable { detail = n }.padding(vertical = 10.dp), verticalAlignment = Alignment.Top) {
                     Text("${n.no}", Modifier.width(30.dp), color = Theme.c.muted, fontSize = 12.sp, style = Tnum)
                     Column(Modifier.weight(1f)) {
                         if (Strings.lang != "ar") {
@@ -360,4 +364,61 @@ object OnThisDay {
             (0 until a.length()).map { i -> val r = a.getJSONArray(i); Item(r.getInt(0), r.getString(1), r.getString(2), r.optString(3)) }
         }
     }.getOrDefault(emptyMap())
+}
+
+/**
+ * Esma kartı (2. analiz #85): ismin Arapçası büyük, çini desenli çerçevede (telefonda çizilir; lisanslı hat görseli
+ * kullanılmaz), okunuşu ve anlamı; "Dinle" telefonun kendi Arapça konuşma sesiyle (TextToSpeech) okur.
+ */
+@Composable
+fun EsmaCard(n: Esma.Name, onClose: () -> Unit) {
+    val context = LocalContext.current
+    var tts by remember { mutableStateOf<android.speech.tts.TextToSpeech?>(null) }
+    var noVoice by remember { mutableStateOf(false) }
+    androidx.compose.runtime.DisposableEffect(Unit) {
+        var engine: android.speech.tts.TextToSpeech? = null
+        engine = android.speech.tts.TextToSpeech(context) { ok ->
+            val r = if (ok == android.speech.tts.TextToSpeech.SUCCESS) engine?.setLanguage(java.util.Locale("ar")) else android.speech.tts.TextToSpeech.LANG_NOT_SUPPORTED
+            noVoice = r == null || r < 0
+        }
+        tts = engine
+        onDispose { engine.shutdown() }
+    }
+    androidx.compose.material3.AlertDialog(
+        onDismissRequest = onClose,
+        confirmButton = { androidx.compose.material3.TextButton(onClick = onClose) { Text(L("common.done")) } },
+        text = {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(10.dp)) {
+                val accent = Theme.c.accent
+                val accent2 = Theme.c.accent2
+                androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth().height(170.dp), contentAlignment = Alignment.Center) {
+                    androidx.compose.foundation.Canvas(Modifier.fillMaxSize()) {
+                        // Sekiz köşeli yıldız ve çift çerçeve
+                        val c = center
+                        val r = size.minDimension / 2 - 4
+                        for (k in 0 until 2) {
+                            val path = androidx.compose.ui.graphics.Path()
+                            for (i in 0 until 16) {
+                                val a = Math.PI / 8 * i - Math.PI / 2
+                                val rr = if (i % 2 == 0) r - k * 10 else (r - k * 10) * 0.82f
+                                val x = c.x + (rr * kotlin.math.cos(a)).toFloat()
+                                val y = c.y + (rr * kotlin.math.sin(a)).toFloat()
+                                if (i == 0) path.moveTo(x, y) else path.lineTo(x, y)
+                            }
+                            path.close()
+                            drawPath(path, if (k == 0) accent else accent2, style = androidx.compose.ui.graphics.drawscope.Stroke(width = if (k == 0) 3f else 1.5f))
+                        }
+                        drawCircle(accent.copy(alpha = 0.08f), r * 0.62f, c)
+                    }
+                    Text(n.ar, color = Theme.c.ink, fontSize = 40.sp, fontWeight = FontWeight.Bold, fontFamily = androidx.compose.ui.text.font.FontFamily.Serif)
+                }
+                if (Strings.lang != "ar" && n.read.isNotEmpty()) Text(n.read, color = Theme.c.text, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
+                if (Strings.lang != "ar") Text(n.meaning, color = Theme.c.muted, fontSize = 15.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+                androidx.compose.material3.TextButton(onClick = { tts?.speak(n.ar, android.speech.tts.TextToSpeech.QUEUE_FLUSH, null, "esma-${n.no}") }, enabled = !noVoice) {
+                    Text("▶ " + L("esma.listen"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
+                }
+                Text(L(if (noVoice) "esma.noVoice" else "esma.voiceNote"), color = Theme.c.muted, fontSize = 12.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center)
+            }
+        },
+    )
 }

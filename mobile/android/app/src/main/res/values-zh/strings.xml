@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">液态金属</string>
     <string name="widget_flipSeconds_name">带秒数的翻页时钟</string>
     <string name="widget_flipSeconds_desc">时与分翻牌，秒数实时走动。</string>
+    <string name="esma_listen">收听</string>
+    <string name="esma_noVoice">手机上没有阿拉伯语朗读语音；可在设置（辅助功能 › 朗读内容或文字转语音）中下载。</string>
+    <string name="esma_voiceNote">朗读使用手机自带的阿拉伯语语音，并非录音，发音可能不够准确。</string>
+    <string name="notify_snooze">5 分钟后提醒</string>
     <string name="app_name">时间与日期</string>
 </resources>

@@ -234840,6 +234840,386 @@
           }
         }
       }
+    },
+    "esma.listen": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dinle"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anhören"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dinləyin"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "استمع"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dengarkan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سنیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گوش دهید"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Écouter"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Слушать"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "聞く"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "듣기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收听"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pakinggan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ฟัง"
+          }
+        }
+      }
+    },
+    "esma.noVoice": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonda Arapça konuşma sesi yok; telefonun ayarlarından (Erişilebilirlik › Seslendirme ya da Metin okuma) indirilebilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Arabic speech voice on this phone; you can download one in the phone's settings (Accessibility › Spoken content or Text-to-speech)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine arabische Sprachausgabe auf dem Telefon; Sie können eine in den Einstellungen laden (Bedienungshilfen › Gesprochene Inhalte bzw. Sprachausgabe)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Telefonda ərəb danışıq səsi yoxdur; telefonun ayarlarından (Əlçatanlıq › Səsləndirmə və ya Mətni oxuma) yükləyə bilərsiniz."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لا يوجد صوت عربي للنطق على الهاتف؛ يمكنك تنزيله من إعدادات الهاتف (تسهيلات الاستخدام › المحتوى المنطوق أو تحويل النص إلى كلام)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tidak ada suara bahasa Arab di ponsel; Anda dapat mengunduhnya di pengaturan ponsel (Aksesibilitas › Konten lisan atau Teks ke ucapan)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فون میں عربی آواز نہیں؛ فون کی ترتیبات (رسائی › بولا گیا مواد یا متن سے تقریر) سے ڈاؤن لوڈ کر سکتے ہیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صدای عربی روی گوشی نیست؛ می‌توانید از تنظیمات گوشی (دسترس‌پذیری › محتوای گفتاری یا تبدیل متن به گفتار) آن را دانلود کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aucune voix arabe sur le téléphone ; vous pouvez en télécharger une dans les réglages (Accessibilité › Contenu énoncé ou Synthèse vocale)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "На телефоне нет арабского голоса; его можно скачать в настройках (Универсальный доступ › Устная речь или Синтез речи)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "この端末にアラビア語の音声がありません。設定（アクセシビリティ › 読み上げコンテンツ／テキスト読み上げ）からダウンロードできます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰에 아랍어 음성이 없습니다. 설정(손쉬운 사용 › 음성 콘텐츠 또는 텍스트 음성 변환)에서 내려받을 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "手机上没有阿拉伯语朗读语音；可在设置（辅助功能 › 朗读内容或文字转语音）中下载。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Walang boses na Arabic sa telepono; maida-download ito sa settings (Accessibility › Spoken content o Text-to-speech)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โทรศัพท์ไม่มีเสียงภาษาอาหรับ ดาวน์โหลดได้ในการตั้งค่า (การช่วยการเข้าถึง › เนื้อหาที่พูด หรือแปลงข้อความเป็นเสียงพูด)"
+          }
+        }
+      }
+    },
+    "esma.voiceNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Okuyan, telefonun kendi Arapça konuşma sesidir; kayıt değildir, telaffuz kusurlu olabilir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The reader is the phone's own Arabic speech voice, not a recording; pronunciation may be imperfect."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es liest die arabische Sprachausgabe des Telefons, keine Aufnahme; die Aussprache kann ungenau sein."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oxuyan telefonun öz ərəb danışıq səsidir, yazı deyil; tələffüz qüsurlu ola bilər."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "القارئ هو صوت الهاتف العربي وليس تسجيلًا؛ قد لا يكون النطق دقيقًا."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pembacanya suara bahasa Arab bawaan ponsel, bukan rekaman; pelafalan bisa kurang tepat."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پڑھنے والی آواز فون کی اپنی عربی آواز ہے، ریکارڈنگ نہیں؛ تلفظ میں خامی ہو سکتی ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خواننده صدای عربی خود گوشی است، نه ضبط‌شده؛ تلفظ ممکن است کامل نباشد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "C'est la voix arabe du téléphone qui lit, pas un enregistrement ; la prononciation peut être imparfaite."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Читает встроенный арабский голос телефона, а не запись; произношение может быть неточным."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "読み上げは端末内蔵のアラビア語音声で、録音ではありません。発音が不正確な場合があります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "휴대폰 자체 아랍어 음성이 읽으며 녹음이 아닙니다. 발음이 정확하지 않을 수 있습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "朗读使用手机自带的阿拉伯语语音，并非录音，发音可能不够准确。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang bumabasa ay sariling Arabic na boses ng telepono, hindi recording; maaaring hindi perpekto ang bigkas."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ผู้อ่านคือเสียงภาษาอาหรับของโทรศัพท์ ไม่ใช่การบันทึก การออกเสียงอาจไม่สมบูรณ์"
+          }
+        }
+      }
+    },
+    "notify.snooze": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 dk sonra hatırlat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remind me in 5 min"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In 5 Min. erinnern"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 dəq sonra xatırlat"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ذكّرني بعد 5 د"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingatkan 5 mnt lagi"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 منٹ بعد یاد دلائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 دقیقه بعد یادآوری"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Me rappeler dans 5 min"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Напомнить через 5 мин"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5分後に通知"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5분 후 알림"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 分钟后提醒"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paalalahanan sa loob ng 5 min"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เตือนอีก 5 นาที"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">Liquid metal</string>
     <string name="widget_flipSeconds_name">Flip clock with seconds</string>
     <string name="widget_flipSeconds_desc">Hour and minute cards with running seconds.</string>
+    <string name="esma_listen">Listen</string>
+    <string name="esma_noVoice">No Arabic speech voice on this phone; you can download one in the phone\'s settings (Accessibility › Spoken content or Text-to-speech).</string>
+    <string name="esma_voiceNote">The reader is the phone\'s own Arabic speech voice, not a recording; pronunciation may be imperfect.</string>
+    <string name="notify_snooze">Remind me in 5 min</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

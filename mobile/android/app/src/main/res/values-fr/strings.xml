@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">Métal liquide</string>
     <string name="widget_flipSeconds_name">Horloge à volets avec secondes</string>
     <string name="widget_flipSeconds_desc">Volets des heures et minutes, secondes qui défilent.</string>
+    <string name="esma_listen">Écouter</string>
+    <string name="esma_noVoice">Aucune voix arabe sur le téléphone ; vous pouvez en télécharger une dans les réglages (Accessibilité › Contenu énoncé ou Synthèse vocale).</string>
+    <string name="esma_voiceNote">C\'est la voix arabe du téléphone qui lit, pas un enregistrement ; la prononciation peut être imparfaite.</string>
+    <string name="notify_snooze">Me rappeler dans 5 min</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

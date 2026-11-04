@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">Likidong metal</string>
     <string name="widget_flipSeconds_name">Flip clock na may segundo</string>
     <string name="widget_flipSeconds_desc">Mga card ng oras at minuto na may tumatakbong segundo.</string>
+    <string name="esma_listen">Pakinggan</string>
+    <string name="esma_noVoice">Walang boses na Arabic sa telepono; maida-download ito sa settings (Accessibility › Spoken content o Text-to-speech).</string>
+    <string name="esma_voiceNote">Ang bumabasa ay sariling Arabic na boses ng telepono, hindi recording; maaaring hindi perpekto ang bigkas.</string>
+    <string name="notify_snooze">Paalalahanan sa loob ng 5 min</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

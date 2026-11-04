@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">โลหะเหลว</string>
     <string name="widget_flipSeconds_name">นาฬิกาพลิกพร้อมวินาที</string>
     <string name="widget_flipSeconds_desc">การ์ดชั่วโมงและนาทีพร้อมวินาทีที่เดิน</string>
+    <string name="esma_listen">ฟัง</string>
+    <string name="esma_noVoice">โทรศัพท์ไม่มีเสียงภาษาอาหรับ ดาวน์โหลดได้ในการตั้งค่า (การช่วยการเข้าถึง › เนื้อหาที่พูด หรือแปลงข้อความเป็นเสียงพูด)</string>
+    <string name="esma_voiceNote">ผู้อ่านคือเสียงภาษาอาหรับของโทรศัพท์ ไม่ใช่การบันทึก การออกเสียงอาจไม่สมบูรณ์</string>
+    <string name="notify_snooze">เตือนอีก 5 นาที</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

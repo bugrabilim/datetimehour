@@ -346,6 +346,9 @@
             android:name=".TimeWidgetReceiver"
             android:exported="false" />
         <receiver
+            android:name=".PrayerSnoozeReceiver"
+            android:exported="false" />
+        <receiver
             android:name=".ToolWidgetReceiver"
             android:exported="false" />
         <service

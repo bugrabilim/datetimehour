@@ -1,3 +1,4 @@
+import AVFoundation
 import SwiftUI
 import SaatCore
 
@@ -45,6 +46,8 @@ enum Esma {
 
 struct EsmaView: View {
     @State private var query = ""
+    /// Dokununca hat kartı ve sesli okuma (2. analiz #85)
+    @State private var detail: EsmaName?
     private var list: [EsmaName] {
         let q = query.trimmingCharacters(in: .whitespaces).lowercased()
         guard !q.isEmpty else { return Esma.all }
@@ -67,9 +70,12 @@ struct EsmaView: View {
                         Text(n.ar).font(.system(size: 24)).foregroundStyle(Theme.ink)
                     }
                     .accessibilityElement(children: .combine)
+                    .contentShape(Rectangle())
+                    .onTapGesture { detail = n }
                 }
             } footer: { Text(L("esma.note")) }
         }
+        .sheet(item: $detail) { EsmaCard(name: $0) }
         .searchable(text: $query, prompt: L("esma.search"))
         .themedBackground()
         .navigationTitle(L("esma.title"))
@@ -382,5 +388,58 @@ enum OnThisDay {
             }
         }
         return out
+    }
+}
+
+/// Esma kartı (2. analiz #85): ismin Arapçası büyük, sekiz köşeli yıldız çerçevede (telefonda çizilir; lisanslı hat
+/// görseli kullanılmaz), okunuşu ve anlamı; "Dinle" telefonun Arapça konuşma sesiyle (AVSpeechSynthesizer) okur.
+struct EsmaCard: View {
+    let name: EsmaName
+    @State private var synth = AVSpeechSynthesizer()
+
+    private var voice: AVSpeechSynthesisVoice? { AVSpeechSynthesisVoice(language: "ar-SA") ?? AVSpeechSynthesisVoice.speechVoices().first { $0.language.hasPrefix("ar") } }
+
+    var body: some View {
+        VStack(spacing: 14) {
+            ZStack {
+                Canvas { ctx, size in
+                    let c = CGPoint(x: size.width / 2, y: size.height / 2)
+                    let r = min(size.width, size.height) / 2 - 4
+                    for k in 0..<2 {
+                        var p = Path()
+                        for i in 0..<16 {
+                            let a = Double.pi / 8 * Double(i) - Double.pi / 2
+                            let base = r - CGFloat(k) * 10
+                            let rr = i % 2 == 0 ? base : base * 0.82
+                            let pt = CGPoint(x: c.x + rr * CGFloat(cos(a)), y: c.y + rr * CGFloat(sin(a)))
+                            if i == 0 { p.move(to: pt) } else { p.addLine(to: pt) }
+                        }
+                        p.closeSubpath()
+                        ctx.stroke(p, with: .color(k == 0 ? Theme.accent : Theme.accent2), lineWidth: k == 0 ? 3 : 1.5)
+                    }
+                    let inner = r * 0.62
+                    ctx.fill(Path(ellipseIn: CGRect(x: c.x - inner, y: c.y - inner, width: 2 * inner, height: 2 * inner)), with: .color(Theme.accent.opacity(0.08)))
+                }
+                .frame(height: 200)
+                Text(name.ar).font(.system(size: 44, weight: .bold, design: .serif)).foregroundStyle(Theme.ink)
+            }
+            if AppLocale.code != "ar" {
+                if !name.okunus.isEmpty { Text(name.okunus).font(.title3.weight(.semibold)) }
+                Text(name.meaning).font(.subheadline).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
+            }
+            Button {
+                let u = AVSpeechUtterance(string: name.ar)
+                u.voice = voice
+                u.rate = AVSpeechUtteranceDefaultSpeechRate * 0.8
+                synth.speak(u)
+            } label: {
+                Label(L("esma.listen"), systemImage: "speaker.wave.2.fill").font(.headline)
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(voice == nil)
+            Text(L(voice == nil ? "esma.noVoice" : "esma.voiceNote")).font(.footnote).foregroundStyle(Theme.muted).multilineTextAlignment(.center)
+        }
+        .padding(24)
+        .presentationDetents([.medium, .large])
     }
 }

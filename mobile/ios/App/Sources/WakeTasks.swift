@@ -55,6 +55,8 @@ enum WakeTasks {
             } else {
                 UserDefaults.standard.removeObject(forKey: pendingKey)
             }
+            // Görev bitene kadar uygulama silinemesin (2. analiz #46; Ekran Süresi onayı ve Apple yetkisi gerekir)
+            FocusBlock.denyRemoval(newValue.map { $0.task != "none" } ?? false)
         }
     }
 

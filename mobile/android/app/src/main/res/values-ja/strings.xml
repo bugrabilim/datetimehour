@@ -2473,5 +2473,9 @@
     <string name="look_bg_liquid">液体金属</string>
     <string name="widget_flipSeconds_name">秒付きフリップ時計</string>
     <string name="widget_flipSeconds_desc">時と分のカード、秒も動きます。</string>
+    <string name="esma_listen">聞く</string>
+    <string name="esma_noVoice">この端末にアラビア語の音声がありません。設定（アクセシビリティ › 読み上げコンテンツ／テキスト読み上げ）からダウンロードできます。</string>
+    <string name="esma_voiceNote">読み上げは端末内蔵のアラビア語音声で、録音ではありません。発音が不正確な場合があります。</string>
+    <string name="notify_snooze">5分後に通知</string>
     <string name="app_name">時刻と日付</string>
 </resources>
