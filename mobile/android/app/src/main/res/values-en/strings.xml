@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">Sky follows the Sun\'s height at the selected location: day, sunrise/sunset or night. If \"reduce motion\" is on, animated backgrounds are shown still.</string>
     <string name="features_title">Features</string>
     <string name="features_note">The clock is always on. Features you turn on appear in the bottom bar; with all of them off the bar is hidden and settings open from the gear on the clock screen.</string>
-    <string name="features_clock_note">Always on: 20 clock styles, full screen, clock screen items</string>
+    <string name="features_clock_note">Always on: 21 clock styles, full screen, clock screen items</string>
     <string name="features_weather_note">Current conditions, hourly and 7-day forecast</string>
     <string name="features_calendar_note">Public holidays, religious and special days, your phone\'s calendars</string>
     <string name="features_world_note">World clocks and the spinning globe</string>

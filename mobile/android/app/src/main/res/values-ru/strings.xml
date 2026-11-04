@@ -954,7 +954,7 @@
     <string name="kids_south_text">Когда у нас зима, в Австралии, Южной Африке и Аргентине лето. Дети там часто встречают Новый год на пляже!</string>
     <string name="kids_south_north">Север</string>
     <string name="kids_south_southLabel">Юг</string>
-    <string name="kids_facts_title">А знаешь ли ты?</string>
+    <string name="kids_facts_title">А знаете ли вы?</string>
     <string name="kids_fact1">21 июня — самый длинный день в году, а 21 декабря — самая длинная ночь (в северной половине).</string>
     <string name="kids_fact2">В дни равноденствия в марте и сентябре день и ночь почти равны.</string>
     <string name="kids_fact3">На Северном полюсе летом Солнце месяцами не заходит, а зимой месяцами не восходит.</string>
@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">Небо меняется в зависимости от высоты Солнца в выбранном месте: день, восход/закат или ночь. Если включено «Уменьшение движения», анимированные фоны показываются неподвижными.</string>
     <string name="features_title">Функции</string>
     <string name="features_note">Часы включены всегда. Включённые функции появляются в нижней панели; если все выключены, панель скрыта, а настройки открываются шестерёнкой на экране часов.</string>
-    <string name="features_clock_note">Всегда включено: 20 стилей часов, полный экран, элементы экрана часов</string>
+    <string name="features_clock_note">Всегда включено: 21 стилей часов, полный экран, элементы экрана часов</string>
     <string name="features_weather_note">Текущая погода, почасовой и 7-дневный прогноз</string>
     <string name="features_calendar_note">Праздники, религиозные и особые дни, календари телефона</string>
     <string name="features_world_note">Мировое время и вращающийся глобус</string>
@@ -2020,7 +2020,7 @@
     <string name="wakegame_awake">Проснувшийся цыплёнок</string>
     <string name="wakegame_sleeping">Спящий цыплёнок</string>
     <string name="wakegame_wakeMe">Разбуди меня</string>
-    <string name="wakegame_sleepText">Я сплю. Вставай, когда зазвонит будильник, и разбуди меня.</string>
+    <string name="wakegame_sleepText">Я сплю. Вставайте, когда зазвонит будильник, и разбудите меня.</string>
     <string name="wakegame_awakeTitle">Доброе утро, я проснулся!</string>
     <string name="wakegame_awakeText">Сегодня мы проснулись вместе. До завтра!</string>
     <string name="wakegame_total">Всего очков</string>
@@ -2384,14 +2384,14 @@
     <string name="sunpath_legend">Жёлтый — сегодня, оранжевый — 21 июня, синий — 21 декабря. Центр — зенит, край — горизонт.</string>
     <string name="sunpath_compass">Держите телефон горизонтально: рисунок поворачивается по сторонам света.</string>
     <string name="kidsmoon_title">Почему Луна меняет форму?</string>
-    <string name="kidsmoon_text">Луна сама не светит: она отражает свет Солнца. Она обходит Землю примерно за 29,5 дня. По пути мы видим то больше, то меньше её освещённой половины. Подвигай ползунок и проверь!</string>
+    <string name="kidsmoon_text">Луна сама не светит: она отражает свет Солнца. Она обходит Землю примерно за 29,5 дня. По пути мы видим то больше, то меньше её освещённой половины. Подвигайте ползунок и проверьте!</string>
     <string name="kidsmoon_day">День %1$s</string>
     <string name="kidsmoon_space">Вид из космоса</string>
     <string name="kidsmoon_earth">Вид с Земли</string>
     <string name="kidsmoon_sunlight">Солнечный свет</string>
     <string name="kidsmoon_quiz">Мини-викторина</string>
     <string name="kidsmoon_correct">Верно!</string>
-    <string name="kidsmoon_wrong">Не совсем, попробуй ещё раз.</string>
+    <string name="kidsmoon_wrong">Не совсем, попробуйте ещё раз.</string>
     <string name="kidsmoon_score">%1$s/%2$s верно</string>
     <string name="kidsmoon_again">Начать заново</string>
     <string name="kidsmoon_q1">Откуда берётся лунный свет?</string>

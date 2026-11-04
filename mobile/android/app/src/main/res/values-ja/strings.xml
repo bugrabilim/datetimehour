@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">空は選んだ場所の太陽の高さに合わせて変わります：昼、日の出・日の入り、夜。「視差効果を減らす」がオンなら、動く背景は静止して表示されます。</string>
     <string name="features_title">機能</string>
     <string name="features_note">時計は常にオンです。オンにした機能は下のバーに表示されます。すべてオフのときはバーが隠れ、設定は時計画面の歯車から開きます。</string>
-    <string name="features_clock_note">常にオン：20種類の時計、全画面、時計画面の項目</string>
+    <string name="features_clock_note">常にオン：21種類の時計、全画面、時計画面の項目</string>
     <string name="features_weather_note">現在の天気、1時間ごとと7日間の予報</string>
     <string name="features_calendar_note">祝日、宗教上の日と記念日、スマホのカレンダー</string>
     <string name="features_world_note">世界時計と回る地球</string>

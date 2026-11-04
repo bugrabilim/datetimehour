@@ -86,7 +86,9 @@
       "sat": "Samedi"
     },
     "lookMs": "Millisecondes",
-    "lookNight": "Mode nuit (lumières éteintes)"
+    "lookNight": "Mode nuit (lumières éteintes)",
+    "share": "Partager",
+    "shareCopied": "Lien copié"
   },
   "client": {
     "format24": "24 heures",
@@ -309,7 +311,9 @@
     "solarAhead": "Ici, l'heure légale avance de {d} sur l'heure solaire.",
     "solarBehind": "Ici, l'heure légale retarde de {d} sur l'heure solaire.",
     "solarSame": "Ici, l'heure légale est presque l'heure solaire.",
-    "mapLink": "Voir sur la carte (OpenStreetMap)"
+    "mapLink": "Voir sur la carte (OpenStreetMap)",
+    "population": "Population (agglomération, env.)",
+    "populationNote": "Population : Natural Earth (domaine public), valeur approximative de l'agglomération."
   },
   "privacy": {
     "title": "Politique de confidentialité et de cookies | Saat Tarih",
@@ -1809,7 +1813,17 @@
         "a": "Le widget ne dépose aucun cookie et ne collecte aucune donnée personnelle. Il envoie quelques petites requêtes au serveur pour afficher l’heure exacte ; les pages vues sont comptées dans des statistiques anonymes sans cookies."
       }
     ],
-    "sizeNote": "Les styles avec calendrier demandent une hauteur d’au moins 460 px ; les autres tiennent à l’aise dans 360 px."
+    "sizeNote": "Les styles avec calendrier demandent une hauteur d’au moins 460 px ; les autres tiennent à l’aise dans 360 px.",
+    "lineHeading": "En ligne de texte",
+    "lineLead": "Ajoutez à votre page une horloge en direct sur une ligne ou le lever/coucher du soleil : collez les deux lignes ci-dessous ; le texte prend la police et la couleur de votre site.",
+    "lineKind": "Afficher",
+    "lineKinds": {
+      "time": "Heure",
+      "date": "Date et heure",
+      "sun": "Lever et coucher du soleil"
+    },
+    "lineNote": "Le script affiche seulement l'heure ; il ne dépose aucun cookie et n'envoie aucune donnée. Le fuseau vient de la ville.",
+    "linePreview": "Aperçu"
   },
   "embed": {
     "link": "Saat Tarih"

@@ -90554,7 +90554,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wusstest du schon?"
+            "value": "Wussten Sie schon?"
           }
         },
         "az": {
@@ -90572,7 +90572,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tahukah kamu?"
+            "value": "Tahukah Anda?"
           }
         },
         "ur": {
@@ -90590,13 +90590,13 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le savais-tu ?"
+            "value": "Le saviez-vous ?"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "А знаешь ли ты?"
+            "value": "А знаете ли вы?"
           }
         },
         "ja": {
@@ -108782,91 +108782,91 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Her zaman açık: 20 saat modeli, tam ekran, saat ekranı alanları"
+            "value": "Her zaman açık: 21 saat modeli, tam ekran, saat ekranı alanları"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Always on: 20 clock styles, full screen, clock screen items"
+            "value": "Always on: 21 clock styles, full screen, clock screen items"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Immer an: 20 Uhrstile, Vollbild, Felder auf dem Uhrbildschirm"
+            "value": "Immer an: 21 Uhrstile, Vollbild, Felder auf dem Uhrbildschirm"
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Həmişə açıq: 20 saat modeli, tam ekran, saat ekranı sahələri"
+            "value": "Həmişə açıq: 21 saat modeli, tam ekran, saat ekranı sahələri"
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "مفعّلة دائمًا: 20 نمطًا للساعة وملء الشاشة وعناصر شاشة الساعة"
+            "value": "مفعّلة دائمًا: 21 نمطًا للساعة وملء الشاشة وعناصر شاشة الساعة"
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Selalu aktif: 20 gaya jam, layar penuh, item layar jam"
+            "value": "Selalu aktif: 21 gaya jam, layar penuh, item layar jam"
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "ہمیشہ آن: گھڑی کے 20 انداز، پوری اسکرین، گھڑی کی اسکرین کی چیزیں"
+            "value": "ہمیشہ آن: گھڑی کے 21 انداز، پوری اسکرین، گھڑی کی اسکرین کی چیزیں"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "همیشه روشن: 20 سبک ساعت، تمام‌صفحه، موارد صفحهٔ ساعت"
+            "value": "همیشه روشن: 21 سبک ساعت، تمام‌صفحه، موارد صفحهٔ ساعت"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Toujours active : 20 styles d’horloge, plein écran, éléments de l’écran de l’horloge"
+            "value": "Toujours active : 21 styles d’horloge, plein écran, éléments de l’écran de l’horloge"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Всегда включено: 20 стилей часов, полный экран, элементы экрана часов"
+            "value": "Всегда включено: 21 стилей часов, полный экран, элементы экрана часов"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "常にオン：20種類の時計、全画面、時計画面の項目"
+            "value": "常にオン：21種類の時計、全画面、時計画面の項目"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "항상 켜짐: 시계 스타일 20가지, 전체 화면, 시계 화면 항목"
+            "value": "항상 켜짐: 시계 스타일 21가지, 전체 화면, 시계 화면 항목"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "始终开启：20种时钟样式、全屏、时钟界面项目"
+            "value": "始终开启：21种时钟样式、全屏、时钟界面项目"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Laging naka-on: 20 istilo ng orasan, full screen, mga item sa screen ng orasan"
+            "value": "Laging naka-on: 21 istilo ng orasan, full screen, mga item sa screen ng orasan"
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "เปิดเสมอ: นาฬิกา 20 แบบ เต็มจอ รายการบนหน้าจอนาฬิกา"
+            "value": "เปิดเสมอ: นาฬิกา 21 แบบ เต็มจอ รายการบนหน้าจอนาฬิกา"
           }
         }
       }
@@ -108972,7 +108972,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Resmî tatiller, dini ve özel günler, telefonundaki takvimler"
+            "value": "Resmî tatiller, dini ve özel günler, telefonunuzdaki takvimler"
           }
         },
         "en": {
@@ -191812,7 +191812,7 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uyuyorum. Alarmın çalınca kalk, beni de uyandır."
+            "value": "Uyuyorum. Alarmınız çalınca kalkın, beni de uyandırın."
           }
         },
         "en": {
@@ -191824,13 +191824,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ich schlafe. Steh auf, wenn dein Wecker klingelt, und weck mich mit."
+            "value": "Ich schlafe. Stehen Sie auf, wenn Ihr Wecker klingelt, und wecken Sie mich mit."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yatıram. Zəngin çalanda qalx, məni də oyat."
+            "value": "Yatıram. Zənginiz çalanda qalxın, məni də oyadın."
           }
         },
         "ar": {
@@ -191842,7 +191842,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aku sedang tidur. Bangunlah saat alarmmu berbunyi dan bangunkan aku juga."
+            "value": "Aku sedang tidur. Bangunlah saat alarm Anda berbunyi dan bangunkan aku juga."
           }
         },
         "ur": {
@@ -191860,13 +191860,13 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Je dors. Lève-toi quand ton alarme sonne et réveille-moi aussi."
+            "value": "Je dors. Levez-vous quand votre alarme sonne et réveillez-moi aussi."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Я сплю. Вставай, когда зазвонит будильник, и разбуди меня."
+            "value": "Я сплю. Вставайте, когда зазвонит будильник, и разбудите меня."
           }
         },
         "ja": {
@@ -191890,7 +191890,7 @@
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Natutulog ako. Bumangon ka kapag tumunog ang alarm mo at gisingin mo rin ako."
+            "value": "Natutulog ako. Bumangon po kayo kapag tumunog ang inyong alarm at gisingin din ninyo ako."
           }
         },
         "th": {
@@ -192394,7 +192394,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "So sammelst du Punkte"
+            "value": "So sammeln Sie Punkte"
           }
         },
         "az": {
@@ -193629,7 +193629,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Noch kein Aufwachen. Es erscheint hier, sobald du einen Wecker ausschaltest."
+            "value": "Noch kein Aufwachen. Es erscheint hier, sobald Sie einen Wecker ausschalten."
           }
         },
         "az": {
@@ -226404,7 +226404,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der Mond leuchtet nicht selbst, er spiegelt das Sonnenlicht. Er umkreist die Erde in etwa 29,5 Tagen. Dabei sehen wir mal mehr, mal weniger von seiner beleuchteten Hälfte. Probier es mit dem Schieberegler aus!"
+            "value": "Der Mond leuchtet nicht selbst, er spiegelt das Sonnenlicht. Er umkreist die Erde in etwa 29,5 Tagen. Dabei sehen wir mal mehr, mal weniger von seiner beleuchteten Hälfte. Probieren Sie es mit dem Schieberegler aus!"
           }
         },
         "az": {
@@ -226440,13 +226440,13 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "La Lune ne brille pas toute seule : elle renvoie la lumière du Soleil. Elle fait le tour de la Terre en 29,5 jours environ. En tournant, on voit plus ou moins sa moitié éclairée. Fais glisser le curseur pour la faire tourner !"
+            "value": "La Lune ne brille pas toute seule : elle renvoie la lumière du Soleil. Elle fait le tour de la Terre en 29,5 jours environ. En tournant, on voit plus ou moins sa moitié éclairée. Faites glisser le curseur pour la faire tourner !"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Луна сама не светит: она отражает свет Солнца. Она обходит Землю примерно за 29,5 дня. По пути мы видим то больше, то меньше её освещённой половины. Подвигай ползунок и проверь!"
+            "value": "Луна сама не светит: она отражает свет Солнца. Она обходит Землю примерно за 29,5 дня. По пути мы видим то больше, то меньше её освещённой половины. Подвигайте ползунок и проверьте!"
           }
         },
         "ja": {
@@ -227069,7 +227069,7 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nicht ganz, versuch es noch mal."
+            "value": "Nicht ganz, versuchen Sie es noch einmal."
           }
         },
         "az": {
@@ -227105,13 +227105,13 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pas tout à fait, réessaie."
+            "value": "Pas tout à fait, réessayez."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не совсем, попробуй ещё раз."
+            "value": "Не совсем, попробуйте ещё раз."
           }
         },
         "ja": {

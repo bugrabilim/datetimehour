@@ -91,6 +91,7 @@ for (const [name, from] of [
   ["planner.js", "js/planner.js"],
   ["poll.js", "js/poll.js"],
   ["embed.js", "js/embed.js"],
+  ["line.js", "embed/line.js"],
   ["prayer-calc.js", "js/prayer-calc.js"],
   ["prayer.js", "js/prayer.js"],
   ["wmm.js", "js/wmm.js"],
@@ -119,6 +120,8 @@ for (const [name, from] of [
   write(`assets/${name}`, buf);
   ASSETS[name] = `/assets/${name}?v=${hash(buf)}`;
 }
+/* Metin satırı widget'ı (2. analiz #187): başka siteler sabit adresten yükler (/embed/line.js) */
+write("embed/line.js", fs.readFileSync(path.join(SRC, "embed/line.js")));
 /* Küre: Natural Earth kabartmalı dünya dokusu (kamu malı) ve yer adları (Natural Earth 1:10m Populated Places, kamu malı;
    src/data/places.json, saat dilimiyle birlikte). Yerler ayrıca "konumumu kullan" sonucunu en yakın şehre çevirir (place.js).
    Hepsi repodaki dosyalardan; derlemede dış veri indirilmez. Web küresi 30 Ekim'de kaldırılmış, 31 Ekim 2026'da ana sayfaya geri döndü. */
@@ -126,6 +129,8 @@ const EARTH_BUF = fs.readFileSync(path.join(SRC, "assets/earth.jpg"));
 write("assets/earth.jpg", EARTH_BUF);
 const EARTH_URL = `/assets/earth.jpg?v=${hash(EARTH_BUF)}`;
 const PLACES_SRC = readJson("src/data/places.json");
+/* Şehir nüfusu (2. analiz #180): Natural Earth pop_max (kent bölgesi, kamu malı; scripts/fetch-city-pop.mjs, cities.json "pop") */
+const CITY_POP = Object.fromEntries(CITIES.map((c) => [c.key, c.pop || 0]));
 const PLACES_JSON = JSON.stringify({ tz: PLACES_SRC.tz, p: PLACES_SRC.p.map((r) => r.slice(0, 3)) });
 write("assets/places.json", PLACES_JSON);
 const PLACES_URL = `/assets/places.json?v=${hash(PLACES_JSON)}`;
@@ -159,7 +164,7 @@ const CSP = [
   "script-src 'self' https://istatistik.bumba.tr",
   "connect-src 'self' https://istatistik.bumba.tr https://bumbagroup.com https://api.open-meteo.com https://air-quality-api.open-meteo.com https://overpass-api.de",
   "img-src 'self' data: https://bumbagroup.com https://tile.openstreetmap.org",
-  "frame-src https://www.youtube-nocookie.com", // alarm müziği (YouTube gelişmiş gizlilik modu; dış hizmet izniyle, 31 Ekim 2026)
+  "frame-src 'self' https://www.youtube-nocookie.com", // gömme kodu önizlemesi (kendi sitesi) ve alarm müziği (YouTube gelişmiş gizlilik modu; dış hizmet izniyle, 31 Ekim 2026)
   "style-src 'self'",
   "font-src 'self'",
   "form-action 'self' https://bumbagroup.com",
@@ -329,7 +334,7 @@ function clockStage(lang, { tz = "", place = null, pills = false } = {}) {
     <p class="meta source-line">${esc(s.source)}</p>
     <p class="sync-line" data-sync-status>&nbsp;</p>
     <p class="meta">${esc(s.infoSeconds)}</p>
-    <button type="button" class="btn" data-info-close>${esc(s.infoClose)}</button>
+    <p class="share-row"><button type="button" class="toggle" data-share data-done="${esc(I[lang].ui.shareCopied)}">${esc(I[lang].ui.share)}</button> <button type="button" class="btn" data-info-close>${esc(s.infoClose)}</button></p>
   </dialog>
 </div>`;
 }
@@ -769,9 +774,10 @@ function buildCity(lang, c) {
       <div class="fact"><dt>${esc(ct.liveOffset)}</dt><dd data-live="offset" data-tz="${c.tz}">UTC</dd></div>
       <div class="fact"><dt>${esc(ct.liveDiff)}</dt><dd data-live="diff" data-tz="${c.tz}">&nbsp;</dd></div>
       ${["sunrise", "sunset", "daylen", "solarnoon"].map((k) => `<div class="fact"><dt>${esc(ct[k === "solarnoon" ? "solarNoon" : k])}</dt><dd data-live="${k}" data-tz="${c.tz}" data-lat="${c.lat}" data-lon="${c.lon}">–</dd></div>`).join("")}
+      ${CITY_POP[c.key] ? `<div class="fact"><dt>${esc(ct.population)}</dt><dd>${esc(new Intl.NumberFormat(lang === "fil" ? "fil" : lang === "zh" ? "zh-CN" : lang, { notation: "compact", maximumFractionDigits: 1, numberingSystem: "latn" }).format(CITY_POP[c.key]))}</dd></div>` : ""}
     </dl>
     <p class="meta"><span data-live="solaroff" data-tz="${c.tz}" data-lon="${c.lon}" data-ahead="${esc(ct.solarAhead)}" data-behind="${esc(ct.solarBehind)}" data-same="${esc(ct.solarSame)}"></span> ${esc(ct.sunNote)}</p>
-    <p class="meta"><a href="https://www.openstreetmap.org/?mlat=${c.lat}&amp;mlon=${c.lon}#map=11/${c.lat}/${c.lon}" target="_blank" rel="noopener">${esc(ct.mapLink)}</a></p>
+    <p class="meta"><a href="https://www.openstreetmap.org/?mlat=${c.lat}&amp;mlon=${c.lon}#map=11/${c.lat}/${c.lon}" target="_blank" rel="noopener">${esc(ct.mapLink)}</a>${CITY_POP[c.key] ? ` · ${esc(ct.populationNote)}` : ""}</p>
   </div>
 </section>
 ${addFaq(lang, "world", t.ui.world, ROUTES[lang].world, faq.slice(1))}`;
@@ -1396,7 +1402,7 @@ const hh = (n) => String(((n % 24) + 24) % 24).padStart(2, "0");
 /* Dışa aktarma ekleri (2. analiz #185): Outlook web, Gmail taslağı, panoya metin */
 const shareRow = (s) => `<div class="share-row"><button type="button" class="toggle" data-share>${esc(s.shareLink)}</button><a class="toggle" data-ics hidden download="saat-tarih.ics">${esc(s.addIcs)}</a><a class="toggle" data-gcal hidden target="_blank" rel="noopener">${esc(s.addGoogle)}</a><a class="toggle" data-outlook hidden target="_blank" rel="noopener">${esc(s.addOutlook)}</a><a class="toggle" data-gmail hidden target="_blank" rel="noopener">${esc(s.mailGmail)}</a><button type="button" class="toggle" data-copytext hidden>${esc(s.copyText)}</button><span class="meta" role="status" aria-live="polite" data-share-status></span></div>`;
 const cityOptions = (lang, withMine) => `${withMine ? `<option value="">${esc(I[lang].converter.mine)}</option>` : ""}${[...CITIES].sort((a, b) => a[lang].name.localeCompare(b[lang].name, lang)).map((c) => `<option value="${c.key}">${esc(c[lang].name)} (${esc(c[lang].country)})</option>`).join("")}`;
-const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country }));
+const clientCities = (lang) => CITIES.map((c) => ({ k: c.key, n: c[lang].name, tz: c.tz, p: cityPath(lang, c), c: c[lang].country, la: c.lat, lo: c.lon }));
 const webAppLd = (lang, name, pagePath, description) => ({ "@type": "WebApplication", name, url: abs(pagePath), description, applicationCategory: "UtilitiesApplication", operatingSystem: "Any", inLanguage: lang, isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "TRY" } });
 
 function simplePage(lang, key, { title, description, h1, lead, trail, bodyInner, faq, faqGroup, scripts, clientExtra, nav = "tools", searchK, extraLd = [], needsPlace = false, search = true }) {
@@ -1717,10 +1723,19 @@ function buildEmbedGen(lang) {
       <p class="meta" data-eg-status role="status"></p>
       <p class="meta">${esc(s.sizeNote)}</p>
       <p class="meta">${esc(s.note)}</p>
+      <h3>${esc(s.lineHeading)}</h3>
+      <p class="meta">${esc(s.lineLead)}</p>
+      <div class="inputs-row">
+        <div class="field"><label for="eg-lk">${esc(s.lineKind)}</label><select id="eg-lk" data-eg-lkind>${["time", "date", "sun"].map((k) => `<option value="${k}">${esc(s.lineKinds[k])}</option>`).join("")}</select></div>
+      </div>
+      <p><strong>${esc(s.linePreview)}:</strong> <span data-eg-lprev data-saat-tarih="time" data-lang="${lang}">–</span></p>
+      <textarea class="eg-code" readonly rows="3" aria-label="${esc(s.lineHeading)}" data-eg-lcode></textarea>
+      <div class="tool-actions">${btn("btn", "data-eg-lcopy", s.copy)}</div>
+      <p class="meta">${esc(s.lineNote)}</p>
       <noscript><p class="meta">${esc(t.ui.noscript)}</p></noscript>
     </section>`,
   };
-  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "embed", title: t.tools.hub.cards.embed.name }, scripts: ["planner.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])) } } }, searchK: "widget gömme kodu iframe saat embed clock site", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
+  return simplePage(lang, "embed", { title: s.title, description: s.description, h1: s.h1, lead: s.lead, trail, bodyInner: inner, faq: s.faq, faqGroup: { id: "embed", title: t.tools.hub.cards.embed.name }, scripts: ["planner.js", "line.js"], clientExtra: { cities: clientCities(lang), t: { eg: { copied: s.copied, frameTitle: s.frameTitle, path: Object.fromEntries(LANGS.map((l) => [l, ROUTES[l].embedFrame])), lineSrc: ORIGIN + "/embed/line.js" } } }, searchK: "widget gömme kodu iframe saat embed clock site metin satırı gün doğumu", extraLd: [webAppLd(lang, s.h1, ROUTES[lang].embed, s.description)] });
 }
 
 /* ---------- Doğa (mevsim çarkı, Güneş, Ay, gün uzunluğu) ve hava durumu ---------- */

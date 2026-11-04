@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">ท้องฟ้าเปลี่ยนตามความสูงของดวงอาทิตย์ ณ ตำแหน่งที่เลือก: กลางวัน รุ่งเช้า/พลบค่ำ หรือกลางคืน หากเปิด \"ลดการเคลื่อนไหว\" พื้นหลังเคลื่อนไหวจะแสดงแบบนิ่ง</string>
     <string name="features_title">ฟีเจอร์</string>
     <string name="features_note">นาฬิกาเปิดอยู่เสมอ ฟีเจอร์ที่คุณเปิดจะแสดงในแถบด้านล่าง หากปิดทั้งหมด แถบจะซ่อนและเปิดการตั้งค่าได้จากรูปเฟืองบนหน้าจอนาฬิกา</string>
-    <string name="features_clock_note">เปิดเสมอ: นาฬิกา 20 แบบ เต็มจอ รายการบนหน้าจอนาฬิกา</string>
+    <string name="features_clock_note">เปิดเสมอ: นาฬิกา 21 แบบ เต็มจอ รายการบนหน้าจอนาฬิกา</string>
     <string name="features_weather_note">สภาพอากาศปัจจุบัน พยากรณ์รายชั่วโมงและ 7 วัน</string>
     <string name="features_calendar_note">วันหยุดราชการ วันสำคัญทางศาสนาและวันพิเศษ ปฏิทินในโทรศัพท์</string>
     <string name="features_world_note">นาฬิกาโลกและลูกโลกหมุน</string>

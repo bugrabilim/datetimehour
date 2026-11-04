@@ -86,7 +86,9 @@
       "sat": "Sabado"
     },
     "lookMs": "Millisecond",
-    "lookNight": "Night mode (patayin ang ilaw)"
+    "lookNight": "Night mode (patayin ang ilaw)",
+    "share": "Ibahagi",
+    "shareCopied": "Nakopya ang link"
   },
   "client": {
     "format24": "24 oras",
@@ -348,7 +350,9 @@
     "solarAhead": "Dito, nauuna nang {d} ang orasan sa oras ng araw.",
     "solarBehind": "Dito, nahuhuli nang {d} ang orasan sa oras ng araw.",
     "solarSame": "Dito, halos kapareho ng oras ng araw ang orasan.",
-    "mapLink": "Tingnan sa mapa (OpenStreetMap)"
+    "mapLink": "Tingnan sa mapa (OpenStreetMap)",
+    "population": "Populasyon (metro, tantiya)",
+    "populationNote": "Populasyon: Natural Earth (pampublikong domain), tantiyang bilang ng metro area."
   },
   "privacy": {
     "title": "Patakaran sa Privacy at Cookies | Saat Tarih",
@@ -1834,7 +1838,17 @@
         "a": "Hindi naglalagay ng cookies ang widget at hindi kumokolekta ng personal na datos. Nagpapadala ito ng ilang maliliit na request sa server para maipakita ang tamang oras; binibilang ang page views sa anonymous na statistics na walang cookies."
       }
     ],
-    "sizeNote": "Kailangan ng hindi bababa sa 460 px na taas ang mga istilong may kalendaryo; kasya na sa 360 px ang iba."
+    "sizeNote": "Kailangan ng hindi bababa sa 460 px na taas ang mga istilong may kalendaryo; kasya na sa 360 px ang iba.",
+    "lineHeading": "Bilang isang linya ng teksto",
+    "lineLead": "Magdagdag sa iyong pahina ng live na orasan sa isang linya o teksto ng pagsikat/paglubog ng araw: i-paste ang dalawang linya sa ibaba; susunod ang teksto sa font at kulay ng iyong site.",
+    "lineKind": "Ipakita",
+    "lineKinds": {
+      "time": "Oras",
+      "date": "Petsa at oras",
+      "sun": "Pagsikat at paglubog ng araw"
+    },
+    "lineNote": "Oras lang ang ipinapakita ng script; walang cookie at walang ipinapadalang data. Mula sa lungsod ang time zone.",
+    "linePreview": "Silip"
   },
   "embed": {
     "link": "Saat Tarih"

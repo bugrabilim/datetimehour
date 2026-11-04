@@ -86,7 +86,9 @@
       "sat": "토요일"
     },
     "lookMs": "밀리초",
-    "lookNight": "야간 모드(불 끄기)"
+    "lookNight": "야간 모드(불 끄기)",
+    "share": "공유",
+    "shareCopied": "링크를 복사했습니다"
   },
   "client": {
     "format24": "24시간",
@@ -308,7 +310,9 @@
     "solarAhead": "이곳 시계는 태양시보다 {d} 빠릅니다.",
     "solarBehind": "이곳 시계는 태양시보다 {d} 느립니다.",
     "solarSame": "이곳 시계는 태양시와 거의 같습니다.",
-    "mapLink": "지도에서 보기 (OpenStreetMap)"
+    "mapLink": "지도에서 보기 (OpenStreetMap)",
+    "population": "인구(도시권, 대략)",
+    "populationNote": "인구: Natural Earth(퍼블릭 도메인), 도시권의 대략적인 값."
   },
   "privacy": {
     "title": "개인정보 및 쿠키 정책 | Saat Tarih",
@@ -1794,7 +1798,17 @@
         "a": "위젯은 쿠키를 설정하지 않고 개인 데이터도 수집하지 않습니다. 정확한 시간을 보여 주려고 서버에 작은 요청 몇 개를 보내며, 페이지 조회는 쿠키 없는 익명 통계로 셉니다."
       }
     ],
-    "sizeNote": "달력이 있는 스타일은 높이가 460px 이상이어야 하며, 다른 스타일은 360px이면 충분합니다."
+    "sizeNote": "달력이 있는 스타일은 높이가 460px 이상이어야 하며, 다른 스타일은 360px이면 충분합니다.",
+    "lineHeading": "한 줄 텍스트로",
+    "lineLead": "한 줄짜리 실시간 시계나 일출·일몰 문구를 페이지에 넣으세요. 아래 두 줄을 붙여 넣으면 사이트의 글꼴과 색을 따릅니다.",
+    "lineKind": "표시 내용",
+    "lineKinds": {
+      "time": "시각",
+      "date": "날짜와 시각",
+      "sun": "일출과 일몰"
+    },
+    "lineNote": "스크립트는 시간만 표시하며 쿠키를 남기거나 데이터를 보내지 않습니다. 시간대는 도시에서 정해집니다.",
+    "linePreview": "미리보기"
   },
   "embed": {
     "link": "Saat Tarih"

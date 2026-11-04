@@ -329,6 +329,15 @@ check(sm.split("<url>").slice(1).every((u) => (/\/namaz-vakitleri\/[a-z-]+\/[a-z
   check(S2 && S2.central === "total" && S2.obsc > 0.99, "Güneş tutulması 2027: Luksor'dan tam görülmeli");
 }
 
+// Metin satırı widget'ı (#187), şehir nüfusu (#180), paylaş düğmesi (#188)
+{
+  check(fs.existsSync(path.join(DIST, "embed/line.js")), "embed/line.js (metin satırı widget'ı) yok");
+  const g = fs.readFileSync(path.join(DIST, "gomme/index.html"), "utf8");
+  check(/data-eg-lcode/.test(g) && /data-eg-lkind/.test(g) && /line\.js/.test(g), "gömme sayfasında metin satırı üreteci eksik");
+  const tk = fs.readFileSync(path.join(DIST, "dunya-saatleri/tokyo/index.html"), "utf8");
+  check(/Nüfus \(kent bölgesi/.test(tk) && /data-share/.test(tk), "Tokyo sayfasında nüfus ya da paylaş düğmesi eksik");
+}
+
 // kontrast (WCAG AA)
 const css = fs.readFileSync(path.join(ROOT, "src/styles.css"), "utf8");
 const block = (re) => Object.fromEntries([...css.match(re)[1].matchAll(/--([\w-]+):\s*(#[0-9a-f]{6})/g)].map((m) => [m[1], m[2]]));
@@ -350,7 +359,7 @@ const ng = fs.readFileSync(path.join(ROOT, "nginx.conf"), "utf8");
 for (const s of ["Strict-Transport-Security", "max-age=31536000", "X-Content-Type-Options", "Referrer-Policy", "Content-Security-Policy", "https://istatistik.bumba.tr", "https://bumbagroup.com", "error_page 404", "error_page 500"]) check(ng.includes(s), `nginx.conf: ${s} yok`);
 check(/location \^~ \/embed\//.test(ng) && /frame-ancestors \*/.test(ng), "nginx.conf: /embed/ için frame-ancestors * yok");
 check(ng.split("https://tile.openstreetmap.org").length === 3, "nginx.conf: img-src OpenStreetMap karoları iki konumda olmalı (ana sayfa küresi)");
-check(ng.split("frame-src https://www.youtube-nocookie.com").length === 3, "nginx.conf: frame-src YouTube (alarm müziği) iki konumda olmalı");
+check(ng.split("frame-src 'self' https://www.youtube-nocookie.com").length === 3, "nginx.conf: frame-src YouTube (alarm müziği) iki konumda olmalı");
 check(ng.split("https://api.open-meteo.com").length === 3, "nginx.conf: connect-src open-meteo iki konumda olmalı");
 // Dünya resmî tatilleri (30 Ekim 2026, #27)
 {
@@ -546,7 +555,7 @@ check(!/includeSubDomains|preload/.test(ng), "nginx.conf: includeSubDomains/prel
 // Web alarmında YouTube müziği (31 Ekim 2026; dış hizmet izniyle, youtube-nocookie.com)
 for (const f of ["alarm", "en/alarm", "ja/alarm", "alarm/07-00"]) {
   const h = fs.existsSync(path.join(DIST, f, "index.html")) ? fs.readFileSync(path.join(DIST, f, "index.html"), "utf8") : "";
-  check(/data-al-yt\b/.test(h) && /data-ring-media/.test(h) && /frame-src https:\/\/www\.youtube-nocookie\.com/.test(h), `alarm sayfasında YouTube müziği alanı ya da frame-src eksik: /${f}/`);
+  check(/data-al-yt\b/.test(h) && /data-ring-media/.test(h) && /frame-src 'self' https:\/\/www\.youtube-nocookie\.com/.test(h), `alarm sayfasında YouTube müziği alanı ya da frame-src eksik: /${f}/`);
 }
 // Toplantı oylaması (31 Ekim 2026): sunucusuz, bağlantıyla; bütün dillerde sayfa, araçlar kartı, gizlilik tablosunda sth-polls
 for (const l of LANGS) {

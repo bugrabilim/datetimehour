@@ -954,7 +954,7 @@
     <string name="kids_south_text">Saat belahan utara mengalami musim dingin, Australia, Afrika Selatan, dan Argentina mengalami musim panas. Anak-anak di sana sering merayakan Tahun Baru di pantai!</string>
     <string name="kids_south_north">Utara</string>
     <string name="kids_south_southLabel">Selatan</string>
-    <string name="kids_facts_title">Tahukah kamu?</string>
+    <string name="kids_facts_title">Tahukah Anda?</string>
     <string name="kids_fact1">Tanggal 21 Juni adalah siang terpanjang dalam setahun dan 21 Desember malam terpanjang (di belahan utara).</string>
     <string name="kids_fact2">Pada ekuinoks bulan Maret dan September, siang dan malam hampir sama panjang.</string>
     <string name="kids_fact3">Di Kutub Utara, Matahari tidak terbenam selama berbulan-bulan saat musim panas, dan tidak terbit berbulan-bulan saat musim dingin.</string>
@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">Langit mengikuti ketinggian Matahari di tempat pilihan: siang, terbit/terbenam, atau malam. Jika \"kurangi gerakan\" aktif, latar animasi ditampilkan diam.</string>
     <string name="features_title">Fitur</string>
     <string name="features_note">Jam selalu aktif. Fitur yang Anda nyalakan muncul di bilah bawah; jika semuanya mati, bilah disembunyikan dan pengaturan dibuka dari ikon roda gigi di layar jam.</string>
-    <string name="features_clock_note">Selalu aktif: 20 gaya jam, layar penuh, item layar jam</string>
+    <string name="features_clock_note">Selalu aktif: 21 gaya jam, layar penuh, item layar jam</string>
     <string name="features_weather_note">Cuaca saat ini, prakiraan per jam dan 7 hari</string>
     <string name="features_calendar_note">Hari libur resmi, hari keagamaan dan istimewa, kalender ponsel Anda</string>
     <string name="features_world_note">Jam dunia dan bola dunia berputar</string>
@@ -2020,7 +2020,7 @@
     <string name="wakegame_awake">Anak ayam terjaga</string>
     <string name="wakegame_sleeping">Anak ayam tertidur</string>
     <string name="wakegame_wakeMe">Bangunkan aku</string>
-    <string name="wakegame_sleepText">Aku sedang tidur. Bangunlah saat alarmmu berbunyi dan bangunkan aku juga.</string>
+    <string name="wakegame_sleepText">Aku sedang tidur. Bangunlah saat alarm Anda berbunyi dan bangunkan aku juga.</string>
     <string name="wakegame_awakeTitle">Selamat pagi, aku sudah bangun!</string>
     <string name="wakegame_awakeText">Hari ini kita bangun bersama. Sampai jumpa besok.</string>
     <string name="wakegame_total">Total poin</string>

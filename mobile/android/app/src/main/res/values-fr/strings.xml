@@ -954,7 +954,7 @@
     <string name="kids_south_text">Quand c’est l’hiver chez nous, c’est l’été en Australie, en Afrique du Sud et en Argentine. Là-bas, les enfants fêtent souvent le Nouvel An à la plage !</string>
     <string name="kids_south_north">Nord</string>
     <string name="kids_south_southLabel">Sud</string>
-    <string name="kids_facts_title">Le savais-tu ?</string>
+    <string name="kids_facts_title">Le saviez-vous ?</string>
     <string name="kids_fact1">Le 21 juin est le jour le plus long de l’année et le 21 décembre la nuit la plus longue (dans la moitié nord).</string>
     <string name="kids_fact2">Aux équinoxes de mars et de septembre, le jour et la nuit ont presque la même durée.</string>
     <string name="kids_fact3">Au pôle Nord, le Soleil ne se couche pas pendant des mois en été et ne se lève pas pendant des mois en hiver.</string>
@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">Le ciel suit la hauteur du Soleil au lieu choisi : jour, lever/coucher ou nuit. Si « Réduire les animations » est activé, les arrière-plans animés restent fixes.</string>
     <string name="features_title">Fonctions</string>
     <string name="features_note">L’horloge est toujours active. Les fonctions que vous activez apparaissent dans la barre du bas ; si elles sont toutes désactivées, la barre est masquée et les réglages s’ouvrent avec la roue dentée de l’écran de l’horloge.</string>
-    <string name="features_clock_note">Toujours active : 20 styles d’horloge, plein écran, éléments de l’écran de l’horloge</string>
+    <string name="features_clock_note">Toujours active : 21 styles d’horloge, plein écran, éléments de l’écran de l’horloge</string>
     <string name="features_weather_note">Conditions actuelles, prévisions horaires et sur 7 jours</string>
     <string name="features_calendar_note">Jours fériés, jours religieux et particuliers, calendriers du téléphone</string>
     <string name="features_world_note">Horloges mondiales et globe en rotation</string>
@@ -2020,7 +2020,7 @@
     <string name="wakegame_awake">Poussin réveillé</string>
     <string name="wakegame_sleeping">Poussin endormi</string>
     <string name="wakegame_wakeMe">Réveille-moi</string>
-    <string name="wakegame_sleepText">Je dors. Lève-toi quand ton alarme sonne et réveille-moi aussi.</string>
+    <string name="wakegame_sleepText">Je dors. Levez-vous quand votre alarme sonne et réveillez-moi aussi.</string>
     <string name="wakegame_awakeTitle">Bonjour, je suis réveillé !</string>
     <string name="wakegame_awakeText">Aujourd\'hui, on s\'est réveillés ensemble. À demain !</string>
     <string name="wakegame_total">Total des points</string>
@@ -2384,14 +2384,14 @@
     <string name="sunpath_legend">Jaune : aujourd\'hui · orange : 21 juin · bleu : 21 décembre. Le centre est le zénith, le bord l\'horizon.</string>
     <string name="sunpath_compass">Tenez le téléphone à plat : le dessin tourne avec les directions.</string>
     <string name="kidsmoon_title">Pourquoi la Lune change-t-elle de forme ?</string>
-    <string name="kidsmoon_text">La Lune ne brille pas toute seule : elle renvoie la lumière du Soleil. Elle fait le tour de la Terre en 29,5 jours environ. En tournant, on voit plus ou moins sa moitié éclairée. Fais glisser le curseur pour la faire tourner !</string>
+    <string name="kidsmoon_text">La Lune ne brille pas toute seule : elle renvoie la lumière du Soleil. Elle fait le tour de la Terre en 29,5 jours environ. En tournant, on voit plus ou moins sa moitié éclairée. Faites glisser le curseur pour la faire tourner !</string>
     <string name="kidsmoon_day">Jour %1$s</string>
     <string name="kidsmoon_space">Vue de l\'espace</string>
     <string name="kidsmoon_earth">Vu depuis la Terre</string>
     <string name="kidsmoon_sunlight">Lumière du Soleil</string>
     <string name="kidsmoon_quiz">Petit quiz</string>
     <string name="kidsmoon_correct">Bravo !</string>
-    <string name="kidsmoon_wrong">Pas tout à fait, réessaie.</string>
+    <string name="kidsmoon_wrong">Pas tout à fait, réessayez.</string>
     <string name="kidsmoon_score">%1$s/%2$s bonnes réponses</string>
     <string name="kidsmoon_again">Recommencer</string>
     <string name="kidsmoon_q1">D\'où vient la lumière de la Lune ?</string>

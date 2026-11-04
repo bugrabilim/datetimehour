@@ -86,7 +86,9 @@
       "sat": "Saturday"
     },
     "lookMs": "Milliseconds",
-    "lookNight": "Night mode (lights off)"
+    "lookNight": "Night mode (lights off)",
+    "share": "Share",
+    "shareCopied": "Link copied"
   },
   "client": {
     "format24": "24-hour",
@@ -282,7 +284,9 @@
     "solarAhead": "Clocks here run {d} ahead of solar time.",
     "solarBehind": "Clocks here run {d} behind solar time.",
     "solarSame": "Clocks here are almost on solar time.",
-    "mapLink": "View on map (OpenStreetMap)"
+    "mapLink": "View on map (OpenStreetMap)",
+    "population": "Population (metro area, approx.)",
+    "populationNote": "Population: Natural Earth (public domain), approximate metro-area figure."
   },
   "privacy": {
     "title": "Privacy and Cookie Policy | Saat Tarih",
@@ -1768,7 +1772,17 @@
         "a": "The widget sets no cookies and collects no personal data. It sends a few small requests to the server to show the correct time; page views are counted in cookie-free, anonymous statistics."
       }
     ],
-    "sizeNote": "Calendar styles need a height of at least 460 px; the other styles fit comfortably in 360 px."
+    "sizeNote": "Calendar styles need a height of at least 460 px; the other styles fit comfortably in 360 px.",
+    "lineHeading": "As a line of text",
+    "lineLead": "Add a one-line live clock or sunrise/sunset text to your page: paste the two lines below; the text takes your site's font and colour.",
+    "lineKind": "Show",
+    "lineKinds": {
+      "time": "Time",
+      "date": "Date and time",
+      "sun": "Sunrise and sunset"
+    },
+    "lineNote": "The script only draws the time; it sets no cookies and sends no data. The time zone comes from the city.",
+    "linePreview": "Preview"
   },
   "embed": {
     "link": "Saat Tarih"

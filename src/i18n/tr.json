@@ -86,7 +86,9 @@
       "sat": "Cumartesi"
     },
     "lookMs": "Milisaniye",
-    "lookNight": "Gece modu (ışıkları kapat)"
+    "lookNight": "Gece modu (ışıkları kapat)",
+    "share": "Paylaş",
+    "shareCopied": "Bağlantı kopyalandı"
   },
   "client": {
     "format24": "24 saat",
@@ -282,7 +284,9 @@
     "solarAhead": "Saat, güneş saatinden {d} ileride.",
     "solarBehind": "Saat, güneş saatinden {d} geride.",
     "solarSame": "Saat, güneş saatiyle neredeyse aynı.",
-    "mapLink": "Haritada gör (OpenStreetMap)"
+    "mapLink": "Haritada gör (OpenStreetMap)",
+    "population": "Nüfus (kent bölgesi, yaklaşık)",
+    "populationNote": "Nüfus: Natural Earth (kamu malı), kent bölgesinin yaklaşık değeri."
   },
   "privacy": {
     "title": "Gizlilik ve Çerez Politikası | Saat Tarih",
@@ -1768,7 +1772,17 @@
         "a": "Widget çerez bırakmaz ve kişisel veri toplamaz. Doğru saati göstermek için sunucuya küçük istekler gider; sayfa görüntülemeleri çerezsiz, anonim istatistiğe sayılır."
       }
     ],
-    "sizeNote": "Takvimli modeller için en az 460 px yükseklik önerilir; diğer modeller 360 px'te rahat sığar."
+    "sizeNote": "Takvimli modeller için en az 460 px yükseklik önerilir; diğer modeller 360 px'te rahat sığar.",
+    "lineHeading": "Metin satırı olarak",
+    "lineLead": "Sayfanıza tek satırlık canlı saat ya da gün doğumu/batımı yazısı ekleyin: aşağıdaki iki satırı yapıştırın, yazı sitenizin yazı tipini ve rengini alır.",
+    "lineKind": "Gösterilecek",
+    "lineKinds": {
+      "time": "Saat",
+      "date": "Tarih ve saat",
+      "sun": "Gün doğumu ve batımı"
+    },
+    "lineNote": "Betik yalnız saati çizer; çerez bırakmaz, veri göndermez. Saat dilimi şehirden gelir.",
+    "linePreview": "Önizleme"
   },
   "embed": {
     "link": "Saat Tarih"

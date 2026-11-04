@@ -954,7 +954,7 @@
     <string name="kids_south_text">Wenn bei uns Winter ist, ist in Australien, Südafrika und Argentinien Sommer. Kinder dort feiern Neujahr oft am Strand!</string>
     <string name="kids_south_north">Norden</string>
     <string name="kids_south_southLabel">Süden</string>
-    <string name="kids_facts_title">Wusstest du schon?</string>
+    <string name="kids_facts_title">Wussten Sie schon?</string>
     <string name="kids_fact1">Der 21. Juni ist der längste Tag des Jahres, der 21. Dezember die längste Nacht (auf der Nordhalbkugel).</string>
     <string name="kids_fact2">An den Tagundnachtgleichen im März und September sind Tag und Nacht fast gleich lang.</string>
     <string name="kids_fact3">Am Nordpol geht die Sonne im Sommer monatelang nicht unter und im Winter monatelang nicht auf.</string>
@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">Der Himmel folgt dem Sonnenstand am gewählten Ort: Tag, Sonnenauf-/-untergang oder Nacht. Ist „Bewegung reduzieren“ an, werden animierte Hintergründe unbewegt angezeigt.</string>
     <string name="features_title">Funktionen</string>
     <string name="features_note">Die Uhr ist immer an. Eingeschaltete Funktionen erscheinen in der unteren Leiste; sind alle aus, wird die Leiste ausgeblendet und die Einstellungen öffnen sich über das Zahnrad auf dem Uhrbildschirm.</string>
-    <string name="features_clock_note">Immer an: 20 Uhrstile, Vollbild, Felder auf dem Uhrbildschirm</string>
+    <string name="features_clock_note">Immer an: 21 Uhrstile, Vollbild, Felder auf dem Uhrbildschirm</string>
     <string name="features_weather_note">Aktuelles Wetter, stündliche und 7-Tage-Vorhersage</string>
     <string name="features_calendar_note">Feiertage, religiöse und besondere Tage, die Kalender Ihres Telefons</string>
     <string name="features_world_note">Weltuhren und der drehende Globus</string>
@@ -2020,13 +2020,13 @@
     <string name="wakegame_awake">Waches Küken</string>
     <string name="wakegame_sleeping">Schlafendes Küken</string>
     <string name="wakegame_wakeMe">Weck mich auf</string>
-    <string name="wakegame_sleepText">Ich schlafe. Steh auf, wenn dein Wecker klingelt, und weck mich mit.</string>
+    <string name="wakegame_sleepText">Ich schlafe. Stehen Sie auf, wenn Ihr Wecker klingelt, und wecken Sie mich mit.</string>
     <string name="wakegame_awakeTitle">Guten Morgen, ich bin wach!</string>
     <string name="wakegame_awakeText">Heute sind wir zusammen aufgewacht. Bis morgen!</string>
     <string name="wakegame_total">Punkte gesamt</string>
     <string name="wakegame_level">Stufe %1$s</string>
     <string name="wakegame_next">Noch %1$s Punkte bis zur nächsten Stufe</string>
-    <string name="wakegame_how">So sammelst du Punkte</string>
+    <string name="wakegame_how">So sammeln Sie Punkte</string>
     <string name="wakegame_howText">Jedes Aufwachen bringt 10 Punkte. Ohne Schlummern +10, nach einmal Schlummern +3. Die Weckaufgabe bringt +5. Jeder Tag ohne Schlummern verlängert die Serie, je Tag +2 (höchstens +10). Mit den Punkten wächst das Küken.</string>
     <string name="wakegame_earned">+%1$s Punkte</string>
     <string name="wakegame_week">Letzte 7 Tage</string>
@@ -2039,7 +2039,7 @@
     <string name="wakegame_noSnooze">ohne Schlummern</string>
     <string name="wakegame_snoozeN">%1$s× geschlummert</string>
     <string name="wakegame_taskDone">Aufgabe erledigt</string>
-    <string name="wakegame_empty">Noch kein Aufwachen. Es erscheint hier, sobald du einen Wecker ausschaltest.</string>
+    <string name="wakegame_empty">Noch kein Aufwachen. Es erscheint hier, sobald Sie einen Wecker ausschalten.</string>
     <string name="wakegame_reset">Spiel zurücksetzen</string>
     <string name="wakegame_resetConfirm">Punkte und Aufwachbericht löschen?</string>
     <string name="wakegame_privacy">Punkte und Bericht bleiben nur auf diesem Telefon und werden nirgendwohin gesendet.</string>
@@ -2384,14 +2384,14 @@
     <string name="sunpath_legend">Gelb: heute · Orange: 21. Juni · Blau: 21. Dezember. Mitte = Zenit, Rand = Horizont.</string>
     <string name="sunpath_compass">Halten Sie das Telefon flach: Die Zeichnung dreht sich mit.</string>
     <string name="kidsmoon_title">Warum ändert der Mond seine Form?</string>
-    <string name="kidsmoon_text">Der Mond leuchtet nicht selbst, er spiegelt das Sonnenlicht. Er umkreist die Erde in etwa 29,5 Tagen. Dabei sehen wir mal mehr, mal weniger von seiner beleuchteten Hälfte. Probier es mit dem Schieberegler aus!</string>
+    <string name="kidsmoon_text">Der Mond leuchtet nicht selbst, er spiegelt das Sonnenlicht. Er umkreist die Erde in etwa 29,5 Tagen. Dabei sehen wir mal mehr, mal weniger von seiner beleuchteten Hälfte. Probieren Sie es mit dem Schieberegler aus!</string>
     <string name="kidsmoon_day">Tag %1$s</string>
     <string name="kidsmoon_space">Blick aus dem All</string>
     <string name="kidsmoon_earth">Von der Erde aus</string>
     <string name="kidsmoon_sunlight">Sonnenlicht</string>
     <string name="kidsmoon_quiz">Kleines Quiz</string>
     <string name="kidsmoon_correct">Richtig!</string>
-    <string name="kidsmoon_wrong">Nicht ganz, versuch es noch mal.</string>
+    <string name="kidsmoon_wrong">Nicht ganz, versuchen Sie es noch einmal.</string>
     <string name="kidsmoon_score">%1$s/%2$s richtig</string>
     <string name="kidsmoon_again">Neu starten</string>
     <string name="kidsmoon_q1">Woher kommt das Mondlicht?</string>

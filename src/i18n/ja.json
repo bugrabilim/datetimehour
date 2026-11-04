@@ -86,7 +86,9 @@
       "sat": "土曜日"
     },
     "lookMs": "ミリ秒",
-    "lookNight": "夜間モード（消灯）"
+    "lookNight": "夜間モード（消灯）",
+    "share": "共有",
+    "shareCopied": "リンクをコピーしました"
   },
   "client": {
     "format24": "24時間",
@@ -282,7 +284,9 @@
     "solarAhead": "ここの時計は太陽時より {d} 進んでいます。",
     "solarBehind": "ここの時計は太陽時より {d} 遅れています。",
     "solarSame": "ここの時計は太陽時とほぼ同じです。",
-    "mapLink": "地図で見る (OpenStreetMap)"
+    "mapLink": "地図で見る (OpenStreetMap)",
+    "population": "人口（都市圏・概数）",
+    "populationNote": "人口：Natural Earth（パブリックドメイン）、都市圏のおおよその値。"
   },
   "privacy": {
     "title": "プライバシーと Cookie ポリシー | Saat Tarih",
@@ -1768,7 +1772,17 @@
         "a": "ウィジェットは Cookie を設定せず、個人データも集めません。正しい時刻を表示するためにサーバーへ小さなリクエストを数件送ります。ページビューは Cookie を使わない匿名の統計で数えます。"
       }
     ],
-    "sizeNote": "カレンダー付きのデザインは高さ 460px 以上が必要です。ほかのデザインは 360px で十分です。"
+    "sizeNote": "カレンダー付きのデザインは高さ 460px 以上が必要です。ほかのデザインは 360px で十分です。",
+    "lineHeading": "テキスト1行として",
+    "lineLead": "1行のライブ時計や日の出・日の入りをページに追加できます。下の2行を貼り付けると、サイトのフォントと色で表示されます。",
+    "lineKind": "表示内容",
+    "lineKinds": {
+      "time": "時刻",
+      "date": "日付と時刻",
+      "sun": "日の出と日の入り"
+    },
+    "lineNote": "スクリプトは時刻を表示するだけで、Cookieを使わずデータも送信しません。タイムゾーンは都市から決まります。",
+    "linePreview": "プレビュー"
   },
   "embed": {
     "link": "Saat Tarih"

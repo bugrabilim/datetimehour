@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">하늘은 선택한 곳의 태양 고도를 따릅니다: 낮, 일출·일몰, 밤. \"동작 줄이기\"가 켜져 있으면 움직이는 배경은 멈춘 상태로 보입니다.</string>
     <string name="features_title">기능</string>
     <string name="features_note">시계는 항상 켜져 있습니다. 켠 기능은 하단 바에 나타나며, 모두 끄면 바가 숨겨지고 설정은 시계 화면의 톱니바퀴에서 엽니다.</string>
-    <string name="features_clock_note">항상 켜짐: 시계 스타일 20가지, 전체 화면, 시계 화면 항목</string>
+    <string name="features_clock_note">항상 켜짐: 시계 스타일 21가지, 전체 화면, 시계 화면 항목</string>
     <string name="features_weather_note">현재 날씨, 시간별·7일 예보</string>
     <string name="features_calendar_note">공휴일, 종교일과 기념일, 휴대폰 달력</string>
     <string name="features_world_note">세계 시계와 도는 지구</string>

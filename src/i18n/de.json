@@ -86,7 +86,9 @@
       "sat": "Samstag"
     },
     "lookMs": "Millisekunden",
-    "lookNight": "Nachtmodus (Licht aus)"
+    "lookNight": "Nachtmodus (Licht aus)",
+    "share": "Teilen",
+    "shareCopied": "Link kopiert"
   },
   "client": {
     "format24": "24 Stunden",
@@ -309,7 +311,9 @@
     "solarAhead": "Die Uhr geht hier {d} vor der Sonnenzeit.",
     "solarBehind": "Die Uhr geht hier {d} hinter der Sonnenzeit.",
     "solarSame": "Die Uhr entspricht hier fast der Sonnenzeit.",
-    "mapLink": "Auf der Karte ansehen (OpenStreetMap)"
+    "mapLink": "Auf der Karte ansehen (OpenStreetMap)",
+    "population": "Einwohner (Ballungsraum, ca.)",
+    "populationNote": "Einwohner: Natural Earth (gemeinfrei), ungefährer Wert für den Ballungsraum."
   },
   "privacy": {
     "title": "Datenschutzerklärung und Cookie-Richtlinie | Saat Tarih",
@@ -1795,7 +1799,17 @@
         "a": "Das Widget setzt keine Cookies und erhebt keine personenbezogenen Daten. Es sendet einige kleine Anfragen an den Server, um die richtige Uhrzeit anzuzeigen; Seitenaufrufe werden in einer cookiefreien, anonymen Statistik gezählt."
       }
     ],
-    "sizeNote": "Kalenderstile benötigen mindestens 460 px Höhe; die übrigen Stile passen bequem in 360 px."
+    "sizeNote": "Kalenderstile benötigen mindestens 460 px Höhe; die übrigen Stile passen bequem in 360 px.",
+    "lineHeading": "Als Textzeile",
+    "lineLead": "Fügen Sie Ihrer Seite eine einzeilige Live-Uhr oder Sonnenauf- und -untergang hinzu: die beiden Zeilen unten einfügen; der Text übernimmt Schrift und Farbe Ihrer Seite.",
+    "lineKind": "Anzeigen",
+    "lineKinds": {
+      "time": "Uhrzeit",
+      "date": "Datum und Uhrzeit",
+      "sun": "Sonnenauf- und -untergang"
+    },
+    "lineNote": "Das Skript zeichnet nur die Zeit; es setzt keine Cookies und sendet keine Daten. Die Zeitzone kommt von der Stadt.",
+    "linePreview": "Vorschau"
   },
   "embed": {
     "link": "Saat Tarih"

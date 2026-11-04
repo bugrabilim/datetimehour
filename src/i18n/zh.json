@@ -86,7 +86,9 @@
       "sat": "星期六"
     },
     "lookMs": "毫秒",
-    "lookNight": "夜间模式（关灯）"
+    "lookNight": "夜间模式（关灯）",
+    "share": "分享",
+    "shareCopied": "链接已复制"
   },
   "client": {
     "format24": "24 小时制",
@@ -308,7 +310,9 @@
     "solarAhead": "这里的钟表比太阳时快 {d}。",
     "solarBehind": "这里的钟表比太阳时慢 {d}。",
     "solarSame": "这里的钟表与太阳时几乎一致。",
-    "mapLink": "在地图上查看 (OpenStreetMap)"
+    "mapLink": "在地图上查看 (OpenStreetMap)",
+    "population": "人口（都市区，约）",
+    "populationNote": "人口：Natural Earth（公有领域），都市区的近似值。"
   },
   "privacy": {
     "title": "隐私与 Cookie 政策 | Saat Tarih",
@@ -1794,7 +1798,17 @@
         "a": "小部件不设置 Cookie，也不收集个人数据。它会向服务器发送几次小请求以显示正确的时间；页面浏览量通过不使用 Cookie 的匿名统计进行计数。"
       }
     ],
-    "sizeNote": "带日历的样式需要至少 460 px 高；其他样式 360 px 即可。"
+    "sizeNote": "带日历的样式需要至少 460 px 高；其他样式 360 px 即可。",
+    "lineHeading": "作为一行文字",
+    "lineLead": "在页面中添加一行实时时钟或日出日落文字：粘贴下面两行，文字会沿用您网站的字体和颜色。",
+    "lineKind": "显示内容",
+    "lineKinds": {
+      "time": "时间",
+      "date": "日期和时间",
+      "sun": "日出和日落"
+    },
+    "lineNote": "脚本只显示时间，不设置Cookie，也不发送数据。时区取自城市。",
+    "linePreview": "预览"
   },
   "embed": {
     "link": "Saat Tarih"

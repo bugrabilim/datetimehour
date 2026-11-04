@@ -86,7 +86,9 @@
       "sat": "Sabtu"
     },
     "lookMs": "Milidetik",
-    "lookNight": "Mode malam (matikan lampu)"
+    "lookNight": "Mode malam (matikan lampu)",
+    "share": "Bagikan",
+    "shareCopied": "Tautan disalin"
   },
   "client": {
     "format24": "24 jam",
@@ -282,7 +284,9 @@
     "solarAhead": "Jam di sini {d} lebih cepat dari waktu matahari.",
     "solarBehind": "Jam di sini {d} lebih lambat dari waktu matahari.",
     "solarSame": "Jam di sini hampir sama dengan waktu matahari.",
-    "mapLink": "Lihat di peta (OpenStreetMap)"
+    "mapLink": "Lihat di peta (OpenStreetMap)",
+    "population": "Penduduk (wilayah metro, perkiraan)",
+    "populationNote": "Penduduk: Natural Earth (domain publik), angka perkiraan wilayah metro."
   },
   "privacy": {
     "title": "Kebijakan Privasi dan Cookie | Saat Tarih",
@@ -1768,7 +1772,17 @@
         "a": "Widget ini tidak memasang cookie dan tidak mengumpulkan data pribadi. Widget mengirim beberapa permintaan kecil ke server untuk menampilkan waktu yang benar; tayangan halaman dihitung dalam statistik anonim tanpa cookie."
       }
     ],
-    "sizeNote": "Gaya dengan kalender memerlukan tinggi minimal 460 px; gaya lainnya muat dengan nyaman dalam 360 px."
+    "sizeNote": "Gaya dengan kalender memerlukan tinggi minimal 460 px; gaya lainnya muat dengan nyaman dalam 360 px.",
+    "lineHeading": "Sebagai satu baris teks",
+    "lineLead": "Tambahkan jam langsung satu baris atau teks matahari terbit/terbenam ke halaman Anda: tempel dua baris di bawah; teks mengikuti huruf dan warna situs Anda.",
+    "lineKind": "Tampilkan",
+    "lineKinds": {
+      "time": "Jam",
+      "date": "Tanggal dan jam",
+      "sun": "Matahari terbit dan terbenam"
+    },
+    "lineNote": "Skrip hanya menampilkan waktu; tidak memasang cookie dan tidak mengirim data. Zona waktu dari kota.",
+    "linePreview": "Pratinjau"
   },
   "embed": {
     "link": "Saat Tarih"

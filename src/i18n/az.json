@@ -86,7 +86,9 @@
       "sat": "Şənbə"
     },
     "lookMs": "Millisaniyə",
-    "lookNight": "Gecə rejimi (işıqları söndür)"
+    "lookNight": "Gecə rejimi (işıqları söndür)",
+    "share": "Paylaş",
+    "shareCopied": "Keçid kopyalandı"
   },
   "client": {
     "format24": "24 saat",
@@ -282,7 +284,9 @@
     "solarAhead": "Saat burada günəş vaxtından {d} qabaqdadır.",
     "solarBehind": "Saat burada günəş vaxtından {d} geridədir.",
     "solarSame": "Saat burada günəş vaxtı ilə demək olar eynidir.",
-    "mapLink": "Xəritədə bax (OpenStreetMap)"
+    "mapLink": "Xəritədə bax (OpenStreetMap)",
+    "population": "Əhali (şəhər ərazisi, təxmini)",
+    "populationNote": "Əhali: Natural Earth (ictimai mülkiyyət), şəhər ərazisi üçün təxmini rəqəm."
   },
   "privacy": {
     "title": "Məxfilik və kuki siyasəti | Saat Tarih",
@@ -1768,7 +1772,17 @@
         "a": "Vidcet kuki yerləşdirmir və şəxsi məlumat toplamır. Düzgün vaxtı göstərmək üçün serverə bir neçə kiçik sorğu göndərir; səhifə baxışları kukisiz, anonim statistikada sayılır."
       }
     ],
-    "sizeNote": "Təqvimli görünüşlər üçün ən azı 460 px hündürlük lazımdır; digər görünüşlər 360 px-ə rahat sığır."
+    "sizeNote": "Təqvimli görünüşlər üçün ən azı 460 px hündürlük lazımdır; digər görünüşlər 360 px-ə rahat sığır.",
+    "lineHeading": "Mətn sətri kimi",
+    "lineLead": "Səhifənizə bir sətirlik canlı saat və ya gün çıxışı/batışı yazısı əlavə edin: aşağıdakı iki sətri yapışdırın; yazı saytınızın şriftini və rəngini alır.",
+    "lineKind": "Göstəriləcək",
+    "lineKinds": {
+      "time": "Saat",
+      "date": "Tarix və saat",
+      "sun": "Gün çıxışı və batışı"
+    },
+    "lineNote": "Skript yalnız saatı çəkir; kuki qoymur, məlumat göndərmir. Saat qurşağı şəhərdən gəlir.",
+    "linePreview": "Önbaxış"
   },
   "embed": {
     "link": "Saat Tarih"

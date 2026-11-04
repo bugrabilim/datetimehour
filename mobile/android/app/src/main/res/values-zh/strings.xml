@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">天空随所选地点的太阳高度变化：白天、日出日落或夜晚。如果开启了“减弱动态效果”，动态背景将静止显示。</string>
     <string name="features_title">功能</string>
     <string name="features_note">时钟始终开启。您打开的功能会出现在底部栏；全部关闭时底部栏隐藏，设置从时钟界面的齿轮打开。</string>
-    <string name="features_clock_note">始终开启：20种时钟样式、全屏、时钟界面项目</string>
+    <string name="features_clock_note">始终开启：21种时钟样式、全屏、时钟界面项目</string>
     <string name="features_weather_note">当前天气、逐小时和7天预报</string>
     <string name="features_calendar_note">公共假日、宗教和特别日子、手机上的日历</string>
     <string name="features_world_note">世界时钟和旋转地球</string>

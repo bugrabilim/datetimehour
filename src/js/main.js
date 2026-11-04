@@ -79,6 +79,16 @@
     });
   });
 
+  /* ---------- Paylaş (2. analiz #188): telefonda sistem paylaşımı, yoksa bağlantıyı panoya kopyalar ---------- */
+  Array.prototype.forEach.call(doc.querySelectorAll("[data-share]"), function (b) {
+    b.addEventListener("click", function () {
+      var url = location.href.split("#")[0], title = doc.title;
+      var done = function () { var t = b.textContent; b.textContent = b.getAttribute("data-done") || t; setTimeout(function () { b.textContent = t; }, 2000); };
+      if (navigator.share) { navigator.share({ title: title, url: url }).catch(function () {}); return; }
+      if (navigator.clipboard) navigator.clipboard.writeText(url).then(done, function () {});
+    });
+  });
+
   /* ---------- Menü (dar ekranda açılır) ---------- */
   (function navMenu() {
     var btn = doc.querySelector("[data-nav-toggle]"), nav = doc.getElementById("site-nav");

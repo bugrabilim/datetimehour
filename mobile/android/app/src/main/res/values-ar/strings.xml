@@ -1146,7 +1146,7 @@
     <string name="look_bg_note">تتبع السماء ارتفاع الشمس في الموقع المحدد: نهار أو شروق/غروب أو ليل. إذا كان «تقليل الحركة» مفعّلًا تظهر الخلفيات المتحركة ثابتة.</string>
     <string name="features_title">الميزات</string>
     <string name="features_note">الساعة مفعّلة دائمًا. تظهر الميزات التي تفعّلها في الشريط السفلي؛ وإذا عُطّلت كلها يختفي الشريط وتُفتح الإعدادات من رمز الترس في شاشة الساعة.</string>
-    <string name="features_clock_note">مفعّلة دائمًا: 20 نمطًا للساعة وملء الشاشة وعناصر شاشة الساعة</string>
+    <string name="features_clock_note">مفعّلة دائمًا: 21 نمطًا للساعة وملء الشاشة وعناصر شاشة الساعة</string>
     <string name="features_weather_note">الطقس الحالي والتوقعات بالساعة ولسبعة أيام</string>
     <string name="features_calendar_note">العطل الرسمية والأيام الدينية والخاصة وتقويمات هاتفك</string>
     <string name="features_world_note">ساعات العالم والكرة الأرضية الدوّارة</string>

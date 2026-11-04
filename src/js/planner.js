@@ -255,6 +255,31 @@
       try { navigator.clipboard.writeText(codeEl.value).then(done, function () { codeEl.select(); }); } catch (e) { codeEl.select(); }
     });
     build();
+    // Metin satırı (2. analiz #187): <span data-saat-tarih> + /embed/line.js; seçili şehrin saat dilimi ve konumu
+    var lk = g("lkind"), lprev = g("lprev"), lcode = g("lcode");
+    if (lk && lprev && lcode) {
+      var esc = function (v) { return String(v).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;"); };
+      var buildLine = function () {
+        var key = g("city").value, list = S.cfg.cities || [], c = null;
+        for (var i = 0; i < list.length; i++) if (list[i].k === key) c = list[i];
+        var kind = lk.value, lang = g("lang").value, attrs = ' data-saat-tarih="' + kind + '" data-lang="' + lang + '"';
+        if (c && c.tz) attrs += ' data-tz="' + esc(c.tz) + '"';
+        if (kind === "sun") { var la = c ? c.la : 41.01, lo = c ? c.lo : 28.98; attrs += ' data-lat="' + la + '" data-lon="' + lo + '"'; if (!c) attrs += ' data-tz="Europe/Istanbul"'; }
+        if (g("h12").checked) attrs += ' data-h12="1"';
+        lcode.value = "<span" + attrs + "></span>\n<script async src=\"" + E.lineSrc + "\"></" + "script>";
+        lprev.setAttribute("data-saat-tarih", kind); lprev.setAttribute("data-lang", lang);
+        ["data-tz", "data-lat", "data-lon", "data-h12"].forEach(function (a) { lprev.removeAttribute(a); });
+        var m = attrs.match(/data-(tz|lat|lon|h12)="[^"]*"/g) || [];
+        m.forEach(function (x) { var p = x.split("="); lprev.setAttribute(p[0], p[1].replace(/"/g, "")); });
+        if (window.saatTarihLine) window.saatTarihLine.refresh();
+      };
+      ["city", "lang", "h12"].forEach(function (n) { g(n).addEventListener("change", buildLine); });
+      lk.addEventListener("change", buildLine);
+      g("lcopy").addEventListener("click", function () {
+        try { navigator.clipboard.writeText(lcode.value).then(function () { st.textContent = E.copied; setTimeout(function () { st.textContent = ""; }, 2500); }); } catch (e) { lcode.select(); }
+      });
+      buildLine();
+    }
     S.track("arac", { arac: "embed" });
   }
 })();
