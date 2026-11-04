@@ -168,3 +168,24 @@ class StopwatchTileService : TileService() {
         }
     }
 }
+
+/** Hızlı Ayarlar: bildirim alanında ve kilit ekranında hava (4 Kasım 2026; aç/kapa); açıkken kutucuk etkin */
+class WeatherTileService : TileService() {
+    override fun onStartListening() = draw()
+
+    override fun onClick() {
+        LiveNotifications.setWeather(this, !Prefs.store.getBoolean(LiveNotifications.WEATHER_KEY, false))
+        draw()
+    }
+
+    private fun draw() {
+        val on = Prefs.store.getBoolean(LiveNotifications.WEATHER_KEY, false)
+        qsTile?.apply {
+            label = L("live.weather.control")
+            state = if (on) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
+            if (Build.VERSION.SDK_INT >= 29) subtitle = L(if (on) "night.on" else "night.off")
+            icon = Icon.createWithResource(this@WeatherTileService, R.drawable.ic_stat_weather)
+            updateTile()
+        }
+    }
+}

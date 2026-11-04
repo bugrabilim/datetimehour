@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">मध्यम</string>
     <string name="widgets_size_large">बड़ा</string>
     <string name="widgets_size_lock">लॉक स्क्रीन</string>
-    <string name="live_clock">डायनेमिक आइलैंड में लाइव घड़ी</string>
-    <string name="live_clockNote">सेकंड के साथ समय डायनेमिक आइलैंड और लॉक स्क्रीन पर दिखता है। Apple ऐसी गतिविधियाँ अधिकतम 8 घंटे रखता है; ऐप खोलने पर फिर शुरू हो जाती है।</string>
     <string name="notify_cat_daily">आज की कहावत</string>
     <string name="notify_cat_daily_note">हर सुबह 08:00 बजे, कैलेंडर पन्ने की कहावत, बिना आवाज़।</string>
     <string name="notify_n_daily">आज की कहावत</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">दिन का उजाला</string>
     <string name="atmo_daylightNote">दिन का उजाला चुनी गई जगह पर सूरज के साथ बदलता है: भोर, सुबह, दोपहर बाद, शाम या रात के रंग।</string>
     <string name="common_how">यह कैसे काम करता है</string>
+    <string name="live_weather_toggle">लॉक स्क्रीन और डायनेमिक आइलैंड में दिखाएँ</string>
+    <string name="live_weather_note">कैमरे के पास और लॉक स्क्रीन पर दिखता है; × से या कंट्रोल सेंटर से बंद करें। iOS इसे 8 घंटे बाद हटा देता है; ऐप खोलने पर लौट आता है।</string>
+    <string name="live_weather_hide">मौसम बंद करें</string>
+    <string name="live_weather_control">लॉक स्क्रीन पर मौसम</string>
+    <string name="live_weather_toggleAndroid">स्टेटस बार और लॉक स्क्रीन पर दिखाएँ</string>
+    <string name="live_weather_noteAndroid">तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; सूचना में बंद करें से, क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।</string>
     <string name="app_name">समय और तारीख</string>
 </resources>

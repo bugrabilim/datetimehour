@@ -1,25 +1,31 @@
 import ActivityKit
 import Foundation
 import SaatCore
+import SwiftUI
+import UIKit
+import WeatherKit
+import WidgetKit
 
-/// Live Activity kurulumu: kayıtlı durumdan (zamanlayıcılar, pomodoro, kronometre, "kilit ekranında sıradaki vakit")
+/// Live Activity kurulumu: kayıtlı durumdan (zamanlayıcılar, pomodoro, kronometre, "kilit ekranında sıradaki vakit",
+/// gün doğumu/batımı, hava durumu)
 /// istenen etkinlikler çıkarılır, telefondakilerle eşitlenir (yeni başlar, değişen güncellenir, bitenler kapanır).
 /// Uygulama öne geldiğinde, arka plan yenilemesinde ve araçlarda durum değişince çağrılır. Etkinlik ancak uygulama
 /// öndeyken başlatılabilir; sıradaki vakit uygulama açıldıkça ve arka plan yenilemesinde ileri taşınır.
 @MainActor
 enum LiveActivities {
     static let prayerKey = "live.prayer"
-    /// Dynamic Island'da canlı saat (2. analiz #19; Apple etkinliği en çok 8 saat açık tutar)
-    static let clockKey = "live.clock"
     /// Güneş sayacı (2. analiz #150): sıradaki gün doğumu ya da batımına kalan süre
     static let sunKey = "live.sun"
 
     private typealias Want = (attributes: SaatActivityAttributes, state: SaatActivityAttributes.ContentState, stale: Date?)
 
     static func sync(now: Date = Date()) {
+        // Dynamic Island'daki canlı saat kaldırıldı (4 Kasım 2026, sahibin isteği: saat telefonda zaten var); açık olan
+        // eski etkinlik aşağıda istenmediği için kapanır
+        UserDefaults.standard.removeObject(forKey: "live.clock")
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
         var wanted: [String: Want] = [:]
-        for w in timers(now) + [stopwatch(), pomodoro(now), prayer(now), clock(now), sun(now)].compactMap({ $0 }) { wanted[w.attributes.id] = w }
+        for w in timers(now) + [stopwatch(), pomodoro(now), prayer(now), weather(now), sun(now)].compactMap({ $0 }) { wanted[w.attributes.id] = w }
         for a in Activity<SaatActivityAttributes>.activities where a.activityState == .active || a.activityState == .stale {
             if let w = wanted.removeValue(forKey: a.attributes.id), w.attributes.kind == a.attributes.kind {
                 if a.content.state != w.state || a.activityState == .stale {
@@ -47,14 +53,31 @@ enum LiveActivities {
         }
     }
 
-    /// Canlı saat: gece yarısından geçen süre sistemin sayacıyla akar (saat:dakika:saniye); gece yarısında eskir,
-    /// uygulama açılınca yeni gün için yenilenir
-    private static func clock(_ now: Date) -> Want? {
-        guard UserDefaults.standard.bool(forKey: clockKey) else { return nil }
-        let midnight = Calendar.current.startOfDay(for: now)
-        return (SaatActivityAttributes(kind: "clock", id: "clock"),
-                .init(date: midnight, start: midnight, title: L("tab.clock"), subtitle: Fmt.longDate(now)),
-                midnight.addingTimeInterval(86_400))
+    /// Hava durumu (LiveWeather): son özet; 12 saatten eskiyse gösterilmez (uygulama açılınca yenilenir)
+    private static func weather(_ now: Date) -> Want? {
+        guard LiveWeather.isOn, let s = LiveWeather.snapshot(), now.timeIntervalSince(s.at) < 12 * 3600 else { return nil }
+        return (LiveWeather.attributes, LiveWeather.state(s), LiveWeather.staleDate(s))
+    }
+
+    /// Hava etkinliği açıksa seçili yerin güncel havası WeatherKit'ten alınır (WeatherCache: aynı yer 15 dk), özet
+    /// uygulamanın dilinde yazılır ve etkinlik eşitlenir. Uygulama öne gelince, arka plan yenilemesinde ve aç/kapa
+    /// düğmelerinde çağrılır.
+    static func refreshWeather() async {
+        guard LiveWeather.isOn else { sync(); return }
+        let place = AppPlace.stored()
+        if let w = try? await WeatherCache.weather(lat: place.lat, lon: place.lon) {
+            let c = w.currentWeather
+            // Çok renkli simge için dolu biçim (bulut beyaz, güneş sarı, yağmur mavi)
+            let fill = c.symbolName.hasSuffix(".fill") ? c.symbolName : c.symbolName + ".fill"
+            var detail = place.name
+            if let today = w.dailyForecast.first {
+                detail += " · ↑\(Units.temp(today.highTemperature)) ↓\(Units.temp(today.lowTemperature))"
+            }
+            LiveWeather.save(.init(value: Units.temp(c.temperature),
+                                   symbol: UIImage(systemName: fill) != nil ? fill : c.symbolName,
+                                   title: c.condition.description, detail: detail, at: Date()))
+        }
+        sync()
     }
 
     /// Çalışan kronometre (duraklatılınca kapanır)
@@ -113,5 +136,32 @@ enum LiveActivities {
         return (SaatActivityAttributes(kind: "prayer", id: "prayer"),
                 .init(date: next.at, start: prev, title: "\(name) \(place.hm(next.at))", subtitle: ([place.name] + more).joined(separator: " · ")),
                 next.at.addingTimeInterval(60))
+    }
+}
+
+/// Kilit ekranı / Dynamic Island hava etkinliğinin aç/kapa anahtarı (Hava sekmesinde ve Saat görünümünde; ayrıca
+/// etkinliğin üstündeki × ve Denetim Merkezi düğmesi). Açınca güncel hava alınıp etkinlik başlar.
+struct LiveWeatherToggle: View {
+    var showNote = true
+    @State private var on = LiveWeather.isOn
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Toggle(isOn: $on) {
+                Label(L("live.weather.toggle"), systemImage: "lock.iphone")
+            }
+            .tint(Theme.accent)
+            if showNote {
+                Text(L("live.weather.note")).font(.footnote).foregroundStyle(Theme.muted)
+            }
+        }
+        .onAppear { on = LiveWeather.isOn }
+        .onChange(of: on) { _, value in
+            guard value != LiveWeather.isOn else { return }
+            Task {
+                await LiveWeather.apply(value)
+                if #available(iOS 18.0, *) { ControlCenter.shared.reloadControls(ofKind: LiveWeather.controlKind) }
+            }
+        }
     }
 }

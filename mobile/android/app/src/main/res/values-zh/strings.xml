@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">中</string>
     <string name="widgets_size_large">大</string>
     <string name="widgets_size_lock">锁定屏幕</string>
-    <string name="live_clock">灵动岛实时时钟</string>
-    <string name="live_clockNote">带秒的时间显示在灵动岛和锁定屏幕上。Apple 最多保留 8 小时；打开应用会重新开始。</string>
     <string name="notify_cat_daily">每日格言</string>
     <string name="notify_cat_daily_note">每天早上 08:00，无声推送日历页上的格言。</string>
     <string name="notify_n_daily">每日格言</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">日光</string>
     <string name="atmo_daylightNote">日光随所选地点的太阳变化：黎明、上午、下午、傍晚或夜晚的色调。</string>
     <string name="common_how">工作原理</string>
+    <string name="live_weather_toggle">在锁定屏幕和灵动岛显示</string>
+    <string name="live_weather_note">显示在摄像头旁和锁定屏幕上；可用 × 或在控制中心关闭。iOS 会在 8 小时后移除，打开应用即可恢复。</string>
+    <string name="live_weather_hide">关闭天气</string>
+    <string name="live_weather_control">锁定屏幕天气</string>
+    <string name="live_weather_toggleAndroid">在状态栏和锁定屏幕显示</string>
+    <string name="live_weather_noteAndroid">气温显示在状态栏和锁定屏幕上；可用通知中的“关闭”、快捷设置或在此处关闭。每小时更新一次。</string>
     <string name="app_name">时间与日期</string>
 </resources>

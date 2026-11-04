@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Medium</string>
     <string name="widgets_size_large">Large</string>
     <string name="widgets_size_lock">Lock Screen</string>
-    <string name="live_clock">Live clock in the Dynamic Island</string>
-    <string name="live_clockNote">The time with seconds appears in the Dynamic Island and on the Lock Screen. Apple keeps such activities for at most 8 hours; opening the app starts it again.</string>
     <string name="notify_cat_daily">Saying of the day</string>
     <string name="notify_cat_daily_note">Every morning at 08:00, the saying from the calendar leaf, silently.</string>
     <string name="notify_n_daily">Saying of the day</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Daylight</string>
     <string name="atmo_daylightNote">Daylight follows the sun at your chosen place: dawn, morning, afternoon, evening or night tones.</string>
     <string name="common_how">How it works</string>
+    <string name="live_weather_toggle">Show on Lock Screen and in the Dynamic Island</string>
+    <string name="live_weather_note">Appears next to the camera and on the Lock Screen; turn it off with × or from Control Center. iOS removes it after 8 hours; opening the app brings it back.</string>
+    <string name="live_weather_hide">Turn off weather</string>
+    <string name="live_weather_control">Weather on Lock Screen</string>
+    <string name="live_weather_toggleAndroid">Show in the status bar and on the lock screen</string>
+    <string name="live_weather_noteAndroid">The temperature appears in the status bar and on the lock screen; turn it off with Close in the notification, from Quick Settings or here. It refreshes hourly.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

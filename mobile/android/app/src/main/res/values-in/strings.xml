@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Sedang</string>
     <string name="widgets_size_large">Besar</string>
     <string name="widgets_size_lock">Layar Terkunci</string>
-    <string name="live_clock">Jam langsung di Dynamic Island</string>
-    <string name="live_clockNote">Jam beserta detik tampil di Dynamic Island dan Layar Terkunci. Apple menjaga aktivitas ini paling lama 8 jam; membuka aplikasi akan memulainya lagi.</string>
     <string name="notify_cat_daily">Pepatah hari ini</string>
     <string name="notify_cat_daily_note">Setiap pagi pukul 08.00, pepatah dari lembar kalender, tanpa suara.</string>
     <string name="notify_n_daily">Pepatah hari ini</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Cahaya hari</string>
     <string name="atmo_daylightNote">Cahaya hari mengikuti matahari di tempat pilihan Anda: nuansa fajar, pagi, sore, petang, atau malam.</string>
     <string name="common_how">Cara kerjanya</string>
+    <string name="live_weather_toggle">Tampilkan di Layar Terkunci dan Dynamic Island</string>
+    <string name="live_weather_note">Tampil di samping kamera dan di Layar Terkunci; matikan dengan × atau dari Pusat Kontrol. iOS menghapusnya setelah 8 jam; membuka aplikasi memunculkannya lagi.</string>
+    <string name="live_weather_hide">Matikan cuaca</string>
+    <string name="live_weather_control">Cuaca di Layar Terkunci</string>
+    <string name="live_weather_toggleAndroid">Tampilkan di bilah status dan layar kunci</string>
+    <string name="live_weather_noteAndroid">Suhu tampil di bilah status dan layar kunci; matikan dengan Tutup di notifikasi, dari Setelan Cepat, atau di sini. Diperbarui tiap jam.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

@@ -35,6 +35,10 @@ struct WeatherView: View {
                     AppleWeatherMark()
                     Button { sharing = true } label: { Label(L("share.card"), systemImage: "square.and.arrow.up") }
                         .tint(Theme.accent)
+                    // Kilit ekranında ve Dynamic Island'da hava (4 Kasım 2026, sahibin isteği; kolay aç/kapa)
+                    LiveWeatherToggle()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .card()
                     // Resmî uyarılar (2. analiz #112; WeatherKit, kaynak varsa)
                     WeatherAlertsCard(alerts: d.weatherAlerts ?? [])
                     // Saatlik eğri (2. analiz #107)

@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Orta</string>
     <string name="widgets_size_large">Büyük</string>
     <string name="widgets_size_lock">Kilit ekranı</string>
-    <string name="live_clock">Dynamic Island\'da canlı saat</string>
-    <string name="live_clockNote">Saat saniyesiyle Dynamic Island\'da ve kilit ekranında görünür. Apple bu etkinlikleri en çok 8 saat açık tutar; uygulamayı açınca yeniden başlar.</string>
     <string name="notify_cat_daily">Günün sözü</string>
     <string name="notify_cat_daily_note">Her sabah 08.00\'de takvim yaprağındaki söz, sessiz.</string>
     <string name="notify_n_daily">Günün sözü</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Gün ışığı</string>
     <string name="atmo_daylightNote">Gün ışığı, seçili yerde Güneş\'in konumuna göre şafak, sabah, ikindi, akşam ya da gece tonunu alır.</string>
     <string name="common_how">Nasıl çalışır?</string>
+    <string name="live_weather_toggle">Kilit ekranında ve Dynamic Island\'da göster</string>
+    <string name="live_weather_note">Kameranın yanında ve kilit ekranında görünür; × ile ya da Denetim Merkezi\'nden kapatılır. iOS 8 saat sonra kaldırır; uygulamayı açınca geri gelir.</string>
+    <string name="live_weather_hide">Hava durumunu kapat</string>
+    <string name="live_weather_control">Kilit ekranında hava</string>
+    <string name="live_weather_toggleAndroid">Bildirim alanında ve kilit ekranında göster</string>
+    <string name="live_weather_noteAndroid">Sıcaklık durum çubuğunda ve kilit ekranında görünür; bildirimdeki Kapat ile, Hızlı Ayarlar\'dan ya da buradan kapatılır. Saatte bir yenilenir.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

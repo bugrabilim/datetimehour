@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import kotlinx.coroutines.launch
+
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -104,6 +106,14 @@ class MainActivity : ComponentActivity() {
         HealthLog.recordHiitIfDone(this)
         // Odakta engelleme: pomodoro sürüyorsa izleme hizmeti çalışsın, bittiyse dursun (#98)
         FocusBlock.sync(this)
+        // Bildirim alanındaki hava: açıksa ve eskidiyse yenilenir
+        if (LiveNotifications.weatherDue()) {
+            val app = applicationContext
+            kotlinx.coroutines.CoroutineScope(kotlinx.coroutines.Dispatchers.Default).launch {
+                LiveNotifications.refreshWeather(app)
+                LiveNotifications.sync(app)
+            }
+        }
     }
 
     /** Uygulamadan çıkarken widget'lar güncel konum ve dille yeniden çizilir */

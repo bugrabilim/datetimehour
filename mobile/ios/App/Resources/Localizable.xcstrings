@@ -262839,232 +262839,6 @@
         }
       }
     },
-    "live.clock": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dynamic Island'da canlı saat"
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Live clock in the Dynamic Island"
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Live-Uhr in der Dynamic Island"
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dynamic Island-da canlı saat"
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ساعة حية في Dynamic Island"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jam langsung di Dynamic Island"
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dynamic Island میں لائیو گھڑی"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ساعت زنده در Dynamic Island"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Horloge en direct dans la Dynamic Island"
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Живые часы в Dynamic Island"
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dynamic Islandにライブ時計"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dynamic Island에 실시간 시계"
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "灵动岛实时时钟"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Live na orasan sa Dynamic Island"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "นาฬิกาสดใน Dynamic Island"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reloj en vivo en la Dynamic Island"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Relógio ao vivo na Dynamic Island"
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "डायनेमिक आइलैंड में लाइव घड़ी"
-          }
-        }
-      }
-    },
-    "live.clockNote": {
-      "extractionState": "manual",
-      "localizations": {
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saat saniyesiyle Dynamic Island'da ve kilit ekranında görünür. Apple bu etkinlikleri en çok 8 saat açık tutar; uygulamayı açınca yeniden başlar."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The time with seconds appears in the Dynamic Island and on the Lock Screen. Apple keeps such activities for at most 8 hours; opening the app starts it again."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Die Uhrzeit mit Sekunden erscheint in der Dynamic Island und auf dem Sperrbildschirm. Apple lässt solche Aktivitäten höchstens 8 Stunden laufen; beim Öffnen der App startet sie neu."
-          }
-        },
-        "az": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saat saniyəsi ilə Dynamic Island-da və kilid ekranında görünür. Apple bu fəaliyyətləri ən çox 8 saat açıq saxlayır; tətbiqi açanda yenidən başlayır."
-          }
-        },
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "يظهر الوقت بالثواني في Dynamic Island وعلى شاشة القفل. تُبقي Apple هذه الأنشطة 8 ساعات على الأكثر؛ وتبدأ من جديد عند فتح التطبيق."
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Jam beserta detik tampil di Dynamic Island dan Layar Terkunci. Apple menjaga aktivitas ini paling lama 8 jam; membuka aplikasi akan memulainya lagi."
-          }
-        },
-        "ur": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "سیکنڈ سمیت وقت Dynamic Island اور لاک اسکرین پر دکھتا ہے۔ Apple ایسی سرگرمی زیادہ سے زیادہ 8 گھنٹے رکھتا ہے؛ ایپ کھولنے پر دوبارہ شروع ہوتی ہے۔"
-          }
-        },
-        "fa": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ساعت با ثانیه در Dynamic Island و صفحهٔ قفل دیده می‌شود. Apple این فعالیت‌ها را حداکثر 8 ساعت نگه می‌دارد؛ با باز کردن برنامه دوباره شروع می‌شود."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "L'heure avec les secondes s'affiche dans la Dynamic Island et sur l'écran verrouillé. Apple garde ces activités au plus 8 heures ; ouvrir l'app la relance."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Время с секундами видно в Dynamic Island и на экране блокировки. Apple держит такие активности не дольше 8 часов; при открытии приложения она запускается снова."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "秒まで表示した時刻がDynamic Islandとロック画面に出ます。Appleはこの表示を最長8時間で終了します。アプリを開くと再開します。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "초 단위 시간이 Dynamic Island와 잠금 화면에 표시됩니다. Apple은 최대 8시간까지만 유지하며, 앱을 열면 다시 시작됩니다."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "带秒的时间显示在灵动岛和锁定屏幕上。Apple 最多保留 8 小时；打开应用会重新开始。"
-          }
-        },
-        "fil": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lumalabas ang oras na may segundo sa Dynamic Island at Lock Screen. Hanggang 8 oras lang ito pinapanatili ng Apple; magsisimula ulit kapag binuksan ang app."
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "เวลาพร้อมวินาทีจะแสดงใน Dynamic Island และหน้าจอล็อก Apple เปิดไว้ได้นานสุด 8 ชั่วโมง เปิดแอปเพื่อเริ่มใหม่"
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "La hora con segundos aparece en la Dynamic Island y en la pantalla bloqueada. Apple mantiene estas actividades como máximo 8 horas; al abrir la app vuelve a empezar."
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A hora com segundos aparece na Dynamic Island e na tela bloqueada. A Apple mantém essas atividades por no máximo 8 horas; abrir o app inicia de novo."
-          }
-        },
-        "hi": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "सेकंड के साथ समय डायनेमिक आइलैंड और लॉक स्क्रीन पर दिखता है। Apple ऐसी गतिविधियाँ अधिकतम 8 घंटे रखता है; ऐप खोलने पर फिर शुरू हो जाती है।"
-          }
-        }
-      }
-    },
     "notify.cat.daily": {
       "extractionState": "manual",
       "localizations": {
@@ -320578,6 +320352,684 @@
           "stringUnit": {
             "state": "translated",
             "value": "यह कैसे काम करता है"
+          }
+        }
+      }
+    },
+    "live.weather.toggle": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilit ekranında ve Dynamic Island'da göster"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show on Lock Screen and in the Dynamic Island"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf dem Sperrbildschirm und in der Dynamic Island zeigen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilid ekranında və Dynamic Island-da göstər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عرض على شاشة القفل وفي Dynamic Island"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tampilkan di Layar Terkunci dan Dynamic Island"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لاک اسکرین اور Dynamic Island میں دکھائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نمایش در صفحهٔ قفل و Dynamic Island"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher sur l'écran verrouillé et dans la Dynamic Island"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать на экране блокировки и в Dynamic Island"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ロック画面とDynamic Islandに表示"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "잠금 화면과 Dynamic Island에 표시"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在锁定屏幕和灵动岛显示"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ipakita sa Lock Screen at Dynamic Island"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสดงบนหน้าจอล็อกและ Dynamic Island"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar en la pantalla bloqueada y en la Dynamic Island"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar na tela bloqueada e na Dynamic Island"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "लॉक स्क्रीन और डायनेमिक आइलैंड में दिखाएँ"
+          }
+        }
+      }
+    },
+    "live.weather.note": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kameranın yanında ve kilit ekranında görünür; × ile ya da Denetim Merkezi'nden kapatılır. iOS 8 saat sonra kaldırır; uygulamayı açınca geri gelir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Appears next to the camera and on the Lock Screen; turn it off with × or from Control Center. iOS removes it after 8 hours; opening the app brings it back."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erscheint neben der Kamera und auf dem Sperrbildschirm; mit × oder im Kontrollzentrum ausschalten. iOS entfernt sie nach 8 Stunden; beim Öffnen der App kommt sie zurück."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kameranın yanında və kilid ekranında görünür; × ilə ya da İdarəetmə Mərkəzindən bağlanır. iOS 8 saatdan sonra götürür; tətbiqi açanda geri gəlir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تظهر بجانب الكاميرا وعلى شاشة القفل؛ أوقفها بـ × أو من مركز التحكم. يزيلها iOS بعد 8 ساعات، وتعود عند فتح التطبيق."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tampil di samping kamera dan di Layar Terkunci; matikan dengan × atau dari Pusat Kontrol. iOS menghapusnya setelah 8 jam; membuka aplikasi memunculkannya lagi."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کیمرے کے ساتھ اور لاک اسکرین پر دکھتا ہے؛ × سے یا کنٹرول سینٹر سے بند کریں۔ iOS اسے 8 گھنٹے بعد ہٹا دیتا ہے؛ ایپ کھولنے پر واپس آ جاتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "کنار دوربین و روی صفحهٔ قفل دیده می‌شود؛ با × یا از مرکز کنترل خاموشش کنید. iOS پس از 8 ساعت برش می‌دارد؛ با باز کردن برنامه برمی‌گردد."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S'affiche à côté de la caméra et sur l'écran verrouillé ; désactivez-la avec × ou depuis le Centre de contrôle. iOS la retire après 8 heures ; ouvrir l'app la fait revenir."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видна рядом с камерой и на экране блокировки; выключается кнопкой × или в Пункте управления. iOS убирает её через 8 часов; при открытии приложения она возвращается."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "カメラの横とロック画面に表示されます。×またはコントロールセンターでオフにできます。iOSは8時間後に消去し、アプリを開くと戻ります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "카메라 옆과 잠금 화면에 표시됩니다. × 또는 제어 센터에서 끌 수 있습니다. iOS는 8시간 후 제거하며, 앱을 열면 다시 나타납니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "显示在摄像头旁和锁定屏幕上；可用 × 或在控制中心关闭。iOS 会在 8 小时后移除，打开应用即可恢复。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lumalabas sa tabi ng camera at sa Lock Screen; patayin gamit ang × o sa Control Center. Inaalis ito ng iOS pagkalipas ng 8 oras; babalik kapag binuksan ang app."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสดงข้างกล้องและบนหน้าจอล็อก ปิดได้ด้วย × หรือจากศูนย์ควบคุม iOS จะนำออกหลัง 8 ชั่วโมง เปิดแอปแล้วจะกลับมา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aparece junto a la cámara y en la pantalla bloqueada; desactívala con × o desde el Centro de control. iOS la quita tras 8 horas; al abrir la app vuelve."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aparece ao lado da câmera e na tela bloqueada; desative com × ou na Central de Controle. O iOS a remove após 8 horas; abrir o app a traz de volta."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "कैमरे के पास और लॉक स्क्रीन पर दिखता है; × से या कंट्रोल सेंटर से बंद करें। iOS इसे 8 घंटे बाद हटा देता है; ऐप खोलने पर लौट आता है।"
+          }
+        }
+      }
+    },
+    "live.weather.hide": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava durumunu kapat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Turn off weather"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wetter ausblenden"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hava məlumatını bağla"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إيقاف الطقس"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matikan cuaca"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "موسم بند کریں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خاموش کردن آب‌وهوا"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Masquer la météo"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скрыть погоду"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "天気を非表示"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "날씨 끄기"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关闭天气"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Patayin ang panahon"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปิดสภาพอากาศ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocultar el tiempo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ocultar o clima"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "मौसम बंद करें"
+          }
+        }
+      }
+    },
+    "live.weather.control": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilit ekranında hava"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weather on Lock Screen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wetter auf Sperrbildschirm"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kilid ekranında hava"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الطقس على شاشة القفل"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuaca di Layar Terkunci"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لاک اسکرین پر موسم"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آب‌وهوا روی صفحهٔ قفل"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Météo sur l'écran verrouillé"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Погода на экране блокировки"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ロック画面に天気"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "잠금 화면 날씨"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "锁定屏幕天气"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Panahon sa Lock Screen"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สภาพอากาศบนหน้าจอล็อก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tiempo en pantalla bloqueada"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clima na tela bloqueada"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "लॉक स्क्रीन पर मौसम"
+          }
+        }
+      }
+    },
+    "live.weather.toggleAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildirim alanında ve kilit ekranında göster"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show in the status bar and on the lock screen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In der Statusleiste und auf dem Sperrbildschirm zeigen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildiriş sahəsində və kilid ekranında göstər"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عرض في شريط الحالة وعلى شاشة القفل"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tampilkan di bilah status dan layar kunci"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسٹیٹس بار اور لاک اسکرین پر دکھائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نمایش در نوار وضعیت و صفحهٔ قفل"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Afficher dans la barre d'état et sur l'écran de verrouillage"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Показывать в строке состояния и на экране блокировки"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ステータスバーとロック画面に表示"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "상태 표시줄과 잠금 화면에 표시"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在状态栏和锁定屏幕显示"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ipakita sa status bar at lock screen"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "แสดงในแถบสถานะและหน้าจอล็อก"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar en la barra de estado y en la pantalla de bloqueo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mostrar na barra de status e na tela de bloqueio"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्टेटस बार और लॉक स्क्रीन पर दिखाएँ"
+          }
+        }
+      }
+    },
+    "live.weather.noteAndroid": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sıcaklık durum çubuğunda ve kilit ekranında görünür; bildirimdeki Kapat ile, Hızlı Ayarlar'dan ya da buradan kapatılır. Saatte bir yenilenir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The temperature appears in the status bar and on the lock screen; turn it off with Close in the notification, from Quick Settings or here. It refreshes hourly."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Temperatur erscheint in der Statusleiste und auf dem Sperrbildschirm; ausschalten mit „Schließen“ in der Benachrichtigung, in den Schnelleinstellungen oder hier. Stündlich aktualisiert."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temperatur status sətrində və kilid ekranında görünür; bildirişdəki Bağla ilə, Sürətli Ayarlardan ya da buradan bağlanır. Saatda bir yenilənir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تظهر درجة الحرارة في شريط الحالة وعلى شاشة القفل؛ أوقفها بزر الإغلاق في الإشعار أو من الإعدادات السريعة أو من هنا. تتجدد كل ساعة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suhu tampil di bilah status dan layar kunci; matikan dengan Tutup di notifikasi, dari Setelan Cepat, atau di sini. Diperbarui tiap jam."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درجۂ حرارت اسٹیٹس بار اور لاک اسکرین پر دکھتا ہے؛ اطلاع میں بند کریں سے، فوری ترتیبات سے یا یہاں سے بند کریں۔ ہر گھنٹے تازہ ہوتا ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دما در نوار وضعیت و صفحهٔ قفل دیده می‌شود؛ با «بستن» در اعلان، از تنظیمات سریع یا همین‌جا خاموشش کنید. هر ساعت به‌روز می‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La température s'affiche dans la barre d'état et sur l'écran de verrouillage ; désactivez-la avec Fermer dans la notification, depuis les Réglages rapides ou ici. Actualisée toutes les heures."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Температура видна в строке состояния и на экране блокировки; выключается кнопкой «Закрыть» в уведомлении, в быстрых настройках или здесь. Обновляется раз в час."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "気温がステータスバーとロック画面に表示されます。通知の「閉じる」、クイック設定、またはここでオフにできます。1時間ごとに更新します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "기온이 상태 표시줄과 잠금 화면에 표시됩니다. 알림의 닫기, 빠른 설정 또는 여기에서 끌 수 있습니다. 1시간마다 새로 고칩니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "气温显示在状态栏和锁定屏幕上；可用通知中的“关闭”、快捷设置或在此处关闭。每小时更新一次。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lumalabas ang temperatura sa status bar at lock screen; patayin gamit ang Isara sa notification, sa Quick Settings, o dito. Nire-refresh bawat oras."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อุณหภูมิแสดงในแถบสถานะและหน้าจอล็อก ปิดได้ด้วยปุ่มปิดในการแจ้งเตือน จากการตั้งค่าด่วน หรือที่นี่ อัปเดตทุกชั่วโมง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La temperatura aparece en la barra de estado y en la pantalla de bloqueo; desactívala con Cerrar en la notificación, desde Ajustes rápidos o aquí. Se actualiza cada hora."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A temperatura aparece na barra de status e na tela de bloqueio; desative com Fechar na notificação, nas Configurações rápidas ou aqui. Atualiza a cada hora."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तापमान स्टेटस बार और लॉक स्क्रीन पर दिखता है; सूचना में बंद करें से, क्विक सेटिंग्स से या यहाँ से बंद करें। हर घंटे ताज़ा होता है।"
           }
         }
       }

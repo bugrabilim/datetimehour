@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">中</string>
     <string name="widgets_size_large">大</string>
     <string name="widgets_size_lock">ロック画面</string>
-    <string name="live_clock">Dynamic Islandにライブ時計</string>
-    <string name="live_clockNote">秒まで表示した時刻がDynamic Islandとロック画面に出ます。Appleはこの表示を最長8時間で終了します。アプリを開くと再開します。</string>
     <string name="notify_cat_daily">今日のことわざ</string>
     <string name="notify_cat_daily_note">毎朝08:00に日めくりのことわざを音なしで。</string>
     <string name="notify_n_daily">今日のことわざ</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">日の光</string>
     <string name="atmo_daylightNote">日の光は選んだ場所の太陽に合わせて、夜明け・朝・午後・夕方・夜の色合いに変わります。</string>
     <string name="common_how">しくみ</string>
+    <string name="live_weather_toggle">ロック画面とDynamic Islandに表示</string>
+    <string name="live_weather_note">カメラの横とロック画面に表示されます。×またはコントロールセンターでオフにできます。iOSは8時間後に消去し、アプリを開くと戻ります。</string>
+    <string name="live_weather_hide">天気を非表示</string>
+    <string name="live_weather_control">ロック画面に天気</string>
+    <string name="live_weather_toggleAndroid">ステータスバーとロック画面に表示</string>
+    <string name="live_weather_noteAndroid">気温がステータスバーとロック画面に表示されます。通知の「閉じる」、クイック設定、またはここでオフにできます。1時間ごとに更新します。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

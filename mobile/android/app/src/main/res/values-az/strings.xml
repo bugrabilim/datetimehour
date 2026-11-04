@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Orta</string>
     <string name="widgets_size_large">Böyük</string>
     <string name="widgets_size_lock">Kilid ekranı</string>
-    <string name="live_clock">Dynamic Island-da canlı saat</string>
-    <string name="live_clockNote">Saat saniyəsi ilə Dynamic Island-da və kilid ekranında görünür. Apple bu fəaliyyətləri ən çox 8 saat açıq saxlayır; tətbiqi açanda yenidən başlayır.</string>
     <string name="notify_cat_daily">Günün sözü</string>
     <string name="notify_cat_daily_note">Hər səhər 08:00-da təqvim vərəqindəki söz, səssiz.</string>
     <string name="notify_n_daily">Günün sözü</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Gün işığı</string>
     <string name="atmo_daylightNote">Gün işığı seçilmiş yerdə Günəşin vəziyyətinə görə şəfəq, səhər, ikindi, axşam və ya gecə çalarını alır.</string>
     <string name="common_how">Necə işləyir?</string>
+    <string name="live_weather_toggle">Kilid ekranında və Dynamic Island-da göstər</string>
+    <string name="live_weather_note">Kameranın yanında və kilid ekranında görünür; × ilə ya da İdarəetmə Mərkəzindən bağlanır. iOS 8 saatdan sonra götürür; tətbiqi açanda geri gəlir.</string>
+    <string name="live_weather_hide">Hava məlumatını bağla</string>
+    <string name="live_weather_control">Kilid ekranında hava</string>
+    <string name="live_weather_toggleAndroid">Bildiriş sahəsində və kilid ekranında göstər</string>
+    <string name="live_weather_noteAndroid">Temperatur status sətrində və kilid ekranında görünür; bildirişdəki Bağla ilə, Sürətli Ayarlardan ya da buradan bağlanır. Saatda bir yenilənir.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

@@ -12,7 +12,7 @@ Tanzil, Pickthall) ve iCloud anahtar-değer eşitlemesi. 31 Ekim 2026: HealthKit
 (yüzen saat), vakitte AlarmKit alarmı, dokunulabilen widget'lar ve Denetim Merkezi düğmeleri, hesap yöntemleri;
 ardından müzikle alarm (Müzik arşivi izni), konum hatırlatıcıları (bölge bildirimi), takvim etkinliğine alarm, ikinci ezan
 kaydı (CC BY 3.0); ardından akıllı alarm (ivmeölçer yalnız alarm penceresinde, uygulama açıkken; yeni izin yok) ve
-15 dil (hedef kitle cümlesi). 3 Kasım 2026: Seçenek B gezinme (Tümü), Open-Meteo (hava kalitesi, model karşılaştırma, saat komplikasyonu). 4 Kasım 2026: yeni alarm görevleri (squat, nesne bulma: Vision; sesli okuma: yalnız cihaz içi konuşma tanıma, mikrofon izni), kıble kamera görünümü. Odakta engelleme (FamilyControls) Apple onayına kadar gizli olduğu için metinde yoktu; 4 Kasım 2026'da onay geldi, Ekran Süresi maddesi eklendi (yer açmak için bazı satırlar kısaltıldı; takvimde 30 ülke).
+15 dil (hedef kitle cümlesi). 3 Kasım 2026: Seçenek B gezinme (Tümü), Open-Meteo (hava kalitesi, model karşılaştırma, saat komplikasyonu). 4 Kasım 2026: yeni alarm görevleri (squat, nesne bulma: Vision; sesli okuma: yalnız cihaz içi konuşma tanıma, mikrofon izni), kıble kamera görünümü. Odakta engelleme (FamilyControls) Apple onayına kadar gizli olduğu için metinde yoktu; 4 Kasım 2026'da onay geldi, Ekran Süresi maddesi eklendi (yer açmak için bazı satırlar kısaltıldı; takvimde 30 ülke). Aynı gün Dynamic Island'daki canlı saat kalktı, yerine isteğe bağlı hava etkinliği (WeatherKit, işaretli).
 
 ---
 
@@ -40,7 +40,7 @@ iPhone and iPad; language follows the device.
 - AlarmKit: alarms, timers, optional prayer-time alarms. With a dismiss task, Stop opens the app to the task; if not done it rings again a minute later (max 10).
 - Picture in Picture: floating clock, only while the user keeps it open.
 - Screen Time (Family Controls, individual; asked only when turned on): optional "Block while focusing" shields apps the user picks during their own pomodoro; a ringing alarm with a dismiss task blocks deleting the app. Tokens stay on device.
-- Live Activities (timers, next prayer), interactive widgets and Control Center buttons.
+- Live Activities (timers, prayer, weather with mark), interactive widgets, Control Center buttons.
 
 5. EXTERNAL SERVICES
 - Apple WeatherKit: weather. Every WeatherKit view shows the Apple Weather mark and "Legal" link; the weather notification ends with " Weather".
@@ -56,6 +56,6 @@ No other servers: prayer times, qibla and sun/moon are computed on device. No an
 Same everywhere; holidays: Turkey plus 30 selectable countries; weather depends on WeatherKit coverage.
 
 7. REGULATED INDUSTRY / THIRD-PARTY MATERIAL
-No regulated services. Prayer times are informational (Turkey's Diyanet method by default, others selectable); the app states Diyanet's official times are authoritative. Adhan sounds: Wikimedia Commons (CC BY-SA 4.0, CC BY 3.0); district coordinates: GeoNames (CC BY 4.0); Quran text: Tanzil Project (CC BY 3.0); Pickthall translation (public domain); all credited in the app.
+No regulated services. Prayer times are informational (Turkey's Diyanet method by default, others selectable); the app says Diyanet's times are official. Adhan sounds: Wikimedia Commons (CC BY-SA 4.0, CC BY 3.0); district coordinates: GeoNames (CC BY 4.0); Quran text: Tanzil Project (CC BY 3.0); Pickthall translation (public domain); all credited in the app.
 
 Developer: Bugra Bilim - bilgi@bumbagroup.com - https://time.bumba.tr

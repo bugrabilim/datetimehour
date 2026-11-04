@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Médio</string>
     <string name="widgets_size_large">Grande</string>
     <string name="widgets_size_lock">Tela bloqueada</string>
-    <string name="live_clock">Relógio ao vivo na Dynamic Island</string>
-    <string name="live_clockNote">A hora com segundos aparece na Dynamic Island e na tela bloqueada. A Apple mantém essas atividades por no máximo 8 horas; abrir o app inicia de novo.</string>
     <string name="notify_cat_daily">Ditado do dia</string>
     <string name="notify_cat_daily_note">Toda manhã às 08:00, o ditado da folha do calendário, em silêncio.</string>
     <string name="notify_n_daily">Ditado do dia</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Luz do dia</string>
     <string name="atmo_daylightNote">A luz do dia acompanha o sol no lugar escolhido: tons de amanhecer, manhã, tarde, entardecer ou noite.</string>
     <string name="common_how">Como funciona</string>
+    <string name="live_weather_toggle">Mostrar na tela bloqueada e na Dynamic Island</string>
+    <string name="live_weather_note">Aparece ao lado da câmera e na tela bloqueada; desative com × ou na Central de Controle. O iOS a remove após 8 horas; abrir o app a traz de volta.</string>
+    <string name="live_weather_hide">Ocultar o clima</string>
+    <string name="live_weather_control">Clima na tela bloqueada</string>
+    <string name="live_weather_toggleAndroid">Mostrar na barra de status e na tela de bloqueio</string>
+    <string name="live_weather_noteAndroid">A temperatura aparece na barra de status e na tela de bloqueio; desative com Fechar na notificação, nas Configurações rápidas ou aqui. Atualiza a cada hora.</string>
     <string name="app_name">Hora e Data</string>
 </resources>

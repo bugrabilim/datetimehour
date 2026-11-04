@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">중형</string>
     <string name="widgets_size_large">대형</string>
     <string name="widgets_size_lock">잠금 화면</string>
-    <string name="live_clock">Dynamic Island에 실시간 시계</string>
-    <string name="live_clockNote">초 단위 시간이 Dynamic Island와 잠금 화면에 표시됩니다. Apple은 최대 8시간까지만 유지하며, 앱을 열면 다시 시작됩니다.</string>
     <string name="notify_cat_daily">오늘의 격언</string>
     <string name="notify_cat_daily_note">매일 아침 08:00에 일력의 격언을 소리 없이.</string>
     <string name="notify_n_daily">오늘의 격언</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">햇빛</string>
     <string name="atmo_daylightNote">햇빛은 선택한 곳의 태양을 따라 새벽, 아침, 오후, 저녁, 밤의 색으로 바뀝니다.</string>
     <string name="common_how">작동 방식</string>
+    <string name="live_weather_toggle">잠금 화면과 Dynamic Island에 표시</string>
+    <string name="live_weather_note">카메라 옆과 잠금 화면에 표시됩니다. × 또는 제어 센터에서 끌 수 있습니다. iOS는 8시간 후 제거하며, 앱을 열면 다시 나타납니다.</string>
+    <string name="live_weather_hide">날씨 끄기</string>
+    <string name="live_weather_control">잠금 화면 날씨</string>
+    <string name="live_weather_toggleAndroid">상태 표시줄과 잠금 화면에 표시</string>
+    <string name="live_weather_noteAndroid">기온이 상태 표시줄과 잠금 화면에 표시됩니다. 알림의 닫기, 빠른 설정 또는 여기에서 끌 수 있습니다. 1시간마다 새로 고칩니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

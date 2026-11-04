@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">درمیانہ</string>
     <string name="widgets_size_large">بڑا</string>
     <string name="widgets_size_lock">لاک اسکرین</string>
-    <string name="live_clock">Dynamic Island میں لائیو گھڑی</string>
-    <string name="live_clockNote">سیکنڈ سمیت وقت Dynamic Island اور لاک اسکرین پر دکھتا ہے۔ Apple ایسی سرگرمی زیادہ سے زیادہ 8 گھنٹے رکھتا ہے؛ ایپ کھولنے پر دوبارہ شروع ہوتی ہے۔</string>
     <string name="notify_cat_daily">آج کا قول</string>
     <string name="notify_cat_daily_note">ہر صبح 08:00 بجے کیلنڈر ورق کا قول، خاموشی سے۔</string>
     <string name="notify_n_daily">آج کا قول</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">دن کی روشنی</string>
     <string name="atmo_daylightNote">دن کی روشنی منتخب جگہ پر سورج کے مطابق بدلتی ہے: فجر، صبح، عصر، شام یا رات کے رنگ۔</string>
     <string name="common_how">یہ کیسے کام کرتا ہے؟</string>
+    <string name="live_weather_toggle">لاک اسکرین اور Dynamic Island میں دکھائیں</string>
+    <string name="live_weather_note">کیمرے کے ساتھ اور لاک اسکرین پر دکھتا ہے؛ × سے یا کنٹرول سینٹر سے بند کریں۔ iOS اسے 8 گھنٹے بعد ہٹا دیتا ہے؛ ایپ کھولنے پر واپس آ جاتا ہے۔</string>
+    <string name="live_weather_hide">موسم بند کریں</string>
+    <string name="live_weather_control">لاک اسکرین پر موسم</string>
+    <string name="live_weather_toggleAndroid">اسٹیٹس بار اور لاک اسکرین پر دکھائیں</string>
+    <string name="live_weather_noteAndroid">درجۂ حرارت اسٹیٹس بار اور لاک اسکرین پر دکھتا ہے؛ اطلاع میں بند کریں سے، فوری ترتیبات سے یا یہاں سے بند کریں۔ ہر گھنٹے تازہ ہوتا ہے۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

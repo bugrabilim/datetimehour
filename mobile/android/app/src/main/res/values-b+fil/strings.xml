@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Katamtaman</string>
     <string name="widgets_size_large">Malaki</string>
     <string name="widgets_size_lock">Lock Screen</string>
-    <string name="live_clock">Live na orasan sa Dynamic Island</string>
-    <string name="live_clockNote">Lumalabas ang oras na may segundo sa Dynamic Island at Lock Screen. Hanggang 8 oras lang ito pinapanatili ng Apple; magsisimula ulit kapag binuksan ang app.</string>
     <string name="notify_cat_daily">Kasabihan ng araw</string>
     <string name="notify_cat_daily_note">Tuwing umaga, 08:00, ang kasabihan sa pahina ng kalendaryo, tahimik.</string>
     <string name="notify_n_daily">Kasabihan ng araw</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Liwanag ng araw</string>
     <string name="atmo_daylightNote">Sumusunod ang Liwanag ng araw sa araw sa napiling lugar: kulay ng bukang-liwayway, umaga, hapon, gabi o hatinggabi.</string>
     <string name="common_how">Paano ito gumagana</string>
+    <string name="live_weather_toggle">Ipakita sa Lock Screen at Dynamic Island</string>
+    <string name="live_weather_note">Lumalabas sa tabi ng camera at sa Lock Screen; patayin gamit ang × o sa Control Center. Inaalis ito ng iOS pagkalipas ng 8 oras; babalik kapag binuksan ang app.</string>
+    <string name="live_weather_hide">Patayin ang panahon</string>
+    <string name="live_weather_control">Panahon sa Lock Screen</string>
+    <string name="live_weather_toggleAndroid">Ipakita sa status bar at lock screen</string>
+    <string name="live_weather_noteAndroid">Lumalabas ang temperatura sa status bar at lock screen; patayin gamit ang Isara sa notification, sa Quick Settings, o dito. Nire-refresh bawat oras.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

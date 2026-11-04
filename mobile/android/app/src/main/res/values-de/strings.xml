@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Mittel</string>
     <string name="widgets_size_large">Groß</string>
     <string name="widgets_size_lock">Sperrbildschirm</string>
-    <string name="live_clock">Live-Uhr in der Dynamic Island</string>
-    <string name="live_clockNote">Die Uhrzeit mit Sekunden erscheint in der Dynamic Island und auf dem Sperrbildschirm. Apple lässt solche Aktivitäten höchstens 8 Stunden laufen; beim Öffnen der App startet sie neu.</string>
     <string name="notify_cat_daily">Spruch des Tages</string>
     <string name="notify_cat_daily_note">Jeden Morgen um 08:00 der Spruch des Kalenderblatts, lautlos.</string>
     <string name="notify_n_daily">Spruch des Tages</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Tageslicht</string>
     <string name="atmo_daylightNote">Tageslicht folgt der Sonne am gewählten Ort: Töne für Morgendämmerung, Vormittag, Nachmittag, Abend oder Nacht.</string>
     <string name="common_how">So funktioniert es</string>
+    <string name="live_weather_toggle">Auf dem Sperrbildschirm und in der Dynamic Island zeigen</string>
+    <string name="live_weather_note">Erscheint neben der Kamera und auf dem Sperrbildschirm; mit × oder im Kontrollzentrum ausschalten. iOS entfernt sie nach 8 Stunden; beim Öffnen der App kommt sie zurück.</string>
+    <string name="live_weather_hide">Wetter ausblenden</string>
+    <string name="live_weather_control">Wetter auf Sperrbildschirm</string>
+    <string name="live_weather_toggleAndroid">In der Statusleiste und auf dem Sperrbildschirm zeigen</string>
+    <string name="live_weather_noteAndroid">Die Temperatur erscheint in der Statusleiste und auf dem Sperrbildschirm; ausschalten mit „Schließen“ in der Benachrichtigung, in den Schnelleinstellungen oder hier. Stündlich aktualisiert.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">กลาง</string>
     <string name="widgets_size_large">ใหญ่</string>
     <string name="widgets_size_lock">หน้าจอล็อก</string>
-    <string name="live_clock">นาฬิกาสดใน Dynamic Island</string>
-    <string name="live_clockNote">เวลาพร้อมวินาทีจะแสดงใน Dynamic Island และหน้าจอล็อก Apple เปิดไว้ได้นานสุด 8 ชั่วโมง เปิดแอปเพื่อเริ่มใหม่</string>
     <string name="notify_cat_daily">คำคมประจำวัน</string>
     <string name="notify_cat_daily_note">ทุกเช้าเวลา 08:00 คำคมจากปฏิทินแบบไม่มีเสียง</string>
     <string name="notify_n_daily">คำคมประจำวัน</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">แสงตะวัน</string>
     <string name="atmo_daylightNote">แสงตะวันเปลี่ยนตามดวงอาทิตย์ ณ สถานที่ที่เลือก: โทนรุ่งอรุณ เช้า บ่าย เย็น หรือกลางคืน</string>
     <string name="common_how">วิธีการทำงาน</string>
+    <string name="live_weather_toggle">แสดงบนหน้าจอล็อกและ Dynamic Island</string>
+    <string name="live_weather_note">แสดงข้างกล้องและบนหน้าจอล็อก ปิดได้ด้วย × หรือจากศูนย์ควบคุม iOS จะนำออกหลัง 8 ชั่วโมง เปิดแอปแล้วจะกลับมา</string>
+    <string name="live_weather_hide">ปิดสภาพอากาศ</string>
+    <string name="live_weather_control">สภาพอากาศบนหน้าจอล็อก</string>
+    <string name="live_weather_toggleAndroid">แสดงในแถบสถานะและหน้าจอล็อก</string>
+    <string name="live_weather_noteAndroid">อุณหภูมิแสดงในแถบสถานะและหน้าจอล็อก ปิดได้ด้วยปุ่มปิดในการแจ้งเตือน จากการตั้งค่าด่วน หรือที่นี่ อัปเดตทุกชั่วโมง</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

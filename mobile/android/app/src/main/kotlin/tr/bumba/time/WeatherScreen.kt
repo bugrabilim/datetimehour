@@ -88,6 +88,20 @@ fun WeatherScreen() {
                 TextButton(onClick = { Share.image(ctx, ShareCards.weather(place, d), "hava.png", L("share.card")) }) {
                     Text("📤 " + L("share.card"), color = Theme.c.accent)
                 }
+                // Bildirim alanında ve kilit ekranında hava (4 Kasım 2026; iOS'taki Dynamic Island karşılığı, kolay aç/kapa)
+                var liveWeather by remember { mutableStateOf(Prefs.store.getBoolean(LiveNotifications.WEATHER_KEY, false)) }
+                AppCard {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            Text(L("live.weather.toggleAndroid"), color = Theme.c.text, fontSize = 15.sp)
+                            Text(L("live.weather.noteAndroid"), color = Theme.c.muted, fontSize = 12.sp)
+                        }
+                        SoftSwitch(liveWeather, {
+                            liveWeather = it
+                            LiveNotifications.setWeather(ctx, it)
+                        })
+                    }
+                }
                 HourlyChart(d)
                 Hourly(d)
                 // Dışarıdaki işlere uygunluk (2. analiz #113)

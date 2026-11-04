@@ -24,6 +24,9 @@ struct SaatTarihApp: App {
         WatchSync.shared.start()
         // iPhone, iPad ve Mac arasında ayarlar (iCloud anahtar-değer deposu; sunucu yok)
         CloudSync.start()
+        // Kilit ekranı / Dynamic Island hava etkinliği: Denetim Merkezi düğmesi uygulamayı arka planda başlatsa da
+        // güncel hava WeatherKit'ten alınır
+        LiveWeather.refresher = { await LiveActivities.refreshWeather() }
     }
 
     var body: some Scene {
@@ -52,8 +55,10 @@ struct SaatTarihApp: App {
                 PomoNoise.sync()
                 // Odakta engelleme: süre bittiyse kalkan kalkar (#98)
                 FocusBlock.sync()
-                // Kilit ekranı / Dynamic Island etkinlikleri (sıradaki vakit ileri taşınır, bitenler kapanır)
+                // Kilit ekranı / Dynamic Island etkinlikleri (sıradaki vakit ileri taşınır, bitenler kapanır;
+                // hava etkinliği açıksa güncel hava alınır)
                 LiveActivities.sync()
+                Task { await LiveActivities.refreshWeather() }
                 Self.publishWidgetSky()
             } else if phase == .background {
                 BackgroundRefresh.schedule()
@@ -151,8 +156,13 @@ final class Router {
     /// Siri / Kısayollar "Tam ekran saati aç": saat sekmesi tam ekran açılır
     var wantsFullscreen = false
 
-    /// saattarih://<yol> (Denetim Merkezi düğmeleri): fullscreen, timer, stopwatch, alarm, prayer
+    /// saattarih://<yol> (Denetim Merkezi düğmeleri): fullscreen, timer, stopwatch, alarm, prayer, weather.
+    /// Widget ve kilit ekranındaki https bağlantıları (Apple Hava Durumu yasal sayfası) uygulamaya gelir, Safari'de açılır.
     func handle(_ url: URL) {
+        if url.scheme == "https" {
+            UIApplication.shared.open(url)
+            return
+        }
         guard url.scheme == "saattarih" else { return }
         sheet = nil
         switch url.host() ?? "" {
@@ -168,6 +178,8 @@ final class Router {
         case "stopwatch": tab = .tools; toolsPath = [.stopwatch]
         case "alarm": tab = .tools; toolsPath = [.alarm]
         case "prayer": tab = .prayer
+        // Kilit ekranındaki ve Dynamic Island'daki hava etkinliği
+        case "weather": tab = .weather
         // Widget'a dokununca açılacak ekran (2. analiz #168)
         case "clock": tab = .clock
         case "calendar": tab = .calendar

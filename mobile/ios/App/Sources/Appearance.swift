@@ -214,7 +214,6 @@ struct AppearanceView: View {
     @AppStorage(DualZone.key) private var dualCity = ""
     @AppStorage(WeatherScene.clockKey) private var weatherClock = false
     @AppStorage(WeatherScene.tabKey) private var weatherTab = true
-    @AppStorage(LiveActivities.clockKey) private var liveClock = false
 
     private var background: FullscreenBackground { FullscreenBackground(rawValue: bgRaw) ?? (photoVersion > 0 ? .photo : .plain) }
 
@@ -234,13 +233,11 @@ struct AppearanceView: View {
                     Label(L("widgets.gallery"), systemImage: "square.grid.2x2")
                 }
             }
-            // Dynamic Island'da canlı saat (2. analiz #19)
+            // Kilit ekranında ve Dynamic Island'da hava (4 Kasım 2026; canlı saatin yerine, saat telefonda zaten var)
             Section {
-                Toggle(L("live.clock"), isOn: $liveClock)
-                    .tint(Theme.accent)
-                    .onChange(of: liveClock) { _, _ in LiveActivities.sync() }
+                LiveWeatherToggle(showNote: false)
             } footer: {
-                Text(L("live.clockNote"))
+                Text(L("live.weather.note"))
             }
             Section(L("look.font")) {
                 TimelineView(.periodic(from: .now, by: 1)) { context in

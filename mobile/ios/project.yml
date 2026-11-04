@@ -90,6 +90,8 @@ targets:
       - path: App/Sources/MoonTexture.swift
       - path: App/Sources/Hijri.swift
       - path: App/Sources/LiveActivityModel.swift
+      # Hava etkinliğinin × ve Denetim Merkezi düğmesi (LiveActivityIntent: iki hedefte de derlenir, uygulamada çalışır)
+      - path: App/Sources/LiveWeather.swift
       - path: App/Sources/WorldMath.swift
       # Şeffaf widget (2. analiz #76): App Group'tan duvar kâğıdı parçası
       - path: App/Sources/WallpaperWidget.swift
@@ -123,6 +125,8 @@ targets:
       base:
         PRODUCT_NAME: SaatTarihWidget
         PRODUCT_BUNDLE_IDENTIFIER: tr.bumba.time.widget
+        # Uygulamayla ortak dosyalarda yalnız uygulamada çalışan kısım için (#if !WIDGET_EXTENSION; ör. LiveWeather.swift)
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: "$(inherited) WIDGET_EXTENSION"
         CODE_SIGN_ENTITLEMENTS: Widget/SaatTarihWidget.entitlements
         DEVELOPMENT_TEAM: 3J9XN2P93D
         CODE_SIGN_STYLE: Automatic

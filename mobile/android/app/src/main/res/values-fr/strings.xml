@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Moyen</string>
     <string name="widgets_size_large">Grand</string>
     <string name="widgets_size_lock">Écran verrouillé</string>
-    <string name="live_clock">Horloge en direct dans la Dynamic Island</string>
-    <string name="live_clockNote">L\'heure avec les secondes s\'affiche dans la Dynamic Island et sur l\'écran verrouillé. Apple garde ces activités au plus 8 heures ; ouvrir l\'app la relance.</string>
     <string name="notify_cat_daily">Maxime du jour</string>
     <string name="notify_cat_daily_note">Chaque matin à 08:00, la maxime de la feuille du calendrier, sans son.</string>
     <string name="notify_n_daily">Maxime du jour</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Lumière du jour</string>
     <string name="atmo_daylightNote">La lumière du jour suit le soleil à l\'endroit choisi : tons d\'aube, de matin, d\'après-midi, de soir ou de nuit.</string>
     <string name="common_how">Comment ça marche ?</string>
+    <string name="live_weather_toggle">Afficher sur l\'écran verrouillé et dans la Dynamic Island</string>
+    <string name="live_weather_note">S\'affiche à côté de la caméra et sur l\'écran verrouillé ; désactivez-la avec × ou depuis le Centre de contrôle. iOS la retire après 8 heures ; ouvrir l\'app la fait revenir.</string>
+    <string name="live_weather_hide">Masquer la météo</string>
+    <string name="live_weather_control">Météo sur l\'écran verrouillé</string>
+    <string name="live_weather_toggleAndroid">Afficher dans la barre d\'état et sur l\'écran de verrouillage</string>
+    <string name="live_weather_noteAndroid">La température s\'affiche dans la barre d\'état et sur l\'écran de verrouillage ; désactivez-la avec Fermer dans la notification, depuis les Réglages rapides ou ici. Actualisée toutes les heures.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

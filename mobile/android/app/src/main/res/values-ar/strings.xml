@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">متوسط</string>
     <string name="widgets_size_large">كبير</string>
     <string name="widgets_size_lock">شاشة القفل</string>
-    <string name="live_clock">ساعة حية في Dynamic Island</string>
-    <string name="live_clockNote">يظهر الوقت بالثواني في Dynamic Island وعلى شاشة القفل. تُبقي Apple هذه الأنشطة 8 ساعات على الأكثر؛ وتبدأ من جديد عند فتح التطبيق.</string>
     <string name="notify_cat_daily">حكمة اليوم</string>
     <string name="notify_cat_daily_note">كل صباح في 08:00 حكمة ورقة التقويم، بلا صوت.</string>
     <string name="notify_n_daily">حكمة اليوم</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">ضوء النهار</string>
     <string name="atmo_daylightNote">يتبع ضوء النهار الشمس في المكان المختار: ألوان الفجر أو الصباح أو العصر أو المساء أو الليل.</string>
     <string name="common_how">كيف يعمل؟</string>
+    <string name="live_weather_toggle">عرض على شاشة القفل وفي Dynamic Island</string>
+    <string name="live_weather_note">تظهر بجانب الكاميرا وعلى شاشة القفل؛ أوقفها بـ × أو من مركز التحكم. يزيلها iOS بعد 8 ساعات، وتعود عند فتح التطبيق.</string>
+    <string name="live_weather_hide">إيقاف الطقس</string>
+    <string name="live_weather_control">الطقس على شاشة القفل</string>
+    <string name="live_weather_toggleAndroid">عرض في شريط الحالة وعلى شاشة القفل</string>
+    <string name="live_weather_noteAndroid">تظهر درجة الحرارة في شريط الحالة وعلى شاشة القفل؛ أوقفها بزر الإغلاق في الإشعار أو من الإعدادات السريعة أو من هنا. تتجدد كل ساعة.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

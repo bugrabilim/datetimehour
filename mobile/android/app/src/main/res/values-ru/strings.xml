@@ -2327,8 +2327,6 @@
     <string name="widgets_size_medium">Средний</string>
     <string name="widgets_size_large">Большой</string>
     <string name="widgets_size_lock">Экран блокировки</string>
-    <string name="live_clock">Живые часы в Dynamic Island</string>
-    <string name="live_clockNote">Время с секундами видно в Dynamic Island и на экране блокировки. Apple держит такие активности не дольше 8 часов; при открытии приложения она запускается снова.</string>
     <string name="notify_cat_daily">Изречение дня</string>
     <string name="notify_cat_daily_note">Каждое утро в 08:00 — изречение с листка календаря, без звука.</string>
     <string name="notify_n_daily">Изречение дня</string>
@@ -2838,5 +2836,11 @@
     <string name="atmo_daylight">Дневной свет</string>
     <string name="atmo_daylightNote">Дневной свет следует за солнцем в выбранном месте: тона рассвета, утра, дня, вечера или ночи.</string>
     <string name="common_how">Как это работает</string>
+    <string name="live_weather_toggle">Показывать на экране блокировки и в Dynamic Island</string>
+    <string name="live_weather_note">Видна рядом с камерой и на экране блокировки; выключается кнопкой × или в Пункте управления. iOS убирает её через 8 часов; при открытии приложения она возвращается.</string>
+    <string name="live_weather_hide">Скрыть погоду</string>
+    <string name="live_weather_control">Погода на экране блокировки</string>
+    <string name="live_weather_toggleAndroid">Показывать в строке состояния и на экране блокировки</string>
+    <string name="live_weather_noteAndroid">Температура видна в строке состояния и на экране блокировки; выключается кнопкой «Закрыть» в уведомлении, в быстрых настройках или здесь. Обновляется раз в час.</string>
     <string name="app_name">Время и дата</string>
 </resources>
