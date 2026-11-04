@@ -143,7 +143,7 @@ public enum Sky {
     public struct SolarLocal: Sendable { public let c1: Int64?, max: Int64, c4: Int64?, mag: Double, obsc: Double, central: String, altMax: Double }
 
     public static func solarLocal(ut: Double, lat: Double, lon: Double) -> SolarLocal? {
-        let f: (Double) -> Double = { t in let x = solarDisks(ms: t, lat: lat, lon: lon); return x.d - x.rs - x.rm }
+        func f(_ t: Double) -> Double { let x = solarDisks(ms: t, lat: lat, lon: lon); return x.d - x.rs - x.rm }
         var best: Double? = nil
         var bt = 0.0
         var t = ut - 4 * 3600000
@@ -193,7 +193,7 @@ public enum Sky {
         }
         let tm = (a + b) / 2, G = geo(tm)
         func cross(_ lim: (Geo) -> Double, _ dir: Double) -> Int64? {
-            let g: (Double) -> Double = { t in let q = geo(t); return q.d - lim(q) }
+            func g(_ t: Double) -> Double { let q = geo(t); return q.d - lim(q) }
             if g(tm) >= 0 { return nil }
             var lo = tm, hi = tm + dir * 4 * 3600000
             for _ in 0..<40 { let mid = (lo + hi) / 2; if g(mid) < 0 { lo = mid } else { hi = mid } }
