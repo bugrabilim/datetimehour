@@ -349,25 +349,23 @@ private fun ObjectTask(code: String, onSolved: () -> Unit) {
     Text(L("wake.object.note"), color = Theme.c.muted, fontSize = 13.sp, textAlign = TextAlign.Center)
 }
 
-/** Sesli okuma (#37): günün sözlerinden biri; Android'in cihaz içi konuşma tanıması (Android 12+ createOnDeviceSpeechRecognizer,
- *  öncesinde çevrimdışı tercihli tanıyıcı). Ses kaydedilmez. Tanıma yoksa [onUnavailable] (yazma görevi). Mikrofon izni burada istenir. */
+/** Sesli okuma (#37): günün sözlerinden biri; yalnız Android'in cihaz içi konuşma tanıması (Android 12+
+ *  createOnDeviceSpeechRecognizer). Ses kaydedilmez, telefondan çıkmaz. Tanıma yoksa [onUnavailable] (yazma görevi). Mikrofon izni burada istenir. */
 @Composable
 private fun SpeakTask(onSolved: () -> Unit, onUnavailable: () -> Unit) {
     val context = LocalContext.current
     val phrase = remember { Sayings.random(context) ?: "Saat Tarih" }
     var heard by remember { mutableStateOf("") }
     var listening by remember { mutableStateOf(false) }
+    // Yalnız cihaz içi tanıma (Android 12+): ses telefondan çıkmaz; yoksa yazma görevine geçilir
     val available = remember {
-        android.speech.SpeechRecognizer.isRecognitionAvailable(context) ||
-            (android.os.Build.VERSION.SDK_INT >= 31 && runCatching { android.speech.SpeechRecognizer.isOnDeviceRecognitionAvailable(context) }.getOrDefault(false))
+        android.os.Build.VERSION.SDK_INT >= 31 &&
+            runCatching { android.speech.SpeechRecognizer.isOnDeviceRecognitionAvailable(context) }.getOrDefault(false)
     }
     androidx.compose.runtime.LaunchedEffect(available) { if (!available) onUnavailable() }
     val recognizer = remember {
-        if (!available) null else runCatching {
-            if (android.os.Build.VERSION.SDK_INT >= 31 && android.speech.SpeechRecognizer.isOnDeviceRecognitionAvailable(context))
-                android.speech.SpeechRecognizer.createOnDeviceSpeechRecognizer(context)
-            else android.speech.SpeechRecognizer.createSpeechRecognizer(context)
-        }.getOrNull()
+        if (!available || android.os.Build.VERSION.SDK_INT < 31) null
+        else runCatching { android.speech.SpeechRecognizer.createOnDeviceSpeechRecognizer(context) }.getOrNull()
     }
     DisposableEffect(recognizer) { onDispose { recognizer?.destroy() } }
     fun listen() {

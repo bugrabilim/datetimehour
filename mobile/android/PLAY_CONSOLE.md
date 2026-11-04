@@ -215,6 +215,11 @@ Gizlilik politikası adresi: https://time.bumba.tr/gizlilik/ (İngilizce: https:
 - **Widget'lar ve Hızlı Ayarlar kutucukları** (zikirmatik, kronometre, tam ekran saat): yeni izin yok.
 - Veri güvenliği: sabah günlüğü, fotoğraflı alarm görevinin özeti ve Health Connect'e yazılan antrenman uygulama
   sunucusuna gitmez ("toplanmaz"; Health Connect telefondaki sistem deposudur).
+- **Mikrofon** (`RECORD_AUDIO`, 4 Kasım 2026): yalnız "sesli okuma" alarm görevinde, görev ekranında istenir; yalnız
+  Android'in cihaz içi konuşma tanıması (Android 12+) kullanılır, ses kaydedilmez ve gönderilmez (cihaz içi tanıma yoksa
+  yazma görevi). Beyan formu yok. Veri güvenliği: ses "toplanmaz" (yalnız cihazda, geçici işlenir).
+- **Nesne bulma görevi** (4 Kasım 2026): sistem kamerasının küçük fotoğrafı Google Play hizmetlerinin cihaz içi görüntü
+  etiketleme modeliyle (`play-services-mlkit-image-labeling`) tanınır; kamera izni istenmez, fotoğraf saklanmaz.
 
 ## 7. Konum hatırlatıcıları, odak engeli ve Android TV (31 Ekim 2026, sıradaki sürüm)
 
