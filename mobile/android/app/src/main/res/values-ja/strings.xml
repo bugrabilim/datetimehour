@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">女性は腕を脇に、腹を太ももに近づけます。</string>
     <string name="guide_pic_m_7">男性は左足を寝かせてその上に座り、右足はつま先をキブラに向けて立てます。</string>
     <string name="guide_pic_f_7">女性は両足を右側に出して床に座ります。</string>
+    <string name="widget_sunArc_name">太陽の軌道</string>
+    <string name="widget_sunArc_desc">日の出から日の入りまでの弧と24時間の昼夜リング</string>
     <string name="app_name">時刻と日付</string>
 </resources>

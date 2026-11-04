@@ -615,6 +615,7 @@ class MoreScreensTest {
         widget("widget-yil", 170, 170, YearWidget().views(c, 31))
         widget("widget-yaziyla", 170, 170, WordsWidget().views(c, 32))
         widget("widget-gunes", 170, 170, SunWidget().views(c, 33))
+        widget("widget-gunes-yayi", 320, 150, SunArcWidget().views(c, 41))
         widget("widget-gunun-sozu", 260, 170, DailyWidget().views(c, 34))
         Prefs.store.edit().putString(DailyWidget.key(35), "esma").putString(DailyWidget.key(36), "verse").commit()
         widget("widget-esma", 260, 170, DailyWidget().views(c, 35))

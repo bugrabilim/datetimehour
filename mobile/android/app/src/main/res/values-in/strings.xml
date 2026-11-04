@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">Perempuan merapatkan lengan ke sisi badan dan perut ke paha.</string>
     <string name="guide_pic_m_7">Laki-laki duduk di atas kaki kiri yang dibentangkan, kaki kanan ditegakkan dengan jari ke arah kiblat.</string>
     <string name="guide_pic_f_7">Perempuan duduk di lantai dengan kedua kaki dikeluarkan ke sisi kanan.</string>
+    <string name="widget_sunArc_name">Lintasan matahari</string>
+    <string name="widget_sunArc_desc">Busur dari terbit hingga terbenam dan cincin siang/malam 24 jam</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

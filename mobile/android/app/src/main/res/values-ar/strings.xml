@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">تضم النساء أذرعهن إلى الجنبين وبطونهن إلى الفخذين.</string>
     <string name="guide_pic_m_7">يجلس الرجال على القدم اليسرى مفروشة وينصبون اليمنى وأصابعها نحو القبلة.</string>
     <string name="guide_pic_f_7">تجلس النساء على الأرض مخرجات القدمين إلى الجانب الأيمن.</string>
+    <string name="widget_sunArc_name">مسار الشمس</string>
+    <string name="widget_sunArc_desc">قوس من الشروق إلى الغروب وحلقة الليل والنهار لـ 24 ساعة</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

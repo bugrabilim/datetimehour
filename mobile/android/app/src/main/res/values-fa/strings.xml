@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">زنان بازوها را به پهلو و شکم را به ران نزدیک نگه می‌دارند.</string>
     <string name="guide_pic_m_7">مردان روی پای چپ خوابانده می‌نشینند و پای راست را با انگشتان رو به قبله عمودی نگه می‌دارند.</string>
     <string name="guide_pic_f_7">زنان هر دو پا را به سمت راست بیرون آورده روی زمین می‌نشینند.</string>
+    <string name="widget_sunArc_name">مسیر خورشید</string>
+    <string name="widget_sunArc_desc">کمان طلوع تا غروب و حلقه 24 ساعته روز و شب</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

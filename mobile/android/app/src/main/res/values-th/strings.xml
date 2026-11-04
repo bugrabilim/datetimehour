@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">ผู้หญิงแนบแขนชิดลำตัว ท้องชิดต้นขา</string>
     <string name="guide_pic_m_7">ผู้ชายนั่งบนเท้าซ้ายที่วางราบ ตั้งเท้าขวาโดยให้นิ้วหันไปทางกิบลัต</string>
     <string name="guide_pic_f_7">ผู้หญิงนั่งบนพื้นโดยยื่นเท้าทั้งสองไปทางขวา</string>
+    <string name="widget_sunArc_name">เส้นทางดวงอาทิตย์</string>
+    <string name="widget_sunArc_desc">ส่วนโค้งจากขึ้นถึงตก และวงกลางวัน/กลางคืน 24 ชั่วโมง</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

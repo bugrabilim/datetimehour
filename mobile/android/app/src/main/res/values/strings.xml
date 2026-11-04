@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">Kadınlar kollarını yanlarına, karnını uyluklarına yakın tutar.</string>
     <string name="guide_pic_m_7">Erkekler sol ayağı yatırıp üzerine oturur, sağ ayağı parmaklar kıbleye dönük dik tutar.</string>
     <string name="guide_pic_f_7">Kadınlar iki ayağını sağ yana çıkarıp yere oturur.</string>
+    <string name="widget_sunArc_name">Güneş yayı</string>
+    <string name="widget_sunArc_desc">Doğuştan batışa yay ve 24 saatlik gündüz/gece halkası</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

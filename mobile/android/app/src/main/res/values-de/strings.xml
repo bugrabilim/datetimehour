@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">Frauen halten die Arme am Körper und den Bauch nah an den Oberschenkeln.</string>
     <string name="guide_pic_m_7">Männer sitzen auf dem flach gelegten linken Fuß, der rechte Fuß steht aufrecht, Zehen zur Qibla.</string>
     <string name="guide_pic_f_7">Frauen sitzen auf dem Boden, beide Füße nach rechts ausgestreckt.</string>
+    <string name="widget_sunArc_name">Sonnenbogen</string>
+    <string name="widget_sunArc_desc">Bogen von Sonnenauf- bis -untergang und 24-Stunden-Ring für Tag und Nacht</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

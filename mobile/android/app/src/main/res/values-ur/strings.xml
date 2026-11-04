@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">عورتیں بازو پہلوؤں سے اور پیٹ رانوں سے ملا کر رکھتی ہیں۔</string>
     <string name="guide_pic_m_7">مرد بایاں پاؤں بچھا کر اس پر بیٹھتے ہیں اور دایاں پاؤں انگلیاں قبلہ رخ کر کے کھڑا رکھتے ہیں۔</string>
     <string name="guide_pic_f_7">عورتیں دونوں پاؤں دائیں طرف نکال کر زمین پر بیٹھتی ہیں۔</string>
+    <string name="widget_sunArc_name">سورج کا راستہ</string>
+    <string name="widget_sunArc_desc">طلوع سے غروب تک قوس اور 24 گھنٹے کا دن/رات حلقہ</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

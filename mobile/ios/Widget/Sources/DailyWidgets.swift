@@ -228,7 +228,14 @@ struct SunProvider: AppIntentTimelineProvider {
         var cal = Calendar(identifier: .gregorian)
         cal.timeZone = place.schedule.timeZone
         let next = cal.startOfDay(for: now).addingTimeInterval(86_400 + 5)
-        return Timeline(entries: [entry(now, place)], policy: .after(next))
+        // Güneş yayı (orta boy) Güneş'in yerini gösterdiği için gün boyunca 15 dakikada bir kayıt (2. analiz #150)
+        var entries: [SunEntry] = []
+        var t = now
+        while t < next {
+            entries.append(entry(t, place))
+            t = t.addingTimeInterval(15 * 60)
+        }
+        return Timeline(entries: entries, policy: .after(next))
     }
 
     private func entry(_ date: Date, _ place: Place) -> SunEntry {
@@ -255,7 +262,76 @@ struct SunWidget: Widget {
         }
         .configurationDisplayName(L("widget.sun.name"))
         .description(L("widget.sun.desc"))
-        .supportedFamilies([.systemSmall, .accessoryRectangular])
+        .supportedFamilies([.systemSmall, .systemMedium, .accessoryRectangular])
+    }
+}
+
+/// Orta boy: solda doğuştan batışa yay ve Güneş'in yeri, sağda 24 saatlik gündüz/gece halkası ve şimdi ibresi
+/// (Android'deki SunArcWidget ile aynı düzen; 2. analiz #150)
+struct SunArcView: View {
+    let entry: SunEntry
+
+    private func minutes(_ d: Date?) -> Double? {
+        guard let d else { return nil }
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = entry.zone
+        let c = cal.dateComponents([.hour, .minute], from: d)
+        return Double((c.hour ?? 0) * 60 + (c.minute ?? 0))
+    }
+
+    private func hm(_ m: Double?) -> String {
+        guard let m else { return "—" }
+        return String(format: "%02d:%02d", Int(m) / 60 % 24, Int(m) % 60)
+    }
+
+    var body: some View {
+        let rise = minutes(entry.rise)
+        let set = minutes(entry.set)
+        let now = minutes(entry.date) ?? 0
+        HStack(spacing: 12) {
+            VStack(spacing: 4) {
+                Text(entry.placeName).font(.caption.weight(.semibold)).lineLimit(1)
+                Canvas { ctx, size in
+                    let r = min(size.width / 2 - 8, size.height - 10)
+                    let c = CGPoint(x: size.width / 2, y: size.height - 4)
+                    var ground = Path()
+                    ground.move(to: CGPoint(x: c.x - r - 6, y: c.y))
+                    ground.addLine(to: CGPoint(x: c.x + r + 6, y: c.y))
+                    ctx.stroke(ground, with: .color(.secondary), lineWidth: 1.5)
+                    var arc = Path()
+                    arc.addArc(center: c, radius: r, startAngle: .degrees(180), endAngle: .degrees(360), clockwise: false)
+                    ctx.stroke(arc, with: .color(.orange), style: StrokeStyle(lineWidth: 3, dash: [5, 5]))
+                    if let rise, let set, set > rise {
+                        let f = min(1, max(0, (now - rise) / (set - rise)))
+                        let a = Double.pi * (1 - f)
+                        let p = CGPoint(x: c.x + r * cos(a), y: c.y - r * sin(a))
+                        let up = now >= rise && now <= set
+                        ctx.fill(Path(ellipseIn: CGRect(x: p.x - 7, y: p.y - 7, width: 14, height: 14)), with: .color(up ? .orange : .gray))
+                    }
+                }
+                HStack {
+                    Text("↑ " + hm(rise))
+                    Spacer()
+                    Text("↓ " + hm(set))
+                }
+                .font(.caption2.monospacedDigit()).foregroundStyle(.secondary)
+            }
+            ZStack {
+                Circle().stroke(Color(red: 0.17, green: 0.23, blue: 0.37), lineWidth: 9)
+                if let rise, let set, set > rise {
+                    Circle().trim(from: rise / 1440, to: set / 1440)
+                        .stroke(Color.orange, lineWidth: 9)
+                        .rotationEffect(.degrees(-90))
+                }
+                Rectangle().fill(Color.primary).frame(width: 2.5, height: 22)
+                    .offset(y: -30)
+                    .rotationEffect(.degrees(now / 1440 * 360))
+                Text(hm(now)).font(.subheadline.weight(.bold).monospacedDigit())
+            }
+            .padding(6)
+            .aspectRatio(1, contentMode: .fit)
+        }
+        .environment(\.layoutDirection, .leftToRight)
     }
 }
 
@@ -279,7 +355,9 @@ struct SunWidgetView: View {
             return String(format: L("seasons.dayLengthValue"), "\(m / 60)", "\(m % 60)")
         }()
         Group {
-            if family == .accessoryRectangular {
+            if family == .systemMedium {
+                SunArcView(entry: entry)
+            } else if family == .accessoryRectangular {
                 VStack(alignment: .leading, spacing: 1) {
                     Text(entry.placeName).font(.caption2).foregroundStyle(.secondary)
                     Text(verbatim: "↑ \(hm(entry.rise))   ↓ \(hm(entry.set))").font(.headline).monospacedDigit()

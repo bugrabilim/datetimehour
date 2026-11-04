@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">여성은 팔을 옆구리에, 배를 허벅지에 붙입니다.</string>
     <string name="guide_pic_m_7">남성은 왼발을 눕혀 그 위에 앉고 오른발은 발가락을 키블라로 향해 세웁니다.</string>
     <string name="guide_pic_f_7">여성은 두 발을 오른쪽으로 빼고 바닥에 앉습니다.</string>
+    <string name="widget_sunArc_name">태양의 궤도</string>
+    <string name="widget_sunArc_desc">일출부터 일몰까지의 호와 24시간 낮/밤 링</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

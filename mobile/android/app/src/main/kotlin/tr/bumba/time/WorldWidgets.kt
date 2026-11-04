@@ -284,3 +284,85 @@ class FocusWidget : BaseWidget() {
         return v
     }
 }
+
+/** Güneş yayı ve 24 saat halka widget'ı (2. analiz #150; 4 Kasım 2026): solda doğuştan batışa yay ve Güneş'in yeri,
+ *  sağda günün 24 saati (gündüz sarı, gece lacivert) ve şimdi ibresi. Yer: widget ayarı ya da uygulamadaki konum. */
+fun sunArcBitmap(c: Context, place: AppPlace, now: Instant, dark: Boolean): Bitmap {
+    val d = c.resources.displayMetrics.density
+    val w = (320 * d).toInt()
+    val h = (150 * d).toInt()
+    val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+    val cv = Canvas(bmp)
+    val bg = if (dark) 0xFF161A22.toInt() else 0xFFFFFBF2.toInt()
+    val ink = if (dark) 0xFFE8ECF4.toInt() else 0xFF1B2330.toInt()
+    val muted = if (dark) 0xFF8C97AA.toInt() else 0xFF6B7280.toInt()
+    val sunC = 0xFFF4B400.toInt()
+    val nightC = 0xFF2B3B5E.toInt()
+    cv.drawRoundRect(RectF(0f, 0f, w.toFloat(), h.toFloat()), 18 * d, 18 * d, Paint(Paint.ANTI_ALIAS_FLAG).apply { color = bg })
+    val today = place.today(now)
+    val rise = AlarmItem.sunMinutes(today, place.lat, place.lon, place.zone, true)
+    val set = AlarmItem.sunMinutes(today, place.lat, place.lon, place.zone, false)
+    val z = now.atZone(place.zone)
+    val nowMin = z.hour * 60 + z.minute
+    val line = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeCap = Paint.Cap.ROUND }
+    val text = Paint(Paint.ANTI_ALIAS_FLAG).apply { textSize = 11 * d; color = muted; textAlign = Paint.Align.CENTER }
+    fun hm(m: Int?) = m?.let { "%02d:%02d".format(java.util.Locale.ROOT, (it / 60) % 24, it % 60) } ?: "—"
+    // Sol: yay
+    val ax = w * 0.27f
+    val ay = h * 0.70f
+    val r = w * 0.20f
+    line.color = muted; line.strokeWidth = 1.5f * d
+    cv.drawLine(ax - r - 8 * d, ay, ax + r + 8 * d, ay, line)
+    line.color = sunC; line.strokeWidth = 3 * d
+    line.pathEffect = android.graphics.DashPathEffect(floatArrayOf(5 * d, 5 * d), 0f)
+    cv.drawArc(RectF(ax - r, ay - r, ax + r, ay + r), 180f, 180f, false, line)
+    line.pathEffect = null
+    if (rise != null && set != null && set > rise) {
+        val f = ((nowMin - rise).toFloat() / (set - rise)).coerceIn(0f, 1f)
+        val a = Math.PI * (1 - f)
+        val sx = ax + (r * Math.cos(a)).toFloat()
+        val sy = ay - (r * Math.sin(a)).toFloat()
+        val up = nowMin in rise..set
+        cv.drawCircle(sx, sy, 7 * d, Paint(Paint.ANTI_ALIAS_FLAG).apply { color = if (up) sunC else muted })
+    }
+    text.textAlign = Paint.Align.CENTER
+    cv.drawText("↑ " + hm(rise), ax - r, ay + 18 * d, text)
+    cv.drawText("↓ " + hm(set), ax + r, ay + 18 * d, text)
+    text.color = ink; text.textSize = 12 * d; text.typeface = android.graphics.Typeface.DEFAULT_BOLD
+    cv.drawText(place.name.take(18), ax, 18 * d, text)
+    // Sağ: 24 saat halka (0 üstte, saat yönünde)
+    val cx = w * 0.75f
+    val cy = h * 0.52f
+    val rr = h * 0.32f
+    line.strokeWidth = 10 * d; line.strokeCap = Paint.Cap.BUTT
+    line.color = nightC
+    cv.drawCircle(cx, cy, rr, line)
+    if (rise != null && set != null && set > rise) {
+        line.color = sunC
+        cv.drawArc(RectF(cx - rr, cy - rr, cx + rr, cy + rr), rise / 1440f * 360f - 90f, (set - rise) / 1440f * 360f, false, line)
+    }
+    val ang = Math.toRadians(nowMin / 1440.0 * 360 - 90)
+    line.color = ink; line.strokeWidth = 2.5f * d; line.strokeCap = Paint.Cap.ROUND
+    val inner = 25 * d
+    cv.drawLine(cx + (inner * Math.cos(ang)).toFloat(), cy + (inner * Math.sin(ang)).toFloat(),
+        cx + (rr * 0.82f * Math.cos(ang)).toFloat(), cy + (rr * 0.82f * Math.sin(ang)).toFloat(), line)
+    text.textSize = 9 * d; text.typeface = android.graphics.Typeface.DEFAULT; text.color = muted
+    for ((hh, lab) in listOf(0 to "0", 6 to "6", 12 to "12", 18 to "18")) {
+        val a = Math.toRadians(hh / 24.0 * 360 - 90)
+        cv.drawText(lab, cx + ((rr + 12 * d) * Math.cos(a)).toFloat(), cy + ((rr + 12 * d) * Math.sin(a)).toFloat() + 3 * d, text)
+    }
+    text.textSize = 13 * d; text.color = ink; text.typeface = android.graphics.Typeface.DEFAULT_BOLD
+    cv.drawText(hm(nowMin), cx, cy + 5 * d, text)
+    return bmp
+}
+
+class SunArcWidget : BaseWidget() {
+    override fun views(c: Context, id: Int): RemoteViews {
+        val v = RemoteViews(c.packageName, R.layout.widget_image)
+        val dark = (c.resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES
+        v.setImageViewBitmap(R.id.img, sunArcBitmap(c, WidgetUpdater.place(id), Instant.now(), dark))
+        v.setContentDescription(R.id.img, L("widget.sunArc.name"))
+        v.setOnClickPendingIntent(R.id.root, WidgetUpdater.openApp(c, Tab.SEASONS, id))
+        return v
+    }
+}

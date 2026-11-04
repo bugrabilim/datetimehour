@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">Женщины прижимают руки к бокам, а живот — к бёдрам.</string>
     <string name="guide_pic_m_7">Мужчины сидят на положенной левой стопе, правая стоит вертикально, пальцами к кибле.</string>
     <string name="guide_pic_f_7">Женщины сидят на полу, выведя обе стопы вправо.</string>
+    <string name="widget_sunArc_name">Путь Солнца</string>
+    <string name="widget_sunArc_desc">Дуга от восхода до заката и 24-часовое кольцо дня и ночи</string>
     <string name="app_name">Время и дата</string>
 </resources>

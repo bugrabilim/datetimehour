@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">Qadınlar qollarını böyürlərinə, qarnını budlarına yaxın tutur.</string>
     <string name="guide_pic_m_7">Kişilər sol ayağı yatırıb üstündə oturur, sağ ayağı barmaqları qibləyə dönük dik saxlayır.</string>
     <string name="guide_pic_f_7">Qadınlar iki ayağını sağ tərəfə çıxarıb yerə oturur.</string>
+    <string name="widget_sunArc_name">Günəş qövsü</string>
+    <string name="widget_sunArc_desc">Doğuşdan batışa qövs və 24 saatlıq gündüz/gecə halqası</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">Women keep their arms close to the sides and the belly close to the thighs.</string>
     <string name="guide_pic_m_7">Men sit on the left foot laid flat, with the right foot upright, toes towards the qibla.</string>
     <string name="guide_pic_f_7">Women sit on the floor with both feet out to the right side.</string>
+    <string name="widget_sunArc_name">Sun path</string>
+    <string name="widget_sunArc_desc">Arc from sunrise to sunset and a 24-hour day/night ring</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

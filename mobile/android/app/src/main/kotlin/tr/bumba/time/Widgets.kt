@@ -320,7 +320,7 @@ object WidgetUpdater {
         SecondsClockWidget::class.java, WorldClockWidget::class.java, CountdownWidget::class.java, HijriWidget::class.java,
         DualClockWidget::class.java, YearWidget::class.java, WordsWidget::class.java, SunWidget::class.java,
         DailyWidget::class.java, PhotoWidget::class.java, EventsWidget::class.java, WeatherWidget::class.java,
-        World8Widget::class.java, OverlapWidget::class.java, WorldMapWidget::class.java, TimersWidget::class.java, FocusWidget::class.java,
+        World8Widget::class.java, OverlapWidget::class.java, WorldMapWidget::class.java, SunArcWidget::class.java, TimersWidget::class.java, FocusWidget::class.java,
     )
 
     fun placeKey(id: Int) = "widget.place.$id"

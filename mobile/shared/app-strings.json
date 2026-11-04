@@ -29987,5 +29987,39 @@
     "zh": "女性双脚移向右侧，坐于地上。",
     "fil": "Umuupo ang babae sa sahig nang nakalabas ang dalawang paa sa kanan.",
     "th": "ผู้หญิงนั่งบนพื้นโดยยื่นเท้าทั้งสองไปทางขวา"
+  },
+  "widget.sunArc.name": {
+    "tr": "Güneş yayı",
+    "en": "Sun path",
+    "de": "Sonnenbogen",
+    "az": "Günəş qövsü",
+    "ar": "مسار الشمس",
+    "id": "Lintasan matahari",
+    "ur": "سورج کا راستہ",
+    "fa": "مسیر خورشید",
+    "fr": "Course du soleil",
+    "ru": "Путь Солнца",
+    "ja": "太陽の軌道",
+    "ko": "태양의 궤도",
+    "zh": "太阳轨迹",
+    "fil": "Daan ng araw",
+    "th": "เส้นทางดวงอาทิตย์"
+  },
+  "widget.sunArc.desc": {
+    "tr": "Doğuştan batışa yay ve 24 saatlik gündüz/gece halkası",
+    "en": "Arc from sunrise to sunset and a 24-hour day/night ring",
+    "de": "Bogen von Sonnenauf- bis -untergang und 24-Stunden-Ring für Tag und Nacht",
+    "az": "Doğuşdan batışa qövs və 24 saatlıq gündüz/gecə halqası",
+    "ar": "قوس من الشروق إلى الغروب وحلقة الليل والنهار لـ 24 ساعة",
+    "id": "Busur dari terbit hingga terbenam dan cincin siang/malam 24 jam",
+    "ur": "طلوع سے غروب تک قوس اور 24 گھنٹے کا دن/رات حلقہ",
+    "fa": "کمان طلوع تا غروب و حلقه 24 ساعته روز و شب",
+    "fr": "Arc du lever au coucher et anneau jour/nuit sur 24 heures",
+    "ru": "Дуга от восхода до заката и 24-часовое кольцо дня и ночи",
+    "ja": "日の出から日の入りまでの弧と24時間の昼夜リング",
+    "ko": "일출부터 일몰까지의 호와 24시간 낮/밤 링",
+    "zh": "日出到日落的弧线和 24 小时昼夜环",
+    "fil": "Arko mula pagsikat hanggang paglubog at 24 na oras na singsing ng araw at gabi",
+    "th": "ส่วนโค้งจากขึ้นถึงตก และวงกลางวัน/กลางคืน 24 ชั่วโมง"
   }
 }

@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">女性手臂贴近两肋，腹部贴近大腿。</string>
     <string name="guide_pic_m_7">男性坐在平放的左脚上，右脚竖立，脚趾朝向朝向。</string>
     <string name="guide_pic_f_7">女性双脚移向右侧，坐于地上。</string>
+    <string name="widget_sunArc_name">太阳轨迹</string>
+    <string name="widget_sunArc_desc">日出到日落的弧线和 24 小时昼夜环</string>
     <string name="app_name">时间与日期</string>
 </resources>

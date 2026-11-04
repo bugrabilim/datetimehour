@@ -307,6 +307,20 @@
                 android:resource="@xml/widget_overlap_info" />
         </receiver>
         <receiver
+            android:name=".SunArcWidget"
+            android:exported="false"
+            android:label="@string/widget_sunArc_name">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_sunarc_info" />
+        </receiver>
+        <receiver
             android:name=".WorldMapWidget"
             android:exported="false"
             android:label="@string/widget_worldMap_name">

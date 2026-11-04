@@ -292,6 +292,7 @@ object WidgetCatalog {
         Item(World8Widget::class.java, L("widget.world8.name"), L("widget.world8.desc")),
         Item(OverlapWidget::class.java, L("widget.overlap.name"), L("widget.overlap.desc")),
         Item(WorldMapWidget::class.java, L("widget.worldMap.name"), L("widget.worldMap.desc")),
+        Item(SunArcWidget::class.java, L("widget.sunArc.name"), L("widget.sunArc.desc")),
         Item(TimersWidget::class.java, L("widget.timers.name"), L("widget.timers.desc")),
         Item(FocusWidget::class.java, L("widget.focus.name"), L("widget.focus.desc")),
         Item(WordsWidget::class.java, L("widget.words.name"), L("widget.words.desc")),

@@ -2534,5 +2534,7 @@
     <string name="guide_pic_f_5">Idinidikit ng babae ang braso sa tagiliran at ang tiyan sa hita.</string>
     <string name="guide_pic_m_7">Umuupo ang lalaki sa nakalapag na kaliwang paa; nakatayo ang kanang paa, nakaturo ang daliri sa qibla.</string>
     <string name="guide_pic_f_7">Umuupo ang babae sa sahig nang nakalabas ang dalawang paa sa kanan.</string>
+    <string name="widget_sunArc_name">Daan ng araw</string>
+    <string name="widget_sunArc_desc">Arko mula pagsikat hanggang paglubog at 24 na oras na singsing ng araw at gabi</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>
