@@ -187,7 +187,8 @@ class AlarmRiseSnoozeTest {
     @Test fun smartFireEarly() {
         val c = org.robolectric.RuntimeEnvironment.getApplication()
         Prefs.init(c)
-        val now = System.currentTimeMillis()
+        // Sabit an (akşam): gerçek saatle 07:00–07:30 arasında 07:30'daki alarm sıradaki oluyordu (4 Kasım 2026 CI)
+        val now = ms("2026-11-04T22:00")
         val rep = AlarmItem(id = "rep", hour = 7, minute = 0, days = (1..7).toList(), smart = 30)
         val once = AlarmItem(id = "once", hour = 7, minute = 30, smart = 10)
         AlarmItem.save(listOf(rep, once))
