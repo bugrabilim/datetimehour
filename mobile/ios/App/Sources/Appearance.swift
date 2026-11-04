@@ -271,6 +271,10 @@ struct AppearanceView: View {
                 }
                 Toggle(L("look.outline"), isOn: $digitOutline)
             }
+            // Dijital rakam görünümü (2. analiz #9)
+            Section(L("digital.style")) {
+                DigitalStylePicker()
+            }
             // Çevirmeli saat (2. analiz #20): iki rakam tek kart, köşede küçük saniye, kart çizgisi, kart rengi
             Section(L("stage.models.flip")) {
                 Toggle(L("flip.pair"), isOn: $flipPair)

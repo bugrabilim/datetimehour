@@ -2445,5 +2445,13 @@
     <string name="watch_tap">Tippen</string>
     <string name="desk_pomoDone">Arbeitsphase beendet – Zeit für eine Pause.</string>
     <string name="desk_breakDone">Pause vorbei.</string>
+    <string name="digital_style">Digitalziffern</string>
+    <string name="digital_style_plain">Text</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">Punktmatrix</string>
+    <string name="digital_style_roll">Walze</string>
+    <string name="digital_style_vertical">Vertikal</string>
+    <string name="digital_styleNote">LED und LCD zeigen auch die unbeleuchteten Segmente; vertikal stapelt Stunden, Minuten und Sekunden.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

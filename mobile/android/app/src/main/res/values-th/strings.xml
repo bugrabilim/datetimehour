@@ -2445,5 +2445,13 @@
     <string name="watch_tap">แตะ</string>
     <string name="desk_pomoDone">ทำงานเสร็จแล้ว ได้เวลาพัก</string>
     <string name="desk_breakDone">หมดเวลาพัก</string>
+    <string name="digital_style">รูปแบบตัวเลขดิจิทัล</string>
+    <string name="digital_style_plain">ตัวอักษร</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">ดอตเมทริกซ์</string>
+    <string name="digital_style_roll">ลูกกลิ้ง</string>
+    <string name="digital_style_vertical">แนวตั้ง</string>
+    <string name="digital_styleNote">LED และ LCD แสดงส่วนที่ดับด้วย แนวตั้งเรียงชั่วโมง นาที และวินาทีลงมา</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

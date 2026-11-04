@@ -2445,5 +2445,13 @@
     <string name="watch_tap">Ketuk</string>
     <string name="desk_pomoDone">Sesi kerja selesai, saatnya istirahat.</string>
     <string name="desk_breakDone">Istirahat selesai.</string>
+    <string name="digital_style">Gaya angka digital</string>
+    <string name="digital_style_plain">Teks</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">Matriks titik</string>
+    <string name="digital_style_roll">Silinder</string>
+    <string name="digital_style_vertical">Vertikal</string>
+    <string name="digital_styleNote">LED dan LCD juga menampilkan segmen yang padam; vertikal menyusun jam, menit, dan detik ke bawah.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

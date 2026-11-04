@@ -286,6 +286,17 @@ class MoreScreensTest {
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }
     }
     /** Gece gökyüzü (#155–#157), Güneş yolu (#158), çocuklar için Ay (#160) */
+    /** Dijital rakam görünümleri (2. analiz #9) */
+    @Test fun digitalStyles() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        shot("tr-dijital-gorunumler") {
+            androidx.compose.foundation.layout.Column(androidx.compose.ui.Modifier.padding(16.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(14.dp)) {
+                for (st in listOf("led", "lcd", "matrix", "roll")) StyledDigits("12:34:56", st, 64.dp, 380.dp, Theme.c.ink)
+                VerticalDigits("12", "34", "56", 160.dp, Theme.c.ink, null)
+            }
+        }
+    }
+
     @Test fun worldExtras() {
         RuntimeEnvironment.setQualifiers("+tr")
         Prefs.saveProvince("istanbul")

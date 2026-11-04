@@ -2445,5 +2445,13 @@
     <string name="watch_tap">Touchez</string>
     <string name="desk_pomoDone">Séance terminée, place à la pause.</string>
     <string name="desk_breakDone">La pause est finie.</string>
+    <string name="digital_style">Style des chiffres</string>
+    <string name="digital_style_plain">Texte</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">Matrice de points</string>
+    <string name="digital_style_roll">Rouleau</string>
+    <string name="digital_style_vertical">Vertical</string>
+    <string name="digital_styleNote">Les styles LED et LCD montrent aussi les segments éteints ; le style vertical empile heures, minutes et secondes.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

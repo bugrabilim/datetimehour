@@ -2445,5 +2445,13 @@
     <string name="watch_tap">I-tap</string>
     <string name="desk_pomoDone">Tapos na ang trabaho, oras na ng pahinga.</string>
     <string name="desk_breakDone">Tapos na ang pahinga.</string>
+    <string name="digital_style">Estilo ng digital na numero</string>
+    <string name="digital_style_plain">Teksto</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">Dot matrix</string>
+    <string name="digital_style_roll">Gulong</string>
+    <string name="digital_style_vertical">Patayo</string>
+    <string name="digital_styleNote">Makikita rin sa LED at LCD ang mga patay na segment; pinapatong ng patayo ang oras, minuto at segundo.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

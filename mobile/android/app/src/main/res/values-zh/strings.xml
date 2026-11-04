@@ -2445,5 +2445,13 @@
     <string name="watch_tap">轻点</string>
     <string name="desk_pomoDone">工作结束，该休息了。</string>
     <string name="desk_breakDone">休息结束。</string>
+    <string name="digital_style">数字样式</string>
+    <string name="digital_style_plain">文字</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">点阵</string>
+    <string name="digital_style_roll">滚筒</string>
+    <string name="digital_style_vertical">竖排</string>
+    <string name="digital_styleNote">LED 和 LCD 也会显示未点亮的笔段；竖排把时、分、秒上下排列。</string>
     <string name="app_name">时间与日期</string>
 </resources>

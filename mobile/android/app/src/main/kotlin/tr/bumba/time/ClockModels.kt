@@ -210,6 +210,24 @@ private fun AnalogPart(t: ZonedDateTime, size: Dp) {
 @Composable
 private fun DigitalPart(t: ZonedDateTime, size: Dp, maxWidth: Dp) {
     val max = size.asSp()
+    // Dijital rakam görünümü (2. analiz #9): LED, LCD, nokta matris, silindir, dikey
+    val style = DigitalStyle.current
+    if (style != "plain") {
+        val tap = Modifier.clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!Prefs.secD); BadgeStore.hit(Badge.SANIYE) }
+        Ltr {
+            Row(tap.widthIn(max = maxWidth), verticalAlignment = Alignment.CenterVertically) {
+                if (style == "vertical") {
+                    val hh = Fmt.time(t).substringBefore(':')
+                    val mm = "%02d".format(t.minute)
+                    VerticalDigits(hh, mm, if (Prefs.secD) "%02d".format(t.second) else null, size * 1.6f, ClockLook.digitInk(Theme.c), ClockFont.current.family)
+                } else {
+                    StyledDigits(Fmt.time(t, Prefs.secD).filter { it.isDigit() || it == ':' }, style, size * 0.82f, maxWidth, ClockLook.digitInk(Theme.c))
+                }
+                if (Prefs.h12) Text(" " + Fmt.ampm(t), color = Theme.c.text, fontSize = (max.value * 0.3f).sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
+            }
+        }
+        return
+    }
     Ltr {
         Row(
             Modifier.widthIn(max = maxWidth).clickable(remember { MutableInteractionSource() }, null) { Prefs.saveSecD(!Prefs.secD); BadgeStore.hit(Badge.SANIYE) },

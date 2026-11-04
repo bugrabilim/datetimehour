@@ -2445,5 +2445,13 @@
     <string name="watch_tap">Нажмите</string>
     <string name="desk_pomoDone">Работа окончена, пора отдохнуть.</string>
     <string name="desk_breakDone">Перерыв окончен.</string>
+    <string name="digital_style">Стиль цифр</string>
+    <string name="digital_style_plain">Текст</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">Точечная матрица</string>
+    <string name="digital_style_roll">Барабан</string>
+    <string name="digital_style_vertical">Вертикально</string>
+    <string name="digital_styleNote">В LED и LCD видны и погасшие сегменты; вертикальный стиль ставит часы, минуты и секунды друг под другом.</string>
     <string name="app_name">Время и дата</string>
 </resources>

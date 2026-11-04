@@ -2445,5 +2445,13 @@
     <string name="watch_tap">ٹیپ کریں</string>
     <string name="desk_pomoDone">کام ختم، وقفے کا وقت۔</string>
     <string name="desk_breakDone">وقفہ ختم۔</string>
+    <string name="digital_style">ڈیجیٹل ہندسوں کا انداز</string>
+    <string name="digital_style_plain">متن</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">ڈاٹ میٹرکس</string>
+    <string name="digital_style_roll">سلنڈر</string>
+    <string name="digital_style_vertical">عمودی</string>
+    <string name="digital_styleNote">LED اور LCD میں بجھے ہوئے حصے بھی دکھتے ہیں؛ عمودی انداز میں گھنٹے، منٹ اور سیکنڈ اوپر نیچے آتے ہیں۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

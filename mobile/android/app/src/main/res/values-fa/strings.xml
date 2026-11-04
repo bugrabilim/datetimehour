@@ -2445,5 +2445,13 @@
     <string name="watch_tap">لمس کنید</string>
     <string name="desk_pomoDone">کار تمام شد، وقت استراحت است.</string>
     <string name="desk_breakDone">استراحت تمام شد.</string>
+    <string name="digital_style">سبک ارقام دیجیتال</string>
+    <string name="digital_style_plain">متن</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">ماتریس نقطه‌ای</string>
+    <string name="digital_style_roll">استوانه</string>
+    <string name="digital_style_vertical">عمودی</string>
+    <string name="digital_styleNote">در LED و LCD بخش‌های خاموش هم دیده می‌شوند؛ حالت عمودی ساعت، دقیقه و ثانیه را زیر هم می‌چیند.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

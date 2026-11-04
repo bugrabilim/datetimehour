@@ -2445,5 +2445,13 @@
     <string name="watch_tap">Dokunun</string>
     <string name="desk_pomoDone">Çalışma bitti, mola zamanı.</string>
     <string name="desk_breakDone">Mola bitti.</string>
+    <string name="digital_style">Dijital rakam görünümü</string>
+    <string name="digital_style_plain">Yazı</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">Nokta matris</string>
+    <string name="digital_style_roll">Silindir</string>
+    <string name="digital_style_vertical">Dikey</string>
+    <string name="digital_styleNote">LED ve LCD\'de sönük bölütler de görünür; dikey görünümde saat, dakika ve saniye alt alta durur.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

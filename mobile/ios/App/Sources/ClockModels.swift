@@ -206,11 +206,41 @@ private struct DigitalPart: View {
     /// Rakam rengi ve dış hatlı rakamlar (2. analiz #24)
     @AppStorage(ClockDigits.colorKey) private var digitColor = "theme"
     @AppStorage(ClockDigits.outlineKey) private var outline = false
+    /// Dijital rakam görünümü (2. analiz #9)
+    @AppStorage(DigitalStyle.key) private var style = "plain"
 
     var body: some View {
+        if style != "plain" {
+            styled
+        } else {
+            plain
+        }
+    }
+
+    private var styled: some View {
+        let ink = ClockDigits.color(digitColor)
+        let t = Fmt.time(now, seconds: seconds)
+        return HStack(alignment: .center, spacing: size * 0.08) {
+            if style == "vertical" {
+                VerticalDigits(lines: t.split(separator: ":").map(String.init), height: size * 1.6, ink: ink,
+                               font: ClockFont(rawValue: clockFont) ?? .rounded)
+            } else {
+                StyledDigits(text: t.filter { $0.isNumber || $0 == ":" }, style: style, height: size * 0.82, ink: ink)
+            }
+            if h12 { Text(Fmt.ampm(now)).font(.system(size: size * 0.3, weight: .semibold)) }
+        }
+        .environment(\.layoutDirection, .leftToRight)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            seconds.toggle()
+            BadgeStore.shared.hit(.saniye)
+        }
+    }
+
+    private var plain: some View {
         let font = ClockFont(rawValue: clockFont) ?? .rounded
         let ink = ClockDigits.color(digitColor)
-        HStack(alignment: .firstTextBaseline, spacing: size * 0.08) {
+        return HStack(alignment: .firstTextBaseline, spacing: size * 0.08) {
             if seconds && small {
                 HStack(alignment: .firstTextBaseline, spacing: 0) {
                     ClockDigits.text(Fmt.time(now), font: font.font(size), color: ink, outline: outline, width: size * 0.012)

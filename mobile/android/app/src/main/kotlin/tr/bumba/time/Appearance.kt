@@ -256,6 +256,29 @@ fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
             }
             LookSwitch(L("look.outline"), ClockLook.outline) { ClockLook.saveOutline(it) }
         }
+        // Dijital rakam görünümü (2. analiz #9): LED, LCD, nokta matris, silindir, dikey
+        AppCard {
+            SectionTitle(L("digital.style"))
+            var style by remember { mutableStateOf(DigitalStyle.current) }
+            val t = now.atZone(java.time.ZoneId.systemDefault())
+            androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                Ltr {
+                    if (style == "vertical") VerticalDigits(Fmt.time(t).substringBefore(':'), "%02d".format(t.minute), "%02d".format(t.second), 150.dp, ClockLook.digitInk(Theme.c), ClockFont.current.family)
+                    else if (style == "plain") Text(Fmt.time(t, true), color = ClockLook.digitInk(Theme.c), fontSize = 48.sp, style = Tnum)
+                    else StyledDigits(Fmt.time(t, true).filter { it.isDigit() || it == ':' }, style, 64.dp, 320.dp, ClockLook.digitInk(Theme.c))
+                }
+            }
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (id in DigitalStyle.ALL) {
+                    val on = id == style
+                    Text(L("digital.style.$id"),
+                        Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, RoundedCornerShape(50)).clickable { style = id; DigitalStyle.save(id) }
+                            .padding(horizontal = 14.dp, vertical = 8.dp),
+                        color = if (on) androidx.compose.ui.graphics.Color.White else Theme.c.text, fontSize = 14.sp)
+                }
+            }
+            Text(L("digital.styleNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
         // Çevirmeli saat (2. analiz #20): iki rakam tek kart, köşede küçük saniye, kart çizgisi, kart rengi
         AppCard {
             SectionTitle(L("stage.models.flip"))

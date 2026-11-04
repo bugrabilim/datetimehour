@@ -2445,5 +2445,13 @@
     <string name="watch_tap">タップ</string>
     <string name="desk_pomoDone">作業終了、休憩の時間です。</string>
     <string name="desk_breakDone">休憩終了。</string>
+    <string name="digital_style">デジタル数字のスタイル</string>
+    <string name="digital_style_plain">文字</string>
+    <string name="digital_style_led">LED</string>
+    <string name="digital_style_lcd">LCD</string>
+    <string name="digital_style_matrix">ドットマトリクス</string>
+    <string name="digital_style_roll">ドラム</string>
+    <string name="digital_style_vertical">縦</string>
+    <string name="digital_styleNote">LEDとLCDでは消えたセグメントも見えます。縦は時・分・秒を縦に並べます。</string>
     <string name="app_name">時刻と日付</string>
 </resources>
