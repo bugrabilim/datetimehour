@@ -75,7 +75,6 @@ data class AlarmItem(
     val sleepPlan: Boolean = false,
     /** 2. analiz #2: çalma ekranının duvar kâğıdı (AlarmWalls; boş = tema rengi); #79: kulaklık bağlıysa yalnız kulaklıkta */
     val wall: String = "",
-    val headset: Boolean = false,
     /** 2. analiz #40: her ertelemede süre yarıya iner (en az 1 dk); "HH:MM" sonrasında erteleme kapalı; ses düzeyi % (0 = telefonun) */
     val snoozeShrink: Boolean = false,
     val snoozeEnd: String = "",
@@ -232,7 +231,7 @@ data class AlarmItem(
         .put("sunrise", sunrise).put("task", task).put("taskLevel", taskLevel).put("code", code).put("wakeCheck", wakeCheck)
         .put("preNotify", preNotify).put("speak", speak).put("date", date).put("every", every).put("anchor", anchor).put("until", until)
         .put("link", link).put("smart", smart).put("shakeSnooze", shakeSnooze).put("preAlarm", preAlarm).put("openApp", openApp)
-        .put("sleepPlan", sleepPlan).put("wall", wall).put("headset", headset)
+        .put("sleepPlan", sleepPlan).put("wall", wall)
         .put("snoozeShrink", snoozeShrink).put("snoozeEnd", snoozeEnd).put("volume", volume).put("tz", tz).put("sun", sun).put("sunOffset", sunOffset)
         .put("chain", JSONArray(chain)).put("snoozeTask", snoozeTask).put("keyAction", keyAction).put("powerAction", powerAction)
 
@@ -300,7 +299,7 @@ data class AlarmItem(
                 o.optString("date", ""), o.optInt("every", 1), o.optString("anchor", ""), o.optString("until", ""),
                 link = o.optString("link", ""), smart = o.optInt("smart", 0),
                 shakeSnooze = o.optBoolean("shakeSnooze", false), preAlarm = o.optInt("preAlarm", 0), openApp = o.optString("openApp", ""),
-                sleepPlan = o.optBoolean("sleepPlan", false), wall = o.optString("wall", ""), headset = o.optBoolean("headset", false),
+                sleepPlan = o.optBoolean("sleepPlan", false), wall = o.optString("wall", ""),
                 snoozeShrink = o.optBoolean("snoozeShrink", false), snoozeEnd = o.optString("snoozeEnd", ""), volume = o.optInt("volume", 0),
                 tz = o.optString("tz", ""), sun = o.optString("sun", ""), sunOffset = o.optInt("sunOffset", 0),
                 chain = o.optJSONArray("chain")?.let { a -> (0 until a.length()).map { a.getString(it) } } ?: emptyList(),
@@ -514,8 +513,7 @@ object AlarmScheduler {
         val item = if (kind == "alarm") AlarmItem.find(id) else null
         // Kademeli ses, saati sesli söyleme ya da müzik bağlantısı: ses hizmette çalar
         // Kulaklıkta çal (2. analiz #79): kulaklık bağlıysa ses hizmette, medya akışında çalar
-        val headset = item?.headset == true && Headset.connected(c)
-        if ((item?.rise == true || item?.speak == true || item?.link?.isNotEmpty() == true || headset || (item?.volume ?: 0) in 1..99) && AlarmRingService.start(c, id, title, kind)) return
+        if ((item?.rise == true || item?.speak == true || item?.link?.isNotEmpty() == true || (item?.volume ?: 0) in 1..99) && AlarmRingService.start(c, id, title, kind)) return
         runCatching { NotificationManagerCompat.from(c).notify(id.hashCode(), notification(c, id, title, kind, silent = false)) }
     }
 

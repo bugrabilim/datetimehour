@@ -1981,8 +1981,6 @@
     <string name="wall_black">Hitam</string>
     <string name="wall_choose">Pilih</string>
     <string name="wall_iosNote">Di iPhone alarm berbunyi di layar milik Apple; wallpaper tampil di layar tugas mematikan dan saat aplikasi dibuka.</string>
-    <string name="alarm_headset">Hanya di headset saat terhubung</string>
-    <string name="alarm_headsetNote">Jika koneksi terputus, alarm berbunyi di ponsel.</string>
     <string name="common_close">Tutup</string>
     <string name="study_title">Pengatur waktu belajar</string>
     <string name="study_general">Umum</string>

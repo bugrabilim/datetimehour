@@ -1981,8 +1981,6 @@
     <string name="wall_black">Чёрный</string>
     <string name="wall_choose">Выбрать</string>
     <string name="wall_iosNote">На iPhone будильник звонит на собственном экране Apple; обои видны на экране задания для отключения и при открытии приложения.</string>
-    <string name="alarm_headset">Только в наушниках, если подключены</string>
-    <string name="alarm_headsetNote">Если соединение прервётся, будильник зазвонит на телефоне.</string>
     <string name="common_close">Закрыть</string>
     <string name="study_title">Таймер учёбы</string>
     <string name="study_general">Общее</string>

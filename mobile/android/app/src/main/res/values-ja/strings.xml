@@ -1981,8 +1981,6 @@
     <string name="wall_black">ブラック</string>
     <string name="wall_choose">選択</string>
     <string name="wall_iosNote">iPhoneではアラームはApple独自の画面で鳴ります。壁紙は停止タスクの画面とアプリを開いたときに表示されます。</string>
-    <string name="alarm_headset">接続中はイヤホンだけで鳴らす</string>
-    <string name="alarm_headsetNote">接続が切れると端末で鳴ります。</string>
     <string name="common_close">閉じる</string>
     <string name="study_title">勉強タイマー</string>
     <string name="study_general">一般</string>

@@ -1981,8 +1981,6 @@
     <string name="wall_black">ดำ</string>
     <string name="wall_choose">เลือก</string>
     <string name="wall_iosNote">บน iPhone นาฬิกาปลุกจะดังบนหน้าจอของ Apple เอง วอลเปเปอร์จะแสดงในหน้าภารกิจปิดปลุกและเมื่อเปิดแอป</string>
-    <string name="alarm_headset">เล่นเฉพาะในหูฟังเมื่อเชื่อมต่อ</string>
-    <string name="alarm_headsetNote">หากการเชื่อมต่อหลุด นาฬิกาปลุกจะดังที่โทรศัพท์</string>
     <string name="common_close">ปิด</string>
     <string name="study_title">ตัวจับเวลาอ่านหนังสือ</string>
     <string name="study_general">ทั่วไป</string>

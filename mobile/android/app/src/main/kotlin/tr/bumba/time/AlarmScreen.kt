@@ -287,7 +287,6 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
     var preAlarm by remember { mutableStateOf(item.preAlarm) }
     var openApp by remember { mutableStateOf(item.openApp) }
     var wall by remember { mutableStateOf(item.wall) }
-    var headset by remember { mutableStateOf(item.headset) }
     // 2. analiz #40, #132, #153, #34, #39
     var snoozeShrink by remember { mutableStateOf(item.snoozeShrink) }
     var snoozeEnd by remember { mutableStateOf(item.snoozeEnd) }
@@ -401,14 +400,6 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                     Text(AlarmWalls.title(wall), color = Theme.c.accent, fontSize = 15.sp, maxLines = 1)
                 }
                 if (wallPicker) AlarmWallDialog(wall, time.hour, time.minute, { wall = it; wallPicker = false }, { wallPicker = false })
-                // Kulaklıkta çal (2. analiz #79): bağlantı kesilirse telefonda çalar
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Column(Modifier.weight(1f)) {
-                        Text(L("alarm.headset"), color = Theme.c.text, fontSize = 15.sp)
-                        Text(L("alarm.headsetNote"), color = Theme.c.muted, fontSize = 12.sp)
-                    }
-                    Switch(headset, { headset = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
-                }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(L("alarm.vibrate"), Modifier.weight(1f), color = Theme.c.text, fontSize = 15.sp)
                     Switch(vibrate, { vibrate = it }, colors = SwitchDefaults.colors(checkedTrackColor = Theme.c.accent))
@@ -586,7 +577,7 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
         confirmButton = {
             TextButton(enabled = linkNorm != null, onClick = {
                 onSave(item.copy(hour = time.hour, minute = time.minute, label = label.trim(), days = days, enabled = true,
-                    link = linkNorm ?: "", smart = smart, shakeSnooze = shakeSnooze, preAlarm = preAlarm, openApp = openApp, wall = wall, headset = headset,
+                    link = linkNorm ?: "", smart = smart, shakeSnooze = shakeSnooze, preAlarm = preAlarm, openApp = openApp, wall = wall,
                     snooze = snooze, skipUntil = 0, sound = sound, vibrate = vibrate, snoozeMax = snoozeMax, rise = rise,
                     skipHolidays = skipHolidays && days.isNotEmpty(), sunrise = sunrise, task = task, taskLevel = taskLevel,
                     code = code, wakeCheck = wakeCheck, preNotify = preNotify, speak = speak,

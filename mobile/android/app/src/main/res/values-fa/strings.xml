@@ -1981,8 +1981,6 @@
     <string name="wall_black">سیاه</string>
     <string name="wall_choose">انتخاب</string>
     <string name="wall_iosNote">در آیفون زنگ روی صفحه خود Apple به صدا درمی‌آید؛ تصویر زمینه در صفحه کار خاموش‌کردن و هنگام باز شدن برنامه دیده می‌شود.</string>
-    <string name="alarm_headset">اگر هدفون وصل است فقط در هدفون پخش شود</string>
-    <string name="alarm_headsetNote">اگر اتصال قطع شود زنگ روی گوشی پخش می‌شود.</string>
     <string name="common_close">بستن</string>
     <string name="study_title">زمان‌سنج مطالعه</string>
     <string name="study_general">عمومی</string>

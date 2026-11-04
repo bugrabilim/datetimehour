@@ -1981,8 +1981,6 @@
     <string name="wall_black">Qara</string>
     <string name="wall_choose">Seç</string>
     <string name="wall_iosNote">iPhone-da zəng Apple-ın öz ekranında çalır; divar kağızı söndürmə tapşırığı ekranında və tətbiq açılanda görünür.</string>
-    <string name="alarm_headset">Qulaqlıq qoşulubsa yalnız qulaqlıqda çal</string>
-    <string name="alarm_headsetNote">Bağlantı kəsilərsə zəng telefonda çalır.</string>
     <string name="common_close">Bağla</string>
     <string name="study_title">Dərs vaxtı</string>
     <string name="study_general">Ümumi</string>

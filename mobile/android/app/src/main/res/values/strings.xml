@@ -1981,8 +1981,6 @@
     <string name="wall_black">Siyah</string>
     <string name="wall_choose">Seç</string>
     <string name="wall_iosNote">iPhone\'da alarm Apple\'ın kendi ekranında çalar; duvar kâğıdı kapatma görevi ekranında ve uygulama açıldığında görünür.</string>
-    <string name="alarm_headset">Kulaklık bağlıysa yalnız kulaklıkta çal</string>
-    <string name="alarm_headsetNote">Bağlantı kesilirse alarm telefonda çalar.</string>
     <string name="common_close">Kapat</string>
     <string name="study_title">Ders çalışma</string>
     <string name="study_general">Genel</string>

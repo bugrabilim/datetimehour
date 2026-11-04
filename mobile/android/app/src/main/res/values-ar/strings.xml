@@ -1981,8 +1981,6 @@
     <string name="wall_black">أسود</string>
     <string name="wall_choose">اختيار</string>
     <string name="wall_iosNote">على iPhone يرنّ المنبّه في شاشة Apple الخاصة؛ وتظهر الخلفية في شاشة مهمة الإيقاف وعند فتح التطبيق.</string>
-    <string name="alarm_headset">التشغيل في السماعات فقط عند توصيلها</string>
-    <string name="alarm_headsetNote">إذا انقطع الاتصال يرنّ المنبّه في الهاتف.</string>
     <string name="common_close">إغلاق</string>
     <string name="study_title">مؤقّت الدراسة</string>
     <string name="study_general">عام</string>

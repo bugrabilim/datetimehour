@@ -1981,8 +1981,6 @@
     <string name="wall_black">검정</string>
     <string name="wall_choose">선택</string>
     <string name="wall_iosNote">iPhone에서는 알람이 Apple 자체 화면에서 울립니다. 배경화면은 끄기 과제 화면과 앱을 열 때 표시됩니다.</string>
-    <string name="alarm_headset">연결되면 이어폰으로만 울리기</string>
-    <string name="alarm_headsetNote">연결이 끊기면 휴대폰에서 울립니다.</string>
     <string name="common_close">닫기</string>
     <string name="study_title">공부 타이머</string>
     <string name="study_general">일반</string>

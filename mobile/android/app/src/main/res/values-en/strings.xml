@@ -1981,8 +1981,6 @@
     <string name="wall_black">Black</string>
     <string name="wall_choose">Choose</string>
     <string name="wall_iosNote">On iPhone the alarm rings on Apple\'s own screen; the wallpaper shows on the dismiss task screen and when the app opens.</string>
-    <string name="alarm_headset">Play only in headphones when connected</string>
-    <string name="alarm_headsetNote">If the connection drops, the alarm rings on the phone.</string>
     <string name="common_close">Close</string>
     <string name="study_title">Study timer</string>
     <string name="study_general">General</string>

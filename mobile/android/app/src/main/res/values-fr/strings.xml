@@ -1981,8 +1981,6 @@
     <string name="wall_black">Noir</string>
     <string name="wall_choose">Choisir</string>
     <string name="wall_iosNote">Sur iPhone, l\'alarme sonne sur l\'écran d\'Apple ; le fond d\'écran apparaît sur l\'écran de la tâche d\'arrêt et à l\'ouverture de l\'app.</string>
-    <string name="alarm_headset">Seulement dans le casque s\'il est connecté</string>
-    <string name="alarm_headsetNote">Si la connexion est coupée, l\'alarme sonne sur le téléphone.</string>
     <string name="common_close">Fermer</string>
     <string name="study_title">Minuteur d\'étude</string>
     <string name="study_general">Général</string>

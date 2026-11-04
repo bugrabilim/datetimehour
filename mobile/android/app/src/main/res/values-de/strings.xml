@@ -1981,8 +1981,6 @@
     <string name="wall_black">Schwarz</string>
     <string name="wall_choose">Auswählen</string>
     <string name="wall_iosNote">Auf dem iPhone klingelt der Wecker auf Apples eigenem Bildschirm; der Hintergrund erscheint in der Weckaufgabe und beim Öffnen der App.</string>
-    <string name="alarm_headset">Nur über Kopfhörer, wenn verbunden</string>
-    <string name="alarm_headsetNote">Bricht die Verbindung ab, klingelt der Wecker am Telefon.</string>
     <string name="common_close">Schließen</string>
     <string name="study_title">Lernzeit</string>
     <string name="study_general">Allgemein</string>

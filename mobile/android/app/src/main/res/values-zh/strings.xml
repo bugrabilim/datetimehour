@@ -1981,8 +1981,6 @@
     <string name="wall_black">黑色</string>
     <string name="wall_choose">选择</string>
     <string name="wall_iosNote">在 iPhone 上闹钟会在 Apple 自己的界面响起；壁纸会显示在关闭任务界面和打开应用时。</string>
-    <string name="alarm_headset">连接耳机时仅在耳机中播放</string>
-    <string name="alarm_headsetNote">连接断开时闹钟会在手机上响。</string>
     <string name="common_close">关闭</string>
     <string name="study_title">学习计时器</string>
     <string name="study_general">通用</string>

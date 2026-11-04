@@ -1981,8 +1981,6 @@
     <string name="wall_black">Itim</string>
     <string name="wall_choose">Piliin</string>
     <string name="wall_iosNote">Sa iPhone, tumutunog ang alarm sa sariling screen ng Apple; makikita ang wallpaper sa screen ng gawain sa pagpatay at kapag binuksan ang app.</string>
-    <string name="alarm_headset">Sa headphones lang kapag nakakonekta</string>
-    <string name="alarm_headsetNote">Kapag naputol ang koneksyon, sa telepono tutunog ang alarm.</string>
     <string name="common_close">Isara</string>
     <string name="study_title">Timer sa pag-aaral</string>
     <string name="study_general">Pangkalahatan</string>

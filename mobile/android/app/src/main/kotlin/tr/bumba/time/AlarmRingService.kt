@@ -64,23 +64,7 @@ class AlarmRingService : Service() {
         rising = item?.rise == true
         // 2. analiz #40: alarm başına ses düzeyi (telefonun alarm ses düzeyine göre oran)
         level = item?.volume?.takeIf { it in 1..99 }?.let { it / 100f } ?: 1f
-        // Kulaklıkta çal (2. analiz #79): kulaklık bağlıysa medya akışında (yalnız kulaklık); bağlantı kesilirse
-        // hoparlöre geçilir (ACTION_AUDIO_BECOMING_NOISY)
-        val headset = item?.headset == true && Headset.connected(this)
-        player = makePlayer(uri, headset, startNow = delay == 0L)
-        if (headset) {
-            noisy = object : android.content.BroadcastReceiver() {
-                override fun onReceive(ctx: Context, i: Intent) {
-                    val pos = player?.currentPosition ?: 0
-                    val vol = if (rising) volumeAt(SystemClock.elapsedRealtime() - started) else 1f
-                    player?.runCatching { stop(); release() }
-                    player = makePlayer(soundUri, headset = false, startNow = true)?.apply { seekTo(pos); setVolume(vol * level, vol * level) }
-                }
-            }
-            androidx.core.content.ContextCompat.registerReceiver(this, noisy,
-                android.content.IntentFilter(android.media.AudioManager.ACTION_AUDIO_BECOMING_NOISY),
-                androidx.core.content.ContextCompat.RECEIVER_NOT_EXPORTED)
-        }
+        player = makePlayer(uri, startNow = delay == 0L)
         started = SystemClock.elapsedRealtime() + delay
         val begin = Runnable {
             if (delay > 0) runCatching { player?.start() }
@@ -95,14 +79,13 @@ class AlarmRingService : Service() {
     }
 
     private var soundUri: Uri? = null
-    private var noisy: android.content.BroadcastReceiver? = null
 
-    /** Alarm sesi oynatıcısı: kulaklık modunda medya akışı (yalnız kulaklıkta duyulur), değilse alarm akışı */
-    private fun makePlayer(uri: Uri?, headset: Boolean, startNow: Boolean): MediaPlayer? = runCatching {
+    /** Alarm sesi oynatıcısı (alarm akışı; kulaklıkta çalma seçeneği 4 Kasım 2026'da sahibin kararıyla kaldırıldı, 2. analiz #79) */
+    private fun makePlayer(uri: Uri?, startNow: Boolean): MediaPlayer? = runCatching {
         MediaPlayer().apply {
             setAudioAttributes(AudioAttributes.Builder()
-                .setUsage(if (headset) AudioAttributes.USAGE_MEDIA else AudioAttributes.USAGE_ALARM)
-                .setContentType(if (headset) AudioAttributes.CONTENT_TYPE_MUSIC else AudioAttributes.CONTENT_TYPE_SONIFICATION).build())
+                .setUsage(AudioAttributes.USAGE_ALARM)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build())
             setDataSource(this@AlarmRingService, uri!!)
             setWakeMode(this@AlarmRingService, PowerManager.PARTIAL_WAKE_LOCK)
             isLooping = true
@@ -162,8 +145,6 @@ class AlarmRingService : Service() {
 
     private fun release() {
         handler.removeCallbacksAndMessages(null)
-        noisy?.let { runCatching { unregisterReceiver(it) } }
-        noisy = null
         runCatching { player?.stop() }
         player?.release()
         player = null
@@ -207,16 +188,3 @@ class AlarmRingService : Service() {
     }
 }
 
-/** Kulaklık bağlı mı (kablolu, USB ya da Bluetooth; 2. analiz #79) */
-object Headset {
-    fun connected(c: Context): Boolean {
-        val am = c.getSystemService(android.media.AudioManager::class.java) ?: return false
-        val types = mutableSetOf(
-            android.media.AudioDeviceInfo.TYPE_WIRED_HEADSET, android.media.AudioDeviceInfo.TYPE_WIRED_HEADPHONES,
-            android.media.AudioDeviceInfo.TYPE_BLUETOOTH_A2DP, android.media.AudioDeviceInfo.TYPE_BLUETOOTH_SCO,
-            android.media.AudioDeviceInfo.TYPE_USB_HEADSET,
-        )
-        if (Build.VERSION.SDK_INT >= 31) types += android.media.AudioDeviceInfo.TYPE_BLE_HEADSET
-        return am.getDevices(android.media.AudioManager.GET_DEVICES_OUTPUTS).any { it.type in types }
-    }
-}
