@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">金曜礼拝中は消音（60分）</string>
     <string name="widget_weather_name">天気</string>
     <string name="widget_weather_desc">アプリで設定した場所の現在の天気と今日の最高・最低気温。</string>
+    <string name="watch_tools">ツール</string>
+    <string name="watch_stopwatch">ストップウォッチ</string>
+    <string name="watch_timer">タイマー</string>
+    <string name="watch_pomodoro">ポモドーロ</string>
+    <string name="watch_world">世界時計</string>
+    <string name="watch_zikir">タスビーフ・カウンター</string>
+    <string name="watch_start">開始</string>
+    <string name="watch_pause">一時停止</string>
+    <string name="watch_reset">リセット</string>
+    <string name="watch_done">時間です</string>
+    <string name="watch_work">作業</string>
+    <string name="watch_break">休憩</string>
+    <string name="watch_minutes">%1$s分</string>
+    <string name="watch_tap">タップ</string>
     <string name="app_name">時刻と日付</string>
 </resources>

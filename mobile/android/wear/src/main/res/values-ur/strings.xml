@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">نماز جمعہ میں خاموش (60 منٹ)</string>
     <string name="widget_weather_name">موسم</string>
     <string name="widget_weather_desc">ایپ میں مقرر جگہ کا موجودہ موسم اور آج کا زیادہ/کم درجہ حرارت۔</string>
+    <string name="watch_tools">ٹولز</string>
+    <string name="watch_stopwatch">اسٹاپ واچ</string>
+    <string name="watch_timer">ٹائمر</string>
+    <string name="watch_pomodoro">پومودورو</string>
+    <string name="watch_world">عالمی گھڑی</string>
+    <string name="watch_zikir">تسبیح کاؤنٹر</string>
+    <string name="watch_start">شروع</string>
+    <string name="watch_pause">روکیں</string>
+    <string name="watch_reset">ری سیٹ</string>
+    <string name="watch_done">وقت ختم</string>
+    <string name="watch_work">کام</string>
+    <string name="watch_break">وقفہ</string>
+    <string name="watch_minutes">%1$s منٹ</string>
+    <string name="watch_tap">ٹیپ کریں</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

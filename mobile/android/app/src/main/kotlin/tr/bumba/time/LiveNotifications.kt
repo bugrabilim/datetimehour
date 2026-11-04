@@ -33,6 +33,8 @@ object LiveNotifications {
 
     fun sync(c: Context, now: Long = System.currentTimeMillis()) {
         val app = c.applicationContext
+        // Zamanlayıcı ve odak widget'ları da süren sayaçlarla birlikte yenilenir (2. analiz #136)
+        runCatching { TimeWidgets.refresh(app) }
         val nm = NotificationManagerCompat.from(app)
         val items = ArrayList<Item>()
         for (t in TimerItem.load()) if (t.running && t.end > now) {

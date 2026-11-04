@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">Senyap saat salat Jumat (60 mnt)</string>
     <string name="widget_weather_name">Cuaca</string>
     <string name="widget_weather_desc">Cuaca saat ini dan suhu tertinggi/terendah hari ini untuk lokasi di aplikasi.</string>
+    <string name="watch_tools">Alat</string>
+    <string name="watch_stopwatch">Stopwatch</string>
+    <string name="watch_timer">Pengatur waktu</string>
+    <string name="watch_pomodoro">Pomodoro</string>
+    <string name="watch_world">Jam dunia</string>
+    <string name="watch_zikir">Penghitung tasbih</string>
+    <string name="watch_start">Mulai</string>
+    <string name="watch_pause">Jeda</string>
+    <string name="watch_reset">Atur ulang</string>
+    <string name="watch_done">Waktu habis</string>
+    <string name="watch_work">Kerja</string>
+    <string name="watch_break">Istirahat</string>
+    <string name="watch_minutes">%1$s mnt</string>
+    <string name="watch_tap">Ketuk</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">主麻聚礼时静音（60 分钟）</string>
     <string name="widget_weather_name">天气</string>
     <string name="widget_weather_desc">应用中所选地点的当前天气和今天最高/最低气温。</string>
+    <string name="watch_tools">工具</string>
+    <string name="watch_stopwatch">秒表</string>
+    <string name="watch_timer">计时器</string>
+    <string name="watch_pomodoro">番茄钟</string>
+    <string name="watch_world">世界时钟</string>
+    <string name="watch_zikir">念珠计数器</string>
+    <string name="watch_start">开始</string>
+    <string name="watch_pause">暂停</string>
+    <string name="watch_reset">重置</string>
+    <string name="watch_done">时间到</string>
+    <string name="watch_work">工作</string>
+    <string name="watch_break">休息</string>
+    <string name="watch_minutes">%1$s 分钟</string>
+    <string name="watch_tap">轻点</string>
     <string name="app_name">时间与日期</string>
 </resources>

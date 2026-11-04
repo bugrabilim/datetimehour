@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">I-silent sa dasal sa Biyernes (60 min)</string>
     <string name="widget_weather_name">Panahon</string>
     <string name="widget_weather_desc">Kasalukuyang panahon at pinakamataas/pinakamababang temperatura ngayon sa lugar sa app.</string>
+    <string name="watch_tools">Mga tool</string>
+    <string name="watch_stopwatch">Stopwatch</string>
+    <string name="watch_timer">Timer</string>
+    <string name="watch_pomodoro">Pomodoro</string>
+    <string name="watch_world">Orasan ng mundo</string>
+    <string name="watch_zikir">Tasbih counter</string>
+    <string name="watch_start">Simulan</string>
+    <string name="watch_pause">I-pause</string>
+    <string name="watch_reset">I-reset</string>
+    <string name="watch_done">Tapos na ang oras</string>
+    <string name="watch_work">Trabaho</string>
+    <string name="watch_break">Pahinga</string>
+    <string name="watch_minutes">%1$s min</string>
+    <string name="watch_tap">I-tap</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

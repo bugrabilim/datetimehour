@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">ปิดเสียงช่วงละหมาดวันศุกร์ (60 นาที)</string>
     <string name="widget_weather_name">สภาพอากาศ</string>
     <string name="widget_weather_desc">สภาพอากาศปัจจุบันและอุณหภูมิสูงสุด/ต่ำสุดวันนี้ของสถานที่ในแอป</string>
+    <string name="watch_tools">เครื่องมือ</string>
+    <string name="watch_stopwatch">นาฬิกาจับเวลา</string>
+    <string name="watch_timer">ตัวจับเวลา</string>
+    <string name="watch_pomodoro">พอโมโดโร</string>
+    <string name="watch_world">นาฬิกาโลก</string>
+    <string name="watch_zikir">เครื่องนับตัสบีห์</string>
+    <string name="watch_start">เริ่ม</string>
+    <string name="watch_pause">หยุดชั่วคราว</string>
+    <string name="watch_reset">รีเซ็ต</string>
+    <string name="watch_done">หมดเวลา</string>
+    <string name="watch_work">ทำงาน</string>
+    <string name="watch_break">พัก</string>
+    <string name="watch_minutes">%1$s นาที</string>
+    <string name="watch_tap">แตะ</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

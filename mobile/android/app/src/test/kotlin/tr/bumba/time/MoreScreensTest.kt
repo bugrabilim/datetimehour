@@ -286,6 +286,24 @@ class MoreScreensTest {
         page("tr-ay-takvimi", "Ay takvimi ve tutulmalar") { MoonScreen() }
     }
     /** Gece gökyüzü (#155–#157), Güneş yolu (#158), çocuklar için Ay (#160) */
+    @Test fun worldExtras() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.saveProvince("istanbul")
+        val now = java.time.Instant.parse("2026-11-04T09:30:00Z")
+        val list = WorldEntry.list()
+        WorldWeather.seed(list.associate { it.key to WorldWeather.Entry(18.0, 2, true) })
+        page("tr-dunya-kadran", "24 saat kadranı") { WorldDial(list, now, onShift = {}) }
+        page("tr-dunya-harita", "Harita") { WorldMapCard(list, now) }
+        val c = RuntimeEnvironment.getApplication()
+        widget("widget-dunya-8", 340, 300, World8Widget().views(c, 21))
+        widget("widget-saat-cakismasi", 360, 220, OverlapWidget().views(c, 22))
+        widget("widget-dunya-haritasi", 360, 190, WorldMapWidget().views(c, 23))
+        TimerItem.save(listOf(TimerItem(name = "Çay", total = 300_000L, end = System.currentTimeMillis() + 240_000L)))
+        widget("widget-zamanlayicilar", 340, 170, TimersWidget().views(c, 24))
+        widget("widget-odak", 170, 170, FocusWidget().views(c, 25))
+        TimerItem.save(emptyList())
+    }
+
     @Test fun sky() {
         Prefs.saveProvince("istanbul")
         page("tr-gece-gokyuzu", "Gece gökyüzü") { SkyScreen() }

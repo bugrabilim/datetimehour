@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Odak (2. analiz #136): bugünkü pomodoro odak süresi, süren çalışma ve 25 dk başlat -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp">
+    <TextView android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:maxLines="1" android:textColor="@color/widget_muted" android:textSize="12sp" android:textStyle="bold" />
+    <TextView android:id="@+id/today" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:gravity="center" android:maxLines="2" android:textColor="@color/widget_text" android:textSize="16sp" android:textStyle="bold" />
+    <Chronometer android:id="@+id/run" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFeatureSettings="tnum" android:layoutDirection="ltr" android:textColor="@color/widget_accent" android:textSize="24sp" android:textStyle="bold" />
+    <TextView android:id="@+id/start" android:layout_width="match_parent" android:layout_height="34dp" android:background="@drawable/widget_soft" android:gravity="center" android:maxLines="1" android:textColor="@color/widget_accent" android:textSize="13sp" android:textStyle="bold" />
+</LinearLayout>

@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">كتم الصوت أثناء صلاة الجمعة (60 د)</string>
     <string name="widget_weather_name">الطقس</string>
     <string name="widget_weather_desc">الطقس الحالي وأعلى وأدنى حرارة اليوم للمكان المحدد في التطبيق.</string>
+    <string name="watch_tools">الأدوات</string>
+    <string name="watch_stopwatch">ساعة الإيقاف</string>
+    <string name="watch_timer">المؤقت</string>
+    <string name="watch_pomodoro">بومودورو</string>
+    <string name="watch_world">الساعة العالمية</string>
+    <string name="watch_zikir">المسبحة</string>
+    <string name="watch_start">ابدأ</string>
+    <string name="watch_pause">إيقاف مؤقت</string>
+    <string name="watch_reset">إعادة الضبط</string>
+    <string name="watch_done">انتهى الوقت</string>
+    <string name="watch_work">عمل</string>
+    <string name="watch_break">استراحة</string>
+    <string name="watch_minutes">%1$s د</string>
+    <string name="watch_tap">المس</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

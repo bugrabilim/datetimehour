@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">بی‌صدا در نماز جمعه (60 دقیقه)</string>
     <string name="widget_weather_name">آب‌وهوا</string>
     <string name="widget_weather_desc">آب‌وهوای کنونی و بیشینه/کمینهٔ دمای امروز برای مکان برنامه.</string>
+    <string name="watch_tools">ابزارها</string>
+    <string name="watch_stopwatch">کرنومتر</string>
+    <string name="watch_timer">تایمر</string>
+    <string name="watch_pomodoro">پومودورو</string>
+    <string name="watch_world">ساعت جهانی</string>
+    <string name="watch_zikir">تسبیح‌شمار</string>
+    <string name="watch_start">شروع</string>
+    <string name="watch_pause">مکث</string>
+    <string name="watch_reset">بازنشانی</string>
+    <string name="watch_done">زمان تمام شد</string>
+    <string name="watch_work">کار</string>
+    <string name="watch_break">استراحت</string>
+    <string name="watch_minutes">%1$s دقیقه</string>
+    <string name="watch_tap">لمس کنید</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

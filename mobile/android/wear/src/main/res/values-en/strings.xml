@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">Silence during Friday prayer (60 min)</string>
     <string name="widget_weather_name">Weather</string>
     <string name="widget_weather_desc">Current weather and today\'s high/low for the place set in the app.</string>
+    <string name="watch_tools">Tools</string>
+    <string name="watch_stopwatch">Stopwatch</string>
+    <string name="watch_timer">Timer</string>
+    <string name="watch_pomodoro">Pomodoro</string>
+    <string name="watch_world">World clock</string>
+    <string name="watch_zikir">Tasbih counter</string>
+    <string name="watch_start">Start</string>
+    <string name="watch_pause">Pause</string>
+    <string name="watch_reset">Reset</string>
+    <string name="watch_done">Time\'s up</string>
+    <string name="watch_work">Work</string>
+    <string name="watch_break">Break</string>
+    <string name="watch_minutes">%1$s min</string>
+    <string name="watch_tap">Tap</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

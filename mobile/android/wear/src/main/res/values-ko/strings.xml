@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">금요 예배 중 무음(60분)</string>
     <string name="widget_weather_name">날씨</string>
     <string name="widget_weather_desc">앱에서 정한 장소의 현재 날씨와 오늘 최고/최저 기온.</string>
+    <string name="watch_tools">도구</string>
+    <string name="watch_stopwatch">스톱워치</string>
+    <string name="watch_timer">타이머</string>
+    <string name="watch_pomodoro">뽀모도로</string>
+    <string name="watch_world">세계 시계</string>
+    <string name="watch_zikir">타스비 카운터</string>
+    <string name="watch_start">시작</string>
+    <string name="watch_pause">일시정지</string>
+    <string name="watch_reset">초기화</string>
+    <string name="watch_done">시간 종료</string>
+    <string name="watch_work">작업</string>
+    <string name="watch_break">휴식</string>
+    <string name="watch_minutes">%1$s분</string>
+    <string name="watch_tap">탭하세요</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

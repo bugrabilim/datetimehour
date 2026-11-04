@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">Cümə namazında səssizə al (60 dəq)</string>
     <string name="widget_weather_name">Hava</string>
     <string name="widget_weather_desc">Tətbiqdəki yerin cari havası və bu günün ən yüksək/ən aşağı temperaturu.</string>
+    <string name="watch_tools">Alətlər</string>
+    <string name="watch_stopwatch">Saniyəölçən</string>
+    <string name="watch_timer">Taymer</string>
+    <string name="watch_pomodoro">Pomodoro</string>
+    <string name="watch_world">Dünya saatları</string>
+    <string name="watch_zikir">Zikrmatik</string>
+    <string name="watch_start">Başlat</string>
+    <string name="watch_pause">Fasilə</string>
+    <string name="watch_reset">Sıfırla</string>
+    <string name="watch_done">Vaxt bitdi</string>
+    <string name="watch_work">İş</string>
+    <string name="watch_break">Fasilə</string>
+    <string name="watch_minutes">%1$s dəq</string>
+    <string name="watch_tap">Toxunun</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

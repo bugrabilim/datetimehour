@@ -72,6 +72,9 @@ fun WorldScreen() {
     var whenMs by rememberSaveable { mutableStateOf(System.currentTimeMillis()) }
     var picking by remember { mutableStateOf<String?>(null) }
     val now = if (shift) Instant.ofEpochMilli(whenMs) else live
+    // Küre / harita / 24 saat kadranı (2. analiz #129, #131) ve şehir başına hava
+    var view by remember { mutableStateOf(Prefs.store.getString("world.view", "globe") ?: "globe") }
+    val wxVersion = rememberWorldWeather(cities)
 
     fun save(list: List<String>) = Prefs.saveWorld(list.joinToString(","))
 
@@ -129,6 +132,10 @@ fun WorldScreen() {
                                 color = fg, fontSize = 26.sp, fontWeight = FontWeight.Light, style = Tnum)
                         }
                         if (dayNote.isNotEmpty()) Text(dayNote, color = fg, fontSize = 12.sp, fontWeight = FontWeight.SemiBold)
+                        wxVersion
+                        WorldWeather.cached(city.key)?.let {
+                            Text(WeatherCode.of(it.code).icon(it.isDay) + " " + Units.temp(it.celsius), color = fg, fontSize = 12.sp)
+                        }
                     }
                 }
             }
@@ -139,7 +146,12 @@ fun WorldScreen() {
     val wide = androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp >= 600 && !editing
     LazyColumn(Modifier.fillMaxSize()) {
         item {
-            GlobeView(Modifier.fillMaxWidth().height(340.dp))
+            WorldViewSwitch(view) { view = it; Prefs.store.edit().putString("world.view", it).apply() }
+            when (view) {
+                "map" -> WorldMapCard(cities, now, Modifier.padding(horizontal = 16.dp))
+                "dial" -> WorldDial(cities, now, onShift = { ms -> shift = true; whenMs = ms; BadgeStore.hit(Badge.CEVIRICI) }, Modifier.fillMaxWidth().padding(horizontal = 16.dp))
+                else -> GlobeView(Modifier.fillMaxWidth().height(340.dp))
+            }
         }
         item {
             AppCard(Modifier.padding(start = 16.dp, end = 16.dp, top = 14.dp)) {
@@ -187,6 +199,9 @@ fun WorldScreen() {
             }
         } else items(cities, key = { it.key }) { city -> cityRow(city) }
         item {
+            if (cities.any { WorldWeather.cached(it.key) != null }) {
+                Text(L("world.wxNote") + " · " + L("weather.attribution"), Modifier.padding(horizontal = 20.dp, vertical = 6.dp), color = Theme.c.muted, fontSize = 12.sp)
+            }
             TextButton(onClick = { Prefs.saveWorld(City.DEFAULT_KEYS) }, modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp)) {
                 Text(L("world.reset"), color = Theme.c.accent, fontSize = 13.sp)
             }

@@ -150,5 +150,19 @@
     <string name="prayer_silent_friday">Без звука на пятничной молитве (60 мин)</string>
     <string name="widget_weather_name">Погода</string>
     <string name="widget_weather_desc">Текущая погода и максимум/минимум на сегодня для места в приложении.</string>
+    <string name="watch_tools">Инструменты</string>
+    <string name="watch_stopwatch">Секундомер</string>
+    <string name="watch_timer">Таймер</string>
+    <string name="watch_pomodoro">Помодоро</string>
+    <string name="watch_world">Мировое время</string>
+    <string name="watch_zikir">Тасбих-счётчик</string>
+    <string name="watch_start">Старт</string>
+    <string name="watch_pause">Пауза</string>
+    <string name="watch_reset">Сбросить</string>
+    <string name="watch_done">Время вышло</string>
+    <string name="watch_work">Работа</string>
+    <string name="watch_break">Перерыв</string>
+    <string name="watch_minutes">%1$s мин</string>
+    <string name="watch_tap">Нажмите</string>
     <string name="app_name">Время и дата</string>
 </resources>
