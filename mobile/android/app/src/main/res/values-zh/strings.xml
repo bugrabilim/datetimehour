@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">点阵世界</string>
     <string name="look_bg_grain">颗粒渐变</string>
     <string name="look_bg_liquid">液态金属</string>
+    <string name="widget_flipSeconds_name">带秒数的翻页时钟</string>
+    <string name="widget_flipSeconds_desc">时与分翻牌，秒数实时走动。</string>
     <string name="app_name">时间与日期</string>
 </resources>

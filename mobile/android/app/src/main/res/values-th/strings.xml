@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">โลกจุด</string>
     <string name="look_bg_grain">ไล่สีเม็ดหยาบ</string>
     <string name="look_bg_liquid">โลหะเหลว</string>
+    <string name="widget_flipSeconds_name">นาฬิกาพลิกพร้อมวินาที</string>
+    <string name="widget_flipSeconds_desc">การ์ดชั่วโมงและนาทีพร้อมวินาทีที่เดิน</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

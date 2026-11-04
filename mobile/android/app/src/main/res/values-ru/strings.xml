@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">Мир из точек</string>
     <string name="look_bg_grain">Зернистый градиент</string>
     <string name="look_bg_liquid">Жидкий металл</string>
+    <string name="widget_flipSeconds_name">Перекидные часы с секундами</string>
+    <string name="widget_flipSeconds_desc">Карточки часов и минут с бегущими секундами.</string>
     <string name="app_name">Время и дата</string>
 </resources>

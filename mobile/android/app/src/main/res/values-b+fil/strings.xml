@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">Mundong tuldok</string>
     <string name="look_bg_grain">Butil-butil na gradient</string>
     <string name="look_bg_liquid">Likidong metal</string>
+    <string name="widget_flipSeconds_name">Flip clock na may segundo</string>
+    <string name="widget_flipSeconds_desc">Mga card ng oras at minuto na may tumatakbong segundo.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

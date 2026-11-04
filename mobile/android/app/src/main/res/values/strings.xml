@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">Noktalı dünya</string>
     <string name="look_bg_grain">Grenli geçiş</string>
     <string name="look_bg_liquid">Sıvı metal</string>
+    <string name="widget_flipSeconds_name">Saniyeli çevirmeli saat</string>
+    <string name="widget_flipSeconds_desc">Saat ve dakika kartları; ortada saniye akar.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

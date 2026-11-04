@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">جهان نقطه‌ای</string>
     <string name="look_bg_grain">گرادیان دانه‌دار</string>
     <string name="look_bg_liquid">فلز مایع</string>
+    <string name="widget_flipSeconds_name">ساعت ورقی با ثانیه</string>
+    <string name="widget_flipSeconds_desc">کارت‌های ساعت و دقیقه با ثانیهٔ در حال حرکت.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

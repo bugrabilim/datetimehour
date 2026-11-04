@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">ドットの世界地図</string>
     <string name="look_bg_grain">粒状グラデーション</string>
     <string name="look_bg_liquid">液体金属</string>
+    <string name="widget_flipSeconds_name">秒付きフリップ時計</string>
+    <string name="widget_flipSeconds_desc">時と分のカード、秒も動きます。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

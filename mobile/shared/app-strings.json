@@ -28882,5 +28882,39 @@
     "zh": "液态金属",
     "fil": "Likidong metal",
     "th": "โลหะเหลว"
+  },
+  "widget.flipSeconds.name": {
+    "tr": "Saniyeli çevirmeli saat",
+    "en": "Flip clock with seconds",
+    "de": "Klappuhr mit Sekunden",
+    "az": "Saniyəli çevrilən saat",
+    "ar": "ساعة قلابة بالثواني",
+    "id": "Jam lipat dengan detik",
+    "ur": "سیکنڈ والی فلپ گھڑی",
+    "fa": "ساعت ورقی با ثانیه",
+    "fr": "Horloge à volets avec secondes",
+    "ru": "Перекидные часы с секундами",
+    "ja": "秒付きフリップ時計",
+    "ko": "초가 있는 플립 시계",
+    "zh": "带秒数的翻页时钟",
+    "fil": "Flip clock na may segundo",
+    "th": "นาฬิกาพลิกพร้อมวินาที"
+  },
+  "widget.flipSeconds.desc": {
+    "tr": "Saat ve dakika kartları; ortada saniye akar.",
+    "en": "Hour and minute cards with running seconds.",
+    "de": "Stunden- und Minutenkarten mit laufenden Sekunden.",
+    "az": "Saat və dəqiqə kartları; saniyələr axır.",
+    "ar": "بطاقات للساعات والدقائق مع ثوانٍ جارية.",
+    "id": "Kartu jam dan menit dengan detik berjalan.",
+    "ur": "گھنٹے اور منٹ کے کارڈ، چلتے سیکنڈ کے ساتھ۔",
+    "fa": "کارت‌های ساعت و دقیقه با ثانیهٔ در حال حرکت.",
+    "fr": "Volets des heures et minutes, secondes qui défilent.",
+    "ru": "Карточки часов и минут с бегущими секундами.",
+    "ja": "時と分のカード、秒も動きます。",
+    "ko": "시·분 카드와 흐르는 초.",
+    "zh": "时与分翻牌，秒数实时走动。",
+    "fil": "Mga card ng oras at minuto na may tumatakbong segundo.",
+    "th": "การ์ดชั่วโมงและนาทีพร้อมวินาทีที่เดิน"
   }
 }

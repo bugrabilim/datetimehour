@@ -225,3 +225,88 @@ struct FocusStartWidget: Widget {
         .supportedFamilies([.systemSmall])
     }
 }
+
+// MARK: Saniyeli çevirmeli saat (2. analiz #18)
+
+struct FlipSecondsEntry: TimelineEntry { let date: Date }
+
+/// Dakika başlarında kayıt (iki saat); saniye kartı sistemin sayaç metniyle akar
+struct FlipSecondsProvider: TimelineProvider {
+    func placeholder(in context: Context) -> FlipSecondsEntry { FlipSecondsEntry(date: Date()) }
+    func getSnapshot(in context: Context, completion: @escaping (FlipSecondsEntry) -> Void) { completion(FlipSecondsEntry(date: Date())) }
+    func getTimeline(in context: Context, completion: @escaping (Timeline<FlipSecondsEntry>) -> Void) {
+        let now = Date()
+        let start = Calendar.current.dateInterval(of: .minute, for: now)?.start ?? now
+        let entries = (0..<120).map { FlipSecondsEntry(date: start.addingTimeInterval(Double($0) * 60)) }
+        completion(Timeline(entries: entries, policy: .atEnd))
+    }
+}
+
+/// Widget'lar saniyede bir yenilenemediği için saniye kartında dakikanın başından sayan sistem sayacı (0:00–0:59)
+/// gösterilir; baştaki "0:" kartın dışında kalacak biçimde kırpılır. Saniyeli analog widget iOS'ta yapılamaz
+/// (WidgetKit ibreyi saniyede döndürmez).
+struct FlipSecondsWidget: Widget {
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: "flip-seconds", provider: FlipSecondsProvider()) { entry in
+            FlipSecondsView(date: entry.date)
+                .containerBackground(for: .widget) { Theme.bg }
+                .widgetURL(URL(string: "saattarih://clock"))
+        }
+        .configurationDisplayName(L("widget.flipSeconds.name"))
+        .description(L("widget.flipSeconds.desc"))
+        .supportedFamilies([.systemSmall, .systemMedium])
+    }
+}
+
+struct FlipSecondsView: View {
+    @Environment(\.widgetFamily) private var family
+    let date: Date
+
+    private func card(_ content: some View, width: CGFloat, height: CGFloat) -> some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: height * 0.12).fill(dc(0x1A1B1E))
+            content
+            Rectangle().fill(Color.black.opacity(0.55)).frame(height: 1.5)
+        }
+        .frame(width: width, height: height)
+    }
+
+    var body: some View {
+        let small = family == .systemSmall
+        let h: CGFloat = small ? 58 : 92
+        let fs: CGFloat = h * 0.62
+        let comps = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let hh = String(format: "%02d", comps.hour ?? 0), mm = String(format: "%02d", comps.minute ?? 0)
+        let minuteStart = Calendar.current.dateInterval(of: .minute, for: date)?.start ?? date
+        let digitW = fs * 0.62
+        HStack(spacing: small ? 4 : 8) {
+            card(Text(hh).font(.system(size: fs, weight: .bold, design: .rounded)).monospacedDigit().foregroundStyle(dc(0xF5F5F5)),
+                 width: h * 1.05, height: h)
+            card(Text(mm).font(.system(size: fs, weight: .bold, design: .rounded)).monospacedDigit().foregroundStyle(dc(0xF5F5F5)),
+                 width: h * 1.05, height: h)
+            if !small {
+                card(Text(timerInterval: minuteStart...minuteStart.addingTimeInterval(60), countsDown: false)
+                        .font(.system(size: fs, weight: .bold, design: .rounded))
+                        .monospacedDigit()
+                        .foregroundStyle(Theme.accent)
+                        .multilineTextAlignment(.trailing)
+                        .frame(width: digitW * 2.05, alignment: .trailing)
+                        .clipped(),
+                     width: h * 1.05, height: h)
+            }
+        }
+        .environment(\.layoutDirection, .leftToRight)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(alignment: .bottom) {
+            if small {
+                Text(timerInterval: minuteStart...minuteStart.addingTimeInterval(60), countsDown: false)
+                    .font(.system(size: 14, weight: .bold, design: .rounded)).monospacedDigit()
+                    .foregroundStyle(Theme.accent)
+                    .multilineTextAlignment(.trailing)
+                    .frame(width: 20, alignment: .trailing)
+                    .clipped()
+                    .environment(\.layoutDirection, .leftToRight)
+            }
+        }
+    }
+}

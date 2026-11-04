@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">نقطوں والی دنیا</string>
     <string name="look_bg_grain">دانے دار رنگ</string>
     <string name="look_bg_liquid">مائع دھات</string>
+    <string name="widget_flipSeconds_name">سیکنڈ والی فلپ گھڑی</string>
+    <string name="widget_flipSeconds_desc">گھنٹے اور منٹ کے کارڈ، چلتے سیکنڈ کے ساتھ۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

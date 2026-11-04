@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">점 세계 지도</string>
     <string name="look_bg_grain">거친 그라데이션</string>
     <string name="look_bg_liquid">액체 금속</string>
+    <string name="widget_flipSeconds_name">초가 있는 플립 시계</string>
+    <string name="widget_flipSeconds_desc">시·분 카드와 흐르는 초.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

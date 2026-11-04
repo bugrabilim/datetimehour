@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">Monde en points</string>
     <string name="look_bg_grain">Dégradé granuleux</string>
     <string name="look_bg_liquid">Métal liquide</string>
+    <string name="widget_flipSeconds_name">Horloge à volets avec secondes</string>
+    <string name="widget_flipSeconds_desc">Volets des heures et minutes, secondes qui défilent.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">Punktwelt</string>
     <string name="look_bg_grain">Körniger Verlauf</string>
     <string name="look_bg_liquid">Flüssiges Metall</string>
+    <string name="widget_flipSeconds_name">Klappuhr mit Sekunden</string>
+    <string name="widget_flipSeconds_desc">Stunden- und Minutenkarten mit laufenden Sekunden.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

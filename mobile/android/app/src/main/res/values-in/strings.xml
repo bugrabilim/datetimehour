@@ -2471,5 +2471,7 @@
     <string name="look_bg_dots">Dunia titik</string>
     <string name="look_bg_grain">Gradasi berbutir</string>
     <string name="look_bg_liquid">Logam cair</string>
+    <string name="widget_flipSeconds_name">Jam lipat dengan detik</string>
+    <string name="widget_flipSeconds_desc">Kartu jam dan menit dengan detik berjalan.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

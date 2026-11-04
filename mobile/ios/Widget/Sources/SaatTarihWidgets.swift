@@ -20,6 +20,7 @@ struct SaatTarihWidgets: WidgetBundle {
         WorldMapWidget()
         TimerPresetsWidget()
         FocusStartWidget()
+        FlipSecondsWidget()
         CountdownWidget()
         HijriWidget()
         ZikirWidget()
