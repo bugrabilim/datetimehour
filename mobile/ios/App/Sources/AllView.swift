@@ -47,17 +47,28 @@ enum AllPrefs {
         AllEntry(id: "sleep", titleKey: "sleep.title", icon: "bed.double", cat: .time, feature: .tools, route: .sleep),
         AllEntry(id: "wakeGame", titleKey: "wakegame.title", icon: "bird", cat: .time, feature: .tools, route: .wakeGame),
         AllEntry(id: "breath", titleKey: "breath.title", icon: "wind", cat: .time, feature: .tools, route: .breath),
+        // Sitedeki araçlar (4 Kasım 2026; Android'deki kimliklerle)
+        AllEntry(id: "chess", titleKey: "chess.h1", icon: "checkerboard.rectangle", cat: .time, feature: .tools, route: .chess),
+        AllEntry(id: "metronome", titleKey: "metronome.h1", icon: "metronome", cat: .time, feature: .tools, route: .metronome, words: ["metronome.bpm"]),
+        AllEntry(id: "talking", titleKey: "talking.h1", icon: "speaker.wave.2", cat: .time, feature: .tools, route: .talking),
+        AllEntry(id: "exam", titleKey: "examTimer.h1", icon: "pencil.and.list.clipboard", cat: .time, feature: .tools, route: .exam),
+        AllEntry(id: "classroom", titleKey: "classroom.h1", icon: "person.3", cat: .time, feature: .tools, route: .classroom,
+                 words: ["classroom.tabPicker", "classroom.tabTeams", "classroom.tabCounter"]),
+        AllEntry(id: "timecalc", titleKey: "timeCalc.h1", icon: "clock.badge.questionmark", cat: .time, feature: .tools, route: .timecalc),
         AllEntry(id: "calendar", titleKey: "tab.calendar", icon: "calendar", cat: .plan, feature: .calendar, tab: .calendar),
         AllEntry(id: "leaf", titleKey: "leaf.title", icon: "doc.text", cat: .plan, feature: .calendar, route: .leaf),
         AllEntry(id: "datecalc", titleKey: "tools.hub.cards.datecalc.name", icon: "calendar.badge.clock", cat: .plan, feature: .tools, route: .datecalc),
         AllEntry(id: "planner", titleKey: "planner.h1", icon: "person.2.wave.2", cat: .plan, feature: .tools, route: .planner),
         AllEntry(id: "journal", titleKey: "journal.title", icon: "sun.horizon", cat: .plan, feature: .tools, route: .journal),
+        AllEntry(id: "bridge", titleKey: "bridge.h1", icon: "beach.umbrella", cat: .plan, feature: .tools, route: .bridge),
+        AllEntry(id: "retire", titleKey: "retire.h1", icon: "calendar.badge.clock", cat: .plan, feature: .tools, route: .retire),
         AllEntry(id: "weather", titleKey: "tab.weather", icon: "cloud.sun", cat: .sky, feature: .weather, tab: .weather),
         AllEntry(id: "world", titleKey: "tab.world", icon: "globe.europe.africa", cat: .sky, feature: .world, tab: .world),
         AllEntry(id: "seasons", titleKey: "tab.seasons", icon: "leaf", cat: .sky, feature: .seasons, tab: .seasons),
         AllEntry(id: "moon", titleKey: "moon.calendarLink", icon: "moon", cat: .sky, feature: .seasons, route: .moon),
         AllEntry(id: "sky", titleKey: "sky.h1", icon: "sparkles", cat: .sky, feature: .seasons, route: .sky),
         AllEntry(id: "sunpath", titleKey: "sunpath.title", icon: "sun.horizon", cat: .sky, feature: .seasons, route: .sunpath),
+        AllEntry(id: "zodiac", titleKey: "zodiac.h1", icon: "sparkles", cat: .sky, feature: .tools, route: .zodiac),
         AllEntry(id: "prayer", titleKey: "tab.prayer", icon: "moon.stars", cat: .faith, feature: .prayer, tab: .prayer),
         AllEntry(id: "qibla", titleKey: "qibla.title", icon: "location.north.line", cat: .faith, feature: .prayer, route: .qibla),
         AllEntry(id: "quran", titleKey: "quran.title", icon: "book", cat: .faith, feature: .prayer, route: .quran),
@@ -91,7 +102,8 @@ enum AllPrefs {
         AllEntry(id: "s:shareQr", titleKey: "support.qr", icon: "qrcode", cat: .more, feature: nil, route: .shareQr),
     ]
 
-    static func visible(_ e: AllEntry) -> Bool { e.feature.map(Features.isOn) ?? true }
+    /// Emeklilik hesabı yalnız Türkçe arayüzde (Türkiye mevzuatı, metni Türkçe)
+    static func visible(_ e: AllEntry) -> Bool { (e.feature.map(Features.isOn) ?? true) && (e.id != "retire" || AppLocale.code == "tr") }
 
     static func byID(_ id: String) -> AllEntry? { (entries + settings).first { $0.id == id } }
 
@@ -331,6 +343,15 @@ extension ToolRoute {
         case .moon: MoonView()
         case .sky: SkyView()
         case .sunpath: SunPathView()
+        case .chess: ChessClockView()
+        case .metronome: MetronomeView()
+        case .talking: TalkingClockView()
+        case .zodiac: ZodiacView()
+        case .timecalc: TimeCalcView()
+        case .bridge: BridgeView()
+        case .retire: RetireView()
+        case .exam: ExamTimerView()
+        case .classroom: ClassroomView()
         case .appearance: AppearanceView()
         case .color: AccentPickerView()
         case .dials: DialGalleryView()

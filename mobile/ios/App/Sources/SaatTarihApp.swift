@@ -106,6 +106,8 @@ enum ToolRoute: Hashable {
     // Tümü'nden açılan sayfalar (Seçenek B, 2. analiz #195): ibadet, Ay, takvim yaprağı ve ayar sayfaları
     case qibla, quran, duas, zikir, track, zakat, reldays, greet, esma, hadith, guide, leaf, moon, sky, sunpath
     case appearance, color, dials, widgets, homeItems, features, notifications, language, shareQr
+    // Sitedeki dokuz araç (4 Kasım 2026)
+    case chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     case sura(Int)
 }
 
@@ -457,7 +459,7 @@ enum DebugScreen: String, Identifiable {
     case monthly, imsakiye, alarm, timer, stopwatch, pomodoro, datecalc, world, weather, seasons, settings, homeItems,
          privacy, about, list, globe, google, badges, notifications, morning, moon, look, features, qibla, mosques, night, sleep,
          wake, quran, sura, duas, zikir, track, zakat, esma, hadith, guide, leaf, method, journal, planner, breath, reldays, greet,
-         qr, colors, wall, study, wakegame, language, dials
+         qr, colors, wall, study, wakegame, language, dials, chess, metronome, talking, zodiac, timecalc, bridge, retire, exam, classroom
     var id: String { rawValue }
 
     @MainActor @ViewBuilder var view: some View {
@@ -486,6 +488,15 @@ enum DebugScreen: String, Identifiable {
         case .wakegame: WakeGameView()
         case .language: LanguageView()
         case .dials: DialGalleryView()
+        case .chess: ChessClockView()
+        case .metronome: MetronomeView()
+        case .talking: TalkingClockView()
+        case .zodiac: ZodiacView()
+        case .timecalc: TimeCalcView()
+        case .bridge: BridgeView()
+        case .retire: RetireView()
+        case .exam: ExamTimerView()
+        case .classroom: ClassroomView()
         case .planner: MeetingPlannerView()
         case .world: WorldClockView()
         case .weather: WeatherView()
