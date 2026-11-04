@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">Walze</string>
     <string name="digital_style_vertical">Vertikal</string>
     <string name="digital_styleNote">LED und LCD zeigen auch die unbeleuchteten Segmente; vertikal stapelt Stunden, Minuten und Sekunden.</string>
+    <string name="fs_duo">Neben der Uhr im Querformat</string>
+    <string name="fs_duo_off">Nichts</string>
+    <string name="fs_duo_calendar">Kalender</string>
+    <string name="fs_duo_prayer">Gebetszeiten</string>
+    <string name="fs_duo_weather">Wetter</string>
+    <string name="fs_duoNote">Im Querformat steht der gewählte Bereich rechts neben der Vollbilduhr.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

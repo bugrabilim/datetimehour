@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">드럼</string>
     <string name="digital_style_vertical">세로</string>
     <string name="digital_styleNote">LED와 LCD는 꺼진 세그먼트도 보여 주며, 세로는 시·분·초를 위아래로 쌓습니다.</string>
+    <string name="fs_duo">가로 화면에서 시계 옆에</string>
+    <string name="fs_duo_off">없음</string>
+    <string name="fs_duo_calendar">달력</string>
+    <string name="fs_duo_prayer">기도 시간</string>
+    <string name="fs_duo_weather">날씨</string>
+    <string name="fs_duoNote">가로로 돌리면 선택한 항목이 전체 화면 시계 오른쪽에 표시됩니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">ลูกกลิ้ง</string>
     <string name="digital_style_vertical">แนวตั้ง</string>
     <string name="digital_styleNote">LED และ LCD แสดงส่วนที่ดับด้วย แนวตั้งเรียงชั่วโมง นาที และวินาทีลงมา</string>
+    <string name="fs_duo">ข้างนาฬิกาเมื่อวางแนวนอน</string>
+    <string name="fs_duo_off">ไม่มี</string>
+    <string name="fs_duo_calendar">ปฏิทิน</string>
+    <string name="fs_duo_prayer">เวลาละหมาด</string>
+    <string name="fs_duo_weather">สภาพอากาศ</string>
+    <string name="fs_duoNote">เมื่อวางโทรศัพท์แนวนอน ส่วนที่เลือกจะอยู่ทางขวาของนาฬิกาเต็มจอ</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

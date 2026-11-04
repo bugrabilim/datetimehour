@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">أسطوانة</string>
     <string name="digital_style_vertical">عمودي</string>
     <string name="digital_styleNote">يعرض LED وLCD المقاطع المطفأة أيضًا؛ والعمودي يرتب الساعات والدقائق والثواني فوق بعضها.</string>
+    <string name="fs_duo">بجانب الساعة في الوضع الأفقي</string>
+    <string name="fs_duo_off">لا شيء</string>
+    <string name="fs_duo_calendar">التقويم</string>
+    <string name="fs_duo_prayer">أوقات الصلاة</string>
+    <string name="fs_duo_weather">الطقس</string>
+    <string name="fs_duoNote">عند تدوير الهاتف أفقيًا يظهر القسم الذي تختاره يمين الساعة بملء الشاشة.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

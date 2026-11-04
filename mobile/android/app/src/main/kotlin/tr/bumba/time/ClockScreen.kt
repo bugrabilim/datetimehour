@@ -418,7 +418,7 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Column(
-                Modifier.offset(dx.dp, dy.dp).widthIn(max = 720.dp).fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
+                Modifier.offset(dx.dp, dy.dp).widthIn(max = if (landscape && FsDuo.current != "off") 1400.dp else 720.dp).fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp)
                     .fitGlobe(viewport, globeHeight, HomeItem.GLOBE in items),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -437,13 +437,23 @@ fun FullscreenClock(controls: Boolean = true, onExit: () -> Unit) {
                     items.isEmpty() -> maxOf(300.dp, viewport - 60.dp)
                     else -> stageHeight(viewport * 1.08f)
                 }
-                HorizontalPager(pager, Modifier.fillMaxWidth().height(stage)) { page ->
-                    when (page) {
-                        0 -> FullscreenToolPage(FullscreenTool.POMODORO)
-                        ClockModel.count + 1 -> FullscreenToolPage(FullscreenTool.STOPWATCH)
-                        else -> ClockModelPage(page - 1, now, place, Modifier.padding(horizontal = 8.dp).graphicsLayer(scaleX = FsLook.scale, scaleY = FsLook.scale))
+                // Yatayda saatin yanında ikinci alan (2. analiz #169, `fs.duo`): takvim, vakitler ya da hava
+                val duo = if (landscape && !banner) FsDuo.current else "off"
+                val pagerView: @Composable (Modifier) -> Unit = { m ->
+                    HorizontalPager(pager, m.height(stage)) { page ->
+                        when (page) {
+                            0 -> FullscreenToolPage(FullscreenTool.POMODORO)
+                            ClockModel.count + 1 -> FullscreenToolPage(FullscreenTool.STOPWATCH)
+                            else -> ClockModelPage(page - 1, now, place, Modifier.padding(horizontal = 8.dp).graphicsLayer(scaleX = FsLook.scale, scaleY = FsLook.scale))
+                        }
                     }
                 }
+                if (duo != "off") Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    pagerView(Modifier.weight(1.3f))
+                    Box(Modifier.weight(1f).height(stage), contentAlignment = Alignment.Center) {
+                        FsDuoPanel(duo, now, place, stage) { onExit(); Nav.tab = it.open() }
+                    }
+                } else pagerView(Modifier.fillMaxWidth())
                 if (FsLook.text.isNotEmpty() && !banner) Text(FsLook.text, color = Theme.c.text, fontSize = 24.sp, fontWeight = FontWeight.SemiBold,
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center)
                 for (item in items) {
@@ -516,5 +526,25 @@ fun HideSystemBars() {
         controller?.systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         controller?.hide(WindowInsetsCompat.Type.systemBars())
         onDispose { controller?.show(WindowInsetsCompat.Type.systemBars()) }
+    }
+}
+
+/** Yatay tam ekranda saatin yanındaki alan (2. analiz #169): kayıt `fs.duo` (off, calendar, prayer, weather) */
+object FsDuo {
+    const val KEY = "fs.duo"
+    val ALL = listOf("off", "calendar", "prayer", "weather")
+    val current: String get() = Prefs.store.getString(KEY, "off")?.takeIf { it in ALL } ?: "off"
+    fun save(v: String) = Prefs.store.edit().putString(KEY, v).apply()
+}
+
+@Composable
+fun FsDuoPanel(kind: String, now: java.time.Instant, place: AppPlace, height: androidx.compose.ui.unit.Dp, onOpen: (HomeItem) -> Unit) {
+    when (kind) {
+        "calendar" -> MonthPart(now.atZone(java.time.ZoneId.systemDefault()).toLocalDate(), minOf(height * 0.92f, 420.dp))
+        "prayer" -> Column(Modifier.widthIn(max = 420.dp)) {
+            HomeItemView(HomeItem.NEXT, now, place, 0.dp) { onOpen(it) }
+            HomeItemView(HomeItem.PRAYERS, now, place, 0.dp) { onOpen(it) }
+        }
+        "weather" -> Column(Modifier.widthIn(max = 420.dp)) { HomeItemView(HomeItem.WEATHER, now, place, 0.dp) { onOpen(it) } }
     }
 }

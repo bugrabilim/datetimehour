@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">Silinder</string>
     <string name="digital_style_vertical">Vertikal</string>
     <string name="digital_styleNote">LED dan LCD juga menampilkan segmen yang padam; vertikal menyusun jam, menit, dan detik ke bawah.</string>
+    <string name="fs_duo">Di samping jam saat mendatar</string>
+    <string name="fs_duo_off">Tidak ada</string>
+    <string name="fs_duo_calendar">Kalender</string>
+    <string name="fs_duo_prayer">Waktu salat</string>
+    <string name="fs_duo_weather">Cuaca</string>
+    <string name="fs_duoNote">Saat ponsel dimiringkan, area pilihan Anda tampil di kanan jam layar penuh.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

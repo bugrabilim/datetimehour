@@ -238,6 +238,7 @@ struct FullscreenClock: View {
     @AppStorage("fs.scale") private var scale = 1.0
     @AppStorage("fs.dim") private var dim = 0.0
     @AppStorage("fs.lock") private var locked = false
+    @AppStorage(FsDuo.key) private var duo = "off"
     @State private var dimStart: Double?
     @State private var scaleStart: Double?
     @State private var globeHeight: CGFloat = 260
@@ -290,17 +291,26 @@ struct FullscreenClock: View {
                                 .frame(maxWidth: .infinity)
                                 .frame(height: geo.size.height * 0.5)
                         }
-                        TabView(selection: $page) {
-                            FullscreenToolPage(tool: .pomodoro).tag(FullscreenTool.pomodoro.rawValue)
-                            ForEach(ClockModel.allCases) { m in
-                                ClockModelView(model: m, now: now, place: place)
-                                    .scaleEffect(scale)
-                                    .padding(.horizontal, 8)
-                                    .tag(m.rawValue)
+                        // Yatayda saatin yanında ikinci alan (2. analiz #169, `fs.duo`): takvim, vakitler ya da hava
+                        let duoOn = duo != "off" && geo.size.width > geo.size.height && !showBanner
+                        HStack(spacing: 16) {
+                            TabView(selection: $page) {
+                                FullscreenToolPage(tool: .pomodoro).tag(FullscreenTool.pomodoro.rawValue)
+                                ForEach(ClockModel.allCases) { m in
+                                    ClockModelView(model: m, now: now, place: place)
+                                        .scaleEffect(scale)
+                                        .padding(.horizontal, 8)
+                                        .tag(m.rawValue)
+                                }
+                                FullscreenToolPage(tool: .stopwatch).tag(FullscreenTool.stopwatch.rawValue)
                             }
-                            FullscreenToolPage(tool: .stopwatch).tag(FullscreenTool.stopwatch.rawValue)
+                            .tabViewStyle(.page(indexDisplayMode: .never))
+                            .frame(maxWidth: duoOn ? geo.size.width * 0.56 : .infinity)
+                            if duoOn {
+                                FsDuoPanel(kind: duo, now: now, place: place, height: stage) { dismiss() }
+                                    .frame(maxWidth: .infinity)
+                            }
                         }
-                        .tabViewStyle(.page(indexDisplayMode: .never))
                         .frame(height: showBanner ? max(180, geo.size.height * 0.4) : stage)
                         if !personalText.isEmpty && !showBanner {
                             Text(personalText).font(.title2.weight(.semibold)).multilineTextAlignment(.center)
@@ -458,5 +468,50 @@ struct FullscreenClock: View {
     static func stageHeight(_ size: CGSize, hasItems: Bool) -> CGFloat {
         if size.width > size.height { return max(220, size.height - 44) }
         return hasItems ? ClockTab.stageHeight(size.height * 1.08) : max(300, size.height - 60)
+    }
+}
+
+/// Yatay tam ekranda saatin yanındaki alan (2. analiz #169): kayıt `fs.duo` (off, calendar, prayer, weather);
+/// Android'deki FsDuo ile aynı
+enum FsDuo {
+    static let key = "fs.duo"
+    static let all = ["off", "calendar", "prayer", "weather"]
+}
+
+struct FsDuoPanel: View {
+    let kind: String
+    let now: Date
+    let place: AppPlace
+    let height: CGFloat
+    let onOpen: () -> Void
+
+    var body: some View {
+        switch kind {
+        case "calendar":
+            MonthPart(now: now, width: min(height * 0.92, 420))
+        case "prayer":
+            VStack(spacing: 12) {
+                HomeItemView(item: .next, now: now, place: place, globeHeight: 0) { onOpen() }
+                HomeItemView(item: .prayers, now: now, place: place, globeHeight: 0) { onOpen() }
+            }
+            .frame(maxWidth: 420)
+        case "weather":
+            HomeItemView(item: .weather, now: now, place: place, globeHeight: 0) { onOpen() }
+                .frame(maxWidth: 420)
+        default:
+            EmptyView()
+        }
+    }
+}
+
+/// Saat görünümü sayfasındaki seçim
+struct FsDuoPicker: View {
+    @AppStorage(FsDuo.key) private var duo = "off"
+
+    var body: some View {
+        Picker(L("fs.duo"), selection: $duo) {
+            ForEach(FsDuo.all, id: \.self) { Text(L("fs.duo.\($0)")).tag($0) }
+        }
+        Text(L("fs.duoNote")).font(.footnote).foregroundStyle(Theme.muted)
     }
 }

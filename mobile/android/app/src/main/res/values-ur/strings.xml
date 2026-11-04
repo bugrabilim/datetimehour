@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">سلنڈر</string>
     <string name="digital_style_vertical">عمودی</string>
     <string name="digital_styleNote">LED اور LCD میں بجھے ہوئے حصے بھی دکھتے ہیں؛ عمودی انداز میں گھنٹے، منٹ اور سیکنڈ اوپر نیچے آتے ہیں۔</string>
+    <string name="fs_duo">افقی حالت میں گھڑی کے ساتھ</string>
+    <string name="fs_duo_off">کچھ نہیں</string>
+    <string name="fs_duo_calendar">کیلنڈر</string>
+    <string name="fs_duo_prayer">نماز کے اوقات</string>
+    <string name="fs_duo_weather">موسم</string>
+    <string name="fs_duoNote">فون ترچھا کرنے پر آپ کا منتخب حصہ فل اسکرین گھڑی کے دائیں جانب آتا ہے۔</string>
     <string name="app_name">وقت اور تاریخ</string>
 </resources>

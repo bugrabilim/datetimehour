@@ -265,6 +265,11 @@ class ScreenshotTest {
     @Test fun featuresPage() = tool("tr-ozellikler", "features")
     @Test fun homeItemsEditor() = capture("tr-saat-duzenle") { HomeItemsEditor() }
     @Test fun fullscreen() = capture("tr-saat-tam-ekran") { FullscreenClock {} }
+    // 2. analiz #169: yatayda saatin yanında takvim
+    @Test fun fullscreenDuo() {
+        FsDuo.save("calendar")
+        try { capture("tr-yatay-duo", "tr-land") { FullscreenClock {} } } finally { FsDuo.save("off") }
+    }
     // 2. analiz #12, #21, #22: ikili saat dilimi, küçük saniye, tabela
     @Test fun clockDual() = shot("tr-saat-ikili", Tab.CLOCK, model = ClockModel.DUAL.ordinal)
     @Test fun clockSmallSeconds() {

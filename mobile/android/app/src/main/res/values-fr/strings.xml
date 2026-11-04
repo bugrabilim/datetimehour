@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">Rouleau</string>
     <string name="digital_style_vertical">Vertical</string>
     <string name="digital_styleNote">Les styles LED et LCD montrent aussi les segments éteints ; le style vertical empile heures, minutes et secondes.</string>
+    <string name="fs_duo">À côté de l\'horloge en paysage</string>
+    <string name="fs_duo_off">Rien</string>
+    <string name="fs_duo_calendar">Calendrier</string>
+    <string name="fs_duo_prayer">Heures de prière</string>
+    <string name="fs_duo_weather">Météo</string>
+    <string name="fs_duoNote">En mode paysage, la zone choisie s\'affiche à droite de l\'horloge plein écran.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

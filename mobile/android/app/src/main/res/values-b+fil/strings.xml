@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">Gulong</string>
     <string name="digital_style_vertical">Patayo</string>
     <string name="digital_styleNote">Makikita rin sa LED at LCD ang mga patay na segment; pinapatong ng patayo ang oras, minuto at segundo.</string>
+    <string name="fs_duo">Sa tabi ng orasan kapag pahiga</string>
+    <string name="fs_duo_off">Wala</string>
+    <string name="fs_duo_calendar">Kalendaryo</string>
+    <string name="fs_duo_prayer">Oras ng pagdarasal</string>
+    <string name="fs_duo_weather">Panahon</string>
+    <string name="fs_duoNote">Kapag pahiga ang telepono, nasa kanan ng full-screen na orasan ang napiling bahagi.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

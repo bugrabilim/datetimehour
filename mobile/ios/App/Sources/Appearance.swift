@@ -271,6 +271,10 @@ struct AppearanceView: View {
                 }
                 Toggle(L("look.outline"), isOn: $digitOutline)
             }
+            // Yatayda saatin yanında (2. analiz #169)
+            Section {
+                FsDuoPicker()
+            }
             // Dijital rakam görünümü (2. analiz #9)
             Section(L("digital.style")) {
                 DigitalStylePicker()

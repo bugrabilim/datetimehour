@@ -419,7 +419,7 @@ private fun WeatherPart(kind: WxKind, place: AppPlace, size: Dp, start: Boolean 
 
 /** Aylık takvim (pazartesi başlar; bugün vurgulu, tatiller renkli). Güne dokununca Takvim sekmesinde açılır. */
 @Composable
-private fun MonthPart(today: LocalDate, width: Dp) {
+internal fun MonthPart(today: LocalDate, width: Dp) {
     val month = YearMonth.from(today)
     val lead = month.atDay(1).dayOfWeek.value - 1
     val cell = width / 7

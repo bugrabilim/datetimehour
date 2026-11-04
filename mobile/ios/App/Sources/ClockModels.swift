@@ -495,7 +495,7 @@ private struct WeatherPart: View {
 }
 
 /// Aylık takvim (pazartesi başlar; bugün vurgulu, tatiller renkli). Güne dokununca Takvim sekmesinde açılır.
-private struct MonthPart: View {
+struct MonthPart: View {
     let now: Date
     let width: CGFloat
 

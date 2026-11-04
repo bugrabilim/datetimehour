@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">Silindr</string>
     <string name="digital_style_vertical">Şaquli</string>
     <string name="digital_styleNote">LED və LCD-də sönük seqmentlər də görünür; şaquli görünüşdə saat, dəqiqə və saniyə alt-alta durur.</string>
+    <string name="fs_duo">Üfüqi rejimdə saatın yanında</string>
+    <string name="fs_duo_off">Heç biri</string>
+    <string name="fs_duo_calendar">Təqvim</string>
+    <string name="fs_duo_prayer">Namaz vaxtları</string>
+    <string name="fs_duo_weather">Hava</string>
+    <string name="fs_duoNote">Telefon yan çevriləndə seçdiyiniz sahə tam ekran saatın sağında durur.</string>
     <string name="app_name">Saat Tarix</string>
 </resources>

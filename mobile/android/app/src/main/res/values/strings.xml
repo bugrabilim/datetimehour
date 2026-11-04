@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">Silindir</string>
     <string name="digital_style_vertical">Dikey</string>
     <string name="digital_styleNote">LED ve LCD\'de sönük bölütler de görünür; dikey görünümde saat, dakika ve saniye alt alta durur.</string>
+    <string name="fs_duo">Yatayda saatin yanında</string>
+    <string name="fs_duo_off">Hiçbiri</string>
+    <string name="fs_duo_calendar">Takvim</string>
+    <string name="fs_duo_prayer">Vakitler</string>
+    <string name="fs_duo_weather">Hava durumu</string>
+    <string name="fs_duoNote">Telefon yan çevrilince tam ekran saatin sağında seçtiğiniz alan durur.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

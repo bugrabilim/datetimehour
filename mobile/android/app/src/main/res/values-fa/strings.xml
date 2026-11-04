@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">استوانه</string>
     <string name="digital_style_vertical">عمودی</string>
     <string name="digital_styleNote">در LED و LCD بخش‌های خاموش هم دیده می‌شوند؛ حالت عمودی ساعت، دقیقه و ثانیه را زیر هم می‌چیند.</string>
+    <string name="fs_duo">کنار ساعت در حالت افقی</string>
+    <string name="fs_duo_off">هیچ</string>
+    <string name="fs_duo_calendar">تقویم</string>
+    <string name="fs_duo_prayer">اوقات نماز</string>
+    <string name="fs_duo_weather">آب‌وهوا</string>
+    <string name="fs_duoNote">وقتی گوشی افقی شود، بخشی که انتخاب کرده‌اید سمت راست ساعت تمام‌صفحه قرار می‌گیرد.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

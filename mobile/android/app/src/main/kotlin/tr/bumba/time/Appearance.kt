@@ -279,6 +279,21 @@ fun AppearanceScreen(onRoute: (String) -> Unit = {}) {
             }
             Text(L("digital.styleNote"), color = Theme.c.muted, fontSize = 12.sp)
         }
+        // Yatayda saatin yanında (2. analiz #169)
+        AppCard {
+            SectionTitle(L("fs.duo"))
+            var duo by remember { mutableStateOf(FsDuo.current) }
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                for (id in FsDuo.ALL) {
+                    val on = id == duo
+                    Text(L("fs.duo.$id"),
+                        Modifier.background(if (on) Theme.c.accent else Theme.c.surface2, RoundedCornerShape(50)).clickable { duo = id; FsDuo.save(id) }
+                            .padding(horizontal = 14.dp, vertical = 8.dp),
+                        color = if (on) androidx.compose.ui.graphics.Color.White else Theme.c.text, fontSize = 14.sp)
+                }
+            }
+            Text(L("fs.duoNote"), color = Theme.c.muted, fontSize = 12.sp)
+        }
         // Çevirmeli saat (2. analiz #20): iki rakam tek kart, köşede küçük saniye, kart çizgisi, kart rengi
         AppCard {
             SectionTitle(L("stage.models.flip"))

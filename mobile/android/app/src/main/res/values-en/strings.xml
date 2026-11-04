@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">Rolling drum</string>
     <string name="digital_style_vertical">Vertical</string>
     <string name="digital_styleNote">LED and LCD show the unlit segments too; vertical stacks hours, minutes and seconds.</string>
+    <string name="fs_duo">Beside the clock in landscape</string>
+    <string name="fs_duo_off">None</string>
+    <string name="fs_duo_calendar">Calendar</string>
+    <string name="fs_duo_prayer">Prayer times</string>
+    <string name="fs_duo_weather">Weather</string>
+    <string name="fs_duoNote">When the phone is turned sideways, the area you choose sits to the right of the full-screen clock.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

@@ -2453,5 +2453,11 @@
     <string name="digital_style_roll">ドラム</string>
     <string name="digital_style_vertical">縦</string>
     <string name="digital_styleNote">LEDとLCDでは消えたセグメントも見えます。縦は時・分・秒を縦に並べます。</string>
+    <string name="fs_duo">横向き時に時計の横に</string>
+    <string name="fs_duo_off">なし</string>
+    <string name="fs_duo_calendar">カレンダー</string>
+    <string name="fs_duo_prayer">礼拝時刻</string>
+    <string name="fs_duo_weather">天気</string>
+    <string name="fs_duoNote">横向きにすると、選んだ項目が全画面時計の右側に表示されます。</string>
     <string name="app_name">時刻と日付</string>
 </resources>
