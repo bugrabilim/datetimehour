@@ -65,6 +65,8 @@ targets:
         INFOPLIST_KEY_NSMicrophoneUsageDescription: "Alarm kapatma görevindeki sözü sesli okuduğunuzu anlamak için. Ses yalnız telefonda tanınır, kaydedilmez ve hiçbir yere gönderilmez."
         INFOPLIST_KEY_NSSpeechRecognitionUsageDescription: "Alarm kapatma görevindeki sözü sesli okuduğunuzu anlamak için. Ses yalnız telefonda tanınır, kaydedilmez ve hiçbir yere gönderilmez."
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz."
+        # HealthKit yetkisi olan uygulamada Apple okuma açıklamasını da ister (yükleme hatası 90683); uygulama Sağlık verisi okumaz
+        INFOPLIST_KEY_NSHealthShareUsageDescription: "Biten aralık antrenmanlarını ve rutinleri, siz açarsanız, Sağlık uygulamasına antrenman olarak yazmak için. Uygulama Sağlık verilerinizi okumaz."
         INFOPLIST_KEY_NSLocationWhenInUseUsageDescription: "Bulunduğunuz yerin namaz vakitlerini, kıble yönünü, yakındaki camileri ve hava durumunu göstermek için. Vakitler ve kıble telefonda hesaplanır; hava durumu ve cami araması için yalnız yaklaşık konum Apple'ın servislerine gönderilir. Konuma bağlı hatırlatıcılarda bir yere varışınızı ya da ayrılışınızı iPhone kendisi izler."
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         # Alternatif simgeler (2. analiz #13; üretici scripts/gen-alt-icons.py)
