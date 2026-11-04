@@ -10,9 +10,9 @@
 	<array>
 		<string>tr.bumba.time.refresh</string>
 	</array>
-	<!-- Odakta engelleme (FamilyControls): Apple yetkiyi onaylayınca true (FocusBlock.swift) -->
+	<!-- Odakta engelleme ve alarm sürerken silme engeli (FamilyControls): Apple 4 Kasım 2026'da onayladı (FocusBlock.swift) -->
 	<key>SaatFamilyControls</key>
-	<false/>
+	<true/>
 	<key>NSSupportsLiveActivities</key>
 	<true/>
 	<key>UIBackgroundModes</key>

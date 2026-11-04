@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!-- Widget'ın yetkileri. TestFlight iş akışı widget'ı bu dosyayla geçici (ad hoc) imzalar; dağıtım imzası korur.
+     App Group (2. analiz #76): uygulamanın kestiği duvar kâğıdı parçaları buradan okunur (WallpaperWidget.swift). -->
+<dict>
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.tr.bumba.time</string>
+	</array>
+</dict>
+</plist>

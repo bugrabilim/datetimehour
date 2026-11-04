@@ -9,6 +9,8 @@ yetkileriyle birlikte.
 
 ## Başvuru (hesap sahibi yapar)
 
+**Gönderildi: 4 Kasım 2026** (sahip; yanıt e-postayla gelir, istek numarası sahibin e-postasında). Form sadeleşmiş: ad, e-posta ve Team ID kendiliğinden dolu, yalnız şartlar kabul edilip "Get Entitlement"e basılıyor; açıklama istenmiyor. Yetki uygulamaya değil geliştirici hesabına verilir. Apple ek bilgi isterse aşağıdaki metin gönderilir.
+
 1. https://developer.apple.com/contact/request/family-controls-distribution adresine Apple Developer hesabıyla girin
    (hesap sahibi olmak gerekir; yönetici yetkisi yetmeyebilir).
 2. Uygulama: **Saat Tarih**, Bundle ID **tr.bumba.time**, Team ID **3J9XN2P93D**. Uzantı yok (yalnız ana uygulama).
@@ -28,6 +30,8 @@ yetkileriyle birlikte.
 4. Gönderin. Yanıt birkaç günden birkaç haftaya sürebilir; form durum takibi vermez.
 
 ## Onaydan sonra
+
+**Onaylandı: 4 Kasım 2026** (başvurudan dakikalar sonra e-posta; yetki hesaba verildi). Sahip App ID'de Additional Capabilities › Family Controls (Distribution) kutusunu işaretledi; yetki dosyası ve `SaatFamilyControls = true` aynı gün eklendi, App Review notuna "Screen Time" maddesi yazıldı.
 
 - developer.apple.com › Certificates, Identifiers & Profiles › Identifiers › `tr.bumba.time` › Capabilities: **Family
   Controls (Distribution)** işaretlenir. Aynı yerde **iCloud** (CloudKit gerekmez) ve **HealthKit** de işaretli olmalı.

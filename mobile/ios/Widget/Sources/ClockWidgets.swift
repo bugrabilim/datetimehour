@@ -86,7 +86,7 @@ struct ClockDateWidget: Widget {
                     .minimumScaleFactor(0.7)
                 Text(entry.date.formatted(gregorian(.dateTime.weekday(.wide))))
                     .font(.subheadline)
-                    .foregroundStyle(entry.style.palette?.muted ?? Theme.muted)
+                    .foregroundStyle(entry.muted)
             }
             .styledWidget(entry)
         }
@@ -104,14 +104,14 @@ struct AnalogWidgetView: View {
         if family == .accessoryCircular {
             ZStack {
                 AccessoryWidgetBackground()
-                AnalogClock(date: entry.date, colors: entry.style.clockColors)
+                AnalogClock(date: entry.date, colors: entry.clockColors)
                     .padding(2)
                     .widgetAccentable()
             }
             .widgetURL(entry.tap.url)
             .containerBackground(for: .widget) { Color.clear }
         } else {
-            AnalogClock(date: entry.date, colors: entry.style.clockColors)
+            AnalogClock(date: entry.date, colors: entry.clockColors)
                 .padding(4)
                 .styledWidget(entry)
         }

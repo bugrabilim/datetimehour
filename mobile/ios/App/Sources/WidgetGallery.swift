@@ -39,6 +39,14 @@ struct WidgetGalleryView: View {
             Section {
                 Text(L("widgets.howIOS")).font(.footnote).foregroundStyle(Theme.muted)
             }
+            // Şeffaf widget (2. analiz #76): duvar kâğıdından kesilmiş zemin
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                Section {
+                    NavigationLink { WallpaperView() } label: {
+                        Label(L("wallpaper.title"), systemImage: "square.dashed")
+                    }
+                }
+            }
             ForEach(items) { w in
                 HStack(alignment: .top, spacing: 14) {
                     Image(systemName: w.icon)

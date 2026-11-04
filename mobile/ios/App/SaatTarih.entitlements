@@ -15,5 +15,15 @@
 	<true/>
 	<key>com.apple.developer.healthkit.access</key>
 	<array/>
+	<!-- App Group (2. analiz #76): şeffaf widget için duvar kâğıdı parçaları uygulama ile widget arasında paylaşılır
+	     (WallpaperWidget.swift). App ID'lerde (tr.bumba.time, tr.bumba.time.widget) App Groups açık, grup kayıtlı. -->
+	<key>com.apple.security.application-groups</key>
+	<array>
+		<string>group.tr.bumba.time</string>
+	</array>
+	<!-- Ekran Süresi (FamilyControls, Distribution; Apple 4 Kasım 2026'da onayladı): odakta engelleme ve alarm
+	     görevi sürerken silme engeli (FocusBlock.swift). App ID'de Family Controls (Distribution) açık olmalı. -->
+	<key>com.apple.developer.family-controls</key>
+	<true/>
 </dict>
 </plist>

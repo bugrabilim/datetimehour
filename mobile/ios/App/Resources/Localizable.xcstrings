@@ -286229,6 +286229,2831 @@
           }
         }
       }
+    },
+    "widget.style.wallpaper": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şeffaf (duvar kâğıdı)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparent (wallpaper)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparent (Hintergrundbild)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəffaf (divar kağızı)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شفاف (خلفية الشاشة)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparan (wallpaper)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شفاف (وال پیپر)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شفاف (تصویر زمینه)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparent (fond d’écran)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прозрачный (обои)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "透明（壁紙）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "투명(배경화면)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "透明（壁纸）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparent (wallpaper)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "โปร่งใส (วอลเปเปอร์)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparente (fondo de pantalla)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparente (papel de parede)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पारदर्शी (वॉलपेपर)"
+          }
+        }
+      }
+    },
+    "widget.spot": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekrandaki yeri"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Position on screen"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Position auf dem Bildschirm"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekrandakı yeri"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الموضع على الشاشة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posisi di layar"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسکرین پر جگہ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جای روی صفحه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Position à l’écran"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Место на экране"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "画面上の位置"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "화면상의 위치"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "屏幕上的位置"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posisyon sa screen"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตำแหน่งบนหน้าจอ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posición en la pantalla"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posição na tela"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्क्रीन पर जगह"
+          }
+        }
+      }
+    },
+    "widget.spot.topLeft": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üst sol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top left"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oben links"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxarı sol"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أعلى اليسار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kiri atas"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپر بائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بالا چپ"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En haut à gauche"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вверху слева"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左上"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "왼쪽 위"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左上"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaliwa sa itaas"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ซ้ายบน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arriba a la izquierda"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Superior esquerdo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ऊपर बाएँ"
+          }
+        }
+      }
+    },
+    "widget.spot.topRight": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Üst sağ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Top right"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oben rechts"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxarı sağ"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أعلى اليمين"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanan atas"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپر دائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بالا راست"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En haut à droite"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вверху справа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右上"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오른쪽 위"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右上"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanan sa itaas"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขวาบน"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arriba a la derecha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Superior direito"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ऊपर दाएँ"
+          }
+        }
+      }
+    },
+    "widget.spot.middleLeft": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta sol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Middle left"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitte links"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta sol"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوسط يسارًا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kiri tengah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درمیان بائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وسط چپ"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Au milieu à gauche"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Посередине слева"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左中央"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "왼쪽 가운데"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左中"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaliwa sa gitna"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ซ้ายกลาง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Centro a la izquierda"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meio esquerdo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बीच में बाएँ"
+          }
+        }
+      }
+    },
+    "widget.spot.middleRight": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta sağ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Middle right"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitte rechts"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orta sağ"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الوسط يمينًا"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanan tengah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "درمیان دائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وسط راست"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Au milieu à droite"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Посередине справа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右中央"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오른쪽 가운데"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右中"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanan sa gitna"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขวากลาง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Centro a la derecha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meio direito"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बीच में दाएँ"
+          }
+        }
+      }
+    },
+    "widget.spot.bottomLeft": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alt sol"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bottom left"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unten links"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşağı sol"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أسفل اليسار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kiri bawah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیچے بائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پایین چپ"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En bas à gauche"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Внизу слева"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左下"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "왼쪽 아래"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左下"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaliwa sa ibaba"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ซ้ายล่าง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abajo a la izquierda"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inferior esquerdo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नीचे बाएँ"
+          }
+        }
+      }
+    },
+    "widget.spot.bottomRight": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alt sağ"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bottom right"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unten rechts"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aşağı sağ"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أسفل اليمين"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanan bawah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "نیچے دائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "پایین راست"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "En bas à droite"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Внизу справа"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右下"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "오른쪽 아래"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右下"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kanan sa ibaba"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขวาล่าง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abajo a la derecha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inferior direito"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "नीचे दाएँ"
+          }
+        }
+      }
+    },
+    "wallpaper.title": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şeffaf widget"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparent widget"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparentes Widget"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəffaf vidjet"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أداة مصغّرة شفافة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget transparan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شفاف وجیٹ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابزارک شفاف"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget transparent"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прозрачный виджет"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "透明ウィジェット"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "투명 위젯"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "透明小组件"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparent na widget"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "วิดเจ็ตโปร่งใส"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget transparente"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget transparente"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पारदर्शी विजेट"
+          }
+        }
+      }
+    },
+    "wallpaper.intro": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analog, dijital, saat ve tarih ile iki saat widget'larının zemini, duvar kâğıdınızın arkalarına denk gelen parçası olunca widget'lar şeffaf görünür. iOS 26'nın cam görünümlü ana ekranında widget'lar zaten saydamdır; bu ayar diğer ana ekran görünümleri içindir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When the background of the analog, digital, clock and date, and dual clock widgets is the part of your wallpaper behind them, the widgets look transparent. On iOS 26's glass-style Home Screen, widgets are already see-through; this setting is for the other Home Screen looks."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn der Hintergrund der Widgets Analoguhr, Digitaluhr, Uhrzeit und Datum sowie Zwei Uhren der Teil Ihres Hintergrundbilds dahinter ist, wirken die Widgets transparent. Auf dem Home-Bildschirm im Glas-Stil von iOS 26 sind Widgets ohnehin durchsichtig; diese Einstellung ist für die anderen Darstellungen."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analoq, rəqəmsal, saat və tarix, həmçinin iki saat vidjetlərinin fonu divar kağızınızın onların arxasına düşən hissəsi olanda vidjetlər şəffaf görünür. iOS 26-nın şüşə görünüşlü ana ekranında vidjetlər onsuz da şəffafdır; bu ayar digər ana ekran görünüşləri üçündür."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عندما تكون خلفية أدوات الساعة بالعقارب والساعة الرقمية والوقت والتاريخ والساعتين هي جزء خلفية الشاشة الذي يقع خلفها، تبدو الأدوات شفافة. في الشاشة الرئيسية ذات المظهر الزجاجي في iOS 26 تكون الأدوات شفافة أصلًا؛ هذا الإعداد للمظاهر الأخرى."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jika latar widget jam analog, jam digital, jam dan tanggal, serta dua jam adalah bagian wallpaper di belakangnya, widget tampak transparan. Di Layar Utama bergaya kaca iOS 26, widget sudah tembus pandang; pengaturan ini untuk tampilan lainnya."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جب اینالاگ، ڈیجیٹل، وقت اور تاریخ اور دو گھڑیوں والے وجیٹس کا پس منظر آپ کے وال پیپر کا وہی حصہ ہو جو ان کے پیچھے ہے، تو وجیٹس شفاف دکھائی دیتے ہیں۔ iOS 26 کی شیشے جیسی ہوم اسکرین پر وجیٹس پہلے ہی شفاف ہوتے ہیں؛ یہ ترتیب باقی انداز کے لیے ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وقتی پس‌زمینهٔ ابزارک‌های ساعت عقربه‌ای، ساعت دیجیتال، ساعت و تاریخ و دو ساعت همان بخشی از تصویر زمینه باشد که پشت آن‌هاست، ابزارک‌ها شفاف به نظر می‌رسند. در صفحهٔ اصلی شیشه‌ای iOS 26 ابزارک‌ها خودشان شفاف‌اند؛ این تنظیم برای ظاهرهای دیگر است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand le fond des widgets horloge analogique, horloge numérique, heure et date et deux horloges est la partie de votre fond d’écran située derrière eux, les widgets paraissent transparents. Sur l’écran d’accueil en verre d’iOS 26, les widgets sont déjà translucides ; ce réglage sert aux autres apparences."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Если фоном виджетов «Стрелочные часы», «Цифровые часы», «Время и дата» и «Двое часов» служит часть обоев за ними, виджеты выглядят прозрачными. На стеклянном экране «Домой» в iOS 26 виджеты и так прозрачны; эта настройка для других вариантов оформления."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アナログ時計、デジタル時計、時刻と日付、2つの時計ウィジェットの背景を、その後ろにある壁紙の部分にすると、ウィジェットが透明に見えます。iOS 26のガラス調ホーム画面ではウィジェットはもともと透けて見えるため、この設定はほかの表示スタイル向けです。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "아날로그 시계, 디지털 시계, 시간과 날짜, 두 개의 시계 위젯의 배경을 그 뒤에 있는 배경화면 부분으로 하면 위젯이 투명해 보입니다. iOS 26의 유리 스타일 홈 화면에서는 위젯이 이미 투명하므로, 이 설정은 다른 홈 화면 스타일용입니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "当指针时钟、数字时钟、时间和日期以及双时钟小组件的背景是其后方的那部分壁纸时，小组件看起来就是透明的。在 iOS 26 的玻璃风格主屏幕上，小组件本来就是透明的；此设置用于其他主屏幕外观。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kapag ang background ng analog, digital, oras at petsa, at dalawang orasan na widget ay ang bahagi ng wallpaper sa likod nila, mukhang transparent ang mga widget. Sa glass-style na Home Screen ng iOS 26, transparent na ang mga widget; para sa ibang hitsura ang setting na ito."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เมื่อพื้นหลังของวิดเจ็ตนาฬิกาเข็ม นาฬิกาดิจิทัล เวลาและวันที่ และนาฬิกาสองเรือน เป็นส่วนของวอลเปเปอร์ที่อยู่ด้านหลัง วิดเจ็ตจะดูโปร่งใส บนหน้าจอโฮมแบบกระจกของ iOS 26 วิดเจ็ตโปร่งใสอยู่แล้ว การตั้งค่านี้สำหรับรูปแบบอื่น"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando el fondo de los widgets de reloj analógico, reloj digital, hora y fecha y dos relojes es la parte del fondo de pantalla que hay detrás, los widgets se ven transparentes. En la pantalla de inicio de estilo cristal de iOS 26, los widgets ya son translúcidos; este ajuste es para los demás aspectos."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando o fundo dos widgets de relógio analógico, relógio digital, hora e data e dois relógios é a parte do papel de parede atrás deles, os widgets parecem transparentes. Na Tela de Início com aparência de vidro do iOS 26, os widgets já são translúcidos; este ajuste é para as outras aparências."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "जब एनालॉग, डिजिटल, समय और तारीख और दो घड़ियों वाले विजेट का पृष्ठभूमि आपके वॉलपेपर का वही हिस्सा हो जो उनके पीछे है, तो विजेट पारदर्शी दिखते हैं। iOS 26 की कांच जैसी होम स्क्रीन पर विजेट पहले से पारदर्शी होते हैं; यह सेटिंग बाकी रूपों के लिए है।"
+          }
+        }
+      }
+    },
+    "wallpaper.steps": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Ana ekranda boş bir yere uzun basın ve en sağdaki boş sayfaya kaydırın. 2. Ekran görüntüsü alın. 3. Aşağıdan bu görüntüyü seçin. 4. Widget'a uzun basın › Widget'ı Düzenle: Görünüm: Şeffaf (duvar kâğıdı); Ekrandaki yeri: widget'ın durduğu yer. Geniş widget'ta yalnız satır, büyük widget'ta üst ya da alt yarı önemlidir."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Touch and hold an empty spot on the Home Screen and swipe to the empty page on the far right. 2. Take a screenshot. 3. Choose that screenshot below. 4. Touch and hold the widget › Edit Widget: Style: Transparent (wallpaper); Position on screen: where the widget sits. For a medium widget only the row matters, for a large widget the top or bottom half."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Halten Sie eine leere Stelle auf dem Home-Bildschirm gedrückt und wischen Sie zur leeren Seite ganz rechts. 2. Machen Sie ein Bildschirmfoto. 3. Wählen Sie es unten aus. 4. Halten Sie das Widget gedrückt › Widget bearbeiten: Stil: Transparent (Hintergrundbild); Position auf dem Bildschirm: wo das Widget steht. Beim mittleren Widget zählt nur die Zeile, beim großen die obere oder untere Hälfte."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Ana ekranda boş yerə uzun basın və ən sağdakı boş səhifəyə sürüşdürün. 2. Ekran şəkli çəkin. 3. Aşağıdan bu şəkli seçin. 4. Vidjetə uzun basın › Vidjeti redaktə et: Görünüş: Şəffaf (divar kağızı); Ekrandakı yeri: vidjetin durduğu yer. Geniş vidjetdə yalnız sətir, böyük vidjetdə yuxarı ya da aşağı yarı önəmlidir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. المس مطولًا مكانًا فارغًا في الشاشة الرئيسية واسحب إلى الصفحة الفارغة في أقصى اليمين. 2. التقط لقطة شاشة. 3. اختر هذه اللقطة أدناه. 4. المس الأداة مطولًا › تعديل الأداة: النمط: شفاف (خلفية الشاشة)؛ الموضع على الشاشة: مكان الأداة. في الأداة المتوسطة يهم الصف فقط، وفي الكبيرة النصف العلوي أو السفلي."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Sentuh dan tahan tempat kosong di Layar Utama, lalu geser ke halaman kosong paling kanan. 2. Ambil tangkapan layar. 3. Pilih tangkapan layar itu di bawah. 4. Sentuh dan tahan widget › Edit Widget: Gaya: Transparan (wallpaper); Posisi di layar: tempat widget berada. Untuk widget sedang hanya barisnya yang penting, untuk widget besar setengah atas atau bawah."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. ہوم اسکرین پر خالی جگہ دبائے رکھیں اور سب سے دائیں خالی صفحے پر جائیں۔ 2. اسکرین شاٹ لیں۔ 3. نیچے سے یہ اسکرین شاٹ چنیں۔ 4. وجیٹ دبائے رکھیں › وجیٹ میں ترمیم کریں: انداز: شفاف (وال پیپر)؛ اسکرین پر جگہ: جہاں وجیٹ ہے۔ درمیانے وجیٹ میں صرف قطار اور بڑے وجیٹ میں اوپر یا نیچے کا آدھا حصہ اہم ہے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. روی جای خالی صفحهٔ اصلی انگشت را نگه دارید و به صفحهٔ خالیِ سمت راست بروید. 2. از صفحه عکس بگیرید. 3. همین عکس را در پایین انتخاب کنید. 4. روی ابزارک انگشت را نگه دارید › ویرایش ابزارک: سبک: شفاف (تصویر زمینه)؛ جای روی صفحه: جایی که ابزارک قرار دارد. در ابزارک متوسط فقط ردیف و در ابزارک بزرگ نیمهٔ بالا یا پایین مهم است."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Maintenez le doigt sur un espace vide de l’écran d’accueil et balayez jusqu’à la page vide tout à droite. 2. Faites une capture d’écran. 3. Choisissez-la ci-dessous. 4. Maintenez le doigt sur le widget › Modifier le widget : Style : Transparent (fond d’écran) ; Position à l’écran : l’endroit où se trouve le widget. Pour un widget moyen, seule la ligne compte ; pour un grand, la moitié haute ou basse."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Нажмите и удерживайте пустое место на экране «Домой» и пролистайте до пустой страницы справа. 2. Сделайте снимок экрана. 3. Выберите его ниже. 4. Нажмите и удерживайте виджет › «Изменить виджет»: Стиль: Прозрачный (обои); Место на экране: где стоит виджет. Для среднего виджета важна только строка, для большого — верхняя или нижняя половина."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. ホーム画面の空いている場所を長押しし、いちばん右の空のページまでスワイプします。2. スクリーンショットを撮ります。3. 下でそのスクリーンショットを選びます。4. ウィジェットを長押し › ウィジェットを編集：スタイル：透明（壁紙）、画面上の位置：ウィジェットのある場所。中サイズは行だけ、大サイズは上半分か下半分かが関係します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. 홈 화면의 빈 곳을 길게 누르고 맨 오른쪽 빈 페이지로 넘깁니다. 2. 스크린샷을 찍습니다. 3. 아래에서 그 스크린샷을 고릅니다. 4. 위젯을 길게 누르고 › 위젯 편집: 스타일: 투명(배경화면), 화면상의 위치: 위젯이 놓인 곳. 중간 크기 위젯은 줄만, 큰 위젯은 위쪽 또는 아래쪽 절반만 중요합니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. 在主屏幕空白处长按，然后滑到最右边的空白页。2. 截屏。3. 在下方选择这张截图。4. 长按小组件 › 编辑小组件：样式：透明（壁纸）；屏幕上的位置：小组件所在的位置。中号小组件只看所在行，大号小组件看上半部分还是下半部分。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Pindutin nang matagal ang bakanteng puwesto sa Home Screen at mag-swipe sa bakanteng pahina sa pinakakanan. 2. Kumuha ng screenshot. 3. Piliin ang screenshot na iyon sa ibaba. 4. Pindutin nang matagal ang widget › Edit Widget: Estilo: Transparent (wallpaper); Posisyon sa screen: kung saan nakalagay ang widget. Sa medium na widget, hilera lang ang mahalaga; sa large, ang itaas o ibabang kalahati."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. แตะค้างที่ว่างบนหน้าจอโฮมแล้วปัดไปยังหน้าว่างทางขวาสุด 2. ถ่ายภาพหน้าจอ 3. เลือกภาพหน้าจอนั้นด้านล่าง 4. แตะค้างที่วิดเจ็ต › แก้ไขวิดเจ็ต: สไตล์: โปร่งใส (วอลเปเปอร์); ตำแหน่งบนหน้าจอ: ตำแหน่งที่วิดเจ็ตอยู่ วิดเจ็ตขนาดกลางดูเฉพาะแถว ขนาดใหญ่ดูครึ่งบนหรือครึ่งล่าง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Mantenga pulsado un espacio vacío de la pantalla de inicio y deslice hasta la página vacía de la derecha del todo. 2. Haga una captura de pantalla. 3. Elíjala abajo. 4. Mantenga pulsado el widget › Editar widget: Estilo: Transparente (fondo de pantalla); Posición en la pantalla: donde está el widget. En un widget mediano solo cuenta la fila; en uno grande, la mitad superior o inferior."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. Toque e segure um espaço vazio na Tela de Início e deslize até a página vazia mais à direita. 2. Faça uma captura de tela. 3. Escolha essa captura abaixo. 4. Toque e segure o widget › Editar Widget: Estilo: Transparente (papel de parede); Posição na tela: onde o widget fica. Num widget médio só a linha importa; num grande, a metade de cima ou de baixo."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1. होम स्क्रीन पर किसी खाली जगह को दबाए रखें और सबसे दाईं ओर के खाली पेज पर जाएँ। 2. स्क्रीनशॉट लें। 3. नीचे से वही स्क्रीनशॉट चुनें। 4. विजेट को दबाए रखें › विजेट संपादित करें: शैली: पारदर्शी (वॉलपेपर); स्क्रीन पर जगह: जहाँ विजेट रखा है। मध्यम विजेट में केवल पंक्ति, बड़े विजेट में ऊपरी या निचला आधा भाग मायने रखता है।"
+          }
+        }
+      }
+    },
+    "wallpaper.pick": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran görüntüsünü seç"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose screenshot"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bildschirmfoto wählen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran şəklini seç"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختيار لقطة الشاشة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pilih tangkapan layar"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسکرین شاٹ چنیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "انتخاب عکس صفحه"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisir la capture d’écran"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать снимок экрана"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スクリーンショットを選ぶ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스크린샷 선택"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择截图"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pumili ng screenshot"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เลือกภาพหน้าจอ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elegir captura de pantalla"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolher captura de tela"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्क्रीनशॉट चुनें"
+          }
+        }
+      }
+    },
+    "wallpaper.ready": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hazır. Duvar kâğıdını değiştirirseniz yeni bir ekran görüntüsü seçin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ready. If you change your wallpaper, choose a new screenshot."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fertig. Wenn Sie das Hintergrundbild ändern, wählen Sie ein neues Bildschirmfoto."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hazırdır. Divar kağızını dəyişsəniz, yeni ekran şəkli seçin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جاهز. إذا غيّرت خلفية الشاشة، فاختر لقطة شاشة جديدة."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Siap. Jika Anda mengganti wallpaper, pilih tangkapan layar baru."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تیار ہے۔ وال پیپر بدلیں تو نیا اسکرین شاٹ چنیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "آماده است. اگر تصویر زمینه را عوض کردید، عکس صفحهٔ تازه‌ای انتخاب کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "C’est prêt. Si vous changez de fond d’écran, choisissez une nouvelle capture."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Готово. Если смените обои, выберите новый снимок экрана."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "準備できました。壁紙を変えたら、新しいスクリーンショットを選んでください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "준비되었습니다. 배경화면을 바꾸면 새 스크린샷을 고르세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已就绪。如果更换了壁纸，请选择新的截图。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Handa na. Kung papalitan mo ang wallpaper, pumili ng bagong screenshot."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "พร้อมแล้ว หากเปลี่ยนวอลเปเปอร์ ให้เลือกภาพหน้าจอใหม่"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listo. Si cambia el fondo de pantalla, elija una captura nueva."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pronto. Se mudar o papel de parede, escolha uma nova captura."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तैयार है। वॉलपेपर बदलें तो नया स्क्रीनशॉट चुनें।"
+          }
+        }
+      }
+    },
+    "wallpaper.estimated": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu telefonun widget yerleri tahminidir; kenarlar tutmazsa ince ayarı kullanın."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget positions on this iPhone are estimated; if the edges don't line up, use fine-tuning."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Widget-Positionen auf diesem iPhone sind geschätzt; passen die Kanten nicht, nutzen Sie die Feinabstimmung."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu telefonun vidjet yerləri təxminidir; kənarlar uyğun gəlməsə, dəqiq ayardan istifadə edin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مواضع الأدوات على هذا الـ iPhone تقديرية؛ إذا لم تتطابق الحواف، استخدم الضبط الدقيق."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Posisi widget di iPhone ini perkiraan; jika tepinya tidak pas, gunakan penyesuaian halus."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اس فون پر وجیٹس کی جگہیں اندازاً ہیں؛ کنارے نہ ملیں تو باریک ترتیب استعمال کریں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "جای ابزارک‌ها در این گوشی تقریبی است؛ اگر لبه‌ها جور نشد، از تنظیم دقیق استفاده کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les positions des widgets sur cet iPhone sont estimées ; si les bords ne correspondent pas, utilisez le réglage fin."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Положение виджетов на этом iPhone приблизительное; если края не совпадают, используйте точную настройку."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このiPhoneのウィジェット位置は推定値です。端が合わなければ微調整を使ってください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 iPhone의 위젯 위치는 추정값입니다. 가장자리가 맞지 않으면 미세 조정을 사용하세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此 iPhone 上的小组件位置为估算值；如果边缘对不齐，请使用微调。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tantiya lang ang posisyon ng mga widget sa iPhone na ito; kung hindi tugma ang gilid, gamitin ang fine-tuning."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ตำแหน่งวิดเจ็ตใน iPhone เครื่องนี้เป็นค่าประมาณ หากขอบไม่ตรง ให้ใช้การปรับละเอียด"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las posiciones de los widgets en este iPhone son aproximadas; si los bordes no coinciden, use el ajuste fino."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As posições dos widgets neste iPhone são estimadas; se as bordas não coincidirem, use o ajuste fino."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "इस iPhone पर विजेट की जगहें अनुमानित हैं; किनारे न मिलें तो बारीक समायोजन का उपयोग करें।"
+          }
+        }
+      }
+    },
+    "wallpaper.wrongSize": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu görüntü bu telefonun tam ekran görüntüsü değil. Ana ekranın dik tutulmuş ekran görüntüsünü seçin."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This isn't a full-screen screenshot from this iPhone. Choose a portrait screenshot of the Home Screen."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das ist kein vollständiges Bildschirmfoto dieses iPhones. Wählen Sie ein Hochformat-Bildschirmfoto des Home-Bildschirms."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu şəkil bu telefonun tam ekran şəkli deyil. Ana ekranın şaquli ekran şəklini seçin."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذه ليست لقطة شاشة كاملة من هذا الـ iPhone. اختر لقطة رأسية للشاشة الرئيسية."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ini bukan tangkapan layar penuh dari iPhone ini. Pilih tangkapan layar tegak dari Layar Utama."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "یہ اس فون کا پورا اسکرین شاٹ نہیں ہے۔ ہوم اسکرین کا سیدھا (عمودی) اسکرین شاٹ چنیں۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "این تصویر عکس کامل صفحهٔ همین گوشی نیست. عکس عمودی صفحهٔ اصلی را انتخاب کنید."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce n’est pas une capture plein écran de cet iPhone. Choisissez une capture verticale de l’écran d’accueil."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Это не полный снимок экрана этого iPhone. Выберите вертикальный снимок экрана «Домой»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このiPhoneの全画面スクリーンショットではありません。縦向きのホーム画面のスクリーンショットを選んでください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 iPhone의 전체 화면 스크린샷이 아닙니다. 세로 방향 홈 화면 스크린샷을 고르세요."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这不是此 iPhone 的全屏截图。请选择主屏幕的竖屏截图。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi ito buong screenshot mula sa iPhone na ito. Pumili ng patayong screenshot ng Home Screen."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "นี่ไม่ใช่ภาพหน้าจอเต็มจาก iPhone เครื่องนี้ ให้เลือกภาพหน้าจอโฮมแนวตั้ง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No es una captura de pantalla completa de este iPhone. Elija una captura vertical de la pantalla de inicio."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta não é uma captura de tela inteira deste iPhone. Escolha uma captura vertical da Tela de Início."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "यह इस iPhone का पूरा स्क्रीनशॉट नहीं है। होम स्क्रीन का सीधा (पोर्ट्रेट) स्क्रीनशॉट चुनें।"
+          }
+        }
+      }
+    },
+    "wallpaper.unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şeffaf widget bu cihazda kullanılamıyor (yalnız iPhone)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparent widgets aren't available on this device (iPhone only)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transparente Widgets sind auf diesem Gerät nicht verfügbar (nur iPhone)."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Şəffaf vidjet bu cihazda istifadə edilə bilməz (yalnız iPhone)."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأداة الشفافة غير متاحة على هذا الجهاز (iPhone فقط)."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widget transparan tidak tersedia di perangkat ini (hanya iPhone)."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "شفاف وجیٹ اس آلے پر دستیاب نہیں (صرف iPhone)۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ابزارک شفاف در این دستگاه در دسترس نیست (فقط iPhone)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les widgets transparents ne sont pas disponibles sur cet appareil (iPhone uniquement)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прозрачные виджеты недоступны на этом устройстве (только iPhone)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "透明ウィジェットはこのデバイスでは使えません（iPhoneのみ）。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "투명 위젯은 이 기기에서 사용할 수 없습니다(iPhone 전용)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此设备无法使用透明小组件（仅限 iPhone）。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hindi available ang transparent na widget sa device na ito (iPhone lang)."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ใช้วิดเจ็ตโปร่งใสบนอุปกรณ์นี้ไม่ได้ (เฉพาะ iPhone)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Los widgets transparentes no están disponibles en este dispositivo (solo iPhone)."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgets transparentes não estão disponíveis neste aparelho (só iPhone)."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "पारदर्शी विजेट इस डिवाइस पर उपलब्ध नहीं (केवल iPhone)।"
+          }
+        }
+      }
+    },
+    "wallpaper.text": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazı rengi"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text colour"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schriftfarbe"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yazı rəngi"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لون النص"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Warna teks"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تحریر کا رنگ"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "رنگ نوشته"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couleur du texte"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Цвет текста"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文字の色"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "글자 색"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "文字颜色"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kulay ng teksto"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สีตัวอักษร"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Color del texto"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cor do texto"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "लिखावट का रंग"
+          }
+        }
+      }
+    },
+    "wallpaper.text.auto": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otomatik"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatic"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatisch"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Avtomatik"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تلقائي"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Otomatis"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خودکار"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خودکار"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automatique"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Автоматически"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自動"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "자동"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自动"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Awtomatiko"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "อัตโนมัติ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automático"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Automático"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्वचालित"
+          }
+        }
+      }
+    },
+    "wallpaper.text.light": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açık"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Light"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hell"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Açıq"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فاتح"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Terang"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہلکا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "روشن"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clair"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Светлый"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "明るい"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "밝게"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "浅色"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maliwanag"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "สว่าง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claro"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claro"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हल्का"
+          }
+        }
+      }
+    },
+    "wallpaper.text.dark": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Koyu"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dark"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dunkel"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tünd"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "داكن"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelap"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "گہرا"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تیره"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foncé"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Тёмный"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "暗い"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "어둡게"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "深色"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Madilim"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เข้ม"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oscuro"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escuro"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "गहरा"
+          }
+        }
+      }
+    },
+    "wallpaper.adjust": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İnce ayar (nokta)"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fine-tuning (points)"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feinabstimmung (Punkte)"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dəqiq ayar (nöqtə)"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ضبط دقيق (نقاط)"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Penyesuaian halus (poin)"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "باریک ترتیب (پوائنٹ)"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تنظیم دقیق (نقطه)"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réglage fin (points)"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Точная настройка (пункты)"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "微調整（ポイント）"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "미세 조정(포인트)"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "微调（点）"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fine-tuning (points)"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ปรับละเอียด (พอยต์)"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajuste fino (puntos)"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ajuste fino (pontos)"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बारीक समायोजन (पॉइंट)"
+          }
+        }
+      }
+    },
+    "wallpaper.adjustX": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sağa-sola"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Left–right"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Links–rechts"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sağa-sola"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يمين–يسار"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kiri–kanan"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "دائیں–بائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "چپ–راست"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gauche–droite"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Влево–вправо"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左右"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "좌우"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左右"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaliwa–kanan"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ซ้าย–ขวา"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izquierda–derecha"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esquerda–direita"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "बाएँ–दाएँ"
+          }
+        }
+      }
+    },
+    "wallpaper.adjustY": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yukarı-aşağı"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up–down"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oben–unten"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yuxarı-aşağı"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أعلى–أسفل"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atas–bawah"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اوپر–نیچے"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "بالا–پایین"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haut–bas"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вверх–вниз"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上下"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "상하"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上下"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Itaas–ibaba"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ขึ้น–ลง"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arriba–abajo"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cima–baixo"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ऊपर–नीचे"
+          }
+        }
+      }
+    },
+    "wallpaper.remove": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kaldır"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entfernen"
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sil"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إزالة"
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hapus"
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ہٹائیں"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supprimer"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "削除"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "삭제"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "移除"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alisin"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ลบ"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quitar"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remover"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "हटाएँ"
+          }
+        }
+      }
+    },
+    "wallpaper.privacy": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran görüntüsü ve kesilen parçalar yalnız bu telefonda kalır, hiçbir yere gönderilmez ve iCloud ile eşitlenmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The screenshot and the cut pieces stay on this iPhone only, are never sent anywhere and are not synced with iCloud."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Bildschirmfoto und die ausgeschnittenen Teile bleiben nur auf diesem iPhone, werden nirgendwohin gesendet und nicht mit iCloud synchronisiert."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ekran şəkli və kəsilmiş hissələr yalnız bu telefonda qalır, heç yerə göndərilmir və iCloud ilə sinxronlaşdırılmır."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبقى لقطة الشاشة والأجزاء المقصوصة على هذا الـ iPhone فقط، ولا تُرسَل إلى أي مكان ولا تُزامَن مع iCloud."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tangkapan layar dan potongannya hanya disimpan di iPhone ini, tidak dikirim ke mana pun, dan tidak disinkronkan dengan iCloud."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اسکرین شاٹ اور کٹے ہوئے حصے صرف اسی فون پر رہتے ہیں، کہیں نہیں بھیجے جاتے اور iCloud سے ہم آہنگ نہیں ہوتے۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عکس صفحه و تکه‌های بریده‌شده فقط روی همین گوشی می‌مانند، به جایی فرستاده نمی‌شوند و با iCloud همگام نمی‌شوند."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La capture et les morceaux découpés restent uniquement sur cet iPhone, ne sont envoyés nulle part et ne sont pas synchronisés avec iCloud."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Снимок экрана и вырезанные части хранятся только на этом iPhone, никуда не отправляются и не синхронизируются с iCloud."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スクリーンショットと切り出した部分はこのiPhoneにのみ保存され、どこにも送信されず、iCloudとも同期されません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "스크린샷과 잘라낸 조각은 이 iPhone에만 남으며, 어디로도 전송되지 않고 iCloud와 동기화되지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "截图和裁出的部分只保存在这台 iPhone 上，不会发送到任何地方，也不会与 iCloud 同步。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ang screenshot at ang mga hiniwang bahagi ay nananatili lang sa iPhone na ito, hindi ipinapadala kahit saan, at hindi sini-sync sa iCloud."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ภาพหน้าจอและส่วนที่ตัดไว้จะอยู่ใน iPhone เครื่องนี้เท่านั้น ไม่ถูกส่งไปที่ใด และไม่ซิงค์กับ iCloud"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La captura y los fragmentos recortados se quedan solo en este iPhone, no se envían a ningún sitio y no se sincronizan con iCloud."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A captura e os recortes ficam só neste iPhone, não são enviados a lugar nenhum e não são sincronizados com o iCloud."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "स्क्रीनशॉट और काटे गए हिस्से केवल इसी iPhone पर रहते हैं, कहीं नहीं भेजे जाते और iCloud से सिंक नहीं होते।"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
