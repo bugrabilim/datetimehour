@@ -36,7 +36,8 @@ enum Features {
     /// açılırsa çubuk değişmez; sayfa üstte geri düğmesiyle açılır (2. analiz #203)
     static func barTabs(raw: String, bar: String) -> [AppTab] {
         let on = parse(raw)
-        if on.isEmpty { return [.clock] }
+        // Tümü her zaman çubukta (4 Kasım 2026: Ayarlar saat ekranındaki dişliden Tümü'ye taşındı)
+        if on.isEmpty { return [.clock, .tools] }
         return [.clock] + parseBar(bar).filter(on.contains) + [.tools]
     }
 

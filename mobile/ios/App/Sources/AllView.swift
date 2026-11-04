@@ -2,8 +2,8 @@ import SwiftUI
 
 /// "Tümü" sayfası (Seçenek B, 2. analiz #195–#197; Android AllScreen ile aynı kimlikler ve kayıtlar):
 /// üstte genel arama (araç, ayar, içerik), 4 karelik sık kullanılanlar (uzun basınca menüden ekle/çıkar; boşsa son
-/// kullanılanlar), sonra kategoriler (Süre ve alarm, Gün ve plan, Gök ve dünya, İbadet), sonda Rozetler. Ayarlar sağ
-/// üstteki dişliden. Yalnız açık özelliklerin girişleri görünür. Kayıt: `all.favs`, `all.recent` (virgülle kimlik).
+/// kullanılanlar), sonra kategoriler (Süre ve alarm, Gün ve plan, Gök ve dünya, İbadet), sonda Ayarlar ve Rozetler
+/// (Ayarlar ayrıca sağ üstteki dişliden; 4 Kasım 2026'dan beri saat ekranında dişli yok, Tümü her zaman çubukta). Yalnız açık özelliklerin girişleri görünür. Kayıt: `all.favs`, `all.recent` (virgülle kimlik).
 enum AllCat: CaseIterable {
     case time, plan, sky, faith, more
 
@@ -70,6 +70,8 @@ enum AllPrefs {
         AllEntry(id: "reldays", titleKey: "relday.title", icon: "calendar.badge.exclamationmark", cat: .faith, feature: .prayer, route: .reldays),
         AllEntry(id: "greet", titleKey: "greet.title", icon: "gift", cat: .faith, feature: .prayer, route: .greet),
         AllEntry(id: "zakat", titleKey: "zakat.title", icon: "percent", cat: .faith, feature: .prayer, route: .zakat),
+        AllEntry(id: "settings", titleKey: "settings.title", icon: "gearshape", cat: .more, feature: nil, route: .settings,
+                 words: ["settings.color", "lang.title", "settings.notifications"]),
         AllEntry(id: "badges", titleKey: "badges.h1", icon: "rosette", cat: .more, feature: nil, route: .badges),
     ]
 

@@ -144,6 +144,8 @@ object AllPrefs {
         AllEntry("reldays", "relday.title", Icons.Filled.Event, AllCat.FAITH, Tab.PRAYER, route = "reldays"),
         AllEntry("greet", "greet.title", Icons.Filled.Celebration, AllCat.FAITH, Tab.PRAYER, route = "greet"),
         AllEntry("zakat", "zakat.title", Icons.Filled.Calculate, AllCat.FAITH, Tab.PRAYER, route = "zakat"),
+        AllEntry("settings", "settings.title", Icons.Filled.Settings, AllCat.MORE, null, route = "settings",
+            words = "settings.color lang.title settings.notifications"),
         AllEntry("badges", "badges.h1", Icons.Filled.MilitaryTech, AllCat.MORE, null, route = "badges"),
     )
 

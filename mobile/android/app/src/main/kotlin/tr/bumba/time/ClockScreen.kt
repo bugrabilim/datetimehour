@@ -40,7 +40,6 @@ import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.Fullscreen
 import androidx.compose.material.icons.filled.FullscreenExit
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -164,10 +163,6 @@ fun ClockScreen(onFullscreen: () -> Unit, onOpen: (Tab) -> Unit, onSettings: (St
             TextButton(onClick = { customizing = true }) {
                 Icon(Icons.Filled.Tune, null, tint = Theme.c.accent)
                 Text(" " + L("home.edit"), color = Theme.c.accent, fontWeight = FontWeight.SemiBold)
-            }
-            // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
-            IconButton(onClick = { onSettings("settings") }) {
-                Icon(Icons.Filled.Settings, L("settings.title"), tint = Theme.c.accent)
             }
         }
         }

@@ -79,13 +79,6 @@ struct ClockTab: View {
                     } label: {
                         Label(L("home.edit"), systemImage: "slider.horizontal.3")
                     }
-                    // Ayarlar her zaman buradan da açılır (Araçlar kapalıysa tek yol budur)
-                    Button {
-                        Router.shared.sheet = .settings
-                    } label: {
-                        Image(systemName: "gearshape")
-                    }
-                    .accessibilityLabel(L("settings.title"))
                 }
                 .font(.headline)
                 .foregroundStyle(Theme.accent)

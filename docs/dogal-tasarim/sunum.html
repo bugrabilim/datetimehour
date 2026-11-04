@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="tr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doğal Saat Tarih</title>
+<meta name="description" content="Saat Tarih için doğal tasarım önerisi: teşhis, ilkeler, şimdi/önerilen ekran çizimleri ve belirteçler.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400..600&family=Roboto:wght@300..500&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #F6F0E4; --surface: #FFFBF4; --surface2: #EDE4D3; --line: #E2D6C1;
+  --text: #2B2520; --muted: #6A5F55; --faint: #A89A88;
+  --accent: #9A3F00; --accent-soft: #F3E1CC; --on-accent: #FFF8EF;
+  --gold: #835A0D; --gold-deco: #C9973A; --sage: #4A6B47; --sky: #3A6889; --dusk: #7A4760;
+  --ok: #2E6A39; --err: #A3311B;
+  --e1: 0 1px 2px rgba(74,52,30,.06), 0 6px 18px rgba(74,52,30,.07);
+  --e2: 0 2px 6px rgba(74,52,30,.08), 0 16px 36px rgba(74,52,30,.10);
+  --hand-shadow: rgba(74,52,30,.24);
+  --bezel: #2B2520; --bezel-hi: #4A403A;
+  --grain-op: .07; --grain-blend: multiply; --grain-inv: 0;
+  --pebble-k: 16%;
+  --cloud: #FFFFFF; --cloud-o: .92;
+  --font-title: "Literata", Georgia, "Times New Roman", serif;
+  --font-app: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #14151C; --surface: #1D1E27; --surface2: #272834; --line: #343542;
+    --text: #F1EADF; --muted: #B4AA9B; --faint: #6E675E;
+    --accent: #F2A65A; --accent-soft: #3B2A1C; --on-accent: #1A1410;
+    --gold: #E2B65C; --gold-deco: #E2B65C; --sage: #9CC294; --sky: #8DB8DA; --dusk: #D69BB5;
+    --ok: #8FD3A0; --err: #FF9F8A;
+    --e1: inset 0 1px 0 rgba(255,255,255,.05); --e2: inset 0 1px 0 rgba(255,255,255,.06), 0 12px 32px rgba(0,0,0,.35);
+    --hand-shadow: rgba(0,0,0,.55); --bezel: #08080B; --bezel-hi: #2A2B33;
+    --grain-op: .05; --grain-blend: screen; --grain-inv: 1; --pebble-k: 20%;
+    --cloud: #CDD8E4; --cloud-o: .30;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #14151C; --surface: #1D1E27; --surface2: #272834; --line: #343542;
+  --text: #F1EADF; --muted: #B4AA9B; --faint: #6E675E;
+  --accent: #F2A65A; --accent-soft: #3B2A1C; --on-accent: #1A1410;
+  --gold: #E2B65C; --gold-deco: #E2B65C; --sage: #9CC294; --sky: #8DB8DA; --dusk: #D69BB5;
+  --ok: #8FD3A0; --err: #FF9F8A;
+  --e1: inset 0 1px 0 rgba(255,255,255,.05); --e2: inset 0 1px 0 rgba(255,255,255,.06), 0 12px 32px rgba(0,0,0,.35);
+  --hand-shadow: rgba(0,0,0,.55); --bezel: #08080B; --bezel-hi: #2A2B33;
+  --grain-op: .05; --grain-blend: screen; --grain-inv: 1; --pebble-k: 20%;
+  --cloud: #CDD8E4; --cloud-o: .30;
+}
+@property --day-top { syntax: "<color>"; inherits: true; initial-value: #E9EFF0; }
+@property --sky-a { syntax: "<color>"; inherits: true; initial-value: #A9C9DF; }
+@property --sky-b { syntax: "<color>"; inherits: true; initial-value: #F2E6CC; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 400 16px/1.6 var(--font-body); }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ic { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; --ic2: var(--gold-deco); }
+.ic.mono { --ic2: currentColor; }
+a { color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--sky); outline-offset: 2px; border-radius: 6px; }
+p { margin: 0; }
+code, .mono-t { font-family: var(--font-mono); font-size: .86em; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 40px max(16px, env(safe-area-inset-left, 0px)) 96px; }
+.page-grain { position: fixed; inset: 0; pointer-events: none; opacity: var(--grain-op); mix-blend-mode: var(--grain-blend); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .22 0 0 0 0 .12 0 0 0 1.1 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); filter: invert(var(--grain-inv)); z-index: 0; }
+.wrap > * { position: relative; z-index: 1; }
+h1, h2, h3 { font-family: var(--font-title); font-optical-sizing: auto; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.4rem); line-height: 1.04; font-weight: 600; }
+h2 { font-size: clamp(1.6rem, 3.6vw, 2.2rem); line-height: 1.15; font-weight: 600; }
+h3 { font-size: 1.2rem; line-height: 1.3; font-weight: 500; }
+.eyebrow { font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .04em; color: var(--muted); }
+.lead { font-size: 1.15rem; max-width: 62ch; }
+.muted { color: var(--muted); }
+.prose { max-width: 68ch; display: grid; gap: 12px; }
+section { display: grid; gap: 22px; padding-top: 72px; }
+section > header { display: grid; gap: 8px; max-width: 70ch; }
+
+.theme-btn { position: fixed; top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); z-index: 20;
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 0;
+  background: var(--surface); color: var(--text); box-shadow: var(--e2); font: 500 15px/1 var(--font-body); cursor: pointer; }
+.theme-btn .ic { width: 20px; height: 20px; }
+
+.cover { display: grid; gap: 20px; padding-top: 24px; }
+.cover .answer { display: grid; gap: 10px; max-width: 70ch; background: var(--surface); border-radius: 22px; box-shadow: var(--e1); padding: 20px 22px; }
+
+/* Teşhis kartları */
+.diag { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); gap: 14px; }
+.diag article { background: var(--surface); border-radius: 22px; box-shadow: var(--e1); padding: 18px 20px; display: grid; gap: 6px; align-content: start; }
+.diag .n { font: 500 13px/1 var(--font-mono); color: var(--accent); }
+.diag h3 { font-size: 1.08rem; }
+.diag p { font-size: .95rem; color: var(--muted); }
+.diag .files { font-family: var(--font-mono); font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+
+/* Günün saati seçici */
+.tod { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.tod span.lbl { color: var(--muted); font-size: .95rem; margin-inline-end: 4px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 0;
+  background: var(--surface2); color: var(--text); font: 500 14px/1 var(--font-body); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); }
+.chip .sw { width: 14px; height: 14px; border-radius: 50%; }
+
+/* Karşılaştırma */
+.compare { display: grid; grid-template-columns: minmax(0, 390px) minmax(0, 390px) minmax(220px, 1fr); gap: 28px; align-items: start; padding-top: 12px; }
+.compare + .compare { border-top: 1px solid color-mix(in srgb, var(--line) 70%, transparent); padding-top: 36px; margin-top: 8px; }
+.col { display: grid; gap: 10px; min-width: 0; }
+.col .tag { font: 500 13px/1 var(--font-mono); letter-spacing: .04em; color: var(--muted); }
+.col .tag b { color: var(--accent); font-weight: 600; }
+.device { background: var(--bezel); border-radius: 46px; padding: 9px; box-shadow: var(--e2), inset 0 0 0 1px var(--bezel-hi); }
+.slot { position: relative; width: 100%; aspect-ratio: 390 / 866; border-radius: 38px; overflow: hidden; background: var(--bg); }
+.slot > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.notes { display: grid; gap: 10px; align-content: start; }
+.notes h3 { font-size: 1.35rem; }
+.notes ul { margin: 0; padding-inline-start: 1.1em; display: grid; gap: 8px; }
+.notes li { font-size: .97rem; }
+.notes .src { font-family: var(--font-mono); font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.slot > img.only-dark { display: none; }
+:root[data-theme="dark"] .slot > img.only-dark { display: block; }
+:root[data-theme="dark"] .slot > img.only-light { display: none; }
+@media (max-width: 1080px) {
+  .compare { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .compare .notes { grid-column: 1 / -1; }
+}
+@media (max-width: 620px) {
+  .compare { grid-template-columns: minmax(0, 1fr); }
+  .device { border-radius: 40px; padding: 7px; }
+  .slot { border-radius: 33px; }
+}
+
+/* ===== Telefon içi (önerilen) ===== */
+.phone { position: absolute; left: 0; top: 0; width: 390px; height: 866px; transform-origin: 0 0; transform: scale(var(--k, 1));
+  background: var(--bg); color: var(--text); font: 400 16px/1.45 var(--font-app); overflow: hidden; --day-top: var(--dl, #E9EFF0);
+  transition: --day-top 1.2s cubic-bezier(.2,.8,.2,1); }
+.phone .grain { position: absolute; inset: 0; pointer-events: none; opacity: var(--grain-op); mix-blend-mode: var(--grain-blend); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .32 0 0 0 0 .22 0 0 0 0 .12 0 0 0 1.1 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); filter: invert(var(--grain-inv)); z-index: 5; }
+.phone .daylight { position: absolute; inset: 0 0 auto 0; height: 420px; background: linear-gradient(180deg, var(--day-top) 0%, color-mix(in srgb, var(--day-top) 55%, var(--bg)) 40%, var(--bg) 100%); }
+.phone .content { position: absolute; inset: 0 0 76px 0; padding: 0 20px; overflow: hidden; z-index: 1; }
+.phone .content.full { inset: 0; }
+.ph-top { display: flex; align-items: center; justify-content: space-between; height: 52px; margin: 0 -10px; }
+.ph-top .grow { flex: 1; }
+.ph-btn { width: 44px; height: 44px; display: grid; place-items: center; color: var(--muted); border-radius: 50%; }
+.ph-btn.acc { color: var(--accent); }
+.ph-title { font: 600 30px/36px var(--font-title); letter-spacing: -0.01em; margin: 2px 0 12px; }
+.ph-h2 { font: 500 19px/24px var(--font-title); margin: 22px 0 10px; }
+.ph-muted { color: var(--muted); }
+.ph-card { background: var(--surface); border-radius: 22px; box-shadow: var(--e1); padding: 6px 20px; }
+.ph-row { display: flex; align-items: center; gap: 14px; min-height: 56px; }
+.ph-row .t { flex: 1; min-width: 0; font-size: 16.5px; }
+.ph-row .v { color: var(--muted); font-size: 15px; }
+.ph-row .chev { color: var(--faint); width: 20px; height: 20px; }
+.ph-row + .ph-row.sep { border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.phone { --c: var(--accent); }
+.pebble { width: 36px; height: 36px; display: grid; place-items: center; flex: none; color: var(--c);
+  background: color-mix(in srgb, var(--c) var(--pebble-k), var(--surface)); border-radius: 44% 56% 52% 48% / 54% 44% 56% 46%; }
+.pebble.v2 { border-radius: 56% 44% 46% 54% / 44% 56% 46% 54%; }
+.pebble.v3 { border-radius: 50% 46% 56% 44% / 46% 54% 44% 56%; }
+.pebble .ic { width: 21px; height: 21px; --ic2: currentColor; }
+.c-acc { --c: var(--accent); } .c-sage { --c: var(--sage); } .c-sky { --c: var(--sky); } .c-gold { --c: var(--gold); } .c-dusk { --c: var(--dusk); }
+.ph-chip { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px 0 10px; border-radius: 999px; background: color-mix(in srgb, var(--surface2) 80%, transparent); color: var(--text); font-size: 15px; font-weight: 500; }
+.ph-chip .ic { width: 18px; height: 18px; color: var(--accent); }
+.ph-chip .ic.dn { color: var(--muted); width: 16px; height: 16px; }
+.ph-search { display: flex; align-items: center; gap: 10px; height: 50px; padding: 0 16px; border-radius: 16px; background: var(--surface2); color: var(--muted); font-size: 16px; }
+.ph-search .ic { width: 20px; height: 20px; }
+.tnum { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+
+/* Alt çubuk */
+.tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: 76px; display: flex; padding: 6px 4px 10px; z-index: 6;
+  background: color-mix(in srgb, var(--bg) 92%, transparent); box-shadow: 0 -10px 26px rgba(74,52,30,.06); }
+:root[data-theme="dark"] .tabbar { box-shadow: inset 0 1px 0 rgba(255,255,255,.04); }
+.tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: var(--muted); font: 500 12px/16px var(--font-app); }
+.tab .pill { width: 58px; height: 32px; border-radius: 16px; display: grid; place-items: center; }
+.tab .ic { --ic2: currentColor; }
+.tab.on { color: var(--accent); }
+.tab.on .pill { background: var(--accent-soft); }
+.tab.on .ic { fill: color-mix(in srgb, currentColor 16%, transparent); }
+
+/* Saat ekranı */
+.dial-wrap { position: absolute; left: 45px; top: 190px; width: 300px; height: 300px; }
+.dial-wrap svg { overflow: visible; }
+.dial-face { filter: drop-shadow(0 12px 22px rgba(74,52,30,.14)); }
+:root[data-theme="dark"] .dial-face { filter: drop-shadow(0 12px 24px rgba(0,0,0,.45)); }
+.hands { filter: drop-shadow(0 3px 2.5px var(--hand-shadow)); }
+.model-name { position: absolute; left: 0; right: 0; top: 540px; display: flex; justify-content: center; align-items: center; gap: 18px; color: var(--muted); font-size: 15px; }
+.model-name .ic { width: 20px; height: 20px; color: var(--faint); }
+.clock-actions { position: absolute; left: 0; right: 0; bottom: 92px; display: flex; justify-content: center; align-items: center; gap: 26px; color: var(--muted); font: 500 15px/1 var(--font-app); }
+.clock-actions span { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
+.clock-actions .ic { width: 20px; height: 20px; }
+.round-btn { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); box-shadow: var(--e1); color: var(--muted); }
+
+/* Vakitler */
+.sky { position: relative; height: 200px; border-radius: 28px; overflow: hidden; color: var(--sky-fg, #2B2520);
+  background: linear-gradient(180deg, var(--sky-a), var(--sky-b)); transition: --sky-a 1.2s, --sky-b 1.2s, color .6s; }
+.sky .layer { position: absolute; inset: 0; }
+.sky .stars { opacity: var(--stars, 0); transition: opacity 1.2s;
+  background-image: radial-gradient(1.2px 1.2px at 12% 18%, #fff 60%, transparent), radial-gradient(1px 1px at 28% 42%, #fff 60%, transparent),
+  radial-gradient(1.4px 1.4px at 46% 12%, #fff 60%, transparent), radial-gradient(1px 1px at 62% 30%, #fff 60%, transparent),
+  radial-gradient(1.2px 1.2px at 74% 52%, #fff 60%, transparent), radial-gradient(1px 1px at 90% 14%, #fff 60%, transparent),
+  radial-gradient(1px 1px at 36% 62%, #fff 60%, transparent), radial-gradient(1.3px 1.3px at 84% 36%, #fff 60%, transparent); }
+.sky .glow { background: radial-gradient(55% 70% at var(--orb-x, 80%) 100%, rgba(232,162,124,.85), transparent 72%); opacity: var(--glow, 0); transition: opacity 1.2s; }
+.sky .orb { position: absolute; left: var(--orb-x, 22%); top: var(--orb-y, 30%); width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #FFF6DE 0 38%, #F7CF7A 52%, rgba(247,207,122,0) 72%); box-shadow: 0 0 40px 14px rgba(255,214,140,.45);
+  opacity: var(--sun, 1); transition: left 1.2s cubic-bezier(.2,.8,.2,1), top 1.2s cubic-bezier(.2,.8,.2,1), opacity .8s; }
+.sky .moon { position: absolute; right: 54px; top: 34px; width: 34px; height: 34px; opacity: var(--moon, 0); transition: opacity 1.2s; color: #FFF4D8; }
+.sky .horizon { position: absolute; left: 0; right: 0; bottom: 0; height: 64px; opacity: .14; color: currentColor; }
+.sky .khatam { position: absolute; right: -34px; top: -34px; width: 150px; height: 150px; opacity: .09; color: currentColor; }
+.sky .txt { position: absolute; left: 22px; bottom: 26px; right: 22px; z-index: 2; }
+.sky .lbl { font: 500 15px/20px var(--font-app); opacity: .88; }
+.sky .cnt { font: 300 52px/1.05 var(--font-app); letter-spacing: -0.01em; margin-top: 2px; }
+.sky .sub { font-size: 14px; opacity: .82; margin-top: 4px; }
+.note-pill { display: inline-flex; align-items: center; gap: 8px; margin: 12px 0 14px; height: 36px; padding: 0 14px 0 10px; border-radius: 999px; background: color-mix(in srgb, var(--dusk) 12%, var(--bg)); color: var(--text); font-size: 14.5px; }
+.note-pill .ic { width: 18px; height: 18px; color: var(--dusk); --ic2: var(--gold-deco); }
+.pt-row { display: flex; align-items: center; gap: 14px; height: 48px; margin: 0 -10px; padding: 0 10px; border-radius: 14px; }
+.pt-row .ic { width: 22px; height: 22px; color: var(--muted); --ic2: var(--muted); }
+.pt-row .nm { flex: 1; font-size: 17px; }
+.pt-row .tm { font-size: 17px; }
+.pt-row .ck { width: 24px; height: 24px; border-radius: 50%; border: 1.75px solid var(--line); display: grid; place-items: center; color: transparent; }
+.pt-row .ck.none { border-color: transparent; }
+.pt-row .ck .tick { color: inherit; }
+.pt-row.done .ck { background: color-mix(in srgb, var(--sage) 18%, var(--surface)); border-color: transparent; color: var(--sage); }
+.pt-row.done .nm, .pt-row.done .tm { color: var(--muted); }
+.pt-row.next { background: var(--accent-soft); }
+.pt-row.next .nm, .pt-row.next .tm { font-weight: 500; color: var(--text); }
+.pt-row.next .ic { color: var(--accent); --ic2: var(--gold-deco); }
+.pt-row.next .ck { border-color: color-mix(in srgb, var(--accent) 45%, transparent); }
+.pt-foot { display: flex; align-items: center; justify-content: space-between; height: 46px; color: var(--muted); font-size: 15px; }
+.pt-foot b { color: var(--accent); font-weight: 500; }
+.ring-mini { width: 26px; height: 26px; }
+
+/* Tümü */
+.recents { display: flex; gap: 8px; flex-wrap: nowrap; overflow: hidden; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); row-gap: 16px; column-gap: 6px; }
+.tile { display: grid; justify-items: center; gap: 7px; text-align: center; font-size: 13px; line-height: 17px; color: var(--text); }
+.tile .pebble { width: 58px; height: 58px; background: color-mix(in srgb, var(--c) var(--pebble-k), var(--bg)); }
+.tile .pebble .ic { width: 27px; height: 27px; }
+.cat { display: flex; align-items: center; gap: 8px; }
+.cat i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); display: inline-block; }
+
+/* Pomodoro */
+.seg { position: relative; display: grid; grid-template-columns: 1fr 1fr; height: 44px; padding: 4px; border-radius: 999px; background: var(--surface2); font: 500 15px/36px var(--font-app); text-align: center; color: var(--muted); }
+.seg .on { background: var(--surface); color: var(--text); border-radius: 999px; box-shadow: var(--e1); }
+:root[data-theme="dark"] .seg .on { background: #353645; }
+.phase { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 22px; font: 500 20px/26px var(--font-title); }
+.phase .ic { color: var(--accent); }
+.phase small { font: 400 14px var(--font-app); color: var(--muted); }
+.ring-wrap { position: relative; width: 268px; height: 268px; margin: 14px auto 0; }
+.ring-wrap .num { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.ring-wrap .num b { font: 300 70px/1 var(--font-app); letter-spacing: -0.02em; }
+.ring-wrap .num span { color: var(--muted); font-size: 14px; margin-top: 8px; }
+.ring-glow { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 35%, transparent)); }
+.rounds { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
+.rounds .ic { width: 26px; height: 26px; color: var(--faint); --ic2: var(--faint); }
+.rounds .ic.d1 { color: var(--accent); --ic2: var(--sage); fill: color-mix(in srgb, var(--accent) 22%, transparent); }
+.rounds .ic.cur { color: var(--accent); --ic2: var(--sage); }
+.caption { text-align: center; color: var(--muted); font-size: 14.5px; margin-top: 6px; }
+.primary { position: absolute; left: 20px; right: 20px; bottom: 26px; height: 56px; border-radius: 999px; background: var(--accent); color: var(--on-accent);
+  display: flex; align-items: center; justify-content: center; gap: 10px; font: 500 17px/1 var(--font-app); box-shadow: 0 8px 20px color-mix(in srgb, var(--accent) 28%, transparent); z-index: 6; }
+:root[data-theme="dark"] .primary { box-shadow: none; }
+.primary .ic { width: 20px; height: 20px; }
+
+/* Ayarlar */
+.switch { width: 50px; height: 30px; border-radius: 999px; background: var(--accent); position: relative; flex: none; }
+.switch::after { content: ""; position: absolute; top: 3px; right: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--on-accent); box-shadow: 0 1px 3px rgba(0,0,0,.18); }
+.switch.off { background: var(--surface2); }
+.switch.off::after { right: auto; left: 3px; background: var(--surface); }
+.set-seg { margin: 4px 0 14px; }
+.swatch-dot { width: 22px; height: 22px; border-radius: 50%; background: conic-gradient(var(--accent) 0 50%, var(--gold-deco) 0 75%, var(--surface2) 0); box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+
+/* Hava */
+.wx { position: relative; height: 336px; border-radius: 28px; overflow: hidden; margin-top: 2px;
+  background: linear-gradient(180deg, #9CC4E0, #E3EEF2); color: #2B2520; }
+:root[data-theme="dark"] .wx { background: linear-gradient(180deg, #2A4D6E, #4A6A84); color: #FFF8EC; }
+.wx svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.wx .temp { position: absolute; left: 22px; bottom: 74px; font: 500 88px/1 var(--font-title); letter-spacing: -0.03em; }
+.wx .cond { position: absolute; left: 24px; bottom: 44px; font: 500 19px/24px var(--font-app); }
+.wx .hl { position: absolute; left: 24px; bottom: 20px; font-size: 14px; opacity: .82; }
+.wx .feels { position: absolute; right: 22px; bottom: 20px; font-size: 14px; opacity: .82; text-align: right; }
+.alert { display: flex; align-items: center; gap: 10px; margin: 14px 0; padding: 10px 14px; border-radius: 16px; background: color-mix(in srgb, var(--gold-deco) 16%, var(--bg)); font-size: 14.5px; line-height: 1.35; }
+.alert .ic { color: var(--gold); --ic2: var(--accent); }
+.metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px 10px; padding: 16px 18px; }
+.metric { display: grid; gap: 1px; }
+.metric .h { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+.metric .h .ic { width: 16px; height: 16px; --ic2: currentColor; }
+.metric b { font: 500 20px/1.25 var(--font-app); }
+.metric span { color: var(--muted); font-size: 12.5px; line-height: 1.3; }
+.hourly { display: flex; justify-content: space-between; padding: 12px 18px; margin-top: 12px; }
+.hourly div { display: grid; justify-items: center; gap: 4px; font-size: 13px; color: var(--muted); }
+.hourly b { color: var(--text); font-weight: 500; font-size: 15px; }
+.hourly .ic { width: 22px; height: 22px; color: var(--text); }
+
+/* Belirteçler */
+.tok-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 18px; align-items: start; }
+.panel { background: var(--surface); border-radius: 22px; box-shadow: var(--e1); padding: 18px 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.panel h3 { font-size: 1.15rem; }
+.sw-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.sw-table td { padding: 5px 4px; vertical-align: middle; }
+.sw-table td:first-child { width: 34px; }
+.sw-table .chipc { width: 28px; height: 28px; border-radius: 9px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+.sw-table .hex { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.sw-table .cr { font-family: var(--font-mono); font-size: 12px; text-align: end; color: var(--muted); }
+.sw-head { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 12px; font-size: 13px; }
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(84px, 1fr)); gap: 8px; }
+.strip div { height: 74px; border-radius: 14px; padding: 8px; font-size: 12px; line-height: 1.25; display: flex; align-items: flex-end; box-shadow: inset 0 0 0 1px rgba(0,0,0,.05); }
+.type-row { display: grid; gap: 2px; padding: 8px 0; border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.type-row:first-of-type { border-top: 0; }
+.type-row .spec { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+.space-row { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.space-row i { display: block; height: 12px; background: var(--accent); border-radius: 3px; opacity: .75; }
+.radii { display: flex; flex-wrap: wrap; gap: 12px; }
+.radii div { width: 64px; height: 64px; background: var(--accent-soft); display: grid; place-items: end center; padding-bottom: 4px; font: 11px var(--font-mono); color: var(--text); }
+.elev { display: flex; gap: 14px; flex-wrap: wrap; }
+.elev div { flex: 1; min-width: 90px; height: 80px; border-radius: 22px; background: var(--surface); display: grid; place-items: center; font: 12px var(--font-mono); color: var(--muted); }
+.elev .e0 { background: transparent; box-shadow: inset 0 0 0 1px var(--line); }
+.elev .e1 { box-shadow: var(--e1); } .elev .e2 { box-shadow: var(--e2); }
+.panel.sunken { background: var(--bg); }
+.motion-demo { display: grid; gap: 10px; }
+.track { position: relative; height: 34px; border-radius: 999px; background: var(--surface2); }
+.track i { position: absolute; left: 4px; top: 4px; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); }
+.motion-demo.go .track i { left: calc(100% - 30px); }
+.track.t1 i { transition: left 150ms cubic-bezier(.2,.8,.2,1); }
+.track.t2 i { transition: left 250ms cubic-bezier(.2,.8,.2,1); }
+.track.t3 i { transition: left 400ms cubic-bezier(.2,.8,.2,1); }
+.track.t4 i { transition: left 1200ms cubic-bezier(.2,.8,.2,1); }
+.btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 0; background: var(--accent); color: var(--on-accent); font: 500 15px/1 var(--font-body); cursor: pointer; justify-self: start; transition: transform 120ms cubic-bezier(.2,.8,.2,1); }
+.btn:active { transform: scale(.97); }
+.icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 12px 6px; }
+.icons figure { margin: 0; display: grid; justify-items: center; gap: 4px; font: 11px var(--font-mono); color: var(--muted); text-align: center; }
+.icons .ic { width: 28px; height: 28px; color: var(--text); }
+.swap { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; }
+.swap div { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 10px; border-radius: 14px; background: var(--bg); font-size: 22px; }
+.swap .ic { width: 24px; height: 24px; color: var(--accent); }
+.swap .arrow { font-size: 14px; color: var(--muted); }
+.motif { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; }
+.motif svg { width: 120px; height: 120px; color: var(--gold); }
+.prio { display: grid; gap: 12px; }
+.prio ol { margin: 0; padding-inline-start: 1.3em; display: grid; gap: 10px; }
+.prio li b { font-weight: 600; }
+.prio .k { display: inline-block; min-width: 26px; padding: 1px 7px; border-radius: 999px; background: var(--accent-soft); font: 500 12px/18px var(--font-mono); text-align: center; margin-inline-start: 6px; }
+.prio .f { display: block; font-family: var(--font-mono); font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+footer { padding-top: 56px; color: var(--muted); font-size: .92rem; display: grid; gap: 6px; }
+@media (prefers-reduced-motion: reduce) {
+  .phone, .sky, .sky *, .track i { transition: none !important; }
+  .btn { transition: none; }
+}
+
+
+body { --dl-l: #E9EFF0; --dl-d: #172230; }
+.phone { --dl: var(--dl-l); }
+:root[data-theme="dark"] .phone { --dl: var(--dl-d); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .phone { --dl: var(--dl-d); } }
+
+body[data-tod="safak"] { --dl-l: #F8E4D6; --dl-d: #2A1E2C; }
+body[data-tod="sabah"] { --dl-l: #E9EFF0; --dl-d: #172230; }
+body[data-tod="ogle"] { --dl-l: #E9EFF0; --dl-d: #172230; }
+body[data-tod="ikindi"] { --dl-l: #F6E3C4; --dl-d: #2A2118; }
+body[data-tod="aksam"] { --dl-l: #EEDDE4; --dl-d: #271B2C; }
+body[data-tod="gece"] { --dl-l: #E3E4EE; --dl-d: #12131C; }
+body[data-tod="safak"] .sky { --sky-a:#2E2C55;--sky-b:#8A5A78;--sky-fg:#FFF8EC;--orb-x:80%;--orb-y:102%;--sun:1;--moon:0;--stars:0.5;--glow:1; }
+:root[data-theme="dark"] body[data-tod="safak"] .sky { --sky-a:#2E2C55;--sky-b:#8A5A78;--sky-fg:#FFF8EC; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body[data-tod="safak"] .sky { --sky-a:#2E2C55;--sky-b:#8A5A78;--sky-fg:#FFF8EC; } }
+body[data-tod="sabah"] .sky { --sky-a:#A9C9DF;--sky-b:#F2E6CC;--sky-fg:#2B2520;--orb-x:76%;--orb-y:34%;--sun:1;--moon:0;--stars:0;--glow:0; }
+:root[data-theme="dark"] body[data-tod="sabah"] .sky { --sky-a:#2D4A63;--sky-b:#4F5E6E;--sky-fg:#FFF8EC; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body[data-tod="sabah"] .sky { --sky-a:#2D4A63;--sky-b:#4F5E6E;--sky-fg:#FFF8EC; } }
+body[data-tod="ogle"] .sky { --sky-a:#9CC4E0;--sky-b:#E3EEF2;--sky-fg:#2B2520;--orb-x:62%;--orb-y:20%;--sun:1;--moon:0;--stars:0;--glow:0; }
+:root[data-theme="dark"] body[data-tod="ogle"] .sky { --sky-a:#2A4D6E;--sky-b:#4A6A84;--sky-fg:#FFF8EC; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body[data-tod="ogle"] .sky { --sky-a:#2A4D6E;--sky-b:#4A6A84;--sky-fg:#FFF8EC; } }
+body[data-tod="ikindi"] .sky { --sky-a:#E0B577;--sky-b:#F5E3BF;--sky-fg:#2B2520;--orb-x:82%;--orb-y:46%;--sun:1;--moon:0;--stars:0;--glow:0; }
+:root[data-theme="dark"] body[data-tod="ikindi"] .sky { --sky-a:#5A4126;--sky-b:#7A5A33;--sky-fg:#FFF8EC; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body[data-tod="ikindi"] .sky { --sky-a:#5A4126;--sky-b:#7A5A33;--sky-fg:#FFF8EC; } }
+body[data-tod="aksam"] .sky { --sky-a:#46305A;--sky-b:#8E4B4E;--sky-fg:#FFF8EC;--orb-x:84%;--orb-y:90%;--sun:1;--moon:0;--stars:0.35;--glow:1; }
+:root[data-theme="dark"] body[data-tod="aksam"] .sky { --sky-a:#46305A;--sky-b:#8E4B4E;--sky-fg:#FFF8EC; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body[data-tod="aksam"] .sky { --sky-a:#46305A;--sky-b:#8E4B4E;--sky-fg:#FFF8EC; } }
+body[data-tod="gece"] .sky { --sky-a:#1F2240;--sky-b:#3B3762;--sky-fg:#FFF8EC;--orb-x:80%;--orb-y:30%;--sun:0;--moon:1;--stars:0.9;--glow:0; }
+:root[data-theme="dark"] body[data-tod="gece"] .sky { --sky-a:#1F2240;--sky-b:#3B3762;--sky-fg:#FFF8EC; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) body[data-tod="gece"] .sky { --sky-a:#1F2240;--sky-b:#3B3762;--sky-fg:#FFF8EC; } }
+</style>
+</head>
+<body data-tod="sabah">
+<svg class="sprite" aria-hidden="true" focusable="false"><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/><g style="fill:var(--ic2,currentColor);stroke:none"><circle cx="12" cy="12" r="1"/></g></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M19 14.6A7.6 7.6 0 0 1 9.4 5a7.6 7.6 0 1 0 9.6 9.6z"/><g style="fill:var(--ic2,currentColor);stroke:none"><circle cx="17.5" cy="5.5" r="1.1"/></g></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 2.8v2M12 19.2v2M2.8 12h2M19.2 12h2M5.5 5.5l1.4 1.4M17.1 17.1l1.4 1.4M5.5 18.5l1.4-1.4M17.1 6.9l1.4-1.4"/></g></symbol><symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.8h17M8 3v4M16 3v4"/><g style="fill:var(--ic2,currentColor);stroke:none"><circle cx="8.5" cy="14.5" r="1.3"/></g></symbol><symbol id="i-all" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="2.4"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="3.2"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="3.2"/><g style="stroke:var(--ic2,currentColor)"><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="2.4"/></g></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M6.5 16.5V11a5.5 5.5 0 0 1 11 0v5.5l1.5 1.5H5z"/><g style="stroke:var(--ic2,currentColor)"><path d="M10 20.5a2 2 0 0 0 4 0"/></g></symbol><symbol id="i-more" viewBox="0 0 24 24"><g style="fill:currentColor;stroke:none"><circle cx="5.5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="18.5" cy="12" r="1.5"/></g></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><g style="stroke:var(--ic2,currentColor)"><circle cx="12" cy="10" r="2.3"/></g></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol><symbol id="i-gear" viewBox="0 0 24 24"><path d="M10.3 3.6h3.4l.5 2.3 1.6.9 2.2-.8 1.7 2.9-1.7 1.6v1.9l1.7 1.6-1.7 2.9-2.2-.8-1.6.9-.5 2.3h-3.4l-.5-2.3-1.6-.9-2.2.8-1.7-2.9 1.7-1.6v-1.9L4.3 8.9 6 6l2.2.8 1.6-.9z"/><g style="stroke:var(--ic2,currentColor)"><circle cx="12" cy="12" r="2.6"/></g></symbol><symbol id="i-alarm" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7"/><path d="M12 9.5V13l2.2 1.6M7 19.5l-1.5 1.5M17 19.5l1.5 1.5"/><g style="stroke:var(--ic2,currentColor)"><path d="M4.5 6l2.5-2.5M19.5 6L17 3.5"/></g></symbol><symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M7 3.5h10M7 20.5h10M8 3.5C8 8 11 10 11 12s-3 4-3 8.5M16 3.5C16 8 13 10 13 12s3 4 3 8.5"/><g style="stroke:var(--ic2,currentColor)"><path d="M10 18.3h4M11 16.6h2"/></g></symbol><symbol id="i-stopwatch" viewBox="0 0 24 24"><circle cx="12" cy="13.5" r="7"/><path d="M10 3h4M12 3v3.5M18 7.5l1.5-1.5"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 10v3.5"/></g></symbol><symbol id="i-pomo" viewBox="0 0 24 24"><path d="M12 7.5c-4.4 0-7 3-7 6.5s3 6.5 7 6.5 7-3 7-6.5-2.6-6.5-7-6.5z"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 7.5c-.6-1.6-2-2.4-3.6-2.2M12 7.5c.6-1.6 2-2.4 3.6-2.2M12 7.5V4"/></g></symbol><symbol id="i-study" viewBox="0 0 24 24"><path d="M12 6.5C9.5 5 6.5 4.8 3.5 5.5v13c3-.7 6-.5 8.5 1 2.5-1.5 5.5-1.7 8.5-1v-13c-3-.7-6-.5-8.5 1z"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 6.5v13"/></g></symbol><symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 19v-9M3 15.5h18V19M21 15.5V13a3 3 0 0 0-3-3h-7v5.5"/><g style="stroke:var(--ic2,currentColor)"><circle cx="7" cy="12.6" r="1.7"/></g></symbol><symbol id="i-egg" viewBox="0 0 24 24"><path d="M12 3.5c3.4 0 6 5 6 9.3 0 4.3-2.7 7.7-6 7.7s-6-3.4-6-7.7C6 8.5 8.6 3.5 12 3.5z"/><g style="stroke:var(--ic2,currentColor)"><path d="M6.6 12.5l2 1.4 1.8-1.4 1.8 1.4 1.8-1.4 1.8 1.4 1.6-1.2"/></g></symbol><symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 9h10.5a2.5 2.5 0 1 0-2.5-2.5M3 13h15a2.5 2.5 0 1 1-2.5 2.5"/><g style="stroke:var(--ic2,currentColor)"><path d="M3 17h7"/></g></symbol><symbol id="i-leafcal" viewBox="0 0 24 24"><path d="M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v11.5l-4.5 4.5H6a1.5 1.5 0 0 1-1.5-1.5V5A1.5 1.5 0 0 1 6 3.5z"/><path d="M19.5 16.5H16a1 1 0 0 0-1 1V21"/><g style="stroke:var(--ic2,currentColor)"><path d="M8.5 8.5h7M8.5 12h5"/></g></symbol><symbol id="i-calc" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.8h17M8 3v4M16 3v4"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 12.6v5M9.5 15.1h5"/></g></symbol><symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6"/><g style="stroke:var(--ic2,currentColor)"><circle cx="16.5" cy="10" r="2.3"/><path d="M14.5 14.6c.6-.2 1.3-.3 2-.3 2.2 0 3.8 1.3 4.3 3.7"/></g></symbol><symbol id="i-sunrise" viewBox="0 0 24 24"><path d="M3 18h18M7 18a5 5 0 0 1 10 0"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 5v3M5.2 9.6l1.8 1.5M18.8 9.6L17 11.1M8 21h8"/></g></symbol><symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><g style="stroke:var(--ic2,currentColor)"><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.2-3.8-8.5S9.4 5.9 12 3.5z"/></g></symbol><symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 11 10 5 20 5c0 10-6 15-14 15"/><g style="stroke:var(--ic2,currentColor)"><path d="M5 19c3-4 6-6.5 9-8"/></g></symbol><symbol id="i-moonphase" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><g style="fill:var(--ic2,currentColor);stroke:none"><path d="M12 4a8 8 0 0 1 0 16 4.5 8 0 0 0 0-16z"/></g></symbol><symbol id="i-stars" viewBox="0 0 24 24"><path d="M9 4l1.3 3.7L14 9l-3.7 1.3L9 14l-1.3-3.7L4 9l3.7-1.3z"/><g style="stroke:var(--ic2,currentColor)"><path d="M17 13l.8 2.2L20 16l-2.2.8L17 19l-.8-2.2L14 16l2.2-.8z"/></g></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><g style="stroke:var(--ic2,currentColor)"><path d="M15.2 8.8l-1.9 4.5-4.5 1.9 1.9-4.5z"/></g></symbol><symbol id="i-quran" viewBox="0 0 24 24"><path d="M4 6.5c2.8-.8 5.5-.5 8 1.2 2.5-1.7 5.2-2 8-1.2v11c-2.8-.8-5.5-.5-8 1.2-2.5-1.7-5.2-2-8-1.2zM12 7.7v11"/><g style="stroke:var(--ic2,currentColor)"><path d="M15.5 6.6V11l1.2-.9 1.2.9V6.3"/></g></symbol><symbol id="i-beads" viewBox="0 0 24 24"><circle cx="12" cy="10" r="6" stroke-width="2.6" stroke-dasharray="0.01 3.76"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 16.5v2.5M10.5 21.5l1.5-2.5 1.5 2.5"/></g></symbol><symbol id="i-arch" viewBox="0 0 24 24"><path d="M6 21V11a6 6 0 0 1 12 0v10M4 21h16"/><g style="stroke:var(--ic2,currentColor)"><path d="M13.8 12.4a2.7 2.7 0 1 1-2.3-4 2.2 2.2 0 0 0 2.3 4z"/></g></symbol><symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><g style="stroke:var(--ic2,currentColor)"><path d="M8.3 12.3l2.5 2.5 4.9-5"/></g></symbol><symbol id="i-play" viewBox="0 0 24 24"><g style="fill:currentColor;stroke:none"><path d="M8 5.5v13l10.5-6.5z" stroke-linejoin="round" stroke-width="1.5" stroke="currentColor"/></g></symbol><symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12" stroke-width="2.6"/></symbol><symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol><symbol id="i-chev" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol><symbol id="i-chevl" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol><symbol id="i-updown" viewBox="0 0 24 24"><path d="M8.5 9.5L12 6l3.5 3.5M8.5 14.5L12 18l3.5-3.5"/></symbol><symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V5.5A1.5 1.5 0 0 1 5.5 4H9M15 4h3.5A1.5 1.5 0 0 1 20 5.5V9M20 15v3.5a1.5 1.5 0 0 1-1.5 1.5H15M9 20H5.5A1.5 1.5 0 0 1 4 18.5V15"/></symbol><symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7.5h9M17 7.5h3M4 16.5h3M11 16.5h9"/><g style="stroke:var(--ic2,currentColor)"><circle cx="15" cy="7.5" r="2"/><circle cx="9" cy="16.5" r="2"/></g></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/><g style="fill:var(--ic2,currentColor);stroke:none"><circle cx="12" cy="15.5" r="1.3"/></g></symbol><symbol id="i-share" viewBox="0 0 24 24"><path d="M6 11.5h-.5A1.5 1.5 0 0 0 4 13v5.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V13a1.5 1.5 0 0 0-1.5-1.5H18"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 15V4M8 7.5L12 3.5l4 4"/></g></symbol><symbol id="i-cloudsun" viewBox="0 0 24 24"><g style="stroke:var(--ic2,currentColor)"><path d="M8.5 3.8v1.4M3.6 8.8H5M5 5.3l1 1M12 5.3l-1 1M5.8 11.4a3.4 3.4 0 1 1 6.2-2.7"/></g><path d="M8 19.5a3.5 3.5 0 0 1-.4-7 5 5 0 0 1 9.6.9 3 3 0 0 1-.2 6.1z"/></symbol><symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5s-6 6.6-6 10.8a6 6 0 0 0 12 0C18 10.1 12 3.5 12 3.5z"/><g style="stroke:var(--ic2,currentColor)"><path d="M9.3 14.6a2.8 2.8 0 0 0 2.4 2.6"/></g></symbol><symbol id="i-therm" viewBox="0 0 24 24"><path d="M10 14.5V5a2 2 0 0 1 4 0v9.5a4 4 0 1 1-4 0z"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 9v7.5"/></g></symbol><symbol id="i-umbrella" viewBox="0 0 24 24"><path d="M3.5 12a8.5 8.5 0 0 1 17 0z"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 12v6.5a2 2 0 0 1-4 0"/></g></symbol><symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4.5 17a8 8 0 1 1 15 0"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 13.5l3.5-3.5"/></g><g style="fill:var(--ic2,currentColor);stroke:none"><circle cx="12" cy="13.5" r="1.3"/></g></symbol><symbol id="i-storm" viewBox="0 0 24 24"><path d="M7.5 16a3.5 3.5 0 0 1-.4-7 5 5 0 0 1 9.6.9A3 3 0 0 1 16.5 16"/><g style="stroke:var(--ic2,currentColor)"><path d="M12.5 12.5l-2 3.5h3l-2 3.5"/></g></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><g style="stroke:var(--ic2,currentColor)"><circle cx="12" cy="12" r="2.8"/></g></symbol><symbol id="i-imsak" viewBox="0 0 24 24"><path d="M3 17h18M7.5 17a4.5 4.5 0 0 1 9 0M6 20.5h12"/><g style="stroke:var(--ic2,currentColor)"><path d="M17.5 5.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></g></symbol><symbol id="i-gunes" viewBox="0 0 24 24"><path d="M3 17h18M7 17a5 5 0 0 1 10 0"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 6v2.5M5.8 9.4l1.6 1.3M18.2 9.4l-1.6 1.3"/></g></symbol><symbol id="i-ogle" viewBox="0 0 24 24"><circle cx="12" cy="9" r="3.6"/><path d="M3 19.5h18"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 2.6V4M5.6 9H7M17 9h1.4M7.5 4.5l1 1M16.5 4.5l-1 1"/></g></symbol><symbol id="i-ikindi" viewBox="0 0 24 24"><circle cx="15.5" cy="10.5" r="3.4"/><path d="M3 18.5h18"/><g style="stroke:var(--ic2,currentColor)"><path d="M4.5 15.5l5-1.6"/></g></symbol><symbol id="i-aksam" viewBox="0 0 24 24"><path d="M3 15h18M7.5 15a4.5 4.5 0 0 1 9 0"/><g style="stroke:var(--ic2,currentColor)"><path d="M12 17.5v4M10 19.7l2 1.8 2-1.8"/></g></symbol><symbol id="i-yatsi" viewBox="0 0 24 24"><path d="M17.5 14.8A6.6 6.6 0 0 1 9.2 6.5a6.6 6.6 0 1 0 8.3 8.3z"/><g style="stroke:var(--ic2,currentColor)"><path d="M17 4.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></g></symbol><symbol id="i-ruler" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="8" rx="2"/><g style="stroke:var(--ic2,currentColor)"><path d="M7 8v3M11 8v4M15 8v3"/></g></symbol><symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 1 0 0 17c1.2 0 1.8-.8 1.8-1.7 0-1.4-1.3-1.7-1.3-2.9 0-1 .8-1.6 1.8-1.6h2.2a4 4 0 0 0 4-4C20.5 6.8 16.7 3.5 12 3.5z"/><g style="fill:var(--ic2,currentColor);stroke:none"><circle cx="8" cy="11" r="1.3"/><circle cx="10.5" cy="7.4" r="1.3"/><circle cx="14.6" cy="7.4" r="1.3"/></g></symbol><symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="5.5"/><path d="M9 13.8L7.5 21l4.5-2.5 4.5 2.5-1.5-7.2"/><g style="stroke:var(--ic2,currentColor)"><path d="M10 9l1.5 1.5 3-3"/></g></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-text" viewBox="0 0 24 24"><path d="M5 6.5V5h11v1.5M10.5 5v14M8.5 19h4"/><g style="stroke:var(--ic2,currentColor)"><path d="M15 12.5v-1h5v1M17.5 11.5V19M16.5 19h2"/></g></symbol></svg>
+<div class="page-grain" aria-hidden="true"></div>
+<button class="theme-btn" id="theme-btn" type="button" aria-pressed="false"><svg class="ic " aria-hidden="true"><use href="#i-moon"/></svg><span>Koyu tema</span></button>
+<div class="wrap">
+<header class="cover">
+  <p class="eyebrow">SAAT TARİH · DOĞAL TASARIM ÖNERİSİ · 4 KASIM 2026</p>
+  <h1>Kâğıt, gök ve ışık</h1>
+  <p class="lead">Sahibin sözü: <em>"Tüm tasarımlar aşırı robotik, daha doğal tasarımlar lazım."</em></p>
+  <div class="answer">
+    <p><b>Kısa cevap.</b> İskelet iyi; robot hissini yüzey veriyor. Her şey aynı beyaz kutuda, aynı kalın yazıyla, hazır simgelerle ve tek turuncu renkle çiziliyor.</p>
+    <p>Öneri: yüzeyi takvim yaprağının kâğıdı, günün göğü ve lamba ışığıyla yeniden boyamak. İşin çoğu iki platformdaki ortak belirteç ve bileşen dosyalarında; ekranları tek tek yeniden yazmak gerekmez. Gezinme kararı (kişisel alt çubuk ve "Tümü") olduğu gibi kalır.</p>
+    <p class="muted" style="font-size:14px">Ayrıntılar, değerler ve dosya listesi: <code>docs/dogal-tasarim/README.md</code>. "Şimdi" görüntüleri Android ekran görüntüleridir (iPhone aynı belirteçleri kullanır). Sağ üstteki düğme koyu temayı gösterir.</p>
+  </div>
+</header>
+
+<section id="teshis">
+  <header><p class="eyebrow">1 · TEŞHİS</p><h2>Neden robot gibi görünüyor?</h2><p class="muted">216 ekran görüntüsünden 56'sı incelendi (24'ü tek tek, 32'si dörtlü sayfalarda), ayrıca 33 widget. Altta görüntü adları.</p></header>
+  <div class="diag"><article><span class="n">01</span><h3>Her şey aynı beyaz kutu</h3><p>Saf beyaz kart, 1 dp kenarlık, aynı köşe ve boşluk. Krem zeminde form doldurma hissi.</p><span class="files">tr-ayarlar · tr-alarm · tr-uyku · tr-rozetler</span></article><article><span class="n">02</span><h3>Hazır, dolu simgeler</h3><p>Android'de 274 Material dolu simge. Tümü'ndeki 15 kare birbirinin kopyası.</p><span class="files">tr-araclar · tr-ozellikler</span></article><article><span class="n">03</span><h3>Emoji simge yerine</h3><p>⛅ 📤 📅 📍 🕓 🍅 🕋 🔒: parlak, üç boyutlu, her markada başka görünüyor.</p><span class="files">tr-hava · tr-alarm · tr-pomodoro · tr-kible · tr-hiit</span></article><article><span class="n">04</span><h3>Her yerde kalın, tek yazı</h3><p>237 yarı kalın kullanım; bir ekranda dört kalın turuncu satır yarışıyor.</p><span class="files">tr-alarm · tr-vakitler</span></article><article><span class="n">05</span><h3>Soğuk renkler sıcak kâğıtta</h3><p>Hazır doygun maviler; koyu tema mavi-gri (#11141A), gece değil terminal gibi.</p><span class="files">tr-vakitler · tr-dunya-koyu · tr-saat-koyu</span></article><article><span class="n">06</span><h3>Mekanik boşluk</h3><p>Her yerde 16 ve 14; bir yanda koca boşluk, öbür yanda sıkışık paragraf; karışık hizalama.</p><span class="files">tr-saat · tr-zamanlayici · tr-takvim</span></article><article><span class="n">07</span><h3>Material parçaları olduğu gibi</h3><p>Onay işaretli bölmeli düğme, kalın anahtar, çerçeveli metin kutusu.</p><span class="files">tr-ayarlar · tr-pomodoro · tr-uyku</span></article><article><span class="n">08</span><h3>Doku ve çizim yok</h3><p>Düz yüzeyler; hava bulutları sert kenarlı elips ve yazıya biniyor; çöp adam figürler.</p><span class="files">tr-hava · tr-namaz-rehberi-cizimler</span></article><article><span class="n">09</span><h3>İstasyon saati gibi kadran</h3><p>Kalın siyah çentik, düz kadran, gölgesiz ibre. Uygulamanın ilk yüzü.</p><span class="files">tr-saat · tr-kurulum</span></article><article><span class="n">10</span><h3>Vurgu rengi her şeyde</h3><p>Sayı, bağlantı, simge, anahtar, hap: hepsi #9A3F00. Önemli olan seçilmiyor.</p><span class="files">tr-uyku · tr-alarm</span></article></div>
+</section>
+
+<section id="ekranlar">
+  <header><p class="eyebrow">2 · ŞİMDİ VE ÖNERİLEN</p><h2>Altı ekran</h2>
+  <p class="muted">Önerilen çizimler HTML ve CSS ile, önerilen belirteçlerle çizildi. Rakamlar ve metinler ekran görüntüleriyle aynı.</p></header>
+  <div class="tod" role="group" aria-label="Günün saati"><span class="lbl">Günün saati (Saat ve Vakitler çizimlerini değiştirir):</span><button class="chip" type="button" data-tod="safak" aria-pressed="false"><span class="sw" style="background:#E8A27C"></span>Şafak</button><button class="chip" type="button" data-tod="sabah" aria-pressed="false"><span class="sw" style="background:#A9C9DF"></span>Sabah</button><button class="chip" type="button" data-tod="ogle" aria-pressed="false"><span class="sw" style="background:#9CC4E0"></span>Öğle</button><button class="chip" type="button" data-tod="ikindi" aria-pressed="false"><span class="sw" style="background:#E0B577"></span>İkindi</button><button class="chip" type="button" data-tod="aksam" aria-pressed="false"><span class="sw" style="background:#8E4B4E"></span>Akşam</button><button class="chip" type="button" data-tod="gece" aria-pressed="false"><span class="sw" style="background:#3B3762"></span>Gece</button></div>
+  <div class="compare" id="saat">
+  <div class="col"><div class="tag">ŞİMDİ</div><div class="device"><div class="slot"><img src="now/tr-saat.png" alt="Şimdi: Saat ekranı (Android ekran görüntüsü)" class="only-light"><img src="now/tr-saat-koyu.png" alt="Şimdi: Saat ekranı, koyu tema" class="only-dark"></div></div></div>
+  <div class="col"><div class="tag"><b>ÖNERİLEN</b></div><div class="device"><div class="slot" role="img" aria-label="Önerilen: Saat ekranı çizimi"><div class="phone" data-screen="clock"><div class="daylight"></div><div class="grain"></div>
+<div class="content full">
+  <div class="dial-wrap"><svg viewBox="0 0 300 300" width="300" height="300" aria-label="Analog saat örneği" role="img"><defs><radialGradient id="face" cx="50%" cy="42%" r="62%"><stop offset="0" style="stop-color:var(--surface)"/><stop offset="1" style="stop-color:color-mix(in srgb, var(--surface2) 75%, var(--surface))"/></radialGradient></defs><g class="dial-face"><circle cx="150" cy="150" r="140" fill="url(#face)"/></g><circle cx="150" cy="150" r="140" fill="none" style="stroke:var(--line)" stroke-width="1.5"/><circle cx="163.3" cy="23.7" r="1.25" style="fill:var(--faint)"/><circle cx="176.4" cy="25.8" r="1.25" style="fill:var(--faint)"/><circle cx="189.2" cy="29.2" r="1.25" style="fill:var(--faint)"/><circle cx="201.7" cy="34.0" r="1.25" style="fill:var(--faint)"/><circle cx="224.6" cy="47.3" r="1.25" style="fill:var(--faint)"/><circle cx="235.0" cy="55.6" r="1.25" style="fill:var(--faint)"/><circle cx="244.4" cy="65.0" r="1.25" style="fill:var(--faint)"/><circle cx="252.7" cy="75.4" r="1.25" style="fill:var(--faint)"/><circle cx="266.0" cy="98.3" r="1.25" style="fill:var(--faint)"/><circle cx="270.8" cy="110.8" r="1.25" style="fill:var(--faint)"/><circle cx="274.2" cy="123.6" r="1.25" style="fill:var(--faint)"/><circle cx="276.3" cy="136.7" r="1.25" style="fill:var(--faint)"/><circle cx="276.3" cy="163.3" r="1.25" style="fill:var(--faint)"/><circle cx="274.2" cy="176.4" r="1.25" style="fill:var(--faint)"/><circle cx="270.8" cy="189.2" r="1.25" style="fill:var(--faint)"/><circle cx="266.0" cy="201.7" r="1.25" style="fill:var(--faint)"/><circle cx="252.7" cy="224.6" r="1.25" style="fill:var(--faint)"/><circle cx="244.4" cy="235.0" r="1.25" style="fill:var(--faint)"/><circle cx="235.0" cy="244.4" r="1.25" style="fill:var(--faint)"/><circle cx="224.6" cy="252.7" r="1.25" style="fill:var(--faint)"/><circle cx="201.7" cy="266.0" r="1.25" style="fill:var(--faint)"/><circle cx="189.2" cy="270.8" r="1.25" style="fill:var(--faint)"/><circle cx="176.4" cy="274.2" r="1.25" style="fill:var(--faint)"/><circle cx="163.3" cy="276.3" r="1.25" style="fill:var(--faint)"/><circle cx="136.7" cy="276.3" r="1.25" style="fill:var(--faint)"/><circle cx="123.6" cy="274.2" r="1.25" style="fill:var(--faint)"/><circle cx="110.8" cy="270.8" r="1.25" style="fill:var(--faint)"/><circle cx="98.3" cy="266.0" r="1.25" style="fill:var(--faint)"/><circle cx="75.4" cy="252.7" r="1.25" style="fill:var(--faint)"/><circle cx="65.0" cy="244.4" r="1.25" style="fill:var(--faint)"/><circle cx="55.6" cy="235.0" r="1.25" style="fill:var(--faint)"/><circle cx="47.3" cy="224.6" r="1.25" style="fill:var(--faint)"/><circle cx="34.0" cy="201.7" r="1.25" style="fill:var(--faint)"/><circle cx="29.2" cy="189.2" r="1.25" style="fill:var(--faint)"/><circle cx="25.8" cy="176.4" r="1.25" style="fill:var(--faint)"/><circle cx="23.7" cy="163.3" r="1.25" style="fill:var(--faint)"/><circle cx="23.7" cy="136.7" r="1.25" style="fill:var(--faint)"/><circle cx="25.8" cy="123.6" r="1.25" style="fill:var(--faint)"/><circle cx="29.2" cy="110.8" r="1.25" style="fill:var(--faint)"/><circle cx="34.0" cy="98.3" r="1.25" style="fill:var(--faint)"/><circle cx="47.3" cy="75.4" r="1.25" style="fill:var(--faint)"/><circle cx="55.6" cy="65.0" r="1.25" style="fill:var(--faint)"/><circle cx="65.0" cy="55.6" r="1.25" style="fill:var(--faint)"/><circle cx="75.4" cy="47.3" r="1.25" style="fill:var(--faint)"/><circle cx="98.3" cy="34.0" r="1.25" style="fill:var(--faint)"/><circle cx="110.8" cy="29.2" r="1.25" style="fill:var(--faint)"/><circle cx="123.6" cy="25.8" r="1.25" style="fill:var(--faint)"/><circle cx="136.7" cy="23.7" r="1.25" style="fill:var(--faint)"/><line x1="150.0" y1="20.0" x2="150.0" y2="37.0" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="3" stroke-linecap="round"/><line x1="215.0" y1="37.4" x2="209.5" y2="46.9" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/><line x1="262.6" y1="85.0" x2="253.1" y2="90.5" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/><line x1="280.0" y1="150.0" x2="263.0" y2="150.0" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="3" stroke-linecap="round"/><line x1="262.6" y1="215.0" x2="253.1" y2="209.5" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/><line x1="215.0" y1="262.6" x2="209.5" y2="253.1" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/><line x1="150.0" y1="280.0" x2="150.0" y2="263.0" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="3" stroke-linecap="round"/><line x1="85.0" y1="262.6" x2="90.5" y2="253.1" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/><line x1="37.4" y1="215.0" x2="46.9" y2="209.5" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/><line x1="20.0" y1="150.0" x2="37.0" y2="150.0" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="3" stroke-linecap="round"/><line x1="37.4" y1="85.0" x2="46.9" y2="90.5" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/><line x1="85.0" y1="37.4" x2="90.5" y2="46.9" style="stroke:var(--text)" stroke-opacity=".78" stroke-width="2.2" stroke-linecap="round"/><text x="198.0" y="66.9" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">1</text><text x="233.1" y="102.0" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">2</text><text x="246.0" y="150.0" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">3</text><text x="233.1" y="198.0" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">4</text><text x="198.0" y="233.1" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">5</text><text x="150.0" y="246.0" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">6</text><text x="102.0" y="233.1" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">7</text><text x="66.9" y="198.0" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">8</text><text x="54.0" y="150.0" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">9</text><text x="66.9" y="102.0" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">10</text><text x="102.0" y="66.9" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">11</text><text x="150.0" y="54.0" text-anchor="middle" dominant-baseline="central" style="fill:var(--text);font:500 22px var(--font-title);font-feature-settings:'lnum'" fill-opacity=".9">12</text><g class="hands" transform="translate(150 150)"><g id="h-hour" transform="rotate(310)"><path d="M-4.6 14 C-4.6 6 -3 -38 -1.3 -62 Q0 -67 1.3 -62 C3 -38 4.6 6 4.6 14 Z" style="fill:var(--text)"/></g><g id="h-min" transform="rotate(126)"><path d="M-3.6 16 C-3.6 8 -2.2 -70 -0.9 -102 Q0 -106 0.9 -102 C2.2 -70 3.6 8 3.6 16 Z" style="fill:var(--text)"/></g><g id="h-sec" transform="rotate(0)"><line x1="0" y1="24" x2="0" y2="-114" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round"/><circle cx="0" cy="20" r="3.6" style="fill:var(--accent)"/></g><circle r="6.2" style="fill:var(--gold-deco)"/><circle r="2.2" style="fill:var(--surface)"/></g></svg></div>
+  <div class="model-name"><svg class="ic " aria-hidden="true"><use href="#i-chevl"/></svg><span>Klasik analog · 1/21</span><svg class="ic " aria-hidden="true"><use href="#i-chev"/></svg></div>
+  <div class="clock-actions"><span><svg class="ic mono" aria-hidden="true"><use href="#i-full"/></svg>Tam ekran</span><span><svg class="ic mono" aria-hidden="true"><use href="#i-sliders"/></svg>Düzenle</span><span class="round-btn"><svg class="ic " aria-hidden="true"><use href="#i-gear"/></svg></span></div>
+</div><nav class="tabbar" aria-hidden="true"><div class="tab on"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-clock"/></svg></div>Saat</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-moon"/></svg></div>Vakitler</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg></div>Hava</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-cal"/></svg></div>Takvim</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-all"/></svg></div>Tümü</div></nav></div></div></div></div>
+  <div class="notes"><h3>Saat ekranı</h3><ul><li>Zemin, günün saatine göre çok soluk bir gök tonuna bürünür (Gün ışığı). Saat ekranına yeni alan eklenmez; boşluk ışıkla dolar.</li><li>Kadran: ince dış halka, nokta biçiminde dakika çentikleri, yuvarlak uçlu saat çentikleri, sivrilen ibreler, yumuşak gölge, altın orta kapak.</li><li>Rakamlar Literata. Model adı ve düğmeler soluk renkte; ekranda dolu renkli öğe yok.</li><li>Alt çubuk kâğıt renginde, kenar çizgisi yok; kendi çizgi simgelerimiz, seçili sekme açık ton hapta.</li></ul><p class="src">Dials.kt, ClockScreen.kt, MainActivity.kt TabBar · Dials.swift, AnalogClock.swift, HomeView.swift, SaatTarihApp.swift</p></div>
+</div><div class="compare" id="vakitler">
+  <div class="col"><div class="tag">ŞİMDİ <span class=muted>· açık tema görüntüsü</span></div><div class="device"><div class="slot"><img src="now/tr-vakitler.png" alt="Şimdi: Vakitler (Android ekran görüntüsü)" class=""></div></div></div>
+  <div class="col"><div class="tag"><b>ÖNERİLEN</b></div><div class="device"><div class="slot" role="img" aria-label="Önerilen: Vakitler çizimi"><div class="phone" data-screen="prayer"><div class="daylight"></div><div class="grain"></div>
+<div class="content">
+  <div class="ph-top"><span class="grow"></span><span class="ph-btn"><svg class="ic mono" aria-hidden="true"><use href="#i-bell"/></svg></span><span class="ph-btn"><svg class="ic " aria-hidden="true"><use href="#i-more"/></svg></span></div>
+  <div class="ph-title" style="margin-top:-10px">Vakitler</div>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap"><span class="ph-chip"><svg class="ic " aria-hidden="true"><use href="#i-pin"/></svg>İstanbul<svg class="ic dn mono" aria-hidden="true"><use href="#i-updown"/></svg></span></div>
+  <p class="ph-muted" style="font-size:14px;margin:10px 0 14px">4 Kasım 2026 Çarşamba · 24 Cemaziyelevvel 1448</p>
+  <div class="sky">
+    <div class="layer stars"></div><div class="layer glow"></div>
+    <div class="khatam"><svg viewBox="-60 -60 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="-38" y="-38" width="76" height="76"/><rect x="-38" y="-38" width="76" height="76" transform="rotate(45)"/><circle r="22"/><circle r="52"/></g></svg></div>
+    <div class="orb"></div>
+    <svg class="moon ic" viewBox="0 0 24 24" aria-hidden="true" style="fill:currentColor;stroke:none"><path d="M19 14.6A7.6 7.6 0 0 1 9.4 5a7.6 7.6 0 1 0 9.6 9.6z"/></svg>
+    <svg class="horizon" viewBox="0 0 390 64" preserveAspectRatio="none" aria-hidden="true"><path fill="currentColor" d="M0 50 C60 42 110 46 160 47 C200 48 228 42 246 42 A24 22 0 0 1 294 42 C300 42 302 42 303 42 V14 L307 4 L311 14 V42 C330 42 352 46 390 44 V64 H0 Z"/><rect x="301" y="22" width="12" height="2.2" fill="currentColor"/></svg>
+    <div class="txt"><div class="lbl" id="vk-label">Öğle vaktine</div><div class="cnt tnum" id="vk-count">02:31:27</div><div class="sub" id="vk-sub">12:53 · İstanbul</div></div>
+  </div>
+  <div class="note-pill"><svg class="ic " aria-hidden="true"><use href="#i-moon"/></svg>Regaib Kandili'ne 36 gün</div>
+  <div class="ph-card" style="padding:8px 20px 2px">
+    <div class="pt-row" data-i="0"><svg class="ic " aria-hidden="true"><use href="#i-imsak"/></svg><span class="nm">İmsak</span><span class="tm tnum">06:05</span><span class="ck"><svg class="ic mono tick" viewBox="0 0 24 24" style="width:16px;height:16px;stroke-width:2.4" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></div><div class="pt-row" data-i="1"><svg class="ic " aria-hidden="true"><use href="#i-gunes"/></svg><span class="nm">Güneş</span><span class="tm tnum">07:31</span><span class="ck none"></span></div><div class="pt-row" data-i="2"><svg class="ic " aria-hidden="true"><use href="#i-ogle"/></svg><span class="nm">Öğle</span><span class="tm tnum">12:53</span><span class="ck"><svg class="ic mono tick" viewBox="0 0 24 24" style="width:16px;height:16px;stroke-width:2.4" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></div><div class="pt-row" data-i="3"><svg class="ic " aria-hidden="true"><use href="#i-ikindi"/></svg><span class="nm">İkindi</span><span class="tm tnum">15:38</span><span class="ck"><svg class="ic mono tick" viewBox="0 0 24 24" style="width:16px;height:16px;stroke-width:2.4" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></div><div class="pt-row" data-i="4"><svg class="ic " aria-hidden="true"><use href="#i-aksam"/></svg><span class="nm">Akşam</span><span class="tm tnum">18:04</span><span class="ck"><svg class="ic mono tick" viewBox="0 0 24 24" style="width:16px;height:16px;stroke-width:2.4" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></div><div class="pt-row" data-i="5"><svg class="ic " aria-hidden="true"><use href="#i-yatsi"/></svg><span class="nm">Yatsı</span><span class="tm tnum">19:26</span><span class="ck"><svg class="ic mono tick" viewBox="0 0 24 24" style="width:16px;height:16px;stroke-width:2.4" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg></span></div>
+    <div class="pt-foot"><span style="display:inline-flex;align-items:center;gap:10px"><svg class="ring-mini" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="10.5" fill="none" style="stroke:var(--surface2)" stroke-width="3"/><circle id="vk-ring" cx="13" cy="13" r="10.5" fill="none" style="stroke:var(--sage)" stroke-width="3" stroke-linecap="round" stroke-dasharray="13.2 66" transform="rotate(-90 13 13)"/></svg><span id="vk-done">1/5 kılındı</span></span><b>Hepsini işaretle</b></div>
+  </div>
+</div><nav class="tabbar" aria-hidden="true"><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-clock"/></svg></div>Saat</div><div class="tab on"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-moon"/></svg></div>Vakitler</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg></div>Hava</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-cal"/></svg></div>Takvim</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-all"/></svg></div>Tümü</div></nav></div></div></div></div>
+  <div class="notes"><h3>Vakitler</h3><ul><li>Sayaç kartı vaktin göğü: doygun mavi yerine boyalı, yumuşak gök. Güneş ya da Ay gerçek yerinde; altta %14 ufuk ve kubbe-minare silüeti, köşede %9 hatem.</li><li>Açık gökte yazı mürekkep, koyu gökte krem; karşıtlık her gökte 5:1'in üstünde. Yukarıdaki "Günün saati" düğmeleriyle deneyin.</li><li>Tek hizalama (sola). Kalın turuncu "Yaklaşan" satırı yerine soluk bir not hapı.</li><li>Vakit simgeleri Güneş'in gökteki yerini anlatır. Sıradaki vakit yumuşak vurgulu; kılınan vakitte adaçayı onay.</li></ul><p class="src">PrayerScreen.kt, WorshipExtras.kt:322 skyColors · PrayerTab.swift, WorshipExtras.swift:312</p></div>
+</div><div class="compare" id="tumu">
+  <div class="col"><div class="tag">ŞİMDİ <span class=muted>· açık tema görüntüsü</span></div><div class="device"><div class="slot"><img src="now/tr-araclar.png" alt="Şimdi: Tümü (Android ekran görüntüsü)" class=""></div></div></div>
+  <div class="col"><div class="tag"><b>ÖNERİLEN</b></div><div class="device"><div class="slot" role="img" aria-label="Önerilen: Tümü çizimi"><div class="phone" data-screen="all"><div class="grain"></div>
+<div class="content">
+  <div class="ph-top" style="height:20px"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between"><div class="ph-title" style="margin:0">Tümü</div><span class="ph-btn" style="margin-right:-10px"><svg class="ic " aria-hidden="true"><use href="#i-gear"/></svg></span></div>
+  <div class="ph-search" style="margin-top:12px"><svg class="ic mono" aria-hidden="true"><use href="#i-search"/></svg>Araç, ayar ya da içerik arayın</div>
+  <div class="ph-h2">Son kullanılanlar</div>
+  <div class="recents"><span class="ph-chip"><svg class="ic " aria-hidden="true"><use href="#i-alarm"/></svg>Alarm · 07:00</span><span class="ph-chip"><svg class="ic " aria-hidden="true"><use href="#i-pomo"/></svg>Pomodoro</span><span class="ph-chip"><svg class="ic " aria-hidden="true"><use href="#i-compass"/></svg>Kıble</span></div>
+  <div class="ph-h2 cat c-acc"><i></i>Süre ve alarm</div>
+  <div class="grid4"><div class="tile c-acc"><span class="pebble"><svg class="ic " aria-hidden="true"><use href="#i-alarm"/></svg></span>Alarm</div><div class="tile c-acc"><span class="pebble v2"><svg class="ic " aria-hidden="true"><use href="#i-hourglass"/></svg></span>Zamanlayıcı</div><div class="tile c-acc"><span class="pebble v3"><svg class="ic " aria-hidden="true"><use href="#i-stopwatch"/></svg></span>Kronometre</div><div class="tile c-acc"><span class="pebble v2"><svg class="ic " aria-hidden="true"><use href="#i-pomo"/></svg></span>Pomodoro</div><div class="tile c-acc"><span class="pebble"><svg class="ic " aria-hidden="true"><use href="#i-study"/></svg></span>Ders çalışma</div><div class="tile c-acc"><span class="pebble v2"><svg class="ic " aria-hidden="true"><use href="#i-bed"/></svg></span>Uyku</div><div class="tile c-acc"><span class="pebble v3"><svg class="ic " aria-hidden="true"><use href="#i-egg"/></svg></span>Uyanma oyunu</div><div class="tile c-acc"><span class="pebble v2"><svg class="ic " aria-hidden="true"><use href="#i-wind"/></svg></span>Nefes egzersizi</div></div>
+  <div class="ph-h2 cat c-sage"><i></i>Gün ve plan</div>
+  <div class="grid4"><div class="tile c-sage"><span class="pebble"><svg class="ic " aria-hidden="true"><use href="#i-cal"/></svg></span>Takvim</div><div class="tile c-sage"><span class="pebble v2"><svg class="ic " aria-hidden="true"><use href="#i-leafcal"/></svg></span>Takvim yaprağı</div><div class="tile c-sage"><span class="pebble v3"><svg class="ic " aria-hidden="true"><use href="#i-calc"/></svg></span>Tarih hesaplama</div><div class="tile c-sage"><span class="pebble v2"><svg class="ic " aria-hidden="true"><use href="#i-people"/></svg></span>Toplantı planlayıcı</div><div class="tile c-sage"><span class="pebble"><svg class="ic " aria-hidden="true"><use href="#i-sunrise"/></svg></span>Sabah günlüğü</div></div>
+  <div class="ph-h2 cat c-sky"><i></i>Gök ve dünya</div>
+  <div class="grid4"><div class="tile c-sky"><span class="pebble"><svg class="ic " aria-hidden="true"><use href="#i-cloudsun"/></svg></span>Hava</div><div class="tile c-sky"><span class="pebble v2"><svg class="ic " aria-hidden="true"><use href="#i-globe"/></svg></span>Dünya</div><div class="tile c-sky"><span class="pebble v3"><svg class="ic " aria-hidden="true"><use href="#i-leaf"/></svg></span>Mevsimler</div><div class="tile c-sky"><span class="pebble v2"><svg class="ic " aria-hidden="true"><use href="#i-moonphase"/></svg></span>Ay takvimi</div></div>
+</div><nav class="tabbar" aria-hidden="true"><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-clock"/></svg></div>Saat</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-moon"/></svg></div>Vakitler</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg></div>Hava</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-cal"/></svg></div>Takvim</div><div class="tab on"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-all"/></svg></div>Tümü</div></nav></div></div></div></div>
+  <div class="notes"><h3>Tümü</h3><ul><li>15 birbirinin kopyası beyaz kart kalktı. Simge, kategorinin doğa rengiyle "çakıl taşı" içinde: kiremit, adaçayı, gök (İbadet: altın).</li><li>Bölüm başlıkları kitap yazısıyla; arama kutusu çerçevesiz, çukur zeminli.</li><li>"Sık kullanılanlar" boşken açıklama satırı yerine son kullanılanlar hapları.</li></ul><p class="src">AllScreen.kt, Components.kt IconBox · AllView.swift, Components.swift</p></div>
+</div><div class="compare" id="pomodoro">
+  <div class="col"><div class="tag">ŞİMDİ <span class=muted>· açık tema görüntüsü</span></div><div class="device"><div class="slot"><img src="now/tr-pomodoro.png" alt="Şimdi: Pomodoro (araç ekranları için örnek) (Android ekran görüntüsü)" class=""></div></div></div>
+  <div class="col"><div class="tag"><b>ÖNERİLEN</b></div><div class="device"><div class="slot" role="img" aria-label="Önerilen: Pomodoro (araç ekranları için örnek) çizimi"><div class="phone" data-screen="pomo"><div class="grain"></div>
+<div class="daylight" style="--day-top:color-mix(in srgb, var(--accent-soft) 70%, var(--bg));height:300px"></div>
+<div class="content full">
+  <div class="ph-top"><span class="ph-btn"><svg class="ic mono" aria-hidden="true"><use href="#i-back"/></svg></span><span class="grow"></span><span class="ph-btn"><svg class="ic " aria-hidden="true"><use href="#i-more"/></svg></span></div>
+  <div class="ph-title" style="margin-top:-6px">Pomodoro</div>
+  <div class="seg"><span class="on">Sayaç</span><span>İstatistik</span></div>
+  <div class="phase"><svg class="ic " aria-hidden="true"><use href="#i-pomo"/></svg>Çalışma <small>· 1. tur</small></div>
+  <div class="ring-wrap">
+    <svg viewBox="0 0 268 268" width="268" height="268" aria-hidden="true">
+      <circle cx="134" cy="134" r="124" fill="none" style="stroke:var(--line)" stroke-width="6"/>
+      <g class="ring-glow"><circle cx="134" cy="134" r="124" fill="none" style="stroke:var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray="779.1 779.1" transform="rotate(-90 134 134)"/></g>
+      <circle cx="134" cy="10" r="8" style="fill:var(--surface);stroke:var(--accent)" stroke-width="3"/>
+    </svg>
+    <div class="num"><b class="tnum">25:00</b><span>25 dakikalık odak</span></div>
+  </div>
+  <div class="rounds"><svg class="ic cur" aria-hidden="true"><use href="#i-pomo"/></svg><svg class="ic " aria-hidden="true"><use href="#i-pomo"/></svg><svg class="ic " aria-hidden="true"><use href="#i-pomo"/></svg><svg class="ic " aria-hidden="true"><use href="#i-pomo"/></svg></div>
+  <p class="caption">Bugün 0 / 4 tur</p>
+  <div class="ph-card" style="margin-top:18px;padding:2px 18px">
+    <div class="ph-row"><span class="pebble c-acc"><svg class="ic " aria-hidden="true"><use href="#i-leafcal"/></svg></span><span class="t">Görev<br><span class="ph-muted" style="font-size:14px">Adsız</span></span><svg class="ic chev mono" aria-hidden="true"><use href="#i-chev"/></svg></div>
+    <div class="ph-row sep"><span class="pebble v2 c-sky"><svg class="ic " aria-hidden="true"><use href="#i-drop"/></svg></span><span class="t">Arka plan sesi<br><span class="ph-muted" style="font-size:14px">Kapalı</span></span><svg class="ic chev mono" aria-hidden="true"><use href="#i-chev"/></svg></div>
+  </div>
+</div>
+<div class="primary"><svg class="ic " aria-hidden="true"><use href="#i-play"/></svg>Başlat</div></div></div></div></div>
+  <div class="notes"><h3>Pomodoro (araç ekranları için örnek)</h3><ul><li>Kalın halka yerine 6 dp ince halka, ışıklı uç; ince dev rakam (300 ağırlık).</li><li>🍅 emojisi yerine çizim domatesler: sürmekte olan renkli, kalanlar soluk.</li><li>Onay işaretli bölmeli düğme yerine kayan hap.</li><li>Görev ve ses satırları simgeli; altta tek dolu düğme. Çalışma evresinde sayfanın üstü sıcak ton.</li></ul><p class="src">ToolVisuals.kt (ProgressRing, RoundDots), PomodoroScreen.kt · ToolVisuals.swift, ToolsTab.swift</p></div>
+</div><div class="compare" id="ayarlar">
+  <div class="col"><div class="tag">ŞİMDİ <span class=muted>· açık tema görüntüsü</span></div><div class="device"><div class="slot"><img src="now/tr-ayarlar.png" alt="Şimdi: Ayarlar (Android ekran görüntüsü)" class=""></div></div></div>
+  <div class="col"><div class="tag"><b>ÖNERİLEN</b></div><div class="device"><div class="slot" role="img" aria-label="Önerilen: Ayarlar çizimi"><div class="phone" data-screen="settings"><div class="grain"></div>
+<div class="content full">
+  <div class="ph-top"><span class="ph-btn"><svg class="ic mono" aria-hidden="true"><use href="#i-back"/></svg></span><span class="grow"></span></div>
+  <div class="ph-title" style="margin-top:-6px">Ayarlar</div>
+  <div class="ph-search"><svg class="ic mono" aria-hidden="true"><use href="#i-search"/></svg>Ayarlarda arayın</div>
+  <div class="ph-h2">Genel</div>
+  <div class="ph-card">
+    <div class="ph-row"><span class="pebble c-sky"><svg class="ic " aria-hidden="true"><use href="#i-all"/></svg></span><span class="t">Özellikler</span><span class="v">3 açık</span><svg class="ic chev mono" aria-hidden="true"><use href="#i-chev"/></svg></div>
+    <div class="ph-row sep"><span class="pebble v2 c-acc"><svg class="ic " aria-hidden="true"><use href="#i-pin"/></svg></span><span class="t">Konum</span><span class="v">İstanbul</span><svg class="ic chev mono" aria-hidden="true"><use href="#i-chev"/></svg></div>
+    <div class="ph-row sep"><span class="pebble v3 c-gold"><svg class="ic " aria-hidden="true"><use href="#i-bell"/></svg></span><span class="t">Bildirimler</span><span class="v">Açık</span><svg class="ic chev mono" aria-hidden="true"><use href="#i-chev"/></svg></div>
+    <div class="ph-row sep"><span class="pebble c-sage"><svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg></span><span class="t">Saat ekranı açık kalsın</span><span class="switch"></span></div>
+    <div class="ph-row sep"><span class="pebble v2 c-dusk"><svg class="ic " aria-hidden="true"><use href="#i-globe"/></svg></span><span class="t">Dil</span><span class="v">Sistem dili</span><svg class="ic chev mono" aria-hidden="true"><use href="#i-chev"/></svg></div>
+  </div>
+  <div class="ph-h2">Saat</div>
+  <div class="ph-card" style="padding-top:12px">
+    <div style="font-size:15px;color:var(--muted);margin-bottom:8px">Saat biçimi</div>
+    <div class="seg set-seg"><span class="on">24 saat</span><span>12 saat</span></div>
+    <div class="ph-row sep"><span class="pebble v3 c-sky"><svg class="ic " aria-hidden="true"><use href="#i-ruler"/></svg></span><span class="t">Birimler</span><span class="v">Metrik</span><svg class="ic chev mono" aria-hidden="true"><use href="#i-chev"/></svg></div>
+    <div class="ph-row sep"><span class="pebble c-sky"><svg class="ic " aria-hidden="true"><use href="#i-gauge"/></svg></span><span class="t">Basınç birimi</span><span class="v">Otomatik</span><svg class="ic chev mono" aria-hidden="true"><use href="#i-chev"/></svg></div>
+  </div>
+  <div class="ph-h2">Renk ve görünüm</div>
+  <div class="ph-card">
+    <div class="ph-row"><span class="pebble c-acc"><svg class="ic " aria-hidden="true"><use href="#i-palette"/></svg></span><span class="t">Uygulama rengi</span><span class="v">Kiremit</span><span class="swatch-dot"></span></div>
+  </div>
+</div></div></div></div></div>
+  <div class="notes"><h3>Ayarlar</h3><ul><li>Kartlar kenarlıksız kâğıt; satırlarda çakıl taşı simgeler, değerler soluk yazıda.</li><li>Birimler ve basınç birimi gibi seçimler satıra iner; dokununca alt sayfa açılır (bugün dört parçalı bölmeli düğme).</li><li>Tek bölmeli seçici örneği: 24 saat / 12 saat.</li><li>Anahtar kenarlıksız; açıkken ana renk.</li></ul><p class="src">SettingsScreen.kt, Components.kt (SoftSegmented, SoftSwitch) · InfoViews.swift, Components.swift</p></div>
+</div><div class="compare" id="hava">
+  <div class="col"><div class="tag">ŞİMDİ <span class=muted>· açık tema görüntüsü</span></div><div class="device"><div class="slot"><img src="now/tr-hava.png" alt="Şimdi: Hava (Android ekran görüntüsü)" class=""></div></div></div>
+  <div class="col"><div class="tag"><b>ÖNERİLEN</b></div><div class="device"><div class="slot" role="img" aria-label="Önerilen: Hava çizimi"><div class="phone" data-screen="weather"><div class="grain"></div>
+<div class="content">
+  <div class="ph-top" style="margin-bottom:6px"><span style="padding-left:10px"><span class="ph-chip"><svg class="ic " aria-hidden="true"><use href="#i-pin"/></svg>İstanbul<svg class="ic dn mono" aria-hidden="true"><use href="#i-updown"/></svg></span></span><span class="ph-btn"><svg class="ic " aria-hidden="true"><use href="#i-more"/></svg></span></div>
+  <div class="wx">
+    <svg class="scene" viewBox="0 0 350 336" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><radialGradient id="sunglow"><stop offset="0" stop-color="#FFF7E2"/><stop offset=".32" stop-color="#FCE2A6"/><stop offset=".55" stop-color="#F6C878" stop-opacity=".55"/><stop offset="1" stop-color="#F6C878" stop-opacity="0"/></radialGradient>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter></defs>
+      <circle cx="268" cy="70" r="74" fill="url(#sunglow)"/>
+      <g style="opacity:var(--cloud-o)"><g filter="url(#soft)" style="fill:var(--cloud)"><circle cx="199.7" cy="109.7" r="20.9"/><circle cx="220.6" cy="96.4" r="26.6"/><circle cx="247.2" cy="100.2" r="22.8"/><circle cx="266.2" cy="111.6" r="17.1"/><circle cx="232.0" cy="115.4" r="22.8"/><circle cx="209.2" cy="119.2" r="15.2"/><circle cx="256.7" cy="119.2" r="15.2"/><circle cx="54.2" cy="66.2" r="15.4"/><circle cx="69.6" cy="56.4" r="19.6"/><circle cx="89.2" cy="59.2" r="16.8"/><circle cx="103.2" cy="67.6" r="12.6"/><circle cx="78.0" cy="70.4" r="16.8"/><circle cx="61.2" cy="73.2" r="11.2"/><circle cx="96.2" cy="73.2" r="11.2"/></g></g>
+      <g style="opacity:calc(var(--cloud-o) * .6)"><g filter="url(#soft)" style="fill:var(--cloud)"><circle cx="281.3" cy="171.3" r="12.1"/><circle cx="293.4" cy="163.6" r="15.4"/><circle cx="308.8" cy="165.8" r="13.2"/><circle cx="319.8" cy="172.4" r="9.9"/><circle cx="300.0" cy="174.6" r="13.2"/><circle cx="286.8" cy="176.8" r="8.8"/><circle cx="314.3" cy="176.8" r="8.8"/></g></g>
+    </svg>
+    <div class="temp tnum">18°</div>
+    <div class="cond">Parçalı bulutlu</div>
+    <div class="hl">En yüksek 20° · en düşük 12°</div>
+    <div class="feels">Hissedilen 17°</div>
+  </div>
+  <div class="alert"><svg class="ic " aria-hidden="true"><use href="#i-storm"/></svg><span>Gece 03:00 civarı gök gürültülü sağanak bekleniyor.</span></div>
+  <div class="ph-card metrics">
+    <div class="metric"><span class="h"><svg class="ic " aria-hidden="true"><use href="#i-drop"/></svg>Nem</span><b class="tnum">%64</b><span>Nemli</span></div>
+    <div class="metric"><span class="h"><svg class="ic " aria-hidden="true"><use href="#i-wind"/></svg>Rüzgâr</span><b class="tnum">14 km/sa</b><span>Hafif esinti</span></div>
+    <div class="metric"><span class="h"><svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg>UV</span><b class="tnum">3</b><span>Orta</span></div>
+    <div class="metric"><span class="h"><svg class="ic " aria-hidden="true"><use href="#i-umbrella"/></svg>Yağış</span><b class="tnum">%21</b><span>Düşük</span></div>
+    <div class="metric"><span class="h"><svg class="ic " aria-hidden="true"><use href="#i-gauge"/></svg>Basınç</span><b class="tnum">1016</b><span>hPa · normal</span></div>
+    <div class="metric"><span class="h"><svg class="ic " aria-hidden="true"><use href="#i-eye"/></svg>Görüş</span><b class="tnum">10 km</b><span>Açık</span></div>
+  </div>
+  <div class="ph-card hourly"><div>Şimdi<svg class="ic " aria-hidden="true"><use href="#i-cloudsun"/></svg><b class="tnum">18°</b></div><div>13:00<svg class="ic " aria-hidden="true"><use href="#i-cloudsun"/></svg><b class="tnum">19°</b></div><div>14:00<svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg><b class="tnum">20°</b></div><div>15:00<svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg><b class="tnum">19°</b></div><div>16:00<svg class="ic " aria-hidden="true"><use href="#i-cloudsun"/></svg><b class="tnum">18°</b></div></div>
+</div><nav class="tabbar" aria-hidden="true"><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-clock"/></svg></div>Saat</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-moon"/></svg></div>Vakitler</div><div class="tab on"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg></div>Hava</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-cal"/></svg></div>Takvim</div><div class="tab"><div class="pill"><svg class="ic " aria-hidden="true"><use href="#i-all"/></svg></div>Tümü</div></nav></div></div></div></div>
+  <div class="notes"><h3>Hava</h3><ul><li>Boyalı gök: bulutlar yumuşak dairelerden, yazıya binmez; Güneş gerçek konumunda.</li><li>Sıcaklık Literata 88; emoji yerine çizim.</li><li>Ölçümler sahneden çıkıp kâğıt karta iner; çizgi simgeli ve sözlü yorumlu.</li><li>Uyarı tek altın hap. Koyu temada gündüz göğü karartılmış mavidir, gece değil.</li></ul><p class="src">AnimatedBackground.kt:268 clouds, WeatherScreen.kt · AnimatedBackground.swift, WeatherView.swift</p></div>
+</div>
+</section>
+
+<section id="belirtecler">
+  <header><p class="eyebrow">3 · BELİRTEÇLER</p><h2>Renk, yazı, boşluk, hareket</h2>
+  <p class="muted">Bütün yazı renkleri iki temada ≥4,5:1. Bugünkü 24 uygulama rengi ve 8 atmosfer bu taban renklerin üstünde çalışmaya devam eder.</p></header>
+  
+<div class="tok-grid">
+  <div class="panel"><div class="sw-head" style="background:#F6F0E4;color:#2B2520"><b>Kâğıt (açık)</b></div><table class="sw-table"><tbody><tr><td><div class="chipc" style="background:#F6F0E4"></div></td><td><b>bg</b> <span class="muted">zemin</span></td><td class="hex">#F6F0E4</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#FFFBF4"></div></td><td><b>surface</b> <span class="muted">kart</span></td><td class="hex">#FFFBF4</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#EDE4D3"></div></td><td><b>surface2</b> <span class="muted">çukur, iz</span></td><td class="hex">#EDE4D3</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#E2D6C1"></div></td><td><b>line</b> <span class="muted">ince çizgi</span></td><td class="hex">#E2D6C1</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#2B2520"></div></td><td><b>text</b> <span class="muted">yazı</span></td><td class="hex">#2B2520</td><td class="cr">13,3:1</td></tr><tr><td><div class="chipc" style="background:#6A5F55"></div></td><td><b>muted</b> <span class="muted">soluk yazı</span></td><td class="hex">#6A5F55</td><td class="cr">5,5:1</td></tr><tr><td><div class="chipc" style="background:#A89A88"></div></td><td><b>faint</b> <span class="muted">yalnız süs</span></td><td class="hex">#A89A88</td><td class="cr">yazıda yok</td></tr><tr><td><div class="chipc" style="background:#9A3F00"></div></td><td><b>accent</b> <span class="muted">kiremit</span></td><td class="hex">#9A3F00</td><td class="cr">6,0:1</td></tr><tr><td><div class="chipc" style="background:#F3E1CC"></div></td><td><b>accentSoft</b> <span class="muted">seçili zemin</span></td><td class="hex">#F3E1CC</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#835A0D"></div></td><td><b>gold</b> <span class="muted">altın</span></td><td class="hex">#835A0D</td><td class="cr">5,4:1</td></tr><tr><td><div class="chipc" style="background:#4A6B47"></div></td><td><b>sage</b> <span class="muted">adaçayı</span></td><td class="hex">#4A6B47</td><td class="cr">5,3:1</td></tr><tr><td><div class="chipc" style="background:#3A6889"></div></td><td><b>sky</b> <span class="muted">gök</span></td><td class="hex">#3A6889</td><td class="cr">5,3:1</td></tr><tr><td><div class="chipc" style="background:#7A4760"></div></td><td><b>dusk</b> <span class="muted">akşam moru</span></td><td class="hex">#7A4760</td><td class="cr">6,4:1</td></tr><tr><td><div class="chipc" style="background:#2E6A39"></div></td><td><b>ok</b> <span class="muted">başarı</span></td><td class="hex">#2E6A39</td><td class="cr">5,7:1</td></tr><tr><td><div class="chipc" style="background:#A3311B"></div></td><td><b>err</b> <span class="muted">hata</span></td><td class="hex">#A3311B</td><td class="cr">6,1:1</td></tr></tbody></table><p class="muted" style="font-size:13px">Sağdaki sayı: zemine karşı karşıtlık.</p></div>
+  <div class="panel"><div class="sw-head" style="background:#14151C;color:#F1EADF"><b>Gece, lamba ışığı (koyu)</b></div><table class="sw-table"><tbody><tr><td><div class="chipc" style="background:#14151C"></div></td><td><b>bg</b> <span class="muted">zemin</span></td><td class="hex">#14151C</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#1D1E27"></div></td><td><b>surface</b> <span class="muted">kart</span></td><td class="hex">#1D1E27</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#272834"></div></td><td><b>surface2</b> <span class="muted">çukur, iz</span></td><td class="hex">#272834</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#343542"></div></td><td><b>line</b> <span class="muted">ince çizgi</span></td><td class="hex">#343542</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#F1EADF"></div></td><td><b>text</b> <span class="muted">yazı</span></td><td class="hex">#F1EADF</td><td class="cr">15,2:1</td></tr><tr><td><div class="chipc" style="background:#B4AA9B"></div></td><td><b>muted</b> <span class="muted">soluk yazı</span></td><td class="hex">#B4AA9B</td><td class="cr">7,9:1</td></tr><tr><td><div class="chipc" style="background:#6E675E"></div></td><td><b>faint</b> <span class="muted">yalnız süs</span></td><td class="hex">#6E675E</td><td class="cr">yazıda yok</td></tr><tr><td><div class="chipc" style="background:#F2A65A"></div></td><td><b>accent</b> <span class="muted">lamba turuncusu</span></td><td class="hex">#F2A65A</td><td class="cr">9,0:1</td></tr><tr><td><div class="chipc" style="background:#3B2A1C"></div></td><td><b>accentSoft</b> <span class="muted">seçili zemin</span></td><td class="hex">#3B2A1C</td><td class="cr"></td></tr><tr><td><div class="chipc" style="background:#E2B65C"></div></td><td><b>gold</b> <span class="muted">altın</span></td><td class="hex">#E2B65C</td><td class="cr">9,6:1</td></tr><tr><td><div class="chipc" style="background:#9CC294"></div></td><td><b>sage</b> <span class="muted">adaçayı</span></td><td class="hex">#9CC294</td><td class="cr">9,2:1</td></tr><tr><td><div class="chipc" style="background:#8DB8DA"></div></td><td><b>sky</b> <span class="muted">gök</span></td><td class="hex">#8DB8DA</td><td class="cr">8,7:1</td></tr><tr><td><div class="chipc" style="background:#D69BB5"></div></td><td><b>dusk</b> <span class="muted">akşam moru</span></td><td class="hex">#D69BB5</td><td class="cr">8,0:1</td></tr><tr><td><div class="chipc" style="background:#8FD3A0"></div></td><td><b>ok</b> <span class="muted">başarı</span></td><td class="hex">#8FD3A0</td><td class="cr">10,4:1</td></tr><tr><td><div class="chipc" style="background:#FF9F8A"></div></td><td><b>err</b> <span class="muted">hata</span></td><td class="hex">#FF9F8A</td><td class="cr">9,2:1</td></tr></tbody></table><p class="muted" style="font-size:13px">Sağdaki sayı: zemine karşı karşıtlık.</p></div>
+</div>
+<div class="tok-grid">
+  <div class="panel"><h3>Gün ışığı (sayfa üstü)</h3><p class="muted" style="font-size:14px">Seçili yerde Güneş'in yüksekliğine göre. Bu tonların üstünde soluk yazı bile ≥4,5:1.</p>
+    <div class="strip"><div style="background:linear-gradient(180deg,#F8E4D6,#F6F0E4);color:#2B2520">Şafak<br>#F8E4D6</div><div style="background:linear-gradient(180deg,#E9EFF0,#F6F0E4);color:#2B2520">Sabah, öğle<br>#E9EFF0</div><div style="background:linear-gradient(180deg,#F6E3C4,#F6F0E4);color:#2B2520">İkindi<br>#F6E3C4</div><div style="background:linear-gradient(180deg,#EEDDE4,#F6F0E4);color:#2B2520">Akşam<br>#EEDDE4</div><div style="background:linear-gradient(180deg,#E3E4EE,#F6F0E4);color:#2B2520">Gece<br>#E3E4EE</div></div><div class="strip"><div style="background:linear-gradient(180deg,#2A1E2C,#14151C);color:#F1EADF">Şafak<br>#2A1E2C</div><div style="background:linear-gradient(180deg,#172230,#14151C);color:#F1EADF">Sabah, öğle<br>#172230</div><div style="background:linear-gradient(180deg,#2A2118,#14151C);color:#F1EADF">İkindi<br>#2A2118</div><div style="background:linear-gradient(180deg,#271B2C,#14151C);color:#F1EADF">Akşam<br>#271B2C</div><div style="background:linear-gradient(180deg,#12131C,#14151C);color:#F1EADF">Gece<br>#12131C</div></div></div>
+  <div class="panel"><h3>Vakit sayacı gökleri</h3><p class="muted" style="font-size:14px">Açık gökte mürekkep, koyu gökte krem yazı; en düşük karşıtlık 5,2:1.</p>
+    <div class="strip"><div style="background:linear-gradient(180deg,#1F2240,#3B3762);color:#FFF8EC">Gece</div><div style="background:linear-gradient(180deg,#2E2C55,#8A5A78);color:#FFF8EC">Şafak</div><div style="background:linear-gradient(180deg,#A9C9DF,#F2E6CC);color:#2B2520">Sabah</div><div style="background:linear-gradient(180deg,#9CC4E0,#E3EEF2);color:#2B2520">Öğle</div><div style="background:linear-gradient(180deg,#E0B577,#F5E3BF);color:#2B2520">İkindi</div><div style="background:linear-gradient(180deg,#46305A,#8E4B4E);color:#FFF8EC">Akşam</div></div></div>
+</div>
+<div class="tok-grid">
+  <div class="panel"><h3>Yazı</h3>
+    <div class="type-row"><span style="font:600 30px/36px var(--font-title);letter-spacing:-.01em">Vakitler</span><span class="spec">Sayfa başlığı · Literata 30/36 · 600</span></div>
+    <div class="type-row"><span style="font:500 19px/24px var(--font-title)">Süre ve alarm</span><span class="spec">Bölüm başlığı · Literata 19/24 · 500</span></div>
+    <div class="type-row"><span style="font:500 17px/22px var(--font-app)">Sıradaki alarm</span><span class="spec">Kart başlığı · sistem 17/22 · 500</span></div>
+    <div class="type-row"><span style="font:400 16px/24px var(--font-app)">Alarm, telefon sessizdeyken de çalar.</span><span class="spec">Gövde · sistem 16/24 (iOS 17/22) · 400</span></div>
+    <div class="type-row"><span style="font:400 14px/20px var(--font-app);color:var(--muted)">Kayıt yalnız telefonda kalır.</span><span class="spec">Açıklama · sistem 14/20 · 400 · muted</span></div>
+    <div class="type-row"><span class="tnum" style="font:300 56px/1 var(--font-app);letter-spacing:-.01em">02:31:27</span><span class="spec">Büyük sayaç · sistem 56–88 · 300 · tnum</span></div>
+    <div class="type-row"><span class="tnum" style="font:500 56px/1 var(--font-title);letter-spacing:-.02em">4 · 18°</span><span class="spec">Tarih rakamı, sıcaklık · Literata 40–96 · 500 · tnum</span></div>
+    <p class="muted" style="font-size:13px">Literata (SIL OFL 1.1): Latin, Latin Ext, Kiril, Yunan, Vietnam; tablo rakamı (tnum) var. Arapça, Urduca, Farsça, Japonca, Korece, Çince, Tayca, Hintçede başlıklar sistem yazısında.</p>
+  </div>
+  <div class="panel"><h3>Boşluk ve köşe</h3><div class="space-row"><i style="width:12px"></i>4</div><div class="space-row"><i style="width:24px"></i>8</div><div class="space-row"><i style="width:36px"></i>12</div><div class="space-row"><i style="width:48px"></i>16</div><div class="space-row"><i style="width:60px"></i>20</div><div class="space-row"><i style="width:72px"></i>24</div><div class="space-row"><i style="width:96px"></i>32</div><div class="space-row"><i style="width:144px"></i>48</div>
+    <p class="muted" style="font-size:13px">Sayfa kenarı 20 · kart içi 20 · ilgili öğeler 8–12 · ayrı konular 24–32 · satır en az 52 · dokunma 48 dp / 44 pt.</p>
+    <div class="radii"><div style="border-radius:8px">8</div><div style="border-radius:12px">12</div><div style="border-radius:16px">16</div><div style="border-radius:22px">22</div><div style="border-radius:28px">28</div><div style="border-radius:999px">hap</div><div style="border-radius:46% 54% 50% 48% / 52% 46% 54% 48%">çakıl</div></div></div>
+  <div class="panel sunken"><h3>Yükseklik</h3>
+    <div class="elev"><div class="e0">e0 · düz</div><div class="e1">e1 · kart</div><div class="e2">e2 · öne çıkan</div></div>
+    <p class="muted" style="font-size:13px">Açıkta sıcak, yumuşak gölge (kahve tonlu, %6–10). Koyuda gölge yok; kart bir ton açık, üst kenarda %5 ışık çizgisi. Kenarlık yalnız giriş alanlarında.</p></div>
+  <div class="panel"><h3>Hareket</h3>
+    <div class="motion-demo" id="motion">
+      <div class="track t1"><i></i></div><div class="track t2"><i></i></div><div class="track t3"><i></i></div><div class="track t4"><i></i></div>
+      <button class="btn" type="button" id="motion-btn"><svg class="ic " aria-hidden="true"><use href="#i-play"/></svg>Oynat</button>
+    </div>
+    <p class="muted" style="font-size:13px">150 ms basma · 250 ms kart ve sekme · 400 ms sayfa · 1.200 ms gökyüzü. Eğri cubic-bezier(0.2, 0.8, 0.2, 1). Basınca %97'ye küçülme. "Hareketi azalt" açıksa yalnız soluklaşma.</p></div>
+</div>
+<div class="tok-grid">
+  <div class="panel"><h3>Kendi çizgi simgelerimiz</h3><p class="muted" style="font-size:14px">24×24, 1,75 çizgi, yuvarlak uç; tek ayrıntı ikinci renkte (altın). Bugünkü <code>icons.json</code> (24 simge) bu kurallarla ~64'e çıkar.</p>
+    <div class="icons"><figure><svg class="ic " aria-hidden="true"><use href="#i-clock"/></svg><figcaption>clock</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-moon"/></svg><figcaption>moon</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-sun"/></svg><figcaption>sun</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-cal"/></svg><figcaption>cal</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-all"/></svg><figcaption>all</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-bell"/></svg><figcaption>bell</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-pin"/></svg><figcaption>pin</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-search"/></svg><figcaption>search</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-gear"/></svg><figcaption>gear</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-alarm"/></svg><figcaption>alarm</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-hourglass"/></svg><figcaption>hourglass</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-stopwatch"/></svg><figcaption>stopwatch</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-pomo"/></svg><figcaption>pomo</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-study"/></svg><figcaption>study</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-bed"/></svg><figcaption>bed</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-wind"/></svg><figcaption>wind</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-leafcal"/></svg><figcaption>leafcal</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-people"/></svg><figcaption>people</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-sunrise"/></svg><figcaption>sunrise</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-globe"/></svg><figcaption>globe</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-leaf"/></svg><figcaption>leaf</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-moonphase"/></svg><figcaption>moonphase</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-stars"/></svg><figcaption>stars</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-compass"/></svg><figcaption>compass</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-quran"/></svg><figcaption>quran</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-beads"/></svg><figcaption>beads</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-arch"/></svg><figcaption>arch</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-check"/></svg><figcaption>check</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-imsak"/></svg><figcaption>imsak</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-gunes"/></svg><figcaption>gunes</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-ogle"/></svg><figcaption>ogle</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-ikindi"/></svg><figcaption>ikindi</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-aksam"/></svg><figcaption>aksam</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-yatsi"/></svg><figcaption>yatsi</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-cloudsun"/></svg><figcaption>cloudsun</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-drop"/></svg><figcaption>drop</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-storm"/></svg><figcaption>storm</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-umbrella"/></svg><figcaption>umbrella</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-gauge"/></svg><figcaption>gauge</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-share"/></svg><figcaption>share</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-lock"/></svg><figcaption>lock</figcaption></figure><figure><svg class="ic " aria-hidden="true"><use href="#i-palette"/></svg><figcaption>palette</figcaption></figure></div></div>
+  <div class="panel"><h3>Emoji yerine çizim</h3><div class="swap"><div><span>📍</span><span class="arrow">→</span><svg class="ic " aria-hidden="true"><use href="#i-pin"/></svg></div><div><span>🍅</span><span class="arrow">→</span><svg class="ic " aria-hidden="true"><use href="#i-pomo"/></svg></div><div><span>🔒</span><span class="arrow">→</span><svg class="ic " aria-hidden="true"><use href="#i-lock"/></svg></div><div><span>🕓</span><span class="arrow">→</span><svg class="ic " aria-hidden="true"><use href="#i-clock"/></svg></div><div><span>📤</span><span class="arrow">→</span><svg class="ic " aria-hidden="true"><use href="#i-share"/></svg></div><div><span>⛅</span><span class="arrow">→</span><svg class="ic " aria-hidden="true"><use href="#i-cloudsun"/></svg></div><div><span>🕋</span><span class="arrow">→</span><svg class="ic " aria-hidden="true"><use href="#i-compass"/></svg></div><div><span>📅</span><span class="arrow">→</span><svg class="ic " aria-hidden="true"><use href="#i-cal"/></svg></div></div>
+    <h3 style="margin-top:8px">Ölçülü motif</h3>
+    <div class="motif"><svg viewBox="-60 -60 120 120" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="-38" y="-38" width="76" height="76"/><rect x="-38" y="-38" width="76" height="76" transform="rotate(45)"/><circle r="22"/><circle r="52"/></g></svg><div style="display:grid;gap:6px;font-size:14px"><p>8 köşeli yıldız (hatem), %6–10 saydam, ince çizgi, hiç oynamaz.</p><p class="muted">Yalnız ibadet ekranları, vakit sayacı köşesi, Kur'an ve dua başlıkları, tebrik kartları. Kur'an metninin arkasına, alt çubuğa, oyun ve rozet ekranlarına konmaz. Hat taklidi yok.</p></div></div>
+  </div>
+</div>
+</section>
+
+<section id="sira">
+  <header><p class="eyebrow">4 · SIRA</p><h2>Önce ne yapılır?</h2>
+  <p class="muted">K küçük, O orta, B büyük. Her madde Android ve iOS'ta birlikte.</p></header>
+  <div class="tok-grid">
+<div class="panel prio"><h3>P1 · en az işle en çok etki</h3><ol><li><b>Renk belirteçlerini ısıt</b><span class="k">K</span><span class="f">Theme.kt (AccentPalette.colors) · Theme.swift · src/styles.css</span></li><li><b>Kartları kâğıt yap: kenarlık yok, köşe 22, yumuşak gölge</b><span class="k">K</span><span class="f">Common.kt AppCard (50 yer) · Format.swift .card() (63 yer)</span></li><li><b>Yazıyı yumuşat: Literata başlıklar, yarı kalın yerine orta</b><span class="k">K/O</span><span class="f">Components.kt PageTitle, Common.kt SectionTitle/SubBar/Row2 · Components.swift, Format.swift, ToolsTab.swift</span></li><li><b>Emoji ve dolu simgeler yerine kendi çizgimiz; simge kutusu çakıl taşı</b><span class="k">O</span><span class="f">icons.json · LineIcons.kt/.swift · TabBar, AllScreen/AllView, PrayerScreen/PrayerTab, IconBox</span></li><li><b>Yumuşak bölmeli seçici ve anahtar</b><span class="k">K</span><span class="f">Components.kt SoftSegmented/SoftSwitch (11 SegmentedButton) · Components.swift (15 segmented)</span></li><li><b>Hazır mavileri doğaya çevir: vakit gökleri, dünya saati kutuları, aralık evreleri</b><span class="k">K</span><span class="f">WorshipExtras.kt:322 · WorldScreen.kt:121 · ToolVisuals.kt · WorshipExtras.swift:312 · WorldSeasons.swift:202</span></li></ol>
+<p class="muted" style="font-size:14px">1–3 birlikte tek gönderimde: bütün ekranlar aynı anda ısınır, ekran görüntüsü testleri bir kez yenilenir.</p></div>
+<div class="panel prio"><h3>P2 · düzen ve atmosfer</h3><ol start="7">
+<li><b>"Gün ışığı" otomatik atmosferi</b><span class="k">O</span></li><li><b>Kâğıt dokusu (%4 gren, kodla)</b><span class="k">K</span></li>
+<li><b>Klasik kadranı yumuşat</b><span class="k">O</span></li><li><b>Hava sahnesi: yumuşak bulut, yazıya binmez</b><span class="k">O</span></li>
+<li><b>Araç görselleri: ince halka, çizim domates, temaya uyan pasta</b><span class="k">K</span></li><li><b>Hareket belirteçleri</b><span class="k">O</span></li>
+<li><b>Ekran düzeni: tek hizalama, kısa açıklama</b><span class="k">O</span></li><li><b>Site: belirteç, Literata (kendi sunucumuzdan), gren</b><span class="k">K/O</span></li></ol>
+<h3 style="margin-top:6px">P3 · karakter</h3><ol start="15">
+<li><b>Hatem ve mihrap kemeri bileşeni</b><span class="k">K/O</span></li><li><b>Kur'an ve dua için Amiri (OFL)</b><span class="k">O</span></li>
+<li><b>Namaz rehberinde yumuşak silüet</b><span class="k">O/B</span></li><li><b>Boş durum ve ilk açılış çizimleri</b><span class="k">B</span></li>
+<li><b>Widget'lar</b><span class="k">O</span></li><li><b>Mağaza görselleri</b><span class="k">K</span></li></ol></div>
+</div>
+</section>
+
+<footer>
+  <p>Kod değişmedi; bu sayfa yalnız öneridir. Görseller kodla çizildi; rakip görseli ve lisanslı görsel kullanılmadı.</p>
+  <p>Yazı tipleri: Literata ve Roboto (SIL OFL 1.1), bu sayfada Google Fonts'tan; uygulamada ve sitede kendi dosyamızdan sunulur.</p>
+</footer>
+</div>
+<script>
+(function () {
+  var root = document.documentElement;
+  var btn = document.getElementById('theme-btn');
+  function setTheme(t) {
+    root.setAttribute('data-theme', t);
+    btn.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+    btn.querySelector('span').textContent = t === 'dark' ? 'Açık tema' : 'Koyu tema';
+    try { localStorage.setItem('dogal-tema', t); } catch (e) {}
+  }
+  var saved = null; try { saved = localStorage.getItem('dogal-tema'); } catch (e) {}
+  setTheme(saved === 'dark' ? 'dark' : 'light');
+  btn.addEventListener('click', function () { setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'); });
+
+  // Telefon çizimlerini kutuya sığdır (390 x 866 çizim alanı)
+  var slots = Array.prototype.slice.call(document.querySelectorAll('.slot'));
+  function fit(s) { s.style.setProperty('--k', (s.clientWidth / 390).toFixed(4)); }
+  slots.forEach(fit);
+  if ('ResizeObserver' in window) { var ro = new ResizeObserver(function (es) { es.forEach(function (e) { fit(e.target); }); }); slots.forEach(function (s) { ro.observe(s); }); }
+  else window.addEventListener('resize', function () { slots.forEach(fit); });
+
+  // Günün saati
+  var TOD = {
+    safak:  { label: "Güneş'in doğuşuna", count: '00:48:12', sub: '07:31 · İstanbul', next: 1, hm: [6, 43] },
+    sabah:  { label: 'Öğle vaktine', count: '02:31:27', sub: '12:53 · İstanbul', next: 2, hm: [10, 21] },
+    ogle:   { label: 'İkindi vaktine', count: '01:12:40', sub: '15:38 · İstanbul', next: 3, hm: [14, 25] },
+    ikindi: { label: 'Akşam vaktine', count: '00:54:03', sub: '18:04 · İstanbul', next: 4, hm: [17, 10] },
+    aksam:  { label: 'Yatsı vaktine', count: '00:37:18', sub: '19:26 · İstanbul', next: 5, hm: [18, 49] },
+    gece:   { label: 'İmsak vaktine', count: '05:16:55', sub: '06:05 · İstanbul', next: 0, hm: [0, 48] }
+  };
+  var secs = 0;
+  function toSec(t) { var p = t.split(':').map(Number); return p[0] * 3600 + p[1] * 60 + p[2]; }
+  function fmt(s) { s = Math.max(0, s); var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return [h, m, x].map(function (v) { return (v < 10 ? '0' : '') + v; }).join(':'); }
+  var current = 'sabah';
+  function setTod(k) {
+    current = k; var d = TOD[k];
+    document.body.setAttribute('data-tod', k);
+    document.querySelectorAll('.tod .chip').forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.tod === k ? 'true' : 'false'); });
+    document.getElementById('vk-label').textContent = d.label;
+    document.getElementById('vk-sub').textContent = d.sub;
+    secs = toSec(d.count); document.getElementById('vk-count').textContent = d.count;
+    var done = 0;
+    document.querySelectorAll('.pt-row').forEach(function (r) {
+      var i = Number(r.dataset.i);
+      var isDone = i !== 1 && i !== d.next && (d.next === 0 || i < d.next);
+      r.classList.toggle('next', i === d.next);
+      r.classList.toggle('done', isDone);
+      if (isDone) done++;
+    });
+    document.getElementById('vk-done').textContent = done + '/5 kılındı';
+    document.getElementById('vk-ring').setAttribute('stroke-dasharray', (66 * done / 5).toFixed(1) + ' 66');
+    tick();
+  }
+  document.querySelectorAll('.tod .chip').forEach(function (c) { c.addEventListener('click', function () { setTod(c.dataset.tod); }); });
+
+  function rot(id, deg) { var e = document.getElementById(id); if (e) e.setAttribute('transform', 'rotate(' + deg.toFixed(2) + ')'); }
+  function tick() {
+    var now = new Date(), s = now.getSeconds();
+    var hm = TOD[current].hm, h = hm[0], m = hm[1];
+    rot('h-hour', ((h % 12) + m / 60) * 30);
+    rot('h-min', (m + s / 60) * 6);
+    rot('h-sec', s * 6);
+  }
+  setTod('sabah');
+  setInterval(function () { secs = Math.max(0, secs - 1); document.getElementById('vk-count').textContent = fmt(secs); tick(); }, 1000);
+
+  var mb = document.getElementById('motion-btn'), md = document.getElementById('motion');
+  mb.addEventListener('click', function () { md.classList.toggle('go'); });
+})();
+</script>
+</body>
+</html>

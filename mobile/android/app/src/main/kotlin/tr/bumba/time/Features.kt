@@ -127,7 +127,8 @@ object Features {
      * Tümü'nden açılırsa çubuk değişmez; sayfa üstte geri düğmesiyle açılır (2. analiz #203).
      */
     fun barTabs(): List<Tab> =
-        if (enabled.isEmpty()) listOf(Tab.CLOCK)
+        // Tümü her zaman çubukta (4 Kasım 2026: Ayarlar saat ekranındaki dişliden Tümü'ye taşındı)
+        if (enabled.isEmpty()) listOf(Tab.CLOCK, Tab.TOOLS)
         else listOf(Tab.CLOCK) + bar.filter { isOn(it) }.take(BAR_MAX) + Tab.TOOLS
 
     /** Çubuktaki ad: Araçlar sekmesi "Tümü" olarak görünür */
