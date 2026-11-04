@@ -111,6 +111,8 @@ fun ToolsScreen(route: String?, onRoute: (String?) -> Unit) {
         "moon" -> Page(L("moon.calendarLink"), onRoute) { MoonScreen() }
         "sky" -> Page(L("sky.h1"), onRoute) { SkyScreen() }
         "sunpath" -> Page(L("sunpath.title"), onRoute) { SunPathScreen() }
+        // Sitedeki dokuz araç (4 Kasım 2026)
+        in SITE_TOOL_TITLES.keys -> Page(L(SITE_TOOL_TITLES.getValue(route!!)), onRoute) { SiteToolScreen(route) }
         else -> if (route?.startsWith("quran:") == true) QuranScreen(route.removePrefix("quran:").toIntOrNull()) { onRoute(null) }
             else AllScreen(onRoute)
     }

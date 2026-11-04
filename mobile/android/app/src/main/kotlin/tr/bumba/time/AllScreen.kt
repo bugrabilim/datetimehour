@@ -23,6 +23,15 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.filled.Air
+import androidx.compose.material.icons.filled.Stars
+import androidx.compose.material.icons.filled.Elderly
+import androidx.compose.material.icons.filled.BeachAccess
+import androidx.compose.material.icons.filled.MoreTime
+import androidx.compose.material.icons.filled.EmojiPeople
+import androidx.compose.material.icons.filled.Quiz
+import androidx.compose.material.icons.filled.RecordVoiceOver
+import androidx.compose.material.icons.filled.MusicNote
+import androidx.compose.material.icons.filled.Games
 import androidx.compose.material.icons.filled.Alarm
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Article
@@ -121,17 +130,28 @@ object AllPrefs {
         AllEntry("sleep", "sleep.title", Icons.Filled.Bedtime, AllCat.TIME, Tab.TOOLS, route = "sleep"),
         AllEntry("wakeGame", "wakegame.title", Icons.Filled.EmojiNature, AllCat.TIME, Tab.TOOLS, route = "wakeGame"),
         AllEntry("breath", "breath.title", Icons.Filled.Air, AllCat.TIME, Tab.TOOLS, route = "breath"),
+        // Sitedeki araçlar (4 Kasım 2026)
+        AllEntry("chess", "chess.h1", Icons.Filled.Games, AllCat.TIME, Tab.TOOLS, route = "chess"),
+        AllEntry("metronome", "metronome.h1", Icons.Filled.MusicNote, AllCat.TIME, Tab.TOOLS, route = "metronome", words = "metronome.bpm"),
+        AllEntry("talking", "talking.h1", Icons.Filled.RecordVoiceOver, AllCat.TIME, Tab.TOOLS, route = "talking"),
+        AllEntry("exam", "examTimer.h1", Icons.Filled.Quiz, AllCat.TIME, Tab.TOOLS, route = "exam"),
+        AllEntry("classroom", "classroom.h1", Icons.Filled.EmojiPeople, AllCat.TIME, Tab.TOOLS, route = "classroom",
+            words = "classroom.tabPicker classroom.tabTeams classroom.tabCounter"),
+        AllEntry("timecalc", "timeCalc.h1", Icons.Filled.MoreTime, AllCat.TIME, Tab.TOOLS, route = "timecalc"),
         AllEntry("calendar", "tab.calendar", Icons.Filled.CalendarMonth, AllCat.PLAN, Tab.CALENDAR, tab = Tab.CALENDAR),
         AllEntry("leaf", "leaf.title", Icons.Filled.Article, AllCat.PLAN, Tab.CALENDAR, route = "leaf"),
         AllEntry("datecalc", "tools.hub.cards.datecalc.name", Icons.Filled.EditCalendar, AllCat.PLAN, Tab.TOOLS, route = "datecalc"),
         AllEntry("planner", "planner.h1", Icons.Filled.Groups, AllCat.PLAN, Tab.TOOLS, route = "planner"),
         AllEntry("journal", "journal.title", Icons.Filled.WbTwilight, AllCat.PLAN, Tab.TOOLS, route = "journal"),
+        AllEntry("bridge", "bridge.h1", Icons.Filled.BeachAccess, AllCat.PLAN, Tab.TOOLS, route = "bridge"),
+        AllEntry("retire", "retire.h1", Icons.Filled.Elderly, AllCat.PLAN, Tab.TOOLS, route = "retire"),
         AllEntry("weather", "tab.weather", Icons.Filled.WbSunny, AllCat.SKY, Tab.WEATHER, tab = Tab.WEATHER),
         AllEntry("world", "tab.world", Icons.Filled.Public, AllCat.SKY, Tab.WORLD, tab = Tab.WORLD),
         AllEntry("seasons", "tab.seasons", Icons.Filled.Eco, AllCat.SKY, Tab.SEASONS, tab = Tab.SEASONS),
         AllEntry("moon", "moon.calendarLink", Icons.Filled.Brightness3, AllCat.SKY, Tab.SEASONS, route = "moon"),
         AllEntry("sky", "sky.h1", Icons.Filled.AutoAwesome, AllCat.SKY, Tab.SEASONS, route = "sky", words = "sky.eventsHeading sky.constellations sky.tonightHeading"),
         AllEntry("sunpath", "sunpath.title", Icons.Filled.WbTwilight, AllCat.SKY, Tab.SEASONS, route = "sunpath"),
+        AllEntry("zodiac", "zodiac.h1", Icons.Filled.Stars, AllCat.SKY, Tab.TOOLS, route = "zodiac"),
         AllEntry("prayer", "tab.prayer", Icons.Filled.DarkMode, AllCat.FAITH, Tab.PRAYER, tab = Tab.PRAYER),
         AllEntry("qibla", "qibla.title", Icons.Filled.Explore, AllCat.FAITH, Tab.PRAYER, route = "qibla"),
         AllEntry("quran", "quran.title", Icons.AutoMirrored.Filled.MenuBook, AllCat.FAITH, Tab.PRAYER, route = "quran"),
@@ -164,7 +184,8 @@ object AllPrefs {
         AllEntry("s:shareQr", "support.qr", Icons.Filled.QrCode2, AllCat.MORE, null, route = "shareQr"),
     )
 
-    fun visible(e: AllEntry) = e.feature == null || Features.isOn(e.feature)
+    /** Emeklilik hesabı yalnız Türkçe arayüzde (Türkiye mevzuatı, metni Türkçe) */
+    fun visible(e: AllEntry) = (e.feature == null || Features.isOn(e.feature)) && (e.id != "retire" || Strings.lang == "tr")
 
     fun byId(id: String) = (entries + settings).firstOrNull { it.id == id }
 

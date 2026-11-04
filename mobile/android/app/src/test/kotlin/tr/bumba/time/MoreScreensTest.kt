@@ -546,6 +546,17 @@ class MoreScreensTest {
         }
     }
 
+    /** Sitedeki dokuz araç uygulamada (4 Kasım 2026) */
+    @Test fun siteTools() {
+        RuntimeEnvironment.setQualifiers("+tr")
+        Prefs.store.edit().putString(Classroom.KEY, """{"tab":"picker","names":"Ayşe\nMehmet\nZeynep\nAli","picked":"Zeynep","remove":true}""")
+            .putString("exam", """{"name":"Matematik 1. yazılı","room":"9-A","read":10,"dur":40,"start":0}""").commit()
+        for ((r, name) in listOf("chess" to "satranc", "metronome" to "metronom", "talking" to "konusan-saat", "zodiac" to "burc",
+            "timecalc" to "saat-hesaplama", "bridge" to "kopru-tatil", "retire" to "emeklilik", "exam" to "sinav", "classroom" to "sinif"))
+            page("tr-$name", L(SITE_TOOL_TITLES.getValue(r))) { SiteToolScreen(r) }
+        Prefs.store.edit().remove(Classroom.KEY).remove("exam").commit()
+    }
+
     @Test fun ownerScreens() {
         shot("tr-destek") {
             Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) { FontScaleCard(); SupportCard {} }
