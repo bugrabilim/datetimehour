@@ -4,13 +4,14 @@ import SwiftUI
    rakamsız pasta zamanlayıcı ve kum saati, kilit (çocuk modu). Android'deki ToolVisuals.kt ile aynı çizim. */
 
 enum PhaseColors {
-    /// Aralık antrenmanında evre rengi: çalış yeşil, dinlen kırmızı, ısın turuncu, bitti mavi
+    /// Aralık antrenmanında evre rengi (doğal tasarım 4 Kasım 2026, yumuşak doğa tonları): çalış yaprak yeşili, dinlen
+    /// kiremit, ısın hardal, bitti gök mavisi; üstündeki beyaz yazı ≥4,5:1. Android'deki PhaseColors ile aynı.
     static func of(_ kind: String) -> Color {
         switch kind {
-        case "work": return Color(red: 0.18, green: 0.62, blue: 0.36)
-        case "rest": return Color(red: 0.85, green: 0.27, blue: 0.23)
-        case "warmup": return Color(red: 0.88, green: 0.54, blue: 0.12)
-        default: return Color(red: 0.16, green: 0.47, blue: 0.85)
+        case "work": return Color(red: 0.247, green: 0.478, blue: 0.310)
+        case "rest": return Color(red: 0.706, green: 0.325, blue: 0.165)
+        case "warmup": return Color(red: 0.604, green: 0.416, blue: 0.071)
+        default: return Color(red: 0.227, green: 0.408, blue: 0.537)
         }
     }
 

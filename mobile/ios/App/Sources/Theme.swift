@@ -1,29 +1,40 @@
 import SwiftUI
 import UIKit
 
-/// Sitedeki renk token'ları (src/styles.css): açık "kâğıt" ve koyu "gece" paleti.
+/// Sitedeki renk token'ları (src/styles.css): açık "kâğıt" ve koyu "gece" paleti. 4 Kasım 2026'dan beri doğal tasarımın
+/// sıcak taban renkleri (docs/dogal-tasarim, bölüm 3.1; sahibin onayı): krem kâğıt, sıcak gece, kahve tonlu yazı.
 /// Uygulama teması kullanıcı seçimidir (Ayarlar › Uygulama rengi, `accent` anahtarı): her tema bir ana renk,
 /// bir ikinci renk ve bir ton gücüyle gelir; zemin, kartlar, saat kadranı ve ibreler buna göre boyanır.
 /// Varsayılan temada ton yoktur (sitedeki renkler). Widget'lar varsayılanı kullanır.
 enum Theme {
     /// Zemin: atmosfer seçiliyse renk geçişinin orta tonu (düz renk isteyen yerler için; sayfa zemini AppBackdrop)
-    static var bg: Color { Atmosphere.current?.mid ?? tinted(0xF7F4EE, 0x11141A, light: 0.09, dark: 0.11) }
-    static var surface: Color { tinted(0xFFFFFF, 0x1A1E26, light: 0.04, dark: 0.07) }
+    static var bg: Color { Atmosphere.current?.mid ?? tinted(0xF6F0E4, 0x14151C, light: 0.09, dark: 0.11) }
+    static var surface: Color { tinted(0xFFFBF4, 0x1D1E27, light: 0.04, dark: 0.07) }
     /// Saat kadranı ve ikincil yüzeyler
-    static var surface2: Color { tinted(0xEFEBE2, 0x232834, light: 0.18, dark: 0.20) }
-    static let text = dynamic(light: 0x1B1F27, dark: 0xEEF0F4)
-    static let muted = dynamic(light: 0x565C68, dark: 0xA5ACB9)
-    static var border: Color { tinted(0xD6CFBF, 0x343B49, light: 0.35, dark: 0.35) }
+    static var surface2: Color { tinted(0xEDE4D3, 0x272834, light: 0.18, dark: 0.20) }
+    static let text = dynamic(light: 0x2B2520, dark: 0xF1EADF)
+    static let muted = dynamic(light: 0x6A5F55, dark: 0xB4AA9B)
+    /// Süs rengi (ayraç noktaları, soluk çizimler): yazıda kullanılmaz
+    static let faint = dynamic(light: 0xA89A88, dark: 0x6E675E)
+    static var border: Color { tinted(0xE2D6C1, 0x343542, light: 0.35, dark: 0.35) }
+    /// İnce ayraç çizgisi (doğal tasarımdaki `line`; kartlarda kenarlık yok)
+    static var line: Color { border }
     static var accent: Color { AccentPalette.current.color }
-    static var accentSoft: Color { AccentPalette.current.color.opacity(0.16) }
+    /// Ana rengin yumuşak düz tonu (saydam değil; üstündeki yazı ≥4,5:1)
+    static var accentSoft: Color {
+        let p = AccentPalette.current
+        return dynamic(light: mix(0xFFFBF4, p.light, 0.15), dark: mix(0x1D1E27, p.dark, 0.16))
+    }
+    /// Ana renkli düğmenin yazısı
+    static let onAccent = dynamic(light: 0xFFF8EF, dark: 0x1A1410)
     /// İkinci renk: saniye ibresi, saat ortası, vurgu ayrıntıları
     static var accent2: Color { AccentPalette.current.secondColor }
     /// Saat rakamları ve akrep: yazı rengi, temanın ana rengine doğru çekilmiş
-    static var ink: Color { tinted(0x1B1F27, 0xEEF0F4, light: 0.45, dark: 0.30) }
+    static var ink: Color { tinted(0x2B2520, 0xF1EADF, light: 0.45, dark: 0.30) }
     /// Hata ve başarı renkleri: sitedeki --err/--ok token'ları (2. analiz #100; iki temada ≥4,5:1)
-    static let err = dynamic(light: 0xA31D1D, dark: 0xFF9D9D)
+    static let err = dynamic(light: 0xA3311B, dark: 0xFF9F8A)
     static let errBg = dynamic(light: 0xFBE7E7, dark: 0x3A1A1A)
-    static let ok = dynamic(light: 0x176B3A, dark: 0x7FD9A1)
+    static let ok = dynamic(light: 0x2E6A39, dark: 0x8FD3A0)
     static let okBg = dynamic(light: 0xE2F3E8, dark: 0x16301F)
     /// Doğa renkleri (doğal tasarım, docs/dogal-tasarim; 4 Kasım 2026): Tümü kategorileri, tanıtım çizimleri
     static let terra = dynamic(light: 0xB4532A, dark: 0xF2A65A)
@@ -70,7 +81,7 @@ struct AccentPalette: Identifiable {
     var secondColor: Color { Theme.dynamic(light: second.light, dark: second.dark) }
     /// Bu temada saat kadranının rengi (seçicideki örnek için)
     var faceColor: Color {
-        Theme.dynamic(light: Theme.mix(0xEFEBE2, light, 0.18 * tint), dark: Theme.mix(0x232834, dark, 0.20 * tint))
+        Theme.dynamic(light: Theme.mix(0xEDE4D3, light, 0.18 * tint), dark: Theme.mix(0x272834, dark, 0.20 * tint))
     }
 
     static let defaultID = "amber"

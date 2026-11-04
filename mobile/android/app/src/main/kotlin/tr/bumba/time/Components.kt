@@ -54,7 +54,8 @@ fun EmptyState(
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Icon(icon, null, tint = Theme.c.accent.copy(alpha = 0.6f), modifier = Modifier.size(64.dp))
-        if (!title.isNullOrBlank()) Text(title, color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
+        if (!title.isNullOrBlank()) Text(title, color = Theme.c.text, fontSize = 18.sp, fontFamily = AppFonts.heading,
+            fontWeight = FontWeight.Medium, textAlign = TextAlign.Center)
         if (!text.isNullOrBlank()) Text(text, color = Theme.c.muted, fontSize = 14.sp, textAlign = TextAlign.Center)
         if (action != null && onAction != null) {
             Spacer(Modifier.size(4.dp))
@@ -62,7 +63,7 @@ fun EmptyState(
                 action,
                 Modifier.clip(RoundedCornerShape(50)).background(Theme.c.accent).clickable(onClick = onAction)
                     .padding(horizontal = 20.dp, vertical = 10.dp),
-                color = if (Theme.c.dark) Color(0xFF11141A) else Color.White, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
+                color = Theme.c.onAccent, fontSize = 15.sp, fontWeight = FontWeight.Medium,
             )
         }
     }
@@ -77,10 +78,18 @@ fun IconBox(icon: ImageVector, tint: Color = Theme.c.accent, modifier: Modifier 
     ) { Icon(icon, null, tint = tint, modifier = Modifier.size(20.dp)) }
 }
 
-/** Sekme sayfalarının büyük başlığı (#98): 28 sp kalın (Material headlineMedium) */
+/**
+ * Sekme sayfalarının büyük başlığı (#98; doğal tasarım 4 Kasım 2026): Literata 30/36, 600 (Latin ve Kiril dillerinde),
+ * diğer dillerde sistem yazısı 28/34, 600. Büyük yazı boyutunda iki satıra kırılır.
+ */
 @Composable
 fun PageTitle(text: String, modifier: Modifier = Modifier) {
-    Text(text, modifier, color = Theme.c.text, fontSize = 28.sp, fontWeight = FontWeight.Bold, maxLines = 2, overflow = TextOverflow.Ellipsis)
+    val serif = AppFonts.serif
+    Text(
+        text, modifier, color = Theme.c.text, fontFamily = AppFonts.heading, fontWeight = FontWeight.SemiBold,
+        fontSize = if (serif) 30.sp else 28.sp, lineHeight = if (serif) 36.sp else 34.sp,
+        letterSpacing = if (serif) (-0.3).sp else 0.sp, maxLines = 2, overflow = TextOverflow.Ellipsis,
+    )
 }
 
 /**

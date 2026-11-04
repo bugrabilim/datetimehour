@@ -146,9 +146,9 @@ fun RoundButton(title: String, prominent: Boolean, modifier: Modifier = Modifier
         onClick = onClick, modifier = modifier.height(52.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = if (prominent) Theme.c.accent else Theme.c.surface2,
-            contentColor = if (prominent) Theme.c.bg else Theme.c.text,
+            contentColor = if (prominent) Theme.c.onAccent else Theme.c.text,
         ),
-    ) { Text(title, fontWeight = FontWeight.SemiBold) }
+    ) { Text(title, fontWeight = FontWeight.Medium, fontSize = 16.sp) }
 }
 
 /** Ek kronometreler (rakip analizi listesi #81): her biri ayrı sayar; kayıt `stopwatches` (JSON, Unix ms; iOS'la aynı) */

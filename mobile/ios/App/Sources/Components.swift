@@ -21,7 +21,7 @@ struct EmptyState: View {
                 .foregroundStyle(Theme.accent.opacity(0.6))
                 .accessibilityHidden(true)
             if let title, !title.isEmpty {
-                Text(title).font(.system(size: 17, weight: .semibold)).foregroundStyle(Theme.text)
+                Text(title).font(AppFonts.cardTitle).foregroundStyle(Theme.text)
             }
             if let text, !text.isEmpty {
                 Text(text).font(.subheadline).foregroundStyle(Theme.muted)
@@ -29,11 +29,11 @@ struct EmptyState: View {
             if let action, let onAction {
                 Button(action: onAction) {
                     Text(action)
-                        .font(.subheadline.weight(.semibold))
+                        .font(.subheadline.weight(.medium))
                         .padding(.horizontal, 20)
                         .padding(.vertical, 10)
                         .background(Capsule().fill(Theme.accent))
-                        .foregroundStyle(Theme.bg)
+                        .foregroundStyle(Theme.onAccent)
                 }
                 .buttonStyle(.plain)
                 .padding(.top, 4)

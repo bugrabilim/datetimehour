@@ -43,9 +43,8 @@ struct City: Decodable, Identifiable, Hashable {
 struct WorldClockView: View {
     /// Gök simgesi + saat (+ ÖÖ/ÖS); tür denetimi için parçalı
     static func clockText(light: String, date: Date, zone: TimeZone) -> String {
-        let icon: String = light == "day" ? "☀ " : (light == "dusk" ? "◐ " : "☾ ")
         let ampm: String = Fmt.ampm(date, tz: zone)
-        return icon + Fmt.time(date, tz: zone) + (ampm.isEmpty ? "" : " " + ampm)
+        return Fmt.time(date, tz: zone) + (ampm.isEmpty ? "" : " " + ampm)
     }
 
     @AppStorage("world") private var keysRaw = City.defaultKeys
@@ -198,9 +197,6 @@ struct WorldClockView: View {
         // Şehirde gün farklıysa ertesi/önceki gün işareti ve haftanın günü
         let dayNote = cityDay == myDay ? "" : (cityDay > myDay ? "+1 " : "−1 ") + L("calendar.weekdaysShort.\(cityDay.weekday)")
         let light = city.light(date)
-        // Gök renkli saat kutusu: gündüz açık mavi, alacakaranlık kızıl, gece lacivert (2. analiz #129)
-        let bg: Color = light == "day" ? Color(red: 0.835, green: 0.91, blue: 1) : light == "dusk" ? Color(red: 0.745, green: 0.33, blue: 0.275) : Color(red: 0.106, green: 0.141, blue: 0.251)
-        let fg: Color = light == "day" ? Color(red: 0.08, green: 0.14, blue: 0.23) : .white
         return HStack {
             VStack(alignment: .leading, spacing: 2) {
                 if let label = city.label { Text(label).font(.caption.weight(.semibold)).foregroundStyle(Theme.accent).lineLimit(1) }
@@ -214,19 +210,19 @@ struct WorldClockView: View {
                 }
             }
             Spacer()
+            // Küçük gök penceresi + kutusuz saat (doğal tasarım 4 Kasım 2026; önceden göz alan açık mavi kutu, 2. analiz #129)
+            SkyWindow(light: light)
             VStack(alignment: .trailing, spacing: 2) {
                 Text(Self.clockText(light: light, date: date, zone: city.zone))
-                    .font(.system(size: 24, weight: .light, design: .rounded))
+                    .font(.system(size: 24, weight: .light))
                     .monospacedDigit()
+                    .foregroundStyle(Theme.text)
                     .environment(\.layoutDirection, .leftToRight)
                 if !dayNote.isEmpty {
-                    Text(dayNote).font(.caption2.weight(.semibold))
+                    Text(dayNote).font(.caption2.weight(.medium)).foregroundStyle(Theme.accent)
                 }
-                WorldWeatherBadge(key: city.key, color: fg)
+                WorldWeatherBadge(key: city.key, color: Theme.muted)
             }
-            .foregroundStyle(fg)
-            .padding(.horizontal, 10).padding(.vertical, 4)
-            .background(bg, in: RoundedRectangle(cornerRadius: 12))
         }
         .contentShape(Rectangle())
     }
@@ -747,5 +743,40 @@ struct FolkCalendarCard: View {
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Theme.surface, in: RoundedRectangle(cornerRadius: 16))
+    }
+}
+
+/// Küçük gök penceresi (doğal tasarım 4 Kasım 2026): gündüz güneşli gök, alacakaranlıkta ufukta güneş, gecede hilal.
+/// Android'deki SkyWindow ile aynı renkler.
+struct SkyWindow: View {
+    let light: String
+
+    var body: some View {
+        let colors: [Color] = light == "day"
+            ? [Color(red: 0.663, green: 0.788, blue: 0.875), Color(red: 0.949, green: 0.902, blue: 0.8)]
+            : light == "dusk"
+            ? [Color(red: 0.275, green: 0.188, blue: 0.353), Color(red: 0.91, green: 0.635, blue: 0.486)]
+            : [Color(red: 0.122, green: 0.133, blue: 0.251), Color(red: 0.231, green: 0.216, blue: 0.384)]
+        let sun = Color(red: 0.965, green: 0.765, blue: 0.357)
+        let cream = Color(red: 1, green: 0.973, blue: 0.925)
+        ZStack {
+            LinearGradient(colors: colors, startPoint: .top, endPoint: .bottom)
+            GeometryReader { g in
+                let w = g.size.width
+                if light == "day" {
+                    Circle().fill(sun).frame(width: w * 0.4, height: w * 0.4).position(x: w * 0.62, y: w * 0.38)
+                } else if light == "dusk" {
+                    Circle().fill(sun).frame(width: w * 0.48, height: w * 0.48).position(x: w * 0.5, y: w * 0.94)
+                } else {
+                    Circle().fill(cream).frame(width: w * 0.38, height: w * 0.38).position(x: w * 0.56, y: w * 0.42)
+                    Circle().fill(colors[0].opacity(0.92)).frame(width: w * 0.34, height: w * 0.34).position(x: w * 0.65, y: w * 0.35)
+                    Circle().fill(cream.opacity(0.7)).frame(width: w * 0.06, height: w * 0.06).position(x: w * 0.22, y: w * 0.25)
+                    Circle().fill(cream.opacity(0.5)).frame(width: w * 0.05, height: w * 0.05).position(x: w * 0.3, y: w * 0.7)
+                }
+            }
+        }
+        .frame(width: 30, height: 30)
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .accessibilityHidden(true)
     }
 }

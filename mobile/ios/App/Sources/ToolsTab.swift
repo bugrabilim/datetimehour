@@ -40,12 +40,13 @@ struct RoundButton: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.headline)
+                .font(.body.weight(.medium))
                 .frame(maxWidth: .infinity, minHeight: 50)
         }
         .buttonStyle(.borderedProminent)
-        .tint(prominent ? Theme.accent : Theme.muted.opacity(0.35))
-        .foregroundStyle(prominent ? .white : Theme.text)
+        .buttonBorderShape(.capsule)
+        .tint(prominent ? Theme.accent : Theme.surface2)
+        .foregroundStyle(prominent ? Theme.onAccent : Theme.text)
     }
 }
 

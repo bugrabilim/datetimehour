@@ -1,0 +1,43 @@
+import SwiftUI
+import UIKit
+
+/*
+ * Başlık yazısı (doğal tasarım, docs/dogal-tasarim bölüm 3.2; sahibin onayı 4 Kasım 2026): Literata (SIL OFL 1.1;
+ * App/Resources/Fonts, Latin + Kiril alt kümesi, 500 ve 600; üretim mobile/shared/fonts/make-literata.py; Info.plist
+ * UIAppFonts). Literata yalnız Latin ve Kiril yazılı dillerde seçilir; Arapça, Urduca, Farsça, Japonca, Korece, Çince,
+ * Tayca ve Hintçede sistem yazısı. Dynamic Type ile büyür (relativeTo). Android'deki Fonts.kt ile aynı kural.
+ */
+enum AppFonts {
+    private static let serifLangs: Set<String> = ["tr", "en", "de", "az", "id", "fr", "fil", "es", "pt", "ru"]
+
+    /// Başlıkta Literata kullanılıyor mu (dilin yazısına göre)
+    static var serif: Bool { serifLangs.contains(AppLocale.code) }
+
+    /// Sayfa başlığı: Literata 30, 600 (diğer dillerde sistem 28, kalın)
+    static var page: Font {
+        serif ? .custom("Literata-SemiBold", size: 30, relativeTo: .largeTitle) : .system(size: 28, weight: .semibold)
+    }
+
+    /// Bölüm başlığı: Literata 19, 500 (diğer dillerde sistem 18, yarı kalın)
+    static var section: Font {
+        serif ? .custom("Literata-Medium", size: 19, relativeTo: .title3) : .title3.weight(.semibold)
+    }
+
+    /// Kart ya da boş durum başlığı: Literata 18, 500
+    static var cardTitle: Font {
+        serif ? .custom("Literata-Medium", size: 18, relativeTo: .headline) : .headline
+    }
+
+    /// Büyük sayı (tarih rakamı, sıcaklık): her dilde Latin rakamı olduğu için hep Literata
+    static func numerals(_ size: CGFloat) -> Font { .custom("Literata-Medium", size: size, relativeTo: .largeTitle) }
+
+    /// Gezinme çubuğu başlıkları (büyük ve satır içi): uygulama açılırken bir kez
+    static func applyNavigationBar() {
+        guard serif,
+              let large = UIFont(name: "Literata-SemiBold", size: 32),
+              let inline = UIFont(name: "Literata-Medium", size: 18) else { return }
+        let bar = UINavigationBar.appearance()
+        bar.largeTitleTextAttributes[.font] = UIFontMetrics(forTextStyle: .largeTitle).scaledFont(for: large)
+        bar.titleTextAttributes[.font] = UIFontMetrics(forTextStyle: .headline).scaledFont(for: inline)
+    }
+}

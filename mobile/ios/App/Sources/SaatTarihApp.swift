@@ -10,6 +10,8 @@ struct SaatTarihApp: App {
     init() {
         // Özellik aç/kapa: ilk iş, önceki kullanıcıda hepsi açık kalsın (Features.migrate)
         Features.migrate()
+        // Başlıklarda Literata (doğal tasarım; Latin ve Kiril dillerinde)
+        AppFonts.applyNavigationBar()
         // Apple Watch'a seçili yer (WatchConnectivity)
         WatchSync.shared.start()
         // iPhone, iPad ve Mac arasında ayarlar (iCloud anahtar-değer deposu; sunucu yok)

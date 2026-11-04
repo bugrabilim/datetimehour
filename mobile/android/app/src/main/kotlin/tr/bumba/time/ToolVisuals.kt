@@ -36,12 +36,13 @@ import kotlin.math.sin
    rakamsız pasta zamanlayıcı ve kum saati, kilit (çocuk modu). iOS'taki ToolVisuals.swift ile aynı çizim. */
 
 object PhaseColors {
-    /** Aralık antrenmanında evre rengi: çalış yeşil, dinlen kırmızı, ısın turuncu, bitti mavi */
+    /** Aralık antrenmanında evre rengi (doğal tasarım 4 Kasım 2026, yumuşak doğa tonları): çalış yaprak yeşili, dinlen
+     *  kiremit, ısın hardal, bitti gök mavisi; üstündeki beyaz yazı ≥4,5:1 */
     fun of(kind: String): Color = when (kind) {
-        "work" -> Color(0xFF2E9E5C)
-        "rest" -> Color(0xFFD9443A)
-        "warmup" -> Color(0xFFE08A1E)
-        else -> Color(0xFF2978D9)
+        "work" -> Color(0xFF3F7A4F)
+        "rest" -> Color(0xFFB4532A)
+        "warmup" -> Color(0xFF9A6A12)
+        else -> Color(0xFF3A6889)
     }
 }
 

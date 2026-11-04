@@ -6,6 +6,13 @@
 <dict>
 	<key>NSAlarmKitUsageDescription</key>
 	<string>Kurduğunuz alarm ve zamanlayıcıların telefon sessizdeyken de çalması için.</string>
+	<!-- Başlık yazı tipi Literata (SIL OFL 1.1; Latin + Kiril alt kümesi, 500 ve 600; doğal tasarım, 4 Kasım 2026).
+	     Lisans App/Resources/Fonts/OFL-Literata.txt; üretim mobile/shared/fonts/make-literata.py -->
+	<key>UIAppFonts</key>
+	<array>
+		<string>Literata-Medium.ttf</string>
+		<string>Literata-SemiBold.ttf</string>
+	</array>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>tr.bumba.time.refresh</string>
