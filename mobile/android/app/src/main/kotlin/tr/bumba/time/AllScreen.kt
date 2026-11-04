@@ -365,9 +365,11 @@ private fun TileGrid(list: List<AllEntry>, columns: Int, fav: Boolean, onOpen: (
             for (row in list.chunked(cols)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     for (e in row) {
+                        val press = remember { androidx.compose.foundation.interaction.MutableInteractionSource() }
                         Column(
-                            Modifier.weight(1f).heightIn(min = 92.dp).clip(RoundedCornerShape(14.dp)).background(Theme.c.surface)
-                                .combinedClickable(onClickLabel = e.title, onClick = { onOpen(e) }, onLongClick = { onLong(e) })
+                            Modifier.weight(1f).heightIn(min = 92.dp).pressScale(press).paper(radius = 16)
+                                .clip(RoundedCornerShape(16.dp))
+                                .combinedClickable(press, androidx.compose.material3.ripple(), onClickLabel = e.title, onClick = { onOpen(e) }, onLongClick = { onLong(e) })
                                 .padding(horizontal = 4.dp, vertical = 10.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,
                         ) {

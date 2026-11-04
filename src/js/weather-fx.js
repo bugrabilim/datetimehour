@@ -61,15 +61,19 @@
     }
     ctx.globalAlpha = 1;
   }
+  /* Bulutlar (doğal tasarım madde 10): üst üste binen yumuşak daireler; yazı alanına girmesin diye üst üçte birde */
+  var PUFFS = [[0.22, 0.66, 0.20], [0.42, 0.46, 0.27], [0.64, 0.52, 0.24], [0.84, 0.68, 0.16], [0.52, 0.74, 0.22]];
   function clouds(ctx, w, h, t, n, k, dark) {
+    var c = dark ? "191,191,191" : "255,255,255";
     for (var i = 0; i < n; i++) {
-      var cw = w * (0.45 + 0.1 * (i % 2)), ch = cw * 0.28, sp = (6 + (i % 4) * 3) * k;
-      var x = ((i * w * 0.37 + t * sp) % (w + cw)) - cw, y = h * (0.12 + 0.17 * (i % 4) + 0.08 * Math.floor(i / 4));
-      var g = ctx.createRadialGradient(x + cw / 2, y + ch / 2, 0, x + cw / 2, y + ch / 2, cw / 2);
-      var c = dark ? "191,191,191" : "255,255,255";
-      g.addColorStop(0, "rgba(" + c + ",0.55)"); g.addColorStop(1, "rgba(" + c + ",0)");
-      ctx.save(); ctx.translate(x + cw / 2, y + ch / 2); ctx.scale(1, ch / cw); ctx.translate(-(x + cw / 2), -(y + ch / 2));
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x + cw / 2, y + ch / 2, cw / 2, 0, 6.2832); ctx.fill(); ctx.restore();
+      var cw = w * (0.30 + 0.08 * (i % 3)), ch = cw * 0.45, sp = (6 + (i % 4) * 3) * k;
+      var x = ((i * w * 0.37 + t * sp) % (w + cw)) - cw, y = h * (0.03 + 0.07 * (i % 4) + 0.025 * Math.floor(i / 4));
+      for (var j = 0; j < PUFFS.length; j++) {
+        var px = x + cw * PUFFS[j][0], py = y + ch * PUFFS[j][1], r = cw * PUFFS[j][2];
+        var g = ctx.createRadialGradient(px, py, 0, px, py, r);
+        g.addColorStop(0, "rgba(" + c + ",0.5)"); g.addColorStop(0.55, "rgba(" + c + ",0.42)"); g.addColorStop(1, "rgba(" + c + ",0)");
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(px, py, r, 0, 6.2832); ctx.fill();
+      }
     }
   }
 

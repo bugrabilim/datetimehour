@@ -1,5 +1,7 @@
 package tr.bumba.time
 
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.draw.shadow
 import androidx.compose.foundation.selection.selectable
@@ -220,4 +222,26 @@ fun SoftSwitch(
             disabledUncheckedBorderColor = Color.Transparent, disabledCheckedBorderColor = Color.Transparent,
         ),
     )
+}
+
+/**
+ * Hareket belirteçleri (doğal tasarım madde 12, 4 Kasım 2026): kısa 150, orta 250, uzun 400 ms, sahne 1200 ms; yumuşak
+ * eğri cubic-bezier(0.2, 0.8, 0.2, 1). Animasyonlar kapalıysa (sistem ayarı) Compose zaten süreyi sıfırlar.
+ */
+object Motion {
+    const val SHORT = 150
+    const val MEDIUM = 250
+    const val LONG = 400
+    const val SCENE = 1200
+    val ease = androidx.compose.animation.core.CubicBezierEasing(0.2f, 0.8f, 0.2f, 1f)
+}
+
+/** Basınca hafif küçülme (0,97): kartlar ve kareler için; etkileşim kaynağı tıklamayla paylaşılır */
+@Composable
+fun Modifier.pressScale(interaction: androidx.compose.foundation.interaction.MutableInteractionSource): Modifier {
+    val pressed by interaction.collectIsPressedAsState()
+    val scale by androidx.compose.animation.core.animateFloatAsState(
+        if (pressed) 0.97f else 1f, androidx.compose.animation.core.tween(Motion.SHORT, easing = Motion.ease), label = "press",
+    )
+    return graphicsLayer { scaleX = scale; scaleY = scale }
 }

@@ -105,7 +105,7 @@ struct WeatherView: View {
         return VStack(spacing: 6) {
             icon(c.symbolName, size: 64)
             Text(temp(c.temperature))
-                .font(.system(size: 56, weight: .semibold, design: .rounded))
+                .font(AppFonts.numerals(56))
                 .environment(\.layoutDirection, .leftToRight)
             Text(c.condition.description).font(.title3)
             if let today = d.dailyForecast.first {

@@ -160,6 +160,7 @@ struct AllView: View {
     @AppStorage(AllPrefs.recentKey) private var recentRaw = ""
     @AppStorage(Features.key) private var features = ""
     @Environment(\.horizontalSizeClass) private var hsc
+    @Environment(\.colorScheme) private var scheme
     @State private var query = ""
     @State private var toast: String?
 
@@ -291,10 +292,10 @@ struct AllView: View {
             }
             .frame(maxWidth: .infinity, minHeight: 88)
             .padding(.vertical, 6)
-            .background(RoundedRectangle(cornerRadius: 14, style: .continuous).fill(Theme.surface))
-            .contentShape(RoundedRectangle(cornerRadius: 14))
+            .background { PaperShape(radius: 16, dark: scheme == .dark) }
+            .contentShape(RoundedRectangle(cornerRadius: 16))
         }
-        .buttonStyle(.plain)
+        .buttonStyle(PressScaleStyle())
         .contextMenu {
             Button { toggle(e) } label: {
                 Label(isFav ? L("all.favRemove") : L("all.favAdd"), systemImage: isFav ? "star.slash" : "star")

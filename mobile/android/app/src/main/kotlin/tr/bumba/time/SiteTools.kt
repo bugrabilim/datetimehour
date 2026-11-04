@@ -385,7 +385,7 @@ fun ChessClockScreen() {
         Box(modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp)).background(bg).clickable { press(side) }, contentAlignment = Alignment.Center) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(L(if (side == 0) "chess.white" else "chess.black"), color = fg, fontSize = 15.sp)
-                Text(fmt(time[side]), color = fg, fontSize = 64.sp, fontWeight = FontWeight.Bold)
+                Text(fmt(time[side]), color = fg, fontSize = 64.sp, fontWeight = FontWeight.Light)
                 Text(if (moves[side] > 0) T("chess.moves", moves[side]) else " ", color = fg.copy(alpha = 0.8f), fontSize = 13.sp)
                 if (flag == side) Text(T("chess.flag", L(if (side == 0) "chess.white" else "chess.black")), color = fg, fontWeight = FontWeight.SemiBold)
             }
@@ -513,7 +513,7 @@ fun MetronomeScreen() {
             for (i in 0 until beats) Box(Modifier.size(if (beats > 8) 18.dp else 24.dp).clip(CircleShape)
                 .background(if (lit == i) Theme.c.accent else if (i == 0 && accent) Theme.c.accent.copy(alpha = 0.35f) else Theme.c.surface2))
         }
-        Text("$bpm", color = Theme.c.text, fontSize = 72.sp, fontWeight = FontWeight.Bold)
+        Text("$bpm", color = Theme.c.text, fontSize = 72.sp, fontWeight = FontWeight.Light)
         Text(names.first { bpm < it.first }.second, color = Theme.c.muted, fontSize = 16.sp)
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             for (d in listOf(-5, -1, 1, 5)) Text(if (d < 0) "−${-d}" else "+$d",
@@ -583,7 +583,7 @@ fun TalkingClockScreen() {
     }
     KeepOn(every != "off")
     ToolFrame(L("talking.say"), { sayNow() }, center = true) {
-        Text(Fmt.time(now, seconds = true), color = Theme.c.text, fontSize = 64.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(top = 24.dp))
+        Text(Fmt.time(now, seconds = true), color = Theme.c.text, fontSize = 64.sp, fontWeight = FontWeight.Light, modifier = Modifier.padding(top = 24.dp))
         Text(Fmt.longDate(now.toLocalDate()), color = Theme.c.muted, fontSize = 15.sp)
         AppCard {
             SectionTitle(L("talking.auto"))
@@ -857,7 +857,7 @@ fun ExamTimerScreen() {
         if (room.isNotBlank()) Text(room, color = Theme.c.muted, fontSize = 16.sp)
         Text(when (ph) { "read" -> L("examTimer.phaseRead"); "exam" -> L("examTimer.phaseExam"); "done" -> L("examTimer.phaseDone")
             else -> if (r > 0) L("examTimer.phaseRead") else L("examTimer.phaseExam") }, color = color, fontSize = 16.sp)
-        Text(mmss(if (start > 0) rem else d), color = color, fontSize = 76.sp, fontWeight = FontWeight.Bold)
+        Text(mmss(if (start > 0) rem else d), color = color, fontSize = 76.sp, fontWeight = FontWeight.Light)
         LinearProgressIndicator({ frac }, Modifier.fillMaxWidth().height(8.dp).clip(RoundedCornerShape(4.dp)), color = color, trackColor = Theme.c.surface2)
         if (warn > 0) Text(L("examTimer.warn$warn"), color = color, fontWeight = FontWeight.Bold)
         if (running) {

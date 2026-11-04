@@ -140,6 +140,6 @@ internal fun segColors() = SegmentedButtonDefaults.colors(
 internal fun BigTime(text: String) {
     Ltr {
         Text(text, Modifier.fillMaxWidth(), color = Theme.c.text, fontSize = if (text.length > 9) 44.sp else 60.sp,
-            fontWeight = FontWeight.SemiBold, style = Tnum, textAlign = androidx.compose.ui.text.style.TextAlign.Center, maxLines = 1)
+            fontWeight = FontWeight.Light, style = Tnum, textAlign = androidx.compose.ui.text.style.TextAlign.Center, maxLines = 1)
     }
 }

@@ -402,7 +402,7 @@ struct ChessClockView: View {
         return Button { m.press(s) } label: {
             VStack(spacing: 4) {
                 Text(name).font(.subheadline)
-                Text(verbatim: ChessModel.fmt(m.time[s])).font(.system(size: 64, weight: .bold, design: .rounded)).monospacedDigit()
+                Text(verbatim: ChessModel.fmt(m.time[s])).font(.system(size: 64, weight: .light)).monospacedDigit()
                 Text(m.moves[s] > 0 ? T("chess.moves", m.moves[s]) : " ").font(.footnote).opacity(0.8)
                 if m.flag == s { Text(T("chess.flag", name)).font(.headline) }
             }
@@ -482,7 +482,7 @@ struct MetronomeView: View {
                         }
                     }
                 }
-                Text(verbatim: "\(bpm)").font(.system(size: 72, weight: .bold, design: .rounded)).monospacedDigit()
+                Text(verbatim: "\(bpm)").font(.system(size: 72, weight: .light)).monospacedDigit()
                 Text(verbatim: names.first { bpm < $0.0 }?.1 ?? "").foregroundStyle(Theme.muted)
                 HStack(spacing: 10) {
                     ForEach([-5, -1, 1, 5], id: \.self) { d in
@@ -565,7 +565,7 @@ struct TalkingClockView: View {
             VStack(spacing: 18) {
                 TimelineView(.periodic(from: .now, by: 1)) { ctx in
                     VStack(spacing: 6) {
-                        Text(verbatim: Fmt.time(ctx.date, seconds: true)).font(.system(size: 64, weight: .bold, design: .rounded)).monospacedDigit()
+                        Text(verbatim: Fmt.time(ctx.date, seconds: true)).font(.system(size: 64, weight: .light)).monospacedDigit()
                         Text(Fmt.longDate(ctx.date)).foregroundStyle(Theme.muted)
                     }
                     .onChange(of: Calendar.current.component(.minute, from: ctx.date)) { _, minute in
@@ -911,7 +911,7 @@ struct ExamTimerView: View {
                     if !name.isEmpty { Text(name).font(.title2.weight(.semibold)).multilineTextAlignment(.center) }
                     if !room.isEmpty { Text(room).foregroundStyle(Theme.muted) }
                     Text(phaseText).foregroundStyle(color)
-                    Text(verbatim: Self.mmss(start > 0 ? rem : d)).font(.system(size: 76, weight: .bold, design: .rounded)).monospacedDigit()
+                    Text(verbatim: Self.mmss(start > 0 ? rem : d)).font(.system(size: 76, weight: .light)).monospacedDigit()
                         .foregroundStyle(color)
                     ProgressView(value: min(1, max(0, frac))).tint(color)
                     if warn > 0 { Text(L("examTimer.warn\(warn)")).font(.headline).foregroundStyle(color) }

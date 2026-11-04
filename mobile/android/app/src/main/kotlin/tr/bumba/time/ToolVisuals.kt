@@ -46,29 +46,40 @@ object PhaseColors {
     }
 }
 
-/** Kalan süre halkası: iz + ilerleme yayı (saat 12'den saat yönünde); içerik ortada */
+/**
+ * Kalan süre halkası (doğal tasarım madde 11): ince iz (`line`) + 6 dp ilerleme yayı (saat 12'den saat yönünde), yayın
+ * ucunda küçük ışıklı nokta; içerik ortada
+ */
 @Composable
-fun ProgressRing(progress: Float, color: Color, modifier: Modifier = Modifier, stroke: Dp = 10.dp, track: Color = Theme.c.surface2,
+fun ProgressRing(progress: Float, color: Color, modifier: Modifier = Modifier, stroke: Dp = 6.dp, track: Color = Theme.c.line,
                  content: @Composable BoxScope.() -> Unit = {}) {
     Box(modifier.aspectRatio(1f), contentAlignment = Alignment.Center) {
         Canvas(Modifier.matchParentSize()) {
             val w = stroke.toPx()
-            val d = min(size.width, size.height) - w
+            val d = min(size.width, size.height) - w * 2
             val tl = Offset((size.width - d) / 2, (size.height - d) / 2)
-            drawArc(track, 0f, 360f, false, tl, Size(d, d), style = Stroke(w))
-            drawArc(color, -90f, 360f * progress.coerceIn(0f, 1f), false, tl, Size(d, d), style = Stroke(w, cap = StrokeCap.Round))
+            val p = progress.coerceIn(0f, 1f)
+            drawArc(track, 0f, 360f, false, tl, Size(d, d), style = Stroke(w * 0.5f))
+            drawArc(color, -90f, 360f * p, false, tl, Size(d, d), style = Stroke(w, cap = StrokeCap.Round))
+            if (p > 0f) {
+                val a = Math.toRadians(-90.0 + 360.0 * p)
+                val end = Offset(size.width / 2 + (d / 2 * cos(a)).toFloat(), size.height / 2 + (d / 2 * sin(a)).toFloat())
+                drawCircle(color.copy(alpha = 0.25f), w * 1.3f, end)
+                drawCircle(color, w * 0.75f, end)
+            }
         }
         content()
     }
 }
 
-/** Pomodoro turları: biten turlar dolu domates, sürmekte olan yarı saydam, kalanlar soluk */
+/** Pomodoro turları: çizgi domatesler (doğal tasarım madde 11); biten dolu renk, sürmekte olan yarı saydam, kalan soluk */
 @Composable
 fun RoundDots(total: Int, done: Int, current: Int, label: String) {
     Row(Modifier.semantics { contentDescription = label }, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
         for (i in 1..total) {
-            val a = when { i <= done -> 1f; i == current -> 0.6f; else -> 0.18f }
-            Text("🍅", Modifier.alpha(a), fontSize = if (i == current) 24.sp else 20.sp)
+            val a = when { i <= done -> 1f; i == current -> 0.6f; else -> 0.25f }
+            val col = (if (i <= done || i == current) Theme.c.terra else Theme.c.muted).copy(alpha = a)
+            LineIcon("tomato", if (i == current) 26.dp else 22.dp, c1 = col, c2 = (if (i <= done || i == current) Theme.c.sage else Theme.c.muted).copy(alpha = a))
         }
     }
 }
@@ -76,21 +87,24 @@ fun RoundDots(total: Int, done: Int, current: Int, label: String) {
 /** Rakamsız pasta zamanlayıcı ("Time Timer" tarzı): kalan süre kırmızı dilim, 12 çentikli kadran */
 @Composable
 fun PieTimer(left: Float, color: Color, modifier: Modifier = Modifier) {
+    val face = Theme.c.surface
+    val ink = Theme.c.text
     Canvas(modifier.aspectRatio(1f)) {
         val r = min(size.width, size.height) / 2
         val c = Offset(size.width / 2, size.height / 2)
-        drawCircle(Color.White, r, c)
-        drawCircle(Color(0xFF333333), r, c, style = Stroke(r * 0.03f))
+        // Temaya uyan kadran (doğal tasarım madde 11): kâğıt yüz, mürekkep çentikler
+        drawCircle(face, r, c)
+        drawCircle(ink.copy(alpha = 0.5f), r, c, style = Stroke(r * 0.02f))
         val inner = r * 0.86f
         drawArc(color, -90f, 360f * left.coerceIn(0f, 1f), true, Offset(c.x - inner, c.y - inner), Size(inner * 2, inner * 2))
         for (i in 0 until 60) {
             val a = Math.toRadians(i * 6.0 - 90)
             val l = if (i % 5 == 0) r * 0.12f else r * 0.05f
             val o = r * 0.97f
-            drawLine(Color(0xFF333333), Offset(c.x + (cos(a) * o).toFloat(), c.y + (sin(a) * o).toFloat()),
+            drawLine(ink, Offset(c.x + (cos(a) * o).toFloat(), c.y + (sin(a) * o).toFloat()),
                 Offset(c.x + (cos(a) * (o - l)).toFloat(), c.y + (sin(a) * (o - l)).toFloat()), strokeWidth = if (i % 5 == 0) r * 0.025f else r * 0.01f)
         }
-        drawCircle(Color(0xFF333333), r * 0.06f, c)
+        drawCircle(ink, r * 0.06f, c)
     }
 }
 
@@ -133,7 +147,7 @@ fun Hourglass(left: Float, color: Color, modifier: Modifier = Modifier) {
 fun HoldToUnlock(onUnlock: () -> Unit, dark: Boolean = false) {
     Box(Modifier.background(if (dark) Color(0x33FFFFFF) else Theme.c.surface2, RoundedCornerShape(50))
         .combinedClickable(onClick = {}, onLongClick = onUnlock).padding(horizontal = 18.dp, vertical = 10.dp)) {
-        Text("🔒 " + L("tools.holdToUnlock"), color = if (dark) Color.White else Theme.c.text, fontSize = 14.sp)
+        Text(L("tools.holdToUnlock"), color = if (dark) Color.White else Theme.c.text, fontSize = 14.sp)
     }
 }
 

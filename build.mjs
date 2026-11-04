@@ -128,6 +128,12 @@ write("embed/line.js", fs.readFileSync(path.join(SRC, "embed/line.js")));
 const EARTH_BUF = fs.readFileSync(path.join(SRC, "assets/earth.jpg"));
 write("assets/earth.jpg", EARTH_BUF);
 const EARTH_URL = `/assets/earth.jpg?v=${hash(EARTH_BUF)}`;
+// Doğal tasarım (4 Kasım 2026): başlık yazısı Literata (SIL OFL 1.1; Latin + Kiril alt kümesi, kendi sunucumuzdan;
+// üretim mobile/shared/fonts/make-literata.py) ve %4 kâğıt dokusu; styles.css'ten göreli adresle çağrılır
+for (const f of ["literata-500.woff2", "literata-600.woff2", "OFL-Literata.txt"]) {
+  write(`assets/fonts/${f}`, fs.readFileSync(path.join(SRC, "assets/fonts", f)));
+}
+write("assets/grain.png", fs.readFileSync(path.join(SRC, "assets/grain.png")));
 const PLACES_SRC = readJson("src/data/places.json");
 /* Şehir nüfusu (2. analiz #180): Natural Earth pop_max (kent bölgesi, kamu malı; scripts/fetch-city-pop.mjs, cities.json "pop") */
 const CITY_POP = Object.fromEntries(CITIES.map((c) => [c.key, c.pop || 0]));

@@ -548,7 +548,7 @@ fun ZikirScreen(onBack: () -> Unit) {
                 }
                 Ltr {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("$count", color = if (done && !beads) Color.White else Theme.c.ink, fontSize = 64.sp, fontWeight = FontWeight.Bold, style = Tnum)
+                        Text("$count", color = if (done && !beads) Color.White else Theme.c.ink, fontSize = 64.sp, fontWeight = FontWeight.Light, style = Tnum)
                         val goal = if (tesbihat) 99 else target
                         if (goal > 0) Text("/ $goal", color = if (done && !beads) Color.White else Theme.c.muted, fontSize = 16.sp, style = Tnum)
                     }

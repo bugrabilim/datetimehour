@@ -141,7 +141,7 @@ private fun Current(d: WeatherData) {
     WeatherHero(if (Prefs.store.getBoolean(WeatherScene.TAB_KEY, true)) WeatherScene.of(c) else null) {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(d.condition.icon(c.isDay), fontSize = 56.sp)
-            Ltr { Text(Units.temp(c.temp), color = Theme.c.text, fontSize = 56.sp, fontWeight = FontWeight.SemiBold) }
+            Ltr { Text(Units.temp(c.temp), color = Theme.c.text, fontSize = 56.sp, fontFamily = AppFonts.numerals, fontWeight = FontWeight.Medium) }
             Text(d.condition.label, color = Theme.c.text, fontSize = 20.sp)
             d.today?.let { Ltr { Text("↑ ${Units.temp(it.max)}   ↓ ${Units.temp(it.min)}", color = Theme.c.muted) } }
             // Sözlü günlük özet (2. analiz #108)

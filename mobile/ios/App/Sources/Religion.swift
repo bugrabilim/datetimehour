@@ -620,7 +620,7 @@ struct ZikirView: View {
                         Circle().fill(done ? Theme.accent : Theme.accentSoft)
                     }
                     VStack(spacing: 4) {
-                        Text("\(count)").font(.system(size: 64, weight: .bold)).monospacedDigit()
+                        Text("\(count)").font(.system(size: 64, weight: .light)).monospacedDigit()
                             .foregroundStyle(done && !beads ? Color.white : Theme.ink)
                         let goal = tesbihat ? 99 : target
                         if goal > 0 {

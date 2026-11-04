@@ -23,7 +23,7 @@ struct BigTime: View {
     let text: String
     var body: some View {
         Text(text)
-            .font(.system(size: 64, weight: .semibold, design: .rounded))
+            .font(.system(size: 64, weight: .light))
             .monospacedDigit()
             .minimumScaleFactor(0.4)
             .lineLimit(1)

@@ -144,3 +144,23 @@ struct MoreMenu: View {
         .accessibilityLabel(L("timers.more"))
     }
 }
+
+/// Hareket belirteçleri (doğal tasarım madde 12, 4 Kasım 2026): kısa 0,15, orta 0,25, uzun 0,4, sahne 1,2 sn; yumuşak eğri
+/// (0.2, 0.8, 0.2, 1). Hareketi azalt açıksa yalnız soluklaşma kullanılır.
+enum Motion {
+    static let short = Animation.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.15)
+    static let medium = Animation.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.25)
+    static let long = Animation.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.4)
+}
+
+/// Basınca hafif küçülme (0,97): kartlar ve kareler için
+struct PressScaleStyle: ButtonStyle {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.97 : 1)
+            .opacity(configuration.isPressed && reduceMotion ? 0.8 : 1)
+            .animation(Motion.short, value: configuration.isPressed)
+    }
+}
