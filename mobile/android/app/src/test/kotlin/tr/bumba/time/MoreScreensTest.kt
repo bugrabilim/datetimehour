@@ -405,6 +405,13 @@ class MoreScreensTest {
     @Test fun worshipExtras() {
         shot("tr-dini-gunler") { ReligiousDaysScreen {} }
         shot("tr-tebrik") { GreetingScreen {} }
+        // Her vesilenin her deseni (4 Kasım 2026): kartın kendisi, söz sabit tohumla
+        val day = LocalDate.of(2026, 3, 20)
+        java.io.File(dir).mkdirs()
+        for ((occ, pats) in Greetings.PATTERNS) for ((i, pat) in pats.withIndex()) {
+            val bmp = Greetings.render(occ, Greetings.STYLES[i % 3], pat, Greetings.message(occ, 12345L + i), day, 540)
+            java.io.FileOutputStream("$dir/kart-$occ-$pat.png").use { bmp.compress(android.graphics.Bitmap.CompressFormat.PNG, 100, it) }
+        }
         Tracker.clear()
         val today = LocalDate.now()
         val masks = listOf(0b11111, 0b01111, 0b10111, 0b11111, 0b00011, 0b11101, 0)

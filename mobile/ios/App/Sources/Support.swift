@@ -13,6 +13,8 @@ import CoreImage.CIFilterBuiltins
 
 enum Support {
     static let site = URL(string: "https://time.bumba.tr")!
+    /// App Store sayfası (uygulamanın Apple kimliği 6823767495; 1.0 onaylanınca açılır)
+    static let appStore = URL(string: "https://apps.apple.com/app/id6823767495")!
     static let bumba = URL(string: "https://bumbagroup.com")!
 
     static var version: String {

@@ -23,10 +23,12 @@ import java.time.ZoneId
  * gönderilir. Dosyalar önbellekteki share klasöründe üretilir (FileProvider), bir yere yüklenmez.
  */
 object Share {
-    private fun send(context: Context, f: File, mime: String, title: String) {
+    private fun send(context: Context, f: File, mime: String, title: String, text: String? = null) {
         val uri = FileProvider.getUriForFile(context, context.packageName + ".files", f)
         val send = Intent(Intent.ACTION_SEND).setType(mime).putExtra(Intent.EXTRA_STREAM, uri)
             .putExtra(Intent.EXTRA_TITLE, title).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        // Görselin yanında gidecek yazı (ör. tebrik kartında uygulamanın bağlantısı)
+        if (text != null) send.putExtra(Intent.EXTRA_TEXT, text)
         context.startActivity(Intent.createChooser(send, title).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
 
@@ -40,10 +42,10 @@ object Share {
         send(context, f, "text/csv", title)
     }
 
-    fun image(context: Context, bitmap: Bitmap, name: String, title: String) {
+    fun image(context: Context, bitmap: Bitmap, name: String, title: String, text: String? = null) {
         val f = File(dir(context), name)
         f.outputStream().use { bitmap.compress(Bitmap.CompressFormat.PNG, 100, it) }
-        send(context, f, "image/png", title)
+        send(context, f, "image/png", title, text)
     }
 }
 
