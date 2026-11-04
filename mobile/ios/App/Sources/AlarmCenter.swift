@@ -141,7 +141,7 @@ struct AlarmItem: Codable, Identifiable, Hashable {
 
     /// Kaydı eksik görev matematiğe düşer: kod okutmada kod, fotoğrafta özet ("ph:…") yoksa
     static func effectiveTask(_ task: String, code: String) -> String {
-        if task == "code" && (code.isEmpty || code.hasPrefix(PhotoHash.prefix)) { return "math" }
+        if task == "code" && (code.isEmpty || code.hasPrefix(PhotoHash.prefix) || code.hasPrefix(ObjectTarget.prefix)) { return "math" }
         if task == "photo" && !code.hasPrefix(PhotoHash.prefix) { return "math" }
         return task
     }

@@ -207,7 +207,9 @@ struct WakeTaskView: View {
             Group {
                 switch kind {
                 case "math": math
-                case "shake", "steps": moving
+                case "shake", "steps", "squat": moving
+                case "object": ObjectTaskView(code: task.code) { finish() }
+                case "speak": SpeakTaskView(onSolved: { finish() }, onUnavailable: { kind = "typing" })
                 case "code": code
                 case "memory": MemoryTaskView(level: task.level) { finish() }
                 case "typing": TypingTaskView { finish() }
@@ -265,9 +267,10 @@ struct WakeTaskView: View {
     }
 
     private var moving: some View {
-        let total = kind == "shake" ? WakeTask.shakes : WakeTask.steps
+        let total = Self.total(kind)
+        let key = kind == "shake" ? "wake.shake" : (kind == "squat" ? "wake.squat" : "wake.steps")
         return VStack(spacing: 14) {
-            Text(T(kind == "shake" ? "wake.shake" : "wake.steps", total)).font(.headline).foregroundStyle(Theme.text)
+            Text(T(key, total)).font(.headline).foregroundStyle(Theme.text).multilineTextAlignment(.center)
             Text(T("wake.progress", min(count, total), total))
                 .font(.system(size: 48, weight: .bold, design: .rounded)).monospacedDigit()
                 .environment(\.layoutDirection, .leftToRight)
@@ -319,11 +322,20 @@ struct WakeTaskView: View {
     }
 
     private func startMotion() {
-        guard kind == "shake" || kind == "steps" else { return }
-        let total = kind == "shake" ? WakeTask.shakes : WakeTask.steps
-        motion.start(counter: kind == "shake" ? .shake() : .steps()) { n in
+        guard kind == "shake" || kind == "steps" || kind == "squat" else { return }
+        let total = Self.total(kind)
+        let counter: MotionCounter = kind == "shake" ? .shake() : (kind == "squat" ? .squat() : .steps())
+        motion.start(counter: counter) { n in
             count = n
             if n >= total { finish() }
+        }
+    }
+
+    private static func total(_ kind: String) -> Int {
+        switch kind {
+        case "shake": return WakeTask.shakes
+        case "squat": return WakeTask.squats
+        default: return WakeTask.steps
         }
     }
 

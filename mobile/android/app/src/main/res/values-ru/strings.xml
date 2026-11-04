@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">Держите телефон вертикально и поворачивайтесь; когда знак Каабы окажется в центре, кибла перед вами. Изображение остаётся на телефоне и не сохраняется.</string>
     <string name="qibla_cameraDenied">Нет доступа к камере. Его можно разрешить в настройках.</string>
     <string name="qibla_kaabaName">Кааба</string>
+    <string name="alarm_task_squat">Приседания</string>
+    <string name="alarm_task_object">Найти предмет</string>
+    <string name="alarm_task_speak">Прочитать вслух</string>
+    <string name="alarm_task_objectTarget">Что сфотографировать</string>
+    <string name="alarm_task_object_random">Каждое утро разное</string>
+    <string name="wake_object_cup">Чашка или стакан</string>
+    <string name="wake_object_toothbrush">Зубная щётка или раковина</string>
+    <string name="wake_object_sky">Небо</string>
+    <string name="wake_object_bed">Заправленная кровать</string>
+    <string name="wake_object_plant">Растение или цветок</string>
+    <string name="wake_object_shoe">Обувь</string>
+    <string name="wake_object">Сфотографируйте: %1$s</string>
+    <string name="wake_object_wrong">На фото не найдено; попробуйте ближе или при лучшем свете.</string>
+    <string name="wake_object_note">Фото распознаётся на телефоне, не сохраняется и никуда не отправляется.</string>
+    <string name="wake_squat">Сделайте %1$s приседаний с телефоном в руке</string>
+    <string name="wake_speak">Прочитайте это вслух</string>
+    <string name="wake_speak_start">Начать слушать</string>
+    <string name="wake_speak_listening">Слушаю…</string>
+    <string name="wake_speak_heard">Услышано: %1$s</string>
+    <string name="wake_speak_unavailable">На этом телефоне нет распознавания речи на устройстве; переход к набору текста.</string>
+    <string name="wake_speak_note">Речь распознаётся только на телефоне, не записывается и никуда не отправляется.</string>
     <string name="app_name">Время и дата</string>
 </resources>

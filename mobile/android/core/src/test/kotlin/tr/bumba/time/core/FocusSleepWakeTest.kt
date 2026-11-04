@@ -7,10 +7,31 @@ import kotlin.math.sqrt
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class FocusSleepWakeTest {
     /** Yeni alarm görevleri (#75): hafıza dizisi, yazma denetimi, fotoğraf özeti */
+    @Test
+    fun squatObjectSpeak() {
+        // Nesne: Vision/ML Kit etiketleri İngilizce; güven eşiği 0,3
+        assertTrue(WakeTask.objectMatch("cup", listOf("Coffee cup" to 0.8f)))
+        assertTrue(WakeTask.objectMatch("bed", listOf("bedroom" to 0.5f)))
+        assertFalse(WakeTask.objectMatch("bed", listOf("bedroom" to 0.1f)))
+        assertFalse(WakeTask.objectMatch("sky", listOf("keyboard" to 0.9f)))
+        // Sesli okuma: %70 sözcük sırayla
+        assertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan yol alır"))
+        assertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan alır"))
+        assertFalse(WakeTask.spoken("Sabah erken kalkan yol alır", "yol alır"))
+        // Squat: her çömelme bir tepe (1,3 g üstü) ve dip (0,95 g altı); 0,9 sn'den sık sayılmaz
+        val c = MotionCounter.squat()
+        var t = 0L
+        repeat(5) { c.feed(t, 0.0, 0.0, 0.8); c.feed(t + 400, 0.0, 0.0, 1.4); c.feed(t + 700, 0.0, 0.0, 1.0); t += 1500 }
+        assertEquals(5, c.count)
+        c.feed(t, 0.0, 0.0, 0.8); c.feed(t + 100, 0.0, 0.0, 1.5); c.feed(t + 200, 0.0, 0.0, 0.8); c.feed(t + 300, 0.0, 0.0, 1.5)
+        assertEquals(6, c.count)
+    }
+
     @Test
     fun moreWakeTasks() {
         val seq = WakeTask.memorySequence(2, kotlin.random.Random(7))

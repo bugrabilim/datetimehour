@@ -225,6 +225,14 @@ class MoreScreensTest {
                 WakeTaskPanel(AlarmItem(id = "s", hour = 7, minute = 0, task = "shake")) {}
             }
         }
+        // Yeni görevler (2. analiz #36, #37): squat, nesne (bardak), sesli okuma
+        shot("tr-alarm-gorevi-yeni") {
+            androidx.compose.foundation.layout.Column(Modifier.padding(24.dp), verticalArrangement = androidx.compose.foundation.layout.Arrangement.spacedBy(28.dp)) {
+                WakeTaskPanel(AlarmItem(id = "q", hour = 7, minute = 0, task = "squat")) {}
+                WakeTaskPanel(AlarmItem(id = "o", hour = 7, minute = 0, task = "object", code = "obj:cup")) {}
+                WakeTaskPanel(AlarmItem(id = "v", hour = 7, minute = 0, task = "speak")) {}
+            }
+        }
         // Alarm duvar kâğıdı (2. analiz #2): gün batımı zemini, yazılar koyu temanın açık renkleri
         shot("tr-alarm-gorevi-duvar") {
             AlarmWallScreen("sunset") {

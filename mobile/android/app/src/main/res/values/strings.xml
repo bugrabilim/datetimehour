@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">Telefonu dik tutup çevirin; Kâbe işareti ortaya geldiğinde kıble önünüzdedir. Görüntü telefonda kalır, kaydedilmez.</string>
     <string name="qibla_cameraDenied">Kamera izni yok. Ayarlar\'dan izin verebilirsiniz.</string>
     <string name="qibla_kaabaName">Kâbe</string>
+    <string name="alarm_task_squat">Squat</string>
+    <string name="alarm_task_object">Nesneyi bul</string>
+    <string name="alarm_task_speak">Sesli oku</string>
+    <string name="alarm_task_objectTarget">Ne fotoğraflanacak</string>
+    <string name="alarm_task_object_random">Her sabah farklı</string>
+    <string name="wake_object_cup">Bardak ya da fincan</string>
+    <string name="wake_object_toothbrush">Diş fırçası ya da lavabo</string>
+    <string name="wake_object_sky">Gökyüzü</string>
+    <string name="wake_object_bed">Toplanmış yatak</string>
+    <string name="wake_object_plant">Bir bitki ya da çiçek</string>
+    <string name="wake_object_shoe">Ayakkabı</string>
+    <string name="wake_object">Şunun fotoğrafını çekin: %1$s</string>
+    <string name="wake_object_wrong">Görüntüde bulunamadı; daha yakından ya da aydınlıkta deneyin.</string>
+    <string name="wake_object_note">Fotoğraf telefonda tanınır, saklanmaz ve hiçbir yere gönderilmez.</string>
+    <string name="wake_squat">Telefon elinizde %1$s kez çömelip kalkın</string>
+    <string name="wake_speak">Bu sözü yüksek sesle okuyun</string>
+    <string name="wake_speak_start">Dinlemeye başla</string>
+    <string name="wake_speak_listening">Dinleniyor…</string>
+    <string name="wake_speak_heard">Duyulan: %1$s</string>
+    <string name="wake_speak_unavailable">Bu telefonda cihaz içi konuşma tanıma yok; yazma görevine geçildi.</string>
+    <string name="wake_speak_note">Ses yalnız telefonda tanınır, kaydedilmez ve hiçbir yere gönderilmez.</string>
     <string name="app_name">Saat Tarih</string>
 </resources>

@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">Hold the phone upright and turn; when the Kaaba marker reaches the centre, the qibla is in front of you. The image stays on the phone and is not saved.</string>
     <string name="qibla_cameraDenied">No camera permission. You can allow it in Settings.</string>
     <string name="qibla_kaabaName">Kaaba</string>
+    <string name="alarm_task_squat">Squats</string>
+    <string name="alarm_task_object">Find an object</string>
+    <string name="alarm_task_speak">Read aloud</string>
+    <string name="alarm_task_objectTarget">What to photograph</string>
+    <string name="alarm_task_object_random">Different each morning</string>
+    <string name="wake_object_cup">A cup or mug</string>
+    <string name="wake_object_toothbrush">Toothbrush or sink</string>
+    <string name="wake_object_sky">The sky</string>
+    <string name="wake_object_bed">Your made bed</string>
+    <string name="wake_object_plant">A plant or flower</string>
+    <string name="wake_object_shoe">A shoe</string>
+    <string name="wake_object">Take a photo of: %1$s</string>
+    <string name="wake_object_wrong">Not found in the photo; try closer or in better light.</string>
+    <string name="wake_object_note">The photo is recognised on the phone, not stored and not sent anywhere.</string>
+    <string name="wake_squat">Do %1$s squats holding the phone</string>
+    <string name="wake_speak">Read this saying aloud</string>
+    <string name="wake_speak_start">Start listening</string>
+    <string name="wake_speak_listening">Listening…</string>
+    <string name="wake_speak_heard">Heard: %1$s</string>
+    <string name="wake_speak_unavailable">This phone has no on-device speech recognition; switched to the typing task.</string>
+    <string name="wake_speak_note">Speech is recognised only on the phone, not recorded and not sent anywhere.</string>
     <string name="app_name">Time &amp; Date</string>
 </resources>

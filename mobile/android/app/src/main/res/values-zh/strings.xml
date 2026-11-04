@@ -2481,21 +2481,42 @@
     <string name="notify_perPrayer_note">可为每次礼拜单独选择提前时间、声音和日期。未选日期时每天提醒。</string>
     <string name="notify_perPrayer_custom">自定义</string>
     <string name="notify_perPrayer_general">通用设置</string>
-    <string name="notify_perPrayer_days">日期(留空=每天)</string>
+    <string name="notify_perPrayer_days">日期（留空=每天）</string>
     <string name="qibla_style_classic">经典</string>
     <string name="qibla_style_minimal">简约</string>
     <string name="qibla_style_gold">金色</string>
     <string name="qibla_style_night">夜间</string>
     <string name="qibla_style_green">绿色</string>
     <string name="qibla_map">地图上的朝向</string>
-    <string name="qibla_mapNote">这条线是从您所在地到天房的最短路径(大圆)。地图在手机上绘制,不连接任何服务。</string>
-    <string name="qibla_mapNoteIos">这条线是从您所在地到天房的最短路径(大圆)。地图来自 Apple 地图。</string>
+    <string name="qibla_mapNote">这条线是从您所在地到天房的最短路径（大圆）。地图在手机上绘制，不连接任何服务。</string>
+    <string name="qibla_mapNoteIos">这条线是从您所在地到天房的最短路径（大圆）。地图来自 Apple 地图。</string>
     <string name="qibla_favs">收藏的清真寺</string>
     <string name="qibla_favAdd">加入收藏</string>
     <string name="qibla_favRemove">取消收藏</string>
     <string name="qibla_camera">相机视图</string>
-    <string name="qibla_cameraNote">竖直握住手机并转身;天房标记到达中央时,朝向就在您正前方。画面只留在手机上,不会保存。</string>
+    <string name="qibla_cameraNote">竖直握住手机并转身；天房标记到达中央时，朝向就在您正前方。画面只留在手机上，不会保存。</string>
     <string name="qibla_cameraDenied">没有相机权限。可在“设置”中允许。</string>
     <string name="qibla_kaabaName">天房</string>
+    <string name="alarm_task_squat">深蹲</string>
+    <string name="alarm_task_object">找到物品</string>
+    <string name="alarm_task_speak">大声朗读</string>
+    <string name="alarm_task_objectTarget">拍摄什么</string>
+    <string name="alarm_task_object_random">每天早上不同</string>
+    <string name="wake_object_cup">杯子</string>
+    <string name="wake_object_toothbrush">牙刷或洗手池</string>
+    <string name="wake_object_sky">天空</string>
+    <string name="wake_object_bed">整理好的床</string>
+    <string name="wake_object_plant">植物或花</string>
+    <string name="wake_object_shoe">鞋子</string>
+    <string name="wake_object">请拍摄: %1$s</string>
+    <string name="wake_object_wrong">照片中未识别到；请靠近些或在明亮处重试。</string>
+    <string name="wake_object_note">照片在手机上识别，不会保存或发送。</string>
+    <string name="wake_squat">手持手机做 %1$s 次深蹲</string>
+    <string name="wake_speak">请大声读出这句话</string>
+    <string name="wake_speak_start">开始聆听</string>
+    <string name="wake_speak_listening">正在聆听…</string>
+    <string name="wake_speak_heard">听到: %1$s</string>
+    <string name="wake_speak_unavailable">此手机不支持设备端语音识别；已切换为输入任务。</string>
+    <string name="wake_speak_note">语音仅在手机上识别，不录音也不发送。</string>
     <string name="app_name">时间与日期</string>
 </resources>

@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">휴대폰을 세워 들고 돌아보세요. 카바 표시가 가운데에 오면 키블라가 앞쪽입니다. 영상은 휴대폰에만 있고 저장되지 않습니다.</string>
     <string name="qibla_cameraDenied">카메라 권한이 없습니다. 설정에서 허용할 수 있습니다.</string>
     <string name="qibla_kaabaName">카바</string>
+    <string name="alarm_task_squat">스쿼트</string>
+    <string name="alarm_task_object">물건 찾기</string>
+    <string name="alarm_task_speak">소리 내어 읽기</string>
+    <string name="alarm_task_objectTarget">찍을 대상</string>
+    <string name="alarm_task_object_random">매일 아침 다르게</string>
+    <string name="wake_object_cup">컵이나 머그</string>
+    <string name="wake_object_toothbrush">칫솔이나 세면대</string>
+    <string name="wake_object_sky">하늘</string>
+    <string name="wake_object_bed">정리한 침대</string>
+    <string name="wake_object_plant">식물이나 꽃</string>
+    <string name="wake_object_shoe">신발</string>
+    <string name="wake_object">사진을 찍으세요: %1$s</string>
+    <string name="wake_object_wrong">사진에서 찾지 못했습니다. 더 가까이 또는 밝은 곳에서 다시 해 보세요.</string>
+    <string name="wake_object_note">사진은 휴대폰에서 인식되며 저장되거나 전송되지 않습니다.</string>
+    <string name="wake_squat">휴대폰을 들고 스쿼트 %1$s회</string>
+    <string name="wake_speak">이 문장을 소리 내어 읽으세요</string>
+    <string name="wake_speak_start">듣기 시작</string>
+    <string name="wake_speak_listening">듣는 중…</string>
+    <string name="wake_speak_heard">들린 말: %1$s</string>
+    <string name="wake_speak_unavailable">이 휴대폰에는 기기 내 음성 인식이 없어 입력 과제로 바꿨습니다.</string>
+    <string name="wake_speak_note">음성은 휴대폰에서만 인식되며 녹음되거나 전송되지 않습니다.</string>
     <string name="app_name">시간과 날짜</string>
 </resources>

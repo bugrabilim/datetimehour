@@ -180,7 +180,7 @@ fun AlarmScreen(onGeo: () -> Unit = {}) {
                                 }
                                 // Görev simgesi (2. analiz #51)
                                 val icon = when (item.effectiveTask) {
-                                    "math" -> "🧮 "; "shake" -> "📳 "; "steps" -> "🚶 "; "code" -> "🔳 "; "memory" -> "🧠 "; "typing" -> "⌨️ "; "photo" -> "📷 "
+                                    "math" -> "🧮 "; "shake" -> "📳 "; "steps" -> "🚶 "; "code" -> "🔳 "; "memory" -> "🧠 "; "typing" -> "⌨️ "; "photo" -> "📷 "; "squat" -> "🏋️ "; "object" -> "🔍 "; "speak" -> "🗣️ "
                                     "light" -> "💡 "; "random" -> "🎲 "
                                     else -> ""
                                 } + (if (item.chain.isNotEmpty()) "+${item.chain.size} " else "")
@@ -562,6 +562,14 @@ private fun AlarmEditor(item: AlarmItem, isNew: Boolean, onDismiss: () -> Unit, 
                             Text(L(if (hasPhoto) "alarm.photo.change" else "alarm.photo.save"), color = Theme.c.accent)
                         }
                         Text(L(if (hasPhoto) "alarm.photo.saved" else "alarm.photo.missing"), color = Theme.c.muted, fontSize = 12.sp)
+                    }
+                    if (task == "object") {
+                        val ids = listOf("") + tr.bumba.time.core.WakeTask.OBJECTS.keys
+                        val cur = code.takeIf { it.startsWith(ObjectTarget.PREFIX) }?.removePrefix(ObjectTarget.PREFIX) ?: ""
+                        fun name(id: String) = if (id.isEmpty()) L("alarm.task.object.random") else L("wake.object.$id")
+                        ChoiceRow(L("alarm.task.objectTarget"), name(cur), ids.indices.map { it to name(ids[it]) }) { i ->
+                            code = if (ids[i].isEmpty()) "" else ObjectTarget.PREFIX + ids[i]
+                        }
                     }
                     if (task != "none") Text(L("alarm.task.note"), color = Theme.c.muted, fontSize = 12.sp)
                     Row(verticalAlignment = Alignment.CenterVertically) {

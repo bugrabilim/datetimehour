@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">Hawakan nang patayo ang telepono at umikot; kapag nasa gitna na ang marka ng Kaaba, nasa harap mo ang qibla. Nananatili sa telepono ang larawan at hindi sine-save.</string>
     <string name="qibla_cameraDenied">Walang pahintulot sa camera. Maaari mo itong payagan sa Settings.</string>
     <string name="qibla_kaabaName">Kaaba</string>
+    <string name="alarm_task_squat">Squat</string>
+    <string name="alarm_task_object">Hanapin ang bagay</string>
+    <string name="alarm_task_speak">Basahin nang malakas</string>
+    <string name="alarm_task_objectTarget">Ano ang kukunan</string>
+    <string name="alarm_task_object_random">Iba-iba tuwing umaga</string>
+    <string name="wake_object_cup">Tasa o baso</string>
+    <string name="wake_object_toothbrush">Sipilyo o lababo</string>
+    <string name="wake_object_sky">Ang langit</string>
+    <string name="wake_object_bed">Inayos na kama</string>
+    <string name="wake_object_plant">Halaman o bulaklak</string>
+    <string name="wake_object_shoe">Sapatos</string>
+    <string name="wake_object">Kunan ng larawan: %1$s</string>
+    <string name="wake_object_wrong">Hindi nakita sa larawan; subukan nang mas malapit o sa mas maliwanag.</string>
+    <string name="wake_object_note">Kinikilala ang larawan sa telepono, hindi sine-save at hindi ipinapadala.</string>
+    <string name="wake_squat">Gumawa ng %1$s squat habang hawak ang telepono</string>
+    <string name="wake_speak">Basahin nang malakas ang kasabihang ito</string>
+    <string name="wake_speak_start">Simulan ang pakikinig</string>
+    <string name="wake_speak_listening">Nakikinig…</string>
+    <string name="wake_speak_heard">Narinig: %1$s</string>
+    <string name="wake_speak_unavailable">Walang on-device na speech recognition ang teleponong ito; lumipat sa typing task.</string>
+    <string name="wake_speak_note">Kinikilala lang ang boses sa telepono, hindi nire-record at hindi ipinapadala.</string>
     <string name="app_name">Oras at Petsa</string>
 </resources>

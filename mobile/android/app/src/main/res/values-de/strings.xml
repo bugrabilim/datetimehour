@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">Halten Sie das Telefon aufrecht und drehen Sie sich; steht das Kaaba-Zeichen in der Mitte, liegt die Qibla vor Ihnen. Das Bild bleibt auf dem Telefon und wird nicht gespeichert.</string>
     <string name="qibla_cameraDenied">Keine Kameraberechtigung. Sie können sie in den Einstellungen erlauben.</string>
     <string name="qibla_kaabaName">Kaaba</string>
+    <string name="alarm_task_squat">Kniebeugen</string>
+    <string name="alarm_task_object">Gegenstand finden</string>
+    <string name="alarm_task_speak">Laut vorlesen</string>
+    <string name="alarm_task_objectTarget">Was fotografieren</string>
+    <string name="alarm_task_object_random">Jeden Morgen anders</string>
+    <string name="wake_object_cup">Eine Tasse oder ein Glas</string>
+    <string name="wake_object_toothbrush">Zahnbürste oder Waschbecken</string>
+    <string name="wake_object_sky">Den Himmel</string>
+    <string name="wake_object_bed">Das gemachte Bett</string>
+    <string name="wake_object_plant">Eine Pflanze oder Blume</string>
+    <string name="wake_object_shoe">Einen Schuh</string>
+    <string name="wake_object">Fotografieren Sie: %1$s</string>
+    <string name="wake_object_wrong">Nicht im Bild erkannt; näher oder bei mehr Licht versuchen.</string>
+    <string name="wake_object_note">Das Foto wird auf dem Telefon erkannt, nicht gespeichert und nirgendwohin gesendet.</string>
+    <string name="wake_squat">Machen Sie %1$s Kniebeugen mit dem Telefon in der Hand</string>
+    <string name="wake_speak">Lesen Sie diesen Spruch laut vor</string>
+    <string name="wake_speak_start">Zuhören starten</string>
+    <string name="wake_speak_listening">Hört zu…</string>
+    <string name="wake_speak_heard">Gehört: %1$s</string>
+    <string name="wake_speak_unavailable">Dieses Telefon hat keine Spracherkennung auf dem Gerät; zur Tippaufgabe gewechselt.</string>
+    <string name="wake_speak_note">Sprache wird nur auf dem Telefon erkannt, nicht aufgezeichnet und nirgendwohin gesendet.</string>
     <string name="app_name">Uhr &amp; Datum</string>
 </resources>

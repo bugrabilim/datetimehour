@@ -4,6 +4,25 @@ import XCTest
 /// Android'deki core FocusSleepWakeTest ile aynı denetimler
 final class FocusSleepWakeTests: XCTestCase {
     /// Yeni alarm görevleri (#75): hafıza dizisi, yazma denetimi, fotoğraf özeti
+    func testSquatObjectSpeak() {
+        XCTAssertTrue(WakeTask.objectMatch("cup", [("Coffee cup", 0.8)]))
+        XCTAssertTrue(WakeTask.objectMatch("bed", [("bedroom", 0.5)]))
+        XCTAssertFalse(WakeTask.objectMatch("bed", [("bedroom", 0.1)]))
+        XCTAssertFalse(WakeTask.objectMatch("sky", [("keyboard", 0.9)]))
+        XCTAssertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan yol alır"))
+        XCTAssertTrue(WakeTask.spoken("Sabah erken kalkan yol alır", "sabah erken kalkan alır"))
+        XCTAssertFalse(WakeTask.spoken("Sabah erken kalkan yol alır", "yol alır"))
+        var c = MotionCounter.squat()
+        var t = 0.0
+        for _ in 0..<5 {
+            c.feed(t: t, x: 0, y: 0, z: 0.8); c.feed(t: t + 0.4, x: 0, y: 0, z: 1.4); c.feed(t: t + 0.7, x: 0, y: 0, z: 1.0)
+            t += 1.5
+        }
+        XCTAssertEqual(c.count, 5)
+        c.feed(t: t, x: 0, y: 0, z: 0.8); c.feed(t: t + 0.1, x: 0, y: 0, z: 1.5); c.feed(t: t + 0.2, x: 0, y: 0, z: 0.8); c.feed(t: t + 0.3, x: 0, y: 0, z: 1.5)
+        XCTAssertEqual(c.count, 6)
+    }
+
     func testMoreWakeTasks() {
         var rng = SplitMix64(seed: 7)
         let seq = WakeTask.memorySequence(level: 2, using: &rng)

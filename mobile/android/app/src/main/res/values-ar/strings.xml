@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">أمسك الهاتف عموديًا واستدر؛ عندما تصل علامة الكعبة إلى المنتصف تكون القبلة أمامك. تبقى الصورة على الهاتف ولا تُحفظ.</string>
     <string name="qibla_cameraDenied">لا يوجد إذن للكاميرا. يمكنك السماح به من الإعدادات.</string>
     <string name="qibla_kaabaName">الكعبة</string>
+    <string name="alarm_task_squat">قرفصاء</string>
+    <string name="alarm_task_object">ابحث عن شيء</string>
+    <string name="alarm_task_speak">اقرأ بصوت عالٍ</string>
+    <string name="alarm_task_objectTarget">ما الذي يُصوَّر</string>
+    <string name="alarm_task_object_random">مختلف كل صباح</string>
+    <string name="wake_object_cup">كوب أو فنجان</string>
+    <string name="wake_object_toothbrush">فرشاة أسنان أو مغسلة</string>
+    <string name="wake_object_sky">السماء</string>
+    <string name="wake_object_bed">السرير المرتب</string>
+    <string name="wake_object_plant">نبتة أو زهرة</string>
+    <string name="wake_object_shoe">حذاء</string>
+    <string name="wake_object">التقط صورة لـ: %1$s</string>
+    <string name="wake_object_wrong">لم يُعثر عليه في الصورة؛ جرّب من أقرب أو في إضاءة أفضل.</string>
+    <string name="wake_object_note">يُتعرَّف على الصورة على الهاتف، ولا تُحفظ ولا تُرسل إلى أي مكان.</string>
+    <string name="wake_squat">قم بـ %1$s قرفصاء والهاتف بيدك</string>
+    <string name="wake_speak">اقرأ هذه العبارة بصوت عالٍ</string>
+    <string name="wake_speak_start">ابدأ الاستماع</string>
+    <string name="wake_speak_listening">جارٍ الاستماع…</string>
+    <string name="wake_speak_heard">المسموع: %1$s</string>
+    <string name="wake_speak_unavailable">لا يدعم هذا الهاتف التعرف على الكلام على الجهاز؛ تم الانتقال إلى مهمة الكتابة.</string>
+    <string name="wake_speak_note">يُتعرَّف على الكلام على الهاتف فقط، ولا يُسجَّل ولا يُرسل.</string>
     <string name="app_name">الوقت والتاريخ</string>
 </resources>

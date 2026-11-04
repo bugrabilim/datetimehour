@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">Tenez le téléphone droit et tournez ; quand le repère de la Kaaba est au centre, la qibla est devant vous. L\'image reste sur le téléphone et n\'est pas enregistrée.</string>
     <string name="qibla_cameraDenied">Pas d\'autorisation caméra. Vous pouvez l\'accorder dans Réglages.</string>
     <string name="qibla_kaabaName">Kaaba</string>
+    <string name="alarm_task_squat">Squats</string>
+    <string name="alarm_task_object">Trouver un objet</string>
+    <string name="alarm_task_speak">Lire à voix haute</string>
+    <string name="alarm_task_objectTarget">Quoi photographier</string>
+    <string name="alarm_task_object_random">Différent chaque matin</string>
+    <string name="wake_object_cup">Une tasse ou un verre</string>
+    <string name="wake_object_toothbrush">Brosse à dents ou lavabo</string>
+    <string name="wake_object_sky">Le ciel</string>
+    <string name="wake_object_bed">Votre lit fait</string>
+    <string name="wake_object_plant">Une plante ou une fleur</string>
+    <string name="wake_object_shoe">Une chaussure</string>
+    <string name="wake_object">Prenez en photo : %1$s</string>
+    <string name="wake_object_wrong">Introuvable sur la photo ; essayez de plus près ou avec plus de lumière.</string>
+    <string name="wake_object_note">La photo est reconnue sur le téléphone, ni enregistrée ni envoyée.</string>
+    <string name="wake_squat">Faites %1$s squats en tenant le téléphone</string>
+    <string name="wake_speak">Lisez cette phrase à voix haute</string>
+    <string name="wake_speak_start">Commencer l\'écoute</string>
+    <string name="wake_speak_listening">Écoute…</string>
+    <string name="wake_speak_heard">Entendu : %1$s</string>
+    <string name="wake_speak_unavailable">Ce téléphone n\'a pas de reconnaissance vocale sur l\'appareil ; passage à la saisie.</string>
+    <string name="wake_speak_note">La voix est reconnue uniquement sur le téléphone, ni enregistrée ni envoyée.</string>
     <string name="app_name">Heure &amp; Date</string>
 </resources>

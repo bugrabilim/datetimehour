@@ -821,6 +821,15 @@ private struct AlarmEditor: View {
                             }
                             Text(L(item.code.hasPrefix(PhotoHash.prefix) ? "alarm.photo.saved" : "alarm.photo.missing")).font(.footnote).foregroundStyle(Theme.muted)
                         }
+                        if item.task == "object" {
+                            Picker(L("alarm.task.objectTarget"), selection: Binding(
+                                get: { item.code.hasPrefix(ObjectTarget.prefix) ? String(item.code.dropFirst(ObjectTarget.prefix.count)) : "" },
+                                set: { item.code = $0.isEmpty ? "" : ObjectTarget.prefix + $0 }
+                            )) {
+                                Text(L("alarm.task.object.random")).tag("")
+                                ForEach(WakeTask.objectIds, id: \.self) { id in Text(L("wake.object." + id)).tag(id) }
+                            }
+                        }
                         Toggle(L("alarm.wakeCheck"), isOn: $item.wakeCheck).tint(Theme.accent)
                     } header: {
                         Text(L("alarm.task.heading"))

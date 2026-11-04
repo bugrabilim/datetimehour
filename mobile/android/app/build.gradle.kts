@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.lifecycle.runtime.compose)
     implementation(libs.code.scanner)
+    implementation(libs.image.labeling)
     implementation(libs.play.location)
     implementation(libs.health.connect)
     implementation(libs.zxing.core)

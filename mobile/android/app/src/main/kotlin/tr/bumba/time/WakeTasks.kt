@@ -121,7 +121,9 @@ fun WakeTaskPanel(item: AlarmItem, tasks: List<String>? = null, title: String = 
         androidx.compose.runtime.key(step, kind) {
             when (kind) {
                 "math" -> MathTask(level, next)
-                "shake", "steps" -> MotionTask(kind, next)
+                "shake", "steps", "squat" -> MotionTask(kind, next)
+                "object" -> ObjectTask(item.code, next)
+                "speak" -> SpeakTask(next) { other = "typing" }
                 "code" -> CodeTask(item.code, next)
                 "memory" -> MemoryTask(level, next)
                 "typing" -> TypingTask(next)
@@ -200,12 +202,12 @@ private fun MathTask(level: Int, onSolved: () -> Unit) {
 @Composable
 private fun MotionTask(kind: String, onSolved: () -> Unit) {
     val context = LocalContext.current
-    val total = if (kind == "shake") WakeTask.SHAKES else WakeTask.STEPS
+    val total = when (kind) { "shake" -> WakeTask.SHAKES; "squat" -> WakeTask.SQUATS; else -> WakeTask.STEPS }
     var count by remember(kind) { mutableIntStateOf(0) }
     val sm = context.getSystemService(SensorManager::class.java)
     val sensor = sm?.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
     DisposableEffect(kind) {
-        val counter = if (kind == "shake") MotionCounter.shake() else MotionCounter.steps()
+        val counter = when (kind) { "shake" -> MotionCounter.shake(); "squat" -> MotionCounter.squat(); else -> MotionCounter.steps() }
         var done = false
         val listener = object : SensorEventListener {
             override fun onSensorChanged(e: SensorEvent) {
@@ -220,7 +222,7 @@ private fun MotionTask(kind: String, onSolved: () -> Unit) {
         if (sensor != null) sm.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_GAME)
         onDispose { sm?.unregisterListener(listener) }
     }
-    Text(T(if (kind == "shake") "wake.shake" else "wake.steps", total), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+    Text(T(when (kind) { "shake" -> "wake.shake"; "squat" -> "wake.squat"; else -> "wake.steps" }, total), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
     Ltr { Text(T("wake.progress", minOf(count, total), total), color = Theme.c.accent, fontSize = 44.sp, fontWeight = FontWeight.Bold, style = Tnum) }
     LinearProgressIndicator(progress = { minOf(count, total) / total.toFloat() }, Modifier.fillMaxWidth(), color = Theme.c.accent,
         trackColor = Theme.c.accent.copy(alpha = 0.2f))
@@ -311,6 +313,104 @@ private fun PhotoTask(code: String, onSolved: () -> Unit) {
     Text(L("wake.photo"), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
     RoundButton(L("wake.photo.take"), true, Modifier.fillMaxWidth()) { runCatching { take.launch(null) } }
     if (wrong) Text(L("wake.photo.wrong"), color = Theme.c.err, fontSize = 14.sp, textAlign = TextAlign.Center)
+}
+
+/** Nesne görevi (2. analiz #36): sistem kamerasıyla çekilen küçük görüntü ML Kit görüntü etiketleme ile telefonda
+ *  sınıflandırılır (Play hizmetleri modeli; ağa çıkmaz); hedef `code` alanında "obj:<kimlik>", yoksa her seferinde rastgele.
+ *  Görüntü saklanmaz. */
+object ObjectTarget {
+    const val PREFIX = "obj:"
+    fun of(code: String): String = code.removePrefix(PREFIX).takeIf { code.startsWith(PREFIX) && it in WakeTask.OBJECTS }
+        ?: WakeTask.OBJECTS.keys.random()
+}
+
+@Composable
+private fun ObjectTask(code: String, onSolved: () -> Unit) {
+    val target = remember { ObjectTarget.of(code) }
+    var wrong by remember { mutableStateOf(false) }
+    var busy by remember { mutableStateOf(false) }
+    val take = androidx.activity.compose.rememberLauncherForActivityResult(androidx.activity.result.contract.ActivityResultContracts.TakePicturePreview()) { bmp ->
+        if (bmp == null) return@rememberLauncherForActivityResult
+        busy = true
+        runCatching {
+            val labeler = com.google.mlkit.vision.label.ImageLabeling.getClient(
+                com.google.mlkit.vision.label.defaults.ImageLabelerOptions.Builder().setConfidenceThreshold(WakeTask.OBJECT_MIN).build())
+            labeler.process(com.google.mlkit.vision.common.InputImage.fromBitmap(bmp, 0))
+                .addOnSuccessListener { labels ->
+                    busy = false
+                    if (WakeTask.objectMatch(target, labels.map { it.text to it.confidence })) onSolved() else wrong = true
+                }
+                .addOnFailureListener { busy = false; wrong = true }
+        }.onFailure { busy = false; wrong = true }
+    }
+    Text(T("wake.object", L("wake.object.$target")), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, textAlign = TextAlign.Center)
+    RoundButton(L("wake.photo.take"), !busy, Modifier.fillMaxWidth()) { wrong = false; runCatching { take.launch(null) } }
+    if (wrong) Text(L("wake.object.wrong"), color = Theme.c.err, fontSize = 14.sp, textAlign = TextAlign.Center)
+    Text(L("wake.object.note"), color = Theme.c.muted, fontSize = 13.sp, textAlign = TextAlign.Center)
+}
+
+/** Sesli okuma (#37): günün sözlerinden biri; Android'in cihaz içi konuşma tanıması (Android 12+ createOnDeviceSpeechRecognizer,
+ *  öncesinde çevrimdışı tercihli tanıyıcı). Ses kaydedilmez. Tanıma yoksa [onUnavailable] (yazma görevi). Mikrofon izni burada istenir. */
+@Composable
+private fun SpeakTask(onSolved: () -> Unit, onUnavailable: () -> Unit) {
+    val context = LocalContext.current
+    val phrase = remember { Sayings.random(context) ?: "Saat Tarih" }
+    var heard by remember { mutableStateOf("") }
+    var listening by remember { mutableStateOf(false) }
+    val available = remember {
+        android.speech.SpeechRecognizer.isRecognitionAvailable(context) ||
+            (android.os.Build.VERSION.SDK_INT >= 31 && runCatching { android.speech.SpeechRecognizer.isOnDeviceRecognitionAvailable(context) }.getOrDefault(false))
+    }
+    androidx.compose.runtime.LaunchedEffect(available) { if (!available) onUnavailable() }
+    val recognizer = remember {
+        if (!available) null else runCatching {
+            if (android.os.Build.VERSION.SDK_INT >= 31 && android.speech.SpeechRecognizer.isOnDeviceRecognitionAvailable(context))
+                android.speech.SpeechRecognizer.createOnDeviceSpeechRecognizer(context)
+            else android.speech.SpeechRecognizer.createSpeechRecognizer(context)
+        }.getOrNull()
+    }
+    DisposableEffect(recognizer) { onDispose { recognizer?.destroy() } }
+    fun listen() {
+        val r = recognizer ?: run { onUnavailable(); return }
+        r.setRecognitionListener(object : android.speech.RecognitionListener {
+            override fun onResults(results: android.os.Bundle) {
+                listening = false
+                val list = results.getStringArrayList(android.speech.SpeechRecognizer.RESULTS_RECOGNITION).orEmpty()
+                heard = list.firstOrNull().orEmpty()
+                if (list.any { WakeTask.spoken(phrase, it) }) onSolved()
+            }
+            override fun onPartialResults(partial: android.os.Bundle) {
+                partial.getStringArrayList(android.speech.SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull()?.let { heard = it }
+            }
+            override fun onError(error: Int) { listening = false }
+            override fun onReadyForSpeech(p: android.os.Bundle?) {}
+            override fun onBeginningOfSpeech() {}
+            override fun onRmsChanged(v: Float) {}
+            override fun onBufferReceived(b: ByteArray?) {}
+            override fun onEndOfSpeech() {}
+            override fun onEvent(t: Int, b: android.os.Bundle?) {}
+        })
+        val i = android.content.Intent(android.speech.RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            .putExtra(android.speech.RecognizerIntent.EXTRA_LANGUAGE_MODEL, android.speech.RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+            .putExtra(android.speech.RecognizerIntent.EXTRA_LANGUAGE, Strings.locale.toLanguageTag())
+            .putExtra(android.speech.RecognizerIntent.EXTRA_PREFER_OFFLINE, true)
+            .putExtra(android.speech.RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
+            .putExtra(android.speech.RecognizerIntent.EXTRA_MAX_RESULTS, 5)
+        listening = true
+        runCatching { r.startListening(i) }.onFailure { listening = false; onUnavailable() }
+    }
+    val mic = androidx.activity.compose.rememberLauncherForActivityResult(androidx.activity.result.contract.ActivityResultContracts.RequestPermission()) { ok ->
+        if (ok) listen() else onUnavailable()
+    }
+    Text(L("wake.speak"), color = Theme.c.text, fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
+    Text(phrase, color = Theme.c.ink, fontSize = 22.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+    RoundButton(if (listening) L("wake.speak.listening") else L("wake.speak.start"), !listening, Modifier.fillMaxWidth()) {
+        val granted = androidx.core.content.ContextCompat.checkSelfPermission(context, android.Manifest.permission.RECORD_AUDIO) ==
+            android.content.pm.PackageManager.PERMISSION_GRANTED
+        if (granted) listen() else mic.launch(android.Manifest.permission.RECORD_AUDIO)
+    }
+    if (heard.isNotEmpty()) Text(T("wake.speak.heard", heard), color = Theme.c.muted, fontSize = 14.sp, textAlign = TextAlign.Center)
+    Text(L("wake.speak.note"), color = Theme.c.muted, fontSize = 13.sp, textAlign = TextAlign.Center)
 }
 
 /** Google kod tarayıcı (Play hizmetleri): kamera izni istemez, yalnız okunan değer uygulamaya gelir */

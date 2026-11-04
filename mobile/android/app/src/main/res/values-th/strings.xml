@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">ถือโทรศัพท์ตั้งตรงแล้วหมุนตัว เมื่อเครื่องหมายกะอ์บะฮ์อยู่ตรงกลาง กิบลัตอยู่ตรงหน้าคุณ ภาพอยู่ในโทรศัพท์และไม่ถูกบันทึก</string>
     <string name="qibla_cameraDenied">ไม่มีสิทธิ์ใช้กล้อง คุณอนุญาตได้ในการตั้งค่า</string>
     <string name="qibla_kaabaName">กะอ์บะฮ์</string>
+    <string name="alarm_task_squat">สควอต</string>
+    <string name="alarm_task_object">หาสิ่งของ</string>
+    <string name="alarm_task_speak">อ่านออกเสียง</string>
+    <string name="alarm_task_objectTarget">ถ่ายภาพอะไร</string>
+    <string name="alarm_task_object_random">ต่างกันทุกเช้า</string>
+    <string name="wake_object_cup">แก้วหรือถ้วย</string>
+    <string name="wake_object_toothbrush">แปรงสีฟันหรืออ่างล้างหน้า</string>
+    <string name="wake_object_sky">ท้องฟ้า</string>
+    <string name="wake_object_bed">เตียงที่เก็บแล้ว</string>
+    <string name="wake_object_plant">ต้นไม้หรือดอกไม้</string>
+    <string name="wake_object_shoe">รองเท้า</string>
+    <string name="wake_object">ถ่ายภาพ: %1$s</string>
+    <string name="wake_object_wrong">ไม่พบในภาพ ลองถ่ายใกล้ขึ้นหรือในที่สว่างกว่า</string>
+    <string name="wake_object_note">ภาพถูกจดจำบนโทรศัพท์ ไม่ถูกบันทึกและไม่ถูกส่งไปที่ใด</string>
+    <string name="wake_squat">สควอต %1$s ครั้งโดยถือโทรศัพท์</string>
+    <string name="wake_speak">อ่านประโยคนี้ออกเสียง</string>
+    <string name="wake_speak_start">เริ่มฟัง</string>
+    <string name="wake_speak_listening">กำลังฟัง…</string>
+    <string name="wake_speak_heard">ได้ยิน: %1$s</string>
+    <string name="wake_speak_unavailable">โทรศัพท์นี้ไม่มีการจดจำเสียงในเครื่อง จึงเปลี่ยนเป็นงานพิมพ์</string>
+    <string name="wake_speak_note">เสียงถูกจดจำในโทรศัพท์เท่านั้น ไม่ถูกบันทึกและไม่ถูกส่ง</string>
     <string name="app_name">เวลาและวันที่</string>
 </resources>

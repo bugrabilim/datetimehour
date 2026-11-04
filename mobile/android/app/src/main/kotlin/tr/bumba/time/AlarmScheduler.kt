@@ -97,14 +97,14 @@ data class AlarmItem(
         (listOf(effectiveTask) + chain.map { fix(it) }).filter { it != "none" }.map { if (it == "random") RANDOM_TASKS.random(random) else it }
 
     private fun fix(t: String) = when {
-        t == "code" && (code.isEmpty() || code.startsWith(PhotoHash.PREFIX)) -> "math"
+        t == "code" && (code.isEmpty() || code.startsWith(PhotoHash.PREFIX) || code.startsWith(ObjectTarget.PREFIX)) -> "math"
         t == "photo" && !code.startsWith(PhotoHash.PREFIX) -> "math"
         else -> t
     }
 
     /** Kapatırken istenecek görev (kod kaydedilmediyse matematik); yoksa "none" */
     val effectiveTask: String get() = when {
-        task == "code" && (code.isEmpty() || code.startsWith(PhotoHash.PREFIX)) -> "math"
+        task == "code" && (code.isEmpty() || code.startsWith(PhotoHash.PREFIX) || code.startsWith(ObjectTarget.PREFIX)) -> "math"
         task == "photo" && !code.startsWith(PhotoHash.PREFIX) -> "math"
         else -> task
     }

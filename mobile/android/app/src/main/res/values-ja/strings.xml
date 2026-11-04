@@ -2481,15 +2481,15 @@
     <string name="notify_perPrayer_note">礼拝ごとに通知のタイミング、音、曜日を選べます。曜日を選ばない場合は毎日通知します。</string>
     <string name="notify_perPrayer_custom">カスタム</string>
     <string name="notify_perPrayer_general">全体の設定</string>
-    <string name="notify_perPrayer_days">曜日(空欄=毎日)</string>
+    <string name="notify_perPrayer_days">曜日（空欄=毎日）</string>
     <string name="qibla_style_classic">クラシック</string>
     <string name="qibla_style_minimal">シンプル</string>
     <string name="qibla_style_gold">ゴールド</string>
     <string name="qibla_style_night">夜</string>
     <string name="qibla_style_green">グリーン</string>
     <string name="qibla_map">地図上のキブラ</string>
-    <string name="qibla_mapNote">線は現在地からカアバまでの最短経路(大円)です。地図は端末内で描かれ、外部サービスには接続しません。</string>
-    <string name="qibla_mapNoteIos">線は現在地からカアバまでの最短経路(大円)です。地図はApple マップです。</string>
+    <string name="qibla_mapNote">線は現在地からカアバまでの最短経路（大円）です。地図は端末内で描かれ、外部サービスには接続しません。</string>
+    <string name="qibla_mapNoteIos">線は現在地からカアバまでの最短経路（大円）です。地図はApple マップです。</string>
     <string name="qibla_favs">お気に入りのモスク</string>
     <string name="qibla_favAdd">お気に入りに追加</string>
     <string name="qibla_favRemove">お気に入りから削除</string>
@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">端末を縦に持って向きを変え、カアバの印が中央に来たらキブラは正面です。映像は端末内にとどまり、保存されません。</string>
     <string name="qibla_cameraDenied">カメラの許可がありません。設定で許可できます。</string>
     <string name="qibla_kaabaName">カアバ</string>
+    <string name="alarm_task_squat">スクワット</string>
+    <string name="alarm_task_object">物を探す</string>
+    <string name="alarm_task_speak">声に出して読む</string>
+    <string name="alarm_task_objectTarget">撮影するもの</string>
+    <string name="alarm_task_object_random">毎朝ちがう</string>
+    <string name="wake_object_cup">カップやマグ</string>
+    <string name="wake_object_toothbrush">歯ブラシや洗面台</string>
+    <string name="wake_object_sky">空</string>
+    <string name="wake_object_bed">整えたベッド</string>
+    <string name="wake_object_plant">植物や花</string>
+    <string name="wake_object_shoe">靴</string>
+    <string name="wake_object">撮影してください: %1$s</string>
+    <string name="wake_object_wrong">写真から見つかりません。近づくか明るい所で試してください。</string>
+    <string name="wake_object_note">写真は端末内で認識され、保存も送信もされません。</string>
+    <string name="wake_squat">端末を持って%1$s回スクワット</string>
+    <string name="wake_speak">この言葉を声に出して読んでください</string>
+    <string name="wake_speak_start">聞き取り開始</string>
+    <string name="wake_speak_listening">聞き取り中…</string>
+    <string name="wake_speak_heard">聞き取り: %1$s</string>
+    <string name="wake_speak_unavailable">この端末にはオンデバイス音声認識がないため、入力タスクに切り替えました。</string>
+    <string name="wake_speak_note">音声は端末内でのみ認識され、録音も送信もされません。</string>
     <string name="app_name">時刻と日付</string>
 </resources>

@@ -387,91 +387,91 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alarm kapatma görevi için kaydettiğiniz QR kodu ya da barkodu okumak için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez."
+            "value": "Alarm kapatma görevleri (QR kod, fotoğraf, nesne bulma) ve kıble kamera görünümü için. Görüntü telefonda işlenir, kaydedilmez ve hiçbir yere gönderilmez."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "To scan the QR code or barcode you saved for an alarm's dismiss task. The image is processed on your phone, not stored and not sent anywhere."
+            "value": "For alarm dismiss tasks (QR code, photo, finding an object) and the qibla camera view. The image is processed on your phone, not stored and not sent anywhere."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zum Scannen des QR-Codes oder Barcodes, den Sie für die Aufgabe eines Weckers gespeichert haben. Das Bild wird auf dem Telefon verarbeitet, nicht gespeichert und nirgendwohin gesendet."
+            "value": "Für Alarm-Aufgaben (QR-Code, Foto, Gegenstand finden) und die Qibla-Kameraansicht. Das Bild wird auf dem Telefon verarbeitet, nicht gespeichert und nirgendwohin gesendet."
           }
         },
         "az": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zəngin söndürmə tapşırığı üçün yadda saxladığınız QR kodu ya da barkodu oxumaq üçün. Görüntü telefonda işlənir, saxlanılmır və heç yerə göndərilmir."
+            "value": "Zəngli saatı söndürmə tapşırıqları (QR kod, şəkil, əşya tapma) və qiblə kamera görünüşü üçün. Görüntü telefonda işlənir, saxlanmır və heç yerə göndərilmir."
           }
         },
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لمسح رمز QR أو الباركود الذي حفظته لمهمة إيقاف المنبّه. تُعالج الصورة على هاتفك ولا تُحفظ ولا تُرسل إلى أي مكان."
+            "value": "لمهام إيقاف المنبه (رمز QR، صورة، العثور على شيء) ولعرض القبلة بالكاميرا. تُعالَج الصورة على هاتفك ولا تُحفظ ولا تُرسل إلى أي مكان."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Untuk memindai kode QR atau barcode yang Anda simpan untuk tugas mematikan alarm. Gambar diproses di ponsel Anda, tidak disimpan, dan tidak dikirim ke mana pun."
+            "value": "Untuk tugas mematikan alarm (kode QR, foto, menemukan benda) dan tampilan kamera kiblat. Gambar diproses di ponsel, tidak disimpan dan tidak dikirim ke mana pun."
           }
         },
         "ur": {
           "stringUnit": {
             "state": "translated",
-            "value": "الارم بند کرنے کے کام کے لیے محفوظ کیا گیا QR کوڈ یا بارکوڈ اسکین کرنے کے لیے۔ تصویر آپ کے فون پر پروسیس ہوتی ہے، نہ محفوظ ہوتی ہے نہ کہیں بھیجی جاتی ہے۔"
+            "value": "الارم بند کرنے کے کاموں (QR کوڈ، تصویر، چیز تلاش کرنا) اور قبلہ کیمرا منظر کے لیے۔ تصویر فون پر پروسیس ہوتی ہے، محفوظ نہیں ہوتی اور کہیں نہیں بھیجی جاتی۔"
           }
         },
         "fa": {
           "stringUnit": {
             "state": "translated",
-            "value": "برای اسکن کد QR یا بارکدی که برای کار خاموش کردن هشدار ذخیره کرده‌اید. تصویر روی گوشی شما پردازش می‌شود، ذخیره نمی‌شود و به جایی فرستاده نمی‌شود."
+            "value": "برای کارهای خاموش کردن هشدار (کد QR، عکس، پیدا کردن شیء) و نمای دوربین قبله. تصویر روی گوشی پردازش می‌شود، ذخیره نمی‌شود و به جایی فرستاده نمی‌شود."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pour scanner le QR code ou le code-barres enregistré pour la tâche d’arrêt d’une alarme. L’image est traitée sur votre téléphone ; elle n’est ni conservée ni envoyée."
+            "value": "Pour les tâches d'arrêt d'alarme (code QR, photo, trouver un objet) et la vue caméra de la qibla. L'image est traitée sur le téléphone, ni enregistrée ni envoyée."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Чтобы сканировать QR-код или штрихкод, сохранённый для задания отключения будильника. Изображение обрабатывается на телефоне, не сохраняется и никуда не отправляется."
+            "value": "Для заданий отключения будильника (QR-код, фото, поиск предмета) и вида киблы с камеры. Изображение обрабатывается на телефоне, не сохраняется и никуда не отправляется."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "アラームの停止の課題用に保存したQRコードやバーコードを読み取るためです。画像はスマホ上で処理され、保存も送信もされません。"
+            "value": "アラーム停止タスク（QRコード、写真、物を探す）とキブラのカメラ表示のため。映像は端末内で処理され、保存も送信もされません。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "알람 끄기 미션용으로 저장한 QR 코드나 바코드를 스캔하기 위해서입니다. 이미지는 휴대폰에서 처리되며 저장하거나 보내지 않습니다."
+            "value": "알람 끄기 과제(QR 코드, 사진, 물건 찾기)와 키블라 카메라 보기에 사용합니다. 영상은 휴대폰에서 처리되며 저장되거나 전송되지 않습니다."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "用于扫描您为闹钟关闭任务保存的二维码或条形码。图像在手机上处理，不保存也不发送。"
+            "value": "用于关闭闹钟的任务（二维码、照片、找到物品）和朝向相机视图。图像在手机上处理，不会保存或发送。"
           }
         },
         "fil": {
           "stringUnit": {
             "state": "translated",
-            "value": "Para i-scan ang QR code o barcode na na-save mo para sa gawaing pampatay ng alarma. Sa iyong telepono pinoproseso ang larawan, hindi ito sine-save at hindi ipinapadala kahit saan."
+            "value": "Para sa mga gawain sa pagpatay ng alarma (QR code, larawan, paghahanap ng bagay) at qibla camera view. Pinoproseso ang larawan sa telepono, hindi sine-save at hindi ipinapadala."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "เพื่อสแกน QR โค้ดหรือบาร์โค้ดที่คุณบันทึกไว้สำหรับภารกิจปิดนาฬิกาปลุก ภาพประมวลผลบนโทรศัพท์ ไม่ถูกเก็บและไม่ส่งไปที่ใด"
+            "value": "สำหรับงานปิดนาฬิกาปลุก (คิวอาร์โค้ด รูปถ่าย หาสิ่งของ) และมุมมองกล้องกิบลัต ภาพถูกประมวลผลในโทรศัพท์ ไม่ถูกบันทึกและไม่ถูกส่งไปที่ใด"
           }
         }
       }
@@ -662,6 +662,196 @@
           "stringUnit": {
             "state": "translated",
             "value": "เพื่อให้คุณเลือกเพลงจากคลังเพลงเป็นเสียงปลุก ช่วงสั้น ๆ ที่ตัดจากเพลงอยู่บนโทรศัพท์และไม่ส่งไปที่ใด"
+          }
+        }
+      }
+    },
+    "NSMicrophoneUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm kapatma görevindeki sözü sesli okuduğunuzu anlamak için. Ses yalnız telefonda tanınır, kaydedilmez ve hiçbir yere gönderilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To hear you read the saying aloud in the alarm dismiss task. Speech is recognised only on your phone, not recorded and not sent anywhere."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um zu hören, dass Sie den Spruch der Alarm-Aufgabe laut vorlesen. Sprache wird nur auf dem Telefon erkannt, nicht aufgezeichnet und nirgendwohin gesendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لسماعك وأنت تقرأ العبارة بصوت عالٍ في مهمة إيقاف المنبه. يُتعرَّف على الكلام على هاتفك فقط، ولا يُسجَّل ولا يُرسل."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk mendengar Anda membacakan kalimat di tugas mematikan alarm. Suara hanya dikenali di ponsel, tidak direkam dan tidak dikirim."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم بند کرنے کے کام میں قول بلند آواز سے پڑھنا سننے کے لیے۔ آواز صرف فون پر پہچانی جاتی ہے، ریکارڈ نہیں ہوتی اور کہیں نہیں بھیجی جاتی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای شنیدن خواندن بلند جمله در کار خاموش کردن هشدار. صدا فقط روی گوشی شناخته می‌شود، ضبط و ارسال نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour entendre la phrase lue à voix haute dans la tâche d'arrêt d'alarme. La voix est reconnue uniquement sur le téléphone, ni enregistrée ni envoyée."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы услышать, как вы читаете фразу вслух в задании будильника. Речь распознаётся только на телефоне, не записывается и никуда не отправляется."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラーム停止タスクで言葉を声に出して読んだことを聞き取るため。音声は端末内でのみ認識され、録音も送信もされません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알람 끄기 과제에서 문장을 소리 내어 읽는지 듣기 위해 사용합니다. 음성은 휴대폰에서만 인식되며 녹음되거나 전송되지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用于在关闭闹钟任务中听您大声朗读句子。语音仅在手机上识别，不录音也不发送。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para marinig na binabasa mo nang malakas ang kasabihan sa gawain ng alarma. Kinikilala lang ang boses sa telepono, hindi nire-record at hindi ipinapadala."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อฟังว่าคุณอ่านประโยคออกเสียงในงานปิดนาฬิกาปลุก เสียงถูกจดจำในโทรศัพท์เท่านั้น ไม่ถูกบันทึกและไม่ถูกส่ง"
+          }
+        }
+      }
+    },
+    "NSSpeechRecognitionUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alarm kapatma görevindeki sözü sesli okuduğunuzu anlamak için. Ses yalnız telefonda tanınır, kaydedilmez ve hiçbir yere gönderilmez."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To hear you read the saying aloud in the alarm dismiss task. Speech is recognised only on your phone, not recorded and not sent anywhere."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um zu hören, dass Sie den Spruch der Alarm-Aufgabe laut vorlesen. Sprache wird nur auf dem Telefon erkannt, nicht aufgezeichnet und nirgendwohin gesendet."
+          }
+        },
+        "az": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zəngli saat tapşırığındakı sözü səsli oxuduğunuzu anlamaq üçün. Səs yalnız telefonda tanınır, yazılmır və heç yerə göndərilmir."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لسماعك وأنت تقرأ العبارة بصوت عالٍ في مهمة إيقاف المنبه. يُتعرَّف على الكلام على هاتفك فقط، ولا يُسجَّل ولا يُرسل."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Untuk mendengar Anda membacakan kalimat di tugas mematikan alarm. Suara hanya dikenali di ponsel, tidak direkam dan tidak dikirim."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الارم بند کرنے کے کام میں قول بلند آواز سے پڑھنا سننے کے لیے۔ آواز صرف فون پر پہچانی جاتی ہے، ریکارڈ نہیں ہوتی اور کہیں نہیں بھیجی جاتی۔"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای شنیدن خواندن بلند جمله در کار خاموش کردن هشدار. صدا فقط روی گوشی شناخته می‌شود، ضبط و ارسال نمی‌شود."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pour entendre la phrase lue à voix haute dans la tâche d'arrêt d'alarme. La voix est reconnue uniquement sur le téléphone, ni enregistrée ni envoyée."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Чтобы услышать, как вы читаете фразу вслух в задании будильника. Речь распознаётся только на телефоне, не записывается и никуда не отправляется."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アラーム停止タスクで言葉を声に出して読んだことを聞き取るため。音声は端末内でのみ認識され、録音も送信もされません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "알람 끄기 과제에서 문장을 소리 내어 읽는지 듣기 위해 사용합니다. 음성은 휴대폰에서만 인식되며 녹음되거나 전송되지 않습니다."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "用于在关闭闹钟任务中听您大声朗读句子。语音仅在手机上识别，不录音也不发送。"
+          }
+        },
+        "fil": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Para marinig na binabasa mo nang malakas ang kasabihan sa gawain ng alarma. Kinikilala lang ang boses sa telepono, hindi nire-record at hindi ipinapadala."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "เพื่อฟังว่าคุณอ่านประโยคออกเสียงในงานปิดนาฬิกาปลุก เสียงถูกจดจำในโทรศัพท์เท่านั้น ไม่ถูกบันทึกและไม่ถูกส่ง"
           }
         }
       }

@@ -4,6 +4,8 @@
 
     <!-- "Konumumu kullan" (yaklaşık konum yeterli; konum telefonda kalır) -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Alarm kapatma görevi "sesli okuma" (2. analiz #37): cihaz içi konuşma tanıma; ses kaydedilmez, yalnız görev sırasında -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- Konuma bağlı hatırlatıcı (#93): bölge izleme kesin ve "her zaman" konum ister; yalnız hatırlatıcı eklenirken istenir -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -46,6 +48,10 @@
     <uses-feature android:name="android.software.leanback" android:required="false" />
 
     <queries>
+        <!-- Sesli okuma görevi: telefondaki konuşma tanıma hizmeti var mı (Android 11+ paket görünürlüğü) -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
         <package android:name="com.google.android.apps.healthdata" />
         <!-- Odakta engelleme: engellenecek uygulama seçicisi yalnız ana ekranda simgesi olan uygulamaları listeler -->
         <intent>

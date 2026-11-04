@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">گوشی را عمودی بگیرید و بچرخید؛ وقتی نشانه کعبه به وسط رسید، قبله روبه‌روی شماست. تصویر روی گوشی می‌ماند و ذخیره نمی‌شود.</string>
     <string name="qibla_cameraDenied">اجازه دوربین نیست. می‌توانید از تنظیمات اجازه دهید.</string>
     <string name="qibla_kaabaName">کعبه</string>
+    <string name="alarm_task_squat">اسکات</string>
+    <string name="alarm_task_object">پیدا کردن شیء</string>
+    <string name="alarm_task_speak">بلند بخوان</string>
+    <string name="alarm_task_objectTarget">از چه عکس بگیرید</string>
+    <string name="alarm_task_object_random">هر صبح متفاوت</string>
+    <string name="wake_object_cup">لیوان یا فنجان</string>
+    <string name="wake_object_toothbrush">مسواک یا روشویی</string>
+    <string name="wake_object_sky">آسمان</string>
+    <string name="wake_object_bed">تخت مرتب</string>
+    <string name="wake_object_plant">گیاه یا گل</string>
+    <string name="wake_object_shoe">کفش</string>
+    <string name="wake_object">از این عکس بگیرید: %1$s</string>
+    <string name="wake_object_wrong">در عکس پیدا نشد؛ از نزدیک‌تر یا در نور بهتر امتحان کنید.</string>
+    <string name="wake_object_note">عکس روی گوشی شناخته می‌شود، ذخیره نمی‌شود و به جایی فرستاده نمی‌شود.</string>
+    <string name="wake_squat">با گوشی در دست %1$s اسکات بزنید</string>
+    <string name="wake_speak">این جمله را بلند بخوانید</string>
+    <string name="wake_speak_start">شروع شنیدن</string>
+    <string name="wake_speak_listening">در حال شنیدن…</string>
+    <string name="wake_speak_heard">شنیده شد: %1$s</string>
+    <string name="wake_speak_unavailable">این گوشی تشخیص گفتار روی دستگاه ندارد؛ به کار تایپ رفت.</string>
+    <string name="wake_speak_note">صدا فقط روی گوشی شناخته می‌شود، ضبط و ارسال نمی‌شود.</string>
     <string name="app_name">ساعت و تاریخ</string>
 </resources>

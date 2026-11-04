@@ -2497,5 +2497,26 @@
     <string name="qibla_cameraNote">Pegang ponsel tegak lalu berputar; saat penanda Ka\'bah di tengah, kiblat ada di depan Anda. Gambar tetap di ponsel dan tidak disimpan.</string>
     <string name="qibla_cameraDenied">Tidak ada izin kamera. Anda dapat mengizinkannya di Pengaturan.</string>
     <string name="qibla_kaabaName">Ka\'bah</string>
+    <string name="alarm_task_squat">Squat</string>
+    <string name="alarm_task_object">Temukan benda</string>
+    <string name="alarm_task_speak">Baca keras</string>
+    <string name="alarm_task_objectTarget">Apa yang difoto</string>
+    <string name="alarm_task_object_random">Berbeda tiap pagi</string>
+    <string name="wake_object_cup">Cangkir atau gelas</string>
+    <string name="wake_object_toothbrush">Sikat gigi atau wastafel</string>
+    <string name="wake_object_sky">Langit</string>
+    <string name="wake_object_bed">Tempat tidur yang rapi</string>
+    <string name="wake_object_plant">Tanaman atau bunga</string>
+    <string name="wake_object_shoe">Sepatu</string>
+    <string name="wake_object">Ambil foto: %1$s</string>
+    <string name="wake_object_wrong">Tidak ditemukan di foto; coba lebih dekat atau di tempat terang.</string>
+    <string name="wake_object_note">Foto dikenali di ponsel, tidak disimpan dan tidak dikirim ke mana pun.</string>
+    <string name="wake_squat">Lakukan %1$s squat sambil memegang ponsel</string>
+    <string name="wake_speak">Bacakan kalimat ini dengan keras</string>
+    <string name="wake_speak_start">Mulai mendengarkan</string>
+    <string name="wake_speak_listening">Mendengarkan…</string>
+    <string name="wake_speak_heard">Terdengar: %1$s</string>
+    <string name="wake_speak_unavailable">Ponsel ini tidak punya pengenalan suara di perangkat; beralih ke tugas mengetik.</string>
+    <string name="wake_speak_note">Suara hanya dikenali di ponsel, tidak direkam dan tidak dikirim.</string>
     <string name="app_name">Jam &amp; Tanggal</string>
 </resources>

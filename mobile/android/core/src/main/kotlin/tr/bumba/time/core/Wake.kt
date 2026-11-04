@@ -8,7 +8,43 @@ import kotlin.random.Random
  * uyanma denetimi. Burada yalnız hesap var; sensör ve kamera uygulamada.
  */
 object WakeTask {
-    val KINDS = listOf("none", "math", "shake", "steps", "code", "memory", "typing", "photo")
+    val KINDS = listOf("none", "math", "shake", "steps", "code", "memory", "typing", "photo", "squat", "object", "speak")
+    /** Squat (2. analiz #36): telefon elde 15 çömelme; ivme büyüklüğü 1,3 g'yi aşıp 0,95 g altına iner, en az 0,9 sn arayla */
+    const val SQUATS = 15
+    /** Nesne görevi (#36): kameradaki görüntü telefonda sınıflandırılır (iOS Vision, Android ML Kit); hedefin sözcüklerinden
+     *  biri en az [OBJECT_MIN] güvenle etiketlerde geçerse çözülür. Etiketler İngilizce, küçük harfe çevrilerek aranır. */
+    val OBJECTS = linkedMapOf(
+        "cup" to listOf("cup", "mug", "coffee", "tea", "drinking glass", "teapot", "tableware", "drinkware", "glass"),
+        "toothbrush" to listOf("toothbrush", "toothpaste", "sink", "bathroom", "faucet", "tap"),
+        "sky" to listOf("sky", "cloud", "sunrise", "sunset", "outdoor"),
+        "bed" to listOf("bed", "bedroom", "pillow", "blanket", "duvet", "bedding", "mattress", "quilt"),
+        "plant" to listOf("plant", "flower", "houseplant", "flowerpot", "leaf", "tree"),
+        "shoe" to listOf("shoe", "sneaker", "footwear", "boot", "sandal", "slipper"),
+    )
+    const val OBJECT_MIN = 0.3f
+
+    fun objectMatch(target: String, labels: List<Pair<String, Float>>): Boolean {
+        val words = OBJECTS[target] ?: return false
+        return labels.any { (name, conf) ->
+            val n = name.lowercase().replace('_', ' ')
+            conf >= OBJECT_MIN && words.any { w -> n == w || n.split(' ', ',', '/').contains(w) || n.contains(w) }
+        }
+    }
+
+    /** Sesli okuma (#37): duyulan sözcüklerin en az %70'i hedefte sırayla geçiyorsa (büyük/küçük harf, noktalama yok sayılır) */
+    fun spoken(target: String, heard: String): Boolean {
+        fun words(s: String) = s.lowercase().filter { it.isLetterOrDigit() || it.isWhitespace() }.split(Regex("\\s+")).filter { it.isNotEmpty() }
+        val t = words(target)
+        val h = words(heard)
+        if (t.isEmpty() || h.isEmpty()) return false
+        var i = 0
+        var hit = 0
+        for (w in t) {
+            val j = h.subList(i, h.size).indexOf(w)
+            if (j >= 0) { hit++; i += j + 1 }
+        }
+        return hit >= kotlin.math.ceil(t.size * 0.7)
+    }
     /** Işık görevi (2. analiz #38; yalnız Android): en az bu kadar lüks (ve başlangıcın 3 katı) 3 sn boyunca */
     const val LIGHT_LUX = 100f
     /** Matematik: üç işlem; sallama 30 kez; adım 20 */
@@ -95,6 +131,7 @@ class MotionCounter(private val high: Double, private val low: Double, private v
     companion object {
         fun shake() = MotionCounter(2.0, 1.3, 150)
         fun steps() = MotionCounter(1.18, 1.04, 280)
+        fun squat() = MotionCounter(1.3, 0.95, 900)
         const val G = 9.80665
     }
 }
